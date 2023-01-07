@@ -1,0 +1,15 @@
+{
+  "name": "sapi-typedoc",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build-original": "typedoc --tsconfig original/tsconfig.json --out dist_original --json dist_original/index.json",
+    "build": "typedoc --tsconfig translated/tsconfig.json --out dist --json dist/index.json --logLevel Verbose"
+  },
+  "dependencies": {
+    "typedoc": "^0.23.23",
+    "typedoc-plugin-mdn-links": "^2.0.2",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {}
+}

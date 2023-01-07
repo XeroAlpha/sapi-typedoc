@@ -1,0 +1,5 @@
+@media (max-width: 1024px) {
+    html .col-menu {
+        max-width: min(25rem, 90vw) !important;
+    }
+}
