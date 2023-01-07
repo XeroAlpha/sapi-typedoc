@@ -4,10 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@minecraft/server": "^1.1.0-beta.1.19.60-preview.25",
-    "@minecraft/server-admin": "^1.0.0-beta.1.19.60-preview.25",
-    "@minecraft/server-gametest": "^1.0.0-beta.1.19.60-preview.25",
-    "@minecraft/server-net": "^1.0.0-beta.1.19.60-preview.25",
-    "@minecraft/server-ui": "^1.0.0-beta.1.19.60-preview.25"
+    "@minecraft/server": "beta",
+    "@minecraft/server-admin": "beta",
+    "@minecraft/server-gametest": "beta",
+    "@minecraft/server-net": "beta",
+    "@minecraft/server-ui": "beta"
   }
 }
