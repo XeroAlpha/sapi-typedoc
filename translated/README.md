@@ -35,7 +35,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|1/252|
+|[@minecraft/server](#minecraftserver)|9/252|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -46,13 +46,13 @@ Minecraft 脚本 API 文档。
 |名称|类型|状态|
 | - | - | - |
 |[`Direction`](https://projectxero.top/sapi/enums/server.Direction.html)|枚举|已完成|
-|[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|未翻译|
+|[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|已完成|
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
 |[`GameMode`](https://projectxero.top/sapi/enums/server.GameMode.html)|枚举|未翻译|
 |[`MessageSourceType`](https://projectxero.top/sapi/enums/server.MessageSourceType.html)|枚举|未翻译|
-|[`ObjectiveSortOrder`](https://projectxero.top/sapi/enums/server.ObjectiveSortOrder.html)|枚举|未翻译|
-|[`ScoreboardIdentityType`](https://projectxero.top/sapi/enums/server.ScoreboardIdentityType.html)|枚举|未翻译|
+|[`ObjectiveSortOrder`](https://projectxero.top/sapi/enums/server.ObjectiveSortOrder.html)|枚举|已完成|
+|[`ScoreboardIdentityType`](https://projectxero.top/sapi/enums/server.ScoreboardIdentityType.html)|枚举|已完成|
 |[`TimeOfDay`](https://projectxero.top/sapi/enums/server.TimeOfDay.html)|枚举|未翻译|
 |[`WatchdogTerminateReason`](https://projectxero.top/sapi/enums/server.WatchdogTerminateReason.html)|枚举|未翻译|
 |[`BeforeChatEvent`](https://projectxero.top/sapi/classes/server.BeforeChatEvent.html)|类|未翻译|
@@ -255,10 +255,10 @@ Minecraft 脚本 API 文档。
 |[`ProjectileHitEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitEvent.html)|类|未翻译|
 |[`ProjectileHitEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitEventSignal.html)|类|未翻译|
 |[`PropertyRegistry`](https://projectxero.top/sapi/classes/server.PropertyRegistry.html)|类|未翻译|
-|[`Scoreboard`](https://projectxero.top/sapi/classes/server.Scoreboard.html)|类|未翻译|
-|[`ScoreboardIdentity`](https://projectxero.top/sapi/classes/server.ScoreboardIdentity.html)|类|未翻译|
-|[`ScoreboardObjective`](https://projectxero.top/sapi/classes/server.ScoreboardObjective.html)|类|未翻译|
-|[`ScoreboardScoreInfo`](https://projectxero.top/sapi/classes/server.ScoreboardScoreInfo.html)|类|未翻译|
+|[`Scoreboard`](https://projectxero.top/sapi/classes/server.Scoreboard.html)|类|已完成|
+|[`ScoreboardIdentity`](https://projectxero.top/sapi/classes/server.ScoreboardIdentity.html)|类|已完成|
+|[`ScoreboardObjective`](https://projectxero.top/sapi/classes/server.ScoreboardObjective.html)|类|已完成|
+|[`ScoreboardScoreInfo`](https://projectxero.top/sapi/classes/server.ScoreboardScoreInfo.html)|类|未已完成|
 |[`ScreenDisplay`](https://projectxero.top/sapi/classes/server.ScreenDisplay.html)|类|未翻译|
 |[`ScriptEventCommandMessageEvent`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageEvent.html)|类|未翻译|
 |[`ScriptEventCommandMessageSignal`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageSignal.html)|类|未翻译|
@@ -288,7 +288,7 @@ Minecraft 脚本 API 文档。
 |[`ExplosionOptions`](https://projectxero.top/sapi/interfaces/server.ExplosionOptions.html)|接口|未翻译|
 |[`MusicOptions`](https://projectxero.top/sapi/interfaces/server.MusicOptions.html)|接口|未翻译|
 |[`RawMessage`](https://projectxero.top/sapi/interfaces/server.RawMessage.html)|接口|未翻译|
-|[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|未翻译|
+|[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|已完成|
 |[`ScriptEventMessageFilterOptions`](https://projectxero.top/sapi/interfaces/server.ScriptEventMessageFilterOptions.html)|接口|未翻译|
 |[`SoundOptions`](https://projectxero.top/sapi/interfaces/server.SoundOptions.html)|接口|未翻译|
 |[`TitleDisplayOptions`](https://projectxero.top/sapi/interfaces/server.TitleDisplayOptions.html)|接口|未翻译|

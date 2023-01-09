@@ -80,24 +80,32 @@ export enum Direction {
 }
 /**
  * @beta
+ * 表示记分项的显示位置。
+ * 
  * An enumeration for the locations where scoreboard objectives
  * can be displayed.
  */
 export enum DisplaySlotId {
     /**
      * @beta
+     * 记分项上的分数将显示在玩家名称牌下方。
+     * 
      * Score for an objective is displayed below a player's
      * nametag.
      */
     belowname = 'belowname',
     /**
      * @beta
+     * 该记分项与对应的分数持有者将显示在暂停菜单上。
+     * 
      * This objective and respective list of players is shown on
      * the Pause menu.
      */
     list = 'list',
     /**
      * @beta
+     * 记分项将在屏幕右侧显示。
+     * 
      * The objective is shown on the right-hand side of the screen.
      */
     sidebar = 'sidebar',
@@ -205,18 +213,24 @@ export enum MessageSourceType {
 }
 /**
  * @beta
+ * 表示分数持有者列表的排序顺序。
+ * 
  * Used for specifying a sort order for how to display an
  * objective and its list of participants.
  */
 export enum ObjectiveSortOrder {
     /**
      * @beta
+     * 以升序显示分数持有者列表（例如：A-Z）。
+     * 
      * Objective participant list is displayed in ascending (e.g.,
      * A-Z) order.
      */
     ascending = 0,
     /**
      * @beta
+     * 以降序显示分数持有者列表（例如：Z-A）。
+     * 
      * Objective participant list is displayed in descending (e.g.,
      * Z-A) order.
      */
@@ -224,16 +238,22 @@ export enum ObjectiveSortOrder {
 }
 /**
  * @beta
+ * 表示分数持有者的类型。
+ * 
  * Contains objectives and participants for the scoreboard.
  */
 export enum ScoreboardIdentityType {
     /**
      * @beta
+     * 分数持有者是一个实体。
+     * 
      * This scoreboard participant is tied to an entity.
      */
     entity = 'entity',
     /**
      * @beta
+     * 分数持有者是一个虚拟玩家（通常用于存储数据或者作为抽象进度）。
+     * 
      * This scoreboard participant is tied to a pseudo player
      * entity - typically this is used to store scores as data or
      * as abstract progress.
@@ -241,6 +261,8 @@ export enum ScoreboardIdentityType {
     fakePlayer = 'fakePlayer',
     /**
      * @beta
+     * 分数持有者是一位玩家。
+     * 
      * This scoreboard participant is tied to a player.
      */
     player = 'player',
@@ -14121,66 +14143,90 @@ export class PropertyRegistry {
 }
 /**
  * @beta
+ * 表示记分板。其上包含了记分项和分数持有者。
+ * 
  * Contains objectives and participants for the scoreboard.
  */
 export class Scoreboard {
     protected constructor();
     /**
      * @remarks
+     * 在记分板上添加一个新的记分项。
+     * 
      * Adds a new objective to the scoreboard.
-     * @param objectiveId
-     * @param displayName
-     * @throws This function can throw errors.
+     * @param objectiveId 记分项名称。
+     * @param displayName 记分项的显示名称。
+     * @returns 创建的记分项对象。
+     * @throws
+     * 若同名记分项已存在时，抛出 `"Failed to add objective 'objectiveId' as it is already being tracked"`。
      */
     addObjective(objectiveId: string, displayName: string): ScoreboardObjective;
     /**
      * @remarks
+     * 清除显示位置上正在显示的记分项。
+     * 
      * Clears the objective that occupies a display slot.
-     * @param displaySlotId
-     * @throws This function can throw errors.
+     * @param displaySlotId 显示位置。
+     * @returns 先前正显示的记分项，为空时返回 `null`。
      */
     clearObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjective;
     /**
      * @remarks
+     * 获取名称为 `objectiveId` 的记分项对象。
+     * 
      * Returns a specific objective (by id).
-     * @param objectiveId
-     * @throws This function can throw errors.
+     * @param objectiveId 记分项名称。
+     * @returns 指定的记分项对象。不存在时返回 `null`。
      */
     getObjective(objectiveId: string): ScoreboardObjective;
     /**
      * @remarks
+     * 获取位于指定显示位置上的记分项对象与显示配置。
+     * 
      * Returns an objective that occupies the specified display
      * slot.
-     * @param displaySlotId
-     * @throws This function can throw errors.
+     * @param displaySlotId 显示位置。
+     * @returns 位于指定显示位置的记分项显示配置。为空时返回 `null`。
      */
     getObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjectiveDisplayOptions;
     /**
      * @remarks
+     * 获取记分板上的已定义的所有记分项。
+     * 
      * Returns all defined objectives.
-     * @throws This function can throw errors.
+     * @returns 所有记分项对象组成的数组。
      */
     getObjectives(): ScoreboardObjective[];
     /**
      * @remarks
+     * 获取所有已经定义的分数持有者。
+     * 
      * Returns all defined scoreboard identities.
-     * @throws This function can throw errors.
+     * @returns 所有分数持有者对象组成的数组。
      */
     getParticipants(): ScoreboardIdentity[];
     /**
      * @remarks
+     * 从记分板上移除指定的记分项。
+     * 
      * Removes an objective from the scoreboard.
-     * @param objectiveId
-     * @throws This function can throw errors.
+     * @param objectiveId 记分项对象或名称。
+     * @returns 总是返回 `true`。
+     * @throws
+     * 若指定的记分项不存在时，抛出 `"Failed to find the objective specified"`。
      */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
     /**
      * @remarks
+     * 设置指定的显示位置显示的记分项与其他显示配置。
+     * 
      * Sets an objective into a display slot with specified
      * additional display settings.
-     * @param displaySlotId
-     * @param objectiveDisplaySetting
-     * @throws This function can throw errors.
+     * @param displaySlotId 显示位置。
+     * @param objectiveDisplaySetting 记分项显示配置。
+     * @returns 显示位上先前显示的记分项对象。先前未显示记分项时，返回 `undefined`。
+     * @throws
+     * 若记分项无效，抛出 `"Failed to set invalid objective at DisplaySlot"`。
      */
     setObjectiveAtDisplaySlot(
         displaySlotId: string,
@@ -14189,80 +14235,119 @@ export class Scoreboard {
 }
 /**
  * @beta
+ * 表示记分板上的分数持有者。
+ * 
  * Contains an identity of the scoreboard item.
  */
 export class ScoreboardIdentity {
     protected constructor();
     /**
+     * 此分数持有者在玩家视角显示的名称。
+     * 
      * Returns the player-visible name of this identity.
      */
     readonly displayName: string;
     /**
+     * 此分数持有者的 ID。
+     * 
      * Identifier of the scoreboard identity.
      */
     readonly id: number;
     /**
+     * 此分数持有者的类型。
+     * 
      * Type of the scoreboard identity.
      */
     readonly 'type': ScoreboardIdentityType;
     /**
      * @remarks
+     * 返回此分数持有者对应的实体对象（仅当此分数持有者是一个实体或者玩家时）。
+     * 
      * If the scoreboard identity is an entity or player, returns
      * the entity that this scoreboard item corresponds to.
-     * @throws This function can throw errors.
+     * @returns 对应的实体对象。虚拟玩家类型的分数持有者会返回 `undefined`。
+     * @throws
+     * 若实体不存在时，抛出。
      */
     getEntity(): Entity;
 }
 /**
  * @beta
+ * 表示记分板上的记分项。包含了分数持有者和各自的分数。
+ * 
  * Contains objectives and participants for the scoreboard.
  */
 export class ScoreboardObjective {
     protected constructor();
     /**
+     * 此记分项的显示名称。
+     * 
      * Returns the player-visible name of this scoreboard
      * objective.
-     * @throws This property can throw when used.
+     * @throws
+     * 若记分项无效，则抛出。
      */
     readonly displayName: string;
     /**
+     * 此记分项的名称。
+     * 
      * Identifier of the scoreboard objective.
-     * @throws This property can throw when used.
+     * @throws
+     * 若记分项无效，则抛出。
      */
     readonly id: string;
     /**
      * @remarks
+     * 返回此记分项上已记录的分数持有者。
+     * 
      * Returns all objective participant identities.
-     * @throws This function can throw errors.
+     * @returns 由分数持有者对象组成的数组。
+     * @throws
+     * 若记分项无效时，抛出。
      */
     getParticipants(): ScoreboardIdentity[];
     /**
      * @remarks
+     * 获取指定分数持有者的分数。
+     * 
      * Returns a specific score for a participant.
-     * @param participant
-     * @throws This function can throw errors.
+     * @param participant 分数持有者。
+     * @returns 指定分数持有者的分数。
+     * @throws
+     * 若此记分项上未记录分数持有者的分数，抛出 `"Failed to retrieve score for '<participant>'"`。
+     * 若记分项无效时，抛出。
      */
     getScore(participant: ScoreboardIdentity): number;
     /**
      * @remarks
+     * 获取记分项上记录的所有分数信息。
+     * 
      * Returns specific scores for this objective for all
      * participants.
-     * @throws This function can throw errors.
+     * @returns 由分数信息对象组成的数组。
+     * @throws
+     * 若记分项无效时，抛出。
      */
     getScores(): ScoreboardScoreInfo[];
 }
 /**
  * @beta
+ * 表示分数信息。包含了分数持有者以及它在记分板上的对应的分数。
+ * 
  * Contains a pair of a scoreboard participant and its
  * respective score.
  */
 export class ScoreboardScoreInfo {
     protected constructor();
     /**
+     * 分数归属的分数持有者。
+     * 
      * This scoreboard participant for this score.
      */
     readonly participant: ScoreboardIdentity;
     /**
+     * 该记分项上分数持有者的分数。
+     * 
      * Score value of the identity for this objective.
      */
     readonly score: number;
@@ -15243,15 +15328,21 @@ export interface RawMessage {
 }
 /**
  * @beta
+ * 表示记分项显示位置配置。描述了如何在记分板显示位置上显示记分项。
+ * 
  * Contains additional options for how a scoreboard should be
  * displayed within its display slot.
  */
 export interface ScoreboardObjectiveDisplayOptions {
     /**
+     * 要显示的记分项。
+     * 
      * Objective to be displayed.
      */
     objective: ScoreboardObjective;
     /**
+     * 记分项条目的显示排序顺序。
+     * 
      * The sort order to display the objective items within.
      */
     sortOrder?: ObjectiveSortOrder;
