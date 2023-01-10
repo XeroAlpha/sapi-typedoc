@@ -14842,12 +14842,15 @@ export class World {
     protected constructor();
     /**
      * @beta
+     * 适用于整个世界的事件
+     * 
      * Contains a set of events that are applicable to the entirety
      * of the world.
      */
     readonly events: Events;
     /**
      * @beta
+     * 全局的、唯一的记分板对象
      * Returns the general global scoreboard that applies to the
      * world.
      */
@@ -14855,6 +14858,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 此方法仅用作内部测试。用于在客户端与服务器的通信
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
      * @param id
@@ -14864,21 +14868,24 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 获取一个自游戏开始以来经过的时间 (day-1)*24000+daytime
      * Returns the absolute time since the start of the world.
      */
     getAbsoluteTime(): number;
     /**
      * @remarks
+     * 获取所有的玩家的对象
      * Returns an array of all active players within the world.
      * @throws This function can throw errors.
      */
     getAllPlayers(): Player[];
     /**
      * @remarks
+     * 由维度的标识符获取维度对象
+     * @untest
      * Returns a dimension object.
      * @param dimensionId
-     * @returns
-     * The requested dimension
+     * @returns 所获取的维度对象
      * @throws
      * Throws if the given dimension name is invalid
      */
@@ -14886,6 +14893,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 获取属性的值
      * Returns a property value.
      * @param identifier
      * @returns
@@ -14897,22 +14905,27 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 获取世界上的玩家。
+     * @untest
      * Returns all players currently in the world.
-     * @param options
+     * @param options 参数用作于筛选指定条件的玩家
      * @returns
      * All players currently in the world.
-     * @throws This function can throw errors.
+     * @throws 若参数含有 type location maxDistance minDistance，将会抛出错误
      */
     getPlayers(options?: EntityQueryOptions): PlayerIterator;
     /**
      * @beta
      * @remarks
+     * 获得游戏的当前时间。
+     * @untest
      * Sets the current game time of the day.
      */
     getTime(): number;
     /**
      * @beta
      * @remarks
+     * 播放歌曲列表中的音乐
      * Plays a particular music track for all players.
      * @param trackID
      * @param musicOptions
@@ -14921,6 +14934,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 向玩家播放一段声音
      * Plays a sound for all players.
      * @param soundID
      * @param soundOptions
@@ -14929,6 +14943,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 将一首乐曲添加到播放列表，如果没有任何正在播放的音乐，将会开始播放
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      * @param trackID
@@ -14938,6 +14953,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 移除指定的属性
      * Removes a specified property.
      * @param identifier
      * @throws This function can throw errors.
@@ -14946,18 +14962,21 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 向所有客户端广播一条消息。
+     * @untest
      * Broadcasts a message that is displayed on all connected
      * clients.
-     * @param message
+     * @param message 要广播的消息。
      * @throws This function can throw errors.
      */
     say(message: RawMessage | string): void;
     /**
      * @beta
      * @remarks
+     * 为指定的属性设置一个值
      * Sets a specified property to a value.
-     * @param identifier
-     * @param value
+     * @param identifier 标识符
+     * @param value 值
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
@@ -14965,6 +14984,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 设置游戏时间
      * Returns the current game time of the day.
      * @param timeOfDay
      */
@@ -14972,6 +14992,7 @@ export class World {
     /**
      * @beta
      * @remarks
+     * 停止播放所有音乐曲目
      * Stops any music tracks from playing.
      */
     stopMusic(): void;
