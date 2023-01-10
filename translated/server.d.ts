@@ -14842,7 +14842,7 @@ export class World {
     protected constructor();
     /**
      * @beta
-     * 适用于整个世界的事件
+     * 包含一组整个世界上发生的事件。
      * 
      * Contains a set of events that are applicable to the entirety
      * of the world.
@@ -14850,7 +14850,8 @@ export class World {
     readonly events: Events;
     /**
      * @beta
-     * 全局的、唯一的记分板对象
+     * 全局的、唯一的记分板对象。
+     * 
      * Returns the general global scoreboard that applies to the
      * world.
      */
@@ -14858,7 +14859,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 此方法仅用作内部测试。用于在客户端与服务器的通信
+     * 此方法仅用作内部测试。用于在客户端与服务器之间传递信息。
+     *
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
      * @param id
@@ -14868,64 +14870,69 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获取一个自游戏开始以来经过的时间 (day-1)*24000+daytime
+     * 获取自游戏开始以来流逝的时间（说明：(day-1)*24000+daytime）。时间的流逝受到游戏规则“dodaylightcycle”的影响。
+     *
      * Returns the absolute time since the start of the world.
+     * @returns 自游戏开始以来，流逝的时间。
      */
     getAbsoluteTime(): number;
     /**
      * @remarks
-     * 获取所有的玩家的对象
+     * 获取世界上所有的玩家。
+     * 
      * Returns an array of all active players within the world.
-     * @throws This function can throw errors.
      */
     getAllPlayers(): Player[];
     /**
      * @remarks
-     * 由维度的标识符获取维度对象
-     * @untest
+     * 由 `dimensionId` 获取维度对象。
+     *
      * Returns a dimension object.
-     * @param dimensionId
-     * @returns 所获取的维度对象
-     * @throws
-     * Throws if the given dimension name is invalid
+     * @param dimensionId 维度的标识符。
+     * @returns 所获取的维度对象。如果以 `dimensionId` 指定的维度不存在，返回 `null`。
      */
     getDimension(dimensionId: string): Dimension;
     /**
      * @beta
      * @remarks
-     * 获取属性的值
+     * 获取世界动态属性的值。
+     * 
      * Returns a property value.
      * @param identifier
-     * @returns
+     * @returns 返回根据 `identifier` 获取到的值。如果值尚未设定，返回 `undefined` 。
      * Returns the value for the property, or undefined if the
      * property has not been set.
-     * @throws This function can throw errors.
+     * @throws 若尚未注册以 `identifier` 为标识符的动态属性，抛出 `"？你有事吗？测试完记得改"` 。
      */
     getDynamicProperty(identifier: string): boolean | number | string | undefined;
     /**
      * @beta
      * @remarks
      * 获取世界上的玩家。
-     * @untest
+     *
      * Returns all players currently in the world.
-     * @param options 参数用作于筛选指定条件的玩家
-     * @returns
-     * All players currently in the world.
-     * @throws 若参数含有 type location maxDistance minDistance，将会抛出错误
+     * @param options 可选的参数，用作于筛选指定条件的玩家。
+     * 注意，您不能使用接口中的 `type`、`location`、`maxDistance` 或 `minDistance` 属性。
+     * @returns 一个能够获取到世界中所有玩家的可迭代对象。
+     * 若指定了用作筛选玩家的 `options` 参数，则返回一个能够
+     * 获取到世界中满足筛选条件的玩家的可迭代对象。
+     * @throws
+     * 若向 `options` 传入的对象含有 `type`、`location`、`maxDistance` 或 `minDistance` 属性，抛出 `"？你有事吗？测试完记得改"` 。
      */
     getPlayers(options?: EntityQueryOptions): PlayerIterator;
     /**
      * @beta
      * @remarks
-     * 获得游戏的当前时间。
-     * @untest
+     * 获得游戏的一天中的当前时间。
+     *
      * Sets the current game time of the day.
      */
     getTime(): number;
     /**
      * @beta
      * @remarks
-     * 播放歌曲列表中的音乐
+     * 播放歌曲列表中的音乐。
+     *
      * Plays a particular music track for all players.
      * @param trackID
      * @param musicOptions
@@ -14934,7 +14941,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 向玩家播放一段声音
+     * 向玩家播放一段声音。
+     *
      * Plays a sound for all players.
      * @param soundID
      * @param soundOptions
@@ -14943,7 +14951,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 将一首乐曲添加到播放列表，如果没有任何正在播放的音乐，将会开始播放
+     * 将一首乐曲添加到播放列表。如果没有任何正在播放的音乐，将会开始播放。
+     *
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      * @param trackID
@@ -14953,7 +14962,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 移除指定的属性
+     * 移除由 `identifier` 指定的世界动态属性。
+     *
      * Removes a specified property.
      * @param identifier
      * @throws This function can throw errors.
@@ -14963,10 +14973,10 @@ export class World {
      * @beta
      * @remarks
      * 向所有客户端广播一条消息。
-     * @untest
+     *
      * Broadcasts a message that is displayed on all connected
      * clients.
-     * @param message 要广播的消息。
+     * @param message 要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象。
      * @throws This function can throw errors.
      */
     say(message: RawMessage | string): void;
@@ -14984,15 +14994,17 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 设置游戏时间
+     * 设置游戏的时间。
+     *
      * Returns the current game time of the day.
-     * @param timeOfDay
+     * @param timeOfDay 要设置的昼夜时间
      */
     setTime(timeOfDay: number): void;
     /**
      * @beta
      * @remarks
-     * 停止播放所有音乐曲目
+     * 停止播放所有音乐曲目。
+     * 
      * Stops any music tracks from playing.
      */
     stopMusic(): void;
