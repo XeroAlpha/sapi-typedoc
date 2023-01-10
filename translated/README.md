@@ -22,6 +22,49 @@ Minecraft 脚本 API 文档。
 
 欢迎通过 [Fork & Pull Request](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) 参与此项目！
 
+TSDoc 例子：
+```ts
+/**
+ * 在给定的范围内随机一个整数并返回。
+ * 
+ * Return a ranged random integer.
+ * @param min 范围的下限（含）。
+ * @param max
+ * 范围的上限（含）。
+ * 
+ * Maxinum of range.
+ * @returns 范围内的随机数。
+ * @throws
+ * 若 `min > max`，则报错 `"Illegal range"`。
+ */
+random(min: number, max: number): number;
+```
+上述例子中 `@param`、`@returns` 称为“标签”。标签后面可以空一格后接文本，也可以换行。
+
+单个标签与之后的文本组成的整体称为“块”。
+
+## 翻译规则
+
+- **保留所有英文原文，即使原文有误**。但不保留 `@throws` 中出现的 “This function can throw errors.”、“This property can throw when used.”。
+- 翻译不必遵守与英文原文句意相同的规则。能描述清楚即可。原文中的错误可在翻译中进行修正。
+- 对于原文中出现的专有术语，优先使用 [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki) 上的表述。存疑或不确定的表述可在 Pull Request 时提出。
+- 对于每个块，**先中文翻译后英文原文，中间需要空一行**。只有一行的块，标签后可不换行。多行的块，标签后必须直接换行。
+- 翻译文本是 Markdown 格式，换行需要空一行。包含代码的部分需要使用反引号括起。英文与中文间需要添加空格（英文与中文标点间不需要）。
+- 块中的文本都是完整的句子。都需要以句号或者其他标点符号作为结尾。
+- 保留所有标签，但如果在提供参数类型正确的情况下不会出错，则可以移除 `@throws` 标签。
+- 所有函数的每个参数均需要 `@param` 标签来描述参数的作用。需要对 `@param` 标签中参数的描述进行翻译或补充。
+- 所有有返回值的函数（返回值类型不为 `void`）都需要 `@returns` 标签来描述返回值的作用，即使已在描述中给出。需要对 `@returns` 标签中参数的描述进行翻译或补充。
+- 函数可能的报错与发生条件应在 `@throws` 中详细列出。若参数类型正确的情况下不会出错，则可以省略。`@throws` 后面需换行。
+- 标签顺序需按照 `@param`（按参数顺序）、`@returns`、`@throws` 的顺序。
+- `@example` 不进行翻译。
+
+|常见用语|翻译|备注|
+| - | - | - |
+|Represents/Describes/Specifies ...|表示……|出现在描述开头，用一个短语来描述功能时，统一翻译为“表示”|
+|Contains information ...|描述了……|尽可能在之前加入“表示……”。|
+|if true/if set to true|若为 `true`（，则表示……）|仅用于布尔型属性描述|
+|identifier|标识符/ID|如果是字符串，使用“标识符”，其他情况使用“ID”。|
+
 ## 翻译状态
 
 |状态|描述|
