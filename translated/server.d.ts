@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.60-preview.25"
+ *   "version": "1.1.0-internal.1.19.60-preview.26"
  * }
  * ```
  *
@@ -3996,7 +3996,7 @@ export class EntityHealthComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -4484,7 +4484,7 @@ export class EntityLavaMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -4674,7 +4674,7 @@ export class EntityMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -5995,7 +5995,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -13821,7 +13821,7 @@ export class Player extends Entity {
      * @param message
      * @throws This function can throw errors.
      */
-    tell(message: RawMessage | string): void;
+    tell(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
      * @remarks
@@ -14230,6 +14230,7 @@ export class Scoreboard {
      * @returns 所有分数持有者对象组成的数组。
      */
     getParticipants(): ScoreboardIdentity[];
+    getScore(objective: ScoreboardObjective, participant: ScoreboardIdentity): number;
     /**
      * @remarks
      * 从记分板上移除指定的记分项。
@@ -14257,6 +14258,7 @@ export class Scoreboard {
         displaySlotId: string,
         objectiveDisplaySetting: ScoreboardObjectiveDisplayOptions,
     ): ScoreboardObjective;
+    setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
 /**
  * @beta
@@ -14295,6 +14297,9 @@ export class ScoreboardIdentity {
      * 若实体不存在时，抛出。
      */
     getEntity(): Entity;
+    getScore(objective: ScoreboardObjective): number;
+    removeFromObjective(objective: ScoreboardObjective): boolean;
+    setScore(objective: ScoreboardObjective, score: number): boolean;
 }
 /**
  * @beta
@@ -14354,6 +14359,8 @@ export class ScoreboardObjective {
      * 若记分项无效时，抛出。
      */
     getScores(): ScoreboardScoreInfo[];
+    removeParticipant(participant: ScoreboardIdentity): boolean;
+    setScore(participant: ScoreboardIdentity, score: number): boolean;
 }
 /**
  * @beta
@@ -15010,7 +15017,7 @@ export class World {
      * @param message 要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象。
      * @throws This function can throw errors.
      */
-    say(message: RawMessage | string): void;
+    say(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
      * @remarks
@@ -15391,7 +15398,7 @@ export interface RawMessage {
     rawtext?: (RawMessage | string)[];
     text?: string;
     translate?: string;
-    with?: (RawMessage | string)[];
+    with?: string[] | RawMessage;
 }
 /**
  * @beta
