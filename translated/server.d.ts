@@ -2974,6 +2974,8 @@ export class DirectionBlockProperty extends IBlockProperty {
 }
 /**
  * @beta
+ * 此类型用于定义一系列动态属性。能够与 `{@link PropertyRegistry}` 结合使用，在实体或世界上定义动态属性。一个 `{@link PropertyRegistry}` 可从 `{@link WorldInitializeEvent.propertyRegistry}` 获取。
+ *
  * Class used in conjunction with {@link PropertyRegistry} to
  * define dynamic properties that can be used on entities of a
  * specified type or at the global World- level.
@@ -2981,24 +2983,33 @@ export class DirectionBlockProperty extends IBlockProperty {
 export class DynamicPropertiesDefinition {
     /**
      * @remarks
+     * 增加一个布尔类型的动态属性定义。
+     *
      * Defines a new boolean dynamic property.
-     * @param identifier
-     * @throws This function can throw errors.
+     * @param identifier 将要增加的动态属性所使用的标识符。
+     * @throws
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
      */
     defineBoolean(identifier: string): void;
     /**
      * @remarks
+     * 增加一个数字类型的动态属性定义。
+     *
      * Defines a new number dynamic property.
-     * @param identifier
-     * @throws This function can throw errors.
+     * @param identifier 将要增加的动态属性所使用的标识符。
+     * @throws
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
      */
     defineNumber(identifier: string): void;
     /**
      * @remarks
+     * 增加一个字符串类型的动态属性定义。
+     *
      * Defines a new string dynamic property.
-     * @param identifier
-     * @param maxLength
-     * @throws This function can throw errors.
+     * @param identifier 将要增加的动态属性所使用的标识符。
+     * @param maxLength 字符串在编码为 UTF-8 后的最大字节长度。
+     * @throws
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
      */
     defineString(identifier: string, maxLength: number): void;
 }
@@ -3473,7 +3484,10 @@ export class Entity {
      * @param identifier
      * @param value
      * Data value of the property to set.
-     * @throws This function can throw errors.
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
+     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -13715,7 +13729,10 @@ export class Player extends Entity {
      * @param identifier
      * @param value
      * Data value of the property to set.
-     * @throws This function can throw errors.
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
+     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -14115,6 +14132,8 @@ export class ProjectileHitEventSignal {
 }
 /**
  * @beta
+ * 提供了用于注册一系列可以持久存储的动态属性的方法，应在 `{@link WorldInitializeEvent}` 中使用。
+ *
  * Provides methods that should be used within the World
  * Initialize event to register dynamic properties that can be
  * used and stored within Minecraft.
@@ -14123,11 +14142,14 @@ export class PropertyRegistry {
     protected constructor();
     /**
      * @remarks
+     * 为指定的实体类型注册动态属性（例如：`minecraft:skeleton`）。
+     *
      * Registers a dynamic property for a particular entity type
      * (e.g., a minecraft:skeleton.).
      * @param propertiesDefinition
      * @param entityType
-     * @throws This function can throw errors.
+     * @throws
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 $b=998-a$。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 $c=a+b+2$，抛出 `"Dynamic property size limit exceeded (<c>/1000) for '<entityTypeId>'"`。
      */
     registerEntityTypeDynamicProperties(
         propertiesDefinition: DynamicPropertiesDefinition,
@@ -14135,9 +14157,12 @@ export class PropertyRegistry {
     ): void;
     /**
      * @remarks
+     * 在世界中注册动态属性。
+     *
      * Registers a globally available dynamic property for a world.
      * @param propertiesDefinition
-     * @throws This function can throw errors.
+     * @throws
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 $b=9998-a$。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 $c=a+b+2$，抛出 `"Dynamic property size limit exceeded (<c>/10000) for 'World'"`。
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
@@ -14835,6 +14860,8 @@ export class WeatherChangeEventSignal {
     unsubscribe(callback: (arg: WeatherChangeEvent) => void): void;
 }
 /**
+ * 代表了整个世界的类型，其中包含了一系列维度以及 Minecraft 的环境。
+ *
  * A class that wraps the state of a world - a set of
  * dimensions and the environment of Minecraft.
  */
@@ -14842,7 +14869,7 @@ export class World {
     protected constructor();
     /**
      * @beta
-     * 包含一组整个世界上发生的事件。
+     * 世界上会发生的事件的集合。
      * 
      * Contains a set of events that are applicable to the entirety
      * of the world.
@@ -14870,7 +14897,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获取自游戏开始以来流逝的时间（说明：(day-1)*24000+daytime）。时间的流逝受到游戏规则“dodaylightcycle”的影响。
+     * 获取自游戏开始以来流逝的时间（计算方式：`(day-1)*24000+daytime`）。
+     * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
      *
      * Returns the absolute time since the start of the world.
      * @returns 自游戏开始以来，流逝的时间。
@@ -14878,9 +14906,10 @@ export class World {
     getAbsoluteTime(): number;
     /**
      * @remarks
-     * 获取世界上所有的玩家。
+     * 获取一个包含了游戏中所有玩家的对象的数组。
      * 
      * Returns an array of all active players within the world.
+     * @returns 返回的数组中包含了游戏中所有玩家的对象。
      */
     getAllPlayers(): Player[];
     /**
@@ -14888,21 +14917,20 @@ export class World {
      * 由 `dimensionId` 获取维度对象。
      *
      * Returns a dimension object.
-     * @param dimensionId 维度的标识符。
+     * @param dimensionId 要获取的维度的标识符。
      * @returns 所获取的维度对象。如果以 `dimensionId` 指定的维度不存在，返回 `null`。
      */
     getDimension(dimensionId: string): Dimension;
     /**
      * @beta
      * @remarks
-     * 获取世界动态属性的值。
+     * 获取由 `identifier` 指定的世界中已定义的动态属性的值。
      * 
      * Returns a property value.
      * @param identifier
-     * @returns 返回根据 `identifier` 获取到的值。如果值尚未设定，返回 `undefined` 。
-     * Returns the value for the property, or undefined if the
-     * property has not been set.
-     * @throws 若尚未注册以 `identifier` 为标识符的动态属性，抛出 `"？你有事吗？测试完记得改"` 。
+     * @returns 返回动态属性 `identifier` 的值。如果属性的值尚未设定，返回 `undefined`。
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
      */
     getDynamicProperty(identifier: string): boolean | number | string | undefined;
     /**
@@ -14926,6 +14954,7 @@ export class World {
      * 获得游戏的一天中的当前时间。
      *
      * Sets the current game time of the day.
+     * @returns 所获取的值，应该为 `0` 至 `23999` 之间的整数。
      */
     getTime(): number;
     /**
@@ -14962,11 +14991,13 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 移除由 `identifier` 指定的世界动态属性。
+     * 重置由 `identifier` 指定的世界动态属性。
      *
      * Removes a specified property.
      * @param identifier
-     * @throws This function can throw errors.
+     * @returns {boolean} 若动态属性 `identifier` 尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值。
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
      */
     removeDynamicProperty(identifier: string): boolean;
     /**
@@ -14983,12 +15014,15 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 为指定的属性设置一个值
+     * 为世界动态属性 `identifier` 设置一个值，这个值应该与动态属性拥有相同的属性。
+     *
      * Sets a specified property to a value.
-     * @param identifier 标识符
-     * @param value 值
-     * Data value of the property to set.
-     * @throws This function can throw errors.
+     * @param identifier 动态属性的标识符。
+     * @param value 要设定的值，其类型应当与动态属性的类型相同。
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
+     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     /**
@@ -14997,7 +15031,7 @@ export class World {
      * 设置游戏的时间。
      *
      * Returns the current game time of the day.
-     * @param timeOfDay 要设置的昼夜时间
+     * @param timeOfDay 要设置的昼夜时间。
      */
     setTime(timeOfDay: number): void;
     /**
