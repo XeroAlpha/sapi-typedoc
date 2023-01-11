@@ -23,56 +23,42 @@
  */
 /**
  * @beta
- * 表示朝向。
- * 
  * Represents a direction for expressing relative position or
  * facing.
  */
 export enum Direction {
     /**
      * @beta
-     * 表示下方（y - 1）。
-     * 
      * Represents an object located or facing in the down (z - 1)
      * direction.
      */
     down = 'down',
     /**
      * @beta
-     * 表示东方（x + 1）。
-     * 
      * Represents an object located or facing in the east (x + 1)
      * direction.
      */
     east = 'east',
     /**
      * @beta
-     * 表示北方（z - 1）。
-     * 
      * Represents an object located or facing in the north (z - 1)
      * direction.
      */
     north = 'north',
     /**
      * @beta
-     * 表示南方（z + 1）。
-     * 
      * Represents an object located or facing in the south (z + 1)
      * direction.
      */
     south = 'south',
     /**
      * @beta
-     * 表示上方（y + 1）。
-     * 
      * Represents an object located or facing in the up (z + 1)
      * direction.
      */
     up = 'up',
     /**
      * @beta
-     * 表示西方（x - 1）。
-     * 
      * Represents an object located or facing in the west (x - 1)
      * direction.
      */
