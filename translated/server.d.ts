@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.60-preview.25"
+ *   "version": "1.1.0-internal.1.19.60-preview.26"
  * }
  * ```
  *
@@ -3946,7 +3946,7 @@ export class EntityHealthComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -4434,7 +4434,7 @@ export class EntityLavaMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -4624,7 +4624,7 @@ export class EntityMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -5945,7 +5945,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
      * @param value
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): void;
+    setCurrent(value: number): boolean;
 }
 /**
  * @beta
@@ -13768,7 +13768,7 @@ export class Player extends Entity {
      * @param message
      * @throws This function can throw errors.
      */
-    tell(message: RawMessage | string): void;
+    tell(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
      * @remarks
@@ -14153,6 +14153,7 @@ export class Scoreboard {
      * @throws This function can throw errors.
      */
     getParticipants(): ScoreboardIdentity[];
+    getScore(objective: ScoreboardObjective, participant: ScoreboardIdentity): number;
     /**
      * @remarks
      * Removes an objective from the scoreboard.
@@ -14172,6 +14173,7 @@ export class Scoreboard {
         displaySlotId: string,
         objectiveDisplaySetting: ScoreboardObjectiveDisplayOptions,
     ): ScoreboardObjective;
+    setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
 /**
  * @beta
@@ -14198,6 +14200,9 @@ export class ScoreboardIdentity {
      * @throws This function can throw errors.
      */
     getEntity(): Entity;
+    getScore(objective: ScoreboardObjective): number;
+    removeFromObjective(objective: ScoreboardObjective): boolean;
+    setScore(objective: ScoreboardObjective, score: number): boolean;
 }
 /**
  * @beta
@@ -14236,6 +14241,8 @@ export class ScoreboardObjective {
      * @throws This function can throw errors.
      */
     getScores(): ScoreboardScoreInfo[];
+    removeParticipant(participant: ScoreboardIdentity): boolean;
+    setScore(participant: ScoreboardIdentity, score: number): boolean;
 }
 /**
  * @beta
@@ -14852,7 +14859,7 @@ export class World {
      * @param message
      * @throws This function can throw errors.
      */
-    say(message: RawMessage | string): void;
+    say(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
      * @remarks
@@ -15225,7 +15232,7 @@ export interface RawMessage {
     rawtext?: (RawMessage | string)[];
     text?: string;
     translate?: string;
-    with?: (RawMessage | string)[];
+    with?: string[] | RawMessage;
 }
 /**
  * @beta

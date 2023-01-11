@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.60-preview.25"
+ *   "version": "1.0.0-internal.1.19.60-preview.26"
  * }
  * ```
  *
@@ -947,7 +947,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param message
      * @throws This function can throw errors.
      */
-    tell(message: minecraftserver.RawMessage | string): void;
+    tell(message: (minecraftserver.RawMessage | string)[] | minecraftserver.RawMessage | string): void;
     /**
      * @remarks
      * Triggers an entity type event. For every entity, a number of
