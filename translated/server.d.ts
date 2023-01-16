@@ -14904,11 +14904,11 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获取自游戏开始以来流逝的时间（计算方式：`(day-1)*24000+daytime`）。
+     * 获取自游戏开始以来流逝的时间（计算公式：$(day-1)*24000+daytime$）。
      * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
      *
      * Returns the absolute time since the start of the world.
-     * @returns 自游戏开始以来，流逝的时间。
+     * @returns 自游戏开始以来，流逝的时间，以刻为单位。
      */
     getAbsoluteTime(): number;
     /**
@@ -14916,7 +14916,7 @@ export class World {
      * 获取一个包含了游戏中所有玩家的对象的数组。
      * 
      * Returns an array of all active players within the world.
-     * @returns 返回的数组中包含了游戏中所有玩家的对象。
+     * @returns 返回的数组中包含了游戏中代表每个玩家的对象。
      */
     getAllPlayers(): Player[];
     /**
@@ -14958,10 +14958,10 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获得游戏的一天中的当前时间。
+     * 获得游戏一天中的当前时间。
      *
      * Sets the current game time of the day.
-     * @returns 所获取的值，应该为 `0` 至 `23999` 之间的整数。
+     * @returns 一天中的时间，以刻为单位，应该为 `0` 至 `23999` 之间的整数。
      */
     getTime(): number;
     /**
@@ -15002,7 +15002,7 @@ export class World {
      *
      * Removes a specified property.
      * @param identifier
-     * @returns {boolean} 若动态属性 `identifier` 尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值。
+     * @returns {boolean} 若动态属性 `identifier` 在注册后尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值。
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
      */
@@ -15014,7 +15014,7 @@ export class World {
      *
      * Broadcasts a message that is displayed on all connected
      * clients.
-     * @param message 要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象。
+     * @param message 将要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象。
      * @throws This function can throw errors.
      */
     say(message: (RawMessage | string)[] | RawMessage | string): void;
@@ -15035,7 +15035,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 设置游戏的时间。
+     * 设置游戏的一天的当前时间。
      *
      * Returns the current game time of the day.
      * @param timeOfDay 要设置的昼夜时间。
