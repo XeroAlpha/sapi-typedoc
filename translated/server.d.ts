@@ -14926,6 +14926,7 @@ export class World {
      * Returns a dimension object.
      * @param dimensionId 要获取的维度的标识符。
      * @returns 所获取的维度对象。如果以 `dimensionId` 指定的维度不存在，返回 `null`。
+     * @throws 若 `dimensionId` 不为可用的值，抛出 `"Dimension '<dimensionId>' is invalid"`。
      */
     getDimension(dimensionId: string): Dimension;
     /**
@@ -15044,7 +15045,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 停止播放所有音乐曲目。
+     * 停止客户端中正在播放的所有音乐曲目。
      * 
      * Stops any music tracks from playing.
      */
