@@ -2988,7 +2988,7 @@ export class DynamicPropertiesDefinition {
      * Defines a new boolean dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineBoolean(identifier: string): void;
     /**
@@ -2998,7 +2998,7 @@ export class DynamicPropertiesDefinition {
      * Defines a new number dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineNumber(identifier: string): void;
     /**
@@ -3007,9 +3007,9 @@ export class DynamicPropertiesDefinition {
      *
      * Defines a new string dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
-     * @param maxLength 字符串在编码为 UTF-8 后的最大字节长度。
+     * @param maxLength 字符串在编码为 UTF-8 后的最大字节长度。（需要验证）
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `誒，还没抛呢，你等我一下`。
+     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineString(identifier: string, maxLength: number): void;
 }
@@ -3484,10 +3484,7 @@ export class Entity {
      * @param identifier
      * @param value
      * Data value of the property to set.
-     * @throws
-     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
-     * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
-     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
+     * @throws this function can throw errors.
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -14132,7 +14129,7 @@ export class ProjectileHitEventSignal {
 }
 /**
  * @beta
- * 提供了用于注册一系列可以持久存储的动态属性的方法，应在 `{@link WorldInitializeEvent}` 中使用。
+ * 提供了用于注册一系列可以持久存储的动态属性的方法，应在 {@link WorldInitializeEvent} 中使用。
  *
  * Provides methods that should be used within the World
  * Initialize event to register dynamic properties that can be
@@ -14142,14 +14139,14 @@ export class PropertyRegistry {
     protected constructor();
     /**
      * @remarks
-     * 为指定的实体类型注册动态属性（例如：`minecraft:skeleton`）。
+     * 为实体类型注册动态属性（例如：`minecraft:skeleton`）。
      *
      * Registers a dynamic property for a particular entity type
      * (e.g., a minecraft:skeleton.).
-     * @param propertiesDefinition
-     * @param entityType
+     * @param propertiesDefinition 将要为实体定义的一系列动态属性。
+     * @param entityType 实体类型。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 $b=998-a$。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 $c=a+b+2$，抛出 `"Dynamic property size limit exceeded (<c>/1000) for '<entityTypeId>'"`。
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b=998-a`。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength=a+b+2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
      */
     registerEntityTypeDynamicProperties(
         propertiesDefinition: DynamicPropertiesDefinition,
@@ -14160,9 +14157,9 @@ export class PropertyRegistry {
      * 在世界中注册动态属性。
      *
      * Registers a globally available dynamic property for a world.
-     * @param propertiesDefinition
+     * @param propertiesDefinition 将要为世界定义的一系列动态属性。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 $b=9998-a$。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 $c=a+b+2$，抛出 `"Dynamic property size limit exceeded (<c>/10000) for 'World'"`。
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度`b=9998-a`。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength=a+b+2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/10000) for 'World'"`。
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
@@ -14893,7 +14890,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 此方法仅用作内部测试。用于在客户端与服务器之间传递信息。
+     * 此方法仅用作内部测试。用于在客户端与服务器之间传递信息（不确定实际用途）。
      *
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
@@ -14904,11 +14901,11 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获取自游戏开始以来流逝的时间（计算公式：$(day-1)*24000+daytime$）。
+     * 获取自游戏开始以来流逝的时间（计算公式：`day*24000+daytime`）。
      * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
      *
      * Returns the absolute time since the start of the world.
-     * @returns 自游戏开始以来，流逝的时间，以刻为单位。
+     * @returns 自游戏开始以来流逝的时间，以刻为单位。
      */
     getAbsoluteTime(): number;
     /**
@@ -14916,7 +14913,7 @@ export class World {
      * 获取一个包含了游戏中所有玩家的对象的数组。
      * 
      * Returns an array of all active players within the world.
-     * @returns 返回的数组中包含了游戏中代表每个玩家的对象。
+     * @returns 返回的数组中包含代表了游戏中每个玩家的对象。
      */
     getAllPlayers(): Player[];
     /**
@@ -14925,8 +14922,9 @@ export class World {
      *
      * Returns a dimension object.
      * @param dimensionId 要获取的维度的标识符。
-     * @returns 所获取的维度对象。如果以 `dimensionId` 指定的维度不存在，返回 `null`。
-     * @throws 若 `dimensionId` 不为可用的值，抛出 `"Dimension '<dimensionId>' is invalid"`。
+     * @returns 与 `dimensionId` 关联的维度对象。
+     * @throws
+     * 若 `dimensionId` 不与维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
      */
     getDimension(dimensionId: string): Dimension;
     /**
@@ -14948,12 +14946,14 @@ export class World {
      *
      * Returns all players currently in the world.
      * @param options 可选的参数，用作于筛选指定条件的玩家。
-     * 注意，您不能使用接口中的 `type`、`location`、`maxDistance` 或 `minDistance` 属性。
+     * 注意，您不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
      * @returns 一个能够获取到世界中所有玩家的可迭代对象。
      * 若指定了用作筛选玩家的 `options` 参数，则返回一个能够
      * 获取到世界中满足筛选条件的玩家的可迭代对象。
      * @throws
-     * 若向 `options` 传入的对象含有 `type`、`location`、`maxDistance` 或 `minDistance` 属性，抛出 `"？你有事吗？测试完记得改"` 。
+     * 若向 `options` 传入的对象含有 `type` 属性，抛出 `"command.generic.invalidPlayerType"`。
+     * 
+     * 若向 `options` 传入的对象含有 `location`、`maxDistance`、`minDistance` 或 `volume` 属性，抛出 `"EntityQueryOptions property '<property>' is incompatible with function world.getPlayers"`。
      */
     getPlayers(options?: EntityQueryOptions): PlayerIterator;
     /**
@@ -14962,17 +14962,17 @@ export class World {
      * 获得游戏一天中的当前时间。
      *
      * Sets the current game time of the day.
-     * @returns 一天中的时间，以刻为单位，应该为 `0` 至 `23999` 之间的整数。
+     * @returns 一天中的时间，以刻为单位，为 `0` 至 `23999` 之间的整数。
      */
     getTime(): number;
     /**
      * @beta
      * @remarks
-     * 播放歌曲列表中的音乐。
+     * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
      *
      * Plays a particular music track for all players.
-     * @param trackID
-     * @param musicOptions
+     * @param trackID 声音项目的 ID，要求声音项目的类别为音乐（`category: music`）。
+     * @param musicOptions 播放音乐使用的额外参数。
      */
     playMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
@@ -14981,19 +14981,19 @@ export class World {
      * 向玩家播放一段声音。
      *
      * Plays a sound for all players.
-     * @param soundID
-     * @param soundOptions
+     * @param soundID 声音项目的 ID。
+     * @param soundOptions 播放声音的附加参数。
      */
     playSound(soundID: string, soundOptions?: SoundOptions): void;
     /**
      * @beta
      * @remarks
-     * 将一首乐曲添加到播放列表。如果没有任何正在播放的音乐，将会开始播放。
+     * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
      *
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
-     * @param trackID
-     * @param musicOptions
+     * @param trackID 声音项目的 ID，要求声音项目的类别为音乐（`category: music`）。
+     * @param musicOptions 播放音乐使用的额外参数。
      */
     queueMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
@@ -15003,34 +15003,35 @@ export class World {
      *
      * Removes a specified property.
      * @param identifier
-     * @returns {boolean} 若动态属性 `identifier` 在注册后尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值。
+     * @returns 若动态属性 `identifier` 在注册后尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值（需要更多测试）。
      * @throws
-     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
      */
     removeDynamicProperty(identifier: string): boolean;
     /**
      * @beta
      * @remarks
-     * 向所有客户端广播一条消息。
+     * 向所有客户端的聊天栏广播一条消息。
      *
      * Broadcasts a message that is displayed on all connected
      * clients.
-     * @param message 将要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象。
-     * @throws This function can throw errors.
+     * @param message 将要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象，或是这两种类型的组合。
      */
     say(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
      * @remarks
-     * 为世界动态属性 `identifier` 设置一个值，这个值应该与动态属性拥有相同的属性。
+     * 为世界动态属性 `identifier` 设置一个值。
      *
      * Sets a specified property to a value.
      * @param identifier 动态属性的标识符。
-     * @param value 要设定的值，其类型应当与动态属性的类型相同。
+     * @param value 要设定的值，值的类型必须与动态属性注册的类型相同。
      * @throws
-     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
+     * 
      * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
-     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
+     * 
+     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所允许的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     /**
@@ -15045,7 +15046,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 停止客户端中正在播放的所有音乐曲目。
+     * 停止客户端中正在播放的所有音乐曲目。（需要更多测试）
      * 
      * Stops any music tracks from playing.
      */
