@@ -6545,7 +6545,7 @@ export class ItemCompleteChargeEventSignal {
 }
 /**
  * @beta
- * 当出现在物品上时，表示物品使用后的冷却效果。
+ * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
  * 注意，原版物品可能获取到没有实际作用的该组件。
  * 
  * When present on an item, this item has a cooldown effect
@@ -6554,14 +6554,14 @@ export class ItemCompleteChargeEventSignal {
 export class ItemCooldownComponent {
     protected constructor();
     /**
-     * 表示物品的冷却类型。
+     * 表示物品的冷却类别。
      * 
      * Represents the cooldown category that this item is
      * associated with.
      */
     readonly cooldownCategory: string;
     /**
-     * 以tick为单位，物品冷却的（剩余）时间。
+     * 以刻为单位，物品冷却的（剩余）时间。
      * 
      * Amount of time, in ticks, that remain for this item
      * cooldown.
@@ -6576,7 +6576,8 @@ export class ItemCooldownComponent {
     static readonly componentId = 'minecraft:cooldown';
     /**
      * @remarks
-     * 开始物品的冷却周期，如果已在冷却中，将重新开始。
+     * 开始物品的冷却周期。
+     * 如果物品已在冷却中，将重新开始冷却。
      * 
      * Starts a new cooldown period for this item.
      * @param player 要开始冷却的玩家。
@@ -6629,7 +6630,7 @@ export class ItemDefinitionTriggeredEvent {
 }
 /**
  * @beta
- * 当出现在物品上时，表示物品可能在使用中受到损坏。
+ * 表示物品耐久组件。当出现在物品上时，表示该物品可以在使用中受到损坏。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 
  * When present on an item, this item can take damage in the
@@ -6639,7 +6640,7 @@ export class ItemDefinitionTriggeredEvent {
 export class ItemDurabilityComponent {
     protected constructor();
     /**
-     * 返回物品当前的（剩余）耐久。
+     * 物品当前的（剩余）耐久。
      * 
      * Returns the current damage level of this particular item.
      */
@@ -6667,27 +6668,27 @@ export class ItemDurabilityComponent {
     static readonly componentId = 'minecraft:durability';
     /**
      * @remarks
-     * 返回根据damageRange属性生成的最大损坏概率，
+     * 返回根据 `damageRange` 属性生成的最大损坏概率，
      * 附带一个耐久附魔等级作为可选参数。
      * 
      * Returns the maximum chance that this item would be damaged
      * using the damageRange property, given an unbreaking level.
      * @param unbreaking
      * 耐久附魔等级，在计算损坏概率时受到此参数的影响。
-     * 传入的`unbreaking`参数必须大于等于0。
+     * 传入的 `unbreaking` 参数必须大于等于0。
      * 
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be greater than
      * 0.
      * @returns 使用时的最大损坏概率。
      * @throws
-     * 若`unbreaking`参数小于0，抛出 TypeError`"Unsupported or out of bounds value passed to function argument [0]"` 。
+     * 若 `unbreaking` 参数小于0，抛出 `TypeError` 。
      */
     getDamageChance(unbreaking?: number): number;
 }
 /**
  * @beta
- * 当出现在物品上时，表示物品上的附魔效果。
+ * 表示物品魔咒组件。当出现在物品上时，可以操作物品上的魔咒。
  * 
  * When present on an item, this item has applied enchantment
  * effects. Note that this component only applies to
@@ -6696,7 +6697,7 @@ export class ItemDurabilityComponent {
 export class ItemEnchantsComponent {
     protected constructor();
     /**
-     * 返回该物品组上的附魔集合。
+     * 返回该物品组上的魔咒集合。
      * 
      * Returns a collection of the enchantments applied to this
      * item stack.
@@ -6710,8 +6711,7 @@ export class ItemEnchantsComponent {
     static readonly componentId = 'minecraft:enchantments';
     /**
      * @remarks
-     * 移除该物品组上的所有附魔。
-     * 注意，1.19.51（实测版本）有bug，使用该函数无效。
+     * 移除该物品组上的所有魔咒。
      * 
      * Removes all enchantments applied to this item stack.
      */
@@ -6719,7 +6719,7 @@ export class ItemEnchantsComponent {
 }
 /**
  * @beta
- * 当出现在物品上时，物品可以被实体使用掉。
+ * 表示物品食物组件。当出现在物品上时，实体可以消耗此物品。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 
  * When present on an item, this item is consumable by
@@ -6729,24 +6729,22 @@ export class ItemEnchantsComponent {
 export class ItemFoodComponent {
     protected constructor();
     /**
-     * 若为true，则无论是否饥饿，玩家始终可以食用该物品
+     * 若为 `true` ，则无论是否饥饿，玩家始终可以食用该物品。
      * 
      * If true, the player can always eat this item (even when not
      * hungry).
-     * @throws This property can throw when used.
      */
     readonly canAlwaysEat: boolean;
     /**
-     * 表示该物品在食用后恢复的饥饿值，即营养值。
+     * 表示在食用该物品后恢复的饥饿值，即营养值。
      * 
      * Represents how much nutrition this food item will give an
      * entity when eaten.
-     * @throws This property can throw when used.
      */
     readonly nutrition: number;
     /**
      * 当一个物品被食用，
-     * 将根据公式（nutrition属性 * saturation_modifier属性 * 2）
+     * 将根据公式（ `nutrition` * `saturation_modifier` * 2）
      * 来为玩家添加饱和状态。
      * 
      * When an item is eaten, this value is used according to this
@@ -6755,7 +6753,7 @@ export class ItemFoodComponent {
      */
     readonly saturationModifier: number;
     /**
-     * 如果被指定，转换成一个作为标识符指定的物品。
+     * 若给出，则将该物品转换为标识符指定的物品。
      * 
      * When specified, converts the active item to the one
      * specified by this property.
