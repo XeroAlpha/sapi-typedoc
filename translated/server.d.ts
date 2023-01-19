@@ -14935,7 +14935,7 @@ export class World {
      * 获取由 `identifier` 指定的世界中已定义的动态属性的值。
      * 
      * Returns a property value.
-     * @param identifier
+     * @param identifier 动态属性的标识符。
      * @returns 返回动态属性 `identifier` 的值。属性的值尚未设定时，返回 `undefined`。
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
@@ -15004,7 +15004,7 @@ export class World {
      * 重置由 `identifier` 指定的世界动态属性。
      *
      * Removes a specified property.
-     * @param identifier
+     * @param identifier 动态属性的标识符。
      * @returns 若动态属性 `identifier` 在注册后尚未被设置过值，返回 `false`。否则返回 `true`，即使曾经调用过此方法重置动态属性 `identifier` 的值（需要更多测试）。
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
