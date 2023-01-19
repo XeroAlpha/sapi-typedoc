@@ -2974,7 +2974,7 @@ export class DirectionBlockProperty extends IBlockProperty {
 }
 /**
  * @beta
- * 此类型用于定义一系列动态属性。能够与 {@link PropertyRegistry} 结合使用，在实体或世界上定义动态属性。一个 {@link PropertyRegistry} 可从 {@link WorldInitializeEvent.propertyRegistry} 获取。
+ * 此类型用于定义一系列动态属性。能够与 {@link PropertyRegistry} 结合使用，在实体或世界上定义动态属性。一个 “{@link PropertyRegistry} 对象” 可从 {@link WorldInitializeEvent.propertyRegistry} 获取。
  *
  * Class used in conjunction with {@link PropertyRegistry} to
  * define dynamic properties that can be used on entities of a
@@ -3004,6 +3004,12 @@ export class DynamicPropertiesDefinition {
     /**
      * @remarks
      * 增加一个字符串类型的动态属性定义。
+     *
+     * 字符串的长度 `maxLength` 有着如下限制。
+     *
+     * 在实体类型上的限制是这样计算的：设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，允许使用的最大长度为 `allocateMaxLength = 998 - a`。
+     *
+     * 在世界中的限制是这样计算的：设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许使用的最大长度为 `allocateMaxLength = 9998 - a`。
      *
      * Defines a new string dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
@@ -13723,9 +13729,8 @@ export class Player extends Entity {
      * @beta
      * @remarks
      * Sets a specified property to a value.
-     * @param identifier
-     * @param value
-     * Data value of the property to set.
+     * @param identifier 动态属性的标识符。
+     * @param value 要设定的值，值的类型必须与动态属性注册的类型相同。
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
      *
@@ -14141,14 +14146,14 @@ export class PropertyRegistry {
     protected constructor();
     /**
      * @remarks
-     * 为实体类型注册动态属性（例如：`minecraft:skeleton`）。
+     * 为特定实体类型注册动态属性。
      *
      * Registers a dynamic property for a particular entity type
      * (e.g., a minecraft:skeleton.).
      * @param propertiesDefinition 将要为实体定义的一系列动态属性。
      * @param entityType 实体类型。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b = 998 - a`。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength = a + b + 2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
+     * 若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且大小超出了限制，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
      */
     registerEntityTypeDynamicProperties(
         propertiesDefinition: DynamicPropertiesDefinition,
@@ -14161,7 +14166,7 @@ export class PropertyRegistry {
      * Registers a globally available dynamic property for a world.
      * @param propertiesDefinition 将要为世界定义的一系列动态属性。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b = 9998 - a`。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength = a + b + 2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/10000) for 'World'"`。
+     * 若尝试在世界中注册字符串类型的动态属性，且大小超出了限制，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
@@ -14915,7 +14920,7 @@ export class World {
      * 获取一个包含了游戏中所有玩家的对象的数组。
      * 
      * Returns an array of all active players within the world.
-     * @returns 返回的数组中包含代表了游戏中每个玩家的对象。
+     * @returns 返回一个包含着游戏中所有玩家的对象的数组。
      */
     getAllPlayers(): Player[];
     /**
@@ -14924,9 +14929,13 @@ export class World {
      *
      * Returns a dimension object.
      * @param dimensionId 要获取的维度的标识符。
+     *
+     * The requested dimension
      * @returns 与 `dimensionId` 关联的维度对象。
      * @throws
      * 若 `dimensionId` 不与维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
+     *
+     * Throws if the given dimension name is invalid
      */
     getDimension(dimensionId: string): Dimension;
     /**
@@ -14947,11 +14956,16 @@ export class World {
      * 获取世界上的玩家。
      *
      * Returns all players currently in the world.
-     * @param options 可选的参数，用作于筛选指定条件的玩家。
-     * 注意，您不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
-     * @returns 一个能够获取到世界中所有玩家的可迭代对象。
+     * @param options
+     * 可选的参数，用作于筛选指定条件的玩家。
+     *
+     * 注意，不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
+     * @returns 一个能够获取到世界中所有玩家的可迭代迭代器。
+     *
      * 若指定了用作筛选玩家的 `options` 参数，则返回一个能够
-     * 获取到世界中满足筛选条件的玩家的可迭代对象。
+     * 获取到世界中满足筛选条件的玩家的可迭代迭代器。
+     *
+     * All players currently in the world.
      * @throws
      * 若向 `options` 传入的对象含有 `type` 属性，抛出 `"command.generic.invalidPlayerType"`。
      * 
@@ -14961,10 +14975,10 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获得一天里的当前时间。
+     * 返回当前一天中的时间。
      *
      * Sets the current game time of the day.
-     * @returns 一天里的时间，以刻为单位，为 `0` 至 `23999` 之间的整数。
+     * @returns 当前一天中的时间，以刻为单位，为 `0` 至 `23999` 之间的整数。
      */
     getTime(): number;
     /**
@@ -15039,10 +15053,8 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 设置一天的当前时间（需要验证）。
-     *
      * Returns the current game time of the day.
-     * @param timeOfDay 要设置的昼夜时间。
+     * @param timeOfDay
      */
     setTime(timeOfDay: number): void;
     /**
