@@ -14962,10 +14962,10 @@ export class World {
      * 可选的参数，用作于筛选指定条件的玩家。
      *
      * 注意，不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
-     * @returns 一个能够获取到世界中所有玩家的可迭代迭代器。
+     * @returns
+     * 一个能够获取到世界中所有玩家的可迭代迭代器。
      *
-     * 若指定了用作筛选玩家的 `options` 参数，则返回一个能够
-     * 获取到世界中满足筛选条件的玩家的可迭代迭代器。
+     * 若指定了用作筛选玩家的 `options` 参数，则返回一个能够获取到世界中满足筛选条件的玩家的可迭代迭代器。
      *
      * All players currently in the world.
      * @throws
