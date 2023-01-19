@@ -2974,7 +2974,7 @@ export class DirectionBlockProperty extends IBlockProperty {
 }
 /**
  * @beta
- * 此类型用于定义一系列动态属性。能够与 `{@link PropertyRegistry}` 结合使用，在实体或世界上定义动态属性。一个 `{@link PropertyRegistry}` 可从 `{@link WorldInitializeEvent.propertyRegistry}` 获取。
+ * 此类型用于定义一系列动态属性。能够与 {@link PropertyRegistry} 结合使用，在实体或世界上定义动态属性。一个 {@link PropertyRegistry} 可从 {@link WorldInitializeEvent.propertyRegistry} 获取。
  *
  * Class used in conjunction with {@link PropertyRegistry} to
  * define dynamic properties that can be used on entities of a
@@ -2988,7 +2988,7 @@ export class DynamicPropertiesDefinition {
      * Defines a new boolean dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
+     * 若此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineBoolean(identifier: string): void;
     /**
@@ -2998,7 +2998,7 @@ export class DynamicPropertiesDefinition {
      * Defines a new number dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
+     * 若此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineNumber(identifier: string): void;
     /**
@@ -3007,9 +3007,9 @@ export class DynamicPropertiesDefinition {
      *
      * Defines a new string dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
-     * @param maxLength 字符串在编码为 UTF-8 后的最大字节长度。（需要验证）
+     * @param maxLength 字符串在编码为 UTF-8 后允许的最大字节长度（需要验证）。
      * @throws
-     * 如果此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
+     * 若此对象中已经增加了与 `identifier` 拥有相同标识符的动态属性，抛出 `"A dynamic property with identifier '<identifier>' has already been defined"`。
      */
     defineString(identifier: string, maxLength: number): void;
 }
@@ -3484,7 +3484,7 @@ export class Entity {
      * @param identifier
      * @param value
      * Data value of the property to set.
-     * @throws this function can throw errors.
+     * @throws This function can throw errors.
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -13727,8 +13727,10 @@ export class Player extends Entity {
      * @param value
      * Data value of the property to set.
      * @throws
-     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
+     *
      * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
+     *
      * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所设置的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
@@ -14146,7 +14148,7 @@ export class PropertyRegistry {
      * @param propertiesDefinition 将要为实体定义的一系列动态属性。
      * @param entityType 实体类型。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b=998-a`。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength=a+b+2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b = 998 - a`。若尝试为实体类型 `entityType` 注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength = a + b + 2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/1000) for '<entityTypeId>'"`。
      */
     registerEntityTypeDynamicProperties(
         propertiesDefinition: DynamicPropertiesDefinition,
@@ -14159,7 +14161,7 @@ export class PropertyRegistry {
      * Registers a globally available dynamic property for a world.
      * @param propertiesDefinition 将要为世界定义的一系列动态属性。
      * @throws
-     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度`b=9998-a`。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength=a+b+2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/10000) for 'World'"`。
+     * 设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，则允许的最大长度 `b = 9998 - a`。若尝试在世界中注册字符串类型的动态属性，且属性的值最大长度大于 `b`，计算 `totalMaxLength = a + b + 2`，抛出 `"Dynamic property size limit exceeded (<totalMaxLength>/10000) for 'World'"`。
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
@@ -14934,7 +14936,7 @@ export class World {
      * 
      * Returns a property value.
      * @param identifier
-     * @returns 返回动态属性 `identifier` 的值。如果属性的值尚未设定，返回 `undefined`。
+     * @returns 返回动态属性 `identifier` 的值。属性的值尚未设定时，返回 `undefined`。
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
      */
@@ -14959,10 +14961,10 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 获得游戏一天中的当前时间。
+     * 获得一天里的当前时间。
      *
      * Sets the current game time of the day.
-     * @returns 一天中的时间，以刻为单位，为 `0` 至 `23999` 之间的整数。
+     * @returns 一天里的时间，以刻为单位，为 `0` 至 `23999` 之间的整数。
      */
     getTime(): number;
     /**
@@ -14971,8 +14973,8 @@ export class World {
      * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
      *
      * Plays a particular music track for all players.
-     * @param trackID 声音项目的 ID，要求声音项目的类别为音乐（`category: music`）。
-     * @param musicOptions 播放音乐使用的额外参数。
+     * @param trackID 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
+     * @param musicOptions 可选，指定播放音乐使用的附加参数。
      */
     playMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
@@ -14981,8 +14983,8 @@ export class World {
      * 向玩家播放一段声音。
      *
      * Plays a sound for all players.
-     * @param soundID 声音项目的 ID。
-     * @param soundOptions 播放声音的附加参数。
+     * @param soundID 声音项目的标识符。
+     * @param soundOptions 可选，指定播放声音使用的附加参数。
      */
     playSound(soundID: string, soundOptions?: SoundOptions): void;
     /**
@@ -14992,8 +14994,8 @@ export class World {
      *
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
-     * @param trackID 声音项目的 ID，要求声音项目的类别为音乐（`category: music`）。
-     * @param musicOptions 播放音乐使用的额外参数。
+     * @param trackID 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
+     * @param musicOptions 可选，指定播放音乐使用的附加参数。
      */
     queueMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
@@ -15015,7 +15017,7 @@ export class World {
      *
      * Broadcasts a message that is displayed on all connected
      * clients.
-     * @param message 将要广播的消息，可能是一段字符串，或者符合 `RawMessage` 接口的对象，或是这两种类型的组合。
+     * @param message 将要广播的一段消息。这段消息可能是一段字符串，或者符合 `RawMessage` 接口的对象，（需要验证）或是这两种类型的组合。
      */
     say(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -15037,7 +15039,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 设置游戏的一天的当前时间。
+     * 设置一天的当前时间（需要验证）。
      *
      * Returns the current game time of the day.
      * @param timeOfDay 要设置的昼夜时间。
@@ -15046,7 +15048,7 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 停止客户端中正在播放的所有音乐曲目。（需要更多测试）
+     * 停止客户端中正在播放的所有音乐曲目（需要更多测试）。
      * 
      * Stops any music tracks from playing.
      */
