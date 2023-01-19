@@ -14930,8 +14930,10 @@ export class World {
      * Returns a dimension object.
      * @param dimensionId 要获取的维度的标识符。
      *
+     * @returns
+     * 与 `dimensionId` 关联的维度对象。
+     * 
      * The requested dimension
-     * @returns 与 `dimensionId` 关联的维度对象。
      * @throws
      * 若 `dimensionId` 不与维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
      *
