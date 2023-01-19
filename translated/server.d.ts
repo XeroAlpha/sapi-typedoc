@@ -14935,7 +14935,7 @@ export class World {
      * 
      * The requested dimension
      * @throws
-     * 若 `dimensionId` 不与维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
+     * 若 `dimensionId` 不与任何维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
      *
      * Throws if the given dimension name is invalid
      */
