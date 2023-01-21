@@ -4,7 +4,7 @@
 
 在线网页：[https://projectxero.top/sapi/](https://projectxero.top/sapi/)
 
-d.ts 文件来源：[NPM组织 @minecraft](https://www.npmjs.com/search?q=%40minecraft)
+d.ts 文件来源：[NPM @minecraft](https://www.npmjs.com/search?q=%40minecraft)
 
 网页生成器：[typedoc](https://typedoc.org/)
 

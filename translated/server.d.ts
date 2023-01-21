@@ -7378,6 +7378,8 @@ export class MessageReceiveEvent {
 }
 /**
  * @beta
+ * 表示 Minecraft 原版与教育版已注册的方块类型的集合。
+ * 
  * Contains definitions of standard Minecraft and Minecraft
  * Education Edition block types.
  */
@@ -7385,3080 +7387,4700 @@ export class MessageReceiveEvent {
 export class MinecraftBlockTypes {
     protected constructor();
     /**
+     * 金合欢木按钮。
+     * 
      * Represents an acacia button within Minecraft.
      */
     static readonly acaciaButton: BlockType;
     /**
+     * 金合欢木门。
+     * 
      * Represents an acacia door within Minecraft.
      */
     static readonly acaciaDoor: BlockType;
     /**
+     * 金合欢木栅栏门。
+     * 
      * Represents an acacia fence gate within Minecraft.
      */
     static readonly acaciaFenceGate: BlockType;
+    /**
+     * 悬挂式金合欢木告示牌。
+     */
     static readonly acaciaHangingSign: BlockType;
     /**
+     * 金合欢木压力板。
+     * 
      * Represents an acacia pressure plate within Minecraft.
      */
     static readonly acaciaPressurePlate: BlockType;
     /**
+     * 金合欢木楼梯。
+     * 
      * Represents a set of acacia stairs within Minecraft.
      */
     static readonly acaciaStairs: BlockType;
     /**
+     * 金合欢木告示牌。
+     * 
      * Represents an acacia standing sign within Minecraft.
      */
     static readonly acaciaStandingSign: BlockType;
     /**
+     * 金合欢木活板门。
+     * 
      * Represents an acacia trapdoor within Minecraft.
      */
     static readonly acaciaTrapdoor: BlockType;
     /**
+     * 墙上的金合欢木告示牌。
+     * 
      * Represents an acacia wall sign within Minecraft.
      */
     static readonly acaciaWallSign: BlockType;
     /**
+     * 激活铁轨。
+     * 
      * Represents an activator rail within Minecraft.
      */
     static readonly activatorRail: BlockType;
     /**
+     * 空气。
+     * 
      * Represents an empty space (air) within Minecraft.
      */
     static readonly air: BlockType;
     /**
+     * 允许方块。
+     * 
      * Represents an allow block within Minecraft.
      */
     static readonly allow: BlockType;
     /**
+     * 紫水晶块。
+     * 
      * Represents an amethyst block within Minecraft.
      */
     static readonly amethystBlock: BlockType;
     /**
+     * 紫水晶簇。
+     * 
      * Represents a cluster of amethyst within Minecraft.
      */
     static readonly amethystCluster: BlockType;
     /**
+     * 远古残骸。
+     * 
      * Represents ancient debris within Minecraft.
      */
     static readonly ancientDebris: BlockType;
     /**
+     * 安山岩楼梯。
+     * 
      * Represents andesite stairs within Minecraft.
      */
     static readonly andesiteStairs: BlockType;
     /**
+     * 铁砧。
+     * 
      * Represents an anvil within Minecraft.
      */
     static readonly anvil: BlockType;
     /**
+     * 杜鹃花丛。
+     * 
      * Represents an azalea flowering plant within Minecraft.
      */
     static readonly azalea: BlockType;
     /**
+     * 杜鹃树叶。
+     * 
      * Represents azalea leaves within Minecraft.
      */
     static readonly azaleaLeaves: BlockType;
     /**
+     * 盛开的杜鹃树叶。
+     * 
      * Represents flowered azalea leaves within Minecraft.
      */
     static readonly azaleaLeavesFlowered: BlockType;
     /**
+     * 竹子。
+     * 
      * Represents a bamboo tree within Minecraft.
      */
     static readonly bamboo: BlockType;
+    /**
+     * 竹块。
+     */
     static readonly bambooBlock: BlockType;
+    /**
+     * 竹按钮。
+     */
     static readonly bambooButton: BlockType;
+    /**
+     * 竹门。
+     */
     static readonly bambooDoor: BlockType;
+    /**
+     * 双层竹台阶。
+     */
     static readonly bambooDoubleSlab: BlockType;
+    /**
+     * 竹栅栏。
+     */
     static readonly bambooFence: BlockType;
+    /**
+     * 竹栅栏门。
+     */
     static readonly bambooFenceGate: BlockType;
+    /**
+     * 悬挂式竹告示牌。
+     */
     static readonly bambooHangingSign: BlockType;
+    /**
+     * 竹马赛克。
+     */
     static readonly bambooMosaic: BlockType;
+    /**
+     * 双层竹马赛克台阶。
+     */
     static readonly bambooMosaicDoubleSlab: BlockType;
+    /**
+     * 竹马赛克台阶。
+     */
     static readonly bambooMosaicSlab: BlockType;
+    /**
+     * 竹马赛克楼梯。
+     */
     static readonly bambooMosaicStairs: BlockType;
+    /**
+     * 竹板。
+     */
     static readonly bambooPlanks: BlockType;
+    /**
+     * 竹压力板。
+     */
     static readonly bambooPressurePlate: BlockType;
     /**
+     * 竹笋。
+     * 
      * Represents a bamboo sapling within Minecraft.
      */
     static readonly bambooSapling: BlockType;
+    /**
+     * 竹台阶。
+     */
     static readonly bambooSlab: BlockType;
+    /**
+     * 竹楼梯。
+     */
     static readonly bambooStairs: BlockType;
+    /**
+     * 竹告示牌。
+     */
     static readonly bambooStandingSign: BlockType;
+    /**
+     * 竹活板门。
+     */
     static readonly bambooTrapdoor: BlockType;
+    /**
+     * 墙上的竹告示牌。
+     */
     static readonly bambooWallSign: BlockType;
     /**
+     * 木桶。
+     * 
      * Represents a barrel within Minecraft.
      */
     static readonly barrel: BlockType;
     /**
+     * 屏障。
+     * 
      * Represents an invisible but logical barrier within
      * Minecraft.
      */
     static readonly barrier: BlockType;
     /**
+     * 玄武岩。
+     * 
      * Represents a basalt block within Minecraft.
      */
     static readonly basalt: BlockType;
     /**
+     * 信标。
+     * 
      * Represents a beacon within Minecraft.
      */
     static readonly beacon: BlockType;
     /**
+     * 床。
+     * 
      * Represents a bed within Minecraft.
      */
     static readonly bed: BlockType;
     /**
+     * 基岩。
+     * 
      * Represents a bedrock block within Minecraft.
      */
     static readonly bedrock: BlockType;
     /**
+     * 蜂箱。
+     * 
      * Represents a beehive within Minecraft.
      */
     static readonly beehive: BlockType;
     /**
+     * 蜂巢。
+     * 
      * Represents a bee nest within Minecraft.
      */
     static readonly beeNest: BlockType;
     /**
+     * 甜菜根。
+     * 
      * Represents a beetroot vegetable within Minecraft.
      */
     static readonly beetroot: BlockType;
     /**
+     * 钟。
+     * 
      * Represents a bell within Minecraft.
      */
     static readonly bell: BlockType;
     /**
+     * 大型垂滴叶。
+     * 
      * Represents a big dripleaf plant within Minecraft.
      */
     static readonly bigDripleaf: BlockType;
     /**
+     * 白桦木按钮。
+     * 
      * Represents a birch button within Minecraft.
      */
     static readonly birchButton: BlockType;
     /**
+     * 白桦木门。
+     * 
      * Represents a birch door within Minecraft.
      */
     static readonly birchDoor: BlockType;
     /**
+     * 白桦木栅栏门。
+     * 
      * Represents a birch fence gate within Minecraft.
      */
     static readonly birchFenceGate: BlockType;
+    /**
+     * 悬挂式白桦木告示牌。
+     */
     static readonly birchHangingSign: BlockType;
     /**
+     * 白桦木压力板。
+     * 
      * Represents a birch pressure plate within Minecraft.
      */
     static readonly birchPressurePlate: BlockType;
     /**
+     * 白桦木楼梯。
+     * 
      * Represents a birch stairs block within Minecraft.
      */
     static readonly birchStairs: BlockType;
     /**
+     * 白桦木告示牌。
+     * 
      * Represents a birch standing sign within Minecraft.
      */
     static readonly birchStandingSign: BlockType;
     /**
+     * 白桦木活板门。
+     * 
      * Represents a birch trapdoor within Minecraft.
      */
     static readonly birchTrapdoor: BlockType;
     /**
+     * 墙上的白桦木告示牌。
+     * 
      * Represents a birch wall sign within Minecraft.
      */
     static readonly birchWallSign: BlockType;
     /**
+     * 黑色蜡烛。
+     * 
      * Represents a black candle within Minecraft.
      */
     static readonly blackCandle: BlockType;
     /**
+     * 插上黑色蜡烛的蛋糕。
+     * 
      * Represents a black candle cake within Minecraft.
      */
     static readonly blackCandleCake: BlockType;
     /**
+     * 黑色带釉陶瓦。
+     * 
      * Represents a black glazed terracotta block within Minecraft.
      */
     static readonly blackGlazedTerracotta: BlockType;
     /**
+     * 黑石。
+     * 
      * Represents a blackstone block within Minecraft.
      */
     static readonly blackstone: BlockType;
     /**
+     * 双层黑石台阶。
+     * 
      * Represents a blackstone double slab within Minecraft.
      */
     static readonly blackstoneDoubleSlab: BlockType;
     /**
+     * 黑石台阶。
+     * 
      * Represents a blackstone slab within Minecraft.
      */
     static readonly blackstoneSlab: BlockType;
     /**
+     * 黑石楼梯。
+     * 
      * Represents blackstone stairs within Minecraft.
      */
     static readonly blackstoneStairs: BlockType;
     /**
+     * 黑石墙。
+     * 
      * Represents a blackstone wall within Minecraft.
      */
     static readonly blackstoneWall: BlockType;
     /**
+     * 高炉。
+     * 
      * Represents a blast furnace within Minecraft.
      */
     static readonly blastFurnace: BlockType;
     /**
+     * 蓝色蜡烛。
+     * 
      * Represents a blue candle within Minecraft.
      */
     static readonly blueCandle: BlockType;
     /**
+     * 插上蓝色蜡烛的蛋糕。
+     * 
      * Represents a blue candle cake within Minecraft.
      */
     static readonly blueCandleCake: BlockType;
     /**
+     * 蓝色带釉陶瓦。
+     * 
      * Represents a blue glazed terracotta block within Minecraft.
      */
     static readonly blueGlazedTerracotta: BlockType;
     /**
+     * 蓝冰。
+     * 
      * Represents a blue ice block within Minecraft.
      */
     static readonly blueIce: BlockType;
     /**
+     * 骨块。
+     * 
      * Represents a bone block within Minecraft.
      */
     static readonly boneBlock: BlockType;
     /**
+     * 书架。
+     * 
      * Represents an unbreakable border block within Minecraft.
      */
     static readonly bookshelf: BlockType;
     /**
+     * 边界。
+     * 
      * Represents a border block within Minecraft.
      */
     static readonly borderBlock: BlockType;
     /**
+     * 酿造台。
+     * 
      * Represents a brewing stand within Minecraft.
      */
     static readonly brewingStand: BlockType;
     /**
+     * 红砖块。
+     * 
      * Represents a block of brick within Minecraft.
      */
     static readonly brickBlock: BlockType;
     /**
+     * 红砖楼梯。
+     * 
      * Represents brick stairs within Minecraft.
      */
     static readonly brickStairs: BlockType;
     /**
+     * 棕色蜡烛。
+     * 
      * Represents a brown candle within Minecraft.
      */
     static readonly brownCandle: BlockType;
     /**
+     * 插上棕色蜡烛的蛋糕。
+     * 
      * Represents a brown candle cake within Minecraft.
      */
     static readonly brownCandleCake: BlockType;
     /**
+     * 棕色带釉陶瓦。
+     * 
      * Represents a brown glazed terracotta block within Minecraft.
      */
     static readonly brownGlazedTerracotta: BlockType;
     /**
+     * 棕色蘑菇。
+     * 
      * Represents a brown mushroom within Minecraft.
      */
     static readonly brownMushroom: BlockType;
     /**
+     * 棕色蘑菇方块。
+     * 
      * Represents a block of brown mushroom within Minecraft.
      */
     static readonly brownMushroomBlock: BlockType;
     /**
+     * 气泡柱。
+     * 
      * Represents a column of bubbles within Minecraft.
      */
     static readonly bubbleColumn: BlockType;
     /**
+     * 紫水晶母岩。
+     * 
      * Represents a block of budding amethyst within Minecraft.
      */
     static readonly buddingAmethyst: BlockType;
     /**
+     * 仙人掌。
+     * 
      * Represents a cactus within Minecraft.
      */
     static readonly cactus: BlockType;
     /**
+     * 蛋糕。
+     * 
      * Represents a cake within Minecraft.
      */
     static readonly cake: BlockType;
     /**
+     * 方解石。
+     * 
      * Represents a calcite block within Minecraft.
      */
     static readonly calcite: BlockType;
     /**
+     * 相机。
+     * 
      * Represents a camera within Minecraft Education Edition. It
      * is not available in Minecraft Bedrock Edition.
      */
     static readonly camera: BlockType;
     /**
+     * 营火。
+     * 
      * Represents a campfire within Minecraft.
      */
     static readonly campfire: BlockType;
     /**
+     * 蜡烛。
+     * 
      * Represents a candle within Minecraft.
      */
     static readonly candle: BlockType;
     /**
+     * 插上蜡烛的蛋糕。
+     * 
      * Represents a cake with candles within Minecraft.
      */
     static readonly candleCake: BlockType;
     /**
+     * 地毯。
+     * 
      * Represents a carpet within Minecraft.
      */
     static readonly carpet: BlockType;
     /**
+     * 胡萝卜。
+     * 
      * Represents carrots within Minecraft.
      */
     static readonly carrots: BlockType;
     /**
+     * 制图台。
+     * 
      * Represents a cartography table block within Minecraft.
      */
     static readonly cartographyTable: BlockType;
     /**
+     * 雕刻过的南瓜。
+     * 
      * Represents a carved pumpkin within Minecraft.
      */
     static readonly carvedPumpkin: BlockType;
     /**
+     * 炼药锅。
+     * 
      * Represents a cauldron within Minecraft.
      */
     static readonly cauldron: BlockType;
     /**
+     * 洞穴藤蔓。
+     * 
      * Represents a set of cave vines within Minecraft.
      */
     static readonly caveVines: BlockType;
     /**
+     * 洞穴藤蔓植株。
+     * 
      * Represents the body of a set of cave vines with berries
      * within Minecraft.
      */
     static readonly caveVinesBodyWithBerries: BlockType;
     /**
+     * 洞穴藤蔓植株。
+     * 
      * Represents the head of a set of cave vines with berries
      * within Minecraft.
      */
     static readonly caveVinesHeadWithBerries: BlockType;
     /**
+     * 锁链。
+     * 
      * Represents a metallic chain within Minecraft.
      */
     static readonly chain: BlockType;
     /**
+     * 连锁型命令方块。
+     * 
      * Represents a block that gives off heat but not light, within
      * Minecraft Education Edition or Bedrock Edition with
      * Education features.
      */
     static readonly chainCommandBlock: BlockType;
     /**
+     * 加热块。
+     * 
      * Represents a chemical heat block within Minecraft.
      */
     static readonly chemicalHeat: BlockType;
     /**
+     * 化合物创建器/材料分解器/元素构造器/实验台。
+     * 
      * Represents a chemistry table within Minecraft Education
      * experiences.
      */
     static readonly chemistryTable: BlockType;
     /**
+     * 箱子。
+     * 
      * Represents a chest within Minecraft.
      */
     static readonly chest: BlockType;
+    /**
+     * 雕纹书架。
+     */
     static readonly chiseledBookshelf: BlockType;
     /**
+     * 雕纹深板岩。
+     * 
      * Represents a set of chiseled deepslate within Minecraft.
      */
     static readonly chiseledDeepslate: BlockType;
     /**
+     * 雕纹下界砖块。
+     * 
      * Represents a block of chiseled nether bricks within
      * Minecraft.
      */
     static readonly chiseledNetherBricks: BlockType;
     /**
+     * 雕纹磨制黑石。
+     * 
      * Represents a block of chiseled polished blackstone within
      * Minecraft.
      */
     static readonly chiseledPolishedBlackstone: BlockType;
     /**
+     * 紫颂花。
+     * 
      * Represents a chorus flower within Minecraft.
      */
     static readonly chorusFlower: BlockType;
     /**
+     * 紫颂植株。
+     * 
      * Represents a chorus plant within Minecraft.
      */
     static readonly chorusPlant: BlockType;
     /**
+     * 黏土块。
+     * 
      * Represents a block of clay within Minecraft.
      */
     static readonly clay: BlockType;
     static readonly clientRequestPlaceholderBlock: BlockType;
     /**
+     * 煤炭块。
+     * 
      * Represents a block of solid coal within Minecraft.
      */
     static readonly coalBlock: BlockType;
     /**
+     * 煤矿石。
+     * 
      * Represents a block with embedded coal ore within Minecraft.
      */
     static readonly coalOre: BlockType;
     /**
+     * 深板岩圆石。
+     * 
      * Represents a block of cobbled deepslate within Minecraft.
      */
     static readonly cobbledDeepslate: BlockType;
     /**
+     * 双层深板岩圆石台阶。
+     * 
      * Represents a double slab of cobbled deepslate within
      * Minecraft.
      */
     static readonly cobbledDeepslateDoubleSlab: BlockType;
     /**
+     * 深板岩圆石台阶。
+     * 
      * Represents a slab of deepslate within Minecraft.
      */
     static readonly cobbledDeepslateSlab: BlockType;
     /**
+     * 深板岩圆石楼梯。
+     * 
      * Represents cobbled deepslate stairs within Minecraft.
      */
     static readonly cobbledDeepslateStairs: BlockType;
     /**
+     * 深板岩圆石墙。
+     * 
      * Represents a cobbled deepslate wall within Minecraft.
      */
     static readonly cobbledDeepslateWall: BlockType;
     /**
+     * 圆石。
+     * 
      * Represents a block of cobblestone within Minecraft.
      */
     static readonly cobblestone: BlockType;
     /**
+     * 圆石墙/苔石墙/花岗岩墙/闪长岩墙/安山岩墙/砂岩墙/红砖墙/石砖墙/苔石砖墙/末地石砖墙/下界砖墙/海晶石墙/红砂岩墙/红色下界砖墙。
+     * 
      * Represents a wall of cobblestone within Minecraft.
      */
     static readonly cobblestoneWall: BlockType;
     /**
+     * 可可果。
+     * 
      * Represents a set of cocoa beans (typically on a tree) within
      * Minecraft.
      */
     static readonly cocoa: BlockType;
     /**
+     * 蓝色火把/紫色火把。
+     * 
      * Represents blue/purple torches within Minecraft.
      */
     static readonly coloredTorchBp: BlockType;
     /**
+     * 红色火把/绿色火把。
+     * 
      * Represents red/green torches within Minecraft.
      */
     static readonly coloredTorchRg: BlockType;
     /**
+     * 命令方块。
+     * 
      * Represents a block that can run commands within Minecraft.
      */
     static readonly commandBlock: BlockType;
     /**
+     * 堆肥桶。
+     * 
      * Represents a composter block within Minecraft.
      */
     static readonly composter: BlockType;
     /**
+     * 混凝土。
+     * 
      * Represents a block of concrete powder within Minecraft.
      */
     static readonly concrete: BlockType;
     /**
+     * 混凝土粉末。
+     * 
      * Represents a block of concrete powder within Minecraft.
      */
     static readonly concretePowder: BlockType;
     /**
+     * 潮涌核心。
+     * 
      * Represents a conduit block within Minecraft.
      */
     static readonly conduit: BlockType;
     /**
+     * 铜块。
+     * 
      * Represents a solid block of copper within Minecraft.
      */
     static readonly copperBlock: BlockType;
     /**
+     * 铜矿石。
+     * 
      * Represents a block with embedded copper ore within
      * Minecraft.
      */
     static readonly copperOre: BlockType;
     /**
+     * 珊瑚。
+     * 
      * Represents coral within Minecraft.
      */
     static readonly coral: BlockType;
     /**
+     * 珊瑚块。
+     * 
      * Represents a solid block of coral within Minecraft.
      */
     static readonly coralBlock: BlockType;
     /**
+     * 珊瑚扇。
+     * 
      * Represents a fan formation of coral within Minecraft.
      */
     static readonly coralFan: BlockType;
     /**
+     * 失活的珊瑚扇。
+     * 
      * Represents a fan formation of dead coral within Minecraft.
      */
     static readonly coralFanDead: BlockType;
     /**
+     * 墙上的珊瑚扇。
+     * 
      * Represents a hanging fan formation of coral within
      * Minecraft.
      */
     static readonly coralFanHang: BlockType;
     /**
+     * 墙上的珊瑚扇。
+     * 
      * Represents an alternate hanging fan formation of coral (#2)
      * within Minecraft.
      */
     static readonly coralFanHang2: BlockType;
     /**
+     * 墙上的珊瑚扇。
+     * 
      * Represents an alternate hanging fan formation of coral (#3)
      * within Minecraft.
      */
     static readonly coralFanHang3: BlockType;
     /**
+     * 裂纹深板岩砖。
+     * 
      * Represents a block of cracked deepslate bricks within
      * Minecraft.
      */
     static readonly crackedDeepslateBricks: BlockType;
     /**
+     * 裂纹深板岩瓦。
+     * 
      * Represents tiles of cracked deepslate within Minecraft.
      */
     static readonly crackedDeepslateTiles: BlockType;
     /**
+     * 裂纹下界砖块。
+     * 
      * Represents a block of cracked nether bricks within
      * Minecraft.
      */
     static readonly crackedNetherBricks: BlockType;
     /**
+     * 裂纹磨制黑石砖。
+     * 
      * Represents a block of cracked and polished blackstone bricks
      * within Minecraft.
      */
     static readonly crackedPolishedBlackstoneBricks: BlockType;
     /**
+     * 工作台。
+     * 
      * Represents a crafting table within Minecraft.
      */
     static readonly craftingTable: BlockType;
     /**
+     * 绯红木按钮。
+     * 
      * Represents a crimson button within Minecraft.
      */
     static readonly crimsonButton: BlockType;
     /**
+     * 绯红木门。
+     * 
      * Represents a crimson door within Minecraft.
      */
     static readonly crimsonDoor: BlockType;
     /**
+     * 双绯红木台阶。
+     * 
      * Represents a crimson double slab within Minecraft.
      */
     static readonly crimsonDoubleSlab: BlockType;
     /**
+     * 绯红木栅栏。
+     * 
      * Represents a crimson fence within Minecraft.
      */
     static readonly crimsonFence: BlockType;
     /**
+     * 绯红木栅栏门。
+     * 
      * Represents a crimson fence gate within Minecraft.
      */
     static readonly crimsonFenceGate: BlockType;
     /**
+     * 绯红菌。
+     * 
      * Represents a crimson fungus within Minecraft.
      */
     static readonly crimsonFungus: BlockType;
+    /**
+     * 悬挂式绯红木告示牌。
+     */
     static readonly crimsonHangingSign: BlockType;
     /**
+     * 绯红菌核。
+     * 
      * Represents crimson hyphae within Minecraft.
      */
     static readonly crimsonHyphae: BlockType;
     /**
+     * 绯红菌岩。
+     * 
      * Represents crimson nylium within Minecraft.
      */
     static readonly crimsonNylium: BlockType;
     /**
+     * 绯红木板。
+     * 
      * Represents a set of crimson planks within Minecraft.
      */
     static readonly crimsonPlanks: BlockType;
     /**
+     * 绯红木压力板。
+     * 
      * Represents a crimson pressure plate within Minecraft.
      */
     static readonly crimsonPressurePlate: BlockType;
     /**
+     * 绯红菌索。
+     * 
      * Represents a set of crimson roots within Minecraft.
      */
     static readonly crimsonRoots: BlockType;
     /**
+     * 绯红木台阶。
+     * 
      * Represents a crimson slab within Minecraft.
      */
     static readonly crimsonSlab: BlockType;
     /**
+     * 绯红木楼梯。
+     * 
      * Represents a set of crimson stairs within Minecraft.
      */
     static readonly crimsonStairs: BlockType;
     /**
+     * 绯红木告示牌。
+     * 
      * Represents a crimson standing sign within Minecraft.
      */
     static readonly crimsonStandingSign: BlockType;
     /**
+     * 绯红菌柄。
+     * 
      * Represents a crimson stem within Minecraft.
      */
     static readonly crimsonStem: BlockType;
     /**
+     * 绯红木活板门。
+     * 
      * Represents a crimson trapdoor within Minecraft.
      */
     static readonly crimsonTrapdoor: BlockType;
     /**
+     * 墙上的绯红木告示牌。
+     * 
      * Represents a crimson wall sign within Minecraft.
      */
     static readonly crimsonWallSign: BlockType;
     /**
+     * 哭泣的黑曜石。
+     * 
      * Represents crying obsidian within Minecraft.
      */
     static readonly cryingObsidian: BlockType;
     /**
+     * 切制铜块。
+     * 
      * Represents a cut copper block within Minecraft.
      */
     static readonly cutCopper: BlockType;
     /**
+     * 切制铜台阶。
+     * 
      * Represents a cut copper slab within Minecraft.
      */
     static readonly cutCopperSlab: BlockType;
     /**
+     * 切制铜楼梯。
+     * 
      * Represents a set of cut copper stairs within Minecraft.
      */
     static readonly cutCopperStairs: BlockType;
     /**
+     * 青色蜡烛。
+     * 
      * Represents a cyan-colored candle within Minecraft.
      */
     static readonly cyanCandle: BlockType;
     /**
+     * 插上青色蜡烛的蛋糕。
+     * 
      * Represents a cake with a cyan-colored candle within
      * Minecraft.
      */
     static readonly cyanCandleCake: BlockType;
     /**
+     * 青色带釉陶瓦。
+     * 
      * Represents a block of cyan-colored glazed terracotta within
      * Minecraft.
      */
     static readonly cyanGlazedTerracotta: BlockType;
     /**
+     * 深色橡木按钮。
+     * 
      * Represents a dark oak button within Minecraft.
      */
     static readonly darkOakButton: BlockType;
     /**
+     * 深色橡木门。
+     * 
      * Represents a dark oak door within Minecraft.
      */
     static readonly darkOakDoor: BlockType;
     /**
+     * 深色橡木栅栏门。
+     * 
      * Represents a dark oak fence gate within Minecraft.
      */
     static readonly darkOakFenceGate: BlockType;
+    /**
+     * 悬挂式深色橡木告示牌。
+     */
     static readonly darkOakHangingSign: BlockType;
     /**
+     * 深色橡木压力板。
+     * 
      * Represents a dark oak pressure plate within Minecraft.
      */
     static readonly darkOakPressurePlate: BlockType;
     /**
+     * 深色橡木楼梯。
+     * 
      * Represents a set of dark oak stairs within Minecraft.
      */
     static readonly darkOakStairs: BlockType;
     /**
+     * 深色橡木告示牌。
+     * 
      * Represents a dark oak standing sign within Minecraft.
      */
     static readonly darkoakStandingSign: BlockType;
     /**
+     * 深色橡木活板门。
+     * 
      * Represents a dark oak trapdoor within Minecraft.
      */
     static readonly darkOakTrapdoor: BlockType;
     /**
+     * 墙上的深色橡木告示牌。
+     * 
      * Represents a dark oak wall sign within Minecraft.
      */
     static readonly darkoakWallSign: BlockType;
     /**
+     * 暗海晶石楼梯。
+     * 
      * Represents a set of dark prismarine stairs within Minecraft.
      */
     static readonly darkPrismarineStairs: BlockType;
     /**
+     * 阳光探测器。
+     * 
      * Represents a daylight detector within Minecraft.
      */
     static readonly daylightDetector: BlockType;
     /**
+     * 反向阳光探测器。
+     * 
      * Represents an inverted daylight detector within Minecraft.
      */
     static readonly daylightDetectorInverted: BlockType;
     /**
+     * 枯萎的灌木。
+     * 
      * Represents a dead bush within Minecraft.
      */
     static readonly deadbush: BlockType;
     /**
+     * 深板岩。
+     * 
      * Represents a block of deepslate within Minecraft.
      */
     static readonly deepslate: BlockType;
     /**
+     * 双层深板岩砖台阶。
+     * 
      * Represents a double slab of deepslate brick within
      * Minecraft.
      */
     static readonly deepslateBrickDoubleSlab: BlockType;
     /**
+     * 深板岩砖。
+     * 
      * Represents a block of deepslate bricks within Minecraft.
      */
     static readonly deepslateBricks: BlockType;
     /**
+     * 深板岩砖台阶。
+     * 
      * Represents a slab of deepslate brick within Minecraft.
      */
     static readonly deepslateBrickSlab: BlockType;
     /**
+     * 深板岩砖楼梯。
+     * 
      * Represents a set of deepslate brick stairs within Minecraft.
      */
     static readonly deepslateBrickStairs: BlockType;
     /**
+     * 深板岩砖墙。
+     * 
      * Represents a deepslate brick wall within Minecraft.
      */
     static readonly deepslateBrickWall: BlockType;
     /**
+     * 深层煤矿石。
+     * 
      * Represents a block of deepslate with embedded coal ore
      * within Minecraft.
      */
     static readonly deepslateCoalOre: BlockType;
     /**
+     * 深层铜矿石。
+     * 
      * Represents a block of deepslate with embedded copper ore
      * within Minecraft.
      */
     static readonly deepslateCopperOre: BlockType;
     /**
+     * 深层钻石矿石。
+     * 
      * Represents a block of deepslate with embedded diamond ore
      * within Minecraft.
      */
     static readonly deepslateDiamondOre: BlockType;
     /**
+     * 深层绿宝石矿石。
+     * 
      * Represents a block of deepslate with embedded emerald ore
      * within Minecraft.
      */
     static readonly deepslateEmeraldOre: BlockType;
     /**
+     * 深层金矿石。
+     * 
      * Represents a block of deepslate with embedded gold ore
      * within Minecraft.
      */
     static readonly deepslateGoldOre: BlockType;
     /**
+     * 深层铁矿石。
+     * 
      * Represents a block of deepslate with embedded iron ore
      * within Minecraft.
      */
     static readonly deepslateIronOre: BlockType;
     /**
+     * 深层青金石矿石。
+     * 
      * Represents a block of deepslate with embedded lapis lazuli
      * ore within Minecraft.
      */
     static readonly deepslateLapisOre: BlockType;
     /**
+     * 深层红石矿石。
+     * 
      * Represents a block of deepslate with embedded redstone ore
      * within Minecraft.
      */
     static readonly deepslateRedstoneOre: BlockType;
     /**
+     * 双层深板岩瓦台阶。
+     * 
      * Represents a double slab of tiled deepslate within
      * Minecraft.
      */
     static readonly deepslateTileDoubleSlab: BlockType;
     /**
+     * 深板岩瓦。
+     * 
      * Represents a set of deepslate tiles within Minecraft.
      */
     static readonly deepslateTiles: BlockType;
     /**
+     * 深板岩瓦台阶。
+     * 
      * Represents a slab of deepslate tiles within Minecraft.
      */
     static readonly deepslateTileSlab: BlockType;
     /**
+     * 深板岩瓦楼梯。
+     * 
      * Represents a set of deepslate tile stairs within Minecraft.
      */
     static readonly deepslateTileStairs: BlockType;
     /**
+     * 深板岩瓦墙。
+     * 
      * Represents a wall of deepslate tile within Minecraft.
      */
     static readonly deepslateTileWall: BlockType;
     /**
+     * 拒绝方块。
+     * 
      * Represents a logical but generally invisible Deny logic
      * block within Minecraft.
      */
     static readonly deny: BlockType;
     /**
+     * 探测铁轨。
+     * 
      * Represents a detector rail within Minecraft.
      */
     static readonly detectorRail: BlockType;
     /**
+     * 钻石块。
+     * 
      * Represents a block of diamond within Minecraft.
      */
     static readonly diamondBlock: BlockType;
     /**
+     * 钻石矿石。
+     * 
      * Represents a block with embedded diamond ore within
      * Minecraft.
      */
     static readonly diamondOre: BlockType;
     /**
+     * 闪长岩楼梯。
+     * 
      * Represents a set of diorite stairs within Minecraft.
      */
     static readonly dioriteStairs: BlockType;
     /**
+     * 泥土/砂土。
+     * 
      * Represents a block of dirt within Minecraft.
      */
     static readonly dirt: BlockType;
     /**
+     * 缠根泥土。
+     * 
      * Represents a block of dirt with roots within Minecraft.
      */
     static readonly dirtWithRoots: BlockType;
     /**
+     * 发射器。
+     * 
      * Represents a dispenser within Minecraft.
      */
     static readonly dispenser: BlockType;
     /**
+     * 双切制铜台阶。
+     * 
      * Represents a slab of double cut copper within Minecraft.
      */
     static readonly doubleCutCopperSlab: BlockType;
     /**
+     * 向日葵/丁香/高草丛/大型蕨/玫瑰丛/牡丹。
+     * 
      * Represents a double plant within Minecraft.
      */
     static readonly doublePlant: BlockType;
+    /**
+     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层红砖台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
+     */
     static readonly doubleStoneBlockSlab: BlockType;
+    /**
+     * 双层红砂岩台阶/双层紫珀台阶/双层海晶石台阶/双层暗海晶石台阶/双层海晶石砖台阶/双层苔石台阶/双层平滑砂岩台阶/双层红色下界砖台阶。
+     */
     static readonly doubleStoneBlockSlab2: BlockType;
+    /**
+     * 双层末地石砖台阶/双层平滑红砂岩台阶/双层磨制安山岩台阶/双层安山岩台阶/双层闪长岩台阶/双层磨制闪长岩台阶/双层花岗岩台阶/双层磨制花岗岩台阶。
+     */
     static readonly doubleStoneBlockSlab3: BlockType;
+    /**
+     * 双层苔石砖台阶/双层平滑石英台阶/双层石头台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
+     */
     static readonly doubleStoneBlockSlab4: BlockType;
     /**
+     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层红砖台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
+     * 
      * Represents a double slab of stone within Minecraft.
      */
     static readonly doubleStoneSlab: BlockType;
     /**
+     * 双层红砂岩台阶/双层紫珀台阶/双层海晶石台阶/双层暗海晶石台阶/双层海晶石砖台阶/双层苔石台阶/双层平滑砂岩台阶/双层红色下界砖台阶。
+     * 
      * Represents an alternate double slab of stone (#2) within
      * Minecraft.
      */
     static readonly doubleStoneSlab2: BlockType;
     /**
+     * 双层末地石砖台阶/双层平滑红砂岩台阶/双层磨制安山岩台阶/双层安山岩台阶/双层闪长岩台阶/双层磨制闪长岩台阶/双层花岗岩台阶/双层磨制花岗岩台阶。
+     * 
      * Represents an alternate double slab of stone (#3) within
      * Minecraft.
      */
     static readonly doubleStoneSlab3: BlockType;
     /**
+     * 双层苔石砖台阶/双层平滑石英台阶/双层石头台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
+     * 
      * Represents an alternate double slab of stone (#4) within
      * Minecraft.
      */
     static readonly doubleStoneSlab4: BlockType;
     /**
+     * 双层橡木台阶/双层云杉木台阶/双层白桦木台阶/双层丛林木台阶/双层金合欢木台阶/双层深色橡木台阶。
+     * 
      * Represents a double slab of wood within Minecraft.
      */
     static readonly doubleWoodenSlab: BlockType;
     /**
+     * 龙蛋。
+     * 
      * Represents a dragon egg within Minecraft.
      */
     static readonly dragonEgg: BlockType;
     /**
+     * 干海带块。
+     * 
      * Represents a block of dried kelp within Minecraft.
      */
     static readonly driedKelpBlock: BlockType;
     /**
+     * 滴水石块。
+     * 
      * Represents a block of dripstone within Minecraft.
      */
     static readonly dripstoneBlock: BlockType;
     /**
+     * 投掷器。
+     * 
      * Represents a dropper within Minecraft.
      */
     static readonly dropper: BlockType;
     /**
+     * ???。
+     * 
      * Represents an element in Minecraft Education experiences.
      */
     static readonly element0: BlockType;
     /**
+     * 氢。
+     * 
      * Represents the hydrogen element in Minecraft Education
      * experiences.
      */
     static readonly element1: BlockType;
     /**
+     * 氖。
+     * 
      * Represents the neon element in Minecraft Education
      * experiences.
      */
     static readonly element10: BlockType;
     /**
+     * 镄。
+     * 
      * Represents the fermium element in Minecraft Education
      * experiences.
      */
     static readonly element100: BlockType;
     /**
+     * 钔。
+     * 
      * Represents the mendelevium element in Minecraft Education
      * experiences.
      */
     static readonly element101: BlockType;
     /**
+     * 锘。
+     * 
      * Represents the nobelium element in Minecraft Education
      * experiences.
      */
     static readonly element102: BlockType;
     /**
+     * 铹。
+     * 
      * Represents the lawrencium element in Minecraft Education
      * experiences.
      */
     static readonly element103: BlockType;
     /**
+     * 鑪。
+     * 
      * Represents the rutherfordium element in Minecraft Education
      * experiences.
      */
     static readonly element104: BlockType;
     /**
+     * 𨧀。
+     * 
      * Represents the dubnium element in Minecraft Education
      * experiences.
      */
     static readonly element105: BlockType;
     /**
+     * 𨭎。
+     * 
      * Represents the seaborgium element in Minecraft Education
      * experiences.
      */
     static readonly element106: BlockType;
     /**
+     * 𨨏。
+     * 
      * Represents the bohrium element in Minecraft Education
      * experiences.
      */
     static readonly element107: BlockType;
     /**
+     * 𨭆。
+     * 
      * Represents the hassium element in Minecraft Education
      * experiences.
      */
     static readonly element108: BlockType;
     /**
+     * 䥑。
+     * 
      * Represents the meitnerium element in Minecraft Education
      * experiences.
      */
     static readonly element109: BlockType;
     /**
+     * 钠。
+     * 
      * Represents the sodium element in Minecraft Education
      * experiences.
      */
     static readonly element11: BlockType;
     /**
+     * 鐽。
+     * 
      * Represents the darmstadtium element in Minecraft Education
      * experiences.
      */
     static readonly element110: BlockType;
     /**
+     * 錀。
+     * 
      * Represents the roentgenium element in Minecraft Education
      * experiences.
      */
     static readonly element111: BlockType;
     /**
+     * 鎶。
+     * 
      * Represents the copernicium element in Minecraft Education
      * experiences.
      */
     static readonly element112: BlockType;
     /**
+     * 鉨。
+     * 
      * Represents the nihonium element in Minecraft Education
      * experiences.
      */
     static readonly element113: BlockType;
     /**
+     * 鈇。
+     * 
      * Represents the flerovium element in Minecraft Education
      * experiences.
      */
     static readonly element114: BlockType;
     /**
+     * 镆。
+     * 
      * Represents the moscovium element in Minecraft Education
      * experiences.
      */
     static readonly element115: BlockType;
     /**
+     * 鉝。
+     * 
      * Represents the livermorium element in Minecraft Education
      * experiences.
      */
     static readonly element116: BlockType;
     /**
+     * Tennessine。
+     * 
      * Represents the tennessine element in Minecraft Education
      * experiences.
      */
     static readonly element117: BlockType;
     /**
+     * Oganesson。
+     * 
      * Represents the oganesson element in Minecraft Education
      * experiences.
      */
     static readonly element118: BlockType;
     /**
+     * 镁。
+     * 
      * Represents the magnesium element in Minecraft Education
      * experiences.
      */
     static readonly element12: BlockType;
     /**
+     * 铝。
+     * 
      * Represents the aluminum element in Minecraft Education
      * experiences.
      */
     static readonly element13: BlockType;
     /**
+     * 硅。
+     * 
      * Represents the silicon element in Minecraft Education
      * experiences.
      */
     static readonly element14: BlockType;
     /**
+     * 磷。
+     * 
      * Represents the phosphorus element in Minecraft Education
      * experiences.
      */
     static readonly element15: BlockType;
     /**
+     * 硫。
+     * 
      * Represents the sulfur element in Minecraft Education
      * experiences.
      */
     static readonly element16: BlockType;
     /**
+     * 氯。
+     * 
      * Represents the chlorine element in Minecraft Education
      * experiences.
      */
     static readonly element17: BlockType;
     /**
+     * 氩。
+     * 
      * Represents the argon element in Minecraft Education
      * experiences.
      */
     static readonly element18: BlockType;
     /**
+     * 钾。
+     * 
      * Represents the potassium element in Minecraft Education
      * experiences.
      */
     static readonly element19: BlockType;
     /**
+     * 氦。
+     * 
      * Represents the helium element in Minecraft Education
      * experiences.
      */
     static readonly element2: BlockType;
     /**
+     * 钙。
+     * 
      * Represents the calcium element in Minecraft Education
      * experiences.
      */
     static readonly element20: BlockType;
     /**
+     * 钪。
+     * 
      * Represents the scandium element in Minecraft Education
      * experiences.
      */
     static readonly element21: BlockType;
     /**
+     * 钛。
+     * 
      * Represents the titanium element in Minecraft Education
      * experiences.
      */
     static readonly element22: BlockType;
     /**
+     * 钒。
+     * 
      * Represents the vanadium element in Minecraft Education
      * experiences.
      */
     static readonly element23: BlockType;
     /**
+     * 铬。
+     * 
      * Represents the chromium element in Minecraft Education
      * experiences.
      */
     static readonly element24: BlockType;
     /**
+     * 锰。
+     * 
      * Represents the manganese element in Minecraft Education
      * experiences.
      */
     static readonly element25: BlockType;
     /**
+     * 铁。
+     * 
      * Represents the iron element in Minecraft Education
      * experiences.
      */
     static readonly element26: BlockType;
     /**
+     * 钴。
+     * 
      * Represents the cobalt element in Minecraft Education
      * experiences.
      */
     static readonly element27: BlockType;
     /**
+     * 镍。
+     * 
      * Represents the nickel element in Minecraft Education
      * experiences.
      */
     static readonly element28: BlockType;
     /**
+     * 铜。
+     * 
      * Represents the copper element in Minecraft Education
      * experiences.
      */
     static readonly element29: BlockType;
     /**
+     * 锂。
+     * 
      * Represents a lithium element in Minecraft Education
      * experiences.
      */
     static readonly element3: BlockType;
     /**
+     * 锌。
+     * 
      * Represents the zinc element in Minecraft Education
      * experiences.
      */
     static readonly element30: BlockType;
     /**
+     * 镓。
+     * 
      * Represents the gallium element in Minecraft Education
      * experiences.
      */
     static readonly element31: BlockType;
     /**
+     * 锗。
+     * 
      * Represents a germanium element in Minecraft Education
      * experiences.
      */
     static readonly element32: BlockType;
     /**
+     * 砷。
+     * 
      * Represents the arsenic element in Minecraft Education
      * experiences.
      */
     static readonly element33: BlockType;
     /**
+     * 硒。
+     * 
      * Represents the selenium element in Minecraft Education
      * experiences.
      */
     static readonly element34: BlockType;
     /**
+     * 溴。
+     * 
      * Represents the bromine element in Minecraft Education
      * experiences.
      */
     static readonly element35: BlockType;
     /**
+     * 氪。
+     * 
      * Represents the krypton element in Minecraft Education
      * experiences.
      */
     static readonly element36: BlockType;
     /**
+     * 铷。
+     * 
      * Represents the rubidium element in Minecraft Education
      * experiences.
      */
     static readonly element37: BlockType;
     /**
+     * 锶。
+     * 
      * Represents the strontium element in Minecraft Education
      * experiences.
      */
     static readonly element38: BlockType;
     /**
+     * 钇。
+     * 
      * Represents the yttrium element in Minecraft Education
      * experiences.
      */
     static readonly element39: BlockType;
     /**
+     * 铍。
+     * 
      * Represents a beryllium element in Minecraft Education
      * experiences.
      */
     static readonly element4: BlockType;
     /**
+     * 锆。
+     * 
      * Represents the zirconium element in Minecraft Education
      * experiences.
      */
     static readonly element40: BlockType;
     /**
+     * 铌。
+     * 
      * Represents the niobium element in Minecraft Education
      * experiences.
      */
     static readonly element41: BlockType;
     /**
+     * 钼。
+     * 
      * Represents the molybdenum element in Minecraft Education
      * experiences.
      */
     static readonly element42: BlockType;
     /**
+     * 锝。
+     * 
      * Represents the technetium element in Minecraft Education
      * experiences.
      */
     static readonly element43: BlockType;
     /**
+     * 钌。
+     * 
      * Represents the ruthenium element in Minecraft Education
      * experiences.
      */
     static readonly element44: BlockType;
     /**
+     * 铑。
+     * 
      * Represents the rhodium element in Minecraft Education
      * experiences.
      */
     static readonly element45: BlockType;
     /**
+     * 钯。
+     * 
      * Represents the palladium element in Minecraft Education
      * experiences.
      */
     static readonly element46: BlockType;
     /**
+     * 银。
+     * 
      * Represents the silver element in Minecraft Education
      * experiences.
      */
     static readonly element47: BlockType;
     /**
+     * 镉。
+     * 
      * Represents the cadmium element in Minecraft Education
      * experiences.
      */
     static readonly element48: BlockType;
     /**
+     * 铟。
+     * 
      * Represents the indium element in Minecraft Education
      * experiences.
      */
     static readonly element49: BlockType;
     /**
+     * 硼。
+     * 
      * Represents the boron element in Minecraft Education
      * experiences.
      */
     static readonly element5: BlockType;
     /**
+     * 锡。
+     * 
      * Represents the tin element in Minecraft Education
      * experiences.
      */
     static readonly element50: BlockType;
     /**
+     * 锑。
+     * 
      * Represents the antimony element in Minecraft Education
      * experiences.
      */
     static readonly element51: BlockType;
     /**
+     * 碲。
+     * 
      * Represents the tellurium element in Minecraft Education
      * experiences.
      */
     static readonly element52: BlockType;
     /**
+     * 碘。
+     * 
      * Represents the iodine element in Minecraft Education
      * experiences.
      */
     static readonly element53: BlockType;
     /**
+     * 氙。
+     * 
      * Represents the xenon element in Minecraft Education
      * experiences.
      */
     static readonly element54: BlockType;
     /**
+     * 铯。
+     * 
      * Represents the cesium element in Minecraft Education
      * experiences.
      */
     static readonly element55: BlockType;
     /**
+     * 钡。
+     * 
      * Represents the barium element in Minecraft Education
      * experiences.
      */
     static readonly element56: BlockType;
     /**
+     * 镧。
+     * 
      * Represents the lanthanum element in Minecraft Education
      * experiences.
      */
     static readonly element57: BlockType;
     /**
+     * 铈。
+     * 
      * Represents the cerium element in Minecraft Education
      * experiences.
      */
     static readonly element58: BlockType;
     /**
+     * 镨。
+     * 
      * Represents the praseodymium element in Minecraft Education
      * experiences.
      */
     static readonly element59: BlockType;
     /**
+     * 碳。
+     * 
      * Represents the carbon element in Minecraft Education
      * experiences.
      */
     static readonly element6: BlockType;
     /**
+     * 钕。
+     * 
      * Represents the neodymium element in Minecraft Education
      * experiences.
      */
     static readonly element60: BlockType;
     /**
+     * 钷。
+     * 
      * Represents the promethium element in Minecraft Education
      * experiences.
      */
     static readonly element61: BlockType;
     /**
+     * 钐。
+     * 
      * Represents the samarium element in Minecraft Education
      * experiences.
      */
     static readonly element62: BlockType;
     /**
+     * 铕。
+     * 
      * Represents the europium element in Minecraft Education
      * experiences.
      */
     static readonly element63: BlockType;
     /**
+     * 钆。
+     * 
      * Represents the gadolinium element in Minecraft Education
      * experiences.
      */
     static readonly element64: BlockType;
     /**
+     * 铽。
+     * 
      * Represents a terbium element in Minecraft Education
      * experiences.
      */
     static readonly element65: BlockType;
     /**
+     * 镝。
+     * 
      * Represents the dysprosium element in Minecraft Education
      * experiences.
      */
     static readonly element66: BlockType;
     /**
+     * 钬。
+     * 
      * Represents the holmium element in Minecraft Education
      * experiences.
      */
     static readonly element67: BlockType;
     /**
+     * 铒。
+     * 
      * Represents the erbium element in Minecraft Education
      * experiences.
      */
     static readonly element68: BlockType;
     /**
+     * 铥。
+     * 
      * Represents the thulium element in Minecraft Education
      * experiences.
      */
     static readonly element69: BlockType;
     /**
+     * 氮。
+     * 
      * Represents the nitrogen element in Minecraft Education
      * experiences.
      */
     static readonly element7: BlockType;
     /**
+     * 镱。
+     * 
      * Represents the ytterbium element in Minecraft Education
      * experiences.
      */
     static readonly element70: BlockType;
     /**
+     * 镥。
+     * 
      * Represents the lutetium element in Minecraft Education
      * experiences.
      */
     static readonly element71: BlockType;
     /**
+     * 铪。
+     * 
      * Represents a hafnium element in Minecraft Education
      * experiences.
      */
     static readonly element72: BlockType;
     /**
+     * 钽。
+     * 
      * Represents the tantalum element in Minecraft Education
      * experiences.
      */
     static readonly element73: BlockType;
     /**
+     * 钨。
+     * 
      * Represents the tungsten element in Minecraft Education
      * experiences.
      */
     static readonly element74: BlockType;
     /**
+     * 铼。
+     * 
      * Represents the rhenium element in Minecraft Education
      * experiences.
      */
     static readonly element75: BlockType;
     /**
+     * 锇。
+     * 
      * Represents the osmium element in Minecraft Education
      * experiences.
      */
     static readonly element76: BlockType;
     /**
+     * 铱。
+     * 
      * Represents the iridium element in Minecraft Education
      * experiences.
      */
     static readonly element77: BlockType;
     /**
+     * 铂。
+     * 
      * Represents the platinum element in Minecraft Education
      * experiences.
      */
     static readonly element78: BlockType;
     /**
+     * 金。
+     * 
      * Represents the gold element in Minecraft Education
      * experiences.
      */
     static readonly element79: BlockType;
     /**
+     * 氧。
+     * 
      * Represents the oxygen element in Minecraft Education
      * experiences.
      */
     static readonly element8: BlockType;
     /**
+     * 汞。
+     * 
      * Represents the mercury element in Minecraft Education
      * experiences.
      */
     static readonly element80: BlockType;
     /**
+     * 铊。
+     * 
      * Represents the thallium element in Minecraft Education
      * experiences.
      */
     static readonly element81: BlockType;
     /**
+     * 铅。
+     * 
      * Represents the lead element in Minecraft Education
      * experiences.
      */
     static readonly element82: BlockType;
     /**
+     * 铋。
+     * 
      * Represents the bismuth element in Minecraft Education
      * experiences.
      */
     static readonly element83: BlockType;
     /**
+     * 钋。
+     * 
      * Represents the polonium element in Minecraft Education
      * experiences.
      */
     static readonly element84: BlockType;
     /**
+     * 砹。
+     * 
      * Represents the astatine element in Minecraft Education
      * experiences.
      */
     static readonly element85: BlockType;
     /**
+     * 氡。
+     * 
      * Represents the radon element in Minecraft Education
      * experiences.
      */
     static readonly element86: BlockType;
     /**
+     * 钫。
+     * 
      * Represents the francium element in Minecraft Education
      * experiences.
      */
     static readonly element87: BlockType;
     /**
+     * 镭。
+     * 
      * Represents the radium element in Minecraft Education
      * experiences.
      */
     static readonly element88: BlockType;
     /**
+     * 锕。
+     * 
      * Represents the actinium element in Minecraft Education
      * experiences.
      */
     static readonly element89: BlockType;
     /**
+     * 氟。
+     * 
      * Represents the fluorine element in Minecraft Education
      * experiences.
      */
     static readonly element9: BlockType;
     /**
+     * 钍。
+     * 
      * Represents the thorium element in Minecraft Education
      * experiences.
      */
     static readonly element90: BlockType;
     /**
+     * 镤。
+     * 
      * Represents the protactinium element in Minecraft Education
      * experiences.
      */
     static readonly element91: BlockType;
     /**
+     * 铀。
+     * 
      * Represents the uranium element in Minecraft Education
      * experiences.
      */
     static readonly element92: BlockType;
     /**
+     * 镎。
+     * 
      * Represents the neptunium element in Minecraft Education
      * experiences.
      */
     static readonly element93: BlockType;
     /**
+     * 钚。
+     * 
      * Represents the plutonium element in Minecraft Education
      * experiences.
      */
     static readonly element94: BlockType;
     /**
+     * 镅。
+     * 
      * Represents the americium element in Minecraft Education
      * experiences.
      */
     static readonly element95: BlockType;
     /**
+     * 锔。
+     * 
      * Represents the curium element in Minecraft Education
      * experiences.
      */
     static readonly element96: BlockType;
     /**
+     * 锫。
+     * 
      * Represents the berkelium element in Minecraft Education
      * experiences.
      */
     static readonly element97: BlockType;
     /**
+     * 锎。
+     * 
      * Represents the californium element in Minecraft Education
      * experiences.
      */
     static readonly element98: BlockType;
     /**
+     * 锿。
+     * 
      * Represents the einsteinium element in Minecraft Education
      * experiences.
      */
     static readonly element99: BlockType;
     /**
+     * 绿宝石块。
+     * 
      * Represents a block of emerald within Minecraft.
      */
     static readonly emeraldBlock: BlockType;
     /**
+     * 绿宝石矿石。
+     * 
      * Represents a block with embedded emerald ore within
      * Minecraft.
      */
     static readonly emeraldOre: BlockType;
     /**
+     * 附魔台。
+     * 
      * Represents an enchanting table within Minecraft.
      */
     static readonly enchantingTable: BlockType;
     /**
+     * 末地石砖。
+     * 
      * Represents an end bricks block within Minecraft.
      */
     static readonly endBricks: BlockType;
     /**
+     * 末地石砖楼梯。
+     * 
      * Represents a set of end brick stairs within Minecraft.
      */
     static readonly endBrickStairs: BlockType;
     /**
+     * 末影箱。
+     * 
      * Represents an ender chest within Minecraft.
      */
     static readonly enderChest: BlockType;
     /**
+     * 末地折跃门。
+     * 
      * Represents an end gateway within Minecraft.
      */
     static readonly endGateway: BlockType;
     /**
+     * 末地传送门。
+     * 
      * Represents an end portal block within Minecraft.
      */
     static readonly endPortal: BlockType;
     /**
+     * 末地传送门框架。
+     * 
      * Represents an end portal frame within Minecraft.
      */
     static readonly endPortalFrame: BlockType;
     /**
+     * 末地烛。
+     * 
      * Represents an end rod within Minecraft.
      */
     static readonly endRod: BlockType;
     /**
+     * 末地石。
+     * 
      * Represents an end stone block within Minecraft.
      */
     static readonly endStone: BlockType;
     /**
+     * 斑驳的铜块。
+     * 
      * Represents a block of exposed copper within Minecraft.
      */
     static readonly exposedCopper: BlockType;
     /**
+     * 斑驳的切制铜块。
+     * 
      * Represents a block of exposed cut copper within Minecraft.
      */
     static readonly exposedCutCopper: BlockType;
     /**
+     * 斑驳的切制铜台阶。
+     * 
      * Represents a slab of exposed cut copper within Minecraft.
      */
     static readonly exposedCutCopperSlab: BlockType;
     /**
+     * 斑驳的切制铜楼梯。
+     * 
      * Represents a set of exposed cut copper stairs within
      * Minecraft.
      */
     static readonly exposedCutCopperStairs: BlockType;
     /**
+     * 斑驳的双切制铜台阶。
+     * 
      * Represents a double slab of exposed cut copper within
      * Minecraft.
      */
     static readonly exposedDoubleCutCopperSlab: BlockType;
     /**
+     * 耕地。
+     * 
      * Represents a farmland block within Minecraft.
      */
     static readonly farmland: BlockType;
     /**
+     * 橡木栅栏/云杉木栅栏/白桦木栅栏/丛林木栅栏/金合欢木栅栏/深色橡木栅栏。
+     * 
      * Represents a fence within Minecraft.
      */
     static readonly fence: BlockType;
     /**
+     * 橡木栅栏门。
+     * 
      * Represents a fence gate within Minecraft.
      */
     static readonly fenceGate: BlockType;
     /**
+     * 火。
+     * 
      * Represents a fire within Minecraft.
      */
     static readonly fire: BlockType;
     /**
+     * 制箭台。
+     * 
      * Represents a fletching table within Minecraft.
      */
     static readonly fletchingTable: BlockType;
     /**
+     * 盛开的杜鹃花丛。
+     * 
      * Represents a flowering azalea plant within Minecraft.
      */
     static readonly floweringAzalea: BlockType;
     /**
+     * 花盆。
+     * 
      * Represents a flower pot within Minecraft.
      */
     static readonly flowerPot: BlockType;
     /**
+     * 流动熔岩。
+     * 
      * Represents flowing lava within Minecraft.
      */
     static readonly flowingLava: BlockType;
     /**
+     * 流动水。
+     * 
      * Represents flowing water within Minecraft.
      */
     static readonly flowingWater: BlockType;
     /**
+     * 物品展示框。
+     * 
      * Represents a frame within Minecraft.
      */
     static readonly frame: BlockType;
+    /**
+     * 青蛙卵。
+     */
     static readonly frogSpawn: BlockType;
     /**
+     * 霜冰。
+     * 
      * Represents a frosted ice block within Minecraft.
      */
     static readonly frostedIce: BlockType;
     /**
+     * 熔炉。
+     * 
      * Represents a furnace within Minecraft.
      */
     static readonly furnace: BlockType;
     /**
+     * 镶金黑石。
+     * 
      * Represents a block of gilded blackstone within Minecraft.
      */
     static readonly gildedBlackstone: BlockType;
     /**
+     * 玻璃。
+     * 
      * Represents a glass block within Minecraft.
      */
     static readonly glass: BlockType;
     /**
+     * 玻璃板。
+     * 
      * Represents a pane of glass within Minecraft.
      */
     static readonly glassPane: BlockType;
     /**
+     * 荧光物品展示框。
+     * 
      * Represents a glowing frame within Minecraft.
      */
     static readonly glowFrame: BlockType;
     /**
+     * 发光的黑曜石。
+     * 
      * Represents a glowing obsidian block within Minecraft.
      */
     static readonly glowingobsidian: BlockType;
     /**
+     * 发光地衣。
+     * 
      * Represents glow lichen within Minecraft.
      */
     static readonly glowLichen: BlockType;
     /**
+     * 荧石。
+     * 
      * Represents a block of glowstone within Minecraft.
      */
     static readonly glowstone: BlockType;
     /**
+     * 金块。
+     * 
      * Represents a gold block within Minecraft.
      */
     static readonly goldBlock: BlockType;
     /**
+     * 动力铁轨。
+     * 
      * Represents a golden rail element within Minecraft.
      */
     static readonly goldenRail: BlockType;
     /**
+     * 金矿石。
+     * 
      * Represents a block with embedded gold ore within Minecraft.
      */
     static readonly goldOre: BlockType;
     /**
+     * 花岗岩楼梯。
+     * 
      * Represents a set of granite stairs within Minecraft.
      */
     static readonly graniteStairs: BlockType;
     /**
+     * 草。
+     * 
      * Represents a block of dirt and grass within Minecraft.
      */
     static readonly grass: BlockType;
     /**
+     * 草径。
+     * 
      * Represents a block of dirt and grass with a path within
      * Minecraft.
      */
     static readonly grassPath: BlockType;
     /**
+     * 沙砾。
+     * 
      * Represents a block of gravel within Minecraft.
      */
     static readonly gravel: BlockType;
     /**
+     * 灰色蜡烛。
+     * 
      * Represents a gray-colored candle within Minecraft.
      */
     static readonly grayCandle: BlockType;
     /**
+     * 插上灰色蜡烛的蛋糕。
+     * 
      * Represents a cake with gray-colored candle within Minecraft.
      */
     static readonly grayCandleCake: BlockType;
     /**
+     * 灰色带釉陶瓦。
+     * 
      * Represents a gray-colored block of glazed terracotta within
      * Minecraft.
      */
     static readonly grayGlazedTerracotta: BlockType;
     /**
+     * 绿色蜡烛。
+     * 
      * Represents a green-colored candle within Minecraft.
      */
     static readonly greenCandle: BlockType;
     /**
+     * 插上绿色蜡烛的蛋糕。
+     * 
      * Represents a green-colored candle cake within Minecraft.
      */
     static readonly greenCandleCake: BlockType;
     /**
+     * 绿色带釉陶瓦。
+     * 
      * Represents a green block of glazed terracotta within
      * Minecraft.
      */
     static readonly greenGlazedTerracotta: BlockType;
     /**
+     * 砂轮。
+     * 
      * Represents a grindstone within Minecraft.
      */
     static readonly grindstone: BlockType;
     /**
+     * 垂根。
+     * 
      * Represents a set of hanging roots within Minecraft.
      */
     static readonly hangingRoots: BlockType;
     /**
+     * 陶瓦。
+     * 
      * Represents a block of hardened clay within Minecraft.
      */
     static readonly hardenedClay: BlockType;
     /**
+     * 强化玻璃。
+     * 
      * Represents a block of hard glass within Minecraft.
      */
     static readonly hardGlass: BlockType;
     /**
+     * 强化玻璃板。
+     * 
      * Represents a pane of hard glass within Minecraft.
      */
     static readonly hardGlassPane: BlockType;
     /**
+     * 染色强化玻璃。
+     * 
      * Represents a stained hard glass block within Minecraft.
      */
     static readonly hardStainedGlass: BlockType;
     /**
+     * 染色强化玻璃板。
+     * 
      * Represents a stained pane of hard glass within Minecraft.
      */
     static readonly hardStainedGlassPane: BlockType;
     /**
+     * 干草块。
+     * 
      * Represents a block of hay within Minecraft.
      */
     static readonly hayBlock: BlockType;
     /**
+     * 重质测重压力板。
+     * 
      * Represents a heavy weighted pressure plate within Minecraft.
      */
     static readonly heavyWeightedPressurePlate: BlockType;
     /**
+     * 蜂蜜块。
+     * 
      * Represents a block of honey within Minecraft.
      */
     static readonly honeyBlock: BlockType;
     /**
+     * 蜜脾块。
+     * 
      * Represents a honeycomb block within Minecraft.
      */
     static readonly honeycombBlock: BlockType;
     /**
+     * 漏斗。
+     * 
      * Represents a hopper within Minecraft.
      */
     static readonly hopper: BlockType;
     /**
+     * 冰。
+     * 
      * Represents a block of ice within Minecraft.
      */
     static readonly ice: BlockType;
     /**
+     * 被虫蚀的深板岩。
+     * 
      * Represents an infested block of deepslate within Minecraft.
      */
     static readonly infestedDeepslate: BlockType;
     /**
+     * 数据更新方块。
+     * 
      * Represents an information update block within Minecraft.
      */
     static readonly infoUpdate: BlockType;
     /**
+     * 数据更新方块。
+     * 
      * Represents an information update block within Minecraft.
      */
     static readonly infoUpdate2: BlockType;
     /**
+     * 隐形的基岩。
+     * 
      * Represents an invisible boundary bedrock block within
      * Minecraft.
      */
     static readonly invisibleBedrock: BlockType;
     /**
+     * 铁栏杆。
+     * 
      * Represents iron bars within Minecraft.
      */
     static readonly ironBars: BlockType;
     /**
+     * 铁块。
+     * 
      * Represents a block of iron within Minecraft.
      */
     static readonly ironBlock: BlockType;
     /**
+     * 铁门。
+     * 
      * Represents an iron door within Minecraft.
      */
     static readonly ironDoor: BlockType;
     /**
+     * 铁矿石。
+     * 
      * Represents a block with embedded iron ore within Minecraft.
      */
     static readonly ironOre: BlockType;
     /**
+     * 铁活板门。
+     * 
      * Represents an iron trapdoor within Minecraft.
      */
     static readonly ironTrapdoor: BlockType;
     /**
+     * 拼图方块。
+     * 
      * Represents a jigsaw within Minecraft.
      */
     static readonly jigsaw: BlockType;
     /**
+     * 唱片机。
+     * 
      * Represents a jukebox within Minecraft.
      */
     static readonly jukebox: BlockType;
     /**
+     * 丛林木按钮。
+     * 
      * Represents jungle wood button within Minecraft.
      */
     static readonly jungleButton: BlockType;
     /**
+     * 丛林木门。
+     * 
      * Represents a jungle wood door within Minecraft.
      */
     static readonly jungleDoor: BlockType;
     /**
+     * 丛林木栅栏门。
+     * 
      * Represents a jungle wood fence gate within Minecraft.
      */
     static readonly jungleFenceGate: BlockType;
+    /**
+     * 悬挂式丛林木告示牌。
+     */
     static readonly jungleHangingSign: BlockType;
     /**
+     * 丛林木压力板。
+     * 
      * Represents a jungle wood pressure plate within Minecraft.
      */
     static readonly junglePressurePlate: BlockType;
     /**
+     * 丛林木楼梯。
+     * 
      * Represents a set of jungle wood stairs within Minecraft.
      */
     static readonly jungleStairs: BlockType;
     /**
+     * 丛林木告示牌。
+     * 
      * Represents a jungle wood standing sign within Minecraft.
      */
     static readonly jungleStandingSign: BlockType;
     /**
+     * 丛林木活板门。
+     * 
      * Represents a jungle wood trapdoor within Minecraft.
      */
     static readonly jungleTrapdoor: BlockType;
     /**
+     * 墙上的丛林木告示牌。
+     * 
      * Represents a jungle wood wall sign within Minecraft.
      */
     static readonly jungleWallSign: BlockType;
     /**
+     * 海带。
+     * 
      * Represents a set of kelp within Minecraft.
      */
     static readonly kelp: BlockType;
     /**
+     * 梯子。
+     * 
      * Represents a ladder within Minecraft.
      */
     static readonly ladder: BlockType;
     /**
+     * 灯笼。
+     * 
      * Represents a lantern within Minecraft.
      */
     static readonly lantern: BlockType;
     /**
+     * 青金石块。
+     * 
      * Represents a block of lapis lazuli within Minecraft.
      */
     static readonly lapisBlock: BlockType;
     /**
+     * 青金石矿石。
+     * 
      * Represents a block with embedded lapis lazuli within
      * Minecraft.
      */
     static readonly lapisOre: BlockType;
     /**
+     * 大型紫晶芽。
+     * 
      * Represents a bud of large amethyst within Minecraft.
      */
     static readonly largeAmethystBud: BlockType;
     /**
+     * 熔岩。
+     * 
      * Represents lava within Minecraft.
      */
     static readonly lava: BlockType;
     /**
+     * 装有熔岩的炼药锅。
+     * 
      * Represents a cauldron filled with lava within Minecraft.
      */
     static readonly lavaCauldron: BlockType;
     /**
+     * 橡树树叶/云杉树叶/白桦树叶/丛林树叶。
+     * 
      * Represents a set of leaves within Minecraft.
      */
     static readonly leaves: BlockType;
     /**
+     * 金合欢树叶/深色橡树树叶。
+     * 
      * Represents an updated set of leaves within Minecraft.
      */
     static readonly leaves2: BlockType;
     /**
+     * 讲台。
+     * 
      * Represents a lectern within Minecraft.
      */
     static readonly lectern: BlockType;
     /**
+     * 拉杆。
+     * 
      * Represents a lever within Minecraft.
      */
     static readonly lever: BlockType;
     /**
+     * 光源方块。
+     * 
      * Represents a block of light within Minecraft.
      */
     static readonly lightBlock: BlockType;
     /**
+     * 淡蓝色蜡烛。
+     * 
      * Represents a light blue candle within Minecraft.
      */
     static readonly lightBlueCandle: BlockType;
     /**
+     * 插上淡蓝色蜡烛的蛋糕。
+     * 
      * Represents a light blue candle cake within Minecraft.
      */
     static readonly lightBlueCandleCake: BlockType;
     /**
+     * 淡蓝色带釉陶瓦。
+     * 
      * Represents a light blue block of glazed terracotta within
      * Minecraft.
      */
     static readonly lightBlueGlazedTerracotta: BlockType;
     /**
+     * 淡灰色蜡烛。
+     * 
      * Represents a light gray candle within Minecraft.
      */
     static readonly lightGrayCandle: BlockType;
     /**
+     * 插上淡灰色蜡烛的蛋糕。
+     * 
      * Represents a light gray candle cake within Minecraft.
      */
     static readonly lightGrayCandleCake: BlockType;
     /**
+     * 避雷针。
+     * 
      * Represents a lightning rod within Minecraft.
      */
     static readonly lightningRod: BlockType;
     /**
+     * 轻质测重压力板。
+     * 
      * Represents a light weighted pressure plate within Minecraft.
      */
     static readonly lightWeightedPressurePlate: BlockType;
     /**
+     * 黄绿色蜡烛。
+     * 
      * Represents a lime candle within Minecraft.
      */
     static readonly limeCandle: BlockType;
     /**
+     * 插上黄绿色蜡烛的蛋糕。
+     * 
      * Represents a lime-colored candle cake within Minecraft.
      */
     static readonly limeCandleCake: BlockType;
     /**
+     * 黄绿色带釉陶瓦。
+     * 
      * Represents a lime-colored block of glazed terracotta within
      * Minecraft.
      */
     static readonly limeGlazedTerracotta: BlockType;
     /**
+     * 燃烧中的高炉。
+     * 
      * Represents a lit blast furnace within Minecraft.
      */
     static readonly litBlastFurnace: BlockType;
     /**
+     * 点亮的深层红石矿石。
+     * 
      * Represents lit deepslate redstone ore within Minecraft.
      */
     static readonly litDeepslateRedstoneOre: BlockType;
     /**
+     * 燃烧中的熔炉。
+     * 
      * Represents a lit furnace within Minecraft.
      */
     static readonly litFurnace: BlockType;
     /**
+     * 南瓜灯。
+     * 
      * Represents a lit pumpkin within Minecraft.
      */
     static readonly litPumpkin: BlockType;
     /**
+     * 点亮的红石灯。
+     * 
      * Represents a lit redstone lamp within Minecraft.
      */
     static readonly litRedstoneLamp: BlockType;
     /**
+     * 点亮的红石矿石。
+     * 
      * Represents lit redstone ore within Minecraft.
      */
     static readonly litRedstoneOre: BlockType;
     /**
+     * 燃烧中的烟熏炉。
+     * 
      * Represents a lit smoker within Minecraft.
      */
     static readonly litSmoker: BlockType;
     /**
+     * 磁石。
+     * 
      * Represents a lodestone within Minecraft.
      */
     static readonly lodestone: BlockType;
     /**
+     * 橡木原木/云杉原木/白桦原木/丛林原木。
+     * 
      * Represents a log within Minecraft.
      */
     static readonly log: BlockType;
     /**
+     * 金合欢原木/深色橡木原木。
+     * 
      * Represents a more updated, customizable log within
      * Minecraft.
      */
     static readonly log2: BlockType;
     /**
+     * 织布机。
+     * 
      * Represents a loom within Minecraft.
      */
     static readonly loom: BlockType;
     /**
+     * 品红色蜡烛。
+     * 
      * Represents a magenta candle within Minecraft.
      */
     static readonly magentaCandle: BlockType;
     /**
+     * 插上品红色蜡烛的蛋糕。
+     * 
      * Represents a magenta candle cake within Minecraft.
      */
     static readonly magentaCandleCake: BlockType;
     /**
+     * 品红色带釉陶瓦。
+     * 
      * Represents a block of magenta-colored glazed terracotta
      * within Minecraft.
      */
     static readonly magentaGlazedTerracotta: BlockType;
     /**
+     * 岩浆块。
+     * 
      * Represents magma within Minecraft.
      */
     static readonly magma: BlockType;
+    /**
+     * 红树木按钮。
+     */
     static readonly mangroveButton: BlockType;
+    /**
+     * 红树木门。
+     */
     static readonly mangroveDoor: BlockType;
+    /**
+     * 双红树木台阶。
+     */
     static readonly mangroveDoubleSlab: BlockType;
+    /**
+     * 红树木栅栏。
+     */
     static readonly mangroveFence: BlockType;
+    /**
+     * 红树木栅栏门。
+     */
     static readonly mangroveFenceGate: BlockType;
+    /**
+     * 悬挂式红树木告示牌。
+     */
     static readonly mangroveHangingSign: BlockType;
+    /**
+     * 红树树叶。
+     */
     static readonly mangroveLeaves: BlockType;
+    /**
+     * 红树原木。
+     */
     static readonly mangroveLog: BlockType;
+    /**
+     * 红树木板。
+     */
     static readonly mangrovePlanks: BlockType;
+    /**
+     * 红树木压力板。
+     */
     static readonly mangrovePressurePlate: BlockType;
+    /**
+     * 红树胎生苗。
+     */
     static readonly mangrovePropagule: BlockType;
+    /**
+     * 红树根。
+     */
     static readonly mangroveRoots: BlockType;
+    /**
+     * 红树木台阶。
+     */
     static readonly mangroveSlab: BlockType;
+    /**
+     * 红树木楼梯。
+     */
     static readonly mangroveStairs: BlockType;
+    /**
+     * 红树木告示牌。
+     */
     static readonly mangroveStandingSign: BlockType;
+    /**
+     * 红树木活板门。
+     */
     static readonly mangroveTrapdoor: BlockType;
+    /**
+     * 墙上的红树木告示牌。
+     */
     static readonly mangroveWallSign: BlockType;
+    /**
+     * 红树木。
+     */
     static readonly mangroveWood: BlockType;
     /**
+     * 中型紫晶芽。
+     * 
      * Represents a medium-sized bud of amethyst within Minecraft.
      */
     static readonly mediumAmethystBud: BlockType;
     /**
+     * 西瓜。
+     * 
      * Represents a block of melon within Minecraft.
      */
     static readonly melonBlock: BlockType;
     /**
+     * 西瓜茎。
+     * 
      * Represents a stem of melon within Minecraft.
      */
     static readonly melonStem: BlockType;
     /**
+     * 刷怪笼。
+     * 
      * Represents a mob spawner within Minecraft.
      */
     static readonly mobSpawner: BlockType;
     /**
+     * 被虫蚀的石头/被虫蚀的圆石/被虫蚀的石砖/被虫蚀的苔石砖/被虫蚀的裂纹石砖/被虫蚀的雕纹石砖。
+     * 
      * Represents a monster egg within Minecraft.
      */
     static readonly monsterEgg: BlockType;
     /**
+     * 苔藓块。
+     * 
      * Represents a block of moss within Minecraft.
      */
     static readonly mossBlock: BlockType;
     /**
+     * 苔藓地毯。
+     * 
      * Represents a carpet of moss within Minecraft.
      */
     static readonly mossCarpet: BlockType;
     /**
+     * 苔石。
+     * 
      * Represents a block of cobblestone with moss within
      * Minecraft.
      */
     static readonly mossyCobblestone: BlockType;
     /**
+     * 苔石楼梯。
+     * 
      * Represents a set of mossy cobblestone stairs within
      * Minecraft.
      */
     static readonly mossyCobblestoneStairs: BlockType;
     /**
+     * 苔石砖楼梯。
+     * 
      * Represents a set of mossy stone brick stairs within
      * Minecraft.
      */
     static readonly mossyStoneBrickStairs: BlockType;
     static readonly movingBlock: BlockType;
+    /**
+     * 泥巴。
+     */
     static readonly mud: BlockType;
+    /**
+     * 双层泥砖台阶。
+     */
     static readonly mudBrickDoubleSlab: BlockType;
+    /**
+     * 泥砖。
+     */
     static readonly mudBricks: BlockType;
+    /**
+     * 泥砖台阶。
+     */
     static readonly mudBrickSlab: BlockType;
+    /**
+     * 泥砖楼梯。
+     */
     static readonly mudBrickStairs: BlockType;
+    /**
+     * 泥砖墙。
+     */
     static readonly mudBrickWall: BlockType;
+    /**
+     * 沾泥的红树根。
+     */
     static readonly muddyMangroveRoots: BlockType;
     /**
+     * 菌丝体。
+     * 
      * Represents a mycelium plant within Minecraft.
      */
     static readonly mycelium: BlockType;
     /**
+     * 下界砖。
+     * 
      * Represents a nether brick block within Minecraft.
      */
     static readonly netherBrick: BlockType;
     /**
+     * 下界砖栅栏。
+     * 
      * Represents a nether brick fence within Minecraft.
      */
     static readonly netherBrickFence: BlockType;
     /**
+     * 下界砖楼梯。
+     * 
      * Represents a set of nether brick stairs within Minecraft.
      */
     static readonly netherBrickStairs: BlockType;
     /**
+     * 下界金矿石。
+     * 
      * Represents a block of nether with embedded gold ore within
      * Minecraft.
      */
     static readonly netherGoldOre: BlockType;
     /**
+     * 下界合金块。
+     * 
      * Represents a block of netherite within Minecraft.
      */
     static readonly netheriteBlock: BlockType;
     /**
+     * 下界岩。
+     * 
      * Represents a block of netherrack within Minecraft.
      */
     static readonly netherrack: BlockType;
     /**
+     * 下界反应核。
+     * 
      * Represents a nether rock within Minecraft.
      */
     static readonly netherreactor: BlockType;
     /**
+     * 下界苗。
+     * 
      * Represents nether sprouts within Minecraft.
      */
     static readonly netherSprouts: BlockType;
     /**
+     * 下界疣。
+     * 
      * Represents nether wart within Minecraft.
      */
     static readonly netherWart: BlockType;
     /**
+     * 下界疣块。
+     * 
      * Represents a block of nether wart within Minecraft.
      */
     static readonly netherWartBlock: BlockType;
     /**
+     * 石头楼梯。
+     * 
      * Represents a standard set of stone stairs within Minecraft.
      */
     static readonly normalStoneStairs: BlockType;
     /**
+     * 音符盒。
+     * 
      * Represents a note block within Minecraft.
      */
     static readonly noteblock: BlockType;
+    /**
+     * 悬挂式橡木告示牌。
+     */
     static readonly oakHangingSign: BlockType;
     /**
+     * 橡木楼梯。
+     * 
      * Represents a set of oak stairs within Minecraft.
      */
     static readonly oakStairs: BlockType;
     /**
+     * 侦测器。
+     * 
      * Represents an observer within Minecraft.
      */
     static readonly observer: BlockType;
     /**
+     * 黑曜石。
+     * 
      * Represents an obsidian block within Minecraft.
      */
     static readonly obsidian: BlockType;
+    /**
+     * 赭黄蛙明灯。
+     */
     static readonly ochreFroglight: BlockType;
     /**
+     * 橙色蜡烛。
+     * 
      * Represents an orange candle within Minecraft.
      */
     static readonly orangeCandle: BlockType;
     /**
+     * 插上橙色蜡烛的蛋糕。
+     * 
      * Represents an orange candle cake within Minecraft.
      */
     static readonly orangeCandleCake: BlockType;
     /**
+     * 橙色带釉陶瓦。
+     * 
      * Represents a block of orange-colored glazed terracotta
      * within Minecraft.
      */
     static readonly orangeGlazedTerracotta: BlockType;
     /**
+     * 氧化的铜块。
+     * 
      * Represents a block of oxidized copper within Minecraft.
      */
     static readonly oxidizedCopper: BlockType;
     /**
+     * 氧化的切制铜块。
+     * 
      * Represents a block of oxidized cut copper within Minecraft.
      */
     static readonly oxidizedCutCopper: BlockType;
     /**
+     * 氧化的切制铜台阶。
+     * 
      * Represents a slab of oxidized cut copper within Minecraft.
      */
     static readonly oxidizedCutCopperSlab: BlockType;
     /**
+     * 氧化的切制铜楼梯。
+     * 
      * Represents a set of oxidized cut copper stairs within
      * Minecraft.
      */
     static readonly oxidizedCutCopperStairs: BlockType;
     /**
+     * 氧化的双切制铜台阶。
+     * 
      * Represents a double slab of oxidized cut copper within
      * Minecraft.
      */
     static readonly oxidizedDoubleCutCopperSlab: BlockType;
     /**
+     * 浮冰。
+     * 
      * Represents a block of packed ice within Minecraft.
      */
     static readonly packedIce: BlockType;
+    /**
+     * 泥坯。
+     */
     static readonly packedMud: BlockType;
+    /**
+     * 珠光蛙明灯。
+     */
     static readonly pearlescentFroglight: BlockType;
     /**
+     * 粉红色蜡烛。
+     * 
      * Represents a pink candle within Minecraft.
      */
     static readonly pinkCandle: BlockType;
     /**
+     * 插上粉红色蜡烛的蛋糕。
+     * 
      * Represents a pink candle cake within Minecraft.
      */
     static readonly pinkCandleCake: BlockType;
     /**
+     * 粉红色带釉陶瓦。
+     * 
      * Represents a pink-colored block of glazed terracotta within
      * Minecraft.
      */
     static readonly pinkGlazedTerracotta: BlockType;
     /**
+     * 活塞。
+     * 
      * Represents a piston within Minecraft.
      */
     static readonly piston: BlockType;
+    /**
+     * 活塞头。
+     */
     static readonly pistonArmCollision: BlockType;
     /**
+     * 橡木木板/云杉木板/白桦木板/丛林木板/金合欢木板/深色橡木木板。
+     * 
      * Represents a set of planks within Minecraft.
      */
     static readonly planks: BlockType;
     /**
+     * 灰化土。
+     * 
      * Represents podzol within Minecraft.
      */
     static readonly podzol: BlockType;
     /**
+     * 滴水石锥。
+     * 
      * Represents pointed dripstone within Minecraft.
      */
     static readonly pointedDripstone: BlockType;
     /**
+     * 磨制安山岩楼梯。
+     * 
      * Represents a set of polished andesite stairs within
      * Minecraft.
      */
     static readonly polishedAndesiteStairs: BlockType;
     /**
+     * 磨制玄武岩。
+     * 
      * Represents a block of polished basalt within Minecraft.
      */
     static readonly polishedBasalt: BlockType;
     /**
+     * 磨制黑石。
+     * 
      * Represents a block of polished blackstone within Minecraft.
      */
     static readonly polishedBlackstone: BlockType;
     /**
+     * 双层磨制黑石砖台阶。
+     * 
      * Represents a double slab of polished blackstone brick within
      * Minecraft.
      */
     static readonly polishedBlackstoneBrickDoubleSlab: BlockType;
     /**
+     * 磨制黑石砖。
+     * 
      * Represents a block of polished blackstone bricks within
      * Minecraft.
      */
     static readonly polishedBlackstoneBricks: BlockType;
     /**
+     * 磨制黑石砖台阶。
+     * 
      * Represents a slab of polished blackstone within Minecraft.
      */
     static readonly polishedBlackstoneBrickSlab: BlockType;
     /**
+     * 磨制黑石砖楼梯。
+     * 
      * Represents a set of polished blackstone brick stairs within
      * Minecraft.
      */
     static readonly polishedBlackstoneBrickStairs: BlockType;
     /**
+     * 磨制黑石砖墙。
+     * 
      * Represents a polished blackstone brick wall within
      * Minecraft.
      */
     static readonly polishedBlackstoneBrickWall: BlockType;
     /**
+     * 磨制黑石按钮。
+     * 
      * Represents a polished blackstone button within Minecraft.
      */
     static readonly polishedBlackstoneButton: BlockType;
     /**
+     * 双层磨制黑石台阶。
+     * 
      * Represents a double slab of polished blackstone within
      * Minecraft.
      */
     static readonly polishedBlackstoneDoubleSlab: BlockType;
     /**
+     * 磨制黑石压力板。
+     * 
      * Represents a polished blackstone pressure plate within
      * Minecraft.
      */
     static readonly polishedBlackstonePressurePlate: BlockType;
     /**
+     * 磨制黑石台阶。
+     * 
      * Represents a slab of polished blackstone within Minecraft.
      */
     static readonly polishedBlackstoneSlab: BlockType;
     /**
+     * 磨制黑石楼梯。
+     * 
      * Represents a set of polished blackstone stairs within
      * Minecraft.
      */
     static readonly polishedBlackstoneStairs: BlockType;
     /**
+     * 磨制黑石墙。
+     * 
      * Represents a polished blackstone wall within Minecraft.
      */
     static readonly polishedBlackstoneWall: BlockType;
     /**
+     * 磨制深板岩。
+     * 
      * Represents a block of polished deepslate within Minecraft.
      */
     static readonly polishedDeepslate: BlockType;
     /**
+     * 双层磨制深板岩台阶。
+     * 
      * Represents a double slab of polished deepslate within
      * Minecraft.
      */
     static readonly polishedDeepslateDoubleSlab: BlockType;
     /**
+     * 磨制深板岩台阶。
+     * 
      * Represents a slab of polished deepslate within Minecraft.
      */
     static readonly polishedDeepslateSlab: BlockType;
     /**
+     * 磨制深板岩楼梯。
+     * 
      * Represents a set of polished deepslate stairs within
      * Minecraft.
      */
     static readonly polishedDeepslateStairs: BlockType;
     /**
+     * 磨制深板岩墙。
+     * 
      * Represents a wall of polished deepslate within Minecraft.
      */
     static readonly polishedDeepslateWall: BlockType;
     /**
+     * 磨制闪长岩楼梯。
+     * 
      * Represents a block of polished diorite within Minecraft.
      */
     static readonly polishedDioriteStairs: BlockType;
     /**
+     * 磨制花岗岩楼梯。
+     * 
      * Represents a set of polished granite stairs within
      * Minecraft.
      */
     static readonly polishedGraniteStairs: BlockType;
     /**
+     * 下界传送门。
+     * 
      * Represents a portal within Minecraft.
      */
     static readonly portal: BlockType;
     /**
+     * 马铃薯。
+     * 
      * Represents a set of potatoes within Minecraft.
      */
     static readonly potatoes: BlockType;
     /**
+     * 细雪。
+     * 
      * Represents a block of powder snow within Minecraft.
      */
     static readonly powderSnow: BlockType;
     /**
+     * 激活的红石比较器。
+     * 
      * Represents a powered comparator within Minecraft.
      */
     static readonly poweredComparator: BlockType;
     /**
+     * 激活的红石中继器。
+     * 
      * Represents a powered repeater within Minecraft.
      */
     static readonly poweredRepeater: BlockType;
     /**
+     * 海晶石/暗海晶石/海晶石砖。
+     * 
      * Represents a block of prismarine within Minecraft.
      */
     static readonly prismarine: BlockType;
     /**
+     * 海晶石砖楼梯。
+     * 
      * Represents a set of prismarine brick stairs within
      * Minecraft.
      */
     static readonly prismarineBricksStairs: BlockType;
     /**
+     * 海晶石楼梯。
+     * 
      * Represents a set of prismarine stairs within Minecraft.
      */
     static readonly prismarineStairs: BlockType;
     /**
+     * 南瓜。
+     * 
      * Represents a pumpkin within Minecraft.
      */
     static readonly pumpkin: BlockType;
     /**
+     * 南瓜茎。
+     * 
      * Represents a pumpkin stem within Minecraft.
      */
     static readonly pumpkinStem: BlockType;
     /**
+     * 紫色蜡烛。
+     * 
      * Represents a purple candle within Minecraft.
      */
     static readonly purpleCandle: BlockType;
     /**
+     * 插上紫色蜡烛的蛋糕。
+     * 
      * Represents a purple colored candle cake within Minecraft.
      */
     static readonly purpleCandleCake: BlockType;
     /**
+     * 紫色带釉陶瓦。
+     * 
      * Represents a purple-colored block of glazed terracotta
      * within Minecraft.
      */
     static readonly purpleGlazedTerracotta: BlockType;
     /**
+     * 紫珀块/雕纹紫珀块/紫珀柱/平滑紫珀块。
+     * 
      * Represents a purpur block within Minecraft.
      */
     static readonly purpurBlock: BlockType;
     /**
+     * 紫珀楼梯。
+     * 
      * Represents a set of purpur stairs within Minecraft.
      */
     static readonly purpurStairs: BlockType;
     /**
+     * 石英块/雕纹石英块/石英柱/平滑石英块。
+     * 
      * Represents a block of solid quartz within Minecraft.
      */
     static readonly quartzBlock: BlockType;
     /**
+     * 石英砖。
+     * 
      * Represents a block of solid quartz bricks within Minecraft.
      */
     static readonly quartzBricks: BlockType;
     /**
+     * 下界石英矿石。
+     * 
      * Represents a block with embedded quartz ore within
      * Minecraft.
      */
     static readonly quartzOre: BlockType;
     /**
+     * 石英楼梯。
+     * 
      * Represents a set of quartz stairs within Minecraft.
      */
     static readonly quartzStairs: BlockType;
     /**
+     * 铁轨。
+     * 
      * Represents a set of rails within Minecraft.
      */
     static readonly rail: BlockType;
     /**
+     * 粗铜块。
+     * 
      * Represents a block of raw copper within Minecraft.
      */
     static readonly rawCopperBlock: BlockType;
     /**
+     * 粗金块。
+     * 
      * Represents a block of raw gold within Minecraft.
      */
     static readonly rawGoldBlock: BlockType;
     /**
+     * 粗铁块。
+     * 
      * Represents a block of raw iron within Minecraft.
      */
     static readonly rawIronBlock: BlockType;
     /**
+     * 红色蜡烛。
+     * 
      * Represents a red candle within Minecraft.
      */
     static readonly redCandle: BlockType;
     /**
+     * 插上红色蜡烛的蛋糕。
+     * 
      * Represents a red candle cake within Minecraft.
      */
     static readonly redCandleCake: BlockType;
     /**
+     * 虞美人/兰花/绒球葱/蓝花美耳草/红色郁金香/橙色郁金香/白色郁金香/粉红色郁金香/滨菊/矢车菊/铃兰。
+     * 
      * Represents a red flower within Minecraft.
      */
     static readonly redFlower: BlockType;
     /**
+     * 红色带釉陶瓦。
+     * 
      * Represents a red-colored block of glazed terracotta within
      * Minecraft.
      */
     static readonly redGlazedTerracotta: BlockType;
     /**
+     * 红色蘑菇。
+     * 
      * Represents a red mushroom within Minecraft.
      */
     static readonly redMushroom: BlockType;
     /**
+     * 红色蘑菇方块。
+     * 
      * Represents a block of red mushroom within Minecraft.
      */
     static readonly redMushroomBlock: BlockType;
     /**
+     * 红色下界砖块。
+     * 
      * Represents a block of red nether brick within Minecraft.
      */
     static readonly redNetherBrick: BlockType;
     /**
+     * 红色下界砖楼梯。
+     * 
      * Represents a set of red nether brick stairs within
      * Minecraft.
      */
     static readonly redNetherBrickStairs: BlockType;
     /**
+     * 红砂岩/雕纹红砂岩/切制红砂岩/平滑红砂岩。
+     * 
      * Represents a block of red sandstone within Minecraft.
      */
     static readonly redSandstone: BlockType;
     /**
+     * 红砂岩楼梯。
+     * 
      * Represents a set of red sandstone stairs within Minecraft.
      */
     static readonly redSandstoneStairs: BlockType;
     /**
+     * 红石块。
+     * 
      * Represents a block of redstone within Minecraft.
      */
     static readonly redstoneBlock: BlockType;
     /**
+     * 红石灯。
+     * 
      * Represents a redstone lamp within Minecraft.
      */
     static readonly redstoneLamp: BlockType;
     /**
+     * 红石矿石。
+     * 
      * Represents a block with embedded redstone ore within
      * Minecraft.
      */
     static readonly redstoneOre: BlockType;
     /**
+     * 红石火把。
+     * 
      * Represents a redstone torch within Minecraft.
      */
     static readonly redstoneTorch: BlockType;
     /**
+     * 红石线。
+     * 
      * Represents a redstone wire within Minecraft.
      */
     static readonly redstoneWire: BlockType;
     /**
+     * 甘蔗。
+     * 
      * Represents reeds within Minecraft.
      */
     static readonly reeds: BlockType;
+    /**
+     * 强化深板岩。
+     */
     static readonly reinforcedDeepslate: BlockType;
     /**
+     * 循环型命令方块。
+     * 
      * Represents a repeating command block within Minecraft.
      */
     static readonly repeatingCommandBlock: BlockType;
     /**
+     * reserved6。
+     * 
      * Represents a reserved block within Minecraft.
      */
     static readonly reserved6: BlockType;
     /**
+     * 重生锚。
+     * 
      * Represents a respawn anchor within Minecraft.
      */
     static readonly respawnAnchor: BlockType;
     /**
+     * 沙子/红沙。
+     * 
      * Represents a block of sand within Minecraft.
      */
     static readonly sand: BlockType;
     /**
+     * 砂岩/雕纹砂岩/切制砂岩/平滑砂岩。
+     * 
      * Represents a block of sandstone within Minecraft.
      */
     static readonly sandstone: BlockType;
     /**
+     * 砂岩楼梯。
+     * 
      * Represents a set of sandstone stairs within Minecraft.
      */
     static readonly sandstoneStairs: BlockType;
     /**
+     * 橡树树苗/云杉树苗/白桦树苗/丛林树苗/金合欢树苗/深色橡树树苗。
+     * 
      * Represents a sapling within Minecraft.
      */
     static readonly sapling: BlockType;
     /**
+     * 脚手架。
+     * 
      * Represents a set of scaffolding within Minecraft.
      */
     static readonly scaffolding: BlockType;
+    /**
+     * 幽匿块。
+     */
     static readonly sculk: BlockType;
+    /**
+     * 幽匿催发体。
+     */
     static readonly sculkCatalyst: BlockType;
     /**
+     * 幽匿感测体。
+     * 
      * Represents a sculk sensor within Minecraft.
      */
     static readonly sculkSensor: BlockType;
+    /**
+     * 幽匿尖啸体。
+     */
     static readonly sculkShrieker: BlockType;
+    /**
+     * 幽匿脉络。
+     */
     static readonly sculkVein: BlockType;
     /**
+     * 海草。
+     * 
      * Represents seagrass within Minecraft.
      */
     static readonly seagrass: BlockType;
     /**
+     * 海晶灯。
+     * 
      * Represents a sealantern within Minecraft.
      */
     static readonly seaLantern: BlockType;
     /**
+     * 海泡菜。
+     * 
      * Represents a seapickle within Minecraft.
      */
     static readonly seaPickle: BlockType;
     /**
+     * 菌光体。
+     * 
      * Represents a shroom light within Minecraft.
      */
     static readonly shroomlight: BlockType;
     /**
+     * 潜影盒。
+     * 
      * Represents a shulker box within Minecraft.
      */
     static readonly shulkerBox: BlockType;
     /**
+     * 淡灰色带釉陶瓦。
+     * 
      * Represents a silver-colored block of glazed terracotta
      * within Minecraft.
      */
     static readonly silverGlazedTerracotta: BlockType;
     /**
+     * 生物头颅。
+     * 
      * Represents a skull within Minecraft.
      */
     static readonly skull: BlockType;
     /**
+     * 黏液块。
+     * 
      * Represents slime within Minecraft.
      */
     static readonly slime: BlockType;
     /**
+     * 小型紫晶芽。
+     * 
      * Represents a small bud of amethyst within Minecraft.
      */
     static readonly smallAmethystBud: BlockType;
     /**
+     * 小型垂滴叶。
+     * 
      * Represents a small dripleaf block within Minecraft.
      */
     static readonly smallDripleafBlock: BlockType;
     /**
+     * 锻造台。
+     * 
      * Represents a smithing table within Minecraft.
      */
     static readonly smithingTable: BlockType;
     /**
+     * 烟熏炉。
+     * 
      * Represents a smoker within Minecraft.
      */
     static readonly smoker: BlockType;
     /**
+     * 平滑玄武岩。
+     * 
      * Represents a block of smooth basalt within Minecraft.
      */
     static readonly smoothBasalt: BlockType;
     /**
+     * 平滑石英楼梯。
+     * 
      * Represents a set of smooth quartz stairs within Minecraft.
      */
     static readonly smoothQuartzStairs: BlockType;
     /**
+     * 平滑红砂岩楼梯。
+     * 
      * Represents a set of smooth red sandstone stairs within
      * Minecraft.
      */
     static readonly smoothRedSandstoneStairs: BlockType;
     /**
+     * 平滑砂岩楼梯。
+     * 
      * Represents a set of smooth redstone stairs within Minecraft.
      */
     static readonly smoothSandstoneStairs: BlockType;
     /**
+     * 平滑石头。
+     * 
      * Represents a smooth stone block within Minecraft.
      */
     static readonly smoothStone: BlockType;
     /**
+     * 雪块。
+     * 
      * Represents snow within Minecraft.
      */
     static readonly snow: BlockType;
     /**
+     * 顶层雪。
+     * 
      * Represents a layer of snow within Minecraft.
      */
     static readonly snowLayer: BlockType;
     /**
+     * 灵魂营火。
+     * 
      * Represents a soul campfire within Minecraft.
      */
     static readonly soulCampfire: BlockType;
     /**
+     * 灵魂火。
+     * 
      * Represents soul fire within Minecraft.
      */
     static readonly soulFire: BlockType;
     /**
+     * 灵魂灯笼。
+     * 
      * Represents a soul lantern within Minecraft.
      */
     static readonly soulLantern: BlockType;
     /**
+     * 灵魂沙。
+     * 
      * Represents a block of soul sand within Minecraft.
      */
     static readonly soulSand: BlockType;
     /**
+     * 灵魂土。
+     * 
      * Represents soul soil within Minecraft.
      */
     static readonly soulSoil: BlockType;
     /**
+     * 灵魂火把。
+     * 
      * Represents a soul torch within Minecraft.
      */
     static readonly soulTorch: BlockType;
     /**
+     * 海绵/湿海绵。
+     * 
      * Represents a sponge within Minecraft.
      */
     static readonly sponge: BlockType;
     /**
+     * 孢子花。
+     * 
      * Represents a spore blossom within Minecraft.
      */
     static readonly sporeBlossom: BlockType;
     /**
+     * 云杉木按钮。
+     * 
      * Represents a spruce wood button within Minecraft.
      */
     static readonly spruceButton: BlockType;
     /**
+     * 云杉木门。
+     * 
      * Represents a spruce wood door within Minecraft.
      */
     static readonly spruceDoor: BlockType;
     /**
+     * 云杉木栅栏门。
+     * 
      * Represents a spruce wood fence gate within Minecraft.
      */
     static readonly spruceFenceGate: BlockType;
+    /**
+     * 悬挂式云杉木告示牌。
+     */
     static readonly spruceHangingSign: BlockType;
     /**
+     * 云杉木压力板。
+     * 
      * Represents a spruce wood pressure plate within Minecraft.
      */
     static readonly sprucePressurePlate: BlockType;
     /**
+     * 云杉木楼梯。
+     * 
      * Represents a set of spruce wood stairs within Minecraft.
      */
     static readonly spruceStairs: BlockType;
     /**
+     * 云杉木告示牌。
+     * 
      * Represents a spruce wood standing sign within Minecraft.
      */
     static readonly spruceStandingSign: BlockType;
     /**
+     * 云杉木活板门。
+     * 
      * Represents a spruce wood trapdoor within Minecraft.
      */
     static readonly spruceTrapdoor: BlockType;
     /**
+     * 墙上的云杉木告示牌。
+     * 
      * Represents a spruce wood wall sign within Minecraft.
      */
     static readonly spruceWallSign: BlockType;
     /**
+     * 染色玻璃。
+     * 
      * Represents stained glass within Minecraft.
      */
     static readonly stainedGlass: BlockType;
     /**
+     * 染色玻璃板。
+     * 
      * Represents a pane of stained glass within Minecraft.
      */
     static readonly stainedGlassPane: BlockType;
     /**
+     * 染色陶瓦。
+     * 
      * Represents a block of stained hardened clay within
      * Minecraft.
      */
     static readonly stainedHardenedClay: BlockType;
     /**
+     * 旗帜。
+     * 
      * Represents a standing banner within Minecraft.
      */
     static readonly standingBanner: BlockType;
     /**
+     * 橡木告示牌。
+     * 
      * Represents a standing sign within Minecraft.
      */
     static readonly standingSign: BlockType;
     /**
+     * 黏性活塞。
+     * 
      * Represents a piston block with a sticky arm within
      * Minecraft.
      */
     static readonly stickyPiston: BlockType;
+    /**
+     * 黏性活塞头。
+     */
     static readonly stickyPistonArmCollision: BlockType;
     /**
+     * 石头/花岗岩/磨制花岗岩/闪长岩/磨制闪长岩/安山岩/磨制安山岩。
+     * 
      * Represents a block of stone within Minecraft.
      */
     static readonly stone: BlockType;
+    /**
+     * 平滑石头台阶/砂岩台阶/石化橡木台阶/圆石台阶/红砖台阶/石砖台阶/石英台阶/下界砖台阶。
+     */
     static readonly stoneBlockSlab: BlockType;
+    /**
+     * 红砂岩台阶/紫珀台阶/海晶石台阶/暗海晶石台阶/海晶石砖台阶/苔石台阶/平滑砂岩台阶/红色下界砖台阶。
+     */
     static readonly stoneBlockSlab2: BlockType;
+    /**
+     * 末地石砖台阶/平滑红砂岩台阶/磨制安山岩台阶/安山岩台阶/闪长岩台阶/磨制闪长岩台阶/花岗岩台阶/磨制花岗岩台阶。
+     */
     static readonly stoneBlockSlab3: BlockType;
+    /**
+     * 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。
+     */
     static readonly stoneBlockSlab4: BlockType;
     /**
+     * 石砖/苔石砖/裂纹石砖/雕纹石砖。
+     * 
      * Represents a block of stone brick within Minecraft.
      */
     static readonly stonebrick: BlockType;
     /**
+     * 石砖楼梯。
+     * 
      * Represents a set of stone brick stairs within Minecraft.
      */
     static readonly stoneBrickStairs: BlockType;
     /**
+     * 石头按钮。
+     * 
      * Represents a stone button within Minecraft.
      */
     static readonly stoneButton: BlockType;
     /**
+     * 切石机（旧版）。
+     * 
      * Represents a stonecutter within Minecraft.
      */
     static readonly stonecutter: BlockType;
     /**
+     * 切石机。
+     * 
      * Represents a stonecutter block within Minecraft.
      */
     static readonly stonecutterBlock: BlockType;
     /**
+     * 石头压力板。
+     * 
      * Represents a stone pressure plate within Minecraft.
      */
     static readonly stonePressurePlate: BlockType;
     /**
+     * 平滑石头台阶/砂岩台阶/石化橡木台阶/圆石台阶/红砖台阶/石砖台阶/石英台阶/下界砖台阶。
+     * 
      * Represents a slab of stone within Minecraft.
      */
     static readonly stoneSlab: BlockType;
     /**
+     * 红砂岩台阶/紫珀台阶/海晶石台阶/暗海晶石台阶/海晶石砖台阶/苔石台阶/平滑砂岩台阶/红色下界砖台阶。
+     * 
      * Represents a variant of a slab of stone (#2) within
      * Minecraft.
      */
     static readonly stoneSlab2: BlockType;
     /**
+     * 末地石砖台阶/平滑红砂岩台阶/磨制安山岩台阶/安山岩台阶/闪长岩台阶/磨制闪长岩台阶/花岗岩台阶/磨制花岗岩台阶。
+     * 
      * Represents a slab of stone (variant #3) within Minecraft.
      */
     static readonly stoneSlab3: BlockType;
     /**
+     * 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。
+     * 
      * Represents a slab of stone (variant #4) within Minecraft.
      */
     static readonly stoneSlab4: BlockType;
     /**
+     * 石头楼梯。
+     * 
      * Represents a set of stone stairs within Minecraft.
      */
     static readonly stoneStairs: BlockType;
     /**
+     * 去皮金合欢原木。
+     * 
      * Represents a stripped acacia log within Minecraft.
      */
     static readonly strippedAcaciaLog: BlockType;
+    /**
+     * 去皮竹块。
+     */
     static readonly strippedBambooBlock: BlockType;
     /**
+     * 去皮白桦原木。
+     * 
      * Represents a stripped birch log within Minecraft.
      */
     static readonly strippedBirchLog: BlockType;
     /**
+     * 去皮绯红菌核。
+     * 
      * Represents stripped crimson hyphae within Minecraft.
      */
     static readonly strippedCrimsonHyphae: BlockType;
     /**
+     * 去皮绯红菌柄。
+     * 
      * Represents a stripped crimson stem within Minecraft.
      */
     static readonly strippedCrimsonStem: BlockType;
     /**
+     * 去皮深色橡木原木。
+     * 
      * Represents a stripped dark oak log within Minecraft.
      */
     static readonly strippedDarkOakLog: BlockType;
     /**
+     * 去皮丛林原木。
+     * 
      * Represents a stripped jungle log within Minecraft.
      */
     static readonly strippedJungleLog: BlockType;
+    /**
+     * 去皮红树原木。
+     */
     static readonly strippedMangroveLog: BlockType;
+    /**
+     * 去皮红树木。
+     */
     static readonly strippedMangroveWood: BlockType;
     /**
+     * 去皮橡木原木。
+     * 
      * Represents a stripped oak log within Minecraft.
      */
     static readonly strippedOakLog: BlockType;
     /**
+     * 去皮云杉原木。
+     * 
      * Represents a stripped spruce log within Minecraft.
      */
     static readonly strippedSpruceLog: BlockType;
     /**
+     * 去皮诡异菌核。
+     * 
      * Represents stripped warped hyphae within Minecraft.
      */
     static readonly strippedWarpedHyphae: BlockType;
     /**
+     * 去皮诡异菌柄。
+     * 
      * Represents stripped warped stem within Minecraft.
      */
     static readonly strippedWarpedStem: BlockType;
     /**
+     * 结构方块。
+     * 
      * Represents a structure block, which provides for the saving
      * and loading of block structures, within Minecraft.
      */
     static readonly structureBlock: BlockType;
     /**
+     * 结构空位。
+     * 
      * Represents a structure void within Minecraft.
      */
     static readonly structureVoid: BlockType;
     /**
+     * 甜浆果丛。
+     * 
      * Represents a sweet berry bush within Minecraft.
      */
     static readonly sweetBerryBush: BlockType;
     /**
+     * 蕨/草。
+     * 
      * Represents tall grass within Minecraft.
      */
     static readonly tallgrass: BlockType;
     /**
+     * 标靶。
+     * 
      * Represents a target within Minecraft.
      */
     static readonly target: BlockType;
     /**
+     * 遮光玻璃。
+     * 
      * Represents tinted glass within Minecraft.
      */
     static readonly tintedGlass: BlockType;
     /**
+     * TNT。
+     * 
      * Represents a block of TnT within Minecraft.
      */
     static readonly tnt: BlockType;
     /**
+     * 火把。
+     * 
      * Represents a torch within Minecraft.
      */
     static readonly torch: BlockType;
     /**
+     * 活板门。
+     * 
      * Represents a trapdoor within Minecraft.
      */
     static readonly trapdoor: BlockType;
     /**
+     * 陷阱箱。
+     * 
      * Represents a trapped chest within Minecraft.
      */
     static readonly trappedChest: BlockType;
+    /**
+     * 绊线。
+     */
     static readonly tripWire: BlockType;
     /**
+     * 绊线钩。
+     * 
      * Represents a tripwire hook within Minecraft.
      */
     static readonly tripwireHook: BlockType;
     /**
+     * 凝灰岩。
+     * 
      * Represents a block of tuff within Minecraft.
      */
     static readonly tuff: BlockType;
     /**
+     * 海龟蛋。
+     * 
      * Represents a turtle egg within Minecraft.
      */
     static readonly turtleEgg: BlockType;
     /**
+     * 缠怨藤。
+     * 
      * Represents a set of twisting vines within Minecraft.
      */
     static readonly twistingVines: BlockType;
     /**
+     * 水下火把。
+     * 
      * Represents an underwater torch within Minecraft.
      */
     static readonly underwaterTorch: BlockType;
     /**
+     * 潜影盒。
+     * 
      * Represents an undyed shulker box within Minecraft.
      */
     static readonly undyedShulkerBox: BlockType;
     /**
+     * 数据更新方块。
+     * 
      * Represents an unknown block within Minecraft.
      */
     static readonly unknown: BlockType;
     /**
+     * 熄灭的红石火把。
+     * 
      * Represents an unlit redstone torch within Minecraft.
      */
     static readonly unlitRedstoneTorch: BlockType;
     /**
+     * 红石比较器。
+     * 
      * Represents an unpowered comparator within Minecraft.
      */
     static readonly unpoweredComparator: BlockType;
     /**
+     * 红石中继器。
+     * 
      * Represents an unpowered repeater within Minecraft.
      */
     static readonly unpoweredRepeater: BlockType;
+    /**
+     * 青翠蛙明灯。
+     */
     static readonly verdantFroglight: BlockType;
     /**
+     * 藤蔓。
+     * 
      * Represents a set of vines within Minecraft.
      */
     static readonly vine: BlockType;
     /**
+     * 墙上的旗帜。
+     * 
      * Represents a wall banner within Minecraft.
      */
     static readonly wallBanner: BlockType;
     /**
+     * 墙上的橡木告示牌。
+     * 
      * Represents a wall sign within Minecraft.
      */
     static readonly wallSign: BlockType;
     /**
+     * 诡异木按钮。
+     * 
      * Represents a warped button within Minecraft.
      */
     static readonly warpedButton: BlockType;
     /**
+     * 诡异木门。
+     * 
      * Represents a warped door within Minecraft.
      */
     static readonly warpedDoor: BlockType;
     /**
+     * 双诡异木台阶。
+     * 
      * Represents a double slab of warped within Minecraft.
      */
     static readonly warpedDoubleSlab: BlockType;
     /**
+     * 诡异木栅栏。
+     * 
      * Represents a warped fence within Minecraft.
      */
     static readonly warpedFence: BlockType;
     /**
+     * 诡异木栅栏门。
+     * 
      * Represents a warped fence gate within Minecraft.
      */
     static readonly warpedFenceGate: BlockType;
     /**
+     * 诡异菌。
+     * 
      * Represents warped fungus within Minecraft.
      */
     static readonly warpedFungus: BlockType;
+    /**
+     * 悬挂式诡异木告示牌。
+     */
     static readonly warpedHangingSign: BlockType;
     /**
+     * 诡异菌核。
+     * 
      * Represents warped hyphae within Minecraft.
      */
     static readonly warpedHyphae: BlockType;
     /**
+     * 诡异菌岩。
+     * 
      * Represents warped nylium within Minecraft.
      */
     static readonly warpedNylium: BlockType;
     /**
+     * 诡异木板。
+     * 
      * Represents warped planks within Minecraft.
      */
     static readonly warpedPlanks: BlockType;
     /**
+     * 诡异木压力板。
+     * 
      * Represents a warped pressure plate within Minecraft.
      */
     static readonly warpedPressurePlate: BlockType;
     /**
+     * 诡异菌索。
+     * 
      * Represents a set of warped roots within Minecraft.
      */
     static readonly warpedRoots: BlockType;
     /**
+     * 诡异木台阶。
+     * 
      * Represents a slab of warped material within Minecraft.
      */
     static readonly warpedSlab: BlockType;
     /**
+     * 诡异木楼梯。
+     * 
      * Represents a set of warped stairs within Minecraft.
      */
     static readonly warpedStairs: BlockType;
     /**
+     * 诡异木告示牌。
+     * 
      * Represents a warped standing sign within Minecraft.
      */
     static readonly warpedStandingSign: BlockType;
     /**
+     * 诡异菌柄。
+     * 
      * Represents a warped stem within Minecraft.
      */
     static readonly warpedStem: BlockType;
     /**
+     * 诡异木活板门。
+     * 
      * Represents a warped trapdoor within Minecraft.
      */
     static readonly warpedTrapdoor: BlockType;
     /**
+     * 墙上的诡异木告示牌。
+     * 
      * Represents a warped wall sign within Minecraft.
      */
     static readonly warpedWallSign: BlockType;
     /**
+     * 诡异疣块。
+     * 
      * Represents a warped wart block within Minecraft.
      */
     static readonly warpedWartBlock: BlockType;
     /**
+     * 水。
+     * 
      * Represents water within Minecraft.
      */
     static readonly water: BlockType;
     /**
+     * 睡莲。
+     * 
      * Represents a water lily within Minecraft.
      */
     static readonly waterlily: BlockType;
     /**
+     * 涂蜡铜块。
+     * 
      * Represents a block of waxed copper within Minecraft.
      */
     static readonly waxedCopper: BlockType;
     /**
+     * 涂蜡切制铜块。
+     * 
      * Represents a block of waxed cut copper within Minecraft.
      */
     static readonly waxedCutCopper: BlockType;
     /**
+     * 涂蜡切制铜台阶。
+     * 
      * Represents a slab of waxed cut copper within Minecraft.
      */
     static readonly waxedCutCopperSlab: BlockType;
     /**
+     * 涂蜡切制铜楼梯。
+     * 
      * Represents a set of waxed cut copper stairs within
      * Minecraft.
      */
     static readonly waxedCutCopperStairs: BlockType;
     /**
+     * 涂蜡双切制铜台阶。
+     * 
      * Represents a double slab of waxed cut copper within
      * Minecraft.
      */
     static readonly waxedDoubleCutCopperSlab: BlockType;
     /**
+     * 斑驳的涂蜡铜块。
+     * 
      * Represents a block of waxed exposed copper within Minecraft.
      */
     static readonly waxedExposedCopper: BlockType;
     /**
+     * 斑驳的涂蜡切制铜块。
+     * 
      * Represents a block of waxed exposed cut copper within
      * Minecraft.
      */
     static readonly waxedExposedCutCopper: BlockType;
     /**
+     * 斑驳的涂蜡切制铜台阶。
+     * 
      * Represents a slab of waxed exposed cut copper within
      * Minecraft.
      */
     static readonly waxedExposedCutCopperSlab: BlockType;
     /**
+     * 斑驳的涂蜡切制铜楼梯。
+     * 
      * Represents a set of waxed exposed cut copper stairs within
      * Minecraft.
      */
     static readonly waxedExposedCutCopperStairs: BlockType;
     /**
+     * 斑驳的涂蜡双切制铜台阶。
+     * 
      * Represents a double slab of waxed exposed cut copper within
      * Minecraft.
      */
     static readonly waxedExposedDoubleCutCopperSlab: BlockType;
     /**
+     * 氧化的涂蜡铜块。
+     * 
      * Represents a block of waxed oxidized copper within
      * Minecraft.
      */
     static readonly waxedOxidizedCopper: BlockType;
     /**
+     * 氧化的涂蜡切制铜块。
+     * 
      * Represents a block of waxed oxidized cut copper within
      * Minecraft.
      */
     static readonly waxedOxidizedCutCopper: BlockType;
     /**
+     * 氧化的涂蜡切制铜台阶。
+     * 
      * Represents a slab of waxed oxidized cut copper within
      * Minecraft.
      */
     static readonly waxedOxidizedCutCopperSlab: BlockType;
     /**
+     * 氧化的涂蜡切制铜楼梯。
+     * 
      * Represents a set of waxed oxidized cut copper stairs within
      * Minecraft.
      */
     static readonly waxedOxidizedCutCopperStairs: BlockType;
     /**
+     * 氧化的涂蜡双切制铜台阶。
+     * 
      * Represents a double slab of waxed oxidized cut copper within
      * Minecraft.
      */
     static readonly waxedOxidizedDoubleCutCopperSlab: BlockType;
     /**
+     * 锈蚀的涂蜡铜块。
+     * 
      * Represents a block of waxed weathered copper within
      * Minecraft.
      */
     static readonly waxedWeatheredCopper: BlockType;
     /**
+     * 锈蚀的涂蜡切制铜块。
+     * 
      * Represents a block of waxed weathered cut copper within
      * Minecraft.
      */
     static readonly waxedWeatheredCutCopper: BlockType;
     /**
+     * 锈蚀的涂蜡切制铜台阶。
+     * 
      * Represents a slab of waxed weathered cut copper within
      * Minecraft.
      */
     static readonly waxedWeatheredCutCopperSlab: BlockType;
     /**
+     * 锈蚀的涂蜡切制铜楼梯。
+     * 
      * Represents a set of waxed weathered cut copper stairs within
      * Minecraft.
      */
     static readonly waxedWeatheredCutCopperStairs: BlockType;
     /**
+     * 锈蚀的涂蜡双切制铜台阶。
+     * 
      * Represents a double slab of waxed weathered cut copper
      * within Minecraft.
      */
     static readonly waxedWeatheredDoubleCutCopperSlab: BlockType;
     /**
+     * 锈蚀的铜块。
+     * 
      * Represents a block of weathered copper within Minecraft.
      */
     static readonly weatheredCopper: BlockType;
     /**
+     * 锈蚀的切制铜块。
+     * 
      * Represents a block of weathered cut copper within Minecraft.
      */
     static readonly weatheredCutCopper: BlockType;
     /**
+     * 锈蚀的切制铜台阶。
+     * 
      * Represents a slab of weathered cut copper within Minecraft.
      */
     static readonly weatheredCutCopperSlab: BlockType;
     /**
+     * 锈蚀的切制铜楼梯。
+     * 
      * Represents a set of weathered cut copper stairs within
      * Minecraft.
      */
     static readonly weatheredCutCopperStairs: BlockType;
     /**
+     * 锈蚀的双切制铜台阶。
+     * 
      * Represents a double slab of weathered cut copper within
      * Minecraft.
      */
     static readonly weatheredDoubleCutCopperSlab: BlockType;
     /**
+     * 蜘蛛网。
+     * 
      * Represents a web within Minecraft.
      */
     static readonly web: BlockType;
     /**
+     * 垂泪藤。
+     * 
      * Represents a set of weeping vines within Minecraft.
      */
     static readonly weepingVines: BlockType;
     /**
+     * 小麦。
+     * 
      * Represents wheat within Minecraft.
      */
     static readonly wheat: BlockType;
     /**
+     * 白色蜡烛。
+     * 
      * Represents a white candle within Minecraft.
      */
     static readonly whiteCandle: BlockType;
     /**
+     * 插上白色蜡烛的蛋糕。
+     * 
      * Represents a white candle cake within Minecraft.
      */
     static readonly whiteCandleCake: BlockType;
     /**
+     * 白色带釉陶瓦。
+     * 
      * Represents a block of white glazed terracotta within
      * Minecraft.
      */
     static readonly whiteGlazedTerracotta: BlockType;
     /**
+     * 凋灵玫瑰。
+     * 
      * Represents a wither rose within Minecraft.
      */
     static readonly witherRose: BlockType;
     /**
+     * 橡木/云杉木/白桦木/丛林木/金合欢木/深色橡木/去皮橡木/去皮云杉木/去皮白桦木/去皮丛林木/去皮金合欢木/去皮深色橡木。
+     * 
      * Represents a block of wood within Minecraft.
      */
     static readonly wood: BlockType;
     /**
+     * 橡木按钮。
+     * 
      * Represents a wooden button within Minecraft.
      */
     static readonly woodenButton: BlockType;
     /**
+     * 橡木门。
+     * 
      * Represents a wooden door within Minecraft.
      */
     static readonly woodenDoor: BlockType;
     /**
+     * 橡木压力板。
+     * 
      * Represents a wooden pressure plate within Minecraft.
      */
     static readonly woodenPressurePlate: BlockType;
     /**
+     * 橡木台阶/云杉木台阶/白桦木台阶/丛林木台阶/金合欢木台阶/深色橡木台阶。
+     * 
      * Represents a wooden slab within Minecraft.
      */
     static readonly woodenSlab: BlockType;
     /**
+     * 羊毛。
+     * 
      * Represents wool within Minecraft.
      */
     static readonly wool: BlockType;
     /**
+     * 黄色蜡烛。
+     * 
      * Represents a yellow candle within Minecraft.
      */
     static readonly yellowCandle: BlockType;
     /**
+     * 插上黄色蜡烛的蛋糕。
+     * 
      * Represents a yellow candle cake within Minecraft.
      */
     static readonly yellowCandleCake: BlockType;
     /**
+     * 蒲公英。
+     * 
      * Represents a yellow flower within Minecraft.
      */
     static readonly yellowFlower: BlockType;
     /**
+     * 黄色带釉陶瓦。
+     * 
      * Represents a yellow block of glazed terracotta within
      * Minecraft.
      */
     static readonly yellowGlazedTerracotta: BlockType;
     /**
      * @remarks
+     * 返回 `typeName` 指定的方块类型。
+     * 
      * Returns a specific Minecraft block type given a type id.
-     * @param typeName
+     * @param typeName 方块类型标识符。
+     * @returns 指定的方块类型。
      */
     static get(typeName: string): BlockType;
     /**
      * @remarks
+     * 返回已注册的所有方块类型的集合。
+     * 
      * Returns an array of all block types within Minecraft.
+     * @returns 由已注册的所有方块类型组成的数组。
      */
     static getAllBlockTypes(): BlockType[];
 }
@@ -10498,2843 +12120,5475 @@ export class MinecraftDimensionTypes {
 }
 /**
  * @beta
+ * 表示 Minecraft 内置的可用状态效果类型的集合。
+ * 
  * Returns available installed effect types within Minecraft.
  */
 // tslint:disable-next-line:no-unnecessary-class
 export class MinecraftEffectTypes {
     protected constructor();
+    /**
+     * 伤害吸收。
+     */
     static readonly absorption: EffectType;
+    /**
+     * 不祥之兆。
+     */
     static readonly badOmen: EffectType;
+    /**
+     * 失明。
+     */
     static readonly blindness: EffectType;
+    /**
+     * 潮涌能量。
+     */
     static readonly conduitPower: EffectType;
+    /**
+     * 黑暗。
+     */
     static readonly darkness: EffectType;
     static readonly empty: EffectType;
+    /**
+     * 中毒（致命）。
+     */
     static readonly fatalPoison: EffectType;
+    /**
+     * 防火。
+     */
     static readonly fireResistance: EffectType;
+    /**
+     * 急迫。
+     */
     static readonly haste: EffectType;
+    /**
+     * 生命提升。
+     */
     static readonly healthBoost: EffectType;
+    /**
+     * 饥饿。
+     */
     static readonly hunger: EffectType;
+    /**
+     * 瞬间伤害。
+     */
     static readonly instantDamage: EffectType;
+    /**
+     * 瞬间治疗。
+     */
     static readonly instantHealth: EffectType;
+    /**
+     * 隐身。
+     */
     static readonly invisibility: EffectType;
+    /**
+     * 跳跃提升。
+     */
     static readonly jumpBoost: EffectType;
+    /**
+     * 飘浮。
+     */
     static readonly levitation: EffectType;
+    /**
+     * 挖掘疲劳。
+     */
     static readonly miningFatigue: EffectType;
+    /**
+     * 反胃。
+     */
     static readonly nausea: EffectType;
+    /**
+     * 夜视。
+     */
     static readonly nightVision: EffectType;
+    /**
+     * 中毒。
+     */
     static readonly poison: EffectType;
+    /**
+     * 生命恢复。
+     */
     static readonly regeneration: EffectType;
+    /**
+     * 抗性提升。
+     */
     static readonly resistance: EffectType;
+    /**
+     * 饱和。
+     */
     static readonly saturation: EffectType;
+    /**
+     * 缓降。
+     */
     static readonly slowFalling: EffectType;
+    /**
+     * 缓慢。
+     */
     static readonly slowness: EffectType;
+    /**
+     * 速度。
+     */
     static readonly speed: EffectType;
+    /**
+     * 力量。
+     */
     static readonly strength: EffectType;
+    /**
+     * 村庄英雄。
+     */
     static readonly villageHero: EffectType;
+    /**
+     * 水下呼吸。
+     */
     static readonly waterBreathing: EffectType;
+    /**
+     * 虚弱。
+     */
     static readonly weakness: EffectType;
+    /**
+     * 凋零。
+     */
     static readonly wither: EffectType;
 }
+/**
+ * 表示 Minecraft 内置的可用魔咒类型的集合。
+ */
 // tslint:disable-next-line:no-unnecessary-class
 export class MinecraftEnchantmentTypes {
     protected constructor();
+    /**
+     * 水下速掘。
+     */
     static readonly aquaAffinity: EnchantmentType;
+    /**
+     * 节肢杀手。
+     */
     static readonly baneOfArthropods: EnchantmentType;
+    /**
+     * 绑定诅咒。
+     */
     static readonly binding: EnchantmentType;
+    /**
+     * 爆炸保护。
+     */
     static readonly blastProtection: EnchantmentType;
+    /**
+     * 引雷。
+     */
     static readonly channeling: EnchantmentType;
+    /**
+     * 深海探索者。
+     */
     static readonly depthStrider: EnchantmentType;
+    /**
+     * 效率。
+     */
     static readonly efficiency: EnchantmentType;
+    /**
+     * 摔落保护。
+     */
     static readonly featherFalling: EnchantmentType;
+    /**
+     * 火焰附加。
+     */
     static readonly fireAspect: EnchantmentType;
+    /**
+     * 火焰保护。
+     */
     static readonly fireProtection: EnchantmentType;
+    /**
+     * 火矢。
+     */
     static readonly flame: EnchantmentType;
+    /**
+     * 时运。
+     */
     static readonly fortune: EnchantmentType;
+    /**
+     * 冰霜行者。
+     */
     static readonly frostWalker: EnchantmentType;
+    /**
+     * 穿刺。
+     */
     static readonly impaling: EnchantmentType;
+    /**
+     * 无限。
+     */
     static readonly infinity: EnchantmentType;
+    /**
+     * 击退。
+     */
     static readonly knockback: EnchantmentType;
+    /**
+     * 抢夺。
+     */
     static readonly looting: EnchantmentType;
+    /**
+     * 忠诚。
+     */
     static readonly loyalty: EnchantmentType;
+    /**
+     * 海之眷顾。
+     */
     static readonly luckOfTheSea: EnchantmentType;
+    /**
+     * 饵钓。
+     */
     static readonly lure: EnchantmentType;
+    /**
+     * 经验修补。
+     */
     static readonly mending: EnchantmentType;
+    /**
+     * 多重射击。
+     */
     static readonly multishot: EnchantmentType;
+    /**
+     * 穿透。
+     */
     static readonly piercing: EnchantmentType;
+    /**
+     * 力量。
+     */
     static readonly power: EnchantmentType;
+    /**
+     * 弹射物保护。
+     */
     static readonly projectileProtection: EnchantmentType;
+    /**
+     * 保护。
+     */
     static readonly protection: EnchantmentType;
+    /**
+     * 冲击。
+     */
     static readonly punch: EnchantmentType;
+    /**
+     * 快速装填。
+     */
     static readonly quickCharge: EnchantmentType;
+    /**
+     * 水下呼吸。
+     */
     static readonly respiration: EnchantmentType;
+    /**
+     * 激流。
+     */
     static readonly riptide: EnchantmentType;
+    /**
+     * 锋利。
+     */
     static readonly sharpness: EnchantmentType;
+    /**
+     * 精准采集。
+     */
     static readonly silkTouch: EnchantmentType;
+    /**
+     * 亡灵杀手。
+     */
     static readonly smite: EnchantmentType;
+    /**
+     * 灵魂疾行。
+     */
     static readonly soulSpeed: EnchantmentType;
+    /**
+     * 迅捷潜行。
+     */
     static readonly swiftSneak: EnchantmentType;
+    /**
+     * 荆棘。
+     */
     static readonly thorns: EnchantmentType;
+    /**
+     * 耐久。
+     */
     static readonly unbreaking: EnchantmentType;
+    /**
+     * 消失诅咒。
+     */
     static readonly vanishing: EnchantmentType;
 }
+/**
+ * 表示 Minecraft 已注册的实体类型的集合。
+ */
 // tslint:disable-next-line:no-unnecessary-class
 export class MinecraftEntityTypes {
     protected constructor();
     static readonly agent: EntityType;
+    /**
+     * 悦灵。
+     */
     static readonly allay: EntityType;
+    /**
+     * 区域效果云。
+     */
     static readonly areaEffectCloud: EntityType;
+    /**
+     * 盔甲架。
+     */
     static readonly armorStand: EntityType;
+    /**
+     * 箭。
+     */
     static readonly arrow: EntityType;
+    /**
+     * 美西螈。
+     */
     static readonly axolotl: EntityType;
+    /**
+     * 蝙蝠。
+     */
     static readonly bat: EntityType;
+    /**
+     * 蜜蜂。
+     */
     static readonly bee: EntityType;
+    /**
+     * 烈焰人。
+     */
     static readonly blaze: EntityType;
+    /**
+     * 船。
+     */
     static readonly boat: EntityType;
+    /**
+     * 猫。
+     */
     static readonly cat: EntityType;
+    /**
+     * 洞穴蜘蛛。
+     */
     static readonly caveSpider: EntityType;
+    /**
+     * 运输船。
+     */
     static readonly chestBoat: EntityType;
+    /**
+     * 运输矿车。
+     */
     static readonly chestMinecart: EntityType;
+    /**
+     * 鸡。
+     */
     static readonly chicken: EntityType;
+    /**
+     * 鳕鱼。
+     */
     static readonly cod: EntityType;
+    /**
+     * 命令方块矿车。
+     */
     static readonly commandBlockMinecart: EntityType;
+    /**
+     * 牛。
+     */
     static readonly cow: EntityType;
+    /**
+     * 苦力怕。
+     */
     static readonly creeper: EntityType;
+    /**
+     * 海豚。
+     */
     static readonly dolphin: EntityType;
+    /**
+     * 驴。
+     */
     static readonly donkey: EntityType;
+    /**
+     * 末影龙火球。
+     */
     static readonly dragonFireball: EntityType;
+    /**
+     * 溺尸。
+     */
     static readonly drowned: EntityType;
+    /**
+     * 鸡蛋。
+     */
     static readonly egg: EntityType;
+    /**
+     * 远古守卫者。
+     */
     static readonly elderGuardian: EntityType;
+    /**
+     * 末地水晶。
+     */
     static readonly enderCrystal: EntityType;
+    /**
+     * 末影龙。
+     */
     static readonly enderDragon: EntityType;
+    /**
+     * 末影人。
+     */
     static readonly enderman: EntityType;
+    /**
+     * 末影螨。
+     */
     static readonly endermite: EntityType;
+    /**
+     * 末影珍珠。
+     */
     static readonly enderPearl: EntityType;
+    /**
+     * 唤魔者。
+     */
     static readonly evocationIllager: EntityType;
+    /**
+     * 末影之眼。
+     */
     static readonly eyeOfEnderSignal: EntityType;
+    /**
+     * 火球。
+     */
     static readonly fireball: EntityType;
+    /**
+     * 烟花火箭。
+     */
     static readonly fireworksRocket: EntityType;
+    /**
+     * 浮漂。
+     */
     static readonly fishingHook: EntityType;
+    /**
+     * 狐狸。
+     */
     static readonly fox: EntityType;
+    /**
+     * 青蛙。
+     */
     static readonly frog: EntityType;
+    /**
+     * 恶魂。
+     */
     static readonly ghast: EntityType;
+    /**
+     * 发光鱿鱼。
+     */
     static readonly glowSquid: EntityType;
+    /**
+     * 山羊。
+     */
     static readonly goat: EntityType;
+    /**
+     * 守卫者。
+     */
     static readonly guardian: EntityType;
+    /**
+     * 疣猪兽。
+     */
     static readonly hoglin: EntityType;
+    /**
+     * 漏斗矿车。
+     */
     static readonly hopperMinecart: EntityType;
+    /**
+     * 马。
+     */
     static readonly horse: EntityType;
+    /**
+     * 尸壳。
+     */
     static readonly husk: EntityType;
+    /**
+     * 铁傀儡。
+     */
     static readonly ironGolem: EntityType;
+    /**
+     * 闪电。
+     */
     static readonly lightningBolt: EntityType;
+    /**
+     * 滞留药水。
+     */
     static readonly lingeringPotion: EntityType;
+    /**
+     * 羊驼。
+     */
     static readonly llama: EntityType;
+    /**
+     * 羊驼唾沫。
+     */
     static readonly llamaSpit: EntityType;
+    /**
+     * 岩浆怪。
+     */
     static readonly magmaCube: EntityType;
+    /**
+     * 矿车。
+     */
     static readonly minecart: EntityType;
+    /**
+     * 哞菇。
+     */
     static readonly mooshroom: EntityType;
+    /**
+     * 骡。
+     */
     static readonly mule: EntityType;
+    /**
+     * NPC。
+     */
     static readonly npc: EntityType;
+    /**
+     * 豹猫。
+     */
     static readonly ocelot: EntityType;
+    /**
+     * 熊猫。
+     */
     static readonly panda: EntityType;
+    /**
+     * 鹦鹉。
+     */
     static readonly parrot: EntityType;
+    /**
+     * 幻翼。
+     */
     static readonly phantom: EntityType;
+    /**
+     * 猪。
+     */
     static readonly pig: EntityType;
+    /**
+     * 猪灵。
+     */
     static readonly piglin: EntityType;
+    /**
+     * 猪灵蛮兵。
+     */
     static readonly piglinBrute: EntityType;
+    /**
+     * 掠夺者。
+     */
     static readonly pillager: EntityType;
+    /**
+     * 玩家。
+     */
     static readonly player: EntityType;
+    /**
+     * 北极熊。
+     */
     static readonly polarBear: EntityType;
+    /**
+     * 河豚。
+     */
     static readonly pufferfish: EntityType;
+    /**
+     * 兔子。
+     */
     static readonly rabbit: EntityType;
+    /**
+     * 劫掠兽。
+     */
     static readonly ravager: EntityType;
+    /**
+     * 鲑鱼。
+     */
     static readonly salmon: EntityType;
+    /**
+     * 绵羊。
+     */
     static readonly sheep: EntityType;
+    /**
+     * 潜影贝。
+     */
     static readonly shulker: EntityType;
+    /**
+     * 潜影弹。
+     */
     static readonly shulkerBullet: EntityType;
+    /**
+     * 蠹虫。
+     */
     static readonly silverfish: EntityType;
+    /**
+     * 骷髅。
+     */
     static readonly skeleton: EntityType;
+    /**
+     * 骷髅马。
+     */
     static readonly skeletonHorse: EntityType;
+    /**
+     * 史莱姆。
+     */
     static readonly slime: EntityType;
+    /**
+     * 小火球。
+     */
     static readonly smallFireball: EntityType;
+    /**
+     * 雪球。
+     */
     static readonly snowball: EntityType;
+    /**
+     * 雪傀儡。
+     */
     static readonly snowGolem: EntityType;
+    /**
+     * 蜘蛛。
+     */
     static readonly spider: EntityType;
+    /**
+     * 喷溅药水。
+     */
     static readonly splashPotion: EntityType;
+    /**
+     * 鱿鱼。
+     */
     static readonly squid: EntityType;
+    /**
+     * 流浪者。
+     */
     static readonly stray: EntityType;
+    /**
+     * 炽足兽。
+     */
     static readonly strider: EntityType;
+    /**
+     * 蝌蚪。
+     */
     static readonly tadpole: EntityType;
+    /**
+     * 三叉戟。
+     */
     static readonly thrownTrident: EntityType;
+    /**
+     * TNT。
+     */
     static readonly tnt: EntityType;
+    /**
+     * TNT矿车。
+     */
     static readonly tntMinecart: EntityType;
+    /**
+     * 行商羊驼。
+     */
     static readonly traderLlama: EntityType;
     static readonly tripodCamera: EntityType;
+    /**
+     * 热带鱼。
+     */
     static readonly tropicalfish: EntityType;
+    /**
+     * 海龟。
+     */
     static readonly turtle: EntityType;
+    /**
+     * 恼鬼。
+     */
     static readonly vex: EntityType;
+    /**
+     * 村民。
+     */
     static readonly villager: EntityType;
+    /**
+     * 村民。
+     */
     static readonly villagerV2: EntityType;
+    /**
+     * 卫道士。
+     */
     static readonly vindicator: EntityType;
+    /**
+     * 流浪商人。
+     */
     static readonly wanderingTrader: EntityType;
+    /**
+     * 监守者。
+     */
     static readonly warden: EntityType;
+    /**
+     * 女巫。
+     */
     static readonly witch: EntityType;
+    /**
+     * 凋灵。
+     */
     static readonly wither: EntityType;
+    /**
+     * 凋灵骷髅。
+     */
     static readonly witherSkeleton: EntityType;
+    /**
+     * 凋灵之首。
+     */
     static readonly witherSkull: EntityType;
+    /**
+     * 蓝色凋灵之首。
+     */
     static readonly witherSkullDangerous: EntityType;
+    /**
+     * 狼。
+     */
     static readonly wolf: EntityType;
+    /**
+     * 附魔之瓶。
+     */
     static readonly xpBottle: EntityType;
+    /**
+     * 经验球。
+     */
     static readonly xpOrb: EntityType;
+    /**
+     * 僵尸疣猪兽。
+     */
     static readonly zoglin: EntityType;
+    /**
+     * 僵尸。
+     */
     static readonly zombie: EntityType;
+    /**
+     * 僵尸马。
+     */
     static readonly zombieHorse: EntityType;
+    /**
+     * 僵尸猪灵。
+     */
     static readonly zombiePigman: EntityType;
+    /**
+     * 僵尸村民。
+     */
     static readonly zombieVillager: EntityType;
+    /**
+     * 僵尸村民。
+     */
     static readonly zombieVillagerV2: EntityType;
 }
 /**
  * @beta
+ * 表示 Minecraft 原版与教育版已注册的物品类型的集合。
+ * 
  * Contains definitions of standard Minecraft and Minecraft
  * Education Edition block types.
  */
 // tslint:disable-next-line:no-unnecessary-class
 export class MinecraftItemTypes {
     protected constructor();
+    /**
+     * 金合欢木船。
+     */
     static readonly acaciaBoat: ItemType;
     /**
+     * 金合欢木按钮。
+     * 
      * Represents an item that can place an acacia button within
      * Minecraft.
      */
     static readonly acaciaButton: ItemType;
+    /**
+     * 金合欢木运输船。
+     */
     static readonly acaciaChestBoat: ItemType;
     /**
+     * 金合欢木门。
+     * 
      * Represents an item that can place an acacia door within
      * Minecraft.
      */
     static readonly acaciaDoor: ItemType;
     /**
+     * 金合欢木栅栏门。
+     * 
      * Represents an item that can place an acacia fence gate
      * within Minecraft.
      */
     static readonly acaciaFenceGate: ItemType;
     /**
+     * 金合欢木压力板。
+     * 
      * Represents an item that can place an acacia pressure plate
      * within Minecraft.
      */
     static readonly acaciaPressurePlate: ItemType;
     /**
+     * 金合欢木告示牌。
+     * 
      * Represents an item that can place an acacia sign within
      * Minecraft.
      */
     static readonly acaciaSign: ItemType;
     /**
+     * 金合欢木楼梯。
+     * 
      * Represents an item that can place a set of acacia stairs
      * within Minecraft.
      */
     static readonly acaciaStairs: ItemType;
     /**
+     * 金合欢木活板门。
+     * 
      * Represents an item that can place an acacia trapdoor within
      * Minecraft.
      */
     static readonly acaciaTrapdoor: ItemType;
     /**
+     * 激活铁轨。
+     * 
      * Represents an item that can place an activator rail within
      * Minecraft.
      */
     static readonly activatorRail: ItemType;
+    /**
+     * 悦灵刷怪蛋。
+     */
     static readonly allaySpawnEgg: ItemType;
     /**
+     * 允许方块。
+     * 
      * Represents an item that can place an allow block within
      * Minecraft.
      */
     static readonly allow: ItemType;
     /**
+     * 紫水晶块。
+     * 
      * Represents an item that can place an amethyst block within
      * Minecraft.
      */
     static readonly amethystBlock: ItemType;
     /**
+     * 紫水晶簇。
+     * 
      * Represents an item that can place a cluster of amethyst
      * within Minecraft.
      */
     static readonly amethystCluster: ItemType;
+    /**
+     * 紫水晶碎片。
+     */
     static readonly amethystShard: ItemType;
     /**
+     * 远古残骸。
+     * 
      * Represents an item that can place ancient debris within
      * Minecraft.
      */
     static readonly ancientDebris: ItemType;
     /**
+     * 安山岩楼梯。
+     * 
      * Represents an item that can place andesite stairs within
      * Minecraft.
      */
     static readonly andesiteStairs: ItemType;
     /**
+     * 铁砧。
+     * 
      * Represents an item that can place an anvil within Minecraft.
      */
     static readonly anvil: ItemType;
+    /**
+     * 苹果。
+     */
     static readonly apple: ItemType;
+    /**
+     * 盔甲架。
+     */
     static readonly armorStand: ItemType;
+    /**
+     * 箭。
+     */
     static readonly arrow: ItemType;
+    /**
+     * 美西螈桶。
+     */
     static readonly axolotlBucket: ItemType;
+    /**
+     * 美西螈刷怪蛋。
+     */
     static readonly axolotlSpawnEgg: ItemType;
     /**
+     * 杜鹃花丛。
+     * 
      * Represents an item that can place an azalea flowering plant
      * within Minecraft.
      */
     static readonly azalea: ItemType;
     /**
+     * 杜鹃树叶。
+     * 
      * Represents an item that can place azalea leaves within
      * Minecraft.
      */
     static readonly azaleaLeaves: ItemType;
     /**
+     * 盛开的杜鹃树叶。
+     * 
      * Represents flowered azalea leaves within Minecraft.
      */
     static readonly azaleaLeavesFlowered: ItemType;
+    /**
+     * 烤马铃薯。
+     */
     static readonly bakedPotato: ItemType;
     /**
+     * 竹子。
+     * 
      * Represents an item that can place a bamboo tree within
      * Minecraft.
      */
     static readonly bamboo: ItemType;
+    /**
+     * 旗帜。
+     */
     static readonly banner: ItemType;
     static readonly bannerPattern: ItemType;
     /**
+     * 木桶。
+     * 
      * Represents an item that can place a barrel within Minecraft.
      */
     static readonly barrel: ItemType;
     /**
+     * 屏障。
+     * 
      * Represents an item that can place an invisible but logical
      * barrier within Minecraft.
      */
     static readonly barrier: ItemType;
     /**
+     * 玄武岩。
+     * 
      * Represents an item that can place a basalt block within
      * Minecraft.
      */
     static readonly basalt: ItemType;
+    /**
+     * 蝙蝠刷怪蛋。
+     */
     static readonly batSpawnEgg: ItemType;
     /**
+     * 信标。
+     * 
      * Represents an item that can place a beacon within Minecraft.
      */
     static readonly beacon: ItemType;
     /**
+     * 床。
+     * 
      * Represents an item that can place a bed within Minecraft.
      */
     static readonly bed: ItemType;
     /**
+     * 基岩。
+     * 
      * Represents an item that can place a bedrock block within
      * Minecraft.
      */
     static readonly bedrock: ItemType;
+    /**
+     * 生牛肉。
+     */
     static readonly beef: ItemType;
     /**
+     * 蜂箱。
+     * 
      * Represents an item that can place a beehive within
      * Minecraft.
      */
     static readonly beehive: ItemType;
     /**
+     * 蜂巢。
+     * 
      * Represents an item that can place a bee nest within
      * Minecraft.
      */
     static readonly beeNest: ItemType;
+    /**
+     * 蜜蜂刷怪蛋。
+     */
     static readonly beeSpawnEgg: ItemType;
     /**
+     * 甜菜根。
+     * 
      * Represents an item that can place a beetroot vegetable
      * within Minecraft.
      */
     static readonly beetroot: ItemType;
+    /**
+     * 甜菜种子。
+     */
     static readonly beetrootSeeds: ItemType;
+    /**
+     * 甜菜汤。
+     */
     static readonly beetrootSoup: ItemType;
     /**
+     * 钟。
+     * 
      * Represents an item that can place a bell within Minecraft.
      */
     static readonly bell: ItemType;
     /**
+     * 大型垂滴叶。
+     * 
      * Represents an item that can place a big dripleaf plant
      * within Minecraft.
      */
     static readonly bigDripleaf: ItemType;
+    /**
+     * 白桦木船。
+     */
     static readonly birchBoat: ItemType;
     /**
+     * 白桦木按钮。
+     * 
      * Represents an item that can place a birch button within
      * Minecraft.
      */
     static readonly birchButton: ItemType;
+    /**
+     * 白桦木运输船。
+     */
     static readonly birchChestBoat: ItemType;
     /**
+     * 白桦木门。
+     * 
      * Represents an item that can place a birch door within
      * Minecraft.
      */
     static readonly birchDoor: ItemType;
     /**
+     * 白桦木栅栏门。
+     * 
      * Represents an item that can place a birch fence gate within
      * Minecraft.
      */
     static readonly birchFenceGate: ItemType;
     /**
+     * 白桦木压力板。
+     * 
      * Represents an item that can place a birch pressure plate
      * within Minecraft.
      */
     static readonly birchPressurePlate: ItemType;
     /**
+     * 白桦木告示牌。
+     * 
      * Represents an item that can place a birch sign within
      * Minecraft.
      */
     static readonly birchSign: ItemType;
     /**
+     * 白桦木楼梯。
+     * 
      * Represents an item that can place a birch stairs block
      * within Minecraft.
      */
     static readonly birchStairs: ItemType;
     /**
+     * 白桦木活板门。
+     * 
      * Represents an item that can place a birch trapdoor within
      * Minecraft.
      */
     static readonly birchTrapdoor: ItemType;
     /**
+     * 黑色蜡烛。
+     * 
      * Represents an item that can place a black candle within
      * Minecraft.
      */
     static readonly blackCandle: ItemType;
+    /**
+     * 黑色染料。
+     */
     static readonly blackDye: ItemType;
     /**
+     * 黑色带釉陶瓦。
+     * 
      * Represents an item that can place a black glazed terracotta
      * block within Minecraft.
      */
     static readonly blackGlazedTerracotta: ItemType;
     /**
+     * 黑石。
+     * 
      * Represents an item that can place a blackstone block within
      * Minecraft.
      */
     static readonly blackstone: ItemType;
     /**
+     * 黑石台阶。
+     * 
      * Represents an item that can place a blackstone slab within
      * Minecraft.
      */
     static readonly blackstoneSlab: ItemType;
     /**
+     * 黑石楼梯。
+     * 
      * Represents blackstone stairs within Minecraft.
      */
     static readonly blackstoneStairs: ItemType;
     /**
+     * 黑石墙。
+     * 
      * Represents an item that can place a blackstone wall within
      * Minecraft.
      */
     static readonly blackstoneWall: ItemType;
     /**
+     * 高炉。
+     * 
      * Represents an item that can place a blast furnace within
      * Minecraft.
      */
     static readonly blastFurnace: ItemType;
+    /**
+     * 烈焰粉。
+     */
     static readonly blazePowder: ItemType;
+    /**
+     * 烈焰棒。
+     */
     static readonly blazeRod: ItemType;
+    /**
+     * 烈焰人刷怪蛋。
+     */
     static readonly blazeSpawnEgg: ItemType;
     /**
+     * 蓝色蜡烛。
+     * 
      * Represents an item that can place a blue candle within
      * Minecraft.
      */
     static readonly blueCandle: ItemType;
+    /**
+     * 蓝色染料。
+     */
     static readonly blueDye: ItemType;
     /**
+     * 蓝色带釉陶瓦。
+     * 
      * Represents an item that can place a blue glazed terracotta
      * block within Minecraft.
      */
     static readonly blueGlazedTerracotta: ItemType;
     /**
+     * 蓝冰。
+     * 
      * Represents an item that can place a blue ice block within
      * Minecraft.
      */
     static readonly blueIce: ItemType;
     static readonly boat: ItemType;
+    /**
+     * 骨头。
+     */
     static readonly bone: ItemType;
     /**
+     * 骨块。
+     * 
      * Represents an item that can place a bone block within
      * Minecraft.
      */
     static readonly boneBlock: ItemType;
+    /**
+     * 骨粉。
+     */
     static readonly boneMeal: ItemType;
+    /**
+     * 书。
+     */
     static readonly book: ItemType;
     /**
+     * 书架。
+     * 
      * Represents an item that can place an unbreakable border
      * block within Minecraft.
      */
     static readonly bookshelf: ItemType;
     /**
+     * 边界。
+     * 
      * Represents an item that can place a border block within
      * Minecraft.
      */
     static readonly borderBlock: ItemType;
+    /**
+     * 波纹边旗帜图案。
+     */
     static readonly bordureIndentedBannerPattern: ItemType;
+    /**
+     * 弓。
+     */
     static readonly bow: ItemType;
+    /**
+     * 碗。
+     */
     static readonly bowl: ItemType;
+    /**
+     * 面包。
+     */
     static readonly bread: ItemType;
     /**
+     * 酿造台。
+     * 
      * Represents an item that can place a brewing stand within
      * Minecraft.
      */
     static readonly brewingStand: ItemType;
+    /**
+     * 红砖。
+     */
     static readonly brick: ItemType;
     /**
+     * 红砖块。
+     * 
      * Represents an item that can place a block of brick within
      * Minecraft.
      */
     static readonly brickBlock: ItemType;
     /**
+     * 红砖楼梯。
+     * 
      * Represents brick stairs within Minecraft.
      */
     static readonly brickStairs: ItemType;
     /**
+     * 棕色蜡烛。
+     * 
      * Represents an item that can place a brown candle within
      * Minecraft.
      */
     static readonly brownCandle: ItemType;
+    /**
+     * 棕色染料。
+     */
     static readonly brownDye: ItemType;
     /**
+     * 棕色带釉陶瓦。
+     * 
      * Represents an item that can place a brown glazed terracotta
      * block within Minecraft.
      */
     static readonly brownGlazedTerracotta: ItemType;
     /**
+     * 棕色蘑菇。
+     * 
      * Represents an item that can place a brown mushroom within
      * Minecraft.
      */
     static readonly brownMushroom: ItemType;
     /**
+     * 棕色蘑菇方块。
+     * 
      * Represents an item that can place a block of brown mushroom
      * within Minecraft.
      */
     static readonly brownMushroomBlock: ItemType;
+    /**
+     * 桶。
+     */
     static readonly bucket: ItemType;
     /**
+     * 紫水晶母岩。
+     * 
      * Represents an item that can place a block of budding
      * amethyst within Minecraft.
      */
     static readonly buddingAmethyst: ItemType;
     /**
+     * 仙人掌。
+     * 
      * Represents an item that can place a cactus within Minecraft.
      */
     static readonly cactus: ItemType;
     /**
+     * 蛋糕。
+     * 
      * Represents an item that can place a cake within Minecraft.
      */
     static readonly cake: ItemType;
     /**
+     * 方解石。
+     * 
      * Represents an item that can place a calcite block within
      * Minecraft.
      */
     static readonly calcite: ItemType;
     /**
+     * 营火。
+     * 
      * Represents an item that can place a campfire within
      * Minecraft.
      */
     static readonly campfire: ItemType;
     /**
+     * 蜡烛。
+     * 
      * Represents an item that can place a candle within Minecraft.
      */
     static readonly candle: ItemType;
     /**
+     * 地毯。
+     * 
      * Represents an item that can place a carpet within Minecraft.
      */
     static readonly carpet: ItemType;
+    /**
+     * 胡萝卜。
+     */
     static readonly carrot: ItemType;
+    /**
+     * 胡萝卜钓竿。
+     */
     static readonly carrotOnAStick: ItemType;
     /**
+     * 制图台。
+     * 
      * Represents an item that can place a cartography table block
      * within Minecraft.
      */
     static readonly cartographyTable: ItemType;
     /**
+     * 雕刻过的南瓜。
+     * 
      * Represents an item that can place a carved pumpkin within
      * Minecraft.
      */
     static readonly carvedPumpkin: ItemType;
+    /**
+     * 猫刷怪蛋。
+     */
     static readonly catSpawnEgg: ItemType;
     /**
+     * 炼药锅。
+     * 
      * Represents an item that can place a cauldron within
      * Minecraft.
      */
     static readonly cauldron: ItemType;
+    /**
+     * 洞穴蜘蛛刷怪蛋。
+     */
     static readonly caveSpiderSpawnEgg: ItemType;
     /**
+     * 锁链。
+     * 
      * Represents an item that can place a metallic chain within
      * Minecraft.
      */
     static readonly chain: ItemType;
     /**
+     * 连锁型命令方块。
+     * 
      * Represents an item that can place a block that gives off
      * heat but not light, within Minecraft Education Edition or
      * Bedrock Edition with Education features.
      */
     static readonly chainCommandBlock: ItemType;
+    /**
+     * 锁链靴子。
+     */
     static readonly chainmailBoots: ItemType;
+    /**
+     * 锁链胸甲。
+     */
     static readonly chainmailChestplate: ItemType;
+    /**
+     * 锁链头盔。
+     */
     static readonly chainmailHelmet: ItemType;
+    /**
+     * 锁链护腿。
+     */
     static readonly chainmailLeggings: ItemType;
+    /**
+     * 木炭。
+     */
     static readonly charcoal: ItemType;
     /**
+     * 箱子。
+     * 
      * Represents an item that can place a chest within Minecraft.
      */
     static readonly chest: ItemType;
     static readonly chestBoat: ItemType;
+    /**
+     * 运输矿车。
+     */
     static readonly chestMinecart: ItemType;
+    /**
+     * 鸡。
+     */
     static readonly chicken: ItemType;
+    /**
+     * 鸡刷怪蛋。
+     */
     static readonly chickenSpawnEgg: ItemType;
     /**
+     * 雕纹深板岩。
+     * 
      * Represents an item that can place a set of chiseled
      * deepslate within Minecraft.
      */
     static readonly chiseledDeepslate: ItemType;
     /**
+     * 雕纹下界砖块。
+     * 
      * Represents an item that can place a block of chiseled nether
      * bricks within Minecraft.
      */
     static readonly chiseledNetherBricks: ItemType;
     /**
+     * 雕纹磨制黑石。
+     * 
      * Represents an item that can place a block of chiseled
      * polished blackstone within Minecraft.
      */
     static readonly chiseledPolishedBlackstone: ItemType;
     /**
+     * 紫颂花。
+     * 
      * Represents an item that can place a chorus flower within
      * Minecraft.
      */
     static readonly chorusFlower: ItemType;
+    /**
+     * 紫颂果。
+     */
     static readonly chorusFruit: ItemType;
     /**
+     * 紫颂植株。
+     * 
      * Represents an item that can place a chorus plant within
      * Minecraft.
      */
     static readonly chorusPlant: ItemType;
     /**
+     * 黏土块。
+     * 
      * Represents an item that can place a block of clay within
      * Minecraft.
      */
     static readonly clay: ItemType;
+    /**
+     * 黏土球。
+     */
     static readonly clayBall: ItemType;
+    /**
+     * 时钟。
+     */
     static readonly clock: ItemType;
+    /**
+     * 煤炭。
+     */
     static readonly coal: ItemType;
     /**
+     * 煤炭块。
+     * 
      * Represents an item that can place a block of solid coal
      * within Minecraft.
      */
     static readonly coalBlock: ItemType;
     /**
+     * 煤矿石。
+     * 
      * Represents an item that can place a block with embedded coal
      * ore within Minecraft.
      */
     static readonly coalOre: ItemType;
     /**
+     * 深板岩圆石。
+     * 
      * Represents an item that can place a block of cobbled
      * deepslate within Minecraft.
      */
     static readonly cobbledDeepslate: ItemType;
     /**
+     * 深板岩圆石台阶。
+     * 
      * Represents an item that can place a slab of deepslate within
      * Minecraft.
      */
     static readonly cobbledDeepslateSlab: ItemType;
     /**
+     * 深板岩圆石楼梯。
+     * 
      * Represents cobbled deepslate stairs within Minecraft.
      */
     static readonly cobbledDeepslateStairs: ItemType;
     /**
+     * 深板岩圆石墙。
+     * 
      * Represents an item that can place a cobbled deepslate wall
      * within Minecraft.
      */
     static readonly cobbledDeepslateWall: ItemType;
     /**
+     * 圆石。
+     * 
      * Represents an item that can place a block of cobblestone
      * within Minecraft.
      */
     static readonly cobblestone: ItemType;
     /**
+     * 圆石墙/苔石墙/花岗岩墙/闪长岩墙/安山岩墙/砂岩墙/红砖墙/石砖墙/苔石砖墙/末地石砖墙/下界砖墙/海晶石墙/红砂岩墙/红色下界砖墙。
+     * 
      * Represents an item that can place a wall of cobblestone
      * within Minecraft.
      */
     static readonly cobblestoneWall: ItemType;
+    /**
+     * 可可豆。
+     */
     static readonly cocoaBeans: ItemType;
+    /**
+     * 鳕鱼。
+     */
     static readonly cod: ItemType;
+    /**
+     * 鳕鱼桶。
+     */
     static readonly codBucket: ItemType;
+    /**
+     * 鳕鱼刷怪蛋。
+     */
     static readonly codSpawnEgg: ItemType;
     /**
+     * 命令方块。
+     * 
      * Represents an item that can place a block that can run
      * commands within Minecraft.
      */
     static readonly commandBlock: ItemType;
+    /**
+     * 命令方块矿车。
+     */
     static readonly commandBlockMinecart: ItemType;
+    /**
+     * 红石比较器。
+     */
     static readonly comparator: ItemType;
+    /**
+     * 指南针。
+     */
     static readonly compass: ItemType;
     /**
+     * 堆肥桶。
+     * 
      * Represents an item that can place a composter block within
      * Minecraft.
      */
     static readonly composter: ItemType;
     /**
+     * 混凝土。
+     * 
      * Represents an item that can place a block of concrete powder
      * within Minecraft.
      */
     static readonly concrete: ItemType;
+    /**
+     * 混凝土粉末。
+     */
     static readonly concretePowder: ItemType;
     /**
+     * 潮涌核心。
+     * 
      * Represents an item that can place a conduit block within
      * Minecraft.
      */
     static readonly conduit: ItemType;
+    /**
+     * 牛排。
+     */
     static readonly cookedBeef: ItemType;
+    /**
+     * 熟鸡肉。
+     */
     static readonly cookedChicken: ItemType;
+    /**
+     * 熟鳕鱼。
+     */
     static readonly cookedCod: ItemType;
+    /**
+     * 熟羊肉。
+     */
     static readonly cookedMutton: ItemType;
+    /**
+     * 熟猪排。
+     */
     static readonly cookedPorkchop: ItemType;
+    /**
+     * 熟兔肉。
+     */
     static readonly cookedRabbit: ItemType;
+    /**
+     * 熟鲑鱼。
+     */
     static readonly cookedSalmon: ItemType;
+    /**
+     * 曲奇。
+     */
     static readonly cookie: ItemType;
     /**
+     * 铜块。
+     * 
      * Represents an item that can place a solid block of copper
      * within Minecraft.
      */
     static readonly copperBlock: ItemType;
+    /**
+     * 铜锭。
+     */
     static readonly copperIngot: ItemType;
     /**
+     * 铜矿石。
+     * 
      * Represents an item that can place a block with embedded
      * copper ore within Minecraft.
      */
     static readonly copperOre: ItemType;
     /**
+     * 珊瑚。
+     * 
      * Represents coral within Minecraft.
      */
     static readonly coral: ItemType;
     /**
+     * 珊瑚块。
+     * 
      * Represents an item that can place a solid block of coral
      * within Minecraft.
      */
     static readonly coralBlock: ItemType;
     /**
+     * 珊瑚扇。
+     * 
      * Represents an item that can place a fan formation of coral
      * within Minecraft.
      */
     static readonly coralFan: ItemType;
     /**
+     * 失活的珊瑚扇。
+     * 
      * Represents an item that can place a fan formation of dead
      * coral within Minecraft.
      */
     static readonly coralFanDead: ItemType;
+    /**
+     * 牛刷怪蛋。
+     */
     static readonly cowSpawnEgg: ItemType;
     /**
+     * 裂纹深板岩砖。
+     * 
      * Represents an item that can place a block of cracked
      * deepslate bricks within Minecraft.
      */
     static readonly crackedDeepslateBricks: ItemType;
     /**
+     * 裂纹深板岩瓦。
+     * 
      * Represents tiles of cracked deepslate within Minecraft.
      */
     static readonly crackedDeepslateTiles: ItemType;
     /**
+     * 裂纹下界砖块。
+     * 
      * Represents an item that can place a block of cracked nether
      * bricks within Minecraft.
      */
     static readonly crackedNetherBricks: ItemType;
     /**
+     * 裂纹磨制黑石砖。
+     * 
      * Represents an item that can place a block of cracked and
      * polished blackstone bricks within Minecraft.
      */
     static readonly crackedPolishedBlackstoneBricks: ItemType;
     /**
+     * 工作台。
+     * 
      * Represents an item that can place a crafting table within
      * Minecraft.
      */
     static readonly craftingTable: ItemType;
+    /**
+     * 苦力怕盾徽旗帜图案。
+     */
     static readonly creeperBannerPattern: ItemType;
+    /**
+     * 苦力怕刷怪蛋。
+     */
     static readonly creeperSpawnEgg: ItemType;
     /**
+     * 绯红木按钮。
+     * 
      * Represents an item that can place a crimson button within
      * Minecraft.
      */
     static readonly crimsonButton: ItemType;
     /**
+     * 绯红木门。
+     * 
      * Represents an item that can place a crimson door within
      * Minecraft.
      */
     static readonly crimsonDoor: ItemType;
     /**
+     * 绯红木栅栏。
+     * 
      * Represents an item that can place a crimson fence within
      * Minecraft.
      */
     static readonly crimsonFence: ItemType;
     /**
+     * 绯红木栅栏门。
+     * 
      * Represents an item that can place a crimson fence gate
      * within Minecraft.
      */
     static readonly crimsonFenceGate: ItemType;
     /**
+     * 绯红菌。
+     * 
      * Represents an item that can place a crimson fungus within
      * Minecraft.
      */
     static readonly crimsonFungus: ItemType;
     /**
+     * 绯红菌核。
+     * 
      * Represents crimson hyphae within Minecraft.
      */
     static readonly crimsonHyphae: ItemType;
     /**
+     * 绯红菌岩。
+     * 
      * Represents crimson nylium within Minecraft.
      */
     static readonly crimsonNylium: ItemType;
     /**
+     * 绯红木板。
+     * 
      * Represents an item that can place a set of crimson planks
      * within Minecraft.
      */
     static readonly crimsonPlanks: ItemType;
     /**
+     * 绯红木压力板。
+     * 
      * Represents an item that can place a crimson pressure plate
      * within Minecraft.
      */
     static readonly crimsonPressurePlate: ItemType;
     /**
+     * 绯红菌索。
+     * 
      * Represents an item that can place a set of crimson roots
      * within Minecraft.
      */
     static readonly crimsonRoots: ItemType;
+    /**
+     * 绯红木告示牌。
+     */
     static readonly crimsonSign: ItemType;
     /**
+     * 绯红木台阶。
+     * 
      * Represents an item that can place a crimson slab within
      * Minecraft.
      */
     static readonly crimsonSlab: ItemType;
     /**
+     * 绯红木楼梯。
+     * 
      * Represents an item that can place a set of crimson stairs
      * within Minecraft.
      */
     static readonly crimsonStairs: ItemType;
     /**
+     * 绯红菌柄。
+     * 
      * Represents an item that can place a crimson stem within
      * Minecraft.
      */
     static readonly crimsonStem: ItemType;
     /**
+     * 绯红木活板门。
+     * 
      * Represents an item that can place a crimson trapdoor within
      * Minecraft.
      */
     static readonly crimsonTrapdoor: ItemType;
+    /**
+     * 弩。
+     */
     static readonly crossbow: ItemType;
     /**
+     * 哭泣的黑曜石。
+     * 
      * Represents crying obsidian within Minecraft.
      */
     static readonly cryingObsidian: ItemType;
     /**
+     * 切制铜块。
+     * 
      * Represents an item that can place a cut copper block within
      * Minecraft.
      */
     static readonly cutCopper: ItemType;
     /**
+     * 切制铜台阶。
+     * 
      * Represents an item that can place a cut copper slab within
      * Minecraft.
      */
     static readonly cutCopperSlab: ItemType;
     /**
+     * 切制铜楼梯。
+     * 
      * Represents an item that can place a set of cut copper stairs
      * within Minecraft.
      */
     static readonly cutCopperStairs: ItemType;
     /**
+     * 青色蜡烛。
+     * 
      * Represents an item that can place a cyan-colored candle
      * within Minecraft.
      */
     static readonly cyanCandle: ItemType;
+    /**
+     * 青色染料。
+     */
     static readonly cyanDye: ItemType;
     /**
+     * 青色带釉陶瓦。
+     * 
      * Represents an item that can place a block of cyan-colored
      * glazed terracotta within Minecraft.
      */
     static readonly cyanGlazedTerracotta: ItemType;
+    /**
+     * 深色橡木船。
+     */
     static readonly darkOakBoat: ItemType;
     /**
+     * 深色橡木按钮。
+     * 
      * Represents an item that can place a dark oak button within
      * Minecraft.
      */
     static readonly darkOakButton: ItemType;
+    /**
+     * 深色橡木运输船。
+     */
     static readonly darkOakChestBoat: ItemType;
     /**
+     * 深色橡木门。
+     * 
      * Represents an item that can place a dark oak door within
      * Minecraft.
      */
     static readonly darkOakDoor: ItemType;
     /**
+     * 深色橡木栅栏门。
+     * 
      * Represents an item that can place a dark oak fence gate
      * within Minecraft.
      */
     static readonly darkOakFenceGate: ItemType;
     /**
+     * 深色橡木压力板。
+     * 
      * Represents an item that can place a dark oak pressure plate
      * within Minecraft.
      */
     static readonly darkOakPressurePlate: ItemType;
     /**
+     * 深色橡木告示牌。
+     * 
      * Represents an item that can place a dark oak sign within
      * Minecraft.
      */
     static readonly darkOakSign: ItemType;
     /**
+     * 深色橡木楼梯。
+     * 
      * Represents an item that can place a set of dark oak stairs
      * within Minecraft.
      */
     static readonly darkOakStairs: ItemType;
     /**
+     * 深色橡木活板门。
+     * 
      * Represents an item that can place a dark oak trapdoor within
      * Minecraft.
      */
     static readonly darkOakTrapdoor: ItemType;
     /**
+     * 暗海晶石楼梯。
+     * 
      * Represents an item that can place a set of dark prismarine
      * stairs within Minecraft.
      */
     static readonly darkPrismarineStairs: ItemType;
     /**
+     * 阳光探测器。
+     * 
      * Represents an item that can place a daylight detector within
      * Minecraft.
      */
     static readonly daylightDetector: ItemType;
     /**
+     * 枯萎的灌木。
+     * 
      * Represents an item that can place a dead bush within
      * Minecraft.
      */
     static readonly deadbush: ItemType;
     static readonly debugStick: ItemType;
     /**
+     * 深板岩。
+     * 
      * Represents an item that can place a block of deepslate
      * within Minecraft.
      */
     static readonly deepslate: ItemType;
     /**
+     * 深板岩砖。
+     * 
      * Represents an item that can place a block of deepslate
      * bricks within Minecraft.
      */
     static readonly deepslateBricks: ItemType;
     /**
+     * 深板岩砖台阶。
+     * 
      * Represents an item that can place a slab of deepslate brick
      * within Minecraft.
      */
     static readonly deepslateBrickSlab: ItemType;
     /**
+     * 深板岩砖楼梯。
+     * 
      * Represents an item that can place a set of deepslate brick
      * stairs within Minecraft.
      */
     static readonly deepslateBrickStairs: ItemType;
     /**
+     * 深板岩砖墙。
+     * 
      * Represents an item that can place a deepslate brick wall
      * within Minecraft.
      */
     static readonly deepslateBrickWall: ItemType;
     /**
+     * 深层煤矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded coal ore within Minecraft.
      */
     static readonly deepslateCoalOre: ItemType;
     /**
+     * 深层铜矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded copper ore within Minecraft.
      */
     static readonly deepslateCopperOre: ItemType;
     /**
+     * 深层钻石矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded diamond ore within Minecraft.
      */
     static readonly deepslateDiamondOre: ItemType;
     /**
+     * 深层绿宝石矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded emerald ore within Minecraft.
      */
     static readonly deepslateEmeraldOre: ItemType;
     /**
+     * 深层金矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded gold ore within Minecraft.
      */
     static readonly deepslateGoldOre: ItemType;
     /**
+     * 深层铁矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded iron ore within Minecraft.
      */
     static readonly deepslateIronOre: ItemType;
     /**
+     * 深层青金石矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded lapis lazuli ore within Minecraft.
      */
     static readonly deepslateLapisOre: ItemType;
     /**
+     * 深层红石矿石。
+     * 
      * Represents an item that can place a block of deepslate with
      * embedded redstone ore within Minecraft.
      */
     static readonly deepslateRedstoneOre: ItemType;
     /**
+     * 深板岩瓦。
+     * 
      * Represents an item that can place a set of deepslate tiles
      * within Minecraft.
      */
     static readonly deepslateTiles: ItemType;
     /**
+     * 深板岩瓦台阶。
+     * 
      * Represents an item that can place a slab of deepslate tiles
      * within Minecraft.
      */
     static readonly deepslateTileSlab: ItemType;
     /**
+     * 深板岩瓦楼梯。
+     * 
      * Represents an item that can place a set of deepslate tile
      * stairs within Minecraft.
      */
     static readonly deepslateTileStairs: ItemType;
     /**
+     * 深板岩瓦墙。
+     * 
      * Represents an item that can place a wall of deepslate tile
      * within Minecraft.
      */
     static readonly deepslateTileWall: ItemType;
     /**
+     * 拒绝方块。
+     * 
      * Represents an item that can place a logical but generally
      * invisible Deny logic block within Minecraft.
      */
     static readonly deny: ItemType;
     /**
+     * 探测铁轨。
+     * 
      * Represents an item that can place a detector rail within
      * Minecraft.
      */
     static readonly detectorRail: ItemType;
+    /**
+     * 钻石。
+     */
     static readonly diamond: ItemType;
+    /**
+     * 钻石斧。
+     */
     static readonly diamondAxe: ItemType;
     /**
+     * 钻石块。
+     * 
      * Represents an item that can place a block of diamond within
      * Minecraft.
      */
     static readonly diamondBlock: ItemType;
+    /**
+     * 钻石靴子。
+     */
     static readonly diamondBoots: ItemType;
+    /**
+     * 钻石胸甲。
+     */
     static readonly diamondChestplate: ItemType;
+    /**
+     * 钻石头盔。
+     */
     static readonly diamondHelmet: ItemType;
+    /**
+     * 钻石锄。
+     */
     static readonly diamondHoe: ItemType;
+    /**
+     * 钻石马铠。
+     */
     static readonly diamondHorseArmor: ItemType;
+    /**
+     * 钻石护腿。
+     */
     static readonly diamondLeggings: ItemType;
     /**
+     * 钻石矿石。
+     * 
      * Represents an item that can place a block with embedded
      * diamond ore within Minecraft.
      */
     static readonly diamondOre: ItemType;
+    /**
+     * 钻石镐。
+     */
     static readonly diamondPickaxe: ItemType;
+    /**
+     * 钻石锹。
+     */
     static readonly diamondShovel: ItemType;
+    /**
+     * 钻石剑。
+     */
     static readonly diamondSword: ItemType;
     /**
+     * 闪长岩楼梯。
+     * 
      * Represents an item that can place a set of diorite stairs
      * within Minecraft.
      */
     static readonly dioriteStairs: ItemType;
     /**
+     * 泥土/砂土。
+     * 
      * Represents an item that can place a block of dirt within
      * Minecraft.
      */
     static readonly dirt: ItemType;
     /**
+     * 缠根泥土。
+     * 
      * Represents an item that can place a block of dirt with roots
      * within Minecraft.
      */
     static readonly dirtWithRoots: ItemType;
+    /**
+     * 唱片残片 Samuel Åberg - 5。
+     */
     static readonly discFragment5: ItemType;
     /**
+     * 发射器。
+     * 
      * Represents an item that can place a dispenser within
      * Minecraft.
      */
     static readonly dispenser: ItemType;
+    /**
+     * 海豚刷怪蛋。
+     */
     static readonly dolphinSpawnEgg: ItemType;
+    /**
+     * 驴刷怪蛋。
+     */
     static readonly donkeySpawnEgg: ItemType;
     /**
+     * 向日葵/丁香/高草丛/大型蕨/玫瑰丛/牡丹。
+     * 
      * Represents an item that can place a double plant within
      * Minecraft.
      */
     static readonly doublePlant: ItemType;
+    /**
+     * 龙息。
+     */
     static readonly dragonBreath: ItemType;
     /**
+     * 龙蛋。
+     * 
      * Represents an item that can place a dragon egg within
      * Minecraft.
      */
     static readonly dragonEgg: ItemType;
+    /**
+     * 干海带。
+     */
     static readonly driedKelp: ItemType;
     /**
+     * 干海带块。
+     * 
      * Represents an item that can place a block of dried kelp
      * within Minecraft.
      */
     static readonly driedKelpBlock: ItemType;
     /**
+     * 滴水石块。
+     * 
      * Represents an item that can place a block of dripstone
      * within Minecraft.
      */
     static readonly dripstoneBlock: ItemType;
     /**
+     * 投掷器。
+     * 
      * Represents an item that can place a dropper within
      * Minecraft.
      */
     static readonly dropper: ItemType;
+    /**
+     * 溺尸刷怪蛋。
+     */
     static readonly drownedSpawnEgg: ItemType;
     static readonly dye: ItemType;
+    /**
+     * 回响碎片。
+     */
     static readonly echoShard: ItemType;
+    /**
+     * 鸡蛋。
+     */
     static readonly egg: ItemType;
+    /**
+     * 远古守卫者刷怪蛋。
+     */
     static readonly elderGuardianSpawnEgg: ItemType;
+    /**
+     * 鞘翅。
+     */
     static readonly elytra: ItemType;
+    /**
+     * 绿宝石。
+     */
     static readonly emerald: ItemType;
     /**
+     * 绿宝石块。
+     * 
      * Represents an item that can place a block of emerald within
      * Minecraft.
      */
     static readonly emeraldBlock: ItemType;
     /**
+     * 绿宝石矿石。
+     * 
      * Represents an item that can place a block with embedded
      * emerald ore within Minecraft.
      */
     static readonly emeraldOre: ItemType;
+    /**
+     * 空地图。
+     */
     static readonly emptyMap: ItemType;
+    /**
+     * 附魔书。
+     */
     static readonly enchantedBook: ItemType;
+    /**
+     * 附魔金苹果。
+     */
     static readonly enchantedGoldenApple: ItemType;
     /**
+     * 附魔台。
+     * 
      * Represents an item that can place an enchanting table within
      * Minecraft.
      */
     static readonly enchantingTable: ItemType;
     /**
+     * 末地石砖。
+     * 
      * Represents an item that can place an end bricks block within
      * Minecraft.
      */
     static readonly endBricks: ItemType;
     /**
+     * 末地石砖楼梯。
+     * 
      * Represents an item that can place a set of end brick stairs
      * within Minecraft.
      */
     static readonly endBrickStairs: ItemType;
+    /**
+     * 末地水晶。
+     */
     static readonly endCrystal: ItemType;
     /**
+     * 末影箱。
+     * 
      * Represents an item that can place an ender chest within
      * Minecraft.
      */
     static readonly enderChest: ItemType;
+    /**
+     * 末影龙刷怪蛋。
+     */
     static readonly enderDragonSpawnEgg: ItemType;
+    /**
+     * 末影之眼。
+     */
     static readonly enderEye: ItemType;
+    /**
+     * 末影人刷怪蛋。
+     */
     static readonly endermanSpawnEgg: ItemType;
+    /**
+     * 末影螨刷怪蛋。
+     */
     static readonly endermiteSpawnEgg: ItemType;
+    /**
+     * 末影珍珠。
+     */
     static readonly enderPearl: ItemType;
     /**
+     * 末地传送门框架。
+     * 
      * Represents an item that can place an end portal frame within
      * Minecraft.
      */
     static readonly endPortalFrame: ItemType;
     /**
+     * 末地烛。
+     * 
      * Represents an item that can place an end rod within
      * Minecraft.
      */
     static readonly endRod: ItemType;
     /**
+     * 末地石。
+     * 
      * Represents an item that can place an end stone block within
      * Minecraft.
      */
     static readonly endStone: ItemType;
+    /**
+     * 唤魔者刷怪蛋。
+     */
     static readonly evokerSpawnEgg: ItemType;
+    /**
+     * 附魔之瓶。
+     */
     static readonly experienceBottle: ItemType;
     /**
+     * 斑驳的铜块。
+     * 
      * Represents an item that can place a block of exposed copper
      * within Minecraft.
      */
     static readonly exposedCopper: ItemType;
     /**
+     * 斑驳的切制铜块。
+     * 
      * Represents an item that can place a block of exposed cut
      * copper within Minecraft.
      */
     static readonly exposedCutCopper: ItemType;
     /**
+     * 斑驳的切制铜台阶。
+     * 
      * Represents an item that can place a slab of exposed cut
      * copper within Minecraft.
      */
     static readonly exposedCutCopperSlab: ItemType;
     /**
+     * 斑驳的切制铜楼梯。
+     * 
      * Represents an item that can place a set of exposed cut
      * copper stairs within Minecraft.
      */
     static readonly exposedCutCopperStairs: ItemType;
     /**
+     * 耕地。
+     * 
      * Represents an item that can place a farmland block within
      * Minecraft.
      */
     static readonly farmland: ItemType;
+    /**
+     * 羽毛。
+     */
     static readonly feather: ItemType;
     /**
+     * 橡木栅栏/云杉木栅栏/白桦木栅栏/丛林木栅栏/金合欢木栅栏/深色橡木栅栏。
+     * 
      * Represents an item that can place a fence within Minecraft.
      */
     static readonly fence: ItemType;
     /**
+     * 橡木栅栏门。
+     * 
      * Represents an item that can place a fence gate within
      * Minecraft.
      */
     static readonly fenceGate: ItemType;
+    /**
+     * 发酵蛛眼。
+     */
     static readonly fermentedSpiderEye: ItemType;
+    /**
+     * 砖纹旗帜图案。
+     */
     static readonly fieldMasonedBannerPattern: ItemType;
+    /**
+     * 地图。
+     */
     static readonly filledMap: ItemType;
+    /**
+     * 火焰弹。
+     */
     static readonly fireCharge: ItemType;
+    /**
+     * 烟花火箭。
+     */
     static readonly fireworkRocket: ItemType;
+    /**
+     * 烟火之星。
+     */
     static readonly fireworkStar: ItemType;
+    /**
+     * 钓鱼竿。
+     */
     static readonly fishingRod: ItemType;
     /**
+     * 制箭台。
+     * 
      * Represents an item that can place a fletching table within
      * Minecraft.
      */
     static readonly fletchingTable: ItemType;
+    /**
+     * 燧石。
+     */
     static readonly flint: ItemType;
+    /**
+     * 打火石。
+     */
     static readonly flintAndSteel: ItemType;
+    /**
+     * 花朵盾徽旗帜图案。
+     */
     static readonly flowerBannerPattern: ItemType;
     /**
+     * 盛开的杜鹃花丛。
+     * 
      * Represents an item that can place a flowering azalea plant
      * within Minecraft.
      */
     static readonly floweringAzalea: ItemType;
     /**
+     * 花盆。
+     * 
      * Represents an item that can place a flower pot within
      * Minecraft.
      */
     static readonly flowerPot: ItemType;
+    /**
+     * 狐狸刷怪蛋。
+     */
     static readonly foxSpawnEgg: ItemType;
     /**
+     * 物品展示框。
+     * 
      * Represents an item that can place a frame within Minecraft.
      */
     static readonly frame: ItemType;
+    /**
+     * 青蛙卵。
+     */
     static readonly frogSpawn: ItemType;
+    /**
+     * 青蛙刷怪蛋。
+     */
     static readonly frogSpawnEgg: ItemType;
     /**
+     * 霜冰。
+     * 
      * Represents an item that can place a frosted ice block within
      * Minecraft.
      */
     static readonly frostedIce: ItemType;
     /**
+     * 熔炉。
+     * 
      * Represents an item that can place a furnace within
      * Minecraft.
      */
     static readonly furnace: ItemType;
+    /**
+     * 恶魂刷怪蛋。
+     */
     static readonly ghastSpawnEgg: ItemType;
+    /**
+     * 恶魂之泪。
+     */
     static readonly ghastTear: ItemType;
     /**
+     * 镶金黑石。
+     * 
      * Represents an item that can place a block of gilded
      * blackstone within Minecraft.
      */
     static readonly gildedBlackstone: ItemType;
     /**
+     * 玻璃。
+     * 
      * Represents an item that can place a glass block within
      * Minecraft.
      */
     static readonly glass: ItemType;
+    /**
+     * 玻璃瓶。
+     */
     static readonly glassBottle: ItemType;
     /**
+     * 玻璃板。
+     * 
      * Represents an item that can place a pane of glass within
      * Minecraft.
      */
     static readonly glassPane: ItemType;
+    /**
+     * 闪烁的西瓜片。
+     */
     static readonly glisteringMelonSlice: ItemType;
+    /**
+     * 地球旗帜图案。
+     */
     static readonly globeBannerPattern: ItemType;
+    /**
+     * 发光浆果。
+     */
     static readonly glowBerries: ItemType;
     /**
+     * 荧光物品展示框。
+     * 
      * Represents an item that can place a glowing frame within
      * Minecraft.
      */
     static readonly glowFrame: ItemType;
+    /**
+     * 荧光墨囊。
+     */
     static readonly glowInkSac: ItemType;
     /**
+     * 发光地衣。
+     * 
      * Represents glow lichen within Minecraft.
      */
     static readonly glowLichen: ItemType;
+    /**
+     * 发光鱿鱼刷怪蛋。
+     */
     static readonly glowSquidSpawnEgg: ItemType;
     /**
+     * 荧石。
+     * 
      * Represents an item that can place a block of glowstone
      * within Minecraft.
      */
     static readonly glowstone: ItemType;
+    /**
+     * 荧石粉。
+     */
     static readonly glowstoneDust: ItemType;
+    /**
+     * 山羊角。
+     */
     static readonly goatHorn: ItemType;
+    /**
+     * 山羊刷怪蛋。
+     */
     static readonly goatSpawnEgg: ItemType;
     /**
+     * 金块。
+     * 
      * Represents an item that can place a gold block within
      * Minecraft.
      */
     static readonly goldBlock: ItemType;
+    /**
+     * 金苹果。
+     */
     static readonly goldenApple: ItemType;
+    /**
+     * 金斧。
+     */
     static readonly goldenAxe: ItemType;
+    /**
+     * 金靴子。
+     */
     static readonly goldenBoots: ItemType;
+    /**
+     * 金胡萝卜。
+     */
     static readonly goldenCarrot: ItemType;
+    /**
+     * 金胸甲。
+     */
     static readonly goldenChestplate: ItemType;
+    /**
+     * 金头盔。
+     */
     static readonly goldenHelmet: ItemType;
+    /**
+     * 金锄。
+     */
     static readonly goldenHoe: ItemType;
+    /**
+     * 金马铠。
+     */
     static readonly goldenHorseArmor: ItemType;
+    /**
+     * 金护腿。
+     */
     static readonly goldenLeggings: ItemType;
+    /**
+     * 金镐。
+     */
     static readonly goldenPickaxe: ItemType;
     /**
+     * 动力铁轨。
+     * 
      * Represents an item that can place a golden rail element
      * within Minecraft.
      */
     static readonly goldenRail: ItemType;
+    /**
+     * 金锹。
+     */
     static readonly goldenShovel: ItemType;
+    /**
+     * 金剑。
+     */
     static readonly goldenSword: ItemType;
+    /**
+     * 金锭。
+     */
     static readonly goldIngot: ItemType;
+    /**
+     * 金粒。
+     */
     static readonly goldNugget: ItemType;
     /**
+     * 金矿石。
+     * 
      * Represents an item that can place a block with embedded gold
      * ore within Minecraft.
      */
     static readonly goldOre: ItemType;
     /**
+     * 花岗岩楼梯。
+     * 
      * Represents an item that can place a set of granite stairs
      * within Minecraft.
      */
     static readonly graniteStairs: ItemType;
     /**
+     * 草。
+     * 
      * Represents an item that can place a block of dirt and grass
      * within Minecraft.
      */
     static readonly grass: ItemType;
     /**
+     * 草径。
+     * 
      * Represents an item that can place a block of dirt and grass
      * with a path within Minecraft.
      */
     static readonly grassPath: ItemType;
     /**
+     * 沙砾。
+     * 
      * Represents an item that can place a block of gravel within
      * Minecraft.
      */
     static readonly gravel: ItemType;
     /**
+     * 灰色蜡烛。
+     * 
      * Represents an item that can place a gray-colored candle
      * within Minecraft.
      */
     static readonly grayCandle: ItemType;
+    /**
+     * 灰色染料。
+     */
     static readonly grayDye: ItemType;
     /**
+     * 灰色带釉陶瓦。
+     * 
      * Represents an item that can place a gray-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly grayGlazedTerracotta: ItemType;
     /**
+     * 绿色蜡烛。
+     * 
      * Represents an item that can place a green-colored candle
      * within Minecraft.
      */
     static readonly greenCandle: ItemType;
+    /**
+     * 绿色染料。
+     */
     static readonly greenDye: ItemType;
     /**
+     * 绿色带釉陶瓦。
+     * 
      * Represents an item that can place a green block of glazed
      * terracotta within Minecraft.
      */
     static readonly greenGlazedTerracotta: ItemType;
     /**
+     * 砂轮。
+     * 
      * Represents an item that can place a grindstone within
      * Minecraft.
      */
     static readonly grindstone: ItemType;
+    /**
+     * 守卫者刷怪蛋。
+     */
     static readonly guardianSpawnEgg: ItemType;
+    /**
+     * 火药。
+     */
     static readonly gunpowder: ItemType;
     /**
+     * 垂根。
+     * 
      * Represents an item that can place a set of hanging roots
      * within Minecraft.
      */
     static readonly hangingRoots: ItemType;
     /**
+     * 陶瓦。
+     * 
      * Represents an item that can place a block of hardened clay
      * within Minecraft.
      */
     static readonly hardenedClay: ItemType;
     /**
+     * 干草块。
+     * 
      * Represents an item that can place a block of hay within
      * Minecraft.
      */
     static readonly hayBlock: ItemType;
+    /**
+     * 海洋之心。
+     */
     static readonly heartOfTheSea: ItemType;
     /**
+     * 重质测重压力板。
+     * 
      * Represents an item that can place a heavy weighted pressure
      * plate within Minecraft.
      */
     static readonly heavyWeightedPressurePlate: ItemType;
+    /**
+     * 疣猪兽刷怪蛋。
+     */
     static readonly hoglinSpawnEgg: ItemType;
     /**
+     * 蜂蜜块。
+     * 
      * Represents an item that can place a block of honey within
      * Minecraft.
      */
     static readonly honeyBlock: ItemType;
+    /**
+     * 蜂蜜瓶。
+     */
     static readonly honeyBottle: ItemType;
+    /**
+     * 蜜脾。
+     */
     static readonly honeycomb: ItemType;
     /**
+     * 蜜脾块。
+     * 
      * Represents an item that can place a honeycomb block within
      * Minecraft.
      */
     static readonly honeycombBlock: ItemType;
     /**
+     * 漏斗。
+     * 
      * Represents an item that can place a hopper within Minecraft.
      */
     static readonly hopper: ItemType;
+    /**
+     * 漏斗矿车。
+     */
     static readonly hopperMinecart: ItemType;
+    /**
+     * 马刷怪蛋。
+     */
     static readonly horseSpawnEgg: ItemType;
+    /**
+     * 尸壳刷怪蛋。
+     */
     static readonly huskSpawnEgg: ItemType;
     /**
+     * 冰。
+     * 
      * Represents an item that can place a block of ice within
      * Minecraft.
      */
     static readonly ice: ItemType;
     /**
+     * 被虫蚀的深板岩。
+     * 
      * Represents an item that can place an infested block of
      * deepslate within Minecraft.
      */
     static readonly infestedDeepslate: ItemType;
+    /**
+     * 墨囊。
+     */
     static readonly inkSac: ItemType;
+    /**
+     * 铁斧。
+     */
     static readonly ironAxe: ItemType;
     /**
+     * 铁栏杆。
+     * 
      * Represents iron bars within Minecraft.
      */
     static readonly ironBars: ItemType;
     /**
+     * 铁块。
+     * 
      * Represents an item that can place a block of iron within
      * Minecraft.
      */
     static readonly ironBlock: ItemType;
+    /**
+     * 铁靴子。
+     */
     static readonly ironBoots: ItemType;
+    /**
+     * 铁胸甲。
+     */
     static readonly ironChestplate: ItemType;
     /**
+     * 铁门。
+     * 
      * Represents an item that can place an iron door within
      * Minecraft.
      */
     static readonly ironDoor: ItemType;
+    /**
+     * 铁傀儡刷怪蛋。
+     */
     static readonly ironGolemSpawnEgg: ItemType;
+    /**
+     * 铁头盔。
+     */
     static readonly ironHelmet: ItemType;
+    /**
+     * 铁锄。
+     */
     static readonly ironHoe: ItemType;
+    /**
+     * 铁马铠。
+     */
     static readonly ironHorseArmor: ItemType;
+    /**
+     * 铁锭。
+     */
     static readonly ironIngot: ItemType;
+    /**
+     * 铁护腿。
+     */
     static readonly ironLeggings: ItemType;
+    /**
+     * 铁粒。
+     */
     static readonly ironNugget: ItemType;
     /**
+     * 铁矿石。
+     * 
      * Represents an item that can place a block with embedded iron
      * ore within Minecraft.
      */
     static readonly ironOre: ItemType;
+    /**
+     * 铁镐。
+     */
     static readonly ironPickaxe: ItemType;
+    /**
+     * 铁锹。
+     */
     static readonly ironShovel: ItemType;
+    /**
+     * 铁剑。
+     */
     static readonly ironSword: ItemType;
     /**
+     * 铁活板门。
+     * 
      * Represents an item that can place an iron trapdoor within
      * Minecraft.
      */
     static readonly ironTrapdoor: ItemType;
     /**
+     * 拼图方块。
+     * 
      * Represents an item that can place a jigsaw within Minecraft.
      */
     static readonly jigsaw: ItemType;
     /**
+     * 唱片机。
+     * 
      * Represents an item that can place a jukebox within
      * Minecraft.
      */
     static readonly jukebox: ItemType;
+    /**
+     * 丛林木船。
+     */
     static readonly jungleBoat: ItemType;
     /**
+     * 丛林木按钮。
+     * 
      * Represents jungle wood button within Minecraft.
      */
     static readonly jungleButton: ItemType;
+    /**
+     * 丛林木运输船。
+     */
     static readonly jungleChestBoat: ItemType;
     /**
+     * 丛林木门。
+     * 
      * Represents an item that can place a jungle wood door within
      * Minecraft.
      */
     static readonly jungleDoor: ItemType;
     /**
+     * 丛林木栅栏门。
+     * 
      * Represents an item that can place a jungle wood fence gate
      * within Minecraft.
      */
     static readonly jungleFenceGate: ItemType;
     /**
+     * 丛林木压力板。
+     * 
      * Represents an item that can place a jungle wood pressure
      * plate within Minecraft.
      */
     static readonly junglePressurePlate: ItemType;
     /**
+     * 丛林木告示牌。
+     * 
      * Represents an item that can place a jungle sign within
      * Minecraft.
      */
     static readonly jungleSign: ItemType;
     /**
+     * 丛林木楼梯。
+     * 
      * Represents an item that can place a set of jungle wood
      * stairs within Minecraft.
      */
     static readonly jungleStairs: ItemType;
     /**
+     * 丛林木活板门。
+     * 
      * Represents an item that can place a jungle wood trapdoor
      * within Minecraft.
      */
     static readonly jungleTrapdoor: ItemType;
     /**
+     * 海带。
+     * 
      * Represents an item that can place a set of kelp within
      * Minecraft.
      */
     static readonly kelp: ItemType;
     /**
+     * 梯子。
+     * 
      * Represents an item that can place a ladder within Minecraft.
      */
     static readonly ladder: ItemType;
     /**
+     * 灯笼。
+     * 
      * Represents an item that can place a lantern within
      * Minecraft.
      */
     static readonly lantern: ItemType;
     /**
+     * 青金石块。
+     * 
      * Represents an item that can place a block of lapis lazuli
      * within Minecraft.
      */
     static readonly lapisBlock: ItemType;
+    /**
+     * 青金石。
+     */
     static readonly lapisLazuli: ItemType;
     /**
+     * 青金石矿石。
+     * 
      * Represents an item that can place a block with embedded
      * lapis lazuli within Minecraft.
      */
     static readonly lapisOre: ItemType;
     /**
+     * 大型紫晶芽。
+     * 
      * Represents an item that can place a bud of large amethyst
      * within Minecraft.
      */
     static readonly largeAmethystBud: ItemType;
+    /**
+     * 熔岩桶。
+     */
     static readonly lavaBucket: ItemType;
+    /**
+     * 拴绳。
+     */
     static readonly lead: ItemType;
+    /**
+     * 皮革。
+     */
     static readonly leather: ItemType;
+    /**
+     * 皮革靴子。
+     */
     static readonly leatherBoots: ItemType;
+    /**
+     * 皮革外套。
+     */
     static readonly leatherChestplate: ItemType;
+    /**
+     * 皮革帽子。
+     */
     static readonly leatherHelmet: ItemType;
+    /**
+     * 皮革马铠。
+     */
     static readonly leatherHorseArmor: ItemType;
+    /**
+     * 皮革裤子。
+     */
     static readonly leatherLeggings: ItemType;
     /**
+     * 橡树树叶/云杉树叶/白桦树叶/丛林树叶。
+     * 
      * Represents an item that can place a set of leaves within
      * Minecraft.
      */
     static readonly leaves: ItemType;
     /**
+     * 金合欢树叶/深色橡树树叶。
+     * 
      * Represents an item that can place an updated set of leaves
      * within Minecraft.
      */
     static readonly leaves2: ItemType;
     /**
+     * 讲台。
+     * 
      * Represents an item that can place a lectern within
      * Minecraft.
      */
     static readonly lectern: ItemType;
     /**
+     * 拉杆。
+     * 
      * Represents an item that can place a lever within Minecraft.
      */
     static readonly lever: ItemType;
     /**
+     * 光源方块。
+     * 
      * Represents an item that can place a block of light within
      * Minecraft.
      */
     static readonly lightBlock: ItemType;
     /**
+     * 淡蓝色蜡烛。
+     * 
      * Represents an item that can place a light blue candle within
      * Minecraft.
      */
     static readonly lightBlueCandle: ItemType;
+    /**
+     * 淡蓝色染料。
+     */
     static readonly lightBlueDye: ItemType;
     /**
+     * 淡蓝色带釉陶瓦。
+     * 
      * Represents an item that can place a light blue block of
      * glazed terracotta within Minecraft.
      */
     static readonly lightBlueGlazedTerracotta: ItemType;
     /**
+     * 淡灰色蜡烛。
+     * 
      * Represents an item that can place a light gray candle within
      * Minecraft.
      */
     static readonly lightGrayCandle: ItemType;
+    /**
+     * 淡灰色染料。
+     */
     static readonly lightGrayDye: ItemType;
     /**
+     * 避雷针。
+     * 
      * Represents an item that can place a lightning rod within
      * Minecraft.
      */
     static readonly lightningRod: ItemType;
     /**
+     * 轻质测重压力板。
+     * 
      * Represents an item that can place a light weighted pressure
      * plate within Minecraft.
      */
     static readonly lightWeightedPressurePlate: ItemType;
     /**
+     * 黄绿色蜡烛。
+     * 
      * Represents an item that can place a lime candle within
      * Minecraft.
      */
     static readonly limeCandle: ItemType;
+    /**
+     * 黄绿色染料。
+     */
     static readonly limeDye: ItemType;
     /**
+     * 黄绿色带釉陶瓦。
+     * 
      * Represents an item that can place a lime-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly limeGlazedTerracotta: ItemType;
+    /**
+     * 滞留药水。
+     */
     static readonly lingeringPotion: ItemType;
     /**
+     * 南瓜灯。
+     * 
      * Represents an item that can place a lit pumpkin within
      * Minecraft.
      */
     static readonly litPumpkin: ItemType;
+    /**
+     * 羊驼刷怪蛋。
+     */
     static readonly llamaSpawnEgg: ItemType;
     /**
+     * 磁石。
+     * 
      * Represents an item that can place a lodestone within
      * Minecraft.
      */
     static readonly lodestone: ItemType;
+    /**
+     * 磁石指针。
+     */
     static readonly lodestoneCompass: ItemType;
     /**
+     * 橡木原木/云杉原木/白桦原木/丛林原木。
+     * 
      * Represents an item that can place a log within Minecraft.
      */
     static readonly log: ItemType;
     /**
+     * 金合欢原木/深色橡木原木。
+     * 
      * Represents an item that can place a more updated,
      * customizable log within Minecraft.
      */
     static readonly log2: ItemType;
     /**
+     * 织布机。
+     * 
      * Represents an item that can place a loom within Minecraft.
      */
     static readonly loom: ItemType;
     /**
+     * 品红色蜡烛。
+     * 
      * Represents an item that can place a magenta candle within
      * Minecraft.
      */
     static readonly magentaCandle: ItemType;
+    /**
+     * 品红色染料。
+     */
     static readonly magentaDye: ItemType;
     /**
+     * 品红色带釉陶瓦。
+     * 
      * Represents an item that can place a block of magenta-colored
      * glazed terracotta within Minecraft.
      */
     static readonly magentaGlazedTerracotta: ItemType;
     /**
+     * 岩浆块。
+     * 
      * Represents magma within Minecraft.
      */
     static readonly magma: ItemType;
+    /**
+     * 岩浆膏。
+     */
     static readonly magmaCream: ItemType;
+    /**
+     * 岩浆怪刷怪蛋。
+     */
     static readonly magmaCubeSpawnEgg: ItemType;
+    /**
+     * 红树木船。
+     */
     static readonly mangroveBoat: ItemType;
+    /**
+     * 红树木按钮。
+     */
     static readonly mangroveButton: ItemType;
+    /**
+     * 红树木运输船。
+     */
     static readonly mangroveChestBoat: ItemType;
+    /**
+     * 红树木门。
+     */
     static readonly mangroveDoor: ItemType;
+    /**
+     * 红树木栅栏。
+     */
     static readonly mangroveFence: ItemType;
+    /**
+     * 红树木栅栏门。
+     */
     static readonly mangroveFenceGate: ItemType;
+    /**
+     * 红树树叶。
+     */
     static readonly mangroveLeaves: ItemType;
+    /**
+     * 红树原木。
+     */
     static readonly mangroveLog: ItemType;
+    /**
+     * 红树木板。
+     */
     static readonly mangrovePlanks: ItemType;
+    /**
+     * 红树木压力板。
+     */
     static readonly mangrovePressurePlate: ItemType;
+    /**
+     * 红树胎生苗。
+     */
     static readonly mangrovePropagule: ItemType;
+    /**
+     * 红树根。
+     */
     static readonly mangroveRoots: ItemType;
+    /**
+     * 红树木告示牌。
+     */
     static readonly mangroveSign: ItemType;
+    /**
+     * 红树木台阶。
+     */
     static readonly mangroveSlab: ItemType;
+    /**
+     * 红树木楼梯。
+     */
     static readonly mangroveStairs: ItemType;
+    /**
+     * 红树木活板门。
+     */
     static readonly mangroveTrapdoor: ItemType;
+    /**
+     * 红树木。
+     */
     static readonly mangroveWood: ItemType;
     /**
+     * 中型紫晶芽。
+     * 
      * Represents an item that can place a medium-sized bud of
      * amethyst within Minecraft.
      */
     static readonly mediumAmethystBud: ItemType;
     /**
+     * 西瓜。
+     * 
      * Represents an item that can place a block of melon within
      * Minecraft.
      */
     static readonly melonBlock: ItemType;
+    /**
+     * 西瓜种子。
+     */
     static readonly melonSeeds: ItemType;
+    /**
+     * 西瓜片。
+     */
     static readonly melonSlice: ItemType;
+    /**
+     * 奶桶。
+     */
     static readonly milkBucket: ItemType;
+    /**
+     * 矿车。
+     */
     static readonly minecart: ItemType;
     /**
+     * 刷怪笼。
+     * 
      * Represents an item that can place a mob spawner within
      * Minecraft.
      */
     static readonly mobSpawner: ItemType;
+    /**
+     * Mojang徽标旗帜图案。
+     */
     static readonly mojangBannerPattern: ItemType;
     /**
+     * 被虫蚀的石头/被虫蚀的圆石/被虫蚀的石砖/被虫蚀的苔石砖/被虫蚀的裂纹石砖/被虫蚀的雕纹石砖。
+     * 
      * Represents an item that can place a monster egg within
      * Minecraft.
      */
     static readonly monsterEgg: ItemType;
+    /**
+     * 哞菇刷怪蛋。
+     */
     static readonly mooshroomSpawnEgg: ItemType;
     /**
+     * 苔藓块。
+     * 
      * Represents an item that can place a block of moss within
      * Minecraft.
      */
     static readonly mossBlock: ItemType;
     /**
+     * 苔藓地毯。
+     * 
      * Represents an item that can place a carpet of moss within
      * Minecraft.
      */
     static readonly mossCarpet: ItemType;
     /**
+     * 苔石。
+     * 
      * Represents an item that can place a block of cobblestone
      * with moss within Minecraft.
      */
     static readonly mossyCobblestone: ItemType;
     /**
+     * 苔石楼梯。
+     * 
      * Represents an item that can place a set of mossy cobblestone
      * stairs within Minecraft.
      */
     static readonly mossyCobblestoneStairs: ItemType;
     /**
+     * 苔石砖楼梯。
+     * 
      * Represents an item that can place a set of mossy stone brick
      * stairs within Minecraft.
      */
     static readonly mossyStoneBrickStairs: ItemType;
+    /**
+     * 泥巴。
+     */
     static readonly mud: ItemType;
+    /**
+     * 泥砖。
+     */
     static readonly mudBricks: ItemType;
+    /**
+     * 泥砖台阶。
+     */
     static readonly mudBrickSlab: ItemType;
+    /**
+     * 泥砖楼梯。
+     */
     static readonly mudBrickStairs: ItemType;
+    /**
+     * 泥砖墙。
+     */
     static readonly mudBrickWall: ItemType;
+    /**
+     * 沾泥的红树根。
+     */
     static readonly muddyMangroveRoots: ItemType;
+    /**
+     * 骡刷怪蛋。
+     */
     static readonly muleSpawnEgg: ItemType;
+    /**
+     * 蘑菇煲。
+     */
     static readonly mushroomStew: ItemType;
+    /**
+     * 音乐唱片 C418 - 11。
+     */
     static readonly musicDisc11: ItemType;
+    /**
+     * 音乐唱片 C418 - 13。
+     */
     static readonly musicDisc13: ItemType;
+    /**
+     * 音乐唱片 Samuel Åberg - 5。
+     */
     static readonly musicDisc5: ItemType;
+    /**
+     * 音乐唱片 C418 - blocks。
+     */
     static readonly musicDiscBlocks: ItemType;
+    /**
+     * 音乐唱片 C418 - cat。
+     */
     static readonly musicDiscCat: ItemType;
+    /**
+     * 音乐唱片 C418 - chirp。
+     */
     static readonly musicDiscChirp: ItemType;
+    /**
+     * 音乐唱片 C418 - far。
+     */
     static readonly musicDiscFar: ItemType;
+    /**
+     * 音乐唱片 C418 - mall。
+     */
     static readonly musicDiscMall: ItemType;
+    /**
+     * 音乐唱片 C418 - mellohi。
+     */
     static readonly musicDiscMellohi: ItemType;
+    /**
+     * 音乐唱片 Lena Raine - otherside。
+     */
     static readonly musicDiscOtherside: ItemType;
+    /**
+     * 音乐唱片 Lena Raine - Pigstep。
+     */
     static readonly musicDiscPigstep: ItemType;
+    /**
+     * 音乐唱片 C418 - stal。
+     */
     static readonly musicDiscStal: ItemType;
+    /**
+     * 音乐唱片 C418 - strad。
+     */
     static readonly musicDiscStrad: ItemType;
+    /**
+     * 音乐唱片 C418 - wait。
+     */
     static readonly musicDiscWait: ItemType;
+    /**
+     * 音乐唱片 C418 - ward。
+     */
     static readonly musicDiscWard: ItemType;
+    /**
+     * 生羊肉。
+     */
     static readonly mutton: ItemType;
     /**
+     * 菌丝体。
+     * 
      * Represents an item that can place a mycelium plant within
      * Minecraft.
      */
     static readonly mycelium: ItemType;
+    /**
+     * 命名牌。
+     */
     static readonly nameTag: ItemType;
+    /**
+     * 鹦鹉螺壳。
+     */
     static readonly nautilusShell: ItemType;
     /**
+     * 下界砖块。
+     * 
      * Represents an item that can place a nether brick block
      * within Minecraft.
      */
     static readonly netherbrick: ItemType;
     /**
+     * 下界砖。
+     * 
      * Represents an item that can place a nether brick block
      * within Minecraft.
      */
     static readonly netherBrick: ItemType;
     /**
+     * 下界砖栅栏。
+     * 
      * Represents an item that can place a nether brick fence
      * within Minecraft.
      */
     static readonly netherBrickFence: ItemType;
     /**
+     * 下界砖楼梯。
+     * 
      * Represents an item that can place a set of nether brick
      * stairs within Minecraft.
      */
     static readonly netherBrickStairs: ItemType;
     /**
+     * 下界金矿石。
+     * 
      * Represents an item that can place a block of nether with
      * embedded gold ore within Minecraft.
      */
     static readonly netherGoldOre: ItemType;
+    /**
+     * 下界合金斧。
+     */
     static readonly netheriteAxe: ItemType;
     /**
+     * 下界合金块。
+     * 
      * Represents an item that can place a block of netherite
      * within Minecraft.
      */
     static readonly netheriteBlock: ItemType;
+    /**
+     * 下界合金靴子。
+     */
     static readonly netheriteBoots: ItemType;
+    /**
+     * 下界合金胸甲。
+     */
     static readonly netheriteChestplate: ItemType;
+    /**
+     * 下界合金头盔。
+     */
     static readonly netheriteHelmet: ItemType;
+    /**
+     * 下界合金锄。
+     */
     static readonly netheriteHoe: ItemType;
+    /**
+     * 下界合金锭。
+     */
     static readonly netheriteIngot: ItemType;
+    /**
+     * 下界合金护腿。
+     */
     static readonly netheriteLeggings: ItemType;
+    /**
+     * 下界合金镐。
+     */
     static readonly netheritePickaxe: ItemType;
+    /**
+     * 下界合金碎片。
+     */
     static readonly netheriteScrap: ItemType;
+    /**
+     * 下界合金锹。
+     */
     static readonly netheriteShovel: ItemType;
+    /**
+     * 下界合金剑。
+     */
     static readonly netheriteSword: ItemType;
     /**
+     * 下界岩。
+     * 
      * Represents an item that can place a block of netherrack
      * within Minecraft.
      */
     static readonly netherrack: ItemType;
     /**
+     * 下界苗。
+     * 
      * Represents nether sprouts within Minecraft.
      */
     static readonly netherSprouts: ItemType;
+    /**
+     * 下界之星。
+     */
     static readonly netherStar: ItemType;
     /**
+     * 下界疣。
+     * 
      * Represents nether wart within Minecraft.
      */
     static readonly netherWart: ItemType;
     /**
+     * 下界疣块。
+     * 
      * Represents an item that can place a block of nether wart
      * within Minecraft.
      */
     static readonly netherWartBlock: ItemType;
     /**
+     * 石头楼梯。
+     * 
      * Represents an item that can place a standard set of stone
      * stairs within Minecraft.
      */
     static readonly normalStoneStairs: ItemType;
     /**
+     * 音符盒。
+     * 
      * Represents an item that can place a note block within
      * Minecraft.
      */
     static readonly noteblock: ItemType;
+    /**
+     * 橡木船。
+     */
     static readonly oakBoat: ItemType;
+    /**
+     * 橡木运输船。
+     */
     static readonly oakChestBoat: ItemType;
+    /**
+     * 橡木告示牌。
+     */
     static readonly oakSign: ItemType;
     /**
+     * 橡木楼梯。
+     * 
      * Represents an item that can place a set of oak stairs within
      * Minecraft.
      */
     static readonly oakStairs: ItemType;
     /**
+     * 侦测器。
+     * 
      * Represents an item that can place an observer within
      * Minecraft.
      */
     static readonly observer: ItemType;
     /**
+     * 黑曜石。
+     * 
      * Represents an item that can place an obsidian block within
      * Minecraft.
      */
     static readonly obsidian: ItemType;
+    /**
+     * 豹猫刷怪蛋。
+     */
     static readonly ocelotSpawnEgg: ItemType;
+    /**
+     * 赭黄蛙明灯。
+     */
     static readonly ochreFroglight: ItemType;
     /**
+     * 橙色蜡烛。
+     * 
      * Represents an item that can place an orange candle within
      * Minecraft.
      */
     static readonly orangeCandle: ItemType;
+    /**
+     * 橙色染料。
+     */
     static readonly orangeDye: ItemType;
     /**
+     * 橙色带釉陶瓦。
+     * 
      * Represents an item that can place a block of orange-colored
      * glazed terracotta within Minecraft.
      */
     static readonly orangeGlazedTerracotta: ItemType;
     /**
+     * 氧化的铜块。
+     * 
      * Represents an item that can place a block of oxidized copper
      * within Minecraft.
      */
     static readonly oxidizedCopper: ItemType;
     /**
+     * 氧化的切制铜块。
+     * 
      * Represents an item that can place a block of oxidized cut
      * copper within Minecraft.
      */
     static readonly oxidizedCutCopper: ItemType;
     /**
+     * 氧化的切制铜台阶。
+     * 
      * Represents an item that can place a slab of oxidized cut
      * copper within Minecraft.
      */
     static readonly oxidizedCutCopperSlab: ItemType;
     /**
+     * 氧化的切制铜楼梯。
+     * 
      * Represents an item that can place a set of oxidized cut
      * copper stairs within Minecraft.
      */
     static readonly oxidizedCutCopperStairs: ItemType;
     /**
+     * 浮冰。
+     * 
      * Represents an item that can place a block of packed ice
      * within Minecraft.
      */
     static readonly packedIce: ItemType;
+    /**
+     * 泥坯。
+     */
     static readonly packedMud: ItemType;
+    /**
+     * 画。
+     */
     static readonly painting: ItemType;
+    /**
+     * 熊猫刷怪蛋。
+     */
     static readonly pandaSpawnEgg: ItemType;
+    /**
+     * 纸。
+     */
     static readonly paper: ItemType;
+    /**
+     * 鹦鹉刷怪蛋。
+     */
     static readonly parrotSpawnEgg: ItemType;
+    /**
+     * 珠光蛙明灯。
+     */
     static readonly pearlescentFroglight: ItemType;
+    /**
+     * 幻翼膜。
+     */
     static readonly phantomMembrane: ItemType;
+    /**
+     * 幻翼刷怪蛋。
+     */
     static readonly phantomSpawnEgg: ItemType;
+    /**
+     * 猪鼻旗帜图案。
+     */
     static readonly piglinBannerPattern: ItemType;
+    /**
+     * 猪灵蛮兵刷怪蛋。
+     */
     static readonly piglinBruteSpawnEgg: ItemType;
+    /**
+     * 猪灵刷怪蛋。
+     */
     static readonly piglinSpawnEgg: ItemType;
+    /**
+     * 猪刷怪蛋。
+     */
     static readonly pigSpawnEgg: ItemType;
+    /**
+     * 掠夺者刷怪蛋。
+     */
     static readonly pillagerSpawnEgg: ItemType;
     /**
+     * 粉红色蜡烛。
+     * 
      * Represents an item that can place a pink candle within
      * Minecraft.
      */
     static readonly pinkCandle: ItemType;
+    /**
+     * 粉红色染料。
+     */
     static readonly pinkDye: ItemType;
     /**
+     * 粉红色带釉陶瓦。
+     * 
      * Represents an item that can place a pink-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly pinkGlazedTerracotta: ItemType;
     /**
+     * 活塞。
+     * 
      * Represents an item that can place a piston within Minecraft.
      */
     static readonly piston: ItemType;
     /**
+     * 橡木木板/云杉木板/白桦木板/丛林木板/金合欢木板/深色橡木木板。
+     * 
      * Represents an item that can place a set of planks within
      * Minecraft.
      */
     static readonly planks: ItemType;
     /**
+     * 灰化土。
+     * 
      * Represents podzol within Minecraft.
      */
     static readonly podzol: ItemType;
     /**
+     * 滴水石锥。
+     * 
      * Represents pointed dripstone within Minecraft.
      */
     static readonly pointedDripstone: ItemType;
+    /**
+     * 毒马铃薯。
+     */
     static readonly poisonousPotato: ItemType;
+    /**
+     * 北极熊刷怪蛋。
+     */
     static readonly polarBearSpawnEgg: ItemType;
     /**
+     * 磨制安山岩楼梯。
+     * 
      * Represents an item that can place a set of polished andesite
      * stairs within Minecraft.
      */
     static readonly polishedAndesiteStairs: ItemType;
     /**
+     * 磨制玄武岩。
+     * 
      * Represents an item that can place a block of polished basalt
      * within Minecraft.
      */
     static readonly polishedBasalt: ItemType;
     /**
+     * 磨制黑石。
+     * 
      * Represents an item that can place a block of polished
      * blackstone within Minecraft.
      */
     static readonly polishedBlackstone: ItemType;
     /**
+     * 磨制黑石砖。
+     * 
      * Represents an item that can place a block of polished
      * blackstone bricks within Minecraft.
      */
     static readonly polishedBlackstoneBricks: ItemType;
     /**
+     * 磨制黑石砖台阶。
+     * 
      * Represents an item that can place a slab of polished
      * blackstone within Minecraft.
      */
     static readonly polishedBlackstoneBrickSlab: ItemType;
     /**
+     * 磨制黑石砖楼梯。
+     * 
      * Represents an item that can place a set of polished
      * blackstone brick stairs within Minecraft.
      */
     static readonly polishedBlackstoneBrickStairs: ItemType;
     /**
+     * 磨制黑石砖墙。
+     * 
      * Represents an item that can place a polished blackstone
      * brick wall within Minecraft.
      */
     static readonly polishedBlackstoneBrickWall: ItemType;
     /**
+     * 磨制黑石按钮。
+     * 
      * Represents an item that can place a polished blackstone
      * button within Minecraft.
      */
     static readonly polishedBlackstoneButton: ItemType;
     /**
+     * 磨制黑石压力板。
+     * 
      * Represents an item that can place a polished blackstone
      * pressure plate within Minecraft.
      */
     static readonly polishedBlackstonePressurePlate: ItemType;
     /**
+     * 磨制黑石台阶。
+     * 
      * Represents an item that can place a slab of polished
      * blackstone within Minecraft.
      */
     static readonly polishedBlackstoneSlab: ItemType;
     /**
+     * 磨制黑石楼梯。
+     * 
      * Represents an item that can place a set of polished
      * blackstone stairs within Minecraft.
      */
     static readonly polishedBlackstoneStairs: ItemType;
     /**
+     * 磨制黑石墙。
+     * 
      * Represents an item that can place a polished blackstone wall
      * within Minecraft.
      */
     static readonly polishedBlackstoneWall: ItemType;
     /**
+     * 磨制深板岩。
+     * 
      * Represents an item that can place a block of polished
      * deepslate within Minecraft.
      */
     static readonly polishedDeepslate: ItemType;
     /**
+     * 磨制深板岩台阶。
+     * 
      * Represents an item that can place a slab of polished
      * deepslate within Minecraft.
      */
     static readonly polishedDeepslateSlab: ItemType;
     /**
+     * 磨制深板岩楼梯。
+     * 
      * Represents an item that can place a set of polished
      * deepslate stairs within Minecraft.
      */
     static readonly polishedDeepslateStairs: ItemType;
     /**
+     * 磨制深板岩墙。
+     * 
      * Represents an item that can place a wall of polished
      * deepslate within Minecraft.
      */
     static readonly polishedDeepslateWall: ItemType;
     /**
+     * 磨制闪长岩楼梯。
+     * 
      * Represents an item that can place a block of polished
      * diorite within Minecraft.
      */
     static readonly polishedDioriteStairs: ItemType;
     /**
+     * 磨制花岗岩楼梯。
+     * 
      * Represents an item that can place a set of polished granite
      * stairs within Minecraft.
      */
     static readonly polishedGraniteStairs: ItemType;
+    /**
+     * 爆裂紫颂果。
+     */
     static readonly poppedChorusFruit: ItemType;
+    /**
+     * 生猪排。
+     */
     static readonly porkchop: ItemType;
+    /**
+     * 马铃薯。
+     */
     static readonly potato: ItemType;
+    /**
+     * 药水。
+     */
     static readonly potion: ItemType;
+    /**
+     * 细雪桶。
+     */
     static readonly powderSnowBucket: ItemType;
     /**
+     * 海晶石/暗海晶石/海晶石砖。
+     * 
      * Represents an item that can place a block of prismarine
      * within Minecraft.
      */
     static readonly prismarine: ItemType;
     /**
+     * 海晶石砖楼梯。
+     * 
      * Represents an item that can place a set of prismarine brick
      * stairs within Minecraft.
      */
     static readonly prismarineBricksStairs: ItemType;
+    /**
+     * 海晶砂粒。
+     */
     static readonly prismarineCrystals: ItemType;
+    /**
+     * 海晶碎片。
+     */
     static readonly prismarineShard: ItemType;
     /**
+     * 海晶石楼梯。
+     * 
      * Represents an item that can place a set of prismarine stairs
      * within Minecraft.
      */
     static readonly prismarineStairs: ItemType;
+    /**
+     * 河豚。
+     */
     static readonly pufferfish: ItemType;
+    /**
+     * 河豚桶。
+     */
     static readonly pufferfishBucket: ItemType;
+    /**
+     * 河豚刷怪蛋。
+     */
     static readonly pufferfishSpawnEgg: ItemType;
     /**
+     * 南瓜。
+     * 
      * Represents an item that can place a pumpkin within
      * Minecraft.
      */
     static readonly pumpkin: ItemType;
+    /**
+     * 南瓜派。
+     */
     static readonly pumpkinPie: ItemType;
+    /**
+     * 南瓜种子。
+     */
     static readonly pumpkinSeeds: ItemType;
     /**
+     * 紫色蜡烛。
+     * 
      * Represents an item that can place a purple candle within
      * Minecraft.
      */
     static readonly purpleCandle: ItemType;
+    /**
+     * 紫色染料。
+     */
     static readonly purpleDye: ItemType;
     /**
+     * 紫色带釉陶瓦。
+     * 
      * Represents an item that can place a purple-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly purpleGlazedTerracotta: ItemType;
     /**
+     * 紫珀块/雕纹紫珀块/紫珀柱/平滑紫珀块。
+     * 
      * Represents an item that can place a purpur block within
      * Minecraft.
      */
     static readonly purpurBlock: ItemType;
     /**
+     * 紫珀楼梯。
+     * 
      * Represents an item that can place a set of purpur stairs
      * within Minecraft.
      */
     static readonly purpurStairs: ItemType;
+    /**
+     * 下界石英。
+     */
     static readonly quartz: ItemType;
     /**
+     * 石英块/雕纹石英块/石英柱/平滑石英块。
+     * 
      * Represents an item that can place a block of solid quartz
      * within Minecraft.
      */
     static readonly quartzBlock: ItemType;
     /**
+     * 石英砖。
+     * 
      * Represents an item that can place a block of solid quartz
      * bricks within Minecraft.
      */
     static readonly quartzBricks: ItemType;
     /**
+     * 下界石英矿石。
+     * 
      * Represents an item that can place a block with embedded
      * quartz ore within Minecraft.
      */
     static readonly quartzOre: ItemType;
     /**
+     * 石英楼梯。
+     * 
      * Represents an item that can place a set of quartz stairs
      * within Minecraft.
      */
     static readonly quartzStairs: ItemType;
+    /**
+     * 兔子。
+     */
     static readonly rabbit: ItemType;
+    /**
+     * 兔子脚。
+     */
     static readonly rabbitFoot: ItemType;
+    /**
+     * 兔子皮。
+     */
     static readonly rabbitHide: ItemType;
+    /**
+     * 兔子刷怪蛋。
+     */
     static readonly rabbitSpawnEgg: ItemType;
+    /**
+     * 兔肉煲。
+     */
     static readonly rabbitStew: ItemType;
     /**
+     * 铁轨。
+     * 
      * Represents an item that can place a set of rails within
      * Minecraft.
      */
     static readonly rail: ItemType;
+    /**
+     * 劫掠兽刷怪蛋。
+     */
     static readonly ravagerSpawnEgg: ItemType;
+    /**
+     * 粗铜。
+     */
     static readonly rawCopper: ItemType;
     /**
+     * 粗铜块。
+     * 
      * Represents an item that can place a block of raw copper
      * within Minecraft.
      */
     static readonly rawCopperBlock: ItemType;
+    /**
+     * 粗金。
+     */
     static readonly rawGold: ItemType;
     /**
+     * 粗金块。
+     * 
      * Represents an item that can place a block of raw gold within
      * Minecraft.
      */
     static readonly rawGoldBlock: ItemType;
+    /**
+     * 粗铁。
+     */
     static readonly rawIron: ItemType;
     /**
+     * 粗铁块。
+     * 
      * Represents an item that can place a block of raw iron within
      * Minecraft.
      */
     static readonly rawIronBlock: ItemType;
+    /**
+     * 追溯指针。
+     */
     static readonly recoveryCompass: ItemType;
     /**
+     * 红色蜡烛。
+     * 
      * Represents an item that can place a red candle within
      * Minecraft.
      */
     static readonly redCandle: ItemType;
+    /**
+     * 红色染料。
+     */
     static readonly redDye: ItemType;
     /**
+     * 虞美人/兰花/绒球葱/蓝花美耳草/红色郁金香/橙色郁金香/白色郁金香/粉红色郁金香/滨菊/矢车菊/铃兰。
+     * 
      * Represents an item that can place a red flower within
      * Minecraft.
      */
     static readonly redFlower: ItemType;
     /**
+     * 红色带釉陶瓦。
+     * 
      * Represents an item that can place a red-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly redGlazedTerracotta: ItemType;
     /**
+     * 红色蘑菇。
+     * 
      * Represents an item that can place a red mushroom within
      * Minecraft.
      */
     static readonly redMushroom: ItemType;
     /**
+     * 红色蘑菇方块。
+     * 
      * Represents an item that can place a block of red mushroom
      * within Minecraft.
      */
     static readonly redMushroomBlock: ItemType;
     /**
+     * 红色下界砖块。
+     * 
      * Represents an item that can place a block of red nether
      * brick within Minecraft.
      */
     static readonly redNetherBrick: ItemType;
     /**
+     * 红色下界砖楼梯。
+     * 
      * Represents an item that can place a set of red nether brick
      * stairs within Minecraft.
      */
     static readonly redNetherBrickStairs: ItemType;
     /**
+     * 红砂岩/雕纹红砂岩/切制红砂岩/平滑红砂岩。
+     * 
      * Represents an item that can place a block of red sandstone
      * within Minecraft.
      */
     static readonly redSandstone: ItemType;
     /**
+     * 红砂岩楼梯。
+     * 
      * Represents an item that can place a set of red sandstone
      * stairs within Minecraft.
      */
     static readonly redSandstoneStairs: ItemType;
+    /**
+     * 红石粉。
+     */
     static readonly redstone: ItemType;
     /**
+     * 红石块。
+     * 
      * Represents an item that can place a block of redstone within
      * Minecraft.
      */
     static readonly redstoneBlock: ItemType;
     /**
+     * 红石灯。
+     * 
      * Represents an item that can place a redstone lamp within
      * Minecraft.
      */
     static readonly redstoneLamp: ItemType;
     /**
+     * 红石矿石。
+     * 
      * Represents an item that can place a block with embedded
      * redstone ore within Minecraft.
      */
     static readonly redstoneOre: ItemType;
     /**
+     * 红石火把。
+     * 
      * Represents an item that can place a redstone torch within
      * Minecraft.
      */
     static readonly redstoneTorch: ItemType;
+    /**
+     * 强化深板岩。
+     */
     static readonly reinforcedDeepslate: ItemType;
+    /**
+     * 红石中继器。
+     */
     static readonly repeater: ItemType;
     /**
+     * 循环型命令方块。
+     * 
      * Represents an item that can place a repeating command block
      * within Minecraft.
      */
     static readonly repeatingCommandBlock: ItemType;
     /**
+     * 重生锚。
+     * 
      * Represents an item that can place a respawn anchor within
      * Minecraft.
      */
     static readonly respawnAnchor: ItemType;
+    /**
+     * 腐肉。
+     */
     static readonly rottenFlesh: ItemType;
+    /**
+     * 鞍。
+     */
     static readonly saddle: ItemType;
+    /**
+     * 鲑鱼。
+     */
     static readonly salmon: ItemType;
+    /**
+     * 鲑鱼桶。
+     */
     static readonly salmonBucket: ItemType;
+    /**
+     * 鲑鱼刷怪蛋。
+     */
     static readonly salmonSpawnEgg: ItemType;
     /**
+     * 沙子/红沙。
+     * 
      * Represents an item that can place a block of sand within
      * Minecraft.
      */
     static readonly sand: ItemType;
     /**
+     * 砂岩/雕纹砂岩/切制砂岩/平滑砂岩。
+     * 
      * Represents an item that can place a block of sandstone
      * within Minecraft.
      */
     static readonly sandstone: ItemType;
     /**
+     * 砂岩楼梯。
+     * 
      * Represents an item that can place a set of sandstone stairs
      * within Minecraft.
      */
     static readonly sandstoneStairs: ItemType;
     /**
+     * 橡树树苗/云杉树苗/白桦树苗/丛林树苗/金合欢树苗/深色橡树树苗。
+     * 
      * Represents an item that can place a sapling within
      * Minecraft.
      */
     static readonly sapling: ItemType;
     /**
+     * 脚手架。
+     * 
      * Represents an item that can place a set of scaffolding
      * within Minecraft.
      */
     static readonly scaffolding: ItemType;
+    /**
+     * 幽匿块。
+     */
     static readonly sculk: ItemType;
+    /**
+     * 幽匿催发体。
+     */
     static readonly sculkCatalyst: ItemType;
     /**
+     * 幽匿感测体。
+     * 
      * Represents an item that can place a sculk sensor within
      * Minecraft.
      */
     static readonly sculkSensor: ItemType;
+    /**
+     * 幽匿尖啸体。
+     */
     static readonly sculkShrieker: ItemType;
+    /**
+     * 幽匿脉络。
+     */
     static readonly sculkVein: ItemType;
+    /**
+     * 鳞甲。
+     */
     static readonly scute: ItemType;
     /**
+     * 海草。
+     * 
      * Represents seagrass within Minecraft.
      */
     static readonly seagrass: ItemType;
+    /**
+     * 海晶灯。
+     */
     static readonly seaLantern: ItemType;
     /**
+     * 海泡菜。
+     * 
      * Represents an item that can place a seapickle within
      * Minecraft.
      */
     static readonly seaPickle: ItemType;
+    /**
+     * 剪刀。
+     */
     static readonly shears: ItemType;
+    /**
+     * 绵羊刷怪蛋。
+     */
     static readonly sheepSpawnEgg: ItemType;
+    /**
+     * 盾牌。
+     */
     static readonly shield: ItemType;
     /**
+     * 菌光体。
+     * 
      * Represents an item that can place a shroom light within
      * Minecraft.
      */
     static readonly shroomlight: ItemType;
     /**
+     * 潜影盒。
+     * 
      * Represents an item that can place a shulker box within
      * Minecraft.
      */
     static readonly shulkerBox: ItemType;
+    /**
+     * 潜影壳。
+     */
     static readonly shulkerShell: ItemType;
+    /**
+     * 潜影贝刷怪蛋。
+     */
     static readonly shulkerSpawnEgg: ItemType;
+    /**
+     * 蠹虫刷怪蛋。
+     */
     static readonly silverfishSpawnEgg: ItemType;
     /**
+     * 淡灰色带釉陶瓦。
+     * 
      * Represents an item that can place a silver-colored block of
      * glazed terracotta within Minecraft.
      */
     static readonly silverGlazedTerracotta: ItemType;
+    /**
+     * 骷髅马刷怪蛋。
+     */
     static readonly skeletonHorseSpawnEgg: ItemType;
+    /**
+     * 骷髅刷怪蛋。
+     */
     static readonly skeletonSpawnEgg: ItemType;
     /**
+     * 生物头颅。
+     * 
      * Represents an item that can place a skull within Minecraft.
      */
     static readonly skull: ItemType;
+    /**
+     * 头颅盾徽旗帜图案。
+     */
     static readonly skullBannerPattern: ItemType;
     /**
+     * 黏液块。
+     * 
      * Represents slime within Minecraft.
      */
     static readonly slime: ItemType;
+    /**
+     * 黏液球。
+     */
     static readonly slimeBall: ItemType;
+    /**
+     * 史莱姆刷怪蛋。
+     */
     static readonly slimeSpawnEgg: ItemType;
     /**
+     * 小型紫晶芽。
+     * 
      * Represents an item that can place a small bud of amethyst
      * within Minecraft.
      */
     static readonly smallAmethystBud: ItemType;
     /**
+     * 小型垂滴叶。
+     * 
      * Represents an item that can place a small dripleaf block
      * within Minecraft.
      */
     static readonly smallDripleafBlock: ItemType;
     /**
+     * 锻造台。
+     * 
      * Represents an item that can place a smithing table within
      * Minecraft.
      */
     static readonly smithingTable: ItemType;
     /**
+     * 烟熏炉。
+     * 
      * Represents an item that can place a smoker within Minecraft.
      */
     static readonly smoker: ItemType;
     /**
+     * 平滑玄武岩。
+     * 
      * Represents an item that can place a block of smooth basalt
      * within Minecraft.
      */
     static readonly smoothBasalt: ItemType;
     /**
+     * 平滑石英楼梯。
+     * 
      * Represents an item that can place a set of smooth quartz
      * stairs within Minecraft.
      */
     static readonly smoothQuartzStairs: ItemType;
     /**
+     * 平滑红砂岩楼梯。
+     * 
      * Represents an item that can place a set of smooth red
      * sandstone stairs within Minecraft.
      */
     static readonly smoothRedSandstoneStairs: ItemType;
     /**
+     * 平滑砂岩楼梯。
+     * 
      * Represents an item that can place a set of smooth redstone
      * stairs within Minecraft.
      */
     static readonly smoothSandstoneStairs: ItemType;
     /**
+     * 平滑石头。
+     * 
      * Represents an item that can place a smooth stone block
      * within Minecraft.
      */
     static readonly smoothStone: ItemType;
     /**
+     * 雪块。
+     * 
      * Represents snow within Minecraft.
      */
     static readonly snow: ItemType;
+    /**
+     * 雪球。
+     */
     static readonly snowball: ItemType;
+    /**
+     * 雪傀儡刷怪蛋。
+     */
     static readonly snowGolemSpawnEgg: ItemType;
     /**
+     * 顶层雪。
+     * 
      * Represents an item that can place a layer of snow within
      * Minecraft.
      */
     static readonly snowLayer: ItemType;
     /**
+     * 灵魂营火。
+     * 
      * Represents an item that can place a soul campfire within
      * Minecraft.
      */
     static readonly soulCampfire: ItemType;
     /**
+     * 灵魂灯笼。
+     * 
      * Represents an item that can place a soul lantern within
      * Minecraft.
      */
     static readonly soulLantern: ItemType;
     /**
+     * 灵魂沙。
+     * 
      * Represents an item that can place a block of soul sand
      * within Minecraft.
      */
     static readonly soulSand: ItemType;
     /**
+     * 灵魂土。
+     * 
      * Represents soul soil within Minecraft.
      */
     static readonly soulSoil: ItemType;
     /**
+     * 灵魂火把。
+     * 
      * Represents an item that can place a soul torch within
      * Minecraft.
      */
     static readonly soulTorch: ItemType;
     static readonly spawnEgg: ItemType;
+    /**
+     * 蜘蛛眼。
+     */
     static readonly spiderEye: ItemType;
+    /**
+     * 蜘蛛刷怪蛋。
+     */
     static readonly spiderSpawnEgg: ItemType;
+    /**
+     * 喷溅药水。
+     */
     static readonly splashPotion: ItemType;
     /**
+     * 海绵/湿海绵。
+     * 
      * Represents an item that can place a sponge within Minecraft.
      */
     static readonly sponge: ItemType;
     /**
+     * 孢子花。
+     * 
      * Represents an item that can place a spore blossom within
      * Minecraft.
      */
     static readonly sporeBlossom: ItemType;
+    /**
+     * 云杉木船。
+     */
     static readonly spruceBoat: ItemType;
     /**
+     * 云杉木按钮。
+     * 
      * Represents an item that can place a spruce wood button
      * within Minecraft.
      */
     static readonly spruceButton: ItemType;
+    /**
+     * 云杉木运输船。
+     */
     static readonly spruceChestBoat: ItemType;
     /**
+     * 云杉木门。
+     * 
      * Represents an item that can place a spruce wood door within
      * Minecraft.
      */
     static readonly spruceDoor: ItemType;
     /**
+     * 云杉木栅栏门。
+     * 
      * Represents an item that can place a spruce wood fence gate
      * within Minecraft.
      */
     static readonly spruceFenceGate: ItemType;
     /**
+     * 云杉木压力板。
+     * 
      * Represents an item that can place a spruce wood pressure
      * plate within Minecraft.
      */
     static readonly sprucePressurePlate: ItemType;
     /**
+     * 云杉木告示牌。
+     * 
      * Represents an item that can place a spruce sign within
      * Minecraft.
      */
     static readonly spruceSign: ItemType;
     /**
+     * 云杉木楼梯。
+     * 
      * Represents an item that can place a set of spruce wood
      * stairs within Minecraft.
      */
     static readonly spruceStairs: ItemType;
     /**
+     * 云杉木活板门。
+     * 
      * Represents an item that can place a spruce wood trapdoor
      * within Minecraft.
      */
     static readonly spruceTrapdoor: ItemType;
+    /**
+     * 望远镜。
+     */
     static readonly spyglass: ItemType;
+    /**
+     * 鱿鱼刷怪蛋。
+     */
     static readonly squidSpawnEgg: ItemType;
     /**
+     * 染色玻璃。
+     * 
      * Represents stained glass within Minecraft.
      */
     static readonly stainedGlass: ItemType;
     /**
+     * 染色玻璃板。
+     * 
      * Represents an item that can place a pane of stained glass
      * within Minecraft.
      */
     static readonly stainedGlassPane: ItemType;
     /**
+     * 染色陶瓦。
+     * 
      * Represents an item that can place a block of stained
      * hardened clay within Minecraft.
      */
     static readonly stainedHardenedClay: ItemType;
+    /**
+     * 木棍。
+     */
     static readonly stick: ItemType;
     /**
+     * 黏性活塞。
+     * 
      * Represents an item that can place a piston block with a
      * sticky arm within Minecraft.
      */
     static readonly stickyPiston: ItemType;
     /**
+     * 石头/花岗岩/磨制花岗岩/闪长岩/磨制闪长岩/安山岩/磨制安山岩。
+     * 
      * Represents an item that can place a block of stone within
      * Minecraft.
      */
     static readonly stone: ItemType;
+    /**
+     * 石斧。
+     */
     static readonly stoneAxe: ItemType;
+    /**
+     * 平滑石头台阶/砂岩台阶/石化橡木台阶/圆石台阶/红砖台阶/石砖台阶/石英台阶/下界砖台阶。
+     */
     static readonly stoneBlockSlab: ItemType;
+    /**
+     * 红砂岩台阶/紫珀台阶/海晶石台阶/暗海晶石台阶/海晶石砖台阶/苔石台阶/平滑砂岩台阶/红色下界砖台阶。
+     */
     static readonly stoneBlockSlab2: ItemType;
+    /**
+     * 末地石砖台阶/平滑红砂岩台阶/磨制安山岩台阶/安山岩台阶/闪长岩台阶/磨制闪长岩台阶/花岗岩台阶/磨制花岗岩台阶。
+     */
     static readonly stoneBlockSlab3: ItemType;
+    /**
+     * 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。
+     */
     static readonly stoneBlockSlab4: ItemType;
     /**
+     * 石砖/苔石砖/裂纹石砖/雕纹石砖。
+     * 
      * Represents an item that can place a block of stone brick
      * within Minecraft.
      */
     static readonly stonebrick: ItemType;
     /**
+     * 石砖楼梯。
+     * 
      * Represents an item that can place a set of stone brick
      * stairs within Minecraft.
      */
     static readonly stoneBrickStairs: ItemType;
     /**
+     * 石头按钮。
+     * 
      * Represents an item that can place a stone button within
      * Minecraft.
      */
     static readonly stoneButton: ItemType;
     /**
+     * 切石机。
+     * 
      * Represents an item that can place a stonecutter block within
      * Minecraft.
      */
     static readonly stonecutterBlock: ItemType;
+    /**
+     * 石锄。
+     */
     static readonly stoneHoe: ItemType;
+    /**
+     * 石镐。
+     */
     static readonly stonePickaxe: ItemType;
     /**
+     * 石头压力板。
+     * 
      * Represents an item that can place a stone pressure plate
      * within Minecraft.
      */
     static readonly stonePressurePlate: ItemType;
+    /**
+     * 石锹。
+     */
     static readonly stoneShovel: ItemType;
     /**
+     * 石头楼梯。
+     * 
      * Represents an item that can place a set of stone stairs
      * within Minecraft.
      */
     static readonly stoneStairs: ItemType;
+    /**
+     * 石剑。
+     */
     static readonly stoneSword: ItemType;
+    /**
+     * 流浪者刷怪蛋。
+     */
     static readonly straySpawnEgg: ItemType;
+    /**
+     * 炽足兽刷怪蛋。
+     */
     static readonly striderSpawnEgg: ItemType;
+    /**
+     * 线。
+     */
     static readonly 'string': ItemType;
     /**
+     * 去皮金合欢原木。
+     * 
      * Represents an item that can place a stripped acacia log
      * within Minecraft.
      */
     static readonly strippedAcaciaLog: ItemType;
     /**
+     * 去皮白桦原木。
+     * 
      * Represents an item that can place a stripped birch log
      * within Minecraft.
      */
     static readonly strippedBirchLog: ItemType;
     /**
+     * 去皮绯红菌核。
+     * 
      * Represents stripped crimson hyphae within Minecraft.
      */
     static readonly strippedCrimsonHyphae: ItemType;
     /**
+     * 去皮绯红菌柄。
+     * 
      * Represents an item that can place a stripped crimson stem
      * within Minecraft.
      */
     static readonly strippedCrimsonStem: ItemType;
     /**
+     * 去皮深色橡木原木。
+     * 
      * Represents an item that can place a stripped dark oak log
      * within Minecraft.
      */
     static readonly strippedDarkOakLog: ItemType;
     /**
+     * 去皮丛林原木。
+     * 
      * Represents an item that can place a stripped jungle log
      * within Minecraft.
      */
     static readonly strippedJungleLog: ItemType;
+    /**
+     * 去皮红树原木。
+     */
     static readonly strippedMangroveLog: ItemType;
+    /**
+     * 去皮红树木。
+     */
     static readonly strippedMangroveWood: ItemType;
     /**
+     * 去皮橡木原木。
+     * 
      * Represents an item that can place a stripped oak log within
      * Minecraft.
      */
     static readonly strippedOakLog: ItemType;
     /**
+     * 去皮云杉原木。
+     * 
      * Represents an item that can place a stripped spruce log
      * within Minecraft.
      */
     static readonly strippedSpruceLog: ItemType;
     /**
+     * 去皮诡异菌核。
+     * 
      * Represents stripped warped hyphae within Minecraft.
      */
     static readonly strippedWarpedHyphae: ItemType;
     /**
+     * 去皮诡异菌柄。
+     * 
      * Represents stripped warped stem within Minecraft.
      */
     static readonly strippedWarpedStem: ItemType;
     /**
+     * 结构方块。
+     * 
      * Represents an item that can place a structure block, which
      * provides for the saving and loading of block structures,
      * within Minecraft.
      */
     static readonly structureBlock: ItemType;
     /**
+     * 结构空位。
+     * 
      * Represents an item that can place a structure void within
      * Minecraft.
      */
     static readonly structureVoid: ItemType;
+    /**
+     * 糖。
+     */
     static readonly sugar: ItemType;
+    /**
+     * 甘蔗。
+     */
     static readonly sugarCane: ItemType;
+    /**
+     * 迷之炖菜。
+     */
     static readonly suspiciousStew: ItemType;
+    /**
+     * 甜浆果。
+     */
     static readonly sweetBerries: ItemType;
+    /**
+     * 蝌蚪桶。
+     */
     static readonly tadpoleBucket: ItemType;
+    /**
+     * 蝌蚪刷怪蛋。
+     */
     static readonly tadpoleSpawnEgg: ItemType;
     /**
+     * 蕨/草。
+     * 
      * Represents tall grass within Minecraft.
      */
     static readonly tallgrass: ItemType;
     /**
+     * 标靶。
+     * 
      * Represents an item that can place a target within Minecraft.
      */
     static readonly target: ItemType;
     /**
+     * 遮光玻璃。
+     * 
      * Represents tinted glass within Minecraft.
      */
     static readonly tintedGlass: ItemType;
     /**
+     * TNT。
+     * 
      * Represents an item that can place a block of TnT within
      * Minecraft.
      */
     static readonly tnt: ItemType;
+    /**
+     * TNT矿车。
+     */
     static readonly tntMinecart: ItemType;
     /**
+     * 火把。
+     * 
      * Represents an item that can place a torch within Minecraft.
      */
     static readonly torch: ItemType;
+    /**
+     * 不死图腾。
+     */
     static readonly totemOfUndying: ItemType;
+    /**
+     * 行商羊驼刷怪蛋。
+     */
     static readonly traderLlamaSpawnEgg: ItemType;
     /**
+     * 活板门。
+     * 
      * Represents an item that can place a trapdoor within
      * Minecraft.
      */
     static readonly trapdoor: ItemType;
     /**
+     * 陷阱箱。
+     * 
      * Represents an item that can place a trapped chest within
      * Minecraft.
      */
     static readonly trappedChest: ItemType;
+    /**
+     * 三叉戟。
+     */
     static readonly trident: ItemType;
     /**
+     * 绊线钩。
+     * 
      * Represents an item that can place a tripwire hook within
      * Minecraft.
      */
     static readonly tripwireHook: ItemType;
+    /**
+     * 热带鱼。
+     */
     static readonly tropicalFish: ItemType;
+    /**
+     * 热带鱼桶。
+     */
     static readonly tropicalFishBucket: ItemType;
+    /**
+     * 热带鱼刷怪蛋。
+     */
     static readonly tropicalFishSpawnEgg: ItemType;
     /**
+     * 凝灰岩。
+     * 
      * Represents an item that can place a block of tuff within
      * Minecraft.
      */
     static readonly tuff: ItemType;
     /**
+     * 海龟蛋。
+     * 
      * Represents an item that can place a turtle egg within
      * Minecraft.
      */
     static readonly turtleEgg: ItemType;
+    /**
+     * 海龟壳。
+     */
     static readonly turtleHelmet: ItemType;
+    /**
+     * 海龟刷怪蛋。
+     */
     static readonly turtleSpawnEgg: ItemType;
     /**
+     * 缠怨藤。
+     * 
      * Represents an item that can place a set of twisting vines
      * within Minecraft.
      */
     static readonly twistingVines: ItemType;
     /**
+     * 潜影盒。
+     * 
      * Represents an item that can place an undyed shulker box
      * within Minecraft.
      */
     static readonly undyedShulkerBox: ItemType;
+    /**
+     * 青翠蛙明灯。
+     */
     static readonly verdantFroglight: ItemType;
+    /**
+     * 恼鬼刷怪蛋。
+     */
     static readonly vexSpawnEgg: ItemType;
+    /**
+     * 村民刷怪蛋。
+     */
     static readonly villagerSpawnEgg: ItemType;
+    /**
+     * 卫道士刷怪蛋。
+     */
     static readonly vindicatorSpawnEgg: ItemType;
     /**
+     * 藤蔓。
+     * 
      * Represents an item that can place a set of vines within
      * Minecraft.
      */
     static readonly vine: ItemType;
+    /**
+     * 流浪商人刷怪蛋。
+     */
     static readonly wanderingTraderSpawnEgg: ItemType;
+    /**
+     * 监守者刷怪蛋。
+     */
     static readonly wardenSpawnEgg: ItemType;
     /**
+     * 诡异木按钮。
+     * 
      * Represents an item that can place a warped button within
      * Minecraft.
      */
     static readonly warpedButton: ItemType;
     /**
+     * 诡异木门。
+     * 
      * Represents an item that can place a warped door within
      * Minecraft.
      */
     static readonly warpedDoor: ItemType;
     /**
+     * 诡异木栅栏。
+     * 
      * Represents an item that can place a warped fence within
      * Minecraft.
      */
     static readonly warpedFence: ItemType;
     /**
+     * 诡异木栅栏门。
+     * 
      * Represents an item that can place a warped fence gate within
      * Minecraft.
      */
     static readonly warpedFenceGate: ItemType;
     /**
+     * 诡异菌。
+     * 
      * Represents warped fungus within Minecraft.
      */
     static readonly warpedFungus: ItemType;
+    /**
+     * 诡异菌钓竿。
+     */
     static readonly warpedFungusOnAStick: ItemType;
     /**
+     * 诡异菌核。
+     * 
      * Represents warped hyphae within Minecraft.
      */
     static readonly warpedHyphae: ItemType;
     /**
+     * 诡异菌岩。
+     * 
      * Represents warped nylium within Minecraft.
      */
     static readonly warpedNylium: ItemType;
     /**
+     * 诡异木板。
+     * 
      * Represents warped planks within Minecraft.
      */
     static readonly warpedPlanks: ItemType;
     /**
+     * 诡异木压力板。
+     * 
      * Represents an item that can place a warped pressure plate
      * within Minecraft.
      */
     static readonly warpedPressurePlate: ItemType;
     /**
+     * 诡异菌索。
+     * 
      * Represents an item that can place a set of warped roots
      * within Minecraft.
      */
     static readonly warpedRoots: ItemType;
+    /**
+     * 诡异木告示牌。
+     */
     static readonly warpedSign: ItemType;
     /**
+     * 诡异木台阶。
+     * 
      * Represents an item that can place a slab of warped material
      * within Minecraft.
      */
     static readonly warpedSlab: ItemType;
     /**
+     * 诡异木楼梯。
+     * 
      * Represents an item that can place a set of warped stairs
      * within Minecraft.
      */
     static readonly warpedStairs: ItemType;
     /**
+     * 诡异菌柄。
+     * 
      * Represents an item that can place a warped stem within
      * Minecraft.
      */
     static readonly warpedStem: ItemType;
     /**
+     * 诡异木活板门。
+     * 
      * Represents an item that can place a warped trapdoor within
      * Minecraft.
      */
     static readonly warpedTrapdoor: ItemType;
     /**
+     * 诡异疣块。
+     * 
      * Represents an item that can place a warped wart block within
      * Minecraft.
      */
     static readonly warpedWartBlock: ItemType;
+    /**
+     * 水桶。
+     */
     static readonly waterBucket: ItemType;
     /**
+     * 睡莲。
+     * 
      * Represents an item that can place a water lily within
      * Minecraft.
      */
     static readonly waterlily: ItemType;
     /**
+     * 涂蜡铜块。
+     * 
      * Represents an item that can place a block of waxed copper
      * within Minecraft.
      */
     static readonly waxedCopper: ItemType;
     /**
+     * 涂蜡切制铜块。
+     * 
      * Represents an item that can place a block of waxed cut
      * copper within Minecraft.
      */
     static readonly waxedCutCopper: ItemType;
     /**
+     * 涂蜡切制铜台阶。
+     * 
      * Represents an item that can place a slab of waxed cut copper
      * within Minecraft.
      */
     static readonly waxedCutCopperSlab: ItemType;
     /**
+     * 涂蜡切制铜楼梯。
+     * 
      * Represents an item that can place a set of waxed cut copper
      * stairs within Minecraft.
      */
     static readonly waxedCutCopperStairs: ItemType;
     /**
+     * 斑驳的涂蜡铜块。
+     * 
      * Represents an item that can place a block of waxed exposed
      * copper within Minecraft.
      */
     static readonly waxedExposedCopper: ItemType;
     /**
+     * 斑驳的涂蜡切制铜块。
+     * 
      * Represents an item that can place a block of waxed exposed
      * cut copper within Minecraft.
      */
     static readonly waxedExposedCutCopper: ItemType;
     /**
+     * 斑驳的涂蜡切制铜台阶。
+     * 
      * Represents an item that can place a slab of waxed exposed
      * cut copper within Minecraft.
      */
     static readonly waxedExposedCutCopperSlab: ItemType;
     /**
+     * 斑驳的涂蜡切制铜楼梯。
+     * 
      * Represents an item that can place a set of waxed exposed cut
      * copper stairs within Minecraft.
      */
     static readonly waxedExposedCutCopperStairs: ItemType;
     /**
+     * 氧化的涂蜡铜块。
+     * 
      * Represents an item that can place a block of waxed oxidized
      * copper within Minecraft.
      */
     static readonly waxedOxidizedCopper: ItemType;
     /**
+     * 氧化的涂蜡切制铜块。
+     * 
      * Represents an item that can place a block of waxed oxidized
      * cut copper within Minecraft.
      */
     static readonly waxedOxidizedCutCopper: ItemType;
     /**
+     * 氧化的涂蜡切制铜台阶。
+     * 
      * Represents an item that can place a slab of waxed oxidized
      * cut copper within Minecraft.
      */
     static readonly waxedOxidizedCutCopperSlab: ItemType;
     /**
+     * 氧化的涂蜡切制铜楼梯。
+     * 
      * Represents an item that can place a set of waxed oxidized
      * cut copper stairs within Minecraft.
      */
     static readonly waxedOxidizedCutCopperStairs: ItemType;
     /**
+     * 锈蚀的涂蜡铜块。
+     * 
      * Represents an item that can place a block of waxed weathered
      * copper within Minecraft.
      */
     static readonly waxedWeatheredCopper: ItemType;
     /**
+     * 锈蚀的涂蜡切制铜块。
+     * 
      * Represents an item that can place a block of waxed weathered
      * cut copper within Minecraft.
      */
     static readonly waxedWeatheredCutCopper: ItemType;
     /**
+     * 锈蚀的涂蜡切制铜台阶。
+     * 
      * Represents an item that can place a slab of waxed weathered
      * cut copper within Minecraft.
      */
     static readonly waxedWeatheredCutCopperSlab: ItemType;
     /**
+     * 锈蚀的涂蜡切制铜楼梯。
+     * 
      * Represents an item that can place a set of waxed weathered
      * cut copper stairs within Minecraft.
      */
     static readonly waxedWeatheredCutCopperStairs: ItemType;
     /**
+     * 锈蚀的铜块。
+     * 
      * Represents an item that can place a block of weathered
      * copper within Minecraft.
      */
     static readonly weatheredCopper: ItemType;
     /**
+     * 锈蚀的切制铜块。
+     * 
      * Represents an item that can place a block of weathered cut
      * copper within Minecraft.
      */
     static readonly weatheredCutCopper: ItemType;
     /**
+     * 锈蚀的切制铜台阶。
+     * 
      * Represents an item that can place a slab of weathered cut
      * copper within Minecraft.
      */
     static readonly weatheredCutCopperSlab: ItemType;
     /**
+     * 锈蚀的切制铜楼梯。
+     * 
      * Represents an item that can place a set of weathered cut
      * copper stairs within Minecraft.
      */
     static readonly weatheredCutCopperStairs: ItemType;
     /**
+     * 蜘蛛网。
+     * 
      * Represents an item that can place a web within Minecraft.
      */
     static readonly web: ItemType;
     /**
+     * 垂泪藤。
+     * 
      * Represents an item that can place a set of weeping vines
      * within Minecraft.
      */
     static readonly weepingVines: ItemType;
     /**
+     * 小麦。
+     * 
      * Represents wheat within Minecraft.
      */
     static readonly wheat: ItemType;
+    /**
+     * 小麦种子。
+     */
     static readonly wheatSeeds: ItemType;
     /**
+     * 白色蜡烛。
+     * 
      * Represents an item that can place a white candle within
      * Minecraft.
      */
     static readonly whiteCandle: ItemType;
+    /**
+     * 白色染料。
+     */
     static readonly whiteDye: ItemType;
     /**
+     * 白色带釉陶瓦。
+     * 
      * Represents an item that can place a block of white glazed
      * terracotta within Minecraft.
      */
     static readonly whiteGlazedTerracotta: ItemType;
+    /**
+     * 女巫刷怪蛋。
+     */
     static readonly witchSpawnEgg: ItemType;
     /**
+     * 凋灵玫瑰。
+     * 
      * Represents an item that can place a wither rose within
      * Minecraft.
      */
     static readonly witherRose: ItemType;
+    /**
+     * 凋灵骷髅刷怪蛋。
+     */
     static readonly witherSkeletonSpawnEgg: ItemType;
+    /**
+     * 凋灵刷怪蛋。
+     */
     static readonly witherSpawnEgg: ItemType;
+    /**
+     * 狼刷怪蛋。
+     */
     static readonly wolfSpawnEgg: ItemType;
     /**
+     * 橡木/云杉木/白桦木/丛林木/金合欢木/深色橡木/去皮橡木/去皮云杉木/去皮白桦木/去皮丛林木/去皮金合欢木/去皮深色橡木。
+     * 
      * Represents an item that can place a block of wood within
      * Minecraft.
      */
     static readonly wood: ItemType;
+    /**
+     * 木斧。
+     */
     static readonly woodenAxe: ItemType;
     /**
+     * 橡木按钮。
+     * 
      * Represents an item that can place a wooden button within
      * Minecraft.
      */
     static readonly woodenButton: ItemType;
     /**
+     * 橡木门。
+     * 
      * Represents an item that can place a wooden door within
      * Minecraft.
      */
     static readonly woodenDoor: ItemType;
+    /**
+     * 木锄。
+     */
     static readonly woodenHoe: ItemType;
+    /**
+     * 木镐。
+     */
     static readonly woodenPickaxe: ItemType;
     /**
+     * 橡木压力板。
+     * 
      * Represents an item that can place a wooden pressure plate
      * within Minecraft.
      */
     static readonly woodenPressurePlate: ItemType;
+    /**
+     * 木锹。
+     */
     static readonly woodenShovel: ItemType;
     /**
+     * 橡木台阶/云杉木台阶/白桦木台阶/丛林木台阶/金合欢木台阶/深色橡木台阶。
+     * 
      * Represents an item that can place a wooden slab within
      * Minecraft.
      */
     static readonly woodenSlab: ItemType;
+    /**
+     * 木剑。
+     */
     static readonly woodenSword: ItemType;
     /**
+     * 羊毛。
+     * 
      * Represents wool within Minecraft.
      */
     static readonly wool: ItemType;
+    /**
+     * 书与笔。
+     */
     static readonly writableBook: ItemType;
     /**
+     * 黄色蜡烛。
+     * 
      * Represents an item that can place a yellow candle within
      * Minecraft.
      */
     static readonly yellowCandle: ItemType;
+    /**
+     * 黄色染料。
+     */
     static readonly yellowDye: ItemType;
     /**
+     * 蒲公英。
+     * 
      * Represents an item that can place a yellow flower within
      * Minecraft.
      */
     static readonly yellowFlower: ItemType;
     /**
+     * 黄色带釉陶瓦。
+     * 
      * Represents an item that can place a yellow block of glazed
      * terracotta within Minecraft.
      */
     static readonly yellowGlazedTerracotta: ItemType;
+    /**
+     * 僵尸疣猪兽刷怪蛋。
+     */
     static readonly zoglinSpawnEgg: ItemType;
+    /**
+     * 僵尸马刷怪蛋。
+     */
     static readonly zombieHorseSpawnEgg: ItemType;
+    /**
+     * 僵尸猪人刷怪蛋。
+     */
     static readonly zombiePigmanSpawnEgg: ItemType;
+    /**
+     * 僵尸刷怪蛋。
+     */
     static readonly zombieSpawnEgg: ItemType;
+    /**
+     * 僵尸村民刷怪蛋。
+     */
     static readonly zombieVillagerSpawnEgg: ItemType;
 }
 /**

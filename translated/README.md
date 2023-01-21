@@ -78,7 +78,7 @@ random(min: number, max: number): number;
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|9/252|
+|[@minecraft/server](#minecraftserver)|21/252|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -152,7 +152,7 @@ random(min: number, max: number): number;
 |[`DefinitionModifier`](https://projectxero.top/sapi/classes/server.DefinitionModifier.html)|类|未翻译|
 |[`Dimension`](https://projectxero.top/sapi/classes/server.Dimension.html)|类|未翻译|
 |[`DirectionBlockProperty`](https://projectxero.top/sapi/classes/server.DirectionBlockProperty.html)|类|未翻译|
-|[`DynamicPropertiesDefinition`](https://projectxero.top/sapi/classes/server.DynamicPropertiesDefinition.html)|类|未翻译|
+|[`DynamicPropertiesDefinition`](https://projectxero.top/sapi/classes/server.DynamicPropertiesDefinition.html)|类|已完成|
 |[`Effect`](https://projectxero.top/sapi/classes/server.Effect.html)|类|未翻译|
 |[`EffectAddEvent`](https://projectxero.top/sapi/classes/server.EffectAddEvent.html)|类|未翻译|
 |[`EffectAddEventSignal`](https://projectxero.top/sapi/classes/server.EffectAddEventSignal.html)|类|未翻译|
@@ -275,12 +275,12 @@ random(min: number, max: number): number;
 |[`LeverActionEventSignal`](https://projectxero.top/sapi/classes/server.LeverActionEventSignal.html)|类|未翻译|
 |[`Location`](https://projectxero.top/sapi/classes/server.Location.html)|类|未翻译|
 |[`MessageReceiveEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveEvent.html)|类|未翻译|
-|[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|翻译中|
+|[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|已完成|
 |[`MinecraftDimensionTypes`](https://projectxero.top/sapi/classes/server.MinecraftDimensionTypes.html)|类|未翻译|
-|[`MinecraftEffectTypes`](https://projectxero.top/sapi/classes/server.MinecraftEffectTypes.html)|类|翻译中|
-|[`MinecraftEnchantmentTypes`](https://projectxero.top/sapi/classes/server.MinecraftEnchantmentTypes.html)|类|翻译中|
-|[`MinecraftEntityTypes`](https://projectxero.top/sapi/classes/server.MinecraftEntityTypes.html)|类|翻译中|
-|[`MinecraftItemTypes`](https://projectxero.top/sapi/classes/server.MinecraftItemTypes.html)|类|翻译中|
+|[`MinecraftEffectTypes`](https://projectxero.top/sapi/classes/server.MinecraftEffectTypes.html)|类|已完成|
+|[`MinecraftEnchantmentTypes`](https://projectxero.top/sapi/classes/server.MinecraftEnchantmentTypes.html)|类|已完成|
+|[`MinecraftEntityTypes`](https://projectxero.top/sapi/classes/server.MinecraftEntityTypes.html)|类|已完成|
+|[`MinecraftItemTypes`](https://projectxero.top/sapi/classes/server.MinecraftItemTypes.html)|类|已完成|
 |[`MolangVariableMap`](https://projectxero.top/sapi/classes/server.MolangVariableMap.html)|类|未翻译|
 |[`NavigationResult`](https://projectxero.top/sapi/classes/server.NavigationResult.html)|类|未翻译|
 |[`NumberRange`](https://projectxero.top/sapi/classes/server.NumberRange.html)|类|未翻译|
@@ -297,7 +297,7 @@ random(min: number, max: number): number;
 |[`PlayerSpawnEventSignal`](https://projectxero.top/sapi/classes/server.PlayerSpawnEventSignal.html)|类|未翻译|
 |[`ProjectileHitEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitEvent.html)|类|未翻译|
 |[`ProjectileHitEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitEventSignal.html)|类|未翻译|
-|[`PropertyRegistry`](https://projectxero.top/sapi/classes/server.PropertyRegistry.html)|类|未翻译|
+|[`PropertyRegistry`](https://projectxero.top/sapi/classes/server.PropertyRegistry.html)|类|已完成|
 |[`Scoreboard`](https://projectxero.top/sapi/classes/server.Scoreboard.html)|类|已完成|
 |[`ScoreboardIdentity`](https://projectxero.top/sapi/classes/server.ScoreboardIdentity.html)|类|已完成|
 |[`ScoreboardObjective`](https://projectxero.top/sapi/classes/server.ScoreboardObjective.html)|类|已完成|
@@ -316,7 +316,7 @@ random(min: number, max: number): number;
 |[`Vector`](https://projectxero.top/sapi/classes/server.Vector.html)|类|未翻译|
 |[`WeatherChangeEvent`](https://projectxero.top/sapi/classes/server.WeatherChangeEvent.html)|类|未翻译|
 |[`WeatherChangeEventSignal`](https://projectxero.top/sapi/classes/server.WeatherChangeEventSignal.html)|类|未翻译|
-|[`World`](https://projectxero.top/sapi/classes/server.World.html)|类|未翻译|
+|[`World`](https://projectxero.top/sapi/classes/server.World.html)|类|已完成|
 |[`WorldInitializeEvent`](https://projectxero.top/sapi/classes/server.WorldInitializeEvent.html)|类|未翻译|
 |[`WorldInitializeEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeEventSignal.html)|类|未翻译|
 |[`XYRotation`](https://projectxero.top/sapi/classes/server.XYRotation.html)|类|未翻译|
