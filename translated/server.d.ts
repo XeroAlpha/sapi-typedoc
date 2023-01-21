@@ -4104,54 +4104,101 @@ export class EntityHurtEventSignal {
 }
 /**
  * @beta
+ * 定义一个实体的物品栏属性
+ *
  * Defines this entity's inventory properties.
  */
 export class EntityInventoryComponent extends IEntityComponent {
     protected constructor();
     /**
+     * 实体每层力气(strength)可以获得的额外槽数
+     * 力气是实体的一个属性，运用于羊驼等生物的定义中
+     *
      * Number of slots that this entity can gain per extra
      * strength.
-     * @throws This property can throw when used.
+     * @throws 
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly additionalSlotsPerStrength: number;
     /**
+     * 能否被转移走
+     * 若为true, 则表示实体物品栏的物品可以被转移走，比如漏斗
+     *
      * If true, the contents of this inventory can be removed by a
      * hopper.
-     * @throws This property can throw when used.
+     * @throws
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly canBeSiphonedFrom: boolean;
     /**
+     * 实体的容器
+     *
      * Defines the container for this entity.
-     * @throws This property can throw when used.
+     * @throws
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly container: InventoryComponentContainer;
     /**
+     * 实体容器的种类
+     *
      * Type of container this entity has.
-     * @throws This property can throw when used.
+     * @throws 
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly containerType: string;
     /**
+     * 容器的槽数大小
+     *
      * Number of slots the container has.
-     * @throws This property can throw when used.
+     * @throws
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly inventorySize: number;
     /**
+     * 是否私有
+     * 若为true, 则表示实体死亡不会掉落物品栏的物品
+     *
      * If true, the entity will not drop it's inventory on death.
-     * @throws This property can throw when used.
+     * @throws 
+     * 这个属性会抛出异常
+     * 
+     * This property can throw when used.
      */
     readonly 'private': boolean;
     /**
+     * 是否仅主人可访问和操作
+     * 若为true, 则表示实体物品栏仅能被其主人或实体自己访问和操作
+     *
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
-     * @throws This property can throw when used.
+     * @throws 
+     * 这个属性会抛出异常
+     *
+     * This property can throw when used.
      */
     readonly restrictToOwner: boolean;
     /**
+     * 组件标识符
+     * 应该为`minecraft:inventory`
+     *
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
     readonly typeId: string;
     /**
+     * 组件标识符(静态成员)
+     * 应该为`minecraft:inventory`
+     *
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
