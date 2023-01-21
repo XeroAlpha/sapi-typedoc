@@ -4111,80 +4111,52 @@ export class EntityHurtEventSignal {
 export class EntityInventoryComponent extends IEntityComponent {
     protected constructor();
     /**
-     * 实体每层力气(strength)可以获得的额外槽数
+     * 表示实体每层力气(strength)可以获得的额外槽数
      * 力气是实体的一个属性，运用于羊驼等生物的定义中
      *
      * Number of slots that this entity can gain per extra
      * strength.
-     * @throws 
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly additionalSlotsPerStrength: number;
     /**
-     * 能否被转移走
+     * 表示能否被转移走
      * 若为true, 则表示实体物品栏的物品可以被转移走，比如漏斗
      *
      * If true, the contents of this inventory can be removed by a
      * hopper.
-     * @throws
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly canBeSiphonedFrom: boolean;
     /**
-     * 实体的容器
+     * 定义实体的容器
      *
      * Defines the container for this entity.
-     * @throws
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly container: InventoryComponentContainer;
     /**
-     * 实体容器的种类
+     * 表示实体容器的种类
      *
      * Type of container this entity has.
-     * @throws 
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly containerType: string;
     /**
-     * 容器的槽数大小
+     * 表示容器的槽数大小
      *
      * Number of slots the container has.
-     * @throws
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly inventorySize: number;
     /**
-     * 是否私有
+     * 表示是否私有
      * 若为true, 则表示实体死亡不会掉落物品栏的物品
      *
      * If true, the entity will not drop it's inventory on death.
-     * @throws 
-     * 这个属性会抛出异常
-     * 
-     * This property can throw when used.
      */
     readonly 'private': boolean;
     /**
-     * 是否仅主人可访问和操作
+     * 表示是否仅主人可访问和操作
      * 若为true, 则表示实体物品栏仅能被其主人或实体自己访问和操作
      *
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
-     * @throws 
-     * 这个属性会抛出异常
-     *
-     * This property can throw when used.
      */
     readonly restrictToOwner: boolean;
     /**
