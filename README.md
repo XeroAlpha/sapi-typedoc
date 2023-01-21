@@ -24,7 +24,7 @@ yarn build
 
 ```
 cd original
-yarn upgrade
+yarn install --no-lock-file
 cd ..
 .\translated\sync.cmd
 ```
