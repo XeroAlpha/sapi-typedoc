@@ -6546,7 +6546,7 @@ export class ItemCompleteChargeEventSignal {
 /**
  * @beta
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
- * 注意，原版物品可能获取到没有实际作用的该组件。
+ * 注意，若使用不会进行冷却，原版物品会获取到没有实际作用的该组件。
  * 
  * When present on an item, this item has a cooldown effect
  * when used by entities.
@@ -6640,20 +6640,21 @@ export class ItemDefinitionTriggeredEvent {
 export class ItemDurabilityComponent {
     protected constructor();
     /**
-     * 物品当前的（剩余）耐久。
+     * 此物品当前的（剩余）耐久。
+     * 当被设置为 负数，`Infinity` , `NaN` 等值时，值为 0。
      * 
      * Returns the current damage level of this particular item.
      */
     damage: number;
     /**
-     * 描述了物品消耗耐久的概率的取值范围.
+     * 描述了此物品损耗耐久概率的范围。
      * 
      * A range of numbers that describes the chance of the item
      * losing durability.
      */
     readonly damageRange: NumberRange;
     /**
-     * 表示物品的最大耐久。
+     * 表示此物品的最大耐久。
      * 
      * Represents the amount of damage that this item can take
      * before breaking.
@@ -6674,15 +6675,15 @@ export class ItemDurabilityComponent {
      * Returns the maximum chance that this item would be damaged
      * using the damageRange property, given an unbreaking level.
      * @param unbreaking
-     * 耐久附魔等级，在计算损坏概率时受到此参数的影响。
-     * 传入的 `unbreaking` 参数必须大于等于0。
+     * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
+     * 传入的 `unbreaking` 参数必须大于等于 0。
      * 
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be greater than
      * 0.
      * @returns 使用时的最大损坏概率。
      * @throws
-     * 若 `unbreaking` 参数小于0，抛出 `TypeError` 。
+     * 若 `unbreaking` 参数小于 0，抛出 `TypeError` 。
      */
     getDamageChance(unbreaking?: number): number;
 }
@@ -6697,10 +6698,14 @@ export class ItemDurabilityComponent {
 export class ItemEnchantsComponent {
     protected constructor();
     /**
-     * 返回该物品组上的魔咒集合。
+     * 该物品堆叠上的魔咒集合。
+     * 注意，该属性仅返回一个拷贝，若需应用修改，需要先赋值为变量，进行操作，再将变量赋值回这个属性。
      * 
      * Returns a collection of the enchantments applied to this
      * item stack.
+     * 
+     * @throws
+     * 当被赋值到属性上的魔咒集合的槽位与原集合不同时，抛出 `Failed to set property 'enchantments'`。
      */
     enchantments: EnchantmentList;
     /**
@@ -6711,7 +6716,7 @@ export class ItemEnchantsComponent {
     static readonly componentId = 'minecraft:enchantments';
     /**
      * @remarks
-     * 移除该物品组上的所有魔咒。
+     * 移除该物品堆叠上的所有魔咒。
      * 
      * Removes all enchantments applied to this item stack.
      */
@@ -6736,7 +6741,7 @@ export class ItemFoodComponent {
      */
     readonly canAlwaysEat: boolean;
     /**
-     * 表示在食用该物品后恢复的饥饿值，即营养值。
+     * 表示实体在食用该物品后恢复的饥饿值，即营养值。
      * 
      * Represents how much nutrition this food item will give an
      * entity when eaten.
@@ -6744,7 +6749,7 @@ export class ItemFoodComponent {
     readonly nutrition: number;
     /**
      * 当一个物品被食用，
-     * 将根据公式（ `nutrition` * `saturation_modifier` * 2）
+     * 将根据公式（ `nutrition` * `saturation_modifier` * 2 ）
      * 来为玩家添加饱和状态。
      * 
      * When an item is eaten, this value is used according to this
