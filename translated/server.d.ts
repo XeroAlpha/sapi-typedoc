@@ -6640,7 +6640,8 @@ export class ItemDefinitionTriggeredEvent {
 export class ItemDurabilityComponent {
     protected constructor();
     /**
-     * 此物品当前的（剩余）耐久。
+     * 此物品当前的损坏值。
+     * 物品当前耐久度为 ( `maxDurability` - `damage` )。
      * 当被设置为 负数，`Infinity` , `NaN` 等值时，值为 0。
      * 
      * Returns the current damage level of this particular item.
@@ -6654,7 +6655,7 @@ export class ItemDurabilityComponent {
      */
     readonly damageRange: NumberRange;
     /**
-     * 表示此物品的最大耐久。
+     * 表示该物品在损坏前可以承受的损坏值。
      * 
      * Represents the amount of damage that this item can take
      * before breaking.
