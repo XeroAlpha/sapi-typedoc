@@ -6545,33 +6545,42 @@ export class ItemCompleteChargeEventSignal {
 }
 /**
  * @beta
+ * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
+ * 注意，若使用不会进行冷却，原版物品会获取到没有实际作用的该组件。
+ * 
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */
 export class ItemCooldownComponent {
     protected constructor();
     /**
+     * 表示物品的冷却类别。
+     * 
      * Represents the cooldown category that this item is
      * associated with.
-     * @throws This property can throw when used.
      */
     readonly cooldownCategory: string;
     /**
+     * 以刻为单位，物品冷却的（剩余）时间。
+     * 
      * Amount of time, in ticks, that remain for this item
      * cooldown.
-     * @throws This property can throw when used.
      */
     readonly cooldownTicks: number;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * 'minecraft:cooldown'.
      */
     static readonly componentId = 'minecraft:cooldown';
     /**
      * @remarks
+     * 开始物品的冷却周期。
+     * 如果物品已在冷却中，将重新开始冷却。
+     * 
      * Starts a new cooldown period for this item.
-     * @param player
-     * @throws This function can throw errors.
+     * @param player 要开始冷却的玩家。
      */
     startCooldown(player: Player): void;
 }
@@ -6621,6 +6630,9 @@ export class ItemDefinitionTriggeredEvent {
 }
 /**
  * @beta
+ * 表示物品耐久组件。当出现在物品上时，表示该物品可以在使用中受到损坏。
+ * 注意，只能在数驱物品上获取和使用该组件。
+ * 
  * When present on an item, this item can take damage in the
  * process of being used. Note that this component only applies
  * to data-driven items.
@@ -6628,40 +6640,58 @@ export class ItemDefinitionTriggeredEvent {
 export class ItemDurabilityComponent {
     protected constructor();
     /**
+     * 此物品当前的损坏值。
+     * 物品当前耐久度为 `maxDurability - damage`。
+     * 当被设置为 负数，`Infinity`，`NaN` 等值时，值为 0。
+     * 
      * Returns the current damage level of this particular item.
      */
     damage: number;
     /**
+     * 描述了此物品损耗耐久概率的范围。
+     * 
      * A range of numbers that describes the chance of the item
      * losing durability.
-     * @throws This property can throw when used.
      */
     readonly damageRange: NumberRange;
     /**
+     * 表示该物品在损坏前可以承受的损坏值。
+     * 
      * Represents the amount of damage that this item can take
      * before breaking.
-     * @throws This property can throw when used.
      */
     readonly maxDurability: number;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * 'minecraft:durability'.
      */
     static readonly componentId = 'minecraft:durability';
     /**
      * @remarks
+     * 返回根据 `damageRange` 属性生成的最大损坏概率，
+     * 附带一个耐久附魔等级作为可选参数。
+     * 
      * Returns the maximum chance that this item would be damaged
      * using the damageRange property, given an unbreaking level.
      * @param unbreaking
+     * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
+     * 传入的 `unbreaking` 参数必须大于等于 0。
+     * 
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be greater than
      * 0.
-     * @throws This function can throw errors.
+     * @returns 使用时的最大损坏概率。
+     * @throws
+     * 若 `unbreaking` 参数小于 0，抛出 `TypeError` 。
      */
     getDamageChance(unbreaking?: number): number;
 }
 /**
  * @beta
+ * 表示物品魔咒组件。当出现在物品上时，可以操作物品上的魔咒。
+ * 
  * When present on an item, this item has applied enchantment
  * effects. Note that this component only applies to
  * data-driven items.
@@ -6669,23 +6699,35 @@ export class ItemDurabilityComponent {
 export class ItemEnchantsComponent {
     protected constructor();
     /**
+     * 该物品堆叠上的魔咒集合。
+     * 注意，该属性仅返回一个拷贝，若需应用修改，需要先赋值为变量，进行操作，再将变量赋值回这个属性。
+     * 
      * Returns a collection of the enchantments applied to this
      * item stack.
+     * 
+     * @throws
+     * 当被赋值到属性上的魔咒集合的槽位与原集合不同时，抛出 `Failed to set property 'enchantments'`。
      */
     enchantments: EnchantmentList;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component.
      */
     static readonly componentId = 'minecraft:enchantments';
     /**
      * @remarks
+     * 移除该物品堆叠上的所有魔咒。
+     * 
      * Removes all enchantments applied to this item stack.
-     * @throws This function can throw errors.
      */
     removeAllEnchantments(): void;
 }
 /**
  * @beta
+ * 表示物品食物组件。当出现在物品上时，实体可以消耗此物品。
+ * 注意，只能在数驱物品上获取和使用该组件。
+ * 
  * When present on an item, this item is consumable by
  * entities. Note that this component only applies to
  * data-driven items.
@@ -6693,31 +6735,39 @@ export class ItemEnchantsComponent {
 export class ItemFoodComponent {
     protected constructor();
     /**
+     * 若为 `true` ，则无论饥饿值是否已满，玩家始终可以食用该物品。
+     * 
      * If true, the player can always eat this item (even when not
      * hungry).
-     * @throws This property can throw when used.
      */
     readonly canAlwaysEat: boolean;
     /**
+     * 表示实体在食用该物品后恢复的饥饿值，即营养值。
+     * 
      * Represents how much nutrition this food item will give an
      * entity when eaten.
-     * @throws This property can throw when used.
      */
     readonly nutrition: number;
     /**
+     * 当一个物品被食用，
+     * 将根据公式 `nutrition * saturation_modifier * 2`
+     * 来为玩家添加饱和状态。
+     * 
      * When an item is eaten, this value is used according to this
      * formula (nutrition * saturation_modifier * 2) to apply a
      * saturation buff.
-     * @throws This property can throw when used.
      */
     readonly saturationModifier: number;
     /**
+     * 若给出，则将该物品转换为标识符指定的物品。
+     * 
      * When specified, converts the active item to the one
      * specified by this property.
-     * @throws This property can throw when used.
      */
     readonly usingConvertsTo: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * 'minecraft:food'.
      */

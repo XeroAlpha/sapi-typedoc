@@ -246,12 +246,12 @@ random(min: number, max: number): number;
 |[`InventoryComponentContainer`](https://projectxero.top/sapi/classes/server.InventoryComponentContainer.html)|类|未翻译|
 |[`ItemCompleteChargeEvent`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEvent.html)|类|未翻译|
 |[`ItemCompleteChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEventSignal.html)|类|未翻译|
-|[`ItemCooldownComponent`](https://projectxero.top/sapi/classes/server.ItemCooldownComponent.html)|类|未翻译|
+|[`ItemCooldownComponent`](https://projectxero.top/sapi/classes/server.ItemCooldownComponent.html)|类|已完成|
 |[`ItemDefinitionEventSignal`](https://projectxero.top/sapi/classes/server.ItemDefinitionEventSignal.html)|类|未翻译|
 |[`ItemDefinitionTriggeredEvent`](https://projectxero.top/sapi/classes/server.ItemDefinitionTriggeredEvent.html)|类|未翻译|
-|[`ItemDurabilityComponent`](https://projectxero.top/sapi/classes/server.ItemDurabilityComponent.html)|类|未翻译|
-|[`ItemEnchantsComponent`](https://projectxero.top/sapi/classes/server.ItemEnchantsComponent.html)|类|未翻译|
-|[`ItemFoodComponent`](https://projectxero.top/sapi/classes/server.ItemFoodComponent.html)|类|未翻译|
+|[`ItemDurabilityComponent`](https://projectxero.top/sapi/classes/server.ItemDurabilityComponent.html)|类|已完成|
+|[`ItemEnchantsComponent`](https://projectxero.top/sapi/classes/server.ItemEnchantsComponent.html)|类|已完成|
+|[`ItemFoodComponent`](https://projectxero.top/sapi/classes/server.ItemFoodComponent.html)|类|已完成|
 |[`ItemReleaseChargeEvent`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeEvent.html)|类|未翻译|
 |[`ItemReleaseChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeEventSignal.html)|类|未翻译|
 |[`ItemStack`](https://projectxero.top/sapi/classes/server.ItemStack.html)|类|未翻译|
