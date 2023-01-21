@@ -945,6 +945,8 @@ export class BlockBreakEventSignal {
 }
 /**
  * @beta
+ * 方块有关组件类型的基类。
+ * 
  * Base type for components associated with blocks.
  */
 // tslint:disable-next-line:no-unnecessary-class
@@ -1037,26 +1039,36 @@ export class BlockHitInformation {
 }
 /**
  * @beta
+ * 表示方块物品栏组件。在某些方块上可以被使用，如箱子。
+ * 
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  */
 export class BlockInventoryComponent extends BlockComponent {
     protected constructor();
     /**
+     * 保存物品堆叠的容器。
+     * 
      * The container which holds an {@link ItemStack}.
      * @throws This property can throw when used.
      */
     readonly container: BlockInventoryComponentContainer;
     /**
+     * 指定方块的坐标。
+     * 
      * Coordinates of the specified block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:inventory` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
@@ -1177,27 +1189,39 @@ export class BlockInventoryComponentContainer extends Container {
 }
 /**
  * @beta
+ * 表示该包含熔岩的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains
  * lava.
  */
 export class BlockLavaContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的熔岩的填充等级。
+     * 合法值在 `FluidContainer` 的 `minFillLevel` (0) 和
+     * `FluidContainer` 的 `maxFillLevel` (6) 之间。
+     * 
      * Relative level of lava within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:lavaContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:lavaContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:lavaContainer.
      */
@@ -1348,52 +1372,73 @@ export class BlockPermutation {
 }
 /**
  * @beta
+ * 表示方块的活塞组件。当出现在方块上，该方块具有类似于活塞的行为。
+ * 包含用于查看方块活塞状态的属性。
+ * 
  * When present, this block has piston-like behavior. Contains
  * additional properties for discovering block piston state.
  */
 export class BlockPistonComponent extends BlockComponent {
     protected constructor();
     /**
+     * 受到活塞激活影响的块的位置的集合。
+     * 
      * A set of locations for blocks that are impacted by the
      * activation of this piston.
      * @throws This property can throw when used.
      */
     readonly attachedBlocks: BlockLocation[];
     /**
+     * 若活塞在扩展状态为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is fully expanded.
      * @throws This property can throw when used.
      */
     readonly isExpanded: boolean;
     /**
+     * 若活塞正在扩展为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of expanding.
      * @throws This property can throw when used.
      */
     readonly isExpanding: boolean;
     /**
+     * 若活塞正在扩展或收缩为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of expanding or
      * retracting.
      * @throws This property can throw when used.
      */
     readonly isMoving: boolean;
     /**
+     * 若活塞在收缩状态为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is fully retracted.
      * @throws This property can throw when used.
      */
     readonly isRetracted: boolean;
     /**
+     * 若活塞正在收缩为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of retracting.
      * @throws This property can throw when used.
      */
     readonly isRetracting: boolean;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component.
      */
     static readonly componentId = 'minecraft:piston';
@@ -1444,35 +1489,51 @@ export class BlockPlaceEventSignal {
 }
 /**
  * @beta
+ * 表示该包含药水的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains a
  * potion.
  */
 export class BlockPotionContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的药水液体的填充等级。
+     * 合法值在 `FluidContainer` 的 `minFillLevel` (0) 和
+     * `FluidContainer` 的 `maxFillLevel` (6) 之间。
+     * 
      * Relative level of potion liquid within this block. Valid
      * values are between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:potionContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:potionContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:potionContainer.
      */
     static readonly componentId = 'minecraft:potionContainer';
     /**
      * @remarks
+     * 根据物品堆叠设置药水类型。
+     * 
      * Sets the potion type based on an item stack.
      * @param item
+     * 将被设为该容器的药水类型的药水物品。
+     * 
      * Potion to use as the type of potion for this potion
      * container.
      * @throws This function can throw errors.
@@ -2091,21 +2152,29 @@ export class BlockProperties {
 export class BlockRecordPlayerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该唱片机的位置。
+     * 
      * Location of this record-playing block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:recordPlayer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:recordPlayer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:recordPlayer.
      */
     static readonly componentId = 'minecraft:recordPlayer';
     /**
      * @remarks
+     * 清除该唱片机正在播放的唱片。
+     * 
      * Clears the currently playing record of this record-playing
      * block.
      * @throws This function can throw errors.
@@ -2113,6 +2182,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     clearRecord(): void;
     /**
      * @remarks
+     * 若正在播放唱片，返回 `true`，否则为 `false` 。
+     * 
      * Returns true if the record-playing block is currently
      * playing a record.
      * @throws This function can throw errors.
@@ -2120,6 +2191,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     isPlaying(): boolean;
     /**
      * @remarks
+     * 基于给定的物品类型，设置并播放唱片。
+     * 
      * Sets and plays a record based on an item type.
      * @param recordItemType
      * @throws This function can throw errors.
@@ -2128,25 +2201,35 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 }
 /**
  * @beta
+ * 表示方块的告示牌组件。当出现在方块上时，该方块可以显示文本。
+ * 
  * Represents a block that can display text on it.
  */
 export class BlockSignComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该告示牌的位置。
+     * 
      * Location of the sign.
      */
     readonly location: BlockLocation;
     /**
+     * 告示牌的文本。
+     * 
      * Text of the sign
      * @throws This property can throw when used.
      */
     readonly text: string;
     /**
+     * 组件的标识符。应始终为 `minecraft:sign` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:sign.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:sign.
      */
@@ -2154,27 +2237,39 @@ export class BlockSignComponent extends BlockComponent {
 }
 /**
  * @beta
+ * 表示该包含雪的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains
  * snow.
  */
 export class BlockSnowContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的雪的填充等级。
+     * 合法值在 `FluidContainer` 的 `minFillLevel` (0) 和
+     * `FluidContainer` 的 `maxFillLevel` (6) 之间。
+     * 
      * Relative level of snow within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:snowContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:snowContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:snowContainer.
      */
@@ -2215,31 +2310,45 @@ export class BlockType {
 export class BlockWaterContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 表示水的表面颜色。
+     * 
      * Represents a color facet of the water.
      */
     customColor: Color;
     /**
+     * 该方块包含的水的填充等级。
+     * 合法值在 `FluidContainer` 的 `minFillLevel` (0) 和
+     * `FluidContainer` 的 `maxFillLevel` (6) 之间。
+     * 
      * Relative level of water within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:waterContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:waterContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。`
+     * 
      * Identifier of this component. Should always be
      * minecraft:waterContainer.
      */
     static readonly componentId = 'minecraft:waterContainer';
     /**
      * @remarks
+     * 在一个染料物品类型的基础上给水染色。
+     * 
      * Adds an item and colors the water based on a dye item type.
      * @param itemType
      * @throws This function can throw errors.
