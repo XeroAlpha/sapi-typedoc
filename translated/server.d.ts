@@ -2983,7 +2983,7 @@ export class DirectionBlockProperty extends IBlockProperty {
 export class DynamicPropertiesDefinition {
     /**
      * @remarks
-     * 增加一个布尔类型的动态属性定义。
+     * 定义布尔类型的动态属性。
      *
      * Defines a new boolean dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
@@ -2993,7 +2993,7 @@ export class DynamicPropertiesDefinition {
     defineBoolean(identifier: string): void;
     /**
      * @remarks
-     * 增加一个数字类型的动态属性定义。
+     * 定义数字类型的动态属性。
      *
      * Defines a new number dynamic property.
      * @param identifier 将要增加的动态属性所使用的标识符。
@@ -3003,9 +3003,9 @@ export class DynamicPropertiesDefinition {
     defineNumber(identifier: string): void;
     /**
      * @remarks
-     * 增加一个字符串类型的动态属性定义。
+     * 定义字符串类型的动态属性。
      *
-     * 字符串的长度 `maxLength` 有着如下限制。
+     * 注册字符串类型的动态属性时，对属性的值最大长度 `maxLength` 有着如下限制：
      *
      * 在实体类型上的限制是这样计算的：设 “属性的标识符编码为 UTF-8 后的字节长度” 为 `a`，允许使用的最大长度为 `allocateMaxLength = 998 - a`。
      *
@@ -14871,7 +14871,7 @@ export class WeatherChangeEventSignal {
     unsubscribe(callback: (arg: WeatherChangeEvent) => void): void;
 }
 /**
- * 代表了整个世界的类型，其中包含了一系列维度以及 Minecraft 的环境。
+ * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
  *
  * A class that wraps the state of a world - a set of
  * dimensions and the environment of Minecraft.
@@ -14920,7 +14920,7 @@ export class World {
      * 获取一个包含了游戏中所有玩家的对象的数组。
      * 
      * Returns an array of all active players within the world.
-     * @returns 返回一个包含着游戏中所有玩家的对象的数组。
+     * @returns 返回包含了游戏中所有玩家的对象的数组。
      */
     getAllPlayers(): Player[];
     /**
