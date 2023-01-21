@@ -182,7 +182,7 @@ random(min: number, max: number): number;
 |[`EntityHitInformation`](https://projectxero.top/sapi/classes/server.EntityHitInformation.html)|类|未翻译|
 |[`EntityHurtEvent`](https://projectxero.top/sapi/classes/server.EntityHurtEvent.html)|类|未翻译|
 |[`EntityHurtEventSignal`](https://projectxero.top/sapi/classes/server.EntityHurtEventSignal.html)|类|未翻译|
-|[`EntityInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityInventoryComponent.html)|类|未翻译|
+|[`EntityInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityInventoryComponent.html)|类|已完成|
 |[`EntityIsBabyComponent`](https://projectxero.top/sapi/classes/server.EntityIsBabyComponent.html)|类|未翻译|
 |[`EntityIsChargedComponent`](https://projectxero.top/sapi/classes/server.EntityIsChargedComponent.html)|类|未翻译|
 |[`EntityIsChestedComponent`](https://projectxero.top/sapi/classes/server.EntityIsChestedComponent.html)|类|未翻译|
