@@ -4104,72 +4104,70 @@ export class EntityHurtEventSignal {
 }
 /**
  * @beta
- * 定义一个实体的物品栏属性
+ * 定义一个实体的物品栏属性。
  *
  * Defines this entity's inventory properties.
  */
 export class EntityInventoryComponent extends IEntityComponent {
     protected constructor();
     /**
-     * 表示实体每层力气(strength)可以获得的额外槽数
-     * 力气是实体的一个属性，运用于羊驼等生物的定义中
+     * 表示实体每层力气(strength)可以获得的额外槽数。
+     * 力气是实体的一个属性，运用于羊驼等生物的定义中。
      *
      * Number of slots that this entity can gain per extra
      * strength.
      */
     readonly additionalSlotsPerStrength: number;
     /**
-     * 表示能否被转移走
-     * 若为true, 则表示实体物品栏的物品可以被转移走，比如漏斗
+     * 表示能否被转移走。
+     * 若为 `true` ，则表示实体物品栏的物品可以被转移走，比如漏斗。
      *
      * If true, the contents of this inventory can be removed by a
      * hopper.
      */
     readonly canBeSiphonedFrom: boolean;
     /**
-     * 定义实体的容器
+     * 表示实体的容器。
      *
      * Defines the container for this entity.
      */
     readonly container: InventoryComponentContainer;
     /**
-     * 表示实体容器的种类
+     * 表示实体容器的种类。
      *
      * Type of container this entity has.
      */
     readonly containerType: string;
     /**
-     * 表示容器的槽数大小
+     * 表示容器的槽数大小。
      *
      * Number of slots the container has.
      */
     readonly inventorySize: number;
     /**
-     * 表示是否私有
-     * 若为true, 则表示实体死亡不会掉落物品栏的物品
+     * 表示是否私有。
+     * 若为 `true` ，则表示实体死亡不会掉落物品栏的物品。
      *
      * If true, the entity will not drop it's inventory on death.
      */
     readonly 'private': boolean;
     /**
-     * 表示是否仅主人可访问和操作
-     * 若为true, 则表示实体物品栏仅能被其主人或实体自己访问和操作
+     * 表示是否仅主人可访问和操作。
+     * 若为 `true` ，则表示实体物品栏仅能被其主人或实体自己访问和操作。
      *
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
      */
     readonly restrictToOwner: boolean;
     /**
-     * 组件标识符
-     * 应该为`minecraft:inventory`
+     * 组件标识符。
      *
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
     readonly typeId: string;
     /**
-     * 组件标识符(静态成员)
-     * 应该为`minecraft:inventory`
+     * 组件标识符(静态成员)。
      *
      * Identifier of this component. Should always be
      * minecraft:inventory.
