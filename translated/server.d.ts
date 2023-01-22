@@ -1039,7 +1039,8 @@ export class BlockHitInformation {
 }
 /**
  * @beta
- * 表示方块物品栏组件。在某些方块上可以被使用，如箱子。
+ * 表示方块物品栏组件。可以在箱子等方块上使用。
+
  * 
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
@@ -1075,7 +1076,7 @@ export class BlockInventoryComponent extends BlockComponent {
 }
 /**
  * @beta
- * 表示方块物品栏组件的容器实例。在某些方块上可以被使用，如箱子。
+ * 表示方块物品栏组件的容器实例。可以在箱子等方块上使用。
  * 
  * Represents the inventory of a {@link Block} in the world.
  * Used with blocks like chests.
@@ -1083,7 +1084,7 @@ export class BlockInventoryComponent extends BlockComponent {
 export class BlockInventoryComponentContainer extends Container {
     protected constructor();
     /**
-     * 表示容器内空置槽位的数量。
+     * {@inheritDoc Container.emptySlotsCount}
      * 
      * Contains a count of the slots in the container that are
      * empty.
@@ -1091,7 +1092,7 @@ export class BlockInventoryComponentContainer extends Container {
      */
     readonly emptySlotsCount: number;
     /**
-     * 表示该方块上的容器的容量大小。
+     * {@inheritDoc Container.size}
      * 
      * Returns the size capacity of the inventory container on this
      * block.
@@ -1100,21 +1101,18 @@ export class BlockInventoryComponentContainer extends Container {
     readonly size: number;
     /**
      * @remarks
-     * 往指定容器内添加一个物品。物品将会被放置在第一个可用的空置槽位。
-     * ( 若希望把物品放置在特定槽位，使用 `setItem` 方法。)
+     * {@inheritDoc Container.addItem}
      * 
      * Adds an item to the specified container. Item will be placed
      * in the first available empty slot. (use .setItem if you wish
      * to set items in a particular slot.)
      * @param itemStack
-     * 需要被添加的物品堆叠。
-     * 
      * The stack of items to add.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
-     * 清除该方块的物品栏(例如箱子)。
+     * {@inheritDoc Container.clearAll}
      * 
      * Clears the entirety of the inventory of this block (i.e.,
      * chest)
@@ -1122,8 +1120,7 @@ export class BlockInventoryComponentContainer extends Container {
     clearAll(): void;
     /**
      * @remarks
-     * 清除箱子内指定槽位的物品。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * {@inheritDoc Container.clearItem}
      * 
      * Clears a specific item within the chest.
      * @param slot
@@ -1131,22 +1128,15 @@ export class BlockInventoryComponentContainer extends Container {
     clearItem(slot: number): void;
     /**
      * @remarks
-     * 获取指定槽位的物品堆叠。
-     * 若槽位为空，返回 `undefined` 。
-     * 该方法不会对指定槽位的内容进行更改。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * {@inheritDoc Container.getItem}
      * 
      * Gets the item stack for the set of items at the specified
      * slot. If the slot is empty, returns undefined. This method
      * does not change or clear the contents of the specified slot.
      * @param slot
-     * 要获取的物品的槽位，从零开始。
-     * 
      * Zero-based index of the slot to retrieve items from.
-     * @returns
-     * 若给定槽位含有物品，返回 {@link ItemStack} 对象，否则为 `undefined` 。
      * @throws
-     * 当给定槽位超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example getItem.js
      * ```typescript
      *        const itemStack = rightChestContainer.getItem(0);
@@ -1157,7 +1147,7 @@ export class BlockInventoryComponentContainer extends Container {
     getItem(slot: number): ItemStack;
     /**
      * @remarks
-     * 获取箱子内的容器槽位。
+     * {@inheritDoc Container.getSlot}
      * 
      * Gets a container slot within the chest.
      * @param slot
@@ -1166,46 +1156,31 @@ export class BlockInventoryComponentContainer extends Container {
     getSlot(slot: number): ContainerSlot;
     /**
      * @remarks
-     * 在指定槽位设置一个物品。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * {@inheritDoc Container.setItem}
      * 
      * Sets an item stack within a particular slot.
      * @param slot
-     * 要设置的物品槽位，从零开始。
-     * 
      * Zero-based index of the slot to set an item at.
      * @param itemStack
-     * 需要被放置在指定槽位内的物品堆叠。
-     * 
      * Stack of items to place within the specified slot.
      * @throws
-     * 当给定槽位超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks
-     * 交换不同容器之间两个槽位的物品。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * {@inheritDoc Container.swapItems}
      * 
      * Swaps items between two different slots within containers.
      * @param slot
-     * 要交换的物品槽位，从零开始。
-     * 
      * Zero-based index of the slot to swap from this container.
      * @param otherSlot
-     * 要被交换的物品槽位，从零开始。
-     * 
      * Zero-based index of the slot to swap with.
      * @param otherContainer
-     * 要与之交换的的目标容器。
-     * 注意，此目标容器可以与该容器是同一个。
-     * 
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @returns
-     * 当交换成功时，返回 `true`，否则为 `false`。
      * @throws
-     * 当给定槽位其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
@@ -1215,26 +1190,18 @@ export class BlockInventoryComponentContainer extends Container {
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
     /**
      * @remarks
-     * 将物品从指定槽位移动到另一个，可跨容器。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * {@inheritDoc Container.transferItem}
      * 
      * Moves an item from one slot to another, potentially across
      * containers.
      * @param fromSlot
      * @param toSlot
-     * 要移动到的物品槽位，从零开始。
-     * 
      * Zero-based index of the slot to move to.
      * @param toContainer
-     * 要传输到的目标容器。
-     * 注意，此目标容器可以与该容器是同一个。
-     * 
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @returns
-     * 当移动成功时，返回 `true`，否则为 `false`。
      * @throws
-     * 当给定槽位其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
@@ -1428,7 +1395,7 @@ export class BlockPermutation {
 }
 /**
  * @beta
- * 表示方块的活塞组件。当出现在方块上，该方块具有类似于活塞的行为。
+ * 表示方块的活塞组件。当出现在方块上，该方块会表现出类似于活塞的行为。
  * 包含用于查看方块活塞状态的属性。
  * 
  * When present, this block has piston-like behavior. Contains
@@ -1445,7 +1412,7 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly attachedBlocks: BlockLocation[];
     /**
-     * 若活塞在扩展状态为 `true`，否则为 `false` 。
+     * 若活塞处于扩展状态为 `true`，否则为 `false` 。
      * 
      * Whether the piston is fully expanded.
      * @throws This property can throw when used.
@@ -1467,7 +1434,7 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly isMoving: boolean;
     /**
-     * 若活塞在收缩状态为 `true`，否则为 `false` 。
+     * 若活塞处于收缩状态为 `true`，否则为 `false` 。
      * 
      * Whether the piston is fully retracted.
      * @throws This property can throw when used.
@@ -2586,6 +2553,8 @@ export class CommandResult {
 }
 /**
  * @beta
+ * 表示一个保存物品的容器。可以在玩家，箱子矿车等实体上使用。
+ * 
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
@@ -2593,7 +2562,7 @@ export class CommandResult {
 export class Container {
     protected constructor();
     /**
-     * 表示容器内空置槽位的数量。
+     * 表示容器内空槽位的数量。
      * 
      * Contains a count of the slots in the container that are
      * empty.
@@ -2611,7 +2580,7 @@ export class Container {
     /**
      * @remarks
      * 往指定容器内添加一个物品。物品将会被放置在第一个可用的空置槽位。
-     * ( 若希望把物品放置在特定槽位，使用 `setItem` 方法。)
+     * （若希望把物品放置在特定槽位，使用 {@link setItem} 方法。）
      * 
      * Adds an item to the specified container. Item will be placed
      * in the first available empty slot. (use .setItem if you wish
@@ -2624,7 +2593,7 @@ export class Container {
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
-     * 清除该容器物品栏的所有物品。
+     * 清除该容器的所有物品。
      * 
      * Clears all inventory items in the container.
      * @throws This function can throw errors.
@@ -2632,8 +2601,11 @@ export class Container {
     clearAll(): void;
     /**
      * @remarks
+     * 清除容器内一个指定槽位的物品。
+     * 
      * Clears a specific item at a slot within the container.
      * @param slot
+     * 指定的槽位编号。
      * @throws This function can throw errors.
      */
     clearItem(slot: number): void;
@@ -2642,13 +2614,13 @@ export class Container {
      * 获取指定槽位的物品堆叠。
      * 若槽位为空，返回 `undefined` 。
      * 该方法不会对指定槽位的内容进行更改。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
      * 
      * Gets the item stack for the set of items at the specified
      * slot. If the slot is empty, returns undefined. This method
      * does not change or clear the contents of the specified slot.
      * @param slot
-     * 要获取的物品的槽位，从零开始。
+     * 要获取的物品的槽位编号，从零开始。
      * 
      * Zero-based index of the slot to retrieve items from.
      * @returns
@@ -2672,14 +2644,14 @@ export class Container {
      * 获取保存物品的容器槽位。
      * 
      * Returns a container slot item holder within the container.
-     * @param slot
+     * @param slot 指定的槽位编号。
      * @throws This function can throw errors.
      */
     getSlot(slot: number): ContainerSlot;
     /**
      * @remarks
      * 在指定槽位设置一个物品。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
      * 
      * Sets an item stack within a particular slot.
      * @param slot
@@ -2691,7 +2663,7 @@ export class Container {
      * 
      * Stack of items to place within the specified slot.
      * @throws
-     * 当给定槽位超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -2701,11 +2673,11 @@ export class Container {
      * 
      * Swaps items between two different slots within containers.
      * @param slot
-     * 要交换的物品槽位，从零开始。
+     * 要交换的物品槽位编号，从零开始。
      * 
      * Zero-based index of the slot to swap from this container.
      * @param otherSlot
-     * 要被交换的物品槽位，从零开始。
+     * 要被交换的物品槽位编号，从零开始。
      * 
      * Zero-based index of the slot to swap with.
      * @param otherContainer
@@ -2717,7 +2689,7 @@ export class Container {
      * @returns
      * 当交换成功时，返回 `true`，否则为 `false`。
      * @throws
-     * 当给定槽位其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
@@ -2728,13 +2700,14 @@ export class Container {
     /**
      * @remarks
      * 将物品从指定槽位移动到另一个，可跨容器。
-     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
      * 
      * Moves an item from one slot to another, potentially across
      * containers.
      * @param fromSlot
+     * 物品原本所在的槽位编号。
      * @param toSlot
-     * 要移动到的物品槽位，从零开始。
+     * 要移动到的物品槽位编号，从零开始。
      * 
      * Zero-based index of the slot to move to.
      * @param toContainer
@@ -2746,7 +2719,7 @@ export class Container {
      * @returns
      * 当移动成功时，返回 `true`，否则为 `false`。
      * @throws
-     * 当给定槽位其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
