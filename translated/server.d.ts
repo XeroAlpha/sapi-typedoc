@@ -945,6 +945,8 @@ export class BlockBreakEventSignal {
 }
 /**
  * @beta
+ * 方块有关组件类型的基类。
+ * 
  * Base type for components associated with blocks.
  */
 // tslint:disable-next-line:no-unnecessary-class
@@ -1037,26 +1039,36 @@ export class BlockHitInformation {
 }
 /**
  * @beta
+ * 表示方块物品栏组件。可以在箱子等方块上使用。
+
+ * 
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  */
 export class BlockInventoryComponent extends BlockComponent {
     protected constructor();
     /**
+     * 保存物品堆叠的容器。
+     * 
      * The container which holds an {@link ItemStack}.
-     * @throws This property can throw when used.
      */
     readonly container: BlockInventoryComponentContainer;
     /**
+     * 指定方块的坐标。
+     * 
      * Coordinates of the specified block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:inventory` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
@@ -1064,18 +1076,24 @@ export class BlockInventoryComponent extends BlockComponent {
 }
 /**
  * @beta
+ * 表示方块物品栏组件的容器实例。可以在箱子等方块上使用。
+ * 
  * Represents the inventory of a {@link Block} in the world.
  * Used with blocks like chests.
  */
 export class BlockInventoryComponentContainer extends Container {
     protected constructor();
     /**
+     * {@inheritDoc Container.emptySlotsCount}
+     * 
      * Contains a count of the slots in the container that are
      * empty.
      * @throws This property can throw when used.
      */
     readonly emptySlotsCount: number;
     /**
+     * {@inheritDoc Container.size}
+     * 
      * Returns the size capacity of the inventory container on this
      * block.
      * @throws This property can throw when used.
@@ -1083,36 +1101,42 @@ export class BlockInventoryComponentContainer extends Container {
     readonly size: number;
     /**
      * @remarks
+     * {@inheritDoc Container.addItem}
+     * 
      * Adds an item to the specified container. Item will be placed
      * in the first available empty slot. (use .setItem if you wish
      * to set items in a particular slot.)
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
+     * {@inheritDoc Container.clearAll}
+     * 
      * Clears the entirety of the inventory of this block (i.e.,
      * chest)
-     * @throws This function can throw errors.
      */
     clearAll(): void;
     /**
      * @remarks
+     * {@inheritDoc Container.clearItem}
+     * 
      * Clears a specific item within the chest.
      * @param slot
-     * @throws This function can throw errors.
      */
     clearItem(slot: number): void;
     /**
      * @remarks
+     * {@inheritDoc Container.getItem}
+     * 
      * Gets the item stack for the set of items at the specified
      * slot. If the slot is empty, returns undefined. This method
      * does not change or clear the contents of the specified slot.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example getItem.js
      * ```typescript
      *        const itemStack = rightChestContainer.getItem(0);
@@ -1123,6 +1147,8 @@ export class BlockInventoryComponentContainer extends Container {
     getItem(slot: number): ItemStack;
     /**
      * @remarks
+     * {@inheritDoc Container.getSlot}
+     * 
      * Gets a container slot within the chest.
      * @param slot
      * @throws This function can throw errors.
@@ -1130,16 +1156,21 @@ export class BlockInventoryComponentContainer extends Container {
     getSlot(slot: number): ContainerSlot;
     /**
      * @remarks
+     * {@inheritDoc Container.setItem}
+     * 
      * Sets an item stack within a particular slot.
      * @param slot
      * Zero-based index of the slot to set an item at.
      * @param itemStack
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks
+     * {@inheritDoc Container.swapItems}
+     * 
      * Swaps items between two different slots within containers.
      * @param slot
      * Zero-based index of the slot to swap from this container.
@@ -1148,7 +1179,8 @@ export class BlockInventoryComponentContainer extends Container {
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
@@ -1158,6 +1190,8 @@ export class BlockInventoryComponentContainer extends Container {
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
     /**
      * @remarks
+     * {@inheritDoc Container.transferItem}
+     * 
      * Moves an item from one slot to another, potentially across
      * containers.
      * @param fromSlot
@@ -1166,7 +1200,8 @@ export class BlockInventoryComponentContainer extends Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
@@ -1177,27 +1212,39 @@ export class BlockInventoryComponentContainer extends Container {
 }
 /**
  * @beta
+ * 表示该包含熔岩的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains
  * lava.
  */
 export class BlockLavaContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的熔岩的填充等级。
+     * 合法值在 {@link FluidContainer.minFillLevel} (0) 和
+     * {@link FluidContainer.maxFillLevel} (6) 之间。
+     * 
      * Relative level of lava within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:lavaContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:lavaContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:lavaContainer.
      */
@@ -1348,52 +1395,73 @@ export class BlockPermutation {
 }
 /**
  * @beta
+ * 表示方块的活塞组件。当出现在方块上，该方块会表现出类似于活塞的行为。
+ * 包含用于查看方块活塞状态的属性。
+ * 
  * When present, this block has piston-like behavior. Contains
  * additional properties for discovering block piston state.
  */
 export class BlockPistonComponent extends BlockComponent {
     protected constructor();
     /**
+     * 受到活塞激活影响的块的位置的集合。
+     * 
      * A set of locations for blocks that are impacted by the
      * activation of this piston.
      * @throws This property can throw when used.
      */
     readonly attachedBlocks: BlockLocation[];
     /**
+     * 若活塞处于扩展状态为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is fully expanded.
      * @throws This property can throw when used.
      */
     readonly isExpanded: boolean;
     /**
+     * 若活塞正在扩展为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of expanding.
      * @throws This property can throw when used.
      */
     readonly isExpanding: boolean;
     /**
+     * 若活塞正在扩展或收缩为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of expanding or
      * retracting.
      * @throws This property can throw when used.
      */
     readonly isMoving: boolean;
     /**
+     * 若活塞处于收缩状态为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is fully retracted.
      * @throws This property can throw when used.
      */
     readonly isRetracted: boolean;
     /**
+     * 若活塞正在收缩为 `true`，否则为 `false` 。
+     * 
      * Whether the piston is in the process of retracting.
      * @throws This property can throw when used.
      */
     readonly isRetracting: boolean;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component.
      */
     static readonly componentId = 'minecraft:piston';
@@ -1444,35 +1512,51 @@ export class BlockPlaceEventSignal {
 }
 /**
  * @beta
+ * 表示该包含药水的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains a
  * potion.
  */
 export class BlockPotionContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的药水液体的填充等级。
+     * 合法值在 {@link FluidContainer.minFillLevel} (0) 和
+     * {@link FluidContainer.maxFillLevel} (6) 之间。
+     * 
      * Relative level of potion liquid within this block. Valid
      * values are between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:potionContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:potionContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:potionContainer.
      */
     static readonly componentId = 'minecraft:potionContainer';
     /**
      * @remarks
+     * 基于物品堆叠设置药水类型。
+     * 
      * Sets the potion type based on an item stack.
      * @param item
+     * 用于设置该容器药水类型的药水。
+     * 
      * Potion to use as the type of potion for this potion
      * container.
      * @throws This function can throw errors.
@@ -2091,62 +2175,83 @@ export class BlockProperties {
 export class BlockRecordPlayerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该唱片机的位置。
+     * 
      * Location of this record-playing block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:recordPlayer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:recordPlayer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:recordPlayer.
      */
     static readonly componentId = 'minecraft:recordPlayer';
     /**
      * @remarks
+     * 清除该唱片机正在播放的唱片。
+     * 
      * Clears the currently playing record of this record-playing
      * block.
-     * @throws This function can throw errors.
      */
     clearRecord(): void;
     /**
      * @remarks
+     * 若正在播放唱片，返回 `true`，否则为 `false` 。
+     * 
      * Returns true if the record-playing block is currently
      * playing a record.
-     * @throws This function can throw errors.
      */
     isPlaying(): boolean;
     /**
      * @remarks
+     * 基于给定的物品类型，设置并播放唱片。
+     * 
      * Sets and plays a record based on an item type.
      * @param recordItemType
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定物品类型不属于唱片，抛出 `TypeError`。
      */
     setRecord(recordItemType: ItemType): void;
 }
 /**
  * @beta
+ * 表示方块的告示牌组件。当出现在方块上时，该方块可以显示文本。
+ * 
  * Represents a block that can display text on it.
  */
 export class BlockSignComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该告示牌的位置。
+     * 
      * Location of the sign.
      */
     readonly location: BlockLocation;
     /**
+     * 告示牌的文本。
+     * 
      * Text of the sign
      * @throws This property can throw when used.
      */
     readonly text: string;
     /**
+     * 组件的标识符。应始终为 `minecraft:sign` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:sign.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:sign.
      */
@@ -2154,27 +2259,39 @@ export class BlockSignComponent extends BlockComponent {
 }
 /**
  * @beta
+ * 表示该包含细雪的方块的流体容器组件。
+ * 
  * Represents a fluid container block that currently contains
  * snow.
  */
 export class BlockSnowContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 该方块包含的细雪的填充等级。
+     * 合法值在 {@link FluidContainer.minFillLevel} (0) 和
+     * {@link FluidContainer.maxFillLevel} (6) 之间。
+     * 
      * Relative level of snow within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:snowContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:snowContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。
+     * 
      * Identifier of this component. Should always be
      * minecraft:snowContainer.
      */
@@ -2215,34 +2332,47 @@ export class BlockType {
 export class BlockWaterContainerComponent extends BlockComponent {
     protected constructor();
     /**
+     * 表示水的表面颜色。
+     * 
      * Represents a color facet of the water.
      */
     customColor: Color;
     /**
+     * 该方块包含的水的填充等级。
+     * 合法值在 {@link FluidContainer.minFillLevel} (0) 和
+     * {@link FluidContainer.maxFillLevel} (6) 之间。
+     * 
      * Relative level of water within this block. Valid values are
      * between FluidContainer.minFillLevel (0) and
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
     /**
+     * 该方块的源位置。
+     * 
      * Source location of the block.
      */
     readonly location: BlockLocation;
     /**
+     * 组件的标识符。应始终为 `minecraft:waterContainer` 。
+     * 
      * Identifier of this component. Should always be
      * minecraft:waterContainer.
      */
     readonly typeId: string;
     /**
+     * 组件的标识符。`
+     * 
      * Identifier of this component. Should always be
      * minecraft:waterContainer.
      */
     static readonly componentId = 'minecraft:waterContainer';
     /**
      * @remarks
+     * 添加一个物品并基于其染料物品类型给水染色。
+     * 
      * Adds an item and colors the water based on a dye item type.
      * @param itemType
-     * @throws This function can throw errors.
      */
     addDye(itemType: ItemType): void;
 }
@@ -2423,6 +2553,8 @@ export class CommandResult {
 }
 /**
  * @beta
+ * 表示一个保存物品的容器。可以在玩家，箱子矿车等实体上使用。
+ * 
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
@@ -2430,49 +2562,71 @@ export class CommandResult {
 export class Container {
     protected constructor();
     /**
+     * 表示容器内空槽位的数量。
+     * 
      * Contains a count of the slots in the container that are
      * empty.
-     * @throws This property can throw when used.
      */
     readonly emptySlotsCount: number;
     /**
+     * 表示该方块上的容器大小。例如，一个标准的小型箱子的大小为 27，
+     * 它的物品栏就有 27 个槽位。
+     * 
      * Represents the size of the container. For example, a
      * standard single-block chest has a size of 27, for the 27
      * slots in their inventory.
-     * @throws This property can throw when used.
      */
     readonly size: number;
     /**
      * @remarks
+     * 往指定容器内添加一个物品。物品将会被放置在第一个可用的空置槽位。
+     * （若希望把物品放置在特定槽位，使用 {@link setItem} 方法。）
+     * 
      * Adds an item to the specified container. Item will be placed
      * in the first available empty slot. (use .setItem if you wish
      * to set items in a particular slot.)
      * @param itemStack
+     * 需要被添加的物品堆叠。
+     * 
      * The stack of items to add.
-     * @throws This function can throw errors.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
+     * 清除该容器的所有物品。
+     * 
      * Clears all inventory items in the container.
      * @throws This function can throw errors.
      */
     clearAll(): void;
     /**
      * @remarks
+     * 清除容器内一个指定槽位的物品。
+     * 
      * Clears a specific item at a slot within the container.
      * @param slot
+     * 指定的槽位编号。
      * @throws This function can throw errors.
      */
     clearItem(slot: number): void;
     /**
      * @remarks
+     * 获取指定槽位的物品堆叠。
+     * 若槽位为空，返回 `undefined` 。
+     * 该方法不会对指定槽位的内容进行更改。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 
      * Gets the item stack for the set of items at the specified
      * slot. If the slot is empty, returns undefined. This method
      * does not change or clear the contents of the specified slot.
      * @param slot
+     * 要获取的物品的槽位编号，从零开始。
+     * 
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @returns
+     * 若给定槽位含有物品，返回 {@link ItemStack} 对象，否则为 `undefined` 。
+     * @throws
+     * 当给定槽位超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example getItem.js
      * ```typescript
      *        const rightInventoryComp = rightChestCart.getComponent("inventory");
@@ -2487,50 +2641,85 @@ export class Container {
     getItem(slot: number): ItemStack;
     /**
      * @remarks
+     * 获取保存物品的容器槽位。
+     * 
      * Returns a container slot item holder within the container.
-     * @param slot
+     * @param slot 指定的槽位编号。
      * @throws This function can throw errors.
      */
     getSlot(slot: number): ContainerSlot;
     /**
      * @remarks
+     * 在指定槽位设置一个物品。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 
      * Sets an item stack within a particular slot.
      * @param slot
+     * 要设置的物品槽位，从零开始。
+     * 
      * Zero-based index of the slot to set an item at.
      * @param itemStack
+     * 需要被放置在指定槽位内的物品堆叠。
+     * 
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws
+     * 当给定槽位编号超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks
+     * 交换不同容器之间两个槽位的物品。
+     * 注意，当给定槽位为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 
      * Swaps items between two different slots within containers.
      * @param slot
+     * 要交换的物品槽位编号，从零开始。
+     * 
      * Zero-based index of the slot to swap from this container.
      * @param otherSlot
+     * 要被交换的物品槽位编号，从零开始。
+     * 
      * Zero-based index of the slot to swap with.
      * @param otherContainer
+     * 要与之交换的的目标容器。
+     * 注意，此目标容器可以与该容器是同一个。
+     * 
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @returns
+     * 当交换成功时，返回 `true`，否则为 `false`。
+     * @throws
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。
      * @example swapItems.js
      * ```typescript
-     *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap the cake and emerald
+     *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
      *
      * ```
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
     /**
      * @remarks
+     * 将物品从指定槽位移动到另一个，可跨容器。
+     * 注意，当给定槽位编号为 `Infinity` 和 `NaN` 等特殊数字常量时，不会抛出错误，但不产生有效行为。
+     * 
      * Moves an item from one slot to another, potentially across
      * containers.
      * @param fromSlot
+     * 物品原本所在的槽位编号。
      * @param toSlot
+     * 要移动到的物品槽位编号，从零开始。
+     * 
      * Zero-based index of the slot to move to.
      * @param toContainer
+     * 要传输到的目标容器。
+     * 注意，此目标容器可以与该容器是同一个。
+     * 
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @returns
+     * 当移动成功时，返回 `true`，否则为 `false`。
+     * @throws
+     * 当给定槽位编号其一超出物品栏范围，抛出 `Invalid container slot provided '<slot>'. Maximum slot is '<containerSize>'`。 
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
