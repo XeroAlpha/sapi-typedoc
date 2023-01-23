@@ -4104,54 +4104,67 @@ export class EntityHurtEventSignal {
 }
 /**
  * @beta
+ * 表示一个实体的物品栏属性。
+ *
  * Defines this entity's inventory properties.
  */
 export class EntityInventoryComponent extends IEntityComponent {
     protected constructor();
     /**
+     * 表示实体每层强度（实体组件 `minecraft:strength`）可以获得的额外槽数。
+     *
      * Number of slots that this entity can gain per extra
      * strength.
-     * @throws This property can throw when used.
      */
     readonly additionalSlotsPerStrength: number;
     /**
+     * 若为 `true`，则表示实体物品栏中的物品可被漏斗或漏斗矿车转移走。
+     *
      * If true, the contents of this inventory can be removed by a
      * hopper.
-     * @throws This property can throw when used.
      */
     readonly canBeSiphonedFrom: boolean;
     /**
+     * 表示实体的容器。
+     *
      * Defines the container for this entity.
-     * @throws This property can throw when used.
      */
     readonly container: InventoryComponentContainer;
     /**
+     * 表示实体容器的种类。
+     *
      * Type of container this entity has.
-     * @throws This property can throw when used.
      */
     readonly containerType: string;
     /**
+     * 表示实体容器的槽位数量。
+     *
      * Number of slots the container has.
-     * @throws This property can throw when used.
      */
     readonly inventorySize: number;
     /**
+     * 若为 `true`，则表示实体死亡不会掉落物品栏的物品。
+     *
      * If true, the entity will not drop it's inventory on death.
-     * @throws This property can throw when used.
      */
     readonly 'private': boolean;
     /**
+     * 若为 `true`，则表示实体物品栏仅能被其主人或实体自己访问和操作。
+     *
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
-     * @throws This property can throw when used.
      */
     readonly restrictToOwner: boolean;
     /**
+     * 组件标识符。应当为 `minecraft:inventory`。
+     *
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
     readonly typeId: string;
     /**
+     * 组件标识符。
+     *
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
