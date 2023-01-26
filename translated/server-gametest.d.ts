@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.60-preview.26"
+ *   "version": "1.0.0-internal.1.19.70-preview.20"
  * }
  * ```
  *
@@ -278,14 +278,14 @@ export class SculkSpreader {
      * @param offset
      * @param charge
      */
-    addCursorsWithOffset(offset: minecraftserver.BlockLocation, charge: number): void;
+    addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
     /**
      * @remarks
      * Retrieves the current position of the specified cursor.
      * @param index
      * @throws This function can throw errors.
      */
-    getCursorPosition(index: number): minecraftserver.BlockLocation;
+    getCursorPosition(index: number): minecraftserver.Vector3;
     /**
      * @remarks
      * Returns a number of overall cursors for this sculk spreader.
@@ -309,123 +309,11 @@ export class SculkSpreader {
 export class SimulatedPlayer extends minecraftserver.Player {
     protected constructor();
     /**
-     * Dimension that the simulated player is currently within.
-     * @throws This property can throw when used.
-     */
-    readonly dimension: minecraftserver.Dimension;
-    /**
-     * Location of the center of the head component of the player.
-     * @throws This property can throw when used.
-     */
-    readonly headLocation: minecraftserver.Location;
-    /**
      * Rotation of the head across pitch and yaw angles.
      * @throws This property can throw when used.
      */
     readonly headRotation: minecraftserver.XYRotation;
-    /**
-     * Unique identifier of the player. This identifier is intended
-     * to be consistent across loads of a world instance. No
-     * meaning should be inferred from the value and structure of
-     * this unique identifier - do not parse or interpret it.
-     * @throws This property can throw when used.
-     */
-    readonly id: string;
-    /**
-     * True if the player is currently using a sneaking movement.
-     */
-    isSneaking: boolean;
     isSprinting: boolean;
-    readonly level: number;
-    /**
-     * Current location of the player.
-     * @throws This property can throw when used.
-     */
-    readonly location: minecraftserver.Vector3;
-    /**
-     * Name of the player.
-     * @throws This property can throw when used.
-     */
-    readonly name: string;
-    /**
-     * Optional name tag of the player.
-     */
-    nameTag: string;
-    /**
-     * Contains methods for manipulating the on-screen display of a
-     * Player.
-     */
-    readonly onScreenDisplay: minecraftserver.ScreenDisplay;
-    /**
-     * Main rotation of the entity.
-     * @throws This property can throw when used.
-     */
-    readonly rotation: minecraftserver.XYRotation;
-    /**
-     * Returns a scoreboard identity that represents this entity.
-     * @throws This property can throw when used.
-     */
-    readonly scoreboard: minecraftserver.ScoreboardIdentity;
-    /**
-     * Manages the selected slot in the player's hotbar.
-     */
-    selectedSlot: number;
-    /**
-     * Retrieves or sets an entity that is used as the target of
-     * AI-related behaviors, like attacking.
-     * @throws This property can throw when used.
-     */
-    readonly target: minecraftserver.Entity;
-    readonly totalXpNeededForNextLevel: number;
-    /**
-     * Unique identifier of the type of the entity - for example,
-     * 'minecraft:player'.
-     * @throws This property can throw when used.
-     */
-    readonly typeId: string;
-    /**
-     * Current speed of the player across X, Y, and Z dimensions.
-     * @throws This property can throw when used.
-     */
-    readonly velocity: minecraftserver.Vector;
-    readonly viewDirection: minecraftserver.Vector3;
-    readonly xpEarnedAtCurrentLevel: number;
-    /**
-     * @remarks
-     * Adds an effect, like poison, to the entity.
-     * @param effectType
-     * Type of effect to add to the entity.
-     * @param duration
-     * Amount of time, in ticks, for the effect to apply.
-     * @param amplifier
-     * Optional amplification of the effect to apply.
-     * @param showParticles
-     * @throws This function can throw errors.
-     */
-    addEffect(
-        effectType: minecraftserver.EffectType,
-        duration: number,
-        amplifier?: number,
-        showParticles?: boolean,
-    ): void;
-    /**
-     * @remarks
-     * Adds a set of experience to the simulated player.
-     * @param amount
-     * Amount of experience to add.
-     * @throws This function can throw errors.
-     */
-    addExperience(amount: number): number;
-    addLevels(amount: number): number;
-    /**
-     * @remarks
-     * Adds a specified tag to a simulated player.
-     * @param tag
-     * Content of the tag to add.
-     * @throws This function can throw errors.
-     */
-    addTag(tag: string): boolean;
-    applyDamage(amount: number, source?: minecraftserver.EntityDamageSource): boolean;
     /**
      * @remarks
      * Causes the simulated player to make an attack 'swipe'.
@@ -458,7 +346,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Direction to place the specified item within.
      * @throws This function can throw errors.
      */
-    breakBlock(blockLocation: minecraftserver.BlockLocation, direction?: minecraftserver.Direction): boolean;
+    breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks
      * Simulates and performs a disconnection of the simulated
@@ -466,81 +354,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     disconnect(): void;
-    extinguishFire(useEffects?: boolean): boolean;
-    /**
-     * @remarks
-     * Gets the first block from the view direction of this player.
-     * @param options
-     * A set of additional options for how to consider which block
-     * to select.
-     * @throws This function can throw errors.
-     */
-    getBlockFromViewDirection(options?: minecraftserver.BlockRaycastOptions): minecraftserver.Block;
-    /**
-     * @remarks
-     * Gets a component (that represents additional capabilities)
-     * for an entity.
-     * @param componentId
-     * The identifier of the component (e.g., 'minecraft:rideable')
-     * to retrieve. If no namespace prefix is specified,
-     * 'minecraft:' is assumed. If the component is not present on
-     * the entity, undefined is returned.
-     */
-    getComponent(componentId: string): minecraftserver.IEntityComponent;
-    /**
-     * @remarks
-     * Returns all components that are both present on this entity
-     * and supported by the API.
-     */
-    getComponents(): minecraftserver.IEntityComponent[];
-    /**
-     * @remarks
-     * Returns a property value.
-     * @param identifier
-     * @returns
-     * Returns the value for the property, or undefined if the
-     * property has not been set.
-     * @throws This function can throw errors.
-     */
-    getDynamicProperty(identifier: string): boolean | number | string | undefined;
-    /**
-     * @remarks
-     * Returns the effect for the specified EffectType on the
-     * entity, or undefined if the effect is not present.
-     * @param effectType
-     * @returns
-     * Effect object for the specified effect, or undefined if the
-     * effect is not present.
-     * @throws This function can throw errors.
-     */
-    getEffect(effectType: minecraftserver.EffectType): minecraftserver.Effect;
-    getEffects(): minecraftserver.Effect[];
-    /**
-     * @remarks
-     * Gets a set of entities from the simulated players' view
-     * direction.
-     * @param options
-     * A set of additional options on how to select the entities.
-     * @throws This function can throw errors.
-     */
-    getEntitiesFromViewDirection(options?: minecraftserver.EntityRaycastOptions): minecraftserver.Entity[];
-    /**
-     * @remarks
-     * Gets the current item cooldown time for a particular
-     * cooldown category.
-     * @param itemCategory
-     * Specifies the cooldown category to retrieve the current
-     * cooldown for.
-     * @throws This function can throw errors.
-     */
-    getItemCooldown(itemCategory: string): number;
-    /**
-     * @remarks
-     * Returns all tags associated with this simulated player.
-     * @throws This function can throw errors.
-     */
-    getTags(): string[];
-    getTotalXp(): number;
     /**
      * @remarks
      * Gives the simulated player a particular item stack.
@@ -551,24 +364,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
-    /**
-     * @remarks
-     * Returns true if the specified component is present on this
-     * entity.
-     * @param componentId
-     * The identifier of the component (e.g., 'minecraft:rideable')
-     * to retrieve. If no namespace prefix is specified,
-     * 'minecraft:' is assumed.
-     */
-    hasComponent(componentId: string): boolean;
-    /**
-     * @remarks
-     * Tests whether a simulated player has a particular tag.
-     * @param tag
-     * Identifier of the tag to test for.
-     * @throws This function can throw errors.
-     */
-    hasTag(tag: string): boolean;
     /**
      * @remarks
      * Performs a raycast from the player’s head and interacts with
@@ -588,7 +383,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Direction to place the specified item within.
      * @throws This function can throw errors.
      */
-    interactWithBlock(blockLocation: minecraftserver.BlockLocation, direction?: minecraftserver.Direction): boolean;
+    interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks
      * Causes the simulated player to interact with a mob. Returns
@@ -600,13 +395,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
     interactWithEntity(entity: minecraftserver.Entity): boolean;
     /**
      * @remarks
-     * Returns true if the simulated player has operator
-     * permissions.
-     * @throws This function can throw errors.
-     */
-    isOp(): boolean;
-    /**
-     * @remarks
      * Causes the simulated player to jump.
      * @returns
      * True if a jump was performed.
@@ -615,18 +403,12 @@ export class SimulatedPlayer extends minecraftserver.Player {
     jump(): boolean;
     /**
      * @remarks
-     * Kills this entity. The entity will drop loot as normal.
-     * @throws This function can throw errors.
-     */
-    kill(): void;
-    /**
-     * @remarks
      * Rotates the simulated player's head/body to look at the
      * given block location.
      * @param blockLocation
      * @throws This function can throw errors.
      */
-    lookAtBlock(blockLocation: minecraftserver.BlockLocation): void;
+    lookAtBlock(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Rotates the simulated player's head/body to look at the
@@ -642,7 +424,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param location
      * @throws This function can throw errors.
      */
-    lookAtLocation(location: minecraftserver.Location): void;
+    lookAtLocation(location: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Orders the simulated player to walk in the given direction
@@ -673,7 +455,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    moveToBlock(blockLocation: minecraftserver.BlockLocation, speed?: number): void;
+    moveToBlock(blockLocation: minecraftserver.Vector3, speed?: number): void;
     /**
      * @remarks
      * Orders the simulated player to move to the given location in
@@ -683,7 +465,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    moveToLocation(location: minecraftserver.Location, speed?: number): void;
+    moveToLocation(location: minecraftserver.Vector3, speed?: number): void;
     /**
      * @remarks
      * Orders the simulated player to move to a specific block
@@ -696,7 +478,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    navigateToBlock(blockLocation: minecraftserver.BlockLocation, speed?: number): minecraftserver.NavigationResult;
+    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
     /**
      * @remarks
      * Will use navigation to follow the selected entity to within
@@ -719,7 +501,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    navigateToLocation(location: minecraftserver.Location, speed?: number): minecraftserver.NavigationResult;
+    navigateToLocation(location: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
     /**
      * @remarks
      * Use navigation to follow the route provided via the
@@ -731,45 +513,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Net speed to use for doing the navigation.
      * @throws This function can throw errors.
      */
-    navigateToLocations(locations: minecraftserver.Location[], speed?: number): void;
-    /**
-     * @remarks
-     * This method is inherited from Player, but is inoperative in
-     * the case of a SimulatedPlayer.
-     * @param soundID
-     * Identifier of the sound to play.
-     * @param soundOptions
-     * Additional optional options for the sound.
-     * @throws This function can throw errors.
-     */
-    playSound(soundID: string, soundOptions?: minecraftserver.SoundOptions): void;
-    /**
-     * @remarks
-     * Internal method for posting a message to consuming client
-     * scripts.
-     * @param id
-     * Identifier of the message.
-     * @param value
-     * Value of the message.
-     * @throws This function can throw errors.
-     */
-    postClientMessage(id: string, value: string): void;
-    /**
-     * @remarks
-     * Removes a specified property.
-     * @param identifier
-     * @throws This function can throw errors.
-     */
-    removeDynamicProperty(identifier: string): boolean;
-    /**
-     * @remarks
-     * Removes a specified tag from a simulated player.
-     * @param tag
-     * Content of the tag to remove.
-     * @throws This function can throw errors.
-     */
-    removeTag(tag: string): boolean;
-    resetLevel(): void;
+    navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
     /**
      * @remarks
      * Respawns the particular simulated player.
@@ -784,20 +528,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     rotateBody(angleInDegrees: number): void;
-    /**
-     * @remarks
-     * Runs a particular command asynchronously from the context of
-     * this entity. Note that there is a maximum queue of 128
-     * asynchronous commands that can be run in a given tick.
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @returns
-     * For commands that return data, returns a JSON structure with
-     * command response values.
-     * @throws This function can throw errors.
-     */
-    runCommandAsync(commandString: string): Promise<minecraftserver.CommandResult>;
     /**
      * @remarks
      * Applies a test skin to the simulated player.
@@ -815,15 +545,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     setBodyRotation(angleInDegrees: number): void;
-    /**
-     * @remarks
-     * Sets a specified property to a value.
-     * @param identifier
-     * @param value
-     * Data value of the property to set.
-     * @throws This function can throw errors.
-     */
-    setDynamicProperty(identifier: string, value: boolean | number | string): void;
     /**
      * @remarks
      * Sets the game mode that the simulated player is operating
@@ -845,36 +566,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
-    setOnFire(seconds: number, useEffects?: boolean): boolean;
-    setOp(isOp: boolean): void;
-    /**
-     * @remarks
-     * Sets the main rotation of the entity.
-     * @param degreesX
-     * @param degreesY
-     * @throws This function can throw errors.
-     */
-    setRotation(degreesX: number, degreesY: number): void;
-    /**
-     * @remarks
-     * Sets a velocity for the entity to move with.
-     * @param velocity
-     * X/Y/Z components of the velocity.
-     * @throws This function can throw errors.
-     */
-    setVelocity(velocity: minecraftserver.Vector3): void;
-    /**
-     * @remarks
-     * Sets the item cooldown time for a particular cooldown
-     * category.
-     * @param itemCategory
-     * Specifies the cooldown category to retrieve the current
-     * cooldown for.
-     * @param tickDuration
-     * Duration in ticks of the item cooldown.
-     * @throws This function can throw errors.
-     */
-    startItemCooldown(itemCategory: string, tickDuration: number): void;
     /**
      * @remarks
      * Stops destroying the block that is currently being hit.
@@ -900,66 +591,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     stopUsingItem(): void;
-    /**
-     * @remarks
-     * Teleports the selected player to a new location
-     * @param location
-     * New location for the player.
-     * @param dimension
-     * Dimension to move the selected player to.
-     * @param xRotation
-     * X rotation of the player after teleportation.
-     * @param yRotation
-     * Y rotation of the player after teleportation.
-     * @param keepVelocity
-     * @throws This function can throw errors.
-     */
-    teleport(
-        location: minecraftserver.Vector3,
-        dimension: minecraftserver.Dimension,
-        xRotation: number,
-        yRotation: number,
-        keepVelocity?: boolean,
-    ): void;
-    /**
-     * @remarks
-     * Teleports the selected player to a new location, and will
-     * have the player facing a specified location.
-     * @param location
-     * New location for the player.
-     * @param dimension
-     * Dimension to move the selected player to.
-     * @param facingLocation
-     * Location that this player will be facing.
-     * @param keepVelocity
-     * @throws This function can throw errors.
-     */
-    teleportFacing(
-        location: minecraftserver.Vector3,
-        dimension: minecraftserver.Dimension,
-        facingLocation: minecraftserver.Vector3,
-        keepVelocity?: boolean,
-    ): void;
-    /**
-     * @remarks
-     * For simulated players, this API is effectively a no-op as
-     * simulated players do not have a connected client.
-     * @param message
-     * @throws This function can throw errors.
-     */
-    tell(message: (minecraftserver.RawMessage | string)[] | minecraftserver.RawMessage | string): void;
-    /**
-     * @remarks
-     * Triggers an entity type event. For every entity, a number of
-     * events are defined in an entities' definition for key entity
-     * behaviors; for example, creepers have a
-     * minecraft:start_exploding type event.
-     * @param eventName
-     * Name of the entity type event to trigger. If a namespace is
-     * not specified, minecraft: is assumed.
-     * @throws This function can throw errors.
-     */
-    triggerEvent(eventName: string): void;
     /**
      * @remarks
      * Causes the simulated player to use an item. Does not consume
@@ -997,7 +628,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     useItemInSlotOnBlock(
         slot: number,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         direction?: minecraftserver.Direction,
         faceLocationX?: number,
         faceLocationY?: number,
@@ -1021,7 +652,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     useItemOnBlock(
         itemStack: minecraftserver.ItemStack,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         direction?: minecraftserver.Direction,
         faceLocationX?: number,
         faceLocationY?: number,
@@ -1091,7 +722,7 @@ export class Test {
      */
     assertBlockPresent(
         blockType: minecraftserver.BlockType,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1113,10 +744,7 @@ export class Test {
      *
      * ```
      */
-    assertBlockState(
-        blockLocation: minecraftserver.BlockLocation,
-        callback: (arg: minecraftserver.Block) => boolean,
-    ): void;
+    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -1135,7 +763,7 @@ export class Test {
      */
     assertCanReachLocation(
         mob: minecraftserver.Entity,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         canReach?: boolean,
     ): void;
     /**
@@ -1152,7 +780,7 @@ export class Test {
      * chest) to test the contents of.
      * @throws This function can throw errors.
      */
-    assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.BlockLocation): void;
+    assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
@@ -1162,7 +790,7 @@ export class Test {
      * chest) to test is empty of contents.
      * @throws This function can throw errors.
      */
-    assertContainerEmpty(blockLocation: minecraftserver.BlockLocation): void;
+    assertContainerEmpty(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Tests that an entity has a specific piece of armor equipped.
@@ -1193,7 +821,7 @@ export class Test {
         armorSlot: number,
         armorName: string,
         armorData: number,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         hasArmor?: boolean,
     ): void;
     /**
@@ -1223,7 +851,7 @@ export class Test {
     assertEntityHasComponent(
         entityTypeIdentifier: string,
         componentIdentifier: string,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         hasComponent?: boolean,
     ): void;
     /**
@@ -1243,7 +871,7 @@ export class Test {
      */
     assertEntityInstancePresent(
         entity: minecraftserver.Entity,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1266,7 +894,7 @@ export class Test {
      */
     assertEntityPresent(
         entityTypeIdentifier: string,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1284,21 +912,23 @@ export class Test {
      * @throws This function can throw errors.
      * @example simpleMobTest.ts
      * ```typescript
-     *          gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *            const attackerId = "fox";
-     *            const victimId = "chicken";
+     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *          const attackerId = "fox";
+     *          const victimId = "chicken";
      *
-     *            test.spawn(attackerId, new mc.BlockLocation(5, 2, 5));
-     *            test.spawn(victimId, new mc.BlockLocation(2, 2, 2));
+     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *            test.assertEntityPresentInArea(victimId, true);
+     *          test.assertEntityPresentInArea(victimId, true);
      *
-     *            test.succeedWhen(() => {
-     *              test.assertEntityPresentInArea(victimId, false);
-     *            });
-     *          })
-     *            .maxTicks(400)
-     *            .structureName("gametests:mediumglass");
+     *          test.succeedWhen(() => {
+     *            test.assertEntityPresentInArea(victimId, false);
+     *          });
+     *        })
+     *          .maxTicks(400)
+     *          .structureName("gametests:mediumglass");
+     *
+     *
      * ```
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
@@ -1330,7 +960,7 @@ export class Test {
      * ```
      */
     assertEntityState(
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         entityTypeIdentifier: string,
         callback: (arg: minecraftserver.Entity) => boolean,
     ): void;
@@ -1351,7 +981,7 @@ export class Test {
      * not testing the specified location.
      * @throws This function can throw errors.
      */
-    assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Location, isTouching?: boolean): void;
+    assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
     /**
      * @remarks
      * Depending on the value of isWaterlogged, tests that a block
@@ -1365,7 +995,7 @@ export class Test {
      * be waterlogged.
      * @throws This function can throw errors.
      */
-    assertIsWaterlogged(blockLocation: minecraftserver.BlockLocation, isWaterlogged?: boolean): void;
+    assertIsWaterlogged(blockLocation: minecraftserver.Vector3, isWaterlogged?: boolean): void;
     /**
      * @remarks
      * Tests that items of a particular type and count are present
@@ -1388,7 +1018,7 @@ export class Test {
      */
     assertItemEntityCountIs(
         itemType: minecraftserver.ItemType,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         searchDistance: number,
         count: number,
     ): void;
@@ -1412,7 +1042,7 @@ export class Test {
      */
     assertItemEntityPresent(
         itemType: minecraftserver.ItemType,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         searchDistance: number,
         isPresent?: boolean,
     ): void;
@@ -1426,7 +1056,7 @@ export class Test {
      * Expected power level.
      * @throws This function can throw errors.
      */
-    assertRedstonePower(blockLocation: minecraftserver.BlockLocation, power: number): void;
+    assertRedstonePower(blockLocation: minecraftserver.Vector3, power: number): void;
     /**
      * @remarks
      * Destroys a block at a particular location.
@@ -1436,7 +1066,7 @@ export class Test {
      * Whether to add resources exposed with a particular drop.
      * @throws This function can throw errors.
      */
-    destroyBlock(blockLocation: minecraftserver.BlockLocation, dropResources?: boolean): void;
+    destroyBlock(blockLocation: minecraftserver.Vector3, dropResources?: boolean): void;
     /**
      * @remarks
      * Marks the current test as a failure case.
@@ -1463,7 +1093,7 @@ export class Test {
      * Location of the block to retrieve.
      * @throws This function can throw errors.
      */
-    getBlock(blockLocation: minecraftserver.BlockLocation): minecraftserver.Block;
+    getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
     /**
      * @remarks
      * Gets the dimension of this test.
@@ -1479,7 +1109,7 @@ export class Test {
      * Location of the block to retrieve.
      * @throws This function can throw errors.
      */
-    getFenceConnectivity(blockLocation: minecraftserver.BlockLocation): FenceConnectivity;
+    getFenceConnectivity(blockLocation: minecraftserver.Vector3): FenceConnectivity;
     /**
      * @remarks
      * Retrieves a sculk spreader object that can be used to
@@ -1488,7 +1118,7 @@ export class Test {
      * Location of the block to retrieve a sculk spreader from.
      * @throws This function can throw errors.
      */
-    getSculkSpreader(blockLocation: minecraftserver.BlockLocation): SculkSpreader;
+    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader;
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
@@ -1520,7 +1150,7 @@ export class Test {
      * Will throw an error if a button is not present at the
      * specified position.
      */
-    pressButton(blockLocation: minecraftserver.BlockLocation): void;
+    pressButton(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Displays the specified message to all players.
@@ -1538,7 +1168,7 @@ export class Test {
      * Will throw an error if a lever is not present at the
      * specified position.
      */
-    pullLever(blockLocation: minecraftserver.BlockLocation): void;
+    pullLever(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Sends a Redstone pulse at a particular location by creating
@@ -1549,7 +1179,7 @@ export class Test {
      * Number of ticks to pulse Redstone.
      * @throws This function can throw errors.
      */
-    pulseRedstone(blockLocation: minecraftserver.BlockLocation, duration: number): void;
+    pulseRedstone(blockLocation: minecraftserver.Vector3, duration: number): void;
     /**
      * @remarks
      * From a BlockLocation, returns a new BlockLocation with
@@ -1564,7 +1194,7 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.BlockLocation;
+    relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks
      * From a location, returns a new location with coordinates
@@ -1579,7 +1209,7 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Location;
+    relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks
      * Removes a simulated player from the world.
@@ -1640,10 +1270,7 @@ export class Test {
      * Location of the block to set.
      * @throws This function can throw errors.
      */
-    setBlockPermutation(
-        blockData: minecraftserver.BlockPermutation,
-        blockLocation: minecraftserver.BlockLocation,
-    ): void;
+    setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Sets a block to a particular type at the specified block
@@ -1654,7 +1281,7 @@ export class Test {
      * Location of the block to set.
      * @throws This function can throw errors.
      */
-    setBlockType(blockType: minecraftserver.BlockType, blockLocation: minecraftserver.BlockLocation): void;
+    setBlockType(blockType: minecraftserver.BlockType, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
@@ -1666,7 +1293,7 @@ export class Test {
      * @minecraft/server-gametest.FluidType} for a list of values.
      * @throws This function can throw errors.
      */
-    setFluidContainer(location: minecraftserver.BlockLocation, type: minecraftserver.FluidType): void;
+    setFluidContainer(location: minecraftserver.Vector3, type: minecraftserver.FluidType): void;
     /**
      * @remarks
      * Sets the fuse of an explodable entity.
@@ -1692,29 +1319,31 @@ export class Test {
      * @throws This function can throw errors.
      * @example simpleMobTest.ts
      * ```typescript
-     *          gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *            const attackerId = "fox";
-     *            const victimId = "chicken";
+     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *          const attackerId = "fox";
+     *          const victimId = "chicken";
      *
-     *            test.spawn(attackerId, new mc.BlockLocation(5, 2, 5));
-     *            test.spawn(victimId, new mc.BlockLocation(2, 2, 2));
+     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *            test.assertEntityPresentInArea(victimId, true);
+     *          test.assertEntityPresentInArea(victimId, true);
      *
-     *            test.succeedWhen(() => {
-     *              test.assertEntityPresentInArea(victimId, false);
-     *            });
-     *          })
-     *            .maxTicks(400)
-     *            .structureName("gametests:mediumglass");
+     *          test.succeedWhen(() => {
+     *            test.assertEntityPresentInArea(victimId, false);
+     *          });
+     *        })
+     *          .maxTicks(400)
+     *          .structureName("gametests:mediumglass");
+     *
      * ```
      * @example spawnAdultPig.js
      * ```typescript
-     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", new BlockLocation(1, 2, 1));
+     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1, y: 2, z: 1 });
+     *
      *
      * ```
      */
-    spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.BlockLocation): minecraftserver.Entity;
+    spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an entity at a location.
@@ -1730,10 +1359,11 @@ export class Test {
      * @throws This function can throw errors.
      * @example spawnAdultPig.js
      * ```typescript
-     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", new Location(1.5, 2, 1.5));
+     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1.5, y: 2, z: 1.5 });
+     *
      * ```
      */
-    spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Location): minecraftserver.Entity;
+    spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
@@ -1747,12 +1377,13 @@ export class Test {
      *        const oneEmerald = new ItemStack(MinecraftItemTypes.emerald, 1, 0);
      *        const fiveEmeralds = new ItemStack(MinecraftItemTypes.emerald, 5, 0);
      *
-     *        test.spawnItem(oneEmerald, new Location(3.5, 3, 1.5));
-     *        test.spawnItem(fiveEmeralds, new Location(1.5, 3, 1.5));
+     *        test.spawnItem(oneEmerald, { x: 3.5, y: 3, z: 1.5 });
+     *        test.spawnItem(fiveEmeralds, { x: 1.5, y: 3, z: 1.5 });
+     *
      *
      * ```
      */
-    spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Location): minecraftserver.Entity;
+    spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
@@ -1764,7 +1395,7 @@ export class Test {
      * @throws This function can throw errors.
      */
     spawnSimulatedPlayer(
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         name?: string,
         gameMode?: minecraftserver.GameMode,
     ): SimulatedPlayer;
@@ -1778,10 +1409,7 @@ export class Test {
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
      */
-    spawnWithoutBehaviors(
-        entityTypeIdentifier: string,
-        blockLocation: minecraftserver.BlockLocation,
-    ): minecraftserver.Entity;
+    spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an entity at a location without any AI behaviors.
@@ -1794,7 +1422,7 @@ export class Test {
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
-        location: minecraftserver.Location,
+        location: minecraftserver.Vector3,
     ): minecraftserver.Entity;
     /**
      * @remarks
@@ -1810,11 +1438,12 @@ export class Test {
      * @throws This function can throw errors.
      * @example spreadFromFaceTowardDirection.js
      * ```typescript
-     *        test.spreadFromFaceTowardDirection(new BlockLocation(1, 2, 1), Direction.south, Direction.down);
+     *        test.spreadFromFaceTowardDirection({ x: 1, y: 2, z: 1 }, Direction.south, Direction.down);
+     *
      * ```
      */
     spreadFromFaceTowardDirection(
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         fromFace: minecraftserver.Direction,
         direction: minecraftserver.Direction,
     ): void;
@@ -1883,8 +1512,8 @@ export class Test {
      *          const attackerId = "fox";
      *          const victimId = "chicken";
      *
-     *          test.spawn(attackerId, new mc.BlockLocation(5, 2, 5));
-     *          test.spawn(victimId, new mc.BlockLocation(2, 2, 2));
+     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
      *          test.assertEntityPresentInArea(victimId, true);
      *
@@ -1894,6 +1523,7 @@ export class Test {
      *        })
      *          .maxTicks(400)
      *          .structureName("gametests:mediumglass");
+     *
      *
      * ```
      */
@@ -1916,7 +1546,7 @@ export class Test {
      */
     succeedWhenBlockPresent(
         blockType: minecraftserver.BlockType,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1941,7 +1571,7 @@ export class Test {
     succeedWhenEntityHasComponent(
         entityTypeIdentifier: string,
         componentIdentifier: string,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         hasComponent: boolean,
     ): void;
     /**
@@ -1964,7 +1594,7 @@ export class Test {
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
-        blockLocation: minecraftserver.BlockLocation,
+        blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1980,11 +1610,7 @@ export class Test {
      * @param eventParameters
      * @throws This function can throw errors.
      */
-    triggerInternalBlockEvent(
-        blockLocation: minecraftserver.BlockLocation,
-        event: string,
-        eventParameters?: number[],
-    ): void;
+    triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
     /**
      * @remarks
      * This asynchronous function will wait until the code in the
@@ -2009,7 +1635,7 @@ export class Test {
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
      */
-    walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.BlockLocation, speedModifier?: number): void;
+    walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.Vector3, speedModifier?: number): void;
     /**
      * @remarks
      * Forces a mob to walk to a particular location. Usually used
@@ -2024,7 +1650,7 @@ export class Test {
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
      */
-    walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Location, speedModifier?: number): void;
+    walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
     /**
      * @remarks
      * From a BlockLocation with coordinates relative to the
@@ -2037,7 +1663,7 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    worldBlockLocation(relativeBlockLocation: minecraftserver.BlockLocation): minecraftserver.BlockLocation;
+    worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks
      * From a location with coordinates relative to the GameTest
@@ -2050,7 +1676,7 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Location;
+    worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }
 /**
  * @remarks
@@ -2076,21 +1702,22 @@ export class Test {
  * ```
  * @example simpleMobTest.ts
  * ```typescript
- *          gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
- *            const attackerId = "fox";
- *            const victimId = "chicken";
+ *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+ *          const attackerId = "fox";
+ *          const victimId = "chicken";
  *
- *            test.spawn(attackerId, new mc.BlockLocation(5, 2, 5));
- *            test.spawn(victimId, new mc.BlockLocation(2, 2, 2));
+ *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+ *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
  *
- *            test.assertEntityPresentInArea(victimId, true);
+ *          test.assertEntityPresentInArea(victimId, true);
  *
- *            test.succeedWhen(() => {
- *              test.assertEntityPresentInArea(victimId, false);
- *            });
- *          })
- *            .maxTicks(400)
- *            .structureName("gametests:mediumglass");
+ *          test.succeedWhen(() => {
+ *            test.assertEntityPresentInArea(victimId, false);
+ *          });
+ *        })
+ *          .maxTicks(400)
+ *          .structureName("gametests:mediumglass");
+ *
  * ```
  */
 export function register(

@@ -10,7 +10,7 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
-游戏版本号：`1.19.60.26`
+游戏版本号：`1.19.70.20`
 
 通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
 
@@ -79,7 +79,7 @@ random(min: number, max: number): number;
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|21/252|
+|[@minecraft/server](#minecraftserver)|21/253|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -123,11 +123,9 @@ random(min: number, max: number): number;
 |[`BlockEvent`](https://projectxero.top/sapi/classes/server.BlockEvent.html)|类|未翻译|
 |[`BlockExplodeEvent`](https://projectxero.top/sapi/classes/server.BlockExplodeEvent.html)|类|未翻译|
 |[`BlockExplodeEventSignal`](https://projectxero.top/sapi/classes/server.BlockExplodeEventSignal.html)|类|未翻译|
-|[`BlockHitInformation`](https://projectxero.top/sapi/classes/server.BlockHitInformation.html)|类|未翻译|
 |[`BlockInventoryComponent`](https://projectxero.top/sapi/classes/server.BlockInventoryComponent.html)|类|未翻译|
 |[`BlockInventoryComponentContainer`](https://projectxero.top/sapi/classes/server.BlockInventoryComponentContainer.html)|类|未翻译|
 |[`BlockLavaContainerComponent`](https://projectxero.top/sapi/classes/server.BlockLavaContainerComponent.html)|类|未翻译|
-|[`BlockLocation`](https://projectxero.top/sapi/classes/server.BlockLocation.html)|类|未翻译|
 |[`BlockPermutation`](https://projectxero.top/sapi/classes/server.BlockPermutation.html)|类|未翻译|
 |[`BlockPistonComponent`](https://projectxero.top/sapi/classes/server.BlockPistonComponent.html)|类|未翻译|
 |[`BlockPlaceEvent`](https://projectxero.top/sapi/classes/server.BlockPlaceEvent.html)|类|未翻译|
@@ -144,7 +142,6 @@ random(min: number, max: number): number;
 |[`ButtonPushEventSignal`](https://projectxero.top/sapi/classes/server.ButtonPushEventSignal.html)|类|未翻译|
 |[`ChatEvent`](https://projectxero.top/sapi/classes/server.ChatEvent.html)|类|未翻译|
 |[`ChatEventSignal`](https://projectxero.top/sapi/classes/server.ChatEventSignal.html)|类|未翻译|
-|[`Color`](https://projectxero.top/sapi/classes/server.Color.html)|类|未翻译|
 |[`CommandResult`](https://projectxero.top/sapi/classes/server.CommandResult.html)|类|未翻译|
 |[`Container`](https://projectxero.top/sapi/classes/server.Container.html)|类|未翻译|
 |[`ContainerSlot`](https://projectxero.top/sapi/classes/server.ContainerSlot.html)|类|未翻译|
@@ -171,6 +168,8 @@ random(min: number, max: number): number;
 |[`EntityCanPowerJumpComponent`](https://projectxero.top/sapi/classes/server.EntityCanPowerJumpComponent.html)|类|未翻译|
 |[`EntityColorComponent`](https://projectxero.top/sapi/classes/server.EntityColorComponent.html)|类|未翻译|
 |[`EntityDefinitionFeedItem`](https://projectxero.top/sapi/classes/server.EntityDefinitionFeedItem.html)|类|未翻译|
+|[`EntityDieEvent`](https://projectxero.top/sapi/classes/server.EntityDieEvent.html)|类|未翻译|
+|[`EntityDieEventSignal`](https://projectxero.top/sapi/classes/server.EntityDieEventSignal.html)|类|未翻译|
 |[`EntityFireImmuneComponent`](https://projectxero.top/sapi/classes/server.EntityFireImmuneComponent.html)|类|未翻译|
 |[`EntityFloatsInLiquidComponent`](https://projectxero.top/sapi/classes/server.EntityFloatsInLiquidComponent.html)|类|未翻译|
 |[`EntityFlyingSpeedComponent`](https://projectxero.top/sapi/classes/server.EntityFlyingSpeedComponent.html)|类|未翻译|
@@ -180,7 +179,6 @@ random(min: number, max: number): number;
 |[`EntityHealthComponent`](https://projectxero.top/sapi/classes/server.EntityHealthComponent.html)|类|未翻译|
 |[`EntityHitEvent`](https://projectxero.top/sapi/classes/server.EntityHitEvent.html)|类|未翻译|
 |[`EntityHitEventSignal`](https://projectxero.top/sapi/classes/server.EntityHitEventSignal.html)|类|未翻译|
-|[`EntityHitInformation`](https://projectxero.top/sapi/classes/server.EntityHitInformation.html)|类|未翻译|
 |[`EntityHurtEvent`](https://projectxero.top/sapi/classes/server.EntityHurtEvent.html)|类|未翻译|
 |[`EntityHurtEventSignal`](https://projectxero.top/sapi/classes/server.EntityHurtEventSignal.html)|类|未翻译|
 |[`EntityInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityInventoryComponent.html)|类|已完成|
@@ -274,7 +272,6 @@ random(min: number, max: number): number;
 |[`Items`](https://projectxero.top/sapi/classes/server.Items.html)|类|未翻译|
 |[`LeverActionEvent`](https://projectxero.top/sapi/classes/server.LeverActionEvent.html)|类|未翻译|
 |[`LeverActionEventSignal`](https://projectxero.top/sapi/classes/server.LeverActionEventSignal.html)|类|未翻译|
-|[`Location`](https://projectxero.top/sapi/classes/server.Location.html)|类|未翻译|
 |[`MessageReceiveEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveEvent.html)|类|未翻译|
 |[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|已完成|
 |[`MinecraftDimensionTypes`](https://projectxero.top/sapi/classes/server.MinecraftDimensionTypes.html)|类|未翻译|
@@ -284,7 +281,6 @@ random(min: number, max: number): number;
 |[`MinecraftItemTypes`](https://projectxero.top/sapi/classes/server.MinecraftItemTypes.html)|类|已完成|
 |[`MolangVariableMap`](https://projectxero.top/sapi/classes/server.MolangVariableMap.html)|类|未翻译|
 |[`NavigationResult`](https://projectxero.top/sapi/classes/server.NavigationResult.html)|类|未翻译|
-|[`NumberRange`](https://projectxero.top/sapi/classes/server.NumberRange.html)|类|未翻译|
 |[`PistonActivateEvent`](https://projectxero.top/sapi/classes/server.PistonActivateEvent.html)|类|未翻译|
 |[`PistonActivateEventSignal`](https://projectxero.top/sapi/classes/server.PistonActivateEventSignal.html)|类|未翻译|
 |[`Player`](https://projectxero.top/sapi/classes/server.Player.html)|类|未翻译|
@@ -322,16 +318,21 @@ random(min: number, max: number): number;
 |[`WorldInitializeEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeEventSignal.html)|类|未翻译|
 |[`XYRotation`](https://projectxero.top/sapi/classes/server.XYRotation.html)|类|未翻译|
 |[`BlockFillOptions`](https://projectxero.top/sapi/interfaces/server.BlockFillOptions.html)|接口|未翻译|
+|[`BlockHitInformation`](https://projectxero.top/sapi/interfaces/server.BlockHitInformation.html)|接口|未翻译|
 |[`BlockRaycastOptions`](https://projectxero.top/sapi/interfaces/server.BlockRaycastOptions.html)|接口|未翻译|
+|[`Color`](https://projectxero.top/sapi/interfaces/server.Color.html)|接口|未翻译|
 |[`EntityDamageSource`](https://projectxero.top/sapi/interfaces/server.EntityDamageSource.html)|接口|未翻译|
 |[`EntityDataDrivenTriggerEventOptions`](https://projectxero.top/sapi/interfaces/server.EntityDataDrivenTriggerEventOptions.html)|接口|未翻译|
 |[`EntityEventOptions`](https://projectxero.top/sapi/interfaces/server.EntityEventOptions.html)|接口|未翻译|
+|[`EntityHitInformation`](https://projectxero.top/sapi/interfaces/server.EntityHitInformation.html)|接口|未翻译|
 |[`EntityQueryOptions`](https://projectxero.top/sapi/interfaces/server.EntityQueryOptions.html)|接口|未翻译|
 |[`EntityQueryScoreOptions`](https://projectxero.top/sapi/interfaces/server.EntityQueryScoreOptions.html)|接口|未翻译|
 |[`EntityRaycastOptions`](https://projectxero.top/sapi/interfaces/server.EntityRaycastOptions.html)|接口|未翻译|
 |[`ExplosionOptions`](https://projectxero.top/sapi/interfaces/server.ExplosionOptions.html)|接口|未翻译|
 |[`MusicOptions`](https://projectxero.top/sapi/interfaces/server.MusicOptions.html)|接口|未翻译|
+|[`NumberRange`](https://projectxero.top/sapi/interfaces/server.NumberRange.html)|接口|未翻译|
 |[`RawMessage`](https://projectxero.top/sapi/interfaces/server.RawMessage.html)|接口|未翻译|
+|[`RawMessageScore`](https://projectxero.top/sapi/interfaces/server.RawMessageScore.html)|接口|未翻译|
 |[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|已完成|
 |[`ScriptEventMessageFilterOptions`](https://projectxero.top/sapi/interfaces/server.ScriptEventMessageFilterOptions.html)|接口|未翻译|
 |[`SoundOptions`](https://projectxero.top/sapi/interfaces/server.SoundOptions.html)|接口|未翻译|
@@ -363,8 +364,8 @@ random(min: number, max: number): number;
 |[`SimulatedPlayer`](https://projectxero.top/sapi/classes/server_gametest.SimulatedPlayer.html)|类|未翻译|
 |[`Tags`](https://projectxero.top/sapi/classes/server_gametest.Tags.html)|类|未翻译|
 |[`Test`](https://projectxero.top/sapi/classes/server_gametest.Test.html)|类|未翻译|
-|[`register`](https://projectxero.top/sapi/functions/server_gametest.register.html)|undefined|未翻译|
-|[`registerAsync`](https://projectxero.top/sapi/functions/server_gametest.registerAsync.html)|undefined|未翻译|
+|[`register`](https://projectxero.top/sapi/functions/server_gametest.register.html)|函数|未翻译|
+|[`registerAsync`](https://projectxero.top/sapi/functions/server_gametest.registerAsync.html)|函数|未翻译|
 
 ### @minecraft/server-net
 

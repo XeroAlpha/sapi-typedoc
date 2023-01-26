@@ -17,7 +17,24 @@
             "stoneSlab": "stoneBlockSlab",
             "stoneSlab2": "stoneBlockSlab2",
             "stoneSlab3": "stoneBlockSlab3",
-            "stoneSlab4": "stoneBlockSlab4"
+            "stoneSlab4": "stoneBlockSlab4",
+
+            "blackWool": "黑色羊毛",
+            "blueWool": "蓝色羊毛",
+            "brownWool": "棕色羊毛",
+            "cyanWool": "青色羊毛",
+            "grayWool": "灰色羊毛",
+            "greenWool": "绿色羊毛",
+            "lightBlueWool": "淡蓝色羊毛",
+            "lightGrayWool": "淡灰色羊毛",
+            "limeWool": "黄绿色羊毛",
+            "magentaWool": "品红色羊毛",
+            "orangeWool": "橙色羊毛",
+            "pinkWool": "粉红色羊毛",
+            "purpleWool": "紫色羊毛",
+            "redWool": "红色羊毛",
+            "whiteWool": "白色羊毛",
+            "yellowWool": "黄色羊毛"
         },
         "education": {
             "camera": "相机",
