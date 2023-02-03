@@ -1,61 +1,16 @@
 {
     "block": {
-        "default": {
-            "doubleStoneSlab": "doubleStoneBlockSlab",
-            "doubleStoneSlab2": "doubleStoneBlockSlab2",
-            "doubleStoneSlab3": "doubleStoneBlockSlab3",
-            "doubleStoneSlab4": "doubleStoneBlockSlab4",
-            "endGateway": "末地折跃门",
-            "glowingobsidian": "发光的黑曜石",
-            "infoUpdate": "数据更新方块",
-            "infoUpdate2": "数据更新方块",
-            "invisibleBedrock": "隐形的基岩",
-            "jigsaw": "拼图方块",
-            "netherreactor": "下界反应核",
-            "reserved6": "reserved6",
-            "stonecutter": "切石机（旧版）",
-            "stoneSlab": "stoneBlockSlab",
-            "stoneSlab2": "stoneBlockSlab2",
-            "stoneSlab3": "stoneBlockSlab3",
-            "stoneSlab4": "stoneBlockSlab4",
-
-            "blackWool": "黑色羊毛",
-            "blueWool": "蓝色羊毛",
-            "brownWool": "棕色羊毛",
-            "cyanWool": "青色羊毛",
-            "grayWool": "灰色羊毛",
-            "greenWool": "绿色羊毛",
-            "lightBlueWool": "淡蓝色羊毛",
-            "lightGrayWool": "淡灰色羊毛",
-            "limeWool": "黄绿色羊毛",
-            "magentaWool": "品红色羊毛",
-            "orangeWool": "橙色羊毛",
-            "pinkWool": "粉红色羊毛",
-            "purpleWool": "紫色羊毛",
-            "redWool": "红色羊毛",
-            "whiteWool": "白色羊毛",
-            "yellowWool": "黄色羊毛"
-        },
-        "education": {
-            "camera": "相机",
-            "chemicalHeat": "加热块",
-            "coloredTorchBp": "蓝色火把/紫色火把",
-            "coloredTorchRg": "红色火把/绿色火把",
-            "hardGlass": "强化玻璃",
-            "hardGlassPane": "强化玻璃板",
-            "hardStainedGlass": "染色强化玻璃",
-            "hardStainedGlassPane": "染色强化玻璃板",
-            "underwaterTorch": "水下火把"
-        }
+        "doubleStoneSlab": "doubleStoneBlockSlab",
+        "doubleStoneSlab2": "doubleStoneBlockSlab2",
+        "doubleStoneSlab3": "doubleStoneBlockSlab3",
+        "doubleStoneSlab4": "doubleStoneBlockSlab4",
+        "stoneSlab": "stoneBlockSlab",
+        "stoneSlab2": "stoneBlockSlab2",
+        "stoneSlab3": "stoneBlockSlab3",
+        "stoneSlab4": "stoneBlockSlab4"
     },
-    "item": {
-        "default": {},
-        "education": {}
-    },
-    "entity": {
-        "default": {},
-        "education": {}
-    },
+    "item": {},
+    "entity": {},
     "effect": {
         "default": {},
         "education": {}

@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.70-preview.20"
+ *   "version": "1.0.0-internal.1.19.70-preview.21"
  * }
  * ```
  *
@@ -874,6 +874,7 @@ export class Test {
         blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
+    assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
      * @remarks
      * Depending on the value of isPresent, tests for the presence
@@ -886,6 +887,7 @@ export class Test {
      * assumed.
      * @param blockLocation
      * Location of the entity to test for.
+     * @param searchDistance
      * @param isPresent
      * If true, this function tests whether an entity of the
      * specified type is present. If false, tests that an entity of
@@ -895,6 +897,7 @@ export class Test {
     assertEntityPresent(
         entityTypeIdentifier: string,
         blockLocation: minecraftserver.Vector3,
+        searchDistance?: number,
         isPresent?: boolean,
     ): void;
     /**
@@ -1043,7 +1046,7 @@ export class Test {
     assertItemEntityPresent(
         itemType: minecraftserver.ItemType,
         blockLocation: minecraftserver.Vector3,
-        searchDistance: number,
+        searchDistance?: number,
         isPresent?: boolean,
     ): void;
     /**

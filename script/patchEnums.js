@@ -123,17 +123,25 @@ function removeEntityModifier(enums) {
     return target;
 }
 
+function removeMinecraftPrefix(enums) {
+    const target = {};
+    Object.entries(enums).forEach(([k, v]) => {
+        target[k.replace(/^minecraft:/, "")] = v;
+    });
+    return target;
+}
+
 function main(idlistWebOutPath) {
     const dtsPath = resolvePath(__dirname, "..", "translated/server.d.ts");
     let dtsContent = readFileSync(dtsPath, "utf-8");
     const idlistData = {
         education: JSON.parse(readFileSync(resolvePath(idlistWebOutPath, "education.json"))),
-        experiment: JSON.parse(readFileSync(resolvePath(idlistWebOutPath, "experiment.json")))
+        experiment: JSON.parse(readFileSync(resolvePath(idlistWebOutPath, "experiment.json"))),
+        gametest: JSON.parse(readFileSync(resolvePath(idlistWebOutPath, "gametest.json")))
     };
     const rewriteData = JSON.parse(readFileSync(resolvePath(__dirname, "patchEnumRewrite.json")));
     dtsContent = patchEnumClass(dtsContent, "MinecraftBlockTypes", {
-        ...applyRewrite(mapToLowerCamelCase(idlistData.education.enums.block), rewriteData.block.education),
-        ...applyRewrite(mapToLowerCamelCase(idlistData.experiment.enums.block), rewriteData.block.default)
+        ...applyRewrite(mapToLowerCamelCase(removeMinecraftPrefix(idlistData.gametest.enums.block)), rewriteData.block)
     }, "", "。");
     dtsContent = patchEnumClass(dtsContent, "MinecraftEffectTypes", {
         ...applyRewrite(mapToLowerCamelCase(idlistData.education.enums.effect), rewriteData.effect.education),
@@ -144,12 +152,10 @@ function main(idlistWebOutPath) {
         ...applyRewrite(mapToLowerCamelCase(idlistData.experiment.enums.enchant), rewriteData.enchantment.default)
     }, "", "。");
     dtsContent = patchEnumClass(dtsContent, "MinecraftEntityTypes", {
-        ...applyRewrite(removeEntityModifier(mapToLowerCamelCase(idlistData.education.enums.entity)), rewriteData.entity.education),
-        ...applyRewrite(removeEntityModifier(mapToLowerCamelCase(idlistData.experiment.enums.entity)), rewriteData.entity.default)
+        ...applyRewrite(mapToLowerCamelCase(removeMinecraftPrefix(idlistData.gametest.enums.entity)), rewriteData.entity)
     }, "", "。");
     dtsContent = patchEnumClass(dtsContent, "MinecraftItemTypes", {
-        ...applyRewrite(mapToLowerCamelCase(idlistData.education.enums.item), rewriteData.item.education),
-        ...applyRewrite(mapToLowerCamelCase(idlistData.experiment.enums.item), rewriteData.item.default)
+        ...applyRewrite(mapToLowerCamelCase(removeMinecraftPrefix(idlistData.gametest.enums.item)), rewriteData.item)
     }, "", "。");
     writeFileSync(dtsPath, dtsContent);
 }
