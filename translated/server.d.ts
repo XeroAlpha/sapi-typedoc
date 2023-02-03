@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.70-preview.20"
+ *   "version": "1.1.0-internal.1.19.70-preview.21"
  * }
  * ```
  *
@@ -378,15 +378,11 @@ export class BeforeExplosionEvent {
      */
     readonly dimension: Dimension;
     /**
-     * A collection of blocks impacted by this explosion event.
-     * Note that this property can be updated to change the set of
-     * blocks impacted.
-     */
-    impactedBlocks: Vector3[];
-    /**
      * Optional source of the explosion.
      */
     readonly source: Entity;
+    getImpactedBlocks(): Vector3[];
+    setImpactedBlocks(blocks: Vector3[]): void;
 }
 /**
  * @beta
@@ -514,10 +510,6 @@ export class BeforeItemUseOnEvent {
      */
     readonly blockFace: Direction;
     /**
-     * Location of the block being impacted.
-     */
-    readonly blockLocation: Vector3;
-    /**
      * If set to true, this will cancel the item use behavior.
      */
     cancel: boolean;
@@ -539,6 +531,7 @@ export class BeforeItemUseOnEvent {
      * Returns the source entity that triggered this item event.
      */
     readonly source: Entity;
+    getBlockLocation(): Vector3;
 }
 /**
  * @beta
@@ -988,10 +981,6 @@ export class BlockInventoryComponent extends BlockComponent {
      */
     readonly container: BlockInventoryComponentContainer;
     /**
-     * Coordinates of the specified block.
-     */
-    readonly location: Vector3;
-    /**
      * Identifier of this component. Should always be
      * minecraft:inventory.
      */
@@ -1129,10 +1118,6 @@ export class BlockLavaContainerComponent extends BlockComponent {
      */
     fillLevel: number;
     /**
-     * Source location of the block.
-     */
-    readonly location: Vector3;
-    /**
      * Identifier of this component. Should always be
      * minecraft:lavaContainer.
      */
@@ -1215,12 +1200,6 @@ export class BlockPermutation {
 export class BlockPistonComponent extends BlockComponent {
     protected constructor();
     /**
-     * A set of locations for blocks that are impacted by the
-     * activation of this piston.
-     * @throws This property can throw when used.
-     */
-    readonly attachedBlocks: Vector3[];
-    /**
      * Whether the piston is fully expanded.
      * @throws This property can throw when used.
      */
@@ -1247,10 +1226,6 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly isRetracting: boolean;
     /**
-     * Source location of the block.
-     */
-    readonly location: Vector3;
-    /**
      * Identifier of this component.
      */
     readonly typeId: string;
@@ -1258,6 +1233,7 @@ export class BlockPistonComponent extends BlockComponent {
      * Identifier of this component.
      */
     static readonly componentId = 'minecraft:piston';
+    getAttachedBlocks(): Vector3[];
 }
 /**
  * @beta
@@ -1316,10 +1292,6 @@ export class BlockPotionContainerComponent extends BlockComponent {
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
-    /**
-     * Source location of the block.
-     */
-    readonly location: Vector3;
     /**
      * Identifier of this component. Should always be
      * minecraft:potionContainer.
@@ -1952,10 +1924,6 @@ export class BlockProperties {
 export class BlockRecordPlayerComponent extends BlockComponent {
     protected constructor();
     /**
-     * Location of this record-playing block.
-     */
-    readonly location: Vector3;
-    /**
      * Identifier of this component. Should always be
      * minecraft:recordPlayer.
      */
@@ -1994,10 +1962,6 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 export class BlockSignComponent extends BlockComponent {
     protected constructor();
     /**
-     * Location of the sign.
-     */
-    readonly location: Vector3;
-    /**
      * Text of the sign
      * @throws This property can throw when used.
      */
@@ -2026,10 +1990,6 @@ export class BlockSnowContainerComponent extends BlockComponent {
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
-    /**
-     * Source location of the block.
-     */
-    readonly location: Vector3;
     /**
      * Identifier of this component. Should always be
      * minecraft:snowContainer.
@@ -2081,10 +2041,6 @@ export class BlockWaterContainerComponent extends BlockComponent {
      * FluidContainer.maxFillLevel (6).
      */
     fillLevel: number;
-    /**
-     * Source location of the block.
-     */
-    readonly location: Vector3;
     /**
      * Identifier of this component. Should always be
      * minecraft:waterContainer.
@@ -2389,13 +2345,6 @@ export class ContainerSlot {
      * @throws This property can throw when used.
      */
     readonly typeId?: string;
-    /**
-     * @remarks
-     * Empties the item stored at the specified slot.
-     * @throws This function can throw errors.
-     */
-    clearItem(): void;
-    clearLore(): void;
     /**
      * @remarks
      * Returns the item stored within the container.
@@ -3025,12 +2974,6 @@ export class Entity {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
-     * Location of the center of the head component of the entity.
-     * @throws This property can throw when used.
-     */
-    readonly headLocation: Vector3;
-    /**
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No
      * meaning should be inferred from the value and structure of
@@ -3130,6 +3073,9 @@ export class Entity {
      */
     addTag(tag: string): boolean;
     applyDamage(amount: number, source?: EntityDamageSource): boolean;
+    applyImpulse(vector: Vector3): void;
+    applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    clearVelocity(): void;
     extinguishFire(useEffects?: boolean): boolean;
     /**
      * @beta
@@ -3192,6 +3138,7 @@ export class Entity {
      * @throws This function can throw errors.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
+    getHeadLocation(): Vector3;
     getRotation(): XYRotation;
     /**
      * @beta
@@ -3229,6 +3176,7 @@ export class Entity {
      * @throws This function can throw errors.
      */
     kill(): void;
+    playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
      * @beta
      * @remarks
@@ -3280,15 +3228,6 @@ export class Entity {
      * @throws This function can throw errors.
      */
     setRotation(degreesX: number, degreesY: number): void;
-    /**
-     * @beta
-     * @remarks
-     * Sets a velocity for the entity to move with.
-     * @param velocity
-     * X/Y/Z components of the velocity.
-     * @throws This function can throw errors.
-     */
-    setVelocity(velocity: Vector3): void;
     /**
      * @beta
      * @remarks
@@ -5978,13 +5917,10 @@ export class ExplosionEvent {
      */
     readonly dimension: Dimension;
     /**
-     * A collection of blocks impacted by this explosion event.
-     */
-    readonly impactedBlocks: Vector3[];
-    /**
      * Optional source of the explosion.
      */
     readonly source: Entity;
+    getImpactedBlocks(): Vector3[];
 }
 /**
  * @beta
@@ -6536,10 +6472,6 @@ export class ItemStack {
      */
     amount: number;
     /**
-     * A data value used to configure alternate states of the item.
-     */
-    data: number;
-    /**
      * Given name of this stack of items.
      */
     nameTag?: string;
@@ -6560,12 +6492,9 @@ export class ItemStack {
      * @param amount
      * Number of items to place in the stack, between 1 and 64.
      * Note that certain items can only have one item in the stack.
-     * @param data
-     * Optional data value used for creating the item, or 0 if no
-     * data value is specified.
+     * @throws This function can throw errors.
      */
-    constructor(itemType: ItemType, amount?: number, data?: number);
-    clearLore(): void;
+    constructor(itemType: ItemType | string, amount?: number);
     /**
      * @remarks
      * Gets a component (that represents additional capabilities)
@@ -6673,15 +6602,6 @@ export class ItemStartUseOnEvent {
      */
     readonly blockFace: Direction;
     /**
-     * Location of the block being impacted.
-     */
-    readonly blockLocation: Vector3;
-    /**
-     * Location of the resulting build block position. Useful for
-     * determining where a block was placed.
-     */
-    readonly buildBlockLocation: Vector3;
-    /**
      * The impacted item stack that is starting to be used.
      */
     item: ItemStack;
@@ -6689,6 +6609,8 @@ export class ItemStartUseOnEvent {
      * Returns the source entity that triggered this item event.
      */
     readonly source: Entity;
+    getBlockLocation(): Vector3;
+    getBuildBlockLocation(): Vector3;
 }
 /**
  * @beta
@@ -6767,10 +6689,6 @@ export class ItemStopChargeEventSignal {
 export class ItemStopUseOnEvent {
     protected constructor();
     /**
-     * Location of the block being impacted.
-     */
-    readonly blockLocation: Vector3;
-    /**
      * The impacted item stack that is being used on a block.
      */
     item: ItemStack;
@@ -6778,6 +6696,7 @@ export class ItemStopUseOnEvent {
      * Returns the source entity that triggered this item event.
      */
     readonly source: Entity;
+    getBlockLocation(): Vector3;
 }
 /**
  * @beta
@@ -6890,10 +6809,6 @@ export class ItemUseOnEvent {
      */
     readonly blockFace: Direction;
     /**
-     * Location of the block being impacted.
-     */
-    readonly blockLocation: Vector3;
-    /**
      * X coordinate of the item-use impact location on the face of
      * the target block.
      */
@@ -6911,6 +6826,7 @@ export class ItemUseOnEvent {
      * Returns the source entity that triggered this item event.
      */
     readonly source: Entity;
+    getBlockLocation(): Vector3;
 }
 /**
  * @beta
@@ -13038,10 +12954,7 @@ export class NavigationResult {
      * including to the requested destination.
      */
     readonly isFullPath: boolean;
-    /**
-     * A set of block locations that comprise the navigation route.
-     */
-    readonly path: Vector3[];
+    getPath(): Vector3[];
 }
 /**
  * @beta
@@ -13121,12 +13034,6 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly dimension: Dimension;
-    /**
-     * @beta
-     * Location of the center of the head component of the player.
-     * @throws This property can throw when used.
-     */
-    readonly headLocation: Vector3;
     /**
      * Unique identifier of the player. This identifier is intended
      * to be consistent across loads of a world instance. No
@@ -13218,7 +13125,10 @@ export class Player extends Entity {
      */
     addTag(tag: string): boolean;
     applyDamage(amount: number, source?: EntityDamageSource): boolean;
+    applyImpulse(vector: Vector3): void;
+    applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     clearSpawn(): void;
+    clearVelocity(): void;
     extinguishFire(useEffects?: boolean): boolean;
     /**
      * @beta
@@ -13281,6 +13191,7 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
+    getHeadLocation(): Vector3;
     /**
      * @beta
      * @remarks
@@ -13338,6 +13249,7 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     kill(): void;
+    playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
      * @beta
      * @remarks
@@ -13422,15 +13334,6 @@ export class Player extends Entity {
      */
     setRotation(degreesX: number, degreesY: number): void;
     setSpawn(spawnPosition: Vector3, spawnDimension: Dimension): void;
-    /**
-     * @beta
-     * @remarks
-     * Sets a velocity for the entity to move with.
-     * @param velocity
-     * X/Y/Z components of the velocity.
-     * @throws This function can throw errors.
-     */
-    setVelocity(velocity: Vector3): void;
     /**
      * @beta
      * @remarks
@@ -14974,6 +14877,12 @@ export interface NumberRange {
      * Minimum value within a range.
      */
     min: number;
+}
+export interface PlayAnimationOptions {
+    blendOutTime?: number;
+    controller?: string;
+    nextState?: string;
+    stopExpression?: string;
 }
 export interface RawMessage {
     rawtext?: (RawMessage | string)[];

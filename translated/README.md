@@ -10,7 +10,7 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
-游戏版本号：`1.19.70.20`
+游戏版本号：`1.19.70.21`
 
 通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
 
@@ -35,7 +35,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/253|
+|[@minecraft/server](#minecraftserver)|0/254|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -287,6 +287,7 @@ Minecraft 脚本 API 文档。
 |[`ExplosionOptions`](https://projectxero.top/sapi/interfaces/server.ExplosionOptions.html)|接口|未翻译|
 |[`MusicOptions`](https://projectxero.top/sapi/interfaces/server.MusicOptions.html)|接口|未翻译|
 |[`NumberRange`](https://projectxero.top/sapi/interfaces/server.NumberRange.html)|接口|未翻译|
+|[`PlayAnimationOptions`](https://projectxero.top/sapi/interfaces/server.PlayAnimationOptions.html)|接口|未翻译|
 |[`RawMessage`](https://projectxero.top/sapi/interfaces/server.RawMessage.html)|接口|未翻译|
 |[`RawMessageScore`](https://projectxero.top/sapi/interfaces/server.RawMessageScore.html)|接口|未翻译|
 |[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|未翻译|
