@@ -343,7 +343,7 @@ export class BeforeChatEventSignal {
      * Removes a callback from being called before new chat
      * messages are sent.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeChatEvent) => void): void;
 }
@@ -394,7 +394,7 @@ export class BeforeDataDrivenEntityTriggerEventSignal {
      * Removes a callback that will be called before a data driven
      * entity event is triggered.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void): void;
 }
@@ -440,7 +440,7 @@ export class BeforeExplosionEventSignal {
      * Removes a callback from being called from before when an
      * explosion would occur.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeExplosionEvent) => void): void;
 }
@@ -465,7 +465,7 @@ export class BeforeItemDefinitionEventSignal {
      * Removes a callback from being called when an item's
      * definition and components change.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeItemDefinitionTriggeredEvent) => void): void;
 }
@@ -530,7 +530,7 @@ export class BeforeItemUseEventSignal {
      * @remarks
      * Removes a callback from being called before an item is used.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeItemUseEvent) => void): void;
 }
@@ -588,80 +588,74 @@ export class BeforeItemUseOnEventSignal {
      * Removes a callback from being called before an item is used
      * on a block.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeItemUseOnEvent) => void): void;
 }
 /**
  * @beta
- * Contains information related to changes before a piston
- * expands or retracts.
+ * 包含一个活塞在活塞臂(膨胀 或 收回)活动发生前的信息.
+ * 
  */
 export class BeforePistonActivateEvent extends BlockEvent {
     protected constructor();
     /**
-     * Block impacted by this event.
+     * 发起此事件的主体方块（通常是一个正在活动的活塞方块）
      */
     readonly block: Block;
     /**
-     * If this is set to true within an event handler, the piston
-     * activation is canceled.
+     * 如果被赋值为 true
+     * 这个活动将会取消
      */
     cancel: boolean;
     /**
-     * Dimension that contains the block that is the subject of
-     * this event.
+     * 发起此事件的维度
      */
     readonly dimension: Dimension;
     /**
-     * True if the piston is the process of expanding.
+     * 如果活塞正在推出(膨胀)则为 true,否则为 false
      */
     readonly isExpanding: boolean;
     /**
-     * Contains additional properties and details of the piston.
+     * 此组件包含用于获取活塞状态的额外属性.
      */
     readonly piston: BlockPistonComponent;
 }
 /**
  * @beta
- * Manages callbacks that are connected to an event that fires
- * before a piston is activated.
+ * 管理在活塞活动前会被调用的回调函数
  */
 export class BeforePistonActivateEventSignal {
     protected constructor();
     /**
      * @remarks
-     * Adds a callback that will be called before a piston expands
-     * or retracts.
+     * 增加一个回调函数，当活塞膨胀或收回前被调用
      * @param callback
      */
     subscribe(callback: (arg: BeforePistonActivateEvent) => void): (arg: BeforePistonActivateEvent) => void;
     /**
      * @remarks
-     * Removes a callback from being called before a piston expands
-     * or retracts.
+     * 移除一个当活塞膨胀或收回前被调用的回调函数.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforePistonActivateEvent) => void): void;
 }
 /**
  * @beta
- * Contains information related to a script watchdog
- * termination.
+ * 包含与脚本监视程序(看门狗)终止脚本允许的相关的信息
  */
 export class BeforeWatchdogTerminateEvent {
     protected constructor();
     /**
-     * If set to true, cancels the termination of the script
-     * runtime. Note that depending on server configuration
-     * settings, cancellation of the termination may not be
-     * allowed.
+     * 如果赋值为 true ,取消脚本的终止
+     * 
+     * 取决于服务器配置,取消终止可能不会被准许
+     * 
      */
     cancel: boolean;
     /**
-     * Contains the reason why a script runtime is to be
-     * terminated.
+     * 包含脚本运行时将被终止的原因
      */
     readonly terminateReason: WatchdogTerminateReason;
 }
@@ -687,7 +681,7 @@ export class BeforeWatchdogTerminateEventSignal {
      * is being terminated due to a violation of the performance
      * watchdog system.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BeforeWatchdogTerminateEvent) => void): void;
 }
@@ -710,23 +704,23 @@ export class Block {
     isWaterlogged: boolean;
     /**
      * Coordinates of the specified block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly location: Vector3;
     /**
      * Additional block configuration data that describes the
      * block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly permutation: BlockPermutation;
     /**
      * Gets the type of block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly 'type': BlockType;
     /**
      * Identifier of the type of block for this block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly typeId: string;
     /**
@@ -754,7 +748,7 @@ export class Block {
      * @returns
      * Returns `true` if the block type or permutation can be
      * placed on this block, else `false`.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     canPlace(blockToPlace: BlockPermutation | BlockType, faceToPlaceOn?: Direction): boolean;
     /**
@@ -768,7 +762,7 @@ export class Block {
      * @returns
      * Returns the component object if it is present on the
      * particular block.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getComponent(componentName: string): any;
     /**
@@ -777,7 +771,7 @@ export class Block {
      * @returns
      * Returns undefined if redstone power is not applicable to
      * this block.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getRedstonePower(): number | undefined;
     /**
@@ -785,7 +779,7 @@ export class Block {
      * Returns a set of tags for a block.
      * @returns
      * The list of tags that the block has.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getTags(): string[];
     /**
@@ -797,7 +791,7 @@ export class Block {
      * @returns
      * Returns `true` if the permutation of this block has the tag,
      * else `false`.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example check_block_tags.js
      * ```typescript
      *        import { world } from "@minecraft/server";
@@ -822,7 +816,7 @@ export class Block {
      * @param permutation
      * Permutation that contains a set of property states for the
      * Block.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
@@ -831,7 +825,7 @@ export class Block {
      * @param blockType
      * Identifier of the type of block to apply - for example,
      * minecraft:powered_repeater.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setType(blockType: BlockType): void;
     /**
@@ -844,7 +838,7 @@ export class Block {
      * @returns
      * Returns `true` if the block permutation data was
      * successfully set, else `false`.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
 }
@@ -931,7 +925,7 @@ export class BlockBreakEventSignal {
      * Removes a callback from being called when an block is
      * broken.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BlockBreakEvent) => void): void;
 }
@@ -1000,7 +994,7 @@ export class BlockExplodeEventSignal {
      * Removes a callback from being called when an explosion
      * occurs, as it impacts individual blocks.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BlockExplodeEvent) => void): void;
 }
@@ -1013,7 +1007,7 @@ export class BlockInventoryComponent extends BlockComponent {
     protected constructor();
     /**
      * The container which holds an {@link ItemStack}.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly container: BlockInventoryComponentContainer;
     /**
@@ -1037,13 +1031,13 @@ export class BlockInventoryComponentContainer extends Container {
     /**
      * Contains a count of the slots in the container that are
      * empty.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly emptySlotsCount: number;
     /**
      * Returns the size capacity of the inventory container on this
      * block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly size: number;
     /**
@@ -1053,21 +1047,21 @@ export class BlockInventoryComponentContainer extends Container {
      * to set items in a particular slot.)
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
      * Clears the entirety of the inventory of this block (i.e.,
      * chest)
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearAll(): void;
     /**
      * @remarks
      * Clears a specific item within the chest.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearItem(slot: number): void;
     /**
@@ -1077,7 +1071,7 @@ export class BlockInventoryComponentContainer extends Container {
      * does not change or clear the contents of the specified slot.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example getItem.js
      * ```typescript
      *        const itemStack = rightChestContainer.getItem(0);
@@ -1090,7 +1084,7 @@ export class BlockInventoryComponentContainer extends Container {
      * @remarks
      * Gets a container slot within the chest.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getSlot(slot: number): ContainerSlot;
     /**
@@ -1100,7 +1094,7 @@ export class BlockInventoryComponentContainer extends Container {
      * Zero-based index of the slot to set an item at.
      * @param itemStack
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -1113,7 +1107,7 @@ export class BlockInventoryComponentContainer extends Container {
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
@@ -1131,7 +1125,7 @@ export class BlockInventoryComponentContainer extends Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
@@ -1198,7 +1192,7 @@ export class BlockPermutation {
      * @param propertyName
      * @returns
      * Returns the property if the permutation has it, else `null`.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getProperty(propertyName: string): IBlockProperty;
     /**
@@ -1230,45 +1224,47 @@ export class BlockPermutation {
 }
 /**
  * @beta
- * When present, this block has piston-like behavior. Contains
- * additional properties for discovering block piston state.
+ * 如果此组件存在, 此方块应拥有类似活塞方块的行为.
+ * 此组件包含用于获取活塞状态的额外属性.
  */
 export class BlockPistonComponent extends BlockComponent {
     protected constructor();
     /**
-     * Whether the piston is fully expanded.
-     * @throws This property can throw when used.
+     * 活塞是否完全膨胀
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isExpanded: boolean;
     /**
-     * Whether the piston is in the process of expanding.
-     * @throws This property can throw when used.
+     * 活塞是否处于膨胀过程中
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isExpanding: boolean;
     /**
-     * Whether the piston is in the process of expanding or
-     * retracting.
-     * @throws This property can throw when used.
+     * 活塞是否处于膨胀或收回过程中
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isMoving: boolean;
     /**
-     * Whether the piston is fully retracted.
-     * @throws This property can throw when used.
+     * 活塞是否完全收回
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isRetracted: boolean;
     /**
-     * Whether the piston is in the process of retracting.
-     * @throws This property can throw when used.
+     * 活塞是否处于收回过程中
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isRetracting: boolean;
     /**
-     * Identifier of this component.
+     * 组件标识符 通常为 'minecraft:piston'
      */
     readonly typeId: string;
     /**
-     * Identifier of this component.
+     * 组件标识符 通常为 'minecraft:piston'
      */
     static readonly componentId = 'minecraft:piston';
+    /**
+     * 受影响的方块的坐标的数组(原先的位置)
+     */
     getAttachedBlocks(): Vector3[];
 }
 /**
@@ -1311,7 +1307,7 @@ export class BlockPlaceEventSignal {
      * Removes a callback from being called when an block is
      * placed.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: BlockPlaceEvent) => void): void;
 }
@@ -1344,7 +1340,7 @@ export class BlockPotionContainerComponent extends BlockComponent {
      * @param item
      * Potion to use as the type of potion for this potion
      * container.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setPotionType(item: ItemStack): void;
 }
@@ -1973,21 +1969,21 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Clears the currently playing record of this record-playing
      * block.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearRecord(): void;
     /**
      * @remarks
      * Returns true if the record-playing block is currently
      * playing a record.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     isPlaying(): boolean;
     /**
      * @remarks
      * Sets and plays a record based on an item type.
      * @param recordItemType
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setRecord(recordItemType: ItemType): void;
 }
@@ -1999,7 +1995,7 @@ export class BlockSignComponent extends BlockComponent {
     protected constructor();
     /**
      * Text of the sign
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly text: string;
     /**
@@ -2060,7 +2056,7 @@ export class BlockType {
      * which uses the default values for all properties.
      * @returns
      * Returns created permutation.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     createDefaultBlockPermutation(): BlockPermutation;
 }
@@ -2091,7 +2087,7 @@ export class BlockWaterContainerComponent extends BlockComponent {
      * @remarks
      * Adds an item and colors the water based on a dye item type.
      * @param itemType
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addDye(itemType: ItemType): void;
     getCustomColor(): Color;
@@ -2157,7 +2153,7 @@ export class ButtonPushEventSignal {
      * Removes a callback from being called when a button is
      * pushed.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ButtonPushEvent) => void): void;
 }
@@ -2216,7 +2212,7 @@ export class ChatEventSignal {
      * Removes a callback from being called when new chat messages
      * are sent.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ChatEvent) => void): void;
 }
@@ -2243,14 +2239,14 @@ export class Container {
     /**
      * Contains a count of the slots in the container that are
      * empty.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly emptySlotsCount: number;
     /**
      * Represents the size of the container. For example, a
      * standard single-block chest has a size of 27, for the 27
      * slots in their inventory.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly size: number;
     /**
@@ -2260,20 +2256,20 @@ export class Container {
      * to set items in a particular slot.)
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
      * Clears all inventory items in the container.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearAll(): void;
     /**
      * @remarks
      * Clears a specific item at a slot within the container.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearItem(slot: number): void;
     /**
@@ -2283,7 +2279,7 @@ export class Container {
      * does not change or clear the contents of the specified slot.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example getItem.js
      * ```typescript
      *        const rightInventoryComp = rightChestCart.getComponent("inventory");
@@ -2300,7 +2296,7 @@ export class Container {
      * @remarks
      * Returns a container slot item holder within the container.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getSlot(slot: number): ContainerSlot;
     /**
@@ -2310,7 +2306,7 @@ export class Container {
      * Zero-based index of the slot to set an item at.
      * @param itemStack
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -2323,7 +2319,7 @@ export class Container {
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap the cake and emerald
@@ -2341,7 +2337,7 @@ export class Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
@@ -2378,20 +2374,20 @@ export class ContainerSlot {
     /**
      * Returns a string identifier of the type if item stored in
      * this slot.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly typeId?: string;
     /**
      * @remarks
      * Returns the item stored within the container.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getItem(): ItemStack;
     /**
      * @remarks
      * Returns the lore value for the item stored within this
      * container slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getLore(): string[];
     /**
@@ -2399,7 +2395,7 @@ export class ContainerSlot {
      * Sets the item within the slot to a new value.
      * @param itemStack
      * The item stack to set within this container slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setItem(itemStack?: ItemStack): void;
     /**
@@ -2407,7 +2403,7 @@ export class ContainerSlot {
      * Sets the lore string for the item at the specified slot.
      * @param loreList
      * An array of strings for lines of text for this lore.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setLore(loreList?: string[]): void;
 }
@@ -2453,7 +2449,7 @@ export class DataDrivenEntityTriggerEventSignal {
      * Removes a callback that will be called after a data driven
      * entity event is triggered.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerEvent) => void): void;
 }
@@ -2478,7 +2474,7 @@ export class Dimension {
     protected constructor();
     /**
      * Identifier of the dimension.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly id: string;
     /**
@@ -2491,7 +2487,7 @@ export class Dimension {
      * Radius, in blocks, of the explosion to create.
      * @param explosionOptions
      * Additional configurable options for the explosion.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example createExplosion.ts
      * ```typescript
      *          overworld.createExplosion(targetLocation, 10, new mc.ExplosionOptions());
@@ -2544,7 +2540,7 @@ export class Dimension {
      * The location at which to return a block.
      * @returns
      * Block at the specified location.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getBlock(location: Vector3): Block;
     /**
@@ -2556,7 +2552,7 @@ export class Dimension {
      * @param direction
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): Block;
     /**
@@ -2568,7 +2564,7 @@ export class Dimension {
      * @returns
      * An entity iterator that can be used to loop over the
      * returned entities.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example testThatEntityIsFeatherItem.ts
      * ```typescript
      *        const query = {
@@ -2609,7 +2605,7 @@ export class Dimension {
      * @param direction
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): Entity[];
     /**
@@ -2621,7 +2617,7 @@ export class Dimension {
      * @returns
      * An entity iterator that can be used to loop over the
      * returned players.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getPlayers(getPlayers?: EntityQueryOptions): PlayerIterator;
     /**
@@ -2636,7 +2632,7 @@ export class Dimension {
      * @returns
      * For commands that return data, returns a CommandResult with
      * an indicator of command results.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
@@ -2651,7 +2647,7 @@ export class Dimension {
      * The location at which to create the entity.
      * @returns
      * Newly created entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example createOldHorse.ts
      * ```typescript
      *          // create a horse and trigger the 'ageable_grow_up' event, ensuring the horse is created as an adult
@@ -2702,7 +2698,7 @@ export class Dimension {
      * The location at which to create the item stack.
      * @returns
      * Newly created item stack entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example itemStacks.ts
      * ```typescript
      *        const oneItemLoc: mc.Vector3 = { x: 3, y: 2, z: 1 };
@@ -2819,18 +2815,18 @@ export class Effect {
      * Gets an amplifier that may have been applied to this effect.
      * Sample values range typically from 0 to 4. Example: The
      * effect 'Jump Boost II' will have an amplifier value of 1.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly amplifier: number;
     /**
      * Gets the player-friendly name of this effect.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly displayName: string;
     /**
      * Gets the entire specified duration, in ticks, of this
      * effect.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly duration: number;
 }
@@ -2874,7 +2870,7 @@ export class EffectAddEventSignal {
      * Removes a callback from being called when an effect is added
      * to an entity.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: EffectAddEvent) => void): void;
 }
@@ -3023,7 +3019,7 @@ export class Entity {
     /**
      * @beta
      * Dimension that the entity is currently within.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly dimension: Dimension;
     /**
@@ -3031,7 +3027,7 @@ export class Entity {
      * to be consistent across loads of a world instance. No
      * meaning should be inferred from the value and structure of
      * this unique identifier - do not parse or interpret it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly id: string;
     /**
@@ -3043,7 +3039,7 @@ export class Entity {
     /**
      * @beta
      * Current location of the entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly location: Vector3;
     /**
@@ -3054,20 +3050,20 @@ export class Entity {
     /**
      * @beta
      * Returns a scoreboard identity that represents this entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly scoreboard: ScoreboardIdentity;
     /**
      * @beta
      * Retrieves or sets an entity that is used as the target of
      * AI-related behaviors, like attacking.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly target: Entity;
     /**
      * Unique identifier of the type of the entity - for example,
      * 'minecraft:skeleton'.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly typeId: string;
     /**
@@ -3081,7 +3077,7 @@ export class Entity {
      * @param amplifier
      * Optional amplification of the effect to apply.
      * @param showParticles
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example addEffect.js
      * ```typescript
      *        const villagerId = "minecraft:villager_v2<minecraft:ageable_grow_up>";
@@ -3122,7 +3118,7 @@ export class Entity {
      * Adds a specified tag to an entity.
      * @param tag
      * Content of the tag to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addTag(tag: string): boolean;
     applyDamage(amount: number, source?: EntityDamageSource): boolean;
@@ -3136,7 +3132,7 @@ export class Entity {
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
      * @param options
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): Block;
     /**
@@ -3166,7 +3162,7 @@ export class Entity {
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getDynamicProperty(identifier: string): boolean | number | string | undefined;
     /**
@@ -3178,7 +3174,7 @@ export class Entity {
      * @returns
      * Effect object for the specified effect, or undefined if the
      * effect is not present.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getEffect(effectType: EffectType): Effect;
     getEffects(): Effect[];
@@ -3188,7 +3184,7 @@ export class Entity {
      * Returns a potential set of entities from the direction that
      * this entity is looking at.
      * @param options
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
     getHeadLocation(): Vector3;
@@ -3197,7 +3193,7 @@ export class Entity {
      * @beta
      * @remarks
      * Returns all tags associated with an entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getTags(): string[];
     getVelocity(): Vector3;
@@ -3219,14 +3215,14 @@ export class Entity {
      * Tests whether an entity has a particular tag.
      * @param tag
      * Identifier of the tag to test for.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     hasTag(tag: string): boolean;
     /**
      * @beta
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     kill(): void;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
@@ -3235,7 +3231,7 @@ export class Entity {
      * @remarks
      * Removes a specified property.
      * @param identifier
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     removeDynamicProperty(identifier: string): boolean;
     /**
@@ -3244,7 +3240,7 @@ export class Entity {
      * Removes a specified tag from an entity.
      * @param tag
      * Content of the tag to remove.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     removeTag(tag: string): boolean;
     /**
@@ -3258,7 +3254,7 @@ export class Entity {
      * @returns
      * For commands that return data, returns a JSON structure with
      * command response values.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
@@ -3268,7 +3264,7 @@ export class Entity {
      * @param identifier
      * @param value
      * Data value of the property to set.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setDynamicProperty(identifier: string, value: boolean | number | string): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -3278,7 +3274,7 @@ export class Entity {
      * Sets the main rotation of the entity.
      * @param degreesX
      * @param degreesY
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setRotation(degreesX: number, degreesY: number): void;
     /**
@@ -3294,7 +3290,7 @@ export class Entity {
      * @param yRotation
      * Y rotation of the entity after teleportation.
      * @param keepVelocity
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     teleport(
         location: Vector3,
@@ -3315,7 +3311,7 @@ export class Entity {
      * @param facingLocation
      * Location that this entity will be facing.
      * @param keepVelocity
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     teleportFacing(location: Vector3, dimension: Dimension, facingLocation: Vector3, keepVelocity?: boolean): void;
     /**
@@ -3328,7 +3324,7 @@ export class Entity {
      * @param eventName
      * Name of the entity type event to trigger. If a namespace is
      * not specified, minecraft: is assumed.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     triggerEvent(eventName: string): void;
 }
@@ -3342,13 +3338,13 @@ export class EntityAddRiderComponent extends IEntityComponent {
     /**
      * The type of entity that is added as a rider for this entity
      * when spawned under certain conditions.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly entityType: string;
     /**
      * Optional spawn event to trigger on the rider when that rider
      * is spawned for this entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly spawnEvent: string;
     /**
@@ -3373,12 +3369,12 @@ export class EntityAgeableComponent extends IEntityComponent {
     /**
      * Amount of time before the entity grows up, -1 for always a
      * baby.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly duration: number;
     /**
      * Event to run when this entity grows up.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly growUp: Trigger;
     /**
@@ -3403,43 +3399,43 @@ export class EntityBreathableComponent extends IEntityComponent {
     protected constructor();
     /**
      * If true, this entity can breathe in air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly breathesAir: boolean;
     /**
      * If true, this entity can breathe in lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly breathesLava: boolean;
     /**
      * If true, this entity can breathe in solid blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly breathesSolids: boolean;
     /**
      * If true, this entity can breathe in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly breathesWater: boolean;
     /**
      * If true, this entity will have visible bubbles while in
      * water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly generatesBubbles: boolean;
     /**
      * Time in seconds to recover breath to maximum.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly inhaleTime: number;
     /**
      * Time in seconds between suffocation damage.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly suffocateTime: number;
     /**
      * Time in seconds the entity can hold its breath.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly totalSupply: number;
     /**
@@ -3459,7 +3455,7 @@ export class EntityBreathableComponent extends IEntityComponent {
      * Sets the current air supply of the entity.
      * @param value
      * New air supply for the entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setAirSupply(value: number): void;
 }
@@ -3681,13 +3677,13 @@ export class EntityHealableComponent extends IEntityComponent {
     protected constructor();
     /**
      * A set of filters for when these Healable items would apply.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly filters: FilterGroup;
     /**
      * Determines if an item can be used regardless of the entity
      * being at full health.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly forceUse: boolean;
     /**
@@ -3711,7 +3707,7 @@ export class EntityHealthComponent extends IEntityComponent {
     /**
      * Read-only. Returns the current value of health for the
      * entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly current: number;
     /**
@@ -3721,7 +3717,7 @@ export class EntityHealthComponent extends IEntityComponent {
     readonly typeId: string;
     /**
      * Value for health as defined through entity components.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -3733,27 +3729,27 @@ export class EntityHealthComponent extends IEntityComponent {
      * @remarks
      * Resets the current health value of the entity to its default
      * value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToDefaultValue(): void;
     /**
      * @remarks
      * Resets the current health of the entity to its maximum
      * value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMaxValue(): void;
     /**
      * @remarks
      * Resets the current health to the minimum value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMinValue(): void;
     /**
      * @remarks
      * Sets the current health of the entity.
      * @param value
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setCurrent(value: number): boolean;
 }
@@ -3803,7 +3799,7 @@ export class EntityHitEventSignal {
      * Removes a callback from being called when an entity makes a
      * melee attack on another entity.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: EntityHitEvent) => void): void;
 }
@@ -3842,7 +3838,7 @@ export class EntityHurtEventSignal {
      * @remarks
      * Removes a callback from being called when an entity is hurt.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: EntityHurtEvent) => void): void;
 }
@@ -4159,7 +4155,7 @@ export class EntityItemComponent extends IEntityComponent {
     protected constructor();
     /**
      * Item stack represented by this entity in the world.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly itemStack: ItemStack;
     /**
@@ -4197,7 +4193,7 @@ export class EntityLavaMovementComponent extends IEntityComponent {
     /**
      * Read-only. Returns the current value of movement speed on
      * lava for the entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly current: number;
     /**
@@ -4208,7 +4204,7 @@ export class EntityLavaMovementComponent extends IEntityComponent {
     /**
      * Value for movement speed on lava as defined through entity
      * components.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -4220,21 +4216,21 @@ export class EntityLavaMovementComponent extends IEntityComponent {
      * @remarks
      * Resets the current movement speed on lava for the entity to
      * its default value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToDefaultValue(): void;
     /**
      * @remarks
      * Resets the movement speed on lava to the maximum value for
      * the entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMaxValue(): void;
     /**
      * @remarks
      * Resets the movement speed on lava speed to the minimum
      * value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMinValue(): void;
     /**
@@ -4242,7 +4238,7 @@ export class EntityLavaMovementComponent extends IEntityComponent {
      * Sets the current value of movement speed on lava for the
      * entity.
      * @param value
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setCurrent(value: number): boolean;
 }
@@ -4257,7 +4253,7 @@ export class EntityLeashableComponent extends IEntityComponent {
      * Distance in blocks at which the 'spring' effect starts
      * acting to keep this entity close to the entity that leashed
      * it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly softDistance: number;
     /**
@@ -4275,13 +4271,13 @@ export class EntityLeashableComponent extends IEntityComponent {
      * Leashes this entity to another entity.
      * @param leashHolder
      * The entity to leash this entity to.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     leash(leashHolder: Entity): void;
     /**
      * @remarks
      * Unleashes this entity if it is leashed to another entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unleash(): void;
 }
@@ -4330,7 +4326,7 @@ export class EntityMountTamingComponent extends IEntityComponent {
      * Sets this rideable entity as tamed.
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setTamed(showParticles: boolean): void;
 }
@@ -4343,7 +4339,7 @@ export class EntityMovementAmphibiousComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4365,7 +4361,7 @@ export class EntityMovementBasicComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4388,7 +4384,7 @@ export class EntityMovementComponent extends IEntityComponent {
     /**
      * Read-only. Returns the current value of default movement
      * speed for the entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly current: number;
     /**
@@ -4399,7 +4395,7 @@ export class EntityMovementComponent extends IEntityComponent {
     /**
      * Value for default movement speed as defined through entity
      * components.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -4411,20 +4407,20 @@ export class EntityMovementComponent extends IEntityComponent {
      * @remarks
      * Resets the current default movement speed value for the
      * entity to the default value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToDefaultValue(): void;
     /**
      * @remarks
      * Resets the default movement speed to the maximum value for
      * the entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMaxValue(): void;
     /**
      * @remarks
      * Resets the default movement speed to the minimum value.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMinValue(): void;
     /**
@@ -4432,7 +4428,7 @@ export class EntityMovementComponent extends IEntityComponent {
      * Sets the current value of default movement speed for the
      * entity.
      * @param value
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setCurrent(value: number): boolean;
 }
@@ -4444,7 +4440,7 @@ export class EntityMovementFlyComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4467,7 +4463,7 @@ export class EntityMovementGenericComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4489,17 +4485,17 @@ export class EntityMovementGlideComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
      * Speed in effect when the entity is turning.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly speedWhenTurning: number;
     /**
      * Start speed during a glide.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly startSpeed: number;
     /**
@@ -4521,7 +4517,7 @@ export class EntityMovementHoverComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4544,7 +4540,7 @@ export class EntityMovementJumpComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4567,7 +4563,7 @@ export class EntityMovementSkipComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
@@ -4590,17 +4586,17 @@ export class EntityMovementSwayComponent extends IEntityComponent {
     protected constructor();
     /**
      * The maximum number in degrees the mob can turn per tick.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly maxTurn: number;
     /**
      * Amplitude of the sway motion.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly swayAmplitude: number;
     /**
      * Amount of sway frequency.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly swayFrequency: number;
     /**
@@ -4624,111 +4620,111 @@ export class EntityNavigationClimbComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -4752,111 +4748,111 @@ export class EntityNavigationFloatComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -4880,111 +4876,111 @@ export class EntityNavigationFlyComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -5009,111 +5005,111 @@ export class EntityNavigationGenericComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -5138,111 +5134,111 @@ export class EntityNavigationHoverComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -5266,111 +5262,111 @@ export class EntityNavigationWalkComponent extends IEntityComponent {
     /**
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidDamageBlocks: boolean;
     /**
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidPortals: boolean;
     /**
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidSun: boolean;
     /**
      * Tells the pathfinder to avoid water when creating a path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly avoidWater: boolean;
     /**
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreach: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * and break it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canBreakDoors: boolean;
     /**
      * Tells the pathfinder whether or not it can float.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canFloat: boolean;
     /**
      * Tells the pathfinder whether or not it can jump up blocks.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canJump: boolean;
     /**
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenDoors: boolean;
     /**
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canOpenIronDoors: boolean;
     /**
      * Whether a path can be created through a door.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPassDoors: boolean;
     /**
      * Tells the pathfinder that it can start pathing when in the
      * air.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathFromAir: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverLava: boolean;
     /**
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canPathOverWater: boolean;
     /**
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSink: boolean;
     /**
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canSwim: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalk: boolean;
     /**
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly canWalkInLava: boolean;
     /**
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly isAmphibious: boolean;
     /**
@@ -5421,37 +5417,37 @@ export class EntityRideableComponent extends IEntityComponent {
     /**
      * Zero-based index of the seat that can used to control this
      * entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly controllingSeat: number;
     /**
      * Determines whether interactions are not supported if the
      * entity is crouching.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly crouchingSkipInteract: boolean;
     /**
      * Set of text that should be displayed when a player is
      * looking to ride on this entity (commonly with touch-screen
      * controls).
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly interactText: string;
     /**
      * If true, this entity will pull in entities that are in the
      * correct family_types into any available seat.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly pullInEntities: boolean;
     /**
      * If true, this entity will be picked when looked at by the
      * rider.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly riderCanInteract: boolean;
     /**
      * Number of seats for riders defined for this entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly seatCount: number;
     /**
@@ -5471,7 +5467,7 @@ export class EntityRideableComponent extends IEntityComponent {
      * Entity that will become the rider of this entity.
      * @returns
      * True if the rider entity was successfully added.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addRider(rider: Entity): boolean;
     /**
@@ -5479,13 +5475,13 @@ export class EntityRideableComponent extends IEntityComponent {
      * Ejects the specified rider of this entity.
      * @param rider
      * Entity that should be ejected from this entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     ejectRider(rider: Entity): void;
     /**
      * @remarks
      * Ejects all riders of this entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     ejectRiders(): void;
     getFamilyTypes(): string[];
@@ -5571,7 +5567,7 @@ export class EntitySpawnEventSignal {
      * @param callback
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: EntitySpawnEvent) => void): void;
 }
@@ -5584,7 +5580,7 @@ export class EntityStrengthComponent extends IEntityComponent {
     /**
      * Maximum strength of this entity, as defined in the entity
      * type definition.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly max: number;
     /**
@@ -5595,7 +5591,7 @@ export class EntityStrengthComponent extends IEntityComponent {
     /**
      * Current strength value of this entity, after any effects or
      * component updates are applied.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -5613,12 +5609,12 @@ export class EntityTameableComponent extends IEntityComponent {
     /**
      * The chance of taming the entity with each item use between
      * 0.0 and 1.0, where 1.0 is 100%
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly probability: number;
     /**
      * Event to run when this entity becomes tamed.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly tameEvent: Trigger;
     /**
@@ -5637,7 +5633,7 @@ export class EntityTameableComponent extends IEntityComponent {
      * Tames this entity.
      * @returns
      * Returns true if the entity was tamed.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     tame(): boolean;
 }
@@ -5692,7 +5688,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
     /**
      * Read-only. Returns the current value of movement speed
      * underwater for the entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly current: number;
     /**
@@ -5703,7 +5699,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
     /**
      * Value for movement speed underwater as defined through
      * entity components.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -5716,7 +5712,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
      * Resets the current movement speed underwater for the entity
      * to the default value implied by the current component state
      * of the entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToDefaultValue(): void;
     /**
@@ -5724,14 +5720,14 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
      * Resets the movement speed underwater to the maximum value
      * for the entity, as determined by the set of components that
      * are on the entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMaxValue(): void;
     /**
      * @remarks
      * Resets the movement speed underwater to the minimum value as
      * defined by the component state of this entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     resetToMinValue(): void;
     /**
@@ -5739,7 +5735,7 @@ export class EntityUnderwaterMovementComponent extends IEntityComponent {
      * Sets the current value of movement speed underwater for the
      * entity.
      * @param value
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setCurrent(value: number): boolean;
 }
@@ -5758,7 +5754,7 @@ export class EntityVariantComponent extends IEntityComponent {
     /**
      * The identifier of the variant. By convention, 0 is the
      * identifier of the base entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly value: number;
     /**
@@ -5827,7 +5823,7 @@ export class Events {
      */
     readonly beforeItemUseOn: BeforeItemUseOnEventSignal;
     /**
-     * Fires before a piston is activated.
+     * 在活塞活动前被触发
      */
     readonly beforePistonActivate: BeforePistonActivateEventSignal;
     /**
@@ -5936,7 +5932,7 @@ export class Events {
      */
     readonly messageReceive: ServerMessageSignal;
     /**
-     * This event fires when a piston expands or retracts.
+     * 此事件将在活塞膨胀或收回时被触发
      */
     readonly pistonActivate: PistonActivateEventSignal;
     /**
@@ -6007,7 +6003,7 @@ export class ExplosionEventSignal {
      * Removes a callback from being called when an explosion
      * occurs.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ExplosionEvent) => void): void;
 }
@@ -6142,14 +6138,14 @@ export class InventoryComponentContainer extends Container {
     protected constructor();
     /**
      * The number of empty slots in the container.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly emptySlotsCount: number;
     /**
      * Represents the size of the container. For example, a
      * standard single-block chest has a size of 27, for the 27
      * slots in their inventory.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly size: number;
     /**
@@ -6160,20 +6156,20 @@ export class InventoryComponentContainer extends Container {
      * items in a particular slot.)
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
      * Empties all items in this entities' inventory.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearAll(): void;
     /**
      * @remarks
      * Clears out a specific item at the specified slot index.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearItem(slot: number): void;
     /**
@@ -6183,7 +6179,7 @@ export class InventoryComponentContainer extends Container {
      * does not change or clear the contents of the specified slot.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example getItem.js
      * ```typescript
      *        const itemStack = rightChestContainer.getItem(0);
@@ -6197,7 +6193,7 @@ export class InventoryComponentContainer extends Container {
      * Returns a slot object for specifically managing a slot
      * within a broader inventory.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getSlot(slot: number): ContainerSlot;
     /**
@@ -6207,7 +6203,7 @@ export class InventoryComponentContainer extends Container {
      * Zero-based index of the slot to set an item at.
      * @param itemStack
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -6220,7 +6216,7 @@ export class InventoryComponentContainer extends Container {
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example swapItems.js
      * ```typescript
      *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap the cake and emerald
@@ -6238,7 +6234,7 @@ export class InventoryComponentContainer extends Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      * @example transferItem.js
      * ```typescript
      *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
@@ -6287,7 +6283,7 @@ export class ItemCompleteChargeEventSignal {
      * Removes a callback from being called when a chargeable item
      * completes charging.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemCompleteChargeEvent) => void): void;
 }
@@ -6351,7 +6347,7 @@ export class ItemDefinitionEventSignal {
      * Removes a callback from being called when an item's
      * definition and components change.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemDefinitionTriggeredEvent) => void): void;
 }
@@ -6556,7 +6552,7 @@ export class ItemReleaseChargeEventSignal {
      * Removes a callback from being called when a chargeable item
      * is released from charging.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemReleaseChargeEvent) => void): void;
 }
@@ -6607,7 +6603,7 @@ export class ItemStack {
      * @param amount
      * Number of items to place in the stack, between 1 and 64.
      * Note that certain items can only have one item in the stack.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
@@ -6701,7 +6697,7 @@ export class ItemStartChargeEventSignal {
      * Removes a callback from being called when a chargeable item
      * starts charging.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemStartChargeEvent) => void): void;
 }
@@ -6746,7 +6742,7 @@ export class ItemStartUseOnEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemStartUseOnEvent) => void): void;
 }
@@ -6792,7 +6788,7 @@ export class ItemStopChargeEventSignal {
      * Removes a callback from being called when a chargeable item
      * stops charging.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemStopChargeEvent) => void): void;
 }
@@ -6832,7 +6828,7 @@ export class ItemStopUseOnEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemStopUseOnEvent) => void): void;
 }
@@ -6908,7 +6904,7 @@ export class ItemUseEventSignal {
      * @remarks
      * Removes a callback from being called when an item is used.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemUseEvent) => void): void;
 }
@@ -6962,7 +6958,7 @@ export class ItemUseOnEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ItemUseOnEvent) => void): void;
 }
@@ -7011,7 +7007,7 @@ export class LeverActionEventSignal {
      * Removes a callback from being called when a lever is moved
      * (activates or deactivates).
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: LeverActionEvent) => void): void;
 }
@@ -17448,39 +17444,36 @@ export class NavigationResult {
 }
 /**
  * @beta
- * Contains information related to changes to a piston
- * expanding or retracting.
+ * 包含一个活塞的活塞臂(膨胀 或 收回)活动的信息.
  */
 export class PistonActivateEvent extends BlockEvent {
     protected constructor();
     /**
-     * Block impacted by this event.
+     * 发起此事件的主体方块（通常是一个正在活动的活塞方块）
      */
     readonly block: Block;
     /**
-     * Dimension that contains the block that is the subject of
-     * this event.
+     * 发起此事件的维度
      */
     readonly dimension: Dimension;
     /**
-     * True if the piston is the process of expanding.
+     * 如果活塞正在推出(膨胀)则为 true,否则为 false
      */
     readonly isExpanding: boolean;
     /**
-     * Contains additional properties and details of the piston.
+     * 包含关于此活塞的额外属性的信息.
      */
     readonly piston: BlockPistonComponent;
 }
 /**
  * @beta
- * Manages callbacks that are connected to piston activations.
+ * 管理在活塞活动时会被调用的回调函数
  */
 export class PistonActivateEventSignal {
     protected constructor();
     /**
-     * @remarks
-     * Adds a callback that will be called when a piston expands or
-     * retracts.
+     * @remark
+     * 增加一个回调函数，当活塞膨胀或收回时被调用
      * @param callback
      * @example pistonEvent.ts
      * ```typescript
@@ -17494,7 +17487,7 @@ export class PistonActivateEventSignal {
      *
      *        const pistonCallback = mc.world.events.beforePistonActivate.subscribe((pistonEvent: mc.BeforePistonActivateEvent) => {
      *          if (pistonEvent.piston.location.equals(pistonLoc)) {
-     *            log("Cancelling piston event");
+     *            log("取消活塞事件");
      *            pistonEvent.cancel = true;
      *            canceled = true;
      *          }
@@ -17506,10 +17499,9 @@ export class PistonActivateEventSignal {
     subscribe(callback: (arg: PistonActivateEvent) => void): (arg: PistonActivateEvent) => void;
     /**
      * @remarks
-     * Removes a callback from being called when a piston expands
-     * or retracts.
+     * 移除一个当活塞膨胀或收回时被调用的回调函数.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: PistonActivateEvent) => void): void;
 }
@@ -17521,7 +17513,7 @@ export class Player extends Entity {
     /**
      * @beta
      * Dimension that the entity is currently within.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly dimension: Dimension;
     /**
@@ -17529,7 +17521,7 @@ export class Player extends Entity {
      * to be consistent across loads of a world instance. No
      * meaning should be inferred from the value and structure of
      * this unique identifier - do not parse or interpret it.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly id: string;
     /**
@@ -17541,12 +17533,12 @@ export class Player extends Entity {
     /**
      * @beta
      * Current location of the player.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly location: Vector3;
     /**
      * Name of the player.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly name: string;
     /**
@@ -17563,7 +17555,7 @@ export class Player extends Entity {
     /**
      * @beta
      * Returns a scoreboard identity that represents this entity.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly scoreboard: ScoreboardIdentity;
     /**
@@ -17578,14 +17570,14 @@ export class Player extends Entity {
      * AI-related behaviors, like attacking. For players, which
      * don't use any AI semantics, this property does not do
      * anything.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly target: Entity;
     readonly totalXpNeededForNextLevel: number;
     /**
      * Unique identifier of the type of the entity - for example,
      * 'minecraft:player'.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly typeId: string;
     readonly xpEarnedAtCurrentLevel: number;
@@ -17600,7 +17592,7 @@ export class Player extends Entity {
      * @param amplifier
      * Optional amplification of the effect to apply.
      * @param showParticles
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addEffect(effectType: EffectType, duration: number, amplifier?: number, showParticles?: boolean): void;
     addExperience(amount: number): number;
@@ -17611,7 +17603,7 @@ export class Player extends Entity {
      * Adds a specified tag to an entity.
      * @param tag
      * Content of the tag to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addTag(tag: string): boolean;
     applyDamage(amount: number, source?: EntityDamageSource): boolean;
@@ -17626,7 +17618,7 @@ export class Player extends Entity {
      * Returns the first intersecting block from the direction that
      * this player is looking at.
      * @param options
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): Block;
     /**
@@ -17656,7 +17648,7 @@ export class Player extends Entity {
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getDynamicProperty(identifier: string): boolean | number | string | undefined;
     /**
@@ -17668,7 +17660,7 @@ export class Player extends Entity {
      * @returns
      * Effect object for the specified effect, or undefined if the
      * effect is not present.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getEffect(effectType: EffectType): Effect;
     getEffects(): Effect[];
@@ -17678,7 +17670,7 @@ export class Player extends Entity {
      * Returns a potential set of entities from the direction that
      * this player is looking at.
      * @param options
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
     getHeadLocation(): Vector3;
@@ -17690,7 +17682,7 @@ export class Player extends Entity {
      * @param itemCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getItemCooldown(itemCategory: string): number;
     getRotation(): XYRotation;
@@ -17699,7 +17691,7 @@ export class Player extends Entity {
      * @beta
      * @remarks
      * Returns all tags associated with an entity.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getTags(): string[];
     getTotalXp(): number;
@@ -17722,21 +17714,21 @@ export class Player extends Entity {
      * Tests whether an entity has a particular tag.
      * @param tag
      * Identifier of the tag to test for.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     hasTag(tag: string): boolean;
     /**
      * @beta
      * @remarks
      * Returns true if this player has operator-level permissions.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     isOp(): boolean;
     /**
      * @beta
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     kill(): void;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
@@ -17748,7 +17740,7 @@ export class Player extends Entity {
      * Identifier of the sound to play.
      * @param soundOptions
      * Additional optional options for the sound.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     playSound(soundID: string, soundOptions?: SoundOptions): void;
     /**
@@ -17758,7 +17750,7 @@ export class Player extends Entity {
      * message to downstream clients.
      * @param id
      * @param value
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     postClientMessage(id: string, value: string): void;
     /**
@@ -17766,7 +17758,7 @@ export class Player extends Entity {
      * @remarks
      * Removes a specified property.
      * @param identifier
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     removeDynamicProperty(identifier: string): boolean;
     /**
@@ -17775,7 +17767,7 @@ export class Player extends Entity {
      * Removes a specified tag from an entity.
      * @param tag
      * Content of the tag to remove.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     removeTag(tag: string): boolean;
     resetLevel(): void;
@@ -17790,7 +17782,7 @@ export class Player extends Entity {
      * @returns
      * For commands that return data, returns a JSON structure with
      * command response values.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
@@ -17815,7 +17807,7 @@ export class Player extends Entity {
      * Will change the specified players permissions, and whether
      * they are operator or not.
      * @param isOp
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setOp(isOp: boolean): void;
     /**
@@ -17824,7 +17816,7 @@ export class Player extends Entity {
      * Sets the main rotation of the entity.
      * @param degreesX
      * @param degreesY
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setRotation(degreesX: number, degreesY: number): void;
     setSpawn(spawnPosition: Vector3, spawnDimension: Dimension): void;
@@ -17838,7 +17830,7 @@ export class Player extends Entity {
      * cooldown for.
      * @param tickDuration
      * Duration in ticks of the item cooldown.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     startItemCooldown(itemCategory: string, tickDuration: number): void;
     /**
@@ -17854,7 +17846,7 @@ export class Player extends Entity {
      * @param yRotation
      * Y rotation of the player after teleportation.
      * @param keepVelocity
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     teleport(
         location: Vector3,
@@ -17875,7 +17867,7 @@ export class Player extends Entity {
      * @param facingLocation
      * Location that this player will be facing.
      * @param keepVelocity
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     teleportFacing(location: Vector3, dimension: Dimension, facingLocation: Vector3, keepVelocity?: boolean): void;
     /**
@@ -17888,7 +17880,7 @@ export class Player extends Entity {
      * @param eventName
      * Name of the entity type event to trigger. If a namespace is
      * not specified, minecraft: is assumed.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     triggerEvent(eventName: string): void;
 }
@@ -17901,13 +17893,13 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
     /**
      * Contains a count of the slots in the container that are
      * empty.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly emptySlotsCount: number;
     /**
      * Returns the size capacity of the inventory container on this
      * block.
-     * @throws This property can throw when used.
+     * @throws 该属性被使用时可能抛出错误
      */
     readonly size: number;
     /**
@@ -17917,20 +17909,20 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * to set items in a particular slot.)
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     addItem(itemStack: ItemStack): void;
     /**
      * @remarks
      * Empties all items in this players' inventory.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearAll(): void;
     /**
      * @remarks
      * Clears out a specific item at the specified slot index.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearItem(slot: number): void;
     /**
@@ -17940,7 +17932,7 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * does not change or clear the contents of the specified slot.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getItem(slot: number): ItemStack;
     /**
@@ -17948,7 +17940,7 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * Returns a slot object for specifically managing a slot
      * within a broader inventory.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     getSlot(slot: number): ContainerSlot;
     /**
@@ -17958,7 +17950,7 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * Zero-based index of the slot to set an item at.
      * @param itemStack
      * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -17971,7 +17963,7 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
     /**
@@ -17984,7 +17976,7 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
 }
@@ -18042,7 +18034,7 @@ export class PlayerJoinEventSignal {
      * Removes a callback from being called when a player joins the
      * world.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: PlayerJoinEvent) => void): void;
 }
@@ -18082,7 +18074,7 @@ export class PlayerLeaveEventSignal {
      * Removes a callback from being called when a player leaves
      * the world.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: PlayerLeaveEvent) => void): void;
 }
@@ -18121,7 +18113,7 @@ export class PlayerSpawnEventSignal {
      * @remarks
      * De-registers an event receiver for the player spawn event.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: PlayerSpawnEvent) => void): void;
 }
@@ -18174,7 +18166,7 @@ export class ProjectileHitEventSignal {
      * Removes a callback from being called when a projectile hits
      * an entity or block.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ProjectileHitEvent) => void): void;
 }
@@ -18442,7 +18434,7 @@ export class ScreenDisplay {
     /**
      * @remarks
      * Clears the title and subtitle, if currently displayed.
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     clearTitle(): void;
     /**
@@ -18450,7 +18442,7 @@ export class ScreenDisplay {
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
      * @param text
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setActionBar(text: string): void;
     /**
@@ -18460,7 +18452,7 @@ export class ScreenDisplay {
      * as well as fade in, stay and fade out times.
      * @param title
      * @param options
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     setTitle(title: string, options?: TitleDisplayOptions): void;
     /**
@@ -18468,7 +18460,7 @@ export class ScreenDisplay {
      * Updates the subtitle if the subtitle was previously
      * displayed via the setTitle method.
      * @param subtitle
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     updateSubtitle(subtitle: string): void;
 }
@@ -18502,7 +18494,7 @@ export class ScriptEventCommandMessageSignal {
      * @remarks
      * Unsubscribes a particular handler for a ScriptEvent event.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: ScriptEventCommandMessageEvent) => void): void;
 }
@@ -18553,7 +18545,7 @@ export class ServerMessageSignal {
      * Removes a callback from being called when an internal
      * message is passed.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: MessageReceiveEvent) => void): void;
 }
@@ -18673,7 +18665,7 @@ export class TickEventSignal {
      * @remarks
      * Removes a callback from being called every tick.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: TickEvent) => void): void;
 }
@@ -18885,7 +18877,7 @@ export class WeatherChangeEventSignal {
      * @remarks
      * Removes a callback from being called when weather changes.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: WeatherChangeEvent) => void): void;
 }
@@ -18899,7 +18891,7 @@ export class World {
     protected constructor();
     /**
      * @beta
-     * 世界上会发生的事件的集合。
+     * 世界中会发生的事件的集合。
      * 
      * Contains a set of events that are applicable to the entirety
      * of the world.
@@ -19141,7 +19133,7 @@ export class WorldInitializeEventSignal {
      * Removes a callback from being called the scripting
      * environment is initialized for a World.
      * @param callback
-     * @throws This function can throw errors.
+     * @throws 此函数可能抛出错误.
      */
     unsubscribe(callback: (arg: WorldInitializeEvent) => void): void;
 }
