@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.70-preview.21"
+ *   "version": "1.1.0-internal.1.19.70-preview.22"
  * }
  * ```
  *
@@ -202,6 +202,11 @@ export enum GameMode {
      * time, chip away at player health and hunger bar.
      */
     survival = 'survival',
+}
+export enum ItemLockMode {
+    inventory = 'inventory',
+    none = 'none',
+    slot = 'slot',
 }
 export enum MessageSourceType {
     clientScript = 'clientScript',
@@ -2365,22 +2370,28 @@ export class ContainerSlot {
      * Modifier value for the item type stored within the slot.
      */
     data: number;
+    readonly isStackable: boolean;
     /**
      * If true, the state of this container slot is still valid
      * (e.g., the underlying block or entity for this container
      * slot still exists.)
      */
     readonly isValid: boolean;
+    keepOnDeath: boolean;
+    lockMode: ItemLockMode;
+    readonly maxAmount: number;
     /**
      * Returns a name tag for the container slot.
      */
     nameTag?: string;
+    readonly 'type': ItemType;
     /**
      * Returns a string identifier of the type if item stored in
      * this slot.
      * @throws This property can throw when used.
      */
     readonly typeId?: string;
+    clone(): ItemStack;
     /**
      * @remarks
      * Returns the item stored within the container.
@@ -2394,6 +2405,9 @@ export class ContainerSlot {
      * @throws This function can throw errors.
      */
     getLore(): string[];
+    isStackableWith(itemStack: ItemStack): boolean;
+    setCanDestroy(blockIdentifiers?: string[]): void;
+    setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @remarks
      * Sets the item within the slot to a new value.
@@ -6586,10 +6600,15 @@ export class ItemStack {
      * 0 and 64.
      */
     amount: number;
+    readonly isStackable: boolean;
+    keepOnDeath: boolean;
+    lockMode: ItemLockMode;
+    readonly maxAmount: number;
     /**
      * Given name of this stack of items.
      */
     nameTag?: string;
+    readonly 'type': ItemType;
     /**
      * Identifier of the type of items for the stack. If a
      * namespace is not specified, 'minecraft:' is assumed.
@@ -6610,6 +6629,7 @@ export class ItemStack {
      * @throws This function can throw errors.
      */
     constructor(itemType: ItemType | string, amount?: number);
+    clone(): ItemStack;
     /**
      * @remarks
      * Gets a component (that represents additional capabilities)
@@ -6643,6 +6663,9 @@ export class ItemStack {
      * is assumed.
      */
     hasComponent(componentId: string): boolean;
+    isStackableWith(itemStack: ItemStack): boolean;
+    setCanDestroy(blockIdentifiers?: string[]): void;
+    setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @remarks
      * Sets the lore value - a secondary display string - for an
@@ -17399,24 +17422,36 @@ export class MinecraftItemTypes {
 export class MolangVariableMap {
     /**
      * @remarks
-     * Sets a Molang rendering/animation variable with the value of
-     * a Red/Green/Blue color.
+     * Adds the following variables to Molang:
+     * - `<variable_name>.r` - Red color value [0-1]
+     * - `<variable_name>.g` - Green color value [0-1]
+     * - `<variable_name>.b` - Blue color value [0-1]
      * @param variableName
      * @param color
      */
     setColorRGB(variableName: string, color: Color): MolangVariableMap;
     /**
      * @remarks
-     * Sets a Molang rendering/animation variable with the value of
-     * a Red/Green/Blue color + Alpha (transparency) value.
+     * Adds the following variables to Molang:
+     * - `<variable_name>.r` - Red color value [0-1]
+     * - `<variable_name>.g` - Green color value [0-1]
+     * - `<variable_name>.b` - Blue color value [0-1]
+     * - `<variable_name>.a` - Alpha (transparency) color value
+     * [0-1]
      * @param variableName
      * @param color
      */
     setColorRGBA(variableName: string, color: Color): MolangVariableMap;
     /**
      * @remarks
-     * Sets the speed and direction for a Molang (rendering and
-     * animation) variable.
+     * Adds the following variables to Molang:
+     * - `<variable_name>.speed` - Speed number provided
+     * - `<variable_name>.direction_x` - X value from the {@link
+     * Vector3} provided
+     * - `<variable_name>.direction_y` - Y value from the {@link
+     * Vector3} provided
+     * - `<variable_name>.direction_z` - Z value from the {@link
+     * Vector3} provided
      * @param variableName
      * @param speed
      * @param direction
@@ -17424,8 +17459,13 @@ export class MolangVariableMap {
     setSpeedAndDirection(variableName: string, speed: number, direction: Vector): MolangVariableMap;
     /**
      * @remarks
-     * Sets a vector value for a Molang (rendering and animation)
-     * variable.
+     * Adds the following variables to Molang:
+     * - `<variable_name>.x` - X value from the {@link Vector3}
+     * provided
+     * - `<variable_name>.y` - Y value from the {@link Vector3}
+     * provided
+     * - `<variable_name>.z` - Z value from the {@link Vector3}
+     * provided
      * @param variableName
      * @param vector
      */
