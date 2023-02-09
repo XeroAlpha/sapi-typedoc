@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.70-preview.21"
+ *   "version": "1.0.0-internal.1.19.70-preview.22"
  * }
  * ```
  *
@@ -874,6 +874,38 @@ export class Test {
         blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
+    /**
+     * @remarks
+     * Tests that an entity instance is present within the GameTest
+     * area. If not, an exception is thrown.
+     * @param entity
+     * Entity instance to test for.
+     * @param isPresent
+     * If true, this function tests whether the specified entity is
+     * present in the GameTest area. If false, tests that the
+     * specified entity is not present.
+     * @throws This function can throw errors.
+     * @example simpleMobTest.ts
+     * ```typescript
+     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *          const attackerId = "fox";
+     *          const victimId = "chicken";
+     *
+     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *          let victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     *
+     *          test.assertEntityInstancePresentInArea(victim, true);
+     *
+     *          test.succeedWhen(() => {
+     *            test.assertEntityInstancePresentInArea(victim, false);
+     *          });
+     *        })
+     *          .maxTicks(400)
+     *          .structureName("gametests:mediumglass");
+     *
+     *
+     * ```
+     */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
      * @remarks
@@ -888,6 +920,8 @@ export class Test {
      * @param blockLocation
      * Location of the entity to test for.
      * @param searchDistance
+     * The distance to search for the entity from the
+     * blockLocation.
      * @param isPresent
      * If true, this function tests whether an entity of the
      * specified type is present. If false, tests that an entity of

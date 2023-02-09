@@ -10,7 +10,7 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
-游戏版本号：`1.19.70.21`
+游戏版本号：`1.19.70.22`
 
 通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
 
@@ -35,7 +35,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/254|
+|[@minecraft/server](#minecraftserver)|0/255|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -50,6 +50,7 @@ Minecraft 脚本 API 文档。
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
 |[`GameMode`](https://projectxero.top/sapi/enums/server.GameMode.html)|枚举|未翻译|
+|[`ItemLockMode`](https://projectxero.top/sapi/enums/server.ItemLockMode.html)|枚举|未翻译|
 |[`MessageSourceType`](https://projectxero.top/sapi/enums/server.MessageSourceType.html)|枚举|未翻译|
 |[`ObjectiveSortOrder`](https://projectxero.top/sapi/enums/server.ObjectiveSortOrder.html)|枚举|未翻译|
 |[`ScoreboardIdentityType`](https://projectxero.top/sapi/enums/server.ScoreboardIdentityType.html)|枚举|未翻译|
