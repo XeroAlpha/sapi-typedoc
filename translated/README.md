@@ -35,7 +35,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/255|
+|[@minecraft/server](#minecraftserver)|0/252|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -89,12 +89,12 @@ Minecraft 脚本 API 文档。
 |[`BlockPlaceEventSignal`](https://projectxero.top/sapi/classes/server.BlockPlaceEventSignal.html)|类|未翻译|
 |[`BlockPotionContainerComponent`](https://projectxero.top/sapi/classes/server.BlockPotionContainerComponent.html)|类|未翻译|
 |[`BlockProperties`](https://projectxero.top/sapi/classes/server.BlockProperties.html)|类|未翻译|
+|[`BlockPropertyType`](https://projectxero.top/sapi/classes/server.BlockPropertyType.html)|类|未翻译|
 |[`BlockRecordPlayerComponent`](https://projectxero.top/sapi/classes/server.BlockRecordPlayerComponent.html)|类|未翻译|
 |[`BlockSignComponent`](https://projectxero.top/sapi/classes/server.BlockSignComponent.html)|类|未翻译|
 |[`BlockSnowContainerComponent`](https://projectxero.top/sapi/classes/server.BlockSnowContainerComponent.html)|类|未翻译|
 |[`BlockType`](https://projectxero.top/sapi/classes/server.BlockType.html)|类|未翻译|
 |[`BlockWaterContainerComponent`](https://projectxero.top/sapi/classes/server.BlockWaterContainerComponent.html)|类|未翻译|
-|[`BoolBlockProperty`](https://projectxero.top/sapi/classes/server.BoolBlockProperty.html)|类|未翻译|
 |[`ButtonPushEvent`](https://projectxero.top/sapi/classes/server.ButtonPushEvent.html)|类|未翻译|
 |[`ButtonPushEventSignal`](https://projectxero.top/sapi/classes/server.ButtonPushEventSignal.html)|类|未翻译|
 |[`ChatEvent`](https://projectxero.top/sapi/classes/server.ChatEvent.html)|类|未翻译|
@@ -196,9 +196,7 @@ Minecraft 脚本 API 文档。
 |[`FeedItemEffect`](https://projectxero.top/sapi/classes/server.FeedItemEffect.html)|类|未翻译|
 |[`FilterGroup`](https://projectxero.top/sapi/classes/server.FilterGroup.html)|类|未翻译|
 |[`FluidContainer`](https://projectxero.top/sapi/classes/server.FluidContainer.html)|类|未翻译|
-|[`IBlockProperty`](https://projectxero.top/sapi/classes/server.IBlockProperty.html)|类|未翻译|
 |[`IEntityComponent`](https://projectxero.top/sapi/classes/server.IEntityComponent.html)|类|未翻译|
-|[`IntBlockProperty`](https://projectxero.top/sapi/classes/server.IntBlockProperty.html)|类|未翻译|
 |[`InventoryComponentContainer`](https://projectxero.top/sapi/classes/server.InventoryComponentContainer.html)|类|未翻译|
 |[`ItemCompleteChargeEvent`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEvent.html)|类|未翻译|
 |[`ItemCompleteChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEventSignal.html)|类|未翻译|
@@ -261,7 +259,6 @@ Minecraft 脚本 API 文档。
 |[`ScriptEventCommandMessageSignal`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageSignal.html)|类|未翻译|
 |[`Seat`](https://projectxero.top/sapi/classes/server.Seat.html)|类|未翻译|
 |[`ServerMessageSignal`](https://projectxero.top/sapi/classes/server.ServerMessageSignal.html)|类|未翻译|
-|[`StringBlockProperty`](https://projectxero.top/sapi/classes/server.StringBlockProperty.html)|类|未翻译|
 |[`System`](https://projectxero.top/sapi/classes/server.System.html)|类|未翻译|
 |[`SystemEvents`](https://projectxero.top/sapi/classes/server.SystemEvents.html)|类|未翻译|
 |[`TickEvent`](https://projectxero.top/sapi/classes/server.TickEvent.html)|类|未翻译|
