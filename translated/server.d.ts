@@ -7503,6 +7503,9 @@ export class MinecraftBlockTypes {
      * Represents a dead bush within Minecraft.
      */
     static readonly deadbush: BlockType;
+    /**
+     * 饰纹陶罐。
+     */
     static readonly decoratedPot: BlockType;
     /**
      * 深板岩。
@@ -10630,6 +10633,9 @@ export class MinecraftBlockTypes {
      * Represents a structure void within Minecraft.
      */
     static readonly structureVoid: BlockType;
+    /**
+     * 可疑的沙子。
+     */
     static readonly suspiciousSand: BlockType;
     /**
      * 甜浆果丛。
@@ -10667,7 +10673,13 @@ export class MinecraftBlockTypes {
      * Represents a torch within Minecraft.
      */
     static readonly torch: BlockType;
+    /**
+     * 火把莲。
+     */
     static readonly torchflower: BlockType;
+    /**
+     * 火把莲植株。
+     */
     static readonly torchflowerCrop: BlockType;
     /**
      * 活板门。
@@ -16170,7 +16182,7 @@ export class MinecraftItemTypes {
      */
     static readonly sugarCane: ItemType;
     /**
-     * 迷之炖菜。
+     * 谜之炖菜。
      */
     static readonly suspiciousStew: ItemType;
     /**
