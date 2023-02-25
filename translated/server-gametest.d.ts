@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.70-preview.23"
+ *   "version": "1.0.0-internal.1.19.70-preview.24"
  * }
  * ```
  *
@@ -306,7 +306,7 @@ export class SculkSpreader {
  * player. This type derives much of its structure and methods
  * from the {@link @minecraft/server.Player} type.
  */
-export class SimulatedPlayer extends minecraftserver.Player {
+export class SimulatedPlayer {
     protected constructor();
     /**
      * Rotation of the head across pitch and yaw angles.
@@ -528,15 +528,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     rotateBody(angleInDegrees: number): void;
-    /**
-     * @remarks
-     * Applies a test skin to the simulated player.
-     * @param geoData
-     * @param base64ImageData
-     * @param skinResourcePatch
-     * @throws This function can throw errors.
-     */
-    sendTestSkin(geoData: string, base64ImageData: string, skinResourcePatch: string): void;
     /**
      * @remarks
      * Causes the simulated player to turn to face the provided

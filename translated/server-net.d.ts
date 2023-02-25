@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.19.70-preview.23"
+ *   "version": "1.0.0-beta.1.19.70-preview.24"
  * }
  * ```
  *
@@ -83,9 +83,6 @@ export class HttpClient {
      * An awaitable promise that contains the HTTP response.
      */
     request(config: HttpRequest): Promise<HttpResponse>;
-    testOnly_fulfillRequest(requestId: number, headers: HttpHeader[], body: string, status: number): void;
-    testOnly_getRequests(): number[];
-    testOnly_rejectRequest(requestId: number, reason: string): void;
 }
 /**
  * Represents an HTTP header - a key/value pair of

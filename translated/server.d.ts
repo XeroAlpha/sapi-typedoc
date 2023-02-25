@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.70-preview.23"
+ *   "version": "1.1.0-internal.1.19.70-preview.24"
  * }
  * ```
  *
@@ -1032,117 +1032,17 @@ export class BlockInventoryComponent extends BlockComponent {
      */
     static readonly componentId = 'minecraft:inventory';
 }
-/**
- * @beta
- * Represents the inventory of a {@link Block} in the world.
- * Used with blocks like chests.
- */
 export class BlockInventoryComponentContainer extends Container {
     protected constructor();
-    /**
-     * Contains a count of the slots in the container that are
-     * empty.
-     * @throws This property can throw when used.
-     */
     readonly emptySlotsCount: number;
-    /**
-     * Returns the size capacity of the inventory container on this
-     * block.
-     * @throws This property can throw when used.
-     */
     readonly size: number;
-    /**
-     * @remarks
-     * Adds an item to the specified container. Item will be placed
-     * in the first available empty slot. (use .setItem if you wish
-     * to set items in a particular slot.)
-     * @param itemStack
-     * The stack of items to add.
-     * @throws This function can throw errors.
-     */
     addItem(itemStack: ItemStack): void;
-    /**
-     * @remarks
-     * Clears the entirety of the inventory of this block (i.e.,
-     * chest)
-     * @throws This function can throw errors.
-     */
     clearAll(): void;
-    /**
-     * @remarks
-     * Clears a specific item within the chest.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     clearItem(slot: number): void;
-    /**
-     * @remarks
-     * Gets the item stack for the set of items at the specified
-     * slot. If the slot is empty, returns undefined. This method
-     * does not change or clear the contents of the specified slot.
-     * @param slot
-     * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
-     * @example getItem.js
-     * ```typescript
-     *        const itemStack = rightChestContainer.getItem(0);
-     *        test.assert(itemStack.id === "apple", "Expected apple");
-     *        test.assert(itemStack.amount === 10, "Expected 10 apples");
-     * ```
-     */
     getItem(slot: number): ItemStack;
-    /**
-     * @remarks
-     * Gets a container slot within the chest.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     getSlot(slot: number): ContainerSlot;
-    /**
-     * @remarks
-     * Sets an item stack within a particular slot.
-     * @param slot
-     * Zero-based index of the slot to set an item at.
-     * @param itemStack
-     * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
-     */
     setItem(slot: number, itemStack?: ItemStack): void;
-    /**
-     * @remarks
-     * Swaps items between two different slots within containers.
-     * @param slot
-     * Zero-based index of the slot to swap from this container.
-     * @param otherSlot
-     * Zero-based index of the slot to swap with.
-     * @param otherContainer
-     * Target container to swap with. Note this can be the same
-     * container as this source.
-     * @throws This function can throw errors.
-     * @example swapItems.js
-     * ```typescript
-     *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap item in slot 1 of rightChestContainer with item in slot 0 of leftChestContainer
-     *
-     * ```
-     */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
-    /**
-     * @remarks
-     * Moves an item from one slot to another, potentially across
-     * containers.
-     * @param fromSlot
-     * @param toSlot
-     * Zero-based index of the slot to move to.
-     * @param toContainer
-     * Target container to transfer to. Note this can be the same
-     * container as the source.
-     * @throws This function can throw errors.
-     * @example transferItem.js
-     * ```typescript
-     *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
-     *
-     * ```
-     */
     transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
 }
 /**
@@ -1627,23 +1527,26 @@ export class CommandResult {
 export class Container {
     protected constructor();
     /**
-     * Contains a count of the slots in the container that are
-     * empty.
-     * @throws This property can throw when used.
+     * Count of the slots in the container that are empty.
+     * @throws
+     * Throws if the container is invalid.
      */
     readonly emptySlotsCount: number;
     /**
-     * Represents the size of the container. For example, a
-     * standard single-block chest has a size of 27, for the 27
-     * slots in their inventory.
-     * @throws This property can throw when used.
+     * The number of slots in this container. For example, a
+     * standard single-block chest has a size of 27. Note, a
+     * player's inventory container contains a total of 36 slots, 9
+     * hotbar slots plus 27 inventory slots.
+     * @throws
+     * Throws if the container is invalid.
      */
     readonly size: number;
     /**
      * @remarks
-     * Adds an item to the specified container. Item will be placed
-     * in the first available empty slot. (use .setItem if you wish
-     * to set items in a particular slot.)
+     * Adds an item to the container. The item is placed in the
+     * first available slot(s) and can be stacked with existing
+     * items of the same type. Note, use {@link Container.setItem}
+     * if you wish to set the item in a particular slot.
      * @param itemStack
      * The stack of items to add.
      * @throws This function can throw errors.
@@ -1652,41 +1555,49 @@ export class Container {
     /**
      * @remarks
      * Clears all inventory items in the container.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the container is invalid.
      */
     clearAll(): void;
     /**
      * @remarks
      * Clears a specific item at a slot within the container.
      * @param slot
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the container is invalid.
      */
     clearItem(slot: number): void;
     /**
      * @remarks
-     * Gets the item stack for the set of items at the specified
-     * slot. If the slot is empty, returns undefined. This method
-     * does not change or clear the contents of the specified slot.
+     * Gets an {@link ItemStack} of the item at the specified slot.
+     * If the slot is empty, returns `undefined`. This method does
+     * not change or clear the contents of the specified slot. To
+     * get a reference to a particular slot, see {@link
+     * Container.getSlot}.
      * @param slot
      * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
-     * @example getItem.js
+     * @throws
+     * Throws if the container is invalid or if the `slot` index is
+     * out of bounds.
+     * @example getItem.ts
      * ```typescript
-     *        const rightInventoryComp = rightChestCart.getComponent("inventory");
-     *        const rightChestContainer = rightInventoryComp.container;
+     *        // Get a copy of the first item in the player's hotbar
+     *        const inventory = player.getComponent("inventory") as EntityInventoryComponent;
+     *        const itemStack = inventory.container.getItem(0);
      *
-     *        const itemStack = rightChestContainer.getItem(0);
-     *
-     *        test.assert(itemStack.id === "apple", "Expected apple");
-     *        test.assert(itemStack.amount === 10, "Expected 10 apples");
      * ```
      */
     getItem(slot: number): ItemStack;
     /**
      * @remarks
-     * Returns a container slot item holder within the container.
+     * Returns a container slot. This acts as a reference to a slot
+     * at the given index for this container.
      * @param slot
-     * @throws This function can throw errors.
+     * The index of the slot to return. This index must be within
+     * the bounds of the container.
+     * @throws
+     * Throws if the container is invalid or if the `slot` index is
+     * out of bounds.
      */
     getSlot(slot: number): ContainerSlot;
     /**
@@ -1695,8 +1606,11 @@ export class Container {
      * @param slot
      * Zero-based index of the slot to set an item at.
      * @param itemStack
-     * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
+     * Stack of items to place within the specified slot. Setting
+     * `itemStack` to undefined will clear the slot.
+     * @throws
+     * Throws if the container is invalid or if the `slot` index is
+     * out of bounds.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -1709,28 +1623,38 @@ export class Container {
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
-     * @throws This function can throw errors.
-     * @example swapItems.js
+     * @throws
+     * Throws if either this container or `otherContainer` are
+     * invalid or if the `slot` or `otherSlot` are out of bounds.
+     * @example swapItems.ts
      * ```typescript
-     *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap the cake and emerald
+     *        // Swaps an item between slots 0 and 4 in the player's inventory
+     *        const inventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
+     *        inventory.container.swapItems(0, 4, inventory);
      *
      * ```
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
     /**
      * @remarks
-     * Moves an item from one slot to another, potentially across
-     * containers.
+     * Moves an item from one slot to another container, or to the
+     * first available slot in the same container.
      * @param fromSlot
+     * Zero-based index of the slot to transfer an item from, on
+     * this container.
      * @param toSlot
-     * Zero-based index of the slot to move to.
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
-     * @throws This function can throw errors.
-     * @example transferItem.js
+     * @throws
+     * Throws if either this container or `toContainer` are invalid
+     * or if the `fromSlot` or `toSlot` indices out of bounds.
+     * @example transferItem.ts
      * ```typescript
-     *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
+     *        // Transfer an item from the first slot of fromPlayer's inventory to toPlayer's inventory
+     *        const fromInventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
+     *        const toInventory = toPlayer.getComponent('inventory') as EntityInventoryComponent;
+     *        fromInventory.container.transferItem(0, toInventory.container);
      *
      * ```
      */
@@ -1744,65 +1668,130 @@ export class Container {
 export class ContainerSlot {
     protected constructor();
     /**
-     * Amount of the specified item within the container slot.
+     * Number of the items in the stack. Valid values range between
+     * 1-255. The provided value will be clamped to the item's
+     * maximum stack size.
+     * @throws
+     * Throws if the value is outside the range of 1-255.
      */
     amount: number;
-    /**
-     * Modifier value for the item type stored within the slot.
-     */
     data: number;
-    readonly isStackable: boolean;
     /**
-     * If true, the state of this container slot is still valid
-     * (e.g., the underlying block or entity for this container
-     * slot still exists.)
+     * Returns whether the item is stackable. An item is considered
+     * stackable if the item's maximum stack size is greater than 1
+     * and the item does not contain any custom data or properties.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
+    readonly isStackable: boolean;
     readonly isValid: boolean;
+    /**
+     * Gets or sets whether the item is kept on death.
+     * @throws
+     * Throws if the slot's container is invalid.
+     */
     keepOnDeath: boolean;
+    /**
+     * Gets or sets the item's lock mode. The default value is
+     * `ItemLockMode.none`.
+     * @throws
+     * Throws if the slot's container is invalid.
+     */
     lockMode: ItemLockMode;
+    /**
+     * The maximum stack size. This value varies depending on the
+     * type of item. For example, torches have a maximum stack size
+     * of 64, while eggs have a maximum stack size of 16.
+     * @throws
+     * Throws if the slot's container is invalid.
+     */
     readonly maxAmount: number;
     /**
-     * Returns a name tag for the container slot.
+     * Given name of this stack of items. The name tag is displayed
+     * when hovering over the item. Setting the name tag to an
+     * empty string or `undefined` will remove the name tag.
+     * @throws
+     * Throws if the slot's container is invalid. Also throws if
+     * the length exceeds 255 characters.
      */
     nameTag?: string;
+    /**
+     * The type of the item.
+     * @throws
+     * Throws if the slot's container is invalid.
+     */
     readonly 'type': ItemType;
     /**
-     * Returns a string identifier of the type if item stored in
-     * this slot.
-     * @throws This property can throw when used.
+     * Identifier of the type of items for the stack. If a
+     * namespace is not specified, 'minecraft:' is assumed.
+     * Examples include 'wheat' or 'apple'.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     readonly typeId?: string;
-    clone(): ItemStack;
     /**
      * @remarks
-     * Returns the item stored within the container.
-     * @throws This function can throw errors.
+     * Creates an exact copy of the item stack, including any
+     * custom data or properties.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
+    clone(): ItemStack;
     getItem(): ItemStack;
     /**
      * @remarks
-     * Returns the lore value for the item stored within this
-     * container slot.
-     * @throws This function can throw errors.
+     * Returns the lore value - a secondary display string - for an
+     * ItemStack.
+     * @returns
+     * An array of lore strings. If the item does not have lore,
+     * returns an empty array.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getLore(): string[];
-    isStackableWith(itemStack: ItemStack): boolean;
-    setCanDestroy(blockIdentifiers?: string[]): void;
-    setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @remarks
-     * Sets the item within the slot to a new value.
+     * Returns whether this item stack can be stacked with the
+     * given `itemStack`. This is determined by comparing the item
+     * type and any custom data and properties associated with the
+     * item stacks. The amount of each item stack is not taken into
+     * consideration.
      * @param itemStack
-     * The item stack to set within this container slot.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
+    isStackableWith(itemStack: ItemStack): boolean;
+    /**
+     * @remarks
+     * The list of block types this item can break in Adventure
+     * mode. The block names are displayed in the item's tooltip.
+     * Setting the value to undefined will clear the list.
+     * @param blockIdentifiers
+     * @throws
+     * Throws if the slot's container is invalid. Also throws if
+     * any of the provided block identifiers are invalid.
+     */
+    setCanDestroy(blockIdentifiers?: string[]): void;
+    /**
+     * @remarks
+     * The list of block types this item can be placed on in
+     * Adventure mode. This is only applicable to block items. The
+     * block names are displayed in the item's tooltip. Setting the
+     * value to undefined will clear the list.
+     * @param blockIdentifiers
+     * @throws
+     * Throws if the slot's container is invalid. Also throws if
+     * any of the provided block identifiers are invalid.
+     */
+    setCanPlaceOn(blockIdentifiers?: string[]): void;
     setItem(itemStack?: ItemStack): void;
     /**
      * @remarks
-     * Sets the lore string for the item at the specified slot.
+     * Sets the lore value - a secondary display string - for an
+     * ItemStack.
      * @param loreList
-     * An array of strings for lines of text for this lore.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     setLore(loreList?: string[]): void;
 }
@@ -5503,119 +5492,17 @@ export class IEntityComponent {
      */
     readonly typeId: string;
 }
-/**
- * @beta
- * Represents a container that can hold stacks of items. Used
- * for entities like players, chest minecarts, llamas, and
- * more.
- */
 export class InventoryComponentContainer extends Container {
     protected constructor();
-    /**
-     * The number of empty slots in the container.
-     * @throws This property can throw when used.
-     */
     readonly emptySlotsCount: number;
-    /**
-     * Represents the size of the container. For example, a
-     * standard single-block chest has a size of 27, for the 27
-     * slots in their inventory.
-     * @throws This property can throw when used.
-     */
     readonly size: number;
-    /**
-     * @remarks
-     * Adds an item to the specified container. Items will be
-     * placed in the first available empty slot. (Use {@link
-     * InventoryComponentContainer.setItem} if you wish to set
-     * items in a particular slot.)
-     * @param itemStack
-     * The stack of items to add.
-     * @throws This function can throw errors.
-     */
     addItem(itemStack: ItemStack): void;
-    /**
-     * @remarks
-     * Empties all items in this entities' inventory.
-     * @throws This function can throw errors.
-     */
     clearAll(): void;
-    /**
-     * @remarks
-     * Clears out a specific item at the specified slot index.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     clearItem(slot: number): void;
-    /**
-     * @remarks
-     * Gets the item stack for the set of items at the specified
-     * slot. If the slot is empty, returns undefined. This method
-     * does not change or clear the contents of the specified slot.
-     * @param slot
-     * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
-     * @example getItem.js
-     * ```typescript
-     *        const itemStack = rightChestContainer.getItem(0);
-     *        test.assert(itemStack.id === "apple", "Expected apple");
-     *        test.assert(itemStack.amount === 10, "Expected 10 apples");
-     * ```
-     */
     getItem(slot: number): ItemStack;
-    /**
-     * @remarks
-     * Returns a slot object for specifically managing a slot
-     * within a broader inventory.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     getSlot(slot: number): ContainerSlot;
-    /**
-     * @remarks
-     * Sets an item stack within a particular slot.
-     * @param slot
-     * Zero-based index of the slot to set an item at.
-     * @param itemStack
-     * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
-     */
     setItem(slot: number, itemStack?: ItemStack): void;
-    /**
-     * @remarks
-     * Swaps items between two different slots within containers.
-     * @param slot
-     * Zero-based index of the slot to swap from this container.
-     * @param otherSlot
-     * Zero-based index of the slot to swap with.
-     * @param otherContainer
-     * Target container to swap with. Note this can be the same
-     * container as this source.
-     * @throws This function can throw errors.
-     * @example swapItems.js
-     * ```typescript
-     *        rightChestContainer.swapItems(1, 0, leftChestContainer); // swap the cake and emerald
-     *
-     * ```
-     */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
-    /**
-     * @remarks
-     * Moves an item from one slot to another, potentially across
-     * containers.
-     * @param fromSlot
-     * @param toSlot
-     * Zero-based index of the slot to move to.
-     * @param toContainer
-     * Target container to transfer to. Note this can be the same
-     * container as the source.
-     * @throws This function can throw errors.
-     * @example transferItem.js
-     * ```typescript
-     *        rightChestContainer.transferItem(0, 4, chestCartContainer); // transfer the apple from the right chest to a chest cart
-     *
-     * ```
-     */
     transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
 }
 /**
@@ -5954,17 +5841,44 @@ export class Items {
 export class ItemStack {
     /**
      * Number of the items in the stack. Valid values range between
-     * 0 and 64.
+     * 1-255. The provided value will be clamped to the item's
+     * maximum stack size.
+     * @throws
+     * Throws if the value is outside the range of 1-255.
      */
     amount: number;
+    /**
+     * Returns whether the item is stackable. An item is considered
+     * stackable if the item's maximum stack size is greater than 1
+     * and the item does not contain any custom data or properties.
+     */
     readonly isStackable: boolean;
+    /**
+     * Gets or sets whether the item is kept on death.
+     */
     keepOnDeath: boolean;
+    /**
+     * Gets or sets the item's lock mode. The default value is
+     * `ItemLockMode.none`.
+     */
     lockMode: ItemLockMode;
+    /**
+     * The maximum stack size. This value varies depending on the
+     * type of item. For example, torches have a maximum stack size
+     * of 64, while eggs have a maximum stack size of 16.
+     */
     readonly maxAmount: number;
     /**
-     * Given name of this stack of items.
+     * Given name of this stack of items. The name tag is displayed
+     * when hovering over the item. Setting the name tag to an
+     * empty string or `undefined` will remove the name tag.
+     * @throws
+     * Throws if the length exceeds 255 characters.
      */
     nameTag?: string;
+    /**
+     * The type of the item.
+     */
     readonly 'type': ItemType;
     /**
      * Identifier of the type of items for the stack. If a
@@ -5981,11 +5895,20 @@ export class ItemStack {
      * enumeration for a list of standard item types in Minecraft
      * experiences.
      * @param amount
-     * Number of items to place in the stack, between 1 and 64.
-     * Note that certain items can only have one item in the stack.
-     * @throws This function can throw errors.
+     * Number of items to place in the stack, between 1-255. The
+     * provided value will be clamped to the item's maximum stack
+     * size. Note that certain items can only have one item in the
+     * stack.
+     * @throws
+     * Throws if `itemType` is invalid, or if `amount` is outside
+     * the range of 1-255.
      */
     constructor(itemType: ItemType | string, amount?: number);
+    /**
+     * @remarks
+     * Creates an exact copy of the item stack, including any
+     * custom data or properties.
+     */
     clone(): ItemStack;
     /**
      * @remarks
@@ -5996,6 +5919,14 @@ export class ItemStack {
      * retrieve. If no namespace prefix is specified, 'minecraft:'
      * is assumed. If the component is not present on the item
      * stack, undefined is returned.
+     * @example durability.ts
+     * ```typescript
+     *        // Get the maximum durability of a custom sword item
+     *        const itemStack = new ItemStack("custom:sword");
+     *        const durability = itemStack.getComponent("minecraft:durability") as ItemDurabilityComponent;
+     *        const maxDurability = durability.maxDurability;
+     *
+     * ```
      */
     getComponent(componentId: string): any;
     /**
@@ -6008,6 +5939,9 @@ export class ItemStack {
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack.
+     * @returns
+     * An array of lore strings. If the item does not have lore,
+     * returns an empty array.
      */
     getLore(): string[];
     /**
@@ -6020,14 +5954,63 @@ export class ItemStack {
      * is assumed.
      */
     hasComponent(componentId: string): boolean;
+    /**
+     * @remarks
+     * Returns whether this item stack can be stacked with the
+     * given `itemStack`. This is determined by comparing the item
+     * type and any custom data and properties associated with the
+     * item stacks. The amount of each item stack is not taken into
+     * consideration.
+     * @param itemStack
+     */
     isStackableWith(itemStack: ItemStack): boolean;
+    /**
+     * @remarks
+     * The list of block types this item can break in Adventure
+     * mode. The block names are displayed in the item's tooltip.
+     * Setting the value to undefined will clear the list.
+     * @param blockIdentifiers
+     * @throws
+     * Throws if any of the provided block identifiers are invalid.
+     * @example example.ts
+     * ```typescript
+     *        // Creates a diamond pickaxe that can destroy cobblestone and obsidian
+     *        const specialPickaxe = new ItemStack("minecraft:diamond_pickaxe");
+     *        specialPickaxe.setCanDestroy(["minecraft:cobblestone", "minecraft:obsidian"]);
+     *
+     * ```
+     */
     setCanDestroy(blockIdentifiers?: string[]): void;
+    /**
+     * @remarks
+     * The list of block types this item can be placed on in
+     * Adventure mode. This is only applicable to block items. The
+     * block names are displayed in the item's tooltip. Setting the
+     * value to undefined will clear the list.
+     * @param blockIdentifiers
+     * @throws
+     * Throws if any of the provided block identifiers are invalid.
+     * @example example.ts
+     * ```typescript
+     *        // Creates a gold block that can be placed on grass and dirt
+     *        const specialGoldBlock = new ItemStack("minecraft:gold_block");
+     *        specialPickaxe.setCanPlaceOn(["minecraft:grass", "minecraft:dirt"]);
+     *
+     * ```
+     */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
      * @param loreList
+     * @example multilineLore.ts
+     * ```typescript
+     *        // Set the lore of an item to multiple lines of text
+     *        const itemStack = new ItemStack("minecraft:diamond_sword");
+     *        itemStack.setLore(["Line 1", "Line 2", "Line 3"]);
+     *
+     * ```
      */
     setLore(loreList?: string[]): void;
     /**
@@ -10674,11 +10657,11 @@ export class MinecraftBlockTypes {
      */
     static readonly torch: BlockType;
     /**
-     * 火把莲。
+     * 火把花。
      */
     static readonly torchflower: BlockType;
     /**
-     * 火把莲植株。
+     * 火把花植株。
      */
     static readonly torchflowerCrop: BlockType;
     /**
@@ -13186,7 +13169,6 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly deadbush: ItemType;
-    static readonly debugStick: ItemType;
     /**
      * 深板岩。
      * 
@@ -17206,6 +17188,47 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
+    /**
+     * @beta
+     * @remarks
+     * Sends a message to the player.
+     * @param message
+     * The message to be displayed.
+     * @throws
+     * This method can throw if the provided {@link RawMessage} is
+     * in an invalid format. For example, if an empty `name` string
+     * is provided to `score`.
+     * @example nestedTranslation.ts
+     * ```typescript
+     *        // Displays "Apple or Coal"
+     *        let rawMessage = {
+     *          translate: "accessibility.list.or.two",
+     *          with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
+     *        };
+     *        player.sendMessage(rawMessage);
+     *
+     * ```
+     * @example scoreWildcard.ts
+     * ```typescript
+     *        // Displays the player's score for objective "obj". Each player will see their own score.
+     *        const rawMessage = { score: { name: "*", objective: "obj" } };
+     *        world.sendMessage(rawMessage);
+     *
+     * ```
+     * @example simpleString.ts
+     * ```typescript
+     *        // Displays "Hello, world!"
+     *        world.sendMessage("Hello, world!");
+     *
+     * ```
+     * @example translation.ts
+     * ```typescript
+     *        // Displays "First or Second"
+     *        const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
+     *        player.sendMessage(rawMessage);
+     *
+     * ```
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @beta
@@ -17305,100 +17328,17 @@ export class Player extends Entity {
      */
     triggerEvent(eventName: string): void;
 }
-/**
- * @beta
- * Represents the inventory of a {@link Player} in the world.
- */
 export class PlayerInventoryComponentContainer extends InventoryComponentContainer {
     protected constructor();
-    /**
-     * Contains a count of the slots in the container that are
-     * empty.
-     * @throws This property can throw when used.
-     */
     readonly emptySlotsCount: number;
-    /**
-     * Returns the size capacity of the inventory container on this
-     * block.
-     * @throws This property can throw when used.
-     */
     readonly size: number;
-    /**
-     * @remarks
-     * Adds an item to the specified container. Item will be placed
-     * in the first available empty slot. (use .setItem if you wish
-     * to set items in a particular slot.)
-     * @param itemStack
-     * The stack of items to add.
-     * @throws This function can throw errors.
-     */
     addItem(itemStack: ItemStack): void;
-    /**
-     * @remarks
-     * Empties all items in this players' inventory.
-     * @throws This function can throw errors.
-     */
     clearAll(): void;
-    /**
-     * @remarks
-     * Clears out a specific item at the specified slot index.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     clearItem(slot: number): void;
-    /**
-     * @remarks
-     * Gets the item stack for the set of items at the specified
-     * slot. If the slot is empty, returns undefined. This method
-     * does not change or clear the contents of the specified slot.
-     * @param slot
-     * Zero-based index of the slot to retrieve items from.
-     * @throws This function can throw errors.
-     */
     getItem(slot: number): ItemStack;
-    /**
-     * @remarks
-     * Returns a slot object for specifically managing a slot
-     * within a broader inventory.
-     * @param slot
-     * @throws This function can throw errors.
-     */
     getSlot(slot: number): ContainerSlot;
-    /**
-     * @remarks
-     * Sets an item stack within a particular slot.
-     * @param slot
-     * Zero-based index of the slot to set an item at.
-     * @param itemStack
-     * Stack of items to place within the specified slot.
-     * @throws This function can throw errors.
-     */
     setItem(slot: number, itemStack?: ItemStack): void;
-    /**
-     * @remarks
-     * Swaps items between two different slots within containers.
-     * @param slot
-     * Zero-based index of the slot to swap from this container.
-     * @param otherSlot
-     * Zero-based index of the slot to swap with.
-     * @param otherContainer
-     * Target container to swap with. Note this can be the same
-     * container as this source.
-     * @throws This function can throw errors.
-     */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
-    /**
-     * @remarks
-     * Moves an item from one slot to another, potentially across
-     * containers.
-     * @param fromSlot
-     * @param toSlot
-     * Zero-based index of the slot to move to.
-     * @param toContainer
-     * Target container to transfer to. Note this can be the same
-     * container as the source.
-     * @throws This function can throw errors.
-     */
     transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
 }
 /**
@@ -18444,11 +18384,50 @@ export class World {
     /**
      * @beta
      * @remarks
-     * 向所有客户端的聊天栏广播一条消息。
+     * 向所有玩家广播一条消息。
+     * 
+     * Sends a message to all players.
+     * @param message
+     * 将要广播的一段消息。
+     * 这段消息可能是一段字符串，或者符合 `RawMessage` 接口的对象，或是这两种类型的组合。
+     * 
+     * The message to be displayed.
+     * @throws
+     * 该方法在 `message` 格式不正确时会抛出错误。例如 `score` 的 `name` 为空字符串时。
+     * 
+     * This method can throw if the provided {@link RawMessage} is
+     * in an invalid format. For example, if an empty `name` string
+     * is provided to `score`.
+     * @example nestedTranslation.ts
+     * ```typescript
+     *        // Displays "Apple or Coal"
+     *        let rawMessage = {
+     *          translate: "accessibility.list.or.two",
+     *          with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
+     *        };
+     *        world.sendMessage(rawMessage);
      *
-     * Broadcasts a message that is displayed on all connected
-     * clients.
-     * @param message 将要广播的一段消息。这段消息可能是一段字符串，或者符合 `RawMessage` 接口的对象，（需要验证）或是这两种类型的组合。
+     * ```
+     * @example scoreWildcard.ts
+     * ```typescript
+     *        // Displays the player's score for objective "obj". Each player will see their own score.
+     *        const rawMessage = { score: { name: "*", objective: "obj" } };
+     *        world.sendMessage(rawMessage);
+     *
+     * ```
+     * @example simpleString.ts
+     * ```typescript
+     *        // Displays "Hello, world!"
+     *        world.sendMessage("Hello, world!");
+     *
+     * ```
+     * @example translation.ts
+     * ```typescript
+     *        // Displays "First or Second"
+     *        const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
+     *        world.sendMessage(rawMessage);
+     *
+     * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     setDefaultSpawn(spawnPosition: Vector3): void;
