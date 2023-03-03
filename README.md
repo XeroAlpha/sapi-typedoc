@@ -23,6 +23,7 @@ yarn build
 ## 更新原始文件（Windows）
 
 ```
+git checkout original
 cd original
 yarn install --no-lockfile
 cd ..
