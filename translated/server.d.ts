@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.1.0-internal.1.19.70-preview.24"
+ *   "version": "1.1.0-internal.1.19.70-preview.26"
  * }
  * ```
  *
@@ -1314,10 +1314,6 @@ export class BlockRecordPlayerComponent extends BlockComponent {
  */
 export class BlockSignComponent extends BlockComponent {
     protected constructor();
-    /**
-     * Text of the sign
-     * @throws This property can throw when used.
-     */
     readonly text: string;
     /**
      * Identifier of this component. Should always be
