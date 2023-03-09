@@ -44,7 +44,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.0.0-internal.1.19.70-preview.26"
+ *   "version": "1.0.0-internal.1.19.80-preview.20"
  * }
  * ```
  *
@@ -64,7 +64,7 @@ export class ActionFormData {
      * Method that sets the body text for the modal form.
      * @param bodyText
      */
-    body(bodyText: string): ActionFormData;
+    body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
@@ -72,7 +72,7 @@ export class ActionFormData {
      * @param text
      * @param iconPath
      */
-    button(text: string, iconPath?: string): ActionFormData;
+    button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -88,7 +88,7 @@ export class ActionFormData {
      * This builder method sets the title for the modal dialog.
      * @param titleText
      */
-    title(titleText: string): ActionFormData;
+    title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
 /**
  * Returns data about the player results from a modal action
@@ -96,15 +96,6 @@ export class ActionFormData {
  */
 export class ActionFormResponse extends FormResponse {
     protected constructor();
-    /**
-     * Contains additional details as to why a form was canceled.
-     */
-    readonly cancelationReason?: FormCancelationReason;
-    /**
-     * If true, the form was canceled by the player (e.g., they
-     * selected the pop-up X close button).
-     */
-    readonly canceled: boolean;
     /**
      * Returns the index of the button that was pushed.
      */
@@ -134,21 +125,21 @@ export class MessageFormData {
      * Method that sets the body text for the modal form.
      * @param bodyText
      */
-    body(bodyText: string): MessageFormData;
+    body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
      * @param text
      */
-    button1(text: string): MessageFormData;
+    button1(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
      * @param text
      */
-    button2(text: string): MessageFormData;
+    button2(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -164,7 +155,7 @@ export class MessageFormData {
      * This builder method sets the title for the modal dialog.
      * @param titleText
      */
-    title(titleText: string): MessageFormData;
+    title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
 /**
  * Returns data about the player results from a modal message
@@ -172,15 +163,6 @@ export class MessageFormData {
  */
 export class MessageFormResponse extends FormResponse {
     protected constructor();
-    /**
-     * Contains additional details as to why a form was canceled.
-     */
-    readonly cancelationReason?: FormCancelationReason;
-    /**
-     * If true, the form was canceled by the player (e.g., they
-     * selected the pop-up X close button).
-     */
-    readonly canceled: boolean;
     /**
      * Returns the index of the button that was pushed.
      */
@@ -198,7 +180,11 @@ export class ModalFormData {
      * @param options
      * @param defaultValueIndex
      */
-    dropdown(label: string, options: string[], defaultValueIndex?: number): ModalFormData;
+    dropdown(
+        label: minecraftserver.RawMessage | string,
+        options: (minecraftserver.RawMessage | string)[],
+        defaultValueIndex?: number,
+    ): ModalFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -219,7 +205,7 @@ export class ModalFormData {
      * @param defaultValue
      */
     slider(
-        label: string,
+        label: minecraftserver.RawMessage | string,
         minimumValue: number,
         maximumValue: number,
         valueStep: number,
@@ -232,35 +218,30 @@ export class ModalFormData {
      * @param placeholderText
      * @param defaultValue
      */
-    textField(label: string, placeholderText: string, defaultValue?: string): ModalFormData;
+    textField(
+        label: minecraftserver.RawMessage | string,
+        placeholderText: minecraftserver.RawMessage | string,
+        defaultValue?: string,
+    ): ModalFormData;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
      * @param titleText
      */
-    title(titleText: string): ModalFormData;
+    title(titleText: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a toggle checkbox button to the form.
      * @param label
      * @param defaultValue
      */
-    toggle(label: string, defaultValue?: boolean): ModalFormData;
+    toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }
 /**
  * Returns data about player responses to a modal form.
  */
 export class ModalFormResponse extends FormResponse {
     protected constructor();
-    /**
-     * Contains additional details as to why a form was canceled.
-     */
-    readonly cancelationReason?: FormCancelationReason;
-    /**
-     * If true, the form was canceled by the player (e.g., they
-     * selected the pop-up X close button).
-     */
-    readonly canceled: boolean;
     /**
      * An ordered set of values based on the order of controls
      * specified by ModalFormData.
