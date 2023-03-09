@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.70-preview.26"
+ *   "version": "1.0.0-internal.1.19.80-preview.20"
  * }
  * ```
  *
@@ -306,7 +306,7 @@ export class SculkSpreader {
  * player. This type derives much of its structure and methods
  * from the {@link @minecraft/server.Player} type.
  */
-export class SimulatedPlayer {
+export class SimulatedPlayer extends minecraftserver.Player {
     protected constructor();
     /**
      * Rotation of the head across pitch and yaw angles.
