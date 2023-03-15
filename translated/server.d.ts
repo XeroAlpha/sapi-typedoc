@@ -15878,14 +15878,17 @@ export class Scoreboard {
     getParticipants(): ScoreboardIdentity[];
     /**
      * @remarks
+     * 获取分数持有者在记分项上的分数。
+     *
      * Returns a score given an objective and participant.
-     * @param objective
-     * Objective to retrieve the score for.
-     * @param participant
-     * Participant to retrieve the score for.
-     * @returns
-     * Score value.
-     * @throws This function can throw errors.
+     * @param objective 需要检索的记分项。
+     * @param participant 需要获取分数的分数持有者对象。
+     * @returns 分数持有者在记分项上的分数。
+     *
+     * @throws
+     * 若指定的记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若检索的记分项并未记录指定分数持有者对象的分数，抛出错误。
      */
     getScore(objective: ScoreboardObjective, participant: ScoreboardIdentity): number;
     /**
@@ -15896,7 +15899,7 @@ export class Scoreboard {
      * @param objectiveId 记分项对象或名称。
      * @returns 总是返回 `true`。
      * @throws
-     * 若指定的记分项不存在时，抛出 `"Failed to find the objective specified"`。
+     * 若指定的记分项不存在，抛出 `"Failed to find the objective specified"`。
      */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
     /**
@@ -15917,13 +15920,17 @@ export class Scoreboard {
     ): ScoreboardObjective;
     /**
      * @remarks
+     * 设置分数持有者在指定记分项上的分数。
+     *
      * Sets the score given a participant and objective.
-     * @param objective
-     * Objective to use for the scoreboard.
-     * @param participant
-     * Participant to apply the scoreboard value to.
-     * @param score
-     * @throws This function can throw errors.
+     * @param objective 将要操作的记分项。
+     * @param participant 将要操作的分数持有者。
+     * @param score 将要使用的分数。
+     * @returns 操作是否成功。
+     * @throws
+     * 若指定的记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若分数不为 `[-2147483648, 2147483647]` 之间的整数，抛出错误。
      */
     setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
@@ -15966,32 +15973,43 @@ export class ScoreboardIdentity {
     getEntity(): Entity;
     /**
      * @remarks
+     * 获取该分数持有者在记分项上的分数。
+     *
      * Gets the current score for this participant based on an
      * objective.
-     * @param objective
-     * The objective to retrieve the score for.
-     * @returns
-     * Score value.
-     * @throws This function can throw errors.
+     * @param objective 将要检索的记分项。
+     * @returns 指定记分项上所记录的分数。
+     * @throws
+     * 若记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若记分项上没有记录该分数持有者的分数，抛出错误。
      */
     getScore(objective: ScoreboardObjective): number;
     /**
      * @remarks
+     * 移除该分数持有者在指定记分项上记录的分数。
+     *
      * Removes this participant from an objective.
-     * @param objective
-     * The objective to remove this participant from.
-     * @throws This function can throw errors.
+     * @param objective 即将被移除该分数持有者相关记录的记分项。
+     * @throws
+     * 若指定的记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若记分项上没有记录该分数持有者的分数，抛出错误。
      */
     removeFromObjective(objective: ScoreboardObjective): boolean;
     /**
      * @remarks
+     * 为该分数持有者在指定的记分项上设置分数。
+     *
      * Sets a score for this participant for a particular
      * objective.
-     * @param objective
-     * Objective to apply the score to.
-     * @param score
-     * Score value.
-     * @throws This function can throw errors.
+     * @param objective 将要应用更改的记分项。
+     * @param score 修改后的结果。
+     * @returns 操作是否成功。
+     * @throws
+     * 若指定的记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若分数不为 `[-2147483648, 2147483647]` 之间的整数，抛出错误。
      */
     setScore(objective: ScoreboardObjective, score: number): boolean;
 }
@@ -16058,23 +16076,26 @@ export class ScoreboardObjective {
     getScores(): ScoreboardScoreInfo[];
     /**
      * @remarks
+     * 移除分数持有者在该记分项上记录的分数。
+     *
      * Removes a participant from this scoreboard objective.
-     * @param participant
-     * Participant to remove from being tracked with this
-     * objective.
-     * @throws This function can throw errors.
+     * @param participant 将被从该记分项中移除相关分数记录的分数持有者。
+     * @throws
+     * 若记分项不存在，抛出 `"Failed to find the objective specified"`。
      */
     removeParticipant(participant: ScoreboardIdentity): boolean;
     /**
      * @remarks
-     * 为分数持有者在此记分项上设置分数。
+     * 设置分数持有者在此记分项上的分数。
      *
      * Sets a score for a participant.
-     * @param participant
-     * Identity of the participant.
-     * @param score
-     * New value of the score.
-     * @throws This function can throw errors.
+     * @param participant 分数持有者。
+     * @param score 将被设定的分数。
+     * @returns 是否成功设置了分数。
+     * @throws
+     * 若记分项不存在，抛出 `"Failed to find the objective specified"`。
+     *
+     * 若分数不为 `[-2147483648, 2147483647]` 之间的整数，抛出错误。
      */
     setScore(participant: ScoreboardIdentity, score: number): boolean;
 }
