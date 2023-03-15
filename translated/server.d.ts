@@ -16067,6 +16067,8 @@ export class ScoreboardObjective {
     removeParticipant(participant: ScoreboardIdentity): boolean;
     /**
      * @remarks
+     * 为分数持有者在此记分项上设置分数。
+     *
      * Sets a score for a participant.
      * @param participant
      * Identity of the participant.
