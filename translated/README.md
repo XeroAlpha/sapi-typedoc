@@ -4,13 +4,13 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.1.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.2.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
-游戏版本号：`1.19.70.22`
+游戏版本号：`1.19.80.21`
 
 通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
 
@@ -35,11 +35,11 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/252|
+|[@minecraft/server](#minecraftserver)|0/299|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
-|[@minecraft/server-gametest](#minecraftserver-gametest)|0/9|
+|[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
-|[@minecraft/server-ui](#minecraftserver-ui)|0/8|
+|[@minecraft/server-ui](#minecraftserver-ui)|0/10|
 
 ### @minecraft/server
 
@@ -47,7 +47,9 @@ Minecraft 脚本 API 文档。
 | - | - | - |
 |[`Direction`](https://projectxero.top/sapi/enums/server.Direction.html)|枚举|未翻译|
 |[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|未翻译|
+|[`DyeColor`](https://projectxero.top/sapi/enums/server.DyeColor.html)|枚举|未翻译|
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
+|[`EquipmentSlot`](https://projectxero.top/sapi/enums/server.EquipmentSlot.html)|枚举|未翻译|
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
 |[`GameMode`](https://projectxero.top/sapi/enums/server.GameMode.html)|枚举|未翻译|
 |[`ItemLockMode`](https://projectxero.top/sapi/enums/server.ItemLockMode.html)|枚举|未翻译|
@@ -57,38 +59,39 @@ Minecraft 脚本 API 文档。
 |[`TimeOfDay`](https://projectxero.top/sapi/enums/server.TimeOfDay.html)|枚举|未翻译|
 |[`WatchdogTerminateReason`](https://projectxero.top/sapi/enums/server.WatchdogTerminateReason.html)|枚举|未翻译|
 |[`BeforeChatEvent`](https://projectxero.top/sapi/classes/server.BeforeChatEvent.html)|类|未翻译|
-|[`BeforeChatEventSignal`](https://projectxero.top/sapi/classes/server.BeforeChatEventSignal.html)|类|未翻译|
+|[`BeforeChatEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeChatEventSignal_deprecated.html)|类|未翻译|
 |[`BeforeDataDrivenEntityTriggerEvent`](https://projectxero.top/sapi/classes/server.BeforeDataDrivenEntityTriggerEvent.html)|类|未翻译|
-|[`BeforeDataDrivenEntityTriggerEventSignal`](https://projectxero.top/sapi/classes/server.BeforeDataDrivenEntityTriggerEventSignal.html)|类|未翻译|
+|[`BeforeDataDrivenEntityTriggerEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeDataDrivenEntityTriggerEventSignal_deprecated.html)|类|未翻译|
 |[`BeforeExplosionEvent`](https://projectxero.top/sapi/classes/server.BeforeExplosionEvent.html)|类|未翻译|
-|[`BeforeExplosionEventSignal`](https://projectxero.top/sapi/classes/server.BeforeExplosionEventSignal.html)|类|未翻译|
-|[`BeforeItemDefinitionEventSignal`](https://projectxero.top/sapi/classes/server.BeforeItemDefinitionEventSignal.html)|类|未翻译|
+|[`BeforeExplosionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeExplosionEventSignal_deprecated.html)|类|未翻译|
+|[`BeforeItemDefinitionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeItemDefinitionEventSignal_deprecated.html)|类|未翻译|
 |[`BeforeItemDefinitionTriggeredEvent`](https://projectxero.top/sapi/classes/server.BeforeItemDefinitionTriggeredEvent.html)|类|未翻译|
 |[`BeforeItemUseEvent`](https://projectxero.top/sapi/classes/server.BeforeItemUseEvent.html)|类|未翻译|
-|[`BeforeItemUseEventSignal`](https://projectxero.top/sapi/classes/server.BeforeItemUseEventSignal.html)|类|未翻译|
+|[`BeforeItemUseEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeItemUseEventSignal_deprecated.html)|类|未翻译|
 |[`BeforeItemUseOnEvent`](https://projectxero.top/sapi/classes/server.BeforeItemUseOnEvent.html)|类|未翻译|
-|[`BeforeItemUseOnEventSignal`](https://projectxero.top/sapi/classes/server.BeforeItemUseOnEventSignal.html)|类|未翻译|
+|[`BeforeItemUseOnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeItemUseOnEventSignal_deprecated.html)|类|未翻译|
 |[`BeforePistonActivateEvent`](https://projectxero.top/sapi/classes/server.BeforePistonActivateEvent.html)|类|未翻译|
-|[`BeforePistonActivateEventSignal`](https://projectxero.top/sapi/classes/server.BeforePistonActivateEventSignal.html)|类|未翻译|
+|[`BeforePistonActivateEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforePistonActivateEventSignal_deprecated.html)|类|未翻译|
 |[`BeforeWatchdogTerminateEvent`](https://projectxero.top/sapi/classes/server.BeforeWatchdogTerminateEvent.html)|类|未翻译|
-|[`BeforeWatchdogTerminateEventSignal`](https://projectxero.top/sapi/classes/server.BeforeWatchdogTerminateEventSignal.html)|类|未翻译|
+|[`BeforeWatchdogTerminateEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BeforeWatchdogTerminateEventSignal_deprecated.html)|类|未翻译|
 |[`Block`](https://projectxero.top/sapi/classes/server.Block.html)|类|未翻译|
 |[`BlockAreaSize`](https://projectxero.top/sapi/classes/server.BlockAreaSize.html)|类|未翻译|
 |[`BlockBreakEvent`](https://projectxero.top/sapi/classes/server.BlockBreakEvent.html)|类|未翻译|
-|[`BlockBreakEventSignal`](https://projectxero.top/sapi/classes/server.BlockBreakEventSignal.html)|类|未翻译|
+|[`BlockBreakEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BlockBreakEventSignal_deprecated.html)|类|未翻译|
 |[`BlockComponent`](https://projectxero.top/sapi/classes/server.BlockComponent.html)|类|未翻译|
 |[`BlockEvent`](https://projectxero.top/sapi/classes/server.BlockEvent.html)|类|未翻译|
 |[`BlockExplodeEvent`](https://projectxero.top/sapi/classes/server.BlockExplodeEvent.html)|类|未翻译|
-|[`BlockExplodeEventSignal`](https://projectxero.top/sapi/classes/server.BlockExplodeEventSignal.html)|类|未翻译|
+|[`BlockExplodeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BlockExplodeEventSignal_deprecated.html)|类|未翻译|
 |[`BlockInventoryComponent`](https://projectxero.top/sapi/classes/server.BlockInventoryComponent.html)|类|未翻译|
-|[`BlockInventoryComponentContainer`](https://projectxero.top/sapi/classes/server.BlockInventoryComponentContainer.html)|类|未翻译|
 |[`BlockLavaContainerComponent`](https://projectxero.top/sapi/classes/server.BlockLavaContainerComponent.html)|类|未翻译|
+|[`BlockLiquidContainerComponent`](https://projectxero.top/sapi/classes/server.BlockLiquidContainerComponent.html)|类|未翻译|
 |[`BlockPermutation`](https://projectxero.top/sapi/classes/server.BlockPermutation.html)|类|未翻译|
 |[`BlockPistonComponent`](https://projectxero.top/sapi/classes/server.BlockPistonComponent.html)|类|未翻译|
 |[`BlockPlaceEvent`](https://projectxero.top/sapi/classes/server.BlockPlaceEvent.html)|类|未翻译|
-|[`BlockPlaceEventSignal`](https://projectxero.top/sapi/classes/server.BlockPlaceEventSignal.html)|类|未翻译|
+|[`BlockPlaceEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BlockPlaceEventSignal_deprecated.html)|类|未翻译|
 |[`BlockPotionContainerComponent`](https://projectxero.top/sapi/classes/server.BlockPotionContainerComponent.html)|类|未翻译|
 |[`BlockProperties`](https://projectxero.top/sapi/classes/server.BlockProperties.html)|类|未翻译|
+|[`BlockProperty`](https://projectxero.top/sapi/classes/server.BlockProperty.html)|类|未翻译|
 |[`BlockPropertyType`](https://projectxero.top/sapi/classes/server.BlockPropertyType.html)|类|未翻译|
 |[`BlockRecordPlayerComponent`](https://projectxero.top/sapi/classes/server.BlockRecordPlayerComponent.html)|类|未翻译|
 |[`BlockSignComponent`](https://projectxero.top/sapi/classes/server.BlockSignComponent.html)|类|未翻译|
@@ -96,21 +99,22 @@ Minecraft 脚本 API 文档。
 |[`BlockType`](https://projectxero.top/sapi/classes/server.BlockType.html)|类|未翻译|
 |[`BlockWaterContainerComponent`](https://projectxero.top/sapi/classes/server.BlockWaterContainerComponent.html)|类|未翻译|
 |[`ButtonPushEvent`](https://projectxero.top/sapi/classes/server.ButtonPushEvent.html)|类|未翻译|
-|[`ButtonPushEventSignal`](https://projectxero.top/sapi/classes/server.ButtonPushEventSignal.html)|类|未翻译|
+|[`ButtonPushEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ButtonPushEventSignal_deprecated.html)|类|未翻译|
 |[`ChatEvent`](https://projectxero.top/sapi/classes/server.ChatEvent.html)|类|未翻译|
-|[`ChatEventSignal`](https://projectxero.top/sapi/classes/server.ChatEventSignal.html)|类|未翻译|
+|[`ChatEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ChatEventSignal_deprecated.html)|类|未翻译|
 |[`CommandResult`](https://projectxero.top/sapi/classes/server.CommandResult.html)|类|未翻译|
+|[`Component`](https://projectxero.top/sapi/classes/server.Component.html)|类|未翻译|
 |[`Container`](https://projectxero.top/sapi/classes/server.Container.html)|类|未翻译|
 |[`ContainerSlot`](https://projectxero.top/sapi/classes/server.ContainerSlot.html)|类|未翻译|
 |[`DataDrivenEntityTriggerEvent`](https://projectxero.top/sapi/classes/server.DataDrivenEntityTriggerEvent.html)|类|未翻译|
-|[`DataDrivenEntityTriggerEventSignal`](https://projectxero.top/sapi/classes/server.DataDrivenEntityTriggerEventSignal.html)|类|未翻译|
+|[`DataDrivenEntityTriggerEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.DataDrivenEntityTriggerEventSignal_deprecated.html)|类|未翻译|
 |[`DefinitionModifier`](https://projectxero.top/sapi/classes/server.DefinitionModifier.html)|类|未翻译|
 |[`Dimension`](https://projectxero.top/sapi/classes/server.Dimension.html)|类|未翻译|
 |[`DirectionBlockProperty`](https://projectxero.top/sapi/classes/server.DirectionBlockProperty.html)|类|未翻译|
 |[`DynamicPropertiesDefinition`](https://projectxero.top/sapi/classes/server.DynamicPropertiesDefinition.html)|类|未翻译|
 |[`Effect`](https://projectxero.top/sapi/classes/server.Effect.html)|类|未翻译|
 |[`EffectAddEvent`](https://projectxero.top/sapi/classes/server.EffectAddEvent.html)|类|未翻译|
-|[`EffectAddEventSignal`](https://projectxero.top/sapi/classes/server.EffectAddEventSignal.html)|类|未翻译|
+|[`EffectAddEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.EffectAddEventSignal_deprecated.html)|类|未翻译|
 |[`EffectType`](https://projectxero.top/sapi/classes/server.EffectType.html)|类|未翻译|
 |[`Enchantment`](https://projectxero.top/sapi/classes/server.Enchantment.html)|类|未翻译|
 |[`EnchantmentList`](https://projectxero.top/sapi/classes/server.EnchantmentList.html)|类|未翻译|
@@ -119,14 +123,18 @@ Minecraft 脚本 API 文档。
 |[`Entity`](https://projectxero.top/sapi/classes/server.Entity.html)|类|未翻译|
 |[`EntityAddRiderComponent`](https://projectxero.top/sapi/classes/server.EntityAddRiderComponent.html)|类|未翻译|
 |[`EntityAgeableComponent`](https://projectxero.top/sapi/classes/server.EntityAgeableComponent.html)|类|未翻译|
+|[`EntityAttributeComponent`](https://projectxero.top/sapi/classes/server.EntityAttributeComponent.html)|类|未翻译|
+|[`EntityBaseMovementComponent`](https://projectxero.top/sapi/classes/server.EntityBaseMovementComponent.html)|类|未翻译|
 |[`EntityBreathableComponent`](https://projectxero.top/sapi/classes/server.EntityBreathableComponent.html)|类|未翻译|
 |[`EntityCanClimbComponent`](https://projectxero.top/sapi/classes/server.EntityCanClimbComponent.html)|类|未翻译|
 |[`EntityCanFlyComponent`](https://projectxero.top/sapi/classes/server.EntityCanFlyComponent.html)|类|未翻译|
 |[`EntityCanPowerJumpComponent`](https://projectxero.top/sapi/classes/server.EntityCanPowerJumpComponent.html)|类|未翻译|
 |[`EntityColorComponent`](https://projectxero.top/sapi/classes/server.EntityColorComponent.html)|类|未翻译|
+|[`EntityComponent`](https://projectxero.top/sapi/classes/server.EntityComponent.html)|类|未翻译|
 |[`EntityDefinitionFeedItem`](https://projectxero.top/sapi/classes/server.EntityDefinitionFeedItem.html)|类|未翻译|
 |[`EntityDieEvent`](https://projectxero.top/sapi/classes/server.EntityDieEvent.html)|类|未翻译|
-|[`EntityDieEventSignal`](https://projectxero.top/sapi/classes/server.EntityDieEventSignal.html)|类|未翻译|
+|[`EntityDieEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.EntityDieEventSignal_deprecated.html)|类|未翻译|
+|[`EntityEquipmentInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityEquipmentInventoryComponent.html)|类|未翻译|
 |[`EntityFireImmuneComponent`](https://projectxero.top/sapi/classes/server.EntityFireImmuneComponent.html)|类|未翻译|
 |[`EntityFloatsInLiquidComponent`](https://projectxero.top/sapi/classes/server.EntityFloatsInLiquidComponent.html)|类|未翻译|
 |[`EntityFlyingSpeedComponent`](https://projectxero.top/sapi/classes/server.EntityFlyingSpeedComponent.html)|类|未翻译|
@@ -135,9 +143,9 @@ Minecraft 脚本 API 文档。
 |[`EntityHealableComponent`](https://projectxero.top/sapi/classes/server.EntityHealableComponent.html)|类|未翻译|
 |[`EntityHealthComponent`](https://projectxero.top/sapi/classes/server.EntityHealthComponent.html)|类|未翻译|
 |[`EntityHitEvent`](https://projectxero.top/sapi/classes/server.EntityHitEvent.html)|类|未翻译|
-|[`EntityHitEventSignal`](https://projectxero.top/sapi/classes/server.EntityHitEventSignal.html)|类|未翻译|
+|[`EntityHitEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.EntityHitEventSignal_deprecated.html)|类|未翻译|
 |[`EntityHurtEvent`](https://projectxero.top/sapi/classes/server.EntityHurtEvent.html)|类|未翻译|
-|[`EntityHurtEventSignal`](https://projectxero.top/sapi/classes/server.EntityHurtEventSignal.html)|类|未翻译|
+|[`EntityHurtEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.EntityHurtEventSignal_deprecated.html)|类|未翻译|
 |[`EntityInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityInventoryComponent.html)|类|未翻译|
 |[`EntityIsBabyComponent`](https://projectxero.top/sapi/classes/server.EntityIsBabyComponent.html)|类|未翻译|
 |[`EntityIsChargedComponent`](https://projectxero.top/sapi/classes/server.EntityIsChargedComponent.html)|类|未翻译|
@@ -169,6 +177,7 @@ Minecraft 脚本 API 文档。
 |[`EntityMovementSkipComponent`](https://projectxero.top/sapi/classes/server.EntityMovementSkipComponent.html)|类|未翻译|
 |[`EntityMovementSwayComponent`](https://projectxero.top/sapi/classes/server.EntityMovementSwayComponent.html)|类|未翻译|
 |[`EntityNavigationClimbComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationClimbComponent.html)|类|未翻译|
+|[`EntityNavigationComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationComponent.html)|类|未翻译|
 |[`EntityNavigationFloatComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationFloatComponent.html)|类|未翻译|
 |[`EntityNavigationFlyComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationFlyComponent.html)|类|未翻译|
 |[`EntityNavigationGenericComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationGenericComponent.html)|类|未翻译|
@@ -177,10 +186,11 @@ Minecraft 脚本 API 文档。
 |[`EntityOnFireComponent`](https://projectxero.top/sapi/classes/server.EntityOnFireComponent.html)|类|未翻译|
 |[`EntityPushThroughComponent`](https://projectxero.top/sapi/classes/server.EntityPushThroughComponent.html)|类|未翻译|
 |[`EntityRideableComponent`](https://projectxero.top/sapi/classes/server.EntityRideableComponent.html)|类|未翻译|
+|[`EntityRidingComponent`](https://projectxero.top/sapi/classes/server.EntityRidingComponent.html)|类|未翻译|
 |[`EntityScaleComponent`](https://projectxero.top/sapi/classes/server.EntityScaleComponent.html)|类|未翻译|
 |[`EntitySkinIdComponent`](https://projectxero.top/sapi/classes/server.EntitySkinIdComponent.html)|类|未翻译|
 |[`EntitySpawnEvent`](https://projectxero.top/sapi/classes/server.EntitySpawnEvent.html)|类|未翻译|
-|[`EntitySpawnEventSignal`](https://projectxero.top/sapi/classes/server.EntitySpawnEventSignal.html)|类|未翻译|
+|[`EntitySpawnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.EntitySpawnEventSignal_deprecated.html)|类|未翻译|
 |[`EntityStrengthComponent`](https://projectxero.top/sapi/classes/server.EntityStrengthComponent.html)|类|未翻译|
 |[`EntityTameableComponent`](https://projectxero.top/sapi/classes/server.EntityTameableComponent.html)|类|未翻译|
 |[`EntityType`](https://projectxero.top/sapi/classes/server.EntityType.html)|类|未翻译|
@@ -191,42 +201,80 @@ Minecraft 脚本 API 文档。
 |[`EntityWantsJockeyComponent`](https://projectxero.top/sapi/classes/server.EntityWantsJockeyComponent.html)|类|未翻译|
 |[`Events`](https://projectxero.top/sapi/classes/server.Events.html)|类|未翻译|
 |[`ExplosionEvent`](https://projectxero.top/sapi/classes/server.ExplosionEvent.html)|类|未翻译|
-|[`ExplosionEventSignal`](https://projectxero.top/sapi/classes/server.ExplosionEventSignal.html)|类|未翻译|
+|[`ExplosionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ExplosionEventSignal_deprecated.html)|类|未翻译|
 |[`FeedItem`](https://projectxero.top/sapi/classes/server.FeedItem.html)|类|未翻译|
 |[`FeedItemEffect`](https://projectxero.top/sapi/classes/server.FeedItemEffect.html)|类|未翻译|
 |[`FilterGroup`](https://projectxero.top/sapi/classes/server.FilterGroup.html)|类|未翻译|
 |[`FluidContainer`](https://projectxero.top/sapi/classes/server.FluidContainer.html)|类|未翻译|
-|[`IEntityComponent`](https://projectxero.top/sapi/classes/server.IEntityComponent.html)|类|未翻译|
-|[`InventoryComponentContainer`](https://projectxero.top/sapi/classes/server.InventoryComponentContainer.html)|类|未翻译|
+|[`IBeforeChatEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeChatEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeDataDrivenEntityTriggerEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeDataDrivenEntityTriggerEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeExplosionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeExplosionEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeItemDefinitionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeItemDefinitionEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeItemUseEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeItemUseEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeItemUseOnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforeItemUseOnEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforePistonActivateEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.IBeforePistonActivateEventSignal_deprecated.html)|类|未翻译|
+|[`IBeforeWatchdogTerminateEventSignal`](https://projectxero.top/sapi/classes/server.IBeforeWatchdogTerminateEventSignal.html)|类|未翻译|
+|[`IBlockBreakEventSignal`](https://projectxero.top/sapi/classes/server.IBlockBreakEventSignal.html)|类|未翻译|
+|[`IBlockExplodeEventSignal`](https://projectxero.top/sapi/classes/server.IBlockExplodeEventSignal.html)|类|未翻译|
+|[`IBlockPlaceEventSignal`](https://projectxero.top/sapi/classes/server.IBlockPlaceEventSignal.html)|类|未翻译|
+|[`IButtonPushEventSignal`](https://projectxero.top/sapi/classes/server.IButtonPushEventSignal.html)|类|未翻译|
+|[`IChatEventSignal`](https://projectxero.top/sapi/classes/server.IChatEventSignal.html)|类|未翻译|
+|[`IDataDrivenEntityTriggerEventSignal`](https://projectxero.top/sapi/classes/server.IDataDrivenEntityTriggerEventSignal.html)|类|未翻译|
+|[`IEffectAddEventSignal`](https://projectxero.top/sapi/classes/server.IEffectAddEventSignal.html)|类|未翻译|
+|[`IEntityDieEventSignal`](https://projectxero.top/sapi/classes/server.IEntityDieEventSignal.html)|类|未翻译|
+|[`IEntityHitEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHitEventSignal.html)|类|未翻译|
+|[`IEntityHurtEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHurtEventSignal.html)|类|未翻译|
+|[`IEntitySpawnEventSignal`](https://projectxero.top/sapi/classes/server.IEntitySpawnEventSignal.html)|类|未翻译|
+|[`IExplosionEventSignal`](https://projectxero.top/sapi/classes/server.IExplosionEventSignal.html)|类|未翻译|
+|[`IItemCompleteChargeEventSignal`](https://projectxero.top/sapi/classes/server.IItemCompleteChargeEventSignal.html)|类|未翻译|
+|[`IItemDefinitionEventSignal`](https://projectxero.top/sapi/classes/server.IItemDefinitionEventSignal.html)|类|未翻译|
+|[`IItemReleaseChargeEventSignal`](https://projectxero.top/sapi/classes/server.IItemReleaseChargeEventSignal.html)|类|未翻译|
+|[`IItemStartChargeEventSignal`](https://projectxero.top/sapi/classes/server.IItemStartChargeEventSignal.html)|类|未翻译|
+|[`IItemStartUseOnEventSignal`](https://projectxero.top/sapi/classes/server.IItemStartUseOnEventSignal.html)|类|未翻译|
+|[`IItemStopChargeEventSignal`](https://projectxero.top/sapi/classes/server.IItemStopChargeEventSignal.html)|类|未翻译|
+|[`IItemStopUseOnEventSignal`](https://projectxero.top/sapi/classes/server.IItemStopUseOnEventSignal.html)|类|未翻译|
+|[`IItemUseEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseEventSignal.html)|类|未翻译|
+|[`IItemUseOnEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseOnEventSignal.html)|类|未翻译|
+|[`ILeverActionEventSignal`](https://projectxero.top/sapi/classes/server.ILeverActionEventSignal.html)|类|未翻译|
+|[`IPistonActivateEventSignal`](https://projectxero.top/sapi/classes/server.IPistonActivateEventSignal.html)|类|未翻译|
+|[`IPlayerJoinEventSignal`](https://projectxero.top/sapi/classes/server.IPlayerJoinEventSignal.html)|类|未翻译|
+|[`IPlayerLeaveEventSignal`](https://projectxero.top/sapi/classes/server.IPlayerLeaveEventSignal.html)|类|未翻译|
+|[`IPlayerSpawnEventSignal`](https://projectxero.top/sapi/classes/server.IPlayerSpawnEventSignal.html)|类|未翻译|
+|[`IProjectileHitEventSignal`](https://projectxero.top/sapi/classes/server.IProjectileHitEventSignal.html)|类|未翻译|
+|[`IScriptEventCommandMessageSignal`](https://projectxero.top/sapi/classes/server.IScriptEventCommandMessageSignal.html)|类|未翻译|
+|[`IServerMessageSignal`](https://projectxero.top/sapi/classes/server.IServerMessageSignal.html)|类|未翻译|
+|[`IWeatherChangeEventSignal`](https://projectxero.top/sapi/classes/server.IWeatherChangeEventSignal.html)|类|未翻译|
+|[`IWorldInitializeEventSignal`](https://projectxero.top/sapi/classes/server.IWorldInitializeEventSignal.html)|类|未翻译|
 |[`ItemCompleteChargeEvent`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEvent.html)|类|未翻译|
-|[`ItemCompleteChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEventSignal.html)|类|未翻译|
+|[`ItemCompleteChargeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeEventSignal_deprecated.html)|类|未翻译|
+|[`ItemComponent`](https://projectxero.top/sapi/classes/server.ItemComponent.html)|类|未翻译|
 |[`ItemCooldownComponent`](https://projectxero.top/sapi/classes/server.ItemCooldownComponent.html)|类|未翻译|
-|[`ItemDefinitionEventSignal`](https://projectxero.top/sapi/classes/server.ItemDefinitionEventSignal.html)|类|未翻译|
+|[`ItemDefinitionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemDefinitionEventSignal_deprecated.html)|类|未翻译|
 |[`ItemDefinitionTriggeredEvent`](https://projectxero.top/sapi/classes/server.ItemDefinitionTriggeredEvent.html)|类|未翻译|
 |[`ItemDurabilityComponent`](https://projectxero.top/sapi/classes/server.ItemDurabilityComponent.html)|类|未翻译|
 |[`ItemEnchantsComponent`](https://projectxero.top/sapi/classes/server.ItemEnchantsComponent.html)|类|未翻译|
 |[`ItemFoodComponent`](https://projectxero.top/sapi/classes/server.ItemFoodComponent.html)|类|未翻译|
 |[`ItemReleaseChargeEvent`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeEvent.html)|类|未翻译|
-|[`ItemReleaseChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeEventSignal.html)|类|未翻译|
+|[`ItemReleaseChargeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeEventSignal_deprecated.html)|类|未翻译|
 |[`ItemStack`](https://projectxero.top/sapi/classes/server.ItemStack.html)|类|未翻译|
 |[`ItemStartChargeEvent`](https://projectxero.top/sapi/classes/server.ItemStartChargeEvent.html)|类|未翻译|
-|[`ItemStartChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemStartChargeEventSignal.html)|类|未翻译|
+|[`ItemStartChargeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemStartChargeEventSignal_deprecated.html)|类|未翻译|
 |[`ItemStartUseOnEvent`](https://projectxero.top/sapi/classes/server.ItemStartUseOnEvent.html)|类|未翻译|
-|[`ItemStartUseOnEventSignal`](https://projectxero.top/sapi/classes/server.ItemStartUseOnEventSignal.html)|类|未翻译|
+|[`ItemStartUseOnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemStartUseOnEventSignal_deprecated.html)|类|未翻译|
 |[`ItemStopChargeEvent`](https://projectxero.top/sapi/classes/server.ItemStopChargeEvent.html)|类|未翻译|
-|[`ItemStopChargeEventSignal`](https://projectxero.top/sapi/classes/server.ItemStopChargeEventSignal.html)|类|未翻译|
+|[`ItemStopChargeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemStopChargeEventSignal_deprecated.html)|类|未翻译|
 |[`ItemStopUseOnEvent`](https://projectxero.top/sapi/classes/server.ItemStopUseOnEvent.html)|类|未翻译|
-|[`ItemStopUseOnEventSignal`](https://projectxero.top/sapi/classes/server.ItemStopUseOnEventSignal.html)|类|未翻译|
+|[`ItemStopUseOnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemStopUseOnEventSignal_deprecated.html)|类|未翻译|
 |[`ItemType`](https://projectxero.top/sapi/classes/server.ItemType.html)|类|未翻译|
 |[`ItemTypeIterator`](https://projectxero.top/sapi/classes/server.ItemTypeIterator.html)|类|未翻译|
 |[`ItemTypes`](https://projectxero.top/sapi/classes/server.ItemTypes.html)|类|未翻译|
 |[`ItemUseEvent`](https://projectxero.top/sapi/classes/server.ItemUseEvent.html)|类|未翻译|
-|[`ItemUseEventSignal`](https://projectxero.top/sapi/classes/server.ItemUseEventSignal.html)|类|未翻译|
+|[`ItemUseEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemUseEventSignal_deprecated.html)|类|未翻译|
 |[`ItemUseOnEvent`](https://projectxero.top/sapi/classes/server.ItemUseOnEvent.html)|类|未翻译|
-|[`ItemUseOnEventSignal`](https://projectxero.top/sapi/classes/server.ItemUseOnEventSignal.html)|类|未翻译|
+|[`ItemUseOnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemUseOnEventSignal_deprecated.html)|类|未翻译|
 |[`Items`](https://projectxero.top/sapi/classes/server.Items.html)|类|未翻译|
 |[`LeverActionEvent`](https://projectxero.top/sapi/classes/server.LeverActionEvent.html)|类|未翻译|
-|[`LeverActionEventSignal`](https://projectxero.top/sapi/classes/server.LeverActionEventSignal.html)|类|未翻译|
+|[`LeverActionEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.LeverActionEventSignal_deprecated.html)|类|未翻译|
 |[`MessageReceiveEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveEvent.html)|类|未翻译|
 |[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|未翻译|
 |[`MinecraftDimensionTypes`](https://projectxero.top/sapi/classes/server.MinecraftDimensionTypes.html)|类|未翻译|
@@ -237,18 +285,17 @@ Minecraft 脚本 API 文档。
 |[`MolangVariableMap`](https://projectxero.top/sapi/classes/server.MolangVariableMap.html)|类|未翻译|
 |[`NavigationResult`](https://projectxero.top/sapi/classes/server.NavigationResult.html)|类|未翻译|
 |[`PistonActivateEvent`](https://projectxero.top/sapi/classes/server.PistonActivateEvent.html)|类|未翻译|
-|[`PistonActivateEventSignal`](https://projectxero.top/sapi/classes/server.PistonActivateEventSignal.html)|类|未翻译|
+|[`PistonActivateEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.PistonActivateEventSignal_deprecated.html)|类|未翻译|
 |[`Player`](https://projectxero.top/sapi/classes/server.Player.html)|类|未翻译|
-|[`PlayerInventoryComponentContainer`](https://projectxero.top/sapi/classes/server.PlayerInventoryComponentContainer.html)|类|未翻译|
 |[`PlayerIterator`](https://projectxero.top/sapi/classes/server.PlayerIterator.html)|类|未翻译|
 |[`PlayerJoinEvent`](https://projectxero.top/sapi/classes/server.PlayerJoinEvent.html)|类|未翻译|
-|[`PlayerJoinEventSignal`](https://projectxero.top/sapi/classes/server.PlayerJoinEventSignal.html)|类|未翻译|
+|[`PlayerJoinEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.PlayerJoinEventSignal_deprecated.html)|类|未翻译|
 |[`PlayerLeaveEvent`](https://projectxero.top/sapi/classes/server.PlayerLeaveEvent.html)|类|未翻译|
-|[`PlayerLeaveEventSignal`](https://projectxero.top/sapi/classes/server.PlayerLeaveEventSignal.html)|类|未翻译|
+|[`PlayerLeaveEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.PlayerLeaveEventSignal_deprecated.html)|类|未翻译|
 |[`PlayerSpawnEvent`](https://projectxero.top/sapi/classes/server.PlayerSpawnEvent.html)|类|未翻译|
-|[`PlayerSpawnEventSignal`](https://projectxero.top/sapi/classes/server.PlayerSpawnEventSignal.html)|类|未翻译|
+|[`PlayerSpawnEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.PlayerSpawnEventSignal_deprecated.html)|类|未翻译|
 |[`ProjectileHitEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitEvent.html)|类|未翻译|
-|[`ProjectileHitEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitEventSignal.html)|类|未翻译|
+|[`ProjectileHitEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ProjectileHitEventSignal_deprecated.html)|类|未翻译|
 |[`PropertyRegistry`](https://projectxero.top/sapi/classes/server.PropertyRegistry.html)|类|未翻译|
 |[`Scoreboard`](https://projectxero.top/sapi/classes/server.Scoreboard.html)|类|未翻译|
 |[`ScoreboardIdentity`](https://projectxero.top/sapi/classes/server.ScoreboardIdentity.html)|类|未翻译|
@@ -256,20 +303,19 @@ Minecraft 脚本 API 文档。
 |[`ScoreboardScoreInfo`](https://projectxero.top/sapi/classes/server.ScoreboardScoreInfo.html)|类|未翻译|
 |[`ScreenDisplay`](https://projectxero.top/sapi/classes/server.ScreenDisplay.html)|类|未翻译|
 |[`ScriptEventCommandMessageEvent`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageEvent.html)|类|未翻译|
-|[`ScriptEventCommandMessageSignal`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageSignal.html)|类|未翻译|
+|[`ScriptEventCommandMessageSignal_deprecated`](https://projectxero.top/sapi/classes/server.ScriptEventCommandMessageSignal_deprecated.html)|类|未翻译|
 |[`Seat`](https://projectxero.top/sapi/classes/server.Seat.html)|类|未翻译|
-|[`ServerMessageSignal`](https://projectxero.top/sapi/classes/server.ServerMessageSignal.html)|类|未翻译|
+|[`ServerMessageSignal_deprecated`](https://projectxero.top/sapi/classes/server.ServerMessageSignal_deprecated.html)|类|未翻译|
 |[`System`](https://projectxero.top/sapi/classes/server.System.html)|类|未翻译|
 |[`SystemEvents`](https://projectxero.top/sapi/classes/server.SystemEvents.html)|类|未翻译|
 |[`TickEvent`](https://projectxero.top/sapi/classes/server.TickEvent.html)|类|未翻译|
-|[`TickEventSignal`](https://projectxero.top/sapi/classes/server.TickEventSignal.html)|类|未翻译|
 |[`Trigger`](https://projectxero.top/sapi/classes/server.Trigger.html)|类|未翻译|
 |[`Vector`](https://projectxero.top/sapi/classes/server.Vector.html)|类|未翻译|
 |[`WeatherChangeEvent`](https://projectxero.top/sapi/classes/server.WeatherChangeEvent.html)|类|未翻译|
-|[`WeatherChangeEventSignal`](https://projectxero.top/sapi/classes/server.WeatherChangeEventSignal.html)|类|未翻译|
+|[`WeatherChangeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.WeatherChangeEventSignal_deprecated.html)|类|未翻译|
 |[`World`](https://projectxero.top/sapi/classes/server.World.html)|类|未翻译|
 |[`WorldInitializeEvent`](https://projectxero.top/sapi/classes/server.WorldInitializeEvent.html)|类|未翻译|
-|[`WorldInitializeEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeEventSignal.html)|类|未翻译|
+|[`WorldInitializeEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.WorldInitializeEventSignal_deprecated.html)|类|未翻译|
 |[`XYRotation`](https://projectxero.top/sapi/classes/server.XYRotation.html)|类|未翻译|
 |[`BlockFillOptions`](https://projectxero.top/sapi/interfaces/server.BlockFillOptions.html)|接口|未翻译|
 |[`BlockHitInformation`](https://projectxero.top/sapi/interfaces/server.BlockHitInformation.html)|接口|未翻译|
@@ -288,15 +334,16 @@ Minecraft 脚本 API 文档。
 |[`PlayAnimationOptions`](https://projectxero.top/sapi/interfaces/server.PlayAnimationOptions.html)|接口|未翻译|
 |[`RawMessage`](https://projectxero.top/sapi/interfaces/server.RawMessage.html)|接口|未翻译|
 |[`RawMessageScore`](https://projectxero.top/sapi/interfaces/server.RawMessageScore.html)|接口|未翻译|
+|[`RawText`](https://projectxero.top/sapi/interfaces/server.RawText.html)|接口|未翻译|
 |[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|未翻译|
 |[`ScriptEventMessageFilterOptions`](https://projectxero.top/sapi/interfaces/server.ScriptEventMessageFilterOptions.html)|接口|未翻译|
 |[`SoundOptions`](https://projectxero.top/sapi/interfaces/server.SoundOptions.html)|接口|未翻译|
 |[`TitleDisplayOptions`](https://projectxero.top/sapi/interfaces/server.TitleDisplayOptions.html)|接口|未翻译|
 |[`Vector3`](https://projectxero.top/sapi/interfaces/server.Vector3.html)|接口|未翻译|
-|[`TicksPerDay`](https://projectxero.top/sapi/variables/server.TicksPerDay.html)|值|未翻译|
-|[`TicksPerSecond`](https://projectxero.top/sapi/variables/server.TicksPerSecond.html)|值|未翻译|
-|[`system`](https://projectxero.top/sapi/variables/server.system-1.html)|值|未翻译|
-|[`world`](https://projectxero.top/sapi/variables/server.world-1.html)|值|未翻译|
+|[`TicksPerDay`](https://projectxero.top/sapi/variables/server.TicksPerDay.html)|变量|未翻译|
+|[`TicksPerSecond`](https://projectxero.top/sapi/variables/server.TicksPerSecond.html)|变量|未翻译|
+|[`system`](https://projectxero.top/sapi/variables/server.system-1.html)|变量|未翻译|
+|[`world`](https://projectxero.top/sapi/variables/server.world-1.html)|变量|未翻译|
 
 ### @minecraft/server-admin
 
@@ -305,20 +352,23 @@ Minecraft 脚本 API 文档。
 |[`SecretString`](https://projectxero.top/sapi/classes/server_admin.SecretString.html)|类|未翻译|
 |[`ServerSecrets`](https://projectxero.top/sapi/classes/server_admin.ServerSecrets.html)|类|未翻译|
 |[`ServerVariables`](https://projectxero.top/sapi/classes/server_admin.ServerVariables.html)|类|未翻译|
-|[`secrets`](https://projectxero.top/sapi/variables/server_admin.secrets.html)|值|未翻译|
-|[`variables`](https://projectxero.top/sapi/variables/server_admin.variables.html)|值|未翻译|
+|[`secrets`](https://projectxero.top/sapi/variables/server_admin.secrets.html)|变量|未翻译|
+|[`variables`](https://projectxero.top/sapi/variables/server_admin.variables.html)|变量|未翻译|
 
 ### @minecraft/server-gametest
 
 |名称|类型|状态|
 | - | - | - |
+|[`GameTestErrorType`](https://projectxero.top/sapi/enums/server_gametest.GameTestErrorType.html)|枚举|未翻译|
 |[`FenceConnectivity`](https://projectxero.top/sapi/classes/server_gametest.FenceConnectivity.html)|类|未翻译|
+|[`GameTestError`](https://projectxero.top/sapi/classes/server_gametest.GameTestError.html)|类|未翻译|
 |[`GameTestSequence`](https://projectxero.top/sapi/classes/server_gametest.GameTestSequence.html)|类|未翻译|
 |[`RegistrationBuilder`](https://projectxero.top/sapi/classes/server_gametest.RegistrationBuilder.html)|类|未翻译|
 |[`SculkSpreader`](https://projectxero.top/sapi/classes/server_gametest.SculkSpreader.html)|类|未翻译|
 |[`SimulatedPlayer`](https://projectxero.top/sapi/classes/server_gametest.SimulatedPlayer.html)|类|未翻译|
 |[`Tags`](https://projectxero.top/sapi/classes/server_gametest.Tags.html)|类|未翻译|
 |[`Test`](https://projectxero.top/sapi/classes/server_gametest.Test.html)|类|未翻译|
+|[`GameTestErrorContext`](https://projectxero.top/sapi/interfaces/server_gametest.GameTestErrorContext.html)|接口|未翻译|
 |[`register`](https://projectxero.top/sapi/functions/server_gametest.register.html)|函数|未翻译|
 |[`registerAsync`](https://projectxero.top/sapi/functions/server_gametest.registerAsync.html)|函数|未翻译|
 
@@ -331,15 +381,17 @@ Minecraft 脚本 API 文档。
 |[`HttpHeader`](https://projectxero.top/sapi/classes/server_net.HttpHeader.html)|类|未翻译|
 |[`HttpRequest`](https://projectxero.top/sapi/classes/server_net.HttpRequest.html)|类|未翻译|
 |[`HttpResponse`](https://projectxero.top/sapi/classes/server_net.HttpResponse.html)|类|未翻译|
-|[`http`](https://projectxero.top/sapi/variables/server_net.http.html)|值|未翻译|
+|[`http`](https://projectxero.top/sapi/variables/server_net.http.html)|变量|未翻译|
 
 ### @minecraft/server-ui
 
 |名称|类型|状态|
 | - | - | - |
 |[`FormCancelationReason`](https://projectxero.top/sapi/enums/server_ui.FormCancelationReason.html)|枚举|未翻译|
+|[`FormRejectReason`](https://projectxero.top/sapi/enums/server_ui.FormRejectReason.html)|枚举|未翻译|
 |[`ActionFormData`](https://projectxero.top/sapi/classes/server_ui.ActionFormData.html)|类|未翻译|
 |[`ActionFormResponse`](https://projectxero.top/sapi/classes/server_ui.ActionFormResponse.html)|类|未翻译|
+|[`FormRejectError`](https://projectxero.top/sapi/classes/server_ui.FormRejectError.html)|类|未翻译|
 |[`FormResponse`](https://projectxero.top/sapi/classes/server_ui.FormResponse.html)|类|未翻译|
 |[`MessageFormData`](https://projectxero.top/sapi/classes/server_ui.MessageFormData.html)|类|未翻译|
 |[`MessageFormResponse`](https://projectxero.top/sapi/classes/server_ui.MessageFormResponse.html)|类|未翻译|

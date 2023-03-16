@@ -17,12 +17,24 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.80-preview.20"
+ *   "version": "1.0.0-internal.1.19.80-preview.21"
  * }
  * ```
  *
  */
 import * as minecraftserver from '@minecraft/server';
+export enum GameTestErrorType {
+    Assert = 'Assert',
+    AssertAtPosition = 'AssertAtPosition',
+    ExecutionTimeout = 'ExecutionTimeout',
+    ExhaustedAttempts = 'ExhaustedAttempts',
+    FailConditionsMet = 'FailConditionsMet',
+    LevelStateModificationFailed = 'LevelStateModificationFailed',
+    MethodNotImplemented = 'MethodNotImplemented',
+    SimulatedPlayerOutOfBounds = 'SimulatedPlayerOutOfBounds',
+    Unknown = 'Unknown',
+    Waiting = 'Waiting',
+}
 /**
  * Returns information about whether this fence is connected to
  * other fences in several directions.
@@ -1705,6 +1717,17 @@ export class Test {
      * @throws This function can throw errors.
      */
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
+}
+export interface GameTestErrorContext {
+    absolutePosition: minecraftserver.Vector3;
+    relativePosition: minecraftserver.Vector3;
+    tickCount: number;
+}
+export class GameTestError extends Error {
+    protected constructor();
+    context?: GameTestErrorContext;
+    messageParameters: string[];
+    type: GameTestErrorType;
 }
 /**
  * @remarks
