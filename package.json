@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build-original": "typedoc --tsconfig original/tsconfig.json --out dist_original --json dist_original/index.json",
-    "build": "typedoc --tsconfig translated/tsconfig.json --out dist --json dist/index.json --logLevel Verbose"
+    "build": "node ./script/build.js",
+    "update": "node ./script/update.js"
   },
   "dependencies": {
     "typedoc": "^0.23.23",

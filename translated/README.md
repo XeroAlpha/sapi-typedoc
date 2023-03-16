@@ -2,6 +2,8 @@
 
 Minecraft 脚本 API 文档。
 
+<!-- summary start -->
+
 |模块|版本|
 | - | - |
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.2.0-beta`|
@@ -11,6 +13,8 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
 游戏版本号：`1.19.80.21`
+
+<!-- summary end -->
 
 通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
 
@@ -32,6 +36,8 @@ Minecraft 脚本 API 文档。
 |`未更新`|原文本已经更新，但尚未翻译|
 |`暂停中`|未完成翻译，因为译名讨论等原因暂停|
 |`已完成`|已完成此部分的翻译|
+
+<!-- status start -->
 
 |模块|进度|
 | - | - |
@@ -397,3 +403,5 @@ Minecraft 脚本 API 文档。
 |[`MessageFormResponse`](https://projectxero.top/sapi/classes/server_ui.MessageFormResponse.html)|类|未翻译|
 |[`ModalFormData`](https://projectxero.top/sapi/classes/server_ui.ModalFormData.html)|类|未翻译|
 |[`ModalFormResponse`](https://projectxero.top/sapi/classes/server_ui.ModalFormResponse.html)|类|未翻译|
+
+<!-- status end -->

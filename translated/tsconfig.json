@@ -1,7 +1,5 @@
 {
-    "include": [
-        "ts/*"
-    ],
+    "include": ["*"],
     "compilerOptions": {
         "module": "commonjs",
         "lib": ["es6"],
@@ -18,18 +16,16 @@
     },
     "typedocOptions": {
         "name": "@minecraft",
-        "entryPoints": [
-            "ts/*"
-        ],
+        "entryPoints": ["*.d.ts"],
         "externalPattern": "",
-        "disableSources": true,
         "customCss": "./assets/extra.css",
         "externalSymbolLinkMappings": {
             "typescript": {
                 "Promise": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise",
                 "Iterable": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
                 "Iterator": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
-                "IteratorResult": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols"
+                "IteratorResult": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
+                "Record": "https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type"
             }
         }
     }

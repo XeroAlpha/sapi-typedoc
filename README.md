@@ -11,21 +11,19 @@ d.ts 文件来源：[NPM组织 @minecraft](https://www.npmjs.com/search?q=%40min
 ## 准备
 
 ```
-yarn
+npm install
 ```
 
 ## 构建
 
 ```
-yarn build
+npm run build
 ```
 
-## 更新原始文件（Windows）
+## 更新原始文件
+
+> 执行此步骤前请先提交更改！此步骤会将分支强制切换为 original
 
 ```
-git checkout original
-cd original
-yarn install --no-lockfile
-cd ..
-.\translated\sync.cmd
+npm run update
 ```
