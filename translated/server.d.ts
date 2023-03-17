@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.2.0-internal.1.19.80-preview.20"
+ *   "version": "1.2.0-internal.1.19.80-preview.21"
  * }
  * ```
  *
@@ -164,6 +164,14 @@ export enum EntityDamageCause {
     thorns = 'thorns',
     'void' = 'void',
     wither = 'wither',
+}
+export enum EquipmentSlot {
+    chest = 'chest',
+    feet = 'feet',
+    head = 'head',
+    legs = 'legs',
+    mainhand = 'mainhand',
+    offhand = 'offhand',
 }
 /**
  * @beta
@@ -326,33 +334,17 @@ export enum WatchdogTerminateReason {
  * @beta
  * An event that fires as players enter chat messages.
  */
-export class BeforeChatEvent {
+export class BeforeChatEvent extends ChatEvent {
     protected constructor();
     /**
      * If set to true in a beforeChat event handler, this message
      * is not broadcast out.
      */
     cancel: boolean;
-    /**
-     * Message that is being broadcast. In a beforeChat event
-     * handler, _message_ can be updated with edits before the
-     * message is displayed to players.
-     */
-    message: string;
-    /**
-     * Player that sent the chat message.
-     */
-    sender: Player;
-    /**
-     * If true, this message is directly targeted to one or more
-     * players (i.e., is not broadcast.)
-     */
-    sendToTargets: boolean;
-    getTargets(): Player[];
     setTargets(players: Player[]): void;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeChatEventSignal_deprecated extends IBeforeChatEventSignal {
+export class BeforeChatEventSignal_deprecated extends IBeforeChatEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -379,7 +371,7 @@ export class BeforeDataDrivenEntityTriggerEvent {
     setModifiers(modifiers: DefinitionModifier[]): void;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeDataDrivenEntityTriggerEventSignal_deprecated extends IBeforeDataDrivenEntityTriggerEventSignal {
+export class BeforeDataDrivenEntityTriggerEventSignal_deprecated extends IBeforeDataDrivenEntityTriggerEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -387,29 +379,20 @@ export class BeforeDataDrivenEntityTriggerEventSignal_deprecated extends IBefore
  * Contains information regarding an explosion that has
  * happened.
  */
-export class BeforeExplosionEvent {
+export class BeforeExplosionEvent extends ExplosionEvent {
     protected constructor();
     /**
      * If set to true, cancels the explosion event.
      */
     cancel: boolean;
-    /**
-     * Dimension where the explosion has occurred.
-     */
-    readonly dimension: Dimension;
-    /**
-     * Optional source of the explosion.
-     */
-    readonly source: Entity;
-    getImpactedBlocks(): Vector3[];
     setImpactedBlocks(blocks: Vector3[]): void;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeExplosionEventSignal_deprecated extends IBeforeExplosionEventSignal {
+export class BeforeExplosionEventSignal_deprecated extends IBeforeExplosionEventSignal_deprecated {
     protected constructor();
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeItemDefinitionEventSignal_deprecated extends IBeforeItemDefinitionEventSignal {
+export class BeforeItemDefinitionEventSignal_deprecated extends IBeforeItemDefinitionEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -417,48 +400,27 @@ export class BeforeItemDefinitionEventSignal_deprecated extends IBeforeItemDefin
  * Contains information related to a triggering of a custom
  * item definition change.
  */
-export class BeforeItemDefinitionTriggeredEvent {
+export class BeforeItemDefinitionTriggeredEvent extends ItemDefinitionTriggeredEvent {
     protected constructor();
     /**
      * If set to true, will cancel the application of this item
      * definition change.
      */
     cancel: boolean;
-    /**
-     * Name of the data-driven item event that is triggering this
-     * change.
-     */
-    readonly eventName: string;
-    /**
-     * The impacted item stack that is being used.
-     */
-    item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
-    readonly source: Entity;
 }
 /**
  * @beta
  * Contains information related to an item being used.
  */
-export class BeforeItemUseEvent {
+export class BeforeItemUseEvent extends ItemUseEvent {
     protected constructor();
     /**
      * If set to true, this will cancel the item use behavior.
      */
     cancel: boolean;
-    /**
-     * The impacted item stack that is being used.
-     */
-    item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
-    readonly source: Entity;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeItemUseEventSignal_deprecated extends IBeforeItemUseEventSignal {
+export class BeforeItemUseEventSignal_deprecated extends IBeforeItemUseEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -474,7 +436,7 @@ export class BeforeItemUseOnEvent extends ItemUseOnEvent {
     cancel: boolean;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforeItemUseOnEventSignal_deprecated extends IBeforeItemUseOnEventSignal {
+export class BeforeItemUseOnEventSignal_deprecated extends IBeforeItemUseOnEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -499,7 +461,7 @@ export class BeforePistonActivateEvent extends BlockEvent {
     readonly piston: BlockPistonComponent;
 }
 // tslint:disable-next-line:no-unnecessary-class
-export class BeforePistonActivateEventSignal_deprecated extends IBeforePistonActivateEventSignal {
+export class BeforePistonActivateEventSignal_deprecated extends IBeforePistonActivateEventSignal_deprecated {
     protected constructor();
 }
 /**
@@ -1465,6 +1427,8 @@ export class ContainerSlot {
      * Throws if the slot's container is invalid.
      */
     getLore(): string[];
+    getTags(): string[];
+    hasTag(tag: string): boolean;
     /**
      * @remarks
      * Returns whether this item stack can be stacked with the
@@ -2674,6 +2638,13 @@ export class EntityDieEvent {
 // tslint:disable-next-line:no-unnecessary-class
 export class EntityDieEventSignal_deprecated extends IEntityDieEventSignal {
     protected constructor();
+}
+export class EntityEquipmentInventoryComponent extends EntityComponent {
+    protected constructor();
+    static readonly componentId = 'minecraft:equipment_inventory';
+    getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
+    getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
+    setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): void;
 }
 /**
  * @beta
@@ -4099,12 +4070,12 @@ export class FluidContainer {
      */
     static readonly minFillLevel = 0;
 }
-export class IBeforeChatEventSignal {
+export class IBeforeChatEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeChatEvent) => void): (arg: BeforeChatEvent) => void;
     unsubscribe(callback: (arg: BeforeChatEvent) => void): void;
 }
-export class IBeforeDataDrivenEntityTriggerEventSignal {
+export class IBeforeDataDrivenEntityTriggerEventSignal_deprecated {
     protected constructor();
     subscribe(
         callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void,
@@ -4112,29 +4083,29 @@ export class IBeforeDataDrivenEntityTriggerEventSignal {
     ): (arg: BeforeDataDrivenEntityTriggerEvent) => void;
     unsubscribe(callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void): void;
 }
-export class IBeforeExplosionEventSignal {
+export class IBeforeExplosionEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeExplosionEvent) => void): (arg: BeforeExplosionEvent) => void;
     unsubscribe(callback: (arg: BeforeExplosionEvent) => void): void;
 }
-export class IBeforeItemDefinitionEventSignal {
+export class IBeforeItemDefinitionEventSignal_deprecated {
     protected constructor();
     subscribe(
         callback: (arg: BeforeItemDefinitionTriggeredEvent) => void,
     ): (arg: BeforeItemDefinitionTriggeredEvent) => void;
     unsubscribe(callback: (arg: BeforeItemDefinitionTriggeredEvent) => void): void;
 }
-export class IBeforeItemUseEventSignal {
+export class IBeforeItemUseEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeItemUseEvent) => void): (arg: BeforeItemUseEvent) => void;
     unsubscribe(callback: (arg: BeforeItemUseEvent) => void): void;
 }
-export class IBeforeItemUseOnEventSignal {
+export class IBeforeItemUseOnEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeItemUseOnEvent) => void): (arg: BeforeItemUseOnEvent) => void;
     unsubscribe(callback: (arg: BeforeItemUseOnEvent) => void): void;
 }
-export class IBeforePistonActivateEventSignal {
+export class IBeforePistonActivateEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforePistonActivateEvent) => void): (arg: BeforePistonActivateEvent) => void;
     unsubscribe(callback: (arg: BeforePistonActivateEvent) => void): void;
@@ -4681,6 +4652,7 @@ export class ItemStack {
      * returns an empty array.
      */
     getLore(): string[];
+    getTags(): string[];
     /**
      * @remarks
      * Returns true if the specified component is present on this
@@ -4691,6 +4663,7 @@ export class ItemStack {
      * is assumed.
      */
     hasComponent(componentId: string): boolean;
+    hasTag(tag: string): boolean;
     /**
      * @remarks
      * Returns whether this item stack can be stacked with the
@@ -5019,6 +4992,7 @@ export class MinecraftBlockTypes {
      * Represents an acacia door within Minecraft.
      */
     static readonly acaciaDoor: BlockType;
+    static readonly acaciaFence: BlockType;
     /**
      * 金合欢木栅栏门。
      * 
@@ -5289,6 +5263,7 @@ export class MinecraftBlockTypes {
      * Represents a birch door within Minecraft.
      */
     static readonly birchDoor: BlockType;
+    static readonly birchFence: BlockType;
     /**
      * 白桦木栅栏门。
      * 
@@ -6048,6 +6023,7 @@ export class MinecraftBlockTypes {
      * Represents a dark oak door within Minecraft.
      */
     static readonly darkOakDoor: BlockType;
+    static readonly darkOakFence: BlockType;
     /**
      * 深色橡木栅栏门。
      * 
@@ -7314,12 +7290,6 @@ export class MinecraftBlockTypes {
      */
     static readonly farmland: BlockType;
     /**
-     * 橡木栅栏/云杉木栅栏/白桦木栅栏/丛林木栅栏/金合欢木栅栏/深色橡木栅栏。
-     * 
-     * Represents a fence within Minecraft.
-     */
-    static readonly fence: BlockType;
-    /**
      * 橡木栅栏门。
      * 
      * Represents a fence gate within Minecraft.
@@ -7671,6 +7641,7 @@ export class MinecraftBlockTypes {
      * Represents a jungle wood door within Minecraft.
      */
     static readonly jungleDoor: BlockType;
+    static readonly jungleFence: BlockType;
     /**
      * 丛林木栅栏门。
      * 
@@ -8192,9 +8163,7 @@ export class MinecraftBlockTypes {
      * Represents a note block within Minecraft.
      */
     static readonly noteblock: BlockType;
-    /**
-     * 悬挂式橡木告示牌。
-     */
+    static readonly oakFence: BlockType;
     static readonly oakHangingSign: BlockType;
     static readonly oakLog: BlockType;
     /**
@@ -8975,6 +8944,7 @@ export class MinecraftBlockTypes {
      * Represents a spruce wood door within Minecraft.
      */
     static readonly spruceDoor: BlockType;
+    static readonly spruceFence: BlockType;
     /**
      * 云杉木栅栏门。
      * 
@@ -9234,9 +9204,7 @@ export class MinecraftBlockTypes {
      * Represents a structure void within Minecraft.
      */
     static readonly structureVoid: BlockType;
-    /**
-     * 可疑的沙子。
-     */
+    static readonly suspiciousGravel: BlockType;
     static readonly suspiciousSand: BlockType;
     /**
      * 甜浆果丛。
@@ -10610,6 +10578,7 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly acaciaDoor: ItemType;
+    static readonly acaciaFence: ItemType;
     /**
      * 金合欢木栅栏门。
      * 
@@ -10876,6 +10845,7 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly birchDoor: ItemType;
+    static readonly birchFence: ItemType;
     /**
      * 白桦木栅栏门。
      * 
@@ -11736,6 +11706,7 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly darkOakDoor: ItemType;
+    static readonly darkOakFence: ItemType;
     /**
      * 深色橡木栅栏门。
      * 
@@ -12810,6 +12781,7 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly jungleDoor: ItemType;
+    static readonly jungleFence: ItemType;
     /**
      * 丛林木栅栏门。
      * 
@@ -13515,6 +13487,7 @@ export class MinecraftItemTypes {
      * 橡木运输船。
      */
     static readonly oakChestBoat: ItemType;
+    static readonly oakFence: ItemType;
     static readonly oakLog: ItemType;
     /**
      * 橡木告示牌。
@@ -14520,6 +14493,7 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly spruceDoor: ItemType;
+    static readonly spruceFence: ItemType;
     /**
      * 云杉木栅栏门。
      * 

@@ -44,7 +44,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.0.0-internal.1.19.80-preview.20"
+ *   "version": "1.0.0-internal.1.19.80-preview.21"
  * }
  * ```
  *
@@ -53,6 +53,11 @@ import * as minecraftserver from '@minecraft/server';
 export enum FormCancelationReason {
     userBusy = 'userBusy',
     userClosed = 'userClosed',
+}
+export enum FormRejectReason {
+    MalformedResponse = 'MalformedResponse',
+    PlayerQuit = 'PlayerQuit',
+    ServerShutdown = 'ServerShutdown',
 }
 /**
  * Builds a simple player form with buttons that let the player
@@ -247,4 +252,8 @@ export class ModalFormResponse extends FormResponse {
      * specified by ModalFormData.
      */
     readonly formValues?: any[];
+}
+export class FormRejectError extends Error {
+    protected constructor();
+    reason: FormRejectReason;
 }
