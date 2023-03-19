@@ -15,13 +15,12 @@ async function build() {
     });
     const project = app.convert();
     if (project) {
-        project.traverse((reflection) => {
+        Object.entries(project.reflections).forEach(([id, reflection]) => {
             if (reflection.sources) {
                 reflection.sources.forEach((source) => {
                     source.fileName = source.fileName.replace("translated", project.name);
                 });
             }
-            return true;
         });
         await app.generateDocs(project, distPath);
     } else {
