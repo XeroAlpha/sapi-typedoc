@@ -4992,6 +4992,9 @@ export class MinecraftBlockTypes {
      * Represents an acacia door within Minecraft.
      */
     static readonly acaciaDoor: BlockType;
+    /**
+     * 金合欢木栅栏。
+     */
     static readonly acaciaFence: BlockType;
     /**
      * 金合欢木栅栏门。
@@ -5003,6 +5006,9 @@ export class MinecraftBlockTypes {
      * 悬挂式金合欢木告示牌。
      */
     static readonly acaciaHangingSign: BlockType;
+    /**
+     * 金合欢原木。
+     */
     static readonly acaciaLog: BlockType;
     /**
      * 金合欢木压力板。
@@ -5263,6 +5269,9 @@ export class MinecraftBlockTypes {
      * Represents a birch door within Minecraft.
      */
     static readonly birchDoor: BlockType;
+    /**
+     * 白桦木栅栏。
+     */
     static readonly birchFence: BlockType;
     /**
      * 白桦木栅栏门。
@@ -5274,6 +5283,9 @@ export class MinecraftBlockTypes {
      * 悬挂式白桦木告示牌。
      */
     static readonly birchHangingSign: BlockType;
+    /**
+     * 白桦原木。
+     */
     static readonly birchLog: BlockType;
     /**
      * 白桦木压力板。
@@ -5535,7 +5547,7 @@ export class MinecraftBlockTypes {
      */
     static readonly cartographyTable: BlockType;
     /**
-     * 雕刻过的南瓜。
+     * 雕刻南瓜。
      * 
      * Represents a carved pumpkin within Minecraft.
      */
@@ -5553,14 +5565,14 @@ export class MinecraftBlockTypes {
      */
     static readonly caveVines: BlockType;
     /**
-     * 洞穴藤蔓植株。
+     * 洞穴藤蔓。
      * 
      * Represents the body of a set of cave vines with berries
      * within Minecraft.
      */
     static readonly caveVinesBodyWithBerries: BlockType;
     /**
-     * 洞穴藤蔓植株。
+     * 洞穴藤蔓。
      * 
      * Represents the head of a set of cave vines with berries
      * within Minecraft.
@@ -5593,22 +5605,73 @@ export class MinecraftBlockTypes {
      * experiences.
      */
     static readonly chemistryTable: BlockType;
+    /**
+     * 樱花木按钮。
+     */
     static readonly cherryButton: BlockType;
+    /**
+     * 樱花木门。
+     */
     static readonly cherryDoor: BlockType;
+    /**
+     * 双层樱花木台阶。
+     */
     static readonly cherryDoubleSlab: BlockType;
+    /**
+     * 樱花木栅栏。
+     */
     static readonly cherryFence: BlockType;
+    /**
+     * 樱花木栅栏门。
+     */
     static readonly cherryFenceGate: BlockType;
+    /**
+     * 悬挂式樱花木告示牌。
+     */
     static readonly cherryHangingSign: BlockType;
+    /**
+     * 樱花树叶。
+     */
     static readonly cherryLeaves: BlockType;
+    /**
+     * 樱花原木。
+     */
     static readonly cherryLog: BlockType;
+    /**
+     * 樱花木板。
+     */
     static readonly cherryPlanks: BlockType;
+    /**
+     * 樱花木压力板。
+     */
     static readonly cherryPressurePlate: BlockType;
+    /**
+     * 樱花树苗。
+     */
     static readonly cherrySapling: BlockType;
+    /**
+     * 樱花木台阶。
+     */
     static readonly cherrySlab: BlockType;
+    /**
+     * 樱花木楼梯。
+     */
     static readonly cherryStairs: BlockType;
+    /**
+     * 樱花木告示牌。
+     */
     static readonly cherryStandingSign: BlockType;
+    /**
+     * 樱花木活板门。
+     */
     static readonly cherryTrapdoor: BlockType;
+    /**
+     * 墙上的樱花木告示牌。
+     */
     static readonly cherryWallSign: BlockType;
+    /**
+     * 樱花木。
+     */
     static readonly cherryWood: BlockType;
     /**
      * 箱子。
@@ -6023,6 +6086,9 @@ export class MinecraftBlockTypes {
      * Represents a dark oak door within Minecraft.
      */
     static readonly darkOakDoor: BlockType;
+    /**
+     * 深色橡木栅栏。
+     */
     static readonly darkOakFence: BlockType;
     /**
      * 深色橡木栅栏门。
@@ -6034,6 +6100,9 @@ export class MinecraftBlockTypes {
      * 悬挂式深色橡木告示牌。
      */
     static readonly darkOakHangingSign: BlockType;
+    /**
+     * 深色橡木原木。
+     */
     static readonly darkOakLog: BlockType;
     /**
      * 深色橡木压力板。
@@ -6280,7 +6349,7 @@ export class MinecraftBlockTypes {
      */
     static readonly doublePlant: BlockType;
     /**
-     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层红砖台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
+     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层砖块台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
      */
     static readonly doubleStoneBlockSlab: BlockType;
     /**
@@ -6292,11 +6361,11 @@ export class MinecraftBlockTypes {
      */
     static readonly doubleStoneBlockSlab3: BlockType;
     /**
-     * 双层苔石砖台阶/双层平滑石英台阶/双层石头台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
+     * 双层苔石砖台阶/双层平滑石英台阶/双层石台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
      */
     static readonly doubleStoneBlockSlab4: BlockType;
     /**
-     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层红砖台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
+     * 双层平滑石头台阶/双层砂岩台阶/双层石化橡木台阶/双层圆石台阶/双层砖块台阶/双层石砖台阶/双层石英台阶/双层下界砖台阶。
      * 
      * Represents a double slab of stone within Minecraft.
      */
@@ -6316,14 +6385,14 @@ export class MinecraftBlockTypes {
      */
     static readonly doubleStoneSlab3: BlockType;
     /**
-     * 双层苔石砖台阶/双层平滑石英台阶/双层石头台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
+     * 双层苔石砖台阶/双层平滑石英台阶/双层石台阶/双层切制砂岩台阶/双层切制红砂岩台阶。
      * 
      * Represents an alternate double slab of stone (#4) within
      * Minecraft.
      */
     static readonly doubleStoneSlab4: BlockType;
     /**
-     * 双层橡木台阶/双层云杉木台阶/双层白桦木台阶/双层丛林木台阶/双层金合欢木台阶/双层深色橡木台阶。
+     * 双层橡木台阶/双层云杉台阶/双层桦木台阶/双层丛林台阶/双层金合欢台阶/双层深色橡木台阶。
      * 
      * Represents a double slab of wood within Minecraft.
      */
@@ -7527,7 +7596,7 @@ export class MinecraftBlockTypes {
      */
     static readonly hardStainedGlassPane: BlockType;
     /**
-     * 干草块。
+     * 干草捆。
      * 
      * Represents a block of hay within Minecraft.
      */
@@ -7563,7 +7632,7 @@ export class MinecraftBlockTypes {
      */
     static readonly ice: BlockType;
     /**
-     * 被虫蚀的深板岩。
+     * 虫蚀深板岩。
      * 
      * Represents an infested block of deepslate within Minecraft.
      */
@@ -7641,6 +7710,9 @@ export class MinecraftBlockTypes {
      * Represents a jungle wood door within Minecraft.
      */
     static readonly jungleDoor: BlockType;
+    /**
+     * 丛林木栅栏。
+     */
     static readonly jungleFence: BlockType;
     /**
      * 丛林木栅栏门。
@@ -7652,6 +7724,9 @@ export class MinecraftBlockTypes {
      * 悬挂式丛林木告示牌。
      */
     static readonly jungleHangingSign: BlockType;
+    /**
+     * 丛林原木。
+     */
     static readonly jungleLog: BlockType;
     /**
      * 丛林木压力板。
@@ -7885,6 +7960,8 @@ export class MinecraftBlockTypes {
      */
     static readonly lodestone: BlockType;
     /**
+     * 织布机。
+     * 
      * Represents a loom within Minecraft.
      */
     static readonly loom: BlockType;
@@ -8014,7 +8091,7 @@ export class MinecraftBlockTypes {
      */
     static readonly mobSpawner: BlockType;
     /**
-     * 被虫蚀的石头/被虫蚀的圆石/被虫蚀的石砖/被虫蚀的苔石砖/被虫蚀的裂纹石砖/被虫蚀的雕纹石砖。
+     * 虫蚀石头/虫蚀圆石/虫蚀石砖/虫蚀苔石砖/虫蚀裂纹石砖/虫蚀雕纹石砖。
      * 
      * Represents a monster egg within Minecraft.
      */
@@ -8026,7 +8103,7 @@ export class MinecraftBlockTypes {
      */
     static readonly mossBlock: BlockType;
     /**
-     * 苔藓地毯。
+     * 覆地苔藓。
      * 
      * Represents a carpet of moss within Minecraft.
      */
@@ -8163,8 +8240,17 @@ export class MinecraftBlockTypes {
      * Represents a note block within Minecraft.
      */
     static readonly noteblock: BlockType;
+    /**
+     * 橡木栅栏。
+     */
     static readonly oakFence: BlockType;
+    /**
+     * 悬挂式橡木告示牌。
+     */
     static readonly oakHangingSign: BlockType;
+    /**
+     * 橡木原木。
+     */
     static readonly oakLog: BlockType;
     /**
      * 橡木楼梯。
@@ -8276,6 +8362,9 @@ export class MinecraftBlockTypes {
      * Minecraft.
      */
     static readonly pinkGlazedTerracotta: BlockType;
+    /**
+     * 粉红色花簇。
+     */
     static readonly pinkPetals: BlockType;
     /**
      * 粉红色羊毛。
@@ -8944,6 +9033,9 @@ export class MinecraftBlockTypes {
      * Represents a spruce wood door within Minecraft.
      */
     static readonly spruceDoor: BlockType;
+    /**
+     * 云杉木栅栏。
+     */
     static readonly spruceFence: BlockType;
     /**
      * 云杉木栅栏门。
@@ -8955,6 +9047,9 @@ export class MinecraftBlockTypes {
      * 悬挂式云杉木告示牌。
      */
     static readonly spruceHangingSign: BlockType;
+    /**
+     * 云杉原木。
+     */
     static readonly spruceLog: BlockType;
     /**
      * 云杉木压力板。
@@ -9133,7 +9228,13 @@ export class MinecraftBlockTypes {
      * Represents a stripped birch log within Minecraft.
      */
     static readonly strippedBirchLog: BlockType;
+    /**
+     * 去皮樱花原木。
+     */
     static readonly strippedCherryLog: BlockType;
+    /**
+     * 去皮樱花木。
+     */
     static readonly strippedCherryWood: BlockType;
     /**
      * 去皮绯红菌核。
@@ -9204,7 +9305,13 @@ export class MinecraftBlockTypes {
      * Represents a structure void within Minecraft.
      */
     static readonly structureVoid: BlockType;
+    /**
+     * 可疑的沙砾。
+     */
     static readonly suspiciousGravel: BlockType;
+    /**
+     * 可疑的沙子。
+     */
     static readonly suspiciousSand: BlockType;
     /**
      * 甜浆果丛。
@@ -9251,7 +9358,7 @@ export class MinecraftBlockTypes {
      */
     static readonly torchflowerCrop: BlockType;
     /**
-     * 活板门。
+     * 橡木活板门。
      * 
      * Represents a trapdoor within Minecraft.
      */
@@ -9833,7 +9940,7 @@ export class MinecraftEffectTypes {
      */
     static readonly fatalPoison: EffectType;
     /**
-     * 防火。
+     * 抗火。
      */
     static readonly fireResistance: EffectType;
     /**
@@ -9905,7 +10012,7 @@ export class MinecraftEffectTypes {
      */
     static readonly slowness: EffectType;
     /**
-     * 速度。
+     * 迅捷。
      */
     static readonly speed: EffectType;
     /**
@@ -9967,7 +10074,7 @@ export class MinecraftEnchantmentTypes {
      */
     static readonly efficiency: EnchantmentType;
     /**
-     * 摔落保护。
+     * 摔落缓冲。
      */
     static readonly featherFalling: EnchantmentType;
     /**
@@ -10282,7 +10389,7 @@ export class MinecraftEntityTypes {
      */
     static readonly ironGolem: EntityType;
     /**
-     * 闪电。
+     * 闪电束。
      */
     static readonly lightningBolt: EntityType;
     /**
@@ -10578,6 +10685,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly acaciaDoor: ItemType;
+    /**
+     * 金合欢木栅栏。
+     */
     static readonly acaciaFence: ItemType;
     /**
      * 金合欢木栅栏门。
@@ -10586,6 +10696,9 @@ export class MinecraftItemTypes {
      * within Minecraft.
      */
     static readonly acaciaFenceGate: ItemType;
+    /**
+     * 金合欢原木。
+     */
     static readonly acaciaLog: ItemType;
     /**
      * 金合欢木压力板。
@@ -10845,6 +10958,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly birchDoor: ItemType;
+    /**
+     * 白桦木栅栏。
+     */
     static readonly birchFence: ItemType;
     /**
      * 白桦木栅栏门。
@@ -10853,6 +10969,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly birchFenceGate: ItemType;
+    /**
+     * 白桦原木。
+     */
     static readonly birchLog: ItemType;
     /**
      * 白桦木压力板。
@@ -11093,7 +11212,7 @@ export class MinecraftItemTypes {
      */
     static readonly brownWool: ItemType;
     /**
-     * 桶。
+     * 铁桶。
      */
     static readonly bucket: ItemType;
     /**
@@ -11157,7 +11276,7 @@ export class MinecraftItemTypes {
      */
     static readonly cartographyTable: ItemType;
     /**
-     * 雕刻过的南瓜。
+     * 雕刻南瓜。
      * 
      * Represents an item that can place a carved pumpkin within
      * Minecraft.
@@ -11706,6 +11825,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly darkOakDoor: ItemType;
+    /**
+     * 深色橡木栅栏。
+     */
     static readonly darkOakFence: ItemType;
     /**
      * 深色橡木栅栏门。
@@ -11714,6 +11836,9 @@ export class MinecraftItemTypes {
      * within Minecraft.
      */
     static readonly darkOakFenceGate: ItemType;
+    /**
+     * 深色橡木原木。
+     */
     static readonly darkOakLog: ItemType;
     /**
      * 深色橡木压力板。
@@ -12582,7 +12707,7 @@ export class MinecraftItemTypes {
      */
     static readonly hardenedClay: ItemType;
     /**
-     * 干草块。
+     * 干草捆。
      * 
      * Represents an item that can place a block of hay within
      * Minecraft.
@@ -12651,7 +12776,7 @@ export class MinecraftItemTypes {
      */
     static readonly ice: ItemType;
     /**
-     * 被虫蚀的深板岩。
+     * 虫蚀深板岩。
      * 
      * Represents an item that can place an infested block of
      * deepslate within Minecraft.
@@ -12781,6 +12906,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly jungleDoor: ItemType;
+    /**
+     * 丛林木栅栏。
+     */
     static readonly jungleFence: ItemType;
     /**
      * 丛林木栅栏门。
@@ -12789,6 +12917,9 @@ export class MinecraftItemTypes {
      * within Minecraft.
      */
     static readonly jungleFenceGate: ItemType;
+    /**
+     * 丛林原木。
+     */
     static readonly jungleLog: ItemType;
     /**
      * 丛林木压力板。
@@ -13193,7 +13324,7 @@ export class MinecraftItemTypes {
      */
     static readonly mojangBannerPattern: ItemType;
     /**
-     * 被虫蚀的石头/被虫蚀的圆石/被虫蚀的石砖/被虫蚀的苔石砖/被虫蚀的裂纹石砖/被虫蚀的雕纹石砖。
+     * 虫蚀石头/虫蚀圆石/虫蚀石砖/虫蚀苔石砖/虫蚀裂纹石砖/虫蚀雕纹石砖。
      * 
      * Represents an item that can place a monster egg within
      * Minecraft.
@@ -13211,7 +13342,7 @@ export class MinecraftItemTypes {
      */
     static readonly mossBlock: ItemType;
     /**
-     * 苔藓地毯。
+     * 覆地苔藓。
      * 
      * Represents an item that can place a carpet of moss within
      * Minecraft.
@@ -13487,7 +13618,13 @@ export class MinecraftItemTypes {
      * 橡木运输船。
      */
     static readonly oakChestBoat: ItemType;
+    /**
+     * 橡木栅栏。
+     */
     static readonly oakFence: ItemType;
+    /**
+     * 橡木原木。
+     */
     static readonly oakLog: ItemType;
     /**
      * 橡木告示牌。
@@ -14493,6 +14630,9 @@ export class MinecraftItemTypes {
      * Minecraft.
      */
     static readonly spruceDoor: ItemType;
+    /**
+     * 云杉木栅栏。
+     */
     static readonly spruceFence: ItemType;
     /**
      * 云杉木栅栏门。
@@ -14501,6 +14641,9 @@ export class MinecraftItemTypes {
      * within Minecraft.
      */
     static readonly spruceFenceGate: ItemType;
+    /**
+     * 云杉原木。
+     */
     static readonly spruceLog: ItemType;
     /**
      * 云杉木压力板。
@@ -14824,7 +14967,7 @@ export class MinecraftItemTypes {
      */
     static readonly traderLlamaSpawnEgg: ItemType;
     /**
-     * 活板门。
+     * 橡木活板门。
      * 
      * Represents an item that can place a trapdoor within
      * Minecraft.
@@ -15358,7 +15501,7 @@ export class MinecraftItemTypes {
      */
     static readonly zombieHorseSpawnEgg: ItemType;
     /**
-     * 僵尸猪人刷怪蛋。
+     * 僵尸猪灵刷怪蛋。
      */
     static readonly zombiePigmanSpawnEgg: ItemType;
     /**
