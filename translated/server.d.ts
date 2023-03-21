@@ -15882,8 +15882,14 @@ export class Scoreboard {
      *
      * Returns a score given an objective and participant.
      * @param objective 记分项。
+     *
+     * Objective to retrieve the score for.
      * @param participant 分数持有者。
+     *
+     * Participant to retrieve the score for.
      * @returns 分数持有者 `participant` 在记分项 `objective` 上的分数。
+     *
+     * Score value.
      * @throws
      * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
      *
@@ -15923,7 +15929,11 @@ export class Scoreboard {
      *
      * Sets the score given a participant and objective.
      * @param objective 记分项。
+     *
+     * Objective to use for the scoreboard.
      * @param participant 分数持有者。
+     *
+     * Participant to apply the scoreboard value to.
      * @param score 分数的值。对于小数，分数的值将被向下取整。
      * @returns 始终返回 `true`。
      * @throws
@@ -15977,7 +15987,11 @@ export class ScoreboardIdentity {
      * Gets the current score for this participant based on an
      * objective.
      * @param objective 记分项。
+     *
+     * The objective to retrieve the score for.
      * @returns 记分项 `objective` 中该分数持有者的分数。
+     *
+     * Score value.
      * @throws
      * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
      *
@@ -15990,6 +16004,8 @@ export class ScoreboardIdentity {
      *
      * Removes this participant from an objective.
      * @param objective 记分项。
+     *
+     * The objective to remove this participant from.
      * @returns 若分数持有者先前在记分项 `objective` 上拥有分数记录，则返回 `true`，否则返回 `false`。
      * @throws
      * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
@@ -16002,7 +16018,11 @@ export class ScoreboardIdentity {
      * Sets a score for this participant for a particular
      * objective.
      * @param objective 记分项。
+     *
+     * Objective to apply the score to.
      * @param score 分数的值。对于小数，分数的值将被向下取整。
+     *
+     * Score value.
      * @returns 始终返回 `true`。
      * @throws
      * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
@@ -16046,6 +16066,8 @@ export class ScoreboardObjective {
      * 
      * Returns a specific score for a participant.
      * @param participant 分数持有者。
+     *
+     * Identifier of the participant to retrieve a score for.
      * @returns 分数持有者 `participant` 在该记分项上的分数。
      * @throws
      * 若此记分项上未记录分数持有者的分数，抛出 `"Failed to retrieve score for 'participant'"`。
@@ -16066,6 +16088,9 @@ export class ScoreboardObjective {
      *
      * Removes a participant from this scoreboard objective.
      * @param participant 分数持有者。
+     *
+     * Participant to remove from being tracked with this
+     * objective.
      * @returns 若分数持有者先前曾在该记分项上拥有分数记录，则返回 `true`，否则返回 `false`。
      */
     removeParticipant(participant: ScoreboardIdentity): boolean;
@@ -16075,7 +16100,11 @@ export class ScoreboardObjective {
      *
      * Sets a score for a participant.
      * @param participant 分数持有者。
+     *
+     * Identity of the participant.
      * @param score 分数的值。对于小数，分数的值将被向下取整。
+     *
+     * New value of the score.
      * @returns 始终返回 `true`。
      * @throws
      * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: 'score', range: [-2147483648, 2147483647`）异常。
