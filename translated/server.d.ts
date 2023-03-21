@@ -15881,13 +15881,16 @@ export class Scoreboard {
      * 获取分数持有者在记分项上的分数。
      *
      * Returns a score given an objective and participant.
-     * @param objective 记分项。
+     * @param objective
+     * 记分项。
      *
      * Objective to retrieve the score for.
-     * @param participant 分数持有者。
+     * @param participant
+     * 分数持有者。
      *
      * Participant to retrieve the score for.
-     * @returns 分数持有者 `participant` 在记分项 `objective` 上的分数。
+     * @returns
+     * 分数持有者 `participant` 在记分项 `objective` 上的分数。
      *
      * Score value.
      * @throws
@@ -15928,10 +15931,12 @@ export class Scoreboard {
      * 设置分数持有者在记分项上的分数。
      *
      * Sets the score given a participant and objective.
-     * @param objective 记分项。
+     * @param objective
+     * 记分项。
      *
      * Objective to use for the scoreboard.
-     * @param participant 分数持有者。
+     * @param participant
+     * 分数持有者。
      *
      * Participant to apply the scoreboard value to.
      * @param score 分数的值。对于小数，分数的值将被向下取整。
@@ -15982,28 +15987,31 @@ export class ScoreboardIdentity {
     getEntity(): Entity;
     /**
      * @remarks
-     * 获取该分数持有者在记分项上的分数。
+     * 获取此分数持有者在记分项上的分数。
      *
      * Gets the current score for this participant based on an
      * objective.
-     * @param objective 记分项。
+     * @param objective
+     * 记分项。
      *
      * The objective to retrieve the score for.
-     * @returns 记分项 `objective` 中该分数持有者的分数。
+     * @returns
+     * 记分项 `objective` 中此分数持有者的分数。
      *
      * Score value.
      * @throws
      * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
      *
-     * 若记分项 `objective` 上未记录该分数持有者的分数，引发 `Error`（`Failed to retrieve score for 'participant'`）异常。
+     * 若记分项 `objective` 上未记录此分数持有者的分数，引发 `Error`（`Failed to retrieve score for '<participant>'`）异常。
      */
     getScore(objective: ScoreboardObjective): number;
     /**
      * @remarks
-     * 移除该分数持有者在指定记分项上的分数记录。
+     * 移除此分数持有者在指定记分项上的分数记录。
      *
      * Removes this participant from an objective.
-     * @param objective 记分项。
+     * @param objective
+     * 记分项。
      *
      * The objective to remove this participant from.
      * @returns 若分数持有者先前在记分项 `objective` 上拥有分数记录，则返回 `true`，否则返回 `false`。
@@ -16013,14 +16021,16 @@ export class ScoreboardIdentity {
     removeFromObjective(objective: ScoreboardObjective): boolean;
     /**
      * @remarks
-     * 为该分数持有者在指定的记分项上设置分数。
+     * 为此分数持有者在指定的记分项上设置分数。
      *
      * Sets a score for this participant for a particular
      * objective.
-     * @param objective 记分项。
+     * @param objective
+     * 记分项。
      *
      * Objective to apply the score to.
-     * @param score 分数的值。对于小数，分数的值将被向下取整。
+     * @param score
+     * 分数的值。对于小数，分数的值将被向下取整。
      *
      * Score value.
      * @returns 始终返回 `true`。
@@ -16034,6 +16044,8 @@ export class ScoreboardIdentity {
 /**
  * @beta
  * 表示记分板上的记分项。包含了分数持有者和各自的分数。
+ *
+ * 如果记分项被从记分板上移除，已获取的记分项对象将会成为无效的记分项，尝试使用该记分项上的属性或方法将会引发 `Error`（`Failed to find objective '<objective>'`）异常。
  * 
  * Contains objectives and participants for the scoreboard.
  */
@@ -16065,10 +16077,11 @@ export class ScoreboardObjective {
      * 获取指定分数持有者的分数。
      * 
      * Returns a specific score for a participant.
-     * @param participant 分数持有者。
+     * @param participant
+     * 分数持有者。
      *
      * Identifier of the participant to retrieve a score for.
-     * @returns 分数持有者 `participant` 在该记分项上的分数。
+     * @returns 分数持有者 `participant` 在此记分项上的分数。
      * @throws
      * 若此记分项上未记录分数持有者的分数，抛出 `"Failed to retrieve score for 'participant'"`。
      */
@@ -16084,14 +16097,15 @@ export class ScoreboardObjective {
     getScores(): ScoreboardScoreInfo[];
     /**
      * @remarks
-     * 移除分数持有者在该记分项上的分数记录。
+     * 移除分数持有者在此记分项上的分数记录。
      *
      * Removes a participant from this scoreboard objective.
-     * @param participant 分数持有者。
+     * @param participant
+     * 分数持有者。
      *
      * Participant to remove from being tracked with this
      * objective.
-     * @returns 若分数持有者先前曾在该记分项上拥有分数记录，则返回 `true`，否则返回 `false`。
+     * @returns 若分数持有者先前曾在此记分项上拥有分数记录，则返回 `true`，否则返回 `false`。
      */
     removeParticipant(participant: ScoreboardIdentity): boolean;
     /**
@@ -16099,10 +16113,12 @@ export class ScoreboardObjective {
      * 设置分数持有者在此记分项上的分数。
      *
      * Sets a score for a participant.
-     * @param participant 分数持有者。
+     * @param participant
+     * 分数持有者。
      *
      * Identity of the participant.
-     * @param score 分数的值。对于小数，分数的值将被向下取整。
+     * @param score
+     * 分数的值。对于小数，分数的值将被向下取整。
      *
      * New value of the score.
      * @returns 始终返回 `true`。
