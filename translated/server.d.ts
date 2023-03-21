@@ -15894,9 +15894,9 @@ export class Scoreboard {
      *
      * Score value.
      * @throws
-     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
+     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective '<objective>'`）异常。
      *
-     * 若记分项 `objective` 上未记录分数持有者 `participant` 的分数，引发 `Error`（`Failed to retrieve score for 'participant'`）异常。
+     * 若记分项 `objective` 上未记录分数持有者 `participant` 的分数，引发 `Error`（`Failed to retrieve score for '<participant>'`）异常。
      */
     getScore(objective: ScoreboardObjective, participant: ScoreboardIdentity): number;
     /**
@@ -15942,9 +15942,9 @@ export class Scoreboard {
      * @param score 分数的值。对于小数，分数的值将被向下取整。
      * @returns 始终返回 `true`。
      * @throws
-     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
+     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective '<objective>'`）异常。
      *
-     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: 'score', range: [-2147483648, 2147483647`）异常。
+     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: <score>, range: [-2147483648, 2147483647`）异常。
      */
     setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
@@ -16016,7 +16016,7 @@ export class ScoreboardIdentity {
      * The objective to remove this participant from.
      * @returns 若分数持有者先前在记分项 `objective` 上拥有分数记录，则返回 `true`，否则返回 `false`。
      * @throws
-     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
+     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective '<objective>'`）异常。
      */
     removeFromObjective(objective: ScoreboardObjective): boolean;
     /**
@@ -16035,9 +16035,9 @@ export class ScoreboardIdentity {
      * Score value.
      * @returns 始终返回 `true`。
      * @throws
-     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective 'objective'`）异常。
+     * 当记分项 `objective` 无效时，引发 `Error`（`Failed to find objective '<objective>'`）异常。
      *
-     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: 'score', range: [-2147483648, 2147483647`）异常。
+     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: <score>, range: [-2147483648, 2147483647`）异常。
      */
     setScore(objective: ScoreboardObjective, score: number): boolean;
 }
@@ -16083,7 +16083,7 @@ export class ScoreboardObjective {
      * Identifier of the participant to retrieve a score for.
      * @returns 分数持有者 `participant` 在此记分项上的分数。
      * @throws
-     * 若此记分项上未记录分数持有者的分数，抛出 `"Failed to retrieve score for 'participant'"`。
+     * 若此记分项上未记录分数持有者的分数，抛出 `"Failed to retrieve score for '<participant>'"`。
      */
     getScore(participant: ScoreboardIdentity): number;
     /**
@@ -16123,7 +16123,7 @@ export class ScoreboardObjective {
      * New value of the score.
      * @returns 始终返回 `true`。
      * @throws
-     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: 'score', range: [-2147483648, 2147483647`）异常。
+     * 当 `score` 不在 `[-2147483648, 2147483647]` 区间时，引发 `TypeError`（`Provided integer value was out of range.  Value: <score>, range: [-2147483648, 2147483647`）异常。
      */
     setScore(participant: ScoreboardIdentity, score: number): boolean;
 }
