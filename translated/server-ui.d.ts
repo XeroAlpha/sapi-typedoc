@@ -44,7 +44,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.0.0-internal.1.19.80-preview.21"
+ *   "version": "1.0.0-internal.1.19.80-preview.23"
  * }
  * ```
  *
@@ -67,15 +67,12 @@ export class ActionFormData {
     /**
      * @remarks
      * Method that sets the body text for the modal form.
-     * @param bodyText
      */
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
-     * @param text
-     * @param iconPath
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
@@ -91,7 +88,6 @@ export class ActionFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
-     * @param titleText
      */
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
@@ -128,21 +124,18 @@ export class MessageFormData {
     /**
      * @remarks
      * Method that sets the body text for the modal form.
-     * @param bodyText
      */
     body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
-     * @param text
      */
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
-     * @param text
      */
     button2(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
@@ -158,7 +151,6 @@ export class MessageFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
-     * @param titleText
      */
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
@@ -181,9 +173,6 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a dropdown with choices to the form.
-     * @param label
-     * @param options
-     * @param defaultValueIndex
      */
     dropdown(
         label: minecraftserver.RawMessage | string,
@@ -203,11 +192,6 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a numeric slider to the form.
-     * @param label
-     * @param minimumValue
-     * @param maximumValue
-     * @param valueStep
-     * @param defaultValue
      */
     slider(
         label: minecraftserver.RawMessage | string,
@@ -219,9 +203,6 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a textbox to the form.
-     * @param label
-     * @param placeholderText
-     * @param defaultValue
      */
     textField(
         label: minecraftserver.RawMessage | string,
@@ -231,14 +212,11 @@ export class ModalFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
-     * @param titleText
      */
     title(titleText: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a toggle checkbox button to the form.
-     * @param label
-     * @param defaultValue
      */
     toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }

@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.2.0-internal.1.19.80-preview.21"
+ *   "version": "1.2.0-internal.1.19.80-preview.23"
  * }
  * ```
  *
@@ -110,6 +110,9 @@ export enum DyeColor {
     white = 'white',
     yellow = 'yellow',
 }
+/**
+ * @beta
+ */
 export enum EntityDamageCause {
     anvil = 'anvil',
     blockExplosion = 'blockExplosion',
@@ -143,6 +146,9 @@ export enum EntityDamageCause {
     'void' = 'void',
     wither = 'wither',
 }
+/**
+ * @beta
+ */
 export enum EquipmentSlot {
     chest = 'chest',
     feet = 'feet',
@@ -211,11 +217,17 @@ export enum GameMode {
      */
     survival = 'survival',
 }
+/**
+ * @beta
+ */
 export enum ItemLockMode {
     inventory = 'inventory',
     none = 'none',
     slot = 'slot',
 }
+/**
+ * @beta
+ */
 export enum MessageSourceType {
     clientScript = 'clientScript',
     commandBlock = 'commandBlock',
@@ -266,6 +278,9 @@ export enum ScoreboardIdentityType {
      */
     player = 'player',
 }
+/**
+ * @beta
+ */
 export enum TimeOfDay {
     Day = 1000,
     Noon = 6000,
@@ -296,159 +311,114 @@ export enum WatchdogTerminateReason {
 }
 /**
  * @beta
- * An event that fires as players enter chat messages.
  */
 export class BeforeChatEvent extends ChatEvent {
     protected constructor();
-    /**
-     * If set to true in a beforeChat event handler, this message
-     * is not broadcast out.
-     */
     cancel: boolean;
     setTargets(players: Player[]): void;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeChatEventSignal_deprecated extends IBeforeChatEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to firing of a data driven
- * entity event - for example, the minecraft:ageable_grow_up
- * event on a chicken.
  */
 export class BeforeDataDrivenEntityTriggerEvent {
     protected constructor();
-    /**
-     * If set to true, this entity event is not triggered.
-     */
     cancel: boolean;
-    /**
-     * Entity that the event triggered on.
-     */
     readonly entity: Entity;
-    /**
-     * Name of the data driven event being triggered.
-     */
     readonly id: string;
     getModifiers(): DefinitionModifier[];
     setModifiers(modifiers: DefinitionModifier[]): void;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeDataDrivenEntityTriggerEventSignal_deprecated extends IBeforeDataDrivenEntityTriggerEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information regarding an explosion that has
- * happened.
  */
 export class BeforeExplosionEvent extends ExplosionEvent {
     protected constructor();
-    /**
-     * If set to true, cancels the explosion event.
-     */
     cancel: boolean;
     setImpactedBlocks(blocks: Vector3[]): void;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeExplosionEventSignal_deprecated extends IBeforeExplosionEventSignal_deprecated {
     protected constructor();
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeItemDefinitionEventSignal_deprecated extends IBeforeItemDefinitionEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to a triggering of a custom
- * item definition change.
  */
 export class BeforeItemDefinitionTriggeredEvent extends ItemDefinitionTriggeredEvent {
     protected constructor();
-    /**
-     * If set to true, will cancel the application of this item
-     * definition change.
-     */
     cancel: boolean;
 }
 /**
  * @beta
- * Contains information related to an item being used.
  */
 export class BeforeItemUseEvent extends ItemUseEvent {
     protected constructor();
-    /**
-     * If set to true, this will cancel the item use behavior.
-     */
     cancel: boolean;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeItemUseEventSignal_deprecated extends IBeforeItemUseEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to an item being used on a
- * block.
  */
 export class BeforeItemUseOnEvent extends ItemUseOnEvent {
     protected constructor();
-    /**
-     * If set to true, this will cancel the item use behavior.
-     */
     cancel: boolean;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeItemUseOnEventSignal_deprecated extends IBeforeItemUseOnEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to changes before a piston
- * expands or retracts.
  */
 export class BeforePistonActivateEvent extends BlockEvent {
     protected constructor();
-    /**
-     * If this is set to true within an event handler, the piston
-     * activation is canceled.
-     */
     cancel: boolean;
-    /**
-     * True if the piston is the process of expanding.
-     */
     readonly isExpanding: boolean;
-    /**
-     * Contains additional properties and details of the piston.
-     */
     readonly piston: BlockPistonComponent;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforePistonActivateEventSignal_deprecated extends IBeforePistonActivateEventSignal_deprecated {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to a script watchdog
- * termination.
  */
 export class BeforeWatchdogTerminateEvent {
     protected constructor();
-    /**
-     * If set to true, cancels the termination of the script
-     * runtime. Note that depending on server configuration
-     * settings, cancellation of the termination may not be
-     * allowed.
-     */
     cancel: boolean;
-    /**
-     * Contains the reason why a script runtime is to be
-     * terminated.
-     */
     readonly terminateReason: WatchdogTerminateReason;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BeforeWatchdogTerminateEventSignal_deprecated extends IBeforeWatchdogTerminateEventSignal {
     protected constructor();
 }
@@ -537,6 +507,9 @@ export class Block {
      * @throws This function can throw errors.
      */
     getComponent(componentName: string): BlockComponent | undefined;
+    /**
+     * @beta
+     */
     getItemStack(amount?: number, withData?: boolean): ItemStack;
     /**
      * @beta
@@ -582,8 +555,20 @@ export class Block {
      * ```
      */
     hasTag(tag: string): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     isAir(): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     isLiquid(): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     isSolid(): boolean;
     /**
      * @remarks
@@ -641,37 +626,26 @@ export class BlockAreaSize {
     /**
      * @remarks
      * Creates a new BlockAreaSize object.
-     * @param x
-     * @param y
-     * @param z
      */
     constructor(x: number, y: number, z: number);
     /**
      * @remarks
      * Tests whether this block area size is equal to another
      * BlockAreaSize object.
-     * @param other
      */
     equals(other: BlockAreaSize): boolean;
 }
 /**
  * @beta
- * Contains information regarding an event where a player
- * breaks a block.
  */
 export class BlockBreakEvent extends BlockEvent {
     protected constructor();
-    /**
-     * Returns permutation information about this block before it
-     * was broken.
-     */
     readonly brokenBlockPermutation: BlockPermutation;
-    /**
-     * Player that broke the block for this event.
-     */
     readonly player: Player;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BlockBreakEventSignal_deprecated extends IBlockBreakEventSignal {
     protected constructor();
 }
@@ -702,17 +676,14 @@ export class BlockEvent {
 }
 /**
  * @beta
- * Contains information regarding an explosion that has
- * occurred for a specific block.
  */
 export class BlockExplodeEvent extends BlockEvent {
     protected constructor();
-    /**
-     * Optional source of the explosion.
-     */
     readonly source: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BlockExplodeEventSignal_deprecated extends IBlockExplodeEventSignal {
     protected constructor();
 }
@@ -739,7 +710,6 @@ export class BlockInventoryComponent extends BlockComponent {
  * Represents a fluid container block that currently contains
  * lava.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
     protected constructor();
     /**
@@ -748,6 +718,9 @@ export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
      */
     static readonly componentId = 'minecraft:lavaContainer';
 }
+/**
+ * @beta
+ */
 export class BlockLiquidContainerComponent extends BlockComponent {
     protected constructor();
     fillLevel: number;
@@ -783,12 +756,14 @@ export class BlockPermutation {
      * permutation has.
      */
     getAllProperties(): Record<string, boolean | number | string>;
+    /**
+     * @beta
+     */
     getItemStack(amount?: number): ItemStack;
     /**
      * @beta
      * @remarks
      * Gets a property for the permutation.
-     * @param propertyName
      * @returns
      * Returns the property if the permutation has it, else `null`.
      */
@@ -803,7 +778,6 @@ export class BlockPermutation {
      * @beta
      * @remarks
      * Checks to see if the permutation has a specific tag.
-     * @param tag
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
      * @example check_block_tags.js
@@ -822,6 +796,10 @@ export class BlockPermutation {
      */
     hasTag(tag: string): boolean;
     matches(blockName: string, properties?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     withProperty(name: string, value: boolean | number | string): BlockPermutation;
     static resolve(blockName: string, properties?: Record<string, boolean | number | string>): BlockPermutation;
 }
@@ -866,17 +844,14 @@ export class BlockPistonComponent extends BlockComponent {
 }
 /**
  * @beta
- * Contains information regarding an event where a player
- * places a block.
  */
 export class BlockPlaceEvent extends BlockEvent {
     protected constructor();
-    /**
-     * Player that placed the block for this event.
-     */
     readonly player: Player;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class BlockPlaceEventSignal_deprecated extends IBlockPlaceEventSignal {
     protected constructor();
 }
@@ -906,16 +881,21 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
  * @beta
  * Returns an enumeration of available block properties.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class BlockProperties {
     protected constructor();
     static get(propertyName: string): BlockPropertyType;
     static getAll(): BlockPropertyType[];
 }
+/**
+ * @beta
+ */
 export class BlockProperty {
     protected constructor();
     readonly name: string;
 }
+/**
+ * @beta
+ */
 export class BlockPropertyType {
     protected constructor();
     readonly id: string;
@@ -949,7 +929,6 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     /**
      * @remarks
      * Sets and plays a record based on an item type.
-     * @param recordItemType
      * @throws This function can throw errors.
      */
     setRecord(recordItemType: ItemType): void;
@@ -1037,7 +1016,6 @@ export class BlockSignComponent extends BlockComponent {
  * Represents a fluid container block that currently contains
  * snow.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
     protected constructor();
     /**
@@ -1079,7 +1057,6 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
     /**
      * @remarks
      * Adds an item and colors the water based on a dye item type.
-     * @param itemType
      * @throws This function can throw errors.
      */
     addDye(itemType: ItemType): void;
@@ -1088,43 +1065,30 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
 }
 /**
  * @beta
- * Contains information related to changes to a button push.
  */
 export class ButtonPushEvent extends BlockEvent {
     protected constructor();
-    /**
-     * Optional source that triggered the button push.
-     */
     readonly source: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ButtonPushEventSignal_deprecated extends IButtonPushEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * An event that fires as players enter chat messages.
  */
 export class ChatEvent {
     protected constructor();
-    /**
-     * Message that is being broadcast. In a beforeChat event
-     * handler, _message_ can be updated with edits before the
-     * message is displayed to players.
-     */
     message: string;
-    /**
-     * Player that sent the chat message.
-     */
     sender: Player;
-    /**
-     * If true, this message is directly targeted to one or more
-     * players (i.e., is not broadcast.)
-     */
     sendToTargets: boolean;
     getTargets(): Player[];
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ChatEventSignal_deprecated extends IChatEventSignal {
     protected constructor();
 }
@@ -1140,6 +1104,9 @@ export class CommandResult {
      */
     readonly successCount: number;
 }
+/**
+ * @beta
+ */
 export class Component {
     protected constructor();
     readonly typeId: string;
@@ -1400,7 +1367,6 @@ export class ContainerSlot {
      * type and any custom data and properties associated with the
      * item stacks. The amount of each item stack is not taken into
      * consideration.
-     * @param itemStack
      * @throws
      * Throws if the slot's container is invalid.
      */
@@ -1410,7 +1376,6 @@ export class ContainerSlot {
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
-     * @param blockIdentifiers
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
@@ -1422,7 +1387,6 @@ export class ContainerSlot {
      * Adventure mode. This is only applicable to block items. The
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
-     * @param blockIdentifiers
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
@@ -1433,7 +1397,6 @@ export class ContainerSlot {
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
-     * @param loreList
      * @throws
      * Throws if the slot's container is invalid.
      */
@@ -1441,23 +1404,16 @@ export class ContainerSlot {
 }
 /**
  * @beta
- * Contains information related to firing of a data driven
- * entity event - for example, the minecraft:ageable_grow_up
- * event on a chicken.
  */
 export class DataDrivenEntityTriggerEvent {
     protected constructor();
-    /**
-     * Entity that the event triggered on.
-     */
     readonly entity: Entity;
-    /**
-     * Name of the data driven event being triggered.
-     */
     readonly id: string;
     getModifiers(): DefinitionModifier[];
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class DataDrivenEntityTriggerEventSignal_deprecated extends IDataDrivenEntityTriggerEventSignal {
     protected constructor();
 }
@@ -1574,8 +1530,6 @@ export class Dimension {
      * @remarks
      * Gets the first block that intersects with a vector emanating
      * from a location.
-     * @param location
-     * @param direction
      * @param options
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
@@ -1628,8 +1582,6 @@ export class Dimension {
      * @remarks
      * Gets entities that intersect with a specified vector
      * emanating from a location.
-     * @param location
-     * @param direction
      * @param options
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
@@ -1648,6 +1600,10 @@ export class Dimension {
      * @throws This function can throw errors.
      */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     runCommand(commandString: string): CommandResult;
     /**
      * @remarks
@@ -1722,7 +1678,6 @@ export class Dimension {
      * @remarks
      * Creates a new item stack as an entity at the specified
      * location.
-     * @param item
      * @param location
      * The location at which to create the item stack.
      * @returns
@@ -1792,22 +1747,18 @@ export class DynamicPropertiesDefinition {
     /**
      * @remarks
      * Defines a boolean dynamic property.
-     * @param identifier
      * @throws This function can throw errors.
      */
     defineBoolean(identifier: string): void;
     /**
      * @remarks
      * Defines a number dynamic property.
-     * @param identifier
      * @throws This function can throw errors.
      */
     defineNumber(identifier: string): void;
     /**
      * @remarks
      * Defines a string dynamic property.
-     * @param identifier
-     * @param maxLength
      * @throws This function can throw errors.
      */
     defineString(identifier: string, maxLength: number): void;
@@ -1840,25 +1791,16 @@ export class Effect {
 }
 /**
  * @beta
- * Contains information related to changes to an effect - like
- * poison - being added to an entity.
  */
 export class EffectAddEvent {
     protected constructor();
-    /**
-     * Additional properties and details of the effect.
-     */
     effect: Effect;
-    /**
-     * Additional variant number for the effect.
-     */
     effectState: number;
-    /**
-     * Entity that the effect is being added to.
-     */
     entity: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EffectAddEventSignal_deprecated extends IEffectAddEventSignal {
     protected constructor();
 }
@@ -1914,7 +1856,6 @@ export class EnchantmentList implements Iterable<Enchantment> {
     /**
      * @remarks
      * Creates a new EnchantmentList.
-     * @param enchantmentSlot
      */
     constructor(enchantmentSlot: number);
     [Symbol.iterator](): Iterator<Enchantment>;
@@ -1922,20 +1863,17 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * @remarks
      * Attempts to add the enchantment to this collection. Returns
      * true if successful.
-     * @param enchantment
      */
     addEnchantment(enchantment: Enchantment): boolean;
     /**
      * @remarks
      * Returns whether or not the provided EnchantmentInstance can
      * be added to this collection.
-     * @param enchantment
      */
     canAddEnchantment(enchantment: Enchantment): boolean;
     /**
      * @remarks
      * Returns an enchantment associated with a type.
-     * @param enchantmentType
      */
     getEnchantment(enchantmentType: EnchantmentType): Enchantment;
     /**
@@ -1943,7 +1881,6 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * If this collection has an EnchantmentInstance with type,
      * returns the level of the enchantment. Returns 0 if not
      * present.
-     * @param enchantmentType
      */
     hasEnchantment(enchantmentType: EnchantmentType): number;
     next(): IteratorResult<Enchantment>;
@@ -1951,7 +1888,6 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * @remarks
      * Removes an EnchantmentInstance with type from this
      * collection if present.
-     * @param enchantmentType
      */
     removeEnchantment(enchantmentType: EnchantmentType): void;
 }
@@ -1960,7 +1896,6 @@ export class EnchantmentList implements Iterable<Enchantment> {
  * This enum represents the item slot or type that an
  * enchantment can be applied to.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EnchantmentSlot {
     protected constructor();
     static readonly all = -1;
@@ -2042,7 +1977,6 @@ export class Entity {
     nameTag: string;
     /**
      * @beta
-     * Returns a scoreboard identity that represents this entity.
      * @throws This property can throw when used.
      */
     readonly scoreboard: ScoreboardIdentity;
@@ -2069,7 +2003,6 @@ export class Entity {
      * Amount of time, in ticks, for the effect to apply.
      * @param amplifier
      * Optional amplification of the effect to apply.
-     * @param showParticles
      * @throws This function can throw errors.
      * @example addEffect.js
      * ```typescript
@@ -2120,15 +2053,23 @@ export class Entity {
      * Applies a set of damage to an entity.
      * @param amount
      * Amount of damage to apply.
-     * @param source
-     * Additional option about the source of damage, which may add
-     * additional effects or spur additional behaviors on this
-     * entity.
      * @throws This function can throw errors.
      */
     applyDamage(amount: number, source?: EntityDamageSource): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     applyImpulse(vector: Vector3): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     clearVelocity(): void;
     /**
      * @beta
@@ -2147,7 +2088,6 @@ export class Entity {
      * @remarks
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
-     * @param options
      * @throws This function can throw errors.
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): Block;
@@ -2174,7 +2114,6 @@ export class Entity {
      * @beta
      * @remarks
      * Returns a property value.
-     * @param identifier
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
@@ -2186,7 +2125,6 @@ export class Entity {
      * @remarks
      * Returns the effect for the specified EffectType on the
      * entity, or undefined if the effect is not present.
-     * @param effectType
      * @returns
      * Effect object for the specified effect, or undefined if the
      * effect is not present.
@@ -2207,11 +2145,18 @@ export class Entity {
      * @remarks
      * Returns a potential set of entities from the direction that
      * this entity is looking at.
-     * @param options
      * @throws This function can throw errors.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     getHeadLocation(): Vector3;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     getRotation(): XYRotation;
     /**
      * @beta
@@ -2220,7 +2165,15 @@ export class Entity {
      * @throws This function can throw errors.
      */
     getTags(): string[];
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     getVelocity(): Vector3;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     getViewDirection(): Vector3;
     /**
      * @beta
@@ -2246,15 +2199,21 @@ export class Entity {
      * @beta
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
+     * @returns
+     * Returns true if entity can be killed (even if it is already
+     * dead), otherwise it returns false.
      * @throws This function can throw errors.
      */
     kill(): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
      * @beta
      * @remarks
      * Removes a specified property.
-     * @param identifier
      * @throws This function can throw errors.
      */
     removeDynamicProperty(identifier: string): boolean;
@@ -2267,6 +2226,10 @@ export class Entity {
      * @throws This function can throw errors.
      */
     removeTag(tag: string): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     runCommand(commandString: string): CommandResult;
     /**
      * @remarks
@@ -2286,7 +2249,6 @@ export class Entity {
      * @beta
      * @remarks
      * Sets a specified property to a value.
-     * @param identifier
      * @param value
      * Data value of the property to set.
      * @throws This function can throw errors.
@@ -2300,7 +2262,6 @@ export class Entity {
      * present, the entity is on fire.
      * @param seconds
      * Length of time to set the entity on fire.
-     * @param useEffects
      * @throws This function can throw errors.
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -2308,8 +2269,6 @@ export class Entity {
      * @beta
      * @remarks
      * Sets the main rotation of the entity.
-     * @param degreesX
-     * @param degreesY
      * @throws This function can throw errors.
      */
     setRotation(degreesX: number, degreesY: number): void;
@@ -2325,7 +2284,6 @@ export class Entity {
      * X rotation of the entity after teleportation.
      * @param yRotation
      * Y rotation of the entity after teleportation.
-     * @param keepVelocity
      * @throws This function can throw errors.
      */
     teleport(
@@ -2346,7 +2304,6 @@ export class Entity {
      * Dimension to move the selected entity to.
      * @param facingLocation
      * Location that this entity will be facing.
-     * @param keepVelocity
      * @throws This function can throw errors.
      */
     teleportFacing(location: Vector3, dimension: Dimension, facingLocation: Vector3, keepVelocity?: boolean): void;
@@ -2416,6 +2373,9 @@ export class EntityAgeableComponent extends EntityComponent {
     getDropItems(): string[];
     getFeedItems(): EntityDefinitionFeedItem[];
 }
+/**
+ * @beta
+ */
 export class EntityAttributeComponent extends EntityComponent {
     protected constructor();
     readonly current: number;
@@ -2425,6 +2385,9 @@ export class EntityAttributeComponent extends EntityComponent {
     resetToMinValue(): void;
     setCurrent(value: number): boolean;
 }
+/**
+ * @beta
+ */
 export class EntityBaseMovementComponent extends EntityComponent {
     protected constructor();
     readonly maxTurn: number;
@@ -2498,7 +2461,6 @@ export class EntityBreathableComponent extends EntityComponent {
  * When added, this component signifies that the entity can
  * climb up ladders.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityCanClimbComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2513,7 +2475,6 @@ export class EntityCanClimbComponent extends EntityComponent {
  * fly, and the pathfinder won't be restricted to paths where a
  * solid block is required underneath it.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityCanFlyComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2527,7 +2488,6 @@ export class EntityCanFlyComponent extends EntityComponent {
  * When added, this component signifies that the entity can
  * power jump like the horse does within Minecraft.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityCanPowerJumpComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2553,7 +2513,9 @@ export class EntityColorComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:color';
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EntityComponent extends Component {
     protected constructor();
 }
@@ -2577,15 +2539,23 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
 }
+/**
+ * @beta
+ */
 export class EntityDieEvent {
     protected constructor();
     readonly damageSource: EntityDamageSource;
     readonly deadEntity: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EntityDieEventSignal_deprecated extends IEntityDieEventSignal {
     protected constructor();
 }
+/**
+ * @beta
+ */
 export class EntityEquipmentInventoryComponent extends EntityComponent {
     protected constructor();
     static readonly componentId = 'minecraft:equipment_inventory';
@@ -2598,7 +2568,6 @@ export class EntityEquipmentInventoryComponent extends EntityComponent {
  * When added, this component signifies that this entity
  * doesn't take damage from fire.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityFireImmuneComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2612,7 +2581,6 @@ export class EntityFireImmuneComponent extends EntityComponent {
  * When added, this component signifies that this entity can
  * float in liquid blocks.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityFloatsInLiquidComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2701,7 +2669,6 @@ export class EntityHealableComponent extends EntityComponent {
  * @beta
  * Defines the health properties of an entity.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityHealthComponent extends EntityAttributeComponent {
     protected constructor();
     /**
@@ -2712,56 +2679,31 @@ export class EntityHealthComponent extends EntityAttributeComponent {
 }
 /**
  * @beta
- * Contains information related to an entity hitting (melee
- * attacking) another entity.
  */
 export class EntityHitEvent {
     protected constructor();
-    /**
-     * Entity that made a hit/melee attack.
-     */
     readonly entity: Entity;
-    /**
-     * Block that was hit by the attack, or undefined if the hit
-     * attack did not hit a block. If both hitEntity and hitBlock
-     * are undefined, then the entity basically swiped into the
-     * air.
-     */
     readonly hitBlock?: Block;
-    /**
-     * Entity that was hit by the attack, or undefined if the hit
-     * attack did not hit an entity. If both hitEntity and hitBlock
-     * are undefined, then the entity basically swiped into the
-     * air.
-     */
     readonly hitEntity?: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EntityHitEventSignal_deprecated extends IEntityHitEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to an entity getting hurt by
- * another entity.
  */
 export class EntityHurtEvent {
     protected constructor();
-    /**
-     * Describes the amount of damage caused.
-     */
     readonly damage: number;
-    /**
-     * Source information on the entity that may have applied this
-     * damage.
-     */
     readonly damageSource: EntityDamageSource;
-    /**
-     * Entity that was hurt.
-     */
     readonly hurtEntity: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EntityHurtEventSignal_deprecated extends IEntityHurtEventSignal {
     protected constructor();
 }
@@ -2820,7 +2762,6 @@ export class EntityInventoryComponent extends EntityComponent {
  * When added, this component signifies that this entity is a
  * baby.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsBabyComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2834,7 +2775,6 @@ export class EntityIsBabyComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * charged.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsChargedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2848,7 +2788,6 @@ export class EntityIsChargedComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently carrying a chest.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsChestedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2862,7 +2801,6 @@ export class EntityIsChestedComponent extends EntityComponent {
  * When added, this component signifies that dyes can be used
  * on this entity to change its color.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsDyableComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2876,7 +2814,6 @@ export class EntityIsDyableComponent extends EntityComponent {
  * When added, this component signifies that this entity can
  * hide from hostile mobs while invisible.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2890,7 +2827,6 @@ export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
  * When added, this component signifies that this entity this
  * currently on fire.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsIgnitedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2904,7 +2840,6 @@ export class EntityIsIgnitedComponent extends EntityComponent {
  * When added, this component signifies that this entity is an
  * illager captain.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsIllagerCaptainComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2918,7 +2853,6 @@ export class EntityIsIllagerCaptainComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently saddled.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsSaddledComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2932,7 +2866,6 @@ export class EntityIsSaddledComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently shaking.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsShakingComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2946,7 +2879,6 @@ export class EntityIsShakingComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently sheared.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsShearedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2960,7 +2892,6 @@ export class EntityIsShearedComponent extends EntityComponent {
  * When added, this component signifies that this entity can be
  * stacked.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsStackableComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2974,7 +2905,6 @@ export class EntityIsStackableComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently stunned.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsStunnedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -2988,7 +2918,6 @@ export class EntityIsStunnedComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently tamed.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityIsTamedComponent extends EntityComponent {
     protected constructor();
     /**
@@ -3037,7 +2966,6 @@ export class EntityIterator implements Iterable<Entity> {
  * @beta
  * Defines the base movement speed in lava of this entity.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityLavaMovementComponent extends EntityAttributeComponent {
     protected constructor();
     /**
@@ -3158,7 +3086,6 @@ export class EntityMovementBasicComponent extends EntityComponent {
  * @beta
  * Defines the general movement speed of this entity.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementComponent extends EntityAttributeComponent {
     protected constructor();
     /**
@@ -3171,7 +3098,6 @@ export class EntityMovementComponent extends EntityAttributeComponent {
  * @beta
  * When added, this move control causes the mob to fly.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
     protected constructor();
     /**
@@ -3185,7 +3111,6 @@ export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
  * When added, this move control allows a mob to fly, swim,
  * climb, etc.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementGenericComponent extends EntityBaseMovementComponent {
     protected constructor();
     /**
@@ -3220,7 +3145,6 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
  * @beta
  * When added, this move control causes the mob to hover.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
     protected constructor();
     /**
@@ -3234,7 +3158,6 @@ export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
  * Move control that causes the mob to jump as it moves with a
  * specified delay between jumps.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
     protected constructor();
     /**
@@ -3248,7 +3171,6 @@ export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
  * When added, this move control causes the mob to hop as it
  * moves.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
     protected constructor();
     /**
@@ -3285,7 +3207,6 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationClimbComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3294,6 +3215,9 @@ export class EntityNavigationClimbComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.climb';
 }
+/**
+ * @beta
+ */
 export class EntityNavigationComponent extends EntityComponent {
     protected constructor();
     readonly avoidDamageBlocks: boolean;
@@ -3321,7 +3245,6 @@ export class EntityNavigationComponent extends EntityComponent {
  * Allows this entity to generate paths by flying around the
  * air like the regular Ghast.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationFloatComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3335,7 +3258,6 @@ export class EntityNavigationFloatComponent extends EntityNavigationComponent {
  * Allows this entity to generate paths in the air (for
  * example, like Minecraft parrots do.)
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationFlyComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3350,7 +3272,6 @@ export class EntityNavigationFlyComponent extends EntityNavigationComponent {
  * flying and/or climbing around and jumping up and down a
  * block.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationGenericComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3365,7 +3286,6 @@ export class EntityNavigationGenericComponent extends EntityNavigationComponent 
  * example, like the Minecraft Bees do.) Keeps them from
  * falling out of the skies and doing predictive movement.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationHoverComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3379,7 +3299,6 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
  * Allows this entity to generate paths by walking around and
  * jumping up and down a block like regular mobs.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityNavigationWalkComponent extends EntityNavigationComponent {
     protected constructor();
     /**
@@ -3566,17 +3485,14 @@ export class EntitySkinIdComponent extends EntityComponent {
 }
 /**
  * @beta
- * Contains data related to an entity spawning within the
- * world.
  */
 export class EntitySpawnEvent {
     protected constructor();
-    /**
-     * Entity that was spawned.
-     */
     entity: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class EntitySpawnEventSignal_deprecated extends IEntitySpawnEventSignal {
     protected constructor();
 }
@@ -3662,13 +3578,11 @@ export class EntityTypeIterator implements Iterable<EntityType> {
  * Used for accessing all entity types currently available for
  * use within the world.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityTypes {
     protected constructor();
     /**
      * @remarks
      * Retrieves an entity type using a string-based identifier.
-     * @param identifier
      */
     static get(identifier: string): EntityType;
     /**
@@ -3682,7 +3596,6 @@ export class EntityTypes {
  * Defines the general movement speed underwater of this
  * entity.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityUnderwaterMovementComponent extends EntityAttributeComponent {
     protected constructor();
     /**
@@ -3715,7 +3628,6 @@ export class EntityVariantComponent extends EntityComponent {
  * When added, this component signifies that this entity wants
  * to become a jockey.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class EntityWantsJockeyComponent extends EntityComponent {
     protected constructor();
     /**
@@ -3731,11 +3643,6 @@ export class EntityWantsJockeyComponent extends EntityComponent {
  */
 export class Events {
     protected constructor();
-    /**
-     * This event fires before a chat message is broadcast or
-     * delivered. The event can be canceled, and the message can
-     * also be updated.
-     */
     readonly beforeChat: BeforeChatEventSignal_deprecated;
     /**
      * This event is fired before the triggering of an entity event
@@ -3787,10 +3694,6 @@ export class Events {
      * This event fires when a button is pushed.
      */
     readonly buttonPush: ButtonPushEventSignal_deprecated;
-    /**
-     * This event is triggered after a chat message has been
-     * broadcast or sent to players.
-     */
     readonly chat: ChatEventSignal_deprecated;
     /**
      * This event is fired when an entity event has been triggered
@@ -3912,22 +3815,16 @@ export class Events {
 }
 /**
  * @beta
- * Contains information regarding an explosion that has
- * happened.
  */
 export class ExplosionEvent {
     protected constructor();
-    /**
-     * Dimension where the explosion has occurred.
-     */
     readonly dimension: Dimension;
-    /**
-     * Optional source of the explosion.
-     */
     readonly source: Entity;
     getImpactedBlocks(): Vector3[];
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ExplosionEventSignal_deprecated extends IExplosionEventSignal {
     protected constructor();
 }
@@ -3984,7 +3881,6 @@ export class FeedItemEffect {
  * @beta
  * Represents a set of filters for when an event should occur.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class FilterGroup {
     protected constructor();
 }
@@ -3992,7 +3888,6 @@ export class FilterGroup {
  * @beta
  * Represents constants related to fluid containers.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class FluidContainer {
     protected constructor();
     /**
@@ -4006,11 +3901,17 @@ export class FluidContainer {
      */
     static readonly minFillLevel = 0;
 }
+/**
+ * @beta
+ */
 export class IBeforeChatEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeChatEvent) => void): (arg: BeforeChatEvent) => void;
     unsubscribe(callback: (arg: BeforeChatEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeDataDrivenEntityTriggerEventSignal_deprecated {
     protected constructor();
     subscribe(
@@ -4019,11 +3920,17 @@ export class IBeforeDataDrivenEntityTriggerEventSignal_deprecated {
     ): (arg: BeforeDataDrivenEntityTriggerEvent) => void;
     unsubscribe(callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeExplosionEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeExplosionEvent) => void): (arg: BeforeExplosionEvent) => void;
     unsubscribe(callback: (arg: BeforeExplosionEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeItemDefinitionEventSignal_deprecated {
     protected constructor();
     subscribe(
@@ -4031,51 +3938,81 @@ export class IBeforeItemDefinitionEventSignal_deprecated {
     ): (arg: BeforeItemDefinitionTriggeredEvent) => void;
     unsubscribe(callback: (arg: BeforeItemDefinitionTriggeredEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeItemUseEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeItemUseEvent) => void): (arg: BeforeItemUseEvent) => void;
     unsubscribe(callback: (arg: BeforeItemUseEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeItemUseOnEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforeItemUseOnEvent) => void): (arg: BeforeItemUseOnEvent) => void;
     unsubscribe(callback: (arg: BeforeItemUseOnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforePistonActivateEventSignal_deprecated {
     protected constructor();
     subscribe(callback: (arg: BeforePistonActivateEvent) => void): (arg: BeforePistonActivateEvent) => void;
     unsubscribe(callback: (arg: BeforePistonActivateEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBeforeWatchdogTerminateEventSignal {
     protected constructor();
     subscribe(callback: (arg: BeforeWatchdogTerminateEvent) => void): (arg: BeforeWatchdogTerminateEvent) => void;
     unsubscribe(callback: (arg: BeforeWatchdogTerminateEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBlockBreakEventSignal {
     protected constructor();
     subscribe(callback: (arg: BlockBreakEvent) => void): (arg: BlockBreakEvent) => void;
     unsubscribe(callback: (arg: BlockBreakEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBlockExplodeEventSignal {
     protected constructor();
     subscribe(callback: (arg: BlockExplodeEvent) => void): (arg: BlockExplodeEvent) => void;
     unsubscribe(callback: (arg: BlockExplodeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IBlockPlaceEventSignal {
     protected constructor();
     subscribe(callback: (arg: BlockPlaceEvent) => void): (arg: BlockPlaceEvent) => void;
     unsubscribe(callback: (arg: BlockPlaceEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IButtonPushEventSignal {
     protected constructor();
     subscribe(callback: (arg: ButtonPushEvent) => void): (arg: ButtonPushEvent) => void;
     unsubscribe(callback: (arg: ButtonPushEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IChatEventSignal {
     protected constructor();
     subscribe(callback: (arg: ChatEvent) => void): (arg: ChatEvent) => void;
     unsubscribe(callback: (arg: ChatEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IDataDrivenEntityTriggerEventSignal {
     protected constructor();
     subscribe(
@@ -4084,111 +4021,177 @@ export class IDataDrivenEntityTriggerEventSignal {
     ): (arg: DataDrivenEntityTriggerEvent) => void;
     unsubscribe(callback: (arg: DataDrivenEntityTriggerEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IEffectAddEventSignal {
     protected constructor();
     subscribe(callback: (arg: EffectAddEvent) => void, options?: EntityEventOptions): (arg: EffectAddEvent) => void;
     unsubscribe(callback: (arg: EffectAddEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IEntityDieEventSignal {
     protected constructor();
     subscribe(callback: (arg: EntityDieEvent) => void, options?: EntityEventOptions): (arg: EntityDieEvent) => void;
     unsubscribe(callback: (arg: EntityDieEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IEntityHitEventSignal {
     protected constructor();
     subscribe(callback: (arg: EntityHitEvent) => void, options?: EntityEventOptions): (arg: EntityHitEvent) => void;
     unsubscribe(callback: (arg: EntityHitEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IEntityHurtEventSignal {
     protected constructor();
     subscribe(callback: (arg: EntityHurtEvent) => void, options?: EntityEventOptions): (arg: EntityHurtEvent) => void;
     unsubscribe(callback: (arg: EntityHurtEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IEntitySpawnEventSignal {
     protected constructor();
     subscribe(callback: (arg: EntitySpawnEvent) => void): (arg: EntitySpawnEvent) => void;
     unsubscribe(callback: (arg: EntitySpawnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IExplosionEventSignal {
     protected constructor();
     subscribe(callback: (arg: ExplosionEvent) => void): (arg: ExplosionEvent) => void;
     unsubscribe(callback: (arg: ExplosionEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemCompleteChargeEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemCompleteChargeEvent) => void): (arg: ItemCompleteChargeEvent) => void;
     unsubscribe(callback: (arg: ItemCompleteChargeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemDefinitionEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemDefinitionTriggeredEvent) => void): (arg: ItemDefinitionTriggeredEvent) => void;
     unsubscribe(callback: (arg: ItemDefinitionTriggeredEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemReleaseChargeEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemReleaseChargeEvent) => void): (arg: ItemReleaseChargeEvent) => void;
     unsubscribe(callback: (arg: ItemReleaseChargeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemStartChargeEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemStartChargeEvent) => void): (arg: ItemStartChargeEvent) => void;
     unsubscribe(callback: (arg: ItemStartChargeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemStartUseOnEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemStartUseOnEvent) => void): (arg: ItemStartUseOnEvent) => void;
     unsubscribe(callback: (arg: ItemStartUseOnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemStopChargeEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemStopChargeEvent) => void): (arg: ItemStopChargeEvent) => void;
     unsubscribe(callback: (arg: ItemStopChargeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemStopUseOnEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemStopUseOnEvent) => void): (arg: ItemStopUseOnEvent) => void;
     unsubscribe(callback: (arg: ItemStopUseOnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemUseEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemUseEvent) => void): (arg: ItemUseEvent) => void;
     unsubscribe(callback: (arg: ItemUseEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IItemUseOnEventSignal {
     protected constructor();
     subscribe(callback: (arg: ItemUseOnEvent) => void): (arg: ItemUseOnEvent) => void;
     unsubscribe(callback: (arg: ItemUseOnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class ILeverActionEventSignal {
     protected constructor();
     subscribe(callback: (arg: LeverActionEvent) => void): (arg: LeverActionEvent) => void;
     unsubscribe(callback: (arg: LeverActionEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IPistonActivateEventSignal {
     protected constructor();
     subscribe(callback: (arg: PistonActivateEvent) => void): (arg: PistonActivateEvent) => void;
     unsubscribe(callback: (arg: PistonActivateEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IPlayerJoinEventSignal {
     protected constructor();
     subscribe(callback: (arg: PlayerJoinEvent) => void): (arg: PlayerJoinEvent) => void;
     unsubscribe(callback: (arg: PlayerJoinEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IPlayerLeaveEventSignal {
     protected constructor();
     subscribe(callback: (arg: PlayerLeaveEvent) => void): (arg: PlayerLeaveEvent) => void;
     unsubscribe(callback: (arg: PlayerLeaveEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IPlayerSpawnEventSignal {
     protected constructor();
     subscribe(callback: (arg: PlayerSpawnEvent) => void): (arg: PlayerSpawnEvent) => void;
     unsubscribe(callback: (arg: PlayerSpawnEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IProjectileHitEventSignal {
     protected constructor();
     subscribe(callback: (arg: ProjectileHitEvent) => void): (arg: ProjectileHitEvent) => void;
     unsubscribe(callback: (arg: ProjectileHitEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IScriptEventCommandMessageSignal {
     protected constructor();
     subscribe(
@@ -4197,6 +4200,9 @@ export class IScriptEventCommandMessageSignal {
     ): (arg: ScriptEventCommandMessageEvent) => void;
     unsubscribe(callback: (arg: ScriptEventCommandMessageEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IServerMessageSignal {
     protected constructor();
     subscribe(callback: (arg: MessageReceiveEvent) => void): (arg: MessageReceiveEvent) => void;
@@ -4204,30 +4210,22 @@ export class IServerMessageSignal {
 }
 /**
  * @beta
- * Contains information related to a chargeable item completing
- * being charged.
  */
 export class ItemCompleteChargeEvent {
     protected constructor();
-    /**
-     * Returns the item stack that has completed charging.
-     */
     readonly itemStack: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
-    /**
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     */
     readonly useDuration: number;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemCompleteChargeEventSignal_deprecated extends IItemCompleteChargeEventSignal {
     protected constructor();
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemComponent extends Component {
     protected constructor();
 }
@@ -4258,34 +4256,23 @@ export class ItemCooldownComponent extends ItemComponent {
     /**
      * @remarks
      * Starts a new cooldown period for this item.
-     * @param player
      * @throws This function can throw errors.
      */
     startCooldown(player: Player): void;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemDefinitionEventSignal_deprecated extends IItemDefinitionEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to a custom item having a data
- * definition change being triggered.
  */
 export class ItemDefinitionTriggeredEvent {
     protected constructor();
-    /**
-     * Name of the data-driven item event that is triggering this
-     * change.
-     */
     readonly eventName: string;
-    /**
-     * The impacted item stack that is being used.
-     */
     item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
 }
 /**
@@ -4389,27 +4376,16 @@ export class ItemFoodComponent extends ItemComponent {
 }
 /**
  * @beta
- * Contains information related to a chargeable item when the
- * player has finished using the item and released the build
- * action.
  */
 export class ItemReleaseChargeEvent {
     protected constructor();
-    /**
-     * Returns the item stack that triggered this item event.
-     */
     readonly itemStack: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
-    /**
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     */
     readonly useDuration: number;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemReleaseChargeEventSignal_deprecated extends IItemReleaseChargeEventSignal {
     protected constructor();
 }
@@ -4418,7 +4394,6 @@ export class ItemReleaseChargeEventSignal_deprecated extends IItemReleaseChargeE
  * Represents a collection of all of the available item types
  * in Minecraft.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class Items {
     protected constructor();
     /**
@@ -4558,7 +4533,6 @@ export class ItemStack {
      * type and any custom data and properties associated with the
      * item stacks. The amount of each item stack is not taken into
      * consideration.
-     * @param itemStack
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
@@ -4566,7 +4540,6 @@ export class ItemStack {
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
-     * @param blockIdentifiers
      * @throws
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
@@ -4584,7 +4557,6 @@ export class ItemStack {
      * Adventure mode. This is only applicable to block items. The
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
-     * @param blockIdentifiers
      * @throws
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
@@ -4600,7 +4572,6 @@ export class ItemStack {
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
-     * @param loreList
      * @example multilineLore.ts
      * ```typescript
      *        // Set the lore of an item to multiple lines of text
@@ -4623,99 +4594,63 @@ export class ItemStack {
 }
 /**
  * @beta
- * Contains information related to a chargeable item starting
- * to be charged.
  */
 export class ItemStartChargeEvent {
     protected constructor();
-    /**
-     * The impacted item stack that is starting to be charged.
-     */
     readonly itemStack: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
-    /**
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     */
     readonly useDuration: number;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemStartChargeEventSignal_deprecated extends IItemStartChargeEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to an item being used on a
- * block.
  */
 export class ItemStartUseOnEvent {
     protected constructor();
-    /**
-     * The face of the block that an item is being used on.
-     */
     readonly blockFace: Direction;
-    /**
-     * The impacted item stack that is starting to be used.
-     */
     item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
     getBlockLocation(): Vector3;
     getBuildBlockLocation(): Vector3;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemStartUseOnEventSignal_deprecated extends IItemStartUseOnEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to a chargeable item has
- * finished an items use cycle, or when the player has released
- * the use action with the item.
  */
 export class ItemStopChargeEvent {
     protected constructor();
-    /**
-     * The impacted item stack that is stopping being charged.
-     */
     readonly itemStack: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
-    /**
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     */
     readonly useDuration: number;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemStopChargeEventSignal_deprecated extends IItemStopChargeEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to an item that has stopped
- * being used on a block.
  */
 export class ItemStopUseOnEvent {
     protected constructor();
-    /**
-     * The impacted item stack that is being used on a block.
-     */
     item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
     getBlockLocation(): Vector3;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemStopUseOnEventSignal_deprecated extends IItemStopUseOnEventSignal {
     protected constructor();
 }
@@ -4744,13 +4679,11 @@ export class ItemTypeIterator implements Iterable<ItemType> {
  * @beta
  * Returns the set of item types registered within Minecraft.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class ItemTypes {
     protected constructor();
     /**
      * @remarks
      * Returns a specific item type, if available within Minecraft.
-     * @param itemId
      */
     static get(itemId: string): ItemType;
     /**
@@ -4762,63 +4695,47 @@ export class ItemTypes {
 }
 /**
  * @beta
- * Contains information related to an item being used.
  */
 export class ItemUseEvent {
     protected constructor();
-    /**
-     * The impacted item stack that is being used.
-     */
     item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemUseEventSignal_deprecated extends IItemUseEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to an item being used on a
- * block.
  */
 export class ItemUseOnEvent {
     protected constructor();
-    /**
-     * The face of the block that an item is being used on.
-     */
     readonly blockFace: Direction;
-    /**
-     * X coordinate of the item-use impact location on the face of
-     * the target block.
-     */
     readonly faceLocationX: number;
-    /**
-     * Y coordinate of the item-use impact location on the face of
-     * the target block.
-     */
     readonly faceLocationY: number;
-    /**
-     * The impacted item stack that is being used on a block.
-     */
     item: ItemStack;
-    /**
-     * Returns the source entity that triggered this item event.
-     */
     readonly source: Entity;
     getBlockLocation(): Vector3;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ItemUseOnEventSignal_deprecated extends IItemUseOnEventSignal {
     protected constructor();
 }
+/**
+ * @beta
+ */
 export class IWeatherChangeEventSignal {
     protected constructor();
     subscribe(callback: (arg: WeatherChangeEvent) => void): (arg: WeatherChangeEvent) => void;
     unsubscribe(callback: (arg: WeatherChangeEvent) => void): void;
 }
+/**
+ * @beta
+ */
 export class IWorldInitializeEventSignal {
     protected constructor();
     subscribe(callback: (arg: WorldInitializeEvent) => void): (arg: WorldInitializeEvent) => void;
@@ -4826,29 +4743,20 @@ export class IWorldInitializeEventSignal {
 }
 /**
  * @beta
- * Contains information related to changes to a lever
- * activating or deactivating.
  */
 export class LeverActionEvent extends BlockEvent {
     protected constructor();
-    /**
-     * True if the lever is activated (that is, transmitting
-     * power).
-     */
     readonly isPowered: boolean;
-    /**
-     * Optional player that triggered the lever activation.
-     */
     readonly player: Player;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class LeverActionEventSignal_deprecated extends ILeverActionEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * A specific currently-internal event used for passing
- * messages from client to server.
  */
 export class MessageReceiveEvent {
     protected constructor();
@@ -4862,7 +4770,6 @@ export class MessageReceiveEvent {
  * Contains definitions of standard Minecraft and Minecraft
  * Education Edition block types.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class MinecraftBlockTypes {
     protected constructor();
     /**
@@ -5169,6 +5076,7 @@ export class MinecraftBlockTypes {
      * Represents a calcite block within Minecraft.
      */
     static readonly calcite: BlockType;
+    static readonly calibratedSculkSensor: BlockType;
     /**
      * Represents a camera within Minecraft Education Edition. It
      * is not available in Minecraft Bedrock Edition.
@@ -7970,7 +7878,6 @@ export class MinecraftBlockTypes {
     /**
      * @remarks
      * Returns a specific Minecraft block type given a type id.
-     * @param typeName
      */
     static get(typeName: string): BlockType;
     /**
@@ -7982,7 +7889,6 @@ export class MinecraftBlockTypes {
 /**
  * A collection of default Minecraft dimension types.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class MinecraftDimensionTypes {
     protected constructor();
     /**
@@ -8017,7 +7923,6 @@ export class MinecraftDimensionTypes {
  * @beta
  * Returns available installed effect types within Minecraft.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class MinecraftEffectTypes {
     protected constructor();
     static readonly absorption: EffectType;
@@ -8056,7 +7961,6 @@ export class MinecraftEffectTypes {
  * @beta
  * Describes a set of enchantment types.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class MinecraftEnchantmentTypes {
     protected constructor();
     static readonly aquaAffinity: EnchantmentType;
@@ -8098,7 +8002,9 @@ export class MinecraftEnchantmentTypes {
     static readonly unbreaking: EnchantmentType;
     static readonly vanishing: EnchantmentType;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class MinecraftEntityTypes {
     protected constructor();
     static readonly agent: EntityType;
@@ -8219,7 +8125,6 @@ export class MinecraftEntityTypes {
  * Contains definitions of standard Minecraft and Minecraft
  * Education Edition block types.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class MinecraftItemTypes {
     protected constructor();
     static readonly acaciaBoat: ItemType;
@@ -10897,8 +10802,6 @@ export class MolangVariableMap {
      * - `<variable_name>.r` - Red color value [0-1]
      * - `<variable_name>.g` - Green color value [0-1]
      * - `<variable_name>.b` - Blue color value [0-1]
-     * @param variableName
-     * @param color
      */
     setColorRGB(variableName: string, color: Color): MolangVariableMap;
     /**
@@ -10909,8 +10812,6 @@ export class MolangVariableMap {
      * - `<variable_name>.b` - Blue color value [0-1]
      * - `<variable_name>.a` - Alpha (transparency) color value
      * [0-1]
-     * @param variableName
-     * @param color
      */
     setColorRGBA(variableName: string, color: Color): MolangVariableMap;
     /**
@@ -10923,9 +10824,6 @@ export class MolangVariableMap {
      * Vector3} provided
      * - `<variable_name>.direction_z` - Z value from the {@link
      * Vector3} provided
-     * @param variableName
-     * @param speed
-     * @param direction
      */
     setSpeedAndDirection(variableName: string, speed: number, direction: Vector): MolangVariableMap;
     /**
@@ -10937,8 +10835,6 @@ export class MolangVariableMap {
      * provided
      * - `<variable_name>.z` - Z value from the {@link Vector3}
      * provided
-     * @param variableName
-     * @param vector
      */
     setVector3(variableName: string, vector: Vector): MolangVariableMap;
 }
@@ -10959,21 +10855,15 @@ export class NavigationResult {
 }
 /**
  * @beta
- * Contains information related to changes to a piston
- * expanding or retracting.
  */
 export class PistonActivateEvent extends BlockEvent {
     protected constructor();
-    /**
-     * True if the piston is the process of expanding.
-     */
     readonly isExpanding: boolean;
-    /**
-     * Contains additional properties and details of the piston.
-     */
     readonly piston: BlockPistonComponent;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class PistonActivateEventSignal_deprecated extends IPistonActivateEventSignal {
     protected constructor();
 }
@@ -10982,6 +10872,10 @@ export class PistonActivateEventSignal_deprecated extends IPistonActivateEventSi
  */
 export class Player extends Entity {
     protected constructor();
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     */
     readonly level: number;
     /**
      * Name of the player.
@@ -10999,8 +10893,20 @@ export class Player extends Entity {
      * Manages the selected slot in the player's hotbar.
      */
     selectedSlot: number;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     */
     readonly spawnDimension?: Dimension;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     */
     readonly totalXpNeededForNextLevel: number;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     */
     readonly xpEarnedAtCurrentLevel: number;
     /**
      * @beta
@@ -11026,6 +10932,10 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     addLevels(amount: number): number;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     clearSpawn(): void;
     /**
      * @beta
@@ -11038,6 +10948,10 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getItemCooldown(itemCategory: string): number;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     getSpawnPosition(): Vector3 | undefined;
     /**
      * @beta
@@ -11069,8 +10983,6 @@ export class Player extends Entity {
      * @remarks
      * This is an internal-facing method for posting a system
      * message to downstream clients.
-     * @param id
-     * @param value
      * @throws This function can throw errors.
      */
     postClientMessage(id: string, value: string): void;
@@ -11128,10 +11040,13 @@ export class Player extends Entity {
      * @remarks
      * Will change the specified players permissions, and whether
      * they are operator or not.
-     * @param isOp
      * @throws This function can throw errors.
      */
     setOp(isOp: boolean): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     setSpawn(spawnPosition: Vector3, spawnDimension: Dimension): void;
     /**
      * @beta
@@ -11166,99 +11081,62 @@ export class PlayerIterator implements Iterable<Player> {
 }
 /**
  * @beta
- * Contains information regarding a player that has joined.
- * See the playerSpawn event for more detailed information that
- * could be returned after the first time a player has spawned
- * within the game.
  */
 export class PlayerJoinEvent {
     protected constructor();
-    /**
-     * Opaque string identifier of the player that joined the game.
-     */
     readonly playerId: string;
-    /**
-     * Name of the player that has joined.
-     */
     readonly playerName: string;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class PlayerJoinEventSignal_deprecated extends IPlayerJoinEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information regarding a player that has left the
- * world.
  */
 export class PlayerLeaveEvent {
     protected constructor();
-    /**
-     * Opaque string identifier of the player that has left the
-     * event.
-     */
     readonly playerId: string;
-    /**
-     * Player that has left the world.
-     */
     readonly playerName: string;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class PlayerLeaveEventSignal_deprecated extends IPlayerLeaveEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * An event that contains more information about a player
- * spawning.
  */
 export class PlayerSpawnEvent {
     protected constructor();
-    /**
-     * If true, this is the initial spawn of a player after joining
-     * the game.
-     */
     initialSpawn: boolean;
-    /**
-     * Object that represents the player that joined the game.
-     */
     player: Player;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class PlayerSpawnEventSignal_deprecated extends IPlayerSpawnEventSignal {
     protected constructor();
 }
 /**
  * @beta
- * Contains information related to a projectile hitting an
- * entity or block.
  */
 export class ProjectileHitEvent {
     protected constructor();
-    /**
-     * Dimension where this projectile hit took place.
-     */
     readonly dimension: Dimension;
-    /**
-     * Direction vector of the projectile as it hit a block/entity.
-     */
     readonly hitVector: Vector;
-    /**
-     * Location where the projectile hit occurred.
-     */
     readonly location: Vector3;
-    /**
-     * Entity for the projectile that hit a block/entity.
-     */
     readonly projectile: Entity;
-    /**
-     * Optional source entity that fired the projectile.
-     */
     readonly source: Entity;
     getBlockHit(): BlockHitInformation | undefined;
     getEntityHit(): EntityHitInformation | undefined;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ProjectileHitEventSignal_deprecated extends IProjectileHitEventSignal {
     protected constructor();
 }
@@ -11274,8 +11152,6 @@ export class PropertyRegistry {
      * @remarks
      * Registers a dynamic property for a particular entity type
      * (e.g., a minecraft:skeleton.).
-     * @param propertiesDefinition
-     * @param entityType
      * @throws This function can throw errors.
      */
     registerEntityTypeDynamicProperties(
@@ -11285,7 +11161,6 @@ export class PropertyRegistry {
     /**
      * @remarks
      * Registers a globally available dynamic property for a world.
-     * @param propertiesDefinition
      * @throws This function can throw errors.
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
@@ -11299,15 +11174,12 @@ export class Scoreboard {
     /**
      * @remarks
      * Adds a new objective to the scoreboard.
-     * @param objectiveId
-     * @param displayName
      * @throws This function can throw errors.
      */
     addObjective(objectiveId: string, displayName: string): ScoreboardObjective;
     /**
      * @remarks
      * Clears the objective that occupies a display slot.
-     * @param displaySlotId
      * @throws This function can throw errors.
      */
     clearObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjective;
@@ -11323,7 +11195,6 @@ export class Scoreboard {
      * @remarks
      * Returns an objective that occupies the specified display
      * slot.
-     * @param displaySlotId
      * @throws This function can throw errors.
      */
     getObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjectiveDisplayOptions;
@@ -11354,7 +11225,6 @@ export class Scoreboard {
     /**
      * @remarks
      * Removes an objective from the scoreboard.
-     * @param objectiveId
      * @throws This function can throw errors.
      */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
@@ -11362,8 +11232,6 @@ export class Scoreboard {
      * @remarks
      * Sets an objective into a display slot with specified
      * additional display settings.
-     * @param displaySlotId
-     * @param objectiveDisplaySetting
      * @throws This function can throw errors.
      */
     setObjectiveAtDisplaySlot(
@@ -11377,7 +11245,6 @@ export class Scoreboard {
      * Objective to use for the scoreboard.
      * @param participant
      * Participant to apply the scoreboard value to.
-     * @param score
      * @throws This function can throw errors.
      */
     setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
@@ -11529,7 +11396,6 @@ export class ScreenDisplay {
      * @remarks
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
-     * @param text
      * @throws This function can throw errors.
      */
     setActionBar(text: string): void;
@@ -11538,8 +11404,6 @@ export class ScreenDisplay {
      * Will cause a title to show up on the player's on screen
      * display. You can optionally specify an additional subtitle
      * as well as fade in, stay and fade out times.
-     * @param title
-     * @param options
      * @throws This function can throw errors.
      */
     setTitle(title: string, options?: TitleDisplayOptions): void;
@@ -11547,48 +11411,25 @@ export class ScreenDisplay {
      * @remarks
      * Updates the subtitle if the subtitle was previously
      * displayed via the setTitle method.
-     * @param subtitle
      * @throws This function can throw errors.
      */
     updateSubtitle(subtitle: string): void;
 }
 /**
  * @beta
- * Returns additional data about a /scriptevent command
- * invocation.
  */
 export class ScriptEventCommandMessageEvent {
     protected constructor();
-    /**
-     * Identifier of this ScriptEvent command message.
-     */
     readonly id: string;
-    /**
-     * If this command was initiated via an NPC, returns the entity
-     * that initiated the NPC dialogue.
-     */
     readonly initiator: Entity;
-    /**
-     * Optional additional data passed in with the script event
-     * command.
-     */
     readonly message: string;
-    /**
-     * Source block if this command was triggered via a block
-     * (e.g., a commandblock.)
-     */
     readonly sourceBlock: Block;
-    /**
-     * Source entity if this command was triggered by an entity
-     * (e.g., a NPC).
-     */
     readonly sourceEntity: Entity;
-    /**
-     * Returns the type of source that fired this command.
-     */
     readonly sourceType: MessageSourceType;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ScriptEventCommandMessageSignal_deprecated extends IScriptEventCommandMessageSignal {
     protected constructor();
 }
@@ -11619,7 +11460,9 @@ export class Seat {
      */
     readonly position: Vector3;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class ServerMessageSignal_deprecated extends IServerMessageSignal {
     protected constructor();
 }
@@ -11644,7 +11487,6 @@ export class System {
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via the `run` function.
-     * @param runId
      */
     clearRun(runId: number): void;
     /**
@@ -11739,7 +11581,6 @@ export class Trigger {
     /**
      * @remarks
      * Creates a new trigger.
-     * @param eventName
      */
     constructor(eventName: string);
 }
@@ -11830,101 +11671,70 @@ export class Vector {
     /**
      * @remarks
      * Returns the addition of these vectors.
-     * @param a
-     * @param b
      */
     static add(a: Vector3, b: Vector3): Vector;
     /**
      * @remarks
      * Returns the cross product of these two vectors.
-     * @param a
-     * @param b
      */
     static cross(a: Vector3, b: Vector3): Vector;
     /**
      * @remarks
      * Returns the distance between two vectors.
-     * @param a
-     * @param b
      */
     static distance(a: Vector3, b: Vector3): number;
     /**
      * @remarks
      * Returns the component-wise division of these vectors.
-     * @param a
-     * @param b
      */
     static divide(a: Vector3, b: number | Vector3): Vector;
     /**
      * @remarks
      * Returns the linear interpolation between a and b using t as
      * the control.
-     * @param a
-     * @param b
-     * @param t
      */
     static lerp(a: Vector3, b: Vector3, t: number): Vector;
     /**
      * @remarks
      * Returns a vector that is made from the largest components of
      * two vectors.
-     * @param a
-     * @param b
      */
     static max(a: Vector3, b: Vector3): Vector;
     /**
      * @remarks
      * Returns a vector that is made from the smallest components
      * of two vectors.
-     * @param a
-     * @param b
      */
     static min(a: Vector3, b: Vector3): Vector;
     /**
      * @remarks
      * Returns the component-wise product of these vectors.
-     * @param a
-     * @param b
      */
     static multiply(a: Vector3, b: number | Vector3): Vector;
     /**
      * @remarks
      * Returns the spherical linear interpolation between a and b
      * using s as the control.
-     * @param a
-     * @param b
-     * @param s
      */
     static slerp(a: Vector3, b: Vector3, s: number): Vector;
     /**
      * @remarks
      * Returns the subtraction of these vectors.
-     * @param a
-     * @param b
      */
     static subtract(a: Vector3, b: Vector3): Vector;
 }
 /**
  * @beta
- * Contains information related to changes in weather in the
- * environment.
  */
 export class WeatherChangeEvent {
     protected constructor();
-    /**
-     * Dimension in which the weather has changed.
-     */
     readonly dimension: string;
-    /**
-     * Whether it is lightning after the change in weather.
-     */
     readonly lightning: boolean;
-    /**
-     * Whether it is raining after the change in weather.
-     */
     readonly raining: boolean;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class WeatherChangeEventSignal_deprecated extends IWeatherChangeEventSignal {
     protected constructor();
 }
@@ -11951,8 +11761,6 @@ export class World {
      * @remarks
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
-     * @param id
-     * @param value
      */
     broadcastClientMessage(id: string, value: string): void;
     /**
@@ -11967,11 +11775,13 @@ export class World {
      * @throws This function can throw errors.
      */
     getAllPlayers(): Player[];
+    /**
+     * @beta
+     */
     getDefaultSpawnPosition(): Vector3;
     /**
      * @remarks
      * Returns a dimension object.
-     * @param dimensionId
      * @returns
      * The requested dimension
      * @throws
@@ -11982,7 +11792,6 @@ export class World {
      * @beta
      * @remarks
      * Returns a property value.
-     * @param identifier
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
@@ -12024,16 +11833,12 @@ export class World {
      * @beta
      * @remarks
      * Plays a particular music track for all players.
-     * @param trackID
-     * @param musicOptions
      */
     playMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
      * @beta
      * @remarks
      * Plays a sound for all players.
-     * @param soundID
-     * @param soundOptions
      */
     playSound(soundID: string, soundOptions?: SoundOptions): void;
     /**
@@ -12041,15 +11846,12 @@ export class World {
      * @remarks
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
-     * @param trackID
-     * @param musicOptions
      */
     queueMusic(trackID: string, musicOptions?: MusicOptions): void;
     /**
      * @beta
      * @remarks
      * Removes a specified property.
-     * @param identifier
      * @throws This function can throw errors.
      */
     removeDynamicProperty(identifier: string): boolean;
@@ -12095,12 +11897,15 @@ export class World {
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
     setDefaultSpawn(spawnPosition: Vector3): void;
     /**
      * @beta
      * @remarks
      * Sets a specified property to a value.
-     * @param identifier
      * @param value
      * Data value of the property to set.
      * @throws This function can throw errors.
@@ -12110,7 +11915,6 @@ export class World {
      * @beta
      * @remarks
      * Returns the current game time of the day.
-     * @param timeOfDay
      */
     setTime(timeOfDay: number): void;
     /**
@@ -12122,36 +11926,14 @@ export class World {
 }
 /**
  * @beta
- * Contains information and methods that can be used at the
- * initialization of the scripting environment for a World.
- * Also, use the supplied propertyRegistry object to register
- * any dynamic properties, within the scope of the World
- * Initialize execution.
  */
 export class WorldInitializeEvent {
     protected constructor();
-    /**
-     * Contains methods for scripts to initialize and register
-     * dynamic properties they may wish to use within a world.
-     * @example propertyRegistration.js
-     * ```typescript
-     *        import { DynamicPropertiesDefinition, MinecraftEntityTypes, world } from "@minecraft/server";
-     *
-     *        world.events.worldInitialize.subscribe((e) => {
-     *          let def = new DynamicPropertiesDefinition();
-     *
-     *          def.defineNumber("rpgStrength");
-     *          def.defineString("rpgRole", 16);
-     *          def.defineBoolean("rpgIsHero");
-     *
-     *          e.propertyRegistry.registerEntityTypeDynamicProperties(def, MinecraftEntityTypes.skeleton);
-     *        });
-     *
-     * ```
-     */
     readonly propertyRegistry: PropertyRegistry;
 }
-// tslint:disable-next-line:no-unnecessary-class
+/**
+ * @beta
+ */
 export class WorldInitializeEventSignal_deprecated extends IWorldInitializeEventSignal {
     protected constructor();
 }
@@ -12171,6 +11953,9 @@ export class XYRotation {
      */
     y: number;
 }
+/**
+ * @beta
+ */
 export interface BlockFillOptions {
     matchingBlock?: BlockPermutation;
 }
@@ -12243,6 +12028,9 @@ export interface Color {
      */
     red: number;
 }
+/**
+ * @beta
+ */
 export interface EntityDamageSource {
     cause: EntityDamageCause;
     damagingEntity?: Entity;
@@ -12417,6 +12205,7 @@ export interface EntityQueryOptions {
      */
     type?: string;
     /**
+     * @beta
      * In conjunction with location, specified a cuboid volume of
      * entities to include.
      */
@@ -12517,12 +12306,18 @@ export interface NumberRange {
      */
     min: number;
 }
+/**
+ * @beta
+ */
 export interface PlayAnimationOptions {
     blendOutTime?: number;
     controller?: string;
     nextState?: string;
     stopExpression?: string;
 }
+/**
+ * @beta
+ */
 export interface RawMessage {
     rawtext?: RawMessage[];
     score?: RawMessageScore;
@@ -12530,6 +12325,9 @@ export interface RawMessage {
     translate?: string;
     with?: string[] | RawMessage;
 }
+/**
+ * @beta
+ */
 export interface RawMessageScore {
     name?: string;
     objective?: string;
@@ -12560,6 +12358,9 @@ export interface ScoreboardObjectiveDisplayOptions {
      */
     sortOrder?: ObjectiveSortOrder;
 }
+/**
+ * @beta
+ */
 export interface ScriptEventMessageFilterOptions {
     namespaces: string[];
 }
@@ -12623,6 +12424,9 @@ export interface Vector3 {
      */
     z: number;
 }
+/**
+ * @beta
+ */
 export const TicksPerDay = 24000;
 /**
  * @beta

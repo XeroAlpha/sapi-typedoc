@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, copyFileSync, writeFileSync } = require("fs");
+const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync } = require("fs");
 const { createRequire } = require("module");
 const { resolve: resolvePath } = require("path");
 const { URL } = require("url");
@@ -111,13 +111,16 @@ async function main() {
         stdio: "inherit"
     });
 
-    // 2. 无视 lockfile 更新模块
+    // 2. 删除 node_modules
+    rmSync(resolvePath(originalPath, "node_modules"), { recursive: true, force: true });
+
+    // 3. 重新安装模块且不生成 package-lock.json
     execSync("npm install", {
         cwd: originalPath,
         stdio: "inherit"
     });
 
-    // 3. 复制模块 d.ts 至翻译目录
+    // 4. 复制模块 d.ts 至翻译目录
     const dependencies = readPackageInfo(originalPath).dependencies;
     Object.keys(dependencies).forEach((moduleName) => {
         if (moduleName.startsWith(namespacePrefix)) {
@@ -134,10 +137,10 @@ async function main() {
         }
     });
 
-    // 4. 生成一次文档
+    // 5. 生成一次文档
     const project = await build();
 
-    // 5. 生成 README.md 。
+    // 6. 生成 README.md 。
     const readMePath = resolvePath(translatedPath, "README.md");
     const readMe = readFileSync(readMePath, "utf-8");
 

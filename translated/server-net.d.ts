@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.19.80-preview.21"
+ *   "version": "1.0.0-beta.1.19.80-preview.23"
  * }
  * ```
  *
@@ -61,7 +61,6 @@ export class HttpClient {
     /**
      * @remarks
      * Cancels all pending requests.
-     * @param reason
      */
     cancelAll(reason: string): void;
     /**
@@ -130,27 +129,22 @@ export class HttpRequest {
      * @remarks
      * Adds an additional header to the overall list of headers
      * used in the corresponding HTTP request.
-     * @param key
-     * @param value
      */
     addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
     /**
      * @remarks
      * Updates the content of the body of the HTTP request.
-     * @param body
      */
     setBody(body: string): HttpRequest;
     /**
      * @remarks
      * Replaces and applies a set of HTTP Headers for the request.
-     * @param headers
      */
     setHeaders(headers: HttpHeader[]): HttpRequest;
     /**
      * @remarks
      * Sets the desired HTTP method (e.g., GET or PUT or PATCH) to
      * use for making the request.
-     * @param method
      */
     setMethod(method: HttpRequestMethod): HttpRequest;
     setTimeout(timeout: number): HttpRequest;

@@ -12,7 +12,7 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
 
-游戏版本号：`1.19.80.21`
+游戏版本号：`1.19.80.23`
 
 <!-- summary end -->
 

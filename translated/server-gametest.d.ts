@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.80-preview.21"
+ *   "version": "1.0.0-internal.1.19.80-preview.23"
  * }
  * ```
  *
@@ -99,7 +99,6 @@ export class GameTestSequence {
      * @remarks
      * Runs the given callback every tick for the given number of
      * ticks.
-     * @param tickCount
      * @param callback
      * Callback function to execute.
      * @returns
@@ -177,12 +176,11 @@ export class RegistrationBuilder {
      * RegistrationBuilder object where additional configuration
      * methods can be called.
      */
-    batch(batchName: 'night' | 'day'): RegistrationBuilder;
+    batch(batchName: string): RegistrationBuilder;
     /**
      * @remarks
      * Sets the maximum number of times a test will try to rerun if
      * it fails.
-     * @param attemptCount
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -192,7 +190,6 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the maximum number of ticks a test will run for before
      * timing out and failing.
-     * @param tickCount
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -226,7 +223,6 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the number of successful test runs to be considered
      * successful.
-     * @param attemptCount
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -236,14 +232,12 @@ export class RegistrationBuilder {
      * @remarks
      * If true, runs the test in all four rotations when run via
      * /gametest runset.
-     * @param rotate
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
     /**
      * @remarks
      * Sets the number of ticks for a test to wait before executing
      * when the structure is spawned.
-     * @param tickCount
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -254,7 +248,6 @@ export class RegistrationBuilder {
      * Sets the name of the structure for a test to use. "xyz:bar"
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
-     * @param structureName
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -264,7 +257,6 @@ export class RegistrationBuilder {
      * @remarks
      * Adds a tag to a test. You can run all tests with a given tag
      * with `/gametest runset <tag>`.
-     * @param tag
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -287,14 +279,11 @@ export class SculkSpreader {
      * @remarks
      * Adds a cursor - which is a notional waypoint that the sculk
      * will spread in the direction of.
-     * @param offset
-     * @param charge
      */
     addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
     /**
      * @remarks
      * Retrieves the current position of the specified cursor.
-     * @param index
      * @throws This function can throw errors.
      */
     getCursorPosition(index: number): minecraftserver.Vector3;
@@ -342,7 +331,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player was not on cooldown and had a valid target. The
      * attack can be performed at any distance and does not require
      * line of sight to the target entity.
-     * @param entity
      * @throws This function can throw errors.
      */
     attackEntity(entity: minecraftserver.Entity): boolean;
@@ -417,7 +405,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given block location.
-     * @param blockLocation
      * @throws This function can throw errors.
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3): void;
@@ -425,7 +412,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given entity.
-     * @param entity
      * @throws This function can throw errors.
      */
     lookAtEntity(entity: minecraftserver.Entity): void;
@@ -433,7 +419,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given location.
-     * @param location
      * @throws This function can throw errors.
      */
     lookAtLocation(location: minecraftserver.Vector3): void;
@@ -441,9 +426,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the GameTest.
-     * @param westEast
-     * @param northSouth
-     * @param speed
      * @throws This function can throw errors.
      */
     move(westEast: number, northSouth: number, speed?: number): void;
@@ -451,9 +433,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the player's current rotation.
-     * @param leftRight
-     * @param backwardForward
-     * @param speed
      * @throws This function can throw errors.
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
@@ -463,8 +442,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * location in a straight line. If a move or navigation is
      * already playing, this will override the last
      * move/navigation.
-     * @param blockLocation
-     * @param speed
      * @throws This function can throw errors.
      */
     moveToBlock(blockLocation: minecraftserver.Vector3, speed?: number): void;
@@ -473,8 +450,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to move to the given location in
      * a straight line. If a move or navigation is already playing,
      * this will override the last move/navigation.
-     * @param location
-     * @param speed
      * @throws This function can throw errors.
      */
     moveToLocation(location: minecraftserver.Vector3, speed?: number): void;
@@ -486,8 +461,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * that if the simulated player gets stuck, that simulated
      * player will stop. The player must be touching the ground in
      * order to start navigation.
-     * @param blockLocation
-     * @param speed
      * @throws This function can throw errors.
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
@@ -496,8 +469,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Will use navigation to follow the selected entity to within
      * a one block radius. If a move or navigation is already
      * playing, this will override the last move/navigation.
-     * @param entity
-     * @param speed
      * @throws This function can throw errors.
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): minecraftserver.NavigationResult;
@@ -509,8 +480,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * the simulated player gets stuck, that simulated player will
      * stop. The player must be touching the ground in order to
      * start navigation.
-     * @param location
-     * @param speed
      * @throws This function can throw errors.
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
@@ -536,7 +505,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to turn by the provided angle,
      * relative to the player's current rotation.
-     * @param angleInDegrees
      * @throws This function can throw errors.
      */
     rotateBody(angleInDegrees: number): void;
@@ -544,7 +512,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to turn to face the provided
      * angle, relative to the GameTest.
-     * @param angleInDegrees
      * @throws This function can throw errors.
      */
     setBodyRotation(angleInDegrees: number): void;
@@ -665,7 +632,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
  * These well-known tags can be used to classify different
  * tests into suites to run.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class Tags {
     protected constructor();
     /**
@@ -1272,7 +1238,6 @@ export class Test {
      */
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
-     * @param vector
      * @throws This function can throw errors.
      */
     rotateVector(vector: minecraftserver.Vector): minecraftserver.Vector;
@@ -1352,7 +1317,6 @@ export class Test {
      * 'minecraft:' is assumed. Note that an optional initial spawn
      * event can be specified between less than/greater than signs
      * (e.g., namespace:entityType<spawnEvent>).
-     * @param blockLocation
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
@@ -1392,7 +1356,6 @@ export class Test {
      * 'minecraft:' is assumed. Note that an optional initial spawn
      * event can be specified between less than/greater than signs
      * (e.g., namespace:entityType<spawnEvent>).
-     * @param location
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
@@ -1431,7 +1394,6 @@ export class Test {
      * Location where to spawn the simulated player.
      * @param name
      * Name to give the new simulated player.
-     * @param gameMode
      * @throws This function can throw errors.
      */
     spawnSimulatedPlayer(
@@ -1444,7 +1406,6 @@ export class Test {
      * Spawns an entity at a location without any AI behaviors.
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
-     * @param entityTypeIdentifier
      * @param blockLocation
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
@@ -1455,7 +1416,6 @@ export class Test {
      * Spawns an entity at a location without any AI behaviors.
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
-     * @param entityTypeIdentifier
      * @param location
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
@@ -1641,13 +1601,11 @@ export class Test {
      * @remarks
      * Triggers a block event from a fixed list of available block
      * events.
-     * @param blockLocation
      * @param event
      * Event to trigger. Valid values include minecraft:drip,
      * minecraft:grow_stalagtite, minecraft:grow_stalagmite,
      * minecraft:grow_up, minecraft:grow_down and
      * minecraft:grow_sideways.
-     * @param eventParameters
      * @throws This function can throw errors.
      */
     triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;

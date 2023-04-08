@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.19.80-preview.21"
+ *   "version": "1.0.0-beta.1.19.80-preview.23"
  * }
  * ```
  *
@@ -28,7 +28,6 @@
  * secret string. The contents of that string are not available
  * to script; this object is just a placeholder.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class SecretString {
     constructor(value: string);
 }
@@ -48,7 +47,6 @@ export class ServerSecrets {
      * configured in a JSON file. In certain objects, like an
      * HttpHeader, this Secret is resolved at the time of execution
      * but is not made available to the script environment.
-     * @param name
      */
     get(name: string): SecretString | undefined;
 }
@@ -66,7 +64,6 @@ export class ServerVariables {
      * @remarks
      * Returns the value of variable that has been configured in a
      * dedicated server configuration JSON file.
-     * @param name
      */
     get(name: string): any | undefined;
 }
