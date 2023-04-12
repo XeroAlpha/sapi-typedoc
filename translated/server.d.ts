@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.2.0-internal.1.19.80-preview.23"
+ *   "version": "1.2.0-internal.1.19.80-preview.24"
  * }
  * ```
  *
@@ -2515,6 +2515,7 @@ export class EntityColorComponent extends EntityComponent {
 }
 /**
  * @beta
+ * Base EntityComponent class.
  */
 export class EntityComponent extends Component {
     protected constructor();
