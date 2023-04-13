@@ -11,7 +11,8 @@
             "@minecraft/server-admin": ["./server-admin"],
             "@minecraft/server-gametest": ["./server-gametest"],
             "@minecraft/server-net": ["./server-net"],
-            "@minecraft/server-ui": ["./server-ui"]
+            "@minecraft/server-ui": ["./server-ui"],
+            "@minecraft/vanilla-data": ["./vanilla-data"]
         }
     },
     "typedocOptions": {
@@ -25,7 +26,8 @@
                 "Iterable": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
                 "Iterator": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
                 "IteratorResult": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
-                "Record": "https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type"
+                "Record": "https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type",
+                "Pick": "https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys"
             }
         }
     }

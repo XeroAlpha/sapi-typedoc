@@ -1,7 +1,7 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync } = require("fs");
+const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync, readdirSync, statSync, mkdirSync } = require("fs");
 const { createRequire } = require("module");
-const { resolve: resolvePath } = require("path");
+const { resolve: resolvePath, relative: relativePath } = require("path");
 const { URL } = require("url");
 const { build } = require("./build.js");
 
@@ -11,6 +11,9 @@ const translatedPath = resolvePath(basePath, "translated");
 
 const namespacePrefix = "@minecraft/";
 const baseURL = "https://projectxero.top/sapi/";
+const botModules = [
+    "@minecraft/vanilla-data"
+];
 
 function readPackageInfo(modulePath) {
     const packageInfoPath = resolvePath(modulePath, "package.json");
@@ -42,6 +45,28 @@ function extractVersionInfo(versionString) {
         }
         return { version, gamePreRelease, gameVersion };
     }
+}
+
+function walkFiles(directory, walker) {
+    const files = readdirSync(directory, { withFileTypes: true });
+    files.forEach((file) => {
+        if (file.isDirectory()) {
+            walker(directory, null, directory);
+            walkFiles(resolvePath(directory, file.name), walker);
+        } else {
+            walker(directory, file.name, resolvePath(directory, file.name));
+        }
+    });
+}
+
+function getCommonStringFromStart(a, b) {
+    let len = Math.min(a.length, b.length);
+    while (len > 0) {
+        if (a.slice(0, len) === b.slice(0, len)) {
+            return a.slice(0, len);
+        }
+    }
+    return "";
 }
 
 const KindString = [
@@ -129,10 +154,35 @@ async function main() {
             const packageInfo = readPackageInfo(modulePath);
             const version = packageInfo.version;
             console.log(`Copying d.ts for ${moduleName}@${version}`);
-            copyFileSync(
-                resolvePath(modulePath, "index.d.ts"),
-                resolvePath(translatedPath, `${pureModuleName}.d.ts`)
-            );
+            const dtsFiles = [];
+            walkFiles(modulePath, (dir, file, path) => {
+                if (file && file.endsWith(".d.ts")) {
+                    dtsFiles.push(path);
+                }
+            });
+            if (dtsFiles.length < 1) {
+                throw new Error(`Cannot find any d.ts for ${moduleName}`);
+            }
+            if (dtsFiles.length === 1) {
+                copyFileSync(
+                    dtsFiles[0],
+                    resolvePath(translatedPath, `${pureModuleName}.d.ts`)
+                );
+            } else {
+                const typeEntry = resolvePath(modulePath, packageInfo.types).replace(/\.d\.ts$/i, "");
+                const commonParent = dtsFiles.map((path) => resolvePath(path, ".."))
+                    .reduce((common, parent) => getCommonStringFromStart(common, parent));
+                const moduleRoot = resolvePath(translatedPath, pureModuleName);
+                const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
+                const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, "/")}`;
+                const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
+                dtsFiles.forEach((file) => {
+                    const target = resolvePath(moduleRoot, relativePath(commonParent, file));
+                    mkdirSync(resolvePath(target, ".."), { recursive: true });
+                    copyFileSync(file, target);
+                });
+                writeFileSync(resolvePath(translatedPath, `${pureModuleName}.d.ts`), exportStatement);
+            }
             dependencies[moduleName] = version;
         }
     });
@@ -152,12 +202,13 @@ async function main() {
     ];
     let gameVersion;
     Object.entries(dependencies).forEach(([moduleName, version]) => {
+        let versionString = version;
         const versionInfo = extractVersionInfo(version);
-        if (!versionInfo) {
-            throw new Error(`Invalid version for ${moduleName}@${version}`)
+        if (versionInfo) {
+            if (!gameVersion) gameVersion = versionInfo.gameVersion;
+            versionString = versionInfo.version;
         }
-        if (!gameVersion) gameVersion = versionInfo.gameVersion;
-        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionInfo.version}\`|`);
+        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionString}\`|`);
     });
     summaryLines.push("");
     summaryLines.push(`游戏版本号：\`${gameVersion}\``);
@@ -173,6 +224,7 @@ async function main() {
     const statusLines = [];
     project.children.forEach((moduleRef) => {
         const moduleFullName = namespacePrefix + moduleRef.name;
+        if (botModules.includes(moduleFullName)) return;
         const linkHref = moduleFullName.replace(/[@\/]/g, "");
         statusHeadLines.push(`|[${moduleFullName}](#${linkHref})|0/${moduleRef.children.length}|`);
         statusLines.push("");

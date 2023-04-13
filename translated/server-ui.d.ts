@@ -44,7 +44,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.0.0-internal.1.19.80-preview.24"
+ *   "version": "1.0.0-internal.1.20.0-preview.20"
  * }
  * ```
  *
@@ -67,12 +67,18 @@ export class ActionFormData {
     /**
      * @remarks
      * Method that sets the body text for the modal form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
@@ -80,6 +86,9 @@ export class ActionFormData {
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the
      * dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
@@ -88,6 +97,9 @@ export class ActionFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
@@ -98,7 +110,9 @@ export class ActionFormData {
 export class ActionFormResponse extends FormResponse {
     protected constructor();
     /**
+     * @remarks
      * Returns the index of the button that was pushed.
+     *
      */
     readonly selection?: number;
 }
@@ -108,12 +122,16 @@ export class ActionFormResponse extends FormResponse {
 export class FormResponse {
     protected constructor();
     /**
+     * @remarks
      * Contains additional details as to why a form was canceled.
+     *
      */
     readonly cancelationReason?: FormCancelationReason;
     /**
+     * @remarks
      * If true, the form was canceled by the player (e.g., they
      * selected the pop-up X close button).
+     *
      */
     readonly canceled: boolean;
 }
@@ -124,18 +142,27 @@ export class MessageFormData {
     /**
      * @remarks
      * Method that sets the body text for the modal form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     button2(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
@@ -143,6 +170,9 @@ export class MessageFormData {
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the
      * dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
@@ -151,6 +181,9 @@ export class MessageFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
@@ -161,7 +194,9 @@ export class MessageFormData {
 export class MessageFormResponse extends FormResponse {
     protected constructor();
     /**
+     * @remarks
      * Returns the index of the button that was pushed.
+     *
      */
     readonly selection?: number;
 }
@@ -173,6 +208,9 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a dropdown with choices to the form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     dropdown(
         label: minecraftserver.RawMessage | string,
@@ -184,6 +222,9 @@ export class ModalFormData {
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the
      * dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
@@ -192,6 +233,9 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a numeric slider to the form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     slider(
         label: minecraftserver.RawMessage | string,
@@ -203,6 +247,9 @@ export class ModalFormData {
     /**
      * @remarks
      * Adds a textbox to the form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     textField(
         label: minecraftserver.RawMessage | string,
@@ -212,11 +259,17 @@ export class ModalFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     title(titleText: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a toggle checkbox button to the form.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }
@@ -226,8 +279,10 @@ export class ModalFormData {
 export class ModalFormResponse extends FormResponse {
     protected constructor();
     /**
+     * @remarks
      * An ordered set of values based on the order of controls
      * specified by ModalFormData.
+     *
      */
     readonly formValues?: any[];
 }
