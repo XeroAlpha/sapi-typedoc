@@ -6,14 +6,14 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.2.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.3.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
-|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.0.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.19.80-preview.24`|
+|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.1.0-beta`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.0-preview.21`|
 
-游戏版本号：`1.20.0.20`
+游戏版本号：`1.20.0.21`
 
 <!-- summary end -->
 
@@ -42,7 +42,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/313|
+|[@minecraft/server](#minecraftserver)|0/312|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -86,12 +86,12 @@ Minecraft 脚本 API 文档。
 |[`BlockPlaceAfterEvent`](https://projectxero.top/sapi/classes/server.BlockPlaceAfterEvent.html)|类|未翻译|
 |[`BlockPlaceAfterEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.BlockPlaceAfterEventSignal_deprecated.html)|类|未翻译|
 |[`BlockPotionContainerComponent`](https://projectxero.top/sapi/classes/server.BlockPotionContainerComponent.html)|类|未翻译|
-|[`BlockProperties`](https://projectxero.top/sapi/classes/server.BlockProperties.html)|类|未翻译|
 |[`BlockProperty`](https://projectxero.top/sapi/classes/server.BlockProperty.html)|类|未翻译|
-|[`BlockPropertyType`](https://projectxero.top/sapi/classes/server.BlockPropertyType.html)|类|未翻译|
 |[`BlockRecordPlayerComponent`](https://projectxero.top/sapi/classes/server.BlockRecordPlayerComponent.html)|类|未翻译|
 |[`BlockSignComponent`](https://projectxero.top/sapi/classes/server.BlockSignComponent.html)|类|未翻译|
 |[`BlockSnowContainerComponent`](https://projectxero.top/sapi/classes/server.BlockSnowContainerComponent.html)|类|未翻译|
+|[`BlockStateType`](https://projectxero.top/sapi/classes/server.BlockStateType.html)|类|未翻译|
+|[`BlockStates`](https://projectxero.top/sapi/classes/server.BlockStates.html)|类|未翻译|
 |[`BlockType`](https://projectxero.top/sapi/classes/server.BlockType.html)|类|未翻译|
 |[`BlockVolumeUtils`](https://projectxero.top/sapi/classes/server.BlockVolumeUtils.html)|类|未翻译|
 |[`BlockWaterContainerComponent`](https://projectxero.top/sapi/classes/server.BlockWaterContainerComponent.html)|类|未翻译|
@@ -238,7 +238,7 @@ Minecraft 脚本 API 文档。
 |[`IItemUseBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseBeforeEventSignal.html)|类|未翻译|
 |[`IItemUseOnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseOnAfterEventSignal.html)|类|未翻译|
 |[`IItemUseOnBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseOnBeforeEventSignal.html)|类|未翻译|
-|[`ILeverActionEventSignalAfterEventSignal`](https://projectxero.top/sapi/classes/server.ILeverActionEventSignalAfterEventSignal.html)|类|未翻译|
+|[`ILeverActionAfterEventSignal`](https://projectxero.top/sapi/classes/server.ILeverActionAfterEventSignal.html)|类|未翻译|
 |[`IPistonActivateAfterEventSignal`](https://projectxero.top/sapi/classes/server.IPistonActivateAfterEventSignal.html)|类|未翻译|
 |[`IPistonActivateBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IPistonActivateBeforeEventSignal.html)|类|未翻译|
 |[`IPlayerJoinAfterEventSignal`](https://projectxero.top/sapi/classes/server.IPlayerJoinAfterEventSignal.html)|类|未翻译|
@@ -282,7 +282,6 @@ Minecraft 脚本 API 文档。
 |[`ItemUseOnAfterEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.ItemUseOnAfterEventSignal_deprecated.html)|类|未翻译|
 |[`ItemUseOnBeforeEvent`](https://projectxero.top/sapi/classes/server.ItemUseOnBeforeEvent.html)|类|未翻译|
 |[`ItemUseOnBeforeEventSignal`](https://projectxero.top/sapi/classes/server.ItemUseOnBeforeEventSignal.html)|类|未翻译|
-|[`Items`](https://projectxero.top/sapi/classes/server.Items.html)|类|未翻译|
 |[`LeverActionAfterEvent`](https://projectxero.top/sapi/classes/server.LeverActionAfterEvent.html)|类|未翻译|
 |[`LeverActionAfterEventSignal_deprecated`](https://projectxero.top/sapi/classes/server.LeverActionAfterEventSignal_deprecated.html)|类|未翻译|
 |[`MessageReceiveAfterEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveAfterEvent.html)|类|未翻译|

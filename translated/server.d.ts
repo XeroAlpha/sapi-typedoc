@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.2.0-internal.1.20.0-preview.20"
+ *   "version": "1.3.0-internal.1.20.0-preview.21"
  * }
  * ```
  *
@@ -739,6 +739,7 @@ export class BlockEvent {
  */
 export class BlockExplodeAfterEvent extends BlockEvent {
     protected constructor();
+    readonly explodedBlockPermutation: BlockPermutation;
     /**
      * @remarks
      * Optional source of the explosion.
@@ -848,8 +849,15 @@ export class BlockPermutation {
     clone(): BlockPermutation;
     /**
      * @beta
+     * @remarks
+     * Returns all available block states associated with this
+     * block.
+     *
+     * @returns
+     * Returns the list of all of the block states that the
+     * permutation has.
      */
-    getAllProperties(): Record<string, boolean | number | string>;
+    getAllStates(): Record<string, boolean | number | string>;
     /**
      * @beta
      * @remarks
@@ -864,8 +872,16 @@ export class BlockPermutation {
     getItemStack(amount?: number): ItemStack;
     /**
      * @beta
+     * @remarks
+     * Gets a state for the permutation.
+     *
+     * @param stateName
+     * Name of the block state who's value is to be returned.
+     * @returns
+     * Returns the state if the permutation has it, else
+     * `undefined`.
      */
-    getProperty(propertyName: string): boolean | number | string | undefined;
+    getState(stateName: string): boolean | number | string | undefined;
     /**
      * @beta
      * @remarks
@@ -904,20 +920,12 @@ export class BlockPermutation {
      * @param blockName
      * An optional set of states to compare against.
      */
-    matches(blockName: string, properties?: Record<string, boolean | number | string>): boolean;
+    matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
      * @beta
-     * @remarks
-     * Returns a derived BlockPermutation with a specific property
-     * set.
-     *
-     * @param name
-     * Identifier of the block property.
-     * @param value
-     * Value of the block property.
      * @throws This function can throw errors.
      */
-    withProperty(name: string, value: boolean | number | string): BlockPermutation;
+    withState(name: string, value: boolean | number | string): BlockPermutation;
     /**
      * @remarks
      * Given a type identifier and an optional set of properties,
@@ -926,11 +934,9 @@ export class BlockPermutation {
      *
      * @param blockName
      * Identifier of the block to check.
-     * @param properties
-     * Optional additional set of properties to check against.
      * @throws This function can throw errors.
      */
-    static resolve(blockName: string, properties?: Record<string, boolean | number | string>): BlockPermutation;
+    static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 /**
  * @beta
@@ -1039,35 +1045,9 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
 /**
  * @beta
  */
-export class BlockProperties {
-    protected constructor();
-    /**
-     * @remarks
-     * Retrieves a specific block property instance.
-     *
-     */
-    static get(propertyName: string): BlockPropertyType;
-    /**
-     * @remarks
-     * Retrieves a set of all available block properties.
-     *
-     */
-    static getAll(): BlockPropertyType[];
-}
-/**
- * @beta
- */
 export class BlockProperty {
     protected constructor();
     readonly name: string;
-}
-/**
- * @beta
- */
-export class BlockPropertyType {
-    protected constructor();
-    readonly id: string;
-    readonly validValues: (boolean | number | string)[];
 }
 /**
  * @beta
@@ -1126,7 +1106,8 @@ export class BlockSignComponent extends BlockComponent {
     /**
      * @remarks
      * Returns the RawText of the sign if `setText` was called with
-     * a RawMessage or a RawText object
+     * a RawMessage or a RawText object, otherwise returns
+     * undefined.
      *
      * @throws This function can throw errors.
      */
@@ -1134,7 +1115,7 @@ export class BlockSignComponent extends BlockComponent {
     /**
      * @remarks
      * Returns the text of the sign if `setText` was called with a
-     * string
+     * string, otherwise returns undefined.
      *
      * @throws This function can throw errors.
      */
@@ -1142,14 +1123,14 @@ export class BlockSignComponent extends BlockComponent {
     /**
      * @remarks
      * Gets the dye that is on the text or undefined if the sign
-     * has not been dyed
+     * has not been dyed.
      *
      * @throws This function can throw errors.
      */
     getTextDyeColor(): DyeColor | undefined;
     /**
      * @remarks
-     * Sets the text of the sign component
+     * Sets the text of the sign component.
      *
      * This function can't be called in read-only mode.
      *
@@ -1188,13 +1169,13 @@ export class BlockSignComponent extends BlockComponent {
     setText(message: RawMessage | RawText | string): void;
     /**
      * @remarks
-     * Sets the dye color of the text
+     * Sets the dye color of the text.
      *
      * This function can't be called in read-only mode.
      *
      * @param color
-     * The dye color you want or undefined if you want to clear the
-     * dye on the sign
+     * The dye color to apply to the sign or undefined to clear the
+     * dye on the sign.
      * @throws This function can throw errors.
      */
     setTextDyeColor(color?: DyeColor): void;
@@ -1213,6 +1194,46 @@ export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
      *
      */
     static readonly componentId = 'minecraft:snowContainer';
+}
+/**
+ * @beta
+ * Enumerates all {@link BlockStateType}s.
+ */
+export class BlockStates {
+    protected constructor();
+    /**
+     * @remarks
+     * Retrieves a specific block state instance.
+     *
+     */
+    static get(stateName: string): BlockStateType;
+    /**
+     * @remarks
+     * Retrieves a set of all available block states.
+     *
+     */
+    static getAll(): BlockStateType[];
+}
+/**
+ * @beta
+ * Represents a configurable state value of a block instance.
+ * For example, the facing direction of stairs is accessible as
+ * a block state.
+ */
+export class BlockStateType {
+    protected constructor();
+    /**
+     * @remarks
+     * Identifier of the block property.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * A set of valid values for the block property.
+     *
+     */
+    readonly validValues: (boolean | number | string)[];
 }
 /**
  * @beta
@@ -2867,6 +2888,8 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
+     * @param vector
+     * Impulse vector.
      * @throws This function can throw errors.
      */
     applyImpulse(vector: Vector3): void;
@@ -2878,6 +2901,14 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
+     * @param directionX
+     * X direction in horizontal plane.
+     * @param directionZ
+     * Z direction in horizontal plane.
+     * @param horizontalStrength
+     * Knockback strength for the horizontal vector.
+     * @param verticalStrength
+     * Knockback strength for the vertical vector.
      * @throws This function can throw errors.
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
@@ -3470,6 +3501,12 @@ export class EntityColorComponent extends EntityComponent {
  */
 export class EntityComponent extends Component {
     protected constructor();
+    /**
+     * @remarks
+     * The entity that owns this component.
+     *
+     */
+    readonly entity: Entity;
 }
 /**
  * @beta
@@ -5161,8 +5198,11 @@ export class Events {
     readonly itemStartCharge: StartChargeAfterEventSignal_deprecated;
     /**
      * @remarks
-     * This event fires when any particular item is starting to be
-     * used by an entity or player.
+     * This event fires when a player successfully uses an item or
+     * places a block by pressing the Use Item / Place Block
+     * button. If multiple blocks are placed, this event will only
+     * occur once at the beginning of the block placement. Note:
+     * This event cannot be used with Hoe or Axe items.
      *
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal_deprecated;
@@ -5174,22 +5214,23 @@ export class Events {
     readonly itemStopCharge: ItemStopChargeAfterEventSignal_deprecated;
     /**
      * @remarks
-     * This event fires when any particular item is ending being
-     * used by an entity or player.
+     * This event fires when a player releases the Use Item / Place
+     * Block button after successfully using an item. Note: This
+     * event cannot be used with Hoe or Axe items.
      *
      */
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal_deprecated;
     /**
      * @remarks
-     * This event fires when any particular item is used by an
-     * entity or player.
+     * This event fires when an item is successfully used by a
+     * player.
      *
      */
     readonly itemUse: ItemUseAfterEventSignal_deprecated;
     /**
      * @remarks
-     * This event fires when any particular item is used on a block
-     * by an entity or player.
+     * This event fires when an item is used on a block by a
+     * player.
      *
      */
     readonly itemUseOn: ItemUseOnAfterEventSignal_deprecated;
@@ -5941,7 +5982,7 @@ export class IItemUseOnBeforeEventSignal {
 /**
  * @beta
  */
-export class ILeverActionEventSignalAfterEventSignal {
+export class ILeverActionAfterEventSignal {
     protected constructor();
     /**
      * @remarks
@@ -6423,24 +6464,6 @@ export class ItemReleaseChargeAfterEventSignal_deprecated extends IItemReleaseCh
 }
 /**
  * @beta
- * Represents a collection of all of the available item types
- * in Minecraft.
- */
-export class Items {
-    protected constructor();
-    /**
-     * @remarks
-     * Returns an item type given an item type identifier.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param itemId
-     * Type of the item to return.
-     */
-    static get(itemId: string): ItemType;
-}
-/**
- * @beta
  * Defines a collection of items.
  */
 export class ItemStack {
@@ -6700,7 +6723,10 @@ export class ItemStartChargeAfterEvent {
 /**
  * @beta
  * Contains information related to an item being used on a
- * block.
+ * block. This event fires when a player presses the the Use
+ * Item / Place Block button to successfully use an item or
+ * place a block. Note: This event cannot be used with Hoe or
+ * Axe items.
  */
 export class ItemStartUseOnAfterEvent {
     protected constructor();
@@ -6777,7 +6803,12 @@ export class ItemStopChargeAfterEventSignal_deprecated extends IItemStopChargeAf
 /**
  * @beta
  * Contains information related to an item that has stopped
- * being used on a block.
+ * being used on a block. This event fires when a player
+ * successfully uses an item or places a block by pressing the
+ * Use Item / Place Block button. If multiple blocks are
+ * placed, this event will only occur once at the beginning of
+ * the block placement. Note: This event cannot be used with
+ * Hoe or Axe items.
  */
 export class ItemStopUseOnAfterEvent {
     protected constructor();
@@ -6863,7 +6894,8 @@ export class ItemTypes {
 }
 /**
  * @beta
- * Contains information related to an item being used.
+ * Contains information related to an item being used. This
+ * event fires when an item is successfully used by a player.
  */
 export class ItemUseAfterEvent {
     protected constructor();
@@ -6905,7 +6937,8 @@ export class ItemUseBeforeEventSignal extends IItemUseBeforeEventSignal {
 /**
  * @beta
  * Contains information related to an item being used on a
- * block.
+ * block. This event fires when an item is used on a block by a
+ * player.
  */
 export class ItemUseOnAfterEvent {
     protected constructor();
@@ -7049,7 +7082,7 @@ export class LeverActionAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
  */
-export class LeverActionAfterEventSignal_deprecated extends ILeverActionEventSignalAfterEventSignal {
+export class LeverActionAfterEventSignal_deprecated extends ILeverActionAfterEventSignal {
     protected constructor();
 }
 /**
@@ -11713,6 +11746,7 @@ export class MinecraftEntityTypes {
     static readonly bee: EntityType;
     static readonly blaze: EntityType;
     static readonly boat: EntityType;
+    static readonly camel: EntityType;
     static readonly cat: EntityType;
     static readonly caveSpider: EntityType;
     static readonly chestBoat: EntityType;
@@ -11848,6 +11882,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly acaciaFenceGate: ItemType;
+    static readonly acaciaHangingSign: ItemType;
     static readonly acaciaLog: ItemType;
     /**
      * @remarks
@@ -11921,6 +11956,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly andesiteStairs: ItemType;
+    static readonly anglerPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place an anvil within Minecraft.
@@ -11928,7 +11964,9 @@ export class MinecraftItemTypes {
      */
     static readonly anvil: ItemType;
     static readonly apple: ItemType;
+    static readonly archerPotteryShard: ItemType;
     static readonly armorStand: ItemType;
+    static readonly armsUpPotteryShard: ItemType;
     static readonly arrow: ItemType;
     static readonly axolotlBucket: ItemType;
     static readonly axolotlSpawnEgg: ItemType;
@@ -11960,6 +11998,23 @@ export class MinecraftItemTypes {
      *
      */
     static readonly bamboo: ItemType;
+    static readonly bambooBlock: ItemType;
+    static readonly bambooButton: ItemType;
+    static readonly bambooChestRaft: ItemType;
+    static readonly bambooDoor: ItemType;
+    static readonly bambooFence: ItemType;
+    static readonly bambooFenceGate: ItemType;
+    static readonly bambooHangingSign: ItemType;
+    static readonly bambooMosaic: ItemType;
+    static readonly bambooMosaicSlab: ItemType;
+    static readonly bambooMosaicStairs: ItemType;
+    static readonly bambooPlanks: ItemType;
+    static readonly bambooPressurePlate: ItemType;
+    static readonly bambooRaft: ItemType;
+    static readonly bambooSign: ItemType;
+    static readonly bambooSlab: ItemType;
+    static readonly bambooStairs: ItemType;
+    static readonly bambooTrapdoor: ItemType;
     static readonly banner: ItemType;
     static readonly bannerPattern: ItemType;
     /**
@@ -12064,6 +12119,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly birchFenceGate: ItemType;
+    static readonly birchHangingSign: ItemType;
     static readonly birchLog: ItemType;
     /**
      * @remarks
@@ -12137,6 +12193,7 @@ export class MinecraftItemTypes {
      */
     static readonly blackstoneWall: ItemType;
     static readonly blackWool: ItemType;
+    static readonly bladePotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a blast furnace within
@@ -12201,6 +12258,7 @@ export class MinecraftItemTypes {
     static readonly bowl: ItemType;
     static readonly brainCoral: ItemType;
     static readonly bread: ItemType;
+    static readonly brewerPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a brewing stand within
@@ -12253,6 +12311,7 @@ export class MinecraftItemTypes {
      */
     static readonly brownMushroomBlock: ItemType;
     static readonly brownWool: ItemType;
+    static readonly brush: ItemType;
     static readonly bubbleCoral: ItemType;
     static readonly bucket: ItemType;
     /**
@@ -12262,6 +12321,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly buddingAmethyst: ItemType;
+    static readonly burnPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a cactus within Minecraft.
@@ -12281,6 +12341,8 @@ export class MinecraftItemTypes {
      *
      */
     static readonly calcite: ItemType;
+    static readonly calibratedSculkSensor: ItemType;
+    static readonly camelSpawnEgg: ItemType;
     /**
      * @remarks
      * Represents an item that can place a campfire within
@@ -12345,6 +12407,23 @@ export class MinecraftItemTypes {
     static readonly chainmailHelmet: ItemType;
     static readonly chainmailLeggings: ItemType;
     static readonly charcoal: ItemType;
+    static readonly cherryBoat: ItemType;
+    static readonly cherryButton: ItemType;
+    static readonly cherryChestBoat: ItemType;
+    static readonly cherryDoor: ItemType;
+    static readonly cherryFence: ItemType;
+    static readonly cherryFenceGate: ItemType;
+    static readonly cherryHangingSign: ItemType;
+    static readonly cherryLeaves: ItemType;
+    static readonly cherryLog: ItemType;
+    static readonly cherryPlanks: ItemType;
+    static readonly cherryPressurePlate: ItemType;
+    static readonly cherrySapling: ItemType;
+    static readonly cherrySign: ItemType;
+    static readonly cherrySlab: ItemType;
+    static readonly cherryStairs: ItemType;
+    static readonly cherryTrapdoor: ItemType;
+    static readonly cherryWood: ItemType;
     /**
      * @remarks
      * Represents an item that can place a chest within Minecraft.
@@ -12355,6 +12434,7 @@ export class MinecraftItemTypes {
     static readonly chestMinecart: ItemType;
     static readonly chicken: ItemType;
     static readonly chickenSpawnEgg: ItemType;
+    static readonly chiseledBookshelf: ItemType;
     /**
      * @remarks
      * Represents an item that can place a set of chiseled
@@ -12415,6 +12495,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly coalOre: ItemType;
+    static readonly coastArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of cobbled
@@ -12614,6 +12695,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly crimsonFungus: ItemType;
+    static readonly crimsonHangingSign: ItemType;
     /**
      * @remarks
      * Represents crimson hyphae within Minecraft.
@@ -12721,6 +12803,7 @@ export class MinecraftItemTypes {
      */
     static readonly cyanGlazedTerracotta: ItemType;
     static readonly cyanWool: ItemType;
+    static readonly dangerPotteryShard: ItemType;
     static readonly darkOakBoat: ItemType;
     /**
      * @remarks
@@ -12745,6 +12828,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly darkOakFenceGate: ItemType;
+    static readonly darkOakHangingSign: ItemType;
     static readonly darkOakLog: ItemType;
     /**
      * @remarks
@@ -12800,6 +12884,7 @@ export class MinecraftItemTypes {
     static readonly deadFireCoral: ItemType;
     static readonly deadHornCoral: ItemType;
     static readonly deadTubeCoral: ItemType;
+    static readonly decoratedPot: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of deepslate
@@ -13027,6 +13112,7 @@ export class MinecraftItemTypes {
      */
     static readonly dropper: ItemType;
     static readonly drownedSpawnEgg: ItemType;
+    static readonly duneArmorTrimSmithingTemplate: ItemType;
     static readonly dye: ItemType;
     static readonly echoShard: ItemType;
     static readonly egg: ItemType;
@@ -13107,6 +13193,7 @@ export class MinecraftItemTypes {
     static readonly endStone: ItemType;
     static readonly evokerSpawnEgg: ItemType;
     static readonly experienceBottle: ItemType;
+    static readonly explorerPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of exposed copper
@@ -13135,6 +13222,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly exposedCutCopperStairs: ItemType;
+    static readonly eyeArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents an item that can place a farmland block within
@@ -13195,6 +13283,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly frame: ItemType;
+    static readonly friendPotteryShard: ItemType;
     static readonly frogSpawn: ItemType;
     static readonly frogSpawnEgg: ItemType;
     /**
@@ -13390,7 +13479,9 @@ export class MinecraftItemTypes {
      *
      */
     static readonly hayBlock: ItemType;
+    static readonly heartbreakPotteryShard: ItemType;
     static readonly heartOfTheSea: ItemType;
+    static readonly heartPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a heavy weighted pressure
@@ -13424,6 +13515,8 @@ export class MinecraftItemTypes {
     static readonly hopperMinecart: ItemType;
     static readonly hornCoral: ItemType;
     static readonly horseSpawnEgg: ItemType;
+    static readonly hostArmorTrimSmithingTemplate: ItemType;
+    static readonly howlPotteryShard: ItemType;
     static readonly huskSpawnEgg: ItemType;
     /**
      * @remarks
@@ -13523,6 +13616,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly jungleFenceGate: ItemType;
+    static readonly jungleHangingSign: ItemType;
     static readonly jungleLog: ItemType;
     /**
      * @remarks
@@ -13761,6 +13855,7 @@ export class MinecraftItemTypes {
     static readonly mangroveDoor: ItemType;
     static readonly mangroveFence: ItemType;
     static readonly mangroveFenceGate: ItemType;
+    static readonly mangroveHangingSign: ItemType;
     static readonly mangroveLeaves: ItemType;
     static readonly mangroveLog: ItemType;
     static readonly mangrovePlanks: ItemType;
@@ -13790,6 +13885,7 @@ export class MinecraftItemTypes {
     static readonly melonSlice: ItemType;
     static readonly milkBucket: ItemType;
     static readonly minecart: ItemType;
+    static readonly minerPotteryShard: ItemType;
     /**
      * @remarks
      * Represents an item that can place a mob spawner within
@@ -13841,6 +13937,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly mossyStoneBrickStairs: ItemType;
+    static readonly mournerPotteryShard: ItemType;
     static readonly mud: ItemType;
     static readonly mudBricks: ItemType;
     static readonly mudBrickSlab: ItemType;
@@ -13927,6 +14024,7 @@ export class MinecraftItemTypes {
     static readonly netheriteScrap: ItemType;
     static readonly netheriteShovel: ItemType;
     static readonly netheriteSword: ItemType;
+    static readonly netheriteUpgradeSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of netherrack
@@ -13971,6 +14069,7 @@ export class MinecraftItemTypes {
     static readonly oakBoat: ItemType;
     static readonly oakChestBoat: ItemType;
     static readonly oakFence: ItemType;
+    static readonly oakHangingSign: ItemType;
     static readonly oakLog: ItemType;
     static readonly oakSign: ItemType;
     /**
@@ -14077,6 +14176,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly pinkGlazedTerracotta: ItemType;
+    static readonly pinkPetals: ItemType;
     static readonly pinkWool: ItemType;
     /**
      * @remarks
@@ -14093,6 +14193,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly planks: ItemType;
+    static readonly plentyPotteryShard: ItemType;
     /**
      * @remarks
      * Represents podzol within Minecraft.
@@ -14261,6 +14362,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly prismarineStairs: ItemType;
+    static readonly prizePotteryShard: ItemType;
     static readonly pufferfish: ItemType;
     static readonly pufferfishBucket: ItemType;
     static readonly pufferfishSpawnEgg: ItemType;
@@ -14345,6 +14447,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly rail: ItemType;
+    static readonly raiserArmorTrimSmithingTemplate: ItemType;
     static readonly ravagerSpawnEgg: ItemType;
     static readonly rawCopper: ItemType;
     /**
@@ -14482,6 +14585,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly respawnAnchor: ItemType;
+    static readonly ribArmorTrimSmithingTemplate: ItemType;
     static readonly rottenFlesh: ItemType;
     static readonly saddle: ItemType;
     static readonly salmon: ItemType;
@@ -14548,8 +14652,12 @@ export class MinecraftItemTypes {
      *
      */
     static readonly seaPickle: ItemType;
+    static readonly sentryArmorTrimSmithingTemplate: ItemType;
+    static readonly shaperArmorTrimSmithingTemplate: ItemType;
+    static readonly sheafPotteryShard: ItemType;
     static readonly shears: ItemType;
     static readonly sheepSpawnEgg: ItemType;
+    static readonly shelterPotteryShard: ItemType;
     static readonly shield: ItemType;
     /**
      * @remarks
@@ -14567,6 +14675,7 @@ export class MinecraftItemTypes {
     static readonly shulkerBox: ItemType;
     static readonly shulkerShell: ItemType;
     static readonly shulkerSpawnEgg: ItemType;
+    static readonly silenceArmorTrimSmithingTemplate: ItemType;
     static readonly silverfishSpawnEgg: ItemType;
     /**
      * @remarks
@@ -14584,6 +14693,7 @@ export class MinecraftItemTypes {
      */
     static readonly skull: ItemType;
     static readonly skullBannerPattern: ItemType;
+    static readonly skullPotteryShard: ItemType;
     /**
      * @remarks
      * Represents slime within Minecraft.
@@ -14656,6 +14766,8 @@ export class MinecraftItemTypes {
     static readonly smoothStone: ItemType;
     static readonly snifferEgg: ItemType;
     static readonly snifferSpawnEgg: ItemType;
+    static readonly snortPotteryShard: ItemType;
+    static readonly snoutArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents snow within Minecraft.
@@ -14708,6 +14820,7 @@ export class MinecraftItemTypes {
     static readonly spawnEgg: ItemType;
     static readonly spiderEye: ItemType;
     static readonly spiderSpawnEgg: ItemType;
+    static readonly spireArmorTrimSmithingTemplate: ItemType;
     static readonly splashPotion: ItemType;
     /**
      * @remarks
@@ -14746,6 +14859,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly spruceFenceGate: ItemType;
+    static readonly spruceHangingSign: ItemType;
     static readonly spruceLog: ItemType;
     /**
      * @remarks
@@ -14873,6 +14987,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly strippedAcaciaLog: ItemType;
+    static readonly strippedBambooBlock: ItemType;
     /**
      * @remarks
      * Represents an item that can place a stripped birch log
@@ -14880,6 +14995,8 @@ export class MinecraftItemTypes {
      *
      */
     static readonly strippedBirchLog: ItemType;
+    static readonly strippedCherryLog: ItemType;
+    static readonly strippedCherryWood: ItemType;
     /**
      * @remarks
      * Represents stripped crimson hyphae within Minecraft.
@@ -14952,6 +15069,8 @@ export class MinecraftItemTypes {
     static readonly structureVoid: ItemType;
     static readonly sugar: ItemType;
     static readonly sugarCane: ItemType;
+    static readonly suspiciousGravel: ItemType;
+    static readonly suspiciousSand: ItemType;
     static readonly suspiciousStew: ItemType;
     static readonly sweetBerries: ItemType;
     static readonly tadpoleBucket: ItemType;
@@ -14968,6 +15087,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly target: ItemType;
+    static readonly tideArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents tinted glass within Minecraft.
@@ -15049,6 +15169,7 @@ export class MinecraftItemTypes {
      */
     static readonly undyedShulkerBox: ItemType;
     static readonly verdantFroglight: ItemType;
+    static readonly vexArmorTrimSmithingTemplate: ItemType;
     static readonly vexSpawnEgg: ItemType;
     static readonly villagerSpawnEgg: ItemType;
     static readonly vindicatorSpawnEgg: ItemType;
@@ -15060,6 +15181,7 @@ export class MinecraftItemTypes {
      */
     static readonly vine: ItemType;
     static readonly wanderingTraderSpawnEgg: ItemType;
+    static readonly wardArmorTrimSmithingTemplate: ItemType;
     static readonly wardenSpawnEgg: ItemType;
     /**
      * @remarks
@@ -15096,6 +15218,7 @@ export class MinecraftItemTypes {
      */
     static readonly warpedFungus: ItemType;
     static readonly warpedFungusOnAStick: ItemType;
+    static readonly warpedHangingSign: ItemType;
     /**
      * @remarks
      * Represents warped hyphae within Minecraft.
@@ -15284,6 +15407,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly waxedWeatheredCutCopperStairs: ItemType;
+    static readonly wayfinderArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of weathered
@@ -15349,6 +15473,7 @@ export class MinecraftItemTypes {
      */
     static readonly whiteGlazedTerracotta: ItemType;
     static readonly whiteWool: ItemType;
+    static readonly wildArmorTrimSmithingTemplate: ItemType;
     static readonly witchSpawnEgg: ItemType;
     /**
      * @remarks

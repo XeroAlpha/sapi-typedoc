@@ -5,6 +5,6 @@
     "@minecraft/server-gametest": "beta",
     "@minecraft/server-net": "beta",
     "@minecraft/server-ui": "beta",
-    "@minecraft/vanilla-data": "latest"
+    "@minecraft/vanilla-data": "preview"
   }
 }

@@ -68,6 +68,7 @@ export declare enum MinecraftBlockTypes {
     BirchWallSign = "minecraft:birch_wall_sign",
     BlackCandle = "minecraft:black_candle",
     BlackCandleCake = "minecraft:black_candle_cake",
+    BlackCarpet = "minecraft:black_carpet",
     BlackGlazedTerracotta = "minecraft:black_glazed_terracotta",
     BlackWool = "minecraft:black_wool",
     Blackstone = "minecraft:blackstone",
@@ -78,22 +79,26 @@ export declare enum MinecraftBlockTypes {
     BlastFurnace = "minecraft:blast_furnace",
     BlueCandle = "minecraft:blue_candle",
     BlueCandleCake = "minecraft:blue_candle_cake",
+    BlueCarpet = "minecraft:blue_carpet",
     BlueGlazedTerracotta = "minecraft:blue_glazed_terracotta",
     BlueIce = "minecraft:blue_ice",
     BlueWool = "minecraft:blue_wool",
     BoneBlock = "minecraft:bone_block",
     Bookshelf = "minecraft:bookshelf",
     BorderBlock = "minecraft:border_block",
+    BrainCoral = "minecraft:brain_coral",
     BrewingStand = "minecraft:brewing_stand",
     BrickBlock = "minecraft:brick_block",
     BrickStairs = "minecraft:brick_stairs",
     BrownCandle = "minecraft:brown_candle",
     BrownCandleCake = "minecraft:brown_candle_cake",
+    BrownCarpet = "minecraft:brown_carpet",
     BrownGlazedTerracotta = "minecraft:brown_glazed_terracotta",
     BrownMushroom = "minecraft:brown_mushroom",
     BrownMushroomBlock = "minecraft:brown_mushroom_block",
     BrownWool = "minecraft:brown_wool",
     BubbleColumn = "minecraft:bubble_column",
+    BubbleCoral = "minecraft:bubble_coral",
     BuddingAmethyst = "minecraft:budding_amethyst",
     Cactus = "minecraft:cactus",
     Cake = "minecraft:cake",
@@ -103,7 +108,6 @@ export declare enum MinecraftBlockTypes {
     Campfire = "minecraft:campfire",
     Candle = "minecraft:candle",
     CandleCake = "minecraft:candle_cake",
-    Carpet = "minecraft:carpet",
     Carrots = "minecraft:carrots",
     CartographyTable = "minecraft:cartography_table",
     CarvedPumpkin = "minecraft:carved_pumpkin",
@@ -160,7 +164,6 @@ export declare enum MinecraftBlockTypes {
     Conduit = "minecraft:conduit",
     CopperBlock = "minecraft:copper_block",
     CopperOre = "minecraft:copper_ore",
-    Coral = "minecraft:coral",
     CoralBlock = "minecraft:coral_block",
     CoralFan = "minecraft:coral_fan",
     CoralFanDead = "minecraft:coral_fan_dead",
@@ -196,6 +199,7 @@ export declare enum MinecraftBlockTypes {
     CutCopperStairs = "minecraft:cut_copper_stairs",
     CyanCandle = "minecraft:cyan_candle",
     CyanCandleCake = "minecraft:cyan_candle_cake",
+    CyanCarpet = "minecraft:cyan_carpet",
     CyanGlazedTerracotta = "minecraft:cyan_glazed_terracotta",
     CyanWool = "minecraft:cyan_wool",
     DarkOakButton = "minecraft:dark_oak_button",
@@ -212,6 +216,11 @@ export declare enum MinecraftBlockTypes {
     DarkoakWallSign = "minecraft:darkoak_wall_sign",
     DaylightDetector = "minecraft:daylight_detector",
     DaylightDetectorInverted = "minecraft:daylight_detector_inverted",
+    DeadBrainCoral = "minecraft:dead_brain_coral",
+    DeadBubbleCoral = "minecraft:dead_bubble_coral",
+    DeadFireCoral = "minecraft:dead_fire_coral",
+    DeadHornCoral = "minecraft:dead_horn_coral",
+    DeadTubeCoral = "minecraft:dead_tube_coral",
     Deadbush = "minecraft:deadbush",
     DecoratedPot = "minecraft:decorated_pot",
     Deepslate = "minecraft:deepslate",
@@ -390,6 +399,7 @@ export declare enum MinecraftBlockTypes {
     Farmland = "minecraft:farmland",
     FenceGate = "minecraft:fence_gate",
     Fire = "minecraft:fire",
+    FireCoral = "minecraft:fire_coral",
     FletchingTable = "minecraft:fletching_table",
     FlowerPot = "minecraft:flower_pot",
     FloweringAzalea = "minecraft:flowering_azalea",
@@ -415,10 +425,12 @@ export declare enum MinecraftBlockTypes {
     Gravel = "minecraft:gravel",
     GrayCandle = "minecraft:gray_candle",
     GrayCandleCake = "minecraft:gray_candle_cake",
+    GrayCarpet = "minecraft:gray_carpet",
     GrayGlazedTerracotta = "minecraft:gray_glazed_terracotta",
     GrayWool = "minecraft:gray_wool",
     GreenCandle = "minecraft:green_candle",
     GreenCandleCake = "minecraft:green_candle_cake",
+    GreenCarpet = "minecraft:green_carpet",
     GreenGlazedTerracotta = "minecraft:green_glazed_terracotta",
     GreenWool = "minecraft:green_wool",
     Grindstone = "minecraft:grindstone",
@@ -433,6 +445,7 @@ export declare enum MinecraftBlockTypes {
     HoneyBlock = "minecraft:honey_block",
     HoneycombBlock = "minecraft:honeycomb_block",
     Hopper = "minecraft:hopper",
+    HornCoral = "minecraft:horn_coral",
     Ice = "minecraft:ice",
     InfestedDeepslate = "minecraft:infested_deepslate",
     InfoUpdate = "minecraft:info_update",
@@ -463,7 +476,6 @@ export declare enum MinecraftBlockTypes {
     LapisOre = "minecraft:lapis_ore",
     LargeAmethystBud = "minecraft:large_amethyst_bud",
     Lava = "minecraft:lava",
-    LavaCauldron = "minecraft:lava_cauldron",
     Leaves = "minecraft:leaves",
     Leaves2 = "minecraft:leaves2",
     Lectern = "minecraft:lectern",
@@ -471,15 +483,18 @@ export declare enum MinecraftBlockTypes {
     LightBlock = "minecraft:light_block",
     LightBlueCandle = "minecraft:light_blue_candle",
     LightBlueCandleCake = "minecraft:light_blue_candle_cake",
+    LightBlueCarpet = "minecraft:light_blue_carpet",
     LightBlueGlazedTerracotta = "minecraft:light_blue_glazed_terracotta",
     LightBlueWool = "minecraft:light_blue_wool",
     LightGrayCandle = "minecraft:light_gray_candle",
     LightGrayCandleCake = "minecraft:light_gray_candle_cake",
+    LightGrayCarpet = "minecraft:light_gray_carpet",
     LightGrayWool = "minecraft:light_gray_wool",
     LightWeightedPressurePlate = "minecraft:light_weighted_pressure_plate",
     LightningRod = "minecraft:lightning_rod",
     LimeCandle = "minecraft:lime_candle",
     LimeCandleCake = "minecraft:lime_candle_cake",
+    LimeCarpet = "minecraft:lime_carpet",
     LimeGlazedTerracotta = "minecraft:lime_glazed_terracotta",
     LimeWool = "minecraft:lime_wool",
     LitBlastFurnace = "minecraft:lit_blast_furnace",
@@ -493,6 +508,7 @@ export declare enum MinecraftBlockTypes {
     Loom = "minecraft:loom",
     MagentaCandle = "minecraft:magenta_candle",
     MagentaCandleCake = "minecraft:magenta_candle_cake",
+    MagentaCarpet = "minecraft:magenta_carpet",
     MagentaGlazedTerracotta = "minecraft:magenta_glazed_terracotta",
     MagentaWool = "minecraft:magenta_wool",
     Magma = "minecraft:magma",
@@ -554,6 +570,7 @@ export declare enum MinecraftBlockTypes {
     OchreFroglight = "minecraft:ochre_froglight",
     OrangeCandle = "minecraft:orange_candle",
     OrangeCandleCake = "minecraft:orange_candle_cake",
+    OrangeCarpet = "minecraft:orange_carpet",
     OrangeGlazedTerracotta = "minecraft:orange_glazed_terracotta",
     OrangeWool = "minecraft:orange_wool",
     OxidizedCopper = "minecraft:oxidized_copper",
@@ -566,11 +583,14 @@ export declare enum MinecraftBlockTypes {
     PearlescentFroglight = "minecraft:pearlescent_froglight",
     PinkCandle = "minecraft:pink_candle",
     PinkCandleCake = "minecraft:pink_candle_cake",
+    PinkCarpet = "minecraft:pink_carpet",
     PinkGlazedTerracotta = "minecraft:pink_glazed_terracotta",
     PinkPetals = "minecraft:pink_petals",
     PinkWool = "minecraft:pink_wool",
     Piston = "minecraft:piston",
     PistonArmCollision = "minecraft:piston_arm_collision",
+    PitcherCrop = "minecraft:pitcher_crop",
+    PitcherPlant = "minecraft:pitcher_plant",
     Planks = "minecraft:planks",
     Podzol = "minecraft:podzol",
     PointedDripstone = "minecraft:pointed_dripstone",
@@ -607,6 +627,7 @@ export declare enum MinecraftBlockTypes {
     PumpkinStem = "minecraft:pumpkin_stem",
     PurpleCandle = "minecraft:purple_candle",
     PurpleCandleCake = "minecraft:purple_candle_cake",
+    PurpleCarpet = "minecraft:purple_carpet",
     PurpleGlazedTerracotta = "minecraft:purple_glazed_terracotta",
     PurpleWool = "minecraft:purple_wool",
     PurpurBlock = "minecraft:purpur_block",
@@ -621,6 +642,7 @@ export declare enum MinecraftBlockTypes {
     RawIronBlock = "minecraft:raw_iron_block",
     RedCandle = "minecraft:red_candle",
     RedCandleCake = "minecraft:red_candle_cake",
+    RedCarpet = "minecraft:red_carpet",
     RedFlower = "minecraft:red_flower",
     RedGlazedTerracotta = "minecraft:red_glazed_terracotta",
     RedMushroom = "minecraft:red_mushroom",
@@ -667,6 +689,7 @@ export declare enum MinecraftBlockTypes {
     SmoothRedSandstoneStairs = "minecraft:smooth_red_sandstone_stairs",
     SmoothSandstoneStairs = "minecraft:smooth_sandstone_stairs",
     SmoothStone = "minecraft:smooth_stone",
+    SnifferEgg = "minecraft:sniffer_egg",
     Snow = "minecraft:snow",
     SnowLayer = "minecraft:snow_layer",
     SoulCampfire = "minecraft:soul_campfire",
@@ -738,6 +761,7 @@ export declare enum MinecraftBlockTypes {
     TrappedChest = "minecraft:trapped_chest",
     TripWire = "minecraft:trip_wire",
     TripwireHook = "minecraft:tripwire_hook",
+    TubeCoral = "minecraft:tube_coral",
     Tuff = "minecraft:tuff",
     TurtleEgg = "minecraft:turtle_egg",
     TwistingVines = "minecraft:twisting_vines",
@@ -802,6 +826,7 @@ export declare enum MinecraftBlockTypes {
     Wheat = "minecraft:wheat",
     WhiteCandle = "minecraft:white_candle",
     WhiteCandleCake = "minecraft:white_candle_cake",
+    WhiteCarpet = "minecraft:white_carpet",
     WhiteGlazedTerracotta = "minecraft:white_glazed_terracotta",
     WhiteWool = "minecraft:white_wool",
     WitherRose = "minecraft:wither_rose",
@@ -812,6 +837,7 @@ export declare enum MinecraftBlockTypes {
     WoodenSlab = "minecraft:wooden_slab",
     YellowCandle = "minecraft:yellow_candle",
     YellowCandleCake = "minecraft:yellow_candle_cake",
+    YellowCarpet = "minecraft:yellow_carpet",
     YellowFlower = "minecraft:yellow_flower",
     YellowGlazedTerracotta = "minecraft:yellow_glazed_terracotta",
     YellowWool = "minecraft:yellow_wool"
@@ -821,9 +847,9 @@ export declare enum MinecraftBlockTypes {
  */
 export declare type MinecraftBlockTypesUnion = keyof typeof MinecraftBlockTypes;
 /**
- * All supported properties and their types for MinecraftBlockTypes
+ * All supported states and their types for MinecraftBlockTypes
  */
-export declare type BlockPropertySuperset = {
+export declare type BlockStateSuperset = {
     ['active']?: boolean;
     ['age']?: number;
     ['age_bit']?: boolean;
@@ -891,6 +917,8 @@ export declare type BlockPropertySuperset = {
     ['lever_direction']?: string;
     ['liquid_depth']?: number;
     ['lit']?: boolean;
+    ['minecraft:cardinal_direction']?: number;
+    ['minecraft:facing_direction']?: number;
     ['moisturized_amount']?: number;
     ['monster_egg_stone_type']?: string;
     ['multi_face_direction_bits']?: number;
@@ -954,2426 +982,2426 @@ export declare type BlockPropertySuperset = {
     ['wood_type']?: string;
 };
 /**
- * Properties specific to AcaciaButton
+ * States specific to AcaciaButton
  */
-export declare type AcaciaButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type AcaciaButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to AcaciaDoor
+ * States specific to AcaciaDoor
  */
-export declare type AcaciaDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type AcaciaDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to AcaciaFenceGate
+ * States specific to AcaciaFenceGate
  */
-export declare type AcaciaFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type AcaciaFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to AcaciaHangingSign
+ * States specific to AcaciaHangingSign
  */
-export declare type AcaciaHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type AcaciaHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to AcaciaLog
+ * States specific to AcaciaLog
  */
-export declare type AcaciaLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type AcaciaLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to AcaciaPressurePlate
+ * States specific to AcaciaPressurePlate
  */
-export declare type AcaciaPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type AcaciaPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to AcaciaStairs
+ * States specific to AcaciaStairs
  */
-export declare type AcaciaStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type AcaciaStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to AcaciaStandingSign
+ * States specific to AcaciaStandingSign
  */
-export declare type AcaciaStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type AcaciaStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to AcaciaTrapdoor
+ * States specific to AcaciaTrapdoor
  */
-export declare type AcaciaTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type AcaciaTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to AcaciaWallSign
+ * States specific to AcaciaWallSign
  */
-export declare type AcaciaWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type AcaciaWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to ActivatorRail
+ * States specific to ActivatorRail
  */
-export declare type ActivatorRailProperties = Pick<BlockPropertySuperset, 'rail_data_bit' | 'rail_direction'>;
+export declare type ActivatorRailStates = Pick<BlockStateSuperset, 'rail_data_bit' | 'rail_direction'>;
 /**
- * Properties specific to AmethystCluster
+ * States specific to AmethystCluster
  */
-export declare type AmethystClusterProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type AmethystClusterStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to AndesiteStairs
+ * States specific to AndesiteStairs
  */
-export declare type AndesiteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type AndesiteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to Anvil
+ * States specific to Anvil
  */
-export declare type AnvilProperties = Pick<BlockPropertySuperset, 'damage' | 'direction'>;
+export declare type AnvilStates = Pick<BlockStateSuperset, 'damage' | 'direction'>;
 /**
- * Properties specific to AzaleaLeaves
+ * States specific to AzaleaLeaves
  */
-export declare type AzaleaLeavesProperties = Pick<BlockPropertySuperset, 'persistent_bit' | 'update_bit'>;
+export declare type AzaleaLeavesStates = Pick<BlockStateSuperset, 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to AzaleaLeavesFlowered
+ * States specific to AzaleaLeavesFlowered
  */
-export declare type AzaleaLeavesFloweredProperties = Pick<BlockPropertySuperset, 'persistent_bit' | 'update_bit'>;
+export declare type AzaleaLeavesFloweredStates = Pick<BlockStateSuperset, 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to Bamboo
+ * States specific to Bamboo
  */
-export declare type BambooProperties = Pick<BlockPropertySuperset, 'age_bit' | 'bamboo_leaf_size' | 'bamboo_stalk_thickness'>;
+export declare type BambooStates = Pick<BlockStateSuperset, 'age_bit' | 'bamboo_leaf_size' | 'bamboo_stalk_thickness'>;
 /**
- * Properties specific to BambooBlock
+ * States specific to BambooBlock
  */
-export declare type BambooBlockProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type BambooBlockStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to BambooButton
+ * States specific to BambooButton
  */
-export declare type BambooButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type BambooButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to BambooDoor
+ * States specific to BambooDoor
  */
-export declare type BambooDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type BambooDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to BambooDoubleSlab
+ * States specific to BambooDoubleSlab
  */
-export declare type BambooDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BambooDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BambooFenceGate
+ * States specific to BambooFenceGate
  */
-export declare type BambooFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type BambooFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to BambooHangingSign
+ * States specific to BambooHangingSign
  */
-export declare type BambooHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type BambooHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to BambooMosaicDoubleSlab
+ * States specific to BambooMosaicDoubleSlab
  */
-export declare type BambooMosaicDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BambooMosaicDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BambooMosaicSlab
+ * States specific to BambooMosaicSlab
  */
-export declare type BambooMosaicSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BambooMosaicSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BambooMosaicStairs
+ * States specific to BambooMosaicStairs
  */
-export declare type BambooMosaicStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type BambooMosaicStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to BambooPressurePlate
+ * States specific to BambooPressurePlate
  */
-export declare type BambooPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type BambooPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to BambooSapling
+ * States specific to BambooSapling
  */
-export declare type BambooSaplingProperties = Pick<BlockPropertySuperset, 'age_bit' | 'sapling_type'>;
+export declare type BambooSaplingStates = Pick<BlockStateSuperset, 'age_bit' | 'sapling_type'>;
 /**
- * Properties specific to BambooSlab
+ * States specific to BambooSlab
  */
-export declare type BambooSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BambooSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BambooStairs
+ * States specific to BambooStairs
  */
-export declare type BambooStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type BambooStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to BambooStandingSign
+ * States specific to BambooStandingSign
  */
-export declare type BambooStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type BambooStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to BambooTrapdoor
+ * States specific to BambooTrapdoor
  */
-export declare type BambooTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type BambooTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to BambooWallSign
+ * States specific to BambooWallSign
  */
-export declare type BambooWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BambooWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Barrel
+ * States specific to Barrel
  */
-export declare type BarrelProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'open_bit'>;
+export declare type BarrelStates = Pick<BlockStateSuperset, 'facing_direction' | 'open_bit'>;
 /**
- * Properties specific to Basalt
+ * States specific to Basalt
  */
-export declare type BasaltProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type BasaltStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to Bed
+ * States specific to Bed
  */
-export declare type BedProperties = Pick<BlockPropertySuperset, 'direction' | 'head_piece_bit' | 'occupied_bit'>;
+export declare type BedStates = Pick<BlockStateSuperset, 'direction' | 'head_piece_bit' | 'occupied_bit'>;
 /**
- * Properties specific to Bedrock
+ * States specific to Bedrock
  */
-export declare type BedrockProperties = Pick<BlockPropertySuperset, 'infiniburn_bit'>;
+export declare type BedrockStates = Pick<BlockStateSuperset, 'infiniburn_bit'>;
 /**
- * Properties specific to BeeNest
+ * States specific to BeeNest
  */
-export declare type BeeNestProperties = Pick<BlockPropertySuperset, 'direction' | 'honey_level'>;
+export declare type BeeNestStates = Pick<BlockStateSuperset, 'direction' | 'honey_level'>;
 /**
- * Properties specific to Beehive
+ * States specific to Beehive
  */
-export declare type BeehiveProperties = Pick<BlockPropertySuperset, 'direction' | 'honey_level'>;
+export declare type BeehiveStates = Pick<BlockStateSuperset, 'direction' | 'honey_level'>;
 /**
- * Properties specific to Beetroot
+ * States specific to Beetroot
  */
-export declare type BeetrootProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type BeetrootStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to Bell
+ * States specific to Bell
  */
-export declare type BellProperties = Pick<BlockPropertySuperset, 'attachment' | 'direction' | 'toggle_bit'>;
+export declare type BellStates = Pick<BlockStateSuperset, 'attachment' | 'direction' | 'toggle_bit'>;
 /**
- * Properties specific to BigDripleaf
+ * States specific to BigDripleaf
  */
-export declare type BigDripleafProperties = Pick<BlockPropertySuperset, 'big_dripleaf_head' | 'big_dripleaf_tilt' | 'direction'>;
+export declare type BigDripleafStates = Pick<BlockStateSuperset, 'big_dripleaf_head' | 'big_dripleaf_tilt' | 'direction'>;
 /**
- * Properties specific to BirchButton
+ * States specific to BirchButton
  */
-export declare type BirchButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type BirchButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to BirchDoor
+ * States specific to BirchDoor
  */
-export declare type BirchDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type BirchDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to BirchFenceGate
+ * States specific to BirchFenceGate
  */
-export declare type BirchFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type BirchFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to BirchHangingSign
+ * States specific to BirchHangingSign
  */
-export declare type BirchHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type BirchHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to BirchLog
+ * States specific to BirchLog
  */
-export declare type BirchLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type BirchLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to BirchPressurePlate
+ * States specific to BirchPressurePlate
  */
-export declare type BirchPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type BirchPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to BirchStairs
+ * States specific to BirchStairs
  */
-export declare type BirchStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type BirchStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to BirchStandingSign
+ * States specific to BirchStandingSign
  */
-export declare type BirchStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type BirchStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to BirchTrapdoor
+ * States specific to BirchTrapdoor
  */
-export declare type BirchTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type BirchTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to BirchWallSign
+ * States specific to BirchWallSign
  */
-export declare type BirchWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BirchWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to BlackCandle
+ * States specific to BlackCandle
  */
-export declare type BlackCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type BlackCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to BlackCandleCake
+ * States specific to BlackCandleCake
  */
-export declare type BlackCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type BlackCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to BlackGlazedTerracotta
+ * States specific to BlackGlazedTerracotta
  */
-export declare type BlackGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BlackGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to BlackstoneDoubleSlab
+ * States specific to BlackstoneDoubleSlab
  */
-export declare type BlackstoneDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BlackstoneSlab
+ * States specific to BlackstoneSlab
  */
-export declare type BlackstoneSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type BlackstoneSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to BlackstoneStairs
+ * States specific to BlackstoneStairs
  */
-export declare type BlackstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type BlackstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to BlackstoneWall
+ * States specific to BlackstoneWall
  */
-export declare type BlackstoneWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type BlackstoneWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to BlastFurnace
+ * States specific to BlastFurnace
  */
-export declare type BlastFurnaceProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BlastFurnaceStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to BlueCandle
+ * States specific to BlueCandle
  */
-export declare type BlueCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type BlueCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to BlueCandleCake
+ * States specific to BlueCandleCake
  */
-export declare type BlueCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type BlueCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to BlueGlazedTerracotta
+ * States specific to BlueGlazedTerracotta
  */
-export declare type BlueGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BlueGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to BoneBlock
+ * States specific to BoneBlock
  */
-export declare type BoneBlockProperties = Pick<BlockPropertySuperset, 'deprecated' | 'pillar_axis'>;
+export declare type BoneBlockStates = Pick<BlockStateSuperset, 'deprecated' | 'pillar_axis'>;
 /**
- * Properties specific to BorderBlock
+ * States specific to BorderBlock
  */
-export declare type BorderBlockProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type BorderBlockStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to BrewingStand
+ * States specific to BrewingStand
  */
-export declare type BrewingStandProperties = Pick<BlockPropertySuperset, 'brewing_stand_slot_a_bit' | 'brewing_stand_slot_b_bit' | 'brewing_stand_slot_c_bit'>;
+export declare type BrewingStandStates = Pick<BlockStateSuperset, 'brewing_stand_slot_a_bit' | 'brewing_stand_slot_b_bit' | 'brewing_stand_slot_c_bit'>;
 /**
- * Properties specific to BrickStairs
+ * States specific to BrickStairs
  */
-export declare type BrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type BrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to BrownCandle
+ * States specific to BrownCandle
  */
-export declare type BrownCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type BrownCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to BrownCandleCake
+ * States specific to BrownCandleCake
  */
-export declare type BrownCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type BrownCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to BrownGlazedTerracotta
+ * States specific to BrownGlazedTerracotta
  */
-export declare type BrownGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type BrownGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to BrownMushroomBlock
+ * States specific to BrownMushroomBlock
  */
-export declare type BrownMushroomBlockProperties = Pick<BlockPropertySuperset, 'huge_mushroom_bits'>;
+export declare type BrownMushroomBlockStates = Pick<BlockStateSuperset, 'huge_mushroom_bits'>;
 /**
- * Properties specific to BubbleColumn
+ * States specific to BubbleColumn
  */
-export declare type BubbleColumnProperties = Pick<BlockPropertySuperset, 'drag_down'>;
+export declare type BubbleColumnStates = Pick<BlockStateSuperset, 'drag_down'>;
 /**
- * Properties specific to Cactus
+ * States specific to Cactus
  */
-export declare type CactusProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type CactusStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to Cake
+ * States specific to Cake
  */
-export declare type CakeProperties = Pick<BlockPropertySuperset, 'bite_counter'>;
+export declare type CakeStates = Pick<BlockStateSuperset, 'bite_counter'>;
 /**
- * Properties specific to CalibratedSculkSensor
+ * States specific to CalibratedSculkSensor
  */
-export declare type CalibratedSculkSensorProperties = Pick<BlockPropertySuperset, 'direction' | 'powered_bit'>;
+export declare type CalibratedSculkSensorStates = Pick<BlockStateSuperset, 'direction' | 'powered_bit'>;
 /**
- * Properties specific to Campfire
+ * States specific to Campfire
  */
-export declare type CampfireProperties = Pick<BlockPropertySuperset, 'direction' | 'extinguished'>;
+export declare type CampfireStates = Pick<BlockStateSuperset, 'direction' | 'extinguished'>;
 /**
- * Properties specific to Candle
+ * States specific to Candle
  */
-export declare type CandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type CandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to CandleCake
+ * States specific to CandleCake
  */
-export declare type CandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type CandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to Carpet
+ * States specific to Carrots
  */
-export declare type CarpetProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type CarrotsStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to Carrots
+ * States specific to CarvedPumpkin
  */
-export declare type CarrotsProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type CarvedPumpkinStates = Pick<BlockStateSuperset, 'minecraft:cardinal_direction'>;
 /**
- * Properties specific to CarvedPumpkin
+ * States specific to Cauldron
  */
-export declare type CarvedPumpkinProperties = Pick<BlockPropertySuperset, 'direction'>;
+export declare type CauldronStates = Pick<BlockStateSuperset, 'cauldron_liquid' | 'fill_level'>;
 /**
- * Properties specific to Cauldron
+ * States specific to CaveVines
  */
-export declare type CauldronProperties = Pick<BlockPropertySuperset, 'cauldron_liquid' | 'fill_level'>;
+export declare type CaveVinesStates = Pick<BlockStateSuperset, 'growing_plant_age'>;
 /**
- * Properties specific to CaveVines
+ * States specific to CaveVinesBodyWithBerries
  */
-export declare type CaveVinesProperties = Pick<BlockPropertySuperset, 'growing_plant_age'>;
+export declare type CaveVinesBodyWithBerriesStates = Pick<BlockStateSuperset, 'growing_plant_age'>;
 /**
- * Properties specific to CaveVinesBodyWithBerries
+ * States specific to CaveVinesHeadWithBerries
  */
-export declare type CaveVinesBodyWithBerriesProperties = Pick<BlockPropertySuperset, 'growing_plant_age'>;
+export declare type CaveVinesHeadWithBerriesStates = Pick<BlockStateSuperset, 'growing_plant_age'>;
 /**
- * Properties specific to CaveVinesHeadWithBerries
+ * States specific to Chain
  */
-export declare type CaveVinesHeadWithBerriesProperties = Pick<BlockPropertySuperset, 'growing_plant_age'>;
+export declare type ChainStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to Chain
+ * States specific to ChainCommandBlock
  */
-export declare type ChainProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type ChainCommandBlockStates = Pick<BlockStateSuperset, 'conditional_bit' | 'facing_direction'>;
 /**
- * Properties specific to ChainCommandBlock
+ * States specific to ChemistryTable
  */
-export declare type ChainCommandBlockProperties = Pick<BlockPropertySuperset, 'conditional_bit' | 'facing_direction'>;
+export declare type ChemistryTableStates = Pick<BlockStateSuperset, 'chemistry_table_type' | 'direction'>;
 /**
- * Properties specific to ChemistryTable
+ * States specific to CherryButton
  */
-export declare type ChemistryTableProperties = Pick<BlockPropertySuperset, 'chemistry_table_type' | 'direction'>;
+export declare type CherryButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to CherryButton
+ * States specific to CherryDoor
  */
-export declare type CherryButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type CherryDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to CherryDoor
+ * States specific to CherryDoubleSlab
  */
-export declare type CherryDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type CherryDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CherryDoubleSlab
+ * States specific to CherryFenceGate
  */
-export declare type CherryDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CherryFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to CherryFenceGate
+ * States specific to CherryHangingSign
  */
-export declare type CherryFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type CherryHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to CherryHangingSign
+ * States specific to CherryLeaves
  */
-export declare type CherryHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type CherryLeavesStates = Pick<BlockStateSuperset, 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to CherryLeaves
+ * States specific to CherryLog
  */
-export declare type CherryLeavesProperties = Pick<BlockPropertySuperset, 'persistent_bit' | 'update_bit'>;
+export declare type CherryLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to CherryLog
+ * States specific to CherryPressurePlate
  */
-export declare type CherryLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type CherryPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to CherryPressurePlate
+ * States specific to CherrySapling
  */
-export declare type CherryPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type CherrySaplingStates = Pick<BlockStateSuperset, 'age_bit'>;
 /**
- * Properties specific to CherrySapling
+ * States specific to CherrySlab
  */
-export declare type CherrySaplingProperties = Pick<BlockPropertySuperset, 'age_bit'>;
+export declare type CherrySlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CherrySlab
+ * States specific to CherryStairs
  */
-export declare type CherrySlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CherryStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to CherryStairs
+ * States specific to CherryStandingSign
  */
-export declare type CherryStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type CherryStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to CherryStandingSign
+ * States specific to CherryTrapdoor
  */
-export declare type CherryStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type CherryTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to CherryTrapdoor
+ * States specific to CherryWallSign
  */
-export declare type CherryTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type CherryWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to CherryWallSign
+ * States specific to CherryWood
  */
-export declare type CherryWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type CherryWoodStates = Pick<BlockStateSuperset, 'pillar_axis' | 'stripped_bit'>;
 /**
- * Properties specific to CherryWood
+ * States specific to Chest
  */
-export declare type CherryWoodProperties = Pick<BlockPropertySuperset, 'pillar_axis' | 'stripped_bit'>;
+export declare type ChestStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Chest
+ * States specific to ChiseledBookshelf
  */
-export declare type ChestProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type ChiseledBookshelfStates = Pick<BlockStateSuperset, 'books_stored' | 'direction'>;
 /**
- * Properties specific to ChiseledBookshelf
+ * States specific to ChorusFlower
  */
-export declare type ChiseledBookshelfProperties = Pick<BlockPropertySuperset, 'books_stored' | 'direction'>;
+export declare type ChorusFlowerStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to ChorusFlower
+ * States specific to CobbledDeepslateDoubleSlab
  */
-export declare type ChorusFlowerProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type CobbledDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CobbledDeepslateDoubleSlab
+ * States specific to CobbledDeepslateSlab
  */
-export declare type CobbledDeepslateDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CobbledDeepslateSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CobbledDeepslateSlab
+ * States specific to CobbledDeepslateStairs
  */
-export declare type CobbledDeepslateSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CobbledDeepslateStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to CobbledDeepslateStairs
+ * States specific to CobbledDeepslateWall
  */
-export declare type CobbledDeepslateStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type CobbledDeepslateWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to CobbledDeepslateWall
+ * States specific to CobblestoneWall
  */
-export declare type CobbledDeepslateWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type CobblestoneWallStates = Pick<BlockStateSuperset, 'wall_block_type' | 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to CobblestoneWall
+ * States specific to Cocoa
  */
-export declare type CobblestoneWallProperties = Pick<BlockPropertySuperset, 'wall_block_type' | 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type CocoaStates = Pick<BlockStateSuperset, 'age' | 'direction'>;
 /**
- * Properties specific to Cocoa
+ * States specific to ColoredTorchBp
  */
-export declare type CocoaProperties = Pick<BlockPropertySuperset, 'age' | 'direction'>;
+export declare type ColoredTorchBpStates = Pick<BlockStateSuperset, 'color_bit' | 'torch_facing_direction'>;
 /**
- * Properties specific to ColoredTorchBp
+ * States specific to ColoredTorchRg
  */
-export declare type ColoredTorchBpProperties = Pick<BlockPropertySuperset, 'color_bit' | 'torch_facing_direction'>;
+export declare type ColoredTorchRgStates = Pick<BlockStateSuperset, 'color_bit' | 'torch_facing_direction'>;
 /**
- * Properties specific to ColoredTorchRg
+ * States specific to CommandBlock
  */
-export declare type ColoredTorchRgProperties = Pick<BlockPropertySuperset, 'color_bit' | 'torch_facing_direction'>;
+export declare type CommandBlockStates = Pick<BlockStateSuperset, 'conditional_bit' | 'facing_direction'>;
 /**
- * Properties specific to CommandBlock
+ * States specific to Composter
  */
-export declare type CommandBlockProperties = Pick<BlockPropertySuperset, 'conditional_bit' | 'facing_direction'>;
+export declare type ComposterStates = Pick<BlockStateSuperset, 'composter_fill_level'>;
 /**
- * Properties specific to Composter
+ * States specific to Concrete
  */
-export declare type ComposterProperties = Pick<BlockPropertySuperset, 'composter_fill_level'>;
+export declare type ConcreteStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to Concrete
+ * States specific to ConcretePowder
  */
-export declare type ConcreteProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type ConcretePowderStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to ConcretePowder
+ * States specific to CoralBlock
  */
-export declare type ConcretePowderProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type CoralBlockStates = Pick<BlockStateSuperset, 'coral_color' | 'dead_bit'>;
 /**
- * Properties specific to Coral
+ * States specific to CoralFan
  */
-export declare type CoralProperties = Pick<BlockPropertySuperset, 'coral_color' | 'dead_bit'>;
+export declare type CoralFanStates = Pick<BlockStateSuperset, 'coral_color' | 'coral_fan_direction'>;
 /**
- * Properties specific to CoralBlock
+ * States specific to CoralFanDead
  */
-export declare type CoralBlockProperties = Pick<BlockPropertySuperset, 'coral_color' | 'dead_bit'>;
+export declare type CoralFanDeadStates = Pick<BlockStateSuperset, 'coral_color' | 'coral_fan_direction'>;
 /**
- * Properties specific to CoralFan
+ * States specific to CoralFanHang
  */
-export declare type CoralFanProperties = Pick<BlockPropertySuperset, 'coral_color' | 'coral_fan_direction'>;
+export declare type CoralFanHangStates = Pick<BlockStateSuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
 /**
- * Properties specific to CoralFanDead
+ * States specific to CoralFanHang2
  */
-export declare type CoralFanDeadProperties = Pick<BlockPropertySuperset, 'coral_color' | 'coral_fan_direction'>;
+export declare type CoralFanHang2States = Pick<BlockStateSuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
 /**
- * Properties specific to CoralFanHang
+ * States specific to CoralFanHang3
  */
-export declare type CoralFanHangProperties = Pick<BlockPropertySuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
+export declare type CoralFanHang3States = Pick<BlockStateSuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
 /**
- * Properties specific to CoralFanHang2
+ * States specific to CrimsonButton
  */
-export declare type CoralFanHang2Properties = Pick<BlockPropertySuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
+export declare type CrimsonButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to CoralFanHang3
+ * States specific to CrimsonDoor
  */
-export declare type CoralFanHang3Properties = Pick<BlockPropertySuperset, 'coral_direction' | 'coral_hang_type_bit' | 'dead_bit'>;
+export declare type CrimsonDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to CrimsonButton
+ * States specific to CrimsonDoubleSlab
  */
-export declare type CrimsonButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type CrimsonDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CrimsonDoor
+ * States specific to CrimsonFenceGate
  */
-export declare type CrimsonDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type CrimsonFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to CrimsonDoubleSlab
+ * States specific to CrimsonHangingSign
  */
-export declare type CrimsonDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CrimsonHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to CrimsonFenceGate
+ * States specific to CrimsonHyphae
  */
-export declare type CrimsonFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type CrimsonHyphaeStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to CrimsonHangingSign
+ * States specific to CrimsonPressurePlate
  */
-export declare type CrimsonHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type CrimsonPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to CrimsonHyphae
+ * States specific to CrimsonSlab
  */
-export declare type CrimsonHyphaeProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type CrimsonSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CrimsonPressurePlate
+ * States specific to CrimsonStairs
  */
-export declare type CrimsonPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type CrimsonStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to CrimsonSlab
+ * States specific to CrimsonStandingSign
  */
-export declare type CrimsonSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CrimsonStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to CrimsonStairs
+ * States specific to CrimsonStem
  */
-export declare type CrimsonStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type CrimsonStemStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to CrimsonStandingSign
+ * States specific to CrimsonTrapdoor
  */
-export declare type CrimsonStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type CrimsonTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to CrimsonStem
+ * States specific to CrimsonWallSign
  */
-export declare type CrimsonStemProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type CrimsonWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to CrimsonTrapdoor
+ * States specific to CutCopperSlab
  */
-export declare type CrimsonTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type CutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to CrimsonWallSign
+ * States specific to CutCopperStairs
  */
-export declare type CrimsonWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type CutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to CutCopperSlab
+ * States specific to CyanCandle
  */
-export declare type CutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type CyanCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to CutCopperStairs
+ * States specific to CyanCandleCake
  */
-export declare type CutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type CyanCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to CyanCandle
+ * States specific to CyanGlazedTerracotta
  */
-export declare type CyanCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type CyanGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to CyanCandleCake
+ * States specific to DarkOakButton
  */
-export declare type CyanCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type DarkOakButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to CyanGlazedTerracotta
+ * States specific to DarkOakDoor
  */
-export declare type CyanGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type DarkOakDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to DarkOakButton
+ * States specific to DarkOakFenceGate
  */
-export declare type DarkOakButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type DarkOakFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to DarkOakDoor
+ * States specific to DarkOakHangingSign
  */
-export declare type DarkOakDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type DarkOakHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to DarkOakFenceGate
+ * States specific to DarkOakLog
  */
-export declare type DarkOakFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type DarkOakLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to DarkOakHangingSign
+ * States specific to DarkOakPressurePlate
  */
-export declare type DarkOakHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type DarkOakPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to DarkOakLog
+ * States specific to DarkOakStairs
  */
-export declare type DarkOakLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type DarkOakStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to DarkOakPressurePlate
+ * States specific to DarkOakTrapdoor
  */
-export declare type DarkOakPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type DarkOakTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to DarkOakStairs
+ * States specific to DarkPrismarineStairs
  */
-export declare type DarkOakStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type DarkPrismarineStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to DarkOakTrapdoor
+ * States specific to DarkoakStandingSign
  */
-export declare type DarkOakTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type DarkoakStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to DarkPrismarineStairs
+ * States specific to DarkoakWallSign
  */
-export declare type DarkPrismarineStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type DarkoakWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to DarkoakStandingSign
+ * States specific to DaylightDetector
  */
-export declare type DarkoakStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type DaylightDetectorStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to DarkoakWallSign
+ * States specific to DaylightDetectorInverted
  */
-export declare type DarkoakWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type DaylightDetectorInvertedStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to DaylightDetector
+ * States specific to DecoratedPot
  */
-export declare type DaylightDetectorProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type DecoratedPotStates = Pick<BlockStateSuperset, 'direction'>;
 /**
- * Properties specific to DaylightDetectorInverted
+ * States specific to Deepslate
  */
-export declare type DaylightDetectorInvertedProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type DeepslateStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to DecoratedPot
+ * States specific to DeepslateBrickDoubleSlab
  */
-export declare type DecoratedPotProperties = Pick<BlockPropertySuperset, 'direction'>;
+export declare type DeepslateBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to Deepslate
+ * States specific to DeepslateBrickSlab
  */
-export declare type DeepslateProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type DeepslateBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to DeepslateBrickDoubleSlab
+ * States specific to DeepslateBrickStairs
  */
-export declare type DeepslateBrickDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type DeepslateBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to DeepslateBrickSlab
+ * States specific to DeepslateBrickWall
  */
-export declare type DeepslateBrickSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type DeepslateBrickWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to DeepslateBrickStairs
+ * States specific to DeepslateTileDoubleSlab
  */
-export declare type DeepslateBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type DeepslateTileDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to DeepslateBrickWall
+ * States specific to DeepslateTileSlab
  */
-export declare type DeepslateBrickWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type DeepslateTileSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to DeepslateTileDoubleSlab
+ * States specific to DeepslateTileStairs
  */
-export declare type DeepslateTileDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type DeepslateTileStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to DeepslateTileSlab
+ * States specific to DeepslateTileWall
  */
-export declare type DeepslateTileSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type DeepslateTileWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to DeepslateTileStairs
+ * States specific to DetectorRail
  */
-export declare type DeepslateTileStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type DetectorRailStates = Pick<BlockStateSuperset, 'rail_data_bit' | 'rail_direction'>;
 /**
- * Properties specific to DeepslateTileWall
+ * States specific to DioriteStairs
  */
-export declare type DeepslateTileWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type DioriteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to DetectorRail
+ * States specific to Dirt
  */
-export declare type DetectorRailProperties = Pick<BlockPropertySuperset, 'rail_data_bit' | 'rail_direction'>;
+export declare type DirtStates = Pick<BlockStateSuperset, 'dirt_type'>;
 /**
- * Properties specific to DioriteStairs
+ * States specific to Dispenser
  */
-export declare type DioriteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type DispenserStates = Pick<BlockStateSuperset, 'facing_direction' | 'triggered_bit'>;
 /**
- * Properties specific to Dirt
+ * States specific to DoubleCutCopperSlab
  */
-export declare type DirtProperties = Pick<BlockPropertySuperset, 'dirt_type'>;
+export declare type DoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to Dispenser
+ * States specific to DoublePlant
  */
-export declare type DispenserProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'triggered_bit'>;
+export declare type DoublePlantStates = Pick<BlockStateSuperset, 'double_plant_type' | 'upper_block_bit'>;
 /**
- * Properties specific to DoubleCutCopperSlab
+ * States specific to DoubleStoneBlockSlab
  */
-export declare type DoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type DoubleStoneBlockSlabStates = Pick<BlockStateSuperset, 'stone_slab_type' | 'top_slot_bit'>;
 /**
- * Properties specific to DoublePlant
+ * States specific to DoubleStoneBlockSlab2
  */
-export declare type DoublePlantProperties = Pick<BlockPropertySuperset, 'double_plant_type' | 'upper_block_bit'>;
+export declare type DoubleStoneBlockSlab2States = Pick<BlockStateSuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
 /**
- * Properties specific to DoubleStoneBlockSlab
+ * States specific to DoubleStoneBlockSlab3
  */
-export declare type DoubleStoneBlockSlabProperties = Pick<BlockPropertySuperset, 'stone_slab_type' | 'top_slot_bit'>;
+export declare type DoubleStoneBlockSlab3States = Pick<BlockStateSuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
 /**
- * Properties specific to DoubleStoneBlockSlab2
+ * States specific to DoubleStoneBlockSlab4
  */
-export declare type DoubleStoneBlockSlab2Properties = Pick<BlockPropertySuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
+export declare type DoubleStoneBlockSlab4States = Pick<BlockStateSuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
 /**
- * Properties specific to DoubleStoneBlockSlab3
+ * States specific to DoubleWoodenSlab
  */
-export declare type DoubleStoneBlockSlab3Properties = Pick<BlockPropertySuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
+export declare type DoubleWoodenSlabStates = Pick<BlockStateSuperset, 'top_slot_bit' | 'wood_type'>;
 /**
- * Properties specific to DoubleStoneBlockSlab4
+ * States specific to Dropper
  */
-export declare type DoubleStoneBlockSlab4Properties = Pick<BlockPropertySuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
+export declare type DropperStates = Pick<BlockStateSuperset, 'facing_direction' | 'triggered_bit'>;
 /**
- * Properties specific to DoubleWoodenSlab
+ * States specific to EndBrickStairs
  */
-export declare type DoubleWoodenSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit' | 'wood_type'>;
+export declare type EndBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to Dropper
+ * States specific to EndPortalFrame
  */
-export declare type DropperProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'triggered_bit'>;
+export declare type EndPortalFrameStates = Pick<BlockStateSuperset, 'direction' | 'end_portal_eye_bit'>;
 /**
- * Properties specific to EndBrickStairs
+ * States specific to EndRod
  */
-export declare type EndBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type EndRodStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to EndPortalFrame
+ * States specific to EnderChest
  */
-export declare type EndPortalFrameProperties = Pick<BlockPropertySuperset, 'direction' | 'end_portal_eye_bit'>;
+export declare type EnderChestStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to EndRod
+ * States specific to ExposedCutCopperSlab
  */
-export declare type EndRodProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type ExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to EnderChest
+ * States specific to ExposedCutCopperStairs
  */
-export declare type EnderChestProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type ExposedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to ExposedCutCopperSlab
+ * States specific to ExposedDoubleCutCopperSlab
  */
-export declare type ExposedCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type ExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to ExposedCutCopperStairs
+ * States specific to Farmland
  */
-export declare type ExposedCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type FarmlandStates = Pick<BlockStateSuperset, 'moisturized_amount'>;
 /**
- * Properties specific to ExposedDoubleCutCopperSlab
+ * States specific to FenceGate
  */
-export declare type ExposedDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type FenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to Farmland
+ * States specific to Fire
  */
-export declare type FarmlandProperties = Pick<BlockPropertySuperset, 'moisturized_amount'>;
+export declare type FireStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to FenceGate
+ * States specific to FlowerPot
  */
-export declare type FenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type FlowerPotStates = Pick<BlockStateSuperset, 'update_bit'>;
 /**
- * Properties specific to Fire
+ * States specific to FlowingLava
  */
-export declare type FireProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type FlowingLavaStates = Pick<BlockStateSuperset, 'liquid_depth'>;
 /**
- * Properties specific to FlowerPot
+ * States specific to FlowingWater
  */
-export declare type FlowerPotProperties = Pick<BlockPropertySuperset, 'update_bit'>;
+export declare type FlowingWaterStates = Pick<BlockStateSuperset, 'liquid_depth'>;
 /**
- * Properties specific to FlowingLava
+ * States specific to Frame
  */
-export declare type FlowingLavaProperties = Pick<BlockPropertySuperset, 'liquid_depth'>;
+export declare type FrameStates = Pick<BlockStateSuperset, 'facing_direction' | 'item_frame_map_bit' | 'item_frame_photo_bit'>;
 /**
- * Properties specific to FlowingWater
+ * States specific to FrostedIce
  */
-export declare type FlowingWaterProperties = Pick<BlockPropertySuperset, 'liquid_depth'>;
+export declare type FrostedIceStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to Frame
+ * States specific to Furnace
  */
-export declare type FrameProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'item_frame_map_bit' | 'item_frame_photo_bit'>;
+export declare type FurnaceStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to FrostedIce
+ * States specific to GlowFrame
  */
-export declare type FrostedIceProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type GlowFrameStates = Pick<BlockStateSuperset, 'facing_direction' | 'item_frame_map_bit' | 'item_frame_photo_bit'>;
 /**
- * Properties specific to Furnace
+ * States specific to GlowLichen
  */
-export declare type FurnaceProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type GlowLichenStates = Pick<BlockStateSuperset, 'multi_face_direction_bits'>;
 /**
- * Properties specific to GlowFrame
+ * States specific to GoldenRail
  */
-export declare type GlowFrameProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'item_frame_map_bit' | 'item_frame_photo_bit'>;
+export declare type GoldenRailStates = Pick<BlockStateSuperset, 'rail_data_bit' | 'rail_direction'>;
 /**
- * Properties specific to GlowLichen
+ * States specific to GraniteStairs
  */
-export declare type GlowLichenProperties = Pick<BlockPropertySuperset, 'multi_face_direction_bits'>;
+export declare type GraniteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to GoldenRail
+ * States specific to GrayCandle
  */
-export declare type GoldenRailProperties = Pick<BlockPropertySuperset, 'rail_data_bit' | 'rail_direction'>;
+export declare type GrayCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to GraniteStairs
+ * States specific to GrayCandleCake
  */
-export declare type GraniteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type GrayCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to GrayCandle
+ * States specific to GrayGlazedTerracotta
  */
-export declare type GrayCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type GrayGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to GrayCandleCake
+ * States specific to GreenCandle
  */
-export declare type GrayCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type GreenCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to GrayGlazedTerracotta
+ * States specific to GreenCandleCake
  */
-export declare type GrayGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type GreenCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to GreenCandle
+ * States specific to GreenGlazedTerracotta
  */
-export declare type GreenCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type GreenGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to GreenCandleCake
+ * States specific to Grindstone
  */
-export declare type GreenCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type GrindstoneStates = Pick<BlockStateSuperset, 'attachment' | 'direction'>;
 /**
- * Properties specific to GreenGlazedTerracotta
+ * States specific to HardStainedGlass
  */
-export declare type GreenGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type HardStainedGlassStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to Grindstone
+ * States specific to HardStainedGlassPane
  */
-export declare type GrindstoneProperties = Pick<BlockPropertySuperset, 'attachment' | 'direction'>;
+export declare type HardStainedGlassPaneStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to HardStainedGlass
+ * States specific to HayBlock
  */
-export declare type HardStainedGlassProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type HayBlockStates = Pick<BlockStateSuperset, 'deprecated' | 'pillar_axis'>;
 /**
- * Properties specific to HardStainedGlassPane
+ * States specific to HeavyWeightedPressurePlate
  */
-export declare type HardStainedGlassPaneProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type HeavyWeightedPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to HayBlock
+ * States specific to Hopper
  */
-export declare type HayBlockProperties = Pick<BlockPropertySuperset, 'deprecated' | 'pillar_axis'>;
+export declare type HopperStates = Pick<BlockStateSuperset, 'facing_direction' | 'toggle_bit'>;
 /**
- * Properties specific to HeavyWeightedPressurePlate
+ * States specific to InfestedDeepslate
  */
-export declare type HeavyWeightedPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type InfestedDeepslateStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to Hopper
+ * States specific to IronDoor
  */
-export declare type HopperProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'toggle_bit'>;
+export declare type IronDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to InfestedDeepslate
+ * States specific to IronTrapdoor
  */
-export declare type InfestedDeepslateProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type IronTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to IronDoor
+ * States specific to Jigsaw
  */
-export declare type IronDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type JigsawStates = Pick<BlockStateSuperset, 'facing_direction' | 'rotation'>;
 /**
- * Properties specific to IronTrapdoor
+ * States specific to JungleButton
  */
-export declare type IronTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type JungleButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to Jigsaw
+ * States specific to JungleDoor
  */
-export declare type JigsawProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'rotation'>;
+export declare type JungleDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to JungleButton
+ * States specific to JungleFenceGate
  */
-export declare type JungleButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type JungleFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to JungleDoor
+ * States specific to JungleHangingSign
  */
-export declare type JungleDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type JungleHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to JungleFenceGate
+ * States specific to JungleLog
  */
-export declare type JungleFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type JungleLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to JungleHangingSign
+ * States specific to JunglePressurePlate
  */
-export declare type JungleHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type JunglePressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to JungleLog
+ * States specific to JungleStairs
  */
-export declare type JungleLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type JungleStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to JunglePressurePlate
+ * States specific to JungleStandingSign
  */
-export declare type JunglePressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type JungleStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to JungleStairs
+ * States specific to JungleTrapdoor
  */
-export declare type JungleStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type JungleTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to JungleStandingSign
+ * States specific to JungleWallSign
  */
-export declare type JungleStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type JungleWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to JungleTrapdoor
+ * States specific to Kelp
  */
-export declare type JungleTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type KelpStates = Pick<BlockStateSuperset, 'kelp_age'>;
 /**
- * Properties specific to JungleWallSign
+ * States specific to Ladder
  */
-export declare type JungleWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LadderStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Kelp
+ * States specific to Lantern
  */
-export declare type KelpProperties = Pick<BlockPropertySuperset, 'kelp_age'>;
+export declare type LanternStates = Pick<BlockStateSuperset, 'hanging'>;
 /**
- * Properties specific to Ladder
+ * States specific to LargeAmethystBud
  */
-export declare type LadderProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LargeAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Lantern
+ * States specific to Lava
  */
-export declare type LanternProperties = Pick<BlockPropertySuperset, 'hanging'>;
+export declare type LavaStates = Pick<BlockStateSuperset, 'liquid_depth'>;
 /**
- * Properties specific to LargeAmethystBud
+ * States specific to Leaves
  */
-export declare type LargeAmethystBudProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LeavesStates = Pick<BlockStateSuperset, 'old_leaf_type' | 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to Lava
+ * States specific to Leaves2
  */
-export declare type LavaProperties = Pick<BlockPropertySuperset, 'liquid_depth'>;
+export declare type Leaves2States = Pick<BlockStateSuperset, 'new_leaf_type' | 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to LavaCauldron
+ * States specific to Lectern
  */
-export declare type LavaCauldronProperties = Pick<BlockPropertySuperset, 'cauldron_liquid' | 'fill_level'>;
+export declare type LecternStates = Pick<BlockStateSuperset, 'direction' | 'powered_bit'>;
 /**
- * Properties specific to Leaves
+ * States specific to Lever
  */
-export declare type LeavesProperties = Pick<BlockPropertySuperset, 'old_leaf_type' | 'persistent_bit' | 'update_bit'>;
+export declare type LeverStates = Pick<BlockStateSuperset, 'lever_direction' | 'open_bit'>;
 /**
- * Properties specific to Leaves2
+ * States specific to LightBlock
  */
-export declare type Leaves2Properties = Pick<BlockPropertySuperset, 'new_leaf_type' | 'persistent_bit' | 'update_bit'>;
+export declare type LightBlockStates = Pick<BlockStateSuperset, 'block_light_level'>;
 /**
- * Properties specific to Lectern
+ * States specific to LightBlueCandle
  */
-export declare type LecternProperties = Pick<BlockPropertySuperset, 'direction' | 'powered_bit'>;
+export declare type LightBlueCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to Lever
+ * States specific to LightBlueCandleCake
  */
-export declare type LeverProperties = Pick<BlockPropertySuperset, 'lever_direction' | 'open_bit'>;
+export declare type LightBlueCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to LightBlock
+ * States specific to LightBlueGlazedTerracotta
  */
-export declare type LightBlockProperties = Pick<BlockPropertySuperset, 'block_light_level'>;
+export declare type LightBlueGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LightBlueCandle
+ * States specific to LightGrayCandle
  */
-export declare type LightBlueCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type LightGrayCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to LightBlueCandleCake
+ * States specific to LightGrayCandleCake
  */
-export declare type LightBlueCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type LightGrayCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to LightBlueGlazedTerracotta
+ * States specific to LightWeightedPressurePlate
  */
-export declare type LightBlueGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LightWeightedPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to LightGrayCandle
+ * States specific to LightningRod
  */
-export declare type LightGrayCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type LightningRodStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LightGrayCandleCake
+ * States specific to LimeCandle
  */
-export declare type LightGrayCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type LimeCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to LightWeightedPressurePlate
+ * States specific to LimeCandleCake
  */
-export declare type LightWeightedPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type LimeCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to LightningRod
+ * States specific to LimeGlazedTerracotta
  */
-export declare type LightningRodProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LimeGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LimeCandle
+ * States specific to LitBlastFurnace
  */
-export declare type LimeCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type LitBlastFurnaceStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LimeCandleCake
+ * States specific to LitFurnace
  */
-export declare type LimeCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type LitFurnaceStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LimeGlazedTerracotta
+ * States specific to LitPumpkin
  */
-export declare type LimeGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LitPumpkinStates = Pick<BlockStateSuperset, 'minecraft:cardinal_direction'>;
 /**
- * Properties specific to LitBlastFurnace
+ * States specific to LitSmoker
  */
-export declare type LitBlastFurnaceProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LitSmokerStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to LitFurnace
+ * States specific to Loom
  */
-export declare type LitFurnaceProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type LoomStates = Pick<BlockStateSuperset, 'direction'>;
 /**
- * Properties specific to LitPumpkin
+ * States specific to MagentaCandle
  */
-export declare type LitPumpkinProperties = Pick<BlockPropertySuperset, 'direction'>;
+export declare type MagentaCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to LitSmoker
+ * States specific to MagentaCandleCake
  */
-export declare type LitSmokerProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type MagentaCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to Loom
+ * States specific to MagentaGlazedTerracotta
  */
-export declare type LoomProperties = Pick<BlockPropertySuperset, 'direction'>;
+export declare type MagentaGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to MagentaCandle
+ * States specific to MangroveButton
  */
-export declare type MagentaCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type MangroveButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to MagentaCandleCake
+ * States specific to MangroveDoor
  */
-export declare type MagentaCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type MangroveDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to MagentaGlazedTerracotta
+ * States specific to MangroveDoubleSlab
  */
-export declare type MagentaGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type MangroveDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to MangroveButton
+ * States specific to MangroveFenceGate
  */
-export declare type MangroveButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type MangroveFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to MangroveDoor
+ * States specific to MangroveHangingSign
  */
-export declare type MangroveDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type MangroveHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to MangroveDoubleSlab
+ * States specific to MangroveLeaves
  */
-export declare type MangroveDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type MangroveLeavesStates = Pick<BlockStateSuperset, 'persistent_bit' | 'update_bit'>;
 /**
- * Properties specific to MangroveFenceGate
+ * States specific to MangroveLog
  */
-export declare type MangroveFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type MangroveLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to MangroveHangingSign
+ * States specific to MangrovePressurePlate
  */
-export declare type MangroveHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type MangrovePressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to MangroveLeaves
+ * States specific to MangrovePropagule
  */
-export declare type MangroveLeavesProperties = Pick<BlockPropertySuperset, 'persistent_bit' | 'update_bit'>;
+export declare type MangrovePropaguleStates = Pick<BlockStateSuperset, 'hanging' | 'propagule_stage'>;
 /**
- * Properties specific to MangroveLog
+ * States specific to MangroveSlab
  */
-export declare type MangroveLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type MangroveSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to MangrovePressurePlate
+ * States specific to MangroveStairs
  */
-export declare type MangrovePressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type MangroveStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to MangrovePropagule
+ * States specific to MangroveStandingSign
  */
-export declare type MangrovePropaguleProperties = Pick<BlockPropertySuperset, 'hanging' | 'propagule_stage'>;
+export declare type MangroveStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to MangroveSlab
+ * States specific to MangroveTrapdoor
  */
-export declare type MangroveSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type MangroveTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to MangroveStairs
+ * States specific to MangroveWallSign
  */
-export declare type MangroveStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type MangroveWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to MangroveStandingSign
+ * States specific to MangroveWood
  */
-export declare type MangroveStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type MangroveWoodStates = Pick<BlockStateSuperset, 'pillar_axis' | 'stripped_bit'>;
 /**
- * Properties specific to MangroveTrapdoor
+ * States specific to MediumAmethystBud
  */
-export declare type MangroveTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type MediumAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to MangroveWallSign
+ * States specific to MelonStem
  */
-export declare type MangroveWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type MelonStemStates = Pick<BlockStateSuperset, 'facing_direction' | 'growth'>;
 /**
- * Properties specific to MangroveWood
+ * States specific to MonsterEgg
  */
-export declare type MangroveWoodProperties = Pick<BlockPropertySuperset, 'pillar_axis' | 'stripped_bit'>;
+export declare type MonsterEggStates = Pick<BlockStateSuperset, 'monster_egg_stone_type'>;
 /**
- * Properties specific to MediumAmethystBud
+ * States specific to MossyCobblestoneStairs
  */
-export declare type MediumAmethystBudProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type MossyCobblestoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to MelonStem
+ * States specific to MossyStoneBrickStairs
  */
-export declare type MelonStemProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'growth'>;
+export declare type MossyStoneBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to MonsterEgg
+ * States specific to MudBrickDoubleSlab
  */
-export declare type MonsterEggProperties = Pick<BlockPropertySuperset, 'monster_egg_stone_type'>;
+export declare type MudBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to MossyCobblestoneStairs
+ * States specific to MudBrickSlab
  */
-export declare type MossyCobblestoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type MudBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to MossyStoneBrickStairs
+ * States specific to MudBrickStairs
  */
-export declare type MossyStoneBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type MudBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to MudBrickDoubleSlab
+ * States specific to MudBrickWall
  */
-export declare type MudBrickDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type MudBrickWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to MudBrickSlab
+ * States specific to MuddyMangroveRoots
  */
-export declare type MudBrickSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type MuddyMangroveRootsStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to MudBrickStairs
+ * States specific to NetherBrickStairs
  */
-export declare type MudBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type NetherBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to MudBrickWall
+ * States specific to NetherWart
  */
-export declare type MudBrickWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type NetherWartStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to MuddyMangroveRoots
+ * States specific to NormalStoneStairs
  */
-export declare type MuddyMangroveRootsProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type NormalStoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to NetherBrickStairs
+ * States specific to OakHangingSign
  */
-export declare type NetherBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type OakHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to NetherWart
+ * States specific to OakLog
  */
-export declare type NetherWartProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type OakLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to NormalStoneStairs
+ * States specific to OakStairs
  */
-export declare type NormalStoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type OakStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to OakHangingSign
+ * States specific to Observer
  */
-export declare type OakHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type ObserverStates = Pick<BlockStateSuperset, 'facing_direction' | 'powered_bit'>;
 /**
- * Properties specific to OakLog
+ * States specific to OchreFroglight
  */
-export declare type OakLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type OchreFroglightStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to OakStairs
+ * States specific to OrangeCandle
  */
-export declare type OakStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type OrangeCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to Observer
+ * States specific to OrangeCandleCake
  */
-export declare type ObserverProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'powered_bit'>;
+export declare type OrangeCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to OchreFroglight
+ * States specific to OrangeGlazedTerracotta
  */
-export declare type OchreFroglightProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type OrangeGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to OrangeCandle
+ * States specific to OxidizedCutCopperSlab
  */
-export declare type OrangeCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type OxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to OrangeCandleCake
+ * States specific to OxidizedCutCopperStairs
  */
-export declare type OrangeCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type OxidizedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to OrangeGlazedTerracotta
+ * States specific to OxidizedDoubleCutCopperSlab
  */
-export declare type OrangeGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type OxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to OxidizedCutCopperSlab
+ * States specific to PearlescentFroglight
  */
-export declare type OxidizedCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PearlescentFroglightStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to OxidizedCutCopperStairs
+ * States specific to PinkCandle
  */
-export declare type OxidizedCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PinkCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to OxidizedDoubleCutCopperSlab
+ * States specific to PinkCandleCake
  */
-export declare type OxidizedDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PinkCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to PearlescentFroglight
+ * States specific to PinkGlazedTerracotta
  */
-export declare type PearlescentFroglightProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type PinkGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to PinkCandle
+ * States specific to PinkPetals
  */
-export declare type PinkCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type PinkPetalsStates = Pick<BlockStateSuperset, 'direction' | 'growth'>;
 /**
- * Properties specific to PinkCandleCake
+ * States specific to Piston
  */
-export declare type PinkCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type PistonStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to PinkGlazedTerracotta
+ * States specific to PistonArmCollision
  */
-export declare type PinkGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type PistonArmCollisionStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to PinkPetals
+ * States specific to PitcherCrop
  */
-export declare type PinkPetalsProperties = Pick<BlockPropertySuperset, 'direction' | 'growth'>;
+export declare type PitcherCropStates = Pick<BlockStateSuperset, 'growth' | 'upper_block_bit'>;
 /**
- * Properties specific to Piston
+ * States specific to PitcherPlant
  */
-export declare type PistonProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type PitcherPlantStates = Pick<BlockStateSuperset, 'upper_block_bit'>;
 /**
- * Properties specific to PistonArmCollision
+ * States specific to Planks
  */
-export declare type PistonArmCollisionProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type PlanksStates = Pick<BlockStateSuperset, 'wood_type'>;
 /**
- * Properties specific to Planks
+ * States specific to PointedDripstone
  */
-export declare type PlanksProperties = Pick<BlockPropertySuperset, 'wood_type'>;
+export declare type PointedDripstoneStates = Pick<BlockStateSuperset, 'dripstone_thickness' | 'hanging'>;
 /**
- * Properties specific to PointedDripstone
+ * States specific to PolishedAndesiteStairs
  */
-export declare type PointedDripstoneProperties = Pick<BlockPropertySuperset, 'dripstone_thickness' | 'hanging'>;
+export declare type PolishedAndesiteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedAndesiteStairs
+ * States specific to PolishedBasalt
  */
-export declare type PolishedAndesiteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PolishedBasaltStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to PolishedBasalt
+ * States specific to PolishedBlackstoneBrickDoubleSlab
  */
-export declare type PolishedBasaltProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type PolishedBlackstoneBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedBlackstoneBrickDoubleSlab
+ * States specific to PolishedBlackstoneBrickSlab
  */
-export declare type PolishedBlackstoneBrickDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedBlackstoneBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedBlackstoneBrickSlab
+ * States specific to PolishedBlackstoneBrickStairs
  */
-export declare type PolishedBlackstoneBrickSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedBlackstoneBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedBlackstoneBrickStairs
+ * States specific to PolishedBlackstoneBrickWall
  */
-export declare type PolishedBlackstoneBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PolishedBlackstoneBrickWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to PolishedBlackstoneBrickWall
+ * States specific to PolishedBlackstoneButton
  */
-export declare type PolishedBlackstoneBrickWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type PolishedBlackstoneButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to PolishedBlackstoneButton
+ * States specific to PolishedBlackstoneDoubleSlab
  */
-export declare type PolishedBlackstoneButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type PolishedBlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedBlackstoneDoubleSlab
+ * States specific to PolishedBlackstonePressurePlate
  */
-export declare type PolishedBlackstoneDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedBlackstonePressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to PolishedBlackstonePressurePlate
+ * States specific to PolishedBlackstoneSlab
  */
-export declare type PolishedBlackstonePressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type PolishedBlackstoneSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedBlackstoneSlab
+ * States specific to PolishedBlackstoneStairs
  */
-export declare type PolishedBlackstoneSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedBlackstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedBlackstoneStairs
+ * States specific to PolishedBlackstoneWall
  */
-export declare type PolishedBlackstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PolishedBlackstoneWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to PolishedBlackstoneWall
+ * States specific to PolishedDeepslateDoubleSlab
  */
-export declare type PolishedBlackstoneWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type PolishedDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedDeepslateDoubleSlab
+ * States specific to PolishedDeepslateSlab
  */
-export declare type PolishedDeepslateDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedDeepslateSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to PolishedDeepslateSlab
+ * States specific to PolishedDeepslateStairs
  */
-export declare type PolishedDeepslateSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type PolishedDeepslateStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedDeepslateStairs
+ * States specific to PolishedDeepslateWall
  */
-export declare type PolishedDeepslateStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PolishedDeepslateWallStates = Pick<BlockStateSuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
 /**
- * Properties specific to PolishedDeepslateWall
+ * States specific to PolishedDioriteStairs
  */
-export declare type PolishedDeepslateWallProperties = Pick<BlockPropertySuperset, 'wall_connection_type_east' | 'wall_connection_type_north' | 'wall_connection_type_south' | 'wall_connection_type_west' | 'wall_post_bit'>;
+export declare type PolishedDioriteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedDioriteStairs
+ * States specific to PolishedGraniteStairs
  */
-export declare type PolishedDioriteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PolishedGraniteStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PolishedGraniteStairs
+ * States specific to Portal
  */
-export declare type PolishedGraniteStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PortalStates = Pick<BlockStateSuperset, 'portal_axis'>;
 /**
- * Properties specific to Portal
+ * States specific to Potatoes
  */
-export declare type PortalProperties = Pick<BlockPropertySuperset, 'portal_axis'>;
+export declare type PotatoesStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to Potatoes
+ * States specific to PoweredComparator
  */
-export declare type PotatoesProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type PoweredComparatorStates = Pick<BlockStateSuperset, 'direction' | 'output_lit_bit' | 'output_subtract_bit'>;
 /**
- * Properties specific to PoweredComparator
+ * States specific to PoweredRepeater
  */
-export declare type PoweredComparatorProperties = Pick<BlockPropertySuperset, 'direction' | 'output_lit_bit' | 'output_subtract_bit'>;
+export declare type PoweredRepeaterStates = Pick<BlockStateSuperset, 'direction' | 'repeater_delay'>;
 /**
- * Properties specific to PoweredRepeater
+ * States specific to Prismarine
  */
-export declare type PoweredRepeaterProperties = Pick<BlockPropertySuperset, 'direction' | 'repeater_delay'>;
+export declare type PrismarineStates = Pick<BlockStateSuperset, 'prismarine_block_type'>;
 /**
- * Properties specific to Prismarine
+ * States specific to PrismarineBricksStairs
  */
-export declare type PrismarineProperties = Pick<BlockPropertySuperset, 'prismarine_block_type'>;
+export declare type PrismarineBricksStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PrismarineBricksStairs
+ * States specific to PrismarineStairs
  */
-export declare type PrismarineBricksStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PrismarineStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PrismarineStairs
+ * States specific to Pumpkin
  */
-export declare type PrismarineStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type PumpkinStates = Pick<BlockStateSuperset, 'minecraft:cardinal_direction'>;
 /**
- * Properties specific to Pumpkin
+ * States specific to PumpkinStem
  */
-export declare type PumpkinProperties = Pick<BlockPropertySuperset, 'direction'>;
+export declare type PumpkinStemStates = Pick<BlockStateSuperset, 'facing_direction' | 'growth'>;
 /**
- * Properties specific to PumpkinStem
+ * States specific to PurpleCandle
  */
-export declare type PumpkinStemProperties = Pick<BlockPropertySuperset, 'facing_direction' | 'growth'>;
+export declare type PurpleCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to PurpleCandle
+ * States specific to PurpleCandleCake
  */
-export declare type PurpleCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type PurpleCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to PurpleCandleCake
+ * States specific to PurpleGlazedTerracotta
  */
-export declare type PurpleCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type PurpleGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to PurpleGlazedTerracotta
+ * States specific to PurpurBlock
  */
-export declare type PurpleGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type PurpurBlockStates = Pick<BlockStateSuperset, 'chisel_type' | 'pillar_axis'>;
 /**
- * Properties specific to PurpurBlock
+ * States specific to PurpurStairs
  */
-export declare type PurpurBlockProperties = Pick<BlockPropertySuperset, 'chisel_type' | 'pillar_axis'>;
+export declare type PurpurStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to PurpurStairs
+ * States specific to QuartzBlock
  */
-export declare type PurpurStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type QuartzBlockStates = Pick<BlockStateSuperset, 'chisel_type' | 'pillar_axis'>;
 /**
- * Properties specific to QuartzBlock
+ * States specific to QuartzStairs
  */
-export declare type QuartzBlockProperties = Pick<BlockPropertySuperset, 'chisel_type' | 'pillar_axis'>;
+export declare type QuartzStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to QuartzStairs
+ * States specific to Rail
  */
-export declare type QuartzStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type RailStates = Pick<BlockStateSuperset, 'rail_direction'>;
 /**
- * Properties specific to Rail
+ * States specific to RedCandle
  */
-export declare type RailProperties = Pick<BlockPropertySuperset, 'rail_direction'>;
+export declare type RedCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to RedCandle
+ * States specific to RedCandleCake
  */
-export declare type RedCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type RedCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to RedCandleCake
+ * States specific to RedFlower
  */
-export declare type RedCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type RedFlowerStates = Pick<BlockStateSuperset, 'flower_type'>;
 /**
- * Properties specific to RedFlower
+ * States specific to RedGlazedTerracotta
  */
-export declare type RedFlowerProperties = Pick<BlockPropertySuperset, 'flower_type'>;
+export declare type RedGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to RedGlazedTerracotta
+ * States specific to RedMushroomBlock
  */
-export declare type RedGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type RedMushroomBlockStates = Pick<BlockStateSuperset, 'huge_mushroom_bits'>;
 /**
- * Properties specific to RedMushroomBlock
+ * States specific to RedNetherBrickStairs
  */
-export declare type RedMushroomBlockProperties = Pick<BlockPropertySuperset, 'huge_mushroom_bits'>;
+export declare type RedNetherBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to RedNetherBrickStairs
+ * States specific to RedSandstone
  */
-export declare type RedNetherBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type RedSandstoneStates = Pick<BlockStateSuperset, 'sand_stone_type'>;
 /**
- * Properties specific to RedSandstone
+ * States specific to RedSandstoneStairs
  */
-export declare type RedSandstoneProperties = Pick<BlockPropertySuperset, 'sand_stone_type'>;
+export declare type RedSandstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to RedSandstoneStairs
+ * States specific to RedstoneTorch
  */
-export declare type RedSandstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type RedstoneTorchStates = Pick<BlockStateSuperset, 'torch_facing_direction'>;
 /**
- * Properties specific to RedstoneTorch
+ * States specific to RedstoneWire
  */
-export declare type RedstoneTorchProperties = Pick<BlockPropertySuperset, 'torch_facing_direction'>;
+export declare type RedstoneWireStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to RedstoneWire
+ * States specific to Reeds
  */
-export declare type RedstoneWireProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type ReedsStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to Reeds
+ * States specific to RepeatingCommandBlock
  */
-export declare type ReedsProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type RepeatingCommandBlockStates = Pick<BlockStateSuperset, 'conditional_bit' | 'facing_direction'>;
 /**
- * Properties specific to RepeatingCommandBlock
+ * States specific to RespawnAnchor
  */
-export declare type RepeatingCommandBlockProperties = Pick<BlockPropertySuperset, 'conditional_bit' | 'facing_direction'>;
+export declare type RespawnAnchorStates = Pick<BlockStateSuperset, 'respawn_anchor_charge'>;
 /**
- * Properties specific to RespawnAnchor
+ * States specific to Sand
  */
-export declare type RespawnAnchorProperties = Pick<BlockPropertySuperset, 'respawn_anchor_charge'>;
+export declare type SandStates = Pick<BlockStateSuperset, 'sand_type'>;
 /**
- * Properties specific to Sand
+ * States specific to Sandstone
  */
-export declare type SandProperties = Pick<BlockPropertySuperset, 'sand_type'>;
+export declare type SandstoneStates = Pick<BlockStateSuperset, 'sand_stone_type'>;
 /**
- * Properties specific to Sandstone
+ * States specific to SandstoneStairs
  */
-export declare type SandstoneProperties = Pick<BlockPropertySuperset, 'sand_stone_type'>;
+export declare type SandstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to SandstoneStairs
+ * States specific to Sapling
  */
-export declare type SandstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type SaplingStates = Pick<BlockStateSuperset, 'age_bit' | 'sapling_type'>;
 /**
- * Properties specific to Sapling
+ * States specific to Scaffolding
  */
-export declare type SaplingProperties = Pick<BlockPropertySuperset, 'age_bit' | 'sapling_type'>;
+export declare type ScaffoldingStates = Pick<BlockStateSuperset, 'stability' | 'stability_check'>;
 /**
- * Properties specific to Scaffolding
+ * States specific to SculkCatalyst
  */
-export declare type ScaffoldingProperties = Pick<BlockPropertySuperset, 'stability' | 'stability_check'>;
+export declare type SculkCatalystStates = Pick<BlockStateSuperset, 'bloom'>;
 /**
- * Properties specific to SculkCatalyst
+ * States specific to SculkSensor
  */
-export declare type SculkCatalystProperties = Pick<BlockPropertySuperset, 'bloom'>;
+export declare type SculkSensorStates = Pick<BlockStateSuperset, 'powered_bit'>;
 /**
- * Properties specific to SculkSensor
+ * States specific to SculkShrieker
  */
-export declare type SculkSensorProperties = Pick<BlockPropertySuperset, 'powered_bit'>;
+export declare type SculkShriekerStates = Pick<BlockStateSuperset, 'active' | 'can_summon'>;
 /**
- * Properties specific to SculkShrieker
+ * States specific to SculkVein
  */
-export declare type SculkShriekerProperties = Pick<BlockPropertySuperset, 'active' | 'can_summon'>;
+export declare type SculkVeinStates = Pick<BlockStateSuperset, 'multi_face_direction_bits'>;
 /**
- * Properties specific to SculkVein
+ * States specific to SeaPickle
  */
-export declare type SculkVeinProperties = Pick<BlockPropertySuperset, 'multi_face_direction_bits'>;
+export declare type SeaPickleStates = Pick<BlockStateSuperset, 'cluster_count' | 'dead_bit'>;
 /**
- * Properties specific to SeaPickle
+ * States specific to Seagrass
  */
-export declare type SeaPickleProperties = Pick<BlockPropertySuperset, 'cluster_count' | 'dead_bit'>;
+export declare type SeagrassStates = Pick<BlockStateSuperset, 'sea_grass_type'>;
 /**
- * Properties specific to Seagrass
+ * States specific to ShulkerBox
  */
-export declare type SeagrassProperties = Pick<BlockPropertySuperset, 'sea_grass_type'>;
+export declare type ShulkerBoxStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to ShulkerBox
+ * States specific to SilverGlazedTerracotta
  */
-export declare type ShulkerBoxProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type SilverGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to SilverGlazedTerracotta
+ * States specific to Skull
  */
-export declare type SilverGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type SkullStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Skull
+ * States specific to SmallAmethystBud
  */
-export declare type SkullProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type SmallAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to SmallAmethystBud
+ * States specific to SmallDripleafBlock
  */
-export declare type SmallAmethystBudProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type SmallDripleafBlockStates = Pick<BlockStateSuperset, 'direction' | 'upper_block_bit'>;
 /**
- * Properties specific to SmallDripleafBlock
+ * States specific to Smoker
  */
-export declare type SmallDripleafBlockProperties = Pick<BlockPropertySuperset, 'direction' | 'upper_block_bit'>;
+export declare type SmokerStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Smoker
+ * States specific to SmoothQuartzStairs
  */
-export declare type SmokerProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type SmoothQuartzStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to SmoothQuartzStairs
+ * States specific to SmoothRedSandstoneStairs
  */
-export declare type SmoothQuartzStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type SmoothRedSandstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to SmoothRedSandstoneStairs
+ * States specific to SmoothSandstoneStairs
  */
-export declare type SmoothRedSandstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type SmoothSandstoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to SmoothSandstoneStairs
+ * States specific to SnifferEgg
  */
-export declare type SmoothSandstoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type SnifferEggStates = Pick<BlockStateSuperset, 'cracked_state'>;
 /**
- * Properties specific to SnowLayer
+ * States specific to SnowLayer
  */
-export declare type SnowLayerProperties = Pick<BlockPropertySuperset, 'covered_bit' | 'height'>;
+export declare type SnowLayerStates = Pick<BlockStateSuperset, 'covered_bit' | 'height'>;
 /**
- * Properties specific to SoulCampfire
+ * States specific to SoulCampfire
  */
-export declare type SoulCampfireProperties = Pick<BlockPropertySuperset, 'direction' | 'extinguished'>;
+export declare type SoulCampfireStates = Pick<BlockStateSuperset, 'direction' | 'extinguished'>;
 /**
- * Properties specific to SoulFire
+ * States specific to SoulFire
  */
-export declare type SoulFireProperties = Pick<BlockPropertySuperset, 'age'>;
+export declare type SoulFireStates = Pick<BlockStateSuperset, 'age'>;
 /**
- * Properties specific to SoulLantern
+ * States specific to SoulLantern
  */
-export declare type SoulLanternProperties = Pick<BlockPropertySuperset, 'hanging'>;
+export declare type SoulLanternStates = Pick<BlockStateSuperset, 'hanging'>;
 /**
- * Properties specific to SoulTorch
+ * States specific to SoulTorch
  */
-export declare type SoulTorchProperties = Pick<BlockPropertySuperset, 'torch_facing_direction'>;
+export declare type SoulTorchStates = Pick<BlockStateSuperset, 'torch_facing_direction'>;
 /**
- * Properties specific to Sponge
+ * States specific to Sponge
  */
-export declare type SpongeProperties = Pick<BlockPropertySuperset, 'sponge_type'>;
+export declare type SpongeStates = Pick<BlockStateSuperset, 'sponge_type'>;
 /**
- * Properties specific to SpruceButton
+ * States specific to SpruceButton
  */
-export declare type SpruceButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type SpruceButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to SpruceDoor
+ * States specific to SpruceDoor
  */
-export declare type SpruceDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type SpruceDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to SpruceFenceGate
+ * States specific to SpruceFenceGate
  */
-export declare type SpruceFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type SpruceFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to SpruceHangingSign
+ * States specific to SpruceHangingSign
  */
-export declare type SpruceHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type SpruceHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to SpruceLog
+ * States specific to SpruceLog
  */
-export declare type SpruceLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type SpruceLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to SprucePressurePlate
+ * States specific to SprucePressurePlate
  */
-export declare type SprucePressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type SprucePressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to SpruceStairs
+ * States specific to SpruceStairs
  */
-export declare type SpruceStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type SpruceStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to SpruceStandingSign
+ * States specific to SpruceStandingSign
  */
-export declare type SpruceStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type SpruceStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to SpruceTrapdoor
+ * States specific to SpruceTrapdoor
  */
-export declare type SpruceTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type SpruceTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to SpruceWallSign
+ * States specific to SpruceWallSign
  */
-export declare type SpruceWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type SpruceWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to StainedGlass
+ * States specific to StainedGlass
  */
-export declare type StainedGlassProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type StainedGlassStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to StainedGlassPane
+ * States specific to StainedGlassPane
  */
-export declare type StainedGlassPaneProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type StainedGlassPaneStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to StainedHardenedClay
+ * States specific to StainedHardenedClay
  */
-export declare type StainedHardenedClayProperties = Pick<BlockPropertySuperset, 'color'>;
+export declare type StainedHardenedClayStates = Pick<BlockStateSuperset, 'color'>;
 /**
- * Properties specific to StandingBanner
+ * States specific to StandingBanner
  */
-export declare type StandingBannerProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type StandingBannerStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to StandingSign
+ * States specific to StandingSign
  */
-export declare type StandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type StandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to StickyPiston
+ * States specific to StickyPiston
  */
-export declare type StickyPistonProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type StickyPistonStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to StickyPistonArmCollision
+ * States specific to StickyPistonArmCollision
  */
-export declare type StickyPistonArmCollisionProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type StickyPistonArmCollisionStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Stone
+ * States specific to Stone
  */
-export declare type StoneProperties = Pick<BlockPropertySuperset, 'stone_type'>;
+export declare type StoneStates = Pick<BlockStateSuperset, 'stone_type'>;
 /**
- * Properties specific to StoneBlockSlab
+ * States specific to StoneBlockSlab
  */
-export declare type StoneBlockSlabProperties = Pick<BlockPropertySuperset, 'stone_slab_type' | 'top_slot_bit'>;
+export declare type StoneBlockSlabStates = Pick<BlockStateSuperset, 'stone_slab_type' | 'top_slot_bit'>;
 /**
- * Properties specific to StoneBlockSlab2
+ * States specific to StoneBlockSlab2
  */
-export declare type StoneBlockSlab2Properties = Pick<BlockPropertySuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
+export declare type StoneBlockSlab2States = Pick<BlockStateSuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
 /**
- * Properties specific to StoneBlockSlab3
+ * States specific to StoneBlockSlab3
  */
-export declare type StoneBlockSlab3Properties = Pick<BlockPropertySuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
+export declare type StoneBlockSlab3States = Pick<BlockStateSuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
 /**
- * Properties specific to StoneBlockSlab4
+ * States specific to StoneBlockSlab4
  */
-export declare type StoneBlockSlab4Properties = Pick<BlockPropertySuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
+export declare type StoneBlockSlab4States = Pick<BlockStateSuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
 /**
- * Properties specific to StoneBrickStairs
+ * States specific to StoneBrickStairs
  */
-export declare type StoneBrickStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type StoneBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to StoneButton
+ * States specific to StoneButton
  */
-export declare type StoneButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type StoneButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to StonePressurePlate
+ * States specific to StonePressurePlate
  */
-export declare type StonePressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type StonePressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to StoneStairs
+ * States specific to StoneStairs
  */
-export declare type StoneStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type StoneStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to Stonebrick
+ * States specific to Stonebrick
  */
-export declare type StonebrickProperties = Pick<BlockPropertySuperset, 'stone_brick_type'>;
+export declare type StonebrickStates = Pick<BlockStateSuperset, 'stone_brick_type'>;
 /**
- * Properties specific to StonecutterBlock
+ * States specific to StonecutterBlock
  */
-export declare type StonecutterBlockProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type StonecutterBlockStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to StrippedAcaciaLog
+ * States specific to StrippedAcaciaLog
  */
-export declare type StrippedAcaciaLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedAcaciaLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedBambooBlock
+ * States specific to StrippedBambooBlock
  */
-export declare type StrippedBambooBlockProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedBambooBlockStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedBirchLog
+ * States specific to StrippedBirchLog
  */
-export declare type StrippedBirchLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedBirchLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedCherryLog
+ * States specific to StrippedCherryLog
  */
-export declare type StrippedCherryLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedCherryLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedCherryWood
+ * States specific to StrippedCherryWood
  */
-export declare type StrippedCherryWoodProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedCherryWoodStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedCrimsonHyphae
+ * States specific to StrippedCrimsonHyphae
  */
-export declare type StrippedCrimsonHyphaeProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedCrimsonHyphaeStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedCrimsonStem
+ * States specific to StrippedCrimsonStem
  */
-export declare type StrippedCrimsonStemProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedCrimsonStemStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedDarkOakLog
+ * States specific to StrippedDarkOakLog
  */
-export declare type StrippedDarkOakLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedDarkOakLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedJungleLog
+ * States specific to StrippedJungleLog
  */
-export declare type StrippedJungleLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedJungleLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedMangroveLog
+ * States specific to StrippedMangroveLog
  */
-export declare type StrippedMangroveLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedMangroveLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedMangroveWood
+ * States specific to StrippedMangroveWood
  */
-export declare type StrippedMangroveWoodProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedMangroveWoodStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedOakLog
+ * States specific to StrippedOakLog
  */
-export declare type StrippedOakLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedOakLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedSpruceLog
+ * States specific to StrippedSpruceLog
  */
-export declare type StrippedSpruceLogProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedSpruceLogStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedWarpedHyphae
+ * States specific to StrippedWarpedHyphae
  */
-export declare type StrippedWarpedHyphaeProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedWarpedHyphaeStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StrippedWarpedStem
+ * States specific to StrippedWarpedStem
  */
-export declare type StrippedWarpedStemProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type StrippedWarpedStemStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to StructureBlock
+ * States specific to StructureBlock
  */
-export declare type StructureBlockProperties = Pick<BlockPropertySuperset, 'structure_block_type'>;
+export declare type StructureBlockStates = Pick<BlockStateSuperset, 'structure_block_type'>;
 /**
- * Properties specific to StructureVoid
+ * States specific to StructureVoid
  */
-export declare type StructureVoidProperties = Pick<BlockPropertySuperset, 'structure_void_type'>;
+export declare type StructureVoidStates = Pick<BlockStateSuperset, 'structure_void_type'>;
 /**
- * Properties specific to SuspiciousGravel
+ * States specific to SuspiciousGravel
  */
-export declare type SuspiciousGravelProperties = Pick<BlockPropertySuperset, 'brushed_progress' | 'hanging'>;
+export declare type SuspiciousGravelStates = Pick<BlockStateSuperset, 'brushed_progress' | 'hanging'>;
 /**
- * Properties specific to SuspiciousSand
+ * States specific to SuspiciousSand
  */
-export declare type SuspiciousSandProperties = Pick<BlockPropertySuperset, 'brushed_progress' | 'hanging'>;
+export declare type SuspiciousSandStates = Pick<BlockStateSuperset, 'brushed_progress' | 'hanging'>;
 /**
- * Properties specific to SweetBerryBush
+ * States specific to SweetBerryBush
  */
-export declare type SweetBerryBushProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type SweetBerryBushStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to Tallgrass
+ * States specific to Tallgrass
  */
-export declare type TallgrassProperties = Pick<BlockPropertySuperset, 'tall_grass_type'>;
+export declare type TallgrassStates = Pick<BlockStateSuperset, 'tall_grass_type'>;
 /**
- * Properties specific to Tnt
+ * States specific to Tnt
  */
-export declare type TntProperties = Pick<BlockPropertySuperset, 'allow_underwater_bit' | 'explode_bit'>;
+export declare type TntStates = Pick<BlockStateSuperset, 'allow_underwater_bit' | 'explode_bit'>;
 /**
- * Properties specific to Torch
+ * States specific to Torch
  */
-export declare type TorchProperties = Pick<BlockPropertySuperset, 'torch_facing_direction'>;
+export declare type TorchStates = Pick<BlockStateSuperset, 'torch_facing_direction'>;
 /**
- * Properties specific to TorchflowerCrop
+ * States specific to TorchflowerCrop
  */
-export declare type TorchflowerCropProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type TorchflowerCropStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to Trapdoor
+ * States specific to Trapdoor
  */
-export declare type TrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type TrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to TrappedChest
+ * States specific to TrappedChest
  */
-export declare type TrappedChestProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type TrappedChestStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to TripWire
+ * States specific to TripWire
  */
-export declare type TripWireProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'disarmed_bit' | 'powered_bit' | 'suspended_bit'>;
+export declare type TripWireStates = Pick<BlockStateSuperset, 'attached_bit' | 'disarmed_bit' | 'powered_bit' | 'suspended_bit'>;
 /**
- * Properties specific to TripwireHook
+ * States specific to TripwireHook
  */
-export declare type TripwireHookProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'direction' | 'powered_bit'>;
+export declare type TripwireHookStates = Pick<BlockStateSuperset, 'attached_bit' | 'direction' | 'powered_bit'>;
 /**
- * Properties specific to TurtleEgg
+ * States specific to TurtleEgg
  */
-export declare type TurtleEggProperties = Pick<BlockPropertySuperset, 'cracked_state' | 'turtle_egg_count'>;
+export declare type TurtleEggStates = Pick<BlockStateSuperset, 'cracked_state' | 'turtle_egg_count'>;
 /**
- * Properties specific to TwistingVines
+ * States specific to TwistingVines
  */
-export declare type TwistingVinesProperties = Pick<BlockPropertySuperset, 'twisting_vines_age'>;
+export declare type TwistingVinesStates = Pick<BlockStateSuperset, 'twisting_vines_age'>;
 /**
- * Properties specific to UnderwaterTorch
+ * States specific to UnderwaterTorch
  */
-export declare type UnderwaterTorchProperties = Pick<BlockPropertySuperset, 'torch_facing_direction'>;
+export declare type UnderwaterTorchStates = Pick<BlockStateSuperset, 'torch_facing_direction'>;
 /**
- * Properties specific to UnlitRedstoneTorch
+ * States specific to UnlitRedstoneTorch
  */
-export declare type UnlitRedstoneTorchProperties = Pick<BlockPropertySuperset, 'torch_facing_direction'>;
+export declare type UnlitRedstoneTorchStates = Pick<BlockStateSuperset, 'torch_facing_direction'>;
 /**
- * Properties specific to UnpoweredComparator
+ * States specific to UnpoweredComparator
  */
-export declare type UnpoweredComparatorProperties = Pick<BlockPropertySuperset, 'direction' | 'output_lit_bit' | 'output_subtract_bit'>;
+export declare type UnpoweredComparatorStates = Pick<BlockStateSuperset, 'direction' | 'output_lit_bit' | 'output_subtract_bit'>;
 /**
- * Properties specific to UnpoweredRepeater
+ * States specific to UnpoweredRepeater
  */
-export declare type UnpoweredRepeaterProperties = Pick<BlockPropertySuperset, 'direction' | 'repeater_delay'>;
+export declare type UnpoweredRepeaterStates = Pick<BlockStateSuperset, 'direction' | 'repeater_delay'>;
 /**
- * Properties specific to VerdantFroglight
+ * States specific to VerdantFroglight
  */
-export declare type VerdantFroglightProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type VerdantFroglightStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to Vine
+ * States specific to Vine
  */
-export declare type VineProperties = Pick<BlockPropertySuperset, 'vine_direction_bits'>;
+export declare type VineStates = Pick<BlockStateSuperset, 'vine_direction_bits'>;
 /**
- * Properties specific to WallBanner
+ * States specific to WallBanner
  */
-export declare type WallBannerProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type WallBannerStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to WallSign
+ * States specific to WallSign
  */
-export declare type WallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type WallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to WarpedButton
+ * States specific to WarpedButton
  */
-export declare type WarpedButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type WarpedButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to WarpedDoor
+ * States specific to WarpedDoor
  */
-export declare type WarpedDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type WarpedDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to WarpedDoubleSlab
+ * States specific to WarpedDoubleSlab
  */
-export declare type WarpedDoubleSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WarpedDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WarpedFenceGate
+ * States specific to WarpedFenceGate
  */
-export declare type WarpedFenceGateProperties = Pick<BlockPropertySuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export declare type WarpedFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
 /**
- * Properties specific to WarpedHangingSign
+ * States specific to WarpedHangingSign
  */
-export declare type WarpedHangingSignProperties = Pick<BlockPropertySuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
+export declare type WarpedHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 'facing_direction' | 'ground_sign_direction' | 'hanging'>;
 /**
- * Properties specific to WarpedHyphae
+ * States specific to WarpedHyphae
  */
-export declare type WarpedHyphaeProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type WarpedHyphaeStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to WarpedPressurePlate
+ * States specific to WarpedPressurePlate
  */
-export declare type WarpedPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type WarpedPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to WarpedSlab
+ * States specific to WarpedSlab
  */
-export declare type WarpedSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WarpedSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WarpedStairs
+ * States specific to WarpedStairs
  */
-export declare type WarpedStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WarpedStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WarpedStandingSign
+ * States specific to WarpedStandingSign
  */
-export declare type WarpedStandingSignProperties = Pick<BlockPropertySuperset, 'ground_sign_direction'>;
+export declare type WarpedStandingSignStates = Pick<BlockStateSuperset, 'ground_sign_direction'>;
 /**
- * Properties specific to WarpedStem
+ * States specific to WarpedStem
  */
-export declare type WarpedStemProperties = Pick<BlockPropertySuperset, 'pillar_axis'>;
+export declare type WarpedStemStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
- * Properties specific to WarpedTrapdoor
+ * States specific to WarpedTrapdoor
  */
-export declare type WarpedTrapdoorProperties = Pick<BlockPropertySuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
+export declare type WarpedTrapdoorStates = Pick<BlockStateSuperset, 'direction' | 'open_bit' | 'upside_down_bit'>;
 /**
- * Properties specific to WarpedWallSign
+ * States specific to WarpedWallSign
  */
-export declare type WarpedWallSignProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type WarpedWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Water
+ * States specific to Water
  */
-export declare type WaterProperties = Pick<BlockPropertySuperset, 'liquid_depth'>;
+export declare type WaterStates = Pick<BlockStateSuperset, 'liquid_depth'>;
 /**
- * Properties specific to WaxedCutCopperSlab
+ * States specific to WaxedCutCopperSlab
  */
-export declare type WaxedCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedCutCopperStairs
+ * States specific to WaxedCutCopperStairs
  */
-export declare type WaxedCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WaxedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WaxedDoubleCutCopperSlab
+ * States specific to WaxedDoubleCutCopperSlab
  */
-export declare type WaxedDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedExposedCutCopperSlab
+ * States specific to WaxedExposedCutCopperSlab
  */
-export declare type WaxedExposedCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedExposedCutCopperStairs
+ * States specific to WaxedExposedCutCopperStairs
  */
-export declare type WaxedExposedCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WaxedExposedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WaxedExposedDoubleCutCopperSlab
+ * States specific to WaxedExposedDoubleCutCopperSlab
  */
-export declare type WaxedExposedDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedOxidizedCutCopperSlab
+ * States specific to WaxedOxidizedCutCopperSlab
  */
-export declare type WaxedOxidizedCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedOxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedOxidizedCutCopperStairs
+ * States specific to WaxedOxidizedCutCopperStairs
  */
-export declare type WaxedOxidizedCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WaxedOxidizedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WaxedOxidizedDoubleCutCopperSlab
+ * States specific to WaxedOxidizedDoubleCutCopperSlab
  */
-export declare type WaxedOxidizedDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedOxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedWeatheredCutCopperSlab
+ * States specific to WaxedWeatheredCutCopperSlab
  */
-export declare type WaxedWeatheredCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedWeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WaxedWeatheredCutCopperStairs
+ * States specific to WaxedWeatheredCutCopperStairs
  */
-export declare type WaxedWeatheredCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WaxedWeatheredCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WaxedWeatheredDoubleCutCopperSlab
+ * States specific to WaxedWeatheredDoubleCutCopperSlab
  */
-export declare type WaxedWeatheredDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WaxedWeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WeatheredCutCopperSlab
+ * States specific to WeatheredCutCopperSlab
  */
-export declare type WeatheredCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WeatheredCutCopperStairs
+ * States specific to WeatheredCutCopperStairs
  */
-export declare type WeatheredCutCopperStairsProperties = Pick<BlockPropertySuperset, 'upside_down_bit' | 'weirdo_direction'>;
+export declare type WeatheredCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_bit' | 'weirdo_direction'>;
 /**
- * Properties specific to WeatheredDoubleCutCopperSlab
+ * States specific to WeatheredDoubleCutCopperSlab
  */
-export declare type WeatheredDoubleCutCopperSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit'>;
+export declare type WeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
 /**
- * Properties specific to WeepingVines
+ * States specific to WeepingVines
  */
-export declare type WeepingVinesProperties = Pick<BlockPropertySuperset, 'weeping_vines_age'>;
+export declare type WeepingVinesStates = Pick<BlockStateSuperset, 'weeping_vines_age'>;
 /**
- * Properties specific to Wheat
+ * States specific to Wheat
  */
-export declare type WheatProperties = Pick<BlockPropertySuperset, 'growth'>;
+export declare type WheatStates = Pick<BlockStateSuperset, 'growth'>;
 /**
- * Properties specific to WhiteCandle
+ * States specific to WhiteCandle
  */
-export declare type WhiteCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type WhiteCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to WhiteCandleCake
+ * States specific to WhiteCandleCake
  */
-export declare type WhiteCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type WhiteCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to WhiteGlazedTerracotta
+ * States specific to WhiteGlazedTerracotta
  */
-export declare type WhiteGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type WhiteGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Properties specific to Wood
+ * States specific to Wood
  */
-export declare type WoodProperties = Pick<BlockPropertySuperset, 'pillar_axis' | 'stripped_bit' | 'wood_type'>;
+export declare type WoodStates = Pick<BlockStateSuperset, 'pillar_axis' | 'stripped_bit' | 'wood_type'>;
 /**
- * Properties specific to WoodenButton
+ * States specific to WoodenButton
  */
-export declare type WoodenButtonProperties = Pick<BlockPropertySuperset, 'button_pressed_bit' | 'facing_direction'>;
+export declare type WoodenButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 'facing_direction'>;
 /**
- * Properties specific to WoodenDoor
+ * States specific to WoodenDoor
  */
-export declare type WoodenDoorProperties = Pick<BlockPropertySuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export declare type WoodenDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
 /**
- * Properties specific to WoodenPressurePlate
+ * States specific to WoodenPressurePlate
  */
-export declare type WoodenPressurePlateProperties = Pick<BlockPropertySuperset, 'redstone_signal'>;
+export declare type WoodenPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signal'>;
 /**
- * Properties specific to WoodenSlab
+ * States specific to WoodenSlab
  */
-export declare type WoodenSlabProperties = Pick<BlockPropertySuperset, 'top_slot_bit' | 'wood_type'>;
+export declare type WoodenSlabStates = Pick<BlockStateSuperset, 'top_slot_bit' | 'wood_type'>;
 /**
- * Properties specific to YellowCandle
+ * States specific to YellowCandle
  */
-export declare type YellowCandleProperties = Pick<BlockPropertySuperset, 'candles' | 'lit'>;
+export declare type YellowCandleStates = Pick<BlockStateSuperset, 'candles' | 'lit'>;
 /**
- * Properties specific to YellowCandleCake
+ * States specific to YellowCandleCake
  */
-export declare type YellowCandleCakeProperties = Pick<BlockPropertySuperset, 'lit'>;
+export declare type YellowCandleCakeStates = Pick<BlockStateSuperset, 'lit'>;
 /**
- * Properties specific to YellowGlazedTerracotta
+ * States specific to YellowGlazedTerracotta
  */
-export declare type YellowGlazedTerracottaProperties = Pick<BlockPropertySuperset, 'facing_direction'>;
+export declare type YellowGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
- * Union of all types for Block properties
+ * Union of all types for Block states
  */
-export declare type BlockProperties = AcaciaButtonProperties | AcaciaDoorProperties | AcaciaFenceGateProperties | AcaciaHangingSignProperties | AcaciaLogProperties | AcaciaPressurePlateProperties | AcaciaStairsProperties | AcaciaStandingSignProperties | AcaciaTrapdoorProperties | AcaciaWallSignProperties | ActivatorRailProperties | AmethystClusterProperties | AndesiteStairsProperties | AnvilProperties | AzaleaLeavesProperties | AzaleaLeavesFloweredProperties | BambooProperties | BambooBlockProperties | BambooButtonProperties | BambooDoorProperties | BambooDoubleSlabProperties | BambooFenceGateProperties | BambooHangingSignProperties | BambooMosaicDoubleSlabProperties | BambooMosaicSlabProperties | BambooMosaicStairsProperties | BambooPressurePlateProperties | BambooSaplingProperties | BambooSlabProperties | BambooStairsProperties | BambooStandingSignProperties | BambooTrapdoorProperties | BambooWallSignProperties | BarrelProperties | BasaltProperties | BedProperties | BedrockProperties | BeeNestProperties | BeehiveProperties | BeetrootProperties | BellProperties | BigDripleafProperties | BirchButtonProperties | BirchDoorProperties | BirchFenceGateProperties | BirchHangingSignProperties | BirchLogProperties | BirchPressurePlateProperties | BirchStairsProperties | BirchStandingSignProperties | BirchTrapdoorProperties | BirchWallSignProperties | BlackCandleProperties | BlackCandleCakeProperties | BlackGlazedTerracottaProperties | BlackstoneDoubleSlabProperties | BlackstoneSlabProperties | BlackstoneStairsProperties | BlackstoneWallProperties | BlastFurnaceProperties | BlueCandleProperties | BlueCandleCakeProperties | BlueGlazedTerracottaProperties | BoneBlockProperties | BorderBlockProperties | BrewingStandProperties | BrickStairsProperties | BrownCandleProperties | BrownCandleCakeProperties | BrownGlazedTerracottaProperties | BrownMushroomBlockProperties | BubbleColumnProperties | CactusProperties | CakeProperties | CalibratedSculkSensorProperties | CampfireProperties | CandleProperties | CandleCakeProperties | CarpetProperties | CarrotsProperties | CarvedPumpkinProperties | CauldronProperties | CaveVinesProperties | CaveVinesBodyWithBerriesProperties | CaveVinesHeadWithBerriesProperties | ChainProperties | ChainCommandBlockProperties | ChemistryTableProperties | CherryButtonProperties | CherryDoorProperties | CherryDoubleSlabProperties | CherryFenceGateProperties | CherryHangingSignProperties | CherryLeavesProperties | CherryLogProperties | CherryPressurePlateProperties | CherrySaplingProperties | CherrySlabProperties | CherryStairsProperties | CherryStandingSignProperties | CherryTrapdoorProperties | CherryWallSignProperties | CherryWoodProperties | ChestProperties | ChiseledBookshelfProperties | ChorusFlowerProperties | CobbledDeepslateDoubleSlabProperties | CobbledDeepslateSlabProperties | CobbledDeepslateStairsProperties | CobbledDeepslateWallProperties | CobblestoneWallProperties | CocoaProperties | ColoredTorchBpProperties | ColoredTorchRgProperties | CommandBlockProperties | ComposterProperties | ConcreteProperties | ConcretePowderProperties | CoralProperties | CoralBlockProperties | CoralFanProperties | CoralFanDeadProperties | CoralFanHangProperties | CoralFanHang2Properties | CoralFanHang3Properties | CrimsonButtonProperties | CrimsonDoorProperties | CrimsonDoubleSlabProperties | CrimsonFenceGateProperties | CrimsonHangingSignProperties | CrimsonHyphaeProperties | CrimsonPressurePlateProperties | CrimsonSlabProperties | CrimsonStairsProperties | CrimsonStandingSignProperties | CrimsonStemProperties | CrimsonTrapdoorProperties | CrimsonWallSignProperties | CutCopperSlabProperties | CutCopperStairsProperties | CyanCandleProperties | CyanCandleCakeProperties | CyanGlazedTerracottaProperties | DarkOakButtonProperties | DarkOakDoorProperties | DarkOakFenceGateProperties | DarkOakHangingSignProperties | DarkOakLogProperties | DarkOakPressurePlateProperties | DarkOakStairsProperties | DarkOakTrapdoorProperties | DarkPrismarineStairsProperties | DarkoakStandingSignProperties | DarkoakWallSignProperties | DaylightDetectorProperties | DaylightDetectorInvertedProperties | DecoratedPotProperties | DeepslateProperties | DeepslateBrickDoubleSlabProperties | DeepslateBrickSlabProperties | DeepslateBrickStairsProperties | DeepslateBrickWallProperties | DeepslateTileDoubleSlabProperties | DeepslateTileSlabProperties | DeepslateTileStairsProperties | DeepslateTileWallProperties | DetectorRailProperties | DioriteStairsProperties | DirtProperties | DispenserProperties | DoubleCutCopperSlabProperties | DoublePlantProperties | DoubleStoneBlockSlabProperties | DoubleStoneBlockSlab2Properties | DoubleStoneBlockSlab3Properties | DoubleStoneBlockSlab4Properties | DoubleWoodenSlabProperties | DropperProperties | EndBrickStairsProperties | EndPortalFrameProperties | EndRodProperties | EnderChestProperties | ExposedCutCopperSlabProperties | ExposedCutCopperStairsProperties | ExposedDoubleCutCopperSlabProperties | FarmlandProperties | FenceGateProperties | FireProperties | FlowerPotProperties | FlowingLavaProperties | FlowingWaterProperties | FrameProperties | FrostedIceProperties | FurnaceProperties | GlowFrameProperties | GlowLichenProperties | GoldenRailProperties | GraniteStairsProperties | GrayCandleProperties | GrayCandleCakeProperties | GrayGlazedTerracottaProperties | GreenCandleProperties | GreenCandleCakeProperties | GreenGlazedTerracottaProperties | GrindstoneProperties | HardStainedGlassProperties | HardStainedGlassPaneProperties | HayBlockProperties | HeavyWeightedPressurePlateProperties | HopperProperties | InfestedDeepslateProperties | IronDoorProperties | IronTrapdoorProperties | JigsawProperties | JungleButtonProperties | JungleDoorProperties | JungleFenceGateProperties | JungleHangingSignProperties | JungleLogProperties | JunglePressurePlateProperties | JungleStairsProperties | JungleStandingSignProperties | JungleTrapdoorProperties | JungleWallSignProperties | KelpProperties | LadderProperties | LanternProperties | LargeAmethystBudProperties | LavaProperties | LavaCauldronProperties | LeavesProperties | Leaves2Properties | LecternProperties | LeverProperties | LightBlockProperties | LightBlueCandleProperties | LightBlueCandleCakeProperties | LightBlueGlazedTerracottaProperties | LightGrayCandleProperties | LightGrayCandleCakeProperties | LightWeightedPressurePlateProperties | LightningRodProperties | LimeCandleProperties | LimeCandleCakeProperties | LimeGlazedTerracottaProperties | LitBlastFurnaceProperties | LitFurnaceProperties | LitPumpkinProperties | LitSmokerProperties | LoomProperties | MagentaCandleProperties | MagentaCandleCakeProperties | MagentaGlazedTerracottaProperties | MangroveButtonProperties | MangroveDoorProperties | MangroveDoubleSlabProperties | MangroveFenceGateProperties | MangroveHangingSignProperties | MangroveLeavesProperties | MangroveLogProperties | MangrovePressurePlateProperties | MangrovePropaguleProperties | MangroveSlabProperties | MangroveStairsProperties | MangroveStandingSignProperties | MangroveTrapdoorProperties | MangroveWallSignProperties | MangroveWoodProperties | MediumAmethystBudProperties | MelonStemProperties | MonsterEggProperties | MossyCobblestoneStairsProperties | MossyStoneBrickStairsProperties | MudBrickDoubleSlabProperties | MudBrickSlabProperties | MudBrickStairsProperties | MudBrickWallProperties | MuddyMangroveRootsProperties | NetherBrickStairsProperties | NetherWartProperties | NormalStoneStairsProperties | OakHangingSignProperties | OakLogProperties | OakStairsProperties | ObserverProperties | OchreFroglightProperties | OrangeCandleProperties | OrangeCandleCakeProperties | OrangeGlazedTerracottaProperties | OxidizedCutCopperSlabProperties | OxidizedCutCopperStairsProperties | OxidizedDoubleCutCopperSlabProperties | PearlescentFroglightProperties | PinkCandleProperties | PinkCandleCakeProperties | PinkGlazedTerracottaProperties | PinkPetalsProperties | PistonProperties | PistonArmCollisionProperties | PlanksProperties | PointedDripstoneProperties | PolishedAndesiteStairsProperties | PolishedBasaltProperties | PolishedBlackstoneBrickDoubleSlabProperties | PolishedBlackstoneBrickSlabProperties | PolishedBlackstoneBrickStairsProperties | PolishedBlackstoneBrickWallProperties | PolishedBlackstoneButtonProperties | PolishedBlackstoneDoubleSlabProperties | PolishedBlackstonePressurePlateProperties | PolishedBlackstoneSlabProperties | PolishedBlackstoneStairsProperties | PolishedBlackstoneWallProperties | PolishedDeepslateDoubleSlabProperties | PolishedDeepslateSlabProperties | PolishedDeepslateStairsProperties | PolishedDeepslateWallProperties | PolishedDioriteStairsProperties | PolishedGraniteStairsProperties | PortalProperties | PotatoesProperties | PoweredComparatorProperties | PoweredRepeaterProperties | PrismarineProperties | PrismarineBricksStairsProperties | PrismarineStairsProperties | PumpkinProperties | PumpkinStemProperties | PurpleCandleProperties | PurpleCandleCakeProperties | PurpleGlazedTerracottaProperties | PurpurBlockProperties | PurpurStairsProperties | QuartzBlockProperties | QuartzStairsProperties | RailProperties | RedCandleProperties | RedCandleCakeProperties | RedFlowerProperties | RedGlazedTerracottaProperties | RedMushroomBlockProperties | RedNetherBrickStairsProperties | RedSandstoneProperties | RedSandstoneStairsProperties | RedstoneTorchProperties | RedstoneWireProperties | ReedsProperties | RepeatingCommandBlockProperties | RespawnAnchorProperties | SandProperties | SandstoneProperties | SandstoneStairsProperties | SaplingProperties | ScaffoldingProperties | SculkCatalystProperties | SculkSensorProperties | SculkShriekerProperties | SculkVeinProperties | SeaPickleProperties | SeagrassProperties | ShulkerBoxProperties | SilverGlazedTerracottaProperties | SkullProperties | SmallAmethystBudProperties | SmallDripleafBlockProperties | SmokerProperties | SmoothQuartzStairsProperties | SmoothRedSandstoneStairsProperties | SmoothSandstoneStairsProperties | SnowLayerProperties | SoulCampfireProperties | SoulFireProperties | SoulLanternProperties | SoulTorchProperties | SpongeProperties | SpruceButtonProperties | SpruceDoorProperties | SpruceFenceGateProperties | SpruceHangingSignProperties | SpruceLogProperties | SprucePressurePlateProperties | SpruceStairsProperties | SpruceStandingSignProperties | SpruceTrapdoorProperties | SpruceWallSignProperties | StainedGlassProperties | StainedGlassPaneProperties | StainedHardenedClayProperties | StandingBannerProperties | StandingSignProperties | StickyPistonProperties | StickyPistonArmCollisionProperties | StoneProperties | StoneBlockSlabProperties | StoneBlockSlab2Properties | StoneBlockSlab3Properties | StoneBlockSlab4Properties | StoneBrickStairsProperties | StoneButtonProperties | StonePressurePlateProperties | StoneStairsProperties | StonebrickProperties | StonecutterBlockProperties | StrippedAcaciaLogProperties | StrippedBambooBlockProperties | StrippedBirchLogProperties | StrippedCherryLogProperties | StrippedCherryWoodProperties | StrippedCrimsonHyphaeProperties | StrippedCrimsonStemProperties | StrippedDarkOakLogProperties | StrippedJungleLogProperties | StrippedMangroveLogProperties | StrippedMangroveWoodProperties | StrippedOakLogProperties | StrippedSpruceLogProperties | StrippedWarpedHyphaeProperties | StrippedWarpedStemProperties | StructureBlockProperties | StructureVoidProperties | SuspiciousGravelProperties | SuspiciousSandProperties | SweetBerryBushProperties | TallgrassProperties | TntProperties | TorchProperties | TorchflowerCropProperties | TrapdoorProperties | TrappedChestProperties | TripWireProperties | TripwireHookProperties | TurtleEggProperties | TwistingVinesProperties | UnderwaterTorchProperties | UnlitRedstoneTorchProperties | UnpoweredComparatorProperties | UnpoweredRepeaterProperties | VerdantFroglightProperties | VineProperties | WallBannerProperties | WallSignProperties | WarpedButtonProperties | WarpedDoorProperties | WarpedDoubleSlabProperties | WarpedFenceGateProperties | WarpedHangingSignProperties | WarpedHyphaeProperties | WarpedPressurePlateProperties | WarpedSlabProperties | WarpedStairsProperties | WarpedStandingSignProperties | WarpedStemProperties | WarpedTrapdoorProperties | WarpedWallSignProperties | WaterProperties | WaxedCutCopperSlabProperties | WaxedCutCopperStairsProperties | WaxedDoubleCutCopperSlabProperties | WaxedExposedCutCopperSlabProperties | WaxedExposedCutCopperStairsProperties | WaxedExposedDoubleCutCopperSlabProperties | WaxedOxidizedCutCopperSlabProperties | WaxedOxidizedCutCopperStairsProperties | WaxedOxidizedDoubleCutCopperSlabProperties | WaxedWeatheredCutCopperSlabProperties | WaxedWeatheredCutCopperStairsProperties | WaxedWeatheredDoubleCutCopperSlabProperties | WeatheredCutCopperSlabProperties | WeatheredCutCopperStairsProperties | WeatheredDoubleCutCopperSlabProperties | WeepingVinesProperties | WheatProperties | WhiteCandleProperties | WhiteCandleCakeProperties | WhiteGlazedTerracottaProperties | WoodProperties | WoodenButtonProperties | WoodenDoorProperties | WoodenPressurePlateProperties | WoodenSlabProperties | YellowCandleProperties | YellowCandleCakeProperties | YellowGlazedTerracottaProperties;
+export declare type BlockStates = AcaciaButtonStates | AcaciaDoorStates | AcaciaFenceGateStates | AcaciaHangingSignStates | AcaciaLogStates | AcaciaPressurePlateStates | AcaciaStairsStates | AcaciaStandingSignStates | AcaciaTrapdoorStates | AcaciaWallSignStates | ActivatorRailStates | AmethystClusterStates | AndesiteStairsStates | AnvilStates | AzaleaLeavesStates | AzaleaLeavesFloweredStates | BambooStates | BambooBlockStates | BambooButtonStates | BambooDoorStates | BambooDoubleSlabStates | BambooFenceGateStates | BambooHangingSignStates | BambooMosaicDoubleSlabStates | BambooMosaicSlabStates | BambooMosaicStairsStates | BambooPressurePlateStates | BambooSaplingStates | BambooSlabStates | BambooStairsStates | BambooStandingSignStates | BambooTrapdoorStates | BambooWallSignStates | BarrelStates | BasaltStates | BedStates | BedrockStates | BeeNestStates | BeehiveStates | BeetrootStates | BellStates | BigDripleafStates | BirchButtonStates | BirchDoorStates | BirchFenceGateStates | BirchHangingSignStates | BirchLogStates | BirchPressurePlateStates | BirchStairsStates | BirchStandingSignStates | BirchTrapdoorStates | BirchWallSignStates | BlackCandleStates | BlackCandleCakeStates | BlackGlazedTerracottaStates | BlackstoneDoubleSlabStates | BlackstoneSlabStates | BlackstoneStairsStates | BlackstoneWallStates | BlastFurnaceStates | BlueCandleStates | BlueCandleCakeStates | BlueGlazedTerracottaStates | BoneBlockStates | BorderBlockStates | BrewingStandStates | BrickStairsStates | BrownCandleStates | BrownCandleCakeStates | BrownGlazedTerracottaStates | BrownMushroomBlockStates | BubbleColumnStates | CactusStates | CakeStates | CalibratedSculkSensorStates | CampfireStates | CandleStates | CandleCakeStates | CarrotsStates | CarvedPumpkinStates | CauldronStates | CaveVinesStates | CaveVinesBodyWithBerriesStates | CaveVinesHeadWithBerriesStates | ChainStates | ChainCommandBlockStates | ChemistryTableStates | CherryButtonStates | CherryDoorStates | CherryDoubleSlabStates | CherryFenceGateStates | CherryHangingSignStates | CherryLeavesStates | CherryLogStates | CherryPressurePlateStates | CherrySaplingStates | CherrySlabStates | CherryStairsStates | CherryStandingSignStates | CherryTrapdoorStates | CherryWallSignStates | CherryWoodStates | ChestStates | ChiseledBookshelfStates | ChorusFlowerStates | CobbledDeepslateDoubleSlabStates | CobbledDeepslateSlabStates | CobbledDeepslateStairsStates | CobbledDeepslateWallStates | CobblestoneWallStates | CocoaStates | ColoredTorchBpStates | ColoredTorchRgStates | CommandBlockStates | ComposterStates | ConcreteStates | ConcretePowderStates | CoralBlockStates | CoralFanStates | CoralFanDeadStates | CoralFanHangStates | CoralFanHang2States | CoralFanHang3States | CrimsonButtonStates | CrimsonDoorStates | CrimsonDoubleSlabStates | CrimsonFenceGateStates | CrimsonHangingSignStates | CrimsonHyphaeStates | CrimsonPressurePlateStates | CrimsonSlabStates | CrimsonStairsStates | CrimsonStandingSignStates | CrimsonStemStates | CrimsonTrapdoorStates | CrimsonWallSignStates | CutCopperSlabStates | CutCopperStairsStates | CyanCandleStates | CyanCandleCakeStates | CyanGlazedTerracottaStates | DarkOakButtonStates | DarkOakDoorStates | DarkOakFenceGateStates | DarkOakHangingSignStates | DarkOakLogStates | DarkOakPressurePlateStates | DarkOakStairsStates | DarkOakTrapdoorStates | DarkPrismarineStairsStates | DarkoakStandingSignStates | DarkoakWallSignStates | DaylightDetectorStates | DaylightDetectorInvertedStates | DecoratedPotStates | DeepslateStates | DeepslateBrickDoubleSlabStates | DeepslateBrickSlabStates | DeepslateBrickStairsStates | DeepslateBrickWallStates | DeepslateTileDoubleSlabStates | DeepslateTileSlabStates | DeepslateTileStairsStates | DeepslateTileWallStates | DetectorRailStates | DioriteStairsStates | DirtStates | DispenserStates | DoubleCutCopperSlabStates | DoublePlantStates | DoubleStoneBlockSlabStates | DoubleStoneBlockSlab2States | DoubleStoneBlockSlab3States | DoubleStoneBlockSlab4States | DoubleWoodenSlabStates | DropperStates | EndBrickStairsStates | EndPortalFrameStates | EndRodStates | EnderChestStates | ExposedCutCopperSlabStates | ExposedCutCopperStairsStates | ExposedDoubleCutCopperSlabStates | FarmlandStates | FenceGateStates | FireStates | FlowerPotStates | FlowingLavaStates | FlowingWaterStates | FrameStates | FrostedIceStates | FurnaceStates | GlowFrameStates | GlowLichenStates | GoldenRailStates | GraniteStairsStates | GrayCandleStates | GrayCandleCakeStates | GrayGlazedTerracottaStates | GreenCandleStates | GreenCandleCakeStates | GreenGlazedTerracottaStates | GrindstoneStates | HardStainedGlassStates | HardStainedGlassPaneStates | HayBlockStates | HeavyWeightedPressurePlateStates | HopperStates | InfestedDeepslateStates | IronDoorStates | IronTrapdoorStates | JigsawStates | JungleButtonStates | JungleDoorStates | JungleFenceGateStates | JungleHangingSignStates | JungleLogStates | JunglePressurePlateStates | JungleStairsStates | JungleStandingSignStates | JungleTrapdoorStates | JungleWallSignStates | KelpStates | LadderStates | LanternStates | LargeAmethystBudStates | LavaStates | LeavesStates | Leaves2States | LecternStates | LeverStates | LightBlockStates | LightBlueCandleStates | LightBlueCandleCakeStates | LightBlueGlazedTerracottaStates | LightGrayCandleStates | LightGrayCandleCakeStates | LightWeightedPressurePlateStates | LightningRodStates | LimeCandleStates | LimeCandleCakeStates | LimeGlazedTerracottaStates | LitBlastFurnaceStates | LitFurnaceStates | LitPumpkinStates | LitSmokerStates | LoomStates | MagentaCandleStates | MagentaCandleCakeStates | MagentaGlazedTerracottaStates | MangroveButtonStates | MangroveDoorStates | MangroveDoubleSlabStates | MangroveFenceGateStates | MangroveHangingSignStates | MangroveLeavesStates | MangroveLogStates | MangrovePressurePlateStates | MangrovePropaguleStates | MangroveSlabStates | MangroveStairsStates | MangroveStandingSignStates | MangroveTrapdoorStates | MangroveWallSignStates | MangroveWoodStates | MediumAmethystBudStates | MelonStemStates | MonsterEggStates | MossyCobblestoneStairsStates | MossyStoneBrickStairsStates | MudBrickDoubleSlabStates | MudBrickSlabStates | MudBrickStairsStates | MudBrickWallStates | MuddyMangroveRootsStates | NetherBrickStairsStates | NetherWartStates | NormalStoneStairsStates | OakHangingSignStates | OakLogStates | OakStairsStates | ObserverStates | OchreFroglightStates | OrangeCandleStates | OrangeCandleCakeStates | OrangeGlazedTerracottaStates | OxidizedCutCopperSlabStates | OxidizedCutCopperStairsStates | OxidizedDoubleCutCopperSlabStates | PearlescentFroglightStates | PinkCandleStates | PinkCandleCakeStates | PinkGlazedTerracottaStates | PinkPetalsStates | PistonStates | PistonArmCollisionStates | PitcherCropStates | PitcherPlantStates | PlanksStates | PointedDripstoneStates | PolishedAndesiteStairsStates | PolishedBasaltStates | PolishedBlackstoneBrickDoubleSlabStates | PolishedBlackstoneBrickSlabStates | PolishedBlackstoneBrickStairsStates | PolishedBlackstoneBrickWallStates | PolishedBlackstoneButtonStates | PolishedBlackstoneDoubleSlabStates | PolishedBlackstonePressurePlateStates | PolishedBlackstoneSlabStates | PolishedBlackstoneStairsStates | PolishedBlackstoneWallStates | PolishedDeepslateDoubleSlabStates | PolishedDeepslateSlabStates | PolishedDeepslateStairsStates | PolishedDeepslateWallStates | PolishedDioriteStairsStates | PolishedGraniteStairsStates | PortalStates | PotatoesStates | PoweredComparatorStates | PoweredRepeaterStates | PrismarineStates | PrismarineBricksStairsStates | PrismarineStairsStates | PumpkinStates | PumpkinStemStates | PurpleCandleStates | PurpleCandleCakeStates | PurpleGlazedTerracottaStates | PurpurBlockStates | PurpurStairsStates | QuartzBlockStates | QuartzStairsStates | RailStates | RedCandleStates | RedCandleCakeStates | RedFlowerStates | RedGlazedTerracottaStates | RedMushroomBlockStates | RedNetherBrickStairsStates | RedSandstoneStates | RedSandstoneStairsStates | RedstoneTorchStates | RedstoneWireStates | ReedsStates | RepeatingCommandBlockStates | RespawnAnchorStates | SandStates | SandstoneStates | SandstoneStairsStates | SaplingStates | ScaffoldingStates | SculkCatalystStates | SculkSensorStates | SculkShriekerStates | SculkVeinStates | SeaPickleStates | SeagrassStates | ShulkerBoxStates | SilverGlazedTerracottaStates | SkullStates | SmallAmethystBudStates | SmallDripleafBlockStates | SmokerStates | SmoothQuartzStairsStates | SmoothRedSandstoneStairsStates | SmoothSandstoneStairsStates | SnifferEggStates | SnowLayerStates | SoulCampfireStates | SoulFireStates | SoulLanternStates | SoulTorchStates | SpongeStates | SpruceButtonStates | SpruceDoorStates | SpruceFenceGateStates | SpruceHangingSignStates | SpruceLogStates | SprucePressurePlateStates | SpruceStairsStates | SpruceStandingSignStates | SpruceTrapdoorStates | SpruceWallSignStates | StainedGlassStates | StainedGlassPaneStates | StainedHardenedClayStates | StandingBannerStates | StandingSignStates | StickyPistonStates | StickyPistonArmCollisionStates | StoneStates | StoneBlockSlabStates | StoneBlockSlab2States | StoneBlockSlab3States | StoneBlockSlab4States | StoneBrickStairsStates | StoneButtonStates | StonePressurePlateStates | StoneStairsStates | StonebrickStates | StonecutterBlockStates | StrippedAcaciaLogStates | StrippedBambooBlockStates | StrippedBirchLogStates | StrippedCherryLogStates | StrippedCherryWoodStates | StrippedCrimsonHyphaeStates | StrippedCrimsonStemStates | StrippedDarkOakLogStates | StrippedJungleLogStates | StrippedMangroveLogStates | StrippedMangroveWoodStates | StrippedOakLogStates | StrippedSpruceLogStates | StrippedWarpedHyphaeStates | StrippedWarpedStemStates | StructureBlockStates | StructureVoidStates | SuspiciousGravelStates | SuspiciousSandStates | SweetBerryBushStates | TallgrassStates | TntStates | TorchStates | TorchflowerCropStates | TrapdoorStates | TrappedChestStates | TripWireStates | TripwireHookStates | TurtleEggStates | TwistingVinesStates | UnderwaterTorchStates | UnlitRedstoneTorchStates | UnpoweredComparatorStates | UnpoweredRepeaterStates | VerdantFroglightStates | VineStates | WallBannerStates | WallSignStates | WarpedButtonStates | WarpedDoorStates | WarpedDoubleSlabStates | WarpedFenceGateStates | WarpedHangingSignStates | WarpedHyphaeStates | WarpedPressurePlateStates | WarpedSlabStates | WarpedStairsStates | WarpedStandingSignStates | WarpedStemStates | WarpedTrapdoorStates | WarpedWallSignStates | WaterStates | WaxedCutCopperSlabStates | WaxedCutCopperStairsStates | WaxedDoubleCutCopperSlabStates | WaxedExposedCutCopperSlabStates | WaxedExposedCutCopperStairsStates | WaxedExposedDoubleCutCopperSlabStates | WaxedOxidizedCutCopperSlabStates | WaxedOxidizedCutCopperStairsStates | WaxedOxidizedDoubleCutCopperSlabStates | WaxedWeatheredCutCopperSlabStates | WaxedWeatheredCutCopperStairsStates | WaxedWeatheredDoubleCutCopperSlabStates | WeatheredCutCopperSlabStates | WeatheredCutCopperStairsStates | WeatheredDoubleCutCopperSlabStates | WeepingVinesStates | WheatStates | WhiteCandleStates | WhiteCandleCakeStates | WhiteGlazedTerracottaStates | WoodStates | WoodenButtonStates | WoodenDoorStates | WoodenPressurePlateStates | WoodenSlabStates | YellowCandleStates | YellowCandleCakeStates | YellowGlazedTerracottaStates;
 /**
- * Mapping of each Block name to it's properties
+ * Mapping of each Block name to it's states
  */
-export declare type BlockPropertyMapping = {
-    [MinecraftBlockTypes.AcaciaButton]: AcaciaButtonProperties;
-    [MinecraftBlockTypes.AcaciaDoor]: AcaciaDoorProperties;
-    [MinecraftBlockTypes.AcaciaFenceGate]: AcaciaFenceGateProperties;
-    [MinecraftBlockTypes.AcaciaHangingSign]: AcaciaHangingSignProperties;
-    [MinecraftBlockTypes.AcaciaLog]: AcaciaLogProperties;
-    [MinecraftBlockTypes.AcaciaPressurePlate]: AcaciaPressurePlateProperties;
-    [MinecraftBlockTypes.AcaciaStairs]: AcaciaStairsProperties;
-    [MinecraftBlockTypes.AcaciaStandingSign]: AcaciaStandingSignProperties;
-    [MinecraftBlockTypes.AcaciaTrapdoor]: AcaciaTrapdoorProperties;
-    [MinecraftBlockTypes.AcaciaWallSign]: AcaciaWallSignProperties;
-    [MinecraftBlockTypes.ActivatorRail]: ActivatorRailProperties;
-    [MinecraftBlockTypes.AmethystCluster]: AmethystClusterProperties;
-    [MinecraftBlockTypes.AndesiteStairs]: AndesiteStairsProperties;
-    [MinecraftBlockTypes.Anvil]: AnvilProperties;
-    [MinecraftBlockTypes.AzaleaLeaves]: AzaleaLeavesProperties;
-    [MinecraftBlockTypes.AzaleaLeavesFlowered]: AzaleaLeavesFloweredProperties;
-    [MinecraftBlockTypes.Bamboo]: BambooProperties;
-    [MinecraftBlockTypes.BambooBlock]: BambooBlockProperties;
-    [MinecraftBlockTypes.BambooButton]: BambooButtonProperties;
-    [MinecraftBlockTypes.BambooDoor]: BambooDoorProperties;
-    [MinecraftBlockTypes.BambooDoubleSlab]: BambooDoubleSlabProperties;
-    [MinecraftBlockTypes.BambooFenceGate]: BambooFenceGateProperties;
-    [MinecraftBlockTypes.BambooHangingSign]: BambooHangingSignProperties;
-    [MinecraftBlockTypes.BambooMosaicDoubleSlab]: BambooMosaicDoubleSlabProperties;
-    [MinecraftBlockTypes.BambooMosaicSlab]: BambooMosaicSlabProperties;
-    [MinecraftBlockTypes.BambooMosaicStairs]: BambooMosaicStairsProperties;
-    [MinecraftBlockTypes.BambooPressurePlate]: BambooPressurePlateProperties;
-    [MinecraftBlockTypes.BambooSapling]: BambooSaplingProperties;
-    [MinecraftBlockTypes.BambooSlab]: BambooSlabProperties;
-    [MinecraftBlockTypes.BambooStairs]: BambooStairsProperties;
-    [MinecraftBlockTypes.BambooStandingSign]: BambooStandingSignProperties;
-    [MinecraftBlockTypes.BambooTrapdoor]: BambooTrapdoorProperties;
-    [MinecraftBlockTypes.BambooWallSign]: BambooWallSignProperties;
-    [MinecraftBlockTypes.Barrel]: BarrelProperties;
-    [MinecraftBlockTypes.Basalt]: BasaltProperties;
-    [MinecraftBlockTypes.Bed]: BedProperties;
-    [MinecraftBlockTypes.Bedrock]: BedrockProperties;
-    [MinecraftBlockTypes.BeeNest]: BeeNestProperties;
-    [MinecraftBlockTypes.Beehive]: BeehiveProperties;
-    [MinecraftBlockTypes.Beetroot]: BeetrootProperties;
-    [MinecraftBlockTypes.Bell]: BellProperties;
-    [MinecraftBlockTypes.BigDripleaf]: BigDripleafProperties;
-    [MinecraftBlockTypes.BirchButton]: BirchButtonProperties;
-    [MinecraftBlockTypes.BirchDoor]: BirchDoorProperties;
-    [MinecraftBlockTypes.BirchFenceGate]: BirchFenceGateProperties;
-    [MinecraftBlockTypes.BirchHangingSign]: BirchHangingSignProperties;
-    [MinecraftBlockTypes.BirchLog]: BirchLogProperties;
-    [MinecraftBlockTypes.BirchPressurePlate]: BirchPressurePlateProperties;
-    [MinecraftBlockTypes.BirchStairs]: BirchStairsProperties;
-    [MinecraftBlockTypes.BirchStandingSign]: BirchStandingSignProperties;
-    [MinecraftBlockTypes.BirchTrapdoor]: BirchTrapdoorProperties;
-    [MinecraftBlockTypes.BirchWallSign]: BirchWallSignProperties;
-    [MinecraftBlockTypes.BlackCandle]: BlackCandleProperties;
-    [MinecraftBlockTypes.BlackCandleCake]: BlackCandleCakeProperties;
-    [MinecraftBlockTypes.BlackGlazedTerracotta]: BlackGlazedTerracottaProperties;
-    [MinecraftBlockTypes.BlackstoneDoubleSlab]: BlackstoneDoubleSlabProperties;
-    [MinecraftBlockTypes.BlackstoneSlab]: BlackstoneSlabProperties;
-    [MinecraftBlockTypes.BlackstoneStairs]: BlackstoneStairsProperties;
-    [MinecraftBlockTypes.BlackstoneWall]: BlackstoneWallProperties;
-    [MinecraftBlockTypes.BlastFurnace]: BlastFurnaceProperties;
-    [MinecraftBlockTypes.BlueCandle]: BlueCandleProperties;
-    [MinecraftBlockTypes.BlueCandleCake]: BlueCandleCakeProperties;
-    [MinecraftBlockTypes.BlueGlazedTerracotta]: BlueGlazedTerracottaProperties;
-    [MinecraftBlockTypes.BoneBlock]: BoneBlockProperties;
-    [MinecraftBlockTypes.BorderBlock]: BorderBlockProperties;
-    [MinecraftBlockTypes.BrewingStand]: BrewingStandProperties;
-    [MinecraftBlockTypes.BrickStairs]: BrickStairsProperties;
-    [MinecraftBlockTypes.BrownCandle]: BrownCandleProperties;
-    [MinecraftBlockTypes.BrownCandleCake]: BrownCandleCakeProperties;
-    [MinecraftBlockTypes.BrownGlazedTerracotta]: BrownGlazedTerracottaProperties;
-    [MinecraftBlockTypes.BrownMushroomBlock]: BrownMushroomBlockProperties;
-    [MinecraftBlockTypes.BubbleColumn]: BubbleColumnProperties;
-    [MinecraftBlockTypes.Cactus]: CactusProperties;
-    [MinecraftBlockTypes.Cake]: CakeProperties;
-    [MinecraftBlockTypes.CalibratedSculkSensor]: CalibratedSculkSensorProperties;
-    [MinecraftBlockTypes.Campfire]: CampfireProperties;
-    [MinecraftBlockTypes.Candle]: CandleProperties;
-    [MinecraftBlockTypes.CandleCake]: CandleCakeProperties;
-    [MinecraftBlockTypes.Carpet]: CarpetProperties;
-    [MinecraftBlockTypes.Carrots]: CarrotsProperties;
-    [MinecraftBlockTypes.CarvedPumpkin]: CarvedPumpkinProperties;
-    [MinecraftBlockTypes.Cauldron]: CauldronProperties;
-    [MinecraftBlockTypes.CaveVines]: CaveVinesProperties;
-    [MinecraftBlockTypes.CaveVinesBodyWithBerries]: CaveVinesBodyWithBerriesProperties;
-    [MinecraftBlockTypes.CaveVinesHeadWithBerries]: CaveVinesHeadWithBerriesProperties;
-    [MinecraftBlockTypes.Chain]: ChainProperties;
-    [MinecraftBlockTypes.ChainCommandBlock]: ChainCommandBlockProperties;
-    [MinecraftBlockTypes.ChemistryTable]: ChemistryTableProperties;
-    [MinecraftBlockTypes.CherryButton]: CherryButtonProperties;
-    [MinecraftBlockTypes.CherryDoor]: CherryDoorProperties;
-    [MinecraftBlockTypes.CherryDoubleSlab]: CherryDoubleSlabProperties;
-    [MinecraftBlockTypes.CherryFenceGate]: CherryFenceGateProperties;
-    [MinecraftBlockTypes.CherryHangingSign]: CherryHangingSignProperties;
-    [MinecraftBlockTypes.CherryLeaves]: CherryLeavesProperties;
-    [MinecraftBlockTypes.CherryLog]: CherryLogProperties;
-    [MinecraftBlockTypes.CherryPressurePlate]: CherryPressurePlateProperties;
-    [MinecraftBlockTypes.CherrySapling]: CherrySaplingProperties;
-    [MinecraftBlockTypes.CherrySlab]: CherrySlabProperties;
-    [MinecraftBlockTypes.CherryStairs]: CherryStairsProperties;
-    [MinecraftBlockTypes.CherryStandingSign]: CherryStandingSignProperties;
-    [MinecraftBlockTypes.CherryTrapdoor]: CherryTrapdoorProperties;
-    [MinecraftBlockTypes.CherryWallSign]: CherryWallSignProperties;
-    [MinecraftBlockTypes.CherryWood]: CherryWoodProperties;
-    [MinecraftBlockTypes.Chest]: ChestProperties;
-    [MinecraftBlockTypes.ChiseledBookshelf]: ChiseledBookshelfProperties;
-    [MinecraftBlockTypes.ChorusFlower]: ChorusFlowerProperties;
-    [MinecraftBlockTypes.CobbledDeepslateDoubleSlab]: CobbledDeepslateDoubleSlabProperties;
-    [MinecraftBlockTypes.CobbledDeepslateSlab]: CobbledDeepslateSlabProperties;
-    [MinecraftBlockTypes.CobbledDeepslateStairs]: CobbledDeepslateStairsProperties;
-    [MinecraftBlockTypes.CobbledDeepslateWall]: CobbledDeepslateWallProperties;
-    [MinecraftBlockTypes.CobblestoneWall]: CobblestoneWallProperties;
-    [MinecraftBlockTypes.Cocoa]: CocoaProperties;
-    [MinecraftBlockTypes.ColoredTorchBp]: ColoredTorchBpProperties;
-    [MinecraftBlockTypes.ColoredTorchRg]: ColoredTorchRgProperties;
-    [MinecraftBlockTypes.CommandBlock]: CommandBlockProperties;
-    [MinecraftBlockTypes.Composter]: ComposterProperties;
-    [MinecraftBlockTypes.Concrete]: ConcreteProperties;
-    [MinecraftBlockTypes.ConcretePowder]: ConcretePowderProperties;
-    [MinecraftBlockTypes.Coral]: CoralProperties;
-    [MinecraftBlockTypes.CoralBlock]: CoralBlockProperties;
-    [MinecraftBlockTypes.CoralFan]: CoralFanProperties;
-    [MinecraftBlockTypes.CoralFanDead]: CoralFanDeadProperties;
-    [MinecraftBlockTypes.CoralFanHang]: CoralFanHangProperties;
-    [MinecraftBlockTypes.CoralFanHang2]: CoralFanHang2Properties;
-    [MinecraftBlockTypes.CoralFanHang3]: CoralFanHang3Properties;
-    [MinecraftBlockTypes.CrimsonButton]: CrimsonButtonProperties;
-    [MinecraftBlockTypes.CrimsonDoor]: CrimsonDoorProperties;
-    [MinecraftBlockTypes.CrimsonDoubleSlab]: CrimsonDoubleSlabProperties;
-    [MinecraftBlockTypes.CrimsonFenceGate]: CrimsonFenceGateProperties;
-    [MinecraftBlockTypes.CrimsonHangingSign]: CrimsonHangingSignProperties;
-    [MinecraftBlockTypes.CrimsonHyphae]: CrimsonHyphaeProperties;
-    [MinecraftBlockTypes.CrimsonPressurePlate]: CrimsonPressurePlateProperties;
-    [MinecraftBlockTypes.CrimsonSlab]: CrimsonSlabProperties;
-    [MinecraftBlockTypes.CrimsonStairs]: CrimsonStairsProperties;
-    [MinecraftBlockTypes.CrimsonStandingSign]: CrimsonStandingSignProperties;
-    [MinecraftBlockTypes.CrimsonStem]: CrimsonStemProperties;
-    [MinecraftBlockTypes.CrimsonTrapdoor]: CrimsonTrapdoorProperties;
-    [MinecraftBlockTypes.CrimsonWallSign]: CrimsonWallSignProperties;
-    [MinecraftBlockTypes.CutCopperSlab]: CutCopperSlabProperties;
-    [MinecraftBlockTypes.CutCopperStairs]: CutCopperStairsProperties;
-    [MinecraftBlockTypes.CyanCandle]: CyanCandleProperties;
-    [MinecraftBlockTypes.CyanCandleCake]: CyanCandleCakeProperties;
-    [MinecraftBlockTypes.CyanGlazedTerracotta]: CyanGlazedTerracottaProperties;
-    [MinecraftBlockTypes.DarkOakButton]: DarkOakButtonProperties;
-    [MinecraftBlockTypes.DarkOakDoor]: DarkOakDoorProperties;
-    [MinecraftBlockTypes.DarkOakFenceGate]: DarkOakFenceGateProperties;
-    [MinecraftBlockTypes.DarkOakHangingSign]: DarkOakHangingSignProperties;
-    [MinecraftBlockTypes.DarkOakLog]: DarkOakLogProperties;
-    [MinecraftBlockTypes.DarkOakPressurePlate]: DarkOakPressurePlateProperties;
-    [MinecraftBlockTypes.DarkOakStairs]: DarkOakStairsProperties;
-    [MinecraftBlockTypes.DarkOakTrapdoor]: DarkOakTrapdoorProperties;
-    [MinecraftBlockTypes.DarkPrismarineStairs]: DarkPrismarineStairsProperties;
-    [MinecraftBlockTypes.DarkoakStandingSign]: DarkoakStandingSignProperties;
-    [MinecraftBlockTypes.DarkoakWallSign]: DarkoakWallSignProperties;
-    [MinecraftBlockTypes.DaylightDetector]: DaylightDetectorProperties;
-    [MinecraftBlockTypes.DaylightDetectorInverted]: DaylightDetectorInvertedProperties;
-    [MinecraftBlockTypes.DecoratedPot]: DecoratedPotProperties;
-    [MinecraftBlockTypes.Deepslate]: DeepslateProperties;
-    [MinecraftBlockTypes.DeepslateBrickDoubleSlab]: DeepslateBrickDoubleSlabProperties;
-    [MinecraftBlockTypes.DeepslateBrickSlab]: DeepslateBrickSlabProperties;
-    [MinecraftBlockTypes.DeepslateBrickStairs]: DeepslateBrickStairsProperties;
-    [MinecraftBlockTypes.DeepslateBrickWall]: DeepslateBrickWallProperties;
-    [MinecraftBlockTypes.DeepslateTileDoubleSlab]: DeepslateTileDoubleSlabProperties;
-    [MinecraftBlockTypes.DeepslateTileSlab]: DeepslateTileSlabProperties;
-    [MinecraftBlockTypes.DeepslateTileStairs]: DeepslateTileStairsProperties;
-    [MinecraftBlockTypes.DeepslateTileWall]: DeepslateTileWallProperties;
-    [MinecraftBlockTypes.DetectorRail]: DetectorRailProperties;
-    [MinecraftBlockTypes.DioriteStairs]: DioriteStairsProperties;
-    [MinecraftBlockTypes.Dirt]: DirtProperties;
-    [MinecraftBlockTypes.Dispenser]: DispenserProperties;
-    [MinecraftBlockTypes.DoubleCutCopperSlab]: DoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.DoublePlant]: DoublePlantProperties;
-    [MinecraftBlockTypes.DoubleStoneBlockSlab]: DoubleStoneBlockSlabProperties;
-    [MinecraftBlockTypes.DoubleStoneBlockSlab2]: DoubleStoneBlockSlab2Properties;
-    [MinecraftBlockTypes.DoubleStoneBlockSlab3]: DoubleStoneBlockSlab3Properties;
-    [MinecraftBlockTypes.DoubleStoneBlockSlab4]: DoubleStoneBlockSlab4Properties;
-    [MinecraftBlockTypes.DoubleWoodenSlab]: DoubleWoodenSlabProperties;
-    [MinecraftBlockTypes.Dropper]: DropperProperties;
-    [MinecraftBlockTypes.EndBrickStairs]: EndBrickStairsProperties;
-    [MinecraftBlockTypes.EndPortalFrame]: EndPortalFrameProperties;
-    [MinecraftBlockTypes.EndRod]: EndRodProperties;
-    [MinecraftBlockTypes.EnderChest]: EnderChestProperties;
-    [MinecraftBlockTypes.ExposedCutCopperSlab]: ExposedCutCopperSlabProperties;
-    [MinecraftBlockTypes.ExposedCutCopperStairs]: ExposedCutCopperStairsProperties;
-    [MinecraftBlockTypes.ExposedDoubleCutCopperSlab]: ExposedDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.Farmland]: FarmlandProperties;
-    [MinecraftBlockTypes.FenceGate]: FenceGateProperties;
-    [MinecraftBlockTypes.Fire]: FireProperties;
-    [MinecraftBlockTypes.FlowerPot]: FlowerPotProperties;
-    [MinecraftBlockTypes.FlowingLava]: FlowingLavaProperties;
-    [MinecraftBlockTypes.FlowingWater]: FlowingWaterProperties;
-    [MinecraftBlockTypes.Frame]: FrameProperties;
-    [MinecraftBlockTypes.FrostedIce]: FrostedIceProperties;
-    [MinecraftBlockTypes.Furnace]: FurnaceProperties;
-    [MinecraftBlockTypes.GlowFrame]: GlowFrameProperties;
-    [MinecraftBlockTypes.GlowLichen]: GlowLichenProperties;
-    [MinecraftBlockTypes.GoldenRail]: GoldenRailProperties;
-    [MinecraftBlockTypes.GraniteStairs]: GraniteStairsProperties;
-    [MinecraftBlockTypes.GrayCandle]: GrayCandleProperties;
-    [MinecraftBlockTypes.GrayCandleCake]: GrayCandleCakeProperties;
-    [MinecraftBlockTypes.GrayGlazedTerracotta]: GrayGlazedTerracottaProperties;
-    [MinecraftBlockTypes.GreenCandle]: GreenCandleProperties;
-    [MinecraftBlockTypes.GreenCandleCake]: GreenCandleCakeProperties;
-    [MinecraftBlockTypes.GreenGlazedTerracotta]: GreenGlazedTerracottaProperties;
-    [MinecraftBlockTypes.Grindstone]: GrindstoneProperties;
-    [MinecraftBlockTypes.HardStainedGlass]: HardStainedGlassProperties;
-    [MinecraftBlockTypes.HardStainedGlassPane]: HardStainedGlassPaneProperties;
-    [MinecraftBlockTypes.HayBlock]: HayBlockProperties;
-    [MinecraftBlockTypes.HeavyWeightedPressurePlate]: HeavyWeightedPressurePlateProperties;
-    [MinecraftBlockTypes.Hopper]: HopperProperties;
-    [MinecraftBlockTypes.InfestedDeepslate]: InfestedDeepslateProperties;
-    [MinecraftBlockTypes.IronDoor]: IronDoorProperties;
-    [MinecraftBlockTypes.IronTrapdoor]: IronTrapdoorProperties;
-    [MinecraftBlockTypes.Jigsaw]: JigsawProperties;
-    [MinecraftBlockTypes.JungleButton]: JungleButtonProperties;
-    [MinecraftBlockTypes.JungleDoor]: JungleDoorProperties;
-    [MinecraftBlockTypes.JungleFenceGate]: JungleFenceGateProperties;
-    [MinecraftBlockTypes.JungleHangingSign]: JungleHangingSignProperties;
-    [MinecraftBlockTypes.JungleLog]: JungleLogProperties;
-    [MinecraftBlockTypes.JunglePressurePlate]: JunglePressurePlateProperties;
-    [MinecraftBlockTypes.JungleStairs]: JungleStairsProperties;
-    [MinecraftBlockTypes.JungleStandingSign]: JungleStandingSignProperties;
-    [MinecraftBlockTypes.JungleTrapdoor]: JungleTrapdoorProperties;
-    [MinecraftBlockTypes.JungleWallSign]: JungleWallSignProperties;
-    [MinecraftBlockTypes.Kelp]: KelpProperties;
-    [MinecraftBlockTypes.Ladder]: LadderProperties;
-    [MinecraftBlockTypes.Lantern]: LanternProperties;
-    [MinecraftBlockTypes.LargeAmethystBud]: LargeAmethystBudProperties;
-    [MinecraftBlockTypes.Lava]: LavaProperties;
-    [MinecraftBlockTypes.LavaCauldron]: LavaCauldronProperties;
-    [MinecraftBlockTypes.Leaves]: LeavesProperties;
-    [MinecraftBlockTypes.Leaves2]: Leaves2Properties;
-    [MinecraftBlockTypes.Lectern]: LecternProperties;
-    [MinecraftBlockTypes.Lever]: LeverProperties;
-    [MinecraftBlockTypes.LightBlock]: LightBlockProperties;
-    [MinecraftBlockTypes.LightBlueCandle]: LightBlueCandleProperties;
-    [MinecraftBlockTypes.LightBlueCandleCake]: LightBlueCandleCakeProperties;
-    [MinecraftBlockTypes.LightBlueGlazedTerracotta]: LightBlueGlazedTerracottaProperties;
-    [MinecraftBlockTypes.LightGrayCandle]: LightGrayCandleProperties;
-    [MinecraftBlockTypes.LightGrayCandleCake]: LightGrayCandleCakeProperties;
-    [MinecraftBlockTypes.LightWeightedPressurePlate]: LightWeightedPressurePlateProperties;
-    [MinecraftBlockTypes.LightningRod]: LightningRodProperties;
-    [MinecraftBlockTypes.LimeCandle]: LimeCandleProperties;
-    [MinecraftBlockTypes.LimeCandleCake]: LimeCandleCakeProperties;
-    [MinecraftBlockTypes.LimeGlazedTerracotta]: LimeGlazedTerracottaProperties;
-    [MinecraftBlockTypes.LitBlastFurnace]: LitBlastFurnaceProperties;
-    [MinecraftBlockTypes.LitFurnace]: LitFurnaceProperties;
-    [MinecraftBlockTypes.LitPumpkin]: LitPumpkinProperties;
-    [MinecraftBlockTypes.LitSmoker]: LitSmokerProperties;
-    [MinecraftBlockTypes.Loom]: LoomProperties;
-    [MinecraftBlockTypes.MagentaCandle]: MagentaCandleProperties;
-    [MinecraftBlockTypes.MagentaCandleCake]: MagentaCandleCakeProperties;
-    [MinecraftBlockTypes.MagentaGlazedTerracotta]: MagentaGlazedTerracottaProperties;
-    [MinecraftBlockTypes.MangroveButton]: MangroveButtonProperties;
-    [MinecraftBlockTypes.MangroveDoor]: MangroveDoorProperties;
-    [MinecraftBlockTypes.MangroveDoubleSlab]: MangroveDoubleSlabProperties;
-    [MinecraftBlockTypes.MangroveFenceGate]: MangroveFenceGateProperties;
-    [MinecraftBlockTypes.MangroveHangingSign]: MangroveHangingSignProperties;
-    [MinecraftBlockTypes.MangroveLeaves]: MangroveLeavesProperties;
-    [MinecraftBlockTypes.MangroveLog]: MangroveLogProperties;
-    [MinecraftBlockTypes.MangrovePressurePlate]: MangrovePressurePlateProperties;
-    [MinecraftBlockTypes.MangrovePropagule]: MangrovePropaguleProperties;
-    [MinecraftBlockTypes.MangroveSlab]: MangroveSlabProperties;
-    [MinecraftBlockTypes.MangroveStairs]: MangroveStairsProperties;
-    [MinecraftBlockTypes.MangroveStandingSign]: MangroveStandingSignProperties;
-    [MinecraftBlockTypes.MangroveTrapdoor]: MangroveTrapdoorProperties;
-    [MinecraftBlockTypes.MangroveWallSign]: MangroveWallSignProperties;
-    [MinecraftBlockTypes.MangroveWood]: MangroveWoodProperties;
-    [MinecraftBlockTypes.MediumAmethystBud]: MediumAmethystBudProperties;
-    [MinecraftBlockTypes.MelonStem]: MelonStemProperties;
-    [MinecraftBlockTypes.MonsterEgg]: MonsterEggProperties;
-    [MinecraftBlockTypes.MossyCobblestoneStairs]: MossyCobblestoneStairsProperties;
-    [MinecraftBlockTypes.MossyStoneBrickStairs]: MossyStoneBrickStairsProperties;
-    [MinecraftBlockTypes.MudBrickDoubleSlab]: MudBrickDoubleSlabProperties;
-    [MinecraftBlockTypes.MudBrickSlab]: MudBrickSlabProperties;
-    [MinecraftBlockTypes.MudBrickStairs]: MudBrickStairsProperties;
-    [MinecraftBlockTypes.MudBrickWall]: MudBrickWallProperties;
-    [MinecraftBlockTypes.MuddyMangroveRoots]: MuddyMangroveRootsProperties;
-    [MinecraftBlockTypes.NetherBrickStairs]: NetherBrickStairsProperties;
-    [MinecraftBlockTypes.NetherWart]: NetherWartProperties;
-    [MinecraftBlockTypes.NormalStoneStairs]: NormalStoneStairsProperties;
-    [MinecraftBlockTypes.OakHangingSign]: OakHangingSignProperties;
-    [MinecraftBlockTypes.OakLog]: OakLogProperties;
-    [MinecraftBlockTypes.OakStairs]: OakStairsProperties;
-    [MinecraftBlockTypes.Observer]: ObserverProperties;
-    [MinecraftBlockTypes.OchreFroglight]: OchreFroglightProperties;
-    [MinecraftBlockTypes.OrangeCandle]: OrangeCandleProperties;
-    [MinecraftBlockTypes.OrangeCandleCake]: OrangeCandleCakeProperties;
-    [MinecraftBlockTypes.OrangeGlazedTerracotta]: OrangeGlazedTerracottaProperties;
-    [MinecraftBlockTypes.OxidizedCutCopperSlab]: OxidizedCutCopperSlabProperties;
-    [MinecraftBlockTypes.OxidizedCutCopperStairs]: OxidizedCutCopperStairsProperties;
-    [MinecraftBlockTypes.OxidizedDoubleCutCopperSlab]: OxidizedDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.PearlescentFroglight]: PearlescentFroglightProperties;
-    [MinecraftBlockTypes.PinkCandle]: PinkCandleProperties;
-    [MinecraftBlockTypes.PinkCandleCake]: PinkCandleCakeProperties;
-    [MinecraftBlockTypes.PinkGlazedTerracotta]: PinkGlazedTerracottaProperties;
-    [MinecraftBlockTypes.PinkPetals]: PinkPetalsProperties;
-    [MinecraftBlockTypes.Piston]: PistonProperties;
-    [MinecraftBlockTypes.PistonArmCollision]: PistonArmCollisionProperties;
-    [MinecraftBlockTypes.Planks]: PlanksProperties;
-    [MinecraftBlockTypes.PointedDripstone]: PointedDripstoneProperties;
-    [MinecraftBlockTypes.PolishedAndesiteStairs]: PolishedAndesiteStairsProperties;
-    [MinecraftBlockTypes.PolishedBasalt]: PolishedBasaltProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneBrickDoubleSlab]: PolishedBlackstoneBrickDoubleSlabProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneBrickSlab]: PolishedBlackstoneBrickSlabProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneBrickStairs]: PolishedBlackstoneBrickStairsProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneBrickWall]: PolishedBlackstoneBrickWallProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneButton]: PolishedBlackstoneButtonProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneDoubleSlab]: PolishedBlackstoneDoubleSlabProperties;
-    [MinecraftBlockTypes.PolishedBlackstonePressurePlate]: PolishedBlackstonePressurePlateProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneSlab]: PolishedBlackstoneSlabProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneStairs]: PolishedBlackstoneStairsProperties;
-    [MinecraftBlockTypes.PolishedBlackstoneWall]: PolishedBlackstoneWallProperties;
-    [MinecraftBlockTypes.PolishedDeepslateDoubleSlab]: PolishedDeepslateDoubleSlabProperties;
-    [MinecraftBlockTypes.PolishedDeepslateSlab]: PolishedDeepslateSlabProperties;
-    [MinecraftBlockTypes.PolishedDeepslateStairs]: PolishedDeepslateStairsProperties;
-    [MinecraftBlockTypes.PolishedDeepslateWall]: PolishedDeepslateWallProperties;
-    [MinecraftBlockTypes.PolishedDioriteStairs]: PolishedDioriteStairsProperties;
-    [MinecraftBlockTypes.PolishedGraniteStairs]: PolishedGraniteStairsProperties;
-    [MinecraftBlockTypes.Portal]: PortalProperties;
-    [MinecraftBlockTypes.Potatoes]: PotatoesProperties;
-    [MinecraftBlockTypes.PoweredComparator]: PoweredComparatorProperties;
-    [MinecraftBlockTypes.PoweredRepeater]: PoweredRepeaterProperties;
-    [MinecraftBlockTypes.Prismarine]: PrismarineProperties;
-    [MinecraftBlockTypes.PrismarineBricksStairs]: PrismarineBricksStairsProperties;
-    [MinecraftBlockTypes.PrismarineStairs]: PrismarineStairsProperties;
-    [MinecraftBlockTypes.Pumpkin]: PumpkinProperties;
-    [MinecraftBlockTypes.PumpkinStem]: PumpkinStemProperties;
-    [MinecraftBlockTypes.PurpleCandle]: PurpleCandleProperties;
-    [MinecraftBlockTypes.PurpleCandleCake]: PurpleCandleCakeProperties;
-    [MinecraftBlockTypes.PurpleGlazedTerracotta]: PurpleGlazedTerracottaProperties;
-    [MinecraftBlockTypes.PurpurBlock]: PurpurBlockProperties;
-    [MinecraftBlockTypes.PurpurStairs]: PurpurStairsProperties;
-    [MinecraftBlockTypes.QuartzBlock]: QuartzBlockProperties;
-    [MinecraftBlockTypes.QuartzStairs]: QuartzStairsProperties;
-    [MinecraftBlockTypes.Rail]: RailProperties;
-    [MinecraftBlockTypes.RedCandle]: RedCandleProperties;
-    [MinecraftBlockTypes.RedCandleCake]: RedCandleCakeProperties;
-    [MinecraftBlockTypes.RedFlower]: RedFlowerProperties;
-    [MinecraftBlockTypes.RedGlazedTerracotta]: RedGlazedTerracottaProperties;
-    [MinecraftBlockTypes.RedMushroomBlock]: RedMushroomBlockProperties;
-    [MinecraftBlockTypes.RedNetherBrickStairs]: RedNetherBrickStairsProperties;
-    [MinecraftBlockTypes.RedSandstone]: RedSandstoneProperties;
-    [MinecraftBlockTypes.RedSandstoneStairs]: RedSandstoneStairsProperties;
-    [MinecraftBlockTypes.RedstoneTorch]: RedstoneTorchProperties;
-    [MinecraftBlockTypes.RedstoneWire]: RedstoneWireProperties;
-    [MinecraftBlockTypes.Reeds]: ReedsProperties;
-    [MinecraftBlockTypes.RepeatingCommandBlock]: RepeatingCommandBlockProperties;
-    [MinecraftBlockTypes.RespawnAnchor]: RespawnAnchorProperties;
-    [MinecraftBlockTypes.Sand]: SandProperties;
-    [MinecraftBlockTypes.Sandstone]: SandstoneProperties;
-    [MinecraftBlockTypes.SandstoneStairs]: SandstoneStairsProperties;
-    [MinecraftBlockTypes.Sapling]: SaplingProperties;
-    [MinecraftBlockTypes.Scaffolding]: ScaffoldingProperties;
-    [MinecraftBlockTypes.SculkCatalyst]: SculkCatalystProperties;
-    [MinecraftBlockTypes.SculkSensor]: SculkSensorProperties;
-    [MinecraftBlockTypes.SculkShrieker]: SculkShriekerProperties;
-    [MinecraftBlockTypes.SculkVein]: SculkVeinProperties;
-    [MinecraftBlockTypes.SeaPickle]: SeaPickleProperties;
-    [MinecraftBlockTypes.Seagrass]: SeagrassProperties;
-    [MinecraftBlockTypes.ShulkerBox]: ShulkerBoxProperties;
-    [MinecraftBlockTypes.SilverGlazedTerracotta]: SilverGlazedTerracottaProperties;
-    [MinecraftBlockTypes.Skull]: SkullProperties;
-    [MinecraftBlockTypes.SmallAmethystBud]: SmallAmethystBudProperties;
-    [MinecraftBlockTypes.SmallDripleafBlock]: SmallDripleafBlockProperties;
-    [MinecraftBlockTypes.Smoker]: SmokerProperties;
-    [MinecraftBlockTypes.SmoothQuartzStairs]: SmoothQuartzStairsProperties;
-    [MinecraftBlockTypes.SmoothRedSandstoneStairs]: SmoothRedSandstoneStairsProperties;
-    [MinecraftBlockTypes.SmoothSandstoneStairs]: SmoothSandstoneStairsProperties;
-    [MinecraftBlockTypes.SnowLayer]: SnowLayerProperties;
-    [MinecraftBlockTypes.SoulCampfire]: SoulCampfireProperties;
-    [MinecraftBlockTypes.SoulFire]: SoulFireProperties;
-    [MinecraftBlockTypes.SoulLantern]: SoulLanternProperties;
-    [MinecraftBlockTypes.SoulTorch]: SoulTorchProperties;
-    [MinecraftBlockTypes.Sponge]: SpongeProperties;
-    [MinecraftBlockTypes.SpruceButton]: SpruceButtonProperties;
-    [MinecraftBlockTypes.SpruceDoor]: SpruceDoorProperties;
-    [MinecraftBlockTypes.SpruceFenceGate]: SpruceFenceGateProperties;
-    [MinecraftBlockTypes.SpruceHangingSign]: SpruceHangingSignProperties;
-    [MinecraftBlockTypes.SpruceLog]: SpruceLogProperties;
-    [MinecraftBlockTypes.SprucePressurePlate]: SprucePressurePlateProperties;
-    [MinecraftBlockTypes.SpruceStairs]: SpruceStairsProperties;
-    [MinecraftBlockTypes.SpruceStandingSign]: SpruceStandingSignProperties;
-    [MinecraftBlockTypes.SpruceTrapdoor]: SpruceTrapdoorProperties;
-    [MinecraftBlockTypes.SpruceWallSign]: SpruceWallSignProperties;
-    [MinecraftBlockTypes.StainedGlass]: StainedGlassProperties;
-    [MinecraftBlockTypes.StainedGlassPane]: StainedGlassPaneProperties;
-    [MinecraftBlockTypes.StainedHardenedClay]: StainedHardenedClayProperties;
-    [MinecraftBlockTypes.StandingBanner]: StandingBannerProperties;
-    [MinecraftBlockTypes.StandingSign]: StandingSignProperties;
-    [MinecraftBlockTypes.StickyPiston]: StickyPistonProperties;
-    [MinecraftBlockTypes.StickyPistonArmCollision]: StickyPistonArmCollisionProperties;
-    [MinecraftBlockTypes.Stone]: StoneProperties;
-    [MinecraftBlockTypes.StoneBlockSlab]: StoneBlockSlabProperties;
-    [MinecraftBlockTypes.StoneBlockSlab2]: StoneBlockSlab2Properties;
-    [MinecraftBlockTypes.StoneBlockSlab3]: StoneBlockSlab3Properties;
-    [MinecraftBlockTypes.StoneBlockSlab4]: StoneBlockSlab4Properties;
-    [MinecraftBlockTypes.StoneBrickStairs]: StoneBrickStairsProperties;
-    [MinecraftBlockTypes.StoneButton]: StoneButtonProperties;
-    [MinecraftBlockTypes.StonePressurePlate]: StonePressurePlateProperties;
-    [MinecraftBlockTypes.StoneStairs]: StoneStairsProperties;
-    [MinecraftBlockTypes.Stonebrick]: StonebrickProperties;
-    [MinecraftBlockTypes.StonecutterBlock]: StonecutterBlockProperties;
-    [MinecraftBlockTypes.StrippedAcaciaLog]: StrippedAcaciaLogProperties;
-    [MinecraftBlockTypes.StrippedBambooBlock]: StrippedBambooBlockProperties;
-    [MinecraftBlockTypes.StrippedBirchLog]: StrippedBirchLogProperties;
-    [MinecraftBlockTypes.StrippedCherryLog]: StrippedCherryLogProperties;
-    [MinecraftBlockTypes.StrippedCherryWood]: StrippedCherryWoodProperties;
-    [MinecraftBlockTypes.StrippedCrimsonHyphae]: StrippedCrimsonHyphaeProperties;
-    [MinecraftBlockTypes.StrippedCrimsonStem]: StrippedCrimsonStemProperties;
-    [MinecraftBlockTypes.StrippedDarkOakLog]: StrippedDarkOakLogProperties;
-    [MinecraftBlockTypes.StrippedJungleLog]: StrippedJungleLogProperties;
-    [MinecraftBlockTypes.StrippedMangroveLog]: StrippedMangroveLogProperties;
-    [MinecraftBlockTypes.StrippedMangroveWood]: StrippedMangroveWoodProperties;
-    [MinecraftBlockTypes.StrippedOakLog]: StrippedOakLogProperties;
-    [MinecraftBlockTypes.StrippedSpruceLog]: StrippedSpruceLogProperties;
-    [MinecraftBlockTypes.StrippedWarpedHyphae]: StrippedWarpedHyphaeProperties;
-    [MinecraftBlockTypes.StrippedWarpedStem]: StrippedWarpedStemProperties;
-    [MinecraftBlockTypes.StructureBlock]: StructureBlockProperties;
-    [MinecraftBlockTypes.StructureVoid]: StructureVoidProperties;
-    [MinecraftBlockTypes.SuspiciousGravel]: SuspiciousGravelProperties;
-    [MinecraftBlockTypes.SuspiciousSand]: SuspiciousSandProperties;
-    [MinecraftBlockTypes.SweetBerryBush]: SweetBerryBushProperties;
-    [MinecraftBlockTypes.Tallgrass]: TallgrassProperties;
-    [MinecraftBlockTypes.Tnt]: TntProperties;
-    [MinecraftBlockTypes.Torch]: TorchProperties;
-    [MinecraftBlockTypes.TorchflowerCrop]: TorchflowerCropProperties;
-    [MinecraftBlockTypes.Trapdoor]: TrapdoorProperties;
-    [MinecraftBlockTypes.TrappedChest]: TrappedChestProperties;
-    [MinecraftBlockTypes.TripWire]: TripWireProperties;
-    [MinecraftBlockTypes.TripwireHook]: TripwireHookProperties;
-    [MinecraftBlockTypes.TurtleEgg]: TurtleEggProperties;
-    [MinecraftBlockTypes.TwistingVines]: TwistingVinesProperties;
-    [MinecraftBlockTypes.UnderwaterTorch]: UnderwaterTorchProperties;
-    [MinecraftBlockTypes.UnlitRedstoneTorch]: UnlitRedstoneTorchProperties;
-    [MinecraftBlockTypes.UnpoweredComparator]: UnpoweredComparatorProperties;
-    [MinecraftBlockTypes.UnpoweredRepeater]: UnpoweredRepeaterProperties;
-    [MinecraftBlockTypes.VerdantFroglight]: VerdantFroglightProperties;
-    [MinecraftBlockTypes.Vine]: VineProperties;
-    [MinecraftBlockTypes.WallBanner]: WallBannerProperties;
-    [MinecraftBlockTypes.WallSign]: WallSignProperties;
-    [MinecraftBlockTypes.WarpedButton]: WarpedButtonProperties;
-    [MinecraftBlockTypes.WarpedDoor]: WarpedDoorProperties;
-    [MinecraftBlockTypes.WarpedDoubleSlab]: WarpedDoubleSlabProperties;
-    [MinecraftBlockTypes.WarpedFenceGate]: WarpedFenceGateProperties;
-    [MinecraftBlockTypes.WarpedHangingSign]: WarpedHangingSignProperties;
-    [MinecraftBlockTypes.WarpedHyphae]: WarpedHyphaeProperties;
-    [MinecraftBlockTypes.WarpedPressurePlate]: WarpedPressurePlateProperties;
-    [MinecraftBlockTypes.WarpedSlab]: WarpedSlabProperties;
-    [MinecraftBlockTypes.WarpedStairs]: WarpedStairsProperties;
-    [MinecraftBlockTypes.WarpedStandingSign]: WarpedStandingSignProperties;
-    [MinecraftBlockTypes.WarpedStem]: WarpedStemProperties;
-    [MinecraftBlockTypes.WarpedTrapdoor]: WarpedTrapdoorProperties;
-    [MinecraftBlockTypes.WarpedWallSign]: WarpedWallSignProperties;
-    [MinecraftBlockTypes.Water]: WaterProperties;
-    [MinecraftBlockTypes.WaxedCutCopperSlab]: WaxedCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedCutCopperStairs]: WaxedCutCopperStairsProperties;
-    [MinecraftBlockTypes.WaxedDoubleCutCopperSlab]: WaxedDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedExposedCutCopperSlab]: WaxedExposedCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedExposedCutCopperStairs]: WaxedExposedCutCopperStairsProperties;
-    [MinecraftBlockTypes.WaxedExposedDoubleCutCopperSlab]: WaxedExposedDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedOxidizedCutCopperSlab]: WaxedOxidizedCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedOxidizedCutCopperStairs]: WaxedOxidizedCutCopperStairsProperties;
-    [MinecraftBlockTypes.WaxedOxidizedDoubleCutCopperSlab]: WaxedOxidizedDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedWeatheredCutCopperSlab]: WaxedWeatheredCutCopperSlabProperties;
-    [MinecraftBlockTypes.WaxedWeatheredCutCopperStairs]: WaxedWeatheredCutCopperStairsProperties;
-    [MinecraftBlockTypes.WaxedWeatheredDoubleCutCopperSlab]: WaxedWeatheredDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.WeatheredCutCopperSlab]: WeatheredCutCopperSlabProperties;
-    [MinecraftBlockTypes.WeatheredCutCopperStairs]: WeatheredCutCopperStairsProperties;
-    [MinecraftBlockTypes.WeatheredDoubleCutCopperSlab]: WeatheredDoubleCutCopperSlabProperties;
-    [MinecraftBlockTypes.WeepingVines]: WeepingVinesProperties;
-    [MinecraftBlockTypes.Wheat]: WheatProperties;
-    [MinecraftBlockTypes.WhiteCandle]: WhiteCandleProperties;
-    [MinecraftBlockTypes.WhiteCandleCake]: WhiteCandleCakeProperties;
-    [MinecraftBlockTypes.WhiteGlazedTerracotta]: WhiteGlazedTerracottaProperties;
-    [MinecraftBlockTypes.Wood]: WoodProperties;
-    [MinecraftBlockTypes.WoodenButton]: WoodenButtonProperties;
-    [MinecraftBlockTypes.WoodenDoor]: WoodenDoorProperties;
-    [MinecraftBlockTypes.WoodenPressurePlate]: WoodenPressurePlateProperties;
-    [MinecraftBlockTypes.WoodenSlab]: WoodenSlabProperties;
-    [MinecraftBlockTypes.YellowCandle]: YellowCandleProperties;
-    [MinecraftBlockTypes.YellowCandleCake]: YellowCandleCakeProperties;
-    [MinecraftBlockTypes.YellowGlazedTerracotta]: YellowGlazedTerracottaProperties;
+export declare type BlockStateMapping = {
+    [MinecraftBlockTypes.AcaciaButton]: AcaciaButtonStates;
+    [MinecraftBlockTypes.AcaciaDoor]: AcaciaDoorStates;
+    [MinecraftBlockTypes.AcaciaFenceGate]: AcaciaFenceGateStates;
+    [MinecraftBlockTypes.AcaciaHangingSign]: AcaciaHangingSignStates;
+    [MinecraftBlockTypes.AcaciaLog]: AcaciaLogStates;
+    [MinecraftBlockTypes.AcaciaPressurePlate]: AcaciaPressurePlateStates;
+    [MinecraftBlockTypes.AcaciaStairs]: AcaciaStairsStates;
+    [MinecraftBlockTypes.AcaciaStandingSign]: AcaciaStandingSignStates;
+    [MinecraftBlockTypes.AcaciaTrapdoor]: AcaciaTrapdoorStates;
+    [MinecraftBlockTypes.AcaciaWallSign]: AcaciaWallSignStates;
+    [MinecraftBlockTypes.ActivatorRail]: ActivatorRailStates;
+    [MinecraftBlockTypes.AmethystCluster]: AmethystClusterStates;
+    [MinecraftBlockTypes.AndesiteStairs]: AndesiteStairsStates;
+    [MinecraftBlockTypes.Anvil]: AnvilStates;
+    [MinecraftBlockTypes.AzaleaLeaves]: AzaleaLeavesStates;
+    [MinecraftBlockTypes.AzaleaLeavesFlowered]: AzaleaLeavesFloweredStates;
+    [MinecraftBlockTypes.Bamboo]: BambooStates;
+    [MinecraftBlockTypes.BambooBlock]: BambooBlockStates;
+    [MinecraftBlockTypes.BambooButton]: BambooButtonStates;
+    [MinecraftBlockTypes.BambooDoor]: BambooDoorStates;
+    [MinecraftBlockTypes.BambooDoubleSlab]: BambooDoubleSlabStates;
+    [MinecraftBlockTypes.BambooFenceGate]: BambooFenceGateStates;
+    [MinecraftBlockTypes.BambooHangingSign]: BambooHangingSignStates;
+    [MinecraftBlockTypes.BambooMosaicDoubleSlab]: BambooMosaicDoubleSlabStates;
+    [MinecraftBlockTypes.BambooMosaicSlab]: BambooMosaicSlabStates;
+    [MinecraftBlockTypes.BambooMosaicStairs]: BambooMosaicStairsStates;
+    [MinecraftBlockTypes.BambooPressurePlate]: BambooPressurePlateStates;
+    [MinecraftBlockTypes.BambooSapling]: BambooSaplingStates;
+    [MinecraftBlockTypes.BambooSlab]: BambooSlabStates;
+    [MinecraftBlockTypes.BambooStairs]: BambooStairsStates;
+    [MinecraftBlockTypes.BambooStandingSign]: BambooStandingSignStates;
+    [MinecraftBlockTypes.BambooTrapdoor]: BambooTrapdoorStates;
+    [MinecraftBlockTypes.BambooWallSign]: BambooWallSignStates;
+    [MinecraftBlockTypes.Barrel]: BarrelStates;
+    [MinecraftBlockTypes.Basalt]: BasaltStates;
+    [MinecraftBlockTypes.Bed]: BedStates;
+    [MinecraftBlockTypes.Bedrock]: BedrockStates;
+    [MinecraftBlockTypes.BeeNest]: BeeNestStates;
+    [MinecraftBlockTypes.Beehive]: BeehiveStates;
+    [MinecraftBlockTypes.Beetroot]: BeetrootStates;
+    [MinecraftBlockTypes.Bell]: BellStates;
+    [MinecraftBlockTypes.BigDripleaf]: BigDripleafStates;
+    [MinecraftBlockTypes.BirchButton]: BirchButtonStates;
+    [MinecraftBlockTypes.BirchDoor]: BirchDoorStates;
+    [MinecraftBlockTypes.BirchFenceGate]: BirchFenceGateStates;
+    [MinecraftBlockTypes.BirchHangingSign]: BirchHangingSignStates;
+    [MinecraftBlockTypes.BirchLog]: BirchLogStates;
+    [MinecraftBlockTypes.BirchPressurePlate]: BirchPressurePlateStates;
+    [MinecraftBlockTypes.BirchStairs]: BirchStairsStates;
+    [MinecraftBlockTypes.BirchStandingSign]: BirchStandingSignStates;
+    [MinecraftBlockTypes.BirchTrapdoor]: BirchTrapdoorStates;
+    [MinecraftBlockTypes.BirchWallSign]: BirchWallSignStates;
+    [MinecraftBlockTypes.BlackCandle]: BlackCandleStates;
+    [MinecraftBlockTypes.BlackCandleCake]: BlackCandleCakeStates;
+    [MinecraftBlockTypes.BlackGlazedTerracotta]: BlackGlazedTerracottaStates;
+    [MinecraftBlockTypes.BlackstoneDoubleSlab]: BlackstoneDoubleSlabStates;
+    [MinecraftBlockTypes.BlackstoneSlab]: BlackstoneSlabStates;
+    [MinecraftBlockTypes.BlackstoneStairs]: BlackstoneStairsStates;
+    [MinecraftBlockTypes.BlackstoneWall]: BlackstoneWallStates;
+    [MinecraftBlockTypes.BlastFurnace]: BlastFurnaceStates;
+    [MinecraftBlockTypes.BlueCandle]: BlueCandleStates;
+    [MinecraftBlockTypes.BlueCandleCake]: BlueCandleCakeStates;
+    [MinecraftBlockTypes.BlueGlazedTerracotta]: BlueGlazedTerracottaStates;
+    [MinecraftBlockTypes.BoneBlock]: BoneBlockStates;
+    [MinecraftBlockTypes.BorderBlock]: BorderBlockStates;
+    [MinecraftBlockTypes.BrewingStand]: BrewingStandStates;
+    [MinecraftBlockTypes.BrickStairs]: BrickStairsStates;
+    [MinecraftBlockTypes.BrownCandle]: BrownCandleStates;
+    [MinecraftBlockTypes.BrownCandleCake]: BrownCandleCakeStates;
+    [MinecraftBlockTypes.BrownGlazedTerracotta]: BrownGlazedTerracottaStates;
+    [MinecraftBlockTypes.BrownMushroomBlock]: BrownMushroomBlockStates;
+    [MinecraftBlockTypes.BubbleColumn]: BubbleColumnStates;
+    [MinecraftBlockTypes.Cactus]: CactusStates;
+    [MinecraftBlockTypes.Cake]: CakeStates;
+    [MinecraftBlockTypes.CalibratedSculkSensor]: CalibratedSculkSensorStates;
+    [MinecraftBlockTypes.Campfire]: CampfireStates;
+    [MinecraftBlockTypes.Candle]: CandleStates;
+    [MinecraftBlockTypes.CandleCake]: CandleCakeStates;
+    [MinecraftBlockTypes.Carrots]: CarrotsStates;
+    [MinecraftBlockTypes.CarvedPumpkin]: CarvedPumpkinStates;
+    [MinecraftBlockTypes.Cauldron]: CauldronStates;
+    [MinecraftBlockTypes.CaveVines]: CaveVinesStates;
+    [MinecraftBlockTypes.CaveVinesBodyWithBerries]: CaveVinesBodyWithBerriesStates;
+    [MinecraftBlockTypes.CaveVinesHeadWithBerries]: CaveVinesHeadWithBerriesStates;
+    [MinecraftBlockTypes.Chain]: ChainStates;
+    [MinecraftBlockTypes.ChainCommandBlock]: ChainCommandBlockStates;
+    [MinecraftBlockTypes.ChemistryTable]: ChemistryTableStates;
+    [MinecraftBlockTypes.CherryButton]: CherryButtonStates;
+    [MinecraftBlockTypes.CherryDoor]: CherryDoorStates;
+    [MinecraftBlockTypes.CherryDoubleSlab]: CherryDoubleSlabStates;
+    [MinecraftBlockTypes.CherryFenceGate]: CherryFenceGateStates;
+    [MinecraftBlockTypes.CherryHangingSign]: CherryHangingSignStates;
+    [MinecraftBlockTypes.CherryLeaves]: CherryLeavesStates;
+    [MinecraftBlockTypes.CherryLog]: CherryLogStates;
+    [MinecraftBlockTypes.CherryPressurePlate]: CherryPressurePlateStates;
+    [MinecraftBlockTypes.CherrySapling]: CherrySaplingStates;
+    [MinecraftBlockTypes.CherrySlab]: CherrySlabStates;
+    [MinecraftBlockTypes.CherryStairs]: CherryStairsStates;
+    [MinecraftBlockTypes.CherryStandingSign]: CherryStandingSignStates;
+    [MinecraftBlockTypes.CherryTrapdoor]: CherryTrapdoorStates;
+    [MinecraftBlockTypes.CherryWallSign]: CherryWallSignStates;
+    [MinecraftBlockTypes.CherryWood]: CherryWoodStates;
+    [MinecraftBlockTypes.Chest]: ChestStates;
+    [MinecraftBlockTypes.ChiseledBookshelf]: ChiseledBookshelfStates;
+    [MinecraftBlockTypes.ChorusFlower]: ChorusFlowerStates;
+    [MinecraftBlockTypes.CobbledDeepslateDoubleSlab]: CobbledDeepslateDoubleSlabStates;
+    [MinecraftBlockTypes.CobbledDeepslateSlab]: CobbledDeepslateSlabStates;
+    [MinecraftBlockTypes.CobbledDeepslateStairs]: CobbledDeepslateStairsStates;
+    [MinecraftBlockTypes.CobbledDeepslateWall]: CobbledDeepslateWallStates;
+    [MinecraftBlockTypes.CobblestoneWall]: CobblestoneWallStates;
+    [MinecraftBlockTypes.Cocoa]: CocoaStates;
+    [MinecraftBlockTypes.ColoredTorchBp]: ColoredTorchBpStates;
+    [MinecraftBlockTypes.ColoredTorchRg]: ColoredTorchRgStates;
+    [MinecraftBlockTypes.CommandBlock]: CommandBlockStates;
+    [MinecraftBlockTypes.Composter]: ComposterStates;
+    [MinecraftBlockTypes.Concrete]: ConcreteStates;
+    [MinecraftBlockTypes.ConcretePowder]: ConcretePowderStates;
+    [MinecraftBlockTypes.CoralBlock]: CoralBlockStates;
+    [MinecraftBlockTypes.CoralFan]: CoralFanStates;
+    [MinecraftBlockTypes.CoralFanDead]: CoralFanDeadStates;
+    [MinecraftBlockTypes.CoralFanHang]: CoralFanHangStates;
+    [MinecraftBlockTypes.CoralFanHang2]: CoralFanHang2States;
+    [MinecraftBlockTypes.CoralFanHang3]: CoralFanHang3States;
+    [MinecraftBlockTypes.CrimsonButton]: CrimsonButtonStates;
+    [MinecraftBlockTypes.CrimsonDoor]: CrimsonDoorStates;
+    [MinecraftBlockTypes.CrimsonDoubleSlab]: CrimsonDoubleSlabStates;
+    [MinecraftBlockTypes.CrimsonFenceGate]: CrimsonFenceGateStates;
+    [MinecraftBlockTypes.CrimsonHangingSign]: CrimsonHangingSignStates;
+    [MinecraftBlockTypes.CrimsonHyphae]: CrimsonHyphaeStates;
+    [MinecraftBlockTypes.CrimsonPressurePlate]: CrimsonPressurePlateStates;
+    [MinecraftBlockTypes.CrimsonSlab]: CrimsonSlabStates;
+    [MinecraftBlockTypes.CrimsonStairs]: CrimsonStairsStates;
+    [MinecraftBlockTypes.CrimsonStandingSign]: CrimsonStandingSignStates;
+    [MinecraftBlockTypes.CrimsonStem]: CrimsonStemStates;
+    [MinecraftBlockTypes.CrimsonTrapdoor]: CrimsonTrapdoorStates;
+    [MinecraftBlockTypes.CrimsonWallSign]: CrimsonWallSignStates;
+    [MinecraftBlockTypes.CutCopperSlab]: CutCopperSlabStates;
+    [MinecraftBlockTypes.CutCopperStairs]: CutCopperStairsStates;
+    [MinecraftBlockTypes.CyanCandle]: CyanCandleStates;
+    [MinecraftBlockTypes.CyanCandleCake]: CyanCandleCakeStates;
+    [MinecraftBlockTypes.CyanGlazedTerracotta]: CyanGlazedTerracottaStates;
+    [MinecraftBlockTypes.DarkOakButton]: DarkOakButtonStates;
+    [MinecraftBlockTypes.DarkOakDoor]: DarkOakDoorStates;
+    [MinecraftBlockTypes.DarkOakFenceGate]: DarkOakFenceGateStates;
+    [MinecraftBlockTypes.DarkOakHangingSign]: DarkOakHangingSignStates;
+    [MinecraftBlockTypes.DarkOakLog]: DarkOakLogStates;
+    [MinecraftBlockTypes.DarkOakPressurePlate]: DarkOakPressurePlateStates;
+    [MinecraftBlockTypes.DarkOakStairs]: DarkOakStairsStates;
+    [MinecraftBlockTypes.DarkOakTrapdoor]: DarkOakTrapdoorStates;
+    [MinecraftBlockTypes.DarkPrismarineStairs]: DarkPrismarineStairsStates;
+    [MinecraftBlockTypes.DarkoakStandingSign]: DarkoakStandingSignStates;
+    [MinecraftBlockTypes.DarkoakWallSign]: DarkoakWallSignStates;
+    [MinecraftBlockTypes.DaylightDetector]: DaylightDetectorStates;
+    [MinecraftBlockTypes.DaylightDetectorInverted]: DaylightDetectorInvertedStates;
+    [MinecraftBlockTypes.DecoratedPot]: DecoratedPotStates;
+    [MinecraftBlockTypes.Deepslate]: DeepslateStates;
+    [MinecraftBlockTypes.DeepslateBrickDoubleSlab]: DeepslateBrickDoubleSlabStates;
+    [MinecraftBlockTypes.DeepslateBrickSlab]: DeepslateBrickSlabStates;
+    [MinecraftBlockTypes.DeepslateBrickStairs]: DeepslateBrickStairsStates;
+    [MinecraftBlockTypes.DeepslateBrickWall]: DeepslateBrickWallStates;
+    [MinecraftBlockTypes.DeepslateTileDoubleSlab]: DeepslateTileDoubleSlabStates;
+    [MinecraftBlockTypes.DeepslateTileSlab]: DeepslateTileSlabStates;
+    [MinecraftBlockTypes.DeepslateTileStairs]: DeepslateTileStairsStates;
+    [MinecraftBlockTypes.DeepslateTileWall]: DeepslateTileWallStates;
+    [MinecraftBlockTypes.DetectorRail]: DetectorRailStates;
+    [MinecraftBlockTypes.DioriteStairs]: DioriteStairsStates;
+    [MinecraftBlockTypes.Dirt]: DirtStates;
+    [MinecraftBlockTypes.Dispenser]: DispenserStates;
+    [MinecraftBlockTypes.DoubleCutCopperSlab]: DoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.DoublePlant]: DoublePlantStates;
+    [MinecraftBlockTypes.DoubleStoneBlockSlab]: DoubleStoneBlockSlabStates;
+    [MinecraftBlockTypes.DoubleStoneBlockSlab2]: DoubleStoneBlockSlab2States;
+    [MinecraftBlockTypes.DoubleStoneBlockSlab3]: DoubleStoneBlockSlab3States;
+    [MinecraftBlockTypes.DoubleStoneBlockSlab4]: DoubleStoneBlockSlab4States;
+    [MinecraftBlockTypes.DoubleWoodenSlab]: DoubleWoodenSlabStates;
+    [MinecraftBlockTypes.Dropper]: DropperStates;
+    [MinecraftBlockTypes.EndBrickStairs]: EndBrickStairsStates;
+    [MinecraftBlockTypes.EndPortalFrame]: EndPortalFrameStates;
+    [MinecraftBlockTypes.EndRod]: EndRodStates;
+    [MinecraftBlockTypes.EnderChest]: EnderChestStates;
+    [MinecraftBlockTypes.ExposedCutCopperSlab]: ExposedCutCopperSlabStates;
+    [MinecraftBlockTypes.ExposedCutCopperStairs]: ExposedCutCopperStairsStates;
+    [MinecraftBlockTypes.ExposedDoubleCutCopperSlab]: ExposedDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.Farmland]: FarmlandStates;
+    [MinecraftBlockTypes.FenceGate]: FenceGateStates;
+    [MinecraftBlockTypes.Fire]: FireStates;
+    [MinecraftBlockTypes.FlowerPot]: FlowerPotStates;
+    [MinecraftBlockTypes.FlowingLava]: FlowingLavaStates;
+    [MinecraftBlockTypes.FlowingWater]: FlowingWaterStates;
+    [MinecraftBlockTypes.Frame]: FrameStates;
+    [MinecraftBlockTypes.FrostedIce]: FrostedIceStates;
+    [MinecraftBlockTypes.Furnace]: FurnaceStates;
+    [MinecraftBlockTypes.GlowFrame]: GlowFrameStates;
+    [MinecraftBlockTypes.GlowLichen]: GlowLichenStates;
+    [MinecraftBlockTypes.GoldenRail]: GoldenRailStates;
+    [MinecraftBlockTypes.GraniteStairs]: GraniteStairsStates;
+    [MinecraftBlockTypes.GrayCandle]: GrayCandleStates;
+    [MinecraftBlockTypes.GrayCandleCake]: GrayCandleCakeStates;
+    [MinecraftBlockTypes.GrayGlazedTerracotta]: GrayGlazedTerracottaStates;
+    [MinecraftBlockTypes.GreenCandle]: GreenCandleStates;
+    [MinecraftBlockTypes.GreenCandleCake]: GreenCandleCakeStates;
+    [MinecraftBlockTypes.GreenGlazedTerracotta]: GreenGlazedTerracottaStates;
+    [MinecraftBlockTypes.Grindstone]: GrindstoneStates;
+    [MinecraftBlockTypes.HardStainedGlass]: HardStainedGlassStates;
+    [MinecraftBlockTypes.HardStainedGlassPane]: HardStainedGlassPaneStates;
+    [MinecraftBlockTypes.HayBlock]: HayBlockStates;
+    [MinecraftBlockTypes.HeavyWeightedPressurePlate]: HeavyWeightedPressurePlateStates;
+    [MinecraftBlockTypes.Hopper]: HopperStates;
+    [MinecraftBlockTypes.InfestedDeepslate]: InfestedDeepslateStates;
+    [MinecraftBlockTypes.IronDoor]: IronDoorStates;
+    [MinecraftBlockTypes.IronTrapdoor]: IronTrapdoorStates;
+    [MinecraftBlockTypes.Jigsaw]: JigsawStates;
+    [MinecraftBlockTypes.JungleButton]: JungleButtonStates;
+    [MinecraftBlockTypes.JungleDoor]: JungleDoorStates;
+    [MinecraftBlockTypes.JungleFenceGate]: JungleFenceGateStates;
+    [MinecraftBlockTypes.JungleHangingSign]: JungleHangingSignStates;
+    [MinecraftBlockTypes.JungleLog]: JungleLogStates;
+    [MinecraftBlockTypes.JunglePressurePlate]: JunglePressurePlateStates;
+    [MinecraftBlockTypes.JungleStairs]: JungleStairsStates;
+    [MinecraftBlockTypes.JungleStandingSign]: JungleStandingSignStates;
+    [MinecraftBlockTypes.JungleTrapdoor]: JungleTrapdoorStates;
+    [MinecraftBlockTypes.JungleWallSign]: JungleWallSignStates;
+    [MinecraftBlockTypes.Kelp]: KelpStates;
+    [MinecraftBlockTypes.Ladder]: LadderStates;
+    [MinecraftBlockTypes.Lantern]: LanternStates;
+    [MinecraftBlockTypes.LargeAmethystBud]: LargeAmethystBudStates;
+    [MinecraftBlockTypes.Lava]: LavaStates;
+    [MinecraftBlockTypes.Leaves]: LeavesStates;
+    [MinecraftBlockTypes.Leaves2]: Leaves2States;
+    [MinecraftBlockTypes.Lectern]: LecternStates;
+    [MinecraftBlockTypes.Lever]: LeverStates;
+    [MinecraftBlockTypes.LightBlock]: LightBlockStates;
+    [MinecraftBlockTypes.LightBlueCandle]: LightBlueCandleStates;
+    [MinecraftBlockTypes.LightBlueCandleCake]: LightBlueCandleCakeStates;
+    [MinecraftBlockTypes.LightBlueGlazedTerracotta]: LightBlueGlazedTerracottaStates;
+    [MinecraftBlockTypes.LightGrayCandle]: LightGrayCandleStates;
+    [MinecraftBlockTypes.LightGrayCandleCake]: LightGrayCandleCakeStates;
+    [MinecraftBlockTypes.LightWeightedPressurePlate]: LightWeightedPressurePlateStates;
+    [MinecraftBlockTypes.LightningRod]: LightningRodStates;
+    [MinecraftBlockTypes.LimeCandle]: LimeCandleStates;
+    [MinecraftBlockTypes.LimeCandleCake]: LimeCandleCakeStates;
+    [MinecraftBlockTypes.LimeGlazedTerracotta]: LimeGlazedTerracottaStates;
+    [MinecraftBlockTypes.LitBlastFurnace]: LitBlastFurnaceStates;
+    [MinecraftBlockTypes.LitFurnace]: LitFurnaceStates;
+    [MinecraftBlockTypes.LitPumpkin]: LitPumpkinStates;
+    [MinecraftBlockTypes.LitSmoker]: LitSmokerStates;
+    [MinecraftBlockTypes.Loom]: LoomStates;
+    [MinecraftBlockTypes.MagentaCandle]: MagentaCandleStates;
+    [MinecraftBlockTypes.MagentaCandleCake]: MagentaCandleCakeStates;
+    [MinecraftBlockTypes.MagentaGlazedTerracotta]: MagentaGlazedTerracottaStates;
+    [MinecraftBlockTypes.MangroveButton]: MangroveButtonStates;
+    [MinecraftBlockTypes.MangroveDoor]: MangroveDoorStates;
+    [MinecraftBlockTypes.MangroveDoubleSlab]: MangroveDoubleSlabStates;
+    [MinecraftBlockTypes.MangroveFenceGate]: MangroveFenceGateStates;
+    [MinecraftBlockTypes.MangroveHangingSign]: MangroveHangingSignStates;
+    [MinecraftBlockTypes.MangroveLeaves]: MangroveLeavesStates;
+    [MinecraftBlockTypes.MangroveLog]: MangroveLogStates;
+    [MinecraftBlockTypes.MangrovePressurePlate]: MangrovePressurePlateStates;
+    [MinecraftBlockTypes.MangrovePropagule]: MangrovePropaguleStates;
+    [MinecraftBlockTypes.MangroveSlab]: MangroveSlabStates;
+    [MinecraftBlockTypes.MangroveStairs]: MangroveStairsStates;
+    [MinecraftBlockTypes.MangroveStandingSign]: MangroveStandingSignStates;
+    [MinecraftBlockTypes.MangroveTrapdoor]: MangroveTrapdoorStates;
+    [MinecraftBlockTypes.MangroveWallSign]: MangroveWallSignStates;
+    [MinecraftBlockTypes.MangroveWood]: MangroveWoodStates;
+    [MinecraftBlockTypes.MediumAmethystBud]: MediumAmethystBudStates;
+    [MinecraftBlockTypes.MelonStem]: MelonStemStates;
+    [MinecraftBlockTypes.MonsterEgg]: MonsterEggStates;
+    [MinecraftBlockTypes.MossyCobblestoneStairs]: MossyCobblestoneStairsStates;
+    [MinecraftBlockTypes.MossyStoneBrickStairs]: MossyStoneBrickStairsStates;
+    [MinecraftBlockTypes.MudBrickDoubleSlab]: MudBrickDoubleSlabStates;
+    [MinecraftBlockTypes.MudBrickSlab]: MudBrickSlabStates;
+    [MinecraftBlockTypes.MudBrickStairs]: MudBrickStairsStates;
+    [MinecraftBlockTypes.MudBrickWall]: MudBrickWallStates;
+    [MinecraftBlockTypes.MuddyMangroveRoots]: MuddyMangroveRootsStates;
+    [MinecraftBlockTypes.NetherBrickStairs]: NetherBrickStairsStates;
+    [MinecraftBlockTypes.NetherWart]: NetherWartStates;
+    [MinecraftBlockTypes.NormalStoneStairs]: NormalStoneStairsStates;
+    [MinecraftBlockTypes.OakHangingSign]: OakHangingSignStates;
+    [MinecraftBlockTypes.OakLog]: OakLogStates;
+    [MinecraftBlockTypes.OakStairs]: OakStairsStates;
+    [MinecraftBlockTypes.Observer]: ObserverStates;
+    [MinecraftBlockTypes.OchreFroglight]: OchreFroglightStates;
+    [MinecraftBlockTypes.OrangeCandle]: OrangeCandleStates;
+    [MinecraftBlockTypes.OrangeCandleCake]: OrangeCandleCakeStates;
+    [MinecraftBlockTypes.OrangeGlazedTerracotta]: OrangeGlazedTerracottaStates;
+    [MinecraftBlockTypes.OxidizedCutCopperSlab]: OxidizedCutCopperSlabStates;
+    [MinecraftBlockTypes.OxidizedCutCopperStairs]: OxidizedCutCopperStairsStates;
+    [MinecraftBlockTypes.OxidizedDoubleCutCopperSlab]: OxidizedDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.PearlescentFroglight]: PearlescentFroglightStates;
+    [MinecraftBlockTypes.PinkCandle]: PinkCandleStates;
+    [MinecraftBlockTypes.PinkCandleCake]: PinkCandleCakeStates;
+    [MinecraftBlockTypes.PinkGlazedTerracotta]: PinkGlazedTerracottaStates;
+    [MinecraftBlockTypes.PinkPetals]: PinkPetalsStates;
+    [MinecraftBlockTypes.Piston]: PistonStates;
+    [MinecraftBlockTypes.PistonArmCollision]: PistonArmCollisionStates;
+    [MinecraftBlockTypes.PitcherCrop]: PitcherCropStates;
+    [MinecraftBlockTypes.PitcherPlant]: PitcherPlantStates;
+    [MinecraftBlockTypes.Planks]: PlanksStates;
+    [MinecraftBlockTypes.PointedDripstone]: PointedDripstoneStates;
+    [MinecraftBlockTypes.PolishedAndesiteStairs]: PolishedAndesiteStairsStates;
+    [MinecraftBlockTypes.PolishedBasalt]: PolishedBasaltStates;
+    [MinecraftBlockTypes.PolishedBlackstoneBrickDoubleSlab]: PolishedBlackstoneBrickDoubleSlabStates;
+    [MinecraftBlockTypes.PolishedBlackstoneBrickSlab]: PolishedBlackstoneBrickSlabStates;
+    [MinecraftBlockTypes.PolishedBlackstoneBrickStairs]: PolishedBlackstoneBrickStairsStates;
+    [MinecraftBlockTypes.PolishedBlackstoneBrickWall]: PolishedBlackstoneBrickWallStates;
+    [MinecraftBlockTypes.PolishedBlackstoneButton]: PolishedBlackstoneButtonStates;
+    [MinecraftBlockTypes.PolishedBlackstoneDoubleSlab]: PolishedBlackstoneDoubleSlabStates;
+    [MinecraftBlockTypes.PolishedBlackstonePressurePlate]: PolishedBlackstonePressurePlateStates;
+    [MinecraftBlockTypes.PolishedBlackstoneSlab]: PolishedBlackstoneSlabStates;
+    [MinecraftBlockTypes.PolishedBlackstoneStairs]: PolishedBlackstoneStairsStates;
+    [MinecraftBlockTypes.PolishedBlackstoneWall]: PolishedBlackstoneWallStates;
+    [MinecraftBlockTypes.PolishedDeepslateDoubleSlab]: PolishedDeepslateDoubleSlabStates;
+    [MinecraftBlockTypes.PolishedDeepslateSlab]: PolishedDeepslateSlabStates;
+    [MinecraftBlockTypes.PolishedDeepslateStairs]: PolishedDeepslateStairsStates;
+    [MinecraftBlockTypes.PolishedDeepslateWall]: PolishedDeepslateWallStates;
+    [MinecraftBlockTypes.PolishedDioriteStairs]: PolishedDioriteStairsStates;
+    [MinecraftBlockTypes.PolishedGraniteStairs]: PolishedGraniteStairsStates;
+    [MinecraftBlockTypes.Portal]: PortalStates;
+    [MinecraftBlockTypes.Potatoes]: PotatoesStates;
+    [MinecraftBlockTypes.PoweredComparator]: PoweredComparatorStates;
+    [MinecraftBlockTypes.PoweredRepeater]: PoweredRepeaterStates;
+    [MinecraftBlockTypes.Prismarine]: PrismarineStates;
+    [MinecraftBlockTypes.PrismarineBricksStairs]: PrismarineBricksStairsStates;
+    [MinecraftBlockTypes.PrismarineStairs]: PrismarineStairsStates;
+    [MinecraftBlockTypes.Pumpkin]: PumpkinStates;
+    [MinecraftBlockTypes.PumpkinStem]: PumpkinStemStates;
+    [MinecraftBlockTypes.PurpleCandle]: PurpleCandleStates;
+    [MinecraftBlockTypes.PurpleCandleCake]: PurpleCandleCakeStates;
+    [MinecraftBlockTypes.PurpleGlazedTerracotta]: PurpleGlazedTerracottaStates;
+    [MinecraftBlockTypes.PurpurBlock]: PurpurBlockStates;
+    [MinecraftBlockTypes.PurpurStairs]: PurpurStairsStates;
+    [MinecraftBlockTypes.QuartzBlock]: QuartzBlockStates;
+    [MinecraftBlockTypes.QuartzStairs]: QuartzStairsStates;
+    [MinecraftBlockTypes.Rail]: RailStates;
+    [MinecraftBlockTypes.RedCandle]: RedCandleStates;
+    [MinecraftBlockTypes.RedCandleCake]: RedCandleCakeStates;
+    [MinecraftBlockTypes.RedFlower]: RedFlowerStates;
+    [MinecraftBlockTypes.RedGlazedTerracotta]: RedGlazedTerracottaStates;
+    [MinecraftBlockTypes.RedMushroomBlock]: RedMushroomBlockStates;
+    [MinecraftBlockTypes.RedNetherBrickStairs]: RedNetherBrickStairsStates;
+    [MinecraftBlockTypes.RedSandstone]: RedSandstoneStates;
+    [MinecraftBlockTypes.RedSandstoneStairs]: RedSandstoneStairsStates;
+    [MinecraftBlockTypes.RedstoneTorch]: RedstoneTorchStates;
+    [MinecraftBlockTypes.RedstoneWire]: RedstoneWireStates;
+    [MinecraftBlockTypes.Reeds]: ReedsStates;
+    [MinecraftBlockTypes.RepeatingCommandBlock]: RepeatingCommandBlockStates;
+    [MinecraftBlockTypes.RespawnAnchor]: RespawnAnchorStates;
+    [MinecraftBlockTypes.Sand]: SandStates;
+    [MinecraftBlockTypes.Sandstone]: SandstoneStates;
+    [MinecraftBlockTypes.SandstoneStairs]: SandstoneStairsStates;
+    [MinecraftBlockTypes.Sapling]: SaplingStates;
+    [MinecraftBlockTypes.Scaffolding]: ScaffoldingStates;
+    [MinecraftBlockTypes.SculkCatalyst]: SculkCatalystStates;
+    [MinecraftBlockTypes.SculkSensor]: SculkSensorStates;
+    [MinecraftBlockTypes.SculkShrieker]: SculkShriekerStates;
+    [MinecraftBlockTypes.SculkVein]: SculkVeinStates;
+    [MinecraftBlockTypes.SeaPickle]: SeaPickleStates;
+    [MinecraftBlockTypes.Seagrass]: SeagrassStates;
+    [MinecraftBlockTypes.ShulkerBox]: ShulkerBoxStates;
+    [MinecraftBlockTypes.SilverGlazedTerracotta]: SilverGlazedTerracottaStates;
+    [MinecraftBlockTypes.Skull]: SkullStates;
+    [MinecraftBlockTypes.SmallAmethystBud]: SmallAmethystBudStates;
+    [MinecraftBlockTypes.SmallDripleafBlock]: SmallDripleafBlockStates;
+    [MinecraftBlockTypes.Smoker]: SmokerStates;
+    [MinecraftBlockTypes.SmoothQuartzStairs]: SmoothQuartzStairsStates;
+    [MinecraftBlockTypes.SmoothRedSandstoneStairs]: SmoothRedSandstoneStairsStates;
+    [MinecraftBlockTypes.SmoothSandstoneStairs]: SmoothSandstoneStairsStates;
+    [MinecraftBlockTypes.SnifferEgg]: SnifferEggStates;
+    [MinecraftBlockTypes.SnowLayer]: SnowLayerStates;
+    [MinecraftBlockTypes.SoulCampfire]: SoulCampfireStates;
+    [MinecraftBlockTypes.SoulFire]: SoulFireStates;
+    [MinecraftBlockTypes.SoulLantern]: SoulLanternStates;
+    [MinecraftBlockTypes.SoulTorch]: SoulTorchStates;
+    [MinecraftBlockTypes.Sponge]: SpongeStates;
+    [MinecraftBlockTypes.SpruceButton]: SpruceButtonStates;
+    [MinecraftBlockTypes.SpruceDoor]: SpruceDoorStates;
+    [MinecraftBlockTypes.SpruceFenceGate]: SpruceFenceGateStates;
+    [MinecraftBlockTypes.SpruceHangingSign]: SpruceHangingSignStates;
+    [MinecraftBlockTypes.SpruceLog]: SpruceLogStates;
+    [MinecraftBlockTypes.SprucePressurePlate]: SprucePressurePlateStates;
+    [MinecraftBlockTypes.SpruceStairs]: SpruceStairsStates;
+    [MinecraftBlockTypes.SpruceStandingSign]: SpruceStandingSignStates;
+    [MinecraftBlockTypes.SpruceTrapdoor]: SpruceTrapdoorStates;
+    [MinecraftBlockTypes.SpruceWallSign]: SpruceWallSignStates;
+    [MinecraftBlockTypes.StainedGlass]: StainedGlassStates;
+    [MinecraftBlockTypes.StainedGlassPane]: StainedGlassPaneStates;
+    [MinecraftBlockTypes.StainedHardenedClay]: StainedHardenedClayStates;
+    [MinecraftBlockTypes.StandingBanner]: StandingBannerStates;
+    [MinecraftBlockTypes.StandingSign]: StandingSignStates;
+    [MinecraftBlockTypes.StickyPiston]: StickyPistonStates;
+    [MinecraftBlockTypes.StickyPistonArmCollision]: StickyPistonArmCollisionStates;
+    [MinecraftBlockTypes.Stone]: StoneStates;
+    [MinecraftBlockTypes.StoneBlockSlab]: StoneBlockSlabStates;
+    [MinecraftBlockTypes.StoneBlockSlab2]: StoneBlockSlab2States;
+    [MinecraftBlockTypes.StoneBlockSlab3]: StoneBlockSlab3States;
+    [MinecraftBlockTypes.StoneBlockSlab4]: StoneBlockSlab4States;
+    [MinecraftBlockTypes.StoneBrickStairs]: StoneBrickStairsStates;
+    [MinecraftBlockTypes.StoneButton]: StoneButtonStates;
+    [MinecraftBlockTypes.StonePressurePlate]: StonePressurePlateStates;
+    [MinecraftBlockTypes.StoneStairs]: StoneStairsStates;
+    [MinecraftBlockTypes.Stonebrick]: StonebrickStates;
+    [MinecraftBlockTypes.StonecutterBlock]: StonecutterBlockStates;
+    [MinecraftBlockTypes.StrippedAcaciaLog]: StrippedAcaciaLogStates;
+    [MinecraftBlockTypes.StrippedBambooBlock]: StrippedBambooBlockStates;
+    [MinecraftBlockTypes.StrippedBirchLog]: StrippedBirchLogStates;
+    [MinecraftBlockTypes.StrippedCherryLog]: StrippedCherryLogStates;
+    [MinecraftBlockTypes.StrippedCherryWood]: StrippedCherryWoodStates;
+    [MinecraftBlockTypes.StrippedCrimsonHyphae]: StrippedCrimsonHyphaeStates;
+    [MinecraftBlockTypes.StrippedCrimsonStem]: StrippedCrimsonStemStates;
+    [MinecraftBlockTypes.StrippedDarkOakLog]: StrippedDarkOakLogStates;
+    [MinecraftBlockTypes.StrippedJungleLog]: StrippedJungleLogStates;
+    [MinecraftBlockTypes.StrippedMangroveLog]: StrippedMangroveLogStates;
+    [MinecraftBlockTypes.StrippedMangroveWood]: StrippedMangroveWoodStates;
+    [MinecraftBlockTypes.StrippedOakLog]: StrippedOakLogStates;
+    [MinecraftBlockTypes.StrippedSpruceLog]: StrippedSpruceLogStates;
+    [MinecraftBlockTypes.StrippedWarpedHyphae]: StrippedWarpedHyphaeStates;
+    [MinecraftBlockTypes.StrippedWarpedStem]: StrippedWarpedStemStates;
+    [MinecraftBlockTypes.StructureBlock]: StructureBlockStates;
+    [MinecraftBlockTypes.StructureVoid]: StructureVoidStates;
+    [MinecraftBlockTypes.SuspiciousGravel]: SuspiciousGravelStates;
+    [MinecraftBlockTypes.SuspiciousSand]: SuspiciousSandStates;
+    [MinecraftBlockTypes.SweetBerryBush]: SweetBerryBushStates;
+    [MinecraftBlockTypes.Tallgrass]: TallgrassStates;
+    [MinecraftBlockTypes.Tnt]: TntStates;
+    [MinecraftBlockTypes.Torch]: TorchStates;
+    [MinecraftBlockTypes.TorchflowerCrop]: TorchflowerCropStates;
+    [MinecraftBlockTypes.Trapdoor]: TrapdoorStates;
+    [MinecraftBlockTypes.TrappedChest]: TrappedChestStates;
+    [MinecraftBlockTypes.TripWire]: TripWireStates;
+    [MinecraftBlockTypes.TripwireHook]: TripwireHookStates;
+    [MinecraftBlockTypes.TurtleEgg]: TurtleEggStates;
+    [MinecraftBlockTypes.TwistingVines]: TwistingVinesStates;
+    [MinecraftBlockTypes.UnderwaterTorch]: UnderwaterTorchStates;
+    [MinecraftBlockTypes.UnlitRedstoneTorch]: UnlitRedstoneTorchStates;
+    [MinecraftBlockTypes.UnpoweredComparator]: UnpoweredComparatorStates;
+    [MinecraftBlockTypes.UnpoweredRepeater]: UnpoweredRepeaterStates;
+    [MinecraftBlockTypes.VerdantFroglight]: VerdantFroglightStates;
+    [MinecraftBlockTypes.Vine]: VineStates;
+    [MinecraftBlockTypes.WallBanner]: WallBannerStates;
+    [MinecraftBlockTypes.WallSign]: WallSignStates;
+    [MinecraftBlockTypes.WarpedButton]: WarpedButtonStates;
+    [MinecraftBlockTypes.WarpedDoor]: WarpedDoorStates;
+    [MinecraftBlockTypes.WarpedDoubleSlab]: WarpedDoubleSlabStates;
+    [MinecraftBlockTypes.WarpedFenceGate]: WarpedFenceGateStates;
+    [MinecraftBlockTypes.WarpedHangingSign]: WarpedHangingSignStates;
+    [MinecraftBlockTypes.WarpedHyphae]: WarpedHyphaeStates;
+    [MinecraftBlockTypes.WarpedPressurePlate]: WarpedPressurePlateStates;
+    [MinecraftBlockTypes.WarpedSlab]: WarpedSlabStates;
+    [MinecraftBlockTypes.WarpedStairs]: WarpedStairsStates;
+    [MinecraftBlockTypes.WarpedStandingSign]: WarpedStandingSignStates;
+    [MinecraftBlockTypes.WarpedStem]: WarpedStemStates;
+    [MinecraftBlockTypes.WarpedTrapdoor]: WarpedTrapdoorStates;
+    [MinecraftBlockTypes.WarpedWallSign]: WarpedWallSignStates;
+    [MinecraftBlockTypes.Water]: WaterStates;
+    [MinecraftBlockTypes.WaxedCutCopperSlab]: WaxedCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedCutCopperStairs]: WaxedCutCopperStairsStates;
+    [MinecraftBlockTypes.WaxedDoubleCutCopperSlab]: WaxedDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedExposedCutCopperSlab]: WaxedExposedCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedExposedCutCopperStairs]: WaxedExposedCutCopperStairsStates;
+    [MinecraftBlockTypes.WaxedExposedDoubleCutCopperSlab]: WaxedExposedDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedOxidizedCutCopperSlab]: WaxedOxidizedCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedOxidizedCutCopperStairs]: WaxedOxidizedCutCopperStairsStates;
+    [MinecraftBlockTypes.WaxedOxidizedDoubleCutCopperSlab]: WaxedOxidizedDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedWeatheredCutCopperSlab]: WaxedWeatheredCutCopperSlabStates;
+    [MinecraftBlockTypes.WaxedWeatheredCutCopperStairs]: WaxedWeatheredCutCopperStairsStates;
+    [MinecraftBlockTypes.WaxedWeatheredDoubleCutCopperSlab]: WaxedWeatheredDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.WeatheredCutCopperSlab]: WeatheredCutCopperSlabStates;
+    [MinecraftBlockTypes.WeatheredCutCopperStairs]: WeatheredCutCopperStairsStates;
+    [MinecraftBlockTypes.WeatheredDoubleCutCopperSlab]: WeatheredDoubleCutCopperSlabStates;
+    [MinecraftBlockTypes.WeepingVines]: WeepingVinesStates;
+    [MinecraftBlockTypes.Wheat]: WheatStates;
+    [MinecraftBlockTypes.WhiteCandle]: WhiteCandleStates;
+    [MinecraftBlockTypes.WhiteCandleCake]: WhiteCandleCakeStates;
+    [MinecraftBlockTypes.WhiteGlazedTerracotta]: WhiteGlazedTerracottaStates;
+    [MinecraftBlockTypes.Wood]: WoodStates;
+    [MinecraftBlockTypes.WoodenButton]: WoodenButtonStates;
+    [MinecraftBlockTypes.WoodenDoor]: WoodenDoorStates;
+    [MinecraftBlockTypes.WoodenPressurePlate]: WoodenPressurePlateStates;
+    [MinecraftBlockTypes.WoodenSlab]: WoodenSlabStates;
+    [MinecraftBlockTypes.YellowCandle]: YellowCandleStates;
+    [MinecraftBlockTypes.YellowCandleCake]: YellowCandleCakeStates;
+    [MinecraftBlockTypes.YellowGlazedTerracotta]: YellowGlazedTerracottaStates;
 };
