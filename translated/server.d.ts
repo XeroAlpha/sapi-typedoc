@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.3.0-internal.1.20.0-preview.21"
+ *   "version": "1.3.0-internal.1.20.0-preview.22"
  * }
  * ```
  *
@@ -29,6 +29,7 @@ export enum BlockVolumeIntersection {
     Contains = 1,
     Intersects = 2,
 }
+
 /**
  * @beta
  */
@@ -36,6 +37,7 @@ export enum CompoundBlockVolumeAction {
     Add = 0,
     Subtract = 1,
 }
+
 /**
  * @beta
  * Represents a direction for expressing relative position or
@@ -91,6 +93,7 @@ export enum Direction {
      */
     west = 'west',
 }
+
 /**
  * @beta
  * An enumeration for the locations where scoreboard objectives
@@ -121,6 +124,7 @@ export enum DisplaySlotId {
      */
     sidebar = 'sidebar',
 }
+
 /**
  * @beta
  * All the dye types supported by scripting
@@ -143,6 +147,7 @@ export enum DyeColor {
     white = 'white',
     yellow = 'yellow',
 }
+
 /**
  * @beta
  */
@@ -179,6 +184,7 @@ export enum EntityDamageCause {
     'void' = 'void',
     wither = 'wither',
 }
+
 /**
  * @beta
  */
@@ -186,6 +192,7 @@ export enum EntityLifetimeState {
     loaded = 'loaded',
     unloaded = 'unloaded',
 }
+
 /**
  * @beta
  */
@@ -197,6 +204,7 @@ export enum EquipmentSlot {
     mainhand = 'mainhand',
     offhand = 'offhand',
 }
+
 /**
  * @beta
  * Represents the type of fluid for use within a fluid
@@ -232,6 +240,7 @@ export enum FluidType {
      */
     water = 'water',
 }
+
 /**
  * @beta
  * Represents a game mode for the current world experience.
@@ -271,6 +280,7 @@ export enum GameMode {
      */
     survival = 'survival',
 }
+
 /**
  * @beta
  */
@@ -279,6 +289,7 @@ export enum ItemLockMode {
     none = 'none',
     slot = 'slot',
 }
+
 /**
  * @beta
  */
@@ -290,6 +301,7 @@ export enum MessageSourceType {
     serverCommand = 'serverCommand',
     serverScript = 'serverScript',
 }
+
 /**
  * @beta
  * Used for specifying a sort order for how to display an
@@ -313,6 +325,7 @@ export enum ObjectiveSortOrder {
      */
     descending = 1,
 }
+
 /**
  * @beta
  * Contains objectives and participants for the scoreboard.
@@ -342,6 +355,28 @@ export enum ScoreboardIdentityType {
      */
     player = 'player',
 }
+
+/**
+ * @beta
+ * Represents a side of a sign.
+ */
+export enum SignSide {
+    /**
+     * @beta
+     * @remarks
+     * The back of the sign.
+     *
+     */
+    back = 'back',
+    /**
+     * @beta
+     * @remarks
+     * The front of the sign.
+     *
+     */
+    front = 'front',
+}
+
 /**
  * @beta
  */
@@ -353,6 +388,7 @@ export enum TimeOfDay {
     Midnight = 18000,
     Sunrise = 23000,
 }
+
 /**
  * @beta
  * An enumeration with the reason that a watchdog is deciding
@@ -377,6 +413,53 @@ export enum WatchdogTerminateReason {
      */
     stackOverflow = 'stackOverflow',
 }
+
+/**
+ * @beta
+ */
+export enum WeatherType {
+    clear = 'clear',
+    rain = 'rain',
+    thunder = 'thunder',
+}
+
+/**
+ * @beta
+ */
+export class AfterEvents {
+    protected constructor();
+    readonly blockBreak: BlockBreakAfterEventSignal;
+    readonly blockExplode: BlockExplodeAfterEventSignal;
+    readonly blockPlace: BlockPlaceAfterEventSignal;
+    readonly buttonPush: ButtonPushAfterEventSignal;
+    readonly chatSend: ChatSendAfterEventSignal;
+    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerAfterEventSignal;
+    readonly effectAdd: EffectAddAfterEventSignal;
+    readonly entityDie: EntityDieAfterEventSignal;
+    readonly entityHit: EntityHitAfterEventSignal;
+    readonly entityHurt: EntityHurtAfterEventSignal;
+    readonly entitySpawn: EntitySpawnAfterEventSignal;
+    readonly explosion: ExplosionAfterEventSignal;
+    readonly itemCompleteCharge: ItemCompleteChargeAfterEventSignal;
+    readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
+    readonly itemReleaseCharge: ItemReleaseChargeAfterEventSignal;
+    readonly itemStartCharge: ItemStartChargeAfterEventSignal;
+    readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
+    readonly itemStopCharge: ItemStopChargeAfterEventSignal;
+    readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
+    readonly itemUse: ItemUseAfterEventSignal;
+    readonly itemUseOn: ItemUseOnAfterEventSignal;
+    readonly leverActivate: LeverActionAfterEventSignal;
+    readonly messageReceive: ServerMessageAfterEventSignal;
+    readonly pistonActivate: PistonActivateAfterEventSignal;
+    readonly playerJoin: PlayerJoinAfterEventSignal;
+    readonly playerLeave: PlayerLeaveAfterEventSignal;
+    readonly playerSpawn: PlayerSpawnAfterEventSignal;
+    readonly projectileHit: ProjectileHitAfterEventSignal;
+    readonly weatherChange: WeatherChangeAfterEventSignal;
+    readonly worldInitialize: WorldInitializeAfterEventSignal;
+}
+
 /**
  * @beta
  */
@@ -390,6 +473,7 @@ export class BeforeEvents {
     readonly itemUseOn: ItemUseOnBeforeEventSignal;
     readonly pistonActivate: PistonActivateBeforeEventSignal;
 }
+
 /**
  * @beta
  * Represents a block in a dimension. A block represents a
@@ -509,6 +593,7 @@ export class Block {
      * @param withData
      * Whether additional data facets of the item stack are
      * included.
+     * @throws This function can throw errors.
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack;
     /**
@@ -631,6 +716,7 @@ export class Block {
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
 }
+
 /**
  * @beta
  * Holds information for expressing the net size of a volume of
@@ -669,6 +755,7 @@ export class BlockAreaSize {
      */
     equals(other: BlockAreaSize): boolean;
 }
+
 /**
  * @beta
  * Contains information regarding an event where a player
@@ -690,14 +777,16 @@ export class BlockBreakAfterEvent extends BlockEvent {
      */
     readonly player: Player;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when a block is
  * broken.
  */
-export class BlockBreakAfterEventSignal_deprecated extends IBlockBreakAfterEventSignal {
+export class BlockBreakAfterEventSignal extends IBlockBreakAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Base type for components associated with blocks.
@@ -711,6 +800,7 @@ export class BlockComponent extends Component {
      */
     readonly block: Block;
 }
+
 /**
  * @beta
  * Contains information regarding an event that impacts a
@@ -732,6 +822,7 @@ export class BlockEvent {
      */
     readonly dimension: Dimension;
 }
+
 /**
  * @beta
  * Contains information regarding an explosion that has
@@ -745,16 +836,18 @@ export class BlockExplodeAfterEvent extends BlockEvent {
      * Optional source of the explosion.
      *
      */
-    readonly source: Entity;
+    readonly source?: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when an explosion
  * occurs, as it impacts individual blocks.
  */
-export class BlockExplodeAfterEventSignal_deprecated extends IBlockExplodeAfterEventSignal {
+export class BlockExplodeAfterEventSignal extends IBlockExplodeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Represents the inventory of a block in the world. Used with
@@ -770,6 +863,7 @@ export class BlockInventoryComponent extends BlockComponent {
      */
     readonly container: Container;
     /**
+     * @beta
      * @remarks
      * Identifier of this component. Should always be
      * minecraft:inventory.
@@ -777,6 +871,7 @@ export class BlockInventoryComponent extends BlockComponent {
      */
     static readonly componentId = 'minecraft:inventory';
 }
+
 /**
  * @beta
  * Represents a fluid container block that currently contains
@@ -792,6 +887,7 @@ export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
      */
     static readonly componentId = 'minecraft:lavaContainer';
 }
+
 /**
  * @beta
  */
@@ -804,6 +900,7 @@ export class BlockLiquidContainerComponent extends BlockComponent {
      */
     fillLevel: number;
 }
+
 /**
  * @beta
  */
@@ -822,6 +919,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      */
     next(): IteratorResult<Vector3>;
 }
+
 /**
  * @beta
  * Contains the combination of type {@link BlockType} and
@@ -938,6 +1036,7 @@ export class BlockPermutation {
      */
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
+
 /**
  * @beta
  * When present, this block has piston-like behavior. Contains
@@ -996,6 +1095,7 @@ export class BlockPistonComponent extends BlockComponent {
      */
     getAttachedBlocks(): Vector3[];
 }
+
 /**
  * @beta
  * Contains information regarding an event where a player
@@ -1010,14 +1110,16 @@ export class BlockPlaceAfterEvent extends BlockEvent {
      */
     readonly player: Player;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when a block is
  * placed.
  */
-export class BlockPlaceAfterEventSignal_deprecated extends IBlockPlaceAfterEventSignal {
+export class BlockPlaceAfterEventSignal extends IBlockPlaceAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Represents a fluid container block that currently contains a
@@ -1042,13 +1144,7 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
      */
     setPotionType(itemStack: ItemStack): void;
 }
-/**
- * @beta
- */
-export class BlockProperty {
-    protected constructor();
-    readonly name: string;
-}
+
 /**
  * @beta
  * Represents a block that can play a record.
@@ -1090,12 +1186,22 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      */
     setRecord(recordItemType: ItemType): void;
 }
+
 /**
  * @beta
  * Represents a block that can display text on it.
  */
 export class BlockSignComponent extends BlockComponent {
     protected constructor();
+    /**
+     * @remarks
+     * Whether or not players can edit the sign. This happens if a
+     * sign has had a honeycomb used on it or `setWaxed` was called
+     * on the sign.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isWaxed: boolean;
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -1109,25 +1215,36 @@ export class BlockSignComponent extends BlockComponent {
      * a RawMessage or a RawText object, otherwise returns
      * undefined.
      *
+     * @param side
+     * The side of the sign to read the message from. If not
+     * provided, this will return the message from the front side
+     * of the sign.
      * @throws This function can throw errors.
      */
-    getRawText(): RawText | undefined;
+    getRawText(side?: SignSide): RawText | undefined;
     /**
      * @remarks
      * Returns the text of the sign if `setText` was called with a
      * string, otherwise returns undefined.
      *
+     * @param side
+     * The side of the sign to read the message from. If not
+     * provided, this will return the message from the front side
+     * of the sign.
      * @throws This function can throw errors.
      */
-    getText(): string | undefined;
+    getText(side?: SignSide): string | undefined;
     /**
      * @remarks
      * Gets the dye that is on the text or undefined if the sign
      * has not been dyed.
      *
+     * @param side
+     * The side of the sign to read the dye from. If not provided,
+     * this will return the dye on the front side of the sign.
      * @throws This function can throw errors.
      */
-    getTextDyeColor(): DyeColor | undefined;
+    getTextDyeColor(side?: SignSide): DyeColor | undefined;
     /**
      * @remarks
      * Sets the text of the sign component.
@@ -1140,6 +1257,10 @@ export class BlockSignComponent extends BlockComponent {
      * then calling `getRawText` will return a RawText. If set to a
      * RawText, then calling `getRawText` will return the same
      * object that was passed in.
+     * @param side
+     * The side of the sign the message will be set on. If not
+     * provided, the message will be set on the front side of the
+     * sign.
      * @throws This function can throw errors.
      * @example SetRawMessage.ts
      * ```typescript
@@ -1166,7 +1287,7 @@ export class BlockSignComponent extends BlockComponent {
      *        sign.getText(); // 'Hello'
      * ```
      */
-    setText(message: RawMessage | RawText | string): void;
+    setText(message: RawMessage | RawText | string, side?: SignSide): void;
     /**
      * @remarks
      * Sets the dye color of the text.
@@ -1176,10 +1297,24 @@ export class BlockSignComponent extends BlockComponent {
      * @param color
      * The dye color to apply to the sign or undefined to clear the
      * dye on the sign.
+     * @param side
+     * The side of the sign the color will be set on. If not
+     * provided, the color will be set on the front side of the
+     * sign.
      * @throws This function can throw errors.
      */
-    setTextDyeColor(color?: DyeColor): void;
+    setTextDyeColor(color?: DyeColor, side?: SignSide): void;
+    /**
+     * @remarks
+     * Makes it so players cannot edit this sign.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setWaxed(): void;
 }
+
 /**
  * @beta
  * Represents a fluid container block that currently contains
@@ -1195,6 +1330,7 @@ export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
      */
     static readonly componentId = 'minecraft:snowContainer';
 }
+
 /**
  * @beta
  * Enumerates all {@link BlockStateType}s.
@@ -1214,6 +1350,7 @@ export class BlockStates {
      */
     static getAll(): BlockStateType[];
 }
+
 /**
  * @beta
  * Represents a configurable state value of a block instance.
@@ -1235,6 +1372,7 @@ export class BlockStateType {
      */
     readonly validValues: (boolean | number | string)[];
 }
+
 /**
  * @beta
  * The type (or template) of a block. Does not contain
@@ -1257,6 +1395,7 @@ export class BlockType {
      */
     readonly id: string;
 }
+
 /**
  * @beta
  */
@@ -1335,6 +1474,7 @@ export class BlockVolumeUtils {
      */
     static translate(volume: BlockVolume, delta: Vector3): BlockVolume;
 }
+
 /**
  * @beta
  * Represents a fluid container block that currently contains
@@ -1377,6 +1517,7 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
      */
     setCustomColor(color: Color): void;
 }
+
 /**
  * @beta
  */
@@ -1450,6 +1591,7 @@ export class BoundingBoxUtils {
      */
     static translate(box: BoundingBox, delta: Vector3): BoundingBox;
 }
+
 /**
  * @beta
  * Contains information related to changes to a button push.
@@ -1463,14 +1605,16 @@ export class ButtonPushAfterEvent extends BlockEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when a button is
  * pushed.
  */
-export class ButtonPushAfterEventSignal_deprecated extends IButtonPushAfterEventSignal {
+export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * An event that fires as players enter chat messages.
@@ -1500,14 +1644,16 @@ export class ChatSendAfterEvent {
     sendToTargets: boolean;
     getTargets(): Player[];
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to chat messages being
  * sent.
  */
-export class ChatSendAfterEventSignal_deprecated extends IChatSendAfterEventSignal {
+export class ChatSendAfterEventSignal extends IChatSendAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * An event that fires as players enter chat messages.
@@ -1523,6 +1669,7 @@ export class ChatSendBeforeEvent extends ChatSendAfterEvent {
     cancel: boolean;
     setTargets(players: Player[]): void;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an event that fires
@@ -1531,6 +1678,7 @@ export class ChatSendBeforeEvent extends ChatSendAfterEvent {
 export class ChatSendBeforeEventSignal extends IChatSendBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * Contains return data on the result of a command execution.
  */
@@ -1545,6 +1693,7 @@ export class CommandResult {
      */
     readonly successCount: number;
 }
+
 /**
  * @beta
  */
@@ -1552,6 +1701,7 @@ export class Component {
     protected constructor();
     readonly typeId: string;
 }
+
 /**
  * @beta
  */
@@ -1625,6 +1775,7 @@ export class CompoundBlockVolume {
      */
     translate(delta: Vector3): void;
 }
+
 /**
  * @beta
  * Represents a container that can hold sets of items. Used
@@ -1699,6 +1850,7 @@ export class Container {
      */
     getItem(slot: number): ItemStack | undefined;
     /**
+     * @beta
      * @remarks
      * Returns a container slot. This acts as a reference to a slot
      * at the given index for this container.
@@ -1808,6 +1960,7 @@ export class Container {
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack;
 }
+
 /**
  * @beta
  * Represents a slot within a broader container (e.g., entity
@@ -1984,6 +2137,7 @@ export class ContainerSlot {
      */
     setLore(loreList?: string[]): void;
 }
+
 /**
  * @beta
  * Contains information related to firing of a data driven
@@ -2011,15 +2165,17 @@ export class DataDrivenEntityTriggerAfterEvent {
      */
     getModifiers(): DefinitionModifier[];
 }
+
 /**
  * @beta
  * Contains event registration related to firing of a data
  * driven entity event - for example, the
  * minecraft:ageable_grow_up event on a chicken.
  */
-export class DataDrivenEntityTriggerAfterEventSignal_deprecated extends IDataDrivenEntityTriggerAfterEventSignal {
+export class DataDrivenEntityTriggerAfterEventSignal extends IDataDrivenEntityTriggerAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to firing of a data driven
@@ -2049,6 +2205,7 @@ export class DataDrivenEntityTriggerBeforeEvent {
     getModifiers(): DefinitionModifier[];
     setModifiers(modifiers: DefinitionModifier[]): void;
 }
+
 /**
  * @beta
  * Contains information related to firing of a data driven
@@ -2058,6 +2215,7 @@ export class DataDrivenEntityTriggerBeforeEvent {
 export class DataDrivenEntityTriggerBeforeEventSignal extends IDataDrivenEntityTriggerBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains a set of updates to the component definition state
@@ -2107,6 +2265,7 @@ export class DefinitionModifier {
      */
     setTriggers(newTriggers: Trigger[]): void;
 }
+
 /**
  * A class that represents a particular dimension (e.g., The
  * End) within a world.
@@ -2210,7 +2369,7 @@ export class Dimension {
      * Block at the specified location.
      * @throws This function can throw errors.
      */
-    getBlock(location: Vector3): Block;
+    getBlock(location: Vector3): Block | undefined;
     /**
      * @beta
      * @remarks
@@ -2315,6 +2474,13 @@ export class Dimension {
      * @throws This function can throw errors.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setWeather(weatherType: WeatherType): void;
     /**
      * @beta
      * @remarks
@@ -2425,32 +2591,11 @@ export class Dimension {
      * adjusted for this particle emitter.
      * @returns
      * Newly created entity at the specified location.
+     * @throws This function can throw errors.
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables: MolangVariableMap): void;
 }
-/**
- * @beta
- * For block properties that take a direction, provides a
- * structured way to specify the direction of a block property.
- */
-export class DirectionBlockProperty extends BlockProperty {
-    protected constructor();
-    /**
-     * @remarks
-     * Value of the block property.
-     *
-     * This property can't be edited in read-only mode.
-     *
-     */
-    value: Direction;
-    /**
-     * @remarks
-     * Returns a set of acceptable potential values for the
-     * direction-based block property.
-     *
-     */
-    getValidValues(): Direction[];
-}
+
 /**
  * @beta
  * Class used in conjunction with {@link PropertyRegistry} to
@@ -2464,22 +2609,23 @@ export class DynamicPropertiesDefinition {
      *
      * @throws This function can throw errors.
      */
-    defineBoolean(identifier: string): void;
+    defineBoolean(identifier: string): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a number dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineNumber(identifier: string): void;
+    defineNumber(identifier: string): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a string dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineString(identifier: string, maxLength: number): void;
+    defineString(identifier: string, maxLength: number): DynamicPropertiesDefinition;
 }
+
 /**
  * @beta
  * Represents an effect - like poison - that has been added to
@@ -2512,6 +2658,7 @@ export class Effect {
      */
     readonly duration: number;
 }
+
 /**
  * @beta
  * Contains information related to changes to an effect - like
@@ -2544,14 +2691,16 @@ export class EffectAddAfterEvent {
      */
     entity: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when an effect is
  * added to an entity.
  */
-export class EffectAddAfterEventSignal_deprecated extends IEffectAddAfterEventSignal {
+export class EffectAddAfterEventSignal extends IEffectAddAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Represents a type of effect - like poison - that can be
@@ -2568,6 +2717,7 @@ export class EffectType {
      */
     getName(): string;
 }
+
 /**
  * @beta
  * This class represents a specific leveled enchantment that is
@@ -2596,9 +2746,11 @@ export class Enchantment {
      * Type of the enchantment.
      * @param level
      * Level of the enchantment.
+     * @throws This function can throw errors.
      */
-    constructor(enchantmentType: EnchantmentType, level?: number);
+    constructor(enchantmentType: EnchantmentType | string, level?: number);
 }
+
 /**
  * @beta
  * This class represents a collection of enchantments that can
@@ -2647,16 +2799,18 @@ export class EnchantmentList implements Iterable<Enchantment> {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
-    getEnchantment(enchantmentType: EnchantmentType): Enchantment;
+    getEnchantment(enchantmentType: EnchantmentType | string): Enchantment | undefined;
     /**
      * @remarks
      * If this collection has an EnchantmentInstance with type,
      * returns the level of the enchantment. Returns 0 if not
      * present.
      *
+     * @throws This function can throw errors.
      */
-    hasEnchantment(enchantmentType: EnchantmentType): number;
+    hasEnchantment(enchantmentType: EnchantmentType | string): number;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2670,9 +2824,11 @@ export class EnchantmentList implements Iterable<Enchantment> {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
-    removeEnchantment(enchantmentType: EnchantmentType): void;
+    removeEnchantment(enchantmentType: EnchantmentType | string): void;
 }
+
 /**
  * @beta
  * This enum represents the item slot or type that an
@@ -2705,6 +2861,7 @@ export class EnchantmentSlot {
     static readonly spear = 32768;
     static readonly sword = 16;
 }
+
 /**
  * @beta
  * Contains information on a type of enchantment.
@@ -2724,6 +2881,15 @@ export class EnchantmentType {
      */
     readonly maxLevel: number;
 }
+
+/**
+ * @beta
+ */
+export class EnchantmentTypes {
+    protected constructor();
+    static get(enchantmentId: string): EnchantmentType;
+}
+
 /**
  * Represents the state of an entity (a mob, the player, or
  * other moving objects like minecarts) in the world.
@@ -3208,6 +3374,7 @@ export class Entity {
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
+
 /**
  * @beta
  * When added, this component makes the entity spawn with a
@@ -3239,6 +3406,7 @@ export class EntityAddRiderComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:addrider';
 }
+
 /**
  * @beta
  * Adds a timer for the entity to grow up. It can be
@@ -3286,6 +3454,7 @@ export class EntityAgeableComponent extends EntityComponent {
      */
     getFeedItems(): EntityDefinitionFeedItem[];
 }
+
 /**
  * @beta
  */
@@ -3322,6 +3491,7 @@ export class EntityAttributeComponent extends EntityComponent {
      */
     setCurrent(value: number): boolean;
 }
+
 /**
  * @beta
  * Base class for a family of entity movement events.
@@ -3330,6 +3500,7 @@ export class EntityBaseMovementComponent extends EntityComponent {
     protected constructor();
     readonly maxTurn: number;
 }
+
 /**
  * @beta
  * Defines what blocks this entity can breathe in and gives
@@ -3426,6 +3597,7 @@ export class EntityBreathableComponent extends EntityComponent {
      */
     setAirSupply(value: number): void;
 }
+
 /**
  * @beta
  * When added, this component signifies that the entity can
@@ -3441,6 +3613,7 @@ export class EntityCanClimbComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:can_climb';
 }
+
 /**
  * @beta
  * When added, this component signifies that the entity can
@@ -3457,6 +3630,7 @@ export class EntityCanFlyComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:can_fly';
 }
+
 /**
  * @beta
  * When added, this component signifies that the entity can
@@ -3472,6 +3646,7 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:can_power_jump';
 }
+
 /**
  * @beta
  * Defines the entity's color. Only works on certain entities
@@ -3495,6 +3670,7 @@ export class EntityColorComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:color';
 }
+
 /**
  * @beta
  * Base class for downstream entity components.
@@ -3508,6 +3684,7 @@ export class EntityComponent extends Component {
      */
     readonly entity: Entity;
 }
+
 /**
  * @beta
  * As part of the Ageable component, represents a set of items
@@ -3532,6 +3709,7 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
 }
+
 /**
  * @beta
  */
@@ -3540,12 +3718,14 @@ export class EntityDieAfterEvent {
     readonly damageSource: EntityDamageSource;
     readonly deadEntity: Entity;
 }
+
 /**
  * @beta
  */
-export class EntityDieAfterEventSignal_deprecated extends IEntityDieAfterEventSignal {
+export class EntityDieAfterEventSignal extends IEntityDieAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  */
@@ -3574,6 +3754,7 @@ export class EntityEquipmentInventoryComponent extends EntityComponent {
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): void;
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity
@@ -3589,6 +3770,7 @@ export class EntityFireImmuneComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:fire_immune';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity can
@@ -3604,6 +3786,7 @@ export class EntityFloatsInLiquidComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:floats_in_liquid';
 }
+
 /**
  * @beta
  * Represents the flying speed of an entity.
@@ -3626,6 +3809,7 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:flying_speed';
 }
+
 /**
  * @beta
  * Defines how much friction affects this entity.
@@ -3650,6 +3834,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:friction_modifier';
 }
+
 /**
  * @beta
  * Sets the offset from the ground that the entity is actually
@@ -3674,6 +3859,7 @@ export class EntityGroundOffsetComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:ground_offset';
 }
+
 /**
  * @beta
  * Defines the interactions with this entity for healing it.
@@ -3710,6 +3896,7 @@ export class EntityHealableComponent extends EntityComponent {
      */
     getFeedItems(): FeedItem[];
 }
+
 /**
  * @beta
  * Defines the health properties of an entity.
@@ -3724,6 +3911,7 @@ export class EntityHealthComponent extends EntityAttributeComponent {
      */
     static readonly componentId = 'minecraft:health';
 }
+
 /**
  * @beta
  * Contains information related to an entity hitting (melee
@@ -3756,14 +3944,16 @@ export class EntityHitAfterEvent {
      */
     readonly hitEntity?: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when an entity makes
  * a melee attack on another entity.
  */
-export class EntityHitAfterEventSignal_deprecated extends IEntityHitAfterEventSignal {
+export class EntityHitAfterEventSignal extends IEntityHitAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to an entity getting hurt by
@@ -3791,14 +3981,16 @@ export class EntityHurtAfterEvent {
      */
     readonly hurtEntity: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
-export class EntityHurtAfterEventSignal_deprecated extends IEntityHurtAfterEventSignal {
+export class EntityHurtAfterEventSignal extends IEntityHurtAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Defines this entity's inventory properties.
@@ -3858,6 +4050,7 @@ export class EntityInventoryComponent extends EntityComponent {
      */
     readonly restrictToOwner: boolean;
     /**
+     * @beta
      * @remarks
      * Identifier of this component. Should always be
      * minecraft:inventory.
@@ -3865,6 +4058,7 @@ export class EntityInventoryComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:inventory';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is a
@@ -3880,6 +4074,7 @@ export class EntityIsBabyComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_baby';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -3895,6 +4090,7 @@ export class EntityIsChargedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_charged';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -3910,6 +4106,7 @@ export class EntityIsChestedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_chested';
 }
+
 /**
  * @beta
  * When added, this component signifies that dyes can be used
@@ -3925,6 +4122,7 @@ export class EntityIsDyableComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_dyeable';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity can
@@ -3940,6 +4138,7 @@ export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_hidden_when_invisible';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity this
@@ -3955,6 +4154,7 @@ export class EntityIsIgnitedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_ignited';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is an
@@ -3970,6 +4170,7 @@ export class EntityIsIllagerCaptainComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_illager_captain';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -3985,6 +4186,7 @@ export class EntityIsSaddledComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_saddled';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -4000,6 +4202,7 @@ export class EntityIsShakingComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_shaking';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -4015,6 +4218,7 @@ export class EntityIsShearedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_sheared';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity can be
@@ -4030,6 +4234,7 @@ export class EntityIsStackableComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_stackable';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -4045,6 +4250,7 @@ export class EntityIsStunnedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_stunned';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity is
@@ -4060,6 +4266,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:is_tamed';
 }
+
 /**
  * @beta
  * If added onto the entity, this indicates that the entity
@@ -4077,12 +4284,14 @@ export class EntityItemComponent extends EntityComponent {
      */
     readonly itemStack: ItemStack;
     /**
+     * @beta
      * @remarks
      * Identifier of this component.
      *
      */
     static readonly componentId = 'minecraft:item';
 }
+
 /**
  * @beta
  * This type is usable for iterating over a set of entities.
@@ -4108,6 +4317,7 @@ export class EntityIterator implements Iterable<Entity> {
      */
     next(): IteratorResult<Entity>;
 }
+
 /**
  * @beta
  * Defines the base movement speed in lava of this entity.
@@ -4122,6 +4332,7 @@ export class EntityLavaMovementComponent extends EntityAttributeComponent {
      */
     static readonly componentId = 'minecraft:lava_movement';
 }
+
 /**
  * @beta
  * Allows this entity to be leashed and defines the conditions
@@ -4166,6 +4377,7 @@ export class EntityLeashableComponent extends EntityComponent {
      */
     unleash(): void;
 }
+
 /**
  * @beta
  * Additional variant value. Can be used to further
@@ -4190,6 +4402,7 @@ export class EntityMarkVariantComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:mark_variant';
 }
+
 /**
  * @beta
  * Contains options for taming a rideable entity based on the
@@ -4216,6 +4429,7 @@ export class EntityMountTamingComponent extends EntityComponent {
      */
     setTamed(showParticles: boolean): void;
 }
+
 /**
  * @beta
  * When added, this movement control allows the mob to swim in
@@ -4238,6 +4452,7 @@ export class EntityMovementAmphibiousComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:movement.amphibious';
 }
+
 /**
  * @beta
  * This component accents the movement of an entity.
@@ -4259,6 +4474,7 @@ export class EntityMovementBasicComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:movement.basic';
 }
+
 /**
  * @beta
  * Defines the general movement speed of this entity.
@@ -4273,6 +4489,7 @@ export class EntityMovementComponent extends EntityAttributeComponent {
      */
     static readonly componentId = 'minecraft:movement';
 }
+
 /**
  * @beta
  * When added, this move control causes the mob to fly.
@@ -4287,6 +4504,7 @@ export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.fly';
 }
+
 /**
  * @beta
  * When added, this move control allows a mob to fly, swim,
@@ -4302,6 +4520,7 @@ export class EntityMovementGenericComponent extends EntityBaseMovementComponent 
      */
     static readonly componentId = 'minecraft:movement.generic';
 }
+
 /**
  * @beta
  * When added, this movement control allows the mob to glide.
@@ -4330,6 +4549,7 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.glide';
 }
+
 /**
  * @beta
  * When added, this move control causes the mob to hover.
@@ -4344,6 +4564,7 @@ export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.hover';
 }
+
 /**
  * @beta
  * Move control that causes the mob to jump as it moves with a
@@ -4359,6 +4580,7 @@ export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.jump';
 }
+
 /**
  * @beta
  * When added, this move control causes the mob to hop as it
@@ -4374,6 +4596,7 @@ export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.skip';
 }
+
 /**
  * @beta
  * When added, this move control causes the mob to sway side to
@@ -4403,6 +4626,7 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
      */
     static readonly componentId = 'minecraft:movement.sway';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths that include vertical
@@ -4418,6 +4642,7 @@ export class EntityNavigationClimbComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.climb';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths that include vertical
@@ -4574,6 +4799,7 @@ export class EntityNavigationComponent extends EntityComponent {
      */
     readonly isAmphibious: boolean;
 }
+
 /**
  * @beta
  * Allows this entity to generate paths by flying around the
@@ -4589,6 +4815,7 @@ export class EntityNavigationFloatComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.float';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths in the air (for
@@ -4604,6 +4831,7 @@ export class EntityNavigationFlyComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.fly';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths by walking, swimming,
@@ -4620,6 +4848,7 @@ export class EntityNavigationGenericComponent extends EntityNavigationComponent 
      */
     static readonly componentId = 'minecraft:navigation.generic';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths in the air (for
@@ -4636,6 +4865,7 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.hover';
 }
+
 /**
  * @beta
  * Allows this entity to generate paths by walking around and
@@ -4651,6 +4881,7 @@ export class EntityNavigationWalkComponent extends EntityNavigationComponent {
      */
     static readonly componentId = 'minecraft:navigation.walk';
 }
+
 /**
  * @beta
  * When present on an entity, this entity is on fire.
@@ -4665,6 +4896,7 @@ export class EntityOnFireComponent extends EntityComponent {
     readonly onFireTicksRemaining: number;
     static readonly componentId = 'minecraft:onfire';
 }
+
 /**
  * @beta
  * Sets the distance through which the entity can push through.
@@ -4687,6 +4919,7 @@ export class EntityPushThroughComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:push_through';
 }
+
 /**
  * @beta
  * When added, this component adds the capability that an
@@ -4807,6 +5040,7 @@ export class EntityRideableComponent extends EntityComponent {
      */
     getSeats(): Seat[];
 }
+
 /**
  * @beta
  * This component is added to any entity when it is riding
@@ -4829,6 +5063,7 @@ export class EntityRidingComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:riding';
 }
+
 /**
  * @beta
  * Sets the entity's visual size.
@@ -4853,6 +5088,7 @@ export class EntityScaleComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:scale';
 }
+
 /**
  * @beta
  * Skin Id value. Can be used to differentiate skins, such as
@@ -4877,6 +5113,7 @@ export class EntitySkinIdComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:skin_id';
 }
+
 /**
  * @beta
  * Contains data related to an entity spawning within the
@@ -4893,12 +5130,16 @@ export class EntitySpawnAfterEvent {
      */
     entity: Entity;
 }
+
 /**
  * @beta
+ * Registers a script-based event handler for handling what
+ * happens when an entity spawns.
  */
-export class EntitySpawnEventSignalAfterEventSignal_deprecated extends IEntitySpawnAfterEventSignal {
+export class EntitySpawnAfterEventSignal extends IEntitySpawnAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Defines the entity's strength to carry items.
@@ -4929,6 +5170,7 @@ export class EntityStrengthComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:strength';
 }
+
 /**
  * @beta
  * Defines the rules for an entity to be tamed by the player.
@@ -4943,13 +5185,6 @@ export class EntityTameableComponent extends EntityComponent {
      * @throws This property can throw when used.
      */
     readonly probability: number;
-    /**
-     * @remarks
-     * Event to run when this entity becomes tamed.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly tameEvent: Trigger;
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4976,6 +5211,7 @@ export class EntityTameableComponent extends EntityComponent {
      */
     tame(): boolean;
 }
+
 /**
  * @beta
  * Represents information about a type of entity.
@@ -4990,6 +5226,7 @@ export class EntityType {
      */
     readonly id: string;
 }
+
 /**
  * @beta
  * An iterator that loops through available entity types.
@@ -5009,6 +5246,7 @@ export class EntityTypeIterator implements Iterable<EntityType> {
      */
     next(): IteratorResult<EntityType>;
 }
+
 /**
  * @beta
  * Used for accessing all entity types currently available for
@@ -5029,6 +5267,7 @@ export class EntityTypes {
      */
     static getAll(): EntityTypeIterator;
 }
+
 /**
  * @beta
  * Defines the general movement speed underwater of this
@@ -5044,6 +5283,7 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
      */
     static readonly componentId = 'minecraft:underwater_movement';
 }
+
 /**
  * @beta
  * Used to differentiate the component group of a variant of an
@@ -5067,6 +5307,7 @@ export class EntityVariantComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:variant';
 }
+
 /**
  * @beta
  * When added, this component signifies that this entity wants
@@ -5082,221 +5323,7 @@ export class EntityWantsJockeyComponent extends EntityComponent {
      */
     static readonly componentId = 'minecraft:wants_jockey';
 }
-/**
- * @beta
- * Contains a set of events that are available across the scope
- * of the World.
- */
-export class Events {
-    protected constructor();
-    /**
-     * @remarks
-     * This event fires for a block that is broken by a player.
-     *
-     */
-    readonly blockBreak: BlockBreakAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires for each BlockLocation destroyed by an
-     * explosion. It is fired after the blocks have already been
-     * destroyed.
-     *
-     */
-    readonly blockExplode: BlockExplodeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires for a block that is placed by a player.
-     *
-     */
-    readonly blockPlace: BlockPlaceAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a button is pushed.
-     *
-     */
-    readonly buttonPush: ButtonPushAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event is triggered after a chat message has been
-     * broadcast or sent to players.
-     *
-     */
-    readonly chatSend: ChatSendAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event is fired when an entity event has been triggered
-     * that will update the component definition state of an
-     * entity.
-     *
-     */
-    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an effect, like poisoning, is added to
-     * an entity.
-     *
-     */
-    readonly effectAdd: EffectAddAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an entity dies.
-     *
-     */
-    readonly entityDie: EntityDieAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an entity hits (makes a melee attack)
-     * and potentially impacts another entity or block.
-     *
-     */
-    readonly entityHit: EntityHitAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an entity is hurt (takes damage).
-     *
-     */
-    readonly entityHurt: EntityHurtAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an entity is spawned.
-     *
-     */
-    readonly entitySpawn: EntitySpawnEventSignalAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event is fired after an explosion occurs.
-     *
-     */
-    readonly explosion: ExplosionAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a chargeable item completes charging.
-     *
-     */
-    readonly itemCompleteCharge: ItemCompleteChargeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * For custom items, this event is triggered when the
-     * fundamental set of defined components for the item change.
-     * Note that this event is only fired for custom data-driven
-     * items.
-     *
-     */
-    readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a chargeable item is released from
-     * charging.
-     *
-     */
-    readonly itemReleaseCharge: ItemReleaseChargeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a chargeable item starts charging.
-     *
-     */
-    readonly itemStartCharge: StartChargeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a player successfully uses an item or
-     * places a block by pressing the Use Item / Place Block
-     * button. If multiple blocks are placed, this event will only
-     * occur once at the beginning of the block placement. Note:
-     * This event cannot be used with Hoe or Axe items.
-     *
-     */
-    readonly itemStartUseOn: ItemStartUseOnAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a chargeable item stops charging.
-     *
-     */
-    readonly itemStopCharge: ItemStopChargeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a player releases the Use Item / Place
-     * Block button after successfully using an item. Note: This
-     * event cannot be used with Hoe or Axe items.
-     *
-     */
-    readonly itemStopUseOn: ItemStopUseOnAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an item is successfully used by a
-     * player.
-     *
-     */
-    readonly itemUse: ItemUseAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when an item is used on a block by a
-     * player.
-     *
-     */
-    readonly itemUseOn: ItemUseOnAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a lever activates or is deactivated.
-     *
-     */
-    readonly leverActivate: LeverActionAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event is an internal implementation detail, and is
-     * otherwise not currently functional.
-     *
-     */
-    readonly messageReceive: ServerMessageAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a piston expands or retracts.
-     *
-     */
-    readonly pistonActivate: PistonActivateAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a player joins a world.  See also
-     * playerSpawn for another related event you can trap for when
-     * a player is spawned the first time within a world.
-     *
-     */
-    readonly playerJoin: PlayerJoinAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a player leaves a world.
-     *
-     */
-    readonly playerLeave: PlayerLeaveAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a player spawns or respawns. Note that
-     * an additional flag within this event will tell you whether
-     * the player is spawning right after join vs. a respawn.
-     *
-     */
-    readonly playerSpawn: PlayerSpawnAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when a projectile hits an entity or block.
-     *
-     */
-    readonly projectileHit: ProjectileHitAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event will be triggered when the weather changes within
-     * Minecraft.
-     *
-     */
-    readonly weatherChange: WeatherChangeAfterEventSignal_deprecated;
-    /**
-     * @remarks
-     * This event fires when the script environment is initialized
-     * on a World. In addition, you can register dynamic properties
-     * within the scope of a world Initialize event.
-     *
-     */
-    readonly worldInitialize: WorldInitializeAfterEventSignal_deprecated;
-}
+
 /**
  * @beta
  * Contains information regarding an explosion that has
@@ -5315,17 +5342,19 @@ export class ExplosionAfterEvent {
      * Optional source of the explosion.
      *
      */
-    readonly source: Entity;
+    readonly source?: Entity;
     getImpactedBlocks(): Vector3[];
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when an explosion
  * occurs.
  */
-export class ExplosionAfterEventSignal_deprecated extends IExplosionAfterEventSignal {
+export class ExplosionAfterEventSignal extends IExplosionAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information regarding an explosion that has
@@ -5341,6 +5370,7 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
     cancel: boolean;
     setImpactedBlocks(blocks: Vector3[]): void;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to before an explosion
@@ -5349,6 +5379,7 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
 export class ExplosionBeforeEventSignal extends IExplosionBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * As part of the Healable component, represents a specific
@@ -5380,6 +5411,7 @@ export class FeedItem {
      */
     getEffects(): FeedItemEffect[];
 }
+
 /**
  * @beta
  * Represents an effect that is applied as a result of a food
@@ -5416,6 +5448,7 @@ export class FeedItemEffect {
      */
     readonly name: string;
 }
+
 /**
  * @beta
  * Represents a set of filters for when an event should occur.
@@ -5423,6 +5456,7 @@ export class FeedItemEffect {
 export class FilterGroup {
     protected constructor();
 }
+
 /**
  * @beta
  * Represents constants related to fluid containers.
@@ -5444,6 +5478,7 @@ export class FluidContainer {
      */
     static readonly minFillLevel = 0;
 }
+
 /**
  * @beta
  */
@@ -5463,6 +5498,7 @@ export class IBlockBreakAfterEventSignal {
      */
     unsubscribe(callback: (arg: BlockBreakAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5482,6 +5518,7 @@ export class IBlockExplodeAfterEventSignal {
      */
     unsubscribe(callback: (arg: BlockExplodeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5501,6 +5538,7 @@ export class IBlockPlaceAfterEventSignal {
      */
     unsubscribe(callback: (arg: BlockPlaceAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5520,6 +5558,7 @@ export class IButtonPushAfterEventSignal {
      */
     unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5539,6 +5578,7 @@ export class IChatSendAfterEventSignal {
      */
     unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5558,6 +5598,7 @@ export class IChatSendBeforeEventSignal {
      */
     unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5580,6 +5621,7 @@ export class IDataDrivenEntityTriggerAfterEventSignal {
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5602,6 +5644,7 @@ export class IDataDrivenEntityTriggerBeforeEventSignal {
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5624,6 +5667,7 @@ export class IEffectAddAfterEventSignal {
      */
     unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5646,6 +5690,7 @@ export class IEntityDieAfterEventSignal {
      */
     unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5668,6 +5713,7 @@ export class IEntityHitAfterEventSignal {
      */
     unsubscribe(callback: (arg: EntityHitAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5690,6 +5736,7 @@ export class IEntityHurtAfterEventSignal {
      */
     unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5709,6 +5756,7 @@ export class IEntitySpawnAfterEventSignal {
      */
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5728,6 +5776,7 @@ export class IExplosionAfterEventSignal {
      */
     unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5747,6 +5796,7 @@ export class IExplosionBeforeEventSignal {
      */
     unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5766,6 +5816,7 @@ export class IItemCompleteChargeAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5787,6 +5838,7 @@ export class IItemDefinitionAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemDefinitionTriggeredAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5808,6 +5860,7 @@ export class IItemDefinitionBeforeEventSignal {
      */
     unsubscribe(callback: (arg: ItemDefinitionTriggeredBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5827,6 +5880,7 @@ export class IItemReleaseChargeAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5846,6 +5900,7 @@ export class IItemStartChargeAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemStartChargeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5865,6 +5920,7 @@ export class IItemStartUseOnAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5884,6 +5940,7 @@ export class IItemStopChargeAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemStopChargeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5903,6 +5960,7 @@ export class IItemStopUseOnAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5922,6 +5980,7 @@ export class IItemUseAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5941,6 +6000,7 @@ export class IItemUseBeforeEventSignal {
      */
     unsubscribe(callback: (arg: ItemUseBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5960,6 +6020,7 @@ export class IItemUseOnAfterEventSignal {
      */
     unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5979,6 +6040,7 @@ export class IItemUseOnBeforeEventSignal {
      */
     unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -5998,6 +6060,7 @@ export class ILeverActionAfterEventSignal {
      */
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6017,6 +6080,7 @@ export class IPistonActivateAfterEventSignal {
      */
     unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6036,6 +6100,7 @@ export class IPistonActivateBeforeEventSignal {
      */
     unsubscribe(callback: (arg: PistonActivateBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6055,6 +6120,7 @@ export class IPlayerJoinAfterEventSignal {
      */
     unsubscribe(callback: (arg: PlayerJoinAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6074,6 +6140,7 @@ export class IPlayerLeaveAfterEventSignal {
      */
     unsubscribe(callback: (arg: PlayerLeaveAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6093,6 +6160,7 @@ export class IPlayerSpawnAfterEventSignal {
      */
     unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6112,6 +6180,7 @@ export class IProjectileHitAfterEventSignal {
      */
     unsubscribe(callback: (arg: ProjectileHitAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6134,6 +6203,7 @@ export class IScriptEventCommandMessageAfterEventSignal {
      */
     unsubscribe(callback: (arg: ScriptEventCommandMessageAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -6153,6 +6223,7 @@ export class IServerMessageAfterEventSignal {
      */
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
 }
+
 /**
  * @beta
  * Contains information related to a chargeable item completing
@@ -6180,14 +6251,16 @@ export class ItemCompleteChargeAfterEvent {
      */
     readonly useDuration: number;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.
  */
-export class ItemCompleteChargeAfterEventSignal_deprecated extends IItemCompleteChargeAfterEventSignal {
+export class ItemCompleteChargeAfterEventSignal extends IItemCompleteChargeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Base class for item components.
@@ -6195,6 +6268,7 @@ export class ItemCompleteChargeAfterEventSignal_deprecated extends IItemComplete
 export class ItemComponent extends Component {
     protected constructor();
 }
+
 /**
  * @beta
  * When present on an item, this item has a cooldown effect
@@ -6235,14 +6309,16 @@ export class ItemCooldownComponent extends ItemComponent {
      */
     startCooldown(player: Player): void;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item's definition
  * and components changing.
  */
-export class ItemDefinitionAfterEventSignal_deprecated extends IItemDefinitionAfterEventSignal {
+export class ItemDefinitionAfterEventSignal extends IItemDefinitionAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item's definition
@@ -6251,6 +6327,7 @@ export class ItemDefinitionAfterEventSignal_deprecated extends IItemDefinitionAf
 export class ItemDefinitionBeforeEventSignal extends IItemDefinitionBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to a custom item having a data
@@ -6273,6 +6350,7 @@ export class ItemDefinitionTriggeredAfterEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Contains information related to a triggering of a custom
@@ -6288,6 +6366,7 @@ export class ItemDefinitionTriggeredBeforeEvent extends ItemDefinitionTriggeredA
      */
     cancel: boolean;
 }
+
 /**
  * @beta
  * When present on an item, this item can take damage in the
@@ -6344,6 +6423,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      */
     getDamageRange(): NumberRange;
 }
+
 /**
  * @beta
  * When present on an item, this item has applied enchantment
@@ -6377,6 +6457,7 @@ export class ItemEnchantsComponent extends ItemComponent {
      */
     removeAllEnchantments(): void;
 }
+
 /**
  * @beta
  * When present on an item, this item is consumable by
@@ -6426,6 +6507,7 @@ export class ItemFoodComponent extends ItemComponent {
      */
     static readonly componentId = 'minecraft:food';
 }
+
 /**
  * @beta
  * Contains information related to a chargeable item when the
@@ -6454,14 +6536,16 @@ export class ItemReleaseChargeAfterEvent {
      */
     readonly useDuration: number;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to the releasing of
  * charging for a chargeable item.
  */
-export class ItemReleaseChargeAfterEventSignal_deprecated extends IItemReleaseChargeAfterEventSignal {
+export class ItemReleaseChargeAfterEventSignal extends IItemReleaseChargeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Defines a collection of items.
@@ -6558,6 +6642,7 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
+     * @beta
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -6592,6 +6677,7 @@ export class ItemStack {
      */
     getComponents(): ItemComponent[];
     /**
+     * @beta
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack.
@@ -6601,6 +6687,9 @@ export class ItemStack {
      * returns an empty array.
      */
     getLore(): string[];
+    /**
+     * @beta
+     */
     getTags(): string[];
     /**
      * @remarks
@@ -6613,6 +6702,9 @@ export class ItemStack {
      * is assumed.
      */
     hasComponent(componentId: string): boolean;
+    /**
+     * @beta
+     */
     hasTag(tag: string): boolean;
     /**
      * @remarks
@@ -6625,6 +6717,7 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
+     * @beta
      * @remarks
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.
@@ -6644,6 +6737,7 @@ export class ItemStack {
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
+     * @beta
      * @remarks
      * The list of block types this item can be placed on in
      * Adventure mode. This is only applicable to block items. The
@@ -6664,6 +6758,7 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
+     * @beta
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
@@ -6680,6 +6775,7 @@ export class ItemStack {
      */
     setLore(loreList?: string[]): void;
     /**
+     * @beta
      * @remarks
      * Triggers an item type event. For custom items, a number of
      * events are defined in an items' definition for key item
@@ -6693,6 +6789,7 @@ export class ItemStack {
      */
     triggerEvent(eventName: string): void;
 }
+
 /**
  * @beta
  * Contains information related to a chargeable item starting
@@ -6720,6 +6817,16 @@ export class ItemStartChargeAfterEvent {
      */
     readonly useDuration: number;
 }
+
+/**
+ * @beta
+ * Manages callbacks that are connected to the start of
+ * charging for a chargeable item.
+ */
+export class ItemStartChargeAfterEventSignal extends IItemStartChargeAfterEventSignal {
+    protected constructor();
+}
+
 /**
  * @beta
  * Contains information related to an item being used on a
@@ -6755,14 +6862,16 @@ export class ItemStartUseOnAfterEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item starting
  * being used on a block event.
  */
-export class ItemStartUseOnAfterEventSignal_deprecated extends IItemStartUseOnAfterEventSignal {
+export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to a chargeable item has
@@ -6791,15 +6900,17 @@ export class ItemStopChargeAfterEvent {
      */
     readonly useDuration: number;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to the stopping of
  * charging for an item that has a registered
  * minecraft:chargeable component.
  */
-export class ItemStopChargeAfterEventSignal_deprecated extends IItemStopChargeAfterEventSignal {
+export class ItemStopChargeAfterEventSignal extends IItemStopChargeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to an item that has stopped
@@ -6831,14 +6942,16 @@ export class ItemStopUseOnAfterEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item stops used
  * on a block event.
  */
-export class ItemStopUseOnAfterEventSignal_deprecated extends IItemStopUseOnAfterEventSignal {
+export class ItemStopUseOnAfterEventSignal extends IItemStopUseOnAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Represents the type of an item - for example, Wool.
@@ -6853,6 +6966,7 @@ export class ItemType {
      */
     readonly id: string;
 }
+
 /**
  * @beta
  * An iterator over a set of available item types.
@@ -6872,6 +6986,7 @@ export class ItemTypeIterator implements Iterable<ItemType> {
      */
     next(): IteratorResult<ItemType>;
 }
+
 /**
  * @beta
  * Returns the set of item types registered within Minecraft.
@@ -6892,6 +7007,7 @@ export class ItemTypes {
      */
     static getAll(): ItemTypeIterator;
 }
+
 /**
  * @beta
  * Contains information related to an item being used. This
@@ -6907,13 +7023,15 @@ export class ItemUseAfterEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item use event.
  */
-export class ItemUseAfterEventSignal_deprecated extends IItemUseAfterEventSignal {
+export class ItemUseAfterEventSignal extends IItemUseAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to an item being used.
@@ -6927,6 +7045,7 @@ export class ItemUseBeforeEvent extends ItemUseAfterEvent {
      */
     cancel: boolean;
 }
+
 /**
  * @beta
  * Manages callbacks that fire before an item is used.
@@ -6934,6 +7053,7 @@ export class ItemUseBeforeEvent extends ItemUseAfterEvent {
 export class ItemUseBeforeEventSignal extends IItemUseBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to an item being used on a
@@ -6969,14 +7089,16 @@ export class ItemUseOnAfterEvent {
      */
     readonly source: Entity;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an item being used
  * on a block event.
  */
-export class ItemUseOnAfterEventSignal_deprecated extends IItemUseOnAfterEventSignal {
+export class ItemUseOnAfterEventSignal extends IItemUseOnAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to an item being used on a
@@ -6991,6 +7113,7 @@ export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
      */
     cancel: boolean;
 }
+
 /**
  * @beta
  * Manages callbacks that fire before an item being used on a
@@ -6999,6 +7122,7 @@ export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
 export class ItemUseOnBeforeEventSignal extends IItemUseOnBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  */
@@ -7018,6 +7142,7 @@ export class IWatchdogTerminateBeforeEventSignal {
      */
     unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -7037,6 +7162,7 @@ export class IWeatherChangeAfterEventSignal {
      */
     unsubscribe(callback: (arg: WeatherChangeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  */
@@ -7056,6 +7182,7 @@ export class IWorldInitializeAfterEventSignal {
      */
     unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
 }
+
 /**
  * @beta
  * Contains information related to changes to a lever
@@ -7077,14 +7204,16 @@ export class LeverActionAfterEvent extends BlockEvent {
      */
     readonly player: Player;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
  */
-export class LeverActionAfterEventSignal_deprecated extends ILeverActionAfterEventSignal {
+export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * A specific currently-internal event used for passing
@@ -7097,6 +7226,7 @@ export class MessageReceiveAfterEvent {
     readonly player: Player;
     readonly sourceType: MessageSourceType;
 }
+
 /**
  * @beta
  * Contains definitions of standard Minecraft and Minecraft
@@ -11609,6 +11739,7 @@ export class MinecraftBlockTypes {
      */
     static getAllBlockTypes(): BlockType[];
 }
+
 /**
  * A collection of default Minecraft dimension types.
  */
@@ -11648,6 +11779,7 @@ export class MinecraftDimensionTypes {
      */
     static readonly theEnd = 'minecraft:the_end';
 }
+
 /**
  * @beta
  * Returns available installed effect types within Minecraft.
@@ -11686,51 +11818,7 @@ export class MinecraftEffectTypes {
     static readonly weakness: EffectType;
     static readonly wither: EffectType;
 }
-/**
- * @beta
- * Describes a set of enchantment types.
- */
-export class MinecraftEnchantmentTypes {
-    protected constructor();
-    static readonly aquaAffinity: EnchantmentType;
-    static readonly baneOfArthropods: EnchantmentType;
-    static readonly binding: EnchantmentType;
-    static readonly blastProtection: EnchantmentType;
-    static readonly channeling: EnchantmentType;
-    static readonly depthStrider: EnchantmentType;
-    static readonly efficiency: EnchantmentType;
-    static readonly featherFalling: EnchantmentType;
-    static readonly fireAspect: EnchantmentType;
-    static readonly fireProtection: EnchantmentType;
-    static readonly flame: EnchantmentType;
-    static readonly fortune: EnchantmentType;
-    static readonly frostWalker: EnchantmentType;
-    static readonly impaling: EnchantmentType;
-    static readonly infinity: EnchantmentType;
-    static readonly knockback: EnchantmentType;
-    static readonly looting: EnchantmentType;
-    static readonly loyalty: EnchantmentType;
-    static readonly luckOfTheSea: EnchantmentType;
-    static readonly lure: EnchantmentType;
-    static readonly mending: EnchantmentType;
-    static readonly multishot: EnchantmentType;
-    static readonly piercing: EnchantmentType;
-    static readonly power: EnchantmentType;
-    static readonly projectileProtection: EnchantmentType;
-    static readonly protection: EnchantmentType;
-    static readonly punch: EnchantmentType;
-    static readonly quickCharge: EnchantmentType;
-    static readonly respiration: EnchantmentType;
-    static readonly riptide: EnchantmentType;
-    static readonly sharpness: EnchantmentType;
-    static readonly silkTouch: EnchantmentType;
-    static readonly smite: EnchantmentType;
-    static readonly soulSpeed: EnchantmentType;
-    static readonly swiftSneak: EnchantmentType;
-    static readonly thorns: EnchantmentType;
-    static readonly unbreaking: EnchantmentType;
-    static readonly vanishing: EnchantmentType;
-}
+
 /**
  * @beta
  */
@@ -11851,6 +11939,7 @@ export class MinecraftEntityTypes {
     static readonly zombieVillager: EntityType;
     static readonly zombieVillagerV2: EntityType;
 }
+
 /**
  * @beta
  * Contains definitions of standard Minecraft and Minecraft
@@ -11956,7 +12045,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly andesiteStairs: ItemType;
-    static readonly anglerPotteryShard: ItemType;
+    static readonly anglerPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place an anvil within Minecraft.
@@ -11964,9 +12053,9 @@ export class MinecraftItemTypes {
      */
     static readonly anvil: ItemType;
     static readonly apple: ItemType;
-    static readonly archerPotteryShard: ItemType;
+    static readonly archerPotterySherd: ItemType;
     static readonly armorStand: ItemType;
-    static readonly armsUpPotteryShard: ItemType;
+    static readonly armsUpPotterySherd: ItemType;
     static readonly arrow: ItemType;
     static readonly axolotlBucket: ItemType;
     static readonly axolotlSpawnEgg: ItemType;
@@ -12193,7 +12282,7 @@ export class MinecraftItemTypes {
      */
     static readonly blackstoneWall: ItemType;
     static readonly blackWool: ItemType;
-    static readonly bladePotteryShard: ItemType;
+    static readonly bladePotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a blast furnace within
@@ -12258,7 +12347,7 @@ export class MinecraftItemTypes {
     static readonly bowl: ItemType;
     static readonly brainCoral: ItemType;
     static readonly bread: ItemType;
-    static readonly brewerPotteryShard: ItemType;
+    static readonly brewerPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a brewing stand within
@@ -12321,7 +12410,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly buddingAmethyst: ItemType;
-    static readonly burnPotteryShard: ItemType;
+    static readonly burnPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a cactus within Minecraft.
@@ -12803,7 +12892,7 @@ export class MinecraftItemTypes {
      */
     static readonly cyanGlazedTerracotta: ItemType;
     static readonly cyanWool: ItemType;
-    static readonly dangerPotteryShard: ItemType;
+    static readonly dangerPotterySherd: ItemType;
     static readonly darkOakBoat: ItemType;
     /**
      * @remarks
@@ -13193,7 +13282,7 @@ export class MinecraftItemTypes {
     static readonly endStone: ItemType;
     static readonly evokerSpawnEgg: ItemType;
     static readonly experienceBottle: ItemType;
-    static readonly explorerPotteryShard: ItemType;
+    static readonly explorerPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a block of exposed copper
@@ -13283,7 +13372,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly frame: ItemType;
-    static readonly friendPotteryShard: ItemType;
+    static readonly friendPotterySherd: ItemType;
     static readonly frogSpawn: ItemType;
     static readonly frogSpawnEgg: ItemType;
     /**
@@ -13479,9 +13568,9 @@ export class MinecraftItemTypes {
      *
      */
     static readonly hayBlock: ItemType;
-    static readonly heartbreakPotteryShard: ItemType;
+    static readonly heartbreakPotterySherd: ItemType;
     static readonly heartOfTheSea: ItemType;
-    static readonly heartPotteryShard: ItemType;
+    static readonly heartPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a heavy weighted pressure
@@ -13516,7 +13605,7 @@ export class MinecraftItemTypes {
     static readonly hornCoral: ItemType;
     static readonly horseSpawnEgg: ItemType;
     static readonly hostArmorTrimSmithingTemplate: ItemType;
-    static readonly howlPotteryShard: ItemType;
+    static readonly howlPotterySherd: ItemType;
     static readonly huskSpawnEgg: ItemType;
     /**
      * @remarks
@@ -13885,7 +13974,7 @@ export class MinecraftItemTypes {
     static readonly melonSlice: ItemType;
     static readonly milkBucket: ItemType;
     static readonly minecart: ItemType;
-    static readonly minerPotteryShard: ItemType;
+    static readonly minerPotterySherd: ItemType;
     /**
      * @remarks
      * Represents an item that can place a mob spawner within
@@ -13937,7 +14026,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly mossyStoneBrickStairs: ItemType;
-    static readonly mournerPotteryShard: ItemType;
+    static readonly mournerPotterySherd: ItemType;
     static readonly mud: ItemType;
     static readonly mudBricks: ItemType;
     static readonly mudBrickSlab: ItemType;
@@ -13957,6 +14046,7 @@ export class MinecraftItemTypes {
     static readonly musicDiscMellohi: ItemType;
     static readonly musicDiscOtherside: ItemType;
     static readonly musicDiscPigstep: ItemType;
+    static readonly musicDiscRelic: ItemType;
     static readonly musicDiscStal: ItemType;
     static readonly musicDiscStrad: ItemType;
     static readonly musicDiscWait: ItemType;
@@ -14193,7 +14283,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly planks: ItemType;
-    static readonly plentyPotteryShard: ItemType;
+    static readonly plentyPotterySherd: ItemType;
     /**
      * @remarks
      * Represents podzol within Minecraft.
@@ -14362,7 +14452,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly prismarineStairs: ItemType;
-    static readonly prizePotteryShard: ItemType;
+    static readonly prizePotterySherd: ItemType;
     static readonly pufferfish: ItemType;
     static readonly pufferfishBucket: ItemType;
     static readonly pufferfishSpawnEgg: ItemType;
@@ -14654,10 +14744,10 @@ export class MinecraftItemTypes {
     static readonly seaPickle: ItemType;
     static readonly sentryArmorTrimSmithingTemplate: ItemType;
     static readonly shaperArmorTrimSmithingTemplate: ItemType;
-    static readonly sheafPotteryShard: ItemType;
+    static readonly sheafPotterySherd: ItemType;
     static readonly shears: ItemType;
     static readonly sheepSpawnEgg: ItemType;
-    static readonly shelterPotteryShard: ItemType;
+    static readonly shelterPotterySherd: ItemType;
     static readonly shield: ItemType;
     /**
      * @remarks
@@ -14693,7 +14783,7 @@ export class MinecraftItemTypes {
      */
     static readonly skull: ItemType;
     static readonly skullBannerPattern: ItemType;
-    static readonly skullPotteryShard: ItemType;
+    static readonly skullPotterySherd: ItemType;
     /**
      * @remarks
      * Represents slime within Minecraft.
@@ -14766,7 +14856,7 @@ export class MinecraftItemTypes {
     static readonly smoothStone: ItemType;
     static readonly snifferEgg: ItemType;
     static readonly snifferSpawnEgg: ItemType;
-    static readonly snortPotteryShard: ItemType;
+    static readonly snortPotterySherd: ItemType;
     static readonly snoutArmorTrimSmithingTemplate: ItemType;
     /**
      * @remarks
@@ -15562,6 +15652,7 @@ export class MinecraftItemTypes {
     static readonly zombieSpawnEgg: ItemType;
     static readonly zombieVillagerSpawnEgg: ItemType;
 }
+
 /**
  * @beta
  * Contains a set of additional variable values for further
@@ -15614,6 +15705,7 @@ export class MolangVariableMap {
      */
     setVector3(variableName: string, vector: Vector3): MolangVariableMap;
 }
+
 /**
  * @beta
  * Contains data resulting from a navigation operation,
@@ -15636,6 +15728,7 @@ export class NavigationResult {
      */
     getPath(): Vector3[];
 }
+
 /**
  * @beta
  * Contains information related to changes to a piston
@@ -15656,13 +15749,15 @@ export class PistonActivateAfterEvent extends BlockEvent {
      */
     readonly piston: BlockPistonComponent;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to piston activations.
  */
-export class PistonActivateAfterEventSignal_deprecated extends IPistonActivateAfterEventSignal {
+export class PistonActivateAfterEventSignal extends IPistonActivateAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to changes before a piston
@@ -15690,6 +15785,7 @@ export class PistonActivateBeforeEvent extends BlockEvent {
      */
     readonly piston: BlockPistonComponent;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to an event that fires
@@ -15698,6 +15794,7 @@ export class PistonActivateBeforeEvent extends BlockEvent {
 export class PistonActivateBeforeEventSignal extends IPistonActivateBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * Represents a player within the world.
  */
@@ -15966,6 +16063,7 @@ export class Player extends Entity {
      */
     startItemCooldown(itemCategory: string, tickDuration: number): void;
 }
+
 /**
  * @beta
  * This type is usable for iterating over a set of players.
@@ -15991,6 +16089,7 @@ export class PlayerIterator implements Iterable<Player> {
      */
     next(): IteratorResult<Player>;
 }
+
 /**
  * @beta
  * Contains information regarding a player that has joined.
@@ -16013,14 +16112,16 @@ export class PlayerJoinAfterEvent {
      */
     readonly playerName: string;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to a player joining the
  * world.
  */
-export class PlayerJoinAfterEventSignal_deprecated extends IPlayerJoinAfterEventSignal {
+export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information regarding a player that has left the
@@ -16042,14 +16143,16 @@ export class PlayerLeaveAfterEvent {
      */
     readonly playerName: string;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to a player leaving the
  * world.
  */
-export class PlayerLeaveAfterEventSignal_deprecated extends IPlayerLeaveAfterEventSignal {
+export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * An event that contains more information about a player
@@ -16075,14 +16178,16 @@ export class PlayerSpawnAfterEvent {
      */
     player: Player;
 }
+
 /**
  * @beta
  * Registers an event when a player is spawned (or re-spawned
  * after death) and fully ready within the world.
  */
-export class PlayerSpawnAfterEventSignal_deprecated extends IPlayerSpawnAfterEventSignal {
+export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to a projectile hitting an
@@ -16133,14 +16238,16 @@ export class ProjectileHitAfterEvent {
      */
     getEntityHit(): EntityHitInformation | undefined;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to when a projectile
  * hits an entity or block.
  */
-export class ProjectileHitAfterEventSignal_deprecated extends IProjectileHitAfterEventSignal {
+export class ProjectileHitAfterEventSignal extends IProjectileHitAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Provides methods that should be used within the World
@@ -16172,6 +16279,7 @@ export class PropertyRegistry {
      */
     registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
+
 /**
  * @beta
  * Contains objectives and participants for the scoreboard.
@@ -16276,6 +16384,7 @@ export class Scoreboard {
      */
     setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
+
 /**
  * @beta
  * Contains an identity of the scoreboard item.
@@ -16346,6 +16455,7 @@ export class ScoreboardIdentity {
      */
     setScore(objective: ScoreboardObjective, score: number): boolean;
 }
+
 /**
  * @beta
  * Contains objectives and participants for the scoreboard.
@@ -16417,6 +16527,7 @@ export class ScoreboardObjective {
      */
     setScore(participant: ScoreboardIdentity, score: number): boolean;
 }
+
 /**
  * @beta
  * Contains a pair of a scoreboard participant and its
@@ -16437,6 +16548,7 @@ export class ScoreboardScoreInfo {
      */
     readonly score: number;
 }
+
 /**
  * @beta
  * Contains information about user interface elements that are
@@ -16485,6 +16597,7 @@ export class ScreenDisplay {
      */
     updateSubtitle(subtitle: string): void;
 }
+
 /**
  * @beta
  * Returns additional data about a /scriptevent command
@@ -16533,6 +16646,7 @@ export class ScriptEventCommandMessageAfterEvent {
      */
     readonly sourceType: MessageSourceType;
 }
+
 /**
  * @beta
  * Allows for registering an event handler that responds to
@@ -16541,6 +16655,7 @@ export class ScriptEventCommandMessageAfterEvent {
 export class ScriptEventCommandMessageAfterEventSignal extends IScriptEventCommandMessageAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Describes a particular seating position on this rideable
@@ -16576,21 +16691,17 @@ export class Seat {
      */
     readonly position: Vector3;
 }
+
 /**
  * @beta
  * Manages callbacks that are message passing to a server. This
  * event is not currently fully implemented, and should not be
  * used.
  */
-export class ServerMessageAfterEventSignal_deprecated extends IServerMessageAfterEventSignal {
+export class ServerMessageAfterEventSignal extends IServerMessageAfterEventSignal {
     protected constructor();
 }
-/**
- * @beta
- */
-export class StartChargeAfterEventSignal_deprecated extends IItemStartChargeAfterEventSignal {
-    protected constructor();
-}
+
 /**
  * A class that provides system-level events and functions.
  */
@@ -16664,6 +16775,7 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
 }
+
 /**
  * @beta
  * Contains a set of events that are available across the scope
@@ -16690,6 +16802,7 @@ export class SystemEvents {
      */
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
 }
+
 /**
  * @beta
  * Represents a trigger for firing an event.
@@ -16708,6 +16821,7 @@ export class Trigger {
      */
     constructor(eventName: string);
 }
+
 /**
  * @beta
  * Contains a description of a vector.
@@ -16884,6 +16998,7 @@ export class Vector {
      */
     static subtract(a: Vector3, b: Vector3): Vector;
 }
+
 /**
  * @beta
  * Contains information related to a script watchdog
@@ -16908,6 +17023,7 @@ export class WatchdogTerminateBeforeEvent {
      */
     readonly terminateReason: WatchdogTerminateReason;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to a callback that will
@@ -16917,6 +17033,7 @@ export class WatchdogTerminateBeforeEvent {
 export class WatchdogTerminateBeforeEventSignal extends IWatchdogTerminateBeforeEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  * Contains information related to changes in weather in the
@@ -16943,13 +17060,15 @@ export class WeatherChangeAfterEvent {
      */
     readonly raining: boolean;
 }
+
 /**
  * @beta
  * Manages callbacks that are connected to weather changing.
  */
-export class WeatherChangeAfterEventSignal_deprecated extends IWeatherChangeAfterEventSignal {
+export class WeatherChangeAfterEventSignal extends IWeatherChangeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * A class that wraps the state of a world - a set of
  * dimensions and the environment of Minecraft.
@@ -16961,19 +17080,21 @@ export class World {
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world.
-     * Event callbacks are called immediately.
-     * Event callbacks are executed in read-only mode.
+     * Event callbacks are called in a deferred manner.
+     * Event callbacks are executed in read-write mode.
      *
      */
-    readonly beforeEvents: BeforeEvents;
+    readonly afterEvents: AfterEvents;
     /**
      * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world.
+     * Event callbacks are called immediately.
+     * Event callbacks are executed in read-only mode.
      *
      */
-    readonly events: Events;
+    readonly beforeEvents: BeforeEvents;
     /**
      * @beta
      * @remarks
@@ -17202,6 +17323,7 @@ export class World {
      */
     stopMusic(): void;
 }
+
 /**
  * @beta
  * Contains information and methods that can be used at the
@@ -17221,7 +17343,7 @@ export class WorldInitializeAfterEvent {
      * ```typescript
      *        import { DynamicPropertiesDefinition, MinecraftEntityTypes, world } from "@minecraft/server";
      *
-     *        world.events.worldInitialize.subscribe((e) => {
+     *        world.afterEvents.worldInitialize.subscribe((e) => {
      *          let def = new DynamicPropertiesDefinition();
      *
      *          def.defineNumber("rpgStrength");
@@ -17235,18 +17357,21 @@ export class WorldInitializeAfterEvent {
      */
     readonly propertyRegistry: PropertyRegistry;
 }
+
 /**
  * @beta
  */
-export class WorldInitializeAfterEventSignal_deprecated extends IWorldInitializeAfterEventSignal {
+export class WorldInitializeAfterEventSignal extends IWorldInitializeAfterEventSignal {
     protected constructor();
 }
+
 /**
  * @beta
  */
 export interface BlockFillOptions {
     matchingBlock?: BlockPermutation;
 }
+
 /**
  * @beta
  * Contains more information for events where a block is hit.
@@ -17272,6 +17397,7 @@ export interface BlockHitInformation {
      */
     faceLocation: Vector3;
 }
+
 /**
  * @beta
  * Contains additional options for configuring a block raycast
@@ -17299,6 +17425,7 @@ export interface BlockRaycastOptions {
      */
     maxDistance?: number;
 }
+
 /**
  * @beta
  */
@@ -17306,6 +17433,7 @@ export interface BlockVolume {
     from: Vector3;
     to: Vector3;
 }
+
 /**
  * @beta
  */
@@ -17313,6 +17441,7 @@ export interface BoundingBox {
     max: Vector3;
     min: Vector3;
 }
+
 /**
  * @beta
  * Represents a fully customizable color within Minecraft.
@@ -17347,6 +17476,7 @@ export interface Color {
      */
     red: number;
 }
+
 /**
  * @beta
  */
@@ -17354,6 +17484,7 @@ export interface CompoundBlockVolumeItem {
     action: CompoundBlockVolumeAction;
     volume: BlockVolume;
 }
+
 /**
  * @beta
  */
@@ -17361,6 +17492,7 @@ export interface EntityApplyDamageByProjectileOptions {
     damagingEntity?: Entity;
     damagingProjectile: Entity;
 }
+
 /**
  * @beta
  */
@@ -17368,6 +17500,7 @@ export interface EntityApplyDamageOptions {
     cause: EntityDamageCause;
     damagingEntity?: Entity;
 }
+
 /**
  * @beta
  */
@@ -17376,6 +17509,7 @@ export interface EntityDamageSource {
     damagingEntity?: Entity;
     damagingProjectile?: Entity;
 }
+
 /**
  * @beta
  * Specifies additional filters that are used in registering a
@@ -17405,6 +17539,7 @@ export interface EntityDataDrivenTriggerEventOptions {
      */
     eventTypes?: string[];
 }
+
 /**
  * @beta
  * Contains optional parameters for registering an entity
@@ -17426,6 +17561,7 @@ export interface EntityEventOptions {
      */
     entityTypes?: string[];
 }
+
 /**
  * @beta
  * Contains additional information about an entity that was
@@ -17439,6 +17575,7 @@ export interface EntityHitInformation {
      */
     entity: Entity;
 }
+
 /**
  * @beta
  * Contains options for selecting entities within an area.
@@ -17609,6 +17746,7 @@ export interface EntityQueryOptions {
      */
     volume?: BlockAreaSize;
 }
+
 /**
  * @beta
  * Contains additional options for filtering players based on
@@ -17643,6 +17781,7 @@ export interface EntityQueryScoreOptions {
      */
     objective?: string;
 }
+
 /**
  * @beta
  * Contains additional options for an entity raycast operation.
@@ -17655,6 +17794,7 @@ export interface EntityRaycastOptions {
      */
     maxDistance?: number;
 }
+
 /**
  * @beta
  * Additional configuration options for the {@link
@@ -17688,6 +17828,7 @@ export interface ExplosionOptions {
      */
     source?: Entity;
 }
+
 /**
  * @beta
  * Additional configuration options for {@link
@@ -17713,6 +17854,7 @@ export interface MusicOptions {
      */
     volume?: number;
 }
+
 /**
  * @beta
  * Represents a min/max structure for expressing a potential
@@ -17732,6 +17874,7 @@ export interface NumberRange {
      */
     min: number;
 }
+
 /**
  * @beta
  */
@@ -17741,6 +17884,7 @@ export interface PlayAnimationOptions {
     nextState?: string;
     stopExpression?: string;
 }
+
 /**
  * @beta
  */
@@ -17749,6 +17893,7 @@ export interface PlayerSoundOptions {
     pitch?: number;
     volume?: number;
 }
+
 /**
  * @beta
  */
@@ -17759,6 +17904,7 @@ export interface RawMessage {
     translate?: string;
     with?: string[] | RawMessage;
 }
+
 /**
  * @beta
  */
@@ -17766,6 +17912,7 @@ export interface RawMessageScore {
     name?: string;
     objective?: string;
 }
+
 /**
  * @beta
  * A `RawMessage` with only the `rawtext` property. When a
@@ -17777,6 +17924,7 @@ export interface RawMessageScore {
 export interface RawText {
     rawtext?: RawMessage[];
 }
+
 /**
  * @beta
  * Contains additional options for how a scoreboard should be
@@ -17796,12 +17944,14 @@ export interface ScoreboardObjectiveDisplayOptions {
      */
     sortOrder?: ObjectiveSortOrder;
 }
+
 /**
  * @beta
  */
 export interface ScriptEventMessageFilterOptions {
     namespaces: string[];
 }
+
 /**
  * @beta
  */
@@ -17812,6 +17962,7 @@ export interface TeleportOptions {
     keepVelocity?: boolean;
     rotation?: Vector2;
 }
+
 /**
  * @beta
  * Contains additional options for displaying a title and
@@ -17843,6 +17994,7 @@ export interface TitleDisplayOptions {
      */
     subtitle?: string;
 }
+
 /**
  * @beta
  */
@@ -17850,6 +18002,7 @@ export interface Vector2 {
     x: number;
     y: number;
 }
+
 /**
  * @beta
  * Contains a description of a vector.
@@ -17874,6 +18027,7 @@ export interface Vector3 {
      */
     z: number;
 }
+
 /**
  * @beta
  */
@@ -17881,6 +18035,29 @@ export interface WorldSoundOptions {
     pitch?: number;
     volume?: number;
 }
+
+/**
+ * @beta
+ * The error type thrown when a command fails.
+ */
+export class CommandError extends Error {
+    protected constructor();
+}
+
+/**
+ * @beta
+ */
+export class PositionInUnloadedChunkError extends Error {
+    protected constructor();
+}
+
+/**
+ * @beta
+ */
+export class PositionOutOfWorldBoundariesError extends Error {
+    protected constructor();
+}
+
 /**
  * @beta
  */

@@ -44,7 +44,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.1.0-internal.1.20.0-preview.21"
+ *   "version": "1.1.0-internal.1.20.0-preview.22"
  * }
  * ```
  *
@@ -57,21 +57,19 @@ export enum FormCancelationReason {
     userBusy = 'userBusy',
     userClosed = 'userClosed',
 }
-/**
- * @beta
- */
+
 export enum FormRejectReason {
     MalformedResponse = 'MalformedResponse',
     PlayerQuit = 'PlayerQuit',
     ServerShutdown = 'ServerShutdown',
 }
+
 /**
  * Builds a simple player form with buttons that let the player
  * take action.
  */
 export class ActionFormData {
     /**
-     * @beta
      * @remarks
      * Method that sets the body text for the modal form.
      *
@@ -80,7 +78,6 @@ export class ActionFormData {
      */
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     /**
-     * @beta
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
@@ -103,7 +100,6 @@ export class ActionFormData {
      */
     show(player: minecraftserver.Player): Promise<ActionFormResponse>;
     /**
-     * @beta
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
@@ -112,6 +108,7 @@ export class ActionFormData {
      */
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
+
 /**
  * Returns data about the player results from a modal action
  * form.
@@ -125,6 +122,7 @@ export class ActionFormResponse extends FormResponse {
      */
     readonly selection?: number;
 }
+
 /**
  * Base type for a form response.
  */
@@ -146,12 +144,12 @@ export class FormResponse {
      */
     readonly canceled: boolean;
 }
+
 /**
  * Builds a simple two-button modal dialog.
  */
 export class MessageFormData {
     /**
-     * @beta
      * @remarks
      * Method that sets the body text for the modal form.
      *
@@ -160,7 +158,6 @@ export class MessageFormData {
      */
     body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     /**
-     * @beta
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
@@ -170,7 +167,6 @@ export class MessageFormData {
      */
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
-     * @beta
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
@@ -193,7 +189,6 @@ export class MessageFormData {
      */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     /**
-     * @beta
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
@@ -202,6 +197,7 @@ export class MessageFormData {
      */
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
+
 /**
  * Returns data about the player results from a modal message
  * form.
@@ -215,13 +211,13 @@ export class MessageFormResponse extends FormResponse {
      */
     readonly selection?: number;
 }
+
 /**
  * Used to create a fully customizable pop-up form for a
  * player.
  */
 export class ModalFormData {
     /**
-     * @beta
      * @remarks
      * Adds a dropdown with choices to the form.
      *
@@ -247,7 +243,6 @@ export class ModalFormData {
      */
     show(player: minecraftserver.Player): Promise<ModalFormResponse>;
     /**
-     * @beta
      * @remarks
      * Adds a numeric slider to the form.
      *
@@ -262,7 +257,6 @@ export class ModalFormData {
         defaultValue?: number,
     ): ModalFormData;
     /**
-     * @beta
      * @remarks
      * Adds a textbox to the form.
      *
@@ -275,7 +269,6 @@ export class ModalFormData {
         defaultValue?: string,
     ): ModalFormData;
     /**
-     * @beta
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
@@ -284,7 +277,6 @@ export class ModalFormData {
      */
     title(titleText: minecraftserver.RawMessage | string): ModalFormData;
     /**
-     * @beta
      * @remarks
      * Adds a toggle checkbox button to the form.
      *
@@ -293,6 +285,7 @@ export class ModalFormData {
      */
     toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }
+
 /**
  * Returns data about player responses to a modal form.
  */
@@ -304,11 +297,9 @@ export class ModalFormResponse extends FormResponse {
      * specified by ModalFormData.
      *
      */
-    readonly formValues?: any[];
+    readonly formValues?: (boolean | number | string)[];
 }
-/**
- * @beta
- */
+
 export class FormRejectError extends Error {
     protected constructor();
     reason: FormRejectReason;

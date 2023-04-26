@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.0-preview.21"
+ *   "version": "1.0.0-internal.1.20.0-preview.22"
  * }
  * ```
  *
@@ -35,6 +35,7 @@ export enum GameTestErrorType {
     Unknown = 'Unknown',
     Waiting = 'Waiting',
 }
+
 /**
  * Returns information about whether this fence is connected to
  * other fences in several directions.
@@ -70,6 +71,7 @@ export class FenceConnectivity {
      */
     readonly west: boolean;
 }
+
 /**
  * Executes a set of steps defined via chained .thenXyz
  * methods, sequentially. This facilitates a 'script' of
@@ -193,6 +195,7 @@ export class GameTestSequence {
      */
     thenWaitAfter(delayTicks: number, callback: () => void): GameTestSequence;
 }
+
 /**
  * A utility class to set GameTest parameters for a test.
  * Methods can be chained together to set multiple properties.
@@ -325,6 +328,7 @@ export class RegistrationBuilder {
      */
     tag(tag: string): RegistrationBuilder;
 }
+
 /**
  * Implements a class that can be used for testing sculk
  * spreading behaviors. This sculk spreader class can drive the
@@ -376,6 +380,7 @@ export class SculkSpreader {
      */
     getTotalCharge(): number;
 }
+
 /**
  * A simulated player can be used within GameTests to represent
  * how a player moves throughout the world and to support
@@ -806,6 +811,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
         faceLocation?: minecraftserver.Vector3,
     ): boolean;
 }
+
 /**
  * These well-known tags can be used to classify different
  * tests into suites to run.
@@ -841,6 +847,7 @@ export class Tags {
      */
     static readonly suiteDisabled = 'suite:disabled';
 }
+
 /**
  * Main class for GameTest functions, with helpers and data for
  * manipulating the respective test. Note that all methods of
@@ -2013,17 +2020,20 @@ export class Test {
      */
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }
+
 export interface GameTestErrorContext {
     absolutePosition: minecraftserver.Vector3;
     relativePosition: minecraftserver.Vector3;
     tickCount: number;
 }
+
 export class GameTestError extends Error {
     protected constructor();
     context?: GameTestErrorContext;
     messageParameters: string[];
     type: GameTestErrorType;
 }
+
 /**
  * @remarks
  * Registers a new GameTest function. This GameTest will become

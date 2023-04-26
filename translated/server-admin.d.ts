@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.20.0-preview.21"
+ *   "version": "1.0.0-beta.1.20.0-preview.22"
  * }
  * ```
  *
@@ -31,6 +31,7 @@
 export class SecretString {
     constructor(value: string);
 }
+
 /**
  * A collection of server secrets defined in dedicated server
  * configuration.
@@ -55,6 +56,7 @@ export class ServerSecrets {
      */
     get(name: string): SecretString | undefined;
 }
+
 /**
  * A collection of server variables defined in dedicated server
  * configuration.
@@ -77,6 +79,7 @@ export class ServerVariables {
      */
     get(name: string): any | undefined;
 }
+
 /**
  * @remarks
  * A globally available object that returns a list of

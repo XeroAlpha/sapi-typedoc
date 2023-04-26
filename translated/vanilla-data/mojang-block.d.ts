@@ -917,8 +917,8 @@ export declare type BlockStateSuperset = {
     ['lever_direction']?: string;
     ['liquid_depth']?: number;
     ['lit']?: boolean;
-    ['minecraft:cardinal_direction']?: number;
-    ['minecraft:facing_direction']?: number;
+    ['minecraft:cardinal_direction']?: string;
+    ['minecraft:facing_direction']?: string;
     ['moisturized_amount']?: number;
     ['monster_egg_stone_type']?: string;
     ['multi_face_direction_bits']?: number;
@@ -946,6 +946,7 @@ export declare type BlockStateSuperset = {
     ['sand_stone_type']?: string;
     ['sand_type']?: string;
     ['sapling_type']?: string;
+    ['sculk_sensor_phase']?: number;
     ['sea_grass_type']?: string;
     ['sponge_type']?: string;
     ['stability']?: number;
@@ -1280,7 +1281,7 @@ export declare type CakeStates = Pick<BlockStateSuperset, 'bite_counter'>;
 /**
  * States specific to CalibratedSculkSensor
  */
-export declare type CalibratedSculkSensorStates = Pick<BlockStateSuperset, 'direction' | 'powered_bit'>;
+export declare type CalibratedSculkSensorStates = Pick<BlockStateSuperset, 'direction' | 'sculk_sensor_phase'>;
 /**
  * States specific to Campfire
  */
@@ -2400,7 +2401,7 @@ export declare type SculkCatalystStates = Pick<BlockStateSuperset, 'bloom'>;
 /**
  * States specific to SculkSensor
  */
-export declare type SculkSensorStates = Pick<BlockStateSuperset, 'powered_bit'>;
+export declare type SculkSensorStates = Pick<BlockStateSuperset, 'sculk_sensor_phase'>;
 /**
  * States specific to SculkShrieker
  */

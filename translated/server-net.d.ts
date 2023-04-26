@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.20.0-preview.21"
+ *   "version": "1.0.0-beta.1.20.0-preview.22"
  * }
  * ```
  *
@@ -66,6 +66,7 @@ export enum HttpRequestMethod {
      */
     PUT = 'PUT',
 }
+
 export class HttpClient {
     protected constructor();
     /**
@@ -102,6 +103,7 @@ export class HttpClient {
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }
+
 /**
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
@@ -125,6 +127,7 @@ export class HttpHeader {
     value: minecraftserveradmin.SecretString | string;
     constructor(key: string, value: minecraftserveradmin.SecretString | string);
 }
+
 /**
  * Main object for structuring a request.
  */
@@ -213,6 +216,7 @@ export class HttpRequest {
      */
     setTimeout(timeout: number): HttpRequest;
 }
+
 /**
  * Main object that contains result information from a request.
  */
@@ -247,4 +251,5 @@ export class HttpResponse {
      */
     readonly status: number;
 }
+
 export const http: HttpClient;
