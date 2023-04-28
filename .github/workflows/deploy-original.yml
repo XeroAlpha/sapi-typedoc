@@ -28,7 +28,11 @@ jobs:
 
     - name: Deploy
       run: |
+        cd ./dist
+        tar -cvzf ../sapi-doc.tar.gz *
+        cd ..
         echo "${{ secrets.SSH_KEY }}" > key.txt
         chmod 400 key.txt
-        scp -pqrO -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt ./dist/* "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":${{ secrets.TARGET_PATH_ORIGINAL }}
+        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt ./sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":${{ secrets.TARGET_PATH_ORIGINAL }}/sapi-doc.tar.gz
+        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "cd ${{ secrets.TARGET_PATH_ORIGINAL }} && tar -xvzf ./sapi-doc.tar.gz && rm ./sapi-doc.tar.gz"
         rm key.txt
