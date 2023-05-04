@@ -11,9 +11,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.0-preview.22`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.0-preview.23`|
 
-游戏版本号：`1.20.0.22`
+游戏版本号：`1.20.0.23`
 
 <!-- summary end -->
 
@@ -42,7 +42,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/315|
+|[@minecraft/server](#minecraftserver)|0/320|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -121,6 +121,7 @@ Minecraft 脚本 API 文档。
 |[`EffectAddAfterEvent`](https://projectxero.top/sapi/classes/server.EffectAddAfterEvent.html)|类|未翻译|
 |[`EffectAddAfterEventSignal`](https://projectxero.top/sapi/classes/server.EffectAddAfterEventSignal.html)|类|未翻译|
 |[`EffectType`](https://projectxero.top/sapi/classes/server.EffectType.html)|类|未翻译|
+|[`EffectTypes`](https://projectxero.top/sapi/classes/server.EffectTypes.html)|类|未翻译|
 |[`Enchantment`](https://projectxero.top/sapi/classes/server.Enchantment.html)|类|未翻译|
 |[`EnchantmentList`](https://projectxero.top/sapi/classes/server.EnchantmentList.html)|类|未翻译|
 |[`EnchantmentSlot`](https://projectxero.top/sapi/classes/server.EnchantmentSlot.html)|类|未翻译|
@@ -156,7 +157,7 @@ Minecraft 脚本 API 文档。
 |[`EntityIsBabyComponent`](https://projectxero.top/sapi/classes/server.EntityIsBabyComponent.html)|类|未翻译|
 |[`EntityIsChargedComponent`](https://projectxero.top/sapi/classes/server.EntityIsChargedComponent.html)|类|未翻译|
 |[`EntityIsChestedComponent`](https://projectxero.top/sapi/classes/server.EntityIsChestedComponent.html)|类|未翻译|
-|[`EntityIsDyableComponent`](https://projectxero.top/sapi/classes/server.EntityIsDyableComponent.html)|类|未翻译|
+|[`EntityIsDyeableComponent`](https://projectxero.top/sapi/classes/server.EntityIsDyeableComponent.html)|类|未翻译|
 |[`EntityIsHiddenWhenInvisibleComponent`](https://projectxero.top/sapi/classes/server.EntityIsHiddenWhenInvisibleComponent.html)|类|未翻译|
 |[`EntityIsIgnitedComponent`](https://projectxero.top/sapi/classes/server.EntityIsIgnitedComponent.html)|类|未翻译|
 |[`EntityIsIllagerCaptainComponent`](https://projectxero.top/sapi/classes/server.EntityIsIllagerCaptainComponent.html)|类|未翻译|
@@ -191,6 +192,8 @@ Minecraft 脚本 API 文档。
 |[`EntityNavigationWalkComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationWalkComponent.html)|类|未翻译|
 |[`EntityOnFireComponent`](https://projectxero.top/sapi/classes/server.EntityOnFireComponent.html)|类|未翻译|
 |[`EntityPushThroughComponent`](https://projectxero.top/sapi/classes/server.EntityPushThroughComponent.html)|类|未翻译|
+|[`EntityRemovedAfterEvent`](https://projectxero.top/sapi/classes/server.EntityRemovedAfterEvent.html)|类|未翻译|
+|[`EntityRemovedAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityRemovedAfterEventSignal.html)|类|未翻译|
 |[`EntityRideableComponent`](https://projectxero.top/sapi/classes/server.EntityRideableComponent.html)|类|未翻译|
 |[`EntityRidingComponent`](https://projectxero.top/sapi/classes/server.EntityRidingComponent.html)|类|未翻译|
 |[`EntityScaleComponent`](https://projectxero.top/sapi/classes/server.EntityScaleComponent.html)|类|未翻译|
@@ -225,6 +228,7 @@ Minecraft 脚本 API 文档。
 |[`IEntityDieAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityDieAfterEventSignal.html)|类|未翻译|
 |[`IEntityHitAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHitAfterEventSignal.html)|类|未翻译|
 |[`IEntityHurtAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHurtAfterEventSignal.html)|类|未翻译|
+|[`IEntityRemovedAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityRemovedAfterEventSignal.html)|类|未翻译|
 |[`IEntitySpawnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntitySpawnAfterEventSignal.html)|类|未翻译|
 |[`IExplosionAfterEventSignal`](https://projectxero.top/sapi/classes/server.IExplosionAfterEventSignal.html)|类|未翻译|
 |[`IExplosionBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IExplosionBeforeEventSignal.html)|类|未翻译|
@@ -343,6 +347,7 @@ Minecraft 脚本 API 文档。
 |[`EntityApplyDamageOptions`](https://projectxero.top/sapi/interfaces/server.EntityApplyDamageOptions.html)|接口|未翻译|
 |[`EntityDamageSource`](https://projectxero.top/sapi/interfaces/server.EntityDamageSource.html)|接口|未翻译|
 |[`EntityDataDrivenTriggerEventOptions`](https://projectxero.top/sapi/interfaces/server.EntityDataDrivenTriggerEventOptions.html)|接口|未翻译|
+|[`EntityEffectOptions`](https://projectxero.top/sapi/interfaces/server.EntityEffectOptions.html)|接口|未翻译|
 |[`EntityEventOptions`](https://projectxero.top/sapi/interfaces/server.EntityEventOptions.html)|接口|未翻译|
 |[`EntityHitInformation`](https://projectxero.top/sapi/interfaces/server.EntityHitInformation.html)|接口|未翻译|
 |[`EntityQueryOptions`](https://projectxero.top/sapi/interfaces/server.EntityQueryOptions.html)|接口|未翻译|

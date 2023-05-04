@@ -917,8 +917,10 @@ export declare type BlockStateSuperset = {
     ['lever_direction']?: string;
     ['liquid_depth']?: number;
     ['lit']?: boolean;
+    ['minecraft:block_face']?: string;
     ['minecraft:cardinal_direction']?: string;
     ['minecraft:facing_direction']?: string;
+    ['minecraft:vertical_half']?: string;
     ['moisturized_amount']?: number;
     ['monster_egg_stone_type']?: string;
     ['multi_face_direction_bits']?: number;

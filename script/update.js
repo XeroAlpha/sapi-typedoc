@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync, readdirSync, statSync, mkdirSync } = require("fs");
+const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync, readdirSync, statSync, mkdirSync, utimesSync } = require("fs");
 const { createRequire } = require("module");
 const { resolve: resolvePath, relative: relativePath } = require("path");
 const { URL } = require("url");
@@ -45,6 +45,12 @@ function extractVersionInfo(versionString) {
         }
         return { version, gamePreRelease, gameVersion };
     }
+}
+
+function copyFileAndUpdateTimeSync(src, dest) {
+    const now = new Date();
+    copyFileSync(src, dest);
+    utimesSync(dest, now, now);
 }
 
 function walkFiles(directory, walker) {
@@ -164,7 +170,7 @@ async function main() {
                 throw new Error(`Cannot find any d.ts for ${moduleName}`);
             }
             if (dtsFiles.length === 1) {
-                copyFileSync(
+                copyFileAndUpdateTimeSync(
                     dtsFiles[0],
                     resolvePath(translatedPath, `${pureModuleName}.d.ts`)
                 );
@@ -179,7 +185,7 @@ async function main() {
                 dtsFiles.forEach((file) => {
                     const target = resolvePath(moduleRoot, relativePath(commonParent, file));
                     mkdirSync(resolvePath(target, ".."), { recursive: true });
-                    copyFileSync(file, target);
+                    copyFileAndUpdateTimeSync(file, target);
                 });
                 writeFileSync(resolvePath(translatedPath, `${pureModuleName}.d.ts`), exportStatement);
             }
