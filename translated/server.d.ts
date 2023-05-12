@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.3.0-internal.1.20.0-preview.23"
+ *   "version": "1.4.0-internal.1.20.0-preview.24"
  * }
  * ```
  *
@@ -443,12 +443,7 @@ export class AfterEvents {
      *
      */
     readonly explosion: ExplosionAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item completes charging.
-     *
-     */
-    readonly itemCompleteCharge: ItemCompleteChargeAfterEventSignal;
+    readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
     /**
      * @remarks
      * For custom items, this event is triggered when the
@@ -458,19 +453,8 @@ export class AfterEvents {
      *
      */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item is released from
-     * charging.
-     *
-     */
-    readonly itemReleaseCharge: ItemReleaseChargeAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item starts charging.
-     *
-     */
-    readonly itemStartCharge: ItemStartChargeAfterEventSignal;
+    readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
+    readonly itemStartUse: ItemStartUseAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player successfully uses an item or
@@ -481,12 +465,7 @@ export class AfterEvents {
      *
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item stops charging.
-     *
-     */
-    readonly itemStopCharge: ItemStopChargeAfterEventSignal;
+    readonly itemStopUse: ItemStopUseAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player releases the Use Item / Place
@@ -1072,6 +1051,21 @@ export class BlockLiquidContainerComponent extends BlockComponent {
 
 /**
  * @beta
+ * A BlockLocationIterator returns the next block location of
+ * the block volume across which it is iterating.
+ * The BlockLocationIterator is used to abstract the shape of
+ * the block volume it was fetched from (so it can represent
+ * all the block locations that make up rectangles, cubes,
+ * spheres, lines and complex shapes).
+ * Each iteration pass returns the next valid block location in
+ * the parent shape.
+ * Unless otherwise specified by the parent shape - the
+ * BlockLocationIterator will iterate over a 3D space in the
+ * order of increasing X, followed by increasing Z followed by
+ * increasing Y.
+ * (Effectively stepping across the XZ plane, and when all the
+ * locations in that plane are exhausted, increasing the Y
+ * coordinate to the next XZ slice)
  */
 export class BlockLocationIterator implements Iterable<Vector3> {
     protected constructor();
@@ -1575,79 +1569,139 @@ export class BlockType {
 
 /**
  * @beta
+ * Block Volume Utils is a utility class that provides a number
+ * of useful functions for the creation and utility of {@link
+ * @minecraft-server.BlockVolume} objects
  */
 export class BlockVolumeUtils {
     protected constructor();
     /**
      * @remarks
+     * Check to see if the given location is directly adjacent to
+     * the outer surface of a BlockVolume.
+     *
+     *
      * This function can't be called in read-only mode.
      *
+     * @param volume
+     * The volume to test against
+     * @param pos
+     * The world block location to test
+     * @returns
+     * If the location is either inside or more than 0 blocks away,
+     * the function will return false.
+     * If the location is directly contacting the outer surface of
+     * the BlockVolume, the function will return true.
      */
     static doesLocationTouchFaces(volume: BlockVolume, pos: Vector3): boolean;
     /**
      * @remarks
+     * Check to see if a two block volumes are directly adjacent
+     * and two faces touch.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param volume
+     * The volume to test against
+     * @param other
+     * The volume to test
+     * @returns
+     * If the outer faces of both block volumes touch and are
+     * directly adjacent at any point, return true.
      */
     static doesVolumeTouchFaces(volume: BlockVolume, other: BlockVolume): boolean;
     /**
      * @remarks
+     * Test the equality of two block volumes
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Return true if two block volumes are identical
      */
     static equals(volume: BlockVolume, other: BlockVolume): boolean;
     /**
      * @remarks
+     * Fetch a {@link BlockLocationIterator} that represents all of
+     * the block world locations within the specified volume
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getBlockLocationIterator(volume: BlockVolume): BlockLocationIterator;
     /**
      * @remarks
+     * Return a {@link BoundingBox} object which represents the
+     * validated min and max coordinates of the volume
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getBoundingBox(volume: BlockVolume): BoundingBox;
     /**
      * @remarks
+     * Return the capacity (volume) of the BlockVolume (W*D*H)
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getCapacity(volume: BlockVolume): number;
     /**
      * @remarks
+     * Get the largest corner position of the volume (guaranteed to
+     * be >= min)
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getMax(volume: BlockVolume): Vector3;
     /**
      * @remarks
+     * Get the smallest corner position of the volume (guaranteed
+     * to be <= max)
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getMin(volume: BlockVolume): Vector3;
     /**
      * @remarks
+     * Get a {@link Vector3} object where each component represents
+     * the number of blocks along that axis
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getSpan(volume: BlockVolume): Vector3;
     /**
      * @remarks
+     * Return an enumeration which represents the intersection
+     * between two BlockVolume objects
+     *
      * This function can't be called in read-only mode.
      *
      */
     static intersects(volume: BlockVolume, other: BlockVolume): BlockVolumeIntersection;
     /**
      * @remarks
+     * Check to see if a given world block location is inside a
+     * BlockVolume
+     *
      * This function can't be called in read-only mode.
      *
      */
-    static isInside(volume: BlockVolume, pos: Vector3): number;
+    static isInside(volume: BlockVolume, pos: Vector3): boolean;
     /**
      * @remarks
+     * Move a BlockVolume by a specified amount
+     *
      * This function can't be called in read-only mode.
      *
+     * @param delta
+     * Amount of blocks to move by
+     * @returns
+     * Returns a new BlockVolume object which represents the new
+     * volume
      */
     static translate(volume: BlockVolume, delta: Vector3): BlockVolume;
 }
@@ -1697,74 +1751,130 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
 
 /**
  * @beta
+ * Bounding Box Utils is a utility class that provides a number
+ * of useful functions for the creation and utility of {@link
+ * @minecraft-server.BoundingBox} objects
  */
 export class BoundingBoxUtils {
     protected constructor();
     /**
      * @remarks
+     * Create a validated instance of a {@link
+     * @minecraft-server.BoundingBox} where the min and max
+     * components are guaranteed to be (min <= max)
+     *
      * This function can't be called in read-only mode.
      *
+     * @param min
+     * A corner world location
+     * @param max
+     * A corner world location diametrically opposite
      */
     static createValid(min: Vector3, max: Vector3): BoundingBox;
     /**
      * @remarks
+     * Expand a {@link @minecraft-server.BoundingBox} by a given
+     * amount along each axis.
+     * Sizes can be negative to perform contraction.
+     * Note: corners can be inverted if the contraction size is
+     * greater than the span, but the min/max relationship will
+     * remain correct
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Return a new {@link @minecraft-server.BoundingBox} object
+     * representing the changes
      */
     static dilate(box: BoundingBox, size: Vector3): BoundingBox;
     /**
      * @remarks
+     * Check if two {@link @minecraft-server.BoundingBox} objects
+     * are identical
+     *
      * This function can't be called in read-only mode.
      *
      */
     static equals(box: BoundingBox, other: BoundingBox): boolean;
     /**
      * @remarks
+     * Expand the initial box object bounds to include the 2nd box
+     * argument.  The resultant {@link
+     * @minecraft-server.BoundingBox} object will be a BoundingBox
+     * which exactly encompasses the two boxes.
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * A new {@link @minecraft-server.BoundingBox} instance
+     * representing the smallest possible bounding box which can
+     * encompass both
      */
     static expand(box: BoundingBox, other: BoundingBox): BoundingBox;
     /**
      * @remarks
+     * Calculate the center block of a given {@link
+     * @minecraft-server.BoundingBox} object.
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Note that {@link @minecraft-server.BoundingBox} objects
+     * represent whole blocks, so the center of boxes which have
+     * odd numbered bounds are not mathematically centered...
+     * i.e. a BoundingBox( 0,0,0 -> 3,3,3 )  would have a center of
+     * (1,1,1)  (not (1.5, 1.5, 1.5) as expected)
      */
     static getCenter(box: BoundingBox): Vector3;
     /**
      * @remarks
+     * Calculate the BoundingBox which represents the union area of
+     * two intersecting BoundingBoxes
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox;
+    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
     /**
      * @remarks
+     * Get the Span of each of the BoundingBox Axis components
+     *
      * This function can't be called in read-only mode.
      *
      */
     static getSpan(box: BoundingBox): Vector3;
     /**
      * @remarks
+     * Check to see if two BoundingBox objects intersect
+     *
      * This function can't be called in read-only mode.
      *
      */
     static intersects(box: BoundingBox, other: BoundingBox): boolean;
     /**
      * @remarks
+     * Check to see if a given coordinate is inside a BoundingBox
+     *
      * This function can't be called in read-only mode.
      *
      */
     static isInside(box: BoundingBox, pos: Vector3): boolean;
     /**
      * @remarks
+     * Check to see if a BoundingBox is valid (i.e. (min <= max))
+     *
      * This function can't be called in read-only mode.
      *
      */
     static isValid(box: BoundingBox): boolean;
     /**
      * @remarks
+     * Move a BoundingBox by a given amount
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Return a new BoundingBox object which represents the change
      */
     static translate(box: BoundingBox, delta: Vector3): BoundingBox;
 }
@@ -1902,74 +2012,164 @@ export class Component {
 
 /**
  * @beta
+ * The Compound Block Volume is a collection of individual
+ * block volume definitions which, as a collection, define a
+ * larger volume of (sometimes non-contiguous) irregular
+ * shapes.
+ * This class is loosely based on the concept of CSG
+ * (Computational Solid Geometry) and allows a user to create
+ * complex volumes by building a stack of volumes and voids to
+ * make a larger single volume.
+ * For example - normally a creator would create a hollow cube
+ * by creating 6 "wall" surfaces for each face.
+ * With a Compound Block Volume, a creator can define a hollow
+ * cube by creating a single outer solid cube, and then
+ * defining a further single 'void' cube inside the larger one.
+ * Similarly, the Compound Block Volume can represent irregular
+ * shaped volumes (e.g. a tree consists of a trunk and lots of
+ * leaf cubes which are not necessarily contiguously placed)
  */
 export class CompoundBlockVolume {
+    /**
+     * @remarks
+     * Return the 'capacity' of the bounding rectangle which
+     * represents the collection of volumes in the stack
+     *
+     */
     readonly capacity: number;
+    /**
+     * @remarks
+     * Return the number of volumes (positive and negative) in the
+     * volume stack
+     *
+     */
     readonly volumeCount: number;
     /**
      * @remarks
+     * Clear the contents of the volume stack
+     *
      * This function can't be called in read-only mode.
      *
      */
     clear(): void;
     /**
      * @remarks
+     * Fetch a Block Location Iterator for the Compound Block
+     * Volume.  This iterator will allow a creator to iterate
+     * across all of the selected volumes within the larger
+     * bounding area.
+     * Areas of a volume which have been overridden by a
+     * subtractive volume will not be included in the iterator
+     * step.
+     * (i.e. if you push a cube to the stack, and then push a
+     * subtractive volume to the same location, then the iterator
+     * will step over the initial volume because it is considered
+     * negative space)
+     *
+     *
      * This function can't be called in read-only mode.
      *
      */
     getBlockLocationIterator(): BlockLocationIterator;
     /**
      * @remarks
+     * Get the largest bounding box that represents a container for
+     * all of the volumes on the stack
+     *
      * This function can't be called in read-only mode.
      *
      */
     getBoundingBox(): BoundingBox;
     /**
      * @remarks
+     * Get the max block location of the outermost bounding
+     * rectangle which represents the volumes on the stack
+     *
      * This function can't be called in read-only mode.
      *
      */
     getMax(): Vector3;
     /**
      * @remarks
+     * Get the min block location of the outermost bounding
+     * rectangle which represents the volumes on the stack
+     *
      * This function can't be called in read-only mode.
      *
      */
     getMin(): Vector3;
     /**
      * @remarks
+     * Return a boolean representing whether or not a given block
+     * location is inside a positive block volume.
+     * E.g. if the stack contains a large cube followed by a
+     * slightly smaller negative cube, and the test location is
+     * within the negative cube - the function will return false
+     * because it's not 'inside' a volume (it IS inside the
+     * bounding rectangle, but it is not inside a positively
+     * defined location)
+     *
      * This function can't be called in read-only mode.
      *
+     * @param delta
+     * block location to test
      */
     isInside(delta: Vector3): boolean;
     /**
      * @remarks
+     * Inspect the last entry pushed to the volume stack without
+     * affecting the stack contents
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Returns undefined if the stack is empty
      */
     peekLastVolume(): CompoundBlockVolumeItem | undefined;
     /**
      * @remarks
+     * Remove the last entry from the volume stack.  This will
+     * reduce the stack size by one
+     *
      * This function can't be called in read-only mode.
      *
      */
     popVolume(): boolean;
     /**
      * @remarks
+     * Push a volume item to the stack.  The volume item contains
+     * an 'action' parameter which determines whether this volume
+     * is a positive or negative space
+     *
      * This function can't be called in read-only mode.
      *
+     * @param item
+     * Item to push to the end of the stack
      */
     pushVolume(item: CompoundBlockVolumeItem): void;
     /**
      * @remarks
+     * If the volume stack is empty, this function will push the
+     * specified item to the stack.
+     * If the volume stack is NOT empty, this function will replace
+     * the last item on the stack with the new item.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param item
+     * Item to add or replace
      */
     replaceOrAddLastVolume(item: CompoundBlockVolumeItem): boolean;
     /**
      * @remarks
+     * Move the root block location of the volume by a given
+     * amount.  This effectively adds the specified delta to the
+     * block location of all of the volumes in the stack
+     *
      * This function can't be called in read-only mode.
      *
+     * @param delta
+     * Amount to move
      */
     translate(delta: Vector3): void;
 }
@@ -2188,6 +2388,13 @@ export class ContainerSlot {
      * Throws if the slot's container is invalid.
      */
     readonly isStackable: boolean;
+    /**
+     * @remarks
+     * Returns whether the ContainerSlot is valid. The container
+     * slot is valid if the container exists and is loaded, and the
+     * slot index is valid.
+     *
+     */
     readonly isValid: boolean;
     /**
      * @remarks
@@ -2256,12 +2463,11 @@ export class ContainerSlot {
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
      *
-     * This function can't be called in read-only mode.
-     *
-     * @throws
-     * Throws if the slot's container is invalid.
+     * @returns
+     * Returns a copy of the item in the slot. Returns undefined if
+     * the slot is empty.
+     * @throws This function can throw errors.
      */
-    clone(): ItemStack;
     getItem(): ItemStack | undefined;
     /**
      * @remarks
@@ -2275,7 +2481,27 @@ export class ContainerSlot {
      * Throws if the slot's container is invalid.
      */
     getLore(): string[];
+    /**
+     * @remarks
+     * Returns all tags for the item in the slot.
+     *
+     * @returns
+     * Returns all tags for the item in the slot. Return an empty
+     * array if the the slot is empty.
+     * @throws This function can throw errors.
+     */
     getTags(): string[];
+    /**
+     * @remarks
+     * Returns whether the item in the slot slot has the given tag.
+     *
+     * @param tag
+     * The item tag.
+     * @returns
+     * Returns false when the slot is empty or the item in the slot
+     * does not have the given tag.
+     * @throws This function can throw errors.
+     */
     hasTag(tag: string): boolean;
     /**
      * @remarks
@@ -2285,6 +2511,11 @@ export class ContainerSlot {
      * item stacks. The amount of each item stack is not taken into
      * consideration.
      *
+     * @param itemStack
+     * The ItemStack that is being compared.
+     * @returns
+     * Returns whether this item stack can be stacked with the
+     * given `itemStack`.
      * @throws
      * Throws if the slot's container is invalid.
      */
@@ -2297,6 +2528,8 @@ export class ContainerSlot {
      *
      * This function can't be called in read-only mode.
      *
+     * @param blockIdentifiers
+     * The list of blocks, given by their identifiers.
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
@@ -2311,6 +2544,8 @@ export class ContainerSlot {
      *
      * This function can't be called in read-only mode.
      *
+     * @param blockIdentifiers
+     * The list of blocks, given by their identifiers.
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
@@ -2318,8 +2553,13 @@ export class ContainerSlot {
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @remarks
+     * Sets the given ItemStack in the slot, replacing any existing
+     * item.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param itemStack
+     * The ItemStack to be placed in the slot.
      * @throws This function can throw errors.
      */
     setItem(itemStack?: ItemStack): void;
@@ -2330,6 +2570,9 @@ export class ContainerSlot {
      *
      * This function can't be called in read-only mode.
      *
+     * @param loreList
+     * A list of lore strings. Setting this argument to undefined
+     * will clear the lore.
      * @throws
      * Throws if the slot's container is invalid.
      */
@@ -2827,21 +3070,21 @@ export class DynamicPropertiesDefinition {
      *
      * @throws This function can throw errors.
      */
-    defineBoolean(identifier: string): DynamicPropertiesDefinition;
+    defineBoolean(identifier: string, defaultValue?: boolean): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a number dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineNumber(identifier: string): DynamicPropertiesDefinition;
+    defineNumber(identifier: string, defaultValue?: number): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a string dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineString(identifier: string, maxLength: number): DynamicPropertiesDefinition;
+    defineString(identifier: string, maxLength: number, defaultValue?: string): DynamicPropertiesDefinition;
 }
 
 /**
@@ -3173,6 +3416,16 @@ export class Entity {
      */
     readonly dimension: Dimension;
     /**
+     * @beta
+     * @remarks
+     * The distance an entity has fallen. The value is reset when
+     * the entity is teleported. The value is always 1 when gliding
+     * with Elytra.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly fallDistance: number;
+    /**
      * @remarks
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No
@@ -3185,6 +3438,41 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Whether the entity is touching a climbable block. For
+     * example, a player next to a ladder or a spider next to a
+     * stone wall.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isClimbing: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity has a fall distance greater than 0, or
+     * greater than 1 while gliding.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isFalling: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether any part of the entity is inside a water block.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isInWater: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is on top of a solid block.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isOnGround: boolean;
+    /**
+     * @beta
+     * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
@@ -3192,6 +3480,25 @@ export class Entity {
      *
      */
     isSneaking: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is sprinting. For example, a player using
+     * the sprint action, an ocelot running away or a pig boosting
+     * with Carrot on a Stick.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isSprinting: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is in the swimming state. For example, a
+     * player using the swim action or a fish in water.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isSwimming: boolean;
     /**
      * @beta
      * @remarks
@@ -3256,9 +3563,14 @@ export class Entity {
      * @param duration
      * Amount of time, in ticks, for the effect to apply. There are
      * 20 ticks per second. Use {@link TicksPerSecond} constant to
-     * convert between ticks and seconds.
+     * convert between ticks and seconds. The value must be within
+     * the range [0, 20000000].
      * @param options
      * Additional options for the effect.
+     * @returns
+     * Returns true if the effect was added successfully. This can
+     * fail if the duration or amplifier are outside of the valid
+     * ranges.
      * @throws This function can throw errors.
      * @example addEffect.js
      * ```typescript
@@ -3301,6 +3613,9 @@ export class Entity {
      *
      * @param tag
      * Content of the tag to add.
+     * @returns
+     * Returns true if the tag was added successfully. This can
+     * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
      */
     addTag(tag: string): boolean;
@@ -3317,6 +3632,10 @@ export class Entity {
      * Additional options about the source of damage, which may add
      * additional effects or spur additional behaviors on this
      * entity.
+     * @returns
+     * Whether the entity takes any damage. This can return false
+     * if the entity is invulnerable or if the damage applied is
+     * less than or equal to 0.
      * @throws This function can throw errors.
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -3375,6 +3694,8 @@ export class Entity {
      * @param useEffects
      * Whether to show any visual effects connected to the
      * extinguishing.
+     * @returns
+     * Returns whether the entity was on fire.
      * @throws This function can throw errors.
      */
     extinguishFire(useEffects?: boolean): boolean;
@@ -3384,6 +3705,11 @@ export class Entity {
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
      *
+     * @param options
+     * Additional configuration options for the ray cast.
+     * @returns
+     * Returns the first intersecting block from the direction that
+     * this entity is looking at.
      * @throws This function can throw errors.
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): Block;
@@ -3398,6 +3724,9 @@ export class Entity {
      * to retrieve. If no namespace prefix is specified,
      * 'minecraft:' is assumed. If the component is not present on
      * the entity, undefined is returned.
+     * @returns
+     * Returns the component if it exists on the entity, otherwise
+     * undefined.
      */
     getComponent(componentId: string): EntityComponent | undefined;
     /**
@@ -3406,6 +3735,9 @@ export class Entity {
      * Returns all components that are both present on this entity
      * and supported by the API.
      *
+     * @returns
+     * Returns all components that are both present on this entity
+     * and supported by the API.
      */
     getComponents(): EntityComponent[];
     /**
@@ -3413,6 +3745,8 @@ export class Entity {
      * @remarks
      * Returns a property value.
      *
+     * @param identifier
+     * The property identifier.
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
@@ -3425,6 +3759,8 @@ export class Entity {
      * Returns the effect for the specified EffectType on the
      * entity, or undefined if the effect is not present.
      *
+     * @param effectType
+     * The effect identifier.
      * @returns
      * Effect object for the specified effect, or undefined if the
      * effect is not present.
@@ -3444,9 +3780,14 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Returns a potential set of entities from the direction that
-     * this entity is looking at.
+     * Gets the entities that this entity is looking at by
+     * performing a ray cast from the view of this entity.
      *
+     * @param options
+     * Additional configuration options for the ray cast.
+     * @returns
+     * Returns a set of entities from the direction that this
+     * entity is looking at.
      * @throws This function can throw errors.
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
@@ -3456,6 +3797,9 @@ export class Entity {
      * Returns the current location of the head component of this
      * entity.
      *
+     * @returns
+     * Returns the current location of the head component of this
+     * entity.
      * @throws This function can throw errors.
      */
     getHeadLocation(): Vector3;
@@ -3464,6 +3808,8 @@ export class Entity {
      * @remarks
      * Returns the current rotation component of this entity.
      *
+     * @returns
+     * Returns the current rotation component of this entity.
      * @throws This function can throw errors.
      */
     getRotation(): Vector2;
@@ -3472,6 +3818,8 @@ export class Entity {
      * @remarks
      * Returns all tags associated with an entity.
      *
+     * @returns
+     * Returns the current rotation component of this entity.
      * @throws This function can throw errors.
      */
     getTags(): string[];
@@ -3480,6 +3828,8 @@ export class Entity {
      * @remarks
      * Returns the current velocity vector of the entity.
      *
+     * @returns
+     * Returns the current velocity vector of the entity.
      * @throws This function can throw errors.
      */
     getVelocity(): Vector3;
@@ -3488,6 +3838,8 @@ export class Entity {
      * @remarks
      * Returns the current view direction of the entity.
      *
+     * @returns
+     * Returns the current view direction of the entity.
      * @throws This function can throw errors.
      */
     getViewDirection(): Vector3;
@@ -3501,15 +3853,20 @@ export class Entity {
      * The identifier of the component (e.g., 'minecraft:rideable')
      * to retrieve. If no namespace prefix is specified,
      * 'minecraft:' is assumed.
+     * @returns
+     * Returns true if the specified component is present on this
+     * entity.
      */
     hasComponent(componentId: string): boolean;
     /**
      * @beta
      * @remarks
-     * Tests whether an entity has a particular tag.
+     * Returns whether an entity has a particular tag.
      *
      * @param tag
      * Identifier of the tag to test for.
+     * @returns
+     * Returns whether an entity has a particular tag.
      * @throws This function can throw errors.
      */
     hasTag(tag: string): boolean;
@@ -3529,8 +3886,15 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Cause the entity to play the given animation.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param animationName
+     * The animation identifier. e.g. animation.creeper.swelling
+     * @param options
+     * Additional options to control the playback and transitions
+     * of the animation.
      * @throws This function can throw errors.
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
@@ -3539,6 +3903,10 @@ export class Entity {
      * @remarks
      * Removes a specified property.
      *
+     * @param identifier
+     * The property identifier.
+     * @returns
+     * Returns whether the given property existed on the entity.
      * @throws This function can throw errors.
      */
     removeDynamicProperty(identifier: string): boolean;
@@ -3550,6 +3918,8 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
+     * @param effectType
+     * The effect identifier.
      * @returns
      * Returns true if the effect has been removed and false if the
      * effect is not present.
@@ -3565,6 +3935,8 @@ export class Entity {
      *
      * @param tag
      * Content of the tag to remove.
+     * @returns
+     * Returns whether the tag existed on the entity.
      * @throws This function can throw errors.
      */
     removeTag(tag: string): boolean;
@@ -3575,6 +3947,12 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
+     * @param commandString
+     * The command string. Note: This should not include a leading
+     * forward slash.
+     * @returns
+     * A command result containing whether the command was
+     * successful.
      * @throws This function can throw errors.
      */
     runCommand(commandString: string): CommandResult;
@@ -3598,6 +3976,8 @@ export class Entity {
      * @remarks
      * Sets a specified property to a value.
      *
+     * @param identifier
+     * The property identifier.
      * @param value
      * Data value of the property to set.
      * @throws This function can throw errors.
@@ -3614,6 +3994,14 @@ export class Entity {
      *
      * @param seconds
      * Length of time to set the entity on fire.
+     * @param useEffects
+     * Whether side-effects should be applied (e.g. thawing freeze)
+     * and other conditions such as rain or fire protection should
+     * be taken into consideration.
+     * @returns
+     * Whether the entity was set on fire. This can fail if seconds
+     * is less than or equal to zero, the entity is wet or the
+     * entity is immune to fire.
      * @throws This function can throw errors.
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -3624,6 +4012,10 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
+     * @param rotation
+     * The x and y rotation of the entity. For most mobs, the x
+     * rotation controls the head tilt and the y rotation controls
+     * the body rotation.
      * @throws This function can throw errors.
      */
     setRotation(rotation: Vector2): void;
@@ -3636,6 +4028,8 @@ export class Entity {
      *
      * @param location
      * New location for the entity.
+     * @param teleportOptions
+     * Options regarding the teleport operation.
      * @throws This function can throw errors.
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
@@ -3668,6 +4062,10 @@ export class Entity {
      * Location to teleport the entity to.
      * @param teleportOptions
      * Options regarding the teleport operation.
+     * @returns
+     * Returns whether the teleport succeeded. This can fail if the
+     * destination chunk is unloaded or if the teleport would
+     * result in intersecting with blocks.
      * @throws This function can throw errors.
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
@@ -3758,8 +4156,10 @@ export class EntityAgeableComponent extends EntityComponent {
  */
 export class EntityAttributeComponent extends EntityComponent {
     protected constructor();
-    readonly current: number;
-    readonly value: number;
+    readonly currentValue: number;
+    readonly defaultValue: number;
+    readonly effectiveMax: number;
+    readonly effectiveMin: number;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -3787,7 +4187,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): boolean;
+    setCurrentValue(value: number): boolean;
 }
 
 /**
@@ -4025,28 +4425,51 @@ export class EntityDieAfterEventSignal extends IEntityDieAfterEventSignal {
 
 /**
  * @beta
+ * Provides access to a mob's equipment slots. This component
+ * exists for all mob entities.
  */
 export class EntityEquipmentInventoryComponent extends EntityComponent {
     protected constructor();
     static readonly componentId = 'minecraft:equipment_inventory';
     /**
      * @remarks
+     * Gets the equipped item for the given EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand"
+     * @returns
+     * Returns the item equipped to the given EquipmentSlot. If
+     * empty, returns undefined.
      * @throws This function can throw errors.
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
      * @remarks
+     * Gets the ContainerSlot corresponding to the given
+     * EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand".
+     * @returns
+     * Returns the ContainerSlot corresponding to the given
+     * EquipmentSlot.
      * @throws This function can throw errors.
      */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
      * @remarks
+     * Replaces the item in the given EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand".
+     * @param itemStack
+     * The item to equip. If undefined, clears the slot.
      * @throws This function can throw errors.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): void;
@@ -4154,13 +4577,6 @@ export class EntityGroundOffsetComponent extends EntityComponent {
  */
 export class EntityHealableComponent extends EntityComponent {
     protected constructor();
-    /**
-     * @remarks
-     * A set of filters for when these Healable items would apply.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly filters: FilterGroup;
     /**
      * @remarks
      * Determines if an item can be used regardless of the entity
@@ -6131,24 +6547,22 @@ export class IExplosionBeforeEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after an item has completed charging.
  */
-export class IItemCompleteChargeAfterEventSignal {
+export class IItemCompleteUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): (arg: ItemCompleteChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
 }
 
 /**
@@ -6201,46 +6615,42 @@ export class IItemDefinitionBeforeEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a charged item is released.
  */
-export class IItemReleaseChargeAfterEventSignal {
+export class IItemReleaseUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): (arg: ItemReleaseChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
 }
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when a chargeable item starts charging.
  */
-export class IItemStartChargeAfterEventSignal {
+export class IItemStartUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStartChargeAfterEvent) => void): (arg: ItemStartChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStartChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
 }
 
 /**
@@ -6268,24 +6678,22 @@ export class IItemStartUseOnAfterEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when an item stops charging.
  */
-export class IItemStopChargeAfterEventSignal {
+export class IItemStopUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStopChargeAfterEvent) => void): (arg: ItemStopChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStopChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
 }
 
 /**
@@ -6606,7 +7014,7 @@ export class IServerMessageAfterEventSignal {
  * Contains information related to a chargeable item completing
  * being charged.
  */
-export class ItemCompleteChargeAfterEvent {
+export class ItemCompleteUseAfterEvent {
     protected constructor();
     /**
      * @remarks
@@ -6634,7 +7042,7 @@ export class ItemCompleteChargeAfterEvent {
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.
  */
-export class ItemCompleteChargeAfterEventSignal extends IItemCompleteChargeAfterEventSignal {
+export class ItemCompleteUseAfterEventSignal extends IItemCompleteUseAfterEventSignal {
     protected constructor();
 }
 
@@ -6891,7 +7299,7 @@ export class ItemFoodComponent extends ItemComponent {
  * player has finished using the item and released the build
  * action.
  */
-export class ItemReleaseChargeAfterEvent {
+export class ItemReleaseUseAfterEvent {
     protected constructor();
     /**
      * @remarks
@@ -6919,7 +7327,7 @@ export class ItemReleaseChargeAfterEvent {
  * Manages callbacks that are connected to the releasing of
  * charging for a chargeable item.
  */
-export class ItemReleaseChargeAfterEventSignal extends IItemReleaseChargeAfterEventSignal {
+export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7186,7 +7594,7 @@ export class ItemStack {
  * Contains information related to a chargeable item starting
  * to be charged.
  */
-export class ItemStartChargeAfterEvent {
+export class ItemStartUseAfterEvent {
     protected constructor();
     /**
      * @remarks
@@ -7214,7 +7622,7 @@ export class ItemStartChargeAfterEvent {
  * Manages callbacks that are connected to the start of
  * charging for a chargeable item.
  */
-export class ItemStartChargeAfterEventSignal extends IItemStartChargeAfterEventSignal {
+export class ItemStartUseAfterEventSignal extends IItemStartUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7269,7 +7677,7 @@ export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSig
  * finished an items use cycle, or when the player has released
  * the use action with the item.
  */
-export class ItemStopChargeAfterEvent {
+export class ItemStopUseAfterEvent {
     protected constructor();
     /**
      * @remarks
@@ -7298,7 +7706,7 @@ export class ItemStopChargeAfterEvent {
  * charging for an item that has a registered
  * minecraft:chargeable component.
  */
-export class ItemStopChargeAfterEventSignal extends IItemStopChargeAfterEventSignal {
+export class ItemStopUseAfterEventSignal extends IItemStopUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7925,6 +8333,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly blackGlazedTerracotta: BlockType;
+    static readonly blackShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a blackstone block within Minecraft.
@@ -7987,6 +8396,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly blueIce: BlockType;
+    static readonly blueShulkerBox: BlockType;
     static readonly blueWool: BlockType;
     /**
      * @remarks
@@ -8056,6 +8466,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly brownMushroomBlock: BlockType;
+    static readonly brownShulkerBox: BlockType;
     static readonly brownWool: BlockType;
     /**
      * @remarks
@@ -8585,6 +8996,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly cyanGlazedTerracotta: BlockType;
+    static readonly cyanShulkerBox: BlockType;
     static readonly cyanWool: BlockType;
     /**
      * @remarks
@@ -10018,6 +10430,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly grayGlazedTerracotta: BlockType;
+    static readonly grayShulkerBox: BlockType;
     static readonly grayWool: BlockType;
     /**
      * @remarks
@@ -10039,6 +10452,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly greenGlazedTerracotta: BlockType;
+    static readonly greenShulkerBox: BlockType;
     static readonly greenWool: BlockType;
     /**
      * @remarks
@@ -10330,6 +10744,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: BlockType;
+    static readonly lightBlueShulkerBox: BlockType;
     static readonly lightBlueWool: BlockType;
     /**
      * @remarks
@@ -10344,6 +10759,7 @@ export class MinecraftBlockTypes {
      */
     static readonly lightGrayCandleCake: BlockType;
     static readonly lightGrayCarpet: BlockType;
+    static readonly lightGrayShulkerBox: BlockType;
     static readonly lightGrayWool: BlockType;
     /**
      * @remarks
@@ -10377,6 +10793,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly limeGlazedTerracotta: BlockType;
+    static readonly limeShulkerBox: BlockType;
     static readonly limeWool: BlockType;
     /**
      * @remarks
@@ -10452,6 +10869,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly magentaGlazedTerracotta: BlockType;
+    static readonly magentaShulkerBox: BlockType;
     static readonly magentaWool: BlockType;
     /**
      * @remarks
@@ -10669,6 +11087,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly orangeGlazedTerracotta: BlockType;
+    static readonly orangeShulkerBox: BlockType;
     static readonly orangeWool: BlockType;
     /**
      * @remarks
@@ -10731,6 +11150,7 @@ export class MinecraftBlockTypes {
      */
     static readonly pinkGlazedTerracotta: BlockType;
     static readonly pinkPetals: BlockType;
+    static readonly pinkShulkerBox: BlockType;
     static readonly pinkWool: BlockType;
     /**
      * @remarks
@@ -10977,6 +11397,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly purpleGlazedTerracotta: BlockType;
+    static readonly purpleShulkerBox: BlockType;
     static readonly purpleWool: BlockType;
     /**
      * @remarks
@@ -11102,6 +11523,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly redSandstoneStairs: BlockType;
+    static readonly redShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a block of redstone within Minecraft.
@@ -11223,12 +11645,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly shroomlight: BlockType;
-    /**
-     * @remarks
-     * Represents a shulker box within Minecraft.
-     *
-     */
-    static readonly shulkerBox: BlockType;
     /**
      * @remarks
      * Represents a silver-colored block of glazed terracotta
@@ -12069,6 +12485,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly whiteGlazedTerracotta: BlockType;
+    static readonly whiteShulkerBox: BlockType;
     static readonly whiteWool: BlockType;
     /**
      * @remarks
@@ -12132,6 +12549,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly yellowGlazedTerracotta: BlockType;
+    static readonly yellowShulkerBox: BlockType;
     static readonly yellowWool: BlockType;
     /**
      * @remarks
@@ -12661,6 +13079,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blackGlazedTerracotta: ItemType;
+    static readonly blackShulkerBox: ItemType;
     /**
      * @remarks
      * Represents an item that can place a blackstone block within
@@ -12723,6 +13142,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blueIce: ItemType;
+    static readonly blueShulkerBox: ItemType;
     static readonly blueWool: ItemType;
     static readonly boat: ItemType;
     static readonly bone: ItemType;
@@ -12806,6 +13226,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly brownMushroomBlock: ItemType;
+    static readonly brownShulkerBox: ItemType;
     static readonly brownWool: ItemType;
     static readonly brush: ItemType;
     static readonly bubbleCoral: ItemType;
@@ -13298,6 +13719,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly cyanGlazedTerracotta: ItemType;
+    static readonly cyanShulkerBox: ItemType;
     static readonly cyanWool: ItemType;
     static readonly dangerPotterySherd: ItemType;
     static readonly darkOakBoat: ItemType;
@@ -13927,6 +14349,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly grayGlazedTerracotta: ItemType;
+    static readonly grayShulkerBox: ItemType;
     static readonly grayWool: ItemType;
     /**
      * @remarks
@@ -13944,6 +14367,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly greenGlazedTerracotta: ItemType;
+    static readonly greenShulkerBox: ItemType;
     static readonly greenWool: ItemType;
     /**
      * @remarks
@@ -14242,6 +14666,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: ItemType;
+    static readonly lightBlueShulkerBox: ItemType;
     static readonly lightBlueWool: ItemType;
     /**
      * @remarks
@@ -14252,6 +14677,7 @@ export class MinecraftItemTypes {
     static readonly lightGrayCandle: ItemType;
     static readonly lightGrayCarpet: ItemType;
     static readonly lightGrayDye: ItemType;
+    static readonly lightGrayShulkerBox: ItemType;
     static readonly lightGrayWool: ItemType;
     /**
      * @remarks
@@ -14283,6 +14709,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly limeGlazedTerracotta: ItemType;
+    static readonly limeShulkerBox: ItemType;
     static readonly limeWool: ItemType;
     static readonly lingeringPotion: ItemType;
     /**
@@ -14336,6 +14763,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly magentaGlazedTerracotta: ItemType;
+    static readonly magentaShulkerBox: ItemType;
     static readonly magentaWool: ItemType;
     /**
      * @remarks
@@ -14608,6 +15036,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly orangeGlazedTerracotta: ItemType;
+    static readonly orangeShulkerBox: ItemType;
     static readonly orangeWool: ItemType;
     /**
      * @remarks
@@ -14674,6 +15103,7 @@ export class MinecraftItemTypes {
      */
     static readonly pinkGlazedTerracotta: ItemType;
     static readonly pinkPetals: ItemType;
+    static readonly pinkShulkerBox: ItemType;
     static readonly pinkWool: ItemType;
     /**
      * @remarks
@@ -14888,6 +15318,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly purpleGlazedTerracotta: ItemType;
+    static readonly purpleShulkerBox: ItemType;
     static readonly purpleWool: ItemType;
     /**
      * @remarks
@@ -15036,6 +15467,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly redSandstoneStairs: ItemType;
+    static readonly redShulkerBox: ItemType;
     static readonly redstone: ItemType;
     /**
      * @remarks
@@ -15969,6 +16401,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly whiteGlazedTerracotta: ItemType;
+    static readonly whiteShulkerBox: ItemType;
     static readonly whiteWool: ItemType;
     static readonly wildArmorTrimSmithingTemplate: ItemType;
     static readonly witchSpawnEgg: ItemType;
@@ -16052,6 +16485,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly yellowGlazedTerracotta: ItemType;
+    static readonly yellowShulkerBox: ItemType;
     static readonly yellowWool: ItemType;
     static readonly zoglinSpawnEgg: ItemType;
     static readonly zombieHorseSpawnEgg: ItemType;
@@ -16207,6 +16641,32 @@ export class PistonActivateBeforeEventSignal extends IPistonActivateBeforeEventS
  */
 export class Player extends Entity {
     protected constructor();
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is flying. For example, in Creative or
+     * Spectator mode.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isFlying: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is gliding with Elytra.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isGliding: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is jumping. This will remain true while
+     * the player is holding the jump action.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isJumping: boolean;
     /**
      * @beta
      * @remarks
@@ -17852,17 +18312,83 @@ export interface BlockRaycastOptions {
 
 /**
  * @beta
+ * A BlockVolume is a simple interface to an object which
+ * represents a 3D rectangle of a given size (in blocks) at a
+ * world block location.
+ * Note that these are not analogous to "min" and "max" values,
+ * in that the vector components are not guaranteed to be in
+ * any order.
+ * In addition, these vector positions are not interchangeable
+ * with BlockLocation.
+ * If you want to get this volume represented as range of of
+ * BlockLocations, you can use the getBoundingBox utility
+ * function.
+ * This volume class will maintain the ordering of the corner
+ * indexes as initially set. imagine that each corner is
+ * assigned in Editor - as you move the corner around
+ * (potentially inverting the min/max relationship of the
+ * bounds) - what
+ * you had originally selected as the top/left corner would
+ * traditionally become the bottom/right.
+ * When manually editing these kinds of volumes, you need to
+ * maintain the identity of the corner as you edit - the
+ * BlockVolume utility functions do this.
+ *
+ * Important to note that this measures block sizes (to/from) -
+ * a normal AABB (0,0,0) to (0,0,0) would traditionally be of
+ * size (0,0,0)
+ * However, because we're measuring blocks - the size or span
+ * of a BlockVolume would actually be (1,1,1)
+ *
  */
 export interface BlockVolume {
+    /**
+     * @remarks
+     * A world block location that represents a corner in a 3D
+     * rectangle
+     *
+     */
     from: Vector3;
+    /**
+     * @remarks
+     * A world block location that represents the opposite corner
+     * in a 3D rectangle
+     *
+     */
     to: Vector3;
 }
 
 /**
  * @beta
+ * A BoundingBox is an interface to an object which represents
+ * an AABB aligned rectangle.
+ * The BoundingBox assumes that it was created in a valid state
+ * (min <= max) but cannot guarantee it (unless it was created
+ * using the associated {@link
+ * @minecraft-server.BoundingBoxUtils} utility functions.
+ * The min/max coordinates represent the diametrically opposite
+ * corners of the rectangle.
+ * The BoundingBox is not a representation of blocks - it has
+ * no association with any type, it is just a mathematical
+ * construct - so a rectangle with
+ * ( 0,0,0 ) -> ( 0,0,0 )
+ * has a size of ( 0,0,0 ) (unlike the very similar {@link
+ * BlockVolume} object)
  */
 export interface BoundingBox {
+    /**
+     * @remarks
+     * A {@link @minecraft-server.Vector3} that represents the
+     * largest corner of the rectangle
+     *
+     */
     max: Vector3;
+    /**
+     * @remarks
+     * A {@link @minecraft-server.Vector3} that represents the
+     * smallest corner of the rectangle
+     *
+     */
     min: Vector3;
 }
 
@@ -17903,9 +18429,27 @@ export interface Color {
 
 /**
  * @beta
+ * This interface defines an entry into the {@link
+ * @minecraft-server/CompoundBlockVolume} which represents a
+ * volume of positive or negative space.
+ *
  */
 export interface CompoundBlockVolumeItem {
+    /**
+     * @remarks
+     * The 'action' defines how the block volume is represented in
+     * the compound block volume stack.
+     * 'Add' creates a block volume which is positively selected
+     * 'Subtract' creates a block volume which represents a hole or
+     * negative space in the overall compound block volume.
+     *
+     */
     action: CompoundBlockVolumeAction;
+    /**
+     * @remarks
+     * The volume of space
+     *
+     */
     volume: BlockVolume;
 }
 

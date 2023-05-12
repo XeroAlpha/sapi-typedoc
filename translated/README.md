@@ -6,14 +6,14 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.3.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.4.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.0-preview.23`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.10-preview.24`|
 
-游戏版本号：`1.20.0.23`
+游戏版本号：`1.20.0.24`
 
 <!-- summary end -->
 
@@ -232,13 +232,13 @@ Minecraft 脚本 API 文档。
 |[`IEntitySpawnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntitySpawnAfterEventSignal.html)|类|未翻译|
 |[`IExplosionAfterEventSignal`](https://projectxero.top/sapi/classes/server.IExplosionAfterEventSignal.html)|类|未翻译|
 |[`IExplosionBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IExplosionBeforeEventSignal.html)|类|未翻译|
-|[`IItemCompleteChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemCompleteChargeAfterEventSignal.html)|类|未翻译|
+|[`IItemCompleteUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemCompleteUseAfterEventSignal.html)|类|未翻译|
 |[`IItemDefinitionAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemDefinitionAfterEventSignal.html)|类|未翻译|
 |[`IItemDefinitionBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IItemDefinitionBeforeEventSignal.html)|类|未翻译|
-|[`IItemReleaseChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemReleaseChargeAfterEventSignal.html)|类|未翻译|
-|[`IItemStartChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStartChargeAfterEventSignal.html)|类|未翻译|
+|[`IItemReleaseUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemReleaseUseAfterEventSignal.html)|类|未翻译|
+|[`IItemStartUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStartUseAfterEventSignal.html)|类|未翻译|
 |[`IItemStartUseOnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStartUseOnAfterEventSignal.html)|类|未翻译|
-|[`IItemStopChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStopChargeAfterEventSignal.html)|类|未翻译|
+|[`IItemStopUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStopUseAfterEventSignal.html)|类|未翻译|
 |[`IItemStopUseOnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemStopUseOnAfterEventSignal.html)|类|未翻译|
 |[`IItemUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseAfterEventSignal.html)|类|未翻译|
 |[`IItemUseBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IItemUseBeforeEventSignal.html)|类|未翻译|
@@ -256,8 +256,8 @@ Minecraft 脚本 API 文档。
 |[`IWatchdogTerminateBeforeEventSignal`](https://projectxero.top/sapi/classes/server.IWatchdogTerminateBeforeEventSignal.html)|类|未翻译|
 |[`IWeatherChangeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IWeatherChangeAfterEventSignal.html)|类|未翻译|
 |[`IWorldInitializeAfterEventSignal`](https://projectxero.top/sapi/classes/server.IWorldInitializeAfterEventSignal.html)|类|未翻译|
-|[`ItemCompleteChargeAfterEvent`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeAfterEvent.html)|类|未翻译|
-|[`ItemCompleteChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemCompleteChargeAfterEventSignal.html)|类|未翻译|
+|[`ItemCompleteUseAfterEvent`](https://projectxero.top/sapi/classes/server.ItemCompleteUseAfterEvent.html)|类|未翻译|
+|[`ItemCompleteUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemCompleteUseAfterEventSignal.html)|类|未翻译|
 |[`ItemComponent`](https://projectxero.top/sapi/classes/server.ItemComponent.html)|类|未翻译|
 |[`ItemCooldownComponent`](https://projectxero.top/sapi/classes/server.ItemCooldownComponent.html)|类|未翻译|
 |[`ItemDefinitionAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemDefinitionAfterEventSignal.html)|类|未翻译|
@@ -267,15 +267,15 @@ Minecraft 脚本 API 文档。
 |[`ItemDurabilityComponent`](https://projectxero.top/sapi/classes/server.ItemDurabilityComponent.html)|类|未翻译|
 |[`ItemEnchantsComponent`](https://projectxero.top/sapi/classes/server.ItemEnchantsComponent.html)|类|未翻译|
 |[`ItemFoodComponent`](https://projectxero.top/sapi/classes/server.ItemFoodComponent.html)|类|未翻译|
-|[`ItemReleaseChargeAfterEvent`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeAfterEvent.html)|类|未翻译|
-|[`ItemReleaseChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemReleaseChargeAfterEventSignal.html)|类|未翻译|
+|[`ItemReleaseUseAfterEvent`](https://projectxero.top/sapi/classes/server.ItemReleaseUseAfterEvent.html)|类|未翻译|
+|[`ItemReleaseUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemReleaseUseAfterEventSignal.html)|类|未翻译|
 |[`ItemStack`](https://projectxero.top/sapi/classes/server.ItemStack.html)|类|未翻译|
-|[`ItemStartChargeAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStartChargeAfterEvent.html)|类|未翻译|
-|[`ItemStartChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStartChargeAfterEventSignal.html)|类|未翻译|
+|[`ItemStartUseAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStartUseAfterEvent.html)|类|未翻译|
+|[`ItemStartUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStartUseAfterEventSignal.html)|类|未翻译|
 |[`ItemStartUseOnAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStartUseOnAfterEvent.html)|类|未翻译|
 |[`ItemStartUseOnAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStartUseOnAfterEventSignal.html)|类|未翻译|
-|[`ItemStopChargeAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStopChargeAfterEvent.html)|类|未翻译|
-|[`ItemStopChargeAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStopChargeAfterEventSignal.html)|类|未翻译|
+|[`ItemStopUseAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStopUseAfterEvent.html)|类|未翻译|
+|[`ItemStopUseAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStopUseAfterEventSignal.html)|类|未翻译|
 |[`ItemStopUseOnAfterEvent`](https://projectxero.top/sapi/classes/server.ItemStopUseOnAfterEvent.html)|类|未翻译|
 |[`ItemStopUseOnAfterEventSignal`](https://projectxero.top/sapi/classes/server.ItemStopUseOnAfterEventSignal.html)|类|未翻译|
 |[`ItemType`](https://projectxero.top/sapi/classes/server.ItemType.html)|类|未翻译|
