@@ -55,9 +55,9 @@ function copyFileAndUpdateTimeSync(src, dest) {
 
 function walkFiles(directory, walker) {
     const files = readdirSync(directory, { withFileTypes: true });
+    walker(directory, null, directory);
     files.forEach((file) => {
         if (file.isDirectory()) {
-            walker(directory, null, directory);
             walkFiles(resolvePath(directory, file.name), walker);
         } else {
             walker(directory, file.name, resolvePath(directory, file.name));
@@ -137,10 +137,15 @@ function kindToString(kind) {
 
 async function main() {
     // 1. 强制检出 original 分支
-    execSync("git checkout original", {
-        cwd: basePath,
-        stdio: "inherit"
-    });
+    const head = execSync("git rev-parse --abbrev-ref HEAD", {
+        cwd: basePath
+    }).toString("utf-8").trim();
+    if (head !== "original" && head !== "HEAD") {
+        execSync("git checkout original", {
+            cwd: basePath,
+            stdio: "inherit"
+        });
+    }
 
     // 2. 删除 node_modules
     rmSync(resolvePath(originalPath, "node_modules"), { recursive: true, force: true });
@@ -163,7 +168,10 @@ async function main() {
             const dtsFiles = [];
             walkFiles(modulePath, (dir, file, path) => {
                 if (file && file.endsWith(".d.ts")) {
-                    dtsFiles.push(path);
+                    const relPath = relativePath(modulePath, path);
+                    if (!relPath.includes("node_modules")) {
+                        dtsFiles.push(path);
+                    }
                 }
             });
             if (dtsFiles.length < 1) {
@@ -252,6 +260,10 @@ async function main() {
         .replace(/<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/, summaryLines.join("\n"))
         .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
     writeFileSync(readMePath, newReadMe);
+
+    // 7. 生成 package.json 快照
+    const packageSnapshotPath = resolvePath(translatedPath, "package.json");
+    writeFileSync(packageSnapshotPath, JSON.stringify({ dependencies }, null, 2));
 }
 
 main().catch((err) => {

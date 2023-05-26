@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.0-preview.25"
+ *   "version": "1.0.0-internal.1.20.10-preview.20"
  * }
  * ```
  *
@@ -456,6 +456,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
     disconnect(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    fly(): void;
+    /**
+     * @remarks
      * Gives the simulated player a particular item stack.
      *
      * This function can't be called in read-only mode.
@@ -467,6 +474,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    glide(): boolean;
     /**
      * @remarks
      * Performs a raycast from the player’s head and interacts with
@@ -710,6 +724,20 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopBreakingBlock(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopFlying(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopGliding(): void;
+    /**
+     * @remarks
      * Stops interacting with entities or blocks.
      *
      * This function can't be called in read-only mode.
@@ -729,6 +757,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopMoving(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopSwimming(): void;
+    /**
+     * @remarks
      * Stops using the currently active item.
      *
      * This function can't be called in read-only mode.
@@ -736,6 +771,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     stopUsingItem(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    swim(): void;
     /**
      * @remarks
      * Causes the simulated player to use an item. Does not consume
@@ -1161,7 +1203,7 @@ export class Test {
      * test.assertEntityState(
      *   villagerPos,
      *   "minecraft:villager_v2",
-     *   (entity) => entity.getEffect(MinecraftEffectTypes.regeneration).duration > 120
+     *   (entity) => entity.getEffect(MinecraftEffectTypes.Regeneration).duration > 120
      * ); // At least 6 seconds remaining in the villagers' effect
      * ```
      */

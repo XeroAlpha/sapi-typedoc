@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.3.0-internal.1.20.0-preview.25"
+ *   "version": "1.4.0-internal.1.20.10-preview.20"
  * }
  * ```
  *
@@ -417,6 +417,7 @@ export class AfterEvents {
      *
      */
     readonly entityDie: EntityDieAfterEventSignal;
+    readonly entityHealthChanged: EntityHealthChangedAfterEventSignal;
     /**
      * @remarks
      * This event fires when an entity hits (makes a melee attack)
@@ -443,12 +444,7 @@ export class AfterEvents {
      *
      */
     readonly explosion: ExplosionAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item completes charging.
-     *
-     */
-    readonly itemCompleteCharge: ItemCompleteChargeAfterEventSignal;
+    readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
     /**
      * @remarks
      * For custom items, this event is triggered when the
@@ -458,19 +454,8 @@ export class AfterEvents {
      *
      */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item is released from
-     * charging.
-     *
-     */
-    readonly itemReleaseCharge: ItemReleaseChargeAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item starts charging.
-     *
-     */
-    readonly itemStartCharge: ItemStartChargeAfterEventSignal;
+    readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
+    readonly itemStartUse: ItemStartUseAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player successfully uses an item or
@@ -481,12 +466,7 @@ export class AfterEvents {
      *
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
-    /**
-     * @remarks
-     * This event fires when a chargeable item stops charging.
-     *
-     */
-    readonly itemStopCharge: ItemStopChargeAfterEventSignal;
+    readonly itemStopUse: ItemStopUseAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player releases the Use Item / Place
@@ -550,12 +530,16 @@ export class AfterEvents {
      *
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
+    readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
+    readonly pressurePlatePush: PressurePlatePushAfterEventSignal;
     /**
      * @remarks
      * This event fires when a projectile hits an entity or block.
      *
      */
     readonly projectileHit: ProjectileHitAfterEventSignal;
+    readonly targetBlockHit: TargetBlockHitAfterEventSignal;
+    readonly tripWireTrip: TripWireTripAfterEventSignal;
     /**
      * @remarks
      * This event will be triggered when the weather changes within
@@ -1709,7 +1693,7 @@ export class BlockVolumeUtils {
      * This function can't be called in read-only mode.
      *
      */
-    static isInside(volume: BlockVolume, pos: Vector3): number;
+    static isInside(volume: BlockVolume, pos: Vector3): boolean;
     /**
      * @remarks
      * Move a BlockVolume by a specified amount
@@ -1852,9 +1836,8 @@ export class BoundingBoxUtils {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox;
+    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
     /**
      * @remarks
      * Get the Span of each of the BoundingBox Axis components
@@ -2479,20 +2462,6 @@ export class ContainerSlot {
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
      *
-     * This function can't be called in read-only mode.
-     *
-     * @returns
-     * Returns a copy of the item in the slot. Returns undefined if
-     * the slot is empty.
-     * @throws
-     * Throws if the slot's container is invalid.
-     */
-    clone(): ItemStack;
-    /**
-     * @remarks
-     * Creates an exact copy of the item stack, including any
-     * custom data or properties.
-     *
      * @returns
      * Returns a copy of the item in the slot. Returns undefined if
      * the slot is empty.
@@ -2997,7 +2966,7 @@ export class Dimension {
      *   y: targetLocation.y + 2,
      *   z: targetLocation.z + 3,
      * });
-     * fox.addEffect(mc.MinecraftEffectTypes.speed, 10, 20);
+     * fox.addEffect(mc.MinecraftEffectTypes.Speed, 10, 20);
      * log("Created a fox.");
      *
      * const wolf = overworld.spawnEntity("minecraft:wolf", {
@@ -3005,7 +2974,7 @@ export class Dimension {
      *   y: targetLocation.y + 2,
      *   z: targetLocation.z + 3,
      * });
-     * wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, 20);
+     * wolf.addEffect(mc.MinecraftEffectTypes.Slowness, 10, 20);
      * wolf.isSneaking = true;
      * log("Created a sneaking wolf.", 1);
      * ```
@@ -3095,21 +3064,21 @@ export class DynamicPropertiesDefinition {
      *
      * @throws This function can throw errors.
      */
-    defineBoolean(identifier: string): DynamicPropertiesDefinition;
+    defineBoolean(identifier: string, defaultValue?: boolean): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a number dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineNumber(identifier: string): DynamicPropertiesDefinition;
+    defineNumber(identifier: string, defaultValue?: number): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a string dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineString(identifier: string, maxLength: number): DynamicPropertiesDefinition;
+    defineString(identifier: string, maxLength: number, defaultValue?: string): DynamicPropertiesDefinition;
 }
 
 /**
@@ -3441,6 +3410,16 @@ export class Entity {
      */
     readonly dimension: Dimension;
     /**
+     * @beta
+     * @remarks
+     * The distance an entity has fallen. The value is reset when
+     * the entity is teleported. The value is always 1 when gliding
+     * with Elytra.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly fallDistance: number;
+    /**
      * @remarks
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No
@@ -3453,6 +3432,41 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Whether the entity is touching a climbable block. For
+     * example, a player next to a ladder or a spider next to a
+     * stone wall.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isClimbing: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity has a fall distance greater than 0, or
+     * greater than 1 while gliding.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isFalling: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether any part of the entity is inside a water block.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isInWater: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is on top of a solid block.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isOnGround: boolean;
+    /**
+     * @beta
+     * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
@@ -3460,6 +3474,25 @@ export class Entity {
      *
      */
     isSneaking: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is sprinting. For example, a player using
+     * the sprint action, an ocelot running away or a pig boosting
+     * with Carrot on a Stick.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isSprinting: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the entity is in the swimming state. For example, a
+     * player using the swim action or a fish in water.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isSwimming: boolean;
     /**
      * @beta
      * @remarks
@@ -3550,7 +3583,7 @@ export class Entity {
      *     y: targetLocation.y + 2,
      *     z: targetLocation.z + 3,
      * });
-     * fox.addEffect(mc.MinecraftEffectTypes.speed, 10, { amplifier: 20 });
+     * fox.addEffect(mc.MinecraftEffectTypes.Speed, 10, { amplifier: 20 });
      * log('Created a fox.');
      *
      * const wolf = overworld.spawnEntity('minecraft:wolf', {
@@ -3558,12 +3591,12 @@ export class Entity {
      *     y: targetLocation.y + 2,
      *     z: targetLocation.z + 3,
      * });
-     * wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, { amplifier: 20 });
+     * wolf.addEffect(mc.MinecraftEffectTypes.Slowness, 10, { amplifier: 20 });
      * wolf.isSneaking = true;
      * log('Created a sneaking wolf.', 1);
      * ```
      */
-    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): boolean;
+    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void;
     /**
      * @beta
      * @remarks
@@ -4119,8 +4152,10 @@ export class EntityAgeableComponent extends EntityComponent {
  */
 export class EntityAttributeComponent extends EntityComponent {
     protected constructor();
-    readonly current: number;
-    readonly value: number;
+    readonly currentValue: number;
+    readonly defaultValue: number;
+    readonly effectiveMax: number;
+    readonly effectiveMin: number;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -4148,7 +4183,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @throws This function can throw errors.
      */
-    setCurrent(value: number): boolean;
+    setCurrentValue(value: number): boolean;
 }
 
 /**
@@ -4540,13 +4575,6 @@ export class EntityHealableComponent extends EntityComponent {
     protected constructor();
     /**
      * @remarks
-     * A set of filters for when these Healable items would apply.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly filters: FilterGroup;
-    /**
-     * @remarks
      * Determines if an item can be used regardless of the entity
      * being at full health.
      *
@@ -4569,6 +4597,43 @@ export class EntityHealableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     getFeedItems(): FeedItem[];
+}
+
+/**
+ * @beta
+ * Contains information related to an entity when its health
+ * changes. Warning: don't change the health of an entity in
+ * this event, or it will cause an infinite loop!
+ */
+export class EntityHealthChangedAfterEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * Entity whose health changed.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * New health value of the entity.
+     *
+     */
+    readonly newValue: number;
+    /**
+     * @remarks
+     * Old health value of the entity.
+     *
+     */
+    readonly oldValue: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when the health of
+ * an entity changes.
+ */
+export class EntityHealthChangedAfterEventSignal extends IEntityHealthChangedAfterEventSignal {
+    protected constructor();
 }
 
 /**
@@ -6375,6 +6440,29 @@ export class IEntityDieAfterEventSignal {
 
 /**
  * @beta
+ */
+export class IEntityHealthChangedAfterEventSignal {
+    protected constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: EntityHealthChangedAfterEvent) => void,
+        options?: EntityEventOptions,
+    ): (arg: EntityHealthChangedAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires when an entity hits (melee attacks)
  * another entity.
@@ -6515,24 +6603,22 @@ export class IExplosionBeforeEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after an item has completed charging.
  */
-export class IItemCompleteChargeAfterEventSignal {
+export class IItemCompleteUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): (arg: ItemCompleteChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
 }
 
 /**
@@ -6585,46 +6671,42 @@ export class IItemDefinitionBeforeEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a charged item is released.
  */
-export class IItemReleaseChargeAfterEventSignal {
+export class IItemReleaseUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): (arg: ItemReleaseChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
 }
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when a chargeable item starts charging.
  */
-export class IItemStartChargeAfterEventSignal {
+export class IItemStartUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStartChargeAfterEvent) => void): (arg: ItemStartChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStartChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
 }
 
 /**
@@ -6652,24 +6734,22 @@ export class IItemStartUseOnAfterEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when an item stops charging.
  */
-export class IItemStopChargeAfterEventSignal {
+export class IItemStopUseAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStopChargeAfterEvent) => void): (arg: ItemStopChargeAfterEvent) => void;
+    subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStopChargeAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
 }
 
 /**
@@ -6917,6 +6997,46 @@ export class IPlayerSpawnAfterEventSignal {
 
 /**
  * @beta
+ */
+export class IPressurePlatePopAfterEventSignal {
+    protected constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PressurePlatePopAfterEvent) => void): (arg: PressurePlatePopAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class IPressurePlatePushAfterEventSignal {
+    protected constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PressurePlatePushAfterEvent) => void): (arg: PressurePlatePushAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PressurePlatePushAfterEvent) => void): void;
+}
+
+/**
+ * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires after a projectile hits a target.
  */
@@ -6988,17 +7108,57 @@ export class IServerMessageAfterEventSignal {
 /**
  * @beta
  */
-export class ItemCompleteChargeAfterEvent {
+export class ITargetBlockHitAfterEventSignal {
     protected constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to a chargeable item completing
+ * being charged.
+ */
+export class ItemCompleteUseAfterEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * Returns the item stack that has completed charging.
+     *
+     */
     readonly itemStack: ItemStack;
+    /**
+     * @remarks
+     * Returns the source entity that triggered this item event.
+     *
+     */
     readonly source: Entity;
+    /**
+     * @remarks
+     * Returns the time, in ticks, for the remaining duration left
+     * before the charge completes its cycle.
+     *
+     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
+ * Manages callbacks that are connected to the completion of
+ * charging for a chargeable item.
  */
-export class ItemCompleteChargeAfterEventSignal extends IItemCompleteChargeAfterEventSignal {
+export class ItemCompleteUseAfterEventSignal extends IItemCompleteUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7251,18 +7411,39 @@ export class ItemFoodComponent extends ItemComponent {
 
 /**
  * @beta
+ * Contains information related to a chargeable item when the
+ * player has finished using the item and released the build
+ * action.
  */
-export class ItemReleaseChargeAfterEvent {
+export class ItemReleaseUseAfterEvent {
     protected constructor();
+    /**
+     * @remarks
+     * Returns the item stack that triggered this item event.
+     *
+     */
     readonly itemStack: ItemStack;
+    /**
+     * @remarks
+     * Returns the source entity that triggered this item event.
+     *
+     */
     readonly source: Entity;
+    /**
+     * @remarks
+     * Returns the time, in ticks, for the remaining duration left
+     * before the charge completes its cycle.
+     *
+     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
+ * Manages callbacks that are connected to the releasing of
+ * charging for a chargeable item.
  */
-export class ItemReleaseChargeAfterEventSignal extends IItemReleaseChargeAfterEventSignal {
+export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7522,18 +7703,38 @@ export class ItemStack {
 
 /**
  * @beta
+ * Contains information related to a chargeable item starting
+ * to be charged.
  */
-export class ItemStartChargeAfterEvent {
+export class ItemStartUseAfterEvent {
     protected constructor();
+    /**
+     * @remarks
+     * The impacted item stack that is starting to be charged.
+     *
+     */
     readonly itemStack: ItemStack;
+    /**
+     * @remarks
+     * Returns the source entity that triggered this item event.
+     *
+     */
     readonly source: Entity;
+    /**
+     * @remarks
+     * Returns the time, in ticks, for the remaining duration left
+     * before the charge completes its cycle.
+     *
+     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
+ * Manages callbacks that are connected to the start of
+ * charging for a chargeable item.
  */
-export class ItemStartChargeAfterEventSignal extends IItemStartChargeAfterEventSignal {
+export class ItemStartUseAfterEventSignal extends IItemStartUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7584,18 +7785,40 @@ export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSig
 
 /**
  * @beta
+ * Contains information related to a chargeable item has
+ * finished an items use cycle, or when the player has released
+ * the use action with the item.
  */
-export class ItemStopChargeAfterEvent {
+export class ItemStopUseAfterEvent {
     protected constructor();
+    /**
+     * @remarks
+     * The impacted item stack that is stopping being charged.
+     *
+     */
     readonly itemStack: ItemStack;
+    /**
+     * @remarks
+     * Returns the source entity that triggered this item event.
+     *
+     */
     readonly source: Entity;
+    /**
+     * @remarks
+     * Returns the time, in ticks, for the remaining duration left
+     * before the charge completes its cycle.
+     *
+     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
+ * Manages callbacks that are connected to the stopping of
+ * charging for an item that has a registered
+ * minecraft:chargeable component.
  */
-export class ItemStopChargeAfterEventSignal extends IItemStopChargeAfterEventSignal {
+export class ItemStopUseAfterEventSignal extends IItemStopUseAfterEventSignal {
     protected constructor();
 }
 
@@ -7819,6 +8042,26 @@ export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
  */
 export class ItemUseOnBeforeEventSignal extends IItemUseOnBeforeEventSignal {
     protected constructor();
+}
+
+/**
+ * @beta
+ */
+export class ITripWireTripAfterEventSignal {
+    protected constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
 }
 
 /**
@@ -8216,12 +8459,14 @@ export class MinecraftBlockTypes {
      */
     static readonly blackCandleCake: BlockType;
     static readonly blackCarpet: BlockType;
+    static readonly blackConcrete: BlockType;
     /**
      * @remarks
      * Represents a black glazed terracotta block within Minecraft.
      *
      */
     static readonly blackGlazedTerracotta: BlockType;
+    static readonly blackShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a blackstone block within Minecraft.
@@ -8272,6 +8517,7 @@ export class MinecraftBlockTypes {
      */
     static readonly blueCandleCake: BlockType;
     static readonly blueCarpet: BlockType;
+    static readonly blueConcrete: BlockType;
     /**
      * @remarks
      * Represents a blue glazed terracotta block within Minecraft.
@@ -8284,6 +8530,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly blueIce: BlockType;
+    static readonly blueShulkerBox: BlockType;
     static readonly blueWool: BlockType;
     /**
      * @remarks
@@ -8335,6 +8582,7 @@ export class MinecraftBlockTypes {
      */
     static readonly brownCandleCake: BlockType;
     static readonly brownCarpet: BlockType;
+    static readonly brownConcrete: BlockType;
     /**
      * @remarks
      * Represents a brown glazed terracotta block within Minecraft.
@@ -8353,6 +8601,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly brownMushroomBlock: BlockType;
+    static readonly brownShulkerBox: BlockType;
     static readonly brownWool: BlockType;
     /**
      * @remarks
@@ -8636,12 +8885,6 @@ export class MinecraftBlockTypes {
      * Represents a block of concrete powder within Minecraft.
      *
      */
-    static readonly concrete: BlockType;
-    /**
-     * @remarks
-     * Represents a block of concrete powder within Minecraft.
-     *
-     */
     static readonly concretePowder: BlockType;
     /**
      * @remarks
@@ -8875,6 +9118,7 @@ export class MinecraftBlockTypes {
      */
     static readonly cyanCandleCake: BlockType;
     static readonly cyanCarpet: BlockType;
+    static readonly cyanConcrete: BlockType;
     /**
      * @remarks
      * Represents a block of cyan-colored glazed terracotta within
@@ -8882,6 +9126,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly cyanGlazedTerracotta: BlockType;
+    static readonly cyanShulkerBox: BlockType;
     static readonly cyanWool: BlockType;
     /**
      * @remarks
@@ -10308,6 +10553,7 @@ export class MinecraftBlockTypes {
      */
     static readonly grayCandleCake: BlockType;
     static readonly grayCarpet: BlockType;
+    static readonly grayConcrete: BlockType;
     /**
      * @remarks
      * Represents a gray-colored block of glazed terracotta within
@@ -10315,6 +10561,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly grayGlazedTerracotta: BlockType;
+    static readonly grayShulkerBox: BlockType;
     static readonly grayWool: BlockType;
     /**
      * @remarks
@@ -10329,6 +10576,7 @@ export class MinecraftBlockTypes {
      */
     static readonly greenCandleCake: BlockType;
     static readonly greenCarpet: BlockType;
+    static readonly greenConcrete: BlockType;
     /**
      * @remarks
      * Represents a green block of glazed terracotta within
@@ -10336,6 +10584,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly greenGlazedTerracotta: BlockType;
+    static readonly greenShulkerBox: BlockType;
     static readonly greenWool: BlockType;
     /**
      * @remarks
@@ -10620,6 +10869,7 @@ export class MinecraftBlockTypes {
      */
     static readonly lightBlueCandleCake: BlockType;
     static readonly lightBlueCarpet: BlockType;
+    static readonly lightBlueConcrete: BlockType;
     /**
      * @remarks
      * Represents a light blue block of glazed terracotta within
@@ -10627,6 +10877,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: BlockType;
+    static readonly lightBlueShulkerBox: BlockType;
     static readonly lightBlueWool: BlockType;
     /**
      * @remarks
@@ -10641,6 +10892,8 @@ export class MinecraftBlockTypes {
      */
     static readonly lightGrayCandleCake: BlockType;
     static readonly lightGrayCarpet: BlockType;
+    static readonly lightGrayConcrete: BlockType;
+    static readonly lightGrayShulkerBox: BlockType;
     static readonly lightGrayWool: BlockType;
     /**
      * @remarks
@@ -10667,6 +10920,7 @@ export class MinecraftBlockTypes {
      */
     static readonly limeCandleCake: BlockType;
     static readonly limeCarpet: BlockType;
+    static readonly limeConcrete: BlockType;
     /**
      * @remarks
      * Represents a lime-colored block of glazed terracotta within
@@ -10674,6 +10928,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly limeGlazedTerracotta: BlockType;
+    static readonly limeShulkerBox: BlockType;
     static readonly limeWool: BlockType;
     /**
      * @remarks
@@ -10742,6 +10997,7 @@ export class MinecraftBlockTypes {
      */
     static readonly magentaCandleCake: BlockType;
     static readonly magentaCarpet: BlockType;
+    static readonly magentaConcrete: BlockType;
     /**
      * @remarks
      * Represents a block of magenta-colored glazed terracotta
@@ -10749,6 +11005,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly magentaGlazedTerracotta: BlockType;
+    static readonly magentaShulkerBox: BlockType;
     static readonly magentaWool: BlockType;
     /**
      * @remarks
@@ -10959,6 +11216,7 @@ export class MinecraftBlockTypes {
      */
     static readonly orangeCandleCake: BlockType;
     static readonly orangeCarpet: BlockType;
+    static readonly orangeConcrete: BlockType;
     /**
      * @remarks
      * Represents a block of orange-colored glazed terracotta
@@ -10966,6 +11224,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly orangeGlazedTerracotta: BlockType;
+    static readonly orangeShulkerBox: BlockType;
     static readonly orangeWool: BlockType;
     /**
      * @remarks
@@ -11020,6 +11279,7 @@ export class MinecraftBlockTypes {
      */
     static readonly pinkCandleCake: BlockType;
     static readonly pinkCarpet: BlockType;
+    static readonly pinkConcrete: BlockType;
     /**
      * @remarks
      * Represents a pink-colored block of glazed terracotta within
@@ -11028,6 +11288,7 @@ export class MinecraftBlockTypes {
      */
     static readonly pinkGlazedTerracotta: BlockType;
     static readonly pinkPetals: BlockType;
+    static readonly pinkShulkerBox: BlockType;
     static readonly pinkWool: BlockType;
     /**
      * @remarks
@@ -11267,6 +11528,7 @@ export class MinecraftBlockTypes {
      */
     static readonly purpleCandleCake: BlockType;
     static readonly purpleCarpet: BlockType;
+    static readonly purpleConcrete: BlockType;
     /**
      * @remarks
      * Represents a purple-colored block of glazed terracotta
@@ -11274,6 +11536,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly purpleGlazedTerracotta: BlockType;
+    static readonly purpleShulkerBox: BlockType;
     static readonly purpleWool: BlockType;
     /**
      * @remarks
@@ -11349,6 +11612,7 @@ export class MinecraftBlockTypes {
      */
     static readonly redCandleCake: BlockType;
     static readonly redCarpet: BlockType;
+    static readonly redConcrete: BlockType;
     /**
      * @remarks
      * Represents a red flower within Minecraft.
@@ -11399,6 +11663,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly redSandstoneStairs: BlockType;
+    static readonly redShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a block of redstone within Minecraft.
@@ -11520,12 +11785,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly shroomlight: BlockType;
-    /**
-     * @remarks
-     * Represents a shulker box within Minecraft.
-     *
-     */
-    static readonly shulkerBox: BlockType;
     /**
      * @remarks
      * Represents a silver-colored block of glazed terracotta
@@ -12359,6 +12618,7 @@ export class MinecraftBlockTypes {
      */
     static readonly whiteCandleCake: BlockType;
     static readonly whiteCarpet: BlockType;
+    static readonly whiteConcrete: BlockType;
     /**
      * @remarks
      * Represents a block of white glazed terracotta within
@@ -12366,6 +12626,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly whiteGlazedTerracotta: BlockType;
+    static readonly whiteShulkerBox: BlockType;
     static readonly whiteWool: BlockType;
     /**
      * @remarks
@@ -12416,6 +12677,7 @@ export class MinecraftBlockTypes {
      */
     static readonly yellowCandleCake: BlockType;
     static readonly yellowCarpet: BlockType;
+    static readonly yellowConcrete: BlockType;
     /**
      * @remarks
      * Represents a yellow flower within Minecraft.
@@ -12429,6 +12691,7 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly yellowGlazedTerracotta: BlockType;
+    static readonly yellowShulkerBox: BlockType;
     static readonly yellowWool: BlockType;
     /**
      * @remarks
@@ -12486,7 +12749,6 @@ export class MinecraftDimensionTypes {
 
 /**
  * @beta
- * Returns available installed effect types within Minecraft.
  */
 export class MinecraftEffectTypes {
     protected constructor();
@@ -12950,6 +13212,7 @@ export class MinecraftItemTypes {
      */
     static readonly blackCandle: ItemType;
     static readonly blackCarpet: ItemType;
+    static readonly blackConcrete: ItemType;
     static readonly blackDye: ItemType;
     /**
      * @remarks
@@ -12958,6 +13221,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blackGlazedTerracotta: ItemType;
+    static readonly blackShulkerBox: ItemType;
     /**
      * @remarks
      * Represents an item that can place a blackstone block within
@@ -13005,6 +13269,7 @@ export class MinecraftItemTypes {
      */
     static readonly blueCandle: ItemType;
     static readonly blueCarpet: ItemType;
+    static readonly blueConcrete: ItemType;
     static readonly blueDye: ItemType;
     /**
      * @remarks
@@ -13020,6 +13285,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blueIce: ItemType;
+    static readonly blueShulkerBox: ItemType;
     static readonly blueWool: ItemType;
     static readonly boat: ItemType;
     static readonly bone: ItemType;
@@ -13081,6 +13347,7 @@ export class MinecraftItemTypes {
      */
     static readonly brownCandle: ItemType;
     static readonly brownCarpet: ItemType;
+    static readonly brownConcrete: ItemType;
     static readonly brownDye: ItemType;
     /**
      * @remarks
@@ -13103,6 +13370,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly brownMushroomBlock: ItemType;
+    static readonly brownShulkerBox: ItemType;
     static readonly brownWool: ItemType;
     static readonly brush: ItemType;
     static readonly bubbleCoral: ItemType;
@@ -13587,6 +13855,7 @@ export class MinecraftItemTypes {
      */
     static readonly cyanCandle: ItemType;
     static readonly cyanCarpet: ItemType;
+    static readonly cyanConcrete: ItemType;
     static readonly cyanDye: ItemType;
     /**
      * @remarks
@@ -13595,6 +13864,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly cyanGlazedTerracotta: ItemType;
+    static readonly cyanShulkerBox: ItemType;
     static readonly cyanWool: ItemType;
     static readonly dangerPotterySherd: ItemType;
     static readonly darkOakBoat: ItemType;
@@ -14216,6 +14486,7 @@ export class MinecraftItemTypes {
      */
     static readonly grayCandle: ItemType;
     static readonly grayCarpet: ItemType;
+    static readonly grayConcrete: ItemType;
     static readonly grayDye: ItemType;
     /**
      * @remarks
@@ -14224,6 +14495,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly grayGlazedTerracotta: ItemType;
+    static readonly grayShulkerBox: ItemType;
     static readonly grayWool: ItemType;
     /**
      * @remarks
@@ -14233,6 +14505,7 @@ export class MinecraftItemTypes {
      */
     static readonly greenCandle: ItemType;
     static readonly greenCarpet: ItemType;
+    static readonly greenConcrete: ItemType;
     static readonly greenDye: ItemType;
     /**
      * @remarks
@@ -14241,6 +14514,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly greenGlazedTerracotta: ItemType;
+    static readonly greenShulkerBox: ItemType;
     static readonly greenWool: ItemType;
     /**
      * @remarks
@@ -14531,6 +14805,7 @@ export class MinecraftItemTypes {
      */
     static readonly lightBlueCandle: ItemType;
     static readonly lightBlueCarpet: ItemType;
+    static readonly lightBlueConcrete: ItemType;
     static readonly lightBlueDye: ItemType;
     /**
      * @remarks
@@ -14539,6 +14814,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: ItemType;
+    static readonly lightBlueShulkerBox: ItemType;
     static readonly lightBlueWool: ItemType;
     /**
      * @remarks
@@ -14548,7 +14824,9 @@ export class MinecraftItemTypes {
      */
     static readonly lightGrayCandle: ItemType;
     static readonly lightGrayCarpet: ItemType;
+    static readonly lightGrayConcrete: ItemType;
     static readonly lightGrayDye: ItemType;
+    static readonly lightGrayShulkerBox: ItemType;
     static readonly lightGrayWool: ItemType;
     /**
      * @remarks
@@ -14572,6 +14850,7 @@ export class MinecraftItemTypes {
      */
     static readonly limeCandle: ItemType;
     static readonly limeCarpet: ItemType;
+    static readonly limeConcrete: ItemType;
     static readonly limeDye: ItemType;
     /**
      * @remarks
@@ -14580,6 +14859,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly limeGlazedTerracotta: ItemType;
+    static readonly limeShulkerBox: ItemType;
     static readonly limeWool: ItemType;
     static readonly lingeringPotion: ItemType;
     /**
@@ -14625,6 +14905,7 @@ export class MinecraftItemTypes {
      */
     static readonly magentaCandle: ItemType;
     static readonly magentaCarpet: ItemType;
+    static readonly magentaConcrete: ItemType;
     static readonly magentaDye: ItemType;
     /**
      * @remarks
@@ -14633,6 +14914,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly magentaGlazedTerracotta: ItemType;
+    static readonly magentaShulkerBox: ItemType;
     static readonly magentaWool: ItemType;
     /**
      * @remarks
@@ -14897,6 +15179,7 @@ export class MinecraftItemTypes {
      */
     static readonly orangeCandle: ItemType;
     static readonly orangeCarpet: ItemType;
+    static readonly orangeConcrete: ItemType;
     static readonly orangeDye: ItemType;
     /**
      * @remarks
@@ -14905,6 +15188,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly orangeGlazedTerracotta: ItemType;
+    static readonly orangeShulkerBox: ItemType;
     static readonly orangeWool: ItemType;
     /**
      * @remarks
@@ -14962,6 +15246,7 @@ export class MinecraftItemTypes {
      */
     static readonly pinkCandle: ItemType;
     static readonly pinkCarpet: ItemType;
+    static readonly pinkConcrete: ItemType;
     static readonly pinkDye: ItemType;
     /**
      * @remarks
@@ -14971,6 +15256,7 @@ export class MinecraftItemTypes {
      */
     static readonly pinkGlazedTerracotta: ItemType;
     static readonly pinkPetals: ItemType;
+    static readonly pinkShulkerBox: ItemType;
     static readonly pinkWool: ItemType;
     /**
      * @remarks
@@ -15177,6 +15463,7 @@ export class MinecraftItemTypes {
      */
     static readonly purpleCandle: ItemType;
     static readonly purpleCarpet: ItemType;
+    static readonly purpleConcrete: ItemType;
     static readonly purpleDye: ItemType;
     /**
      * @remarks
@@ -15185,6 +15472,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly purpleGlazedTerracotta: ItemType;
+    static readonly purpleShulkerBox: ItemType;
     static readonly purpleWool: ItemType;
     /**
      * @remarks
@@ -15276,6 +15564,7 @@ export class MinecraftItemTypes {
      */
     static readonly redCandle: ItemType;
     static readonly redCarpet: ItemType;
+    static readonly redConcrete: ItemType;
     static readonly redDye: ItemType;
     /**
      * @remarks
@@ -15333,6 +15622,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly redSandstoneStairs: ItemType;
+    static readonly redShulkerBox: ItemType;
     static readonly redstone: ItemType;
     /**
      * @remarks
@@ -16258,6 +16548,7 @@ export class MinecraftItemTypes {
      */
     static readonly whiteCandle: ItemType;
     static readonly whiteCarpet: ItemType;
+    static readonly whiteConcrete: ItemType;
     static readonly whiteDye: ItemType;
     /**
      * @remarks
@@ -16266,6 +16557,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly whiteGlazedTerracotta: ItemType;
+    static readonly whiteShulkerBox: ItemType;
     static readonly whiteWool: ItemType;
     static readonly wildArmorTrimSmithingTemplate: ItemType;
     static readonly witchSpawnEgg: ItemType;
@@ -16334,6 +16626,7 @@ export class MinecraftItemTypes {
      */
     static readonly yellowCandle: ItemType;
     static readonly yellowCarpet: ItemType;
+    static readonly yellowConcrete: ItemType;
     static readonly yellowDye: ItemType;
     /**
      * @remarks
@@ -16349,6 +16642,7 @@ export class MinecraftItemTypes {
      *
      */
     static readonly yellowGlazedTerracotta: ItemType;
+    static readonly yellowShulkerBox: ItemType;
     static readonly yellowWool: ItemType;
     static readonly zoglinSpawnEgg: ItemType;
     static readonly zombieHorseSpawnEgg: ItemType;
@@ -16504,6 +16798,32 @@ export class PistonActivateBeforeEventSignal extends IPistonActivateBeforeEventS
  */
 export class Player extends Entity {
     protected constructor();
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is flying. For example, in Creative or
+     * Spectator mode.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isFlying: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is gliding with Elytra.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isGliding: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Whether the player is jumping. This will remain true while
+     * the player is holding the jump action.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isJumping: boolean;
     /**
      * @beta
      * @remarks
@@ -16890,6 +17210,76 @@ export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
 
 /**
  * @beta
+ * Contains information related to changes to a pressure plate
+ * pop.
+ */
+export class PressurePlatePopAfterEvent extends BlockEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * The redstone power of the pressure plate before it was
+     * popped.
+     *
+     */
+    readonly previousRedstonePower: number;
+    /**
+     * @remarks
+     * The redstone power of the pressure plate at the time of the
+     * pop.
+     *
+     */
+    readonly redstonePower: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a pressure
+ * plate is popped.
+ */
+export class PressurePlatePopAfterEventSignal extends IPressurePlatePopAfterEventSignal {
+    protected constructor();
+}
+
+/**
+ * @beta
+ * Contains information related to changes to a pressure plate
+ * push.
+ */
+export class PressurePlatePushAfterEvent extends BlockEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * The redstone power of the pressure plate before it was
+     * pushed.
+     *
+     */
+    readonly previousRedstonePower: number;
+    /**
+     * @remarks
+     * The redstone power of the pressure plate at the time of the
+     * push.
+     *
+     */
+    readonly redstonePower: number;
+    /**
+     * @remarks
+     * Source that triggered the pressure plate push.
+     *
+     */
+    readonly source: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a pressure
+ * plate is pushed.
+ */
+export class PressurePlatePushAfterEventSignal extends IPressurePlatePushAfterEventSignal {
+    protected constructor();
+}
+
+/**
+ * @beta
  * Contains information related to a projectile hitting an
  * entity or block.
  */
@@ -17264,15 +17654,6 @@ export class ScreenDisplay {
     protected constructor();
     /**
      * @remarks
-     * Clears the title and subtitle, if currently displayed.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    clearTitle(): void;
-    /**
-     * @remarks
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
      *
@@ -17280,18 +17661,19 @@ export class ScreenDisplay {
      *
      * @throws This function can throw errors.
      */
-    setActionBar(text: string): void;
+    setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @remarks
      * Will cause a title to show up on the player's on screen
-     * display. You can optionally specify an additional subtitle
-     * as well as fade in, stay and fade out times.
+     * display. Will clear the title if set to empty string. You
+     * can optionally specify an additional subtitle as well as
+     * fade in, stay and fade out times.
      *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setTitle(title: string, options?: TitleDisplayOptions): void;
+    setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
      * @remarks
      * Updates the subtitle if the subtitle was previously
@@ -17301,7 +17683,7 @@ export class ScreenDisplay {
      *
      * @throws This function can throw errors.
      */
-    updateSubtitle(subtitle: string): void;
+    updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }
 
 /**
@@ -17511,6 +17893,48 @@ export class SystemEvents {
 
 /**
  * @beta
+ * Contains information related to changes to a target block
+ * hit.
+ */
+export class TargetBlockHitAfterEvent extends BlockEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * The position where the source hit the block.
+     *
+     */
+    readonly hitVector: Vector3;
+    /**
+     * @remarks
+     * The redstone power before the block is hit.
+     *
+     */
+    readonly previousRedstonePower: number;
+    /**
+     * @remarks
+     * The redstone power at the time the block is hit.
+     *
+     */
+    readonly redstonePower: number;
+    /**
+     * @remarks
+     * Optional source that hit the target block.
+     *
+     */
+    readonly source: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a target block
+ * is hit.
+ */
+export class TargetBlockHitAfterEventSignal extends ITargetBlockHitAfterEventSignal {
+    protected constructor();
+}
+
+/**
+ * @beta
  * Represents a trigger for firing an event.
  */
 export class Trigger {
@@ -17526,6 +17950,35 @@ export class Trigger {
      *
      */
     constructor(eventName: string);
+}
+
+/**
+ * @beta
+ * Contains information related to changes to a trip wire trip.
+ */
+export class TripWireTripAfterEvent extends BlockEvent {
+    protected constructor();
+    /**
+     * @remarks
+     * Whether or not the block has redstone power.
+     *
+     */
+    readonly isPowered: boolean;
+    /**
+     * @remarks
+     * The sources that triggered the trip wire to trip.
+     *
+     */
+    readonly sources: Entity[];
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a trip wire is
+ * tripped.
+ */
+export class TripWireTripAfterEventSignal extends ITripWireTripAfterEventSignal {
+    protected constructor();
 }
 
 /**
@@ -17661,6 +18114,7 @@ export class Vector {
      * @remarks
      * Returns the component-wise division of these vectors.
      *
+     * @throws This function can throw errors.
      */
     static divide(a: Vector3, b: number | Vector3): Vector;
     /**
@@ -18915,28 +19369,35 @@ export interface TeleportOptions {
 export interface TitleDisplayOptions {
     /**
      * @remarks
-     * Fade-in time for the title and subtitle, in seconds.
+     * Fade-in duration for the title and subtitle, in ticks. There
+     * are 20 ticks per second. Use {@link TicksPerSecond} constant
+     * to convert between ticks and seconds.
      *
      */
-    fadeInSeconds: number;
+    fadeInDuration: number;
     /**
      * @remarks
-     * Fade-out time for the title and subtitle, in seconds.
+     * Fade-out time for the title and subtitle, in ticks. There
+     * are 20 ticks per second. Use {@link TicksPerSecond} constant
+     * to convert between ticks and seconds.
      *
      */
-    fadeOutSeconds: number;
+    fadeOutDuration: number;
     /**
      * @remarks
-     * Amount of time for the title and subtitle to stay in place.
+     * Amount of time for the title and subtitle to stay in place,
+     * in ticks. There are 20 ticks per second. Use {@link
+     * TicksPerSecond} constant to convert between ticks and
+     * seconds.
      *
      */
-    staySeconds: number;
+    stayDuration: number;
     /**
      * @remarks
      * Optional subtitle text.
      *
      */
-    subtitle?: string;
+    subtitle?: (RawMessage | string)[] | RawMessage | string;
 }
 
 /**
