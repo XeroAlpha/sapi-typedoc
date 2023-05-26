@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.4.0-internal.1.20.0-preview.24"
+ *   "version": "1.3.0-internal.1.20.0-preview.24"
  * }
  * ```
  *
@@ -443,7 +443,12 @@ export class AfterEvents {
      *
      */
     readonly explosion: ExplosionAfterEventSignal;
-    readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a chargeable item completes charging.
+     *
+     */
+    readonly itemCompleteCharge: ItemCompleteChargeAfterEventSignal;
     /**
      * @remarks
      * For custom items, this event is triggered when the
@@ -453,8 +458,19 @@ export class AfterEvents {
      *
      */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
-    readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
-    readonly itemStartUse: ItemStartUseAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a chargeable item is released from
+     * charging.
+     *
+     */
+    readonly itemReleaseCharge: ItemReleaseChargeAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a chargeable item starts charging.
+     *
+     */
+    readonly itemStartCharge: ItemStartChargeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player successfully uses an item or
@@ -465,7 +481,12 @@ export class AfterEvents {
      *
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
-    readonly itemStopUse: ItemStopUseAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a chargeable item stops charging.
+     *
+     */
+    readonly itemStopCharge: ItemStopChargeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player releases the Use Item / Place
@@ -1690,7 +1711,7 @@ export class BlockVolumeUtils {
      * This function can't be called in read-only mode.
      *
      */
-    static isInside(volume: BlockVolume, pos: Vector3): boolean;
+    static isInside(volume: BlockVolume, pos: Vector3): number;
     /**
      * @remarks
      * Move a BlockVolume by a specified amount
@@ -1833,8 +1854,9 @@ export class BoundingBoxUtils {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
+    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox;
     /**
      * @remarks
      * Get the Span of each of the BoundingBox Axis components
@@ -2463,6 +2485,20 @@ export class ContainerSlot {
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
      *
+     * This function can't be called in read-only mode.
+     *
+     * @returns
+     * Returns a copy of the item in the slot. Returns undefined if
+     * the slot is empty.
+     * @throws
+     * Throws if the slot's container is invalid.
+     */
+    clone(): ItemStack;
+    /**
+     * @remarks
+     * Creates an exact copy of the item stack, including any
+     * custom data or properties.
+     *
      * @returns
      * Returns a copy of the item in the slot. Returns undefined if
      * the slot is empty.
@@ -3070,21 +3106,21 @@ export class DynamicPropertiesDefinition {
      *
      * @throws This function can throw errors.
      */
-    defineBoolean(identifier: string, defaultValue?: boolean): DynamicPropertiesDefinition;
+    defineBoolean(identifier: string): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a number dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineNumber(identifier: string, defaultValue?: number): DynamicPropertiesDefinition;
+    defineNumber(identifier: string): DynamicPropertiesDefinition;
     /**
      * @remarks
      * Defines a string dynamic property.
      *
      * @throws This function can throw errors.
      */
-    defineString(identifier: string, maxLength: number, defaultValue?: string): DynamicPropertiesDefinition;
+    defineString(identifier: string, maxLength: number): DynamicPropertiesDefinition;
 }
 
 /**
@@ -3416,16 +3452,6 @@ export class Entity {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
-     * @remarks
-     * The distance an entity has fallen. The value is reset when
-     * the entity is teleported. The value is always 1 when gliding
-     * with Elytra.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly fallDistance: number;
-    /**
      * @remarks
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No
@@ -3438,41 +3464,6 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Whether the entity is touching a climbable block. For
-     * example, a player next to a ladder or a spider next to a
-     * stone wall.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isClimbing: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity has a fall distance greater than 0, or
-     * greater than 1 while gliding.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isFalling: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether any part of the entity is inside a water block.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isInWater: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity is on top of a solid block.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isOnGround: boolean;
-    /**
-     * @beta
-     * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
@@ -3480,25 +3471,6 @@ export class Entity {
      *
      */
     isSneaking: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity is sprinting. For example, a player using
-     * the sprint action, an ocelot running away or a pig boosting
-     * with Carrot on a Stick.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isSprinting: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity is in the swimming state. For example, a
-     * player using the swim action or a fish in water.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isSwimming: boolean;
     /**
      * @beta
      * @remarks
@@ -4156,10 +4128,8 @@ export class EntityAgeableComponent extends EntityComponent {
  */
 export class EntityAttributeComponent extends EntityComponent {
     protected constructor();
-    readonly currentValue: number;
-    readonly defaultValue: number;
-    readonly effectiveMax: number;
-    readonly effectiveMin: number;
+    readonly current: number;
+    readonly value: number;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -4187,7 +4157,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @throws This function can throw errors.
      */
-    setCurrentValue(value: number): boolean;
+    setCurrent(value: number): boolean;
 }
 
 /**
@@ -4577,6 +4547,13 @@ export class EntityGroundOffsetComponent extends EntityComponent {
  */
 export class EntityHealableComponent extends EntityComponent {
     protected constructor();
+    /**
+     * @remarks
+     * A set of filters for when these Healable items would apply.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly filters: FilterGroup;
     /**
      * @remarks
      * Determines if an item can be used regardless of the entity
@@ -6547,22 +6524,24 @@ export class IExplosionBeforeEventSignal {
 
 /**
  * @beta
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires after an item has completed charging.
  */
-export class IItemCompleteUseAfterEventSignal {
+export class IItemCompleteChargeAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
+    subscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): (arg: ItemCompleteChargeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemCompleteChargeAfterEvent) => void): void;
 }
 
 /**
@@ -6615,42 +6594,46 @@ export class IItemDefinitionBeforeEventSignal {
 
 /**
  * @beta
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires after a charged item is released.
  */
-export class IItemReleaseUseAfterEventSignal {
+export class IItemReleaseChargeAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
+    subscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): (arg: ItemReleaseChargeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemReleaseChargeAfterEvent) => void): void;
 }
 
 /**
  * @beta
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires when a chargeable item starts charging.
  */
-export class IItemStartUseAfterEventSignal {
+export class IItemStartChargeAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
+    subscribe(callback: (arg: ItemStartChargeAfterEvent) => void): (arg: ItemStartChargeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStartChargeAfterEvent) => void): void;
 }
 
 /**
@@ -6678,22 +6661,24 @@ export class IItemStartUseOnAfterEventSignal {
 
 /**
  * @beta
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires when an item stops charging.
  */
-export class IItemStopUseAfterEventSignal {
+export class IItemStopChargeAfterEventSignal {
     protected constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
+    subscribe(callback: (arg: ItemStopChargeAfterEvent) => void): (arg: ItemStopChargeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
+    unsubscribe(callback: (arg: ItemStopChargeAfterEvent) => void): void;
 }
 
 /**
@@ -7011,38 +6996,18 @@ export class IServerMessageAfterEventSignal {
 
 /**
  * @beta
- * Contains information related to a chargeable item completing
- * being charged.
  */
-export class ItemCompleteUseAfterEvent {
+export class ItemCompleteChargeAfterEvent {
     protected constructor();
-    /**
-     * @remarks
-     * Returns the item stack that has completed charging.
-     *
-     */
     readonly itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
     readonly source: Entity;
-    /**
-     * @remarks
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     *
-     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
- * Manages callbacks that are connected to the completion of
- * charging for a chargeable item.
  */
-export class ItemCompleteUseAfterEventSignal extends IItemCompleteUseAfterEventSignal {
+export class ItemCompleteChargeAfterEventSignal extends IItemCompleteChargeAfterEventSignal {
     protected constructor();
 }
 
@@ -7295,39 +7260,18 @@ export class ItemFoodComponent extends ItemComponent {
 
 /**
  * @beta
- * Contains information related to a chargeable item when the
- * player has finished using the item and released the build
- * action.
  */
-export class ItemReleaseUseAfterEvent {
+export class ItemReleaseChargeAfterEvent {
     protected constructor();
-    /**
-     * @remarks
-     * Returns the item stack that triggered this item event.
-     *
-     */
     readonly itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
     readonly source: Entity;
-    /**
-     * @remarks
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     *
-     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
- * Manages callbacks that are connected to the releasing of
- * charging for a chargeable item.
  */
-export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSignal {
+export class ItemReleaseChargeAfterEventSignal extends IItemReleaseChargeAfterEventSignal {
     protected constructor();
 }
 
@@ -7591,38 +7535,18 @@ export class ItemStack {
 
 /**
  * @beta
- * Contains information related to a chargeable item starting
- * to be charged.
  */
-export class ItemStartUseAfterEvent {
+export class ItemStartChargeAfterEvent {
     protected constructor();
-    /**
-     * @remarks
-     * The impacted item stack that is starting to be charged.
-     *
-     */
     readonly itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
     readonly source: Entity;
-    /**
-     * @remarks
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     *
-     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
- * Manages callbacks that are connected to the start of
- * charging for a chargeable item.
  */
-export class ItemStartUseAfterEventSignal extends IItemStartUseAfterEventSignal {
+export class ItemStartChargeAfterEventSignal extends IItemStartChargeAfterEventSignal {
     protected constructor();
 }
 
@@ -7673,40 +7597,18 @@ export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSig
 
 /**
  * @beta
- * Contains information related to a chargeable item has
- * finished an items use cycle, or when the player has released
- * the use action with the item.
  */
-export class ItemStopUseAfterEvent {
+export class ItemStopChargeAfterEvent {
     protected constructor();
-    /**
-     * @remarks
-     * The impacted item stack that is stopping being charged.
-     *
-     */
     readonly itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
     readonly source: Entity;
-    /**
-     * @remarks
-     * Returns the time, in ticks, for the remaining duration left
-     * before the charge completes its cycle.
-     *
-     */
     readonly useDuration: number;
 }
 
 /**
  * @beta
- * Manages callbacks that are connected to the stopping of
- * charging for an item that has a registered
- * minecraft:chargeable component.
  */
-export class ItemStopUseAfterEventSignal extends IItemStopUseAfterEventSignal {
+export class ItemStopChargeAfterEventSignal extends IItemStopChargeAfterEventSignal {
     protected constructor();
 }
 
@@ -8333,7 +8235,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly blackGlazedTerracotta: BlockType;
-    static readonly blackShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a blackstone block within Minecraft.
@@ -8396,7 +8297,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly blueIce: BlockType;
-    static readonly blueShulkerBox: BlockType;
     static readonly blueWool: BlockType;
     /**
      * @remarks
@@ -8466,7 +8366,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly brownMushroomBlock: BlockType;
-    static readonly brownShulkerBox: BlockType;
     static readonly brownWool: BlockType;
     /**
      * @remarks
@@ -8996,7 +8895,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly cyanGlazedTerracotta: BlockType;
-    static readonly cyanShulkerBox: BlockType;
     static readonly cyanWool: BlockType;
     /**
      * @remarks
@@ -10430,7 +10328,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly grayGlazedTerracotta: BlockType;
-    static readonly grayShulkerBox: BlockType;
     static readonly grayWool: BlockType;
     /**
      * @remarks
@@ -10452,7 +10349,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly greenGlazedTerracotta: BlockType;
-    static readonly greenShulkerBox: BlockType;
     static readonly greenWool: BlockType;
     /**
      * @remarks
@@ -10744,7 +10640,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: BlockType;
-    static readonly lightBlueShulkerBox: BlockType;
     static readonly lightBlueWool: BlockType;
     /**
      * @remarks
@@ -10759,7 +10654,6 @@ export class MinecraftBlockTypes {
      */
     static readonly lightGrayCandleCake: BlockType;
     static readonly lightGrayCarpet: BlockType;
-    static readonly lightGrayShulkerBox: BlockType;
     static readonly lightGrayWool: BlockType;
     /**
      * @remarks
@@ -10793,7 +10687,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly limeGlazedTerracotta: BlockType;
-    static readonly limeShulkerBox: BlockType;
     static readonly limeWool: BlockType;
     /**
      * @remarks
@@ -10869,7 +10762,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly magentaGlazedTerracotta: BlockType;
-    static readonly magentaShulkerBox: BlockType;
     static readonly magentaWool: BlockType;
     /**
      * @remarks
@@ -11087,7 +10979,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly orangeGlazedTerracotta: BlockType;
-    static readonly orangeShulkerBox: BlockType;
     static readonly orangeWool: BlockType;
     /**
      * @remarks
@@ -11150,7 +11041,6 @@ export class MinecraftBlockTypes {
      */
     static readonly pinkGlazedTerracotta: BlockType;
     static readonly pinkPetals: BlockType;
-    static readonly pinkShulkerBox: BlockType;
     static readonly pinkWool: BlockType;
     /**
      * @remarks
@@ -11397,7 +11287,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly purpleGlazedTerracotta: BlockType;
-    static readonly purpleShulkerBox: BlockType;
     static readonly purpleWool: BlockType;
     /**
      * @remarks
@@ -11523,7 +11412,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly redSandstoneStairs: BlockType;
-    static readonly redShulkerBox: BlockType;
     /**
      * @remarks
      * Represents a block of redstone within Minecraft.
@@ -11645,6 +11533,12 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly shroomlight: BlockType;
+    /**
+     * @remarks
+     * Represents a shulker box within Minecraft.
+     *
+     */
+    static readonly shulkerBox: BlockType;
     /**
      * @remarks
      * Represents a silver-colored block of glazed terracotta
@@ -12485,7 +12379,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly whiteGlazedTerracotta: BlockType;
-    static readonly whiteShulkerBox: BlockType;
     static readonly whiteWool: BlockType;
     /**
      * @remarks
@@ -12549,7 +12442,6 @@ export class MinecraftBlockTypes {
      *
      */
     static readonly yellowGlazedTerracotta: BlockType;
-    static readonly yellowShulkerBox: BlockType;
     static readonly yellowWool: BlockType;
     /**
      * @remarks
@@ -13079,7 +12971,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blackGlazedTerracotta: ItemType;
-    static readonly blackShulkerBox: ItemType;
     /**
      * @remarks
      * Represents an item that can place a blackstone block within
@@ -13142,7 +13033,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly blueIce: ItemType;
-    static readonly blueShulkerBox: ItemType;
     static readonly blueWool: ItemType;
     static readonly boat: ItemType;
     static readonly bone: ItemType;
@@ -13226,7 +13116,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly brownMushroomBlock: ItemType;
-    static readonly brownShulkerBox: ItemType;
     static readonly brownWool: ItemType;
     static readonly brush: ItemType;
     static readonly bubbleCoral: ItemType;
@@ -13719,7 +13608,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly cyanGlazedTerracotta: ItemType;
-    static readonly cyanShulkerBox: ItemType;
     static readonly cyanWool: ItemType;
     static readonly dangerPotterySherd: ItemType;
     static readonly darkOakBoat: ItemType;
@@ -14349,7 +14237,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly grayGlazedTerracotta: ItemType;
-    static readonly grayShulkerBox: ItemType;
     static readonly grayWool: ItemType;
     /**
      * @remarks
@@ -14367,7 +14254,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly greenGlazedTerracotta: ItemType;
-    static readonly greenShulkerBox: ItemType;
     static readonly greenWool: ItemType;
     /**
      * @remarks
@@ -14666,7 +14552,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly lightBlueGlazedTerracotta: ItemType;
-    static readonly lightBlueShulkerBox: ItemType;
     static readonly lightBlueWool: ItemType;
     /**
      * @remarks
@@ -14677,7 +14562,6 @@ export class MinecraftItemTypes {
     static readonly lightGrayCandle: ItemType;
     static readonly lightGrayCarpet: ItemType;
     static readonly lightGrayDye: ItemType;
-    static readonly lightGrayShulkerBox: ItemType;
     static readonly lightGrayWool: ItemType;
     /**
      * @remarks
@@ -14709,7 +14593,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly limeGlazedTerracotta: ItemType;
-    static readonly limeShulkerBox: ItemType;
     static readonly limeWool: ItemType;
     static readonly lingeringPotion: ItemType;
     /**
@@ -14763,7 +14646,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly magentaGlazedTerracotta: ItemType;
-    static readonly magentaShulkerBox: ItemType;
     static readonly magentaWool: ItemType;
     /**
      * @remarks
@@ -15036,7 +14918,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly orangeGlazedTerracotta: ItemType;
-    static readonly orangeShulkerBox: ItemType;
     static readonly orangeWool: ItemType;
     /**
      * @remarks
@@ -15103,7 +14984,6 @@ export class MinecraftItemTypes {
      */
     static readonly pinkGlazedTerracotta: ItemType;
     static readonly pinkPetals: ItemType;
-    static readonly pinkShulkerBox: ItemType;
     static readonly pinkWool: ItemType;
     /**
      * @remarks
@@ -15318,7 +15198,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly purpleGlazedTerracotta: ItemType;
-    static readonly purpleShulkerBox: ItemType;
     static readonly purpleWool: ItemType;
     /**
      * @remarks
@@ -15467,7 +15346,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly redSandstoneStairs: ItemType;
-    static readonly redShulkerBox: ItemType;
     static readonly redstone: ItemType;
     /**
      * @remarks
@@ -16401,7 +16279,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly whiteGlazedTerracotta: ItemType;
-    static readonly whiteShulkerBox: ItemType;
     static readonly whiteWool: ItemType;
     static readonly wildArmorTrimSmithingTemplate: ItemType;
     static readonly witchSpawnEgg: ItemType;
@@ -16485,7 +16362,6 @@ export class MinecraftItemTypes {
      *
      */
     static readonly yellowGlazedTerracotta: ItemType;
-    static readonly yellowShulkerBox: ItemType;
     static readonly yellowWool: ItemType;
     static readonly zoglinSpawnEgg: ItemType;
     static readonly zombieHorseSpawnEgg: ItemType;
@@ -16641,32 +16517,6 @@ export class PistonActivateBeforeEventSignal extends IPistonActivateBeforeEventS
  */
 export class Player extends Entity {
     protected constructor();
-    /**
-     * @beta
-     * @remarks
-     * Whether the player is flying. For example, in Creative or
-     * Spectator mode.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isFlying: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the player is gliding with Elytra.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isGliding: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the player is jumping. This will remain true while
-     * the player is holding the jump action.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isJumping: boolean;
     /**
      * @beta
      * @remarks
