@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.3.0-internal.1.20.0-preview.24"
+ *   "version": "1.3.0-internal.1.20.0-preview.25"
  * }
  * ```
  *
@@ -792,15 +792,14 @@ export class Block {
      * @throws This function can throw errors.
      * @example check_block_tags.js
      * ```typescript
-     *        import { world } from "@minecraft/server";
+     * import { world } from "@minecraft/server";
      *
-     *        // Fetch the block
-     *        const block = world.getDimension("overworld").getBlock({ x: 1, y: 2, z: 3 });
+     * // Fetch the block
+     * const block = world.getDimension("overworld").getBlock({ x: 1, y: 2, z: 3 });
      *
-     *        console.log(`Block is dirt: ${block.hasTag("dirt")}`);
-     *        console.log(`Block is wood: ${block.hasTag("wood")}`);
-     *        console.log(`Block is stone: ${block.hasTag("stone")}`);
-     *
+     * console.log(`Block is dirt: ${block.hasTag("dirt")}`);
+     * console.log(`Block is wood: ${block.hasTag("wood")}`);
+     * console.log(`Block is stone: ${block.hasTag("stone")}`);
      * ```
      */
     hasTag(tag: string): boolean;
@@ -1180,16 +1179,15 @@ export class BlockPermutation {
      * Returns `true` if the permutation has the tag, else `false`.
      * @example check_block_tags.js
      * ```typescript
-     *        import { world } from "@minecraft/server";
+     * import { world } from "@minecraft/server";
      *
-     *        // Fetch the block
-     *        const block = world.getDimension("overworld").getBlock({ x: 1, y: 2, z: 3 });
-     *        const blockPerm = block.getPermutation();
+     * // Fetch the block
+     * const block = world.getDimension("overworld").getBlock({ x: 1, y: 2, z: 3 });
+     * const blockPerm = block.getPermutation();
      *
-     *        console.log(`Block is dirt: ${blockPerm.hasTag("dirt")}`);
-     *        console.log(`Block is wood: ${blockPerm.hasTag("wood")}`);
-     *        console.log(`Block is stone: ${blockPerm.hasTag("stone")}`);
-     *
+     * console.log(`Block is dirt: ${blockPerm.hasTag("dirt")}`);
+     * console.log(`Block is wood: ${blockPerm.hasTag("wood")}`);
+     * console.log(`Block is stone: ${blockPerm.hasTag("stone")}`);
      * ```
      */
     hasTag(tag: string): boolean;
@@ -1456,27 +1454,27 @@ export class BlockSignComponent extends BlockComponent {
      * @throws This function can throw errors.
      * @example SetRawMessage.ts
      * ```typescript
-     *        const helloWorldMessage: RawMessage = { text: 'Hello World' };
-     *        sign.setText(helloWorldMessage);
+     * const helloWorldMessage: RawMessage = { text: 'Hello World' };
+     * sign.setText(helloWorldMessage);
      *
-     *        // Sign text will be saved as a RawText
-     *        const result: RawText = sign.getRawText();
-     *        JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
+     * // Sign text will be saved as a RawText
+     * const result: RawText = sign.getRawText();
+     * JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
      * ```
      * @example SetRawText.ts
      * ```typescript
-     *        const helloWorldText: RawText = { rawtext: [{ text: 'Hello World' }] };
-     *        sign.setText(helloWorldText);
+     * const helloWorldText: RawText = { rawtext: [{ text: 'Hello World' }] };
+     * sign.setText(helloWorldText);
      *
-     *        // There will be no data transformation unlike calling setText with a RawMessage
-     *        const result: RawText = sign.getRawText();
-     *        JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
+     * // There will be no data transformation unlike calling setText with a RawMessage
+     * const result: RawText = sign.getRawText();
+     * JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
      * ```
      * @example SetString.ts
      * ```typescript
-     *        // Set sign to say 'Hello'
-     *        sign.setText('Hello');
-     *        sign.getText(); // 'Hello'
+     * // Set sign to say 'Hello'
+     * sign.setText('Hello');
+     * sign.getText(); // 'Hello'
      * ```
      */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;
@@ -2262,10 +2260,9 @@ export class Container {
      * out of bounds.
      * @example getItem.ts
      * ```typescript
-     *        // Get a copy of the first item in the player's hotbar
-     *        const inventory = player.getComponent("inventory") as EntityInventoryComponent;
-     *        const itemStack = inventory.container.getItem(0);
-     *
+     * // Get a copy of the first item in the player's hotbar
+     * const inventory = player.getComponent("inventory") as EntityInventoryComponent;
+     * const itemStack = inventory.container.getItem(0);
      * ```
      */
     getItem(slot: number): ItemStack | undefined;
@@ -2304,11 +2301,10 @@ export class Container {
      * or if the `fromSlot` or `toSlot` indices out of bounds.
      * @example moveItem.ts
      * ```typescript
-     *        // Move an item from the first slot of fromPlayer's inventory to the fifth slot of toPlayer's inventory
-     *        const fromInventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
-     *        const toInventory = toPlayer.getComponent('inventory') as EntityInventoryComponent;
-     *        fromInventory.container.moveItem(0, 4, toInventory.container);
-     *
+     * // Move an item from the first slot of fromPlayer's inventory to the fifth slot of toPlayer's inventory
+     * const fromInventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
+     * const toInventory = toPlayer.getComponent('inventory') as EntityInventoryComponent;
+     * fromInventory.container.moveItem(0, 4, toInventory.container);
      * ```
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
@@ -2346,10 +2342,9 @@ export class Container {
      * invalid or if the `slot` or `otherSlot` are out of bounds.
      * @example swapItems.ts
      * ```typescript
-     *        // Swaps an item between slots 0 and 4 in the player's inventory
-     *        const inventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
-     *        inventory.container.swapItems(0, 4, inventory);
-     *
+     * // Swaps an item between slots 0 and 4 in the player's inventory
+     * const inventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
+     * inventory.container.swapItems(0, 4, inventory);
      * ```
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
@@ -2371,11 +2366,10 @@ export class Container {
      * or if the `fromSlot` or `toSlot` indices out of bounds.
      * @example transferItem.ts
      * ```typescript
-     *        // Transfer an item from the first slot of fromPlayer's inventory to toPlayer's inventory
-     *        const fromInventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
-     *        const toInventory = toPlayer.getComponent('inventory') as EntityInventoryComponent;
-     *        fromInventory.container.transferItem(0, toInventory.container);
-     *
+     * // Transfer an item from the first slot of fromPlayer's inventory to toPlayer's inventory
+     * const fromInventory = fromPlayer.getComponent('inventory') as EntityInventoryComponent;
+     * const toInventory = toPlayer.getComponent('inventory') as EntityInventoryComponent;
+     * fromInventory.container.transferItem(0, toInventory.container);
      * ```
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack;
@@ -2789,43 +2783,41 @@ export class Dimension {
      * @throws This function can throw errors.
      * @example createExplosion.ts
      * ```typescript
-     *          overworld.createExplosion(targetLocation, 10, new mc.ExplosionOptions());
+     *   overworld.createExplosion(targetLocation, 10, new mc.ExplosionOptions());
      * ```
      * @example createFireAndWaterExplosions.ts
      * ```typescript
-     *        const explosionLoc: mc.Vector3 = { x: targetLocation.x + 0.5, y: targetLocation.y + 0.5, z: targetLocation.z + 0.5 };
+     * const explosionLoc: mc.Vector3 = { x: targetLocation.x + 0.5, y: targetLocation.y + 0.5, z: targetLocation.z + 0.5 };
      *
-     *        const fireExplosionOptions = new mc.ExplosionOptions();
+     * const fireExplosionOptions = new mc.ExplosionOptions();
      *
-     *        // Explode with fire
-     *        fireExplosionOptions.causesFire = true;
+     * // Explode with fire
+     * fireExplosionOptions.causesFire = true;
      *
-     *        overworld.createExplosion(explosionLoc, 15, fireExplosionOptions);
-     *        const waterExplosionOptions = new mc.ExplosionOptions();
+     * overworld.createExplosion(explosionLoc, 15, fireExplosionOptions);
+     * const waterExplosionOptions = new mc.ExplosionOptions();
      *
-     *        // Explode in water
-     *        waterExplosionOptions.allowUnderwater = true;
+     * // Explode in water
+     * waterExplosionOptions.allowUnderwater = true;
      *
-     *        const belowWaterLoc: mc.Vector3 = { x: targetLocation.x + 3, y: targetLocation.y + 1, z: targetLocation.z + 3 };
+     * const belowWaterLoc: mc.Vector3 = { x: targetLocation.x + 3, y: targetLocation.y + 1, z: targetLocation.z + 3 };
      *
-     *        overworld.createExplosion(belowWaterLoc, 10, waterExplosionOptions);
-     *
+     * overworld.createExplosion(belowWaterLoc, 10, waterExplosionOptions);
      * ```
      * @example createNoBlockExplosion.ts
      * ```typescript
-     *        const explosionOptions = new mc.ExplosionOptions();
+     * const explosionOptions = new mc.ExplosionOptions();
      *
-     *        // Start by exploding without breaking blocks
-     *        explosionOptions.breaksBlocks = false;
+     * // Start by exploding without breaking blocks
+     * explosionOptions.breaksBlocks = false;
      *
-     *        const explodeNoBlocksLoc: mc.Vector3 = {
-     *          x: Math.floor(targetLocation.x + 1),
-     *          y: Math.floor(targetLocation.y + 2),
-     *          z: Math.floor(targetLocation.z + 1),
-     *        };
+     * const explodeNoBlocksLoc: mc.Vector3 = {
+     *   x: Math.floor(targetLocation.x + 1),
+     *   y: Math.floor(targetLocation.y + 2),
+     *   z: Math.floor(targetLocation.z + 1),
+     * };
      *
-     *        overworld.createExplosion(explodeNoBlocksLoc, 15, explosionOptions);
-     *
+     * overworld.createExplosion(explodeNoBlocksLoc, 15, explosionOptions);
      * ```
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): void;
@@ -2892,22 +2884,21 @@ export class Dimension {
      * @throws This function can throw errors.
      * @example testThatEntityIsFeatherItem.ts
      * ```typescript
-     *        const query = {
-     *          type: "item",
-     *          location: targetLocation,
-     *        };
-     *        const items = overworld.getEntities(query);
+     * const query = {
+     *   type: "item",
+     *   location: targetLocation,
+     * };
+     * const items = overworld.getEntities(query);
      *
-     *        for (const item of items) {
-     *          const itemComp = item.getComponent("item") as any;
+     * for (const item of items) {
+     *   const itemComp = item.getComponent("item") as any;
      *
-     *          if (itemComp) {
-     *            if (itemComp.itemStack.id.endsWith("feather")) {
-     *              console.log("Success! Found a feather", 1);
-     *            }
-     *          }
-     *        }
-     *
+     *   if (itemComp) {
+     *     if (itemComp.itemStack.id.endsWith("feather")) {
+     *       console.log("Success! Found a feather", 1);
+     *     }
+     *   }
+     * }
      * ```
      */
     getEntities(options?: EntityQueryOptions): Entity[];
@@ -2996,41 +2987,40 @@ export class Dimension {
      * @throws This function can throw errors.
      * @example createOldHorse.ts
      * ```typescript
-     *          // create a horse and trigger the 'ageable_grow_up' event, ensuring the horse is created as an adult
-     *          overworld.spawnEntity("minecraft:horse<minecraft:ageable_grow_up>", targetLocation);
+     *   // create a horse and trigger the 'ageable_grow_up' event, ensuring the horse is created as an adult
+     *   overworld.spawnEntity("minecraft:horse<minecraft:ageable_grow_up>", targetLocation);
      * ```
      * @example quickFoxLazyDog.ts
      * ```typescript
-     *        const fox = overworld.spawnEntity("minecraft:fox", {
-     *          x: targetLocation.x + 1,
-     *          y: targetLocation.y + 2,
-     *          z: targetLocation.z + 3,
-     *        });
-     *        fox.addEffect(mc.MinecraftEffectTypes.speed, 10, 20);
-     *        log("Created a fox.");
+     * const fox = overworld.spawnEntity("minecraft:fox", {
+     *   x: targetLocation.x + 1,
+     *   y: targetLocation.y + 2,
+     *   z: targetLocation.z + 3,
+     * });
+     * fox.addEffect(mc.MinecraftEffectTypes.speed, 10, 20);
+     * log("Created a fox.");
      *
-     *        const wolf = overworld.spawnEntity("minecraft:wolf", {
-     *          x: targetLocation.x + 4,
-     *          y: targetLocation.y + 2,
-     *          z: targetLocation.z + 3,
-     *        });
-     *        wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, 20);
-     *        wolf.isSneaking = true;
-     *        log("Created a sneaking wolf.", 1);
-     *
+     * const wolf = overworld.spawnEntity("minecraft:wolf", {
+     *   x: targetLocation.x + 4,
+     *   y: targetLocation.y + 2,
+     *   z: targetLocation.z + 3,
+     * });
+     * wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, 20);
+     * wolf.isSneaking = true;
+     * log("Created a sneaking wolf.", 1);
      * ```
      * @example trapTick.ts
      * ```typescript
-     *          let ticks = 0;
+     *   let ticks = 0;
      *
-     *          mc.world.events.tick.subscribe((event: mc.TickEvent) => {
-     *            ticks++;
+     *   mc.world.events.tick.subscribe((event: mc.TickEvent) => {
+     *     ticks++;
      *
-     *            // Minecraft runs at 20 ticks per second
-     *            if (ticks % 1200 === 0) {
-     *              overworld.runCommand("say Another minute passes...");
-     *            }
-     *          });
+     *     // Minecraft runs at 20 ticks per second
+     *     if (ticks % 1200 === 0) {
+     *       overworld.runCommand("say Another minute passes...");
+     *     }
+     *   });
      * ```
      */
     spawnEntity(identifier: string, location: Vector3): Entity;
@@ -3049,25 +3039,24 @@ export class Dimension {
      * @throws This function can throw errors.
      * @example itemStacks.ts
      * ```typescript
-     *        const oneItemLoc: mc.Vector3 = { x: 3, y: 2, z: 1 };
-     *        const fiveItemsLoc: mc.Vector3 = { x: 1, y: 2, z: 1 };
-     *        const diamondPickaxeLoc: mc.Vector3 = { x: 2, y: 2, z: 4 };
+     * const oneItemLoc: mc.Vector3 = { x: 3, y: 2, z: 1 };
+     * const fiveItemsLoc: mc.Vector3 = { x: 1, y: 2, z: 1 };
+     * const diamondPickaxeLoc: mc.Vector3 = { x: 2, y: 2, z: 4 };
      *
-     *        const oneEmerald = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 1, 0);
-     *        const onePickaxe = new mc.ItemStack(mc.MinecraftItemTypes.diamondPickaxe, 1, 0);
-     *        const fiveEmeralds = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 5, 0);
+     * const oneEmerald = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 1, 0);
+     * const onePickaxe = new mc.ItemStack(mc.MinecraftItemTypes.diamondPickaxe, 1, 0);
+     * const fiveEmeralds = new mc.ItemStack(mc.MinecraftItemTypes.emerald, 5, 0);
      *
-     *        overworld.spawnItem(oneEmerald, oneItemLoc);
-     *        overworld.spawnItem(fiveEmeralds, fiveItemsLoc);
-     *        overworld.spawnItem(onePickaxe, diamondPickaxeLoc);
-     *
+     * overworld.spawnItem(oneEmerald, oneItemLoc);
+     * overworld.spawnItem(fiveEmeralds, fiveItemsLoc);
+     * overworld.spawnItem(onePickaxe, diamondPickaxeLoc);
      * ```
      * @example spawnItem.ts
      * ```typescript
-     *          const featherItem = new mc.ItemStack(mc.MinecraftItemTypes.feather, 1, 0);
+     *   const featherItem = new mc.ItemStack(mc.MinecraftItemTypes.feather, 1, 0);
      *
-     *          overworld.spawnItem(featherItem, targetLocation);
-     *          log("New feather created!");
+     *   overworld.spawnItem(featherItem, targetLocation);
+     *   log("New feather created!");
      * ```
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
@@ -3526,7 +3515,7 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Adds an effect, like poison, to the entity.
+     * Adds or updates an effect, like poison, to the entity.
      *
      * This function can't be called in read-only mode.
      *
@@ -3540,39 +3529,38 @@ export class Entity {
      * @param options
      * Additional options for the effect.
      * @returns
-     * Returns true if the effect was added successfully. This can
-     * fail if the duration or amplifier are outside of the valid
-     * ranges.
+     * Returns nothing if the effect was added or updated
+     * successfully. This can throw an error if the duration or
+     * amplifier are outside of the valid ranges, or if the effect
+     * does not exist.
      * @throws This function can throw errors.
      * @example addEffect.js
      * ```typescript
-     *        const villagerId = 'minecraft:villager_v2<minecraft:ageable_grow_up>';
-     *        const villagerLoc: mc.Vector3 = { x: 1, y: 2, z: 1 };
-     *        const villager = test.spawn(villagerId, villagerLoc);
-     *        const duration = 20;
+     * const villagerId = 'minecraft:villager_v2<minecraft:ageable_grow_up>';
+     * const villagerLoc: mc.Vector3 = { x: 1, y: 2, z: 1 };
+     * const villager = test.spawn(villagerId, villagerLoc);
+     * const duration = 20;
      *
-     *        villager.addEffect(EffectTypes.get('poison'), duration, { amplifier: 1 });
-     *
+     * villager.addEffect(EffectTypes.get('poison'), duration, { amplifier: 1 });
      * ```
      * @example quickFoxLazyDog.ts
      * ```typescript
-     *        const fox = overworld.spawnEntity('minecraft:fox', {
-     *            x: targetLocation.x + 1,
-     *            y: targetLocation.y + 2,
-     *            z: targetLocation.z + 3,
-     *        });
-     *        fox.addEffect(mc.MinecraftEffectTypes.speed, 10, { amplifier: 20 });
-     *        log('Created a fox.');
+     * const fox = overworld.spawnEntity('minecraft:fox', {
+     *     x: targetLocation.x + 1,
+     *     y: targetLocation.y + 2,
+     *     z: targetLocation.z + 3,
+     * });
+     * fox.addEffect(mc.MinecraftEffectTypes.speed, 10, { amplifier: 20 });
+     * log('Created a fox.');
      *
-     *        const wolf = overworld.spawnEntity('minecraft:wolf', {
-     *            x: targetLocation.x + 4,
-     *            y: targetLocation.y + 2,
-     *            z: targetLocation.z + 3,
-     *        });
-     *        wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, { amplifier: 20 });
-     *        wolf.isSneaking = true;
-     *        log('Created a sneaking wolf.', 1);
-     *
+     * const wolf = overworld.spawnEntity('minecraft:wolf', {
+     *     x: targetLocation.x + 4,
+     *     y: targetLocation.y + 2,
+     *     z: targetLocation.z + 3,
+     * });
+     * wolf.addEffect(mc.MinecraftEffectTypes.slowness, 10, { amplifier: 20 });
+     * wolf.isSneaking = true;
+     * log('Created a sneaking wolf.', 1);
      * ```
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): boolean;
@@ -3729,13 +3717,15 @@ export class Entity {
      * @beta
      * @remarks
      * Returns the effect for the specified EffectType on the
-     * entity, or undefined if the effect is not present.
+     * entity, undefined if the effect is not present, or throws an
+     * error if the effect does not exist.
      *
      * @param effectType
      * The effect identifier.
      * @returns
-     * Effect object for the specified effect, or undefined if the
-     * effect is not present.
+     * Effect object for the specified effect, undefined if the
+     * effect is not present, or throws an error if the effect does
+     * not exist.
      * @throws This function can throw errors.
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
@@ -3893,8 +3883,9 @@ export class Entity {
      * @param effectType
      * The effect identifier.
      * @returns
-     * Returns true if the effect has been removed and false if the
-     * effect is not present.
+     * Returns true if the effect has been removed, false if the
+     * effect is not present, or will throw an error if the effect
+     * does not exist.
      * @throws This function can throw errors.
      */
     removeEffect(effectType: EffectType | string): boolean;
@@ -7392,11 +7383,10 @@ export class ItemStack {
      * stack, undefined is returned.
      * @example durability.ts
      * ```typescript
-     *        // Get the maximum durability of a custom sword item
-     *        const itemStack = new ItemStack("custom:sword");
-     *        const durability = itemStack.getComponent("minecraft:durability") as ItemDurabilityComponent;
-     *        const maxDurability = durability.maxDurability;
-     *
+     * // Get the maximum durability of a custom sword item
+     * const itemStack = new ItemStack("custom:sword");
+     * const durability = itemStack.getComponent("minecraft:durability") as ItemDurabilityComponent;
+     * const maxDurability = durability.maxDurability;
      * ```
      */
     getComponent(componentId: string): ItemComponent | undefined;
@@ -7472,10 +7462,9 @@ export class ItemStack {
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
      * ```typescript
-     *        // Creates a diamond pickaxe that can destroy cobblestone and obsidian
-     *        const specialPickaxe = new ItemStack("minecraft:diamond_pickaxe");
-     *        specialPickaxe.setCanDestroy(["minecraft:cobblestone", "minecraft:obsidian"]);
-     *
+     * // Creates a diamond pickaxe that can destroy cobblestone and obsidian
+     * const specialPickaxe = new ItemStack("minecraft:diamond_pickaxe");
+     * specialPickaxe.setCanDestroy(["minecraft:cobblestone", "minecraft:obsidian"]);
      * ```
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
@@ -7493,10 +7482,9 @@ export class ItemStack {
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
      * ```typescript
-     *        // Creates a gold block that can be placed on grass and dirt
-     *        const specialGoldBlock = new ItemStack("minecraft:gold_block");
-     *        specialPickaxe.setCanPlaceOn(["minecraft:grass", "minecraft:dirt"]);
-     *
+     * // Creates a gold block that can be placed on grass and dirt
+     * const specialGoldBlock = new ItemStack("minecraft:gold_block");
+     * specialPickaxe.setCanPlaceOn(["minecraft:grass", "minecraft:dirt"]);
      * ```
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
@@ -7510,10 +7498,9 @@ export class ItemStack {
      *
      * @example multilineLore.ts
      * ```typescript
-     *        // Set the lore of an item to multiple lines of text
-     *        const itemStack = new ItemStack("minecraft:diamond_sword");
-     *        itemStack.setLore(["Line 1", "Line 2", "Line 3"]);
-     *
+     * // Set the lore of an item to multiple lines of text
+     * const itemStack = new ItemStack("minecraft:diamond_sword");
+     * itemStack.setLore(["Line 1", "Line 2", "Line 3"]);
      * ```
      */
     setLore(loreList?: string[]): void;
@@ -16705,33 +16692,29 @@ export class Player extends Entity {
      * is provided to `score`.
      * @example nestedTranslation.ts
      * ```typescript
-     *        // Displays "Apple or Coal"
-     *        let rawMessage = {
-     *          translate: "accessibility.list.or.two",
-     *          with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
-     *        };
-     *        player.sendMessage(rawMessage);
-     *
+     * // Displays "Apple or Coal"
+     * let rawMessage = {
+     *   translate: "accessibility.list.or.two",
+     *   with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
+     * };
+     * player.sendMessage(rawMessage);
      * ```
      * @example scoreWildcard.ts
      * ```typescript
-     *        // Displays the player's score for objective "obj". Each player will see their own score.
-     *        const rawMessage = { score: { name: "*", objective: "obj" } };
-     *        world.sendMessage(rawMessage);
-     *
+     * // Displays the player's score for objective "obj". Each player will see their own score.
+     * const rawMessage = { score: { name: "*", objective: "obj" } };
+     * world.sendMessage(rawMessage);
      * ```
      * @example simpleString.ts
      * ```typescript
-     *        // Displays "Hello, world!"
-     *        world.sendMessage("Hello, world!");
-     *
+     * // Displays "Hello, world!"
+     * world.sendMessage("Hello, world!");
      * ```
      * @example translation.ts
      * ```typescript
-     *        // Displays "First or Second"
-     *        const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
-     *        player.sendMessage(rawMessage);
-     *
+     * // Displays "First or Second"
+     * const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
+     * player.sendMessage(rawMessage);
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
@@ -17970,33 +17953,29 @@ export class World {
      * is provided to `score`.
      * @example nestedTranslation.ts
      * ```typescript
-     *        // Displays "Apple or Coal"
-     *        let rawMessage = {
-     *          translate: "accessibility.list.or.two",
-     *          with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
-     *        };
-     *        world.sendMessage(rawMessage);
-     *
+     * // Displays "Apple or Coal"
+     * let rawMessage = {
+     *   translate: "accessibility.list.or.two",
+     *   with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
+     * };
+     * world.sendMessage(rawMessage);
      * ```
      * @example scoreWildcard.ts
      * ```typescript
-     *        // Displays the player's score for objective "obj". Each player will see their own score.
-     *        const rawMessage = { score: { name: "*", objective: "obj" } };
-     *        world.sendMessage(rawMessage);
-     *
+     * // Displays the player's score for objective "obj". Each player will see their own score.
+     * const rawMessage = { score: { name: "*", objective: "obj" } };
+     * world.sendMessage(rawMessage);
      * ```
      * @example simpleString.ts
      * ```typescript
-     *        // Displays "Hello, world!"
-     *        world.sendMessage("Hello, world!");
-     *
+     * // Displays "Hello, world!"
+     * world.sendMessage("Hello, world!");
      * ```
      * @example translation.ts
      * ```typescript
-     *        // Displays "First or Second"
-     *        const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
-     *        world.sendMessage(rawMessage);
-     *
+     * // Displays "First or Second"
+     * const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
+     * world.sendMessage(rawMessage);
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
@@ -18064,18 +18043,17 @@ export class WorldInitializeAfterEvent {
      *
      * @example propertyRegistration.js
      * ```typescript
-     *        import { DynamicPropertiesDefinition, MinecraftEntityTypes, world } from "@minecraft/server";
+     * import { DynamicPropertiesDefinition, MinecraftEntityTypes, world } from "@minecraft/server";
      *
-     *        world.afterEvents.worldInitialize.subscribe((e) => {
-     *          let def = new DynamicPropertiesDefinition();
+     * world.afterEvents.worldInitialize.subscribe((e) => {
+     *   let def = new DynamicPropertiesDefinition();
      *
-     *          def.defineNumber("rpgStrength");
-     *          def.defineString("rpgRole", 16);
-     *          def.defineBoolean("rpgIsHero");
+     *   def.defineNumber("rpgStrength");
+     *   def.defineString("rpgRole", 16);
+     *   def.defineBoolean("rpgIsHero");
      *
-     *          e.propertyRegistry.registerEntityTypeDynamicProperties(def, MinecraftEntityTypes.skeleton);
-     *        });
-     *
+     *   e.propertyRegistry.registerEntityTypeDynamicProperties(def, MinecraftEntityTypes.skeleton);
+     * });
      * ```
      */
     readonly propertyRegistry: PropertyRegistry;
