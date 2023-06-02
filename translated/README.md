@@ -11,9 +11,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.10-preview.20`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.10-preview.21`|
 
-游戏版本号：`1.20.10.20`
+游戏版本号：`1.20.10.21`
 
 <!-- summary end -->
 
@@ -42,7 +42,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/335|
+|[@minecraft/server](#minecraftserver)|0/336|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -63,15 +63,13 @@ Minecraft 脚本 API 文档。
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
 |[`GameMode`](https://projectxero.top/sapi/enums/server.GameMode.html)|枚举|未翻译|
 |[`ItemLockMode`](https://projectxero.top/sapi/enums/server.ItemLockMode.html)|枚举|未翻译|
-|[`MessageSourceType`](https://projectxero.top/sapi/enums/server.MessageSourceType.html)|枚举|未翻译|
 |[`ObjectiveSortOrder`](https://projectxero.top/sapi/enums/server.ObjectiveSortOrder.html)|枚举|未翻译|
 |[`ScoreboardIdentityType`](https://projectxero.top/sapi/enums/server.ScoreboardIdentityType.html)|枚举|未翻译|
+|[`ScriptEventSource`](https://projectxero.top/sapi/enums/server.ScriptEventSource.html)|枚举|未翻译|
 |[`SignSide`](https://projectxero.top/sapi/enums/server.SignSide.html)|枚举|未翻译|
 |[`TimeOfDay`](https://projectxero.top/sapi/enums/server.TimeOfDay.html)|枚举|未翻译|
 |[`WatchdogTerminateReason`](https://projectxero.top/sapi/enums/server.WatchdogTerminateReason.html)|枚举|未翻译|
 |[`WeatherType`](https://projectxero.top/sapi/enums/server.WeatherType.html)|枚举|未翻译|
-|[`AfterEvents`](https://projectxero.top/sapi/classes/server.AfterEvents.html)|类|未翻译|
-|[`BeforeEvents`](https://projectxero.top/sapi/classes/server.BeforeEvents.html)|类|未翻译|
 |[`Block`](https://projectxero.top/sapi/classes/server.Block.html)|类|未翻译|
 |[`BlockAreaSize`](https://projectxero.top/sapi/classes/server.BlockAreaSize.html)|类|未翻译|
 |[`BlockBreakAfterEvent`](https://projectxero.top/sapi/classes/server.BlockBreakAfterEvent.html)|类|未翻译|
@@ -337,7 +335,8 @@ Minecraft 脚本 API 文档。
 |[`Seat`](https://projectxero.top/sapi/classes/server.Seat.html)|类|未翻译|
 |[`ServerMessageAfterEventSignal`](https://projectxero.top/sapi/classes/server.ServerMessageAfterEventSignal.html)|类|未翻译|
 |[`System`](https://projectxero.top/sapi/classes/server.System.html)|类|未翻译|
-|[`SystemEvents`](https://projectxero.top/sapi/classes/server.SystemEvents.html)|类|未翻译|
+|[`SystemAfterEvents`](https://projectxero.top/sapi/classes/server.SystemAfterEvents.html)|类|未翻译|
+|[`SystemBeforeEvents`](https://projectxero.top/sapi/classes/server.SystemBeforeEvents.html)|类|未翻译|
 |[`TargetBlockHitAfterEvent`](https://projectxero.top/sapi/classes/server.TargetBlockHitAfterEvent.html)|类|未翻译|
 |[`TargetBlockHitAfterEventSignal`](https://projectxero.top/sapi/classes/server.TargetBlockHitAfterEventSignal.html)|类|未翻译|
 |[`Trigger`](https://projectxero.top/sapi/classes/server.Trigger.html)|类|未翻译|
@@ -349,6 +348,8 @@ Minecraft 脚本 API 文档。
 |[`WeatherChangeAfterEvent`](https://projectxero.top/sapi/classes/server.WeatherChangeAfterEvent.html)|类|未翻译|
 |[`WeatherChangeAfterEventSignal`](https://projectxero.top/sapi/classes/server.WeatherChangeAfterEventSignal.html)|类|未翻译|
 |[`World`](https://projectxero.top/sapi/classes/server.World.html)|类|未翻译|
+|[`WorldAfterEvents`](https://projectxero.top/sapi/classes/server.WorldAfterEvents.html)|类|未翻译|
+|[`WorldBeforeEvents`](https://projectxero.top/sapi/classes/server.WorldBeforeEvents.html)|类|未翻译|
 |[`WorldInitializeAfterEvent`](https://projectxero.top/sapi/classes/server.WorldInitializeAfterEvent.html)|类|未翻译|
 |[`WorldInitializeAfterEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeAfterEventSignal.html)|类|未翻译|
 |[`BlockFillOptions`](https://projectxero.top/sapi/interfaces/server.BlockFillOptions.html)|接口|未翻译|
