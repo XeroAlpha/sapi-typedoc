@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.20.10-preview.21"
+ *   "version": "1.0.0-beta.1.20.10-preview.23"
  * }
  * ```
  *
@@ -37,7 +37,7 @@ export class SecretString {
  * configuration.
  */
 export class ServerSecrets {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * A list of available, configured server secrets.
@@ -62,7 +62,7 @@ export class ServerSecrets {
  * configuration.
  */
 export class ServerVariables {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * A list of available, configured server variables.

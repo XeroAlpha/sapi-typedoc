@@ -1044,4 +1044,4 @@ export declare enum MinecraftItemTypes {
 /**
  * Union type equivalent of the MinecraftItemTypes enum.
  */
-export declare type MinecraftItemTypesUnion = keyof typeof MinecraftItemTypes;
+export type MinecraftItemTypesUnion = keyof typeof MinecraftItemTypes;

@@ -43,7 +43,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.1.0-internal.1.20.10-preview.21"
+ *   "version": "1.2.0-internal.1.20.10-preview.23"
  * }
  * ```
  *
@@ -53,8 +53,8 @@ import * as minecraftserver from '@minecraft/server';
  * @beta
  */
 export enum FormCancelationReason {
-    userBusy = 'userBusy',
-    userClosed = 'userClosed',
+    UserBusy = 'UserBusy',
+    UserClosed = 'UserClosed',
 }
 
 export enum FormRejectReason {
@@ -112,8 +112,9 @@ export class ActionFormData {
  * Returns data about the player results from a modal action
  * form.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ActionFormResponse extends FormResponse {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the index of the button that was pushed.
@@ -126,7 +127,7 @@ export class ActionFormResponse extends FormResponse {
  * Base type for a form response.
  */
 export class FormResponse {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -201,8 +202,9 @@ export class MessageFormData {
  * Returns data about the player results from a modal message
  * form.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class MessageFormResponse extends FormResponse {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the index of the button that was pushed.
@@ -288,8 +290,9 @@ export class ModalFormData {
 /**
  * Returns data about player responses to a modal form.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ModalFormResponse extends FormResponse {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * An ordered set of values based on the order of controls
@@ -299,7 +302,8 @@ export class ModalFormResponse extends FormResponse {
     readonly formValues?: (boolean | number | string)[];
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
 export class FormRejectError extends Error {
-    protected constructor();
+    private constructor();
     reason: FormRejectReason;
 }

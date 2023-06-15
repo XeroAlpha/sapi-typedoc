@@ -6,14 +6,14 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.4.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.5.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
-|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.10-preview.21`|
+|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.20-preview.23`|
 
-游戏版本号：`1.20.10.21`
+游戏版本号：`1.20.10.23`
 
 <!-- summary end -->
 
@@ -42,7 +42,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/336|
+|[@minecraft/server](#minecraftserver)|0/341|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
@@ -149,8 +149,10 @@ Minecraft 脚本 API 文档。
 |[`EntityHealthChangedAfterEvent`](https://projectxero.top/sapi/classes/server.EntityHealthChangedAfterEvent.html)|类|未翻译|
 |[`EntityHealthChangedAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityHealthChangedAfterEventSignal.html)|类|未翻译|
 |[`EntityHealthComponent`](https://projectxero.top/sapi/classes/server.EntityHealthComponent.html)|类|未翻译|
-|[`EntityHitAfterEvent`](https://projectxero.top/sapi/classes/server.EntityHitAfterEvent.html)|类|未翻译|
-|[`EntityHitAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityHitAfterEventSignal.html)|类|未翻译|
+|[`EntityHitBlockAfterEvent`](https://projectxero.top/sapi/classes/server.EntityHitBlockAfterEvent.html)|类|未翻译|
+|[`EntityHitBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityHitBlockAfterEventSignal.html)|类|未翻译|
+|[`EntityHitEntityAfterEvent`](https://projectxero.top/sapi/classes/server.EntityHitEntityAfterEvent.html)|类|未翻译|
+|[`EntityHitEntityAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityHitEntityAfterEventSignal.html)|类|未翻译|
 |[`EntityHurtAfterEvent`](https://projectxero.top/sapi/classes/server.EntityHurtAfterEvent.html)|类|未翻译|
 |[`EntityHurtAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityHurtAfterEventSignal.html)|类|未翻译|
 |[`EntityInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityInventoryComponent.html)|类|未翻译|
@@ -227,7 +229,8 @@ Minecraft 脚本 API 文档。
 |[`IEffectAddAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEffectAddAfterEventSignal.html)|类|未翻译|
 |[`IEntityDieAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityDieAfterEventSignal.html)|类|未翻译|
 |[`IEntityHealthChangedAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHealthChangedAfterEventSignal.html)|类|未翻译|
-|[`IEntityHitAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHitAfterEventSignal.html)|类|未翻译|
+|[`IEntityHitBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHitBlockAfterEventSignal.html)|类|未翻译|
+|[`IEntityHitEntityAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHitEntityAfterEventSignal.html)|类|未翻译|
 |[`IEntityHurtAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityHurtAfterEventSignal.html)|类|未翻译|
 |[`IEntityRemovedAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntityRemovedAfterEventSignal.html)|类|未翻译|
 |[`IEntitySpawnAfterEventSignal`](https://projectxero.top/sapi/classes/server.IEntitySpawnAfterEventSignal.html)|类|未翻译|
@@ -299,7 +302,6 @@ Minecraft 脚本 API 文档。
 |[`MessageReceiveAfterEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveAfterEvent.html)|类|未翻译|
 |[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|未翻译|
 |[`MinecraftDimensionTypes`](https://projectxero.top/sapi/classes/server.MinecraftDimensionTypes.html)|类|未翻译|
-|[`MinecraftEffectTypes`](https://projectxero.top/sapi/classes/server.MinecraftEffectTypes.html)|类|未翻译|
 |[`MinecraftEntityTypes`](https://projectxero.top/sapi/classes/server.MinecraftEntityTypes.html)|类|未翻译|
 |[`MinecraftItemTypes`](https://projectxero.top/sapi/classes/server.MinecraftItemTypes.html)|类|未翻译|
 |[`MolangVariableMap`](https://projectxero.top/sapi/classes/server.MolangVariableMap.html)|类|未翻译|
@@ -354,11 +356,13 @@ Minecraft 脚本 API 文档。
 |[`WorldInitializeAfterEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeAfterEventSignal.html)|类|未翻译|
 |[`BlockFillOptions`](https://projectxero.top/sapi/interfaces/server.BlockFillOptions.html)|接口|未翻译|
 |[`BlockHitInformation`](https://projectxero.top/sapi/interfaces/server.BlockHitInformation.html)|接口|未翻译|
+|[`BlockRaycastHit`](https://projectxero.top/sapi/interfaces/server.BlockRaycastHit.html)|接口|未翻译|
 |[`BlockRaycastOptions`](https://projectxero.top/sapi/interfaces/server.BlockRaycastOptions.html)|接口|未翻译|
 |[`BlockVolume`](https://projectxero.top/sapi/interfaces/server.BlockVolume.html)|接口|未翻译|
 |[`BoundingBox`](https://projectxero.top/sapi/interfaces/server.BoundingBox.html)|接口|未翻译|
 |[`Color`](https://projectxero.top/sapi/interfaces/server.Color.html)|接口|未翻译|
 |[`CompoundBlockVolumeItem`](https://projectxero.top/sapi/interfaces/server.CompoundBlockVolumeItem.html)|接口|未翻译|
+|[`DimensionLocation`](https://projectxero.top/sapi/interfaces/server.DimensionLocation.html)|接口|未翻译|
 |[`EntityApplyDamageByProjectileOptions`](https://projectxero.top/sapi/interfaces/server.EntityApplyDamageByProjectileOptions.html)|接口|未翻译|
 |[`EntityApplyDamageOptions`](https://projectxero.top/sapi/interfaces/server.EntityApplyDamageOptions.html)|接口|未翻译|
 |[`EntityDamageSource`](https://projectxero.top/sapi/interfaces/server.EntityDamageSource.html)|接口|未翻译|
@@ -368,6 +372,7 @@ Minecraft 脚本 API 文档。
 |[`EntityHitInformation`](https://projectxero.top/sapi/interfaces/server.EntityHitInformation.html)|接口|未翻译|
 |[`EntityQueryOptions`](https://projectxero.top/sapi/interfaces/server.EntityQueryOptions.html)|接口|未翻译|
 |[`EntityQueryScoreOptions`](https://projectxero.top/sapi/interfaces/server.EntityQueryScoreOptions.html)|接口|未翻译|
+|[`EntityRaycastHit`](https://projectxero.top/sapi/interfaces/server.EntityRaycastHit.html)|接口|未翻译|
 |[`EntityRaycastOptions`](https://projectxero.top/sapi/interfaces/server.EntityRaycastOptions.html)|接口|未翻译|
 |[`ExplosionOptions`](https://projectxero.top/sapi/interfaces/server.ExplosionOptions.html)|接口|未翻译|
 |[`MusicOptions`](https://projectxero.top/sapi/interfaces/server.MusicOptions.html)|接口|未翻译|

@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.20.10-preview.21"
+ *   "version": "1.0.0-beta.1.20.10-preview.23"
  * }
  * ```
  *
@@ -32,7 +32,7 @@ export enum HttpRequestMethod {
      * specified URI, and not the body contents.
      *
      */
-    DELETE = 'DELETE',
+    Delete = 'Delete',
     /**
      * @remarks
      * Represents the method for an HTTP PUT request. POST requests
@@ -40,7 +40,7 @@ export enum HttpRequestMethod {
      * subordinate of the specified URI.
      *
      */
-    GET = 'GET',
+    Get = 'Get',
     /**
      * @remarks
      * Represents the method for an HTTP PUT request. GET requests
@@ -48,7 +48,7 @@ export enum HttpRequestMethod {
      * at the specified URI.
      *
      */
-    HEAD = 'HEAD',
+    Head = 'Head',
     /**
      * @remarks
      * Represents the method for an HTTP PUT request. GET requests
@@ -56,7 +56,7 @@ export enum HttpRequestMethod {
      * at the specified URI.
      *
      */
-    POST = 'POST',
+    Post = 'Post',
     /**
      * @remarks
      * Represents the method for an HTTP PUT request. PUT requests
@@ -64,11 +64,11 @@ export enum HttpRequestMethod {
      * exists in a resource collection.
      *
      */
-    PUT = 'PUT',
+    Put = 'Put',
 }
 
 export class HttpClient {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Cancels all pending requests.
@@ -221,7 +221,7 @@ export class HttpRequest {
  * Main object that contains result information from a request.
  */
 export class HttpResponse {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Body content of the HTTP response.

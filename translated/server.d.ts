@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.4.0-internal.1.20.10-preview.21"
+ *   "version": "1.5.0-internal.1.20.10-preview.23"
  * }
  * ```
  *
@@ -42,43 +42,43 @@ export enum CompoundBlockVolumeAction {
  * @beta
  */
 export enum Direction {
-    down = 'down',
-    east = 'east',
-    north = 'north',
-    south = 'south',
-    up = 'up',
-    west = 'west',
+    Down = 'Down',
+    East = 'East',
+    North = 'North',
+    South = 'South',
+    Up = 'Up',
+    West = 'West',
 }
 
 /**
  * @beta
  */
 export enum DisplaySlotId {
-    belowname = 'belowname',
-    list = 'list',
-    sidebar = 'sidebar',
+    BelowName = 'BelowName',
+    List = 'List',
+    Sidebar = 'Sidebar',
 }
 
 /**
  * @beta
  */
 export enum DyeColor {
-    black = 'black',
-    blue = 'blue',
-    brown = 'brown',
-    cyan = 'cyan',
-    gray = 'gray',
-    green = 'green',
-    lightBlue = 'lightBlue',
-    lime = 'lime',
-    magenta = 'magenta',
-    orange = 'orange',
-    pink = 'pink',
-    purple = 'purple',
-    red = 'red',
-    silver = 'silver',
-    white = 'white',
-    yellow = 'yellow',
+    Black = 'Black',
+    Blue = 'Blue',
+    Brown = 'Brown',
+    Cyan = 'Cyan',
+    Gray = 'Gray',
+    Green = 'Green',
+    LightBlue = 'LightBlue',
+    Lime = 'Lime',
+    Magenta = 'Magenta',
+    Orange = 'Orange',
+    Pink = 'Pink',
+    Purple = 'Purple',
+    Red = 'Red',
+    Silver = 'Silver',
+    White = 'White',
+    Yellow = 'Yellow',
 }
 
 /**
@@ -122,8 +122,8 @@ export enum EntityDamageCause {
  * @beta
  */
 export enum EntityLifetimeState {
-    loaded = 'loaded',
-    unloaded = 'unloaded',
+    Loaded = 'Loaded',
+    Unloaded = 'Unloaded',
 }
 
 /**
@@ -150,28 +150,28 @@ export enum FluidType {
      * Represents lava as a type of fluid.
      *
      */
-    lava = 'lava',
+    Lava = 'Lava',
     /**
      * @beta
      * @remarks
      * Represents a potion as a type of fluid.
      *
      */
-    potion = 'potion',
+    Potion = 'Potion',
     /**
      * @beta
      * @remarks
      * Represents powder snow as a type of fluid.
      *
      */
-    powderSnow = 'powderSnow',
+    PowderSnow = 'PowderSnow',
     /**
      * @beta
      * @remarks
      * Represents water as a type of fluida.
      *
      */
-    water = 'water',
+    Water = 'Water',
 }
 
 /**
@@ -236,7 +236,7 @@ export enum ObjectiveSortOrder {
      * A-Z) order.
      *
      */
-    ascending = 0,
+    Ascending = 0,
     /**
      * @beta
      * @remarks
@@ -244,7 +244,7 @@ export enum ObjectiveSortOrder {
      * Z-A) order.
      *
      */
-    descending = 1,
+    Descending = 1,
 }
 
 /**
@@ -258,7 +258,7 @@ export enum ScoreboardIdentityType {
      * This scoreboard participant is tied to an entity.
      *
      */
-    entity = 'entity',
+    Entity = 'Entity',
     /**
      * @beta
      * @remarks
@@ -267,24 +267,24 @@ export enum ScoreboardIdentityType {
      * as abstract progress.
      *
      */
-    fakePlayer = 'fakePlayer',
+    FakePlayer = 'FakePlayer',
     /**
      * @beta
      * @remarks
      * This scoreboard participant is tied to a player.
      *
      */
-    player = 'player',
+    Player = 'Player',
 }
 
 /**
  * @beta
  */
 export enum ScriptEventSource {
-    block = 'block',
-    entity = 'entity',
-    npcDialogue = 'npcDialogue',
-    server = 'server',
+    Block = 'Block',
+    Entity = 'Entity',
+    NPCDialogue = 'NPCDialogue',
+    Server = 'Server',
 }
 
 /**
@@ -298,14 +298,14 @@ export enum SignSide {
      * The back of the sign.
      *
      */
-    back = 'back',
+    Back = 'Back',
     /**
      * @beta
      * @remarks
      * The front of the sign.
      *
      */
-    front = 'front',
+    Front = 'Front',
 }
 
 /**
@@ -333,7 +333,7 @@ export enum WatchdogTerminateReason {
      * non-responsiveness from script (a hang or infinite loop).
      *
      */
-    hang = 'hang',
+    Hang = 'Hang',
     /**
      * @beta
      * @remarks
@@ -342,16 +342,16 @@ export enum WatchdogTerminateReason {
      * function calls.
      *
      */
-    stackOverflow = 'stackOverflow',
+    StackOverflow = 'StackOverflow',
 }
 
 /**
  * @beta
  */
 export enum WeatherType {
-    clear = 'clear',
-    rain = 'rain',
-    thunder = 'thunder',
+    Clear = 'Clear',
+    Rain = 'Rain',
+    Thunder = 'Thunder',
 }
 
 /**
@@ -362,7 +362,7 @@ export enum WeatherType {
  * updated in version 1.17.10.21.
  */
 export class Block {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the dimension that the block is within.
@@ -644,8 +644,9 @@ export class BlockAreaSize {
  * Contains information regarding an event where a player
  * breaks a block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockBreakAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns permutation information about this block before it
@@ -666,17 +667,20 @@ export class BlockBreakAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a block is
  * broken.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockBreakAfterEventSignal extends IBlockBreakAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Base type for components associated with blocks.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponent extends Component {
-    protected constructor();
+    private constructor();
     /**
+     * @beta
      * @remarks
      * Block instance that this component pertains to.
      *
@@ -690,7 +694,7 @@ export class BlockComponent extends Component {
  * specific block.
  */
 export class BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Block impacted by this event.
@@ -711,8 +715,9 @@ export class BlockEvent {
  * Contains information regarding an explosion that has
  * occurred for a specific block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockExplodeAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Description of the block that has exploded.
@@ -732,8 +737,9 @@ export class BlockExplodeAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when an explosion
  * occurs, as it impacts individual blocks.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockExplodeAfterEventSignal extends IBlockExplodeAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -741,8 +747,9 @@ export class BlockExplodeAfterEventSignal extends IBlockExplodeAfterEventSignal 
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockInventoryComponent extends BlockComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The container which holds an {@link ItemStack}.
@@ -764,8 +771,9 @@ export class BlockInventoryComponent extends BlockComponent {
  * Represents a fluid container block that currently contains
  * lava.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -780,8 +788,9 @@ export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
  * For blocks that can contain a liquid (e.g., a cauldron),
  * this is a base component for liquid containers.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockLiquidContainerComponent extends BlockComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Relative fill level of the liquid container.
@@ -790,6 +799,7 @@ export class BlockLiquidContainerComponent extends BlockComponent {
      *
      */
     fillLevel: number;
+    isValidLiquid(): boolean;
 }
 
 /**
@@ -811,7 +821,7 @@ export class BlockLiquidContainerComponent extends BlockComponent {
  * coordinate to the next XZ slice)
  */
 export class BlockLocationIterator implements Iterable<Vector3> {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -834,7 +844,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
  * Block}). This type was introduced as of version 1.17.10.21.
  */
 export class BlockPermutation {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -955,8 +965,9 @@ export class BlockPermutation {
  * When present, this block has piston-like behavior. Contains
  * additional properties for discovering block piston state.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPistonComponent extends BlockComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Whether the piston is fully expanded.
@@ -1014,8 +1025,9 @@ export class BlockPistonComponent extends BlockComponent {
  * Contains information regarding an event where a player
  * places a block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPlaceAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Player that placed the block for this event.
@@ -1029,8 +1041,9 @@ export class BlockPlaceAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a block is
  * placed.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPlaceAfterEventSignal extends IBlockPlaceAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -1038,8 +1051,9 @@ export class BlockPlaceAfterEventSignal extends IBlockPlaceAfterEventSignal {
  * Represents a fluid container block that currently contains a
  * potion.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPotionContainerComponent extends BlockLiquidContainerComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -1062,8 +1076,9 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
  * @beta
  * Represents a block that can play a record.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockRecordPlayerComponent extends BlockComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -1104,8 +1119,9 @@ export class BlockRecordPlayerComponent extends BlockComponent {
  * @beta
  * Represents a block that can display text on it.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Whether or not players can edit the sign. This happens if a
@@ -1233,8 +1249,9 @@ export class BlockSignComponent extends BlockComponent {
  * Represents a fluid container block that currently contains
  * snow.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -1249,7 +1266,7 @@ export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
  * Enumerates all {@link BlockStateType}s.
  */
 export class BlockStates {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Retrieves a specific block state instance.
@@ -1271,7 +1288,7 @@ export class BlockStates {
  * a block state.
  */
 export class BlockStateType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of the block property.
@@ -1294,7 +1311,7 @@ export class BlockStateType {
  * 1.17.10.21.
  */
 export class BlockType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Represents whether this type of block can be waterlogged.
@@ -1316,7 +1333,7 @@ export class BlockType {
  * @minecraft-server.BlockVolume} objects
  */
 export class BlockVolumeUtils {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Check to see if the given location is directly adjacent to
@@ -1453,8 +1470,9 @@ export class BlockVolumeUtils {
  * Represents a fluid container block that currently contains
  * water.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class BlockWaterContainerComponent extends BlockLiquidContainerComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -1498,7 +1516,7 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
  * @minecraft-server.BoundingBox} objects
  */
 export class BoundingBoxUtils {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Create a validated instance of a {@link
@@ -1625,8 +1643,9 @@ export class BoundingBoxUtils {
  * @beta
  * Contains information related to changes to a button push.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ButtonPushAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Optional source that triggered the button push.
@@ -1640,8 +1659,9 @@ export class ButtonPushAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a button is
  * pushed.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -1649,7 +1669,7 @@ export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
  * An event that fires as players enter chat messages.
  */
 export class ChatSendAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Message that is being broadcast. In a beforeChat event
@@ -1686,16 +1706,18 @@ export class ChatSendAfterEvent {
  * Manages callbacks that are connected to chat messages being
  * sent.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ChatSendAfterEventSignal extends IChatSendAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * An event that fires as players enter chat messages.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ChatSendBeforeEvent extends ChatSendAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true in a beforeChat event handler, this message
@@ -1719,15 +1741,16 @@ export class ChatSendBeforeEvent extends ChatSendAfterEvent {
  * Manages callbacks that are connected to an event that fires
  * before chat messages are sent.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ChatSendBeforeEventSignal extends IChatSendBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * Contains return data on the result of a command execution.
  */
 export class CommandResult {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If the command operates against a number of entities,
@@ -1743,13 +1766,17 @@ export class CommandResult {
  * Base class for downstream Component implementations.
  */
 export class Component {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of the component.
      *
      */
     readonly typeId: string;
+    /**
+     * @beta
+     */
+    isValid(): boolean;
 }
 
 /**
@@ -1923,7 +1950,7 @@ export class CompoundBlockVolume {
  * more.
  */
 export class Container {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Count of the slots in the container that are empty.
@@ -2107,7 +2134,7 @@ export class Container {
  * inventory.)
  */
 export class ContainerSlot {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Number of the items in the stack. Valid values range between
@@ -2328,7 +2355,7 @@ export class ContainerSlot {
  * event on a chicken.
  */
 export class DataDrivenEntityTriggerAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Entity that the event triggered on.
@@ -2358,8 +2385,9 @@ export class DataDrivenEntityTriggerAfterEvent {
  * driven entity event - for example, the
  * minecraft:ageable_grow_up event on a chicken.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class DataDrivenEntityTriggerAfterEventSignal extends IDataDrivenEntityTriggerAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -2369,7 +2397,7 @@ export class DataDrivenEntityTriggerAfterEventSignal extends IDataDrivenEntityTr
  * event on a chicken.
  */
 export class DataDrivenEntityTriggerBeforeEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, this entity event is not triggered.
@@ -2412,8 +2440,9 @@ export class DataDrivenEntityTriggerBeforeEvent {
  * entity event - for example, the minecraft:ageable_grow_up
  * event on a chicken.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class DataDrivenEntityTriggerBeforeEventSignal extends IDataDrivenEntityTriggerBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -2471,7 +2500,7 @@ export class DefinitionModifier {
  * End) within a world.
  */
 export class Dimension {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of the dimension.
@@ -2579,9 +2608,8 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
      */
-    getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): Block;
+    getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @beta
      * @remarks
@@ -2633,9 +2661,8 @@ export class Dimension {
      *
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
      */
-    getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): Entity[];
+    getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
      * @beta
      * @remarks
@@ -2830,7 +2857,7 @@ export class DynamicPropertiesDefinition {
  * an Entity.
  */
 export class Effect {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Gets an amplifier that may have been applied to this effect.
@@ -2873,7 +2900,7 @@ export class Effect {
  * poison - being added to an entity.
  */
 export class EffectAddAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Additional properties and details of the effect.
@@ -2905,8 +2932,9 @@ export class EffectAddAfterEvent {
  * Manages callbacks that are connected to when an effect is
  * added to an entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EffectAddAfterEventSignal extends IEffectAddAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -2915,7 +2943,7 @@ export class EffectAddAfterEventSignal extends IEffectAddAfterEventSignal {
  * applied to an entity.
  */
 export class EffectType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier name of this effect type.
@@ -2932,7 +2960,7 @@ export class EffectType {
  * applied to an entity.
  */
 export class EffectTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Effect type for the given identifier.
@@ -3073,7 +3101,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
  * enchantment can be applied to.
  */
 export class EnchantmentSlot {
-    protected constructor();
+    private constructor();
     static readonly all = -1;
     static readonly armorFeet = 4;
     static readonly armorHead = 1;
@@ -3105,7 +3133,7 @@ export class EnchantmentSlot {
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The name of the enchantment type.
@@ -3124,7 +3152,7 @@ export class EnchantmentType {
  * @beta
  */
 export class EnchantmentTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Retrieves an enchantment with the specified identifier.
@@ -3144,7 +3172,7 @@ export class EnchantmentTypes {
  * other moving objects like minecarts) in the world.
  */
 export class Entity {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -3449,7 +3477,7 @@ export class Entity {
      * this entity is looking at.
      * @throws This function can throw errors.
      */
-    getBlockFromViewDirection(options?: BlockRaycastOptions): Block;
+    getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @beta
      * @remarks
@@ -3529,7 +3557,7 @@ export class Entity {
      * entity is looking at.
      * @throws This function can throw errors.
      */
-    getEntitiesFromViewDirection(options?: EntityRaycastOptions): Entity[];
+    getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
      * @beta
      * @remarks
@@ -3609,6 +3637,10 @@ export class Entity {
      * @throws This function can throw errors.
      */
     hasTag(tag: string): boolean;
+    /**
+     * @beta
+     */
+    isValid(): boolean;
     /**
      * @beta
      * @remarks
@@ -3816,8 +3848,9 @@ export class Entity {
  * When added, this component makes the entity spawn with a
  * rider of the specified entityType.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityAddRiderComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The type of entity that is added as a rider for this entity
@@ -3849,8 +3882,9 @@ export class EntityAddRiderComponent extends EntityComponent {
  * accelerated by giving the entity the items it likes as
  * defined by feedItems.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityAgeableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Amount of time before the entity grows up, -1 for always a
@@ -3894,8 +3928,9 @@ export class EntityAgeableComponent extends EntityComponent {
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityAttributeComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     readonly currentValue: number;
     readonly defaultValue: number;
     readonly effectiveMax: number;
@@ -3934,8 +3969,9 @@ export class EntityAttributeComponent extends EntityComponent {
  * @beta
  * Base class for a family of entity movement events.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityBaseMovementComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     readonly maxTurn: number;
 }
 
@@ -3944,8 +3980,9 @@ export class EntityBaseMovementComponent extends EntityComponent {
  * Defines what blocks this entity can breathe in and gives
  * them the ability to suffocate.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityBreathableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If true, this entity can breathe in air.
@@ -4041,8 +4078,9 @@ export class EntityBreathableComponent extends EntityComponent {
  * When added, this component signifies that the entity can
  * climb up ladders.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityCanClimbComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4058,8 +4096,9 @@ export class EntityCanClimbComponent extends EntityComponent {
  * fly, and the pathfinder won't be restricted to paths where a
  * solid block is required underneath it.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityCanFlyComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4074,8 +4113,9 @@ export class EntityCanFlyComponent extends EntityComponent {
  * When added, this component signifies that the entity can
  * power jump like the horse does within Minecraft.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityCanPowerJumpComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4090,8 +4130,9 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
  * Defines the entity's color. Only works on certain entities
  * that have predefined color values (sheep, llama, shulker).
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityColorComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -4111,8 +4152,9 @@ export class EntityColorComponent extends EntityComponent {
  * @beta
  * Base class for downstream entity components.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityComponent extends Component {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -4120,10 +4162,6 @@ export class EntityComponent extends Component {
      *
      */
     readonly entity: Entity;
-    /**
-     * @beta
-     */
-    isValid(): boolean;
 }
 
 /**
@@ -4133,7 +4171,7 @@ export class EntityComponent extends Component {
  * causes them to grow.
  */
 export class EntityDefinitionFeedItem {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The amount by which an entity's age will increase when fed
@@ -4155,7 +4193,7 @@ export class EntityDefinitionFeedItem {
  * @beta
  */
 export class EntityDieAfterEvent {
-    protected constructor();
+    private constructor();
     readonly damageSource: EntityDamageSource;
     readonly deadEntity: Entity;
 }
@@ -4163,8 +4201,9 @@ export class EntityDieAfterEvent {
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityDieAfterEventSignal extends IEntityDieAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -4172,8 +4211,9 @@ export class EntityDieAfterEventSignal extends IEntityDieAfterEventSignal {
  * Provides access to a mob's equipment slots. This component
  * exists for all mob entities.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquipmentInventoryComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     static readonly componentId = 'minecraft:equipment_inventory';
     /**
      * @remarks
@@ -4224,8 +4264,9 @@ export class EntityEquipmentInventoryComponent extends EntityComponent {
  * When added, this component signifies that this entity
  * doesn't take damage from fire.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityFireImmuneComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4240,8 +4281,9 @@ export class EntityFireImmuneComponent extends EntityComponent {
  * When added, this component signifies that this entity can
  * float in liquid blocks.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityFloatsInLiquidComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4255,8 +4297,9 @@ export class EntityFloatsInLiquidComponent extends EntityComponent {
  * @beta
  * Represents the flying speed of an entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityFlyingSpeedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -4276,8 +4319,9 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
  * @beta
  * Defines how much friction affects this entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityFrictionModifierComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -4298,8 +4342,9 @@ export class EntityFrictionModifierComponent extends EntityComponent {
  * Sets the offset from the ground that the entity is actually
  * at.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityGroundOffsetComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -4319,8 +4364,17 @@ export class EntityGroundOffsetComponent extends EntityComponent {
  * @beta
  * Defines the interactions with this entity for healing it.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
+    /**
+     * @beta
+     * @remarks
+     * A set of filters for when these Healable items would apply.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly filters: FilterGroup;
     /**
      * @remarks
      * Determines if an item can be used regardless of the entity
@@ -4354,7 +4408,7 @@ export class EntityHealableComponent extends EntityComponent {
  * this event, or it will cause an infinite loop!
  */
 export class EntityHealthChangedAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Entity whose health changed.
@@ -4380,16 +4434,18 @@ export class EntityHealthChangedAfterEvent {
  * Manages callbacks that are connected to when the health of
  * an entity changes.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthChangedAfterEventSignal extends IEntityHealthChangedAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Defines the health properties of an entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4401,35 +4457,54 @@ export class EntityHealthComponent extends EntityAttributeComponent {
 
 /**
  * @beta
+ * Contains information related to an entity hitting a block.
+ */
+export class EntityHitBlockAfterEvent {
+    private constructor();
+    readonly blockFace: Direction;
+    /**
+     * @remarks
+     * Entity that made the attack.
+     *
+     */
+    readonly damagingEntity: Entity;
+    /**
+     * @remarks
+     * Block that was hit by the attack.
+     *
+     */
+    readonly hitBlock: Block;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity hits
+ * a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHitBlockAfterEventSignal extends IEntityHitBlockAfterEventSignal {
+    private constructor();
+}
+
+/**
+ * @beta
  * Contains information related to an entity hitting (melee
  * attacking) another entity.
  */
-export class EntityHitAfterEvent {
-    protected constructor();
+export class EntityHitEntityAfterEvent {
+    private constructor();
     /**
      * @remarks
      * Entity that made a hit/melee attack.
      *
      */
-    readonly entity: Entity;
+    readonly damagingEntity: Entity;
     /**
      * @remarks
-     * Block that was hit by the attack, or undefined if the hit
-     * attack did not hit a block. If both hitEntity and hitBlock
-     * are undefined, then the entity basically swiped into the
-     * air.
+     * Entity that was hit by the attack.
      *
      */
-    readonly hitBlock?: Block;
-    /**
-     * @remarks
-     * Entity that was hit by the attack, or undefined if the hit
-     * attack did not hit an entity. If both hitEntity and hitBlock
-     * are undefined, then the entity basically swiped into the
-     * air.
-     *
-     */
-    readonly hitEntity?: Entity;
+    readonly hitEntity: Entity;
 }
 
 /**
@@ -4437,17 +4512,17 @@ export class EntityHitAfterEvent {
  * Manages callbacks that are connected to when an entity makes
  * a melee attack on another entity.
  */
-export class EntityHitAfterEventSignal extends IEntityHitAfterEventSignal {
-    protected constructor();
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHitEntityAfterEventSignal extends IEntityHitEntityAfterEventSignal {
+    private constructor();
 }
 
 /**
  * @beta
- * Contains information related to an entity getting hurt by
- * another entity.
+ * Contains information related to an entity getting hurt.
  */
 export class EntityHurtAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Describes the amount of damage caused.
@@ -4474,16 +4549,18 @@ export class EntityHurtAfterEvent {
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHurtAfterEventSignal extends IEntityHurtAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Defines this entity's inventory properties.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityInventoryComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Number of slots that this entity can gain per extra
@@ -4550,8 +4627,9 @@ export class EntityInventoryComponent extends EntityComponent {
  * When added, this component signifies that this entity is a
  * baby.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsBabyComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4566,8 +4644,9 @@ export class EntityIsBabyComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * charged.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsChargedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4582,8 +4661,9 @@ export class EntityIsChargedComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently carrying a chest.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsChestedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4598,8 +4678,9 @@ export class EntityIsChestedComponent extends EntityComponent {
  * When added, this component signifies that dyes can be used
  * on this entity to change its color.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsDyeableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4614,8 +4695,9 @@ export class EntityIsDyeableComponent extends EntityComponent {
  * When added, this component signifies that this entity can
  * hide from hostile mobs while invisible.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4630,8 +4712,9 @@ export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
  * When added, this component signifies that this entity this
  * currently on fire.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsIgnitedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4646,8 +4729,9 @@ export class EntityIsIgnitedComponent extends EntityComponent {
  * When added, this component signifies that this entity is an
  * illager captain.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsIllagerCaptainComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4662,8 +4746,9 @@ export class EntityIsIllagerCaptainComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently saddled.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsSaddledComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4678,8 +4763,9 @@ export class EntityIsSaddledComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently shaking.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsShakingComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4694,8 +4780,9 @@ export class EntityIsShakingComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently sheared.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsShearedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4710,8 +4797,9 @@ export class EntityIsShearedComponent extends EntityComponent {
  * When added, this component signifies that this entity can be
  * stacked.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsStackableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4726,8 +4814,9 @@ export class EntityIsStackableComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently stunned.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsStunnedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4742,8 +4831,9 @@ export class EntityIsStunnedComponent extends EntityComponent {
  * When added, this component signifies that this entity is
  * currently tamed.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsTamedComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4760,8 +4850,9 @@ export class EntityIsTamedComponent extends EntityComponent {
  * retrieve the actual item stack contents via the itemStack
  * property.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityItemComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Item stack represented by this entity in the world.
@@ -4784,7 +4875,7 @@ export class EntityItemComponent extends EntityComponent {
  * statements, Array.from(iterator), and more.
  */
 export class EntityIterator implements Iterable<Entity> {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -4807,8 +4898,9 @@ export class EntityIterator implements Iterable<Entity> {
  * @beta
  * Defines the base movement speed in lava of this entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityLavaMovementComponent extends EntityAttributeComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4823,8 +4915,9 @@ export class EntityLavaMovementComponent extends EntityAttributeComponent {
  * Allows this entity to be leashed and defines the conditions
  * and events for this entity when is leashed.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityLeashableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Distance in blocks at which the 'spring' effect starts
@@ -4868,8 +4961,9 @@ export class EntityLeashableComponent extends EntityComponent {
  * Additional variant value. Can be used to further
  * differentiate variants.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMarkVariantComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -4890,8 +4984,9 @@ export class EntityMarkVariantComponent extends EntityComponent {
  * Contains options for taming a rideable entity based on the
  * entity that mounts it.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMountTamingComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4917,8 +5012,9 @@ export class EntityMountTamingComponent extends EntityComponent {
  * When added, this movement control allows the mob to swim in
  * water and walk on land.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementAmphibiousComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4932,8 +5028,9 @@ export class EntityMovementAmphibiousComponent extends EntityBaseMovementCompone
  * @beta
  * This component accents the movement of an entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4947,8 +5044,9 @@ export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
  * @beta
  * Defines the general movement speed of this entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementComponent extends EntityAttributeComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4962,8 +5060,9 @@ export class EntityMovementComponent extends EntityAttributeComponent {
  * @beta
  * When added, this move control causes the mob to fly.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4978,8 +5077,9 @@ export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
  * When added, this move control allows a mob to fly, swim,
  * climb, etc.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementGenericComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -4993,8 +5093,9 @@ export class EntityMovementGenericComponent extends EntityBaseMovementComponent 
  * @beta
  * When added, this movement control allows the mob to glide.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Speed in effect when the entity is turning.
@@ -5022,8 +5123,9 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
  * @beta
  * When added, this move control causes the mob to hover.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5038,8 +5140,9 @@ export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
  * Move control that causes the mob to jump as it moves with a
  * specified delay between jumps.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5054,8 +5157,9 @@ export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
  * When added, this move control causes the mob to hop as it
  * moves.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5070,8 +5174,9 @@ export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
  * When added, this move control causes the mob to sway side to
  * side giving the impression it is swimming.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Amplitude of the sway motion.
@@ -5100,8 +5205,9 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationClimbComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5116,8 +5222,9 @@ export class EntityNavigationClimbComponent extends EntityNavigationComponent {
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Tells the pathfinder to avoid blocks that cause damage when
@@ -5273,8 +5380,9 @@ export class EntityNavigationComponent extends EntityComponent {
  * Allows this entity to generate paths by flying around the
  * air like the regular Ghast.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationFloatComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5289,8 +5397,9 @@ export class EntityNavigationFloatComponent extends EntityNavigationComponent {
  * Allows this entity to generate paths in the air (for
  * example, like Minecraft parrots do.)
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationFlyComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5306,8 +5415,9 @@ export class EntityNavigationFlyComponent extends EntityNavigationComponent {
  * flying and/or climbing around and jumping up and down a
  * block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationGenericComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5323,8 +5433,9 @@ export class EntityNavigationGenericComponent extends EntityNavigationComponent 
  * example, like the Minecraft Bees do.) Keeps them from
  * falling out of the skies and doing predictive movement.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationHoverComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5339,8 +5450,9 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
  * Allows this entity to generate paths by walking around and
  * jumping up and down a block like regular mobs.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityNavigationWalkComponent extends EntityNavigationComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5354,8 +5466,9 @@ export class EntityNavigationWalkComponent extends EntityNavigationComponent {
  * @beta
  * When present on an entity, this entity is on fire.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityOnFireComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The number of ticks remaining before the fire goes out.
@@ -5369,8 +5482,9 @@ export class EntityOnFireComponent extends EntityComponent {
  * @beta
  * Sets the distance through which the entity can push through.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityPushThroughComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -5390,15 +5504,16 @@ export class EntityPushThroughComponent extends EntityComponent {
  * @beta
  */
 export class EntityRemovedAfterEvent {
-    protected constructor();
+    private constructor();
     readonly removedEntity: string;
 }
 
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRemovedAfterEventSignal extends IEntityRemovedAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -5406,8 +5521,9 @@ export class EntityRemovedAfterEventSignal extends IEntityRemovedAfterEventSigna
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRideableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Zero-based index of the seat that can used to control this
@@ -5527,8 +5643,9 @@ export class EntityRideableComponent extends EntityComponent {
  * This component is added to any entity when it is riding
  * another entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRidingComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The entity this entity is currently riding on.
@@ -5549,8 +5666,9 @@ export class EntityRidingComponent extends EntityComponent {
  * @beta
  * Sets the entity's visual size.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityScaleComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -5571,8 +5689,9 @@ export class EntityScaleComponent extends EntityComponent {
  * Skin Id value. Can be used to differentiate skins, such as
  * base skins for villagers.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntitySkinIdComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -5594,7 +5713,7 @@ export class EntitySkinIdComponent extends EntityComponent {
  * world.
  */
 export class EntitySpawnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Entity that was spawned.
@@ -5610,16 +5729,18 @@ export class EntitySpawnAfterEvent {
  * Registers a script-based event handler for handling what
  * happens when an entity spawns.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntitySpawnAfterEventSignal extends IEntitySpawnAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Defines the entity's strength to carry items.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityStrengthComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Maximum strength of this entity, as defined in the entity
@@ -5642,8 +5763,9 @@ export class EntityStrengthComponent extends EntityComponent {
  * @beta
  * Defines the rules for an entity to be tamed by the player.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityTameableComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The chance of taming the entity with each item use between
@@ -5684,7 +5806,7 @@ export class EntityTameableComponent extends EntityComponent {
  * Represents information about a type of entity.
  */
 export class EntityType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this entity type - for example,
@@ -5699,7 +5821,7 @@ export class EntityType {
  * An iterator that loops through available entity types.
  */
 export class EntityTypeIterator implements Iterable<EntityType> {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -5720,7 +5842,7 @@ export class EntityTypeIterator implements Iterable<EntityType> {
  * use within the world.
  */
 export class EntityTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Retrieves an entity type using a string-based identifier.
@@ -5740,8 +5862,9 @@ export class EntityTypes {
  * Defines the general movement speed underwater of this
  * entity.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityUnderwaterMovementComponent extends EntityAttributeComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5756,8 +5879,9 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
  * Used to differentiate the component group of a variant of an
  * entity from others. (e.g. ocelot, villager).
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityVariantComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     readonly value: number;
     /**
      * @remarks
@@ -5773,8 +5897,9 @@ export class EntityVariantComponent extends EntityComponent {
  * When added, this component signifies that this entity wants
  * to become a jockey.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityWantsJockeyComponent extends EntityComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this component. Should always be
@@ -5790,7 +5915,7 @@ export class EntityWantsJockeyComponent extends EntityComponent {
  * happened.
  */
 export class ExplosionAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Dimension where the explosion has occurred.
@@ -5816,8 +5941,9 @@ export class ExplosionAfterEvent {
  * Manages callbacks that are connected to when an explosion
  * occurs.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ExplosionAfterEventSignal extends IExplosionAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -5825,8 +5951,9 @@ export class ExplosionAfterEventSignal extends IExplosionAfterEventSignal {
  * Contains information regarding an explosion that has
  * happened.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ExplosionBeforeEvent extends ExplosionAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, cancels the explosion event.
@@ -5849,8 +5976,9 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
  * Manages callbacks that are connected to before an explosion
  * occurs.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ExplosionBeforeEventSignal extends IExplosionBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -5859,7 +5987,7 @@ export class ExplosionBeforeEventSignal extends IExplosionBeforeEventSignal {
  * item that can be fed to an entity to cause health effects.
  */
 export class FeedItem {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The amount of health this entity gains when fed this item.
@@ -5891,7 +6019,7 @@ export class FeedItem {
  * item being fed to an entity.
  */
 export class FeedItemEffect {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Gets an amplifier that may have been applied to this effect.
@@ -5927,7 +6055,7 @@ export class FeedItemEffect {
  * Represents a set of filters for when an event should occur.
  */
 export class FilterGroup {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -5935,7 +6063,7 @@ export class FilterGroup {
  * Represents constants related to fluid containers.
  */
 export class FluidContainer {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Constant that represents the maximum fill level of a fluid
@@ -5958,7 +6086,7 @@ export class FluidContainer {
  * an event that fires when blocks are broken.
  */
 export class IBlockBreakAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -5980,7 +6108,7 @@ export class IBlockBreakAfterEventSignal {
  * an event that fires when an explosion occurs.
  */
 export class IBlockExplodeAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6002,7 +6130,7 @@ export class IBlockExplodeAfterEventSignal {
  * an event that fires after a block is placed.
  */
 export class IBlockPlaceAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6024,7 +6152,7 @@ export class IBlockPlaceAfterEventSignal {
  * an event that fires when a button is pushed.
  */
 export class IButtonPushAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6046,7 +6174,7 @@ export class IButtonPushAfterEventSignal {
  * an event that fires when a chat message is sent.
  */
 export class IChatSendAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6068,7 +6196,7 @@ export class IChatSendAfterEventSignal {
  * an event that fires before a chat message is sent.
  */
 export class IChatSendBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6091,7 +6219,7 @@ export class IChatSendBeforeEventSignal {
  * triggered to change.
  */
 export class IDataDrivenEntityTriggerAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6117,7 +6245,7 @@ export class IDataDrivenEntityTriggerAfterEventSignal {
  * scheduled to change via a triggered event.
  */
 export class IDataDrivenEntityTriggerBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6142,7 +6270,7 @@ export class IDataDrivenEntityTriggerBeforeEventSignal {
  * an event that fires when an effect is added to an entity.
  */
 export class IEffectAddAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6167,7 +6295,7 @@ export class IEffectAddAfterEventSignal {
  * an event that fires when an entity dies.
  */
 export class IEntityDieAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6190,7 +6318,7 @@ export class IEntityDieAfterEventSignal {
  * @beta
  */
 export class IEntityHealthChangedAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6211,28 +6339,48 @@ export class IEntityHealthChangedAfterEventSignal {
 
 /**
  * @beta
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when an entity hits (melee attacks)
- * another entity.
  */
-export class IEntityHitAfterEventSignal {
-    protected constructor();
+export class IEntityHitBlockAfterEventSignal {
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
     subscribe(
-        callback: (arg: EntityHitAfterEvent) => void,
+        callback: (arg: EntityHitBlockAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHitAfterEvent) => void;
+    ): (arg: EntityHitBlockAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: EntityHitAfterEvent) => void): void;
+    unsubscribe(callback: (arg: EntityHitBlockAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class IEntityHitEntityAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: EntityHitEntityAfterEvent) => void,
+        options?: EntityEventOptions,
+    ): (arg: EntityHitEntityAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: EntityHitEntityAfterEvent) => void): void;
 }
 
 /**
@@ -6241,7 +6389,7 @@ export class IEntityHitAfterEventSignal {
  * an event that fires when an entity is hurt.
  */
 export class IEntityHurtAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6264,7 +6412,7 @@ export class IEntityHurtAfterEventSignal {
  * @beta
  */
 export class IEntityRemovedAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6289,7 +6437,7 @@ export class IEntityRemovedAfterEventSignal {
  * an event that fires after an entity is spawned.
  */
 export class IEntitySpawnAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6311,7 +6459,7 @@ export class IEntitySpawnAfterEventSignal {
  * an event that fires after an explosion occurs.
  */
 export class IExplosionAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6333,7 +6481,7 @@ export class IExplosionAfterEventSignal {
  * an event that fires before an explosion begins.
  */
 export class IExplosionBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6353,7 +6501,7 @@ export class IExplosionBeforeEventSignal {
  * @beta
  */
 export class IItemCompleteUseAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6375,7 +6523,7 @@ export class IItemCompleteUseAfterEventSignal {
  * an event that fires after an items' definition has changed.
  */
 export class IItemDefinitionAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6399,7 +6547,7 @@ export class IItemDefinitionAfterEventSignal {
  * an event that fires before an items' definition changes.
  */
 export class IItemDefinitionBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6421,7 +6569,7 @@ export class IItemDefinitionBeforeEventSignal {
  * @beta
  */
 export class IItemReleaseUseAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6441,7 +6589,7 @@ export class IItemReleaseUseAfterEventSignal {
  * @beta
  */
 export class IItemStartUseAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6464,7 +6612,7 @@ export class IItemStartUseAfterEventSignal {
  * on a block.
  */
 export class IItemStartUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6484,7 +6632,7 @@ export class IItemStartUseOnAfterEventSignal {
  * @beta
  */
 export class IItemStopUseAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6507,7 +6655,7 @@ export class IItemStopUseAfterEventSignal {
  * block.
  */
 export class IItemStopUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6529,7 +6677,7 @@ export class IItemStopUseOnAfterEventSignal {
  * an event that fires after an item is used.
  */
 export class IItemUseAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6551,7 +6699,7 @@ export class IItemUseAfterEventSignal {
  * an event that fires before an item is used.
  */
 export class IItemUseBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6573,7 +6721,7 @@ export class IItemUseBeforeEventSignal {
  * an event that fires after an item is used on a block.
  */
 export class IItemUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6595,7 +6743,7 @@ export class IItemUseOnAfterEventSignal {
  * an event that fires before an item is being used on a block.
  */
 export class IItemUseOnBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6617,7 +6765,7 @@ export class IItemUseOnBeforeEventSignal {
  * an event that fires after a lever is used.
  */
 export class ILeverActionAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6639,7 +6787,7 @@ export class ILeverActionAfterEventSignal {
  * an event that fires after a piston is activated.
  */
 export class IPistonActivateAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6661,7 +6809,7 @@ export class IPistonActivateAfterEventSignal {
  * an event that fires before a piston is activated.
  */
 export class IPistonActivateBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6683,7 +6831,7 @@ export class IPistonActivateBeforeEventSignal {
  * an event that fires after a player joins a world.
  */
 export class IPlayerJoinAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6705,7 +6853,7 @@ export class IPlayerJoinAfterEventSignal {
  * an event that fires after a player leaves a world.
  */
 export class IPlayerLeaveAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6727,7 +6875,7 @@ export class IPlayerLeaveAfterEventSignal {
  * an event that fires after a player spawns.
  */
 export class IPlayerSpawnAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6747,7 +6895,7 @@ export class IPlayerSpawnAfterEventSignal {
  * @beta
  */
 export class IPressurePlatePopAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6767,7 +6915,7 @@ export class IPressurePlatePopAfterEventSignal {
  * @beta
  */
 export class IPressurePlatePushAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6789,7 +6937,7 @@ export class IPressurePlatePushAfterEventSignal {
  * an event that fires after a projectile hits a target.
  */
 export class IProjectileHitAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6811,7 +6959,7 @@ export class IProjectileHitAfterEventSignal {
  * an event that fires when /script event command is called.
  */
 export class IScriptEventCommandMessageAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6837,7 +6985,7 @@ export class IScriptEventCommandMessageAfterEventSignal {
  * that this event is for internal use only.
  */
 export class IServerMessageAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6857,7 +7005,7 @@ export class IServerMessageAfterEventSignal {
  * @beta
  */
 export class ITargetBlockHitAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -6879,7 +7027,7 @@ export class ITargetBlockHitAfterEventSignal {
  * being charged.
  */
 export class ItemCompleteUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the item stack that has completed charging.
@@ -6906,20 +7054,18 @@ export class ItemCompleteUseAfterEvent {
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCompleteUseAfterEventSignal extends IItemCompleteUseAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Base class for item components.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemComponent extends Component {
-    protected constructor();
-    /**
-     * @beta
-     */
-    isValid(): boolean;
+    private constructor();
 }
 
 /**
@@ -6927,8 +7073,9 @@ export class ItemComponent extends Component {
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCooldownComponent extends ItemComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Represents the cooldown category that this item is
@@ -6968,8 +7115,9 @@ export class ItemCooldownComponent extends ItemComponent {
  * Manages callbacks that are connected to an item's definition
  * and components changing.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDefinitionAfterEventSignal extends IItemDefinitionAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -6977,8 +7125,9 @@ export class ItemDefinitionAfterEventSignal extends IItemDefinitionAfterEventSig
  * Manages callbacks that are connected to an item's definition
  * and components changing.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDefinitionBeforeEventSignal extends IItemDefinitionBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -6987,7 +7136,7 @@ export class ItemDefinitionBeforeEventSignal extends IItemDefinitionBeforeEventS
  * definition change being triggered.
  */
 export class ItemDefinitionTriggeredAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Name of the data-driven item event that is triggering this
@@ -7009,8 +7158,9 @@ export class ItemDefinitionTriggeredAfterEvent {
  * Contains information related to a triggering of a custom
  * item definition change.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDefinitionTriggeredBeforeEvent extends ItemDefinitionTriggeredAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, will cancel the application of this item
@@ -7026,8 +7176,9 @@ export class ItemDefinitionTriggeredBeforeEvent extends ItemDefinitionTriggeredA
  * process of being used. Note that this component only applies
  * to data-driven items.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDurabilityComponent extends ItemComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the current damage level of this particular item.
@@ -7083,8 +7234,9 @@ export class ItemDurabilityComponent extends ItemComponent {
  * effects. Note that this component only applies to
  * data-driven items.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemEnchantsComponent extends ItemComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns a collection of the enchantments applied to this
@@ -7117,8 +7269,9 @@ export class ItemEnchantsComponent extends ItemComponent {
  * entities. Note that this component only applies to
  * data-driven items.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemFoodComponent extends ItemComponent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If true, the player can always eat this item (even when not
@@ -7168,7 +7321,7 @@ export class ItemFoodComponent extends ItemComponent {
  * action.
  */
 export class ItemReleaseUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the item stack that triggered this item event.
@@ -7195,8 +7348,9 @@ export class ItemReleaseUseAfterEvent {
  * Manages callbacks that are connected to the releasing of
  * charging for a chargeable item.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7205,6 +7359,7 @@ export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSig
  */
 export class ItemStack {
     /**
+     * @beta
      * @remarks
      * Number of the items in the stack. Valid values range between
      * 1-255. The provided value will be clamped to the item's
@@ -7225,6 +7380,7 @@ export class ItemStack {
      */
     readonly isStackable: boolean;
     /**
+     * @beta
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
@@ -7233,6 +7389,7 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
+     * @beta
      * @remarks
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
@@ -7250,6 +7407,7 @@ export class ItemStack {
      */
     readonly maxAmount: number;
     /**
+     * @beta
      * @remarks
      * Given name of this stack of items. The name tag is displayed
      * when hovering over the item. Setting the name tag to an
@@ -7429,6 +7587,7 @@ export class ItemStack {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      * @example multilineLore.ts
      * ```typescript
      * // Set the lore of an item to multiple lines of text
@@ -7459,7 +7618,7 @@ export class ItemStack {
  * to be charged.
  */
 export class ItemStartUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The impacted item stack that is starting to be charged.
@@ -7486,8 +7645,9 @@ export class ItemStartUseAfterEvent {
  * Manages callbacks that are connected to the start of
  * charging for a chargeable item.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemStartUseAfterEventSignal extends IItemStartUseAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7499,7 +7659,7 @@ export class ItemStartUseAfterEventSignal extends IItemStartUseAfterEventSignal 
  * Axe items.
  */
 export class ItemStartUseOnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The block that the item is used on.
@@ -7531,8 +7691,9 @@ export class ItemStartUseOnAfterEvent {
  * Manages callbacks that are connected to an item starting
  * being used on a block event.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7542,7 +7703,7 @@ export class ItemStartUseOnAfterEventSignal extends IItemStartUseOnAfterEventSig
  * the use action with the item.
  */
 export class ItemStopUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The impacted item stack that is stopping being charged.
@@ -7570,8 +7731,9 @@ export class ItemStopUseAfterEvent {
  * charging for an item that has a registered
  * minecraft:chargeable component.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemStopUseAfterEventSignal extends IItemStopUseAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7585,7 +7747,7 @@ export class ItemStopUseAfterEventSignal extends IItemStopUseAfterEventSignal {
  * Hoe or Axe items.
  */
 export class ItemStopUseOnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The block that the item is used on.
@@ -7611,8 +7773,9 @@ export class ItemStopUseOnAfterEvent {
  * Manages callbacks that are connected to an item stops used
  * on a block event.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemStopUseOnAfterEventSignal extends IItemStopUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7620,7 +7783,7 @@ export class ItemStopUseOnAfterEventSignal extends IItemStopUseOnAfterEventSigna
  * Represents the type of an item - for example, Wool.
  */
 export class ItemType {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the identifier of the item type - for example,
@@ -7635,7 +7798,7 @@ export class ItemType {
  * An iterator over a set of available item types.
  */
 export class ItemTypeIterator implements Iterable<ItemType> {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -7655,7 +7818,7 @@ export class ItemTypeIterator implements Iterable<ItemType> {
  * Returns the set of item types registered within Minecraft.
  */
 export class ItemTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns a specific item type, if available within Minecraft.
@@ -7677,7 +7840,7 @@ export class ItemTypes {
  * event fires when an item is successfully used by a player.
  */
 export class ItemUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The impacted item stack that is being used.
@@ -7696,16 +7859,18 @@ export class ItemUseAfterEvent {
  * @beta
  * Manages callbacks that are connected to an item use event.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseAfterEventSignal extends IItemUseAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  * Contains information related to an item being used.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseBeforeEvent extends ItemUseAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, this will cancel the item use behavior.
@@ -7718,8 +7883,9 @@ export class ItemUseBeforeEvent extends ItemUseAfterEvent {
  * @beta
  * Manages callbacks that fire before an item is used.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseBeforeEventSignal extends IItemUseBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7729,7 +7895,7 @@ export class ItemUseBeforeEventSignal extends IItemUseBeforeEventSignal {
  * player.
  */
 export class ItemUseOnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The block that the item is used on.
@@ -7768,8 +7934,9 @@ export class ItemUseOnAfterEvent {
  * Manages callbacks that are connected to an item being used
  * on a block event.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseOnAfterEventSignal extends IItemUseOnAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7777,8 +7944,9 @@ export class ItemUseOnAfterEventSignal extends IItemUseOnAfterEventSignal {
  * Contains information related to an item being used on a
  * block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, this will cancel the item use behavior.
@@ -7792,15 +7960,16 @@ export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
  * Manages callbacks that fire before an item being used on a
  * block event.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ItemUseOnBeforeEventSignal extends IItemUseOnBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  */
 export class ITripWireTripAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -7823,7 +7992,7 @@ export class ITripWireTripAfterEventSignal {
  * scripting have exceeded a threshold.
  */
 export class IWatchdogTerminateBeforeEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -7844,7 +8013,7 @@ export class IWatchdogTerminateBeforeEventSignal {
  * An event that fires after the weather has changed.
  */
 export class IWeatherChangeAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -7866,7 +8035,7 @@ export class IWeatherChangeAfterEventSignal {
  * loaded.
  */
 export class IWorldInitializeAfterEventSignal {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -7887,8 +8056,9 @@ export class IWorldInitializeAfterEventSignal {
  * Contains information related to changes to a lever
  * activating or deactivating.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class LeverActionAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * True if the lever is activated (that is, transmitting
@@ -7909,8 +8079,9 @@ export class LeverActionAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -7919,7 +8090,7 @@ export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
  * messages from client to server.
  */
 export class MessageReceiveAfterEvent {
-    protected constructor();
+    private constructor();
     readonly id: string;
     readonly message: string;
     readonly player: Player;
@@ -7931,7 +8102,7 @@ export class MessageReceiveAfterEvent {
  * Education Edition block types.
  */
 export class MinecraftBlockTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Represents an acacia button within Minecraft.
@@ -12462,7 +12633,7 @@ export class MinecraftBlockTypes {
  * A collection of default Minecraft dimension types.
  */
 export class MinecraftDimensionTypes {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The Nether is a collection of biomes separate from the
@@ -12501,46 +12672,8 @@ export class MinecraftDimensionTypes {
 /**
  * @beta
  */
-export class MinecraftEffectTypes {
-    protected constructor();
-    static readonly absorption: EffectType;
-    static readonly badOmen: EffectType;
-    static readonly blindness: EffectType;
-    static readonly conduitPower: EffectType;
-    static readonly darkness: EffectType;
-    static readonly empty: EffectType;
-    static readonly fatalPoison: EffectType;
-    static readonly fireResistance: EffectType;
-    static readonly haste: EffectType;
-    static readonly healthBoost: EffectType;
-    static readonly hunger: EffectType;
-    static readonly instantDamage: EffectType;
-    static readonly instantHealth: EffectType;
-    static readonly invisibility: EffectType;
-    static readonly jumpBoost: EffectType;
-    static readonly levitation: EffectType;
-    static readonly miningFatigue: EffectType;
-    static readonly nausea: EffectType;
-    static readonly nightVision: EffectType;
-    static readonly poison: EffectType;
-    static readonly regeneration: EffectType;
-    static readonly resistance: EffectType;
-    static readonly saturation: EffectType;
-    static readonly slowFalling: EffectType;
-    static readonly slowness: EffectType;
-    static readonly speed: EffectType;
-    static readonly strength: EffectType;
-    static readonly villageHero: EffectType;
-    static readonly waterBreathing: EffectType;
-    static readonly weakness: EffectType;
-    static readonly wither: EffectType;
-}
-
-/**
- * @beta
- */
 export class MinecraftEntityTypes {
-    protected constructor();
+    private constructor();
     static readonly agent: EntityType;
     static readonly allay: EntityType;
     static readonly areaEffectCloud: EntityType;
@@ -12663,7 +12796,7 @@ export class MinecraftEntityTypes {
  * Education Edition block types.
  */
 export class MinecraftItemTypes {
-    protected constructor();
+    private constructor();
     static readonly acaciaBoat: ItemType;
     /**
      * @remarks
@@ -16462,7 +16595,7 @@ export class MolangVariableMap {
  * navigation.
  */
 export class NavigationResult {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Whether the navigation result contains a full path,
@@ -16483,8 +16616,9 @@ export class NavigationResult {
  * Contains information related to changes to a piston
  * expanding or retracting.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * True if the piston is the process of expanding.
@@ -16503,8 +16637,9 @@ export class PistonActivateAfterEvent extends BlockEvent {
  * @beta
  * Manages callbacks that are connected to piston activations.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateAfterEventSignal extends IPistonActivateAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -16512,8 +16647,9 @@ export class PistonActivateAfterEventSignal extends IPistonActivateAfterEventSig
  * Contains information related to changes before a piston
  * expands or retracts.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateBeforeEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If this is set to true within an event handler, the piston
@@ -16540,15 +16676,17 @@ export class PistonActivateBeforeEvent extends BlockEvent {
  * Manages callbacks that are connected to an event that fires
  * before a piston is activated.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateBeforeEventSignal extends IPistonActivateBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * Represents a player within the world.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class Player extends Entity {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -16597,6 +16735,7 @@ export class Player extends Entity {
      * Contains methods for manipulating the on-screen display of a
      * Player.
      *
+     * @throws This property can throw when used.
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
@@ -16608,15 +16747,6 @@ export class Player extends Entity {
      *
      */
     selectedSlot: number;
-    /**
-     * @beta
-     * @remarks
-     * If this player has an individual spawn point set, returns
-     * the dimension that their spawn point is within.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly spawnDimension?: Dimension;
     /**
      * @beta
      * @remarks
@@ -16667,17 +16797,6 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * Clears the spawn point that has been individually set for a
-     * player.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    clearSpawn(): void;
-    /**
-     * @beta
-     * @remarks
      * Gets the current item cooldown time for a particular
      * cooldown category.
      *
@@ -16689,16 +16808,9 @@ export class Player extends Entity {
     getItemCooldown(itemCategory: string): number;
     /**
      * @beta
-     * @remarks
-     * Returns an individualized spawn position, if set, for a
-     * player.
-     *
-     * @returns
-     * The individual spawn position, or undefined if there is no
-     * specific spawn position set for a player.
      * @throws This function can throw errors.
      */
-    getSpawnPosition(): Vector3 | undefined;
+    getSpawnPoint(): DimensionLocation | undefined;
     /**
      * @beta
      * @remarks
@@ -16803,20 +16915,11 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * Sets the individual spawn point of this player.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param spawnPosition
-     * Location of the spawn point.
-     * @param spawnDimension
-     * Dimension to place the players' individualized spawn point
-     * within.
-     * @returns
-     * Returns undefined/void.
      * @throws This function can throw errors.
      */
-    setSpawn(spawnPosition: Vector3, spawnDimension: Dimension): void;
+    setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
      * @beta
      * @remarks
@@ -16842,7 +16945,7 @@ export class Player extends Entity {
  * statements, Array.from(iterator), and more.
  */
 export class PlayerIterator implements Iterable<Player> {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -16869,7 +16972,7 @@ export class PlayerIterator implements Iterable<Player> {
  * within the game.
  */
 export class PlayerJoinAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Opaque string identifier of the player that joined the game.
@@ -16889,8 +16992,9 @@ export class PlayerJoinAfterEvent {
  * Manages callbacks that are connected to a player joining the
  * world.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -16899,7 +17003,7 @@ export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
  * world.
  */
 export class PlayerLeaveAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Opaque string identifier of the player that has left the
@@ -16920,8 +17024,9 @@ export class PlayerLeaveAfterEvent {
  * Manages callbacks that are connected to a player leaving the
  * world.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -16930,7 +17035,7 @@ export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
  * spawning.
  */
 export class PlayerSpawnAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If true, this is the initial spawn of a player after joining
@@ -16955,8 +17060,9 @@ export class PlayerSpawnAfterEvent {
  * Registers an event when a player is spawned (or re-spawned
  * after death) and fully ready within the world.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -16964,8 +17070,9 @@ export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
  * Contains information related to changes to a pressure plate
  * pop.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PressurePlatePopAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The redstone power of the pressure plate before it was
@@ -16987,8 +17094,9 @@ export class PressurePlatePopAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a pressure
  * plate is popped.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PressurePlatePopAfterEventSignal extends IPressurePlatePopAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -16996,8 +17104,9 @@ export class PressurePlatePopAfterEventSignal extends IPressurePlatePopAfterEven
  * Contains information related to changes to a pressure plate
  * push.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PressurePlatePushAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The redstone power of the pressure plate before it was
@@ -17025,8 +17134,9 @@ export class PressurePlatePushAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a pressure
  * plate is pushed.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PressurePlatePushAfterEventSignal extends IPressurePlatePushAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17035,7 +17145,7 @@ export class PressurePlatePushAfterEventSignal extends IPressurePlatePushAfterEv
  * entity or block.
  */
 export class ProjectileHitAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Dimension where this projectile hit took place.
@@ -17091,8 +17201,9 @@ export class ProjectileHitAfterEvent {
  * Manages callbacks that are connected to when a projectile
  * hits an entity or block.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ProjectileHitAfterEventSignal extends IProjectileHitAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17102,7 +17213,7 @@ export class ProjectileHitAfterEventSignal extends IProjectileHitAfterEventSigna
  * used and stored within Minecraft.
  */
 export class PropertyRegistry {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Registers a dynamic property for a particular entity type
@@ -17132,7 +17243,7 @@ export class PropertyRegistry {
  * Contains objectives and participants for the scoreboard.
  */
 export class Scoreboard {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Adds a new objective to the scoreboard.
@@ -17150,7 +17261,7 @@ export class Scoreboard {
      *
      * @throws This function can throw errors.
      */
-    clearObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjective;
+    clearObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjective;
     /**
      * @remarks
      * Returns a specific objective (by id).
@@ -17167,7 +17278,7 @@ export class Scoreboard {
      *
      * @throws This function can throw errors.
      */
-    getObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjectiveDisplayOptions;
+    getObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjectiveDisplayOptions;
     /**
      * @remarks
      * Returns all defined objectives.
@@ -17182,19 +17293,6 @@ export class Scoreboard {
      * @throws This function can throw errors.
      */
     getParticipants(): ScoreboardIdentity[];
-    /**
-     * @remarks
-     * Returns a score given an objective and participant.
-     *
-     * @param objective
-     * Objective to retrieve the score for.
-     * @param participant
-     * Participant to retrieve the score for.
-     * @returns
-     * Score value.
-     * @throws This function can throw errors.
-     */
-    getScore(objective: ScoreboardObjective, participant: ScoreboardIdentity): number;
     /**
      * @remarks
      * Removes an objective from the scoreboard.
@@ -17214,22 +17312,9 @@ export class Scoreboard {
      * @throws This function can throw errors.
      */
     setObjectiveAtDisplaySlot(
-        displaySlotId: string,
+        displaySlotId: DisplaySlotId,
         objectiveDisplaySetting: ScoreboardObjectiveDisplayOptions,
     ): ScoreboardObjective;
-    /**
-     * @remarks
-     * Sets the score given a participant and objective.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param objective
-     * Objective to use for the scoreboard.
-     * @param participant
-     * Participant to apply the scoreboard value to.
-     * @throws This function can throw errors.
-     */
-    setScore(objective: ScoreboardObjective, participant: ScoreboardIdentity, score: number): boolean;
 }
 
 /**
@@ -17237,7 +17322,7 @@ export class Scoreboard {
  * Contains an identity of the scoreboard item.
  */
 export class ScoreboardIdentity {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the player-visible name of this identity.
@@ -17264,44 +17349,7 @@ export class ScoreboardIdentity {
      * @throws This function can throw errors.
      */
     getEntity(): Entity;
-    /**
-     * @remarks
-     * Gets the current score for this participant based on an
-     * objective.
-     *
-     * @param objective
-     * The objective to retrieve the score for.
-     * @returns
-     * Score value.
-     * @throws This function can throw errors.
-     */
-    getScore(objective: ScoreboardObjective): number;
     isValid(): boolean;
-    /**
-     * @remarks
-     * Removes this participant from an objective.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param objective
-     * The objective to remove this participant from.
-     * @throws This function can throw errors.
-     */
-    removeFromObjective(objective: ScoreboardObjective): boolean;
-    /**
-     * @remarks
-     * Sets a score for this participant for a particular
-     * objective.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param objective
-     * Objective to apply the score to.
-     * @param score
-     * Score value.
-     * @throws This function can throw errors.
-     */
-    setScore(objective: ScoreboardObjective, score: number): boolean;
 }
 
 /**
@@ -17309,7 +17357,7 @@ export class ScoreboardIdentity {
  * Contains objectives and participants for the scoreboard.
  */
 export class ScoreboardObjective {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Returns the player-visible name of this scoreboard
@@ -17340,7 +17388,7 @@ export class ScoreboardObjective {
      * Identifier of the participant to retrieve a score for.
      * @throws This function can throw errors.
      */
-    getScore(participant: ScoreboardIdentity): number;
+    getScore(participant: Entity | ScoreboardIdentity | string): number | undefined;
     /**
      * @remarks
      * Returns specific scores for this objective for all
@@ -17349,6 +17397,14 @@ export class ScoreboardObjective {
      * @throws This function can throw errors.
      */
     getScores(): ScoreboardScoreInfo[];
+    /**
+     * @remarks
+     * Returns if the specified identity is a participant of the
+     * scoreboard objective.
+     *
+     * @throws This function can throw errors.
+     */
+    hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     isValid(): boolean;
     /**
      * @remarks
@@ -17361,7 +17417,7 @@ export class ScoreboardObjective {
      * objective.
      * @throws This function can throw errors.
      */
-    removeParticipant(participant: ScoreboardIdentity): boolean;
+    removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
      * @remarks
      * Sets a score for a participant.
@@ -17374,7 +17430,7 @@ export class ScoreboardObjective {
      * New value of the score.
      * @throws This function can throw errors.
      */
-    setScore(participant: ScoreboardIdentity, score: number): boolean;
+    setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }
 
 /**
@@ -17383,7 +17439,7 @@ export class ScoreboardObjective {
  * respective score.
  */
 export class ScoreboardScoreInfo {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * This scoreboard participant for this score.
@@ -17404,7 +17460,7 @@ export class ScoreboardScoreInfo {
  * showing up on the screen.
  */
 export class ScreenDisplay {
-    protected constructor();
+    private constructor();
     isValid(): boolean;
     /**
      * @remarks
@@ -17446,7 +17502,7 @@ export class ScreenDisplay {
  * invocation.
  */
 export class ScriptEventCommandMessageAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Identifier of this ScriptEvent command message.
@@ -17494,8 +17550,9 @@ export class ScriptEventCommandMessageAfterEvent {
  * Allows for registering an event handler that responds to
  * inbound /scriptevent commands.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ScriptEventCommandMessageAfterEventSignal extends IScriptEventCommandMessageAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17504,7 +17561,7 @@ export class ScriptEventCommandMessageAfterEventSignal extends IScriptEventComma
  * entity.
  */
 export class Seat {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If specified, contains a forced rotation that the riders in
@@ -17540,15 +17597,16 @@ export class Seat {
  * event is not currently fully implemented, and should not be
  * used.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ServerMessageAfterEventSignal extends IServerMessageAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * A class that provides system-level events and functions.
  */
 export class System {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      */
@@ -17622,7 +17680,7 @@ export class System {
  * @beta
  */
 export class SystemAfterEvents {
-    protected constructor();
+    private constructor();
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
 }
 
@@ -17630,7 +17688,7 @@ export class SystemAfterEvents {
  * @beta
  */
 export class SystemBeforeEvents {
-    protected constructor();
+    private constructor();
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
 }
 
@@ -17639,8 +17697,9 @@ export class SystemBeforeEvents {
  * Contains information related to changes to a target block
  * hit.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class TargetBlockHitAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * The position where the source hit the block.
@@ -17672,8 +17731,9 @@ export class TargetBlockHitAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a target block
  * is hit.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class TargetBlockHitAfterEventSignal extends ITargetBlockHitAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17699,8 +17759,9 @@ export class Trigger {
  * @beta
  * Contains information related to changes to a trip wire trip.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class TripWireTripAfterEvent extends BlockEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Whether or not the block has redstone power.
@@ -17720,8 +17781,9 @@ export class TripWireTripAfterEvent extends BlockEvent {
  * Manages callbacks that are connected to when a trip wire is
  * tripped.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class TripWireTripAfterEventSignal extends ITripWireTripAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17908,7 +17970,7 @@ export class Vector {
  * termination.
  */
 export class WatchdogTerminateBeforeEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * If set to true, cancels the termination of the script
@@ -17933,8 +17995,9 @@ export class WatchdogTerminateBeforeEvent {
  * be called when a script runtime is being terminated due to a
  * violation of the performance watchdog system.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WatchdogTerminateBeforeEventSignal extends IWatchdogTerminateBeforeEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17943,7 +18006,7 @@ export class WatchdogTerminateBeforeEventSignal extends IWatchdogTerminateBefore
  * environment.
  */
 export class WeatherChangeAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Dimension in which the weather has changed.
@@ -17968,8 +18031,9 @@ export class WeatherChangeAfterEvent {
  * @beta
  * Manages callbacks that are connected to weather changing.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WeatherChangeAfterEventSignal extends IWeatherChangeAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -17977,7 +18041,7 @@ export class WeatherChangeAfterEventSignal extends IWeatherChangeAfterEventSigna
  * dimensions and the environment of Minecraft.
  */
 export class World {
-    protected constructor();
+    private constructor();
     /**
      * @beta
      * @remarks
@@ -18032,15 +18096,12 @@ export class World {
     getAllPlayers(): Player[];
     /**
      * @beta
-     * @remarks
-     * Returns the default spawn position within the world where
-     * players are spawned if they don't have a specific spawn
-     * position set.
-     *
-     * @returns
-     * Returns the default spawn position.
      */
-    getDefaultSpawnPosition(): Vector3;
+    getDay(): number;
+    /**
+     * @beta
+     */
+    getDefaultSpawnLocation(): Vector3;
     /**
      * @remarks
      * Returns a dimension object.
@@ -18091,11 +18152,8 @@ export class World {
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
      * @beta
-     * @remarks
-     * Sets the current game time of the day.
-     *
      */
-    getTime(): number;
+    getTimeOfDay(): number;
     /**
      * @beta
      * @remarks
@@ -18179,18 +18237,18 @@ export class World {
     /**
      * @beta
      * @remarks
-     * Sets the default spawn location for players within the
-     * world. Note that players can override this with their own
-     * spawn position. Note also that the default spawn position
-     * must be in the overworld dimension.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param spawnPosition
-     * Location within the overworld where a player will spawn.
+     */
+    setAbsoluteTime(absoluteTime: number): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
-    setDefaultSpawn(spawnPosition: Vector3): void;
+    setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
      * @beta
      * @remarks
@@ -18206,12 +18264,11 @@ export class World {
     /**
      * @beta
      * @remarks
-     * Returns the current game time of the day.
-     *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
-    setTime(timeOfDay: number): void;
+    setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     /**
      * @beta
      * @remarks
@@ -18227,42 +18284,139 @@ export class World {
  * @beta
  */
 export class WorldAfterEvents {
-    protected constructor();
+    private constructor();
+    /**
+     * @beta
+     */
     readonly blockBreak: BlockBreakAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly blockExplode: BlockExplodeAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly blockPlace: BlockPlaceAfterEventSignal;
     readonly buttonPush: ButtonPushAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly chatSend: ChatSendAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly effectAdd: EffectAddAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly entityDie: EntityDieAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly entityHealthChanged: EntityHealthChangedAfterEventSignal;
-    readonly entityHit: EntityHitAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly entityHitBlock: EntityHitBlockAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly entityHitEntity: EntityHitEntityAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly entityHurt: EntityHurtAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly entityRemoved: EntityRemovedAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly explosion: ExplosionAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemStartUse: ItemStartUseAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemStopUse: ItemStopUseAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemUse: ItemUseAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly itemUseOn: ItemUseOnAfterEventSignal;
-    readonly leverActivate: LeverActionAfterEventSignal;
+    readonly leverAction: LeverActionAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly messageReceive: ServerMessageAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly pistonActivate: PistonActivateAfterEventSignal;
     readonly playerJoin: PlayerJoinAfterEventSignal;
     readonly playerLeave: PlayerLeaveAfterEventSignal;
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly pressurePlatePush: PressurePlatePushAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly projectileHit: ProjectileHitAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly weatherChange: WeatherChangeAfterEventSignal;
+    /**
+     * @beta
+     */
     readonly worldInitialize: WorldInitializeAfterEventSignal;
 }
 
@@ -18270,7 +18424,7 @@ export class WorldAfterEvents {
  * @beta
  */
 export class WorldBeforeEvents {
-    protected constructor();
+    private constructor();
     readonly chatSend: ChatSendBeforeEventSignal;
     readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
     readonly explosion: ExplosionBeforeEventSignal;
@@ -18289,7 +18443,7 @@ export class WorldBeforeEvents {
  * Initialize execution.
  */
 export class WorldInitializeAfterEvent {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Contains methods for scripts to initialize and register
@@ -18320,8 +18474,9 @@ export class WorldInitializeAfterEvent {
  * may run multiple times within a session in the case that the
  * /reload command is used.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WorldInitializeAfterEventSignal extends IWorldInitializeAfterEventSignal {
-    protected constructor();
+    private constructor();
 }
 
 /**
@@ -18358,6 +18513,32 @@ export interface BlockHitInformation {
     /**
      * @remarks
      * Location relative to the bottom north-west corner of the
+     * block.
+     *
+     */
+    faceLocation: Vector3;
+}
+
+/**
+ * @beta
+ * Contains information for block raycast hit results.
+ */
+export interface BlockRaycastHit {
+    /**
+     * @remarks
+     * Block that was hit.
+     *
+     */
+    block: Block;
+    /**
+     * @remarks
+     * Face of the block that was hit.
+     *
+     */
+    face: Direction;
+    /**
+     * @remarks
+     * Hit location relative to the bottom north-west corner of the
      * block.
      *
      */
@@ -18533,6 +18714,16 @@ export interface CompoundBlockVolumeItem {
      *
      */
     volume: BlockVolume;
+}
+
+/**
+ * @beta
+ */
+export interface DimensionLocation {
+    dimension: Dimension;
+    x: number;
+    y: number;
+    z: number;
 }
 
 /**
@@ -18889,6 +19080,25 @@ export interface EntityQueryScoreOptions {
      *
      */
     objective?: string;
+}
+
+/**
+ * @beta
+ * Contains information for entity raycast hit results.
+ */
+export interface EntityRaycastHit {
+    /**
+     * @remarks
+     * Distance from ray origin to entity bounds.
+     *
+     */
+    distance: number;
+    /**
+     * @remarks
+     * Entity that was hit.
+     *
+     */
+    entity: Entity;
 }
 
 /**
@@ -19267,22 +19477,25 @@ export interface WorldSoundOptions {
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class CommandError extends Error {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PositionInUnloadedChunkError extends Error {
-    protected constructor();
+    private constructor();
 }
 
 /**
  * @beta
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PositionOutOfWorldBoundariesError extends Error {
-    protected constructor();
+    private constructor();
 }
 
 /**
