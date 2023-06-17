@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.5.0-internal.1.20.10-preview.23"
+ *   "version": "1.4.0-internal.1.20.10-preview.23"
  * }
  * ```
  *
@@ -7359,7 +7359,6 @@ export class ItemReleaseUseAfterEventSignal extends IItemReleaseUseAfterEventSig
  */
 export class ItemStack {
     /**
-     * @beta
      * @remarks
      * Number of the items in the stack. Valid values range between
      * 1-255. The provided value will be clamped to the item's
@@ -7380,7 +7379,6 @@ export class ItemStack {
      */
     readonly isStackable: boolean;
     /**
-     * @beta
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
@@ -7389,7 +7387,6 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @beta
      * @remarks
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
@@ -7407,7 +7404,6 @@ export class ItemStack {
      */
     readonly maxAmount: number;
     /**
-     * @beta
      * @remarks
      * Given name of this stack of items. The name tag is displayed
      * when hovering over the item. Setting the name tag to an
@@ -7587,7 +7583,6 @@ export class ItemStack {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      * @example multilineLore.ts
      * ```typescript
      * // Set the lore of an item to multiple lines of text

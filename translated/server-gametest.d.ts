@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.10-preview.23"
+ *   "version": "1.0.0-internal.1.20.10-preview.21"
  * }
  * ```
  *
@@ -41,7 +41,7 @@ export enum GameTestErrorType {
  * other fences in several directions.
  */
 export class FenceConnectivity {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Represents whether this fence block is connected to another
@@ -78,7 +78,7 @@ export class FenceConnectivity {
  * GameTest setup methods and assertions over time.
  */
 export class GameTestSequence {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Runs the given callback as a step within a GameTest
@@ -201,7 +201,7 @@ export class GameTestSequence {
  * Methods can be chained together to set multiple properties.
  */
 export class RegistrationBuilder {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Sets the batch for the test to run in.
@@ -335,7 +335,7 @@ export class RegistrationBuilder {
  * growth of sculk around a particular block.
  */
 export class SculkSpreader {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Gets the maximum charge of a sculk spreader.
@@ -388,9 +388,8 @@ export class SculkSpreader {
  * player. This type derives much of its structure and methods
  * from the {@link @minecraft/server.Player} type.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
 export class SimulatedPlayer extends minecraftserver.Player {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Rotation of the head across pitch and yaw angles.
@@ -860,7 +859,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
  * tests into suites to run.
  */
 export class Tags {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Indicates that the tagged test should be a part of all
@@ -898,7 +897,7 @@ export class Tags {
  * the GameTest structure block.
  */
 export class Test {
-    private constructor();
+    protected constructor();
     /**
      * @remarks
      * Tests that the condition specified in _condition_ is true.
@@ -2057,9 +2056,8 @@ export interface GameTestErrorContext {
     tickCount: number;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
 export class GameTestError extends Error {
-    private constructor();
+    protected constructor();
     context?: GameTestErrorContext;
     messageParameters: string[];
     type: GameTestErrorType;
