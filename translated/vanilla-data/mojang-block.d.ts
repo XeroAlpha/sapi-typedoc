@@ -1061,7 +1061,7 @@ export type ActivatorRailStates = Pick<BlockStateSuperset, 'rail_data_bit' | 'ra
 /**
  * States specific to AmethystCluster
  */
-export type AmethystClusterStates = Pick<BlockStateSuperset, 'facing_direction'>;
+export type AmethystClusterStates = Pick<BlockStateSuperset, 'minecraft:block_face'>;
 /**
  * States specific to AndesiteStairs
  */
@@ -1097,7 +1097,7 @@ export type BambooDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hing
 /**
  * States specific to BambooDoubleSlab
  */
-export type BambooDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BambooDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BambooFenceGate
  */
@@ -1109,11 +1109,11 @@ export type BambooHangingSignStates = Pick<BlockStateSuperset, 'attached_bit' | 
 /**
  * States specific to BambooMosaicDoubleSlab
  */
-export type BambooMosaicDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BambooMosaicDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BambooMosaicSlab
  */
-export type BambooMosaicSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BambooMosaicSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BambooMosaicStairs
  */
@@ -1129,7 +1129,7 @@ export type BambooSaplingStates = Pick<BlockStateSuperset, 'age_bit' | 'sapling_
 /**
  * States specific to BambooSlab
  */
-export type BambooSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BambooSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BambooStairs
  */
@@ -1237,11 +1237,11 @@ export type BlackGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_direc
 /**
  * States specific to BlackstoneDoubleSlab
  */
-export type BlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BlackstoneSlab
  */
-export type BlackstoneSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type BlackstoneSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to BlackstoneStairs
  */
@@ -1373,7 +1373,7 @@ export type CherryDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hing
 /**
  * States specific to CherryDoubleSlab
  */
-export type CherryDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CherryDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CherryFenceGate
  */
@@ -1401,7 +1401,7 @@ export type CherrySaplingStates = Pick<BlockStateSuperset, 'age_bit'>;
 /**
  * States specific to CherrySlab
  */
-export type CherrySlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CherrySlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CherryStairs
  */
@@ -1437,11 +1437,11 @@ export type ChorusFlowerStates = Pick<BlockStateSuperset, 'age'>;
 /**
  * States specific to CobbledDeepslateDoubleSlab
  */
-export type CobbledDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CobbledDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CobbledDeepslateSlab
  */
-export type CobbledDeepslateSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CobbledDeepslateSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CobbledDeepslateStairs
  */
@@ -1513,7 +1513,7 @@ export type CrimsonDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hin
 /**
  * States specific to CrimsonDoubleSlab
  */
-export type CrimsonDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CrimsonDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CrimsonFenceGate
  */
@@ -1533,7 +1533,7 @@ export type CrimsonPressurePlateStates = Pick<BlockStateSuperset, 'redstone_sign
 /**
  * States specific to CrimsonSlab
  */
-export type CrimsonSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CrimsonSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CrimsonStairs
  */
@@ -1557,7 +1557,7 @@ export type CrimsonWallSignStates = Pick<BlockStateSuperset, 'facing_direction'>
 /**
  * States specific to CutCopperSlab
  */
-export type CutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type CutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to CutCopperStairs
  */
@@ -1637,11 +1637,11 @@ export type DeepslateStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
  * States specific to DeepslateBrickDoubleSlab
  */
-export type DeepslateBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type DeepslateBrickDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to DeepslateBrickSlab
  */
-export type DeepslateBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type DeepslateBrickSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to DeepslateBrickStairs
  */
@@ -1653,11 +1653,11 @@ export type DeepslateBrickWallStates = Pick<BlockStateSuperset, 'wall_connection
 /**
  * States specific to DeepslateTileDoubleSlab
  */
-export type DeepslateTileDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type DeepslateTileDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to DeepslateTileSlab
  */
-export type DeepslateTileSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type DeepslateTileSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to DeepslateTileStairs
  */
@@ -1685,7 +1685,7 @@ export type DispenserStates = Pick<BlockStateSuperset, 'facing_direction' | 'tri
 /**
  * States specific to DoubleCutCopperSlab
  */
-export type DoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type DoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to DoublePlant
  */
@@ -1693,23 +1693,23 @@ export type DoublePlantStates = Pick<BlockStateSuperset, 'double_plant_type' | '
 /**
  * States specific to DoubleStoneBlockSlab
  */
-export type DoubleStoneBlockSlabStates = Pick<BlockStateSuperset, 'stone_slab_type' | 'top_slot_bit'>;
+export type DoubleStoneBlockSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type'>;
 /**
  * States specific to DoubleStoneBlockSlab2
  */
-export type DoubleStoneBlockSlab2States = Pick<BlockStateSuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
+export type DoubleStoneBlockSlab2States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_2'>;
 /**
  * States specific to DoubleStoneBlockSlab3
  */
-export type DoubleStoneBlockSlab3States = Pick<BlockStateSuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
+export type DoubleStoneBlockSlab3States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_3'>;
 /**
  * States specific to DoubleStoneBlockSlab4
  */
-export type DoubleStoneBlockSlab4States = Pick<BlockStateSuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
+export type DoubleStoneBlockSlab4States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_4'>;
 /**
  * States specific to DoubleWoodenSlab
  */
-export type DoubleWoodenSlabStates = Pick<BlockStateSuperset, 'top_slot_bit' | 'wood_type'>;
+export type DoubleWoodenSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'wood_type'>;
 /**
  * States specific to Dropper
  */
@@ -1733,7 +1733,7 @@ export type EnderChestStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
  * States specific to ExposedCutCopperSlab
  */
-export type ExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type ExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to ExposedCutCopperStairs
  */
@@ -1741,7 +1741,7 @@ export type ExposedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down
 /**
  * States specific to ExposedDoubleCutCopperSlab
  */
-export type ExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type ExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to Farmland
  */
@@ -1913,7 +1913,7 @@ export type LanternStates = Pick<BlockStateSuperset, 'hanging'>;
 /**
  * States specific to LargeAmethystBud
  */
-export type LargeAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
+export type LargeAmethystBudStates = Pick<BlockStateSuperset, 'minecraft:block_face'>;
 /**
  * States specific to Lava
  */
@@ -2021,7 +2021,7 @@ export type MangroveDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hi
 /**
  * States specific to MangroveDoubleSlab
  */
-export type MangroveDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type MangroveDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to MangroveFenceGate
  */
@@ -2049,7 +2049,7 @@ export type MangrovePropaguleStates = Pick<BlockStateSuperset, 'hanging' | 'prop
 /**
  * States specific to MangroveSlab
  */
-export type MangroveSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type MangroveSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to MangroveStairs
  */
@@ -2073,7 +2073,7 @@ export type MangroveWoodStates = Pick<BlockStateSuperset, 'pillar_axis' | 'strip
 /**
  * States specific to MediumAmethystBud
  */
-export type MediumAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
+export type MediumAmethystBudStates = Pick<BlockStateSuperset, 'minecraft:block_face'>;
 /**
  * States specific to MelonStem
  */
@@ -2093,11 +2093,11 @@ export type MossyStoneBrickStairsStates = Pick<BlockStateSuperset, 'upside_down_
 /**
  * States specific to MudBrickDoubleSlab
  */
-export type MudBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type MudBrickDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to MudBrickSlab
  */
-export type MudBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type MudBrickSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to MudBrickStairs
  */
@@ -2157,7 +2157,7 @@ export type OrangeGlazedTerracottaStates = Pick<BlockStateSuperset, 'facing_dire
 /**
  * States specific to OxidizedCutCopperSlab
  */
-export type OxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type OxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to OxidizedCutCopperStairs
  */
@@ -2165,7 +2165,7 @@ export type OxidizedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_dow
 /**
  * States specific to OxidizedDoubleCutCopperSlab
  */
-export type OxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type OxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PearlescentFroglight
  */
@@ -2221,11 +2221,11 @@ export type PolishedBasaltStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
  * States specific to PolishedBlackstoneBrickDoubleSlab
  */
-export type PolishedBlackstoneBrickDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedBlackstoneBrickDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedBlackstoneBrickSlab
  */
-export type PolishedBlackstoneBrickSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedBlackstoneBrickSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedBlackstoneBrickStairs
  */
@@ -2241,7 +2241,7 @@ export type PolishedBlackstoneButtonStates = Pick<BlockStateSuperset, 'button_pr
 /**
  * States specific to PolishedBlackstoneDoubleSlab
  */
-export type PolishedBlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedBlackstoneDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedBlackstonePressurePlate
  */
@@ -2249,7 +2249,7 @@ export type PolishedBlackstonePressurePlateStates = Pick<BlockStateSuperset, 're
 /**
  * States specific to PolishedBlackstoneSlab
  */
-export type PolishedBlackstoneSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedBlackstoneSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedBlackstoneStairs
  */
@@ -2261,11 +2261,11 @@ export type PolishedBlackstoneWallStates = Pick<BlockStateSuperset, 'wall_connec
 /**
  * States specific to PolishedDeepslateDoubleSlab
  */
-export type PolishedDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedDeepslateDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedDeepslateSlab
  */
-export type PolishedDeepslateSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type PolishedDeepslateSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to PolishedDeepslateStairs
  */
@@ -2457,7 +2457,7 @@ export type SkullStates = Pick<BlockStateSuperset, 'facing_direction'>;
 /**
  * States specific to SmallAmethystBud
  */
-export type SmallAmethystBudStates = Pick<BlockStateSuperset, 'facing_direction'>;
+export type SmallAmethystBudStates = Pick<BlockStateSuperset, 'minecraft:block_face'>;
 /**
  * States specific to SmallDripleafBlock
  */
@@ -2581,19 +2581,19 @@ export type StoneStates = Pick<BlockStateSuperset, 'stone_type'>;
 /**
  * States specific to StoneBlockSlab
  */
-export type StoneBlockSlabStates = Pick<BlockStateSuperset, 'stone_slab_type' | 'top_slot_bit'>;
+export type StoneBlockSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type'>;
 /**
  * States specific to StoneBlockSlab2
  */
-export type StoneBlockSlab2States = Pick<BlockStateSuperset, 'stone_slab_type_2' | 'top_slot_bit'>;
+export type StoneBlockSlab2States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_2'>;
 /**
  * States specific to StoneBlockSlab3
  */
-export type StoneBlockSlab3States = Pick<BlockStateSuperset, 'stone_slab_type_3' | 'top_slot_bit'>;
+export type StoneBlockSlab3States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_3'>;
 /**
  * States specific to StoneBlockSlab4
  */
-export type StoneBlockSlab4States = Pick<BlockStateSuperset, 'stone_slab_type_4' | 'top_slot_bit'>;
+export type StoneBlockSlab4States = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'stone_slab_type_4'>;
 /**
  * States specific to StoneBrickStairs
  */
@@ -2781,7 +2781,7 @@ export type WarpedDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hing
 /**
  * States specific to WarpedDoubleSlab
  */
-export type WarpedDoubleSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WarpedDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WarpedFenceGate
  */
@@ -2801,7 +2801,7 @@ export type WarpedPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signa
 /**
  * States specific to WarpedSlab
  */
-export type WarpedSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WarpedSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WarpedStairs
  */
@@ -2829,7 +2829,7 @@ export type WaterStates = Pick<BlockStateSuperset, 'liquid_depth'>;
 /**
  * States specific to WaxedCutCopperSlab
  */
-export type WaxedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedCutCopperStairs
  */
@@ -2837,11 +2837,11 @@ export type WaxedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_down_b
 /**
  * States specific to WaxedDoubleCutCopperSlab
  */
-export type WaxedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedExposedCutCopperSlab
  */
-export type WaxedExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedExposedCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedExposedCutCopperStairs
  */
@@ -2849,11 +2849,11 @@ export type WaxedExposedCutCopperStairsStates = Pick<BlockStateSuperset, 'upside
 /**
  * States specific to WaxedExposedDoubleCutCopperSlab
  */
-export type WaxedExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedExposedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedOxidizedCutCopperSlab
  */
-export type WaxedOxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedOxidizedCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedOxidizedCutCopperStairs
  */
@@ -2861,11 +2861,11 @@ export type WaxedOxidizedCutCopperStairsStates = Pick<BlockStateSuperset, 'upsid
 /**
  * States specific to WaxedOxidizedDoubleCutCopperSlab
  */
-export type WaxedOxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedOxidizedDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedWeatheredCutCopperSlab
  */
-export type WaxedWeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedWeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WaxedWeatheredCutCopperStairs
  */
@@ -2873,11 +2873,11 @@ export type WaxedWeatheredCutCopperStairsStates = Pick<BlockStateSuperset, 'upsi
 /**
  * States specific to WaxedWeatheredDoubleCutCopperSlab
  */
-export type WaxedWeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WaxedWeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WeatheredCutCopperSlab
  */
-export type WeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WeatheredCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WeatheredCutCopperStairs
  */
@@ -2885,7 +2885,7 @@ export type WeatheredCutCopperStairsStates = Pick<BlockStateSuperset, 'upside_do
 /**
  * States specific to WeatheredDoubleCutCopperSlab
  */
-export type WeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'top_slot_bit'>;
+export type WeatheredDoubleCutCopperSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half'>;
 /**
  * States specific to WeepingVines
  */
@@ -2925,7 +2925,7 @@ export type WoodenPressurePlateStates = Pick<BlockStateSuperset, 'redstone_signa
 /**
  * States specific to WoodenSlab
  */
-export type WoodenSlabStates = Pick<BlockStateSuperset, 'top_slot_bit' | 'wood_type'>;
+export type WoodenSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical_half' | 'wood_type'>;
 /**
  * States specific to YellowCandle
  */

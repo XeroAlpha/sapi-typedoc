@@ -2,6 +2,7 @@
   "dependencies": {
     "@minecraft/server": "beta",
     "@minecraft/server-admin": "beta",
+    "@minecraft/server-editor": "beta",
     "@minecraft/server-gametest": "beta",
     "@minecraft/server-net": "beta",
     "@minecraft/server-ui": "beta",

@@ -6,14 +6,15 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.4.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.5.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
+|[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.10-preview.23`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.20-preview.20`|
 
-游戏版本号：`1.20.10.24`
+游戏版本号：`1.20.20.20`
 
 <!-- summary end -->
 
@@ -44,6 +45,7 @@ Minecraft 脚本 API 文档。
 | - | - |
 |[@minecraft/server](#minecraftserver)|0/341|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
+|[@minecraft/server-editor](#minecraftserver-editor)|0/80|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
 |[@minecraft/server-ui](#minecraftserver-ui)|0/10|
@@ -403,6 +405,91 @@ Minecraft 脚本 API 文档。
 |[`ServerVariables`](https://projectxero.top/sapi/classes/server_admin.ServerVariables.html)|类|未翻译|
 |[`secrets`](https://projectxero.top/sapi/variables/server_admin.secrets.html)|变量|未翻译|
 |[`variables`](https://projectxero.top/sapi/variables/server_admin.variables.html)|变量|未翻译|
+
+### @minecraft/server-editor
+
+|名称|类型|状态|
+| - | - | - |
+|[`ActionTypes`](https://projectxero.top/sapi/enums/server_editor.ActionTypes.html)|枚举|未翻译|
+|[`ClipboardMirrorAxis`](https://projectxero.top/sapi/enums/server_editor.ClipboardMirrorAxis.html)|枚举|未翻译|
+|[`ClipboardRotation`](https://projectxero.top/sapi/enums/server_editor.ClipboardRotation.html)|枚举|未翻译|
+|[`CursorControlMode`](https://projectxero.top/sapi/enums/server_editor.CursorControlMode.html)|枚举|未翻译|
+|[`CursorTargetMode`](https://projectxero.top/sapi/enums/server_editor.CursorTargetMode.html)|枚举|未翻译|
+|[`EDITOR_PANE_PROPERTY_ITEM_TYPE`](https://projectxero.top/sapi/enums/server_editor.EDITOR_PANE_PROPERTY_ITEM_TYPE.html)|枚举|未翻译|
+|[`EditorInputContext`](https://projectxero.top/sapi/enums/server_editor.EditorInputContext.html)|枚举|未翻译|
+|[`EditorStatusBarAlignment`](https://projectxero.top/sapi/enums/server_editor.EditorStatusBarAlignment.html)|枚举|未翻译|
+|[`InputModifier`](https://projectxero.top/sapi/enums/server_editor.InputModifier.html)|枚举|未翻译|
+|[`KeyInputType`](https://projectxero.top/sapi/enums/server_editor.KeyInputType.html)|枚举|未翻译|
+|[`KeyboardKey`](https://projectxero.top/sapi/enums/server_editor.KeyboardKey.html)|枚举|未翻译|
+|[`MouseActionCategory`](https://projectxero.top/sapi/enums/server_editor.MouseActionCategory.html)|枚举|未翻译|
+|[`MouseActionType`](https://projectxero.top/sapi/enums/server_editor.MouseActionType.html)|枚举|未翻译|
+|[`MouseInputType`](https://projectxero.top/sapi/enums/server_editor.MouseInputType.html)|枚举|未翻译|
+|[`BedrockEventSubscriptionCache`](https://projectxero.top/sapi/classes/server_editor.BedrockEventSubscriptionCache.html)|类|未翻译|
+|[`ClipboardItem`](https://projectxero.top/sapi/classes/server_editor.ClipboardItem.html)|类|未翻译|
+|[`ClipboardManager`](https://projectxero.top/sapi/classes/server_editor.ClipboardManager.html)|类|未翻译|
+|[`Cursor`](https://projectxero.top/sapi/classes/server_editor.Cursor.html)|类|未翻译|
+|[`Extension`](https://projectxero.top/sapi/classes/server_editor.Extension.html)|类|未翻译|
+|[`ExtensionContext`](https://projectxero.top/sapi/classes/server_editor.ExtensionContext.html)|类|未翻译|
+|[`Logger`](https://projectxero.top/sapi/classes/server_editor.Logger.html)|类|未翻译|
+|[`MinecraftEditor`](https://projectxero.top/sapi/classes/server_editor.MinecraftEditor.html)|类|未翻译|
+|[`Selection`](https://projectxero.top/sapi/classes/server_editor.Selection.html)|类|未翻译|
+|[`SelectionManager`](https://projectxero.top/sapi/classes/server_editor.SelectionManager.html)|类|未翻译|
+|[`TransactionManager`](https://projectxero.top/sapi/classes/server_editor.TransactionManager.html)|类|未翻译|
+|[`ActionManager`](https://projectxero.top/sapi/interfaces/server_editor.ActionManager.html)|接口|未翻译|
+|[`BuiltInUIManager`](https://projectxero.top/sapi/interfaces/server_editor.BuiltInUIManager.html)|接口|未翻译|
+|[`ClipboardWriteOptions`](https://projectxero.top/sapi/interfaces/server_editor.ClipboardWriteOptions.html)|接口|未翻译|
+|[`CursorProperties`](https://projectxero.top/sapi/interfaces/server_editor.CursorProperties.html)|接口|未翻译|
+|[`EventSink`](https://projectxero.top/sapi/interfaces/server_editor.EventSink.html)|接口|未翻译|
+|[`ExtensionOptionalParameters`](https://projectxero.top/sapi/interfaces/server_editor.ExtensionOptionalParameters.html)|接口|未翻译|
+|[`IDisposable`](https://projectxero.top/sapi/interfaces/server_editor.IDisposable.html)|接口|未翻译|
+|[`IDropdownItem`](https://projectxero.top/sapi/interfaces/server_editor.IDropdownItem.html)|接口|未翻译|
+|[`IEventToken`](https://projectxero.top/sapi/interfaces/server_editor.IEventToken.html)|接口|未翻译|
+|[`IGlobalInputManager`](https://projectxero.top/sapi/interfaces/server_editor.IGlobalInputManager.html)|接口|未翻译|
+|[`IMenu`](https://projectxero.top/sapi/interfaces/server_editor.IMenu.html)|接口|未翻译|
+|[`IMenuCreationParams`](https://projectxero.top/sapi/interfaces/server_editor.IMenuCreationParams.html)|接口|未翻译|
+|[`IModalTool`](https://projectxero.top/sapi/interfaces/server_editor.IModalTool.html)|接口|未翻译|
+|[`IModalToolContainer`](https://projectxero.top/sapi/interfaces/server_editor.IModalToolContainer.html)|接口|未翻译|
+|[`IPlayerLogger`](https://projectxero.top/sapi/interfaces/server_editor.IPlayerLogger.html)|接口|未翻译|
+|[`IPropertyItem`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItem.html)|接口|未翻译|
+|[`IPropertyItemOptions`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptions.html)|接口|未翻译|
+|[`IPropertyItemOptionsBlocks`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsBlocks.html)|接口|未翻译|
+|[`IPropertyItemOptionsButton`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsButton.html)|接口|未翻译|
+|[`IPropertyItemOptionsDropdown`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsDropdown.html)|接口|未翻译|
+|[`IPropertyItemOptionsNumber`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsNumber.html)|接口|未翻译|
+|[`IPropertyItemOptionsSubPane`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsSubPane.html)|接口|未翻译|
+|[`IPropertyItemOptionsVector3`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyItemOptionsVector3.html)|接口|未翻译|
+|[`IPropertyPane`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyPane.html)|接口|未翻译|
+|[`IPropertyPaneOptions`](https://projectxero.top/sapi/interfaces/server_editor.IPropertyPaneOptions.html)|接口|未翻译|
+|[`IRegisterExtensionOptionalParameters`](https://projectxero.top/sapi/interfaces/server_editor.IRegisterExtensionOptionalParameters.html)|接口|未翻译|
+|[`IStatusBarItem`](https://projectxero.top/sapi/interfaces/server_editor.IStatusBarItem.html)|接口|未翻译|
+|[`LogProperties`](https://projectxero.top/sapi/interfaces/server_editor.LogProperties.html)|接口|未翻译|
+|[`ModalToolCreationParameters`](https://projectxero.top/sapi/interfaces/server_editor.ModalToolCreationParameters.html)|接口|未翻译|
+|[`Action`](https://projectxero.top/sapi/types/server_editor.Action.html)|类型别名|未翻译|
+|[`ActionID`](https://projectxero.top/sapi/types/server_editor.ActionID.html)|类型别名|未翻译|
+|[`ActivationFunctionType`](https://projectxero.top/sapi/types/server_editor.ActivationFunctionType.html)|类型别名|未翻译|
+|[`ButtonVariant`](https://projectxero.top/sapi/types/server_editor.ButtonVariant.html)|类型别名|未翻译|
+|[`EventHandler`](https://projectxero.top/sapi/types/server_editor.EventHandler.html)|类型别名|未翻译|
+|[`IActionPropertyItem`](https://projectxero.top/sapi/types/server_editor.IActionPropertyItem.html)|类型别名|未翻译|
+|[`IPlayerUISession`](https://projectxero.top/sapi/types/server_editor.IPlayerUISession.html)|类型别名|未翻译|
+|[`ModalToolLifecycleEventPayload`](https://projectxero.top/sapi/types/server_editor.ModalToolLifecycleEventPayload.html)|类型别名|未翻译|
+|[`MouseModifiers`](https://projectxero.top/sapi/types/server_editor.MouseModifiers.html)|类型别名|未翻译|
+|[`MouseProps`](https://projectxero.top/sapi/types/server_editor.MouseProps.html)|类型别名|未翻译|
+|[`MouseRayCastAction`](https://projectxero.top/sapi/types/server_editor.MouseRayCastAction.html)|类型别名|未翻译|
+|[`NoArgsAction`](https://projectxero.top/sapi/types/server_editor.NoArgsAction.html)|类型别名|未翻译|
+|[`OnChangeCallback`](https://projectxero.top/sapi/types/server_editor.OnChangeCallback.html)|类型别名|未翻译|
+|[`PropertyBag`](https://projectxero.top/sapi/types/server_editor.PropertyBag.html)|类型别名|未翻译|
+|[`PropertyPaneVisibilityUpdate`](https://projectxero.top/sapi/types/server_editor.PropertyPaneVisibilityUpdate.html)|类型别名|未翻译|
+|[`Ray`](https://projectxero.top/sapi/types/server_editor.Ray.html)|类型别名|未翻译|
+|[`RegisteredAction`](https://projectxero.top/sapi/types/server_editor.RegisteredAction.html)|类型别名|未翻译|
+|[`ShutdownFunctionType`](https://projectxero.top/sapi/types/server_editor.ShutdownFunctionType.html)|类型别名|未翻译|
+|[`SupportedKeyboardActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedKeyboardActionTypes.html)|类型别名|未翻译|
+|[`SupportedMouseActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedMouseActionTypes.html)|类型别名|未翻译|
+|[`UnregisterInputBindingCallback`](https://projectxero.top/sapi/types/server_editor.UnregisterInputBindingCallback.html)|类型别名|未翻译|
+|[`editor`](https://projectxero.top/sapi/variables/server_editor.editor.html)|变量|未翻译|
+|[`bindDataSource`](https://projectxero.top/sapi/functions/server_editor.bindDataSource.html)|函数|未翻译|
+|[`executeLargeOperation`](https://projectxero.top/sapi/functions/server_editor.executeLargeOperation.html)|函数|未翻译|
+|[`getLocalizationId`](https://projectxero.top/sapi/functions/server_editor.getLocalizationId.html)|函数|未翻译|
+|[`registerEditorExtension`](https://projectxero.top/sapi/functions/server_editor.registerEditorExtension.html)|函数|未翻译|
 
 ### @minecraft/server-gametest
 
