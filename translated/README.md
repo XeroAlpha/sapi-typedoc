@@ -12,9 +12,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.20-preview.21`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.20-preview.22`|
 
-游戏版本号：`1.20.20.21`
+游戏版本号：`1.20.20.22`
 
 <!-- summary end -->
 
@@ -43,7 +43,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/301|
+|[@minecraft/server](#minecraftserver)|0/316|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/80|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
@@ -59,6 +59,7 @@ Minecraft 脚本 API 文档。
 |[`Direction`](https://projectxero.top/sapi/enums/server.Direction.html)|枚举|未翻译|
 |[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|未翻译|
 |[`DyeColor`](https://projectxero.top/sapi/enums/server.DyeColor.html)|枚举|未翻译|
+|[`EasingType`](https://projectxero.top/sapi/enums/server.EasingType.html)|枚举|未翻译|
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
 |[`EntityLifetimeState`](https://projectxero.top/sapi/enums/server.EntityLifetimeState.html)|枚举|未翻译|
 |[`EquipmentSlot`](https://projectxero.top/sapi/enums/server.EquipmentSlot.html)|枚举|未翻译|
@@ -96,11 +97,13 @@ Minecraft 脚本 API 文档。
 |[`BlockStateType`](https://projectxero.top/sapi/classes/server.BlockStateType.html)|类|未翻译|
 |[`BlockStates`](https://projectxero.top/sapi/classes/server.BlockStates.html)|类|未翻译|
 |[`BlockType`](https://projectxero.top/sapi/classes/server.BlockType.html)|类|未翻译|
+|[`BlockTypes`](https://projectxero.top/sapi/classes/server.BlockTypes.html)|类|未翻译|
 |[`BlockVolumeUtils`](https://projectxero.top/sapi/classes/server.BlockVolumeUtils.html)|类|未翻译|
 |[`BlockWaterContainerComponent`](https://projectxero.top/sapi/classes/server.BlockWaterContainerComponent.html)|类|未翻译|
 |[`BoundingBoxUtils`](https://projectxero.top/sapi/classes/server.BoundingBoxUtils.html)|类|未翻译|
 |[`ButtonPushAfterEvent`](https://projectxero.top/sapi/classes/server.ButtonPushAfterEvent.html)|类|未翻译|
 |[`ButtonPushAfterEventSignal`](https://projectxero.top/sapi/classes/server.ButtonPushAfterEventSignal.html)|类|未翻译|
+|[`Camera`](https://projectxero.top/sapi/classes/server.Camera.html)|类|未翻译|
 |[`ChatSendAfterEvent`](https://projectxero.top/sapi/classes/server.ChatSendAfterEvent.html)|类|未翻译|
 |[`ChatSendAfterEventSignal`](https://projectxero.top/sapi/classes/server.ChatSendAfterEventSignal.html)|类|未翻译|
 |[`ChatSendBeforeEvent`](https://projectxero.top/sapi/classes/server.ChatSendBeforeEvent.html)|类|未翻译|
@@ -117,6 +120,8 @@ Minecraft 脚本 API 文档。
 |[`DataDrivenEntityTriggerBeforeEventSignal`](https://projectxero.top/sapi/classes/server.DataDrivenEntityTriggerBeforeEventSignal.html)|类|未翻译|
 |[`DefinitionModifier`](https://projectxero.top/sapi/classes/server.DefinitionModifier.html)|类|未翻译|
 |[`Dimension`](https://projectxero.top/sapi/classes/server.Dimension.html)|类|未翻译|
+|[`DimensionType`](https://projectxero.top/sapi/classes/server.DimensionType.html)|类|未翻译|
+|[`DimensionTypes`](https://projectxero.top/sapi/classes/server.DimensionTypes.html)|类|未翻译|
 |[`DynamicPropertiesDefinition`](https://projectxero.top/sapi/classes/server.DynamicPropertiesDefinition.html)|类|未翻译|
 |[`Effect`](https://projectxero.top/sapi/classes/server.Effect.html)|类|未翻译|
 |[`EffectAddAfterEvent`](https://projectxero.top/sapi/classes/server.EffectAddAfterEvent.html)|类|未翻译|
@@ -261,8 +266,9 @@ Minecraft 脚本 API 文档。
 |[`ItemUseOnBeforeEventSignal`](https://projectxero.top/sapi/classes/server.ItemUseOnBeforeEventSignal.html)|类|未翻译|
 |[`LeverActionAfterEvent`](https://projectxero.top/sapi/classes/server.LeverActionAfterEvent.html)|类|未翻译|
 |[`LeverActionAfterEventSignal`](https://projectxero.top/sapi/classes/server.LeverActionAfterEventSignal.html)|类|未翻译|
+|[`LocationInUnloadedChunkError`](https://projectxero.top/sapi/classes/server.LocationInUnloadedChunkError.html)|类|未翻译|
+|[`LocationOutOfWorldBoundariesError`](https://projectxero.top/sapi/classes/server.LocationOutOfWorldBoundariesError.html)|类|未翻译|
 |[`MessageReceiveAfterEvent`](https://projectxero.top/sapi/classes/server.MessageReceiveAfterEvent.html)|类|未翻译|
-|[`MinecraftBlockTypes`](https://projectxero.top/sapi/classes/server.MinecraftBlockTypes.html)|类|未翻译|
 |[`MinecraftDimensionTypes`](https://projectxero.top/sapi/classes/server.MinecraftDimensionTypes.html)|类|未翻译|
 |[`MinecraftItemTypes`](https://projectxero.top/sapi/classes/server.MinecraftItemTypes.html)|类|未翻译|
 |[`MolangVariableMap`](https://projectxero.top/sapi/classes/server.MolangVariableMap.html)|类|未翻译|
@@ -279,14 +285,14 @@ Minecraft 脚本 API 文档。
 |[`PlayerLeaveAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerLeaveAfterEventSignal.html)|类|未翻译|
 |[`PlayerSpawnAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerSpawnAfterEvent.html)|类|未翻译|
 |[`PlayerSpawnAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerSpawnAfterEventSignal.html)|类|未翻译|
-|[`PositionInUnloadedChunkError`](https://projectxero.top/sapi/classes/server.PositionInUnloadedChunkError.html)|类|未翻译|
-|[`PositionOutOfWorldBoundariesError`](https://projectxero.top/sapi/classes/server.PositionOutOfWorldBoundariesError.html)|类|未翻译|
 |[`PressurePlatePopAfterEvent`](https://projectxero.top/sapi/classes/server.PressurePlatePopAfterEvent.html)|类|未翻译|
 |[`PressurePlatePopAfterEventSignal`](https://projectxero.top/sapi/classes/server.PressurePlatePopAfterEventSignal.html)|类|未翻译|
 |[`PressurePlatePushAfterEvent`](https://projectxero.top/sapi/classes/server.PressurePlatePushAfterEvent.html)|类|未翻译|
 |[`PressurePlatePushAfterEventSignal`](https://projectxero.top/sapi/classes/server.PressurePlatePushAfterEventSignal.html)|类|未翻译|
-|[`ProjectileHitAfterEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitAfterEvent.html)|类|未翻译|
-|[`ProjectileHitAfterEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitAfterEventSignal.html)|类|未翻译|
+|[`ProjectileHitBlockAfterEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitBlockAfterEvent.html)|类|未翻译|
+|[`ProjectileHitBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitBlockAfterEventSignal.html)|类|未翻译|
+|[`ProjectileHitEntityAfterEvent`](https://projectxero.top/sapi/classes/server.ProjectileHitEntityAfterEvent.html)|类|未翻译|
+|[`ProjectileHitEntityAfterEventSignal`](https://projectxero.top/sapi/classes/server.ProjectileHitEntityAfterEventSignal.html)|类|未翻译|
 |[`PropertyRegistry`](https://projectxero.top/sapi/classes/server.PropertyRegistry.html)|类|未翻译|
 |[`Scoreboard`](https://projectxero.top/sapi/classes/server.Scoreboard.html)|类|未翻译|
 |[`ScoreboardIdentity`](https://projectxero.top/sapi/classes/server.ScoreboardIdentity.html)|类|未翻译|
@@ -321,6 +327,9 @@ Minecraft 脚本 API 文档。
 |[`BlockRaycastOptions`](https://projectxero.top/sapi/interfaces/server.BlockRaycastOptions.html)|接口|未翻译|
 |[`BlockVolume`](https://projectxero.top/sapi/interfaces/server.BlockVolume.html)|接口|未翻译|
 |[`BoundingBox`](https://projectxero.top/sapi/interfaces/server.BoundingBox.html)|接口|未翻译|
+|[`CameraEaseOptions`](https://projectxero.top/sapi/interfaces/server.CameraEaseOptions.html)|接口|未翻译|
+|[`CameraFadeOptions`](https://projectxero.top/sapi/interfaces/server.CameraFadeOptions.html)|接口|未翻译|
+|[`CameraFadeTimeOptions`](https://projectxero.top/sapi/interfaces/server.CameraFadeTimeOptions.html)|接口|未翻译|
 |[`Color`](https://projectxero.top/sapi/interfaces/server.Color.html)|接口|未翻译|
 |[`CompoundBlockVolumeItem`](https://projectxero.top/sapi/interfaces/server.CompoundBlockVolumeItem.html)|接口|未翻译|
 |[`DimensionLocation`](https://projectxero.top/sapi/interfaces/server.DimensionLocation.html)|接口|未翻译|
@@ -344,6 +353,12 @@ Minecraft 脚本 API 文档。
 |[`RawMessageScore`](https://projectxero.top/sapi/interfaces/server.RawMessageScore.html)|接口|未翻译|
 |[`RawText`](https://projectxero.top/sapi/interfaces/server.RawText.html)|接口|未翻译|
 |[`ScoreboardObjectiveDisplayOptions`](https://projectxero.top/sapi/interfaces/server.ScoreboardObjectiveDisplayOptions.html)|接口|未翻译|
+|[`ScriptCameraDefaultOptions`](https://projectxero.top/sapi/interfaces/server.ScriptCameraDefaultOptions.html)|接口|未翻译|
+|[`ScriptCameraSetFacingOptions`](https://projectxero.top/sapi/interfaces/server.ScriptCameraSetFacingOptions.html)|接口|未翻译|
+|[`ScriptCameraSetLocationOptions`](https://projectxero.top/sapi/interfaces/server.ScriptCameraSetLocationOptions.html)|接口|未翻译|
+|[`ScriptCameraSetPosOptions`](https://projectxero.top/sapi/interfaces/server.ScriptCameraSetPosOptions.html)|接口|未翻译|
+|[`ScriptCameraSetRotOptions`](https://projectxero.top/sapi/interfaces/server.ScriptCameraSetRotOptions.html)|接口|未翻译|
+|[`ScriptColorRGB`](https://projectxero.top/sapi/interfaces/server.ScriptColorRGB.html)|接口|未翻译|
 |[`ScriptEventMessageFilterOptions`](https://projectxero.top/sapi/interfaces/server.ScriptEventMessageFilterOptions.html)|接口|未翻译|
 |[`TeleportOptions`](https://projectxero.top/sapi/interfaces/server.TeleportOptions.html)|接口|未翻译|
 |[`TitleDisplayOptions`](https://projectxero.top/sapi/interfaces/server.TitleDisplayOptions.html)|接口|未翻译|
