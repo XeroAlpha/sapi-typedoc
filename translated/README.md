@@ -14,7 +14,7 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
 |[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.20-preview.22`|
 
-游戏版本号：`1.20.20.22`
+游戏版本号：`1.20.20.23`
 
 <!-- summary end -->
 
