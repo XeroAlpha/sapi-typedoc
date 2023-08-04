@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.20-preview.23"
+ *   "version": "0.1.0-beta.1.20.30-preview.20"
  * }
  * ```
  *
@@ -569,6 +569,12 @@ export declare class BedrockEventSubscriptionCache {
         | ((arg: minecraftserver.TripWireTripAfterEvent) => void)
         | ((arg: minecraftserver.WeatherChangeAfterEvent) => void)
         | ((arg: minecraftserver.WorldInitializeAfterEvent) => void);
+    /**
+     * @remarks
+     * Cleans up the set of internal registrations and
+     * subscriptions.
+     *
+     */
     teardown(): void;
 }
 
@@ -595,6 +601,36 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     clear(): void;
+    /**
+     * @remarks
+     * Create a {@link @minecraft/server.CompoundBlockVolume}
+     * container which represents the occupied block volumes within
+     * the ClipboardItem.
+     * This function does not perform any write operations, and
+     * instead returns only a prediction of the volume area which
+     * would be affected as part of a write operation with a given
+     * set of write options.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param location
+     * A world location to which the ClipboardItem may potentially
+     * be written (nothing is actually written as part of this
+     * operation)
+     * @param options
+     * An optional set of write parameters which govern how the
+     * ClipboardItem should be potentially applied to the world
+     * @returns
+     * A {@link @minecraft/server.CompoundBlockVolume} which
+     * represents the occupied block volumes within the
+     * ClipboardItem as they would be written to the world with the
+     * specified {@link ClipboardWriteOptions}
+     * @throws This function can throw errors.
+     */
+    getPredictedWriteAsCompoundBlockVolume(
+        location: minecraftserver.Vector3,
+        options?: ClipboardWriteOptions,
+    ): minecraftserver.CompoundBlockVolume;
     /**
      * @remarks
      * Create a {@link Selection} container which represents the
@@ -1119,7 +1155,7 @@ export class Selection {
      *
      * @throws This function can throw errors.
      */
-    getFillColor(): minecraftserver.Color;
+    getFillColor(): minecraftserver.RGBA;
     /**
      * @remarks
      * Return the color of the on-screen selection container
@@ -1129,7 +1165,16 @@ export class Selection {
      *
      * @throws This function can throw errors.
      */
-    getOutlineColor(): minecraftserver.Color;
+    getOutlineColor(): minecraftserver.RGBA;
+    /**
+     * @remarks
+     * Get the origin of the CompoundBlockVolume that makes up the
+     * block component part of selection
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    getVolumeOrigin(): minecraftserver.Vector3;
     /**
      * @remarks
      * Translate a selection by a given amount (this causes all of
@@ -1168,10 +1213,15 @@ export class Selection {
      *
      * This function can't be called in read-only mode.
      *
+     * @param forceRelativity
+     * See the description for {@link
+     * @minecraft-server/CompoundBlockVolume.peekLastVolume}
      * @returns
      * Returns undefined if the stack is empty
      */
-    peekLastVolume(): minecraftserver.CompoundBlockVolumeItem | undefined;
+    peekLastVolume(
+        forceRelativity?: minecraftserver.CompoundBlockVolumePositionRelativity,
+    ): minecraftserver.CompoundBlockVolumeItem | undefined;
     /**
      * @remarks
      * Remove the volume information that was last pushed to the
@@ -1204,11 +1254,16 @@ export class Selection {
      *
      * This function can't be called in read-only mode.
      *
-     * @param newSelection
-     * Selection object to copy
+     * @param other
+     * {@link @minecraft-server/CompoundBlockVolume} - set the
+     * block component part of this selection to the specified
+     * compound block volume.  This will completely replace all
+     * block volume definitions in the selection.
+     * {@link @Selection} - replace the selection with the
+     * specified selection
      * @throws This function can throw errors.
      */
-    set(newSelection: Selection): void;
+    set(other: minecraftserver.CompoundBlockVolume | Selection): void;
     /**
      * @remarks
      * Set the color of the hull of the selection object if it is
@@ -1218,7 +1273,7 @@ export class Selection {
      *
      * @throws This function can throw errors.
      */
-    setFillColor(color: minecraftserver.Color): void;
+    setFillColor(color: minecraftserver.RGBA): void;
     /**
      * @remarks
      * Set the color of the outline around the selection object if
@@ -1228,7 +1283,7 @@ export class Selection {
      *
      * @throws This function can throw errors.
      */
-    setOutlineColor(color: minecraftserver.Color): void;
+    setOutlineColor(color: minecraftserver.RGBA): void;
 }
 
 /**
@@ -1389,6 +1444,23 @@ export class TransactionManager {
     trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
     /**
      * @remarks
+     * Begin tracking block changes in an area defined by a {@link
+     * @minecraft-server/CompoundBlockVolume}.  These will be added
+     * to a pending changes list.
+     * The pending list will be added to the open transaction
+     * record when a commit has been issued.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param compoundBlockVolume
+     * {@link @minecraft-server/CompoundBlockVolume} to track.
+     * Only non-void block locations will be tracked -- any changes
+     * falling into a void/negative space will not be tracked
+     * @throws This function can throw errors.
+     */
+    trackBlockChangeCompoundBlockVolume(compoundBlockVolume: minecraftserver.CompoundBlockVolume): boolean;
+    /**
+     * @remarks
      * Begin tracking block changes in a list of specified block
      * locations.
      *
@@ -1544,7 +1616,7 @@ export interface CursorProperties {
      * cursor object outline
      *
      */
-    outlineColor?: minecraftserver.Color;
+    outlineColor?: minecraftserver.RGBA;
     /**
      * @remarks
      * An enum representing the cursor target mode
@@ -1653,7 +1725,7 @@ export interface ActionManager {
 export interface BuiltInUIManager {
     /**
      * @remarks
-     * Navigates to the documentation site
+     * Navigates to the documentation site.
      *
      */
     navigateToDocumentation(): void;
@@ -1690,12 +1762,19 @@ export interface BuiltInUIManager {
 }
 
 /**
- * An event that can be subscribed to. Leverage the token to
- * clean up handlers
+ *  An event that can be subscribed to. You can use the token,
+ * returned from the subscribe method, to clean up handlers.
  */
 export declare interface EventSink<T> {
     /**
      * @remarks
+     * Subscribes an event handler to a particular subscription.
+     *
+     * @param handler
+     * Handler function to subscribe with.
+     * @returns
+     * An event handler subscription token that can be used to
+     * unsubscribe and clean-up handlers.
      */
     subscribe(handler: EventHandler<T>): IEventToken;
 }
@@ -1706,6 +1785,8 @@ export declare interface EventSink<T> {
 export interface IDisposable {
     /**
      * @remarks
+     * Initiates the teardown and cleanup of this disposable item.
+     *
      */
     teardown(): void;
 }
@@ -2247,7 +2328,17 @@ export interface IPropertyPaneOptions {
  * the extension manager
  */
 export interface IRegisterExtensionOptionalParameters {
+    /**
+     * @remarks
+     * Description of the extension.
+     *
+     */
     description?: string;
+    /**
+     * @remarks
+     * Additional notes and description of the extension.
+     *
+     */
     notes?: string;
 }
 

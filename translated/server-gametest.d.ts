@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.20-preview.23"
+ *   "version": "1.0.0-internal.1.20.30-preview.20"
  * }
  * ```
  *
@@ -1276,7 +1276,7 @@ export class Test {
      * ```
      */
     assertItemEntityCountIs(
-        itemType: minecraftserver.ItemType,
+        itemType: minecraftserver.ItemType | string,
         blockLocation: minecraftserver.Vector3,
         searchDistance: number,
         count: number,
@@ -1301,7 +1301,7 @@ export class Test {
      * @throws This function can throw errors.
      */
     assertItemEntityPresent(
-        itemType: minecraftserver.ItemType,
+        itemType: minecraftserver.ItemType | string,
         blockLocation: minecraftserver.Vector3,
         searchDistance?: number,
         isPresent?: boolean,
