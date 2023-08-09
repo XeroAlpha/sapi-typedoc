@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.30-preview.20"
+ *   "version": "1.6.0-internal.1.20.30-preview.21"
  * }
  * ```
  *
@@ -3087,7 +3087,6 @@ export class Dimension {
      * @remarks
      * Identifier of the dimension.
      *
-     * @throws This property can throw when used.
      */
     readonly id: string;
     /**
@@ -3942,7 +3941,6 @@ export class Entity {
      * property is accessible even if {@link Entity.isValid} is
      * false.
      *
-     * @throws This property can throw when used.
      */
     readonly id: string;
     /**
@@ -4059,7 +4057,6 @@ export class Entity {
      * 'minecraft:skeleton'. This property is accessible even if
      * {@link Entity.isValid} is false.
      *
-     * @throws This property can throw when used.
      */
     readonly typeId: string;
     /**
@@ -5201,52 +5198,29 @@ export class EntityDieAfterEventSignal {
 
 /**
  * @beta
- * Provides access to a mob's equipment slots. This component
- * exists for all mob entities.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class EntityEquipmentInventoryComponent extends EntityComponent {
+export class EntityEquippableComponent extends EntityComponent {
     private constructor();
-    static readonly componentId = 'minecraft:equipment_inventory';
+    static readonly componentId = 'minecraft:equippable';
     /**
      * @remarks
-     * Gets the equipped item for the given EquipmentSlot.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param equipmentSlot
-     * The equipment slot. e.g. "head", "chest", "offhand"
-     * @returns
-     * Returns the item equipped to the given EquipmentSlot. If
-     * empty, returns undefined.
      * @throws This function can throw errors.
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
      * @remarks
-     * Gets the ContainerSlot corresponding to the given
-     * EquipmentSlot.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param equipmentSlot
-     * The equipment slot. e.g. "head", "chest", "offhand".
-     * @returns
-     * Returns the ContainerSlot corresponding to the given
-     * EquipmentSlot.
      * @throws This function can throw errors.
      */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
      * @remarks
-     * Replaces the item in the given EquipmentSlot.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param equipmentSlot
-     * The equipment slot. e.g. "head", "chest", "offhand".
-     * @param itemStack
-     * The item to equip. If undefined, clears the slot.
      * @throws This function can throw errors.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
@@ -7612,7 +7586,7 @@ export class ItemStack {
      * The identifier of the component (e.g., 'minecraft:food') to
      * retrieve. If no namespace prefix is specified, 'minecraft:'
      * is assumed. If the component is not present on the item
-     * stack, undefined is returned.
+     * stack or doesn't exist, undefined is returned.
      * @example durability.ts
      * ```typescript
      * // Get the maximum durability of a custom sword item
@@ -7636,7 +7610,7 @@ export class ItemStack {
      * ItemStack.
      *
      * @returns
-     * An array of lore strings. If the item does not have lore,
+     * An array of lore lines. If the item does not have lore,
      * returns an empty array.
      */
     getLore(): string[];
@@ -7679,6 +7653,11 @@ export class ItemStack {
      * item stacks. The amount of each item stack is not taken into
      * consideration.
      *
+     * @param itemStack
+     * ItemStack to check stacking compatability with.
+     * @returns
+     * True if the Item Stack is stackable with the itemStack
+     * passed in.
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
@@ -7690,6 +7669,8 @@ export class ItemStack {
      *
      * This function can't be called in read-only mode.
      *
+     * @param blockIdentifiers
+     * String list of block types that the item can destroy.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
@@ -7710,6 +7691,8 @@ export class ItemStack {
      *
      * This function can't be called in read-only mode.
      *
+     * @param blockIdentifiers
+     * String list of block types that the item can be placed on.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
@@ -7724,10 +7707,15 @@ export class ItemStack {
      * @beta
      * @remarks
      * Sets the lore value - a secondary display string - for an
-     * ItemStack.
+     * ItemStack. The lore list is cleared if set to an empty
+     * string or undefined.
      *
      * This function can't be called in read-only mode.
      *
+     * @param loreList
+     * List of lore lines. Each element in the list represents a
+     * new line. The maximum lore line count is 20. The maximum
+     * lore line length is 50 characters.
      * @throws This function can throw errors.
      * @example diamondAwesomeSword.ts
      * ```typescript
@@ -9684,7 +9672,7 @@ export class ScriptEventCommandMessageAfterEvent {
      * that initiated the NPC dialogue.
      *
      */
-    readonly initiator: Entity;
+    readonly initiator?: Entity;
     /**
      * @remarks
      * Optional additional data passed in with the script event
@@ -9698,14 +9686,14 @@ export class ScriptEventCommandMessageAfterEvent {
      * (e.g., a commandblock.)
      *
      */
-    readonly sourceBlock: Block;
+    readonly sourceBlock?: Block;
     /**
      * @remarks
      * Source entity if this command was triggered by an entity
      * (e.g., a NPC).
      *
      */
-    readonly sourceEntity: Entity;
+    readonly sourceEntity?: Entity;
     /**
      * @remarks
      * Returns the type of source that fired this command.

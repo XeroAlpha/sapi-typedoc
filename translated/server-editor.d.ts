@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.30-preview.20"
+ *   "version": "0.1.0-beta.1.20.30-preview.21"
  * }
  * ```
  *
@@ -1038,6 +1038,7 @@ export class MinecraftEditor {
      * messages sent to this instance will be broadcast to all
      * connected editor client sessions
      *
+     * @throws This property can throw when used.
      */
     readonly log: Logger;
     /**

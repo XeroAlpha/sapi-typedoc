@@ -12,9 +12,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.20`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.21`|
 
-游戏版本号：`1.20.30.20`
+游戏版本号：`1.20.30.21`
 
 <!-- summary end -->
 
@@ -148,7 +148,7 @@ Minecraft 脚本 API 文档。
 |[`EntityDefinitionFeedItem`](https://projectxero.top/sapi/classes/server.EntityDefinitionFeedItem.html)|类|未翻译|
 |[`EntityDieAfterEvent`](https://projectxero.top/sapi/classes/server.EntityDieAfterEvent.html)|类|未翻译|
 |[`EntityDieAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityDieAfterEventSignal.html)|类|未翻译|
-|[`EntityEquipmentInventoryComponent`](https://projectxero.top/sapi/classes/server.EntityEquipmentInventoryComponent.html)|类|未翻译|
+|[`EntityEquippableComponent`](https://projectxero.top/sapi/classes/server.EntityEquippableComponent.html)|类|未翻译|
 |[`EntityFireImmuneComponent`](https://projectxero.top/sapi/classes/server.EntityFireImmuneComponent.html)|类|未翻译|
 |[`EntityFloatsInLiquidComponent`](https://projectxero.top/sapi/classes/server.EntityFloatsInLiquidComponent.html)|类|未翻译|
 |[`EntityFlyingSpeedComponent`](https://projectxero.top/sapi/classes/server.EntityFlyingSpeedComponent.html)|类|未翻译|
