@@ -12,9 +12,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.21`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.22`|
 
-游戏版本号：`1.20.30.21`
+游戏版本号：`1.20.30.22`
 
 <!-- summary end -->
 
@@ -43,7 +43,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/315|
+|[@minecraft/server](#minecraftserver)|0/317|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/80|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
@@ -203,8 +203,10 @@ Minecraft 脚本 API 文档。
 |[`EntityNavigationWalkComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationWalkComponent.html)|类|未翻译|
 |[`EntityOnFireComponent`](https://projectxero.top/sapi/classes/server.EntityOnFireComponent.html)|类|未翻译|
 |[`EntityPushThroughComponent`](https://projectxero.top/sapi/classes/server.EntityPushThroughComponent.html)|类|未翻译|
-|[`EntityRemovedAfterEvent`](https://projectxero.top/sapi/classes/server.EntityRemovedAfterEvent.html)|类|未翻译|
-|[`EntityRemovedAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityRemovedAfterEventSignal.html)|类|未翻译|
+|[`EntityRemoveAfterEvent`](https://projectxero.top/sapi/classes/server.EntityRemoveAfterEvent.html)|类|未翻译|
+|[`EntityRemoveAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityRemoveAfterEventSignal.html)|类|未翻译|
+|[`EntityRemoveBeforeEvent`](https://projectxero.top/sapi/classes/server.EntityRemoveBeforeEvent.html)|类|未翻译|
+|[`EntityRemoveBeforeEventSignal`](https://projectxero.top/sapi/classes/server.EntityRemoveBeforeEventSignal.html)|类|未翻译|
 |[`EntityRideableComponent`](https://projectxero.top/sapi/classes/server.EntityRideableComponent.html)|类|未翻译|
 |[`EntityRidingComponent`](https://projectxero.top/sapi/classes/server.EntityRidingComponent.html)|类|未翻译|
 |[`EntityScaleComponent`](https://projectxero.top/sapi/classes/server.EntityScaleComponent.html)|类|未翻译|

@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.30-preview.21"
+ *   "version": "1.6.0-internal.1.20.30-preview.22"
  * }
  * ```
  *
@@ -296,7 +296,7 @@ export enum EquipmentSlot {
      * Chestplate or Elytra.
      *
      */
-    chest = 'chest',
+    Chest = 'Chest',
     /**
      * @beta
      * @remarks
@@ -304,7 +304,7 @@ export enum EquipmentSlot {
      * Boots.
      *
      */
-    feet = 'feet',
+    Feet = 'Feet',
     /**
      * @beta
      * @remarks
@@ -312,7 +312,7 @@ export enum EquipmentSlot {
      * Helmets or Carved Pumpkins.
      *
      */
-    head = 'head',
+    Head = 'Head',
     /**
      * @beta
      * @remarks
@@ -320,7 +320,7 @@ export enum EquipmentSlot {
      * Leggings.
      *
      */
-    legs = 'legs',
+    Legs = 'Legs',
     /**
      * @beta
      * @remarks
@@ -328,7 +328,7 @@ export enum EquipmentSlot {
      * the currently active hotbar slot.
      *
      */
-    mainhand = 'mainhand',
+    Mainhand = 'Mainhand',
     /**
      * @beta
      * @remarks
@@ -336,7 +336,7 @@ export enum EquipmentSlot {
      * shields and maps.
      *
      */
-    offhand = 'offhand',
+    Offhand = 'Offhand',
 }
 
 /**
@@ -3084,6 +3084,14 @@ export class DefinitionModifier {
 export class Dimension {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Height range of the dimension.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly heightRange: NumberRange;
+    /**
      * @remarks
      * Identifier of the dimension.
      *
@@ -3357,8 +3365,13 @@ export class Dimension {
      *
      * @param weatherType
      * Set the type of weather to apply.
+     * @param duration
+     * Sets the duration of the weather (in ticks). If no duration
+     * is provided, the duration will be set to a random duration
+     * between 300 and 900 seconds.
+     * @throws This function can throw errors.
      */
-    setWeather(weatherType: WeatherType): void;
+    setWeather(weatherType: WeatherType, duration?: number): void;
     /**
      * @beta
      * @remarks
@@ -3981,6 +3994,14 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * If true, the entity is currently sleeping.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isSleeping: boolean;
+    /**
+     * @beta
+     * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
@@ -4038,6 +4059,7 @@ export class Entity {
      * @beta
      * @remarks
      * Returns a scoreboard identity that represents this entity.
+     * Will remain valid when the entity is killed.
      *
      * @throws This property can throw when used.
      */
@@ -4053,7 +4075,7 @@ export class Entity {
     readonly target: Entity;
     /**
      * @remarks
-     * Unique identifier of the type of the entity - for example,
+     * Identifier of the type of the entity - for example,
      * 'minecraft:skeleton'. This property is accessible even if
      * {@link Entity.isValid} is false.
      *
@@ -4416,11 +4438,17 @@ export class Entity {
     getHeadLocation(): Vector3;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    getProperty(identifier: string): boolean | number | string | undefined;
+    /**
+     * @beta
      * @remarks
      * Returns the current rotation component of this entity.
      *
      * @returns
-     * Returns the current rotation component of this entity.
+     * Returns a Vec2 containing the rotation of this entity (in
+     * degrees).
      * @throws This function can throw errors.
      */
     getRotation(): Vector2;
@@ -4602,6 +4630,14 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    resetProperty(identifier: string): boolean | number | string;
+    /**
+     * @beta
+     * @remarks
      * Runs a synchronous command on the entity.
      *
      * This function can't be called in read-only mode.
@@ -4694,14 +4730,22 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setProperty(identifier: string, value: boolean | number | string): void;
+    /**
+     * @beta
+     * @remarks
      * Sets the main rotation of the entity.
      *
      * This function can't be called in read-only mode.
      *
      * @param rotation
-     * The x and y rotation of the entity. For most mobs, the x
-     * rotation controls the head tilt and the y rotation controls
-     * the body rotation.
+     * The x and y rotation of the entity (in degrees). For most
+     * mobs, the x rotation controls the head tilt and the y
+     * rotation controls the body rotation.
      * @throws This function can throw errors.
      */
     setRotation(rotation: Vector2): void;
@@ -5211,6 +5255,7 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
+     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -6315,14 +6360,21 @@ export class EntityPushThroughComponent extends EntityComponent {
  * from the world (for example, the entity is unloaded because
  * it is not close to players.)
  */
-export class EntityRemovedAfterEvent {
+export class EntityRemoveAfterEvent {
     private constructor();
     /**
      * @remarks
-     * Reference to an entity that was removed.
+     * Id of the entity that was removed.
      *
      */
-    readonly removedEntity: string;
+    readonly removedEntityId: string;
+    /**
+     * @remarks
+     * Identifier of the type of the entity removed - for example,
+     * 'minecraft:skeleton'.
+     *
+     */
+    readonly typeId: string;
 }
 
 /**
@@ -6331,7 +6383,7 @@ export class EntityRemovedAfterEvent {
  * is removed from  the game (for example, unloaded, or a few
  * seconds after they are dead.)
  */
-export class EntityRemovedAfterEventSignal {
+export class EntityRemoveAfterEventSignal {
     private constructor();
     /**
      * @remarks
@@ -6349,9 +6401,9 @@ export class EntityRemovedAfterEventSignal {
      * operations.
      */
     subscribe(
-        callback: (arg: EntityRemovedAfterEvent) => void,
+        callback: (arg: EntityRemoveAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityRemovedAfterEvent) => void;
+    ): (arg: EntityRemoveAfterEvent) => void;
     /**
      * @remarks
      * Unsubscribes your function from subsequent calls when an
@@ -6361,7 +6413,57 @@ export class EntityRemovedAfterEventSignal {
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: EntityRemovedAfterEvent) => void): void;
+    unsubscribe(callback: (arg: EntityRemoveAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Data for an event that happens when an entity is being
+ * removed from the world (for example, the entity is unloaded
+ * because it is not close to players.)
+ */
+export class EntityRemoveBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Reference to an entity that is being removed.
+     *
+     */
+    readonly removedEntity: Entity;
+}
+
+/**
+ * @beta
+ * Allows registration for an event that fires when an entity
+ * is being removed from  the game (for example, unloaded, or a
+ * few seconds after they are dead.)
+ */
+export class EntityRemoveBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Will call your function every time an entity is being
+     * removed from the game.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param callback
+     * Function to call.
+     * @returns
+     * Returns a closure that can be used in subsequent unsubscribe
+     * operations.
+     */
+    subscribe(callback: (arg: EntityRemoveBeforeEvent) => void): (arg: EntityRemoveBeforeEvent) => void;
+    /**
+     * @remarks
+     * Unsubscribes your function from subsequent calls when an
+     * entity is being removed.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
 }
 
 /**
@@ -7578,6 +7680,26 @@ export class ItemStack {
      */
     clone(): ItemStack;
     /**
+     * @beta
+     * @remarks
+     * Get the list of block types this item can break in Adventure
+     * mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    getCanDestroy(): string[];
+    /**
+     * @beta
+     * @remarks
+     * Get the list of block types this item can be placed on in
+     * Adventure mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    getCanPlaceOn(): string[];
+    /**
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an item stack.
@@ -8630,6 +8752,14 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * If true, the player is currently emoting.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly isEmoting: boolean;
+    /**
+     * @beta
+     * @remarks
      * Whether the player is flying. For example, in Creative or
      * Spectator mode.
      *
@@ -9408,12 +9538,16 @@ export class Scoreboard {
      *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Returns the previous `ScoreboardObjective` set at the
+     * display slot, if no objective was previously set it returns
+     * `undefined`.
      * @throws This function can throw errors.
      */
     setObjectiveAtDisplaySlot(
         displaySlotId: DisplaySlotId,
         objectiveDisplaySetting: ScoreboardObjectiveDisplayOptions,
-    ): ScoreboardObjective;
+    ): ScoreboardObjective | undefined;
 }
 
 /**
@@ -9447,7 +9581,7 @@ export class ScoreboardIdentity {
      *
      * @throws This function can throw errors.
      */
-    getEntity(): Entity;
+    getEntity(): Entity | undefined;
     isValid(): boolean;
 }
 
@@ -10914,13 +11048,8 @@ export class WorldAfterEvents {
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
      * @beta
-     * @remarks
-     * This event fires when an entity is removed from the game
-     * (e.g., is unloaded when it goes out of range; or a few
-     * seconds after the death of an entity.)
-     *
      */
-    readonly entityRemoved: EntityRemovedAfterEventSignal;
+    readonly entityRemove: EntityRemoveAfterEventSignal;
     /**
      * @beta
      * @remarks
@@ -11143,6 +11272,10 @@ export class WorldBeforeEvents {
      *
      */
     readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
      * @beta
      * @remarks

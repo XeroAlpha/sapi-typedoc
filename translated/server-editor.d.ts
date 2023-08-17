@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.30-preview.21"
+ *   "version": "0.1.0-beta.1.20.30-preview.22"
  * }
  * ```
  *
@@ -553,7 +553,7 @@ export declare class BedrockEventSubscriptionCache {
         | ((arg: minecraftserver.EntityHitBlockAfterEvent) => void)
         | ((arg: minecraftserver.EntityHitEntityAfterEvent) => void)
         | ((arg: minecraftserver.EntityHurtAfterEvent) => void)
-        | ((arg: minecraftserver.EntityRemovedAfterEvent) => void)
+        | ((arg: minecraftserver.EntityRemoveAfterEvent) => void)
         | ((arg: minecraftserver.ExplosionAfterEvent) => void)
         | ((arg: minecraftserver.ItemCompleteUseAfterEvent) => void)
         | ((arg: minecraftserver.ItemDefinitionTriggeredAfterEvent) => void)
@@ -2155,6 +2155,12 @@ export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
 export interface IPropertyPane {
     /**
      * @remarks
+     * Pane state for being expanded or collapsed.
+     *
+     */
+    collapsed: boolean;
+    /**
+     * @remarks
      * Unique ID for the property pane.
      *
      */
@@ -2272,11 +2278,23 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     * Collapse the pane.
+     *
+     */
+    collapse(): void;
+    /**
+     * @remarks
      * Creates an internal sub panel that is presented inside a
      * extender control.
      *
      */
     createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
+    /**
+     * @remarks
+     * Expand the pane.
+     *
+     */
+    expand(): void;
     /**
      * @remarks
      * Hide the pane.
