@@ -12,9 +12,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.22`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.30-preview.24`|
 
-游戏版本号：`1.20.30.22`
+游戏版本号：`1.20.30.24`
 
 <!-- summary end -->
 
@@ -43,7 +43,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/317|
+|[@minecraft/server](#minecraftserver)|0/325|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/80|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
@@ -62,6 +62,7 @@ Minecraft 脚本 API 文档。
 |[`DyeColor`](https://projectxero.top/sapi/enums/server.DyeColor.html)|枚举|未翻译|
 |[`EasingType`](https://projectxero.top/sapi/enums/server.EasingType.html)|枚举|未翻译|
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
+|[`EntityInitializationCause`](https://projectxero.top/sapi/enums/server.EntityInitializationCause.html)|枚举|未翻译|
 |[`EntityLifetimeState`](https://projectxero.top/sapi/enums/server.EntityLifetimeState.html)|枚举|未翻译|
 |[`EquipmentSlot`](https://projectxero.top/sapi/enums/server.EquipmentSlot.html)|枚举|未翻译|
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
@@ -77,8 +78,6 @@ Minecraft 脚本 API 文档。
 |[`WeatherType`](https://projectxero.top/sapi/enums/server.WeatherType.html)|枚举|未翻译|
 |[`Block`](https://projectxero.top/sapi/classes/server.Block.html)|类|未翻译|
 |[`BlockAreaSize`](https://projectxero.top/sapi/classes/server.BlockAreaSize.html)|类|未翻译|
-|[`BlockBreakAfterEvent`](https://projectxero.top/sapi/classes/server.BlockBreakAfterEvent.html)|类|未翻译|
-|[`BlockBreakAfterEventSignal`](https://projectxero.top/sapi/classes/server.BlockBreakAfterEventSignal.html)|类|未翻译|
 |[`BlockComponent`](https://projectxero.top/sapi/classes/server.BlockComponent.html)|类|未翻译|
 |[`BlockEvent`](https://projectxero.top/sapi/classes/server.BlockEvent.html)|类|未翻译|
 |[`BlockExplodeAfterEvent`](https://projectxero.top/sapi/classes/server.BlockExplodeAfterEvent.html)|类|未翻译|
@@ -89,8 +88,6 @@ Minecraft 脚本 API 文档。
 |[`BlockLocationIterator`](https://projectxero.top/sapi/classes/server.BlockLocationIterator.html)|类|未翻译|
 |[`BlockPermutation`](https://projectxero.top/sapi/classes/server.BlockPermutation.html)|类|未翻译|
 |[`BlockPistonComponent`](https://projectxero.top/sapi/classes/server.BlockPistonComponent.html)|类|未翻译|
-|[`BlockPlaceAfterEvent`](https://projectxero.top/sapi/classes/server.BlockPlaceAfterEvent.html)|类|未翻译|
-|[`BlockPlaceAfterEventSignal`](https://projectxero.top/sapi/classes/server.BlockPlaceAfterEventSignal.html)|类|未翻译|
 |[`BlockPotionContainerComponent`](https://projectxero.top/sapi/classes/server.BlockPotionContainerComponent.html)|类|未翻译|
 |[`BlockRecordPlayerComponent`](https://projectxero.top/sapi/classes/server.BlockRecordPlayerComponent.html)|类|未翻译|
 |[`BlockSignComponent`](https://projectxero.top/sapi/classes/server.BlockSignComponent.html)|类|未翻译|
@@ -182,6 +179,8 @@ Minecraft 脚本 API 文档。
 |[`EntityIterator`](https://projectxero.top/sapi/classes/server.EntityIterator.html)|类|未翻译|
 |[`EntityLavaMovementComponent`](https://projectxero.top/sapi/classes/server.EntityLavaMovementComponent.html)|类|未翻译|
 |[`EntityLeashableComponent`](https://projectxero.top/sapi/classes/server.EntityLeashableComponent.html)|类|未翻译|
+|[`EntityLoadAfterEvent`](https://projectxero.top/sapi/classes/server.EntityLoadAfterEvent.html)|类|未翻译|
+|[`EntityLoadAfterEventSignal`](https://projectxero.top/sapi/classes/server.EntityLoadAfterEventSignal.html)|类|未翻译|
 |[`EntityMarkVariantComponent`](https://projectxero.top/sapi/classes/server.EntityMarkVariantComponent.html)|类|未翻译|
 |[`EntityMountTamingComponent`](https://projectxero.top/sapi/classes/server.EntityMountTamingComponent.html)|类|未翻译|
 |[`EntityMovementAmphibiousComponent`](https://projectxero.top/sapi/classes/server.EntityMovementAmphibiousComponent.html)|类|未翻译|
@@ -279,11 +278,19 @@ Minecraft 脚本 API 文档。
 |[`PistonActivateBeforeEvent`](https://projectxero.top/sapi/classes/server.PistonActivateBeforeEvent.html)|类|未翻译|
 |[`PistonActivateBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PistonActivateBeforeEventSignal.html)|类|未翻译|
 |[`Player`](https://projectxero.top/sapi/classes/server.Player.html)|类|未翻译|
+|[`PlayerBreakBlockAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerBreakBlockAfterEvent.html)|类|未翻译|
+|[`PlayerBreakBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerBreakBlockAfterEventSignal.html)|类|未翻译|
+|[`PlayerBreakBlockBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerBreakBlockBeforeEvent.html)|类|未翻译|
+|[`PlayerBreakBlockBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PlayerBreakBlockBeforeEventSignal.html)|类|未翻译|
 |[`PlayerIterator`](https://projectxero.top/sapi/classes/server.PlayerIterator.html)|类|未翻译|
 |[`PlayerJoinAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerJoinAfterEvent.html)|类|未翻译|
 |[`PlayerJoinAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerJoinAfterEventSignal.html)|类|未翻译|
 |[`PlayerLeaveAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerLeaveAfterEvent.html)|类|未翻译|
 |[`PlayerLeaveAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerLeaveAfterEventSignal.html)|类|未翻译|
+|[`PlayerPlaceBlockAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockAfterEvent.html)|类|未翻译|
+|[`PlayerPlaceBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockAfterEventSignal.html)|类|未翻译|
+|[`PlayerPlaceBlockBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockBeforeEvent.html)|类|未翻译|
+|[`PlayerPlaceBlockBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockBeforeEventSignal.html)|类|未翻译|
 |[`PlayerSpawnAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerSpawnAfterEvent.html)|类|未翻译|
 |[`PlayerSpawnAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerSpawnAfterEventSignal.html)|类|未翻译|
 |[`PressurePlatePopAfterEvent`](https://projectxero.top/sapi/classes/server.PressurePlatePopAfterEvent.html)|类|未翻译|
@@ -322,6 +329,7 @@ Minecraft 脚本 API 文档。
 |[`WorldBeforeEvents`](https://projectxero.top/sapi/classes/server.WorldBeforeEvents.html)|类|未翻译|
 |[`WorldInitializeAfterEvent`](https://projectxero.top/sapi/classes/server.WorldInitializeAfterEvent.html)|类|未翻译|
 |[`WorldInitializeAfterEventSignal`](https://projectxero.top/sapi/classes/server.WorldInitializeAfterEventSignal.html)|类|未翻译|
+|[`BlockEventOptions`](https://projectxero.top/sapi/interfaces/server.BlockEventOptions.html)|接口|未翻译|
 |[`BlockFillOptions`](https://projectxero.top/sapi/interfaces/server.BlockFillOptions.html)|接口|未翻译|
 |[`BlockHitInformation`](https://projectxero.top/sapi/interfaces/server.BlockHitInformation.html)|接口|未翻译|
 |[`BlockRaycastHit`](https://projectxero.top/sapi/interfaces/server.BlockRaycastHit.html)|接口|未翻译|

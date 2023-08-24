@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.30-preview.22"
+ *   "version": "1.6.0-internal.1.20.30-preview.24"
  * }
  * ```
  *
@@ -256,6 +256,45 @@ export enum EntityDamageCause {
     thorns = 'thorns',
     'void' = 'void',
     wither = 'wither',
+}
+
+/**
+ * @beta
+ * An enumeration describing initialization cause of an entity.
+ */
+export enum EntityInitializationCause {
+    /**
+     * @beta
+     * @remarks
+     * Case when an entity is created as child of other entity or
+     * entities, e.g., cows making a cow or slimes making smaller
+     * slimes after dying.
+     *
+     */
+    Born = 'Born',
+    /**
+     * @beta
+     * @remarks
+     * Case when an entity is created by an event, e.g., Wandering
+     * trader spawning llamas.
+     *
+     */
+    Event = 'Event',
+    Loaded = 'Loaded',
+    /**
+     * @beta
+     * @remarks
+     * Case when an entity is naturally spawned in the world.
+     *
+     */
+    Spawned = 'Spawned',
+    /**
+     * @beta
+     * @remarks
+     * Case when an entity is transformed into another entity.
+     *
+     */
+    Transformed = 'Transformed',
 }
 
 /**
@@ -929,57 +968,6 @@ export class BlockAreaSize {
 
 /**
  * @beta
- * Contains information regarding an event where a player
- * breaks a block.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockBreakAfterEvent extends BlockEvent {
-    private constructor();
-    /**
-     * @remarks
-     * Returns permutation information about this block before it
-     * was broken.
-     *
-     */
-    readonly brokenBlockPermutation: BlockPermutation;
-    /**
-     * @remarks
-     * Player that broke the block for this event.
-     *
-     */
-    readonly player: Player;
-}
-
-/**
- * @beta
- * Manages callbacks that are connected to when a block is
- * broken.
- */
-export class BlockBreakAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when a block is broken
-     * by a player.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg: BlockBreakAfterEvent) => void): (arg: BlockBreakAfterEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called when an block is
-     * broken.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: BlockBreakAfterEvent) => void): void;
-}
-
-/**
- * @beta
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -1381,50 +1369,6 @@ export class BlockPistonComponent extends BlockComponent {
 
 /**
  * @beta
- * Contains information regarding an event where a player
- * places a block.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockPlaceAfterEvent extends BlockEvent {
-    private constructor();
-    /**
-     * @remarks
-     * Player that placed the block for this event.
-     *
-     */
-    readonly player: Player;
-}
-
-/**
- * @beta
- * Manages callbacks that are connected to when a block is
- * placed.
- */
-export class BlockPlaceAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when a block is placed
-     * by a player.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg: BlockPlaceAfterEvent) => void): (arg: BlockPlaceAfterEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called when an block is
-     * placed.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: BlockPlaceAfterEvent) => void): void;
-}
-
-/**
- * @beta
  * Represents a fluid container block that currently contains a
  * potion.
  */
@@ -1624,6 +1568,9 @@ export class BlockStates {
      * @remarks
      * Retrieves a specific block state instance.
      *
+     * @returns
+     * Returns the block state instance if it is found. If the
+     * block state instance is not found returns undefined.
      */
     static get(stateName: string): BlockStateType;
     /**
@@ -4061,7 +4008,6 @@ export class Entity {
      * Returns a scoreboard identity that represents this entity.
      * Will remain valid when the entity is killed.
      *
-     * @throws This property can throw when used.
      */
     readonly scoreboardIdentity?: ScoreboardIdentity;
     /**
@@ -4438,7 +4384,20 @@ export class Entity {
     getHeadLocation(): Vector3;
     /**
      * @beta
-     * @throws This function can throw errors.
+     * @remarks
+     * Gets an entity Property value. If the property was set using
+     * the setProperty function within the same tick, the updated
+     * value will not be reflected until the subsequent tick.
+     *
+     * @param identifier
+     * The entity Property identifier.
+     * @returns
+     * Returns the current property value. For enum properties, a
+     * string is returned. For float and int properties, a number
+     * is returned. For undefined properties, undefined is
+     * returned.
+     * @throws
+     * Throws if the entity is invalid.
      */
     getProperty(identifier: string): boolean | number | string | undefined;
     /**
@@ -4580,6 +4539,10 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Immediately removes the entity from the world. The removed
+     * entity will not perform a death animation or drop loot upon
+     * removal.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -4630,9 +4593,21 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Resets an Entity Property back to its default value, as
+     * specified in the Entity's definition. This property change
+     * is not applied until the next tick.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The Entity Property identifier.
+     * @returns
+     * Returns the default property value. For enum properties, a
+     * string is returned. For float and int properties, a number
+     * is returned. For undefined properties, undefined is
+     * returned.
+     * @throws
+     * Throws if the entity is invalid.
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
@@ -4730,9 +4705,25 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Sets an Entity Property to the provided value. This property
+     * change is not applied until the next tick.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The Entity Property identifier.
+     * @param value
+     * The property value. The provided type must be compatible
+     * with the type specified in the entity's definition.
+     * @throws
+     * Throws if the entity is invalid.
+     * Throws if an invalid identifier is provided.
+     * Throws if the provided value type does not match the
+     * property type.
+     * Throws if the provided value is outside the expected range
+     * (int, float properties).
+     * Throws if the provided string value does not match the set
+     * of accepted enum values (enum properties
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
@@ -5242,6 +5233,8 @@ export class EntityDieAfterEventSignal {
 
 /**
  * @beta
+ * Provides access to a mob's equipment slots. This component
+ * exists for all mob entities.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
@@ -5249,23 +5242,44 @@ export class EntityEquippableComponent extends EntityComponent {
     static readonly componentId = 'minecraft:equippable';
     /**
      * @remarks
+     * Gets the equipped item for the given EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand"
+     * @returns
+     * Returns the item equipped to the given EquipmentSlot. If
+     * empty, returns undefined.
      * @throws This function can throw errors.
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
      * @beta
      * @remarks
+     * Gets the ContainerSlot corresponding to the given
+     * EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand".
+     * @returns
+     * Returns the ContainerSlot corresponding to the given
+     * EquipmentSlot.
      * @throws This function can throw errors.
      */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
      * @remarks
+     * Replaces the item in the given EquipmentSlot.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param equipmentSlot
+     * The equipment slot. e.g. "head", "chest", "offhand".
+     * @param itemStack
+     * The item to equip. If undefined, clears the slot.
      * @throws This function can throw errors.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
@@ -5918,6 +5932,57 @@ export class EntityLeashableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     unleash(): void;
+}
+
+/**
+ * @beta
+ * Contains data related to an entity loaded within the world.
+ * This could happen when an unloaded chunk is reloaded, or
+ * when an entity changes dimensions.
+ */
+export class EntityLoadAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Entity that was loaded.
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    entity: Entity;
+}
+
+/**
+ * @beta
+ * Registers a script-based event handler for handling what
+ * happens when an entity loads.
+ */
+export class EntityLoadAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Method to register an event handler for what happens when an
+     * entity loads.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param callback
+     * Function that handles the load event.
+     */
+    subscribe(callback: (arg: EntityLoadAfterEvent) => void): (arg: EntityLoadAfterEvent) => void;
+    /**
+     * @remarks
+     * Unregisters a method that was previously subscribed to the
+     * subscription event.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param callback
+     * Original function that was passed into the subscribe event,
+     * that is to be unregistered.
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: EntityLoadAfterEvent) => void): void;
 }
 
 /**
@@ -6644,6 +6709,12 @@ export class EntitySkinIdComponent extends EntityComponent {
  */
 export class EntitySpawnAfterEvent {
     private constructor();
+    /**
+     * @remarks
+     * Initialization cause (Spawned, Born ...).
+     *
+     */
+    readonly cause: EntityInitializationCause;
     /**
      * @remarks
      * Entity that was spawned.
@@ -8746,6 +8817,9 @@ export class Player extends Entity {
     private constructor();
     /**
      * @beta
+     * @remarks
+     * The player's Camera.
+     *
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
@@ -9053,6 +9127,134 @@ export class Player extends Entity {
 
 /**
  * @beta
+ * Contains information regarding an event after a player
+ * breaks a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerBreakBlockAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns permutation information about this block before it
+     * was broken.
+     *
+     */
+    readonly brokenBlockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The item stack that was used to break the block after the
+     * block was broken, or undefined if empty hand.
+     *
+     */
+    readonly itemStackAfterBreak?: ItemStack;
+    /**
+     * @remarks
+     * The item stack that was used to break the block before the
+     * block was broken, or undefined if empty hand.
+     *
+     */
+    readonly itemStackBeforeBreak?: ItemStack;
+    /**
+     * @remarks
+     * Player that broke the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player breaks
+ * a block.
+ */
+export class PlayerBreakBlockAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a block is broken
+     * by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerBreakBlockAfterEvent) => void,
+        options?: BlockEventOptions,
+    ): (arg: PlayerBreakBlockAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player breaks a
+     * block.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event before a player
+ * breaks a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerBreakBlockBeforeEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true, cancels the block break event.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The item stack that is being used to break the block, or
+     * undefined if empty hand.
+     *
+     */
+    itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Player breaking the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to before a player
+ * breaks a block.
+ */
+export class PlayerBreakBlockBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called before a block is broken
+     * by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerBreakBlockBeforeEvent) => void,
+        options?: BlockEventOptions,
+    ): (arg: PlayerBreakBlockBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called before a player breaks
+     * a block.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
  * This type is usable for iterating over a set of players.
  * This means it can be used in statements like for...of
  * statements, Array.from(iterator), and more.
@@ -9140,6 +9342,125 @@ export class PlayerLeaveAfterEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
+}
+
+/**
+ * @beta
+ * Contains information regarding an event where a player
+ * places a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerPlaceBlockAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Player that placed the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a block is
+ * placed by a player.
+ */
+export class PlayerPlaceBlockAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a block is placed
+     * by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerPlaceBlockAfterEvent) => void,
+        options?: BlockEventOptions,
+    ): (arg: PlayerPlaceBlockAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an block is placed
+     * by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event before a player
+ * places a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true, cancels the block place event.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The face of the block that the new block is being placed on.
+     *
+     */
+    readonly face: Direction;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block where the new block is being placed onto.
+     *
+     */
+    readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The item being used to place the block.
+     *
+     */
+    itemStack: ItemStack;
+    /**
+     * @remarks
+     * Player that is placing the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to before a block is
+ * placed by a player.
+ */
+export class PlayerPlaceBlockBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called before a block is placed
+     * by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerPlaceBlockBeforeEvent) => void,
+        options?: BlockEventOptions,
+    ): (arg: PlayerPlaceBlockBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called before an block is
+     * placed by a player.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
 }
 
 /**
@@ -10958,26 +11279,12 @@ export class WorldAfterEvents {
     /**
      * @beta
      * @remarks
-     * This event fires for a block that is broken by a player.
-     *
-     */
-    readonly blockBreak: BlockBreakAfterEventSignal;
-    /**
-     * @beta
-     * @remarks
      * This event fires for each BlockLocation destroyed by an
      * explosion. It is fired after the blocks have already been
      * destroyed.
      *
      */
     readonly blockExplode: BlockExplodeAfterEventSignal;
-    /**
-     * @beta
-     * @remarks
-     * This event fires for a block that is placed by a player.
-     *
-     */
-    readonly blockPlace: BlockPlaceAfterEventSignal;
     /**
      * @remarks
      * This event fires when a button is pushed.
@@ -11046,6 +11353,10 @@ export class WorldAfterEvents {
      *
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly entityLoad: EntityLoadAfterEventSignal;
     /**
      * @beta
      */
@@ -11161,6 +11472,13 @@ export class WorldAfterEvents {
      */
     readonly pistonActivate: PistonActivateAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires for a block that is broken by a player.
+     *
+     */
+    readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
+    /**
      * @remarks
      * This event fires when a player joins a world.  See also
      * playerSpawn for another related event you can trap for when
@@ -11174,6 +11492,13 @@ export class WorldAfterEvents {
      *
      */
     readonly playerLeave: PlayerLeaveAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires for a block that is placed by a player.
+     *
+     */
+    readonly playerPlaceBlock: PlayerPlaceBlockAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player spawns or respawns. Note that
@@ -11314,6 +11639,20 @@ export class WorldBeforeEvents {
      *
      */
     readonly pistonActivate: PistonActivateBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires before a block is broken by a player.
+     *
+     */
+    readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires before a block is placed by a player.
+     *
+     */
+    readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
 }
 
 /**
@@ -11378,6 +11717,27 @@ export class WorldInitializeAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains optional parameters for registering a block event.
+ */
+export interface BlockEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire if the
+     * impacted block's type matches this parameter.
+     *
+     */
+    blockTypes?: string[];
+    /**
+     * @remarks
+     * If this value is set, this event will only fire if the
+     * impacted block's permutation matches this parameter.
+     *
+     */
+    permutations?: BlockPermutation[];
 }
 
 /**
@@ -12206,6 +12566,13 @@ export interface RawMessage {
      *
      */
     translate?: string;
+    /**
+     * @remarks
+     * Arguments for the translation token. Can be either an array
+     * of strings or RawMessage containing an array of raw text
+     * objects.
+     *
+     */
     with?: string[] | RawMessage;
 }
 

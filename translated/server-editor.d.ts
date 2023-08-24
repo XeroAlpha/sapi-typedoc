@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.30-preview.22"
+ *   "version": "0.1.0-beta.1.20.30-preview.24"
  * }
  * ```
  *
@@ -543,7 +543,6 @@ export declare class BedrockEventSubscriptionCache {
         event: T,
         ...params: Parameters<minecraftserver.WorldAfterEvents[T]['subscribe']>
     ):
-        | ((arg: minecraftserver.BlockBreakAfterEvent) => void)
         | ((arg: minecraftserver.BlockExplodeAfterEvent) => void)
         | ((arg: minecraftserver.ChatSendAfterEvent) => void)
         | ((arg: minecraftserver.DataDrivenEntityTriggerAfterEvent) => void)
@@ -554,6 +553,7 @@ export declare class BedrockEventSubscriptionCache {
         | ((arg: minecraftserver.EntityHitEntityAfterEvent) => void)
         | ((arg: minecraftserver.EntityHurtAfterEvent) => void)
         | ((arg: minecraftserver.EntityRemoveAfterEvent) => void)
+        | ((arg: minecraftserver.EntitySpawnAfterEvent) => void)
         | ((arg: minecraftserver.ExplosionAfterEvent) => void)
         | ((arg: minecraftserver.ItemCompleteUseAfterEvent) => void)
         | ((arg: minecraftserver.ItemDefinitionTriggeredAfterEvent) => void)
@@ -561,6 +561,7 @@ export declare class BedrockEventSubscriptionCache {
         | ((arg: minecraftserver.LeverActionAfterEvent) => void)
         | ((arg: minecraftserver.MessageReceiveAfterEvent) => void)
         | ((arg: minecraftserver.PistonActivateAfterEvent) => void)
+        | ((arg: minecraftserver.PlayerBreakBlockAfterEvent) => void)
         | ((arg: minecraftserver.PlayerJoinAfterEvent) => void)
         | ((arg: minecraftserver.PlayerSpawnAfterEvent) => void)
         | ((arg: minecraftserver.ProjectileHitBlockAfterEvent) => void)
