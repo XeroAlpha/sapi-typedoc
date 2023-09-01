@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.30-preview.24"
+ *   "version": "1.6.0-internal.1.20.30-preview.25"
  * }
  * ```
  *

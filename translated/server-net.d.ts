@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.20.30-preview.24"
+ *   "version": "1.0.0-beta.1.20.30-preview.25"
  * }
  * ```
  *
