@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.30-preview.25"
+ *   "version": "1.6.0-internal.1.20.40-preview.20"
  * }
  * ```
  *
@@ -778,6 +778,20 @@ export class Block {
     readonly z: number;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    above(steps?: number): Block | undefined;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    below(steps?: number): Block | undefined;
+    /**
+     * @beta
+     */
+    bottomCenter(): Vector3;
+    /**
+     * @beta
      * @remarks
      * Checks to see whether it is valid to place the specified
      * block type or block permutation, on a specified face on this
@@ -794,6 +808,15 @@ export class Block {
      * @throws This function can throw errors.
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
+    /**
+     * @beta
+     */
+    center(): Vector3;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    east(steps?: number): Block | undefined;
     /**
      * @beta
      * @remarks
@@ -883,6 +906,16 @@ export class Block {
      */
     isValid(): boolean;
     /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    north(steps?: number): Block | undefined;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    offset(offset: Vector3): Block | undefined;
+    /**
      * @remarks
      * Sets the block in the dimension to the state of the
      * permutation.
@@ -910,6 +943,11 @@ export class Block {
     setType(blockType: BlockType | string): void;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    south(steps?: number): Block | undefined;
+    /**
+     * @beta
      * @remarks
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.
@@ -925,6 +963,11 @@ export class Block {
      * @throws This function can throw errors.
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    west(steps?: number): Block | undefined;
 }
 
 /**
@@ -1195,7 +1238,7 @@ export class BlockPermutation {
      * Number of instances of this block to place in the prototype
      * item stack.
      */
-    getItemStack(amount?: number): ItemStack;
+    getItemStack(amount?: number): ItemStack | undefined;
     /**
      * @beta
      * @remarks
@@ -1572,7 +1615,7 @@ export class BlockStates {
      * Returns the block state instance if it is found. If the
      * block state instance is not found returns undefined.
      */
-    static get(stateName: string): BlockStateType;
+    static get(stateName: string): BlockStateType | undefined;
     /**
      * @remarks
      * Retrieves a set of all available block states.
@@ -1995,11 +2038,11 @@ export class Camera {
     setCamera(
         cameraPreset: string,
         setOptions?:
-            | ScriptCameraDefaultOptions
-            | ScriptCameraSetFacingOptions
-            | ScriptCameraSetLocationOptions
-            | ScriptCameraSetPosOptions
-            | ScriptCameraSetRotOptions,
+            | CameraDefaultOptions
+            | CameraSetFacingOptions
+            | CameraSetLocationOptions
+            | CameraSetPosOptions
+            | CameraSetRotOptions,
     ): void;
 }
 
@@ -3485,47 +3528,6 @@ export class DimensionTypes {
 
 /**
  * @beta
- * Class used in conjunction with {@link PropertyRegistry} to
- * define dynamic properties that can be used on entities of a
- * specified type or at the global World- level.
- */
-export class DynamicPropertiesDefinition {
-    /**
-     * @remarks
-     * Defines a boolean dynamic property.
-     *
-     * @throws This function can throw errors.
-     */
-    defineBoolean(identifier: string, defaultValue?: boolean): DynamicPropertiesDefinition;
-    /**
-     * @remarks
-     * Defines a number dynamic property.
-     *
-     * @throws This function can throw errors.
-     */
-    defineNumber(identifier: string, defaultValue?: number): DynamicPropertiesDefinition;
-    /**
-     * @remarks
-     * Defines a string dynamic property.
-     *
-     * @throws This function can throw errors.
-     */
-    defineString(identifier: string, maxLength: number, defaultValue?: string): DynamicPropertiesDefinition;
-    /**
-     * @remarks
-     * Defines a new Vector3-based dynamic property.
-     *
-     * @param identifier
-     * Identifier of the Vector3 property.
-     * @param defaultValue
-     * Optional default starting Vector for this property.
-     * @throws This function can throw errors.
-     */
-    defineVector(identifier: string, defaultValue?: Vector3): DynamicPropertiesDefinition;
-}
-
-/**
- * @beta
  * Represents an effect - like poison - that has been added to
  * an Entity.
  */
@@ -4214,6 +4216,11 @@ export class Entity {
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    clearDynamicProperties(): void;
+    /**
+     * @beta
      * @remarks
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
@@ -4330,6 +4337,16 @@ export class Entity {
      * @throws This function can throw errors.
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyTotalByteCount(): number;
     /**
      * @beta
      * @remarks
@@ -4551,18 +4568,6 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Removes a specified property.
-     *
-     * @param identifier
-     * The property identifier.
-     * @returns
-     * Returns whether the given property existed on the entity.
-     * @throws This function can throw errors.
-     */
-    removeDynamicProperty(identifier: string): boolean;
-    /**
-     * @beta
-     * @remarks
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
      *
@@ -4652,7 +4657,7 @@ export class Entity {
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string | Vector3): void;
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @beta
      * @remarks
@@ -6956,7 +6961,7 @@ export class ExplosionAfterEvent {
      * A collection of blocks impacted by this explosion event.
      *
      */
-    getImpactedBlocks(): Vector3[];
+    getImpactedBlocks(): Block[];
 }
 
 /**
@@ -7009,7 +7014,7 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
      * @param blocks
      * New list of blocks that are impacted by this explosion.
      */
-    setImpactedBlocks(blocks: Vector3[]): void;
+    setImpactedBlocks(blocks: Block[]): void;
 }
 
 /**
@@ -7437,7 +7442,7 @@ export class ItemDefinitionTriggeredAfterEvent {
      * Returns the source entity that triggered this item event.
      *
      */
-    readonly source: Player;
+    readonly source?: Player;
 }
 
 /**
@@ -8218,7 +8223,7 @@ export class ItemTypes {
      * Returns a specific item type, if available within Minecraft.
      *
      */
-    static get(itemId: string): ItemType;
+    static get(itemId: string): ItemType | undefined;
     /**
      * @remarks
      * Retrieves all available item types registered within
@@ -8978,12 +8983,18 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @beta
+     * @remarks
      * Plays a sound that only this particular player can hear.
      *
      * This function can't be called in read-only mode.
      *
-     * @param soundID
-     * Identifier of the sound to play.
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
@@ -9012,7 +9023,7 @@ export class Player extends Entity {
      *   players[0].playSound("bucket.fill_water", playerSoundOptions);
      * ```
      */
-    playSound(soundID: string, soundOptions?: PlayerSoundOptions): void;
+    playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
      * @beta
      * @remarks
@@ -9024,6 +9035,14 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     postClientMessage(id: string, value: string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @beta
      * @remarks
@@ -9123,6 +9142,14 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     startItemCooldown(itemCategory: string, tickDuration: number): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopMusic(): void;
 }
 
 /**
@@ -9251,6 +9278,371 @@ export class PlayerBreakBlockBeforeEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to changes to a player's
+ * dimension having been changed.
+ */
+export class PlayerDimensionChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The dimension the player is changing from.
+     *
+     */
+    readonly fromDimension: Dimension;
+    /**
+     * @remarks
+     * The location the player was at before changing dimensions.
+     *
+     */
+    readonly fromLocation: Vector3;
+    /**
+     * @remarks
+     * Handle to the player that is changing dimensions.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The dimension that the player is changing to.
+     *
+     */
+    readonly toDimension: Dimension;
+    /**
+     * @remarks
+     * The location the player will spawn to after changing
+     * dimensions.
+     *
+     */
+    readonly toLocation: Vector3;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to successful player
+ * dimension changes.
+ */
+export class PlayerDimensionChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to a player's dimension
+ * changing.
+ */
+export class PlayerDimensionChangeBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The dimension the player is changing from.
+     *
+     */
+    readonly fromDimension: Dimension;
+    /**
+     * @remarks
+     * The location the player was at before changing dimensions.
+     *
+     */
+    readonly fromLocation: Vector3;
+    /**
+     * @remarks
+     * Handle to the player that is changing dimensions.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The dimension that the player is changing to, property will
+     * modify dimension change request.
+     *
+     */
+    readonly toDimension: Dimension;
+    /**
+     * @remarks
+     * The location the player will spawn to after changing
+     * dimensions, property will modify spawn location request.
+     *
+     */
+    readonly toLocation: Vector3;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to player dimension
+ * change requests.
+ */
+export class PlayerDimensionChangeBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerDimensionChangeBeforeEvent) => void,
+    ): (arg: PlayerDimensionChangeBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerDimensionChangeBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event after a player
+ * interacts with a block.
+ */
+export class PlayerInteractWithBlockAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block that will be interacted with.
+     *
+     */
+    readonly block: Block;
+    /**
+     * @remarks
+     * The face of the block that is being interacted with.
+     *
+     */
+    readonly blockFace: Direction;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block where the item is placed.
+     *
+     */
+    readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The item stack that is being used in the interaction, or
+     * undefined if empty hand.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ */
+export class PlayerInteractWithBlockAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerInteractWithBlockAfterEvent) => void,
+    ): (arg: PlayerInteractWithBlockAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event before a player
+ * interacts with a block.
+ */
+export class PlayerInteractWithBlockBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block that will be interacted with.
+     *
+     */
+    readonly block: Block;
+    /**
+     * @remarks
+     * The face of the block that is being interacted with.
+     *
+     */
+    readonly blockFace: Direction;
+    /**
+     * @remarks
+     * If set to true the interaction will be cancelled.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block where the item is placed.
+     *
+     */
+    readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The item stack that is being used in the interaction, or
+     * undefined if empty hand.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ */
+export class PlayerInteractWithBlockBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerInteractWithBlockBeforeEvent) => void,
+    ): (arg: PlayerInteractWithBlockBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerInteractWithBlockBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event after a player
+ * interacts with an entity.
+ */
+export class PlayerInteractWithEntityAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack that is being used in the interaction, or
+     * undefined if empty hand.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The entity that will be interacted with.
+     *
+     */
+    readonly target: Entity;
+}
+
+/**
+ * @beta
+ */
+export class PlayerInteractWithEntityAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerInteractWithEntityAfterEvent) => void,
+    ): (arg: PlayerInteractWithEntityAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event before a player
+ * interacts with an entity.
+ */
+export class PlayerInteractWithEntityBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true the interaction will be cancelled.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The item stack that is being used in the interaction, or
+     * undefined if empty hand.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The entity that will be interacted with.
+     *
+     */
+    readonly target: Entity;
+}
+
+/**
+ * @beta
+ */
+export class PlayerInteractWithEntityBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerInteractWithEntityBeforeEvent) => void,
+    ): (arg: PlayerInteractWithEntityBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
 
 /**
@@ -9759,38 +10151,6 @@ export class ProjectileHitEntityAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): void;
-}
-
-/**
- * @beta
- * Provides methods that should be used within the World
- * Initialize event to register dynamic properties that can be
- * used and stored within Minecraft.
- */
-export class PropertyRegistry {
-    private constructor();
-    /**
-     * @remarks
-     * Registers a dynamic property for a particular entity type
-     * (e.g., a minecraft:skeleton.).
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    registerEntityTypeDynamicProperties(
-        propertiesDefinition: DynamicPropertiesDefinition,
-        entityTypeOrId: EntityType | string,
-    ): void;
-    /**
-     * @remarks
-     * Registers a globally available dynamic property for a world.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
 }
 
 /**
@@ -10859,6 +11219,10 @@ export class World {
     broadcastClientMessage(id: string, value: string): void;
     /**
      * @beta
+     */
+    clearDynamicProperties(): void;
+    /**
+     * @beta
      * @remarks
      * Returns the absolute time since the start of the world.
      *
@@ -10974,6 +11338,14 @@ export class World {
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @beta
+     */
+    getDynamicPropertyTotalByteCount(): number;
+    /**
+     * @beta
      * @remarks
      * Returns an entity based on the provided id.
      *
@@ -11049,7 +11421,7 @@ export class World {
      *   players[0].playSound("bucket.fill_water", playerSoundOptions);
      * ```
      */
-    playMusic(trackID: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @beta
      * @remarks
@@ -11087,7 +11459,7 @@ export class World {
      *   players[0].playSound("bucket.fill_water", playerSoundOptions);
      * ```
      */
-    playSound(soundID: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @beta
      * @remarks
@@ -11101,17 +11473,7 @@ export class World {
      * An error will be thrown if fade is less than 0.0.
      *
      */
-    queueMusic(trackID: string, musicOptions?: MusicOptions): void;
-    /**
-     * @beta
-     * @remarks
-     * Removes a specified property.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    removeDynamicProperty(identifier: string): boolean;
+    queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @beta
      * @remarks
@@ -11181,8 +11543,6 @@ export class World {
      * @remarks
      * Sets a specified property to a value.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param identifier
      * The property identifier.
      * @param value
@@ -11243,7 +11603,7 @@ export class World {
      *   mc.world.setDynamicProperty("samplelibrary:longerjson", paintStr);
      * ```
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string | Vector3): void;
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @beta
      * @remarks
@@ -11479,6 +11839,18 @@ export class WorldAfterEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
+     * @beta
+     */
+    readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
+    /**
      * @remarks
      * This event fires when a player joins a world.  See also
      * playerSpawn for another related event you can trap for when
@@ -11648,6 +12020,18 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
      * @beta
+     */
+    readonly playerDimensionChange: PlayerDimensionChangeBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
+    /**
+     * @beta
      * @remarks
      * This event fires before a block is placed by a player.
      *
@@ -11665,28 +12049,6 @@ export class WorldBeforeEvents {
  */
 export class WorldInitializeAfterEvent {
     private constructor();
-    /**
-     * @remarks
-     * Contains methods for scripts to initialize and register
-     * dynamic properties they may wish to use within a world.
-     *
-     * @example propertyRegistration.js
-     * ```typescript
-     * import { DynamicPropertiesDefinition, EntityTypes, world } from '@minecraft/server';
-     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
-     *
-     * world.afterEvents.worldInitialize.subscribe(e => {
-     *     let def = new DynamicPropertiesDefinition();
-     *
-     *     def.defineNumber('rpgStrength');
-     *     def.defineString('rpgRole', 16);
-     *     def.defineBoolean('rpgIsHero');
-     *
-     *     e.propertyRegistry.registerEntityTypeDynamicProperties(def, EntityTypes.get(MinecraftEntityTypes.Skeleton));
-     * });
-     * ```
-     */
-    readonly propertyRegistry: PropertyRegistry;
 }
 
 /**
@@ -11919,6 +12281,13 @@ export interface BoundingBox {
 /**
  * @beta
  */
+export interface CameraDefaultOptions {
+    easeOptions: CameraEaseOptions;
+}
+
+/**
+ * @beta
+ */
 export interface CameraEaseOptions {
     easeTime?: number;
     easeType?: EasingType;
@@ -11939,6 +12308,41 @@ export interface CameraFadeTimeOptions {
     fadeInTime: number;
     fadeOutTime: number;
     holdTime: number;
+}
+
+/**
+ * @beta
+ */
+export interface CameraSetFacingOptions {
+    easeOptions?: CameraEaseOptions;
+    facingEntity: Entity;
+    location?: Vector3;
+}
+
+/**
+ * @beta
+ */
+export interface CameraSetLocationOptions {
+    easeOptions?: CameraEaseOptions;
+    location: Vector3;
+}
+
+/**
+ * @beta
+ */
+export interface CameraSetPosOptions {
+    easeOptions?: CameraEaseOptions;
+    facingLocation: Vector3;
+    location?: Vector3;
+}
+
+/**
+ * @beta
+ */
+export interface CameraSetRotOptions {
+    easeOptions?: CameraEaseOptions;
+    location?: Vector3;
+    rotation: Vector2;
 }
 
 /**
@@ -12694,48 +13098,6 @@ export interface ScoreboardObjectiveDisplayOptions {
      *
      */
     sortOrder?: ObjectiveSortOrder;
-}
-
-/**
- * @beta
- */
-export interface ScriptCameraDefaultOptions {
-    easeOptions: CameraEaseOptions;
-}
-
-/**
- * @beta
- */
-export interface ScriptCameraSetFacingOptions {
-    easeOptions?: CameraEaseOptions;
-    facingEntity: Entity;
-    location?: Vector3;
-}
-
-/**
- * @beta
- */
-export interface ScriptCameraSetLocationOptions {
-    easeOptions?: CameraEaseOptions;
-    location: Vector3;
-}
-
-/**
- * @beta
- */
-export interface ScriptCameraSetPosOptions {
-    easeOptions?: CameraEaseOptions;
-    facingLocation: Vector3;
-    location?: Vector3;
-}
-
-/**
- * @beta
- */
-export interface ScriptCameraSetRotOptions {
-    easeOptions?: CameraEaseOptions;
-    location?: Vector3;
-    rotation: Vector2;
 }
 
 /**

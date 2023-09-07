@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.30-preview.25"
+ *   "version": "1.0.0-internal.1.20.40-preview.20"
  * }
  * ```
  *
@@ -445,6 +445,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    chat(message: string): void;
     /**
      * @remarks
      * Simulates and performs a disconnection of the simulated
@@ -1394,7 +1401,7 @@ export class Test {
      * Location of the block to retrieve a sculk spreader from.
      * @throws This function can throw errors.
      */
-    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader;
+    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
