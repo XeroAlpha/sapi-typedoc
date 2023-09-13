@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.40-preview.20"
+ *   "version": "1.0.0-internal.1.20.40-preview.21"
  * }
  * ```
  *
@@ -386,7 +386,10 @@ export class SculkSpreader {
  * how a player moves throughout the world and to support
  * testing of how entities and the environment will react to a
  * player. This type derives much of its structure and methods
- * from the {@link @minecraft/server.Player} type.
+ * from the {@link @minecraft/server.Player} type. Note that
+ * many types of events that may be available for entities more
+ * broadly, such as item use events, may not fire in the same
+ * capacity for simulated players.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class SimulatedPlayer extends minecraftserver.Player {
@@ -1399,6 +1402,9 @@ export class Test {
      *
      * @param blockLocation
      * Location of the block to retrieve a sculk spreader from.
+     * @returns
+     * Returns the SculkSpreader or undefined if no SculkSpreader
+     * is present on the block.
      * @throws This function can throw errors.
      */
     getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;

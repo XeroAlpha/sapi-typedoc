@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0-internal.1.20.40-preview.20"
+ *   "version": "1.7.0-internal.1.20.40-preview.21"
  * }
  * ```
  *
@@ -154,32 +154,148 @@ export enum Direction {
 
 /**
  * @beta
+ * Specifies a mechanism for displaying scores on a scoreboard.
  */
 export enum DisplaySlotId {
+    /**
+     * @beta
+     * @remarks
+     * Displays the score below the player's name.
+     *
+     */
     BelowName = 'BelowName',
+    /**
+     * @beta
+     * @remarks
+     * Displays the score as a list on the pause screen.
+     *
+     */
     List = 'List',
+    /**
+     * @beta
+     * @remarks
+     * Displays the score on the side of the player's screen.
+     *
+     */
     Sidebar = 'Sidebar',
 }
 
 /**
  * @beta
+ * Specifies different colors for use as dye.
  */
 export enum DyeColor {
+    /**
+     * @beta
+     * @remarks
+     * Black dye color.
+     *
+     */
     Black = 'Black',
+    /**
+     * @beta
+     * @remarks
+     * Blue dye color.
+     *
+     */
     Blue = 'Blue',
+    /**
+     * @beta
+     * @remarks
+     * Brown dye color.
+     *
+     */
     Brown = 'Brown',
+    /**
+     * @beta
+     * @remarks
+     * Cyan dye color.
+     *
+     */
     Cyan = 'Cyan',
+    /**
+     * @beta
+     * @remarks
+     * Gray dye color.
+     *
+     */
     Gray = 'Gray',
+    /**
+     * @beta
+     * @remarks
+     * Green dye color.
+     *
+     */
     Green = 'Green',
+    /**
+     * @beta
+     * @remarks
+     * Light blue dye color.
+     *
+     */
     LightBlue = 'LightBlue',
+    /**
+     * @beta
+     * @remarks
+     * Lime dye color.
+     *
+     */
     Lime = 'Lime',
+    /**
+     * @beta
+     * @remarks
+     * Magenta dye color.
+     *
+     */
     Magenta = 'Magenta',
+    /**
+     * @beta
+     * @remarks
+     * Orange dye color.
+     *
+     */
     Orange = 'Orange',
+    /**
+     * @beta
+     * @remarks
+     * Pink dye color.
+     *
+     */
     Pink = 'Pink',
+    /**
+     * @beta
+     * @remarks
+     * Purple dye color.
+     *
+     */
     Purple = 'Purple',
+    /**
+     * @beta
+     * @remarks
+     * Red dye color.
+     *
+     */
     Red = 'Red',
+    /**
+     * @beta
+     * @remarks
+     * Silver dye color.
+     *
+     */
     Silver = 'Silver',
+    /**
+     * @beta
+     * @remarks
+     * White dye color.
+     *
+     */
     White = 'White',
+    /**
+     * @beta
+     * @remarks
+     * Yellow dye color.
+     *
+     */
     Yellow = 'Yellow',
 }
 
@@ -227,6 +343,7 @@ export enum EasingType {
 export enum EntityDamageCause {
     anvil = 'anvil',
     blockExplosion = 'blockExplosion',
+    campfire = 'campfire',
     charging = 'charging',
     contact = 'contact',
     drowning = 'drowning',
@@ -247,6 +364,9 @@ export enum EntityDamageCause {
     override = 'override',
     piston = 'piston',
     projectile = 'projectile',
+    ramAttack = 'ramAttack',
+    sonicBoom = 'sonicBoom',
+    soulCampfire = 'soulCampfire',
     stalactite = 'stalactite',
     stalagmite = 'stalagmite',
     starve = 'starve',
@@ -666,10 +786,30 @@ export enum WatchdogTerminateReason {
 
 /**
  * @beta
+ * Used to specify the type of weather condition within the
+ * world.
  */
 export enum WeatherType {
+    /**
+     * @beta
+     * @remarks
+     * Specifies a clear weather condition.
+     *
+     */
     Clear = 'Clear',
+    /**
+     * @beta
+     * @remarks
+     * Specifies a rain weather condition.
+     *
+     */
     Rain = 'Rain',
+    /**
+     * @beta
+     * @remarks
+     * Specifies a rain and thunder weather condition.
+     *
+     */
     Thunder = 'Thunder',
 }
 
@@ -701,7 +841,7 @@ export class Block {
      * @beta
      * @remarks
      * Returns true if this block is a liquid block - (e.g., a
-     * water block and a lava black are liquid, while an air block
+     * water block and a lava block are liquid, while an air block
      * and a stone block are not. Water logged blocks are not
      * liquid blocks).
      *
@@ -1671,10 +1811,28 @@ export class BlockType {
 
 /**
  * @beta
+ * Contains a catalog of Minecraft Block Types that are
+ * available in this world.
  */
 export class BlockTypes {
     private constructor();
+    /**
+     * @remarks
+     * Returns a BlockType object for the specified identifier.
+     *
+     * @param typeName
+     * Identifier of the block type. Should follow a namespace:id
+     * pattern, such as minecraft:dirt.
+     * @returns
+     * BlockType object, or undefined if the block type is not
+     * available within this world.
+     */
     static get(typeName: string): BlockType | undefined;
+    /**
+     * @remarks
+     * Returns a collection of all available block types.
+     *
+     */
     static getAll(): BlockType[];
 }
 
@@ -2012,11 +2170,18 @@ export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
 
 /**
  * @beta
+ * Contains methods relating to the active camera for the
+ * specified player.
  */
 export class Camera {
     private constructor();
     /**
      * @remarks
+     * Clears the active camera for the specified player. Causes
+     * the specified players to end any in-progress camera
+     * perspectives, including any eased camera motions, and return
+     * to their normal perspective.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -2024,15 +2189,26 @@ export class Camera {
     clear(): void;
     /**
      * @remarks
+     * Begins a camera fade transition. A fade transition is a
+     * full-screen color that fades-in, holds, and then fades-out.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param fadeCameraOptions
+     * Additional options around camera fade operations.
      * @throws This function can throw errors.
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
      * @remarks
+     * Sets the current active camera for the specified player.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param cameraPreset
+     * Identifier of a camera preset file defined within JSON.
+     * @param setOptions
+     * Additional options for the camera.
      * @throws This function can throw errors.
      */
     setCamera(
@@ -3503,6 +3679,11 @@ export class Dimension {
  */
 export class DimensionType {
     private constructor();
+    /**
+     * @remarks
+     * Identifier of the dimension type.
+     *
+     */
     readonly typeId: string;
 }
 
@@ -5359,7 +5540,9 @@ export class EntityGroundOffsetComponent extends EntityComponent {
     private constructor();
     /**
      * @remarks
-     * Value of this particular ground offset.
+     * Value of this particular ground offset. Note that this value
+     * is effectively read only; setting the ground offset value
+     * will not have an impact on the related entity.
      *
      * This property can't be edited in read-only mode.
      *
@@ -7652,7 +7835,6 @@ export class ItemReleaseUseAfterEventSignal {
  */
 export class ItemStack {
     /**
-     * @beta
      * @remarks
      * Number of the items in the stack. Valid values range between
      * 1-255. The provided value will be clamped to the item's
@@ -7673,7 +7855,6 @@ export class ItemStack {
      */
     readonly isStackable: boolean;
     /**
-     * @beta
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
@@ -7682,7 +7863,6 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @beta
      * @remarks
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
@@ -7700,7 +7880,6 @@ export class ItemStack {
      */
     readonly maxAmount: number;
     /**
-     * @beta
      * @remarks
      * Given name of this stack of items. The name tag is displayed
      * when hovering over the item. Setting the name tag to an
@@ -8562,6 +8741,17 @@ export class MolangVariableMap {
      * @throws This function can throw errors.
      */
     setColorRGBA(variableName: string, color: RGBA): void;
+    /**
+     * @remarks
+     * Sets a numeric (decimal) value within the Molang variable
+     * map.
+     *
+     * @param variableName
+     * Name of the float-based number to set.
+     * @param number
+     * Value for the Molang-based variable to set.
+     * @throws This function can throw errors.
+     */
     setFloat(variableName: string, number: number): void;
     /**
      * @remarks
@@ -8983,8 +9173,15 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Plays a music track that only this particular player can
+     * hear.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param trackId
+     * Identifier of the music track to play.
+     * @param musicOptions
+     * Additional options for the music track.
      * @throws This function can throw errors.
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -9038,9 +9235,20 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Queues an additional music track that only this particular
+     * player can hear. If a track is not playing, a music track
+     * will play.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param trackId
+     * Identifier of the music track to play.
+     * @param musicOptions
+     * Additional options for the music track.
+     * @throws
+     * An error will be thrown if volume is less than 0.0.
+     * An error will be thrown if fade is less than 0.0.
+     *
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -9145,6 +9353,9 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Stops any music tracks from playing for this particular
+     * player.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -9329,12 +9540,18 @@ export class PlayerDimensionChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes the specified callback to a player dimension
+     * change after event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
     /**
      * @remarks
+     * Removes the specified callback from a player dimension
+     * change after event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -9392,14 +9609,22 @@ export class PlayerDimensionChangeBeforeEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes the specified callback to player dimension change
+     * before events.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param callback
+     * Callback function to subscribe to the event.
      */
     subscribe(
         callback: (arg: PlayerDimensionChangeBeforeEvent) => void,
     ): (arg: PlayerDimensionChangeBeforeEvent) => void;
     /**
      * @remarks
+     * Removes the specified callback from being called by player
+     * dimension change before events.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -10263,6 +10488,12 @@ export class ScoreboardIdentity {
      * @throws This function can throw errors.
      */
     getEntity(): Entity | undefined;
+    /**
+     * @remarks
+     * Returns true if the ScoreboardIdentity reference is still
+     * valid.
+     *
+     */
     isValid(): boolean;
 }
 
@@ -10330,6 +10561,12 @@ export class ScoreboardObjective {
      * @throws This function can throw errors.
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
+    /**
+     * @remarks
+     * Returns true if the ScoreboardObjective reference is still
+     * valid.
+     *
+     */
     isValid(): boolean;
     /**
      * @remarks
@@ -11468,6 +11705,10 @@ export class World {
      *
      * This function can't be called in read-only mode.
      *
+     * @param trackId
+     * Identifier of the music track to play.
+     * @param musicOptions
+     * Additional options for the music track.
      * @throws
      * An error will be thrown if volume is less than 0.0.
      * An error will be thrown if fade is less than 0.0.
@@ -11715,10 +11956,17 @@ export class WorldAfterEvents {
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires when an entity is loaded.
+     *
      */
     readonly entityLoad: EntityLoadAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires when an entity is removed (for example, potentially
+     * unloaded, or removed after being killed).
+     *
      */
     readonly entityRemove: EntityRemoveAfterEventSignal;
     /**
@@ -11840,6 +12088,9 @@ export class WorldAfterEvents {
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires when a player moved to a different dimension.
+     *
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     /**
@@ -11971,6 +12222,10 @@ export class WorldBeforeEvents {
     readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires before an entity is removed from the world (for
+     * example, unloaded or removed after being killed.)
+     *
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
@@ -12020,6 +12275,9 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires before a player is about to change dimensions.
+     *
      */
     readonly playerDimensionChange: PlayerDimensionChangeBeforeEventSignal;
     /**
@@ -12287,26 +12545,64 @@ export interface CameraDefaultOptions {
 
 /**
  * @beta
+ * Contains options associated with a camera ease operation.
  */
 export interface CameraEaseOptions {
+    /**
+     * @remarks
+     * Time for the ease operation.
+     *
+     */
     easeTime?: number;
+    /**
+     * @remarks
+     * Type of ease operation to use.
+     *
+     */
     easeType?: EasingType;
 }
 
 /**
  * @beta
+ * Used to initiate a full-screen color fade.
  */
 export interface CameraFadeOptions {
+    /**
+     * @remarks
+     * Fade color to use.
+     *
+     */
     fadeColor?: RGB;
+    /**
+     * @remarks
+     * Time in seconds for the fade-in, hold, and fade-out seconds.
+     *
+     */
     fadeTime?: CameraFadeTimeOptions;
 }
 
 /**
  * @beta
+ * Contains timings for a fade transition.
  */
 export interface CameraFadeTimeOptions {
+    /**
+     * @remarks
+     * Time, in seconds, for a fade-in.
+     *
+     */
     fadeInTime: number;
+    /**
+     * @remarks
+     * Time, in seconds, for a fade-out.
+     *
+     */
     fadeOutTime: number;
+    /**
+     * @remarks
+     * Time, in seconds, to hold the full screen color.
+     *
+     */
     holdTime: number;
 }
 
