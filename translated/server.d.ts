@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.7.0-internal.1.20.40-preview.21"
+ *   "version": "1.7.0-internal.1.20.40-preview.22"
  * }
  * ```
  *
@@ -101,6 +101,16 @@ export enum CompoundBlockVolumePositionRelativity {
      *
      */
     Absolute = 1,
+}
+
+/**
+ * @beta
+ */
+export enum Difficulty {
+    Peaceful = 0,
+    Easy = 1,
+    Normal = 2,
+    Hard = 3,
 }
 
 /**
@@ -835,6 +845,10 @@ export class Block {
      * space).
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly isAir: boolean;
     /**
@@ -846,6 +860,10 @@ export class Block {
      * liquid blocks).
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly isLiquid: boolean;
     /**
@@ -856,6 +874,10 @@ export class Block {
      * ladder block and a fence block are not).
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly isSolid: boolean;
     /**
@@ -880,6 +902,10 @@ export class Block {
      * block.
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly permutation: BlockPermutation;
     /**
@@ -888,6 +914,10 @@ export class Block {
      * Gets the type of block.
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly 'type': BlockType;
     /**
@@ -896,6 +926,10 @@ export class Block {
      * Identifier of the type of block for this block.
      *
      * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     readonly typeId: string;
     /**
@@ -919,11 +953,19 @@ export class Block {
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     above(steps?: number): Block | undefined;
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     below(steps?: number): Block | undefined;
     /**
@@ -946,6 +988,12 @@ export class Block {
      * Returns `true` if the block type or permutation can be
      * placed on this block, else `false`.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
@@ -955,6 +1003,10 @@ export class Block {
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     east(steps?: number): Block | undefined;
     /**
@@ -971,6 +1023,10 @@ export class Block {
      * Returns the component object if it is present on the
      * particular block.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     getComponent(componentName: string): BlockComponent | undefined;
     /**
@@ -986,6 +1042,10 @@ export class Block {
      * Whether additional data facets of the item stack are
      * included.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack;
     /**
@@ -997,6 +1057,10 @@ export class Block {
      * Returns undefined if redstone power is not applicable to
      * this block.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
     /**
@@ -1007,6 +1071,10 @@ export class Block {
      * @returns
      * The list of tags that the block has.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
     /**
@@ -1021,6 +1089,10 @@ export class Block {
      * Returns `true` if the permutation of this block has the tag,
      * else `false`.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      * @example check_block_tags.js
      * ```typescript
      * import { world } from "@minecraft/server";
@@ -1048,11 +1120,19 @@ export class Block {
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     north(steps?: number): Block | undefined;
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     offset(offset: Vector3): Block | undefined;
     /**
@@ -1066,6 +1146,10 @@ export class Block {
      * Permutation that contains a set of property states for the
      * Block.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
@@ -1079,11 +1163,21 @@ export class Block {
      * Identifier of the type of block to apply - for example,
      * minecraft:powered_repeater.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     setType(blockType: BlockType | string): void;
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     south(steps?: number): Block | undefined;
     /**
@@ -1101,11 +1195,19 @@ export class Block {
      * Returns `true` if the block permutation data was
      * successfully set, else `false`.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
      * @beta
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     west(steps?: number): Block | undefined;
 }
@@ -1251,7 +1353,7 @@ export class BlockInventoryComponent extends BlockComponent {
      *
      * @throws This property can throw when used.
      */
-    readonly container: Container;
+    readonly container?: Container;
     static readonly componentId = 'minecraft:inventory';
 }
 
@@ -3277,6 +3379,10 @@ export class Dimension {
      * @param explosionOptions
      * Additional configurable options for the explosion.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      * @example createExplosion.ts
      * ```typescript
      *   const overworld = mc.world.getDimension("overworld");
@@ -3359,6 +3465,10 @@ export class Dimension {
      * trying to interact with a position outside of dimension
      * height range
      *
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     getBlock(location: Vector3): Block | undefined;
     /**
@@ -3482,6 +3592,13 @@ export class Dimension {
     /**
      * @beta
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
      * Runs a command synchronously using the context of the
      * broader dimenion.
      *
@@ -3499,6 +3616,8 @@ export class Dimension {
      * command. Note that in many cases, if the command does not
      * operate (e.g., a target selector found no matches), this
      * method will not throw an exception.
+     *
+     * {@link CommandError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -3554,6 +3673,10 @@ export class Dimension {
      * @returns
      * Newly created entity at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      * @example createOldHorse.ts
      * ```typescript
      *   const overworld = mc.world.getDimension("overworld");
@@ -3608,6 +3731,10 @@ export class Dimension {
      * @returns
      * Newly created item stack entity at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      * @example itemStacks.ts
      * ```typescript
      * const overworld = mc.world.getDimension('overworld');
@@ -3654,6 +3781,10 @@ export class Dimension {
      * A set of optional, customizable variables that can be
      * adjusted for this particle.
      * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      * @example spawnParticle.ts
      * ```typescript
      *   for (let i = 0; i < 100; i++) {
@@ -4810,6 +4941,10 @@ export class Entity {
      * A command result containing whether the command was
      * successful.
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link Error}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -9332,6 +9467,10 @@ export class Player extends Entity {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
@@ -9561,70 +9700,31 @@ export class PlayerDimensionChangeAfterEventSignal {
 
 /**
  * @beta
- * Contains information related to a player's dimension
- * changing.
  */
 export class PlayerDimensionChangeBeforeEvent {
     private constructor();
-    /**
-     * @remarks
-     * The dimension the player is changing from.
-     *
-     */
     readonly fromDimension: Dimension;
-    /**
-     * @remarks
-     * The location the player was at before changing dimensions.
-     *
-     */
     readonly fromLocation: Vector3;
-    /**
-     * @remarks
-     * Handle to the player that is changing dimensions.
-     *
-     */
     readonly player: Player;
-    /**
-     * @remarks
-     * The dimension that the player is changing to, property will
-     * modify dimension change request.
-     *
-     */
     readonly toDimension: Dimension;
-    /**
-     * @remarks
-     * The location the player will spawn to after changing
-     * dimensions, property will modify spawn location request.
-     *
-     */
     readonly toLocation: Vector3;
 }
 
 /**
  * @beta
- * Manages callbacks that are connected to player dimension
- * change requests.
  */
 export class PlayerDimensionChangeBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * Subscribes the specified callback to player dimension change
-     * before events.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param callback
-     * Callback function to subscribe to the event.
      */
     subscribe(
         callback: (arg: PlayerDimensionChangeBeforeEvent) => void,
     ): (arg: PlayerDimensionChangeBeforeEvent) => void;
     /**
      * @remarks
-     * Removes the specified callback from being called by player
-     * dimension change before events.
-     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -11777,6 +11877,10 @@ export class World {
      * within the overworld dimension.
      * @throws
      * Throws if the provided spawn location is out of bounds.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**

@@ -43,7 +43,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.40-preview.21"
+ *   "version": "1.2.0-internal.1.20.40-preview.22"
  * }
  * ```
  *
@@ -72,16 +72,12 @@ export class ActionFormData {
      * @remarks
      * Method that sets the body text for the modal form.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
-     *
-     * This function can't be called in read-only mode.
      *
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
@@ -101,8 +97,6 @@ export class ActionFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
-     *
-     * This function can't be called in read-only mode.
      *
      */
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
@@ -153,8 +147,6 @@ export class MessageFormData {
      * @remarks
      * Method that sets the body text for the modal form.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     /**
@@ -162,16 +154,12 @@ export class MessageFormData {
      * Method that sets the text for the first button of the
      * dialog.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
-     *
-     * This function can't be called in read-only mode.
      *
      */
     button2(text: minecraftserver.RawMessage | string): MessageFormData;
@@ -191,8 +179,6 @@ export class MessageFormData {
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
-     *
-     * This function can't be called in read-only mode.
      *
      */
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
@@ -222,8 +208,6 @@ export class ModalFormData {
      * @remarks
      * Adds a dropdown with choices to the form.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     dropdown(
         label: minecraftserver.RawMessage | string,
@@ -247,8 +231,6 @@ export class ModalFormData {
      * @remarks
      * Adds a numeric slider to the form.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     slider(
         label: minecraftserver.RawMessage | string,
@@ -261,8 +243,6 @@ export class ModalFormData {
      * @remarks
      * Adds a textbox to the form.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     textField(
         label: minecraftserver.RawMessage | string,
@@ -273,15 +253,11 @@ export class ModalFormData {
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
-     * This function can't be called in read-only mode.
-     *
      */
     title(titleText: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a toggle checkbox button to the form.
-     *
-     * This function can't be called in read-only mode.
      *
      */
     toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;

@@ -12,9 +12,9 @@ Minecraft 脚本 API 文档。
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.40-preview.21`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.40-preview.22`|
 
-游戏版本号：`1.20.40.21`
+游戏版本号：`1.20.40.22`
 
 <!-- summary end -->
 
@@ -43,7 +43,7 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
-|[@minecraft/server](#minecraftserver)|0/335|
+|[@minecraft/server](#minecraftserver)|0/336|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/80|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
@@ -57,6 +57,7 @@ Minecraft 脚本 API 文档。
 |[`BlockVolumeIntersection`](https://projectxero.top/sapi/enums/server.BlockVolumeIntersection.html)|枚举|未翻译|
 |[`CompoundBlockVolumeAction`](https://projectxero.top/sapi/enums/server.CompoundBlockVolumeAction.html)|枚举|未翻译|
 |[`CompoundBlockVolumePositionRelativity`](https://projectxero.top/sapi/enums/server.CompoundBlockVolumePositionRelativity.html)|枚举|未翻译|
+|[`Difficulty`](https://projectxero.top/sapi/enums/server.Difficulty.html)|枚举|未翻译|
 |[`Direction`](https://projectxero.top/sapi/enums/server.Direction.html)|枚举|未翻译|
 |[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|未翻译|
 |[`DyeColor`](https://projectxero.top/sapi/enums/server.DyeColor.html)|枚举|未翻译|

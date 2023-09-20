@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.40-preview.21"
+ *   "version": "1.0.0-internal.1.20.40-preview.22"
  * }
  * ```
  *
@@ -908,6 +908,7 @@ export class Tags {
      *
      */
     static readonly suiteDisabled = 'suite:disabled';
+    static readonly suiteNextUpdate = 'suite:nextupdate';
 }
 
 /**
@@ -929,6 +930,8 @@ export class Test {
      * Message that is passed if the _condition_ does not evaluate
      * to true.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assert(condition: boolean, message: string): void;
     /**
@@ -945,6 +948,8 @@ export class Test {
      * specified type is at the location. If false, tests that a
      * block of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertBlockPresent(
         blockType: minecraftserver.BlockType | string,
@@ -963,6 +968,8 @@ export class Test {
      * Callback function that contains additional tests based on
      * the block at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example testIfButtonNotPressed.js
      * ```typescript
      * test.assertBlockState(buttonPos, (block) => {
@@ -987,6 +994,8 @@ export class Test {
      * false, tests whether the mob is not able to reach the
      * location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertCanReachLocation(
         mob: minecraftserver.Entity,
@@ -1007,6 +1016,8 @@ export class Test {
      * Location of the block with a container (for example, a
      * chest) to test the contents of.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1018,6 +1029,8 @@ export class Test {
      * Location of the block with a container (for example, a
      * chest) to test is empty of contents.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertContainerEmpty(blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1040,6 +1053,8 @@ export class Test {
      * Whether or not the entity is expected to have the specified
      * armor equipped.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example horseArmorTest.js
      * ```typescript
      * test.assertEntityHasArmor("minecraft:horse", armorSlotTorso, "diamond_horse_armor", 0, horseLocation, true);
@@ -1072,6 +1087,8 @@ export class Test {
      * Determines whether to test that the component exists, or
      * does not.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example sheepShearedTest.js
      * ```typescript
      * test.assertEntityHasComponent("minecraft:sheep", "minecraft:is_sheared", entityLoc, false);
@@ -1098,6 +1115,8 @@ export class Test {
      * Whether to test that an entity is present or not present at
      * the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityInstancePresent(
         entity: minecraftserver.Entity,
@@ -1116,6 +1135,8 @@ export class Test {
      * present in the GameTest area. If false, tests that the
      * specified entity is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
      * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
@@ -1158,6 +1179,8 @@ export class Test {
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityPresent(
         entityTypeIdentifier: string,
@@ -1179,6 +1202,8 @@ export class Test {
      * specified type is present in the GameTest area. If false,
      * tests that an entity of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
      *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
@@ -1217,6 +1242,8 @@ export class Test {
      * entity with the specified identifier is found, an exception
      * is thrown.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example villagerEffectTest.js
      * ```typescript
      * test.assertEntityState(
@@ -1248,6 +1275,8 @@ export class Test {
      * the specified location. If false, tests that an entity is
      * not testing the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
     /**
@@ -1263,6 +1292,8 @@ export class Test {
      * Whether to test that the block at _position_ is expected to
      * be waterlogged.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertIsWaterlogged(blockLocation: minecraftserver.Vector3, isWaterlogged?: boolean): void;
     /**
@@ -1280,6 +1311,8 @@ export class Test {
      * @param count
      * Number of items, at minimum, to look and test for.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example findFeathers.js
      * ```typescript
      * test.assertItemEntityCountIs(Items.feather, expectedFeatherLoc, 0, 1);
@@ -1309,6 +1342,8 @@ export class Test {
      * specified type is present. If false, tests that an item
      * entity of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertItemEntityPresent(
         itemType: minecraftserver.ItemType | string,
@@ -1326,6 +1361,8 @@ export class Test {
      * @param power
      * Expected power level.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertRedstonePower(blockLocation: minecraftserver.Vector3, power: number): void;
     /**
@@ -1339,6 +1376,8 @@ export class Test {
      * @param dropResources
      * Whether to add resources exposed with a particular drop.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     destroyBlock(blockLocation: minecraftserver.Vector3, dropResources?: boolean): void;
     /**
@@ -1371,6 +1410,8 @@ export class Test {
      * @param blockLocation
      * Location of the block to retrieve.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
     /**
@@ -1378,6 +1419,8 @@ export class Test {
      * Gets the dimension of this test.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     getDimension(): minecraftserver.Dimension;
     /**
@@ -1391,6 +1434,8 @@ export class Test {
      * @param blockLocation
      * Location of the block to retrieve.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     getFenceConnectivity(blockLocation: minecraftserver.Vector3): FenceConnectivity;
     /**
@@ -1406,6 +1451,8 @@ export class Test {
      * Returns the SculkSpreader or undefined if no SculkSpreader
      * is present on the block.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;
     /**
@@ -1434,6 +1481,8 @@ export class Test {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     killAllEntities(): void;
     /**
@@ -1441,6 +1490,8 @@ export class Test {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     onPlayerJump(mob: minecraftserver.Entity, jumpAmount: number): void;
     /**
@@ -1454,6 +1505,8 @@ export class Test {
      * @throws
      * Will throw an error if a button is not present at the
      * specified position.
+     *
+     * {@link GameTestError}
      */
     pressButton(blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1465,6 +1518,8 @@ export class Test {
      * @param text
      * Message to display.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     print(text: string): void;
     /**
@@ -1478,6 +1533,8 @@ export class Test {
      * @throws
      * Will throw an error if a lever is not present at the
      * specified position.
+     *
+     * {@link GameTestError}
      */
     pullLever(blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1492,6 +1549,8 @@ export class Test {
      * @param duration
      * Number of ticks to pulse Redstone.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     pulseRedstone(blockLocation: minecraftserver.Vector3, duration: number): void;
     /**
@@ -1508,6 +1567,8 @@ export class Test {
      * @returns
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1526,6 +1587,8 @@ export class Test {
      * @returns
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1553,6 +1616,8 @@ export class Test {
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
@@ -1560,6 +1625,8 @@ export class Test {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     rotateVector(vector: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1604,6 +1671,8 @@ export class Test {
      * @param blockLocation
      * Location of the block to set.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1618,6 +1687,8 @@ export class Test {
      * @param blockLocation
      * Location of the block to set.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1633,6 +1704,8 @@ export class Test {
      * Type of fluid to set. See {@link
      * @minecraft/server-gametest.FluidType} for a list of values.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setFluidContainer(location: minecraftserver.Vector3, type: minecraftserver.FluidType): void;
     /**
@@ -1646,6 +1719,8 @@ export class Test {
      * @param fuseLength
      * Length of time, in ticks, before the entity explodes.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setTntFuse(entity: minecraftserver.Entity, fuseLength: number): void;
     /**
@@ -1663,6 +1738,8 @@ export class Test {
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
      *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
@@ -1703,6 +1780,8 @@ export class Test {
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example spawnAdultPig.js
      * ```typescript
      * test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1.5, y: 2, z: 1.5 });
@@ -1720,6 +1799,8 @@ export class Test {
      * @param location
      * Location to create the item entity at.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example spawnEmeralds.js
      * ```typescript
      * const oneEmerald = new ItemStack(MinecraftItemTypes.Emerald, 1, 0);
@@ -1741,6 +1822,8 @@ export class Test {
      * @param name
      * Name to give the new simulated player.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     spawnSimulatedPlayer(
         blockLocation: minecraftserver.Vector3,
@@ -1758,6 +1841,8 @@ export class Test {
      * @param blockLocation
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1771,6 +1856,8 @@ export class Test {
      * @param location
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
@@ -1791,6 +1878,8 @@ export class Test {
      * Direction to spread. Use the Minecraft.Direction enum to
      * specify a direction.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example spreadFromFaceTowardDirection.js
      * ```typescript
      * test.spreadFromFaceTowardDirection({ x: 1, y: 2, z: 1 }, Direction.south, Direction.down);
@@ -1916,6 +2005,8 @@ export class Test {
      * specified type is present. If false, tests that a block of
      * the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     succeedWhenBlockPresent(
         blockType: minecraftserver.BlockType | string,
@@ -1989,6 +2080,8 @@ export class Test {
      * minecraft:grow_up, minecraft:grow_down and
      * minecraft:grow_sideways.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
     /**
@@ -2020,6 +2113,8 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.Vector3, speedModifier?: number): void;
     /**
@@ -2038,6 +2133,8 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
     /**
@@ -2052,6 +2149,8 @@ export class Test {
      * @returns
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -2066,6 +2165,8 @@ export class Test {
      * @returns
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }
