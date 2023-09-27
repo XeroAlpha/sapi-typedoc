@@ -9,6 +9,7 @@
         "paths": {
             "@minecraft/server": ["./server"],
             "@minecraft/server-admin": ["./server-admin"],
+            "@minecraft/server-editor": ["./server-editor"],
             "@minecraft/server-gametest": ["./server-gametest"],
             "@minecraft/server-net": ["./server-net"],
             "@minecraft/server-ui": ["./server-ui"],
@@ -17,6 +18,7 @@
     },
     "typedocOptions": {
         "name": "@minecraft",
+        "readme": "./README.md",
         "entryPoints": ["*.d.ts"],
         "externalPattern": "",
         "customCss": "./assets/extra.css",
