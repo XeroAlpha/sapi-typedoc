@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.30-preview.24"
+ *   "version": "0.1.0-beta.1.20.40-preview.22"
  * }
  * ```
  *
@@ -303,7 +303,17 @@ export declare enum KeyboardKey {
  * Keyboard Key Actions
  */
 export declare enum KeyInputType {
+    /**
+     * @remarks
+     * Button was pressed.
+     *
+     */
     Press = 1,
+    /**
+     * @remarks
+     * Button was released.
+     *
+     */
     Release = 2,
 }
 
@@ -311,8 +321,23 @@ export declare enum KeyInputType {
  * Mouse device action categories
  */
 export declare enum MouseActionCategory {
+    /**
+     * @remarks
+     * Mouse button was used.
+     *
+     */
     Button = 1,
+    /**
+     * @remarks
+     * Mouse wheel was used.
+     *
+     */
     Wheel = 2,
+    /**
+     * @remarks
+     * Mouse was dragged.
+     *
+     */
     Drag = 3,
 }
 
@@ -337,6 +362,21 @@ export declare enum MouseInputType {
     DragStart = 5,
     Drag = 6,
     DragEnd = 7,
+}
+
+export enum PlaytestSessionResult {
+    OK = 0,
+    InvalidSessionHandle = 1,
+    SessionInfoNotFound = 2,
+    TooManyPlayers = 3,
+    WorldExportFailed = 4,
+    WorldExportBusy = 5,
+    UnsupportedScenario = 6,
+    EditorSystemFailure = 7,
+    InvalidLevelId = 8,
+    PlayerNotFound = 9,
+    ResponseTimeout = 10,
+    UnspecifiedError = 11,
 }
 
 /**
@@ -405,6 +445,20 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly builtInUIManager: BuiltInUIManager;
     readonly eventSubscriptionCache: BedrockEventSubscriptionCache;
     scratchStorage: PerPlayerStorage | undefined;
+};
+
+/**
+ * A property item which supports Vector3 properties
+ */
+export type IVector3PropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
+    updateAxisLimits(limits: {
+        minX?: number;
+        maxX?: number;
+        minY?: number;
+        maxY?: number;
+        minZ?: number;
+        maxZ?: number;
+    }): void;
 };
 
 /**
@@ -542,34 +596,7 @@ export declare class BedrockEventSubscriptionCache {
     subscribeToBedrockEvent<T extends keyof minecraftserver.WorldAfterEvents>(
         event: T,
         ...params: Parameters<minecraftserver.WorldAfterEvents[T]['subscribe']>
-    ):
-        | ((arg: minecraftserver.BlockExplodeAfterEvent) => void)
-        | ((arg: minecraftserver.ChatSendAfterEvent) => void)
-        | ((arg: minecraftserver.DataDrivenEntityTriggerAfterEvent) => void)
-        | ((arg: minecraftserver.EffectAddAfterEvent) => void)
-        | ((arg: minecraftserver.EntityDieAfterEvent) => void)
-        | ((arg: minecraftserver.EntityHealthChangedAfterEvent) => void)
-        | ((arg: minecraftserver.EntityHitBlockAfterEvent) => void)
-        | ((arg: minecraftserver.EntityHitEntityAfterEvent) => void)
-        | ((arg: minecraftserver.EntityHurtAfterEvent) => void)
-        | ((arg: minecraftserver.EntityRemoveAfterEvent) => void)
-        | ((arg: minecraftserver.EntitySpawnAfterEvent) => void)
-        | ((arg: minecraftserver.ExplosionAfterEvent) => void)
-        | ((arg: minecraftserver.ItemCompleteUseAfterEvent) => void)
-        | ((arg: minecraftserver.ItemDefinitionTriggeredAfterEvent) => void)
-        | ((arg: minecraftserver.ItemUseOnAfterEvent) => void)
-        | ((arg: minecraftserver.LeverActionAfterEvent) => void)
-        | ((arg: minecraftserver.MessageReceiveAfterEvent) => void)
-        | ((arg: minecraftserver.PistonActivateAfterEvent) => void)
-        | ((arg: minecraftserver.PlayerBreakBlockAfterEvent) => void)
-        | ((arg: minecraftserver.PlayerJoinAfterEvent) => void)
-        | ((arg: minecraftserver.PlayerSpawnAfterEvent) => void)
-        | ((arg: minecraftserver.ProjectileHitBlockAfterEvent) => void)
-        | ((arg: minecraftserver.ProjectileHitEntityAfterEvent) => void)
-        | ((arg: minecraftserver.TargetBlockHitAfterEvent) => void)
-        | ((arg: minecraftserver.TripWireTripAfterEvent) => void)
-        | ((arg: minecraftserver.WeatherChangeAfterEvent) => void)
-        | ((arg: minecraftserver.WorldInitializeAfterEvent) => void);
+    ): ReturnType<minecraftserver.WorldAfterEvents[T]['subscribe']>;
     /**
      * @remarks
      * Cleans up the set of internal registrations and
@@ -936,6 +963,7 @@ export class ExtensionContext {
      *
      */
     readonly player: minecraftserver.Player;
+    readonly playtest: PlaytestManager;
     /**
      * @remarks
      * The instance of the players Selection Manager and the main
@@ -1075,6 +1103,24 @@ export class MinecraftEditor {
         shutdownFunction: (arg: ExtensionContext) => void,
         options?: ExtensionOptionalParameters,
     ): Extension;
+}
+
+export class PlaytestManager {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    beginPlaytest(options: PlaytestGameOptions): Promise<PlaytestSessionResult>;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
 
 /**
@@ -1698,6 +1744,16 @@ export interface LogProperties {
     tags?: string[];
 }
 
+export interface PlaytestGameOptions {
+    alwaysDay?: boolean;
+    difficulty?: minecraftserver.Difficulty;
+    disableWeather?: boolean;
+    gameMode?: minecraftserver.GameMode;
+    showCoordinates?: boolean;
+    spawnPosition?: minecraftserver.Vector3;
+    timeOfDay?: number;
+}
+
 /**
  * Binds actions to the client and manages their lifetime.
  * Action managers are managed on a per player basis since
@@ -2276,7 +2332,7 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsVector3,
-    ): IPropertyItem<T, Prop>;
+    ): IVector3PropertyItem<T, Prop>;
     /**
      * @remarks
      * Collapse the pane.

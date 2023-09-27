@@ -1,9 +1,11 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, copyFileSync, writeFileSync, rmSync, readdirSync, statSync, mkdirSync, utimesSync } = require("fs");
+const { existsSync, readFileSync, writeFileSync, rmSync, readdirSync, mkdirSync } = require("fs");
 const { createRequire } = require("module");
 const { resolve: resolvePath, relative: relativePath } = require("path");
 const { URL } = require("url");
+const { Project } = require("ts-morph");
 const { build } = require("./build.js");
+const { split } = require("./split.js");
 
 const basePath = resolvePath(__dirname, "..");
 const originalPath = resolvePath(basePath, "original");
@@ -45,12 +47,6 @@ function extractVersionInfo(versionString) {
         }
         return { version, gamePreRelease, gameVersion };
     }
-}
-
-function copyFileAndUpdateTimeSync(src, dest) {
-    const now = new Date();
-    copyFileSync(src, dest);
-    utimesSync(dest, now, now);
 }
 
 function walkFiles(directory, walker) {
@@ -156,7 +152,13 @@ async function main() {
         stdio: "inherit"
     });
 
-    // 4. 复制模块 d.ts 至翻译目录
+    // 4. 复制模块 d.ts 至文件系统
+    const project = new Project({
+        tsConfigFilePath: resolvePath(translatedPath, "tsconfig.json"),
+        skipAddingFilesFromTsConfig: true
+    });
+    /** @type {import("ts-morph").SourceFile[]} */
+    const nonBotSourceFiles = [];
     const dependencies = readPackageInfo(originalPath).dependencies;
     Object.keys(dependencies).forEach((moduleName) => {
         if (moduleName.startsWith(namespacePrefix)) {
@@ -178,10 +180,12 @@ async function main() {
                 throw new Error(`Cannot find any d.ts for ${moduleName}`);
             }
             if (dtsFiles.length === 1) {
-                copyFileAndUpdateTimeSync(
-                    dtsFiles[0],
-                    resolvePath(translatedPath, `${pureModuleName}.d.ts`)
+                const sourceFile = project.createSourceFile(
+                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
+                    readFileSync(dtsFiles[0], "utf-8"),
+                    { overwrite: true }
                 );
+                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
             } else {
                 const typeEntry = resolvePath(modulePath, packageInfo.types).replace(/\.d\.ts$/i, "");
                 const commonParent = dtsFiles.map((path) => resolvePath(path, ".."))
@@ -193,18 +197,35 @@ async function main() {
                 dtsFiles.forEach((file) => {
                     const target = resolvePath(moduleRoot, relativePath(commonParent, file));
                     mkdirSync(resolvePath(target, ".."), { recursive: true });
-                    copyFileAndUpdateTimeSync(file, target);
+                    const sourceFile = project.createSourceFile(target, readFileSync(file, "utf-8"), { overwrite: true });
+                    if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
                 });
-                writeFileSync(resolvePath(translatedPath, `${pureModuleName}.d.ts`), exportStatement);
+                const indexSourceFile = project.createSourceFile(
+                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
+                    exportStatement,
+                    { overwrite: true }
+                );
+                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(indexSourceFile);
             }
             dependencies[moduleName] = version;
         }
     });
+    project.saveSync();
 
-    // 5. 生成一次文档
-    const project = await build();
+    // 5. 按类切分文件
+    nonBotSourceFiles.forEach((sourceFile) => {
+        const pieces = split(sourceFile);
+        const sourceFileText = sourceFile.getFullText();
+        pieces.forEach((piece) => {
+            mkdirSync(resolvePath(piece.path, ".."), { recursive: true });
+            writeFileSync(piece.path, sourceFileText.slice(piece.start, piece.end));
+        });
+    });
 
-    // 6. 生成 README.md 。
+    // 6. 生成一次文档
+    const tsdocProject = await build();
+
+    // 7. 生成 README.md 。
     const readMePath = resolvePath(translatedPath, "README.md");
     const readMe = readFileSync(readMePath, "utf-8");
 
@@ -236,7 +257,7 @@ async function main() {
         "| - | - |"
     ];
     const statusLines = [];
-    project.children.forEach((moduleRef) => {
+    tsdocProject.children.forEach((moduleRef) => {
         const moduleFullName = namespacePrefix + moduleRef.name;
         if (botModules.includes(moduleFullName)) return;
         const linkHref = moduleFullName.replace(/[@\/]/g, "");
@@ -261,7 +282,7 @@ async function main() {
         .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
     writeFileSync(readMePath, newReadMe);
 
-    // 7. 生成 package.json 快照
+    // 8. 生成 package.json 快照
     const packageSnapshotPath = resolvePath(translatedPath, "package.json");
     writeFileSync(packageSnapshotPath, JSON.stringify({ dependencies }, null, 2));
 }
