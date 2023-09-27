@@ -154,8 +154,8 @@ async function build(translated) {
             }
         });
         runHooks("afterTranslate", { project, sourceFiles, dependencies });
-        project.saveSync();
     }
+    project.saveSync();
 
     const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins({
         tsconfig: tsConfigFilePath,

@@ -6,15 +6,16 @@ Minecraft 脚本 API 文档。
 
 |模块|版本|
 | - | - |
+|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.0.0-rc`|
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.7.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.40-preview.22`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.40-preview.23`|
 
-游戏版本号：`1.20.40.22`
+游戏版本号：`1.20.40.23`
 
 <!-- summary end -->
 
@@ -43,12 +44,21 @@ Minecraft 脚本 API 文档。
 
 |模块|进度|
 | - | - |
+|[@minecraft/common](#minecraftcommon)|0/3|
 |[@minecraft/server](#minecraftserver)|0/336|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/84|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
 |[@minecraft/server-ui](#minecraftserver-ui)|0/10|
+
+### @minecraft/common
+
+|名称|类型|状态|
+| - | - | - |
+|[`ArgumentOutOfBoundsError`](https://projectxero.top/sapi/classes/common.ArgumentOutOfBoundsError.html)|类|未翻译|
+|[`EngineError`](https://projectxero.top/sapi/classes/common.EngineError.html)|类|未翻译|
+|[`InvalidArgumentError`](https://projectxero.top/sapi/classes/common.InvalidArgumentError.html)|类|未翻译|
 
 ### @minecraft/server
 
@@ -284,8 +294,6 @@ Minecraft 脚本 API 文档。
 |[`PlayerBreakBlockBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PlayerBreakBlockBeforeEventSignal.html)|类|未翻译|
 |[`PlayerDimensionChangeAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerDimensionChangeAfterEvent.html)|类|未翻译|
 |[`PlayerDimensionChangeAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerDimensionChangeAfterEventSignal.html)|类|未翻译|
-|[`PlayerDimensionChangeBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerDimensionChangeBeforeEvent.html)|类|未翻译|
-|[`PlayerDimensionChangeBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PlayerDimensionChangeBeforeEventSignal.html)|类|未翻译|
 |[`PlayerInteractWithBlockAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerInteractWithBlockAfterEvent.html)|类|未翻译|
 |[`PlayerInteractWithBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerInteractWithBlockAfterEventSignal.html)|类|未翻译|
 |[`PlayerInteractWithBlockBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerInteractWithBlockBeforeEvent.html)|类|未翻译|
@@ -299,6 +307,8 @@ Minecraft 脚本 API 文档。
 |[`PlayerJoinAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerJoinAfterEventSignal.html)|类|未翻译|
 |[`PlayerLeaveAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerLeaveAfterEvent.html)|类|未翻译|
 |[`PlayerLeaveAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerLeaveAfterEventSignal.html)|类|未翻译|
+|[`PlayerLeaveBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerLeaveBeforeEvent.html)|类|未翻译|
+|[`PlayerLeaveBeforeEventSignal`](https://projectxero.top/sapi/classes/server.PlayerLeaveBeforeEventSignal.html)|类|未翻译|
 |[`PlayerPlaceBlockAfterEvent`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockAfterEvent.html)|类|未翻译|
 |[`PlayerPlaceBlockAfterEventSignal`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockAfterEventSignal.html)|类|未翻译|
 |[`PlayerPlaceBlockBeforeEvent`](https://projectxero.top/sapi/classes/server.PlayerPlaceBlockBeforeEvent.html)|类|未翻译|

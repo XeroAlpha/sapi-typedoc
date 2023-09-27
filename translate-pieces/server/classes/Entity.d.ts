@@ -668,6 +668,11 @@ export class Entity {
     kill(): boolean;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    matches(options: EntityQueryOptions): boolean;
+    /**
+     * @beta
      * @remarks
      * Cause the entity to play the given animation.
      *
@@ -741,6 +746,10 @@ export class Entity {
      * returned.
      * @throws
      * Throws if the entity is invalid.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
      */
     resetProperty(identifier: string): boolean | number | string;
     /**

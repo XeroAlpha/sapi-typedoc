@@ -1,14 +1,13 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, writeFileSync, rmSync, readdirSync, mkdirSync } = require("fs");
-const { createRequire } = require("module");
-const { resolve: resolvePath, relative: relativePath } = require("path");
+const { readFileSync, writeFileSync, rmSync, mkdirSync } = require("fs");
+const { resolve: resolvePath } = require("path");
 const { URL } = require("url");
-const { Project } = require("ts-morph");
 const { build } = require("./build.js");
 const { split } = require("./split.js");
 
 const basePath = resolvePath(__dirname, "..");
 const originalPath = resolvePath(basePath, "original");
+const translatingPath = resolvePath(basePath, "translate-pieces");
 const translatedPath = resolvePath(basePath, "translated");
 
 const namespacePrefix = "@minecraft/";
@@ -114,6 +113,7 @@ async function main() {
     project.saveSync();
 
     // 5. 按类切分文件
+    rmSync(translatingPath, { recursive: true, force: true });
     sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
         const sourceFileText = sourceFile.getFullText();

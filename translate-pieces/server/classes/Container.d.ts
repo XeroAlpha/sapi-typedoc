@@ -38,7 +38,7 @@ export class Container {
      * The stack of items to add.
      * @throws This function can throw errors.
      */
-    addItem(itemStack: ItemStack): ItemStack;
+    addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
      * @remarks
      * Clears all inventory items in the container.
@@ -185,5 +185,5 @@ export class Container {
      * fromInventory.container.transferItem(0, toInventory.container);
      * ```
      */
-    transferItem(fromSlot: number, toContainer: Container): ItemStack;
+    transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }

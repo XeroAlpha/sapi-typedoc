@@ -222,7 +222,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getItemStack(amount?: number, withData?: boolean): ItemStack;
+    getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
      * @beta
      * @remarks
