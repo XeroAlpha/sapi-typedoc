@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.19.80-preview.21"
+ *   "version": "1.0.0-beta.1.20.40-preview.22"
  * }
  * ```
  *
@@ -28,18 +28,20 @@
  * secret string. The contents of that string are not available
  * to script; this object is just a placeholder.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class SecretString {
     constructor(value: string);
 }
+
 /**
  * A collection of server secrets defined in dedicated server
  * configuration.
  */
 export class ServerSecrets {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * A list of available, configured server secrets.
+     *
      */
     readonly names: string[];
     /**
@@ -48,35 +50,47 @@ export class ServerSecrets {
      * configured in a JSON file. In certain objects, like an
      * HttpHeader, this Secret is resolved at the time of execution
      * but is not made available to the script environment.
-     * @param name
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     get(name: string): SecretString | undefined;
 }
+
 /**
  * A collection of server variables defined in dedicated server
  * configuration.
  */
 export class ServerVariables {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * A list of available, configured server variables.
+     *
      */
     readonly names: string[];
     /**
      * @remarks
      * Returns the value of variable that has been configured in a
      * dedicated server configuration JSON file.
-     * @param name
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     get(name: string): any | undefined;
 }
+
 /**
+ * @remarks
  * A globally available object that returns a list of
  * dedicated-server configured secrets.
+ *
  */
 export const secrets: ServerSecrets;
 /**
+ * @remarks
  * A globally available object that returns a list of
  * dedicated-server configured variables.
+ *
  */
 export const variables: ServerVariables;

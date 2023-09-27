@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Build
+      run: |
+        npm run build
+
+    - name: Deploy
+      run: |
+        cd ./dist
+        tar -cvzf ../sapi-doc.tar.gz *
+        cd ..
+        echo "${{ secrets.SSH_KEY }}" > key.txt
+        chmod 400 key.txt
+        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt ./sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":${{ secrets.TARGET_PATH }}/sapi-doc.tar.gz
+        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "cd ${{ secrets.TARGET_PATHL }} && tar -xvzf ./sapi-doc.tar.gz && rm ./sapi-doc.tar.gz"
+        rm key.txt

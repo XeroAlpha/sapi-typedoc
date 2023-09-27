@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.19.80-preview.21"
+ *   "version": "1.0.0-internal.1.20.40-preview.22"
  * }
  * ```
  *
@@ -35,45 +35,58 @@ export enum GameTestErrorType {
     Unknown = 'Unknown',
     Waiting = 'Waiting',
 }
+
 /**
  * Returns information about whether this fence is connected to
  * other fences in several directions.
  */
 export class FenceConnectivity {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * Represents whether this fence block is connected to another
      * fence to the east (x + 1).
+     *
      */
     readonly east: boolean;
     /**
+     * @remarks
      * Represents whether this fence block is connected to another
      * fence to the north (z - 1).
+     *
      */
     readonly north: boolean;
     /**
+     * @remarks
      * Represents whether this fence block is connected to another
      * fence to the south (z + 1).
+     *
      */
     readonly south: boolean;
     /**
+     * @remarks
      * Represents whether this fence block is connected to another
      * fence to the west (x - 1).
+     *
      */
     readonly west: boolean;
 }
+
 /**
  * Executes a set of steps defined via chained .thenXyz
  * methods, sequentially. This facilitates a 'script' of
  * GameTest setup methods and assertions over time.
  */
 export class GameTestSequence {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Runs the given callback as a step within a GameTest
      * sequence. Exceptions thrown within the callback will end
      * sequence execution.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Callback function to execute.
      * @returns
@@ -86,6 +99,9 @@ export class GameTestSequence {
      * After a delay, runs the given callback as a step within a
      * GameTest sequence. Exceptions thrown within the callback
      * will end sequence execution.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param delayTicks
      * Number of ticks to wait before executing the callback.
      * @param callback
@@ -99,7 +115,9 @@ export class GameTestSequence {
      * @remarks
      * Runs the given callback every tick for the given number of
      * ticks.
-     * @param tickCount
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Callback function to execute.
      * @returns
@@ -111,6 +129,9 @@ export class GameTestSequence {
      * @remarks
      * Causes the test to fail if this step in the GameTest
      * sequence is reached.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param errorMessage
      * Error message summarizing the failure condition.
      */
@@ -118,6 +139,9 @@ export class GameTestSequence {
     /**
      * @remarks
      * Idles the GameTest sequence for the specified delayTicks.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param delayTicks
      * Number of ticks to delay for this step in the GameTest
      * sequence.
@@ -130,6 +154,9 @@ export class GameTestSequence {
      * @remarks
      * Marks the GameTest a success if this step is reached in the
      * GameTest sequence.
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     thenSucceed(): void;
     /**
@@ -137,6 +164,9 @@ export class GameTestSequence {
      * Executes the given callback every tick until it succeeds.
      * Exceptions thrown within the callback will end sequence
      * execution.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Testing callback function to execute. Typically, this
      * function will have .assertXyz functions within it.
@@ -150,6 +180,9 @@ export class GameTestSequence {
      * After a delay from the previous step, executes the given
      * callback every tick until it succeeds. Exceptions thrown
      * within the callback will end sequence execution.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param delayTicks
      * Tick (after the previous step in the GameTest sequence) to
      * run the callback at.
@@ -162,27 +195,33 @@ export class GameTestSequence {
      */
     thenWaitAfter(delayTicks: number, callback: () => void): GameTestSequence;
 }
+
 /**
  * A utility class to set GameTest parameters for a test.
  * Methods can be chained together to set multiple properties.
  */
 export class RegistrationBuilder {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Sets the batch for the test to run in.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param batchName
      * Name of the batch for the test.
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
      */
-    batch(batchName: 'night' | 'day'): RegistrationBuilder;
+    batch(batchName: string): RegistrationBuilder;
     /**
      * @remarks
      * Sets the maximum number of times a test will try to rerun if
      * it fails.
-     * @param attemptCount
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -192,7 +231,9 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the maximum number of ticks a test will run for before
      * timing out and failing.
-     * @param tickCount
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -202,6 +243,9 @@ export class RegistrationBuilder {
      * @remarks
      * Size around the GameTest, in blocks, that should be reserved
      * for the test when running multiple tests together.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param paddingBlocks
      * Size, in blocks, around the GameTest where additional
      * GameTests should not be created.
@@ -214,6 +258,9 @@ export class RegistrationBuilder {
      * @remarks
      * Whether this test is required to pass as part of its broader
      * set of tests.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param isRequired
      * If set to true, the test must pass in order for the entire
      * run of tests to pass.
@@ -226,7 +273,9 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the number of successful test runs to be considered
      * successful.
-     * @param attemptCount
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -236,14 +285,18 @@ export class RegistrationBuilder {
      * @remarks
      * If true, runs the test in all four rotations when run via
      * /gametest runset.
-     * @param rotate
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
     /**
      * @remarks
      * Sets the number of ticks for a test to wait before executing
      * when the structure is spawned.
-     * @param tickCount
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -254,7 +307,9 @@ export class RegistrationBuilder {
      * Sets the name of the structure for a test to use. "xyz:bar"
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
-     * @param structureName
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -264,22 +319,27 @@ export class RegistrationBuilder {
      * @remarks
      * Adds a tag to a test. You can run all tests with a given tag
      * with `/gametest runset <tag>`.
-     * @param tag
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
      */
     tag(tag: string): RegistrationBuilder;
 }
+
 /**
  * Implements a class that can be used for testing sculk
  * spreading behaviors. This sculk spreader class can drive the
  * growth of sculk around a particular block.
  */
 export class SculkSpreader {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * Gets the maximum charge of a sculk spreader.
+     *
      * @throws This property can throw when used.
      */
     readonly maxCharge: number;
@@ -287,44 +347,65 @@ export class SculkSpreader {
      * @remarks
      * Adds a cursor - which is a notional waypoint that the sculk
      * will spread in the direction of.
-     * @param offset
-     * @param charge
+     *
+     * This function can't be called in read-only mode.
+     *
      */
     addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
     /**
      * @remarks
      * Retrieves the current position of the specified cursor.
-     * @param index
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     getCursorPosition(index: number): minecraftserver.Vector3;
     /**
      * @remarks
      * Returns a number of overall cursors for this sculk spreader.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     getNumberOfCursors(): number;
     /**
      * @remarks
      * Gets the total current charge of the sculk spreader.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     getTotalCharge(): number;
 }
+
 /**
  * A simulated player can be used within GameTests to represent
  * how a player moves throughout the world and to support
  * testing of how entities and the environment will react to a
  * player. This type derives much of its structure and methods
- * from the {@link @minecraft/server.Player} type.
+ * from the {@link @minecraft/server.Player} type. Note that
+ * many types of events that may be available for entities more
+ * broadly, such as item use events, may not fire in the same
+ * capacity for simulated players.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class SimulatedPlayer extends minecraftserver.Player {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * Rotation of the head across pitch and yaw angles.
+     *
      * @throws This property can throw when used.
      */
-    readonly headRotation: minecraftserver.XYRotation;
+    readonly headRotation: minecraftserver.Vector2;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
     isSprinting: boolean;
     /**
      * @remarks
@@ -332,6 +413,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Returns true if the attack was performed - for example, the
      * player was not on cooldown and had a valid target. Target
      * selection is performed by raycasting from the player's head.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     attack(): boolean;
@@ -342,7 +426,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player was not on cooldown and had a valid target. The
      * attack can be performed at any distance and does not require
      * line of sight to the target entity.
-     * @param entity
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     attackEntity(entity: minecraftserver.Entity): boolean;
@@ -352,6 +438,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * the server player's game mode. The block will be hit until
      * broken, an item is used or stopBreakingBlock is called.
      * Returns true if the block at blockLocation is solid.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to interact with.
      * @param direction
@@ -361,14 +450,43 @@ export class SimulatedPlayer extends minecraftserver.Player {
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    chat(message: string): void;
+    /**
+     * @remarks
      * Simulates and performs a disconnection of the simulated
      * player from the world.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     disconnect(): void;
     /**
      * @remarks
+     * Drops the simulated player's selected item
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    dropSelectedItem(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    fly(): void;
+    /**
+     * @remarks
      * Gives the simulated player a particular item stack.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param itemStack
      * Item to give.
      * @param selectSlot
@@ -378,9 +496,19 @@ export class SimulatedPlayer extends minecraftserver.Player {
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    glide(): boolean;
+    /**
+     * @remarks
      * Performs a raycast from the player’s head and interacts with
      * the first intersected block or entity. Returns true if the
      * interaction was successful. Maximum range is 6 blocks.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     interact(): boolean;
@@ -389,6 +517,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to interact with a block. The
      * block at the specified block location must be solid. Returns
      * true if the interaction was performed.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to interact with.
      * @param direction
@@ -400,6 +531,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to interact with a mob. Returns
      * true if the interaction was performed.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entity
      * Entity to interact with.
      * @throws This function can throw errors.
@@ -408,6 +542,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
     /**
      * @remarks
      * Causes the simulated player to jump.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * True if a jump was performed.
      * @throws This function can throw errors.
@@ -417,7 +554,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given block location.
-     * @param blockLocation
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3): void;
@@ -425,7 +564,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given entity.
-     * @param entity
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     lookAtEntity(entity: minecraftserver.Entity): void;
@@ -433,7 +574,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given location.
-     * @param location
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     lookAtLocation(location: minecraftserver.Vector3): void;
@@ -441,9 +584,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the GameTest.
-     * @param westEast
-     * @param northSouth
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     move(westEast: number, northSouth: number, speed?: number): void;
@@ -451,9 +594,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the player's current rotation.
-     * @param leftRight
-     * @param backwardForward
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
@@ -463,8 +606,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * location in a straight line. If a move or navigation is
      * already playing, this will override the last
      * move/navigation.
-     * @param blockLocation
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     moveToBlock(blockLocation: minecraftserver.Vector3, speed?: number): void;
@@ -473,8 +617,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to move to the given location in
      * a straight line. If a move or navigation is already playing,
      * this will override the last move/navigation.
-     * @param location
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     moveToLocation(location: minecraftserver.Vector3, speed?: number): void;
@@ -486,8 +631,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * that if the simulated player gets stuck, that simulated
      * player will stop. The player must be touching the ground in
      * order to start navigation.
-     * @param blockLocation
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
@@ -496,8 +642,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Will use navigation to follow the selected entity to within
      * a one block radius. If a move or navigation is already
      * playing, this will override the last move/navigation.
-     * @param entity
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): minecraftserver.NavigationResult;
@@ -509,8 +656,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * the simulated player gets stuck, that simulated player will
      * stop. The player must be touching the ground in order to
      * start navigation.
-     * @param location
-     * @param speed
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
@@ -519,6 +667,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Use navigation to follow the route provided via the
      * locations parameter. If a move or navigation is already
      * playing, this will override the last move/navigation.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param locations
      * A list of locations to use for routing.
      * @param speed
@@ -529,6 +680,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
     /**
      * @remarks
      * Respawns the particular simulated player.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     respawn(): boolean;
@@ -536,7 +690,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to turn by the provided angle,
      * relative to the player's current rotation.
-     * @param angleInDegrees
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     rotateBody(angleInDegrees: number): void;
@@ -544,7 +700,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to turn to face the provided
      * angle, relative to the GameTest.
-     * @param angleInDegrees
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     setBodyRotation(angleInDegrees: number): void;
@@ -552,6 +710,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Sets the game mode that the simulated player is operating
      * under.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param gameMode
      * Game mode to set.
      * @throws This function can throw errors.
@@ -560,6 +721,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
     /**
      * @remarks
      * Sets a particular item for the simulated player.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param itemStack
      * Item to set.
      * @param slot
@@ -572,12 +736,32 @@ export class SimulatedPlayer extends minecraftserver.Player {
     /**
      * @remarks
      * Stops destroying the block that is currently being hit.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     stopBreakingBlock(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopFlying(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopGliding(): void;
+    /**
+     * @remarks
      * Stops interacting with entities or blocks.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     stopInteracting(): void;
@@ -585,19 +769,42 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops moving/walking/following if the simulated player is
      * moving.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     stopMoving(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    stopSwimming(): void;
+    /**
+     * @remarks
      * Stops using the currently active item.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     stopUsingItem(): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    swim(): void;
+    /**
+     * @remarks
      * Causes the simulated player to use an item. Does not consume
      * the item. Returns false if the item is on cooldown.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param itemStack
      * Item to use.
      * @throws This function can throw errors.
@@ -607,6 +814,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to hold and use an item in their
      * inventory.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param slot
      * Index of the inventory slot.
      * @throws This function can throw errors.
@@ -617,78 +827,90 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to use an item in their
      * inventory on a block. The block at the specified block
      * location must be solid. Returns true if the item was used.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param slot
      * Index of the slot to use.
      * @param blockLocation
      * Location to use the item upon.
      * @param direction
      * Direction to place the specified item within.
-     * @param faceLocationX
-     * Block-face-relative X position where to place the item.
-     * @param faceLocationY
-     * Block-face-relative Y position where to place the item.
+     * @param faceLocation
+     * Location relative to the bottom north-west corner of the
+     * block where the item is placed.
      * @throws This function can throw errors.
      */
     useItemInSlotOnBlock(
         slot: number,
         blockLocation: minecraftserver.Vector3,
         direction?: minecraftserver.Direction,
-        faceLocationX?: number,
-        faceLocationY?: number,
+        faceLocation?: minecraftserver.Vector3,
     ): boolean;
     /**
      * @remarks
      * Causes the simulated player to use an item on a block. The
      * block at the specified block location must be solid. Returns
      * true if the item was used.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param itemStack
      * Item to use.
      * @param blockLocation
      * Location to use the item upon.
      * @param direction
      * Direction to place the specified item within.
-     * @param faceLocationX
-     * Block-face-relative X position where to place the item.
-     * @param faceLocationY
-     * Block-face-relative Y position where to place the item.
+     * @param faceLocation
+     * Location relative to the bottom north-west corner of the
+     * block where the item is placed.
      * @throws This function can throw errors.
      */
     useItemOnBlock(
         itemStack: minecraftserver.ItemStack,
         blockLocation: minecraftserver.Vector3,
         direction?: minecraftserver.Direction,
-        faceLocationX?: number,
-        faceLocationY?: number,
+        faceLocation?: minecraftserver.Vector3,
     ): boolean;
 }
+
 /**
  * These well-known tags can be used to classify different
  * tests into suites to run.
  */
-// tslint:disable-next-line:no-unnecessary-class
 export class Tags {
-    protected constructor();
+    private constructor();
     /**
+     * @remarks
      * Indicates that the tagged test should be a part of all
      * suites.
+     *
      */
     static readonly suiteAll = 'suite:all';
     /**
+     * @remarks
      * Indicates that the tagged test should be a part of an
      * internal (debug) test suite.
+     *
      */
     static readonly suiteDebug = 'suite:debug';
     /**
+     * @remarks
      * Indicates that the tagged test should be a part of the
      * default test suite.
+     *
      */
     static readonly suiteDefault = 'suite:default';
     /**
+     * @remarks
      * Indicates that the tagged test should be a part of a suite
      * of disabled tests.
+     *
      */
     static readonly suiteDisabled = 'suite:disabled';
+    static readonly suiteNextUpdate = 'suite:nextupdate';
 }
+
 /**
  * Main class for GameTest functions, with helpers and data for
  * manipulating the respective test. Note that all methods of
@@ -696,23 +918,27 @@ export class Tags {
  * the GameTest structure block.
  */
 export class Test {
-    protected constructor();
+    private constructor();
     /**
      * @remarks
      * Tests that the condition specified in _condition_ is true.
      * If not, an error with the specified _message_ is thrown.
+     *
      * @param condition
      * Expression of the condition to evaluate.
      * @param message
      * Message that is passed if the _condition_ does not evaluate
      * to true.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assert(condition: boolean, message: string): void;
     /**
      * @remarks
      * Tests that a block of the specified type is present at the
      * specified location. If it is not, an exception is thrown.
+     *
      * @param blockType
      * Expected block type.
      * @param blockLocation
@@ -722,9 +948,11 @@ export class Test {
      * specified type is at the location. If false, tests that a
      * block of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertBlockPresent(
-        blockType: minecraftserver.BlockType,
+        blockType: minecraftserver.BlockType | string,
         blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
@@ -733,18 +961,20 @@ export class Test {
      * Tests that a block has a particular state value at the
      * specified location. If it does not have that state value, an
      * exception is thrown.
+     *
      * @param blockLocation
      * Location of the block to test at.
      * @param callback
      * Callback function that contains additional tests based on
      * the block at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example testIfButtonNotPressed.js
      * ```typescript
-     *        test.assertBlockState(buttonPos, (block) => {
-     *          return block.permutation.getProperty("button_pressed_bit") == 0;
-     *        });
-     *
+     * test.assertBlockState(buttonPos, (block) => {
+     *   return block.permutation.getProperty("button_pressed_bit") == 0;
+     * });
      * ```
      */
     assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
@@ -753,6 +983,7 @@ export class Test {
      * Tests that an entity can reach a particular location.
      * Depending on the value of canReach, throws an exception if
      * the condition is not met.
+     *
      * @param mob
      * Entity that you wish to test the location against.
      * @param blockLocation
@@ -763,6 +994,8 @@ export class Test {
      * false, tests whether the mob is not able to reach the
      * location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertCanReachLocation(
         mob: minecraftserver.Entity,
@@ -774,6 +1007,7 @@ export class Test {
      * Tests that a container (e.g., a chest) at the specified
      * location contains a specified of item stack. If not, an
      * error is thrown.
+     *
      * @param itemStack
      * Represents the type of item to check for. The specified
      * container must contain at least 1 item matching the item
@@ -782,22 +1016,28 @@ export class Test {
      * Location of the block with a container (for example, a
      * chest) to test the contents of.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
      * location is empty. If not, an error is thrown.
+     *
      * @param blockLocation
      * Location of the block with a container (for example, a
      * chest) to test is empty of contents.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertContainerEmpty(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Tests that an entity has a specific piece of armor equipped.
      * If not, an error is thrown.
+     *
      * @param entityTypeIdentifier
      * Identifier of the entity to match (e.g.,
      * 'minecraft:skeleton').
@@ -813,10 +1053,11 @@ export class Test {
      * Whether or not the entity is expected to have the specified
      * armor equipped.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example horseArmorTest.js
      * ```typescript
-     *        test.assertEntityHasArmor("minecraft:horse", armorSlotTorso, "diamond_horse_armor", 0, horseLocation, true);
-     *
+     * test.assertEntityHasArmor("minecraft:horse", armorSlotTorso, "diamond_horse_armor", 0, horseLocation, true);
      * ```
      */
     assertEntityHasArmor(
@@ -831,6 +1072,7 @@ export class Test {
      * @remarks
      * Tests that an entity has a particular component. If not, an
      * exception is thrown.
+     *
      * @param entityTypeIdentifier
      * Identifier of the specified entity (e.g.,
      * 'minecraft:skeleton'). If the namespace is not specified,
@@ -845,10 +1087,11 @@ export class Test {
      * Determines whether to test that the component exists, or
      * does not.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example sheepShearedTest.js
      * ```typescript
-     *        test.assertEntityHasComponent("minecraft:sheep", "minecraft:is_sheared", entityLoc, false);
-     *
+     * test.assertEntityHasComponent("minecraft:sheep", "minecraft:is_sheared", entityLoc, false);
      * ```
      */
     assertEntityHasComponent(
@@ -863,6 +1106,7 @@ export class Test {
      * particular entity is present or not present at the specified
      * location. Depending on the value of isPresent, if the entity
      * is found or not found, an error is thrown.
+     *
      * @param entity
      * Specific entity to test for.
      * @param blockLocation
@@ -871,6 +1115,8 @@ export class Test {
      * Whether to test that an entity is present or not present at
      * the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityInstancePresent(
         entity: minecraftserver.Entity,
@@ -881,6 +1127,7 @@ export class Test {
      * @remarks
      * Tests that an entity instance is present within the GameTest
      * area. If not, an exception is thrown.
+     *
      * @param entity
      * Entity instance to test for.
      * @param isPresent
@@ -888,24 +1135,25 @@ export class Test {
      * present in the GameTest area. If false, tests that the
      * specified entity is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *          const attackerId = "fox";
-     *          const victimId = "chicken";
+     * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *   const attackerId = "fox";
+     *   const victimId = "chicken";
      *
-     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *          let victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     *   test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *   let victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *          test.assertEntityInstancePresentInArea(victim, true);
+     *   test.assertEntityInstancePresentInArea(victim, true);
      *
-     *          test.succeedWhen(() => {
-     *            test.assertEntityInstancePresentInArea(victim, false);
-     *          });
-     *        })
-     *          .maxTicks(400)
-     *          .structureName("gametests:mediumglass");
-     *
+     *   test.succeedWhen(() => {
+     *     test.assertEntityInstancePresentInArea(victim, false);
+     *   });
+     * })
+     *   .maxTicks(400)
+     *   .structureName("gametests:mediumglass");
      *
      * ```
      */
@@ -916,6 +1164,7 @@ export class Test {
      * or non-presence of entity of a specified type at a
      * particular location. If the condition is not met, an
      * exception is thrown.
+     *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
      * an entity namespace is not specified, 'minecraft:' is
@@ -930,6 +1179,8 @@ export class Test {
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityPresent(
         entityTypeIdentifier: string,
@@ -941,6 +1192,7 @@ export class Test {
      * @remarks
      * Tests that an entity of a specified type is present within
      * the GameTest area. If not, an exception is thrown.
+     *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
      * an entity namespace is not specified, 'minecraft:' is
@@ -950,25 +1202,25 @@ export class Test {
      * specified type is present in the GameTest area. If false,
      * tests that an entity of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *          const attackerId = "fox";
-     *          const victimId = "chicken";
+     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *     const attackerId = "fox";
+     *     const victimId = "chicken";
      *
-     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *          test.assertEntityPresentInArea(victimId, true);
+     *     test.assertEntityPresentInArea(victimId, true);
      *
-     *          test.succeedWhen(() => {
-     *            test.assertEntityPresentInArea(victimId, false);
-     *          });
-     *        })
-     *          .maxTicks(400)
-     *          .structureName("gametests:mediumglass");
-     *
-     *
+     *     test.succeedWhen(() => {
+     *       test.assertEntityPresentInArea(victimId, false);
+     *     });
+     *   })
+     *     .maxTicks(400)
+     *     .structureName("gametests:mediumglass");
      * ```
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
@@ -977,6 +1229,7 @@ export class Test {
      * Tests that an entity (e.g., a skeleton) at the specified
      * location has a particular piece of data. If not, an error is
      * thrown.
+     *
      * @param blockLocation
      * Location of the entity to look for.
      * @param entityTypeIdentifier
@@ -989,14 +1242,15 @@ export class Test {
      * entity with the specified identifier is found, an exception
      * is thrown.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example villagerEffectTest.js
      * ```typescript
-     *        test.assertEntityState(
-     *          villagerPos,
-     *          "minecraft:villager_v2",
-     *          (entity) => entity.getEffect(MinecraftEffectTypes.regeneration).duration > 120
-     *        ); // At least 6 seconds remaining in the villagers' effect
-     *
+     * test.assertEntityState(
+     *   villagerPos,
+     *   "minecraft:villager_v2",
+     *   (entity) => entity.getEffect(MinecraftEffectTypes.Regeneration).duration > 120
+     * ); // At least 6 seconds remaining in the villagers' effect
      * ```
      */
     assertEntityState(
@@ -1009,6 +1263,7 @@ export class Test {
      * Depending on the value of isTouching, tests that an entity
      * of a specified type is touching or connected to another
      * entity. If the condition is not met, an exception is thrown.
+     *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
      * an entity namespace is not specified, 'minecraft:' is
@@ -1020,6 +1275,8 @@ export class Test {
      * the specified location. If false, tests that an entity is
      * not testing the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
     /**
@@ -1028,18 +1285,22 @@ export class Test {
      * at a location contains water. If the condition is not met,
      * an error is thrown. Pure water blocks are not considered to
      * be waterlogged.
+     *
      * @param blockLocation
      * Location of the block to test for.
      * @param isWaterlogged
      * Whether to test that the block at _position_ is expected to
      * be waterlogged.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertIsWaterlogged(blockLocation: minecraftserver.Vector3, isWaterlogged?: boolean): void;
     /**
      * @remarks
      * Tests that items of a particular type and count are present
      * within an area. If not, an error is thrown.
+     *
      * @param itemType
      * Type of item to look for.
      * @param blockLocation
@@ -1050,14 +1311,15 @@ export class Test {
      * @param count
      * Number of items, at minimum, to look and test for.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example findFeathers.js
      * ```typescript
-     *        test.assertItemEntityCountIs(Items.feather, expectedFeatherLoc, 0, 1);
-     *
+     * test.assertItemEntityCountIs(Items.feather, expectedFeatherLoc, 0, 1);
      * ```
      */
     assertItemEntityCountIs(
-        itemType: minecraftserver.ItemType,
+        itemType: minecraftserver.ItemType | string,
         blockLocation: minecraftserver.Vector3,
         searchDistance: number,
         count: number,
@@ -1068,6 +1330,7 @@ export class Test {
      * particular item entity is present or not at a particular
      * location. If the condition is not met, an exception is
      * thrown.
+     *
      * @param itemType
      * Type of item to test for.
      * @param blockLocation
@@ -1079,9 +1342,11 @@ export class Test {
      * specified type is present. If false, tests that an item
      * entity of the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertItemEntityPresent(
-        itemType: minecraftserver.ItemType,
+        itemType: minecraftserver.ItemType | string,
         blockLocation: minecraftserver.Vector3,
         searchDistance?: number,
         isPresent?: boolean,
@@ -1090,26 +1355,35 @@ export class Test {
      * @remarks
      * Tests that Redstone power at a particular location matches a
      * particular value. If not, an exception is thrown.
+     *
      * @param blockLocation
      * Location to test.
      * @param power
      * Expected power level.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     assertRedstonePower(blockLocation: minecraftserver.Vector3, power: number): void;
     /**
      * @remarks
      * Destroys a block at a particular location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to destroy.
      * @param dropResources
      * Whether to add resources exposed with a particular drop.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     destroyBlock(blockLocation: minecraftserver.Vector3, dropResources?: boolean): void;
     /**
      * @remarks
      * Marks the current test as a failure case.
+     *
      * @param errorMessage
      * Error message summarizing the failure condition.
      * @throws This function can throw errors.
@@ -1119,6 +1393,7 @@ export class Test {
      * @remarks
      * Runs the given callback. If the callback does not throw an
      * exception, the test is marked as a failure.
+     *
      * @param callback
      * Callback function that runs. If the function runs
      * successfully, the test is marked as a failure. Typically,
@@ -1129,15 +1404,23 @@ export class Test {
     /**
      * @remarks
      * Gets a block at the specified block location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to retrieve.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
     /**
      * @remarks
      * Gets the dimension of this test.
+     *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     getDimension(): minecraftserver.Dimension;
     /**
@@ -1145,31 +1428,48 @@ export class Test {
      * If the block at the specified block location is a fence,
      * this returns a helper object with details on how a fence is
      * connected.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to retrieve.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     getFenceConnectivity(blockLocation: minecraftserver.Vector3): FenceConnectivity;
     /**
      * @remarks
      * Retrieves a sculk spreader object that can be used to
      * control and manage how sculk grows from a block.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location of the block to retrieve a sculk spreader from.
+     * @returns
+     * Returns the SculkSpreader or undefined if no SculkSpreader
+     * is present on the block.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
-    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader;
+    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
      * @minecraft/server.Direction} enum for more information on
      * potential values (north, east, south, west - values 2-5).
+     *
      */
     getTestDirection(): minecraftserver.Direction;
     /**
      * @remarks
      * This asynchronous function will wait for the specified time
      * in ticks before continuing execution.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param tickDelay
      * Amount of time to wait, in ticks.
      */
@@ -1177,47 +1477,80 @@ export class Test {
     /**
      * @remarks
      * Kills all entities within the GameTest structure.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     killAllEntities(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     */
     onPlayerJump(mob: minecraftserver.Entity, jumpAmount: number): void;
     /**
      * @remarks
      * Presses a button at a block location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location to push the button at.
      * @throws
      * Will throw an error if a button is not present at the
      * specified position.
+     *
+     * {@link GameTestError}
      */
     pressButton(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Displays the specified message to all players.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param text
      * Message to display.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     print(text: string): void;
     /**
      * @remarks
      * Pulls a lever at a block location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location to pull the lever at.
      * @throws
      * Will throw an error if a lever is not present at the
      * specified position.
+     *
+     * {@link GameTestError}
      */
     pullLever(blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Sends a Redstone pulse at a particular location by creating
      * a temporary Redstone block.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location to pulse Redstone at.
      * @param duration
      * Number of ticks to pulse Redstone.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     pulseRedstone(blockLocation: minecraftserver.Vector3, duration: number): void;
     /**
@@ -1227,12 +1560,15 @@ export class Test {
      * block. For example, the relative coordinates for the block
      * above the structure block are (0, 1, 0). Rotation of the
      * GameTest structure is also taken into account.
+     *
      * @param worldBlockLocation
      * Absolute location in the world to convert to a relative
      * location.
      * @returns
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1242,17 +1578,25 @@ export class Test {
      * example, the relative coordinates for the block above the
      * structure block are (0, 1, 0). Rotation of the GameTest
      * structure is also taken into account.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param worldLocation
      * Absolute location in the world to convert to a relative
      * location.
      * @returns
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks
      * Removes a simulated player from the world.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param simulatedPlayer
      * Simulated player to remove.
      */
@@ -1263,22 +1607,34 @@ export class Test {
      * the current test. Passing in Direction.south will return the
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param direction
      * Direction to translate into a direction relative to the
      * GameTest facing. Passing in Direction.south will return the
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
-     * @param vector
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
-    rotateVector(vector: minecraftserver.Vector): minecraftserver.Vector;
+    rotateVector(vector: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks
      * Runs a specific callback after a specified delay of ticks
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param delayTicks
      * Number of ticks to delay before running the specified
      * callback.
@@ -1291,6 +1647,9 @@ export class Test {
      * @remarks
      * Runs the given callback after a delay of _tick_ ticks from
      * the start of the GameTest.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param tick
      * Tick (after the start of the GameTest) to run the callback
      * at.
@@ -1303,83 +1662,105 @@ export class Test {
      * @remarks
      * Sets a block to a particular configuration (a
      * BlockPermutation) at the specified block location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockData
      * Permutation that contains the configuration data for a
      * block.
      * @param blockLocation
      * Location of the block to set.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * Sets a block to a particular type at the specified block
      * location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockType
      * Type of block to set.
      * @param blockLocation
      * Location of the block to set.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
-    setBlockType(blockType: minecraftserver.BlockType, blockLocation: minecraftserver.Vector3): void;
+    setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
      * changes the type of fluid within that container.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param location
      * Location of the fluid container block.
      * @param type
      * Type of fluid to set. See {@link
      * @minecraft/server-gametest.FluidType} for a list of values.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setFluidContainer(location: minecraftserver.Vector3, type: minecraftserver.FluidType): void;
     /**
      * @remarks
      * Sets the fuse of an explodable entity.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entity
      * Entity that is explodable.
      * @param fuseLength
      * Length of time, in ticks, before the entity explodes.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     setTntFuse(entity: minecraftserver.Entity, fuseLength: number): void;
     /**
      * @remarks
      * Spawns an entity at a location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
      * 'minecraft:' is assumed. Note that an optional initial spawn
      * event can be specified between less than/greater than signs
      * (e.g., namespace:entityType<spawnEvent>).
-     * @param blockLocation
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *          const attackerId = "fox";
-     *          const victimId = "chicken";
+     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *     const attackerId = "fox";
+     *     const victimId = "chicken";
      *
-     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *          test.assertEntityPresentInArea(victimId, true);
+     *     test.assertEntityPresentInArea(victimId, true);
      *
-     *          test.succeedWhen(() => {
-     *            test.assertEntityPresentInArea(victimId, false);
-     *          });
-     *        })
-     *          .maxTicks(400)
-     *          .structureName("gametests:mediumglass");
-     *
+     *     test.succeedWhen(() => {
+     *       test.assertEntityPresentInArea(victimId, false);
+     *     });
+     *   })
+     *     .maxTicks(400)
+     *     .structureName("gametests:mediumglass");
      * ```
      * @example spawnAdultPig.js
      * ```typescript
-     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1, y: 2, z: 1 });
-     *
+     * test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1, y: 2, z: 1 });
      *
      * ```
      */
@@ -1387,52 +1768,62 @@ export class Test {
     /**
      * @remarks
      * Spawns an entity at a location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
      * 'minecraft:' is assumed. Note that an optional initial spawn
      * event can be specified between less than/greater than signs
      * (e.g., namespace:entityType<spawnEvent>).
-     * @param location
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example spawnAdultPig.js
      * ```typescript
-     *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1.5, y: 2, z: 1.5 });
-     *
+     * test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1.5, y: 2, z: 1.5 });
      * ```
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param itemStack
      * ItemStack that describes the item entity to create.
      * @param location
      * Location to create the item entity at.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      * @example spawnEmeralds.js
      * ```typescript
-     *        const oneEmerald = new ItemStack(MinecraftItemTypes.emerald, 1, 0);
-     *        const fiveEmeralds = new ItemStack(MinecraftItemTypes.emerald, 5, 0);
+     * const oneEmerald = new ItemStack(MinecraftItemTypes.Emerald, 1, 0);
+     * const fiveEmeralds = new ItemStack(MinecraftItemTypes.Emerald, 5, 0);
      *
-     *        test.spawnItem(oneEmerald, { x: 3.5, y: 3, z: 1.5 });
-     *        test.spawnItem(fiveEmeralds, { x: 1.5, y: 3, z: 1.5 });
-     *
-     *
+     * test.spawnItem(oneEmerald, { x: 3.5, y: 3, z: 1.5 });
+     * test.spawnItem(fiveEmeralds, { x: 1.5, y: 3, z: 1.5 });
      * ```
      */
     spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location where to spawn the simulated player.
      * @param name
      * Name to give the new simulated player.
-     * @param gameMode
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     spawnSimulatedPlayer(
         blockLocation: minecraftserver.Vector3,
@@ -1444,10 +1835,14 @@ export class Test {
      * Spawns an entity at a location without any AI behaviors.
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
-     * @param entityTypeIdentifier
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1455,10 +1850,14 @@ export class Test {
      * Spawns an entity at a location without any AI behaviors.
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
-     * @param entityTypeIdentifier
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param location
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
@@ -1468,6 +1867,9 @@ export class Test {
      * @remarks
      * Tests that a particular item entity is present at a
      * particular location. If not, an exception is thrown.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockLocation
      * BlockLocation containing a multiface block.
      * @param fromFace
@@ -1476,10 +1878,11 @@ export class Test {
      * Direction to spread. Use the Minecraft.Direction enum to
      * specify a direction.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      * @example spreadFromFaceTowardDirection.js
      * ```typescript
-     *        test.spreadFromFaceTowardDirection({ x: 1, y: 2, z: 1 }, Direction.south, Direction.down);
-     *
+     * test.spreadFromFaceTowardDirection({ x: 1, y: 2, z: 1 }, Direction.south, Direction.down);
      * ```
      */
     spreadFromFaceTowardDirection(
@@ -1491,6 +1894,9 @@ export class Test {
      * @remarks
      * Creates a new GameTestSequence - A set of steps that play
      * out sequentially within a GameTest.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @returns
      * A new GameTestSequence with chaining methods that facilitate
      * creating a set of steps.
@@ -1499,6 +1905,9 @@ export class Test {
     /**
      * @remarks
      * Marks the current test as a success case.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     succeed(): void;
@@ -1506,6 +1915,9 @@ export class Test {
      * @remarks
      * Runs the given callback. If the callback does not throw an
      * exception, the test is marked as a success.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Callback function that runs. If the function runs
      * successfully, the test is marked as a success. Typically,
@@ -1516,6 +1928,9 @@ export class Test {
     /**
      * @remarks
      * Marks the test as a success at the specified tick.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param tick
      * Tick after the start of the GameTest to mark the test as
      * successful.
@@ -1527,6 +1942,9 @@ export class Test {
      * Runs the given callback at _tick_ ticks after the start of
      * the test. If the callback does not throw an exception, the
      * test is marked as a failure.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param tick
      * Tick after the start of the GameTest to run the testing
      * callback at.
@@ -1542,29 +1960,30 @@ export class Test {
      * successfully executes, the test is marked as a success.
      * Specifically, the test will succeed when the callback does
      * not throw an exception.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws This function can throw errors.
      * @example simpleMobTest.ts
      * ```typescript
-     *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *          const attackerId = "fox";
-     *          const victimId = "chicken";
+     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+     *     const attackerId = "fox";
+     *     const victimId = "chicken";
      *
-     *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *          test.assertEntityPresentInArea(victimId, true);
+     *     test.assertEntityPresentInArea(victimId, true);
      *
-     *          test.succeedWhen(() => {
-     *            test.assertEntityPresentInArea(victimId, false);
-     *          });
-     *        })
-     *          .maxTicks(400)
-     *          .structureName("gametests:mediumglass");
-     *
-     *
+     *     test.succeedWhen(() => {
+     *       test.assertEntityPresentInArea(victimId, false);
+     *     });
+     *   })
+     *     .maxTicks(400)
+     *     .structureName("gametests:mediumglass");
      * ```
      */
     succeedWhen(callback: () => void): void;
@@ -1574,6 +1993,9 @@ export class Test {
      * presence of a block of a particular type on every tick. When
      * the specified block of a type is found or not found
      * (depending on isPresent), the test is marked as a success.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param blockType
      * Type of block to test for.
      * @param blockLocation
@@ -1583,9 +2005,11 @@ export class Test {
      * specified type is present. If false, tests that a block of
      * the specified type is not present.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     succeedWhenBlockPresent(
-        blockType: minecraftserver.BlockType,
+        blockType: minecraftserver.BlockType | string,
         blockLocation: minecraftserver.Vector3,
         isPresent?: boolean,
     ): void;
@@ -1594,6 +2018,9 @@ export class Test {
      * Tests for the presence of a component on every tick.
      * Depending on the value of hasComponent, when the specified
      * component is found, the test is marked as a success.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entityTypeIdentifier
      * Type of entity to look for. If no namespace is specified,
      * 'minecraft:' is assumed.
@@ -1620,6 +2047,9 @@ export class Test {
      * of an entity on every tick. When an entity of the specified
      * type is found or not found (depending on isPresent), the
      * test is marked as a success.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
      * an entity namespace is not specified, 'minecraft:' is
@@ -1641,14 +2071,17 @@ export class Test {
      * @remarks
      * Triggers a block event from a fixed list of available block
      * events.
-     * @param blockLocation
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param event
      * Event to trigger. Valid values include minecraft:drip,
      * minecraft:grow_stalagtite, minecraft:grow_stalagmite,
      * minecraft:grow_up, minecraft:grow_down and
      * minecraft:grow_sideways.
-     * @param eventParameters
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
     /**
@@ -1657,6 +2090,9 @@ export class Test {
      * specified callback successfully completes. until can be used
      * in conjunction with .assert functions to evaluate that a
      * condition is true.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param callback
      * Function with code to evaluate.
      */
@@ -1667,6 +2103,9 @@ export class Test {
      * in conjunction with methods like .spawnWithoutBehaviors to
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param mob
      * Mob entity to give orders to.
      * @param blockLocation
@@ -1674,6 +2113,8 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.Vector3, speedModifier?: number): void;
     /**
@@ -1682,6 +2123,9 @@ export class Test {
      * in conjunction with methods like .spawnWithoutBehaviors to
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
+     *
+     * This function can't be called in read-only mode.
+     *
      * @param mob
      * Mob entity to give orders to.
      * @param location
@@ -1689,6 +2133,8 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
      */
     walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
     /**
@@ -1697,11 +2143,14 @@ export class Test {
      * GameTest structure block, returns a new BlockLocation with
      * coordinates relative to world. Rotation of the GameTest
      * structure is also taken into account.
+     *
      * @param relativeBlockLocation
      * Location relative to the GameTest command block.
      * @returns
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1710,30 +2159,40 @@ export class Test {
      * structure block, returns a new location with coordinates
      * relative to world. Rotation of the GameTest structure is
      * also taken into account.
+     *
      * @param relativeLocation
      * Location relative to the GameTest command block.
      * @returns
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.GameTestError}
      */
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }
+
 export interface GameTestErrorContext {
     absolutePosition: minecraftserver.Vector3;
     relativePosition: minecraftserver.Vector3;
     tickCount: number;
 }
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export class GameTestError extends Error {
-    protected constructor();
+    private constructor();
     context?: GameTestErrorContext;
     messageParameters: string[];
     type: GameTestErrorType;
 }
+
 /**
  * @remarks
  * Registers a new GameTest function. This GameTest will become
  * available in Minecraft via /gametest run
  * [testClassName]:[testName].
+ *
+ * This function can't be called in read-only mode.
+ *
  * @param testClassName
  * Name of the class of tests this test should be a part of.
  * @param testName
@@ -1746,29 +2205,27 @@ export class GameTestError extends Error {
  * builder methods.
  * @example example1.js
  * ```typescript
- *        GameTest.register("ExampleTests", "alwaysFail", (test) => {
- *          test.fail("This test, runnable via '/gametest run ExampleTests:alwaysFail', will always fail");
- *        });
- *
+ * GameTest.register("ExampleTests", "alwaysFail", (test) => {
+ *   test.fail("This test, runnable via '/gametest run ExampleTests:alwaysFail', will always fail");
+ * });
  * ```
  * @example simpleMobTest.ts
  * ```typescript
- *        gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
- *          const attackerId = "fox";
- *          const victimId = "chicken";
+ * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
+ *   const attackerId = "fox";
+ *   const victimId = "chicken";
  *
- *          test.spawn(attackerId, { x: 5, y: 2, z: 5 });
- *          test.spawn(victimId, { x: 2, y: 2, z: 2 });
+ *   test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+ *   test.spawn(victimId, { x: 2, y: 2, z: 2 });
  *
- *          test.assertEntityPresentInArea(victimId, true);
+ *   test.assertEntityPresentInArea(victimId, true);
  *
- *          test.succeedWhen(() => {
- *            test.assertEntityPresentInArea(victimId, false);
- *          });
- *        })
- *          .maxTicks(400)
- *          .structureName("gametests:mediumglass");
- *
+ *   test.succeedWhen(() => {
+ *     test.assertEntityPresentInArea(victimId, false);
+ *   });
+ * })
+ *   .maxTicks(400)
+ *   .structureName("gametests:mediumglass");
  * ```
  */
 export function register(
@@ -1781,6 +2238,9 @@ export function register(
  * Registers a new GameTest function that is designed for
  * asynchronous execution. This GameTest will become available
  * in Minecraft via /gametest run [testClassName]:[testName].
+ *
+ * This function can't be called in read-only mode.
+ *
  * @param testClassName
  * Name of the class of tests this test should be a part of.
  * @param testName

@@ -1,9 +1,11 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, copyFileSync, writeFileSync } = require("fs");
+const { existsSync, readFileSync, writeFileSync, rmSync, readdirSync, mkdirSync } = require("fs");
 const { createRequire } = require("module");
-const { resolve: resolvePath } = require("path");
+const { resolve: resolvePath, relative: relativePath } = require("path");
 const { URL } = require("url");
+const { Project } = require("ts-morph");
 const { build } = require("./build.js");
+const { split } = require("./split.js");
 
 const basePath = resolvePath(__dirname, "..");
 const originalPath = resolvePath(basePath, "original");
@@ -11,6 +13,9 @@ const translatedPath = resolvePath(basePath, "translated");
 
 const namespacePrefix = "@minecraft/";
 const baseURL = "https://projectxero.top/sapi/";
+const botModules = [
+    "@minecraft/vanilla-data"
+];
 
 function readPackageInfo(modulePath) {
     const packageInfoPath = resolvePath(modulePath, "package.json");
@@ -42,6 +47,28 @@ function extractVersionInfo(versionString) {
         }
         return { version, gamePreRelease, gameVersion };
     }
+}
+
+function walkFiles(directory, walker) {
+    const files = readdirSync(directory, { withFileTypes: true });
+    walker(directory, null, directory);
+    files.forEach((file) => {
+        if (file.isDirectory()) {
+            walkFiles(resolvePath(directory, file.name), walker);
+        } else {
+            walker(directory, file.name, resolvePath(directory, file.name));
+        }
+    });
+}
+
+function getCommonStringFromStart(a, b) {
+    let len = Math.min(a.length, b.length);
+    while (len > 0) {
+        if (a.slice(0, len) === b.slice(0, len)) {
+            return a.slice(0, len);
+        }
+    }
+    return "";
 }
 
 const KindString = [
@@ -106,18 +133,32 @@ function kindToString(kind) {
 
 async function main() {
     // 1. 强制检出 original 分支
-    execSync("git checkout original", {
-        cwd: basePath,
-        stdio: "inherit"
-    });
+    const head = execSync("git rev-parse --abbrev-ref HEAD", {
+        cwd: basePath
+    }).toString("utf-8").trim();
+    if (head !== "original" && head !== "HEAD") {
+        execSync("git checkout original", {
+            cwd: basePath,
+            stdio: "inherit"
+        });
+    }
 
-    // 2. 无视 lockfile 更新模块
+    // 2. 删除 node_modules
+    rmSync(resolvePath(originalPath, "node_modules"), { recursive: true, force: true });
+
+    // 3. 重新安装模块且不生成 package-lock.json
     execSync("npm install", {
         cwd: originalPath,
         stdio: "inherit"
     });
 
-    // 3. 复制模块 d.ts 至翻译目录
+    // 4. 复制模块 d.ts 至文件系统
+    const project = new Project({
+        tsConfigFilePath: resolvePath(translatedPath, "tsconfig.json"),
+        skipAddingFilesFromTsConfig: true
+    });
+    /** @type {import("ts-morph").SourceFile[]} */
+    const nonBotSourceFiles = [];
     const dependencies = readPackageInfo(originalPath).dependencies;
     Object.keys(dependencies).forEach((moduleName) => {
         if (moduleName.startsWith(namespacePrefix)) {
@@ -126,18 +167,65 @@ async function main() {
             const packageInfo = readPackageInfo(modulePath);
             const version = packageInfo.version;
             console.log(`Copying d.ts for ${moduleName}@${version}`);
-            copyFileSync(
-                resolvePath(modulePath, "index.d.ts"),
-                resolvePath(translatedPath, `${pureModuleName}.d.ts`)
-            );
+            const dtsFiles = [];
+            walkFiles(modulePath, (dir, file, path) => {
+                if (file && file.endsWith(".d.ts")) {
+                    const relPath = relativePath(modulePath, path);
+                    if (!relPath.includes("node_modules")) {
+                        dtsFiles.push(path);
+                    }
+                }
+            });
+            if (dtsFiles.length < 1) {
+                throw new Error(`Cannot find any d.ts for ${moduleName}`);
+            }
+            if (dtsFiles.length === 1) {
+                const sourceFile = project.createSourceFile(
+                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
+                    readFileSync(dtsFiles[0], "utf-8"),
+                    { overwrite: true }
+                );
+                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
+            } else {
+                const typeEntry = resolvePath(modulePath, packageInfo.types).replace(/\.d\.ts$/i, "");
+                const commonParent = dtsFiles.map((path) => resolvePath(path, ".."))
+                    .reduce((common, parent) => getCommonStringFromStart(common, parent));
+                const moduleRoot = resolvePath(translatedPath, pureModuleName);
+                const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
+                const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, "/")}`;
+                const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
+                dtsFiles.forEach((file) => {
+                    const target = resolvePath(moduleRoot, relativePath(commonParent, file));
+                    mkdirSync(resolvePath(target, ".."), { recursive: true });
+                    const sourceFile = project.createSourceFile(target, readFileSync(file, "utf-8"), { overwrite: true });
+                    if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
+                });
+                const indexSourceFile = project.createSourceFile(
+                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
+                    exportStatement,
+                    { overwrite: true }
+                );
+                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(indexSourceFile);
+            }
             dependencies[moduleName] = version;
         }
     });
+    project.saveSync();
 
-    // 4. 生成一次文档
-    const project = await build();
+    // 5. 按类切分文件
+    nonBotSourceFiles.forEach((sourceFile) => {
+        const pieces = split(sourceFile);
+        const sourceFileText = sourceFile.getFullText();
+        pieces.forEach((piece) => {
+            mkdirSync(resolvePath(piece.path, ".."), { recursive: true });
+            writeFileSync(piece.path, sourceFileText.slice(piece.start, piece.end));
+        });
+    });
 
-    // 5. 生成 README.md 。
+    // 6. 生成一次文档
+    const tsdocProject = await build();
+
+    // 7. 生成 README.md 。
     const readMePath = resolvePath(translatedPath, "README.md");
     const readMe = readFileSync(readMePath, "utf-8");
 
@@ -149,12 +237,13 @@ async function main() {
     ];
     let gameVersion;
     Object.entries(dependencies).forEach(([moduleName, version]) => {
+        let versionString = version;
         const versionInfo = extractVersionInfo(version);
-        if (!versionInfo) {
-            throw new Error(`Invalid version for ${moduleName}@${version}`)
+        if (versionInfo) {
+            if (!gameVersion) gameVersion = versionInfo.gameVersion;
+            versionString = versionInfo.version;
         }
-        if (!gameVersion) gameVersion = versionInfo.gameVersion;
-        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionInfo.version}\`|`);
+        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionString}\`|`);
     });
     summaryLines.push("");
     summaryLines.push(`游戏版本号：\`${gameVersion}\``);
@@ -168,8 +257,9 @@ async function main() {
         "| - | - |"
     ];
     const statusLines = [];
-    project.children.forEach((moduleRef) => {
+    tsdocProject.children.forEach((moduleRef) => {
         const moduleFullName = namespacePrefix + moduleRef.name;
+        if (botModules.includes(moduleFullName)) return;
         const linkHref = moduleFullName.replace(/[@\/]/g, "");
         statusHeadLines.push(`|[${moduleFullName}](#${linkHref})|0/${moduleRef.children.length}|`);
         statusLines.push("");
@@ -191,6 +281,10 @@ async function main() {
         .replace(/<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/, summaryLines.join("\n"))
         .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
     writeFileSync(readMePath, newReadMe);
+
+    // 8. 生成 package.json 快照
+    const packageSnapshotPath = resolvePath(translatedPath, "package.json");
+    writeFileSync(packageSnapshotPath, JSON.stringify({ dependencies }, null, 2));
 }
 
 main().catch((err) => {

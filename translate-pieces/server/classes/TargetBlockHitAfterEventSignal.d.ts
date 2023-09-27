@@ -1,0 +1,27 @@
+/**
+ * @beta
+ * Manages callbacks that are connected to when a target block
+ * is hit.
+ */
+export class TargetBlockHitAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a target block is
+     * hit.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a target block is
+     * hit.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
+}
