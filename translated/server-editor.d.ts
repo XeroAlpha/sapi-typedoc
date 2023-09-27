@@ -14,11 +14,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.40-preview.22"
+ *   "version": "0.1.0-beta.1.20.40-preview.23"
  * }
  * ```
  *
  */
+import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
 /**
  * The types of actions that are supported. This type

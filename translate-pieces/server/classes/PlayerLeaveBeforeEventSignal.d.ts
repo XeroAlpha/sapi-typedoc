@@ -1,21 +1,19 @@
 /**
  * @beta
  */
-export class PlayerDimensionChangeBeforeEventSignal {
+export class PlayerLeaveBeforeEventSignal {
     private constructor();
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(
-        callback: (arg: PlayerDimensionChangeBeforeEvent) => void,
-    ): (arg: PlayerDimensionChangeBeforeEvent) => void;
+    subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: PlayerDimensionChangeBeforeEvent) => void): void;
+    unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
 }

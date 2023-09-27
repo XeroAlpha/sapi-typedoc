@@ -43,11 +43,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.40-preview.22"
+ *   "version": "1.2.0-internal.1.20.40-preview.23"
  * }
  * ```
  *
  */
+import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
 /**
  * @beta

@@ -80,19 +80,16 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
      * @beta
-     * @remarks
-     * Fires before a player is about to change dimensions.
-     *
-     */
-    readonly playerDimensionChange: PlayerDimensionChangeBeforeEventSignal;
-    /**
-     * @beta
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
      * @beta
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerLeave: PlayerLeaveBeforeEventSignal;
     /**
      * @beta
      * @remarks

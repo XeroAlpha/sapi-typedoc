@@ -18,11 +18,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.20.40-preview.22"
+ *   "version": "1.0.0-beta.1.20.40-preview.23"
  * }
  * ```
  *
  */
+import * as minecraftcommon from '@minecraft/common';
 /**
  * This represents a placeholder object that represents a
  * secret string. The contents of that string are not available

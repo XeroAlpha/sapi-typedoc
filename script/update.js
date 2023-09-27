@@ -1,14 +1,13 @@
 const { execSync } = require("child_process");
-const { existsSync, readFileSync, writeFileSync, rmSync, readdirSync, mkdirSync } = require("fs");
-const { createRequire } = require("module");
-const { resolve: resolvePath, relative: relativePath } = require("path");
+const { readFileSync, writeFileSync, rmSync, mkdirSync } = require("fs");
+const { resolve: resolvePath } = require("path");
 const { URL } = require("url");
-const { Project } = require("ts-morph");
 const { build } = require("./build.js");
 const { split } = require("./split.js");
 
 const basePath = resolvePath(__dirname, "..");
 const originalPath = resolvePath(basePath, "original");
+const translatingPath = resolvePath(basePath, "translate-pieces");
 const translatedPath = resolvePath(basePath, "translated");
 
 const namespacePrefix = "@minecraft/";
@@ -16,27 +15,6 @@ const baseURL = "https://projectxero.top/sapi/";
 const botModules = [
     "@minecraft/vanilla-data"
 ];
-
-function readPackageInfo(modulePath) {
-    const packageInfoPath = resolvePath(modulePath, "package.json");
-    if (existsSync(packageInfoPath)) {
-        try {
-            return JSON.parse(readFileSync(packageInfoPath, "utf-8"));
-        } catch(e) { /* ignore */ }
-    }
-}
-
-function findModule(moduleName, root) {
-    const localRequire = createRequire(resolvePath(root, "node_modules"));
-    const searchPaths = localRequire.resolve.paths(moduleName);
-    for (const searchPath of searchPaths) {
-        const modulePath = resolvePath(searchPath, moduleName);
-        const moduleDesc = readPackageInfo(modulePath);
-        if (moduleDesc && moduleDesc.name === moduleName) {
-            return modulePath;
-        }
-    }
-}
 
 function extractVersionInfo(versionString) {
     const match = /^([\d.]+-\w+)\.([\d.]+)-(\w+)(\.\d+)?$/.exec(versionString);
@@ -47,28 +25,6 @@ function extractVersionInfo(versionString) {
         }
         return { version, gamePreRelease, gameVersion };
     }
-}
-
-function walkFiles(directory, walker) {
-    const files = readdirSync(directory, { withFileTypes: true });
-    walker(directory, null, directory);
-    files.forEach((file) => {
-        if (file.isDirectory()) {
-            walkFiles(resolvePath(directory, file.name), walker);
-        } else {
-            walker(directory, file.name, resolvePath(directory, file.name));
-        }
-    });
-}
-
-function getCommonStringFromStart(a, b) {
-    let len = Math.min(a.length, b.length);
-    while (len > 0) {
-        if (a.slice(0, len) === b.slice(0, len)) {
-            return a.slice(0, len);
-        }
-    }
-    return "";
 }
 
 const KindString = [
@@ -152,68 +108,13 @@ async function main() {
         stdio: "inherit"
     });
 
-    // 4. 复制模块 d.ts 至文件系统
-    const project = new Project({
-        tsConfigFilePath: resolvePath(translatedPath, "tsconfig.json"),
-        skipAddingFilesFromTsConfig: true
-    });
-    /** @type {import("ts-morph").SourceFile[]} */
-    const nonBotSourceFiles = [];
-    const dependencies = readPackageInfo(originalPath).dependencies;
-    Object.keys(dependencies).forEach((moduleName) => {
-        if (moduleName.startsWith(namespacePrefix)) {
-            const pureModuleName = moduleName.slice(namespacePrefix.length);
-            const modulePath = findModule(moduleName, originalPath);
-            const packageInfo = readPackageInfo(modulePath);
-            const version = packageInfo.version;
-            console.log(`Copying d.ts for ${moduleName}@${version}`);
-            const dtsFiles = [];
-            walkFiles(modulePath, (dir, file, path) => {
-                if (file && file.endsWith(".d.ts")) {
-                    const relPath = relativePath(modulePath, path);
-                    if (!relPath.includes("node_modules")) {
-                        dtsFiles.push(path);
-                    }
-                }
-            });
-            if (dtsFiles.length < 1) {
-                throw new Error(`Cannot find any d.ts for ${moduleName}`);
-            }
-            if (dtsFiles.length === 1) {
-                const sourceFile = project.createSourceFile(
-                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    readFileSync(dtsFiles[0], "utf-8"),
-                    { overwrite: true }
-                );
-                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
-            } else {
-                const typeEntry = resolvePath(modulePath, packageInfo.types).replace(/\.d\.ts$/i, "");
-                const commonParent = dtsFiles.map((path) => resolvePath(path, ".."))
-                    .reduce((common, parent) => getCommonStringFromStart(common, parent));
-                const moduleRoot = resolvePath(translatedPath, pureModuleName);
-                const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
-                const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, "/")}`;
-                const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
-                dtsFiles.forEach((file) => {
-                    const target = resolvePath(moduleRoot, relativePath(commonParent, file));
-                    mkdirSync(resolvePath(target, ".."), { recursive: true });
-                    const sourceFile = project.createSourceFile(target, readFileSync(file, "utf-8"), { overwrite: true });
-                    if (!botModules.includes(moduleName)) nonBotSourceFiles.push(sourceFile);
-                });
-                const indexSourceFile = project.createSourceFile(
-                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    exportStatement,
-                    { overwrite: true }
-                );
-                if (!botModules.includes(moduleName)) nonBotSourceFiles.push(indexSourceFile);
-            }
-            dependencies[moduleName] = version;
-        }
-    });
+    // 4. 不使用翻译构建项目
+    const { project, sourceFiles, dependencies, tsdocProject } = await build(false);
     project.saveSync();
 
     // 5. 按类切分文件
-    nonBotSourceFiles.forEach((sourceFile) => {
+    rmSync(translatingPath, { recursive: true, force: true });
+    sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
         const sourceFileText = sourceFile.getFullText();
         pieces.forEach((piece) => {
@@ -222,10 +123,7 @@ async function main() {
         });
     });
 
-    // 6. 生成一次文档
-    const tsdocProject = await build();
-
-    // 7. 生成 README.md 。
+    // 6. 生成 README.md 。
     const readMePath = resolvePath(translatedPath, "README.md");
     const readMe = readFileSync(readMePath, "utf-8");
 
@@ -282,7 +180,7 @@ async function main() {
         .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
     writeFileSync(readMePath, newReadMe);
 
-    // 8. 生成 package.json 快照
+    // 7. 生成 package.json 快照
     const packageSnapshotPath = resolvePath(translatedPath, "package.json");
     writeFileSync(packageSnapshotPath, JSON.stringify({ dependencies }, null, 2));
 }

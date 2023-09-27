@@ -16,11 +16,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.7.0-internal.1.20.40-preview.22"
+ *   "version": "1.7.0-internal.1.20.40-preview.23"
  * }
  * ```
  *
  */
+import * as minecraftcommon from '@minecraft/common';
 /**
  * @beta
  * Description of the resulting intersection test on two
@@ -1083,7 +1084,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getItemStack(amount?: number, withData?: boolean): ItemStack;
+    getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
      * @beta
      * @remarks
@@ -2822,7 +2823,7 @@ export class Container {
      * The stack of items to add.
      * @throws This function can throw errors.
      */
-    addItem(itemStack: ItemStack): ItemStack;
+    addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
      * @remarks
      * Clears all inventory items in the container.
@@ -2969,7 +2970,7 @@ export class Container {
      * fromInventory.container.transferItem(0, toInventory.container);
      * ```
      */
-    transferItem(fromSlot: number, toContainer: Container): ItemStack;
+    transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
 
 /**
@@ -4888,6 +4889,11 @@ export class Entity {
     kill(): boolean;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    matches(options: EntityQueryOptions): boolean;
+    /**
+     * @beta
      * @remarks
      * Cause the entity to play the given animation.
      *
@@ -4961,6 +4967,10 @@ export class Entity {
      * returned.
      * @throws
      * Throws if the entity is invalid.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
@@ -9799,40 +9809,6 @@ export class PlayerDimensionChangeAfterEventSignal {
 
 /**
  * @beta
- */
-export class PlayerDimensionChangeBeforeEvent {
-    private constructor();
-    readonly fromDimension: Dimension;
-    readonly fromLocation: Vector3;
-    readonly player: Player;
-    readonly toDimension: Dimension;
-    readonly toLocation: Vector3;
-}
-
-/**
- * @beta
- */
-export class PlayerDimensionChangeBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(
-        callback: (arg: PlayerDimensionChangeBeforeEvent) => void,
-    ): (arg: PlayerDimensionChangeBeforeEvent) => void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: PlayerDimensionChangeBeforeEvent) => void): void;
-}
-
-/**
- * @beta
  * Contains information regarding an event after a player
  * interacts with a block.
  */
@@ -10158,6 +10134,34 @@ export class PlayerLeaveAfterEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
+}
+
+/**
+ * @beta
+ */
+export class PlayerLeaveBeforeEvent {
+    private constructor();
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ */
+export class PlayerLeaveBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
 }
 
 /**
@@ -12627,19 +12631,16 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
      * @beta
-     * @remarks
-     * Fires before a player is about to change dimensions.
-     *
-     */
-    readonly playerDimensionChange: PlayerDimensionChangeBeforeEventSignal;
-    /**
-     * @beta
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
      * @beta
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerLeave: PlayerLeaveBeforeEventSignal;
     /**
      * @beta
      * @remarks

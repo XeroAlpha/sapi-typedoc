@@ -17,11 +17,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.40-preview.22"
+ *   "version": "1.0.0-internal.1.20.40-preview.23"
  * }
  * ```
  *
  */
+import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
 export enum GameTestErrorType {
     Assert = 'Assert',
