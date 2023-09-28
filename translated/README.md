@@ -19,9 +19,11 @@ Minecraft 脚本 API 文档。
 
 <!-- summary end -->
 
-通过 [typedoc](https://typedoc.org/) 基于 d.ts 生成。
+通过 [TypeDoc](https://typedoc.org/) 基于 d.ts 生成。
 
 目前正在翻译中。欢迎[参与翻译](#参与翻译)！
+
+不喜欢[译文](https://projectxero.top/sapi/)？您也可以直接查看[原文](https://projectxero.top/sapi/original/)。
 
 ## 参与翻译
 
@@ -516,28 +518,28 @@ random(min: number, max: number): number;
 |[`LogProperties`](https://projectxero.top/sapi/interfaces/server_editor.LogProperties.html)|接口|未翻译|
 |[`ModalToolCreationParameters`](https://projectxero.top/sapi/interfaces/server_editor.ModalToolCreationParameters.html)|接口|未翻译|
 |[`PlaytestGameOptions`](https://projectxero.top/sapi/interfaces/server_editor.PlaytestGameOptions.html)|接口|未翻译|
-|[`Action`](https://projectxero.top/sapi/types/server_editor.Action.html)|对象字面量|未翻译|
-|[`ActionID`](https://projectxero.top/sapi/types/server_editor.ActionID.html)|对象字面量|未翻译|
-|[`ActivationFunctionType`](https://projectxero.top/sapi/types/server_editor.ActivationFunctionType.html)|对象字面量|未翻译|
-|[`ButtonVariant`](https://projectxero.top/sapi/types/server_editor.ButtonVariant.html)|对象字面量|未翻译|
-|[`EventHandler`](https://projectxero.top/sapi/types/server_editor.EventHandler.html)|对象字面量|未翻译|
-|[`IActionPropertyItem`](https://projectxero.top/sapi/types/server_editor.IActionPropertyItem.html)|对象字面量|未翻译|
-|[`IPlayerUISession`](https://projectxero.top/sapi/types/server_editor.IPlayerUISession.html)|对象字面量|未翻译|
-|[`IVector3PropertyItem`](https://projectxero.top/sapi/types/server_editor.IVector3PropertyItem.html)|对象字面量|未翻译|
-|[`ModalToolLifecycleEventPayload`](https://projectxero.top/sapi/types/server_editor.ModalToolLifecycleEventPayload.html)|对象字面量|未翻译|
-|[`MouseModifiers`](https://projectxero.top/sapi/types/server_editor.MouseModifiers.html)|对象字面量|未翻译|
-|[`MouseProps`](https://projectxero.top/sapi/types/server_editor.MouseProps.html)|对象字面量|未翻译|
-|[`MouseRayCastAction`](https://projectxero.top/sapi/types/server_editor.MouseRayCastAction.html)|对象字面量|未翻译|
-|[`NoArgsAction`](https://projectxero.top/sapi/types/server_editor.NoArgsAction.html)|对象字面量|未翻译|
-|[`OnChangeCallback`](https://projectxero.top/sapi/types/server_editor.OnChangeCallback.html)|对象字面量|未翻译|
-|[`PropertyBag`](https://projectxero.top/sapi/types/server_editor.PropertyBag.html)|对象字面量|未翻译|
-|[`PropertyPaneVisibilityUpdate`](https://projectxero.top/sapi/types/server_editor.PropertyPaneVisibilityUpdate.html)|对象字面量|未翻译|
-|[`Ray`](https://projectxero.top/sapi/types/server_editor.Ray.html)|对象字面量|未翻译|
-|[`RegisteredAction`](https://projectxero.top/sapi/types/server_editor.RegisteredAction.html)|对象字面量|未翻译|
-|[`ShutdownFunctionType`](https://projectxero.top/sapi/types/server_editor.ShutdownFunctionType.html)|对象字面量|未翻译|
-|[`SupportedKeyboardActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedKeyboardActionTypes.html)|对象字面量|未翻译|
-|[`SupportedMouseActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedMouseActionTypes.html)|对象字面量|未翻译|
-|[`UnregisterInputBindingCallback`](https://projectxero.top/sapi/types/server_editor.UnregisterInputBindingCallback.html)|对象字面量|未翻译|
+|[`Action`](https://projectxero.top/sapi/types/server_editor.Action.html)|类型别名|未翻译|
+|[`ActionID`](https://projectxero.top/sapi/types/server_editor.ActionID.html)|类型别名|未翻译|
+|[`ActivationFunctionType`](https://projectxero.top/sapi/types/server_editor.ActivationFunctionType.html)|类型别名|未翻译|
+|[`ButtonVariant`](https://projectxero.top/sapi/types/server_editor.ButtonVariant.html)|类型别名|未翻译|
+|[`EventHandler`](https://projectxero.top/sapi/types/server_editor.EventHandler.html)|类型别名|未翻译|
+|[`IActionPropertyItem`](https://projectxero.top/sapi/types/server_editor.IActionPropertyItem.html)|类型别名|未翻译|
+|[`IPlayerUISession`](https://projectxero.top/sapi/types/server_editor.IPlayerUISession.html)|类型别名|未翻译|
+|[`IVector3PropertyItem`](https://projectxero.top/sapi/types/server_editor.IVector3PropertyItem.html)|类型别名|未翻译|
+|[`ModalToolLifecycleEventPayload`](https://projectxero.top/sapi/types/server_editor.ModalToolLifecycleEventPayload.html)|类型别名|未翻译|
+|[`MouseModifiers`](https://projectxero.top/sapi/types/server_editor.MouseModifiers.html)|类型别名|未翻译|
+|[`MouseProps`](https://projectxero.top/sapi/types/server_editor.MouseProps.html)|类型别名|未翻译|
+|[`MouseRayCastAction`](https://projectxero.top/sapi/types/server_editor.MouseRayCastAction.html)|类型别名|未翻译|
+|[`NoArgsAction`](https://projectxero.top/sapi/types/server_editor.NoArgsAction.html)|类型别名|未翻译|
+|[`OnChangeCallback`](https://projectxero.top/sapi/types/server_editor.OnChangeCallback.html)|类型别名|未翻译|
+|[`PropertyBag`](https://projectxero.top/sapi/types/server_editor.PropertyBag.html)|类型别名|未翻译|
+|[`PropertyPaneVisibilityUpdate`](https://projectxero.top/sapi/types/server_editor.PropertyPaneVisibilityUpdate.html)|类型别名|未翻译|
+|[`Ray`](https://projectxero.top/sapi/types/server_editor.Ray.html)|类型别名|未翻译|
+|[`RegisteredAction`](https://projectxero.top/sapi/types/server_editor.RegisteredAction.html)|类型别名|未翻译|
+|[`ShutdownFunctionType`](https://projectxero.top/sapi/types/server_editor.ShutdownFunctionType.html)|类型别名|未翻译|
+|[`SupportedKeyboardActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedKeyboardActionTypes.html)|类型别名|未翻译|
+|[`SupportedMouseActionTypes`](https://projectxero.top/sapi/types/server_editor.SupportedMouseActionTypes.html)|类型别名|未翻译|
+|[`UnregisterInputBindingCallback`](https://projectxero.top/sapi/types/server_editor.UnregisterInputBindingCallback.html)|类型别名|未翻译|
 |[`editor`](https://projectxero.top/sapi/variables/server_editor.editor.html)|变量|未翻译|
 |[`bindDataSource`](https://projectxero.top/sapi/functions/server_editor.bindDataSource.html)|函数|未翻译|
 |[`executeLargeOperation`](https://projectxero.top/sapi/functions/server_editor.executeLargeOperation.html)|函数|未翻译|

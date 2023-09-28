@@ -23,6 +23,9 @@
         "entryPoints": ["*.d.ts"],
         "externalPattern": "",
         "customCss": "./assets/extra.css",
+        "navigationLinks": {
+            "GitHub": "https://github.com/XeroAlpha/sapi-typedoc"
+        },
         "externalSymbolLinkMappings": {
             "typescript": {
                 "Promise": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise",
