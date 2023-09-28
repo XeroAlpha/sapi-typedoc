@@ -2,8 +2,9 @@ const TypeDoc = require("typedoc");
 const { Project } = require("ts-morph");
 const { createRequire } = require("module");
 const { resolve: resolvePath, relative: relativePath } = require("path");
-const { existsSync, readFileSync, readdirSync, mkdirSync } = require("fs");
+const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } = require("fs");
 const { split } = require("./split");
+const { execSync } = require("child_process");
 
 const basePath = resolvePath(__dirname, "..");
 const originalPath = resolvePath(basePath, "original");
@@ -60,6 +61,7 @@ function getCommonStringFromStart(a, b) {
 }
 
 async function build(translated) {
+    // 加载钩子
     mkdirSync(hookPath, { recursive: true });
     const hookScripts = readdirSync(hookPath)
         .filter((name) => /\.(cjs|js)$/i.test(name))
@@ -77,6 +79,22 @@ async function build(translated) {
         });
     }
 
+    // 尝试加载翻译文件对应版本的 package.json
+    const originalPackageJsonPath = resolvePath(originalPath, "package.json");
+    const cachedPackageJsonPath = resolvePath(translatedPath, "package.json");
+    const originalPackageJsonData = readFileSync(originalPackageJsonPath);
+    if (existsSync(cachedPackageJsonPath)) {
+        writeFileSync(originalPackageJsonPath, readFileSync(cachedPackageJsonPath));
+    }
+
+    // 使依赖与 package.json 同步
+    execSync("npm install", {
+        cwd: originalPath,
+        stdio: "inherit"
+    });
+
+    // 从依赖中构建用于生成文档的项目
+    runHooks("beforeLoad");
     const tsConfigFilePath = resolvePath(translatedPath, "tsconfig.json");
     const project = new Project({
         tsConfigFilePath,
@@ -135,9 +153,11 @@ async function build(translated) {
             dependencies[moduleName] = version;
         }
     });
+    writeFileSync(originalPackageJsonPath, originalPackageJsonData);
     runHooks("afterLoad", { project, sourceFiles, dependencies });
     
     if (translated) {
+        // 将顶层成员替换为带翻译的版本
         sourceFiles.forEach((sourceFile) => {
             const pieces = split(sourceFile);
             let sourceFileText = sourceFile.getFullText();
@@ -157,6 +177,7 @@ async function build(translated) {
     }
     project.saveSync();
 
+    // 生成 TypeDoc 页面
     const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins({
         tsconfig: tsConfigFilePath,
         githubPages: false
@@ -165,7 +186,7 @@ async function build(translated) {
     const tsdocProject = await tsdocApplication.convert();
     if (tsdocProject) {
         const reflectionEntries = Object.entries(tsdocProject.reflections);
-        const visitCommentPart = (/** @type {TypeDoc.CommentDisplayPart} */part) => {
+        const visitCommentPart = (/** @type {TypeDoc.CommentDisplayPart} */ part) => {
             if (part.kind === 'inline-tag' && part.tag === '@link') {
                 if (typeof part.target === 'string') {
                     return;

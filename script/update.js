@@ -28,54 +28,29 @@ function extractVersionInfo(versionString) {
 }
 
 const KindString = [
-    // Project = 0x1,
-    "项目",
-    // Module = 0x2,
-    "模块",
-    // Namespace = 0x4,
-    "模块",
-    // Enum = 0x8,
-    "枚举",
-    // EnumMember = 0x10,
-    "枚举成员",
-    // Variable = 0x20,
-    "变量",
-    // Function = 0x40,
-    "函数",
-    // Class = 0x80,
-    "类",
-    // Interface = 0x100,
-    "接口",
-    // Constructor = 0x200,
-    "构造器",
-    // Property = 0x400,
-    "属性",
-    // Method = 0x800,
-    "方法",
-    // CallSignature = 0x1000,
-    "调用签名",
-    // IndexSignature = 0x2000,
-    "索引签名",
-    // ConstructorSignature = 0x4000,
-    "构造器签名",
-    // Parameter = 0x8000,
-    "参数",
-    // TypeLiteral = 0x10000,
-    "类型字面量",
-    // TypeParameter = 0x20000,
-    "类型参数",
-    // Accessor = 0x40000,
-    "访问器",
-    // GetSignature = 0x80000,
-    "Getter 签名",
-    // SetSignature = 0x100000,
-    "Setter 签名",
-    // ObjectLiteral = 0x200000,
-    "对象字面量",
-    // TypeAlias = 0x400000,
-    "类型别名",
-    // Reference = 0x800000
-    "引用"
+    "项目", // Project = 0x1,
+    "模块", // Module = 0x2,
+    "命名空间", // Namespace = 0x4,
+    "枚举", // Enum = 0x8,
+    "枚举成员", // EnumMember = 0x10,
+    "变量", // Variable = 0x20,
+    "函数", // Function = 0x40,
+    "类", // Class = 0x80,
+    "接口", // Interface = 0x100,
+    "构造器", // Constructor = 0x200,
+    "属性", // Property = 0x400,
+    "方法", // Method = 0x800,
+    "调用签名", // CallSignature = 0x1000,
+    "索引签名", // IndexSignature = 0x2000,
+    "构造器签名", // ConstructorSignature = 0x4000,
+    "参数", // Parameter = 0x8000,
+    "类型字面量", // TypeLiteral = 0x10000,
+    "类型参数", // TypeParameter = 0x20000,
+    "访问器", // Accessor = 0x40000,
+    "Getter 签名", // GetSignature = 0x80000,
+    "Setter 签名", // SetSignature = 0x100000,
+    "类型别名", // TypeAlias = 0x200000,
+    "引用" // Reference = 0x400000
 ];
 function kindToString(kind) {
     const result = [];
@@ -88,7 +63,7 @@ function kindToString(kind) {
 }
 
 async function main() {
-    // 1. 强制检出 original 分支
+    // 强制检出 original 分支
     const head = execSync("git rev-parse --abbrev-ref HEAD", {
         cwd: basePath
     }).toString("utf-8").trim();
@@ -99,20 +74,17 @@ async function main() {
         });
     }
 
-    // 2. 删除 node_modules
+    // 清除 node_modules 与缓存的 package.json
+    const packageInfoPath = resolvePath(originalPath, "package.json");
+    const packageSnapshotPath = resolvePath(translatedPath, "package.json");
+    rmSync(packageSnapshotPath);
     rmSync(resolvePath(originalPath, "node_modules"), { recursive: true, force: true });
 
-    // 3. 重新安装模块且不生成 package-lock.json
-    execSync("npm install", {
-        cwd: originalPath,
-        stdio: "inherit"
-    });
-
-    // 4. 不使用翻译构建项目
+    // 不使用翻译构建项目
     const { project, sourceFiles, dependencies, tsdocProject } = await build(false);
     project.saveSync();
 
-    // 5. 按类切分文件
+    // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
     sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
@@ -123,7 +95,7 @@ async function main() {
         });
     });
 
-    // 6. 生成 README.md 。
+    // 生成 README.md
     const readMePath = resolvePath(translatedPath, "README.md");
     const readMe = readFileSync(readMePath, "utf-8");
 
@@ -180,9 +152,9 @@ async function main() {
         .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
     writeFileSync(readMePath, newReadMe);
 
-    // 7. 生成 package.json 快照
-    const packageSnapshotPath = resolvePath(translatedPath, "package.json");
-    writeFileSync(packageSnapshotPath, JSON.stringify({ dependencies }, null, 2));
+    // 生成 package.json 快照
+    const packageInfo = JSON.parse(readFileSync(packageInfoPath, "utf-8"));
+    writeFileSync(packageSnapshotPath, JSON.stringify({ ...packageInfo, dependencies }, null, 2));
 }
 
 main().catch((err) => {
