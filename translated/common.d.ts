@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.0.0-rc.1.20.40-preview.23"
+ *   "version": "1.0.0-rc.1.20.40-preview.24"
  * }
  * ```
  *

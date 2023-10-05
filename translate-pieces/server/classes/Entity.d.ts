@@ -432,10 +432,10 @@ export class Entity {
      * for an entity.
      *
      * @param componentId
-     * The identifier of the component (e.g., 'minecraft:rideable')
-     * to retrieve. If no namespace prefix is specified,
-     * 'minecraft:' is assumed. If the component is not present on
-     * the entity, undefined is returned.
+     * The identifier of the component (e.g., 'minecraft:health').
+     * If no namespace prefix is specified, 'minecraft:' is
+     * assumed. Available component IDs can be found as part of the
+     * {@link @minecraft/server.EntityComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.

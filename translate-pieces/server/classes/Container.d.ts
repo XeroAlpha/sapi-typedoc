@@ -174,6 +174,9 @@ export class Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
+     * @returns
+     * An itemStack with the items that couldn't be transferred.
+     * Returns undefined if all items were transferred.
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
