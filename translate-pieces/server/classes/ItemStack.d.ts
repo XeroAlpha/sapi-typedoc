@@ -129,15 +129,18 @@ export class ItemStack {
      * for an item stack.
      *
      * @param componentId
-     * The identifier of the component (e.g., 'minecraft:food') to
-     * retrieve. If no namespace prefix is specified, 'minecraft:'
-     * is assumed. If the component is not present on the item
-     * stack or doesn't exist, undefined is returned.
+     * The identifier of the component (e.g., 'minecraft:food'). If
+     * no namespace prefix is specified, 'minecraft:' is assumed.
+     * Available component IDs can be found as part of the {@link
+     * @minecraft/server.ItemComponentTypes} enum.
+     * @returns
+     * Returns the component if it exists on the item stack,
+     * otherwise undefined.
      * @example durability.ts
      * ```typescript
      * // Get the maximum durability of a custom sword item
-     * const itemStack = new ItemStack("custom:sword");
-     * const durability = itemStack.getComponent("minecraft:durability") as ItemDurabilityComponent;
+     * const itemStack = new ItemStack('custom:sword');
+     * const durability = itemStack.getComponent(ItemComponentTypes.Durability);
      * const maxDurability = durability.maxDurability;
      * ```
      */

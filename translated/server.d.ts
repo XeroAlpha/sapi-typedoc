@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.7.0-internal.1.20.40-preview.23"
+ *   "version": "1.7.0-internal.1.20.40-preview.24"
  * }
  * ```
  *
@@ -126,7 +126,7 @@ export enum Direction {
      * @remarks
      * 表示下方（y - 1）。
      * 
-     * Returns the block beneath (y - 1) of this item.
+     * Returns the {@link Block} beneath (y - 1) of this item.
      *
      */
     Down = 'Down',
@@ -135,7 +135,7 @@ export enum Direction {
      * @remarks
      * 表示东方（x + 1）。
      * 
-     * Returns the block to the east (x + 1) of this item.
+     * Returns the {@link Block} to the east (x + 1) of this item.
      *
      */
     East = 'East',
@@ -144,7 +144,7 @@ export enum Direction {
      * @remarks
      * 表示北方（z - 1）。
      * 
-     * Returns the block to the east (z + 1) of this item.
+     * Returns the {@link Block} to the east (z + 1) of this item.
      *
      */
     North = 'North',
@@ -153,7 +153,7 @@ export enum Direction {
      * @remarks
      * 表示南方（z + 1）。
      * 
-     * Returns the block to the south (z - 1) of this item.
+     * Returns the {@link Block} to the south (z - 1) of this item.
      *
      */
     South = 'South',
@@ -162,7 +162,7 @@ export enum Direction {
      * @remarks
      * 表示上方（y + 1）。
      * 
-     * Returns the block above (y + 1) of this item.
+     * Returns the {@link Block} above (y + 1) of this item.
      *
      */
     Up = 'Up',
@@ -171,7 +171,7 @@ export enum Direction {
      * @remarks
      * 表示西方（x - 1）。
      * 
-     * Returns the block to the west (x - 1) of this item.
+     * Returns the {@link Block} to the west (x - 1) of this item.
      *
      */
     West = 'West',
@@ -372,42 +372,244 @@ export enum EasingType {
 
 /**
  * @beta
+ * Describes the source of damage from an Entity.
  */
 export enum EntityDamageCause {
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by a falling anvil.
+     *
+     */
     anvil = 'anvil',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused from a non-Entity explosion. For example, an
+     * exploding bed.
+     *
+     */
     blockExplosion = 'blockExplosion',
     campfire = 'campfire',
+    /**
+     * @beta
+     * @remarks
+     * Unused.
+     *
+     */
     charging = 'charging',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by physically touching an Entity or Block. For
+     * example, touching a Sweet Berry bush or Pufferfish.
+     *
+     */
     contact = 'contact',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity being out of air and inside a
+     * liquid block.
+     *
+     */
     drowning = 'drowning',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity attack.
+     *
+     */
     entityAttack = 'entityAttack',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity explosion. For example, a Creeper
+     * or Wither.
+     *
+     */
     entityExplosion = 'entityExplosion',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by falling onto the ground.
+     *
+     */
     fall = 'fall',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by falling blocks. Note: Anvils and
+     * Stalactites have their own damage causes.
+     *
+     */
     fallingBlock = 'fallingBlock',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by catching on fire.
+     *
+     */
     fire = 'fire',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by burning over time.
+     *
+     */
     fireTick = 'fireTick',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by fireworks.
+     *
+     */
     fireworks = 'fireworks',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by flying into a wall at high speed while
+     * gliding with Elytra.
+     *
+     */
     flyIntoWall = 'flyIntoWall',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by staying inside a Powder Snow block.
+     *
+     */
     freezing = 'freezing',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by touching a Lava block.
+     *
+     */
     lava = 'lava',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by being struck by lightning.
+     *
+     */
     lightning = 'lightning',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by magical attacks. For example, Evoker Fang
+     * or Conduit Block.
+     *
+     */
     magic = 'magic',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by touching a Magma block.
+     *
+     */
     magma = 'magma',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by no source. For example, from a command or
+     * script.
+     *
+     */
     none = 'none',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an indirect source. For example, setting a
+     * mob's health to 0 in a behavior pack.
+     *
+     */
     override = 'override',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by a Piston.
+     *
+     */
     piston = 'piston',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by a projectile.
+     *
+     */
     projectile = 'projectile',
     ramAttack = 'ramAttack',
     sonicBoom = 'sonicBoom',
     soulCampfire = 'soulCampfire',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by a falling Stalactite block.
+     *
+     */
     stalactite = 'stalactite',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by touching a Stalagmite block.
+     *
+     */
     stalagmite = 'stalagmite',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused over time by having an empty hunger bar.
+     *
+     */
     starve = 'starve',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity being out of air and inside a
+     * non-liquid block.
+     *
+     */
     suffocation = 'suffocation',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity killing itself. For example, from
+     * the /kill command.
+     *
+     */
     suicide = 'suicide',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by an Entity being in an inhabitable climate.
+     * For example, a Snow Golem in a biome with a temperature
+     * greater than 1.
+     *
+     */
     temperature = 'temperature',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by the Thorns armor enchantment and by the
+     * Guardian thorns effect.
+     *
+     */
     thorns = 'thorns',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused over time by falling into the void.
+     *
+     */
     'void' = 'void',
+    /**
+     * @beta
+     * @remarks
+     * Damage caused by the Wither effect. For example, from
+     * touching a Wither Rose.
+     *
+     */
     wither = 'wither',
 }
 
@@ -651,17 +853,72 @@ export enum ItemLockMode {
 /**
  * @beta
  * Enum containing the different phases of the moon based on
- * the current day.
- * Obtain the current MoonPhase using world.getMoonPhase
+ * the current day.,Obtain the current MoonPhase using
+ * world.getMoonPhase.
+ *
+ * The fullness of the moon controls various mob behaviors such
+ * as the number of slimes that spawn in Swamp biomes, the
+ * chance skeletons and zombies have to spawn with armor, as
+ * well as the chance for spiders to spawn with certain status
+ * effects.
  */
 export enum MoonPhase {
+    /**
+     * @beta
+     * @remarks
+     * The brightest moon phase. During this phase, cats have a 50%
+     * chance of spawning as black cats.
+     *
+     */
     FullMoon = 0,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the Full Moon.
+     *
+     */
     WaningGibbous = 1,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the Waxing Crescent.
+     *
+     */
     FirstQuarter = 2,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the Last Quarter.
+     *
+     */
     WaningCrescent = 3,
+    /**
+     * @beta
+     * @remarks
+     * The darkest moon phase.
+     *
+     */
     NewMoon = 4,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the New Moon.
+     *
+     */
     WaxingCrescent = 5,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the Waning Gibbous.
+     *
+     */
     LastQuarter = 6,
+    /**
+     * @beta
+     * @remarks
+     * The phase following the First Quarter.
+     *
+     */
     WaxingGibbous = 7,
 }
 
@@ -989,6 +1246,12 @@ export class Block {
     readonly z: number;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} above this block (positive in the
+     * Y direction).
+     *
+     * @param steps
+     * Number of steps above to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -998,6 +1261,12 @@ export class Block {
     above(steps?: number): Block | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} below this block (negative in the
+     * Y direction).
+     *
+     * @param steps
+     * Number of steps below to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1007,6 +1276,10 @@ export class Block {
     below(steps?: number): Block | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link @minecraft/server.Location} of the center
+     * of this block on the X and Z axis.
+     *
      */
     bottomCenter(): Vector3;
     /**
@@ -1035,10 +1308,20 @@ export class Block {
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link @minecraft/server.Location} of the center
+     * of this block on the X, Y, and Z axis.
+     *
      */
     center(): Vector3;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the east of this block
+     * (positive in the X direction).
+     *
+     * @param steps
+     * Number of steps to the east to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1049,16 +1332,13 @@ export class Block {
     /**
      * @beta
      * @remarks
-     * Gets additional configuration properties (a component) for
-     * specific capabilities of particular blocks - for example, an
-     * inventory component of a chest block.
+     * Gets a component (that represents additional capabilities)
+     * for a block - for example, an inventory component of a chest
+     * block.
      *
-     * @param componentName
-     * Identifier of the component. If a namespace is not
-     * specified, minecraft: is assumed.
      * @returns
-     * Returns the component object if it is present on the
-     * particular block.
+     * Returns the component if it exists on the block, otherwise
+     * undefined.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1078,6 +1358,9 @@ export class Block {
      * @param withData
      * Whether additional data facets of the item stack are
      * included.
+     * @returns
+     * An itemStack with the specified amount of items and data.
+     * Returns undefined if block type is incompatible.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1156,6 +1439,12 @@ export class Block {
     isValid(): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the north of this block
+     * (negative in the Z direction).
+     *
+     * @param steps
+     * Number of steps to the north to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1210,6 +1499,12 @@ export class Block {
     setType(blockType: BlockType | string): void;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the south of this block
+     * (positive in the Z direction).
+     *
+     * @param steps
+     * Number of steps to the south to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1240,6 +1535,12 @@ export class Block {
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the west of this block
+     * (negative in the X direction).
+     *
+     * @param steps
+     * Number of steps to the west to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1891,8 +2192,8 @@ export class BlockStates {
      * Retrieves a specific block state instance.
      *
      * @returns
-     * Returns the block state instance if it is found. If the
-     * block state instance is not found returns undefined.
+     * Returns the {@link Block} state instance if it is found. If
+     * the block state instance is not found returns undefined.
      */
     static get(stateName: string): BlockStateType | undefined;
     /**
@@ -2959,6 +3260,9 @@ export class Container {
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
+     * @returns
+     * An itemStack with the items that couldn't be transferred.
+     * Returns undefined if all items were transferred.
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
@@ -3941,8 +4245,6 @@ export class EffectAddAfterEvent {
     effect: Effect;
     /**
      * @remarks
-     * Additional variant number for the effect.
-     *
      * This property can't be edited in read-only mode.
      *
      */
@@ -4653,10 +4955,10 @@ export class Entity {
      * for an entity.
      *
      * @param componentId
-     * The identifier of the component (e.g., 'minecraft:rideable')
-     * to retrieve. If no namespace prefix is specified,
-     * 'minecraft:' is assumed. If the component is not present on
-     * the entity, undefined is returned.
+     * The identifier of the component (e.g., 'minecraft:health').
+     * If no namespace prefix is specified, 'minecraft:' is
+     * assumed. Available component IDs can be found as part of the
+     * {@link @minecraft/server.EntityComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
@@ -7534,12 +7836,16 @@ export class IButtonPushAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes to the event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void;
     /**
      * @remarks
+     * Unsubscribes from the event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -7556,12 +7862,16 @@ export class ILeverActionAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes to the event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
     /**
      * @remarks
+     * Unsubscribes from the event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -7578,12 +7888,16 @@ export class IPlayerJoinAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes to the event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
     /**
      * @remarks
+     * Unsubscribes from the event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -7600,12 +7914,16 @@ export class IPlayerLeaveAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes to the event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: PlayerLeaveAfterEvent) => void): (arg: PlayerLeaveAfterEvent) => void;
     /**
      * @remarks
+     * Unsubscribes from the event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -7622,12 +7940,16 @@ export class IPlayerSpawnAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes to the event.
+     *
      * This function can't be called in read-only mode.
      *
      */
     subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
     /**
      * @remarks
+     * Unsubscribes from the event.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -8204,15 +8526,18 @@ export class ItemStack {
      * for an item stack.
      *
      * @param componentId
-     * The identifier of the component (e.g., 'minecraft:food') to
-     * retrieve. If no namespace prefix is specified, 'minecraft:'
-     * is assumed. If the component is not present on the item
-     * stack or doesn't exist, undefined is returned.
+     * The identifier of the component (e.g., 'minecraft:food'). If
+     * no namespace prefix is specified, 'minecraft:' is assumed.
+     * Available component IDs can be found as part of the {@link
+     * @minecraft/server.ItemComponentTypes} enum.
+     * @returns
+     * Returns the component if it exists on the item stack,
+     * otherwise undefined.
      * @example durability.ts
      * ```typescript
      * // Get the maximum durability of a custom sword item
-     * const itemStack = new ItemStack("custom:sword");
-     * const durability = itemStack.getComponent("minecraft:durability") as ItemDurabilityComponent;
+     * const itemStack = new ItemStack('custom:sword');
+     * const durability = itemStack.getComponent(ItemComponentTypes.Durability);
      * const maxDurability = durability.maxDurability;
      * ```
      */
@@ -8658,8 +8983,9 @@ export class ItemTypes {
 
 /**
  * @beta
- * Contains information related to an item being used. This
- * event fires when an item is successfully used by a player.
+ * Contains information related to an item being used on a
+ * block. This event fires when an item used by a player
+ * successfully triggers an entity interaction.
  */
 export class ItemUseAfterEvent {
     private constructor();
@@ -8745,8 +9071,8 @@ export class ItemUseBeforeEventSignal {
 /**
  * @beta
  * Contains information related to an item being used on a
- * block. This event fires when an item is successfully used on
- * a block by a player.
+ * block. This event fires when an item used by a player
+ * successfully triggers a block interaction.
  */
 export class ItemUseOnAfterEvent {
     private constructor();

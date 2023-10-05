@@ -20,6 +20,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
     readonly headRotation: minecraftserver.Vector2;
     /**
      * @remarks
+     * Returns whether the simulated player is sprinting.
+     *
      * This property can't be edited in read-only mode.
      *
      */
@@ -93,6 +95,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
     dropSelectedItem(): boolean;
     /**
      * @remarks
+     * Causes the simulated player to start flying as though they
+     * were flying in creative mode. For flying with Elytra, see
+     * function glide.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -113,8 +119,16 @@ export class SimulatedPlayer extends minecraftserver.Player {
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
     /**
      * @remarks
+     * Causes the simulated player to start gliding. Elytra must be
+     * equipped and the player must be in the air.
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Returns true if the simulated player begins to glide.
+     * Returns false if the player is already gliding, or the
+     * player does not have Elytra equipped, is in water or is on
+     * the ground.
      * @throws This function can throw errors.
      */
     glide(): boolean;
@@ -361,6 +375,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopBreakingBlock(): void;
     /**
      * @remarks
+     * Causes the simulated player to stop flying.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -368,6 +384,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopFlying(): void;
     /**
      * @remarks
+     * Causes the simulated player to stop gliding.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -394,6 +412,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopMoving(): void;
     /**
      * @remarks
+     * Causes the simulated player to stop swimming.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -410,6 +430,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
     stopUsingItem(): void;
     /**
      * @remarks
+     * Causes the simulated player to start swimming.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.

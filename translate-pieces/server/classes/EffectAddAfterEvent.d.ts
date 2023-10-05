@@ -15,8 +15,6 @@ export class EffectAddAfterEvent {
     effect: Effect;
     /**
      * @remarks
-     * Additional variant number for the effect.
-     *
      * This property can't be edited in read-only mode.
      *
      */

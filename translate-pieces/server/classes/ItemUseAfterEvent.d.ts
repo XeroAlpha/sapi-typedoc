@@ -1,7 +1,8 @@
 /**
  * @beta
- * Contains information related to an item being used. This
- * event fires when an item is successfully used by a player.
+ * Contains information related to an item being used on a
+ * block. This event fires when an item used by a player
+ * successfully triggers an entity interaction.
  */
 export class ItemUseAfterEvent {
     private constructor();

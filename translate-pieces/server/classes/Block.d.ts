@@ -127,6 +127,12 @@ export class Block {
     readonly z: number;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} above this block (positive in the
+     * Y direction).
+     *
+     * @param steps
+     * Number of steps above to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -136,6 +142,12 @@ export class Block {
     above(steps?: number): Block | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} below this block (negative in the
+     * Y direction).
+     *
+     * @param steps
+     * Number of steps below to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -145,6 +157,10 @@ export class Block {
     below(steps?: number): Block | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link @minecraft/server.Location} of the center
+     * of this block on the X and Z axis.
+     *
      */
     bottomCenter(): Vector3;
     /**
@@ -173,10 +189,20 @@ export class Block {
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link @minecraft/server.Location} of the center
+     * of this block on the X, Y, and Z axis.
+     *
      */
     center(): Vector3;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the east of this block
+     * (positive in the X direction).
+     *
+     * @param steps
+     * Number of steps to the east to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -187,16 +213,13 @@ export class Block {
     /**
      * @beta
      * @remarks
-     * Gets additional configuration properties (a component) for
-     * specific capabilities of particular blocks - for example, an
-     * inventory component of a chest block.
+     * Gets a component (that represents additional capabilities)
+     * for a block - for example, an inventory component of a chest
+     * block.
      *
-     * @param componentName
-     * Identifier of the component. If a namespace is not
-     * specified, minecraft: is assumed.
      * @returns
-     * Returns the component object if it is present on the
-     * particular block.
+     * Returns the component if it exists on the block, otherwise
+     * undefined.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -216,6 +239,9 @@ export class Block {
      * @param withData
      * Whether additional data facets of the item stack are
      * included.
+     * @returns
+     * An itemStack with the specified amount of items and data.
+     * Returns undefined if block type is incompatible.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -294,6 +320,12 @@ export class Block {
     isValid(): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the north of this block
+     * (negative in the Z direction).
+     *
+     * @param steps
+     * Number of steps to the north to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -348,6 +380,12 @@ export class Block {
     setType(blockType: BlockType | string): void;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the south of this block
+     * (positive in the Z direction).
+     *
+     * @param steps
+     * Number of steps to the south to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -378,6 +416,12 @@ export class Block {
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
      * @beta
+     * @remarks
+     * Returns the {@link Block} to the west of this block
+     * (negative in the X direction).
+     *
+     * @param steps
+     * Number of steps to the west to step before returning.
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
