@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.40-preview.24"
+ *   "version": "0.1.0-beta.1.20.50-preview.20"
  * }
  * ```
  *
@@ -183,6 +183,11 @@ export declare enum EditorInputContext {
     GlobalEditor = 'global.editor',
     GlobalToolMode = 'global.toolMode',
     Viewport = 'local.toolMode.viewport',
+}
+
+export enum EditorMode {
+    Crosshair = 'Crosshair',
+    Tool = 'Tool',
 }
 
 export declare enum EditorStatusBarAlignment {
@@ -935,6 +940,7 @@ export class Extension {
  */
 export class ExtensionContext {
     private constructor();
+    readonly afterEvents: ExtensionContextAfterEvents;
     /**
      * @remarks
      * This is used to access the players Clipboard Manager and the
@@ -981,6 +987,11 @@ export class ExtensionContext {
      *
      */
     readonly transactionManager: TransactionManager;
+}
+
+export class ExtensionContextAfterEvents {
+    private constructor();
+    readonly modeChange: ModeChangeAfterEventSignal;
 }
 
 /**
@@ -1104,6 +1115,28 @@ export class MinecraftEditor {
         shutdownFunction: (arg: ExtensionContext) => void,
         options?: ExtensionOptionalParameters,
     ): Extension;
+}
+
+export class ModeChangeAfterEvent {
+    private constructor();
+    readonly mode: EditorMode;
+}
+
+export class ModeChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
 }
 
 export class PlaytestManager {

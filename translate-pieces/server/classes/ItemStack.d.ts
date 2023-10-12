@@ -132,7 +132,7 @@ export class ItemStack {
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
      * Available component IDs can be found as part of the {@link
-     * @minecraft/server.ItemComponentTypes} enum.
+     * ItemComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
@@ -144,7 +144,7 @@ export class ItemStack {
      * const maxDurability = durability.maxDurability;
      * ```
      */
-    getComponent(componentId: string): ItemComponent | undefined;
+    getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this item

@@ -16,12 +16,26 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.7.0-internal.1.20.40-preview.24"
+ *   "version": "1.8.0-internal.1.20.50-preview.20"
  * }
  * ```
  *
  */
 import * as minecraftcommon from '@minecraft/common';
+/**
+ * @beta
+ */
+export enum BlockComponentTypes {
+    Inventory = 'minecraft:inventory',
+    LavaContainer = 'minecraft:lavaContainer',
+    Piston = 'minecraft:piston',
+    PotionContainer = 'minecraft:potionContainer',
+    RecordPlayer = 'minecraft:recordPlayer',
+    Sign = 'minecraft:sign',
+    SnowContainer = 'minecraft:snowContainer',
+    WaterContainer = 'minecraft:waterContainer',
+}
+
 /**
  * @beta
  * Description of the resulting intersection test on two
@@ -368,6 +382,73 @@ export enum EasingType {
     OutQuint = 'OutQuint',
     OutSine = 'OutSine',
     Spring = 'Spring',
+}
+
+/**
+ * @beta
+ */
+export enum EntityComponentTypes {
+    AddRider = 'minecraft:addrider',
+    Ageable = 'minecraft:ageable',
+    Breathable = 'minecraft:breathable',
+    CanClimb = 'minecraft:can_climb',
+    CanFly = 'minecraft:can_fly',
+    CanPowerJump = 'minecraft:can_power_jump',
+    Color = 'minecraft:color',
+    Equippable = 'minecraft:equippable',
+    FireImmune = 'minecraft:fire_immune',
+    FloatsInLiquid = 'minecraft:floats_in_liquid',
+    FlyingSpeed = 'minecraft:flying_speed',
+    FrictionModifier = 'minecraft:friction_modifier',
+    GroundOffset = 'minecraft:ground_offset',
+    Healable = 'minecraft:healable',
+    Health = 'minecraft:health',
+    Inventory = 'minecraft:inventory',
+    IsBaby = 'minecraft:is_baby',
+    IsCharged = 'minecraft:is_charged',
+    IsChested = 'minecraft:is_chested',
+    IsDyeable = 'minecraft:is_dyeable',
+    IsHiddenWhenInvisible = 'minecraft:is_hidden_when_invisible',
+    IsIgnited = 'minecraft:is_ignited',
+    IsIllagerCaptain = 'minecraft:is_illager_captain',
+    IsSaddled = 'minecraft:is_saddled',
+    IsShaking = 'minecraft:is_shaking',
+    IsSheared = 'minecraft:is_sheared',
+    IsStackable = 'minecraft:is_stackable',
+    IsStunned = 'minecraft:is_stunned',
+    IsTamed = 'minecraft:is_tamed',
+    Item = 'minecraft:item',
+    LavaMovement = 'minecraft:lava_movement',
+    Leashable = 'minecraft:leashable',
+    MarkVariant = 'minecraft:mark_variant',
+    MountTaming = 'minecraft:tamemount',
+    Movement = 'minecraft:movement',
+    MovementAmphibious = 'minecraft:movement.amphibious',
+    MovementBasic = 'minecraft:movement.basic',
+    MovementFly = 'minecraft:movement.fly',
+    MovementGeneric = 'minecraft:movement.generic',
+    MovementGlide = 'minecraft:movement.glide',
+    MovementHover = 'minecraft:movement.hover',
+    MovementJump = 'minecraft:movement.jump',
+    MovementSkip = 'minecraft:movement.skip',
+    MovementSway = 'minecraft:movement.sway',
+    NavigationClimb = 'minecraft:navigation.climb',
+    NavigationFloat = 'minecraft:navigation.float',
+    NavigationFly = 'minecraft:navigation.fly',
+    NavigationGeneric = 'minecraft:navigation.generic',
+    NavigationHover = 'minecraft:navigation.hover',
+    NavigationWalk = 'minecraft:navigation.walk',
+    OnFire = 'minecraft:onfire',
+    PushThrough = 'minecraft:push_through',
+    Rideable = 'minecraft:rideable',
+    Riding = 'minecraft:riding',
+    Scale = 'minecraft:scale',
+    SkinId = 'minecraft:skin_id',
+    Strength = 'minecraft:strength',
+    Tameable = 'minecraft:tameable',
+    UnderwaterMovement = 'minecraft:underwater_movement',
+    Variant = 'minecraft:variant',
+    WantsJockey = 'minecraft:wants_jockey',
 }
 
 /**
@@ -823,6 +904,16 @@ export enum GameMode {
 
 /**
  * @beta
+ */
+export enum ItemComponentTypes {
+    Cooldown = 'minecraft:cooldown',
+    Durability = 'minecraft:durability',
+    Enchants = 'minecraft:enchantments',
+    Food = 'minecraft:food',
+}
+
+/**
+ * @beta
  * Describes how an an item can be moved within a container.
  */
 export enum ItemLockMode {
@@ -1119,6 +1210,170 @@ export enum WeatherType {
 
 /**
  * @beta
+ */
+export type BlockComponentTypeMap = {
+    inventory: BlockInventoryComponent;
+    lavaContainer: BlockLavaContainerComponent;
+    'minecraft:inventory': BlockInventoryComponent;
+    'minecraft:lavaContainer': BlockLavaContainerComponent;
+    'minecraft:piston': BlockPistonComponent;
+    'minecraft:potionContainer': BlockPotionContainerComponent;
+    'minecraft:recordPlayer': BlockRecordPlayerComponent;
+    'minecraft:sign': BlockSignComponent;
+    'minecraft:snowContainer': BlockSnowContainerComponent;
+    'minecraft:waterContainer': BlockWaterContainerComponent;
+    piston: BlockPistonComponent;
+    potionContainer: BlockPotionContainerComponent;
+    recordPlayer: BlockRecordPlayerComponent;
+    sign: BlockSignComponent;
+    snowContainer: BlockSnowContainerComponent;
+    waterContainer: BlockWaterContainerComponent;
+};
+
+/**
+ * @beta
+ */
+export type EntityComponentTypeMap = {
+    addrider: EntityAddRiderComponent;
+    ageable: EntityAgeableComponent;
+    breathable: EntityBreathableComponent;
+    can_climb: EntityCanClimbComponent;
+    can_fly: EntityCanFlyComponent;
+    can_power_jump: EntityCanPowerJumpComponent;
+    color: EntityColorComponent;
+    equippable: EntityEquippableComponent;
+    fire_immune: EntityFireImmuneComponent;
+    floats_in_liquid: EntityFloatsInLiquidComponent;
+    flying_speed: EntityFlyingSpeedComponent;
+    friction_modifier: EntityFrictionModifierComponent;
+    ground_offset: EntityGroundOffsetComponent;
+    healable: EntityHealableComponent;
+    health: EntityHealthComponent;
+    inventory: EntityInventoryComponent;
+    is_baby: EntityIsBabyComponent;
+    is_charged: EntityIsChargedComponent;
+    is_chested: EntityIsChestedComponent;
+    is_dyeable: EntityIsDyeableComponent;
+    is_hidden_when_invisible: EntityIsHiddenWhenInvisibleComponent;
+    is_ignited: EntityIsIgnitedComponent;
+    is_illager_captain: EntityIsIllagerCaptainComponent;
+    is_saddled: EntityIsSaddledComponent;
+    is_shaking: EntityIsShakingComponent;
+    is_sheared: EntityIsShearedComponent;
+    is_stackable: EntityIsStackableComponent;
+    is_stunned: EntityIsStunnedComponent;
+    is_tamed: EntityIsTamedComponent;
+    item: EntityItemComponent;
+    lava_movement: EntityLavaMovementComponent;
+    leashable: EntityLeashableComponent;
+    mark_variant: EntityMarkVariantComponent;
+    'minecraft:addrider': EntityAddRiderComponent;
+    'minecraft:ageable': EntityAgeableComponent;
+    'minecraft:breathable': EntityBreathableComponent;
+    'minecraft:can_climb': EntityCanClimbComponent;
+    'minecraft:can_fly': EntityCanFlyComponent;
+    'minecraft:can_power_jump': EntityCanPowerJumpComponent;
+    'minecraft:color': EntityColorComponent;
+    'minecraft:equippable': EntityEquippableComponent;
+    'minecraft:fire_immune': EntityFireImmuneComponent;
+    'minecraft:floats_in_liquid': EntityFloatsInLiquidComponent;
+    'minecraft:flying_speed': EntityFlyingSpeedComponent;
+    'minecraft:friction_modifier': EntityFrictionModifierComponent;
+    'minecraft:ground_offset': EntityGroundOffsetComponent;
+    'minecraft:healable': EntityHealableComponent;
+    'minecraft:health': EntityHealthComponent;
+    'minecraft:inventory': EntityInventoryComponent;
+    'minecraft:is_baby': EntityIsBabyComponent;
+    'minecraft:is_charged': EntityIsChargedComponent;
+    'minecraft:is_chested': EntityIsChestedComponent;
+    'minecraft:is_dyeable': EntityIsDyeableComponent;
+    'minecraft:is_hidden_when_invisible': EntityIsHiddenWhenInvisibleComponent;
+    'minecraft:is_ignited': EntityIsIgnitedComponent;
+    'minecraft:is_illager_captain': EntityIsIllagerCaptainComponent;
+    'minecraft:is_saddled': EntityIsSaddledComponent;
+    'minecraft:is_shaking': EntityIsShakingComponent;
+    'minecraft:is_sheared': EntityIsShearedComponent;
+    'minecraft:is_stackable': EntityIsStackableComponent;
+    'minecraft:is_stunned': EntityIsStunnedComponent;
+    'minecraft:is_tamed': EntityIsTamedComponent;
+    'minecraft:item': EntityItemComponent;
+    'minecraft:lava_movement': EntityLavaMovementComponent;
+    'minecraft:leashable': EntityLeashableComponent;
+    'minecraft:mark_variant': EntityMarkVariantComponent;
+    'minecraft:movement': EntityMovementComponent;
+    'minecraft:movement.amphibious': EntityMovementAmphibiousComponent;
+    'minecraft:movement.basic': EntityMovementBasicComponent;
+    'minecraft:movement.fly': EntityMovementFlyComponent;
+    'minecraft:movement.generic': EntityMovementGenericComponent;
+    'minecraft:movement.glide': EntityMovementGlideComponent;
+    'minecraft:movement.hover': EntityMovementHoverComponent;
+    'minecraft:movement.jump': EntityMovementJumpComponent;
+    'minecraft:movement.skip': EntityMovementSkipComponent;
+    'minecraft:movement.sway': EntityMovementSwayComponent;
+    'minecraft:navigation.climb': EntityNavigationClimbComponent;
+    'minecraft:navigation.float': EntityNavigationFloatComponent;
+    'minecraft:navigation.fly': EntityNavigationFlyComponent;
+    'minecraft:navigation.generic': EntityNavigationGenericComponent;
+    'minecraft:navigation.hover': EntityNavigationHoverComponent;
+    'minecraft:navigation.walk': EntityNavigationWalkComponent;
+    'minecraft:onfire': EntityOnFireComponent;
+    'minecraft:push_through': EntityPushThroughComponent;
+    'minecraft:rideable': EntityRideableComponent;
+    'minecraft:riding': EntityRidingComponent;
+    'minecraft:scale': EntityScaleComponent;
+    'minecraft:skin_id': EntitySkinIdComponent;
+    'minecraft:strength': EntityStrengthComponent;
+    'minecraft:tameable': EntityTameableComponent;
+    'minecraft:tamemount': EntityMountTamingComponent;
+    'minecraft:underwater_movement': EntityUnderwaterMovementComponent;
+    'minecraft:variant': EntityVariantComponent;
+    'minecraft:wants_jockey': EntityWantsJockeyComponent;
+    movement: EntityMovementComponent;
+    'movement.amphibious': EntityMovementAmphibiousComponent;
+    'movement.basic': EntityMovementBasicComponent;
+    'movement.fly': EntityMovementFlyComponent;
+    'movement.generic': EntityMovementGenericComponent;
+    'movement.glide': EntityMovementGlideComponent;
+    'movement.hover': EntityMovementHoverComponent;
+    'movement.jump': EntityMovementJumpComponent;
+    'movement.skip': EntityMovementSkipComponent;
+    'movement.sway': EntityMovementSwayComponent;
+    'navigation.climb': EntityNavigationClimbComponent;
+    'navigation.float': EntityNavigationFloatComponent;
+    'navigation.fly': EntityNavigationFlyComponent;
+    'navigation.generic': EntityNavigationGenericComponent;
+    'navigation.hover': EntityNavigationHoverComponent;
+    'navigation.walk': EntityNavigationWalkComponent;
+    onfire: EntityOnFireComponent;
+    push_through: EntityPushThroughComponent;
+    rideable: EntityRideableComponent;
+    riding: EntityRidingComponent;
+    scale: EntityScaleComponent;
+    skin_id: EntitySkinIdComponent;
+    strength: EntityStrengthComponent;
+    tameable: EntityTameableComponent;
+    tamemount: EntityMountTamingComponent;
+    underwater_movement: EntityUnderwaterMovementComponent;
+    variant: EntityVariantComponent;
+    wants_jockey: EntityWantsJockeyComponent;
+};
+
+/**
+ * @beta
+ */
+export type ItemComponentTypeMap = {
+    cooldown: ItemCooldownComponent;
+    durability: ItemDurabilityComponent;
+    enchantments: ItemEnchantsComponent;
+    food: ItemFoodComponent;
+    'minecraft:cooldown': ItemCooldownComponent;
+    'minecraft:durability': ItemDurabilityComponent;
+    'minecraft:enchantments': ItemEnchantsComponent;
+    'minecraft:food': ItemFoodComponent;
+};
+
+/**
+ * @beta
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state
  * of the block at that location. This type was significantly
@@ -1336,6 +1591,11 @@ export class Block {
      * for a block - for example, an inventory component of a chest
      * block.
      *
+     * @param componentId
+     * The identifier of the component (e.g.,
+     * 'minecraft:inventory'). If no namespace prefix is specified,
+     * 'minecraft:' is assumed. Available component IDs can be
+     * found as part of the {@link BlockComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the block, otherwise
      * undefined.
@@ -1345,7 +1605,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent(componentName: string): BlockComponent | undefined;
+    getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
     /**
      * @beta
      * @remarks
@@ -4245,12 +4505,6 @@ export class EffectAddAfterEvent {
     effect: Effect;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
-     *
-     */
-    effectState: number;
-    /**
-     * @remarks
      * Entity that the effect is being added to.
      *
      * This property can't be edited in read-only mode.
@@ -4288,6 +4542,62 @@ export class EffectAddAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to changes to an effect - like
+ * poison - being added to an entity.
+ */
+export class EffectAddBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * When set to true will cancel the event.
+     *
+     */
+    cancel: boolean;
+    duration: number;
+    /**
+     * @remarks
+     * The type of the effect that is being added.
+     *
+     */
+    readonly effectType: string;
+    /**
+     * @remarks
+     * Entity that the effect is being added to.
+     *
+     */
+    readonly entity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an effect is
+ * added to an entity.
+ */
+export class EffectAddBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an effect is added
+     * to an entity.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: EffectAddBeforeEvent) => void): (arg: EffectAddBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an effect is added
+     * to an entity.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: EffectAddBeforeEvent) => void): void;
 }
 
 /**
@@ -4958,12 +5268,12 @@ export class Entity {
      * The identifier of the component (e.g., 'minecraft:health').
      * If no namespace prefix is specified, 'minecraft:' is
      * assumed. Available component IDs can be found as part of the
-     * {@link @minecraft/server.EntityComponentTypes} enum.
+     * {@link EntityComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
      */
-    getComponent(componentId: string): EntityComponent | undefined;
+    getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
      * @beta
      * @remarks
@@ -8529,7 +8839,7 @@ export class ItemStack {
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
      * Available component IDs can be found as part of the {@link
-     * @minecraft/server.ItemComponentTypes} enum.
+     * ItemComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
@@ -8541,7 +8851,7 @@ export class ItemStack {
      * const maxDurability = durability.maxDurability;
      * ```
      */
-    getComponent(componentId: string): ItemComponent | undefined;
+    getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this item
@@ -12902,6 +13212,14 @@ export class WorldBeforeEvents {
      *
      */
     readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event is triggered after an event has been added to an
+     * entity.
+     *
+     */
+    readonly effectAdd: EffectAddBeforeEventSignal;
     /**
      * @beta
      * @remarks

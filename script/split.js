@@ -33,6 +33,15 @@ function split(sourceFile) {
     );
     const piecePathList = [];
     const pieces = [];
+    const packageDocumentationJSDoc = sourceFile.getDescendantsOfKind(SyntaxKind.JSDoc)
+        .find((jsdoc) => jsdoc.getTags().some((tag) => tag.getTagName() === 'packageDocumentation'));
+    if (packageDocumentationJSDoc) {
+        pieces.push({
+            start: packageDocumentationJSDoc.getStart(),
+            end: packageDocumentationJSDoc.getEnd(),
+            path: resolvePath(pieceDirectory, `package.d.ts`)
+        });
+    }
     sourceFile.forEachChild((node) => {
         if (SkippedTopLevelSyntaxKinds.includes(node.getKind())) return;
         const includedSymbols = node.getDescendants()
@@ -58,8 +67,9 @@ function split(sourceFile) {
             pieceIndex++;
         }
         piecePathList.push(piecePath.toLowerCase());
-        const jsdocList = node.getChildrenOfKind(SyntaxKind.JSDoc);
-        let pieceStart = node.getStart(true);
+        const jsdocList = node.getChildrenOfKind(SyntaxKind.JSDoc)
+            .filter((jsdoc) => jsdoc.getStart() !== packageDocumentationJSDoc.getStart());
+        let pieceStart = node.getStart(false);
         if (jsdocList.length > 0) {
             pieceStart = jsdocList.pop().getStart();
         }

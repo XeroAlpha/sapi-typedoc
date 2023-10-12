@@ -12,6 +12,7 @@
  */
 export class ExtensionContext {
     private constructor();
+    readonly afterEvents: ExtensionContextAfterEvents;
     /**
      * @remarks
      * This is used to access the players Clipboard Manager and the
