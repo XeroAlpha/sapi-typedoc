@@ -217,6 +217,11 @@ export class Block {
      * for a block - for example, an inventory component of a chest
      * block.
      *
+     * @param componentId
+     * The identifier of the component (e.g.,
+     * 'minecraft:inventory'). If no namespace prefix is specified,
+     * 'minecraft:' is assumed. Available component IDs can be
+     * found as part of the {@link BlockComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the block, otherwise
      * undefined.
@@ -226,7 +231,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent(componentName: string): BlockComponent | undefined;
+    getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
     /**
      * @beta
      * @remarks

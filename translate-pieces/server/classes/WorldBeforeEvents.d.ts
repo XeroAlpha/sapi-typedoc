@@ -28,6 +28,14 @@ export class WorldBeforeEvents {
     /**
      * @beta
      * @remarks
+     * This event is triggered after an event has been added to an
+     * entity.
+     *
+     */
+    readonly effectAdd: EffectAddBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
      *

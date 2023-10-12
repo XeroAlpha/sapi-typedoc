@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { readFileSync, writeFileSync, rmSync, mkdirSync } = require("fs");
+const { readFileSync, writeFileSync, rmSync, mkdirSync, existsSync } = require("fs");
 const { resolve: resolvePath } = require("path");
 const { URL } = require("url");
 const { build } = require("./build.js");
@@ -77,8 +77,13 @@ async function main() {
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, "package.json");
     const packageSnapshotPath = resolvePath(translatedPath, "package.json");
-    rmSync(packageSnapshotPath);
-    rmSync(resolvePath(originalPath, "node_modules"), { recursive: true, force: true });
+    if (existsSync(packageSnapshotPath)) {
+        rmSync(packageSnapshotPath);
+    }
+    const originalNodeModulesDir = resolvePath(originalPath, "node_modules");
+    if (existsSync(originalNodeModulesDir)) {
+        rmSync(originalNodeModulesDir, { recursive: true, force: true });
+    }
 
     // 不使用翻译构建项目
     const { project, sourceFiles, dependencies, tsdocProject } = await build(false);

@@ -7,15 +7,15 @@ Minecraft 脚本 API 文档。
 |模块|版本|
 | - | - |
 |[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.0.0-rc`|
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.7.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.8.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.40-preview.24`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.20`|
 
-游戏版本号：`1.20.40.24`
+游戏版本号：`1.20.50.20`
 
 <!-- summary end -->
 
@@ -47,9 +47,9 @@ Minecraft 脚本 API 文档。
 |模块|进度|
 | - | - |
 |[@minecraft/common](#minecraftcommon)|0/3|
-|[@minecraft/server](#minecraftserver)|0/336|
+|[@minecraft/server](#minecraftserver)|0/344|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
-|[@minecraft/server-editor](#minecraftserver-editor)|0/84|
+|[@minecraft/server-editor](#minecraftserver-editor)|0/88|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
 |[@minecraft/server-ui](#minecraftserver-ui)|0/10|
@@ -66,6 +66,7 @@ Minecraft 脚本 API 文档。
 
 |名称|类型|状态|
 | - | - | - |
+|[`BlockComponentTypes`](https://projectxero.top/sapi/enums/server.BlockComponentTypes.html)|枚举|未翻译|
 |[`BlockVolumeIntersection`](https://projectxero.top/sapi/enums/server.BlockVolumeIntersection.html)|枚举|未翻译|
 |[`CompoundBlockVolumeAction`](https://projectxero.top/sapi/enums/server.CompoundBlockVolumeAction.html)|枚举|未翻译|
 |[`CompoundBlockVolumePositionRelativity`](https://projectxero.top/sapi/enums/server.CompoundBlockVolumePositionRelativity.html)|枚举|未翻译|
@@ -74,12 +75,14 @@ Minecraft 脚本 API 文档。
 |[`DisplaySlotId`](https://projectxero.top/sapi/enums/server.DisplaySlotId.html)|枚举|未翻译|
 |[`DyeColor`](https://projectxero.top/sapi/enums/server.DyeColor.html)|枚举|未翻译|
 |[`EasingType`](https://projectxero.top/sapi/enums/server.EasingType.html)|枚举|未翻译|
+|[`EntityComponentTypes`](https://projectxero.top/sapi/enums/server.EntityComponentTypes.html)|枚举|未翻译|
 |[`EntityDamageCause`](https://projectxero.top/sapi/enums/server.EntityDamageCause.html)|枚举|未翻译|
 |[`EntityInitializationCause`](https://projectxero.top/sapi/enums/server.EntityInitializationCause.html)|枚举|未翻译|
 |[`EntityLifetimeState`](https://projectxero.top/sapi/enums/server.EntityLifetimeState.html)|枚举|未翻译|
 |[`EquipmentSlot`](https://projectxero.top/sapi/enums/server.EquipmentSlot.html)|枚举|未翻译|
 |[`FluidType`](https://projectxero.top/sapi/enums/server.FluidType.html)|枚举|未翻译|
 |[`GameMode`](https://projectxero.top/sapi/enums/server.GameMode.html)|枚举|未翻译|
+|[`ItemComponentTypes`](https://projectxero.top/sapi/enums/server.ItemComponentTypes.html)|枚举|未翻译|
 |[`ItemLockMode`](https://projectxero.top/sapi/enums/server.ItemLockMode.html)|枚举|未翻译|
 |[`MoonPhase`](https://projectxero.top/sapi/enums/server.MoonPhase.html)|枚举|未翻译|
 |[`ObjectiveSortOrder`](https://projectxero.top/sapi/enums/server.ObjectiveSortOrder.html)|枚举|未翻译|
@@ -136,6 +139,8 @@ Minecraft 脚本 API 文档。
 |[`Effect`](https://projectxero.top/sapi/classes/server.Effect.html)|类|未翻译|
 |[`EffectAddAfterEvent`](https://projectxero.top/sapi/classes/server.EffectAddAfterEvent.html)|类|未翻译|
 |[`EffectAddAfterEventSignal`](https://projectxero.top/sapi/classes/server.EffectAddAfterEventSignal.html)|类|未翻译|
+|[`EffectAddBeforeEvent`](https://projectxero.top/sapi/classes/server.EffectAddBeforeEvent.html)|类|未翻译|
+|[`EffectAddBeforeEventSignal`](https://projectxero.top/sapi/classes/server.EffectAddBeforeEventSignal.html)|类|未翻译|
 |[`EffectType`](https://projectxero.top/sapi/classes/server.EffectType.html)|类|未翻译|
 |[`EffectTypes`](https://projectxero.top/sapi/classes/server.EffectTypes.html)|类|未翻译|
 |[`Enchantment`](https://projectxero.top/sapi/classes/server.Enchantment.html)|类|未翻译|
@@ -397,6 +402,9 @@ Minecraft 脚本 API 文档。
 |[`Vector2`](https://projectxero.top/sapi/interfaces/server.Vector2.html)|接口|未翻译|
 |[`Vector3`](https://projectxero.top/sapi/interfaces/server.Vector3.html)|接口|未翻译|
 |[`WorldSoundOptions`](https://projectxero.top/sapi/interfaces/server.WorldSoundOptions.html)|接口|未翻译|
+|[`BlockComponentTypeMap`](https://projectxero.top/sapi/types/server.BlockComponentTypeMap.html)|类型别名|未翻译|
+|[`EntityComponentTypeMap`](https://projectxero.top/sapi/types/server.EntityComponentTypeMap.html)|类型别名|未翻译|
+|[`ItemComponentTypeMap`](https://projectxero.top/sapi/types/server.ItemComponentTypeMap.html)|类型别名|未翻译|
 |[`MoonPhaseCount`](https://projectxero.top/sapi/variables/server.MoonPhaseCount.html)|变量|未翻译|
 |[`TicksPerDay`](https://projectxero.top/sapi/variables/server.TicksPerDay.html)|变量|未翻译|
 |[`TicksPerSecond`](https://projectxero.top/sapi/variables/server.TicksPerSecond.html)|变量|未翻译|
@@ -424,6 +432,7 @@ Minecraft 脚本 API 文档。
 |[`CursorTargetMode`](https://projectxero.top/sapi/enums/server_editor.CursorTargetMode.html)|枚举|未翻译|
 |[`EDITOR_PANE_PROPERTY_ITEM_TYPE`](https://projectxero.top/sapi/enums/server_editor.EDITOR_PANE_PROPERTY_ITEM_TYPE.html)|枚举|未翻译|
 |[`EditorInputContext`](https://projectxero.top/sapi/enums/server_editor.EditorInputContext.html)|枚举|未翻译|
+|[`EditorMode`](https://projectxero.top/sapi/enums/server_editor.EditorMode.html)|枚举|未翻译|
 |[`EditorStatusBarAlignment`](https://projectxero.top/sapi/enums/server_editor.EditorStatusBarAlignment.html)|枚举|未翻译|
 |[`InputModifier`](https://projectxero.top/sapi/enums/server_editor.InputModifier.html)|枚举|未翻译|
 |[`KeyInputType`](https://projectxero.top/sapi/enums/server_editor.KeyInputType.html)|枚举|未翻译|
@@ -438,8 +447,11 @@ Minecraft 脚本 API 文档。
 |[`Cursor`](https://projectxero.top/sapi/classes/server_editor.Cursor.html)|类|未翻译|
 |[`Extension`](https://projectxero.top/sapi/classes/server_editor.Extension.html)|类|未翻译|
 |[`ExtensionContext`](https://projectxero.top/sapi/classes/server_editor.ExtensionContext.html)|类|未翻译|
+|[`ExtensionContextAfterEvents`](https://projectxero.top/sapi/classes/server_editor.ExtensionContextAfterEvents.html)|类|未翻译|
 |[`Logger`](https://projectxero.top/sapi/classes/server_editor.Logger.html)|类|未翻译|
 |[`MinecraftEditor`](https://projectxero.top/sapi/classes/server_editor.MinecraftEditor.html)|类|未翻译|
+|[`ModeChangeAfterEvent`](https://projectxero.top/sapi/classes/server_editor.ModeChangeAfterEvent.html)|类|未翻译|
+|[`ModeChangeAfterEventSignal`](https://projectxero.top/sapi/classes/server_editor.ModeChangeAfterEventSignal.html)|类|未翻译|
 |[`PlaytestManager`](https://projectxero.top/sapi/classes/server_editor.PlaytestManager.html)|类|未翻译|
 |[`Selection`](https://projectxero.top/sapi/classes/server_editor.Selection.html)|类|未翻译|
 |[`SelectionManager`](https://projectxero.top/sapi/classes/server_editor.SelectionManager.html)|类|未翻译|

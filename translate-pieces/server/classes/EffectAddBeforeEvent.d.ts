@@ -3,22 +3,25 @@
  * Contains information related to changes to an effect - like
  * poison - being added to an entity.
  */
-export class EffectAddAfterEvent {
+export class EffectAddBeforeEvent {
     private constructor();
     /**
      * @remarks
-     * Additional properties and details of the effect.
-     *
-     * This property can't be edited in read-only mode.
+     * When set to true will cancel the event.
      *
      */
-    effect: Effect;
+    cancel: boolean;
+    duration: number;
+    /**
+     * @remarks
+     * The type of the effect that is being added.
+     *
+     */
+    readonly effectType: string;
     /**
      * @remarks
      * Entity that the effect is being added to.
      *
-     * This property can't be edited in read-only mode.
-     *
      */
-    entity: Entity;
+    readonly entity: Entity;
 }

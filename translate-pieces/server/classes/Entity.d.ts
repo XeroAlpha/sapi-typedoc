@@ -435,12 +435,12 @@ export class Entity {
      * The identifier of the component (e.g., 'minecraft:health').
      * If no namespace prefix is specified, 'minecraft:' is
      * assumed. Available component IDs can be found as part of the
-     * {@link @minecraft/server.EntityComponentTypes} enum.
+     * {@link EntityComponentTypes} enum.
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
      */
-    getComponent(componentId: string): EntityComponent | undefined;
+    getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
      * @beta
      * @remarks
