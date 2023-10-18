@@ -4,16 +4,29 @@ Minecraft 脚本 API 文档。
 
 <!-- summary start -->
 
-|模块|包名|版本|
-| - | - | - |
-|[common](https://projectxero.top/sapi/modules/common.html)|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|[1.0.0-rc](https://www.npmjs.com/package/@minecraft/common/v/1.0.0-rc.1.20.50-preview.20)|
-|[server](https://projectxero.top/sapi/modules/server.html)|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|[1.8.0-beta](https://www.npmjs.com/package/@minecraft/server/v/1.8.0-beta.1.20.50-preview.20)|
-|[server-admin](https://projectxero.top/sapi/modules/server_admin.html)|[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|[1.0.0-beta](https://www.npmjs.com/package/@minecraft/server-admin/v/1.0.0-beta.1.20.50-preview.20)|
-|[server-editor](https://projectxero.top/sapi/modules/server_editor.html)|[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|[0.1.0-beta](https://www.npmjs.com/package/@minecraft/server-editor/v/0.1.0-beta.1.20.50-preview.20)|
-|[server-gametest](https://projectxero.top/sapi/modules/server_gametest.html)|[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|[1.0.0-beta](https://www.npmjs.com/package/@minecraft/server-gametest/v/1.0.0-beta.1.20.50-preview.20)|
-|[server-net](https://projectxero.top/sapi/modules/server_net.html)|[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|[1.0.0-beta](https://www.npmjs.com/package/@minecraft/server-net/v/1.0.0-beta.1.20.50-preview.20)|
-|[server-ui](https://projectxero.top/sapi/modules/server_ui.html)|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|[1.2.0-beta](https://www.npmjs.com/package/@minecraft/server-ui/v/1.2.0-beta.1.20.50-preview.20)|
-|[vanilla-data](https://projectxero.top/sapi/modules/vanilla_data.html)|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|[1.20.50-preview.20](https://www.npmjs.com/package/@minecraft/vanilla-data/v/1.20.50-preview.20)|
+模块：
+
+- [@minecraft/common](https://projectxero.top/sapi/modules/common.html)
+- [@minecraft/server](https://projectxero.top/sapi/modules/server.html)
+- [@minecraft/server-admin](https://projectxero.top/sapi/modules/server_admin.html)
+- [@minecraft/server-editor](https://projectxero.top/sapi/modules/server_editor.html)
+- [@minecraft/server-gametest](https://projectxero.top/sapi/modules/server_gametest.html)
+- [@minecraft/server-net](https://projectxero.top/sapi/modules/server_net.html)
+- [@minecraft/server-ui](https://projectxero.top/sapi/modules/server_ui.html)
+- [@minecraft/vanilla-data](https://projectxero.top/sapi/modules/vanilla_data.html)
+
+NPM 包：
+
+|包名|版本|
+| - | - |
+|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.0.0-rc`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.8.0-beta`|
+|[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
+|[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
+|[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
+|[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
+|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.20`|
 
 游戏版本号：`1.20.50.20`
 
@@ -41,6 +54,8 @@ Minecraft 脚本 API 文档。
 |`未更新`|原文本已经更新，但尚未翻译|
 |`暂停中`|未完成翻译，因为译名讨论等原因暂停|
 |`已完成`|已完成此部分的翻译|
+
+模块：
 
 <!-- status start -->
 
