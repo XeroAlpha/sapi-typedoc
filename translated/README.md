@@ -4,7 +4,20 @@ Minecraft 脚本 API 文档。
 
 <!-- summary start -->
 
-|模块|版本|
+模块：
+
+- [@minecraft/common](https://projectxero.top/sapi/modules/common.html)
+- [@minecraft/server](https://projectxero.top/sapi/modules/server.html)
+- [@minecraft/server-admin](https://projectxero.top/sapi/modules/server_admin.html)
+- [@minecraft/server-editor](https://projectxero.top/sapi/modules/server_editor.html)
+- [@minecraft/server-gametest](https://projectxero.top/sapi/modules/server_gametest.html)
+- [@minecraft/server-net](https://projectxero.top/sapi/modules/server_net.html)
+- [@minecraft/server-ui](https://projectxero.top/sapi/modules/server_ui.html)
+- [@minecraft/vanilla-data](https://projectxero.top/sapi/modules/vanilla_data.html)
+
+NPM 包：
+
+|包名|版本|
 | - | - |
 |[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.0.0-rc`|
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.8.0-beta`|
@@ -85,6 +98,8 @@ random(min: number, max: number): number;
 |`未更新`|原文本已经更新，但尚未翻译|
 |`暂停中`|未完成翻译，因为译名讨论等原因暂停|
 |`已完成`|已完成此部分的翻译|
+
+模块：
 
 <!-- status start -->
 

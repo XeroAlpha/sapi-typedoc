@@ -65,15 +65,16 @@ async function build(translated) {
     mkdirSync(hookPath, { recursive: true });
     const hookScripts = readdirSync(hookPath)
         .filter((name) => /\.(cjs|js)$/i.test(name))
+        .sort()
         .map((name) => resolvePath(hookPath, name));
     const scriptRequire = createRequire(hookPath);
     const scriptHooks = hookScripts.map((scriptPath) => scriptRequire(scriptPath));
     const runHooks = (event, arg) => {
         scriptHooks.forEach((scriptHook) => {
             if (typeof scriptHook === "function") {
-                scriptHooks(event, arg);
+                scriptHook(event, arg);
             } else {
-                const hook = scriptHooks[event];
+                const hook = scriptHook[event];
                 if (hook) hook(arg);
             }
         });
@@ -125,7 +126,7 @@ async function build(translated) {
             if (dtsFiles.length === 1) {
                 const sourceFile = project.createSourceFile(
                     resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    readFileSync(dtsFiles[0], "utf-8"),
+                    readFileSync(dtsFiles[0], "utf-8").replace(/\r\n|\r/g, '\n'),
                     { overwrite: true }
                 );
                 if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
@@ -140,7 +141,11 @@ async function build(translated) {
                 dtsFiles.forEach((file) => {
                     const target = resolvePath(moduleRoot, relativePath(commonParent, file));
                     mkdirSync(resolvePath(target, ".."), { recursive: true });
-                    const sourceFile = project.createSourceFile(target, readFileSync(file, "utf-8"), { overwrite: true });
+                    const sourceFile = project.createSourceFile(
+                        target,
+                        readFileSync(file, "utf-8").replace(/\r\n|\r/g, '\n'),
+                        { overwrite: true }
+                    );
                     if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
                 });
                 const indexSourceFile = project.createSourceFile(
@@ -185,54 +190,6 @@ async function build(translated) {
     runHooks("beforeConvert", { project, sourceFiles, dependencies, tsdocApplication });
     const tsdocProject = await tsdocApplication.convert();
     if (tsdocProject) {
-        const reflectionEntries = Object.entries(tsdocProject.reflections)
-            .filter(([id, refl]) => !refl.kindOf([
-                TypeDoc.ReflectionKind.ConstructorSignature,
-                TypeDoc.ReflectionKind.CallSignature,
-                TypeDoc.ReflectionKind.GetSignature,
-                TypeDoc.ReflectionKind.SetSignature
-            ]))
-            .map(([id, refl]) => [refl.getFriendlyFullName(), refl]);
-        const visitCommentPart = (/** @type {TypeDoc.CommentDisplayPart} */ part) => {
-            if (part.kind === 'inline-tag' && part.tag === '@link') {
-                if (typeof part.target === 'string') {
-                    return;
-                }
-                if (typeof part.target === 'object' && part.target.name === part.text) {
-                    return;
-                }
-                const segments = part.text.split(/[\./]/);
-                const probablySymbolNames = segments.map((_, i) => segments.slice(i).join('.'));
-                const foundReflections = reflectionEntries.map(([friendlyFullName, refl]) => [
-                    probablySymbolNames.findIndex((symbolName) => friendlyFullName === symbolName || friendlyFullName.endsWith(`.${symbolName}`)),
-                    refl,
-                    friendlyFullName
-                ]).filter(([rank, refl]) => rank >= 0);
-                if (foundReflections.length === 0) {
-                    return;
-                }
-                const bestMatchReflection = foundReflections
-                    .reduce((best, e) => e[0] < best[0] ? e : best);
-                const bestMatchReflections = foundReflections.filter((e) => e[0] <= bestMatchReflection[0]);
-                if (bestMatchReflections.length >= 2) {
-                    console.warn(`Multiple resolutions of link: ${part.text}`);
-                }
-                part.target = bestMatchReflection[1];
-            }
-        }
-        reflectionEntries.forEach(([id, reflection]) => {
-            if (reflection.sources) {
-                reflection.sources.forEach((source) => {
-                    source.fileName = source.fileName.replace("translated", tsdocProject.name);
-                });
-            }
-            if (reflection.comment) {
-                reflection.comment.summary.forEach(visitCommentPart);
-                reflection.comment.blockTags.forEach((tag) => {
-                    tag.content.forEach(visitCommentPart);
-                });
-            }
-        });
         runHooks("afterConvert", { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
         await tsdocApplication.generateDocs(tsdocProject, distPath);
         await tsdocApplication.generateJson(tsdocProject, resolvePath(distPath, 'index.json'));

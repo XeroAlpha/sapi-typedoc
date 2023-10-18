@@ -24,7 +24,7 @@
         "externalPattern": "",
         "customCss": "./assets/extra.css",
         "navigationLinks": {
-            "GitHub": "https://github.com/XeroAlpha/sapi-typedoc"
+            "切换翻译": "javascript:location.href=location.href.indexOf('sapi/original/')>=0?location.href.replace('sapi/original/','sapi/'):location.href.replace('sapi/','sapi/original/')"
         },
         "externalSymbolLinkMappings": {
             "typescript": {

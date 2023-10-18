@@ -86,8 +86,7 @@ async function main() {
     }
 
     // 不使用翻译构建项目
-    const { project, sourceFiles, dependencies, tsdocProject } = await build(false);
-    project.saveSync();
+    const { sourceFiles, dependencies, tsdocProject } = await build(false);
 
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
@@ -107,9 +106,20 @@ async function main() {
     const summaryLines = [
         "<!-- summary start -->",
         "",
-        "|模块|版本|",
-        "| - | - |"
+        "模块：",
+        ""
     ];
+    tsdocProject.children.forEach((moduleRef) => {
+        const docURL = new URL(moduleRef.url || '', baseURL);
+        summaryLines.push(`- [${namespacePrefix}${moduleRef.name}](${docURL})`);
+    });
+    summaryLines.push([
+        "",
+        "NPM 包：",
+        "",
+        "|包名|版本|",
+        "| - | - |"
+    ]);
     let gameVersion;
     Object.entries(dependencies).forEach(([moduleName, version]) => {
         let versionString = version;
@@ -118,12 +128,15 @@ async function main() {
             if (!gameVersion) gameVersion = versionInfo.gameVersion;
             versionString = versionInfo.version;
         }
-        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionString}\`|`);
+        const npmURL = `https://www.npmjs.com/package/${moduleName}`;
+        summaryLines.push(`|[${moduleName}](${npmURL})|\`${versionString}\`|`);
     });
-    summaryLines.push("");
-    summaryLines.push(`游戏版本号：\`${gameVersion}\``);
-    summaryLines.push("");
-    summaryLines.push("<!-- summary end -->");
+    summaryLines.push([
+        "",
+        `游戏版本号：\`${gameVersion}\``,
+        "",
+        "<!-- summary end -->"
+    ]);
 
     const statusHeadLines = [
         "<!-- status start -->",
@@ -137,24 +150,28 @@ async function main() {
         if (botModules.includes(moduleFullName)) return;
         const linkHref = moduleFullName.replace(/[@\/]/g, "");
         statusHeadLines.push(`|[${moduleFullName}](#${linkHref})|0/${moduleRef.children.length}|`);
-        statusLines.push("");
-        statusLines.push(`### ${moduleFullName}`);
-        statusLines.push("");
-        statusLines.push("|名称|类型|状态|");
-        statusLines.push("| - | - | - |");
+        statusLines.push([
+            "",
+            `### ${moduleFullName}`,
+            "",
+            "|名称|类型|状态|",
+            "| - | - | - |"
+        ]);
         moduleRef.children.forEach((member) => {
             const kindStr = kindToString(member.kind);
             const url = new URL(member.url, baseURL);
             statusLines.push(`|[\`${member.name}\`](${url})|${kindStr}|未翻译|`);
         });
     });
-    statusLines.unshift(...statusHeadLines);
-    statusLines.push("");
-    statusLines.push("<!-- status end -->");
+    statusLines.unshift(statusHeadLines);
+    statusLines.push([
+        "",
+        "<!-- status end -->"
+    ]);
 
     const newReadMe = readMe
-        .replace(/<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/, summaryLines.join("\n"))
-        .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.join("\n"));
+        .replace(/<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/, summaryLines.flat().join("\n"))
+        .replace(/<!-- status start -->\n\n[^]+\n\n<!-- status end -->/, statusLines.flat().join("\n"));
     writeFileSync(readMePath, newReadMe);
 
     // 生成 package.json 快照
