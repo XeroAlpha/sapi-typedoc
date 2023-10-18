@@ -71,9 +71,9 @@ async function build(translated) {
     const runHooks = (event, arg) => {
         scriptHooks.forEach((scriptHook) => {
             if (typeof scriptHook === "function") {
-                scriptHooks(event, arg);
+                scriptHook(event, arg);
             } else {
-                const hook = scriptHooks[event];
+                const hook = scriptHook[event];
                 if (hook) hook(arg);
             }
         });
@@ -125,7 +125,7 @@ async function build(translated) {
             if (dtsFiles.length === 1) {
                 const sourceFile = project.createSourceFile(
                     resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    readFileSync(dtsFiles[0], "utf-8"),
+                    readFileSync(dtsFiles[0], "utf-8").replace(/\r\n|\r/g, '\n'),
                     { overwrite: true }
                 );
                 if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
@@ -140,7 +140,11 @@ async function build(translated) {
                 dtsFiles.forEach((file) => {
                     const target = resolvePath(moduleRoot, relativePath(commonParent, file));
                     mkdirSync(resolvePath(target, ".."), { recursive: true });
-                    const sourceFile = project.createSourceFile(target, readFileSync(file, "utf-8"), { overwrite: true });
+                    const sourceFile = project.createSourceFile(
+                        target,
+                        readFileSync(file, "utf-8").replace(/\r\n|\r/g, '\n'),
+                        { overwrite: true }
+                    );
                     if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
                 });
                 const indexSourceFile = project.createSourceFile(
@@ -220,7 +224,7 @@ async function build(translated) {
                 part.target = bestMatchReflection[1];
             }
         }
-        reflectionEntries.forEach(([id, reflection]) => {
+        Object.entries(tsdocProject.reflections).forEach(([id, reflection]) => {
             if (reflection.sources) {
                 reflection.sources.forEach((source) => {
                     source.fileName = source.fileName.replace("translated", tsdocProject.name);

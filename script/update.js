@@ -86,8 +86,7 @@ async function main() {
     }
 
     // 不使用翻译构建项目
-    const { project, sourceFiles, dependencies, tsdocProject } = await build(false);
-    project.saveSync();
+    const { sourceFiles, dependencies, tsdocProject } = await build(false);
 
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
@@ -107,8 +106,8 @@ async function main() {
     const summaryLines = [
         "<!-- summary start -->",
         "",
-        "|模块|版本|",
-        "| - | - |"
+        "|模块|包名|版本|",
+        "| - | - | - |"
     ];
     let gameVersion;
     Object.entries(dependencies).forEach(([moduleName, version]) => {
@@ -118,7 +117,16 @@ async function main() {
             if (!gameVersion) gameVersion = versionInfo.gameVersion;
             versionString = versionInfo.version;
         }
-        summaryLines.push(`|[${moduleName}](https://www.npmjs.com/package/${moduleName})|\`${versionString}\`|`);
+        const pureModuleName = moduleName.slice(namespacePrefix.length);
+        const moduleReflection = tsdocProject.children.find((e) => e.name === pureModuleName);
+        const docURL = moduleReflection ? new URL(moduleReflection.url, baseURL) : null;
+        const npmURL = `https://www.npmjs.com/package/${moduleName}`;
+        const npmURLWithVersion = `${npmURL}/v/${version}`;
+        if (docURL) {
+            summaryLines.push(`|[${pureModuleName}](${docURL})|[${moduleName}](${npmURL})|[${versionString}](${npmURLWithVersion})|`);
+        } else {
+            summaryLines.push(`|${pureModuleName}|[${moduleName}](${npmURL})|[${versionString}](${npmURLWithVersion})|`);
+        }
     });
     summaryLines.push("");
     summaryLines.push(`游戏版本号：\`${gameVersion}\``);
