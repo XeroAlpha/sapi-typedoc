@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0-internal.1.20.50-preview.20"
+ *   "version": "1.8.0-internal.1.20.50-preview.21"
  * }
  * ```
  *
@@ -3923,7 +3923,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: NumberRange;
+    readonly heightRange: minecraftcommon.NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.
@@ -8471,7 +8471,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): NumberRange;
+    getDamageRange(): minecraftcommon.NumberRange;
 }
 
 /**
@@ -13902,26 +13902,6 @@ export interface MusicOptions {
      *
      */
     volume?: number;
-}
-
-/**
- * @beta
- * Represents a min/max structure for expressing a potential
- * range of numbers.
- */
-export interface NumberRange {
-    /**
-     * @remarks
-     * Maximum value within a range.
-     *
-     */
-    max: number;
-    /**
-     * @remarks
-     * Minimum value within a range.
-     *
-     */
-    min: number;
 }
 
 /**

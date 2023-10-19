@@ -11,7 +11,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: NumberRange;
+    readonly heightRange: minecraftcommon.NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.

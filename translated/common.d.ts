@@ -14,11 +14,31 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.0.0-rc.1.20.50-preview.20"
+ *   "version": "1.1.0-rc.1.20.50-preview.21"
  * }
  * ```
  *
  */
+/**
+ * @beta
+ * Represents a min/max structure for expressing a potential
+ * range of numbers.
+ */
+export interface NumberRange {
+    /**
+     * @remarks
+     * Maximum value within a range.
+     *
+     */
+    max: number;
+    /**
+     * @remarks
+     * Minimum value within a range.
+     *
+     */
+    min: number;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ArgumentOutOfBoundsError extends Error {
     private constructor();

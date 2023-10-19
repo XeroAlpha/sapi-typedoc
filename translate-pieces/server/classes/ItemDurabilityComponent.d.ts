@@ -47,5 +47,5 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): NumberRange;
+    getDamageRange(): minecraftcommon.NumberRange;
 }

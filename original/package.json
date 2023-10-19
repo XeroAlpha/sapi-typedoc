@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@minecraft/common": "latest",
+    "@minecraft/common": "rc",
     "@minecraft/server": "beta",
     "@minecraft/server-admin": "beta",
     "@minecraft/server-editor": "beta",
