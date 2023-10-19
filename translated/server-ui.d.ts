@@ -88,7 +88,7 @@ export class ActionFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param player
      * Player to show this dialog to.
@@ -170,7 +170,7 @@ export class MessageFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param player
      * Player to show this dialog to.
@@ -221,7 +221,7 @@ export class ModalFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param player
      * Player to show this dialog to.

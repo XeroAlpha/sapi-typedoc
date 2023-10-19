@@ -86,7 +86,7 @@ export class GameTestSequence {
      * sequence. Exceptions thrown within the callback will end
      * sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Callback function to execute.
@@ -101,7 +101,7 @@ export class GameTestSequence {
      * GameTest sequence. Exceptions thrown within the callback
      * will end sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delayTicks
      * Number of ticks to wait before executing the callback.
@@ -117,7 +117,7 @@ export class GameTestSequence {
      * Runs the given callback every tick for the given number of
      * ticks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Callback function to execute.
@@ -131,7 +131,7 @@ export class GameTestSequence {
      * Causes the test to fail if this step in the GameTest
      * sequence is reached.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param errorMessage
      * Error message summarizing the failure condition.
@@ -141,7 +141,7 @@ export class GameTestSequence {
      * @remarks
      * Idles the GameTest sequence for the specified delayTicks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delayTicks
      * Number of ticks to delay for this step in the GameTest
@@ -156,7 +156,7 @@ export class GameTestSequence {
      * Marks the GameTest a success if this step is reached in the
      * GameTest sequence.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     thenSucceed(): void;
@@ -166,7 +166,7 @@ export class GameTestSequence {
      * Exceptions thrown within the callback will end sequence
      * execution.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Testing callback function to execute. Typically, this
@@ -182,7 +182,7 @@ export class GameTestSequence {
      * callback every tick until it succeeds. Exceptions thrown
      * within the callback will end sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delayTicks
      * Tick (after the previous step in the GameTest sequence) to
@@ -207,7 +207,7 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the batch for the test to run in.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param batchName
      * Name of the batch for the test.
@@ -221,7 +221,7 @@ export class RegistrationBuilder {
      * Sets the maximum number of times a test will try to rerun if
      * it fails.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -233,7 +233,7 @@ export class RegistrationBuilder {
      * Sets the maximum number of ticks a test will run for before
      * timing out and failing.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -245,7 +245,7 @@ export class RegistrationBuilder {
      * Size around the GameTest, in blocks, that should be reserved
      * for the test when running multiple tests together.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param paddingBlocks
      * Size, in blocks, around the GameTest where additional
@@ -260,7 +260,7 @@ export class RegistrationBuilder {
      * Whether this test is required to pass as part of its broader
      * set of tests.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param isRequired
      * If set to true, the test must pass in order for the entire
@@ -275,7 +275,7 @@ export class RegistrationBuilder {
      * Sets the number of successful test runs to be considered
      * successful.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -287,7 +287,7 @@ export class RegistrationBuilder {
      * If true, runs the test in all four rotations when run via
      * /gametest runset.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
@@ -296,7 +296,7 @@ export class RegistrationBuilder {
      * Sets the number of ticks for a test to wait before executing
      * when the structure is spawned.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -309,7 +309,7 @@ export class RegistrationBuilder {
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -321,7 +321,7 @@ export class RegistrationBuilder {
      * Adds a tag to a test. You can run all tests with a given tag
      * with `/gametest runset <tag>`.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -349,7 +349,7 @@ export class SculkSpreader {
      * Adds a cursor - which is a notional waypoint that the sculk
      * will spread in the direction of.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
@@ -357,7 +357,7 @@ export class SculkSpreader {
      * @remarks
      * Retrieves the current position of the specified cursor.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -366,7 +366,7 @@ export class SculkSpreader {
      * @remarks
      * Returns a number of overall cursors for this sculk spreader.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -375,7 +375,7 @@ export class SculkSpreader {
      * @remarks
      * Gets the total current charge of the sculk spreader.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -406,7 +406,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Returns whether the simulated player is sprinting.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     isSprinting: boolean;
@@ -417,7 +417,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player was not on cooldown and had a valid target. Target
      * selection is performed by raycasting from the player's head.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -430,7 +430,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * attack can be performed at any distance and does not require
      * line of sight to the target entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -442,7 +442,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * broken, an item is used or stopBreakingBlock is called.
      * Returns true if the block at blockLocation is solid.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to interact with.
@@ -453,7 +453,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -463,7 +463,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Simulates and performs a disconnection of the simulated
      * player from the world.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -472,7 +472,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Drops the simulated player's selected item
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -483,7 +483,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * were flying in creative mode. For flying with Elytra, see
      * function glide.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -492,7 +492,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Gives the simulated player a particular item stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * Item to give.
@@ -506,7 +506,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to start gliding. Elytra must be
      * equipped and the player must be in the air.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Returns true if the simulated player begins to glide.
@@ -522,7 +522,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * the first intersected block or entity. Returns true if the
      * interaction was successful. Maximum range is 6 blocks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -533,7 +533,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block at the specified block location must be solid. Returns
      * true if the interaction was performed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to interact with.
@@ -547,7 +547,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to interact with a mob. Returns
      * true if the interaction was performed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entity
      * Entity to interact with.
@@ -558,7 +558,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to jump.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * True if a jump was performed.
@@ -570,7 +570,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given block location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -580,7 +580,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -590,7 +590,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -600,7 +600,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to walk in the given direction
      * relative to the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -610,7 +610,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to walk in the given direction
      * relative to the player's current rotation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -622,7 +622,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * already playing, this will override the last
      * move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -633,7 +633,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * a straight line. If a move or navigation is already playing,
      * this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -647,7 +647,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player will stop. The player must be touching the ground in
      * order to start navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -658,7 +658,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * a one block radius. If a move or navigation is already
      * playing, this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -672,7 +672,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * stop. The player must be touching the ground in order to
      * start navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -683,7 +683,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * locations parameter. If a move or navigation is already
      * playing, this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param locations
      * A list of locations to use for routing.
@@ -696,7 +696,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Respawns the particular simulated player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -706,7 +706,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to turn by the provided angle,
      * relative to the player's current rotation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -716,7 +716,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to turn to face the provided
      * angle, relative to the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -726,7 +726,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Sets the game mode that the simulated player is operating
      * under.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param gameMode
      * Game mode to set.
@@ -737,7 +737,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Sets a particular item for the simulated player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * Item to set.
@@ -752,7 +752,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops destroying the block that is currently being hit.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -761,7 +761,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop flying.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -770,7 +770,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop gliding.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -779,7 +779,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops interacting with entities or blocks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -789,7 +789,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Stops moving/walking/following if the simulated player is
      * moving.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -798,7 +798,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop swimming.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -807,7 +807,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops using the currently active item.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -816,7 +816,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to start swimming.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -826,7 +826,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to use an item. Does not consume
      * the item. Returns false if the item is on cooldown.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * Item to use.
@@ -838,7 +838,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to hold and use an item in their
      * inventory.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param slot
      * Index of the inventory slot.
@@ -851,7 +851,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * inventory on a block. The block at the specified block
      * location must be solid. Returns true if the item was used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param slot
      * Index of the slot to use.
@@ -876,7 +876,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block at the specified block location must be solid. Returns
      * true if the item was used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * Item to use.
@@ -1392,7 +1392,7 @@ export class Test {
      * @remarks
      * Destroys a block at a particular location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to destroy.
@@ -1428,7 +1428,7 @@ export class Test {
      * @remarks
      * Gets a block at the specified block location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to retrieve.
@@ -1452,7 +1452,7 @@ export class Test {
      * this returns a helper object with details on how a fence is
      * connected.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to retrieve.
@@ -1466,7 +1466,7 @@ export class Test {
      * Retrieves a sculk spreader object that can be used to
      * control and manage how sculk grows from a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location of the block to retrieve a sculk spreader from.
@@ -1491,7 +1491,7 @@ export class Test {
      * This asynchronous function will wait for the specified time
      * in ticks before continuing execution.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tickDelay
      * Amount of time to wait, in ticks.
@@ -1501,7 +1501,7 @@ export class Test {
      * @remarks
      * Kills all entities within the GameTest structure.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      *
@@ -1510,7 +1510,7 @@ export class Test {
     killAllEntities(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      *
@@ -1521,7 +1521,7 @@ export class Test {
      * @remarks
      * Presses a button at a block location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location to push the button at.
@@ -1536,7 +1536,7 @@ export class Test {
      * @remarks
      * Displays the specified message to all players.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param text
      * Message to display.
@@ -1549,7 +1549,7 @@ export class Test {
      * @remarks
      * Pulls a lever at a block location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location to pull the lever at.
@@ -1565,7 +1565,7 @@ export class Test {
      * Sends a Redstone pulse at a particular location by creating
      * a temporary Redstone block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location to pulse Redstone at.
@@ -1602,7 +1602,7 @@ export class Test {
      * structure block are (0, 1, 0). Rotation of the GameTest
      * structure is also taken into account.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param worldLocation
      * Absolute location in the world to convert to a relative
@@ -1618,7 +1618,7 @@ export class Test {
      * @remarks
      * Removes a simulated player from the world.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param simulatedPlayer
      * Simulated player to remove.
@@ -1631,7 +1631,7 @@ export class Test {
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param direction
      * Direction to translate into a direction relative to the
@@ -1645,7 +1645,7 @@ export class Test {
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      *
@@ -1656,7 +1656,7 @@ export class Test {
      * @remarks
      * Runs a specific callback after a specified delay of ticks
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delayTicks
      * Number of ticks to delay before running the specified
@@ -1671,7 +1671,7 @@ export class Test {
      * Runs the given callback after a delay of _tick_ ticks from
      * the start of the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tick
      * Tick (after the start of the GameTest) to run the callback
@@ -1686,7 +1686,7 @@ export class Test {
      * Sets a block to a particular configuration (a
      * BlockPermutation) at the specified block location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockData
      * Permutation that contains the configuration data for a
@@ -1703,7 +1703,7 @@ export class Test {
      * Sets a block to a particular type at the specified block
      * location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockType
      * Type of block to set.
@@ -1719,7 +1719,7 @@ export class Test {
      * For blocks that are fluid containers - like a cauldron -
      * changes the type of fluid within that container.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * Location of the fluid container block.
@@ -1735,7 +1735,7 @@ export class Test {
      * @remarks
      * Sets the fuse of an explodable entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entity
      * Entity that is explodable.
@@ -1750,7 +1750,7 @@ export class Test {
      * @remarks
      * Spawns an entity at a location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
@@ -1792,7 +1792,7 @@ export class Test {
      * @remarks
      * Spawns an entity at a location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
@@ -1815,7 +1815,7 @@ export class Test {
      * @remarks
      * Spawns an item entity at a specified location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * ItemStack that describes the item entity to create.
@@ -1838,7 +1838,7 @@ export class Test {
      * @remarks
      * Creates a new simulated player within the world.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location where to spawn the simulated player.
@@ -1859,7 +1859,7 @@ export class Test {
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * Location where the entity should be spawned.
@@ -1874,7 +1874,7 @@ export class Test {
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * Location where the entity should be spawned.
@@ -1891,7 +1891,7 @@ export class Test {
      * Tests that a particular item entity is present at a
      * particular location. If not, an exception is thrown.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockLocation
      * BlockLocation containing a multiface block.
@@ -1918,7 +1918,7 @@ export class Test {
      * Creates a new GameTestSequence - A set of steps that play
      * out sequentially within a GameTest.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * A new GameTestSequence with chaining methods that facilitate
@@ -1929,7 +1929,7 @@ export class Test {
      * @remarks
      * Marks the current test as a success case.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1939,7 +1939,7 @@ export class Test {
      * Runs the given callback. If the callback does not throw an
      * exception, the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Callback function that runs. If the function runs
@@ -1952,7 +1952,7 @@ export class Test {
      * @remarks
      * Marks the test as a success at the specified tick.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tick
      * Tick after the start of the GameTest to mark the test as
@@ -1966,7 +1966,7 @@ export class Test {
      * the test. If the callback does not throw an exception, the
      * test is marked as a failure.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tick
      * Tick after the start of the GameTest to run the testing
@@ -1984,7 +1984,7 @@ export class Test {
      * Specifically, the test will succeed when the callback does
      * not throw an exception.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Testing callback function that runs. If the function runs
@@ -2017,7 +2017,7 @@ export class Test {
      * the specified block of a type is found or not found
      * (depending on isPresent), the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockType
      * Type of block to test for.
@@ -2042,7 +2042,7 @@ export class Test {
      * Depending on the value of hasComponent, when the specified
      * component is found, the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entityTypeIdentifier
      * Type of entity to look for. If no namespace is specified,
@@ -2071,7 +2071,7 @@ export class Test {
      * type is found or not found (depending on isPresent), the
      * test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
@@ -2095,7 +2095,7 @@ export class Test {
      * Triggers a block event from a fixed list of available block
      * events.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param event
      * Event to trigger. Valid values include minecraft:drip,
@@ -2114,7 +2114,7 @@ export class Test {
      * in conjunction with .assert functions to evaluate that a
      * condition is true.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function with code to evaluate.
@@ -2127,7 +2127,7 @@ export class Test {
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param mob
      * Mob entity to give orders to.
@@ -2147,7 +2147,7 @@ export class Test {
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param mob
      * Mob entity to give orders to.
@@ -2214,7 +2214,7 @@ export class GameTestError extends Error {
  * available in Minecraft via /gametest run
  * [testClassName]:[testName].
  *
- * This function can't be called in read-only mode.
+ * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
  *
  * @param testClassName
  * Name of the class of tests this test should be a part of.
@@ -2262,7 +2262,7 @@ export function register(
  * asynchronous execution. This GameTest will become available
  * in Minecraft via /gametest run [testClassName]:[testName].
  *
- * This function can't be called in read-only mode.
+ * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
  *
  * @param testClassName
  * Name of the class of tests this test should be a part of.

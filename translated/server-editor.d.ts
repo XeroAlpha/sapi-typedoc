@@ -630,7 +630,7 @@ export class ClipboardItem {
      * @remarks
      * Clear the contents of the item
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -645,7 +645,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -674,7 +674,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -694,7 +694,7 @@ export class ClipboardItem {
      * @remarks
      * Get the bounding size of the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -704,7 +704,7 @@ export class ClipboardItem {
      * Copy the contents of the area represented by a {@link
      * Selection} volume into the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param selection
      * A volume which represents the area to be copied
@@ -716,7 +716,7 @@ export class ClipboardItem {
      * Copy the contents of a rectangular volume into the Clipboard
      * Item
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param from
      * The world location of one corner of a bounding volume
@@ -731,7 +731,7 @@ export class ClipboardItem {
      * Apply the contents of a ClipboardItem to the world at a
      * given location using a set of write options
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * The root point of the world location to which the
@@ -773,7 +773,7 @@ export class ClipboardManager {
      * @remarks
      * Create a new  {@link ClipboardItem} object
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -830,7 +830,7 @@ export class Cursor {
      * @remarks
      * Get the world position of the 3D block cursor
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -840,7 +840,7 @@ export class Cursor {
      * Get a property object which represents the current
      * properties of the 3D block cursor.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -851,7 +851,7 @@ export class Cursor {
      * {@link @minecraft-server-editor-bindings.Cursor.show}
      * function is called
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -863,7 +863,7 @@ export class Cursor {
      * @minecraft-server-editor-bindings.CursorProperties.CursorControlMode}
      * - this function may have no effect
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param offset
      * Amount by which the 3D block cursor should be moved
@@ -877,7 +877,7 @@ export class Cursor {
      * @remarks
      * Reset the 3D block cursor to the system default state
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -886,7 +886,7 @@ export class Cursor {
      * @remarks
      * Set the 3D block cursor properties to a given state
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param properties
      * A set of optional parameters within a property state which
@@ -898,7 +898,7 @@ export class Cursor {
      * @remarks
      * Make the 3D block cursor visible on screen
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1015,7 +1015,7 @@ export class Logger {
      * recommend that you remove any references to this log channel
      * to avoid a noisy experience for other users
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param message
      * The message string to send to the log window
@@ -1030,7 +1030,7 @@ export class Logger {
      * output to/from a player).  Use this channel sparingly - it's
      * meant to communicate important problems to the player
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param message
      * The message string to send to the log window
@@ -1043,7 +1043,7 @@ export class Logger {
      * non-fatal or non-erroneous information to the player that
      * can generally be safely ignored if they choose to do so.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param message
      * The message string to send to the log window
@@ -1057,7 +1057,7 @@ export class Logger {
      * things that cannot be found) but are not fatal and execution
      * can still be completed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param message
      * The message string to send to the log window
@@ -1092,7 +1092,7 @@ export class MinecraftEditor {
      * Creators should use the TypeScript binding
      * `registerEditorExtension` instead
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param extensionName
      * Unique name of the editor extension being registered
@@ -1126,13 +1126,13 @@ export class ModeChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1143,14 +1143,14 @@ export class PlaytestManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
     beginPlaytest(options: PlaytestGameOptions): Promise<PlaytestSessionResult>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1187,7 +1187,7 @@ export class Selection {
      * generate excessive network traffic.
      *
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     visible: boolean;
@@ -1195,7 +1195,7 @@ export class Selection {
      * @remarks
      * Clear the contents of the Selection
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1213,7 +1213,7 @@ export class Selection {
      * The Block iterator will return only selected volume
      * locations
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getBlockLocationIterator(): minecraftserver.BlockLocationIterator;
@@ -1224,7 +1224,7 @@ export class Selection {
      * represent the shape of the selection, only the largest
      * rectangle that will fit all of the volumes)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1233,7 +1233,7 @@ export class Selection {
      * @remarks
      * Return the color of the on-screen selection container hull
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1243,7 +1243,7 @@ export class Selection {
      * Return the color of the on-screen selection container
      * outline
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1253,7 +1253,7 @@ export class Selection {
      * Get the origin of the CompoundBlockVolume that makes up the
      * block component part of selection
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getVolumeOrigin(): minecraftserver.Vector3;
@@ -1263,7 +1263,7 @@ export class Selection {
      * the volumes within the selection to be moved by the
      * specified offset)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delta
      * The amount by which to move
@@ -1278,7 +1278,7 @@ export class Selection {
      * all of the volumes within the selection to be moved to a
      * location relative to the world location)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * The world location to which to relocate the selection
@@ -1293,7 +1293,7 @@ export class Selection {
      * that was pushed to the volume stack without affecting the
      * stack itself
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param forceRelativity
      * See the description for {@link
@@ -1309,7 +1309,7 @@ export class Selection {
      * Remove the volume information that was last pushed to the
      * volume stack.  This will reduce the stack item length by 1
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1319,7 +1319,7 @@ export class Selection {
      * Push a compound volume item (a volume and action pair) to
      * the volume stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param item
      * Item to push to the stack
@@ -1334,7 +1334,7 @@ export class Selection {
      * target selection - it does this by content, not by
      * reference.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param other
      * {@link @minecraft-server/CompoundBlockVolume} - set the
@@ -1351,7 +1351,7 @@ export class Selection {
      * Set the color of the hull of the selection object if it is
      * visible.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1361,7 +1361,7 @@ export class Selection {
      * Set the color of the outline around the selection object if
      * it is visible
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1392,7 +1392,7 @@ export class SelectionManager {
      * @remarks
      * Create a new, empty {@link Selection} object
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1421,7 +1421,7 @@ export class TransactionManager {
      * The open record will be closed and all tracking operations
      * will cease.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1436,7 +1436,7 @@ export class TransactionManager {
      * to the transaction record before submission to the
      * transaction manager
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Returns the number of change requests that were being
@@ -1451,7 +1451,7 @@ export class TransactionManager {
      * All records within the transaction will be discarded, and
      * any tracking requests currently active will be stopped
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1462,7 +1462,7 @@ export class TransactionManager {
      * the current open transaction contents, only the pending
      * tracked block operations
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Returns the number of change requests that were discarded
@@ -1476,7 +1476,7 @@ export class TransactionManager {
      * All transaction operations within a record are grouped and
      * treated as a single atomic unit
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param name
      * Give the transaction record a name
@@ -1494,7 +1494,7 @@ export class TransactionManager {
      * transferred to the undo stack in case the creator decides to
      * undo it
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1503,7 +1503,7 @@ export class TransactionManager {
      * @remarks
      * Return the number of transaction records on the redo stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1515,7 +1515,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param from
      * Min block location of a bounding area
@@ -1532,7 +1532,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param compoundBlockVolume
      * {@link @minecraft-server/CompoundBlockVolume} to track.
@@ -1546,7 +1546,7 @@ export class TransactionManager {
      * Begin tracking block changes in a list of specified block
      * locations.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param locations
      * An array of block locations to monitor for changes
@@ -1566,7 +1566,7 @@ export class TransactionManager {
      * space) (see {@link @minecraft-server/CompoundBlockVolume}
      * for more details
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param selection
      * A collection of block location volumes represented by a
@@ -1588,7 +1588,7 @@ export class TransactionManager {
      * transferred to the redo stack in case the creator decides to
      * reapply it
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1598,7 +1598,7 @@ export class TransactionManager {
      * Return how many transactions records currently exist on the
      * stack
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */

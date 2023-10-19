@@ -1434,7 +1434,7 @@ export class Block {
      * @remarks
      * Returns or sets whether this block has a liquid on it.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     isWaterlogged: boolean;
@@ -1726,7 +1726,7 @@ export class Block {
      * Sets the block in the dimension to the state of the
      * permutation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param permutation
      * Permutation that contains a set of property states for the
@@ -1743,7 +1743,7 @@ export class Block {
      * @remarks
      * Sets the type of block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockType
      * Identifier of the type of block to apply - for example,
@@ -1778,7 +1778,7 @@ export class Block {
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param permutation
      * Permutation that contains a set of property states for the
@@ -1921,7 +1921,7 @@ export class BlockExplodeAfterEventSignal {
      * Adds a callback that will be called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: BlockExplodeAfterEvent) => void): (arg: BlockExplodeAfterEvent) => void;
@@ -1930,7 +1930,7 @@ export class BlockExplodeAfterEventSignal {
      * Removes a callback from being called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -1978,7 +1978,7 @@ export class BlockLiquidContainerComponent extends BlockComponent {
      * @remarks
      * Relative fill level of the liquid container.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     fillLevel: number;
@@ -2019,13 +2019,13 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     [Symbol.iterator](): Iterator<Vector3>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     next(): IteratorResult<Vector3>;
@@ -2263,7 +2263,7 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
      * @remarks
      * Sets the potion type based on an item stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2283,7 +2283,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Clears the currently playing record of this record-playing
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2300,7 +2300,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Sets and plays a record based on an item type.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2364,7 +2364,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the text of the sign component.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param message
      * The message to set on the sign. If set to a string, then
@@ -2407,7 +2407,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the dye color of the text.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param color
      * The dye color to apply to the sign or undefined to clear the
@@ -2423,7 +2423,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Makes it so players cannot edit this sign.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2550,7 +2550,7 @@ export class BlockVolumeUtils {
      * the outer surface of a BlockVolume.
      *
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param volume
      * The volume to test against
@@ -2568,7 +2568,7 @@ export class BlockVolumeUtils {
      * Check to see if a two block volumes are directly adjacent
      * and two faces touch.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param volume
      * The volume to test against
@@ -2583,7 +2583,7 @@ export class BlockVolumeUtils {
      * @remarks
      * Test the equality of two block volumes
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Return true if two block volumes are identical
@@ -2594,7 +2594,7 @@ export class BlockVolumeUtils {
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getBlockLocationIterator(volume: BlockVolume): BlockLocationIterator;
@@ -2603,7 +2603,7 @@ export class BlockVolumeUtils {
      * Return a {@link BoundingBox} object which represents the
      * validated min and max coordinates of the volume
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getBoundingBox(volume: BlockVolume): BoundingBox;
@@ -2611,7 +2611,7 @@ export class BlockVolumeUtils {
      * @remarks
      * Return the capacity (volume) of the BlockVolume (W*D*H)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getCapacity(volume: BlockVolume): number;
@@ -2620,7 +2620,7 @@ export class BlockVolumeUtils {
      * Get the largest corner position of the volume (guaranteed to
      * be >= min)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getMax(volume: BlockVolume): Vector3;
@@ -2629,7 +2629,7 @@ export class BlockVolumeUtils {
      * Get the smallest corner position of the volume (guaranteed
      * to be <= max)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getMin(volume: BlockVolume): Vector3;
@@ -2638,7 +2638,7 @@ export class BlockVolumeUtils {
      * Get a {@link Vector3} object where each component represents
      * the number of blocks along that axis
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getSpan(volume: BlockVolume): Vector3;
@@ -2647,7 +2647,7 @@ export class BlockVolumeUtils {
      * Return an enumeration which represents the intersection
      * between two BlockVolume objects
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static intersects(volume: BlockVolume, other: BlockVolume): BlockVolumeIntersection;
@@ -2656,7 +2656,7 @@ export class BlockVolumeUtils {
      * Check to see if a given world block location is inside a
      * BlockVolume
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static isInside(volume: BlockVolume, pos: Vector3): boolean;
@@ -2664,7 +2664,7 @@ export class BlockVolumeUtils {
      * @remarks
      * Move a BlockVolume by a specified amount
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param delta
      * Amount of blocks to move by
@@ -2688,7 +2688,7 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
      * @remarks
      * Adds an item and colors the water based on a dye item type.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2706,7 +2706,7 @@ export class BlockWaterContainerComponent extends BlockLiquidContainerComponent 
      * @remarks
      * Sets a custom base color used for the sign text.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2727,7 +2727,7 @@ export class BoundingBoxUtils {
      * @minecraft-server.BoundingBox} where the min and max
      * components are guaranteed to be (min <= max)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param min
      * A corner world location
@@ -2744,7 +2744,7 @@ export class BoundingBoxUtils {
      * greater than the span, but the min/max relationship will
      * remain correct
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Return a new {@link @minecraft-server.BoundingBox} object
@@ -2756,7 +2756,7 @@ export class BoundingBoxUtils {
      * Check if two {@link @minecraft-server.BoundingBox} objects
      * are identical
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static equals(box: BoundingBox, other: BoundingBox): boolean;
@@ -2767,7 +2767,7 @@ export class BoundingBoxUtils {
      * @minecraft-server.BoundingBox} object will be a BoundingBox
      * which exactly encompasses the two boxes.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * A new {@link @minecraft-server.BoundingBox} instance
@@ -2780,7 +2780,7 @@ export class BoundingBoxUtils {
      * Calculate the center block of a given {@link
      * @minecraft-server.BoundingBox} object.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Note that {@link @minecraft-server.BoundingBox} objects
@@ -2795,7 +2795,7 @@ export class BoundingBoxUtils {
      * Calculate the BoundingBox which represents the union area of
      * two intersecting BoundingBoxes
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
@@ -2803,7 +2803,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Get the Span of each of the BoundingBox Axis components
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static getSpan(box: BoundingBox): Vector3;
@@ -2811,7 +2811,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if two BoundingBox objects intersect
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static intersects(box: BoundingBox, other: BoundingBox): boolean;
@@ -2819,7 +2819,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a given coordinate is inside a BoundingBox
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static isInside(box: BoundingBox, pos: Vector3): boolean;
@@ -2827,7 +2827,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a BoundingBox is valid (i.e. (min <= max))
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     static isValid(box: BoundingBox): boolean;
@@ -2835,7 +2835,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Move a BoundingBox by a given amount
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Return a new BoundingBox object which represents the change
@@ -2882,7 +2882,7 @@ export class Camera {
      * perspectives, including any eased camera motions, and return
      * to their normal perspective.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -2892,7 +2892,7 @@ export class Camera {
      * Begins a camera fade transition. A fade transition is a
      * full-screen color that fades-in, holds, and then fades-out.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param fadeCameraOptions
      * Additional options around camera fade operations.
@@ -2903,7 +2903,7 @@ export class Camera {
      * @remarks
      * Sets the current active camera for the specified player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param cameraPreset
      * Identifier of a camera preset file defined within JSON.
@@ -2971,7 +2971,7 @@ export class ChatSendAfterEventSignal {
      * Adds a callback that will be called when new chat messages
      * are sent.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @example custom_command.js
      * ```typescript
@@ -2992,7 +2992,7 @@ export class ChatSendAfterEventSignal {
      * Removes a callback from being called when new chat messages
      * are sent.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -3036,7 +3036,7 @@ export class ChatSendBeforeEventSignal {
      * Adds a callback that will be called before new chat messages
      * are sent.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
@@ -3045,7 +3045,7 @@ export class ChatSendBeforeEventSignal {
      * Removes a callback from being called before new chat
      * messages are sent.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -3147,7 +3147,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Clear the contents of the volume stack
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     clear(): void;
@@ -3168,7 +3168,7 @@ export class CompoundBlockVolume {
      * in absolute world space (irrespective of whether the
      * compound volume items pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getBlockLocationIterator(): BlockLocationIterator;
@@ -3180,7 +3180,7 @@ export class CompoundBlockVolume {
      * absolute world space  (irrespective of whether the compound
      * volume items pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getBoundingBox(): BoundingBox;
@@ -3192,7 +3192,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getMax(): Vector3;
@@ -3204,7 +3204,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getMin(): Vector3;
@@ -3212,7 +3212,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Fetch the origin in world space of the compound volume
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getOrigin(): Vector3;
@@ -3221,7 +3221,7 @@ export class CompoundBlockVolume {
      * Return a boolean which signals if there are any volume items
      * pushed to the volume
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     isEmpty(): boolean;
@@ -3237,7 +3237,7 @@ export class CompoundBlockVolume {
      * bounding rectangle, but it is not inside a positively
      * defined location)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     isInside(worldLocation: Vector3): boolean;
@@ -3246,7 +3246,7 @@ export class CompoundBlockVolume {
      * Inspect the last entry pushed to the volume stack without
      * affecting the stack contents.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param forceRelativity
      * Determine whether the function returns a
@@ -3267,7 +3267,7 @@ export class CompoundBlockVolume {
      * Remove the last entry from the volume stack.  This will
      * reduce the stack size by one
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     popVolume(): boolean;
@@ -3280,7 +3280,7 @@ export class CompoundBlockVolume {
      * determines whether it is relative or absolute to the
      * compound volume origin
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param item
      * Item to push to the end of the stack
@@ -3293,7 +3293,7 @@ export class CompoundBlockVolume {
      * If the volume stack is NOT empty, this function will replace
      * the last item on the stack with the new item.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param item
      * Item to add or replace
@@ -3304,7 +3304,7 @@ export class CompoundBlockVolume {
      * Set the origin of the compound volume to an absolute world
      * space location
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param preserveExistingVolumes
      * This optional boolean flag determines whether the relative
@@ -3335,7 +3335,7 @@ export class CompoundBlockVolume {
      * function will translate the origin by a given delta to a new
      * position
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param preserveExistingVolumes
      * See the description for the arguments to {@link
@@ -3378,7 +3378,7 @@ export class Container {
      * items of the same type. Note, use {@link Container.setItem}
      * if you wish to set the item in a particular slot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * The stack of items to add.
@@ -3389,7 +3389,7 @@ export class Container {
      * @remarks
      * Clears all inventory items in the container.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the container is invalid.
@@ -3444,7 +3444,7 @@ export class Container {
      * Moves an item from one slot to another, potentially across
      * containers.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
@@ -3471,7 +3471,7 @@ export class Container {
      * @remarks
      * Sets an item stack within a particular slot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param slot
      * Zero-based index of the slot to set an item at.
@@ -3487,7 +3487,7 @@ export class Container {
      * @remarks
      * Swaps items between two different slots within containers.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param slot
      * Zero-based index of the slot to swap from this container.
@@ -3512,7 +3512,7 @@ export class Container {
      * Moves an item from one slot to another container, or to the
      * first available slot in the same container.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
@@ -3550,7 +3550,7 @@ export class ContainerSlot {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -3570,7 +3570,7 @@ export class ContainerSlot {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -3581,7 +3581,7 @@ export class ContainerSlot {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -3603,7 +3603,7 @@ export class ContainerSlot {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the slot's container is invalid. Also throws if
@@ -3704,7 +3704,7 @@ export class ContainerSlot {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -3720,7 +3720,7 @@ export class ContainerSlot {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -3734,7 +3734,7 @@ export class ContainerSlot {
      * Sets the given ItemStack in the slot, replacing any existing
      * item.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemStack
      * The ItemStack to be placed in the slot.
@@ -3746,7 +3746,7 @@ export class ContainerSlot {
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param loreList
      * A list of lore strings. Setting this argument to undefined
@@ -3782,7 +3782,7 @@ export class DataDrivenEntityTriggerAfterEvent {
      * An updateable list of modifications to component state that
      * are the effect of this triggered event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getModifiers(): DefinitionModifier[];
@@ -3801,7 +3801,7 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * Adds a callback that will be called after a data driven
      * entity event is triggered.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -3813,7 +3813,7 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * Removes a callback that will be called after a data driven
      * entity event is triggered.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -3877,7 +3877,7 @@ export class DataDrivenEntityTriggerBeforeEventSignal {
      * Adds a callback that will be called before a data driven
      * entity event is triggered.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -3889,7 +3889,7 @@ export class DataDrivenEntityTriggerBeforeEventSignal {
      * Removes a callback that will be called before a data driven
      * entity event is triggered.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -3971,7 +3971,7 @@ export class Dimension {
      * @remarks
      * Creates an explosion at the specified location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * The location of the explosion.
@@ -4026,7 +4026,7 @@ export class Dimension {
      * Fills an area between begin and end with block of type
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param begin
      * The lower northwest starting corner of the area.
@@ -4193,7 +4193,7 @@ export class Dimension {
     /**
      * @beta
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getWeather(): WeatherType;
@@ -4203,7 +4203,7 @@ export class Dimension {
      * Runs a command synchronously using the context of the
      * broader dimenion.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param commandString
      * Command to run. Note that command strings should not start
@@ -4247,7 +4247,7 @@ export class Dimension {
      * @remarks
      * Sets the current weather within the dimension
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param weatherType
      * Set the type of weather to apply.
@@ -4264,7 +4264,7 @@ export class Dimension {
      * Creates a new entity (e.g., a mob) at the specified
      * location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param identifier
      * Identifier of the type of entity to spawn. If no namespace
@@ -4325,7 +4325,7 @@ export class Dimension {
      * Creates a new item stack as an entity at the specified
      * location.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * The location at which to create the item stack.
@@ -4372,7 +4372,7 @@ export class Dimension {
      * Creates a new particle emitter at a specified location in
      * the world.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param effectName
      * Identifier of the particle to create.
@@ -4499,7 +4499,7 @@ export class EffectAddAfterEvent {
      * @remarks
      * Additional properties and details of the effect.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     effect: Effect;
@@ -4507,7 +4507,7 @@ export class EffectAddAfterEvent {
      * @remarks
      * Entity that the effect is being added to.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     entity: Entity;
@@ -4525,7 +4525,7 @@ export class EffectAddAfterEventSignal {
      * Adds a callback that will be called when an effect is added
      * to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -4537,7 +4537,7 @@ export class EffectAddAfterEventSignal {
      * Removes a callback from being called when an effect is added
      * to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -4584,7 +4584,7 @@ export class EffectAddBeforeEventSignal {
      * Adds a callback that will be called when an effect is added
      * to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: EffectAddBeforeEvent) => void): (arg: EffectAddBeforeEvent) => void;
@@ -4593,7 +4593,7 @@ export class EffectAddBeforeEventSignal {
      * Removes a callback from being called when an effect is added
      * to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -4628,7 +4628,7 @@ export class EffectTypes {
      * @remarks
      * Effect type for the given identifier.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Effect type for the given identifier or undefined if the
@@ -4639,7 +4639,7 @@ export class EffectTypes {
      * @remarks
      * Gets all effects.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * A list of all effects.
@@ -4657,7 +4657,7 @@ export class Enchantment {
      * @remarks
      * The level of this enchantment instance.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     level: number;
@@ -4700,7 +4700,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
     constructor(enchantmentSlot: number);
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     [Symbol.iterator](): Iterator<Enchantment>;
@@ -4709,7 +4709,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * Attempts to add the enchantment to this collection. Returns
      * true if successful.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     addEnchantment(enchantment: Enchantment): boolean;
@@ -4718,7 +4718,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * Returns whether or not the provided EnchantmentInstance can
      * be added to this collection.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     canAddEnchantment(enchantment: Enchantment): boolean;
@@ -4726,7 +4726,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * @remarks
      * Returns an enchantment associated with a type.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -4742,7 +4742,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
     hasEnchantment(enchantmentType: EnchantmentType | string): number;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     next(): IteratorResult<Enchantment>;
@@ -4751,7 +4751,7 @@ export class EnchantmentList implements Iterable<Enchantment> {
      * Removes an EnchantmentInstance with type from this
      * collection if present.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -4915,7 +4915,7 @@ export class Entity {
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     isSneaking: boolean;
@@ -4961,7 +4961,7 @@ export class Entity {
      * @remarks
      * Given name of the entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     nameTag: string;
@@ -4995,7 +4995,7 @@ export class Entity {
      * @remarks
      * Adds or updates an effect, like poison, to the entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param effectType
      * Type of effect to add to the entity.
@@ -5054,7 +5054,7 @@ export class Entity {
      * @remarks
      * Adds a specified tag to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tag
      * Content of the tag to add. The tag must be less than 256
@@ -5089,7 +5089,7 @@ export class Entity {
      * @remarks
      * Applies a set of damage to an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param amount
      * Amount of damage to apply.
@@ -5123,7 +5123,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param vector
      * Impulse vector.
@@ -5145,7 +5145,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param directionX
      * X direction in horizontal plane.
@@ -5186,7 +5186,7 @@ export class Entity {
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      * @example applyImpulse.ts
@@ -5207,7 +5207,7 @@ export class Entity {
      * you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param useEffects
      * Whether to show any visual effects connected to the
@@ -5472,7 +5472,7 @@ export class Entity {
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Returns true if entity can be killed (even if it is already
@@ -5509,7 +5509,7 @@ export class Entity {
      * @remarks
      * Cause the entity to play the given animation.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param animationName
      * The animation identifier. e.g. animation.creeper.swelling
@@ -5526,7 +5526,7 @@ export class Entity {
      * entity will not perform a death animation or drop loot upon
      * removal.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -5537,7 +5537,7 @@ export class Entity {
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param effectType
      * The effect identifier.
@@ -5552,7 +5552,7 @@ export class Entity {
      * @remarks
      * Removes a specified tag from an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param tag
      * Content of the tag to remove.
@@ -5568,7 +5568,7 @@ export class Entity {
      * specified in the Entity's definition. This property change
      * is not applied until the next tick.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param identifier
      * The Entity Property identifier.
@@ -5590,7 +5590,7 @@ export class Entity {
      * @remarks
      * Runs a synchronous command on the entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param commandString
      * The command string. Note: This should not include a leading
@@ -5639,7 +5639,7 @@ export class Entity {
      * that you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param seconds
      * Length of time to set the entity on fire.
@@ -5687,7 +5687,7 @@ export class Entity {
      * Sets an Entity Property to the provided value. This property
      * change is not applied until the next tick.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param identifier
      * The Entity Property identifier.
@@ -5710,7 +5710,7 @@ export class Entity {
      * @remarks
      * Sets the main rotation of the entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param rotation
      * The x and y rotation of the entity (in degrees). For most
@@ -5724,7 +5724,7 @@ export class Entity {
      * @remarks
      * Teleports the selected entity to a new location
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * New location for the entity.
@@ -5760,7 +5760,7 @@ export class Entity {
      * behaviors; for example, creepers have a
      * minecraft:start_exploding type event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param eventName
      * Name of the entity type event to trigger. If a namespace is
@@ -5783,7 +5783,7 @@ export class Entity {
      * teleport operation (for example, if there are blocks at the
      * destination.)
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param location
      * Location to teleport the entity to.
@@ -5912,7 +5912,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the defined
      * default value.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -5922,7 +5922,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the maximum
      * defined value.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -5932,7 +5932,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the minimum
      * defined value.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -5941,7 +5941,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * @remarks
      * Sets the current value of this attribute.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6103,7 +6103,7 @@ export class EntityColorComponent extends EntityComponent {
      * @remarks
      * Value of this particular color.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -6183,7 +6183,7 @@ export class EntityDieAfterEventSignal {
      * @remarks
      * Subscribes to an event that fires when an entity dies.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function to call when an entity dies.
@@ -6203,7 +6203,7 @@ export class EntityDieAfterEventSignal {
      * Stops this event from calling your function when an entity
      * dies.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6223,7 +6223,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Gets the equipped item for the given EquipmentSlot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand"
@@ -6239,7 +6239,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * Gets the ContainerSlot corresponding to the given
      * EquipmentSlot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".
@@ -6253,7 +6253,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Replaces the item in the given EquipmentSlot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".
@@ -6297,7 +6297,7 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
      * @remarks
      * Current value of the flying speed of the associated entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -6316,7 +6316,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * Current value of the friction modifier of the associated
      * entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -6337,7 +6337,7 @@ export class EntityGroundOffsetComponent extends EntityComponent {
      * is effectively read only; setting the ground offset value
      * will not have an impact on the related entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -6420,7 +6420,7 @@ export class EntityHealthChangedAfterEventSignal {
      * Adds a callback that will be called when the health of an
      * entity changes.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -6432,7 +6432,7 @@ export class EntityHealthChangedAfterEventSignal {
      * Removes a callback from being called when the health of an
      * entity changes.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6487,7 +6487,7 @@ export class EntityHitBlockAfterEventSignal {
      * Adds a callback that will be called when an entity hits a
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -6499,7 +6499,7 @@ export class EntityHitBlockAfterEventSignal {
      * Removes a callback from being called when an entity hits a
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6539,7 +6539,7 @@ export class EntityHitEntityAfterEventSignal {
      * Adds a callback that will be called when an entity hits
      * another entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -6551,7 +6551,7 @@ export class EntityHitEntityAfterEventSignal {
      * Removes a callback from being called when an entity makes a
      * melee attack on another entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6596,7 +6596,7 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when an entity is hurt.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -6607,7 +6607,7 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Removes a callback from being called when an entity is hurt.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6865,7 +6865,7 @@ export class EntityIterator implements Iterable<Entity> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     [Symbol.iterator](): Iterator<Entity>;
@@ -6875,7 +6875,7 @@ export class EntityIterator implements Iterable<Entity> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Entity in the iteration.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     next(): IteratorResult<Entity>;
@@ -6913,7 +6913,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Leashes this entity to another entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param leashHolder
      * The entity to leash this entity to.
@@ -6924,7 +6924,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Unleashes this entity if it is leashed to another entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -6943,7 +6943,7 @@ export class EntityLoadAfterEvent {
      * @remarks
      * Entity that was loaded.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     entity: Entity;
@@ -6961,7 +6961,7 @@ export class EntityLoadAfterEventSignal {
      * Method to register an event handler for what happens when an
      * entity loads.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function that handles the load event.
@@ -6972,7 +6972,7 @@ export class EntityLoadAfterEventSignal {
      * Unregisters a method that was previously subscribed to the
      * subscription event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -6994,7 +6994,7 @@ export class EntityMarkVariantComponent extends EntityComponent {
      * @remarks
      * Value of the mark variant value for this entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -7014,7 +7014,7 @@ export class EntityMountTamingComponent extends EntityComponent {
      * @remarks
      * Sets this rideable entity as tamed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
@@ -7409,7 +7409,7 @@ export class EntityPushThroughComponent extends EntityComponent {
      * @remarks
      * Value of the push through distances of this entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -7452,7 +7452,7 @@ export class EntityRemoveAfterEventSignal {
      * Will call your function every time an entity is removed from
      * the game.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function to call.
@@ -7471,7 +7471,7 @@ export class EntityRemoveAfterEventSignal {
      * Unsubscribes your function from subsequent calls when an
      * entity is removed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -7507,7 +7507,7 @@ export class EntityRemoveBeforeEventSignal {
      * Will call your function every time an entity is being
      * removed from the game.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function to call.
@@ -7521,7 +7521,7 @@ export class EntityRemoveBeforeEventSignal {
      * Unsubscribes your function from subsequent calls when an
      * entity is being removed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -7589,7 +7589,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Adds an entity to this entity as a rider.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param rider
      * Entity that will become the rider of this entity.
@@ -7602,7 +7602,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects the specified rider of this entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param rider
      * Entity that should be ejected from this entity.
@@ -7613,7 +7613,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects all riders of this entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -7673,7 +7673,7 @@ export class EntityScaleComponent extends EntityComponent {
      * @remarks
      * Current value for the scale property set on entities.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -7692,7 +7692,7 @@ export class EntitySkinIdComponent extends EntityComponent {
      * @remarks
      * Returns the value of the skin Id identifier of the entity.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: number;
@@ -7716,7 +7716,7 @@ export class EntitySpawnAfterEvent {
      * @remarks
      * Entity that was spawned.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     entity: Entity;
@@ -7734,7 +7734,7 @@ export class EntitySpawnAfterEventSignal {
      * Method to register an event handler for what happens when an
      * entity spawns.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Function that handles the spawn event.
@@ -7760,7 +7760,7 @@ export class EntitySpawnAfterEventSignal {
      * Unregisters a method that was previously subscribed to the
      * subscription event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -7823,7 +7823,7 @@ export class EntityTameableComponent extends EntityComponent {
      * @remarks
      * Tames this entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @returns
      * Returns true if the entity was tamed.
@@ -7855,13 +7855,13 @@ export class EntityTypeIterator implements Iterable<EntityType> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     [Symbol.iterator](): Iterator<EntityType>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     next(): IteratorResult<EntityType>;
@@ -7968,7 +7968,7 @@ export class ExplosionAfterEventSignal {
      * Adds a callback that will be called when an explosion
      * occurs.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ExplosionAfterEvent) => void): (arg: ExplosionAfterEvent) => void;
@@ -7977,7 +7977,7 @@ export class ExplosionAfterEventSignal {
      * Removes a callback from being called when an explosion
      * occurs.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8022,7 +8022,7 @@ export class ExplosionBeforeEventSignal {
      * occurs. The callback can optionally change or cancel
      * explosion behavior.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ExplosionBeforeEvent) => void): (arg: ExplosionBeforeEvent) => void;
@@ -8031,7 +8031,7 @@ export class ExplosionBeforeEventSignal {
      * Removes a callback from being called from before when an
      * explosion would occur.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8148,7 +8148,7 @@ export class IButtonPushAfterEventSignal {
      * @remarks
      * Subscribes to the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void;
@@ -8156,7 +8156,7 @@ export class IButtonPushAfterEventSignal {
      * @remarks
      * Unsubscribes from the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8174,7 +8174,7 @@ export class ILeverActionAfterEventSignal {
      * @remarks
      * Subscribes to the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
@@ -8182,7 +8182,7 @@ export class ILeverActionAfterEventSignal {
      * @remarks
      * Unsubscribes from the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8200,7 +8200,7 @@ export class IPlayerJoinAfterEventSignal {
      * @remarks
      * Subscribes to the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
@@ -8208,7 +8208,7 @@ export class IPlayerJoinAfterEventSignal {
      * @remarks
      * Unsubscribes from the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8226,7 +8226,7 @@ export class IPlayerLeaveAfterEventSignal {
      * @remarks
      * Subscribes to the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PlayerLeaveAfterEvent) => void): (arg: PlayerLeaveAfterEvent) => void;
@@ -8234,7 +8234,7 @@ export class IPlayerLeaveAfterEventSignal {
      * @remarks
      * Unsubscribes from the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8252,7 +8252,7 @@ export class IPlayerSpawnAfterEventSignal {
      * @remarks
      * Subscribes to the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
@@ -8260,7 +8260,7 @@ export class IPlayerSpawnAfterEventSignal {
      * @remarks
      * Unsubscribes from the event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8307,7 +8307,7 @@ export class ItemCompleteUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * completes charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
@@ -8316,7 +8316,7 @@ export class ItemCompleteUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * completes charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8371,7 +8371,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * 
      * Starts a new cooldown period for this item.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8390,7 +8390,7 @@ export class ItemDefinitionAfterEventSignal {
      * Adds a callback that will be called when an item's
      * definition and components change.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -8401,7 +8401,7 @@ export class ItemDefinitionAfterEventSignal {
      * Removes a callback from being called when an item's
      * definition and components change.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8420,7 +8420,7 @@ export class ItemDefinitionBeforeEventSignal {
      * Adds a callback that will be called when an item's
      * definition and components change.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -8431,7 +8431,7 @@ export class ItemDefinitionBeforeEventSignal {
      * Removes a callback from being called when an item's
      * definition and components change.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8504,7 +8504,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * 
      * Returns the current damage level of this particular item.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     damage: number;
@@ -8527,7 +8527,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Returns the maximum chance that this item would be damaged
      * using the damageRange property, given an unbreaking level.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param unbreaking
      * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
@@ -8546,7 +8546,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * A range of numbers that describes the chance of the item
      * losing durability.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8572,7 +8572,7 @@ export class ItemEnchantsComponent extends ItemComponent {
      * Returns a collection of the enchantments applied to this
      * item stack.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     enchantments: EnchantmentList;
@@ -8583,7 +8583,7 @@ export class ItemEnchantsComponent extends ItemComponent {
      * 
      * Removes all enchantments applied to this item stack.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8689,7 +8689,7 @@ export class ItemReleaseUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * is released from charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
@@ -8698,7 +8698,7 @@ export class ItemReleaseUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * is released from charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -8716,7 +8716,7 @@ export class ItemStack {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -8734,7 +8734,7 @@ export class ItemStack {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     keepOnDeath: boolean;
@@ -8743,7 +8743,7 @@ export class ItemStack {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     lockMode: ItemLockMode;
@@ -8761,7 +8761,7 @@ export class ItemStack {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      * @throws
      * Throws if the length exceeds 255 characters.
@@ -8816,7 +8816,7 @@ export class ItemStack {
      * Get the list of block types this item can break in Adventure
      * mode.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getCanDestroy(): string[];
@@ -8826,7 +8826,7 @@ export class ItemStack {
      * Get the list of block types this item can be placed on in
      * Adventure mode.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getCanPlaceOn(): string[];
@@ -8923,7 +8923,7 @@ export class ItemStack {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockIdentifiers
      * String list of block types that the item can destroy.
@@ -8945,7 +8945,7 @@ export class ItemStack {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param blockIdentifiers
      * String list of block types that the item can be placed on.
@@ -8966,7 +8966,7 @@ export class ItemStack {
      * ItemStack. The lore list is cleared if set to an empty
      * string or undefined.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param loreList
      * List of lore lines. Each element in the list represents a
@@ -9007,7 +9007,7 @@ export class ItemStack {
      * events are defined in an items' definition for key item
      * behaviors.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param eventName
      * Name of the item type event to trigger. If a namespace is
@@ -9056,7 +9056,7 @@ export class ItemStartUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * starts charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
@@ -9065,7 +9065,7 @@ export class ItemStartUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * starts charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9121,7 +9121,7 @@ export class ItemStartUseOnAfterEventSignal {
      * Adds a callback that will be called when an item is used on
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): (arg: ItemStartUseOnAfterEvent) => void;
@@ -9130,7 +9130,7 @@ export class ItemStartUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9179,7 +9179,7 @@ export class ItemStopUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * stops charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
@@ -9188,7 +9188,7 @@ export class ItemStopUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * stops charging.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9239,7 +9239,7 @@ export class ItemStopUseOnAfterEventSignal {
      * Adds a callback that will be called when an item stops being
      * used on a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): (arg: ItemStopUseOnAfterEvent) => void;
@@ -9248,7 +9248,7 @@ export class ItemStopUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9323,7 +9323,7 @@ export class ItemUseAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when an item is used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemUseAfterEvent) => void): (arg: ItemUseAfterEvent) => void;
@@ -9331,7 +9331,7 @@ export class ItemUseAfterEventSignal {
      * @remarks
      * Removes a callback from being called when an item is used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9363,7 +9363,7 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Adds a callback that will be called before an item is used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemUseBeforeEvent) => void): (arg: ItemUseBeforeEvent) => void;
@@ -9371,7 +9371,7 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Removes a callback from being called before an item is used.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9431,7 +9431,7 @@ export class ItemUseOnAfterEventSignal {
      * Adds a callback that will be called when an item is used on
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemUseOnAfterEvent) => void): (arg: ItemUseOnAfterEvent) => void;
@@ -9440,7 +9440,7 @@ export class ItemUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9475,7 +9475,7 @@ export class ItemUseOnBeforeEventSignal {
      * Adds a callback that will be called before an item is used
      * on a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ItemUseOnBeforeEvent) => void): (arg: ItemUseOnBeforeEvent) => void;
@@ -9484,7 +9484,7 @@ export class ItemUseOnBeforeEventSignal {
      * Removes a callback from being called before an item is used
      * on a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9718,7 +9718,7 @@ export class PistonActivateAfterEventSignal {
      * Adds a callback that will be called when a piston expands or
      * retracts.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @example pistonAfterEvent.ts
      * ```typescript
@@ -9776,7 +9776,7 @@ export class PistonActivateAfterEventSignal {
      * Removes a callback from being called when a piston expands
      * or retracts.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9824,7 +9824,7 @@ export class PistonActivateBeforeEventSignal {
      * Adds a callback that will be called before a piston expands
      * or retracts.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @example pistonBeforeEvent.ts
      * ```typescript
@@ -9877,7 +9877,7 @@ export class PistonActivateBeforeEventSignal {
      * Removes a callback from being called before a piston expands
      * or retracts.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -9962,7 +9962,7 @@ export class Player extends Entity {
      * @remarks
      * Manages the selected slot in the player's hotbar.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     selectedSlot: number;
@@ -9989,7 +9989,7 @@ export class Player extends Entity {
      * Adds/removes experience to/from the Player and returns the
      * current experience of the Player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param amount
      * Amount of experience to add. Note that this can be negative.
@@ -10005,7 +10005,7 @@ export class Player extends Entity {
      * Adds/removes level to/from the Player and returns the
      * current level of the Player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param amount
      * Amount to add to the player. Min/max bounds at -2^24 ~ 2^24
@@ -10056,7 +10056,7 @@ export class Player extends Entity {
      * Plays a music track that only this particular player can
      * hear.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -10070,7 +10070,7 @@ export class Player extends Entity {
      * @remarks
      * Plays a sound that only this particular player can hear.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param soundOptions
      * Additional optional options for the sound.
@@ -10107,7 +10107,7 @@ export class Player extends Entity {
      * This is an internal-facing method for posting a system
      * message to downstream clients.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10119,7 +10119,7 @@ export class Player extends Entity {
      * player can hear. If a track is not playing, a music track
      * will play.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -10136,7 +10136,7 @@ export class Player extends Entity {
      * @remarks
      * Resets the level of the player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10198,7 +10198,7 @@ export class Player extends Entity {
      * Will change the specified players permissions, and whether
      * they are operator or not.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10209,7 +10209,7 @@ export class Player extends Entity {
      * Sets the current starting spawn point for this particular
      * player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      *
@@ -10224,7 +10224,7 @@ export class Player extends Entity {
      * Sets the item cooldown time for a particular cooldown
      * category.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param itemCategory
      * Specifies the cooldown category to retrieve the current
@@ -10240,7 +10240,7 @@ export class Player extends Entity {
      * Stops any music tracks from playing for this particular
      * player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10296,7 +10296,7 @@ export class PlayerBreakBlockAfterEventSignal {
      * Adds a callback that will be called when a block is broken
      * by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10308,7 +10308,7 @@ export class PlayerBreakBlockAfterEventSignal {
      * Removes a callback from being called when a player breaks a
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10356,7 +10356,7 @@ export class PlayerBreakBlockBeforeEventSignal {
      * Adds a callback that will be called before a block is broken
      * by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10368,7 +10368,7 @@ export class PlayerBreakBlockBeforeEventSignal {
      * Removes a callback from being called before a player breaks
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10427,7 +10427,7 @@ export class PlayerDimensionChangeAfterEventSignal {
      * Subscribes the specified callback to a player dimension
      * change after event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
@@ -10436,7 +10436,7 @@ export class PlayerDimensionChangeAfterEventSignal {
      * Removes the specified callback from a player dimension
      * change after event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10491,7 +10491,7 @@ export class PlayerInteractWithBlockAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10499,7 +10499,7 @@ export class PlayerInteractWithBlockAfterEventSignal {
     ): (arg: PlayerInteractWithBlockAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10560,7 +10560,7 @@ export class PlayerInteractWithBlockBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10568,7 +10568,7 @@ export class PlayerInteractWithBlockBeforeEventSignal {
     ): (arg: PlayerInteractWithBlockBeforeEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10610,7 +10610,7 @@ export class PlayerInteractWithEntityAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10618,7 +10618,7 @@ export class PlayerInteractWithEntityAfterEventSignal {
     ): (arg: PlayerInteractWithEntityAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10666,7 +10666,7 @@ export class PlayerInteractWithEntityBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10674,7 +10674,7 @@ export class PlayerInteractWithEntityBeforeEventSignal {
     ): (arg: PlayerInteractWithEntityBeforeEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10691,7 +10691,7 @@ export class PlayerIterator implements Iterable<Player> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     [Symbol.iterator](): Iterator<Player>;
@@ -10701,7 +10701,7 @@ export class PlayerIterator implements Iterable<Player> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Player in the iteration.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     next(): IteratorResult<Player>;
@@ -10787,13 +10787,13 @@ export class PlayerLeaveBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10828,7 +10828,7 @@ export class PlayerPlaceBlockAfterEventSignal {
      * Adds a callback that will be called when a block is placed
      * by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10840,7 +10840,7 @@ export class PlayerPlaceBlockAfterEventSignal {
      * Removes a callback from being called when an block is placed
      * by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10900,7 +10900,7 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * Adds a callback that will be called before a block is placed
      * by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -10912,7 +10912,7 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * Removes a callback from being called before an block is
      * placed by a player.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -10931,7 +10931,7 @@ export class PlayerSpawnAfterEvent {
      * If true, this is the initial spawn of a player after joining
      * the game.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     initialSpawn: boolean;
@@ -10939,7 +10939,7 @@ export class PlayerSpawnAfterEvent {
      * @remarks
      * Object that represents the player that joined the game.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     player: Player;
@@ -10991,7 +10991,7 @@ export class PressurePlatePopAfterEventSignal {
      * Adds a callback that will be called when a pressure plate is
      * popped.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PressurePlatePopAfterEvent) => void): (arg: PressurePlatePopAfterEvent) => void;
@@ -11000,7 +11000,7 @@ export class PressurePlatePopAfterEventSignal {
      * Removes a callback from being called when a pressure plate
      * is popped.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11049,7 +11049,7 @@ export class PressurePlatePushAfterEventSignal {
      * Adds a callback that will be called when a pressure plate is
      * pushed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: PressurePlatePushAfterEvent) => void): (arg: PressurePlatePushAfterEvent) => void;
@@ -11058,7 +11058,7 @@ export class PressurePlatePushAfterEventSignal {
      * Removes a callback from being called when a pressure plate
      * is pushed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11107,7 +11107,7 @@ export class ProjectileHitBlockAfterEvent {
      * Contains additional information about the block that was hit
      * by the projectile.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getBlockHit(): BlockHitInformation;
@@ -11125,7 +11125,7 @@ export class ProjectileHitBlockAfterEventSignal {
      * Adds a callback that will be called when a projectile hits a
      * block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): (arg: ProjectileHitBlockAfterEvent) => void;
@@ -11134,7 +11134,7 @@ export class ProjectileHitBlockAfterEventSignal {
      * Removes a callback from being called when a projectile hits
      * a block.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11183,7 +11183,7 @@ export class ProjectileHitEntityAfterEvent {
      * Contains additional information about an entity that was
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getEntityHit(): EntityHitInformation;
@@ -11201,7 +11201,7 @@ export class ProjectileHitEntityAfterEventSignal {
      * Adds a callback that will be called when a projectile hits
      * an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): (arg: ProjectileHitEntityAfterEvent) => void;
@@ -11210,7 +11210,7 @@ export class ProjectileHitEntityAfterEventSignal {
      * Removes a callback from being called when a projectile hits
      * an entity.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11231,7 +11231,7 @@ export class Scoreboard {
      * 
      * Adds a new objective to the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      * @param objectiveId 记分项名称。
      * @param displayName 记分项的显示名称。
      * @returns 创建的记分项对象。
@@ -11245,7 +11245,7 @@ export class Scoreboard {
      * 
      * Clears the objective that occupies a display slot.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      * @param displaySlotId 显示位置。
      * @returns 先前正显示的记分项，为空时返回 `null`。
      *
@@ -11299,7 +11299,7 @@ export class Scoreboard {
      * 
      * Removes an objective from the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      * @param objectiveId 记分项对象或名称。
      * @returns 总是返回 `true`。
      * @throws
@@ -11313,7 +11313,7 @@ export class Scoreboard {
      * Sets an objective into a display slot with specified
      * additional display settings.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      * @param displaySlotId 显示位置。
      * @param objectiveDisplaySetting 记分项显示配置。
      * @returns
@@ -11416,7 +11416,7 @@ export class ScoreboardObjective {
      * @remarks
      * Adds a score to the given participant and objective.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
@@ -11479,7 +11479,7 @@ export class ScoreboardObjective {
      * @remarks
      * Removes a participant from this scoreboard objective.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param participant
      * Participant to remove from being tracked with this
@@ -11491,7 +11491,7 @@ export class ScoreboardObjective {
      * @remarks
      * Sets a score for a participant.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param participant
      * Identity of the participant.
@@ -11548,7 +11548,7 @@ export class ScreenDisplay {
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param text
      * New value for the action bar text.
@@ -11562,7 +11562,7 @@ export class ScreenDisplay {
      * can optionally specify an additional subtitle as well as
      * fade in, stay and fade out times.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      * @example countdown.ts
@@ -11611,7 +11611,7 @@ export class ScreenDisplay {
      * Updates the subtitle if the subtitle was previously
      * displayed via the setTitle method.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11678,7 +11678,7 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * @remarks
      * Registers a new ScriptEvent handler.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(
@@ -11689,7 +11689,7 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * @remarks
      * Unsubscribes a particular handler for a ScriptEvent event.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11745,7 +11745,7 @@ export class ServerMessageAfterEventSignal {
      * Adds a callback that will be called when an internal message
      * is passed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
@@ -11754,7 +11754,7 @@ export class ServerMessageAfterEventSignal {
      * Removes a callback from being called when an internal
      * message is passed.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -11951,7 +11951,7 @@ export class TargetBlockHitAfterEventSignal {
      * Adds a callback that will be called when a target block is
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
@@ -11960,7 +11960,7 @@ export class TargetBlockHitAfterEventSignal {
      * Removes a callback from being called when a target block is
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -12019,7 +12019,7 @@ export class TripWireTripAfterEventSignal {
      * Adds a callback that will be called when a trip wire is
      * tripped.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
@@ -12028,7 +12028,7 @@ export class TripWireTripAfterEventSignal {
      * Removes a callback from being called when a trip wire is
      * tripped.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -12252,7 +12252,7 @@ export class WatchdogTerminateBeforeEventSignal {
      * being terminated due to a violation of the performance
      * watchdog system.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
@@ -12262,7 +12262,7 @@ export class WatchdogTerminateBeforeEventSignal {
      * is being terminated due to a violation of the performance
      * watchdog system.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -12306,7 +12306,7 @@ export class WeatherChangeAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when weather changes.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: WeatherChangeAfterEvent) => void): (arg: WeatherChangeAfterEvent) => void;
@@ -12314,7 +12314,7 @@ export class WeatherChangeAfterEventSignal {
      * @remarks
      * Removes a callback from being called when weather changes.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -12363,7 +12363,7 @@ export class World {
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param id
      * The message identifier.
@@ -12585,7 +12585,7 @@ export class World {
      * 
      * Plays a particular music track for all players.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param trackID 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
@@ -12623,7 +12623,7 @@ export class World {
      * 
      * Plays a sound for all players.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param soundID 声音项目的标识符。
      * @param soundOptions 可选，指定播放声音使用的附加参数。
@@ -12666,7 +12666,7 @@ export class World {
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param trackId
      * 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
@@ -12733,7 +12733,7 @@ export class World {
      * @remarks
      * Sets the world time.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param absoluteTime
      * The world time, in ticks.
@@ -12744,7 +12744,7 @@ export class World {
      * @remarks
      * Sets a default spawn location for all players.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param spawnLocation
      * Location of the spawn point. Note that this is assumed to be
@@ -12840,7 +12840,7 @@ export class World {
      * @remarks
      * Sets the time of day.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param timeOfDay
      * The time of day, in ticks, between 0 and 24000.
@@ -12856,7 +12856,7 @@ export class World {
      * 
      * Stops any music tracks from playing.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     stopMusic(): void;
@@ -13187,6 +13187,10 @@ export class WorldAfterEvents {
 
 /**
  * @beta
+ * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
+ * 但请注意，在 before 类事件过程中，能够改变游戏状态的 API 将失效，试图调用将会抛出错误。
+ * （例如：dimension.spawnEntity）
+ * 
  * A set of events that fire before an actual action occurs. In
  * most cases, you can potentially cancel or modify the
  * impending event. Note that in before events any APIs that
@@ -13320,7 +13324,7 @@ export class WorldInitializeAfterEventSignal {
      * Adds a callback that will be called when the scripting
      * environment is initialized for a World.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
@@ -13329,7 +13333,7 @@ export class WorldInitializeAfterEventSignal {
      * Removes a callback from being called the scripting
      * environment is initialized for a World.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
@@ -14154,18 +14158,24 @@ export interface MusicOptions {
 
 /**
  * @beta
+ * 表示一个最大/最小值的结构，用于描述数值的取值范围。
+ * 
  * Represents a min/max structure for expressing a potential
  * range of numbers.
  */
 export interface NumberRange {
     /**
      * @remarks
+     * 能够取到的最大值。
+     * 
      * Maximum value within a range.
      *
      */
     max: number;
     /**
      * @remarks
+     * 能够取到的最小值。
+     * 
      * Minimum value within a range.
      *
      */

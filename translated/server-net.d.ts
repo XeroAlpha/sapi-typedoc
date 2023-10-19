@@ -74,7 +74,7 @@ export class HttpClient {
      * @remarks
      * Cancels all pending requests.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     cancelAll(reason: string): void;
@@ -82,7 +82,7 @@ export class HttpClient {
      * @remarks
      * Performs a simple HTTP get request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param uri
      * URL to make an HTTP Request to.
@@ -94,7 +94,7 @@ export class HttpClient {
      * @remarks
      * Performs an HTTP request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param config
      * Contains an HTTP Request object with configuration data on
@@ -114,7 +114,7 @@ export class HttpHeader {
      * @remarks
      * Key of the HTTP header.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     key: string;
@@ -122,7 +122,7 @@ export class HttpHeader {
      * @remarks
      * Value of the HTTP header.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     value: minecraftserveradmin.SecretString | string;
@@ -137,7 +137,7 @@ export class HttpRequest {
      * @remarks
      * Content of the body of the HTTP request.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     body: string;
@@ -145,7 +145,7 @@ export class HttpRequest {
      * @remarks
      * A collection of HTTP headers to add to the outbound request.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     headers: HttpHeader[];
@@ -154,7 +154,7 @@ export class HttpRequest {
      * HTTP method (e.g., GET or PUT or PATCH) to use for making
      * the request.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     method: HttpRequestMethod;
@@ -163,7 +163,7 @@ export class HttpRequest {
      * Amount of time, in seconds, before the request times out and
      * is abandoned.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     timeout: number;
@@ -171,7 +171,7 @@ export class HttpRequest {
      * @remarks
      * The HTTP resource to access.
      *
-     * This property can't be edited in read-only mode.
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     uri: string;
@@ -181,7 +181,7 @@ export class HttpRequest {
      * Adds an additional header to the overall list of headers
      * used in the corresponding HTTP request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
@@ -189,7 +189,7 @@ export class HttpRequest {
      * @remarks
      * Updates the content of the body of the HTTP request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     setBody(body: string): HttpRequest;
@@ -197,7 +197,7 @@ export class HttpRequest {
      * @remarks
      * Replaces and applies a set of HTTP Headers for the request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     setHeaders(headers: HttpHeader[]): HttpRequest;
@@ -206,13 +206,13 @@ export class HttpRequest {
      * Sets the desired HTTP method (e.g., GET or PUT or PATCH) to
      * use for making the request.
      *
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     setMethod(method: HttpRequestMethod): HttpRequest;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     setTimeout(timeout: number): HttpRequest;
