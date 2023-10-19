@@ -19,16 +19,16 @@ NPM 包：
 
 |包名|版本|
 | - | - |
-|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.0.0-rc`|
+|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.1.0-rc`|
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.8.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.20`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.21`|
 
-游戏版本号：`1.20.50.20`
+游戏版本号：`1.20.50.21`
 
 <!-- summary end -->
 
@@ -105,8 +105,8 @@ random(min: number, max: number): number;
 
 |模块|进度|
 | - | - |
-|[@minecraft/common](#minecraftcommon)|0/3|
-|[@minecraft/server](#minecraftserver)|0/344|
+|[@minecraft/common](#minecraftcommon)|0/4|
+|[@minecraft/server](#minecraftserver)|0/343|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
 |[@minecraft/server-editor](#minecraftserver-editor)|0/88|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
@@ -120,6 +120,7 @@ random(min: number, max: number): number;
 |[`ArgumentOutOfBoundsError`](https://projectxero.top/sapi/classes/common.ArgumentOutOfBoundsError.html)|类|未翻译|
 |[`EngineError`](https://projectxero.top/sapi/classes/common.EngineError.html)|类|未翻译|
 |[`InvalidArgumentError`](https://projectxero.top/sapi/classes/common.InvalidArgumentError.html)|类|未翻译|
+|[`NumberRange`](https://projectxero.top/sapi/interfaces/common.NumberRange.html)|接口|未翻译|
 
 ### @minecraft/server
 
@@ -446,7 +447,6 @@ random(min: number, max: number): number;
 |[`EntityRaycastOptions`](https://projectxero.top/sapi/interfaces/server.EntityRaycastOptions.html)|接口|未翻译|
 |[`ExplosionOptions`](https://projectxero.top/sapi/interfaces/server.ExplosionOptions.html)|接口|未翻译|
 |[`MusicOptions`](https://projectxero.top/sapi/interfaces/server.MusicOptions.html)|接口|未翻译|
-|[`NumberRange`](https://projectxero.top/sapi/interfaces/server.NumberRange.html)|接口|未翻译|
 |[`PlayAnimationOptions`](https://projectxero.top/sapi/interfaces/server.PlayAnimationOptions.html)|接口|未翻译|
 |[`PlayerSoundOptions`](https://projectxero.top/sapi/interfaces/server.PlayerSoundOptions.html)|接口|未翻译|
 |[`RGB`](https://projectxero.top/sapi/interfaces/server.RGB.html)|接口|未翻译|

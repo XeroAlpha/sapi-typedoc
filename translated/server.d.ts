@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0-internal.1.20.50-preview.20"
+ *   "version": "1.8.0-internal.1.20.50-preview.21"
  * }
  * ```
  *
@@ -3959,7 +3959,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: NumberRange;
+    readonly heightRange: minecraftcommon.NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.
@@ -8550,7 +8550,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): NumberRange;
+    getDamageRange(): minecraftcommon.NumberRange;
 }
 
 /**
@@ -14154,32 +14154,6 @@ export interface MusicOptions {
      *
      */
     volume?: number;
-}
-
-/**
- * @beta
- * 表示一个最大/最小值的结构，用于描述数值的取值范围。
- * 
- * Represents a min/max structure for expressing a potential
- * range of numbers.
- */
-export interface NumberRange {
-    /**
-     * @remarks
-     * 能够取到的最大值。
-     * 
-     * Maximum value within a range.
-     *
-     */
-    max: number;
-    /**
-     * @remarks
-     * 能够取到的最小值。
-     * 
-     * Minimum value within a range.
-     *
-     */
-    min: number;
 }
 
 /**

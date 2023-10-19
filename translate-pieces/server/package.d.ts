@@ -8,7 +8,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0-internal.1.20.50-preview.20"
+ *   "version": "1.8.0-internal.1.20.50-preview.21"
  * }
  * ```
  *

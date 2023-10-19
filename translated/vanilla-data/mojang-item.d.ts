@@ -249,6 +249,7 @@ export declare enum MinecraftItemTypes {
     CrackedDeepslateTiles = "minecraft:cracked_deepslate_tiles",
     CrackedNetherBricks = "minecraft:cracked_nether_bricks",
     CrackedPolishedBlackstoneBricks = "minecraft:cracked_polished_blackstone_bricks",
+    Crafter = "minecraft:crafter",
     CraftingTable = "minecraft:crafting_table",
     CreeperBannerPattern = "minecraft:creeper_banner_pattern",
     CreeperSpawnEgg = "minecraft:creeper_spawn_egg",

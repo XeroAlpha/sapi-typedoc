@@ -64,18 +64,24 @@ async function build(translated) {
     // 加载钩子
     mkdirSync(hookPath, { recursive: true });
     const hookScripts = readdirSync(hookPath)
-        .filter((name) => /\.(cjs|js)$/i.test(name))
-        .sort()
-        .map((name) => resolvePath(hookPath, name));
+        .filter((name) => /\.(cjs|js)$/i.test(name));
+    hookScripts.sort();
     const scriptRequire = createRequire(hookPath);
-    const scriptHooks = hookScripts.map((scriptPath) => scriptRequire(scriptPath));
+    const scriptHooks = hookScripts.map((name) => scriptRequire(resolvePath(hookPath, name)));
     const runHooks = (event, arg) => {
-        scriptHooks.forEach((scriptHook) => {
+        scriptHooks.forEach((scriptHook, hookIndex) => {
+            const logName = `[${event}] ${hookScripts[hookIndex]}`
             if (typeof scriptHook === "function") {
+                console.time(logName);
                 scriptHook(event, arg);
+                console.timeEnd(logName);
             } else {
                 const hook = scriptHook[event];
-                if (hook) hook(arg);
+                if (hook) {
+                    console.time(logName);
+                    hook(arg);
+                    console.timeEnd(logName);
+                }
             }
         });
     }
