@@ -1,9 +1,5 @@
-const TypeDoc = require("typedoc");
-
+/** @type {import('./hook').Hook} */
 module.exports = {
-    /**
-     * @param {{ tsdocProject: TypeDoc.ProjectReflection }} context
-     */
     afterConvert({ tsdocProject }) {
         const { readme } = tsdocProject;
         readme.forEach((part) => {

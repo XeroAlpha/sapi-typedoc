@@ -1,9 +1,5 @@
-const TypeDoc = require("typedoc");
-
+/** @type {import('./hook').Hook} */
 module.exports = {
-    /**
-     * @param {{ tsdocProject: TypeDoc.ProjectReflection }} context
-     */
     afterConvert({ tsdocProject }) {
         Object.entries(tsdocProject.reflections).forEach(([id, reflection]) => {
             if (reflection.sources) {

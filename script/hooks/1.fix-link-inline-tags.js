@@ -1,9 +1,7 @@
 const TypeDoc = require("typedoc");
 
+/** @type {import('./hook').Hook} */
 module.exports = {
-    /**
-     * @param {{ tsdocProject: TypeDoc.ProjectReflection }} context
-     */
     afterConvert({ tsdocProject }) {
         const reflectionEntries = Object.entries(tsdocProject.reflections)
             .filter(([id, refl]) => !refl.kindOf([
