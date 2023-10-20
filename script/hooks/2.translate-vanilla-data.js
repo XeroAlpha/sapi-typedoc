@@ -156,24 +156,14 @@ const tsPopulators = {
 /** @type {import('./hook').Hook} */
 module.exports = {
     async afterTranslate({ project }) {
-        let sourceUrl = null;
-        let sourceData;
-        for (const translationSource of translationSources) {
-            try {
-                sourceData = JSON.parse(await httpsGet(translationSource));
-                sourceUrl = translationSource;
-                break;
-            } catch (err) {
-                console.log(`[translate-vanilla-data] Skipped load translation from ${sourceUrl}: ${err}`);
-            }
-        }
-        if (!sourceUrl) {
-            throw new Error('Cannot access to vanilla data translations');
-        }
+        const [sourceUrl, dataIndex] = await Promise.any(translationSources.map(async (translationSource) => {
+            const dataIndex = JSON.parse(await httpsGet(translationSource));
+            return [translationSource, dataIndex];
+        }));
 
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
         const gameData = {};
-        const betaVersionIndex = sourceData.find((e) => e.id === 'beta');
+        const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
         await Promise.all(['education', 'experiment', 'gametest'].map(async (n) => {
             const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
             const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
