@@ -11,10 +11,8 @@ const translateTexts = [
     ],
 ];
 
+/** @type {import('./hook').Hook} */
 module.exports = {
-    /**
-     * @param {{ sourceFiles: SourceFile[] }} context
-     */
     afterTranslate({ sourceFiles }) {
         sourceFiles.forEach((sourceFile) => {
             const fullText = sourceFile.getFullText();

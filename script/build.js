@@ -68,25 +68,27 @@ async function build(translated) {
     hookScripts.sort();
     const scriptRequire = createRequire(hookPath);
     const scriptHooks = hookScripts.map((name) => scriptRequire(resolvePath(hookPath, name)));
-    const runHooks = (event, arg) => {
-        scriptHooks.forEach((scriptHook, hookIndex) => {
-            const logName = `[${event}] ${hookScripts[hookIndex]}`
-            if (typeof scriptHook === "function") {
-                console.time(logName);
-                scriptHook(event, arg);
-                console.timeEnd(logName);
+    const runHooks = async (event, arg) => {
+        for (let i = 0; i < scriptHooks.length; i++) {
+            const scriptHook = scriptHooks[i];
+            const logName = `[${event}] ${hookScripts[i]}`;
+            let hookFunc;
+            if (typeof scriptHooks === "function") {
+                hookFunc = scriptHook.bind(null, event);
             } else {
-                const hook = scriptHook[event];
-                if (hook) {
-                    console.time(logName);
-                    hook(arg);
-                    console.timeEnd(logName);
-                }
+                hookFunc = scriptHook[event];
             }
-        });
+            if (hookFunc) {
+                console.time(logName);
+                const result = hookFunc(arg);
+                if (result && result.then) await result;
+                console.timeEnd(logName);
+            }
+        }
     }
 
     // 尝试加载翻译文件对应版本的 package.json
+    console.time('[restoreDependencies] Total');
     const originalPackageJsonPath = resolvePath(originalPath, "package.json");
     const cachedPackageJsonPath = resolvePath(translatedPath, "package.json");
     const originalPackageJsonData = readFileSync(originalPackageJsonPath);
@@ -99,9 +101,11 @@ async function build(translated) {
         cwd: originalPath,
         stdio: "inherit"
     });
+    console.timeEnd('[restoreDependencies] Total');
 
     // 从依赖中构建用于生成文档的项目
-    runHooks("beforeLoad");
+    console.time('[loadOriginal] Total');
+    await runHooks("beforeLoad", {});
     const tsConfigFilePath = resolvePath(translatedPath, "tsconfig.json");
     const project = new Project({
         tsConfigFilePath,
@@ -165,10 +169,12 @@ async function build(translated) {
         }
     });
     writeFileSync(originalPackageJsonPath, originalPackageJsonData);
-    runHooks("afterLoad", { project, sourceFiles, dependencies });
+    await runHooks("afterLoad", { project, sourceFiles, dependencies });
+    console.timeEnd('[loadOriginal] Total');
     
     if (translated) {
         // 将顶层成员替换为带翻译的版本
+        console.time('[translate] Total');
         sourceFiles.forEach((sourceFile) => {
             const pieces = split(sourceFile);
             let sourceFileText = sourceFile.getFullText();
@@ -184,22 +190,27 @@ async function build(translated) {
                 sourceFile.replaceWithText(sourceFileText);
             }
         });
-        runHooks("afterTranslate", { project, sourceFiles, dependencies });
+        await runHooks("afterTranslate", { project, sourceFiles, dependencies });
+        console.timeEnd('[translate] Total');
     }
-    project.saveSync();
 
     // 生成 TypeDoc 页面
+    console.time('[analyze] Total');
+    project.saveSync();
     const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins({
         tsconfig: tsConfigFilePath,
         githubPages: false
     }, [new TypeDoc.TSConfigReader()]);
-    runHooks("beforeConvert", { project, sourceFiles, dependencies, tsdocApplication });
+    await runHooks("beforeConvert", { project, sourceFiles, dependencies, tsdocApplication });
     const tsdocProject = await tsdocApplication.convert();
+    console.timeEnd('[analyze] Total');
     if (tsdocProject) {
-        runHooks("afterConvert", { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
+        console.time('[emit] Total');
+        await runHooks("afterConvert", { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
         await tsdocApplication.generateDocs(tsdocProject, distPath);
         await tsdocApplication.generateJson(tsdocProject, resolvePath(distPath, 'index.json'));
-        runHooks("afterEmit", { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
+        await runHooks("afterEmit", { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
+        console.timeEnd('[emit] Total');
     } else {
         throw new Error("Convert failed");
     }
