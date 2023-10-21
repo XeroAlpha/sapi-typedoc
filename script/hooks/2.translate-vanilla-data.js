@@ -1,5 +1,5 @@
 const { get } = require('https');
-const { SourceFile, SyntaxKind } = require('ts-morph');
+const { SyntaxKind } = require('ts-morph');
 const { URL } = require('url');
 
 const translationSources = [
@@ -151,35 +151,39 @@ const tsPopulators = {
         }
         sourceFile.applyTextChanges(textChanges);
     }
-}
+};
 
 /** @type {import('./hook').Hook} */
 module.exports = {
     async afterTranslate({ project }) {
-        const [sourceUrl, dataIndex] = await Promise.any(translationSources.map(async (translationSource) => {
-            const dataIndex = JSON.parse(await httpsGet(translationSource));
-            return [translationSource, dataIndex];
-        }));
+        const [sourceUrl, dataIndex] = await Promise.any(
+            translationSources.map(async (translationSource) => {
+                const dataIndex = JSON.parse(await httpsGet(translationSource));
+                return [translationSource, dataIndex];
+            })
+        );
 
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
         const gameData = {};
         const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
-        await Promise.all(['education', 'experiment', 'gametest'].map(async (n) => {
-            const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
-            const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
-            const { enums } = JSON.parse(await httpsGet(dataUrl));
-            Object.entries(enums).forEach(([enumName, enumKV]) => {
-                let enumEntries = gameData[enumName];
-                if (!enumEntries) {
-                    enumEntries = gameData[enumName] = {};
-                }
-                Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
-                    if (!enumEntries[enumKey]) {
-                        enumEntries[enumKey] = enumValue;
+        await Promise.all(
+            ['education', 'experiment', 'gametest'].map(async (n) => {
+                const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
+                const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
+                const { enums } = JSON.parse(await httpsGet(dataUrl));
+                Object.entries(enums).forEach(([enumName, enumKV]) => {
+                    let enumEntries = gameData[enumName];
+                    if (!enumEntries) {
+                        enumEntries = gameData[enumName] = {};
                     }
+                    Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
+                        if (!enumEntries[enumKey]) {
+                            enumEntries[enumKey] = enumValue;
+                        }
+                    });
                 });
-            });
-        }));
+            })
+        );
 
         Object.entries(tsPopulators).forEach(([fileName, populator]) => {
             const sourceFile = project.getSourceFile(fileName);
@@ -187,4 +191,4 @@ module.exports = {
             populator({ sourceFile, gameData });
         });
     }
-}
+};

@@ -1,9 +1,9 @@
-const { SyntaxKind, SourceFile } = require("ts-morph");
-const { resolve: resolvePath, relative: relativePath } = require("path");
+const { SyntaxKind } = require('ts-morph');
+const { resolve: resolvePath, relative: relativePath } = require('path');
 
-const basePath = resolvePath(__dirname, "..");
-const translatingPath = resolvePath(basePath, "translate-pieces");
-const translatedPath = resolvePath(basePath, "translated");
+const basePath = resolvePath(__dirname, '..');
+const translatingPath = resolvePath(basePath, 'translate-pieces');
+const translatedPath = resolvePath(basePath, 'translated');
 
 const SkippedTopLevelSyntaxKinds = [
     SyntaxKind.EndOfFileToken,
@@ -12,14 +12,14 @@ const SkippedTopLevelSyntaxKinds = [
 ];
 
 const SyntaxKindToCategory = new Map([
-    [SyntaxKind.EnumDeclaration, "enums"],
-    [SyntaxKind.ClassDeclaration, "classes"],
-    [SyntaxKind.FunctionDeclaration, "functions"],
-    [SyntaxKind.InterfaceDeclaration, "interfaces"],
-    [SyntaxKind.ModuleDeclaration, "modules"],
-    [SyntaxKind.TypeAliasDeclaration, "types"],
-    [SyntaxKind.VariableStatement, "variables"],
-    [SyntaxKind.ExportDeclaration, "types"]
+    [SyntaxKind.EnumDeclaration, 'enums'],
+    [SyntaxKind.ClassDeclaration, 'classes'],
+    [SyntaxKind.FunctionDeclaration, 'functions'],
+    [SyntaxKind.InterfaceDeclaration, 'interfaces'],
+    [SyntaxKind.ModuleDeclaration, 'modules'],
+    [SyntaxKind.TypeAliasDeclaration, 'types'],
+    [SyntaxKind.VariableStatement, 'variables'],
+    [SyntaxKind.ExportDeclaration, 'types']
 ]);
 
 /**
@@ -33,7 +33,8 @@ function split(sourceFile) {
     );
     const piecePathList = [];
     const pieces = [];
-    const packageDocumentationJSDoc = sourceFile.getDescendantsOfKind(SyntaxKind.JSDoc)
+    const packageDocumentationJSDoc = sourceFile
+        .getDescendantsOfKind(SyntaxKind.JSDoc)
         .find((jsdoc) => jsdoc.getTags().some((tag) => tag.getTagName() === 'packageDocumentation'));
     if (packageDocumentationJSDoc) {
         pieces.push({
@@ -44,7 +45,8 @@ function split(sourceFile) {
     }
     sourceFile.forEachChild((node) => {
         if (SkippedTopLevelSyntaxKinds.includes(node.getKind())) return;
-        const includedSymbols = node.getDescendants()
+        const includedSymbols = node
+            .getDescendants()
             .map((e) => e.getSymbol())
             .filter((e) => e);
         let symbol = node.getSymbol();
@@ -67,7 +69,8 @@ function split(sourceFile) {
             pieceIndex++;
         }
         piecePathList.push(piecePath.toLowerCase());
-        const jsdocList = node.getChildrenOfKind(SyntaxKind.JSDoc)
+        const jsdocList = node
+            .getChildrenOfKind(SyntaxKind.JSDoc)
             .filter((jsdoc) => jsdoc.getStart() !== packageDocumentationJSDoc.getStart());
         let pieceStart = node.getStart(false);
         if (jsdocList.length > 0) {

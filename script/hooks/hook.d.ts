@@ -1,5 +1,5 @@
-import { Project, SourceFile } from "ts-morph";
-import { Application, ProjectReflection } from "typedoc";
+import { Project, SourceFile } from 'ts-morph';
+import { Application, ProjectReflection } from 'typedoc';
 
 declare type HookFunction<Context> = (context: Context) => void | Promise<void>;
 
@@ -23,5 +23,5 @@ declare interface Hook {
     afterTranslate?: HookFunction<TranslateHookContext>;
     beforeConvert?: HookFunction<BeforeConvertHookContext>;
     afterConvert?: HookFunction<AfterConvertHookContext>;
-    afterConvert?: HookFunction<AfterConvertHookContext>;
+    afterEmit?: HookFunction<AfterConvertHookContext>;
 }

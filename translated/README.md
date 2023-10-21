@@ -67,6 +67,7 @@ random(min: number, max: number): number;
 
 ## 翻译规则
 
+- 所有翻译均在 `translate-pieces` 目录中进行。`translated` 目录下的 d.ts 文件由构建脚本跟随 `translate-pieces` 目录更新。
 - **保留所有英文原文，即使原文有误**。但不保留 `@throws` 中出现的 “This function can throw errors.”、“This property can throw when used.”。
 - 翻译不必遵守与英文原文句意相同的规则。能描述清楚即可。原文中的错误可在翻译中进行修正。
 - 对于原文中出现的专有术语，优先使用 [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki) 上的表述。存疑或不确定的表述可在 Pull Request 时提出。
