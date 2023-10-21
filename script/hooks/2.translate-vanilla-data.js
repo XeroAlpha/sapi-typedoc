@@ -23,10 +23,12 @@ function httpsGet(url) {
     });
 }
 
-/** @type {Record<string, (options: { sourceFile: SourceFile, gameData: Record<string, Record<string, string>> }) => void>} */
+/** @typedef {import('ts-morph').SourceFile} SourceFile */
+/** @typedef {import('ts-morph').ts.TextChange} TsTextChange */
+
+/** @type {Record<string, (textChanges: TsTextChange[], options: { sourceFile: SourceFile, gameData: Record<string, Record<string, string>> }) => void>} */
 const tsPopulators = {
-    'mojang-block.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-block.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftBlockTypes');
         const { block } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -41,10 +43,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-item.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-item.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftItemTypes');
         const { item } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -59,10 +59,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-entity.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-entity.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftEntityTypes');
         const { entity } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -77,10 +75,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-cameraPresets.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-cameraPresets.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftCameraPresetsTypes');
         const { cameraPreset } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -94,10 +90,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-effect.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-effect.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftEffectTypes');
         const { effect } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -111,10 +105,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-enchantment.d.ts': ({ sourceFile, gameData }) => {
-        const textChanges = [];
+    'mojang-enchantment.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftEnchantmentTypes');
         const { enchant } = gameData;
         for (const enumMember of enumNode.getMembers()) {
@@ -128,10 +120,8 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     },
-    'mojang-dimension.d.ts': ({ sourceFile }) => {
-        const textChanges = [];
+    'mojang-dimension.d.ts': (textChanges, { sourceFile }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftDimensionTypes');
         const dimensionTranslations = {
             'minecraft:overworld': '主世界',
@@ -149,7 +139,6 @@ const tsPopulators = {
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
     }
 };
 
@@ -187,8 +176,10 @@ module.exports = {
 
         Object.entries(tsPopulators).forEach(([fileName, populator]) => {
             const sourceFile = project.getSourceFile(fileName);
+            const textChanges = [];
             console.log(`[translate-vanilla-data] Populating ${fileName}`);
-            populator({ sourceFile, gameData });
+            populator(textChanges, { sourceFile, gameData });
+            sourceFile.applyTextChanges(textChanges);
         });
     }
 };

@@ -81,6 +81,7 @@ random(min: number, max: number): number;
 - 标签顺序需按照 `@param`（按参数顺序）、`@returns`、`@throws` 的顺序。
 - 不翻译 `@example` 块。
 - 特殊情况：若子类/代理的某一方法对外部表现的参数、返回类型和实际功能与父类一致，则可以不翻译描述、`@remarks`、`@param`、`@typeParam`、`@returns` 块，改用 `{@inheritDoc ParentClass.classMember}` 来代替描述的中文翻译部分。`@throws` 块仍然需要翻译与补充。
+- 特殊情况：`This function/property can't be called/edited in read-only mode.` 视作成员标识，无需进行翻译。会在构建时统一进行替换。
 
 |常见用语|翻译|备注|
 | - | - | - |
