@@ -308,8 +308,6 @@ export declare enum MinecraftItemTypes {
     Cactus = "minecraft:cactus",
     /** 蛋糕。 */
     Cake = "minecraft:cake",
-    /** 方解石。 */
-    Calcite = "minecraft:calcite",
     /** 校频幽匿感测体。 */
     CalibratedSculkSensor = "minecraft:calibrated_sculk_sensor",
     /** 骆驼刷怪蛋。 */
@@ -393,12 +391,18 @@ export declare enum MinecraftItemTypes {
     ChickenSpawnEgg = "minecraft:chicken_spawn_egg",
     /** 雕纹书架。 */
     ChiseledBookshelf = "minecraft:chiseled_bookshelf",
+    /** Chiseled Copper。 */
+    ChiseledCopper = "minecraft:chiseled_copper",
     /** 雕纹深板岩。 */
     ChiseledDeepslate = "minecraft:chiseled_deepslate",
     /** 雕纹下界砖块。 */
     ChiseledNetherBricks = "minecraft:chiseled_nether_bricks",
     /** 雕纹磨制黑石。 */
     ChiseledPolishedBlackstone = "minecraft:chiseled_polished_blackstone",
+    /** Chiseled Tuff。 */
+    ChiseledTuff = "minecraft:chiseled_tuff",
+    /** Chiseled Tuff Bricks。 */
+    ChiseledTuffBricks = "minecraft:chiseled_tuff_bricks",
     /** 紫颂花。 */
     ChorusFlower = "minecraft:chorus_flower",
     /** 紫颂果。 */
@@ -473,10 +477,18 @@ export declare enum MinecraftItemTypes {
     Cookie = "minecraft:cookie",
     /** 铜块。 */
     CopperBlock = "minecraft:copper_block",
+    /** Copper Bulb。 */
+    CopperBulb = "minecraft:copper_bulb",
+    /** Copper Door。 */
+    CopperDoor = "minecraft:copper_door",
+    /** Copper Grate。 */
+    CopperGrate = "minecraft:copper_grate",
     /** 铜锭。 */
     CopperIngot = "minecraft:copper_ingot",
     /** 铜矿石。 */
     CopperOre = "minecraft:copper_ore",
+    /** Copper Trapdoor。 */
+    CopperTrapdoor = "minecraft:copper_trapdoor",
     Coral = "minecraft:coral",
     /** 珊瑚块。 */
     CoralBlock = "minecraft:coral_block",
@@ -494,7 +506,7 @@ export declare enum MinecraftItemTypes {
     CrackedNetherBricks = "minecraft:cracked_nether_bricks",
     /** 裂纹磨制黑石砖。 */
     CrackedPolishedBlackstoneBricks = "minecraft:cracked_polished_blackstone_bricks",
-    /** Crafter。 */
+    /** 合成器。 */
     Crafter = "minecraft:crafter",
     /** 工作台。 */
     CraftingTable = "minecraft:crafting_table",
@@ -764,8 +776,18 @@ export declare enum MinecraftItemTypes {
     ExperienceBottle = "minecraft:experience_bottle",
     /** 探险纹样陶片。 */
     ExplorerPotterySherd = "minecraft:explorer_pottery_sherd",
+    /** Exposed Chiseled Copper。 */
+    ExposedChiseledCopper = "minecraft:exposed_chiseled_copper",
     /** 斑驳的铜块。 */
     ExposedCopper = "minecraft:exposed_copper",
+    /** Exposed Copper Bulb。 */
+    ExposedCopperBulb = "minecraft:exposed_copper_bulb",
+    /** Exposed Copper Door。 */
+    ExposedCopperDoor = "minecraft:exposed_copper_door",
+    /** Exposed Copper Grate。 */
+    ExposedCopperGrate = "minecraft:exposed_copper_grate",
+    /** Exposed Copper Trapdoor。 */
+    ExposedCopperTrapdoor = "minecraft:exposed_copper_trapdoor",
     /** 斑驳的切制铜块。 */
     ExposedCutCopper = "minecraft:exposed_cut_copper",
     /** 斑驳的切制铜台阶。 */
@@ -1433,8 +1455,18 @@ export declare enum MinecraftItemTypes {
     OrangeTerracotta = "minecraft:orange_terracotta",
     /** 橙色羊毛。 */
     OrangeWool = "minecraft:orange_wool",
+    /** Oxidized Chiseled Copper。 */
+    OxidizedChiseledCopper = "minecraft:oxidized_chiseled_copper",
     /** 氧化的铜块。 */
     OxidizedCopper = "minecraft:oxidized_copper",
+    /** Oxidized Copper Bulb。 */
+    OxidizedCopperBulb = "minecraft:oxidized_copper_bulb",
+    /** Oxidized Copper Door。 */
+    OxidizedCopperDoor = "minecraft:oxidized_copper_door",
+    /** Oxidized Copper Grate。 */
+    OxidizedCopperGrate = "minecraft:oxidized_copper_grate",
+    /** Oxidized Copper Trapdoor。 */
+    OxidizedCopperTrapdoor = "minecraft:oxidized_copper_trapdoor",
     /** 氧化的切制铜块。 */
     OxidizedCutCopper = "minecraft:oxidized_cut_copper",
     /** 氧化的切制铜台阶。 */
@@ -1553,6 +1585,14 @@ export declare enum MinecraftItemTypes {
     PolishedGranite = "minecraft:polished_granite",
     /** 磨制花岗岩楼梯。 */
     PolishedGraniteStairs = "minecraft:polished_granite_stairs",
+    /** Polished Tuff。 */
+    PolishedTuff = "minecraft:polished_tuff",
+    /** Polished Tuff Slab。 */
+    PolishedTuffSlab = "minecraft:polished_tuff_slab",
+    /** Polished Tuff Stairs。 */
+    PolishedTuffStairs = "minecraft:polished_tuff_stairs",
+    /** Polished Tuff Wall。 */
+    PolishedTuffWall = "minecraft:polished_tuff_wall",
     /** 爆裂紫颂果。 */
     PoppedChorusFruit = "minecraft:popped_chorus_fruit",
     /** 生猪排。 */
@@ -2017,6 +2057,20 @@ export declare enum MinecraftItemTypes {
     TubeCoral = "minecraft:tube_coral",
     /** 凝灰岩。 */
     Tuff = "minecraft:tuff",
+    /** Tuff Brick Slab。 */
+    TuffBrickSlab = "minecraft:tuff_brick_slab",
+    /** Tuff Brick Stairs。 */
+    TuffBrickStairs = "minecraft:tuff_brick_stairs",
+    /** Tuff Brick Wall。 */
+    TuffBrickWall = "minecraft:tuff_brick_wall",
+    /** Tuff Bricks。 */
+    TuffBricks = "minecraft:tuff_bricks",
+    /** Tuff Slab。 */
+    TuffSlab = "minecraft:tuff_slab",
+    /** Tuff Stairs。 */
+    TuffStairs = "minecraft:tuff_stairs",
+    /** Tuff Wall。 */
+    TuffWall = "minecraft:tuff_wall",
     /** 海龟蛋。 */
     TurtleEgg = "minecraft:turtle_egg",
     /** 海龟壳。 */
@@ -2085,32 +2139,72 @@ export declare enum MinecraftItemTypes {
     WaterBucket = "minecraft:water_bucket",
     /** 睡莲。 */
     Waterlily = "minecraft:waterlily",
+    /** Waxed Chiseled Copper。 */
+    WaxedChiseledCopper = "minecraft:waxed_chiseled_copper",
     /** 涂蜡的铜块。 */
     WaxedCopper = "minecraft:waxed_copper",
+    /** Waxed Copper Bulb。 */
+    WaxedCopperBulb = "minecraft:waxed_copper_bulb",
+    /** Waxed Copper Door。 */
+    WaxedCopperDoor = "minecraft:waxed_copper_door",
+    /** Waxed Copper Grate。 */
+    WaxedCopperGrate = "minecraft:waxed_copper_grate",
+    /** Waxed Copper Trapdoor。 */
+    WaxedCopperTrapdoor = "minecraft:waxed_copper_trapdoor",
     /** 涂蜡的切制铜块。 */
     WaxedCutCopper = "minecraft:waxed_cut_copper",
     /** 涂蜡的切制铜台阶。 */
     WaxedCutCopperSlab = "minecraft:waxed_cut_copper_slab",
     /** 涂蜡的切制铜楼梯。 */
     WaxedCutCopperStairs = "minecraft:waxed_cut_copper_stairs",
+    /** Waxed Exposed Chiseled Copper。 */
+    WaxedExposedChiseledCopper = "minecraft:waxed_exposed_chiseled_copper",
     /** 涂蜡的斑驳铜块。 */
     WaxedExposedCopper = "minecraft:waxed_exposed_copper",
+    /** Waxed Exposed Copper Bulb。 */
+    WaxedExposedCopperBulb = "minecraft:waxed_exposed_copper_bulb",
+    /** Waxed Exposed Copper Door。 */
+    WaxedExposedCopperDoor = "minecraft:waxed_exposed_copper_door",
+    /** Waxed Exposed Copper Grate。 */
+    WaxedExposedCopperGrate = "minecraft:waxed_exposed_copper_grate",
+    /** Waxed Exposed Copper Trapdoor。 */
+    WaxedExposedCopperTrapdoor = "minecraft:waxed_exposed_copper_trapdoor",
     /** 涂蜡的斑驳切制铜块。 */
     WaxedExposedCutCopper = "minecraft:waxed_exposed_cut_copper",
     /** 涂蜡的斑驳切制铜台阶。 */
     WaxedExposedCutCopperSlab = "minecraft:waxed_exposed_cut_copper_slab",
     /** 涂蜡的斑驳切制铜楼梯。 */
     WaxedExposedCutCopperStairs = "minecraft:waxed_exposed_cut_copper_stairs",
+    /** Waxed Oxidized Chiseled Copper。 */
+    WaxedOxidizedChiseledCopper = "minecraft:waxed_oxidized_chiseled_copper",
     /** 涂蜡的氧化铜块。 */
     WaxedOxidizedCopper = "minecraft:waxed_oxidized_copper",
+    /** Waxed Oxidized Copper Bulb。 */
+    WaxedOxidizedCopperBulb = "minecraft:waxed_oxidized_copper_bulb",
+    /** Waxed Oxidized Copper Door。 */
+    WaxedOxidizedCopperDoor = "minecraft:waxed_oxidized_copper_door",
+    /** Waxed Oxidized Copper Grate。 */
+    WaxedOxidizedCopperGrate = "minecraft:waxed_oxidized_copper_grate",
+    /** Waxed Oxidized Copper Trapdoor。 */
+    WaxedOxidizedCopperTrapdoor = "minecraft:waxed_oxidized_copper_trapdoor",
     /** 涂蜡的氧化切制铜块。 */
     WaxedOxidizedCutCopper = "minecraft:waxed_oxidized_cut_copper",
     /** 涂蜡的氧化切制铜台阶。 */
     WaxedOxidizedCutCopperSlab = "minecraft:waxed_oxidized_cut_copper_slab",
     /** 涂蜡的氧化切制铜楼梯。 */
     WaxedOxidizedCutCopperStairs = "minecraft:waxed_oxidized_cut_copper_stairs",
+    /** Waxed Weathered Chiseled Copper。 */
+    WaxedWeatheredChiseledCopper = "minecraft:waxed_weathered_chiseled_copper",
     /** 涂蜡的锈蚀铜块。 */
     WaxedWeatheredCopper = "minecraft:waxed_weathered_copper",
+    /** Waxed Weathered Copper Bulb。 */
+    WaxedWeatheredCopperBulb = "minecraft:waxed_weathered_copper_bulb",
+    /** Waxed Weathered Copper Door。 */
+    WaxedWeatheredCopperDoor = "minecraft:waxed_weathered_copper_door",
+    /** Waxed Weathered Copper Grate。 */
+    WaxedWeatheredCopperGrate = "minecraft:waxed_weathered_copper_grate",
+    /** Waxed Weathered Copper Trapdoor。 */
+    WaxedWeatheredCopperTrapdoor = "minecraft:waxed_weathered_copper_trapdoor",
     /** 涂蜡的锈蚀切制铜块。 */
     WaxedWeatheredCutCopper = "minecraft:waxed_weathered_cut_copper",
     /** 涂蜡的锈蚀切制铜台阶。 */
@@ -2119,8 +2213,18 @@ export declare enum MinecraftItemTypes {
     WaxedWeatheredCutCopperStairs = "minecraft:waxed_weathered_cut_copper_stairs",
     /** 向导盔甲纹饰锻造模板。 */
     WayfinderArmorTrimSmithingTemplate = "minecraft:wayfinder_armor_trim_smithing_template",
+    /** Weathered Chiseled Copper。 */
+    WeatheredChiseledCopper = "minecraft:weathered_chiseled_copper",
     /** 锈蚀的铜块。 */
     WeatheredCopper = "minecraft:weathered_copper",
+    /** Weathered Copper Bulb。 */
+    WeatheredCopperBulb = "minecraft:weathered_copper_bulb",
+    /** Weathered Copper Door。 */
+    WeatheredCopperDoor = "minecraft:weathered_copper_door",
+    /** Weathered Copper Grate。 */
+    WeatheredCopperGrate = "minecraft:weathered_copper_grate",
+    /** Weathered Copper Trapdoor。 */
+    WeatheredCopperTrapdoor = "minecraft:weathered_copper_trapdoor",
     /** 锈蚀的切制铜块。 */
     WeatheredCutCopper = "minecraft:weathered_cut_copper",
     /** 锈蚀的切制铜台阶。 */

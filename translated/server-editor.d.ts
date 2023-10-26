@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.50-preview.21"
+ *   "version": "0.1.0-beta.1.20.50-preview.22"
  * }
  * ```
  *
@@ -185,14 +185,42 @@ export declare enum EditorInputContext {
     Viewport = 'local.toolMode.viewport',
 }
 
+/**
+ * Enumeration representing the different modes Editor can be
+ * in.
+ */
 export enum EditorMode {
+    /**
+     * @remarks
+     * Mode for single-block editing.
+     *
+     */
     Crosshair = 'Crosshair',
+    /**
+     * @remarks
+     * Mode for multi-block editing UI and tools.
+     *
+     */
     Tool = 'Tool',
 }
 
 export declare enum EditorStatusBarAlignment {
     Right = 0,
     Left = 1,
+}
+
+/**
+ * Enumeration representing identifiers for graphics settings
+ * properties.
+ */
+export enum GraphicsSettingsProperty {
+    /**
+     * @remarks
+     * Manages rendering of invisible blocks (e.g., barrier, light,
+     * structure_void).
+     *
+     */
+    ShowInvisibleBlocks = 'ShowInvisibleBlocks',
 }
 
 /**
@@ -384,6 +412,13 @@ export enum PlaytestSessionResult {
     ResponseTimeout = 10,
     UnspecifiedError = 11,
 }
+
+/**
+ * Defines type information for graphics settings properties.
+ */
+export type GraphicsSettingsPropertyTypeMap = {
+    [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
+};
 
 /**
  * Full set of all possible raw actions
@@ -940,6 +975,13 @@ export class Extension {
  */
 export class ExtensionContext {
     private constructor();
+    /**
+     * @remarks
+     * Contains a set of events that are applicable to the editor
+     * player.  Event callbacks are called in a deferred manner.
+     * Event callbacks are executed in read-write mode.
+     *
+     */
     readonly afterEvents: ExtensionContextAfterEvents;
     /**
      * @remarks
@@ -981,6 +1023,14 @@ export class ExtensionContext {
     readonly selectionManager: SelectionManager;
     /**
      * @remarks
+     * The instance of the players Settings Manager and the
+     * contract through which the settings for the player can be
+     * modified.
+     *
+     */
+    readonly settings: SettingsManager;
+    /**
+     * @remarks
      * The instance of the players Transaction Manager and the main
      * interface through which the creator can create transaction
      * records, and undo/redo previous transactions
@@ -989,9 +1039,67 @@ export class ExtensionContext {
     readonly transactionManager: TransactionManager;
 }
 
+/**
+ * Contains a set of events that are available across the scope
+ * of the ExtensionContext.
+ */
 export class ExtensionContextAfterEvents {
     private constructor();
+    /**
+     * @remarks
+     * This event triggers when the editor mode changes for the
+     * player.
+     *
+     */
     readonly modeChange: ModeChangeAfterEventSignal;
+}
+
+/**
+ * Settings category that manages {@link
+ * GraphicsSettingsProperty} configurations.
+ */
+export class GraphicsSettings {
+    private constructor();
+    /**
+     * @remarks
+     * Retrieves a graphics settings property value.
+     *
+     * @param property
+     * Property identifier.
+     * @returns
+     * Returns the property value if it is found. If the property
+     * is not available, it returns undefined.
+     */
+    get<T extends keyof GraphicsSettingsPropertyTypeMap>(property: T): GraphicsSettingsPropertyTypeMap[T] | undefined;
+    /**
+     * @remarks
+     * Retrieves all graphics settings properties and their values.
+     *
+     * @returns
+     * Returns a property value map for all available properties.
+     */
+    getAll(): GraphicsSettingsPropertyTypeMap;
+    /**
+     * @remarks
+     * Modifies a graphics settings property value.
+     *
+     * @param property
+     * Property identifier.
+     * @param value
+     * New property value.
+     * @throws This function can throw errors.
+     */
+    set<T extends keyof GraphicsSettingsPropertyTypeMap>(property: T, value: GraphicsSettingsPropertyTypeMap[T]): void;
+    /**
+     * @remarks
+     * Modify multiple graphics settings properties.
+     *
+     * @param properties
+     * Property map to set available property values. If the
+     * property is not defined in the map, it will not be modified.
+     * @throws This function can throw errors.
+     */
+    setAll(properties: GraphicsSettingsPropertyTypeMap): void;
 }
 
 /**
@@ -1117,21 +1225,40 @@ export class MinecraftEditor {
     ): Extension;
 }
 
+/**
+ * Contains information related to changes in player editor
+ * mode.
+ */
 export class ModeChangeAfterEvent {
     private constructor();
+    /**
+     * @remarks
+     * The editor mode that the player is changed to.
+     *
+     */
     readonly mode: EditorMode;
 }
 
+/**
+ * Manages callbacks that are connected to when a player editor
+ * mode changes.
+ */
 export class ModeChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Subscribes the specified callback to an editor mode change
+     * after event.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
     /**
      * @remarks
+     * Removes the specified callback from an editor mode change
+     * after event.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -1397,6 +1524,21 @@ export class SelectionManager {
      * @throws This function can throw errors.
      */
     create(): Selection;
+}
+
+/**
+ * The SettingsManager (accessible from the {@link
+ * ExtensionContext}) is responsible for the management all
+ * player settings.
+ */
+export class SettingsManager {
+    private constructor();
+    /**
+     * @remarks
+     * Manages graphics settings properties.
+     *
+     */
+    readonly graphics: GraphicsSettings;
 }
 
 /**

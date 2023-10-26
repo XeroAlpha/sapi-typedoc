@@ -23,10 +23,12 @@ export class ItemStartUseOnAfterEvent {
     readonly blockFace: Direction;
     /**
      * @remarks
-     * The impacted item stack that is starting to be used.
+     * The impacted item stack that is starting to be used. Can be
+     * undefined in some gameplay scenarios like pushing a button
+     * with an empty hand.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.

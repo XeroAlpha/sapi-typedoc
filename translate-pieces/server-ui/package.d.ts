@@ -35,7 +35,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.50-preview.21"
+ *   "version": "1.2.0-internal.1.20.50-preview.22"
  * }
  * ```
  *

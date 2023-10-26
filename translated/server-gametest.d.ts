@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.50-preview.21"
+ *   "version": "1.0.0-internal.1.20.50-preview.22"
  * }
  * ```
  *
@@ -809,9 +809,12 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @returns
+     * Returns the item that was in use. Undefined if no item was
+     * in use.
      * @throws This function can throw errors.
      */
-    stopUsingItem(): void;
+    stopUsingItem(): minecraftserver.ItemStack | undefined;
     /**
      * @remarks
      * Causes the simulated player to start swimming.

@@ -26,9 +26,9 @@ NPM 包：
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.21`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.50-preview.22`|
 
-游戏版本号：`1.20.50.21`
+游戏版本号：`1.20.50.22`
 
 <!-- summary end -->
 
@@ -108,9 +108,9 @@ random(min: number, max: number): number;
 |模块|进度|
 | - | - |
 |[@minecraft/common](#minecraftcommon)|0/4|
-|[@minecraft/server](#minecraftserver)|0/343|
+|[@minecraft/server](#minecraftserver)|0/344|
 |[@minecraft/server-admin](#minecraftserver-admin)|0/5|
-|[@minecraft/server-editor](#minecraftserver-editor)|0/88|
+|[@minecraft/server-editor](#minecraftserver-editor)|0/92|
 |[@minecraft/server-gametest](#minecraftserver-gametest)|0/12|
 |[@minecraft/server-net](#minecraftserver-net)|0/6|
 |[@minecraft/server-ui](#minecraftserver-ui)|0/10|
@@ -279,6 +279,7 @@ random(min: number, max: number): number;
 |[`EntityNavigationGenericComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationGenericComponent.html)|类|未翻译|
 |[`EntityNavigationHoverComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationHoverComponent.html)|类|未翻译|
 |[`EntityNavigationWalkComponent`](https://projectxero.top/sapi/classes/server.EntityNavigationWalkComponent.html)|类|未翻译|
+|[`EntityNpcComponent`](https://projectxero.top/sapi/classes/server.EntityNpcComponent.html)|类|未翻译|
 |[`EntityOnFireComponent`](https://projectxero.top/sapi/classes/server.EntityOnFireComponent.html)|类|未翻译|
 |[`EntityPushThroughComponent`](https://projectxero.top/sapi/classes/server.EntityPushThroughComponent.html)|类|未翻译|
 |[`EntityRemoveAfterEvent`](https://projectxero.top/sapi/classes/server.EntityRemoveAfterEvent.html)|类|未翻译|
@@ -495,6 +496,7 @@ random(min: number, max: number): number;
 |[`EditorInputContext`](https://projectxero.top/sapi/enums/server_editor.EditorInputContext.html)|枚举|未翻译|
 |[`EditorMode`](https://projectxero.top/sapi/enums/server_editor.EditorMode.html)|枚举|未翻译|
 |[`EditorStatusBarAlignment`](https://projectxero.top/sapi/enums/server_editor.EditorStatusBarAlignment.html)|枚举|未翻译|
+|[`GraphicsSettingsProperty`](https://projectxero.top/sapi/enums/server_editor.GraphicsSettingsProperty.html)|枚举|未翻译|
 |[`InputModifier`](https://projectxero.top/sapi/enums/server_editor.InputModifier.html)|枚举|未翻译|
 |[`KeyInputType`](https://projectxero.top/sapi/enums/server_editor.KeyInputType.html)|枚举|未翻译|
 |[`KeyboardKey`](https://projectxero.top/sapi/enums/server_editor.KeyboardKey.html)|枚举|未翻译|
@@ -509,6 +511,7 @@ random(min: number, max: number): number;
 |[`Extension`](https://projectxero.top/sapi/classes/server_editor.Extension.html)|类|未翻译|
 |[`ExtensionContext`](https://projectxero.top/sapi/classes/server_editor.ExtensionContext.html)|类|未翻译|
 |[`ExtensionContextAfterEvents`](https://projectxero.top/sapi/classes/server_editor.ExtensionContextAfterEvents.html)|类|未翻译|
+|[`GraphicsSettings`](https://projectxero.top/sapi/classes/server_editor.GraphicsSettings.html)|类|未翻译|
 |[`Logger`](https://projectxero.top/sapi/classes/server_editor.Logger.html)|类|未翻译|
 |[`MinecraftEditor`](https://projectxero.top/sapi/classes/server_editor.MinecraftEditor.html)|类|未翻译|
 |[`ModeChangeAfterEvent`](https://projectxero.top/sapi/classes/server_editor.ModeChangeAfterEvent.html)|类|未翻译|
@@ -516,6 +519,7 @@ random(min: number, max: number): number;
 |[`PlaytestManager`](https://projectxero.top/sapi/classes/server_editor.PlaytestManager.html)|类|未翻译|
 |[`Selection`](https://projectxero.top/sapi/classes/server_editor.Selection.html)|类|未翻译|
 |[`SelectionManager`](https://projectxero.top/sapi/classes/server_editor.SelectionManager.html)|类|未翻译|
+|[`SettingsManager`](https://projectxero.top/sapi/classes/server_editor.SettingsManager.html)|类|未翻译|
 |[`TransactionManager`](https://projectxero.top/sapi/classes/server_editor.TransactionManager.html)|类|未翻译|
 |[`ActionManager`](https://projectxero.top/sapi/interfaces/server_editor.ActionManager.html)|接口|未翻译|
 |[`BuiltInUIManager`](https://projectxero.top/sapi/interfaces/server_editor.BuiltInUIManager.html)|接口|未翻译|
@@ -552,6 +556,7 @@ random(min: number, max: number): number;
 |[`ActivationFunctionType`](https://projectxero.top/sapi/types/server_editor.ActivationFunctionType.html)|类型别名|未翻译|
 |[`ButtonVariant`](https://projectxero.top/sapi/types/server_editor.ButtonVariant.html)|类型别名|未翻译|
 |[`EventHandler`](https://projectxero.top/sapi/types/server_editor.EventHandler.html)|类型别名|未翻译|
+|[`GraphicsSettingsPropertyTypeMap`](https://projectxero.top/sapi/types/server_editor.GraphicsSettingsPropertyTypeMap.html)|类型别名|未翻译|
 |[`IActionPropertyItem`](https://projectxero.top/sapi/types/server_editor.IActionPropertyItem.html)|类型别名|未翻译|
 |[`IPlayerUISession`](https://projectxero.top/sapi/types/server_editor.IPlayerUISession.html)|类型别名|未翻译|
 |[`IVector3PropertyItem`](https://projectxero.top/sapi/types/server_editor.IVector3PropertyItem.html)|类型别名|未翻译|

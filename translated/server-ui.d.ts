@@ -43,7 +43,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.50-preview.21"
+ *   "version": "1.2.0-internal.1.20.50-preview.22"
  * }
  * ```
  *
@@ -248,7 +248,7 @@ export class ModalFormData {
     textField(
         label: minecraftserver.RawMessage | string,
         placeholderText: minecraftserver.RawMessage | string,
-        defaultValue?: string,
+        defaultValue?: minecraftserver.RawMessage | string,
     ): ModalFormData;
     /**
      * @remarks

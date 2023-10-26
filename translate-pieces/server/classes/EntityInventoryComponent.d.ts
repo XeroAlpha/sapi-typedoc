@@ -31,11 +31,12 @@ export class EntityInventoryComponent extends EntityComponent {
      * @remarks
      * 表示实体的容器。
      * 
-     * Defines the container for this entity.
+     * Defines the container for this entity. The container will be
+     * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
      */
-    readonly container: Container;
+    readonly container?: Container;
     /**
      * @remarks
      * 表示实体容器的种类。

@@ -52,6 +52,7 @@ export enum EntityComponentTypes {
     NavigationGeneric = 'minecraft:navigation.generic',
     NavigationHover = 'minecraft:navigation.hover',
     NavigationWalk = 'minecraft:navigation.walk',
+    Npc = 'minecraft:npc',
     OnFire = 'minecraft:onfire',
     PushThrough = 'minecraft:push_through',
     Rideable = 'minecraft:rideable',
