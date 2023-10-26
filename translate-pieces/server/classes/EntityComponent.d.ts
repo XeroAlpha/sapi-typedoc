@@ -8,8 +8,9 @@ export class EntityComponent extends Component {
     /**
      * @beta
      * @remarks
-     * The entity that owns this component.
+     * The entity that owns this component. The entity will be
+     * undefined if it has been removed.
      *
      */
-    readonly entity: Entity;
+    readonly entity?: Entity;
 }

@@ -46,7 +46,7 @@ export class ModalFormData {
     textField(
         label: minecraftserver.RawMessage | string,
         placeholderText: minecraftserver.RawMessage | string,
-        defaultValue?: string,
+        defaultValue?: minecraftserver.RawMessage | string,
     ): ModalFormData;
     /**
      * @remarks

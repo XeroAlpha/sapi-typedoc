@@ -9,5 +9,5 @@ export interface EntityHitInformation {
      * Entity that was hit.
      *
      */
-    entity: Entity;
+    entity?: Entity;
 }

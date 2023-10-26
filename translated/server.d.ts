@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0-internal.1.20.50-preview.21"
+ *   "version": "1.8.0-internal.1.20.50-preview.22"
  * }
  * ```
  *
@@ -416,6 +416,7 @@ export enum EntityComponentTypes {
     NavigationGeneric = 'minecraft:navigation.generic',
     NavigationHover = 'minecraft:navigation.hover',
     NavigationWalk = 'minecraft:navigation.walk',
+    Npc = 'minecraft:npc',
     OnFire = 'minecraft:onfire',
     PushThrough = 'minecraft:push_through',
     Rideable = 'minecraft:rideable',
@@ -1280,6 +1281,7 @@ export type EntityComponentTypeMap = {
     'minecraft:navigation.generic': EntityNavigationGenericComponent;
     'minecraft:navigation.hover': EntityNavigationHoverComponent;
     'minecraft:navigation.walk': EntityNavigationWalkComponent;
+    'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
     'minecraft:push_through': EntityPushThroughComponent;
     'minecraft:rideable': EntityRideableComponent;
@@ -1308,6 +1310,7 @@ export type EntityComponentTypeMap = {
     'navigation.generic': EntityNavigationGenericComponent;
     'navigation.hover': EntityNavigationHoverComponent;
     'navigation.walk': EntityNavigationWalkComponent;
+    npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
     push_through: EntityPushThroughComponent;
     rideable: EntityRideableComponent;
@@ -4941,11 +4944,12 @@ export class Entity {
      * @beta
      * @remarks
      * Retrieves or sets an entity that is used as the target of
-     * AI-related behaviors, like attacking.
+     * AI-related behaviors, like attacking. If the entity
+     * currently has no target returns undefined.
      *
      * @throws This property can throw when used.
      */
-    readonly target: Entity;
+    readonly target?: Entity;
     /**
      * @remarks
      * Identifier of the type of the entity - for example,
@@ -5356,10 +5360,8 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Returns all tags associated with an entity.
-     *
      * @returns
-     * Returns the current rotation component of this entity.
+     * Returns all tags associated with an entity.
      * @throws This function can throw errors.
      */
     getTags(): string[];
@@ -5465,6 +5467,14 @@ export class Entity {
     kill(): boolean;
     /**
      * @beta
+     * @remarks
+     * Matches the entity against the passed in options. Uses the
+     * location of the entity for matching if the location is not
+     * specified in the passed in EntityQueryOptions.
+     *
+     * @returns
+     * Returns true if the entity matches the criteria in the
+     * passed in EntityQueryOptions, otherwise it returns false.
      * @throws This function can throw errors.
      */
     matches(options: EntityQueryOptions): boolean;
@@ -6084,10 +6094,11 @@ export class EntityComponent extends Component {
     /**
      * @beta
      * @remarks
-     * The entity that owns this component.
+     * The entity that owns this component. The entity will be
+     * undefined if it has been removed.
      *
      */
-    readonly entity: Entity;
+    readonly entity?: Entity;
 }
 
 /**
@@ -6603,11 +6614,12 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly canBeSiphonedFrom: boolean;
     /**
      * @remarks
-     * Defines the container for this entity.
+     * Defines the container for this entity. The container will be
+     * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
      */
-    readonly container: Container;
+    readonly container?: Container;
     /**
      * @remarks
      * Type of container this entity has.
@@ -7328,6 +7340,42 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
 export class EntityNavigationWalkComponent extends EntityNavigationComponent {
     private constructor();
     static readonly componentId = 'minecraft:navigation.walk';
+}
+
+/**
+ * @beta
+ * Adds NPC capabilities to an entity such as custom skin,
+ * name, and dialogue interactions.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityNpcComponent extends EntityComponent {
+    private constructor();
+    /**
+     * @remarks
+     * The DialogueScene that is opened when players first interact
+     * with the NPC.
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    defaultScene: string;
+    /**
+     * @remarks
+     * The name of the NPC as it is displayed to players.
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    name: string;
+    /**
+     * @remarks
+     * The index of the skin the NPC will use.
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    skinIndex: number;
+    static readonly componentId = 'minecraft:npc';
 }
 
 /**
@@ -8998,10 +9046,12 @@ export class ItemStartUseOnAfterEvent {
     readonly blockFace: Direction;
     /**
      * @remarks
-     * The impacted item stack that is starting to be used.
+     * The impacted item stack that is starting to be used. Can be
+     * undefined in some gameplay scenarios like pushing a button
+     * with an empty hand.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.
@@ -9049,9 +9099,11 @@ export class ItemStopUseAfterEvent {
     /**
      * @remarks
      * The impacted item stack that is stopping being charged.
+     * ItemStopUseAfterEvent can be called when teleporting to a
+     * different dimension and this can be undefined.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.
@@ -10387,11 +10439,16 @@ export class PlayerInteractWithBlockAfterEvent {
 
 /**
  * @beta
+ * Manages callbacks that are connected to after a player
+ * interacts with a block.
  */
 export class PlayerInteractWithBlockAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Adds a callback that will be called after a player interacts
+     * with a block.
+     *
      * This function can't be called in read-only mode.
      *
      */
@@ -10400,6 +10457,9 @@ export class PlayerInteractWithBlockAfterEventSignal {
     ): (arg: PlayerInteractWithBlockAfterEvent) => void;
     /**
      * @remarks
+     * Removes a callback from being called after a player
+     * interacts with a block.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -10456,11 +10516,16 @@ export class PlayerInteractWithBlockBeforeEvent {
 
 /**
  * @beta
+ * Manages callbacks that are connected to before a player
+ * interacts with a block.
  */
 export class PlayerInteractWithBlockBeforeEventSignal {
     private constructor();
     /**
      * @remarks
+     * Adds a callback that will be called before a player
+     * interacts with a block.
+     *
      * This function can't be called in read-only mode.
      *
      */
@@ -10469,6 +10534,9 @@ export class PlayerInteractWithBlockBeforeEventSignal {
     ): (arg: PlayerInteractWithBlockBeforeEvent) => void;
     /**
      * @remarks
+     * Removes a callback from being called before a player
+     * interacts with a block.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -10506,11 +10574,16 @@ export class PlayerInteractWithEntityAfterEvent {
 
 /**
  * @beta
+ * Manages callbacks that are connected to after a player
+ * interacts with an entity.
  */
 export class PlayerInteractWithEntityAfterEventSignal {
     private constructor();
     /**
      * @remarks
+     * Adds a callback that will be called after a player interacts
+     * with an entity.
+     *
      * This function can't be called in read-only mode.
      *
      */
@@ -10519,6 +10592,9 @@ export class PlayerInteractWithEntityAfterEventSignal {
     ): (arg: PlayerInteractWithEntityAfterEvent) => void;
     /**
      * @remarks
+     * Removes a callback from being called after a player
+     * interacts with an entity.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -10562,11 +10638,16 @@ export class PlayerInteractWithEntityBeforeEvent {
 
 /**
  * @beta
+ * Manages callbacks that are connected to before a player
+ * interacts with an entity.
  */
 export class PlayerInteractWithEntityBeforeEventSignal {
     private constructor();
     /**
      * @remarks
+     * Adds a callback that will be called before a player
+     * interacts with an entity.
+     *
      * This function can't be called in read-only mode.
      *
      */
@@ -10575,6 +10656,9 @@ export class PlayerInteractWithEntityBeforeEventSignal {
     ): (arg: PlayerInteractWithEntityBeforeEvent) => void;
     /**
      * @remarks
+     * Removes a callback from being called before a player
+     * interacts with an entity.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -13603,7 +13687,7 @@ export interface EntityHitInformation {
      * Entity that was hit.
      *
      */
-    entity: Entity;
+    entity?: Entity;
 }
 
 /**

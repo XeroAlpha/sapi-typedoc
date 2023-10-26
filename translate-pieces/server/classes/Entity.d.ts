@@ -144,11 +144,12 @@ export class Entity {
      * @beta
      * @remarks
      * Retrieves or sets an entity that is used as the target of
-     * AI-related behaviors, like attacking.
+     * AI-related behaviors, like attacking. If the entity
+     * currently has no target returns undefined.
      *
      * @throws This property can throw when used.
      */
-    readonly target: Entity;
+    readonly target?: Entity;
     /**
      * @remarks
      * Identifier of the type of the entity - for example,
@@ -559,10 +560,8 @@ export class Entity {
     /**
      * @beta
      * @remarks
-     * Returns all tags associated with an entity.
-     *
      * @returns
-     * Returns the current rotation component of this entity.
+     * Returns all tags associated with an entity.
      * @throws This function can throw errors.
      */
     getTags(): string[];
@@ -668,6 +667,14 @@ export class Entity {
     kill(): boolean;
     /**
      * @beta
+     * @remarks
+     * Matches the entity against the passed in options. Uses the
+     * location of the entity for matching if the location is not
+     * specified in the passed in EntityQueryOptions.
+     *
+     * @returns
+     * Returns true if the entity matches the criteria in the
+     * passed in EntityQueryOptions, otherwise it returns false.
      * @throws This function can throw errors.
      */
     matches(options: EntityQueryOptions): boolean;

@@ -9,9 +9,11 @@ export class ItemStopUseAfterEvent {
     /**
      * @remarks
      * The impacted item stack that is stopping being charged.
+     * ItemStopUseAfterEvent can be called when teleporting to a
+     * different dimension and this can be undefined.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.

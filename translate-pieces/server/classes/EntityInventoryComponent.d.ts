@@ -23,11 +23,12 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly canBeSiphonedFrom: boolean;
     /**
      * @remarks
-     * Defines the container for this entity.
+     * Defines the container for this entity. The container will be
+     * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
      */
-    readonly container: Container;
+    readonly container?: Container;
     /**
      * @remarks
      * Type of container this entity has.

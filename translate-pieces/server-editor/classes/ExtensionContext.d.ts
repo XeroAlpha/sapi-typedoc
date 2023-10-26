@@ -12,6 +12,13 @@
  */
 export class ExtensionContext {
     private constructor();
+    /**
+     * @remarks
+     * Contains a set of events that are applicable to the editor
+     * player.  Event callbacks are called in a deferred manner.
+     * Event callbacks are executed in read-write mode.
+     *
+     */
     readonly afterEvents: ExtensionContextAfterEvents;
     /**
      * @remarks
@@ -51,6 +58,14 @@ export class ExtensionContext {
      *
      */
     readonly selectionManager: SelectionManager;
+    /**
+     * @remarks
+     * The instance of the players Settings Manager and the
+     * contract through which the settings for the player can be
+     * modified.
+     *
+     */
+    readonly settings: SettingsManager;
     /**
      * @remarks
      * The instance of the players Transaction Manager and the main
