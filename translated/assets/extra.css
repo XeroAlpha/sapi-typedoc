@@ -3,3 +3,23 @@
         max-width: min(25rem, 90vw) !important;
     }
 }
+@media (min-width: 770px) {
+    .readme-modules {
+        display: none;
+    }
+}
+.readme-modules ul {
+    list-style: none !important;
+    padding: 0px !important;
+}
+.readme-modules li {
+    margin: 3px 0px;
+}
+.readme-module-icon {
+    vertical-align: middle;
+
+}
+.readme-module-text {
+    vertical-align: middle;
+    color: var(--color-text);
+}
