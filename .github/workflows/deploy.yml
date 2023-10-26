@@ -32,6 +32,10 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Ensure original branch
+      run: |
+        git branch -f original refs/remotes/origin/original
+
     - name: Install dependencies
       run: |
         npm install
