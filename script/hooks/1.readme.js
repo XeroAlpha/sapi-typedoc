@@ -43,6 +43,25 @@ function getCurrentHead() {
     return git('rev-parse --abbrev-ref HEAD').toString('utf-8').trim();
 }
 
+function isBranchExists(branch) {
+    try {
+        git(`rev-parse --verify ${branch}`);
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
+function listRefs(refSuffix) {
+    return git(`show-ref ${refSuffix}`)
+        .toString('utf-8')
+        .trim()
+        .split('\n')
+        .filter((e) => e !== '')
+        .map((ln) => ln.split(' '))
+        .map(([hash, ref]) => ({ hash, ref }));
+}
+
 function listTrackingFiles(branch) {
     const files = {};
     git(`ls-tree -r --format="%(objectname)\t%(path)" ${branch}`)
@@ -61,6 +80,12 @@ function getBranchCommits(branch) {
 
 function getLatestModifiedCommitHash(branch, path) {
     return git(`rev-list -1 ${branch} -- "${path}"`).toString('utf-8').trim();
+}
+
+function getMergeBase(commits) {
+    return git(`merge-base ${commits.join(' ')}`)
+        .toString('utf-8')
+        .trim();
 }
 
 function getCommitInfo(commitHash) {
@@ -97,11 +122,30 @@ function listCommitsByCommand(branch, commitCommand) {
     });
 }
 
+const initialCommit = '568ac3300e47a9500b269e3e101e3f6bda3c48ea';
+
 function analyzeTranslateState() {
     const head = getCurrentHead();
-    const originalCommits = getBranchCommits('original');
+    const originalRefs = listRefs('original').map((e) => e.ref);
+    let originalHead = [
+        'refs/heads/original',
+        'refs/remotes/origin/original',
+        'refs/remotes/XeroAlpha/original',
+        ...originalRefs
+    ].find(isBranchExists);
+    if (!originalHead) {
+        throw new Error('Cannot find original branch.');
+    }
+    originalHead = getMergeBase([originalHead, head]);
+    if (!originalHead) {
+        throw new Error('HEAD has not shared any commit with original.');
+    }
+    const originalCommits = getBranchCommits(originalHead);
+    if (!originalCommits.includes(initialCommit)) {
+        throw new Error('original branch is incomplete.');
+    }
     const headTracking = listTrackingFiles(head);
-    const originalTracking = listTrackingFiles('original');
+    const originalTracking = listTrackingFiles(originalHead);
     const allPieces = Object.keys(headTracking).filter((path) => path.startsWith('translate-pieces/'));
     allPieces.sort();
 
@@ -132,7 +176,9 @@ function analyzeTranslateState() {
     );
     overwrites.sort((a, b) => b.commit.date - a.commit.date);
     Object.keys(statusMap).forEach((piecePath) => {
-        const pieceOverwrites = overwrites.filter((e) => piecePath.endsWith(`/${e.file}`));
+        const pieceOverwrites = overwrites.filter(
+            (e) => piecePath.endsWith(`/${e.file}`) || piecePath.endsWith(`/${e.file}.d.ts`)
+        );
         if (pieceOverwrites.length > 0) {
             const latestOverwrite = pieceOverwrites[0];
             let lastEditTime = lastEditTimeCache[piecePath];
@@ -160,7 +206,16 @@ const stateDescMap = {
 module.exports = {
     afterConvert({ sourceFiles, tsdocProject }) {
         const { readme } = tsdocProject;
-        const translateStateMap = analyzeTranslateState();
+        let translateStateMap;
+        try {
+            translateStateMap = analyzeTranslateState();
+        } catch (err) {
+            console.error(`Cannot analyze translate state. Probably necessary branches are missing or incomplete.`);
+            console.error(err);
+        }
+        if (!translateStateMap) {
+            return;
+        }
         const summaryLines = ['', '', '<div class="readme-modules"><p>模块：</p><ul>'];
         const statusHeadLines = [
             '',

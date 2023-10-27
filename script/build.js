@@ -227,5 +227,6 @@ module.exports = {
 if (require.main === module) {
     build(true).catch((err) => {
         console.error(err);
+        process.exit(1);
     });
 }
