@@ -45,7 +45,7 @@ export class ItemFoodComponent extends ItemComponent {
     readonly saturationModifier: number;
     /**
      * @remarks
-     * 若给出，则将该物品转换为标识符指定的物品。
+     * 若给出，则使用时将该物品转换为标识符指定的物品。
      * 
      * When specified, converts the active item to the one
      * specified by this property.

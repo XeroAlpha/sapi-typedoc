@@ -57,6 +57,8 @@ export class ItemDurabilityComponent extends ItemComponent {
     getDamageChance(unbreaking?: number): number;
     /**
      * @remarks
+     * 返回物品损失耐久的概率范围。
+     * 
      * A range of numbers that describes the chance of the item
      * losing durability.
      *

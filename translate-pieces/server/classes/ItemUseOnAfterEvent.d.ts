@@ -36,7 +36,7 @@ export class ItemUseOnAfterEvent {
     readonly faceLocation: Vector3;
     /**
      * @remarks
-     * 对方块使用物品时物品所在的物品堆栈。
+     * 对方块使用物品时物品所在的物品堆叠。
      * 
      * The impacted item stack that is being used on a block.
      *

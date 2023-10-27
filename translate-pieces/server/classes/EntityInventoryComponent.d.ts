@@ -29,7 +29,7 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly canBeSiphonedFrom: boolean;
     /**
      * @remarks
-     * 表示实体的容器。
+     * 表示实体的容器。若实体已被移除则为 `undefined`。
      * 
      * Defines the container for this entity. The container will be
      * undefined if the entity has been removed.
