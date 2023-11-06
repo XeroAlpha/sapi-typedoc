@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an item that has stopped
  * being used on a block. This event fires when a player
  * successfully uses an item or places a block by pressing the

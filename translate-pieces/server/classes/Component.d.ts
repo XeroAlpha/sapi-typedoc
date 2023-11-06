@@ -1,5 +1,4 @@
 /**
- * @beta
  * Base class for downstream Component implementations.
  */
 export class Component {
@@ -11,7 +10,6 @@ export class Component {
      */
     readonly typeId: string;
     /**
-     * @beta
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any

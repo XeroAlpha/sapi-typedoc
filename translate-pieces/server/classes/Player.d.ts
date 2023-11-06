@@ -5,7 +5,6 @@
 export class Player extends Entity {
     private constructor();
     /**
-     * @beta
      * @remarks
      * The player's Camera.
      *
@@ -13,7 +12,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @beta
      * @remarks
      * If true, the player is currently emoting.
      *
@@ -21,7 +19,6 @@ export class Player extends Entity {
      */
     readonly isEmoting: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is flying. For example, in Creative or
      * Spectator mode.
@@ -30,7 +27,6 @@ export class Player extends Entity {
      */
     readonly isFlying: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is gliding with Elytra.
      *
@@ -38,7 +34,6 @@ export class Player extends Entity {
      */
     readonly isGliding: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is jumping. This will remain true while
      * the player is holding the jump action.
@@ -47,7 +42,6 @@ export class Player extends Entity {
      */
     readonly isJumping: boolean;
     /**
-     * @beta
      * @remarks
      * The current overall level for the player, based on their
      * experience.
@@ -63,7 +57,6 @@ export class Player extends Entity {
      */
     readonly name: string;
     /**
-     * @beta
      * @remarks
      * Contains methods for manipulating the on-screen display of a
      * Player.
@@ -81,7 +74,6 @@ export class Player extends Entity {
      */
     selectedSlot: number;
     /**
-     * @beta
      * @remarks
      * The overall total set of experience needed to achieve the
      * next level for a player.
@@ -90,7 +82,6 @@ export class Player extends Entity {
      */
     readonly totalXpNeededForNextLevel: number;
     /**
-     * @beta
      * @remarks
      * The current set of experience achieved for the player.
      *
@@ -98,7 +89,6 @@ export class Player extends Entity {
      */
     readonly xpEarnedAtCurrentLevel: number;
     /**
-     * @beta
      * @remarks
      * Adds/removes experience to/from the Player and returns the
      * current experience of the Player.
@@ -114,7 +104,6 @@ export class Player extends Entity {
      */
     addExperience(amount: number): number;
     /**
-     * @beta
      * @remarks
      * Adds/removes level to/from the Player and returns the
      * current level of the Player.
@@ -141,7 +130,6 @@ export class Player extends Entity {
      */
     getItemCooldown(itemCategory: string): number;
     /**
-     * @beta
      * @remarks
      * Gets the current spawn point of the player.
      *
@@ -149,7 +137,6 @@ export class Player extends Entity {
      */
     getSpawnPoint(): DimensionLocation | undefined;
     /**
-     * @beta
      * @remarks
      *  Gets the total experience of the Player.
      *
@@ -180,7 +167,6 @@ export class Player extends Entity {
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Plays a sound that only this particular player can hear.
      *
@@ -246,7 +232,6 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Resets the level of the player.
      *
@@ -256,7 +241,6 @@ export class Player extends Entity {
      */
     resetLevel(): void;
     /**
-     * @beta
      * @remarks
      * Sends a message to the player.
      *
@@ -318,7 +302,6 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
-     * @beta
      * @remarks
      * Sets the current starting spawn point for this particular
      * player.

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an item being used on a
  * block.
  */

@@ -4,7 +4,6 @@
 export class System {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Returns a collection of after-events for system-level
      * operations.
@@ -20,14 +19,12 @@ export class System {
      */
     readonly beforeEvents: SystemBeforeEvents;
     /**
-     * @beta
      * @remarks
      * Represents the current world tick of the server.
      *
      */
     readonly currentTick: number;
     /**
-     * @beta
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via the `run` function.
@@ -64,7 +61,6 @@ export class System {
      */
     run(callback: () => void): number;
     /**
-     * @beta
      * @remarks
      * Runs a set of code on an interval.
      *
@@ -87,7 +83,6 @@ export class System {
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
-     * @beta
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *

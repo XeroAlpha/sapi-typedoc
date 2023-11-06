@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an item being used on a
  * block. This event fires when an item used by a player
  * successfully triggers a block interaction.

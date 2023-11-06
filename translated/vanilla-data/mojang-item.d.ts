@@ -155,6 +155,7 @@ export declare enum MinecraftItemTypes {
     BurnPotterySherd = "minecraft:burn_pottery_sherd",
     Cactus = "minecraft:cactus",
     Cake = "minecraft:cake",
+    Calcite = "minecraft:calcite",
     CalibratedSculkSensor = "minecraft:calibrated_sculk_sensor",
     CamelSpawnEgg = "minecraft:camel_spawn_egg",
     Campfire = "minecraft:campfire",

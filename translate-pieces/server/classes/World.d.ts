@@ -5,7 +5,6 @@
 export class World {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world.  Event callbacks are called in a deferred
@@ -14,7 +13,6 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
@@ -23,7 +21,6 @@ export class World {
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
-     * @beta
      * @remarks
      * Returns the general global scoreboard that applies to the
      * world.
@@ -49,7 +46,6 @@ export class World {
      */
     clearDynamicProperties(): void;
     /**
-     * @beta
      * @remarks
      * Returns the absolute time since the start of the world.
      *
@@ -63,7 +59,6 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @beta
      * @remarks
      * Returns the current day.
      *
@@ -73,7 +68,6 @@ export class World {
      */
     getDay(): number;
     /**
-     * @beta
      * @remarks
      * Returns the default Overworld spawn location.
      *
@@ -185,14 +179,12 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the MoonPhase for the current time.
      *
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @beta
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -207,7 +199,6 @@ export class World {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
      * @remarks
      * Returns the time of day.
      *
@@ -216,7 +207,6 @@ export class World {
      */
     getTimeOfDay(): number;
     /**
-     * @beta
      * @remarks
      * Plays a particular music track for all players.
      *
@@ -250,7 +240,6 @@ export class World {
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Plays a sound for all players.
      *
@@ -288,7 +277,6 @@ export class World {
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
-     * @beta
      * @remarks
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
@@ -306,7 +294,6 @@ export class World {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Sends a message to all players.
      *
@@ -345,7 +332,6 @@ export class World {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
      * @remarks
      * Sets the world time.
      *
@@ -356,7 +342,6 @@ export class World {
      */
     setAbsoluteTime(absoluteTime: number): void;
     /**
-     * @beta
      * @remarks
      * Sets a default spawn location for all players.
      *
@@ -440,7 +425,6 @@ export class World {
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets the time of day.
      *
@@ -454,7 +438,6 @@ export class World {
      */
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     /**
-     * @beta
      * @remarks
      * Stops any music tracks from playing.
      *

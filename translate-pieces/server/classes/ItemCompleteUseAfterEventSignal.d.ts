@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.
  */

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an entity hitting (melee
  * attacking) another entity.
  */

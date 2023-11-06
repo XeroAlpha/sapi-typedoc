@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state
  * of the block at that location. This type was significantly
@@ -14,7 +13,6 @@ export class Block {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
      * @remarks
      * Returns true if this block is an air block (i.e., empty
      * space).
@@ -27,7 +25,6 @@ export class Block {
      */
     readonly isAir: boolean;
     /**
-     * @beta
      * @remarks
      * Returns true if this block is a liquid block - (e.g., a
      * water block and a lava block are liquid, while an air block
@@ -211,7 +208,6 @@ export class Block {
      */
     east(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for a block - for example, an inventory component of a chest
@@ -313,7 +309,6 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that

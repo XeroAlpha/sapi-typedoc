@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents the flying speed of an entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

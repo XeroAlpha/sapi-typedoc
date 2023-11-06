@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines the health properties of an entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

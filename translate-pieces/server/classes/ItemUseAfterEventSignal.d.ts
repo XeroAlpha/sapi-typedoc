@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that are connected to an item use event.
  */
 export class ItemUseAfterEventSignal {

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to a chargeable item when the
  * player has finished using the item and released the build
  * action.

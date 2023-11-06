@@ -7,7 +7,6 @@
    Copyright (c) Microsoft Corporation.
    ***************************************************************************** */
 /**
- * @beta
  * @packageDocumentation
  * The `@minecraft/server-ui` module contains types for
  * expressing simple dialog-based user experiences.
@@ -43,16 +42,13 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.50-preview.22"
+ *   "version": "1.1.0"
  * }
  * ```
  *
  */
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
-/**
- * @beta
- */
 export enum FormCancelationReason {
     UserBusy = 'UserBusy',
     UserClosed = 'UserClosed',
@@ -124,14 +120,12 @@ export class ActionFormResponse extends FormResponse {
 export class FormResponse {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Contains additional details as to why a form was canceled.
      *
      */
     readonly cancelationReason?: FormCancelationReason;
     /**
-     * @beta
      * @remarks
      * If true, the form was canceled by the player (e.g., they
      * selected the pop-up X close button).

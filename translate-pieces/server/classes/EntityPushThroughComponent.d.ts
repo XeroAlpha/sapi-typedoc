@@ -1,5 +1,4 @@
 /**
- * @beta
  * Sets the distance through which the entity can push through.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

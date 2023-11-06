@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an item being used.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines a JSON structure that is used for more flexible.
  */
 export interface RawMessage {

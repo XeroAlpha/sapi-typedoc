@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an entity when its health
  * changes. Warning: don't change the health of an entity in
  * this event, or it will cause an infinite loop!

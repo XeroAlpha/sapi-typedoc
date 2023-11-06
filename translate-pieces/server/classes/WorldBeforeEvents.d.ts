@@ -1,5 +1,4 @@
 /**
- * @beta
  * A set of events that fire before an actual action occurs. In
  * most cases, you can potentially cancel or modify the
  * impending event. Note that in before events any APIs that
@@ -34,7 +33,6 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
@@ -80,7 +78,6 @@ export class WorldBeforeEvents {
      */
     readonly pistonActivate: PistonActivateBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires before a block is broken by a player.
      *

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines this entity's inventory properties.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

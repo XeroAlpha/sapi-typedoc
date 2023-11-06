@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains a description of a vector.
  */
 export interface Vector3 {

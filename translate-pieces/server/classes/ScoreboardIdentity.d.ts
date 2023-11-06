@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains an identity of the scoreboard item.
  */
 export class ScoreboardIdentity {

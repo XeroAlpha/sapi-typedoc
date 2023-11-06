@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines a collection of items.
  */
 export class ItemStack {
@@ -94,7 +93,6 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
-     * @beta
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -104,7 +102,6 @@ export class ItemStack {
      */
     clone(): ItemStack;
     /**
-     * @beta
      * @remarks
      * Get the list of block types this item can break in Adventure
      * mode.
@@ -114,7 +111,6 @@ export class ItemStack {
      */
     getCanDestroy(): string[];
     /**
-     * @beta
      * @remarks
      * Get the list of block types this item can be placed on in
      * Adventure mode.
@@ -153,7 +149,6 @@ export class ItemStack {
      */
     getComponents(): ItemComponent[];
     /**
-     * @beta
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack.
@@ -164,7 +159,6 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
-     * @beta
      * @remarks
      * Returns a set of tags associated with this item stack.
      *
@@ -182,7 +176,6 @@ export class ItemStack {
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @beta
      * @remarks
      * Checks whether this item stack has a particular tag
      * associated with it.
@@ -210,7 +203,6 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
-     * @beta
      * @remarks
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.
@@ -231,7 +223,6 @@ export class ItemStack {
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * The list of block types this item can be placed on in
      * Adventure mode. This is only applicable to block items. The
@@ -253,7 +244,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack. The lore list is cleared if set to an empty

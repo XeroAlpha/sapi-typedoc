@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export interface CameraSetFacingOptions {
     easeOptions?: CameraEaseOptions;
     facingEntity: Entity;

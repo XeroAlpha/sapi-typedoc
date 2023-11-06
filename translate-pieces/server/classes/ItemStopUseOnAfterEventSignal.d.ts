@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that are connected to an item stops used
  * on a block event.
  */

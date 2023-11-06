@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information regarding an event after a player
  * breaks a block.
  */

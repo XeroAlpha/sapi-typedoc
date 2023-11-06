@@ -1,5 +1,4 @@
 /**
- * @beta
  * Data for an event that happens when an entity is removed
  * from the world (for example, the entity is unloaded because
  * it is not close to players.)

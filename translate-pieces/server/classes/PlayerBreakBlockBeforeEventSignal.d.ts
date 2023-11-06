@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that are connected to before a player
  * breaks a block.
  */

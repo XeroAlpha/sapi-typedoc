@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a two-directional vector.
  */
 export interface Vector2 {

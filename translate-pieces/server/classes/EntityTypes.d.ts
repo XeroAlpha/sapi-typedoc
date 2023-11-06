@@ -10,7 +10,7 @@ export class EntityTypes {
      * Retrieves an entity type using a string-based identifier.
      *
      */
-    static get(identifier: string): EntityType;
+    static get(identifier: string): EntityType | undefined;
     /**
      * @remarks
      * Retrieves an iterator of all entity types within this world.

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to a chargeable item starting
  * to be charged.
  */

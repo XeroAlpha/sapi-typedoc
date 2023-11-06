@@ -1,5 +1,4 @@
 /**
- * @beta
  * Base class for downstream entity components.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

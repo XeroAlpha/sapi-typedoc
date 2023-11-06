@@ -1,5 +1,4 @@
 /**
- * @beta
  * Additional options for when damage has been applied via a
  * projectile.
  */
