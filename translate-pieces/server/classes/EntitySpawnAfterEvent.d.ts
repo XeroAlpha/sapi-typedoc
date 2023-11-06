@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains data related to an entity spawning within the
  * world.
  */

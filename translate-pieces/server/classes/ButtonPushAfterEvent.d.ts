@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to changes to a button push.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

@@ -308,6 +308,7 @@ export declare enum MinecraftItemTypes {
     Cactus = "minecraft:cactus",
     /** 蛋糕。 */
     Cake = "minecraft:cake",
+    Calcite = "minecraft:calcite",
     /** 校频幽匿感测体。 */
     CalibratedSculkSensor = "minecraft:calibrated_sculk_sensor",
     /** 骆驼刷怪蛋。 */

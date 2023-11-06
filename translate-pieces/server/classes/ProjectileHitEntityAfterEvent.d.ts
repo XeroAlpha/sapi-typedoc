@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to a projectile hitting an
  * entity.
  */

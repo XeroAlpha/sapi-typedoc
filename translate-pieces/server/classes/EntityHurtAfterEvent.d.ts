@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to an entity getting hurt.
  */
 export class EntityHurtAfterEvent {

@@ -7,8 +7,9 @@
    Copyright (c) Microsoft Corporation.
    ***************************************************************************** */
 /**
- * @beta
  * @packageDocumentation
+ * 包含了大量用于修改 Minecraft 世界（实体、方块、维度等）的类型。
+ * 
  * Contains many types related to manipulating a Minecraft
  * world, including entities, blocks, dimensions, and more.
  *
@@ -16,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0-internal.1.20.50-preview.22"
+ *   "version": "1.6.0"
  * }
  * ```
  *
@@ -129,14 +130,12 @@ export enum Difficulty {
 }
 
 /**
- * @beta
  * 通用枚举之一。表示朝向。
  * 
  * A general purpose relative direction enumeration.
  */
 export enum Direction {
     /**
-     * @beta
      * @remarks
      * 表示下方（y - 1）。
      * 
@@ -145,7 +144,6 @@ export enum Direction {
      */
     Down = 'Down',
     /**
-     * @beta
      * @remarks
      * 表示东方（x + 1）。
      * 
@@ -154,7 +152,6 @@ export enum Direction {
      */
     East = 'East',
     /**
-     * @beta
      * @remarks
      * 表示北方（z - 1）。
      * 
@@ -163,7 +160,6 @@ export enum Direction {
      */
     North = 'North',
     /**
-     * @beta
      * @remarks
      * 表示南方（z + 1）。
      * 
@@ -172,7 +168,6 @@ export enum Direction {
      */
     South = 'South',
     /**
-     * @beta
      * @remarks
      * 表示上方（y + 1）。
      * 
@@ -181,7 +176,6 @@ export enum Direction {
      */
     Up = 'Up',
     /**
-     * @beta
      * @remarks
      * 表示西方（x - 1）。
      * 
@@ -192,14 +186,12 @@ export enum Direction {
 }
 
 /**
- * @beta
  * 表示记分板分数的显示方式。
  * 
  * Specifies a mechanism for displaying scores on a scoreboard.
  */
 export enum DisplaySlotId {
     /**
-     * @beta
      * @remarks
      * 记分项上的分数将显示在玩家名称牌下方。
      * 
@@ -208,7 +200,6 @@ export enum DisplaySlotId {
      */
     BelowName = 'BelowName',
     /**
-     * @beta
      * @remarks
      * 该记分项与对应的分数持有者将显示在暂停菜单上。
      * 
@@ -217,7 +208,6 @@ export enum DisplaySlotId {
      */
     List = 'List',
     /**
-     * @beta
      * @remarks
      * 记分项将在屏幕右侧显示。
      * 
@@ -346,9 +336,6 @@ export enum DyeColor {
     Yellow = 'Yellow',
 }
 
-/**
- * @beta
- */
 export enum EasingType {
     InBack = 'InBack',
     InBounce = 'InBounce',
@@ -453,19 +440,16 @@ export enum EntityComponentTypes {
 }
 
 /**
- * @beta
  * Describes the source of damage from an Entity.
  */
 export enum EntityDamageCause {
     /**
-     * @beta
      * @remarks
      * Damage caused by a falling anvil.
      *
      */
     anvil = 'anvil',
     /**
-     * @beta
      * @remarks
      * Damage caused from a non-Entity explosion. For example, an
      * exploding bed.
@@ -474,14 +458,12 @@ export enum EntityDamageCause {
     blockExplosion = 'blockExplosion',
     campfire = 'campfire',
     /**
-     * @beta
      * @remarks
      * Unused.
      *
      */
     charging = 'charging',
     /**
-     * @beta
      * @remarks
      * Damage caused by physically touching an Entity or Block. For
      * example, touching a Sweet Berry bush or Pufferfish.
@@ -489,7 +471,6 @@ export enum EntityDamageCause {
      */
     contact = 'contact',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity being out of air and inside a
      * liquid block.
@@ -497,14 +478,12 @@ export enum EntityDamageCause {
      */
     drowning = 'drowning',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity attack.
      *
      */
     entityAttack = 'entityAttack',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity explosion. For example, a Creeper
      * or Wither.
@@ -512,14 +491,12 @@ export enum EntityDamageCause {
      */
     entityExplosion = 'entityExplosion',
     /**
-     * @beta
      * @remarks
      * Damage caused by falling onto the ground.
      *
      */
     fall = 'fall',
     /**
-     * @beta
      * @remarks
      * Damage caused by falling blocks. Note: Anvils and
      * Stalactites have their own damage causes.
@@ -527,28 +504,24 @@ export enum EntityDamageCause {
      */
     fallingBlock = 'fallingBlock',
     /**
-     * @beta
      * @remarks
      * Damage caused by catching on fire.
      *
      */
     fire = 'fire',
     /**
-     * @beta
      * @remarks
      * Damage caused by burning over time.
      *
      */
     fireTick = 'fireTick',
     /**
-     * @beta
      * @remarks
      * Damage caused by fireworks.
      *
      */
     fireworks = 'fireworks',
     /**
-     * @beta
      * @remarks
      * Damage caused by flying into a wall at high speed while
      * gliding with Elytra.
@@ -556,28 +529,24 @@ export enum EntityDamageCause {
      */
     flyIntoWall = 'flyIntoWall',
     /**
-     * @beta
      * @remarks
      * Damage caused by staying inside a Powder Snow block.
      *
      */
     freezing = 'freezing',
     /**
-     * @beta
      * @remarks
      * Damage caused by touching a Lava block.
      *
      */
     lava = 'lava',
     /**
-     * @beta
      * @remarks
      * Damage caused by being struck by lightning.
      *
      */
     lightning = 'lightning',
     /**
-     * @beta
      * @remarks
      * Damage caused by magical attacks. For example, Evoker Fang
      * or Conduit Block.
@@ -585,14 +554,12 @@ export enum EntityDamageCause {
      */
     magic = 'magic',
     /**
-     * @beta
      * @remarks
      * Damage caused by touching a Magma block.
      *
      */
     magma = 'magma',
     /**
-     * @beta
      * @remarks
      * Damage caused by no source. For example, from a command or
      * script.
@@ -600,7 +567,6 @@ export enum EntityDamageCause {
      */
     none = 'none',
     /**
-     * @beta
      * @remarks
      * Damage caused by an indirect source. For example, setting a
      * mob's health to 0 in a behavior pack.
@@ -608,14 +574,12 @@ export enum EntityDamageCause {
      */
     override = 'override',
     /**
-     * @beta
      * @remarks
      * Damage caused by a Piston.
      *
      */
     piston = 'piston',
     /**
-     * @beta
      * @remarks
      * Damage caused by a projectile.
      *
@@ -625,28 +589,24 @@ export enum EntityDamageCause {
     sonicBoom = 'sonicBoom',
     soulCampfire = 'soulCampfire',
     /**
-     * @beta
      * @remarks
      * Damage caused by a falling Stalactite block.
      *
      */
     stalactite = 'stalactite',
     /**
-     * @beta
      * @remarks
      * Damage caused by touching a Stalagmite block.
      *
      */
     stalagmite = 'stalagmite',
     /**
-     * @beta
      * @remarks
      * Damage caused over time by having an empty hunger bar.
      *
      */
     starve = 'starve',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity being out of air and inside a
      * non-liquid block.
@@ -654,7 +614,6 @@ export enum EntityDamageCause {
      */
     suffocation = 'suffocation',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity killing itself. For example, from
      * the /kill command.
@@ -662,7 +621,6 @@ export enum EntityDamageCause {
      */
     suicide = 'suicide',
     /**
-     * @beta
      * @remarks
      * Damage caused by an Entity being in an inhabitable climate.
      * For example, a Snow Golem in a biome with a temperature
@@ -671,7 +629,6 @@ export enum EntityDamageCause {
      */
     temperature = 'temperature',
     /**
-     * @beta
      * @remarks
      * Damage caused by the Thorns armor enchantment and by the
      * Guardian thorns effect.
@@ -679,14 +636,12 @@ export enum EntityDamageCause {
      */
     thorns = 'thorns',
     /**
-     * @beta
      * @remarks
      * Damage caused over time by falling into the void.
      *
      */
     'void' = 'void',
     /**
-     * @beta
      * @remarks
      * Damage caused by the Wither effect. For example, from
      * touching a Wither Rose.
@@ -696,12 +651,10 @@ export enum EntityDamageCause {
 }
 
 /**
- * @beta
  * An enumeration describing initialization cause of an entity.
  */
 export enum EntityInitializationCause {
     /**
-     * @beta
      * @remarks
      * Case when an entity is created as child of other entity or
      * entities, e.g., cows making a cow or slimes making smaller
@@ -710,7 +663,6 @@ export enum EntityInitializationCause {
      */
     Born = 'Born',
     /**
-     * @beta
      * @remarks
      * Case when an entity is created by an event, e.g., Wandering
      * trader spawning llamas.
@@ -719,14 +671,12 @@ export enum EntityInitializationCause {
     Event = 'Event',
     Loaded = 'Loaded',
     /**
-     * @beta
      * @remarks
      * Case when an entity is naturally spawned in the world.
      *
      */
     Spawned = 'Spawned',
     /**
-     * @beta
      * @remarks
      * Case when an entity is transformed into another entity.
      *
@@ -760,13 +710,11 @@ export enum EntityLifetimeState {
 }
 
 /**
- * @beta
  * The equipment slot of the mob. This includes armor, offhand
  * and mainhand slots.
  */
 export enum EquipmentSlot {
     /**
-     * @beta
      * @remarks
      * The chest slot. This slot is used to hold items such as
      * Chestplate or Elytra.
@@ -774,7 +722,6 @@ export enum EquipmentSlot {
      */
     Chest = 'Chest',
     /**
-     * @beta
      * @remarks
      * The feet slot. This slot is used to hold items such as
      * Boots.
@@ -782,7 +729,6 @@ export enum EquipmentSlot {
      */
     Feet = 'Feet',
     /**
-     * @beta
      * @remarks
      * The head slot. This slot is used to hold items such as
      * Helmets or Carved Pumpkins.
@@ -790,7 +736,6 @@ export enum EquipmentSlot {
      */
     Head = 'Head',
     /**
-     * @beta
      * @remarks
      * The legs slot. This slot is used to hold items such as
      * Leggings.
@@ -798,7 +743,6 @@ export enum EquipmentSlot {
      */
     Legs = 'Legs',
     /**
-     * @beta
      * @remarks
      * The mainhand slot. For players, the mainhand slot refers to
      * the currently active hotbar slot.
@@ -806,7 +750,6 @@ export enum EquipmentSlot {
      */
     Mainhand = 'Mainhand',
     /**
-     * @beta
      * @remarks
      * The offhand slot. This slot is used to hold items such as
      * shields and maps.
@@ -852,12 +795,10 @@ export enum FluidType {
 }
 
 /**
- * @beta
  * Represents a game mode for the current world experience.
  */
 export enum GameMode {
     /**
-     * @beta
      * @remarks
      * World is in a more locked-down experience, where blocks may
      * not be manipulated.
@@ -865,7 +806,6 @@ export enum GameMode {
      */
     adventure = 'adventure',
     /**
-     * @beta
      * @remarks
      * World is in a full creative mode. In creative mode, the
      * player has all the resources available in the item selection
@@ -878,7 +818,6 @@ export enum GameMode {
      */
     creative = 'creative',
     /**
-     * @beta
      * @remarks
      * World is in spectator mode. In spectator mode, spectators
      * are always flying and cannot become grounded. Spectators can
@@ -891,7 +830,6 @@ export enum GameMode {
      */
     spectator = 'spectator',
     /**
-     * @beta
      * @remarks
      * World is in a survival mode, where players can take damage
      * and entities may not be peaceful. Survival mode is where the
@@ -914,26 +852,22 @@ export enum ItemComponentTypes {
 }
 
 /**
- * @beta
  * Describes how an an item can be moved within a container.
  */
 export enum ItemLockMode {
     /**
-     * @beta
      * @remarks
      * The item cannot be dropped or crafted with.
      *
      */
     inventory = 'inventory',
     /**
-     * @beta
      * @remarks
      * The item has no container restrictions.
      *
      */
     none = 'none',
     /**
-     * @beta
      * @remarks
      * The item cannot be moved from its slot, dropped or crafted
      * with.
@@ -943,7 +877,6 @@ export enum ItemLockMode {
 }
 
 /**
- * @beta
  * Enum containing the different phases of the moon based on
  * the current day.,Obtain the current MoonPhase using
  * world.getMoonPhase.
@@ -956,7 +889,6 @@ export enum ItemLockMode {
  */
 export enum MoonPhase {
     /**
-     * @beta
      * @remarks
      * The brightest moon phase. During this phase, cats have a 50%
      * chance of spawning as black cats.
@@ -964,49 +896,42 @@ export enum MoonPhase {
      */
     FullMoon = 0,
     /**
-     * @beta
      * @remarks
      * The phase following the Full Moon.
      *
      */
     WaningGibbous = 1,
     /**
-     * @beta
      * @remarks
      * The phase following the Waxing Crescent.
      *
      */
     FirstQuarter = 2,
     /**
-     * @beta
      * @remarks
      * The phase following the Last Quarter.
      *
      */
     WaningCrescent = 3,
     /**
-     * @beta
      * @remarks
      * The darkest moon phase.
      *
      */
     NewMoon = 4,
     /**
-     * @beta
      * @remarks
      * The phase following the New Moon.
      *
      */
     WaxingCrescent = 5,
     /**
-     * @beta
      * @remarks
      * The phase following the Waning Gibbous.
      *
      */
     LastQuarter = 6,
     /**
-     * @beta
      * @remarks
      * The phase following the First Quarter.
      *
@@ -1015,7 +940,6 @@ export enum MoonPhase {
 }
 
 /**
- * @beta
  * 表示分数持有者列表的排序顺序。
  * 
  * Used for specifying a sort order for how to display an
@@ -1023,7 +947,6 @@ export enum MoonPhase {
  */
 export enum ObjectiveSortOrder {
     /**
-     * @beta
      * @remarks
      * 以升序显示分数持有者列表（例如：A-Z）。
      * 
@@ -1033,7 +956,6 @@ export enum ObjectiveSortOrder {
      */
     Ascending = 0,
     /**
-     * @beta
      * @remarks
      * 以降序显示分数持有者列表（例如：Z-A）。
      * 
@@ -1045,14 +967,12 @@ export enum ObjectiveSortOrder {
 }
 
 /**
- * @beta
  * 表示分数持有者的类型。
  * 
  * Contains objectives and participants for the scoreboard.
  */
 export enum ScoreboardIdentityType {
     /**
-     * @beta
      * @remarks
      * 分数持有者是一个实体。
      * 
@@ -1061,7 +981,6 @@ export enum ScoreboardIdentityType {
      */
     Entity = 'Entity',
     /**
-     * @beta
      * @remarks
      * 分数持有者是一个虚拟玩家（通常用于存储数据或者作为抽象进度）。
      * 
@@ -1072,7 +991,6 @@ export enum ScoreboardIdentityType {
      */
     FakePlayer = 'FakePlayer',
     /**
-     * @beta
      * @remarks
      * 分数持有者是一位玩家。
      * 
@@ -1083,12 +1001,10 @@ export enum ScoreboardIdentityType {
 }
 
 /**
- * @beta
  * Describes where the script event originated from.
  */
 export enum ScriptEventSource {
     /**
-     * @beta
      * @remarks
      * The script event originated from a Block such as a Command
      * Block.
@@ -1096,7 +1012,6 @@ export enum ScriptEventSource {
      */
     Block = 'Block',
     /**
-     * @beta
      * @remarks
      * The script event originated from an Entity such as a Player,
      * Command Block Minecart or Animation Controller.
@@ -1104,14 +1019,12 @@ export enum ScriptEventSource {
      */
     Entity = 'Entity',
     /**
-     * @beta
      * @remarks
      * The script event originated from an NPC dialogue.
      *
      */
     NPCDialogue = 'NPCDialogue',
     /**
-     * @beta
      * @remarks
      * The script event originated from the server, such as from a
      * runCommand API call or a dedicated server console.
@@ -1142,7 +1055,6 @@ export enum SignSide {
 }
 
 /**
- * @beta
  * Provides numeric values for common periods in the Minecraft
  * day.
  */
@@ -1181,27 +1093,23 @@ export enum WatchdogTerminateReason {
 }
 
 /**
- * @beta
  * Used to specify the type of weather condition within the
  * world.
  */
 export enum WeatherType {
     /**
-     * @beta
      * @remarks
      * Specifies a clear weather condition.
      *
      */
     Clear = 'Clear',
     /**
-     * @beta
      * @remarks
      * Specifies a rain weather condition.
      *
      */
     Rain = 'Rain',
     /**
-     * @beta
      * @remarks
      * Specifies a rain and thunder weather condition.
      *
@@ -1376,7 +1284,6 @@ export type ItemComponentTypeMap = {
 };
 
 /**
- * @beta
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state
  * of the block at that location. This type was significantly
@@ -1396,7 +1303,6 @@ export class Block {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
      * @remarks
      * 返回 true 如果这个方块是空气方块（例如，空的空间）
      *
@@ -1411,7 +1317,6 @@ export class Block {
      */
     readonly isAir: boolean;
     /**
-     * @beta
      * @remarks
      * 如果这个方块是液体方块，例如水方块和熔岩方块等，则返回 true。
      * 空气方块和石头方块等则不属于液体方块。
@@ -1646,7 +1551,6 @@ export class Block {
      */
     east(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * 获取一个方块的组件（代表附加功能），例如，一个箱子方块的库存组件。
      *
@@ -1782,7 +1686,6 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * 如果对该方块的引用仍然有效，则返回 `true`（例如，如果方块未加载，对该方块的引用将不再有效）。
      *
@@ -1979,14 +1882,12 @@ export class BlockAreaSize {
 }
 
 /**
- * @beta
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponent extends Component {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Block instance that this component pertains to.
      *
@@ -1995,7 +1896,6 @@ export class BlockComponent extends Component {
 }
 
 /**
- * @beta
  * Contains information regarding an event that impacts a
  * specific block.
  */
@@ -2067,7 +1967,6 @@ export class BlockExplodeAfterEventSignal {
 }
 
 /**
- * @beta
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  */
@@ -2161,7 +2060,6 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 }
 
 /**
- * @beta
  * Contains the combination of type {@link BlockType} and
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
@@ -2973,7 +2871,6 @@ export class BoundingBoxUtils {
 }
 
 /**
- * @beta
  * Contains information related to changes to a button push.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -2988,7 +2885,6 @@ export class ButtonPushAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a button is
  * pushed.
  */
@@ -2998,7 +2894,6 @@ export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains methods relating to the active camera for the
  * specified player.
  */
@@ -3197,7 +3092,6 @@ export class CommandResult {
 }
 
 /**
- * @beta
  * Base class for downstream Component implementations.
  */
 export class Component {
@@ -3209,7 +3103,6 @@ export class Component {
      */
     readonly typeId: string;
     /**
-     * @beta
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any
@@ -3474,7 +3367,6 @@ export class CompoundBlockVolume {
 }
 
 /**
- * @beta
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
@@ -3560,7 +3452,6 @@ export class Container {
      */
     getSlot(slot: number): ContainerSlot;
     /**
-     * @beta
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available
@@ -3905,13 +3796,11 @@ export class DataDrivenEntityTriggerAfterEvent {
      * Name of the data driven event being triggered.
      *
      */
-    readonly id: string;
+    readonly eventId: string;
     /**
      * @remarks
      * An updateable list of modifications to component state that
      * are the effect of this triggered event.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
     getModifiers(): DefinitionModifier[];
@@ -4026,56 +3915,6 @@ export class DataDrivenEntityTriggerBeforeEventSignal {
 }
 
 /**
- * @beta
- * Contains a set of updates to the component definition state
- * of an entity.
- */
-export class DefinitionModifier {
-    /**
-     * @remarks
-     * Retrieves the list of component groups that will be added
-     * via this definition modification.
-     *
-     */
-    getComponentGroupsToAdd(): string[];
-    /**
-     * @remarks
-     * Retrieves the list of component groups that will be removed
-     * via this definition modification.
-     *
-     */
-    getComponentGroupsToRemove(): string[];
-    /**
-     * @remarks
-     * Retrieves the list of entity definition events that will be
-     * fired via this update.
-     *
-     */
-    getTriggers(): Trigger[];
-    /**
-     * @remarks
-     * Updates the list of component groups that will be added via
-     * this definition modification.
-     *
-     */
-    setComponentGroupsToAdd(newGroups: string[]): void;
-    /**
-     * @remarks
-     * Updates the list of component groups that will be removed
-     * via this definition modification.
-     *
-     */
-    setComponentGroupsToRemove(removedGroups: string[]): void;
-    /**
-     * @remarks
-     * Updates the list of entity definition events that will be
-     * fired via this update.
-     *
-     */
-    setTriggers(newTriggers: Trigger[]): void;
-}
-
-/**
  * A class that represents a particular dimension (e.g., The
  * End) within a world.
  */
@@ -4177,7 +4016,6 @@ export class Dimension {
         options?: BlockFillOptions,
     ): number;
     /**
-     * @beta
      * @remarks
      * Returns a block instance at the given location.
      *
@@ -4202,7 +4040,6 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Gets the first block that intersects with a vector emanating
      * from a location.
@@ -4216,7 +4053,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of entities based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -4285,7 +4121,6 @@ export class Dimension {
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
-     * @beta
      * @remarks
      * Returns a set of entities at a particular location.
      *
@@ -4296,7 +4131,6 @@ export class Dimension {
      */
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
     /**
-     * @beta
      * @remarks
      * Gets entities that intersect with a specified vector
      * emanating from a location.
@@ -4306,7 +4140,6 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @beta
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -4327,7 +4160,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
      * @remarks
      * Runs a command synchronously using the context of the
      * broader dimenion.
@@ -4372,7 +4204,6 @@ export class Dimension {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @beta
      * @remarks
      * Sets the current weather within the dimension
      *
@@ -4388,7 +4219,6 @@ export class Dimension {
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
-     * @beta
      * @remarks
      * Creates a new entity (e.g., a mob) at the specified
      * location.
@@ -4449,7 +4279,6 @@ export class Dimension {
      */
     spawnEntity(identifier: string, location: Vector3): Entity;
     /**
-     * @beta
      * @remarks
      * Creates a new item stack as an entity at the specified
      * location.
@@ -4496,7 +4325,6 @@ export class Dimension {
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
-     * @beta
      * @remarks
      * Creates a new particle emitter at a specified location in
      * the world.
@@ -4569,7 +4397,6 @@ export class DimensionTypes {
 }
 
 /**
- * @beta
  * Represents an effect - like poison - that has been added to
  * an Entity.
  */
@@ -4730,7 +4557,6 @@ export class EffectAddBeforeEventSignal {
 }
 
 /**
- * @beta
  * Represents a type of effect - like poison - that can be
  * applied to an entity.
  */
@@ -4967,7 +4793,6 @@ export class EnchantmentTypes {
 export class Entity {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Dimension that the entity is currently within.
      *
@@ -4996,7 +4821,6 @@ export class Entity {
      */
     readonly id: string;
     /**
-     * @beta
      * @remarks
      * Whether the entity is touching a climbable block. For
      * example, a player next to a ladder or a spider next to a
@@ -5006,7 +4830,6 @@ export class Entity {
      */
     readonly isClimbing: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity has a fall distance greater than 0, or
      * greater than 1 while gliding.
@@ -5015,7 +4838,6 @@ export class Entity {
      */
     readonly isFalling: boolean;
     /**
-     * @beta
      * @remarks
      * Whether any part of the entity is inside a water block.
      *
@@ -5023,7 +4845,6 @@ export class Entity {
      */
     readonly isInWater: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is on top of a solid block.
      *
@@ -5031,7 +4852,6 @@ export class Entity {
      */
     readonly isOnGround: boolean;
     /**
-     * @beta
      * @remarks
      * If true, the entity is currently sleeping.
      *
@@ -5039,7 +4859,6 @@ export class Entity {
      */
     readonly isSleeping: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
@@ -5049,7 +4868,6 @@ export class Entity {
      */
     isSneaking: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is sprinting. For example, a player using
      * the sprint action, an ocelot running away or a pig boosting
@@ -5059,7 +4877,6 @@ export class Entity {
      */
     readonly isSprinting: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is in the swimming state. For example, a
      * player using the swim action or a fish in water.
@@ -5078,7 +4895,6 @@ export class Entity {
      */
     readonly lifetimeState: EntityLifetimeState;
     /**
-     * @beta
      * @remarks
      * Current location of the entity.
      *
@@ -5086,7 +4902,6 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
-     * @beta
      * @remarks
      * Given name of the entity.
      *
@@ -5095,7 +4910,6 @@ export class Entity {
      */
     nameTag: string;
     /**
-     * @beta
      * @remarks
      * Returns a scoreboard identity that represents this entity.
      * Will remain valid when the entity is killed.
@@ -5121,7 +4935,6 @@ export class Entity {
      */
     readonly typeId: string;
     /**
-     * @beta
      * @remarks
      * Adds or updates an effect, like poison, to the entity.
      *
@@ -5180,7 +4993,6 @@ export class Entity {
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void;
     /**
-     * @beta
      * @remarks
      * Adds a specified tag to an entity.
      *
@@ -5215,7 +5027,6 @@ export class Entity {
      */
     addTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Applies a set of damage to an entity.
      *
@@ -5248,7 +5059,6 @@ export class Entity {
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
-     * @beta
      * @remarks
      * Applies impulse vector to the current velocity of the
      * entity.
@@ -5270,7 +5080,6 @@ export class Entity {
      */
     applyImpulse(vector: Vector3): void;
     /**
-     * @beta
      * @remarks
      * Applies impulse vector to the current velocity of the
      * entity.
@@ -5311,7 +5120,6 @@ export class Entity {
      */
     clearDynamicProperties(): void;
     /**
-     * @beta
      * @remarks
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
@@ -5375,7 +5183,6 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
@@ -5389,7 +5196,6 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an entity.
@@ -5405,7 +5211,6 @@ export class Entity {
      */
     getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
-     * @beta
      * @remarks
      * Returns all components that are both present on this entity
      * and supported by the API.
@@ -5439,7 +5244,6 @@ export class Entity {
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
-     * @beta
      * @remarks
      * Returns the effect for the specified EffectType on the
      * entity, undefined if the effect is not present, or throws an
@@ -5455,7 +5259,6 @@ export class Entity {
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of effects applied to this entity.
      *
@@ -5465,7 +5268,6 @@ export class Entity {
      */
     getEffects(): Effect[];
     /**
-     * @beta
      * @remarks
      * Gets the entities that this entity is looking at by
      * performing a ray cast from the view of this entity.
@@ -5479,7 +5281,6 @@ export class Entity {
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @beta
      * @remarks
      * Returns the current location of the head component of this
      * entity.
@@ -5491,7 +5292,6 @@ export class Entity {
      */
     getHeadLocation(): Vector3;
     /**
-     * @beta
      * @remarks
      * Gets an entity Property value. If the property was set using
      * the setProperty function within the same tick, the updated
@@ -5509,7 +5309,6 @@ export class Entity {
      */
     getProperty(identifier: string): boolean | number | string | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the current rotation component of this entity.
      *
@@ -5520,7 +5319,6 @@ export class Entity {
      */
     getRotation(): Vector2;
     /**
-     * @beta
      * @remarks
      * @returns
      * Returns all tags associated with an entity.
@@ -5528,7 +5326,6 @@ export class Entity {
      */
     getTags(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the current velocity vector of the entity.
      *
@@ -5548,7 +5345,6 @@ export class Entity {
      */
     getVelocity(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns the current view direction of the entity.
      *
@@ -5558,7 +5354,6 @@ export class Entity {
      */
     getViewDirection(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns true if the specified component is present on this
      * entity.
@@ -5573,7 +5368,6 @@ export class Entity {
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether an entity has a particular tag.
      *
@@ -5585,7 +5379,6 @@ export class Entity {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether the entity can be manipulated by script. A
      * Player is considered valid when it's EntityLifetimeState is
@@ -5596,7 +5389,6 @@ export class Entity {
      */
     isValid(): boolean;
     /**
-     * @beta
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
      *
@@ -5668,7 +5460,6 @@ export class Entity {
      */
     remove(): void;
     /**
-     * @beta
      * @remarks
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
@@ -5684,7 +5475,6 @@ export class Entity {
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
-     * @beta
      * @remarks
      * Removes a specified tag from an entity.
      *
@@ -5698,7 +5488,6 @@ export class Entity {
      */
     removeTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Resets an Entity Property back to its default value, as
      * specified in the Entity's definition. This property change
@@ -5722,7 +5511,6 @@ export class Entity {
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
-     * @beta
      * @remarks
      * Runs a synchronous command on the entity.
      *
@@ -5818,7 +5606,6 @@ export class Entity {
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * Sets an Entity Property to the provided value. This property
      * change is not applied until the next tick.
@@ -5842,7 +5629,6 @@ export class Entity {
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
-     * @beta
      * @remarks
      * Sets the main rotation of the entity.
      *
@@ -5856,7 +5642,6 @@ export class Entity {
      */
     setRotation(rotation: Vector2): void;
     /**
-     * @beta
      * @remarks
      * Teleports the selected entity to a new location
      *
@@ -5889,7 +5674,6 @@ export class Entity {
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
-     * @beta
      * @remarks
      * Triggers an entity type event. For every entity, a number of
      * events are defined in an entities' definition for key entity
@@ -5913,7 +5697,6 @@ export class Entity {
      */
     triggerEvent(eventName: string): void;
     /**
-     * @beta
      * @remarks
      * Attempts to try a teleport, but may not complete the
      * teleport operation (for example, if there are blocks at the
@@ -6005,7 +5788,6 @@ export class EntityAgeableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * This is a base abstract class for any entity component that
  * centers around a number and can have a minimum, maximum, and
  * default defined value.
@@ -6085,7 +5867,6 @@ export class EntityAttributeComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Base class for a family of entity movement events.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6193,7 +5974,6 @@ export class EntityBreathableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that the entity can
  * climb up ladders.
  */
@@ -6204,7 +5984,6 @@ export class EntityCanClimbComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that the entity can
  * fly, and the pathfinder won't be restricted to paths where a
  * solid block is required underneath it.
@@ -6216,7 +5995,6 @@ export class EntityCanFlyComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that the entity can
  * power jump like the horse does within Minecraft.
  */
@@ -6227,7 +6005,6 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Defines the entity's color. Only works on certain entities
  * that have predefined color values (e.g., sheep, llama,
  * shulker).
@@ -6247,7 +6024,6 @@ export class EntityColorComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Base class for downstream entity components.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6289,7 +6065,6 @@ export class EntityDefinitionFeedItem {
 }
 
 /**
- * @beta
  * Contains data related to the death of an entity in the game.
  */
 export class EntityDieAfterEvent {
@@ -6310,7 +6085,6 @@ export class EntityDieAfterEvent {
 }
 
 /**
- * @beta
  * Supports registering for an event that fires after an entity
  * has died.
  */
@@ -6348,7 +6122,6 @@ export class EntityDieAfterEventSignal {
 }
 
 /**
- * @beta
  * Provides access to a mob's equipment slots. This component
  * exists for all mob entities.
  */
@@ -6402,7 +6175,6 @@ export class EntityEquippableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity
  * doesn't take damage from fire.
  */
@@ -6413,7 +6185,6 @@ export class EntityFireImmuneComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity can
  * float in liquid blocks.
  */
@@ -6424,7 +6195,6 @@ export class EntityFloatsInLiquidComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Represents the flying speed of an entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6442,7 +6212,6 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Defines how much friction affects this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6461,7 +6230,6 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Sets the offset from the ground that the entity is actually
  * at.
  */
@@ -6482,7 +6250,6 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Defines the interactions with this entity for healing it.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6518,7 +6285,6 @@ export class EntityHealableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Contains information related to an entity when its health
  * changes. Warning: don't change the health of an entity in
  * this event, or it will cause an infinite loop!
@@ -6546,7 +6312,6 @@ export class EntityHealthChangedAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when the health of
  * an entity changes.
  */
@@ -6577,7 +6342,6 @@ export class EntityHealthChangedAfterEventSignal {
 }
 
 /**
- * @beta
  * Defines the health properties of an entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6587,7 +6351,6 @@ export class EntityHealthComponent extends EntityAttributeComponent {
 }
 
 /**
- * @beta
  * Contains information related to an entity hitting a block.
  */
 export class EntityHitBlockAfterEvent {
@@ -6613,7 +6376,6 @@ export class EntityHitBlockAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an entity hits
  * a block.
  */
@@ -6644,7 +6406,6 @@ export class EntityHitBlockAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an entity hitting (melee
  * attacking) another entity.
  */
@@ -6665,7 +6426,6 @@ export class EntityHitEntityAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an entity makes
  * a melee attack on another entity.
  */
@@ -6696,7 +6456,6 @@ export class EntityHitEntityAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an entity getting hurt.
  */
 export class EntityHurtAfterEvent {
@@ -6723,7 +6482,6 @@ export class EntityHurtAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
@@ -6752,7 +6510,6 @@ export class EntityHurtAfterEventSignal {
 }
 
 /**
- * @beta
  * 表示一个实体的物品栏属性。
  * 
  * Defines this entity's inventory properties.
@@ -6782,7 +6539,7 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly canBeSiphonedFrom: boolean;
     /**
      * @remarks
-     * 表示实体的容器。
+     * 表示实体的容器。若实体已被移除则为 `undefined`。
      * 
      * Defines the container for this entity. The container will be
      * undefined if the entity has been removed.
@@ -6831,7 +6588,6 @@ export class EntityInventoryComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is a
  * baby.
  */
@@ -6842,7 +6598,6 @@ export class EntityIsBabyComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * charged.
  */
@@ -6853,7 +6608,6 @@ export class EntityIsChargedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently carrying a chest.
  */
@@ -6864,7 +6618,6 @@ export class EntityIsChestedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that dyes can be used
  * on this entity to change its color.
  */
@@ -6875,7 +6628,6 @@ export class EntityIsDyeableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity can
  * hide from hostile mobs while invisible.
  */
@@ -6886,7 +6638,6 @@ export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity this
  * currently on fire.
  */
@@ -6897,7 +6648,6 @@ export class EntityIsIgnitedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is an
  * illager captain.
  */
@@ -6908,7 +6658,6 @@ export class EntityIsIllagerCaptainComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently saddled.
  */
@@ -6919,7 +6668,6 @@ export class EntityIsSaddledComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently shaking.
  */
@@ -6930,7 +6678,6 @@ export class EntityIsShakingComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently sheared.
  */
@@ -6941,7 +6688,6 @@ export class EntityIsShearedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity can be
  * stacked.
  */
@@ -6952,7 +6698,6 @@ export class EntityIsStackableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently stunned.
  */
@@ -6963,7 +6708,6 @@ export class EntityIsStunnedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity is
  * currently tamed.
  */
@@ -6974,7 +6718,6 @@ export class EntityIsTamedComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * If added onto the entity, this indicates that the entity
  * represents a free-floating item in the world. Lets you
  * retrieve the actual item stack contents via the itemStack
@@ -7070,7 +6813,6 @@ export class EntityLeashableComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Contains data related to an entity loaded within the world.
  * This could happen when an unloaded chunk is reloaded, or
  * when an entity changes dimensions.
@@ -7088,7 +6830,6 @@ export class EntityLoadAfterEvent {
 }
 
 /**
- * @beta
  * Registers a script-based event handler for handling what
  * happens when an entity loads.
  */
@@ -7121,7 +6862,6 @@ export class EntityLoadAfterEventSignal {
 }
 
 /**
- * @beta
  * Additional variant value. Can be used to further
  * differentiate variants.
  */
@@ -7162,7 +6902,6 @@ export class EntityMountTamingComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this movement control allows the mob to swim in
  * water and walk on land.
  */
@@ -7173,7 +6912,6 @@ export class EntityMovementAmphibiousComponent extends EntityBaseMovementCompone
 }
 
 /**
- * @beta
  * This component accents the movement of an entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7193,7 +6931,6 @@ export class EntityMovementComponent extends EntityAttributeComponent {
 }
 
 /**
- * @beta
  * When added, this move control causes the mob to fly.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7203,7 +6940,6 @@ export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @beta
  * When added, this move control allows a mob to fly, swim,
  * climb, etc.
  */
@@ -7238,7 +6974,6 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @beta
  * When added, this move control causes the mob to hover.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7248,7 +6983,6 @@ export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @beta
  * Move control that causes the mob to jump as it moves with a
  * specified delay between jumps.
  */
@@ -7259,7 +6993,6 @@ export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @beta
  * When added, this move control causes the mob to hop as it
  * moves.
  */
@@ -7573,7 +7306,6 @@ export class EntityOnFireComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Sets the distance through which the entity can push through.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7591,7 +7323,6 @@ export class EntityPushThroughComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Data for an event that happens when an entity is removed
  * from the world (for example, the entity is unloaded because
  * it is not close to players.)
@@ -7614,7 +7345,6 @@ export class EntityRemoveAfterEvent {
 }
 
 /**
- * @beta
  * Allows registration for an event that fires when an entity
  * is removed from  the game (for example, unloaded, or a few
  * seconds after they are dead.)
@@ -7653,7 +7383,6 @@ export class EntityRemoveAfterEventSignal {
 }
 
 /**
- * @beta
  * Data for an event that happens when an entity is being
  * removed from the world (for example, the entity is unloaded
  * because it is not close to players.)
@@ -7669,7 +7398,6 @@ export class EntityRemoveBeforeEvent {
 }
 
 /**
- * @beta
  * Allows registration for an event that fires when an entity
  * is being removed from  the game (for example, unloaded, or a
  * few seconds after they are dead.)
@@ -7837,7 +7565,6 @@ export class EntityRidingComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Sets the entity's visual size.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7855,7 +7582,6 @@ export class EntityScaleComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Skin Id value. Can be used to differentiate skins, such as
  * base skins for villagers.
  */
@@ -7874,7 +7600,6 @@ export class EntitySkinIdComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Contains data related to an entity spawning within the
  * world.
  */
@@ -7897,7 +7622,6 @@ export class EntitySpawnAfterEvent {
 }
 
 /**
- * @beta
  * Registers a script-based event handler for handling what
  * happens when an entity spawns.
  */
@@ -8053,7 +7777,7 @@ export class EntityTypes {
      * Retrieves an entity type using a string-based identifier.
      *
      */
-    static get(identifier: string): EntityType;
+    static get(identifier: string): EntityType | undefined;
     /**
      * @remarks
      * Retrieves an iterator of all entity types within this world.
@@ -8074,7 +7798,6 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
 }
 
 /**
- * @beta
  * Used to differentiate the component group of a variant of an
  * entity from others. (e.g. ocelot, villager).
  */
@@ -8093,7 +7816,6 @@ export class EntityVariantComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When added, this component signifies that this entity wants
  * to become a jockey.
  */
@@ -8213,7 +7935,6 @@ export class ExplosionBeforeEventSignal {
 }
 
 /**
- * @beta
  * As part of the Healable component, represents a specific
  * item that can be fed to an entity to cause health effects.
  */
@@ -8245,7 +7966,6 @@ export class FeedItem {
 }
 
 /**
- * @beta
  * Represents an effect that is applied as a result of a food
  * item being fed to an entity.
  */
@@ -8312,7 +8032,6 @@ export class FluidContainer {
 }
 
 /**
- * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires when a button is pushed.
  */
@@ -8338,7 +8057,6 @@ export class IButtonPushAfterEventSignal {
 }
 
 /**
- * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires after a lever is used.
  */
@@ -8364,7 +8082,6 @@ export class ILeverActionAfterEventSignal {
 }
 
 /**
- * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires after a player joins a world.
  */
@@ -8390,7 +8107,6 @@ export class IPlayerJoinAfterEventSignal {
 }
 
 /**
- * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires after a player leaves a world.
  */
@@ -8416,7 +8132,6 @@ export class IPlayerLeaveAfterEventSignal {
 }
 
 /**
- * @beta
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires after a player spawns.
  */
@@ -8442,7 +8157,6 @@ export class IPlayerSpawnAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to a chargeable item completing
  * being charged.
  */
@@ -8470,7 +8184,6 @@ export class ItemCompleteUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.
  */
@@ -8498,7 +8211,6 @@ export class ItemCompleteUseAfterEventSignal {
 }
 
 /**
- * @beta
  * Base class for item components.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8509,7 +8221,7 @@ export class ItemComponent extends Component {
 /**
  * @beta
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
- * 注意，若使用不会进行冷却，原版物品会获取到没有实际作用的该组件。
+ * 注意，若使用后不会进入冷却，原版物品会获取到没有实际作用的该组件。
  * 
  * When present on an item, this item has a cooldown effect
  * when used by entities.
@@ -8717,6 +8429,8 @@ export class ItemDurabilityComponent extends ItemComponent {
     getDamageChance(unbreaking?: number): number;
     /**
      * @remarks
+     * 返回物品损失耐久的概率范围。
+     * 
      * A range of numbers that describes the chance of the item
      * losing durability.
      *
@@ -8811,7 +8525,7 @@ export class ItemFoodComponent extends ItemComponent {
     readonly saturationModifier: number;
     /**
      * @remarks
-     * 若给出，则将该物品转换为标识符指定的物品。
+     * 若给出，则使用时将该物品转换为标识符指定的物品。
      * 
      * When specified, converts the active item to the one
      * specified by this property.
@@ -8823,7 +8537,6 @@ export class ItemFoodComponent extends ItemComponent {
 }
 
 /**
- * @beta
  * Contains information related to a chargeable item when the
  * player has finished using the item and released the build
  * action.
@@ -8852,7 +8565,6 @@ export class ItemReleaseUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to the releasing of
  * charging for a chargeable item.
  */
@@ -8880,7 +8592,6 @@ export class ItemReleaseUseAfterEventSignal {
 }
 
 /**
- * @beta
  * Defines a collection of items.
  */
 export class ItemStack {
@@ -8975,7 +8686,6 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
-     * @beta
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -8985,7 +8695,6 @@ export class ItemStack {
      */
     clone(): ItemStack;
     /**
-     * @beta
      * @remarks
      * Get the list of block types this item can break in Adventure
      * mode.
@@ -8995,7 +8704,6 @@ export class ItemStack {
      */
     getCanDestroy(): string[];
     /**
-     * @beta
      * @remarks
      * Get the list of block types this item can be placed on in
      * Adventure mode.
@@ -9034,7 +8742,6 @@ export class ItemStack {
      */
     getComponents(): ItemComponent[];
     /**
-     * @beta
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack.
@@ -9045,7 +8752,6 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
-     * @beta
      * @remarks
      * Returns a set of tags associated with this item stack.
      *
@@ -9063,7 +8769,6 @@ export class ItemStack {
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @beta
      * @remarks
      * Checks whether this item stack has a particular tag
      * associated with it.
@@ -9091,7 +8796,6 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
-     * @beta
      * @remarks
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.
@@ -9112,7 +8816,6 @@ export class ItemStack {
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * The list of block types this item can be placed on in
      * Adventure mode. This is only applicable to block items. The
@@ -9134,7 +8837,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * Sets the lore value - a secondary display string - for an
      * ItemStack. The lore list is cleared if set to an empty
@@ -9191,7 +8893,6 @@ export class ItemStack {
 }
 
 /**
- * @beta
  * Contains information related to a chargeable item starting
  * to be charged.
  */
@@ -9219,7 +8920,6 @@ export class ItemStartUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to the start of
  * charging for a chargeable item.
  */
@@ -9247,7 +8947,6 @@ export class ItemStartUseAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an item being used on a
  * block. This event fires when a player presses the the Use
  * Item / Place Block button to successfully use an item or
@@ -9286,7 +8985,6 @@ export class ItemStartUseOnAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to an item starting
  * being used on a block event.
  */
@@ -9314,7 +9012,6 @@ export class ItemStartUseOnAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to a chargeable item has
  * finished an items use cycle, or when the player has released
  * the use action with the item.
@@ -9345,7 +9042,6 @@ export class ItemStopUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to the stopping of
  * charging for an item that has a registered
  * minecraft:chargeable component.
@@ -9374,7 +9070,6 @@ export class ItemStopUseAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an item that has stopped
  * being used on a block. This event fires when a player
  * successfully uses an item or places a block by pressing the
@@ -9406,7 +9101,6 @@ export class ItemStopUseOnAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to an item stops used
  * on a block event.
  */
@@ -9434,7 +9128,6 @@ export class ItemStopUseOnAfterEventSignal {
 }
 
 /**
- * @beta
  * Represents the type of an item - for example, Wool.
  */
 export class ItemType {
@@ -9470,7 +9163,6 @@ export class ItemTypes {
 }
 
 /**
- * @beta
  * Contains information related to an item being used on a
  * block. This event fires when an item used by a player
  * successfully triggers an entity interaction.
@@ -9492,7 +9184,6 @@ export class ItemUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to an item use event.
  */
 export class ItemUseAfterEventSignal {
@@ -9517,7 +9208,6 @@ export class ItemUseAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an item being used.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9532,7 +9222,6 @@ export class ItemUseBeforeEvent extends ItemUseAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that fire before an item is used.
  */
 export class ItemUseBeforeEventSignal {
@@ -9557,7 +9246,9 @@ export class ItemUseBeforeEventSignal {
 }
 
 /**
- * @beta
+ * 表示对方块使用物品时触发的后置事件。描述了物品的信息与使用的目标方块。
+ * 该事件会在玩家成功触发与方块的交互后发生。
+ * 
  * Contains information related to an item being used on a
  * block. This event fires when an item used by a player
  * successfully triggers a block interaction.
@@ -9566,18 +9257,24 @@ export class ItemUseOnAfterEvent {
     private constructor();
     /**
      * @remarks
+     * 物品使用的目标方块。
+     * 
      * The block that the item is used on.
      *
      */
     readonly block: Block;
     /**
      * @remarks
+     * 物品在方块的哪一面被使用。
+     * 
      * The face of the block that an item is being used on.
      *
      */
     readonly blockFace: Direction;
     /**
      * @remarks
+     * 物品在方块的面上被使用时，交互点相对于方块西北方底部顶点的坐标。
+     * 
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
      *
@@ -9585,12 +9282,16 @@ export class ItemUseOnAfterEvent {
     readonly faceLocation: Vector3;
     /**
      * @remarks
+     * 对方块使用物品时物品所在的物品堆叠。
+     * 
      * The impacted item stack that is being used on a block.
      *
      */
     readonly itemStack: ItemStack;
     /**
      * @remarks
+     * 该事件的触发来源实体。
+     * 
      * Returns the source entity that triggered this item event.
      *
      */
@@ -9598,7 +9299,6 @@ export class ItemUseOnAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to an item being used
  * on a block event.
  */
@@ -9626,7 +9326,6 @@ export class ItemUseOnAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to an item being used on a
  * block.
  */
@@ -9642,7 +9341,6 @@ export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that fire before an item being used on a
  * block event.
  */
@@ -9670,7 +9368,6 @@ export class ItemUseOnBeforeEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes to a lever
  * activating or deactivating.
  */
@@ -9693,7 +9390,6 @@ export class LeverActionAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
  */
@@ -9772,7 +9468,6 @@ export class MinecraftDimensionTypes {
 }
 
 /**
- * @beta
  * Contains a set of additional variable values for further
  * defining how rendering and animations function.
  */
@@ -10069,7 +9764,6 @@ export class PistonActivateBeforeEventSignal {
 export class Player extends Entity {
     private constructor();
     /**
-     * @beta
      * @remarks
      * The player's Camera.
      *
@@ -10077,7 +9771,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @beta
      * @remarks
      * If true, the player is currently emoting.
      *
@@ -10085,7 +9778,6 @@ export class Player extends Entity {
      */
     readonly isEmoting: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is flying. For example, in Creative or
      * Spectator mode.
@@ -10094,7 +9786,6 @@ export class Player extends Entity {
      */
     readonly isFlying: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is gliding with Elytra.
      *
@@ -10102,7 +9793,6 @@ export class Player extends Entity {
      */
     readonly isGliding: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the player is jumping. This will remain true while
      * the player is holding the jump action.
@@ -10111,7 +9801,6 @@ export class Player extends Entity {
      */
     readonly isJumping: boolean;
     /**
-     * @beta
      * @remarks
      * The current overall level for the player, based on their
      * experience.
@@ -10127,7 +9816,6 @@ export class Player extends Entity {
      */
     readonly name: string;
     /**
-     * @beta
      * @remarks
      * Contains methods for manipulating the on-screen display of a
      * Player.
@@ -10145,7 +9833,6 @@ export class Player extends Entity {
      */
     selectedSlot: number;
     /**
-     * @beta
      * @remarks
      * The overall total set of experience needed to achieve the
      * next level for a player.
@@ -10154,7 +9841,6 @@ export class Player extends Entity {
      */
     readonly totalXpNeededForNextLevel: number;
     /**
-     * @beta
      * @remarks
      * The current set of experience achieved for the player.
      *
@@ -10162,7 +9848,6 @@ export class Player extends Entity {
      */
     readonly xpEarnedAtCurrentLevel: number;
     /**
-     * @beta
      * @remarks
      * Adds/removes experience to/from the Player and returns the
      * current experience of the Player.
@@ -10178,7 +9863,6 @@ export class Player extends Entity {
      */
     addExperience(amount: number): number;
     /**
-     * @beta
      * @remarks
      * Adds/removes level to/from the Player and returns the
      * current level of the Player.
@@ -10205,7 +9889,6 @@ export class Player extends Entity {
      */
     getItemCooldown(itemCategory: string): number;
     /**
-     * @beta
      * @remarks
      * Gets the current spawn point of the player.
      *
@@ -10213,7 +9896,6 @@ export class Player extends Entity {
      */
     getSpawnPoint(): DimensionLocation | undefined;
     /**
-     * @beta
      * @remarks
      *  Gets the total experience of the Player.
      *
@@ -10244,7 +9926,6 @@ export class Player extends Entity {
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Plays a sound that only this particular player can hear.
      *
@@ -10310,7 +9991,6 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * Resets the level of the player.
      *
@@ -10320,7 +10000,6 @@ export class Player extends Entity {
      */
     resetLevel(): void;
     /**
-     * @beta
      * @remarks
      * Sends a message to the player.
      *
@@ -10382,7 +10061,6 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
-     * @beta
      * @remarks
      * Sets the current starting spawn point for this particular
      * player.
@@ -10426,7 +10104,6 @@ export class Player extends Entity {
 }
 
 /**
- * @beta
  * Contains information regarding an event after a player
  * breaks a block.
  */
@@ -10463,7 +10140,6 @@ export class PlayerBreakBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a player breaks
  * a block.
  */
@@ -10494,7 +10170,6 @@ export class PlayerBreakBlockAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event before a player
  * breaks a block.
  */
@@ -10523,7 +10198,6 @@ export class PlayerBreakBlockBeforeEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to before a player
  * breaks a block.
  */
@@ -10554,7 +10228,6 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes to a player's
  * dimension having been changed.
  */
@@ -10594,7 +10267,6 @@ export class PlayerDimensionChangeAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to successful player
  * dimension changes.
  */
@@ -10918,7 +10590,6 @@ export class PlayerIterator implements Iterable<Player> {
 }
 
 /**
- * @beta
  * Contains information regarding a player that has joined.
  * See the playerSpawn event for more detailed information that
  * could be returned after the first time a player has spawned
@@ -10941,7 +10612,6 @@ export class PlayerJoinAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to a player joining the
  * world.
  */
@@ -10951,7 +10621,6 @@ export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding a player that has left the
  * world.
  */
@@ -10973,7 +10642,6 @@ export class PlayerLeaveAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to a player leaving the
  * world.
  */
@@ -11011,7 +10679,6 @@ export class PlayerLeaveBeforeEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event where a player
  * places a block.
  */
@@ -11027,7 +10694,6 @@ export class PlayerPlaceBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a block is
  * placed by a player.
  */
@@ -11130,7 +10796,6 @@ export class PlayerPlaceBlockBeforeEventSignal {
 }
 
 /**
- * @beta
  * An event that contains more information about a player
  * spawning.
  */
@@ -11156,7 +10821,6 @@ export class PlayerSpawnAfterEvent {
 }
 
 /**
- * @beta
  * Registers an event when a player is spawned (or re-spawned
  * after death) and fully ready within the world.
  */
@@ -11166,7 +10830,6 @@ export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes to a pressure plate
  * pop.
  */
@@ -11190,7 +10853,6 @@ export class PressurePlatePopAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a pressure
  * plate is popped.
  */
@@ -11218,7 +10880,6 @@ export class PressurePlatePopAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes to a pressure plate
  * push.
  */
@@ -11248,7 +10909,6 @@ export class PressurePlatePushAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a pressure
  * plate is pushed.
  */
@@ -11276,7 +10936,6 @@ export class PressurePlatePushAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to a projectile hitting a
  * block.
  */
@@ -11324,7 +10983,6 @@ export class ProjectileHitBlockAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a projectile
  * hits a block.
  */
@@ -11352,7 +11010,6 @@ export class ProjectileHitBlockAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to a projectile hitting an
  * entity.
  */
@@ -11400,7 +11057,6 @@ export class ProjectileHitEntityAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a projectile
  * hits an entity.
  */
@@ -11428,7 +11084,6 @@ export class ProjectileHitEntityAfterEventSignal {
 }
 
 /**
- * @beta
  * 表示记分板。其上包含了记分项和分数持有者。
  * 
  * Contains objectives and participants for the scoreboard.
@@ -11542,7 +11197,6 @@ export class Scoreboard {
 }
 
 /**
- * @beta
  * 表示记分板上的分数持有者。
  * 
  * Contains an identity of the scoreboard item.
@@ -11594,7 +11248,6 @@ export class ScoreboardIdentity {
 }
 
 /**
- * @beta
  * 表示记分板上的记分项。包含了分数持有者和各自的分数。
  * 
  * Contains objectives and participants for the scoreboard.
@@ -11713,7 +11366,6 @@ export class ScoreboardObjective {
 }
 
 /**
- * @beta
  * 表示分数信息。包含了分数持有者以及它在记分板上的对应的分数。
  * 
  * Contains a pair of a scoreboard participant and its
@@ -11740,7 +11392,6 @@ export class ScoreboardScoreInfo {
 }
 
 /**
- * @beta
  * Contains information about user interface elements that are
  * showing up on the screen.
  */
@@ -11829,7 +11480,6 @@ export class ScreenDisplay {
 }
 
 /**
- * @beta
  * Returns additional data about a /scriptevent command
  * invocation.
  */
@@ -11878,7 +11528,6 @@ export class ScriptEventCommandMessageAfterEvent {
 }
 
 /**
- * @beta
  * Allows for registering an event handler that responds to
  * inbound /scriptevent commands.
  */
@@ -11977,7 +11626,6 @@ export class ServerMessageAfterEventSignal {
 export class System {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Returns a collection of after-events for system-level
      * operations.
@@ -11993,14 +11641,12 @@ export class System {
      */
     readonly beforeEvents: SystemBeforeEvents;
     /**
-     * @beta
      * @remarks
      * Represents the current world tick of the server.
      *
      */
     readonly currentTick: number;
     /**
-     * @beta
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via the `run` function.
@@ -12037,7 +11683,6 @@ export class System {
      */
     run(callback: () => void): number;
     /**
-     * @beta
      * @remarks
      * Runs a set of code on an interval.
      *
@@ -12060,7 +11705,6 @@ export class System {
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
-     * @beta
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *
@@ -12077,7 +11721,6 @@ export class System {
 }
 
 /**
- * @beta
  * Provides a set of events that fire within the broader
  * scripting system within Minecraft.
  */
@@ -12116,7 +11759,6 @@ export class SystemBeforeEvents {
 }
 
 /**
- * @beta
  * Contains information related to changes to a target block
  * hit.
  */
@@ -12150,7 +11792,6 @@ export class TargetBlockHitAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a target block
  * is hit.
  */
@@ -12197,7 +11838,6 @@ export class Trigger {
 }
 
 /**
- * @beta
  * Contains information related to changes to a trip wire trip.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -12218,7 +11858,6 @@ export class TripWireTripAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when a trip wire is
  * tripped.
  */
@@ -12540,7 +12179,6 @@ export class WeatherChangeAfterEventSignal {
 export class World {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world.  Event callbacks are called in a deferred
@@ -12549,7 +12187,6 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
@@ -12558,7 +12195,6 @@ export class World {
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
-     * @beta
      * @remarks
      * 全局的、唯一的记分板对象。
      * 
@@ -12586,7 +12222,6 @@ export class World {
      */
     clearDynamicProperties(): void;
     /**
-     * @beta
      * @remarks
      * 获取自游戏开始以来流逝的时间（计算公式：`day*24000+daytime`）。
      * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
@@ -12606,7 +12241,6 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @beta
      * @remarks
      * Returns the current day.
      *
@@ -12616,7 +12250,6 @@ export class World {
      */
     getDay(): number;
     /**
-     * @beta
      * @remarks
      * Returns the default Overworld spawn location.
      *
@@ -12744,14 +12377,12 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the MoonPhase for the current time.
      *
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @beta
      * @remarks
      * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
      * 
@@ -12776,7 +12407,6 @@ export class World {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
      * @remarks
      * 返回当前一天中的时间。
      * 
@@ -12789,7 +12419,6 @@ export class World {
      */
     getTimeOfDay(): number;
     /**
-     * @beta
      * @remarks
      * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
      * 
@@ -12827,7 +12456,6 @@ export class World {
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * 向玩家播放一段声音。
      * 
@@ -12869,7 +12497,6 @@ export class World {
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
-     * @beta
      * @remarks
      * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
      * 
@@ -12893,7 +12520,6 @@ export class World {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * 向所有玩家广播一条消息。
      * 
@@ -12939,7 +12565,6 @@ export class World {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
      * @remarks
      * Sets the world time.
      *
@@ -12950,7 +12575,6 @@ export class World {
      */
     setAbsoluteTime(absoluteTime: number): void;
     /**
-     * @beta
      * @remarks
      * Sets a default spawn location for all players.
      *
@@ -13046,7 +12670,6 @@ export class World {
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets the time of day.
      *
@@ -13060,7 +12683,6 @@ export class World {
      */
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     /**
-     * @beta
      * @remarks
      * 停止客户端中正在播放的所有音乐曲目（需要更多测试）。
      * 
@@ -13073,7 +12695,6 @@ export class World {
 }
 
 /**
- * @beta
  * Contains a set of events that are available across the scope
  * of the World.
  */
@@ -13120,21 +12741,18 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity dies.
      *
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when entity health changes in any degree.
      *
      */
     readonly entityHealthChanged: EntityHealthChangedAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity hits (that is, melee
      * attacks) a block.
@@ -13142,7 +12760,6 @@ export class WorldAfterEvents {
      */
     readonly entityHitBlock: EntityHitBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity hits (that is, melee
      * attacks) another entity.
@@ -13150,21 +12767,18 @@ export class WorldAfterEvents {
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when an entity is loaded.
      *
      */
     readonly entityLoad: EntityLoadAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when an entity is removed (for example, potentially
      * unloaded, or removed after being killed).
@@ -13172,7 +12786,6 @@ export class WorldAfterEvents {
      */
     readonly entityRemove: EntityRemoveAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity is spawned.
      *
@@ -13186,7 +12799,6 @@ export class WorldAfterEvents {
      */
     readonly explosion: ExplosionAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item completes charging.
      *
@@ -13203,7 +12815,6 @@ export class WorldAfterEvents {
      */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item is released from
      * charging.
@@ -13211,14 +12822,12 @@ export class WorldAfterEvents {
      */
     readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item starts charging.
      *
      */
     readonly itemStartUse: ItemStartUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a player successfully uses an item or
      * places a block by pressing the Use Item / Place Block
@@ -13229,14 +12838,12 @@ export class WorldAfterEvents {
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item stops charging.
      *
      */
     readonly itemStopUse: ItemStopUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a player releases the Use Item / Place
      * Block button after successfully using an item. Note: This
@@ -13245,7 +12852,6 @@ export class WorldAfterEvents {
      */
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an item is successfully used by a
      * player.
@@ -13253,7 +12859,6 @@ export class WorldAfterEvents {
      */
     readonly itemUse: ItemUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an item is used on a block by a
      * player.
@@ -13282,14 +12887,12 @@ export class WorldAfterEvents {
      */
     readonly pistonActivate: PistonActivateAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires for a block that is broken by a player.
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when a player moved to a different dimension.
      *
@@ -13318,7 +12921,6 @@ export class WorldAfterEvents {
      */
     readonly playerLeave: PlayerLeaveAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires for a block that is placed by a player.
      *
@@ -13333,7 +12935,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A pressure plate has popped back up (i.e., there are no
      * entities on the pressure plate.)
@@ -13341,7 +12942,6 @@ export class WorldAfterEvents {
      */
     readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A pressure plate has pushed (at least one entity has moved
      * onto a pressure plate.)
@@ -13349,28 +12949,24 @@ export class WorldAfterEvents {
      */
     readonly pressurePlatePush: PressurePlatePushAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a projectile hits a block.
      *
      */
     readonly projectileHitBlock: ProjectileHitBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a projectile hits an entity.
      *
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A target block was hit.
      *
      */
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A trip wire was tripped.
      *
@@ -13396,7 +12992,6 @@ export class WorldAfterEvents {
 }
 
 /**
- * @beta
  * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
  * 但请注意，在 before 类事件过程中，能够改变游戏状态的 API 将失效，试图调用将会抛出错误。
  * （例如：dimension.spawnEntity）
@@ -13435,7 +13030,6 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
@@ -13481,7 +13075,6 @@ export class WorldBeforeEvents {
      */
     readonly pistonActivate: PistonActivateBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires before a block is broken by a player.
      *
@@ -13551,7 +13144,6 @@ export class WorldInitializeAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains optional parameters for registering a block event.
  */
 export interface BlockEventOptions {
@@ -13586,7 +13178,6 @@ export interface BlockFillOptions {
 }
 
 /**
- * @beta
  * Contains more information for events where a block is hit.
  */
 export interface BlockHitInformation {
@@ -13612,7 +13203,6 @@ export interface BlockHitInformation {
 }
 
 /**
- * @beta
  * Contains information for block raycast hit results.
  */
 export interface BlockRaycastHit {
@@ -13638,7 +13228,6 @@ export interface BlockRaycastHit {
 }
 
 /**
- * @beta
  * Contains additional options for configuring a block raycast
  * query.
  */
@@ -13747,15 +13336,11 @@ export interface BoundingBox {
     min: Vector3;
 }
 
-/**
- * @beta
- */
 export interface CameraDefaultOptions {
     easeOptions: CameraEaseOptions;
 }
 
 /**
- * @beta
  * Contains options associated with a camera ease operation.
  */
 export interface CameraEaseOptions {
@@ -13774,7 +13359,6 @@ export interface CameraEaseOptions {
 }
 
 /**
- * @beta
  * Used to initiate a full-screen color fade.
  */
 export interface CameraFadeOptions {
@@ -13793,7 +13377,6 @@ export interface CameraFadeOptions {
 }
 
 /**
- * @beta
  * Contains timings for a fade transition.
  */
 export interface CameraFadeTimeOptions {
@@ -13817,35 +13400,23 @@ export interface CameraFadeTimeOptions {
     holdTime: number;
 }
 
-/**
- * @beta
- */
 export interface CameraSetFacingOptions {
     easeOptions?: CameraEaseOptions;
     facingEntity: Entity;
     location?: Vector3;
 }
 
-/**
- * @beta
- */
 export interface CameraSetLocationOptions {
     easeOptions?: CameraEaseOptions;
     location: Vector3;
 }
 
-/**
- * @beta
- */
 export interface CameraSetPosOptions {
     easeOptions?: CameraEaseOptions;
     facingLocation: Vector3;
     location?: Vector3;
 }
 
-/**
- * @beta
- */
 export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
@@ -13888,6 +13459,34 @@ export interface CompoundBlockVolumeItem {
 
 /**
  * @beta
+ * Contains a set of updates to the component definition state
+ * of an entity.
+ */
+export interface DefinitionModifier {
+    /**
+     * @remarks
+     * Retrieves the list of component groups that will be added
+     * via this definition modification.
+     *
+     */
+    addedComponentGroups: string[];
+    /**
+     * @remarks
+     * The list of component groups that will be removed via this
+     * definition modification.
+     *
+     */
+    removedComponentGroups: string[];
+    /**
+     * @remarks
+     * The list of entity definition events that will be fired via
+     * this update.
+     *
+     */
+    triggers: Trigger[];
+}
+
+/**
  * An exact coordinate within the world, including its
  * dimension and location.
  */
@@ -13919,7 +13518,6 @@ export interface DimensionLocation {
 }
 
 /**
- * @beta
  * Additional options for when damage has been applied via a
  * projectile.
  */
@@ -13939,7 +13537,6 @@ export interface EntityApplyDamageByProjectileOptions {
 }
 
 /**
- * @beta
  * Additional descriptions and metadata for a damage event.
  */
 export interface EntityApplyDamageOptions {
@@ -13958,7 +13555,6 @@ export interface EntityApplyDamageOptions {
 }
 
 /**
- * @beta
  * Provides information about how damage has been applied to an
  * entity.
  */
@@ -14014,7 +13610,6 @@ export interface EntityDataDrivenTriggerEventOptions {
 }
 
 /**
- * @beta
  * Contains additional options for entity effects.
  */
 export interface EntityEffectOptions {
@@ -14033,7 +13628,6 @@ export interface EntityEffectOptions {
 }
 
 /**
- * @beta
  * Contains optional parameters for registering an entity
  * event.
  */
@@ -14055,7 +13649,6 @@ export interface EntityEventOptions {
 }
 
 /**
- * @beta
  * Contains additional information about an entity that was
  * hit.
  */
@@ -14069,7 +13662,6 @@ export interface EntityHitInformation {
 }
 
 /**
- * @beta
  * Contains options for selecting entities within an area.
  */
 export interface EntityQueryOptions {
@@ -14240,7 +13832,6 @@ export interface EntityQueryOptions {
 }
 
 /**
- * @beta
  * Contains additional options for filtering players based on
  * their score for an objective.
  */
@@ -14275,7 +13866,6 @@ export interface EntityQueryScoreOptions {
 }
 
 /**
- * @beta
  * Contains information for entity raycast hit results.
  */
 export interface EntityRaycastHit {
@@ -14294,7 +13884,6 @@ export interface EntityRaycastHit {
 }
 
 /**
- * @beta
  * Contains additional options for an entity raycast operation.
  */
 export interface EntityRaycastOptions {
@@ -14341,7 +13930,6 @@ export interface ExplosionOptions {
 }
 
 /**
- * @beta
  * Additional configuration options for {@link
  * World.playMusic}/{@link World.queueMusic} methods.
  */
@@ -14400,7 +13988,6 @@ export interface PlayAnimationOptions {
 }
 
 /**
- * @beta
  * Additional options for how a sound plays for a player.
  */
 export interface PlayerSoundOptions {
@@ -14426,7 +14013,6 @@ export interface PlayerSoundOptions {
 }
 
 /**
- * @beta
  * Defines a JSON structure that is used for more flexible.
  */
 export interface RawMessage {
@@ -14468,7 +14054,6 @@ export interface RawMessage {
 }
 
 /**
- * @beta
  * Provides a description of a score token to use within a raw
  * message.
  */
@@ -14505,7 +14090,6 @@ export interface RawText {
 }
 
 /**
- * @beta
  * Represents a fully customizable color within Minecraft.
  */
 export interface RGB {
@@ -14533,7 +14117,6 @@ export interface RGB {
 }
 
 /**
- * @beta
  * Represents a fully customizable color within Minecraft.
  */
 export interface RGBA {
@@ -14568,7 +14151,6 @@ export interface RGBA {
 }
 
 /**
- * @beta
  * 表示记分项显示位置配置。描述了如何在记分板显示位置上显示记分项。
  * 
  * Contains additional options for how a scoreboard should be
@@ -14594,7 +14176,6 @@ export interface ScoreboardObjectiveDisplayOptions {
 }
 
 /**
- * @beta
  * Contains additional options for registering a script event
  * event callback.
  */
@@ -14609,7 +14190,6 @@ export interface ScriptEventMessageFilterOptions {
 }
 
 /**
- * @beta
  * Contains additional options for teleporting an entity.
  */
 export interface TeleportOptions {
@@ -14649,7 +14229,6 @@ export interface TeleportOptions {
 }
 
 /**
- * @beta
  * Contains additional options for displaying a title and
  * optional subtitle.
  */
@@ -14688,7 +14267,6 @@ export interface TitleDisplayOptions {
 }
 
 /**
- * @beta
  * Represents a two-directional vector.
  */
 export interface Vector2 {
@@ -14707,7 +14285,6 @@ export interface Vector2 {
 }
 
 /**
- * @beta
  * Contains a description of a vector.
  */
 export interface Vector3 {
@@ -14732,7 +14309,6 @@ export interface Vector3 {
 }
 
 /**
- * @beta
  * Contains additional options for a world-level playSound
  * occurrence.
  */
@@ -14751,32 +14327,22 @@ export interface WorldSoundOptions {
     volume?: number;
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class CommandError extends Error {
     private constructor();
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationInUnloadedChunkError extends Error {
     private constructor();
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
 }
 
 /**
- * @beta
  * @remarks
  * Holds the number of MoonPhases
  *

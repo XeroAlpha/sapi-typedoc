@@ -1,5 +1,4 @@
 /**
- * @beta
  * Base class for a family of entity movement events.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

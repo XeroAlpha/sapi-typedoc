@@ -7,14 +7,13 @@
    Copyright (c) Microsoft Corporation.
    ***************************************************************************** */
 /**
- * @beta
  * @packageDocumentation
  *
  * Manifest Details
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.1.0-rc.1.20.50-preview.22"
+ *   "version": "1.0.0"
  * }
  * ```
  *
@@ -46,10 +45,16 @@ export interface NumberRange {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+/**
+ * 表示参数越界。提示传入的参数超出范围。
+ */
 export class ArgumentOutOfBoundsError extends Error {
     private constructor();
+    /** 参数允许的最大值。 */
     maxValue: number;
+    /** 参数允许的最小值。 */
     minValue: number;
+    /** 当前参数的值。 */
     value: number;
 }
 

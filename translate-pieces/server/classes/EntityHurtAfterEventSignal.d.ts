@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */

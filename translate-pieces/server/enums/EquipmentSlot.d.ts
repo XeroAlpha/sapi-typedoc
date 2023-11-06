@@ -1,11 +1,9 @@
 /**
- * @beta
  * The equipment slot of the mob. This includes armor, offhand
  * and mainhand slots.
  */
 export enum EquipmentSlot {
     /**
-     * @beta
      * @remarks
      * The chest slot. This slot is used to hold items such as
      * Chestplate or Elytra.
@@ -13,7 +11,6 @@ export enum EquipmentSlot {
      */
     Chest = 'Chest',
     /**
-     * @beta
      * @remarks
      * The feet slot. This slot is used to hold items such as
      * Boots.
@@ -21,7 +18,6 @@ export enum EquipmentSlot {
      */
     Feet = 'Feet',
     /**
-     * @beta
      * @remarks
      * The head slot. This slot is used to hold items such as
      * Helmets or Carved Pumpkins.
@@ -29,7 +25,6 @@ export enum EquipmentSlot {
      */
     Head = 'Head',
     /**
-     * @beta
      * @remarks
      * The legs slot. This slot is used to hold items such as
      * Leggings.
@@ -37,7 +32,6 @@ export enum EquipmentSlot {
      */
     Legs = 'Legs',
     /**
-     * @beta
      * @remarks
      * The mainhand slot. For players, the mainhand slot refers to
      * the currently active hotbar slot.
@@ -45,7 +39,6 @@ export enum EquipmentSlot {
      */
     Mainhand = 'Mainhand',
     /**
-     * @beta
      * @remarks
      * The offhand slot. This slot is used to hold items such as
      * shields and maps.

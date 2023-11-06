@@ -7,8 +7,13 @@
    Copyright (c) Microsoft Corporation.
    ***************************************************************************** */
 /**
- * @beta
  * @packageDocumentation
+ * `@minecraft/server-ui` 模块包含了用于基于对话框的简易用户交互功能的类型。
+ * 
+ *   * {@link ActionFormData} 包含了一系列带有标题与图片的按钮。便于要求用户从一系列选项中选择。
+ *   * {@link MessageFormData} 则是包含了两个按钮的简易消息框，允许用户选择是/否或者确定/取消。
+ *   * {@link ModalFormData} 则提供了一套更具灵活性的类似问卷形式的控件，允许用户填写并提交。
+ * 
  * The `@minecraft/server-ui` module contains types for
  * expressing simple dialog-based user experiences.
  *
@@ -43,16 +48,13 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.50-preview.22"
+ *   "version": "1.1.0"
  * }
  * ```
  *
  */
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
-/**
- * @beta
- */
 export enum FormCancelationReason {
     UserBusy = 'UserBusy',
     UserClosed = 'UserClosed',
@@ -124,14 +126,12 @@ export class ActionFormResponse extends FormResponse {
 export class FormResponse {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Contains additional details as to why a form was canceled.
      *
      */
     readonly cancelationReason?: FormCancelationReason;
     /**
-     * @beta
      * @remarks
      * If true, the form was canceled by the player (e.g., they
      * selected the pop-up X close button).

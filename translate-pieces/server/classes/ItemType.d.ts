@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents the type of an item - for example, Wool.
  */
 export class ItemType {

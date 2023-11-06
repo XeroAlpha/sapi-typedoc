@@ -7,7 +7,6 @@
 export class World {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world.  Event callbacks are called in a deferred
@@ -16,7 +15,6 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
-     * @beta
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
@@ -25,7 +23,6 @@ export class World {
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
-     * @beta
      * @remarks
      * 全局的、唯一的记分板对象。
      * 
@@ -53,7 +50,6 @@ export class World {
      */
     clearDynamicProperties(): void;
     /**
-     * @beta
      * @remarks
      * 获取自游戏开始以来流逝的时间（计算公式：`day*24000+daytime`）。
      * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
@@ -73,7 +69,6 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @beta
      * @remarks
      * Returns the current day.
      *
@@ -83,7 +78,6 @@ export class World {
      */
     getDay(): number;
     /**
-     * @beta
      * @remarks
      * Returns the default Overworld spawn location.
      *
@@ -211,14 +205,12 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the MoonPhase for the current time.
      *
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @beta
      * @remarks
      * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
      * 
@@ -243,7 +235,6 @@ export class World {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
      * @remarks
      * 返回当前一天中的时间。
      * 
@@ -256,7 +247,6 @@ export class World {
      */
     getTimeOfDay(): number;
     /**
-     * @beta
      * @remarks
      * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
      * 
@@ -294,7 +284,6 @@ export class World {
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * 向玩家播放一段声音。
      * 
@@ -336,7 +325,6 @@ export class World {
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
-     * @beta
      * @remarks
      * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
      * 
@@ -360,7 +348,6 @@ export class World {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
      * @remarks
      * 向所有玩家广播一条消息。
      * 
@@ -406,7 +393,6 @@ export class World {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
      * @remarks
      * Sets the world time.
      *
@@ -417,7 +403,6 @@ export class World {
      */
     setAbsoluteTime(absoluteTime: number): void;
     /**
-     * @beta
      * @remarks
      * Sets a default spawn location for all players.
      *
@@ -513,7 +498,6 @@ export class World {
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets the time of day.
      *
@@ -527,7 +511,6 @@ export class World {
      */
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     /**
-     * @beta
      * @remarks
      * 停止客户端中正在播放的所有音乐曲目（需要更多测试）。
      * 

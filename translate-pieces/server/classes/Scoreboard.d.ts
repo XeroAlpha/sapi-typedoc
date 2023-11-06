@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示记分板。其上包含了记分项和分数持有者。
  * 
  * Contains objectives and participants for the scoreboard.

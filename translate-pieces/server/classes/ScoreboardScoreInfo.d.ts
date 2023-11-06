@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示分数信息。包含了分数持有者以及它在记分板上的对应的分数。
  * 
  * Contains a pair of a scoreboard participant and its

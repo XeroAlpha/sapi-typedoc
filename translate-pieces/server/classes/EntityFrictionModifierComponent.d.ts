@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines how much friction affects this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains a set of events that are available across the scope
  * of the World.
  */
@@ -46,21 +45,18 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity dies.
      *
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when entity health changes in any degree.
      *
      */
     readonly entityHealthChanged: EntityHealthChangedAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity hits (that is, melee
      * attacks) a block.
@@ -68,7 +64,6 @@ export class WorldAfterEvents {
      */
     readonly entityHitBlock: EntityHitBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity hits (that is, melee
      * attacks) another entity.
@@ -76,21 +71,18 @@ export class WorldAfterEvents {
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when an entity is loaded.
      *
      */
     readonly entityLoad: EntityLoadAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when an entity is removed (for example, potentially
      * unloaded, or removed after being killed).
@@ -98,7 +90,6 @@ export class WorldAfterEvents {
      */
     readonly entityRemove: EntityRemoveAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an entity is spawned.
      *
@@ -112,7 +103,6 @@ export class WorldAfterEvents {
      */
     readonly explosion: ExplosionAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item completes charging.
      *
@@ -129,7 +119,6 @@ export class WorldAfterEvents {
      */
     readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item is released from
      * charging.
@@ -137,14 +126,12 @@ export class WorldAfterEvents {
      */
     readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item starts charging.
      *
      */
     readonly itemStartUse: ItemStartUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a player successfully uses an item or
      * places a block by pressing the Use Item / Place Block
@@ -155,14 +142,12 @@ export class WorldAfterEvents {
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a chargeable item stops charging.
      *
      */
     readonly itemStopUse: ItemStopUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a player releases the Use Item / Place
      * Block button after successfully using an item. Note: This
@@ -171,7 +156,6 @@ export class WorldAfterEvents {
      */
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an item is successfully used by a
      * player.
@@ -179,7 +163,6 @@ export class WorldAfterEvents {
      */
     readonly itemUse: ItemUseAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an item is used on a block by a
      * player.
@@ -208,14 +191,12 @@ export class WorldAfterEvents {
      */
     readonly pistonActivate: PistonActivateAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires for a block that is broken by a player.
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when a player moved to a different dimension.
      *
@@ -244,7 +225,6 @@ export class WorldAfterEvents {
      */
     readonly playerLeave: PlayerLeaveAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires for a block that is placed by a player.
      *
@@ -259,7 +239,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A pressure plate has popped back up (i.e., there are no
      * entities on the pressure plate.)
@@ -267,7 +246,6 @@ export class WorldAfterEvents {
      */
     readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A pressure plate has pushed (at least one entity has moved
      * onto a pressure plate.)
@@ -275,28 +253,24 @@ export class WorldAfterEvents {
      */
     readonly pressurePlatePush: PressurePlatePushAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a projectile hits a block.
      *
      */
     readonly projectileHitBlock: ProjectileHitBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a projectile hits an entity.
      *
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A target block was hit.
      *
      */
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * A trip wire was tripped.
      *

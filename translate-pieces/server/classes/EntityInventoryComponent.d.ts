@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示一个实体的物品栏属性。
  * 
  * Defines this entity's inventory properties.

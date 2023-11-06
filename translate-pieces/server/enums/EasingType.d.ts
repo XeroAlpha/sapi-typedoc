@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum EasingType {
     InBack = 'InBack',
     InBounce = 'InBounce',

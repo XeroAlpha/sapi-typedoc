@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains additional options for entity effects.
  */
 export interface EntityEffectOptions {

@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * `@minecraft/server-ui` 模块包含了用于基于对话框的简易用户交互功能的类型。
  * 
@@ -41,7 +40,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.2.0-internal.1.20.50-preview.22"
+ *   "version": "1.1.0"
  * }
  * ```
  *

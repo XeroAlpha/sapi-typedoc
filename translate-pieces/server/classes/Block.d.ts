@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state
  * of the block at that location. This type was significantly
@@ -19,7 +18,6 @@ export class Block {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
      * @remarks
      * 返回 true 如果这个方块是空气方块（例如，空的空间）
      *
@@ -34,7 +32,6 @@ export class Block {
      */
     readonly isAir: boolean;
     /**
-     * @beta
      * @remarks
      * 如果这个方块是液体方块，例如水方块和熔岩方块等，则返回 true。
      * 空气方块和石头方块等则不属于液体方块。
@@ -269,7 +266,6 @@ export class Block {
      */
     east(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * 获取一个方块的组件（代表附加功能），例如，一个箱子方块的库存组件。
      *
@@ -405,7 +401,6 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * 如果对该方块的引用仍然有效，则返回 `true`（例如，如果方块未加载，对该方块的引用将不再有效）。
      *

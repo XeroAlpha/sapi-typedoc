@@ -1,12 +1,10 @@
 /**
- * @beta
  * 通用枚举之一。表示朝向。
  * 
  * A general purpose relative direction enumeration.
  */
 export enum Direction {
     /**
-     * @beta
      * @remarks
      * 表示下方（y - 1）。
      * 
@@ -15,7 +13,6 @@ export enum Direction {
      */
     Down = 'Down',
     /**
-     * @beta
      * @remarks
      * 表示东方（x + 1）。
      * 
@@ -24,7 +21,6 @@ export enum Direction {
      */
     East = 'East',
     /**
-     * @beta
      * @remarks
      * 表示北方（z - 1）。
      * 
@@ -33,7 +29,6 @@ export enum Direction {
      */
     North = 'North',
     /**
-     * @beta
      * @remarks
      * 表示南方（z + 1）。
      * 
@@ -42,7 +37,6 @@ export enum Direction {
      */
     South = 'South',
     /**
-     * @beta
      * @remarks
      * 表示上方（y + 1）。
      * 
@@ -51,7 +45,6 @@ export enum Direction {
      */
     Up = 'Up',
     /**
-     * @beta
      * @remarks
      * 表示西方（x - 1）。
      * 

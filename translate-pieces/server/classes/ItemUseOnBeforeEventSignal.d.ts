@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that fire before an item being used on a
  * block event.
  */

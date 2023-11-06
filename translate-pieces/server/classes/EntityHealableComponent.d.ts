@@ -1,5 +1,4 @@
 /**
- * @beta
  * Defines the interactions with this entity for healing it.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

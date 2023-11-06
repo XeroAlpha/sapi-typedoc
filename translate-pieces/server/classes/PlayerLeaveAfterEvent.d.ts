@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information regarding a player that has left the
  * world.
  */

@@ -1,10 +1,8 @@
 /**
- * @beta
  * Represents a game mode for the current world experience.
  */
 export enum GameMode {
     /**
-     * @beta
      * @remarks
      * World is in a more locked-down experience, where blocks may
      * not be manipulated.
@@ -12,7 +10,6 @@ export enum GameMode {
      */
     adventure = 'adventure',
     /**
-     * @beta
      * @remarks
      * World is in a full creative mode. In creative mode, the
      * player has all the resources available in the item selection
@@ -25,7 +22,6 @@ export enum GameMode {
      */
     creative = 'creative',
     /**
-     * @beta
      * @remarks
      * World is in spectator mode. In spectator mode, spectators
      * are always flying and cannot become grounded. Spectators can
@@ -38,7 +34,6 @@ export enum GameMode {
      */
     spectator = 'spectator',
     /**
-     * @beta
      * @remarks
      * World is in a survival mode, where players can take damage
      * and entities may not be peaceful. Survival mode is where the

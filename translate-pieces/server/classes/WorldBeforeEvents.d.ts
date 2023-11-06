@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
  * 但请注意，在 before 类事件过程中，能够改变游戏状态的 API 将失效，试图调用将会抛出错误。
  * （例如：dimension.spawnEntity）
@@ -38,7 +37,6 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
@@ -84,7 +82,6 @@ export class WorldBeforeEvents {
      */
     readonly pistonActivate: PistonActivateBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires before a block is broken by a player.
      *

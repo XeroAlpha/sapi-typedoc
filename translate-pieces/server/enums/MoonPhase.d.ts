@@ -1,5 +1,4 @@
 /**
- * @beta
  * Enum containing the different phases of the moon based on
  * the current day.,Obtain the current MoonPhase using
  * world.getMoonPhase.
@@ -12,7 +11,6 @@
  */
 export enum MoonPhase {
     /**
-     * @beta
      * @remarks
      * The brightest moon phase. During this phase, cats have a 50%
      * chance of spawning as black cats.
@@ -20,49 +18,42 @@ export enum MoonPhase {
      */
     FullMoon = 0,
     /**
-     * @beta
      * @remarks
      * The phase following the Full Moon.
      *
      */
     WaningGibbous = 1,
     /**
-     * @beta
      * @remarks
      * The phase following the Waxing Crescent.
      *
      */
     FirstQuarter = 2,
     /**
-     * @beta
      * @remarks
      * The phase following the Last Quarter.
      *
      */
     WaningCrescent = 3,
     /**
-     * @beta
      * @remarks
      * The darkest moon phase.
      *
      */
     NewMoon = 4,
     /**
-     * @beta
      * @remarks
      * The phase following the New Moon.
      *
      */
     WaxingCrescent = 5,
     /**
-     * @beta
      * @remarks
      * The phase following the Waning Gibbous.
      *
      */
     LastQuarter = 6,
     /**
-     * @beta
      * @remarks
      * The phase following the First Quarter.
      *

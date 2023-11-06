@@ -100,7 +100,6 @@ export class Dimension {
         options?: BlockFillOptions,
     ): number;
     /**
-     * @beta
      * @remarks
      * Returns a block instance at the given location.
      *
@@ -125,7 +124,6 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Gets the first block that intersects with a vector emanating
      * from a location.
@@ -139,7 +137,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of entities based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -208,7 +205,6 @@ export class Dimension {
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
-     * @beta
      * @remarks
      * Returns a set of entities at a particular location.
      *
@@ -219,7 +215,6 @@ export class Dimension {
      */
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
     /**
-     * @beta
      * @remarks
      * Gets entities that intersect with a specified vector
      * emanating from a location.
@@ -229,7 +224,6 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @beta
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -250,7 +244,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
      * @remarks
      * Runs a command synchronously using the context of the
      * broader dimenion.
@@ -295,7 +288,6 @@ export class Dimension {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @beta
      * @remarks
      * Sets the current weather within the dimension
      *
@@ -311,7 +303,6 @@ export class Dimension {
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
-     * @beta
      * @remarks
      * Creates a new entity (e.g., a mob) at the specified
      * location.
@@ -372,7 +363,6 @@ export class Dimension {
      */
     spawnEntity(identifier: string, location: Vector3): Entity;
     /**
-     * @beta
      * @remarks
      * Creates a new item stack as an entity at the specified
      * location.
@@ -419,7 +409,6 @@ export class Dimension {
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
-     * @beta
      * @remarks
      * Creates a new particle emitter at a specified location in
      * the world.

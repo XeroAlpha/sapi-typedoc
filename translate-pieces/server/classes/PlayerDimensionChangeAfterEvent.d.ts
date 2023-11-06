@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains information related to changes to a player's
  * dimension having been changed.
  */

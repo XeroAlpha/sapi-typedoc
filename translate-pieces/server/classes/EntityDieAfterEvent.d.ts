@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains data related to the death of an entity in the game.
  */
 export class EntityDieAfterEvent {

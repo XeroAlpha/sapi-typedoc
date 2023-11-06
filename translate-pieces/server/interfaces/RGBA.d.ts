@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a fully customizable color within Minecraft.
  */
 export interface RGBA {

@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示记分项显示位置配置。描述了如何在记分板显示位置上显示记分项。
  * 
  * Contains additional options for how a scoreboard should be

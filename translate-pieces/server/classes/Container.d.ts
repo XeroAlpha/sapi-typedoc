@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
@@ -85,7 +84,6 @@ export class Container {
      */
     getSlot(slot: number): ContainerSlot;
     /**
-     * @beta
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available

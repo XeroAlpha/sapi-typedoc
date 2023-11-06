@@ -1,5 +1,4 @@
 /**
- * @beta
  * 表示记分板上的分数持有者。
  * 
  * Contains an identity of the scoreboard item.

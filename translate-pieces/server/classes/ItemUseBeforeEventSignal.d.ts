@@ -1,5 +1,4 @@
 /**
- * @beta
  * Manages callbacks that fire before an item is used.
  */
 export class ItemUseBeforeEventSignal {

@@ -45,7 +45,7 @@ function getCurrentHead() {
 
 function isBranchExists(branch) {
     try {
-        git(`rev-parse --verify ${branch}`);
+        git(`rev-parse --verify --quiet ${branch}`);
         return true;
     } catch (err) {
         return false;
@@ -263,12 +263,8 @@ module.exports = {
                     throw new Error(`Unknown kind: 0x${member.kind.toString(16)} ${member.name}`);
                 }
                 const piecePath = `translate-pieces/${moduleRef.name}/${kindInfo.category}/${member.name}.d.ts`;
-                const translateState = translateStateMap[piecePath];
+                const translateState = translateStateMap[piecePath] || 'untranslated';
                 const url = getReflectionUrl(member);
-                if (!translateState) {
-                    console.log(`Cannot inspect translate state for: ${member.name}`);
-                    return;
-                }
                 if (translateState === 'translated') completedCount += 1;
                 if (translateState === 'wip') wipCount += 1;
                 if (translateState === 'needReview') needReviewCount += 1;

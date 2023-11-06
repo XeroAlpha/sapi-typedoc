@@ -5,7 +5,6 @@
 export class Entity {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Dimension that the entity is currently within.
      *
@@ -34,7 +33,6 @@ export class Entity {
      */
     readonly id: string;
     /**
-     * @beta
      * @remarks
      * Whether the entity is touching a climbable block. For
      * example, a player next to a ladder or a spider next to a
@@ -44,7 +42,6 @@ export class Entity {
      */
     readonly isClimbing: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity has a fall distance greater than 0, or
      * greater than 1 while gliding.
@@ -53,7 +50,6 @@ export class Entity {
      */
     readonly isFalling: boolean;
     /**
-     * @beta
      * @remarks
      * Whether any part of the entity is inside a water block.
      *
@@ -61,7 +57,6 @@ export class Entity {
      */
     readonly isInWater: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is on top of a solid block.
      *
@@ -69,7 +64,6 @@ export class Entity {
      */
     readonly isOnGround: boolean;
     /**
-     * @beta
      * @remarks
      * If true, the entity is currently sleeping.
      *
@@ -77,7 +71,6 @@ export class Entity {
      */
     readonly isSleeping: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
@@ -87,7 +80,6 @@ export class Entity {
      */
     isSneaking: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is sprinting. For example, a player using
      * the sprint action, an ocelot running away or a pig boosting
@@ -97,7 +89,6 @@ export class Entity {
      */
     readonly isSprinting: boolean;
     /**
-     * @beta
      * @remarks
      * Whether the entity is in the swimming state. For example, a
      * player using the swim action or a fish in water.
@@ -116,7 +107,6 @@ export class Entity {
      */
     readonly lifetimeState: EntityLifetimeState;
     /**
-     * @beta
      * @remarks
      * Current location of the entity.
      *
@@ -124,7 +114,6 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
-     * @beta
      * @remarks
      * Given name of the entity.
      *
@@ -133,7 +122,6 @@ export class Entity {
      */
     nameTag: string;
     /**
-     * @beta
      * @remarks
      * Returns a scoreboard identity that represents this entity.
      * Will remain valid when the entity is killed.
@@ -159,7 +147,6 @@ export class Entity {
      */
     readonly typeId: string;
     /**
-     * @beta
      * @remarks
      * Adds or updates an effect, like poison, to the entity.
      *
@@ -218,7 +205,6 @@ export class Entity {
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void;
     /**
-     * @beta
      * @remarks
      * Adds a specified tag to an entity.
      *
@@ -253,7 +239,6 @@ export class Entity {
      */
     addTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Applies a set of damage to an entity.
      *
@@ -286,7 +271,6 @@ export class Entity {
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
-     * @beta
      * @remarks
      * Applies impulse vector to the current velocity of the
      * entity.
@@ -308,7 +292,6 @@ export class Entity {
      */
     applyImpulse(vector: Vector3): void;
     /**
-     * @beta
      * @remarks
      * Applies impulse vector to the current velocity of the
      * entity.
@@ -349,7 +332,6 @@ export class Entity {
      */
     clearDynamicProperties(): void;
     /**
-     * @beta
      * @remarks
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
@@ -413,7 +395,6 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
@@ -427,7 +408,6 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an entity.
@@ -443,7 +423,6 @@ export class Entity {
      */
     getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
-     * @beta
      * @remarks
      * Returns all components that are both present on this entity
      * and supported by the API.
@@ -477,7 +456,6 @@ export class Entity {
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
-     * @beta
      * @remarks
      * Returns the effect for the specified EffectType on the
      * entity, undefined if the effect is not present, or throws an
@@ -493,7 +471,6 @@ export class Entity {
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of effects applied to this entity.
      *
@@ -503,7 +480,6 @@ export class Entity {
      */
     getEffects(): Effect[];
     /**
-     * @beta
      * @remarks
      * Gets the entities that this entity is looking at by
      * performing a ray cast from the view of this entity.
@@ -517,7 +493,6 @@ export class Entity {
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @beta
      * @remarks
      * Returns the current location of the head component of this
      * entity.
@@ -529,7 +504,6 @@ export class Entity {
      */
     getHeadLocation(): Vector3;
     /**
-     * @beta
      * @remarks
      * Gets an entity Property value. If the property was set using
      * the setProperty function within the same tick, the updated
@@ -547,7 +521,6 @@ export class Entity {
      */
     getProperty(identifier: string): boolean | number | string | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the current rotation component of this entity.
      *
@@ -558,7 +531,6 @@ export class Entity {
      */
     getRotation(): Vector2;
     /**
-     * @beta
      * @remarks
      * @returns
      * Returns all tags associated with an entity.
@@ -566,7 +538,6 @@ export class Entity {
      */
     getTags(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the current velocity vector of the entity.
      *
@@ -586,7 +557,6 @@ export class Entity {
      */
     getVelocity(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns the current view direction of the entity.
      *
@@ -596,7 +566,6 @@ export class Entity {
      */
     getViewDirection(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns true if the specified component is present on this
      * entity.
@@ -611,7 +580,6 @@ export class Entity {
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether an entity has a particular tag.
      *
@@ -623,7 +591,6 @@ export class Entity {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether the entity can be manipulated by script. A
      * Player is considered valid when it's EntityLifetimeState is
@@ -634,7 +601,6 @@ export class Entity {
      */
     isValid(): boolean;
     /**
-     * @beta
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
      *
@@ -706,7 +672,6 @@ export class Entity {
      */
     remove(): void;
     /**
-     * @beta
      * @remarks
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
@@ -722,7 +687,6 @@ export class Entity {
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
-     * @beta
      * @remarks
      * Removes a specified tag from an entity.
      *
@@ -736,7 +700,6 @@ export class Entity {
      */
     removeTag(tag: string): boolean;
     /**
-     * @beta
      * @remarks
      * Resets an Entity Property back to its default value, as
      * specified in the Entity's definition. This property change
@@ -760,7 +723,6 @@ export class Entity {
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
-     * @beta
      * @remarks
      * Runs a synchronous command on the entity.
      *
@@ -856,7 +818,6 @@ export class Entity {
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * Sets an Entity Property to the provided value. This property
      * change is not applied until the next tick.
@@ -880,7 +841,6 @@ export class Entity {
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
-     * @beta
      * @remarks
      * Sets the main rotation of the entity.
      *
@@ -894,7 +854,6 @@ export class Entity {
      */
     setRotation(rotation: Vector2): void;
     /**
-     * @beta
      * @remarks
      * Teleports the selected entity to a new location
      *
@@ -927,7 +886,6 @@ export class Entity {
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
-     * @beta
      * @remarks
      * Triggers an entity type event. For every entity, a number of
      * events are defined in an entities' definition for key entity
@@ -951,7 +909,6 @@ export class Entity {
      */
     triggerEvent(eventName: string): void;
     /**
-     * @beta
      * @remarks
      * Attempts to try a teleport, but may not complete the
      * teleport operation (for example, if there are blocks at the

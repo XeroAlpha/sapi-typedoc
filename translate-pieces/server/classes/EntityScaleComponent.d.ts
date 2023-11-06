@@ -1,5 +1,4 @@
 /**
- * @beta
  * Sets the entity's visual size.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
