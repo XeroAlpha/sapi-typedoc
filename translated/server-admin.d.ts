@@ -22,7 +22,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-admin",
- *   "version": "1.0.0-beta.1.20.50-preview.23"
+ *   "version": "1.0.0-beta.1.20.50-preview.24"
  * }
  * ```
  *

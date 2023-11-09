@@ -283,5 +283,12 @@ module.exports = {
             kind: 'text',
             text: statusLines.flat().join('\n')
         });
+
+        const reviewPieces = Object.keys(translateStateMap).filter((path) =>
+            !path.endsWith('/package.d.ts') && translateStateMap[path] === 'needReview'
+        );
+        if (reviewPieces.length > 0) {
+            reviewPieces.forEach((piecePath) => console.log(`[review] Review required: ${piecePath}`));
+        }
     }
 };

@@ -32,24 +32,21 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Install dependencies
+    - name: Install and build
       run: |
         npm install
-
-    - name: Build
-      run: |
         npm run build
 
     - name: Deploy to self-hosted site
       run: |
-        cd ./dist
-        tar -cvzf ../sapi-doc.tar.gz *
-        cd ..
-        echo "${{ secrets.SSH_KEY }}" > key.txt
-        chmod 400 key.txt
-        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt ./sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":${{ secrets.TARGET_PATH }}/sapi-doc.tar.gz
-        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "cd ${{ secrets.TARGET_PATH }} && tar -xvzf ./sapi-doc.tar.gz && rm ./sapi-doc.tar.gz"
-        rm key.txt
+        pushd ${{ github.workspace }}/dist
+        tar -cvzf ${{ github.workspace }}/sapi-doc.tar.gz *
+        popd
+        echo "${{ secrets.SSH_KEY }}" > ${{ github.workspace }}/key.txt
+        chmod 400 ${{ github.workspace }}/key.txt
+        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt ${{ github.workspace }}/sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":/tmp/sapi-doc.tar.gz
+        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "rm -rf ${{ secrets.TARGET_PATH }}/* && tar -xvzf /tmp/sapi-doc.tar.gz -C ${{ secrets.TARGET_PATH }} && rm -f /tmp/sapi-doc.tar.gz"
+        rm ${{ github.workspace }}/key.txt
     
     - name: Setup GitHub Pages
       uses: actions/configure-pages@v3
