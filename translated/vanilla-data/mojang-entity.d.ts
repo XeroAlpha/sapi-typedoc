@@ -22,6 +22,8 @@ export declare enum MinecraftEntityTypes {
     Blaze = "blaze",
     /** 船。 */
     Boat = "boat",
+    /** 旋风人。 */
+    Breeze = "breeze",
     /** 骆驼。 */
     Camel = "camel",
     /** 猫。 */
@@ -202,6 +204,8 @@ export declare enum MinecraftEntityTypes {
     WanderingTrader = "wandering_trader",
     /** 监守者。 */
     Warden = "warden",
+    /** 风弹（不可召唤）。 */
+    WindChargeProjectile = "wind_charge_projectile",
     /** 女巫。 */
     Witch = "witch",
     /** 凋灵。 */

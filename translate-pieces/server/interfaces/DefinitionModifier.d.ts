@@ -19,6 +19,7 @@ export interface DefinitionModifier {
      */
     removedComponentGroups: string[];
     /**
+     * @beta
      * @remarks
      * The list of entity definition events that will be fired via
      * this update.

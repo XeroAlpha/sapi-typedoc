@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.50-preview.24"
+ *   "version": "0.1.0-beta.1.20.60-preview.20"
  * }
  * ```
  *
@@ -1192,6 +1192,13 @@ export class MinecraftEditor {
     readonly log: Logger;
     /**
      * @remarks
+     * Allows querying and modifying some properties of the
+     * simulation.
+     *
+     */
+    readonly simulation: SimulationState;
+    /**
+     * @remarks
      * This is an internal command which interfaces with the native
      * C++ extension bindings and should not be used by creators.
      * Using this command directly will not provide any of the
@@ -1539,6 +1546,30 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+}
+
+/**
+ * Responsible for querying and modifying various properties of
+ * the simulation.
+ */
+export class SimulationState {
+    private constructor();
+    /**
+     * @remarks
+     * Returns `true` if mob simulation is paused.
+     *
+     */
+    isPaused(): boolean;
+    /**
+     * @remarks
+     * Sets the state of mob simulation.  If set to `true`, mobs
+     * are paused.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    setPaused(isPaused: boolean): void;
 }
 
 /**
@@ -2071,6 +2102,13 @@ export interface IGlobalInputManager {
 export interface IMenu {
     /**
      * @remarks
+     * If defined, the menu will show a checked or unchecked
+     * checkbox.
+     *
+     */
+    checked?: boolean;
+    /**
+     * @remarks
      * Unique ID for the menu
      *
      */
@@ -2093,6 +2131,12 @@ export interface IMenu {
  * Properties required to create a Menu
  */
 export interface IMenuCreationParams {
+    /**
+     * @remarks
+     * Whether the menu should show a checkmark
+     *
+     */
+    checked?: boolean;
     /**
      * @remarks
      * Loc ID (resolved on client)
@@ -2677,6 +2721,16 @@ export declare function executeLargeOperation(
     selection: Selection,
     operation: (blockLocation: minecraftserver.Vector3) => void,
 ): Promise<void>;
+/**
+ * @remarks
+ * Returns a string array of the default block types for the
+ * Block picker control. Can be used to further filter blocks
+ * from the Block picker.
+ *
+ * @returns
+ * Default allowed block list
+ */
+export declare function getBlockPickerDefaultAllowBlockList(): string[];
 /**
  * @remarks
  * Adds the resource pack editor prefix and returns the full

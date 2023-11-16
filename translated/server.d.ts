@@ -3987,7 +3987,7 @@ export class Dimension {
      *   overworld.createExplosion(explodeNoBlocksLoc, 15, { breaksBlocks: false });
      * ```
      */
-    createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): void;
+    createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
      * @beta
      * @remarks
@@ -8548,7 +8548,7 @@ export class ItemReleaseUseAfterEvent {
      * Returns the item stack that triggered this item event.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.
@@ -10077,6 +10077,20 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
      * Sets the item cooldown time for a particular cooldown
      * category.
      *
@@ -10750,12 +10764,7 @@ export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
      *
      */
     readonly faceLocation: Vector3;
-    /**
-     * @remarks
-     * The item being used to place the block.
-     *
-     */
-    itemStack: ItemStack;
+    readonly permutationBeingPlaced: BlockPermutation;
     /**
      * @remarks
      * Player that is placing the block for this event.
@@ -13478,6 +13487,7 @@ export interface DefinitionModifier {
      */
     removedComponentGroups: string[];
     /**
+     * @beta
      * @remarks
      * The list of entity definition events that will be fired via
      * this update.

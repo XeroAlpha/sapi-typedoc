@@ -318,6 +318,20 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
      * Sets the item cooldown time for a particular cooldown
      * category.
      *

@@ -4,6 +4,12 @@
 export interface IMenuCreationParams {
     /**
      * @remarks
+     * Whether the menu should show a checkmark
+     *
+     */
+    checked?: boolean;
+    /**
+     * @remarks
      * Loc ID (resolved on client)
      *
      */
