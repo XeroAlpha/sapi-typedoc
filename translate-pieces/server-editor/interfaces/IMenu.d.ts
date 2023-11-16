@@ -1,6 +1,13 @@
 export interface IMenu {
     /**
      * @remarks
+     * If defined, the menu will show a checked or unchecked
+     * checkbox.
+     *
+     */
+    checked?: boolean;
+    /**
+     * @remarks
      * Unique ID for the menu
      *
      */

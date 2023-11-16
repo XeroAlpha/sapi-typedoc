@@ -10,7 +10,7 @@ export class ItemReleaseUseAfterEvent {
      * Returns the item stack that triggered this item event.
      *
      */
-    readonly itemStack: ItemStack;
+    readonly itemStack?: ItemStack;
     /**
      * @remarks
      * Returns the source entity that triggered this item event.

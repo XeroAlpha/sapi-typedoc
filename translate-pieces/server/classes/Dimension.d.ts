@@ -71,7 +71,7 @@ export class Dimension {
      *   overworld.createExplosion(explodeNoBlocksLoc, 15, { breaksBlocks: false });
      * ```
      */
-    createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): void;
+    createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
      * @beta
      * @remarks

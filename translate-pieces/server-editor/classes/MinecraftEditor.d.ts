@@ -16,6 +16,13 @@ export class MinecraftEditor {
     readonly log: Logger;
     /**
      * @remarks
+     * Allows querying and modifying some properties of the
+     * simulation.
+     *
+     */
+    readonly simulation: SimulationState;
+    /**
+     * @remarks
      * This is an internal command which interfaces with the native
      * C++ extension bindings and should not be used by creators.
      * Using this command directly will not provide any of the
