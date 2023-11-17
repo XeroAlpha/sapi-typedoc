@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * @beta
  * Defines the rules for an entity to be tamed by the player.

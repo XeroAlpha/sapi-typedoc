@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * Additional variant value. Can be used to further
  * differentiate variants.

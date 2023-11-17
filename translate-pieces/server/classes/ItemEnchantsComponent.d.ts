@@ -1,3 +1,5 @@
+/* IMPORT */ import { EnchantmentList, ItemComponent } from '../index';
+
 /**
  * @beta
  * 表示物品魔咒组件。当出现在物品上时，可以操作物品上的魔咒。

@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityNavigationComponent } from '../index';
+
 /**
  * @beta
  * Allows this entity to generate paths by flying around the

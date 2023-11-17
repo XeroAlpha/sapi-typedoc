@@ -1,3 +1,5 @@
+/* IMPORT */ import { World } from '../index';
+
 /**
  * Additional configuration options for {@link
  * World.playMusic}/{@link World.queueMusic} methods.

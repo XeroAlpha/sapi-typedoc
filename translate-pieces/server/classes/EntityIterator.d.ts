@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * @beta
  * This type is usable for iterating over a set of entities.

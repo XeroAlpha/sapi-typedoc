@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityType, EntityTypeIterator } from '../index';
+
 /**
  * @beta
  * Used for accessing all entity types currently available for

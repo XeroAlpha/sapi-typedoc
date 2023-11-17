@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+
 /**
  * @beta
  * When added, this movement control allows the mob to glide.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemUseAfterEvent } from '../index';
+
 /**
  * Contains information related to an item being used.
  */

@@ -1,3 +1,5 @@
+/* IMPORT */ import { WatchdogTerminateReason } from '../index';
+
 /**
  * @beta
  * Contains information related to a script watchdog

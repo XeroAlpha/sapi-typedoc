@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemComponent } from '../index';
+
 /**
  * @beta
  * 表示物品食物组件。当出现在物品上时，实体可以消耗此物品。

@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * @beta
  * Contains information related to changes to an effect - like

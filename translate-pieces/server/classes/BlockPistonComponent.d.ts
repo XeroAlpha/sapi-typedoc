@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponent, Vector3 } from '../index';
+
 /**
  * @beta
  * When present, this block has piston-like behavior. Contains

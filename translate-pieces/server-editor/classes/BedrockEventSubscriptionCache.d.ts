@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * A cache for bedrock event subscriptions. Stores off a
  * subscription by event key, and upon teardown unregisters all

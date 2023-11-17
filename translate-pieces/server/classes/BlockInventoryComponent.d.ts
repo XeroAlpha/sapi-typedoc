@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponent, Container, ItemStack } from '../index';
+
 /**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.

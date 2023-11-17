@@ -1,3 +1,5 @@
+/* IMPORT */ import { EditorInputContext, InputModifier, KeyboardKey, SupportedKeyboardActionTypes } from '../index';
+
 export interface IGlobalInputManager {
     registerKeyBinding(
         inputContextId: EditorInputContext,

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemUseBeforeEvent } from '../index';
+
 /**
  * Manages callbacks that fire before an item is used.
  */

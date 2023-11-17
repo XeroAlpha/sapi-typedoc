@@ -1,3 +1,5 @@
+/* IMPORT */ import { EventSink, IActionPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBlocks, IPropertyItemOptionsButton, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+
 /**
  * Property pane present dynamic content. It can be associated
  * with an object and presented with different kind of

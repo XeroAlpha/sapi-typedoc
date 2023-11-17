@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPropertyItem, NoArgsAction, PropertyBag, RegisteredAction } from '../index';
+
 /**
  * A property item which supports bound actions and replacing
  * the bound action

@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityAttributeComponent } from '../index';
+
 /**
  * @beta
  * Defines the base movement speed in lava of this entity.

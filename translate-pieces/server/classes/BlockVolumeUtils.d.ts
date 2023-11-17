@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockLocationIterator, BlockVolume, BlockVolumeIntersection, BoundingBox, Vector3 } from '../index';
+
 /**
  * @beta
  * Block Volume Utils is a utility class that provides a number

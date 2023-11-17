@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpHeader, HttpRequest } from '../index';
+
 /**
  * 表示一个 HTTP 响应。包含了请求及对应响应的相关信息。
  * 

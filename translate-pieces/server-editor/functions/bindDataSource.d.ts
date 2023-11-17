@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPropertyPane, PropertyBag } from '../index';
+
 /**
  * @remarks
  * Takes the input object (a property bag of values) and bind

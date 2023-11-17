@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, Entity, ScriptEventSource } from '../index';
+
 /**
  * Returns additional data about a /scriptevent command
  * invocation.

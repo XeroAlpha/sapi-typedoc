@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemReleaseUseAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to the releasing of
  * charging for a chargeable item.

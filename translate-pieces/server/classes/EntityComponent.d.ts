@@ -1,3 +1,5 @@
+/* IMPORT */ import { Component, Entity } from '../index';
+
 /**
  * Base class for downstream entity components.
  */

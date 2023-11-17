@@ -1,3 +1,5 @@
+/* IMPORT */ import { RawMessage } from '../index';
+
 /**
  * @beta
  * A `RawMessage` with only the `rawtext` property. When a

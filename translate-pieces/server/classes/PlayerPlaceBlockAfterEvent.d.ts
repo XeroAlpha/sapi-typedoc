@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, Player } from '../index';
+
 /**
  * Contains information regarding an event where a player
  * places a block.

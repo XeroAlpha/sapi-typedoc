@@ -1,3 +1,5 @@
+/* IMPORT */ import { GraphicsSettingsPropertyTypeMap } from '../index';
+
 /**
  * Settings category that manages {@link
  * GraphicsSettingsProperty} configurations.

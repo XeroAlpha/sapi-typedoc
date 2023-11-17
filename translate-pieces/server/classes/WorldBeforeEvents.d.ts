@@ -1,3 +1,5 @@
+/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PistonActivateBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal } from '../index';
+
 /**
  * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
  * 但请注意，在 before 类事件过程中，能够改变游戏状态的 API 将失效，试图调用将会抛出错误。

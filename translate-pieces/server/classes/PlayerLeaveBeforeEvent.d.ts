@@ -1,3 +1,5 @@
+/* IMPORT */ import { Player } from '../index';
+
 /**
  * @beta
  */

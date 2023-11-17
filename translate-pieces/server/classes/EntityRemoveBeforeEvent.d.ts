@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * Data for an event that happens when an entity is being
  * removed from the world (for example, the entity is unloaded

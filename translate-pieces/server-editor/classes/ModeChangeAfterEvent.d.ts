@@ -1,3 +1,5 @@
+/* IMPORT */ import { EditorMode } from '../index';
+
 /**
  * Contains information related to changes in player editor
  * mode.

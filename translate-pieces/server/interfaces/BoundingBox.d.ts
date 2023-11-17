@@ -1,3 +1,5 @@
+/* IMPORT */ import { Vector3 } from '../index';
+
 /**
  * @beta
  * A BoundingBox is an interface to an object which represents

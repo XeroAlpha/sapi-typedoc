@@ -1,3 +1,5 @@
+/* IMPORT */ import { ExplosionBeforeEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to before an explosion

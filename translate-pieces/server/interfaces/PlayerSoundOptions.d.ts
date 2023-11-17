@@ -1,3 +1,5 @@
+/* IMPORT */ import { Vector3 } from '../index';
+
 /**
  * Additional options for how a sound plays for a player.
  */

@@ -1,3 +1,5 @@
+/* IMPORT */ import { TripWireTripAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when a trip wire is
  * tripped.

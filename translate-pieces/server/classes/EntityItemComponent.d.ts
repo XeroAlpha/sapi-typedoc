@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent, ItemStack } from '../index';
+
 /**
  * If added onto the entity, this indicates that the entity
  * represents a free-floating item in the world. Lets you

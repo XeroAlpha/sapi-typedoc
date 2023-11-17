@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, Player } from '../index';
+
 /**
  * Contains information related to changes to a lever
  * activating or deactivating.

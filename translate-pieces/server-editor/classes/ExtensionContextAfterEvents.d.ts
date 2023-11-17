@@ -1,3 +1,5 @@
+/* IMPORT */ import { ModeChangeAfterEventSignal } from '../index';
+
 /**
  * Contains a set of events that are available across the scope
  * of the ExtensionContext.

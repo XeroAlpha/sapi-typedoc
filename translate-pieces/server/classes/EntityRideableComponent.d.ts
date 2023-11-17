@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, EntityComponent, Seat } from '../index';
+
 /**
  * @beta
  * When added, this component adds the capability that an

@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, BlockPistonComponent } from '../index';
+
 /**
  * @beta
  * Contains information related to changes before a piston

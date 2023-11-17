@@ -1,3 +1,5 @@
+/* IMPORT */ import { Camera, DimensionLocation, Entity, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+
 /**
  * Represents a player within the world.
  */

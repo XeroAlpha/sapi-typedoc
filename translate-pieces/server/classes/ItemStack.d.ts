@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType } from '../index';
+
 /**
  * Defines a collection of items.
  */

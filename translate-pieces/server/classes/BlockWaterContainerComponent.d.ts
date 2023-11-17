@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockLiquidContainerComponent, ItemType, RGBA } from '../index';
+
 /**
  * @beta
  * Represents a fluid container block that currently contains

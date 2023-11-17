@@ -1,3 +1,5 @@
+/* IMPORT */ import { FormResponse } from '../index';
+
 /**
  * Returns data about player responses to a modal form.
  */

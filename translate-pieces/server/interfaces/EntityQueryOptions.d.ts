@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockAreaSize, EntityQueryScoreOptions, GameMode, Vector3 } from '../index';
+
 /**
  * Contains options for selecting entities within an area.
  */

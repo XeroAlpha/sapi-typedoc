@@ -1,3 +1,5 @@
+/* IMPORT */ import { Action, ActionID } from '../index';
+
 /**
  * A registered action is an action that has been registered
  * with the action manager system and has a unique ID

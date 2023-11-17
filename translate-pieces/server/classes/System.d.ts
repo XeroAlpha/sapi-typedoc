@@ -1,3 +1,5 @@
+/* IMPORT */ import { SystemAfterEvents, SystemBeforeEvents } from '../index';
+
 /**
  * A class that provides system-level events and functions.
  */

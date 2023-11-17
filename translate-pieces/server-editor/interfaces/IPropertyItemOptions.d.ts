@@ -1,3 +1,5 @@
+/* IMPORT */ import { OnChangeCallback, PropertyBag } from '../index';
+
 export interface IPropertyItemOptions {
     /**
      * @remarks

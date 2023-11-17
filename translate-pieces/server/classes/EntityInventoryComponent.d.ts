@@ -1,3 +1,5 @@
+/* IMPORT */ import { Container, EntityComponent } from '../index';
+
 /**
  * 表示一个实体的物品栏属性。
  * 

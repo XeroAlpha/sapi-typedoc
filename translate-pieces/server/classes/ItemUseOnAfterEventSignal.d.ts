@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemUseOnAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to an item being used
  * on a block event.

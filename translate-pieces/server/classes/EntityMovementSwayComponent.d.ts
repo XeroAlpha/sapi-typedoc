@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+
 /**
  * @beta
  * When added, this move control causes the mob to sway side to

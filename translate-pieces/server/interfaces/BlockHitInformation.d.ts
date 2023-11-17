@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, Direction, Vector3 } from '../index';
+
 /**
  * Contains more information for events where a block is hit.
  */

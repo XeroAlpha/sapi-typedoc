@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * @beta
  * Contains options for taming a rideable entity based on the

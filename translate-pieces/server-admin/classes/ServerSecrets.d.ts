@@ -1,3 +1,5 @@
+/* IMPORT */ import { SecretString } from '../index';
+
 /**
  * 表示在专用服务器配置中定义的服务器机密变量的集合。
  * 

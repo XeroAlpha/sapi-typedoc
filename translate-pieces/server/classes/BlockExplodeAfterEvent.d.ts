@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '../index';
+
 /**
  * @beta
  * Contains information regarding an explosion that has

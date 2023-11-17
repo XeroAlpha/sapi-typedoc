@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPlayerUISession } from '../index';
+
 /**
  * Callback type when an extension instance is shutdown for a
  * given player. Used for performing any final work or clean up

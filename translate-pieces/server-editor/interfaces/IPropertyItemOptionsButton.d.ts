@@ -1,3 +1,5 @@
+/* IMPORT */ import { ButtonVariant, IPropertyItemOptions } from '../index';
+
 export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
     /**
      * @remarks

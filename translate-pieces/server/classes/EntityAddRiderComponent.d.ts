@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * @beta
  * When added, this component makes the entity spawn with a

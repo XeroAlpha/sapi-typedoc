@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemComponent, Player } from '../index';
+
 /**
  * @beta
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。

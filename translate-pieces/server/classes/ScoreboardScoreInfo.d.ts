@@ -1,3 +1,5 @@
+/* IMPORT */ import { ScoreboardIdentity } from '../index';
+
 /**
  * 表示分数信息。包含了分数持有者以及它在记分板上的对应的分数。
  * 

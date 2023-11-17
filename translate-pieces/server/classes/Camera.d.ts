@@ -1,3 +1,5 @@
+/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions } from '../index';
+
 /**
  * Contains methods relating to the active camera for the
  * specified player.

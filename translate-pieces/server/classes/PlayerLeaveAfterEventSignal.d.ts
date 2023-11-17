@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPlayerLeaveAfterEventSignal } from '../index';
+
 /**
  * Manages callbacks that are connected to a player leaving the
  * world.

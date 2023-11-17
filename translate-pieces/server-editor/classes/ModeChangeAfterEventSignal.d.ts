@@ -1,3 +1,5 @@
+/* IMPORT */ import { ModeChangeAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when a player editor
  * mode changes.

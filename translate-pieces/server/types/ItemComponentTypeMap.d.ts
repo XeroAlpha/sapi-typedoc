@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemCooldownComponent, ItemDurabilityComponent, ItemEnchantsComponent, ItemFoodComponent } from '../index';
+
 /**
  * @beta
  */

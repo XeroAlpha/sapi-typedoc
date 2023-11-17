@@ -155,24 +155,28 @@ module.exports = {
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
         const gameData = {};
         const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
-        await Promise.all(
-            ['education', 'experiment', 'gametest'].map(async (n) => {
-                const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
-                const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
-                const { enums } = JSON.parse(await httpsGet(dataUrl));
-                Object.entries(enums).forEach(([enumName, enumKV]) => {
-                    let enumEntries = gameData[enumName];
-                    if (!enumEntries) {
-                        enumEntries = gameData[enumName] = {};
+        (
+            await Promise.all(
+                ['gametest', 'experiment', 'education'].map(async (n) => {
+                    const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
+                    const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
+                    const { enums } = JSON.parse(await httpsGet(dataUrl));
+                    return enums;
+                })
+            )
+        ).forEach((enums) => {
+            Object.entries(enums).forEach(([enumName, enumKV]) => {
+                let enumEntries = gameData[enumName];
+                if (!enumEntries) {
+                    enumEntries = gameData[enumName] = {};
+                }
+                Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
+                    if (!enumEntries[enumKey]) {
+                        enumEntries[enumKey] = enumValue;
                     }
-                    Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
-                        if (!enumEntries[enumKey]) {
-                            enumEntries[enumKey] = enumValue;
-                        }
-                    });
                 });
-            })
-        );
+            });
+        });
 
         Object.entries(tsPopulators).forEach(([fileName, populator]) => {
             const sourceFile = project.getSourceFile(fileName);

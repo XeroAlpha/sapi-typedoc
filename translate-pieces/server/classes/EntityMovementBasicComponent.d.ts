@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+
 /**
  * This component accents the movement of an entity.
  */

@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockLocationIterator, BoundingBox, CompoundBlockVolumeItem, CompoundBlockVolumePositionRelativity, Vector3 } from '../index';
+
 /**
  * @beta
  * The Compound Block Volume is a collection of individual

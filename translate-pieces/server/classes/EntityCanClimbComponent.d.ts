@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * When added, this component signifies that the entity can
  * climb up ladders.

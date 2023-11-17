@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * Ray representing a direction from a set location. This
  * location typically corresponds to the location of a mouse

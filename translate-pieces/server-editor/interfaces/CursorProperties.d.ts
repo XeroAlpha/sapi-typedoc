@@ -1,3 +1,5 @@
+/* IMPORT */ import { CursorControlMode, CursorTargetMode, minecraftserver } from '../index';
+
 /**
  * The CursorProperties interface is used to describe the
  * properties of the Editor 3D block cursor construct.

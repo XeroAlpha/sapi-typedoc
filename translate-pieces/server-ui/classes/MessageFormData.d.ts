@@ -1,3 +1,5 @@
+/* IMPORT */ import { MessageFormResponse, minecraftserver } from '../index';
+
 /**
  * Builds a simple two-button modal dialog.
  */

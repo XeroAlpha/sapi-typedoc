@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpHeader, HttpRequestMethod, minecraftserveradmin } from '../index';
+
 /**
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
  * 

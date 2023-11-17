@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, EntityDamageCause } from '../index';
+
 /**
  * Provides information about how damage has been applied to an
  * entity.

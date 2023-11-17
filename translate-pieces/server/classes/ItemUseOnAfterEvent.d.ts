@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, Direction, ItemStack, Player, Vector3 } from '../index';
+
 /**
  * 表示对方块使用物品时触发的后置事件。描述了物品的信息与使用的目标方块。
  * 该事件会在玩家成功触发与方块的交互后发生。

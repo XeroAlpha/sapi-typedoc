@@ -1,3 +1,5 @@
+/* IMPORT */ import { EffectAddAfterEvent, EntityEventOptions } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to when an effect is

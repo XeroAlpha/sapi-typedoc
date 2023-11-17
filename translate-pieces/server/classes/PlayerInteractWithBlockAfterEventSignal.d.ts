@@ -1,3 +1,5 @@
+/* IMPORT */ import { PlayerInteractWithBlockAfterEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to after a player

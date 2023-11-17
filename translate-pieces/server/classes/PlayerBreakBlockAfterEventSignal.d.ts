@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEventOptions, PlayerBreakBlockAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when a player breaks
  * a block.

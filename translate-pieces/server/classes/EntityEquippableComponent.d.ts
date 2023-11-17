@@ -1,3 +1,5 @@
+/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, ItemStack } from '../index';
+
 /**
  * Provides access to a mob's equipment slots. This component
  * exists for all mob entities.

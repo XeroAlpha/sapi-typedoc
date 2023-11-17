@@ -1,3 +1,5 @@
+/* IMPORT */ import { WorldInitializeAfterEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are run at the initialization of the

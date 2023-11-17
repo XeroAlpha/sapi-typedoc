@@ -1,3 +1,5 @@
+/* IMPORT */ import { ExtensionContext, registerEditorExtension } from '../index';
+
 /**
  * Editor Extensions are the basis for all player specific,
  * editor specific functionality within the game.  Almost all

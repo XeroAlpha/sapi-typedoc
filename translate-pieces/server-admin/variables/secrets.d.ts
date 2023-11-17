@@ -1,3 +1,5 @@
+/* IMPORT */ import { ServerSecrets } from '../index';
+
 /**
  * @remarks
  * 表示全局可访问的专用服务器配置中的机密变量列表。

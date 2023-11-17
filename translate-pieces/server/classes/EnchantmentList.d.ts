@@ -1,3 +1,5 @@
+/* IMPORT */ import { Enchantment, EnchantmentType } from '../index';
+
 /**
  * @beta
  * This class represents a collection of enchantments that can

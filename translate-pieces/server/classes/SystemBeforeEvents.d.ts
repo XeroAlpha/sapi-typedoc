@@ -1,3 +1,5 @@
+/* IMPORT */ import { WatchdogTerminateBeforeEventSignal } from '../index';
+
 /**
  * @beta
  * A set of events that fire before an actual action occurs. In

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ClipboardManager, Cursor, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, minecraftserver } from '../index';
+
 /**
  * The extension context is a native (C++) object created for
  * each registered Editor Extension, when a player connection

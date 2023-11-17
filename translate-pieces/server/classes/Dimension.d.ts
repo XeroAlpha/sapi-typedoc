@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, BlockFillOptions, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, Vector3, WeatherType, minecraftcommon } from '../index';
+
 /**
  * A class that represents a particular dimension (e.g., The
  * End) within a world.

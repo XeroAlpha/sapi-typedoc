@@ -1,3 +1,5 @@
+/* IMPORT */ import { EffectType } from '../index';
+
 /**
  * @beta
  * Represents a type of effect - like poison - that can be

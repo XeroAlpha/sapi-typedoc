@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockType } from '../index';
+
 /**
  * @beta
  * Contains a catalog of Minecraft Block Types that are

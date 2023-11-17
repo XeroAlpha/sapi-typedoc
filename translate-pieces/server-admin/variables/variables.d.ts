@@ -1,3 +1,5 @@
+/* IMPORT */ import { ServerVariables } from '../index';
+
 /**
  * @remarks
  * 表示全局可访问的专用服务器配置中的变量列表。

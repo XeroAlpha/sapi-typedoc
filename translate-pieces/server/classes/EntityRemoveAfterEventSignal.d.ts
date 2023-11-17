@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityEventOptions, EntityRemoveAfterEvent } from '../index';
+
 /**
  * Allows registration for an event that fires when an entity
  * is removed from  the game (for example, unloaded, or a few

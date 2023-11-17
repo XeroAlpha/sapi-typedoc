@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemUseOnAfterEvent } from '../index';
+
 /**
  * Contains information related to an item being used on a
  * block.

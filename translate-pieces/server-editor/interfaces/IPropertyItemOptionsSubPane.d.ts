@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPropertyItemOptions, IPropertyPane } from '../index';
+
 export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
     /**
      * @remarks

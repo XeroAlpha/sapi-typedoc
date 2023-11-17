@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserveradmin } from '../index';
+
 /**
  * 表示一个请求标头，即包含了请求元数据的键值对。
  * 

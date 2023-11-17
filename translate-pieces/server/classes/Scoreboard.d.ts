@@ -1,3 +1,5 @@
+/* IMPORT */ import { DisplaySlotId, ScoreboardIdentity, ScoreboardObjective, ScoreboardObjectiveDisplayOptions } from '../index';
+
 /**
  * 表示记分板。其上包含了记分项和分数持有者。
  * 

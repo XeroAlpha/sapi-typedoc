@@ -1,3 +1,5 @@
+/* IMPORT */ import { PlayerLeaveBeforeEvent } from '../index';
+
 /**
  * @beta
  */

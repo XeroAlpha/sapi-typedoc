@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, EntityComponent } from '../index';
+
 /**
  * @beta
  * Allows this entity to be leashed and defines the conditions
