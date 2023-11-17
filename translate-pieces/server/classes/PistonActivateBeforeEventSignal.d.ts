@@ -1,3 +1,5 @@
+/* IMPORT */ import { PistonActivateBeforeEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to an event that fires

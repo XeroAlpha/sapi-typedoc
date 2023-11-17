@@ -1,3 +1,5 @@
+/* IMPORT */ import { Vector3 } from '../index';
+
 /**
  * @beta
  * A BlockLocationIterator returns the next block location of

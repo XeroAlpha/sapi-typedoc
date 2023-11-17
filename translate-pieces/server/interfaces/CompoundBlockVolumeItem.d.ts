@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockVolume, CompoundBlockVolumeAction, CompoundBlockVolumePositionRelativity } from '../index';
+
 /**
  * @beta
  * This interface defines an entry into the {@link

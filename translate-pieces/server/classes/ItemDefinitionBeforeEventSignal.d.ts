@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemDefinitionTriggeredBeforeEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to an item's definition

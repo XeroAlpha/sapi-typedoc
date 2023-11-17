@@ -1,3 +1,5 @@
+/* IMPORT */ import { ServerVariables } from '../index';
+
 /**
  * @remarks
  * A globally available object that returns a list of

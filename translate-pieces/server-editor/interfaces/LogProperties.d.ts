@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * A properties class for the global instance of the logger
  * object.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { RegistrationBuilder, Test } from '../index';
+
 /**
  * @remarks
  * Registers a new GameTest function. This GameTest will become

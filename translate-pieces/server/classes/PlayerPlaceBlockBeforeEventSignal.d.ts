@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockBeforeEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to before a block is

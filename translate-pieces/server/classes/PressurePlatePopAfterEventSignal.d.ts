@@ -1,3 +1,5 @@
+/* IMPORT */ import { PressurePlatePopAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when a pressure
  * plate is popped.

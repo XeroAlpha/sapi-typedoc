@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPlayerJoinAfterEventSignal } from '../index';
+
 /**
  * Manages callbacks that are connected to a player joining the
  * world.

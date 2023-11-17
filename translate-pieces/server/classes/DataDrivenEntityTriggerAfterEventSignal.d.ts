@@ -1,3 +1,5 @@
+/* IMPORT */ import { DataDrivenEntityTriggerAfterEvent, EntityDataDrivenTriggerEventOptions } from '../index';
+
 /**
  * @beta
  * Contains event registration related to firing of a data

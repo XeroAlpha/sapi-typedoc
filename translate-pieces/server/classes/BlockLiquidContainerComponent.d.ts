@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponent } from '../index';
+
 /**
  * @beta
  * For blocks that can contain a liquid (e.g., a cauldron),

@@ -1,3 +1,5 @@
+/* IMPORT */ import { IButtonPushAfterEventSignal } from '../index';
+
 /**
  * Manages callbacks that are connected to when a button is
  * pushed.

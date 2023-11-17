@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * Defines the entity's color. Only works on certain entities
  * that have predefined color values (e.g., sheep, llama,

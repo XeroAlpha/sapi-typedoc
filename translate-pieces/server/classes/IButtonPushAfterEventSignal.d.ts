@@ -1,3 +1,5 @@
+/* IMPORT */ import { ButtonPushAfterEvent } from '../index';
+
 /**
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires when a button is pushed.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, EntityDamageCause } from '../index';
+
 /**
  * Additional descriptions and metadata for a damage event.
  */

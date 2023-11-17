@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemStack, Player } from '../index';
+
 /**
  * Contains information related to a chargeable item has
  * finished an items use cycle, or when the player has released

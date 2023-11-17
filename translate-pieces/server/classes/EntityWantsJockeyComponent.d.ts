@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * When added, this component signifies that this entity wants
  * to become a jockey.

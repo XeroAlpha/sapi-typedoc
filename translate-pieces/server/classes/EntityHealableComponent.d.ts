@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent, FeedItem, FilterGroup } from '../index';
+
 /**
  * Defines the interactions with this entity for healing it.
  */

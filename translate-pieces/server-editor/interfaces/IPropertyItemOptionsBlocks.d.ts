@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPropertyItemOptions } from '../index';
+
 export interface IPropertyItemOptionsBlocks extends IPropertyItemOptions {
     /**
      * @remarks

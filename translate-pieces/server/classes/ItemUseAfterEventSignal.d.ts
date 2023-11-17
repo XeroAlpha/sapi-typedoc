@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemUseAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to an item use event.
  */

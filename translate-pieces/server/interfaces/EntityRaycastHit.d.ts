@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * Contains information for entity raycast hit results.
  */

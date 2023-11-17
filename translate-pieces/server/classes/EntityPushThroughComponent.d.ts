@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * Sets the distance through which the entity can push through.
  */

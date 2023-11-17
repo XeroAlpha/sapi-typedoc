@@ -1,3 +1,5 @@
+/* IMPORT */ import { ClipboardWriteOptions, Selection, minecraftserver } from '../index';
+
 /**
  * A ClipboardItem is a handle to an object which represents a
  * set of blocks in a contained bounding area (most likely

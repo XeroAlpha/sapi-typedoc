@@ -1,3 +1,5 @@
+/* IMPORT */ import { IDisposable, IPlayerUISession } from '../index';
+
 /**
  * Callback type when an extension instance is activated for a
  * given player. It is expected to return an array of

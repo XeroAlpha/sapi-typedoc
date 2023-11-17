@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, Direction, Entity } from '../index';
+
 /**
  * Contains information related to an entity hitting a block.
  */

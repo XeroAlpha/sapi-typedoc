@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpHeader, HttpRequestMethod, minecraftserveradmin } from '../index';
+
 /**
  * Main object for structuring a request.
  */

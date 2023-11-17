@@ -1,3 +1,5 @@
+/* IMPORT */ import { EnchantmentType } from '../index';
+
 /**
  * @beta
  * Provides a list of enchantment types.

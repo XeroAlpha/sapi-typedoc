@@ -1,8 +1,8 @@
 const { execSync } = require('child_process');
-const { readFileSync, writeFileSync, rmSync, mkdirSync, existsSync } = require('fs');
+const { readFileSync, writeFileSync, rmSync, existsSync } = require('fs');
 const { resolve: resolvePath } = require('path');
 const { build } = require('./build.js');
-const { split } = require('./split.js');
+const { split, writePiece } = require('./split.js');
 
 const basePath = resolvePath(__dirname, '..');
 const originalPath = resolvePath(basePath, 'original');
@@ -52,11 +52,7 @@ async function main() {
     rmSync(translatingPath, { recursive: true, force: true });
     sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
-        const sourceFileText = sourceFile.getFullText();
-        pieces.forEach((piece) => {
-            mkdirSync(resolvePath(piece.path, '..'), { recursive: true });
-            writeFileSync(piece.path, sourceFileText.slice(piece.start, piece.end));
-        });
+        pieces.forEach((piece) => writePiece(sourceFile, piece));
     });
 
     // 生成 README.md

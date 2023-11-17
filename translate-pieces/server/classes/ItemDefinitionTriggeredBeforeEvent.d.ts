@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemDefinitionTriggeredAfterEvent } from '../index';
+
 /**
  * @beta
  * Contains information related to a triggering of a custom

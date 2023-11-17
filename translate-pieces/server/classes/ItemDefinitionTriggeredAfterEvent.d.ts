@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemStack, Player } from '../index';
+
 /**
  * @beta
  * Contains information related to a custom item having a data

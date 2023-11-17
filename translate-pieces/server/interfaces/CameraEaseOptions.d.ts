@@ -1,3 +1,5 @@
+/* IMPORT */ import { EasingType } from '../index';
+
 /**
  * Contains options associated with a camera ease operation.
  */

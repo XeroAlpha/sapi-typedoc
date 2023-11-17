@@ -1,3 +1,5 @@
+/* IMPORT */ import { ScoreboardIdentity } from '../index';
+
 /**
  * Contains a pair of a scoreboard participant and its
  * respective score.

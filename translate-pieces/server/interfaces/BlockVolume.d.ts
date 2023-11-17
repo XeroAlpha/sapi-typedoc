@@ -1,3 +1,5 @@
+/* IMPORT */ import { Vector3 } from '../index';
+
 /**
  * @beta
  * A BlockVolume is a simple interface to an object which

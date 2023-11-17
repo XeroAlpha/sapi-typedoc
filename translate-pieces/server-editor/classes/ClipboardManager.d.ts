@@ -1,3 +1,5 @@
+/* IMPORT */ import { ClipboardItem } from '../index';
+
 /**
  * The ClipboardManager (accessible from the {@link
  * ExtensionContext}) is responsible for the management of all

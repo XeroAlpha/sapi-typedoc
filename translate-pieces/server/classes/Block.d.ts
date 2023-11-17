@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, Vector3 } from '../index';
+
 /**
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state

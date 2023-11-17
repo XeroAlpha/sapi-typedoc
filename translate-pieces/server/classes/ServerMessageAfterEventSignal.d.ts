@@ -1,3 +1,5 @@
+/* IMPORT */ import { MessageReceiveAfterEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are message passing to a server. This

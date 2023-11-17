@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpHeader, HttpRequest } from '../index';
+
 /**
  * Main object that contains result information from a request.
  */

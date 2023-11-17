@@ -3,7 +3,7 @@ const { Project } = require('ts-morph');
 const { createRequire } = require('module');
 const { resolve: resolvePath, relative: relativePath } = require('path');
 const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } = require('fs');
-const { split } = require('./split');
+const { split, replacePieces } = require('./split');
 const { execSync } = require('child_process');
 
 const basePath = resolvePath(__dirname, '..');
@@ -177,18 +177,7 @@ async function build(translated) {
         console.time('[translate] Total');
         sourceFiles.forEach((sourceFile) => {
             const pieces = split(sourceFile);
-            let sourceFileText = sourceFile.getFullText();
-            let writtenCount = 0;
-            pieces.sort((a, b) => b.start - a.start);
-            pieces.forEach((piece) => {
-                if (!existsSync(piece.path)) return;
-                const text = readFileSync(piece.path, 'utf-8');
-                sourceFileText = `${sourceFileText.slice(0, piece.start)}${text}${sourceFileText.slice(piece.end)}`;
-                writtenCount++;
-            });
-            if (writtenCount > 0) {
-                sourceFile.replaceWithText(sourceFileText);
-            }
+            replacePieces(sourceFile, pieces);
         });
         await runHooks('afterTranslate', { project, sourceFiles, dependencies });
         console.timeEnd('[translate] Total');

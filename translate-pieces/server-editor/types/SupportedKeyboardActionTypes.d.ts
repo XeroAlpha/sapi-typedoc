@@ -1,3 +1,5 @@
+/* IMPORT */ import { NoArgsAction, RegisteredAction } from '../index';
+
 /**
  * Full set of all possible keyboard actions
  */

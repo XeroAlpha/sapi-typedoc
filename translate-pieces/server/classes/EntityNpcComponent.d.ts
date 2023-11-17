@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * @beta
  * Adds NPC capabilities to an entity such as custom skin,

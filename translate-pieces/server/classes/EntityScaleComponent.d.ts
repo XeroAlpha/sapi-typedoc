@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * Sets the entity's visual size.
  */

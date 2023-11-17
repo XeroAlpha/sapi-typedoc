@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, EntityComponent } from '../index';
+
 /**
  * @beta
  * This component is added to any entity when it is riding

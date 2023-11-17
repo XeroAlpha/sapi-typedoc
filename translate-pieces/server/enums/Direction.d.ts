@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block } from '../index';
+
 /**
  * A general purpose relative direction enumeration.
  */

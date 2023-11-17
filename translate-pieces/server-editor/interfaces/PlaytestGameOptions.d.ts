@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 export interface PlaytestGameOptions {
     alwaysDay?: boolean;
     difficulty?: minecraftserver.Difficulty;

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ScriptEventCommandMessageAfterEvent, ScriptEventMessageFilterOptions } from '../index';
+
 /**
  * Allows for registering an event handler that responds to
  * inbound /scriptevent commands.

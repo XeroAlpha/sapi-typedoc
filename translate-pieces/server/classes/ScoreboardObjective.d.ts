@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, ScoreboardIdentity, ScoreboardScoreInfo } from '../index';
+
 /**
  * Contains objectives and participants for the scoreboard.
  */

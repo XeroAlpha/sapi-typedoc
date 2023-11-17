@@ -1,3 +1,5 @@
+/* IMPORT */ import { ProjectileHitBlockAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when a projectile
  * hits a block.

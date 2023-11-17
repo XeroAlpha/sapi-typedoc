@@ -1,3 +1,5 @@
+/* IMPORT */ import { Component } from '../index';
+
 /**
  * Base class for item components.
  */

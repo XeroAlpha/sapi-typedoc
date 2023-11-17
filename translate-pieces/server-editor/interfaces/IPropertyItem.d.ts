@@ -1,3 +1,5 @@
+/* IMPORT */ import { EDITOR_PANE_PROPERTY_ITEM_TYPE, PropertyBag } from '../index';
+
 export interface IPropertyItem<T extends PropertyBag, Prop extends keyof T & string> {
     /**
      * @remarks

@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpRequest, HttpResponse } from '../index';
+
 export class HttpClient {
     private constructor();
     /**

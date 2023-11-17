@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * This is a base abstract class for any entity component that
  * centers around a number and can have a minimum, maximum, and

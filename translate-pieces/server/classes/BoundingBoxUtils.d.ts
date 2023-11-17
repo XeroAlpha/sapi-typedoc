@@ -1,3 +1,5 @@
+/* IMPORT */ import { BoundingBox, Vector3 } from '../index';
+
 /**
  * @beta
  * Bounding Box Utils is a utility class that provides a number

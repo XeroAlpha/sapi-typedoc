@@ -1,3 +1,5 @@
+/* IMPORT */ import { Player } from '../index';
+
 /**
  * An event that contains more information about a player
  * spawning.

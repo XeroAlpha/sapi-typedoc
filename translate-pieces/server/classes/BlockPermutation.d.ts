@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockType, ItemStack } from '../index';
+
 /**
  * Contains the combination of type {@link BlockType} and
  * properties (also sometimes called block state) which

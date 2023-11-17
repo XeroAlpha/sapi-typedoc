@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntitySpawnAfterEvent } from '../index';
+
 /**
  * Registers a script-based event handler for handling what
  * happens when an entity spawns.

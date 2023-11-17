@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * A simulated player can be used within GameTests to represent
  * how a player moves throughout the world and to support

@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityEventOptions, EntityHurtAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when an entity is
  * hurt.

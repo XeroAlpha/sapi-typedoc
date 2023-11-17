@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent, EntityDefinitionFeedItem, Trigger } from '../index';
+
 /**
  * @beta
  * Adds a timer for the entity to grow up. It can be

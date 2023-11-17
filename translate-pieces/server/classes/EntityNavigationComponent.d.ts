@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * @beta
  * Allows this entity to generate paths that include vertical

@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, ItemStack, Player } from '../index';
+
 /**
  * Contains information regarding an event before a player
  * breaks a block.

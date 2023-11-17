@@ -1,3 +1,5 @@
+/* IMPORT */ import { Selection, minecraftserver } from '../index';
+
 /**
  * @remarks
  * Executes an operation over a selection via chunks to allow

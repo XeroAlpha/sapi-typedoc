@@ -1,3 +1,5 @@
+/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+
 /**
  * A class that wraps the state of a world - a set of
  * dimensions and the environment of Minecraft.

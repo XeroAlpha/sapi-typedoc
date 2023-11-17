@@ -1,3 +1,5 @@
+/* IMPORT */ import { FormCancelationReason } from '../index';
+
 /**
  * Base type for a form response.
  */

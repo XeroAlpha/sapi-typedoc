@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, Direction, Vector3 } from '../index';
+
 /**
  * Contains information for block raycast hit results.
  */

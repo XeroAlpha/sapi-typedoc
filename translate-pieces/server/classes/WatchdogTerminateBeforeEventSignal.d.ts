@@ -1,3 +1,5 @@
+/* IMPORT */ import { WatchdogTerminateBeforeEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to a callback that will

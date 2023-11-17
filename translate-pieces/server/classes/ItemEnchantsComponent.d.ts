@@ -1,3 +1,5 @@
+/* IMPORT */ import { EnchantmentList, ItemComponent } from '../index';
+
 /**
  * @beta
  * When present on an item, this item has applied enchantment

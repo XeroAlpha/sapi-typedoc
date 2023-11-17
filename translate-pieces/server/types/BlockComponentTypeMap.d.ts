@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockInventoryComponent, BlockLavaContainerComponent, BlockPistonComponent, BlockPotionContainerComponent, BlockRecordPlayerComponent, BlockSignComponent, BlockSnowContainerComponent, BlockWaterContainerComponent } from '../index';
+
 /**
  * @beta
  */

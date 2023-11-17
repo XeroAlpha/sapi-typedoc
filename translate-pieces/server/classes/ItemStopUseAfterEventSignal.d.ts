@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemStopUseAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to the stopping of
  * charging for an item that has a registered

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ChatSendAfterEvent } from '../index';
+
 /**
  * @beta
  * Manages callbacks that are connected to chat messages being

@@ -1,3 +1,5 @@
+/* IMPORT */ import { CursorProperties, minecraftserver } from '../index';
+
 /**
  * The 3D block cursor is controlled through this read only
  * object and provides the Editor some control over the input

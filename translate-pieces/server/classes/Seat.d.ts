@@ -1,3 +1,5 @@
+/* IMPORT */ import { Vector3 } from '../index';
+
 /**
  * @beta
  * Describes a particular seating position on this rideable

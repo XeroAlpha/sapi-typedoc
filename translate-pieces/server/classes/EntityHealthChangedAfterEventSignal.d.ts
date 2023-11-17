@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityEventOptions, EntityHealthChangedAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to when the health of
  * an entity changes.

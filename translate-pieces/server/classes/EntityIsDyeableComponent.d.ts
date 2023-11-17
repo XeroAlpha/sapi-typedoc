@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityComponent } from '../index';
+
 /**
  * When added, this component signifies that dyes can be used
  * on this entity to change its color.

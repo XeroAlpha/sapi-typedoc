@@ -1,3 +1,5 @@
+/* IMPORT */ import { GraphicsSettingsProperty } from '../index';
+
 /**
  * Defines type information for graphics settings properties.
  */

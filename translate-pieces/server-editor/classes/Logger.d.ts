@@ -1,3 +1,5 @@
+/* IMPORT */ import { LogProperties } from '../index';
+
 /**
  * The logger class is a utility class which allows editor
  * extensions to communicate with the player from the server to

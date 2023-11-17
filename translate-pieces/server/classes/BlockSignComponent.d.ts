@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponent, DyeColor, RawMessage, RawText, SignSide } from '../index';
+
 /**
  * @beta
  * Represents a block that can display text on it.

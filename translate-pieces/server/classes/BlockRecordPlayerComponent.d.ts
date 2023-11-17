@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockComponent, ItemType } from '../index';
+
 /**
  * @beta
  * Represents a block that can play a record.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { Action, RegisteredAction } from '../index';
+
 /**
  * Binds actions to the client and manages their lifetime.
  * Action managers are managed on a per player basis since

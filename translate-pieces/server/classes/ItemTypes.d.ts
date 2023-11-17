@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemType } from '../index';
+
 /**
  * @beta
  * Returns the set of item types registered within Minecraft.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { IPropertyItem, PropertyBag } from '../index';
+
 /**
  * A property item which supports Vector3 properties
  */

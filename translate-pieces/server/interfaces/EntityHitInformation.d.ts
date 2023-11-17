@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * Contains additional information about an entity that was
  * hit.

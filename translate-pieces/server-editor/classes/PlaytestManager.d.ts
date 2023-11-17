@@ -1,3 +1,5 @@
+/* IMPORT */ import { PlaytestGameOptions, PlaytestSessionResult } from '../index';
+
 export class PlaytestManager {
     private constructor();
     /**

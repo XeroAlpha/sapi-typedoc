@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * Contains information related to an entity when its health
  * changes. Warning: don't change the health of an entity in

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemLockMode, ItemStack, ItemType } from '../index';
+
 /**
  * @beta
  * Represents a slot within a broader container (e.g., entity

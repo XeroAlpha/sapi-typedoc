@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, ItemStack, Player } from '../index';
+
 /**
  * Contains information related to an item that has stopped
  * being used on a block. This event fires when a player

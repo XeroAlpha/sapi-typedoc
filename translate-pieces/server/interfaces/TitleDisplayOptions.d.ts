@@ -1,3 +1,5 @@
+/* IMPORT */ import { RawMessage, TicksPerSecond } from '../index';
+
 /**
  * Contains additional options for displaying a title and
  * optional subtitle.

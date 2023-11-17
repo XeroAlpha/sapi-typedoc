@@ -1,3 +1,5 @@
+/* IMPORT */ import { ActivationFunctionType, Extension, IRegisterExtensionOptionalParameters, ShutdownFunctionType } from '../index';
+
 /**
  * @remarks
  * Registers an editor extension into Minecraft. This function

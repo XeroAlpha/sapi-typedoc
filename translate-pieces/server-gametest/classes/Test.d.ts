@@ -1,3 +1,5 @@
+/* IMPORT */ import { FenceConnectivity, GameTestError, GameTestSequence, SculkSpreader, SimulatedPlayer, minecraftserver } from '../index';
+
 /**
  * Main class for GameTest functions, with helpers and data for
  * manipulating the respective test. Note that all methods of

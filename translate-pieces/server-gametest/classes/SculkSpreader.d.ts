@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * Implements a class that can be used for testing sculk
  * spreading behaviors. This sculk spreader class can drive the

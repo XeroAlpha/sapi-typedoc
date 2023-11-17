@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityAttributeComponent } from '../index';
+
 /**
  * Defines the health properties of an entity.
  */

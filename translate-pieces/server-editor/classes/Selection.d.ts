@@ -1,3 +1,5 @@
+/* IMPORT */ import { minecraftserver } from '../index';
+
 /**
  * The Selection represents a volume in space, which may
  * potentially be made up of one or more block locations.

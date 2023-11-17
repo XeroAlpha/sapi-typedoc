@@ -1,3 +1,5 @@
+/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '../index';
+
 export interface IModalToolContainer {
     /**
      * @remarks

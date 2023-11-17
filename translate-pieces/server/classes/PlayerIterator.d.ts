@@ -1,3 +1,5 @@
+/* IMPORT */ import { Player } from '../index';
+
 /**
  * @beta
  * This type is usable for iterating over a set of players.

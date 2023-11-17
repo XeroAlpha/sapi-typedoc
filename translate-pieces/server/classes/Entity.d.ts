@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityLifetimeState, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from '../index';
+
 /**
  * Represents the state of an entity (a mob, the player, or
  * other moving objects like minecarts) in the world.

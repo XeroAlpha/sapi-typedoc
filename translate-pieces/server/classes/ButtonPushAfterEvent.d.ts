@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockEvent, Entity } from '../index';
+
 /**
  * Contains information related to changes to a button push.
  */

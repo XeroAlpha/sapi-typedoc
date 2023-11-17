@@ -1,3 +1,5 @@
+/* IMPORT */ import { Dimension, Entity, EntityHitInformation, Vector3 } from '../index';
+
 /**
  * Contains information related to a projectile hitting an
  * entity.

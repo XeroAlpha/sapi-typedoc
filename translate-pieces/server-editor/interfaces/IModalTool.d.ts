@@ -1,3 +1,5 @@
+/* IMPORT */ import { EventSink, IPropertyPane, InputModifier, KeyboardKey, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
+
 export interface IModalTool {
     /**
      * @remarks

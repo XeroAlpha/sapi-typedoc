@@ -1,3 +1,5 @@
+/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, EditorStatusBarAlignment, ExtensionContext, IGlobalInputManager, IMenu, IMenuCreationParams, IModalToolContainer, IPlayerLogger, IPropertyPane, IPropertyPaneOptions, IStatusBarItem } from '../index';
+
 /**
  * The IPlayerUISession represents the editor user interface
  * for a given player and given extension. Extensions

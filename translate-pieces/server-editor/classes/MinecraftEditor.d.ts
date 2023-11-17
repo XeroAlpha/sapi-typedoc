@@ -1,3 +1,5 @@
+/* IMPORT */ import { Extension, ExtensionContext, ExtensionOptionalParameters, Logger, SimulationState } from '../index';
+
 /**
  * The MinecraftEditor class is a namespace container for
  * Editor functionality which does not have any player context.

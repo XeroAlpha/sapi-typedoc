@@ -1,3 +1,5 @@
+/* IMPORT */ import { Container, EntityComponent } from '../index';
+
 /**
  * Defines this entity's inventory properties.
  */

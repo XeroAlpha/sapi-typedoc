@@ -1,3 +1,5 @@
+/* IMPORT */ import { IMenuCreationParams, NoArgsAction, RegisteredAction } from '../index';
+
 export interface IMenu {
     /**
      * @remarks

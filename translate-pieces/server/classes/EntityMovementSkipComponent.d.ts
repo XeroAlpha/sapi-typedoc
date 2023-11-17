@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+
 /**
  * When added, this move control causes the mob to hop as it
  * moves.

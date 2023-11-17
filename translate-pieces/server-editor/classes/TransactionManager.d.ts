@@ -1,3 +1,5 @@
+/* IMPORT */ import { Selection, minecraftserver } from '../index';
+
 /**
  * The Transaction Manager is responsible for tracking and
  * managing all of the registered transaction operations which

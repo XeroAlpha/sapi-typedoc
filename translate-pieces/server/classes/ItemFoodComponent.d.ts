@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemComponent } from '../index';
+
 /**
  * @beta
  * When present on an item, this item is consumable by

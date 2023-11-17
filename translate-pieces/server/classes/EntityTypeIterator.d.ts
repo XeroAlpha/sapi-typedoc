@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityType } from '../index';
+
 /**
  * @beta
  * An iterator that loops through available entity types.

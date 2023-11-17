@@ -1,3 +1,5 @@
+/* IMPORT */ import { GraphicsSettings } from '../index';
+
 /**
  * The SettingsManager (accessible from the {@link
  * ExtensionContext}) is responsible for the management all

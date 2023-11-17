@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity, ScoreboardIdentityType } from '../index';
+
 /**
  * Contains an identity of the scoreboard item.
  */

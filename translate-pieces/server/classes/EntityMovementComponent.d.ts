@@ -1,3 +1,5 @@
+/* IMPORT */ import { EntityAttributeComponent } from '../index';
+
 /**
  * @beta
  * Defines the general movement speed of this entity.

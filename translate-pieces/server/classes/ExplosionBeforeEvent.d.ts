@@ -1,3 +1,5 @@
+/* IMPORT */ import { Block, ExplosionAfterEvent } from '../index';
+
 /**
  * @beta
  * Contains information regarding an explosion that has

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemComponent, minecraftcommon } from '../index';
+
 /**
  * @beta
  * When present on an item, this item can take damage in the

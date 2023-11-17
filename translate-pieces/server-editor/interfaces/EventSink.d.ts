@@ -1,3 +1,5 @@
+/* IMPORT */ import { EventHandler, IEventToken } from '../index';
+
 /**
  *  An event that can be subscribed to. You can use the token,
  * returned from the subscribe method, to clean up handlers.

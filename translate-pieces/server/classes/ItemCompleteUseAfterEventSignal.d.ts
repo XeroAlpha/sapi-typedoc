@@ -1,3 +1,5 @@
+/* IMPORT */ import { ItemCompleteUseAfterEvent } from '../index';
+
 /**
  * Manages callbacks that are connected to the completion of
  * charging for a chargeable item.

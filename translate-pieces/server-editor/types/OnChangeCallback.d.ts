@@ -1,3 +1,5 @@
+/* IMPORT */ import { PropertyBag } from '../index';
+
 /**
  * Callback to execute when a value of a property item is
  * updated.

@@ -1,3 +1,5 @@
+/* IMPORT */ import { ActionFormResponse, minecraftserver } from '../index';
+
 /**
  * Builds a simple player form with buttons that let the player
  * take action.

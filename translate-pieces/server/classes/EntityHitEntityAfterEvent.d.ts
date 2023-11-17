@@ -1,3 +1,5 @@
+/* IMPORT */ import { Entity } from '../index';
+
 /**
  * Contains information related to an entity hitting (melee
  * attacking) another entity.

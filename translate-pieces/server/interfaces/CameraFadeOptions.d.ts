@@ -1,3 +1,5 @@
+/* IMPORT */ import { CameraFadeTimeOptions, RGB } from '../index';
+
 /**
  * Used to initiate a full-screen color fade.
  */
