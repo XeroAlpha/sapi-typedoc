@@ -1,7 +1,10 @@
+/* IMPORT */ import { RGB } from '../index';
+
 /**
  * Represents a fully customizable color within Minecraft.
  */
-export interface RGBA {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface RGBA extends RGB {
     /**
      * @remarks
      * Determines a color's alpha (opacity) component. Valid values
@@ -9,25 +12,4 @@ export interface RGBA {
      *
      */
     alpha: number;
-    /**
-     * @remarks
-     * Determines a color's blue component. Valid values are
-     * between 0 and 1.0.
-     *
-     */
-    blue: number;
-    /**
-     * @remarks
-     * Determines a color's green component. Valid values are
-     * between 0 and 1.0.
-     *
-     */
-    green: number;
-    /**
-     * @remarks
-     * Determines a color's red component. Valid values are between
-     * 0 and 1.0.
-     *
-     */
-    red: number;
 }

@@ -12,11 +12,16 @@ export enum EntityInitializationCause {
     Born = 'Born',
     /**
      * @remarks
-     * Case when an entity is created by an event, e.g., Wandering
-     * trader spawning llamas.
+     * Case when an entity is created by an event, e.g., a
+     * Wandering trader spawning llamas.
      *
      */
     Event = 'Event',
+    /**
+     * @remarks
+     * Case when an entity is loaded into the world.
+     *
+     */
     Loaded = 'Loaded',
     /**
      * @remarks

@@ -320,8 +320,18 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Creates a new particle emitter at a specified location in
+     * the world. Only visible to the target player.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param effectName
+     * Identifier of the particle to create.
+     * @param location
+     * The location at which to create the particle emitter.
+     * @param molangVariables
+     * A set of optional, customizable variables that can be
+     * adjusted for this particle.
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -329,6 +339,26 @@ export class Player extends Entity {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
+     * @example spawnParticle.ts
+     * ```typescript
+     * for (let i = 0; i < 100; i++) {
+     *   const molang = new mc.MolangVariableMap();
+     *
+     *   molang.setColorRGB("variable.color", {
+     *     red: Math.random(),
+     *     green: Math.random(),
+     *     blue: Math.random(),
+     *     alpha: 1,
+     *   });
+     *
+     *   let newLocation = {
+     *     x: targetLocation.x + Math.floor(Math.random() * 8) - 4,
+     *     y: targetLocation.y + Math.floor(Math.random() * 8) - 4,
+     *     z: targetLocation.z + Math.floor(Math.random() * 8) - 4,
+     *   };
+     *   player.spawnParticle("minecraft:colored_flame_particle", newLocation, molang);
+     * }
+     * ```
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

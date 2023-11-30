@@ -241,8 +241,13 @@ export class Dimension {
     /**
      * @beta
      * @remarks
+     * Returns the current weather.
+     *
      * This function can't be called in read-only mode.
      *
+     * @returns
+     * Returns a WeatherType that explains the broad category of
+     * weather that is currently going on.
      */
     getWeather(): WeatherType;
     /**

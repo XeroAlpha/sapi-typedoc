@@ -29,4 +29,12 @@ export interface ExtensionOptionalParameters {
      *
      */
     notes?: string;
+    /**
+     * @remarks
+     * An optional custom identifier that will be used for all
+     * Modal Tools created from the registered extension.
+     * The length of the string is capped to 256 characters
+     *
+     */
+    toolGroupId?: string;
 }

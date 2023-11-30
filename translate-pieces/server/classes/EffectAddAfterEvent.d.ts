@@ -11,16 +11,12 @@ export class EffectAddAfterEvent {
      * @remarks
      * Additional properties and details of the effect.
      *
-     * This property can't be edited in read-only mode.
-     *
      */
-    effect: Effect;
+    readonly effect: Effect;
     /**
      * @remarks
      * Entity that the effect is being added to.
      *
-     * This property can't be edited in read-only mode.
-     *
      */
-    entity: Entity;
+    readonly entity: Entity;
 }

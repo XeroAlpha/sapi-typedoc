@@ -46,6 +46,8 @@ export { BedrockEventSubscriptionCache } from './classes/BedrockEventSubscriptio
 export { ClipboardItem } from './classes/ClipboardItem';
 export { ClipboardManager } from './classes/ClipboardManager';
 export { Cursor } from './classes/Cursor';
+export { CursorPropertiesChangeAfterEvent } from './classes/CursorPropertiesChangeAfterEvent';
+export { CursorPropertyChangeAfterEventSignal } from './classes/CursorPropertyChangeAfterEventSignal';
 export { Extension } from './classes/Extension';
 export { ExtensionContext } from './classes/ExtensionContext';
 export { ExtensionContextAfterEvents } from './classes/ExtensionContextAfterEvents';

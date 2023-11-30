@@ -45,28 +45,22 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * This function can't be called in read-only mode.
      *
-     * @param unbreaking
+     * @param unbreakingEnchantmentLevel
      * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
-     * 传入的 `unbreaking` 参数必须大于等于 0。
+     * 传入的 `unbreakingEnchantmentLevel` 参数必须大于等于 0。
      * 
-     * Unbreaking factor to consider in factoring the damage
-     * chance. Incoming unbreaking parameter must be greater than
-     * 0.
      * @returns 使用时的最大损坏概率。
      * @throws
-     * 若 `unbreaking` 参数小于 0，抛出 `TypeError` 。
+     * 若 `unbreakingEnchantmentLevel` 参数小于 0，抛出 `TypeError` 。
      */
-    getDamageChance(unbreaking?: number): number;
+    getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
      * 返回物品损失耐久的概率范围。
-     * 
-     * A range of numbers that describes the chance of the item
-     * losing durability.
      *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): minecraftcommon.NumberRange;
 }

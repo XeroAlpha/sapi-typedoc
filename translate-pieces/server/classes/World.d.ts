@@ -49,6 +49,10 @@ export class World {
     broadcastClientMessage(id: string, value: string): void;
     /**
      * @beta
+     * @remarks
+     * Clears the set of dynamic properties declared for this
+     * behavior pack within the world.
+     *
      */
     clearDynamicProperties(): void;
     /**
@@ -187,10 +191,21 @@ export class World {
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     * @remarks
+     * Gets a set of dynamic property identifiers that have been
+     * set in this world.
+     *
+     * @returns
+     * A string array of active dynamic property identifiers.
      */
     getDynamicPropertyIds(): string[];
     /**
      * @beta
+     * @remarks
+     * Gets the total byte count of dynamic properties. This could
+     * potentially be used for your own analytics to ensure you're
+     * not storing gigantic sets of dynamic properties.
+     *
      */
     getDynamicPropertyTotalByteCount(): number;
     /**

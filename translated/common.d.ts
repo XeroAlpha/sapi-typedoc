@@ -44,27 +44,58 @@ export interface NumberRange {
     min: number;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
 /**
- * 表示参数越界。提示传入的参数超出范围。
+ * 此类错误表示调用的方法参数或待设置的属性超出允许的范围。
+ *
+ * This type of error is thrown when a parameter to a method or
+ * property is out of expected bounds.
  */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class ArgumentOutOfBoundsError extends Error {
     private constructor();
-    /** 参数允许的最大值。 */
+    /**
+     * @remarks
+     * 参数允许的最大值。
+     *
+     * Max expected value for the condition.
+     */
     maxValue: number;
-    /** 参数允许的最小值。 */
+    /**
+     * @remarks
+     * 参数允许的最小值。
+     *
+     * Min expected value for the condition.
+     */
     minValue: number;
-    /** 当前参数的值。 */
+    /**
+     * @remarks
+     * 传入参数的值。
+     *
+     * Passed-in value for the argument.
+     */
     value: number;
 }
 
+/**
+ * Specifies an underlying error in the engine in processing a
+ * function.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EngineError extends Error {
     private constructor();
 }
 
+/**
+ * Specifies that a passed-in argument to a method is not
+ * correct or allowed.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidArgumentError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * Index of the argument that is in error.
+     *
+     */
     index: number;
 }

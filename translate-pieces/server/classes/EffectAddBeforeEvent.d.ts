@@ -13,6 +13,11 @@ export class EffectAddBeforeEvent {
      *
      */
     cancel: boolean;
+    /**
+     * @remarks
+     * Effect duration.
+     *
+     */
     duration: number;
     /**
      * @remarks

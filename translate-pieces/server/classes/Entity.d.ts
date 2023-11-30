@@ -330,6 +330,10 @@ export class Entity {
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
      * @beta
+     * @remarks
+     * Clears all dynamic properties that have been set on this
+     * entity.
+     *
      * @throws This function can throw errors.
      */
     clearDynamicProperties(): void;
@@ -449,11 +453,25 @@ export class Entity {
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the available set of dynamic property identifiers
+     * that have been used on this entity.
+     *
+     * @returns
+     * A string array of the dynamic properties set on this entity.
      * @throws This function can throw errors.
      */
     getDynamicPropertyIds(): string[];
     /**
      * @beta
+     * @remarks
+     * Returns the total size, in bytes, of all the dynamic
+     * properties that are currently stored for this entity.  This
+     * can be useful for diagnosing performance warning signs - if,
+     * for example, an entity has many megabytes of associated
+     * dynamic properties, it may be slow to load on various
+     * devices.
+     *
      * @throws This function can throw errors.
      */
     getDynamicPropertyTotalByteCount(): number;

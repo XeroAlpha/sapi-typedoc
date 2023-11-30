@@ -121,11 +121,37 @@ export enum CompoundBlockVolumePositionRelativity {
 
 /**
  * @beta
+ * An enumeration for the various difficulty levels of
+ * Minecraft.
  */
 export enum Difficulty {
+    /**
+     * @beta
+     * @remarks
+     * Peaceful difficulty level.
+     *
+     */
     Peaceful = 0,
+    /**
+     * @beta
+     * @remarks
+     * Easy difficulty level.
+     *
+     */
     Easy = 1,
+    /**
+     * @beta
+     * @remarks
+     * Normal difficulty level.
+     *
+     */
     Normal = 2,
+    /**
+     * @beta
+     * @remarks
+     * Hard difficulty level.
+     *
+     */
     Hard = 3,
 }
 
@@ -664,11 +690,16 @@ export enum EntityInitializationCause {
     Born = 'Born',
     /**
      * @remarks
-     * Case when an entity is created by an event, e.g., Wandering
-     * trader spawning llamas.
+     * Case when an entity is created by an event, e.g., a
+     * Wandering trader spawning llamas.
      *
      */
     Event = 'Event',
+    /**
+     * @remarks
+     * Case when an entity is loaded into the world.
+     *
+     */
     Loaded = 'Loaded',
     /**
      * @remarks
@@ -1059,11 +1090,47 @@ export enum SignSide {
  * day.
  */
 export enum TimeOfDay {
+    /**
+     * @remarks
+     * Sets the time to the start of the day, which is time of the
+     * day 1,000 (or the equivalent of 7am) in Minecraft.
+     *
+     */
     Day = 1000,
+    /**
+     * @remarks
+     * Sets the time to noon, which is time of the day 6,000 in
+     * Minecraft.
+     *
+     */
     Noon = 6000,
+    /**
+     * @remarks
+     * Sets the time to sunset, which is time of the day 12,000 (or
+     * the equivalent of 6pm) in Minecraft.
+     *
+     */
     Sunset = 12000,
+    /**
+     * @remarks
+     * Sets the time to night, which is time of the day 13,000 (or
+     * the equivalent of 7:00pm) in Minecraft.
+     *
+     */
     Night = 13000,
+    /**
+     * @remarks
+     * Sets the time to midnight, which is time of the day 18,000
+     * (or the equivalent of 12:00am) in Minecraft.
+     *
+     */
     Midnight = 18000,
+    /**
+     * @remarks
+     * Sets the time to sunrise, which is time of the day 23,000
+     * (or the equivalent of 5am) in Minecraft.
+     *
+     */
     Sunrise = 23000,
 }
 
@@ -1720,6 +1787,16 @@ export class Block {
     north(steps?: number): Block | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns a block at an offset relative vector to this block.
+     *
+     * @param offset
+     * The offset vector. For example, an offset of 0, 1, 0 will
+     * return the block above the current block.
+     * @returns
+     * Block at the specified offset, or undefined if that block
+     * could not be retrieved (for example, the block and its
+     * relative chunk is not loaded yet.)
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -2954,33 +3031,24 @@ export class ChatSendAfterEvent {
     private constructor();
     /**
      * @remarks
-     * Message that is being broadcast. In a beforeChat event
-     * handler, _message_ can be updated with edits before the
-     * message is displayed to players.
+     * Message that is being broadcast.
      *
      */
-    message: string;
+    readonly message: string;
     /**
      * @remarks
      * Player that sent the chat message.
      *
      */
-    sender: Player;
+    readonly sender: Player;
     /**
      * @remarks
-     * If true, this message is directly targeted to one or more
+     * Optional list of players that will receive this message. If
+     * defined, this message is directly targeted to one or more
      * players (i.e., is not broadcast.)
      *
      */
-    sendToTargets: boolean;
-    /**
-     * @remarks
-     * List of players that will receive this message.
-     *
-     * @returns
-     * List of player objects.
-     */
-    getTargets(): Player[];
+    readonly targets?: Player[];
 }
 
 /**
@@ -3027,8 +3095,7 @@ export class ChatSendAfterEventSignal {
  * @beta
  * An event that fires as players enter chat messages.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ChatSendBeforeEvent extends ChatSendAfterEvent {
+export class ChatSendBeforeEvent {
     private constructor();
     /**
      * @remarks
@@ -3039,13 +3106,24 @@ export class ChatSendBeforeEvent extends ChatSendAfterEvent {
     cancel: boolean;
     /**
      * @remarks
-     * Sets an updated list of players that will receive this
-     * message.
+     * Message that is being broadcast.
      *
-     * @param players
-     * Updated array of players that should receive this message.
      */
-    setTargets(players: Player[]): void;
+    readonly message: string;
+    /**
+     * @remarks
+     * Player that sent the chat message.
+     *
+     */
+    readonly sender: Player;
+    /**
+     * @remarks
+     * Optional list of players that will receive this message. If
+     * defined, this message is directly targeted to one or more
+     * players (i.e., is not broadcast.)
+     *
+     */
+    readonly targets?: Player[];
 }
 
 /**
@@ -4155,8 +4233,13 @@ export class Dimension {
     /**
      * @beta
      * @remarks
+     * Returns the current weather.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @returns
+     * Returns a WeatherType that explains the broad category of
+     * weather that is currently going on.
      */
     getWeather(): WeatherType;
     /**
@@ -4455,18 +4538,14 @@ export class EffectAddAfterEvent {
      * @remarks
      * Additional properties and details of the effect.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
-     *
      */
-    effect: Effect;
+    readonly effect: Effect;
     /**
      * @remarks
      * Entity that the effect is being added to.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
-     *
      */
-    entity: Entity;
+    readonly entity: Entity;
 }
 
 /**
@@ -4513,6 +4592,11 @@ export class EffectAddBeforeEvent {
      *
      */
     cancel: boolean;
+    /**
+     * @remarks
+     * Effect duration.
+     *
+     */
     duration: number;
     /**
      * @remarks
@@ -5116,6 +5200,10 @@ export class Entity {
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
      * @beta
+     * @remarks
+     * Clears all dynamic properties that have been set on this
+     * entity.
+     *
      * @throws This function can throw errors.
      */
     clearDynamicProperties(): void;
@@ -5235,11 +5323,25 @@ export class Entity {
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the available set of dynamic property identifiers
+     * that have been used on this entity.
+     *
+     * @returns
+     * A string array of the dynamic properties set on this entity.
      * @throws This function can throw errors.
      */
     getDynamicPropertyIds(): string[];
     /**
      * @beta
+     * @remarks
+     * Returns the total size, in bytes, of all the dynamic
+     * properties that are currently stored for this entity.  This
+     * can be useful for diagnosing performance warning signs - if,
+     * for example, an entity has many megabytes of associated
+     * dynamic properties, it may be slow to load on various
+     * devices.
+     *
      * @throws This function can throw errors.
      */
     getDynamicPropertyTotalByteCount(): number;
@@ -6133,8 +6235,6 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Gets the equipped item for the given EquipmentSlot.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand"
      * @returns
@@ -6148,8 +6248,6 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Gets the ContainerSlot corresponding to the given
      * EquipmentSlot.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".
@@ -7783,7 +7881,7 @@ export class EntityTypes {
      * Retrieves an iterator of all entity types within this world.
      *
      */
-    static getAll(): EntityTypeIterator;
+    static getAll(): EntityType[];
 }
 
 /**
@@ -8415,30 +8513,24 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @param unbreaking
+     * @param unbreakingEnchantmentLevel
      * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
-     * 传入的 `unbreaking` 参数必须大于等于 0。
+     * 传入的 `unbreakingEnchantmentLevel` 参数必须大于等于 0。
      * 
-     * Unbreaking factor to consider in factoring the damage
-     * chance. Incoming unbreaking parameter must be greater than
-     * 0.
      * @returns 使用时的最大损坏概率。
      * @throws
-     * 若 `unbreaking` 参数小于 0，抛出 `TypeError` 。
+     * 若 `unbreakingEnchantmentLevel` 参数小于 0，抛出 `TypeError` 。
      */
-    getDamageChance(unbreaking?: number): number;
+    getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
      * 返回物品损失耐久的概率范围。
-     * 
-     * A range of numbers that describes the chance of the item
-     * losing durability.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): minecraftcommon.NumberRange;
 }
 
 /**
@@ -10077,8 +10169,18 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Creates a new particle emitter at a specified location in
+     * the world. Only visible to the target player.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @param effectName
+     * Identifier of the particle to create.
+     * @param location
+     * The location at which to create the particle emitter.
+     * @param molangVariables
+     * A set of optional, customizable variables that can be
+     * adjusted for this particle.
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -10086,6 +10188,26 @@ export class Player extends Entity {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
+     * @example spawnParticle.ts
+     * ```typescript
+     * for (let i = 0; i < 100; i++) {
+     *   const molang = new mc.MolangVariableMap();
+     *
+     *   molang.setColorRGB("variable.color", {
+     *     red: Math.random(),
+     *     green: Math.random(),
+     *     blue: Math.random(),
+     *     alpha: 1,
+     *   });
+     *
+     *   let newLocation = {
+     *     x: targetLocation.x + Math.floor(Math.random() * 8) - 4,
+     *     y: targetLocation.y + Math.floor(Math.random() * 8) - 4,
+     *     z: targetLocation.z + Math.floor(Math.random() * 8) - 4,
+     *   };
+     *   player.spawnParticle("minecraft:colored_flame_particle", newLocation, molang);
+     * }
+     * ```
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
@@ -12228,6 +12350,10 @@ export class World {
     broadcastClientMessage(id: string, value: string): void;
     /**
      * @beta
+     * @remarks
+     * Clears the set of dynamic properties declared for this
+     * behavior pack within the world.
+     *
      */
     clearDynamicProperties(): void;
     /**
@@ -12366,10 +12492,21 @@ export class World {
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     * @remarks
+     * Gets a set of dynamic property identifiers that have been
+     * set in this world.
+     *
+     * @returns
+     * A string array of active dynamic property identifiers.
      */
     getDynamicPropertyIds(): string[];
     /**
      * @beta
+     * @remarks
+     * Gets the total byte count of dynamic properties. This could
+     * potentially be used for your own analytics to ensure you're
+     * not storing gigantic sets of dynamic properties.
+     *
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -12740,7 +12877,7 @@ export class WorldAfterEvents {
      * entity.
      *
      */
-    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerAfterEventSignal;
+    readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     /**
      * @beta
      * @remarks
@@ -12909,10 +13046,16 @@ export class WorldAfterEvents {
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * An event for when a player interacts with a block.
+     *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * This event fires when a player interacts with an entity.
+     *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
     /**
@@ -13091,14 +13234,23 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires before a player interacts with a block.
+     *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires before a player interacts with an entity.
+     *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
      * @beta
+     * @remarks
+     * Fires when a player leaves the game.
+     *
      */
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
     /**
@@ -13346,6 +13498,11 @@ export interface BoundingBox {
 }
 
 export interface CameraDefaultOptions {
+    /**
+     * @remarks
+     * Sets a set of easing options for the camera.
+     *
+     */
     easeOptions: CameraEaseOptions;
 }
 
@@ -14129,7 +14286,8 @@ export interface RGB {
 /**
  * Represents a fully customizable color within Minecraft.
  */
-export interface RGBA {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface RGBA extends RGB {
     /**
      * @remarks
      * Determines a color's alpha (opacity) component. Valid values
@@ -14137,27 +14295,6 @@ export interface RGBA {
      *
      */
     alpha: number;
-    /**
-     * @remarks
-     * Determines a color's blue component. Valid values are
-     * between 0 and 1.0.
-     *
-     */
-    blue: number;
-    /**
-     * @remarks
-     * Determines a color's green component. Valid values are
-     * between 0 and 1.0.
-     *
-     */
-    green: number;
-    /**
-     * @remarks
-     * Determines a color's red component. Valid values are between
-     * 0 and 1.0.
-     *
-     */
-    red: number;
 }
 
 /**

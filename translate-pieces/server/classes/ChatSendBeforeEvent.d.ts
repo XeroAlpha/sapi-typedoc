@@ -1,11 +1,10 @@
-/* IMPORT */ import { ChatSendAfterEvent, Player } from '../index';
+/* IMPORT */ import { Player } from '../index';
 
 /**
  * @beta
  * An event that fires as players enter chat messages.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ChatSendBeforeEvent extends ChatSendAfterEvent {
+export class ChatSendBeforeEvent {
     private constructor();
     /**
      * @remarks
@@ -16,11 +15,22 @@ export class ChatSendBeforeEvent extends ChatSendAfterEvent {
     cancel: boolean;
     /**
      * @remarks
-     * Sets an updated list of players that will receive this
-     * message.
+     * Message that is being broadcast.
      *
-     * @param players
-     * Updated array of players that should receive this message.
      */
-    setTargets(players: Player[]): void;
+    readonly message: string;
+    /**
+     * @remarks
+     * Player that sent the chat message.
+     *
+     */
+    readonly sender: Player;
+    /**
+     * @remarks
+     * Optional list of players that will receive this message. If
+     * defined, this message is directly targeted to one or more
+     * players (i.e., is not broadcast.)
+     *
+     */
+    readonly targets?: Player[];
 }
