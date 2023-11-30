@@ -19,4 +19,29 @@
  */
 export class Extension {
     private constructor();
+    /**
+     * @remarks
+     * Default identifier for tool rail grouping. All modal tools
+     * created from the extension will use this.
+     *
+     */
+    readonly defaultToolGroupId: string;
+    /**
+     * @remarks
+     * Description specified during registration for the extension.
+     *
+     */
+    readonly description: string;
+    /**
+     * @remarks
+     * Name of the extension.
+     *
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * Notes specified during registration for the extension.
+     *
+     */
+    readonly notes: string;
 }

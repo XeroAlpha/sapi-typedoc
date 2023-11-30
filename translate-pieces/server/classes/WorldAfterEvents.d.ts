@@ -37,7 +37,7 @@ export class WorldAfterEvents {
      * entity.
      *
      */
-    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerAfterEventSignal;
+    readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     /**
      * @beta
      * @remarks
@@ -206,10 +206,16 @@ export class WorldAfterEvents {
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * An event for when a player interacts with a block.
+     *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * This event fires when a player interacts with an entity.
+     *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
     /**

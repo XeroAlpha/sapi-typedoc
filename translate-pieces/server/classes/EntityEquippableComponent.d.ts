@@ -12,8 +12,6 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Gets the equipped item for the given EquipmentSlot.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand"
      * @returns
@@ -27,8 +25,6 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Gets the ContainerSlot corresponding to the given
      * EquipmentSlot.
-     *
-     * This function can't be called in read-only mode.
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".

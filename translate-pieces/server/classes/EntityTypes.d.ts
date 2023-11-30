@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityType, EntityTypeIterator } from '../index';
+/* IMPORT */ import { EntityType } from '../index';
 
 /**
  * @beta
@@ -18,5 +18,5 @@ export class EntityTypes {
      * Retrieves an iterator of all entity types within this world.
      *
      */
-    static getAll(): EntityTypeIterator;
+    static getAll(): EntityType[];
 }

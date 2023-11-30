@@ -33,21 +33,14 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * This function can't be called in read-only mode.
      *
-     * @param unbreaking
-     * Unbreaking factor to consider in factoring the damage
-     * chance. Incoming unbreaking parameter must be greater than
-     * 0.
      * @throws This function can throw errors.
      */
-    getDamageChance(unbreaking?: number): number;
+    getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
-     * A range of numbers that describes the chance of the item
-     * losing durability.
-     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    getDamageRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): minecraftcommon.NumberRange;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardManager, Cursor, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardManager, Cursor, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, minecraftserver } from '../index';
 
 /**
  * The extension context is a native (C++) object created for
@@ -39,11 +39,11 @@ export class ExtensionContext {
     readonly cursor: Cursor;
     /**
      * @remarks
-     * The short unique name with which this extension was
-     * registered
+     * Contains information about the registered extension
+     * instance.
      *
      */
-    readonly extensionName: string;
+    readonly extensionInfo: Extension;
     /**
      * @remarks
      * The current player which is the subject of the extension

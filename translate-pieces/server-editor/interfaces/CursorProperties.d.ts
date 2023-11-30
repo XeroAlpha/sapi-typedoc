@@ -48,6 +48,7 @@ export interface CursorProperties {
      *
      */
     outlineColor?: minecraftserver.RGBA;
+    projectThroughLiquid?: boolean;
     /**
      * @remarks
      * An enum representing the cursor target mode
