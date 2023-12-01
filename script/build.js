@@ -214,8 +214,12 @@ module.exports = {
 };
 
 if (require.main === module) {
-    build(true).catch((err) => {
-        console.error(err);
-        process.exit(1);
-    });
+    build(true)
+        .then(() => {
+            process.exit(0);
+        })
+        .catch((err) => {
+            console.error(err);
+            process.exit(1);
+        });
 }
