@@ -13,13 +13,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.0.0"
+ *   "version": "1.1.0"
  * }
  * ```
  *
  */
 /**
- * @beta
  * Represents a min/max structure for expressing a potential
  * range of numbers.
  */

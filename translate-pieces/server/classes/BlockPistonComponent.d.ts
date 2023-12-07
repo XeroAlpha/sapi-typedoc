@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, Vector3 } from '../index';
+/* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from '../index';
 
 /**
  * @beta
@@ -10,20 +10,6 @@ export class BlockPistonComponent extends BlockComponent {
     private constructor();
     /**
      * @remarks
-     * Whether the piston is fully expanded.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isExpanded: boolean;
-    /**
-     * @remarks
-     * Whether the piston is in the process of expanding.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isExpanding: boolean;
-    /**
-     * @remarks
      * Whether the piston is in the process of expanding or
      * retracting.
      *
@@ -31,19 +17,9 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly isMoving: boolean;
     /**
-     * @remarks
-     * Whether the piston is fully retracted.
-     *
      * @throws This property can throw when used.
      */
-    readonly isRetracted: boolean;
-    /**
-     * @remarks
-     * Whether the piston is in the process of retracting.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isRetracting: boolean;
+    readonly state: BlockPistonState;
     static readonly componentId = 'minecraft:piston';
     /**
      * @remarks
@@ -52,5 +28,9 @@ export class BlockPistonComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    getAttachedBlocks(): Vector3[];
+    getAttachedBlocks(): Block[];
+    /**
+     * @throws This function can throw errors.
+     */
+    getAttachedBlocksLocations(): Vector3[];
 }

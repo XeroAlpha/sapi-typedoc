@@ -44,7 +44,6 @@ export class World {
      */
     broadcastClientMessage(id: string, value: string): void;
     /**
-     * @beta
      * @remarks
      * Clears the set of dynamic properties declared for this
      * behavior pack within the world.
@@ -97,7 +96,6 @@ export class World {
      */
     getDimension(dimensionId: string): Dimension;
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -164,7 +162,6 @@ export class World {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a set of dynamic property identifiers that have been
      * set in this world.
@@ -174,7 +171,6 @@ export class World {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Gets the total byte count of dynamic properties. This could
      * potentially be used for your own analytics to ensure you're
@@ -183,7 +179,6 @@ export class World {
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
-     * @beta
      * @remarks
      * Returns an entity based on the provided id.
      *
@@ -376,7 +371,6 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value.
      *

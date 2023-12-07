@@ -7,7 +7,6 @@
 export class Dimension {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Height range of the dimension.
      *

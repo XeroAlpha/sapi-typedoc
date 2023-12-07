@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.60-preview.21"
+ *   "version": "1.0.0-internal.1.20.60-preview.22"
  * }
  * ```
  *
@@ -201,6 +201,12 @@ export class GameTestSequence {
      * method steps can be added.
      */
     thenWaitAfter(delayTicks: number, callback: () => void): GameTestSequence;
+}
+
+export class NavigationResult {
+    private constructor();
+    readonly isFullPath: boolean;
+    getPath(): minecraftserver.Vector3[];
 }
 
 /**
@@ -657,7 +663,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
+    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Will use navigation to follow the selected entity to within
@@ -668,7 +674,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToEntity(entity: minecraftserver.Entity, speed?: number): minecraftserver.NavigationResult;
+    navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
     /**
      * @remarks
      * Orders the simulated player to move to a specific location
@@ -682,7 +688,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToLocation(location: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
+    navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Use navigation to follow the route provided via the

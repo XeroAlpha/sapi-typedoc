@@ -125,7 +125,6 @@ export class Block {
      */
     readonly z: number;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} above this block (positive in the
      * Y direction).
@@ -140,7 +139,6 @@ export class Block {
      */
     above(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} below this block (negative in the
      * Y direction).
@@ -155,7 +153,6 @@ export class Block {
      */
     below(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the {@link @minecraft/server.Location} of the center
      * of this block on the X and Z axis.
@@ -187,7 +184,6 @@ export class Block {
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link @minecraft/server.Location} of the center
      * of this block on the X, Y, and Z axis.
@@ -195,7 +191,6 @@ export class Block {
      */
     center(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the east of this block
      * (positive in the X direction).
@@ -321,7 +316,6 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the north of this block
      * (negative in the Z direction).
@@ -336,7 +330,6 @@ export class Block {
      */
     north(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a block at an offset relative vector to this block.
      *
@@ -391,7 +384,6 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the south of this block
      * (positive in the Z direction).
@@ -427,7 +419,6 @@ export class Block {
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the west of this block
      * (negative in the X direction).

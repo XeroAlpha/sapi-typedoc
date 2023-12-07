@@ -13,7 +13,7 @@ export class Scoreboard {
      *
      * @throws This function can throw errors.
      */
-    addObjective(objectiveId: string, displayName: string): ScoreboardObjective;
+    addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
      * @remarks
      * Clears the objective that occupies a display slot.

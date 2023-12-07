@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, Direction, ItemStack, Player, Vector3 } from '../index';
 
 /**
- * @beta
  * Contains information regarding an event after a player
  * interacts with a block.
  */

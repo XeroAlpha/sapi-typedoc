@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, DimensionLocation, Entity, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, DimensionLocation, Entity, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -119,6 +119,14 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     addLevels(amount: number): number;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    eatItem(itemStack: ItemStack): void;
     /**
      * @beta
      * @remarks

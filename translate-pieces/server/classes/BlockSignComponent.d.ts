@@ -120,5 +120,5 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    setWaxed(): void;
+    setWaxed(waxed: boolean): void;
 }

@@ -22,6 +22,7 @@ export interface PlayAnimationOptions {
      *
      */
     nextState?: string;
+    players?: string[];
     /**
      * @remarks
      * Specifies a Molang expression for when this animation should

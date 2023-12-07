@@ -329,7 +329,6 @@ export class Entity {
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
-     * @beta
      * @remarks
      * Clears all dynamic properties that have been set on this
      * entity.
@@ -439,7 +438,6 @@ export class Entity {
      */
     getComponents(): EntityComponent[];
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -452,7 +450,6 @@ export class Entity {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the available set of dynamic property identifiers
      * that have been used on this entity.
@@ -463,7 +460,6 @@ export class Entity {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the total size, in bytes, of all the dynamic
      * properties that are currently stored for this entity.  This
@@ -652,7 +648,6 @@ export class Entity {
      */
     kill(): boolean;
     /**
-     * @beta
      * @remarks
      * Matches the entity against the passed in options. Uses the
      * location of the entity for matching if the location is not
@@ -680,7 +675,6 @@ export class Entity {
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
-     * @beta
      * @remarks
      * Immediately removes the entity from the world. The removed
      * entity will not perform a death animation or drop loot upon
@@ -777,7 +771,6 @@ export class Entity {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value.
      *

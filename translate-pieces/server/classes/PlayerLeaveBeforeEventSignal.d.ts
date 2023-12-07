@@ -1,8 +1,5 @@
 /* IMPORT */ import { PlayerLeaveBeforeEvent } from '../index';
 
-/**
- * @beta
- */
 export class PlayerLeaveBeforeEventSignal {
     private constructor();
     /**

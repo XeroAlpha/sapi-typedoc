@@ -6,6 +6,7 @@ export { GameTestErrorType } from './enums/GameTestErrorType';
 export { LookDuration } from './enums/LookDuration';
 export { FenceConnectivity } from './classes/FenceConnectivity';
 export { GameTestSequence } from './classes/GameTestSequence';
+export { NavigationResult } from './classes/NavigationResult';
 export { RegistrationBuilder } from './classes/RegistrationBuilder';
 export { SculkSpreader } from './classes/SculkSpreader';
 export { SimulatedPlayer } from './classes/SimulatedPlayer';

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PistonActivateBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal } from '../index';
+/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal } from '../index';
 
 /**
  * A set of events that fire before an actual action occurs. In
@@ -73,13 +73,6 @@ export class WorldBeforeEvents {
      */
     readonly itemUseOn: ItemUseOnBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * This event fires when a piston expands or retracts.
-     *
-     */
-    readonly pistonActivate: PistonActivateBeforeEventSignal;
-    /**
      * @remarks
      * This event fires before a block is broken by a player.
      *
@@ -100,7 +93,6 @@ export class WorldBeforeEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when a player leaves the game.
      *

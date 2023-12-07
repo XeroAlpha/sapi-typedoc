@@ -15,7 +15,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.6.0"
+ *   "version": "1.7.0"
  * }
  * ```
  *
@@ -33,6 +33,16 @@ export enum BlockComponentTypes {
     Sign = 'minecraft:sign',
     SnowContainer = 'minecraft:snowContainer',
     WaterContainer = 'minecraft:waterContainer',
+}
+
+/**
+ * @beta
+ */
+export enum BlockPistonState {
+    Expanded = 'Expanded',
+    Expanding = 'Expanding',
+    Retracted = 'Retracted',
+    Retracting = 'Retracting',
 }
 
 /**
@@ -854,7 +864,7 @@ export enum GameMode {
 export enum ItemComponentTypes {
     Cooldown = 'minecraft:cooldown',
     Durability = 'minecraft:durability',
-    Enchants = 'minecraft:enchantments',
+    Enchantable = 'minecraft:enchantable',
     Food = 'minecraft:food',
 }
 
@@ -1304,11 +1314,11 @@ export type EntityComponentTypeMap = {
 export type ItemComponentTypeMap = {
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
-    enchantments: ItemEnchantsComponent;
+    enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     'minecraft:cooldown': ItemCooldownComponent;
     'minecraft:durability': ItemDurabilityComponent;
-    'minecraft:enchantments': ItemEnchantsComponent;
+    'minecraft:enchantable': ItemEnchantableComponent;
     'minecraft:food': ItemFoodComponent;
 };
 
@@ -1437,7 +1447,6 @@ export class Block {
      */
     readonly z: number;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} above this block (positive in the
      * Y direction).
@@ -1452,7 +1461,6 @@ export class Block {
      */
     above(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} below this block (negative in the
      * Y direction).
@@ -1467,7 +1475,6 @@ export class Block {
      */
     below(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the {@link @minecraft/server.Location} of the center
      * of this block on the X and Z axis.
@@ -1499,7 +1506,6 @@ export class Block {
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link @minecraft/server.Location} of the center
      * of this block on the X, Y, and Z axis.
@@ -1507,7 +1513,6 @@ export class Block {
      */
     center(): Vector3;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the east of this block
      * (positive in the X direction).
@@ -1633,7 +1638,6 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the north of this block
      * (negative in the Z direction).
@@ -1648,7 +1652,6 @@ export class Block {
      */
     north(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a block at an offset relative vector to this block.
      *
@@ -1703,7 +1706,6 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the south of this block
      * (positive in the Z direction).
@@ -1739,7 +1741,6 @@ export class Block {
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
-     * @beta
      * @remarks
      * Returns the {@link Block} to the west of this block
      * (negative in the X direction).
@@ -2145,20 +2146,6 @@ export class BlockPistonComponent extends BlockComponent {
     private constructor();
     /**
      * @remarks
-     * Whether the piston is fully expanded.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isExpanded: boolean;
-    /**
-     * @remarks
-     * Whether the piston is in the process of expanding.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isExpanding: boolean;
-    /**
-     * @remarks
      * Whether the piston is in the process of expanding or
      * retracting.
      *
@@ -2166,19 +2153,9 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly isMoving: boolean;
     /**
-     * @remarks
-     * Whether the piston is fully retracted.
-     *
      * @throws This property can throw when used.
      */
-    readonly isRetracted: boolean;
-    /**
-     * @remarks
-     * Whether the piston is in the process of retracting.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly isRetracting: boolean;
+    readonly state: BlockPistonState;
     static readonly componentId = 'minecraft:piston';
     /**
      * @remarks
@@ -2187,7 +2164,11 @@ export class BlockPistonComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    getAttachedBlocks(): Vector3[];
+    getAttachedBlocks(): Block[];
+    /**
+     * @throws This function can throw errors.
+     */
+    getAttachedBlocksLocations(): Vector3[];
 }
 
 /**
@@ -2367,7 +2348,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    setWaxed(): void;
+    setWaxed(waxed: boolean): void;
 }
 
 /**
@@ -2436,12 +2417,14 @@ export class BlockStateType {
 export class BlockType {
     private constructor();
     /**
+     * @beta
      * @remarks
      * Represents whether this type of block can be waterlogged.
      *
      */
     readonly canBeWaterlogged: boolean;
     /**
+     * @beta
      * @remarks
      * Block type name - for example, `minecraft:acacia_stairs`.
      *
@@ -3835,7 +3818,6 @@ export class DataDrivenEntityTriggerBeforeEventSignal {
 export class Dimension {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Height range of the dimension.
      *
@@ -4524,150 +4506,6 @@ export class EffectTypes {
 
 /**
  * @beta
- * This class represents a specific leveled enchantment that is
- * applied to an item.
- */
-export class Enchantment {
-    /**
-     * @remarks
-     * The level of this enchantment instance.
-     *
-     * This property can't be edited in read-only mode.
-     *
-     */
-    level: number;
-    /**
-     * @remarks
-     * The enchantment type of this instance.
-     *
-     */
-    readonly 'type': EnchantmentType;
-    /**
-     * @remarks
-     * Creates a new particular type of enchantment configuration.
-     *
-     * @param enchantmentType
-     * Type of the enchantment.
-     * @param level
-     * Level of the enchantment.
-     * @throws This function can throw errors.
-     */
-    constructor(enchantmentType: EnchantmentType | string, level?: number);
-}
-
-/**
- * @beta
- * This class represents a collection of enchantments that can
- * be applied to an item.
- */
-export class EnchantmentList implements Iterable<Enchantment> {
-    /**
-     * @remarks
-     * The item slot/type that this collection is applied to.
-     *
-     */
-    readonly slot: number;
-    /**
-     * @remarks
-     * Creates a new EnchantmentList.
-     *
-     */
-    constructor(enchantmentSlot: number);
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    [Symbol.iterator](): Iterator<Enchantment>;
-    /**
-     * @remarks
-     * Attempts to add the enchantment to this collection. Returns
-     * true if successful.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    addEnchantment(enchantment: Enchantment): boolean;
-    /**
-     * @remarks
-     * Returns whether or not the provided EnchantmentInstance can
-     * be added to this collection.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    canAddEnchantment(enchantment: Enchantment): boolean;
-    /**
-     * @remarks
-     * Returns an enchantment associated with a type.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    getEnchantment(enchantmentType: EnchantmentType | string): Enchantment | undefined;
-    /**
-     * @remarks
-     * If this collection has an EnchantmentInstance with type,
-     * returns the level of the enchantment. Returns 0 if not
-     * present.
-     *
-     * @throws This function can throw errors.
-     */
-    hasEnchantment(enchantmentType: EnchantmentType | string): number;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    next(): IteratorResult<Enchantment>;
-    /**
-     * @remarks
-     * Removes an EnchantmentInstance with type from this
-     * collection if present.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    removeEnchantment(enchantmentType: EnchantmentType | string): void;
-}
-
-/**
- * @beta
- * This enum represents the item slot or type that an
- * enchantment can be applied to.
- */
-export class EnchantmentSlot {
-    private constructor();
-    static readonly all = -1;
-    static readonly armorFeet = 4;
-    static readonly armorHead = 1;
-    static readonly armorLegs = 8;
-    static readonly armorTorso = 2;
-    static readonly axe = 512;
-    static readonly bow = 32;
-    static readonly carrotStick = 8192;
-    static readonly cosmeticHead = 262144;
-    static readonly crossbow = 65536;
-    static readonly elytra = 16384;
-    static readonly fishingRod = 4096;
-    static readonly flintsteel = 256;
-    static readonly gArmor = 15;
-    static readonly gDigging = 3648;
-    static readonly gTool = 131520;
-    static readonly hoe = 64;
-    static readonly none = 0;
-    static readonly pickaxe = 1024;
-    static readonly shears = 128;
-    static readonly shield = 131072;
-    static readonly shovel = 2048;
-    static readonly spear = 32768;
-    static readonly sword = 16;
-}
-
-/**
- * @beta
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
@@ -5035,7 +4873,6 @@ export class Entity {
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
-     * @beta
      * @remarks
      * Clears all dynamic properties that have been set on this
      * entity.
@@ -5145,7 +4982,6 @@ export class Entity {
      */
     getComponents(): EntityComponent[];
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -5158,7 +4994,6 @@ export class Entity {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the available set of dynamic property identifiers
      * that have been used on this entity.
@@ -5169,7 +5004,6 @@ export class Entity {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the total size, in bytes, of all the dynamic
      * properties that are currently stored for this entity.  This
@@ -5358,7 +5192,6 @@ export class Entity {
      */
     kill(): boolean;
     /**
-     * @beta
      * @remarks
      * Matches the entity against the passed in options. Uses the
      * location of the entity for matching if the location is not
@@ -5386,7 +5219,6 @@ export class Entity {
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
-     * @beta
      * @remarks
      * Immediately removes the entity from the world. The removed
      * entity will not perform a death animation or drop loot upon
@@ -5483,7 +5315,6 @@ export class Entity {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value.
      *
@@ -7744,7 +7575,6 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * Contains information regarding an explosion that has
  * happened.
  */
@@ -7771,7 +7601,6 @@ export class ExplosionAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an explosion
  * occurs.
  */
@@ -7799,7 +7628,6 @@ export class ExplosionAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an explosion that has
  * happened.
  */
@@ -7824,7 +7652,6 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to before an explosion
  * occurs.
  */
@@ -8325,32 +8152,83 @@ export class ItemDurabilityComponent extends ItemComponent {
 
 /**
  * @beta
- * When present on an item, this item has applied enchantment
- * effects. Note that this component only applies to
- * data-driven items.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class ItemEnchantsComponent extends ItemComponent {
+export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
+    static readonly componentId = 'minecraft:enchantable';
     /**
      * @remarks
-     * Returns a collection of the enchantments applied to this
-     * item stack.
+     * This function can't be called in read-only mode.
      *
-     * This property can't be edited in read-only mode.
+     * @throws This function can throw errors.
      *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeNotCompatibleError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
      */
-    enchantments: EnchantmentList;
-    static readonly componentId = 'minecraft:enchantments';
+    addEnchantment(enchantment: Enchantment): void;
     /**
      * @remarks
-     * Removes all enchantments applied to this item stack.
+     * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeNotCompatibleError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
+     */
+    addEnchantments(enchantments: Enchantment[]): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
+    canAddEnchantment(enchantment: Enchantment): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
+    getEnchantment(enchantmentType: EnchantmentType | string): Enchantment | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    getEnchantments(): Enchantment[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
+    hasEnchantment(enchantmentType: EnchantmentType | string): boolean;
+    /**
+     * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
     removeAllEnchantments(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
+     */
+    removeEnchantment(enchantmentType: EnchantmentType | string): void;
 }
 
 /**
@@ -9386,29 +9264,6 @@ export class MolangVariableMap {
 
 /**
  * @beta
- * Contains data resulting from a navigation operation,
- * including whether the navigation is possible and the path of
- * navigation.
- */
-export class NavigationResult {
-    private constructor();
-    /**
-     * @remarks
-     * Whether the navigation result contains a full path,
-     * including to the requested destination.
-     *
-     */
-    readonly isFullPath: boolean;
-    /**
-     * @remarks
-     * A set of block locations that comprise the navigation route.
-     *
-     */
-    getPath(): Vector3[];
-}
-
-/**
- * @beta
  * Contains information related to changes to a piston
  * expanding or retracting.
  */
@@ -9503,107 +9358,6 @@ export class PistonActivateAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
-}
-
-/**
- * @beta
- * Contains information related to changes before a piston
- * expands or retracts.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class PistonActivateBeforeEvent extends BlockEvent {
-    private constructor();
-    /**
-     * @remarks
-     * If this is set to true within an event handler, the piston
-     * activation is canceled.
-     *
-     */
-    cancel: boolean;
-    /**
-     * @remarks
-     * True if the piston is the process of expanding.
-     *
-     */
-    readonly isExpanding: boolean;
-    /**
-     * @remarks
-     * Contains additional properties and details of the piston.
-     *
-     */
-    readonly piston: BlockPistonComponent;
-}
-
-/**
- * @beta
- * Manages callbacks that are connected to an event that fires
- * before a piston is activated.
- */
-export class PistonActivateBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called before a piston expands
-     * or retracts.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @example pistonBeforeEvent.ts
-     * ```typescript
-     *   // set up a couple of piston blocks
-     *   let piston = overworld.getBlock(targetLocation);
-     *   let button = overworld.getBlock({ x: targetLocation.x, y: targetLocation.y + 1, z: targetLocation.z });
-     *
-     *   if (piston === undefined || button === undefined) {
-     *     log("Could not find block at location.");
-     *     return -1;
-     *   }
-     *
-     *   piston.setPermutation(mc.BlockPermutation.resolve('piston').withState('facing_direction', 3));
-     *   button.setPermutation(mc.BlockPermutation.resolve('acacia_button').withState('facing_direction', 1));
-     *
-     *   const uncanceledPistonLoc = {
-     *     x: Math.floor(targetLocation.x) + 2,
-     *     y: Math.floor(targetLocation.y),
-     *     z: Math.floor(targetLocation.z) + 2,
-     *   };
-     *
-     *   // this is our control.
-     *   let uncanceledPiston = overworld.getBlock(uncanceledPistonLoc);
-     *   let uncanceledButton = overworld.getBlock({
-     *     x: uncanceledPistonLoc.x,
-     *     y: uncanceledPistonLoc.y + 1,
-     *     z: uncanceledPistonLoc.z,
-     *   });
-     *
-     *   if (uncanceledPiston === undefined || uncanceledButton === undefined) {
-     *     log("Could not find block at location.");
-     *     return -1;
-     *   }
-     *
-     *   uncanceledPiston.setPermutation(mc.BlockPermutation.resolve('piston').withState('facing_direction', 3));
-     *   uncanceledButton.setPermutation(mc.BlockPermutation.resolve('acacia_button').withState('facing_direction', 1));
-     *
-     *   mc.world.beforeEvents.pistonActivate.subscribe((pistonEvent: mc.PistonActivateBeforeEvent) => {
-     *     let eventLoc = pistonEvent.piston.block.location;
-     *     if (eventLoc.x === targetLocation.x && eventLoc.y === targetLocation.y && eventLoc.z === targetLocation.z) {
-     *       log("Cancelling piston event");
-     *       pistonEvent.cancel = true;
-     *     }
-     *   });
-     * ```
-     */
-    subscribe(callback: (arg: PistonActivateBeforeEvent) => void): (arg: PistonActivateBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called before a piston expands
-     * or retracts.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: PistonActivateBeforeEvent) => void): void;
 }
 
 /**
@@ -9725,6 +9479,14 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     addLevels(amount: number): number;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    eatItem(itemStack: ItemStack): void;
     /**
      * @beta
      * @remarks
@@ -10187,7 +9949,6 @@ export class PlayerDimensionChangeAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event after a player
  * interacts with a block.
  */
@@ -10228,7 +9989,6 @@ export class PlayerInteractWithBlockAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to after a player
  * interacts with a block.
  */
@@ -10258,7 +10018,6 @@ export class PlayerInteractWithBlockAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event before a player
  * interacts with a block.
  */
@@ -10305,7 +10064,6 @@ export class PlayerInteractWithBlockBeforeEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to before a player
  * interacts with a block.
  */
@@ -10335,7 +10093,6 @@ export class PlayerInteractWithBlockBeforeEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event after a player
  * interacts with an entity.
  */
@@ -10363,7 +10120,6 @@ export class PlayerInteractWithEntityAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to after a player
  * interacts with an entity.
  */
@@ -10393,7 +10149,6 @@ export class PlayerInteractWithEntityAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information regarding an event before a player
  * interacts with an entity.
  */
@@ -10427,7 +10182,6 @@ export class PlayerInteractWithEntityBeforeEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to before a player
  * interacts with an entity.
  */
@@ -10543,17 +10297,11 @@ export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
 }
 
-/**
- * @beta
- */
 export class PlayerLeaveBeforeEvent {
     private constructor();
     readonly player: Player;
 }
 
-/**
- * @beta
- */
 export class PlayerLeaveBeforeEventSignal {
     private constructor();
     /**
@@ -10984,7 +10732,7 @@ export class Scoreboard {
      *
      * @throws This function can throw errors.
      */
-    addObjective(objectiveId: string, displayName: string): ScoreboardObjective;
+    addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
      * @remarks
      * Clears the objective that occupies a display slot.
@@ -12028,7 +11776,6 @@ export class World {
      */
     broadcastClientMessage(id: string, value: string): void;
     /**
-     * @beta
      * @remarks
      * Clears the set of dynamic properties declared for this
      * behavior pack within the world.
@@ -12081,7 +11828,6 @@ export class World {
      */
     getDimension(dimensionId: string): Dimension;
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -12148,7 +11894,6 @@ export class World {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a set of dynamic property identifiers that have been
      * set in this world.
@@ -12158,7 +11903,6 @@ export class World {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Gets the total byte count of dynamic properties. This could
      * potentially be used for your own analytics to ensure you're
@@ -12167,7 +11911,6 @@ export class World {
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
-     * @beta
      * @remarks
      * Returns an entity based on the provided id.
      *
@@ -12360,7 +12103,6 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value.
      *
@@ -12824,13 +12566,6 @@ export class WorldBeforeEvents {
      */
     readonly itemUseOn: ItemUseOnBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * This event fires when a piston expands or retracts.
-     *
-     */
-    readonly pistonActivate: PistonActivateBeforeEventSignal;
-    /**
      * @remarks
      * This event fires before a block is broken by a player.
      *
@@ -12851,7 +12586,6 @@ export class WorldBeforeEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when a player leaves the game.
      *
@@ -13286,6 +13020,26 @@ export interface DimensionLocation {
      *
      */
     z: number;
+}
+
+/**
+ * @beta
+ * This class represents a specific leveled enchantment that is
+ * applied to an item.
+ */
+export interface Enchantment {
+    /**
+     * @remarks
+     * The level of this enchantment instance.
+     *
+     */
+    level: number;
+    /**
+     * @remarks
+     * The enchantment type of this instance.
+     *
+     */
+    type: EnchantmentType | string;
 }
 
 /**
@@ -13749,6 +13503,7 @@ export interface PlayAnimationOptions {
      *
      */
     nextState?: string;
+    players?: string[];
     /**
      * @remarks
      * Specifies a Molang expression for when this animation should
@@ -14077,6 +13832,30 @@ export class CommandError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantmentLevelOutOfBoundsError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantmentTypeNotCompatibleError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationInUnloadedChunkError extends Error {
     private constructor();
@@ -14098,7 +13877,6 @@ export const MoonPhaseCount = 8;
  */
 export const TicksPerDay = 24000;
 /**
- * @beta
  * @remarks
  * How many times the server ticks per second of real time.
  *

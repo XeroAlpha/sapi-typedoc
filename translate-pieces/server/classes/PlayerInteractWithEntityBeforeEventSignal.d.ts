@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerInteractWithEntityBeforeEvent } from '../index';
 
 /**
- * @beta
  * Manages callbacks that are connected to before a player
  * interacts with an entity.
  */
