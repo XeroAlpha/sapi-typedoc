@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, ItemStack, Player } from '../index';
 
 /**
- * @beta
  * Contains information regarding an event after a player
  * interacts with an entity.
  */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { LookDuration, MoveToOptions, minecraftserver } from '../index';
+/* IMPORT */ import { LookDuration, MoveToOptions, NavigationResult, minecraftserver } from '../index';
 
 /**
  * A simulated player can be used within GameTests to represent
@@ -269,7 +269,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
+    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Will use navigation to follow the selected entity to within
@@ -280,7 +280,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToEntity(entity: minecraftserver.Entity, speed?: number): minecraftserver.NavigationResult;
+    navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
     /**
      * @remarks
      * Orders the simulated player to move to a specific location
@@ -294,7 +294,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    navigateToLocation(location: minecraftserver.Vector3, speed?: number): minecraftserver.NavigationResult;
+    navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Use navigation to follow the route provided via the

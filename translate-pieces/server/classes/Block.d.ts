@@ -156,7 +156,6 @@ export class Block {
      */
     readonly z: number;
     /**
-     * @beta
      * @remarks
      * 返回该方块上方的 {@link Block}（Y 方向正方向）。
      *
@@ -177,7 +176,6 @@ export class Block {
      */
     above(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * 返回该方块下方的{@link Block}（Y 方向为负）。
      *
@@ -197,7 +195,6 @@ export class Block {
      */
     below(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * 返回该方块在 X 轴和 Z 轴上的中心的 {@link @minecraft/server.Location}。
      *
@@ -239,7 +236,6 @@ export class Block {
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
-     * @beta
      * @remarks
      * 返回该方块在 X、Y 和 Z 轴上中心的 {@link @minecraft/server.Location}。
      *
@@ -249,7 +245,6 @@ export class Block {
      */
     center(): Vector3;
     /**
-     * @beta
      * @remarks
      * 返回位于该方块东侧（X轴正方向）的 {@link Block}。
      *
@@ -417,7 +412,6 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @beta
      * @remarks
      * 返回位于该方块北侧（Z轴负方向）的 {@link Block}。
      *
@@ -436,7 +430,6 @@ export class Block {
      */
     north(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a block at an offset relative vector to this block.
      *
@@ -500,7 +493,6 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @beta
      * @remarks
      * 返回位于该方块南侧（Z轴正方向）的 {@link Block}。
      *
@@ -549,7 +541,6 @@ export class Block {
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
-     * @beta
      * @remarks
      * 返回位于该方块西侧（X轴负方向）的 {@link Block}。
      *

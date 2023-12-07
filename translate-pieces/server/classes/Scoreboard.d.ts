@@ -20,7 +20,7 @@ export class Scoreboard {
      * @throws
      * 若同名记分项已存在时，抛出 `"Failed to add objective 'objectiveId' as it is already being tracked"`。
      */
-    addObjective(objectiveId: string, displayName: string): ScoreboardObjective;
+    addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
      * @remarks
      * 清除显示位置上正在显示的记分项。

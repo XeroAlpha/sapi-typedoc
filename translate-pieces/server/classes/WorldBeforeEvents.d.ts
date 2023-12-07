@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PistonActivateBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal } from '../index';
+/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal } from '../index';
 
 /**
  * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
@@ -77,13 +77,6 @@ export class WorldBeforeEvents {
      */
     readonly itemUseOn: ItemUseOnBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * This event fires when a piston expands or retracts.
-     *
-     */
-    readonly pistonActivate: PistonActivateBeforeEventSignal;
-    /**
      * @remarks
      * This event fires before a block is broken by a player.
      *
@@ -104,7 +97,6 @@ export class WorldBeforeEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when a player leaves the game.
      *

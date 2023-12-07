@@ -13,13 +13,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.0.0"
+ *   "version": "1.1.0"
  * }
  * ```
  *
  */
 /**
- * @beta
  * 表示一个最大/最小值的结构，用于描述数值的取值范围。
  * 
  * Represents a min/max structure for expressing a potential

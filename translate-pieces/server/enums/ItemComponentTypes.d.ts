@@ -4,6 +4,6 @@
 export enum ItemComponentTypes {
     Cooldown = 'minecraft:cooldown',
     Durability = 'minecraft:durability',
-    Enchants = 'minecraft:enchantments',
+    Enchantable = 'minecraft:enchantable',
     Food = 'minecraft:food',
 }
