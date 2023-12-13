@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemLockMode, ItemStack, ItemType } from '../index';
+/* IMPORT */ import { ItemLockMode, ItemStack, ItemType, Vector3 } from '../index';
 
 /**
  * @beta
@@ -91,6 +91,22 @@ export class ContainerSlot {
      * Throws if the slot's container is invalid.
      */
     readonly typeId?: string;
+    /**
+     * @throws This function can throw errors.
+     */
+    clearDynamicProperties(): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyTotalByteCount(): number;
     /**
      * @remarks
      * Creates an exact copy of the item stack, including any
@@ -192,6 +208,10 @@ export class ContainerSlot {
      * any of the provided block identifiers are invalid.
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @remarks
      * Sets the given ItemStack in the slot, replacing any existing

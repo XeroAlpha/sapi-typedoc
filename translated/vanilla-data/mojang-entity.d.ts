@@ -5,6 +5,7 @@ export declare enum MinecraftEntityTypes {
     Agent = "agent",
     Allay = "allay",
     AreaEffectCloud = "area_effect_cloud",
+    Armadillo = "armadillo",
     ArmorStand = "armor_stand",
     Arrow = "arrow",
     Axolotl = "axolotl",

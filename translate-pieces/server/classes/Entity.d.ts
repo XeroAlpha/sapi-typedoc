@@ -205,7 +205,7 @@ export class Entity {
      *   log("Created a sneaking wolf.", 1);
      * ```
      */
-    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void;
+    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
      * @remarks
      * Adds a specified tag to an entity.

@@ -8,4 +8,5 @@ export interface PlaytestGameOptions {
     showCoordinates?: boolean;
     spawnPosition?: minecraftserver.Vector3;
     timeOfDay?: number;
+    weather?: number;
 }

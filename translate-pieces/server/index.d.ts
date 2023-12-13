@@ -152,6 +152,7 @@ export { EntityNavigationHoverComponent } from './classes/EntityNavigationHoverC
 export { EntityNavigationWalkComponent } from './classes/EntityNavigationWalkComponent';
 export { EntityNpcComponent } from './classes/EntityNpcComponent';
 export { EntityOnFireComponent } from './classes/EntityOnFireComponent';
+export { EntityProjectileComponent } from './classes/EntityProjectileComponent';
 export { EntityPushThroughComponent } from './classes/EntityPushThroughComponent';
 export { EntityRemoveAfterEvent } from './classes/EntityRemoveAfterEvent';
 export { EntityRemoveAfterEventSignal } from './classes/EntityRemoveAfterEventSignal';
@@ -320,6 +321,7 @@ export { ExplosionOptions } from './interfaces/ExplosionOptions';
 export { MusicOptions } from './interfaces/MusicOptions';
 export { PlayAnimationOptions } from './interfaces/PlayAnimationOptions';
 export { PlayerSoundOptions } from './interfaces/PlayerSoundOptions';
+export { ProjectileShootOptions } from './interfaces/ProjectileShootOptions';
 export { RawMessage } from './interfaces/RawMessage';
 export { RawMessageScore } from './interfaces/RawMessageScore';
 export { RawText } from './interfaces/RawText';
