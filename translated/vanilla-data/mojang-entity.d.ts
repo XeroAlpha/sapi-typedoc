@@ -8,6 +8,7 @@ export declare enum MinecraftEntityTypes {
     Allay = "allay",
     /** 区域效果云（不可召唤）。 */
     AreaEffectCloud = "area_effect_cloud",
+    /** Armadillo。 */
     Armadillo = "armadillo",
     /** 盔甲架。 */
     ArmorStand = "armor_stand",

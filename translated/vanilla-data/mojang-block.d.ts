@@ -1004,7 +1004,7 @@ export declare enum MinecraftBlockTypes {
     InfoUpdate = "minecraft:info_update",
     /** 数据更新方块。 */
     InfoUpdate2 = "minecraft:info_update2",
-    /** 隐形的基岩。 */
+    /** 隐形基岩。 */
     InvisibleBedrock = "minecraft:invisible_bedrock",
     /** 铁栏杆。 */
     IronBars = "minecraft:iron_bars",

@@ -33,7 +33,7 @@ const tsPopulators = {
         const { block } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const blockId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const blockIdWithoutPrefix = String(blockId).replace(/^minecraft:/, '');
+            const blockIdWithoutPrefix = blockId.replace(/^minecraft:/, '');
             const enumTranslation = block[blockId] || block[blockIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -49,7 +49,7 @@ const tsPopulators = {
         const { item } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const itemId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const itemIdWithoutPrefix = String(itemId).replace(/^minecraft:/, '');
+            const itemIdWithoutPrefix = itemId.replace(/^minecraft:/, '');
             const enumTranslation = item[itemId] || item[itemIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -131,6 +131,38 @@ const tsPopulators = {
         for (const enumMember of enumNode.getMembers()) {
             const dimensionId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
             const enumTranslation = dimensionTranslations[dimensionId];
+            if (enumTranslation) {
+                const prefixSpaces = enumMember.getIndentationText();
+                textChanges.push({
+                    span: { start: enumMember.getStart(), length: 0 },
+                    newText: `/** ${enumTranslation}。 */\n${prefixSpaces}`
+                });
+            }
+        }
+    },
+    'mojang-biome.d.ts': (textChanges, { sourceFile, gameData }) => {
+        const enumNode = sourceFile.getEnumOrThrow('MinecraftBiomeTypes');
+        const { biome } = gameData;
+        for (const enumMember of enumNode.getMembers()) {
+            const biomeId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
+            const biomeIdWithoutPrefix = biomeId.replace(/^minecraft:/, '');
+            const enumTranslation = biome[biomeIdWithoutPrefix];
+            if (enumTranslation) {
+                const prefixSpaces = enumMember.getIndentationText();
+                textChanges.push({
+                    span: { start: enumMember.getStart(), length: 0 },
+                    newText: `/** ${enumTranslation}。 */\n${prefixSpaces}`
+                });
+            }
+        }
+    },
+    'mojang-feature.d.ts': (textChanges, { sourceFile, gameData }) => {
+        const enumNode = sourceFile.getEnumOrThrow('MinecraftFeatureTypes');
+        const { location } = gameData;
+        for (const enumMember of enumNode.getMembers()) {
+            const featureId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
+            const featureIdWithoutPrefix = featureId.replace(/^minecraft:/, '');
+            const enumTranslation = location[featureIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({
