@@ -54,6 +54,7 @@ export enum EntityComponentTypes {
     NavigationWalk = 'minecraft:navigation.walk',
     Npc = 'minecraft:npc',
     OnFire = 'minecraft:onfire',
+    Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
     Rideable = 'minecraft:rideable',
     Riding = 'minecraft:riding',

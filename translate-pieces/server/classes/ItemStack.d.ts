@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType, Vector3 } from '../index';
 
 /**
  * Defines a collection of items.
@@ -95,6 +95,10 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
+     * @beta
+     */
+    clearDynamicProperties(): void;
+    /**
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -150,6 +154,18 @@ export class ItemStack {
      *
      */
     getComponents(): ItemComponent[];
+    /**
+     * @beta
+     */
+    getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @beta
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @beta
+     */
+    getDynamicPropertyTotalByteCount(): number;
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
@@ -245,6 +261,11 @@ export class ItemStack {
      * ```
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @remarks
      * Sets the lore value - a secondary display string - for an

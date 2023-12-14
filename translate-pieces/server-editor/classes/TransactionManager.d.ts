@@ -1,4 +1,4 @@
-/* IMPORT */ import { Selection, minecraftserver } from '../index';
+/* IMPORT */ import { Selection, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -14,6 +14,17 @@
  */
 export class TransactionManager {
     private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    addUserDefinedOperation(
+        transactionHandlerId: UserDefinedTransactionHandlerId,
+        operationData: string,
+        operationName?: string,
+    ): void;
     /**
      * @remarks
      * Commit all of the transaction operations currently attached
@@ -45,6 +56,16 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     commitTrackedChanges(): number;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    createUserDefinedTransactionHandler(
+        undoClosure: (arg: string) => void,
+        redoClosure: (arg: string) => void,
+    ): UserDefinedTransactionHandlerId;
     /**
      * @remarks
      * Discard the currently open transaction without committing it

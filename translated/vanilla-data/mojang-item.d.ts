@@ -54,6 +54,8 @@ export declare enum MinecraftItemTypes {
     Apple = "minecraft:apple",
     /** 弓箭纹样陶片。 */
     ArcherPotterySherd = "minecraft:archer_pottery_sherd",
+    ArmadilloScute = "minecraft:armadillo_scute",
+    ArmadilloSpawnEgg = "minecraft:armadillo_spawn_egg",
     /** 盔甲架。 */
     ArmorStand = "minecraft:armor_stand",
     /** 举臂纹样陶片。 */
@@ -2279,6 +2281,7 @@ export declare enum MinecraftItemTypes {
     WitherSkeletonSpawnEgg = "minecraft:wither_skeleton_spawn_egg",
     /** 凋灵刷怪蛋。 */
     WitherSpawnEgg = "minecraft:wither_spawn_egg",
+    WolfArmor = "minecraft:wolf_armor",
     /** 狼刷怪蛋。 */
     WolfSpawnEgg = "minecraft:wolf_spawn_egg",
     /** 橡木/云杉木/白桦木/丛林木/金合欢木/深色橡木/去皮橡木/去皮云杉木/去皮白桦木/去皮丛林木/去皮金合欢木/去皮深色橡木。 */

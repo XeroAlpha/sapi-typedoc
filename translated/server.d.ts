@@ -463,6 +463,7 @@ export enum EntityComponentTypes {
     NavigationWalk = 'minecraft:navigation.walk',
     Npc = 'minecraft:npc',
     OnFire = 'minecraft:onfire',
+    Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
     Rideable = 'minecraft:rideable',
     Riding = 'minecraft:riding',
@@ -1304,6 +1305,7 @@ export type EntityComponentTypeMap = {
     'minecraft:navigation.walk': EntityNavigationWalkComponent;
     'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
+    'minecraft:projectile': EntityProjectileComponent;
     'minecraft:push_through': EntityPushThroughComponent;
     'minecraft:rideable': EntityRideableComponent;
     'minecraft:riding': EntityRidingComponent;
@@ -1333,6 +1335,7 @@ export type EntityComponentTypeMap = {
     'navigation.walk': EntityNavigationWalkComponent;
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
+    projectile: EntityProjectileComponent;
     push_through: EntityPushThroughComponent;
     rideable: EntityRideableComponent;
     riding: EntityRidingComponent;
@@ -3710,6 +3713,22 @@ export class ContainerSlot {
      */
     readonly typeId?: string;
     /**
+     * @throws This function can throw errors.
+     */
+    clearDynamicProperties(): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
+    getDynamicPropertyTotalByteCount(): number;
+    /**
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -3810,6 +3829,10 @@ export class ContainerSlot {
      * any of the provided block identifiers are invalid.
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @remarks
      * Sets the given ItemStack in the slot, replacing any existing
@@ -4913,7 +4936,7 @@ export class Entity {
      *   log("Created a sneaking wolf.", 1);
      * ```
      */
-    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void;
+    addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
      * @remarks
      * Adds a specified tag to an entity.
@@ -7235,6 +7258,106 @@ export class EntityOnFireComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityProjectileComponent extends EntityComponent {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    airInertia: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    catchFireOnHurt: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    critParticlesOnProjectileHurt: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    destroyOnProjectileHurt: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    gravity: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    hitEntitySound?: string;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    hitGroundSound?: string;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    hitParticle?: string;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    lightningStrikeOnHit: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    liquidInertia: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    onFireTime: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    owner?: Entity;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    shouldBounceOnHit: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    stopOnHit: boolean;
+    static readonly componentId = 'minecraft:projectile';
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    shoot(velocity: Vector3, options?: ProjectileShootOptions): void;
+}
+
+/**
  * Sets the distance through which the entity can push through.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8649,6 +8772,10 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
+     * @beta
+     */
+    clearDynamicProperties(): void;
+    /**
      * @remarks
      * Creates an exact copy of the item stack, including any
      * custom data or properties.
@@ -8704,6 +8831,18 @@ export class ItemStack {
      *
      */
     getComponents(): ItemComponent[];
+    /**
+     * @beta
+     */
+    getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @beta
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @beta
+     */
+    getDynamicPropertyTotalByteCount(): number;
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
@@ -8799,6 +8938,11 @@ export class ItemStack {
      * ```
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @remarks
      * Sets the lore value - a secondary display string - for an
@@ -13925,6 +14069,13 @@ export interface PlayerSoundOptions {
      *
      */
     volume?: number;
+}
+
+/**
+ * @beta
+ */
+export interface ProjectileShootOptions {
+    uncertainty?: number;
 }
 
 /**
