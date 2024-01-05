@@ -1,6 +1,10 @@
 /* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, Vector3 } from '../index';
 
 /**
+ * 表示世界维度中的特定位置的方块。
+ * 方块对象对应了唯一的 X、Y、Z 与维度，可用于读取或修改此位置的方块状态。
+ * 此类型在 1.17.10.21 有重大更新。
+ * 
  * Represents a block in a dimension. A block represents a
  * unique X, Y, and Z within a dimension and get/sets the state
  * of the block at that location. This type was significantly
@@ -75,10 +79,13 @@ export class Block {
      *
      * Returns or sets whether this block has a liquid on it.
      *
-     * This property can't be edited in read-only mode.
+     * @throws This property can throw when used.
      *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
-    isWaterlogged: boolean;
+    readonly isWaterlogged: boolean;
     /**
      * @remarks
      * 该方块的坐标。
@@ -412,6 +419,17 @@ export class Block {
      */
     isValid(): boolean;
     /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
      * @remarks
      * 返回位于该方块北侧（Z轴负方向）的 {@link Block}。
      *
@@ -492,6 +510,20 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setType(blockType: BlockType | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    setWaterlogged(isWaterlogged: boolean): void;
     /**
      * @remarks
      * 返回位于该方块南侧（Z轴正方向）的 {@link Block}。

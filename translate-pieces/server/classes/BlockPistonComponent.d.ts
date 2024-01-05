@@ -17,6 +17,9 @@ export class BlockPistonComponent extends BlockComponent {
      */
     readonly isMoving: boolean;
     /**
+     * @remarks
+     * The current state of the piston.
+     *
      * @throws This property can throw when used.
      */
     readonly state: BlockPistonState;
@@ -30,6 +33,10 @@ export class BlockPistonComponent extends BlockComponent {
      */
     getAttachedBlocks(): Block[];
     /**
+     * @remarks
+     * Retrieves a set of block locations that this piston is
+     * connected with.
+     *
      * @throws This function can throw errors.
      */
     getAttachedBlocksLocations(): Vector3[];

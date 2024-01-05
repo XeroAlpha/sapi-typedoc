@@ -69,30 +69,53 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign the message will be set on. If not
      * provided, the message will be set on the front side of the
      * sign.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the provided message is greater than 512
+     * characters in length.
      * @example SetRawMessage.ts
      * ```typescript
-     * const helloWorldMessage: RawMessage = { text: 'Hello World' };
+     * const signLocation: Vector3 = { x: 0, y: -60, z: 0 }; // Replace with your sign's coordinates
+     * const block = world.getDimension("overworld").getBlock(signLocation);
+     * if (!block) {
+     *   world.sendMessage("Could not find a block at specified location.");
+     *   return;
+     * }
+     * const sign = block.getComponent("minecraft:sign") as BlockSignComponent;
+     * const helloWorldMessage: RawMessage = { text: "Hello World" };
      * sign.setText(helloWorldMessage);
      *
      * // Sign text will be saved as a RawText
-     * const result: RawText = sign.getRawText();
-     * JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
+     * const result = sign.getRawText();
+     * world.sendMessage(JSON.stringify(result)); // { rawtext: [{ text: 'Hello World' }] };
      * ```
      * @example SetRawText.ts
      * ```typescript
-     * const helloWorldText: RawText = { rawtext: [{ text: 'Hello World' }] };
+     * const signLocation: Vector3 = { x: 0, y: -60, z: 0 }; // Replace with your sign's coordinates
+     * const block = world.getDimension("overworld").getBlock(signLocation);
+     * if (!block) {
+     *   world.sendMessage("Could not find a block at specified location.");
+     *   return;
+     * }
+     * const sign = block.getComponent("minecraft:sign") as BlockSignComponent;
+     * const helloWorldText: RawText = { rawtext: [{ text: "Hello World" }] };
      * sign.setText(helloWorldText);
      *
      * // There will be no data transformation unlike calling setText with a RawMessage
-     * const result: RawText = sign.getRawText();
-     * JSON.stringify(result); // { rawtext: [{ text: 'Hello World' }] };
+     * const result = sign.getRawText();
+     * world.sendMessage(JSON.stringify(result)); // { rawtext: [{ text: 'Hello World' }] };
      * ```
      * @example SetString.ts
      * ```typescript
+     * const signLocation: Vector3 = { x: 0, y: -60, z: 0 }; // Replace with your sign's coordinates
+     * const block = world.getDimension("overworld").getBlock(signLocation);
+     * if (!block) {
+     *   world.sendMessage("Could not find a block at specified location.");
+     *   return;
+     * }
+     * const sign = block.getComponent("minecraft:sign") as BlockSignComponent;
      * // Set sign to say 'Hello'
-     * sign.setText('Hello');
-     * sign.getText(); // 'Hello'
+     * sign.setText("Hello World");
+     * world.sendMessage(sign.getText() ?? "undefined"); // 'Hello World'
      * ```
      */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;

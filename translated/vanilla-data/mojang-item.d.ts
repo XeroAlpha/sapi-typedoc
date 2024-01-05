@@ -54,9 +54,9 @@ export declare enum MinecraftItemTypes {
     Apple = "minecraft:apple",
     /** 弓箭纹样陶片。 */
     ArcherPotterySherd = "minecraft:archer_pottery_sherd",
-    /** Armadillo Scute。 */
+    /** 犰狳鳞甲。 */
     ArmadilloScute = "minecraft:armadillo_scute",
-    /** Armadillo Spawn Egg。 */
+    /** 犰狳刷怪蛋。 */
     ArmadilloSpawnEgg = "minecraft:armadillo_spawn_egg",
     /** 盔甲架。 */
     ArmorStand = "minecraft:armor_stand",
@@ -983,6 +983,10 @@ export declare enum MinecraftItemTypes {
     Gunpowder = "minecraft:gunpowder",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
+    /** 染色强化玻璃。 */
+    HardStainedGlass = "minecraft:hard_stained_glass",
+    /** 染色强化玻璃板。 */
+    HardStainedGlassPane = "minecraft:hard_stained_glass_pane",
     /** 陶瓦。 */
     HardenedClay = "minecraft:hardened_clay",
     /** 干草捆。 */
@@ -1787,8 +1791,6 @@ export declare enum MinecraftItemTypes {
     SculkShrieker = "minecraft:sculk_shrieker",
     /** 幽匿脉络。 */
     SculkVein = "minecraft:sculk_vein",
-    /** 鳞甲。 */
-    Scute = "minecraft:scute",
     /** 海晶灯。 */
     SeaLantern = "minecraft:sea_lantern",
     /** 海泡菜。 */
@@ -2087,6 +2089,8 @@ export declare enum MinecraftItemTypes {
     TurtleEgg = "minecraft:turtle_egg",
     /** 海龟壳。 */
     TurtleHelmet = "minecraft:turtle_helmet",
+    /** 海龟鳞甲。 */
+    TurtleScute = "minecraft:turtle_scute",
     /** 海龟刷怪蛋。 */
     TurtleSpawnEgg = "minecraft:turtle_spawn_egg",
     /** 缠怨藤。 */
@@ -2283,7 +2287,7 @@ export declare enum MinecraftItemTypes {
     WitherSkeletonSpawnEgg = "minecraft:wither_skeleton_spawn_egg",
     /** 凋灵刷怪蛋。 */
     WitherSpawnEgg = "minecraft:wither_spawn_egg",
-    /** Wolf Armor。 */
+    /** 狼铠。 */
     WolfArmor = "minecraft:wolf_armor",
     /** 狼刷怪蛋。 */
     WolfSpawnEgg = "minecraft:wolf_spawn_egg",

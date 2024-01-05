@@ -57,6 +57,13 @@ export class ItemDurabilityComponent extends ItemComponent {
     /**
      * @remarks
      * 返回物品损失耐久的概率范围。
+     * 
+     * 公式：`几率 = (最小值 + ((最大值 - 最小值) / (耐久等级 + 1)))`
+     * 
+     * Returns the min and max variables used by the damage chance
+     * formula:
+     * chance = (min + ((max - min) / (unbreaking + 1)))
+     * 
      *
      * This function can't be called in read-only mode.
      *

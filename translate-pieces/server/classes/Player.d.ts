@@ -122,9 +122,15 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * Eats an item, providing the item's hunger and saturation
+     * effects to the player. Can only be used on food items.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param itemStack
+     * The item to eat.
+     * @throws
+     * Throws if the item is not a food item.
      */
     eatItem(itemStack: ItemStack): void;
     /**

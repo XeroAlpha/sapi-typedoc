@@ -462,11 +462,11 @@ export class Entity {
     /**
      * @remarks
      * Returns the total size, in bytes, of all the dynamic
-     * properties that are currently stored for this entity.  This
-     * can be useful for diagnosing performance warning signs - if,
-     * for example, an entity has many megabytes of associated
-     * dynamic properties, it may be slow to load on various
-     * devices.
+     * properties that are currently stored for this entity. This
+     * includes the size of both the key and the value.  This can
+     * be useful for diagnosing performance warning signs - if, for
+     * example, an entity has many megabytes of associated dynamic
+     * properties, it may be slow to load on various devices.
      *
      * @throws This function can throw errors.
      */
@@ -548,8 +548,10 @@ export class Entity {
     getRotation(): Vector2;
     /**
      * @remarks
+     * Returns all tags associated with the entity.
+     *
      * @returns
-     * Returns all tags associated with an entity.
+     * An array containing all tags as strings.
      * @throws This function can throw errors.
      */
     getTags(): string[];
@@ -653,10 +655,13 @@ export class Entity {
      * location of the entity for matching if the location is not
      * specified in the passed in EntityQueryOptions.
      *
+     * @param options
+     * The query to perform the match against.
      * @returns
      * Returns true if the entity matches the criteria in the
      * passed in EntityQueryOptions, otherwise it returns false.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the query options are misconfigured.
      */
     matches(options: EntityQueryOptions): boolean;
     /**

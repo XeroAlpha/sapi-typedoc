@@ -92,19 +92,49 @@ export class ContainerSlot {
      */
     readonly typeId?: string;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Clears all dynamic properties that have been set on this
+     * item stack.
+     *
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     clearDynamicProperties(): void;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Returns a property value.
+     *
+     * @param identifier
+     * The property identifier.
+     * @returns
+     * Returns the value for the property, or undefined if the
+     * property has not been set.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Returns the available set of dynamic property identifiers
+     * that have been used on this item stack.
+     *
+     * @returns
+     * A string array of the dynamic properties set on this entity.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Returns the total size, in bytes, of all the dynamic
+     * properties that are currently stored for this entity. This
+     * includes the size of both the key and the value.  This can
+     * be useful for diagnosing performance warning signs - if, for
+     * example, an entity has many megabytes of associated dynamic
+     * properties, it may be slow to load on various devices.
+     *
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -115,7 +145,8 @@ export class ContainerSlot {
      * @returns
      * Returns a copy of the item in the slot. Returns undefined if
      * the slot is empty.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getItem(): ItemStack | undefined;
     /**
@@ -137,7 +168,8 @@ export class ContainerSlot {
      * @returns
      * Returns all tags for the item in the slot. Return an empty
      * array if the the slot is empty.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     getTags(): string[];
     /**
@@ -149,7 +181,8 @@ export class ContainerSlot {
      * @returns
      * Returns false when the slot is empty or the item in the slot
      * does not have the given tag.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     hasTag(tag: string): boolean;
     /**
@@ -209,7 +242,15 @@ export class ContainerSlot {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Sets a specified property to a value.
+     *
+     * @param identifier
+     * The property identifier.
+     * @param value
+     * Data value of the property to set.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -221,7 +262,8 @@ export class ContainerSlot {
      *
      * @param itemStack
      * The ItemStack to be placed in the slot.
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the slot's container is invalid.
      */
     setItem(itemStack?: ItemStack): void;
     /**

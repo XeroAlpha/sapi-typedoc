@@ -21,7 +21,6 @@ export interface IMenu {
      */
     readonly submenu: IMenu[];
     addItem(params: IMenuCreationParams, action?: RegisteredAction<NoArgsAction>): IMenu;
-    addSeparator(): IMenu;
     dispose(): void;
     hide(): void;
     replaceAction(action: RegisteredAction<NoArgsAction>): void;
