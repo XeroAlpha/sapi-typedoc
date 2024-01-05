@@ -38,6 +38,11 @@ export class ItemDurabilityComponent extends ItemComponent {
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
+     * Returns the min and max variables used by the damage chance
+     * formula:
+     * chance = (min + ((max - min) / (unbreaking + 1)))
+     *
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.

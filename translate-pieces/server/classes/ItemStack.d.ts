@@ -96,6 +96,10 @@ export class ItemStack {
     constructor(itemType: ItemType | string, amount?: number);
     /**
      * @beta
+     * @remarks
+     * Clears all dynamic properties that have been set on this
+     * item stack.
+     *
      */
     clearDynamicProperties(): void;
     /**
@@ -156,14 +160,36 @@ export class ItemStack {
     getComponents(): ItemComponent[];
     /**
      * @beta
+     * @remarks
+     * Returns a property value.
+     *
+     * @param identifier
+     * The property identifier.
+     * @returns
+     * Returns the value for the property, or undefined if the
+     * property has not been set.
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the available set of dynamic property identifiers
+     * that have been used on this entity.
+     *
+     * @returns
+     * A string array of the dynamic properties set on this entity.
      */
     getDynamicPropertyIds(): string[];
     /**
      * @beta
+     * @remarks
+     * Returns the total size, in bytes, of all the dynamic
+     * properties that are currently stored for this entity. This
+     * includes the size of both the key and the value.  This can
+     * be useful for diagnosing performance warning signs - if, for
+     * example, an entity has many megabytes of associated dynamic
+     * properties, it may be slow to load on various devices.
+     *
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -263,7 +289,16 @@ export class ItemStack {
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @beta
-     * @throws This function can throw errors.
+     * @remarks
+     * Sets a specified property to a value. Note: This function
+     * only works with non-stackable items.
+     *
+     * @param identifier
+     * The property identifier.
+     * @param value
+     * Data value of the property to set.
+     * @throws
+     * Throws if the item stack is stackable.
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**

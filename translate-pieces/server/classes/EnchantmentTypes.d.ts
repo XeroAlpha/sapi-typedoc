@@ -2,7 +2,8 @@
 
 /**
  * @beta
- * Provides a list of enchantment types.
+ * Contains a catalog of Minecraft Enchantment Types that are
+ * available in this world.
  */
 export class EnchantmentTypes {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBlocks, IPropertyItemOptionsButton, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -56,7 +56,7 @@ export interface IPropertyPane {
     addBlockPicker<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
-        options?: IPropertyItemOptionsBlocks,
+        options?: IPropertyItemOptionsDataPicker,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
@@ -98,6 +98,16 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDropdown,
+    ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds an EntityPicker item to the pane.
+     *
+     */
+    addEntityPicker<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsDataPicker,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks

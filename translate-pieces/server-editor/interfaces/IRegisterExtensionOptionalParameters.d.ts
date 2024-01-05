@@ -17,4 +17,11 @@ export interface IRegisterExtensionOptionalParameters {
      *
      */
     notes?: string;
+    /**
+     * @remarks
+     * An optional custom group identifier that will be used for
+     * all Modal Tools created from the registered extension.
+     *
+     */
+    toolGroupId?: string;
 }

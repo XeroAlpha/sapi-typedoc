@@ -59,10 +59,13 @@ export class Block {
      * @remarks
      * Returns or sets whether this block has a liquid on it.
      *
-     * This property can't be edited in read-only mode.
+     * @throws This property can throw when used.
      *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
      */
-    isWaterlogged: boolean;
+    readonly isWaterlogged: boolean;
     /**
      * @remarks
      * Coordinates of the specified block.
@@ -316,6 +319,17 @@ export class Block {
      */
     isValid(): boolean;
     /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
      * @remarks
      * Returns the {@link Block} to the north of this block
      * (negative in the Z direction).
@@ -383,6 +397,20 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setType(blockType: BlockType | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    setWaterlogged(isWaterlogged: boolean): void;
     /**
      * @remarks
      * Returns the {@link Block} to the south of this block

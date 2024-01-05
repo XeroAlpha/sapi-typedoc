@@ -2,8 +2,8 @@
 
 /**
  * @beta
- * This class represents a specific leveled enchantment that is
- * applied to an item.
+ * This interface represents a specific leveled enchantment
+ * that is applied to an item.
  */
 export interface Enchantment {
     /**

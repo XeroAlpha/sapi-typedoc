@@ -27,6 +27,10 @@ export class System {
      */
     readonly currentTick: number;
     /**
+     * @beta
+     */
+    clearJob(jobId: number): void;
+    /**
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via the `run` function.
@@ -84,6 +88,10 @@ export class System {
      * ```
      */
     runInterval(callback: () => void, tickInterval?: number): number;
+    /**
+     * @beta
+     */
+    runJob(generator: Generator<void, void, void>): number;
     /**
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.

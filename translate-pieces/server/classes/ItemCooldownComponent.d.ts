@@ -18,7 +18,7 @@ export class ItemCooldownComponent extends ItemComponent {
     readonly cooldownCategory: string;
     /**
      * @remarks
-     * Amount of time, in ticks, that remain for this item
+     * Amount of time, in ticks, it will take this item to
      * cooldown.
      *
      * @throws This property can throw when used.

@@ -22,6 +22,11 @@ export interface PlayAnimationOptions {
      *
      */
     nextState?: string;
+    /**
+     * @remarks
+     * A list of players the animation will be visible to.
+     *
+     */
     players?: string[];
     /**
      * @remarks

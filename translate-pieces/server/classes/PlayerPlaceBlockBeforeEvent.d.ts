@@ -27,6 +27,11 @@ export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
      *
      */
     readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The block permutation that is being placed.
+     *
+     */
     readonly permutationBeingPlaced: BlockPermutation;
     /**
      * @remarks

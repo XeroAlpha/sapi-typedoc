@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockFillOptions, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, Vector3, WeatherType, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, Vector3, WeatherType, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -100,6 +100,18 @@ export class Dimension {
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): number;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
      * @remarks
      * Returns a block instance at the given location.
