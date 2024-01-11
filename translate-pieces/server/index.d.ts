@@ -284,6 +284,8 @@ export { WatchdogTerminateBeforeEvent } from './classes/WatchdogTerminateBeforeE
 export { WatchdogTerminateBeforeEventSignal } from './classes/WatchdogTerminateBeforeEventSignal';
 export { WeatherChangeAfterEvent } from './classes/WeatherChangeAfterEvent';
 export { WeatherChangeAfterEventSignal } from './classes/WeatherChangeAfterEventSignal';
+export { WeatherChangeBeforeEvent } from './classes/WeatherChangeBeforeEvent';
+export { WeatherChangeBeforeEventSignal } from './classes/WeatherChangeBeforeEventSignal';
 export { World } from './classes/World';
 export { WorldAfterEvents } from './classes/WorldAfterEvents';
 export { WorldBeforeEvents } from './classes/WorldBeforeEvents';
@@ -341,6 +343,7 @@ export { CommandError } from './classes/CommandError';
 export { EnchantmentLevelOutOfBoundsError } from './classes/EnchantmentLevelOutOfBoundsError';
 export { EnchantmentTypeNotCompatibleError } from './classes/EnchantmentTypeNotCompatibleError';
 export { EnchantmentTypeUnknownIdError } from './classes/EnchantmentTypeUnknownIdError';
+export { InvalidContainerSlotError } from './classes/InvalidContainerSlotError';
 export { LocationInUnloadedChunkError } from './classes/LocationInUnloadedChunkError';
 export { LocationOutOfWorldBoundariesError } from './classes/LocationOutOfWorldBoundariesError';
 export { MoonPhaseCount } from './variables/MoonPhaseCount';
