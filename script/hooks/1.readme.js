@@ -105,13 +105,14 @@ function listCommitsByCommand(branch, commitCommand) {
     const commitLines = git(`log --grep="^${prefix}" --format="@@@@@%H\t%cI\t%B" ${branch} --`)
         .toString('utf-8')
         .trim()
-        .split('\n@@@@@');
+        .split('@@@@@')
+        .slice(1);
     const commits = commitLines.map((commitStr) => {
         const [hash, date, ...message] = commitStr.split('\t');
         return {
             hash,
             date: new Date(date),
-            message: message.join('\t')
+            message: message.join('\t').trim()
         };
     });
     return commits.flatMap((commit) => {
@@ -284,8 +285,8 @@ module.exports = {
             text: statusLines.flat().join('\n')
         });
 
-        const reviewPieces = Object.keys(translateStateMap).filter((path) =>
-            !path.endsWith('/package.d.ts') && translateStateMap[path] === 'needReview'
+        const reviewPieces = Object.keys(translateStateMap).filter(
+            (path) => !path.endsWith('/package.d.ts') && translateStateMap[path] === 'needReview'
         );
         if (reviewPieces.length > 0) {
             reviewPieces.forEach((piecePath) => console.log(`[review] Review required: ${piecePath}`));

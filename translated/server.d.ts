@@ -3778,6 +3778,8 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     readonly isStackable: boolean;
     /**
@@ -3809,6 +3811,8 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     readonly maxAmount: number;
     /**
@@ -3830,6 +3834,10 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidContainerSlotError}
      */
     readonly 'type': ItemType;
     /**
@@ -3840,8 +3848,10 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
-    readonly typeId?: string;
+    readonly typeId: string;
     /**
      * @remarks
      * Clears all dynamic properties that have been set on this
@@ -3849,8 +3859,22 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     clearDynamicProperties(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    getCanDestroy(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    getCanPlaceOn(): string[];
     /**
      * @remarks
      * Returns a property value.
@@ -3862,6 +3886,8 @@ export class ContainerSlot {
      * property has not been set.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -3873,6 +3899,8 @@ export class ContainerSlot {
      * A string array of the dynamic properties set on this entity.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getDynamicPropertyIds(): string[];
     /**
@@ -3886,6 +3914,8 @@ export class ContainerSlot {
      *
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -3898,6 +3928,8 @@ export class ContainerSlot {
      * the slot is empty.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getItem(): ItemStack | undefined;
     /**
@@ -3910,6 +3942,8 @@ export class ContainerSlot {
      * returns an empty array.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getLore(): string[];
     /**
@@ -3921,8 +3955,16 @@ export class ContainerSlot {
      * array if the the slot is empty.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     getTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    hasItem(): boolean;
     /**
      * @remarks
      * Returns whether the item in the slot slot has the given tag.
@@ -3934,6 +3976,8 @@ export class ContainerSlot {
      * does not have the given tag.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     hasTag(tag: string): boolean;
     /**
@@ -3951,6 +3995,8 @@ export class ContainerSlot {
      * given `itemStack`.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
@@ -3974,6 +4020,10 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
@@ -3990,6 +4040,10 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid. Also throws if
      * any of the provided block identifiers are invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
@@ -4002,6 +4056,10 @@ export class ContainerSlot {
      * Data value of the property to set.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -4015,6 +4073,8 @@ export class ContainerSlot {
      * The ItemStack to be placed in the slot.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link InvalidContainerSlotError}
      */
     setItem(itemStack?: ItemStack): void;
     /**
@@ -4029,6 +4089,10 @@ export class ContainerSlot {
      * will clear the lore.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
      */
     setLore(loreList?: string[]): void;
 }
@@ -12594,6 +12658,37 @@ export class WeatherChangeAfterEventSignal {
 }
 
 /**
+ * @beta
+ */
+export class WeatherChangeBeforeEvent {
+    private constructor();
+    cancel: boolean;
+    duration: number;
+    newWeather: WeatherType;
+    readonly previousWeather: WeatherType;
+}
+
+/**
+ * @beta
+ */
+export class WeatherChangeBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    subscribe(callback: (arg: WeatherChangeBeforeEvent) => void): (arg: WeatherChangeBeforeEvent) => void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: WeatherChangeBeforeEvent) => void): void;
+}
+
+/**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
  * 
  * A class that wraps the state of a world - a set of
@@ -13538,6 +13633,10 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly weatherChange: WeatherChangeBeforeEventSignal;
 }
 
 /**
@@ -14818,6 +14917,14 @@ export class EnchantmentTypeNotCompatibleError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidContainerSlotError extends Error {
     private constructor();
 }
 
