@@ -1,7 +1,7 @@
-import  * as minecraftcommon from '../../translated/common';
-import  * as minecraftserver from '../../translated/server';
-export { minecraftcommon };
-export { minecraftserver };
+import * as minecraftcommon from '../common';
+import * as minecraftserver from '../server';
+/* PRIVATE */ export { minecraftcommon };
+/* PRIVATE */ export { minecraftserver };
 export { GameTestErrorType } from './enums/GameTestErrorType';
 export { LookDuration } from './enums/LookDuration';
 export { FenceConnectivity } from './classes/FenceConnectivity';

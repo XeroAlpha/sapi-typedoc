@@ -1,7 +1,7 @@
-import  * as minecraftcommon from '../../translated/common';
-import  * as minecraftserveradmin from '../../translated/server-admin';
-export { minecraftcommon };
-export { minecraftserveradmin };
+import * as minecraftcommon from '../common';
+import * as minecraftserveradmin from '../server-admin';
+/* PRIVATE */ export { minecraftcommon };
+/* PRIVATE */ export { minecraftserveradmin };
 export { HttpRequestMethod } from './enums/HttpRequestMethod';
 export { HttpClient } from './classes/HttpClient';
 export { HttpHeader } from './classes/HttpHeader';

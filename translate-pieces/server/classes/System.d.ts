@@ -91,7 +91,7 @@ export class System {
     /**
      * @beta
      */
-    runJob(generator: Generator): number;
+    runJob(generator: Generator<void, void, void>): number;
     /**
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -22,6 +22,10 @@ export class World {
      *
      */
     readonly beforeEvents: WorldBeforeEvents;
+    /**
+     * @beta
+     */
+    readonly gameRules: GameRules;
     /**
      * @remarks
      * Returns the general global scoreboard that applies to the

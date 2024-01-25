@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -94,11 +94,16 @@ export interface IPropertyPane {
      * Adds an DropDown item to the pane.
      *
      */
-    addDropdown<T extends PropertyBag, Prop extends keyof T & string>(
+    addDropdown<
+        T extends Omit<PropertyBag, Prop> & {
+            [key in Prop]: number;
+        },
+        Prop extends keyof T & string,
+    >(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDropdown,
-    ): IPropertyItem<T, Prop>;
+    ): IDropdownPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds an EntityPicker item to the pane.
@@ -128,6 +133,16 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptions,
+    ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a multiline Text item to the pane.
+     *
+     */
+    addText<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsText,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks

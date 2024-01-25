@@ -886,6 +886,31 @@ export enum GameMode {
 
 /**
  * @beta
+ */
+export enum HudElement {
+    PaperDoll = 0,
+    Armor = 1,
+    ToolTips = 2,
+    TouchControls = 3,
+    Crosshair = 4,
+    Hotbar = 5,
+    Health = 6,
+    ProgressBar = 7,
+    Hunger = 8,
+    AirBubbles = 9,
+    HorseHealth = 10,
+}
+
+/**
+ * @beta
+ */
+export enum HudVisibility {
+    Hide = 0,
+    Reset = 1,
+}
+
+/**
+ * @beta
  * The types of item components that are accessible via
  * function ItemStack.getComponent.
  */
@@ -4213,6 +4238,7 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
+     * @throws This function can throw errors.
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -4327,6 +4353,14 @@ export class Dimension {
      * weather that is currently going on.
      */
     getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks
      * Runs a command synchronously using the context of the
@@ -8212,6 +8246,223 @@ export class FluidContainer {
 }
 
 /**
+ * @beta
+ */
+export class GameRules {
+    private constructor();
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    commandBlockOutput: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    commandBlocksEnabled: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doDayLightCycle: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doEntityDrops: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doFireTick: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doImmediateRespawn: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doInsomnia: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doLimitedCrafting: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doMobLoot: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doMobSpawning: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doTileDrops: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    doWeatherCycle: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    drowningDamage: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    fallDamage: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    fireDamage: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    freezeDamage: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    functionCommandLimit: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    keepInventory: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    maxCommandChainLength: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    mobGriefing: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    naturalRegeneration: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    playersSleepingPercentage: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    projectilesCanBreakBlocks: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    pvp: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    randomTickSpeed: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    recipesUnlock: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    respawnBlocksExplode: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    sendCommandFeedback: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showBorderEffect: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showCoordinates: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showDeathMessages: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showRecipeMessages: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showTags: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    spawnRadius: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    tntExplodes: boolean;
+}
+
+/**
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires when a button is pushed.
  */
@@ -8423,6 +8674,28 @@ export class ItemCooldownComponent extends ItemComponent {
      */
     readonly cooldownTicks: number;
     static readonly componentId = 'minecraft:cooldown';
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
     /**
      * @remarks
      * Starts a new cooldown period for this item.
@@ -11561,12 +11834,44 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getHiddenHudElements(): HudElement[];
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    hideAllExcept(hudElements?: HudElement[]): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    isForcedHidden(hudElement: HudElement): boolean;
+    /**
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
      *
      */
     isValid(): boolean;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    resetHudElements(): void;
     /**
      * @remarks
      * Set the action bar text - a piece of text that displays
@@ -11579,6 +11884,14 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
      * @remarks
      * Will cause a title to show up on the player's on screen
@@ -11874,7 +12187,7 @@ export class System {
     /**
      * @beta
      */
-    runJob(generator: Generator): number;
+    runJob(generator: Generator<void, void, void>): number;
     /**
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
@@ -12302,18 +12615,8 @@ export class WeatherChangeAfterEvent {
      *
      */
     readonly dimension: string;
-    /**
-     * @remarks
-     * Whether it is lightning after the change in weather.
-     *
-     */
-    readonly lightning: boolean;
-    /**
-     * @remarks
-     * Whether it is raining after the change in weather.
-     *
-     */
-    readonly raining: boolean;
+    readonly newWeather: WeatherType;
+    readonly previousWeather: WeatherType;
 }
 
 /**
@@ -12394,6 +12697,10 @@ export class World {
      *
      */
     readonly beforeEvents: WorldBeforeEvents;
+    /**
+     * @beta
+     */
+    readonly gameRules: GameRules;
     /**
      * @remarks
      * Returns the general global scoreboard that applies to the
@@ -13328,6 +13635,18 @@ export interface BlockFillOptions {
 }
 
 /**
+ * @beta
+ */
+export interface BlockFilter {
+    excludePermutations?: BlockPermutation[];
+    excludeTags?: string[];
+    excludeTypes?: string[];
+    includePermutations?: BlockPermutation[];
+    includeTags?: string[];
+    includeTypes?: string[];
+}
+
+/**
  * Contains more information for events where a block is hit.
  */
 export interface BlockHitInformation {
@@ -13382,6 +13701,10 @@ export interface BlockRaycastHit {
  * query.
  */
 export interface BlockRaycastOptions {
+    /**
+     * @beta
+     */
+    blockFilter?: BlockFilter;
     /**
      * @remarks
      * If true, liquid blocks will be considered as blocks that
@@ -14537,6 +14860,14 @@ export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ */
+export const HudElementsCount = 11;
+/**
+ * @beta
+ */
+export const HudVisibilityCount = 2;
 /**
  * @remarks
  * Holds the number of MoonPhases

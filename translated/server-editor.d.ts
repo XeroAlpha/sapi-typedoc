@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.60-preview.26"
+ *   "version": "0.1.0-beta.1.20.70-preview.20"
  * }
  * ```
  *
@@ -173,6 +173,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Number = 'editorUI:Number',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
+    Text = 'editorUI:Text',
     Vec3 = 'editorUI:Vec3',
 }
 
@@ -460,6 +461,16 @@ export declare type EventHandler<T> = (eventArg: T) => void;
 export type IActionPropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
     replaceBoundAction(action: RegisteredAction<NoArgsAction> | undefined): void;
 };
+
+/**
+ * A property item which supports Dropdown properties
+ */
+export type IDropdownPropertyItem<
+    T extends Omit<PropertyBag, Prop> & {
+        [key in Prop]: number;
+    },
+    Prop extends keyof T & string,
+> = IPropertyItem<T, Prop> & IDropdownPropertyItemMixIn;
 
 /**
  * The IPlayerUISession represents the editor user interface
@@ -2207,6 +2218,20 @@ export interface IDropdownItem {
 }
 
 /**
+ * Dropdown property item specific functionality
+ */
+export interface IDropdownPropertyItemMixIn {
+    /**
+     * @remarks
+     * Used to update the Dropdown options in the control. Will
+     * trigger onChange with -1 as the old value due to the list
+     * changing entries.
+     *
+     */
+    updateDropdownItems(dropdownItems: IDropdownItem[], newValue: number): void;
+}
+
+/**
  * Returned from an event subscription. Provides functionality
  * for cleaning up listeners
  */
@@ -2509,6 +2534,14 @@ export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
     pane: IPropertyPane;
 }
 
+/**
+ * Localization string id for multiline text component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsText extends IPropertyItemOptions {
+    valueStringId: string;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
     /**
@@ -2534,19 +2567,22 @@ export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
     maxZ?: number;
     /**
      * @remarks
-     * The min possible value for the X axis. By default 0
+     * The min possible value for the X axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minX?: number;
     /**
      * @remarks
-     * The min possible value for the Y axis. By default 0
+     * The min possible value for the Y axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minY?: number;
     /**
      * @remarks
-     * The min possible value for the Z axis. By default 0
+     * The min possible value for the Z axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minZ?: number;
@@ -2646,11 +2682,16 @@ export interface IPropertyPane {
      * Adds an DropDown item to the pane.
      *
      */
-    addDropdown<T extends PropertyBag, Prop extends keyof T & string>(
+    addDropdown<
+        T extends Omit<PropertyBag, Prop> & {
+            [key in Prop]: number;
+        },
+        Prop extends keyof T & string,
+    >(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDropdown,
-    ): IPropertyItem<T, Prop>;
+    ): IDropdownPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds an EntityPicker item to the pane.
@@ -2680,6 +2721,16 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptions,
+    ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a multiline Text item to the pane.
+     *
+     */
+    addText<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsText,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks

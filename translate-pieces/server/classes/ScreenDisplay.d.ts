@@ -1,4 +1,4 @@
-/* IMPORT */ import { RawMessage, TitleDisplayOptions } from '../index';
+/* IMPORT */ import { HudElement, HudVisibility, RawMessage, TitleDisplayOptions } from '../index';
 
 /**
  * Contains information about user interface elements that are
@@ -7,12 +7,44 @@
 export class ScreenDisplay {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getHiddenHudElements(): HudElement[];
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    hideAllExcept(hudElements?: HudElement[]): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    isForcedHidden(hudElement: HudElement): boolean;
+    /**
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
      *
      */
     isValid(): boolean;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    resetHudElements(): void;
     /**
      * @remarks
      * Set the action bar text - a piece of text that displays
@@ -25,6 +57,14 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
      * @remarks
      * Will cause a title to show up on the player's on screen

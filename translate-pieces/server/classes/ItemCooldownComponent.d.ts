@@ -27,6 +27,28 @@ export class ItemCooldownComponent extends ItemComponent {
     static readonly componentId = 'minecraft:cooldown';
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
+    /**
+     * @remarks
      * Starts a new cooldown period for this item.
      *
      * This function can't be called in read-only mode.

@@ -24,19 +24,22 @@ export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
     maxZ?: number;
     /**
      * @remarks
-     * The min possible value for the X axis. By default 0
+     * The min possible value for the X axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minX?: number;
     /**
      * @remarks
-     * The min possible value for the Y axis. By default 0
+     * The min possible value for the Y axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minY?: number;
     /**
      * @remarks
-     * The min possible value for the Z axis. By default 0
+     * The min possible value for the Z axis. By default
+     * Number.MIN_SAFE_INTEGER
      *
      */
     minZ?: number;
