@@ -910,6 +910,31 @@ export enum GameMode {
 
 /**
  * @beta
+ */
+export enum HudElement {
+    PaperDoll = 0,
+    Armor = 1,
+    ToolTips = 2,
+    TouchControls = 3,
+    Crosshair = 4,
+    Hotbar = 5,
+    Health = 6,
+    ProgressBar = 7,
+    Hunger = 8,
+    AirBubbles = 9,
+    HorseHealth = 10,
+}
+
+/**
+ * @beta
+ */
+export enum HudVisibility {
+    Hide = 0,
+    Reset = 1,
+}
+
+/**
+ * @beta
  * The types of item components that are accessible via
  * function ItemStack.getComponent.
  */
@@ -4381,6 +4406,7 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
+     * @throws This function can throw errors.
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -4495,6 +4521,14 @@ export class Dimension {
      * weather that is currently going on.
      */
     getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks
      * Runs a command synchronously using the context of the
@@ -8396,6 +8430,223 @@ export class FluidContainer {
 }
 
 /**
+ * @beta
+ */
+export class GameRules {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    commandBlockOutput: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    commandBlocksEnabled: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doDayLightCycle: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doEntityDrops: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doFireTick: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doImmediateRespawn: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doInsomnia: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doLimitedCrafting: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doMobLoot: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doMobSpawning: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doTileDrops: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    doWeatherCycle: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    drowningDamage: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    fallDamage: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    fireDamage: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    freezeDamage: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    functionCommandLimit: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    keepInventory: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    maxCommandChainLength: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    mobGriefing: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    naturalRegeneration: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    playersSleepingPercentage: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    projectilesCanBreakBlocks: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    pvp: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    randomTickSpeed: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    recipesUnlock: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    respawnBlocksExplode: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    sendCommandFeedback: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showBorderEffect: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showCoordinates: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showDeathMessages: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showRecipeMessages: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showTags: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    spawnRadius: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    tntExplodes: boolean;
+}
+
+/**
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires when a button is pushed.
  */
@@ -8614,6 +8865,50 @@ export class ItemCooldownComponent extends ItemComponent {
      */
     readonly cooldownTicks: number;
     static readonly componentId = 'minecraft:cooldown';
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
     /**
      * @remarks
      * 开始物品的冷却周期。
@@ -11877,12 +12172,44 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getHiddenHudElements(): HudElement[];
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    hideAllExcept(hudElements?: HudElement[]): void;
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    isForcedHidden(hudElement: HudElement): boolean;
+    /**
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
      *
      */
     isValid(): boolean;
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    resetHudElements(): void;
     /**
      * @remarks
      * Set the action bar text - a piece of text that displays
@@ -11895,6 +12222,14 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
      * @remarks
      * Will cause a title to show up on the player's on screen
@@ -12190,7 +12525,7 @@ export class System {
     /**
      * @beta
      */
-    runJob(generator: Generator): number;
+    runJob(generator: Generator<void, void, void>): number;
     /**
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
@@ -12618,18 +12953,8 @@ export class WeatherChangeAfterEvent {
      *
      */
     readonly dimension: string;
-    /**
-     * @remarks
-     * Whether it is lightning after the change in weather.
-     *
-     */
-    readonly lightning: boolean;
-    /**
-     * @remarks
-     * Whether it is raining after the change in weather.
-     *
-     */
-    readonly raining: boolean;
+    readonly newWeather: WeatherType;
+    readonly previousWeather: WeatherType;
 }
 
 /**
@@ -12712,6 +13037,10 @@ export class World {
      *
      */
     readonly beforeEvents: WorldBeforeEvents;
+    /**
+     * @beta
+     */
+    readonly gameRules: GameRules;
     /**
      * @remarks
      * 全局的、唯一的记分板对象。
@@ -13723,6 +14052,18 @@ export interface BlockFillOptions {
 }
 
 /**
+ * @beta
+ */
+export interface BlockFilter {
+    excludePermutations?: BlockPermutation[];
+    excludeTags?: string[];
+    excludeTypes?: string[];
+    includePermutations?: BlockPermutation[];
+    includeTags?: string[];
+    includeTypes?: string[];
+}
+
+/**
  * Contains more information for events where a block is hit.
  */
 export interface BlockHitInformation {
@@ -13777,6 +14118,10 @@ export interface BlockRaycastHit {
  * query.
  */
 export interface BlockRaycastOptions {
+    /**
+     * @beta
+     */
+    blockFilter?: BlockFilter;
     /**
      * @remarks
      * If true, liquid blocks will be considered as blocks that
@@ -14938,6 +15283,14 @@ export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ */
+export const HudElementsCount = 11;
+/**
+ * @beta
+ */
+export const HudVisibilityCount = 2;
 /**
  * @remarks
  * Holds the number of MoonPhases

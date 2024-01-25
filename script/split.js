@@ -44,6 +44,7 @@ function asRelativeModulePath(from, to) {
 
 const ImportPrompt = '/* IMPORT */';
 const ExportPrompt = '/* EXPORT */';
+const PrivatePrompt = '/* PRIVATE */';
 
 /**
  * @param {import('ts-morph').SourceFile} sourceFile
@@ -82,15 +83,16 @@ function split(sourceFile) {
             console.log(`Cannot find symbol for node: ${node.getKindName()}`);
             return;
         }
+        const symbolName = symbol.getName();
         const category = SyntaxKindToCategory.get(node.getKind());
         if (!category) {
             console.log(`Cannot find category for node: ${node.getKindName()}`);
             return;
         }
-        let piecePath = resolvePath(pieceDirectory, category, `${symbol.getName()}.d.ts`);
+        let piecePath = resolvePath(pieceDirectory, category, `${symbolName}.d.ts`);
         let pieceIndex = 1;
         while (piecePathList.includes(piecePath.toLowerCase())) {
-            piecePath = resolvePath(pieceDirectory, category, `${symbol.getName()}-${pieceIndex}.d.ts`);
+            piecePath = resolvePath(pieceDirectory, category, `${symbolName}-${pieceIndex}.d.ts`);
             pieceIndex++;
         }
         piecePathList.push(piecePath.toLowerCase());
@@ -103,8 +105,8 @@ function split(sourceFile) {
         }
 
         const importSymbols = [...new Set(scopedSymbols)]
-            .map((symbol) => {
-                return symbol
+            .map((scopedSymbol) => {
+                return scopedSymbol
                     .getDeclarations()
                     .filter((decl) => {
                         const declSourceFile = decl.getSourceFile();
@@ -117,13 +119,13 @@ function split(sourceFile) {
                     })
                     .map((decl) => ({
                         fromName: decl.getSymbolOrThrow().getName(),
-                        toName: symbol.getName(),
+                        toName: scopedSymbol.getName(),
                         sourceFile: resolvePath(getSourceFilePieceDirectory(decl.getSourceFile()), 'index.d.ts')
                     }))[0];
             })
             .filter((e) => e !== undefined);
         importSymbols.sort((a, b) => (a.toName > b.toName ? 1 : a.toName < b.toName ? -1 : 0));
-        const exportedSymbol = node.hasExportKeyword?.() ? null : symbol.getName();
+        const isExported = node.hasExportKeyword?.() ?? false;
 
         const importGroupedByFile = {};
         importSymbols.forEach((e) => {
@@ -140,13 +142,13 @@ function split(sourceFile) {
             return `import { ${imports.join(', ')} } from '${fileNameRelative}';`;
         });
 
-        pieceExports.push([symbol.getName(), piecePath]);
+        pieceExports.push([symbolName, piecePath, isExported]);
         pieces.push({
             start: pieceStart,
             end: node.getEnd(),
             path: piecePath,
             imports: importStatements.map((e) => `${ImportPrompt} ${e}`).join('\n'),
-            exports: exportedSymbol ? `${ExportPrompt} export { ${exportedSymbol} };` : ''
+            exports: isExported ? '' : `${ExportPrompt} export { ${symbolName} };`
         });
     });
 
@@ -157,7 +159,7 @@ function split(sourceFile) {
     sourceImportDeclarations.forEach((e) => {
         const importModulePathRelative = asRelativeModulePath(
             pieceDirectory,
-            e.getModuleSpecifierSourceFileOrThrow().getFilePath()
+            getSourceFilePieceDirectory(e.getModuleSpecifierSourceFileOrThrow())
         );
         const importClause = e.getImportClause();
         const importedIdentifiers = [];
@@ -170,12 +172,13 @@ function split(sourceFile) {
             });
         }
         const importedIdentifierNames = importedIdentifiers.map((e) => e.getText());
-        indexImportStatements.push(`import ${importClause.getFullText()} from '${importModulePathRelative}';`);
-        indexExportStatements.push(`export { ${importedIdentifierNames.join(', ')} };`);
+        indexImportStatements.push(`import ${importClause.getText()} from '${importModulePathRelative}';`);
+        indexExportStatements.push(`${PrivatePrompt} export { ${importedIdentifierNames.join(', ')} };`);
     });
-    pieceExports.forEach(([symbolName, piecePath]) => {
+    pieceExports.forEach(([symbolName, piecePath, isExported]) => {
         const piecePathRelative = asRelativeModulePath(pieceDirectory, piecePath);
-        indexExportStatements.push(`export { ${symbolName} } from '${piecePathRelative}';`);
+        const prefix = isExported ? '' : `${PrivatePrompt} `;
+        indexExportStatements.push(`${prefix}export { ${symbolName} } from '${piecePathRelative}';`);
     });
     const sourceIndexPiece = {
         generated: true,

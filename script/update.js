@@ -20,6 +20,8 @@ function extractVersionInfo(versionString) {
     }
 }
 
+const dummyPackages = ['@minecraft/dummy-package'];
+
 async function main() {
     // 强制检出 original 分支
     const head = execSync('git rev-parse --abbrev-ref HEAD', {
@@ -34,6 +36,16 @@ async function main() {
         });
     }
 
+    // 获取 @minecraft 组织下的包
+    const scopedPackages = JSON.parse(
+        execSync('npm search --json @minecraft', {
+            cwd: originalPath
+        })
+    );
+    const onlinePackageNames = scopedPackages
+        .map((package) => package.name)
+        .filter((packageName) => !dummyPackages.includes(packageName));
+
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, 'package.json');
     const packageSnapshotPath = resolvePath(translatedPath, 'package.json');
@@ -47,6 +59,12 @@ async function main() {
 
     // 不使用翻译构建项目
     const { sourceFiles, dependencies } = await build(false);
+
+    // 检查是否所有包都在依赖中
+    const missingDependencies = onlinePackageNames.filter((packageName) => !(packageName in dependencies));
+    if (missingDependencies.length > 0) {
+        throw new Error(`Missing dependencies: ${missingDependencies.join(',')}`);
+    }
 
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });

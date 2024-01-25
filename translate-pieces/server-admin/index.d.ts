@@ -1,5 +1,5 @@
-import  * as minecraftcommon from '../../translated/common';
-export { minecraftcommon };
+import * as minecraftcommon from '../common';
+/* PRIVATE */ export { minecraftcommon };
 export { SecretString } from './classes/SecretString';
 export { ServerSecrets } from './classes/ServerSecrets';
 export { ServerVariables } from './classes/ServerVariables';

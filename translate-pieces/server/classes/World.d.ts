@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -24,6 +24,10 @@ export class World {
      *
      */
     readonly beforeEvents: WorldBeforeEvents;
+    /**
+     * @beta
+     */
+    readonly gameRules: GameRules;
     /**
      * @remarks
      * 全局的、唯一的记分板对象。

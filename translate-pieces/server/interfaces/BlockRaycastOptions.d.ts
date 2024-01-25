@@ -1,8 +1,14 @@
+/* IMPORT */ import { BlockFilter } from '../index';
+
 /**
  * Contains additional options for configuring a block raycast
  * query.
  */
 export interface BlockRaycastOptions {
+    /**
+     * @beta
+     */
+    blockFilter?: BlockFilter;
     /**
      * @remarks
      * If true, liquid blocks will be considered as blocks that

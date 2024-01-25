@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, Vector3, WeatherType, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, Vector3, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -147,6 +147,7 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
+     * @throws This function can throw errors.
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -261,6 +262,14 @@ export class Dimension {
      * weather that is currently going on.
      */
     getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks
      * Runs a command synchronously using the context of the

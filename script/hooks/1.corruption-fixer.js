@@ -1,16 +1,14 @@
-// FUCK STUPID MOJANG!
+/* eslint-disable no-unused-vars */
+const { strict: assert } = require('assert');
 const { ts } = require('ts-morph');
+
+// FUCK STUPID MOJANG!
+/** @type {((context: import('./hook').TranslateHookContext) => void)[]} */
+const patches = [];
 
 /** @type {import('./hook').Hook} */
 module.exports = {
-    afterLoad({ project }) {
-        // patch: @minecraft/server@1.9.0-beta.1.20.60-preview.26
-        project
-            .getSourceFileOrThrow('server.d.ts')
-            .getClassOrThrow('System')
-            .getMemberOrThrow('runJob')
-            .asKindOrThrow(ts.SyntaxKind.MethodDeclaration)
-            .getParameter('generator')
-            .setType('Generator');
+    afterLoad(context) {
+        patches.forEach((f) => f(context));
     }
 };

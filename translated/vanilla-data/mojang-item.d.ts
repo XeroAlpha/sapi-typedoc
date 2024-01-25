@@ -16,6 +16,8 @@ export declare enum MinecraftItemTypes {
     AcaciaFenceGate = "minecraft:acacia_fence_gate",
     /** 悬挂式金合欢木告示牌。 */
     AcaciaHangingSign = "minecraft:acacia_hanging_sign",
+    /** 金合欢树叶。 */
+    AcaciaLeaves = "minecraft:acacia_leaves",
     /** 金合欢原木。 */
     AcaciaLog = "minecraft:acacia_log",
     /** 金合欢木板。 */
@@ -24,6 +26,8 @@ export declare enum MinecraftItemTypes {
     AcaciaPressurePlate = "minecraft:acacia_pressure_plate",
     /** 金合欢木告示牌。 */
     AcaciaSign = "minecraft:acacia_sign",
+    /** 金合欢木台阶。 */
+    AcaciaSlab = "minecraft:acacia_slab",
     /** 金合欢木楼梯。 */
     AcaciaStairs = "minecraft:acacia_stairs",
     /** 金合欢木活板门。 */
@@ -162,6 +166,8 @@ export declare enum MinecraftItemTypes {
     BirchFenceGate = "minecraft:birch_fence_gate",
     /** 悬挂式白桦木告示牌。 */
     BirchHangingSign = "minecraft:birch_hanging_sign",
+    /** 白桦树叶。 */
+    BirchLeaves = "minecraft:birch_leaves",
     /** 白桦原木。 */
     BirchLog = "minecraft:birch_log",
     /** 白桦木板。 */
@@ -170,6 +176,8 @@ export declare enum MinecraftItemTypes {
     BirchPressurePlate = "minecraft:birch_pressure_plate",
     /** 白桦木告示牌。 */
     BirchSign = "minecraft:birch_sign",
+    /** 白桦木台阶。 */
+    BirchSlab = "minecraft:birch_slab",
     /** 白桦木楼梯。 */
     BirchStairs = "minecraft:birch_stairs",
     /** 白桦木活板门。 */
@@ -461,9 +469,7 @@ export declare enum MinecraftItemTypes {
     Compass = "minecraft:compass",
     /** 堆肥桶。 */
     Composter = "minecraft:composter",
-    /** 混凝土。 */
     Concrete = "minecraft:concrete",
-    /** 混凝土粉末。 */
     ConcretePowder = "minecraft:concrete_powder",
     /** 潮涌核心。 */
     Conduit = "minecraft:conduit",
@@ -602,6 +608,8 @@ export declare enum MinecraftItemTypes {
     DarkOakFenceGate = "minecraft:dark_oak_fence_gate",
     /** 悬挂式深色橡木告示牌。 */
     DarkOakHangingSign = "minecraft:dark_oak_hanging_sign",
+    /** 深色橡树树叶。 */
+    DarkOakLeaves = "minecraft:dark_oak_leaves",
     /** 深色橡木原木。 */
     DarkOakLog = "minecraft:dark_oak_log",
     /** 深色橡木木板。 */
@@ -610,6 +618,8 @@ export declare enum MinecraftItemTypes {
     DarkOakPressurePlate = "minecraft:dark_oak_pressure_plate",
     /** 深色橡木告示牌。 */
     DarkOakSign = "minecraft:dark_oak_sign",
+    /** 深色橡木台阶。 */
+    DarkOakSlab = "minecraft:dark_oak_slab",
     /** 深色橡木楼梯。 */
     DarkOakStairs = "minecraft:dark_oak_stairs",
     /** 深色橡木活板门。 */
@@ -925,8 +935,8 @@ export declare enum MinecraftItemTypes {
     Granite = "minecraft:granite",
     /** 花岗岩楼梯。 */
     GraniteStairs = "minecraft:granite_stairs",
-    /** 草。 */
-    Grass = "minecraft:grass",
+    /** 草方块。 */
+    GrassBlock = "minecraft:grass_block",
     /** 草径。 */
     GrassPath = "minecraft:grass_path",
     /** 沙砾。 */
@@ -983,9 +993,7 @@ export declare enum MinecraftItemTypes {
     Gunpowder = "minecraft:gunpowder",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
-    /** 染色强化玻璃。 */
     HardStainedGlass = "minecraft:hard_stained_glass",
-    /** 染色强化玻璃板。 */
     HardStainedGlassPane = "minecraft:hard_stained_glass_pane",
     /** 陶瓦。 */
     HardenedClay = "minecraft:hardened_clay",
@@ -1083,6 +1091,8 @@ export declare enum MinecraftItemTypes {
     JungleFenceGate = "minecraft:jungle_fence_gate",
     /** 悬挂式丛林木告示牌。 */
     JungleHangingSign = "minecraft:jungle_hanging_sign",
+    /** 丛林树叶。 */
+    JungleLeaves = "minecraft:jungle_leaves",
     /** 丛林原木。 */
     JungleLog = "minecraft:jungle_log",
     /** 丛林木板。 */
@@ -1091,6 +1101,8 @@ export declare enum MinecraftItemTypes {
     JunglePressurePlate = "minecraft:jungle_pressure_plate",
     /** 丛林木告示牌。 */
     JungleSign = "minecraft:jungle_sign",
+    /** 丛林木台阶。 */
+    JungleSlab = "minecraft:jungle_slab",
     /** 丛林木楼梯。 */
     JungleStairs = "minecraft:jungle_stairs",
     /** 丛林木活板门。 */
@@ -1125,9 +1137,7 @@ export declare enum MinecraftItemTypes {
     LeatherHorseArmor = "minecraft:leather_horse_armor",
     /** 皮革裤子。 */
     LeatherLeggings = "minecraft:leather_leggings",
-    /** 橡树树叶/云杉树叶/白桦树叶/丛林树叶。 */
     Leaves = "minecraft:leaves",
-    /** 金合欢树叶/深色橡树树叶。 */
     Leaves2 = "minecraft:leaves2",
     /** 讲台。 */
     Lectern = "minecraft:lectern",
@@ -1429,12 +1439,16 @@ export declare enum MinecraftItemTypes {
     OakFence = "minecraft:oak_fence",
     /** 悬挂式橡木告示牌。 */
     OakHangingSign = "minecraft:oak_hanging_sign",
+    /** 橡树树叶。 */
+    OakLeaves = "minecraft:oak_leaves",
     /** 橡木原木。 */
     OakLog = "minecraft:oak_log",
     /** 橡木木板。 */
     OakPlanks = "minecraft:oak_planks",
     /** 橡木告示牌。 */
     OakSign = "minecraft:oak_sign",
+    /** 橡木台阶。 */
+    OakSlab = "minecraft:oak_slab",
     /** 橡木楼梯。 */
     OakStairs = "minecraft:oak_stairs",
     /** 侦测器。 */
@@ -1543,7 +1557,6 @@ export declare enum MinecraftItemTypes {
     PitcherPlant = "minecraft:pitcher_plant",
     /** 瓶子草荚果。 */
     PitcherPod = "minecraft:pitcher_pod",
-    /** 木板。 */
     Planks = "minecraft:planks",
     /** 富饶纹样陶片。 */
     PlentyPotterySherd = "minecraft:plenty_pottery_sherd",
@@ -1813,7 +1826,6 @@ export declare enum MinecraftItemTypes {
     Shield = "minecraft:shield",
     /** 菌光体。 */
     Shroomlight = "minecraft:shroomlight",
-    /** 潜影盒。 */
     ShulkerBox = "minecraft:shulker_box",
     /** 潜影壳。 */
     ShulkerShell = "minecraft:shulker_shell",
@@ -1913,6 +1925,8 @@ export declare enum MinecraftItemTypes {
     SpruceFenceGate = "minecraft:spruce_fence_gate",
     /** 悬挂式云杉木告示牌。 */
     SpruceHangingSign = "minecraft:spruce_hanging_sign",
+    /** 云杉树叶。 */
+    SpruceLeaves = "minecraft:spruce_leaves",
     /** 云杉原木。 */
     SpruceLog = "minecraft:spruce_log",
     /** 云杉木板。 */
@@ -1921,6 +1935,8 @@ export declare enum MinecraftItemTypes {
     SprucePressurePlate = "minecraft:spruce_pressure_plate",
     /** 云杉木告示牌。 */
     SpruceSign = "minecraft:spruce_sign",
+    /** 云杉木台阶。 */
+    SpruceSlab = "minecraft:spruce_slab",
     /** 云杉木楼梯。 */
     SpruceStairs = "minecraft:spruce_stairs",
     /** 云杉木活板门。 */
@@ -1929,11 +1945,8 @@ export declare enum MinecraftItemTypes {
     Spyglass = "minecraft:spyglass",
     /** 鱿鱼刷怪蛋。 */
     SquidSpawnEgg = "minecraft:squid_spawn_egg",
-    /** 染色玻璃。 */
     StainedGlass = "minecraft:stained_glass",
-    /** 染色玻璃板。 */
     StainedGlassPane = "minecraft:stained_glass_pane",
-    /** 染色陶瓦。 */
     StainedHardenedClay = "minecraft:stained_hardened_clay",
     /** 木棍。 */
     Stick = "minecraft:stick",
@@ -2307,7 +2320,6 @@ export declare enum MinecraftItemTypes {
     WoodenPressurePlate = "minecraft:wooden_pressure_plate",
     /** 木锹。 */
     WoodenShovel = "minecraft:wooden_shovel",
-    /** 橡木台阶/云杉木台阶/白桦木台阶/丛林木台阶/金合欢木台阶/深色橡木台阶。 */
     WoodenSlab = "minecraft:wooden_slab",
     /** 木剑。 */
     WoodenSword = "minecraft:wooden_sword",

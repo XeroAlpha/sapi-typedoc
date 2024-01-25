@@ -1,3 +1,5 @@
+/* IMPORT */ import { WeatherType } from '../index';
+
 /**
  * @beta
  * Contains information related to changes in weather in the
@@ -11,16 +13,6 @@ export class WeatherChangeAfterEvent {
      *
      */
     readonly dimension: string;
-    /**
-     * @remarks
-     * Whether it is lightning after the change in weather.
-     *
-     */
-    readonly lightning: boolean;
-    /**
-     * @remarks
-     * Whether it is raining after the change in weather.
-     *
-     */
-    readonly raining: boolean;
+    readonly newWeather: WeatherType;
+    readonly previousWeather: WeatherType;
 }
