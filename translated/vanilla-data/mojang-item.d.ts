@@ -1064,6 +1064,7 @@ export declare enum MinecraftItemTypes {
     TurtleSpawnEgg = "minecraft:turtle_spawn_egg",
     TwistingVines = "minecraft:twisting_vines",
     UndyedShulkerBox = "minecraft:undyed_shulker_box",
+    Vault = "minecraft:vault",
     VerdantFroglight = "minecraft:verdant_froglight",
     VexArmorTrimSmithingTemplate = "minecraft:vex_armor_trim_smithing_template",
     VexSpawnEgg = "minecraft:vex_spawn_egg",

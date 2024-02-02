@@ -472,6 +472,7 @@ export enum EntityComponentTypes {
     SkinId = 'minecraft:skin_id',
     Strength = 'minecraft:strength',
     Tameable = 'minecraft:tameable',
+    TypeFamily = 'minecraft:type_family',
     UnderwaterMovement = 'minecraft:underwater_movement',
     Variant = 'minecraft:variant',
     WantsJockey = 'minecraft:wants_jockey',
@@ -624,6 +625,7 @@ export enum EntityDamageCause {
      */
     projectile = 'projectile',
     ramAttack = 'ramAttack',
+    selfDestruct = 'selfDestruct',
     sonicBoom = 'sonicBoom',
     soulCampfire = 'soulCampfire',
     /**
@@ -1352,6 +1354,7 @@ export type EntityComponentTypeMap = {
     'minecraft:strength': EntityStrengthComponent;
     'minecraft:tameable': EntityTameableComponent;
     'minecraft:tamemount': EntityMountTamingComponent;
+    'minecraft:type_family': EntityTypeFamilyComponent;
     'minecraft:underwater_movement': EntityUnderwaterMovementComponent;
     'minecraft:variant': EntityVariantComponent;
     'minecraft:wants_jockey': EntityWantsJockeyComponent;
@@ -1382,6 +1385,7 @@ export type EntityComponentTypeMap = {
     strength: EntityStrengthComponent;
     tameable: EntityTameableComponent;
     tamemount: EntityMountTamingComponent;
+    type_family: EntityTypeFamilyComponent;
     underwater_movement: EntityUnderwaterMovementComponent;
     variant: EntityVariantComponent;
     wants_jockey: EntityWantsJockeyComponent;
@@ -2615,141 +2619,129 @@ export class BlockTypes {
 
 /**
  * @beta
- * Block Volume Utils is a utility class that provides a number
- * of useful functions for the creation and utility of {@link
- * @minecraft-server.BlockVolume} objects
+ * A BlockVolume is a simple interface to an object which
+ * represents a 3D rectangle of a given size (in blocks) at a
+ * world block location.
+ * Note that these are not analogous to "min" and "max" values,
+ * in that the vector components are not guaranteed to be in
+ * any order.
+ * In addition, these vector positions are not interchangeable
+ * with BlockLocation.
+ * If you want to get this volume represented as range of of
+ * BlockLocations, you can use the getBoundingBox utility
+ * function.
+ * This volume class will maintain the ordering of the corner
+ * indexes as initially set. imagine that each corner is
+ * assigned in Editor - as you move the corner around
+ * (potentially inverting the min/max relationship of the
+ * bounds) - what
+ * you had originally selected as the top/left corner would
+ * traditionally become the bottom/right.
+ * When manually editing these kinds of volumes, you need to
+ * maintain the identity of the corner as you edit - the
+ * BlockVolume utility functions do this.
+ *
+ * Important to note that this measures block sizes (to/from) -
+ * a normal AABB (0,0,0) to (0,0,0) would traditionally be of
+ * size (0,0,0)
+ * However, because we're measuring blocks - the size or span
+ * of a BlockVolume would actually be (1,1,1)
+ *
  */
-export class BlockVolumeUtils {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockVolume extends BlockVolumeBase {
+    /**
+     * @remarks
+     * A world block location that represents a corner in a 3D
+     * rectangle
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    'from': Vector3;
+    /**
+     * @remarks
+     * A world block location that represents the opposite corner
+     * in a 3D rectangle
+     *
+     * This property can't be edited in read-only mode.
+     *
+     */
+    to: Vector3;
+    constructor(from: Vector3, to: Vector3);
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    doesLocationTouchFaces(pos: Vector3): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    doesVolumeTouchFaces(other: BlockVolume): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    intersects(other: BlockVolume): BlockVolumeIntersection;
+}
+
+/**
+ * @beta
+ */
+export class BlockVolumeBase {
     private constructor();
     /**
      * @remarks
-     * Check to see if the given location is directly adjacent to
-     * the outer surface of a BlockVolume.
-     *
-     *
      * This function can't be called in read-only mode.
      *
-     * @param volume
-     * The volume to test against
-     * @param pos
-     * The world block location to test
-     * @returns
-     * If the location is either inside or more than 0 blocks away,
-     * the function will return false.
-     * If the location is directly contacting the outer surface of
-     * the BlockVolume, the function will return true.
      */
-    static doesLocationTouchFaces(volume: BlockVolume, pos: Vector3): boolean;
+    getBlockLocationIterator(): BlockLocationIterator;
     /**
      * @remarks
-     * Check to see if a two block volumes are directly adjacent
-     * and two faces touch.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param volume
-     * The volume to test against
-     * @param other
-     * The volume to test
-     * @returns
-     * If the outer faces of both block volumes touch and are
-     * directly adjacent at any point, return true.
      */
-    static doesVolumeTouchFaces(volume: BlockVolume, other: BlockVolume): boolean;
+    getBoundingBox(): BoundingBox;
     /**
      * @remarks
-     * Test the equality of two block volumes
-     *
      * This function can't be called in read-only mode.
      *
-     * @returns
-     * Return true if two block volumes are identical
      */
-    static equals(volume: BlockVolume, other: BlockVolume): boolean;
+    getCapacity(): number;
     /**
      * @remarks
-     * Fetch a {@link BlockLocationIterator} that represents all of
-     * the block world locations within the specified volume
-     *
      * This function can't be called in read-only mode.
      *
      */
-    static getBlockLocationIterator(volume: BlockVolume): BlockLocationIterator;
+    getMax(): Vector3;
     /**
      * @remarks
-     * Return a {@link BoundingBox} object which represents the
-     * validated min and max coordinates of the volume
-     *
      * This function can't be called in read-only mode.
      *
      */
-    static getBoundingBox(volume: BlockVolume): BoundingBox;
+    getMin(): Vector3;
     /**
      * @remarks
-     * Return the capacity (volume) of the BlockVolume (W*D*H)
-     *
      * This function can't be called in read-only mode.
      *
      */
-    static getCapacity(volume: BlockVolume): number;
+    getSpan(): Vector3;
     /**
      * @remarks
-     * Get the largest corner position of the volume (guaranteed to
-     * be >= min)
-     *
      * This function can't be called in read-only mode.
      *
      */
-    static getMax(volume: BlockVolume): Vector3;
+    isInside(pos: Vector3): boolean;
     /**
      * @remarks
-     * Get the smallest corner position of the volume (guaranteed
-     * to be <= max)
-     *
      * This function can't be called in read-only mode.
      *
      */
-    static getMin(volume: BlockVolume): Vector3;
-    /**
-     * @remarks
-     * Get a {@link Vector3} object where each component represents
-     * the number of blocks along that axis
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    static getSpan(volume: BlockVolume): Vector3;
-    /**
-     * @remarks
-     * Return an enumeration which represents the intersection
-     * between two BlockVolume objects
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    static intersects(volume: BlockVolume, other: BlockVolume): BlockVolumeIntersection;
-    /**
-     * @remarks
-     * Check to see if a given world block location is inside a
-     * BlockVolume
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    static isInside(volume: BlockVolume, pos: Vector3): boolean;
-    /**
-     * @remarks
-     * Move a BlockVolume by a specified amount
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param delta
-     * Amount of blocks to move by
-     * @returns
-     * Returns a new BlockVolume object which represents the new
-     * volume
-     */
-    static translate(volume: BlockVolume, delta: Vector3): BlockVolume;
+    translate(delta: Vector3): void;
 }
 
 /**
@@ -7965,6 +7957,23 @@ export class EntityType {
 
 /**
  * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityTypeFamilyComponent extends EntityComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:type_family';
+    /**
+     * @throws This function can throw errors.
+     */
+    getTypeFamilies(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
+    hasTypeFamily(typeFamily: string): boolean;
+}
+
+/**
+ * @beta
  * An iterator that loops through available entity types.
  */
 export class EntityTypeIterator implements Iterable<EntityType> {
@@ -9372,6 +9381,10 @@ export class ItemStack {
      * passed in.
      */
     isStackableWith(itemStack: ItemStack): boolean;
+    /**
+     * @beta
+     */
+    matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
      * @remarks
      * The list of block types this item can break in Adventure
@@ -13725,54 +13738,6 @@ export interface BlockRaycastOptions {
      *
      */
     maxDistance?: number;
-}
-
-/**
- * @beta
- * A BlockVolume is a simple interface to an object which
- * represents a 3D rectangle of a given size (in blocks) at a
- * world block location.
- * Note that these are not analogous to "min" and "max" values,
- * in that the vector components are not guaranteed to be in
- * any order.
- * In addition, these vector positions are not interchangeable
- * with BlockLocation.
- * If you want to get this volume represented as range of of
- * BlockLocations, you can use the getBoundingBox utility
- * function.
- * This volume class will maintain the ordering of the corner
- * indexes as initially set. imagine that each corner is
- * assigned in Editor - as you move the corner around
- * (potentially inverting the min/max relationship of the
- * bounds) - what
- * you had originally selected as the top/left corner would
- * traditionally become the bottom/right.
- * When manually editing these kinds of volumes, you need to
- * maintain the identity of the corner as you edit - the
- * BlockVolume utility functions do this.
- *
- * Important to note that this measures block sizes (to/from) -
- * a normal AABB (0,0,0) to (0,0,0) would traditionally be of
- * size (0,0,0)
- * However, because we're measuring blocks - the size or span
- * of a BlockVolume would actually be (1,1,1)
- *
- */
-export interface BlockVolume {
-    /**
-     * @remarks
-     * A world block location that represents a corner in a 3D
-     * rectangle
-     *
-     */
-    from: Vector3;
-    /**
-     * @remarks
-     * A world block location that represents the opposite corner
-     * in a 3D rectangle
-     *
-     */
-    to: Vector3;
 }
 
 /**

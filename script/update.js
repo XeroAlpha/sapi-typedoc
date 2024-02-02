@@ -20,7 +20,7 @@ function extractVersionInfo(versionString) {
     }
 }
 
-const dummyPackages = ['@minecraft/dummy-package'];
+const excludedPackages = ['@minecraft/dummy-package', '@minecraft/math', '@minecraft/core-build-tasks'];
 
 async function main() {
     // 强制检出 original 分支
@@ -44,7 +44,7 @@ async function main() {
     );
     const onlinePackageNames = scopedPackages
         .map((package) => package.name)
-        .filter((packageName) => !dummyPackages.includes(packageName));
+        .filter((packageName) => !excludedPackages.includes(packageName));
 
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, 'package.json');

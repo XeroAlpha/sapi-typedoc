@@ -1,4 +1,4 @@
-/* IMPORT */ import { CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal } from '../index';
+/* IMPORT */ import { CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, PrimarySelectionChangeAfterEventSignal } from '../index';
 
 /**
  * Contains a set of events that are available across the scope
@@ -14,4 +14,5 @@ export class ExtensionContextAfterEvents {
      *
      */
     readonly modeChange: ModeChangeAfterEventSignal;
+    readonly primarySelectionChange: PrimarySelectionChangeAfterEventSignal;
 }

@@ -145,6 +145,7 @@ export enum EntityDamageCause {
      */
     projectile = 'projectile',
     ramAttack = 'ramAttack',
+    selfDestruct = 'selfDestruct',
     sonicBoom = 'sonicBoom',
     soulCampfire = 'soulCampfire',
     /**

@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.70-preview.20"
+ *   "version": "0.1.0-beta.1.20.70-preview.21"
  * }
  * ```
  *
@@ -1113,6 +1113,7 @@ export class ExtensionContextAfterEvents {
      *
      */
     readonly modeChange: ModeChangeAfterEventSignal;
+    readonly primarySelectionChange: PrimarySelectionChangeAfterEventSignal;
 }
 
 /**
@@ -1352,6 +1353,28 @@ export class PlaytestManager {
     getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
 
+export class PrimarySelectionChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: SelectionEventAfterEvent) => void): (arg: SelectionEventAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: SelectionEventAfterEvent) => void): void;
+}
+
+export class PrimarySelectionChangedEvent {
+    private constructor();
+    readonly volume?: minecraftserver.CompoundBlockVolume;
+}
+
 /**
  * The Selection represents a volume in space, which may
  * potentially be made up of one or more block locations.
@@ -1561,6 +1584,11 @@ export class Selection {
      * @throws This function can throw errors.
      */
     setOutlineColor(color: minecraftserver.RGBA): void;
+}
+
+export class SelectionEventAfterEvent {
+    private constructor();
+    readonly selectionEvent: PrimarySelectionChangedEvent;
 }
 
 /**

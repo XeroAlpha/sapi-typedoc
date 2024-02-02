@@ -62,6 +62,7 @@ export enum EntityComponentTypes {
     SkinId = 'minecraft:skin_id',
     Strength = 'minecraft:strength',
     Tameable = 'minecraft:tameable',
+    TypeFamily = 'minecraft:type_family',
     UnderwaterMovement = 'minecraft:underwater_movement',
     Variant = 'minecraft:variant',
     WantsJockey = 'minecraft:wants_jockey',
