@@ -2110,6 +2110,8 @@ export declare enum MinecraftItemTypes {
     TwistingVines = "minecraft:twisting_vines",
     /** 潜影盒。 */
     UndyedShulkerBox = "minecraft:undyed_shulker_box",
+    /** 宝库。 */
+    Vault = "minecraft:vault",
     /** 青翠蛙明灯。 */
     VerdantFroglight = "minecraft:verdant_froglight",
     /** 恼鬼盔甲纹饰锻造模板。 */

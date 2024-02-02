@@ -187,6 +187,7 @@ module.exports = {
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
         const gameData = {};
         const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
+        console.log(`[translate-vanilla-data] Data version: ${betaVersionIndex.dataVersion}`);
         (
             await Promise.all(
                 ['gametest', 'experiment', 'education'].map(async (n) => {

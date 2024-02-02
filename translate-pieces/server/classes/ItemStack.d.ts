@@ -247,6 +247,10 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
+     * @beta
+     */
+    matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
      * @remarks
      * The list of block types this item can break in Adventure
      * mode. The block names are displayed in the item's tooltip.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from '../index';
 
 /**
  * @beta
@@ -31,19 +31,43 @@
  * of a BlockVolume would actually be (1,1,1)
  *
  */
-export interface BlockVolume {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockVolume extends BlockVolumeBase {
     /**
      * @remarks
      * A world block location that represents a corner in a 3D
      * rectangle
      *
+     * This property can't be edited in read-only mode.
+     *
      */
-    from: Vector3;
+    'from': Vector3;
     /**
      * @remarks
      * A world block location that represents the opposite corner
      * in a 3D rectangle
      *
+     * This property can't be edited in read-only mode.
+     *
      */
     to: Vector3;
+    constructor(from: Vector3, to: Vector3);
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    doesLocationTouchFaces(pos: Vector3): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    doesVolumeTouchFaces(other: BlockVolume): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    intersects(other: BlockVolume): BlockVolumeIntersection;
 }
