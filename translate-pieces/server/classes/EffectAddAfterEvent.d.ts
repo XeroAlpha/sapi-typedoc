@@ -1,7 +1,6 @@
 /* IMPORT */ import { Effect, Entity } from '../index';
 
 /**
- * @beta
  * Contains information related to changes to an effect - like
  * poison - being added to an entity.
  */

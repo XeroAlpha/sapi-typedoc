@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemDefinitionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '../index';
+/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '../index';
 
 /**
  * A set of events that fire before an actual action occurs. In
@@ -49,16 +49,6 @@ export class WorldBeforeEvents {
      */
     readonly explosion: ExplosionBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * For custom items, this event is triggered when the
-     * fundamental set of defined components for the item change.
-     * Note that this event is only fired for custom data-driven
-     * items.
-     *
-     */
-    readonly itemDefinitionEvent: ItemDefinitionBeforeEventSignal;
-    /**
      * @remarks
      * This event fires when an item is successfully used by a
      * player.
@@ -78,6 +68,10 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
      * @beta
      * @remarks

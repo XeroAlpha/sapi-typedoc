@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.70-preview.21"
+ *   "version": "1.0.0-internal.1.20.70-preview.22"
  * }
  * ```
  *
@@ -733,18 +733,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     setBodyRotation(angleInDegrees: number): void;
-    /**
-     * @remarks
-     * Sets the game mode that the simulated player is operating
-     * under.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param gameMode
-     * Game mode to set.
-     * @throws This function can throw errors.
-     */
-    setGameMode(gameMode: minecraftserver.GameMode): void;
     /**
      * @remarks
      * Sets a particular item for the simulated player.

@@ -15,7 +15,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.7.0"
+ *   "version": "1.8.0"
  * }
  * ```
  *
@@ -804,34 +804,29 @@ export enum EquipmentSlot {
 }
 
 /**
- * @beta
  * Represents the type of fluid for use within a fluid
  * containing block, like a cauldron.
  */
 export enum FluidType {
     /**
-     * @beta
      * @remarks
      * Represents lava as a type of fluid.
      *
      */
     Lava = 'Lava',
     /**
-     * @beta
      * @remarks
      * Represents a potion as a type of fluid.
      *
      */
     Potion = 'Potion',
     /**
-     * @beta
      * @remarks
      * Represents powder snow as a type of fluid.
      *
      */
     PowderSnow = 'PowderSnow',
     /**
-     * @beta
      * @remarks
      * Represents water as a type of fluida.
      *
@@ -884,6 +879,47 @@ export enum GameMode {
      *
      */
     survival = 'survival',
+}
+
+/**
+ * @beta
+ */
+export enum GameRule {
+    CommandBlockOutput = 'commandBlockOutput',
+    CommandBlocksEnabled = 'commandBlocksEnabled',
+    DoDayLightCycle = 'doDayLightCycle',
+    DoEntityDrops = 'doEntityDrops',
+    DoFireTick = 'doFireTick',
+    DoImmediateRespawn = 'doImmediateRespawn',
+    DoInsomnia = 'doInsomnia',
+    DoLimitedCrafting = 'doLimitedCrafting',
+    DoMobLoot = 'doMobLoot',
+    DoMobSpawning = 'doMobSpawning',
+    DoTileDrops = 'doTileDrops',
+    DoWeatherCycle = 'doWeatherCycle',
+    DrowningDamage = 'drowningDamage',
+    FallDamage = 'fallDamage',
+    FireDamage = 'fireDamage',
+    FreezeDamage = 'freezeDamage',
+    FunctionCommandLimit = 'functionCommandLimit',
+    KeepInventory = 'keepInventory',
+    MaxCommandChainLength = 'maxCommandChainLength',
+    MobGriefing = 'mobGriefing',
+    NaturalRegeneration = 'naturalRegeneration',
+    PlayersSleepingPercentage = 'playersSleepingPercentage',
+    ProjectilesCanBreakBlocks = 'projectilesCanBreakBlocks',
+    Pvp = 'pvp',
+    RandomTickSpeed = 'randomTickSpeed',
+    RecipesUnlock = 'recipesUnlock',
+    RespawnBlocksExplode = 'respawnBlocksExplode',
+    SendCommandFeedback = 'sendCommandFeedback',
+    ShowBorderEffect = 'showBorderEffect',
+    ShowCoordinates = 'showCoordinates',
+    ShowDeathMessages = 'showDeathMessages',
+    ShowRecipeMessages = 'showRecipeMessages',
+    ShowTags = 'showTags',
+    SpawnRadius = 'spawnRadius',
+    TntExplodes = 'tntExplodes',
 }
 
 /**
@@ -1134,6 +1170,26 @@ export enum SignSide {
      *
      */
     Front = 'Front',
+}
+
+/**
+ * @beta
+ */
+export enum StructureMirrorAxis {
+    None = 'None',
+    X = 'X',
+    XZ = 'XZ',
+    Z = 'Z',
+}
+
+/**
+ * @beta
+ */
+export enum StructureRotation {
+    None = 'None',
+    Rotate180 = 'Rotate180',
+    Rotate270 = 'Rotate270',
+    Rotate90 = 'Rotate90',
 }
 
 /**
@@ -1688,7 +1744,6 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of tags for a block.
      *
@@ -1702,7 +1757,6 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @beta
      * @remarks
      * Checks to see if the permutation of this block has a
      * specific tag.
@@ -2149,7 +2203,6 @@ export class BlockPermutation {
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a state for the permutation.
      *
@@ -2199,7 +2252,6 @@ export class BlockPermutation {
      */
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
-     * @beta
      * @remarks
      * Returns a derived BlockPermutation with a specific property
      * set.
@@ -2566,7 +2618,6 @@ export class BlockStateType {
 }
 
 /**
- * @beta
  * The type (or template) of a block. Does not contain
  * permutation data (state) other than the type of block it
  * represents. This type was introduced as of version
@@ -3947,7 +3998,6 @@ export class ContainerSlot {
 }
 
 /**
- * @beta
  * Contains information related to firing of a data driven
  * entity event - for example, the minecraft:ageable_grow_up
  * event on a chicken.
@@ -3976,7 +4026,6 @@ export class DataDrivenEntityTriggerAfterEvent {
 }
 
 /**
- * @beta
  * Contains event registration related to firing of a data
  * driven entity event - for example, the
  * minecraft:ageable_grow_up event on a chicken.
@@ -4639,7 +4688,6 @@ export class Effect {
 }
 
 /**
- * @beta
  * Contains information related to changes to an effect - like
  * poison - being added to an entity.
  */
@@ -4660,7 +4708,6 @@ export class EffectAddAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an effect is
  * added to an entity.
  */
@@ -4691,7 +4738,6 @@ export class EffectAddAfterEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes to an effect - like
  * poison - being added to an entity.
  */
@@ -4724,7 +4770,6 @@ export class EffectAddBeforeEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to when an effect is
  * added to an entity.
  */
@@ -8257,6 +8302,35 @@ export class FluidContainer {
 /**
  * @beta
  */
+export class GameRuleChangeAfterEvent {
+    private constructor();
+    readonly rule: GameRule;
+    readonly value: boolean | number;
+}
+
+/**
+ * @beta
+ */
+export class GameRuleChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: GameRuleChangeAfterEvent) => void): (arg: GameRuleChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
 export class GameRules {
     private constructor();
     /**
@@ -8714,112 +8788,6 @@ export class ItemCooldownComponent extends ItemComponent {
      * @throws This function can throw errors.
      */
     startCooldown(player: Player): void;
-}
-
-/**
- * @beta
- * Manages callbacks that are connected to an item's definition
- * and components changing.
- */
-export class ItemDefinitionAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when an item's
-     * definition and components change.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(
-        callback: (arg: ItemDefinitionTriggeredAfterEvent) => void,
-    ): (arg: ItemDefinitionTriggeredAfterEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called when an item's
-     * definition and components change.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: ItemDefinitionTriggeredAfterEvent) => void): void;
-}
-
-/**
- * @beta
- * Manages callbacks that are connected to an item's definition
- * and components changing.
- */
-export class ItemDefinitionBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when an item's
-     * definition and components change.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(
-        callback: (arg: ItemDefinitionTriggeredBeforeEvent) => void,
-    ): (arg: ItemDefinitionTriggeredBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called when an item's
-     * definition and components change.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: ItemDefinitionTriggeredBeforeEvent) => void): void;
-}
-
-/**
- * @beta
- * Contains information related to a custom item having a data
- * definition change being triggered.
- */
-export class ItemDefinitionTriggeredAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * Name of the data-driven item event that is triggering this
-     * change.
-     *
-     */
-    readonly eventName: string;
-    /**
-     * @remarks
-     * Related item stack that the definitional change has been
-     * triggered upon.
-     *
-     */
-    itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
-    readonly source?: Player;
-}
-
-/**
- * @beta
- * Contains information related to a triggering of a custom
- * item definition change.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ItemDefinitionTriggeredBeforeEvent extends ItemDefinitionTriggeredAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * If set to true, will cancel the application of this item
-     * definition change.
-     *
-     */
-    cancel: boolean;
 }
 
 /**
@@ -9480,20 +9448,6 @@ export class ItemStack {
      * ```
      */
     setLore(loreList?: string[]): void;
-    /**
-     * @beta
-     * @remarks
-     * Triggers an item type event. For custom items, a number of
-     * events are defined in an items' definition for key item
-     * behaviors.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param eventName
-     * Name of the item type event to trigger. If a namespace is
-     * not specified, minecraft: is assumed.
-     */
-    triggerEvent(eventName: string): void;
 }
 
 /**
@@ -10352,6 +10306,11 @@ export class Player extends Entity {
     eatItem(itemStack: ItemStack): void;
     /**
      * @beta
+     * @throws This function can throw errors.
+     */
+    getGameMode(): GameMode;
+    /**
+     * @beta
      * @remarks
      * Gets the current item cooldown time for a particular
      * cooldown category.
@@ -10523,6 +10482,14 @@ export class Player extends Entity {
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setGameMode(gameMode?: GameMode): void;
     /**
      * @beta
      * @remarks
@@ -10809,6 +10776,67 @@ export class PlayerDimensionChangeAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class PlayerGameModeChangeAfterEvent {
+    private constructor();
+    readonly fromGameMode: GameMode;
+    readonly player: Player;
+    readonly toGameMode: GameMode;
+}
+
+/**
+ * @beta
+ */
+export class PlayerGameModeChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): (arg: PlayerGameModeChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class PlayerGameModeChangeBeforeEvent {
+    private constructor();
+    cancel: boolean;
+    readonly fromGameMode: GameMode;
+    readonly player: Player;
+    toGameMode: GameMode;
+}
+
+/**
+ * @beta
+ */
+export class PlayerGameModeChangeBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
 }
 
 /**
@@ -13180,7 +13208,6 @@ export class WorldAfterEvents {
      */
     readonly chatSend: ChatSendAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is fired when an entity event has been triggered
      * that will update the component definition state of an
@@ -13255,21 +13282,15 @@ export class WorldAfterEvents {
      */
     readonly explosion: ExplosionAfterEventSignal;
     /**
+     * @beta
+     */
+    readonly gameRuleChange: GameRuleChangeAfterEventSignal;
+    /**
      * @remarks
      * This event fires when a chargeable item completes charging.
      *
      */
     readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
-    /**
-     * @beta
-     * @remarks
-     * For custom items, this event is triggered when the
-     * fundamental set of defined components for the item change.
-     * Note that this event is only fired for custom data-driven
-     * items.
-     *
-     */
-    readonly itemDefinitionEvent: ItemDefinitionAfterEventSignal;
     /**
      * @remarks
      * This event fires when a chargeable item is released from
@@ -13354,6 +13375,10 @@ export class WorldAfterEvents {
      *
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
      * @beta
      * @remarks
@@ -13502,16 +13527,6 @@ export class WorldBeforeEvents {
      */
     readonly explosion: ExplosionBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * For custom items, this event is triggered when the
-     * fundamental set of defined components for the item change.
-     * Note that this event is only fired for custom data-driven
-     * items.
-     *
-     */
-    readonly itemDefinitionEvent: ItemDefinitionBeforeEventSignal;
-    /**
      * @remarks
      * This event fires when an item is successfully used by a
      * player.
@@ -13531,6 +13546,10 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
+    /**
+     * @beta
+     */
+    readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
      * @beta
      * @remarks
@@ -13901,7 +13920,6 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
- * @beta
  * Contains a set of updates to the component definition state
  * of an entity.
  */
@@ -14044,7 +14062,6 @@ export interface EntityDamageSource {
 }
 
 /**
- * @beta
  * Specifies additional filters that are used in registering a
  * data driven trigger event for entities.
  */

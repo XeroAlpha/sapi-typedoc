@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, DimensionLocation, Entity, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, DimensionLocation, Entity, GameMode, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -133,6 +133,11 @@ export class Player extends Entity {
      * Throws if the item is not a food item.
      */
     eatItem(itemStack: ItemStack): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     */
+    getGameMode(): GameMode;
     /**
      * @beta
      * @remarks
@@ -306,6 +311,14 @@ export class Player extends Entity {
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setGameMode(gameMode?: GameMode): void;
     /**
      * @beta
      * @remarks

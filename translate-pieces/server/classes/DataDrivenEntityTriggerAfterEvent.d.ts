@@ -1,7 +1,6 @@
 /* IMPORT */ import { DefinitionModifier, Entity } from '../index';
 
 /**
- * @beta
  * Contains information related to firing of a data driven
  * entity event - for example, the minecraft:ageable_grow_up
  * event on a chicken.

@@ -266,7 +266,6 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a set of tags for a block.
      *
@@ -280,7 +279,6 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @beta
      * @remarks
      * Checks to see if the permutation of this block has a
      * specific tag.
