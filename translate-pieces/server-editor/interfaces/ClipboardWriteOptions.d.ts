@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardMirrorAxis, ClipboardRotation, minecraftserver } from '../index';
+/* IMPORT */ import { minecraftserver } from '../index';
 
 /**
  * Interface used to specify the options when a clipboard item
@@ -29,7 +29,7 @@ export interface ClipboardWriteOptions {
      * - XZ
      *
      */
-    mirror?: ClipboardMirrorAxis;
+    mirror?: minecraftserver.StructureMirrorAxis;
     /**
      * @remarks
      * A position offset which should be applied to the paste
@@ -43,5 +43,5 @@ export interface ClipboardWriteOptions {
      * should be applied while the clipboard item is being written
      *
      */
-    rotation?: ClipboardRotation;
+    rotation?: minecraftserver.StructureRotation;
 }

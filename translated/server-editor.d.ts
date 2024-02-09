@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.70-preview.21"
+ *   "version": "0.1.0-beta.1.20.70-preview.22"
  * }
  * ```
  *
@@ -29,69 +29,6 @@ import * as minecraftserver from '@minecraft/server';
 export declare enum ActionTypes {
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
-}
-
-/**
- * An enumeration describing the axis on which to mirror
- * clipboard contents when writing to the world
- */
-export enum ClipboardMirrorAxis {
-    /**
-     * @remarks
-     * No mirroring
-     *
-     */
-    None = 'None',
-    /**
-     * @remarks
-     * Mirror on the X axis
-     *
-     */
-    X = 'X',
-    /**
-     * @remarks
-     * Mirror on both X and Z axes
-     *
-     */
-    XZ = 'XZ',
-    /**
-     * @remarks
-     * Mirror on the Z axis
-     *
-     */
-    Z = 'Z',
-}
-
-/**
- * An enumeration describing the amount of rotation to be
- * applied around the Y axis when writing the clipboard to the
- * world
- */
-export enum ClipboardRotation {
-    /**
-     * @remarks
-     * No rotation
-     *
-     */
-    None = 'None',
-    /**
-     * @remarks
-     * Rotate by 180 degrees clockwise around the Y axis
-     *
-     */
-    Rotate180 = 'Rotate180',
-    /**
-     * @remarks
-     * Rotate by 270 degrees clockwise around the Y axis
-     *
-     */
-    Rotate270 = 'Rotate270',
-    /**
-     * @remarks
-     * Rotate by 90 degrees clockwise around the Y axis
-     *
-     */
-    Rotate90 = 'Rotate90',
 }
 
 /**
@@ -1965,7 +1902,7 @@ export interface ClipboardWriteOptions {
      * - XZ
      *
      */
-    mirror?: ClipboardMirrorAxis;
+    mirror?: minecraftserver.StructureMirrorAxis;
     /**
      * @remarks
      * A position offset which should be applied to the paste
@@ -1979,7 +1916,7 @@ export interface ClipboardWriteOptions {
      * should be applied while the clipboard item is being written
      *
      */
-    rotation?: ClipboardRotation;
+    rotation?: minecraftserver.StructureRotation;
 }
 
 /**
@@ -2501,6 +2438,16 @@ export interface IPropertyItemOptions {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
+    /**
+     * @remarks
+     * controls appearance of the boolean. checkbox or toggleswitch
+     *
+     */
+    displayAsToggleSwitch?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
     /**
      * @remarks
@@ -2682,7 +2629,7 @@ export interface IPropertyPane {
     addBool<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
-        options?: IPropertyItemOptions,
+        options?: IPropertyItemOptionsBool,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks

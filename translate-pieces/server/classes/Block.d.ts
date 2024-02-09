@@ -352,7 +352,6 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @beta
      * @remarks
      * 返回方块被设置的标签的列表。
      *
@@ -370,7 +369,6 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @beta
      * @remarks
      * 检查该方块的{@link BlockPermutation}是否具有特定的标签。
      *

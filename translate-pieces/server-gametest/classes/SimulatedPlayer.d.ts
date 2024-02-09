@@ -341,18 +341,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
     setBodyRotation(angleInDegrees: number): void;
     /**
      * @remarks
-     * Sets the game mode that the simulated player is operating
-     * under.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param gameMode
-     * Game mode to set.
-     * @throws This function can throw errors.
-     */
-    setGameMode(gameMode: minecraftserver.GameMode): void;
-    /**
-     * @remarks
      * Sets a particular item for the simulated player.
      *
      * This function can't be called in read-only mode.

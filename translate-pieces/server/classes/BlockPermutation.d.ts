@@ -48,7 +48,6 @@ export class BlockPermutation {
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Gets a state for the permutation.
      *
@@ -98,7 +97,6 @@ export class BlockPermutation {
      */
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
-     * @beta
      * @remarks
      * Returns a derived BlockPermutation with a specific property
      * set.

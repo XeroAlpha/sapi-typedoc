@@ -32,6 +32,8 @@ export declare enum MinecraftItemTypes {
     AcaciaStairs = "minecraft:acacia_stairs",
     /** 金合欢木活板门。 */
     AcaciaTrapdoor = "minecraft:acacia_trapdoor",
+    /** 金合欢木。 */
+    AcaciaWood = "minecraft:acacia_wood",
     /** 激活铁轨。 */
     ActivatorRail = "minecraft:activator_rail",
     /** 悦灵刷怪蛋。 */
@@ -182,6 +184,8 @@ export declare enum MinecraftItemTypes {
     BirchStairs = "minecraft:birch_stairs",
     /** 白桦木活板门。 */
     BirchTrapdoor = "minecraft:birch_trapdoor",
+    /** 白桦木。 */
+    BirchWood = "minecraft:birch_wood",
     /** 黑色蜡烛。 */
     BlackCandle = "minecraft:black_candle",
     /** 黑色地毯。 */
@@ -624,6 +628,8 @@ export declare enum MinecraftItemTypes {
     DarkOakStairs = "minecraft:dark_oak_stairs",
     /** 深色橡木活板门。 */
     DarkOakTrapdoor = "minecraft:dark_oak_trapdoor",
+    /** 深色橡木。 */
+    DarkOakWood = "minecraft:dark_oak_wood",
     /** 暗海晶石楼梯。 */
     DarkPrismarineStairs = "minecraft:dark_prismarine_stairs",
     /** 阳光探测器。 */
@@ -1107,6 +1113,8 @@ export declare enum MinecraftItemTypes {
     JungleStairs = "minecraft:jungle_stairs",
     /** 丛林木活板门。 */
     JungleTrapdoor = "minecraft:jungle_trapdoor",
+    /** 丛林木。 */
+    JungleWood = "minecraft:jungle_wood",
     /** 海带。 */
     Kelp = "minecraft:kelp",
     /** 梯子。 */
@@ -1451,6 +1459,8 @@ export declare enum MinecraftItemTypes {
     OakSlab = "minecraft:oak_slab",
     /** 橡木楼梯。 */
     OakStairs = "minecraft:oak_stairs",
+    /** 橡木。 */
+    OakWood = "minecraft:oak_wood",
     /** 侦测器。 */
     Observer = "minecraft:observer",
     /** 黑曜石。 */
@@ -1941,6 +1951,8 @@ export declare enum MinecraftItemTypes {
     SpruceStairs = "minecraft:spruce_stairs",
     /** 云杉木活板门。 */
     SpruceTrapdoor = "minecraft:spruce_trapdoor",
+    /** 云杉木。 */
+    SpruceWood = "minecraft:spruce_wood",
     /** 望远镜。 */
     Spyglass = "minecraft:spyglass",
     /** 鱿鱼刷怪蛋。 */
@@ -1992,10 +2004,14 @@ export declare enum MinecraftItemTypes {
     String = "minecraft:string",
     /** 去皮金合欢原木。 */
     StrippedAcaciaLog = "minecraft:stripped_acacia_log",
+    /** 去皮金合欢木。 */
+    StrippedAcaciaWood = "minecraft:stripped_acacia_wood",
     /** 去皮竹块。 */
     StrippedBambooBlock = "minecraft:stripped_bamboo_block",
     /** 去皮白桦原木。 */
     StrippedBirchLog = "minecraft:stripped_birch_log",
+    /** 去皮白桦木。 */
+    StrippedBirchWood = "minecraft:stripped_birch_wood",
     /** 去皮樱花原木。 */
     StrippedCherryLog = "minecraft:stripped_cherry_log",
     /** 去皮樱花木。 */
@@ -2006,16 +2022,24 @@ export declare enum MinecraftItemTypes {
     StrippedCrimsonStem = "minecraft:stripped_crimson_stem",
     /** 去皮深色橡木原木。 */
     StrippedDarkOakLog = "minecraft:stripped_dark_oak_log",
+    /** 去皮深色橡木。 */
+    StrippedDarkOakWood = "minecraft:stripped_dark_oak_wood",
     /** 去皮丛林原木。 */
     StrippedJungleLog = "minecraft:stripped_jungle_log",
+    /** 去皮丛林木。 */
+    StrippedJungleWood = "minecraft:stripped_jungle_wood",
     /** 去皮红树原木。 */
     StrippedMangroveLog = "minecraft:stripped_mangrove_log",
     /** 去皮红树木。 */
     StrippedMangroveWood = "minecraft:stripped_mangrove_wood",
     /** 去皮橡木原木。 */
     StrippedOakLog = "minecraft:stripped_oak_log",
+    /** 去皮橡木。 */
+    StrippedOakWood = "minecraft:stripped_oak_wood",
     /** 去皮云杉原木。 */
     StrippedSpruceLog = "minecraft:stripped_spruce_log",
+    /** 去皮云杉木。 */
+    StrippedSpruceWood = "minecraft:stripped_spruce_wood",
     /** 去皮诡异菌核。 */
     StrippedWarpedHyphae = "minecraft:stripped_warped_hyphae",
     /** 去皮诡异菌柄。 */
@@ -2306,7 +2330,6 @@ export declare enum MinecraftItemTypes {
     WolfArmor = "minecraft:wolf_armor",
     /** 狼刷怪蛋。 */
     WolfSpawnEgg = "minecraft:wolf_spawn_egg",
-    /** 橡木/云杉木/白桦木/丛林木/金合欢木/深色橡木/去皮橡木/去皮云杉木/去皮白桦木/去皮丛林木/去皮金合欢木/去皮深色橡木。 */
     Wood = "minecraft:wood",
     /** 木斧。 */
     WoodenAxe = "minecraft:wooden_axe",
