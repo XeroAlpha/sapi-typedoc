@@ -42,6 +42,7 @@ export { SupportedKeyboardActionTypes } from './types/SupportedKeyboardActionTyp
 export { SupportedMouseActionTypes } from './types/SupportedMouseActionTypes';
 export { UnregisterInputBindingCallback } from './types/UnregisterInputBindingCallback';
 export { BedrockEventSubscriptionCache } from './classes/BedrockEventSubscriptionCache';
+export { BlockPaletteManager } from './classes/BlockPaletteManager';
 export { ClipboardItem } from './classes/ClipboardItem';
 export { ClipboardManager } from './classes/ClipboardManager';
 export { Cursor } from './classes/Cursor';

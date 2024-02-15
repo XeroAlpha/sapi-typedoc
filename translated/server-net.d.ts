@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-net",
- *   "version": "1.0.0-beta.1.20.70-preview.22"
+ *   "version": "1.0.0-beta.1.20.70-preview.24"
  * }
  * ```
  *
@@ -68,6 +68,28 @@ export enum HttpRequestMethod {
     Put = 'Put',
 }
 
+/**
+ * @example simpleHttpRequest.ts
+ * ```typescript
+ * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+ *
+ * async function updateScore() {
+ *     const req = new HttpRequest('http://localhost:3000/updateScore');
+ *
+ *     req.body = JSON.stringify({
+ *         score: 22,
+ *     });
+ *
+ *     req.method = HttpRequestMethod.Post;
+ *     req.headers = [
+ *         new HttpHeader('Content-Type', 'application/json'),
+ *         new HttpHeader('auth', 'my-auth-token'),
+ *     ];
+ *
+ *     await http.request(req);
+ * }
+ * ```
+ */
 export class HttpClient {
     private constructor();
     /**
@@ -101,6 +123,26 @@ export class HttpClient {
      * the HTTP request.
      * @returns
      * An awaitable promise that contains the HTTP response.
+     * @example simpleHttpRequest.ts
+     * ```typescript
+     * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+     *
+     * async function updateScore() {
+     *     const req = new HttpRequest('http://localhost:3000/updateScore');
+     *
+     *     req.body = JSON.stringify({
+     *         score: 22,
+     *     });
+     *
+     *     req.method = HttpRequestMethod.Post;
+     *     req.headers = [
+     *         new HttpHeader('Content-Type', 'application/json'),
+     *         new HttpHeader('auth', 'my-auth-token'),
+     *     ];
+     *
+     *     await http.request(req);
+     * }
+     * ```
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }
@@ -108,6 +150,26 @@ export class HttpClient {
 /**
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
+ * @example simpleHttpRequest.ts
+ * ```typescript
+ * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+ *
+ * async function updateScore() {
+ *     const req = new HttpRequest('http://localhost:3000/updateScore');
+ *
+ *     req.body = JSON.stringify({
+ *         score: 22,
+ *     });
+ *
+ *     req.method = HttpRequestMethod.Post;
+ *     req.headers = [
+ *         new HttpHeader('Content-Type', 'application/json'),
+ *         new HttpHeader('auth', 'my-auth-token'),
+ *     ];
+ *
+ *     await http.request(req);
+ * }
+ * ```
  */
 export class HttpHeader {
     /**
@@ -131,6 +193,26 @@ export class HttpHeader {
 
 /**
  * Main object for structuring a request.
+ * @example simpleHttpRequest.ts
+ * ```typescript
+ * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+ *
+ * async function updateScore() {
+ *     const req = new HttpRequest('http://localhost:3000/updateScore');
+ *
+ *     req.body = JSON.stringify({
+ *         score: 22,
+ *     });
+ *
+ *     req.method = HttpRequestMethod.Post;
+ *     req.headers = [
+ *         new HttpHeader('Content-Type', 'application/json'),
+ *         new HttpHeader('auth', 'my-auth-token'),
+ *     ];
+ *
+ *     await http.request(req);
+ * }
+ * ```
  */
 export class HttpRequest {
     /**

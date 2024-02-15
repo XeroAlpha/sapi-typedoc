@@ -60,7 +60,10 @@ export class Entity {
     readonly isInWater: boolean;
     /**
      * @remarks
-     * Whether the entity is on top of a solid block.
+     * Whether the entity is on top of a solid block. This property
+     * may behave in unexpected ways. This property will always be
+     * true when an Entity is first spawned, and if the Entity has
+     * no gravity this property may be incorrect.
      *
      * @throws This property can throw when used.
      */
@@ -169,40 +172,48 @@ export class Entity {
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
      * @throws This function can throw errors.
-     * @example addEffect.js
+     * @example poisonVillager.ts
      * ```typescript
-     * const villagerId = 'minecraft:villager_v2<minecraft:ageable_grow_up>';
-     * const villagerLoc: mc.Vector3 = { x: 1, y: 2, z: 1 };
-     * const villager = test.spawn(villagerId, villagerLoc);
-     * const duration = 20;
+     * // Spawns a villager and gives it the poison effect
+     * import {
+     *     DimensionLocation,
+     * } from '@minecraft/server';
+     * import { MinecraftEffectTypes } from '@minecraft/vanilla-data';
      *
-     * villager.addEffect(EffectTypes.get('poison'), duration, { amplifier: 1 });
+     * function spawnPoisonedVillager(location: DimensionLocation) {
+     *     const villagerType = 'minecraft:villager_v2<minecraft:ageable_grow_up>';
+     *     const villager = location.dimension.spawnEntity(villagerType, location);
+     *     const duration = 20;
+     *
+     *     villager.addEffect(MinecraftEffectTypes.Poison, duration, { amplifier: 1 });
+     * }
+     *
      * ```
      * @example quickFoxLazyDog.ts
      * ```typescript
-     *   const overworld = mc.world.getDimension("overworld");
+     * // Spawns a fox over a dog
+     * import { DimensionLocation } from '@minecraft/server';
+     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
      *
-     *   const fox = overworld.spawnEntity("minecraft:fox", {
-     *     x: targetLocation.x + 1,
-     *     y: targetLocation.y + 2,
-     *     z: targetLocation.z + 3,
-     *   });
+     * function spawnAdultHorse(location: DimensionLocation) {
+     *     // Create fox (our quick brown fox)
+     *     const fox = location.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
+     *         x: location.x,
+     *         y: location.y + 2,
+     *         z: location.z,
+     *     });
      *
-     *   fox.addEffect("speed", 10, {
-     *     amplifier: 2,
-     *   });
-     *   log("Created a fox.");
+     *     fox.addEffect('speed', 10, {
+     *         amplifier: 2,
+     *     });
      *
-     *   const wolf = overworld.spawnEntity("minecraft:wolf", {
-     *     x: targetLocation.x + 4,
-     *     y: targetLocation.y + 2,
-     *     z: targetLocation.z + 3,
-     *   });
-     *   wolf.addEffect("slowness", 10, {
-     *     amplifier: 2,
-     *   });
-     *   wolf.isSneaking = true;
-     *   log("Created a sneaking wolf.", 1);
+     *     // Create wolf (our lazy dog)
+     *     const wolf = location.dimension.spawnEntity(MinecraftEntityTypes.Wolf, location);
+     *     wolf.addEffect('slowness', 10, {
+     *         amplifier: 2,
+     *     });
+     *     wolf.isSneaking = true;
+     * }
      * ```
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
@@ -219,25 +230,6 @@ export class Entity {
      * Returns true if the tag was added successfully. This can
      * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
-     * @example tagsQuery.ts
-     * ```typescript
-     *   let mobs = ["creeper", "skeleton", "sheep"];
-     *
-     *   // create some sample mob data
-     *   for (let i = 0; i < 10; i++) {
-     *     let mobTypeId = mobs[i % mobs.length];
-     *     let entity = overworld.spawnEntity(mobTypeId, targetLocation);
-     *     entity.addTag("mobparty." + mobTypeId);
-     *   }
-     *
-     *   let eqo: mc.EntityQueryOptions = {
-     *     tags: ["mobparty.skeleton"],
-     *   };
-     *
-     *   for (let entity of overworld.getEntities(eqo)) {
-     *     entity.kill();
-     *   }
-     * ```
      */
     addTag(tag: string): boolean;
     /**
@@ -259,16 +251,25 @@ export class Entity {
      * @throws This function can throw errors.
      * @example applyDamageThenHeal.ts
      * ```typescript
-     *   const skelly = overworld.spawnEntity("minecraft:skeleton", targetLocation);
+     * // A function that applies damage and then heals the entity
+     * import { Entity, EntityComponentTypes, system, world } from '@minecraft/server';
      *
-     *   skelly.applyDamage(19); // skeletons have max damage of 20 so this is a near-death skeleton
+     * function applyDamageAndHeal(entity: Entity) {
+     *     entity.applyDamage(19); // Many mobs have max damage of 20 so this is a near-death mob
      *
-     *   mc.system.runTimeout(() => {
-     *     let health = skelly.getComponent("health") as mc.EntityHealthComponent;
-     *     log("Skeleton health before heal: " + health.currentValue);
-     *     health.resetToMaxValue();
-     *     log("Skeleton health after heal: " + health.currentValue);
-     *   }, 20);
+     *     system.runTimeout(() => {
+     *         const health = entity.getComponent(EntityComponentTypes.Health);
+     *         if (health) {
+     *             world.sendMessage(`Entity health before heal: ${health.currentValue}`);
+     *
+     *             health.resetToMaxValue();
+     *
+     *             world.sendMessage(`Entity after before heal: ${health.currentValue}`);
+     *         } else {
+     *             console.warn('Entity does not have health component');
+     *         }
+     *     }, 40); // Run in a few seconds (40 ticks)
+     * }
      * ```
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -282,14 +283,19 @@ export class Entity {
      * @param vector
      * Impulse vector.
      * @throws This function can throw errors.
-     * @example applyImpulse.ts
+     * @example yeetEntity.ts
      * ```typescript
-     *   const zombie = overworld.spawnEntity("minecraft:zombie", targetLocation);
+     * // A function that throws entities up in the air
+     * import { Entity } from '@minecraft/server';
      *
-     *   zombie.clearVelocity();
+     * function yeetEntity(entity: Entity) {
      *
-     *   // throw the zombie up in the air
-     *   zombie.applyImpulse({ x: 0, y: 0.5, z: 0 });
+     *     // Zero out the entity's velocity before applying impulse
+     *     entity.clearVelocity();
+     *
+     *     // throw the zombie up in the air
+     *     entity.applyImpulse({ x: 0, y: 15, z: 0 });
+     * }
      * ```
      */
     applyImpulse(vector: Vector3): void;
@@ -311,20 +317,24 @@ export class Entity {
      * @throws This function can throw errors.
      * @example bounceSkeletons.ts
      * ```typescript
-     *   let mobs = ["creeper", "skeleton", "sheep"];
+     * import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
      *
-     *   // create some sample mob data
-     *   for (let i = 0; i < 10; i++) {
-     *     overworld.spawnEntity(mobs[i % mobs.length], targetLocation);
-     *   }
+     * function mobParty(targetLocation: DimensionLocation) {
+     *     const mobs = ['creeper', 'skeleton', 'sheep'];
      *
-     *   let eqo: mc.EntityQueryOptions = {
-     *     type: "skeleton",
-     *   };
+     *     // create some sample mob data
+     *     for (let i = 0; i < 10; i++) {
+     *         targetLocation.dimension.spawnEntity(mobs[i % mobs.length], targetLocation);
+     *     }
      *
-     *   for (let entity of overworld.getEntities(eqo)) {
-     *     entity.applyKnockback(0, 0, 0, 1);
-     *   }
+     *     const eqo: EntityQueryOptions = {
+     *         type: 'skeleton',
+     *     };
+     *
+     *     for (const entity of targetLocation.dimension.getEntities(eqo)) {
+     *         entity.applyKnockback(0, 0, 0, 1);
+     *     }
+     * }
      * ```
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
@@ -344,14 +354,19 @@ export class Entity {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     * @example applyImpulse.ts
+     * @example yeetEntity.ts
      * ```typescript
-     *   const zombie = overworld.spawnEntity("minecraft:zombie", targetLocation);
+     * // A function that throws entities up in the air
+     * import { Entity } from '@minecraft/server';
      *
-     *   zombie.clearVelocity();
+     * function yeetEntity(entity: Entity) {
      *
-     *   // throw the zombie up in the air
-     *   zombie.applyImpulse({ x: 0, y: 0.5, z: 0 });
+     *     // Zero out the entity's velocity before applying impulse
+     *     entity.clearVelocity();
+     *
+     *     // throw the zombie up in the air
+     *     entity.applyImpulse({ x: 0, y: 15, z: 0 });
+     * }
      * ```
      */
     clearVelocity(): void;
@@ -370,32 +385,23 @@ export class Entity {
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
-     * @example setOnFire.ts
+     * @example setEntityOnFire.ts
      * ```typescript
-     *   const skelly = overworld.spawnEntity("minecraft:skeleton", targetLocation);
+     * import { world, Entity, EntityComponentTypes, system } from "@minecraft/server";
      *
-     *   skelly.setOnFire(20, true);
+     * function setAblaze(entity: Entity) {
+     *     entity.setOnFire(20, true);
      *
-     *   mc.system.runTimeout(() => {
-     *     let onfire = skelly.getComponent("onfire") as mc.EntityOnFireComponent;
-     *     log(onfire.onFireTicksRemaining + " fire ticks remaining.");
+     *     system.runTimeout(() => {
+     *         const onfire = entity.getComponent(EntityComponentTypes.OnFire);
+     *         if (onfire) {
+     *             world.sendMessage(`${onfire.onFireTicksRemaining} fire ticks remaining, extinguishing the entity.`);
+     *         }
+     *         // This will extinguish the entity
+     *         entity.extinguishFire(true);
+     *     }, 30); // Run in 30 ticks or ~1.5 seconds
      *
-     *     skelly.extinguishFire(true);
-     *     log("Never mind. Fire extinguished.");
-     *   }, 20);
-     * ```
-     * @example teleport.ts
-     * ```typescript
-     *   const cow = overworld.spawnEntity("minecraft:cow", targetLocation);
-     *
-     *   mc.system.runTimeout(() => {
-     *     cow.teleport(
-     *       { x: targetLocation.x + 2, y: targetLocation.y + 2, z: targetLocation.z + 2 },
-     *       {
-     *         facingLocation: targetLocation,
-     *       }
-     *     );
-     *   }, 20);
+     * }
      * ```
      */
     extinguishFire(useEffects?: boolean): boolean;
@@ -564,13 +570,19 @@ export class Entity {
      * @throws This function can throw errors.
      * @example getFireworkVelocity.ts
      * ```typescript
-     *   const fireworkRocket = overworld.spawnEntity("minecraft:fireworks_rocket", targetLocation);
+     * // A function that spawns fireworks and logs their velocity after 5 ticks
+     * import { DimensionLocation, system, world } from '@minecraft/server';
+     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
      *
-     *   mc.system.runTimeout(() => {
-     *     let velocity = fireworkRocket.getVelocity();
+     * function spawnFireworks(location: DimensionLocation) {
+     *     const fireworkRocket = location.dimension.spawnEntity(MinecraftEntityTypes.FireworksRocket, location);
      *
-     *     log("Velocity of firework is: (x: " + velocity.x + ", y:" + velocity.y + ", z:" + velocity.z + ")");
-     *   }, 5);
+     *     system.runTimeout(() => {
+     *         const velocity = fireworkRocket.getVelocity();
+     *
+     *         world.sendMessage(`Velocity of firework is: ${velocity.x}, ${velocity.y}, ${velocity.z}`);
+     *     }, 5);
+     * }
      * ```
      */
     getVelocity(): Vector3;
@@ -630,22 +642,26 @@ export class Entity {
      * @throws This function can throw errors.
      * @example tagsQuery.ts
      * ```typescript
-     *   let mobs = ["creeper", "skeleton", "sheep"];
+     * import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
      *
-     *   // create some sample mob data
-     *   for (let i = 0; i < 10; i++) {
-     *     let mobTypeId = mobs[i % mobs.length];
-     *     let entity = overworld.spawnEntity(mobTypeId, targetLocation);
-     *     entity.addTag("mobparty." + mobTypeId);
-     *   }
+     * function mobParty(targetLocation: DimensionLocation) {
+     *     const mobs = ['creeper', 'skeleton', 'sheep'];
      *
-     *   let eqo: mc.EntityQueryOptions = {
-     *     tags: ["mobparty.skeleton"],
-     *   };
+     *     // create some sample mob data
+     *     for (let i = 0; i < 10; i++) {
+     *         const mobTypeId = mobs[i % mobs.length];
+     *         const entity = targetLocation.dimension.spawnEntity(mobTypeId, targetLocation);
+     *         entity.addTag('mobparty.' + mobTypeId);
+     *     }
      *
-     *   for (let entity of overworld.getEntities(eqo)) {
-     *     entity.kill();
-     *   }
+     *     const eqo: EntityQueryOptions = {
+     *         tags: ['mobparty.skeleton'],
+     *     };
+     *
+     *     for (const entity of targetLocation.dimension.getEntities(eqo)) {
+     *         entity.kill();
+     *     }
+     * }
      * ```
      */
     kill(): boolean;
@@ -806,32 +822,23 @@ export class Entity {
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
      * @throws This function can throw errors.
-     * @example setOnFire.ts
+     * @example setEntityOnFire.ts
      * ```typescript
-     *   const skelly = overworld.spawnEntity("minecraft:skeleton", targetLocation);
+     * import { world, Entity, EntityComponentTypes, system } from "@minecraft/server";
      *
-     *   skelly.setOnFire(20, true);
+     * function setAblaze(entity: Entity) {
+     *     entity.setOnFire(20, true);
      *
-     *   mc.system.runTimeout(() => {
-     *     let onfire = skelly.getComponent("onfire") as mc.EntityOnFireComponent;
-     *     log(onfire.onFireTicksRemaining + " fire ticks remaining.");
+     *     system.runTimeout(() => {
+     *         const onfire = entity.getComponent(EntityComponentTypes.OnFire);
+     *         if (onfire) {
+     *             world.sendMessage(`${onfire.onFireTicksRemaining} fire ticks remaining, extinguishing the entity.`);
+     *         }
+     *         // This will extinguish the entity
+     *         entity.extinguishFire(true);
+     *     }, 30); // Run in 30 ticks or ~1.5 seconds
      *
-     *     skelly.extinguishFire(true);
-     *     log("Never mind. Fire extinguished.");
-     *   }, 20);
-     * ```
-     * @example teleport.ts
-     * ```typescript
-     *   const cow = overworld.spawnEntity("minecraft:cow", targetLocation);
-     *
-     *   mc.system.runTimeout(() => {
-     *     cow.teleport(
-     *       { x: targetLocation.x + 2, y: targetLocation.y + 2, z: targetLocation.z + 2 },
-     *       {
-     *         facingLocation: targetLocation,
-     *       }
-     *     );
-     *   }, 20);
+     * }
      * ```
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -884,22 +891,27 @@ export class Entity {
      * @throws This function can throw errors.
      * @example teleportMovement.ts
      * ```typescript
-     *   const pig = overworld.spawnEntity("minecraft:pig", targetLocation);
+     * import { world, system } from '@minecraft/server';
      *
-     *   let inc = 1;
-     *   let runId = mc.system.runInterval(() => {
+     * const overworld = world.getDimension('overworld');
+     * const targetLocation = { x: 0, y: 0, z: 0 };
+     *
+     * const pig = overworld.spawnEntity('minecraft:pig', targetLocation);
+     *
+     * let inc = 1;
+     * const runId = system.runInterval(() => {
      *     pig.teleport(
-     *       { x: targetLocation.x + inc / 4, y: targetLocation.y + inc / 4, z: targetLocation.z + inc / 4 },
-     *       {
-     *         facingLocation: targetLocation,
-     *       }
+     *         { x: targetLocation.x + inc / 4, y: targetLocation.y + inc / 4, z: targetLocation.z + inc / 4 },
+     *         {
+     *             facingLocation: targetLocation,
+     *         },
      *     );
      *
      *     if (inc > 100) {
-     *       mc.system.clearRun(runId);
+     *         system.clearRun(runId);
      *     }
      *     inc++;
-     *   }, 4);
+     * }, 4);
      * ```
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
@@ -920,9 +932,15 @@ export class Entity {
      * an error will be thrown.
      * @example triggerEvent.ts
      * ```typescript
-     *   const creeper = overworld.spawnEntity("minecraft:creeper", targetLocation);
+     * // A function that spawns a creeper and triggers it to explode immediately
+     * import { DimensionLocation } from '@minecraft/server';
+     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
      *
-     *   creeper.triggerEvent("minecraft:start_exploding_forced");
+     * function spawnExplodingCreeper(location: DimensionLocation) {
+     *     const creeper = location.dimension.spawnEntity(MinecraftEntityTypes.Creeper, location);
+     *
+     *     creeper.triggerEvent('minecraft:start_exploding_forced');
+     * }
      * ```
      */
     triggerEvent(eventName: string): void;

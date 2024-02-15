@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.70-preview.22"
+ *   "version": "0.1.0-beta.1.20.70-preview.24"
  * }
  * ```
  *
@@ -595,6 +595,21 @@ export declare class BedrockEventSubscriptionCache {
     teardown(): void;
 }
 
+export class BlockPaletteManager {
+    private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
+    getSelectedBlockType(): minecraftserver.BlockType;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setSelectedBlockType(block: minecraftserver.BlockType): void;
+}
+
 /**
  * A ClipboardItem is a handle to an object which represents a
  * set of blocks in a contained bounding area (most likely
@@ -980,6 +995,7 @@ export class ExtensionContext {
      *
      */
     readonly afterEvents: ExtensionContextAfterEvents;
+    readonly blockPalette: BlockPaletteManager;
     /**
      * @remarks
      * This is used to access the players Clipboard Manager and the
@@ -2510,10 +2526,12 @@ export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
 }
 
 /**
- * Localization string id for multiline text component.
+ * Localization string id and border enable boolean for
+ * multiline text component.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsText extends IPropertyItemOptions {
+    border: boolean;
     valueStringId: string;
 }
 

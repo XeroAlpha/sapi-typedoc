@@ -18,29 +18,26 @@
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @example example1.js
- * ```typescript
- * GameTest.register("ExampleTests", "alwaysFail", (test) => {
- *   test.fail("This test, runnable via '/gametest run ExampleTests:alwaysFail', will always fail");
- * });
- * ```
  * @example simpleMobTest.ts
  * ```typescript
- * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
- *   const attackerId = "fox";
- *   const victimId = "chicken";
+ * import * as gameTest from '@minecraft/server-gametest';
  *
- *   test.spawn(attackerId, { x: 5, y: 2, z: 5 });
- *   test.spawn(victimId, { x: 2, y: 2, z: 2 });
+ * gameTest
+ *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+ *         const attackerId = 'fox';
+ *         const victimId = 'chicken';
  *
- *   test.assertEntityPresentInArea(victimId, true);
+ *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+ *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
  *
- *   test.succeedWhen(() => {
- *     test.assertEntityPresentInArea(victimId, false);
- *   });
- * })
- *   .maxTicks(400)
- *   .structureName("gametests:mediumglass");
+ *         test.assertEntityPresentInArea(victimId, true);
+ *
+ *         test.succeedWhen(() => {
+ *             test.assertEntityPresentInArea(victimId, false);
+ *         });
+ *     })
+ *     .maxTicks(400)
+ *     .structureName('gametests:mediumglass');
  * ```
  */
 export function register(

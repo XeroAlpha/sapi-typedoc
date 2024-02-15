@@ -3,6 +3,51 @@
 /**
  * Contains information about user interface elements that are
  * showing up on the screen.
+ * @example setTitle.ts
+ * ```typescript
+ * import { world } from '@minecraft/server';
+ *
+ * world.afterEvents.playerSpawn.subscribe((event) => {
+ *     event.player.onScreenDisplay.setTitle('§o§6You respawned!§r');
+ * });
+ * ```
+ * @example setTitleAndSubtitle.ts
+ * ```typescript
+ * import { world } from '@minecraft/server';
+ *
+ * world.afterEvents.playerSpawn.subscribe((event) => {
+ *     event.player.onScreenDisplay.setTitle('You respawned', {
+ *         stayDuration: 100,
+ *         fadeInDuration: 2,
+ *         fadeOutDuration: 4,
+ *         subtitle: 'Try not to die next time!',
+ *     });
+ * });
+ * ```
+ * @example titleCountdown.ts
+ * ```typescript
+ * import { world, system } from '@minecraft/server';
+ *
+ * world.afterEvents.playerSpawn.subscribe(event => {
+ *     event.player.onScreenDisplay.setTitle('Get ready!', {
+ *         stayDuration: 220,
+ *         fadeInDuration: 2,
+ *         fadeOutDuration: 4,
+ *         subtitle: '10',
+ *     });
+ *
+ *     let countdown = 10;
+ *
+ *     const intervalId = system.runInterval(() => {
+ *         countdown--;
+ *         event.player.onScreenDisplay.updateSubtitle(countdown.toString());
+ *
+ *         if (countdown == 0) {
+ *             system.clearRun(intervalId);
+ *         }
+ *     }, 20);
+ * });
+ * ```
  */
 export class ScreenDisplay {
     private constructor();
@@ -75,44 +120,50 @@ export class ScreenDisplay {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     * @example countdown.ts
-     * ```typescript
-     *   let players = mc.world.getPlayers();
-     *
-     *   players[0].onScreenDisplay.setTitle("Get ready!", {
-     *     stayDuration: 220,
-     *     fadeInDuration: 2,
-     *     fadeOutDuration: 4,
-     *     subtitle: "10",
-     *   });
-     *
-     *   let countdown = 10;
-     *
-     *   let intervalId = mc.system.runInterval(() => {
-     *     countdown--;
-     *     players[0].onScreenDisplay.updateSubtitle(countdown.toString());
-     *
-     *     if (countdown == 0) {
-     *       mc.system.clearRun(intervalId);
-     *     }
-     *   }, 20);
-     * ```
      * @example setTitle.ts
      * ```typescript
-     *   let players = mc.world.getPlayers();
+     * import { world } from '@minecraft/server';
      *
-     *   players[0].onScreenDisplay.setTitle("§o§6Fancy Title§r");
+     * world.afterEvents.playerSpawn.subscribe((event) => {
+     *     event.player.onScreenDisplay.setTitle('§o§6You respawned!§r');
+     * });
      * ```
      * @example setTitleAndSubtitle.ts
      * ```typescript
-     *   let players = mc.world.getPlayers();
+     * import { world } from '@minecraft/server';
      *
-     *   players[0].onScreenDisplay.setTitle("Chapter 1", {
-     *     stayDuration: 100,
-     *     fadeInDuration: 2,
-     *     fadeOutDuration: 4,
-     *     subtitle: "Trouble in Block Town",
-     *   });
+     * world.afterEvents.playerSpawn.subscribe((event) => {
+     *     event.player.onScreenDisplay.setTitle('You respawned', {
+     *         stayDuration: 100,
+     *         fadeInDuration: 2,
+     *         fadeOutDuration: 4,
+     *         subtitle: 'Try not to die next time!',
+     *     });
+     * });
+     * ```
+     * @example titleCountdown.ts
+     * ```typescript
+     * import { world, system } from '@minecraft/server';
+     *
+     * world.afterEvents.playerSpawn.subscribe(event => {
+     *     event.player.onScreenDisplay.setTitle('Get ready!', {
+     *         stayDuration: 220,
+     *         fadeInDuration: 2,
+     *         fadeOutDuration: 4,
+     *         subtitle: '10',
+     *     });
+     *
+     *     let countdown = 10;
+     *
+     *     const intervalId = system.runInterval(() => {
+     *         countdown--;
+     *         event.player.onScreenDisplay.updateSubtitle(countdown.toString());
+     *
+     *         if (countdown == 0) {
+     *             system.clearRun(intervalId);
+     *         }
+     *     }, 20);
+     * });
      * ```
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;

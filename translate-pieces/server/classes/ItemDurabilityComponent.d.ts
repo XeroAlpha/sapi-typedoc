@@ -29,19 +29,23 @@ export class ItemDurabilityComponent extends ItemComponent {
     /**
      * @remarks
      * Returns the maximum chance that this item would be damaged
-     * using the damageRange property, given an unbreaking level.
+     * using the damageRange property, given an unbreaking
+     * enchantment level.
      *
      * This function can't be called in read-only mode.
      *
+     * @param unbreakingEnchantmentLevel
+     * Unbreaking factor to consider in factoring the damage
+     * chance. Incoming unbreaking parameter must be within the
+     * range [0, 3].
      * @throws This function can throw errors.
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
-     * Returns the min and max variables used by the damage chance
-     * formula:
-     * chance = (min + ((max - min) / (unbreaking + 1)))
-     *
+     * A range of numbers that is used to calculate the damage
+     * chance for an item. The damage chance will fall within this
+     * range.
      *
      * This function can't be called in read-only mode.
      *

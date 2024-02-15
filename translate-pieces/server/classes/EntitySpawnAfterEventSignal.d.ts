@@ -3,6 +3,18 @@
 /**
  * Registers a script-based event handler for handling what
  * happens when an entity spawns.
+ * @example logEntitySpawnEvents.ts
+ * ```typescript
+ * // Register a new function that is called when a new entity is created.
+ * import { world, EntitySpawnAfterEvent } from '@minecraft/server';
+ *
+ * world.afterEvents.entitySpawn.subscribe((entityEvent: EntitySpawnAfterEvent) => {
+ *     const spawnLocation = entityEvent.entity.location;
+ *     world.sendMessage(
+ *         `New entity of type '${entityEvent.entity.typeId}' spawned at ${spawnLocation.x}, ${spawnLocation.y}, ${spawnLocation.z}!`,
+ *     );
+ * });
+ * ```
  */
 export class EntitySpawnAfterEventSignal {
     private constructor();
@@ -15,21 +27,6 @@ export class EntitySpawnAfterEventSignal {
      *
      * @param callback
      * Function that handles the spawn event.
-     * @example runEntitySpawnEvent.ts
-     * ```typescript
-     *   // register a new function that is called when a new entity is created.
-     *   mc.world.afterEvents.entitySpawn.subscribe((entityEvent: mc.EntitySpawnAfterEvent) => {
-     *     if (entityEvent && entityEvent.entity) {
-     *       log(`New entity of type '${entityEvent.entity.typeId}' created!`, 1);
-     *     } else {
-     *       log(`The entity event didn't work as expected.`, -1);
-     *     }
-     *   });
-     *
-     *   mc.system.runTimeout(() => {
-     *     createOldHorse(log, targetLocation);
-     *   }, 20);
-     * ```
      */
     subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void;
     /**

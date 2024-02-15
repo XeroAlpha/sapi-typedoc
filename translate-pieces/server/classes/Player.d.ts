@@ -196,30 +196,6 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
-     * @example playMusicAndSound.ts
-     * ```typescript
-     *   let players = mc.world.getPlayers();
-     *
-     *   const musicOptions: mc.MusicOptions = {
-     *     fade: 0.5,
-     *     loop: true,
-     *     volume: 1.0,
-     *   };
-     *   mc.world.playMusic("music.menu", musicOptions);
-     *
-     *   const worldSoundOptions: mc.WorldSoundOptions = {
-     *     pitch: 0.5,
-     *     volume: 4.0,
-     *   };
-     *   mc.world.playSound("ambient.weather.thunder", targetLocation, worldSoundOptions);
-     *
-     *   const playerSoundOptions: mc.PlayerSoundOptions = {
-     *     pitch: 1.0,
-     *     volume: 1.0,
-     *   };
-     *
-     *   players[0].playSound("bucket.fill_water", playerSoundOptions);
-     * ```
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -271,43 +247,32 @@ export class Player extends Entity {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
-     * @example nestedTranslation.ts
+     * @example sendMessagesToPlayer.ts
      * ```typescript
-     * // Displays "Apple or Coal"
-     * let rawMessage = {
-     *   translate: "accessibility.list.or.two",
-     *   with: { rawtext: [{ translate: "item.apple.name" }, { translate: "item.coal.name" }] },
-     * };
-     * player.sendMessage(rawMessage);
-     * ```
-     * @example scoreWildcard.ts
-     * ```typescript
-     * // Displays the player's score for objective "obj". Each player will see their own score.
-     * const rawMessage = { score: { name: "*", objective: "obj" } };
-     * world.sendMessage(rawMessage);
-     * ```
-     * @example sendBasicMessage.ts
-     * ```typescript
-     *   let players = mc.world.getPlayers();
+     * import { Player } from "@minecraft/server";
      *
-     *   players[0].sendMessage("Hello World!");
-     * ```
-     * @example sendTranslatedMessage.ts
-     * ```typescript
-     *   let players = mc.world.getPlayers();
+     * function sendPlayerMessages(player: Player) {
+     *     // Displays "First or Second"
+     *     const rawMessage = { translate: 'accessibility.list.or.two', with: ['First', 'Second'] };
+     *     player.sendMessage(rawMessage);
      *
-     *   players[0].sendMessage({ translate: "authentication.welcome", with: ["Amazing Player 1"] });
-     * ```
-     * @example simpleString.ts
-     * ```typescript
-     * // Displays "Hello, world!"
-     * world.sendMessage("Hello, world!");
-     * ```
-     * @example translation.ts
-     * ```typescript
-     * // Displays "First or Second"
-     * const rawMessage = { translate: "accessibility.list.or.two", with: ["First", "Second"] };
-     * player.sendMessage(rawMessage);
+     *     // Displays "Hello, world!"
+     *     player.sendMessage('Hello, world!');
+     *
+     *     // Displays "Welcome, Amazing Player 1!"
+     *     player.sendMessage({ translate: 'authentication.welcome', with: ['Amazing Player 1'] });
+     *
+     *     // Displays the player's score for objective "obj". Each player will see their own score.
+     *     const rawMessageWithScore = { score: { name: '*', objective: 'obj' } };
+     *     player.sendMessage(rawMessageWithScore);
+     *
+     *     // Displays "Apple or Coal"
+     *     const rawMessageWithNestedTranslations = {
+     *         translate: 'accessibility.list.or.two',
+     *         with: { rawtext: [{ translate: 'item.apple.name' }, { translate: 'item.coal.name' }] },
+     *     };
+     *     player.sendMessage(rawMessageWithNestedTranslations);
+     * }
      * ```
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
@@ -368,23 +333,27 @@ export class Player extends Entity {
      * {@link LocationOutOfWorldBoundariesError}
      * @example spawnParticle.ts
      * ```typescript
-     * for (let i = 0; i < 100; i++) {
-     *   const molang = new mc.MolangVariableMap();
+     * import { world, MolangVariableMap, Vector3 } from '@minecraft/server';
      *
-     *   molang.setColorRGB("variable.color", {
-     *     red: Math.random(),
-     *     green: Math.random(),
-     *     blue: Math.random(),
-     *     alpha: 1,
-     *   });
+     * world.afterEvents.playerSpawn.subscribe(event => {
+     *     const targetLocation = event.player.location;
+     *     for (let i = 0; i < 100; i++) {
+     *         const molang = new MolangVariableMap();
      *
-     *   let newLocation = {
-     *     x: targetLocation.x + Math.floor(Math.random() * 8) - 4,
-     *     y: targetLocation.y + Math.floor(Math.random() * 8) - 4,
-     *     z: targetLocation.z + Math.floor(Math.random() * 8) - 4,
-     *   };
-     *   player.spawnParticle("minecraft:colored_flame_particle", newLocation, molang);
-     * }
+     *         molang.setColorRGB('variable.color', {
+     *             red: Math.random(),
+     *             green: Math.random(),
+     *             blue: Math.random()
+     *         });
+     *
+     *         const newLocation: Vector3 = {
+     *             x: targetLocation.x + Math.floor(Math.random() * 8) - 4,
+     *             y: targetLocation.y + Math.floor(Math.random() * 8) - 4,
+     *             z: targetLocation.z + Math.floor(Math.random() * 8) - 4,
+     *         };
+     *         event.player.spawnParticle('minecraft:colored_flame_particle', newLocation, molang);
+     *     }
+     * });
      * ```
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
