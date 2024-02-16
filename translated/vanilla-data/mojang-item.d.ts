@@ -252,6 +252,8 @@ export declare enum MinecraftItemTypes {
     BlueWool = "minecraft:blue_wool",
     /** 船。 */
     Boat = "minecraft:boat",
+    /** Bogged Spawn Egg。 */
+    BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
     /** 骨头。 */
     Bone = "minecraft:bone",
     /** 骨块。 */
@@ -2318,6 +2320,8 @@ export declare enum MinecraftItemTypes {
     WhiteWool = "minecraft:white_wool",
     /** 荒野盔甲纹饰锻造模板。 */
     WildArmorTrimSmithingTemplate = "minecraft:wild_armor_trim_smithing_template",
+    /** 风弹。 */
+    WindCharge = "minecraft:wind_charge",
     /** 女巫刷怪蛋。 */
     WitchSpawnEgg = "minecraft:witch_spawn_egg",
     /** 凋灵玫瑰。 */

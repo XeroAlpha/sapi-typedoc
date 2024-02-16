@@ -2,6 +2,67 @@
 
 /**
  * Defines a JSON structure that is used for more flexible.
+ * @example addTranslatedSign.ts
+ * ```typescript
+ * import { DimensionLocation, world, BlockPermutation, BlockComponentTypes } from '@minecraft/server';
+ *
+ * function placeTranslatedSign(location: DimensionLocation, text: string) {
+ *     const signBlock = location.dimension.getBlock(location);
+ *
+ *     if (!signBlock) {
+ *         console.warn('Could not find a block at specified location.');
+ *         return;
+ *     }
+ *     const signPerm = BlockPermutation.resolve('minecraft:standing_sign', { ground_sign_direction: 8 });
+ *     signBlock.setPermutation(signPerm);
+ *
+ *     const signComponent = signBlock.getComponent(BlockComponentTypes.Sign);
+ *     if (signComponent) {
+ *         signComponent.setText({ translate: 'item.skull.player.name', with: [text] });
+ *     } else {
+ *         console.error('Could not find a sign component on the block.');
+ *     }
+ * }
+ *
+ * placeTranslatedSign(
+ *     {
+ *         dimension: world.getDimension('overworld'),
+ *         x: 0,
+ *         y: 0,
+ *         z: 0,
+ *     },
+ *     'Steve',
+ * );
+ * ```
+ * @example showTranslatedMessageForm.ts
+ * ```typescript
+ * import { world, Player } from '@minecraft/server';
+ * import { MessageFormData, MessageFormResponse } from '@minecraft/server-ui';
+ *
+ * function showMessage(player: Player) {
+ *     const messageForm = new MessageFormData()
+ *         .title({ translate: 'permissions.removeplayer' })
+ *         .body({ translate: 'accessibility.list.or.two', with: ['Player 1', 'Player 2'] })
+ *         .button1('Player 1')
+ *         .button2('Player 2');
+ *
+ *     messageForm
+ *         .show(player)
+ *         .then((formData: MessageFormResponse) => {
+ *             // player canceled the form, or another dialog was up and open.
+ *             if (formData.canceled || formData.selection === undefined) {
+ *                 return;
+ *             }
+ *
+ *             console.warn(`You selected ${formData.selection === 0 ? 'Player 1' : 'Player 2'}`);
+ *         })
+ *         .catch((error: Error) => {
+ *             console.warn('Failed to show form: ' + error);
+ *         });
+ * };
+ *
+ * showMessage(world.getAllPlayers()[0]);
+ * ```
  */
 export interface RawMessage {
     /**

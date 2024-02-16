@@ -171,6 +171,23 @@ const tsPopulators = {
                 });
             }
         }
+    },
+    'mojang-cooldownCategory.d.ts': (textChanges, { sourceFile, gameData }) => {
+        const enumNode = sourceFile.getEnumOrThrow('MinecraftCooldownCategoryTypes');
+        const { cooldownCategory } = gameData;
+        for (const enumMember of enumNode.getMembers()) {
+            const cooldownCategoryId = enumMember
+                .getInitializerIfKindOrThrow(SyntaxKind.StringLiteral)
+                .getLiteralValue();
+            const enumTranslation = cooldownCategory[cooldownCategoryId];
+            if (enumTranslation) {
+                const prefixSpaces = enumMember.getIndentationText();
+                textChanges.push({
+                    span: { start: enumMember.getStart(), length: 0 },
+                    newText: `/** ${enumTranslation}。 */\n${prefixSpaces}`
+                });
+            }
+        }
     }
 };
 

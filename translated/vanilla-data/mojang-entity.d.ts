@@ -24,8 +24,12 @@ export declare enum MinecraftEntityTypes {
     Blaze = "blaze",
     /** 船。 */
     Boat = "boat",
+    /** Bogged。 */
+    Bogged = "bogged",
     /** 旋风人。 */
     Breeze = "breeze",
+    /** 风弹（不可召唤）。 */
+    BreezeWindChargeProjectile = "breeze_wind_charge_projectile",
     /** 骆驼。 */
     Camel = "camel",
     /** 猫。 */

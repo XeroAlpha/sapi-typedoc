@@ -41,29 +41,31 @@ export class ItemDurabilityComponent extends ItemComponent {
      * 附带一个耐久附魔等级作为可选参数。
      * 
      * Returns the maximum chance that this item would be damaged
-     * using the damageRange property, given an unbreaking level.
+     * using the damageRange property, given an unbreaking
+     * enchantment level.
      *
      * This function can't be called in read-only mode.
      *
      * @param unbreakingEnchantmentLevel
      * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
-     * 传入的 `unbreakingEnchantmentLevel` 参数必须大于等于 0。
+     * 传入的 `unbreakingEnchantmentLevel` 参数必须介于 [0, 3]。
+     * 
+     * Unbreaking factor to consider in factoring the damage
+     * chance. Incoming unbreaking parameter must be within the
+     * range [0, 3].
      * 
      * @returns 使用时的最大损坏概率。
      * @throws
-     * 若 `unbreakingEnchantmentLevel` 参数小于 0，抛出 `TypeError` 。
+     * 若 `unbreakingEnchantmentLevel` 参数未在范围内时，抛出 `TypeError` 。
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @remarks
-     * 返回物品损失耐久的概率范围。
+     * 返回用于计算物品损失耐久的概率范围。最终物品损失耐久的概率将落在此范围中。
      * 
-     * 公式：`几率 = (最小值 + ((最大值 - 最小值) / (耐久等级 + 1)))`
-     * 
-     * Returns the min and max variables used by the damage chance
-     * formula:
-     * chance = (min + ((max - min) / (unbreaking + 1)))
-     * 
+     * A range of numbers that is used to calculate the damage
+     * chance for an item. The damage chance will fall within this
+     * range.
      *
      * This function can't be called in read-only mode.
      *

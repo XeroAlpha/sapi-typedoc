@@ -19,7 +19,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-internal.1.20.70-preview.22"
+ *   "version": "1.0.0-internal.1.20.70-preview.24"
  * }
  * ```
  *
@@ -1181,22 +1181,24 @@ export class Test {
      * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *   const attackerId = "fox";
-     *   const victimId = "chicken";
+     * import * as gameTest from '@minecraft/server-gametest';
      *
-     *   test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *   let victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     * gameTest
+     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+     *         const attackerId = 'fox';
+     *         const victimId = 'chicken';
      *
-     *   test.assertEntityInstancePresentInArea(victim, true);
+     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *         const victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *   test.succeedWhen(() => {
-     *     test.assertEntityInstancePresentInArea(victim, false);
-     *   });
-     * })
-     *   .maxTicks(400)
-     *   .structureName("gametests:mediumglass");
+     *         test.assertEntityInstancePresentInArea(victim, true);
      *
+     *         test.succeedWhen(() => {
+     *             test.assertEntityInstancePresentInArea(victim, false);
+     *         });
+     *     })
+     *     .maxTicks(400)
+     *     .structureName('gametests:mediumglass');
      * ```
      */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
@@ -1248,21 +1250,24 @@ export class Test {
      * {@link GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *     const attackerId = "fox";
-     *     const victimId = "chicken";
+     * import * as gameTest from '@minecraft/server-gametest';
      *
-     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     * gameTest
+     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+     *         const attackerId = 'fox';
+     *         const victimId = 'chicken';
      *
-     *     test.assertEntityPresentInArea(victimId, true);
+     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *     test.succeedWhen(() => {
-     *       test.assertEntityPresentInArea(victimId, false);
-     *     });
-     *   })
+     *         test.assertEntityPresentInArea(victimId, true);
+     *
+     *         test.succeedWhen(() => {
+     *             test.assertEntityPresentInArea(victimId, false);
+     *         });
+     *     })
      *     .maxTicks(400)
-     *     .structureName("gametests:mediumglass");
+     *     .structureName('gametests:mediumglass');
      * ```
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
@@ -1784,21 +1789,24 @@ export class Test {
      * {@link minecraftserver.GameTestError}
      * @example simpleMobTest.ts
      * ```typescript
-     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *     const attackerId = "fox";
-     *     const victimId = "chicken";
+     * import * as gameTest from '@minecraft/server-gametest';
      *
-     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     * gameTest
+     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+     *         const attackerId = 'fox';
+     *         const victimId = 'chicken';
      *
-     *     test.assertEntityPresentInArea(victimId, true);
+     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *     test.succeedWhen(() => {
-     *       test.assertEntityPresentInArea(victimId, false);
-     *     });
-     *   })
+     *         test.assertEntityPresentInArea(victimId, true);
+     *
+     *         test.succeedWhen(() => {
+     *             test.assertEntityPresentInArea(victimId, false);
+     *         });
+     *     })
      *     .maxTicks(400)
-     *     .structureName("gametests:mediumglass");
+     *     .structureName('gametests:mediumglass');
      * ```
      * @example spawnAdultPig.js
      * ```typescript
@@ -2011,21 +2019,24 @@ export class Test {
      * @throws This function can throw errors.
      * @example simpleMobTest.ts
      * ```typescript
-     *   gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
-     *     const attackerId = "fox";
-     *     const victimId = "chicken";
+     * import * as gameTest from '@minecraft/server-gametest';
      *
-     *     test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *     test.spawn(victimId, { x: 2, y: 2, z: 2 });
+     * gameTest
+     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+     *         const attackerId = 'fox';
+     *         const victimId = 'chicken';
      *
-     *     test.assertEntityPresentInArea(victimId, true);
+     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
      *
-     *     test.succeedWhen(() => {
-     *       test.assertEntityPresentInArea(victimId, false);
-     *     });
-     *   })
+     *         test.assertEntityPresentInArea(victimId, true);
+     *
+     *         test.succeedWhen(() => {
+     *             test.assertEntityPresentInArea(victimId, false);
+     *         });
+     *     })
      *     .maxTicks(400)
-     *     .structureName("gametests:mediumglass");
+     *     .structureName('gametests:mediumglass');
      * ```
      */
     succeedWhen(callback: () => void): void;
@@ -2250,29 +2261,26 @@ export class GameTestError extends Error {
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @example example1.js
- * ```typescript
- * GameTest.register("ExampleTests", "alwaysFail", (test) => {
- *   test.fail("This test, runnable via '/gametest run ExampleTests:alwaysFail', will always fail");
- * });
- * ```
  * @example simpleMobTest.ts
  * ```typescript
- * gt.register("StarterTests", "simpleMobTest", (test: gt.Test) => {
- *   const attackerId = "fox";
- *   const victimId = "chicken";
+ * import * as gameTest from '@minecraft/server-gametest';
  *
- *   test.spawn(attackerId, { x: 5, y: 2, z: 5 });
- *   test.spawn(victimId, { x: 2, y: 2, z: 2 });
+ * gameTest
+ *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
+ *         const attackerId = 'fox';
+ *         const victimId = 'chicken';
  *
- *   test.assertEntityPresentInArea(victimId, true);
+ *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+ *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
  *
- *   test.succeedWhen(() => {
- *     test.assertEntityPresentInArea(victimId, false);
- *   });
- * })
- *   .maxTicks(400)
- *   .structureName("gametests:mediumglass");
+ *         test.assertEntityPresentInArea(victimId, true);
+ *
+ *         test.succeedWhen(() => {
+ *             test.assertEntityPresentInArea(victimId, false);
+ *         });
+ *     })
+ *     .maxTicks(400)
+ *     .structureName('gametests:mediumglass');
  * ```
  */
 export function register(
@@ -2298,6 +2306,27 @@ export function register(
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
+ * @example simpleMobAsyncTest.ts
+ * ```typescript
+ * import * as gameTest from '@minecraft/server-gametest';
+ *
+ * gameTest
+ *     .registerAsync('StarterTests', 'simpleMobTest', async (test: gameTest.Test) => {
+ *         const attackerId = 'fox';
+ *         const victimId = 'chicken';
+ *
+ *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
+ *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
+ *
+ *         test.assertEntityPresentInArea(victimId, true);
+ *
+ *         test.succeedWhen(() => {
+ *             test.assertEntityPresentInArea(victimId, false);
+ *         });
+ *     })
+ *     .maxTicks(400)
+ *     .structureName('gametests:mediumglass');
+ * ```
  */
 export function registerAsync(
     testClassName: string,

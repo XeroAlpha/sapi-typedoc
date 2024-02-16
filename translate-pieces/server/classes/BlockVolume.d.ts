@@ -54,18 +54,40 @@ export class BlockVolume extends BlockVolumeBase {
     constructor(from: Vector3, to: Vector3);
     /**
      * @remarks
+     * Check to see if the given location is directly adjacent to
+     * the outer surface of a BlockVolume.
+     *
+     *
      * This function can't be called in read-only mode.
      *
+     * @param pos
+     * The world block location to test
+     * @returns
+     * If the location is either inside or more than 0 blocks away,
+     * the function will return false.
+     * If the location is directly contacting the outer surface of
+     * the BlockVolume, the function will return true.
      */
     doesLocationTouchFaces(pos: Vector3): boolean;
     /**
      * @remarks
+     * Check to see if a two block volumes are directly adjacent
+     * and two faces touch.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param other
+     * The volume to test
+     * @returns
+     * If the outer faces of both block volumes touch and are
+     * directly adjacent at any point, return true.
      */
     doesVolumeTouchFaces(other: BlockVolume): boolean;
     /**
      * @remarks
+     * Return an enumeration which represents the intersection
+     * between two BlockVolume objects
+     *
      * This function can't be called in read-only mode.
      *
      */

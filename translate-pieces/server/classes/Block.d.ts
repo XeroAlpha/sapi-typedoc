@@ -418,6 +418,15 @@ export class Block {
     isValid(): boolean;
     /**
      * @beta
+     * @remarks
+     * Tests whether this block matches a specific criteria.
+     *
+     * @param blockName
+     * Block type identifier to match this API against.
+     * @param states
+     * Optional set of block states to test this block against.
+     * @returns
+     * Returns true if the block matches the specified criteria.
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -511,8 +520,13 @@ export class Block {
     /**
      * @beta
      * @remarks
+     * Sets whether this block has a water logged state - for
+     * example, whether stairs are submerged within water.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param isWaterlogged
+     * true if the block should have water within it.
      * @throws This function can throw errors.
      *
      * {@link Error}

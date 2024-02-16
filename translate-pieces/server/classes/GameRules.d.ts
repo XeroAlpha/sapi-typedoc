@@ -1,5 +1,6 @@
 /**
  * @beta
+ * Represents the game rules for a world experience.
  */
 export class GameRules {
     private constructor();

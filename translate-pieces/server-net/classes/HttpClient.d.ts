@@ -1,5 +1,27 @@
 /* IMPORT */ import { HttpRequest, HttpResponse } from '../index';
 
+/**
+ * @example simpleHttpRequest.ts
+ * ```typescript
+ * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+ *
+ * async function updateScore() {
+ *     const req = new HttpRequest('http://localhost:3000/updateScore');
+ *
+ *     req.body = JSON.stringify({
+ *         score: 22,
+ *     });
+ *
+ *     req.method = HttpRequestMethod.Post;
+ *     req.headers = [
+ *         new HttpHeader('Content-Type', 'application/json'),
+ *         new HttpHeader('auth', 'my-auth-token'),
+ *     ];
+ *
+ *     await http.request(req);
+ * }
+ * ```
+ */
 export class HttpClient {
     private constructor();
     /**
@@ -47,6 +69,26 @@ export class HttpClient {
      * 解析到对应响应的 Promise。
      * 
      * An awaitable promise that contains the HTTP response.
+     * @example simpleHttpRequest.ts
+     * ```typescript
+     * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
+     *
+     * async function updateScore() {
+     *     const req = new HttpRequest('http://localhost:3000/updateScore');
+     *
+     *     req.body = JSON.stringify({
+     *         score: 22,
+     *     });
+     *
+     *     req.method = HttpRequestMethod.Post;
+     *     req.headers = [
+     *         new HttpHeader('Content-Type', 'application/json'),
+     *         new HttpHeader('auth', 'my-auth-token'),
+     *     ];
+     *
+     *     await http.request(req);
+     * }
+     * ```
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }

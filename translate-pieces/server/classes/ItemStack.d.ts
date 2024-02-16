@@ -2,6 +2,58 @@
 
 /**
  * Defines a collection of items.
+ * @example givePlayerIronFireSword.ts
+ * ```typescript
+ * // Spawns a bunch of item stacks
+ * import { ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
+ * import { MinecraftItemTypes, MinecraftEnchantmentTypes } from '@minecraft/vanilla-data';
+ *
+ * function giveFireSword(player: Player) {
+ *     const ironFireSword = new ItemStack(MinecraftItemTypes.DiamondSword, 1);
+ *
+ *     const enchantments = ironFireSword?.getComponent(ItemComponentTypes.Enchantable);
+ *     if (enchantments) {
+ *         enchantments.addEnchantment({ type: MinecraftEnchantmentTypes.FireAspect, level: 1 });
+ *     }
+ *
+ *     const inventory = player.getComponent('minecraft:inventory');
+ *     if (inventory === undefined || inventory.container === undefined) {
+ *         return;
+ *     }
+ *     inventory.container.setItem(0, ironFireSword);
+ * }
+ * ```
+ * @example givePlayerEquipment.ts
+ * ```typescript
+ * // Gives the player some equipment
+ * import { EquipmentSlot, ItemStack, Player, EntityComponentTypes } from '@minecraft/server';
+ * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+ *
+ * function giveEquipment(player: Player) {
+ *     const equipmentCompPlayer = player.getComponent(EntityComponentTypes.Equippable);
+ *     if (equipmentCompPlayer) {
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Head, new ItemStack(MinecraftItemTypes.GoldenHelmet));
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Chest, new ItemStack(MinecraftItemTypes.IronChestplate));
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Legs, new ItemStack(MinecraftItemTypes.DiamondLeggings));
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Feet, new ItemStack(MinecraftItemTypes.NetheriteBoots));
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Mainhand, new ItemStack(MinecraftItemTypes.WoodenSword));
+ *         equipmentCompPlayer.setEquipment(EquipmentSlot.Offhand, new ItemStack(MinecraftItemTypes.Shield));
+ *     } else {
+ *         console.warn('No equipment component found on player');
+ *     }
+ * }
+ * ```
+ * @example spawnFeatherItem.ts
+ * ```typescript
+ * // Spawns a feather at a location
+ * import { ItemStack, DimensionLocation } from '@minecraft/server';
+ * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+ *
+ * function spawnFeather(location: DimensionLocation) {
+ *     const featherItem = new ItemStack(MinecraftItemTypes.Feather, 1);
+ *     location.dimension.spawnItem(featherItem, location);
+ * }
+ * ```
  */
 export class ItemStack {
     /**
@@ -144,10 +196,24 @@ export class ItemStack {
      * otherwise undefined.
      * @example durability.ts
      * ```typescript
-     * // Get the maximum durability of a custom sword item
-     * const itemStack = new ItemStack('custom:sword');
-     * const durability = itemStack.getComponent(ItemComponentTypes.Durability);
-     * const maxDurability = durability.maxDurability;
+     * // Gives a player a half-damaged diamond sword
+     * import { ItemStack, Player, ItemComponentTypes, EntityComponentTypes } from '@minecraft/server';
+     * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+     *
+     * function giveHurtDiamondSword(player: Player) {
+     *     const hurtDiamondSword = new ItemStack(MinecraftItemTypes.DiamondSword);
+     *     const durabilityComponent = hurtDiamondSword.getComponent(ItemComponentTypes.Durability);
+     *     if (durabilityComponent !== undefined) {
+     *         durabilityComponent.damage = durabilityComponent.maxDurability / 2;
+     *     }
+     *
+     *     const inventory = player.getComponent(EntityComponentTypes.Inventory);
+     *     if (inventory === undefined || inventory.container === undefined) {
+     *         return;
+     *     }
+     *
+     *     inventory.container.addItem(hurtDiamondSword);
+     * }
      * ```
      */
     getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
@@ -248,6 +314,17 @@ export class ItemStack {
     isStackableWith(itemStack: ItemStack): boolean;
     /**
      * @beta
+     * @remarks
+     * Version safe way of checking if an item matches.
+     *
+     * @param itemName
+     * Identifier of the item.
+     * @param states
+     *  Applicable only for blocks. An optional set of states to
+     * compare against. If states is not specified, matches checks
+     * against the set of types more broadly.
+     * @returns
+     * Returns a boolean whether the specified item matches.
      */
     matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
@@ -264,9 +341,24 @@ export class ItemStack {
      * Throws if any of the provided block identifiers are invalid.
      * @example example.ts
      * ```typescript
+     * const specialPickaxe = new ItemStack('minecraft:diamond_pickaxe');
+     * specialPickaxe.setCanDestroy(['minecraft:cobblestone', 'minecraft:obsidian']);
+     *
      * // Creates a diamond pickaxe that can destroy cobblestone and obsidian
-     * const specialPickaxe = new ItemStack("minecraft:diamond_pickaxe");
-     * specialPickaxe.setCanDestroy(["minecraft:cobblestone", "minecraft:obsidian"]);
+     * import { ItemStack, Player } from '@minecraft/server';
+     * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+     *
+     * function giveRestrictedPickaxe(player: Player) {
+     *     const specialPickaxe = new ItemStack(MinecraftItemTypes.DiamondPickaxe);
+     *     specialPickaxe.setCanPlaceOn([MinecraftItemTypes.Cobblestone, MinecraftItemTypes.Obsidian]);
+     *
+     *     const inventory = player.getComponent('inventory');
+     *     if (inventory === undefined || inventory.container === undefined) {
+     *         return;
+     *     }
+     *
+     *     inventory.container.addItem(specialPickaxe);
+     * }
      * ```
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
@@ -286,8 +378,20 @@ export class ItemStack {
      * @example example.ts
      * ```typescript
      * // Creates a gold block that can be placed on grass and dirt
-     * const specialGoldBlock = new ItemStack("minecraft:gold_block");
-     * specialPickaxe.setCanPlaceOn(["minecraft:grass", "minecraft:dirt"]);
+     * import { ItemStack, Player, EntityComponentTypes } from '@minecraft/server';
+     * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+     *
+     * function giveRestrictedGoldBlock(player: Player) {
+     *     const specialGoldBlock = new ItemStack(MinecraftItemTypes.GoldBlock);
+     *     specialGoldBlock.setCanPlaceOn([MinecraftItemTypes.Grass, MinecraftItemTypes.Dirt]);
+     *
+     *     const inventory = player.getComponent(EntityComponentTypes.Inventory);
+     *     if (inventory === undefined || inventory.container === undefined) {
+     *         return;
+     *     }
+     *
+     *     inventory.container.addItem(specialGoldBlock);
+     * }
      * ```
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
@@ -320,28 +424,24 @@ export class ItemStack {
      * @throws This function can throw errors.
      * @example diamondAwesomeSword.ts
      * ```typescript
-     *   const diamondAwesomeSword = new mc.ItemStack(mc.MinecraftItemTypes.diamondSword, 1);
-     *   let players = mc.world.getAllPlayers();
+     * import { EntityComponentTypes, ItemStack, Player } from '@minecraft/server';
+     * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
      *
-     *   diamondAwesomeSword.setLore(["§c§lDiamond Sword of Awesome§r", "+10 coolness", "§p+4 shiny§r"]);
+     * function giveAwesomeSword(player: Player) {
+     *     const diamondAwesomeSword = new ItemStack(MinecraftItemTypes.DiamondSword, 1);
+     *     diamondAwesomeSword.setLore([
+     *         '§c§lDiamond Sword of Awesome§r',
+     *          '+10 coolness', '§p+4 shiny§r'
+     *     ]);
      *
-     *   // hover over/select the item in your inventory to see the lore.
-     *   const inventory = players[0].getComponent("inventory") as mc.EntityInventoryComponent;
-     *   inventory.container.setItem(0, diamondAwesomeSword);
+     *     // hover over/select the item in your inventory to see the lore.
+     *     const inventory = player.getComponent(EntityComponentTypes.Inventory);
+     *     if (inventory === undefined || inventory.container === undefined) {
+     *         return;
+     *     }
      *
-     *   let item = inventory.container.getItem(0);
-     *
-     *   if (item) {
-     *     let enchants = item.getComponent("minecraft:enchantments") as mc.ItemEnchantsComponent;
-     *     let knockbackEnchant = new mc.Enchantment("knockback", 3);
-     *     enchants.enchantments.addEnchantment(knockbackEnchant);
-     *   }
-     * ```
-     * @example multilineLore.ts
-     * ```typescript
-     * // Set the lore of an item to multiple lines of text
-     * const itemStack = new ItemStack("minecraft:diamond_sword");
-     * itemStack.setLore(["Line 1", "Line 2", "Line 3"]);
+     *     inventory.container.setItem(0, diamondAwesomeSword);
+     * }
      * ```
      */
     setLore(loreList?: string[]): void;
