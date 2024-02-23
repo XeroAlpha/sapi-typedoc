@@ -32,7 +32,7 @@ export declare enum MinecraftFeatureTypes {
     Temple = "minecraft:temple",
     /** 古迹废墟。 */
     TrailRuins = "minecraft:trail_ruins",
-    /** 试炼室。 */
+    /** 试炼密室。 */
     TrialChambers = "minecraft:trial_chambers",
     /** 村庄。 */
     Village = "minecraft:village"

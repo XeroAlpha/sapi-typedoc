@@ -24,7 +24,7 @@ export declare enum MinecraftEntityTypes {
     Blaze = "blaze",
     /** 船。 */
     Boat = "boat",
-    /** Bogged。 */
+    /** 沼骸。 */
     Bogged = "bogged",
     /** 旋风人。 */
     Breeze = "breeze",

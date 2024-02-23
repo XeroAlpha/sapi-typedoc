@@ -252,7 +252,7 @@ export declare enum MinecraftItemTypes {
     BlueWool = "minecraft:blue_wool",
     /** 船。 */
     Boat = "minecraft:boat",
-    /** Bogged Spawn Egg。 */
+    /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
     /** 骨头。 */
     Bone = "minecraft:bone",
