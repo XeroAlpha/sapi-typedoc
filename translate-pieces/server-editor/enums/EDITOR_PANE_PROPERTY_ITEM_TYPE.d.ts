@@ -7,6 +7,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Boolean = 'editorUI:Boolean',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
+    Image = 'editorUI:Image',
     Number = 'editorUI:Number',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',

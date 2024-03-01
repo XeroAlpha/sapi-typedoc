@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPaletteManager, ClipboardManager, Cursor, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPaletteManager, ClipboardManager, Cursor, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
 
 /**
  * The extension context is a native (C++) object created for
@@ -77,4 +77,5 @@ export class ExtensionContext {
      *
      */
     readonly transactionManager: TransactionManager;
+    readonly widgetManager: WidgetManager;
 }

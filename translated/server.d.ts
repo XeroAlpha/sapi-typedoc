@@ -419,6 +419,7 @@ export enum EntityComponentTypes {
     CanFly = 'minecraft:can_fly',
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
+    Color2 = 'minecraft:color2',
     Equippable = 'minecraft:equippable',
     FireImmune = 'minecraft:fire_immune',
     FloatsInLiquid = 'minecraft:floats_in_liquid',
@@ -1329,6 +1330,28 @@ export enum ObjectiveSortOrder {
 }
 
 /**
+ * @beta
+ */
+export enum PaletteColor {
+    White = 0,
+    Orange = 1,
+    Magenta = 2,
+    LightBlue = 3,
+    Yellow = 4,
+    Lime = 5,
+    Pink = 6,
+    Gray = 7,
+    Silver = 8,
+    Cyan = 9,
+    Purple = 10,
+    Blue = 11,
+    Brown = 12,
+    Green = 13,
+    Red = 14,
+    Black = 15,
+}
+
+/**
  * Contains objectives and participants for the scoreboard.
  */
 export enum ScoreboardIdentityType {
@@ -1577,6 +1600,7 @@ export type EntityComponentTypeMap = {
     can_fly: EntityCanFlyComponent;
     can_power_jump: EntityCanPowerJumpComponent;
     color: EntityColorComponent;
+    color2: EntityColor2Component;
     equippable: EntityEquippableComponent;
     fire_immune: EntityFireImmuneComponent;
     floats_in_liquid: EntityFloatsInLiquidComponent;
@@ -1610,6 +1634,7 @@ export type EntityComponentTypeMap = {
     'minecraft:can_fly': EntityCanFlyComponent;
     'minecraft:can_power_jump': EntityCanPowerJumpComponent;
     'minecraft:color': EntityColorComponent;
+    'minecraft:color2': EntityColor2Component;
     'minecraft:equippable': EntityEquippableComponent;
     'minecraft:fire_immune': EntityFireImmuneComponent;
     'minecraft:floats_in_liquid': EntityFloatsInLiquidComponent;
@@ -2280,6 +2305,22 @@ export class BlockComponent extends Component {
      *
      */
     readonly block: Block;
+}
+
+/**
+ * @beta
+ * Contains information regarding an entity stepping onto a
+ * specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentStepOnEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that stepped on the block.
+     *
+     */
+    readonly entity?: Entity;
 }
 
 /**
@@ -3063,6 +3104,35 @@ export class BlockType {
 
 /**
  * @beta
+ * Provides the functionality for registering custom components
+ * for blocks.
+ */
+export class BlockTypeRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers a block custom component that can be used in block
+     * JSON configuration.
+     *
+     * @param name
+     * The id that represents this custom component. Must have a
+     * namespace. This id can be specified in a block's JSON
+     * configuration under the 'minecraft:custom_components' block
+     * component.
+     * @param customComponent
+     * The collection of event functions that will be called when
+     * the event occurs on a block using this custom component id.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
+}
+
+/**
+ * @beta
  * Contains a catalog of Minecraft Block Types that are
  * available in this world.
  */
@@ -3204,6 +3274,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getBoundingBox(): BoundingBox;
     /**
@@ -3221,6 +3292,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getMax(): Vector3;
     /**
@@ -3230,6 +3302,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getMin(): Vector3;
     /**
@@ -6681,6 +6754,19 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityColor2Component extends EntityComponent {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly value: PaletteColor;
+    static readonly componentId = 'minecraft:color2';
+}
+
+/**
  * Defines the entity's color. Only works on certain entities
  * that have predefined color values (e.g., sheep, llama,
  * shulker).
@@ -6712,7 +6798,7 @@ export class EntityComponent extends Component {
      * undefined if it has been removed.
      *
      */
-    readonly entity?: Entity;
+    readonly entity: Entity;
 }
 
 /**
@@ -6960,15 +7046,6 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealableComponent extends EntityComponent {
     private constructor();
-    /**
-     * @beta
-     * @remarks
-     * A set of filters that healable items might be associated
-     * with.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly filters: FilterGroup;
     /**
      * @remarks
      * Determines if an item can be used regardless of the entity
@@ -10794,6 +10871,26 @@ export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
 
 /**
  * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ListBlockVolume extends BlockVolumeBase {
+    constructor(locations: Vector3[]);
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    add(locations: Vector3[]): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    remove(locations: Vector3[]): void;
+}
+
+/**
+ * @beta
  * A specific currently-internal event used for passing
  * messages from client to server.
  */
@@ -12984,6 +13081,37 @@ export class ServerMessageAfterEventSignal {
 /**
  * @beta
  */
+export class Structure {
+    private constructor();
+    readonly id: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly size: Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
+    getBlockPermutation(location: Vector3): BlockPermutation | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
+    getIsWaterlogged(location: Vector3): boolean;
+    isValid(): boolean;
+}
+
+/**
+ * @beta
+ */
 export class StructureManager {
     private constructor();
     /**
@@ -12996,7 +13124,7 @@ export class StructureManager {
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
-    createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): StructureTemplate;
+    createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -13010,7 +13138,7 @@ export class StructureManager {
         dimension: Dimension,
         blockVolume: BlockVolume,
         options?: StructureCreateOptions,
-    ): StructureTemplate;
+    ): Structure;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -13019,13 +13147,13 @@ export class StructureManager {
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
-    delete(structure: string | StructureTemplate): boolean;
+    delete(structure: string | Structure): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    get(identifier: string): StructureTemplate | undefined;
+    get(identifier: string): Structure | undefined;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -13039,19 +13167,11 @@ export class StructureManager {
      * {@link InvalidStructureError}
      */
     place(
-        structure: string | StructureTemplate,
+        structure: string | Structure,
         dimension: Dimension,
         location: Vector3,
         options?: StructurePlaceOptions,
     ): void;
-}
-
-/**
- * @beta
- */
-export class StructureTemplate {
-    private constructor();
-    readonly id: string;
 }
 
 /**
@@ -14604,8 +14724,7 @@ export class WorldAfterEvents {
      * @beta
      * @remarks
      * This event fires when the script environment is initialized
-     * on a World. In addition, you can register dynamic properties
-     * within the scope of a world Initialize event.
+     * on a World.
      *
      */
     readonly worldInitialize: WorldInitializeAfterEventSignal;
@@ -14714,15 +14833,22 @@ export class WorldBeforeEvents {
      * @beta
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires immediately when the script environment is
+     * initialized on a World. Not all script functionality may be
+     * available. For guaranteed access to world state, use the
+     * world initialize after event.
+     *
+     */
+    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
 /**
  * @beta
  * Contains information and methods that can be used at the
  * initialization of the scripting environment for a World.
- * Also, use the supplied propertyRegistry object to register
- * any dynamic properties, within the scope of the World
- * Initialize execution.
  */
 export class WorldInitializeAfterEvent {
     private constructor();
@@ -14730,10 +14856,9 @@ export class WorldInitializeAfterEvent {
 
 /**
  * @beta
- * Manages callbacks that are run at the initialization of the
- * scripting environment for a World. Do note that this event
- * may run multiple times within a session in the case that the
- * /reload command is used.
+ * Manages callbacks that are run on the first tick of the
+ * World. Do note that this event may run multiple times within
+ * a session in the case that the /reload command is used.
  */
 export class WorldInitializeAfterEventSignal {
     private constructor();
@@ -14760,6 +14885,49 @@ export class WorldInitializeAfterEventSignal {
 
 /**
  * @beta
+ * Contains information and methods that can be used at the
+ * initialization of the scripting environment for a World.
+ * Also, use the supplied blockRegistry object to register
+ * block custom components within the scope of the World
+ * Initialize execution.
+ */
+export class WorldInitializeBeforeEvent {
+    private constructor();
+    readonly blockTypeRegistry: BlockTypeRegistry;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are run at the initialization of the
+ * scripting environment for a World. Do note that this event
+ * may run multiple times within a session in the case that the
+ * /reload command is used.
+ */
+export class WorldInitializeBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when the scripting
+     * environment is initialized for a World.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called the scripting
+     * environment is initialized for a World.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -14770,6 +14938,21 @@ export interface BiomeSearchOptions {
      *
      */
     boundingSize?: Vector3;
+}
+
+/**
+ * @beta
+ * Contains a set of events that will be raised for a block.
+ * This object must be bound using the BlockRegistry.
+ */
+export interface BlockCustomComponent {
+    /**
+     * @remarks
+     * This function will be called when an entity steps onto the
+     * block that this custom component is bound to.
+     *
+     */
+    onStepOn?: (arg: BlockComponentStepOnEvent) => void;
 }
 
 /**

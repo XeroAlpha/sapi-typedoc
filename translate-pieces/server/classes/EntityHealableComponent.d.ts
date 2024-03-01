@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, FeedItem, FilterGroup } from '../index';
+/* IMPORT */ import { EntityComponent, FeedItem } from '../index';
 
 /**
  * Defines the interactions with this entity for healing it.
@@ -6,15 +6,6 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealableComponent extends EntityComponent {
     private constructor();
-    /**
-     * @beta
-     * @remarks
-     * A set of filters that healable items might be associated
-     * with.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly filters: FilterGroup;
     /**
      * @remarks
      * Determines if an item can be used regardless of the entity

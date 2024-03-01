@@ -9,6 +9,7 @@ export enum EntityComponentTypes {
     CanFly = 'minecraft:can_fly',
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
+    Color2 = 'minecraft:color2',
     Equippable = 'minecraft:equippable',
     FireImmune = 'minecraft:fire_immune',
     FloatsInLiquid = 'minecraft:floats_in_liquid',

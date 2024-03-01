@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -113,6 +113,14 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDataPicker,
+    ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     */
+    addImage<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsImage,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
