@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolume, Dimension, InvalidStructureError, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, StructureTemplate, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockVolume, Dimension, InvalidStructureError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -15,7 +15,7 @@ export class StructureManager {
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
-    createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): StructureTemplate;
+    createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -29,7 +29,7 @@ export class StructureManager {
         dimension: Dimension,
         blockVolume: BlockVolume,
         options?: StructureCreateOptions,
-    ): StructureTemplate;
+    ): Structure;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -38,13 +38,13 @@ export class StructureManager {
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
-    delete(structure: string | StructureTemplate): boolean;
+    delete(structure: string | Structure): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    get(identifier: string): StructureTemplate | undefined;
+    get(identifier: string): Structure | undefined;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -58,7 +58,7 @@ export class StructureManager {
      * {@link InvalidStructureError}
      */
     place(
-        structure: string | StructureTemplate,
+        structure: string | Structure,
         dimension: Dimension,
         location: Vector3,
         options?: StructurePlaceOptions,

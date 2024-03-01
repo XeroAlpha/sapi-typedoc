@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.70-preview.25"
+ *   "version": "0.1.0-beta.1.20.80-preview.20"
  * }
  * ```
  *
@@ -107,6 +107,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Boolean = 'editorUI:Boolean',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
+    Image = 'editorUI:Image',
     Number = 'editorUI:Number',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
@@ -290,6 +291,14 @@ export declare enum KeyInputType {
 }
 
 /**
+ * Layout directions for property panes.
+ */
+export declare enum LayoutDirection {
+    Vertical = 0,
+    Horizontal = 1,
+}
+
+/**
  * Mouse device action categories
  */
 export declare enum MouseActionCategory {
@@ -349,6 +358,12 @@ export enum PlaytestSessionResult {
     PlayerNotFound = 9,
     ResponseTimeout = 10,
     UnspecifiedError = 11,
+}
+
+export enum WidgetGroupSelectionMode {
+    Multiple = 'Multiple',
+    None = 'None',
+    Single = 'Single',
 }
 
 /**
@@ -927,6 +942,131 @@ export class CursorPropertyChangeAfterEventSignal {
     unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomWidget extends Widget {
+    private constructor();
+    readonly location: minecraftserver.Vector3;
+    readonly rotation: minecraftserver.Vector2;
+    readonly showTextOnlyWhenSelected: boolean;
+    getText(): string;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setText(text: string): void;
+}
+
+export class CustomWidgetMoveEventData {
+    private constructor();
+    readonly group: WidgetGroup;
+    readonly location?: minecraftserver.Vector3;
+    readonly rotation?: minecraftserver.Vector2;
+    readonly widget: CustomWidget;
+}
+
+export class DataStore {
+    private constructor();
+    readonly actionContainer: DataStoreActionContainer;
+    readonly afterEvents: DataStoreAfterEvents;
+    readonly menuContainer: DataStoreMenuContainer;
+}
+
+export class DataStoreActionContainer {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    bindActionToControl(controlId: string, actionPayload: string): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    removeActionFromControl(controlId: string, actionPayload?: string): void;
+}
+
+export class DataStoreAfterEvents {
+    private constructor();
+    readonly payloadReceived: DataStorePayloadAfterEventSignal;
+}
+
+export class DataStoreMenuContainer {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    createItem(id: string, payload: string): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    destroyItem(id: string): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    getPayload(id: string): string;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    getProperty(id: string, property: string): boolean | number | string | undefined;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    hasPayload(id: string): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    hasProperty(id: string, property: string): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    updateItem(id: string, payload: string): void;
+}
+
+export class DataStorePayloadAfterEvent {
+    private constructor();
+    readonly dataTag: string;
+    readonly payload: string;
+}
+
+export class DataStorePayloadAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    subscribe(callback: (arg: DataStorePayloadAfterEvent) => void): (arg: DataStorePayloadAfterEvent) => void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: DataStorePayloadAfterEvent) => void): void;
+}
+
 /**
  * Editor Extensions are the basis for all player specific,
  * editor specific functionality within the game.  Almost all
@@ -1050,6 +1190,7 @@ export class ExtensionContext {
      *
      */
     readonly transactionManager: TransactionManager;
+    readonly widgetManager: WidgetManager;
 }
 
 /**
@@ -1115,6 +1256,11 @@ export class GraphicsSettings {
      * @throws This function can throw errors.
      */
     setAll(properties: GraphicsSettingsPropertyTypeMap): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LineWidget extends Widget {
+    private constructor();
 }
 
 /**
@@ -1245,6 +1391,17 @@ export class MinecraftEditor {
         shutdownFunction: (arg: ExtensionContext) => void,
         options?: ExtensionOptionalParameters,
     ): Extension;
+}
+
+export class MinecraftEditorInternal {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getDataStore(player: minecraftserver.Player): DataStore;
 }
 
 /**
@@ -1889,6 +2046,81 @@ export class UserDefinedTransactionHandlerId {
     private constructor();
 }
 
+export class Widget {
+    private constructor();
+    readonly valid: boolean;
+    getIsSelected(): boolean;
+    getIsVisible(): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setIsVisible(isVisible: boolean): void;
+}
+
+export class WidgetGroup {
+    private constructor();
+    readonly valid: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    createCustomWidget(
+        customEntityName: string,
+        location: minecraftserver.Vector3,
+        rotation?: minecraftserver.Vector2,
+        options?: CustomWidgetCreateOptions,
+    ): CustomWidget;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    deleteWidget(widgetToDelete: Widget): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    getIsVisible(): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setIsVisible(isVisible: boolean): void;
+}
+
+export class WidgetManager {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    deleteGroup(groupToDelete: WidgetGroup): void;
+}
+
+export class WidgetStateChangeEventData {
+    private constructor();
+    readonly group: WidgetGroup;
+    readonly isSelected?: boolean;
+    readonly isVisible?: boolean;
+    readonly widget: Widget;
+}
+
 /**
  * Interface used to specify the options when a clipboard item
  * is being written to the world
@@ -2004,6 +2236,14 @@ export interface CursorProperties {
     visible?: boolean;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface CustomWidgetCreateOptions extends WidgetCreateOptions {
+    moveEvent?: (arg: CustomWidgetMoveEventData) => void;
+    showTextOnlyWhenSelected?: boolean;
+    text?: string;
+    visualOffset?: minecraftserver.Vector3;
+}
+
 /**
  * An interface which defines the set of optional parameters
  * which can be used when calling the `registerEditorExtension`
@@ -2080,6 +2320,16 @@ export interface PlaytestGameOptions {
     spawnPosition?: minecraftserver.Vector3;
     timeOfDay?: number;
     weather?: number;
+}
+
+export interface WidgetCreateOptions {
+    initialVisibility?: boolean;
+    isSelectable?: boolean;
+    stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
+}
+
+export interface WidgetGroupCreateOptions {
+    groupSelectionMode?: WidgetGroupSelectionMode;
 }
 
 /**
@@ -2465,6 +2715,7 @@ export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
+    icon?: string;
     /**
      * @remarks
      * The variant for the button. By default it is "primary"
@@ -2491,6 +2742,12 @@ export interface IPropertyItemOptionsDropdown extends IPropertyItemOptions {
      *
      */
     dropdownItems: IDropdownItem[];
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsImage extends IPropertyItemOptions {
+    imageHeight: number;
+    imageWidth: number;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -2697,6 +2954,14 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     */
+    addImage<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsImage,
+    ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
      * Adds a number item to the pane.
      *
      */
@@ -2778,6 +3043,12 @@ export interface IPropertyPane {
  * The options to create a pane.
  */
 export interface IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Layout direction for sub panes
+     *
+     */
+    direction?: LayoutDirection;
     /**
      * @remarks
      * Fallback display text if no loc ID
@@ -2998,3 +3269,4 @@ export declare function registerUserDefinedTransactionHandler<T>(
  */
 export declare function stringFromException(e: unknown): string;
 export const editor: MinecraftEditor;
+export const editorInternal: MinecraftEditorInternal;

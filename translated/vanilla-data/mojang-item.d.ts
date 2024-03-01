@@ -24,6 +24,8 @@ export declare enum MinecraftItemTypes {
     AcaciaPlanks = "minecraft:acacia_planks",
     /** 金合欢木压力板。 */
     AcaciaPressurePlate = "minecraft:acacia_pressure_plate",
+    /** 金合欢树苗。 */
+    AcaciaSapling = "minecraft:acacia_sapling",
     /** 金合欢木告示牌。 */
     AcaciaSign = "minecraft:acacia_sign",
     /** 金合欢木台阶。 */
@@ -176,6 +178,8 @@ export declare enum MinecraftItemTypes {
     BirchPlanks = "minecraft:birch_planks",
     /** 白桦木压力板。 */
     BirchPressurePlate = "minecraft:birch_pressure_plate",
+    /** 白桦树苗。 */
+    BirchSapling = "minecraft:birch_sapling",
     /** 白桦木告示牌。 */
     BirchSign = "minecraft:birch_sign",
     /** 白桦木台阶。 */
@@ -274,6 +278,8 @@ export declare enum MinecraftItemTypes {
     Bowl = "minecraft:bowl",
     /** 脑纹珊瑚。 */
     BrainCoral = "minecraft:brain_coral",
+    /** 脑纹珊瑚扇。 */
+    BrainCoralFan = "minecraft:brain_coral_fan",
     /** 面包。 */
     Bread = "minecraft:bread",
     /** 旋风人刷怪蛋。 */
@@ -318,6 +324,8 @@ export declare enum MinecraftItemTypes {
     Brush = "minecraft:brush",
     /** 气泡珊瑚。 */
     BubbleCoral = "minecraft:bubble_coral",
+    /** 气泡珊瑚扇。 */
+    BubbleCoralFan = "minecraft:bubble_coral_fan",
     /** 铁桶。 */
     Bucket = "minecraft:bucket",
     /** 紫水晶母岩。 */
@@ -622,6 +630,8 @@ export declare enum MinecraftItemTypes {
     DarkOakPlanks = "minecraft:dark_oak_planks",
     /** 深色橡木压力板。 */
     DarkOakPressurePlate = "minecraft:dark_oak_pressure_plate",
+    /** 深色橡树树苗。 */
+    DarkOakSapling = "minecraft:dark_oak_sapling",
     /** 深色橡木告示牌。 */
     DarkOakSign = "minecraft:dark_oak_sign",
     /** 深色橡木台阶。 */
@@ -839,6 +849,8 @@ export declare enum MinecraftItemTypes {
     FireCharge = "minecraft:fire_charge",
     /** 火珊瑚。 */
     FireCoral = "minecraft:fire_coral",
+    /** 火珊瑚扇。 */
+    FireCoralFan = "minecraft:fire_coral_fan",
     /** 烟花火箭。 */
     FireworkRocket = "minecraft:firework_rocket",
     /** 烟火之星。 */
@@ -1031,6 +1043,8 @@ export declare enum MinecraftItemTypes {
     HopperMinecart = "minecraft:hopper_minecart",
     /** 鹿角珊瑚。 */
     HornCoral = "minecraft:horn_coral",
+    /** 鹿角珊瑚扇。 */
+    HornCoralFan = "minecraft:horn_coral_fan",
     /** 马刷怪蛋。 */
     HorseSpawnEgg = "minecraft:horse_spawn_egg",
     /** 雇主盔甲纹饰锻造模板。 */
@@ -1107,6 +1121,8 @@ export declare enum MinecraftItemTypes {
     JunglePlanks = "minecraft:jungle_planks",
     /** 丛林木压力板。 */
     JunglePressurePlate = "minecraft:jungle_pressure_plate",
+    /** 丛林树苗。 */
+    JungleSapling = "minecraft:jungle_sapling",
     /** 丛林木告示牌。 */
     JungleSign = "minecraft:jungle_sign",
     /** 丛林木台阶。 */
@@ -1455,6 +1471,8 @@ export declare enum MinecraftItemTypes {
     OakLog = "minecraft:oak_log",
     /** 橡木木板。 */
     OakPlanks = "minecraft:oak_planks",
+    /** 橡树树苗。 */
+    OakSapling = "minecraft:oak_sapling",
     /** 橡木告示牌。 */
     OakSign = "minecraft:oak_sign",
     /** 橡木台阶。 */
@@ -1802,7 +1820,7 @@ export declare enum MinecraftItemTypes {
     Sandstone = "minecraft:sandstone",
     /** 砂岩楼梯。 */
     SandstoneStairs = "minecraft:sandstone_stairs",
-    /** 橡树树苗/云杉树苗/白桦树苗/丛林树苗/金合欢树苗/深色橡树树苗。 */
+    /** 树苗。 */
     Sapling = "minecraft:sapling",
     /** 脚手架。 */
     Scaffolding = "minecraft:scaffolding",
@@ -1945,6 +1963,8 @@ export declare enum MinecraftItemTypes {
     SprucePlanks = "minecraft:spruce_planks",
     /** 云杉木压力板。 */
     SprucePressurePlate = "minecraft:spruce_pressure_plate",
+    /** 云杉树苗。 */
+    SpruceSapling = "minecraft:spruce_sapling",
     /** 云杉木告示牌。 */
     SpruceSign = "minecraft:spruce_sign",
     /** 云杉木台阶。 */
@@ -2108,6 +2128,8 @@ export declare enum MinecraftItemTypes {
     TropicalFishSpawnEgg = "minecraft:tropical_fish_spawn_egg",
     /** 管珊瑚。 */
     TubeCoral = "minecraft:tube_coral",
+    /** 管珊瑚扇。 */
+    TubeCoralFan = "minecraft:tube_coral_fan",
     /** 凝灰岩。 */
     Tuff = "minecraft:tuff",
     /** 凝灰岩砖台阶。 */

@@ -13,5 +13,5 @@ export class EntityComponent extends Component {
      * undefined if it has been removed.
      *
      */
-    readonly entity?: Entity;
+    readonly entity: Entity;
 }

@@ -1,7 +1,15 @@
+/* IMPORT */ import { LayoutDirection } from '../index';
+
 /**
  * The options to create a pane.
  */
 export interface IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Layout direction for sub panes
+     *
+     */
+    direction?: LayoutDirection;
     /**
      * @remarks
      * Fallback display text if no loc ID

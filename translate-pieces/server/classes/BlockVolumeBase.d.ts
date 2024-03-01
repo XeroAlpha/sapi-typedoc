@@ -22,6 +22,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getBoundingBox(): BoundingBox;
     /**
@@ -39,6 +40,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getMax(): Vector3;
     /**
@@ -48,6 +50,7 @@ export class BlockVolumeBase {
      *
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
      */
     getMin(): Vector3;
     /**
