@@ -1,13 +1,43 @@
 {
   "dependencies": {
-    "@minecraft/common": "1.2.0-rc.1.20.80-preview.20",
-    "@minecraft/debug-utilities": "1.0.0-beta.1.20.80-preview.20",
-    "@minecraft/server": "1.11.0-beta.1.20.80-preview.20",
-    "@minecraft/server-admin": "1.0.0-beta.1.20.80-preview.20",
-    "@minecraft/server-editor": "0.1.0-beta.1.20.80-preview.20",
-    "@minecraft/server-gametest": "1.0.0-beta.1.20.80-preview.20",
-    "@minecraft/server-net": "1.0.0-beta.1.20.80-preview.20",
-    "@minecraft/server-ui": "1.2.0-beta.1.20.80-preview.20",
-    "@minecraft/vanilla-data": "1.20.80-preview.20"
+    "@minecraft/common": "1.2.0-rc.1.20.80-preview.21",
+    "@minecraft/debug-utilities": "1.0.0-beta.1.20.80-preview.21",
+    "@minecraft/math": "1.3.4",
+    "@minecraft/server": "1.11.0-beta.1.20.80-preview.21",
+    "@minecraft/server-admin": "1.0.0-beta.1.20.80-preview.21",
+    "@minecraft/server-editor": "0.1.0-beta.1.20.80-preview.21",
+    "@minecraft/server-gametest": "1.0.0-beta.1.20.80-preview.21",
+    "@minecraft/server-net": "1.0.0-beta.1.20.80-preview.21",
+    "@minecraft/server-ui": "1.2.0-beta.1.20.80-preview.21",
+    "@minecraft/vanilla-data": "1.20.80-preview.21"
+  },
+  "overrides": {
+    "@minecraft/debug-utilities": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/math": {
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/server": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-admin": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-editor": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-gametest": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/server-net": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-ui": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    }
   }
 }

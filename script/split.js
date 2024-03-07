@@ -51,6 +51,7 @@ const PrivatePrompt = '/* PRIVATE */';
  */
 function split(sourceFile) {
     const pieceDirectory = getSourceFilePieceDirectory(sourceFile);
+    const indexExports = [];
     const pieceExports = [];
     const piecePathList = [];
     const pieces = [];
@@ -69,6 +70,10 @@ function split(sourceFile) {
     );
     sourceFile.forEachChild((node) => {
         if (SkippedTopLevelSyntaxKinds.includes(node.getKind())) return;
+        if (node.isKind(SyntaxKind.ExportDeclaration)) {
+            indexExports.push(node.getText());
+            return;
+        }
         /** @type {import('ts-morph').Symbol[]} */
         let includedSymbols = node
             .getDescendants()
@@ -98,7 +103,7 @@ function split(sourceFile) {
         piecePathList.push(piecePath.toLowerCase());
         const jsdocList = node
             .getChildrenOfKind(SyntaxKind.JSDoc)
-            .filter((jsdoc) => jsdoc.getStart() !== packageDocumentationJSDoc.getStart());
+            .filter((jsdoc) => jsdoc.getStart() !== packageDocumentationJSDoc?.getStart());
         let pieceStart = node.getStart(false);
         if (jsdocList.length > 0) {
             pieceStart = jsdocList.pop().getStart();
@@ -155,7 +160,7 @@ function split(sourceFile) {
     const sourceIndexPieceFile = resolvePath(pieceDirectory, 'index.d.ts');
     const sourceImportDeclarations = sourceFile.getImportDeclarations();
     const indexImportStatements = [];
-    const indexExportStatements = [];
+    const indexExportStatements = [...indexExports];
     sourceImportDeclarations.forEach((e) => {
         const importModulePathRelative = asRelativeModulePath(
             pieceDirectory,

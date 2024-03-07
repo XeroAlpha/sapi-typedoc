@@ -14,6 +14,7 @@ const hookPath = resolvePath(__dirname, 'hooks');
 
 const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
+const skipResolutionModules = [];
 
 function readPackageInfo(modulePath) {
     const packageInfoPath = resolvePath(modulePath, 'package.json');
@@ -48,6 +49,25 @@ function walkFiles(directory, walker) {
             walker(directory, file.name, resolvePath(directory, file.name));
         }
     });
+}
+
+function getModuleSourceFiles(fromPath, moduleSpecifier) {
+    const project = new Project();
+    const sourceFile = project.createSourceFile(resolvePath(fromPath, '__temp_module_resolution__.ts'));
+    const rootDecl = sourceFile.addExportDeclaration({ moduleSpecifier });
+    const referencedFiles = [];
+    const walk = (/** @type {import('ts-morph').SourceFile | undefined} */ source) => {
+        if (!source) return;
+        const path = source.getFilePath();
+        if (referencedFiles.includes(path)) return;
+        referencedFiles.push(path);
+        const importDecl = source.getImportDeclarations();
+        const exportDecl = source.getExportDeclarations();
+        importDecl.forEach((decl) => walk(decl.getModuleSpecifierSourceFile()));
+        exportDecl.forEach((decl) => walk(decl.getModuleSpecifierSourceFile()));
+    };
+    walk(rootDecl.getModuleSpecifierSourceFile());
+    return referencedFiles.map((e) => resolvePath(e));
 }
 
 function getCommonStringFromStart(a, b) {
@@ -120,7 +140,7 @@ async function build(translated) {
             const packageInfo = readPackageInfo(modulePath);
             const version = packageInfo.version;
             console.log(`Loading d.ts for ${moduleName}@${version}`);
-            const dtsFiles = [];
+            let dtsFiles = [];
             walkFiles(modulePath, (dir, file, path) => {
                 if (file && file.endsWith('.d.ts')) {
                     const relPath = relativePath(modulePath, path);
@@ -129,6 +149,10 @@ async function build(translated) {
                     }
                 }
             });
+            if (!skipResolutionModules.includes(moduleName)) {
+                const moduleSourceFiles = getModuleSourceFiles(originalPath, moduleName);
+                dtsFiles = dtsFiles.filter((e) => moduleSourceFiles.includes(e));
+            }
             if (dtsFiles.length < 1) {
                 throw new Error(`Cannot find any d.ts for ${moduleName}`);
             }

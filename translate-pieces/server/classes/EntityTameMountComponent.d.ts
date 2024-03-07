@@ -6,7 +6,7 @@
  * entity that mounts it.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class EntityMountTamingComponent extends EntityComponent {
+export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     static readonly componentId = 'minecraft:tamemount';
     /**
@@ -19,5 +19,5 @@ export class EntityMountTamingComponent extends EntityComponent {
      * Whether to show effect particles when this entity is tamed.
      * @throws This function can throw errors.
      */
-    setTamed(showParticles: boolean): void;
+    tame(showParticles: boolean): void;
 }

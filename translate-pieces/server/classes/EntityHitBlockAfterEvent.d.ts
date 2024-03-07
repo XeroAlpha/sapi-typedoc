@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Direction, Entity } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, Direction, Entity } from '../index';
 
 /**
  * Contains information related to an entity hitting a block.
@@ -23,4 +23,11 @@ export class EntityHitBlockAfterEvent {
      *
      */
     readonly hitBlock: Block;
+    /**
+     * @beta
+     * @remarks
+     * Block permutation that was hit by the attack.
+     *
+     */
+    readonly hitBlockPermutation: BlockPermutation;
 }

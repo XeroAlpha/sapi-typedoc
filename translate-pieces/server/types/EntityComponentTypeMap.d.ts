@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityAddRiderComponent, EntityAgeableComponent, EntityBreathableComponent, EntityCanClimbComponent, EntityCanFlyComponent, EntityCanPowerJumpComponent, EntityColor2Component, EntityColorComponent, EntityEquippableComponent, EntityFireImmuneComponent, EntityFloatsInLiquidComponent, EntityFlyingSpeedComponent, EntityFrictionModifierComponent, EntityGroundOffsetComponent, EntityHealableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsBabyComponent, EntityIsChargedComponent, EntityIsChestedComponent, EntityIsDyeableComponent, EntityIsHiddenWhenInvisibleComponent, EntityIsIgnitedComponent, EntityIsIllagerCaptainComponent, EntityIsSaddledComponent, EntityIsShakingComponent, EntityIsShearedComponent, EntityIsStackableComponent, EntityIsStunnedComponent, EntityIsTamedComponent, EntityItemComponent, EntityLavaMovementComponent, EntityLeashableComponent, EntityMarkVariantComponent, EntityMountTamingComponent, EntityMovementAmphibiousComponent, EntityMovementBasicComponent, EntityMovementComponent, EntityMovementFlyComponent, EntityMovementGenericComponent, EntityMovementGlideComponent, EntityMovementHoverComponent, EntityMovementJumpComponent, EntityMovementSkipComponent, EntityMovementSwayComponent, EntityNavigationClimbComponent, EntityNavigationFloatComponent, EntityNavigationFlyComponent, EntityNavigationGenericComponent, EntityNavigationHoverComponent, EntityNavigationWalkComponent, EntityNpcComponent, EntityOnFireComponent, EntityProjectileComponent, EntityPushThroughComponent, EntityRideableComponent, EntityRidingComponent, EntityScaleComponent, EntitySkinIdComponent, EntityStrengthComponent, EntityTameableComponent, EntityTypeFamilyComponent, EntityUnderwaterMovementComponent, EntityVariantComponent, EntityWantsJockeyComponent } from '../index';
+/* IMPORT */ import { EntityAddRiderComponent, EntityAgeableComponent, EntityBreathableComponent, EntityCanClimbComponent, EntityCanFlyComponent, EntityCanPowerJumpComponent, EntityColor2Component, EntityColorComponent, EntityEquippableComponent, EntityFireImmuneComponent, EntityFloatsInLiquidComponent, EntityFlyingSpeedComponent, EntityFrictionModifierComponent, EntityGroundOffsetComponent, EntityHealableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsBabyComponent, EntityIsChargedComponent, EntityIsChestedComponent, EntityIsDyeableComponent, EntityIsHiddenWhenInvisibleComponent, EntityIsIgnitedComponent, EntityIsIllagerCaptainComponent, EntityIsSaddledComponent, EntityIsShakingComponent, EntityIsShearedComponent, EntityIsStackableComponent, EntityIsStunnedComponent, EntityIsTamedComponent, EntityItemComponent, EntityLavaMovementComponent, EntityLeashableComponent, EntityMarkVariantComponent, EntityMovementAmphibiousComponent, EntityMovementBasicComponent, EntityMovementComponent, EntityMovementFlyComponent, EntityMovementGenericComponent, EntityMovementGlideComponent, EntityMovementHoverComponent, EntityMovementJumpComponent, EntityMovementSkipComponent, EntityMovementSwayComponent, EntityNavigationClimbComponent, EntityNavigationFloatComponent, EntityNavigationFlyComponent, EntityNavigationGenericComponent, EntityNavigationHoverComponent, EntityNavigationWalkComponent, EntityNpcComponent, EntityOnFireComponent, EntityProjectileComponent, EntityPushThroughComponent, EntityRideableComponent, EntityRidingComponent, EntityScaleComponent, EntitySkinIdComponent, EntityStrengthComponent, EntityTameMountComponent, EntityTameableComponent, EntityTypeFamilyComponent, EntityUnderwaterMovementComponent, EntityVariantComponent, EntityWantsJockeyComponent } from '../index';
 
 /**
  * @beta
@@ -98,7 +98,7 @@ export type EntityComponentTypeMap = {
     'minecraft:skin_id': EntitySkinIdComponent;
     'minecraft:strength': EntityStrengthComponent;
     'minecraft:tameable': EntityTameableComponent;
-    'minecraft:tamemount': EntityMountTamingComponent;
+    'minecraft:tamemount': EntityTameMountComponent;
     'minecraft:type_family': EntityTypeFamilyComponent;
     'minecraft:underwater_movement': EntityUnderwaterMovementComponent;
     'minecraft:variant': EntityVariantComponent;
@@ -129,7 +129,7 @@ export type EntityComponentTypeMap = {
     skin_id: EntitySkinIdComponent;
     strength: EntityStrengthComponent;
     tameable: EntityTameableComponent;
-    tamemount: EntityMountTamingComponent;
+    tamemount: EntityTameMountComponent;
     type_family: EntityTypeFamilyComponent;
     underwater_movement: EntityUnderwaterMovementComponent;
     variant: EntityVariantComponent;

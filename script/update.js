@@ -20,7 +20,7 @@ function extractVersionInfo(versionString) {
     }
 }
 
-const excludedPackages = ['@minecraft/dummy-package', '@minecraft/math', '@minecraft/core-build-tasks'];
+const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks'];
 
 async function main() {
     // 强制检出 original 分支
@@ -34,6 +34,13 @@ async function main() {
             cwd: basePath,
             stdio: 'inherit'
         });
+    }
+
+    // 保证 npm 可以识别 overrides 属性
+    const npmVersion = execSync('npm -v', { encoding: 'utf-8' });
+    const majorNpmVersion = parseInt(npmVersion);
+    if (majorNpmVersion < 8) {
+        throw new Error(`NPM version should be >= 8, currently ${npmVersion}`);
     }
 
     // 获取 @minecraft 组织下的包

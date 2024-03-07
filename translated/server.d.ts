@@ -446,7 +446,6 @@ export enum EntityComponentTypes {
     LavaMovement = 'minecraft:lava_movement',
     Leashable = 'minecraft:leashable',
     MarkVariant = 'minecraft:mark_variant',
-    MountTaming = 'minecraft:tamemount',
     Movement = 'minecraft:movement',
     MovementAmphibious = 'minecraft:movement.amphibious',
     MovementBasic = 'minecraft:movement.basic',
@@ -473,6 +472,7 @@ export enum EntityComponentTypes {
     SkinId = 'minecraft:skin_id',
     Strength = 'minecraft:strength',
     Tameable = 'minecraft:tameable',
+    TameMount = 'minecraft:tamemount',
     TypeFamily = 'minecraft:type_family',
     UnderwaterMovement = 'minecraft:underwater_movement',
     Variant = 'minecraft:variant',
@@ -1174,6 +1174,8 @@ export enum HudElement {
     Hunger = 8,
     AirBubbles = 9,
     HorseHealth = 10,
+    StatusEffects = 11,
+    ItemText = 12,
 }
 
 /**
@@ -1687,7 +1689,7 @@ export type EntityComponentTypeMap = {
     'minecraft:skin_id': EntitySkinIdComponent;
     'minecraft:strength': EntityStrengthComponent;
     'minecraft:tameable': EntityTameableComponent;
-    'minecraft:tamemount': EntityMountTamingComponent;
+    'minecraft:tamemount': EntityTameMountComponent;
     'minecraft:type_family': EntityTypeFamilyComponent;
     'minecraft:underwater_movement': EntityUnderwaterMovementComponent;
     'minecraft:variant': EntityVariantComponent;
@@ -1718,7 +1720,7 @@ export type EntityComponentTypeMap = {
     skin_id: EntitySkinIdComponent;
     strength: EntityStrengthComponent;
     tameable: EntityTameableComponent;
-    tamemount: EntityMountTamingComponent;
+    tamemount: EntityTameMountComponent;
     type_family: EntityTypeFamilyComponent;
     underwater_movement: EntityUnderwaterMovementComponent;
     variant: EntityVariantComponent;
@@ -2305,22 +2307,6 @@ export class BlockComponent extends Component {
      *
      */
     readonly block: Block;
-}
-
-/**
- * @beta
- * Contains information regarding an entity stepping onto a
- * specific block.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockComponentStepOnEvent extends BlockEvent {
-    private constructor();
-    /**
-     * @remarks
-     * The entity that stepped on the block.
-     *
-     */
-    readonly entity?: Entity;
 }
 
 /**
@@ -3100,35 +3086,6 @@ export class BlockType {
      *
      */
     readonly id: string;
-}
-
-/**
- * @beta
- * Provides the functionality for registering custom components
- * for blocks.
- */
-export class BlockTypeRegistry {
-    private constructor();
-    /**
-     * @remarks
-     * Registers a block custom component that can be used in block
-     * JSON configuration.
-     *
-     * @param name
-     * The id that represents this custom component. Must have a
-     * namespace. This id can be specified in a block's JSON
-     * configuration under the 'minecraft:custom_components' block
-     * component.
-     * @param customComponent
-     * The collection of event functions that will be called when
-     * the event occurs on a block using this custom component id.
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.EngineError}
-     *
-     * {@link Error}
-     */
-    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
@@ -7177,6 +7134,13 @@ export class EntityHitBlockAfterEvent {
      *
      */
     readonly hitBlock: Block;
+    /**
+     * @beta
+     * @remarks
+     * Block permutation that was hit by the attack.
+     *
+     */
+    readonly hitBlockPermutation: BlockPermutation;
 }
 
 /**
@@ -7689,28 +7653,6 @@ export class EntityMarkVariantComponent extends EntityComponent {
      */
     value: number;
     static readonly componentId = 'minecraft:mark_variant';
-}
-
-/**
- * @beta
- * Contains options for taming a rideable entity based on the
- * entity that mounts it.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class EntityMountTamingComponent extends EntityComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:tamemount';
-    /**
-     * @remarks
-     * Sets this rideable entity as tamed.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param showParticles
-     * Whether to show effect particles when this entity is tamed.
-     * @throws This function can throw errors.
-     */
-    setTamed(showParticles: boolean): void;
 }
 
 /**
@@ -8739,6 +8681,28 @@ export class EntityTameableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     tame(): boolean;
+}
+
+/**
+ * @beta
+ * Contains options for taming a rideable entity based on the
+ * entity that mounts it.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityTameMountComponent extends EntityComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:tamemount';
+    /**
+     * @remarks
+     * Sets this rideable entity as tamed.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param showParticles
+     * Whether to show effect particles when this entity is tamed.
+     * @throws This function can throw errors.
+     */
+    tame(showParticles: boolean): void;
 }
 
 /**
@@ -13107,6 +13071,39 @@ export class Structure {
      */
     getIsWaterlogged(location: Vector3): boolean;
     isValid(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
+    saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidStructureError}
+     */
+    saveToWorld(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 /**
@@ -13558,184 +13555,6 @@ export class TripWireTripAfterEventSignal {
      * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
-}
-
-/**
- * @beta
- * Contains a description of a vector.
- */
-export class Vector {
-    /**
-     * @remarks
-     * X component of this vector.
-     *
-     */
-    x: number;
-    /**
-     * @remarks
-     * Y component of this vector.
-     *
-     */
-    y: number;
-    /**
-     * @remarks
-     * Z component of this vector.
-     *
-     */
-    z: number;
-    /**
-     * @remarks
-     * A constant vector that represents (0, 0, -1).
-     *
-     */
-    static readonly back: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (0, -1, 0).
-     *
-     */
-    static readonly down: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (0, 0, 1).
-     *
-     */
-    static readonly forward: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (-1, 0, 0).
-     *
-     */
-    static readonly left: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (1, 1, 1).
-     *
-     */
-    static readonly one: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (1, 0, 0).
-     *
-     */
-    static readonly right: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (0, 1, 0).
-     *
-     */
-    static readonly up: Vector;
-    /**
-     * @remarks
-     * A constant vector that represents (0, 0, 0).
-     *
-     */
-    static readonly zero: Vector;
-    /**
-     * @remarks
-     * Creates a new instance of an abstract vector.
-     *
-     * @param x
-     * X component of the vector.
-     * @param y
-     * Y component of the vector.
-     * @param z
-     * Z component of the vector.
-     */
-    constructor(x: number, y: number, z: number);
-    /**
-     * @remarks
-     * Compares this vector and another vector to one another.
-     *
-     * @param other
-     * Other vector to compare this vector to.
-     * @returns
-     * True if the two vectors are equal.
-     */
-    equals(other: Vector): boolean;
-    /**
-     * @remarks
-     * Returns the length of this vector.
-     *
-     */
-    length(): number;
-    /**
-     * @remarks
-     * Returns the squared length of this vector.
-     *
-     */
-    lengthSquared(): number;
-    /**
-     * @remarks
-     * Returns this vector as a normalized vector.
-     *
-     */
-    normalized(): Vector;
-    /**
-     * @remarks
-     * Returns the addition of these vectors.
-     *
-     */
-    static add(a: Vector3, b: Vector3): Vector;
-    /**
-     * @remarks
-     * Returns the cross product of these two vectors.
-     *
-     */
-    static cross(a: Vector3, b: Vector3): Vector;
-    /**
-     * @remarks
-     * Returns the distance between two vectors.
-     *
-     */
-    static distance(a: Vector3, b: Vector3): number;
-    /**
-     * @remarks
-     * Returns the component-wise division of these vectors.
-     *
-     * @throws This function can throw errors.
-     */
-    static divide(a: Vector3, b: number | Vector3): Vector;
-    /**
-     * @remarks
-     * Returns the linear interpolation between a and b using t as
-     * the control.
-     *
-     */
-    static lerp(a: Vector3, b: Vector3, t: number): Vector;
-    /**
-     * @remarks
-     * Returns a vector that is made from the largest components of
-     * two vectors.
-     *
-     */
-    static max(a: Vector3, b: Vector3): Vector;
-    /**
-     * @remarks
-     * Returns a vector that is made from the smallest components
-     * of two vectors.
-     *
-     */
-    static min(a: Vector3, b: Vector3): Vector;
-    /**
-     * @remarks
-     * Returns the component-wise product of these vectors.
-     *
-     */
-    static multiply(a: Vector3, b: number | Vector3): Vector;
-    /**
-     * @remarks
-     * Returns the spherical linear interpolation between a and b
-     * using s as the control.
-     *
-     */
-    static slerp(a: Vector3, b: Vector3, s: number): Vector;
-    /**
-     * @remarks
-     * Returns the subtraction of these vectors.
-     *
-     */
-    static subtract(a: Vector3, b: Vector3): Vector;
 }
 
 /**
@@ -14833,16 +14652,6 @@ export class WorldBeforeEvents {
      * @beta
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
-    /**
-     * @beta
-     * @remarks
-     * This event fires immediately when the script environment is
-     * initialized on a World. Not all script functionality may be
-     * available. For guaranteed access to world state, use the
-     * world initialize after event.
-     *
-     */
-    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
 /**
@@ -14885,49 +14694,6 @@ export class WorldInitializeAfterEventSignal {
 
 /**
  * @beta
- * Contains information and methods that can be used at the
- * initialization of the scripting environment for a World.
- * Also, use the supplied blockRegistry object to register
- * block custom components within the scope of the World
- * Initialize execution.
- */
-export class WorldInitializeBeforeEvent {
-    private constructor();
-    readonly blockTypeRegistry: BlockTypeRegistry;
-}
-
-/**
- * @beta
- * Manages callbacks that are run at the initialization of the
- * scripting environment for a World. Do note that this event
- * may run multiple times within a session in the case that the
- * /reload command is used.
- */
-export class WorldInitializeBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when the scripting
-     * environment is initialized for a World.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called the scripting
-     * environment is initialized for a World.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
-}
-
-/**
- * @beta
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -14938,21 +14704,6 @@ export interface BiomeSearchOptions {
      *
      */
     boundingSize?: Vector3;
-}
-
-/**
- * @beta
- * Contains a set of events that will be raised for a block.
- * This object must be bound using the BlockRegistry.
- */
-export interface BlockCustomComponent {
-    /**
-     * @remarks
-     * This function will be called when an entity steps onto the
-     * block that this custom component is bound to.
-     *
-     */
-    onStepOn?: (arg: BlockComponentStepOnEvent) => void;
 }
 
 /**
@@ -15762,6 +15513,10 @@ export interface EntityQueryOptions {
      */
     name?: string;
     /**
+     * @beta
+     */
+    propertyOptions?: EntityQueryPropertyOptions[];
+    /**
      * @remarks
      * Gets/sets a collection of EntityQueryScoreOptions objects
      * with filters for specific scoreboard objectives.
@@ -15788,6 +15543,24 @@ export interface EntityQueryOptions {
      *
      */
     volume?: BlockAreaSize;
+}
+
+/**
+ * @beta
+ */
+export interface EntityQueryPropertyOptions {
+    exclude?: boolean;
+    propertyId: string;
+    value?:
+        | boolean
+        | string
+        | EqualsComparison
+        | GreaterThanComparison
+        | GreaterThanOrEqualsComparison
+        | LessThanComparison
+        | LessThanOrEqualsComparison
+        | NotEqualsComparison
+        | RangeComparison;
 }
 
 /**
@@ -15856,6 +15629,13 @@ export interface EntityRaycastOptions {
 
 /**
  * @beta
+ */
+export interface EqualsComparison {
+    equals: boolean | number | string;
+}
+
+/**
+ * @beta
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
  * @example createExplosions.ts
@@ -15905,6 +15685,34 @@ export interface ExplosionOptions {
 }
 
 /**
+ * @beta
+ */
+export interface GreaterThanComparison {
+    greaterThan: number;
+}
+
+/**
+ * @beta
+ */
+export interface GreaterThanOrEqualsComparison {
+    greaterThanOrEquals: number;
+}
+
+/**
+ * @beta
+ */
+export interface LessThanComparison {
+    lessThan: number;
+}
+
+/**
+ * @beta
+ */
+export interface LessThanOrEqualsComparison {
+    lessThanOrEquals: number;
+}
+
+/**
  * Additional configuration options for {@link
  * World.playMusic}/{@link World.queueMusic} methods.
  */
@@ -15927,6 +15735,13 @@ export interface MusicOptions {
      *
      */
     volume?: number;
+}
+
+/**
+ * @beta
+ */
+export interface NotEqualsComparison {
+    notEquals: boolean | number | string;
 }
 
 /**
@@ -15998,6 +15813,14 @@ export interface PlayerSoundOptions {
  */
 export interface ProjectileShootOptions {
     uncertainty?: number;
+}
+
+/**
+ * @beta
+ */
+export interface RangeComparison {
+    lowerBound: number;
+    upperBound: number;
 }
 
 /**
@@ -16464,7 +16287,7 @@ export class LocationOutOfWorldBoundariesError extends Error {
 /**
  * @beta
  */
-export const HudElementsCount = 11;
+export const HudElementsCount = 13;
 /**
  * @beta
  */

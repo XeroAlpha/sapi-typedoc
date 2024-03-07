@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockAreaSize, EntityQueryScoreOptions, GameMode, Vector3 } from '../index';
+/* IMPORT */ import { BlockAreaSize, EntityQueryPropertyOptions, EntityQueryScoreOptions, GameMode, Vector3 } from '../index';
 
 /**
  * Contains options for selecting entities within an area.
@@ -296,6 +296,10 @@ export interface EntityQueryOptions {
      *
      */
     name?: string;
+    /**
+     * @beta
+     */
+    propertyOptions?: EntityQueryPropertyOptions[];
     /**
      * @remarks
      * Gets/sets a collection of EntityQueryScoreOptions objects

@@ -72,6 +72,10 @@ export class ModalFormData {
         defaultValue?: number,
     ): ModalFormData;
     /**
+     * @beta
+     */
+    submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
+    /**
      * @remarks
      * Adds a textbox to the form.
      *
