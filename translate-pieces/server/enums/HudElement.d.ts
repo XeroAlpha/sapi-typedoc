@@ -13,4 +13,6 @@ export enum HudElement {
     Hunger = 8,
     AirBubbles = 9,
     HorseHealth = 10,
+    StatusEffects = 11,
+    ItemText = 12,
 }

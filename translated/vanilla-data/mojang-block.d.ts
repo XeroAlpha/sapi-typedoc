@@ -356,7 +356,7 @@ export declare enum MinecraftBlockTypes {
     ChorusFlower = "minecraft:chorus_flower",
     /** 紫颂植株。 */
     ChorusPlant = "minecraft:chorus_plant",
-    /** 黏土块。 */
+    /** 黏土。 */
     Clay = "minecraft:clay",
     /** 客户端请求占位符方块。 */
     ClientRequestPlaceholderBlock = "minecraft:client_request_placeholder_block",

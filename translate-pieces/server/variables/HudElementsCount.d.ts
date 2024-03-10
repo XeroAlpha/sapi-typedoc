@@ -1,4 +1,4 @@
 /**
  * @beta
  */
-export const HudElementsCount = 11;
+export const HudElementsCount = 13;

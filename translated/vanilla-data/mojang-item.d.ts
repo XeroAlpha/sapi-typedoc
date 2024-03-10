@@ -439,7 +439,7 @@ export declare enum MinecraftItemTypes {
     ChorusFruit = "minecraft:chorus_fruit",
     /** 紫颂植株。 */
     ChorusPlant = "minecraft:chorus_plant",
-    /** 黏土块。 */
+    /** 黏土。 */
     Clay = "minecraft:clay",
     /** 黏土球。 */
     ClayBall = "minecraft:clay_ball",

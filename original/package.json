@@ -2,6 +2,7 @@
   "dependencies": {
     "@minecraft/common": "rc",
     "@minecraft/debug-utilities": "beta",
+    "@minecraft/math": "latest",
     "@minecraft/server": "beta",
     "@minecraft/server-admin": "beta",
     "@minecraft/server-editor": "beta",
@@ -9,5 +10,34 @@
     "@minecraft/server-net": "beta",
     "@minecraft/server-ui": "beta",
     "@minecraft/vanilla-data": "preview"
+  },
+  "overrides": {
+    "@minecraft/debug-utilities": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/math": {
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/server": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-admin": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-editor": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-gametest": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    },
+    "@minecraft/server-net": {
+      "@minecraft/common": "$@minecraft/common"
+    },
+    "@minecraft/server-ui": {
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
+    }
   }
 }
