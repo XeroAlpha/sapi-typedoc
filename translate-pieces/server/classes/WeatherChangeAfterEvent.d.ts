@@ -1,7 +1,6 @@
 /* IMPORT */ import { WeatherType } from '../index';
 
 /**
- * @beta
  * Contains information related to changes in weather in the
  * environment.
  */

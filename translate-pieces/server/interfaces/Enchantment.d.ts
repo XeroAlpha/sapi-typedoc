@@ -17,5 +17,5 @@ export interface Enchantment {
      * The enchantment type of this instance.
      *
      */
-    type: EnchantmentType | string;
+    type: EnchantmentType;
 }

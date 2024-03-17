@@ -147,7 +147,6 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
-     * @beta
      * @remarks
      * Clears all dynamic properties that have been set on this
      * item stack.
@@ -225,7 +224,6 @@ export class ItemStack {
      */
     getComponents(): ItemComponent[];
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -237,7 +235,6 @@ export class ItemStack {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the available set of dynamic property identifiers
      * that have been used on this entity.
@@ -247,7 +244,6 @@ export class ItemStack {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the total size, in bytes, of all the dynamic
      * properties that are currently stored for this entity. This
@@ -396,7 +392,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value. Note: This function
      * only works with non-stackable items.

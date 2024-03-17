@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.8.0"
+ *   "version": "1.9.0"
  * }
  * ```
  *
@@ -38,33 +38,28 @@ export enum BlockComponentTypes {
 }
 
 /**
- * @beta
  * An enumeration describing the state of a block piston.
  */
 export enum BlockPistonState {
     /**
-     * @beta
      * @remarks
      * Whether the piston is fully expanded.
      *
      */
     Expanded = 'Expanded',
     /**
-     * @beta
      * @remarks
      * Whether the piston is in the process of expanding.
      *
      */
     Expanding = 'Expanding',
     /**
-     * @beta
      * @remarks
      * Whether the piston is fully retracted.
      *
      */
     Retracted = 'Retracted',
     /**
-     * @beta
      * @remarks
      * Whether the piston is in the process of retracting.
      *
@@ -279,117 +274,100 @@ export enum DisplaySlotId {
 }
 
 /**
- * @beta
  * Specifies different colors for use as dye.
  */
 export enum DyeColor {
     /**
-     * @beta
      * @remarks
      * Black dye color.
      *
      */
     Black = 'Black',
     /**
-     * @beta
      * @remarks
      * Blue dye color.
      *
      */
     Blue = 'Blue',
     /**
-     * @beta
      * @remarks
      * Brown dye color.
      *
      */
     Brown = 'Brown',
     /**
-     * @beta
      * @remarks
      * Cyan dye color.
      *
      */
     Cyan = 'Cyan',
     /**
-     * @beta
      * @remarks
      * Gray dye color.
      *
      */
     Gray = 'Gray',
     /**
-     * @beta
      * @remarks
      * Green dye color.
      *
      */
     Green = 'Green',
     /**
-     * @beta
      * @remarks
      * Light blue dye color.
      *
      */
     LightBlue = 'LightBlue',
     /**
-     * @beta
      * @remarks
      * Lime dye color.
      *
      */
     Lime = 'Lime',
     /**
-     * @beta
      * @remarks
      * Magenta dye color.
      *
      */
     Magenta = 'Magenta',
     /**
-     * @beta
      * @remarks
      * Orange dye color.
      *
      */
     Orange = 'Orange',
     /**
-     * @beta
      * @remarks
      * Pink dye color.
      *
      */
     Pink = 'Pink',
     /**
-     * @beta
      * @remarks
      * Purple dye color.
      *
      */
     Purple = 'Purple',
     /**
-     * @beta
      * @remarks
      * Red dye color.
      *
      */
     Red = 'Red',
     /**
-     * @beta
      * @remarks
      * Silver dye color.
      *
      */
     Silver = 'Silver',
     /**
-     * @beta
      * @remarks
      * White dye color.
      *
      */
     White = 'White',
     /**
-     * @beta
      * @remarks
      * Yellow dye color.
      *
@@ -430,6 +408,31 @@ export enum EasingType {
     OutQuint = 'OutQuint',
     OutSine = 'OutSine',
     Spring = 'Spring',
+}
+
+/**
+ * @beta
+ */
+export enum EnchantmentSlot {
+    ArmorFeet = 'ArmorFeet',
+    ArmorHead = 'ArmorHead',
+    ArmorLegs = 'ArmorLegs',
+    ArmorTorso = 'ArmorTorso',
+    Axe = 'Axe',
+    Bow = 'Bow',
+    CarrotStick = 'CarrotStick',
+    CosmeticHead = 'CosmeticHead',
+    Crossbow = 'Crossbow',
+    Elytra = 'Elytra',
+    FishingRod = 'FishingRod',
+    Flintsteel = 'Flintsteel',
+    Hoe = 'Hoe',
+    Pickaxe = 'Pickaxe',
+    Shears = 'Shears',
+    Shield = 'Shield',
+    Shovel = 'Shovel',
+    Spear = 'Spear',
+    Sword = 'Sword',
 }
 
 /**
@@ -1451,19 +1454,16 @@ export enum ScriptEventSource {
 }
 
 /**
- * @beta
  * Represents a side of a sign.
  */
 export enum SignSide {
     /**
-     * @beta
      * @remarks
      * The back of the sign.
      *
      */
     Back = 'Back',
     /**
-     * @beta
      * @remarks
      * The front of the sign.
      *
@@ -2249,8 +2249,6 @@ export class Block {
      * Returns true if the block matches the specified criteria.
      * @throws This function can throw errors.
      *
-     * {@link Error}
-     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -2425,45 +2423,6 @@ export class Block {
 }
 
 /**
- * @beta
- * Holds information for expressing the net size of a volume of
- * blocks.
- */
-export class BlockAreaSize {
-    /**
-     * @remarks
-     * X size (west to east) component of this block area.
-     *
-     */
-    x: number;
-    /**
-     * @remarks
-     * Y size (down to up) of this block area size.
-     *
-     */
-    y: number;
-    /**
-     * @remarks
-     * Z size (south to north) of this block area size.
-     *
-     */
-    z: number;
-    /**
-     * @remarks
-     * Creates a new BlockAreaSize object.
-     *
-     */
-    constructor(x: number, y: number, z: number);
-    /**
-     * @remarks
-     * Tests whether this block area size is equal to another
-     * BlockAreaSize object.
-     *
-     */
-    equals(other: BlockAreaSize): boolean;
-}
-
-/**
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -2475,6 +2434,48 @@ export class BlockComponent extends Component {
      *
      */
     readonly block: Block;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block randomly
+ * ticking.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentRandomTickEvent extends BlockEvent {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Contains information regarding an entity stepping off a
+ * specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentStepOffEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that stepped off the block.
+     *
+     */
+    readonly entity?: Entity;
+}
+
+/**
+ * @beta
+ * Contains information regarding an entity stepping onto a
+ * specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentStepOnEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that stepped on the block.
+     *
+     */
+    readonly entity?: Entity;
 }
 
 /**
@@ -2709,7 +2710,6 @@ export class BlockPermutation {
      */
     clone(): BlockPermutation;
     /**
-     * @beta
      * @remarks
      * Returns all available block states associated with this
      * block.
@@ -2846,7 +2846,6 @@ export class BlockPermutation {
 }
 
 /**
- * @beta
  * When present, this block has piston-like behavior. Contains
  * additional properties for discovering block piston state.
  */
@@ -2945,7 +2944,6 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 }
 
 /**
- * @beta
  * Represents a block that can display text on it.
  * @example addTwoSidedSign.ts
  * ```typescript
@@ -3188,7 +3186,6 @@ export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
 }
 
 /**
- * @beta
  * Enumerates all {@link BlockStateType}s.
  */
 export class BlockStates {
@@ -3211,7 +3208,6 @@ export class BlockStates {
 }
 
 /**
- * @beta
  * Represents a configurable state value of a block instance.
  * For example, the facing direction of stairs is accessible as
  * a block state.
@@ -3254,6 +3250,35 @@ export class BlockType {
      *
      */
     readonly id: string;
+}
+
+/**
+ * @beta
+ * Provides the functionality for registering custom components
+ * for blocks.
+ */
+export class BlockTypeRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers a block custom component that can be used in block
+     * JSON configuration.
+     *
+     * @param name
+     * The id that represents this custom component. Must have a
+     * namespace. This id can be specified in a block's JSON
+     * configuration under the 'minecraft:custom_components' block
+     * component.
+     * @param customComponent
+     * The collection of event functions that will be called when
+     * the event occurs on a block using this custom component id.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
@@ -4276,7 +4301,6 @@ export class Container {
      */
     getItem(slot: number): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a container slot. This acts as a reference to a slot
      * at the given index for this container.
@@ -4418,7 +4442,6 @@ export class Container {
 }
 
 /**
- * @beta
  * Represents a slot within a broader container (e.g., entity
  * inventory.)
  */
@@ -4823,82 +4846,6 @@ export class DataDrivenEntityTriggerAfterEventSignal {
 }
 
 /**
- * @beta
- * Contains information related to firing of a data driven
- * entity event - for example, the minecraft:ageable_grow_up
- * event on a chicken.
- */
-export class DataDrivenEntityTriggerBeforeEvent {
-    private constructor();
-    /**
-     * @remarks
-     * If set to true, this entity event is not triggered.
-     *
-     */
-    cancel: boolean;
-    /**
-     * @remarks
-     * Entity that the event triggered on.
-     *
-     */
-    readonly entity: Entity;
-    /**
-     * @remarks
-     * Name of the data driven event being triggered.
-     *
-     */
-    readonly id: string;
-    /**
-     * @remarks
-     * An updateable list of modifications to component state that
-     * are the effect of this triggered event.
-     *
-     */
-    getModifiers(): DefinitionModifier[];
-    /**
-     * @remarks
-     * Changes a list of modifications to component state that are
-     * the effect of this triggered event.
-     *
-     * @param modifiers
-     * An updated list of modifications to component state.
-     */
-    setModifiers(modifiers: DefinitionModifier[]): void;
-}
-
-/**
- * @beta
- * Contains information related to firing of a data driven
- * entity event - for example, the minecraft:ageable_grow_up
- * event on a chicken.
- */
-export class DataDrivenEntityTriggerBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called before a data driven
-     * entity event is triggered.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     */
-    subscribe(
-        callback: (arg: DataDrivenEntityTriggerBeforeEvent) => void,
-        options?: EntityDataDrivenTriggerEventOptions,
-    ): (arg: DataDrivenEntityTriggerBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback that will be called before a data driven
-     * entity event is triggered.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: DataDrivenEntityTriggerBeforeEvent) => void): void;
-}
-
-/**
  * A class that represents a particular dimension (e.g., The
  * End) within a world.
  */
@@ -4919,6 +4866,14 @@ export class Dimension {
     readonly id: string;
     /**
      * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
+     */
+    containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
+    /**
      * @remarks
      * Creates an explosion at the specified location.
      *
@@ -5044,6 +4999,15 @@ export class Dimension {
      * @throws This function can throw errors.
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
+     */
+    getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
     /**
      * @remarks
      * Returns a set of entities based on a set of conditions
@@ -5201,6 +5165,32 @@ export class Dimension {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
+    /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    setBlockType(location: Vector3, blockType: BlockType | string): void;
+    /**
      * @remarks
      * Sets the current weather within the dimension
      *
@@ -5349,7 +5339,6 @@ export class Dimension {
 }
 
 /**
- * @beta
  * Represents a type of dimension.
  */
 export class DimensionType {
@@ -5363,7 +5352,6 @@ export class DimensionType {
 }
 
 /**
- * @beta
  * Used for accessing all available dimension types.
  */
 export class DimensionTypes {
@@ -5556,7 +5544,6 @@ export class EffectType {
 }
 
 /**
- * @beta
  * Represents a type of effect - like poison - that can be
  * applied to an entity.
  */
@@ -5590,7 +5577,6 @@ export class EffectTypes {
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
-    private constructor();
     /**
      * @remarks
      * The name of the enchantment type.
@@ -5603,6 +5589,10 @@ export class EnchantmentType {
      *
      */
     readonly maxLevel: number;
+    /**
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }
 
 /**
@@ -5997,7 +5987,6 @@ export class Entity {
      */
     clearVelocity(): void;
     /**
-     * @beta
      * @remarks
      * Extinguishes the fire if the entity is on fire. Note that
      * you can call getComponent('minecraft:onfire') and, if
@@ -6307,7 +6296,6 @@ export class Entity {
      */
     matches(options: EntityQueryOptions): boolean;
     /**
-     * @beta
      * @remarks
      * Cause the entity to play the given animation.
      *
@@ -6429,7 +6417,6 @@ export class Entity {
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets an entity on fire (if it is not in water or rain). Note
      * that you can call getComponent('minecraft:onfire') and, if
@@ -7062,7 +7049,6 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Gets the ContainerSlot corresponding to the given
      * EquipmentSlot.
@@ -8228,7 +8214,6 @@ export class EntityNpcComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * When present on an entity, this entity is on fire.
  * @example setEntityOnFire.ts
  * ```typescript
@@ -8956,7 +8941,7 @@ export class EntityTypes {
     static get(identifier: string): EntityType | undefined;
     /**
      * @remarks
-     * Retrieves an iterator of all entity types within this world.
+     * Retrieves a set of all entity types within this world.
      *
      */
     static getAll(): EntityType[];
@@ -9750,7 +9735,6 @@ export class ItemCooldownComponent extends ItemComponent {
 }
 
 /**
- * @beta
  * 表示物品耐久组件。当出现在物品上时，表示该物品可以在使用中受到损坏。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 
@@ -9852,6 +9836,10 @@ export class ItemDurabilityComponent extends ItemComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly slots: EnchantmentSlot[];
     static readonly componentId = 'minecraft:enchantable';
     /**
      * @remarks
@@ -10008,7 +9996,6 @@ export class ItemEnchantableComponent extends ItemComponent {
 }
 
 /**
- * @beta
  * 表示物品食物组件。当出现在物品上时，实体可以消耗此物品。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 
@@ -10267,7 +10254,6 @@ export class ItemStack {
      */
     constructor(itemType: ItemType | string, amount?: number);
     /**
-     * @beta
      * @remarks
      * Clears all dynamic properties that have been set on this
      * item stack.
@@ -10345,7 +10331,6 @@ export class ItemStack {
      */
     getComponents(): ItemComponent[];
     /**
-     * @beta
      * @remarks
      * Returns a property value.
      *
@@ -10357,7 +10342,6 @@ export class ItemStack {
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the available set of dynamic property identifiers
      * that have been used on this entity.
@@ -10367,7 +10351,6 @@ export class ItemStack {
      */
     getDynamicPropertyIds(): string[];
     /**
-     * @beta
      * @remarks
      * Returns the total size, in bytes, of all the dynamic
      * properties that are currently stored for this entity. This
@@ -10516,7 +10499,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
      * @remarks
      * Sets a specified property to a value. Note: This function
      * only works with non-stackable items.
@@ -11253,7 +11235,6 @@ export class MolangVariableMap {
 }
 
 /**
- * @beta
  * Contains information related to changes to a piston
  * expanding or retracting.
  * @example pistonAfterEvent.ts
@@ -11285,7 +11266,6 @@ export class PistonActivateAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to piston activations.
  * @example pistonAfterEvent.ts
  * ```typescript
@@ -11462,12 +11442,12 @@ export class Player extends Entity {
      * Gets the current item cooldown time for a particular
      * cooldown category.
      *
-     * @param itemCategory
+     * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
      * @throws This function can throw errors.
      */
-    getItemCooldown(itemCategory: string): number;
+    getItemCooldown(cooldownCategory: string): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.
@@ -11683,14 +11663,14 @@ export class Player extends Entity {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @param itemCategory
+     * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
      * @param tickDuration
      * Duration in ticks of the item cooldown.
      * @throws This function can throw errors.
      */
-    startItemCooldown(itemCategory: string, tickDuration: number): void;
+    startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
      * @beta
      * @remarks
@@ -13491,6 +13471,12 @@ export class StructureManager {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     */
+    getIds(): string[];
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
@@ -13950,7 +13936,6 @@ export class WatchdogTerminateBeforeEventSignal {
 }
 
 /**
- * @beta
  * Contains information related to changes in weather in the
  * environment.
  */
@@ -13977,7 +13962,6 @@ export class WeatherChangeAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are connected to weather changing.
  */
 export class WeatherChangeAfterEventSignal {
@@ -14695,7 +14679,6 @@ export class WorldAfterEvents {
      */
     readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an effect, like poisoning, is added to
      * an entity.
@@ -14754,7 +14737,6 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is fired after an explosion occurs.
      *
@@ -14840,7 +14822,6 @@ export class WorldAfterEvents {
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a piston expands or retracts.
      *
@@ -14943,7 +14924,6 @@ export class WorldAfterEvents {
      */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event will be triggered when the weather changes within
      * Minecraft.
@@ -14982,16 +14962,6 @@ export class WorldBeforeEvents {
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * This event is fired when an entity event has been triggered
-     * that will update the component definition state of an
-     * entity.
-     *
-     */
-    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
-    /**
-     * @beta
      * @remarks
      * This event is triggered after an event has been added to an
      * entity.
@@ -15006,7 +14976,6 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is fired after an explosion occurs.
      *
@@ -15067,6 +15036,16 @@ export class WorldBeforeEvents {
      * @beta
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires immediately when the script environment is
+     * initialized on a World. Not all script functionality may be
+     * available. For guaranteed access to world state, use the
+     * world initialize after event.
+     *
+     */
+    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
 /**
@@ -15109,6 +15088,49 @@ export class WorldInitializeAfterEventSignal {
 
 /**
  * @beta
+ * Contains information and methods that can be used at the
+ * initialization of the scripting environment for a World.
+ * Also, use the supplied blockRegistry object to register
+ * block custom components within the scope of the World
+ * Initialize execution.
+ */
+export class WorldInitializeBeforeEvent {
+    private constructor();
+    readonly blockTypeRegistry: BlockTypeRegistry;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are run at the initialization of the
+ * scripting environment for a World. Do note that this event
+ * may run multiple times within a session in the case that the
+ * /reload command is used.
+ */
+export class WorldInitializeBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when the scripting
+     * environment is initialized for a World.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called the scripting
+     * environment is initialized for a World.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -15119,6 +15141,34 @@ export interface BiomeSearchOptions {
      *
      */
     boundingSize?: Vector3;
+}
+
+/**
+ * @beta
+ * Contains a set of events that will be raised for a block.
+ * This object must be bound using the BlockRegistry.
+ */
+export interface BlockCustomComponent {
+    /**
+     * @remarks
+     * This function will be called when a block randomly ticks.
+     *
+     */
+    onRandomTick?: (arg: BlockComponentRandomTickEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when an entity steps off the
+     * block that this custom component is bound to.
+     *
+     */
+    onStepOff?: (arg: BlockComponentStepOffEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when an entity steps onto the
+     * block that this custom component is bound to.
+     *
+     */
+    onStepOn?: (arg: BlockComponentStepOnEvent) => void;
 }
 
 /**
@@ -15485,7 +15535,7 @@ export interface Enchantment {
      * The enchantment type of this instance.
      *
      */
-    type: EnchantmentType | string;
+    type: EnchantmentType;
 }
 
 /**
@@ -15929,6 +15979,10 @@ export interface EntityQueryOptions {
     name?: string;
     /**
      * @beta
+     * @remarks
+     * Gets/sets a collection of EntityQueryPropertyOptions objects
+     * with filters for specific properties.
+     *
      */
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
@@ -15957,7 +16011,7 @@ export interface EntityQueryOptions {
      * entities to include.
      *
      */
-    volume?: BlockAreaSize;
+    volume?: Vector3;
 }
 
 /**
@@ -16044,13 +16098,18 @@ export interface EntityRaycastOptions {
 
 /**
  * @beta
+ * Equal to operator.
  */
 export interface EqualsComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     equals: boolean | number | string;
 }
 
 /**
- * @beta
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
  * @example createExplosions.ts
@@ -16101,29 +16160,53 @@ export interface ExplosionOptions {
 
 /**
  * @beta
+ * Greater than operator.
  */
 export interface GreaterThanComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     greaterThan: number;
 }
 
 /**
  * @beta
+ * Greater than or equal to operator.
  */
 export interface GreaterThanOrEqualsComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     greaterThanOrEquals: number;
 }
 
 /**
  * @beta
+ * Less than operator.
  */
 export interface LessThanComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     lessThan: number;
 }
 
 /**
  * @beta
+ * Less than or equal to operator.
  */
 export interface LessThanOrEqualsComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     lessThanOrEquals: number;
 }
 
@@ -16154,13 +16237,18 @@ export interface MusicOptions {
 
 /**
  * @beta
+ * Not equal to operator.
  */
 export interface NotEqualsComparison {
+    /**
+     * @remarks
+     * Threshold value compared against.
+     *
+     */
     notEquals: boolean | number | string;
 }
 
 /**
- * @beta
  * Contains additional options for how an animation is played.
  */
 export interface PlayAnimationOptions {
@@ -16232,9 +16320,21 @@ export interface ProjectileShootOptions {
 
 /**
  * @beta
+ * Operator represents a lower/upper bound structure for
+ * expressing a potential range of numbers.
  */
 export interface RangeComparison {
+    /**
+     * @remarks
+     * Lower bound within a range.
+     *
+     */
     lowerBound: number;
+    /**
+     * @remarks
+     * Upper bound within a range.
+     *
+     */
     upperBound: number;
 }
 
@@ -16360,7 +16460,6 @@ export interface RawMessageScore {
 }
 
 /**
- * @beta
  * A `RawMessage` with only the `rawtext` property. When a
  * `RawMessage` is serialized the contents are put into a
  * rawtext property, so this is useful when reading saved
@@ -16679,9 +16778,6 @@ export class EnchantmentTypeUnknownIdError extends Error {
     private constructor();
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidContainerSlotError extends Error {
     private constructor();
@@ -16702,6 +16798,14 @@ export class LocationInUnloadedChunkError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationOutOfWorldBoundariesError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class UnloadedChunksError extends Error {
     private constructor();
 }
 

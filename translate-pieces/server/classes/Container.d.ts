@@ -127,7 +127,6 @@ export class Container {
      */
     getItem(slot: number): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Returns a container slot. This acts as a reference to a slot
      * at the given index for this container.

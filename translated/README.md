@@ -8,7 +8,7 @@ NPM 包：
 
 |包名|版本|
 | - | - |
-|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.2.0-rc`|
+|[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.2.0`|
 |[@minecraft/debug-utilities](https://www.npmjs.com/package/@minecraft/debug-utilities)|`1.0.0-beta`|
 |[@minecraft/math](https://www.npmjs.com/package/@minecraft/math)|`1.3.4`|
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.11.0-beta`|
@@ -17,9 +17,9 @@ NPM 包：
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.2.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.80-preview.21`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.20.80-preview.22`|
 
-游戏版本号：`1.20.80.21`
+游戏版本号：`1.20.80.22`
 
 <!-- summary end -->
 

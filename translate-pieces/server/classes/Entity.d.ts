@@ -371,7 +371,6 @@ export class Entity {
      */
     clearVelocity(): void;
     /**
-     * @beta
      * @remarks
      * Extinguishes the fire if the entity is on fire. Note that
      * you can call getComponent('minecraft:onfire') and, if
@@ -681,7 +680,6 @@ export class Entity {
      */
     matches(options: EntityQueryOptions): boolean;
     /**
-     * @beta
      * @remarks
      * Cause the entity to play the given animation.
      *
@@ -803,7 +801,6 @@ export class Entity {
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
-     * @beta
      * @remarks
      * Sets an entity on fire (if it is not in water or rain). Note
      * that you can call getComponent('minecraft:onfire') and, if

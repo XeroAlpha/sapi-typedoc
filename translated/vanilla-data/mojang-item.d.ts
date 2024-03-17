@@ -258,6 +258,8 @@ export declare enum MinecraftItemTypes {
     Boat = "minecraft:boat",
     /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
+    /** 镶铆盔甲纹饰锻造模板。 */
+    BoltArmorTrimSmithingTemplate = "minecraft:bolt_armor_trim_smithing_template",
     /** 骨头。 */
     Bone = "minecraft:bone",
     /** 骨块。 */
@@ -282,6 +284,8 @@ export declare enum MinecraftItemTypes {
     BrainCoralFan = "minecraft:brain_coral_fan",
     /** 面包。 */
     Bread = "minecraft:bread",
+    /** 旋风棒。 */
+    BreezeRod = "minecraft:breeze_rod",
     /** 旋风人刷怪蛋。 */
     BreezeSpawnEgg = "minecraft:breeze_spawn_egg",
     /** 佳酿纹样陶片。 */
@@ -863,6 +867,11 @@ export declare enum MinecraftItemTypes {
     Flint = "minecraft:flint",
     /** 打火石。 */
     FlintAndSteel = "minecraft:flint_and_steel",
+    /** 涡流盔甲纹饰锻造模板。 */
+    FlowArmorTrimSmithingTemplate = "minecraft:flow_armor_trim_smithing_template",
+    FlowBannerPattern = "minecraft:flow_banner_pattern",
+    /** 涡流纹样陶片。 */
+    FlowPotterySherd = "minecraft:flow_pottery_sherd",
     /** 花朵盾徽旗帜图案。 */
     FlowerBannerPattern = "minecraft:flower_banner_pattern",
     /** 花盆。 */
@@ -1011,6 +1020,9 @@ export declare enum MinecraftItemTypes {
     GuardianSpawnEgg = "minecraft:guardian_spawn_egg",
     /** 火药。 */
     Gunpowder = "minecraft:gunpowder",
+    GusterBannerPattern = "minecraft:guster_banner_pattern",
+    /** 旋风纹样陶片。 */
+    GusterPotterySherd = "minecraft:guster_pottery_sherd",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
     HardStainedGlass = "minecraft:hard_stained_glass",
@@ -1025,6 +1037,8 @@ export declare enum MinecraftItemTypes {
     HeartPotterySherd = "minecraft:heart_pottery_sherd",
     /** 心碎纹样陶片。 */
     HeartbreakPotterySherd = "minecraft:heartbreak_pottery_sherd",
+    /** 沉重核心。 */
+    HeavyCore = "minecraft:heavy_core",
     /** 重质测重压力板。 */
     HeavyWeightedPressurePlate = "minecraft:heavy_weighted_pressure_plate",
     /** 疣猪兽刷怪蛋。 */
@@ -1253,6 +1267,8 @@ export declare enum MinecraftItemTypes {
     Log2 = "minecraft:log2",
     /** 织布机。 */
     Loom = "minecraft:loom",
+    /** Mace。 */
+    Mace = "minecraft:mace",
     /** 品红色蜡烛。 */
     MagentaCandle = "minecraft:magenta_candle",
     /** 品红色地毯。 */
@@ -1824,6 +1840,8 @@ export declare enum MinecraftItemTypes {
     Sapling = "minecraft:sapling",
     /** 脚手架。 */
     Scaffolding = "minecraft:scaffolding",
+    /** 刮削纹样陶片。 */
+    ScrapePotterySherd = "minecraft:scrape_pottery_sherd",
     /** 幽匿块。 */
     Sculk = "minecraft:sculk",
     /** 幽匿催发体。 */

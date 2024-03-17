@@ -1078,6 +1078,8 @@ export declare enum MinecraftBlockTypes {
     HardenedClay = "minecraft:hardened_clay",
     /** 干草捆。 */
     HayBlock = "minecraft:hay_block",
+    /** 沉重核心。 */
+    HeavyCore = "minecraft:heavy_core",
     /** 重质测重压力板。 */
     HeavyWeightedPressurePlate = "minecraft:heavy_weighted_pressure_plate",
     /** 蜂蜜块。 */

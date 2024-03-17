@@ -15,7 +15,7 @@ export class EntityTypes {
     static get(identifier: string): EntityType | undefined;
     /**
      * @remarks
-     * Retrieves an iterator of all entity types within this world.
+     * Retrieves a set of all entity types within this world.
      *
      */
     static getAll(): EntityType[];

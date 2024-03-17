@@ -1,7 +1,6 @@
 /* IMPORT */ import { InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from '../index';
 
 /**
- * @beta
  * Represents a slot within a broader container (e.g., entity
  * inventory.)
  */

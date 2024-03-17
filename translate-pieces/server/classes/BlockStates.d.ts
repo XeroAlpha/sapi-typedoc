@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, BlockStateType } from '../index';
 
 /**
- * @beta
  * Enumerates all {@link BlockStateType}s.
  */
 export class BlockStates {

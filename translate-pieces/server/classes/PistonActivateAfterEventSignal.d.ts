@@ -1,7 +1,6 @@
 /* IMPORT */ import { PistonActivateAfterEvent } from '../index';
 
 /**
- * @beta
  * Manages callbacks that are connected to piston activations.
  * @example pistonAfterEvent.ts
  * ```typescript

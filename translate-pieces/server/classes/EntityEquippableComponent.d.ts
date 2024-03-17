@@ -54,7 +54,6 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Gets the ContainerSlot corresponding to the given
      * EquipmentSlot.

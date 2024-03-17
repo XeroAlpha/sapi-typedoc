@@ -144,12 +144,12 @@ export class Player extends Entity {
      * Gets the current item cooldown time for a particular
      * cooldown category.
      *
-     * @param itemCategory
+     * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
      * @throws This function can throw errors.
      */
-    getItemCooldown(itemCategory: string): number;
+    getItemCooldown(cooldownCategory: string): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.
@@ -365,14 +365,14 @@ export class Player extends Entity {
      *
      * This function can't be called in read-only mode.
      *
-     * @param itemCategory
+     * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
      * @param tickDuration
      * Duration in ticks of the item cooldown.
      * @throws This function can throw errors.
      */
-    startItemCooldown(itemCategory: string, tickDuration: number): void;
+    startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
      * @beta
      * @remarks

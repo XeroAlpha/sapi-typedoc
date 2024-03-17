@@ -3,7 +3,6 @@
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
-    private constructor();
     /**
      * @remarks
      * The name of the enchantment type.
@@ -16,4 +15,8 @@ export class EnchantmentType {
      *
      */
     readonly maxLevel: number;
+    /**
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }

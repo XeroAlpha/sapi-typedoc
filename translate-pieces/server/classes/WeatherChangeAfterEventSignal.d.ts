@@ -1,7 +1,6 @@
 /* IMPORT */ import { WeatherChangeAfterEvent } from '../index';
 
 /**
- * @beta
  * Manages callbacks that are connected to weather changing.
  */
 export class WeatherChangeAfterEventSignal {

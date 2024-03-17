@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemComponent } from '../index';
 
 /**
- * @beta
  * 表示物品食物组件。当出现在物品上时，实体可以消耗此物品。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 

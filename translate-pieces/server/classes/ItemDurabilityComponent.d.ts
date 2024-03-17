@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemComponent, minecraftcommon } from '../index';
 
 /**
- * @beta
  * 表示物品耐久组件。当出现在物品上时，表示该物品可以在使用中受到损坏。
  * 注意，只能在数驱物品上获取和使用该组件。
  * 

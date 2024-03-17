@@ -20,4 +20,10 @@ export interface IMenuCreationParams {
      *
      */
     name: string;
+    /**
+     * @remarks
+     * Custom unique identifier that will replace random id
+     *
+     */
+    uniqueId?: string;
 }

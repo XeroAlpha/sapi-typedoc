@@ -38,7 +38,6 @@ export class WorldAfterEvents {
      */
     readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when an effect, like poisoning, is added to
      * an entity.
@@ -97,7 +96,6 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is fired after an explosion occurs.
      *
@@ -183,7 +181,6 @@ export class WorldAfterEvents {
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a piston expands or retracts.
      *
@@ -286,7 +283,6 @@ export class WorldAfterEvents {
      */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event will be triggered when the weather changes within
      * Minecraft.

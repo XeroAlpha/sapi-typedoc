@@ -1,5 +1,4 @@
 /**
- * @beta
  * Represents a type of dimension.
  */
 export class DimensionType {
