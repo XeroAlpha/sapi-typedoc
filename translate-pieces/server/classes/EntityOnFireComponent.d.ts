@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent } from '../index';
 
 /**
- * @beta
  * When present on an entity, this entity is on fire.
  * @example setEntityOnFire.ts
  * ```typescript

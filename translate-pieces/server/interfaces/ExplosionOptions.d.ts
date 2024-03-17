@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity } from '../index';
 
 /**
- * @beta
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
  * @example createExplosions.ts

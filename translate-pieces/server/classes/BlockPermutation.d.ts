@@ -50,7 +50,6 @@ export class BlockPermutation {
      */
     clone(): BlockPermutation;
     /**
-     * @beta
      * @remarks
      * Returns all available block states associated with this
      * block.

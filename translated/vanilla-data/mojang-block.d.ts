@@ -540,6 +540,7 @@ export declare enum MinecraftBlockTypes {
     HardYellowStainedGlassPane = "minecraft:hard_yellow_stained_glass_pane",
     HardenedClay = "minecraft:hardened_clay",
     HayBlock = "minecraft:hay_block",
+    HeavyCore = "minecraft:heavy_core",
     HeavyWeightedPressurePlate = "minecraft:heavy_weighted_pressure_plate",
     HoneyBlock = "minecraft:honey_block",
     HoneycombBlock = "minecraft:honeycomb_block",

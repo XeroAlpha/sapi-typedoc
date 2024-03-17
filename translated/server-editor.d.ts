@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.80-preview.21"
+ *   "version": "0.1.0-beta.1.20.80-preview.22"
  * }
  * ```
  *
@@ -29,6 +29,24 @@ import * as minecraftserver from '@minecraft/server';
 export declare enum ActionTypes {
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
+}
+
+export enum BlockPaletteItemType {
+    Simple = 0,
+    Probability = 1,
+}
+
+/**
+ * Predefined top level menus for core editor
+ */
+export declare enum CoreMenuType {
+    Edit = 'editor:menu:edit',
+    Experimental = 'editor:menu:experimental',
+    Extensions = 'editor:menu:extensions',
+    File = 'editor:menu:file',
+    Help = 'editor:menu:help',
+    View = 'editor:menu:view',
+    WorldOptions = 'editor:menu:worldOptions',
 }
 
 /**
@@ -438,11 +456,11 @@ export type IDropdownPropertyItem<
  * of the UI object.
  */
 export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
-    createMenu(props: IMenuCreationParams): IMenu;
     createStatusBarItem(alignment: EditorStatusBarAlignment, size: number): IStatusBarItem;
     createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
+    readonly menuBar: IMenuContainer;
     readonly toolRail: IModalToolContainer;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
@@ -965,108 +983,6 @@ export class CustomWidgetMoveEventData {
     readonly widget: CustomWidget;
 }
 
-export class DataStore {
-    private constructor();
-    readonly actionContainer: DataStoreActionContainer;
-    readonly afterEvents: DataStoreAfterEvents;
-    readonly menuContainer: DataStoreMenuContainer;
-}
-
-export class DataStoreActionContainer {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    bindActionToControl(controlId: string, actionPayload: string): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    removeActionFromControl(controlId: string, actionPayload?: string): void;
-}
-
-export class DataStoreAfterEvents {
-    private constructor();
-    readonly payloadReceived: DataStorePayloadAfterEventSignal;
-}
-
-export class DataStoreMenuContainer {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    createItem(id: string, payload: string): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    destroyItem(id: string): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    getPayload(id: string): string;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    getProperty(id: string, property: string): boolean | number | string | undefined;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    hasPayload(id: string): boolean;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    hasProperty(id: string, property: string): boolean;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    updateItem(id: string, payload: string): void;
-}
-
-export class DataStorePayloadAfterEvent {
-    private constructor();
-    readonly dataTag: string;
-    readonly payload: string;
-}
-
-export class DataStorePayloadAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg: DataStorePayloadAfterEvent) => void): (arg: DataStorePayloadAfterEvent) => void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    unsubscribe(callback: (arg: DataStorePayloadAfterEvent) => void): void;
-}
-
 /**
  * Editor Extensions are the basis for all player specific,
  * editor specific functionality within the game.  Almost all
@@ -1258,6 +1174,22 @@ export class GraphicsSettings {
     setAll(properties: GraphicsSettingsPropertyTypeMap): void;
 }
 
+export class IBlockPaletteItem {
+    private constructor();
+    getBlock(): minecraftserver.BlockType | undefined;
+    getDisplayName(): string;
+    getType(): BlockPaletteItemType;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LineWidget extends Widget {
     private constructor();
@@ -1358,50 +1290,6 @@ export class MinecraftEditor {
      *
      */
     readonly simulation: SimulationState;
-    /**
-     * @remarks
-     * This is an internal command which interfaces with the native
-     * C++ extension bindings and should not be used by creators.
-     * Using this command directly will not provide any of the
-     * additional functionality and wrappings that the TypeScript
-     * layer will provide.
-     * Creators should use the TypeScript binding
-     * `registerEditorExtension` instead
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param extensionName
-     * Unique name of the editor extension being registered
-     * @param activationFunction
-     * A code closure which is called during the activation process
-     * and is responsible for setting up all of the extension
-     * internal settings and UI definitions
-     * @param shutdownFunction
-     * A code closure which is called during the deactivation
-     * process (when the player disconnects) and is responsible for
-     * cleaning up any settings or allocations
-     * @param options
-     * [ExtensionOptionalParameters] describes an optional object
-     * which contains a number of optional parameters which is used
-     * to register an extension with additional information
-     */
-    registerExtension_Internal(
-        extensionName: string,
-        activationFunction: (arg: ExtensionContext) => void,
-        shutdownFunction: (arg: ExtensionContext) => void,
-        options?: ExtensionOptionalParameters,
-    ): Extension;
-}
-
-export class MinecraftEditorInternal {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    getDataStore(player: minecraftserver.Player): DataStore;
 }
 
 /**
@@ -1483,6 +1371,31 @@ export class PrimarySelectionChangeAfterEventSignal {
 export class PrimarySelectionChangedEvent {
     private constructor();
     readonly volume?: minecraftserver.CompoundBlockVolume;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
+    constructor(displayName?: string);
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
+     */
+    removeBlockAt(index: number): void;
 }
 
 /**
@@ -1745,6 +1658,11 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SimpleBlockPaletteItem extends IBlockPaletteItem {
+    constructor(displayName?: string);
 }
 
 /**
@@ -2512,6 +2430,29 @@ export interface IMenu {
 }
 
 /**
+ * Manager and container for IMenu objects
+ */
+export interface IMenuContainer {
+    /**
+     * @remarks
+     * Create a top level item in the container.
+     *
+     * @param props
+     * Configuration for the menu to create
+     */
+    createMenu(props: IMenuCreationParams): IMenu;
+    /**
+     * @remarks
+     * Search for a menu item, if it's not found defer it to next
+     * tick.
+     *
+     * @param id
+     * Menu identifier
+     */
+    getMenu(id: string): Promise<IMenu>;
+}
+
+/**
  * Properties required to create a Menu
  */
 export interface IMenuCreationParams {
@@ -2533,6 +2474,12 @@ export interface IMenuCreationParams {
      *
      */
     name: string;
+    /**
+     * @remarks
+     * Custom unique identifier that will replace random id
+     *
+     */
+    uniqueId?: string;
 }
 
 export interface IModalTool {
@@ -3269,4 +3216,3 @@ export declare function registerUserDefinedTransactionHandler<T>(
  */
 export declare function stringFromException(e: unknown): string;
 export const editor: MinecraftEditor;
-export const editorInternal: MinecraftEditorInternal;

@@ -329,8 +329,6 @@ export class Block {
      * Returns true if the block matches the specified criteria.
      * @throws This function can throw errors.
      *
-     * {@link Error}
-     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}

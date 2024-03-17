@@ -13,7 +13,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.1.0"
+ *   "version": "1.2.0"
  * }
  * ```
  *
@@ -88,9 +88,6 @@ export class InvalidArgumentError extends Error {
     index: number;
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PropertyOutOfBoundsError extends Error {
     private constructor();

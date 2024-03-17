@@ -1,7 +1,6 @@
 /* IMPORT */ import { DimensionType } from '../index';
 
 /**
- * @beta
  * Used for accessing all available dimension types.
  */
 export class DimensionTypes {

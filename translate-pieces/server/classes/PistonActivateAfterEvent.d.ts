@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPistonComponent } from '../index';
 
 /**
- * @beta
  * Contains information related to changes to a piston
  * expanding or retracting.
  * @example pistonAfterEvent.ts

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Enchantment, EnchantmentLevelOutOfBoundsError, EnchantmentType, EnchantmentTypeNotCompatibleError, EnchantmentTypeUnknownIdError, ItemComponent } from '../index';
+/* IMPORT */ import { Enchantment, EnchantmentLevelOutOfBoundsError, EnchantmentSlot, EnchantmentType, EnchantmentTypeNotCompatibleError, EnchantmentTypeUnknownIdError, ItemComponent } from '../index';
 
 /**
  * @beta
@@ -29,6 +29,10 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly slots: EnchantmentSlot[];
     static readonly componentId = 'minecraft:enchantable';
     /**
      * @remarks

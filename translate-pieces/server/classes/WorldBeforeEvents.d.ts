@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, DataDrivenEntityTriggerBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '../index';
+/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal, WorldInitializeBeforeEventSignal } from '../index';
 
 /**
  * A set of events that fire before an actual action occurs. In
@@ -18,16 +18,6 @@ export class WorldBeforeEvents {
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**
-     * @beta
-     * @remarks
-     * This event is fired when an entity event has been triggered
-     * that will update the component definition state of an
-     * entity.
-     *
-     */
-    readonly dataDrivenEntityTriggerEvent: DataDrivenEntityTriggerBeforeEventSignal;
-    /**
-     * @beta
      * @remarks
      * This event is triggered after an event has been added to an
      * entity.
@@ -42,7 +32,6 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is fired after an explosion occurs.
      *
@@ -103,4 +92,14 @@ export class WorldBeforeEvents {
      * @beta
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires immediately when the script environment is
+     * initialized on a World. Not all script functionality may be
+     * available. For guaranteed access to world state, use the
+     * world initialize after event.
+     *
+     */
+    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }

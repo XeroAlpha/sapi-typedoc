@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from '../index';
 
 /**
- * @beta
  * When present, this block has piston-like behavior. Contains
  * additional properties for discovering block piston state.
  */
