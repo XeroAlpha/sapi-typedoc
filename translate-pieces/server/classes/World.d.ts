@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -38,6 +38,9 @@ export class World {
     readonly scoreboard: Scoreboard;
     /**
      * @beta
+     * @remarks
+     * Returns the manager for {@link Structure} related APIs.
+     *
      */
     readonly structureManager: StructureManager;
     /**

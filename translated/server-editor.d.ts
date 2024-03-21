@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.80-preview.22"
+ *   "version": "0.1.0-beta.1.20.80-preview.23"
  * }
  * ```
  *
@@ -50,8 +50,7 @@ export declare enum CoreMenuType {
 }
 
 /**
- * An enumeration used by the 3D block cursor {@link
- * @minecraft/server-editor-bindings.Cursor}
+ * An enumeration used by the 3D block cursor {@link Cursor}
  */
 export enum CursorControlMode {
     /**
@@ -879,8 +878,8 @@ export class Cursor {
     /**
      * @remarks
      * Hide the 3D block cursor from view until the corresponding
-     * {@link @minecraft-server-editor-bindings.Cursor.show}
-     * function is called
+     * {@link @minecraft-server-editor.Cursor.show} function is
+     * called
      *
      * This function can't be called in read-only mode.
      *
@@ -891,7 +890,7 @@ export class Cursor {
      * @remarks
      * Manually offset the 3D block cursor by given amount.
      * Depending on the {@link
-     * @minecraft-server-editor-bindings.CursorProperties.CursorControlMode}
+     * @minecraft-server-editor.CursorProperties.CursorControlMode}
      * - this function may have no effect
      *
      * This function can't be called in read-only mode.
@@ -2207,10 +2206,9 @@ export interface ExtensionOptionalParameters {
  * A properties class for the global instance of the logger
  * object.
  * While the logger object is available through the {@link
- * @minecraft/server-editor-bindings.ExtensionContext} - using
- * the global instance allows the creator to use this
- * properties class to perform direct server->client messaging
- * and broadcasts.
+ * ExtensionContext} - using the global instance allows the
+ * creator to use this properties class to perform direct
+ * server->client messaging and broadcasts.
  */
 export interface LogProperties {
     /**

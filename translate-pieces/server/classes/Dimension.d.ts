@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, UnloadedChunksError, Vector3, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -416,7 +416,7 @@ export class Dimension {
      * }
      * ```
      */
-    spawnEntity(identifier: string, location: Vector3): Entity;
+    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
      * @remarks
      * Creates a new item stack as an entity at the specified

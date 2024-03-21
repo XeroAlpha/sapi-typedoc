@@ -2,14 +2,34 @@
 
 /**
  * @beta
+ * Manager for Structure related APIs. Includes APIs for
+ * creating, getting, placing and deleting Structures.
  */
 export class StructureManager {
     private constructor();
     /**
      * @remarks
+     * Creates an empty Structure in memory. Use {@link
+     * Structure.setBlockPermutation} to populate the structure
+     * with blocks and save changes with {@link
+     * @minecraft/server.Structure.save}.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The name of the structure. A valid identifier must include a
+     * namespace and must be unique.
+     * @param size
+     * The size of the structure. For example, to create a single
+     * block structure the size should be {x:1, y:1, z:1}.
+     * @param saveMode
+     * How the Structure should be saved upon creation. Defaults to
+     * StructureSaveMode.Memory.
+     * @returns
+     * Returns the newly created Structure.
+     * @throws
+     * Throws if the identifier is invalid. A valid identifier must
+     * include a namespace and must be unique.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -17,10 +37,31 @@ export class StructureManager {
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
+     * @beta
      * @remarks
+     * Creates a new Structure from blocks in the world. This is
+     * functionally equivalent to the /structure save command.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The name of the structure. A valid identifier must include a
+     * namespace and must be unique.
+     * @param dimension
+     * The dimension where the blocks should be read from.
+     * @param blockVolume
+     * The location and bounds of the blocks that should be read.
+     * @param options
+     * Additional options for creating a structure from the world.
+     * @returns
+     * Returns the newly created Structure.
+     * @throws
+     * Throws if the identifier is invalid. A valid identifier must
+     * include a namespace and must be unique.
+     * Throws if the structure bounds exceed the maximum size.
+     * Throws if the structure bounds contains blocks outside the
+     * world bounds.
+     *
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
@@ -32,20 +73,38 @@ export class StructureManager {
     ): Structure;
     /**
      * @remarks
+     * Deletes a structure from memory and from the world if it
+     * exists.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param structure
+     * The structure identifier or Structure object that should be
+     * deleted. Note, a Structure object will become invalid after
+     * it is deleted.
+     * @returns
+     * Returns whether the structure was removed.
+     * @throws
+     * Throws if a structure cannot be removed. For example, a
+     * structure loaded from a Behavior Pack.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
     delete(structure: string | Structure): boolean;
     /**
      * @remarks
+     * Gets a Structure that is saved to memory or the world.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param identifier
+     * The name of the structure to get.
+     * @returns
+     * Returns a Structure if it exists, otherwise undefined.
      */
     get(identifier: string): Structure | undefined;
     /**
+     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -53,9 +112,25 @@ export class StructureManager {
     getIds(): string[];
     /**
      * @remarks
+     * Places a structure in the world. Structures placed in
+     * unloaded chunks will be queued for loading.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param structure
+     * The structure's identifier or a Structure object.
+     * @param dimension
+     * The dimension where the Structure should be placed.
+     * @param location
+     * The location within the dimension where the Structure should
+     * be placed.
+     * @param options
+     * Additional options for Structure placement.
+     * @throws
+     * Throws if the integrity value is outside of the range [0,1]
+     * Throws if the integrity seed is invalid.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *

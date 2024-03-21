@@ -19,11 +19,19 @@ export class EntityAgeableComponent extends EntityComponent {
     readonly duration: number;
     /**
      * @remarks
-     * Event to run when this entity grows up.
+     * Event that runs when this entity grows up.
      *
      * @throws This property can throw when used.
      */
     readonly growUp: Trigger;
+    /**
+     * @remarks
+     * The feed item used will transform into this item upon
+     * successful interaction.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly transformToItem: string;
     static readonly componentId = 'minecraft:ageable';
     /**
      * @remarks

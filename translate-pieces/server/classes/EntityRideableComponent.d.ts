@@ -35,6 +35,13 @@ export class EntityRideableComponent extends EntityComponent {
     readonly interactText: string;
     /**
      * @remarks
+     * The max width a mob can be to be a passenger.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly passengerMaxWidth: number;
+    /**
+     * @remarks
      * If true, this entity will pull in entities that are in the
      * correct family_types into any available seat.
      *

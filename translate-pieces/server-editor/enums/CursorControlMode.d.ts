@@ -1,6 +1,7 @@
+/* IMPORT */ import { Cursor } from '../index';
+
 /**
- * An enumeration used by the 3D block cursor {@link
- * @minecraft/server-editor-bindings.Cursor}
+ * An enumeration used by the 3D block cursor {@link Cursor}
  */
 export enum CursorControlMode {
     /**

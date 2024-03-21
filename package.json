@@ -8,10 +8,10 @@
     "lint-script": "eslint --fix script"
   },
   "dependencies": {
-    "ts-morph": "^21.0.1",
+    "ts-morph": "^22.0.0",
     "typedoc": "^0.25.12",
     "typedoc-plugin-mdn-links": "^3.1.18",
-    "typescript": "~5.3.3"
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
     "eslint": "^8.52.0",
