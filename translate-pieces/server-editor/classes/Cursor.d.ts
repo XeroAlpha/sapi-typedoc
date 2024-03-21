@@ -68,8 +68,8 @@ export class Cursor {
     /**
      * @remarks
      * Hide the 3D block cursor from view until the corresponding
-     * {@link @minecraft-server-editor-bindings.Cursor.show}
-     * function is called
+     * {@link @minecraft-server-editor.Cursor.show} function is
+     * called
      *
      * This function can't be called in read-only mode.
      *
@@ -80,7 +80,7 @@ export class Cursor {
      * @remarks
      * Manually offset the 3D block cursor by given amount.
      * Depending on the {@link
-     * @minecraft-server-editor-bindings.CursorProperties.CursorControlMode}
+     * @minecraft-server-editor.CursorProperties.CursorControlMode}
      * - this function may have no effect
      *
      * This function can't be called in read-only mode.

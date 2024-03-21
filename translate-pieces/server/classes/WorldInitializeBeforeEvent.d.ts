@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockTypeRegistry } from '../index';
+/* IMPORT */ import { BlockComponentRegistry, ItemComponentRegistry } from '../index';
 
 /**
  * @beta
@@ -10,5 +10,12 @@
  */
 export class WorldInitializeBeforeEvent {
     private constructor();
-    readonly blockTypeRegistry: BlockTypeRegistry;
+    readonly blockTypeRegistry: BlockComponentRegistry;
+    /**
+     * @remarks
+     * Provides the functionality for registering custom components
+     * for items.
+     *
+     */
+    readonly itemComponentRegistry: ItemComponentRegistry;
 }

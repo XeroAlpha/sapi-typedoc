@@ -116,10 +116,14 @@ async function build(translated) {
     }
 
     // 使依赖与 package.json 同步
-    execSync('npm install', {
-        cwd: originalPath,
-        stdio: 'inherit'
-    });
+    try {
+        execSync('npm install', {
+            cwd: originalPath,
+            stdio: 'inherit'
+        });
+    } finally {
+        writeFileSync(originalPackageJsonPath, originalPackageJsonData);
+    }
     console.timeEnd('[restoreDependencies] Total');
 
     // 从依赖中构建用于生成文档的项目
@@ -192,7 +196,6 @@ async function build(translated) {
             dependencies[moduleName] = version;
         }
     });
-    writeFileSync(originalPackageJsonPath, originalPackageJsonData);
     await runHooks('afterLoad', { project, sourceFiles, dependencies });
     console.timeEnd('[loadOriginal] Total');
 

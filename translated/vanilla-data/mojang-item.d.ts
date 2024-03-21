@@ -40,6 +40,8 @@ export declare enum MinecraftItemTypes {
     ActivatorRail = "minecraft:activator_rail",
     /** 悦灵刷怪蛋。 */
     AllaySpawnEgg = "minecraft:allay_spawn_egg",
+    /** 绒球葱。 */
+    Allium = "minecraft:allium",
     /** 允许方块。 */
     Allow = "minecraft:allow",
     /** 紫水晶块。 */
@@ -82,6 +84,8 @@ export declare enum MinecraftItemTypes {
     AzaleaLeaves = "minecraft:azalea_leaves",
     /** 盛开的杜鹃树叶。 */
     AzaleaLeavesFlowered = "minecraft:azalea_leaves_flowered",
+    /** 蓝花美耳草。 */
+    AzureBluet = "minecraft:azure_bluet",
     /** 烤马铃薯。 */
     BakedPotato = "minecraft:baked_potato",
     /** 竹子。 */
@@ -244,6 +248,8 @@ export declare enum MinecraftItemTypes {
     BlueGlazedTerracotta = "minecraft:blue_glazed_terracotta",
     /** 蓝冰。 */
     BlueIce = "minecraft:blue_ice",
+    /** 兰花。 */
+    BlueOrchid = "minecraft:blue_orchid",
     /** 蓝色潜影盒。 */
     BlueShulkerBox = "minecraft:blue_shulker_box",
     /** 蓝色染色玻璃。 */
@@ -526,8 +532,9 @@ export declare enum MinecraftItemTypes {
     CoralBlock = "minecraft:coral_block",
     /** 珊瑚扇。 */
     CoralFan = "minecraft:coral_fan",
-    /** 失活的珊瑚扇。 */
     CoralFanDead = "minecraft:coral_fan_dead",
+    /** 矢车菊。 */
+    Cornflower = "minecraft:cornflower",
     /** 牛刷怪蛋。 */
     CowSpawnEgg = "minecraft:cow_spawn_egg",
     /** 裂纹深板岩砖。 */
@@ -652,14 +659,24 @@ export declare enum MinecraftItemTypes {
     DaylightDetector = "minecraft:daylight_detector",
     /** 失活的脑纹珊瑚。 */
     DeadBrainCoral = "minecraft:dead_brain_coral",
+    /** 失活的脑纹珊瑚扇。 */
+    DeadBrainCoralFan = "minecraft:dead_brain_coral_fan",
     /** 失活的气泡珊瑚。 */
     DeadBubbleCoral = "minecraft:dead_bubble_coral",
+    /** 失活的气泡珊瑚扇。 */
+    DeadBubbleCoralFan = "minecraft:dead_bubble_coral_fan",
     /** 失活的火珊瑚。 */
     DeadFireCoral = "minecraft:dead_fire_coral",
+    /** 失活的火珊瑚扇。 */
+    DeadFireCoralFan = "minecraft:dead_fire_coral_fan",
     /** 失活的鹿角珊瑚。 */
     DeadHornCoral = "minecraft:dead_horn_coral",
+    /** 失活的鹿角珊瑚扇。 */
+    DeadHornCoralFan = "minecraft:dead_horn_coral_fan",
     /** 失活的管珊瑚。 */
     DeadTubeCoral = "minecraft:dead_tube_coral",
+    /** 失活的管珊瑚扇。 */
+    DeadTubeCoralFan = "minecraft:dead_tube_coral_fan",
     /** 枯萎的灌木。 */
     Deadbush = "minecraft:deadbush",
     /** 饰纹陶罐。 */
@@ -869,6 +886,7 @@ export declare enum MinecraftItemTypes {
     FlintAndSteel = "minecraft:flint_and_steel",
     /** 涡流盔甲纹饰锻造模板。 */
     FlowArmorTrimSmithingTemplate = "minecraft:flow_armor_trim_smithing_template",
+    /** 涡流旗帜图案。 */
     FlowBannerPattern = "minecraft:flow_banner_pattern",
     /** 涡流纹样陶片。 */
     FlowPotterySherd = "minecraft:flow_pottery_sherd",
@@ -1020,6 +1038,7 @@ export declare enum MinecraftItemTypes {
     GuardianSpawnEgg = "minecraft:guardian_spawn_egg",
     /** 火药。 */
     Gunpowder = "minecraft:gunpowder",
+    /** 旋风旗帜图案。 */
     GusterBannerPattern = "minecraft:guster_banner_pattern",
     /** 旋风纹样陶片。 */
     GusterPotterySherd = "minecraft:guster_pottery_sherd",
@@ -1231,6 +1250,8 @@ export declare enum MinecraftItemTypes {
     LightWeightedPressurePlate = "minecraft:light_weighted_pressure_plate",
     /** 避雷针。 */
     LightningRod = "minecraft:lightning_rod",
+    /** 铃兰。 */
+    LilyOfTheValley = "minecraft:lily_of_the_valley",
     /** 黄绿色蜡烛。 */
     LimeCandle = "minecraft:lime_candle",
     /** 黄绿色地毯。 */
@@ -1267,7 +1288,7 @@ export declare enum MinecraftItemTypes {
     Log2 = "minecraft:log2",
     /** 织布机。 */
     Loom = "minecraft:loom",
-    /** Mace。 */
+    /** 重锤。 */
     Mace = "minecraft:mace",
     /** 品红色蜡烛。 */
     MagentaCandle = "minecraft:magenta_candle",
@@ -1525,8 +1546,12 @@ export declare enum MinecraftItemTypes {
     OrangeStainedGlassPane = "minecraft:orange_stained_glass_pane",
     /** 橙色陶瓦。 */
     OrangeTerracotta = "minecraft:orange_terracotta",
+    /** 橙色郁金香。 */
+    OrangeTulip = "minecraft:orange_tulip",
     /** 橙色羊毛。 */
     OrangeWool = "minecraft:orange_wool",
+    /** 滨菊。 */
+    OxeyeDaisy = "minecraft:oxeye_daisy",
     /** 氧化的雕纹铜块。 */
     OxidizedChiseledCopper = "minecraft:oxidized_chiseled_copper",
     /** 氧化的铜块。 */
@@ -1595,6 +1620,8 @@ export declare enum MinecraftItemTypes {
     PinkStainedGlassPane = "minecraft:pink_stained_glass_pane",
     /** 粉红色陶瓦。 */
     PinkTerracotta = "minecraft:pink_terracotta",
+    /** 粉红色郁金香。 */
+    PinkTulip = "minecraft:pink_tulip",
     /** 粉红色羊毛。 */
     PinkWool = "minecraft:pink_wool",
     /** 活塞。 */
@@ -1666,6 +1693,8 @@ export declare enum MinecraftItemTypes {
     PolishedTuffWall = "minecraft:polished_tuff_wall",
     /** 爆裂紫颂果。 */
     PoppedChorusFruit = "minecraft:popped_chorus_fruit",
+    /** 虞美人。 */
+    Poppy = "minecraft:poppy",
     /** 生猪排。 */
     Porkchop = "minecraft:porkchop",
     /** 马铃薯。 */
@@ -1774,7 +1803,6 @@ export declare enum MinecraftItemTypes {
     RedConcretePowder = "minecraft:red_concrete_powder",
     /** 红色染料。 */
     RedDye = "minecraft:red_dye",
-    /** 虞美人/兰花/绒球葱/蓝花美耳草/红色郁金香/橙色郁金香/白色郁金香/粉红色郁金香/滨菊/矢车菊/铃兰。 */
     RedFlower = "minecraft:red_flower",
     /** 红色带釉陶瓦。 */
     RedGlazedTerracotta = "minecraft:red_glazed_terracotta",
@@ -1798,6 +1826,8 @@ export declare enum MinecraftItemTypes {
     RedStainedGlassPane = "minecraft:red_stained_glass_pane",
     /** 红色陶瓦。 */
     RedTerracotta = "minecraft:red_terracotta",
+    /** 红色郁金香。 */
+    RedTulip = "minecraft:red_tulip",
     /** 红色羊毛。 */
     RedWool = "minecraft:red_wool",
     /** 红石粉。 */
@@ -2356,6 +2386,8 @@ export declare enum MinecraftItemTypes {
     WhiteStainedGlassPane = "minecraft:white_stained_glass_pane",
     /** 白色陶瓦。 */
     WhiteTerracotta = "minecraft:white_terracotta",
+    /** 白色郁金香。 */
+    WhiteTulip = "minecraft:white_tulip",
     /** 白色羊毛。 */
     WhiteWool = "minecraft:white_wool",
     /** 荒野盔甲纹饰锻造模板。 */

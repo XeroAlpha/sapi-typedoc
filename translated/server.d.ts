@@ -2438,12 +2438,153 @@ export class BlockComponent extends Component {
 
 /**
  * @beta
+ * Contains information regarding an entity falling onto a
+ * specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentEntityFallOnEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that fell onto the block.
+     *
+     */
+    readonly entity?: Entity;
+    /**
+     * @remarks
+     * The distance that the entity fell onto this block with.
+     *
+     */
+    readonly fallDistance: number;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block that was
+ * placed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentOnPlaceEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Previous block at this location that was replaced.
+     *
+     */
+    readonly previousBlock: BlockPermutation;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block being
+ * destroyed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentPlayerDestroyEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns permutation information about this block before it
+     * was destroyed.
+     *
+     */
+    readonly destroyedBlockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The player that destroyed this block.
+     *
+     */
+    readonly player?: Player;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block being
+ * interacted with.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentPlayerInteractEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block face that was interacted with.
+     *
+     */
+    readonly face: Direction;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block that the player interacted with.
+     *
+     */
+    readonly faceLocation?: Vector3;
+    /**
+     * @remarks
+     * The player that interacted with this block.
+     *
+     */
+    readonly player?: Player;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event before a player
+ * places a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentPlayerPlaceBeforeEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true, cancels the block place event.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The block face that was placed onto.
+     *
+     */
+    readonly face: Direction;
+    /**
+     * @remarks
+     * The block permutation that will be placed if the event is
+     * not cancelled. If set to a different block permutation, that
+     * permutation will be placed instead.
+     *
+     */
+    permutationToPlace: BlockPermutation;
+    /**
+     * @remarks
+     * The player that is placing this block.
+     *
+     */
+    readonly player?: Player;
+}
+
+/**
+ * @beta
  * Contains information regarding a specific block randomly
  * ticking.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponentRandomTickEvent extends BlockEvent {
     private constructor();
+}
+
+/**
+ * @beta
+ */
+export class BlockComponentRegistry {
+    private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
@@ -2476,6 +2617,15 @@ export class BlockComponentStepOnEvent extends BlockEvent {
      *
      */
     readonly entity?: Entity;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block ticking.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentTickEvent extends BlockEvent {
+    private constructor();
 }
 
 /**
@@ -3250,35 +3400,6 @@ export class BlockType {
      *
      */
     readonly id: string;
-}
-
-/**
- * @beta
- * Provides the functionality for registering custom components
- * for blocks.
- */
-export class BlockTypeRegistry {
-    private constructor();
-    /**
-     * @remarks
-     * Registers a block custom component that can be used in block
-     * JSON configuration.
-     *
-     * @param name
-     * The id that represents this custom component. Must have a
-     * namespace. This id can be specified in a block's JSON
-     * configuration under the 'minecraft:custom_components' block
-     * component.
-     * @param customComponent
-     * The collection of event functions that will be called when
-     * the event occurs on a block using this custom component id.
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.EngineError}
-     *
-     * {@link Error}
-     */
-    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
@@ -5261,7 +5382,7 @@ export class Dimension {
      * }
      * ```
      */
-    spawnEntity(identifier: string, location: Vector3): Entity;
+    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
      * @remarks
      * Creates a new item stack as an entity at the specified
@@ -6624,11 +6745,19 @@ export class EntityAgeableComponent extends EntityComponent {
     readonly duration: number;
     /**
      * @remarks
-     * Event to run when this entity grows up.
+     * Event that runs when this entity grows up.
      *
      * @throws This property can throw when used.
      */
     readonly growUp: Trigger;
+    /**
+     * @remarks
+     * The feed item used will transform into this item upon
+     * successful interaction.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly transformToItem: string;
     static readonly componentId = 'minecraft:ageable';
     /**
      * @remarks
@@ -8578,6 +8707,13 @@ export class EntityRideableComponent extends EntityComponent {
     readonly interactText: string;
     /**
      * @remarks
+     * The max width a mob can be to be a passenger.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly passengerMaxWidth: number;
+    /**
+     * @remarks
      * If true, this entity will pull in entities that are in the
      * correct family_types into any available seat.
      *
@@ -9642,6 +9778,61 @@ export class ItemCompleteUseAfterEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemComponent extends Component {
     private constructor();
+}
+
+/**
+ * @beta
+ * Provides the functionality for registering custom components
+ * for items.
+ */
+export class ItemComponentRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers an item custom component that can be used in item
+     * JSON configuration.
+     *
+     * @param name
+     * The id that represents this custom component. Must have a
+     * namespace. This id can be specified in a item's JSON
+     * configuration under the 'minecraft:custom_components' item
+     * component.
+     * @param itemCustomComponent
+     * The collection of event functions that will be called when
+     * the event occurs on an item using this custom component id.
+     * @throws This function can throw errors.
+     *
+     * {@link ItemCustomComponentAlreadyRegisteredError}
+     *
+     * {@link ItemCustomComponentNameError}
+     *
+     * {@link ItemCustomComponentReloadNewComponentError}
+     *
+     * {@link ItemCustomComponentReloadNewEventError}
+     *
+     * {@link ItemCustomComponentReloadVersionError}
+     */
+    registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding the use of an item.
+ */
+export class ItemComponentUseEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack when the item was used.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The player who used the item.
+     *
+     */
+    readonly source: Player;
 }
 
 /**
@@ -13302,8 +13493,8 @@ export class Seat {
     private constructor();
     /**
      * @remarks
-     * If specified, contains a forced rotation that the riders in
-     * this seat are facing.
+     * Angle in degrees that a rider is allowed to rotate while
+     * riding this entity.
      *
      */
     readonly lockRiderRotation: number;
@@ -13327,6 +13518,12 @@ export class Seat {
      *
      */
     readonly position: Vector3;
+    /**
+     * @remarks
+     * Angle in degrees to rotate riders by.
+     *
+     */
+    readonly seatRotation: number;
 }
 
 /**
@@ -13360,18 +13557,44 @@ export class ServerMessageAfterEventSignal {
 
 /**
  * @beta
+ * Represents a loaded structure template (.mcstructure file).
+ * Structures can be placed in a world using the /structure
+ * command or the {@link StructureManager} APIs.
  */
 export class Structure {
     private constructor();
+    /**
+     * @remarks
+     * The name of the structure. The identifier must include a
+     * namespace. For structures created via the /structure command
+     * or structure blocks, this namespace defaults to
+     * "mystructure".
+     *
+     */
     readonly id: string;
     /**
+     * @remarks
+     * The dimensions of the structure. For example, a single block
+     * structure will have a size of {x:1, y:1, z:1}
+     *
      * @throws This property can throw when used.
      *
      * {@link InvalidStructureError}
      */
     readonly size: Vector3;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Returns a BlockPermutation representing the block contained
+     * within the Structure at the given location.
+     *
+     * @param location
+     * The block location relative to the Structure's origin.
+     * @returns
+     * Returns a BlockPermutation. Returns undefined if a block
+     * does not exist at the given location.
+     * @throws
+     * Throws if the location is outside the structure's bounds.
+     * Throws if the Structure has been deleted.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
@@ -13379,19 +13602,52 @@ export class Structure {
      */
     getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     /**
-     * @throws This function can throw errors.
+     * @remarks
+     * Returns whether the block at the given location is
+     * waterlogged.
+     *
+     * @param location
+     * The block location relative to the Structure's origin.
+     * @returns
+     * Returns whether the block at the given location is
+     * waterlogged. Returns false if a block does not exist at the
+     * given location.
+     * @throws
+     * Throws if the location is outside the structure's bounds.
+     * Throws if the Structure has been deleted.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
     getIsWaterlogged(location: Vector3): boolean;
-    isValid(): boolean;
     /**
      * @remarks
+     * Returns whether the Structure is valid. The Structure may
+     * become invalid if it is deleted.
+     *
+     * @returns
+     * Returns whether the Structure is valid.
+     */
+    isValid(): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Creates a copy of a Structure and saves it with a new name.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The name of the newly created Structure.
+     * @param saveMode
+     * Determines how the Structure should be saved. Defaults to
+     * saving to the world.
+     * @returns
+     * Returns the newly created structure.
+     * @throws
+     * Throws if the identifier is invalid. A valid identifier must
+     * include a namespace and must be unique.
+     * Throws if the Structure has been deleted.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -13401,19 +13657,39 @@ export class Structure {
      */
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     /**
+     * @beta
      * @remarks
+     * Saves a modified Structure to the world file.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @throws
+     * Throws if the Structure has been deleted.
      *
      * {@link InvalidStructureError}
      */
     saveToWorld(): void;
     /**
+     * @beta
      * @remarks
+     * Sets a BlockPermutation within a Structure.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param location
+     * The block location relative to the Structure's origin.
+     * @param blockPermutation
+     * The BlockPermutation to set.
+     * @param waterlogged
+     * Specifies whether the block should be waterlogged. Air and
+     * undefined blocks cannot be waterlogged.
+     * @throws
+     * Throws if the type of block is StructureVoid.
+     * Throws if the block is undefined and waterlogged is set to
+     * true.
+     * Throws if the block is air and waterlogged is set to true.
+     * Throws if the location is outside the structure's bounds.
+     * Throws if the Structure has been deleted.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
@@ -13424,14 +13700,34 @@ export class Structure {
 
 /**
  * @beta
+ * Manager for Structure related APIs. Includes APIs for
+ * creating, getting, placing and deleting Structures.
  */
 export class StructureManager {
     private constructor();
     /**
      * @remarks
+     * Creates an empty Structure in memory. Use {@link
+     * Structure.setBlockPermutation} to populate the structure
+     * with blocks and save changes with {@link
+     * @minecraft/server.Structure.save}.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The name of the structure. A valid identifier must include a
+     * namespace and must be unique.
+     * @param size
+     * The size of the structure. For example, to create a single
+     * block structure the size should be {x:1, y:1, z:1}.
+     * @param saveMode
+     * How the Structure should be saved upon creation. Defaults to
+     * StructureSaveMode.Memory.
+     * @returns
+     * Returns the newly created Structure.
+     * @throws
+     * Throws if the identifier is invalid. A valid identifier must
+     * include a namespace and must be unique.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -13439,10 +13735,31 @@ export class StructureManager {
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
+     * @beta
      * @remarks
+     * Creates a new Structure from blocks in the world. This is
+     * functionally equivalent to the /structure save command.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param identifier
+     * The name of the structure. A valid identifier must include a
+     * namespace and must be unique.
+     * @param dimension
+     * The dimension where the blocks should be read from.
+     * @param blockVolume
+     * The location and bounds of the blocks that should be read.
+     * @param options
+     * Additional options for creating a structure from the world.
+     * @returns
+     * Returns the newly created Structure.
+     * @throws
+     * Throws if the identifier is invalid. A valid identifier must
+     * include a namespace and must be unique.
+     * Throws if the structure bounds exceed the maximum size.
+     * Throws if the structure bounds contains blocks outside the
+     * world bounds.
+     *
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
@@ -13454,20 +13771,38 @@ export class StructureManager {
     ): Structure;
     /**
      * @remarks
+     * Deletes a structure from memory and from the world if it
+     * exists.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param structure
+     * The structure identifier or Structure object that should be
+     * deleted. Note, a Structure object will become invalid after
+     * it is deleted.
+     * @returns
+     * Returns whether the structure was removed.
+     * @throws
+     * Throws if a structure cannot be removed. For example, a
+     * structure loaded from a Behavior Pack.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
     delete(structure: string | Structure): boolean;
     /**
      * @remarks
+     * Gets a Structure that is saved to memory or the world.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @param identifier
+     * The name of the structure to get.
+     * @returns
+     * Returns a Structure if it exists, otherwise undefined.
      */
     get(identifier: string): Structure | undefined;
     /**
+     * @beta
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13475,9 +13810,25 @@ export class StructureManager {
     getIds(): string[];
     /**
      * @remarks
+     * Places a structure in the world. Structures placed in
+     * unloaded chunks will be queued for loading.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
+     * @param structure
+     * The structure's identifier or a Structure object.
+     * @param dimension
+     * The dimension where the Structure should be placed.
+     * @param location
+     * The location within the dimension where the Structure should
+     * be placed.
+     * @param options
+     * Additional options for Structure placement.
+     * @throws
+     * Throws if the integrity value is outside of the range [0,1]
+     * Throws if the integrity seed is invalid.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
@@ -14087,6 +14438,9 @@ export class World {
     readonly scoreboard: Scoreboard;
     /**
      * @beta
+     * @remarks
+     * Returns the manager for {@link Structure} related APIs.
+     *
      */
     readonly structureManager: StructureManager;
     /**
@@ -15096,7 +15450,14 @@ export class WorldInitializeAfterEventSignal {
  */
 export class WorldInitializeBeforeEvent {
     private constructor();
-    readonly blockTypeRegistry: BlockTypeRegistry;
+    readonly blockTypeRegistry: BlockComponentRegistry;
+    /**
+     * @remarks
+     * Provides the functionality for registering custom components
+     * for items.
+     *
+     */
+    readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
 /**
@@ -15151,6 +15512,42 @@ export interface BiomeSearchOptions {
 export interface BlockCustomComponent {
     /**
      * @remarks
+     * This function will be called before a player places the
+     * block.
+     *
+     */
+    beforeOnPlayerPlace?: (arg: BlockComponentPlayerPlaceBeforeEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when an entity falls onto the
+     * block that this custom component is bound to.
+     *
+     */
+    onEntityFallOn?: (arg: BlockComponentEntityFallOnEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when the block that this custom
+     * component is bound to is placed.
+     *
+     */
+    onPlace?: (arg: BlockComponentOnPlaceEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when a player destroys a
+     * specific block.
+     *
+     */
+    onPlayerDestroy?: (arg: BlockComponentPlayerDestroyEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when a player sucessfully
+     * interacts with the block that this custom component is bound
+     * to.
+     *
+     */
+    onPlayerInteract?: (arg: BlockComponentPlayerInteractEvent) => void;
+    /**
+     * @remarks
      * This function will be called when a block randomly ticks.
      *
      */
@@ -15169,6 +15566,12 @@ export interface BlockCustomComponent {
      *
      */
     onStepOn?: (arg: BlockComponentStepOnEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when a block ticks.
+     *
+     */
+    onTick?: (arg: BlockComponentTickEvent) => void;
 }
 
 /**
@@ -16186,6 +16589,21 @@ export interface GreaterThanOrEqualsComparison {
 
 /**
  * @beta
+ * Contains a set of events that will be raised for an item.
+ * This object must be bound using the ItemComponentRegistry.
+ */
+export interface ItemCustomComponent {
+    /**
+     * @remarks
+     * This function will be called when an item containing this
+     * component is used by a player.
+     *
+     */
+    onUse?: (arg: ItemComponentUseEvent) => void;
+}
+
+/**
+ * @beta
  * Less than operator.
  */
 export interface LessThanComparison {
@@ -16558,33 +16976,109 @@ export interface ScriptEventMessageFilterOptions {
 /**
  * @beta
  */
+export interface SpawnEntityOptions {
+    initialPersistence?: boolean;
+}
+
+/**
+ * @beta
+ * Provides additional options for {@link
+ * StructureManager.createFromWorld}
+ */
 export interface StructureCreateOptions {
+    /**
+     * @remarks
+     * Whether blocks should be included in the structure. Defaults
+     * to true.
+     *
+     */
     includeBlocks?: boolean;
+    /**
+     * @remarks
+     * Whether entities should be included in the structure.
+     * Defaults to true.
+     *
+     */
     includeEntities?: boolean;
+    /**
+     * @remarks
+     * How the Structure should be saved. Defaults to
+     * StructureSaveMode.World.
+     *
+     */
     saveMode?: StructureSaveMode;
 }
 
 /**
  * @beta
+ * Provides additional options for {@link
+ * StructureManager.place}
  */
 export interface StructurePlaceOptions {
+    /**
+     * @remarks
+     * How the Structure should be animated when placed.
+     *
+     */
     animationMode?: StructureAnimationMode;
+    /**
+     * @remarks
+     * How many seconds the animation should take.
+     *
+     */
     animationSeconds?: number;
+    /**
+     * @remarks
+     * Whether blocks should be included in the structure. Defaults
+     * to true.
+     *
+     */
     includeBlocks?: boolean;
+    /**
+     * @remarks
+     * Whether entities should be included in the structure.
+     * Defaults to true.
+     *
+     */
     includeEntities?: boolean;
+    /**
+     * @remarks
+     * What percentage of blocks should be placed. A value of 1
+     * will place 100% of the blocks while a value of 0 will place
+     * none. The blocks are chosen randomly based on the {@link
+     * StructurePlaceOptions.integritySeed}.
+     *
+     */
     integrity?: number;
+    /**
+     * @remarks
+     * Seed that determines which blocks are randomly chosen to be
+     * placed. Defaults to a random seed.
+     *
+     */
     integritySeed?: string;
+    /**
+     * @remarks
+     * Which axes the Structure should be mirrored on when placed.
+     * Defaults to StructureMirrorAxis.None.
+     *
+     */
     mirror?: StructureMirrorAxis;
+    /**
+     * @remarks
+     * How the Structure should be rotated when placed. Defaults to
+     * AxisAlignedRotation.None.
+     *
+     */
     rotation?: StructureRotation;
+    /**
+     * @remarks
+     * Whether the structure should be waterlogged when placed.
+     * Defaults to false. If true, blocks will become waterlogged
+     * when placed in water.
+     *
+     */
     waterlogged?: boolean;
-}
-
-/**
- * @beta
- */
-export interface StructureReadOptions {
-    includeBlocks?: boolean;
-    includeEntities?: boolean;
 }
 
 /**
@@ -16785,17 +17279,79 @@ export class InvalidContainerSlotError extends Error {
 
 /**
  * @beta
+ * Thrown when a Structure is invalid. A structure becomes
+ * invalid when it is deleted.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidStructureError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ * Thrown when trying to register an item custom component with
+ * a name that has already been registered.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentAlreadyRegisteredError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when trying to register an item custom component with
+ * an invalid namespace.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentNameError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously unregistered item custom component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentReloadNewComponentError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously registered item custom component that
+ * handles a new event.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentReloadNewEventError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously registered item custom component with
+ * a newer API version.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentReloadVersionError extends Error {
+    private constructor();
+}
+
+/**
+ * Thrown when the chunk for provided location or bounding area
+ * is not loaded.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationInUnloadedChunkError extends Error {
     private constructor();
 }
 
+/**
+ * Thrown when a provided location or bounding area is outside
+ * the minimum or maximum dimension height.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
