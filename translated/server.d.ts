@@ -9598,24 +9598,10 @@ export class ItemComponent extends Component {
 
 /**
  * @beta
- * Provides the functionality for registering custom components
- * for items.
  */
 export class ItemComponentRegistry {
     private constructor();
     /**
-     * @remarks
-     * Registers an item custom component that can be used in item
-     * JSON configuration.
-     *
-     * @param name
-     * The id that represents this custom component. Must have a
-     * namespace. This id can be specified in a item's JSON
-     * configuration under the 'minecraft:custom_components' item
-     * component.
-     * @param itemCustomComponent
-     * The collection of event functions that will be called when
-     * the event occurs on an item using this custom component id.
      * @throws This function can throw errors.
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
@@ -9633,21 +9619,10 @@ export class ItemComponentRegistry {
 
 /**
  * @beta
- * Contains information regarding the use of an item.
  */
 export class ItemComponentUseEvent {
     private constructor();
-    /**
-     * @remarks
-     * The item stack when the item was used.
-     *
-     */
     readonly itemStack?: ItemStack;
-    /**
-     * @remarks
-     * The player who used the item.
-     *
-     */
     readonly source: Player;
 }
 
@@ -15036,12 +15011,6 @@ export class WorldInitializeAfterEventSignal {
 export class WorldInitializeBeforeEvent {
     private constructor();
     readonly blockTypeRegistry: BlockComponentRegistry;
-    /**
-     * @remarks
-     * Provides the functionality for registering custom components
-     * for items.
-     *
-     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
@@ -16174,16 +16143,8 @@ export interface GreaterThanOrEqualsComparison {
 
 /**
  * @beta
- * Contains a set of events that will be raised for an item.
- * This object must be bound using the ItemComponentRegistry.
  */
 export interface ItemCustomComponent {
-    /**
-     * @remarks
-     * This function will be called when an item containing this
-     * component is used by a player.
-     *
-     */
     onUse?: (arg: ItemComponentUseEvent) => void;
 }
 
@@ -16868,8 +16829,6 @@ export class InvalidStructureError extends Error {
 
 /**
  * @beta
- * Thrown when trying to register an item custom component with
- * a name that has already been registered.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentAlreadyRegisteredError extends Error {
@@ -16878,8 +16837,6 @@ export class ItemCustomComponentAlreadyRegisteredError extends Error {
 
 /**
  * @beta
- * Thrown when trying to register an item custom component with
- * an invalid namespace.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentNameError extends Error {
@@ -16888,8 +16845,6 @@ export class ItemCustomComponentNameError extends Error {
 
 /**
  * @beta
- * Thrown after using the /reload command when trying to
- * register a previously unregistered item custom component.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadNewComponentError extends Error {
@@ -16898,9 +16853,6 @@ export class ItemCustomComponentReloadNewComponentError extends Error {
 
 /**
  * @beta
- * Thrown after using the /reload command when trying to
- * register a previously registered item custom component that
- * handles a new event.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadNewEventError extends Error {
@@ -16909,9 +16861,6 @@ export class ItemCustomComponentReloadNewEventError extends Error {
 
 /**
  * @beta
- * Thrown after using the /reload command when trying to
- * register a previously registered item custom component with
- * a newer API version.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadVersionError extends Error {

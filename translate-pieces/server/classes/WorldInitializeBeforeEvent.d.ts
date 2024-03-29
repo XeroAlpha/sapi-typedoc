@@ -11,11 +11,5 @@
 export class WorldInitializeBeforeEvent {
     private constructor();
     readonly blockTypeRegistry: BlockComponentRegistry;
-    /**
-     * @remarks
-     * Provides the functionality for registering custom components
-     * for items.
-     *
-     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
