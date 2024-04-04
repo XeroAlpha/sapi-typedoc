@@ -22,7 +22,6 @@ export class PlayerDimensionChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
 }

@@ -1,8 +1,5 @@
 /* IMPORT */ import { BlockPermutation } from '../index';
 
-/**
- * @beta
- */
 export interface BlockFilter {
     excludePermutations?: BlockPermutation[];
     excludeTags?: string[];

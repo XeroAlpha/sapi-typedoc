@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/debug-utilities",
- *   "version": "1.0.0-beta.1.20.80-preview.24"
+ *   "version": "1.0.0-beta.1.21.0-preview.20"
  * }
  * ```
  *
@@ -24,4 +24,4 @@ import * as minecraftserver from '@minecraft/server';
 /**
  * @throws This function can throw errors.
  */
-export function disableWatchdog(isStopped: boolean): void;
+export function disableWatchdogTimingWarnings(disable: boolean): void;

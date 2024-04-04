@@ -273,4 +273,5 @@ export enum GameRule {
      *
      */
     TntExplodes = 'tntExplodes',
+    TntExplosionDropDecay = 'tntExplosionDropDecay',
 }

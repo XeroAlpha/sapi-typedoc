@@ -7,6 +7,12 @@ export class WidgetGroup {
      * @remarks
      * This function can't be called in read-only mode.
      *
+     */
+    areAnySelected(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      */
     createCustomWidget(
@@ -27,7 +33,25 @@ export class WidgetGroup {
      * This function can't be called in read-only mode.
      *
      */
+    deselectAllWidgets(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
     getIsVisible(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    moveSelectedWidgets(delta: minecraftserver.Vector3): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    selectAllWidgets(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.

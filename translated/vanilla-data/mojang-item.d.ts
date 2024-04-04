@@ -862,6 +862,8 @@ export declare enum MinecraftItemTypes {
     FenceGate = "minecraft:fence_gate",
     /** 发酵蛛眼。 */
     FermentedSpiderEye = "minecraft:fermented_spider_eye",
+    /** 蕨。 */
+    Fern = "minecraft:fern",
     /** 砖纹旗帜图案。 */
     FieldMasonedBannerPattern = "minecraft:field_masoned_banner_pattern",
     /** 地图。 */
@@ -1526,6 +1528,10 @@ export declare enum MinecraftItemTypes {
     OcelotSpawnEgg = "minecraft:ocelot_spawn_egg",
     /** 赭黄蛙明灯。 */
     OchreFroglight = "minecraft:ochre_froglight",
+    /** 不祥之瓶。 */
+    OminousBottle = "minecraft:ominous_bottle",
+    /** 不祥试炼钥匙。 */
+    OminousTrialKey = "minecraft:ominous_trial_key",
     /** 橙色蜡烛。 */
     OrangeCandle = "minecraft:orange_candle",
     /** 橙色地毯。 */
@@ -1902,6 +1908,8 @@ export declare enum MinecraftItemTypes {
     ShelterPotterySherd = "minecraft:shelter_pottery_sherd",
     /** 盾牌。 */
     Shield = "minecraft:shield",
+    /** 矮草丛。 */
+    ShortGrass = "minecraft:short_grass",
     /** 菌光体。 */
     Shroomlight = "minecraft:shroomlight",
     ShulkerBox = "minecraft:shulker_box",

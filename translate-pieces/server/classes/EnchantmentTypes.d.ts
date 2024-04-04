@@ -19,4 +19,11 @@ export class EnchantmentTypes {
      * represents the specified enchantment.
      */
     static get(enchantmentId: string): EnchantmentType | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns a collection of all available enchantment types.
+     *
+     */
+    static getAll(): EnchantmentType[];
 }

@@ -214,4 +214,10 @@ export class GameRules {
      *
      */
     tntExplodes: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    tntExplosionDropDecay: boolean;
 }

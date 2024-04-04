@@ -23,6 +23,8 @@ export declare enum MinecraftEffectTypes {
     HealthBoost = "health_boost",
     /** 饥饿。 */
     Hunger = "hunger",
+    /** 寄生。 */
+    Infested = "infested",
     /** 瞬间伤害。 */
     InstantDamage = "instant_damage",
     /** 瞬间治疗。 */
@@ -39,6 +41,8 @@ export declare enum MinecraftEffectTypes {
     Nausea = "nausea",
     /** 夜视。 */
     NightVision = "night_vision",
+    /** 渗浆。 */
+    Oozing = "oozing",
     /** 中毒。 */
     Poison = "poison",
     /** 生命恢复。 */
@@ -55,12 +59,18 @@ export declare enum MinecraftEffectTypes {
     Speed = "speed",
     /** 力量。 */
     Strength = "strength",
+    /** 试炼之兆。 */
+    TrialOmen = "trial_omen",
     /** 村庄英雄。 */
     VillageHero = "village_hero",
     /** 水下呼吸。 */
     WaterBreathing = "water_breathing",
     /** 虚弱。 */
     Weakness = "weakness",
+    /** 盘丝。 */
+    Weaving = "weaving",
+    /** 蓄风。 */
+    WindCharged = "wind_charged",
     /** 凋零。 */
     Wither = "wither"
 }

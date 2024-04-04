@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '../index';
+/* IMPORT */ import { IModalTool, ModalToolCreationParameters, NoArgsAction, RegisteredAction } from '../index';
 
 export interface IModalToolContainer {
     /**
@@ -13,7 +13,7 @@ export interface IModalToolContainer {
      *
      */
     readonly selectedOptionId?: string;
-    addTool(params: ModalToolCreationParameters): IModalTool;
+    addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
     dispose(): void;
     hide(): void;
     removeTool(id: string): void;

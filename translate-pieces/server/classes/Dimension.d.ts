@@ -240,6 +240,7 @@ export class Dimension {
      *
      * @param options
      * Additional options for processing this raycast query.
+     * @throws This function can throw errors.
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**

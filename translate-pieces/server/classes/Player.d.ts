@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, DimensionLocation, Entity, GameMode, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, DimensionLocation, Entity, GameMode, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -13,6 +13,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
+    /**
+     * @beta
+     * @remarks
+     * Input permissions of the player.
+     *
+     */
+    readonly inputPermissions: PlayerInputPermissions;
     /**
      * @remarks
      * If true, the player is currently emoting.
