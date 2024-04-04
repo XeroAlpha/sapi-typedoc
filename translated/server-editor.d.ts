@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.20.80-preview.24"
+ *   "version": "0.1.0-beta.1.21.0-preview.20"
  * }
  * ```
  *
@@ -627,6 +627,39 @@ export declare class BedrockEventSubscriptionCache {
     teardown(): void;
 }
 
+export class BlockPalette {
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
+    getItem(index: number): IBlockPaletteItem;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
+    removeItemAt(index: number): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    removeItems(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
+    setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
+}
+
 export class BlockPaletteManager {
     private constructor();
     /**
@@ -640,6 +673,54 @@ export class BlockPaletteManager {
      * @throws This function can throw errors.
      */
     setSelectedBlockType(block: minecraftserver.BlockType): void;
+}
+
+export class BrushShape {
+    readonly getSettingsUIElements: () => SettingsUIElement[];
+    readonly icon: string;
+    readonly name: string;
+    readonly rebuild: () => minecraftserver.CompoundBlockVolume;
+    constructor(
+        name: string,
+        icon: string,
+        rebuild: () => minecraftserver.CompoundBlockVolume,
+        getSettingsUI: () => SettingsUIElement[],
+    );
+}
+
+export class BrushShapeManager {
+    private constructor();
+    readonly activeBrushShape?: BrushShape;
+    readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
+    readonly brushShapeNames: string[];
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getSettingsUIElements(brushName: string): SettingsUIElement[];
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    registerBrushShape(brushShape: BrushShape): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    uiSettingValueChanged(elementName: string, newValue: boolean | number): void;
 }
 
 /**
@@ -954,7 +1035,6 @@ export class CursorPropertyChangeAfterEventSignal {
      * @remarks
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
 }
@@ -966,6 +1046,12 @@ export class CustomWidget extends Widget {
     readonly rotation: minecraftserver.Vector2;
     readonly showTextOnlyWhenSelected: boolean;
     getText(): string;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    moveBy(delta: minecraftserver.Vector3): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -1051,6 +1137,7 @@ export class ExtensionContext {
      */
     readonly afterEvents: ExtensionContextAfterEvents;
     readonly blockPalette: BlockPaletteManager;
+    readonly brushShapeManager: BrushShapeManager;
     /**
      * @remarks
      * This is used to access the players Clipboard Manager and the
@@ -1327,7 +1414,6 @@ export class ModeChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
 }
@@ -1362,7 +1448,6 @@ export class PrimarySelectionChangeAfterEventSignal {
      * @remarks
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: SelectionEventAfterEvent) => void): void;
 }
@@ -1657,6 +1742,21 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+}
+
+export class SettingsUIElement {
+    readonly initialValue: boolean | number;
+    readonly max?: number;
+    readonly min?: number;
+    readonly name: string;
+    readonly valueChanged?: (arg: boolean | number) => void;
+    constructor(
+        name: string,
+        initialValue: boolean | number,
+        min?: number,
+        max?: number,
+        valueChanged?: (arg: boolean | number) => void,
+    );
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -1966,8 +2066,21 @@ export class UserDefinedTransactionHandlerId {
 export class Widget {
     private constructor();
     readonly valid: boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    deleteWidget(): void;
     getIsSelected(): boolean;
     getIsVisible(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setIsSelected(isSelected: boolean): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -1979,6 +2092,12 @@ export class Widget {
 export class WidgetGroup {
     private constructor();
     readonly valid: boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    areAnySelected(): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2003,7 +2122,25 @@ export class WidgetGroup {
      * This function can't be called in read-only mode.
      *
      */
+    deselectAllWidgets(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
     getIsVisible(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    moveSelectedWidgets(delta: minecraftserver.Vector3): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    selectAllWidgets(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2517,7 +2654,7 @@ export interface IModalToolContainer {
      *
      */
     readonly selectedOptionId?: string;
-    addTool(params: ModalToolCreationParameters): IModalTool;
+    addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
     dispose(): void;
     hide(): void;
     removeTool(id: string): void;

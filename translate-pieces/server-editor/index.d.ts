@@ -46,7 +46,10 @@ export { SupportedKeyboardActionTypes } from './types/SupportedKeyboardActionTyp
 export { SupportedMouseActionTypes } from './types/SupportedMouseActionTypes';
 export { UnregisterInputBindingCallback } from './types/UnregisterInputBindingCallback';
 export { BedrockEventSubscriptionCache } from './classes/BedrockEventSubscriptionCache';
+export { BlockPalette } from './classes/BlockPalette';
 export { BlockPaletteManager } from './classes/BlockPaletteManager';
+export { BrushShape } from './classes/BrushShape';
+export { BrushShapeManager } from './classes/BrushShapeManager';
 export { ClipboardItem } from './classes/ClipboardItem';
 export { ClipboardManager } from './classes/ClipboardManager';
 export { Cursor } from './classes/Cursor';
@@ -72,6 +75,7 @@ export { Selection } from './classes/Selection';
 export { SelectionEventAfterEvent } from './classes/SelectionEventAfterEvent';
 export { SelectionManager } from './classes/SelectionManager';
 export { SettingsManager } from './classes/SettingsManager';
+export { SettingsUIElement } from './classes/SettingsUIElement';
 export { SimpleBlockPaletteItem } from './classes/SimpleBlockPaletteItem';
 export { SimulationState } from './classes/SimulationState';
 export { TransactionManager } from './classes/TransactionManager';

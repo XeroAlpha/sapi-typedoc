@@ -11,5 +11,11 @@ export class CustomWidget extends Widget {
      * This function can't be called in read-only mode.
      *
      */
+    moveBy(delta: minecraftserver.Vector3): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
     setText(text: string): void;
 }

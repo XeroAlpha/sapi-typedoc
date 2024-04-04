@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPaletteManager, ClipboardManager, Cursor, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPaletteManager, BrushShapeManager, ClipboardManager, Cursor, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
 
 /**
  * The extension context is a native (C++) object created for
@@ -23,6 +23,7 @@ export class ExtensionContext {
      */
     readonly afterEvents: ExtensionContextAfterEvents;
     readonly blockPalette: BlockPaletteManager;
+    readonly brushShapeManager: BrushShapeManager;
     /**
      * @remarks
      * This is used to access the players Clipboard Manager and the

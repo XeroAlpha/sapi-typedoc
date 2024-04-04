@@ -41,15 +41,6 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
-     * @beta
-     * @remarks
-     * Creates a copy of this permutation.
-     *
-     * @returns
-     * A copy of the permutation.
-     */
-    clone(): BlockPermutation;
-    /**
      * @remarks
      * Returns all available block states associated with this
      * block.

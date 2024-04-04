@@ -23,7 +23,6 @@ export class ExplosionBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
 }

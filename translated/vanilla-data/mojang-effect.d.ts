@@ -13,6 +13,7 @@ export declare enum MinecraftEffectTypes {
     Haste = "haste",
     HealthBoost = "health_boost",
     Hunger = "hunger",
+    Infested = "infested",
     InstantDamage = "instant_damage",
     InstantHealth = "instant_health",
     Invisibility = "invisibility",
@@ -21,6 +22,7 @@ export declare enum MinecraftEffectTypes {
     MiningFatigue = "mining_fatigue",
     Nausea = "nausea",
     NightVision = "night_vision",
+    Oozing = "oozing",
     Poison = "poison",
     Regeneration = "regeneration",
     Resistance = "resistance",
@@ -29,9 +31,12 @@ export declare enum MinecraftEffectTypes {
     Slowness = "slowness",
     Speed = "speed",
     Strength = "strength",
+    TrialOmen = "trial_omen",
     VillageHero = "village_hero",
     WaterBreathing = "water_breathing",
     Weakness = "weakness",
+    Weaving = "weaving",
+    WindCharged = "wind_charged",
     Wither = "wither"
 }
 /**

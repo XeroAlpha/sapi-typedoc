@@ -39,7 +39,6 @@ export class EntitySpawnAfterEventSignal {
      * @param callback
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
 }

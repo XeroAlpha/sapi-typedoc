@@ -7,7 +7,7 @@
  * @example givePlayerIronFireSword.ts
  * ```typescript
  * // Spawns a bunch of item stacks
- * import { ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
+ * import { EnchantmentType, ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
  * import { MinecraftItemTypes, MinecraftEnchantmentTypes } from '@minecraft/vanilla-data';
  *
  * function giveFireSword(player: Player) {
@@ -15,7 +15,7 @@
  *
  *     const enchantments = ironFireSword?.getComponent(ItemComponentTypes.Enchantable);
  *     if (enchantments) {
- *         enchantments.addEnchantment({ type: MinecraftEnchantmentTypes.FireAspect, level: 1 });
+ *         enchantments.addEnchantment({ type: new EnchantmentType(MinecraftEnchantmentTypes.FireAspect), level: 1 });
  *     }
  *
  *     const inventory = player.getComponent('minecraft:inventory');

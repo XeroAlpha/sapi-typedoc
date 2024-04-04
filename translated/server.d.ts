@@ -1160,6 +1160,7 @@ export enum GameRule {
      *
      */
     TntExplodes = 'tntExplodes',
+    TntExplosionDropDecay = 'tntExplosionDropDecay',
 }
 
 /**
@@ -1187,6 +1188,26 @@ export enum HudElement {
 export enum HudVisibility {
     Hide = 0,
     Reset = 1,
+}
+
+/**
+ * @beta
+ */
+export enum InputPermissionCategory {
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to camera movement.
+     *
+     */
+    Camera = 1,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to movement.
+     *
+     */
+    Movement = 2,
 }
 
 /**
@@ -2526,7 +2547,6 @@ export class BlockExplodeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: BlockExplodeAfterEvent) => void): void;
 }
@@ -2682,15 +2702,6 @@ export class BlockPermutation {
      *
      */
     readonly 'type': BlockType;
-    /**
-     * @beta
-     * @remarks
-     * Creates a copy of this permutation.
-     *
-     * @returns
-     * A copy of the permutation.
-     */
-    clone(): BlockPermutation;
     /**
      * @remarks
      * Returns all available block states associated with this
@@ -3769,7 +3780,6 @@ export class ChatSendAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;
 }
@@ -3832,7 +3842,6 @@ export class ChatSendBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
 }
@@ -5038,6 +5047,7 @@ export class Dimension {
      *
      * @param options
      * Additional options for processing this raycast query.
+     * @throws This function can throw errors.
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -5475,7 +5485,6 @@ export class EffectAddBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EffectAddBeforeEvent) => void): void;
 }
@@ -5567,6 +5576,13 @@ export class EnchantmentTypes {
      * represents the specified enchantment.
      */
     static get(enchantmentId: string): EnchantmentType | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns a collection of all available enchantment types.
+     *
+     */
+    static getAll(): EnchantmentType[];
 }
 
 /**
@@ -7747,7 +7763,6 @@ export class EntityLoadAfterEventSignal {
      * @param callback
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityLoadAfterEvent) => void): void;
 }
@@ -8483,7 +8498,6 @@ export class EntityRemoveBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
 }
@@ -8737,7 +8751,6 @@ export class EntitySpawnAfterEventSignal {
      * @param callback
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
 }
@@ -8986,7 +8999,6 @@ export class ExplosionAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;
 }
@@ -9038,7 +9050,6 @@ export class ExplosionBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
 }
@@ -9186,7 +9197,6 @@ export class GameRuleChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;
 }
@@ -9407,6 +9417,12 @@ export class GameRules {
      *
      */
     tntExplodes: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    tntExplosionDropDecay: boolean;
 }
 
 /**
@@ -9429,7 +9445,6 @@ export class IButtonPushAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void;
 }
@@ -9454,7 +9469,6 @@ export class ILeverActionAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
@@ -9479,7 +9493,6 @@ export class IPlayerJoinAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerJoinAfterEvent) => void): void;
 }
@@ -9504,7 +9517,6 @@ export class IPlayerLeaveAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerLeaveAfterEvent) => void): void;
 }
@@ -9529,7 +9541,6 @@ export class IPlayerSpawnAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
 }
@@ -9583,7 +9594,6 @@ export class ItemCompleteUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
 }
@@ -9598,10 +9608,124 @@ export class ItemComponent extends Component {
 
 /**
  * @beta
+ * Contains information regarding an item before it is damaged
+ * from hitting an entity.
+ */
+export class ItemComponentBeforeDurabilityDamageEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The attacking entity.
+     *
+     */
+    readonly attackingEntity: Entity;
+    /**
+     * @remarks
+     * The damage applied to the item's durability when the event
+     * occurs.
+     *
+     */
+    durabilityDamage: number;
+    /**
+     * @remarks
+     * The entity being hit.
+     *
+     */
+    readonly hitEntity: Entity;
+    /**
+     * @remarks
+     * The item stack used to hit the entity.
+     *
+     */
+    itemStack?: ItemStack;
+}
+
+/**
+ * @beta
+ * Contains information regarding when an item is used to hit
+ * an entity.
+ */
+export class ItemComponentHitEntityEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The attacking entity.
+     *
+     */
+    readonly attackingEntity: Entity;
+    /**
+     * @remarks
+     * Whether the hit landed or had any effect.
+     *
+     */
+    readonly hadEffect: boolean;
+    /**
+     * @remarks
+     * The entity being hit.
+     *
+     */
+    readonly hitEntity: Entity;
+    /**
+     * @remarks
+     * The item stack used to hit the entity.
+     *
+     */
+    readonly itemStack?: ItemStack;
+}
+
+/**
+ * @beta
+ * Contains information regarding the mining of a block using
+ * an item.
+ */
+export class ItemComponentMineBlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block impacted by this event.
+     *
+     */
+    readonly block: Block;
+    /**
+     * @remarks
+     * The item stack used to mine the block.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The block permutation that was mined.
+     *
+     */
+    readonly minedBlockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The entity that mined the block.
+     *
+     */
+    readonly source: Entity;
+}
+
+/**
+ * @beta
+ * Provides the functionality for registering custom components
+ * for items.
  */
 export class ItemComponentRegistry {
     private constructor();
     /**
+     * @remarks
+     * Registers an item custom component that can be used in item
+     * JSON configuration.
+     *
+     * @param name
+     * The id that represents this custom component. Must have a
+     * namespace. This id can be specified in a item's JSON
+     * configuration under the 'minecraft:custom_components' item
+     * component.
+     * @param itemCustomComponent
+     * The collection of event functions that will be called when
+     * the event occurs on an item using this custom component id.
      * @throws This function can throw errors.
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
@@ -9619,10 +9743,21 @@ export class ItemComponentRegistry {
 
 /**
  * @beta
+ * Contains information regarding the use of an item.
  */
 export class ItemComponentUseEvent {
     private constructor();
+    /**
+     * @remarks
+     * The item stack when the item was used.
+     *
+     */
     readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The player who used the item.
+     *
+     */
     readonly source: Player;
 }
 
@@ -9744,7 +9879,7 @@ export class ItemDurabilityComponent extends ItemComponent {
  * @example givePlayerIronFireSword.ts
  * ```typescript
  * // Spawns a bunch of item stacks
- * import { ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
+ * import { EnchantmentType, ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
  * import { MinecraftItemTypes, MinecraftEnchantmentTypes } from '@minecraft/vanilla-data';
  *
  * function giveFireSword(player: Player) {
@@ -9752,7 +9887,7 @@ export class ItemDurabilityComponent extends ItemComponent {
  *
  *     const enchantments = ironFireSword?.getComponent(ItemComponentTypes.Enchantable);
  *     if (enchantments) {
- *         enchantments.addEnchantment({ type: MinecraftEnchantmentTypes.FireAspect, level: 1 });
+ *         enchantments.addEnchantment({ type: new EnchantmentType(MinecraftEnchantmentTypes.FireAspect), level: 1 });
  *     }
  *
  *     const inventory = player.getComponent('minecraft:inventory');
@@ -10019,7 +10154,6 @@ export class ItemReleaseUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
 }
@@ -10029,7 +10163,7 @@ export class ItemReleaseUseAfterEventSignal {
  * @example givePlayerIronFireSword.ts
  * ```typescript
  * // Spawns a bunch of item stacks
- * import { ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
+ * import { EnchantmentType, ItemComponentTypes, ItemStack, Player } from '@minecraft/server';
  * import { MinecraftItemTypes, MinecraftEnchantmentTypes } from '@minecraft/vanilla-data';
  *
  * function giveFireSword(player: Player) {
@@ -10037,7 +10171,7 @@ export class ItemReleaseUseAfterEventSignal {
  *
  *     const enchantments = ironFireSword?.getComponent(ItemComponentTypes.Enchantable);
  *     if (enchantments) {
- *         enchantments.addEnchantment({ type: MinecraftEnchantmentTypes.FireAspect, level: 1 });
+ *         enchantments.addEnchantment({ type: new EnchantmentType(MinecraftEnchantmentTypes.FireAspect), level: 1 });
  *     }
  *
  *     const inventory = player.getComponent('minecraft:inventory');
@@ -10515,7 +10649,6 @@ export class ItemStartUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
 }
@@ -10580,7 +10713,6 @@ export class ItemStartUseOnAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): void;
 }
@@ -10638,7 +10770,6 @@ export class ItemStopUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
 }
@@ -10696,7 +10827,6 @@ export class ItemStopUseOnAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): void;
 }
@@ -10776,7 +10906,6 @@ export class ItemUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;
 }
@@ -10814,7 +10943,6 @@ export class ItemUseBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemUseBeforeEvent) => void): void;
 }
@@ -10881,7 +11009,6 @@ export class ItemUseOnAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
 }
@@ -10923,7 +11050,6 @@ export class ItemUseOnBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
 }
@@ -11197,7 +11323,6 @@ export class PistonActivateAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
 }
@@ -11215,6 +11340,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
+    /**
+     * @beta
+     * @remarks
+     * Input permissions of the player.
+     *
+     */
+    readonly inputPermissions: PlayerInputPermissions;
     /**
      * @remarks
      * If true, the player is currently emoting.
@@ -11773,7 +11905,6 @@ export class PlayerDimensionChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
 }
@@ -11803,7 +11934,6 @@ export class PlayerGameModeChangeAfterEventSignal {
      * @remarks
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
 }
@@ -11834,9 +11964,73 @@ export class PlayerGameModeChangeBeforeEventSignal {
      * @remarks
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event after a players
+ * input permissions change.
+ */
+export class PlayerInputPermissionCategoryChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The category of input permissions that have changed.
+     *
+     */
+    readonly category: InputPermissionCategory;
+    /**
+     * @remarks
+     * The enabled/disabled state of the players input permissions.
+     *
+     */
+    readonly enabled: boolean;
+    /**
+     * @remarks
+     * The player that has had their input permissions changed.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to after a players
+ * input permissions change.
+ */
+export class PlayerInputPermissionCategoryChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after a players input
+     * permissions change.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void,
+    ): (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called after a players input
+     * permissions change.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    unsubscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class PlayerInputPermissions {
+    private constructor();
+    cameraEnabled: boolean;
+    movementEnabled: boolean;
 }
 
 /**
@@ -11903,7 +12097,6 @@ export class PlayerInteractWithBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;
 }
@@ -11978,7 +12171,6 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerInteractWithBlockBeforeEvent) => void): void;
 }
@@ -12034,7 +12226,6 @@ export class PlayerInteractWithEntityAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): void;
 }
@@ -12096,7 +12287,6 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
@@ -12224,7 +12414,6 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
 }
@@ -12425,7 +12614,6 @@ export class PressurePlatePopAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;
 }
@@ -12481,7 +12669,6 @@ export class PressurePlatePushAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PressurePlatePushAfterEvent) => void): void;
 }
@@ -12555,7 +12742,6 @@ export class ProjectileHitBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): void;
 }
@@ -12629,7 +12815,6 @@ export class ProjectileHitEntityAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): void;
 }
@@ -13189,7 +13374,6 @@ export class ServerMessageAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
 }
@@ -13736,7 +13920,6 @@ export class TargetBlockHitAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
 }
@@ -13864,7 +14047,6 @@ export class TripWireTripAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
 }
@@ -13920,7 +14102,6 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
 }
@@ -13970,7 +14151,6 @@ export class WeatherChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WeatherChangeAfterEvent) => void): void;
 }
@@ -14030,7 +14210,6 @@ export class WeatherChangeBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WeatherChangeBeforeEvent) => void): void;
 }
@@ -14764,6 +14943,13 @@ export class WorldAfterEvents {
     /**
      * @beta
      * @remarks
+     * This event fires when a players input permissions change.
+     *
+     */
+    readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
      * An event for when a player interacts with a block.
      *
      */
@@ -14995,7 +15181,6 @@ export class WorldInitializeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
 }
@@ -15011,6 +15196,12 @@ export class WorldInitializeAfterEventSignal {
 export class WorldInitializeBeforeEvent {
     private constructor();
     readonly blockTypeRegistry: BlockComponentRegistry;
+    /**
+     * @remarks
+     * Provides the functionality for registering custom components
+     * for items.
+     *
+     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
@@ -15039,7 +15230,6 @@ export class WorldInitializeBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
 }
@@ -15162,9 +15352,6 @@ export interface BlockFillOptions {
     matchingBlock?: BlockPermutation;
 }
 
-/**
- * @beta
- */
 export interface BlockFilter {
     excludePermutations?: BlockPermutation[];
     excludeTags?: string[];
@@ -15228,11 +15415,8 @@ export interface BlockRaycastHit {
  * Contains additional options for configuring a block raycast
  * query.
  */
-export interface BlockRaycastOptions {
-    /**
-     * @beta
-     */
-    blockFilter?: BlockFilter;
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface BlockRaycastOptions extends BlockFilter {
     /**
      * @remarks
      * If true, liquid blocks will be considered as blocks that
@@ -15626,6 +15810,131 @@ export interface EntityEventOptions {
 }
 
 /**
+ * Contains options for filtering entities.
+ */
+export interface EntityFilter {
+    /**
+     * @remarks
+     * Excludes entities that match one or more of the specified
+     * families.
+     *
+     */
+    excludeFamilies?: string[];
+    /**
+     * @remarks
+     * Excludes entities if have a specific gamemode that matches
+     * the specified gamemode.
+     *
+     */
+    excludeGameModes?: GameMode[];
+    /**
+     * @remarks
+     * Excludes entities that have a name that match one of the
+     * specified values.
+     *
+     */
+    excludeNames?: string[];
+    /**
+     * @remarks
+     * Excludes entities with a tag that matches one of the
+     * specified values.
+     *
+     */
+    excludeTags?: string[];
+    /**
+     * @remarks
+     * Excludes entities if they are one of the specified types.
+     *
+     */
+    excludeTypes?: string[];
+    /**
+     * @remarks
+     * If specified, includes entities that match all of the
+     * specified families.
+     *
+     */
+    families?: string[];
+    /**
+     * @remarks
+     * If specified, includes entities with a gamemode that matches
+     * the specified gamemode.
+     *
+     */
+    gameMode?: GameMode;
+    /**
+     * @remarks
+     * If specified, will only include entities that have at most
+     * this horizontal rotation.
+     *
+     */
+    maxHorizontalRotation?: number;
+    /**
+     * @remarks
+     * If defined, only players that have at most this level are
+     * returned.
+     *
+     */
+    maxLevel?: number;
+    /**
+     * @remarks
+     * If specified, only entities that have at most this vertical
+     * rotation are returned.
+     *
+     */
+    maxVerticalRotation?: number;
+    /**
+     * @remarks
+     * If specified, will only include entities that have at a
+     * minimum this horizontal rotation.
+     *
+     */
+    minHorizontalRotation?: number;
+    /**
+     * @remarks
+     * If defined, only players that have at least this level are
+     * returned.
+     *
+     */
+    minLevel?: number;
+    /**
+     * @remarks
+     * If specified, will only include entities that have at least
+     * this vertical rotation.
+     *
+     */
+    minVerticalRotation?: number;
+    /**
+     * @remarks
+     * Includes entities with the specified name.
+     *
+     */
+    name?: string;
+    /**
+     * @beta
+     */
+    propertyOptions?: EntityQueryPropertyOptions[];
+    /**
+     * @remarks
+     * Gets/sets a collection of EntityQueryScoreOptions objects
+     * with filters for specific scoreboard objectives.
+     *
+     */
+    scoreOptions?: EntityQueryScoreOptions[];
+    /**
+     * @remarks
+     * Includes entities that match all of the specified tags.
+     *
+     */
+    tags?: string[];
+    /**
+     * @remarks
+     * If defined, entities that match this type are included.
+     *
+     */
+    type?: string;
+}
+
+/**
  * Contains additional information about an entity that was
  * hit.
  */
@@ -15691,6 +16000,162 @@ export interface EntityHitInformation {
  *             player.playSound('raid.horn');
  *         });
  *     });
+ * }
+ * ```
+ * @example testPropertyOptionsWithEqualsComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={propId=propValue}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingPropertyEqualsTo(propId: string, propValue: boolean | number | string) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { equals: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithGreaterThanComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // No equivalent commands as `propValue..` is inclusive in commands
+ *
+ * function findEntitiesHavingPropertyGreaterThan(propId: string, propValue: number) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { greaterThan: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithGreaterThanOrEqualsComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={propId=propValue..}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingPropertyGreaterThanOrEqualsTo(propId: string, propValue: number) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { greaterThanOrEquals: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithHavingAProperty.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={property=propId}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingAProperty(propId: string) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithLessThanComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // No equivalent commands as `..propValue` is inclusive in commands
+ *
+ * function findEntitiesHavingPropertyLessThan(propId: string, propValue: number) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { lessThan: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithLessThanOrEqualsComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={propId=..propValue}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingPropertyLessThanOrEqualsTo(propId: string, propValue: number) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { lessThanOrEquals: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithNotEqualsComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={propId=!propValue}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingPropertyNotEqualsTo(propId: string, propValue: boolean | number | string) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { notEquals: propValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithNotHavingAProperty.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={property=!propId}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesNotHavingAProperty(propId: string) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, exclude: true }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
+ * }
+ * ```
+ * @example testPropertyOptionsWithRangeComparison.ts
+ * ```typescript
+ * import { world, EntityQueryOptions } from '@minecraft/server';
+ *
+ * // Having this command:
+ *
+ * // execute as @e[has_property={propId=lowerBoundValue..upperBoundValue}]
+ *
+ * // Equivalent scripting code would be:
+ * function findEntitiesHavingPropertyWithinRange(propId: string, lowerBoundValue: number, upperBoundValue: number) {
+ *     const queryOption: EntityQueryOptions = {
+ *         propertyOptions: [{ propertyId: propId, value: { lowerBound: lowerBoundValue, upperBound: upperBoundValue } }]
+ *     };
+ *
+ *     const overworld = world.getDimension('overworld');
+ *     const entities = overworld.getEntities(queryOption);
  * }
  * ```
  * @example testSendMessageAllPlayers.ts
@@ -15771,32 +16236,9 @@ export interface EntityHitInformation {
  *     });
  * }
  * ```
- * @example checkFeatherNearby.ts
- * ```typescript
- * import { DimensionLocation, EntityComponentTypes } from "@minecraft/server";
- *
- * // Returns true if a feather item entity is within 'distance' blocks of 'location'.
- * function isFeatherNear(location: DimensionLocation, distance: number): boolean {
- *     const items = location.dimension.getEntities({
- *         location: location,
- *         maxDistance: 20,
- *     });
- *
- *     for (const item of items) {
- *         const itemComp = item.getComponent(EntityComponentTypes.Item);
- *
- *         if (itemComp) {
- *             if (itemComp.itemStack.typeId.endsWith('feather')) {
- *                 return true;
- *             }
- *         }
- *     }
- *
- *     return false;
- * }
- * ```
  */
-export interface EntityQueryOptions {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface EntityQueryOptions extends EntityFilter {
     /**
      * @remarks
      * Limits the number of entities to return, opting for the
@@ -15808,47 +16250,6 @@ export interface EntityQueryOptions {
     closest?: number;
     /**
      * @remarks
-     * Excludes entities that match one or more of the specified
-     * families.
-     *
-     */
-    excludeFamilies?: string[];
-    /**
-     * @remarks
-     * Excludes entities if have a specific gamemode that matches
-     * the specified gamemode.
-     *
-     */
-    excludeGameModes?: GameMode[];
-    /**
-     * @remarks
-     * Excludes entities that have a name that match one of the
-     * specified values.
-     *
-     */
-    excludeNames?: string[];
-    /**
-     * @remarks
-     * Excludes entities with a tag that matches one of the
-     * specified values.
-     *
-     */
-    excludeTags?: string[];
-    /**
-     * @remarks
-     * Excludes entities if they are one of the specified types.
-     *
-     */
-    excludeTypes?: string[];
-    /**
-     * @remarks
-     * If specified, includes entities that match all of the
-     * specified families.
-     *
-     */
-    families?: string[];
-    /**
-     * @remarks
      * Limits the number of entities to return, opting for the
      * farthest N entities as specified by this property. The
      * location value must also be specified on the query options
@@ -15856,13 +16257,6 @@ export interface EntityQueryOptions {
      *
      */
     farthest?: number;
-    /**
-     * @remarks
-     * If specified, includes entities with a gamemode that matches
-     * the specified gamemode.
-     *
-     */
-    gameMode?: GameMode;
     /**
      * @remarks
      * Adds a seed location to the query that is used in
@@ -15881,86 +16275,11 @@ export interface EntityQueryOptions {
     maxDistance?: number;
     /**
      * @remarks
-     * If specified, will only include entities that have at most
-     * this horizontal rotation.
-     *
-     */
-    maxHorizontalRotation?: number;
-    /**
-     * @remarks
-     * If defined, only players that have at most this level are
-     * returned.
-     *
-     */
-    maxLevel?: number;
-    /**
-     * @remarks
-     * If specified, only entities that have at most this vertical
-     * rotation are returned.
-     *
-     */
-    maxVerticalRotation?: number;
-    /**
-     * @remarks
      * If specified, includes entities that are least this distance
      * away from the location specified in the location property.
      *
      */
     minDistance?: number;
-    /**
-     * @remarks
-     * If specified, will only include entities that have at a
-     * minimum this horizontal rotation.
-     *
-     */
-    minHorizontalRotation?: number;
-    /**
-     * @remarks
-     * If defined, only players that have at least this level are
-     * returned.
-     *
-     */
-    minLevel?: number;
-    /**
-     * @remarks
-     * If specified, will only include entities that have at least
-     * this vertical rotation.
-     *
-     */
-    minVerticalRotation?: number;
-    /**
-     * @remarks
-     * Includes entities with the specified name.
-     *
-     */
-    name?: string;
-    /**
-     * @beta
-     * @remarks
-     * Gets/sets a collection of EntityQueryPropertyOptions objects
-     * with filters for specific properties.
-     *
-     */
-    propertyOptions?: EntityQueryPropertyOptions[];
-    /**
-     * @remarks
-     * Gets/sets a collection of EntityQueryScoreOptions objects
-     * with filters for specific scoreboard objectives.
-     *
-     */
-    scoreOptions?: EntityQueryScoreOptions[];
-    /**
-     * @remarks
-     * Includes entities that match all of the specified tags.
-     *
-     */
-    tags?: string[];
-    /**
-     * @remarks
-     * If defined, entities that match this type are included.
-     *
-     */
-    type?: string;
     /**
      * @beta
      * @remarks
@@ -16044,7 +16363,32 @@ export interface EntityRaycastHit {
 /**
  * Contains additional options for an entity raycast operation.
  */
-export interface EntityRaycastOptions {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface EntityRaycastOptions extends EntityFilter {
+    /**
+     * @beta
+     * @remarks
+     * If true, blocks will not be considered as blocks that 'stop'
+     * the raycast.
+     *
+     */
+    ignoreBlockCollision?: boolean;
+    /**
+     * @beta
+     * @remarks
+     * If true, liquid blocks will be considered as blocks that
+     * 'stop' the raycast.
+     *
+     */
+    includeLiquidBlocks?: boolean;
+    /**
+     * @beta
+     * @remarks
+     * If true, passable blocks like vines and flowers will be
+     * considered as blocks that 'stop' the raycast.
+     *
+     */
+    includePassableBlocks?: boolean;
     /**
      * @remarks
      * Maximum distance, in blocks, to process the raycast.
@@ -16143,8 +16487,25 @@ export interface GreaterThanOrEqualsComparison {
 
 /**
  * @beta
+ * Contains a set of events that will be raised for an item.
+ * This object must be bound using the ItemComponentRegistry.
  */
 export interface ItemCustomComponent {
+    onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
+    onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when an item containing this
+     * component is used to mine a block.
+     *
+     */
+    onMineBlock?: (arg: ItemComponentMineBlockEvent) => void;
+    /**
+     * @remarks
+     * This function will be called when an item containing this
+     * component is used by a player.
+     *
+     */
     onUse?: (arg: ItemComponentUseEvent) => void;
 }
 
@@ -16829,6 +17190,8 @@ export class InvalidStructureError extends Error {
 
 /**
  * @beta
+ * Thrown when trying to register an item custom component with
+ * a name that has already been registered.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentAlreadyRegisteredError extends Error {
@@ -16837,6 +17200,8 @@ export class ItemCustomComponentAlreadyRegisteredError extends Error {
 
 /**
  * @beta
+ * Thrown when trying to register an item custom component with
+ * an invalid namespace.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentNameError extends Error {
@@ -16845,6 +17210,8 @@ export class ItemCustomComponentNameError extends Error {
 
 /**
  * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously unregistered item custom component.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadNewComponentError extends Error {
@@ -16853,6 +17220,9 @@ export class ItemCustomComponentReloadNewComponentError extends Error {
 
 /**
  * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously registered item custom component that
+ * handles a new event.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadNewEventError extends Error {
@@ -16861,6 +17231,9 @@ export class ItemCustomComponentReloadNewEventError extends Error {
 
 /**
  * @beta
+ * Thrown after using the /reload command when trying to
+ * register a previously registered item custom component with
+ * a newer API version.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentReloadVersionError extends Error {
