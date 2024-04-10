@@ -38,6 +38,7 @@ jobs:
         npm run build
 
     - name: Deploy to self-hosted site
+      if: github.repository == 'XeroAlpha/sapi-typedoc'
       run: |
         pushd ${{ github.workspace }}/dist
         tar -cvzf ${{ github.workspace }}/sapi-doc.tar.gz *
@@ -49,13 +50,17 @@ jobs:
         rm ${{ github.workspace }}/key.txt
     
     - name: Setup GitHub Pages
+      id: pages_setup
       uses: actions/configure-pages@v4
+      continue-on-error: true
 
     - name: Upload artifact to GitHub pages
+      if: ${{ steps.pages_setup.outcome == 'success' }}
       uses: actions/upload-pages-artifact@v3
       with:
         path: ${{ github.workspace }}/dist
 
     - name: Deploy to GitHub Pages
+      if: ${{ steps.pages_setup.outcome == 'success' }}
       id: deployment
       uses: actions/deploy-pages@v4

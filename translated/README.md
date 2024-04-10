@@ -35,6 +35,9 @@ NPM 包：
 
 欢迎通过 [Fork & Pull Request](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models) 参与此项目！
 
+> [!TIP]
+> 在 Fork 仓库中，GitHub Actions 会默认开启，用于在每次 Push 时构建对应的网页版本。如果您不需要，请 [禁用工作流](https://docs.github.com/zh/actions/using-workflows/disabling-and-enabling-a-workflow)。
+
 TSDoc 例子：
 ```ts
 /**
