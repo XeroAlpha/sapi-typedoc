@@ -26,6 +26,7 @@ jobs:
         npm run build
 
     - name: Deploy
+      if: github.repository == 'XeroAlpha/sapi-typedoc'
       run: |
         pushd ${{ github.workspace }}/dist
         tar -cvzf ${{ github.workspace }}/sapi-doc.tar.gz *
