@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.0-preview.20"
+ *   "version": "0.1.0-beta.1.21.0-preview.21"
  * }
  * ```
  *
@@ -675,19 +675,6 @@ export class BlockPaletteManager {
     setSelectedBlockType(block: minecraftserver.BlockType): void;
 }
 
-export class BrushShape {
-    readonly getSettingsUIElements: () => SettingsUIElement[];
-    readonly icon: string;
-    readonly name: string;
-    readonly rebuild: () => minecraftserver.CompoundBlockVolume;
-    constructor(
-        name: string,
-        icon: string,
-        rebuild: () => minecraftserver.CompoundBlockVolume,
-        getSettingsUI: () => SettingsUIElement[],
-    );
-}
-
 export class BrushShapeManager {
     private constructor();
     readonly activeBrushShape?: BrushShape;
@@ -713,14 +700,19 @@ export class BrushShapeManager {
      *
      * @throws This function can throw errors.
      */
-    registerBrushShape(brushShape: BrushShape): void;
+    registerBrushShape(
+        name: string,
+        icon: string,
+        rebuild: () => minecraftserver.CompoundBlockVolume,
+        getSettingsUIElements: () => SettingsUIElement[],
+    ): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
      */
-    uiSettingValueChanged(elementName: string, newValue: boolean | number): void;
+    uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
 
 /**
@@ -1745,17 +1737,19 @@ export class SettingsManager {
 }
 
 export class SettingsUIElement {
-    readonly initialValue: boolean | number;
+    readonly initialValue: boolean | number | string | minecraftserver.Vector3;
     readonly max?: number;
     readonly min?: number;
     readonly name: string;
-    readonly valueChanged?: (arg: boolean | number) => void;
+    readonly onChange: (arg: boolean | number | string | minecraftserver.Vector3) => boolean;
+    readonly options?: string[];
     constructor(
         name: string,
-        initialValue: boolean | number,
+        initialValue: boolean | number | string | minecraftserver.Vector3,
+        onChange: (arg: boolean | number | string | minecraftserver.Vector3) => boolean,
         min?: number,
         max?: number,
-        valueChanged?: (arg: boolean | number) => void,
+        options?: string[],
     );
 }
 
@@ -2173,6 +2167,11 @@ export class WidgetStateChangeEventData {
     readonly isSelected?: boolean;
     readonly isVisible?: boolean;
     readonly widget: Widget;
+}
+
+export interface BrushShape {
+    icon: string;
+    name: string;
 }
 
 /**

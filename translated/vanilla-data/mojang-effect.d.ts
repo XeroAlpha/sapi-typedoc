@@ -45,6 +45,8 @@ export declare enum MinecraftEffectTypes {
     Oozing = "oozing",
     /** 中毒。 */
     Poison = "poison",
+    /** 袭击之兆。 */
+    RaidOmen = "raid_omen",
     /** 生命恢复。 */
     Regeneration = "regeneration",
     /** 抗性提升。 */

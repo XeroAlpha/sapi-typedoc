@@ -10,8 +10,12 @@ export declare enum MinecraftEnchantmentTypes {
     Binding = "binding",
     /** 爆炸保护。 */
     BlastProtection = "blast_protection",
+    /** 破甲。 */
+    Breach = "breach",
     /** 引雷。 */
     Channeling = "channeling",
+    /** 致密。 */
+    Density = "density",
     /** 深海探索者。 */
     DepthStrider = "depth_strider",
     /** 效率。 */
@@ -77,7 +81,9 @@ export declare enum MinecraftEnchantmentTypes {
     /** 耐久。 */
     Unbreaking = "unbreaking",
     /** 消失诅咒。 */
-    Vanishing = "vanishing"
+    Vanishing = "vanishing",
+    /** 风爆。 */
+    WindBurst = "wind_burst"
 }
 /**
  * Union type equivalent of the MinecraftEnchantmentTypes enum.

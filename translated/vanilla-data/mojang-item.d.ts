@@ -38,6 +38,8 @@ export declare enum MinecraftItemTypes {
     AcaciaWood = "minecraft:acacia_wood",
     /** 激活铁轨。 */
     ActivatorRail = "minecraft:activator_rail",
+    /** 空气。 */
+    Air = "minecraft:air",
     /** 悦灵刷怪蛋。 */
     AllaySpawnEgg = "minecraft:allay_spawn_egg",
     /** 绒球葱。 */
@@ -126,7 +128,6 @@ export declare enum MinecraftItemTypes {
     BambooTrapdoor = "minecraft:bamboo_trapdoor",
     /** 旗帜。 */
     Banner = "minecraft:banner",
-    /** 旗帜图案。 */
     BannerPattern = "minecraft:banner_pattern",
     /** 木桶。 */
     Barrel = "minecraft:barrel",
@@ -260,7 +261,6 @@ export declare enum MinecraftItemTypes {
     BlueTerracotta = "minecraft:blue_terracotta",
     /** 蓝色羊毛。 */
     BlueWool = "minecraft:blue_wool",
-    /** 船。 */
     Boat = "minecraft:boat",
     /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
@@ -286,6 +286,8 @@ export declare enum MinecraftItemTypes {
     Bowl = "minecraft:bowl",
     /** 脑纹珊瑚。 */
     BrainCoral = "minecraft:brain_coral",
+    /** 脑纹珊瑚块。 */
+    BrainCoralBlock = "minecraft:brain_coral_block",
     /** 脑纹珊瑚扇。 */
     BrainCoralFan = "minecraft:brain_coral_fan",
     /** 面包。 */
@@ -334,6 +336,8 @@ export declare enum MinecraftItemTypes {
     Brush = "minecraft:brush",
     /** 气泡珊瑚。 */
     BubbleCoral = "minecraft:bubble_coral",
+    /** 气泡珊瑚块。 */
+    BubbleCoralBlock = "minecraft:bubble_coral_block",
     /** 气泡珊瑚扇。 */
     BubbleCoralFan = "minecraft:bubble_coral_fan",
     /** 铁桶。 */
@@ -421,7 +425,6 @@ export declare enum MinecraftItemTypes {
     CherryWood = "minecraft:cherry_wood",
     /** 箱子。 */
     Chest = "minecraft:chest",
-    /** 运输船。 */
     ChestBoat = "minecraft:chest_boat",
     /** 运输矿车。 */
     ChestMinecart = "minecraft:chest_minecart",
@@ -528,9 +531,7 @@ export declare enum MinecraftItemTypes {
     /** 铜活板门。 */
     CopperTrapdoor = "minecraft:copper_trapdoor",
     Coral = "minecraft:coral",
-    /** 珊瑚块。 */
     CoralBlock = "minecraft:coral_block",
-    /** 珊瑚扇。 */
     CoralFan = "minecraft:coral_fan",
     CoralFanDead = "minecraft:coral_fan_dead",
     /** 矢车菊。 */
@@ -659,22 +660,32 @@ export declare enum MinecraftItemTypes {
     DaylightDetector = "minecraft:daylight_detector",
     /** 失活的脑纹珊瑚。 */
     DeadBrainCoral = "minecraft:dead_brain_coral",
+    /** 失活的脑纹珊瑚块。 */
+    DeadBrainCoralBlock = "minecraft:dead_brain_coral_block",
     /** 失活的脑纹珊瑚扇。 */
     DeadBrainCoralFan = "minecraft:dead_brain_coral_fan",
     /** 失活的气泡珊瑚。 */
     DeadBubbleCoral = "minecraft:dead_bubble_coral",
+    /** 失活的气泡珊瑚块。 */
+    DeadBubbleCoralBlock = "minecraft:dead_bubble_coral_block",
     /** 失活的气泡珊瑚扇。 */
     DeadBubbleCoralFan = "minecraft:dead_bubble_coral_fan",
     /** 失活的火珊瑚。 */
     DeadFireCoral = "minecraft:dead_fire_coral",
+    /** 失活的火珊瑚块。 */
+    DeadFireCoralBlock = "minecraft:dead_fire_coral_block",
     /** 失活的火珊瑚扇。 */
     DeadFireCoralFan = "minecraft:dead_fire_coral_fan",
     /** 失活的鹿角珊瑚。 */
     DeadHornCoral = "minecraft:dead_horn_coral",
+    /** 失活的鹿角珊瑚块。 */
+    DeadHornCoralBlock = "minecraft:dead_horn_coral_block",
     /** 失活的鹿角珊瑚扇。 */
     DeadHornCoralFan = "minecraft:dead_horn_coral_fan",
     /** 失活的管珊瑚。 */
     DeadTubeCoral = "minecraft:dead_tube_coral",
+    /** 失活的管珊瑚块。 */
+    DeadTubeCoralBlock = "minecraft:dead_tube_coral_block",
     /** 失活的管珊瑚扇。 */
     DeadTubeCoralFan = "minecraft:dead_tube_coral_fan",
     /** 枯萎的灌木。 */
@@ -779,7 +790,6 @@ export declare enum MinecraftItemTypes {
     DrownedSpawnEgg = "minecraft:drowned_spawn_egg",
     /** 沙丘盔甲纹饰锻造模板。 */
     DuneArmorTrimSmithingTemplate = "minecraft:dune_armor_trim_smithing_template",
-    /** 染料。 */
     Dye = "minecraft:dye",
     /** 回响碎片。 */
     EchoShard = "minecraft:echo_shard",
@@ -872,6 +882,8 @@ export declare enum MinecraftItemTypes {
     FireCharge = "minecraft:fire_charge",
     /** 火珊瑚。 */
     FireCoral = "minecraft:fire_coral",
+    /** 火珊瑚块。 */
+    FireCoralBlock = "minecraft:fire_coral_block",
     /** 火珊瑚扇。 */
     FireCoralFan = "minecraft:fire_coral_fan",
     /** 烟花火箭。 */
@@ -1078,6 +1090,8 @@ export declare enum MinecraftItemTypes {
     HopperMinecart = "minecraft:hopper_minecart",
     /** 鹿角珊瑚。 */
     HornCoral = "minecraft:horn_coral",
+    /** 鹿角珊瑚块。 */
+    HornCoralBlock = "minecraft:horn_coral_block",
     /** 鹿角珊瑚扇。 */
     HornCoralFan = "minecraft:horn_coral_fan",
     /** 马刷怪蛋。 */
@@ -1872,7 +1886,6 @@ export declare enum MinecraftItemTypes {
     Sandstone = "minecraft:sandstone",
     /** 砂岩楼梯。 */
     SandstoneStairs = "minecraft:sandstone_stairs",
-    /** 树苗。 */
     Sapling = "minecraft:sapling",
     /** 脚手架。 */
     Scaffolding = "minecraft:scaffolding",
@@ -1983,7 +1996,6 @@ export declare enum MinecraftItemTypes {
     SoulSoil = "minecraft:soul_soil",
     /** 灵魂火把。 */
     SoulTorch = "minecraft:soul_torch",
-    /** 刷怪蛋。 */
     SpawnEgg = "minecraft:spawn_egg",
     /** 蜘蛛眼。 */
     SpiderEye = "minecraft:spider_eye",
@@ -2142,7 +2154,6 @@ export declare enum MinecraftItemTypes {
     TadpoleBucket = "minecraft:tadpole_bucket",
     /** 蝌蚪刷怪蛋。 */
     TadpoleSpawnEgg = "minecraft:tadpole_spawn_egg",
-    /** 蕨/草。 */
     Tallgrass = "minecraft:tallgrass",
     /** 标靶。 */
     Target = "minecraft:target",
@@ -2184,6 +2195,8 @@ export declare enum MinecraftItemTypes {
     TropicalFishSpawnEgg = "minecraft:tropical_fish_spawn_egg",
     /** 管珊瑚。 */
     TubeCoral = "minecraft:tube_coral",
+    /** 管珊瑚块。 */
+    TubeCoralBlock = "minecraft:tube_coral_block",
     /** 管珊瑚扇。 */
     TubeCoralFan = "minecraft:tube_coral_fan",
     /** 凝灰岩。 */
@@ -2432,7 +2445,6 @@ export declare enum MinecraftItemTypes {
     WoodenSlab = "minecraft:wooden_slab",
     /** 木剑。 */
     WoodenSword = "minecraft:wooden_sword",
-    /** 羊毛。 */
     Wool = "minecraft:wool",
     /** 书与笔。 */
     WritableBook = "minecraft:writable_book",

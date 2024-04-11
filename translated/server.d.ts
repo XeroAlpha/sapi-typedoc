@@ -4086,6 +4086,8 @@ export class CompoundBlockVolume {
      *
      */
     readonly capacity: number;
+    readonly items: CompoundBlockVolumeItem[];
+    readonly itemsAbsolute: CompoundBlockVolumeItem[];
     /**
      * @remarks
      * Return the number of volumes (positive and negative) in the
@@ -9947,6 +9949,28 @@ export class ItemComponentUseEvent {
 
 /**
  * @beta
+ * Contains information regarding the use of an item on a block
+ * via a component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemComponentUseOnEvent extends ItemUseOnEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that used the item on the block.
+     *
+     */
+    readonly source: Entity;
+    /**
+     * @remarks
+     * The block permutation that the item was used on.
+     *
+     */
+    readonly usedOnBlockPermutation: BlockPermutation;
+}
+
+/**
+ * @beta
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
  * 注意，若使用后不会进入冷却，原版物品会获取到没有实际作用的该组件。
  * 
@@ -11317,6 +11341,40 @@ export class ItemUseOnBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding the use of an item on a
+ * block.
+ */
+export class ItemUseOnEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block impacted by this event.
+     *
+     */
+    readonly block: Block;
+    /**
+     * @remarks
+     * The face of the block that the item was used on.
+     *
+     */
+    readonly blockFace: Direction;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block that the item was used on.
+     *
+     */
+    readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The item stack used on the block.
+     *
+     */
+    readonly itemStack: ItemStack;
+}
+
+/**
  * Contains information related to changes to a lever
  * activating or deactivating.
  * @example leverActionEvent.ts
@@ -12043,7 +12101,6 @@ export class PlayerBreakBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
 }
@@ -12101,7 +12158,6 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
 }
@@ -12720,7 +12776,6 @@ export class PlayerPlaceBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
 }
@@ -12792,7 +12847,6 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
 }
@@ -16922,6 +16976,7 @@ export interface ItemCustomComponent {
      *
      */
     onUse?: (arg: ItemComponentUseEvent) => void;
+    onUseOn?: (arg: ItemComponentUseOnEvent) => void;
 }
 
 /**

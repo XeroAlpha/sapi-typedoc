@@ -218,6 +218,7 @@ export { ItemComponentHitEntityEvent } from './classes/ItemComponentHitEntityEve
 export { ItemComponentMineBlockEvent } from './classes/ItemComponentMineBlockEvent';
 export { ItemComponentRegistry } from './classes/ItemComponentRegistry';
 export { ItemComponentUseEvent } from './classes/ItemComponentUseEvent';
+export { ItemComponentUseOnEvent } from './classes/ItemComponentUseOnEvent';
 export { ItemCooldownComponent } from './classes/ItemCooldownComponent';
 export { ItemDurabilityComponent } from './classes/ItemDurabilityComponent';
 export { ItemEnchantableComponent } from './classes/ItemEnchantableComponent';
@@ -243,6 +244,7 @@ export { ItemUseOnAfterEvent } from './classes/ItemUseOnAfterEvent';
 export { ItemUseOnAfterEventSignal } from './classes/ItemUseOnAfterEventSignal';
 export { ItemUseOnBeforeEvent } from './classes/ItemUseOnBeforeEvent';
 export { ItemUseOnBeforeEventSignal } from './classes/ItemUseOnBeforeEventSignal';
+export { ItemUseOnEvent } from './classes/ItemUseOnEvent';
 export { LeverActionAfterEvent } from './classes/LeverActionAfterEvent';
 export { LeverActionAfterEventSignal } from './classes/LeverActionAfterEventSignal';
 export { ListBlockVolume } from './classes/ListBlockVolume';

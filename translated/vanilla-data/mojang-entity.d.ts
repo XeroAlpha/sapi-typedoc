@@ -124,6 +124,8 @@ export declare enum MinecraftEntityTypes {
     Npc = "npc",
     /** 豹猫。 */
     Ocelot = "ocelot",
+    /** 不祥之物生成器（不可召唤）。 */
+    OminousItemSpawner = "ominous_item_spawner",
     /** 熊猫。 */
     Panda = "panda",
     /** 鹦鹉。 */
