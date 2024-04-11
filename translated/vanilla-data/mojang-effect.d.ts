@@ -24,6 +24,7 @@ export declare enum MinecraftEffectTypes {
     NightVision = "night_vision",
     Oozing = "oozing",
     Poison = "poison",
+    RaidOmen = "raid_omen",
     Regeneration = "regeneration",
     Resistance = "resistance",
     Saturation = "saturation",

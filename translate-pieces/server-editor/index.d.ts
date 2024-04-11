@@ -48,7 +48,6 @@ export { UnregisterInputBindingCallback } from './types/UnregisterInputBindingCa
 export { BedrockEventSubscriptionCache } from './classes/BedrockEventSubscriptionCache';
 export { BlockPalette } from './classes/BlockPalette';
 export { BlockPaletteManager } from './classes/BlockPaletteManager';
-export { BrushShape } from './classes/BrushShape';
 export { BrushShapeManager } from './classes/BrushShapeManager';
 export { ClipboardItem } from './classes/ClipboardItem';
 export { ClipboardManager } from './classes/ClipboardManager';
@@ -85,6 +84,7 @@ export { Widget } from './classes/Widget';
 export { WidgetGroup } from './classes/WidgetGroup';
 export { WidgetManager } from './classes/WidgetManager';
 export { WidgetStateChangeEventData } from './classes/WidgetStateChangeEventData';
+export { BrushShape } from './interfaces/BrushShape';
 export { ClipboardWriteOptions } from './interfaces/ClipboardWriteOptions';
 export { CursorProperties } from './interfaces/CursorProperties';
 export { CustomWidgetCreateOptions } from './interfaces/CustomWidgetCreateOptions';

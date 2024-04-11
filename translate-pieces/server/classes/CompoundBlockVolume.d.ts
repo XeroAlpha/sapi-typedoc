@@ -33,6 +33,8 @@ export class CompoundBlockVolume {
      *
      */
     readonly capacity: number;
+    readonly items: CompoundBlockVolumeItem[];
+    readonly itemsAbsolute: CompoundBlockVolumeItem[];
     /**
      * @remarks
      * Return the number of volumes (positive and negative) in the

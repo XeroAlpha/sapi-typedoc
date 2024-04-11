@@ -6,7 +6,9 @@ export declare enum MinecraftEnchantmentTypes {
     BaneOfArthropods = "bane_of_arthropods",
     Binding = "binding",
     BlastProtection = "blast_protection",
+    Breach = "breach",
     Channeling = "channeling",
+    Density = "density",
     DepthStrider = "depth_strider",
     Efficiency = "efficiency",
     FeatherFalling = "feather_falling",
@@ -39,7 +41,8 @@ export declare enum MinecraftEnchantmentTypes {
     SwiftSneak = "swift_sneak",
     Thorns = "thorns",
     Unbreaking = "unbreaking",
-    Vanishing = "vanishing"
+    Vanishing = "vanishing",
+    WindBurst = "wind_burst"
 }
 /**
  * Union type equivalent of the MinecraftEnchantmentTypes enum.

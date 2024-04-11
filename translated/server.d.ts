@@ -3918,6 +3918,8 @@ export class CompoundBlockVolume {
      *
      */
     readonly capacity: number;
+    readonly items: CompoundBlockVolumeItem[];
+    readonly itemsAbsolute: CompoundBlockVolumeItem[];
     /**
      * @remarks
      * Return the number of volumes (positive and negative) in the
@@ -9763,6 +9765,28 @@ export class ItemComponentUseEvent {
 
 /**
  * @beta
+ * Contains information regarding the use of an item on a block
+ * via a component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemComponentUseOnEvent extends ItemUseOnEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that used the item on the block.
+     *
+     */
+    readonly source: Entity;
+    /**
+     * @remarks
+     * The block permutation that the item was used on.
+     *
+     */
+    readonly usedOnBlockPermutation: BlockPermutation;
+}
+
+/**
+ * @beta
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */
@@ -11055,6 +11079,40 @@ export class ItemUseOnBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding the use of an item on a
+ * block.
+ */
+export class ItemUseOnEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block impacted by this event.
+     *
+     */
+    readonly block: Block;
+    /**
+     * @remarks
+     * The face of the block that the item was used on.
+     *
+     */
+    readonly blockFace: Direction;
+    /**
+     * @remarks
+     * Location relative to the bottom north-west corner of the
+     * block that the item was used on.
+     *
+     */
+    readonly faceLocation: Vector3;
+    /**
+     * @remarks
+     * The item stack used on the block.
+     *
+     */
+    readonly itemStack: ItemStack;
+}
+
+/**
  * Contains information related to changes to a lever
  * activating or deactivating.
  * @example leverActionEvent.ts
@@ -11781,7 +11839,6 @@ export class PlayerBreakBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
 }
@@ -11839,7 +11896,6 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
 }
@@ -12458,7 +12514,6 @@ export class PlayerPlaceBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
 }
@@ -12530,7 +12585,6 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
 }
@@ -16507,6 +16561,7 @@ export interface ItemCustomComponent {
      *
      */
     onUse?: (arg: ItemComponentUseEvent) => void;
+    onUseOn?: (arg: ItemComponentUseOnEvent) => void;
 }
 
 /**

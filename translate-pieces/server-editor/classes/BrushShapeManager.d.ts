@@ -25,12 +25,17 @@ export class BrushShapeManager {
      *
      * @throws This function can throw errors.
      */
-    registerBrushShape(brushShape: BrushShape): void;
+    registerBrushShape(
+        name: string,
+        icon: string,
+        rebuild: () => minecraftserver.CompoundBlockVolume,
+        getSettingsUIElements: () => SettingsUIElement[],
+    ): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    uiSettingValueChanged(elementName: string, newValue: boolean | number): void;
+    uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }

@@ -63,6 +63,7 @@ export declare enum MinecraftEntityTypes {
     Mule = "mule",
     Npc = "npc",
     Ocelot = "ocelot",
+    OminousItemSpawner = "ominous_item_spawner",
     Panda = "panda",
     Parrot = "parrot",
     Phantom = "phantom",
