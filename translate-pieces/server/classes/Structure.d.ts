@@ -125,9 +125,6 @@ export class Structure {
      * The block location relative to the Structure's origin.
      * @param blockPermutation
      * The BlockPermutation to set.
-     * @param waterlogged
-     * Specifies whether the block should be waterlogged. Air and
-     * undefined blocks cannot be waterlogged.
      * @throws
      * Throws if the type of block is StructureVoid.
      * Throws if the block is undefined and waterlogged is set to
@@ -140,5 +137,5 @@ export class Structure {
      *
      * {@link InvalidStructureError}
      */
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
 }

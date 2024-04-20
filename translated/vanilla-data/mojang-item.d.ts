@@ -772,7 +772,6 @@ export declare enum MinecraftItemTypes {
     DolphinSpawnEgg = "minecraft:dolphin_spawn_egg",
     /** 驴刷怪蛋。 */
     DonkeySpawnEgg = "minecraft:donkey_spawn_egg",
-    /** 向日葵/丁香/高草丛/大型蕨/玫瑰丛/牡丹。 */
     DoublePlant = "minecraft:double_plant",
     /** 龙息。 */
     DragonBreath = "minecraft:dragon_breath",
@@ -1196,6 +1195,8 @@ export declare enum MinecraftItemTypes {
     LapisOre = "minecraft:lapis_ore",
     /** 大型紫晶芽。 */
     LargeAmethystBud = "minecraft:large_amethyst_bud",
+    /** 大型蕨。 */
+    LargeFern = "minecraft:large_fern",
     /** 熔岩桶。 */
     LavaBucket = "minecraft:lava_bucket",
     /** 拴绳。 */
@@ -1266,6 +1267,8 @@ export declare enum MinecraftItemTypes {
     LightWeightedPressurePlate = "minecraft:light_weighted_pressure_plate",
     /** 避雷针。 */
     LightningRod = "minecraft:lightning_rod",
+    /** 丁香。 */
+    Lilac = "minecraft:lilac",
     /** 铃兰。 */
     LilyOfTheValley = "minecraft:lily_of_the_valley",
     /** 黄绿色蜡烛。 */
@@ -1604,6 +1607,8 @@ export declare enum MinecraftItemTypes {
     ParrotSpawnEgg = "minecraft:parrot_spawn_egg",
     /** 珠光蛙明灯。 */
     PearlescentFroglight = "minecraft:pearlescent_froglight",
+    /** 牡丹。 */
+    Peony = "minecraft:peony",
     /** 幻翼膜。 */
     PhantomMembrane = "minecraft:phantom_membrane",
     /** 幻翼刷怪蛋。 */
@@ -1870,6 +1875,8 @@ export declare enum MinecraftItemTypes {
     RespawnAnchor = "minecraft:respawn_anchor",
     /** 肋骨盔甲纹饰锻造模板。 */
     RibArmorTrimSmithingTemplate = "minecraft:rib_armor_trim_smithing_template",
+    /** 玫瑰丛。 */
+    RoseBush = "minecraft:rose_bush",
     /** 腐肉。 */
     RottenFlesh = "minecraft:rotten_flesh",
     /** 鞍。 */
@@ -2142,6 +2149,8 @@ export declare enum MinecraftItemTypes {
     Sugar = "minecraft:sugar",
     /** 甘蔗。 */
     SugarCane = "minecraft:sugar_cane",
+    /** 向日葵。 */
+    Sunflower = "minecraft:sunflower",
     /** 可疑的沙砾。 */
     SuspiciousGravel = "minecraft:suspicious_gravel",
     /** 可疑的沙子。 */
@@ -2154,6 +2163,8 @@ export declare enum MinecraftItemTypes {
     TadpoleBucket = "minecraft:tadpole_bucket",
     /** 蝌蚪刷怪蛋。 */
     TadpoleSpawnEgg = "minecraft:tadpole_spawn_egg",
+    /** 高草丛。 */
+    TallGrass = "minecraft:tall_grass",
     Tallgrass = "minecraft:tallgrass",
     /** 标靶。 */
     Target = "minecraft:target",

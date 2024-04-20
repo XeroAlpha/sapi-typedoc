@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponentBeforeDurabilityDamageEvent, ItemComponentHitEntityEvent, ItemComponentMineBlockEvent, ItemComponentUseEvent, ItemComponentUseOnEvent } from '../index';
+/* IMPORT */ import { ItemComponentBeforeDurabilityDamageEvent, ItemComponentCompleteUseEvent, ItemComponentHitEntityEvent, ItemComponentMineBlockEvent, ItemComponentUseEvent, ItemComponentUseOnEvent } from '../index';
 
 /**
  * @beta
@@ -7,6 +7,7 @@
  */
 export interface ItemCustomComponent {
     onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
+    onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
     onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
     /**
      * @remarks

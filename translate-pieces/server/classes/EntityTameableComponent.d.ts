@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent, ItemStack, Player } from '../index';
 
 /**
  * @beta
@@ -22,7 +22,11 @@ export class EntityTameableComponent extends EntityComponent {
      *
      * @throws This function can throw errors.
      */
-    getTameItems(): string[];
+    getTameItems(): ItemStack[];
+    /**
+     * @throws This function can throw errors.
+     */
+    isTamed(): boolean;
     /**
      * @remarks
      * Tames this entity.
@@ -33,5 +37,13 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns true if the entity was tamed.
      * @throws This function can throw errors.
      */
-    tame(): boolean;
+    tame(player: Player): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    tamedToPlayer(): Player | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    tamedToPlayerId(): string;
 }

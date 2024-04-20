@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolume, Dimension, InvalidStructureError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { Dimension, InvalidStructureError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -49,8 +49,6 @@ export class StructureManager {
      * namespace and must be unique.
      * @param dimension
      * The dimension where the blocks should be read from.
-     * @param blockVolume
-     * The location and bounds of the blocks that should be read.
      * @param options
      * Additional options for creating a structure from the world.
      * @returns
@@ -68,7 +66,8 @@ export class StructureManager {
     createFromWorld(
         identifier: string,
         dimension: Dimension,
-        blockVolume: BlockVolume,
+        from: Vector3,
+        to: Vector3,
         options?: StructureCreateOptions,
     ): Structure;
     /**
@@ -109,7 +108,7 @@ export class StructureManager {
      * This function can't be called in read-only mode.
      *
      */
-    getIds(): string[];
+    getWorldStructureIds(): string[];
     /**
      * @remarks
      * Places a structure in the world. Structures placed in

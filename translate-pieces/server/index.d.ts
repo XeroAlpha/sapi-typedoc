@@ -212,8 +212,10 @@ export { IPlayerLeaveAfterEventSignal } from './classes/IPlayerLeaveAfterEventSi
 export { IPlayerSpawnAfterEventSignal } from './classes/IPlayerSpawnAfterEventSignal';
 export { ItemCompleteUseAfterEvent } from './classes/ItemCompleteUseAfterEvent';
 export { ItemCompleteUseAfterEventSignal } from './classes/ItemCompleteUseAfterEventSignal';
+export { ItemCompleteUseEvent } from './classes/ItemCompleteUseEvent';
 export { ItemComponent } from './classes/ItemComponent';
 export { ItemComponentBeforeDurabilityDamageEvent } from './classes/ItemComponentBeforeDurabilityDamageEvent';
+export { ItemComponentCompleteUseEvent } from './classes/ItemComponentCompleteUseEvent';
 export { ItemComponentHitEntityEvent } from './classes/ItemComponentHitEntityEvent';
 export { ItemComponentMineBlockEvent } from './classes/ItemComponentMineBlockEvent';
 export { ItemComponentRegistry } from './classes/ItemComponentRegistry';
