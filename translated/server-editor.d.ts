@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.0-preview.21"
+ *   "version": "0.1.0-beta.1.21.0-preview.22"
  * }
  * ```
  *
@@ -163,6 +163,17 @@ export enum EditorMode {
 export declare enum EditorStatusBarAlignment {
     Right = 0,
     Left = 1,
+}
+
+export enum ExportResult {
+    ValidWorldExport = 0,
+    LevelFetchFailed = 1,
+    FileArchiverFetchFailed = 2,
+    ProjectConverterFetchFailed = 3,
+    PlayerNotFound = 4,
+    WorldExportFailed = 5,
+    WorldExportBusy = 6,
+    EditorSystemFailure = 7,
 }
 
 /**
@@ -375,6 +386,22 @@ export enum PlaytestSessionResult {
     PlayerNotFound = 9,
     ResponseTimeout = 10,
     UnspecifiedError = 11,
+}
+
+export enum ProjectExportType {
+    PlayableWorld = 0,
+    ProjectBackup = 1,
+    WorldTemplate = 2,
+}
+
+/**
+ * Define the visibility of the status bar item If the tool
+ * does not have an `ISimpleToolPropertyPane` component, then
+ * this option is ignored
+ */
+export declare enum SimpleToolStatusBarVisibility {
+    AlwaysVisible = 0,
+    VisibleWhenActive = 1,
 }
 
 export enum WidgetGroupSelectionMode {
@@ -1060,6 +1087,24 @@ export class CustomWidgetMoveEventData {
     readonly widget: CustomWidget;
 }
 
+export class ExportManager {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    beginExportProject(options: ProjectExportOptions): Promise<ExportResult>;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    canExportProject(): boolean;
+}
+
 /**
  * Editor Extensions are the basis for all player specific,
  * editor specific functionality within the game.  Almost all
@@ -1145,6 +1190,7 @@ export class ExtensionContext {
      *
      */
     readonly cursor: Cursor;
+    readonly exportManager: ExportManager;
     /**
      * @remarks
      * Contains information about the registered extension
@@ -1759,6 +1805,19 @@ export class SimpleBlockPaletteItem extends IBlockPaletteItem {
 }
 
 /**
+ * A simple class wrapper to inherit in your tool which
+ * contains the initialization and storage of the simple tool
+ * component utility. See one of the `Simple` samples to see
+ * how to use this class and the wrapper framework
+ */
+export declare class SimpleToolWrapper implements IDisposable {
+    get session(): IPlayerUISession;
+    get simpleTool(): ISimpleTool;
+    setupSimpleTool(session: IPlayerUISession, options: ISimpleToolOptions): void;
+    teardown(): void;
+}
+
+/**
  * Responsible for querying and modifying various properties of
  * the simulation.
  */
@@ -2366,12 +2425,23 @@ export interface LogProperties {
 export interface PlaytestGameOptions {
     alwaysDay?: boolean;
     difficulty?: minecraftserver.Difficulty;
+    dimensionId?: string;
     disableWeather?: boolean;
     gameMode?: minecraftserver.GameMode;
     showCoordinates?: boolean;
     spawnPosition?: minecraftserver.Vector3;
     timeOfDay?: number;
     weather?: number;
+}
+
+export interface ProjectExportOptions {
+    alwaysDay?: boolean;
+    difficulty?: minecraftserver.Difficulty;
+    disableWeather?: boolean;
+    exportName?: string;
+    exportType: ProjectExportType;
+    gameMode?: minecraftserver.GameMode;
+    initialTimOfDay?: number;
 }
 
 export interface WidgetCreateOptions {
@@ -2963,6 +3033,12 @@ export interface IPropertyPane {
     titleStringId: string;
     /**
      * @remarks
+     * Check visibility of the pane
+     *
+     */
+    visible: boolean;
+    /**
+     * @remarks
      * Width of the panel in rem.
      *
      */
@@ -3177,6 +3253,211 @@ export interface IRegisterExtensionOptionalParameters {
      *
      */
     toolGroupId?: string;
+}
+
+/**
+ * The simple tool wrapper will create, bind and manage the
+ * lifecycle of all the desired components. The wrapper is
+ * designed to obfuscate and simplify the process of creating a
+ * simple editor tool so that a creator can get on with the job
+ * of just creating the tool functionality without getting
+ * mired in the irrelevant details of component lifecycle and
+ * visibility management. The wrapper will also attempt to
+ * codify particular implementation patterns and requirements
+ * that are common to all editor tools, and enforce them in a
+ * consistent way. It should also go some way to insulating the
+ * creator from underlying system and implementation changes as
+ * the editor evolves.
+ */
+export interface ISimpleTool {
+    get menu(): IMenu | undefined;
+    get name(): string;
+    get pane(): ISimpleToolPaneComponent;
+    get session(): IPlayerUISession;
+    get statusBar(): ISimpleToolStatusBarComponent;
+    get toolRail(): ISimpleToolRailComponent;
+    /**
+     * @remarks
+     */
+    findPane(idString: string): ISimpleToolPaneComponent | undefined;
+    /**
+     * @remarks
+     */
+    hidePane(idString?: string): void;
+    /**
+     * @remarks
+     */
+    logDebug(message: string): void;
+    /**
+     * @remarks
+     */
+    logError(message: string): void;
+    /**
+     * @remarks
+     */
+    logInfo(message: string): void;
+    /**
+     * @remarks
+     */
+    logWarn(message: string): void;
+    /**
+     * @remarks
+     */
+    showPane(idString?: string): void;
+    /**
+     * @remarks
+     */
+    showPaneExclusively(idString: string): void;
+    /**
+     * @remarks
+     */
+    teardown(): void;
+}
+
+/**
+ * Define a (key & modifier) pair for the simple tool
+ * activation key binding
+ */
+export interface ISimpleToolKeyPair {
+    button: KeyboardKey;
+    buttonModifier: InputModifier;
+}
+
+/**
+ * A set of options which define the basic properties of a
+ * simple tool, and the optional components that are desired.
+ */
+export interface ISimpleToolOptions {
+    activationKeyBinding?: ISimpleToolKeyPair;
+    name: string;
+    onFinalize?: (tool: ISimpleTool) => void;
+    onTeardown?: (tool: ISimpleTool) => void;
+    propertyPaneOptions?: ISimpleToolPaneOptions;
+    statusBarOptions?: ISimpleToolStatusBarOptions;
+    toolRailOptions?: ISimpleToolRailOptions;
+}
+
+/**
+ * The Simple Tool pane component represents the main window
+ * (or sub-window) for an editor tool. The pane components are
+ * stored as a hierarchy (see the `ISimpleToolPaneOptions`
+ * interface for more details) and are the main containers for
+ * all of the UI controls used by the editor tool. Panes are
+ * optional (a tool doesn't necessarily need to have a pane),
+ * but if a pane is present, then it is one of two type - Modal
+ * Pane (appears on the left side of the display; visibility is
+ * tied to the `ISimpleToolRail` component) (Note that there
+ * can be only one modal pane visible at a time) - Global Pane
+ * (appears on the right side of the display; visibility is up
+ * to the creator/user)
+ */
+export interface ISimpleToolPaneComponent {
+    get childPaneList(): string[];
+    get id(): string;
+    get isVisible(): boolean;
+    get pane(): IPropertyPane;
+    get session(): IPlayerUISession;
+    get simpleTool(): ISimpleTool;
+    /**
+     * @remarks
+     */
+    findPane(idString: string): ISimpleToolPaneComponent | undefined;
+    /**
+     * @remarks
+     */
+    hidePane(): void;
+    /**
+     * @remarks
+     */
+    reconstructPane(): void;
+    /**
+     * @remarks
+     */
+    showPane(): void;
+}
+
+/**
+ * A set of options which define the basic properties of a
+ * window pane (or sub-pane) for a simple tool. This pane can
+ * be a top level pane, or a child pane of the top level pane,
+ * and is the content container for all of the UI controls used
+ * by the editor tool. Each pane is uniquely identified by the
+ * `id` property, and has a number of optional function
+ * closures which are called at various points in the pane's
+ * lifecycle. Note that instead of having a single `onFinalize`
+ * function, panes implement a pair of `onBeginFinalize` and
+ * `onEndFinalize` functions. This is to allow for the pane to
+ * be partially constructed BEFORE any child panes are
+ * constructed. Once all child panes have been fully finalized,
+ * then the `onEndFinalize` function is called to allow the
+ * pane to finalize itself.
+ */
+export interface ISimpleToolPaneOptions {
+    childPaneInitiallyVisible?: string;
+    childPanes?: ISimpleToolPaneOptions[];
+    childPanesMutuallyExclusive?: boolean;
+    id: string;
+    onBeginFinalize?: (pane: ISimpleToolPaneComponent) => void;
+    onEndFinalize?: (pane: ISimpleToolPaneComponent) => void;
+    onHide?: (pane: ISimpleToolPaneComponent) => void;
+    onShow?: (pane: ISimpleToolPaneComponent) => void;
+    onTeardown?: (pane: ISimpleToolPaneComponent) => void;
+    titleAltText: string;
+    titleStringId?: string;
+}
+
+export interface ISimpleToolRailComponent {
+    get session(): IPlayerUISession;
+    get simpleTool(): ISimpleTool;
+    get toolRail(): IModalTool;
+}
+
+/**
+ * The tool rail component allows the tool to register an icon
+ * and button (and dynamic tooltip) in the tool rail on the
+ * left side of the display. Adding a tool rail component to a
+ * tool will cause the tool to be considered a `modal tool`,
+ * and only one single modal tool can be active at any one
+ * time. Modal tools are generally tools which take focus and
+ * control of the cursor (e.g. selection, clipboards, entity
+ * selection, etc) Global tools (tools which do not have a tool
+ * rail) are generally things like property pages, settings,
+ * etc - things that do not require an active cursor or
+ * gameplay interaction
+ */
+export interface ISimpleToolRailOptions {
+    displayAltText: string;
+    displayStringId?: string;
+    icon: string;
+    onActivate?: (component: ISimpleToolRailComponent) => void;
+    onDeactivate?: (component: ISimpleToolRailComponent) => void;
+    onFinalize?: (component: ISimpleToolRailComponent) => void;
+    onTeardown?: (component: ISimpleToolRailComponent) => void;
+    tooltipAltText: string;
+    tooltipStringId?: string;
+}
+
+export interface ISimpleToolStatusBarComponent {
+    get session(): IPlayerUISession;
+    get simpleTool(): ISimpleTool;
+    get statusBarItem(): IStatusBarItem;
+    hide(): void;
+    show(): void;
+}
+
+/**
+ * A set of options which define the basic properties of a
+ * status bar item for a simple tool.
+ */
+export interface ISimpleToolStatusBarOptions {
+    alignment: EditorStatusBarAlignment;
+    displayAltText: string;
+    onFinalize?: (statusBar: ISimpleToolStatusBarComponent) => void;
+    onHide?: (statusBar: ISimpleToolStatusBarComponent) => void;
+    onShow?: (statusBar: ISimpleToolStatusBarComponent) => void;
+    onTeardown?: (statusBar: ISimpleToolStatusBarComponent) => void;
+    size: number;
+    visibility?: SimpleToolStatusBarVisibility;
 }
 
 export interface IStatusBarItem {

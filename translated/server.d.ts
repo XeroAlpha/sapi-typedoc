@@ -4880,10 +4880,6 @@ export class Dimension {
      *
      * This function can't be called in read-only mode.
      *
-     * @param begin
-     * The lower northwest starting corner of the area.
-     * @param end
-     * The upper southeast ending corner of the area.
      * @param block
      * Type of block to fill the volume with.
      * @param options
@@ -4892,13 +4888,18 @@ export class Dimension {
      * @returns
      *  Returns number of blocks placed.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
      */
     fillBlocks(
-        begin: Vector3,
-        end: Vector3,
+        volume: BlockVolumeBase | CompoundBlockVolume,
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
-    ): number;
+    ): ListBlockVolume;
     /**
      * @beta
      * @remarks
@@ -8805,7 +8806,11 @@ export class EntityTameableComponent extends EntityComponent {
      *
      * @throws This function can throw errors.
      */
-    getTameItems(): string[];
+    getTameItems(): ItemStack[];
+    /**
+     * @throws This function can throw errors.
+     */
+    isTamed(): boolean;
     /**
      * @remarks
      * Tames this entity.
@@ -8816,7 +8821,15 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns true if the entity was tamed.
      * @throws This function can throw errors.
      */
-    tame(): boolean;
+    tame(player: Player): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    tamedToPlayer(): Player | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    tamedToPlayerId(): string;
 }
 
 /**
@@ -9601,6 +9614,15 @@ export class ItemCompleteUseAfterEventSignal {
 }
 
 /**
+ * @beta
+ */
+export class ItemCompleteUseEvent {
+    private constructor();
+    readonly itemStack: ItemStack;
+    readonly source: Player;
+}
+
+/**
  * Base class for item components.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9640,6 +9662,14 @@ export class ItemComponentBeforeDurabilityDamageEvent {
      *
      */
     itemStack?: ItemStack;
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemComponentCompleteUseEvent extends ItemCompleteUseEvent {
+    private constructor();
 }
 
 /**
@@ -13557,9 +13587,6 @@ export class Structure {
      * The block location relative to the Structure's origin.
      * @param blockPermutation
      * The BlockPermutation to set.
-     * @param waterlogged
-     * Specifies whether the block should be waterlogged. Air and
-     * undefined blocks cannot be waterlogged.
      * @throws
      * Throws if the type of block is StructureVoid.
      * Throws if the block is undefined and waterlogged is set to
@@ -13572,7 +13599,7 @@ export class Structure {
      *
      * {@link InvalidStructureError}
      */
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
 }
 
 /**
@@ -13624,8 +13651,6 @@ export class StructureManager {
      * namespace and must be unique.
      * @param dimension
      * The dimension where the blocks should be read from.
-     * @param blockVolume
-     * The location and bounds of the blocks that should be read.
      * @param options
      * Additional options for creating a structure from the world.
      * @returns
@@ -13643,7 +13668,8 @@ export class StructureManager {
     createFromWorld(
         identifier: string,
         dimension: Dimension,
-        blockVolume: BlockVolume,
+        from: Vector3,
+        to: Vector3,
         options?: StructureCreateOptions,
     ): Structure;
     /**
@@ -13684,7 +13710,7 @@ export class StructureManager {
      * This function can't be called in read-only mode.
      *
      */
-    getIds(): string[];
+    getWorldStructureIds(): string[];
     /**
      * @remarks
      * Places a structure in the world. Structures placed in
@@ -13879,6 +13905,13 @@ export class System {
      * to stop the run of this function on an interval.
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    waitTick(ticks?: number): Promise<void>;
 }
 
 /**
@@ -15397,13 +15430,8 @@ export interface BlockEventOptions {
  * Contains additional options for a block fill operation.
  */
 export interface BlockFillOptions {
-    /**
-     * @remarks
-     * When specified, the fill operation will only apply to blocks
-     * that match this description.
-     *
-     */
-    matchingBlock?: BlockPermutation;
+    blockFilter?: BlockFilter;
+    ignoreChunkBoundErrors?: boolean;
 }
 
 export interface BlockFilter {
@@ -16546,6 +16574,7 @@ export interface GreaterThanOrEqualsComparison {
  */
 export interface ItemCustomComponent {
     onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
+    onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
     onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
     /**
      * @remarks

@@ -1,4 +1,4 @@
-/* IMPORT */ import { SystemAfterEvents, SystemBeforeEvents } from '../index';
+/* IMPORT */ import { SystemAfterEvents, SystemBeforeEvents, minecraftcommon } from '../index';
 
 /**
  * A class that provides system-level events and functions.
@@ -158,4 +158,11 @@ export class System {
      * to stop the run of this function on an interval.
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    waitTick(ticks?: number): Promise<void>;
 }

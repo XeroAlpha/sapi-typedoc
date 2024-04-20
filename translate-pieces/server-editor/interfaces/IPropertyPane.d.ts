@@ -44,6 +44,12 @@ export interface IPropertyPane {
     titleStringId: string;
     /**
      * @remarks
+     * Check visibility of the pane
+     *
+     */
+    visible: boolean;
+    /**
+     * @remarks
      * Width of the panel in rem.
      *
      */

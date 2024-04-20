@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -71,10 +71,6 @@ export class Dimension {
      *
      * This function can't be called in read-only mode.
      *
-     * @param begin
-     * The lower northwest starting corner of the area.
-     * @param end
-     * The upper southeast ending corner of the area.
      * @param block
      * Type of block to fill the volume with.
      * @param options
@@ -83,13 +79,18 @@ export class Dimension {
      * @returns
      *  Returns number of blocks placed.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
      */
     fillBlocks(
-        begin: Vector3,
-        end: Vector3,
+        volume: BlockVolumeBase | CompoundBlockVolume,
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
-    ): number;
+    ): ListBlockVolume;
     /**
      * @beta
      * @remarks
