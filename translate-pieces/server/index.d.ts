@@ -216,6 +216,7 @@ export { ItemCompleteUseEvent } from './classes/ItemCompleteUseEvent';
 export { ItemComponent } from './classes/ItemComponent';
 export { ItemComponentBeforeDurabilityDamageEvent } from './classes/ItemComponentBeforeDurabilityDamageEvent';
 export { ItemComponentCompleteUseEvent } from './classes/ItemComponentCompleteUseEvent';
+export { ItemComponentConsumeEvent } from './classes/ItemComponentConsumeEvent';
 export { ItemComponentHitEntityEvent } from './classes/ItemComponentHitEntityEvent';
 export { ItemComponentMineBlockEvent } from './classes/ItemComponentMineBlockEvent';
 export { ItemComponentRegistry } from './classes/ItemComponentRegistry';

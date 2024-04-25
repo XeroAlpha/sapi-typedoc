@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum EntityComponentTypes {
     AddRider = 'minecraft:addrider',
     Ageable = 'minecraft:ageable',

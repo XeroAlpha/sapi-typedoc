@@ -229,7 +229,6 @@ export class Block {
      */
     getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
     /**
-     * @beta
      * @remarks
      * Creates a prototype item stack based on this block that can
      * be used with Container/ContainerSlot APIs.

@@ -1,7 +1,6 @@
 /* IMPORT */ import { StructureSaveMode } from '../index';
 
 /**
- * @beta
  * Provides additional options for {@link
  * StructureManager.createFromWorld}
  */

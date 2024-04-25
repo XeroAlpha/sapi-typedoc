@@ -1,7 +1,6 @@
 /* IMPORT */ import { Dimension, InvalidStructureError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
- * @beta
  * Manager for Structure related APIs. Includes APIs for
  * creating, getting, placing and deleting Structures.
  */

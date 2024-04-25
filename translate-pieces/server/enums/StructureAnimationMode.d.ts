@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum StructureAnimationMode {
     Blocks = 'Blocks',
     Layers = 'Layers',

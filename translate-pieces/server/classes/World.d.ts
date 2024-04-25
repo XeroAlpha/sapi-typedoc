@@ -37,7 +37,6 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @beta
      * @remarks
      * Returns the manager for {@link Structure} related APIs.
      *

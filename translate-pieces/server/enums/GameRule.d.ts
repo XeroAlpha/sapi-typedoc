@@ -233,6 +233,7 @@ export enum GameRule {
      *
      */
     ShowCoordinates = 'showCoordinates',
+    ShowDaysPlayed = 'showDaysPlayed',
     /**
      * @beta
      * @remarks

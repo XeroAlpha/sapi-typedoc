@@ -1,7 +1,6 @@
 /* IMPORT */ import { StructureAnimationMode, StructureMirrorAxis, StructureRotation } from '../index';
 
 /**
- * @beta
  * Provides additional options for {@link
  * StructureManager.place}
  */

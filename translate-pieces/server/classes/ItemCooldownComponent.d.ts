@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemComponent, Player } from '../index';
 
 /**
- * @beta
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */

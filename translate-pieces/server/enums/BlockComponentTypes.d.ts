@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum BlockComponentTypes {
     Inventory = 'minecraft:inventory',
     LavaContainer = 'minecraft:lavaContainer',

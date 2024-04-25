@@ -51,7 +51,6 @@ export class BlockPermutation {
      */
     getAllStates(): Record<string, boolean | number | string>;
     /**
-     * @beta
      * @remarks
      * Retrieves a prototype item stack based on this block
      * permutation that can be used with item

@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockPermutation, InvalidStructureError, StructureManager, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
- * @beta
  * Represents a loaded structure template (.mcstructure file).
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
