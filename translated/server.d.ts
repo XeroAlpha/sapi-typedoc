@@ -17,15 +17,12 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.9.0"
+ *   "version": "1.10.0"
  * }
  * ```
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-/**
- * @beta
- */
 export enum BlockComponentTypes {
     Inventory = 'minecraft:inventory',
     LavaContainer = 'minecraft:lavaContainer',
@@ -435,9 +432,6 @@ export enum EnchantmentSlot {
     Sword = 'Sword',
 }
 
-/**
- * @beta
- */
 export enum EntityComponentTypes {
     AddRider = 'minecraft:addrider',
     Ageable = 'minecraft:ageable',
@@ -1144,6 +1138,7 @@ export enum GameRule {
      *
      */
     ShowCoordinates = 'showCoordinates',
+    ShowDaysPlayed = 'showDaysPlayed',
     /**
      * @beta
      * @remarks
@@ -1235,34 +1230,29 @@ export enum InputPermissionCategory {
 }
 
 /**
- * @beta
  * The types of item components that are accessible via
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
      * @remarks
      * The minecraft:cooldown component.
      *
      */
     Cooldown = 'minecraft:cooldown',
     /**
-     * @beta
      * @remarks
      * The minecraft:durability component.
      *
      */
     Durability = 'minecraft:durability',
     /**
-     * @beta
      * @remarks
      * The minecraft:enchantable component.
      *
      */
     Enchantable = 'minecraft:enchantable',
     /**
-     * @beta
      * @remarks
      * The minecraft:food component.
      *
@@ -1492,18 +1482,12 @@ export enum SignSide {
     Front = 'Front',
 }
 
-/**
- * @beta
- */
 export enum StructureAnimationMode {
     Blocks = 'Blocks',
     Layers = 'Layers',
     None = 'None',
 }
 
-/**
- * @beta
- */
 export enum StructureMirrorAxis {
     None = 'None',
     X = 'X',
@@ -1511,9 +1495,6 @@ export enum StructureMirrorAxis {
     Z = 'Z',
 }
 
-/**
- * @beta
- */
 export enum StructureRotation {
     None = 'None',
     Rotate180 = 'Rotate180',
@@ -1521,9 +1502,6 @@ export enum StructureRotation {
     Rotate90 = 'Rotate90',
 }
 
-/**
- * @beta
- */
 export enum StructureSaveMode {
     Memory = 'Memory',
     World = 'World',
@@ -2141,7 +2119,6 @@ export class Block {
      */
     getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
     /**
-     * @beta
      * @remarks
      * 创建一个基于该方块的原型物品对象-{@link ItemStack}，可以与 {@link Container}/{@link ContainerSlot} 接口 一起使用。
      *
@@ -2881,7 +2858,6 @@ export class BlockPermutation {
      */
     getAllStates(): Record<string, boolean | number | string>;
     /**
-     * @beta
      * @remarks
      * Retrieves a prototype item stack based on this block
      * permutation that can be used with item
@@ -3550,6 +3526,7 @@ export class BlockVolumeBase {
      */
     getBlockLocationIterator(): BlockLocationIterator;
     /**
+     * @beta
      * @remarks
      * Return a {@link BoundingBox} object which represents the
      * validated min and max coordinates of the volume
@@ -3604,7 +3581,7 @@ export class BlockVolumeBase {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
-    isInside(pos: Vector3): boolean;
+    isInside(location: Vector3): boolean;
     /**
      * @remarks
      * Move a BlockVolume by a specified amount
@@ -8394,7 +8371,6 @@ export class EntityOnFireComponent extends EntityComponent {
 }
 
 /**
- * @beta
  * The projectile component controls the properties of a
  * projectile entity and allows it to be shot in a given
  * direction.
@@ -8977,24 +8953,32 @@ export class EntityTameableComponent extends EntityComponent {
     private constructor();
     /**
      * @remarks
+     * Returns a set of items that can be used to tame this entity.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly getTameItems: ItemStack[];
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly isTamed: boolean;
+    /**
+     * @remarks
      * The chance of taming the entity with each item use between
      * 0.0 and 1.0, where 1.0 is 100%
      *
      * @throws This property can throw when used.
      */
     readonly probability: number;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly tamedToPlayer?: Player;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tameable';
-    /**
-     * @remarks
-     * Returns a set of items that can be used to tame this entity.
-     *
-     * @throws This function can throw errors.
-     */
-    getTameItems(): ItemStack[];
-    /**
-     * @throws This function can throw errors.
-     */
-    isTamed(): boolean;
     /**
      * @remarks
      * Tames this entity.
@@ -9006,14 +8990,6 @@ export class EntityTameableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     tame(player: Player): boolean;
-    /**
-     * @throws This function can throw errors.
-     */
-    tamedToPlayer(): Player | undefined;
-    /**
-     * @throws This function can throw errors.
-     */
-    tamedToPlayerId(): string;
 }
 
 /**
@@ -9024,6 +9000,22 @@ export class EntityTameableComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly isTamed: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly isTamedToPlayer: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly tamedToPlayer?: Player;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tamemount';
     /**
      * @remarks
@@ -9036,10 +9028,16 @@ export class EntityTameMountComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     tame(showParticles: boolean): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    tameToPlayer(showParticles: boolean, player: Player): boolean;
 }
 
 /**
- * @beta
  * Represents information about a type of entity.
  */
 export class EntityType {
@@ -9053,9 +9051,6 @@ export class EntityType {
     readonly id: string;
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();
@@ -9091,7 +9086,6 @@ export class EntityTypeIterator implements Iterable<EntityType> {
 }
 
 /**
- * @beta
  * Used for accessing all entity types currently available for
  * use within the world.
  */
@@ -9587,6 +9581,13 @@ export class GameRules {
      */
     showCoordinates: boolean;
     /**
+     * @beta
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    showDaysPlayed: boolean;
+    /**
      * @remarks
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
@@ -9858,6 +9859,15 @@ export class ItemComponentCompleteUseEvent extends ItemCompleteUseEvent {
 
 /**
  * @beta
+ */
+export class ItemComponentConsumeEvent {
+    private constructor();
+    readonly itemStack: ItemStack;
+    readonly source: Entity;
+}
+
+/**
+ * @beta
  * Contains information regarding when an item is used to hit
  * an entity.
  */
@@ -10000,7 +10010,6 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
 }
 
 /**
- * @beta
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
  * 注意，若使用后不会进入冷却，原版物品会获取到没有实际作用的该组件。
  * 
@@ -11753,12 +11762,10 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * Manages the selected slot in the player's hotbar.
-     *
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
-    selectedSlot: number;
+    selectedSlotIndex: number;
     /**
      * @remarks
      * The overall total set of experience needed to achieve the
@@ -11857,7 +11864,6 @@ export class Player extends Entity {
      */
     isOp(): boolean;
     /**
-     * @beta
      * @remarks
      * Plays a music track that only this particular player can
      * hear.
@@ -11894,7 +11900,6 @@ export class Player extends Entity {
      */
     postClientMessage(id: string, value: string): void;
     /**
-     * @beta
      * @remarks
      * Queues an additional music track that only this particular
      * player can hear. If a track is not playing, a music track
@@ -12058,7 +12063,6 @@ export class Player extends Entity {
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
-     * @beta
      * @remarks
      * Stops any music tracks from playing for this particular
      * player.
@@ -13799,7 +13803,6 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
- * @beta
  * Represents a loaded structure template (.mcstructure file).
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
@@ -13939,7 +13942,6 @@ export class Structure {
 }
 
 /**
- * @beta
  * Manager for Structure related APIs. Includes APIs for
  * creating, getting, placing and deleting Structures.
  */
@@ -14247,7 +14249,7 @@ export class System {
      *
      * {@link minecraftcommon.EngineError}
      */
-    waitTick(ticks?: number): Promise<void>;
+    waitTicks(ticks: number): Promise<void>;
 }
 
 /**
@@ -14678,7 +14680,6 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @beta
      * @remarks
      * Returns the manager for {@link Structure} related APIs.
      *
@@ -15533,7 +15534,6 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when the script environment is initialized
      * on a World.
@@ -15651,7 +15651,6 @@ export class WorldBeforeEvents {
 }
 
 /**
- * @beta
  * Contains information and methods that can be used at the
  * initialization of the scripting environment for a World.
  */
@@ -15660,7 +15659,6 @@ export class WorldInitializeAfterEvent {
 }
 
 /**
- * @beta
  * Manages callbacks that are run on the first tick of the
  * World. Do note that this event may run multiple times within
  * a session in the case that the /reload command is used.
@@ -16990,6 +16988,7 @@ export interface GreaterThanOrEqualsComparison {
 export interface ItemCustomComponent {
     onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
     onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
+    onConsume?: (arg: ItemComponentConsumeEvent) => void;
     onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
     /**
      * @remarks
@@ -17135,9 +17134,6 @@ export interface PlayerSoundOptions {
     volume?: number;
 }
 
-/**
- * @beta
- */
 export interface ProjectileShootOptions {
     uncertainty?: number;
 }
@@ -17387,7 +17383,6 @@ export interface SpawnEntityOptions {
 }
 
 /**
- * @beta
  * Provides additional options for {@link
  * StructureManager.createFromWorld}
  */
@@ -17416,7 +17411,6 @@ export interface StructureCreateOptions {
 }
 
 /**
- * @beta
  * Provides additional options for {@link
  * StructureManager.place}
  */
@@ -17684,7 +17678,6 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @beta
  * Thrown when a Structure is invalid. A structure becomes
  * invalid when it is deleted.
  */

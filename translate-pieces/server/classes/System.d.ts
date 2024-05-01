@@ -164,5 +164,5 @@ export class System {
      *
      * {@link minecraftcommon.EngineError}
      */
-    waitTick(ticks?: number): Promise<void>;
+    waitTicks(ticks: number): Promise<void>;
 }

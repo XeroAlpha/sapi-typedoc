@@ -76,12 +76,10 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * Manages the selected slot in the player's hotbar.
-     *
      * This property can't be edited in read-only mode.
      *
      */
-    selectedSlot: number;
+    selectedSlotIndex: number;
     /**
      * @remarks
      * The overall total set of experience needed to achieve the
@@ -180,7 +178,6 @@ export class Player extends Entity {
      */
     isOp(): boolean;
     /**
-     * @beta
      * @remarks
      * Plays a music track that only this particular player can
      * hear.
@@ -217,7 +214,6 @@ export class Player extends Entity {
      */
     postClientMessage(id: string, value: string): void;
     /**
-     * @beta
      * @remarks
      * Queues an additional music track that only this particular
      * player can hear. If a track is not playing, a music track
@@ -381,7 +377,6 @@ export class Player extends Entity {
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
-     * @beta
      * @remarks
      * Stops any music tracks from playing for this particular
      * player.

@@ -304,6 +304,8 @@ export declare enum MinecraftItemTypes {
     Brick = "minecraft:brick",
     /** 红砖块。 */
     BrickBlock = "minecraft:brick_block",
+    /** 红砖台阶。 */
+    BrickSlab = "minecraft:brick_slab",
     /** 红砖楼梯。 */
     BrickStairs = "minecraft:brick_stairs",
     /** 棕色蜡烛。 */
@@ -476,6 +478,8 @@ export declare enum MinecraftItemTypes {
     CobbledDeepslateWall = "minecraft:cobbled_deepslate_wall",
     /** 圆石。 */
     Cobblestone = "minecraft:cobblestone",
+    /** 圆石台阶。 */
+    CobblestoneSlab = "minecraft:cobblestone_slab",
     /** 圆石墙/苔石墙/花岗岩墙/闪长岩墙/安山岩墙/砂岩墙/红砖墙/石砖墙/苔石砖墙/末地石砖墙/下界砖墙/海晶石墙/红砂岩墙/红色下界砖墙。 */
     CobblestoneWall = "minecraft:cobblestone_wall",
     /** 可可豆。 */
@@ -1467,6 +1471,8 @@ export declare enum MinecraftItemTypes {
     NetherBrick = "minecraft:nether_brick",
     /** 下界砖栅栏。 */
     NetherBrickFence = "minecraft:nether_brick_fence",
+    /** 下界砖台阶。 */
+    NetherBrickSlab = "minecraft:nether_brick_slab",
     /** 下界砖楼梯。 */
     NetherBrickStairs = "minecraft:nether_brick_stairs",
     /** 下界金矿石。 */
@@ -1786,6 +1792,8 @@ export declare enum MinecraftItemTypes {
     QuartzBricks = "minecraft:quartz_bricks",
     /** 下界石英矿石。 */
     QuartzOre = "minecraft:quartz_ore",
+    /** 石英台阶。 */
+    QuartzSlab = "minecraft:quartz_slab",
     /** 石英楼梯。 */
     QuartzStairs = "minecraft:quartz_stairs",
     /** 兔子。 */
@@ -1891,6 +1899,8 @@ export declare enum MinecraftItemTypes {
     Sand = "minecraft:sand",
     /** 砂岩/雕纹砂岩/切制砂岩/平滑砂岩。 */
     Sandstone = "minecraft:sandstone",
+    /** 砂岩台阶。 */
+    SandstoneSlab = "minecraft:sandstone_slab",
     /** 砂岩楼梯。 */
     SandstoneStairs = "minecraft:sandstone_stairs",
     Sapling = "minecraft:sapling",
@@ -1977,6 +1987,8 @@ export declare enum MinecraftItemTypes {
     SmoothSandstoneStairs = "minecraft:smooth_sandstone_stairs",
     /** 平滑石头。 */
     SmoothStone = "minecraft:smooth_stone",
+    /** 平滑石头台阶。 */
+    SmoothStoneSlab = "minecraft:smooth_stone_slab",
     /** 嗅探兽蛋。 */
     SnifferEgg = "minecraft:sniffer_egg",
     /** 嗅探兽刷怪蛋。 */
@@ -2065,7 +2077,6 @@ export declare enum MinecraftItemTypes {
     Stone = "minecraft:stone",
     /** 石斧。 */
     StoneAxe = "minecraft:stone_axe",
-    /** 平滑石头台阶/砂岩台阶/石化橡木台阶/圆石台阶/红砖台阶/石砖台阶/石英台阶/下界砖台阶。 */
     StoneBlockSlab = "minecraft:stone_block_slab",
     /** 红砂岩台阶/紫珀台阶/海晶石台阶/暗海晶石台阶/海晶石砖台阶/苔石台阶/平滑砂岩台阶/红色下界砖台阶。 */
     StoneBlockSlab2 = "minecraft:stone_block_slab2",
@@ -2073,6 +2084,8 @@ export declare enum MinecraftItemTypes {
     StoneBlockSlab3 = "minecraft:stone_block_slab3",
     /** 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。 */
     StoneBlockSlab4 = "minecraft:stone_block_slab4",
+    /** 石砖台阶。 */
+    StoneBrickSlab = "minecraft:stone_brick_slab",
     /** 石砖楼梯。 */
     StoneBrickStairs = "minecraft:stone_brick_stairs",
     /** 石头按钮。 */

@@ -185,6 +185,13 @@ export class GameRules {
      */
     showCoordinates: boolean;
     /**
+     * @beta
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    showDaysPlayed: boolean;
+    /**
      * @remarks
      * This property can't be edited in read-only mode.
      *

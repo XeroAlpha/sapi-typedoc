@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum StructureRotation {
     None = 'None',
     Rotate180 = 'Rotate180',

@@ -1,9 +1,5 @@
 /* IMPORT */ import { EntityComponent } from '../index';
 
-/**
- * @beta
- */
-// @ts-ignore Class inheritance allowed for native defined classes
 export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();
     static readonly componentId = 'minecraft:type_family';

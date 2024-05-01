@@ -16,6 +16,7 @@ export class BlockVolumeBase {
      */
     getBlockLocationIterator(): BlockLocationIterator;
     /**
+     * @beta
      * @remarks
      * Return a {@link BoundingBox} object which represents the
      * validated min and max coordinates of the volume
@@ -70,7 +71,7 @@ export class BlockVolumeBase {
      * This function can't be called in read-only mode.
      *
      */
-    isInside(pos: Vector3): boolean;
+    isInside(location: Vector3): boolean;
     /**
      * @remarks
      * Move a BlockVolume by a specified amount

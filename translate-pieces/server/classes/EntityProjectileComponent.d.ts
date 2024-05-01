@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, EntityComponent, ProjectileShootOptions, Vector3 } from '../index';
 
 /**
- * @beta
  * The projectile component controls the properties of a
  * projectile entity and allows it to be shot in a given
  * direction.

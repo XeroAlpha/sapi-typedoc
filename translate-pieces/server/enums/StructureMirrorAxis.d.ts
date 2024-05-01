@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum StructureMirrorAxis {
     None = 'None',
     X = 'X',
