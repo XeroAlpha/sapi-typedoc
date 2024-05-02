@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.0-preview.23"
+ *   "version": "0.1.0-beta.1.21.0-preview.24"
  * }
  * ```
  *
@@ -128,6 +128,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Number = 'editorUI:Number',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
+    Table = 'editorUI:Table',
     Text = 'editorUI:Text',
     Vec3 = 'editorUI:Vec3',
 }
@@ -493,6 +494,15 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly builtInUIManager: BuiltInUIManager;
     readonly eventSubscriptionCache: BedrockEventSubscriptionCache;
     scratchStorage: PerPlayerStorage | undefined;
+};
+
+/**
+ * A property item which supports Table properties
+ */
+export type ITablePropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
+    updateCell(dataCell: IPropertyTableCellItem, row: number, column: number): void;
+    updateRow(dataRow: IPropertyTableCellItem[], row: number): void;
+    updateTable(newData: IPropertyTableCellItem[][]): void;
 };
 
 /**
@@ -2933,6 +2943,12 @@ export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
     pane: IPropertyPane;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsTable extends IPropertyItemOptions {
+    defaultData: IPropertyTableCellItem[][];
+    titleId?: string;
+}
+
 /**
  * Localization string id and border enable boolean for
  * multiline text component.
@@ -3139,6 +3155,17 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     * Adds a table to the pane.
+     *
+     */
+    addTable(options?: IPropertyItemOptionsTable): ITablePropertyItem<
+        {
+            EMPTY: undefined;
+        },
+        'EMPTY'
+    >;
+    /**
+     * @remarks
      * Adds a multiline Text item to the pane.
      *
      */
@@ -3225,6 +3252,12 @@ export interface IPropertyPaneOptions {
      *
      */
     width?: number;
+}
+
+export interface IPropertyTableCellItem {
+    block?: string;
+    icon?: string;
+    text?: string;
 }
 
 /**

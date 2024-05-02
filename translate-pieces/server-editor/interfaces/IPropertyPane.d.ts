@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -148,6 +148,17 @@ export interface IPropertyPane {
         property: Prop,
         options?: IPropertyItemOptions,
     ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a table to the pane.
+     *
+     */
+    addTable(options?: IPropertyItemOptionsTable): ITablePropertyItem<
+        {
+            EMPTY: undefined;
+        },
+        'EMPTY'
+    >;
     /**
      * @remarks
      * Adds a multiline Text item to the pane.

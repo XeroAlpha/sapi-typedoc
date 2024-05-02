@@ -3349,6 +3349,7 @@ export class BlockVolume extends BlockVolumeBase {
 export class BlockVolumeBase {
     private constructor();
     /**
+     * @beta
      * @remarks
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume
@@ -4928,6 +4929,22 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    /**
      * @remarks
      * Gets the first block that intersects with a vector emanating
      * from a location.
@@ -5043,6 +5060,14 @@ export class Dimension {
      * @throws This function can throw errors.
      */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     /**
      * @beta
      * @remarks
@@ -8817,18 +8842,22 @@ export class EntityTameableComponent extends EntityComponent {
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     /**
+     * @beta
      * @throws This property can throw when used.
      */
     readonly isTamed: boolean;
     /**
+     * @beta
      * @throws This property can throw when used.
      */
     readonly isTamedToPlayer: boolean;
     /**
+     * @beta
      * @throws This property can throw when used.
      */
     readonly tamedToPlayer?: Player;
     /**
+     * @beta
      * @throws This property can throw when used.
      */
     readonly tamedToPlayerId?: string;
@@ -8845,6 +8874,7 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     tame(showParticles: boolean): void;
     /**
+     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -17200,6 +17230,14 @@ export interface Vector3 {
      * Z component of this vector.
      *
      */
+    z: number;
+}
+
+/**
+ * @beta
+ */
+export interface VectorXZ {
+    x: number;
     z: number;
 }
 
