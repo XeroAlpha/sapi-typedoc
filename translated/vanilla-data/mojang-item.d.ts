@@ -1439,6 +1439,10 @@ export declare enum MinecraftItemTypes {
     MusicDiscCat = "minecraft:music_disc_cat",
     /** 音乐唱片 C418 - chirp。 */
     MusicDiscChirp = "minecraft:music_disc_chirp",
+    /** 音乐唱片 Lena Raine - Creator。 */
+    MusicDiscCreator = "minecraft:music_disc_creator",
+    /** 音乐唱片 Lena Raine - Creator (Music Box)。 */
+    MusicDiscCreatorMusicBox = "minecraft:music_disc_creator_music_box",
     /** 音乐唱片 C418 - far。 */
     MusicDiscFar = "minecraft:music_disc_far",
     /** 音乐唱片 C418 - mall。 */
@@ -1449,6 +1453,8 @@ export declare enum MinecraftItemTypes {
     MusicDiscOtherside = "minecraft:music_disc_otherside",
     /** 音乐唱片 Lena Raine - Pigstep。 */
     MusicDiscPigstep = "minecraft:music_disc_pigstep",
+    /** 音乐唱片 Aaron Cherof - Precipice。 */
+    MusicDiscPrecipice = "minecraft:music_disc_precipice",
     /** 音乐唱片 Aaron Cherof - Relic。 */
     MusicDiscRelic = "minecraft:music_disc_relic",
     /** 音乐唱片 C418 - stal。 */

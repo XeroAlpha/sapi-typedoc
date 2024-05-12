@@ -392,6 +392,7 @@ export { TeleportOptions } from './interfaces/TeleportOptions';
 export { TitleDisplayOptions } from './interfaces/TitleDisplayOptions';
 export { Vector2 } from './interfaces/Vector2';
 export { Vector3 } from './interfaces/Vector3';
+export { VectorXZ } from './interfaces/VectorXZ';
 export { WorldSoundOptions } from './interfaces/WorldSoundOptions';
 export { CommandError } from './classes/CommandError';
 export { EnchantmentLevelOutOfBoundsError } from './classes/EnchantmentLevelOutOfBoundsError';

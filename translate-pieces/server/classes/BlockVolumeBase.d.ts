@@ -7,6 +7,7 @@
 export class BlockVolumeBase {
     private constructor();
     /**
+     * @beta
      * @remarks
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume

@@ -11,6 +11,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Number = 'editorUI:Number',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
+    Table = 'editorUI:Table',
     Text = 'editorUI:Text',
     Vec3 = 'editorUI:Vec3',
 }
