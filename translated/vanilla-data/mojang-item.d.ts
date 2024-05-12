@@ -821,6 +821,7 @@ export declare enum MinecraftItemTypes {
     ParrotSpawnEgg = "minecraft:parrot_spawn_egg",
     PearlescentFroglight = "minecraft:pearlescent_froglight",
     Peony = "minecraft:peony",
+    PetrifiedOakSlab = "minecraft:petrified_oak_slab",
     PhantomMembrane = "minecraft:phantom_membrane",
     PhantomSpawnEgg = "minecraft:phantom_spawn_egg",
     PigSpawnEgg = "minecraft:pig_spawn_egg",
