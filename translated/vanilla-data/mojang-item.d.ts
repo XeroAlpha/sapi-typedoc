@@ -1621,6 +1621,8 @@ export declare enum MinecraftItemTypes {
     PearlescentFroglight = "minecraft:pearlescent_froglight",
     /** 牡丹。 */
     Peony = "minecraft:peony",
+    /** 石化橡木台阶。 */
+    PetrifiedOakSlab = "minecraft:petrified_oak_slab",
     /** 幻翼膜。 */
     PhantomMembrane = "minecraft:phantom_membrane",
     /** 幻翼刷怪蛋。 */
