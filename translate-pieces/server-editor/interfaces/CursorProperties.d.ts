@@ -33,6 +33,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
+    fillColor?: minecraftserver.RGBA;
     /**
      * @remarks
      * The fixed distance from the players feet at which the cursor

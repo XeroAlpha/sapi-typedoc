@@ -23,12 +23,27 @@
 import * as minecraftcommon from '@minecraft/common';
 export enum BlockComponentTypes {
     Inventory = 'minecraft:inventory',
+    /**
+     * @beta
+     */
     LavaContainer = 'minecraft:lavaContainer',
     Piston = 'minecraft:piston',
+    /**
+     * @beta
+     */
     PotionContainer = 'minecraft:potionContainer',
-    RecordPlayer = 'minecraft:recordPlayer',
+    /**
+     * @beta
+     */
+    RecordPlayer = 'minecraft:record_player',
     Sign = 'minecraft:sign',
+    /**
+     * @beta
+     */
     SnowContainer = 'minecraft:snowContainer',
+    /**
+     * @beta
+     */
     WaterContainer = 'minecraft:waterContainer',
 }
 
@@ -69,21 +84,18 @@ export enum BlockPistonState {
  */
 export enum BlockVolumeIntersection {
     /**
-     * @beta
      * @remarks
      * Volume B has no intersection points with Volume A
      *
      */
     Disjoint = 0,
     /**
-     * @beta
      * @remarks
      * Volume B resides completely inside Volume A
      *
      */
     Contains = 1,
     /**
-     * @beta
      * @remarks
      * Volume B partially intersects Volume A
      *
@@ -99,7 +111,6 @@ export enum BlockVolumeIntersection {
  */
 export enum CompoundBlockVolumeAction {
     /**
-     * @beta
      * @remarks
      * The associated BlockVolume is considered a positive space,
      * and any intersection tests are considered hits
@@ -107,7 +118,6 @@ export enum CompoundBlockVolumeAction {
      */
     Add = 0,
     /**
-     * @beta
      * @remarks
      * The associated BlockVolume is considered a negative or void
      * space, and any intersection tests are considered misses.
@@ -127,7 +137,6 @@ export enum CompoundBlockVolumeAction {
  */
 export enum CompoundBlockVolumePositionRelativity {
     /**
-     * @beta
      * @remarks
      * The locations within the associated BlockVolume are relative
      * to the CompoundBlockVolume to which they were added
@@ -135,7 +144,6 @@ export enum CompoundBlockVolumePositionRelativity {
      */
     Relative = 0,
     /**
-     * @beta
      * @remarks
      * The locations within the associated BlockVolume are in
      * absolute world space
@@ -146,33 +154,37 @@ export enum CompoundBlockVolumePositionRelativity {
 
 /**
  * @beta
+ */
+export enum CustomComponentNameErrorReason {
+    NoNamespace = 1,
+    DisallowedNamespace = 2,
+}
+
+/**
+ * @beta
  * An enumeration for the various difficulty levels of
  * Minecraft.
  */
 export enum Difficulty {
     /**
-     * @beta
      * @remarks
      * Peaceful difficulty level.
      *
      */
     Peaceful = 0,
     /**
-     * @beta
      * @remarks
      * Easy difficulty level.
      *
      */
     Easy = 1,
     /**
-     * @beta
      * @remarks
      * Normal difficulty level.
      *
      */
     Normal = 2,
     /**
-     * @beta
      * @remarks
      * Hard difficulty level.
      *
@@ -409,13 +421,25 @@ export enum EnchantmentSlot {
 }
 
 export enum EntityComponentTypes {
+    /**
+     * @beta
+     */
     AddRider = 'minecraft:addrider',
+    /**
+     * @beta
+     */
     Ageable = 'minecraft:ageable',
+    /**
+     * @beta
+     */
     Breathable = 'minecraft:breathable',
     CanClimb = 'minecraft:can_climb',
     CanFly = 'minecraft:can_fly',
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
+    /**
+     * @beta
+     */
     Color2 = 'minecraft:color2',
     Equippable = 'minecraft:equippable',
     FireImmune = 'minecraft:fire_immune',
@@ -440,37 +464,91 @@ export enum EntityComponentTypes {
     IsStunned = 'minecraft:is_stunned',
     IsTamed = 'minecraft:is_tamed',
     Item = 'minecraft:item',
+    /**
+     * @beta
+     */
     LavaMovement = 'minecraft:lava_movement',
+    /**
+     * @beta
+     */
     Leashable = 'minecraft:leashable',
     MarkVariant = 'minecraft:mark_variant',
+    /**
+     * @beta
+     */
     Movement = 'minecraft:movement',
     MovementAmphibious = 'minecraft:movement.amphibious',
     MovementBasic = 'minecraft:movement.basic',
     MovementFly = 'minecraft:movement.fly',
     MovementGeneric = 'minecraft:movement.generic',
+    /**
+     * @beta
+     */
     MovementGlide = 'minecraft:movement.glide',
     MovementHover = 'minecraft:movement.hover',
     MovementJump = 'minecraft:movement.jump',
     MovementSkip = 'minecraft:movement.skip',
+    /**
+     * @beta
+     */
     MovementSway = 'minecraft:movement.sway',
+    /**
+     * @beta
+     */
     NavigationClimb = 'minecraft:navigation.climb',
+    /**
+     * @beta
+     */
     NavigationFloat = 'minecraft:navigation.float',
+    /**
+     * @beta
+     */
     NavigationFly = 'minecraft:navigation.fly',
+    /**
+     * @beta
+     */
     NavigationGeneric = 'minecraft:navigation.generic',
+    /**
+     * @beta
+     */
     NavigationHover = 'minecraft:navigation.hover',
+    /**
+     * @beta
+     */
     NavigationWalk = 'minecraft:navigation.walk',
+    /**
+     * @beta
+     */
     Npc = 'minecraft:npc',
     OnFire = 'minecraft:onfire',
     Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
+    /**
+     * @beta
+     */
     Rideable = 'minecraft:rideable',
+    /**
+     * @beta
+     */
     Riding = 'minecraft:riding',
     Scale = 'minecraft:scale',
     SkinId = 'minecraft:skin_id',
+    /**
+     * @beta
+     */
     Strength = 'minecraft:strength',
+    /**
+     * @beta
+     */
     Tameable = 'minecraft:tameable',
+    /**
+     * @beta
+     */
     TameMount = 'minecraft:tamemount',
     TypeFamily = 'minecraft:type_family',
+    /**
+     * @beta
+     */
     UnderwaterMovement = 'minecraft:underwater_movement',
     Variant = 'minecraft:variant',
     WantsJockey = 'minecraft:wants_jockey',
@@ -728,35 +806,14 @@ export enum EntityInitializationCause {
 }
 
 /**
- * @beta
- * Describes the lifetime state of an Entity. For example,
- * Entities can be loaded or unloaded depending on whether
- * their chunks are loaded or when they move across dimensions.
- */
-export enum EntityLifetimeState {
-    /**
-     * @beta
-     * @remarks
-     * Corresponding object is loaded.
-     *
-     */
-    Loaded = 'Loaded',
-    /**
-     * @beta
-     * @remarks
-     * Corresponding object is now unloaded. Unloaded entities
-     * cannot be manipulated. However, if an unloaded Entity later
-     * reloads, it becomes valid and can once again be manipulated.
-     *
-     */
-    Unloaded = 'Unloaded',
-}
-
-/**
  * The equipment slot of the mob. This includes armor, offhand
  * and mainhand slots.
  */
 export enum EquipmentSlot {
+    /**
+     * @beta
+     */
+    Body = 'Body',
     /**
      * @remarks
      * The chest slot. This slot is used to hold items such as
@@ -884,7 +941,6 @@ export enum GameMode {
  */
 export enum GameRule {
     /**
-     * @beta
      * @remarks
      * Whether command blocks should notify admins when they
      * perform commands.
@@ -892,35 +948,30 @@ export enum GameRule {
      */
     CommandBlockOutput = 'commandBlockOutput',
     /**
-     * @beta
      * @remarks
      * Controls whether command blocks can execute commands.
      *
      */
     CommandBlocksEnabled = 'commandBlocksEnabled',
     /**
-     * @beta
      * @remarks
      * Controls whether the day and night cycles progress.
      *
      */
     DoDayLightCycle = 'doDayLightCycle',
     /**
-     * @beta
      * @remarks
      * Controls whether non-mob entities do drops. ie. Item Frame
      *
      */
     DoEntityDrops = 'doEntityDrops',
     /**
-     * @beta
      * @remarks
      * Controls whether fire spreads.
      *
      */
     DoFireTick = 'doFireTick',
     /**
-     * @beta
      * @remarks
      * Controls whether players immediately respawn or are shown
      * the death screen.
@@ -928,7 +979,6 @@ export enum GameRule {
      */
     DoImmediateRespawn = 'doImmediateRespawn',
     /**
-     * @beta
      * @remarks
      * Controls whether players deal with the effects of not
      * sleeping (such as Phantom spawning).
@@ -936,7 +986,6 @@ export enum GameRule {
      */
     DoInsomnia = 'doInsomnia',
     /**
-     * @beta
      * @remarks
      * Determines whether players should be able to craft only
      * those recipes that they've unlocked first - when
@@ -945,63 +994,54 @@ export enum GameRule {
      */
     DoLimitedCrafting = 'doLimitedCrafting',
     /**
-     * @beta
      * @remarks
      * Controls whether mobs drop loot.
      *
      */
     DoMobLoot = 'doMobLoot',
     /**
-     * @beta
      * @remarks
      * Controls whether mobs spawn naturally in the world.
      *
      */
     DoMobSpawning = 'doMobSpawning',
     /**
-     * @beta
      * @remarks
      * Controls whether blocks drop items when destroyed.
      *
      */
     DoTileDrops = 'doTileDrops',
     /**
-     * @beta
      * @remarks
      * Controls whether the weather can change naturally.
      *
      */
     DoWeatherCycle = 'doWeatherCycle',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from drowning.
      *
      */
     DrowningDamage = 'drowningDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from falling.
      *
      */
     FallDamage = 'fallDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from fire.
      *
      */
     FireDamage = 'fireDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether there is damage from freezing.
      *
      */
     FreezeDamage = 'freezeDamage',
     /**
-     * @beta
      * @remarks
      * The maximum number of commands that can be executed
      * simultaneously by the /function command.
@@ -1009,7 +1049,6 @@ export enum GameRule {
      */
     FunctionCommandLimit = 'functionCommandLimit',
     /**
-     * @beta
      * @remarks
      * Controls whether players keep their inventories when they
      * die.
@@ -1017,7 +1056,6 @@ export enum GameRule {
      */
     KeepInventory = 'keepInventory',
     /**
-     * @beta
      * @remarks
      * The maximum number of chained commands that can execute per
      * tick.
@@ -1025,7 +1063,6 @@ export enum GameRule {
      */
     MaxCommandChainLength = 'maxCommandChainLength',
     /**
-     * @beta
      * @remarks
      * Controls whether mob griefing can happen in the world.
      * Example: A Creeper explosion destroying blocks.
@@ -1033,14 +1070,12 @@ export enum GameRule {
      */
     MobGriefing = 'mobGriefing',
     /**
-     * @beta
      * @remarks
      * Controls whether players can regenerate health.
      *
      */
     NaturalRegeneration = 'naturalRegeneration',
     /**
-     * @beta
      * @remarks
      * The percentage of players required to be sleeping in order
      * to advance to the next day.
@@ -1048,7 +1083,6 @@ export enum GameRule {
      */
     PlayersSleepingPercentage = 'playersSleepingPercentage',
     /**
-     * @beta
      * @remarks
      * Controls whether projectiles (entities with a projectile
      * component, like Arrows, thrown Tridents or Fireworks) can
@@ -1059,14 +1093,12 @@ export enum GameRule {
      */
     ProjectilesCanBreakBlocks = 'projectilesCanBreakBlocks',
     /**
-     * @beta
      * @remarks
      * Controls whether players can damage each other.
      *
      */
     Pvp = 'pvp',
     /**
-     * @beta
      * @remarks
      * Controls how frequently random ticks occur. A value of 0 or
      * less will disable random ticks. The default value is 1.
@@ -1074,7 +1106,6 @@ export enum GameRule {
      */
     RandomTickSpeed = 'randomTickSpeed',
     /**
-     * @beta
      * @remarks
      * Controls whether built-in (vanilla) recipes automatically
      * unlock as the player progresses through the game (one
@@ -1084,7 +1115,6 @@ export enum GameRule {
      */
     RecipesUnlock = 'recipesUnlock',
     /**
-     * @beta
      * @remarks
      * Controls whether respawn blocks (e.g. Bed, Respawn Anchor)
      * explode in other dimensions.
@@ -1092,7 +1122,6 @@ export enum GameRule {
      */
     RespawnBlocksExplode = 'respawnBlocksExplode',
     /**
-     * @beta
      * @remarks
      * Controls whether command output is displayed to players.
      * Also controls whether Command Block output is stored by
@@ -1101,29 +1130,28 @@ export enum GameRule {
      */
     SendCommandFeedback = 'sendCommandFeedback',
     /**
-     * @beta
      * @remarks
      * Controls whether Border Block effects are shown.
      *
      */
     ShowBorderEffect = 'showBorderEffect',
     /**
-     * @beta
      * @remarks
      * Controls whether player coordinates are displayed.
      *
      */
     ShowCoordinates = 'showCoordinates',
-    ShowDaysPlayed = 'showDaysPlayed',
     /**
      * @beta
+     */
+    ShowDaysPlayed = 'showDaysPlayed',
+    /**
      * @remarks
      * Controls whether death messages are displayed in chat.
      *
      */
     ShowDeathMessages = 'showDeathMessages',
     /**
-     * @beta
      * @remarks
      * Controls whether standard player notifications for recipes
      * will show. When set to false, 'player unlocked recipes' are
@@ -1132,7 +1160,6 @@ export enum GameRule {
      */
     ShowRecipeMessages = 'showRecipeMessages',
     /**
-     * @beta
      * @remarks
      * Controls whether item tags are shown. E.g. 'Can Place On',
      * 'Can Destroy', item lock icons, etc.
@@ -1140,7 +1167,6 @@ export enum GameRule {
      */
     ShowTags = 'showTags',
     /**
-     * @beta
      * @remarks
      * The block radius from world spawn that a player is allowed
      * to spawn in. Does not affect Adventure mode. The default
@@ -1149,7 +1175,6 @@ export enum GameRule {
      */
     SpawnRadius = 'spawnRadius',
     /**
-     * @beta
      * @remarks
      * Affects whether TNT blocks can be lit.
      *
@@ -1190,14 +1215,12 @@ export enum HudVisibility {
  */
 export enum InputPermissionCategory {
     /**
-     * @beta
      * @remarks
      * Player input relating to camera movement.
      *
      */
     Camera = 1,
     /**
-     * @beta
      * @remarks
      * Player input relating to movement.
      *
@@ -1223,6 +1246,7 @@ export enum ItemComponentTypes {
      */
     Durability = 'minecraft:durability',
     /**
+     * @beta
      * @remarks
      * The minecraft:enchantable component.
      *
@@ -1234,6 +1258,10 @@ export enum ItemComponentTypes {
      *
      */
     Food = 'minecraft:food',
+    /**
+     * @beta
+     */
+    Potion = 'minecraft:potion',
 }
 
 /**
@@ -1525,7 +1553,6 @@ export enum TimeOfDay {
  */
 export enum WatchdogTerminateReason {
     /**
-     * @beta
      * @remarks
      * Script runtime for a behavior pack is terminated due to
      * non-responsiveness from script (a hang or infinite loop).
@@ -1533,7 +1560,6 @@ export enum WatchdogTerminateReason {
      */
     Hang = 'Hang',
     /**
-     * @beta
      * @remarks
      * Script runtime for a behavior pack is terminated due to a
      * stack overflow (a long, and potentially infinite) chain of
@@ -1578,13 +1604,13 @@ export type BlockComponentTypeMap = {
     'minecraft:lavaContainer': BlockLavaContainerComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:potionContainer': BlockPotionContainerComponent;
-    'minecraft:recordPlayer': BlockRecordPlayerComponent;
+    'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:sign': BlockSignComponent;
     'minecraft:snowContainer': BlockSnowContainerComponent;
     'minecraft:waterContainer': BlockWaterContainerComponent;
     piston: BlockPistonComponent;
     potionContainer: BlockPotionContainerComponent;
-    recordPlayer: BlockRecordPlayerComponent;
+    record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
     snowContainer: BlockSnowContainerComponent;
     waterContainer: BlockWaterContainerComponent;
@@ -1738,6 +1764,8 @@ export type ItemComponentTypeMap = {
     'minecraft:durability': ItemDurabilityComponent;
     'minecraft:enchantable': ItemEnchantableComponent;
     'minecraft:food': ItemFoodComponent;
+    'minecraft:potion': ItemPotionComponent;
+    potion: ItemPotionComponent;
 };
 
 /**
@@ -2410,6 +2438,10 @@ export class BlockComponentRegistry {
     /**
      * @throws This function can throw errors.
      *
+     * {@link CustomComponentInvalidRegistryError}
+     *
+     * {@link CustomComponentNameError}
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link Error}
@@ -2882,17 +2914,18 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockRecordPlayerComponent extends BlockComponent {
     private constructor();
-    static readonly componentId = 'minecraft:recordPlayer';
+    static readonly componentId = 'minecraft:record_player';
     /**
      * @remarks
-     * Clears the currently playing record of this record-playing
-     * block.
-     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    clearRecord(): void;
+    ejectRecord(): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    getRecord(): ItemStack | undefined;
     /**
      * @remarks
      * Returns true if the record-playing block is currently
@@ -2903,13 +2936,27 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     isPlaying(): boolean;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    pauseRecord(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    playRecord(): void;
+    /**
+     * @remarks
      * Sets and plays a record based on an item type.
      *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setRecord(recordItemType: ItemType | string): void;
+    setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }
 
 /**
@@ -4782,7 +4829,6 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;
 }
@@ -5431,7 +5477,6 @@ export class EffectAddAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
 }
@@ -5604,16 +5649,6 @@ export class Entity {
      */
     readonly dimension: Dimension;
     /**
-     * @beta
-     * @remarks
-     * The distance an entity has fallen. The value is reset when
-     * the entity is teleported. The value is always 1 when gliding
-     * with Elytra.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly fallDistance: number;
-    /**
      * @remarks
      * Unique identifier of the entity. This identifier is intended
      * to be consistent across loads of a world instance. No
@@ -5691,16 +5726,6 @@ export class Entity {
      * @throws This property can throw when used.
      */
     readonly isSwimming: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity reference that you have is valid or not.
-     * For example, an entity may be unloaded if it moves into a
-     * chunk that is unloaded, but may be reactivated if the chunk
-     * it is within gets reloaded.
-     *
-     */
-    readonly lifetimeState: EntityLifetimeState;
     /**
      * @remarks
      * Current location of the entity.
@@ -6972,7 +6997,6 @@ export class EntityDieAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
 }
@@ -7211,7 +7235,6 @@ export class EntityHealthChangedAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
 }
@@ -7304,7 +7327,6 @@ export class EntityHitBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityHitBlockAfterEvent) => void): void;
 }
@@ -7354,7 +7376,6 @@ export class EntityHitEntityAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityHitEntityAfterEvent) => void): void;
 }
@@ -7408,7 +7429,6 @@ export class EntityHurtAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
 }
@@ -7693,6 +7713,30 @@ export class EntityLavaMovementComponent extends EntityAttributeComponent {
 export class EntityLeashableComponent extends EntityComponent {
     private constructor();
     /**
+     * @throws This property can throw when used.
+     */
+    readonly canBeStolen: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly hardDistance: number;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly isLeashed: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly leashHolder?: Entity;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly leashHolderEntityId?: string;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly maxDistance: number;
+    /**
      * @remarks
      * Distance in blocks at which the 'spring' effect starts
      * acting to keep this entity close to the entity that leashed
@@ -7704,15 +7748,11 @@ export class EntityLeashableComponent extends EntityComponent {
     static readonly componentId = 'minecraft:leashable';
     /**
      * @remarks
-     * Leashes this entity to another entity.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param leashHolder
-     * The entity to leash this entity to.
      * @throws This function can throw errors.
      */
-    leash(leashHolder: Entity): void;
+    leashTo(leashHolder: Entity): void;
     /**
      * @remarks
      * Unleashes this entity if it is leashed to another entity.
@@ -8454,7 +8494,6 @@ export class EntityRemoveAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
      */
     unsubscribe(callback: (arg: EntityRemoveAfterEvent) => void): void;
 }
@@ -9800,9 +9839,13 @@ export class ItemComponentRegistry {
      * the event occurs on an item using this custom component id.
      * @throws This function can throw errors.
      *
-     * {@link ItemCustomComponentAlreadyRegisteredError}
+     * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link ItemCustomComponentNameError}
+     * {@link CustomComponentNameError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link ItemCustomComponentAlreadyRegisteredError}
      *
      * {@link ItemCustomComponentReloadNewComponentError}
      *
@@ -10195,6 +10238,27 @@ export class ItemFoodComponent extends ItemComponent {
      */
     readonly usingConvertsTo: string;
     static readonly componentId = 'minecraft:food';
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemPotionComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly potionEffectType: PotionEffectType;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly potionLiquidType: PotionLiquidType;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly potionModifierType: PotionModifierType;
+    static readonly componentId = 'minecraft:potion';
 }
 
 /**
@@ -10691,6 +10755,14 @@ export class ItemStack {
      * ```
      */
     setLore(loreList?: string[]): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    static createPotion(options: PotionOptions): ItemStack;
 }
 
 /**
@@ -12685,6 +12757,40 @@ export class PlayerSpawnAfterEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     private constructor();
+}
+
+/**
+ * @beta
+ */
+export class PotionEffectType {
+    private constructor();
+    readonly id: string;
+}
+
+/**
+ * @beta
+ */
+export class PotionLiquidType {
+    private constructor();
+    readonly id: string;
+}
+
+/**
+ * @beta
+ */
+export class PotionModifierType {
+    private constructor();
+    readonly id: string;
+}
+
+/**
+ * @beta
+ */
+export class Potions {
+    private constructor();
+    static getPotionEffectType(potionEffectId: string): PotionEffectType | undefined;
+    static getPotionLiquidType(potionLiquidId: string): PotionLiquidType | undefined;
+    static getPotionModifierType(potionModifierId: string): PotionModifierType | undefined;
 }
 
 /**
@@ -16749,6 +16855,15 @@ export interface PlayerSoundOptions {
     volume?: number;
 }
 
+/**
+ * @beta
+ */
+export interface PotionOptions {
+    effect: PotionEffectType | string;
+    liquid?: PotionLiquidType | string;
+    modifier?: PotionModifierType | string;
+}
+
 export interface ProjectileShootOptions {
     uncertainty?: number;
 }
@@ -17269,6 +17384,23 @@ export class CommandError extends Error {
  * @beta
  */
 // @ts-ignore Class inheritance allowed for native defined classes
+export class CustomComponentInvalidRegistryError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomComponentNameError extends Error {
+    private constructor();
+    reason: CustomComponentNameErrorReason;
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentLevelOutOfBoundsError extends Error {
     private constructor();
 }
@@ -17310,16 +17442,6 @@ export class InvalidStructureError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentAlreadyRegisteredError extends Error {
-    private constructor();
-}
-
-/**
- * @beta
- * Thrown when trying to register an item custom component with
- * an invalid namespace.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ItemCustomComponentNameError extends Error {
     private constructor();
 }
 

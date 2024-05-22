@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType, Vector3 } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
 
 /**
  * Defines a collection of items.
@@ -440,4 +440,12 @@ export class ItemStack {
      * ```
      */
     setLore(loreList?: string[]): void;
+    /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    static createPotion(options: PotionOptions): ItemStack;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, ItemType } from '../index';
+/* IMPORT */ import { BlockComponent, ItemStack, ItemType } from '../index';
 
 /**
  * @beta
@@ -7,17 +7,18 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockRecordPlayerComponent extends BlockComponent {
     private constructor();
-    static readonly componentId = 'minecraft:recordPlayer';
+    static readonly componentId = 'minecraft:record_player';
     /**
      * @remarks
-     * Clears the currently playing record of this record-playing
-     * block.
-     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    clearRecord(): void;
+    ejectRecord(): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    getRecord(): ItemStack | undefined;
     /**
      * @remarks
      * Returns true if the record-playing block is currently
@@ -28,11 +29,25 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     isPlaying(): boolean;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    pauseRecord(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    playRecord(): void;
+    /**
+     * @remarks
      * Sets and plays a record based on an item type.
      *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setRecord(recordItemType: ItemType | string): void;
+    setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, PrimarySelectionChangeAfterEventSignal } from '../index';
+/* IMPORT */ import { ClipboardChangeAfterEventSignal, CursorAttachmentPropertyChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, PrimarySelectionChangeAfterEventSignal } from '../index';
 
 /**
  * Contains a set of events that are available across the scope
@@ -6,6 +6,8 @@
  */
 export class ExtensionContextAfterEvents {
     private constructor();
+    readonly clipboardChange: ClipboardChangeAfterEventSignal;
+    readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
      * @remarks

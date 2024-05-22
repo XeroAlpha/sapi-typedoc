@@ -11,4 +11,6 @@ export { MessageFormData } from './classes/MessageFormData';
 export { MessageFormResponse } from './classes/MessageFormResponse';
 export { ModalFormData } from './classes/ModalFormData';
 export { ModalFormResponse } from './classes/ModalFormResponse';
+export { UIManager } from './classes/UIManager';
 export { FormRejectError } from './classes/FormRejectError';
+export { uiManager } from './variables/uiManager';

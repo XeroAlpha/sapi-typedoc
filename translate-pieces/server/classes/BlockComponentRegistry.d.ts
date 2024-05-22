@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockCustomComponent, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockCustomComponent, CustomComponentInvalidRegistryError, CustomComponentNameError, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -7,6 +7,10 @@ export class BlockComponentRegistry {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CustomComponentInvalidRegistryError}
+     *
+     * {@link CustomComponentNameError}
      *
      * {@link minecraftcommon.EngineError}
      *

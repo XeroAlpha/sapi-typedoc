@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityLifetimeState, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from '../index';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -13,16 +13,6 @@ export class Entity {
      * @throws This property can throw when used.
      */
     readonly dimension: Dimension;
-    /**
-     * @beta
-     * @remarks
-     * The distance an entity has fallen. The value is reset when
-     * the entity is teleported. The value is always 1 when gliding
-     * with Elytra.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly fallDistance: number;
     /**
      * @remarks
      * Unique identifier of the entity. This identifier is intended
@@ -101,16 +91,6 @@ export class Entity {
      * @throws This property can throw when used.
      */
     readonly isSwimming: boolean;
-    /**
-     * @beta
-     * @remarks
-     * Whether the entity reference that you have is valid or not.
-     * For example, an entity may be unloaded if it moves into a
-     * chunk that is unloaded, but may be reactivated if the chunk
-     * it is within gets reloaded.
-     *
-     */
-    readonly lifetimeState: EntityLifetimeState;
     /**
      * @remarks
      * Current location of the entity.
