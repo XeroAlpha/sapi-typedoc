@@ -9,6 +9,30 @@
 export class EntityLeashableComponent extends EntityComponent {
     private constructor();
     /**
+     * @throws This property can throw when used.
+     */
+    readonly canBeStolen: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly hardDistance: number;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly isLeashed: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly leashHolder?: Entity;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly leashHolderEntityId?: string;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly maxDistance: number;
+    /**
      * @remarks
      * Distance in blocks at which the 'spring' effect starts
      * acting to keep this entity close to the entity that leashed
@@ -20,15 +44,11 @@ export class EntityLeashableComponent extends EntityComponent {
     static readonly componentId = 'minecraft:leashable';
     /**
      * @remarks
-     * Leashes this entity to another entity.
-     *
      * This function can't be called in read-only mode.
      *
-     * @param leashHolder
-     * The entity to leash this entity to.
      * @throws This function can throw errors.
      */
-    leash(leashHolder: Entity): void;
+    leashTo(leashHolder: Entity): void;
     /**
      * @remarks
      * Unleashes this entity if it is leashed to another entity.

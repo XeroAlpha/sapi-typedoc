@@ -6,7 +6,6 @@
  */
 export enum CompoundBlockVolumePositionRelativity {
     /**
-     * @beta
      * @remarks
      * The locations within the associated BlockVolume are relative
      * to the CompoundBlockVolume to which they were added
@@ -14,7 +13,6 @@ export enum CompoundBlockVolumePositionRelativity {
      */
     Relative = 0,
     /**
-     * @beta
      * @remarks
      * The locations within the associated BlockVolume are in
      * absolute world space

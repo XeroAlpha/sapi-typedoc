@@ -212,7 +212,7 @@ export declare enum MinecraftEntityTypes {
     WanderingTrader = "wandering_trader",
     /** 监守者。 */
     Warden = "warden",
-    /** 风弹（不可召唤）。 */
+    /** 风弹。 */
     WindChargeProjectile = "wind_charge_projectile",
     /** 女巫。 */
     Witch = "witch",

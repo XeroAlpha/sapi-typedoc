@@ -10,6 +10,12 @@ export interface IMenu {
     checked?: boolean;
     /**
      * @remarks
+     * The menu will be in either an enabled or disabled state
+     *
+     */
+    enabled: boolean;
+    /**
+     * @remarks
      * Unique ID for the menu
      *
      */

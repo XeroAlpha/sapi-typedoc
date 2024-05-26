@@ -16,6 +16,12 @@ export interface IMenuCreationParams {
     displayStringId?: string;
     /**
      * @remarks
+     * Whether the menu should be enabled or disabled
+     *
+     */
+    enabled?: boolean;
+    /**
+     * @remarks
      * The name of the menu
      *
      */

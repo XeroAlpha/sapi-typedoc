@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentNameError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError } from '../index';
+/* IMPORT */ import { CustomComponentInvalidRegistryError, CustomComponentNameError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -22,9 +22,13 @@ export class ItemComponentRegistry {
      * the event occurs on an item using this custom component id.
      * @throws This function can throw errors.
      *
-     * {@link ItemCustomComponentAlreadyRegisteredError}
+     * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link ItemCustomComponentNameError}
+     * {@link CustomComponentNameError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link ItemCustomComponentAlreadyRegisteredError}
      *
      * {@link ItemCustomComponentReloadNewComponentError}
      *

@@ -3,7 +3,6 @@
  */
 export enum GameRule {
     /**
-     * @beta
      * @remarks
      * Whether command blocks should notify admins when they
      * perform commands.
@@ -11,35 +10,30 @@ export enum GameRule {
      */
     CommandBlockOutput = 'commandBlockOutput',
     /**
-     * @beta
      * @remarks
      * Controls whether command blocks can execute commands.
      *
      */
     CommandBlocksEnabled = 'commandBlocksEnabled',
     /**
-     * @beta
      * @remarks
      * Controls whether the day and night cycles progress.
      *
      */
     DoDayLightCycle = 'doDayLightCycle',
     /**
-     * @beta
      * @remarks
      * Controls whether non-mob entities do drops. ie. Item Frame
      *
      */
     DoEntityDrops = 'doEntityDrops',
     /**
-     * @beta
      * @remarks
      * Controls whether fire spreads.
      *
      */
     DoFireTick = 'doFireTick',
     /**
-     * @beta
      * @remarks
      * Controls whether players immediately respawn or are shown
      * the death screen.
@@ -47,7 +41,6 @@ export enum GameRule {
      */
     DoImmediateRespawn = 'doImmediateRespawn',
     /**
-     * @beta
      * @remarks
      * Controls whether players deal with the effects of not
      * sleeping (such as Phantom spawning).
@@ -55,7 +48,6 @@ export enum GameRule {
      */
     DoInsomnia = 'doInsomnia',
     /**
-     * @beta
      * @remarks
      * Determines whether players should be able to craft only
      * those recipes that they've unlocked first - when
@@ -64,63 +56,54 @@ export enum GameRule {
      */
     DoLimitedCrafting = 'doLimitedCrafting',
     /**
-     * @beta
      * @remarks
      * Controls whether mobs drop loot.
      *
      */
     DoMobLoot = 'doMobLoot',
     /**
-     * @beta
      * @remarks
      * Controls whether mobs spawn naturally in the world.
      *
      */
     DoMobSpawning = 'doMobSpawning',
     /**
-     * @beta
      * @remarks
      * Controls whether blocks drop items when destroyed.
      *
      */
     DoTileDrops = 'doTileDrops',
     /**
-     * @beta
      * @remarks
      * Controls whether the weather can change naturally.
      *
      */
     DoWeatherCycle = 'doWeatherCycle',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from drowning.
      *
      */
     DrowningDamage = 'drowningDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from falling.
      *
      */
     FallDamage = 'fallDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether entities take damage from fire.
      *
      */
     FireDamage = 'fireDamage',
     /**
-     * @beta
      * @remarks
      * Controls whether there is damage from freezing.
      *
      */
     FreezeDamage = 'freezeDamage',
     /**
-     * @beta
      * @remarks
      * The maximum number of commands that can be executed
      * simultaneously by the /function command.
@@ -128,7 +111,6 @@ export enum GameRule {
      */
     FunctionCommandLimit = 'functionCommandLimit',
     /**
-     * @beta
      * @remarks
      * Controls whether players keep their inventories when they
      * die.
@@ -136,7 +118,6 @@ export enum GameRule {
      */
     KeepInventory = 'keepInventory',
     /**
-     * @beta
      * @remarks
      * The maximum number of chained commands that can execute per
      * tick.
@@ -144,7 +125,6 @@ export enum GameRule {
      */
     MaxCommandChainLength = 'maxCommandChainLength',
     /**
-     * @beta
      * @remarks
      * Controls whether mob griefing can happen in the world.
      * Example: A Creeper explosion destroying blocks.
@@ -152,14 +132,12 @@ export enum GameRule {
      */
     MobGriefing = 'mobGriefing',
     /**
-     * @beta
      * @remarks
      * Controls whether players can regenerate health.
      *
      */
     NaturalRegeneration = 'naturalRegeneration',
     /**
-     * @beta
      * @remarks
      * The percentage of players required to be sleeping in order
      * to advance to the next day.
@@ -167,7 +145,6 @@ export enum GameRule {
      */
     PlayersSleepingPercentage = 'playersSleepingPercentage',
     /**
-     * @beta
      * @remarks
      * Controls whether projectiles (entities with a projectile
      * component, like Arrows, thrown Tridents or Fireworks) can
@@ -178,14 +155,12 @@ export enum GameRule {
      */
     ProjectilesCanBreakBlocks = 'projectilesCanBreakBlocks',
     /**
-     * @beta
      * @remarks
      * Controls whether players can damage each other.
      *
      */
     Pvp = 'pvp',
     /**
-     * @beta
      * @remarks
      * Controls how frequently random ticks occur. A value of 0 or
      * less will disable random ticks. The default value is 1.
@@ -193,7 +168,6 @@ export enum GameRule {
      */
     RandomTickSpeed = 'randomTickSpeed',
     /**
-     * @beta
      * @remarks
      * Controls whether built-in (vanilla) recipes automatically
      * unlock as the player progresses through the game (one
@@ -203,7 +177,6 @@ export enum GameRule {
      */
     RecipesUnlock = 'recipesUnlock',
     /**
-     * @beta
      * @remarks
      * Controls whether respawn blocks (e.g. Bed, Respawn Anchor)
      * explode in other dimensions.
@@ -211,7 +184,6 @@ export enum GameRule {
      */
     RespawnBlocksExplode = 'respawnBlocksExplode',
     /**
-     * @beta
      * @remarks
      * Controls whether command output is displayed to players.
      * Also controls whether Command Block output is stored by
@@ -220,29 +192,28 @@ export enum GameRule {
      */
     SendCommandFeedback = 'sendCommandFeedback',
     /**
-     * @beta
      * @remarks
      * Controls whether Border Block effects are shown.
      *
      */
     ShowBorderEffect = 'showBorderEffect',
     /**
-     * @beta
      * @remarks
      * Controls whether player coordinates are displayed.
      *
      */
     ShowCoordinates = 'showCoordinates',
-    ShowDaysPlayed = 'showDaysPlayed',
     /**
      * @beta
+     */
+    ShowDaysPlayed = 'showDaysPlayed',
+    /**
      * @remarks
      * Controls whether death messages are displayed in chat.
      *
      */
     ShowDeathMessages = 'showDeathMessages',
     /**
-     * @beta
      * @remarks
      * Controls whether standard player notifications for recipes
      * will show. When set to false, 'player unlocked recipes' are
@@ -251,7 +222,6 @@ export enum GameRule {
      */
     ShowRecipeMessages = 'showRecipeMessages',
     /**
-     * @beta
      * @remarks
      * Controls whether item tags are shown. E.g. 'Can Place On',
      * 'Can Destroy', item lock icons, etc.
@@ -259,7 +229,6 @@ export enum GameRule {
      */
     ShowTags = 'showTags',
     /**
-     * @beta
      * @remarks
      * The block radius from world spawn that a player is allowed
      * to spawn in. Does not affect Adventure mode. The default
@@ -268,7 +237,6 @@ export enum GameRule {
      */
     SpawnRadius = 'spawnRadius',
     /**
-     * @beta
      * @remarks
      * Affects whether TNT blocks can be lit.
      *

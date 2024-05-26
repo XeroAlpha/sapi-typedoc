@@ -5,7 +5,6 @@
  */
 export enum WatchdogTerminateReason {
     /**
-     * @beta
      * @remarks
      * Script runtime for a behavior pack is terminated due to
      * non-responsiveness from script (a hang or infinite loop).
@@ -13,7 +12,6 @@ export enum WatchdogTerminateReason {
      */
     Hang = 'Hang',
     /**
-     * @beta
      * @remarks
      * Script runtime for a behavior pack is terminated due to a
      * stack overflow (a long, and potentially infinite) chain of

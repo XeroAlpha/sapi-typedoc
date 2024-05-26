@@ -6,7 +6,6 @@
  */
 export enum CompoundBlockVolumeAction {
     /**
-     * @beta
      * @remarks
      * The associated BlockVolume is considered a positive space,
      * and any intersection tests are considered hits
@@ -14,7 +13,6 @@ export enum CompoundBlockVolumeAction {
      */
     Add = 0,
     /**
-     * @beta
      * @remarks
      * The associated BlockVolume is considered a negative or void
      * space, and any intersection tests are considered misses.

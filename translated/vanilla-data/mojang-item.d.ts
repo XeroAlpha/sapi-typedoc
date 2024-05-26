@@ -56,6 +56,8 @@ export declare enum MinecraftItemTypes {
     AncientDebris = "minecraft:ancient_debris",
     /** 安山岩。 */
     Andesite = "minecraft:andesite",
+    /** 安山岩台阶。 */
+    AndesiteSlab = "minecraft:andesite_slab",
     /** 安山岩楼梯。 */
     AndesiteStairs = "minecraft:andesite_stairs",
     /** 垂钓纹样陶片。 */
@@ -128,7 +130,6 @@ export declare enum MinecraftItemTypes {
     BambooTrapdoor = "minecraft:bamboo_trapdoor",
     /** 旗帜。 */
     Banner = "minecraft:banner",
-    BannerPattern = "minecraft:banner_pattern",
     /** 木桶。 */
     Barrel = "minecraft:barrel",
     /** 屏障。 */
@@ -261,7 +262,6 @@ export declare enum MinecraftItemTypes {
     BlueTerracotta = "minecraft:blue_terracotta",
     /** 蓝色羊毛。 */
     BlueWool = "minecraft:blue_wool",
-    Boat = "minecraft:boat",
     /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
     /** 镶铆盔甲纹饰锻造模板。 */
@@ -362,7 +362,6 @@ export declare enum MinecraftItemTypes {
     Campfire = "minecraft:campfire",
     /** 蜡烛。 */
     Candle = "minecraft:candle",
-    Carpet = "minecraft:carpet",
     /** 胡萝卜。 */
     Carrot = "minecraft:carrot",
     /** 胡萝卜钓竿。 */
@@ -427,7 +426,6 @@ export declare enum MinecraftItemTypes {
     CherryWood = "minecraft:cherry_wood",
     /** 箱子。 */
     Chest = "minecraft:chest",
-    ChestBoat = "minecraft:chest_boat",
     /** 运输矿车。 */
     ChestMinecart = "minecraft:chest_minecart",
     /** 鸡。 */
@@ -444,6 +442,8 @@ export declare enum MinecraftItemTypes {
     ChiseledNetherBricks = "minecraft:chiseled_nether_bricks",
     /** 雕纹磨制黑石。 */
     ChiseledPolishedBlackstone = "minecraft:chiseled_polished_blackstone",
+    /** 雕纹石砖。 */
+    ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
     /** 雕纹凝灰岩。 */
     ChiseledTuff = "minecraft:chiseled_tuff",
     /** 雕纹凝灰岩砖。 */
@@ -454,7 +454,7 @@ export declare enum MinecraftItemTypes {
     ChorusFruit = "minecraft:chorus_fruit",
     /** 紫颂植株。 */
     ChorusPlant = "minecraft:chorus_plant",
-    /** 黏土。 */
+    /** 黏土块。 */
     Clay = "minecraft:clay",
     /** 黏土球。 */
     ClayBall = "minecraft:clay_ball",
@@ -500,8 +500,6 @@ export declare enum MinecraftItemTypes {
     Compass = "minecraft:compass",
     /** 堆肥桶。 */
     Composter = "minecraft:composter",
-    Concrete = "minecraft:concrete",
-    ConcretePowder = "minecraft:concrete_powder",
     /** 潮涌核心。 */
     Conduit = "minecraft:conduit",
     /** 牛排。 */
@@ -534,10 +532,6 @@ export declare enum MinecraftItemTypes {
     CopperOre = "minecraft:copper_ore",
     /** 铜活板门。 */
     CopperTrapdoor = "minecraft:copper_trapdoor",
-    Coral = "minecraft:coral",
-    CoralBlock = "minecraft:coral_block",
-    CoralFan = "minecraft:coral_fan",
-    CoralFanDead = "minecraft:coral_fan_dead",
     /** 矢车菊。 */
     Cornflower = "minecraft:cornflower",
     /** 牛刷怪蛋。 */
@@ -550,6 +544,8 @@ export declare enum MinecraftItemTypes {
     CrackedNetherBricks = "minecraft:cracked_nether_bricks",
     /** 裂纹磨制黑石砖。 */
     CrackedPolishedBlackstoneBricks = "minecraft:cracked_polished_blackstone_bricks",
+    /** 裂纹石砖。 */
+    CrackedStoneBricks = "minecraft:cracked_stone_bricks",
     /** 合成器。 */
     Crafter = "minecraft:crafter",
     /** 工作台。 */
@@ -658,6 +654,8 @@ export declare enum MinecraftItemTypes {
     DarkOakTrapdoor = "minecraft:dark_oak_trapdoor",
     /** 深色橡木。 */
     DarkOakWood = "minecraft:dark_oak_wood",
+    /** 暗海晶石台阶。 */
+    DarkPrismarineSlab = "minecraft:dark_prismarine_slab",
     /** 暗海晶石楼梯。 */
     DarkPrismarineStairs = "minecraft:dark_prismarine_stairs",
     /** 阳光探测器。 */
@@ -762,6 +760,8 @@ export declare enum MinecraftItemTypes {
     DiamondSword = "minecraft:diamond_sword",
     /** 闪长岩。 */
     Diorite = "minecraft:diorite",
+    /** 闪长岩台阶。 */
+    DioriteSlab = "minecraft:diorite_slab",
     /** 闪长岩楼梯。 */
     DioriteStairs = "minecraft:diorite_stairs",
     /** 泥土/砂土。 */
@@ -776,7 +776,6 @@ export declare enum MinecraftItemTypes {
     DolphinSpawnEgg = "minecraft:dolphin_spawn_egg",
     /** 驴刷怪蛋。 */
     DonkeySpawnEgg = "minecraft:donkey_spawn_egg",
-    DoublePlant = "minecraft:double_plant",
     /** 龙息。 */
     DragonBreath = "minecraft:dragon_breath",
     /** 龙蛋。 */
@@ -793,7 +792,6 @@ export declare enum MinecraftItemTypes {
     DrownedSpawnEgg = "minecraft:drowned_spawn_egg",
     /** 沙丘盔甲纹饰锻造模板。 */
     DuneArmorTrimSmithingTemplate = "minecraft:dune_armor_trim_smithing_template",
-    Dye = "minecraft:dye",
     /** 回响碎片。 */
     EchoShard = "minecraft:echo_shard",
     /** 鸡蛋。 */
@@ -828,6 +826,8 @@ export declare enum MinecraftItemTypes {
     EndRod = "minecraft:end_rod",
     /** 末地石。 */
     EndStone = "minecraft:end_stone",
+    /** 末地石砖台阶。 */
+    EndStoneBrickSlab = "minecraft:end_stone_brick_slab",
     /** 末影箱。 */
     EnderChest = "minecraft:ender_chest",
     /** 末影龙刷怪蛋。 */
@@ -870,7 +870,6 @@ export declare enum MinecraftItemTypes {
     Farmland = "minecraft:farmland",
     /** 羽毛。 */
     Feather = "minecraft:feather",
-    Fence = "minecraft:fence",
     /** 橡木栅栏门。 */
     FenceGate = "minecraft:fence_gate",
     /** 发酵蛛眼。 */
@@ -997,11 +996,13 @@ export declare enum MinecraftItemTypes {
     GoldenSword = "minecraft:golden_sword",
     /** 花岗岩。 */
     Granite = "minecraft:granite",
+    /** 花岗岩台阶。 */
+    GraniteSlab = "minecraft:granite_slab",
     /** 花岗岩楼梯。 */
     GraniteStairs = "minecraft:granite_stairs",
     /** 草方块。 */
     GrassBlock = "minecraft:grass_block",
-    /** 草径。 */
+    /** 土径。 */
     GrassPath = "minecraft:grass_path",
     /** 沙砾。 */
     Gravel = "minecraft:gravel",
@@ -1061,8 +1062,6 @@ export declare enum MinecraftItemTypes {
     GusterPotterySherd = "minecraft:guster_pottery_sherd",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
-    HardStainedGlass = "minecraft:hard_stained_glass",
-    HardStainedGlassPane = "minecraft:hard_stained_glass_pane",
     /** 陶瓦。 */
     HardenedClay = "minecraft:hardened_clay",
     /** 干草捆。 */
@@ -1107,8 +1106,20 @@ export declare enum MinecraftItemTypes {
     HuskSpawnEgg = "minecraft:husk_spawn_egg",
     /** 冰。 */
     Ice = "minecraft:ice",
+    /** 虫蚀雕纹石砖。 */
+    InfestedChiseledStoneBricks = "minecraft:infested_chiseled_stone_bricks",
+    /** 虫蚀圆石。 */
+    InfestedCobblestone = "minecraft:infested_cobblestone",
+    /** 虫蚀裂纹石砖。 */
+    InfestedCrackedStoneBricks = "minecraft:infested_cracked_stone_bricks",
     /** 虫蚀深板岩。 */
     InfestedDeepslate = "minecraft:infested_deepslate",
+    /** 虫蚀苔石砖。 */
+    InfestedMossyStoneBricks = "minecraft:infested_mossy_stone_bricks",
+    /** 虫蚀石头。 */
+    InfestedStone = "minecraft:infested_stone",
+    /** 虫蚀石砖。 */
+    InfestedStoneBricks = "minecraft:infested_stone_bricks",
     /** 墨囊。 */
     InkSac = "minecraft:ink_sac",
     /** 铁斧。 */
@@ -1217,8 +1228,6 @@ export declare enum MinecraftItemTypes {
     LeatherHorseArmor = "minecraft:leather_horse_armor",
     /** 皮革裤子。 */
     LeatherLeggings = "minecraft:leather_leggings",
-    Leaves = "minecraft:leaves",
-    Leaves2 = "minecraft:leaves2",
     /** 讲台。 */
     Lectern = "minecraft:lectern",
     /** 拉杆。 */
@@ -1307,8 +1316,6 @@ export declare enum MinecraftItemTypes {
     Lodestone = "minecraft:lodestone",
     /** 磁石指针。 */
     LodestoneCompass = "minecraft:lodestone_compass",
-    Log = "minecraft:log",
-    Log2 = "minecraft:log2",
     /** 织布机。 */
     Loom = "minecraft:loom",
     /** 重锤。 */
@@ -1395,8 +1402,6 @@ export declare enum MinecraftItemTypes {
     MobSpawner = "minecraft:mob_spawner",
     /** Mojang徽标旗帜图案。 */
     MojangBannerPattern = "minecraft:mojang_banner_pattern",
-    /** 虫蚀石头/虫蚀圆石/虫蚀石砖/虫蚀苔石砖/虫蚀裂纹石砖/虫蚀雕纹石砖。 */
-    MonsterEgg = "minecraft:monster_egg",
     /** 哞菇刷怪蛋。 */
     MooshroomSpawnEgg = "minecraft:mooshroom_spawn_egg",
     /** 苔藓块。 */
@@ -1405,10 +1410,14 @@ export declare enum MinecraftItemTypes {
     MossCarpet = "minecraft:moss_carpet",
     /** 苔石。 */
     MossyCobblestone = "minecraft:mossy_cobblestone",
+    /** 苔石台阶。 */
+    MossyCobblestoneSlab = "minecraft:mossy_cobblestone_slab",
     /** 苔石楼梯。 */
     MossyCobblestoneStairs = "minecraft:mossy_cobblestone_stairs",
     /** 苔石砖楼梯。 */
     MossyStoneBrickStairs = "minecraft:mossy_stone_brick_stairs",
+    /** 苔石砖。 */
+    MossyStoneBricks = "minecraft:mossy_stone_bricks",
     /** 悲恸纹样陶片。 */
     MournerPotterySherd = "minecraft:mourner_pottery_sherd",
     /** 泥巴。 */
@@ -1473,7 +1482,7 @@ export declare enum MinecraftItemTypes {
     NameTag = "minecraft:name_tag",
     /** 鹦鹉螺壳。 */
     NautilusShell = "minecraft:nautilus_shell",
-    /** 下界砖。 */
+    /** 下界砖块。 */
     NetherBrick = "minecraft:nether_brick",
     /** 下界砖栅栏。 */
     NetherBrickFence = "minecraft:nether_brick_fence",
@@ -1491,7 +1500,7 @@ export declare enum MinecraftItemTypes {
     NetherWart = "minecraft:nether_wart",
     /** 下界疣块。 */
     NetherWartBlock = "minecraft:nether_wart_block",
-    /** 下界砖块。 */
+    /** 下界砖。 */
     Netherbrick = "minecraft:netherbrick",
     /** 下界合金斧。 */
     NetheriteAxe = "minecraft:netherite_axe",
@@ -1669,7 +1678,6 @@ export declare enum MinecraftItemTypes {
     PitcherPlant = "minecraft:pitcher_plant",
     /** 瓶子草荚果。 */
     PitcherPod = "minecraft:pitcher_pod",
-    Planks = "minecraft:planks",
     /** 富饶纹样陶片。 */
     PlentyPotterySherd = "minecraft:plenty_pottery_sherd",
     /** 灰化土。 */
@@ -1682,6 +1690,8 @@ export declare enum MinecraftItemTypes {
     PolarBearSpawnEgg = "minecraft:polar_bear_spawn_egg",
     /** 磨制安山岩。 */
     PolishedAndesite = "minecraft:polished_andesite",
+    /** 磨制安山岩台阶。 */
+    PolishedAndesiteSlab = "minecraft:polished_andesite_slab",
     /** 磨制安山岩楼梯。 */
     PolishedAndesiteStairs = "minecraft:polished_andesite_stairs",
     /** 磨制玄武岩。 */
@@ -1716,10 +1726,14 @@ export declare enum MinecraftItemTypes {
     PolishedDeepslateWall = "minecraft:polished_deepslate_wall",
     /** 磨制闪长岩。 */
     PolishedDiorite = "minecraft:polished_diorite",
+    /** 磨制闪长岩台阶。 */
+    PolishedDioriteSlab = "minecraft:polished_diorite_slab",
     /** 磨制闪长岩楼梯。 */
     PolishedDioriteStairs = "minecraft:polished_diorite_stairs",
     /** 磨制花岗岩。 */
     PolishedGranite = "minecraft:polished_granite",
+    /** 磨制花岗岩台阶。 */
+    PolishedGraniteSlab = "minecraft:polished_granite_slab",
     /** 磨制花岗岩楼梯。 */
     PolishedGraniteStairs = "minecraft:polished_granite_stairs",
     /** 磨制凝灰岩。 */
@@ -1744,12 +1758,16 @@ export declare enum MinecraftItemTypes {
     PowderSnowBucket = "minecraft:powder_snow_bucket",
     /** 海晶石/暗海晶石/海晶石砖。 */
     Prismarine = "minecraft:prismarine",
+    /** 海晶石砖台阶。 */
+    PrismarineBrickSlab = "minecraft:prismarine_brick_slab",
     /** 海晶石砖楼梯。 */
     PrismarineBricksStairs = "minecraft:prismarine_bricks_stairs",
     /** 海晶砂粒。 */
     PrismarineCrystals = "minecraft:prismarine_crystals",
     /** 海晶碎片。 */
     PrismarineShard = "minecraft:prismarine_shard",
+    /** 海晶石台阶。 */
+    PrismarineSlab = "minecraft:prismarine_slab",
     /** 海晶石楼梯。 */
     PrismarineStairs = "minecraft:prismarine_stairs",
     /** 珍宝纹样陶片。 */
@@ -1790,6 +1808,8 @@ export declare enum MinecraftItemTypes {
     PurpleWool = "minecraft:purple_wool",
     /** 紫珀块/雕纹紫珀块/紫珀柱/平滑紫珀块。 */
     PurpurBlock = "minecraft:purpur_block",
+    /** 紫珀台阶。 */
+    PurpurSlab = "minecraft:purpur_slab",
     /** 紫珀楼梯。 */
     PurpurStairs = "minecraft:purpur_stairs",
     /** 下界石英。 */
@@ -1844,7 +1864,6 @@ export declare enum MinecraftItemTypes {
     RedConcretePowder = "minecraft:red_concrete_powder",
     /** 红色染料。 */
     RedDye = "minecraft:red_dye",
-    RedFlower = "minecraft:red_flower",
     /** 红色带釉陶瓦。 */
     RedGlazedTerracotta = "minecraft:red_glazed_terracotta",
     /** 红色蘑菇。 */
@@ -1853,10 +1872,14 @@ export declare enum MinecraftItemTypes {
     RedMushroomBlock = "minecraft:red_mushroom_block",
     /** 红色下界砖块。 */
     RedNetherBrick = "minecraft:red_nether_brick",
+    /** 红色下界砖台阶。 */
+    RedNetherBrickSlab = "minecraft:red_nether_brick_slab",
     /** 红色下界砖楼梯。 */
     RedNetherBrickStairs = "minecraft:red_nether_brick_stairs",
     /** 红砂岩/雕纹红砂岩/切制红砂岩/平滑红砂岩。 */
     RedSandstone = "minecraft:red_sandstone",
+    /** 红砂岩台阶。 */
+    RedSandstoneSlab = "minecraft:red_sandstone_slab",
     /** 红砂岩楼梯。 */
     RedSandstoneStairs = "minecraft:red_sandstone_stairs",
     /** 红色潜影盒。 */
@@ -1911,7 +1934,6 @@ export declare enum MinecraftItemTypes {
     SandstoneSlab = "minecraft:sandstone_slab",
     /** 砂岩楼梯。 */
     SandstoneStairs = "minecraft:sandstone_stairs",
-    Sapling = "minecraft:sapling",
     /** 脚手架。 */
     Scaffolding = "minecraft:scaffolding",
     /** 刮削纹样陶片。 */
@@ -1950,7 +1972,6 @@ export declare enum MinecraftItemTypes {
     ShortGrass = "minecraft:short_grass",
     /** 菌光体。 */
     Shroomlight = "minecraft:shroomlight",
-    ShulkerBox = "minecraft:shulker_box",
     /** 潜影壳。 */
     ShulkerShell = "minecraft:shulker_shell",
     /** 潜影贝刷怪蛋。 */
@@ -1989,8 +2010,12 @@ export declare enum MinecraftItemTypes {
     SmoothBasalt = "minecraft:smooth_basalt",
     /** 平滑石英楼梯。 */
     SmoothQuartzStairs = "minecraft:smooth_quartz_stairs",
+    /** 平滑红砂岩台阶。 */
+    SmoothRedSandstoneSlab = "minecraft:smooth_red_sandstone_slab",
     /** 平滑红砂岩楼梯。 */
     SmoothRedSandstoneStairs = "minecraft:smooth_red_sandstone_stairs",
+    /** 平滑砂岩台阶。 */
+    SmoothSandstoneSlab = "minecraft:smooth_sandstone_slab",
     /** 平滑砂岩楼梯。 */
     SmoothSandstoneStairs = "minecraft:smooth_sandstone_stairs",
     /** 平滑石头。 */
@@ -2023,7 +2048,6 @@ export declare enum MinecraftItemTypes {
     SoulSoil = "minecraft:soul_soil",
     /** 灵魂火把。 */
     SoulTorch = "minecraft:soul_torch",
-    SpawnEgg = "minecraft:spawn_egg",
     /** 蜘蛛眼。 */
     SpiderEye = "minecraft:spider_eye",
     /** 蜘蛛刷怪蛋。 */
@@ -2074,28 +2098,22 @@ export declare enum MinecraftItemTypes {
     Spyglass = "minecraft:spyglass",
     /** 鱿鱼刷怪蛋。 */
     SquidSpawnEgg = "minecraft:squid_spawn_egg",
-    StainedGlass = "minecraft:stained_glass",
-    StainedGlassPane = "minecraft:stained_glass_pane",
-    StainedHardenedClay = "minecraft:stained_hardened_clay",
     /** 木棍。 */
     Stick = "minecraft:stick",
     /** 黏性活塞。 */
     StickyPiston = "minecraft:sticky_piston",
-    /** 石头/花岗岩/磨制花岗岩/闪长岩/磨制闪长岩/安山岩/磨制安山岩。 */
+    /** 石头。 */
     Stone = "minecraft:stone",
     /** 石斧。 */
     StoneAxe = "minecraft:stone_axe",
-    StoneBlockSlab = "minecraft:stone_block_slab",
-    /** 红砂岩台阶/紫珀台阶/海晶石台阶/暗海晶石台阶/海晶石砖台阶/苔石台阶/平滑砂岩台阶/红色下界砖台阶。 */
-    StoneBlockSlab2 = "minecraft:stone_block_slab2",
-    /** 末地石砖台阶/平滑红砂岩台阶/磨制安山岩台阶/安山岩台阶/闪长岩台阶/磨制闪长岩台阶/花岗岩台阶/磨制花岗岩台阶。 */
-    StoneBlockSlab3 = "minecraft:stone_block_slab3",
     /** 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。 */
     StoneBlockSlab4 = "minecraft:stone_block_slab4",
     /** 石砖台阶。 */
     StoneBrickSlab = "minecraft:stone_brick_slab",
     /** 石砖楼梯。 */
     StoneBrickStairs = "minecraft:stone_brick_stairs",
+    /** 石砖。 */
+    StoneBricks = "minecraft:stone_bricks",
     /** 石头按钮。 */
     StoneButton = "minecraft:stone_button",
     /** 石锄。 */
@@ -2106,12 +2124,10 @@ export declare enum MinecraftItemTypes {
     StonePressurePlate = "minecraft:stone_pressure_plate",
     /** 石锹。 */
     StoneShovel = "minecraft:stone_shovel",
-    /** 石头楼梯。 */
+    /** 圆石楼梯。 */
     StoneStairs = "minecraft:stone_stairs",
     /** 石剑。 */
     StoneSword = "minecraft:stone_sword",
-    /** 石砖/苔石砖/裂纹石砖/雕纹石砖。 */
-    Stonebrick = "minecraft:stonebrick",
     /** 切石机。 */
     StonecutterBlock = "minecraft:stonecutter_block",
     /** 流浪者刷怪蛋。 */
@@ -2186,7 +2202,6 @@ export declare enum MinecraftItemTypes {
     TadpoleSpawnEgg = "minecraft:tadpole_spawn_egg",
     /** 高草丛。 */
     TallGrass = "minecraft:tall_grass",
-    Tallgrass = "minecraft:tallgrass",
     /** 标靶。 */
     Target = "minecraft:target",
     /** 潮汐盔甲纹饰锻造模板。 */
@@ -2459,7 +2474,6 @@ export declare enum MinecraftItemTypes {
     WolfArmor = "minecraft:wolf_armor",
     /** 狼刷怪蛋。 */
     WolfSpawnEgg = "minecraft:wolf_spawn_egg",
-    Wood = "minecraft:wood",
     /** 木斧。 */
     WoodenAxe = "minecraft:wooden_axe",
     /** 橡木按钮。 */
@@ -2474,10 +2488,8 @@ export declare enum MinecraftItemTypes {
     WoodenPressurePlate = "minecraft:wooden_pressure_plate",
     /** 木锹。 */
     WoodenShovel = "minecraft:wooden_shovel",
-    WoodenSlab = "minecraft:wooden_slab",
     /** 木剑。 */
     WoodenSword = "minecraft:wooden_sword",
-    Wool = "minecraft:wool",
     /** 书与笔。 */
     WritableBook = "minecraft:writable_book",
     /** 黄色蜡烛。 */

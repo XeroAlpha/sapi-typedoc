@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.0-preview.26"
+ *   "version": "0.1.0-beta.1.21.10-preview.20"
  * }
  * ```
  *
@@ -752,6 +752,28 @@ export class BrushShapeManager {
     uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
 
+export class ClipboardChangeAfterEvent {
+    private constructor();
+    readonly isPrimary: boolean;
+    readonly itemId: string;
+}
+
+export class ClipboardChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    subscribe(callback: (arg: ClipboardChangeAfterEvent) => void): (arg: ClipboardChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    unsubscribe(callback: (arg: ClipboardChangeAfterEvent) => void): void;
+}
+
 /**
  * A ClipboardItem is a handle to an object which represents a
  * set of blocks in a contained bounding area (most likely
@@ -968,6 +990,27 @@ export class Cursor {
     readonly isVisible: boolean;
     /**
      * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    attachClipboardItem(item: ClipboardItem): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    clearAttachment(): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getAttachmentProperties(): CursorAttachmentProperties;
+    /**
+     * @remarks
      * Get the world position of the 3D block cursor
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1024,6 +1067,13 @@ export class Cursor {
     resetToDefaultState(): void;
     /**
      * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    setAttachmentProperties(properties: CursorAttachmentProperties): void;
+    /**
+     * @remarks
      * Set the 3D block cursor properties to a given state
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1043,6 +1093,29 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     show(): void;
+}
+
+export class CursorAttachmentPropertiesChangeAfterEvent {
+    private constructor();
+    readonly properties: CursorAttachmentProperties;
+}
+
+export class CursorAttachmentPropertyChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    subscribe(
+        callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void,
+    ): (arg: CursorAttachmentPropertiesChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    unsubscribe(callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void): void;
 }
 
 export class CursorPropertiesChangeAfterEvent {
@@ -1249,6 +1322,8 @@ export class ExtensionContext {
  */
 export class ExtensionContextAfterEvents {
     private constructor();
+    readonly clipboardChange: ClipboardChangeAfterEventSignal;
+    readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
      * @remarks
@@ -1794,18 +1869,14 @@ export class SettingsManager {
 
 export class SettingsUIElement {
     readonly initialValue: boolean | number | string | minecraftserver.Vector3;
-    readonly max?: number;
-    readonly min?: number;
     readonly name: string;
-    readonly onChange: (arg: boolean | number | string | minecraftserver.Vector3) => boolean;
-    readonly options?: string[];
+    readonly onChange: (arg: boolean | number | string | minecraftserver.Vector3) => void;
+    readonly options: SettingsUIElementOptions;
     constructor(
         name: string,
         initialValue: boolean | number | string | minecraftserver.Vector3,
-        onChange: (arg: boolean | number | string | minecraftserver.Vector3) => boolean,
-        min?: number,
-        max?: number,
-        options?: string[],
+        onChange: (arg: boolean | number | string | minecraftserver.Vector3) => void,
+        options?: SettingsUIElementOptions,
     );
 }
 
@@ -1821,9 +1892,37 @@ export class SimpleBlockPaletteItem extends IBlockPaletteItem {
  * how to use this class and the wrapper framework
  */
 export declare class SimpleToolWrapper implements IDisposable {
+    /**
+     * @remarks
+     * The player UI session that the tool is running in Use this
+     * to access the player UI session, or any of the session's
+     * components
+     *
+     */
     get session(): IPlayerUISession;
+    /**
+     * @remarks
+     * The simple tool instance that is created and managed by the
+     * wrapper Use this to access any of the tools components, or
+     * mess with the tools window visibility
+     *
+     */
     get simpleTool(): ISimpleTool;
+    /**
+     * @remarks
+     * Setup the simple tool instance with the given options This
+     * will create and initialize the simple tool instance
+     *
+     */
     setupSimpleTool(session: IPlayerUISession, options: ISimpleToolOptions): void;
+    /**
+     * @remarks
+     * Teardown the simple tool instance This will call the
+     * teardown function on the simple tool instance This function
+     * is automatically invoked by the Editor Extension system when
+     * the editor is shutting down
+     *
+     */
     teardown(): void;
 }
 
@@ -2289,6 +2388,18 @@ export interface ClipboardWriteOptions {
     rotation?: minecraftserver.StructureRotation;
 }
 
+export interface CursorAttachmentProperties {
+    boundsFillColor?: minecraftserver.RGBA;
+    boundsVisible?: boolean;
+    boundsWireframeColor?: minecraftserver.RGBA;
+    contentsFillColor?: minecraftserver.RGBA;
+    contentsWireframeColor?: minecraftserver.RGBA;
+    mirror?: minecraftserver.StructureMirrorAxis;
+    offset?: minecraftserver.Vector3;
+    origin?: minecraftserver.Vector3;
+    rotation?: minecraftserver.StructureRotation;
+}
+
 /**
  * The CursorProperties interface is used to describe the
  * properties of the Editor 3D block cursor construct.
@@ -2322,6 +2433,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
+    fillColor?: minecraftserver.RGBA;
     /**
      * @remarks
      * The fixed distance from the players feet at which the cursor
@@ -2452,6 +2564,13 @@ export interface ProjectExportOptions {
     exportType: ProjectExportType;
     gameMode?: minecraftserver.GameMode;
     initialTimOfDay?: number;
+}
+
+export interface SettingsUIElementOptions {
+    dropdownItems?: string[];
+    max?: number;
+    min?: number;
+    refreshOnChange?: boolean;
 }
 
 export interface WidgetCreateOptions {
@@ -2626,6 +2745,12 @@ export interface IMenu {
     checked?: boolean;
     /**
      * @remarks
+     * The menu will be in either an enabled or disabled state
+     *
+     */
+    enabled: boolean;
+    /**
+     * @remarks
      * Unique ID for the menu
      *
      */
@@ -2682,6 +2807,12 @@ export interface IMenuCreationParams {
      *
      */
     displayStringId?: string;
+    /**
+     * @remarks
+     * Whether the menu should be enabled or disabled
+     *
+     */
+    enabled?: boolean;
     /**
      * @remarks
      * The name of the menu
@@ -3303,46 +3434,127 @@ export interface IRegisterExtensionOptionalParameters {
  * the editor evolves.
  */
 export interface ISimpleTool {
+    /**
+     * @remarks
+     * Get a reference to the menu component that was automatically
+     * created for the tool This generally only happens if the tool
+     * is a global tool (i.e. has a pane and does not have a tool
+     * rail component) In this case a menu item is automatically
+     * created and some visibility controls are inserted. If you
+     * have additional menu options you want to add, this is the
+     * ideal control to add children to
+     *
+     */
     get menu(): IMenu | undefined;
+    /**
+     * @remarks
+     * Get the tool name
+     *
+     */
     get name(): string;
+    /**
+     * @remarks
+     * Get a reference to the root (primary) property pane
+     * component - if no component was requested, this function
+     * will throw an error
+     *
+     */
     get pane(): ISimpleToolPaneComponent;
+    /**
+     * @remarks
+     * Get a reference to the IPlayerUISession. This is the primary
+     * interface to the editor UI and all of the editor extension
+     * controls
+     *
+     */
     get session(): IPlayerUISession;
+    /**
+     * @remarks
+     * Get a reference to the status bar component - if no
+     * component was requested, this function will throw an error
+     *
+     */
     get statusBar(): ISimpleToolStatusBarComponent;
+    /**
+     * @remarks
+     * Get a reference to the tool rail component - if no component
+     * was requested, this function will throw an error
+     *
+     */
     get toolRail(): ISimpleToolRailComponent;
     /**
      * @remarks
+     * Find a pane or subpane by it's unique ID.
+     *
      */
     findPane(idString: string): ISimpleToolPaneComponent | undefined;
     /**
      * @remarks
+     * Hide a particular pane or subpane by it's unique ID. If no
+     * ID is provided (or cannot be found) the function will throw
+     * an error Although the parent pane is used to execute the
+     * visibility request, the hidePane function will NOT affect
+     * the visibility of any sibling panes -- so it is possible to
+     * hide all of the child panes of a parent using this function
+     *
      */
     hidePane(idString?: string): void;
     /**
      * @remarks
+     * Send a tagged Debug log message to the console. The tag will
+     * contain the tool name
+     *
      */
     logDebug(message: string): void;
     /**
      * @remarks
+     * Send a tagged Error log message to the console. The tag will
+     * contain the tool name
+     *
      */
     logError(message: string): void;
     /**
      * @remarks
+     * Send a tagged Informational log message to the console. The
+     * tag will contain the tool name
+     *
      */
     logInfo(message: string): void;
     /**
      * @remarks
+     * Send a tagged Warning log message to the console. The tag
+     * will contain the tool name
+     *
      */
     logWarn(message: string): void;
     /**
      * @remarks
+     * Show a particular pane or subpane by it's unique ID. If no
+     * ID is provided (or cannot be found) the function will throw
+     * an error Note that the showPane function (when used with a
+     * child pane) will use the parent pane to execute the
+     * visibility request. In this case, if the child panes are
+     * marked as mututally exclusive, then the siblings of the
+     * requested pane will be hidden
+     *
      */
     showPane(idString?: string): void;
     /**
      * @remarks
+     * Much like the showPane function, but will hide all other
+     * panes that are not the requested pane irrespective of the
+     * exclusivity setting
+     *
      */
     showPaneExclusively(idString: string): void;
     /**
      * @remarks
+     * A teardown function implemented by the ISimpleTool
+     * implementation, and is called by the system during editor
+     * extension shutdown. Don't override this function - instead,
+     * implement the onTeardown event in the ISimpleToolOptions
+     * structure
+     *
      */
     teardown(): void;
 }
@@ -3361,12 +3573,61 @@ export interface ISimpleToolKeyPair {
  * simple tool, and the optional components that are desired.
  */
 export interface ISimpleToolOptions {
+    /**
+     * @remarks
+     * A key binding that will activate the tool. Note that if the
+     * tool is a modal tool, then the key binding will be tied to
+     * the tool rail activation, and appear as a tooltip on the
+     * tool rail button. If the tool is a global tool, then the key
+     * binding will be tied to a menu item in the View menu, and
+     * appear as a stateful menu item which will control the pane
+     * visibility. If there's no pane required, then the key
+     * binding is ignored
+     *
+     */
     activationKeyBinding?: ISimpleToolKeyPair;
+    /**
+     * @remarks
+     * The name of the tool. This will be used to identify the tool
+     * in the UI and logs and will be used in the View \> [Tool
+     * Name] menu item (if it's a global tool)
+     *
+     */
     name: string;
+    /**
+     * @remarks
+     * The finalize function is executed after each of the
+     * components have been created and finalized during
+     * construction
+     *
+     */
     onFinalize?: (tool: ISimpleTool) => void;
+    /**
+     * @remarks
+     * The teardown function is executed when the tool is being
+     * torn down and only after the individual components have
+     * executed their own teardown functions
+     *
+     */
     onTeardown?: (tool: ISimpleTool) => void;
+    /**
+     * @remarks
+     * The options structure for an optional property pane
+     * component
+     *
+     */
     propertyPaneOptions?: ISimpleToolPaneOptions;
+    /**
+     * @remarks
+     * The options structure for an optional status bar component
+     *
+     */
     statusBarOptions?: ISimpleToolStatusBarOptions;
+    /**
+     * @remarks
+     * The options structure for an optional tool rail component
+     *
+     */
     toolRailOptions?: ISimpleToolRailOptions;
 }
 
@@ -3385,26 +3646,83 @@ export interface ISimpleToolOptions {
  * to the creator/user)
  */
 export interface ISimpleToolPaneComponent {
+    /**
+     * @remarks
+     * Get a list of the unique ID's of all of the child panes
+     *
+     */
     get childPaneList(): string[];
+    /**
+     * @remarks
+     * Get the unique ID of the pane
+     *
+     */
     get id(): string;
+    /**
+     * @remarks
+     * Check the visibility of the pane
+     *
+     */
     get isVisible(): boolean;
+    /**
+     * @remarks
+     * Get a reference to actual property pane implementation that
+     * was constructed by the tool. This reference is used to
+     * construct the UI components that are displayed in the pane.
+     *
+     */
     get pane(): IPropertyPane;
+    /**
+     * @remarks
+     * Get a reference to the IPlayerUISession. This is the primary
+     * interface to the editor UI and all of the editor extension
+     * controls
+     *
+     */
     get session(): IPlayerUISession;
+    /**
+     * @remarks
+     * Get a reference to the parent tool.
+     *
+     */
     get simpleTool(): ISimpleTool;
     /**
      * @remarks
+     * Find a pane reference by unique ID
+     *
      */
     findPane(idString: string): ISimpleToolPaneComponent | undefined;
     /**
      * @remarks
+     * Hide the pane. Although the parent pane is used to execute
+     * the visibility request, the hidePane function will NOT
+     * affect the visibility of any sibling panes -- so it is
+     * possible to hide all of the child panes of a parent using
+     * this function
+     *
      */
     hidePane(): void;
     /**
      * @remarks
+     * This causes the reconstruction of the pane (and the child
+     * panes) as if the tool was being constructed for the first
+     * time. This is unfortunately necessary until such time that
+     * all of our UI components are able to communicate dynamically
+     * with their client counterparts. Certain controls require a
+     * full teardown and reconstruction to properly update their
+     * state. This is undergoing code changes and should become
+     * unnecessary in the future.
+     *
      */
     reconstructPane(): void;
     /**
      * @remarks
+     * Show the pane. Note, if this is a sub-pane, then this
+     * function will ask the parent for permission to show, and may
+     * result in the visibility of any sibling panes to change as a
+     * result (depending on the `mutually exclusive visibility`
+     * flag)
+     *
      */
     showPane(): void;
 }
@@ -3426,22 +3744,85 @@ export interface ISimpleToolPaneComponent {
  * pane to finalize itself.
  */
 export interface ISimpleToolPaneOptions {
+    /**
+     * @remarks
+     * The id of the child pane that should be visible when the
+     * parent pane is first shown, or the editor tool is
+     * constructed and finalized
+     *
+     */
     childPaneInitiallyVisible?: string;
+    /**
+     * @remarks
+     * An optional array of child panes. These panes are set up
+     * exactly the same as the top level pane, but are displayed as
+     * children inside the parent pane.
+     *
+     */
     childPanes?: ISimpleToolPaneOptions[];
+    /**
+     * @remarks
+     * An optional flag to indicate whether the child panes are
+     * mutually exclusive. If this is true, then only one child
+     * pane can be visible at a time. If this is false, then
+     * multiple child panes can be visible at the same time.
+     * Visibility is controlled either through `showPane` or
+     * `hidePane` functions of the `ISimpleToolPaneComponent` or
+     * through the visibility methods in the top level tool
+     * (`ISimpleTool`)
+     *
+     */
     childPanesMutuallyExclusive?: boolean;
+    /**
+     * @remarks
+     * The unique identifier for this pane. This is used to
+     * identify the pane in the tool's pane hierarchy.
+     *
+     */
     id: string;
     onBeginFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onEndFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onHide?: (pane: ISimpleToolPaneComponent) => void;
     onShow?: (pane: ISimpleToolPaneComponent) => void;
     onTeardown?: (pane: ISimpleToolPaneComponent) => void;
+    /**
+     * @remarks
+     * The title of the pane. This will be displayed in the title
+     * bar of the pane.
+     *
+     */
     titleAltText: string;
+    /**
+     * @remarks
+     * The string id of the title of the pane. This will be
+     * displayed in the title bar of the pane if it exists in the
+     * language file, otherwise the titleAltText will be used.
+     *
+     */
     titleStringId?: string;
 }
 
 export interface ISimpleToolRailComponent {
+    /**
+     * @remarks
+     * Get a reference to the IPlayerUISession. This is the primary
+     * interface to the editor UI and all of the editor extension
+     * controls
+     *
+     */
     get session(): IPlayerUISession;
+    /**
+     * @remarks
+     * Get a reference to the parent tool.
+     *
+     */
     get simpleTool(): ISimpleTool;
+    /**
+     * @remarks
+     * Get the implementation interface of the underlying tool rail
+     * component
+     *
+     */
     get toolRail(): IModalTool;
 }
 
@@ -3459,14 +3840,47 @@ export interface ISimpleToolRailComponent {
  * gameplay interaction
  */
 export interface ISimpleToolRailOptions {
+    /**
+     * @remarks
+     * The text for the tool description
+     *
+     */
     displayAltText: string;
+    /**
+     * @remarks
+     * The string ID for the tool description if it is in the
+     * localization language file.
+     *
+     */
     displayStringId?: string;
+    /**
+     * @remarks
+     * The icon for the tool rail button. This is generally a URL
+     * to an image file in the editor extension resource pack e.g.
+     * `pack://textures/my-tool-icon.png`
+     *
+     */
     icon: string;
     onActivate?: (component: ISimpleToolRailComponent) => void;
     onDeactivate?: (component: ISimpleToolRailComponent) => void;
     onFinalize?: (component: ISimpleToolRailComponent) => void;
     onTeardown?: (component: ISimpleToolRailComponent) => void;
+    /**
+     * @remarks
+     * The tooltip string for the tool rail button. Note: if an
+     * activation key binding was added to `ISimpleToolOptions`,
+     * then the key binding will be appended to the tooltip string.
+     *
+     */
     tooltipAltText: string;
+    /**
+     * @remarks
+     * The string ID for the tooltip string if it is in the
+     * localization language file. Note: if an activation key
+     * binding was added to `ISimpleToolOptions`, then the key
+     * binding will be appended to the tooltip string.
+     *
+     */
     tooltipStringId?: string;
 }
 
@@ -3483,13 +3897,36 @@ export interface ISimpleToolStatusBarComponent {
  * status bar item for a simple tool.
  */
 export interface ISimpleToolStatusBarOptions {
+    /**
+     * @remarks
+     * The alignment of the status bar item within the parent
+     * status bar container
+     *
+     */
     alignment: EditorStatusBarAlignment;
+    /**
+     * @remarks
+     * The text for the status bar item
+     *
+     */
     displayAltText: string;
     onFinalize?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onHide?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onShow?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onTeardown?: (statusBar: ISimpleToolStatusBarComponent) => void;
+    /**
+     * @remarks
+     * The size of the status bar item within the parent status bar
+     * container
+     *
+     */
     size: number;
+    /**
+     * @remarks
+     * Determine the status bar visibility based on the existence
+     * and visibility of the tool's root property pane
+     *
+     */
     visibility?: SimpleToolStatusBarVisibility;
 }
 
@@ -3574,6 +4011,20 @@ export declare function bindDataSource<T extends PropertyBag, Prop extends keyof
  */
 export declare function executeLargeOperation(
     selection: Selection,
+    operation: (blockLocation: minecraftserver.Vector3) => void,
+): Promise<void>;
+/**
+ * @remarks
+ * Executes an operation over a BlockLocationIterator via
+ * chunks to allow splitting operation over multiple game ticks
+ *
+ * @param blockLocationIterator
+ * the selection to iterator over
+ * @param operation
+ * the operation to apply over each block location
+ */
+export declare function executeLargeOperationFromIterator(
+    blockLocationIterator: minecraftserver.BlockLocationIterator,
     operation: (blockLocation: minecraftserver.Vector3) => void,
 ): Promise<void>;
 /**
