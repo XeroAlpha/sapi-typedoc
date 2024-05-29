@@ -441,6 +441,10 @@ export enum EntityComponentTypes {
      * @beta
      */
     Color2 = 'minecraft:color2',
+    /**
+     * @beta
+     */
+    CursorInventory = 'minecraft:cursor_inventory',
     Equippable = 'minecraft:equippable',
     FireImmune = 'minecraft:fire_immune',
     FloatsInLiquid = 'minecraft:floats_in_liquid',
@@ -1628,6 +1632,7 @@ export type EntityComponentTypeMap = {
     can_power_jump: EntityCanPowerJumpComponent;
     color: EntityColorComponent;
     color2: EntityColor2Component;
+    cursor_inventory: PlayerCursorInventoryComponent;
     equippable: EntityEquippableComponent;
     fire_immune: EntityFireImmuneComponent;
     floats_in_liquid: EntityFloatsInLiquidComponent;
@@ -1662,6 +1667,7 @@ export type EntityComponentTypeMap = {
     'minecraft:can_power_jump': EntityCanPowerJumpComponent;
     'minecraft:color': EntityColorComponent;
     'minecraft:color2': EntityColor2Component;
+    'minecraft:cursor_inventory': PlayerCursorInventoryComponent;
     'minecraft:equippable': EntityEquippableComponent;
     'minecraft:fire_immune': EntityFireImmuneComponent;
     'minecraft:floats_in_liquid': EntityFloatsInLiquidComponent;
@@ -6759,6 +6765,12 @@ export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     /**
      * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    airSupply: number;
+    /**
+     * @remarks
      * If true, this entity can breathe in air.
      *
      * @throws This property can throw when used.
@@ -6785,6 +6797,10 @@ export class EntityBreathableComponent extends EntityComponent {
      * @throws This property can throw when used.
      */
     readonly breathesWater: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly canBreathe: boolean;
     /**
      * @remarks
      * If true, this entity will have visible bubbles while in
@@ -6830,15 +6846,6 @@ export class EntityBreathableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     getNonBreatheBlocks(): BlockPermutation[];
-    /**
-     * @remarks
-     * Sets the current air supply of the entity.
-     *
-     * @param value
-     * New air supply for the entity.
-     * @throws This function can throw errors.
-     */
-    setAirSupply(value: number): void;
 }
 
 /**
@@ -12034,6 +12041,26 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      */
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerCursorInventoryComponent extends EntityComponent {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly item?: ItemStack;
+    static readonly componentId = 'minecraft:cursor_inventory';
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    clear(): void;
 }
 
 /**
