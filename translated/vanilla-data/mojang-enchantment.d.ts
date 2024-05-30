@@ -10,6 +10,8 @@ export declare enum MinecraftEnchantmentTypes {
     Binding = "binding",
     /** 爆炸保护。 */
     BlastProtection = "blast_protection",
+    /** 无限。 */
+    BowInfinity = "infinity",
     /** 破甲。 */
     Breach = "breach",
     /** 引雷。 */
@@ -34,8 +36,6 @@ export declare enum MinecraftEnchantmentTypes {
     FrostWalker = "frost_walker",
     /** 穿刺。 */
     Impaling = "impaling",
-    /** 无限。 */
-    Infinity = "infinity",
     /** 击退。 */
     Knockback = "knockback",
     /** 抢夺。 */

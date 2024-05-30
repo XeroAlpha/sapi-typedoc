@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.10-preview.20"
+ *   "version": "0.1.0-beta.1.21.10-preview.21"
  * }
  * ```
  *
@@ -34,6 +34,14 @@ export declare enum ActionTypes {
 export enum BlockPaletteItemType {
     Simple = 0,
     Probability = 1,
+}
+
+/**
+ * Predefined action bar items
+ */
+export declare enum CoreActionBarItemType {
+    Redo = 'editor:actionBarItem:redo',
+    Undo = 'editor:actionBarItem:undo',
 }
 
 /**
@@ -122,6 +130,7 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Action = 'editorUI:Action',
     BlockPicker = 'editorUI:BlockPicker',
     Boolean = 'editorUI:Boolean',
+    ColorPicker = 'editorUI:ColorPicker',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
@@ -488,6 +497,7 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
     readonly menuBar: IMenuContainer;
+    readonly actionBar: IActionBar;
     readonly toolRail: IModalToolContainer;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
@@ -2667,6 +2677,103 @@ export declare interface EventSink<T> {
 }
 
 /**
+ * Manager for IActionBarItem objects.
+ */
+export interface IActionBar {
+    /**
+     * @remarks
+     * Add a new action bar item to the collection.
+     *
+     * @param id
+     * Unique item identifier.
+     * @param action
+     * Action to be invoked.
+     * @param props
+     * Configuration for the item to create.
+     */
+    registerItem(
+        id: string,
+        action: RegisteredAction<NoArgsAction>,
+        props: IActionBarItemCreationParams,
+    ): IActionBarItem;
+    /**
+     * @remarks
+     * Remove an action item from the collection.
+     *
+     * @param id
+     * Unique item identifier.
+     */
+    unregisterItem(id: string): void;
+}
+
+/**
+ * Registered item handle in the Action Bar collection.
+ */
+export interface IActionBarItem {
+    /**
+     * @remarks
+     * Returns the current enabled state of the item.
+     *
+     */
+    getEnabled: () => boolean;
+    /**
+     * @remarks
+     * Unique identifier of the item.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Text label of the item.
+     *
+     */
+    readonly label: string;
+    /**
+     * @remarks
+     * Modify enabled state of the item.
+     *
+     */
+    setEnabled: (enabled: boolean) => void;
+}
+
+/**
+ * Properties required to create an Action Bar item.
+ */
+export interface IActionBarItemCreationParams {
+    /**
+     * @remarks
+     * Initial enabled state of the item. If not defined, default
+     * is true.
+     *
+     */
+    enabled?: boolean;
+    /**
+     * @remarks
+     * Icon resource for the item.
+     *
+     */
+    icon: string;
+    /**
+     * @remarks
+     * Text label for item.
+     *
+     */
+    label: string;
+    /**
+     * @remarks
+     * Tooltip description for the item.
+     *
+     */
+    tooltipDescription?: string;
+    /**
+     * @remarks
+     * Tooltip title for the item.
+     *
+     */
+    tooltipTitle?: string;
+}
+
+/**
  * Simple abstraction for disposable objects.
  */
 export interface IDisposable {
@@ -3017,6 +3124,11 @@ export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsColorPicker extends IPropertyItemOptions {
+    showAlpha?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsDataPicker extends IPropertyItemOptions {
     /**
      * @remarks
@@ -3225,6 +3337,16 @@ export interface IPropertyPane {
         },
         'EMPTY'
     >;
+    /**
+     * @remarks
+     * Adds a color picker item to the pane.
+     *
+     */
+    addColorPicker<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsColorPicker,
+    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds an divider item to the pane.

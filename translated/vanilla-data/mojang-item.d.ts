@@ -596,6 +596,10 @@ export declare enum MinecraftItemTypes {
     CutCopperSlab = "minecraft:cut_copper_slab",
     /** 切制铜楼梯。 */
     CutCopperStairs = "minecraft:cut_copper_stairs",
+    /** 切制红砂岩台阶。 */
+    CutRedSandstoneSlab = "minecraft:cut_red_sandstone_slab",
+    /** 切制砂岩台阶。 */
+    CutSandstoneSlab = "minecraft:cut_sandstone_slab",
     /** 青色蜡烛。 */
     CyanCandle = "minecraft:cyan_candle",
     /** 青色地毯。 */
@@ -1414,6 +1418,8 @@ export declare enum MinecraftItemTypes {
     MossyCobblestoneSlab = "minecraft:mossy_cobblestone_slab",
     /** 苔石楼梯。 */
     MossyCobblestoneStairs = "minecraft:mossy_cobblestone_stairs",
+    /** 苔石砖台阶。 */
+    MossyStoneBrickSlab = "minecraft:mossy_stone_brick_slab",
     /** 苔石砖楼梯。 */
     MossyStoneBrickStairs = "minecraft:mossy_stone_brick_stairs",
     /** 苔石砖。 */
@@ -1450,7 +1456,7 @@ export declare enum MinecraftItemTypes {
     MusicDiscChirp = "minecraft:music_disc_chirp",
     /** 音乐唱片 Lena Raine - Creator。 */
     MusicDiscCreator = "minecraft:music_disc_creator",
-    /** 音乐唱片 Lena Raine - Creator (Music Box)。 */
+    /** 音乐唱片 Lena Raine - Creator（八音盒）。 */
     MusicDiscCreatorMusicBox = "minecraft:music_disc_creator_music_box",
     /** 音乐唱片 C418 - far。 */
     MusicDiscFar = "minecraft:music_disc_far",
@@ -1530,6 +1536,8 @@ export declare enum MinecraftItemTypes {
     NetheriteUpgradeSmithingTemplate = "minecraft:netherite_upgrade_smithing_template",
     /** 下界岩。 */
     Netherrack = "minecraft:netherrack",
+    /** 石头台阶。 */
+    NormalStoneSlab = "minecraft:normal_stone_slab",
     /** 石头楼梯。 */
     NormalStoneStairs = "minecraft:normal_stone_stairs",
     /** 音符盒。 */
@@ -2008,6 +2016,8 @@ export declare enum MinecraftItemTypes {
     Smoker = "minecraft:smoker",
     /** 平滑玄武岩。 */
     SmoothBasalt = "minecraft:smooth_basalt",
+    /** 平滑石英台阶。 */
+    SmoothQuartzSlab = "minecraft:smooth_quartz_slab",
     /** 平滑石英楼梯。 */
     SmoothQuartzStairs = "minecraft:smooth_quartz_stairs",
     /** 平滑红砂岩台阶。 */
@@ -2106,8 +2116,6 @@ export declare enum MinecraftItemTypes {
     Stone = "minecraft:stone",
     /** 石斧。 */
     StoneAxe = "minecraft:stone_axe",
-    /** 苔石砖台阶/平滑石英台阶/石头台阶/切制砂岩台阶/切制红砂岩台阶。 */
-    StoneBlockSlab4 = "minecraft:stone_block_slab4",
     /** 石砖台阶。 */
     StoneBrickSlab = "minecraft:stone_brick_slab",
     /** 石砖楼梯。 */

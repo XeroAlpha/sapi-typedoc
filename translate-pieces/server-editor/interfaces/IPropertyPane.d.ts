@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -89,6 +89,16 @@ export interface IPropertyPane {
         },
         'EMPTY'
     >;
+    /**
+     * @remarks
+     * Adds a color picker item to the pane.
+     *
+     */
+    addColorPicker<T extends PropertyBag, Prop extends keyof T & string>(
+        obj: T,
+        property: Prop,
+        options?: IPropertyItemOptionsColorPicker,
+    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds an divider item to the pane.

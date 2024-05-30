@@ -262,6 +262,7 @@ export { PlayerBreakBlockAfterEvent } from './classes/PlayerBreakBlockAfterEvent
 export { PlayerBreakBlockAfterEventSignal } from './classes/PlayerBreakBlockAfterEventSignal';
 export { PlayerBreakBlockBeforeEvent } from './classes/PlayerBreakBlockBeforeEvent';
 export { PlayerBreakBlockBeforeEventSignal } from './classes/PlayerBreakBlockBeforeEventSignal';
+export { PlayerCursorInventoryComponent } from './classes/PlayerCursorInventoryComponent';
 export { PlayerDimensionChangeAfterEvent } from './classes/PlayerDimensionChangeAfterEvent';
 export { PlayerDimensionChangeAfterEventSignal } from './classes/PlayerDimensionChangeAfterEventSignal';
 export { PlayerGameModeChangeAfterEvent } from './classes/PlayerGameModeChangeAfterEvent';

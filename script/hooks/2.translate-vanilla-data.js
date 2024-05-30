@@ -96,7 +96,8 @@ const tsPopulators = {
         const { effect } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const effectId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const enumTranslation = effect[effectId];
+            const effectIdWithoutPrefix = effectId.replace(/^minecraft:/, '');
+            const enumTranslation = effect[effectIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({

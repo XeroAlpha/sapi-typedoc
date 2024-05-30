@@ -19,6 +19,10 @@ export enum EntityComponentTypes {
      * @beta
      */
     Color2 = 'minecraft:color2',
+    /**
+     * @beta
+     */
+    CursorInventory = 'minecraft:cursor_inventory',
     Equippable = 'minecraft:equippable',
     FireImmune = 'minecraft:fire_immune',
     FloatsInLiquid = 'minecraft:floats_in_liquid',
