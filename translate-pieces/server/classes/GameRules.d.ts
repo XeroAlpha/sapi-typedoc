@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Represents the game rules for a world experience.
  */
 export class GameRules {
@@ -185,7 +185,7 @@ export class GameRules {
      */
     showCoordinates: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This property can't be edited in read-only mode.
      *

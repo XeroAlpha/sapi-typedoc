@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityNavigationComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Allows this entity to generate paths by walking around and
  * jumping up and down a block like regular mobs.
  */

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum EnchantmentSlot {
     ArmorFeet = 'ArmorFeet',

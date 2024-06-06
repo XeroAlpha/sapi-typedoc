@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown after using the /reload command when trying to
  * register a previously unregistered item custom component.
  */

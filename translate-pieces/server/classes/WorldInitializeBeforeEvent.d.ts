@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponentRegistry, ItemComponentRegistry } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information and methods that can be used at the
  * initialization of the scripting environment for a World.
  * Also, use the supplied blockRegistry object to register
@@ -10,6 +10,9 @@
  */
 export class WorldInitializeBeforeEvent {
     private constructor();
+    /**
+     * @beta
+     */
     readonly blockTypeRegistry: BlockComponentRegistry;
     /**
      * @remarks

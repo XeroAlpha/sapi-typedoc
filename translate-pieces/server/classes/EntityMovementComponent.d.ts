@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Defines the general movement speed of this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

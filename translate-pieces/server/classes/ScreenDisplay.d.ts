@@ -52,7 +52,7 @@
 export class ScreenDisplay {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -60,7 +60,7 @@ export class ScreenDisplay {
      */
     getHiddenHudElements(): HudElement[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -68,7 +68,7 @@ export class ScreenDisplay {
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -83,7 +83,7 @@ export class ScreenDisplay {
      */
     isValid(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -103,7 +103,7 @@ export class ScreenDisplay {
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum CustomComponentNameErrorReason {
     NoNamespace = 1,

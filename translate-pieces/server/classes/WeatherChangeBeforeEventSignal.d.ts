@@ -1,7 +1,7 @@
 /* IMPORT */ import { WeatherChangeBeforeEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to before weather
  * changing.
  */

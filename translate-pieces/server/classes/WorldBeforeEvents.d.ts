@@ -58,7 +58,7 @@ export class WorldBeforeEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      */
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
@@ -89,11 +89,11 @@ export class WorldBeforeEvents {
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires immediately when the script environment is
      * initialized on a World. Not all script functionality may be

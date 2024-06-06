@@ -309,7 +309,7 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Version safe way of checking if an item matches.
      *

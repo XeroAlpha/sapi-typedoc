@@ -265,6 +265,8 @@ export { PlayerBreakBlockBeforeEventSignal } from './classes/PlayerBreakBlockBef
 export { PlayerCursorInventoryComponent } from './classes/PlayerCursorInventoryComponent';
 export { PlayerDimensionChangeAfterEvent } from './classes/PlayerDimensionChangeAfterEvent';
 export { PlayerDimensionChangeAfterEventSignal } from './classes/PlayerDimensionChangeAfterEventSignal';
+export { PlayerEmoteAfterEvent } from './classes/PlayerEmoteAfterEvent';
+export { PlayerEmoteAfterEventSignal } from './classes/PlayerEmoteAfterEventSignal';
 export { PlayerGameModeChangeAfterEvent } from './classes/PlayerGameModeChangeAfterEvent';
 export { PlayerGameModeChangeAfterEventSignal } from './classes/PlayerGameModeChangeAfterEventSignal';
 export { PlayerGameModeChangeBeforeEvent } from './classes/PlayerGameModeChangeBeforeEvent';

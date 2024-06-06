@@ -75,7 +75,7 @@ export class Structure {
      */
     isValid(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.
      *
@@ -101,7 +101,7 @@ export class Structure {
      */
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Saves a modified Structure to the world file.
      *
@@ -114,7 +114,7 @@ export class Structure {
      */
     saveToWorld(): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets a BlockPermutation within a Structure.
      *

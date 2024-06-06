@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.10-preview.21"
+ *   "version": "0.1.0-beta.1.21.10-preview.22"
  * }
  * ```
  *
@@ -34,6 +34,11 @@ export declare enum ActionTypes {
 export enum BlockPaletteItemType {
     Simple = 0,
     Probability = 1,
+}
+
+export enum BrushPipelineOperationType {
+    Include = 0,
+    Exclude = 1,
 }
 
 /**
@@ -710,16 +715,51 @@ export class BlockPalette {
 export class BlockPaletteManager {
     private constructor();
     /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    addOrReplacePalette(paletteId: string, palette: BlockPalette): void;
+    getPalette(paletteId: string): BlockPalette | undefined;
+    getPaletteIdList(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
+    getPaletteItem(paletteId: string, index: number): IBlockPaletteItem;
+    getPrimaryPalette(): BlockPalette;
+    /**
      * @throws This function can throw errors.
      */
     getSelectedBlockType(): minecraftserver.BlockType;
+    getSelectedItem(): IBlockPaletteItem;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setSelectedBlockType(block: minecraftserver.BlockType): void;
+    removePalette(paletteId: string): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setPaletteItem(paletteId: string, index: number, item: IBlockPaletteItem): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setPrimaryPalette(paletteId: string): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setSelectedItem(item: IBlockPaletteItem): void;
 }
 
 export class BrushShapeManager {
@@ -734,6 +774,15 @@ export class BrushShapeManager {
      * @throws This function can throw errors.
      */
     activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    getBrushVolume(
+        origin: minecraftserver.Vector3,
+        pipeline: BrushPipelineOperation[],
+    ): minecraftserver.CompoundBlockVolume | undefined;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2345,6 +2394,11 @@ export class WidgetStateChangeEventData {
     readonly isSelected?: boolean;
     readonly isVisible?: boolean;
     readonly widget: Widget;
+}
+
+export interface BrushPipelineOperation {
+    blockTypes: minecraftserver.BlockType[];
+    operation: BrushPipelineOperationType;
 }
 
 export interface BrushShape {

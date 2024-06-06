@@ -86,7 +86,7 @@ export class Block {
      */
     readonly permutation: BlockPermutation;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the type of block.
      *
@@ -98,7 +98,7 @@ export class Block {
      */
     readonly 'type': BlockType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Identifier of the type of block for this block.
      *
@@ -316,7 +316,7 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Tests whether this block matches a specific criteria.
      *
@@ -383,7 +383,7 @@ export class Block {
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the type of block.
      *

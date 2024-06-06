@@ -34,7 +34,7 @@
 export class BlockPermutation {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The {@link BlockType} that the permutation has.
      *
@@ -73,14 +73,14 @@ export class BlockPermutation {
      */
     getState(stateName: string): boolean | number | string | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Creates a copy of the permutation.
      *
      */
     getTags(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Checks to see if the permutation has a specific tag.
      *

@@ -1,7 +1,7 @@
 /* IMPORT */ import { PlayerGameModeChangeBeforeEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class PlayerGameModeChangeBeforeEventSignal {
     private constructor();

@@ -1,7 +1,7 @@
 /* IMPORT */ import { InputPermissionCategory, Player } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after a players
  * input permissions change.
  */

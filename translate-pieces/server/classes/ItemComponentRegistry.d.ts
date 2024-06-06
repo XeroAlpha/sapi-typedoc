@@ -1,7 +1,7 @@
 /* IMPORT */ import { CustomComponentInvalidRegistryError, CustomComponentNameError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, minecraftcommon } from '../index';
 
 /**
- * @beta
+ * @rc
  * Provides the functionality for registering custom components
  * for items.
  */

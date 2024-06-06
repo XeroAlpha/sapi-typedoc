@@ -1,7 +1,7 @@
 /* IMPORT */ import { EnchantmentType } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains a catalog of Minecraft Enchantment Types that are
  * available in this world.
  */
@@ -20,7 +20,7 @@ export class EnchantmentTypes {
      */
     static get(enchantmentId: string): EnchantmentType | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a collection of all available enchantment types.
      *
