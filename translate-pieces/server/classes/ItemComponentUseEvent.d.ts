@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemStack, Player } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding the use of an item.
  */
 export class ItemComponentUseEvent {

@@ -1,10 +1,10 @@
 export enum EntityComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     AddRider = 'minecraft:addrider',
     /**
-     * @beta
+     * @rc
      */
     Ageable = 'minecraft:ageable',
     /**
@@ -16,7 +16,7 @@ export enum EntityComponentTypes {
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
     /**
-     * @beta
+     * @rc
      */
     Color2 = 'minecraft:color2',
     /**
@@ -47,7 +47,7 @@ export enum EntityComponentTypes {
     IsTamed = 'minecraft:is_tamed',
     Item = 'minecraft:item',
     /**
-     * @beta
+     * @rc
      */
     LavaMovement = 'minecraft:lava_movement',
     /**
@@ -56,7 +56,7 @@ export enum EntityComponentTypes {
     Leashable = 'minecraft:leashable',
     MarkVariant = 'minecraft:mark_variant',
     /**
-     * @beta
+     * @rc
      */
     Movement = 'minecraft:movement',
     MovementAmphibious = 'minecraft:movement.amphibious',
@@ -64,38 +64,38 @@ export enum EntityComponentTypes {
     MovementFly = 'minecraft:movement.fly',
     MovementGeneric = 'minecraft:movement.generic',
     /**
-     * @beta
+     * @rc
      */
     MovementGlide = 'minecraft:movement.glide',
     MovementHover = 'minecraft:movement.hover',
     MovementJump = 'minecraft:movement.jump',
     MovementSkip = 'minecraft:movement.skip',
     /**
-     * @beta
+     * @rc
      */
     MovementSway = 'minecraft:movement.sway',
     /**
-     * @beta
+     * @rc
      */
     NavigationClimb = 'minecraft:navigation.climb',
     /**
-     * @beta
+     * @rc
      */
     NavigationFloat = 'minecraft:navigation.float',
     /**
-     * @beta
+     * @rc
      */
     NavigationFly = 'minecraft:navigation.fly',
     /**
-     * @beta
+     * @rc
      */
     NavigationGeneric = 'minecraft:navigation.generic',
     /**
-     * @beta
+     * @rc
      */
     NavigationHover = 'minecraft:navigation.hover',
     /**
-     * @beta
+     * @rc
      */
     NavigationWalk = 'minecraft:navigation.walk',
     /**
@@ -106,11 +106,11 @@ export enum EntityComponentTypes {
     Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
     /**
-     * @beta
+     * @rc
      */
     Rideable = 'minecraft:rideable',
     /**
-     * @beta
+     * @rc
      */
     Riding = 'minecraft:riding',
     Scale = 'minecraft:scale',
@@ -120,16 +120,16 @@ export enum EntityComponentTypes {
      */
     Strength = 'minecraft:strength',
     /**
-     * @beta
+     * @rc
      */
     Tameable = 'minecraft:tameable',
     /**
-     * @beta
+     * @rc
      */
     TameMount = 'minecraft:tamemount',
     TypeFamily = 'minecraft:type_family',
     /**
-     * @beta
+     * @rc
      */
     UnderwaterMovement = 'minecraft:underwater_movement',
     Variant = 'minecraft:variant',

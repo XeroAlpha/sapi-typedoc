@@ -658,6 +658,8 @@ export declare enum MinecraftItemTypes {
     DarkOakTrapdoor = "minecraft:dark_oak_trapdoor",
     /** 深色橡木。 */
     DarkOakWood = "minecraft:dark_oak_wood",
+    /** 暗海晶石。 */
+    DarkPrismarine = "minecraft:dark_prismarine",
     /** 暗海晶石台阶。 */
     DarkPrismarineSlab = "minecraft:dark_prismarine_slab",
     /** 暗海晶石楼梯。 */
@@ -1764,10 +1766,12 @@ export declare enum MinecraftItemTypes {
     Potion = "minecraft:potion",
     /** 细雪桶。 */
     PowderSnowBucket = "minecraft:powder_snow_bucket",
-    /** 海晶石/暗海晶石/海晶石砖。 */
+    /** 海晶石。 */
     Prismarine = "minecraft:prismarine",
     /** 海晶石砖台阶。 */
     PrismarineBrickSlab = "minecraft:prismarine_brick_slab",
+    /** 海晶石砖。 */
+    PrismarineBricks = "minecraft:prismarine_bricks",
     /** 海晶石砖楼梯。 */
     PrismarineBricksStairs = "minecraft:prismarine_bricks_stairs",
     /** 海晶砂粒。 */

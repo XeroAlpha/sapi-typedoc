@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum HudVisibility {
     Hide = 0,

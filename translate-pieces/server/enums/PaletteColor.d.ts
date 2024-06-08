@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum PaletteColor {
     White = 0,

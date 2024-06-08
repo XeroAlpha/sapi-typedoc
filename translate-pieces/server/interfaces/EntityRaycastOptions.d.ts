@@ -6,7 +6,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface EntityRaycastOptions extends EntityFilter {
     /**
-     * @beta
+     * @rc
      * @remarks
      * If true, blocks will not be considered as blocks that 'stop'
      * the raycast.
@@ -14,7 +14,7 @@ export interface EntityRaycastOptions extends EntityFilter {
      */
     ignoreBlockCollision?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * If true, liquid blocks will be considered as blocks that
      * 'stop' the raycast.
@@ -22,7 +22,7 @@ export interface EntityRaycastOptions extends EntityFilter {
      */
     includeLiquidBlocks?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * If true, passable blocks like vines and flowers will be
      * considered as blocks that 'stop' the raycast.

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum HudElement {
     PaperDoll = 0,

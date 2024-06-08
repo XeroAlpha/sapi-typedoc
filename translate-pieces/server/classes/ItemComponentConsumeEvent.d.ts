@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, ItemStack } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class ItemComponentConsumeEvent {
     private constructor();

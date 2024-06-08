@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityNavigationComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */

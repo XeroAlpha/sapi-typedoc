@@ -7,7 +7,7 @@
 export class EntityComponent extends Component {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The entity that owns this component. The entity will be
      * undefined if it has been removed.

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum GameRule {
     /**
@@ -204,7 +204,7 @@ export enum GameRule {
      */
     ShowCoordinates = 'showCoordinates',
     /**
-     * @beta
+     * @rc
      */
     ShowDaysPlayed = 'showDaysPlayed',
     /**

@@ -1,7 +1,7 @@
 /* IMPORT */ import { Block, BlockPermutation, Entity, ItemStack } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding the mining of a block using
  * an item.
  */

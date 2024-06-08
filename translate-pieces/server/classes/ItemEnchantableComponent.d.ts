@@ -1,7 +1,7 @@
 /* IMPORT */ import { Enchantment, EnchantmentLevelOutOfBoundsError, EnchantmentSlot, EnchantmentType, EnchantmentTypeNotCompatibleError, EnchantmentTypeUnknownIdError, ItemComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * When present on an item, this item can have enchantments
  * applied to it.
  * @example givePlayerIronFireSword.ts

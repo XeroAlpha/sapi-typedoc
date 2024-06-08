@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, SettingsUIElement, minecraftserver } from '../index';
+/* IMPORT */ import { BrushPipelineOperation, BrushShape, SettingsUIElement, minecraftserver } from '../index';
 
 export class BrushShapeManager {
     private constructor();
@@ -12,6 +12,15 @@ export class BrushShapeManager {
      * @throws This function can throw errors.
      */
     activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    getBrushVolume(
+        origin: minecraftserver.Vector3,
+        pipeline: BrushPipelineOperation[],
+    ): minecraftserver.CompoundBlockVolume | undefined;
     /**
      * @remarks
      * This function can't be called in read-only mode.

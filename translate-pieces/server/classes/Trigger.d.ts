@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Represents a trigger for firing an event.
  */
 export class Trigger {

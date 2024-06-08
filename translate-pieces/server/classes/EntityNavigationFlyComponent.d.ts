@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityNavigationComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Allows this entity to generate paths in the air (for
  * example, like Minecraft parrots do.)
  */

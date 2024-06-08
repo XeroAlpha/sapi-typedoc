@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockLocationIterator, BoundingBox, Vector3 } from '../index';
 
 /**
- * @beta
+ * @rc
  * Base type for BlockVolumes.
  */
 export class BlockVolumeBase {

@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityNavigationComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Allows this entity to generate paths by flying around the
  * air like the regular Ghast.
  */

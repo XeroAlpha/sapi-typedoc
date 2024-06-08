@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, EntityComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * This component is added to any entity when it is riding
  * another entity.
  */

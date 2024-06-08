@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown after using the /reload command when trying to
  * register a previously registered item custom component that
  * handles a new event.

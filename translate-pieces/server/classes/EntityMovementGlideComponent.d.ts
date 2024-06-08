@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityBaseMovementComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * When added, this movement control allows the mob to glide.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

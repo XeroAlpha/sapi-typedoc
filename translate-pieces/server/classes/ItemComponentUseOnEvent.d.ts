@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockPermutation, Entity, ItemUseOnEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding the use of an item on a block
  * via a component.
  */

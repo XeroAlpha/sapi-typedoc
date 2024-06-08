@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemStack, Player } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class ItemCompleteUseEvent {
     private constructor();

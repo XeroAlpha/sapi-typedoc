@@ -1,7 +1,7 @@
 /* IMPORT */ import { EnchantmentType } from '../index';
 
 /**
- * @beta
+ * @rc
  * This interface represents a specific leveled enchantment
  * that is applied to an item.
  */

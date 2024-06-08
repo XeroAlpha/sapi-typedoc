@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemCompleteUseEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemComponentCompleteUseEvent extends ItemCompleteUseEvent {

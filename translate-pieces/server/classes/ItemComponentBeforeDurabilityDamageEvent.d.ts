@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, ItemStack } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an item before it is damaged
  * from hitting an entity.
  */
