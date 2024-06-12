@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
 
 /**
  * Represents a block in a dimension. A block represents a
@@ -249,6 +249,15 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getMapColor(): RGBA;
     /**
      * @beta
      * @remarks
