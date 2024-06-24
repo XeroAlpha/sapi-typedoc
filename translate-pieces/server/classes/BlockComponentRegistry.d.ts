@@ -1,20 +1,26 @@
-/* IMPORT */ import { BlockCustomComponent, CustomComponentInvalidRegistryError, CustomComponentNameError, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockCustomComponent, BlockCustomComponentAlreadyRegisteredError, BlockCustomComponentReloadNewComponentError, BlockCustomComponentReloadNewEventError, BlockCustomComponentReloadVersionError, CustomComponentInvalidRegistryError, CustomComponentNameError, minecraftcommon } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class BlockComponentRegistry {
     private constructor();
     /**
      * @throws This function can throw errors.
      *
+     * {@link BlockCustomComponentAlreadyRegisteredError}
+     *
+     * {@link BlockCustomComponentReloadNewComponentError}
+     *
+     * {@link BlockCustomComponentReloadNewEventError}
+     *
+     * {@link BlockCustomComponentReloadVersionError}
+     *
      * {@link CustomComponentInvalidRegistryError}
      *
      * {@link CustomComponentNameError}
      *
      * {@link minecraftcommon.EngineError}
-     *
-     * {@link Error}
      */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }

@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event before a player
  * places a block.
  */

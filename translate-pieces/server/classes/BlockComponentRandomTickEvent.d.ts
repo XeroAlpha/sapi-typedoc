@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block randomly
  * ticking.
  */

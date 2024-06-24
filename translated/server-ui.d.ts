@@ -374,7 +374,7 @@ export class ModalFormData {
         defaultValue?: number,
     ): ModalFormData;
     /**
-     * @beta
+     * @rc
      */
     submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
     /**

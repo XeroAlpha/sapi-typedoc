@@ -9,22 +9,22 @@
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly isTamed: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly isTamedToPlayer: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly tamedToPlayerId?: string;
@@ -41,7 +41,7 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     tame(showParticles: boolean): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *

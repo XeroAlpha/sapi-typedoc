@@ -2184,6 +2184,15 @@ export class Block {
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
      * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getMapColor(): RGBA;
+    /**
+     * @beta
      * @remarks
      * 返回该方块的净红石能量强度。
      * 考虑了所有输入和输出后的总红石能量强度。
@@ -2469,7 +2478,7 @@ export class BlockComponent extends Component {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an entity falling onto a
  * specific block.
  */
@@ -2491,7 +2500,7 @@ export class BlockComponentEntityFallOnEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block that was
  * placed.
  */
@@ -2507,7 +2516,7 @@ export class BlockComponentOnPlaceEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block being
  * destroyed.
  */
@@ -2530,7 +2539,7 @@ export class BlockComponentPlayerDestroyEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block being
  * interacted with.
  */
@@ -2559,7 +2568,7 @@ export class BlockComponentPlayerInteractEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event before a player
  * places a block.
  */
@@ -2595,7 +2604,7 @@ export class BlockComponentPlayerPlaceBeforeEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block randomly
  * ticking.
  */
@@ -2605,26 +2614,32 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class BlockComponentRegistry {
     private constructor();
     /**
      * @throws This function can throw errors.
      *
+     * {@link BlockCustomComponentAlreadyRegisteredError}
+     *
+     * {@link BlockCustomComponentReloadNewComponentError}
+     *
+     * {@link BlockCustomComponentReloadNewEventError}
+     *
+     * {@link BlockCustomComponentReloadVersionError}
+     *
      * {@link CustomComponentInvalidRegistryError}
      *
      * {@link CustomComponentNameError}
      *
      * {@link minecraftcommon.EngineError}
-     *
-     * {@link Error}
      */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an entity stepping off a
  * specific block.
  */
@@ -2640,7 +2655,7 @@ export class BlockComponentStepOffEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an entity stepping onto a
  * specific block.
  */
@@ -2656,7 +2671,7 @@ export class BlockComponentStepOnEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block ticking.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9071,22 +9086,22 @@ export class EntityTameableComponent extends EntityComponent {
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly isTamed: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly isTamedToPlayer: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      */
     readonly tamedToPlayerId?: string;
@@ -9103,7 +9118,7 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     tame(showParticles: boolean): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -14301,7 +14316,7 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
@@ -14375,7 +14390,7 @@ export class System {
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Queues a generator to run until completion.  The generator
      * will be given a time slice each tick, and will be run until
@@ -14433,7 +14448,7 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @beta
+     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -15888,10 +15903,7 @@ export class WorldInitializeAfterEventSignal {
  */
 export class WorldInitializeBeforeEvent {
     private constructor();
-    /**
-     * @beta
-     */
-    readonly blockTypeRegistry: BlockComponentRegistry;
+    readonly blockComponentRegistry: BlockComponentRegistry;
     /**
      * @remarks
      * Provides the functionality for registering custom components
@@ -15945,7 +15957,7 @@ export interface BiomeSearchOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains a set of events that will be raised for a block.
  * This object must be bound using the BlockRegistry.
  */
@@ -17854,6 +17866,38 @@ export interface WorldSoundOptions {
      *
      */
     volume?: number;
+}
+
+/**
+ * @rc
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockCustomComponentAlreadyRegisteredError extends Error {
+    private constructor();
+}
+
+/**
+ * @rc
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockCustomComponentReloadNewComponentError extends Error {
+    private constructor();
+}
+
+/**
+ * @rc
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockCustomComponentReloadNewEventError extends Error {
+    private constructor();
+}
+
+/**
+ * @rc
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockCustomComponentReloadVersionError extends Error {
+    private constructor();
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
