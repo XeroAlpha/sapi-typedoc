@@ -74,7 +74,6 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @rc
      * @remarks
      * This property can't be edited in read-only mode.
      *
@@ -139,12 +138,10 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
      * @throws This function can throw errors.
      */
     getGameMode(): GameMode;
     /**
-     * @rc
      * @remarks
      * Gets the current item cooldown time for a particular
      * cooldown category.
@@ -280,7 +277,6 @@ export class Player extends Entity {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -361,7 +357,6 @@ export class Player extends Entity {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @rc
      * @remarks
      * Sets the item cooldown time for a particular cooldown
      * category.

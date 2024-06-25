@@ -17,7 +17,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.10.0"
+ *   "version": "1.11.0"
  * }
  * ```
  *
@@ -419,9 +419,6 @@ export enum EasingType {
     Spring = 'Spring',
 }
 
-/**
- * @rc
- */
 export enum EnchantmentSlot {
     ArmorFeet = 'ArmorFeet',
     ArmorHead = 'ArmorHead',
@@ -445,9 +442,6 @@ export enum EnchantmentSlot {
 }
 
 export enum EntityComponentTypes {
-    /**
-     * @rc
-     */
     AddRider = 'minecraft:addrider',
     /**
      * @rc
@@ -461,9 +455,6 @@ export enum EntityComponentTypes {
     CanFly = 'minecraft:can_fly',
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
-    /**
-     * @rc
-     */
     Color2 = 'minecraft:color2',
     /**
      * @beta
@@ -520,29 +511,11 @@ export enum EntityComponentTypes {
      * @rc
      */
     MovementSway = 'minecraft:movement.sway',
-    /**
-     * @rc
-     */
     NavigationClimb = 'minecraft:navigation.climb',
-    /**
-     * @rc
-     */
     NavigationFloat = 'minecraft:navigation.float',
-    /**
-     * @rc
-     */
     NavigationFly = 'minecraft:navigation.fly',
-    /**
-     * @rc
-     */
     NavigationGeneric = 'minecraft:navigation.generic',
-    /**
-     * @rc
-     */
     NavigationHover = 'minecraft:navigation.hover',
-    /**
-     * @rc
-     */
     NavigationWalk = 'minecraft:navigation.walk',
     /**
      * @beta
@@ -551,13 +524,7 @@ export enum EntityComponentTypes {
     OnFire = 'minecraft:onfire',
     Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
-    /**
-     * @rc
-     */
     Rideable = 'minecraft:rideable',
-    /**
-     * @rc
-     */
     Riding = 'minecraft:riding',
     Scale = 'minecraft:scale',
     SkinId = 'minecraft:skin_id',
@@ -569,9 +536,6 @@ export enum EntityComponentTypes {
      * @rc
      */
     Tameable = 'minecraft:tameable',
-    /**
-     * @rc
-     */
     TameMount = 'minecraft:tamemount',
     TypeFamily = 'minecraft:type_family',
     /**
@@ -964,9 +928,6 @@ export enum GameMode {
     survival = 'survival',
 }
 
-/**
- * @rc
- */
 export enum GameRule {
     /**
      * @remarks
@@ -1211,9 +1172,6 @@ export enum GameRule {
     TntExplosionDropDecay = 'tntExplosionDropDecay',
 }
 
-/**
- * @rc
- */
 export enum HudElement {
     PaperDoll = 0,
     Armor = 1,
@@ -1230,9 +1188,6 @@ export enum HudElement {
     ItemText = 12,
 }
 
-/**
- * @rc
- */
 export enum HudVisibility {
     Hide = 0,
     Reset = 1,
@@ -1274,7 +1229,6 @@ export enum ItemComponentTypes {
      */
     Durability = 'minecraft:durability',
     /**
-     * @rc
      * @remarks
      * The minecraft:enchantable component.
      *
@@ -1407,9 +1361,6 @@ export enum ObjectiveSortOrder {
     Descending = 1,
 }
 
-/**
- * @rc
- */
 export enum PaletteColor {
     White = 0,
     Orange = 1,
@@ -1964,7 +1915,6 @@ export class Block {
      */
     readonly permutation: BlockPermutation;
     /**
-     * @rc
      * @remarks
      * 获取方块的类型。
      *
@@ -1978,7 +1928,6 @@ export class Block {
      */
     readonly 'type': BlockType;
     /**
-     * @rc
      * @remarks
      * 该方块的类型标识符。
      *
@@ -2278,7 +2227,6 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @rc
      * @remarks
      * Tests whether this block matches a specific criteria.
      *
@@ -2353,7 +2301,6 @@ export class Block {
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
-     * @rc
      * @remarks
      * 设置方块的类型。
      *
@@ -2894,7 +2841,6 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 export class BlockPermutation {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The {@link BlockType} that the permutation has.
      *
@@ -3449,7 +3395,6 @@ export class BlockType {
      */
     readonly canBeWaterlogged: boolean;
     /**
-     * @rc
      * @remarks
      * Block type name - for example, `minecraft:acacia_stairs`.
      *
@@ -3458,7 +3403,6 @@ export class BlockType {
 }
 
 /**
- * @rc
  * Contains a catalog of Minecraft Block Types that are
  * available in this world.
  */
@@ -3579,7 +3523,6 @@ export class BlockVolume extends BlockVolumeBase {
 }
 
 /**
- * @rc
  * Base type for BlockVolumes.
  */
 export class BlockVolumeBase {
@@ -5316,7 +5259,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -5774,7 +5716,6 @@ export class EffectTypes {
 }
 
 /**
- * @rc
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
@@ -5797,7 +5738,6 @@ export class EnchantmentType {
 }
 
 /**
- * @rc
  * Contains a catalog of Minecraft Enchantment Types that are
  * available in this world.
  */
@@ -6767,7 +6707,6 @@ export class Entity {
 }
 
 /**
- * @rc
  * When added, this component makes the entity spawn with a
  * rider of the specified entityType.
  */
@@ -7061,9 +7000,6 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
     static readonly componentId = 'minecraft:can_power_jump';
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityColor2Component extends EntityComponent {
     private constructor();
@@ -7100,7 +7036,6 @@ export class EntityColorComponent extends EntityComponent {
 export class EntityComponent extends Component {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The entity that owns this component. The entity will be
      * undefined if it has been removed.
@@ -8162,7 +8097,6 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */
@@ -8173,7 +8107,6 @@ export class EntityNavigationClimbComponent extends EntityNavigationComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths that include vertical
  * walls (for example, like Minecraft spiders do.)
  */
@@ -8331,7 +8264,6 @@ export class EntityNavigationComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths by flying around the
  * air like the regular Ghast.
  */
@@ -8342,7 +8274,6 @@ export class EntityNavigationFloatComponent extends EntityNavigationComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths in the air (for
  * example, like Minecraft parrots do.)
  */
@@ -8353,7 +8284,6 @@ export class EntityNavigationFlyComponent extends EntityNavigationComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths by walking, swimming,
  * flying and/or climbing around and jumping up and down a
  * block.
@@ -8365,7 +8295,6 @@ export class EntityNavigationGenericComponent extends EntityNavigationComponent 
 }
 
 /**
- * @rc
  * Allows this entity to generate paths in the air (for
  * example, like the Minecraft Bees do.) Keeps them from
  * falling out of the skies and doing predictive movement.
@@ -8377,7 +8306,6 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
 }
 
 /**
- * @rc
  * Allows this entity to generate paths by walking around and
  * jumping up and down a block like regular mobs.
  */
@@ -8751,7 +8679,6 @@ export class EntityRemoveBeforeEventSignal {
 }
 
 /**
- * @rc
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
  */
@@ -8874,7 +8801,6 @@ export class EntityRideableComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * This component is added to any entity when it is riding
  * another entity.
  */
@@ -9078,7 +9004,6 @@ export class EntityTameableComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Contains options for taming a rideable entity based on the
  * entity that mounts it.
  */
@@ -9435,7 +9360,6 @@ export class FluidContainer {
 }
 
 /**
- * @rc
  * Contains information regarding a changed world.gameRules
  * property.
  */
@@ -9458,7 +9382,6 @@ export class GameRuleChangeAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a
  * world.gameRules property has changed.
  */
@@ -9485,7 +9408,6 @@ export class GameRuleChangeAfterEventSignal {
 }
 
 /**
- * @rc
  * Represents the game rules for a world experience.
  */
 export class GameRules {
@@ -10266,7 +10188,6 @@ export class ItemDurabilityComponent extends ItemComponent {
 }
 
 /**
- * @rc
  * When present on an item, this item can have enchantments
  * applied to it.
  * @example givePlayerIronFireSword.ts
@@ -10894,7 +10815,6 @@ export class ItemStack {
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
-     * @rc
      * @remarks
      * Version safe way of checking if an item matches.
      *
@@ -11589,9 +11509,6 @@ export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ListBlockVolume extends BlockVolumeBase {
     constructor(locations: Vector3[]);
@@ -11883,7 +11800,6 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
@@ -11948,12 +11864,10 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
      * @throws This function can throw errors.
      */
     getGameMode(): GameMode;
     /**
-     * @rc
      * @remarks
      * Gets the current item cooldown time for a particular
      * cooldown category.
@@ -12089,7 +12003,6 @@ export class Player extends Entity {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -12170,7 +12083,6 @@ export class Player extends Entity {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @rc
      * @remarks
      * Sets the item cooldown time for a particular cooldown
      * category.
@@ -12432,9 +12344,6 @@ export class PlayerEmoteAfterEventSignal {
     unsubscribe(callback: (arg: PlayerEmoteAfterEvent) => void): void;
 }
 
-/**
- * @rc
- */
 export class PlayerGameModeChangeAfterEvent {
     private constructor();
     readonly fromGameMode: GameMode;
@@ -12442,9 +12351,6 @@ export class PlayerGameModeChangeAfterEvent {
     readonly toGameMode: GameMode;
 }
 
-/**
- * @rc
- */
 export class PlayerGameModeChangeAfterEventSignal {
     private constructor();
     /**
@@ -12461,9 +12367,6 @@ export class PlayerGameModeChangeAfterEventSignal {
     unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
 }
 
-/**
- * @rc
- */
 export class PlayerGameModeChangeBeforeEvent {
     private constructor();
     cancel: boolean;
@@ -12472,9 +12375,6 @@ export class PlayerGameModeChangeBeforeEvent {
     toGameMode: GameMode;
 }
 
-/**
- * @rc
- */
 export class PlayerGameModeChangeBeforeEventSignal {
     private constructor();
     /**
@@ -13734,7 +13634,6 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13742,7 +13641,6 @@ export class ScreenDisplay {
      */
     getHiddenHudElements(): HudElement[];
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13750,7 +13648,6 @@ export class ScreenDisplay {
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13765,7 +13662,6 @@ export class ScreenDisplay {
      */
     isValid(): boolean;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13785,7 +13681,6 @@ export class ScreenDisplay {
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -13937,7 +13832,6 @@ export class ScriptEventCommandMessageAfterEventSignal {
 }
 
 /**
- * @rc
  * Describes a particular seating position on this rideable
  * entity.
  */
@@ -14081,7 +13975,6 @@ export class Structure {
      */
     isValid(): boolean;
     /**
-     * @rc
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.
      *
@@ -14107,7 +14000,6 @@ export class Structure {
      */
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     /**
-     * @rc
      * @remarks
      * Saves a modified Structure to the world file.
      *
@@ -14120,7 +14012,6 @@ export class Structure {
      */
     saveToWorld(): void;
     /**
-     * @rc
      * @remarks
      * Sets a BlockPermutation within a Structure.
      *
@@ -14181,7 +14072,6 @@ export class StructureManager {
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
-     * @rc
      * @remarks
      * Creates a new Structure from blocks in the world. This is
      * functionally equivalent to the /structure save command.
@@ -14247,7 +14137,6 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -14785,7 +14674,6 @@ export class WeatherChangeAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to changes in weather in the
  * environment.
  */
@@ -14819,7 +14707,6 @@ export class WeatherChangeBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to before weather
  * changing.
  */
@@ -14868,7 +14755,6 @@ export class World {
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
-     * @rc
      * @remarks
      * The game rules that apply to the world.
      *
@@ -15543,7 +15429,6 @@ export class WorldAfterEvents {
      */
     readonly explosion: ExplosionAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a world.gameRules property has
      * changed.
@@ -15643,9 +15528,6 @@ export class WorldAfterEvents {
      * @beta
      */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
-    /**
-     * @rc
-     */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
      * @rc
@@ -15811,9 +15693,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
-    /**
-     * @rc
-     */
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
      * @beta
@@ -15842,9 +15721,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
-    /**
-     * @rc
-     */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
      * @rc
@@ -16363,7 +16239,6 @@ export interface DimensionLocation {
 }
 
 /**
- * @rc
  * This interface represents a specific leveled enchantment
  * that is applied to an item.
  */
@@ -16984,7 +16859,6 @@ export interface EntityQueryOptions extends EntityFilter {
      */
     minDistance?: number;
     /**
-     * @rc
      * @remarks
      * In conjunction with location, specified a cuboid volume of
      * entities to include.
@@ -17922,25 +17796,16 @@ export class CustomComponentNameError extends Error {
     reason: CustomComponentNameErrorReason;
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentLevelOutOfBoundsError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeNotCompatibleError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeUnknownIdError extends Error {
     private constructor();
@@ -18028,13 +17893,7 @@ export class UnloadedChunksError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 export const HudElementsCount = 13;
-/**
- * @rc
- */
 export const HudVisibilityCount = 2;
 /**
  * @remarks

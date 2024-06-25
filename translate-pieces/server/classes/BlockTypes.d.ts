@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockType } from '../index';
 
 /**
- * @rc
  * Contains a catalog of Minecraft Block Types that are
  * available in this world.
  */

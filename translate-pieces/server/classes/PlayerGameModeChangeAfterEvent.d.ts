@@ -1,8 +1,5 @@
 /* IMPORT */ import { GameMode, Player } from '../index';
 
-/**
- * @rc
- */
 export class PlayerGameModeChangeAfterEvent {
     private constructor();
     readonly fromGameMode: GameMode;

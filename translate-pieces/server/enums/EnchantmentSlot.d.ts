@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum EnchantmentSlot {
     ArmorFeet = 'ArmorFeet',
     ArmorHead = 'ArmorHead',

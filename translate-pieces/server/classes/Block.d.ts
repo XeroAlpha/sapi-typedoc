@@ -111,7 +111,6 @@ export class Block {
      */
     readonly permutation: BlockPermutation;
     /**
-     * @rc
      * @remarks
      * 获取方块的类型。
      *
@@ -125,7 +124,6 @@ export class Block {
      */
     readonly 'type': BlockType;
     /**
-     * @rc
      * @remarks
      * 该方块的类型标识符。
      *
@@ -425,7 +423,6 @@ export class Block {
      */
     isValid(): boolean;
     /**
-     * @rc
      * @remarks
      * Tests whether this block matches a specific criteria.
      *
@@ -500,7 +497,6 @@ export class Block {
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
-     * @rc
      * @remarks
      * 设置方块的类型。
      *

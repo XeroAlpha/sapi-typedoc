@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent, Player } from '../index';
 
 /**
- * @rc
  * Contains options for taming a rideable entity based on the
  * entity that mounts it.
  */

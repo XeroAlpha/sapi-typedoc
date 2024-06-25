@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, EntityComponent, Seat } from '../index';
 
 /**
- * @rc
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
  */

@@ -294,7 +294,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *
