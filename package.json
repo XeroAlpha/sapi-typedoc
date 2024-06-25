@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node ./script/build.js",
     "update": "node ./script/update.js",
+    "update-cache": "node ./script/update.js --cache",
     "lint-script": "eslint --fix script"
   },
   "dependencies": {

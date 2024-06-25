@@ -1,7 +1,6 @@
 /* IMPORT */ import { EnchantmentType } from '../index';
 
 /**
- * @rc
  * Contains a catalog of Minecraft Enchantment Types that are
  * available in this world.
  */

@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityNavigationComponent } from '../index';
 
 /**
- * @rc
  * Allows this entity to generate paths by walking, swimming,
  * flying and/or climbing around and jumping up and down a
  * block.

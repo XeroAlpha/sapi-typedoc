@@ -1,7 +1,6 @@
 /* IMPORT */ import { GameRule } from '../index';
 
 /**
- * @rc
  * Contains information regarding a changed world.gameRules
  * property.
  */

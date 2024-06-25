@@ -334,7 +334,6 @@ export interface EntityQueryOptions extends EntityFilter {
      */
     minDistance?: number;
     /**
-     * @rc
      * @remarks
      * In conjunction with location, specified a cuboid volume of
      * entities to include.

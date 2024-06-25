@@ -34,7 +34,6 @@
 export class BlockPermutation {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The {@link BlockType} that the permutation has.
      *

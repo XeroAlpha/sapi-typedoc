@@ -102,7 +102,6 @@ export class WorldAfterEvents {
      */
     readonly explosion: ExplosionAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a world.gameRules property has
      * changed.
@@ -202,9 +201,6 @@ export class WorldAfterEvents {
      * @beta
      */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
-    /**
-     * @rc
-     */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
      * @rc

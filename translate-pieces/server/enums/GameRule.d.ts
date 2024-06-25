@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum GameRule {
     /**
      * @remarks

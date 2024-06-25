@@ -57,9 +57,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
-    /**
-     * @rc
-     */
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
      * @beta
@@ -88,9 +85,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
-    /**
-     * @rc
-     */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
      * @rc

@@ -23,7 +23,6 @@ export class World {
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
-     * @rc
      * @remarks
      * The game rules that apply to the world.
      *

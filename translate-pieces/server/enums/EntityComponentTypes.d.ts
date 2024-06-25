@@ -1,7 +1,4 @@
 export enum EntityComponentTypes {
-    /**
-     * @rc
-     */
     AddRider = 'minecraft:addrider',
     /**
      * @rc
@@ -15,9 +12,6 @@ export enum EntityComponentTypes {
     CanFly = 'minecraft:can_fly',
     CanPowerJump = 'minecraft:can_power_jump',
     Color = 'minecraft:color',
-    /**
-     * @rc
-     */
     Color2 = 'minecraft:color2',
     /**
      * @beta
@@ -74,29 +68,11 @@ export enum EntityComponentTypes {
      * @rc
      */
     MovementSway = 'minecraft:movement.sway',
-    /**
-     * @rc
-     */
     NavigationClimb = 'minecraft:navigation.climb',
-    /**
-     * @rc
-     */
     NavigationFloat = 'minecraft:navigation.float',
-    /**
-     * @rc
-     */
     NavigationFly = 'minecraft:navigation.fly',
-    /**
-     * @rc
-     */
     NavigationGeneric = 'minecraft:navigation.generic',
-    /**
-     * @rc
-     */
     NavigationHover = 'minecraft:navigation.hover',
-    /**
-     * @rc
-     */
     NavigationWalk = 'minecraft:navigation.walk',
     /**
      * @beta
@@ -105,13 +81,7 @@ export enum EntityComponentTypes {
     OnFire = 'minecraft:onfire',
     Projectile = 'minecraft:projectile',
     PushThrough = 'minecraft:push_through',
-    /**
-     * @rc
-     */
     Rideable = 'minecraft:rideable',
-    /**
-     * @rc
-     */
     Riding = 'minecraft:riding',
     Scale = 'minecraft:scale',
     SkinId = 'minecraft:skin_id',
@@ -123,9 +93,6 @@ export enum EntityComponentTypes {
      * @rc
      */
     Tameable = 'minecraft:tameable',
-    /**
-     * @rc
-     */
     TameMount = 'minecraft:tamemount',
     TypeFamily = 'minecraft:type_family',
     /**

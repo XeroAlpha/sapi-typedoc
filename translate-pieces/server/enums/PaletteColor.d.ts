@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum PaletteColor {
     White = 0,
     Orange = 1,

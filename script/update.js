@@ -56,7 +56,7 @@ async function main() {
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, 'package.json');
     const packageSnapshotPath = resolvePath(translatedPath, 'package.json');
-    if (existsSync(packageSnapshotPath)) {
+    if (!process.argv.includes('--cache') && existsSync(packageSnapshotPath)) {
         rmSync(packageSnapshotPath);
     }
     const originalNodeModulesDir = resolvePath(originalPath, 'node_modules');

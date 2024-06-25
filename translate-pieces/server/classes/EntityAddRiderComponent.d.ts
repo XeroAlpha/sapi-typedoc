@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent } from '../index';
 
 /**
- * @rc
  * When added, this component makes the entity spawn with a
  * rider of the specified entityType.
  */

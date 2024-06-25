@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum HudElement {
     PaperDoll = 0,
     Armor = 1,

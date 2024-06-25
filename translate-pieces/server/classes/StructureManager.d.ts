@@ -36,7 +36,6 @@ export class StructureManager {
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
-     * @rc
      * @remarks
      * Creates a new Structure from blocks in the world. This is
      * functionally equivalent to the /structure save command.
@@ -102,7 +101,6 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
-     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *

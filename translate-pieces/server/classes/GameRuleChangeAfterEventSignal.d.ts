@@ -1,7 +1,6 @@
 /* IMPORT */ import { GameRuleChangeAfterEvent } from '../index';
 
 /**
- * @rc
  * Manages callbacks that are connected to when a
  * world.gameRules property has changed.
  */
