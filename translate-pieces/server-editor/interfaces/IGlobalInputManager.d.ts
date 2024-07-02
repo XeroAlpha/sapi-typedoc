@@ -1,10 +1,10 @@
-/* IMPORT */ import { EditorInputContext, InputModifier, KeyboardKey, SupportedKeyboardActionTypes } from '../index';
+/* IMPORT */ import { EditorInputContext, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '../index';
 
 export interface IGlobalInputManager {
     registerKeyBinding(
         inputContextId: EditorInputContext,
         action: SupportedKeyboardActionTypes,
-        button: KeyboardKey,
-        modifier?: InputModifier,
+        binding: KeyBinding,
+        info?: KeyBindingInfo,
     ): void;
 }

@@ -1,15 +1,15 @@
 {
   "dependencies": {
     "@minecraft/common": "1.2.0",
-    "@minecraft/debug-utilities": "1.0.0-beta.1.21.10-preview.24",
+    "@minecraft/debug-utilities": "1.0.0-beta.1.21.20-preview.21",
     "@minecraft/math": "1.3.5",
-    "@minecraft/server": "1.13.0-beta.1.21.10-preview.24",
-    "@minecraft/server-admin": "1.0.0-beta.1.21.10-preview.24",
-    "@minecraft/server-editor": "0.1.0-beta.1.21.10-preview.24",
-    "@minecraft/server-gametest": "1.0.0-beta.1.21.10-preview.24",
-    "@minecraft/server-net": "1.0.0-beta.1.21.10-preview.24",
-    "@minecraft/server-ui": "1.3.0-beta.1.21.10-preview.24",
-    "@minecraft/vanilla-data": "1.21.10-preview.24"
+    "@minecraft/server": "1.14.0-beta.1.21.20-preview.21",
+    "@minecraft/server-admin": "1.0.0-beta.1.21.20-preview.21",
+    "@minecraft/server-editor": "0.1.0-beta.1.21.20-preview.21",
+    "@minecraft/server-gametest": "1.0.0-beta.1.21.20-preview.21",
+    "@minecraft/server-net": "1.0.0-beta.1.21.20-preview.21",
+    "@minecraft/server-ui": "1.3.0-beta.1.21.20-preview.21",
+    "@minecraft/vanilla-data": "1.21.20-preview.21"
   },
   "overrides": {
     "@minecraft/debug-utilities": {

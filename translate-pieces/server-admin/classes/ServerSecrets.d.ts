@@ -28,8 +28,6 @@
  *
  *     return http.request(req);
  * }
- *
- * getPlayerProfile('dark navi');
  * ```
  */
 export class ServerSecrets {

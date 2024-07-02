@@ -15,6 +15,11 @@ export enum EntityDamageCause {
      *
      */
     blockExplosion = 'blockExplosion',
+    /**
+     * @remarks
+     * Damage caused by Campfires.
+     *
+     */
     campfire = 'campfire',
     /**
      * @remarks
@@ -144,9 +149,29 @@ export enum EntityDamageCause {
      *
      */
     projectile = 'projectile',
+    /**
+     * @remarks
+     * Damage caused by Goat ramming.
+     *
+     */
     ramAttack = 'ramAttack',
+    /**
+     * @remarks
+     * Damage caused by the /kill command.
+     *
+     */
     selfDestruct = 'selfDestruct',
+    /**
+     * @remarks
+     * Damage caused by the Warden's Sonic Boom attack.
+     *
+     */
     sonicBoom = 'sonicBoom',
+    /**
+     * @remarks
+     * Damage caused by a Soul Campfire.
+     *
+     */
     soulCampfire = 'soulCampfire',
     /**
      * @remarks

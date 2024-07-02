@@ -5,6 +5,10 @@
 export enum EquipmentSlot {
     /**
      * @beta
+     * @remarks
+     * The body slot. This slot is used to hold armor for
+     * non-humanoid mobs.
+     *
      */
     Body = 'Body',
     /**

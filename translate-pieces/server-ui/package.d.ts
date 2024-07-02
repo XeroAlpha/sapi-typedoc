@@ -1,4 +1,5 @@
 /**
+ * @beta
  * @packageDocumentation
  * The `@minecraft/server-ui` module contains types for
  * expressing simple dialog-based user experiences.
@@ -34,7 +35,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.1.0"
+ *   "version": "1.3.0-beta"
  * }
  * ```
  *

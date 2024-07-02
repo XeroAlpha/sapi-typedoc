@@ -98,7 +98,9 @@ export class Block {
     readonly 'type': BlockType;
     /**
      * @remarks
-     * Identifier of the type of block for this block.
+     * Identifier of the type of block for this block. Warning:
+     * Vanilla block names can be changed in future releases, try
+     * using 'Block.matches' instead for block comparison.
      *
      * @throws This property can throw when used.
      *
@@ -155,8 +157,8 @@ export class Block {
     below(steps?: number): Block | undefined;
     /**
      * @remarks
-     * Returns the {@link @minecraft/server.Location} of the center
-     * of this block on the X and Z axis.
+     * Returns the {@link Vector3} of the center of this block on
+     * the X and Z axis.
      *
      */
     bottomCenter(): Vector3;
@@ -186,8 +188,8 @@ export class Block {
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
      * @remarks
-     * Returns the {@link @minecraft/server.Location} of the center
-     * of this block on the X, Y, and Z axis.
+     * Returns the {@link Vector3} of the center of this block on
+     * the X, Y, and Z axis.
      *
      */
     center(): Vector3;

@@ -796,7 +796,7 @@ export class Test {
      * Location of the fluid container block.
      * @param type
      * Type of fluid to set. See {@link
-     * @minecraft/server-gametest.FluidType} for a list of values.
+     * @minecraft/server.FluidType} for a list of values.
      * @throws This function can throw errors.
      *
      * {@link GameTestError}

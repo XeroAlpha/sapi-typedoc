@@ -21,6 +21,23 @@ export class Dimension {
     readonly id: string;
     /**
      * @beta
+     * @remarks
+     * Searches the block volume for a block that satisfies the
+     * block filter.
+     *
+     * @param volume
+     * Volume of blocks that will be checked.
+     * @param filter
+     * Block filter that will be checked against each block in the
+     * volume.
+     * @param allowUnloadedChunks
+     * If set to true will suppress the UnloadedChunksError if some
+     * or all of the block volume is outside of the loaded chunks.
+     * Will only check the block locations that are within the
+     * loaded chunks in the volume.
+     * @returns
+     * Returns true if at least one block in the volume satisfies
+     * the filter, false otherwise.
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -173,6 +190,22 @@ export class Dimension {
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @beta
+     * @remarks
+     * Gets all the blocks in a volume that satisfy the filter.
+     *
+     * @param volume
+     * Volume of blocks that will be checked.
+     * @param filter
+     * Block filter that will be checked against each block in the
+     * volume.
+     * @param allowUnloadedChunks
+     * If set to true will suppress the UnloadedChunksError if some
+     * or all of the block volume is outside of the loaded chunks.
+     * Will only check the block locations that are within the
+     * loaded chunks in the volume.
+     * @returns
+     * Returns the ListBlockVolume that contains all the block
+     * locations that satisfied the block filter.
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -295,9 +328,55 @@ export class Dimension {
     getWeather(): WeatherType;
     /**
      * @remarks
+     * Plays a sound for all players.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param soundId
+     * Identifier of the sound.
+     * @param location
+     * Location of the sound.
+     * @param soundOptions
+     * Additional options for configuring additional effects for
+     * the sound.
+     * @throws
+     * An error will be thrown if volume is less than 0.0.
+     * An error will be thrown if fade is less than 0.0.
+     * An error will be thrown if pitch is less than 0.01.
+     * An error will be thrown if volume is less than 0.0.
+     * @example playMusicAndSound.ts
+     * ```typescript
+     * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
+     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
+     *
+     * const players = world.getPlayers();
+     * const targetLocation: Vector3 = {
+     *     x: 0,
+     *     y: 0,
+     *     z: 0,
+     * };
+     *
+     * const musicOptions: MusicOptions = {
+     *     fade: 0.5,
+     *     loop: true,
+     *     volume: 1.0,
+     * };
+     * world.playMusic('music.menu', musicOptions);
+     *
+     * const worldSoundOptions: WorldSoundOptions = {
+     *     pitch: 0.5,
+     *     volume: 4.0,
+     * };
+     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
+     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
+     *
+     * const playerSoundOptions: PlayerSoundOptions = {
+     *     pitch: 1.0,
+     *     volume: 1.0,
+     * };
+     *
+     * players[0].playSound('bucket.fill_water', playerSoundOptions);
+     * ```
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -347,9 +426,18 @@ export class Dimension {
     /**
      * @rc
      * @remarks
+     * Sets a block in the world using a BlockPermutation.
+     * BlockPermutations are blocks with a particular state.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param location
+     * The location within the dimension to set the block.
+     * @param permutation
+     * The block permutation to set.
+     * @throws
+     * Throws if the location is within an unloaded chunk or
+     * outside of the world bounds.
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -359,9 +447,19 @@ export class Dimension {
     /**
      * @rc
      * @remarks
+     * Sets a block at a given location within the dimension.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param location
+     * The location within the dimension to set the block.
+     * @param blockType
+     * The type of block to set. This can be either a string
+     * identifier or a BlockType. The default block permutation is
+     * used.
+     * @throws
+     * Throws if the location is within an unloaded chunk or
+     * outside of the world bounds.
      *
      * {@link Error}
      *

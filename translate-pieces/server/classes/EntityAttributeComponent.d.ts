@@ -70,7 +70,8 @@ export class EntityAttributeComponent extends EntityComponent {
     resetToMinValue(): void;
     /**
      * @remarks
-     * Sets the current value of this attribute.
+     * Sets the current value of this attribute. The provided value
+     * will be clamped to the range of this attribute.
      *
      * This function can't be called in read-only mode.
      *

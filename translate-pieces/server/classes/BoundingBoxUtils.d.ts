@@ -4,15 +4,14 @@
  * @beta
  * Bounding Box Utils is a utility class that provides a number
  * of useful functions for the creation and utility of {@link
- * @minecraft-server.BoundingBox} objects
+ * BoundingBox} objects
  */
 export class BoundingBoxUtils {
     private constructor();
     /**
      * @remarks
-     * Create a validated instance of a {@link
-     * @minecraft-server.BoundingBox} where the min and max
-     * components are guaranteed to be (min <= max)
+     * Create a validated instance of a {@link BoundingBox} where
+     * the min and max components are guaranteed to be (min <= max)
      *
      * This function can't be called in read-only mode.
      *
@@ -24,8 +23,8 @@ export class BoundingBoxUtils {
     static createValid(min: Vector3, max: Vector3): BoundingBox;
     /**
      * @remarks
-     * Expand a {@link @minecraft-server.BoundingBox} by a given
-     * amount along each axis.
+     * Expand a {@link BoundingBox} by a given amount along each
+     * axis.
      * Sizes can be negative to perform contraction.
      * Note: corners can be inverted if the contraction size is
      * greater than the span, but the min/max relationship will
@@ -34,14 +33,13 @@ export class BoundingBoxUtils {
      * This function can't be called in read-only mode.
      *
      * @returns
-     * Return a new {@link @minecraft-server.BoundingBox} object
-     * representing the changes
+     * Return a new {@link BoundingBox} object representing the
+     * changes
      */
     static dilate(box: BoundingBox, size: Vector3): BoundingBox;
     /**
      * @remarks
-     * Check if two {@link @minecraft-server.BoundingBox} objects
-     * are identical
+     * Check if two {@link BoundingBox} objects are identical
      *
      * This function can't be called in read-only mode.
      *
@@ -50,29 +48,27 @@ export class BoundingBoxUtils {
     /**
      * @remarks
      * Expand the initial box object bounds to include the 2nd box
-     * argument.  The resultant {@link
-     * @minecraft-server.BoundingBox} object will be a BoundingBox
-     * which exactly encompasses the two boxes.
+     * argument.  The resultant {@link BoundingBox} object will be
+     * a BoundingBox which exactly encompasses the two boxes.
      *
      * This function can't be called in read-only mode.
      *
      * @returns
-     * A new {@link @minecraft-server.BoundingBox} instance
-     * representing the smallest possible bounding box which can
-     * encompass both
+     * A new {@link BoundingBox} instance representing the smallest
+     * possible bounding box which can encompass both
      */
     static expand(box: BoundingBox, other: BoundingBox): BoundingBox;
     /**
      * @remarks
-     * Calculate the center block of a given {@link
-     * @minecraft-server.BoundingBox} object.
+     * Calculate the center block of a given {@link BoundingBox}
+     * object.
      *
      * This function can't be called in read-only mode.
      *
      * @returns
-     * Note that {@link @minecraft-server.BoundingBox} objects
-     * represent whole blocks, so the center of boxes which have
-     * odd numbered bounds are not mathematically centered...
+     * Note that {@link BoundingBox} objects represent whole
+     * blocks, so the center of boxes which have odd numbered
+     * bounds are not mathematically centered...
      * i.e. a BoundingBox( 0,0,0 -> 3,3,3 )  would have a center of
      * (1,1,1)  (not (1.5, 1.5, 1.5) as expected)
      */

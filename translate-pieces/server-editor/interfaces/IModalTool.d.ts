@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IPropertyPane, InputModifier, KeyboardKey, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
+/* IMPORT */ import { EventSink, IPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
 
 export interface IModalTool {
     /**
@@ -16,7 +16,7 @@ export interface IModalTool {
     bindPropertyPane(pane: IPropertyPane): void;
     dispose(): void;
     hide(): void;
-    registerKeyBinding(action: SupportedKeyboardActionTypes, button: KeyboardKey, modifier?: InputModifier): void;
+    registerKeyBinding(action: SupportedKeyboardActionTypes, binding: KeyBinding, info?: KeyBindingInfo): void;
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;

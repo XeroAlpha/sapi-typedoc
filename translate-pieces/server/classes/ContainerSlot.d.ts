@@ -112,12 +112,19 @@ export class ContainerSlot {
      */
     clearDynamicProperties(): void;
     /**
+     * @remarks
+     * Returns whether the item within this container slot can be
+     * destroyed.
+     *
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerSlotError}
      */
     getCanDestroy(): string[];
     /**
+     * @remarks
+     * Returns if the item in this container slot can be placed on.
+     *
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerSlotError}
@@ -208,6 +215,9 @@ export class ContainerSlot {
      */
     getTags(): string[];
     /**
+     * @remarks
+     * Returns true if this slot has an item.
+     *
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerSlotError}
