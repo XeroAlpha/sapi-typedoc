@@ -239,8 +239,7 @@ export class CompoundBlockVolume {
     setOrigin(position: Vector3, preserveExistingVolumes?: boolean): void;
     /**
      * @remarks
-     * Similar to {@link
-     * @minecraft-server/CompoundBlockVolume.setOrigin} - this
+     * Similar to {@link CompoundBlockVolume.setOrigin} - this
      * function will translate the origin by a given delta to a new
      * position
      *
@@ -248,7 +247,7 @@ export class CompoundBlockVolume {
      *
      * @param preserveExistingVolumes
      * See the description for the arguments to {@link
-     * @minecraft-server/CompoundBlockVolume.setOrigin}
+     * CompoundBlockVolume.setOrigin}
      */
     translateOrigin(delta: Vector3, preserveExistingVolumes?: boolean): void;
 }

@@ -1,34 +1,54 @@
 /* IMPORT */ import { Entity, EntityComponent } from '../index';
 
 /**
- * @beta
- * Allows this entity to be leashed and defines the conditions
- * and events for this entity when is leashed.
+ * @rc
+ * Allows the entity to be leashed. Defines the conditions and
+ * events for when an entity is leashed.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityLeashableComponent extends EntityComponent {
     private constructor();
     /**
+     * @remarks
+     * Returns true if another entity can 'steal' the leashed
+     * entity by attaching their own leash to it.
+     *
      * @throws This property can throw when used.
      */
     readonly canBeStolen: boolean;
     /**
+     * @remarks
+     * Distance in blocks at which the leash stiffens, restricting
+     * movement.
+     *
      * @throws This property can throw when used.
      */
     readonly hardDistance: number;
     /**
+     * @remarks
+     * Returns true if the entity is leashed.
+     *
      * @throws This property can throw when used.
      */
     readonly isLeashed: boolean;
     /**
+     * @remarks
+     * Entity that is holding the leash.
+     *
      * @throws This property can throw when used.
      */
     readonly leashHolder?: Entity;
     /**
+     * @remarks
+     * Identifier of entity that is holding the leash.
+     *
      * @throws This property can throw when used.
      */
     readonly leashHolderEntityId?: string;
     /**
+     * @remarks
+     * Distance in blocks at which the leash breaks.
+     *
      * @throws This property can throw when used.
      */
     readonly maxDistance: number;
@@ -44,9 +64,15 @@ export class EntityLeashableComponent extends EntityComponent {
     static readonly componentId = 'minecraft:leashable';
     /**
      * @remarks
+     * Leashes this entity to another entity.
+     *
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
+     * @param leashHolder
+     * The entity to leash this entity to.
+     * @throws
+     * Throws if the entity to leash to is over the max distance,
+     * and if the player is dead or in spectator mode.
      */
     leashTo(leashHolder: Entity): void;
     /**

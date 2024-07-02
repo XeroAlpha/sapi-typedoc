@@ -10,8 +10,7 @@ export class StructureManager {
      * @remarks
      * Creates an empty Structure in memory. Use {@link
      * Structure.setBlockPermutation} to populate the structure
-     * with blocks and save changes with {@link
-     * @minecraft/server.Structure.save}.
+     * with blocks and save changes with {@link Structure.saveAs}.
      *
      * This function can't be called in read-only mode.
      *

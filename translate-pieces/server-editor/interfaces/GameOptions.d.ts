@@ -1,0 +1,41 @@
+/* IMPORT */ import { DaylightCycle, GamePublishSetting, PlayerPermissionLevel, ProjectExportType, minecraftserver } from '../index';
+
+export interface GameOptions {
+    bonusChest?: boolean;
+    cheats?: boolean;
+    commandBlockEnabled?: boolean;
+    daylightCycle?: DaylightCycle;
+    difficulty?: minecraftserver.Difficulty;
+    dimensionId?: string;
+    disableWeather?: boolean;
+    educationEdition?: boolean;
+    entitiesDropLoot?: boolean;
+    exportType?: ProjectExportType;
+    fireSpreads?: boolean;
+    friendlyFire?: boolean;
+    gameMode?: minecraftserver.GameMode;
+    immediateRespawn?: boolean;
+    keepInventory?: boolean;
+    lanVisibility?: boolean;
+    mobGriefing?: boolean;
+    mobLoot?: boolean;
+    mobSpawning?: boolean;
+    multiplayerGame?: boolean;
+    naturalRegeneration?: boolean;
+    playerAccess?: GamePublishSetting;
+    playerPermissions?: PlayerPermissionLevel;
+    randomTickSpeed?: number;
+    recipeUnlocking?: boolean;
+    respawnBlocksExplode?: boolean;
+    respawnRadius?: number;
+    showCoordinates?: boolean;
+    showDaysPlayed?: boolean;
+    simulationDistance?: number;
+    spawnPosition?: minecraftserver.Vector3;
+    startingMap?: boolean;
+    tileDrops?: boolean;
+    timeOfDay?: number;
+    tntExplodes?: boolean;
+    weather?: number;
+    worldName?: string;
+}

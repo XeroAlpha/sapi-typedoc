@@ -1,4 +1,4 @@
-/* IMPORT */ import { ExportResult, ProjectExportOptions } from '../index';
+/* IMPORT */ import { ExportResult, GameOptions } from '../index';
 
 export class ExportManager {
     private constructor();
@@ -8,7 +8,7 @@ export class ExportManager {
      *
      * @throws This function can throw errors.
      */
-    beginExportProject(options: ProjectExportOptions): Promise<ExportResult>;
+    beginExportProject(options: GameOptions): Promise<ExportResult>;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -16,4 +16,10 @@ export class ExportManager {
      * @throws This function can throw errors.
      */
     canExportProject(): boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    getGameOptions(useDefault?: boolean): GameOptions;
 }

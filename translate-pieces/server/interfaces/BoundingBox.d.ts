@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { BoundingBoxUtils, Vector3 } from '../index';
 
 /**
  * @beta
@@ -6,8 +6,8 @@
  * an AABB aligned rectangle.
  * The BoundingBox assumes that it was created in a valid state
  * (min <= max) but cannot guarantee it (unless it was created
- * using the associated {@link
- * @minecraft-server.BoundingBoxUtils} utility functions.
+ * using the associated {@link BoundingBoxUtils} utility
+ * functions.
  * The min/max coordinates represent the diametrically opposite
  * corners of the rectangle.
  * The BoundingBox is not a representation of blocks - it has
@@ -20,15 +20,15 @@
 export interface BoundingBox {
     /**
      * @remarks
-     * A {@link @minecraft-server.Vector3} that represents the
-     * largest corner of the rectangle
+     * A {@link Vector3} that represents the largest corner of the
+     * rectangle
      *
      */
     max: Vector3;
     /**
      * @remarks
-     * A {@link @minecraft-server.Vector3} that represents the
-     * smallest corner of the rectangle
+     * A {@link Vector3} that represents the smallest corner of the
+     * rectangle
      *
      */
     min: Vector3;

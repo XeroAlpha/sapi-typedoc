@@ -2,7 +2,9 @@
 
 /**
  * @beta
- * Defines the entity's strength to carry items.
+ * Defines the entity's ability to carry items. An entity with
+ * a higher strength would have higher potential carry capacity
+ * and more item slots.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityStrengthComponent extends EntityComponent {

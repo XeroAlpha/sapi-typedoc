@@ -14,7 +14,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-editor",
- *   "version": "0.1.0-beta.1.21.10-preview.24"
+ *   "version": "0.1.0-beta"
  * }
  * ```
  *
@@ -39,6 +39,15 @@ export enum BlockPaletteItemType {
 export enum BrushPipelineOperationType {
     Include = 0,
     Exclude = 1,
+}
+
+/**
+ * The possible variants of a color picker.
+ */
+export declare enum ColorPickerVariant {
+    Default = 0,
+    Inline = 1,
+    Expanded = 2,
 }
 
 /**
@@ -128,11 +137,18 @@ export enum CursorTargetMode {
     Face = 1,
 }
 
+export enum DaylightCycle {
+    Normal = 0,
+    AlwaysDay = 1,
+    LockTime = 2,
+}
+
 /**
  * Type of item that can be added to the property pane
  */
 export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     Action = 'editorUI:Action',
+    BlockList = 'editorUI:BlockList',
     BlockPicker = 'editorUI:BlockPicker',
     Boolean = 'editorUI:Boolean',
     ColorPicker = 'editorUI:ColorPicker',
@@ -191,6 +207,14 @@ export enum ExportResult {
     EditorSystemFailure = 7,
 }
 
+export enum GamePublishSetting {
+    NoMultiPlay = 0,
+    InviteOnly = 1,
+    FriendsOnly = 2,
+    FriendsOfFriends = 3,
+    Public = 4,
+}
+
 /**
  * Enumeration representing identifiers for graphics settings
  * properties.
@@ -221,6 +245,7 @@ export declare enum InputModifier {
  * Keyboard key
  */
 export declare enum KeyboardKey {
+    UNDEFINED = 0,
     BACKSPACE = 8,
     TAB = 9,
     ENTER = 13,
@@ -316,24 +341,6 @@ export declare enum KeyboardKey {
 }
 
 /**
- * Keyboard Key Actions
- */
-export declare enum KeyInputType {
-    /**
-     * @remarks
-     * Button was pressed.
-     *
-     */
-    Press = 1,
-    /**
-     * @remarks
-     * Button was released.
-     *
-     */
-    Release = 2,
-}
-
-/**
  * Layout directions for property panes.
  */
 export declare enum LayoutDirection {
@@ -386,6 +393,13 @@ export declare enum MouseInputType {
     DragStart = 5,
     Drag = 6,
     DragEnd = 7,
+}
+
+export enum PlayerPermissionLevel {
+    Visitor = 0,
+    Member = 1,
+    Operator = 2,
+    Custom = 3,
 }
 
 export enum PlaytestSessionResult {
@@ -474,6 +488,13 @@ export type IActionPropertyItem<T extends PropertyBag, Prop extends keyof T & st
 };
 
 /**
+ * A property item which supports BlockList properties
+ */
+export type IBlockListPropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
+    updateBlockList(newBlockList: string[]): void;
+};
+
+/**
  * A property item which supports Dropdown properties
  */
 export type IDropdownPropertyItem<
@@ -532,6 +553,23 @@ export type IVector3PropertyItem<T extends PropertyBag, Prop extends keyof T & s
         minZ?: number;
         maxZ?: number;
     }): void;
+};
+
+/**
+ * Keyboard binding properties.
+ */
+export type KeyBinding = {
+    key: KeyboardKey;
+    modifier?: InputModifier;
+};
+
+/**
+ * Additional information about key binding.
+ */
+export type KeyBindingInfo = {
+    uniqueId: string;
+    label?: string;
+    tooltip?: string;
 };
 
 /**
@@ -1090,8 +1128,7 @@ export class Cursor {
     /**
      * @remarks
      * Hide the 3D block cursor from view until the corresponding
-     * {@link @minecraft-server-editor.Cursor.show} function is
-     * called
+     * {@link Cursor.show} function is called
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -1101,9 +1138,8 @@ export class Cursor {
     /**
      * @remarks
      * Manually offset the 3D block cursor by given amount.
-     * Depending on the {@link
-     * @minecraft-server-editor.CursorProperties.CursorControlMode}
-     * - this function may have no effect
+     * Depending on the {@link CursorProperties.controlMode} - this
+     * function may have no effect
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -1237,7 +1273,7 @@ export class ExportManager {
      *
      * @throws This function can throw errors.
      */
-    beginExportProject(options: ProjectExportOptions): Promise<ExportResult>;
+    beginExportProject(options: GameOptions): Promise<ExportResult>;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1245,6 +1281,12 @@ export class ExportManager {
      * @throws This function can throw errors.
      */
     canExportProject(): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    getGameOptions(useDefault?: boolean): GameOptions;
 }
 
 /**
@@ -1608,7 +1650,7 @@ export class PlaytestManager {
      *
      * @throws This function can throw errors.
      */
-    beginPlaytest(options: PlaytestGameOptions): Promise<PlaytestSessionResult>;
+    beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1804,7 +1846,7 @@ export class Selection {
      *
      * @param forceRelativity
      * See the description for {@link
-     * @minecraft-server/CompoundBlockVolume.peekLastVolume}
+     * @minecraft/server.CompoundBlockVolume.peekLastVolume}
      * @returns
      * Returns undefined if the stack is empty
      */
@@ -1844,12 +1886,12 @@ export class Selection {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param other
-     * {@link @minecraft-server/CompoundBlockVolume} - set the
+     * {@link @minecraft/server.CompoundBlockVolume} - set the
      * block component part of this selection to the specified
      * compound block volume.  This will completely replace all
      * block volume definitions in the selection.
-     * {@link @Selection} - replace the selection with the
-     * specified selection
+     * {@link Selection} - replace the selection with the specified
+     * selection
      * @throws This function can throw errors.
      */
     set(other: minecraftserver.CompoundBlockVolume | Selection): void;
@@ -2158,7 +2200,7 @@ export class TransactionManager {
     /**
      * @remarks
      * Begin tracking block changes in an area defined by a {@link
-     * @minecraft-server/CompoundBlockVolume}.  These will be added
+     * @minecraft/server.CompoundBlockVolume}.  These will be added
      * to a pending changes list.
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
@@ -2166,7 +2208,7 @@ export class TransactionManager {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @param compoundBlockVolume
-     * {@link @minecraft-server/CompoundBlockVolume} to track.
+     * {@link @minecraft/server.CompoundBlockVolume} to track.
      * Only non-void block locations will be tracked -- any changes
      * falling into a void/negative space will not be tracked
      * @throws This function can throw errors.
@@ -2194,7 +2236,7 @@ export class TransactionManager {
      * Selection Volumes can also represent irregular shapes with
      * non-contiguous blocks and this tracking call will honor the
      * actual selected areas in the volume (and not the negative
-     * space) (see {@link @minecraft-server/CompoundBlockVolume}
+     * space) (see {@link @minecraft/server.CompoundBlockVolume}
      * for more details
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2583,6 +2625,46 @@ export interface ExtensionOptionalParameters {
     toolGroupId?: string;
 }
 
+export interface GameOptions {
+    bonusChest?: boolean;
+    cheats?: boolean;
+    commandBlockEnabled?: boolean;
+    daylightCycle?: DaylightCycle;
+    difficulty?: minecraftserver.Difficulty;
+    dimensionId?: string;
+    disableWeather?: boolean;
+    educationEdition?: boolean;
+    entitiesDropLoot?: boolean;
+    exportType?: ProjectExportType;
+    fireSpreads?: boolean;
+    friendlyFire?: boolean;
+    gameMode?: minecraftserver.GameMode;
+    immediateRespawn?: boolean;
+    keepInventory?: boolean;
+    lanVisibility?: boolean;
+    mobGriefing?: boolean;
+    mobLoot?: boolean;
+    mobSpawning?: boolean;
+    multiplayerGame?: boolean;
+    naturalRegeneration?: boolean;
+    playerAccess?: GamePublishSetting;
+    playerPermissions?: PlayerPermissionLevel;
+    randomTickSpeed?: number;
+    recipeUnlocking?: boolean;
+    respawnBlocksExplode?: boolean;
+    respawnRadius?: number;
+    showCoordinates?: boolean;
+    showDaysPlayed?: boolean;
+    simulationDistance?: number;
+    spawnPosition?: minecraftserver.Vector3;
+    startingMap?: boolean;
+    tileDrops?: boolean;
+    timeOfDay?: number;
+    tntExplodes?: boolean;
+    weather?: number;
+    worldName?: string;
+}
+
 /**
  * A properties class for the global instance of the logger
  * object.
@@ -2606,18 +2688,6 @@ export interface LogProperties {
      *
      */
     tags?: string[];
-}
-
-export interface PlaytestGameOptions {
-    alwaysDay?: boolean;
-    difficulty?: minecraftserver.Difficulty;
-    dimensionId?: string;
-    disableWeather?: boolean;
-    gameMode?: minecraftserver.GameMode;
-    showCoordinates?: boolean;
-    spawnPosition?: minecraftserver.Vector3;
-    timeOfDay?: number;
-    weather?: number;
 }
 
 export interface ProjectExportOptions {
@@ -2891,8 +2961,8 @@ export interface IGlobalInputManager {
     registerKeyBinding(
         inputContextId: EditorInputContext,
         action: SupportedKeyboardActionTypes,
-        button: KeyboardKey,
-        modifier?: InputModifier,
+        binding: KeyBinding,
+        info?: KeyBindingInfo,
     ): void;
 }
 
@@ -3004,7 +3074,7 @@ export interface IModalTool {
     bindPropertyPane(pane: IPropertyPane): void;
     dispose(): void;
     hide(): void;
-    registerKeyBinding(action: SupportedKeyboardActionTypes, button: KeyboardKey, modifier?: InputModifier): void;
+    registerKeyBinding(action: SupportedKeyboardActionTypes, binding: KeyBinding, info?: KeyBindingInfo): void;
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
@@ -3157,6 +3227,11 @@ export interface IPropertyItemOptions {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItemOptionsBlockList extends IPropertyItemOptions {
+    blockList: string[];
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
     /**
      * @remarks
@@ -3180,6 +3255,7 @@ export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsColorPicker extends IPropertyItemOptions {
     showAlpha?: boolean;
+    variant?: ColorPickerVariant;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3358,6 +3434,17 @@ export interface IPropertyPane {
     width?: number;
     /**
      * @remarks
+     * Adds a block list to the pane.
+     *
+     */
+    addBlockList(options?: IPropertyItemOptionsBlockList): IBlockListPropertyItem<
+        {
+            EMPTY: undefined;
+        },
+        'EMPTY'
+    >;
+    /**
+     * @remarks
      * Adds a BlockPicker item to the pane.
      *
      */
@@ -3434,6 +3521,8 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     * Adds an image item to the pane.
+     *
      */
     addImage<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
@@ -3736,12 +3825,11 @@ export interface ISimpleTool {
 }
 
 /**
- * Define a (key & modifier) pair for the simple tool
- * activation key binding
+ * Define a key binding for the simple tool activation
  */
-export interface ISimpleToolKeyPair {
-    button: KeyboardKey;
-    buttonModifier: InputModifier;
+export interface ISimpleToolKeyBinding {
+    binding: KeyBinding;
+    info?: KeyBindingInfo;
 }
 
 /**
@@ -3761,7 +3849,7 @@ export interface ISimpleToolOptions {
      * binding is ignored
      *
      */
-    activationKeyBinding?: ISimpleToolKeyPair;
+    activationKeyBinding?: ISimpleToolKeyBinding;
     /**
      * @remarks
      * The name of the tool. This will be used to identify the tool
@@ -4145,6 +4233,18 @@ export interface ModalToolCreationParameters {
      *
      */
     icon?: string;
+    /**
+     * @remarks
+     * Modal input context identifier
+     *
+     */
+    inputContextId?: string;
+    /**
+     * @remarks
+     * Localized text label for modal input context
+     *
+     */
+    inputContextLabel?: string;
     /**
      * @remarks
      * tooltipAltText alt text, if any

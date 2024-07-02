@@ -31,6 +31,10 @@ export class World {
      */
     readonly gameRules: GameRules;
     /**
+     * @beta
+     */
+    readonly isHardcore: boolean;
+    /**
      * @remarks
      * 全局的、唯一的记分板对象。
      * 
@@ -299,6 +303,7 @@ export class World {
      * @example playMusicAndSound.ts
      * ```typescript
      * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
+     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
      *
      * const players = world.getPlayers();
      * const targetLocation: Vector3 = {
@@ -318,7 +323,8 @@ export class World {
      *     pitch: 0.5,
      *     volume: 4.0,
      * };
-     * world.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
+     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
+     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
      *
      * const playerSoundOptions: PlayerSoundOptions = {
      *     pitch: 1.0,
@@ -333,7 +339,8 @@ export class World {
      * @remarks
      * 向玩家播放一段声音。
      * 
-     * Plays a sound for all players.
+     * Plays a sound for all players. DEPRECATED: Use
+     * Dimension.playSound.
      *
      * This function can't be called in read-only mode.
      *
@@ -347,6 +354,7 @@ export class World {
      * @example playMusicAndSound.ts
      * ```typescript
      * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
+     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
      *
      * const players = world.getPlayers();
      * const targetLocation: Vector3 = {
@@ -366,7 +374,8 @@ export class World {
      *     pitch: 0.5,
      *     volume: 4.0,
      * };
-     * world.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
+     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
+     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
      *
      * const playerSoundOptions: PlayerSoundOptions = {
      *     pitch: 1.0,

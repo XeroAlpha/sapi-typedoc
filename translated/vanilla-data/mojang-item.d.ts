@@ -442,6 +442,7 @@ export declare enum MinecraftItemTypes {
     ChiseledNetherBricks = "minecraft:chiseled_nether_bricks",
     /** 雕纹磨制黑石。 */
     ChiseledPolishedBlackstone = "minecraft:chiseled_polished_blackstone",
+    ChiseledSandstone = "minecraft:chiseled_sandstone",
     /** 雕纹石砖。 */
     ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
     /** 雕纹凝灰岩。 */
@@ -598,6 +599,7 @@ export declare enum MinecraftItemTypes {
     CutCopperStairs = "minecraft:cut_copper_stairs",
     /** 切制红砂岩台阶。 */
     CutRedSandstoneSlab = "minecraft:cut_red_sandstone_slab",
+    CutSandstone = "minecraft:cut_sandstone",
     /** 切制砂岩台阶。 */
     CutSandstoneSlab = "minecraft:cut_sandstone_slab",
     /** 青色蜡烛。 */
@@ -622,6 +624,7 @@ export declare enum MinecraftItemTypes {
     CyanTerracotta = "minecraft:cyan_terracotta",
     /** 青色羊毛。 */
     CyanWool = "minecraft:cyan_wool",
+    Dandelion = "minecraft:dandelion",
     /** 危机纹样陶片。 */
     DangerPotterySherd = "minecraft:danger_pottery_sherd",
     /** 深色橡木船。 */
@@ -1238,8 +1241,22 @@ export declare enum MinecraftItemTypes {
     Lectern = "minecraft:lectern",
     /** 拉杆。 */
     Lever = "minecraft:lever",
-    /** 光源方块。 */
-    LightBlock = "minecraft:light_block",
+    LightBlock0 = "minecraft:light_block_0",
+    LightBlock1 = "minecraft:light_block_1",
+    LightBlock10 = "minecraft:light_block_10",
+    LightBlock11 = "minecraft:light_block_11",
+    LightBlock12 = "minecraft:light_block_12",
+    LightBlock13 = "minecraft:light_block_13",
+    LightBlock14 = "minecraft:light_block_14",
+    LightBlock15 = "minecraft:light_block_15",
+    LightBlock2 = "minecraft:light_block_2",
+    LightBlock3 = "minecraft:light_block_3",
+    LightBlock4 = "minecraft:light_block_4",
+    LightBlock5 = "minecraft:light_block_5",
+    LightBlock6 = "minecraft:light_block_6",
+    LightBlock7 = "minecraft:light_block_7",
+    LightBlock8 = "minecraft:light_block_8",
+    LightBlock9 = "minecraft:light_block_9",
     /** 淡蓝色蜡烛。 */
     LightBlueCandle = "minecraft:light_blue_candle",
     /** 淡蓝色地毯。 */
@@ -2028,6 +2045,7 @@ export declare enum MinecraftItemTypes {
     SmoothRedSandstoneSlab = "minecraft:smooth_red_sandstone_slab",
     /** 平滑红砂岩楼梯。 */
     SmoothRedSandstoneStairs = "minecraft:smooth_red_sandstone_stairs",
+    SmoothSandstone = "minecraft:smooth_sandstone",
     /** 平滑砂岩台阶。 */
     SmoothSandstoneSlab = "minecraft:smooth_sandstone_slab",
     /** 平滑砂岩楼梯。 */
@@ -2514,8 +2532,6 @@ export declare enum MinecraftItemTypes {
     YellowConcretePowder = "minecraft:yellow_concrete_powder",
     /** 黄色染料。 */
     YellowDye = "minecraft:yellow_dye",
-    /** 蒲公英。 */
-    YellowFlower = "minecraft:yellow_flower",
     /** 黄色带釉陶瓦。 */
     YellowGlazedTerracotta = "minecraft:yellow_glazed_terracotta",
     /** 黄色潜影盒。 */

@@ -19,7 +19,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-gametest",
- *   "version": "1.0.0-beta.1.21.10-preview.24"
+ *   "version": "1.0.0-beta"
  * }
  * ```
  *
@@ -1749,7 +1749,7 @@ export class Test {
      * Location of the fluid container block.
      * @param type
      * Type of fluid to set. See {@link
-     * @minecraft/server-gametest.FluidType} for a list of values.
+     * @minecraft/server.FluidType} for a list of values.
      * @throws This function can throw errors.
      *
      * {@link GameTestError}

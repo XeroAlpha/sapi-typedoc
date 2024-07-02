@@ -1,11 +1,10 @@
 /**
- * Contains additional options for a world-level playSound
- * occurrence.
+ * Contains additional options for a playSound occurrence.
  */
 export interface WorldSoundOptions {
     /**
      * @remarks
-     * Pitch of the sound played at the world level.
+     * Pitch of the sound played.
      *
      */
     pitch?: number;

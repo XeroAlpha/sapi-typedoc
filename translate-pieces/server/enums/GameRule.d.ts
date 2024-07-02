@@ -1,3 +1,7 @@
+/**
+ * Game rules. These values can also be controlled via the
+ * /gamerule command.
+ */
 export enum GameRule {
     /**
      * @remarks
@@ -202,6 +206,9 @@ export enum GameRule {
     ShowCoordinates = 'showCoordinates',
     /**
      * @rc
+     * @remarks
+     * Controls whether the days a player has played is displayed.
+     *
      */
     ShowDaysPlayed = 'showDaysPlayed',
     /**
@@ -239,5 +246,11 @@ export enum GameRule {
      *
      */
     TntExplodes = 'tntExplodes',
+    /**
+     * @remarks
+     * Controls whether blocks randomly drop loot or all blocks
+     * drop loot when destroyed by an explosion. Defaults to false.
+     *
+     */
     TntExplosionDropDecay = 'tntExplosionDropDecay',
 }

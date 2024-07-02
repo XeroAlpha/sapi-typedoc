@@ -10,6 +10,17 @@ export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     /**
      * @remarks
+     * The current air supply of the entity.
+     *
+     * This property can't be edited in read-only mode.
+     *
+     * @throws
+     * Will throw an error if the air supply is out of bounds
+     * [suffocationTime, maxAirSupply].
+     */
+    airSupply: number;
+    /**
+     * @remarks
      * If true, this entity can breathe in air.
      *
      * @throws This property can throw when used.
@@ -36,6 +47,13 @@ export class EntityBreathableComponent extends EntityComponent {
      * @throws This property can throw when used.
      */
     readonly breathesWater: boolean;
+    /**
+     * @remarks
+     * If true, the entity is able to breathe.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly canBreathe: boolean;
     /**
      * @remarks
      * If true, this entity will have visible bubbles while in
@@ -81,13 +99,4 @@ export class EntityBreathableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     getNonBreatheBlocks(): BlockPermutation[];
-    /**
-     * @remarks
-     * Sets the current air supply of the entity.
-     *
-     * @param value
-     * New air supply for the entity.
-     * @throws This function can throw errors.
-     */
-    setAirSupply(value: number): void;
 }

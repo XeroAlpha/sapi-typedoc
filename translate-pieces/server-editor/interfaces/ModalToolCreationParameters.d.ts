@@ -22,6 +22,18 @@ export interface ModalToolCreationParameters {
     icon?: string;
     /**
      * @remarks
+     * Modal input context identifier
+     *
+     */
+    inputContextId?: string;
+    /**
+     * @remarks
+     * Localized text label for modal input context
+     *
+     */
+    inputContextLabel?: string;
+    /**
+     * @remarks
      * tooltipAltText alt text, if any
      *
      */

@@ -1,6 +1,4 @@
 /**
- * DEPRECATED
- * Use @minecraft/vanilla-data.MinecraftDimensionTypes
  * A collection of default Minecraft dimension types.
  */
 export class MinecraftDimensionTypes {

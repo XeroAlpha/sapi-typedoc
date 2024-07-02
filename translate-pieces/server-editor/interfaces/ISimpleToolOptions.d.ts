@@ -1,4 +1,4 @@
-/* IMPORT */ import { ISimpleTool, ISimpleToolKeyPair, ISimpleToolPaneOptions, ISimpleToolRailOptions, ISimpleToolStatusBarOptions } from '../index';
+/* IMPORT */ import { ISimpleTool, ISimpleToolKeyBinding, ISimpleToolPaneOptions, ISimpleToolRailOptions, ISimpleToolStatusBarOptions } from '../index';
 
 /**
  * A set of options which define the basic properties of a
@@ -17,7 +17,7 @@ export interface ISimpleToolOptions {
      * binding is ignored
      *
      */
-    activationKeyBinding?: ISimpleToolKeyPair;
+    activationKeyBinding?: ISimpleToolKeyBinding;
     /**
      * @remarks
      * The name of the tool. This will be used to identify the tool

@@ -100,8 +100,16 @@ export class ScreenDisplay {
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @remarks
+     * Sets visibility of a particular element of the heads up
+     * display (HUD).
+     *
      * This function can't be called in read-only mode.
      *
+     * @param visible
+     * Whether to set the HUD element to invisible, or to reset it
+     * back to its default.
+     * @param hudElements
+     * Optional list of HUD elements to configure visibility for.
      * @throws This function can throw errors.
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;

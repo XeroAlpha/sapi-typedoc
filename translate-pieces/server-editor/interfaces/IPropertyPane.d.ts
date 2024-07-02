@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IActionPropertyItem, IBlockListPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -54,6 +54,17 @@ export interface IPropertyPane {
      *
      */
     width?: number;
+    /**
+     * @remarks
+     * Adds a block list to the pane.
+     *
+     */
+    addBlockList(options?: IPropertyItemOptionsBlockList): IBlockListPropertyItem<
+        {
+            EMPTY: undefined;
+        },
+        'EMPTY'
+    >;
     /**
      * @remarks
      * Adds a BlockPicker item to the pane.
@@ -132,6 +143,8 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     * Adds an image item to the pane.
+     *
      */
     addImage<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,

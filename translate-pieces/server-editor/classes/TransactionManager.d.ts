@@ -149,7 +149,7 @@ export class TransactionManager {
     /**
      * @remarks
      * Begin tracking block changes in an area defined by a {@link
-     * @minecraft-server/CompoundBlockVolume}.  These will be added
+     * @minecraft/server.CompoundBlockVolume}.  These will be added
      * to a pending changes list.
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
@@ -157,7 +157,7 @@ export class TransactionManager {
      * This function can't be called in read-only mode.
      *
      * @param compoundBlockVolume
-     * {@link @minecraft-server/CompoundBlockVolume} to track.
+     * {@link @minecraft/server.CompoundBlockVolume} to track.
      * Only non-void block locations will be tracked -- any changes
      * falling into a void/negative space will not be tracked
      * @throws This function can throw errors.
@@ -185,7 +185,7 @@ export class TransactionManager {
      * Selection Volumes can also represent irregular shapes with
      * non-contiguous blocks and this tracking call will honor the
      * actual selected areas in the volume (and not the negative
-     * space) (see {@link @minecraft-server/CompoundBlockVolume}
+     * space) (see {@link @minecraft/server.CompoundBlockVolume}
      * for more details
      *
      * This function can't be called in read-only mode.
