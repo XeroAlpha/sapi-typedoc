@@ -6,6 +6,6 @@
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsText extends IPropertyItemOptions {
-    border: boolean;
-    valueStringId: string;
+    border?: boolean;
+    valueStringId?: string;
 }

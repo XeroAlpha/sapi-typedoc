@@ -32,16 +32,10 @@ export interface IPropertyPane {
     readonly parentPaneId?: string;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property pane
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId: string;
+    title: string;
     /**
      * @remarks
      * Check visibility of the pane

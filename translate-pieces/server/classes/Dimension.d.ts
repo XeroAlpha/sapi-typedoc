@@ -307,7 +307,7 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function can't be called in read-only mode.
      *

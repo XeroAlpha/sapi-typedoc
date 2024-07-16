@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export interface VectorXZ {
     x: number;

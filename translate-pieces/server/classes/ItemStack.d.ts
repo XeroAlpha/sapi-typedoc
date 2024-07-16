@@ -440,7 +440,7 @@ export class ItemStack {
      */
     setLore(loreList?: string[]): void;
     /**
-     * @rc
+     * @beta
      * @remarks
      * Helper function for creating potion items.
      *

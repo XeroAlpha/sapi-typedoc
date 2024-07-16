@@ -12,21 +12,8 @@ export interface IPropertyPaneOptions {
     direction?: LayoutDirection;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property pane
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId: string;
-    /**
-     * @remarks
-     * Width of the panel in rem. This property is ignored in case
-     * of sub panes
-     *
-     */
-    width?: number;
+    title: string;
 }

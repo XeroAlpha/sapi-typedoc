@@ -64,13 +64,5 @@ export interface ISimpleToolPaneOptions {
      * bar of the pane.
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * The string id of the title of the pane. This will be
-     * displayed in the title bar of the pane if it exists in the
-     * language file, otherwise the titleAltText will be used.
-     *
-     */
-    titleStringId?: string;
+    title: string;
 }
