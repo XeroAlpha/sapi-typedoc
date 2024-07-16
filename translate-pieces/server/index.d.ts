@@ -352,6 +352,7 @@ export { CameraDefaultOptions } from './interfaces/CameraDefaultOptions';
 export { CameraEaseOptions } from './interfaces/CameraEaseOptions';
 export { CameraFadeOptions } from './interfaces/CameraFadeOptions';
 export { CameraFadeTimeOptions } from './interfaces/CameraFadeTimeOptions';
+export { CameraFixedBoomOptions } from './interfaces/CameraFixedBoomOptions';
 export { CameraSetFacingOptions } from './interfaces/CameraSetFacingOptions';
 export { CameraSetLocationOptions } from './interfaces/CameraSetLocationOptions';
 export { CameraSetPosOptions } from './interfaces/CameraSetPosOptions';

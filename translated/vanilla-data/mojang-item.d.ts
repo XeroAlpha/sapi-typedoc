@@ -432,6 +432,8 @@ export declare enum MinecraftItemTypes {
     Chicken = "minecraft:chicken",
     /** 鸡刷怪蛋。 */
     ChickenSpawnEgg = "minecraft:chicken_spawn_egg",
+    /** 开裂的铁砧。 */
+    ChippedAnvil = "minecraft:chipped_anvil",
     /** 雕纹书架。 */
     ChiseledBookshelf = "minecraft:chiseled_bookshelf",
     /** 雕纹铜块。 */
@@ -442,6 +444,11 @@ export declare enum MinecraftItemTypes {
     ChiseledNetherBricks = "minecraft:chiseled_nether_bricks",
     /** 雕纹磨制黑石。 */
     ChiseledPolishedBlackstone = "minecraft:chiseled_polished_blackstone",
+    /** 雕纹石英块。 */
+    ChiseledQuartzBlock = "minecraft:chiseled_quartz_block",
+    /** 雕纹红砂岩。 */
+    ChiseledRedSandstone = "minecraft:chiseled_red_sandstone",
+    /** 雕纹砂岩。 */
     ChiseledSandstone = "minecraft:chiseled_sandstone",
     /** 雕纹石砖。 */
     ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
@@ -467,6 +474,8 @@ export declare enum MinecraftItemTypes {
     CoalBlock = "minecraft:coal_block",
     /** 煤矿石。 */
     CoalOre = "minecraft:coal_ore",
+    /** 砂土。 */
+    CoarseDirt = "minecraft:coarse_dirt",
     /** 海岸盔甲纹饰锻造模板。 */
     CoastArmorTrimSmithingTemplate = "minecraft:coast_armor_trim_smithing_template",
     /** 深板岩圆石。 */
@@ -597,8 +606,11 @@ export declare enum MinecraftItemTypes {
     CutCopperSlab = "minecraft:cut_copper_slab",
     /** 切制铜楼梯。 */
     CutCopperStairs = "minecraft:cut_copper_stairs",
+    /** 切制红砂岩。 */
+    CutRedSandstone = "minecraft:cut_red_sandstone",
     /** 切制红砂岩台阶。 */
     CutRedSandstoneSlab = "minecraft:cut_red_sandstone_slab",
+    /** 切制砂岩。 */
     CutSandstone = "minecraft:cut_sandstone",
     /** 切制砂岩台阶。 */
     CutSandstoneSlab = "minecraft:cut_sandstone_slab",
@@ -624,6 +636,9 @@ export declare enum MinecraftItemTypes {
     CyanTerracotta = "minecraft:cyan_terracotta",
     /** 青色羊毛。 */
     CyanWool = "minecraft:cyan_wool",
+    /** 损坏的铁砧。 */
+    DamagedAnvil = "minecraft:damaged_anvil",
+    /** 蒲公英。 */
     Dandelion = "minecraft:dandelion",
     /** 危机纹样陶片。 */
     DangerPotterySherd = "minecraft:danger_pottery_sherd",
@@ -773,7 +788,7 @@ export declare enum MinecraftItemTypes {
     DioriteSlab = "minecraft:diorite_slab",
     /** 闪长岩楼梯。 */
     DioriteStairs = "minecraft:diorite_stairs",
-    /** 泥土/砂土。 */
+    /** 泥土。 */
     Dirt = "minecraft:dirt",
     /** 缠根泥土。 */
     DirtWithRoots = "minecraft:dirt_with_roots",
@@ -1241,21 +1256,37 @@ export declare enum MinecraftItemTypes {
     Lectern = "minecraft:lectern",
     /** 拉杆。 */
     Lever = "minecraft:lever",
+    /** 光源方块（0）。 */
     LightBlock0 = "minecraft:light_block_0",
+    /** 光源方块（1）。 */
     LightBlock1 = "minecraft:light_block_1",
+    /** 光源方块（10）。 */
     LightBlock10 = "minecraft:light_block_10",
+    /** 光源方块（11）。 */
     LightBlock11 = "minecraft:light_block_11",
+    /** 光源方块（12）。 */
     LightBlock12 = "minecraft:light_block_12",
+    /** 光源方块（13）。 */
     LightBlock13 = "minecraft:light_block_13",
+    /** 光源方块（14）。 */
     LightBlock14 = "minecraft:light_block_14",
+    /** 光源方块（15）。 */
     LightBlock15 = "minecraft:light_block_15",
+    /** 光源方块（2）。 */
     LightBlock2 = "minecraft:light_block_2",
+    /** 光源方块（3）。 */
     LightBlock3 = "minecraft:light_block_3",
+    /** 光源方块（4）。 */
     LightBlock4 = "minecraft:light_block_4",
+    /** 光源方块（5）。 */
     LightBlock5 = "minecraft:light_block_5",
+    /** 光源方块（6）。 */
     LightBlock6 = "minecraft:light_block_6",
+    /** 光源方块（7）。 */
     LightBlock7 = "minecraft:light_block_7",
+    /** 光源方块（8）。 */
     LightBlock8 = "minecraft:light_block_8",
+    /** 光源方块（9）。 */
     LightBlock9 = "minecraft:light_block_9",
     /** 淡蓝色蜡烛。 */
     LightBlueCandle = "minecraft:light_blue_candle",
@@ -1843,12 +1874,14 @@ export declare enum MinecraftItemTypes {
     PurpurStairs = "minecraft:purpur_stairs",
     /** 下界石英。 */
     Quartz = "minecraft:quartz",
-    /** 石英块/雕纹石英块/石英柱/平滑石英块。 */
+    /** 石英块。 */
     QuartzBlock = "minecraft:quartz_block",
     /** 石英砖。 */
     QuartzBricks = "minecraft:quartz_bricks",
     /** 下界石英矿石。 */
     QuartzOre = "minecraft:quartz_ore",
+    /** 石英柱。 */
+    QuartzPillar = "minecraft:quartz_pillar",
     /** 石英台阶。 */
     QuartzSlab = "minecraft:quartz_slab",
     /** 石英楼梯。 */
@@ -1905,7 +1938,9 @@ export declare enum MinecraftItemTypes {
     RedNetherBrickSlab = "minecraft:red_nether_brick_slab",
     /** 红色下界砖楼梯。 */
     RedNetherBrickStairs = "minecraft:red_nether_brick_stairs",
-    /** 红砂岩/雕纹红砂岩/切制红砂岩/平滑红砂岩。 */
+    /** 红沙。 */
+    RedSand = "minecraft:red_sand",
+    /** 红砂岩。 */
     RedSandstone = "minecraft:red_sandstone",
     /** 红砂岩台阶。 */
     RedSandstoneSlab = "minecraft:red_sandstone_slab",
@@ -1955,9 +1990,9 @@ export declare enum MinecraftItemTypes {
     SalmonBucket = "minecraft:salmon_bucket",
     /** 鲑鱼刷怪蛋。 */
     SalmonSpawnEgg = "minecraft:salmon_spawn_egg",
-    /** 沙子/红沙。 */
+    /** 沙子。 */
     Sand = "minecraft:sand",
-    /** 砂岩/雕纹砂岩/切制砂岩/平滑砂岩。 */
+    /** 砂岩。 */
     Sandstone = "minecraft:sandstone",
     /** 砂岩台阶。 */
     SandstoneSlab = "minecraft:sandstone_slab",
@@ -2037,14 +2072,19 @@ export declare enum MinecraftItemTypes {
     Smoker = "minecraft:smoker",
     /** 平滑玄武岩。 */
     SmoothBasalt = "minecraft:smooth_basalt",
+    /** 平滑石英块。 */
+    SmoothQuartz = "minecraft:smooth_quartz",
     /** 平滑石英台阶。 */
     SmoothQuartzSlab = "minecraft:smooth_quartz_slab",
     /** 平滑石英楼梯。 */
     SmoothQuartzStairs = "minecraft:smooth_quartz_stairs",
+    /** 平滑红砂岩。 */
+    SmoothRedSandstone = "minecraft:smooth_red_sandstone",
     /** 平滑红砂岩台阶。 */
     SmoothRedSandstoneSlab = "minecraft:smooth_red_sandstone_slab",
     /** 平滑红砂岩楼梯。 */
     SmoothRedSandstoneStairs = "minecraft:smooth_red_sandstone_stairs",
+    /** 平滑砂岩。 */
     SmoothSandstone = "minecraft:smooth_sandstone",
     /** 平滑砂岩台阶。 */
     SmoothSandstoneSlab = "minecraft:smooth_sandstone_slab",
@@ -2066,7 +2106,7 @@ export declare enum MinecraftItemTypes {
     Snow = "minecraft:snow",
     /** 雪傀儡刷怪蛋。 */
     SnowGolemSpawnEgg = "minecraft:snow_golem_spawn_egg",
-    /** 顶层雪。 */
+    /** 雪层。 */
     SnowLayer = "minecraft:snow_layer",
     /** 雪球。 */
     Snowball = "minecraft:snowball",

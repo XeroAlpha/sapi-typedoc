@@ -1,7 +1,7 @@
 /* IMPORT */ import { PotionEffectType, PotionLiquidType, PotionModifierType } from '../index';
 
 /**
- * @rc
+ * @beta
  * Options for use in creating potions. See
  * ItemStack.createPotion.
  */

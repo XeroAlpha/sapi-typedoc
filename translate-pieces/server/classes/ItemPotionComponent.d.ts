@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemComponent, PotionEffectType, PotionLiquidType, PotionModifierType } from '../index';
 
 /**
- * @rc
+ * @beta
  * When present on an item, this item is a potion item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

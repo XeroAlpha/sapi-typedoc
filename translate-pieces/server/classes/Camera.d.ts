@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions } from '../index';
+/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions } from '../index';
 
 /**
  * Contains methods relating to the active camera for the
@@ -46,6 +46,7 @@ export class Camera {
         cameraPreset: string,
         setOptions?:
             | CameraDefaultOptions
+            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions

@@ -1,7 +1,7 @@
 /* IMPORT */ import { PotionEffectType, PotionLiquidType, PotionModifierType } from '../index';
 
 /**
- * @rc
+ * @beta
  * Used for accessing all potion effects, liquids, and
  * modifiers currently available for use within the world.
  */

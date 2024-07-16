@@ -196,6 +196,11 @@ export declare enum EditorStatusBarAlignment {
     Left = 1,
 }
 
+export enum EntityOperationType {
+    Create = 0,
+    Delete = 1,
+}
+
 export enum ExportResult {
     ValidWorldExport = 0,
     LevelFetchFailed = 1,
@@ -246,97 +251,557 @@ export declare enum InputModifier {
  */
 export declare enum KeyboardKey {
     UNDEFINED = 0,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_BACK_SPACE
+     *
+     */
     BACKSPACE = 8,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_TAB
+     *
+     */
     TAB = 9,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_RETURN
+     *
+     */
     ENTER = 13,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SHIFT
+     *
+     */
     SHIFT = 16,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_CONTROL
+     *
+     */
     CTRL = 17,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_ALT
+     *
+     */
     ALT = 18,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_CAPS_LOCK
+     *
+     */
     CAPS_LOCK = 20,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_ESCAPE
+     *
+     */
     ESCAPE = 27,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SPACE
+     *
+     */
     SPACE = 32,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_PAGE_UP
+     *
+     */
     PAGE_UP = 33,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_PAGE_DOWN
+     *
+     */
     PAGE_DOWN = 34,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_END
+     *
+     */
     END = 35,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_HOME
+     *
+     */
     HOME = 36,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_LEFT
+     *
+     */
     LEFT = 37,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_UP
+     *
+     */
     UP = 38,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_RIGHT
+     *
+     */
     RIGHT = 39,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_DOWN
+     *
+     */
     DOWN = 40,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_PRINTSCREEN
+     *
+     */
     PRINT_SCREEN = 44,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_INSERT
+     *
+     */
     INSERT = 45,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_DELETE
+     *
+     */
     DELETE = 46,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_0
+     *
+     */
     KEY_0 = 48,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_1
+     *
+     */
     KEY_1 = 49,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_2
+     *
+     */
     KEY_2 = 50,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_3
+     *
+     */
     KEY_3 = 51,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_4
+     *
+     */
     KEY_4 = 52,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_5
+     *
+     */
     KEY_5 = 53,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_6
+     *
+     */
     KEY_6 = 54,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_7
+     *
+     */
     KEY_7 = 55,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_8
+     *
+     */
     KEY_8 = 56,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_9
+     *
+     */
     KEY_9 = 57,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_A
+     *
+     */
     KEY_A = 65,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_B
+     *
+     */
     KEY_B = 66,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_C
+     *
+     */
     KEY_C = 67,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_D
+     *
+     */
     KEY_D = 68,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_E
+     *
+     */
     KEY_E = 69,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F
+     *
+     */
     KEY_F = 70,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_G
+     *
+     */
     KEY_G = 71,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_H
+     *
+     */
     KEY_H = 72,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_I
+     *
+     */
     KEY_I = 73,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_J
+     *
+     */
     KEY_J = 74,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_K
+     *
+     */
     KEY_K = 75,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_L
+     *
+     */
     KEY_L = 76,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_M
+     *
+     */
     KEY_M = 77,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_N
+     *
+     */
     KEY_N = 78,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_O
+     *
+     */
     KEY_O = 79,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_P
+     *
+     */
     KEY_P = 80,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_Q
+     *
+     */
     KEY_Q = 81,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_R
+     *
+     */
     KEY_R = 82,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_S
+     *
+     */
     KEY_S = 83,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_T
+     *
+     */
     KEY_T = 84,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_U
+     *
+     */
     KEY_U = 85,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_V
+     *
+     */
     KEY_V = 86,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_W
+     *
+     */
     KEY_W = 87,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_X
+     *
+     */
     KEY_X = 88,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_Y
+     *
+     */
     KEY_Y = 89,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_Z
+     *
+     */
     KEY_Z = 90,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD0
+     *
+     */
     NUMPAD_0 = 96,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD1
+     *
+     */
     NUMPAD_1 = 97,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD2
+     *
+     */
     NUMPAD_2 = 98,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD3
+     *
+     */
     NUMPAD_3 = 99,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD4
+     *
+     */
     NUMPAD_4 = 100,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD5
+     *
+     */
     NUMPAD_5 = 101,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD6
+     *
+     */
     NUMPAD_6 = 102,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD7
+     *
+     */
     NUMPAD_7 = 103,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD8
+     *
+     */
     NUMPAD_8 = 104,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_NUMPAD9
+     *
+     */
     NUMPAD_9 = 105,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_MULTIPLY
+     *
+     */
     NUMPAD_MULTIPLY = 106,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_ADD
+     *
+     */
     NUMPAD_ADD = 107,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SEPARATOR
+     *
+     */
     NUMPAD_SEPARATOR = 108,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SUBTRACT
+     *
+     */
     NUMPAD_SUBTRACT = 109,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_DECIMAL
+     *
+     */
     NUMPAD_DECIMAL = 110,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_DIVIDE
+     *
+     */
     NUMPAD_DIVIDE = 111,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F1
+     *
+     */
     F1 = 112,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F2
+     *
+     */
     F2 = 113,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F3
+     *
+     */
     F3 = 114,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F4
+     *
+     */
     F4 = 115,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F5
+     *
+     */
     F5 = 116,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F6
+     *
+     */
     F6 = 117,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F7
+     *
+     */
     F7 = 118,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F8
+     *
+     */
     F8 = 119,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F9
+     *
+     */
     F9 = 120,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F10
+     *
+     */
     F10 = 121,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F11
+     *
+     */
     F11 = 122,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_F12
+     *
+     */
     F12 = 123,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_COMMA, ie. ','
+     *
+     */
     COMMA = 188,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_PERIOD, ie. '.'
+     *
+     */
     PERIOD = 190,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SLASH, ie. '/'
+     *
+     */
     SLASH = 191,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_BACK_QUOTE, ie. '`'
+     *
+     */
     BACK_QUOTE = 192,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_OPEN_BRACKET, ie. '['
+     *
+     */
     BRACKET_OPEN = 219,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_BACK_SLASH, ie. '\'
+     *
+     */
     BACK_SLASH = 220,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_CLOSE_BRACKET, ie. ']'
+     *
+     */
     BRACKET_CLOSE = 221,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_BACK_QUOTE, ie. '"'
+     *
+     */
     QUOTE = 222,
 }
 
@@ -1287,6 +1752,15 @@ export class ExportManager {
      *
      */
     getGameOptions(useDefault?: boolean): GameOptions;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getGameVersion(): string;
 }
 
 /**
@@ -2065,6 +2539,15 @@ export class SimulationState {
  */
 export class TransactionManager {
     private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2909,22 +3392,19 @@ export interface IDisposable {
     teardown(): void;
 }
 
+/**
+ * Properties of dropdown property item children
+ */
 export interface IDropdownItem {
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized display text of the dropdown item.
      *
      */
-    readonly displayAltText: string;
+    readonly label: string;
     /**
      * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    readonly displayStringId: string;
-    /**
-     * @remarks
-     * The selectable value of the DropDown item.
+     * The selectable value of the dropdown item.
      *
      */
     readonly value: number;
@@ -3034,22 +3514,16 @@ export interface IMenuCreationParams {
     checked?: boolean;
     /**
      * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    displayStringId?: string;
-    /**
-     * @remarks
      * Whether the menu should be enabled or disabled
      *
      */
     enabled?: boolean;
     /**
      * @remarks
-     * The name of the menu
+     * Localized display text of the menu
      *
      */
-    name: string;
+    label: string;
     /**
      * @remarks
      * Custom unique identifier that will replace random id
@@ -3208,16 +3682,10 @@ export interface IPropertyItemOptions {
     onChange?: OnChangeCallback<PropertyBag, string>;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property item
      *
      */
-    titleAltText?: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId?: string;
+    title?: string;
     /**
      * @remarks
      * If the item should be visible in the UI.
@@ -3288,6 +3756,13 @@ export interface IPropertyItemOptionsImage extends IPropertyItemOptions {
 export interface IPropertyItemOptionsNumber extends IPropertyItemOptions {
     /**
      * @remarks
+     * If we should treat the number as floating point. By default
+     * is false
+     *
+     */
+    isFloat?: boolean;
+    /**
+     * @remarks
      * The min possible value for the number.
      *
      */
@@ -3328,8 +3803,8 @@ export interface IPropertyItemOptionsTable extends IPropertyItemOptions {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsText extends IPropertyItemOptions {
-    border: boolean;
-    valueStringId: string;
+    border?: boolean;
+    valueStringId?: string;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3410,16 +3885,10 @@ export interface IPropertyPane {
     readonly parentPaneId?: string;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property pane
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId: string;
+    title: string;
     /**
      * @remarks
      * Check visibility of the pane
@@ -3631,23 +4100,10 @@ export interface IPropertyPaneOptions {
     direction?: LayoutDirection;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property pane
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId: string;
-    /**
-     * @remarks
-     * Width of the panel in rem. This property is ignored in case
-     * of sub panes
-     *
-     */
-    width?: number;
+    title: string;
 }
 
 export interface IPropertyTableCellItem {
@@ -4055,15 +4511,7 @@ export interface ISimpleToolPaneOptions {
      * bar of the pane.
      *
      */
-    titleAltText: string;
-    /**
-     * @remarks
-     * The string id of the title of the pane. This will be
-     * displayed in the title bar of the pane if it exists in the
-     * language file, otherwise the titleAltText will be used.
-     *
-     */
-    titleStringId?: string;
+    title: string;
 }
 
 export interface ISimpleToolRailComponent {
@@ -4106,19 +4554,6 @@ export interface ISimpleToolRailComponent {
 export interface ISimpleToolRailOptions {
     /**
      * @remarks
-     * The text for the tool description
-     *
-     */
-    displayAltText: string;
-    /**
-     * @remarks
-     * The string ID for the tool description if it is in the
-     * localization language file.
-     *
-     */
-    displayStringId?: string;
-    /**
-     * @remarks
      * The icon for the tool rail button. This is generally a URL
      * to an image file in the editor extension resource pack e.g.
      * `pack://textures/my-tool-icon.png`
@@ -4131,21 +4566,18 @@ export interface ISimpleToolRailOptions {
     onTeardown?: (component: ISimpleToolRailComponent) => void;
     /**
      * @remarks
-     * The tooltip string for the tool rail button. Note: if an
-     * activation key binding was added to `ISimpleToolOptions`,
-     * then the key binding will be appended to the tooltip string.
+     * The text for the tool title
      *
      */
-    tooltipAltText: string;
+    title: string;
     /**
      * @remarks
-     * The string ID for the tooltip string if it is in the
-     * localization language file. Note: if an activation key
-     * binding was added to `ISimpleToolOptions`, then the key
+     * The tooltip description for the tool. Note: if an activation
+     * key binding was added to `ISimpleToolOptions`, then the key
      * binding will be appended to the tooltip string.
      *
      */
-    tooltipStringId?: string;
+    tooltip: string;
 }
 
 export interface ISimpleToolStatusBarComponent {
@@ -4217,18 +4649,6 @@ export interface IStatusBarItem {
 export interface ModalToolCreationParameters {
     /**
      * @remarks
-     * The displayed string for the tool
-     *
-     */
-    displayAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    displayStringId?: string;
-    /**
-     * @remarks
      * Icon, if any (from resource pack on client)
      *
      */
@@ -4247,16 +4667,16 @@ export interface ModalToolCreationParameters {
     inputContextLabel?: string;
     /**
      * @remarks
-     * tooltipAltText alt text, if any
+     * Title of the tool
      *
      */
-    tooltipAltText?: string;
+    title: string;
     /**
      * @remarks
-     * Tooltip localization string ID
+     * Tooltip description of the toll
      *
      */
-    tooltipStringId?: string;
+    tooltip?: string;
 }
 
 /**
@@ -4313,13 +4733,6 @@ export declare function executeLargeOperationFromIterator(
  * Default allowed block list
  */
 export declare function getBlockPickerDefaultAllowBlockList(): string[];
-/**
- * @remarks
- * Adds the resource pack editor prefix and returns the full
- * localization ID
- *
- */
-export declare function getLocalizationId(locId: string): string;
 /**
  * @remarks
  * Registers an editor extension into Minecraft. This function

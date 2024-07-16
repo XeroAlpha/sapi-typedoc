@@ -16,19 +16,6 @@
 export interface ISimpleToolRailOptions {
     /**
      * @remarks
-     * The text for the tool description
-     *
-     */
-    displayAltText: string;
-    /**
-     * @remarks
-     * The string ID for the tool description if it is in the
-     * localization language file.
-     *
-     */
-    displayStringId?: string;
-    /**
-     * @remarks
      * The icon for the tool rail button. This is generally a URL
      * to an image file in the editor extension resource pack e.g.
      * `pack://textures/my-tool-icon.png`
@@ -41,19 +28,16 @@ export interface ISimpleToolRailOptions {
     onTeardown?: (component: ISimpleToolRailComponent) => void;
     /**
      * @remarks
-     * The tooltip string for the tool rail button. Note: if an
-     * activation key binding was added to `ISimpleToolOptions`,
-     * then the key binding will be appended to the tooltip string.
+     * The text for the tool title
      *
      */
-    tooltipAltText: string;
+    title: string;
     /**
      * @remarks
-     * The string ID for the tooltip string if it is in the
-     * localization language file. Note: if an activation key
-     * binding was added to `ISimpleToolOptions`, then the key
+     * The tooltip description for the tool. Note: if an activation
+     * key binding was added to `ISimpleToolOptions`, then the key
      * binding will be appended to the tooltip string.
      *
      */
-    tooltipStringId?: string;
+    tooltip: string;
 }

@@ -4,18 +4,6 @@
 export interface ModalToolCreationParameters {
     /**
      * @remarks
-     * The displayed string for the tool
-     *
-     */
-    displayAltText: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    displayStringId?: string;
-    /**
-     * @remarks
      * Icon, if any (from resource pack on client)
      *
      */
@@ -34,14 +22,14 @@ export interface ModalToolCreationParameters {
     inputContextLabel?: string;
     /**
      * @remarks
-     * tooltipAltText alt text, if any
+     * Title of the tool
      *
      */
-    tooltipAltText?: string;
+    title: string;
     /**
      * @remarks
-     * Tooltip localization string ID
+     * Tooltip description of the toll
      *
      */
-    tooltipStringId?: string;
+    tooltip?: string;
 }

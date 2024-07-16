@@ -1,19 +1,16 @@
+/**
+ * Properties of dropdown property item children
+ */
 export interface IDropdownItem {
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized display text of the dropdown item.
      *
      */
-    readonly displayAltText: string;
+    readonly label: string;
     /**
      * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    readonly displayStringId: string;
-    /**
-     * @remarks
-     * The selectable value of the DropDown item.
+     * The selectable value of the dropdown item.
      *
      */
     readonly value: number;

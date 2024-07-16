@@ -163,7 +163,7 @@ const tsPopulators = {
         for (const enumMember of enumNode.getMembers()) {
             const featureId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
             const featureIdWithoutPrefix = featureId.replace(/^minecraft:/, '');
-            const enumTranslation = location[featureIdWithoutPrefix];
+            const enumTranslation = location[featureIdWithoutPrefix] ?? location[featureId];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({

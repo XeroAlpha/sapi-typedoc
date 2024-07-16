@@ -1709,7 +1709,7 @@ export enum ItemComponentTypes {
      */
     Food = 'minecraft:food',
     /**
-     * @rc
+     * @beta
      */
     Potion = 'minecraft:potion',
 }
@@ -4503,6 +4503,7 @@ export class Camera {
         cameraPreset: string,
         setOptions?:
             | CameraDefaultOptions
+            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
@@ -5917,7 +5918,7 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -11281,7 +11282,7 @@ export class ItemFoodComponent extends ItemComponent {
 }
 
 /**
- * @rc
+ * @beta
  * When present on an item, this item is a potion item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -11805,7 +11806,7 @@ export class ItemStack {
      */
     setLore(loreList?: string[]): void;
     /**
-     * @rc
+     * @beta
      * @remarks
      * Helper function for creating potion items.
      *
@@ -13954,7 +13955,7 @@ export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
 }
 
 /**
- * @rc
+ * @beta
  * Represents a type of potion effect - like healing or leaping
  * - that can be used with PotionOptions.
  */
@@ -13964,7 +13965,7 @@ export class PotionEffectType {
 }
 
 /**
- * @rc
+ * @beta
  * Represents a type of potion liquid - like splash, or
  * lingering - that can be used with PotionOptions.
  */
@@ -13974,7 +13975,7 @@ export class PotionLiquidType {
 }
 
 /**
- * @rc
+ * @beta
  * Represents a type of potion modifier - like strong, or long
  * - that can be used with PotionOptions.
  */
@@ -13984,7 +13985,7 @@ export class PotionModifierType {
 }
 
 /**
- * @rc
+ * @beta
  * Used for accessing all potion effects, liquids, and
  * modifiers currently available for use within the world.
  */
@@ -17179,6 +17180,13 @@ export interface CameraFadeTimeOptions {
     holdTime: number;
 }
 
+/**
+ * @beta
+ */
+export interface CameraFixedBoomOptions {
+    viewOffset?: Vector2;
+}
+
 export interface CameraSetFacingOptions {
     easeOptions?: CameraEaseOptions;
     facingEntity: Entity;
@@ -18182,7 +18190,7 @@ export interface PlayerSoundOptions {
 }
 
 /**
- * @rc
+ * @beta
  * Options for use in creating potions. See
  * ItemStack.createPotion.
  */
@@ -18711,7 +18719,7 @@ export interface Vector3 {
 }
 
 /**
- * @beta
+ * @rc
  */
 export interface VectorXZ {
     x: number;

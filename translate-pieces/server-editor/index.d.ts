@@ -15,6 +15,7 @@ export { EDITOR_PANE_PROPERTY_ITEM_TYPE } from './enums/EDITOR_PANE_PROPERTY_ITE
 export { EditorInputContext } from './enums/EditorInputContext';
 export { EditorMode } from './enums/EditorMode';
 export { EditorStatusBarAlignment } from './enums/EditorStatusBarAlignment';
+export { EntityOperationType } from './enums/EntityOperationType';
 export { ExportResult } from './enums/ExportResult';
 export { GamePublishSetting } from './enums/GamePublishSetting';
 export { GraphicsSettingsProperty } from './enums/GraphicsSettingsProperty';
@@ -165,7 +166,6 @@ export { bindDataSource } from './functions/bindDataSource';
 export { executeLargeOperation } from './functions/executeLargeOperation';
 export { executeLargeOperationFromIterator } from './functions/executeLargeOperationFromIterator';
 export { getBlockPickerDefaultAllowBlockList } from './functions/getBlockPickerDefaultAllowBlockList';
-export { getLocalizationId } from './functions/getLocalizationId';
 export { registerEditorExtension } from './functions/registerEditorExtension';
 export { registerUserDefinedTransactionHandler } from './functions/registerUserDefinedTransactionHandler';
 export { stringFromException } from './functions/stringFromException';

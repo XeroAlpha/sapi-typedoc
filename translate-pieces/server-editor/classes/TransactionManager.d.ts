@@ -1,4 +1,4 @@
-/* IMPORT */ import { Selection, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
+/* IMPORT */ import { EntityOperationType, Selection, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -14,6 +14,15 @@
  */
 export class TransactionManager {
     private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.

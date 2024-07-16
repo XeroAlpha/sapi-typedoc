@@ -15,16 +15,10 @@ export interface IPropertyItemOptions {
     onChange?: OnChangeCallback<PropertyBag, string>;
     /**
      * @remarks
-     * Fallback display text if no loc ID
+     * Localized title of the property item
      *
      */
-    titleAltText?: string;
-    /**
-     * @remarks
-     * Loc ID (resolved on client)
-     *
-     */
-    titleStringId?: string;
+    title?: string;
     /**
      * @remarks
      * If the item should be visible in the UI.

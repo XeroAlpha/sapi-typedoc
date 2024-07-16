@@ -3,6 +3,13 @@
 export interface IPropertyItemOptionsNumber extends IPropertyItemOptions {
     /**
      * @remarks
+     * If we should treat the number as floating point. By default
+     * is false
+     *
+     */
+    isFloat?: boolean;
+    /**
+     * @remarks
      * The min possible value for the number.
      *
      */
