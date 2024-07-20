@@ -1,4 +1,4 @@
-/* IMPORT */ import { GraphicsSettings } from '../index';
+/* IMPORT */ import { GraphicsSettings, ThemeSettings } from '../index';
 
 /**
  * The SettingsManager (accessible from the {@link
@@ -13,4 +13,5 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+    readonly theme: ThemeSettings;
 }

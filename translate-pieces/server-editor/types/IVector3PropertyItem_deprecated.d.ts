@@ -3,7 +3,10 @@
 /**
  * A property item which supports Vector3 properties
  */
-export type IVector3PropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
+export type IVector3PropertyItem_deprecated<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<
+    T,
+    Prop
+> & {
     updateAxisLimits(limits: {
         minX?: number;
         maxX?: number;

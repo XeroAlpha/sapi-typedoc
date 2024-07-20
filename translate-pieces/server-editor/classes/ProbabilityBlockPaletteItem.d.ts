@@ -1,4 +1,4 @@
-/* IMPORT */ import { IBlockPaletteItem, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { IBlockPaletteItem, WeightedBlock, minecraftcommon, minecraftserver } from '../index';
 
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
@@ -11,6 +11,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * {@link Error}
      */
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    getBlocks(): WeightedBlock[];
     /**
      * @remarks
      * This function can't be called in read-only mode.
