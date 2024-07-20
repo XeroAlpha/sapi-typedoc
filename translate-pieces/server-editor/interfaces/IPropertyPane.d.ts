@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IActionPropertyItem, IBlockListPropertyItem, IDropdownPropertyItem, IPropertyItem, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsButton, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsImage, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsText, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, IVector3PropertyItem, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction } from '../index';
+/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IDropdownPropertyItem, IImagePropertyItem, IImagePropertyItemOptions, IObservableProp, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -71,10 +71,14 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     */
+    addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
+    /**
+     * @remarks
      * Adds a boolean item to the pane.
      *
      */
-    addBool<T extends PropertyBag, Prop extends keyof T & string>(
+    addBool_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsBool,
@@ -86,14 +90,9 @@ export interface IPropertyPane {
      *
      */
     addButton(
-        action: RegisteredAction<NoArgsAction>,
-        options?: IPropertyItemOptionsButton,
-    ): IActionPropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
+        action: (() => void) | RegisteredAction<NoArgsAction>,
+        options?: IButtonPropertyItemOptions,
+    ): IButtonPropertyItem;
     /**
      * @remarks
      * Adds a color picker item to the pane.
@@ -109,7 +108,7 @@ export interface IPropertyPane {
      * Adds an divider item to the pane.
      *
      */
-    addDivider(): IPropertyItem<PropertyBag, string>;
+    addDivider(): IPropertyItemBase;
     /**
      * @remarks
      * Adds an DropDown item to the pane.
@@ -140,11 +139,10 @@ export interface IPropertyPane {
      * Adds an image item to the pane.
      *
      */
-    addImage<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsImage,
-    ): IPropertyItem<T, Prop>;
+    addImage(
+        value: IObservableProp<string | ImageResourceData>,
+        options?: IImagePropertyItemOptions,
+    ): IImagePropertyItem;
     /**
      * @remarks
      * Adds a number item to the pane.
@@ -181,21 +179,26 @@ export interface IPropertyPane {
      * Adds a multiline Text item to the pane.
      *
      */
-    addText<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsText,
-    ): IPropertyItem<T, Prop>;
+    addText(value: IObservableProp<LocalizedString>, options?: ITextPropertyItemOptions): ITextPropertyItem;
     /**
      * @remarks
      * Adds a Vec3 item to the pane.
      *
      */
-    addVector3<T extends PropertyBag, Prop extends keyof T & string>(
+    addVector3(
+        value: IObservableProp<minecraftserver.Vector3>,
+        options?: IVector3PropertyItemOptions,
+    ): IVector3PropertyItem;
+    /**
+     * @remarks
+     * Adds a Vec3 item to the pane.
+     *
+     */
+    addVector3_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsVector3,
-    ): IVector3PropertyItem<T, Prop>;
+    ): IVector3PropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Collapse the pane.

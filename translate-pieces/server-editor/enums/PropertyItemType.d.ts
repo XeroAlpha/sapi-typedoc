@@ -1,11 +1,11 @@
 /**
  * Type of item that can be added to the property pane
  */
-export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
-    Action = 'editorUI:Action',
+export declare enum PropertyItemType {
     BlockList = 'editorUI:BlockList',
     BlockPicker = 'editorUI:BlockPicker',
     Boolean = 'editorUI:Boolean',
+    Button = 'editorUI:Button',
     ColorPicker = 'editorUI:ColorPicker',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
@@ -15,5 +15,5 @@ export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
     SubPane = 'editorUI:SubPane',
     Table = 'editorUI:Table',
     Text = 'editorUI:Text',
-    Vec3 = 'editorUI:Vec3',
+    Vector3 = 'editorUI:Vector3',
 }

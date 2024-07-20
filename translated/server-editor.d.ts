@@ -36,9 +36,27 @@ export enum BlockPaletteItemType {
     Probability = 1,
 }
 
+/**
+ * The possible variants of a bool.
+ */
+export declare enum BoolPropertyItemVariant {
+    Checkbox = 0,
+    ToggleSwitch = 1,
+}
+
 export enum BrushPipelineOperationType {
     Include = 0,
     Exclude = 1,
+}
+
+/**
+ * The possible variants of a Button property item.
+ */
+export declare enum ButtonPropertyItemVariant {
+    Primary = 0,
+    Secondary = 1,
+    Confirmation = 2,
+    Destructive = 3,
 }
 
 /**
@@ -144,26 +162,6 @@ export enum DaylightCycle {
 }
 
 /**
- * Type of item that can be added to the property pane
- */
-export declare enum EDITOR_PANE_PROPERTY_ITEM_TYPE {
-    Action = 'editorUI:Action',
-    BlockList = 'editorUI:BlockList',
-    BlockPicker = 'editorUI:BlockPicker',
-    Boolean = 'editorUI:Boolean',
-    ColorPicker = 'editorUI:ColorPicker',
-    Divider = 'editorUI:Divider',
-    Dropdown = 'editorUI:Dropdown',
-    Image = 'editorUI:Image',
-    Number = 'editorUI:Number',
-    String = 'editorUI:String',
-    SubPane = 'editorUI:SubPane',
-    Table = 'editorUI:Table',
-    Text = 'editorUI:Text',
-    Vec3 = 'editorUI:Vec3',
-}
-
-/**
  * Global editor input contexts
  */
 export declare enum EditorInputContext {
@@ -232,6 +230,15 @@ export enum GraphicsSettingsProperty {
      *
      */
     ShowInvisibleBlocks = 'ShowInvisibleBlocks',
+}
+
+/**
+ * Supported image types.
+ */
+export declare enum ImageResourceType {
+    Default = 0,
+    Block = 1,
+    Icon = 2,
 }
 
 /**
@@ -806,6 +813,15 @@ export declare enum KeyboardKey {
 }
 
 /**
+ * Alignment options for UI elements
+ */
+export declare enum LayoutAlignment {
+    Left = 0,
+    Center = 1,
+    Right = 2,
+}
+
+/**
  * Layout directions for property panes.
  */
 export declare enum LayoutDirection {
@@ -889,6 +905,26 @@ export enum ProjectExportType {
 }
 
 /**
+ * Type of item that can be added to the property pane
+ */
+export declare enum PropertyItemType {
+    BlockList = 'editorUI:BlockList',
+    BlockPicker = 'editorUI:BlockPicker',
+    Boolean = 'editorUI:Boolean',
+    Button = 'editorUI:Button',
+    ColorPicker = 'editorUI:ColorPicker',
+    Divider = 'editorUI:Divider',
+    Dropdown = 'editorUI:Dropdown',
+    Image = 'editorUI:Image',
+    Number = 'editorUI:Number',
+    String = 'editorUI:String',
+    SubPane = 'editorUI:SubPane',
+    Table = 'editorUI:Table',
+    Text = 'editorUI:Text',
+    Vector3 = 'editorUI:Vector3',
+}
+
+/**
  * Define the visibility of the status bar item If the tool
  * does not have an `ISimpleToolPropertyPane` component, then
  * this option is ignored
@@ -896,6 +932,22 @@ export enum ProjectExportType {
 export declare enum SimpleToolStatusBarVisibility {
     AlwaysVisible = 0,
     VisibleWhenActive = 1,
+}
+
+export enum ThemeSettingsColorKey {
+    ControlsGeneralFill = 'ControlsGeneralFill',
+    ControlsGeneralHighlight = 'ControlsGeneralHighlight',
+    CoordinateControlX = 'CoordinateControlX',
+    CoordinateControlY = 'CoordinateControlY',
+    CoordinateControlZ = 'CoordinateControlZ',
+    CursorVolumeBorder = 'CursorVolumeBorder',
+    CursorVolumeFill = 'CursorVolumeFill',
+    PlacementVolumeBorder = 'PlacementVolumeBorder',
+    PlacementVolumeFill = 'PlacementVolumeFill',
+    PrefillVolumeBorder = 'PrefillVolumeBorder',
+    PrefillVolumeFill = 'PrefillVolumeFill',
+    SelectionVolumeBorder = 'SelectionVolumeBorder',
+    SelectionVolumeFill = 'SelectionVolumeFill',
 }
 
 export enum WidgetGroupSelectionMode {
@@ -935,22 +987,9 @@ export type ActivationFunctionType<PerPlayerStorageType> = (
 ) => IDisposable[];
 
 /**
- * The possible variants of a button.
- */
-export declare type ButtonVariant = 'secondary' | 'primary' | 'destructive' | 'hero';
-
-/**
  * A generic handler for an event sink.
  */
 export declare type EventHandler<T> = (eventArg: T) => void;
-
-/**
- * A property item which supports bound actions and replacing
- * the bound action
- */
-export type IActionPropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
-    replaceBoundAction(action: RegisteredAction<NoArgsAction> | undefined): void;
-};
 
 /**
  * A property item which supports BlockList properties
@@ -968,6 +1007,16 @@ export type IDropdownPropertyItem<
     },
     Prop extends keyof T & string,
 > = IPropertyItem<T, Prop> & IDropdownPropertyItemMixIn;
+
+export declare type ImageResourceData = {
+    path: string;
+    type: ImageResourceType;
+};
+
+/**
+ * Type that can be an observable or a value.
+ */
+export type IObservableProp<T> = IObservable<T> | T;
 
 /**
  * The IPlayerUISession represents the editor user interface
@@ -1009,7 +1058,10 @@ export type ITablePropertyItem<T extends PropertyBag, Prop extends keyof T & str
 /**
  * A property item which supports Vector3 properties
  */
-export type IVector3PropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
+export type IVector3PropertyItem_deprecated<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<
+    T,
+    Prop
+> & {
     updateAxisLimits(limits: {
         minX?: number;
         maxX?: number;
@@ -1036,6 +1088,17 @@ export type KeyBindingInfo = {
     label?: string;
     tooltip?: string;
 };
+
+/**
+ * Represents a localized string or an object with a localized
+ * string and optional properties
+ */
+export declare type LocalizedString =
+    | string
+    | {
+          id: string;
+          props?: string[];
+      };
 
 /**
  * Modal tool lifecycle event payload
@@ -2116,6 +2179,13 @@ export class ModeChangeAfterEventSignal {
     unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
 }
 
+/**
+ * Used for validating an observable value before it gets set
+ */
+export declare abstract class ObservableValidator<T> {
+    abstract validate(newValue: T): T;
+}
+
 export class PlaytestManager {
     private constructor();
     /**
@@ -2167,6 +2237,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * {@link Error}
      */
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    getBlocks(): WeightedBlock[];
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2440,6 +2511,7 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+    readonly theme: ThemeSettings;
 }
 
 export class SettingsUIElement {
@@ -2523,6 +2595,21 @@ export class SimulationState {
      * @throws This function can throw errors.
      */
     setPaused(isPaused: boolean): void;
+}
+
+export class ThemeSettings {
+    private constructor();
+    getThemeList(): string[];
+    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA | undefined;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setCurrentTheme(name: string): void;
 }
 
 /**
@@ -2807,6 +2894,34 @@ export declare class UserDefinedTransactionHandle<T> {
 
 export class UserDefinedTransactionHandlerId {
     private constructor();
+}
+
+/**
+ * Validates min/max limits of observable objects that support
+ * Vector3
+ */
+export declare class Vector3LimitObservableValidator implements ObservableValidator<minecraftserver.Vector3> {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _max: Partial<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _min: Partial<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * Constructs a new instance of the
+     * `Vector3LimitObservableValidator` class
+     *
+     */
+    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>);
+    updateLimits(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>): void;
+    validate(newValue: minecraftserver.Vector3): minecraftserver.Vector3;
 }
 
 export class Widget {
@@ -3190,6 +3305,11 @@ export interface SettingsUIElementOptions {
     refreshOnChange?: boolean;
 }
 
+export interface WeightedBlock {
+    block: minecraftserver.BlockType;
+    weight: number;
+}
+
 export interface WidgetCreateOptions {
     initialVisibility?: boolean;
     isSelectable?: boolean;
@@ -3381,6 +3501,147 @@ export interface IActionBarItemCreationParams {
 }
 
 /**
+ * A property item which supports Vector3 properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBoolPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: boolean;
+    /**
+     * @remarks
+     * Sets title of the property item.
+     *
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Sets tooltip description of the property item.
+     *
+     */
+    setTooltip(title: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for Bool property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBoolPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: boolean, oldValue: boolean) => void;
+    /**
+     * @remarks
+     * Localized title of the text item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item
+     *
+     */
+    tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * Determines how we display bool as a UI element. If
+     * undefined, it will default to Checkbox.
+     *
+     */
+    variant?: BoolPropertyItemVariant;
+}
+
+/**
+ * A property item which supports Button properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IButtonPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Replace action assigned to the button.
+     *
+     * @param action
+     * New action to replace the existing with.
+     */
+    replaceAction(action: RegisteredAction<NoArgsAction>): void;
+    /**
+     * @remarks
+     * Updates icon of the button.
+     *
+     * @param icon
+     * New button icon.
+     */
+    setIcon(icon: string | undefined): void;
+    /**
+     * @remarks
+     * Updates title of the button.
+     *
+     * @param title
+     * New button title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of the button.
+     *
+     * @param tooltip
+     * New button tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for Button property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * Icon image of the property item.
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * The variant for the button. By default it is Primary.
+     *
+     */
+    variant?: ButtonPropertyItemVariant;
+}
+
+/**
  * Simple abstraction for disposable objects.
  */
 export interface IDisposable {
@@ -3444,6 +3705,72 @@ export interface IGlobalInputManager {
         binding: KeyBinding,
         info?: KeyBindingInfo,
     ): void;
+}
+
+/**
+ * A property item which supports Image properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IImagePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Height of the image.
+     *
+     */
+    readonly imageHeight: number;
+    /**
+     * @remarks
+     * Width of the image.
+     *
+     */
+    readonly imageWidth: number;
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<string | ImageResourceData>;
+    /**
+     * @remarks
+     * Updates the size of the image.
+     *
+     * @param width
+     * New width of the image.
+     * @param height
+     * New height of the image.
+     */
+    resizeImage(width: number, height: number): void;
+}
+
+/**
+ * Optional properties for Image property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IImagePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Alignment of the image in the container. If not defined,
+     * LayoutAlignment.Left is used.
+     *
+     */
+    alignment?: LayoutAlignment;
+    /**
+     * @remarks
+     * Size of the image. If undefined, defaults to 10.
+     *
+     */
+    imageSize?:
+        | number
+        | {
+              width: number;
+              height: number;
+          };
+    /**
+     * @remarks
+     * Called when image is clicked.
+     *
+     */
+    onClick?: (x: number, y: number) => void;
 }
 
 export interface IMenu {
@@ -3578,6 +3905,34 @@ export interface IModalToolContainer {
 }
 
 /**
+ * Represents a stateful value that can be observed by
+ * different objects.
+ */
+export interface IObservable<T> {
+    /**
+     * @remarks
+     * Optional validator that will pre-process the new value.
+     *
+     */
+    readonly validator?: ObservableValidator<T>;
+    /**
+     * @remarks
+     * Current value of the observable.
+     *
+     */
+    readonly value: Readonly<T>;
+    /**
+     * @remarks
+     * Updates the value and notifies dependent objects.
+     *
+     * @param newValue
+     * New value to be set (will be processed by the validator if
+     * it exists).
+     */
+    set(newValue: T): boolean;
+}
+
+/**
  * Log helper interface for Player.
  */
 export interface IPlayerLogger {
@@ -3615,7 +3970,33 @@ export interface IPlayerLogger {
     warning(message: string): void;
 }
 
-export interface IPropertyItem<T extends PropertyBag, Prop extends keyof T & string> {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyItem<T extends PropertyBag, Prop extends keyof T & string> extends IPropertyItemBase {
+    /**
+     * @remarks
+     * The object associated.
+     *
+     */
+    readonly obj: T;
+    /**
+     * @remarks
+     * The target property of the object associated.
+     *
+     */
+    readonly property: Prop;
+    /**
+     * @remarks
+     * The value of the property.
+     *
+     */
+    readonly value: T[Prop];
+    dispose(): void;
+}
+
+/**
+ * Common base for all property items
+ */
+export interface IPropertyItemBase {
     /**
      * @remarks
      * If the item is enabled in the UI.
@@ -3630,41 +4011,22 @@ export interface IPropertyItem<T extends PropertyBag, Prop extends keyof T & str
     readonly id: string;
     /**
      * @remarks
-     * The object associated.
-     *
-     */
-    readonly obj: T;
-    /**
-     * @remarks
      * The parent pane id.
      *
      */
     readonly paneId: string;
     /**
      * @remarks
-     * The target property of the object associated.
-     *
-     */
-    readonly property: Prop;
-    /**
-     * @remarks
      * The type name of the target property.
      *
      */
-    readonly typeName: EDITOR_PANE_PROPERTY_ITEM_TYPE;
-    /**
-     * @remarks
-     * The value of the property.
-     *
-     */
-    readonly value: T[Prop];
+    readonly typeName: PropertyItemType;
     /**
      * @remarks
      * If the item should be visible in the UI.
      *
      */
     visible: boolean;
-    dispose(): void;
 }
 
 export interface IPropertyItemOptions {
@@ -3694,6 +4056,26 @@ export interface IPropertyItemOptions {
     visible?: boolean;
 }
 
+/**
+ * Common optional properties for property items
+ */
+export interface IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Initial enabled state of property item. If undefined, it
+     * will default to true.
+     *
+     */
+    enable?: boolean;
+    /**
+     * @remarks
+     * Initial visibility state of property item. If undefined, it
+     * will default to true.
+     *
+     */
+    visible?: boolean;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsBlockList extends IPropertyItemOptions {
     blockList: string[];
@@ -3707,17 +4089,6 @@ export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
      *
      */
     displayAsToggleSwitch?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsButton extends IPropertyItemOptions {
-    icon?: string;
-    /**
-     * @remarks
-     * The variant for the button. By default it is "primary"
-     *
-     */
-    variant?: ButtonVariant;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3744,12 +4115,6 @@ export interface IPropertyItemOptionsDropdown extends IPropertyItemOptions {
      *
      */
     dropdownItems: IDropdownItem[];
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsImage extends IPropertyItemOptions {
-    imageHeight: number;
-    imageWidth: number;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3795,16 +4160,6 @@ export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
 export interface IPropertyItemOptionsTable extends IPropertyItemOptions {
     defaultData: IPropertyTableCellItem[][];
     titleId?: string;
-}
-
-/**
- * Localization string id and border enable boolean for
- * multiline text component.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsText extends IPropertyItemOptions {
-    border?: boolean;
-    valueStringId?: string;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3924,10 +4279,14 @@ export interface IPropertyPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     */
+    addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
+    /**
+     * @remarks
      * Adds a boolean item to the pane.
      *
      */
-    addBool<T extends PropertyBag, Prop extends keyof T & string>(
+    addBool_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsBool,
@@ -3939,14 +4298,9 @@ export interface IPropertyPane {
      *
      */
     addButton(
-        action: RegisteredAction<NoArgsAction>,
-        options?: IPropertyItemOptionsButton,
-    ): IActionPropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
+        action: (() => void) | RegisteredAction<NoArgsAction>,
+        options?: IButtonPropertyItemOptions,
+    ): IButtonPropertyItem;
     /**
      * @remarks
      * Adds a color picker item to the pane.
@@ -3962,7 +4316,7 @@ export interface IPropertyPane {
      * Adds an divider item to the pane.
      *
      */
-    addDivider(): IPropertyItem<PropertyBag, string>;
+    addDivider(): IPropertyItemBase;
     /**
      * @remarks
      * Adds an DropDown item to the pane.
@@ -3993,11 +4347,10 @@ export interface IPropertyPane {
      * Adds an image item to the pane.
      *
      */
-    addImage<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsImage,
-    ): IPropertyItem<T, Prop>;
+    addImage(
+        value: IObservableProp<string | ImageResourceData>,
+        options?: IImagePropertyItemOptions,
+    ): IImagePropertyItem;
     /**
      * @remarks
      * Adds a number item to the pane.
@@ -4034,21 +4387,26 @@ export interface IPropertyPane {
      * Adds a multiline Text item to the pane.
      *
      */
-    addText<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsText,
-    ): IPropertyItem<T, Prop>;
+    addText(value: IObservableProp<LocalizedString>, options?: ITextPropertyItemOptions): ITextPropertyItem;
     /**
      * @remarks
      * Adds a Vec3 item to the pane.
      *
      */
-    addVector3<T extends PropertyBag, Prop extends keyof T & string>(
+    addVector3(
+        value: IObservableProp<minecraftserver.Vector3>,
+        options?: IVector3PropertyItemOptions,
+    ): IVector3PropertyItem;
+    /**
+     * @remarks
+     * Adds a Vec3 item to the pane.
+     *
+     */
+    addVector3_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsVector3,
-    ): IVector3PropertyItem<T, Prop>;
+    ): IVector3PropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Collapse the pane.
@@ -4644,6 +5002,123 @@ export interface IStatusBarItem {
 }
 
 /**
+ * A property item which supports Vector3 properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITextPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<LocalizedString>;
+    /**
+     * @remarks
+     * Gets layout alignment of the property item.
+     *
+     */
+    setAlignment(alignment: LayoutAlignment): void;
+    /**
+     * @remarks
+     * Sets title of the property item.
+     *
+     */
+    setTitle(title: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for Text property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITextPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Determines alignment of the text. If undefined, it will
+     * default to left aligned.
+     *
+     */
+    alignment?: LayoutAlignment;
+    /**
+     * @remarks
+     * Adds a border around the text. If undefined, it will default
+     * to true.
+     *
+     */
+    border?: boolean;
+    /**
+     * @remarks
+     * Localized title of the text item.
+     *
+     */
+    title?: LocalizedString;
+}
+
+/**
+ * A property item which supports Vector3 properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector3PropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * Updates Vector3 limits and clamps the current value.
+     *
+     */
+    updateAxisLimits(limits: { min?: Partial<minecraftserver.Vector3>; max?: Partial<minecraftserver.Vector3> }): void;
+}
+
+/**
+ * Optional properties for Vector3 property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * The min possible limits. If undefined,
+     * Number.MAX_SAFE_INTEGER will be used.
+     *
+     */
+    max?: Partial<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * The min possible limits. If undefined,
+     * Number.MIN_SAFE_INTEGER will be used.
+     *
+     */
+    min?: Partial<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * This callback is called when UI control is changed.
+     *
+     */
+    onChange?: (newValue: minecraftserver.Vector3, oldValue: minecraftserver.Vector3) => void;
+    /**
+     * @remarks
+     * Localized title of the property item
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
  * Parameters for creating a modal tool in the tool container
  */
 export interface ModalToolCreationParameters {
@@ -4733,6 +5208,16 @@ export declare function executeLargeOperationFromIterator(
  * Default allowed block list
  */
 export declare function getBlockPickerDefaultAllowBlockList(): string[];
+/**
+ * @remarks
+ * Creates an observable object that stores a value state.
+ *
+ * @param initialValue
+ * Initial value of the observable.
+ * @param validator
+ * Optional validator to use for the setter.
+ */
+export declare function makeObservable<T>(initialValue: T, validator?: ObservableValidator<T>): IObservable<T>;
 /**
  * @remarks
  * Registers an editor extension into Minecraft. This function

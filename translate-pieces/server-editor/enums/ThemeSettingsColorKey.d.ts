@@ -1,0 +1,15 @@
+export enum ThemeSettingsColorKey {
+    ControlsGeneralFill = 'ControlsGeneralFill',
+    ControlsGeneralHighlight = 'ControlsGeneralHighlight',
+    CoordinateControlX = 'CoordinateControlX',
+    CoordinateControlY = 'CoordinateControlY',
+    CoordinateControlZ = 'CoordinateControlZ',
+    CursorVolumeBorder = 'CursorVolumeBorder',
+    CursorVolumeFill = 'CursorVolumeFill',
+    PlacementVolumeBorder = 'PlacementVolumeBorder',
+    PlacementVolumeFill = 'PlacementVolumeFill',
+    PrefillVolumeBorder = 'PrefillVolumeBorder',
+    PrefillVolumeFill = 'PrefillVolumeFill',
+    SelectionVolumeBorder = 'SelectionVolumeBorder',
+    SelectionVolumeFill = 'SelectionVolumeFill',
+}
