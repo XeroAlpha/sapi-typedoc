@@ -5,6 +5,8 @@
  *
  * A unit vector representing the world DOWN direction (0,-1,0)
  *
+ * 表示世界下方方向的单位向量 (0,-1,0)。
+ *
  * @public
  */
 export declare const VECTOR3_DOWN: Vector3;
