@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.14.0-beta"
+ *   "version": "1.15.0-beta"
  * }
  * ```
  *
@@ -58,7 +58,7 @@ export enum BlockComponentTypes {
      */
     PotionContainer = 'minecraft:potionContainer',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Represents a block that can play a record.
      *
@@ -879,7 +879,7 @@ export enum EntityComponentTypes {
      */
     SkinId = 'minecraft:skin_id',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Defines the entity's strength to carry items.
      *
@@ -3515,7 +3515,7 @@ export class BlockPotionContainerComponent extends BlockLiquidContainerComponent
 }
 
 /**
- * @beta
+ * @rc
  * Represents a block that can play a record.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3524,12 +3524,18 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     static readonly componentId = 'minecraft:record_player';
     /**
      * @remarks
+     * Ejects the currently set record of this record-playing
+     * block.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
     ejectRecord(): void;
     /**
+     * @remarks
+     * Gets the currently set record of this record-playing block.
+     *
      * @throws This function can throw errors.
      */
     getRecord(): ItemStack | undefined;
@@ -3543,6 +3549,9 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     isPlaying(): boolean;
     /**
      * @remarks
+     * Pauses the currently playing record of this record-playing
+     * block.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -3550,6 +3559,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     pauseRecord(): void;
     /**
      * @remarks
+     * Plays the currently set record of this record-playing block.
+     *
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -5752,8 +5763,15 @@ export class Dimension {
     /**
      * @rc
      * @remarks
+     * Returns the highest block at the given XZ location.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param locationXZ
+     * Location to retrieve the topmost block for.
+     * @param minHeight
+     * The Y height to begin the search from. Defaults to the
+     * maximum dimension height.
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
@@ -6274,6 +6292,8 @@ export class EffectTypes {
      *
      * This function can't be called in read-only mode.
      *
+     * @param identifier
+     * The identifier for the effect.
      * @returns
      * Effect type for the given identifier or undefined if the
      * effect does not exist.
@@ -9534,7 +9554,7 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.
@@ -12942,7 +12962,7 @@ export class PlayerDimensionChangeAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class PlayerEmoteAfterEvent {
     private constructor();
@@ -12951,7 +12971,7 @@ export class PlayerEmoteAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class PlayerEmoteAfterEventSignal {
     private constructor();
@@ -13160,10 +13180,18 @@ export class PlayerInputPermissions {
 
 /**
  * Contains information regarding an event after a player
- * interacts with a block.
+ * successfully interacts with a block.
  */
 export class PlayerInteractWithBlockAfterEvent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The ItemStack before the interaction succeeded, or undefined
+     * if hand is empty.
+     *
+     */
+    readonly beforeItemStack?: ItemStack;
     /**
      * @remarks
      * The block that will be interacted with.
@@ -13184,9 +13212,18 @@ export class PlayerInteractWithBlockAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
+     * @beta
      * @remarks
-     * The item stack that is being used in the interaction, or
-     * undefined if empty hand.
+     * This value will be true if the event was triggered on
+     * players initial interaction button press and false on events
+     * triggered from holding the interaction button.
+     *
+     */
+    readonly isFirstEvent: boolean;
+    /**
+     * @remarks
+     * The ItemStack after the interaction succeeded, or undefined
+     * if hand is empty.
      *
      */
     readonly itemStack?: ItemStack;
@@ -13258,6 +13295,15 @@ export class PlayerInteractWithBlockBeforeEvent {
      */
     readonly faceLocation: Vector3;
     /**
+     * @beta
+     * @remarks
+     * This value will be true if the event was triggered on
+     * players initial interaction button press and false on events
+     * triggered from holding the interaction button.
+     *
+     */
+    readonly isFirstEvent: boolean;
+    /**
      * @remarks
      * The item stack that is being used in the interaction, or
      * undefined if empty hand.
@@ -13302,14 +13348,22 @@ export class PlayerInteractWithBlockBeforeEventSignal {
 
 /**
  * Contains information regarding an event after a player
- * interacts with an entity.
+ * successfully interacts with an entity.
  */
 export class PlayerInteractWithEntityAfterEvent {
     private constructor();
     /**
+     * @beta
      * @remarks
-     * The item stack that is being used in the interaction, or
-     * undefined if empty hand.
+     * The ItemStack before the interaction succeeded, or undefined
+     * if hand is empty.
+     *
+     */
+    readonly beforeItemStack?: ItemStack;
+    /**
+     * @remarks
+     * The ItemStack after the interaction succeeded, or undefined
+     * if hand is empty.
      *
      */
     readonly itemStack?: ItemStack;
@@ -13733,6 +13787,9 @@ export class Potions {
      * @remarks
      * Retrieves a type handle for a specified potion effect id.
      *
+     * @param potionEffectId
+     * A valid potion effect id. See
+     * @minecraft/vanilla-data.MinecraftPotionEffectTypes
      * @returns
      * A type handle wrapping the valid effect id, or undefined for
      * an invalid effect id.
@@ -16130,7 +16187,7 @@ export class WorldAfterEvents {
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
@@ -17139,7 +17196,7 @@ export interface EntityFilter {
      */
     name?: string;
     /**
-     * @beta
+     * @rc
      */
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
@@ -17395,7 +17452,7 @@ export interface EntityQueryOptions extends EntityFilter {
 }
 
 /**
- * @beta
+ * @rc
  */
 export interface EntityQueryPropertyOptions {
     exclude?: boolean;
@@ -17502,7 +17559,7 @@ export interface EntityRaycastOptions extends EntityFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Equal to operator.
  */
 export interface EqualsComparison {
@@ -17564,7 +17621,7 @@ export interface ExplosionOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Greater than operator.
  */
 export interface GreaterThanComparison {
@@ -17577,7 +17634,7 @@ export interface GreaterThanComparison {
 }
 
 /**
- * @beta
+ * @rc
  * Greater than or equal to operator.
  */
 export interface GreaterThanOrEqualsComparison {
@@ -17648,7 +17705,7 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Less than operator.
  */
 export interface LessThanComparison {
@@ -17661,7 +17718,7 @@ export interface LessThanComparison {
 }
 
 /**
- * @beta
+ * @rc
  * Less than or equal to operator.
  */
 export interface LessThanOrEqualsComparison {
@@ -17699,7 +17756,7 @@ export interface MusicOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Not equal to operator.
  */
 export interface NotEqualsComparison {
@@ -17818,7 +17875,7 @@ export interface ProjectileShootOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Operator represents a lower/upper bound structure for
  * expressing a potential range of numbers.
  */

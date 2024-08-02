@@ -35,7 +35,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.3.0-beta"
+ *   "version": "1.4.0-beta"
  * }
  * ```
  *

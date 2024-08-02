@@ -2,10 +2,18 @@
 
 /**
  * Contains information regarding an event after a player
- * interacts with a block.
+ * successfully interacts with a block.
  */
 export class PlayerInteractWithBlockAfterEvent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The ItemStack before the interaction succeeded, or undefined
+     * if hand is empty.
+     *
+     */
+    readonly beforeItemStack?: ItemStack;
     /**
      * @remarks
      * The block that will be interacted with.
@@ -26,9 +34,18 @@ export class PlayerInteractWithBlockAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
+     * @beta
      * @remarks
-     * The item stack that is being used in the interaction, or
-     * undefined if empty hand.
+     * This value will be true if the event was triggered on
+     * players initial interaction button press and false on events
+     * triggered from holding the interaction button.
+     *
+     */
+    readonly isFirstEvent: boolean;
+    /**
+     * @remarks
+     * The ItemStack after the interaction succeeded, or undefined
+     * if hand is empty.
      *
      */
     readonly itemStack?: ItemStack;

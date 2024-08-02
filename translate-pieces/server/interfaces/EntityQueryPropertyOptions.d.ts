@@ -1,7 +1,7 @@
 /* IMPORT */ import { EqualsComparison, GreaterThanComparison, GreaterThanOrEqualsComparison, LessThanComparison, LessThanOrEqualsComparison, NotEqualsComparison, RangeComparison } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export interface EntityQueryPropertyOptions {
     exclude?: boolean;

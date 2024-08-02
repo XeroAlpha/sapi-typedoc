@@ -101,7 +101,7 @@ export interface EntityFilter {
      */
     name?: string;
     /**
-     * @beta
+     * @rc
      */
     propertyOptions?: EntityQueryPropertyOptions[];
     /**

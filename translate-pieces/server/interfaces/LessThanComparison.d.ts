@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Less than operator.
  */
 export interface LessThanComparison {

@@ -419,7 +419,7 @@ export enum EntityComponentTypes {
      */
     SkinId = 'minecraft:skin_id',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Defines the entity's strength to carry items.
      *

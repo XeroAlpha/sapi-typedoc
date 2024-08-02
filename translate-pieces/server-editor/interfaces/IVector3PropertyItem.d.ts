@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, minecraftserver } from '../index';
+/* IMPORT */ import { IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
 
 /**
  * A property item which supports Vector3 properties
@@ -11,6 +11,22 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
      *
      */
     readonly value: Readonly<minecraftserver.Vector3>;
+    /**
+     * @remarks
+     * Updates title of the button.
+     *
+     * @param title
+     * New button title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of the button.
+     *
+     * @param tooltip
+     * New button tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
     /**
      * @remarks
      * Updates Vector3 limits and clamps the current value.

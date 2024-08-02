@@ -11,6 +11,9 @@ export class Potions {
      * @remarks
      * Retrieves a type handle for a specified potion effect id.
      *
+     * @param potionEffectId
+     * A valid potion effect id. See
+     * @minecraft/vanilla-data.MinecraftPotionEffectTypes
      * @returns
      * A type handle wrapping the valid effect id, or undefined for
      * an invalid effect id.

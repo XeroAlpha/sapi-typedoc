@@ -1,61 +1,69 @@
-/* IMPORT */ import { CustomWidget, CustomWidgetCreateOptions, Widget, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidWidgetError, InvalidWidgetGroupError, Widget, WidgetCreateOptions, minecraftserver } from '../index';
 
 export class WidgetGroup {
     private constructor();
-    readonly valid: boolean;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
+    readonly selectedWidgetCount: number;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * This property can't be edited in read-only mode.
      *
      */
-    areAnySelected(): boolean;
+    visible: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    visibleBounds: boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
      */
-    createCustomWidget(
-        customEntityName: string,
-        location: minecraftserver.Vector3,
-        rotation?: minecraftserver.Vector2,
-        options?: CustomWidgetCreateOptions,
-    ): CustomWidget;
+    createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    delete(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetGroupError}
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
      */
     deselectAllWidgets(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
-     */
-    getIsVisible(): boolean;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      *
-     */
-    moveSelectedWidgets(delta: minecraftserver.Vector3): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
+     * {@link InvalidWidgetGroupError}
      */
     selectAllWidgets(): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     */
-    setIsVisible(isVisible: boolean): void;
 }

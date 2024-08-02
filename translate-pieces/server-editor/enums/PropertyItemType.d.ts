@@ -3,10 +3,10 @@
  */
 export declare enum PropertyItemType {
     BlockList = 'editorUI:BlockList',
-    BlockPicker = 'editorUI:BlockPicker',
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
     ColorPicker = 'editorUI:ColorPicker',
+    ComboBox = 'editorUI:ComboBox',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',

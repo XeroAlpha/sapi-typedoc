@@ -1,7 +1,7 @@
 /* IMPORT */ import { PlayerEmoteAfterEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class PlayerEmoteAfterEventSignal {
     private constructor();

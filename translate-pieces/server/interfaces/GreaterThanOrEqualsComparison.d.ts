@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Greater than or equal to operator.
  */
 export interface GreaterThanOrEqualsComparison {
