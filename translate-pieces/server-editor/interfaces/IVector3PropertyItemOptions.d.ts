@@ -14,6 +14,13 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * If we should treat the Vector3 properties as integer values.
+     * By default is false.
+     *
+     */
+    isInteger?: boolean;
+    /**
+     * @remarks
      * The min possible limits. If undefined,
      * Number.MAX_SAFE_INTEGER will be used.
      *

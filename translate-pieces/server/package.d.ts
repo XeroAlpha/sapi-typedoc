@@ -10,7 +10,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.14.0-beta"
+ *   "version": "1.15.0-beta"
  * }
  * ```
  *

@@ -198,7 +198,7 @@ export class WorldAfterEvents {
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;

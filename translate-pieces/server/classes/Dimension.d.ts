@@ -309,8 +309,15 @@ export class Dimension {
     /**
      * @rc
      * @remarks
+     * Returns the highest block at the given XZ location.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param locationXZ
+     * Location to retrieve the topmost block for.
+     * @param minHeight
+     * The Y height to begin the search from. Defaults to the
+     * maximum dimension height.
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;

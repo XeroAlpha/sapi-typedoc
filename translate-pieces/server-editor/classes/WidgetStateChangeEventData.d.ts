@@ -1,9 +1,10 @@
-/* IMPORT */ import { Widget, WidgetGroup } from '../index';
+/* IMPORT */ import { Widget, WidgetGroup, minecraftserver } from '../index';
 
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
-    readonly isSelected?: boolean;
-    readonly isVisible?: boolean;
+    readonly location?: minecraftserver.Vector3;
+    readonly selected?: boolean;
+    readonly visible?: boolean;
     readonly widget: Widget;
 }

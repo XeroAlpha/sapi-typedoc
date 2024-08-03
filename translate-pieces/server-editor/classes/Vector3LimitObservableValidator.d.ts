@@ -10,6 +10,12 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * This property can't be edited in read-only mode.
      *
      */
+    protected _isInteger?: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
     protected _max: Partial<minecraftserver.Vector3>;
     /**
      * @remarks
@@ -23,7 +29,7 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * `Vector3LimitObservableValidator` class
      *
      */
-    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>);
+    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>, isInteger?: boolean);
     updateLimits(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>): void;
     validate(newValue: minecraftserver.Vector3): minecraftserver.Vector3;
 }

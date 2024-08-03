@@ -34,7 +34,7 @@ export enum BlockComponentTypes {
      */
     PotionContainer = 'minecraft:potionContainer',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Represents a block that can play a record.
      *

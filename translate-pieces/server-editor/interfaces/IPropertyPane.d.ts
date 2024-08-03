@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IDropdownPropertyItem, IImagePropertyItem, IImagePropertyItemOptions, IObservableProp, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker, IPropertyItemOptionsDataPicker, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IPropertyPaneOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
+/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IPropertyPaneOptions, IStringPropertyItem, IStringPropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -61,16 +61,6 @@ export interface IPropertyPane {
     >;
     /**
      * @remarks
-     * Adds a BlockPicker item to the pane.
-     *
-     */
-    addBlockPicker<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDataPicker,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      */
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
@@ -98,11 +88,26 @@ export interface IPropertyPane {
      * Adds a color picker item to the pane.
      *
      */
-    addColorPicker<T extends PropertyBag, Prop extends keyof T & string>(
+    addColorPicker(
+        value: IObservableProp<minecraftserver.RGBA>,
+        options?: IColorPickerPropertyItemOptions,
+    ): IColorPickerPropertyItem;
+    /**
+     * @remarks
+     * Adds a color picker item to the pane.
+     *
+     */
+    addColorPicker_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
-        options?: IPropertyItemOptionsColorPicker,
+        options?: IPropertyItemOptionsColorPicker_deprecated,
     ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a combo box item to the pane.
+     *
+     */
+    addComboBox(value: IObservableProp<string>, options?: IComboBoxPropertyItemOptions): IComboBoxPropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.
@@ -111,10 +116,16 @@ export interface IPropertyPane {
     addDivider(): IPropertyItemBase;
     /**
      * @remarks
+     * Adds an Dropdown item to the pane.
+     *
+     */
+    addDropdown(value: IObservableProp<number>, options?: IDropdownPropertyItemOptions): IDropdownPropertyItem;
+    /**
+     * @remarks
      * Adds an DropDown item to the pane.
      *
      */
-    addDropdown<
+    addDropdown_deprecated<
         T extends Omit<PropertyBag, Prop> & {
             [key in Prop]: number;
         },
@@ -123,17 +134,7 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDropdown,
-    ): IDropdownPropertyItem<T, Prop>;
-    /**
-     * @remarks
-     * Adds an EntityPicker item to the pane.
-     *
-     */
-    addEntityPicker<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDataPicker,
-    ): IPropertyItem<T, Prop>;
+    ): IDropdownPropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Adds an image item to the pane.
@@ -148,17 +149,27 @@ export interface IPropertyPane {
      * Adds a number item to the pane.
      *
      */
-    addNumber<T extends PropertyBag, Prop extends keyof T & string>(
+    addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
+    /**
+     * @remarks
+     * Adds a number item to the pane.
+     *
+     */
+    addNumber_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsNumber,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     */
+    addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
+    /**
+     * @remarks
      * Adds a string item to the pane
      *
      */
-    addString<T extends PropertyBag, Prop extends keyof T & string>(
+    addString_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptions,

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Equal to operator.
  */
 export interface EqualsComparison {

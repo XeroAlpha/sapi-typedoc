@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Not equal to operator.
  */
 export interface NotEqualsComparison {

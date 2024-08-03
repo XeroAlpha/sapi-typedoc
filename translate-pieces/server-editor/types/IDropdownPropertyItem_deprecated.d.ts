@@ -3,7 +3,7 @@
 /**
  * A property item which supports Dropdown properties
  */
-export type IDropdownPropertyItem<
+export type IDropdownPropertyItem_deprecated<
     T extends Omit<PropertyBag, Prop> & {
         [key in Prop]: number;
     },

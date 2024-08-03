@@ -2,14 +2,22 @@
 
 /**
  * Contains information regarding an event after a player
- * interacts with an entity.
+ * successfully interacts with an entity.
  */
 export class PlayerInteractWithEntityAfterEvent {
     private constructor();
     /**
+     * @beta
      * @remarks
-     * The item stack that is being used in the interaction, or
-     * undefined if empty hand.
+     * The ItemStack before the interaction succeeded, or undefined
+     * if hand is empty.
+     *
+     */
+    readonly beforeItemStack?: ItemStack;
+    /**
+     * @remarks
+     * The ItemStack after the interaction succeeded, or undefined
+     * if hand is empty.
      *
      */
     readonly itemStack?: ItemStack;

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Operator represents a lower/upper bound structure for
  * expressing a potential range of numbers.
  */

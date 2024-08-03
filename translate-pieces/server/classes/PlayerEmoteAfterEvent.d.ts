@@ -1,7 +1,7 @@
 /* IMPORT */ import { Player } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class PlayerEmoteAfterEvent {
     private constructor();

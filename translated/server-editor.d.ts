@@ -62,10 +62,19 @@ export declare enum ButtonPropertyItemVariant {
 /**
  * The possible variants of a color picker.
  */
-export declare enum ColorPickerVariant {
+export declare enum ColorPickerPropertyItemVariant {
     Default = 0,
     Inline = 1,
     Expanded = 2,
+}
+
+/**
+ * The possible data types supported by ComboBox property item.
+ */
+export declare enum ComboBoxPropertyItemDataType {
+    Custom = 0,
+    Block = 1,
+    Entity = 2,
 }
 
 /**
@@ -876,6 +885,20 @@ export declare enum MouseInputType {
     DragEnd = 7,
 }
 
+/**
+ * The possible variants of a Number property item.
+ */
+export declare enum NumberPropertyItemVariant {
+    InputField = 0,
+    InputFieldAndSlider = 1,
+}
+
+export enum Plane {
+    XY = 'XY',
+    XZ = 'XZ',
+    YZ = 'YZ',
+}
+
 export enum PlayerPermissionLevel {
     Visitor = 0,
     Member = 1,
@@ -898,6 +921,14 @@ export enum PlaytestSessionResult {
     UnspecifiedError = 11,
 }
 
+export enum PrimitiveType {
+    AxialSphere = 'AxialSphere',
+    Box = 'Box',
+    Disc = 'Disc',
+    Line = 'Line',
+    Text = 'Text',
+}
+
 export enum ProjectExportType {
     PlayableWorld = 0,
     ProjectBackup = 1,
@@ -909,10 +940,10 @@ export enum ProjectExportType {
  */
 export declare enum PropertyItemType {
     BlockList = 'editorUI:BlockList',
-    BlockPicker = 'editorUI:BlockPicker',
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
     ColorPicker = 'editorUI:ColorPicker',
+    ComboBox = 'editorUI:ComboBox',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
@@ -934,6 +965,11 @@ export declare enum SimpleToolStatusBarVisibility {
     VisibleWhenActive = 1,
 }
 
+export enum SplineType {
+    Hermite = 'Hermite',
+    Line = 'Line',
+}
+
 export enum ThemeSettingsColorKey {
     ControlsGeneralFill = 'ControlsGeneralFill',
     ControlsGeneralHighlight = 'ControlsGeneralHighlight',
@@ -948,6 +984,15 @@ export enum ThemeSettingsColorKey {
     PrefillVolumeFill = 'PrefillVolumeFill',
     SelectionVolumeBorder = 'SelectionVolumeBorder',
     SelectionVolumeFill = 'SelectionVolumeFill',
+}
+
+export enum WidgetComponentType {
+    Entity = 'Entity',
+    Gizmo = 'Gizmo',
+    Guide = 'Guide',
+    RenderPrim = 'RenderPrim',
+    Spline = 'Spline',
+    Text = 'Text',
 }
 
 export enum WidgetGroupSelectionMode {
@@ -1001,7 +1046,7 @@ export type IBlockListPropertyItem<T extends PropertyBag, Prop extends keyof T &
 /**
  * A property item which supports Dropdown properties
  */
-export type IDropdownPropertyItem<
+export type IDropdownPropertyItem_deprecated<
     T extends Omit<PropertyBag, Prop> & {
         [key in Prop]: number;
     },
@@ -1243,6 +1288,28 @@ export declare class BedrockEventSubscriptionCache {
      *
      */
     teardown(): void;
+}
+
+/**
+ * Validates observable objects that support string as
+ * BlockType
+ */
+export declare class BlockIdentifierObservableValidator implements ObservableValidator<string> {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _defaultValue: string;
+    get defaultValue(): string;
+    /**
+     * @remarks
+     * Constructs a new instance of the
+     * `BlockIdentifierObservableValidator` class
+     *
+     */
+    constructor(defaultName: string);
+    validate(newValue: string): string;
 }
 
 export class BlockPalette {
@@ -1764,33 +1831,26 @@ export class CursorPropertyChangeAfterEventSignal {
     unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
-export class CustomWidget extends Widget {
-    private constructor();
-    readonly location: minecraftserver.Vector3;
-    readonly rotation: minecraftserver.Vector2;
-    readonly showTextOnlyWhenSelected: boolean;
-    getText(): string;
+/**
+ * Validates observable objects that support string as
+ * EntityType
+ */
+export declare class EntityIdentifierObservableValidator implements ObservableValidator<string> {
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
-    moveBy(delta: minecraftserver.Vector3): void;
+    protected _defaultValue: string;
+    get defaultValue(): string;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * Constructs a new instance of the
+     * `EntityIdentifierObservableValidator` class
      *
      */
-    setText(text: string): void;
-}
-
-export class CustomWidgetMoveEventData {
-    private constructor();
-    readonly group: WidgetGroup;
-    readonly location?: minecraftserver.Vector3;
-    readonly rotation?: minecraftserver.Vector2;
-    readonly widget: CustomWidget;
+    constructor(defaultValue: string);
+    validate(newValue: string): string;
 }
 
 export class ExportManager {
@@ -2037,11 +2097,6 @@ export class IBlockPaletteItem {
     setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
-export class LineWidget extends Widget {
-    private constructor();
-}
-
 /**
  * The logger class is a utility class which allows editor
  * extensions to communicate with the player from the server to
@@ -2180,10 +2235,44 @@ export class ModeChangeAfterEventSignal {
 }
 
 /**
+ * Validates min/max limits of observable objects that support
+ * number
+ */
+export declare class NumberLimitObservableValidator implements ObservableValidator<number> {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _isInteger?: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _max?: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    protected _min?: number;
+    /**
+     * @remarks
+     * Constructs a new instance of the
+     * `NumberLimitObservableValidator` class
+     *
+     */
+    constructor(min: number | undefined, max: number | undefined, isInteger?: boolean);
+    updateLimits(min: number | undefined, max: number | undefined): void;
+    validate(newValue: number): number;
+}
+
+/**
  * Used for validating an observable value before it gets set
  */
 export declare abstract class ObservableValidator<T> {
-    abstract validate(newValue: T): T;
+    abstract validate(newValue: T): T | undefined;
 }
 
 export class PlaytestManager {
@@ -2599,6 +2688,25 @@ export class SimulationState {
 
 export class ThemeSettings {
     private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    addNewTheme(name: string): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    deleteTheme(name: string): void;
+    getCurrentTheme(): string;
     getThemeList(): string[];
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA | undefined;
     /**
@@ -2610,6 +2718,15 @@ export class ThemeSettings {
      * {@link Error}
      */
     setCurrentTheme(name: string): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    updateThemeColor(name: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
 
 /**
@@ -2906,6 +3023,12 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
+    protected _isInteger?: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
     protected _max: Partial<minecraftserver.Vector3>;
     /**
      * @remarks
@@ -2919,95 +3042,500 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * `Vector3LimitObservableValidator` class
      *
      */
-    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>);
+    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>, isInteger?: boolean);
     updateLimits(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>): void;
     validate(newValue: minecraftserver.Vector3): minecraftserver.Vector3;
 }
 
 export class Widget {
     private constructor();
-    readonly valid: boolean;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
-    deleteWidget(): void;
-    getIsSelected(): boolean;
-    getIsVisible(): boolean;
+    collisionOffset: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    collisionRadius: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    location: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetError}
+     */
+    readonly selectable: boolean;
+    selected: boolean;
+    showBoundingBox: boolean;
+    showCollisionRadius: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    snapToBlockLocation: boolean;
+    visible: boolean;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
      */
-    setIsSelected(isSelected: boolean): void;
+    addEntityComponent(
+        componentName: string,
+        actorNameId: string,
+        options?: WidgetComponentEntityOptions,
+    ): WidgetComponentEntity;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
      */
-    setIsVisible(isVisible: boolean): void;
+    addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addRenderPrimitiveComponent(
+        componentName: string,
+        primitiveType:
+            | WidgetComponentRenderPrimitiveAxialSphere
+            | WidgetComponentRenderPrimitiveBox
+            | WidgetComponentRenderPrimitiveDisc
+            | WidgetComponentRenderPrimitiveLine,
+        options?: WidgetComponentRenderPrimitiveOptions,
+    ): WidgetComponentRenderPrimitive;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetGroupError}
+     */
+    delete(): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    deleteComponent(componentOrName: string | WidgetComponentBase): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    getComponent(componentName: string): WidgetComponentBase;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetError}
+     */
+    getComponents(): WidgetComponentBase[];
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    setStateChangeEvent(eventFunction?: (arg: WidgetStateChangeEventData) => void): void;
+}
+
+export class WidgetComponentBase {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    readonly componentType: WidgetComponentType;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidWidgetComponentError}
+     */
+    readonly location: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    offset: minecraftserver.Vector3;
+    readonly valid: boolean;
+    visible: boolean;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    readonly widget: Widget;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    delete(): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentEntity extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    clickable: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    playAnimation(animationName: string): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentGizmo extends WidgetComponentBase {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentGuide extends WidgetComponentBase {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    setPrimitive(
+        primitive:
+            | WidgetComponentRenderPrimitiveAxialSphere
+            | WidgetComponentRenderPrimitiveBox
+            | WidgetComponentRenderPrimitiveDisc
+            | WidgetComponentRenderPrimitiveLine,
+    ): void;
+}
+
+export class WidgetComponentRenderPrimitiveAxialSphere {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    center: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color?: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    radius: number;
+    constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
+}
+
+export class WidgetComponentRenderPrimitiveBox {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    center: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    size?: minecraftserver.Vector3;
+    constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
+}
+
+export class WidgetComponentRenderPrimitiveDisc {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    center: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    radius: number;
+    constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
+}
+
+export class WidgetComponentRenderPrimitiveLine {
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    end: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    start: minecraftserver.Vector3;
+    constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentSpline extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    splineType: SplineType;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    getControlPoints(): Widget[];
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    setControlPoints(widgetList: Widget[]): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentText extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    label: string;
 }
 
 export class WidgetGroup {
     private constructor();
-    readonly valid: boolean;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
+    readonly selectedWidgetCount: number;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
-    areAnySelected(): boolean;
+    visible: boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    visibleBounds: boolean;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
      */
-    createCustomWidget(
-        customEntityName: string,
-        location: minecraftserver.Vector3,
-        rotation?: minecraftserver.Vector2,
-        options?: CustomWidgetCreateOptions,
-    ): CustomWidget;
+    createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    delete(): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetGroupError}
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
      */
     deselectAllWidgets(): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     */
-    getIsVisible(): boolean;
-    /**
-     * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @throws This function can throw errors.
      *
-     */
-    moveSelectedWidgets(delta: minecraftserver.Vector3): void;
-    /**
-     * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
+     * {@link InvalidWidgetGroupError}
      */
     selectAllWidgets(): void;
-    /**
-     * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     */
-    setIsVisible(isVisible: boolean): void;
 }
 
 export class WidgetManager {
@@ -3017,6 +3545,8 @@ export class WidgetManager {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
@@ -3024,6 +3554,10 @@ export class WidgetManager {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetGroupError}
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }
@@ -3031,8 +3565,9 @@ export class WidgetManager {
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
-    readonly isSelected?: boolean;
-    readonly isVisible?: boolean;
+    readonly location?: minecraftserver.Vector3;
+    readonly selected?: boolean;
+    readonly visible?: boolean;
     readonly widget: Widget;
 }
 
@@ -3174,14 +3709,6 @@ export interface CursorProperties {
     visible?: boolean;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface CustomWidgetCreateOptions extends WidgetCreateOptions {
-    moveEvent?: (arg: CustomWidgetMoveEventData) => void;
-    showTextOnlyWhenSelected?: boolean;
-    text?: string;
-    visualOffset?: minecraftserver.Vector3;
-}
-
 /**
  * An interface which defines the set of optional parameters
  * which can be used when calling the `registerEditorExtension`
@@ -3310,14 +3837,51 @@ export interface WeightedBlock {
     weight: number;
 }
 
+export interface WidgetComponentBaseOptions {
+    offset?: minecraftserver.Vector3;
+    visible?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
+    deselectedAnimation?: string;
+    isClickable?: boolean;
+    selectedAnimation?: string;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions {
+    controlPoints: Widget[];
+    splineType?: SplineType;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
+    color?: minecraftserver.RGBA;
+}
+
 export interface WidgetCreateOptions {
-    initialVisibility?: boolean;
-    isSelectable?: boolean;
+    collisionOffset?: minecraftserver.Vector3;
+    collisionRadius?: number;
+    selectable?: boolean;
+    snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
+    visible?: boolean;
 }
 
 export interface WidgetGroupCreateOptions {
     groupSelectionMode?: WidgetGroupSelectionMode;
+    showBounds?: boolean;
+    visible?: boolean;
 }
 
 /**
@@ -3642,6 +4206,172 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A property item which supports Color Picker properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IColorPickerPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip of the property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for Color Picker property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IColorPickerPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true alpha control will be hidden. If undefined, it will
+     * default to false.
+     *
+     */
+    hiddenAlpha?: boolean;
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: minecraftserver.RGBA, oldValue: minecraftserver.RGBA) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * The variant for the button. By default it is Primary.
+     *
+     */
+    variant?: ColorPickerPropertyItemVariant;
+}
+
+/**
+ * A property item which supports Combo Box properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IComboBoxPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: string;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip of the property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for ComboBox property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Possible data types supported by combo box. If undefined, it
+     * will be Custom by default.
+     *
+     */
+    dataType?: ComboBoxPropertyItemDataType;
+    /**
+     * @remarks
+     * Default value to fall back to if entry is not found. If
+     * undefined, data type will determine the default value (empty
+     * string for Custom data type).
+     *
+     */
+    defaultValue?: string;
+    /**
+     * @remarks
+     * List of combo box entries. If undefined, data type will
+     * determine the default list (empty list for Custom data
+     * type).
+     *
+     */
+    entries?: string[];
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: string, oldValue: string) => void;
+    /**
+     * @remarks
+     * If true the image for the selected value will be displayed
+     * (if data type supports it). If undefined, it will default to
+     * false.
+     *
+     */
+    showImage?: boolean;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
  * Simple abstraction for disposable objects.
  */
 export interface IDisposable {
@@ -3672,6 +4402,86 @@ export interface IDropdownItem {
 }
 
 /**
+ * A property item which supports Dropdown properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IDropdownPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current selected entry value of the property item list.
+     *
+     */
+    readonly value: number;
+    /**
+     * @remarks
+     * Find a dropdown entry at an index in the dropdown list.
+     *
+     * @param index
+     * Index of the dropdown entry in the list.
+     */
+    getEntryByIndex(index: number): IDropdownPropertyItemEntry | undefined;
+    /**
+     * @remarks
+     * Find a dropdown entry with a specific value associated with
+     * property item.
+     *
+     * @param value
+     * Value of the dropdown entry in the list.
+     */
+    getEntryByValue(value: number): IDropdownPropertyItemEntry | undefined;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip of the property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Update list of dropdown entries.
+     *
+     * @param entries
+     * New list of updated entries.
+     * @param newValue
+     * New value value to use for the dropdown.
+     */
+    updateEntries(entries: IDropdownPropertyItemEntry[], newValue?: number): void;
+}
+
+/**
+ * Properties of dropdown property item menu entry
+ */
+export interface IDropdownPropertyItemEntry {
+    /**
+     * @remarks
+     * Optional image of the dropdown entry.
+     *
+     */
+    readonly imageData?: ImageResourceData;
+    /**
+     * @remarks
+     * Localized display text of the entry.
+     *
+     */
+    readonly label: string;
+    /**
+     * @remarks
+     * The selectable value of the entry.
+     *
+     */
+    readonly value: number;
+}
+
+/**
  * Dropdown property item specific functionality
  */
 export interface IDropdownPropertyItemMixIn {
@@ -3683,6 +4493,45 @@ export interface IDropdownPropertyItemMixIn {
      *
      */
     updateDropdownItems(dropdownItems: IDropdownItem[], newValue: number): void;
+}
+
+/**
+ * Optional properties for Dropdown property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * List of dropdown entries associated with the property item.
+     * If undefined, list will be empty.
+     *
+     */
+    entries?: IDropdownPropertyItemEntry[];
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: number, oldValue: number, items: IDropdownPropertyItemEntry[]) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
 }
 
 /**
@@ -3905,6 +4754,101 @@ export interface IModalToolContainer {
 }
 
 /**
+ * A property item which supports Number properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface INumberPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<number>;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates number limits and clamps the current value.
+     *
+     */
+    updateLimits(limits: { min?: number; max?: number }): void;
+}
+
+/**
+ * Optional properties for Number property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface INumberPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. If undefined, the label
+     * will be visible by default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * If we should treat the number as integer. By default is
+     * false.
+     *
+     */
+    isInteger?: boolean;
+    /**
+     * @remarks
+     * The min possible number. If undefined,
+     * Number.MAX_SAFE_INTEGER will be used.
+     *
+     */
+    max?: number;
+    /**
+     * @remarks
+     * The min possible number. If undefined,
+     * Number.MIN_SAFE_INTEGER will be used.
+     *
+     */
+    min?: number;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: number, oldValue: number) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * Determines how we display bool as a UI element. If
+     * undefined, it will default to InputField.
+     *
+     */
+    variant?: NumberPropertyItemVariant;
+}
+
+/**
  * Represents a stateful value that can be observed by
  * different objects.
  */
@@ -4092,19 +5036,9 @@ export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsColorPicker extends IPropertyItemOptions {
+export interface IPropertyItemOptionsColorPicker_deprecated extends IPropertyItemOptions {
     showAlpha?: boolean;
-    variant?: ColorPickerVariant;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsDataPicker extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * Used to hold the entries allowed in the block/entity picker
-     *
-     */
-    allowedEntries?: string[];
+    variant?: ColorPickerPropertyItemVariant;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4269,16 +5203,6 @@ export interface IPropertyPane {
     >;
     /**
      * @remarks
-     * Adds a BlockPicker item to the pane.
-     *
-     */
-    addBlockPicker<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDataPicker,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      */
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
@@ -4306,11 +5230,26 @@ export interface IPropertyPane {
      * Adds a color picker item to the pane.
      *
      */
-    addColorPicker<T extends PropertyBag, Prop extends keyof T & string>(
+    addColorPicker(
+        value: IObservableProp<minecraftserver.RGBA>,
+        options?: IColorPickerPropertyItemOptions,
+    ): IColorPickerPropertyItem;
+    /**
+     * @remarks
+     * Adds a color picker item to the pane.
+     *
+     */
+    addColorPicker_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
-        options?: IPropertyItemOptionsColorPicker,
+        options?: IPropertyItemOptionsColorPicker_deprecated,
     ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a combo box item to the pane.
+     *
+     */
+    addComboBox(value: IObservableProp<string>, options?: IComboBoxPropertyItemOptions): IComboBoxPropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.
@@ -4319,10 +5258,16 @@ export interface IPropertyPane {
     addDivider(): IPropertyItemBase;
     /**
      * @remarks
+     * Adds an Dropdown item to the pane.
+     *
+     */
+    addDropdown(value: IObservableProp<number>, options?: IDropdownPropertyItemOptions): IDropdownPropertyItem;
+    /**
+     * @remarks
      * Adds an DropDown item to the pane.
      *
      */
-    addDropdown<
+    addDropdown_deprecated<
         T extends Omit<PropertyBag, Prop> & {
             [key in Prop]: number;
         },
@@ -4331,17 +5276,7 @@ export interface IPropertyPane {
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsDropdown,
-    ): IDropdownPropertyItem<T, Prop>;
-    /**
-     * @remarks
-     * Adds an EntityPicker item to the pane.
-     *
-     */
-    addEntityPicker<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDataPicker,
-    ): IPropertyItem<T, Prop>;
+    ): IDropdownPropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Adds an image item to the pane.
@@ -4356,17 +5291,27 @@ export interface IPropertyPane {
      * Adds a number item to the pane.
      *
      */
-    addNumber<T extends PropertyBag, Prop extends keyof T & string>(
+    addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
+    /**
+     * @remarks
+     * Adds a number item to the pane.
+     *
+     */
+    addNumber_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptionsNumber,
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
+     */
+    addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
+    /**
+     * @remarks
      * Adds a string item to the pane
      *
      */
-    addString<T extends PropertyBag, Prop extends keyof T & string>(
+    addString_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
         obj: T,
         property: Prop,
         options?: IPropertyItemOptions,
@@ -5002,6 +5947,73 @@ export interface IStatusBarItem {
 }
 
 /**
+ * A property item which supports String properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IStringPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<string>;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for String property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. If undefined, the label
+     * will be visible by default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: string, oldValue: string) => void;
+    /**
+     * @remarks
+     * Optional regular expression pattern to validate string.
+     *
+     */
+    regexPattern?: string;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
  * A property item which supports Vector3 properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5066,6 +6078,22 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
     readonly value: Readonly<minecraftserver.Vector3>;
     /**
      * @remarks
+     * Updates title of the button.
+     *
+     * @param title
+     * New button title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of the button.
+     *
+     * @param tooltip
+     * New button tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+    /**
+     * @remarks
      * Updates Vector3 limits and clamps the current value.
      *
      */
@@ -5084,6 +6112,13 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * If we should treat the Vector3 properties as integer values.
+     * By default is false.
+     *
+     */
+    isInteger?: boolean;
     /**
      * @remarks
      * The min possible limits. If undefined,
@@ -5154,6 +6189,21 @@ export interface ModalToolCreationParameters {
     tooltip?: string;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidWidgetComponentError extends Error {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidWidgetError extends Error {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidWidgetGroupError extends Error {
+    private constructor();
+}
+
 /**
  * @remarks
  * Takes the input object (a property bag of values) and bind
@@ -5200,14 +6250,13 @@ export declare function executeLargeOperationFromIterator(
 ): Promise<void>;
 /**
  * @remarks
- * Returns a string array of the default block types for the
- * Block picker control. Can be used to further filter blocks
- * from the Block picker.
+ * Returns a string array of the default block types for editor
+ * operations. Can be used to further filter blocks.
  *
  * @returns
  * Default allowed block list
  */
-export declare function getBlockPickerDefaultAllowBlockList(): string[];
+export declare function getDefaultAllowBlockList(): string[];
 /**
  * @remarks
  * Creates an observable object that stores a value state.
