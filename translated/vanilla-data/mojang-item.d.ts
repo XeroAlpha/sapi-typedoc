@@ -466,7 +466,7 @@ export declare enum MinecraftItemTypes {
     ChorusFruit = "minecraft:chorus_fruit",
     /** 紫颂植株。 */
     ChorusPlant = "minecraft:chorus_plant",
-    /** 黏土块。 */
+    /** 黏土。 */
     Clay = "minecraft:clay",
     /** 黏土球。 */
     ClayBall = "minecraft:clay_ball",
@@ -2132,7 +2132,7 @@ export declare enum MinecraftItemTypes {
     Snow = "minecraft:snow",
     /** 雪傀儡刷怪蛋。 */
     SnowGolemSpawnEgg = "minecraft:snow_golem_spawn_egg",
-    /** 雪层。 */
+    /** 雪。 */
     SnowLayer = "minecraft:snow_layer",
     /** 雪球。 */
     Snowball = "minecraft:snowball",
@@ -2154,7 +2154,7 @@ export declare enum MinecraftItemTypes {
     SpireArmorTrimSmithingTemplate = "minecraft:spire_armor_trim_smithing_template",
     /** 喷溅药水。 */
     SplashPotion = "minecraft:splash_potion",
-    /** 海绵/湿海绵。 */
+    /** 海绵。 */
     Sponge = "minecraft:sponge",
     /** 孢子花。 */
     SporeBlossom = "minecraft:spore_blossom",
@@ -2528,6 +2528,8 @@ export declare enum MinecraftItemTypes {
     Web = "minecraft:web",
     /** 垂泪藤。 */
     WeepingVines = "minecraft:weeping_vines",
+    /** 湿海绵。 */
+    WetSponge = "minecraft:wet_sponge",
     /** 小麦。 */
     Wheat = "minecraft:wheat",
     /** 小麦种子。 */

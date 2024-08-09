@@ -11,6 +11,7 @@ export class ThemeSettings {
      * {@link Error}
      */
     addNewTheme(name: string): void;
+    canThemeBeModified(name: string): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -22,7 +23,7 @@ export class ThemeSettings {
     deleteTheme(name: string): void;
     getCurrentTheme(): string;
     getThemeList(): string[];
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA | undefined;
+    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
      * @remarks
      * This function can't be called in read-only mode.

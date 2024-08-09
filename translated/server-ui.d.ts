@@ -449,7 +449,7 @@ export class ModalFormResponse extends FormResponse {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class UIManager {
     private constructor();
@@ -469,6 +469,6 @@ export class FormRejectError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 export const uiManager: UIManager;

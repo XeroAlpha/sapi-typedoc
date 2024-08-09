@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IPropertyPaneOptions, IStringPropertyItem, IStringPropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
+/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -26,28 +26,10 @@ export interface IPropertyPane {
     onPropertyPaneVisibilityUpdated: EventSink<PropertyPaneVisibilityUpdate>;
     /**
      * @remarks
-     * In case of sub pane this is the id of the parent pane.
-     *
-     */
-    readonly parentPaneId?: string;
-    /**
-     * @remarks
-     * Localized title of the property pane
-     *
-     */
-    title: string;
-    /**
-     * @remarks
      * Check visibility of the pane
      *
      */
     visible: boolean;
-    /**
-     * @remarks
-     * Width of the panel in rem.
-     *
-     */
-    width?: number;
     /**
      * @remarks
      * Adds a block list to the pane.
@@ -218,11 +200,10 @@ export interface IPropertyPane {
     collapse(): void;
     /**
      * @remarks
-     * Creates an internal sub panel that is presented inside a
-     * extender control.
+     * Creates an sub pane that can store property items.
      *
      */
-    createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
+    createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
     /**
      * @remarks
      * Expand the pane.
@@ -231,16 +212,30 @@ export interface IPropertyPane {
     expand(): void;
     /**
      * @remarks
+     * Returns property pane title.
+     *
+     */
+    getTitle(): LocalizedString | undefined;
+    /**
+     * @remarks
      * Hide the pane.
      *
      */
     hide(): void;
     /**
      * @remarks
-     * Removes a child property pane from the parent pane.
+     * Removes an existing sub pane.
      *
      */
-    removePropertyPane(paneToRemove: IPropertyPane): boolean;
+    removeSubPane(paneToRemove: IPropertyPane): boolean;
+    /**
+     * @remarks
+     * Updates title of property pane.
+     *
+     * @param newTitle
+     * New title
+     */
+    setTitle(newTitle: LocalizedString | undefined): void;
     /**
      * @remarks
      * Show the pane and all of its property items.
