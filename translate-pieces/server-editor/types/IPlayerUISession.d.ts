@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, EditorStatusBarAlignment, ExtensionContext, IActionBar, IGlobalInputManager, IMenuContainer, IModalToolContainer, IPlayerLogger, IPropertyPane, IPropertyPaneOptions, IStatusBarItem } from '../index';
+/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, EditorStatusBarAlignment, ExtensionContext, IActionBar, IGlobalInputManager, IMenuContainer, IModalToolContainer, IPlayerLogger, IRootPropertyPane, IRootPropertyPaneOptions, IStatusBarItem } from '../index';
 
 /**
  * The IPlayerUISession represents the editor user interface
@@ -15,7 +15,7 @@
  */
 export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     createStatusBarItem(alignment: EditorStatusBarAlignment, size: number): IStatusBarItem;
-    createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
+    createPropertyPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
     readonly menuBar: IMenuContainer;

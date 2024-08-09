@@ -1,7 +1,7 @@
 /* IMPORT */ import { minecraftserver } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class UIManager {
     private constructor();

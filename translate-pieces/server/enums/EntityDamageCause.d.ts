@@ -110,6 +110,7 @@ export enum EntityDamageCause {
      *
      */
     lightning = 'lightning',
+    maceSmash = 'maceSmash',
     /**
      * @remarks
      * Damage caused by magical attacks. For example, Evoker Fang

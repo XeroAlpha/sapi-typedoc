@@ -1265,6 +1265,7 @@ export declare enum MinecraftItemTypes {
     WeatheredCutCopperStairs = "minecraft:weathered_cut_copper_stairs",
     Web = "minecraft:web",
     WeepingVines = "minecraft:weeping_vines",
+    WetSponge = "minecraft:wet_sponge",
     Wheat = "minecraft:wheat",
     WheatSeeds = "minecraft:wheat_seeds",
     WhiteCandle = "minecraft:white_candle",

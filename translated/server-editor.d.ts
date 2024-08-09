@@ -31,6 +31,11 @@ export declare enum ActionTypes {
     NoArgsAction = 'NoArgsAction',
 }
 
+export enum BlockMaskListType {
+    Mask = 'Mask',
+    Replace = 'Replace',
+}
+
 export enum BlockPaletteItemType {
     Simple = 0,
     Probability = 1,
@@ -42,11 +47,6 @@ export enum BlockPaletteItemType {
 export declare enum BoolPropertyItemVariant {
     Checkbox = 0,
     ToggleSwitch = 1,
-}
-
-export enum BrushPipelineOperationType {
-    Include = 0,
-    Exclude = 1,
 }
 
 /**
@@ -1078,7 +1078,7 @@ export type IObservableProp<T> = IObservable<T> | T;
  */
 export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     createStatusBarItem(alignment: EditorStatusBarAlignment, size: number): IStatusBarItem;
-    createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
+    createPropertyPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
     readonly menuBar: IMenuContainer;
@@ -1399,12 +1399,14 @@ export class BrushShapeManager {
     private constructor();
     readonly activeBrushShape?: BrushShape;
     readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
-    readonly brushShapeNames: string[];
+    readonly brushShapeList: BrushShape[];
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.Error}
      */
     activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     /**
@@ -1412,15 +1414,32 @@ export class BrushShapeManager {
      * This function can't be called in read-only mode.
      *
      */
-    getBrushVolume(
-        origin: minecraftserver.Vector3,
-        pipeline: BrushPipelineOperation[],
-    ): minecraftserver.CompoundBlockVolume | undefined;
+    activateBrushTool(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    beginPainting(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    deactivateBrushTool(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    endPainting(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     getSettingsUIElements(brushName: string): SettingsUIElement[];
     /**
@@ -1428,6 +1447,8 @@ export class BrushShapeManager {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     registerBrushShape(
         name: string,
@@ -1440,6 +1461,34 @@ export class BrushShapeManager {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setBlockPaletteOverride(
+        overrideBlock?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+    ): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setBrushMask(mask: BlockMaskList): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
@@ -1632,6 +1681,51 @@ export class ClipboardManager {
      * @throws This function can throw errors.
      */
     create(): ClipboardItem;
+}
+
+export class CurrentThemeChangeAfterEvent {
+    private constructor();
+    readonly name: string;
+}
+
+export class CurrentThemeChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): (arg: CurrentThemeChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    unsubscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): void;
+}
+
+export class CurrentThemeColorChangeAfterEvent {
+    private constructor();
+    readonly color: minecraftserver.RGBA;
+    readonly colorKey: ThemeSettingsColorKey;
+}
+
+export class CurrentThemeColorChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    subscribe(
+        callback: (arg: CurrentThemeColorChangeAfterEvent) => void,
+    ): (arg: CurrentThemeColorChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    unsubscribe(callback: (arg: CurrentThemeColorChangeAfterEvent) => void): void;
 }
 
 /**
@@ -2021,6 +2115,8 @@ export class ExtensionContext {
 export class ExtensionContextAfterEvents {
     private constructor();
     readonly clipboardChange: ClipboardChangeAfterEventSignal;
+    readonly currentThemeChange: CurrentThemeChangeAfterEventSignal;
+    readonly currentThemeColorChange: CurrentThemeColorChangeAfterEventSignal;
     readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
@@ -2697,6 +2793,7 @@ export class ThemeSettings {
      * {@link Error}
      */
     addNewTheme(name: string): void;
+    canThemeBeModified(name: string): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2708,7 +2805,7 @@ export class ThemeSettings {
     deleteTheme(name: string): void;
     getCurrentTheme(): string;
     getThemeList(): string[];
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA | undefined;
+    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -3571,9 +3668,9 @@ export class WidgetStateChangeEventData {
     readonly widget: Widget;
 }
 
-export interface BrushPipelineOperation {
-    blockTypes: minecraftserver.BlockType[];
-    operation: BrushPipelineOperationType;
+export interface BlockMaskList {
+    blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
+    maskType: BlockMaskListType;
 }
 
 export interface BrushShape {
@@ -5168,28 +5265,10 @@ export interface IPropertyPane {
     onPropertyPaneVisibilityUpdated: EventSink<PropertyPaneVisibilityUpdate>;
     /**
      * @remarks
-     * In case of sub pane this is the id of the parent pane.
-     *
-     */
-    readonly parentPaneId?: string;
-    /**
-     * @remarks
-     * Localized title of the property pane
-     *
-     */
-    title: string;
-    /**
-     * @remarks
      * Check visibility of the pane
      *
      */
     visible: boolean;
-    /**
-     * @remarks
-     * Width of the panel in rem.
-     *
-     */
-    width?: number;
     /**
      * @remarks
      * Adds a block list to the pane.
@@ -5360,11 +5439,10 @@ export interface IPropertyPane {
     collapse(): void;
     /**
      * @remarks
-     * Creates an internal sub panel that is presented inside a
-     * extender control.
+     * Creates an sub pane that can store property items.
      *
      */
-    createPropertyPane(options: IPropertyPaneOptions): IPropertyPane;
+    createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
     /**
      * @remarks
      * Expand the pane.
@@ -5373,16 +5451,30 @@ export interface IPropertyPane {
     expand(): void;
     /**
      * @remarks
+     * Returns property pane title.
+     *
+     */
+    getTitle(): LocalizedString | undefined;
+    /**
+     * @remarks
      * Hide the pane.
      *
      */
     hide(): void;
     /**
      * @remarks
-     * Removes a child property pane from the parent pane.
+     * Removes an existing sub pane.
      *
      */
-    removePropertyPane(paneToRemove: IPropertyPane): boolean;
+    removeSubPane(paneToRemove: IPropertyPane): boolean;
+    /**
+     * @remarks
+     * Updates title of property pane.
+     *
+     * @param newTitle
+     * New title
+     */
+    setTitle(newTitle: LocalizedString | undefined): void;
     /**
      * @remarks
      * Show the pane and all of its property items.
@@ -5392,21 +5484,16 @@ export interface IPropertyPane {
 }
 
 /**
- * The options to create a pane.
+ * Common optional properties used for constructing a property
+ * pane.
  */
 export interface IPropertyPaneOptions {
-    /**
-     * @remarks
-     * Layout direction for sub panes
-     *
-     */
-    direction?: LayoutDirection;
     /**
      * @remarks
      * Localized title of the property pane
      *
      */
-    title: string;
+    title?: LocalizedString;
 }
 
 export interface IPropertyTableCellItem {
@@ -5441,6 +5528,50 @@ export interface IRegisterExtensionOptionalParameters {
      *
      */
     toolGroupId?: string;
+}
+
+/**
+ * A root pane that can store property items.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IRootPropertyPane extends IPropertyPane {
+    /**
+     * @remarks
+     * @returns
+     * Current visibility state of header action
+     */
+    isHeaderActionVisible(): boolean;
+    /**
+     * @remarks
+     * If a header action exists, updates visibility of the button.
+     *
+     * @param visible
+     * New visibility state of the action button.
+     */
+    setHeaderActionVisibility(visible: boolean): void;
+}
+
+/**
+ * Represents the data to display an action button on a root
+ * property pane header.
+ */
+export interface IRootPropertyPaneHeaderAction {
+    action?: () => void;
+    icon: string;
+    tooltip?: LocalizedString;
+}
+
+/**
+ * The options to create a root pane.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Optional action button to be displayed on the header.
+     *
+     */
+    headerAction?: IRootPropertyPaneHeaderAction;
 }
 
 /**
@@ -6011,6 +6142,71 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     tooltip?: LocalizedString;
+}
+
+/**
+ * A property item which supports Sub Pane properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPanePropertyItem extends IPropertyItemBase, IPropertyPane {
+    /**
+     * @remarks
+     * Updates layout alignment of the sub pane.
+     *
+     * @param alignment
+     * New layout alignment.
+     */
+    setAlignment(alignment: LayoutAlignment): void;
+    /**
+     * @remarks
+     * Updates layout direction of the sub pane.
+     *
+     * @param direction
+     * New layout direction.
+     */
+    setDirection(direction: LayoutDirection): void;
+}
+
+/**
+ * Optional properties for Sub Pane property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Alignment of property items within the pane of the property
+     * pane. If undefined, it will default to Left.
+     *
+     */
+    alignment?: LayoutAlignment;
+    /**
+     * @remarks
+     * Initial expander state of sub pane. If undefined, it will
+     * default to false.
+     *
+     */
+    collapsed?: boolean;
+    /**
+     * @remarks
+     * Determines layout direction of sub pane property items. If
+     * undefined, it will default to Vertical.
+     *
+     */
+    direction?: LayoutDirection;
+    /**
+     * @remarks
+     * Determines if sub pane should have an expander. If
+     * undefined, it will default to true.
+     *
+     */
+    hasExpander?: boolean;
+    /**
+     * @remarks
+     * Adds additional margins to sub pane. If undefined, it will
+     * default to true.
+     *
+     */
+    hasMargins?: boolean;
 }
 
 /**

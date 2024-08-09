@@ -1,6 +1,6 @@
 /* IMPORT */ import { UIManager } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export const uiManager: UIManager;

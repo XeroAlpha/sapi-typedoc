@@ -1041,6 +1041,7 @@ export enum EntityDamageCause {
      *
      */
     lightning = 'lightning',
+    maceSmash = 'maceSmash',
     /**
      * @remarks
      * Damage caused by magical attacks. For example, Evoker Fang
@@ -11961,6 +11962,15 @@ export class ItemUseOnAfterEvent {
      *
      */
     readonly faceLocation: Vector3;
+    /**
+     * @beta
+     * @remarks
+     * This value will be true if the event was triggered on
+     * players initial interaction button press and false on events
+     * triggered from holding the interaction button.
+     *
+     */
+    readonly isFirstEvent: boolean;
     /**
      * @remarks
      * The impacted item stack that is being used on a block.
