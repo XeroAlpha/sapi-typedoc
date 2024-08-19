@@ -7,7 +7,6 @@
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @rc
      * @remarks
      * This event fires for each BlockLocation destroyed by an
      * explosion. It is fired after the blocks have already been
@@ -203,7 +202,6 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a players input permissions change.
      *

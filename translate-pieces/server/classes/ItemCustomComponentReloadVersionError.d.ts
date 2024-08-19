@@ -1,5 +1,4 @@
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a previously registered item custom component with
  * a newer API version.

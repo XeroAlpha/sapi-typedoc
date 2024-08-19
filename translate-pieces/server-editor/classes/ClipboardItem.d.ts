@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardWriteOptions, Selection, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, Selection, minecraftserver } from '../index';
 
 /**
  * A ClipboardItem is a handle to an object which represents a
@@ -99,6 +99,15 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     readFromSelection(selection: Selection): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    readFromStructure(structure: EditorStructure): void;
     /**
      * @remarks
      * Copy the contents of a rectangular volume into the Clipboard

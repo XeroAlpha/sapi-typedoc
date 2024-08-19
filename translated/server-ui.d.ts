@@ -368,9 +368,6 @@ export class ModalFormData {
         valueStep: number,
         defaultValue?: number,
     ): ModalFormData;
-    /**
-     * @rc
-     */
     submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @remarks

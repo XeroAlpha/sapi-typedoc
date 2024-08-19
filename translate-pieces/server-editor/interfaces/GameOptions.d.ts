@@ -14,6 +14,7 @@ export interface GameOptions {
     fireSpreads?: boolean;
     friendlyFire?: boolean;
     gameMode?: minecraftserver.GameMode;
+    hardcore?: boolean;
     immediateRespawn?: boolean;
     keepInventory?: boolean;
     lanVisibility?: boolean;

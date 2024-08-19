@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, ItemStack } from '../index';
 
 /**
- * @rc
  * Contains information regarding when an item is used to hit
  * an entity.
  */

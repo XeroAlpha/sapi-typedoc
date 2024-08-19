@@ -1,5 +1,4 @@
 /**
- * @rc
  * Thrown when trying to register an item custom component with
  * a name that has already been registered.
  */

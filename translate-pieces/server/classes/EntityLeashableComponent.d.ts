@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, EntityComponent } from '../index';
 
 /**
- * @rc
  * Allows the entity to be leashed. Defines the conditions and
  * events for when an entity is leashed.
  */

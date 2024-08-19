@@ -176,6 +176,7 @@ export declare enum MinecraftItemTypes {
     BubbleCoralFan = "minecraft:bubble_coral_fan",
     Bucket = "minecraft:bucket",
     BuddingAmethyst = "minecraft:budding_amethyst",
+    Bundle = "minecraft:bundle",
     BurnPotterySherd = "minecraft:burn_pottery_sherd",
     Cactus = "minecraft:cactus",
     Cake = "minecraft:cake",

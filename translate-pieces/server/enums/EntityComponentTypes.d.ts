@@ -11,7 +11,6 @@ export enum EntityComponentTypes {
      */
     AddRider = 'minecraft:addrider',
     /**
-     * @rc
      * @remarks
      * Adds a timer for the entity to grow up. It can be
      * accelerated by giving the entity the items it likes as
@@ -66,7 +65,7 @@ export enum EntityComponentTypes {
      */
     Color2 = 'minecraft:color2',
     /**
-     * @beta
+     * @rc
      */
     CursorInventory = 'minecraft:cursor_inventory',
     /**
@@ -228,14 +227,12 @@ export enum EntityComponentTypes {
      */
     Item = 'minecraft:item',
     /**
-     * @rc
      * @remarks
      * Defines the base movement speed in lava of this entity.
      *
      */
     LavaMovement = 'minecraft:lava_movement',
     /**
-     * @rc
      * @remarks
      * Allows this entity to be leashed and defines the conditions
      * and events for this entity when is leashed.
@@ -251,7 +248,6 @@ export enum EntityComponentTypes {
      */
     MarkVariant = 'minecraft:mark_variant',
     /**
-     * @rc
      * @remarks
      * Defines the general movement speed of this entity.
      *
@@ -284,7 +280,6 @@ export enum EntityComponentTypes {
      */
     MovementGeneric = 'minecraft:movement.generic',
     /**
-     * @rc
      * @remarks
      * When added, this movement control allows the mob to glide.
      *
@@ -311,7 +306,6 @@ export enum EntityComponentTypes {
      */
     MovementSkip = 'minecraft:movement.skip',
     /**
-     * @rc
      * @remarks
      * When added, this move control causes the mob to sway side to
      * side giving the impression it is swimming.
@@ -419,14 +413,12 @@ export enum EntityComponentTypes {
      */
     SkinId = 'minecraft:skin_id',
     /**
-     * @rc
      * @remarks
      * Defines the entity's strength to carry items.
      *
      */
     Strength = 'minecraft:strength',
     /**
-     * @rc
      * @remarks
      * Defines the rules for an entity to be tamed by the player.
      *
@@ -446,7 +438,6 @@ export enum EntityComponentTypes {
      */
     TypeFamily = 'minecraft:type_family',
     /**
-     * @rc
      * @remarks
      * Defines the general movement speed underwater of this
      * entity.

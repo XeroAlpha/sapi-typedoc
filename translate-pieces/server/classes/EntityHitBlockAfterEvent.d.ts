@@ -24,7 +24,6 @@ export class EntityHitBlockAfterEvent {
      */
     readonly hitBlock: Block;
     /**
-     * @rc
      * @remarks
      * Block permutation that was hit by the attack.
      *

@@ -14,7 +14,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @rc
      * @remarks
      * Input permissions of the player.
      *

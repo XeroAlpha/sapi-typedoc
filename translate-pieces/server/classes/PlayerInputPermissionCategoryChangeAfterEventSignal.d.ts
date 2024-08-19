@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerInputPermissionCategoryChangeAfterEvent } from '../index';
 
 /**
- * @rc
  * Manages callbacks that are connected to after a players
  * input permissions change.
  */

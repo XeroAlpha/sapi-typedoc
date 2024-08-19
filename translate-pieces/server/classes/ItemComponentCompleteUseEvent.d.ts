@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemCompleteUseEvent } from '../index';
 
 /**
- * @rc
  * Contains information related to a chargeable item completing
  * being charged via a component.
  */

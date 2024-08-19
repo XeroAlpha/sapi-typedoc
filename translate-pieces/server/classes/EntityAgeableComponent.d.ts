@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent, EntityDefinitionFeedItem, Trigger } from '../index';
 
 /**
- * @rc
  * Adds a timer for the entity to grow up. It can be
  * accelerated by giving the entity the items it likes as
  * defined by feedItems.

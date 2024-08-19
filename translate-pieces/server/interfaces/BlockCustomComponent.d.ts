@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerDestroyEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent } from '../index';
 
 /**
- * @rc
  * Contains a set of events that will be raised for a block.
  * This object must be bound using the BlockRegistry.
  */

@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemComponentBeforeDurabilityDamageEvent, ItemComponentCompleteUseEvent, ItemComponentConsumeEvent, ItemComponentHitEntityEvent, ItemComponentMineBlockEvent, ItemComponentUseEvent, ItemComponentUseOnEvent } from '../index';
 
 /**
- * @rc
  * Contains a set of events that will be raised for an item.
  * This object must be bound using the ItemComponentRegistry.
  */

@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, Direction, ItemStack, Vector3 } from '../index';
 
 /**
- * @rc
  * Contains information regarding the use of an item on a
  * block.
  */

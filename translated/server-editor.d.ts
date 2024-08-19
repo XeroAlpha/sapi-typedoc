@@ -1616,6 +1616,15 @@ export class ClipboardItem {
     readFromSelection(selection: Selection): void;
     /**
      * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    readFromStructure(structure: EditorStructure): void;
+    /**
+     * @remarks
      * Copy the contents of a rectangular volume into the Clipboard
      * Item
      *
@@ -1925,6 +1934,45 @@ export class CursorPropertyChangeAfterEventSignal {
     unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
 }
 
+export class EditorStructureManager {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getExistingTags(): string[];
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    loadStructure(location: string, id: string): EditorStructure;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    saveStructure(structure: EditorStructure): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    searchStructures(options?: EditorStructureSearchOptions): EditorStructure[];
+}
+
 /**
  * Validates observable objects that support string as
  * EntityType
@@ -2097,6 +2145,7 @@ export class ExtensionContext {
      *
      */
     readonly settings: SettingsManager;
+    readonly structureManager: EditorStructureManager;
     /**
      * @remarks
      * The instance of the players Transaction Manager and the main
@@ -3806,6 +3855,19 @@ export interface CursorProperties {
     visible?: boolean;
 }
 
+export interface EditorStructure {
+    storageLocation: string;
+    structure: minecraftserver.Structure;
+    tags: string[];
+}
+
+export interface EditorStructureSearchOptions {
+    excludeTags?: string[];
+    idPattern?: string;
+    includeLocation?: string[];
+    includeTags?: string[];
+}
+
 /**
  * An interface which defines the set of optional parameters
  * which can be used when calling the `registerEditorExtension`
@@ -3861,6 +3923,7 @@ export interface GameOptions {
     fireSpreads?: boolean;
     friendlyFire?: boolean;
     gameMode?: minecraftserver.GameMode;
+    hardcore?: boolean;
     immediateRespawn?: boolean;
     keepInventory?: boolean;
     lanVisibility?: boolean;
@@ -3987,12 +4050,6 @@ export interface WidgetGroupCreateOptions {
  * client side UI is per player.
  */
 export interface ActionManager {
-    /**
-     * @remarks
-     * The active tool ID
-     *
-     */
-    activeToolId: string | undefined;
     /**
      * @remarks
      * Creates an action and registers it on the client
@@ -4836,18 +4893,10 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
-    /**
-     * @remarks
-     * The id of the selected tool in container.
-     *
-     */
-    readonly selectedOptionId?: string;
     addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
-    dispose(): void;
-    hide(): void;
+    getSelectedToolId(): string | undefined;
     removeTool(id: string): void;
-    setSelectedOptionId(value: string | undefined, update?: boolean): void;
-    show(): void;
+    setSelectedToolId(id: string | undefined): void;
 }
 
 /**

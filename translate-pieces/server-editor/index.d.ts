@@ -88,6 +88,7 @@ export { CursorAttachmentPropertiesChangeAfterEvent } from './classes/CursorAtta
 export { CursorAttachmentPropertyChangeAfterEventSignal } from './classes/CursorAttachmentPropertyChangeAfterEventSignal';
 export { CursorPropertiesChangeAfterEvent } from './classes/CursorPropertiesChangeAfterEvent';
 export { CursorPropertyChangeAfterEventSignal } from './classes/CursorPropertyChangeAfterEventSignal';
+export { EditorStructureManager } from './classes/EditorStructureManager';
 export { EntityIdentifierObservableValidator } from './classes/EntityIdentifierObservableValidator';
 export { ExportManager } from './classes/ExportManager';
 export { Extension } from './classes/Extension';
@@ -138,6 +139,8 @@ export { BrushShape } from './interfaces/BrushShape';
 export { ClipboardWriteOptions } from './interfaces/ClipboardWriteOptions';
 export { CursorAttachmentProperties } from './interfaces/CursorAttachmentProperties';
 export { CursorProperties } from './interfaces/CursorProperties';
+export { EditorStructure } from './interfaces/EditorStructure';
+export { EditorStructureSearchOptions } from './interfaces/EditorStructureSearchOptions';
 export { ExtensionOptionalParameters } from './interfaces/ExtensionOptionalParameters';
 export { GameOptions } from './interfaces/GameOptions';
 export { LogProperties } from './interfaces/LogProperties';

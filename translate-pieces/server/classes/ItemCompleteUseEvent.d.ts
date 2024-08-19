@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemStack, Player } from '../index';
 
 /**
- * @rc
  * Contains information related to a chargeable item completing
  * being charged.
  */

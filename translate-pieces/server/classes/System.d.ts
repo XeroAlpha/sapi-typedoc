@@ -27,7 +27,6 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @rc
      * @remarks
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
@@ -105,7 +104,6 @@ export class System {
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
-     * @rc
      * @remarks
      * Queues a generator to run until completion.  The generator
      * will be given a time slice each tick, and will be run until
@@ -163,7 +161,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}

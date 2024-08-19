@@ -205,7 +205,6 @@ export enum GameRule {
      */
     ShowCoordinates = 'showCoordinates',
     /**
-     * @rc
      * @remarks
      * Controls whether the days a player has played is displayed.
      *

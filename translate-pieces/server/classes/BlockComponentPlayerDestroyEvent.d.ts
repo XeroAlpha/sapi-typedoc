@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Player } from '../index';
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * destroyed.
  */

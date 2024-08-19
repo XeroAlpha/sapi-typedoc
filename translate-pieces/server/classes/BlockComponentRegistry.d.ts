@@ -1,8 +1,5 @@
 /* IMPORT */ import { BlockCustomComponent, BlockCustomComponentAlreadyRegisteredError, BlockCustomComponentReloadNewComponentError, BlockCustomComponentReloadNewEventError, BlockCustomComponentReloadVersionError, CustomComponentInvalidRegistryError, CustomComponentNameError, minecraftcommon } from '../index';
 
-/**
- * @rc
- */
 export class BlockComponentRegistry {
     private constructor();
     /**
