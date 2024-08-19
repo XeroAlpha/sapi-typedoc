@@ -195,9 +195,6 @@ export enum CompoundBlockVolumePositionRelativity {
     Absolute = 1,
 }
 
-/**
- * @rc
- */
 export enum CustomComponentNameErrorReason {
     NoNamespace = 1,
     DisallowedNamespace = 2,
@@ -495,7 +492,6 @@ export enum EntityComponentTypes {
      */
     AddRider = 'minecraft:addrider',
     /**
-     * @rc
      * @remarks
      * Adds a timer for the entity to grow up. It can be
      * accelerated by giving the entity the items it likes as
@@ -550,7 +546,7 @@ export enum EntityComponentTypes {
      */
     Color2 = 'minecraft:color2',
     /**
-     * @beta
+     * @rc
      */
     CursorInventory = 'minecraft:cursor_inventory',
     /**
@@ -712,14 +708,12 @@ export enum EntityComponentTypes {
      */
     Item = 'minecraft:item',
     /**
-     * @rc
      * @remarks
      * Defines the base movement speed in lava of this entity.
      *
      */
     LavaMovement = 'minecraft:lava_movement',
     /**
-     * @rc
      * @remarks
      * Allows this entity to be leashed and defines the conditions
      * and events for this entity when is leashed.
@@ -735,7 +729,6 @@ export enum EntityComponentTypes {
      */
     MarkVariant = 'minecraft:mark_variant',
     /**
-     * @rc
      * @remarks
      * Defines the general movement speed of this entity.
      *
@@ -768,7 +761,6 @@ export enum EntityComponentTypes {
      */
     MovementGeneric = 'minecraft:movement.generic',
     /**
-     * @rc
      * @remarks
      * When added, this movement control allows the mob to glide.
      *
@@ -795,7 +787,6 @@ export enum EntityComponentTypes {
      */
     MovementSkip = 'minecraft:movement.skip',
     /**
-     * @rc
      * @remarks
      * When added, this move control causes the mob to sway side to
      * side giving the impression it is swimming.
@@ -903,14 +894,12 @@ export enum EntityComponentTypes {
      */
     SkinId = 'minecraft:skin_id',
     /**
-     * @rc
      * @remarks
      * Defines the entity's strength to carry items.
      *
      */
     Strength = 'minecraft:strength',
     /**
-     * @rc
      * @remarks
      * Defines the rules for an entity to be tamed by the player.
      *
@@ -930,7 +919,6 @@ export enum EntityComponentTypes {
      */
     TypeFamily = 'minecraft:type_family',
     /**
-     * @rc
      * @remarks
      * Defines the general movement speed underwater of this
      * entity.
@@ -1572,7 +1560,6 @@ export enum GameRule {
      */
     ShowCoordinates = 'showCoordinates',
     /**
-     * @rc
      * @remarks
      * Controls whether the days a player has played is displayed.
      *
@@ -1660,7 +1647,6 @@ export enum HudVisibility {
 }
 
 /**
- * @rc
  * Input permission categories. Used by
  * @minecraft/server.PlayerInputPermissionCategoryChangeAfterEvent
  * to specify which category was changed.
@@ -3066,7 +3052,6 @@ export class BlockComponent extends Component {
 }
 
 /**
- * @rc
  * Contains information regarding an entity falling onto a
  * specific block.
  */
@@ -3088,7 +3073,6 @@ export class BlockComponentEntityFallOnEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block that was
  * placed.
  */
@@ -3104,7 +3088,6 @@ export class BlockComponentOnPlaceEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * destroyed.
  */
@@ -3127,7 +3110,6 @@ export class BlockComponentPlayerDestroyEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * interacted with.
  */
@@ -3156,7 +3138,6 @@ export class BlockComponentPlayerInteractEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding an event before a player
  * places a block.
  */
@@ -3192,7 +3173,6 @@ export class BlockComponentPlayerPlaceBeforeEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block randomly
  * ticking.
  */
@@ -3201,9 +3181,6 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
     private constructor();
 }
 
-/**
- * @rc
- */
 export class BlockComponentRegistry {
     private constructor();
     /**
@@ -3227,7 +3204,6 @@ export class BlockComponentRegistry {
 }
 
 /**
- * @rc
  * Contains information regarding an entity stepping off a
  * specific block.
  */
@@ -3243,7 +3219,6 @@ export class BlockComponentStepOffEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding an entity stepping onto a
  * specific block.
  */
@@ -3259,7 +3234,6 @@ export class BlockComponentStepOnEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block ticking.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3289,7 +3263,6 @@ export class BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding an explosion that has
  * occurred for a specific block.
  */
@@ -3311,7 +3284,6 @@ export class BlockExplodeAfterEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an explosion
  * occurs, as it impacts individual blocks.
  */
@@ -3520,14 +3492,12 @@ export class BlockPermutation {
      */
     getState(stateName: string): boolean | number | string | undefined;
     /**
-     * @rc
      * @remarks
      * Creates a copy of the permutation.
      *
      */
     getTags(): string[];
     /**
-     * @rc
      * @remarks
      * Checks to see if the permutation has a specific tag.
      *
@@ -5930,7 +5900,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @rc
      * @remarks
      * Returns the highest block at the given XZ location.
      *
@@ -6054,7 +6023,6 @@ export class Dimension {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @rc
      * @remarks
      * Sets a block in the world using a BlockPermutation.
      * BlockPermutations are blocks with a particular state.
@@ -6075,7 +6043,6 @@ export class Dimension {
      */
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
     /**
-     * @rc
      * @remarks
      * Sets a block at a given location within the dimension.
      *
@@ -6521,7 +6488,6 @@ export class EnchantmentTypes {
      */
     static get(enchantmentId: string): EnchantmentType | undefined;
     /**
-     * @rc
      * @remarks
      * Returns a collection of all available enchantment types.
      *
@@ -7498,7 +7464,6 @@ export class EntityAddRiderComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Adds a timer for the entity to grow up. It can be
  * accelerated by giving the entity the items it likes as
  * defined by feedItems.
@@ -7828,7 +7793,6 @@ export class EntityComponent extends Component {
 }
 
 /**
- * @rc
  * As part of the Ageable component, represents a set of items
  * that can be fed to an entity and the rate at which that
  * causes them to grow.
@@ -8201,7 +8165,6 @@ export class EntityHitBlockAfterEvent {
      */
     readonly hitBlock: Block;
     /**
-     * @rc
      * @remarks
      * Block permutation that was hit by the attack.
      *
@@ -8618,7 +8581,6 @@ export class EntityIterator implements Iterable<Entity> {
 }
 
 /**
- * @rc
  * Defines the base movement speed in lava of this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8628,7 +8590,6 @@ export class EntityLavaMovementComponent extends EntityAttributeComponent {
 }
 
 /**
- * @rc
  * Allows the entity to be leashed. Defines the conditions and
  * events for when an entity is leashed.
  */
@@ -8799,7 +8760,6 @@ export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @rc
  * Defines the general movement speed of this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8828,7 +8788,6 @@ export class EntityMovementGenericComponent extends EntityBaseMovementComponent 
 }
 
 /**
- * @rc
  * When added, this movement control allows the mob to glide.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8881,7 +8840,6 @@ export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
 }
 
 /**
- * @rc
  * When added, this move control causes the mob to sway side to
  * side giving the impression it is swimming.
  */
@@ -9739,7 +9697,6 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
- * @rc
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.
@@ -9767,7 +9724,6 @@ export class EntityStrengthComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Defines the rules for an entity to be tamed by the player.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9835,7 +9791,6 @@ export class EntityTameableComponent extends EntityComponent {
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns true if the entity is tamed.
      *
@@ -9843,7 +9798,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly isTamed: boolean;
     /**
-     * @rc
      * @remarks
      * Returns true if the entity is tamed by a player.
      *
@@ -9851,7 +9805,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly isTamedToPlayer: boolean;
     /**
-     * @rc
      * @remarks
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed by a player.
@@ -9860,7 +9813,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @rc
      * @remarks
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
@@ -9881,7 +9833,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     tame(showParticles: boolean): void;
     /**
-     * @rc
      * @remarks
      * Sets this rideable entity as tamed by the given player.
      *
@@ -9967,7 +9918,6 @@ export class EntityTypes {
 }
 
 /**
- * @rc
  * Defines the general movement speed underwater of this
  * entity.
  */
@@ -10439,7 +10389,6 @@ export class GameRules {
      */
     showCoordinates: boolean;
     /**
-     * @rc
      * @remarks
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
@@ -10657,7 +10606,6 @@ export class ItemCompleteUseAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to a chargeable item completing
  * being charged.
  */
@@ -10686,7 +10634,6 @@ export class ItemComponent extends Component {
 }
 
 /**
- * @rc
  * Contains information regarding an item before it is damaged
  * from hitting an entity.
  */
@@ -10720,7 +10667,6 @@ export class ItemComponentBeforeDurabilityDamageEvent {
 }
 
 /**
- * @rc
  * Contains information related to a chargeable item completing
  * being charged via a component.
  */
@@ -10730,7 +10676,6 @@ export class ItemComponentCompleteUseEvent extends ItemCompleteUseEvent {
 }
 
 /**
- * @rc
  * Contains information related to a food item being consumed.
  */
 export class ItemComponentConsumeEvent {
@@ -10750,7 +10695,6 @@ export class ItemComponentConsumeEvent {
 }
 
 /**
- * @rc
  * Contains information regarding when an item is used to hit
  * an entity.
  */
@@ -10783,7 +10727,6 @@ export class ItemComponentHitEntityEvent {
 }
 
 /**
- * @rc
  * Contains information regarding the mining of a block using
  * an item.
  */
@@ -10816,7 +10759,6 @@ export class ItemComponentMineBlockEvent {
 }
 
 /**
- * @rc
  * Provides the functionality for registering custom components
  * for items.
  */
@@ -10855,7 +10797,6 @@ export class ItemComponentRegistry {
 }
 
 /**
- * @rc
  * Contains information regarding the use of an item.
  */
 export class ItemComponentUseEvent {
@@ -10875,7 +10816,6 @@ export class ItemComponentUseEvent {
 }
 
 /**
- * @rc
  * Contains information regarding the use of an item on a block
  * via a component.
  */
@@ -12084,7 +12024,6 @@ export class ItemType {
 }
 
 /**
- * @rc
  * Returns the set of item types registered within Minecraft.
  */
 export class ItemTypes {
@@ -12315,7 +12254,6 @@ export class ItemUseOnBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding the use of an item on a
  * block.
  */
@@ -12650,7 +12588,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @rc
      * @remarks
      * Input permissions of the player.
      *
@@ -13149,18 +13086,26 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
+ * Represents the players cursor inventory. Used when moving
+ * items between between containers in the inventory UI. Not
+ * used with touch controls.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerCursorInventoryComponent extends EntityComponent {
     private constructor();
     /**
+     * @remarks
+     * The ItemStack currently in the players cursor inventory.
+     *
      * @throws This property can throw when used.
      */
     readonly item?: ItemStack;
     static readonly componentId = 'minecraft:cursor_inventory';
     /**
      * @remarks
+     * Clears the players cursor inventory.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -13372,7 +13317,6 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event after a players
  * input permissions change.
  */
@@ -13399,7 +13343,6 @@ export class PlayerInputPermissionCategoryChangeAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to after a players
  * input permissions change.
  */
@@ -13428,7 +13371,6 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains properties for enabling/disabling player input
  * permissions.
  */
@@ -15275,7 +15217,6 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @rc
      * @remarks
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
@@ -15353,7 +15294,6 @@ export class System {
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
-     * @rc
      * @remarks
      * Queues a generator to run until completion.  The generator
      * will be given a time slice each tick, and will be run until
@@ -15411,7 +15351,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -15517,7 +15456,6 @@ export class TargetBlockHitAfterEventSignal {
 }
 
 /**
- * @rc
  * Represents a trigger for firing an event.
  */
 export class Trigger {
@@ -16417,7 +16355,6 @@ export class World {
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @rc
      * @remarks
      * This event fires for each BlockLocation destroyed by an
      * explosion. It is fired after the blocks have already been
@@ -16613,7 +16550,6 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a players input permissions change.
      *
@@ -16806,7 +16742,6 @@ export class WorldBeforeEvents {
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires immediately when the script environment is
      * initialized on a World. Not all script functionality may be
@@ -16853,7 +16788,6 @@ export class WorldInitializeAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information and methods that can be used at the
  * initialization of the scripting environment for a World.
  * Also, use the supplied blockRegistry object to register
@@ -16873,7 +16807,6 @@ export class WorldInitializeBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are run at the initialization of the
  * scripting environment for a World. Do note that this event
  * may run multiple times within a session in the case that the
@@ -16916,7 +16849,6 @@ export interface BiomeSearchOptions {
 }
 
 /**
- * @rc
  * Contains a set of events that will be raised for a block.
  * This object must be bound using the BlockRegistry.
  */
@@ -17952,7 +17884,6 @@ export interface EntityRaycastHit {
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface EntityRaycastOptions extends EntityFilter {
     /**
-     * @rc
      * @remarks
      * If true, blocks will not be considered as blocks that 'stop'
      * the raycast.
@@ -17960,7 +17891,6 @@ export interface EntityRaycastOptions extends EntityFilter {
      */
     ignoreBlockCollision?: boolean;
     /**
-     * @rc
      * @remarks
      * If true, liquid blocks will be considered as blocks that
      * 'stop' the raycast.
@@ -17968,7 +17898,6 @@ export interface EntityRaycastOptions extends EntityFilter {
      */
     includeLiquidBlocks?: boolean;
     /**
-     * @rc
      * @remarks
      * If true, passable blocks like vines and flowers will be
      * considered as blocks that 'stop' the raycast.
@@ -18072,7 +18001,6 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
- * @rc
  * Contains a set of events that will be raised for an item.
  * This object must be bound using the ItemComponentRegistry.
  */
@@ -18785,9 +18713,6 @@ export interface Vector3 {
     z: number;
 }
 
-/**
- * @rc
- */
 export interface VectorXZ {
     x: number;
     z: number;
@@ -18811,33 +18736,21 @@ export interface WorldSoundOptions {
     volume?: number;
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentAlreadyRegisteredError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentReloadNewComponentError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentReloadNewEventError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentReloadVersionError extends Error {
     private constructor();
@@ -18848,17 +18761,11 @@ export class CommandError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class CustomComponentInvalidRegistryError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class CustomComponentNameError extends Error {
     private constructor();
@@ -18890,6 +18797,14 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidIteratorError extends Error {
+    private constructor();
+}
+
+/**
  * Thrown when a Structure is invalid. A structure becomes
  * invalid when it is deleted.
  */
@@ -18899,7 +18814,6 @@ export class InvalidStructureError extends Error {
 }
 
 /**
- * @rc
  * Thrown when trying to register an item custom component with
  * a name that has already been registered.
  */
@@ -18909,7 +18823,6 @@ export class ItemCustomComponentAlreadyRegisteredError extends Error {
 }
 
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a previously unregistered item custom component.
  */
@@ -18919,7 +18832,6 @@ export class ItemCustomComponentReloadNewComponentError extends Error {
 }
 
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a previously registered item custom component that
  * handles a new event.
@@ -18930,7 +18842,6 @@ export class ItemCustomComponentReloadNewEventError extends Error {
 }
 
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a previously registered item custom component with
  * a newer API version.

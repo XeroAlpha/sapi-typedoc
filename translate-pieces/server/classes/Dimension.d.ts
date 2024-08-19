@@ -307,7 +307,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @rc
      * @remarks
      * Returns the highest block at the given XZ location.
      *
@@ -431,7 +430,6 @@ export class Dimension {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
-     * @rc
      * @remarks
      * Sets a block in the world using a BlockPermutation.
      * BlockPermutations are blocks with a particular state.
@@ -452,7 +450,6 @@ export class Dimension {
      */
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
     /**
-     * @rc
      * @remarks
      * Sets a block at a given location within the dimension.
      *

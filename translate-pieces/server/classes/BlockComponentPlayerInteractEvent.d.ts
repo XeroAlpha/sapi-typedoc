@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, Direction, Player, Vector3 } from '../index';
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * interacted with.
  */

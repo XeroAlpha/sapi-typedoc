@@ -1,4 +1,5 @@
 /**
+ * @beta
  * A utility class to set GameTest parameters for a test.
  * Methods can be chained together to set multiple properties.
  */

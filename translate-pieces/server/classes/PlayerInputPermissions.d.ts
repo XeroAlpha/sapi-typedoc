@@ -1,5 +1,4 @@
 /**
- * @rc
  * Contains properties for enabling/disabling player input
  * permissions.
  */

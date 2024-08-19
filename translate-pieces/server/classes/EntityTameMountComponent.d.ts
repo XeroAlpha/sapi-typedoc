@@ -8,7 +8,6 @@
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns true if the entity is tamed.
      *
@@ -16,7 +15,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly isTamed: boolean;
     /**
-     * @rc
      * @remarks
      * Returns true if the entity is tamed by a player.
      *
@@ -24,7 +22,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly isTamedToPlayer: boolean;
     /**
-     * @rc
      * @remarks
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed by a player.
@@ -33,7 +30,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @rc
      * @remarks
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
@@ -54,7 +50,6 @@ export class EntityTameMountComponent extends EntityComponent {
      */
     tame(showParticles: boolean): void;
     /**
-     * @rc
      * @remarks
      * Sets this rideable entity as tamed by the given player.
      *

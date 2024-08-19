@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent } from '../index';
 
 /**
- * @rc
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.

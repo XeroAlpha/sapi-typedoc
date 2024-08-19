@@ -184,7 +184,6 @@ export class GameRules {
      */
     showCoordinates: boolean;
     /**
-     * @rc
      * @remarks
      * This property can't be edited in read-only mode.
      *

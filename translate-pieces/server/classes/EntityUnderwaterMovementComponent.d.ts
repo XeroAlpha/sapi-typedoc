@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
- * @rc
  * Defines the general movement speed underwater of this
  * entity.
  */

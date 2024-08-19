@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, ItemStack } from '../index';
 
 /**
- * @rc
  * Contains information related to a food item being consumed.
  */
 export class ItemComponentConsumeEvent {

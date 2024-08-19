@@ -91,7 +91,6 @@ export class WorldBeforeEvents {
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires immediately when the script environment is
      * initialized on a World. Not all script functionality may be

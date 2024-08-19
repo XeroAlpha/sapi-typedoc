@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent, ItemStack, Player } from '../index';
 
 /**
- * @rc
  * Defines the rules for an entity to be tamed by the player.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

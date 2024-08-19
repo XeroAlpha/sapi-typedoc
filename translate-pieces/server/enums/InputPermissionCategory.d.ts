@@ -1,5 +1,4 @@
 /**
- * @rc
  * Input permission categories. Used by
  * @minecraft/server.PlayerInputPermissionCategoryChangeAfterEvent
  * to specify which category was changed.

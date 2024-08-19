@@ -72,14 +72,12 @@ export class BlockPermutation {
      */
     getState(stateName: string): boolean | number | string | undefined;
     /**
-     * @rc
      * @remarks
      * Creates a copy of the permutation.
      *
      */
     getTags(): string[];
     /**
-     * @rc
      * @remarks
      * Checks to see if the permutation has a specific tag.
      *

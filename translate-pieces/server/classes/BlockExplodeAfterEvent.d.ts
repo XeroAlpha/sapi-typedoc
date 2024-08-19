@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '../index';
 
 /**
- * @rc
  * Contains information regarding an explosion that has
  * occurred for a specific block.
  */

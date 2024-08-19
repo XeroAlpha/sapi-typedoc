@@ -350,6 +350,8 @@ export declare enum MinecraftItemTypes {
     Bucket = "minecraft:bucket",
     /** 紫水晶母岩。 */
     BuddingAmethyst = "minecraft:budding_amethyst",
+    /** 收纳袋。 */
+    Bundle = "minecraft:bundle",
     /** 烈焰纹样陶片。 */
     BurnPotterySherd = "minecraft:burn_pottery_sherd",
     /** 仙人掌。 */

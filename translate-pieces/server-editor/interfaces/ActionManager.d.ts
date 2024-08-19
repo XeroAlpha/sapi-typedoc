@@ -8,12 +8,6 @@
 export interface ActionManager {
     /**
      * @remarks
-     * The active tool ID
-     *
-     */
-    activeToolId: string | undefined;
-    /**
-     * @remarks
      * Creates an action and registers it on the client
      *
      * @param rawAction

@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, Entity } from '../index';
 
 /**
- * @rc
  * Contains information regarding an entity stepping onto a
  * specific block.
  */

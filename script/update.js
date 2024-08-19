@@ -44,11 +44,7 @@ async function main() {
     }
 
     // 获取 @minecraft 组织下的包
-    const scopedPackages = JSON.parse(
-        execSync('npm search --json @minecraft', {
-            cwd: originalPath
-        })
-    );
+    const scopedPackages = JSON.parse(execSync('npm search --json @minecraft'));
     const onlinePackageNames = scopedPackages
         .map((package) => package.name)
         .filter((packageName) => !excludedPackages.includes(packageName));

@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemStack, Player } from '../index';
 
 /**
- * @rc
  * Contains information regarding the use of an item.
  */
 export class ItemComponentUseEvent {

@@ -7,16 +7,8 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
-    /**
-     * @remarks
-     * The id of the selected tool in container.
-     *
-     */
-    readonly selectedOptionId?: string;
     addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
-    dispose(): void;
-    hide(): void;
+    getSelectedToolId(): string | undefined;
     removeTool(id: string): void;
-    setSelectedOptionId(value: string | undefined, update?: boolean): void;
-    show(): void;
+    setSelectedToolId(id: string | undefined): void;
 }

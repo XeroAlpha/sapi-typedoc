@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation } from '../index';
 
 /**
- * @rc
  * Contains information regarding a specific block that was
  * placed.
  */

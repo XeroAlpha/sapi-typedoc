@@ -415,6 +415,7 @@ export { EnchantmentLevelOutOfBoundsError } from './classes/EnchantmentLevelOutO
 export { EnchantmentTypeNotCompatibleError } from './classes/EnchantmentTypeNotCompatibleError';
 export { EnchantmentTypeUnknownIdError } from './classes/EnchantmentTypeUnknownIdError';
 export { InvalidContainerSlotError } from './classes/InvalidContainerSlotError';
+export { InvalidIteratorError } from './classes/InvalidIteratorError';
 export { InvalidStructureError } from './classes/InvalidStructureError';
 export { ItemCustomComponentAlreadyRegisteredError } from './classes/ItemCustomComponentAlreadyRegisteredError';
 export { ItemCustomComponentReloadNewComponentError } from './classes/ItemCustomComponentReloadNewComponentError';
