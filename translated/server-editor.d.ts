@@ -198,11 +198,6 @@ export enum EditorMode {
     Tool = 'Tool',
 }
 
-export declare enum EditorStatusBarAlignment {
-    Right = 0,
-    Left = 1,
-}
-
 export enum EntityOperationType {
     Create = 0,
     Delete = 1,
@@ -970,20 +965,77 @@ export enum SplineType {
     Line = 'Line',
 }
 
+/**
+ * Position for items on the status bar
+ */
+export declare enum StatusBarAlignment {
+    Right = 0,
+    Left = 1,
+}
+
 export enum ThemeSettingsColorKey {
+    Caret = 'Caret',
+    Confirm1 = 'Confirm1',
+    Confirm2 = 'Confirm2',
+    Confirm3 = 'Confirm3',
+    ConfirmFill = 'ConfirmFill',
     ControlsGeneralFill = 'ControlsGeneralFill',
     ControlsGeneralHighlight = 'ControlsGeneralHighlight',
+    Coordinate1 = 'Coordinate1',
+    Coordinate2 = 'Coordinate2',
+    Coordinate3 = 'Coordinate3',
     CoordinateControlX = 'CoordinateControlX',
     CoordinateControlY = 'CoordinateControlY',
     CoordinateControlZ = 'CoordinateControlZ',
     CursorVolumeBorder = 'CursorVolumeBorder',
     CursorVolumeFill = 'CursorVolumeFill',
+    Destroy1 = 'Destroy1',
+    Destroy2 = 'Destroy2',
+    Destroy3 = 'Destroy3',
+    DestroyFill = 'DestroyFill',
+    DisableBackground = 'DisableBackground',
+    DisableFill = 'DisableFill',
+    DisableOutline = 'DisableOutline',
+    DisableText = 'DisableText',
+    DropDown1 = 'DropDown1',
+    DropDown2 = 'DropDown2',
+    DropDown3 = 'DropDown3',
+    ElementBorder = 'ElementBorder',
+    Error = 'Error',
+    FocusOutline = 'FocusOutline',
+    HeaderBackground = 'HeaderBackground',
+    HotbarOutline = 'HotbarOutline',
+    Info1 = 'Info1',
+    Info2 = 'Info2',
+    Info3 = 'Info3',
+    InfoFill = 'InfoFill',
+    PanelBackground = 'PanelBackground',
+    PanelBorder = 'PanelBorder',
     PlacementVolumeBorder = 'PlacementVolumeBorder',
     PlacementVolumeFill = 'PlacementVolumeFill',
     PrefillVolumeBorder = 'PrefillVolumeBorder',
     PrefillVolumeFill = 'PrefillVolumeFill',
+    PrimaryActive = 'PrimaryActive',
+    PrimaryBackground1 = 'PrimaryBackground1',
+    PrimaryBackground2 = 'PrimaryBackground2',
+    PrimaryBackground3 = 'PrimaryBackground3',
+    PrimaryBackground4 = 'PrimaryBackground4',
+    PrimaryDefault = 'PrimaryDefault',
+    PrimaryDisable = 'PrimaryDisable',
+    PrimaryMute = 'PrimaryMute',
+    ScrollBar = 'ScrollBar',
+    SecondaryActive = 'SecondaryActive',
+    SecondaryBackground1 = 'SecondaryBackground1',
+    SecondaryBackground2 = 'SecondaryBackground2',
+    SecondaryBackground3 = 'SecondaryBackground3',
+    SecondaryDefault = 'SecondaryDefault',
+    SecondaryDisable = 'SecondaryDisable',
+    SecondaryMute = 'SecondaryMute',
     SelectionVolumeBorder = 'SelectionVolumeBorder',
     SelectionVolumeFill = 'SelectionVolumeFill',
+    TitleBarBackground = 'TitleBarBackground',
+    ViewportOutline = 'ViewportOutline',
+    Warning = 'Warning',
 }
 
 export enum WidgetComponentType {
@@ -1077,12 +1129,12 @@ export type IObservableProp<T> = IObservable<T> | T;
  * of the UI object.
  */
 export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
-    createStatusBarItem(alignment: EditorStatusBarAlignment, size: number): IStatusBarItem;
     createPropertyPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
     readonly menuBar: IMenuContainer;
     readonly actionBar: IActionBar;
+    readonly statusBar: IStatusBar;
     readonly toolRail: IModalToolContainer;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
@@ -1694,7 +1746,7 @@ export class ClipboardManager {
 
 export class CurrentThemeChangeAfterEvent {
     private constructor();
-    readonly name: string;
+    readonly id: string;
 }
 
 export class CurrentThemeChangeAfterEventSignal {
@@ -1716,7 +1768,7 @@ export class CurrentThemeChangeAfterEventSignal {
 export class CurrentThemeColorChangeAfterEvent {
     private constructor();
     readonly color: minecraftserver.RGBA;
-    readonly colorKey: ThemeSettingsColorKey;
+    readonly colorKey: string;
 }
 
 export class CurrentThemeColorChangeAfterEventSignal {
@@ -2841,8 +2893,8 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    addNewTheme(name: string): void;
-    canThemeBeModified(name: string): boolean;
+    addNewTheme(id: string): void;
+    canThemeBeModified(id: string): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2851,7 +2903,7 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    deleteTheme(name: string): void;
+    deleteTheme(id: string): void;
     getCurrentTheme(): string;
     getThemeList(): string[];
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
@@ -2863,7 +2915,7 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    setCurrentTheme(name: string): void;
+    setCurrentTheme(id: string): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -2872,7 +2924,7 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    updateThemeColor(name: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
+    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
 
 /**
@@ -6082,13 +6134,7 @@ export interface ISimpleToolStatusBarOptions {
      * status bar container
      *
      */
-    alignment: EditorStatusBarAlignment;
-    /**
-     * @remarks
-     * The text for the status bar item
-     *
-     */
-    displayAltText: string;
+    alignment: StatusBarAlignment;
     onFinalize?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onHide?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onShow?: (statusBar: ISimpleToolStatusBarComponent) => void;
@@ -6102,11 +6148,39 @@ export interface ISimpleToolStatusBarOptions {
     size: number;
     /**
      * @remarks
+     * The text for the status bar item
+     *
+     */
+    text: LocalizedString;
+    /**
+     * @remarks
      * Determine the status bar visibility based on the existence
      * and visibility of the tool's root property pane
      *
      */
     visibility?: SimpleToolStatusBarVisibility;
+}
+
+/**
+ * Manager and container for IStatusBarItem objects
+ */
+export interface IStatusBar {
+    /**
+     * @remarks
+     * Create a item in status bar
+     *
+     * @param props
+     * Properties to create status bar item
+     */
+    createItem(props: IStatusBarItemCreationParams): IStatusBarItem;
+    /**
+     * @remarks
+     * Remove an existing status bar item
+     *
+     * @param id
+     * Status bar item identifier
+     */
+    removeItem(id: string): void;
 }
 
 export interface IStatusBarItem {
@@ -6116,14 +6190,50 @@ export interface IStatusBarItem {
      *
      */
     readonly id: string;
+    getText(): LocalizedString;
+    hide(): void;
+    setText(text: LocalizedString): void;
+    show(): void;
+}
+
+/**
+ * Properties required to create a status bar item
+ */
+export interface IStatusBarItemCreationParams {
     /**
      * @remarks
-     * Text to display.
+     * Alignment of item within status bar. If undefined, it will
+     * be left aligned.
      *
      */
-    text: string;
-    hide(): void;
-    show(): void;
+    alignment?: StatusBarAlignment;
+    /**
+     * @remarks
+     * Optional icon image resource of the item.
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
+     * Size of the status bar item. If undefined, it will wrap text
+     * content.
+     *
+     */
+    size?: number;
+    /**
+     * @remarks
+     * Default localized display text of the item. If undefined, it
+     * will be empty string.
+     *
+     */
+    text?: LocalizedString;
+    /**
+     * @remarks
+     * Default visibility of the item. If undefined, it will be
+     * true.
+     *
+     */
+    visible?: boolean;
 }
 
 /**

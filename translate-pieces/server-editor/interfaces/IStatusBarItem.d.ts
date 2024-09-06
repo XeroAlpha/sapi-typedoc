@@ -1,3 +1,5 @@
+/* IMPORT */ import { LocalizedString } from '../index';
+
 export interface IStatusBarItem {
     /**
      * @remarks
@@ -5,12 +7,8 @@ export interface IStatusBarItem {
      *
      */
     readonly id: string;
-    /**
-     * @remarks
-     * Text to display.
-     *
-     */
-    text: string;
+    getText(): LocalizedString;
     hide(): void;
+    setText(text: LocalizedString): void;
     show(): void;
 }

@@ -16,6 +16,10 @@ export enum ItemComponentTypes {
      */
     Durability = 'minecraft:durability',
     /**
+     * @beta
+     */
+    Dyeable = 'minecraft:dyeable',
+    /**
      * @remarks
      * The minecraft:enchantable component.
      *

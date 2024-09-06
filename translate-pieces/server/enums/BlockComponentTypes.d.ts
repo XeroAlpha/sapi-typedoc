@@ -4,6 +4,10 @@
  */
 export enum BlockComponentTypes {
     /**
+     * @beta
+     */
+    FluidContainer = 'minecraft:fluidContainer',
+    /**
      * @remarks
      * Represents the inventory of a block in the world. Used with
      * blocks like chests.
@@ -11,28 +15,12 @@ export enum BlockComponentTypes {
      */
     Inventory = 'minecraft:inventory',
     /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * lava.
-     *
-     */
-    LavaContainer = 'minecraft:lavaContainer',
-    /**
      * @remarks
      * When present, this block has piston-like behavior. Contains
      * additional properties for discovering block piston state.
      *
      */
     Piston = 'minecraft:piston',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains a
-     * potion.
-     *
-     */
-    PotionContainer = 'minecraft:potionContainer',
     /**
      * @rc
      * @remarks
@@ -46,20 +34,4 @@ export enum BlockComponentTypes {
      *
      */
     Sign = 'minecraft:sign',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * snow.
-     *
-     */
-    SnowContainer = 'minecraft:snowContainer',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * water.
-     *
-     */
-    WaterContainer = 'minecraft:waterContainer',
 }

@@ -8,7 +8,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.15.0-beta"
+ *   "version": "1.16.0-beta"
  * }
  * ```
  *
