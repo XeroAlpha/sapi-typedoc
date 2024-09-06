@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.15.0-beta"
+ *   "version": "1.16.0-beta"
  * }
  * ```
  *
@@ -30,6 +30,10 @@ import * as minecraftcommon from '@minecraft/common';
  */
 export enum BlockComponentTypes {
     /**
+     * @beta
+     */
+    FluidContainer = 'minecraft:fluidContainer',
+    /**
      * @remarks
      * Represents the inventory of a block in the world. Used with
      * blocks like chests.
@@ -37,28 +41,12 @@ export enum BlockComponentTypes {
      */
     Inventory = 'minecraft:inventory',
     /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * lava.
-     *
-     */
-    LavaContainer = 'minecraft:lavaContainer',
-    /**
      * @remarks
      * When present, this block has piston-like behavior. Contains
      * additional properties for discovering block piston state.
      *
      */
     Piston = 'minecraft:piston',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains a
-     * potion.
-     *
-     */
-    PotionContainer = 'minecraft:potionContainer',
     /**
      * @rc
      * @remarks
@@ -72,22 +60,6 @@ export enum BlockComponentTypes {
      *
      */
     Sign = 'minecraft:sign',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * snow.
-     *
-     */
-    SnowContainer = 'minecraft:snowContainer',
-    /**
-     * @beta
-     * @remarks
-     * Represents a fluid container block that currently contains
-     * water.
-     *
-     */
-    WaterContainer = 'minecraft:waterContainer',
 }
 
 /**
@@ -121,7 +93,7 @@ export enum BlockPistonState {
 }
 
 /**
- * @beta
+ * @rc
  * Description of the resulting intersection test on two
  * BlockVolume objects
  */
@@ -500,7 +472,7 @@ export enum EntityComponentTypes {
      */
     Ageable = 'minecraft:ageable',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Defines what blocks this entity can breathe in and gives
      * them the ability to suffocate.
@@ -1684,6 +1656,10 @@ export enum ItemComponentTypes {
      */
     Durability = 'minecraft:durability',
     /**
+     * @beta
+     */
+    Dyeable = 'minecraft:dyeable',
+    /**
      * @remarks
      * The minecraft:enchantable component.
      *
@@ -2216,22 +2192,16 @@ export enum WeatherType {
  * @beta
  */
 export type BlockComponentTypeMap = {
+    fluidContainer: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
-    lavaContainer: BlockLavaContainerComponent;
+    'minecraft:fluidContainer': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
-    'minecraft:lavaContainer': BlockLavaContainerComponent;
     'minecraft:piston': BlockPistonComponent;
-    'minecraft:potionContainer': BlockPotionContainerComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:sign': BlockSignComponent;
-    'minecraft:snowContainer': BlockSnowContainerComponent;
-    'minecraft:waterContainer': BlockWaterContainerComponent;
     piston: BlockPistonComponent;
-    potionContainer: BlockPotionContainerComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
-    snowContainer: BlockSnowContainerComponent;
-    waterContainer: BlockWaterContainerComponent;
 };
 
 /**
@@ -2378,10 +2348,12 @@ export type EntityComponentTypeMap = {
 export type ItemComponentTypeMap = {
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
+    dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     'minecraft:cooldown': ItemCooldownComponent;
     'minecraft:durability': ItemDurabilityComponent;
+    'minecraft:dyeable': ItemDyeableComponent;
     'minecraft:enchantable': ItemEnchantableComponent;
     'minecraft:food': ItemFoodComponent;
     'minecraft:potion': ItemPotionComponent;
@@ -3310,6 +3282,63 @@ export class BlockExplodeAfterEventSignal {
 }
 
 /**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockFluidContainerComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    fillLevel: number;
+    /**
+     * @remarks
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    fluidColor: RGBA;
+    static readonly componentId = 'minecraft:fluidContainer';
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    addDye(dye: ItemType): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getFluidType(): FluidType;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setFluidType(fluidType: FluidType): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setPotion(itemStack: ItemStack): void;
+}
+
+/**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  * @example place_items_in_chest.js
@@ -3345,49 +3374,7 @@ export class BlockInventoryComponent extends BlockComponent {
 }
 
 /**
- * @beta
- * Represents a fluid container block that currently contains
- * lava.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockLavaContainerComponent extends BlockLiquidContainerComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:lavaContainer';
-}
-
-/**
- * @beta
- * For blocks that can contain a liquid (e.g., a cauldron),
- * this is a base component for liquid containers.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockLiquidContainerComponent extends BlockComponent {
-    private constructor();
-    /**
-     * @remarks
-     * Relative fill level of the liquid container.
-     *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
-     *
-     */
-    fillLevel: number;
-    /**
-     * @remarks
-     * Returns true if this reference to a liquid container is
-     * still valid and contains the liquid of the type you have a
-     * reference for (for example, if the block is unloaded, no
-     * longer a liquid container or contains lava when you have a
-     * potion container component, isValidLiquid will not be true.)
-     *
-     * @returns
-     * True if this liquid container still exists, is valid and
-     * contains the expected liquid type.
-     */
-    isValidLiquid(): boolean;
-}
-
-/**
- * @beta
+ * @rc
  * A BlockLocationIterator returns the next block location of
  * the block volume across which it is iterating.
  * The BlockLocationIterator is used to abstract the shape of
@@ -3631,26 +3618,6 @@ export class BlockPistonComponent extends BlockComponent {
      * @throws This function can throw errors.
      */
     getAttachedBlocksLocations(): Vector3[];
-}
-
-/**
- * @beta
- * Represents a fluid container block that currently contains a
- * potion.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockPotionContainerComponent extends BlockLiquidContainerComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:potionContainer';
-    /**
-     * @remarks
-     * Sets the potion type based on an item stack.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @throws This function can throw errors.
-     */
-    setPotionType(itemStack: ItemStack): void;
 }
 
 /**
@@ -3948,17 +3915,6 @@ export class BlockSignComponent extends BlockComponent {
 }
 
 /**
- * @beta
- * Represents a fluid container block that currently contains
- * snow.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:snowContainer';
-}
-
-/**
  * Enumerates all {@link BlockStateType}s.
  */
 export class BlockStates {
@@ -4051,7 +4007,7 @@ export class BlockTypes {
 }
 
 /**
- * @beta
+ * @rc
  * A BlockVolume is a simple interface to an object which
  * represents a 3D rectangle of a given size (in blocks) at a
  * world block location.
@@ -4150,7 +4106,7 @@ export class BlockVolume extends BlockVolumeBase {
 export class BlockVolumeBase {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume
@@ -4226,44 +4182,6 @@ export class BlockVolumeBase {
      * Amount of blocks to move by
      */
     translate(delta: Vector3): void;
-}
-
-/**
- * @beta
- * Represents a fluid container block that currently contains
- * water.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockWaterContainerComponent extends BlockLiquidContainerComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:waterContainer';
-    /**
-     * @remarks
-     * Adds an item and colors the water based on a dye item type.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @throws This function can throw errors.
-     */
-    addDye(itemType: ItemType): void;
-    /**
-     * @remarks
-     * Retrieves a custom base color used for the sign text.
-     *
-     * @returns
-     * Color that is used as the base color for sign text.
-     * @throws This function can throw errors.
-     */
-    getCustomColor(): RGBA;
-    /**
-     * @remarks
-     * Sets a custom base color used for the sign text.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @throws This function can throw errors.
-     */
-    setCustomColor(color: RGBA): void;
 }
 
 /**
@@ -7609,7 +7527,7 @@ export class EntityBaseMovementComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Defines what blocks this entity can breathe in and gives
  * them the ability to suffocate.
  */
@@ -7617,6 +7535,7 @@ export class EntityBaseMovementComponent extends EntityComponent {
 export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     /**
+     * @beta
      * @remarks
      * The current air supply of the entity.
      *
@@ -7656,6 +7575,7 @@ export class EntityBreathableComponent extends EntityComponent {
      */
     readonly breathesWater: boolean;
     /**
+     * @beta
      * @remarks
      * If true, the entity is able to breathe.
      *
@@ -10996,6 +10916,33 @@ export class ItemDurabilityComponent extends ItemComponent {
      * @throws This function can throw errors.
      */
     getDamageChanceRange(): minecraftcommon.NumberRange;
+}
+
+/**
+ * @beta
+ * When present on an item, this item can be dyed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemDyeableComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Sets and returns the current color of the item.
+     *
+     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    color?: RGB;
+    /**
+     * @remarks
+     * Returns the default color of the item.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly defaultColor?: RGB;
+    static readonly componentId = 'minecraft:dyeable';
 }
 
 /**
@@ -15773,7 +15720,7 @@ export class World {
      */
     readonly gameRules: GameRules;
     /**
-     * @beta
+     * @rc
      */
     readonly isHardcore: boolean;
     /**
@@ -18797,7 +18744,7 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidIteratorError extends Error {

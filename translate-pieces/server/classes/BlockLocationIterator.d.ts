@@ -1,7 +1,7 @@
 /* IMPORT */ import { Vector3 } from '../index';
 
 /**
- * @beta
+ * @rc
  * A BlockLocationIterator returns the next block location of
  * the block volume across which it is iterating.
  * The BlockLocationIterator is used to abstract the shape of

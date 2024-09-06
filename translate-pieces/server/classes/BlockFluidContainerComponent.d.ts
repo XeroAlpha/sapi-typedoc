@@ -1,17 +1,24 @@
-/* IMPORT */ import { ThemeSettingsColorKey, minecraftserver } from '../index';
+/* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from '../index';
 
-export class ThemeSettings {
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockFluidContainerComponent extends BlockComponent {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * This property can't be edited in read-only mode.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
-    addNewTheme(id: string): void;
-    canThemeBeModified(id: string): boolean;
+    fillLevel: number;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    fluidColor: RGBA;
+    static readonly componentId = 'minecraft:fluidContainer';
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -20,10 +27,7 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    deleteTheme(id: string): void;
-    getCurrentTheme(): string;
-    getThemeList(): string[];
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
+    addDye(dye: ItemType): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -32,7 +36,7 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    setCurrentTheme(id: string): void;
+    getFluidType(): FluidType;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -41,5 +45,14 @@ export class ThemeSettings {
      *
      * {@link Error}
      */
-    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
+    setFluidType(fluidType: FluidType): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    setPotion(itemStack: ItemStack): void;
 }

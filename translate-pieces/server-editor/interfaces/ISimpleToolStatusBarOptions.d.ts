@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorStatusBarAlignment, ISimpleToolStatusBarComponent, SimpleToolStatusBarVisibility } from '../index';
+/* IMPORT */ import { ISimpleToolStatusBarComponent, LocalizedString, SimpleToolStatusBarVisibility, StatusBarAlignment } from '../index';
 
 /**
  * A set of options which define the basic properties of a
@@ -11,13 +11,7 @@ export interface ISimpleToolStatusBarOptions {
      * status bar container
      *
      */
-    alignment: EditorStatusBarAlignment;
-    /**
-     * @remarks
-     * The text for the status bar item
-     *
-     */
-    displayAltText: string;
+    alignment: StatusBarAlignment;
     onFinalize?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onHide?: (statusBar: ISimpleToolStatusBarComponent) => void;
     onShow?: (statusBar: ISimpleToolStatusBarComponent) => void;
@@ -29,6 +23,12 @@ export interface ISimpleToolStatusBarOptions {
      *
      */
     size: number;
+    /**
+     * @remarks
+     * The text for the status bar item
+     *
+     */
+    text: LocalizedString;
     /**
      * @remarks
      * Determine the status bar visibility based on the existence

@@ -568,6 +568,8 @@ export declare enum MinecraftItemTypes {
     CraftingTable = "minecraft:crafting_table",
     /** 苦力怕盾徽旗帜图案。 */
     CreeperBannerPattern = "minecraft:creeper_banner_pattern",
+    /** 苦力怕的头。 */
+    CreeperHead = "minecraft:creeper_head",
     /** 苦力怕刷怪蛋。 */
     CreeperSpawnEgg = "minecraft:creeper_spawn_egg",
     /** 绯红木按钮。 */
@@ -812,6 +814,8 @@ export declare enum MinecraftItemTypes {
     DragonBreath = "minecraft:dragon_breath",
     /** 龙蛋。 */
     DragonEgg = "minecraft:dragon_egg",
+    /** 龙首。 */
+    DragonHead = "minecraft:dragon_head",
     /** 干海带。 */
     DriedKelp = "minecraft:dried_kelp",
     /** 干海带块。 */
@@ -1506,6 +1510,8 @@ export declare enum MinecraftItemTypes {
     MuddyMangroveRoots = "minecraft:muddy_mangrove_roots",
     /** 骡刷怪蛋。 */
     MuleSpawnEgg = "minecraft:mule_spawn_egg",
+    /** 蘑菇柄。 */
+    MushroomStem = "minecraft:mushroom_stem",
     /** 蘑菇煲。 */
     MushroomStew = "minecraft:mushroom_stew",
     /** 音乐唱片 C418 - 11。 */
@@ -1718,6 +1724,8 @@ export declare enum MinecraftItemTypes {
     PiglinBannerPattern = "minecraft:piglin_banner_pattern",
     /** 猪灵蛮兵刷怪蛋。 */
     PiglinBruteSpawnEgg = "minecraft:piglin_brute_spawn_egg",
+    /** 猪灵的头。 */
+    PiglinHead = "minecraft:piglin_head",
     /** 猪灵刷怪蛋。 */
     PiglinSpawnEgg = "minecraft:piglin_spawn_egg",
     /** 掠夺者刷怪蛋。 */
@@ -1754,6 +1762,8 @@ export declare enum MinecraftItemTypes {
     PitcherPlant = "minecraft:pitcher_plant",
     /** 瓶子草荚果。 */
     PitcherPod = "minecraft:pitcher_pod",
+    /** 玩家的头。 */
+    PlayerHead = "minecraft:player_head",
     /** 富饶纹样陶片。 */
     PlentyPotterySherd = "minecraft:plenty_pottery_sherd",
     /** 灰化土。 */
@@ -2076,10 +2086,10 @@ export declare enum MinecraftItemTypes {
     SilverfishSpawnEgg = "minecraft:silverfish_spawn_egg",
     /** 骷髅马刷怪蛋。 */
     SkeletonHorseSpawnEgg = "minecraft:skeleton_horse_spawn_egg",
+    /** 骷髅头颅。 */
+    SkeletonSkull = "minecraft:skeleton_skull",
     /** 骷髅刷怪蛋。 */
     SkeletonSpawnEgg = "minecraft:skeleton_spawn_egg",
-    /** 生物头颅。 */
-    Skull = "minecraft:skull",
     /** 头颅盾徽旗帜图案。 */
     SkullBannerPattern = "minecraft:skull_banner_pattern",
     /** 头颅纹样陶片。 */
@@ -2568,6 +2578,8 @@ export declare enum MinecraftItemTypes {
     WitchSpawnEgg = "minecraft:witch_spawn_egg",
     /** 凋灵玫瑰。 */
     WitherRose = "minecraft:wither_rose",
+    /** 凋灵骷髅头颅。 */
+    WitherSkeletonSkull = "minecraft:wither_skeleton_skull",
     /** 凋灵骷髅刷怪蛋。 */
     WitherSkeletonSpawnEgg = "minecraft:wither_skeleton_spawn_egg",
     /** 凋灵刷怪蛋。 */
@@ -2618,6 +2630,8 @@ export declare enum MinecraftItemTypes {
     YellowWool = "minecraft:yellow_wool",
     /** 僵尸疣猪兽刷怪蛋。 */
     ZoglinSpawnEgg = "minecraft:zoglin_spawn_egg",
+    /** 僵尸的头。 */
+    ZombieHead = "minecraft:zombie_head",
     /** 僵尸马刷怪蛋。 */
     ZombieHorseSpawnEgg = "minecraft:zombie_horse_spawn_egg",
     /** 僵尸猪灵刷怪蛋。 */

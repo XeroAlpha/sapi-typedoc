@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockPermutation, EntityComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Defines what blocks this entity can breathe in and gives
  * them the ability to suffocate.
  */
@@ -9,6 +9,7 @@
 export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     /**
+     * @beta
      * @remarks
      * The current air supply of the entity.
      *
@@ -48,6 +49,7 @@ export class EntityBreathableComponent extends EntityComponent {
      */
     readonly breathesWater: boolean;
     /**
+     * @beta
      * @remarks
      * If true, the entity is able to breathe.
      *

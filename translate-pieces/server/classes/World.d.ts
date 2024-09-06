@@ -31,7 +31,7 @@ export class World {
      */
     readonly gameRules: GameRules;
     /**
-     * @beta
+     * @rc
      */
     readonly isHardcore: boolean;
     /**
