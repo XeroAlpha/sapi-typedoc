@@ -12,6 +12,8 @@ export class ScriptEventCommandMessageAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: ScriptEventCommandMessageAfterEvent) => void,
@@ -22,6 +24,8 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * Unsubscribes a particular handler for a ScriptEvent event.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ScriptEventCommandMessageAfterEvent) => void): void;

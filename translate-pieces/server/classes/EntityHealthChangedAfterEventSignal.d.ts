@@ -13,6 +13,8 @@ export class EntityHealthChangedAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHealthChangedAfterEvent) => void,
@@ -24,6 +26,8 @@ export class EntityHealthChangedAfterEventSignal {
      * entity changes.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;

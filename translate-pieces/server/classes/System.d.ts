@@ -1,4 +1,4 @@
-/* IMPORT */ import { SystemAfterEvents, SystemBeforeEvents, minecraftcommon } from '../index';
+/* IMPORT */ import { SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
 
 /**
  * A class that provides system-level events and functions.
@@ -27,9 +27,21 @@ export class System {
      */
     readonly currentTick: number;
     /**
+     * @beta
+     * @remarks
+     * Contains the device information for the server.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly serverSystemInfo: SystemInfo;
+    /**
      * @remarks
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param jobId
      * The job ID returned from {@link System.runJob}.
@@ -39,6 +51,8 @@ export class System {
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via {@link System.run}.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     clearRun(runId: number): void;
@@ -52,6 +66,8 @@ export class System {
      * system.run callout), this will run the function in the next
      * tick. Note, however, that depending on load on the system,
      * running in the same or next tick is not guaranteed.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param callback
      * Function callback to run at the next game tick.
@@ -83,6 +99,8 @@ export class System {
      * @remarks
      * Runs a set of code on an interval.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Functional code that will run when this interval occurs.
      * @param tickInterval
@@ -108,6 +126,8 @@ export class System {
      * Queues a generator to run until completion.  The generator
      * will be given a time slice each tick, and will be run until
      * it yields or completes.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param generator
      * The instance of the generator to run.
@@ -150,6 +170,8 @@ export class System {
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Functional code that will run when this timeout occurs.
      * @param tickDelay
@@ -161,6 +183,9 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
+     * @remarks
+     * This function can be called in early-execution mode.
+     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}

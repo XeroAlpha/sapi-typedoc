@@ -1,7 +1,6 @@
 /* IMPORT */ import { RegistrationBuilder, Test } from '../index';
 
 /**
- * @beta
  * @remarks
  * Registers a new GameTest function. This GameTest will become
  * available in Minecraft via /gametest run

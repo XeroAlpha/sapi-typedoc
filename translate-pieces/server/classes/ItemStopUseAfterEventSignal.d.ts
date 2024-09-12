@@ -14,6 +14,8 @@ export class ItemStopUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
     /**
@@ -22,6 +24,8 @@ export class ItemStopUseAfterEventSignal {
      * stops charging.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;

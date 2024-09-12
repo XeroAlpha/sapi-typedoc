@@ -12,6 +12,8 @@ export class WeatherChangeBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WeatherChangeBeforeEvent) => void): (arg: WeatherChangeBeforeEvent) => void;
     /**
@@ -19,6 +21,8 @@ export class WeatherChangeBeforeEventSignal {
      * Removes a callback from being called before weather changes.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WeatherChangeBeforeEvent) => void): void;

@@ -1,7 +1,6 @@
 /* IMPORT */ import { RegistrationBuilder, Test } from '../index';
 
 /**
- * @beta
  * @remarks
  * Registers a new GameTest function that is designed for
  * asynchronous execution. This GameTest will become available

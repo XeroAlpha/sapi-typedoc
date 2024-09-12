@@ -16,6 +16,8 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
     /**
@@ -25,6 +27,8 @@ export class WatchdogTerminateBeforeEventSignal {
      * watchdog system.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;

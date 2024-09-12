@@ -9,10 +9,10 @@
     "lint-script": "eslint --fix script"
   },
   "dependencies": {
-    "ts-morph": "^22.0.0",
-    "typedoc": "^0.25.12",
-    "typedoc-plugin-mdn-links": "^3.1.18",
-    "typescript": "^5.4.3"
+    "ts-morph": "^23.0.0",
+    "typedoc": "^0.26.7",
+    "typedoc-plugin-mdn-links": "^3.2.12",
+    "typescript": "^5.6.2"
   },
   "devDependencies": {
     "eslint": "^8.52.0",

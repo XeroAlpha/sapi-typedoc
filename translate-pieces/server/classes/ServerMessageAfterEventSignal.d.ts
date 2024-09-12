@@ -15,6 +15,8 @@ export class ServerMessageAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
     /**
@@ -23,6 +25,8 @@ export class ServerMessageAfterEventSignal {
      * message is passed.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;

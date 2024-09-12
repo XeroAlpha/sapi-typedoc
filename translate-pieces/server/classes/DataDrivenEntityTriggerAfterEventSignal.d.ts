@@ -14,6 +14,8 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: DataDrivenEntityTriggerAfterEvent) => void,
@@ -25,6 +27,8 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * entity event is triggered.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;

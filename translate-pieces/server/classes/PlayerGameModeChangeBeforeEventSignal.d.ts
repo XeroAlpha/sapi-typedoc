@@ -13,6 +13,8 @@ export class PlayerGameModeChangeBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class PlayerGameModeChangeBeforeEventSignal {
      * mode is changed.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;

@@ -24,9 +24,6 @@
  */
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
-/**
- * @beta
- */
 export enum GameTestErrorType {
     Assert = 'Assert',
     AssertAtPosition = 'AssertAtPosition',
@@ -40,9 +37,6 @@ export enum GameTestErrorType {
     Waiting = 'Waiting',
 }
 
-/**
- * @beta
- */
 export enum LookDuration {
     Continuous = 'Continuous',
     Instant = 'Instant',
@@ -50,7 +44,6 @@ export enum LookDuration {
 }
 
 /**
- * @beta
  * Returns information about whether this fence is connected to
  * other fences in several directions.
  */
@@ -87,7 +80,6 @@ export class FenceConnectivity {
 }
 
 /**
- * @beta
  * Executes a set of steps defined via chained .thenXyz
  * methods, sequentially. This facilitates a 'script' of
  * GameTest setup methods and assertions over time.
@@ -211,9 +203,6 @@ export class GameTestSequence {
     thenWaitAfter(delayTicks: number, callback: () => void): GameTestSequence;
 }
 
-/**
- * @beta
- */
 export class NavigationResult {
     private constructor();
     readonly isFullPath: boolean;
@@ -221,7 +210,6 @@ export class NavigationResult {
 }
 
 /**
- * @beta
  * A utility class to set GameTest parameters for a test.
  * Methods can be chained together to set multiple properties.
  */
@@ -355,7 +343,6 @@ export class RegistrationBuilder {
 }
 
 /**
- * @beta
  * Implements a class that can be used for testing sculk
  * spreading behaviors. This sculk spreader class can drive the
  * growth of sculk around a particular block.
@@ -421,7 +408,6 @@ export class SculkSpreader {
 export class SimulatedPlayer extends minecraftserver.Player {
     private constructor();
     /**
-     * @beta
      * @remarks
      * Rotation of the head across pitch and yaw angles.
      *
@@ -429,7 +415,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     readonly headRotation: minecraftserver.Vector2;
     /**
-     * @beta
      * @remarks
      * Returns whether the simulated player is sprinting.
      *
@@ -438,7 +423,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     isSprinting: boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to make an attack 'swipe'.
      * Returns true if the attack was performed - for example, the
@@ -451,7 +435,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     attack(): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to attack the provided target.
      * Returns true if the attack was performed - for example, the
@@ -465,7 +448,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     attackEntity(entity: minecraftserver.Entity): boolean;
     /**
-     * @beta
      * @remarks
      * Destroys the block at blockLocation, respecting the rules of
      * the server player's game mode. The block will be hit until
@@ -482,7 +464,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
-     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -490,7 +471,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     chat(message: string): void;
     /**
-     * @beta
      * @remarks
      * Simulates and performs a disconnection of the simulated
      * player from the world.
@@ -501,7 +481,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     disconnect(): void;
     /**
-     * @beta
      * @remarks
      * Drops the simulated player's selected item
      *
@@ -511,7 +490,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     dropSelectedItem(): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to start flying as though they
      * were flying in creative mode. For flying with Elytra, see
@@ -523,7 +501,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     fly(): void;
     /**
-     * @beta
      * @remarks
      * Gives the simulated player a particular item stack.
      *
@@ -537,7 +514,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to start gliding. Elytra must be
      * equipped and the player must be in the air.
@@ -553,7 +529,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     glide(): boolean;
     /**
-     * @beta
      * @remarks
      * Performs a raycast from the player’s head and interacts with
      * the first intersected block or entity. Returns true if the
@@ -565,7 +540,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     interact(): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to interact with a block. The
      * block at the specified block location must be solid. Returns
@@ -581,7 +555,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to interact with a mob. Returns
      * true if the interaction was performed.
@@ -594,7 +567,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     interactWithEntity(entity: minecraftserver.Entity): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to jump.
      *
@@ -606,7 +578,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     jump(): boolean;
     /**
-     * @beta
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given block location.
@@ -617,7 +588,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3, duration?: LookDuration): void;
     /**
-     * @beta
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given entity.
@@ -628,7 +598,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     lookAtEntity(entity: minecraftserver.Entity, duration?: LookDuration): void;
     /**
-     * @beta
      * @remarks
      * Rotates the simulated player's head/body to look at the
      * given location.
@@ -639,7 +608,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     lookAtLocation(location: minecraftserver.Vector3, duration?: LookDuration): void;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the GameTest.
@@ -650,7 +618,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     move(westEast: number, northSouth: number, speed?: number): void;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to walk in the given direction
      * relative to the player's current rotation.
@@ -661,7 +628,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to move to the given block
      * location in a straight line. If a move or navigation is
@@ -674,7 +640,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     moveToBlock(blockLocation: minecraftserver.Vector3, options?: MoveToOptions): void;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to move to the given location in
      * a straight line. If a move or navigation is already playing,
@@ -686,7 +651,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     moveToLocation(location: minecraftserver.Vector3, options?: MoveToOptions): void;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to move to a specific block
      * location using navigation. If a move or navigation is
@@ -701,7 +665,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
-     * @beta
      * @remarks
      * Will use navigation to follow the selected entity to within
      * a one block radius. If a move or navigation is already
@@ -713,7 +676,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
     /**
-     * @beta
      * @remarks
      * Orders the simulated player to move to a specific location
      * using navigation. If a move or navigation is already
@@ -728,7 +690,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
-     * @beta
      * @remarks
      * Use navigation to follow the route provided via the
      * locations parameter. If a move or navigation is already
@@ -744,7 +705,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
     /**
-     * @beta
      * @remarks
      * Respawns the particular simulated player.
      *
@@ -754,7 +714,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     respawn(): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to turn by the provided angle,
      * relative to the player's current rotation.
@@ -765,7 +724,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     rotateBody(angleInDegrees: number): void;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to turn to face the provided
      * angle, relative to the GameTest.
@@ -776,7 +734,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     setBodyRotation(angleInDegrees: number): void;
     /**
-     * @beta
      * @remarks
      * Sets a particular item for the simulated player.
      *
@@ -792,7 +749,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
     /**
-     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -800,7 +756,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     startBuild(slot?: number): void;
     /**
-     * @beta
      * @remarks
      * Stops destroying the block that is currently being hit.
      *
@@ -810,7 +765,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopBreakingBlock(): void;
     /**
-     * @beta
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -818,7 +772,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopBuild(): void;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to stop flying.
      *
@@ -828,7 +781,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopFlying(): void;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to stop gliding.
      *
@@ -838,7 +790,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopGliding(): void;
     /**
-     * @beta
      * @remarks
      * Stops interacting with entities or blocks.
      *
@@ -848,7 +799,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopInteracting(): void;
     /**
-     * @beta
      * @remarks
      * Stops moving/walking/following if the simulated player is
      * moving.
@@ -859,7 +809,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopMoving(): void;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to stop swimming.
      *
@@ -869,7 +818,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopSwimming(): void;
     /**
-     * @beta
      * @remarks
      * Stops using the currently active item.
      *
@@ -882,7 +830,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     stopUsingItem(): minecraftserver.ItemStack | undefined;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to start swimming.
      *
@@ -892,7 +839,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     swim(): void;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to use an item. Does not consume
      * the item. Returns false if the item is on cooldown.
@@ -905,7 +851,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     useItem(itemStack: minecraftserver.ItemStack): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to hold and use an item in their
      * inventory.
@@ -918,7 +863,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
      */
     useItemInSlot(slot: number): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to use an item in their
      * inventory on a block. The block at the specified block
@@ -944,7 +888,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
         faceLocation?: minecraftserver.Vector3,
     ): boolean;
     /**
-     * @beta
      * @remarks
      * Causes the simulated player to use an item on a block. The
      * block at the specified block location must be solid. Returns
@@ -972,7 +915,6 @@ export class SimulatedPlayer extends minecraftserver.Player {
 }
 
 /**
- * @beta
  * These well-known tags can be used to classify different
  * tests into suites to run.
  */
@@ -1010,7 +952,6 @@ export class Tags {
 }
 
 /**
- * @beta
  * Main class for GameTest functions, with helpers and data for
  * manipulating the respective test. Note that all methods of
  * this class expect BlockLocations and Locations relative to
@@ -2281,26 +2222,17 @@ export class Test {
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }
 
-/**
- * @beta
- */
 export interface GameTestErrorContext {
     absolutePosition: minecraftserver.Vector3;
     relativePosition: minecraftserver.Vector3;
     tickCount: number;
 }
 
-/**
- * @beta
- */
 export interface MoveToOptions {
     faceTarget?: boolean;
     speed?: number;
 }
 
-/**
- * @beta
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class GameTestError extends Error {
     private constructor();
@@ -2310,7 +2242,6 @@ export class GameTestError extends Error {
 }
 
 /**
- * @beta
  * @remarks
  * Registers a new GameTest function. This GameTest will become
  * available in Minecraft via /gametest run
@@ -2356,7 +2287,6 @@ export function register(
     testFunction: (arg: Test) => void,
 ): RegistrationBuilder;
 /**
- * @beta
  * @remarks
  * Registers a new GameTest function that is designed for
  * asynchronous execution. This GameTest will become available

@@ -13,6 +13,8 @@ export class PressurePlatePopAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PressurePlatePopAfterEvent) => void): (arg: PressurePlatePopAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class PressurePlatePopAfterEventSignal {
      * is popped.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;

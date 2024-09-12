@@ -13,6 +13,8 @@ export class PlayerPlaceBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerPlaceBlockAfterEvent) => void,
@@ -24,6 +26,8 @@ export class PlayerPlaceBlockAfterEventSignal {
      * by a player.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;

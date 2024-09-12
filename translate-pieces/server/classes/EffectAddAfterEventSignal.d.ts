@@ -13,6 +13,8 @@ export class EffectAddAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EffectAddAfterEvent) => void,
@@ -24,6 +26,8 @@ export class EffectAddAfterEventSignal {
      * to an entity.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;

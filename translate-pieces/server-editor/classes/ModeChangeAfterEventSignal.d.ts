@@ -13,6 +13,8 @@ export class ModeChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class ModeChangeAfterEventSignal {
      * after event.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;

@@ -14,6 +14,8 @@ export class ChatSendBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
     /**
@@ -22,6 +24,8 @@ export class ChatSendBeforeEventSignal {
      * messages are sent.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
