@@ -13,6 +13,8 @@ export class BlockExplodeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: BlockExplodeAfterEvent) => void): (arg: BlockExplodeAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class BlockExplodeAfterEventSignal {
      * occurs, as it impacts individual blocks.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: BlockExplodeAfterEvent) => void): void;

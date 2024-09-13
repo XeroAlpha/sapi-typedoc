@@ -1,5 +1,4 @@
 /**
- * @beta
  * Executes a set of steps defined via chained .thenXyz
  * methods, sequentially. This facilitates a 'script' of
  * GameTest setup methods and assertions over time.

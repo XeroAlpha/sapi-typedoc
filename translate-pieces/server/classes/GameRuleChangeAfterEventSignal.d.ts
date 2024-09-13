@@ -13,6 +13,8 @@ export class GameRuleChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: GameRuleChangeAfterEvent) => void): (arg: GameRuleChangeAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class GameRuleChangeAfterEventSignal {
      * property is changed.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;

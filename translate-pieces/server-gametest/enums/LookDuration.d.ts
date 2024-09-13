@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum LookDuration {
     Continuous = 'Continuous',
     Instant = 'Instant',

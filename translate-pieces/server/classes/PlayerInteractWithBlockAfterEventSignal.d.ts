@@ -13,6 +13,8 @@ export class PlayerInteractWithBlockAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithBlockAfterEvent) => void,
@@ -23,6 +25,8 @@ export class PlayerInteractWithBlockAfterEventSignal {
      * interacts with a block.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;

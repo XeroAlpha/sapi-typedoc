@@ -44,6 +44,8 @@ export class TripWireTripAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
     /**
@@ -52,6 +54,8 @@ export class TripWireTripAfterEventSignal {
      * tripped.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;

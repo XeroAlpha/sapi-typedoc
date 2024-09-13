@@ -13,6 +13,8 @@ export class ProjectileHitEntityAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): (arg: ProjectileHitEntityAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class ProjectileHitEntityAfterEventSignal {
      * an entity.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): void;

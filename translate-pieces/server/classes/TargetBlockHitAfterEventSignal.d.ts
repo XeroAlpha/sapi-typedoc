@@ -13,6 +13,8 @@ export class TargetBlockHitAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class TargetBlockHitAfterEventSignal {
      * hit.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;

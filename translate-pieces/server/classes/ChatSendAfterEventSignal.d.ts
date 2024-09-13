@@ -14,6 +14,8 @@ export class ChatSendAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @example custom_command.js
      * ```typescript
      * const chatCallback = World.beforeEvents.chatSend.subscribe((eventData) => {
@@ -34,6 +36,8 @@ export class ChatSendAfterEventSignal {
      * are sent.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;

@@ -13,6 +13,8 @@ export class EntityLoadAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function that handles the load event.
      */
@@ -23,6 +25,8 @@ export class EntityLoadAfterEventSignal {
      * subscription event.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param callback
      * Original function that was passed into the subscribe event,

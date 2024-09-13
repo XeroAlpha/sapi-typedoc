@@ -14,6 +14,8 @@ export class WorldInitializeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
     /**
@@ -22,6 +24,8 @@ export class WorldInitializeAfterEventSignal {
      * environment is initialized for a World.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;

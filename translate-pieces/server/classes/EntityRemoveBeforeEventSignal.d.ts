@@ -14,6 +14,8 @@ export class EntityRemoveBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function to call.
      * @returns
@@ -27,6 +29,8 @@ export class EntityRemoveBeforeEventSignal {
      * entity is being removed.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;

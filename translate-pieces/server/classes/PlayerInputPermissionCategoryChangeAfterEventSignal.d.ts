@@ -13,6 +13,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void,
@@ -23,6 +25,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      * permissions change.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;

@@ -13,6 +13,8 @@ export class ItemCompleteUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class ItemCompleteUseAfterEventSignal {
      * completes charging.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;

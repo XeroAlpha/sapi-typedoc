@@ -12,6 +12,8 @@ export class EntityHurtAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHurtAfterEvent) => void,
@@ -22,6 +24,8 @@ export class EntityHurtAfterEventSignal {
      * Removes a callback from being called when an entity is hurt.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;

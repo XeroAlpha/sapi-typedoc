@@ -13,6 +13,8 @@ export class ExplosionAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ExplosionAfterEvent) => void): (arg: ExplosionAfterEvent) => void;
     /**
@@ -21,6 +23,8 @@ export class ExplosionAfterEventSignal {
      * occurs.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;

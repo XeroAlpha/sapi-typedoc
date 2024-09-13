@@ -1703,6 +1703,49 @@ export enum ItemLockMode {
 }
 
 /**
+ * @beta
+ * Describes the memory of a device.
+ */
+export enum MemoryTier {
+    /**
+     * @remarks
+     * Memory not detected.
+     *
+     */
+    Undetermined = 0,
+    /**
+     * @remarks
+     * Max memory for Super Low Tier is 1.5GBs.
+     *
+     */
+    SuperLow = 1,
+    /**
+     * @remarks
+     *  Max memory for Low Tier is 2GBs.
+     *
+     */
+    Low = 2,
+    /**
+     * @remarks
+     * Max memory for Mid Tier is 4GBs.
+     *
+     */
+    Mid = 3,
+    /**
+     * @remarks
+     * Max memory for High Tier is 8GBs.
+     *
+     */
+    High = 4,
+    /**
+     * @remarks
+     * Memory for Super High Tier is above 8GBs.
+     *
+     */
+    SuperHigh = 5,
+}
+
+/**
  * Enum containing the different phases of the moon based on
  * the current day.,Obtain the current MoonPhase using
  * world.getMoonPhase.
@@ -3268,6 +3311,8 @@ export class BlockExplodeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: BlockExplodeAfterEvent) => void): (arg: BlockExplodeAfterEvent) => void;
     /**
@@ -3277,24 +3322,32 @@ export class BlockExplodeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     unsubscribe(callback: (arg: BlockExplodeAfterEvent) => void): void;
 }
 
 /**
  * @beta
+ * Represents the fluid container of a block in the world. Used
+ * with blocks like cauldrons.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockFluidContainerComponent extends BlockComponent {
     private constructor();
     /**
      * @remarks
+     * Relative fill level of the fluid container.
+     *
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
     fillLevel: number;
     /**
      * @remarks
+     * Custom color of the fluid in the container.
+     *
      * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
      *
      */
@@ -3302,6 +3355,9 @@ export class BlockFluidContainerComponent extends BlockComponent {
     static readonly componentId = 'minecraft:fluidContainer';
     /**
      * @remarks
+     * Adds a dye to the fluid. The dye color is combined with any
+     * existing custom color.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -3311,6 +3367,8 @@ export class BlockFluidContainerComponent extends BlockComponent {
     addDye(dye: ItemType): void;
     /**
      * @remarks
+     * Gets the current fluid type in the container.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -3320,6 +3378,8 @@ export class BlockFluidContainerComponent extends BlockComponent {
     getFluidType(): FluidType;
     /**
      * @remarks
+     * Sets the current fluid type in the container.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -3329,6 +3389,9 @@ export class BlockFluidContainerComponent extends BlockComponent {
     setFluidType(fluidType: FluidType): void;
     /**
      * @remarks
+     * Sets a potion item in the container. Changes the container's
+     * fluid type to potion.
+     *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      * @throws This function can throw errors.
@@ -4453,6 +4516,8 @@ export class ChatSendAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @example custom_command.js
      * ```typescript
      * const chatCallback = World.beforeEvents.chatSend.subscribe((eventData) => {
@@ -4473,6 +4538,8 @@ export class ChatSendAfterEventSignal {
      * are sent.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;
@@ -4527,6 +4594,8 @@ export class ChatSendBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
     /**
@@ -4536,8 +4605,19 @@ export class ChatSendBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains the device information for a client instance.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ClientSystemInfo extends SystemInfo {
+    private constructor();
 }
 
 /**
@@ -5495,6 +5575,8 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: DataDrivenEntityTriggerAfterEvent) => void,
@@ -5506,6 +5588,8 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * entity event is triggered.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;
@@ -6244,6 +6328,8 @@ export class EffectAddAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EffectAddAfterEvent) => void,
@@ -6255,6 +6341,8 @@ export class EffectAddAfterEventSignal {
      * to an entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
@@ -6305,6 +6393,8 @@ export class EffectAddBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: EffectAddBeforeEvent) => void): (arg: EffectAddBeforeEvent) => void;
     /**
@@ -6313,6 +6403,8 @@ export class EffectAddBeforeEventSignal {
      * to an entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EffectAddBeforeEvent) => void): void;
@@ -7768,6 +7860,8 @@ export class EntityDieAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function to call when an entity dies.
      * @param options
@@ -7787,6 +7881,8 @@ export class EntityDieAfterEventSignal {
      * dies.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
@@ -8014,6 +8110,8 @@ export class EntityHealthChangedAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHealthChangedAfterEvent) => void,
@@ -8025,6 +8123,8 @@ export class EntityHealthChangedAfterEventSignal {
      * entity changes.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
@@ -8105,6 +8205,8 @@ export class EntityHitBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHitBlockAfterEvent) => void,
@@ -8116,6 +8218,8 @@ export class EntityHitBlockAfterEventSignal {
      * block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHitBlockAfterEvent) => void): void;
@@ -8154,6 +8258,8 @@ export class EntityHitEntityAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHitEntityAfterEvent) => void,
@@ -8165,6 +8271,8 @@ export class EntityHitEntityAfterEventSignal {
      * melee attack on another entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHitEntityAfterEvent) => void): void;
@@ -8208,6 +8316,8 @@ export class EntityHurtAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: EntityHurtAfterEvent) => void,
@@ -8218,6 +8328,8 @@ export class EntityHurtAfterEventSignal {
      * Removes a callback from being called when an entity is hurt.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
@@ -8624,6 +8736,8 @@ export class EntityLoadAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function that handles the load event.
      */
@@ -8634,6 +8748,8 @@ export class EntityLoadAfterEventSignal {
      * subscription event.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -9295,6 +9411,8 @@ export class EntityRemoveAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function to call.
      * @param options
@@ -9313,6 +9431,8 @@ export class EntityRemoveAfterEventSignal {
      * entity is removed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityRemoveAfterEvent) => void): void;
@@ -9347,6 +9467,8 @@ export class EntityRemoveBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function to call.
      * @returns
@@ -9360,6 +9482,8 @@ export class EntityRemoveBeforeEventSignal {
      * entity is being removed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
@@ -9598,6 +9722,8 @@ export class EntitySpawnAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function that handles the spawn event.
      */
@@ -9608,6 +9734,8 @@ export class EntitySpawnAfterEventSignal {
      * subscription event.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -9914,6 +10042,8 @@ export class ExplosionAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ExplosionAfterEvent) => void): (arg: ExplosionAfterEvent) => void;
     /**
@@ -9922,6 +10052,8 @@ export class ExplosionAfterEventSignal {
      * occurs.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;
@@ -9965,6 +10097,8 @@ export class ExplosionBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ExplosionBeforeEvent) => void): (arg: ExplosionBeforeEvent) => void;
     /**
@@ -9973,6 +10107,8 @@ export class ExplosionBeforeEventSignal {
      * explosion would occur.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
@@ -10110,6 +10246,8 @@ export class GameRuleChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: GameRuleChangeAfterEvent) => void): (arg: GameRuleChangeAfterEvent) => void;
     /**
@@ -10118,6 +10256,8 @@ export class GameRuleChangeAfterEventSignal {
      * property is changed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;
@@ -10512,6 +10652,8 @@ export class ItemCompleteUseAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
     /**
@@ -10520,6 +10662,8 @@ export class ItemCompleteUseAfterEventSignal {
      * completes charging.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
@@ -11261,6 +11405,8 @@ export class ItemReleaseUseAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
     /**
@@ -11269,6 +11415,8 @@ export class ItemReleaseUseAfterEventSignal {
      * is released from charging.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
@@ -11765,6 +11913,8 @@ export class ItemStartUseAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
     /**
@@ -11773,6 +11923,8 @@ export class ItemStartUseAfterEventSignal {
      * starts charging.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
@@ -11829,6 +11981,8 @@ export class ItemStartUseOnAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): (arg: ItemStartUseOnAfterEvent) => void;
     /**
@@ -11837,6 +11991,8 @@ export class ItemStartUseOnAfterEventSignal {
      * a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): void;
@@ -11886,6 +12042,8 @@ export class ItemStopUseAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
     /**
@@ -11894,6 +12052,8 @@ export class ItemStopUseAfterEventSignal {
      * stops charging.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
@@ -11943,6 +12103,8 @@ export class ItemStopUseOnAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): (arg: ItemStopUseOnAfterEvent) => void;
     /**
@@ -11951,6 +12113,8 @@ export class ItemStopUseOnAfterEventSignal {
      * a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): void;
@@ -12022,6 +12186,8 @@ export class ItemUseAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemUseAfterEvent) => void): (arg: ItemUseAfterEvent) => void;
     /**
@@ -12029,6 +12195,8 @@ export class ItemUseAfterEventSignal {
      * Removes a callback from being called when an item is used.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;
@@ -12059,6 +12227,8 @@ export class ItemUseBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemUseBeforeEvent) => void): (arg: ItemUseBeforeEvent) => void;
     /**
@@ -12066,6 +12236,8 @@ export class ItemUseBeforeEventSignal {
      * Removes a callback from being called before an item is used.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemUseBeforeEvent) => void): void;
@@ -12146,6 +12318,8 @@ export class ItemUseOnAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemUseOnAfterEvent) => void): (arg: ItemUseOnAfterEvent) => void;
     /**
@@ -12154,6 +12328,8 @@ export class ItemUseOnAfterEventSignal {
      * a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
@@ -12187,6 +12363,8 @@ export class ItemUseOnBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemUseOnBeforeEvent) => void): (arg: ItemUseOnBeforeEvent) => void;
     /**
@@ -12195,6 +12373,8 @@ export class ItemUseOnBeforeEventSignal {
      * on a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
@@ -12508,6 +12688,8 @@ export class PistonActivateAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PistonActivateAfterEvent) => void): (arg: PistonActivateAfterEvent) => void;
     /**
@@ -12516,6 +12698,8 @@ export class PistonActivateAfterEventSignal {
      * or retracts.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
@@ -12534,6 +12718,16 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
+    /**
+     * @beta
+     * @remarks
+     * Contains the player's device information.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly clientSystemInfo: ClientSystemInfo;
     /**
      * @remarks
      * Input permissions of the player.
@@ -12959,6 +13153,8 @@ export class PlayerBreakBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerBreakBlockAfterEvent) => void,
@@ -12970,6 +13166,8 @@ export class PlayerBreakBlockAfterEventSignal {
      * block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
@@ -13016,6 +13214,8 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerBreakBlockBeforeEvent) => void,
@@ -13027,6 +13227,8 @@ export class PlayerBreakBlockBeforeEventSignal {
      * a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
@@ -13112,6 +13314,8 @@ export class PlayerDimensionChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
     /**
@@ -13120,6 +13324,8 @@ export class PlayerDimensionChangeAfterEventSignal {
      * change after event.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
@@ -13143,11 +13349,15 @@ export class PlayerEmoteAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerEmoteAfterEvent) => void): (arg: PlayerEmoteAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerEmoteAfterEvent) => void): void;
@@ -13192,6 +13402,8 @@ export class PlayerGameModeChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): (arg: PlayerGameModeChangeAfterEvent) => void;
     /**
@@ -13200,6 +13412,8 @@ export class PlayerGameModeChangeAfterEventSignal {
      * mode is changed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
@@ -13250,6 +13464,8 @@ export class PlayerGameModeChangeBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
     /**
@@ -13258,6 +13474,8 @@ export class PlayerGameModeChangeBeforeEventSignal {
      * mode is changed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
@@ -13302,6 +13520,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void,
@@ -13312,6 +13532,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      * permissions change.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
@@ -13409,6 +13631,8 @@ export class PlayerInteractWithBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithBlockAfterEvent) => void,
@@ -13419,6 +13643,8 @@ export class PlayerInteractWithBlockAfterEventSignal {
      * interacts with a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;
@@ -13492,6 +13718,8 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithBlockBeforeEvent) => void,
@@ -13502,6 +13730,8 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      * interacts with a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithBlockBeforeEvent) => void): void;
@@ -13555,6 +13785,8 @@ export class PlayerInteractWithEntityAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithEntityAfterEvent) => void,
@@ -13565,6 +13797,8 @@ export class PlayerInteractWithEntityAfterEventSignal {
      * interacts with an entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): void;
@@ -13616,6 +13850,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithEntityBeforeEvent) => void,
@@ -13626,6 +13862,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      * interacts with an entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
@@ -13745,6 +13983,8 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
     /**
@@ -13753,6 +13993,8 @@ export class PlayerLeaveBeforeEventSignal {
      * the world.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
@@ -13786,6 +14028,8 @@ export class PlayerPlaceBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerPlaceBlockAfterEvent) => void,
@@ -13797,6 +14041,8 @@ export class PlayerPlaceBlockAfterEventSignal {
      * by a player.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
@@ -13857,6 +14103,8 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerPlaceBlockBeforeEvent) => void,
@@ -13868,6 +14116,8 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * placed by a player.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
@@ -14012,6 +14262,8 @@ export class PressurePlatePopAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PressurePlatePopAfterEvent) => void): (arg: PressurePlatePopAfterEvent) => void;
     /**
@@ -14020,6 +14272,8 @@ export class PressurePlatePopAfterEventSignal {
      * is popped.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;
@@ -14067,6 +14321,8 @@ export class PressurePlatePushAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PressurePlatePushAfterEvent) => void): (arg: PressurePlatePushAfterEvent) => void;
     /**
@@ -14075,6 +14331,8 @@ export class PressurePlatePushAfterEventSignal {
      * is pushed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PressurePlatePushAfterEvent) => void): void;
@@ -14140,6 +14398,8 @@ export class ProjectileHitBlockAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): (arg: ProjectileHitBlockAfterEvent) => void;
     /**
@@ -14148,6 +14408,8 @@ export class ProjectileHitBlockAfterEventSignal {
      * a block.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): void;
@@ -14213,6 +14475,8 @@ export class ProjectileHitEntityAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): (arg: ProjectileHitEntityAfterEvent) => void;
     /**
@@ -14221,6 +14485,8 @@ export class ProjectileHitEntityAfterEventSignal {
      * an entity.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): void;
@@ -14776,6 +15042,8 @@ export class ScriptEventCommandMessageAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: ScriptEventCommandMessageAfterEvent) => void,
@@ -14786,6 +15054,8 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * Unsubscribes a particular handler for a ScriptEvent event.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ScriptEventCommandMessageAfterEvent) => void): void;
@@ -14847,6 +15117,8 @@ export class ServerMessageAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
     /**
@@ -14855,6 +15127,8 @@ export class ServerMessageAfterEventSignal {
      * message is passed.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
@@ -15164,9 +15438,21 @@ export class System {
      */
     readonly currentTick: number;
     /**
+     * @beta
+     * @remarks
+     * Contains the device information for the server.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly serverSystemInfo: SystemInfo;
+    /**
      * @remarks
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param jobId
      * The job ID returned from {@link System.runJob}.
@@ -15176,6 +15462,8 @@ export class System {
      * @remarks
      * Cancels the execution of a function run that was previously
      * scheduled via {@link System.run}.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     clearRun(runId: number): void;
@@ -15189,6 +15477,8 @@ export class System {
      * system.run callout), this will run the function in the next
      * tick. Note, however, that depending on load on the system,
      * running in the same or next tick is not guaranteed.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param callback
      * Function callback to run at the next game tick.
@@ -15220,6 +15510,8 @@ export class System {
      * @remarks
      * Runs a set of code on an interval.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Functional code that will run when this interval occurs.
      * @param tickInterval
@@ -15245,6 +15537,8 @@ export class System {
      * Queues a generator to run until completion.  The generator
      * will be given a time slice each tick, and will be run until
      * it yields or completes.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param generator
      * The instance of the generator to run.
@@ -15287,6 +15581,8 @@ export class System {
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Functional code that will run when this timeout occurs.
      * @param tickDelay
@@ -15298,6 +15594,9 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
+     * @remarks
+     * This function can be called in early-execution mode.
+     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -15341,6 +15640,20 @@ export class SystemBeforeEvents {
      *
      */
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
+}
+
+/**
+ * @beta
+ * Contains device information, like memory tier.
+ */
+export class SystemInfo {
+    private constructor();
+    /**
+     * @remarks
+     * Describes the memory of the device.
+     *
+     */
+    readonly memoryTier: MemoryTier;
 }
 
 /**
@@ -15389,6 +15702,8 @@ export class TargetBlockHitAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
     /**
@@ -15397,6 +15712,8 @@ export class TargetBlockHitAfterEventSignal {
      * hit.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
@@ -15515,6 +15832,8 @@ export class TripWireTripAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
     /**
@@ -15523,6 +15842,8 @@ export class TripWireTripAfterEventSignal {
      * tripped.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
@@ -15569,6 +15890,8 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
     /**
@@ -15578,6 +15901,8 @@ export class WatchdogTerminateBeforeEventSignal {
      * watchdog system.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
@@ -15620,6 +15945,8 @@ export class WeatherChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WeatherChangeAfterEvent) => void): (arg: WeatherChangeAfterEvent) => void;
     /**
@@ -15627,6 +15954,8 @@ export class WeatherChangeAfterEventSignal {
      * Removes a callback from being called when weather changes.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WeatherChangeAfterEvent) => void): void;
@@ -15677,6 +16006,8 @@ export class WeatherChangeBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WeatherChangeBeforeEvent) => void): (arg: WeatherChangeBeforeEvent) => void;
     /**
@@ -15684,6 +16015,8 @@ export class WeatherChangeBeforeEventSignal {
      * Removes a callback from being called before weather changes.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WeatherChangeBeforeEvent) => void): void;
@@ -16721,6 +17054,8 @@ export class WorldInitializeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
     /**
@@ -16729,6 +17064,8 @@ export class WorldInitializeAfterEventSignal {
      * environment is initialized for a World.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
@@ -16768,6 +17105,8 @@ export class WorldInitializeBeforeEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
     /**
@@ -16776,6 +17115,8 @@ export class WorldInitializeBeforeEventSignal {
      * environment is initialized for a World.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;

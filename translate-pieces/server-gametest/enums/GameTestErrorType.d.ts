@@ -1,6 +1,3 @@
-/**
- * @beta
- */
 export enum GameTestErrorType {
     Assert = 'Assert',
     AssertAtPosition = 'AssertAtPosition',

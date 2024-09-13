@@ -19,6 +19,8 @@ export class PistonActivateAfterEventSignal {
      * @remarks
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: PistonActivateAfterEvent) => void): (arg: PistonActivateAfterEvent) => void;
     /**
@@ -27,6 +29,8 @@ export class PistonActivateAfterEventSignal {
      * or retracts.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;

@@ -227,6 +227,7 @@ export enum GamePublishSetting {
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    ShowChunkBoundaries = 'ShowChunkBoundaries',
     /**
      * @remarks
      * Manages rendering of invisible blocks (e.g., barrier, light,
@@ -1058,6 +1059,7 @@ export enum WidgetGroupSelectionMode {
  */
 export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
+    [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
 };
 
 /**
@@ -1557,11 +1559,15 @@ export class ClipboardChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ClipboardChangeAfterEvent) => void): (arg: ClipboardChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ClipboardChangeAfterEvent) => void): void;
@@ -1755,11 +1761,15 @@ export class CurrentThemeChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): (arg: CurrentThemeChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): void;
@@ -1777,6 +1787,8 @@ export class CurrentThemeColorChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: CurrentThemeColorChangeAfterEvent) => void,
@@ -1784,6 +1796,8 @@ export class CurrentThemeColorChangeAfterEventSignal {
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: CurrentThemeColorChangeAfterEvent) => void): void;
@@ -1951,6 +1965,8 @@ export class CursorAttachmentPropertyChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void,
@@ -1958,6 +1974,8 @@ export class CursorAttachmentPropertyChangeAfterEventSignal {
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void): void;
@@ -1974,6 +1992,8 @@ export class CursorPropertyChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: CursorPropertiesChangeAfterEvent) => void,
@@ -1981,6 +2001,8 @@ export class CursorPropertyChangeAfterEventSignal {
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
@@ -2418,6 +2440,8 @@ export class ModeChangeAfterEventSignal {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
     /**
@@ -2426,6 +2450,8 @@ export class ModeChangeAfterEventSignal {
      * after event.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
@@ -2496,11 +2522,15 @@ export class PrimarySelectionChangeAfterEventSignal {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: SelectionEventAfterEvent) => void): (arg: SelectionEventAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: SelectionEventAfterEvent) => void): void;

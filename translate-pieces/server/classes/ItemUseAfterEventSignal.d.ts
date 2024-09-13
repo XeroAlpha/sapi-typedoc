@@ -11,6 +11,8 @@ export class ItemUseAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(callback: (arg: ItemUseAfterEvent) => void): (arg: ItemUseAfterEvent) => void;
     /**
@@ -18,6 +20,8 @@ export class ItemUseAfterEventSignal {
      * Removes a callback from being called when an item is used.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Returns information about whether this fence is connected to
  * other fences in several directions.
  */

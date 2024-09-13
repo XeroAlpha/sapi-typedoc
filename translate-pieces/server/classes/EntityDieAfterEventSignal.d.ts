@@ -12,6 +12,8 @@ export class EntityDieAfterEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param callback
      * Function to call when an entity dies.
      * @param options
@@ -31,6 +33,8 @@ export class EntityDieAfterEventSignal {
      * dies.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;

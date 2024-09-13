@@ -20,7 +20,7 @@ function extractVersionInfo(versionString) {
     }
 }
 
-const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks'];
+const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
 
 async function main() {
     // 强制检出 original 分支

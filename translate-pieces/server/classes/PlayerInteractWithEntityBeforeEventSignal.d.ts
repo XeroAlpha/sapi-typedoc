@@ -13,6 +13,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     subscribe(
         callback: (arg: PlayerInteractWithEntityBeforeEvent) => void,
@@ -23,6 +25,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      * interacts with an entity.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
