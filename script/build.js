@@ -76,6 +76,7 @@ function getCommonStringFromStart(a, b) {
         if (a.slice(0, len) === b.slice(0, len)) {
             return a.slice(0, len);
         }
+        len -= 1;
     }
     return '';
 }
@@ -217,7 +218,8 @@ async function build(translated) {
         {
             tsconfig: tsConfigFilePath,
             githubPages: false,
-            modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc']
+            modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc'],
+            lang: 'zh'
         },
         [new TypeDoc.TSConfigReader()]
     );
