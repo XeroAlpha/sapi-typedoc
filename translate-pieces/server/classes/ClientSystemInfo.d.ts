@@ -1,4 +1,4 @@
-/* IMPORT */ import { SystemInfo } from '../index';
+/* IMPORT */ import { PlatformType, SystemInfo } from '../index';
 
 /**
  * @beta
@@ -7,4 +7,16 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
+    /**
+     * @remarks
+     * The max render distance for the device in chunks.
+     *
+     */
+    readonly maxRenderDistance: number;
+    /**
+     * @remarks
+     * The platform type of the device.
+     *
+     */
+    readonly platformType: PlatformType;
 }

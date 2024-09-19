@@ -1,8 +1,5 @@
 /* IMPORT */ import { PlayerEmoteAfterEvent } from '../index';
 
-/**
- * @rc
- */
 export class PlayerEmoteAfterEventSignal {
     private constructor();
     /**

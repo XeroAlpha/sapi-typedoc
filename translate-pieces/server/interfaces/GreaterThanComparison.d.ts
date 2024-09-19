@@ -1,5 +1,4 @@
 /**
- * @rc
  * Greater than operator.
  */
 export interface GreaterThanComparison {

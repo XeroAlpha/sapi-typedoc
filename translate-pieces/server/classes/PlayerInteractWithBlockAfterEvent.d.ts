@@ -7,7 +7,7 @@
 export class PlayerInteractWithBlockAfterEvent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.
@@ -34,7 +34,7 @@ export class PlayerInteractWithBlockAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events

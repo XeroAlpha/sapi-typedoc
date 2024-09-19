@@ -1,5 +1,4 @@
 /**
- * @rc
  * Less than or equal to operator.
  */
 export interface LessThanOrEqualsComparison {

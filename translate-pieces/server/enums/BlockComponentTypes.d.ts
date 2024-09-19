@@ -22,7 +22,6 @@ export enum BlockComponentTypes {
      */
     Piston = 'minecraft:piston',
     /**
-     * @rc
      * @remarks
      * Represents a block that can play a record.
      *

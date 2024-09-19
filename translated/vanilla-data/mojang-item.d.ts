@@ -198,6 +198,8 @@ export declare enum MinecraftItemTypes {
     BirchTrapdoor = "minecraft:birch_trapdoor",
     /** 白桦木。 */
     BirchWood = "minecraft:birch_wood",
+    /** 黑色收纳袋。 */
+    BlackBundle = "minecraft:black_bundle",
     /** 黑色蜡烛。 */
     BlackCandle = "minecraft:black_candle",
     /** 黑色地毯。 */
@@ -238,6 +240,8 @@ export declare enum MinecraftItemTypes {
     BlazeRod = "minecraft:blaze_rod",
     /** 烈焰人刷怪蛋。 */
     BlazeSpawnEgg = "minecraft:blaze_spawn_egg",
+    /** 蓝色收纳袋。 */
+    BlueBundle = "minecraft:blue_bundle",
     /** 蓝色蜡烛。 */
     BlueCandle = "minecraft:blue_candle",
     /** 蓝色地毯。 */
@@ -312,6 +316,8 @@ export declare enum MinecraftItemTypes {
     BrickStairs = "minecraft:brick_stairs",
     /** 红砖墙。 */
     BrickWall = "minecraft:brick_wall",
+    /** 棕色收纳袋。 */
+    BrownBundle = "minecraft:brown_bundle",
     /** 棕色蜡烛。 */
     BrownCandle = "minecraft:brown_candle",
     /** 棕色地毯。 */
@@ -622,6 +628,8 @@ export declare enum MinecraftItemTypes {
     CutSandstone = "minecraft:cut_sandstone",
     /** 切制砂岩台阶。 */
     CutSandstoneSlab = "minecraft:cut_sandstone_slab",
+    /** 青色收纳袋。 */
+    CyanBundle = "minecraft:cyan_bundle",
     /** 青色蜡烛。 */
     CyanCandle = "minecraft:cyan_candle",
     /** 青色地毯。 */
@@ -1046,6 +1054,8 @@ export declare enum MinecraftItemTypes {
     GrassPath = "minecraft:grass_path",
     /** 沙砾。 */
     Gravel = "minecraft:gravel",
+    /** 灰色收纳袋。 */
+    GrayBundle = "minecraft:gray_bundle",
     /** 灰色蜡烛。 */
     GrayCandle = "minecraft:gray_candle",
     /** 灰色地毯。 */
@@ -1068,6 +1078,8 @@ export declare enum MinecraftItemTypes {
     GrayTerracotta = "minecraft:gray_terracotta",
     /** 灰色羊毛。 */
     GrayWool = "minecraft:gray_wool",
+    /** 绿色收纳袋。 */
+    GreenBundle = "minecraft:green_bundle",
     /** 绿色蜡烛。 */
     GreenCandle = "minecraft:green_candle",
     /** 绿色地毯。 */
@@ -1304,6 +1316,8 @@ export declare enum MinecraftItemTypes {
     LightBlock8 = "minecraft:light_block_8",
     /** 光源方块（9）。 */
     LightBlock9 = "minecraft:light_block_9",
+    /** 淡蓝色收纳袋。 */
+    LightBlueBundle = "minecraft:light_blue_bundle",
     /** 淡蓝色蜡烛。 */
     LightBlueCandle = "minecraft:light_blue_candle",
     /** 淡蓝色地毯。 */
@@ -1326,6 +1340,8 @@ export declare enum MinecraftItemTypes {
     LightBlueTerracotta = "minecraft:light_blue_terracotta",
     /** 淡蓝色羊毛。 */
     LightBlueWool = "minecraft:light_blue_wool",
+    /** 淡灰色收纳袋。 */
+    LightGrayBundle = "minecraft:light_gray_bundle",
     /** 淡灰色蜡烛。 */
     LightGrayCandle = "minecraft:light_gray_candle",
     /** 淡灰色地毯。 */
@@ -1354,6 +1370,8 @@ export declare enum MinecraftItemTypes {
     Lilac = "minecraft:lilac",
     /** 铃兰。 */
     LilyOfTheValley = "minecraft:lily_of_the_valley",
+    /** 黄绿色收纳袋。 */
+    LimeBundle = "minecraft:lime_bundle",
     /** 黄绿色蜡烛。 */
     LimeCandle = "minecraft:lime_candle",
     /** 黄绿色地毯。 */
@@ -1390,6 +1408,8 @@ export declare enum MinecraftItemTypes {
     Loom = "minecraft:loom",
     /** 重锤。 */
     Mace = "minecraft:mace",
+    /** 品红色收纳袋。 */
+    MagentaBundle = "minecraft:magenta_bundle",
     /** 品红色蜡烛。 */
     MagentaCandle = "minecraft:magenta_candle",
     /** 品红色地毯。 */
@@ -1652,6 +1672,8 @@ export declare enum MinecraftItemTypes {
     OminousBottle = "minecraft:ominous_bottle",
     /** 不祥试炼钥匙。 */
     OminousTrialKey = "minecraft:ominous_trial_key",
+    /** 橙色收纳袋。 */
+    OrangeBundle = "minecraft:orange_bundle",
     /** 橙色蜡烛。 */
     OrangeCandle = "minecraft:orange_candle",
     /** 橙色地毯。 */
@@ -1730,6 +1752,8 @@ export declare enum MinecraftItemTypes {
     PiglinSpawnEgg = "minecraft:piglin_spawn_egg",
     /** 掠夺者刷怪蛋。 */
     PillagerSpawnEgg = "minecraft:pillager_spawn_egg",
+    /** 粉红色收纳袋。 */
+    PinkBundle = "minecraft:pink_bundle",
     /** 粉红色蜡烛。 */
     PinkCandle = "minecraft:pink_candle",
     /** 粉红色地毯。 */
@@ -1874,6 +1898,8 @@ export declare enum MinecraftItemTypes {
     PumpkinPie = "minecraft:pumpkin_pie",
     /** 南瓜种子。 */
     PumpkinSeeds = "minecraft:pumpkin_seeds",
+    /** 紫色收纳袋。 */
+    PurpleBundle = "minecraft:purple_bundle",
     /** 紫色蜡烛。 */
     PurpleCandle = "minecraft:purple_candle",
     /** 紫色地毯。 */
@@ -1948,6 +1974,8 @@ export declare enum MinecraftItemTypes {
     RawIronBlock = "minecraft:raw_iron_block",
     /** 追溯指针。 */
     RecoveryCompass = "minecraft:recovery_compass",
+    /** 红色收纳袋。 */
+    RedBundle = "minecraft:red_bundle",
     /** 红色蜡烛。 */
     RedCandle = "minecraft:red_candle",
     /** 红色地毯。 */
@@ -2546,6 +2574,8 @@ export declare enum MinecraftItemTypes {
     Wheat = "minecraft:wheat",
     /** 小麦种子。 */
     WheatSeeds = "minecraft:wheat_seeds",
+    /** 白色收纳袋。 */
+    WhiteBundle = "minecraft:white_bundle",
     /** 白色蜡烛。 */
     WhiteCandle = "minecraft:white_candle",
     /** 白色地毯。 */
@@ -2606,6 +2636,8 @@ export declare enum MinecraftItemTypes {
     WoodenSword = "minecraft:wooden_sword",
     /** 书与笔。 */
     WritableBook = "minecraft:writable_book",
+    /** 黄色收纳袋。 */
+    YellowBundle = "minecraft:yellow_bundle",
     /** 黄色蜡烛。 */
     YellowCandle = "minecraft:yellow_candle",
     /** 黄色地毯。 */
