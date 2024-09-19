@@ -64,9 +64,6 @@ export enum EntityComponentTypes {
      *
      */
     Color2 = 'minecraft:color2',
-    /**
-     * @rc
-     */
     CursorInventory = 'minecraft:cursor_inventory',
     /**
      * @remarks

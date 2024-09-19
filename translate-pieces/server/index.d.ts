@@ -28,6 +28,7 @@ export { MemoryTier } from './enums/MemoryTier';
 export { MoonPhase } from './enums/MoonPhase';
 export { ObjectiveSortOrder } from './enums/ObjectiveSortOrder';
 export { PaletteColor } from './enums/PaletteColor';
+export { PlatformType } from './enums/PlatformType';
 export { ScoreboardIdentityType } from './enums/ScoreboardIdentityType';
 export { ScriptEventSource } from './enums/ScriptEventSource';
 export { SignSide } from './enums/SignSide';

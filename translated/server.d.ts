@@ -46,7 +46,6 @@ export enum BlockComponentTypes {
      */
     Piston = 'minecraft:piston',
     /**
-     * @rc
      * @remarks
      * Represents a block that can play a record.
      *
@@ -493,9 +492,6 @@ export enum EntityComponentTypes {
      *
      */
     Color2 = 'minecraft:color2',
-    /**
-     * @rc
-     */
     CursorInventory = 'minecraft:cursor_inventory',
     /**
      * @remarks
@@ -1909,6 +1905,31 @@ export enum PaletteColor {
 }
 
 /**
+ * @beta
+ * Describes what kind of platform is a device.
+ */
+export enum PlatformType {
+    /**
+     * @remarks
+     * Specialized gaming device.
+     *
+     */
+    Console = 'Console',
+    /**
+     * @remarks
+     * Personal Computer (PC).
+     *
+     */
+    Desktop = 'Desktop',
+    /**
+     * @remarks
+     *  Handheld device such smartphone or tablet.
+     *
+     */
+    Mobile = 'Mobile',
+}
+
+/**
  * Contains objectives and participants for the scoreboard.
  */
 export enum ScoreboardIdentityType {
@@ -2665,7 +2686,7 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the net redstone power of this block.
      *
@@ -3516,7 +3537,6 @@ export class BlockPistonComponent extends BlockComponent {
 }
 
 /**
- * @rc
  * Represents a block that can play a record.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4450,6 +4470,18 @@ export class ChatSendBeforeEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
+    /**
+     * @remarks
+     * The max render distance for the device in chunks.
+     *
+     */
+    readonly maxRenderDistance: number;
+    /**
+     * @remarks
+     * The platform type of the device.
+     *
+     */
+    readonly platformType: PlatformType;
 }
 
 /**
@@ -12973,7 +13005,6 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
- * @rc
  * Represents the players cursor inventory. Used when moving
  * items between between containers in the inventory UI. Not
  * used with touch controls.
@@ -13069,18 +13100,12 @@ export class PlayerDimensionChangeAfterEventSignal {
     unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
 }
 
-/**
- * @rc
- */
 export class PlayerEmoteAfterEvent {
     private constructor();
     readonly personaPieceId: string;
     readonly player: Player;
 }
 
-/**
- * @rc
- */
 export class PlayerEmoteAfterEventSignal {
     private constructor();
     /**
@@ -13306,7 +13331,7 @@ export class PlayerInputPermissions {
 export class PlayerInteractWithBlockAfterEvent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.
@@ -13333,7 +13358,7 @@ export class PlayerInteractWithBlockAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -13420,7 +13445,7 @@ export class PlayerInteractWithBlockBeforeEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -13482,7 +13507,7 @@ export class PlayerInteractWithBlockBeforeEventSignal {
 export class PlayerInteractWithEntityAfterEvent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.
@@ -16413,9 +16438,6 @@ export class WorldAfterEvents {
      *
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
-    /**
-     * @rc
-     */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
@@ -16425,14 +16447,14 @@ export class WorldAfterEvents {
      */
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * An event for when a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player interacts with an entity.
      *
@@ -16579,14 +16601,14 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fires before a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fires before a player interacts with an entity.
      *
@@ -17425,9 +17447,6 @@ export interface EntityFilter {
      *
      */
     name?: string;
-    /**
-     * @rc
-     */
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
      * @remarks
@@ -17681,9 +17700,6 @@ export interface EntityQueryOptions extends EntityFilter {
     volume?: Vector3;
 }
 
-/**
- * @rc
- */
 export interface EntityQueryPropertyOptions {
     exclude?: boolean;
     propertyId: string;
@@ -17786,7 +17802,6 @@ export interface EntityRaycastOptions extends EntityFilter {
 }
 
 /**
- * @rc
  * Equal to operator.
  */
 export interface EqualsComparison {
@@ -17848,7 +17863,6 @@ export interface ExplosionOptions {
 }
 
 /**
- * @rc
  * Greater than operator.
  */
 export interface GreaterThanComparison {
@@ -17861,7 +17875,6 @@ export interface GreaterThanComparison {
 }
 
 /**
- * @rc
  * Greater than or equal to operator.
  */
 export interface GreaterThanOrEqualsComparison {
@@ -17931,7 +17944,6 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @rc
  * Less than operator.
  */
 export interface LessThanComparison {
@@ -17944,7 +17956,6 @@ export interface LessThanComparison {
 }
 
 /**
- * @rc
  * Less than or equal to operator.
  */
 export interface LessThanOrEqualsComparison {
@@ -17982,7 +17993,6 @@ export interface MusicOptions {
 }
 
 /**
- * @rc
  * Not equal to operator.
  */
 export interface NotEqualsComparison {
@@ -18101,7 +18111,6 @@ export interface ProjectileShootOptions {
 }
 
 /**
- * @rc
  * Operator represents a lower/upper bound structure for
  * expressing a potential range of numbers.
  */

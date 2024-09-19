@@ -196,9 +196,6 @@ export class WorldAfterEvents {
      *
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
-    /**
-     * @rc
-     */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
@@ -208,14 +205,14 @@ export class WorldAfterEvents {
      */
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * An event for when a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player interacts with an entity.
      *

@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockComponent, ItemStack, ItemType } from '../index';
 
 /**
- * @rc
  * Represents a block that can play a record.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

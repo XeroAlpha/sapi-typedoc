@@ -439,9 +439,6 @@ export class ModalFormResponse extends FormResponse {
     readonly formValues?: (boolean | number | string)[];
 }
 
-/**
- * @rc
- */
 export class UIManager {
     private constructor();
     /**
@@ -459,7 +456,4 @@ export class FormRejectError extends Error {
     reason: FormRejectReason;
 }
 
-/**
- * @rc
- */
 export const uiManager: UIManager;

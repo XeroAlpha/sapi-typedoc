@@ -1,8 +1,5 @@
 /* IMPORT */ import { minecraftserver } from '../index';
 
-/**
- * @rc
- */
 export class UIManager {
     private constructor();
     /**

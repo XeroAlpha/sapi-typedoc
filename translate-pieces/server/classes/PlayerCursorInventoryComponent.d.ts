@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent, ItemStack } from '../index';
 
 /**
- * @rc
  * Represents the players cursor inventory. Used when moving
  * items between between containers in the inventory UI. Not
  * used with touch controls.

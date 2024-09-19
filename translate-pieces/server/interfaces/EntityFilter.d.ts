@@ -100,9 +100,6 @@ export interface EntityFilter {
      *
      */
     name?: string;
-    /**
-     * @rc
-     */
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
      * @remarks
