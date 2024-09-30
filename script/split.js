@@ -2,10 +2,7 @@ const { SyntaxKind, ts } = require('ts-morph');
 const { resolve: resolvePath, relative: relativePath, sep: pathSep } = require('path');
 const { sep: pathSepPosix } = require('path/posix');
 const { mkdirSync, writeFileSync, existsSync, readFileSync } = require('fs');
-
-const basePath = resolvePath(__dirname, '..');
-const translatingPath = resolvePath(basePath, 'translate-pieces');
-const translatedPath = resolvePath(basePath, 'translated');
+const { translatingPath, translatedPath } = require('./utils');
 
 const SkippedTopLevelSyntaxKinds = [
     SyntaxKind.EndOfFileToken,

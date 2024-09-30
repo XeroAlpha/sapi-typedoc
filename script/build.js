@@ -3,14 +3,10 @@ const { Project } = require('ts-morph');
 const { createRequire } = require('module');
 const { resolve: resolvePath, relative: relativePath } = require('path');
 const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } = require('fs');
-const { split, replacePieces } = require('./split');
+const { split, replacePieces } = require('./split.js');
 const { execSync } = require('child_process');
-
-const basePath = resolvePath(__dirname, '..');
-const originalPath = resolvePath(basePath, 'original');
-const translatedPath = resolvePath(basePath, 'translated');
-const distPath = resolvePath(basePath, 'dist');
-const hookPath = resolvePath(__dirname, 'hooks');
+const { loadHooks } = require('./hooks.js');
+const { basePath, originalPath, translatedPath, distPath } = require('./utils.js');
 
 const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
@@ -82,30 +78,8 @@ function getCommonStringFromStart(a, b) {
 }
 
 async function build(translated) {
-    // 加载钩子
-    mkdirSync(hookPath, { recursive: true });
-    const hookScripts = readdirSync(hookPath).filter((name) => /\.(cjs|js)$/i.test(name));
-    hookScripts.sort();
-    const scriptRequire = createRequire(hookPath);
-    const scriptHooks = hookScripts.map((name) => scriptRequire(resolvePath(hookPath, name)));
-    const runHooks = async (event, arg) => {
-        for (let i = 0; i < scriptHooks.length; i++) {
-            const scriptHook = scriptHooks[i];
-            const logName = `[${event}] ${hookScripts[i]}`;
-            let hookFunc;
-            if (typeof scriptHooks === 'function') {
-                hookFunc = scriptHook.bind(null, event);
-            } else {
-                hookFunc = scriptHook[event];
-            }
-            if (hookFunc) {
-                console.time(logName);
-                const result = hookFunc(arg);
-                if (result && result.then) await result;
-                console.timeEnd(logName);
-            }
-        }
-    };
+    const runHooks = loadHooks();
+    const hookEventContext = {};
 
     // 尝试加载翻译文件对应版本的 package.json
     console.time('[restoreDependencies] Total');
@@ -129,7 +103,8 @@ async function build(translated) {
 
     // 从依赖中构建用于生成文档的项目
     console.time('[loadOriginal] Total');
-    await runHooks('beforeLoad', {});
+    Object.assign(hookEventContext, { basePath });
+    await runHooks('beforeLoad', hookEventContext);
     const tsConfigFilePath = resolvePath(translatedPath, 'tsconfig.json');
     const project = new Project({
         tsConfigFilePath,
@@ -197,7 +172,8 @@ async function build(translated) {
             dependencies[moduleName] = version;
         }
     });
-    await runHooks('afterLoad', { project, sourceFiles, dependencies });
+    Object.assign(hookEventContext, { basePath, project, sourceFiles, dependencies });
+    await runHooks('afterLoad', hookEventContext);
     console.timeEnd('[loadOriginal] Total');
 
     if (translated) {
@@ -207,7 +183,7 @@ async function build(translated) {
             const pieces = split(sourceFile);
             replacePieces(sourceFile, pieces);
         });
-        await runHooks('afterTranslate', { project, sourceFiles, dependencies });
+        await runHooks('afterTranslate', hookEventContext);
         console.timeEnd('[translate] Total');
     }
 
@@ -223,20 +199,22 @@ async function build(translated) {
         },
         [new TypeDoc.TSConfigReader()]
     );
-    await runHooks('beforeConvert', { project, sourceFiles, dependencies, tsdocApplication });
+    Object.assign(hookEventContext, { tsdocApplication });
+    await runHooks('beforeConvert', hookEventContext);
     const tsdocProject = await tsdocApplication.convert();
     console.timeEnd('[analyze] Total');
     if (tsdocProject) {
         console.time('[emit] Total');
-        await runHooks('afterConvert', { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
+        Object.assign(hookEventContext, { tsdocProject });
+        await runHooks('afterConvert', hookEventContext);
         await tsdocApplication.generateDocs(tsdocProject, distPath);
         await tsdocApplication.generateJson(tsdocProject, resolvePath(distPath, 'index.json'));
-        await runHooks('afterEmit', { project, sourceFiles, dependencies, tsdocApplication, tsdocProject });
+        await runHooks('afterEmit', hookEventContext);
         console.timeEnd('[emit] Total');
     } else {
         throw new Error('Convert failed');
     }
-    return { project, sourceFiles, dependencies, tsdocProject };
+    return hookEventContext;
 }
 
 module.exports = {

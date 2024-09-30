@@ -1,11 +1,4 @@
-const { execSync } = require('child_process');
-const { resolve: resolvePath } = require('path');
-
-const basePath = resolvePath(__dirname, '..');
-
-function git(args) {
-    return execSync(`git ${args}`, { cwd: basePath });
-}
+const { git } = require('./utils.js');
 
 function listTrackingFiles(branch) {
     const files = {};

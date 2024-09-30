@@ -1,8 +1,7 @@
-const { execSync } = require('child_process');
 const { resolve: resolvePath } = require('path');
 const { ReflectionKind } = require('typedoc');
-
-const basePath = resolvePath(__dirname, '..', '..');
+const { git, translatedPath } = require('../utils.js');
+const { readFileSync, writeFileSync } = require('fs');
 
 const kindMap = [
     [ReflectionKind.Enum, 'enums', '枚举', 'enums'],
@@ -33,10 +32,6 @@ function getReflectionUrl(refl) {
         currentRefl = currentRefl.parent;
     }
     return `./${kindInfo.docMapping}/${parts.join('.')}.html`;
-}
-
-function git(args) {
-    return execSync(`git ${args}`, { cwd: basePath });
 }
 
 function getCurrentHead() {
@@ -195,6 +190,17 @@ function analyzeTranslateState() {
     return statusMap;
 }
 
+function extractVersionInfo(versionString) {
+    const match = /^([\d.]+-\w+)\.([\d.]+)-(\w+)(\.\d+)?$/.exec(versionString);
+    if (match) {
+        const [, version, gameVersion, gamePreRelease, gameBuild] = match;
+        if (gameBuild) {
+            return { version, gamePreRelease, gameVersion: gameVersion + gameBuild };
+        }
+        return { version, gamePreRelease, gameVersion };
+    }
+}
+
 const namespacePrefix = '@minecraft/';
 const stateDescMap = {
     untranslated: '未翻译',
@@ -291,5 +297,29 @@ module.exports = {
         if (reviewPieces.length > 0) {
             reviewPieces.forEach((piecePath) => console.log(`[review] Review required: ${piecePath}`));
         }
+    },
+    afterUpdate({ dependencies }) {
+        const readMePath = resolvePath(translatedPath, 'README.md');
+        const readMe = readFileSync(readMePath, 'utf-8');
+
+        const summaryLines = ['<!-- summary start -->', '', 'NPM 包：', '', '|包名|版本|', '| - | - |'];
+        let gameVersion;
+        Object.entries(dependencies).forEach(([moduleName, version]) => {
+            let versionString = version;
+            const versionInfo = extractVersionInfo(version);
+            if (versionInfo) {
+                if (!gameVersion) gameVersion = versionInfo.gameVersion;
+                versionString = versionInfo.version;
+            }
+            const npmURL = `https://www.npmjs.com/package/${moduleName}`;
+            summaryLines.push(`|[${moduleName}](${npmURL})|\`${versionString}\`|`);
+        });
+        summaryLines.push(['', `游戏版本号：\`${gameVersion}\``, '', '<!-- summary end -->']);
+
+        const newReadMe = readMe.replace(
+            /<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/,
+            summaryLines.flat().join('\n')
+        );
+        writeFileSync(readMePath, newReadMe);
     }
 };
