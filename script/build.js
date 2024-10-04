@@ -2,7 +2,7 @@ const TypeDoc = require('typedoc');
 const { Project } = require('ts-morph');
 const { createRequire } = require('module');
 const { resolve: resolvePath, relative: relativePath } = require('path');
-const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } = require('fs');
+const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync, rmSync } = require('fs');
 const { split, replacePieces } = require('./split.js');
 const { execSync } = require('child_process');
 const { loadHooks } = require('./hooks.js');
@@ -198,6 +198,7 @@ async function build(translated) {
         },
         [new TypeDoc.TSConfigReader()]
     );
+    rmSync(distPath, { recursive: true, force: true });
     Object.assign(hookEventContext, { tsdocApplication });
     await runHooks('beforeConvert', hookEventContext);
     const tsdocProject = await tsdocApplication.convert();
