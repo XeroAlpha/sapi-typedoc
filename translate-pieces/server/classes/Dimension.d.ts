@@ -62,22 +62,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @example createExplosions.ts
-     * ```typescript
-     * // Creates an explosion of radius 15 that does not break blocks
-     * import { DimensionLocation } from '@minecraft/server';
-     *
-     * function createExplosions(location: DimensionLocation) {
-     *     // Creates an explosion of radius 15 that does not break blocks
-     *     location.dimension.createExplosion(location, 15, { breaksBlocks: false });
-     *
-     *     // Creates an explosion of radius 15 that does not cause fire
-     *     location.dimension.createExplosion(location, 15, { causesFire: true });
-     *
-     *     // Creates an explosion of radius 10 that can go underwater
-     *     location.dimension.createExplosion(location, 10, { allowUnderwater: true });
-     * }
-     * ```
+     * @seeExample createExplosions.ts
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
@@ -224,53 +209,8 @@ export class Dimension {
      * @returns
      * An entity array.
      * @throws This function can throw errors.
-     * @example checkFeatherNearby.ts
-     * ```typescript
-     * import { DimensionLocation, EntityComponentTypes } from "@minecraft/server";
-     *
-     * // Returns true if a feather item entity is within 'distance' blocks of 'location'.
-     * function isFeatherNear(location: DimensionLocation, distance: number): boolean {
-     *     const items = location.dimension.getEntities({
-     *         location: location,
-     *         maxDistance: 20,
-     *     });
-     *
-     *     for (const item of items) {
-     *         const itemComp = item.getComponent(EntityComponentTypes.Item);
-     *
-     *         if (itemComp) {
-     *             if (itemComp.itemStack.typeId.endsWith('feather')) {
-     *                 return true;
-     *             }
-     *         }
-     *     }
-     *
-     *     return false;
-     * }
-     * ```
-     * @example tagsQuery.ts
-     * ```typescript
-     * import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
-     *
-     * function mobParty(targetLocation: DimensionLocation) {
-     *     const mobs = ['creeper', 'skeleton', 'sheep'];
-     *
-     *     // create some sample mob data
-     *     for (let i = 0; i < 10; i++) {
-     *         const mobTypeId = mobs[i % mobs.length];
-     *         const entity = targetLocation.dimension.spawnEntity(mobTypeId, targetLocation);
-     *         entity.addTag('mobparty.' + mobTypeId);
-     *     }
-     *
-     *     const eqo: EntityQueryOptions = {
-     *         tags: ['mobparty.skeleton'],
-     *     };
-     *
-     *     for (const entity of targetLocation.dimension.getEntities(eqo)) {
-     *         entity.kill();
-     *     }
-     * }
-     * ```
+     * @seeExample checkFeatherNearby.ts
+     * @seeExample tagsQuery.ts
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -350,39 +290,7 @@ export class Dimension {
      * An error will be thrown if fade is less than 0.0.
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
-     * @example playMusicAndSound.ts
-     * ```typescript
-     * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
-     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
-     *
-     * const players = world.getPlayers();
-     * const targetLocation: Vector3 = {
-     *     x: 0,
-     *     y: 0,
-     *     z: 0,
-     * };
-     *
-     * const musicOptions: MusicOptions = {
-     *     fade: 0.5,
-     *     loop: true,
-     *     volume: 1.0,
-     * };
-     * world.playMusic('music.menu', musicOptions);
-     *
-     * const worldSoundOptions: WorldSoundOptions = {
-     *     pitch: 0.5,
-     *     volume: 4.0,
-     * };
-     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
-     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
-     *
-     * const playerSoundOptions: PlayerSoundOptions = {
-     *     pitch: 1.0,
-     *     volume: 1.0,
-     * };
-     *
-     * players[0].playSound('bucket.fill_water', playerSoundOptions);
-     * ```
+     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -506,42 +414,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @example createOldHorse.ts
-     * ```typescript
-     * // Spawns an adult horse
-     * import { DimensionLocation } from '@minecraft/server';
-     *
-     * function spawnAdultHorse(location: DimensionLocation) {
-     *     // Create a horse and triggering the 'ageable_grow_up' event, ensuring the horse is created as an adult
-     *     location.dimension.spawnEntity('minecraft:horse<minecraft:ageable_grow_up>', location);
-     * }
-     * ```
-     * @example quickFoxLazyDog.ts
-     * ```typescript
-     * // Spawns a fox over a dog
-     * import { DimensionLocation } from '@minecraft/server';
-     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnAdultHorse(location: DimensionLocation) {
-     *     // Create fox (our quick brown fox)
-     *     const fox = location.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
-     *         x: location.x,
-     *         y: location.y + 2,
-     *         z: location.z,
-     *     });
-     *
-     *     fox.addEffect('speed', 10, {
-     *         amplifier: 2,
-     *     });
-     *
-     *     // Create wolf (our lazy dog)
-     *     const wolf = location.dimension.spawnEntity(MinecraftEntityTypes.Wolf, location);
-     *     wolf.addEffect('slowness', 10, {
-     *         amplifier: 2,
-     *     });
-     *     wolf.isSneaking = true;
-     * }
-     * ```
+     * @seeExample createOldHorse.ts
+     * @seeExample quickFoxLazyDog.ts
      */
     spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
@@ -560,17 +434,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @example spawnFeatherItem.ts
-     * ```typescript
-     * // Spawns a feather at a location
-     * import { ItemStack, DimensionLocation } from '@minecraft/server';
-     * import { MinecraftItemTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnFeather(location: DimensionLocation) {
-     *     const featherItem = new ItemStack(MinecraftItemTypes.Feather, 1);
-     *     location.dimension.spawnItem(featherItem, location);
-     * }
-     * ```
+     * @seeExample spawnFeatherItem.ts
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
@@ -592,30 +456,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @example spawnParticle.ts
-     * ```typescript
-     * // A function that spawns a particle at a random location near the target location for all players in the server
-     * import { world, MolangVariableMap, DimensionLocation, Vector3 } from '@minecraft/server';
-     *
-     * function spawnConfetti(location: DimensionLocation) {
-     *     for (let i = 0; i < 100; i++) {
-     *         const molang = new MolangVariableMap();
-     *
-     *         molang.setColorRGB('variable.color', {
-     *             red: Math.random(),
-     *             green: Math.random(),
-     *             blue: Math.random()
-     *         });
-     *
-     *         const newLocation: Vector3 = {
-     *             x: location.x + Math.floor(Math.random() * 8) - 4,
-     *             y: location.y + Math.floor(Math.random() * 8) - 4,
-     *             z: location.z + Math.floor(Math.random() * 8) - 4,
-     *         };
-     *         location.dimension.spawnParticle('minecraft:colored_flame_particle', newLocation, molang);
-     *     }
-     * }
-     * ```
+     * @seeExample spawnParticle.ts 5deb9e00
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }

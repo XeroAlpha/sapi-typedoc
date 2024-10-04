@@ -4,26 +4,7 @@
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
  * 
  * Main object for structuring a request.
- * @example simpleHttpRequest.ts
- * ```typescript
- * import { HttpRequest, HttpHeader, HttpRequestMethod, http } from '@minecraft/server-net';
- *
- * async function updateScore() {
- *     const req = new HttpRequest('http://localhost:3000/updateScore');
- *
- *     req.body = JSON.stringify({
- *         score: 22,
- *     });
- *
- *     req.method = HttpRequestMethod.Post;
- *     req.headers = [
- *         new HttpHeader('Content-Type', 'application/json'),
- *         new HttpHeader('auth', 'my-auth-token'),
- *     ];
- *
- *     await http.request(req);
- * }
- * ```
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpRequest {
     /**

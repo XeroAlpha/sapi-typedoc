@@ -74,25 +74,7 @@ export class System {
      * @returns
      * An opaque identifier that can be used with the `clearRun`
      * function to cancel the execution of this run.
-     * @example trapTick.ts
-     * ```typescript
-     * import { system, world } from '@minecraft/server';
-     *
-     * function printEveryMinute() {
-     *     try {
-     *         // Minecraft runs at 20 ticks per second.
-     *         if (system.currentTick % 1200 === 0) {
-     *             world.sendMessage('Another minute passes...');
-     *         }
-     *     } catch (e) {
-     *         console.warn('Error: ' + e);
-     *     }
-     *
-     *     system.run(printEveryMinute);
-     * }
-     *
-     * printEveryMinute();
-     * ```
+     * @seeExample trapTick.ts
      */
     run(callback: () => void): number;
     /**
@@ -109,16 +91,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with the clearRun method
      * to stop the run of this function on an interval.
-     * @example every30Seconds.ts
-     * ```typescript
-     * import { system, world } from '@minecraft/server';
-     *
-     * const intervalRunIdentifier = Math.floor(Math.random() * 10000);
-     *
-     * system.runInterval(() => {
-     *     world.sendMessage('This is an interval run ' + intervalRunIdentifier + ' sending a message every 30 seconds.');
-     * }, 600);
-     * ```
+     * @seeExample every30Seconds.ts
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
@@ -134,36 +107,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with {@link
      * System.clearJob} to stop the run of this generator.
-     * @example cubeGenerator.ts
-     * ```typescript
-     * import { BlockPermutation, DimensionLocation, world, ButtonPushAfterEvent, system } from '@minecraft/server';
-     *
-     * // A simple generator that places blocks in a cube at a specific location
-     * // with a specific size, yielding after every block place.
-     * function* blockPlacingGenerator(blockPerm: BlockPermutation, startingLocation: DimensionLocation, size: number) {
-     *     for (let x = startingLocation.x; x < startingLocation.x + size; x++) {
-     *         for (let y = startingLocation.y; y < startingLocation.y + size; y++) {
-     *             for (let z = startingLocation.z; z < startingLocation.z + size; z++) {
-     *                 const block = startingLocation.dimension.getBlock({ x: x, y: y, z: z });
-     *                 if (block) {
-     *                     block.setPermutation(blockPerm);
-     *                 }
-     *                 yield;
-     *             }
-     *         }
-     *     }
-     * }
-     *
-     * // When a button is pushed, we will place a 15x15x15 cube of cobblestone 10 blocks above it
-     * world.afterEvents.buttonPush.subscribe((buttonPushEvent: ButtonPushAfterEvent) => {
-     *     const cubePos = buttonPushEvent.block.location;
-     *     cubePos.y += 10;
-     *
-     *     const blockPerm = BlockPermutation.resolve('minecraft:cobblestone');
-     *
-     *     system.runJob(blockPlacingGenerator(blockPerm, { dimension: buttonPushEvent.dimension, ...cubePos }, 15));
-     * });
-     * ```
+     * @seeExample cubeGenerator.ts
      */
     runJob(generator: Generator<void, void, void>): number;
     /**

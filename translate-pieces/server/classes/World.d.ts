@@ -149,73 +149,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
-     * @example incrementDynamicProperty.ts
-     * ```typescript
-     * import * as mc from '@minecraft/server';
-     *
-     * function incrementProperty(propertyName: string): boolean {
-     *     let number = mc.world.getDynamicProperty(propertyName);
-     *
-     *     console.warn('Current value is: ' + number);
-     *
-     *     if (number === undefined) {
-     *         number = 0;
-     *     }
-     *
-     *     if (typeof number !== 'number') {
-     *         console.warn('Number is of an unexpected type.');
-     *         return false;
-     *     }
-     *
-     *     mc.world.setDynamicProperty(propertyName, number + 1);
-     *     return true;
-     * }
-     *
-     * incrementProperty('samplelibrary:number');
-     * ```
-     * @example incrementDynamicPropertyInJsonBlob.ts
-     * ```typescript
-     * import * as mc from '@minecraft/server';
-     *
-     * function updateWorldProperty(propertyName: string): boolean {
-     *     let paintStr = mc.world.getDynamicProperty(propertyName);
-     *     let paint: { color: string; intensity: number } | undefined = undefined;
-     *
-     *     console.log('Current value is: ' + paintStr);
-     *
-     *     if (paintStr === undefined) {
-     *         paint = {
-     *             color: 'purple',
-     *             intensity: 0,
-     *         };
-     *     } else {
-     *         if (typeof paintStr !== 'string') {
-     *             console.warn('Paint is of an unexpected type.');
-     *             return false;
-     *         }
-     *
-     *         try {
-     *             paint = JSON.parse(paintStr);
-     *         } catch (e) {
-     *             console.warn('Error parsing serialized struct.');
-     *             return false;
-     *         }
-     *     }
-     *
-     *     if (!paint) {
-     *         console.warn('Error parsing serialized struct.');
-     *         return false;
-     *     }
-     *
-     *     paint.intensity++;
-     *     paintStr = JSON.stringify(paint); // be very careful to ensure your serialized JSON str cannot exceed limits
-     *     mc.world.setDynamicProperty(propertyName, paintStr);
-     *
-     *     return true;
-     * }
-     *
-     * updateWorldProperty('samplelibrary:longerjson');
-     * ```
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -300,39 +235,7 @@ export class World {
      * @param trackID 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
      * @throws This function can throw errors.
-     * @example playMusicAndSound.ts
-     * ```typescript
-     * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
-     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
-     *
-     * const players = world.getPlayers();
-     * const targetLocation: Vector3 = {
-     *     x: 0,
-     *     y: 0,
-     *     z: 0,
-     * };
-     *
-     * const musicOptions: MusicOptions = {
-     *     fade: 0.5,
-     *     loop: true,
-     *     volume: 1.0,
-     * };
-     * world.playMusic('music.menu', musicOptions);
-     *
-     * const worldSoundOptions: WorldSoundOptions = {
-     *     pitch: 0.5,
-     *     volume: 4.0,
-     * };
-     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
-     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
-     *
-     * const playerSoundOptions: PlayerSoundOptions = {
-     *     pitch: 1.0,
-     *     volume: 1.0,
-     * };
-     *
-     * players[0].playSound('bucket.fill_water', playerSoundOptions);
-     * ```
+     * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -351,39 +254,7 @@ export class World {
      * An error will be thrown if fade is less than 0.0.
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
-     * @example playMusicAndSound.ts
-     * ```typescript
-     * import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
-     * import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
-     *
-     * const players = world.getPlayers();
-     * const targetLocation: Vector3 = {
-     *     x: 0,
-     *     y: 0,
-     *     z: 0,
-     * };
-     *
-     * const musicOptions: MusicOptions = {
-     *     fade: 0.5,
-     *     loop: true,
-     *     volume: 1.0,
-     * };
-     * world.playMusic('music.menu', musicOptions);
-     *
-     * const worldSoundOptions: WorldSoundOptions = {
-     *     pitch: 0.5,
-     *     volume: 4.0,
-     * };
-     * const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
-     * overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
-     *
-     * const playerSoundOptions: PlayerSoundOptions = {
-     *     pitch: 1.0,
-     *     volume: 1.0,
-     * };
-     *
-     * players[0].playSound('bucket.fill_water', playerSoundOptions);
-     * ```
+     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -426,40 +297,10 @@ export class World {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
-     * @example nestedTranslation.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * // Displays "Apple or Coal"
-     * const rawMessage = {
-     *     translate: 'accessibility.list.or.two',
-     *     with: { rawtext: [{ translate: 'item.apple.name' }, { translate: 'item.coal.name' }] },
-     * };
-     * world.sendMessage(rawMessage);
-     * ```
-     * @example scoreWildcard.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * // Displays the player's score for objective "obj". Each player will see their own score.
-     * const rawMessage = { score: { name: '*', objective: 'obj' } };
-     * world.sendMessage(rawMessage);
-     * ```
-     * @example simpleString.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * // Displays "Hello, world!"
-     * world.sendMessage('Hello, world!');
-     * ```
-     * @example translation.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * // Displays "First or Second"
-     * const rawMessage = { translate: 'accessibility.list.or.two', with: ['First', 'Second'] };
-     * world.sendMessage(rawMessage);
-     * ```
+     * @seeExample nestedTranslation.ts
+     * @seeExample scoreWildcard.ts
+     * @seeExample simpleString.ts
+     * @seeExample translation.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -512,73 +353,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
-     * @example incrementDynamicProperty.ts
-     * ```typescript
-     * import * as mc from '@minecraft/server';
-     *
-     * function incrementProperty(propertyName: string): boolean {
-     *     let number = mc.world.getDynamicProperty(propertyName);
-     *
-     *     console.warn('Current value is: ' + number);
-     *
-     *     if (number === undefined) {
-     *         number = 0;
-     *     }
-     *
-     *     if (typeof number !== 'number') {
-     *         console.warn('Number is of an unexpected type.');
-     *         return false;
-     *     }
-     *
-     *     mc.world.setDynamicProperty(propertyName, number + 1);
-     *     return true;
-     * }
-     *
-     * incrementProperty('samplelibrary:number');
-     * ```
-     * @example incrementDynamicPropertyInJsonBlob.ts
-     * ```typescript
-     * import * as mc from '@minecraft/server';
-     *
-     * function updateWorldProperty(propertyName: string): boolean {
-     *     let paintStr = mc.world.getDynamicProperty(propertyName);
-     *     let paint: { color: string; intensity: number } | undefined = undefined;
-     *
-     *     console.log('Current value is: ' + paintStr);
-     *
-     *     if (paintStr === undefined) {
-     *         paint = {
-     *             color: 'purple',
-     *             intensity: 0,
-     *         };
-     *     } else {
-     *         if (typeof paintStr !== 'string') {
-     *             console.warn('Paint is of an unexpected type.');
-     *             return false;
-     *         }
-     *
-     *         try {
-     *             paint = JSON.parse(paintStr);
-     *         } catch (e) {
-     *             console.warn('Error parsing serialized struct.');
-     *             return false;
-     *         }
-     *     }
-     *
-     *     if (!paint) {
-     *         console.warn('Error parsing serialized struct.');
-     *         return false;
-     *     }
-     *
-     *     paint.intensity++;
-     *     paintStr = JSON.stringify(paint); // be very careful to ensure your serialized JSON str cannot exceed limits
-     *     mc.world.setDynamicProperty(propertyName, paintStr);
-     *
-     *     return true;
-     * }
-     *
-     * updateWorldProperty('samplelibrary:longerjson');
-     * ```
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**

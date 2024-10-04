@@ -5,31 +5,7 @@
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
  * Block}).
- * @example createTranslatedSign.ts
- * ```typescript
- * // A function the creates a sign at the specified location with the specified text
- * import { DimensionLocation, BlockPermutation, BlockComponentTypes } from '@minecraft/server';
- * import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
- *
- * function createSignAt(location: DimensionLocation) {
- *     const signBlock = location.dimension.getBlock(location);
- *
- *     if (!signBlock) {
- *         console.warn('Could not find a block at specified location.');
- *         return;
- *     }
- *
- *     const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, { ground_sign_direction: 8 });
- *     signBlock.setPermutation(signPerm); // Update block to be a sign
- *
- *     // Update the sign block's text
- *     // with "Steve's Head"
- *     const signComponent = signBlock.getComponent(BlockComponentTypes.Sign);
- *     if (signComponent) {
- *         signComponent.setText({ translate: 'item.skull.player.name', with: ['Steve'] });
- *     }
- * }
- * ```
+ * @seeExample createTranslatedSign.ts
  */
 export class BlockPermutation {
     private constructor();
@@ -83,18 +59,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @example check_block_tags.js
-     * ```typescript
-     * import { world } from "@minecraft/server";
-     *
-     * // Fetch the block
-     * const block = world.getDimension("overworld").getBlock({ x: 1, y: 2, z: 3 });
-     * const blockPerm = block.getPermutation();
-     *
-     * console.log(`Block is dirt: ${blockPerm.hasTag("dirt")}`);
-     * console.log(`Block is wood: ${blockPerm.hasTag("wood")}`);
-     * console.log(`Block is stone: ${blockPerm.hasTag("stone")}`);
-     * ```
+     * @seeExample check_block_tags.js 4ba7d631
      */
     hasTag(tag: string): boolean;
     /**
@@ -128,46 +93,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws This function can throw errors.
-     * @example addBlockColorCube.ts
-     * ```typescript
-     * import { DimensionLocation, BlockPermutation } from '@minecraft/server';
-     * import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
-     *
-     * const allWoolBlocks: string[] = [
-     *     MinecraftBlockTypes.WhiteWool,
-     *     MinecraftBlockTypes.OrangeWool,
-     *     MinecraftBlockTypes.MagentaWool,
-     *     MinecraftBlockTypes.LightBlueWool,
-     *     MinecraftBlockTypes.YellowWool,
-     *     MinecraftBlockTypes.LimeWool,
-     *     MinecraftBlockTypes.PinkWool,
-     *     MinecraftBlockTypes.GrayWool,
-     *     MinecraftBlockTypes.LightGrayWool,
-     *     MinecraftBlockTypes.CyanWool,
-     *     MinecraftBlockTypes.PurpleWool,
-     *     MinecraftBlockTypes.BlueWool,
-     *     MinecraftBlockTypes.BrownWool,
-     *     MinecraftBlockTypes.GreenWool,
-     *     MinecraftBlockTypes.RedWool,
-     *     MinecraftBlockTypes.BlackWool,
-     * ];
-     *
-     * const cubeDim = 7;
-     *
-     * function placeRainbowCube(location: DimensionLocation) {
-     *     let colorIndex = 0;
-     *     for (let x = 0; x <= cubeDim; x++) {
-     *         for (let y = 0; y <= cubeDim; y++) {
-     *             for (let z = 0; z <= cubeDim; z++) {
-     *                 colorIndex++;
-     *                 location.dimension
-     *                     .getBlock({ x: location.x + x, y: location.y + y, z: location.z + z })
-     *                     ?.setPermutation(BlockPermutation.resolve(allWoolBlocks[colorIndex % allWoolBlocks.length]));
-     *             }
-     *         }
-     *     }
-     * }
-     * ```
+     * @seeExample addBlockColorCube.ts
      */
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
