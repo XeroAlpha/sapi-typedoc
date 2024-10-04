@@ -152,6 +152,10 @@ module.exports = {
     afterConvert({ tsdocProject }) {
         const exampleRefls = [];
         // 添加 example 页面
+        const exampleParentRef = new DocumentReflection('示例', tsdocProject, [], { title: '示例' });
+        exampleParentRef._alias = 'examples';
+        tsdocProject.registerReflection(exampleParentRef);
+        tsdocProject.addChild(exampleParentRef);
         for (const exampleName of Object.keys(examples).sort()) {
             const exampleVersions = examples[exampleName];
             const content = [];
@@ -207,16 +211,11 @@ module.exports = {
                     text: '\n\n'
                 });
             }
-            const docRef = new DocumentReflection(exampleName, tsdocProject, content, { title: exampleName });
+            const docRef = new DocumentReflection(exampleName, exampleParentRef, content, { title: exampleName });
             tsdocProject.registerReflection(docRef);
             exampleRefls.push([exampleName, docRef, exampleVersions]);
+            exampleParentRef.addChild(docRef);
         }
-        const exampleParentRef = new DocumentReflection('示例', tsdocProject, [], { title: '示例' });
-        for (const exampleRefl of exampleRefls) {
-            exampleParentRef.addChild(exampleRefl[1]);
-        }
-        tsdocProject.registerReflection(exampleParentRef);
-        tsdocProject.addChild(exampleParentRef);
 
         // 修正 @example 引用
         for (const refl of Object.values(tsdocProject.reflections)) {
