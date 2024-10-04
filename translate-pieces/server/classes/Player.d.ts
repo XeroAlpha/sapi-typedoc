@@ -259,33 +259,7 @@ export class Player extends Entity {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
-     * @example sendMessagesToPlayer.ts
-     * ```typescript
-     * import { Player } from "@minecraft/server";
-     *
-     * function sendPlayerMessages(player: Player) {
-     *     // Displays "First or Second"
-     *     const rawMessage = { translate: 'accessibility.list.or.two', with: ['First', 'Second'] };
-     *     player.sendMessage(rawMessage);
-     *
-     *     // Displays "Hello, world!"
-     *     player.sendMessage('Hello, world!');
-     *
-     *     // Displays "Welcome, Amazing Player 1!"
-     *     player.sendMessage({ translate: 'authentication.welcome', with: ['Amazing Player 1'] });
-     *
-     *     // Displays the player's score for objective "obj". Each player will see their own score.
-     *     const rawMessageWithScore = { score: { name: '*', objective: 'obj' } };
-     *     player.sendMessage(rawMessageWithScore);
-     *
-     *     // Displays "Apple or Coal"
-     *     const rawMessageWithNestedTranslations = {
-     *         translate: 'accessibility.list.or.two',
-     *         with: { rawtext: [{ translate: 'item.apple.name' }, { translate: 'item.coal.name' }] },
-     *     };
-     *     player.sendMessage(rawMessageWithNestedTranslations);
-     * }
-     * ```
+     * @seeExample sendMessagesToPlayer.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -346,30 +320,7 @@ export class Player extends Entity {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @example spawnParticle.ts
-     * ```typescript
-     * import { world, MolangVariableMap, Vector3 } from '@minecraft/server';
-     *
-     * world.afterEvents.playerSpawn.subscribe(event => {
-     *     const targetLocation = event.player.location;
-     *     for (let i = 0; i < 100; i++) {
-     *         const molang = new MolangVariableMap();
-     *
-     *         molang.setColorRGB('variable.color', {
-     *             red: Math.random(),
-     *             green: Math.random(),
-     *             blue: Math.random()
-     *         });
-     *
-     *         const newLocation: Vector3 = {
-     *             x: targetLocation.x + Math.floor(Math.random() * 8) - 4,
-     *             y: targetLocation.y + Math.floor(Math.random() * 8) - 4,
-     *             z: targetLocation.z + Math.floor(Math.random() * 8) - 4,
-     *         };
-     *         event.player.spawnParticle('minecraft:colored_flame_particle', newLocation, molang);
-     *     }
-     * });
-     * ```
+     * @seeExample spawnParticle.ts 6dbd8500
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

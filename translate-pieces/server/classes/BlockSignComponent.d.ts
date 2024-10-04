@@ -2,103 +2,9 @@
 
 /**
  * Represents a block that can display text on it.
- * @example addTwoSidedSign.ts
- * ```typescript
- * // A function the creates a sign at the specified location with text on both sides and dye colors
- * import {
- *     DimensionLocation,
- *     BlockPermutation,
- *     BlockSignComponent,
- *     BlockComponentTypes,
- *     DyeColor,
- *     SignSide,
- * } from '@minecraft/server';
- * import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
- *
- * function createSignAt(location: DimensionLocation) {
- *     const block = location.dimension.getBlock(location);
- *     if (!block) {
- *         console.warn('Could not find a block at specified location.');
- *         return;
- *     }
- *     const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, {
- *         ground_sign_direction: 8,
- *     });
- *     block.setPermutation(signPerm);
- *     const sign = block.getComponent(BlockComponentTypes.Sign);
- *
- *     if (sign !== undefined) {
- *         sign.setText(`Party Sign!\nThis is green on the front.`);
- *         sign.setText(`Party Sign!\nThis is red on the back.`, SignSide.Back);
- *         sign.setTextDyeColor(DyeColor.Green);
- *         sign.setTextDyeColor(DyeColor.Red, SignSide.Back);
- *
- *         // players cannot edit sign!
- *         sign.setWaxed(true);
- *     } else {
- *         console.warn('Could not find a sign component on the block.');
- *     }
- * }
- * ```
- * @example setSignText.ts
- * ```typescript
- * import {
- *     BlockComponentTypes,
- *     DimensionLocation,
- *     RawMessage,
- *     RawText,
- * } from '@minecraft/server';
- *
- * // Function which updates a sign blocks text to raw text
- * function updateSignText(signLocation: DimensionLocation) {
- *     const block = signLocation.dimension.getBlock(signLocation);
- *     if (!block) {
- *         console.warn('Could not find a block at specified location.');
- *         return;
- *     }
- *
- *     const sign = block.getComponent(BlockComponentTypes.Sign);
- *     if (sign) {
- *         // RawMessage
- *         const helloWorldMessage: RawMessage = { text: 'Hello World' };
- *         sign.setText(helloWorldMessage);
- *
- *         // RawText
- *         const helloWorldText: RawText = { rawtext: [{ text: 'Hello World' }] };
- *         sign.setText(helloWorldText);
- *
- *         // Regular string
- *         sign.setText('Hello World');
- *     } else {
- *         console.warn('Could not find a sign component on the block.');
- *     }
- * }
- * ```
- * @example createTranslatedSign.ts
- * ```typescript
- * // A function the creates a sign at the specified location with the specified text
- * import { DimensionLocation, BlockPermutation, BlockComponentTypes } from '@minecraft/server';
- * import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
- *
- * function createSignAt(location: DimensionLocation) {
- *     const signBlock = location.dimension.getBlock(location);
- *
- *     if (!signBlock) {
- *         console.warn('Could not find a block at specified location.');
- *         return;
- *     }
- *
- *     const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, { ground_sign_direction: 8 });
- *     signBlock.setPermutation(signPerm); // Update block to be a sign
- *
- *     // Update the sign block's text
- *     // with "Steve's Head"
- *     const signComponent = signBlock.getComponent(BlockComponentTypes.Sign);
- *     if (signComponent) {
- *         signComponent.setText({ translate: 'item.skull.player.name', with: ['Steve'] });
- *     }
- * }
- * ```
+ * @seeExample addTwoSidedSign.ts
+ * @seeExample setSignText.ts
+ * @seeExample createTranslatedSign.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {
@@ -168,40 +74,7 @@ export class BlockSignComponent extends BlockComponent {
      * @throws
      * Throws if the provided message is greater than 512
      * characters in length.
-     * @example setSignText.ts
-     * ```typescript
-     * import {
-     *     BlockComponentTypes,
-     *     DimensionLocation,
-     *     RawMessage,
-     *     RawText,
-     * } from '@minecraft/server';
-     *
-     * // Function which updates a sign blocks text to raw text
-     * function updateSignText(signLocation: DimensionLocation) {
-     *     const block = signLocation.dimension.getBlock(signLocation);
-     *     if (!block) {
-     *         console.warn('Could not find a block at specified location.');
-     *         return;
-     *     }
-     *
-     *     const sign = block.getComponent(BlockComponentTypes.Sign);
-     *     if (sign) {
-     *         // RawMessage
-     *         const helloWorldMessage: RawMessage = { text: 'Hello World' };
-     *         sign.setText(helloWorldMessage);
-     *
-     *         // RawText
-     *         const helloWorldText: RawText = { rawtext: [{ text: 'Hello World' }] };
-     *         sign.setText(helloWorldText);
-     *
-     *         // Regular string
-     *         sign.setText('Hello World');
-     *     } else {
-     *         console.warn('Could not find a sign component on the block.');
-     *     }
-     * }
-     * ```
+     * @seeExample setSignText.ts
      */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;
     /**

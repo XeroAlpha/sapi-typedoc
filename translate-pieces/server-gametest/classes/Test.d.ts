@@ -59,12 +59,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example testIfButtonNotPressed.js
-     * ```typescript
-     * test.assertBlockState(buttonPos, (block) => {
-     *   return block.permutation.getProperty("button_pressed_bit") == 0;
-     * });
-     * ```
+     * @seeExample testIfButtonNotPressed.js
      */
     assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
     /**
@@ -144,10 +139,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example horseArmorTest.js
-     * ```typescript
-     * test.assertEntityHasArmor("minecraft:horse", armorSlotTorso, "diamond_horse_armor", 0, horseLocation, true);
-     * ```
+     * @seeExample horseArmorTest.js
      */
     assertEntityHasArmor(
         entityTypeIdentifier: string,
@@ -178,10 +170,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example sheepShearedTest.js
-     * ```typescript
-     * test.assertEntityHasComponent("minecraft:sheep", "minecraft:is_sheared", entityLoc, false);
-     * ```
+     * @seeExample sheepShearedTest.js
      */
     assertEntityHasComponent(
         entityTypeIdentifier: string,
@@ -226,27 +215,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example simpleMobTest.ts
-     * ```typescript
-     * import * as gameTest from '@minecraft/server-gametest';
-     *
-     * gameTest
-     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
-     *         const attackerId = 'fox';
-     *         const victimId = 'chicken';
-     *
-     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *         const victim = test.spawn(victimId, { x: 2, y: 2, z: 2 });
-     *
-     *         test.assertEntityInstancePresentInArea(victim, true);
-     *
-     *         test.succeedWhen(() => {
-     *             test.assertEntityInstancePresentInArea(victim, false);
-     *         });
-     *     })
-     *     .maxTicks(400)
-     *     .structureName('gametests:mediumglass');
-     * ```
+     * @seeExample simpleMobTest.ts 383d6e87
      */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
@@ -295,27 +264,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example simpleMobTest.ts
-     * ```typescript
-     * import * as gameTest from '@minecraft/server-gametest';
-     *
-     * gameTest
-     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
-     *         const attackerId = 'fox';
-     *         const victimId = 'chicken';
-     *
-     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
-     *
-     *         test.assertEntityPresentInArea(victimId, true);
-     *
-     *         test.succeedWhen(() => {
-     *             test.assertEntityPresentInArea(victimId, false);
-     *         });
-     *     })
-     *     .maxTicks(400)
-     *     .structureName('gametests:mediumglass');
-     * ```
+     * @seeExample simpleMobTest.ts fc1293e3
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
     /**
@@ -338,14 +287,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example villagerEffectTest.js
-     * ```typescript
-     * test.assertEntityState(
-     *   villagerPos,
-     *   "minecraft:villager_v2",
-     *   (entity) => entity.getEffect(MinecraftEffectTypes.Regeneration).duration > 120
-     * ); // At least 6 seconds remaining in the villagers' effect
-     * ```
+     * @seeExample villagerEffectTest.js
      */
     assertEntityState(
         blockLocation: minecraftserver.Vector3,
@@ -407,10 +349,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example findFeathers.js
-     * ```typescript
-     * test.assertItemEntityCountIs(Items.feather, expectedFeatherLoc, 0, 1);
-     * ```
+     * @seeExample findFeathers.js
      */
     assertItemEntityCountIs(
         itemType: minecraftserver.ItemType | string,
@@ -834,32 +773,8 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @example simpleMobTest.ts
-     * ```typescript
-     * import * as gameTest from '@minecraft/server-gametest';
-     *
-     * gameTest
-     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
-     *         const attackerId = 'fox';
-     *         const victimId = 'chicken';
-     *
-     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
-     *
-     *         test.assertEntityPresentInArea(victimId, true);
-     *
-     *         test.succeedWhen(() => {
-     *             test.assertEntityPresentInArea(victimId, false);
-     *         });
-     *     })
-     *     .maxTicks(400)
-     *     .structureName('gametests:mediumglass');
-     * ```
-     * @example spawnAdultPig.js
-     * ```typescript
-     * test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1, y: 2, z: 1 });
-     *
-     * ```
+     * @seeExample simpleMobTest.ts fc1293e3
+     * @seeExample spawnAdultPig.js 6a962333
      */
     spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -879,10 +794,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @example spawnAdultPig.js
-     * ```typescript
-     * test.spawn("minecraft:pig<minecraft:ageable_grow_up>", { x: 1.5, y: 2, z: 1.5 });
-     * ```
+     * @seeExample spawnAdultPig.js 5ea5c8ce
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -898,14 +810,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @example spawnEmeralds.js
-     * ```typescript
-     * const oneEmerald = new ItemStack(MinecraftItemTypes.Emerald, 1, 0);
-     * const fiveEmeralds = new ItemStack(MinecraftItemTypes.Emerald, 5, 0);
-     *
-     * test.spawnItem(oneEmerald, { x: 3.5, y: 3, z: 1.5 });
-     * test.spawnItem(fiveEmeralds, { x: 1.5, y: 3, z: 1.5 });
-     * ```
+     * @seeExample spawnEmeralds.js
      */
     spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -977,10 +882,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @example spreadFromFaceTowardDirection.js
-     * ```typescript
-     * test.spreadFromFaceTowardDirection({ x: 1, y: 2, z: 1 }, Direction.south, Direction.down);
-     * ```
+     * @seeExample spreadFromFaceTowardDirection.js
      */
     spreadFromFaceTowardDirection(
         blockLocation: minecraftserver.Vector3,
@@ -1064,27 +966,7 @@ export class Test {
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws This function can throw errors.
-     * @example simpleMobTest.ts
-     * ```typescript
-     * import * as gameTest from '@minecraft/server-gametest';
-     *
-     * gameTest
-     *     .register('StarterTests', 'simpleMobTest', (test: gameTest.Test) => {
-     *         const attackerId = 'fox';
-     *         const victimId = 'chicken';
-     *
-     *         test.spawn(attackerId, { x: 5, y: 2, z: 5 });
-     *         test.spawn(victimId, { x: 2, y: 2, z: 2 });
-     *
-     *         test.assertEntityPresentInArea(victimId, true);
-     *
-     *         test.succeedWhen(() => {
-     *             test.assertEntityPresentInArea(victimId, false);
-     *         });
-     *     })
-     *     .maxTicks(400)
-     *     .structureName('gametests:mediumglass');
-     * ```
+     * @seeExample simpleMobTest.ts fc1293e3
      */
     succeedWhen(callback: () => void): void;
     /**

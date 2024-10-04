@@ -2,16 +2,7 @@
 
 /**
  * Manages callbacks that are connected to piston activations.
- * @example pistonAfterEvent.ts
- * ```typescript
- * import { world, system, PistonActivateAfterEvent } from '@minecraft/server';
- *
- * world.afterEvents.pistonActivate.subscribe((pistonEvent: PistonActivateAfterEvent) => {
- *     console.warn(
- *         `Piston event at ${system.currentTick} ${(pistonEvent.piston.isMoving ? ' Moving' : 'Not moving')} with state: ${pistonEvent.piston.state}`,
- *     );
- * });
- * ```
+ * @seeExample pistonAfterEvent.ts
  */
 export class PistonActivateAfterEventSignal {
     private constructor();

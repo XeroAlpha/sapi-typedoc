@@ -3,51 +3,9 @@
 /**
  * Contains information about user interface elements that are
  * showing up on the screen.
- * @example setTitle.ts
- * ```typescript
- * import { world } from '@minecraft/server';
- *
- * world.afterEvents.playerSpawn.subscribe((event) => {
- *     event.player.onScreenDisplay.setTitle('§o§6You respawned!§r');
- * });
- * ```
- * @example setTitleAndSubtitle.ts
- * ```typescript
- * import { world } from '@minecraft/server';
- *
- * world.afterEvents.playerSpawn.subscribe((event) => {
- *     event.player.onScreenDisplay.setTitle('You respawned', {
- *         stayDuration: 100,
- *         fadeInDuration: 2,
- *         fadeOutDuration: 4,
- *         subtitle: 'Try not to die next time!',
- *     });
- * });
- * ```
- * @example titleCountdown.ts
- * ```typescript
- * import { world, system } from '@minecraft/server';
- *
- * world.afterEvents.playerSpawn.subscribe(event => {
- *     event.player.onScreenDisplay.setTitle('Get ready!', {
- *         stayDuration: 220,
- *         fadeInDuration: 2,
- *         fadeOutDuration: 4,
- *         subtitle: '10',
- *     });
- *
- *     let countdown = 10;
- *
- *     const intervalId = system.runInterval(() => {
- *         countdown--;
- *         event.player.onScreenDisplay.updateSubtitle(countdown.toString());
- *
- *         if (countdown == 0) {
- *             system.clearRun(intervalId);
- *         }
- *     }, 20);
- * });
- * ```
+ * @seeExample setTitle.ts
+ * @seeExample setTitleAndSubtitle.ts
+ * @seeExample titleCountdown.ts
  */
 export class ScreenDisplay {
     private constructor();
@@ -123,51 +81,9 @@ export class ScreenDisplay {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     * @example setTitle.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * world.afterEvents.playerSpawn.subscribe((event) => {
-     *     event.player.onScreenDisplay.setTitle('§o§6You respawned!§r');
-     * });
-     * ```
-     * @example setTitleAndSubtitle.ts
-     * ```typescript
-     * import { world } from '@minecraft/server';
-     *
-     * world.afterEvents.playerSpawn.subscribe((event) => {
-     *     event.player.onScreenDisplay.setTitle('You respawned', {
-     *         stayDuration: 100,
-     *         fadeInDuration: 2,
-     *         fadeOutDuration: 4,
-     *         subtitle: 'Try not to die next time!',
-     *     });
-     * });
-     * ```
-     * @example titleCountdown.ts
-     * ```typescript
-     * import { world, system } from '@minecraft/server';
-     *
-     * world.afterEvents.playerSpawn.subscribe(event => {
-     *     event.player.onScreenDisplay.setTitle('Get ready!', {
-     *         stayDuration: 220,
-     *         fadeInDuration: 2,
-     *         fadeOutDuration: 4,
-     *         subtitle: '10',
-     *     });
-     *
-     *     let countdown = 10;
-     *
-     *     const intervalId = system.runInterval(() => {
-     *         countdown--;
-     *         event.player.onScreenDisplay.updateSubtitle(countdown.toString());
-     *
-     *         if (countdown == 0) {
-     *             system.clearRun(intervalId);
-     *         }
-     *     }, 20);
-     * });
-     * ```
+     * @seeExample setTitle.ts
+     * @seeExample setTitleAndSubtitle.ts
+     * @seeExample titleCountdown.ts
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**

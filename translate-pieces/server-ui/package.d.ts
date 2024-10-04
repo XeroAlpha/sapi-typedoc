@@ -13,23 +13,7 @@
  *   * {@link ModalFormData} allow for a more flexible
  * "questionnaire-style" list of controls that can be used to
  * take input.
- * @example createActionForm.js
- * ```typescript
- * const form = new ActionFormData()
- *   .title("Months")
- *   .body("Choose your favorite month!")
- *   .button("January")
- *   .button("February")
- *   .button("March")
- *   .button("April")
- *   .button("May");
- *
- * form.show(players[0]).then((response) => {
- *   if (response.selection === 3) {
- *     dimension.runCommand("say I like April too!");
- *   }
- * });
- * ```
+ * @seeExample createActionForm.js
  *
  * Manifest Details
  * ```json

@@ -16,18 +16,7 @@ export class ChatSendAfterEventSignal {
      *
      * This function can be called in early-execution mode.
      *
-     * @example custom_command.js
-     * ```typescript
-     * const chatCallback = World.beforeEvents.chatSend.subscribe((eventData) => {
-     *   if (eventData.message.includes("cancel")) {
-     *     // Cancel event if the message contains "cancel"
-     *     eventData.canceled = true;
-     *   } else {
-     *     // Modify chat message being sent
-     *     eventData.message = `Modified '${eventData.message}'`;
-     *   }
-     * });
-     * ```
+     * @seeExample custom_command.js
      */
     subscribe(callback: (arg: ChatSendAfterEvent) => void): (arg: ChatSendAfterEvent) => void;
     /**

@@ -1,6 +1,6 @@
 const { resolve: resolvePath } = require('path');
 const { ReflectionKind } = require('typedoc');
-const { git, translatedPath } = require('../utils.js');
+const { git } = require('../utils.js');
 const { readFileSync, writeFileSync } = require('fs');
 
 const kindMap = [
@@ -298,7 +298,7 @@ module.exports = {
             reviewPieces.forEach((piecePath) => console.log(`[review] Review required: ${piecePath}`));
         }
     },
-    afterUpdate({ dependencies }) {
+    afterUpdate({ translatedPath, dependencies }) {
         const readMePath = resolvePath(translatedPath, 'README.md');
         const readMe = readFileSync(readMePath, 'utf-8');
 

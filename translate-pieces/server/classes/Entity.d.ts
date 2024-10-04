@@ -152,49 +152,8 @@ export class Entity {
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
      * @throws This function can throw errors.
-     * @example poisonVillager.ts
-     * ```typescript
-     * // Spawns a villager and gives it the poison effect
-     * import {
-     *     DimensionLocation,
-     * } from '@minecraft/server';
-     * import { MinecraftEffectTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnPoisonedVillager(location: DimensionLocation) {
-     *     const villagerType = 'minecraft:villager_v2<minecraft:ageable_grow_up>';
-     *     const villager = location.dimension.spawnEntity(villagerType, location);
-     *     const duration = 20;
-     *
-     *     villager.addEffect(MinecraftEffectTypes.Poison, duration, { amplifier: 1 });
-     * }
-     *
-     * ```
-     * @example quickFoxLazyDog.ts
-     * ```typescript
-     * // Spawns a fox over a dog
-     * import { DimensionLocation } from '@minecraft/server';
-     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnAdultHorse(location: DimensionLocation) {
-     *     // Create fox (our quick brown fox)
-     *     const fox = location.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
-     *         x: location.x,
-     *         y: location.y + 2,
-     *         z: location.z,
-     *     });
-     *
-     *     fox.addEffect('speed', 10, {
-     *         amplifier: 2,
-     *     });
-     *
-     *     // Create wolf (our lazy dog)
-     *     const wolf = location.dimension.spawnEntity(MinecraftEntityTypes.Wolf, location);
-     *     wolf.addEffect('slowness', 10, {
-     *         amplifier: 2,
-     *     });
-     *     wolf.isSneaking = true;
-     * }
-     * ```
+     * @seeExample poisonVillager.ts
+     * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
@@ -229,28 +188,7 @@ export class Entity {
      * if the entity is invulnerable or if the damage applied is
      * less than or equal to 0.
      * @throws This function can throw errors.
-     * @example applyDamageThenHeal.ts
-     * ```typescript
-     * // A function that applies damage and then heals the entity
-     * import { Entity, EntityComponentTypes, system, world } from '@minecraft/server';
-     *
-     * function applyDamageAndHeal(entity: Entity) {
-     *     entity.applyDamage(19); // Many mobs have max damage of 20 so this is a near-death mob
-     *
-     *     system.runTimeout(() => {
-     *         const health = entity.getComponent(EntityComponentTypes.Health);
-     *         if (health) {
-     *             world.sendMessage(`Entity health before heal: ${health.currentValue}`);
-     *
-     *             health.resetToMaxValue();
-     *
-     *             world.sendMessage(`Entity after before heal: ${health.currentValue}`);
-     *         } else {
-     *             console.warn('Entity does not have health component');
-     *         }
-     *     }, 40); // Run in a few seconds (40 ticks)
-     * }
-     * ```
+     * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -263,20 +201,7 @@ export class Entity {
      * @param vector
      * Impulse vector.
      * @throws This function can throw errors.
-     * @example yeetEntity.ts
-     * ```typescript
-     * // A function that throws entities up in the air
-     * import { Entity } from '@minecraft/server';
-     *
-     * function yeetEntity(entity: Entity) {
-     *
-     *     // Zero out the entity's velocity before applying impulse
-     *     entity.clearVelocity();
-     *
-     *     // throw the zombie up in the air
-     *     entity.applyImpulse({ x: 0, y: 15, z: 0 });
-     * }
-     * ```
+     * @seeExample yeetEntity.ts
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -295,27 +220,7 @@ export class Entity {
      * @param verticalStrength
      * Knockback strength for the vertical vector.
      * @throws This function can throw errors.
-     * @example bounceSkeletons.ts
-     * ```typescript
-     * import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
-     *
-     * function mobParty(targetLocation: DimensionLocation) {
-     *     const mobs = ['creeper', 'skeleton', 'sheep'];
-     *
-     *     // create some sample mob data
-     *     for (let i = 0; i < 10; i++) {
-     *         targetLocation.dimension.spawnEntity(mobs[i % mobs.length], targetLocation);
-     *     }
-     *
-     *     const eqo: EntityQueryOptions = {
-     *         type: 'skeleton',
-     *     };
-     *
-     *     for (const entity of targetLocation.dimension.getEntities(eqo)) {
-     *         entity.applyKnockback(0, 0, 0, 1);
-     *     }
-     * }
-     * ```
+     * @seeExample bounceSkeletons.ts
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
@@ -334,20 +239,7 @@ export class Entity {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     * @example yeetEntity.ts
-     * ```typescript
-     * // A function that throws entities up in the air
-     * import { Entity } from '@minecraft/server';
-     *
-     * function yeetEntity(entity: Entity) {
-     *
-     *     // Zero out the entity's velocity before applying impulse
-     *     entity.clearVelocity();
-     *
-     *     // throw the zombie up in the air
-     *     entity.applyImpulse({ x: 0, y: 15, z: 0 });
-     * }
-     * ```
+     * @seeExample yeetEntity.ts
      */
     clearVelocity(): void;
     /**
@@ -364,24 +256,7 @@ export class Entity {
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
-     * @example setEntityOnFire.ts
-     * ```typescript
-     * import { world, Entity, EntityComponentTypes, system } from "@minecraft/server";
-     *
-     * function setAblaze(entity: Entity) {
-     *     entity.setOnFire(20, true);
-     *
-     *     system.runTimeout(() => {
-     *         const onfire = entity.getComponent(EntityComponentTypes.OnFire);
-     *         if (onfire) {
-     *             world.sendMessage(`${onfire.onFireTicksRemaining} fire ticks remaining, extinguishing the entity.`);
-     *         }
-     *         // This will extinguish the entity
-     *         entity.extinguishFire(true);
-     *     }, 30); // Run in 30 ticks or ~1.5 seconds
-     *
-     * }
-     * ```
+     * @seeExample setEntityOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -547,22 +422,7 @@ export class Entity {
      * @returns
      * Returns the current velocity vector of the entity.
      * @throws This function can throw errors.
-     * @example getFireworkVelocity.ts
-     * ```typescript
-     * // A function that spawns fireworks and logs their velocity after 5 ticks
-     * import { DimensionLocation, system, world } from '@minecraft/server';
-     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnFireworks(location: DimensionLocation) {
-     *     const fireworkRocket = location.dimension.spawnEntity(MinecraftEntityTypes.FireworksRocket, location);
-     *
-     *     system.runTimeout(() => {
-     *         const velocity = fireworkRocket.getVelocity();
-     *
-     *         world.sendMessage(`Velocity of firework is: ${velocity.x}, ${velocity.y}, ${velocity.z}`);
-     *     }, 5);
-     * }
-     * ```
+     * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
     /**
@@ -619,29 +479,7 @@ export class Entity {
      * Returns true if entity can be killed (even if it is already
      * dead), otherwise it returns false.
      * @throws This function can throw errors.
-     * @example tagsQuery.ts
-     * ```typescript
-     * import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
-     *
-     * function mobParty(targetLocation: DimensionLocation) {
-     *     const mobs = ['creeper', 'skeleton', 'sheep'];
-     *
-     *     // create some sample mob data
-     *     for (let i = 0; i < 10; i++) {
-     *         const mobTypeId = mobs[i % mobs.length];
-     *         const entity = targetLocation.dimension.spawnEntity(mobTypeId, targetLocation);
-     *         entity.addTag('mobparty.' + mobTypeId);
-     *     }
-     *
-     *     const eqo: EntityQueryOptions = {
-     *         tags: ['mobparty.skeleton'],
-     *     };
-     *
-     *     for (const entity of targetLocation.dimension.getEntities(eqo)) {
-     *         entity.kill();
-     *     }
-     * }
-     * ```
+     * @seeExample tagsQuery.ts
      */
     kill(): boolean;
     /**
@@ -799,24 +637,7 @@ export class Entity {
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
      * @throws This function can throw errors.
-     * @example setEntityOnFire.ts
-     * ```typescript
-     * import { world, Entity, EntityComponentTypes, system } from "@minecraft/server";
-     *
-     * function setAblaze(entity: Entity) {
-     *     entity.setOnFire(20, true);
-     *
-     *     system.runTimeout(() => {
-     *         const onfire = entity.getComponent(EntityComponentTypes.OnFire);
-     *         if (onfire) {
-     *             world.sendMessage(`${onfire.onFireTicksRemaining} fire ticks remaining, extinguishing the entity.`);
-     *         }
-     *         // This will extinguish the entity
-     *         entity.extinguishFire(true);
-     *     }, 30); // Run in 30 ticks or ~1.5 seconds
-     *
-     * }
-     * ```
+     * @seeExample setEntityOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -866,30 +687,7 @@ export class Entity {
      * @param teleportOptions
      * Options regarding the teleport operation.
      * @throws This function can throw errors.
-     * @example teleportMovement.ts
-     * ```typescript
-     * import { world, system } from '@minecraft/server';
-     *
-     * const overworld = world.getDimension('overworld');
-     * const targetLocation = { x: 0, y: 0, z: 0 };
-     *
-     * const pig = overworld.spawnEntity('minecraft:pig', targetLocation);
-     *
-     * let inc = 1;
-     * const runId = system.runInterval(() => {
-     *     pig.teleport(
-     *         { x: targetLocation.x + inc / 4, y: targetLocation.y + inc / 4, z: targetLocation.z + inc / 4 },
-     *         {
-     *             facingLocation: targetLocation,
-     *         },
-     *     );
-     *
-     *     if (inc > 100) {
-     *         system.clearRun(runId);
-     *     }
-     *     inc++;
-     * }, 4);
-     * ```
+     * @seeExample teleportMovement.ts
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
@@ -907,18 +705,7 @@ export class Entity {
      * @throws
      * If the event is not defined in the definition of the entity,
      * an error will be thrown.
-     * @example triggerEvent.ts
-     * ```typescript
-     * // A function that spawns a creeper and triggers it to explode immediately
-     * import { DimensionLocation } from '@minecraft/server';
-     * import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
-     *
-     * function spawnExplodingCreeper(location: DimensionLocation) {
-     *     const creeper = location.dimension.spawnEntity(MinecraftEntityTypes.Creeper, location);
-     *
-     *     creeper.triggerEvent('minecraft:start_exploding_forced');
-     * }
-     * ```
+     * @seeExample triggerEvent.ts
      */
     triggerEvent(eventName: string): void;
     /**

@@ -6,7 +6,7 @@ const { existsSync, readFileSync, readdirSync, mkdirSync, writeFileSync } = requ
 const { split, replacePieces } = require('./split.js');
 const { execSync } = require('child_process');
 const { loadHooks } = require('./hooks.js');
-const { basePath, originalPath, translatedPath, distPath } = require('./utils.js');
+const { basePath, originalPath, translatingPath, translatedPath, distPath } = require('./utils.js');
 
 const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
@@ -79,7 +79,7 @@ function getCommonStringFromStart(a, b) {
 
 async function build(translated) {
     const runHooks = loadHooks();
-    const hookEventContext = {};
+    const hookEventContext = { basePath, originalPath, translatingPath, translatedPath, distPath };
 
     // 尝试加载翻译文件对应版本的 package.json
     console.time('[restoreDependencies] Total');
@@ -103,7 +103,6 @@ async function build(translated) {
 
     // 从依赖中构建用于生成文档的项目
     console.time('[loadOriginal] Total');
-    Object.assign(hookEventContext, { basePath });
     await runHooks('beforeLoad', hookEventContext);
     const tsConfigFilePath = resolvePath(translatedPath, 'tsconfig.json');
     const project = new Project({
