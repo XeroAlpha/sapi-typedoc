@@ -2128,8 +2128,8 @@ export class GameTestError extends Error {
 /**
  * @remarks
  * Registers a new GameTest function. This GameTest will become
- * available in Minecraft via /gametest run
- * [testClassName]:[testName].
+ * available in Minecraft via `/gametest run
+ * [testClassName]:[testName]`.
  *
  * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
  *
@@ -2154,7 +2154,7 @@ export function register(
  * @remarks
  * Registers a new GameTest function that is designed for
  * asynchronous execution. This GameTest will become available
- * in Minecraft via /gametest run [testClassName]:[testName].
+ * in Minecraft via `/gametest run [testClassName]:[testName]`.
  *
  * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
  *

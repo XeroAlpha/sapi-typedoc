@@ -4,7 +4,7 @@
  * @remarks
  * Registers a new GameTest function that is designed for
  * asynchronous execution. This GameTest will become available
- * in Minecraft via /gametest run [testClassName]:[testName].
+ * in Minecraft via `/gametest run [testClassName]:[testName]`.
  *
  * This function can't be called in read-only mode.
  *

@@ -198,6 +198,14 @@ async function build(translated) {
         },
         [new TypeDoc.TSConfigReader()]
     );
+    tsdocApplication.internationalization.addTranslations(
+        'zh',
+        {
+            tag_rc: '预览版',
+            tag_beta: '实验性'
+        },
+        true
+    );
     rmSync(distPath, { recursive: true, force: true });
     Object.assign(hookEventContext, { tsdocApplication });
     await runHooks('beforeConvert', hookEventContext);
