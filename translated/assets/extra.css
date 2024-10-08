@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
 @media (max-width: 1024px) {
     html .col-menu {
         max-width: min(25rem, 90vw) !important;
@@ -17,9 +18,15 @@
 }
 .readme-module-icon {
     vertical-align: middle;
-
 }
 .readme-module-text {
     vertical-align: middle;
     color: var(--color-text);
+}
+code.tsd-tag {
+    font-family: Menlo, Monaco, Consolas, "Courier New", "Noto Sans SC", monospace !important;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
 }

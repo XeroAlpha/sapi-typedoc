@@ -23,8 +23,11 @@
         "entryPoints": ["*.d.ts"],
         "externalPattern": "",
         "customCss": "./assets/extra.css",
+        "customJs": "./assets/extra.js",
+        "githubPages": false,
         "navigationLinks": {
-            "切换翻译": "javascript:location.href=location.href.indexOf('sapi/original/')>=0?location.href.replace('sapi/original/','sapi/'):location.href.replace('sapi/','sapi/original/')"
+            "切换翻译": "javascript:toogleTranslation()",
+            "贡献翻译": "https://github.com/XeroAlpha/sapi-typedoc/tree/main/translated"
         },
         "externalSymbolLinkMappings": {
             "typescript": {
