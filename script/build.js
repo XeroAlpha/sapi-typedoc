@@ -192,7 +192,6 @@ async function build(translated) {
     const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins(
         {
             tsconfig: tsConfigFilePath,
-            githubPages: false,
             modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc'],
             lang: 'zh'
         },
