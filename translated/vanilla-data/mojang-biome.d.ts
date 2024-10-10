@@ -65,6 +65,7 @@ export declare enum MinecraftBiomeTypes {
     MushroomIsland = "minecraft:mushroom_island",
     MushroomIslandShore = "minecraft:mushroom_island_shore",
     Ocean = "minecraft:ocean",
+    PaleGarden = "minecraft:pale_garden",
     Plains = "minecraft:plains",
     RedwoodTaigaHillsMutated = "minecraft:redwood_taiga_hills_mutated",
     RedwoodTaigaMutated = "minecraft:redwood_taiga_mutated",

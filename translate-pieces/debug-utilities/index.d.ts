@@ -1,5 +1,5 @@
 import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
 /* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
+export { RuntimeStats } from './interfaces/RuntimeStats';
+export { collectRuntimeStats } from './functions/collectRuntimeStats';
 export { disableWatchdogTimingWarnings } from './functions/disableWatchdogTimingWarnings';

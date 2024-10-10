@@ -221,6 +221,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param batchName
      * Name of the batch for the test.
      * @returns
@@ -235,6 +237,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -247,6 +251,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -258,6 +264,8 @@ export class RegistrationBuilder {
      * for the test when running multiple tests together.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param paddingBlocks
      * Size, in blocks, around the GameTest where additional
@@ -274,6 +282,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param isRequired
      * If set to true, the test must pass in order for the entire
      * run of tests to pass.
@@ -289,6 +299,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -301,6 +313,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
     /**
@@ -310,6 +324,8 @@ export class RegistrationBuilder {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -317,11 +333,28 @@ export class RegistrationBuilder {
     setupTicks(tickCount: number): RegistrationBuilder;
     /**
      * @remarks
+     * Overrides the default structure placement with a specific
+     * location. If height (y) is set to Dimension.heightRange.max,
+     * the structure will snap to the ground.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * @returns
+     * RegistrationBuilder object where additional configuration
+     * methods can be called.
+     */
+    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
+    /**
+     * @remarks
      * Sets the name of the structure for a test to use. "xyz:bar"
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -334,6 +367,8 @@ export class RegistrationBuilder {
      * with `/gametest runset <tag>`.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -2131,6 +2166,8 @@ export class GameTestError extends Error {
  *
  * This function can't be called in read-only mode.
  *
+ * This function can be called in early-execution mode.
+ *
  * @param testClassName
  * Name of the class of tests this test should be a part of.
  * @param testName
@@ -2155,6 +2192,8 @@ export function register(
  * in Minecraft via `/gametest run [testClassName]:[testName]`.
  *
  * This function can't be called in read-only mode.
+ *
+ * This function can be called in early-execution mode.
  *
  * @param testClassName
  * Name of the class of tests this test should be a part of.

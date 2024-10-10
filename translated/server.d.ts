@@ -16,19 +16,21 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.16.0-beta"
+ *   "version": "1.17.0-beta"
  * }
  * ```
  *
  */
 import * as minecraftcommon from '@minecraft/common';
+// @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
+import type * as minecraftvanilladata from '@minecraft/vanilla-data';
 /**
  * The types of block components that are accessible via
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     FluidContainer = 'minecraft:fluidContainer',
     /**
@@ -1591,9 +1593,47 @@ export enum HudVisibility {
 }
 
 /**
- * Input permission categories. Used by
- * @minecraft/server.PlayerInputPermissionCategoryChangeAfterEvent
- * to specify which category was changed.
+ * @beta
+ * Describes the type of input of a device.
+ */
+export enum InputMode {
+    /**
+     * @remarks
+     * Gamepad input.
+     *
+     */
+    Gamepad = 'Gamepad',
+    /**
+     * @remarks
+     * Keyboard and mouse input.
+     *
+     */
+    KeyboardAndMouse = 'KeyboardAndMouse',
+    /**
+     * @remarks
+     * Motion controller input.
+     *
+     */
+    MotionController = 'MotionController',
+    /**
+     * @remarks
+     * Touch input.
+     *
+     */
+    Touch = 'Touch',
+    /**
+     * @remarks
+     * Input type not detected.
+     *
+     */
+    Undetermined = 'Undetermined',
+}
+
+/**
+ * Input permission categories. Used by {@link
+ * PlayerInputPermissionCategoryChangeAfterEvent} to specify
+ * which category was changed and {@link
+ * PlayerInputPermissions} to get or set permissions.
  */
 export enum InputPermissionCategory {
     /**
@@ -1604,10 +1644,82 @@ export enum InputPermissionCategory {
     Camera = 1,
     /**
      * @remarks
-     * Player input relating to movement.
+     * Player input relating to all player movement. Disabling this
+     * is equivalent to disabling jump, sneak, lateral movement,
+     * mount, and dismount.
      *
      */
     Movement = 2,
+    /**
+     * @beta
+     * @remarks
+     * Player input for moving laterally in the world. This would
+     * be WASD on a keyboard or the movement joystick on gamepad or
+     * touch.
+     *
+     */
+    LateralMovement = 4,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to sneak. This also affects flying
+     * down.
+     *
+     */
+    Sneak = 5,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to jumping. This also affects flying
+     * up.
+     *
+     */
+    Jump = 6,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to mounting vehicles.
+     *
+     */
+    Mount = 7,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to dismounting. When disabled, the
+     * player can still dismount vehicles by other means, for
+     * example on horses players can still jump off and in boats
+     * players can go into another boat.
+     *
+     */
+    Dismount = 8,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to moving the player forward.
+     *
+     */
+    MoveForward = 9,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to moving the player backward.
+     *
+     */
+    MoveBackward = 10,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to moving the player left.
+     *
+     */
+    MoveLeft = 11,
+    /**
+     * @beta
+     * @remarks
+     * Player input relating to moving the player right.
+     *
+     */
+    MoveRight = 12,
 }
 
 /**
@@ -2385,6 +2497,19 @@ export type ItemComponentTypeMap = {
     'minecraft:potion': ItemPotionComponent;
     potion: ItemPotionComponent;
 };
+
+/**
+ * @beta
+ * Type alias used by the {@link BlockPermutation} matches and
+ * resolve functions to narrow block state argument types to
+ * those mapped by {@link
+ * @minecraft/vanilla-data.BlockStateMapping}.
+ */
+export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockTypes}`
+    ? T extends keyof minecraftvanilladata.BlockStateMapping
+        ? minecraftvanilladata.BlockStateMapping[T]
+        : never
+    : Record<string, boolean | number | string>;
 
 /**
  * @beta
@@ -3172,7 +3297,7 @@ export class BlockExplodeAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the fluid container of a block in the world. Used
  * with blocks like cauldrons.
  */
@@ -3342,7 +3467,9 @@ export class BlockPermutation {
      * Returns the state if the permutation has it, else
      * `undefined`.
      */
-    getState(stateName: string): boolean | number | string | undefined;
+    getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        stateName: T,
+    ): minecraftvanilladata.BlockStateSuperset[T] | undefined;
     /**
      * @remarks
      * Creates a copy of the permutation.
@@ -3367,7 +3494,10 @@ export class BlockPermutation {
      * @param blockName
      * An optional set of states to compare against.
      */
-    matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+        blockName: T,
+        states?: BlockStateArg<T>,
+    ): boolean;
     /**
      * @remarks
      * Returns a derived BlockPermutation with a specific property
@@ -3379,7 +3509,10 @@ export class BlockPermutation {
      * Value of the block property.
      * @throws This function can throw errors.
      */
-    withState(name: string, value: boolean | number | string): BlockPermutation;
+    withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        name: T,
+        value: minecraftvanilladata.BlockStateSuperset[T],
+    ): BlockPermutation;
     /**
      * @remarks
      * Given a type identifier and an optional set of properties,
@@ -3391,7 +3524,10 @@ export class BlockPermutation {
      * @throws This function can throw errors.
      * @seeExample addBlockColorCube.ts
      */
-    static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
+    static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+        blockName: T,
+        states?: BlockStateArg<T>,
+    ): BlockPermutation;
 }
 
 /**
@@ -9184,7 +9320,7 @@ export class FilterGroup {
 }
 
 /**
- * @beta
+ * @rc
  * Represents constants related to fluid containers.
  */
 export class FluidContainer {
@@ -9532,6 +9668,33 @@ export class ILeverActionAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains the input information for a client instance.
+ */
+export class InputInfo {
+    private constructor();
+    /**
+     * @remarks
+     * The last input mode used by the player.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly lastInputModeUsed: InputMode;
+    /**
+     * @remarks
+     * Whether the player touch input only affects the touchbar or
+     * not.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly touchOnlyAffectsHotbar: boolean;
 }
 
 /**
@@ -10561,13 +10724,14 @@ export class ItemStack {
      * given `itemStack`. This is determined by comparing the item
      * type and any custom data and properties associated with the
      * item stacks. The amount of each item stack is not taken into
-     * consideration.
+     * consideration, but for non-stackable items this will always
+     * return false.
      *
      * @param itemStack
-     * ItemStack to check stacking compatability with.
+     * ItemStack to check stacking compatibility with.
      * @returns
      * True if the Item Stack is stackable with the itemStack
-     * passed in.
+     * passed in. False for non-stackable items.
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**
@@ -11461,6 +11625,13 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
+     * @beta
+     * @remarks
+     * Contains the player's input information.
+     *
+     */
+    readonly inputInfo: InputInfo;
+    /**
      * @remarks
      * Input permissions of the player.
      *
@@ -12158,6 +12329,62 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Event data for when a player input mode changes.
+ */
+export class PlayerInputModeChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The new input mode used by the player.
+     *
+     */
+    readonly newInputModeUsed: InputMode;
+    /**
+     * @remarks
+     * The player that had an input mode change.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The previous input mode used by the player.
+     *
+     */
+    readonly previousInputModeUsed: InputMode;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to player input mode.
+ */
+export class PlayerInputModeChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after the player input
+     * mode changes.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called after the player input
+     * mode changes.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
+}
+
+/**
  * Contains information regarding an event after a players
  * input permissions change.
  */
@@ -12216,8 +12443,7 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 }
 
 /**
- * Contains properties for enabling/disabling player input
- * permissions.
+ * Contains APIs to enable/disable player input permissions.
  */
 export class PlayerInputPermissions {
     private constructor();
@@ -12235,6 +12461,29 @@ export class PlayerInputPermissions {
      *
      */
     movementEnabled: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns true if an input permission is enabled.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Enable or disable an input permission. When enabled the
+     * input will work, when disabled will not work.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
 
 /**
@@ -13927,6 +14176,81 @@ export class StructureManager {
         location: Vector3,
         options?: StructurePlaceOptions,
     ): void;
+    /**
+     * @beta
+     * @remarks
+     * Places a partial jigsaw structure in the world. This is
+     * useful for debugging connections between jigsaw blocks.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param pool
+     * The identifier of the template pool to start from.
+     * @param targetJigsaw
+     * The name of the jigsaw block to start from. This block must
+     * be included in at least one of the starting pool structure
+     * templates.
+     * @param maxDepth
+     * The maximum recursion depth for the jigsaw structure.
+     * @param dimension
+     * The dimension to place the jigsaw structure in.
+     * @param location
+     * The location where the jigsaw structure will begin
+     * generating relative to the targetJigsaw block.
+     * @param options
+     * Optional settings to use when generating the jigsaw
+     * structure.
+     * @throws
+     * Throws if maxDepth is outside of the range [1,20]
+     * Throws if generation fails due to invalid parameters or
+     * jigsaw configuration.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsaw(
+        pool: string,
+        targetJigsaw: string,
+        maxDepth: number,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawPlaceOptions,
+    ): void;
+    /**
+     * @beta
+     * @remarks
+     * Places a jigsaw structure in the world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param identifier
+     * The identifier of the jigsaw structure.
+     * @param dimension
+     * The dimension to place the jigsaw structure in.
+     * @param location
+     * The location where the jigsaw structure will begin
+     * generating. Note that the y value will be overridden by the
+     * structure's start height unless the
+     * ignoreStarJigsawStructurePlaceOptions ignoreStartHeight
+     * option is set.
+     * @param options
+     * Optional settings to use when generating the jigsaw
+     * structure.
+     * @throws
+     * Throws if generation fails due to invalid parameters or
+     * jigsaw configuration.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsawStructure(
+        identifier: string,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawStructurePlaceOptions,
+    ): void;
 }
 
 /**
@@ -14929,6 +15253,14 @@ export class WorldAfterEvents {
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a player's {@link
+     * @minecraft/Server.InputMode} changes.
+     *
+     */
+    readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a players input permissions change.
@@ -16261,6 +16593,44 @@ export interface ItemCustomComponent {
 }
 
 /**
+ * @beta
+ * Provides additional options for {@link
+ * StructureManager.placeJigsaw}.
+ */
+export interface JigsawPlaceOptions {
+    /**
+     * @remarks
+     * Whether the jigsaw blocks should be kept when generating the
+     * structure. Defaults to false.
+     *
+     */
+    keepJigsaws?: boolean;
+}
+
+/**
+ * @beta
+ * Provides additional options for {@link
+ * StructureManager.placeJigsawStructure}.
+ */
+export interface JigsawStructurePlaceOptions {
+    /**
+     * @remarks
+     * Whether the start height defined in the jigsaw structure
+     * definition should be ignored and overridden with the
+     * specified y coordinate. Defaults to false.
+     *
+     */
+    ignoreStartHeight?: boolean;
+    /**
+     * @remarks
+     * Whether the jigsaw blocks should be kept when generating the
+     * structure. Defaults to false.
+     *
+     */
+    keepJigsaws?: boolean;
+}
+
+/**
  * Less than operator.
  */
 export interface LessThanComparison {
@@ -16603,6 +16973,7 @@ export interface ScriptEventMessageFilterOptions {
  */
 export interface SpawnEntityOptions {
     initialPersistence?: boolean;
+    initialRotation?: number;
 }
 
 /**
@@ -16908,6 +17279,28 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
+ * @beta
+ * The error called when an entity is invalid. This can occur
+ * when accessing components on a removed entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidEntityError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The id of the entity that is now invalid.
+     *
+     */
+    id: string;
+    /**
+     * @remarks
+     * The type of the entity that is now invalid.
+     *
+     */
+    type: string;
+}
+
+/**
  * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -16977,6 +17370,14 @@ export class LocationInUnloadedChunkError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationOutOfWorldBoundariesError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlaceJigsawError extends Error {
     private constructor();
 }
 

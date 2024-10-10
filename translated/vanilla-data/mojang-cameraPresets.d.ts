@@ -3,6 +3,7 @@
  */
 export declare enum MinecraftCameraPresetsTypes {
     FirstPerson = "minecraft:first_person",
+    FixedBoom = "minecraft:fixed_boom",
     FollowOrbit = "minecraft:follow_orbit",
     Free = "minecraft:free",
     ThirdPerson = "minecraft:third_person",

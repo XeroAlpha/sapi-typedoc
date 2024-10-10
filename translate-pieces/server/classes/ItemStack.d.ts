@@ -230,13 +230,14 @@ export class ItemStack {
      * given `itemStack`. This is determined by comparing the item
      * type and any custom data and properties associated with the
      * item stacks. The amount of each item stack is not taken into
-     * consideration.
+     * consideration, but for non-stackable items this will always
+     * return false.
      *
      * @param itemStack
-     * ItemStack to check stacking compatability with.
+     * ItemStack to check stacking compatibility with.
      * @returns
      * True if the Item Stack is stackable with the itemStack
-     * passed in.
+     * passed in. False for non-stackable items.
      */
     isStackableWith(itemStack: ItemStack): boolean;
     /**

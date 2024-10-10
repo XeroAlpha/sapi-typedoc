@@ -9,6 +9,7 @@
 /**
  * @beta
  * @packageDocumentation
+ * Contains debug utility functions.
  *
  * Manifest Details
  * ```json
@@ -20,8 +21,42 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
+export interface RuntimeStats {
+    arrayCount: number;
+    atomCount: number;
+    atomSize: number;
+    fastArrayCount: number;
+    fastArrayElementCount: number;
+    functionCodeSize: number;
+    functionCount: number;
+    functionLineCount: number;
+    functionSize: number;
+    memoryAllocatedCount: number;
+    memoryAllocatedSize: number;
+    memoryUsedCount: number;
+    memoryUsedSize: number;
+    objectCount: number;
+    objectSize: number;
+    propertyCount: number;
+    propertySize: number;
+    stringCount: number;
+    stringSize: number;
+}
+
 /**
+ * @remarks
+ * Collect memory stats for script runtimes.
+ *
+ * @returns
+ * RuntimeStats object.
+ */
+export function collectRuntimeStats(): RuntimeStats;
+/**
+ * @remarks
+ * Disable watchdog slow and spike warnings per plugin.
+ *
+ * @param disable
+ * Flag to disable or re-enable warnings.
  * @throws This function can throw errors.
  */
 export function disableWatchdogTimingWarnings(disable: boolean): void;

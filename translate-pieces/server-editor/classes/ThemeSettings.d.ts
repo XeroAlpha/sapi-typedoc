@@ -22,6 +22,7 @@ export class ThemeSettings {
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
+    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
     getThemeList(): string[];
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**

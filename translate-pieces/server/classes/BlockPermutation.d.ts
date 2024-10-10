@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockType, ItemStack } from '../index';
+/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, minecraftvanilladata } from '../index';
 
 /**
  * Contains the combination of type {@link BlockType} and
@@ -46,7 +46,9 @@ export class BlockPermutation {
      * Returns the state if the permutation has it, else
      * `undefined`.
      */
-    getState(stateName: string): boolean | number | string | undefined;
+    getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        stateName: T,
+    ): minecraftvanilladata.BlockStateSuperset[T] | undefined;
     /**
      * @remarks
      * Creates a copy of the permutation.
@@ -71,7 +73,10 @@ export class BlockPermutation {
      * @param blockName
      * An optional set of states to compare against.
      */
-    matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+        blockName: T,
+        states?: BlockStateArg<T>,
+    ): boolean;
     /**
      * @remarks
      * Returns a derived BlockPermutation with a specific property
@@ -83,7 +88,10 @@ export class BlockPermutation {
      * Value of the block property.
      * @throws This function can throw errors.
      */
-    withState(name: string, value: boolean | number | string): BlockPermutation;
+    withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        name: T,
+        value: minecraftvanilladata.BlockStateSuperset[T],
+    ): BlockPermutation;
     /**
      * @remarks
      * Given a type identifier and an optional set of properties,
@@ -95,5 +103,8 @@ export class BlockPermutation {
      * @throws This function can throw errors.
      * @seeExample addBlockColorCube.ts
      */
-    static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
+    static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+        blockName: T,
+        states?: BlockStateArg<T>,
+    ): BlockPermutation;
 }
