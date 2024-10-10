@@ -127,6 +127,8 @@ export declare enum MinecraftBiomeTypes {
     MushroomIslandShore = "minecraft:mushroom_island_shore",
     /** 海洋。 */
     Ocean = "minecraft:ocean",
+    /** 苍白之园。 */
+    PaleGarden = "minecraft:pale_garden",
     /** 平原。 */
     Plains = "minecraft:plains",
     /** 巨型云杉针叶林丘陵。 */

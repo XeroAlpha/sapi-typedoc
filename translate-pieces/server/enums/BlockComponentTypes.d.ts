@@ -4,7 +4,7 @@
  */
 export enum BlockComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     FluidContainer = 'minecraft:fluidContainer',
     /**

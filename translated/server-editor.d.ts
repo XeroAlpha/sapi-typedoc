@@ -889,6 +889,17 @@ export declare enum NumberPropertyItemVariant {
     InputFieldAndSlider = 1,
 }
 
+export enum PaintCompletionState {
+    Success = 0,
+    Canceled = 1,
+    Failed = 2,
+}
+
+export enum PaintMode {
+    BlockPaint = 0,
+    FreehandSelect = 1,
+}
+
 export enum Plane {
     XY = 'XY',
     XZ = 'XZ',
@@ -948,6 +959,7 @@ export declare enum PropertyItemType {
     SubPane = 'editorUI:SubPane',
     Table = 'editorUI:Table',
     Text = 'editorUI:Text',
+    ToggleGroup = 'editorUI:ToggleGroup',
     Vector3 = 'editorUI:Vector3',
 }
 
@@ -1052,6 +1064,12 @@ export enum WidgetGroupSelectionMode {
     Multiple = 'Multiple',
     None = 'None',
     Single = 'Single',
+}
+
+export enum WidgetMouseButtonActionType {
+    Pressed = 0,
+    Released = 1,
+    Drag = 2,
 }
 
 /**
@@ -1301,6 +1319,27 @@ export type SupportedKeyboardActionTypes = RegisteredAction<NoArgsAction>;
  */
 export type SupportedMouseActionTypes = RegisteredAction<MouseRayCastAction>;
 
+/**
+ * Content properties to display interactive tooltips
+ */
+export declare type TooltipInteractiveContent = {
+    title?: LocalizedString;
+    description?: TooltipInteractiveContentDescription[];
+};
+
+/**
+ * Possible tooltip description items
+ */
+export declare type TooltipInteractiveContentDescription = LocalizedString | TooltipLink;
+
+/**
+ * Tooltip link description
+ */
+export declare type TooltipLink = {
+    text: LocalizedString;
+    link: string;
+};
+
 export type UnregisterInputBindingCallback = () => void;
 
 /**
@@ -1458,23 +1497,17 @@ export class BrushShapeManager {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftserver.Error}
-     */
-    activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
      */
     activateBrushTool(): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
-    beginPainting(): void;
+    beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1485,8 +1518,17 @@ export class BrushShapeManager {
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
-    endPainting(): void;
+    endPainting(cancelled: boolean): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    getBrushShapeOffset(): minecraftserver.Vector3;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1518,9 +1560,19 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    setBlockPaletteOverride(
-        overrideBlock?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
-    ): void;
+    setBrushMask(mask: BlockMaskList): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1529,13 +1581,22 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    setBrushMask(mask: BlockMaskList): void;
+    singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    switchBrushPaintMode(paintMode: PaintMode): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.Error}
+     */
+    switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2935,6 +2996,7 @@ export class ThemeSettings {
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
+    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
     getThemeList(): string[];
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
@@ -3790,10 +3852,19 @@ export class WidgetManager {
     deleteGroup(groupToDelete: WidgetGroup): void;
 }
 
+export class WidgetMouseButtonEventData {
+    private constructor();
+    readonly action: WidgetMouseButtonActionType;
+    readonly altPressed: boolean;
+    readonly controlPressed: boolean;
+    readonly shiftPressed: boolean;
+}
+
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
     readonly location?: minecraftserver.Vector3;
+    readonly mouseEvent?: WidgetMouseButtonEventData;
     readonly selected?: boolean;
     readonly visible?: boolean;
     readonly widget: Widget;
@@ -5545,6 +5616,12 @@ export interface IPropertyPane {
     addText(value: IObservableProp<LocalizedString>, options?: ITextPropertyItemOptions): ITextPropertyItem;
     /**
      * @remarks
+     * Adds a toggle button group to the pane.
+     *
+     */
+    addToggleGroup(value: IObservableProp<number>, options?: IToggleGroupPropertyItemOptions): IToggleGroupPropertyItem;
+    /**
+     * @remarks
      * Adds a Vec3 item to the pane.
      *
      */
@@ -5703,6 +5780,13 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     headerAction?: IRootPropertyPaneHeaderAction;
+    /**
+     * @remarks
+     * Optional information tooltip for the pane to be displayed on
+     * the header.
+     *
+     */
+    infoTooltip?: TooltipInteractiveContent;
 }
 
 /**
@@ -6451,6 +6535,138 @@ export interface ITextPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A property item which supports toggle button properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IToggleGroupPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current selected entry value.
+     *
+     */
+    readonly value: number;
+    /**
+     * @remarks
+     * Find a toggle entry at an index in the group.
+     *
+     * @param index
+     * Index of the toggle entry in the list.
+     */
+    getEntryByIndex(index: number): IToggleGroupPropertyItemEntry | undefined;
+    /**
+     * @remarks
+     * Find a toggle entry with a specific value associated with
+     * property item.
+     *
+     * @param value
+     * Value of the toggle entry in the group.
+     */
+    getEntryByValue(value: number): IToggleGroupPropertyItemEntry | undefined;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip of the property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Update list of toggle group entries.
+     *
+     * @param entries
+     * New list of updated entries.
+     * @param newValue
+     * New value value to use for the selected toggle button.
+     */
+    updateEntries(entries: IToggleGroupPropertyItemEntry[], newValue?: number): void;
+}
+
+/**
+ * Properties of toggle group property item list entry
+ */
+export interface IToggleGroupPropertyItemEntry {
+    /**
+     * @remarks
+     * Optional icon of the dropdown entry.
+     *
+     */
+    readonly icon?: string;
+    /**
+     * @remarks
+     * Localized display text of the entry.
+     *
+     */
+    readonly label?: LocalizedString;
+    /**
+     * @remarks
+     * Optional tooltip description text of the entry.
+     *
+     */
+    readonly tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * The selectable value of the entry.
+     *
+     */
+    readonly value: number;
+}
+
+/**
+ * Optional properties for Toggle Group property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IToggleGroupPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * List of toggle button entries associated with the property
+     * item. If undefined, list will be empty.
+     *
+     */
+    entries?: IToggleGroupPropertyItemEntry[];
+    /**
+     * @remarks
+     * If true toggle buttons will be displayed vertically with
+     * their labels. If undefined, labels will be hidden.
+     *
+     */
+    hiddenEntryLabels?: boolean;
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: number, oldValue: number, items: IToggleGroupPropertyItemEntry[]) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
  * A property item which supports Vector3 properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6607,6 +6823,14 @@ export declare function bindDataSource<T extends PropertyBag, Prop extends keyof
 ): T;
 /**
  * @remarks
+ * Deserialize anything, defaults to the same behavior as
+ * JSON.parse but will use custom deserializers passed into
+ * {@link registerSerializationForType}.
+ *
+ */
+export declare function deserialize(s: string): unknown;
+/**
+ * @remarks
  * Executes an operation over a selection via chunks to allow
  * splitting operation over multiple game ticks
  *
@@ -6672,6 +6896,18 @@ export declare function registerEditorExtension<PerPlayerStorageType = Record<st
 ): Extension;
 /**
  * @remarks
+ * Register a type to have custom serialization/deserialization
+ * when using {@link serialize} and {@link deserialize}.
+ *
+ */
+export declare function registerSerializationForType<T>(
+    typeConstructor: Function,
+    name: string,
+    serializer: (obj: T) => Record<string, unknown>,
+    deserializer: (vals: Record<string, unknown>) => T,
+): void;
+/**
+ * @remarks
  * Creates a strongly typed transaction handle to enforce type
  * safety when adding user defined transactions. This function
  * is a wrapper around the more generalized transaction manager
@@ -6715,6 +6951,14 @@ export declare function registerUserDefinedTransactionHandler<T>(
     undoHandler: (payload: T) => void,
     redoHandler: (payload: T) => void,
 ): UserDefinedTransactionHandle<T>;
+/**
+ * @remarks
+ * Serialize anything, defaults to the same behavior as
+ * JSON.stringify but will use custom serializers passed into
+ * {@link registerSerializationForType}.
+ *
+ */
+export declare function serialize(obj: unknown): string;
 /**
  * @remarks
  * Small utility for getting a string from an unknown exception

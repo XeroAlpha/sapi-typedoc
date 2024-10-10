@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from '../index';
 
 /**
- * @beta
+ * @rc
  * Represents the fluid container of a block in the world. Used
  * with blocks like cauldrons.
  */

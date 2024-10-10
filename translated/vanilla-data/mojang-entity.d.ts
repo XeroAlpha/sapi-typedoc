@@ -48,6 +48,8 @@ export declare enum MinecraftEntityTypes {
     CommandBlockMinecart = "minecraft:command_block_minecart",
     /** 牛。 */
     Cow = "minecraft:cow",
+    /** 嘎枝。 */
+    Creaking = "minecraft:creaking",
     /** 苦力怕。 */
     Creeper = "minecraft:creeper",
     /** 海豚。 */
@@ -194,7 +196,7 @@ export declare enum MinecraftEntityTypes {
     TntMinecart = "minecraft:tnt_minecart",
     /** 行商羊驼。 */
     TraderLlama = "minecraft:trader_llama",
-    /** 相机。 */
+    /** 摄像机。 */
     TripodCamera = "minecraft:tripod_camera",
     /** 热带鱼。 */
     Tropicalfish = "minecraft:tropicalfish",

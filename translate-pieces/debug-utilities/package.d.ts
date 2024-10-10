@@ -1,6 +1,7 @@
 /**
  * @beta
  * @packageDocumentation
+ * Contains debug utility functions.
  *
  * Manifest Details
  * ```json

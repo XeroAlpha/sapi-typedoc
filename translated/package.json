@@ -1,39 +1,41 @@
 {
   "dependencies": {
     "@minecraft/common": "1.2.0",
-    "@minecraft/debug-utilities": "1.0.0-beta.1.21.40-preview.25",
+    "@minecraft/debug-utilities": "1.0.0-beta.1.21.50-preview.20",
     "@minecraft/math": "1.4.0",
-    "@minecraft/server": "1.16.0-beta.1.21.40-preview.25",
-    "@minecraft/server-admin": "1.0.0-beta.1.21.40-preview.25",
-    "@minecraft/server-editor": "0.1.0-beta.1.21.40-preview.25",
-    "@minecraft/server-gametest": "1.0.0-beta.1.21.40-preview.25",
-    "@minecraft/server-net": "1.0.0-beta.1.21.40-preview.25",
-    "@minecraft/server-ui": "1.4.0-beta.1.21.40-preview.25",
-    "@minecraft/vanilla-data": "1.21.40-preview.25"
+    "@minecraft/server": "1.17.0-beta.1.21.50-preview.20",
+    "@minecraft/server-admin": "1.0.0-beta.1.21.50-preview.20",
+    "@minecraft/server-editor": "0.1.0-beta.1.21.50-preview.20",
+    "@minecraft/server-gametest": "1.0.0-beta.1.21.50-preview.20",
+    "@minecraft/server-net": "1.0.0-beta.1.21.50-preview.20",
+    "@minecraft/server-ui": "1.4.0-beta.1.21.50-preview.20",
+    "@minecraft/vanilla-data": "1.21.50-preview.20"
   },
   "overrides": {
     "@minecraft/debug-utilities": {
-      "@minecraft/common": "$@minecraft/common",
-      "@minecraft/server": "$@minecraft/server"
+      "@minecraft/common": "$@minecraft/common"
     },
     "@minecraft/math": {
       "@minecraft/server": "$@minecraft/server"
     },
     "@minecraft/server": {
-      "@minecraft/common": "$@minecraft/common"
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/vanilla-data": "$@minecraft/vanilla-data"
     },
     "@minecraft/server-admin": {
       "@minecraft/common": "$@minecraft/common"
     },
     "@minecraft/server-editor": {
-      "@minecraft/common": "$@minecraft/common"
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server": "$@minecraft/server"
     },
     "@minecraft/server-gametest": {
       "@minecraft/common": "$@minecraft/common",
       "@minecraft/server": "$@minecraft/server"
     },
     "@minecraft/server-net": {
-      "@minecraft/common": "$@minecraft/common"
+      "@minecraft/common": "$@minecraft/common",
+      "@minecraft/server-admin": "$@minecraft/server-admin"
     },
     "@minecraft/server-ui": {
       "@minecraft/common": "$@minecraft/common",

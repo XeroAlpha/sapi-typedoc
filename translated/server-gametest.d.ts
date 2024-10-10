@@ -223,6 +223,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param batchName
      * Name of the batch for the test.
      * @returns
@@ -237,6 +239,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -249,6 +253,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -260,6 +266,8 @@ export class RegistrationBuilder {
      * for the test when running multiple tests together.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      * @param paddingBlocks
      * Size, in blocks, around the GameTest where additional
@@ -276,6 +284,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @param isRequired
      * If set to true, the test must pass in order for the entire
      * run of tests to pass.
@@ -291,6 +301,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -303,6 +315,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
     /**
@@ -312,6 +326,8 @@ export class RegistrationBuilder {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
@@ -319,11 +335,28 @@ export class RegistrationBuilder {
     setupTicks(tickCount: number): RegistrationBuilder;
     /**
      * @remarks
+     * Overrides the default structure placement with a specific
+     * location. If height (y) is set to Dimension.heightRange.max,
+     * the structure will snap to the ground.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
+     *
+     * @returns
+     * RegistrationBuilder object where additional configuration
+     * methods can be called.
+     */
+    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
+    /**
+     * @remarks
      * Sets the name of the structure for a test to use. "xyz:bar"
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -336,6 +369,8 @@ export class RegistrationBuilder {
      * with `/gametest runset <tag>`.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -2133,6 +2168,8 @@ export class GameTestError extends Error {
  *
  * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
  *
+ * This function can be called in early-execution mode.
+ *
  * @param testClassName
  * Name of the class of tests this test should be a part of.
  * @param testName
@@ -2157,6 +2194,8 @@ export function register(
  * in Minecraft via `/gametest run [testClassName]:[testName]`.
  *
  * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+ *
+ * This function can be called in early-execution mode.
  *
  * @param testClassName
  * Name of the class of tests this test should be a part of.

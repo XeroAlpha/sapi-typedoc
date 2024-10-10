@@ -15,5 +15,6 @@ export declare enum PropertyItemType {
     SubPane = 'editorUI:SubPane',
     Table = 'editorUI:Table',
     Text = 'editorUI:Text',
+    ToggleGroup = 'editorUI:ToggleGroup',
     Vector3 = 'editorUI:Vector3',
 }

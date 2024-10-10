@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Represents constants related to fluid containers.
  */
 export class FluidContainer {

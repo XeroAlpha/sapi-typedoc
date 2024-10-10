@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, InputInfo, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -23,6 +23,13 @@ export class Player extends Entity {
      * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
+    /**
+     * @beta
+     * @remarks
+     * Contains the player's input information.
+     *
+     */
+    readonly inputInfo: InputInfo;
     /**
      * @remarks
      * Input permissions of the player.

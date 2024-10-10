@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, InvalidStructureError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
  * Manager for Structure related APIs. Includes APIs for
@@ -138,5 +138,80 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: StructurePlaceOptions,
+    ): void;
+    /**
+     * @beta
+     * @remarks
+     * Places a partial jigsaw structure in the world. This is
+     * useful for debugging connections between jigsaw blocks.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param pool
+     * The identifier of the template pool to start from.
+     * @param targetJigsaw
+     * The name of the jigsaw block to start from. This block must
+     * be included in at least one of the starting pool structure
+     * templates.
+     * @param maxDepth
+     * The maximum recursion depth for the jigsaw structure.
+     * @param dimension
+     * The dimension to place the jigsaw structure in.
+     * @param location
+     * The location where the jigsaw structure will begin
+     * generating relative to the targetJigsaw block.
+     * @param options
+     * Optional settings to use when generating the jigsaw
+     * structure.
+     * @throws
+     * Throws if maxDepth is outside of the range [1,20]
+     * Throws if generation fails due to invalid parameters or
+     * jigsaw configuration.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsaw(
+        pool: string,
+        targetJigsaw: string,
+        maxDepth: number,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawPlaceOptions,
+    ): void;
+    /**
+     * @beta
+     * @remarks
+     * Places a jigsaw structure in the world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param identifier
+     * The identifier of the jigsaw structure.
+     * @param dimension
+     * The dimension to place the jigsaw structure in.
+     * @param location
+     * The location where the jigsaw structure will begin
+     * generating. Note that the y value will be overridden by the
+     * structure's start height unless the
+     * ignoreStarJigsawStructurePlaceOptions ignoreStartHeight
+     * option is set.
+     * @param options
+     * Optional settings to use when generating the jigsaw
+     * structure.
+     * @throws
+     * Throws if generation fails due to invalid parameters or
+     * jigsaw configuration.
+     * Throws if the placement location contains blocks that are
+     * outside the world bounds.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsawStructure(
+        identifier: string,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawStructurePlaceOptions,
     ): void;
 }

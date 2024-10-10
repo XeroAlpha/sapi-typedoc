@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction } from '../index';
+/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction, TooltipInteractiveContent } from '../index';
 
 /**
  * The options to create a root pane.
@@ -11,4 +11,11 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     headerAction?: IRootPropertyPaneHeaderAction;
+    /**
+     * @remarks
+     * Optional information tooltip for the pane to be displayed on
+     * the header.
+     *
+     */
+    infoTooltip?: TooltipInteractiveContent;
 }

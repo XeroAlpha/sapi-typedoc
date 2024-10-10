@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockMaskList, BrushShape, SettingsUIElement, minecraftserver } from '../index';
+/* IMPORT */ import { BlockMaskList, BrushShape, PaintCompletionState, PaintMode, SettingsUIElement, minecraftserver } from '../index';
 
 export class BrushShapeManager {
     private constructor();
@@ -9,23 +9,17 @@ export class BrushShapeManager {
      * @remarks
      * This function can't be called in read-only mode.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftserver.Error}
-     */
-    activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
      */
     activateBrushTool(): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
-    beginPainting(): void;
+    beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -36,8 +30,17 @@ export class BrushShapeManager {
      * @remarks
      * This function can't be called in read-only mode.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
-    endPainting(): void;
+    endPainting(cancelled: boolean): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    getBrushShapeOffset(): minecraftserver.Vector3;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -69,9 +72,19 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    setBlockPaletteOverride(
-        overrideBlock?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
-    ): void;
+    setBrushMask(mask: BlockMaskList): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -80,13 +93,22 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    setBrushMask(mask: BlockMaskList): void;
+    singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    switchBrushPaintMode(paintMode: PaintMode): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.Error}
+     */
+    switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     /**
      * @remarks
      * This function can't be called in read-only mode.

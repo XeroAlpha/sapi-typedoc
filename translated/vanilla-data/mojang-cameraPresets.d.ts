@@ -4,6 +4,8 @@
 export declare enum MinecraftCameraPresetsTypes {
     /** 第一人称视角。 */
     FirstPerson = "minecraft:first_person",
+    /** 第三人称固定视角。 */
+    FixedBoom = "minecraft:fixed_boom",
     /** 第三人称越肩视角。 */
     FollowOrbit = "minecraft:follow_orbit",
     /** 自由视角。 */

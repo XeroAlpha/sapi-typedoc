@@ -572,6 +572,10 @@ export declare enum MinecraftItemTypes {
     Crafter = "minecraft:crafter",
     /** 工作台。 */
     CraftingTable = "minecraft:crafting_table",
+    /** 嘎枝之心。 */
+    CreakingHeart = "minecraft:creaking_heart",
+    /** 嘎枝刷怪蛋。 */
+    CreakingSpawnEgg = "minecraft:creaking_spawn_egg",
     /** 苦力怕盾徽旗帜图案。 */
     CreeperBannerPattern = "minecraft:creeper_banner_pattern",
     /** 苦力怕的头。 */
@@ -1724,6 +1728,46 @@ export declare enum MinecraftItemTypes {
     PackedMud = "minecraft:packed_mud",
     /** 画。 */
     Painting = "minecraft:painting",
+    /** 苍白垂藤。 */
+    PaleHangingMoss = "minecraft:pale_hanging_moss",
+    /** 苍白苔藓块。 */
+    PaleMossBlock = "minecraft:pale_moss_block",
+    /** 苍白覆地苔藓。 */
+    PaleMossCarpet = "minecraft:pale_moss_carpet",
+    /** 苍白橡木船。 */
+    PaleOakBoat = "minecraft:pale_oak_boat",
+    /** 苍白橡木按钮。 */
+    PaleOakButton = "minecraft:pale_oak_button",
+    /** 苍白橡木运输船。 */
+    PaleOakChestBoat = "minecraft:pale_oak_chest_boat",
+    /** 苍白橡木门。 */
+    PaleOakDoor = "minecraft:pale_oak_door",
+    /** 苍白橡木栅栏。 */
+    PaleOakFence = "minecraft:pale_oak_fence",
+    /** 苍白橡木栅栏门。 */
+    PaleOakFenceGate = "minecraft:pale_oak_fence_gate",
+    /** 悬挂式苍白橡木告示牌。 */
+    PaleOakHangingSign = "minecraft:pale_oak_hanging_sign",
+    /** 苍白橡树树叶。 */
+    PaleOakLeaves = "minecraft:pale_oak_leaves",
+    /** 苍白橡木原木。 */
+    PaleOakLog = "minecraft:pale_oak_log",
+    /** 苍白橡木木板。 */
+    PaleOakPlanks = "minecraft:pale_oak_planks",
+    /** 苍白橡木压力板。 */
+    PaleOakPressurePlate = "minecraft:pale_oak_pressure_plate",
+    /** 苍白橡树树苗。 */
+    PaleOakSapling = "minecraft:pale_oak_sapling",
+    /** 苍白橡木告示牌。 */
+    PaleOakSign = "minecraft:pale_oak_sign",
+    /** 苍白橡木台阶。 */
+    PaleOakSlab = "minecraft:pale_oak_slab",
+    /** 苍白橡木楼梯。 */
+    PaleOakStairs = "minecraft:pale_oak_stairs",
+    /** 苍白橡木活板门。 */
+    PaleOakTrapdoor = "minecraft:pale_oak_trapdoor",
+    /** 苍白橡木。 */
+    PaleOakWood = "minecraft:pale_oak_wood",
     /** 熊猫刷怪蛋。 */
     PandaSpawnEgg = "minecraft:panda_spawn_egg",
     /** 纸。 */
@@ -2308,6 +2352,10 @@ export declare enum MinecraftItemTypes {
     StrippedOakLog = "minecraft:stripped_oak_log",
     /** 去皮橡木。 */
     StrippedOakWood = "minecraft:stripped_oak_wood",
+    /** 去皮苍白橡木原木。 */
+    StrippedPaleOakLog = "minecraft:stripped_pale_oak_log",
+    /** 去皮苍白橡木。 */
+    StrippedPaleOakWood = "minecraft:stripped_pale_oak_wood",
     /** 去皮云杉原木。 */
     StrippedSpruceLog = "minecraft:stripped_spruce_log",
     /** 去皮云杉木。 */
