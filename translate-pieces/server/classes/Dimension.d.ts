@@ -456,7 +456,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts 5deb9e00
+     * @seeExample spawnParticle.ts 4689acc9
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }

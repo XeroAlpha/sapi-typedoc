@@ -61,7 +61,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @seeExample check_block_tags.js 4ba7d631
+     * @seeExample check_block_tags.js 25c0e459
      */
     hasTag(tag: string): boolean;
     /**

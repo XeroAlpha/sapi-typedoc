@@ -215,7 +215,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample simpleMobTest.ts 383d6e87
+     * @seeExample simpleMobTest.ts 582539d0
      */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
@@ -264,7 +264,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample simpleMobTest.ts fc1293e3
+     * @seeExample simpleMobTest.ts 3a296de4
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
     /**
@@ -773,8 +773,8 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @seeExample simpleMobTest.ts fc1293e3
-     * @seeExample spawnAdultPig.js 6a962333
+     * @seeExample simpleMobTest.ts 3a296de4
+     * @seeExample spawnAdultPig.js ca50f0aa
      */
     spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -794,7 +794,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @seeExample spawnAdultPig.js 5ea5c8ce
+     * @seeExample spawnAdultPig.js b52912dc
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -966,7 +966,7 @@ export class Test {
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws This function can throw errors.
-     * @seeExample simpleMobTest.ts fc1293e3
+     * @seeExample simpleMobTest.ts 3a296de4
      */
     succeedWhen(callback: () => void): void;
     /**

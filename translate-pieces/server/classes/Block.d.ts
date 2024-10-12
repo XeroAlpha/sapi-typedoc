@@ -301,7 +301,7 @@ export class Block {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample check_block_tags.js ceb2537b
+     * @seeExample check_block_tags.js d8a9d838
      */
     hasTag(tag: string): boolean;
     /**
