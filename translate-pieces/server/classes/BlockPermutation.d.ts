@@ -5,7 +5,7 @@
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
  * Block}).
- * @seeExample createTranslatedSign.ts
+ * @seeExample addTranslatedSign.ts 604a92ba
  */
 export class BlockPermutation {
     private constructor();
@@ -61,7 +61,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @seeExample check_block_tags.js 25c0e459
+     * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
     /**

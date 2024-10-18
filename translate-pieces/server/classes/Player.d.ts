@@ -216,6 +216,7 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
+     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -266,7 +267,11 @@ export class Player extends Entity {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
-     * @seeExample sendMessagesToPlayer.ts
+     * @seeExample nestedTranslation.ts
+     * @seeExample scoreWildcard.ts
+     * @seeExample sendBasicMessage.ts
+     * @seeExample sendPlayerMessages.ts
+     * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**

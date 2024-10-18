@@ -21,7 +21,6 @@
  *   * {@link ModalFormData} allow for a more flexible
  * "questionnaire-style" list of controls that can be used to
  * take input.
- * @seeExample createActionForm.js
  *
  * Manifest Details
  * ```json
@@ -48,7 +47,8 @@ export enum FormRejectReason {
 /**
  * Builds a simple player form with buttons that let the player
  * take action.
- * @seeExample actionFormAskFavoriteMonth.ts
+ * @seeExample showActionForm.ts
+ * @seeExample showFavoriteMonth.ts
  */
 export class ActionFormData {
     /**
@@ -88,7 +88,8 @@ export class ActionFormData {
 /**
  * Returns data about the player results from a modal action
  * form.
- * @seeExample actionFormAskFavoriteMonth.ts
+ * @seeExample showActionForm.ts
+ * @seeExample showFavoriteMonth.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ActionFormResponse extends FormResponse {
@@ -123,7 +124,8 @@ export class FormResponse {
 
 /**
  * Builds a simple two-button modal dialog.
- * @seeExample messageFormSimple.ts
+ * @seeExample showBasicMessageForm.ts
+ * @seeExample showTranslatedMessageForm.ts
  */
 export class MessageFormData {
     /**
@@ -170,7 +172,8 @@ export class MessageFormData {
 /**
  * Returns data about the player results from a modal message
  * form.
- * @seeExample messageFormSimple.ts
+ * @seeExample showBasicMessageForm.ts
+ * @seeExample showTranslatedMessageForm.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class MessageFormResponse extends FormResponse {
@@ -186,7 +189,7 @@ export class MessageFormResponse extends FormResponse {
 /**
  * Used to create a fully customizable pop-up form for a
  * player.
- * @seeExample modalFormSimple.ts
+ * @seeExample showBasicModalForm.ts
  */
 export class ModalFormData {
     /**
@@ -251,7 +254,7 @@ export class ModalFormData {
 
 /**
  * Returns data about player responses to a modal form.
- * @seeExample modalFormSimple.ts
+ * @seeExample showBasicModalForm.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ModalFormResponse extends FormResponse {

@@ -1,21 +1,21 @@
-import { world, system } from '@minecraft/server';
+import { system, DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
-const overworld = world.getDimension('overworld');
-const targetLocation = { x: 0, y: 0, z: 0 };
+function teleportMovement(targetLocation: DimensionLocation) {
+  const pig = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Pig, targetLocation);
 
-const pig = overworld.spawnEntity('minecraft:pig', targetLocation);
-
-let inc = 1;
-const runId = system.runInterval(() => {
+  let inc = 1;
+  const runId = system.runInterval(() => {
     pig.teleport(
-        { x: targetLocation.x + inc / 4, y: targetLocation.y + inc / 4, z: targetLocation.z + inc / 4 },
-        {
-            facingLocation: targetLocation,
-        },
+      { x: targetLocation.x + inc / 4, y: targetLocation.y + inc / 4, z: targetLocation.z + inc / 4 },
+      {
+        facingLocation: targetLocation,
+      }
     );
 
     if (inc > 100) {
-        system.clearRun(runId);
+      system.clearRun(runId);
     }
     inc++;
-}, 4);
+  }, 4);
+}

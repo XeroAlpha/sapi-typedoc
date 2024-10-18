@@ -1,30 +1,25 @@
-import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, Vector3 } from '@minecraft/server';
-import { MinecraftDimensionTypes } from '@minecraft/vanilla-data';
+import { world, MusicOptions, WorldSoundOptions, PlayerSoundOptions, DimensionLocation } from "@minecraft/server";
 
-const players = world.getPlayers();
-const targetLocation: Vector3 = {
-    x: 0,
-    y: 0,
-    z: 0,
-};
+function playMusicAndSound(targetLocation: DimensionLocation) {
+  const players = world.getPlayers();
 
-const musicOptions: MusicOptions = {
+  const musicOptions: MusicOptions = {
     fade: 0.5,
     loop: true,
     volume: 1.0,
-};
-world.playMusic('music.menu', musicOptions);
+  };
+  world.playMusic("music.menu", musicOptions);
 
-const worldSoundOptions: WorldSoundOptions = {
+  const worldSoundOptions: WorldSoundOptions = {
     pitch: 0.5,
     volume: 4.0,
-};
-const overworld = world.getDimension(MinecraftDimensionTypes.Overworld);
-overworld.playSound('ambient.weather.thunder', targetLocation, worldSoundOptions);
+  };
+  world.playSound("ambient.weather.thunder", targetLocation, worldSoundOptions);
 
-const playerSoundOptions: PlayerSoundOptions = {
+  const playerSoundOptions: PlayerSoundOptions = {
     pitch: 1.0,
     volume: 1.0,
-};
+  };
 
-players[0].playSound('bucket.fill_water', playerSoundOptions);
+  players[0].playSound("bucket.fill_water", playerSoundOptions);
+}

@@ -4,7 +4,7 @@
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
- * @seeExample containers.js
+ * @seeExample containers.ts
  */
 export class Container {
     private constructor();
@@ -64,7 +64,7 @@ export class Container {
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
-     * @seeExample getItem.ts
+     * @seeExample getFirstHotbarItem.ts
      */
     getItem(slot: number): ItemStack | undefined;
     /**
@@ -107,7 +107,7 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
-     * @seeExample moveItem.ts
+     * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
@@ -142,7 +142,6 @@ export class Container {
      * @throws
      * Throws if either this container or `otherContainer` are
      * invalid or if the `slot` or `otherSlot` are out of bounds.
-     * @seeExample swapItems.ts
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
@@ -164,7 +163,7 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
-     * @seeExample transferItem.ts
+     * @seeExample transferBetweenContainers.ts
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }

@@ -3,7 +3,6 @@
 /**
  * Registers a script-based event handler for handling what
  * happens when an entity spawns.
- * @seeExample logEntitySpawnEvents.ts
  */
 export class EntitySpawnAfterEventSignal {
     private constructor();
@@ -18,6 +17,7 @@ export class EntitySpawnAfterEventSignal {
      *
      * @param callback
      * Function that handles the spawn event.
+     * @seeExample logEntitySpawnEvent.ts
      */
     subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void;
     /**

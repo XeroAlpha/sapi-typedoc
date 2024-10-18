@@ -15,6 +15,7 @@ export class WorldBeforeEvents {
      * This event is triggered after a chat message has been
      * broadcast or sent to players.
      *
+     * @seeExample customCommand.ts
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**

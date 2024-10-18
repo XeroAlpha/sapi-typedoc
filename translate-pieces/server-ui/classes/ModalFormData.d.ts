@@ -3,7 +3,7 @@
 /**
  * Used to create a fully customizable pop-up form for a
  * player.
- * @seeExample modalFormSimple.ts
+ * @seeExample showBasicModalForm.ts
  */
 export class ModalFormData {
     /**

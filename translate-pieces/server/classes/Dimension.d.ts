@@ -62,6 +62,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
+     * @seeExample createExplosion.ts
+     * @seeExample createNoBlockExplosion.ts
      * @seeExample createExplosions.ts
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
@@ -209,8 +211,9 @@ export class Dimension {
      * @returns
      * An entity array.
      * @throws This function can throw errors.
-     * @seeExample checkFeatherNearby.ts
+     * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
+     * @seeExample testThatEntityIsFeatherItem.ts
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -290,7 +293,6 @@ export class Dimension {
      * An error will be thrown if fade is less than 0.0.
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
-     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -414,8 +416,9 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample createOldHorse.ts
+     * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
+     * @seeExample triggerEvent.ts b473e4eb
      */
     spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
@@ -434,6 +437,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
+     * @seeExample itemStacks.ts
      * @seeExample spawnFeatherItem.ts
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
@@ -456,7 +460,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts 4689acc9
+     * @seeExample spawnParticle.ts 25a384c8
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }

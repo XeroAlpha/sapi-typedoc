@@ -1,22 +1,17 @@
-import { Dimension } from '@minecraft/server';
+import { DimensionLocation } from "@minecraft/server";
 
-// Having this command:
+function playSoundChained(targetLocation: DimensionLocation) {
+  const targetPlayers = targetLocation.dimension.getPlayers();
+  const originEntities = targetLocation.dimension.getEntities({
+    type: "armor_stand",
+    name: "myArmorStand",
+    tags: ["dummyTag1"],
+    excludeTags: ["dummyTag2"],
+  });
 
-// execute as @e[type=armor_stand,name=myArmorStand,tag=dummyTag1,tag=!dummyTag2] run playsound raid.horn @a
-
-// Equivalent scripting code would be:
-function playSounds(dimension: Dimension) {
-    const targetPlayers = dimension.getPlayers();
-    const originEntities = dimension.getEntities({
-        type: 'armor_stand',
-        name: 'myArmorStand',
-        tags: ['dummyTag1'],
-        excludeTags: ['dummyTag2'],
+  originEntities.forEach((entity) => {
+    targetPlayers.forEach((player) => {
+      player.playSound("raid.horn");
     });
-
-    originEntities.forEach(entity => {
-        targetPlayers.forEach(player => {
-            player.playSound('raid.horn');
-        });
-    });
+  });
 }

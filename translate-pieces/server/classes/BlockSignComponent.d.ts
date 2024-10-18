@@ -2,9 +2,10 @@
 
 /**
  * Represents a block that can display text on it.
+ * @seeExample addSign.ts
  * @seeExample addTwoSidedSign.ts
- * @seeExample setSignText.ts
- * @seeExample createTranslatedSign.ts
+ * @seeExample updateSignText.ts
+ * @seeExample addTranslatedSign.ts 604a92ba
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {
@@ -74,7 +75,6 @@ export class BlockSignComponent extends BlockComponent {
      * @throws
      * Throws if the provided message is greater than 512
      * characters in length.
-     * @seeExample setSignText.ts
      */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;
     /**

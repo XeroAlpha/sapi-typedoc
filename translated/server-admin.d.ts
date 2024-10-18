@@ -25,6 +25,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
+import * as minecraftserver from '@minecraft/server';
 /**
  * This represents a placeholder object that represents a
  * secret string. The contents of that string are not available
@@ -84,6 +85,21 @@ export class ServerVariables {
     get(name: string): any | undefined;
 }
 
+/**
+ * @remarks
+ * Transfer player to another server.
+ *
+ * This function can't be called in read-only mode.
+ *
+ * @param player
+ * Player to transfer.
+ * @param host
+ * Host of the server to transfer to.
+ * @param port
+ * Port of the server to transfer to.
+ * @throws This function can throw errors.
+ */
+export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 /**
  * @remarks
  * A globally available object that returns a list of

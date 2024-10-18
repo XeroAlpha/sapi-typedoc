@@ -1,21 +1,21 @@
-import * as mc from '@minecraft/server';
+import { world, DimensionLocation } from "@minecraft/server";
 
-function incrementProperty(propertyName: string): boolean {
-    let number = mc.world.getDynamicProperty(propertyName);
+function incrementDynamicProperty(
+  log: (message: string, status?: number) => void,
+  targetLocation: DimensionLocation
+) {
+  let number = world.getDynamicProperty("samplelibrary:number");
 
-    console.warn('Current value is: ' + number);
+  log("Current value is: " + number);
 
-    if (number === undefined) {
-        number = 0;
-    }
+  if (number === undefined) {
+    number = 0;
+  }
 
-    if (typeof number !== 'number') {
-        console.warn('Number is of an unexpected type.');
-        return false;
-    }
+  if (typeof number !== "number") {
+    log("Number is of an unexpected type.");
+    return -1;
+  }
 
-    mc.world.setDynamicProperty(propertyName, number + 1);
-    return true;
+  world.setDynamicProperty("samplelibrary:number", number + 1);
 }
-
-incrementProperty('samplelibrary:number');

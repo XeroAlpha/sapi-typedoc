@@ -3,7 +3,7 @@
 /**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
- * @seeExample place_items_in_chest.js
+ * @seeExample placeItemsInChest.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockInventoryComponent extends BlockComponent {

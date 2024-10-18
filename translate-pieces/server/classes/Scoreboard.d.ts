@@ -2,6 +2,7 @@
 
 /**
  * Contains objectives and participants for the scoreboard.
+ * @seeExample updateScoreboard.ts
  */
 export class Scoreboard {
     private constructor();
@@ -12,6 +13,7 @@ export class Scoreboard {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     * @seeExample updateScoreboard.ts
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**

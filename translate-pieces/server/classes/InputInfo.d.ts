@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputMode, InvalidEntityError } from '../index';
+/* IMPORT */ import { InputMode, InvalidEntityError, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -11,6 +11,8 @@ export class InputInfo {
      * The last input mode used by the player.
      *
      * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
      *
      * {@link InvalidEntityError}
      */

@@ -13,7 +13,6 @@
  *   * {@link ModalFormData} allow for a more flexible
  * "questionnaire-style" list of controls that can be used to
  * take input.
- * @seeExample createActionForm.js
  *
  * Manifest Details
  * ```json
