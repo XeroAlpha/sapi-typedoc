@@ -152,7 +152,7 @@ export class Entity {
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
      * @throws This function can throw errors.
-     * @seeExample poisonVillager.ts
+     * @seeExample spawnPoisonedVillager.ts
      * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
@@ -169,6 +169,7 @@ export class Entity {
      * Returns true if the tag was added successfully. This can
      * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
+     * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
     /**
@@ -201,7 +202,7 @@ export class Entity {
      * @param vector
      * Impulse vector.
      * @throws This function can throw errors.
-     * @seeExample yeetEntity.ts
+     * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -239,7 +240,7 @@ export class Entity {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     * @seeExample yeetEntity.ts
+     * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
     /**
@@ -256,7 +257,7 @@ export class Entity {
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
-     * @seeExample setEntityOnFire.ts
+     * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -483,6 +484,22 @@ export class Entity {
      */
     kill(): boolean;
     /**
+     * @beta
+     * @remarks
+     * Sets the rotation of the entity to face a target location.
+     * Both pitch and yaw will be set, if applicable, such as for
+     * mobs where the pitch controls the head tilt and the yaw
+     * controls the body rotation.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param targetLocation
+     * The target location that this entity should face/look
+     * towards.
+     * @throws This function can throw errors.
+     */
+    lookAt(targetLocation: Vector3): void;
+    /**
      * @remarks
      * Matches the entity against the passed in options. Uses the
      * location of the entity for matching if the location is not
@@ -637,7 +654,7 @@ export class Entity {
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
      * @throws This function can throw errors.
-     * @seeExample setEntityOnFire.ts
+     * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -687,6 +704,7 @@ export class Entity {
      * @param teleportOptions
      * Options regarding the teleport operation.
      * @throws This function can throw errors.
+     * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
@@ -705,7 +723,8 @@ export class Entity {
      * @throws
      * If the event is not defined in the definition of the entity,
      * an error will be thrown.
-     * @seeExample triggerEvent.ts
+     * @seeExample triggerEvent.ts e0d38a47
+     * @seeExample triggerEvent.ts b473e4eb
      */
     triggerEvent(eventName: string): void;
     /**

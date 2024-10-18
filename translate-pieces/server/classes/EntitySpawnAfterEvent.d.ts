@@ -3,7 +3,7 @@
 /**
  * Contains data related to an entity spawning within the
  * world.
- * @seeExample logEntitySpawnEvents.ts
+ * @seeExample logEntitySpawnEvent.ts
  */
 export class EntitySpawnAfterEvent {
     private constructor();

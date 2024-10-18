@@ -3,7 +3,8 @@
 /**
  * Returns data about the player results from a modal action
  * form.
- * @seeExample actionFormAskFavoriteMonth.ts
+ * @seeExample showActionForm.ts
+ * @seeExample showFavoriteMonth.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ActionFormResponse extends FormResponse {

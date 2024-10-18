@@ -361,6 +361,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
+     * @seeExample phantomsShouldFlyFromCats.ts
      */
     structureName(structureName: string): RegistrationBuilder;
     /**
@@ -375,6 +376,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
+     * @seeExample phantomsShouldFlyFromCats.ts
      */
     tag(tag: string): RegistrationBuilder;
 }
@@ -1047,7 +1049,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample testIfButtonNotPressed.js
      */
     assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
     /**
@@ -1127,7 +1128,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample horseArmorTest.js
      */
     assertEntityHasArmor(
         entityTypeIdentifier: string,
@@ -1158,7 +1158,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample sheepShearedTest.js
      */
     assertEntityHasComponent(
         entityTypeIdentifier: string,
@@ -1203,7 +1202,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample simpleMobTest.ts 383d6e87
+     * @seeExample simpleMobTest.ts 582539d0
      */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
@@ -1252,7 +1251,8 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample simpleMobTest.ts fc1293e3
+     * @seeExample simpleMobTest.ts 3a296de4
+     * @seeExample simpleMobGameTest.ts
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
     /**
@@ -1275,7 +1275,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample villagerEffectTest.js
      */
     assertEntityState(
         blockLocation: minecraftserver.Vector3,
@@ -1337,7 +1336,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample findFeathers.js
      */
     assertItemEntityCountIs(
         itemType: minecraftserver.ItemType | string,
@@ -1710,6 +1708,7 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
+     * @seeExample minibiomes.ts
      */
     setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
     /**
@@ -1761,8 +1760,10 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @seeExample simpleMobTest.ts fc1293e3
-     * @seeExample spawnAdultPig.js 6a962333
+     * @seeExample simpleMobTest.ts 3a296de4
+     * @seeExample simpleMobGameTest.ts
+     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample minibiomes.ts
      */
     spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1782,7 +1783,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @seeExample spawnAdultPig.js 5ea5c8ce
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1798,7 +1798,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link minecraftserver.GameTestError}
-     * @seeExample spawnEmeralds.js
      */
     spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1870,7 +1869,6 @@ export class Test {
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
-     * @seeExample spreadFromFaceTowardDirection.js
      */
     spreadFromFaceTowardDirection(
         blockLocation: minecraftserver.Vector3,
@@ -1954,7 +1952,7 @@ export class Test {
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws This function can throw errors.
-     * @seeExample simpleMobTest.ts fc1293e3
+     * @seeExample simpleMobGameTest.ts
      */
     succeedWhen(callback: () => void): void;
     /**
@@ -2031,6 +2029,8 @@ export class Test {
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
      * @throws This function can throw errors.
+     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample minibiomes.ts
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
@@ -2180,7 +2180,7 @@ export class GameTestError extends Error {
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @seeExample simpleMobTest.ts fc1293e3
+ * @seeExample simpleMobGameTest.ts
  */
 export function register(
     testClassName: string,

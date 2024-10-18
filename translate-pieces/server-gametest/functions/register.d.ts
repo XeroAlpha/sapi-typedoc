@@ -20,7 +20,7 @@
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @seeExample simpleMobTest.ts fc1293e3
+ * @seeExample simpleMobGameTest.ts
  */
 export function register(
     testClassName: string,

@@ -1,26 +1,30 @@
-import { world, Player } from '@minecraft/server';
-import { MessageFormData, MessageFormResponse } from '@minecraft/server-ui';
+import { world, DimensionLocation } from "@minecraft/server";
+import { MessageFormResponse, MessageFormData } from "@minecraft/server-ui";
 
-function showMessage(player: Player) {
-    const messageForm = new MessageFormData()
-        .title({ translate: 'permissions.removeplayer' })
-        .body({ translate: 'accessibility.list.or.two', with: ['Player 1', 'Player 2'] })
-        .button1('Player 1')
-        .button2('Player 2');
+function showTranslatedMessageForm(
+  log: (message: string, status?: number) => void,
+  targetLocation: DimensionLocation
+) {
+  const players = world.getPlayers();
 
-    messageForm
-        .show(player)
-        .then((formData: MessageFormResponse) => {
-            // player canceled the form, or another dialog was up and open.
-            if (formData.canceled || formData.selection === undefined) {
-                return;
-            }
+  const messageForm = new MessageFormData()
+    .title({ translate: "permissions.removeplayer" })
+    .body({ translate: "accessibility.list.or.two", with: ["Player 1", "Player 2"] })
+    .button1("Player 1")
+    .button2("Player 2");
 
-            console.warn(`You selected ${formData.selection === 0 ? 'Player 1' : 'Player 2'}`);
-        })
-        .catch((error: Error) => {
-            console.warn('Failed to show form: ' + error);
-        });
-};
+  messageForm
+    .show(players[0])
+    .then((formData: MessageFormResponse) => {
+      // player canceled the form, or another dialog was up and open.
+      if (formData.canceled || formData.selection === undefined) {
+        return;
+      }
 
-showMessage(world.getAllPlayers()[0]);
+      log(`You selected ${formData.selection === 0 ? "Player 1" : "Player 2"}`);
+    })
+    .catch((error: Error) => {
+      log("Failed to show form: " + error);
+      return -1;
+    });
+}

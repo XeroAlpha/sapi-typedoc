@@ -3,7 +3,8 @@
 /**
  * Builds a simple player form with buttons that let the player
  * take action.
- * @seeExample actionFormAskFavoriteMonth.ts
+ * @seeExample showActionForm.ts
+ * @seeExample showFavoriteMonth.ts
  */
 export class ActionFormData {
     /**

@@ -1,7 +1,9 @@
-import { DimensionLocation, BlockPermutation } from '@minecraft/server';
-import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
+import { BlockPermutation, DimensionLocation } from "@minecraft/server";
+import { Vector3Utils } from "@minecraft/math";
+import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
-const allWoolBlocks: string[] = [
+function addBlockColorCube(targetLocation: DimensionLocation) {
+  const allWoolBlocks: string[] = [
     MinecraftBlockTypes.WhiteWool,
     MinecraftBlockTypes.OrangeWool,
     MinecraftBlockTypes.MagentaWool,
@@ -18,20 +20,20 @@ const allWoolBlocks: string[] = [
     MinecraftBlockTypes.GreenWool,
     MinecraftBlockTypes.RedWool,
     MinecraftBlockTypes.BlackWool,
-];
+  ];
 
-const cubeDim = 7;
+  const cubeDim = 7;
 
-function placeRainbowCube(location: DimensionLocation) {
-    let colorIndex = 0;
-    for (let x = 0; x <= cubeDim; x++) {
-        for (let y = 0; y <= cubeDim; y++) {
-            for (let z = 0; z <= cubeDim; z++) {
-                colorIndex++;
-                location.dimension
-                    .getBlock({ x: location.x + x, y: location.y + y, z: location.z + z })
-                    ?.setPermutation(BlockPermutation.resolve(allWoolBlocks[colorIndex % allWoolBlocks.length]));
-            }
-        }
+  let colorIndex = 0;
+
+  for (let x = 0; x <= cubeDim; x++) {
+    for (let y = 0; y <= cubeDim; y++) {
+      for (let z = 0; z <= cubeDim; z++) {
+        colorIndex++;
+        targetLocation.dimension
+          .getBlock(Vector3Utils.add(targetLocation, { x, y, z }))
+          ?.setPermutation(BlockPermutation.resolve(allWoolBlocks[colorIndex % allWoolBlocks.length]));
+      }
     }
+  }
 }

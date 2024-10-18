@@ -1,19 +1,18 @@
-// A function that applies damage and then heals the entity
-import { Entity, EntityComponentTypes, system, world } from '@minecraft/server';
+import { system, EntityHealthComponent, EntityComponentTypes, DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
-function applyDamageAndHeal(entity: Entity) {
-    entity.applyDamage(19); // Many mobs have max damage of 20 so this is a near-death mob
+function applyDamageThenHeal(
+  log: (message: string, status?: number) => void,
+  targetLocation: DimensionLocation
+) {
+  const skelly = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Skeleton, targetLocation);
 
-    system.runTimeout(() => {
-        const health = entity.getComponent(EntityComponentTypes.Health);
-        if (health) {
-            world.sendMessage(`Entity health before heal: ${health.currentValue}`);
+  skelly.applyDamage(19); // skeletons have max damage of 20 so this is a near-death skeleton
 
-            health.resetToMaxValue();
-
-            world.sendMessage(`Entity after before heal: ${health.currentValue}`);
-        } else {
-            console.warn('Entity does not have health component');
-        }
-    }, 40); // Run in a few seconds (40 ticks)
+  system.runTimeout(() => {
+    const health = skelly.getComponent(EntityComponentTypes.Health) as EntityHealthComponent;
+    log("Skeleton health before heal: " + health?.currentValue);
+    health?.resetToMaxValue();
+    log("Skeleton health after heal: " + health?.currentValue);
+  }, 20);
 }

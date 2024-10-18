@@ -2,7 +2,7 @@
 
 /**
  * Returns data about player responses to a modal form.
- * @seeExample modalFormSimple.ts
+ * @seeExample showBasicModalForm.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ModalFormResponse extends FormResponse {

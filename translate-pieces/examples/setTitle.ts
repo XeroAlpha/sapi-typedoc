@@ -1,5 +1,9 @@
-import { world } from '@minecraft/server';
+import { world, DimensionLocation } from "@minecraft/server";
 
-world.afterEvents.playerSpawn.subscribe((event) => {
-    event.player.onScreenDisplay.setTitle('§o§6You respawned!§r');
-});
+function setTitle(targetLocation: DimensionLocation) {
+  const players = world.getPlayers();
+
+  if (players.length > 0) {
+    players[0].onScreenDisplay.setTitle("§o§6Fancy Title§r");
+  }
+}

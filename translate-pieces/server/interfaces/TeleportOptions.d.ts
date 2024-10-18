@@ -2,6 +2,7 @@
 
 /**
  * Contains additional options for teleporting an entity.
+ * @seeExample teleport.ts
  * @seeExample teleportMovement.ts
  */
 export interface TeleportOptions {

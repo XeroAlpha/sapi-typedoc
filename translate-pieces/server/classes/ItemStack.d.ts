@@ -2,7 +2,7 @@
 
 /**
  * Defines a collection of items.
- * @seeExample givePlayerIronFireSword.ts
+ * @seeExample itemStacks.ts
  * @seeExample givePlayerEquipment.ts
  * @seeExample spawnFeatherItem.ts
  */
@@ -144,7 +144,7 @@ export class ItemStack {
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
-     * @seeExample durability.ts
+     * @seeExample giveHurtDiamondSword.ts
      */
     getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
     /**
@@ -266,7 +266,7 @@ export class ItemStack {
      * String list of block types that the item can destroy.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample giveRestrictedPickaxe.ts
+     * @seeExample giveDestroyRestrictedPickaxe.ts
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
@@ -282,7 +282,7 @@ export class ItemStack {
      * String list of block types that the item can be placed on.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample giveRestrictedGoldBlock.ts
+     * @seeExample givePlaceRestrictedGoldBlock.ts
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**

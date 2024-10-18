@@ -7,6 +7,7 @@
  * When present on an item, this item can take damage in the
  * process of being used. Note that this component only applies
  * to data-driven items.
+ * @seeExample giveHurtDiamondSword.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDurabilityComponent extends ItemComponent {

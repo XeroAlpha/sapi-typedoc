@@ -27,10 +27,4 @@ export enum InputMode {
      *
      */
     Touch = 'Touch',
-    /**
-     * @remarks
-     * Input type not detected.
-     *
-     */
-    Undetermined = 'Undetermined',
 }

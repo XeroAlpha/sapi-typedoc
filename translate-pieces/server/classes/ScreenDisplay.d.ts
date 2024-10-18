@@ -5,7 +5,7 @@
  * showing up on the screen.
  * @seeExample setTitle.ts
  * @seeExample setTitleAndSubtitle.ts
- * @seeExample titleCountdown.ts
+ * @seeExample countdown.ts
  */
 export class ScreenDisplay {
     private constructor();
@@ -83,7 +83,7 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      * @seeExample setTitle.ts
      * @seeExample setTitleAndSubtitle.ts
-     * @seeExample titleCountdown.ts
+     * @seeExample countdown.ts
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
@@ -94,6 +94,7 @@ export class ScreenDisplay {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }

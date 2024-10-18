@@ -1,23 +1,26 @@
-// Spawns a fox over a dog
-import { DimensionLocation } from '@minecraft/server';
-import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
+import { DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes, MinecraftEffectTypes } from "@minecraft/vanilla-data";
 
-function spawnAdultHorse(location: DimensionLocation) {
-    // Create fox (our quick brown fox)
-    const fox = location.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
-        x: location.x,
-        y: location.y + 2,
-        z: location.z,
-    });
+function quickFoxLazyDog(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
+  const fox = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
+    x: targetLocation.x + 1,
+    y: targetLocation.y + 2,
+    z: targetLocation.z + 3,
+  });
 
-    fox.addEffect('speed', 10, {
-        amplifier: 2,
-    });
+  fox.addEffect(MinecraftEffectTypes.Speed, 10, {
+    amplifier: 2,
+  });
+  log("Created a fox.");
 
-    // Create wolf (our lazy dog)
-    const wolf = location.dimension.spawnEntity(MinecraftEntityTypes.Wolf, location);
-    wolf.addEffect('slowness', 10, {
-        amplifier: 2,
-    });
-    wolf.isSneaking = true;
+  const wolf = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Wolf, {
+    x: targetLocation.x + 4,
+    y: targetLocation.y + 2,
+    z: targetLocation.z + 3,
+  });
+  wolf.addEffect(MinecraftEffectTypes.Slowness, 10, {
+    amplifier: 2,
+  });
+  wolf.isSneaking = true;
+  log("Created a sneaking wolf.", 1);
 }

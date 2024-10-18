@@ -1,13 +1,15 @@
-// A function that spawns fireworks and logs their velocity after 5 ticks
-import { DimensionLocation, system, world } from '@minecraft/server';
-import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
+import { system, DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
-function spawnFireworks(location: DimensionLocation) {
-    const fireworkRocket = location.dimension.spawnEntity(MinecraftEntityTypes.FireworksRocket, location);
+function getFireworkVelocity(
+  log: (message: string, status?: number) => void,
+  targetLocation: DimensionLocation
+) {
+  const fireworkRocket = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.FireworksRocket, targetLocation);
 
-    system.runTimeout(() => {
-        const velocity = fireworkRocket.getVelocity();
+  system.runTimeout(() => {
+    const velocity = fireworkRocket.getVelocity();
 
-        world.sendMessage(`Velocity of firework is: ${velocity.x}, ${velocity.y}, ${velocity.z}`);
-    }, 5);
+    log("Velocity of firework is: (x: " + velocity.x + ", y:" + velocity.y + ", z:" + velocity.z + ")");
+  }, 5);
 }

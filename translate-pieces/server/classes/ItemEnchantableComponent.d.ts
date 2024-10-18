@@ -3,7 +3,6 @@
 /**
  * When present on an item, this item can have enchantments
  * applied to it.
- * @seeExample givePlayerIronFireSword.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemEnchantableComponent extends ItemComponent {

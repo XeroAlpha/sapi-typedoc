@@ -1,4 +1,4 @@
-const { createHmac } = require('crypto');
+const { createHash } = require('crypto');
 const { mkdirSync, writeFileSync, existsSync, readFileSync } = require('fs');
 const { resolve: resolvePath } = require('path');
 const { SyntaxKind } = require('ts-morph');
@@ -20,7 +20,7 @@ const ExampleNameOverwrite = [
 ];
 
 function hashTextShort(str) {
-    return createHmac('sha256', str).digest('hex').slice(0, 8);
+    return createHash('sha256').update(str).digest('hex').slice(0, 8);
 }
 
 const examples = {};

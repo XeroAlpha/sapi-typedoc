@@ -22,6 +22,7 @@ export class World {
      * of the world. Event callbacks are called immediately. Event
      * callbacks are executed in read-only mode.
      *
+     * @seeExample customCommand.ts
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
@@ -297,10 +298,6 @@ export class World {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
-     * @seeExample nestedTranslation.ts
-     * @seeExample scoreWildcard.ts
-     * @seeExample simpleString.ts
-     * @seeExample translation.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**

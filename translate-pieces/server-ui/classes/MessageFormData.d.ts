@@ -2,7 +2,8 @@
 
 /**
  * Builds a simple two-button modal dialog.
- * @seeExample messageFormSimple.ts
+ * @seeExample showBasicMessageForm.ts
+ * @seeExample showTranslatedMessageForm.ts
  */
 export class MessageFormData {
     /**

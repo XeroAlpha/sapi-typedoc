@@ -29,6 +29,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
+import * as minecraftserver from '@minecraft/server';
 /**
  * 表示一段机密字符串的占位符。
  * 脚本无法访问或修改机密字符串的内容，
@@ -105,6 +106,21 @@ export class ServerVariables {
     get(name: string): any | undefined;
 }
 
+/**
+ * @remarks
+ * Transfer player to another server.
+ *
+ * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+ *
+ * @param player
+ * Player to transfer.
+ * @param host
+ * Host of the server to transfer to.
+ * @param port
+ * Port of the server to transfer to.
+ * @throws This function can throw errors.
+ */
+export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 /**
  * @remarks
  * 表示全局可访问的专用服务器配置中的机密变量列表。

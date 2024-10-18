@@ -9,7 +9,7 @@
     "@minecraft/server-gametest": "beta",
     "@minecraft/server-net": "beta",
     "@minecraft/server-ui": "beta",
-    "@minecraft/vanilla-data": "1.21.50-preview.20"
+    "@minecraft/vanilla-data": "preview"
   },
   "overrides": {
     "@minecraft/debug-utilities": {

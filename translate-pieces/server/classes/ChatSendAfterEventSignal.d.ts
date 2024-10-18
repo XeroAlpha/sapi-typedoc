@@ -16,7 +16,6 @@ export class ChatSendAfterEventSignal {
      *
      * This function can be called in early-execution mode.
      *
-     * @seeExample custom_command.js
      */
     subscribe(callback: (arg: ChatSendAfterEvent) => void): (arg: ChatSendAfterEvent) => void;
     /**

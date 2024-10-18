@@ -2,7 +2,6 @@
 
 /**
  * Manages callbacks that are connected to piston activations.
- * @seeExample pistonAfterEvent.ts
  */
 export class PistonActivateAfterEventSignal {
     private constructor();
@@ -12,6 +11,7 @@ export class PistonActivateAfterEventSignal {
      *
      * This function can be called in early-execution mode.
      *
+     * @seeExample pistonAfterEvent.ts
      */
     subscribe(callback: (arg: PistonActivateAfterEvent) => void): (arg: PistonActivateAfterEvent) => void;
     /**

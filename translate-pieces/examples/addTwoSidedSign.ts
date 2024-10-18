@@ -1,35 +1,28 @@
-// A function the creates a sign at the specified location with text on both sides and dye colors
-import {
-    DimensionLocation,
-    BlockPermutation,
-    BlockSignComponent,
-    BlockComponentTypes,
-    DyeColor,
-    SignSide,
-} from '@minecraft/server';
-import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
+import { BlockPermutation, BlockSignComponent, SignSide, DyeColor, BlockComponentTypes, DimensionLocation } from "@minecraft/server";
+import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
-function createSignAt(location: DimensionLocation) {
-    const block = location.dimension.getBlock(location);
-    if (!block) {
-        console.warn('Could not find a block at specified location.');
-        return;
-    }
-    const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, {
-        ground_sign_direction: 8,
-    });
-    block.setPermutation(signPerm);
-    const sign = block.getComponent(BlockComponentTypes.Sign);
+function addTwoSidedSign(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
+  const signBlock = targetLocation.dimension.getBlock(targetLocation);
 
-    if (sign !== undefined) {
-        sign.setText(`Party Sign!\nThis is green on the front.`);
-        sign.setText(`Party Sign!\nThis is red on the back.`, SignSide.Back);
-        sign.setTextDyeColor(DyeColor.Green);
-        sign.setTextDyeColor(DyeColor.Red, SignSide.Back);
+  if (!signBlock) {
+    log("Could not find a block at specified location.");
+    return -1;
+  }
+  const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, { ground_sign_direction: 8 });
 
-        // players cannot edit sign!
-        sign.setWaxed(true);
-    } else {
-        console.warn('Could not find a sign component on the block.');
-    }
+  signBlock.setPermutation(signPerm);
+
+  const signComponent = signBlock.getComponent(BlockComponentTypes.Sign) as BlockSignComponent;
+
+  if (signComponent) {
+    signComponent.setText(`Party Sign!\nThis is green on the front.`);
+    signComponent.setText(`Party Sign!\nThis is red on the back.`, SignSide.Back);
+    signComponent.setTextDyeColor(DyeColor.Green);
+    signComponent.setTextDyeColor(DyeColor.Red, SignSide.Back);
+
+    // players cannot edit sign!
+    signComponent.setWaxed(true);
+  } else {
+    log("Could not find sign component.");
+  }
 }

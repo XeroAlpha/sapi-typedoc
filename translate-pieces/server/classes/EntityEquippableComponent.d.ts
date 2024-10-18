@@ -4,7 +4,6 @@
  * Provides access to a mob's equipment slots. This component
  * exists for all mob entities.
  * @seeExample givePlayerElytra.ts
- * @seeExample givePlayerEquipment.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {

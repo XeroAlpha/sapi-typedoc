@@ -8,6 +8,7 @@ export interface IModalToolContainer {
      */
     readonly currentTools: IModalTool[];
     addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
+    focusToolInputContext(): void;
     getSelectedToolId(): string | undefined;
     removeTool(id: string): void;
     setSelectedToolId(id: string | undefined): void;

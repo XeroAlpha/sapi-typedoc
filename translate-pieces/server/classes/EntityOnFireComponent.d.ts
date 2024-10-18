@@ -2,7 +2,7 @@
 
 /**
  * When present on an entity, this entity is on fire.
- * @seeExample setEntityOnFire.ts
+ * @seeExample setOnFire.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityOnFireComponent extends EntityComponent {
