@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputMode, InvalidEntityError, minecraftcommon } from '../index';
+/* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -27,4 +27,18 @@ export class InputInfo {
      * {@link InvalidEntityError}
      */
     readonly touchOnlyAffectsHotbar: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getButtonState(button: InputButton): ButtonState;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getMovementVector(): Vector2;
 }

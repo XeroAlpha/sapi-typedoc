@@ -19,7 +19,6 @@ export enum EntityComponentTypes {
      */
     Ageable = 'minecraft:ageable',
     /**
-     * @rc
      * @remarks
      * Defines what blocks this entity can breathe in and gives
      * them the ability to suffocate.

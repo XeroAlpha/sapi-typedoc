@@ -259,7 +259,6 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @rc
      * @remarks
      * Returns the net redstone power of this block.
      *

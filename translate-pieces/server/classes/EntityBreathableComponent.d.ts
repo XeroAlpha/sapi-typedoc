@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockPermutation, EntityComponent } from '../index';
 
 /**
- * @rc
  * Defines what blocks this entity can breathe in and gives
  * them the ability to suffocate.
  */

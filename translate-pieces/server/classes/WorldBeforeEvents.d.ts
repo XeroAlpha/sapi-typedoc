@@ -60,14 +60,12 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before a player interacts with an entity.
      *
