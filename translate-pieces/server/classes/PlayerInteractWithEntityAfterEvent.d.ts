@@ -7,7 +7,6 @@
 export class PlayerInteractWithEntityAfterEvent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.

@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from '../index';
 
 /**
- * @rc
  * A BlockVolume is a simple interface to an object which
  * represents a 3D rectangle of a given size (in blocks) at a
  * world block location.

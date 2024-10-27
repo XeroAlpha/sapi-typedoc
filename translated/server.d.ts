@@ -94,7 +94,6 @@ export enum BlockPistonState {
 }
 
 /**
- * @rc
  * Description of the resulting intersection test on two
  * BlockVolume objects
  */
@@ -117,6 +116,16 @@ export enum BlockVolumeIntersection {
      *
      */
     Intersects = 2,
+}
+
+/**
+ * @beta
+ * The state of a button on a keyboard, controller, or touch
+ * interface.
+ */
+export enum ButtonState {
+    Pressed = 'Pressed',
+    Released = 'Released',
 }
 
 /**
@@ -473,7 +482,6 @@ export enum EntityComponentTypes {
      */
     Ageable = 'minecraft:ageable',
     /**
-     * @rc
      * @remarks
      * Defines what blocks this entity can breathe in and gives
      * them the ability to suffocate.
@@ -1614,6 +1622,36 @@ export enum HudVisibility {
      *
      */
     Reset = 1,
+}
+
+/**
+ * @beta
+ * All the different input buttons that are supported. Use with
+ * {@link @minecraft/server.PlayerInput.getButtonState} via
+ * {@link @minecraft/server.Player.input} or {@link
+ * PlayerButtonInputAfterEvent} via {@link
+ * WorldAfterEvents.playerButtonInput}
+ */
+export enum InputButton {
+    /**
+     * @remarks
+     * This is mapped to the 'Jump' button on controllers,
+     * keyboards, and touch interfaces.
+     *
+     */
+    Jump = 'Jump',
+    /**
+     * @remarks
+     * This is mapped to the 'Sneak' button on controllers,
+     * keyboards, and touch interfaces. By default, this is shift
+     * on a keyboard or B on an Xbox controller. On touch
+     * interfaces this will only be pressed for 1 tick or less and
+     * then it will be released immediately even if the player
+     * holds their finger down. Dismounting a horse or exiting a
+     * boat will not send a Sneak button change event.
+     *
+     */
+    Sneak = 'Sneak',
 }
 
 /**
@@ -2923,7 +2961,6 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @rc
      * @remarks
      * 返回该方块的净红石能量强度。
      * 考虑了所有输入和输出后的总红石能量强度。
@@ -3550,7 +3587,6 @@ export class BlockInventoryComponent extends BlockComponent {
 }
 
 /**
- * @rc
  * A BlockLocationIterator returns the next block location of
  * the block volume across which it is iterating.
  * The BlockLocationIterator is used to abstract the shape of
@@ -3992,7 +4028,6 @@ export class BlockTypes {
 }
 
 /**
- * @rc
  * A BlockVolume is a simple interface to an object which
  * represents a 3D rectangle of a given size (in blocks) at a
  * world block location.
@@ -4091,7 +4126,6 @@ export class BlockVolume extends BlockVolumeBase {
 export class BlockVolumeBase {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume
@@ -7072,7 +7106,6 @@ export class EntityBaseMovementComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Defines what blocks this entity can breathe in and gives
  * them the ability to suffocate.
  */
@@ -9898,6 +9931,20 @@ export class InputInfo {
      * {@link InvalidEntityError}
      */
     readonly touchOnlyAffectsHotbar: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getButtonState(button: InputButton): ButtonState;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getMovementVector(): Vector2;
 }
 
 /**
@@ -12375,6 +12422,65 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Event data for when a player presses a button.
+ */
+export class PlayerButtonInputAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The button this event is about.
+     *
+     */
+    readonly button: InputButton;
+    /**
+     * @remarks
+     * The state that this button transferred to.
+     *
+     */
+    readonly newButtonState: ButtonState;
+    /**
+     * @remarks
+     * The player that performed the input event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to player inputs.
+ */
+export class PlayerButtonInputAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after the player
+     * performs an input.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(
+        callback: (arg: PlayerButtonInputAfterEvent) => void,
+        options?: InputEventOptions,
+    ): (arg: PlayerButtonInputAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called after the player
+     * performs an input.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
+}
+
+/**
  * Represents the players cursor inventory. Used when moving
  * items between between containers in the inventory UI. Not
  * used with touch controls.
@@ -12779,7 +12885,6 @@ export class PlayerInputPermissions {
 export class PlayerInteractWithBlockAfterEvent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.
@@ -12806,7 +12911,6 @@ export class PlayerInteractWithBlockAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -12893,7 +12997,6 @@ export class PlayerInteractWithBlockBeforeEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -12955,7 +13058,6 @@ export class PlayerInteractWithBlockBeforeEventSignal {
 export class PlayerInteractWithEntityAfterEvent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The ItemStack before the interaction succeeded, or undefined
      * if hand is empty.
@@ -15142,9 +15244,6 @@ export class World {
      *
      */
     readonly gameRules: GameRules;
-    /**
-     * @rc
-     */
     readonly isHardcore: boolean;
     /**
      * @remarks
@@ -15681,6 +15780,14 @@ export class WorldAfterEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when an {@link
+     * @minecraft/Server.InputButton} state is changed.
+     *
+     */
+    readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
+    /**
      * @remarks
      * Fires when a player moved to a different dimension.
      *
@@ -15703,14 +15810,12 @@ export class WorldAfterEvents {
      */
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * An event for when a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player interacts with an entity.
      *
@@ -15862,14 +15967,12 @@ export class WorldBeforeEvents {
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before a player interacts with a block.
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before a player interacts with an entity.
      *
@@ -16979,6 +17082,30 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
+ * @beta
+ * An interface that is passed into {@link
+ * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
+ * that filters out which events are passed to the provided
+ * callback.
+ */
+export interface InputEventOptions {
+    /**
+     * @remarks
+     * The buttons the callback should be called for. If undefined,
+     * the callback will be called for all buttons.
+     *
+     */
+    buttons?: InputButton[];
+    /**
+     * @remarks
+     * The state the callback should be called for. If undefined,
+     * the callback will be called for all button states.
+     *
+     */
+    state?: ButtonState;
+}
+
+/**
  * Contains a set of events that will be raised for an item.
  * This object must be bound using the ItemComponentRegistry.
  */
@@ -17751,9 +17878,6 @@ export class InvalidEntityError extends Error {
     type: string;
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidIteratorError extends Error {
     private constructor();

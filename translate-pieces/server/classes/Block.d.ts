@@ -339,7 +339,6 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @rc
      * @remarks
      * 返回该方块的净红石能量强度。
      * 考虑了所有输入和输出后的总红石能量强度。

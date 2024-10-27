@@ -460,6 +460,8 @@ export declare enum MinecraftItemTypes {
     ChiseledQuartzBlock = "minecraft:chiseled_quartz_block",
     /** 雕纹红砂岩。 */
     ChiseledRedSandstone = "minecraft:chiseled_red_sandstone",
+    /** Chiseled Resin Bricks。 */
+    ChiseledResinBricks = "minecraft:chiseled_resin_bricks",
     /** 雕纹砂岩。 */
     ChiseledSandstone = "minecraft:chiseled_sandstone",
     /** 雕纹石砖。 */
@@ -480,6 +482,8 @@ export declare enum MinecraftItemTypes {
     ClayBall = "minecraft:clay_ball",
     /** 时钟。 */
     Clock = "minecraft:clock",
+    /** Closed Eyeblossom。 */
+    ClosedEyeblossom = "minecraft:closed_eyeblossom",
     /** 煤炭。 */
     Coal = "minecraft:coal",
     /** 煤炭块。 */
@@ -1676,6 +1680,8 @@ export declare enum MinecraftItemTypes {
     OminousBottle = "minecraft:ominous_bottle",
     /** 不祥试炼钥匙。 */
     OminousTrialKey = "minecraft:ominous_trial_key",
+    /** Open Eyeblossom。 */
+    OpenEyeblossom = "minecraft:open_eyeblossom",
     /** 橙色收纳袋。 */
     OrangeBundle = "minecraft:orange_bundle",
     /** 橙色蜡烛。 */
@@ -1728,7 +1734,7 @@ export declare enum MinecraftItemTypes {
     PackedMud = "minecraft:packed_mud",
     /** 画。 */
     Painting = "minecraft:painting",
-    /** 苍白垂藤。 */
+    /** 苍白垂须。 */
     PaleHangingMoss = "minecraft:pale_hanging_moss",
     /** 苍白苔藓块。 */
     PaleMossBlock = "minecraft:pale_moss_block",
@@ -2082,6 +2088,20 @@ export declare enum MinecraftItemTypes {
     Repeater = "minecraft:repeater",
     /** 循环型命令方块。 */
     RepeatingCommandBlock = "minecraft:repeating_command_block",
+    /** Block of Resin。 */
+    ResinBlock = "minecraft:resin_block",
+    /** Resin Brick。 */
+    ResinBrick = "minecraft:resin_brick",
+    /** Resin Brick Slab。 */
+    ResinBrickSlab = "minecraft:resin_brick_slab",
+    /** Resin Brick Stairs。 */
+    ResinBrickStairs = "minecraft:resin_brick_stairs",
+    /** Resin Brick Wall。 */
+    ResinBrickWall = "minecraft:resin_brick_wall",
+    /** Resin Bricks。 */
+    ResinBricks = "minecraft:resin_bricks",
+    /** Resin Clump。 */
+    ResinClump = "minecraft:resin_clump",
     /** 重生锚。 */
     RespawnAnchor = "minecraft:respawn_anchor",
     /** 肋骨盔甲纹饰锻造模板。 */
