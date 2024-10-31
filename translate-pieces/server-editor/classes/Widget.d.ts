@@ -1,7 +1,13 @@
-/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, InvalidWidgetGroupError, WidgetComponentBase, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveAxialSphere, WidgetComponentRenderPrimitiveBox, WidgetComponentRenderPrimitiveDisc, WidgetComponentRenderPrimitiveLine, WidgetComponentRenderPrimitiveOptions, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardItem, InvalidWidgetComponentError, InvalidWidgetError, InvalidWidgetGroupError, WidgetComponentBase, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetStateChangeEventData, minecraftserver } from '../index';
 
 export class Widget {
     private constructor();
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    bindPositionToBlockCursor: boolean;
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -21,6 +27,12 @@ export class Widget {
      */
     location: minecraftserver.Vector3;
     /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    lockPositionToSurface: boolean;
+    /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetError}
@@ -36,6 +48,21 @@ export class Widget {
      */
     snapToBlockLocation: boolean;
     visible: boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addClipboardComponent(
+        componentName: string,
+        clipboardItem?: ClipboardItem,
+        options?: WidgetComponentClipboardOptions,
+    ): WidgetComponentClipboard;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -86,10 +113,10 @@ export class Widget {
     addRenderPrimitiveComponent(
         componentName: string,
         primitiveType:
-            | WidgetComponentRenderPrimitiveAxialSphere
-            | WidgetComponentRenderPrimitiveBox
-            | WidgetComponentRenderPrimitiveDisc
-            | WidgetComponentRenderPrimitiveLine,
+            | WidgetComponentRenderPrimitiveTypeAxialSphere
+            | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeDisc
+            | WidgetComponentRenderPrimitiveTypeLine,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
     /**
@@ -165,8 +192,6 @@ export class Widget {
      * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetError}
      *
      * {@link InvalidWidgetError}
      */

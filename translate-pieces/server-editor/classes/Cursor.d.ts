@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, CursorAttachmentProperties, CursorProperties, minecraftserver } from '../index';
+/* IMPORT */ import { CursorProperties, CursorRay, minecraftserver } from '../index';
 
 /**
  * The 3D block cursor is controlled through this read only
@@ -48,27 +48,6 @@ export class Cursor {
     readonly isVisible: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    attachClipboardItem(item: ClipboardItem): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    clearAttachment(): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    getAttachmentProperties(): CursorAttachmentProperties;
-    /**
-     * @remarks
      * Get the world position of the 3D block cursor
      *
      * This function can't be called in read-only mode.
@@ -86,6 +65,15 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     getProperties(): CursorProperties;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getRay(): CursorRay;
     /**
      * @remarks
      * Hide the 3D block cursor from view until the corresponding
@@ -121,13 +109,6 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     resetToDefaultState(): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    setAttachmentProperties(properties: CursorAttachmentProperties): void;
     /**
      * @remarks
      * Set the 3D block cursor properties to a given state

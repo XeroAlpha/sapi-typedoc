@@ -4,6 +4,10 @@
  */
 export enum ItemComponentTypes {
     /**
+     * @beta
+     */
+    Compostable = 'minecraft:compostable',
+    /**
      * @remarks
      * The minecraft:cooldown component.
      *

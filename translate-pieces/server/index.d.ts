@@ -228,6 +228,7 @@ export { ItemComponentMineBlockEvent } from './classes/ItemComponentMineBlockEve
 export { ItemComponentRegistry } from './classes/ItemComponentRegistry';
 export { ItemComponentUseEvent } from './classes/ItemComponentUseEvent';
 export { ItemComponentUseOnEvent } from './classes/ItemComponentUseOnEvent';
+export { ItemCompostableComponent } from './classes/ItemCompostableComponent';
 export { ItemCooldownComponent } from './classes/ItemCooldownComponent';
 export { ItemDurabilityComponent } from './classes/ItemDurabilityComponent';
 export { ItemDyeableComponent } from './classes/ItemDyeableComponent';

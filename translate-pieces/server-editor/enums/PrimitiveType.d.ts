@@ -1,7 +1,7 @@
 export enum PrimitiveType {
-    AxialSphere = 'AxialSphere',
-    Box = 'Box',
-    Disc = 'Disc',
-    Line = 'Line',
-    Text = 'Text',
+    Text = 0,
+    Box = 1,
+    Line = 2,
+    Disc = 4,
+    AxialSphere = 5,
 }

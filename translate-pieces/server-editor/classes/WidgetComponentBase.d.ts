@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentType, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentStateChangeEventData, WidgetComponentType, minecraftserver } from '../index';
 
 export class WidgetComponentBase {
     private constructor();
@@ -14,6 +14,12 @@ export class WidgetComponentBase {
      * {@link minecraftserver.InvalidWidgetComponentError}
      */
     readonly location: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    lockToSurface: boolean;
     /**
      * @throws This property can throw when used.
      *
@@ -43,4 +49,13 @@ export class WidgetComponentBase {
      * {@link InvalidWidgetComponentError}
      */
     delete(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
 }

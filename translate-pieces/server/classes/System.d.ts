@@ -27,13 +27,10 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains the device information for the server.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly serverSystemInfo: SystemInfo;
     /**

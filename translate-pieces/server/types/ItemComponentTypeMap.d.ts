@@ -1,14 +1,16 @@
-/* IMPORT */ import { ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemPotionComponent } from '../index';
+/* IMPORT */ import { ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemPotionComponent } from '../index';
 
 /**
  * @beta
  */
 export type ItemComponentTypeMap = {
+    compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
     dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
+    'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;
     'minecraft:durability': ItemDurabilityComponent;
     'minecraft:dyeable': ItemDyeableComponent;

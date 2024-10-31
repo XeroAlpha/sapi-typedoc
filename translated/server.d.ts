@@ -1760,6 +1760,10 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
+     * @beta
+     */
+    Compostable = 'minecraft:compostable',
+    /**
      * @remarks
      * The minecraft:cooldown component.
      *
@@ -1819,46 +1823,40 @@ export enum ItemLockMode {
 }
 
 /**
- * @beta
+ * @rc
  * Describes the memory of a device.
  */
 export enum MemoryTier {
     /**
      * @remarks
-     * Memory not detected.
-     *
-     */
-    Undetermined = 0,
-    /**
-     * @remarks
      * Max memory for Super Low Tier is 1.5GBs.
      *
      */
-    SuperLow = 1,
+    SuperLow = 0,
     /**
      * @remarks
      *  Max memory for Low Tier is 2GBs.
      *
      */
-    Low = 2,
+    Low = 1,
     /**
      * @remarks
      * Max memory for Mid Tier is 4GBs.
      *
      */
-    Mid = 3,
+    Mid = 2,
     /**
      * @remarks
      * Max memory for High Tier is 8GBs.
      *
      */
-    High = 4,
+    High = 3,
     /**
      * @remarks
      * Memory for Super High Tier is above 8GBs.
      *
      */
-    SuperHigh = 5,
+    SuperHigh = 4,
 }
 
 /**
@@ -2049,7 +2047,7 @@ export enum PaletteColor {
 }
 
 /**
- * @beta
+ * @rc
  * Describes what kind of platform is a device.
  */
 export enum PlatformType {
@@ -2516,11 +2514,13 @@ export type EntityComponentTypeMap = {
  * @beta
  */
 export type ItemComponentTypeMap = {
+    compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
     dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
+    'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;
     'minecraft:durability': ItemDurabilityComponent;
     'minecraft:dyeable': ItemDyeableComponent;
@@ -4367,7 +4367,7 @@ export class ChatSendBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains the device information for a client instance.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -10124,6 +10124,31 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
 }
 
 /**
+ * @beta
+ * When present, the item can be composted in the composter
+ * block if the composting chance is in the range [1 - 100].
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCompostableComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @remarks
+     * This is the percent chance of the item composting in the
+     * composter block and generating a compost layer. Note this
+     * api will not return the percent chance for some vanilla
+     * items. To get the compostable chance for all items, use the
+     * compostingChance property on the ItemStack.
+     *
+     * @throws
+     * Throws if value outside the range [1 - 100]
+     *
+     * {@link Error}
+     */
+    readonly compostingChance: number;
+    static readonly componentId = 'minecraft:compostable';
+}
+
+/**
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */
@@ -10579,6 +10604,18 @@ export class ItemStack {
      * Throws if the value is outside the range of 1-255.
      */
     amount: number;
+    /**
+     * @beta
+     * @remarks
+     * This is the percent chance of the item composting in the
+     * composter block and generating a compost layer.
+     *
+     * @throws
+     * Throws if value outside the range [1 - 100]
+     *
+     * {@link Error}
+     */
+    readonly compostingChance: number;
     /**
      * @remarks
      * Returns whether the item is stackable. An item is considered
@@ -11681,7 +11718,7 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains the player's device information.
      *
@@ -14409,13 +14446,10 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains the device information for the server.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly serverSystemInfo: SystemInfo;
     /**
@@ -14558,7 +14592,7 @@ export class SystemBeforeEvents {
 }
 
 /**
- * @beta
+ * @rc
  * Contains device information, like memory tier.
  */
 export class SystemInfo {

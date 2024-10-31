@@ -901,9 +901,9 @@ export enum PaintMode {
 }
 
 export enum Plane {
-    XY = 'XY',
-    XZ = 'XZ',
-    YZ = 'YZ',
+    XY = 0,
+    XZ = 1,
+    YZ = 2,
 }
 
 export enum PlayerPermissionLevel {
@@ -929,11 +929,11 @@ export enum PlaytestSessionResult {
 }
 
 export enum PrimitiveType {
-    AxialSphere = 'AxialSphere',
-    Box = 'Box',
-    Disc = 'Disc',
-    Line = 'Line',
-    Text = 'Text',
+    Text = 0,
+    Box = 1,
+    Line = 2,
+    Disc = 4,
+    AxialSphere = 5,
 }
 
 export enum ProjectExportType {
@@ -974,8 +974,8 @@ export declare enum SimpleToolStatusBarVisibility {
 }
 
 export enum SplineType {
-    Hermite = 'Hermite',
-    Line = 'Line',
+    Line = 0,
+    Hermite = 1,
 }
 
 /**
@@ -1052,6 +1052,7 @@ export enum ThemeSettingsColorKey {
 }
 
 export enum WidgetComponentType {
+    Clipboard = 'Clipboard',
     Entity = 'Entity',
     Gizmo = 'Gizmo',
     Guide = 'Guide',
@@ -1641,6 +1642,7 @@ export class ClipboardChangeAfterEventSignal {
  */
 export class ClipboardItem {
     private constructor();
+    readonly id: string;
     /**
      * @remarks
      * Return whether there is any block content in the item
@@ -1912,27 +1914,6 @@ export class Cursor {
     readonly isVisible: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    attachClipboardItem(item: ClipboardItem): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    clearAttachment(): void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    getAttachmentProperties(): CursorAttachmentProperties;
-    /**
-     * @remarks
      * Get the world position of the 3D block cursor
      *
      * This function can't be called in read-only mode.
@@ -1950,6 +1931,15 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     getProperties(): CursorProperties;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getRay(): CursorRay;
     /**
      * @remarks
      * Hide the 3D block cursor from view until the corresponding
@@ -1987,13 +1977,6 @@ export class Cursor {
     resetToDefaultState(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    setAttachmentProperties(properties: CursorAttachmentProperties): void;
-    /**
-     * @remarks
      * Set the 3D block cursor properties to a given state
      *
      * This function can't be called in read-only mode.
@@ -2013,33 +1996,6 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     show(): void;
-}
-
-export class CursorAttachmentPropertiesChangeAfterEvent {
-    private constructor();
-    readonly properties: CursorAttachmentProperties;
-}
-
-export class CursorAttachmentPropertyChangeAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(
-        callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void,
-    ): (arg: CursorAttachmentPropertiesChangeAfterEvent) => void;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void): void;
 }
 
 export class CursorPropertiesChangeAfterEvent {
@@ -2301,7 +2257,6 @@ export class ExtensionContextAfterEvents {
     readonly clipboardChange: ClipboardChangeAfterEventSignal;
     readonly currentThemeChange: CurrentThemeChangeAfterEventSignal;
     readonly currentThemeColorChange: CurrentThemeColorChangeAfterEventSignal;
-    readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
      * @remarks
@@ -3359,6 +3314,12 @@ export class Widget {
      * This property can't be edited in read-only mode.
      *
      */
+    bindPositionToBlockCursor: boolean;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
     collisionOffset: minecraftserver.Vector3;
     /**
      * @remarks
@@ -3372,6 +3333,12 @@ export class Widget {
      *
      */
     location: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    lockPositionToSurface: boolean;
     /**
      * @throws This property can throw when used.
      *
@@ -3388,6 +3355,21 @@ export class Widget {
      */
     snapToBlockLocation: boolean;
     visible: boolean;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addClipboardComponent(
+        componentName: string,
+        clipboardItem?: ClipboardItem,
+        options?: WidgetComponentClipboardOptions,
+    ): WidgetComponentClipboard;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -3438,10 +3420,10 @@ export class Widget {
     addRenderPrimitiveComponent(
         componentName: string,
         primitiveType:
-            | WidgetComponentRenderPrimitiveAxialSphere
-            | WidgetComponentRenderPrimitiveBox
-            | WidgetComponentRenderPrimitiveDisc
-            | WidgetComponentRenderPrimitiveLine,
+            | WidgetComponentRenderPrimitiveTypeAxialSphere
+            | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeDisc
+            | WidgetComponentRenderPrimitiveTypeLine,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
     /**
@@ -3519,8 +3501,6 @@ export class Widget {
      * @throws This function can throw errors.
      *
      * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetError}
      */
     setStateChangeEvent(eventFunction?: (arg: WidgetStateChangeEventData) => void): void;
 }
@@ -3539,6 +3519,12 @@ export class WidgetComponentBase {
      * {@link minecraftserver.InvalidWidgetComponentError}
      */
     readonly location: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * This property can't be edited in read-only mode.
+     *
+     */
+    lockToSurface: boolean;
     /**
      * @throws This property can throw when used.
      *
@@ -3568,6 +3554,27 @@ export class WidgetComponentBase {
      * {@link InvalidWidgetComponentError}
      */
     delete(): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentClipboard extends WidgetComponentBase {
+    private constructor();
+    clipboardMirror: minecraftserver.StructureMirrorAxis;
+    clipboardNormalizedOrigin: minecraftserver.Vector3;
+    clipboardOffset: minecraftserver.Vector3;
+    clipboardRotation: minecraftserver.StructureRotation;
+    fillColor: minecraftserver.RGBA;
+    outlineColor: minecraftserver.RGBA;
+    showBounds: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3593,6 +3600,7 @@ export class WidgetComponentEntity extends WidgetComponentBase {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
+    activated: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3603,6 +3611,14 @@ export class WidgetComponentGuide extends WidgetComponentBase {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
+    readonly primitiveType: PrimitiveType;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -3615,14 +3631,15 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
      */
     setPrimitive(
         primitive:
-            | WidgetComponentRenderPrimitiveAxialSphere
-            | WidgetComponentRenderPrimitiveBox
-            | WidgetComponentRenderPrimitiveDisc
-            | WidgetComponentRenderPrimitiveLine,
+            | WidgetComponentRenderPrimitiveTypeAxialSphere
+            | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeDisc
+            | WidgetComponentRenderPrimitiveTypeLine,
     ): void;
 }
 
-export class WidgetComponentRenderPrimitiveAxialSphere {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -3644,7 +3661,13 @@ export class WidgetComponentRenderPrimitiveAxialSphere {
     constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
 }
 
-export class WidgetComponentRenderPrimitiveBox {
+export class WidgetComponentRenderPrimitiveTypeBase {
+    private constructor();
+    readonly primitiveType: PrimitiveType;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -3666,7 +3689,8 @@ export class WidgetComponentRenderPrimitiveBox {
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
-export class WidgetComponentRenderPrimitiveDisc {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -3688,7 +3712,8 @@ export class WidgetComponentRenderPrimitiveDisc {
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
-export class WidgetComponentRenderPrimitiveLine {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
      * This property can't be edited in read-only mode.
@@ -3756,6 +3781,14 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      * {@link InvalidWidgetError}
      */
     setControlPoints(widgetList: Widget[]): void;
+}
+
+export class WidgetComponentStateChangeEventData {
+    private constructor();
+    readonly component: WidgetComponentBase;
+    readonly gizmoActivated?: boolean;
+    readonly group: WidgetGroup;
+    readonly widget: Widget;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3902,21 +3935,6 @@ export interface BrushShape {
 export interface ClipboardWriteOptions {
     /**
      * @remarks
-     * The anchor is a unit vector representation of the side or
-     * corner of the Clipboard Item to be written to the world.
-     * `{0, 0, 0}` represents the center of the Clipboard item,
-     * `{0, 1, 0}` represents the top, `{-1, -1, -1}` represents
-     * the bottom/back/left corner, etc
-     * The anchor is used in conjunction with the item size to
-     * determine the object relative anchor point where the object
-     * will be applied in the world.
-     * Values for the X/Y/Z components should be within the range
-     * `(-1 <= X/Y/Z <=1)`
-     *
-     */
-    anchor?: minecraftserver.Vector3;
-    /**
-     * @remarks
      * An enum which represents the axis (or combination of axis')
      * along which the item should be mirrored
      * - X
@@ -3925,6 +3943,7 @@ export interface ClipboardWriteOptions {
      *
      */
     mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
     /**
      * @remarks
      * A position offset which should be applied to the paste
@@ -3938,18 +3957,6 @@ export interface ClipboardWriteOptions {
      * should be applied while the clipboard item is being written
      *
      */
-    rotation?: minecraftserver.StructureRotation;
-}
-
-export interface CursorAttachmentProperties {
-    boundsFillColor?: minecraftserver.RGBA;
-    boundsVisible?: boolean;
-    boundsWireframeColor?: minecraftserver.RGBA;
-    contentsFillColor?: minecraftserver.RGBA;
-    contentsWireframeColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    offset?: minecraftserver.Vector3;
-    origin?: minecraftserver.Vector3;
     rotation?: minecraftserver.StructureRotation;
 }
 
@@ -4021,6 +4028,12 @@ export interface CursorProperties {
      *
      */
     visible?: boolean;
+}
+
+export interface CursorRay {
+    end: minecraftserver.Vector3;
+    hit: boolean;
+    start: minecraftserver.Vector3;
 }
 
 export interface EditorStructure {
@@ -4166,8 +4179,21 @@ export interface WeightedBlock {
 }
 
 export interface WidgetComponentBaseOptions {
+    lockToSurface?: boolean;
     offset?: minecraftserver.Vector3;
+    stateChangeEvent?: (arg: WidgetComponentStateChangeEventData) => void;
     visible?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
+    boundsFillColor?: minecraftserver.RGBA;
+    boundsOutlineColor?: minecraftserver.RGBA;
+    clipboardMirror?: minecraftserver.StructureMirrorAxis;
+    clipboardNormalizedOrigin?: minecraftserver.Vector3;
+    clipboardOffset?: minecraftserver.Vector3;
+    clipboardRotation?: minecraftserver.StructureRotation;
+    showBounds?: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4198,8 +4224,10 @@ export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
 }
 
 export interface WidgetCreateOptions {
+    bindPositionToBlockCursor?: boolean;
     collisionOffset?: minecraftserver.Vector3;
     collisionRadius?: number;
+    lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
@@ -5033,7 +5061,7 @@ export interface IMenuCreationParams {
 export interface IModalTool {
     /**
      * @remarks
-     * Unique ID for the tool
+     * Unique identifier for the tool
      *
      */
     readonly id: string;
@@ -5043,14 +5071,11 @@ export interface IModalTool {
      *
      */
     onModalToolActivation: EventSink<ModalToolLifecycleEventPayload>;
-    bindPropertyPane(pane: IPropertyPane): void;
-    dispose(): void;
-    hide(): void;
+    bindPropertyPane(pane: IRootPropertyPane): void;
     registerKeyBinding(action: SupportedKeyboardActionTypes, binding: KeyBinding, info?: KeyBindingInfo): void;
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
-    show(): void;
     unregisterInputBindings(): void;
 }
 
@@ -5061,7 +5086,7 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
-    addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
+    addTool(id: string, params: ModalToolCreationParameters): IModalTool;
     focusToolInputContext(): void;
     getSelectedToolId(): string | undefined;
     removeTool(id: string): void;
@@ -5822,6 +5847,12 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
 export interface ISimpleTool {
     /**
      * @remarks
+     * Get the tool unique id
+     *
+     */
+    get id(): string;
+    /**
+     * @remarks
      * Get a reference to the menu component that was automatically
      * created for the tool This generally only happens if the tool
      * is a global tool (i.e. has a pane and does not have a tool
@@ -5971,6 +6002,12 @@ export interface ISimpleToolOptions {
      *
      */
     activationKeyBinding?: ISimpleToolKeyBinding;
+    /**
+     * @remarks
+     * The unique identifier of the tool.
+     *
+     */
+    id: string;
     /**
      * @remarks
      * The name of the tool. This will be used to identify the tool
@@ -6165,6 +6202,12 @@ export interface ISimpleToolPaneOptions {
      *
      */
     id: string;
+    /**
+     * @remarks
+     * Information tooltip displayed on the root pane header.
+     *
+     */
+    infoTooltip?: TooltipInteractiveContent;
     onBeginFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onEndFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onHide?: (pane: ISimpleToolPaneComponent) => void;
@@ -6776,31 +6819,25 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
 export interface ModalToolCreationParameters {
     /**
      * @remarks
-     * Icon, if any (from resource pack on client)
+     * Action associated with tool activation
+     *
+     */
+    action?: RegisteredAction<NoArgsAction>;
+    /**
+     * @remarks
+     * Icon resource
      *
      */
     icon?: string;
     /**
      * @remarks
-     * Modal input context identifier
+     * Localized title of the tool
      *
      */
-    inputContextId?: string;
+    title?: string;
     /**
      * @remarks
-     * Localized text label for modal input context
-     *
-     */
-    inputContextLabel?: string;
-    /**
-     * @remarks
-     * Title of the tool
-     *
-     */
-    title: string;
-    /**
-     * @remarks
-     * Tooltip description of the toll
+     * Tooltip description of the tool
      *
      */
     tooltip?: string;

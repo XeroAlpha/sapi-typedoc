@@ -20,6 +20,12 @@ export interface ISimpleToolOptions {
     activationKeyBinding?: ISimpleToolKeyBinding;
     /**
      * @remarks
+     * The unique identifier of the tool.
+     *
+     */
+    id: string;
+    /**
+     * @remarks
      * The name of the tool. This will be used to identify the tool
      * in the UI and logs and will be used in the View \> [Tool
      * Name] menu item (if it's a global tool)

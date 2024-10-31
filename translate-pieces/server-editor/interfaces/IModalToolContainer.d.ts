@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalTool, ModalToolCreationParameters, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '../index';
 
 export interface IModalToolContainer {
     /**
@@ -7,7 +7,7 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
-    addTool(params: ModalToolCreationParameters, action?: RegisteredAction<NoArgsAction>): IModalTool;
+    addTool(id: string, params: ModalToolCreationParameters): IModalTool;
     focusToolInputContext(): void;
     getSelectedToolId(): string | undefined;
     removeTool(id: string): void;

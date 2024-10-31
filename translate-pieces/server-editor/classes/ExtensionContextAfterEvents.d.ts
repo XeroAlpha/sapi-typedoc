@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorAttachmentPropertyChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, PrimarySelectionChangeAfterEventSignal } from '../index';
+/* IMPORT */ import { ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, PrimarySelectionChangeAfterEventSignal } from '../index';
 
 /**
  * Contains a set of events that are available across the scope
@@ -9,7 +9,6 @@ export class ExtensionContextAfterEvents {
     readonly clipboardChange: ClipboardChangeAfterEventSignal;
     readonly currentThemeChange: CurrentThemeChangeAfterEventSignal;
     readonly currentThemeColorChange: CurrentThemeColorChangeAfterEventSignal;
-    readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
      * @remarks
