@@ -1,7 +1,7 @@
 /* IMPORT */ import { PlatformType, SystemInfo } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains the device information for a client instance.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

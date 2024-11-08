@@ -7,6 +7,7 @@
  */
 export class ClipboardItem {
     private constructor();
+    readonly id: string;
     /**
      * @remarks
      * Return whether there is any block content in the item

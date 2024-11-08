@@ -1,4 +1,4 @@
 export enum SplineType {
-    Hermite = 'Hermite',
-    Line = 'Line',
+    Line = 0,
+    Hermite = 1,
 }

@@ -1,9 +1,9 @@
-/* IMPORT */ import { EventSink, IPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
+/* IMPORT */ import { EventSink, IRootPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
 
 export interface IModalTool {
     /**
      * @remarks
-     * Unique ID for the tool
+     * Unique identifier for the tool
      *
      */
     readonly id: string;
@@ -13,13 +13,10 @@ export interface IModalTool {
      *
      */
     onModalToolActivation: EventSink<ModalToolLifecycleEventPayload>;
-    bindPropertyPane(pane: IPropertyPane): void;
-    dispose(): void;
-    hide(): void;
+    bindPropertyPane(pane: IRootPropertyPane): void;
     registerKeyBinding(action: SupportedKeyboardActionTypes, binding: KeyBinding, info?: KeyBindingInfo): void;
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
-    show(): void;
     unregisterInputBindings(): void;
 }

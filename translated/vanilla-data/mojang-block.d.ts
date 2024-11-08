@@ -378,7 +378,7 @@ export declare enum MinecraftBlockTypes {
     ChiseledQuartzBlock = "minecraft:chiseled_quartz_block",
     /** 雕纹红砂岩。 */
     ChiseledRedSandstone = "minecraft:chiseled_red_sandstone",
-    /** Chiseled Resin Bricks。 */
+    /** 雕纹树脂砖块。 */
     ChiseledResinBricks = "minecraft:chiseled_resin_bricks",
     /** 雕纹砂岩。 */
     ChiseledSandstone = "minecraft:chiseled_sandstone",
@@ -394,7 +394,7 @@ export declare enum MinecraftBlockTypes {
     ChorusPlant = "minecraft:chorus_plant",
     /** 黏土。 */
     Clay = "minecraft:clay",
-    /** Closed Eyeblossom。 */
+    /** 闭合的眼眸花。 */
     ClosedEyeblossom = "minecraft:closed_eyeblossom",
     /** 煤炭块。 */
     CoalBlock = "minecraft:coal_block",
@@ -1586,7 +1586,7 @@ export declare enum MinecraftBlockTypes {
     Obsidian = "minecraft:obsidian",
     /** 赭黄蛙明灯。 */
     OchreFroglight = "minecraft:ochre_froglight",
-    /** Open Eyeblossom。 */
+    /** 张开的眼眸花。 */
     OpenEyeblossom = "minecraft:open_eyeblossom",
     /** 橙色蜡烛。 */
     OrangeCandle = "minecraft:orange_candle",
@@ -1952,19 +1952,19 @@ export declare enum MinecraftBlockTypes {
     ReinforcedDeepslate = "minecraft:reinforced_deepslate",
     /** 循环型命令方块。 */
     RepeatingCommandBlock = "minecraft:repeating_command_block",
-    /** Block of Resin。 */
+    /** 树脂块。 */
     ResinBlock = "minecraft:resin_block",
-    /** Resin Brick Double Slab。 */
+    /** 树脂砖双层台阶。 */
     ResinBrickDoubleSlab = "minecraft:resin_brick_double_slab",
-    /** Resin Brick Slab。 */
+    /** 树脂砖台阶。 */
     ResinBrickSlab = "minecraft:resin_brick_slab",
-    /** Resin Brick Stairs。 */
+    /** 树脂砖楼梯。 */
     ResinBrickStairs = "minecraft:resin_brick_stairs",
-    /** Resin Brick Wall。 */
+    /** 树脂砖墙。 */
     ResinBrickWall = "minecraft:resin_brick_wall",
-    /** Resin Bricks。 */
+    /** 树脂砖块。 */
     ResinBricks = "minecraft:resin_bricks",
-    /** Resin Clump。 */
+    /** 树脂团。 */
     ResinClump = "minecraft:resin_clump",
     /** 重生锚。 */
     RespawnAnchor = "minecraft:respawn_anchor",

@@ -17,6 +17,12 @@
 export interface ISimpleTool {
     /**
      * @remarks
+     * Get the tool unique id
+     *
+     */
+    get id(): string;
+    /**
+     * @remarks
      * Get a reference to the menu component that was automatically
      * created for the tool This generally only happens if the tool
      * is a global tool (i.e. has a pane and does not have a tool

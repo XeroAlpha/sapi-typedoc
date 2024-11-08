@@ -1,4 +1,4 @@
-/* IMPORT */ import { ISimpleToolPaneComponent } from '../index';
+/* IMPORT */ import { ISimpleToolPaneComponent, TooltipInteractiveContent } from '../index';
 
 /**
  * A set of options which define the basic properties of a
@@ -53,6 +53,12 @@ export interface ISimpleToolPaneOptions {
      *
      */
     id: string;
+    /**
+     * @remarks
+     * Information tooltip displayed on the root pane header.
+     *
+     */
+    infoTooltip?: TooltipInteractiveContent;
     onBeginFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onEndFinalize?: (pane: ISimpleToolPaneComponent) => void;
     onHide?: (pane: ISimpleToolPaneComponent) => void;

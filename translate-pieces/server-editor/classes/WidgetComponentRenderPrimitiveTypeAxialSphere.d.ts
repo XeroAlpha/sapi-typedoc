@@ -1,6 +1,6 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { WidgetComponentRenderPrimitiveTypeBase, minecraftserver } from '../index';
 
-export class WidgetComponentRenderPrimitiveAxialSphere {
+export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
      * This property can't be edited in read-only mode.
