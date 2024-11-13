@@ -31,7 +31,14 @@ export declare enum ActionTypes {
     NoArgsAction = 'NoArgsAction',
 }
 
+export enum Axis {
+    X = 1,
+    Y = 2,
+    Z = 4,
+}
+
 export enum BlockMaskListType {
+    Disabled = 'Disabled',
     Mask = 'Mask',
     Replace = 'Replace',
 }
@@ -228,6 +235,7 @@ export enum GamePublishSetting {
  */
 export enum GraphicsSettingsProperty {
     ShowChunkBoundaries = 'ShowChunkBoundaries',
+    ShowCompass = 'ShowCompass',
     /**
      * @remarks
      * Manages rendering of invisible blocks (e.g., barrier, light,
@@ -898,12 +906,13 @@ export enum PaintCompletionState {
 export enum PaintMode {
     BlockPaint = 0,
     FreehandSelect = 1,
+    Smooth = 2,
 }
 
 export enum Plane {
-    XY = 0,
-    XZ = 1,
-    YZ = 2,
+    XY = 1,
+    XZ = 2,
+    YZ = 4,
 }
 
 export enum PlayerPermissionLevel {
@@ -971,6 +980,10 @@ export declare enum PropertyItemType {
 export declare enum SimpleToolStatusBarVisibility {
     AlwaysVisible = 0,
     VisibleWhenActive = 1,
+}
+
+export enum SpeedSettingsProperty {
+    FlySpeedMultiplier = 'FlySpeedMultiplier',
 }
 
 export enum SplineType {
@@ -1079,6 +1092,11 @@ export enum WidgetMouseButtonActionType {
 export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
+    [GraphicsSettingsProperty.ShowCompass]?: boolean;
+};
+
+export type SpeedSettingsPropertyTypeMap = {
+    [SpeedSettingsProperty.FlySpeedMultiplier]?: number;
 };
 
 /**
@@ -1489,6 +1507,20 @@ export class BlockPaletteManager {
     setSelectedItem(item: IBlockPaletteItem): void;
 }
 
+export class BlockUtilities {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    fillVolume(
+        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
+        block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+    ): void;
+}
+
 export class BrushShapeManager {
     private constructor();
     readonly activeBrushShape?: BrushShape;
@@ -1578,6 +1610,18 @@ export class BrushShapeManager {
      * @remarks
      * This function can't be called in read-only mode.
      *
+     */
+    setBrushShapeVisible(visible: boolean): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setSmoothStrength(smoothStrength: number): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -1661,7 +1705,7 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @remarks
-     * Create a {@link @minecraft/server.CompoundBlockVolume}
+     * Create a {@link minecraftserver.CompoundBlockVolume}
      * container which represents the occupied block volumes within
      * the ClipboardItem.
      * This function does not perform any write operations, and
@@ -1679,7 +1723,7 @@ export class ClipboardItem {
      * An optional set of write parameters which govern how the
      * ClipboardItem should be potentially applied to the world
      * @returns
-     * A {@link @minecraft/server.CompoundBlockVolume} which
+     * A {@link minecraftserver.CompoundBlockVolume} which
      * represents the occupied block volumes within the
      * ClipboardItem as they would be written to the world with the
      * specified {@link ClipboardWriteOptions}
@@ -2188,6 +2232,7 @@ export class ExtensionContext {
      */
     readonly afterEvents: ExtensionContextAfterEvents;
     readonly blockPalette: BlockPaletteManager;
+    readonly blockUtilities: BlockUtilities;
     readonly brushShapeManager: BrushShapeManager;
     /**
      * @remarks
@@ -2319,7 +2364,7 @@ export class GraphicsSettings {
 export class IBlockPaletteItem {
     private constructor();
     getBlock(): minecraftserver.BlockType | undefined;
-    getDisplayName(): string;
+    getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     /**
      * @remarks
@@ -2723,7 +2768,7 @@ export class Selection {
      *
      * @param forceRelativity
      * See the description for {@link
-     * @minecraft/server.CompoundBlockVolume.peekLastVolume}
+     * minecraftserver.CompoundBlockVolume.peekLastVolume}
      * @returns
      * Returns undefined if the stack is empty
      */
@@ -2763,10 +2808,10 @@ export class Selection {
      * This function can't be called in read-only mode.
      *
      * @param other
-     * {@link @minecraft/server.CompoundBlockVolume} - set the
-     * block component part of this selection to the specified
-     * compound block volume.  This will completely replace all
-     * block volume definitions in the selection.
+     * {@link minecraftserver.CompoundBlockVolume} - set the block
+     * component part of this selection to the specified compound
+     * block volume.  This will completely replace all block volume
+     * definitions in the selection.
      * {@link Selection} - replace the selection with the specified
      * selection
      * @throws This function can throw errors.
@@ -2843,6 +2888,7 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+    readonly speed: SpeedSettings;
     readonly theme: ThemeSettings;
 }
 
@@ -2927,6 +2973,20 @@ export class SimulationState {
      * @throws This function can throw errors.
      */
     setPaused(isPaused: boolean): void;
+}
+
+export class SpeedSettings {
+    private constructor();
+    get<T extends keyof SpeedSettingsPropertyTypeMap>(property: T): SpeedSettingsPropertyTypeMap[T] | undefined;
+    getAll(): SpeedSettingsPropertyTypeMap;
+    /**
+     * @throws This function can throw errors.
+     */
+    set<T extends keyof SpeedSettingsPropertyTypeMap>(property: T, value: SpeedSettingsPropertyTypeMap[T]): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    setAll(properties: SpeedSettingsPropertyTypeMap): void;
 }
 
 export class ThemeSettings {
@@ -3147,7 +3207,7 @@ export class TransactionManager {
     /**
      * @remarks
      * Begin tracking block changes in an area defined by a {@link
-     * @minecraft/server.CompoundBlockVolume}.  These will be added
+     * minecraftserver.CompoundBlockVolume}.  These will be added
      * to a pending changes list.
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
@@ -3155,8 +3215,8 @@ export class TransactionManager {
      * This function can't be called in read-only mode.
      *
      * @param compoundBlockVolume
-     * {@link @minecraft/server.CompoundBlockVolume} to track.
-     * Only non-void block locations will be tracked -- any changes
+     * {@link minecraftserver.CompoundBlockVolume} to track.  Only
+     * non-void block locations will be tracked -- any changes
      * falling into a void/negative space will not be tracked
      * @throws This function can throw errors.
      */
@@ -3183,8 +3243,8 @@ export class TransactionManager {
      * Selection Volumes can also represent irregular shapes with
      * non-contiguous blocks and this tracking call will honor the
      * actual selected areas in the volume (and not the negative
-     * space) (see {@link @minecraft/server.CompoundBlockVolume}
-     * for more details
+     * space) (see {@link minecraftserver.CompoundBlockVolume} for
+     * more details
      *
      * This function can't be called in read-only mode.
      *
@@ -4204,7 +4264,10 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {}
+export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
+    axes?: Axis;
+    enablePlanes?: boolean;
+}
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}

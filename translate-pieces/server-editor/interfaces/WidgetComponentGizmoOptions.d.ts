@@ -1,3 +1,6 @@
-/* IMPORT */ import { WidgetComponentBaseOptions } from '../index';
+/* IMPORT */ import { Axis, WidgetComponentBaseOptions } from '../index';
 
-export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {}
+export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
+    axes?: Axis;
+    enablePlanes?: boolean;
+}

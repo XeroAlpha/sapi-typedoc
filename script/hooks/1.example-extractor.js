@@ -2,7 +2,7 @@ const { createHash } = require('crypto');
 const { mkdirSync, writeFileSync, existsSync, readFileSync } = require('fs');
 const { resolve: resolvePath } = require('path');
 const { SyntaxKind } = require('ts-morph');
-const { DocumentReflection } = require('typedoc');
+const { DocumentReflection, JSX } = require('typedoc');
 
 const ExampleNameOverwrite = [
     {
@@ -21,6 +21,37 @@ const ExampleNameOverwrite = [
 
 function hashTextShort(str) {
     return createHash('sha256').update(str).digest('hex').slice(0, 8);
+}
+
+/**
+ * @param {JSX.Children} jsx
+ * @param {(element: JSX.Children, traversal: () => void) => void} f
+ */
+function traversalJSX(jsx, f) {
+    if (Array.isArray(jsx)) {
+        for (const child of jsx) {
+            traversalJSX(child, f);
+        }
+    } else if (jsx !== null || jsx !== undefined) {
+        f(jsx, () => {
+            if (typeof jsx === 'object') {
+                for (const child of jsx.children) {
+                    traversalJSX(child, f);
+                }
+            }
+        });
+    }
+}
+
+function findJSXElement(jsx, predicate) {
+    const elements = [];
+    traversalJSX(jsx, (el, traversal) => {
+        if (predicate(el)) {
+            elements.push(el);
+        }
+        traversal();
+    });
+    return elements;
 }
 
 const examples = {};
@@ -148,6 +179,33 @@ module.exports = {
             ...tsdocApplication.options.getValue('blockTags'),
             '@seeExample'
         ]);
+        tsdocApplication.renderer.on('beginRender', () => {
+            const oldContextFactory = tsdocApplication.renderer.theme.getRenderContext;
+            tsdocApplication.renderer.theme.getRenderContext = function (...args) {
+                /** @type {import('typedoc').DefaultThemeRenderContext} */
+                const renderContext = oldContextFactory.call(this, ...args);
+                const exampleTagName = renderContext.internationalization.translateTagName('@example');
+                const oldCommentTagsRender = renderContext.commentTags;
+                renderContext.commentTags = (props) => {
+                    const jsx = oldCommentTagsRender(props);
+                    /** @type {JSX.Element[]} */
+                    const exampleTags = findJSXElement(
+                        jsx,
+                        (el) => typeof el === 'object' && el.props?.class?.includes(`tsd-tag-${exampleTagName}`)
+                    );
+                    for (const exampleTag of exampleTags) {
+                        const summaryTag = JSX.createElement('summary', null, exampleTag.children[0]);
+                        const detailsTag = JSX.createElement('details', null, [
+                            summaryTag,
+                            exampleTag.children.slice(1)
+                        ]);
+                        exampleTag.children = [detailsTag];
+                    }
+                    return jsx;
+                };
+                return renderContext;
+            };
+        });
     },
     afterConvert({ tsdocProject }) {
         const exampleRefls = [];

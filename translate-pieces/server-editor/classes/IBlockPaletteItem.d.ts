@@ -3,7 +3,7 @@
 export class IBlockPaletteItem {
     private constructor();
     getBlock(): minecraftserver.BlockType | undefined;
-    getDisplayName(): string;
+    getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     /**
      * @remarks

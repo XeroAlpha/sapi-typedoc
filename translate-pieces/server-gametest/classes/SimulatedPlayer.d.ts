@@ -5,8 +5,8 @@
  * how a player moves throughout the world and to support
  * testing of how entities and the environment will react to a
  * player. This type derives much of its structure and methods
- * from the {@link @minecraft/server.Player} type. Note that
- * many types of events that may be available for entities more
+ * from the {@link minecraftserver.Player} type. Note that many
+ * types of events that may be available for entities more
  * broadly, such as item use events, may not fire in the same
  * capacity for simulated players.
  */

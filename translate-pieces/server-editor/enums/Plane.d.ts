@@ -1,5 +1,5 @@
 export enum Plane {
-    XY = 0,
-    XZ = 1,
-    YZ = 2,
+    XY = 1,
+    XZ = 2,
+    YZ = 4,
 }

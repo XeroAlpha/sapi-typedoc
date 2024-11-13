@@ -140,7 +140,7 @@ export class Selection {
      *
      * @param forceRelativity
      * See the description for {@link
-     * @minecraft/server.CompoundBlockVolume.peekLastVolume}
+     * minecraftserver.CompoundBlockVolume.peekLastVolume}
      * @returns
      * Returns undefined if the stack is empty
      */
@@ -180,10 +180,10 @@ export class Selection {
      * This function can't be called in read-only mode.
      *
      * @param other
-     * {@link @minecraft/server.CompoundBlockVolume} - set the
-     * block component part of this selection to the specified
-     * compound block volume.  This will completely replace all
-     * block volume definitions in the selection.
+     * {@link minecraftserver.CompoundBlockVolume} - set the block
+     * component part of this selection to the specified compound
+     * block volume.  This will completely replace all block volume
+     * definitions in the selection.
      * {@link Selection} - replace the selection with the specified
      * selection
      * @throws This function can throw errors.

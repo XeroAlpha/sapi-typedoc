@@ -370,6 +370,7 @@ export { CameraSetFacingOptions } from './interfaces/CameraSetFacingOptions';
 export { CameraSetLocationOptions } from './interfaces/CameraSetLocationOptions';
 export { CameraSetPosOptions } from './interfaces/CameraSetPosOptions';
 export { CameraSetRotOptions } from './interfaces/CameraSetRotOptions';
+export { CameraTargetOptions } from './interfaces/CameraTargetOptions';
 export { CompoundBlockVolumeItem } from './interfaces/CompoundBlockVolumeItem';
 export { DefinitionModifier } from './interfaces/DefinitionModifier';
 export { DimensionLocation } from './interfaces/DimensionLocation';

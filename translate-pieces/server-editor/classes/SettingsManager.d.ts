@@ -1,4 +1,4 @@
-/* IMPORT */ import { GraphicsSettings, ThemeSettings } from '../index';
+/* IMPORT */ import { GraphicsSettings, SpeedSettings, ThemeSettings } from '../index';
 
 /**
  * The SettingsManager (accessible from the {@link
@@ -13,5 +13,6 @@ export class SettingsManager {
      *
      */
     readonly graphics: GraphicsSettings;
+    readonly speed: SpeedSettings;
     readonly theme: ThemeSettings;
 }

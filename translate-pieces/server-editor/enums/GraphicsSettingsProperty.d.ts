@@ -4,6 +4,7 @@
  */
 export enum GraphicsSettingsProperty {
     ShowChunkBoundaries = 'ShowChunkBoundaries',
+    ShowCompass = 'ShowCompass',
     /**
      * @remarks
      * Manages rendering of invisible blocks (e.g., barrier, light,

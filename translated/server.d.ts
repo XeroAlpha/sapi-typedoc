@@ -4236,7 +4236,8 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }
 
@@ -5283,7 +5284,7 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.
@@ -5331,20 +5332,23 @@ export class Dimension {
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * Fills an area between begin and end with block of type
-     * block.
+     * Fills an area of blocks with a specific block type.
      *
      * This function can't be called in read-only mode.
      *
+     * @param volume
+     * Volume of blocks to be filled.
      * @param block
      * Type of block to fill the volume with.
      * @param options
-     * A set of additional options, such as a matching block to
-     * potentially replace this fill block with.
+     * A set of additional options, such as a block filter which
+     * can be used to include / exclude specific blocks in the
+     * fill.
      * @returns
-     *  Returns number of blocks placed.
+     * Returns a ListBlockVolume which contains all the blocks that
+     * were placed.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -5439,7 +5443,7 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the filter.
      *
@@ -11320,7 +11324,7 @@ export class ItemUseOnAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -15816,11 +15820,25 @@ export interface BlockEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional options for a block fill operation.
  */
 export interface BlockFillOptions {
+    /**
+     * @remarks
+     * When specified, the fill operation will include / exclude
+     * the blocks added to the block filter.
+     *
+     */
     blockFilter?: BlockFilter;
+    /**
+     * @remarks
+     * When true fillBlocks will not error if part of the fill
+     * volume is outside of loaded chunks bounds. Instead it will
+     * just fill the blocks that are inside the loaded chunk bounds
+     * and ignoring blocks outside.
+     *
+     */
     ignoreChunkBoundErrors?: boolean;
 }
 
@@ -16061,6 +16079,7 @@ export interface CameraFadeTimeOptions {
  * @beta
  */
 export interface CameraFixedBoomOptions {
+    entityOffset?: Vector3;
     viewOffset?: Vector2;
 }
 
@@ -16085,6 +16104,14 @@ export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+/**
+ * @beta
+ */
+export interface CameraTargetOptions {
+    offsetFromTargetCenter?: Vector3;
+    targetEntity: Entity;
 }
 
 /**
@@ -17570,7 +17597,7 @@ export class PlaceJigsawError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when the specified area contains one or more
  * unloaded chunks.
  */

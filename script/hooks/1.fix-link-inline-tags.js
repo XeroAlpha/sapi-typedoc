@@ -22,7 +22,9 @@ module.exports = {
                 if (typeof part.target === 'object' && part.target.name === part.text) {
                     return;
                 }
-                const segments = part.text.split(/[./]/);
+                const segments = part.text
+                    .split(/[./]/)
+                    .flatMap((s) => (s.startsWith('minecraft') ? ['@minecraft', s.slice(9)] : [s]));
                 const probablySymbolNames = segments.map((_, i) => segments.slice(i).join('.'));
                 const foundReflections = reflectionEntries
                     .map(([friendlyFullName, refl]) => [

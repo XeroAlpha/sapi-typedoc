@@ -436,8 +436,8 @@ export class SculkSpreader {
  * how a player moves throughout the world and to support
  * testing of how entities and the environment will react to a
  * player. This type derives much of its structure and methods
- * from the {@link @minecraft/server.Player} type. Note that
- * many types of events that may be available for entities more
+ * from the {@link minecraftserver.Player} type. Note that many
+ * types of events that may be available for entities more
  * broadly, such as item use events, may not fire in the same
  * capacity for simulated players.
  */
@@ -1475,7 +1475,7 @@ export class Test {
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
-     * @minecraft/server.Direction} enum for more information on
+     * minecraftserver.Direction} enum for more information on
      * potential values (north, east, south, west - values 2-5).
      *
      */
@@ -1719,8 +1719,8 @@ export class Test {
      * @param location
      * Location of the fluid container block.
      * @param type
-     * Type of fluid to set. See {@link
-     * @minecraft/server.FluidType} for a list of values.
+     * Type of fluid to set. See {@link minecraftserver.FluidType}
+     * for a list of values.
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
