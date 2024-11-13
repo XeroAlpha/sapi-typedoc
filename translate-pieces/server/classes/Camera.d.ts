@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions } from '../index';
+/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions } from '../index';
 
 /**
  * Contains methods relating to the active camera for the
@@ -50,6 +50,7 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }

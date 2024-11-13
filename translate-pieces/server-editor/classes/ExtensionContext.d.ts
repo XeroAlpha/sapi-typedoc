@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPaletteManager, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
 
 /**
  * The extension context is a native (C++) object created for
@@ -23,6 +23,7 @@ export class ExtensionContext {
      */
     readonly afterEvents: ExtensionContextAfterEvents;
     readonly blockPalette: BlockPaletteManager;
+    readonly blockUtilities: BlockUtilities;
     readonly brushShapeManager: BrushShapeManager;
     /**
      * @remarks

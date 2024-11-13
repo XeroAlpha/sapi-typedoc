@@ -26,7 +26,7 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @remarks
-     * Create a {@link @minecraft/server.CompoundBlockVolume}
+     * Create a {@link minecraftserver.CompoundBlockVolume}
      * container which represents the occupied block volumes within
      * the ClipboardItem.
      * This function does not perform any write operations, and
@@ -44,7 +44,7 @@ export class ClipboardItem {
      * An optional set of write parameters which govern how the
      * ClipboardItem should be potentially applied to the world
      * @returns
-     * A {@link @minecraft/server.CompoundBlockVolume} which
+     * A {@link minecraftserver.CompoundBlockVolume} which
      * represents the occupied block volumes within the
      * ClipboardItem as they would be written to the world with the
      * specified {@link ClipboardWriteOptions}

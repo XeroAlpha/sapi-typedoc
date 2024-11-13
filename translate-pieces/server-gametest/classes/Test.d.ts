@@ -487,7 +487,7 @@ export class Test {
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
-     * @minecraft/server.Direction} enum for more information on
+     * minecraftserver.Direction} enum for more information on
      * potential values (north, east, south, west - values 2-5).
      *
      */
@@ -731,8 +731,8 @@ export class Test {
      * @param location
      * Location of the fluid container block.
      * @param type
-     * Type of fluid to set. See {@link
-     * @minecraft/server.FluidType} for a list of values.
+     * Type of fluid to set. See {@link minecraftserver.FluidType}
+     * for a list of values.
      * @throws This function can throw errors.
      *
      * {@link GameTestError}

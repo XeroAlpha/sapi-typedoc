@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Error thrown when the specified area contains one or more
  * unloaded chunks.
  */

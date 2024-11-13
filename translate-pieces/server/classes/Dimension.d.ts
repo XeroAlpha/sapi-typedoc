@@ -20,7 +20,7 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.
@@ -68,20 +68,23 @@ export class Dimension {
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * Fills an area between begin and end with block of type
-     * block.
+     * Fills an area of blocks with a specific block type.
      *
      * This function can't be called in read-only mode.
      *
+     * @param volume
+     * Volume of blocks to be filled.
      * @param block
      * Type of block to fill the volume with.
      * @param options
-     * A set of additional options, such as a matching block to
-     * potentially replace this fill block with.
+     * A set of additional options, such as a block filter which
+     * can be used to include / exclude specific blocks in the
+     * fill.
      * @returns
-     *  Returns number of blocks placed.
+     * Returns a ListBlockVolume which contains all the blocks that
+     * were placed.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -176,7 +179,7 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the filter.
      *
