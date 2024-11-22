@@ -20,7 +20,7 @@ export enum InputPermissionCategory {
      */
     Movement = 2,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input for moving laterally in the world. This would
      * be WASD on a keyboard or the movement joystick on gamepad or
@@ -29,7 +29,7 @@ export enum InputPermissionCategory {
      */
     LateralMovement = 4,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to sneak. This also affects flying
      * down.
@@ -37,7 +37,7 @@ export enum InputPermissionCategory {
      */
     Sneak = 5,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to jumping. This also affects flying
      * up.
@@ -45,14 +45,14 @@ export enum InputPermissionCategory {
      */
     Jump = 6,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to mounting vehicles.
      *
      */
     Mount = 7,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to dismounting. When disabled, the
      * player can still dismount vehicles by other means, for
@@ -62,28 +62,28 @@ export enum InputPermissionCategory {
      */
     Dismount = 8,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player forward.
      *
      */
     MoveForward = 9,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player backward.
      *
      */
     MoveBackward = 10,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player left.
      *
      */
     MoveLeft = 11,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player right.
      *

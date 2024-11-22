@@ -1,6 +1,7 @@
 /* IMPORT */ import { DaylightCycle, GamePublishSetting, PlayerPermissionLevel, ProjectExportType, minecraftserver } from '../index';
 
 export interface GameOptions {
+    bedsWork?: boolean;
     bonusChest?: boolean;
     cheats?: boolean;
     commandBlockEnabled?: boolean;
@@ -32,6 +33,7 @@ export interface GameOptions {
     showCoordinates?: boolean;
     showDaysPlayed?: boolean;
     simulationDistance?: number;
+    sleepSkipPercent?: number;
     spawnPosition?: minecraftserver.Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;

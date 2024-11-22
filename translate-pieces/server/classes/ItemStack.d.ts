@@ -20,18 +20,6 @@ export class ItemStack {
      */
     amount: number;
     /**
-     * @beta
-     * @remarks
-     * This is the percent chance of the item composting in the
-     * composter block and generating a compost layer.
-     *
-     * @throws
-     * Throws if value outside the range [1 - 100]
-     *
-     * {@link Error}
-     */
-    readonly compostingChance: number;
-    /**
      * @remarks
      * Returns whether the item is stackable. An item is considered
      * stackable if the item's maximum stack size is greater than 1

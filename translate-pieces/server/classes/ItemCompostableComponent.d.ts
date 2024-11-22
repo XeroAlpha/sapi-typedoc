@@ -12,9 +12,9 @@ export class ItemCompostableComponent extends ItemComponent {
      * @remarks
      * This is the percent chance of the item composting in the
      * composter block and generating a compost layer. Note this
-     * api will not return the percent chance for some vanilla
-     * items. To get the compostable chance for all items, use the
-     * compostingChance property on the ItemStack.
+     * api will also return the composting chance for vanilla items
+     * that are compostable but do not use the compostable item
+     * component.
      *
      * @throws
      * Throws if value outside the range [1 - 100]

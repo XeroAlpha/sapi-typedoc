@@ -2,6 +2,10 @@
 
 /**
  * @beta
+ *
+ * Required Experiments:
+ * - Focus Target Camera
+ *
  */
 export interface CameraTargetOptions {
     offsetFromTargetCenter?: Vector3;

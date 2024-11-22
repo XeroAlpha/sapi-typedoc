@@ -907,6 +907,8 @@ export enum PaintMode {
     BlockPaint = 0,
     FreehandSelect = 1,
     Smooth = 2,
+    Roughen = 3,
+    Flatten = 4,
 }
 
 export enum Plane {
@@ -1087,19 +1089,6 @@ export enum WidgetMouseButtonActionType {
 }
 
 /**
- * Defines type information for graphics settings properties.
- */
-export type GraphicsSettingsPropertyTypeMap = {
-    [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
-    [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
-    [GraphicsSettingsProperty.ShowCompass]?: boolean;
-};
-
-export type SpeedSettingsPropertyTypeMap = {
-    [SpeedSettingsProperty.FlySpeedMultiplier]?: number;
-};
-
-/**
  * Full set of all possible raw actions
  */
 export type Action = NoArgsAction | MouseRayCastAction;
@@ -1126,6 +1115,15 @@ export type ActivationFunctionType<PerPlayerStorageType> = (
  * A generic handler for an event sink.
  */
 export declare type EventHandler<T> = (eventArg: T) => void;
+
+/**
+ * Defines type information for graphics settings properties.
+ */
+export type GraphicsSettingsPropertyTypeMap = {
+    [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
+    [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
+    [GraphicsSettingsProperty.ShowCompass]?: boolean;
+};
 
 /**
  * A property item which supports BlockList properties
@@ -1327,6 +1325,10 @@ export type RegisteredAction<T extends Action> = T & ActionID;
  * that can't be handled automatically via Disposables.
  */
 export type ShutdownFunctionType<PerPlayerStorageType> = (uiSession: IPlayerUISession<PerPlayerStorageType>) => void;
+
+export type SpeedSettingsPropertyTypeMap = {
+    [SpeedSettingsProperty.FlySpeedMultiplier]?: number;
+};
 
 /**
  * Full set of all possible keyboard actions
@@ -1617,7 +1619,19 @@ export class BrushShapeManager {
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
      */
-    setSmoothStrength(smoothStrength: number): void;
+    setFlattenHeight(flattenHeight: number): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setFlattenRadius(flattenRadius: number): void;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    setTerrainStrength(terrainStrength: number): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -3978,6 +3992,23 @@ export class WidgetStateChangeEventData {
     readonly widget: Widget;
 }
 
+/**
+ * Binds actions to the client and manages their lifetime.
+ * Action managers are managed on a per player basis since
+ * client side UI is per player.
+ */
+export interface ActionManager {
+    /**
+     * @remarks
+     * Creates an action and registers it on the client
+     *
+     * @param rawAction
+     * The raw action to create. See ActionTypes for supported
+     * parameters
+     */
+    createAction<T extends Action>(rawAction: T): RegisteredAction<T>;
+}
+
 export interface BlockMaskList {
     blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
     maskType: BlockMaskListType;
@@ -3986,6 +4017,48 @@ export interface BlockMaskList {
 export interface BrushShape {
     icon: string;
     name: string;
+}
+
+/**
+ * Represents a UI session for a given player
+ */
+export interface BuiltInUIManager {
+    /**
+     * @remarks
+     * Navigates to the documentation site.
+     *
+     */
+    navigateToDocumentation(): void;
+    /**
+     * @remarks
+     * Navigates to the feedback site
+     *
+     */
+    navigateToFeedback(): void;
+    /**
+     * @remarks
+     * Navigates to the pause screen
+     *
+     */
+    navigateToPauseScreen(): void;
+    /**
+     * @remarks
+     * Updates the visibility of the log panel
+     *
+     */
+    updateLogPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
+     * Updates the visibility of the control demo
+     *
+     */
+    updateUISettingsPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
+     * Updates the visibility of the welcome panel
+     *
+     */
+    updateWelcomePanelVisibility(visibility: boolean): void;
 }
 
 /**
@@ -4110,6 +4183,24 @@ export interface EditorStructureSearchOptions {
 }
 
 /**
+ *  An event that can be subscribed to. You can use the token,
+ * returned from the subscribe method, to clean up handlers.
+ */
+export declare interface EventSink<T> {
+    /**
+     * @remarks
+     * Subscribes an event handler to a particular subscription.
+     *
+     * @param handler
+     * Handler function to subscribe with.
+     * @returns
+     * An event handler subscription token that can be used to
+     * unsubscribe and clean-up handlers.
+     */
+    subscribe(handler: EventHandler<T>): IEventToken;
+}
+
+/**
  * An interface which defines the set of optional parameters
  * which can be used when calling the `registerEditorExtension`
  * function
@@ -4151,6 +4242,7 @@ export interface ExtensionOptionalParameters {
 }
 
 export interface GameOptions {
+    bedsWork?: boolean;
     bonusChest?: boolean;
     cheats?: boolean;
     commandBlockEnabled?: boolean;
@@ -4182,6 +4274,7 @@ export interface GameOptions {
     showCoordinates?: boolean;
     showDaysPlayed?: boolean;
     simulationDistance?: number;
+    sleepSkipPercent?: number;
     spawnPosition?: minecraftserver.Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;
@@ -4189,195 +4282,6 @@ export interface GameOptions {
     tntExplodes?: boolean;
     weather?: number;
     worldName?: string;
-}
-
-/**
- * A properties class for the global instance of the logger
- * object.
- * While the logger object is available through the {@link
- * ExtensionContext} - using the global instance allows the
- * creator to use this properties class to perform direct
- * server->client messaging and broadcasts.
- */
-export interface LogProperties {
-    /**
-     * @remarks
-     * Direct a log message to a specific player.  If no player is
-     * specified, then all players will receive the message
-     *
-     */
-    player?: minecraftserver.Player;
-    /**
-     * @remarks
-     * Add additional tags to the log message which can be used by
-     * the client session to filter/search in the log window
-     *
-     */
-    tags?: string[];
-}
-
-export interface ProjectExportOptions {
-    alwaysDay?: boolean;
-    difficulty?: minecraftserver.Difficulty;
-    disableWeather?: boolean;
-    exportName?: string;
-    exportType: ProjectExportType;
-    gameMode?: minecraftserver.GameMode;
-    initialTimOfDay?: number;
-}
-
-export interface SettingsUIElementOptions {
-    dropdownItems?: string[];
-    max?: number;
-    min?: number;
-    refreshOnChange?: boolean;
-}
-
-export interface WeightedBlock {
-    block: minecraftserver.BlockType;
-    weight: number;
-}
-
-export interface WidgetComponentBaseOptions {
-    lockToSurface?: boolean;
-    offset?: minecraftserver.Vector3;
-    stateChangeEvent?: (arg: WidgetComponentStateChangeEventData) => void;
-    visible?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
-    boundsFillColor?: minecraftserver.RGBA;
-    boundsOutlineColor?: minecraftserver.RGBA;
-    clipboardMirror?: minecraftserver.StructureMirrorAxis;
-    clipboardNormalizedOrigin?: minecraftserver.Vector3;
-    clipboardOffset?: minecraftserver.Vector3;
-    clipboardRotation?: minecraftserver.StructureRotation;
-    showBounds?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
-    deselectedAnimation?: string;
-    isClickable?: boolean;
-    selectedAnimation?: string;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
-    axes?: Axis;
-    enablePlanes?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions {
-    controlPoints: Widget[];
-    splineType?: SplineType;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
-}
-
-export interface WidgetCreateOptions {
-    bindPositionToBlockCursor?: boolean;
-    collisionOffset?: minecraftserver.Vector3;
-    collisionRadius?: number;
-    lockToSurface?: boolean;
-    selectable?: boolean;
-    snapToBlockLocation?: boolean;
-    stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
-    visible?: boolean;
-}
-
-export interface WidgetGroupCreateOptions {
-    groupSelectionMode?: WidgetGroupSelectionMode;
-    showBounds?: boolean;
-    visible?: boolean;
-}
-
-/**
- * Binds actions to the client and manages their lifetime.
- * Action managers are managed on a per player basis since
- * client side UI is per player.
- */
-export interface ActionManager {
-    /**
-     * @remarks
-     * Creates an action and registers it on the client
-     *
-     * @param rawAction
-     * The raw action to create. See ActionTypes for supported
-     * parameters
-     */
-    createAction<T extends Action>(rawAction: T): RegisteredAction<T>;
-}
-
-/**
- * Represents a UI session for a given player
- */
-export interface BuiltInUIManager {
-    /**
-     * @remarks
-     * Navigates to the documentation site.
-     *
-     */
-    navigateToDocumentation(): void;
-    /**
-     * @remarks
-     * Navigates to the feedback site
-     *
-     */
-    navigateToFeedback(): void;
-    /**
-     * @remarks
-     * Navigates to the pause screen
-     *
-     */
-    navigateToPauseScreen(): void;
-    /**
-     * @remarks
-     * Updates the visibility of the log panel
-     *
-     */
-    updateLogPanelVisibility(visibility: boolean): void;
-    /**
-     * @remarks
-     * Updates the visibility of the control demo
-     *
-     */
-    updateUISettingsPanelVisibility(visibility: boolean): void;
-    /**
-     * @remarks
-     * Updates the visibility of the welcome panel
-     *
-     */
-    updateWelcomePanelVisibility(visibility: boolean): void;
-}
-
-/**
- *  An event that can be subscribed to. You can use the token,
- * returned from the subscribe method, to clean up handlers.
- */
-export declare interface EventSink<T> {
-    /**
-     * @remarks
-     * Subscribes an event handler to a particular subscription.
-     *
-     * @param handler
-     * Handler function to subscribe with.
-     * @returns
-     * An event handler subscription token that can be used to
-     * unsubscribe and clean-up handlers.
-     */
-    subscribe(handler: EventHandler<T>): IEventToken;
 }
 
 /**
@@ -6877,6 +6781,31 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A properties class for the global instance of the logger
+ * object.
+ * While the logger object is available through the {@link
+ * ExtensionContext} - using the global instance allows the
+ * creator to use this properties class to perform direct
+ * server->client messaging and broadcasts.
+ */
+export interface LogProperties {
+    /**
+     * @remarks
+     * Direct a log message to a specific player.  If no player is
+     * specified, then all players will receive the message
+     *
+     */
+    player?: minecraftserver.Player;
+    /**
+     * @remarks
+     * Add additional tags to the log message which can be used by
+     * the client session to filter/search in the log window
+     *
+     */
+    tags?: string[];
+}
+
+/**
  * Parameters for creating a modal tool in the tool container
  */
 export interface ModalToolCreationParameters {
@@ -6904,6 +6833,93 @@ export interface ModalToolCreationParameters {
      *
      */
     tooltip?: string;
+}
+
+export interface ProjectExportOptions {
+    alwaysDay?: boolean;
+    difficulty?: minecraftserver.Difficulty;
+    disableWeather?: boolean;
+    exportName?: string;
+    exportType: ProjectExportType;
+    gameMode?: minecraftserver.GameMode;
+    initialTimOfDay?: number;
+}
+
+export interface SettingsUIElementOptions {
+    dropdownItems?: string[];
+    max?: number;
+    min?: number;
+    refreshOnChange?: boolean;
+}
+
+export interface WeightedBlock {
+    block: minecraftserver.BlockType;
+    weight: number;
+}
+
+export interface WidgetComponentBaseOptions {
+    lockToSurface?: boolean;
+    offset?: minecraftserver.Vector3;
+    stateChangeEvent?: (arg: WidgetComponentStateChangeEventData) => void;
+    visible?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
+    boundsFillColor?: minecraftserver.RGBA;
+    boundsOutlineColor?: minecraftserver.RGBA;
+    clipboardMirror?: minecraftserver.StructureMirrorAxis;
+    clipboardNormalizedOrigin?: minecraftserver.Vector3;
+    clipboardOffset?: minecraftserver.Vector3;
+    clipboardRotation?: minecraftserver.StructureRotation;
+    showBounds?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
+    deselectedAnimation?: string;
+    isClickable?: boolean;
+    selectedAnimation?: string;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
+    axes?: Axis;
+    enablePlanes?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions {
+    controlPoints: Widget[];
+    splineType?: SplineType;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
+    color?: minecraftserver.RGBA;
+}
+
+export interface WidgetCreateOptions {
+    bindPositionToBlockCursor?: boolean;
+    collisionOffset?: minecraftserver.Vector3;
+    collisionRadius?: number;
+    lockToSurface?: boolean;
+    selectable?: boolean;
+    snapToBlockLocation?: boolean;
+    stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
+    visible?: boolean;
+}
+
+export interface WidgetGroupCreateOptions {
+    groupSelectionMode?: WidgetGroupSelectionMode;
+    showBounds?: boolean;
+    visible?: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
