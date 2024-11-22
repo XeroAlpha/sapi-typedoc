@@ -96,7 +96,19 @@ export class BrushShapeManager {
      * This function can't be called in read-only mode.
      *
      */
-    setSmoothStrength(smoothStrength: number): void;
+    setFlattenHeight(flattenHeight: number): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setFlattenRadius(flattenRadius: number): void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     */
+    setTerrainStrength(terrainStrength: number): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.

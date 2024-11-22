@@ -20,7 +20,7 @@ export class PlayerInputPermissions {
      */
     movementEnabled: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if an input permission is enabled.
      *
@@ -32,7 +32,7 @@ export class PlayerInputPermissions {
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Enable or disable an input permission. When enabled the
      * input will work, when disabled will not work.

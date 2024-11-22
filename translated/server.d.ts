@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.17.0-beta"
+ *   "version": "1.18.0-beta"
  * }
  * ```
  *
@@ -1683,7 +1683,7 @@ export enum InputPermissionCategory {
      */
     Movement = 2,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input for moving laterally in the world. This would
      * be WASD on a keyboard or the movement joystick on gamepad or
@@ -1692,7 +1692,7 @@ export enum InputPermissionCategory {
      */
     LateralMovement = 4,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to sneak. This also affects flying
      * down.
@@ -1700,7 +1700,7 @@ export enum InputPermissionCategory {
      */
     Sneak = 5,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to jumping. This also affects flying
      * up.
@@ -1708,14 +1708,14 @@ export enum InputPermissionCategory {
      */
     Jump = 6,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to mounting vehicles.
      *
      */
     Mount = 7,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to dismounting. When disabled, the
      * player can still dismount vehicles by other means, for
@@ -1725,28 +1725,28 @@ export enum InputPermissionCategory {
      */
     Dismount = 8,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player forward.
      *
      */
     MoveForward = 9,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player backward.
      *
      */
     MoveBackward = 10,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player left.
      *
      */
     MoveLeft = 11,
     /**
-     * @beta
+     * @rc
      * @remarks
      * Player input relating to moving the player right.
      *
@@ -2374,6 +2374,19 @@ export type BlockComponentTypeMap = {
 
 /**
  * @beta
+ * Type alias used by the {@link BlockPermutation} matches and
+ * resolve functions to narrow block state argument types to
+ * those mapped by {@link
+ * @minecraft/vanilla-data.BlockStateMapping}.
+ */
+export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockTypes}`
+    ? T extends keyof minecraftvanilladata.BlockStateMapping
+        ? minecraftvanilladata.BlockStateMapping[T]
+        : never
+    : Record<string, boolean | number | string>;
+
+/**
+ * @beta
  */
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
@@ -2529,19 +2542,6 @@ export type ItemComponentTypeMap = {
     'minecraft:potion': ItemPotionComponent;
     potion: ItemPotionComponent;
 };
-
-/**
- * @beta
- * Type alias used by the {@link BlockPermutation} matches and
- * resolve functions to narrow block state argument types to
- * those mapped by {@link
- * @minecraft/vanilla-data.BlockStateMapping}.
- */
-export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockTypes}`
-    ? T extends keyof minecraftvanilladata.BlockStateMapping
-        ? minecraftvanilladata.BlockStateMapping[T]
-        : never
-    : Record<string, boolean | number | string>;
 
 /**
  * @beta
@@ -10139,9 +10139,9 @@ export class ItemCompostableComponent extends ItemComponent {
      * @remarks
      * This is the percent chance of the item composting in the
      * composter block and generating a compost layer. Note this
-     * api will not return the percent chance for some vanilla
-     * items. To get the compostable chance for all items, use the
-     * compostingChance property on the ItemStack.
+     * api will also return the composting chance for vanilla items
+     * that are compostable but do not use the compostable item
+     * component.
      *
      * @throws
      * Throws if value outside the range [1 - 100]
@@ -10608,18 +10608,6 @@ export class ItemStack {
      * Throws if the value is outside the range of 1-255.
      */
     amount: number;
-    /**
-     * @beta
-     * @remarks
-     * This is the percent chance of the item composting in the
-     * composter block and generating a compost layer.
-     *
-     * @throws
-     * Throws if value outside the range [1 - 100]
-     *
-     * {@link Error}
-     */
-    readonly compostingChance: number;
     /**
      * @remarks
      * Returns whether the item is stackable. An item is considered
@@ -12633,7 +12621,7 @@ export class PlayerInputPermissions {
      */
     movementEnabled: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if an input permission is enabled.
      *
@@ -12645,7 +12633,7 @@ export class PlayerInputPermissions {
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Enable or disable an input permission. When enabled the
      * input will work, when disabled will not work.
@@ -14072,6 +14060,36 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
+ * @beta
+ */
+export class ShutdownBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg: ShutdownEvent) => void): (arg: ShutdownEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg: ShutdownEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class ShutdownEvent {
+    private constructor();
+}
+
+/**
  * Represents a loaded structure template (.mcstructure file).
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
@@ -14370,6 +14388,9 @@ export class StructureManager {
      * @param options
      * Optional settings to use when generating the jigsaw
      * structure.
+     * @returns
+     * Returns a {@link BoundingBox} object which represents the
+     * maximum bounds of the jigsaw structure.
      * @throws
      * Throws if maxDepth is outside of the range [1,20]
      * Throws if generation fails due to invalid parameters or
@@ -14386,7 +14407,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawPlaceOptions,
-    ): void;
+    ): BoundingBox;
     /**
      * @beta
      * @remarks
@@ -14407,6 +14428,9 @@ export class StructureManager {
      * @param options
      * Optional settings to use when generating the jigsaw
      * structure.
+     * @returns
+     * Returns a {@link BoundingBox} object which represents the
+     * maximum bounds of the jigsaw structure.
      * @throws
      * Throws if generation fails due to invalid parameters or
      * jigsaw configuration.
@@ -14420,7 +14444,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawStructurePlaceOptions,
-    ): void;
+    ): BoundingBox;
 }
 
 /**
@@ -14583,6 +14607,7 @@ export class SystemAfterEvents {
  */
 export class SystemBeforeEvents {
     private constructor();
+    readonly shutdown: ShutdownBeforeEventSignal;
     /**
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
@@ -16077,6 +16102,10 @@ export interface CameraFadeTimeOptions {
 
 /**
  * @beta
+ *
+ * Required Experiments:
+ * - Third Person Cameras
+ *
  */
 export interface CameraFixedBoomOptions {
     entityOffset?: Vector3;
@@ -16108,6 +16137,10 @@ export interface CameraSetRotOptions {
 
 /**
  * @beta
+ *
+ * Required Experiments:
+ * - Focus Target Camera
+ *
  */
 export interface CameraTargetOptions {
     offsetFromTargetCenter?: Vector3;

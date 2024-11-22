@@ -2,6 +2,10 @@
 
 /**
  * @beta
+ *
+ * Required Experiments:
+ * - Third Person Cameras
+ *
  */
 export interface CameraFixedBoomOptions {
     entityOffset?: Vector3;
