@@ -26,7 +26,7 @@
         "customJs": "./assets/extra.js",
         "githubPages": false,
         "navigationLinks": {
-            "切换翻译": "javascript:toogleTranslation()",
+            "切换翻译": "javascript:toggleTranslation()",
             "贡献翻译": "https://github.com/XeroAlpha/sapi-typedoc/tree/main/translated"
         },
         "externalSymbolLinkMappings": {

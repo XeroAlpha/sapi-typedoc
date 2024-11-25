@@ -1,7 +1,7 @@
-const { git } = require('./utils.js');
+import { git } from './utils.js';
 
-function listTrackingFiles(branch) {
-    const files = {};
+function listTrackingFiles(branch: string) {
+    const files: Record<string, string> = {};
     git(`ls-tree -r --format="%(objectname)\x09%(path)" ${branch}`)
         .toString('utf-8')
         .split('\n')

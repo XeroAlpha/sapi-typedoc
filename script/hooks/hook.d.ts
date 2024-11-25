@@ -1,7 +1,10 @@
 import { Project, SourceFile } from 'ts-morph';
+import type { UnionToIntersection } from 'type-fest';
 import { Application, ProjectReflection } from 'typedoc';
 
 declare type HookFunction<Context> = (context: Context) => void | Promise<void>;
+
+declare type GetContextFromHookFunction<T> = T extends (context: infer C) => unknown ? C : never;
 
 declare interface HookContext {
     basePath: string;
@@ -14,7 +17,7 @@ declare interface HookContext {
 declare interface TranslateHookContext extends HookContext {
     project: Project;
     sourceFiles: SourceFile[];
-    dependencies: Record<string, string>;
+    dependencies: Partial<Record<string, string>>;
 }
 
 declare interface BeforeConvertHookContext extends TranslateHookContext {
@@ -34,3 +37,9 @@ declare interface Hook {
     afterEmit?: HookFunction<AfterConvertHookContext>;
     afterUpdate?: HookFunction<AfterConvertHookContext>;
 }
+
+type HookerFnMap = {
+    [k in keyof Hook]-?: (event: k, context: GetContextFromHookFunction<Hook[k]>) => void | Promise<void>;
+};
+
+declare type Hooker = UnionToIntersection<HookerFnMap[keyof HookerFnMap]>;

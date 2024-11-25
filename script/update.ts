@@ -1,16 +1,15 @@
-const { execSync } = require('child_process');
-const { readFileSync, writeFileSync, rmSync, existsSync } = require('fs');
-const { resolve: resolvePath } = require('path');
-const { build } = require('./build.js');
-const { split, writePiece } = require('./split.js');
-const { loadHooks } = require('./hooks.js');
-const { basePath, originalPath, translatingPath, translatedPath } = require('./utils');
+import { execSync } from 'child_process';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import { resolve as resolvePath } from 'path';
+import type { PackageJson } from 'type-fest';
+import { build } from './build.js';
+import runHooks from './hooks.js';
+import { split, writePiece } from './split.js';
+import { basePath, originalPath, translatedPath, translatingPath } from './utils.js';
 
 const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
 
-async function main() {
-    const runHooks = loadHooks();
-
+export async function update(keepCachedPackageJson?: boolean) {
     // 强制检出 original 分支
     const head = execSync('git rev-parse --abbrev-ref HEAD', {
         cwd: basePath
@@ -32,15 +31,17 @@ async function main() {
     }
 
     // 获取 @minecraft 组织下的包
-    const scopedPackages = JSON.parse(execSync('npm search --json @minecraft'));
+    const scopedPackages = JSON.parse(execSync('npm search --json @minecraft', { encoding: 'utf-8' })) as {
+        name: string;
+    }[];
     const onlinePackageNames = scopedPackages
-        .map((package) => package.name)
+        .map((packageInfo) => packageInfo.name)
         .filter((packageName) => !excludedPackages.includes(packageName));
 
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, 'package.json');
     const packageSnapshotPath = resolvePath(translatedPath, 'package.json');
-    if (!process.argv.includes('--cache') && existsSync(packageSnapshotPath)) {
+    if (!keepCachedPackageJson && existsSync(packageSnapshotPath)) {
         rmSync(packageSnapshotPath);
     }
     const originalNodeModulesDir = resolvePath(originalPath, 'node_modules');
@@ -62,20 +63,13 @@ async function main() {
     rmSync(translatingPath, { recursive: true, force: true });
     sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
-        pieces.forEach((piece) => writePiece(sourceFile, piece));
+        pieces.forEach((piece) => {
+            writePiece(sourceFile, piece);
+        });
     });
     await runHooks('afterUpdate', buildResult);
 
     // 生成 package.json 快照
-    const packageInfo = JSON.parse(readFileSync(packageInfoPath, 'utf-8'));
+    const packageInfo = JSON.parse(readFileSync(packageInfoPath, 'utf-8')) as PackageJson;
     writeFileSync(packageSnapshotPath, JSON.stringify({ ...packageInfo, dependencies }, null, 2));
 }
-
-main()
-    .then(() => {
-        process.exit(0);
-    })
-    .catch((err) => {
-        console.error(err);
-        process.exit(1);
-    });
