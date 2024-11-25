@@ -1,7 +1,7 @@
-const TypeDoc = require('typedoc');
+import * as TypeDoc from 'typedoc';
+import type { Hook } from './hook.js';
 
-/** @type {import('./hook').Hook} */
-module.exports = {
+export default {
     afterConvert({ tsdocProject }) {
         const reflectionEntries = Object.values(tsdocProject.reflections)
             .filter(
@@ -13,13 +13,17 @@ module.exports = {
                         TypeDoc.ReflectionKind.SetSignature
                     ])
             )
-            .map((refl) => [refl.getFriendlyFullName(), refl]);
-        const visitCommentPart = (/** @type {TypeDoc.CommentDisplayPart} */ part) => {
+            .map((refl) => [refl.getFriendlyFullName(), refl] as const);
+        const visitCommentPart = (part: TypeDoc.CommentDisplayPart) => {
             if (part.kind === 'inline-tag' && part.tag === '@link') {
                 if (typeof part.target === 'string') {
                     return;
                 }
-                if (typeof part.target === 'object' && part.target.name === part.text) {
+                if (
+                    typeof part.target === 'object' &&
+                    part.target instanceof TypeDoc.Reflection &&
+                    part.target.name === part.text
+                ) {
                     return;
                 }
                 const segments = part.text
@@ -27,14 +31,17 @@ module.exports = {
                     .flatMap((s) => (s.startsWith('minecraft') ? ['@minecraft', s.slice(9)] : [s]));
                 const probablySymbolNames = segments.map((_, i) => segments.slice(i).join('.'));
                 const foundReflections = reflectionEntries
-                    .map(([friendlyFullName, refl]) => [
-                        probablySymbolNames.findIndex(
-                            (symbolName) =>
-                                friendlyFullName === symbolName || friendlyFullName.endsWith(`.${symbolName}`)
-                        ),
-                        refl,
-                        friendlyFullName
-                    ])
+                    .map(
+                        ([friendlyFullName, refl]) =>
+                            [
+                                probablySymbolNames.findIndex(
+                                    (symbolName) =>
+                                        friendlyFullName === symbolName || friendlyFullName.endsWith(`.${symbolName}`)
+                                ),
+                                refl,
+                                friendlyFullName
+                            ] as const
+                    )
                     .filter(([rank]) => rank >= 0);
                 if (foundReflections.length === 0) {
                     return;
@@ -56,4 +63,4 @@ module.exports = {
             }
         });
     }
-};
+} as Hook;

@@ -1,4 +1,5 @@
-const { SyntaxKind } = require('ts-morph');
+import { SyntaxKind, ts } from 'ts-morph';
+import type { Hook } from './hook.js';
 
 const translateTexts = [
     [
@@ -8,15 +9,14 @@ const translateTexts = [
     [`This property can't be edited in read-only mode.`, `无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。`]
 ];
 
-/** @type {import('./hook').Hook} */
-module.exports = {
+export default {
     afterTranslate({ sourceFiles }) {
         sourceFiles.forEach((sourceFile) => {
             const fullText = sourceFile.getFullText();
-            const textChanges = [];
+            const textChanges: ts.TextChange[] = [];
             const jsdocNodes = sourceFile.getDescendantsOfKind(SyntaxKind.JSDoc);
             translateTexts.forEach(([from, to]) => {
-                fullText.replaceAll(from, (match, offset) => {
+                fullText.replaceAll(from, (match, offset: number) => {
                     if (jsdocNodes.some((jsdocNode) => jsdocNode.containsRange(offset, offset + match.length))) {
                         textChanges.push({
                             span: { start: offset, length: match.length },
@@ -29,4 +29,4 @@ module.exports = {
             sourceFile.applyTextChanges(textChanges);
         });
     }
-};
+} as Hook;

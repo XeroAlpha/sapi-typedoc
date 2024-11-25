@@ -1,4 +1,4 @@
-function toogleTranslation() {
+function toggleTranslation() {
     if (location.href.includes('sapi/original/')) {
         location.href = location.href.replace('sapi/original/', 'sapi/');
     } else {

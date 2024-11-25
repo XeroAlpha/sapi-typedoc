@@ -1,5 +1,6 @@
-/** @type {import('./hook').Hook} */
-module.exports = {
+import type { Hook } from './hook.js';
+
+export default {
     afterLoad({ project }) {
         const gtSource = project.getSourceFileOrThrow('server-gametest.d.ts');
         const registerFunc = gtSource.getFunctionOrThrow('register');
@@ -34,4 +35,4 @@ module.exports = {
             }
         });
     }
-};
+} as Hook;

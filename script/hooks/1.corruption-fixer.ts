@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
-const { strict: assert } = require('assert');
-const { SyntaxKind } = require('ts-morph');
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { strict as assert } from 'assert';
+import { SyntaxKind } from 'ts-morph';
+import type { Hook, TranslateHookContext } from './hook.js';
 
-/** @type {((context: import('./hook').TranslateHookContext) => void)[]} */
-const patches = [];
+const patches: ((context: TranslateHookContext) => void)[] = [];
 
-const errors = [];
-/** @type {import('./hook').Hook} */
-module.exports = {
+const errors: unknown[] = [];
+export default {
     afterLoad(context) {
         patches.forEach((f) => {
             try {
@@ -24,4 +23,4 @@ module.exports = {
             throw error;
         }
     }
-};
+} as Hook;

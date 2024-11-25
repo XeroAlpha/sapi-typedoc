@@ -2,23 +2,28 @@
   "name": "sapi-typedoc",
   "version": "1.0.0",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "build": "node ./script/build.js",
-    "update": "node ./script/update.js",
-    "update-cache": "node ./script/update.js --cache",
-    "lint-script": "eslint --fix script"
+    "build": "tsx ./script/cli.ts build",
+    "update": "tsx ./script/cli.ts update",
+    "update-cache": "tsx ./script/cli.ts update-cached",
+    "lint-script": "cd ./script && eslint --fix ."
   },
   "dependencies": {
     "ts-morph": "^24.0.0",
-    "typedoc": "^0.26.8",
-    "typedoc-plugin-mdn-links": "^3.3.2",
-    "typescript": "^5.6.2"
+    "typedoc": "^0.27.0-beta.2",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
-    "eslint": "^9.12.0",
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^22.9.3",
+    "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3"
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.2",
+    "type-fest": "^4.27.1",
+    "typescript-eslint": "^8.15.0"
   }
 }

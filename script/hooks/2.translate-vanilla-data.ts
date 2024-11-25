@@ -1,33 +1,43 @@
-const { get } = require('https');
-const { SyntaxKind } = require('ts-morph');
-const { URL } = require('url');
+import { get } from 'https';
+import { SourceFile, SyntaxKind, ts } from 'ts-morph';
+import { URL } from 'url';
+import type { Hook } from './hook.js';
 
 const translationSources = [
     'https://ca.projectxero.top/idlist/data/index.json',
     'https://xeroalpha.github.io/caidlist/data/index.json'
 ];
 
-function httpsGet(url) {
-    return new Promise((resolve, reject) => {
+function httpsGet(url: string | URL) {
+    return new Promise<string>((resolve, reject) => {
         const req = get(url, (res) => {
             if (res.statusCode !== 200) {
-                return reject(new Error(`Failed to request ${url}: ${res.statusCode} ${res.statusMessage}`));
+                reject(new Error(`Failed to request ${String(url)}: ${res.statusCode} ${res.statusMessage}`));
+                return;
             }
-            const chunks = [];
+            const chunks: string[] = [];
             res.setEncoding('utf-8');
-            res.on('data', (chunk) => chunks.push(chunk));
-            res.on('end', () => resolve(chunks.join('')));
-            res.on('error', (err) => reject(err));
+            res.on('data', (chunk: string) => chunks.push(chunk));
+            res.on('end', () => {
+                resolve(chunks.join(''));
+            });
+            res.on('error', (err) => {
+                reject(err);
+            });
         });
-        req.on('error', (err) => reject(err));
+        req.on('error', (err) => {
+            reject(err);
+        });
     });
 }
 
-/** @typedef {import('ts-morph').SourceFile} SourceFile */
-/** @typedef {import('ts-morph').ts.TextChange} TsTextChange */
-
-/** @type {Record<string, (textChanges: TsTextChange[], options: { sourceFile: SourceFile, gameData: Record<string, Record<string, string>> }) => void>} */
-const tsPopulators = {
+const tsPopulators: Record<
+    string,
+    (
+        textChanges: ts.TextChange[],
+        options: { sourceFile: SourceFile; gameData: Record<string, Record<string, string>> }
+    ) => void
+> = {
     'mojang-block.d.ts': (textChanges, { sourceFile, gameData }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftBlockTypes');
         const { block } = gameData;
@@ -124,7 +134,7 @@ const tsPopulators = {
     },
     'mojang-dimension.d.ts': (textChanges, { sourceFile }) => {
         const enumNode = sourceFile.getEnumOrThrow('MinecraftDimensionTypes');
-        const dimensionTranslations = {
+        const dimensionTranslations: Partial<Record<string, string>> = {
             'minecraft:overworld': '主世界',
             'minecraft:nether': '下界',
             'minecraft:the_end': '末地'
@@ -192,32 +202,51 @@ const tsPopulators = {
     }
 };
 
-/** @type {import('./hook').Hook} */
-module.exports = {
+type IDListDataIndex = {
+    id: string;
+    dataVersion: string;
+    branchList: {
+        id: string;
+        dataUrl: string;
+    }[];
+}[];
+
+interface IDListDataCollection {
+    enums: Record<string, Record<string, string>>;
+    names: [string, string, string][];
+}
+
+export default {
     async afterTranslate({ project }) {
         const [sourceUrl, dataIndex] = await Promise.any(
             translationSources.map(async (translationSource) => {
-                const dataIndex = JSON.parse(await httpsGet(translationSource));
-                return [translationSource, dataIndex];
+                const dataIndex = JSON.parse(await httpsGet(translationSource)) as IDListDataIndex;
+                return [translationSource, dataIndex] as const;
             })
         );
 
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
-        const gameData = {};
+        const gameData: Record<string, Record<string, string>> = {};
         const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
+        if (!betaVersionIndex) {
+            throw new Error(`Wrong idlist index`);
+        }
         console.log(`[translate-vanilla-data] Data version: ${betaVersionIndex.dataVersion}`);
         (
             await Promise.all(
                 ['gametest', 'experiment', 'education'].map(async (n) => {
                     const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
+                    if (!dataIndex) {
+                        throw new Error(`Wrong idlist index`);
+                    }
                     const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
-                    const { enums } = JSON.parse(await httpsGet(dataUrl));
+                    const { enums } = JSON.parse(await httpsGet(dataUrl)) as IDListDataCollection;
                     return enums;
                 })
             )
         ).forEach((enums) => {
             Object.entries(enums).forEach(([enumName, enumKV]) => {
-                let enumEntries = gameData[enumName];
+                let enumEntries = gameData[enumName] as Record<string, string> | undefined;
                 if (!enumEntries) {
                     enumEntries = gameData[enumName] = {};
                 }
@@ -230,11 +259,11 @@ module.exports = {
         });
 
         Object.entries(tsPopulators).forEach(([fileName, populator]) => {
-            const sourceFile = project.getSourceFile(fileName);
-            const textChanges = [];
+            const sourceFile = project.getSourceFileOrThrow(fileName);
+            const textChanges: ts.TextChange[] = [];
             console.log(`[translate-vanilla-data] Populating ${fileName}`);
             populator(textChanges, { sourceFile, gameData });
             sourceFile.applyTextChanges(textChanges);
         });
     }
-};
+} as Hook;
