@@ -10,7 +10,7 @@ NPM 包：
 | - | - |
 |[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.2.0`|
 |[@minecraft/debug-utilities](https://www.npmjs.com/package/@minecraft/debug-utilities)|`1.0.0-beta`|
-|[@minecraft/math](https://www.npmjs.com/package/@minecraft/math)|`1.4.0`|
+|[@minecraft/math](https://www.npmjs.com/package/@minecraft/math)|`1.5.0`|
 |[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.18.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
