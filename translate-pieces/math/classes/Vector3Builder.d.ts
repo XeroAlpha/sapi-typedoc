@@ -109,4 +109,32 @@ export declare class Vector3Builder implements Vector3 {
      * Constructs a new vector using spherical linear interpolation on each component from two vectors.
      */
     slerp(vec: Vector3, t: number): this;
+    /**
+     * multiply
+     *
+     * Element-wise multiplication of two vectors together.
+     * Not to be confused with {@link Vector3Builder.dot} product or {@link Vector3Builder.cross} product
+     */
+    multiply(vec: Vector3): this;
+    /**
+     * rotateX
+     *
+     * Rotates the vector around the x axis counterclockwise (left hand rule)
+     * @param a - Angle in radians
+     */
+    rotateX(a: number): this;
+    /**
+     * rotateY
+     *
+     * Rotates the vector around the y axis counterclockwise (left hand rule)
+     * @param a - Angle in radians
+     */
+    rotateY(a: number): this;
+    /**
+     * rotateZ
+     *
+     * Rotates the vector around the z axis counterclockwise (left hand rule)
+     * @param a - Angle in radians
+     */
+    rotateZ(a: number): this;
 }

@@ -2,7 +2,7 @@
   "dependencies": {
     "@minecraft/common": "1.2.0",
     "@minecraft/debug-utilities": "1.0.0-beta.1.21.60-preview.21",
-    "@minecraft/math": "1.4.0",
+    "@minecraft/math": "1.5.0",
     "@minecraft/server": "1.18.0-beta.1.21.60-preview.21",
     "@minecraft/server-admin": "1.0.0-beta.1.21.60-preview.21",
     "@minecraft/server-editor": "0.1.0-beta.1.21.60-preview.21",
