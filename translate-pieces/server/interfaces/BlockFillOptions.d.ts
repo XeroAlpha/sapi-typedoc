@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockFilter } from '../index';
 
 /**
- * @rc
  * Contains additional options for a block fill operation.
  */
 export interface BlockFillOptions {

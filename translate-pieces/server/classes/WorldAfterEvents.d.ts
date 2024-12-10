@@ -207,7 +207,7 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player's {@link
      * @minecraft/Server.InputMode} changes.

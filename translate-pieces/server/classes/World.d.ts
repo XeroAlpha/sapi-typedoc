@@ -325,6 +325,17 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
      * @remarks
      * 为世界动态属性 `identifier` 设置一个值。
      * 

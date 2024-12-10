@@ -1,7 +1,7 @@
 /* IMPORT */ import { PlayerInputModeChangeAfterEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to player input mode.
  */
 export class PlayerInputModeChangeAfterEventSignal {

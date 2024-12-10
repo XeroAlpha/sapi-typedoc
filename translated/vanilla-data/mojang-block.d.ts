@@ -2649,7 +2649,7 @@ export type AcaciaDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to AcaciaFenceGate
  */
-export type AcaciaFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type AcaciaFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to AcaciaHangingSign
  */
@@ -2753,7 +2753,7 @@ export type BambooDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to BambooFenceGate
  */
-export type BambooFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type BambooFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to BambooHangingSign
  */
@@ -2849,7 +2849,7 @@ export type BirchDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertical
 /**
  * States specific to BirchFenceGate
  */
-export type BirchFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type BirchFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to BirchHangingSign
  */
@@ -3073,7 +3073,7 @@ export type CherryDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to CherryFenceGate
  */
-export type CherryFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type CherryFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to CherryHangingSign
  */
@@ -3237,7 +3237,7 @@ export type CrimsonDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertic
 /**
  * States specific to CrimsonFenceGate
  */
-export type CrimsonFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type CrimsonFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to CrimsonHangingSign
  */
@@ -3329,7 +3329,7 @@ export type DarkOakDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertic
 /**
  * States specific to DarkOakFenceGate
  */
-export type DarkOakFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type DarkOakFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to DarkOakHangingSign
  */
@@ -3573,7 +3573,7 @@ export type FarmlandStates = Pick<BlockStateSuperset, 'moisturized_amount'>;
 /**
  * States specific to FenceGate
  */
-export type FenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type FenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to Fire
  */
@@ -3717,7 +3717,7 @@ export type JungleDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to JungleFenceGate
  */
-export type JungleFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type JungleFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to JungleHangingSign
  */
@@ -3889,7 +3889,7 @@ export type MangroveDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:verti
 /**
  * States specific to MangroveFenceGate
  */
-export type MangroveFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type MangroveFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to MangroveHangingSign
  */
@@ -4133,7 +4133,7 @@ export type PaleOakDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertic
 /**
  * States specific to PaleOakFenceGate
  */
-export type PaleOakFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type PaleOakFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to PaleOakHangingSign
  */
@@ -4701,7 +4701,7 @@ export type SpruceDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to SpruceFenceGate
  */
-export type SpruceFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type SpruceFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to SpruceHangingSign
  */
@@ -5045,7 +5045,7 @@ export type WarpedDoubleSlabStates = Pick<BlockStateSuperset, 'minecraft:vertica
 /**
  * States specific to WarpedFenceGate
  */
-export type WarpedFenceGateStates = Pick<BlockStateSuperset, 'direction' | 'in_wall_bit' | 'open_bit'>;
+export type WarpedFenceGateStates = Pick<BlockStateSuperset, 'in_wall_bit' | 'minecraft:cardinal_direction' | 'open_bit'>;
 /**
  * States specific to WarpedHangingSign
  */

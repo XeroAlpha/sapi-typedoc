@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Describes the type of input of a device.
  */
 export enum InputMode {

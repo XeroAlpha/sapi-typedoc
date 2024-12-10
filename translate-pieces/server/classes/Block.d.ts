@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -73,11 +73,11 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * 返回或设置该方块是否含水。
      *
-     * Returns or sets whether this block has a liquid on it.
+     * Returns or sets whether this block has water on it.
      *
      * @throws This property can throw when used.
      *
@@ -210,6 +210,82 @@ export class Block {
      *
      */
     bottomCenter(): Vector3;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed when touched by
+     * liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed when touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block can have a liquid placed over it,
+     * i.e. be waterlogged.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block can have a liquid placed over it.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed when touched by
+     * liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed when touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block can have a liquid placed over it,
+     * i.e. be waterlogged.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block can have a liquid placed over it.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
     /**
      * @beta
      * @remarks
@@ -400,6 +476,24 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns whether this block stops liquid from flowing.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block stops liquid from flowing.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
      * @remarks
      * 如果对该方块的引用仍然有效，则返回 `true`（例如，如果方块未加载，对该方块的引用将不再有效）。
      *
@@ -413,6 +507,37 @@ export class Block {
      * True if this block object is still working and valid.
      */
     isValid(): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed and spawns its item
+     * when touched by liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed and spawns its item when
+     * touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
      * @remarks
      * Tests whether this block matches a specific criteria.
@@ -511,7 +636,7 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.

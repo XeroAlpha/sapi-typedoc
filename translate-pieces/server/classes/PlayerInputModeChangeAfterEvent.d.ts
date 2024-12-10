@@ -1,7 +1,7 @@
 /* IMPORT */ import { InputMode, Player } from '../index';
 
 /**
- * @beta
+ * @rc
  * Event data for when a player input mode changes.
  */
 export class PlayerInputModeChangeAfterEvent {

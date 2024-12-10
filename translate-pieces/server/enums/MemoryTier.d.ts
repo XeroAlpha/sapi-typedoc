@@ -1,5 +1,4 @@
 /**
- * @rc
  * Describes the memory of a device.
  */
 export enum MemoryTier {

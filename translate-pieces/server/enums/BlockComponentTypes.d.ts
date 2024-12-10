@@ -3,9 +3,6 @@
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
-    /**
-     * @rc
-     */
     FluidContainer = 'minecraft:fluidContainer',
     /**
      * @remarks

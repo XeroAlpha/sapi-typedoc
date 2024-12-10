@@ -14,7 +14,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @rc
      * @remarks
      * Contains the player's device information.
      *
@@ -24,7 +23,7 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains the player's input information.
      *

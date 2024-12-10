@@ -29,8 +29,10 @@ export { InputMode } from './enums/InputMode';
 export { InputPermissionCategory } from './enums/InputPermissionCategory';
 export { ItemComponentTypes } from './enums/ItemComponentTypes';
 export { ItemLockMode } from './enums/ItemLockMode';
+export { LiquidType } from './enums/LiquidType';
 export { MemoryTier } from './enums/MemoryTier';
 export { MoonPhase } from './enums/MoonPhase';
+export { NamespaceNameErrorReason } from './enums/NamespaceNameErrorReason';
 export { ObjectiveSortOrder } from './enums/ObjectiveSortOrder';
 export { PaletteColor } from './enums/PaletteColor';
 export { PlatformType } from './enums/PlatformType';
@@ -443,6 +445,7 @@ export { ItemCustomComponentReloadNewEventError } from './classes/ItemCustomComp
 export { ItemCustomComponentReloadVersionError } from './classes/ItemCustomComponentReloadVersionError';
 export { LocationInUnloadedChunkError } from './classes/LocationInUnloadedChunkError';
 export { LocationOutOfWorldBoundariesError } from './classes/LocationOutOfWorldBoundariesError';
+export { NamespaceNameError } from './classes/NamespaceNameError';
 export { PlaceJigsawError } from './classes/PlaceJigsawError';
 export { UnloadedChunksError } from './classes/UnloadedChunksError';
 export { HudElementsCount } from './variables/HudElementsCount';

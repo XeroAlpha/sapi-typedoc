@@ -1,7 +1,7 @@
 /* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2, minecraftcommon } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains the input information for a client instance.
  */
 export class InputInfo {
@@ -28,6 +28,7 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -36,6 +37,7 @@ export class InputInfo {
      */
     getButtonState(button: InputButton): ButtonState;
     /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
