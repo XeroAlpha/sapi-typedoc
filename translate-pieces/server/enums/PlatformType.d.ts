@@ -1,5 +1,4 @@
 /**
- * @rc
  * Describes what kind of platform is a device.
  */
 export enum PlatformType {

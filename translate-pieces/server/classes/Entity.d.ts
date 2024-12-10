@@ -625,6 +625,17 @@ export class Entity {
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
      * @remarks
      * Sets a specified property to a value.
      *

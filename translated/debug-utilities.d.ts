@@ -21,6 +21,17 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
+export interface handleCounts {
+    handleCounts: Record<string, number>;
+    name: string;
+    packId: string;
+    scriptModuleUUID: string;
+}
+
+export interface PluginStats {
+    plugins: handleCounts[];
+}
+
 export interface RuntimeStats {
     arrayCount: number;
     atomCount: number;
@@ -43,6 +54,15 @@ export interface RuntimeStats {
     stringSize: number;
 }
 
+/**
+ * @remarks
+ * Collect type usage stats for each active script
+ * plugin/add-on.
+ *
+ * @returns
+ * PluginStats object.
+ */
+export function collectPluginStats(): PluginStats;
 /**
  * @remarks
  * Collect memory stats for script runtimes.

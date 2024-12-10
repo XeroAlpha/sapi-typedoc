@@ -1,7 +1,6 @@
 /* IMPORT */ import { MemoryTier } from '../index';
 
 /**
- * @rc
  * Contains device information, like memory tier.
  */
 export class SystemInfo {

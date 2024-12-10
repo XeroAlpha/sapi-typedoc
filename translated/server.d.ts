@@ -29,9 +29,6 @@ import type * as minecraftvanilladata from '@minecraft/vanilla-data';
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
-    /**
-     * @rc
-     */
     FluidContainer = 'minecraft:fluidContainer',
     /**
      * @remarks
@@ -1631,7 +1628,7 @@ export enum InputButton {
 }
 
 /**
- * @beta
+ * @rc
  * Describes the type of input of a device.
  */
 export enum InputMode {
@@ -1823,7 +1820,20 @@ export enum ItemLockMode {
 }
 
 /**
- * @rc
+ * @beta
+ * Represents the type of liquid that can be placed on a block
+ * or flow dynamically in the world.
+ */
+export enum LiquidType {
+    /**
+     * @remarks
+     * Represents water as a type of liquid.
+     *
+     */
+    Water = 'Water',
+}
+
+/**
  * Describes the memory of a device.
  */
 export enum MemoryTier {
@@ -1920,6 +1930,14 @@ export enum MoonPhase {
      *
      */
     WaxingGibbous = 7,
+}
+
+/**
+ * @beta
+ */
+export enum NamespaceNameErrorReason {
+    DisallowedNamespace = 'DisallowedNamespace',
+    NoNamespace = 'NoNamespace',
 }
 
 /**
@@ -2047,7 +2065,6 @@ export enum PaletteColor {
 }
 
 /**
- * @rc
  * Describes what kind of platform is a device.
  */
 export enum PlatformType {
@@ -2639,9 +2656,9 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * Returns or sets whether this block has a liquid on it.
+     * Returns or sets whether this block has water on it.
      *
      * @throws This property can throw when used.
      *
@@ -2746,6 +2763,44 @@ export class Block {
      *
      */
     bottomCenter(): Vector3;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed when touched by
+     * liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed when touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block can have a liquid placed over it,
+     * i.e. be waterlogged.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block can have a liquid placed over it.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
     /**
      * @beta
      * @remarks
@@ -2888,6 +2943,24 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns whether this block stops liquid from flowing.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block stops liquid from flowing.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that
@@ -2897,6 +2970,37 @@ export class Block {
      * True if this block object is still working and valid.
      */
     isValid(): boolean;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed and spawns its item
+     * when touched by liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed and spawns its item when
+     * touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
      * @remarks
      * Tests whether this block matches a specific criteria.
@@ -2982,7 +3086,7 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.
@@ -3328,7 +3432,6 @@ export class BlockExplodeAfterEventSignal {
 }
 
 /**
- * @rc
  * Represents the fluid container of a block in the world. Used
  * with blocks like cauldrons.
  */
@@ -3467,6 +3570,36 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed when touched by
+     * liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed when touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block can have a liquid placed over it,
+     * i.e. be waterlogged.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block can have a liquid placed over it.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
+    /**
      * @remarks
      * Returns all available block states associated with this
      * block.
@@ -3515,6 +3648,36 @@ export class BlockPermutation {
      * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block stops liquid from flowing.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block stops liquid from flowing.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed and spawns its item
+     * when touched by liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed and spawns its item when
+     * touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
      * @remarks
      * Returns a boolean whether a specified permutation matches
@@ -4368,7 +4531,6 @@ export class ChatSendBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains the device information for a client instance.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5152,6 +5314,21 @@ export class ContainerSlot {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
      * @remarks
      * Sets a specified property to a value.
      *
@@ -5284,7 +5461,6 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.
@@ -5332,7 +5508,6 @@ export class Dimension {
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
-     * @rc
      * @remarks
      * Fills an area of blocks with a specific block type.
      *
@@ -5443,7 +5618,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the filter.
      *
@@ -6646,6 +6820,17 @@ export class Entity {
      * @throws This function can throw errors.
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
+    /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -9374,7 +9559,6 @@ export class FilterGroup {
 }
 
 /**
- * @rc
  * Represents constants related to fluid containers.
  */
 export class FluidContainer {
@@ -9725,7 +9909,7 @@ export class ILeverActionAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains the input information for a client instance.
  */
 export class InputInfo {
@@ -9752,6 +9936,7 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -9760,6 +9945,7 @@ export class InputInfo {
      */
     getButtonState(button: InputButton): ButtonState;
     /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
@@ -10875,6 +11061,17 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
      * @remarks
      * Sets a specified property to a value. Note: This function
      * only works with non-stackable items.
@@ -11312,7 +11509,6 @@ export class ItemUseOnAfterEvent {
      */
     readonly faceLocation: Vector3;
     /**
-     * @rc
      * @remarks
      * This value will be true if the event was triggered on
      * players initial interaction button press and false on events
@@ -11710,7 +11906,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @rc
      * @remarks
      * Contains the player's device information.
      *
@@ -11720,7 +11915,7 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains the player's input information.
      *
@@ -12488,7 +12683,7 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Event data for when a player input mode changes.
  */
 export class PlayerInputModeChangeAfterEvent {
@@ -12514,7 +12709,7 @@ export class PlayerInputModeChangeAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to player input mode.
  */
 export class PlayerInputModeChangeAfterEventSignal {
@@ -14474,7 +14669,6 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @rc
      * @remarks
      * Contains the device information for the server.
      *
@@ -14571,6 +14765,18 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
+     * @beta
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    scriptEvent(id: string, message: string): void;
+    /**
      * @remarks
      * This function can be called in early-execution mode.
      *
@@ -14621,7 +14827,6 @@ export class SystemBeforeEvents {
 }
 
 /**
- * @rc
  * Contains device information, like memory tier.
  */
 export class SystemInfo {
@@ -15204,6 +15409,17 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
      * @remarks
      * Sets a specified property to a value.
      *
@@ -15448,7 +15664,7 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player's {@link
      * @minecraft/Server.InputMode} changes.
@@ -15845,7 +16061,6 @@ export interface BlockEventOptions {
 }
 
 /**
- * @rc
  * Contains additional options for a block fill operation.
  */
 export interface BlockFillOptions {
@@ -16849,6 +17064,13 @@ export interface ItemCustomComponent {
 export interface JigsawPlaceOptions {
     /**
      * @remarks
+     * Whether entities should be included in the structure.
+     * Defaults to true.
+     *
+     */
+    includeEntities?: boolean;
+    /**
+     * @remarks
      * Whether the jigsaw blocks should be kept when generating the
      * structure. Defaults to false.
      *
@@ -16870,6 +17092,13 @@ export interface JigsawStructurePlaceOptions {
      *
      */
     ignoreStartHeight?: boolean;
+    /**
+     * @remarks
+     * Whether entities should be included in the structure.
+     * Defaults to true.
+     *
+     */
+    includeEntities?: boolean;
     /**
      * @remarks
      * Whether the jigsaw blocks should be kept when generating the
@@ -17530,7 +17759,7 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * The error called when an entity is invalid. This can occur
  * when accessing components on a removed entity.
  */
@@ -17625,12 +17854,20 @@ export class LocationOutOfWorldBoundariesError extends Error {
  * @beta
  */
 // @ts-ignore Class inheritance allowed for native defined classes
+export class NamespaceNameError extends Error {
+    private constructor();
+    reason: NamespaceNameErrorReason;
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
     private constructor();
 }
 
 /**
- * @rc
  * Error thrown when the specified area contains one or more
  * unloaded chunks.
  */

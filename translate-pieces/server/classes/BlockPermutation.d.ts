@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, minecraftvanilladata } from '../index';
+/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType, minecraftvanilladata } from '../index';
 
 /**
  * Contains the combination of type {@link BlockType} and
@@ -15,6 +15,36 @@ export class BlockPermutation {
      *
      */
     readonly 'type': BlockType;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed when touched by
+     * liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed when touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block can have a liquid placed over it,
+     * i.e. be waterlogged.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block can have a liquid placed over it.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
     /**
      * @remarks
      * Returns all available block states associated with this
@@ -64,6 +94,36 @@ export class BlockPermutation {
      * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block stops liquid from flowing.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block stops liquid from flowing.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether this block is removed and spawns its item
+     * when touched by liquid.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether this block is removed and spawns its item when
+     * touched by liquid.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
      * @remarks
      * Returns a boolean whether a specified permutation matches

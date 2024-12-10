@@ -20,7 +20,6 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.
@@ -68,7 +67,6 @@ export class Dimension {
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
-     * @rc
      * @remarks
      * Fills an area of blocks with a specific block type.
      *
@@ -179,7 +177,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the filter.
      *

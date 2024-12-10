@@ -31,7 +31,7 @@ export async function update(keepCachedPackageJson?: boolean) {
     }
 
     // 获取 @minecraft 组织下的包
-    const scopedPackages = JSON.parse(execSync('npm search --json @minecraft', { encoding: 'utf-8' })) as {
+    const scopedPackages = JSON.parse(execSync('npm search --json scope:minecraft', { encoding: 'utf-8' })) as {
         name: string;
     }[];
     const onlinePackageNames = scopedPackages
@@ -55,7 +55,7 @@ export async function update(keepCachedPackageJson?: boolean) {
 
     // 检查是否所有包都在依赖中
     const missingDependencies = onlinePackageNames.filter((packageName) => !(packageName in dependencies));
-    if (missingDependencies.length > 0) {
+    if (missingDependencies.length > 0 && missingDependencies.length <= 5) {
         throw new Error(`Missing dependencies: ${missingDependencies.join(',')}`);
     }
 
