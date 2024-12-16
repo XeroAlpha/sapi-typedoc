@@ -7,13 +7,6 @@
 export class BlockType {
     private constructor();
     /**
-     * @beta
-     * @remarks
-     * Represents whether this type of block can be waterlogged.
-     *
-     */
-    readonly canBeWaterlogged: boolean;
-    /**
      * @remarks
      * Block type name - for example, `minecraft:acacia_stairs`.
      *

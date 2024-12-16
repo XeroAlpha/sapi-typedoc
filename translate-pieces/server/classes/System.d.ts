@@ -1,4 +1,4 @@
-/* IMPORT */ import { NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
+/* IMPORT */ import { NamespaceNameError, ScriptEventMessageSizeError, SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
 
 /**
  * A class that provides system-level events and functions.
@@ -125,13 +125,27 @@ export class System {
     /**
      * @beta
      * @remarks
+     * Causes an event to fire within script with the specified
+     * message ID and payload.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param id
+     * Identifier of the message to send. This is custom and
+     * dependent on the kinds of behavior packs and content you may
+     * have installed within the world.
+     * @param message
+     * Data component of the message to send. This is custom and
+     * dependent on the kinds of behavior packs and content you may
+     * have installed within the world. Message may not exceed 2048
+     * characters in length.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
      *
      * {@link NamespaceNameError}
+     *
+     * {@link ScriptEventMessageSizeError}
      */
     scriptEvent(id: string, message: string): void;
     /**

@@ -447,6 +447,7 @@ export { LocationInUnloadedChunkError } from './classes/LocationInUnloadedChunkE
 export { LocationOutOfWorldBoundariesError } from './classes/LocationOutOfWorldBoundariesError';
 export { NamespaceNameError } from './classes/NamespaceNameError';
 export { PlaceJigsawError } from './classes/PlaceJigsawError';
+export { ScriptEventMessageSizeError } from './classes/ScriptEventMessageSizeError';
 export { UnloadedChunksError } from './classes/UnloadedChunksError';
 export { HudElementsCount } from './variables/HudElementsCount';
 export { HudVisibilityCount } from './variables/HudVisibilityCount';

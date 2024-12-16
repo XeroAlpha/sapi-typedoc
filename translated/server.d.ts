@@ -1934,9 +1934,21 @@ export enum MoonPhase {
 
 /**
  * @beta
+ * An enumeration describing the reason for the namespace name
+ * error being thrown
  */
 export enum NamespaceNameErrorReason {
+    /**
+     * @remarks
+     * A restricted namespace was used as the namespace
+     *
+     */
     DisallowedNamespace = 'DisallowedNamespace',
+    /**
+     * @remarks
+     * The name was missing a namespace when one is required
+     *
+     */
     NoNamespace = 'NoNamespace',
 }
 
@@ -3981,13 +3993,6 @@ export class BlockStateType {
  */
 export class BlockType {
     private constructor();
-    /**
-     * @beta
-     * @remarks
-     * Represents whether this type of block can be waterlogged.
-     *
-     */
-    readonly canBeWaterlogged: boolean;
     /**
      * @remarks
      * Block type name - for example, `minecraft:acacia_stairs`.
@@ -14405,6 +14410,9 @@ export class Structure {
      * The block location relative to the Structure's origin.
      * @param blockPermutation
      * The BlockPermutation to set.
+     * @param waterlogged
+     * Specifies whether the block should be waterlogged. Air and
+     * undefined blocks cannot be waterlogged.
      * @throws
      * Throws if the type of block is StructureVoid.
      * Throws if the block is undefined and waterlogged is set to
@@ -14417,7 +14425,7 @@ export class Structure {
      *
      * {@link InvalidStructureError}
      */
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 /**
@@ -14767,13 +14775,27 @@ export class System {
     /**
      * @beta
      * @remarks
+     * Causes an event to fire within script with the specified
+     * message ID and payload.
+     *
      * This function can't be called in read-only mode.
      *
+     * @param id
+     * Identifier of the message to send. This is custom and
+     * dependent on the kinds of behavior packs and content you may
+     * have installed within the world.
+     * @param message
+     * Data component of the message to send. This is custom and
+     * dependent on the kinds of behavior packs and content you may
+     * have installed within the world. Message may not exceed 2048
+     * characters in length.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
      *
      * {@link NamespaceNameError}
+     *
+     * {@link ScriptEventMessageSizeError}
      */
     scriptEvent(id: string, message: string): void;
     /**
@@ -17852,6 +17874,8 @@ export class LocationOutOfWorldBoundariesError extends Error {
 
 /**
  * @beta
+ * Thrown when a name requires a namespace and an error occurs
+ * when validating that namespace
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class NamespaceNameError extends Error {
@@ -17864,6 +17888,16 @@ export class NamespaceNameError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when the message for a script event exceeds the
+ * maximum allowed length
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ScriptEventMessageSizeError extends Error {
     private constructor();
 }
 
