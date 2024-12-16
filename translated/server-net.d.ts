@@ -166,7 +166,6 @@ export enum PacketId {
     InventoryContentPacket = 'InventoryContentPacket',
     InventorySlotPacket = 'InventorySlotPacket',
     InventoryTransactionPacket = 'InventoryTransactionPacket',
-    ItemComponentPacket = 'ItemComponentPacket',
     ItemStackRequestPacket = 'ItemStackRequestPacket',
     ItemStackResponse = 'ItemStackResponse',
     JigsawStructureDataPacket = 'JigsawStructureDataPacket',

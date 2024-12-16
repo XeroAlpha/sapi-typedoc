@@ -2641,7 +2641,7 @@ export type AcaciaButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to AcaciaDoor
  */
-export type AcaciaDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type AcaciaDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to AcaciaDoubleSlab
  */
@@ -2745,7 +2745,7 @@ export type BambooButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to BambooDoor
  */
-export type BambooDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type BambooDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to BambooDoubleSlab
  */
@@ -2841,7 +2841,7 @@ export type BirchButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' | 
 /**
  * States specific to BirchDoor
  */
-export type BirchDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type BirchDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to BirchDoubleSlab
  */
@@ -3065,7 +3065,7 @@ export type CherryButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to CherryDoor
  */
-export type CherryDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type CherryDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to CherryDoubleSlab
  */
@@ -3205,7 +3205,7 @@ export type CopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'powered_bit'>;
 /**
  * States specific to CopperDoor
  */
-export type CopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type CopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to CopperTrapdoor
  */
@@ -3229,7 +3229,7 @@ export type CrimsonButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' 
 /**
  * States specific to CrimsonDoor
  */
-export type CrimsonDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type CrimsonDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to CrimsonDoubleSlab
  */
@@ -3321,7 +3321,7 @@ export type DarkOakButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' 
 /**
  * States specific to DarkOakDoor
  */
-export type DarkOakDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type DarkOakDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to DarkOakDoubleSlab
  */
@@ -3549,7 +3549,7 @@ export type ExposedCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'powered_
 /**
  * States specific to ExposedCopperDoor
  */
-export type ExposedCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type ExposedCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to ExposedCopperTrapdoor
  */
@@ -3693,7 +3693,7 @@ export type InfestedDeepslateStates = Pick<BlockStateSuperset, 'pillar_axis'>;
 /**
  * States specific to IronDoor
  */
-export type IronDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type IronDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to IronTrapdoor
  */
@@ -3709,7 +3709,7 @@ export type JungleButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to JungleDoor
  */
-export type JungleDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type JungleDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to JungleDoubleSlab
  */
@@ -3881,7 +3881,7 @@ export type MangroveButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit'
 /**
  * States specific to MangroveDoor
  */
-export type MangroveDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type MangroveDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to MangroveDoubleSlab
  */
@@ -4093,7 +4093,7 @@ export type OxidizedCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'powered
 /**
  * States specific to OxidizedCopperDoor
  */
-export type OxidizedCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type OxidizedCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to OxidizedCopperTrapdoor
  */
@@ -4125,7 +4125,7 @@ export type PaleOakButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' 
 /**
  * States specific to PaleOakDoor
  */
-export type PaleOakDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type PaleOakDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to PaleOakDoubleSlab
  */
@@ -4693,7 +4693,7 @@ export type SpruceButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to SpruceDoor
  */
-export type SpruceDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type SpruceDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to SpruceDoubleSlab
  */
@@ -5037,7 +5037,7 @@ export type WarpedButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to WarpedDoor
  */
-export type WarpedDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WarpedDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WarpedDoubleSlab
  */
@@ -5093,7 +5093,7 @@ export type WaxedCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'powered_bi
 /**
  * States specific to WaxedCopperDoor
  */
-export type WaxedCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WaxedCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WaxedCopperTrapdoor
  */
@@ -5117,7 +5117,7 @@ export type WaxedExposedCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'pow
 /**
  * States specific to WaxedExposedCopperDoor
  */
-export type WaxedExposedCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WaxedExposedCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WaxedExposedCopperTrapdoor
  */
@@ -5141,7 +5141,7 @@ export type WaxedOxidizedCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'po
 /**
  * States specific to WaxedOxidizedCopperDoor
  */
-export type WaxedOxidizedCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WaxedOxidizedCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WaxedOxidizedCopperTrapdoor
  */
@@ -5165,7 +5165,7 @@ export type WaxedWeatheredCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'p
 /**
  * States specific to WaxedWeatheredCopperDoor
  */
-export type WaxedWeatheredCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WaxedWeatheredCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WaxedWeatheredCopperTrapdoor
  */
@@ -5189,7 +5189,7 @@ export type WeatheredCopperBulbStates = Pick<BlockStateSuperset, 'lit' | 'powere
 /**
  * States specific to WeatheredCopperDoor
  */
-export type WeatheredCopperDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WeatheredCopperDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WeatheredCopperTrapdoor
  */
@@ -5237,7 +5237,7 @@ export type WoodenButtonStates = Pick<BlockStateSuperset, 'button_pressed_bit' |
 /**
  * States specific to WoodenDoor
  */
-export type WoodenDoorStates = Pick<BlockStateSuperset, 'direction' | 'door_hinge_bit' | 'open_bit' | 'upper_block_bit'>;
+export type WoodenDoorStates = Pick<BlockStateSuperset, 'door_hinge_bit' | 'minecraft:cardinal_direction' | 'open_bit' | 'upper_block_bit'>;
 /**
  * States specific to WoodenPressurePlate
  */
