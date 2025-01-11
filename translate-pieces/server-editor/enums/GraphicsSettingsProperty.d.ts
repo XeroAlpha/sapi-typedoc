@@ -3,6 +3,7 @@
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    NightVision = 'NightVision',
     ShowChunkBoundaries = 'ShowChunkBoundaries',
     ShowCompass = 'ShowCompass',
     /**

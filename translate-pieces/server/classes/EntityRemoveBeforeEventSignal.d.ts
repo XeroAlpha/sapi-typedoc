@@ -22,7 +22,7 @@ export class EntityRemoveBeforeEventSignal {
      * Returns a closure that can be used in subsequent unsubscribe
      * operations.
      */
-    subscribe(callback: (arg: EntityRemoveBeforeEvent) => void): (arg: EntityRemoveBeforeEvent) => void;
+    subscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): (arg0: EntityRemoveBeforeEvent) => void;
     /**
      * @remarks
      * Unsubscribes your function from subsequent calls when an
@@ -33,5 +33,5 @@ export class EntityRemoveBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;
 }

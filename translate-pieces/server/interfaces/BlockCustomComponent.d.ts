@@ -11,28 +11,28 @@ export interface BlockCustomComponent {
      * block.
      *
      */
-    beforeOnPlayerPlace?: (arg: BlockComponentPlayerPlaceBeforeEvent) => void;
+    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent) => void;
     /**
      * @remarks
      * This function will be called when an entity falls onto the
      * block that this custom component is bound to.
      *
      */
-    onEntityFallOn?: (arg: BlockComponentEntityFallOnEvent) => void;
+    onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent) => void;
     /**
      * @remarks
      * This function will be called when the block that this custom
      * component is bound to is placed.
      *
      */
-    onPlace?: (arg: BlockComponentOnPlaceEvent) => void;
+    onPlace?: (arg0: BlockComponentOnPlaceEvent) => void;
     /**
      * @remarks
      * This function will be called when a player destroys a
      * specific block.
      *
      */
-    onPlayerDestroy?: (arg: BlockComponentPlayerDestroyEvent) => void;
+    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent) => void;
     /**
      * @remarks
      * This function will be called when a player sucessfully
@@ -40,31 +40,31 @@ export interface BlockCustomComponent {
      * to.
      *
      */
-    onPlayerInteract?: (arg: BlockComponentPlayerInteractEvent) => void;
+    onPlayerInteract?: (arg0: BlockComponentPlayerInteractEvent) => void;
     /**
      * @remarks
      * This function will be called when a block randomly ticks.
      *
      */
-    onRandomTick?: (arg: BlockComponentRandomTickEvent) => void;
+    onRandomTick?: (arg0: BlockComponentRandomTickEvent) => void;
     /**
      * @remarks
      * This function will be called when an entity steps off the
      * block that this custom component is bound to.
      *
      */
-    onStepOff?: (arg: BlockComponentStepOffEvent) => void;
+    onStepOff?: (arg0: BlockComponentStepOffEvent) => void;
     /**
      * @remarks
      * This function will be called when an entity steps onto the
      * block that this custom component is bound to.
      *
      */
-    onStepOn?: (arg: BlockComponentStepOnEvent) => void;
+    onStepOn?: (arg0: BlockComponentStepOnEvent) => void;
     /**
      * @remarks
      * This function will be called when a block ticks.
      *
      */
-    onTick?: (arg: BlockComponentTickEvent) => void;
+    onTick?: (arg0: BlockComponentTickEvent) => void;
 }

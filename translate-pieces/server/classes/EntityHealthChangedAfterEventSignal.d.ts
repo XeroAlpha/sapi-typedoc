@@ -17,9 +17,9 @@ export class EntityHealthChangedAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: EntityHealthChangedAfterEvent) => void,
+        callback: (arg0: EntityHealthChangedAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHealthChangedAfterEvent) => void;
+    ): (arg0: EntityHealthChangedAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when the health of an
@@ -30,5 +30,5 @@ export class EntityHealthChangedAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityHealthChangedAfterEvent) => void): void;
 }

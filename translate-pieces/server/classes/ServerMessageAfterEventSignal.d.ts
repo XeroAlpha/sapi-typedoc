@@ -18,7 +18,7 @@ export class ServerMessageAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
+    subscribe(callback: (arg0: MessageReceiveAfterEvent) => void): (arg0: MessageReceiveAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an internal
@@ -29,5 +29,5 @@ export class ServerMessageAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: MessageReceiveAfterEvent) => void): void;
 }

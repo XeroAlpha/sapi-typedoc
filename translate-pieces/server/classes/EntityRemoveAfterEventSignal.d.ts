@@ -25,9 +25,9 @@ export class EntityRemoveAfterEventSignal {
      * operations.
      */
     subscribe(
-        callback: (arg: EntityRemoveAfterEvent) => void,
+        callback: (arg0: EntityRemoveAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityRemoveAfterEvent) => void;
+    ): (arg0: EntityRemoveAfterEvent) => void;
     /**
      * @remarks
      * Unsubscribes your function from subsequent calls when an
@@ -38,5 +38,5 @@ export class EntityRemoveAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityRemoveAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityRemoveAfterEvent) => void): void;
 }

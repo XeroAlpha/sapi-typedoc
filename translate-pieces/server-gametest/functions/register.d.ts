@@ -25,5 +25,5 @@
 export function register(
     testClassName: string,
     testName: string,
-    testFunction: (arg: Test) => void,
+    testFunction: (arg0: Test) => void,
 ): RegistrationBuilder;

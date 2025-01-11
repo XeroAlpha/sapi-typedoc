@@ -17,9 +17,9 @@ export class EntityHitBlockAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: EntityHitBlockAfterEvent) => void,
+        callback: (arg0: EntityHitBlockAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHitBlockAfterEvent) => void;
+    ): (arg0: EntityHitBlockAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an entity hits a
@@ -30,5 +30,5 @@ export class EntityHitBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityHitBlockAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityHitBlockAfterEvent) => void): void;
 }

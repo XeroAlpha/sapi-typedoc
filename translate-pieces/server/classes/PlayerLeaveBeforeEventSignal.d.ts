@@ -16,7 +16,7 @@ export class PlayerLeaveBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
+    subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback that will be called when a player leaves
@@ -27,5 +27,5 @@ export class PlayerLeaveBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;
 }

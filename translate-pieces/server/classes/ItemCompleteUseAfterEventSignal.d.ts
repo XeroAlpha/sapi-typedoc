@@ -16,7 +16,7 @@ export class ItemCompleteUseAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
+    subscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): (arg0: ItemCompleteUseAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a chargeable item
@@ -27,5 +27,5 @@ export class ItemCompleteUseAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): void;
 }

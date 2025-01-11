@@ -20,7 +20,6 @@ export declare enum MinecraftItemTypes {
     AcaciaTrapdoor = "minecraft:acacia_trapdoor",
     AcaciaWood = "minecraft:acacia_wood",
     ActivatorRail = "minecraft:activator_rail",
-    Air = "minecraft:air",
     AllaySpawnEgg = "minecraft:allay_spawn_egg",
     Allium = "minecraft:allium",
     Allow = "minecraft:allow",

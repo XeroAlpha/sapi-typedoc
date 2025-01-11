@@ -16,7 +16,7 @@ export class GameRuleChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: GameRuleChangeAfterEvent) => void): (arg: GameRuleChangeAfterEvent) => void;
+    subscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): (arg0: GameRuleChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a world.gameRules
@@ -27,5 +27,5 @@ export class GameRuleChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): void;
 }

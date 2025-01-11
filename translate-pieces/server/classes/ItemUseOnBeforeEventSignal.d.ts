@@ -16,7 +16,7 @@ export class ItemUseOnBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ItemUseOnBeforeEvent) => void): (arg: ItemUseOnBeforeEvent) => void;
+    subscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): (arg0: ItemUseOnBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before an item is used
@@ -27,5 +27,5 @@ export class ItemUseOnBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): void;
 }

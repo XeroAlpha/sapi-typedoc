@@ -16,7 +16,7 @@ export class ProjectileHitBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): (arg: ProjectileHitBlockAfterEvent) => void;
+    subscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): (arg0: ProjectileHitBlockAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a projectile hits
@@ -27,5 +27,5 @@ export class ProjectileHitBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): void;
 }

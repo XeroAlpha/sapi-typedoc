@@ -1286,6 +1286,7 @@ export type BlockStateSuperset = {
     ['covered_bit']?: boolean;
     ['cracked_state']?: string;
     ['crafting']?: boolean;
+    ['creaking_heart_state']?: string;
     ['damage']?: string;
     ['dead_bit']?: boolean;
     ['deprecated']?: number;
@@ -1978,7 +1979,7 @@ export type CrafterStates = Pick<BlockStateSuperset, 'crafting' | 'orientation' 
 /**
  * States specific to CreakingHeart
  */
-export type CreakingHeartStates = Pick<BlockStateSuperset, 'active' | 'natural' | 'pillar_axis'>;
+export type CreakingHeartStates = Pick<BlockStateSuperset, 'creaking_heart_state' | 'natural' | 'pillar_axis'>;
 /**
  * States specific to CreeperHead
  */

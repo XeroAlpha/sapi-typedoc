@@ -17,9 +17,9 @@ export class EffectAddAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: EffectAddAfterEvent) => void,
+        callback: (arg0: EffectAddAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EffectAddAfterEvent) => void;
+    ): (arg0: EffectAddAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an effect is added
@@ -30,5 +30,5 @@ export class EffectAddAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EffectAddAfterEvent) => void): void;
 }

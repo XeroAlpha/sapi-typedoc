@@ -9,7 +9,7 @@ export class PlayerEmoteAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PlayerEmoteAfterEvent) => void): (arg: PlayerEmoteAfterEvent) => void;
+    subscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): (arg0: PlayerEmoteAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -17,5 +17,5 @@ export class PlayerEmoteAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerEmoteAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): void;
 }

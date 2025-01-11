@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -70,6 +70,18 @@ export class World {
      *
      */
     getAbsoluteTime(): number;
+    /**
+     * @beta
+     * @remarks
+     * The aim-assist presets and categories that can be used in
+     * the world.
+     *
+     *
+     * Required Experiments:
+     * - Camera Aim Assist
+     *
+     */
+    getAimAssist(): AimAssistRegistry;
     /**
      * @remarks
      * Returns an array of all active players within the world.

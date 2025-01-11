@@ -17,9 +17,9 @@ export class PlayerPlaceBlockAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerPlaceBlockAfterEvent) => void,
+        callback: (arg0: PlayerPlaceBlockAfterEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerPlaceBlockAfterEvent) => void;
+    ): (arg0: PlayerPlaceBlockAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an block is placed
@@ -30,5 +30,5 @@ export class PlayerPlaceBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerPlaceBlockAfterEvent) => void): void;
 }

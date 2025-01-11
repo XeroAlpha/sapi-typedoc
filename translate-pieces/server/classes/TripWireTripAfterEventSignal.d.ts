@@ -17,7 +17,7 @@ export class TripWireTripAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
+    subscribe(callback: (arg0: TripWireTripAfterEvent) => void): (arg0: TripWireTripAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a trip wire is
@@ -28,5 +28,5 @@ export class TripWireTripAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: TripWireTripAfterEvent) => void): void;
 }

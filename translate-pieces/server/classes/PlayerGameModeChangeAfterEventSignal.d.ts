@@ -16,7 +16,7 @@ export class PlayerGameModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): (arg: PlayerGameModeChangeAfterEvent) => void;
+    subscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): (arg0: PlayerGameModeChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after a players game
@@ -27,5 +27,5 @@ export class PlayerGameModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): void;
 }

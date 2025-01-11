@@ -6,4 +6,5 @@
 export declare enum ActionTypes {
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
+    StatefulAction = 'StatefulAction',
 }

@@ -1,6 +1,6 @@
-/* IMPORT */ import { MouseRayCastAction, NoArgsAction } from '../index';
+/* IMPORT */ import { MouseRayCastAction, NoArgsAction, StatefulAction } from '../index';
 
 /**
  * Full set of all possible raw actions
  */
-export type Action = NoArgsAction | MouseRayCastAction;
+export type Action = NoArgsAction | MouseRayCastAction | StatefulAction;

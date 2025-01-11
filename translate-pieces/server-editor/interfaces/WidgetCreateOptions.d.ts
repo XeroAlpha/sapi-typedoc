@@ -7,6 +7,6 @@ export interface WidgetCreateOptions {
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
-    stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
+    stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
 }

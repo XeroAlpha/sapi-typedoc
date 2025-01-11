@@ -16,9 +16,9 @@ export class ScriptEventCommandMessageAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: ScriptEventCommandMessageAfterEvent) => void,
+        callback: (arg0: ScriptEventCommandMessageAfterEvent) => void,
         options?: ScriptEventMessageFilterOptions,
-    ): (arg: ScriptEventCommandMessageAfterEvent) => void;
+    ): (arg0: ScriptEventCommandMessageAfterEvent) => void;
     /**
      * @remarks
      * Unsubscribes a particular handler for a ScriptEvent event.
@@ -28,5 +28,5 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ScriptEventCommandMessageAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ScriptEventCommandMessageAfterEvent) => void): void;
 }

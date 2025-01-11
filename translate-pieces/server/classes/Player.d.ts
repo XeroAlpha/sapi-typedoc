@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, InputInfo, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, InputInfo, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -152,6 +152,17 @@ export class Player extends Entity {
      * Throws if the item is not a food item.
      */
     eatItem(itemStack: ItemStack): void;
+    /**
+     * @beta
+     * @remarks
+     * The player's aim-assist settings.
+     *
+     *
+     * Required Experiments:
+     * - Camera Aim Assist
+     *
+     */
+    getAimAssist(): PlayerAimAssist;
     /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.

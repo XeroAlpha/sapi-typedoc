@@ -9,7 +9,7 @@ export class ClipboardChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ClipboardChangeAfterEvent) => void): (arg: ClipboardChangeAfterEvent) => void;
+    subscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): (arg0: ClipboardChangeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -17,5 +17,5 @@ export class ClipboardChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ClipboardChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): void;
 }

@@ -16,7 +16,9 @@ export class PlayerInputModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
+    subscribe(
+        callback: (arg0: PlayerInputModeChangeAfterEvent) => void,
+    ): (arg0: PlayerInputModeChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after the player input
@@ -27,5 +29,5 @@ export class PlayerInputModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerInputModeChangeAfterEvent) => void): void;
 }

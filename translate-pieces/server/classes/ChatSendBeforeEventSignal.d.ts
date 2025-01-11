@@ -18,7 +18,7 @@ export class ChatSendBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
+    subscribe(callback: (arg0: ChatSendBeforeEvent) => void): (arg0: ChatSendBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before new chat
@@ -29,5 +29,5 @@ export class ChatSendBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: ChatSendBeforeEvent) => void): void;
 }

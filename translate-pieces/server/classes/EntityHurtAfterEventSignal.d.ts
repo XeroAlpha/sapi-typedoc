@@ -16,9 +16,9 @@ export class EntityHurtAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: EntityHurtAfterEvent) => void,
+        callback: (arg0: EntityHurtAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHurtAfterEvent) => void;
+    ): (arg0: EntityHurtAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an entity is hurt.
@@ -28,5 +28,5 @@ export class EntityHurtAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
 }

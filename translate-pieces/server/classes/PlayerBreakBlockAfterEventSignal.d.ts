@@ -17,9 +17,9 @@ export class PlayerBreakBlockAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerBreakBlockAfterEvent) => void,
+        callback: (arg0: PlayerBreakBlockAfterEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerBreakBlockAfterEvent) => void;
+    ): (arg0: PlayerBreakBlockAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a player breaks a
@@ -30,5 +30,5 @@ export class PlayerBreakBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerBreakBlockAfterEvent) => void): void;
 }

@@ -16,7 +16,9 @@ export class PlayerDimensionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
+    subscribe(
+        callback: (arg0: PlayerDimensionChangeAfterEvent) => void,
+    ): (arg0: PlayerDimensionChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes the specified callback from a player dimension
@@ -27,5 +29,5 @@ export class PlayerDimensionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerDimensionChangeAfterEvent) => void): void;
 }

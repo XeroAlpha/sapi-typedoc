@@ -195,5 +195,5 @@ export class Widget {
      *
      * {@link InvalidWidgetError}
      */
-    setStateChangeEvent(eventFunction?: (arg: WidgetStateChangeEventData) => void): void;
+    setStateChangeEvent(eventFunction?: (arg0: WidgetStateChangeEventData) => void): void;
 }
