@@ -18,9 +18,9 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: DataDrivenEntityTriggerAfterEvent) => void,
+        callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void,
         options?: EntityDataDrivenTriggerEventOptions,
-    ): (arg: DataDrivenEntityTriggerAfterEvent) => void;
+    ): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback that will be called after a data driven
@@ -31,5 +31,5 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void): void;
 }

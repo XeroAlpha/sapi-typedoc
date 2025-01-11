@@ -18,9 +18,9 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerPlaceBlockBeforeEvent) => void,
+        callback: (arg0: PlayerPlaceBlockBeforeEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerPlaceBlockBeforeEvent) => void;
+    ): (arg0: PlayerPlaceBlockBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before an block is
@@ -31,5 +31,5 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerPlaceBlockBeforeEvent) => void): void;
 }

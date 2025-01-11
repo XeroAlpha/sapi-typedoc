@@ -1,0 +1,62 @@
+/**
+ * @beta
+ * Handle to an aim-assist category that exists in the
+ * world.aimAssist registry.
+ *
+ * Required Experiments:
+ * - Camera Aim Assist
+ *
+ */
+export class AimAssistCategory {
+    private constructor();
+    /**
+     * @remarks
+     * Default targeting priority used for block types not found in
+     * getBlockPriorities.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly defaultBlockPriority: number;
+    /**
+     * @remarks
+     * Default targeting priority used for entity types not found
+     * in getEntityPriorities.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly defaultEntityPriority: number;
+    /**
+     * @remarks
+     * The unique Id associated with the category.
+     *
+     */
+    readonly identifier: string;
+    /**
+     * @remarks
+     * Gets the priority settings used for block targeting.
+     *
+     * @returns
+     * The record mapping block Ids to their priority settings.
+     * Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getBlockPriorities(): Record<string, number>;
+    /**
+     * @remarks
+     * Gets the priority settings used for entity targeting.
+     *
+     * @returns
+     * The record mapping entity Ids to their priority settings.
+     * Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getEntityPriorities(): Record<string, number>;
+}

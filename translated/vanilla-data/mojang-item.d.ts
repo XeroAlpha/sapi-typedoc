@@ -38,8 +38,6 @@ export declare enum MinecraftItemTypes {
     AcaciaWood = "minecraft:acacia_wood",
     /** 激活铁轨。 */
     ActivatorRail = "minecraft:activator_rail",
-    /** 空气。 */
-    Air = "minecraft:air",
     /** 悦灵刷怪蛋。 */
     AllaySpawnEgg = "minecraft:allay_spawn_egg",
     /** 绒球葱。 */

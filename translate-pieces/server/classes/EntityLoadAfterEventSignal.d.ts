@@ -18,7 +18,7 @@ export class EntityLoadAfterEventSignal {
      * @param callback
      * Function that handles the load event.
      */
-    subscribe(callback: (arg: EntityLoadAfterEvent) => void): (arg: EntityLoadAfterEvent) => void;
+    subscribe(callback: (arg0: EntityLoadAfterEvent) => void): (arg0: EntityLoadAfterEvent) => void;
     /**
      * @remarks
      * Unregisters a method that was previously subscribed to the
@@ -32,5 +32,5 @@ export class EntityLoadAfterEventSignal {
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
      */
-    unsubscribe(callback: (arg: EntityLoadAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityLoadAfterEvent) => void): void;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { minecraftcommon, minecraftserver } from '../index';
 
 /**
  * A utility class to set GameTest parameters for a test.
@@ -125,8 +125,10 @@ export class RegistrationBuilder {
     /**
      * @remarks
      * Overrides the default structure placement with a specific
-     * location. If height (y) is set to Dimension.heightRange.max,
-     * the structure will snap to the ground.
+     * location and dimension. If height (y) is set to
+     * Dimension.heightRange.max, the structure will snap to the
+     * ground. If the dimension is not specified, it will run in
+     * the dimension the command was run from.
      *
      * This function can't be called in read-only mode.
      *
@@ -135,8 +137,16 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
-    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
+    structureLocation(
+        structureLocation: minecraftserver.Vector3,
+        structureDimension?: minecraftserver.DimensionType | string,
+    ): RegistrationBuilder;
     /**
      * @remarks
      * Sets the name of the structure for a test to use. "xyz:bar"

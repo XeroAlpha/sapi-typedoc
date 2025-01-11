@@ -16,7 +16,7 @@ export class ItemUseOnAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ItemUseOnAfterEvent) => void): (arg: ItemUseOnAfterEvent) => void;
+    subscribe(callback: (arg0: ItemUseOnAfterEvent) => void): (arg0: ItemUseOnAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item is used on
@@ -27,5 +27,5 @@ export class ItemUseOnAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ItemUseOnAfterEvent) => void): void;
 }

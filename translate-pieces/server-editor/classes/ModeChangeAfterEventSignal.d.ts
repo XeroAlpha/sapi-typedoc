@@ -16,7 +16,7 @@ export class ModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
+    subscribe(callback: (arg0: ModeChangeAfterEvent) => void): (arg0: ModeChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes the specified callback from an editor mode change
@@ -27,5 +27,5 @@ export class ModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ModeChangeAfterEvent) => void): void;
 }

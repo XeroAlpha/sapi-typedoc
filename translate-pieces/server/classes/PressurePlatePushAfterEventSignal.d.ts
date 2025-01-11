@@ -16,7 +16,7 @@ export class PressurePlatePushAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: PressurePlatePushAfterEvent) => void): (arg: PressurePlatePushAfterEvent) => void;
+    subscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): (arg0: PressurePlatePushAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a pressure plate
@@ -27,5 +27,5 @@ export class PressurePlatePushAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PressurePlatePushAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): void;
 }

@@ -9,7 +9,7 @@ export class PrimarySelectionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: SelectionEventAfterEvent) => void): (arg: SelectionEventAfterEvent) => void;
+    subscribe(callback: (arg0: SelectionEventAfterEvent) => void): (arg0: SelectionEventAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -17,5 +17,5 @@ export class PrimarySelectionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: SelectionEventAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: SelectionEventAfterEvent) => void): void;
 }

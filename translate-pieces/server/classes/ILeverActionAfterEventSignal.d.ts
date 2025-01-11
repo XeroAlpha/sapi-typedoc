@@ -13,7 +13,7 @@ export class ILeverActionAfterEventSignal {
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
+    subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
     /**
      * @remarks
      * Unsubscribes from the event.
@@ -21,5 +21,5 @@ export class ILeverActionAfterEventSignal {
      * This function can't be called in read-only mode.
      *
      */
-    unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: LeverActionAfterEvent) => void): void;
 }

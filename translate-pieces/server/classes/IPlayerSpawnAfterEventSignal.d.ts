@@ -13,7 +13,7 @@ export class IPlayerSpawnAfterEventSignal {
      * This function can't be called in read-only mode.
      *
      */
-    subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
+    subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
     /**
      * @remarks
      * Unsubscribes from the event.
@@ -21,5 +21,5 @@ export class IPlayerSpawnAfterEventSignal {
      * This function can't be called in read-only mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
 }

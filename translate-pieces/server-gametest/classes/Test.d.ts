@@ -60,7 +60,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
+    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg0: minecraftserver.Block) => boolean): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -289,7 +289,7 @@ export class Test {
     assertEntityState(
         blockLocation: minecraftserver.Vector3,
         entityTypeIdentifier: string,
-        callback: (arg: minecraftserver.Entity) => boolean,
+        callback: (arg0: minecraftserver.Entity) => boolean,
     ): void;
     /**
      * @remarks

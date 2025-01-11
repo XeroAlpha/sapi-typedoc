@@ -14,7 +14,7 @@ export class WeatherChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: WeatherChangeAfterEvent) => void): (arg: WeatherChangeAfterEvent) => void;
+    subscribe(callback: (arg0: WeatherChangeAfterEvent) => void): (arg0: WeatherChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when weather changes.
@@ -24,5 +24,5 @@ export class WeatherChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: WeatherChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: WeatherChangeAfterEvent) => void): void;
 }

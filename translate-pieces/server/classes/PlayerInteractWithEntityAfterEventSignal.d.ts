@@ -17,8 +17,8 @@ export class PlayerInteractWithEntityAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerInteractWithEntityAfterEvent) => void,
-    ): (arg: PlayerInteractWithEntityAfterEvent) => void;
+        callback: (arg0: PlayerInteractWithEntityAfterEvent) => void,
+    ): (arg0: PlayerInteractWithEntityAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after a player
@@ -29,5 +29,5 @@ export class PlayerInteractWithEntityAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerInteractWithEntityAfterEvent) => void): void;
 }

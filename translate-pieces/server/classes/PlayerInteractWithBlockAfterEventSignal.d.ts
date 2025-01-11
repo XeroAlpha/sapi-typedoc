@@ -17,8 +17,8 @@ export class PlayerInteractWithBlockAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerInteractWithBlockAfterEvent) => void,
-    ): (arg: PlayerInteractWithBlockAfterEvent) => void;
+        callback: (arg0: PlayerInteractWithBlockAfterEvent) => void,
+    ): (arg0: PlayerInteractWithBlockAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after a player
@@ -29,5 +29,5 @@ export class PlayerInteractWithBlockAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerInteractWithBlockAfterEvent) => void): void;
 }

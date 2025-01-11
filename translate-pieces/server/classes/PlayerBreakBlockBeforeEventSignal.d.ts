@@ -17,9 +17,9 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerBreakBlockBeforeEvent) => void,
+        callback: (arg0: PlayerBreakBlockBeforeEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerBreakBlockBeforeEvent) => void;
+    ): (arg0: PlayerBreakBlockBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before a player breaks
@@ -30,5 +30,5 @@ export class PlayerBreakBlockBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerBreakBlockBeforeEvent) => void): void;
 }

@@ -17,8 +17,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerInteractWithEntityBeforeEvent) => void,
-    ): (arg: PlayerInteractWithEntityBeforeEvent) => void;
+        callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void,
+    ): (arg0: PlayerInteractWithEntityBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before a player
@@ -29,5 +29,5 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): void;
 }

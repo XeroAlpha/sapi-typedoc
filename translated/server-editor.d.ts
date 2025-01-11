@@ -29,6 +29,7 @@ import * as minecraftserver from '@minecraft/server';
 export declare enum ActionTypes {
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
+    StatefulAction = 'StatefulAction',
 }
 
 export enum Axis {
@@ -46,6 +47,15 @@ export enum BlockMaskListType {
 export enum BlockPaletteItemType {
     Simple = 0,
     Probability = 1,
+}
+
+/**
+ * The possible operation types supported by BlockTable
+ * property item.
+ */
+export declare enum BlockTableOperationType {
+    Deselect = 'deselect',
+    Replace = 'replace',
 }
 
 /**
@@ -234,6 +244,7 @@ export enum GamePublishSetting {
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    NightVision = 'NightVision',
     ShowChunkBoundaries = 'ShowChunkBoundaries',
     ShowCompass = 'ShowCompass',
     /**
@@ -958,6 +969,7 @@ export enum ProjectExportType {
  */
 export declare enum PropertyItemType {
     BlockList = 'editorUI:BlockList',
+    BlockTable = 'editorUI:BlockTable',
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
     ColorPicker = 'editorUI:ColorPicker',
@@ -1091,7 +1103,7 @@ export enum WidgetMouseButtonActionType {
 /**
  * Full set of all possible raw actions
  */
-export type Action = NoArgsAction | MouseRayCastAction;
+export type Action = NoArgsAction | MouseRayCastAction | StatefulAction;
 
 /**
  * All actions have a unique identifier. Identifiers are
@@ -1123,6 +1135,7 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
+    [GraphicsSettingsProperty.NightVision]?: boolean;
 };
 
 /**
@@ -1331,9 +1344,17 @@ export type SpeedSettingsPropertyTypeMap = {
 };
 
 /**
+ * An action which returns the activation state.
+ */
+export type StatefulAction = {
+    actionType: ActionTypes.StatefulAction;
+    readonly onExecute: (active: boolean) => void;
+};
+
+/**
  * Full set of all possible keyboard actions
  */
-export type SupportedKeyboardActionTypes = RegisteredAction<NoArgsAction>;
+export type SupportedKeyboardActionTypes = RegisteredAction<NoArgsAction> | RegisteredAction<StatefulAction>;
 
 /**
  * Full set of all possible mouse actions
@@ -1542,7 +1563,7 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
+    beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1640,7 +1661,7 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
+    singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1682,7 +1703,7 @@ export class ClipboardChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ClipboardChangeAfterEvent) => void): (arg: ClipboardChangeAfterEvent) => void;
+    subscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): (arg0: ClipboardChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1690,7 +1711,7 @@ export class ClipboardChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ClipboardChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): void;
 }
 
 /**
@@ -1885,7 +1906,7 @@ export class CurrentThemeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): (arg: CurrentThemeChangeAfterEvent) => void;
+    subscribe(callback: (arg0: CurrentThemeChangeAfterEvent) => void): (arg0: CurrentThemeChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1893,7 +1914,7 @@ export class CurrentThemeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: CurrentThemeChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: CurrentThemeChangeAfterEvent) => void): void;
 }
 
 export class CurrentThemeColorChangeAfterEvent {
@@ -1912,8 +1933,8 @@ export class CurrentThemeColorChangeAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: CurrentThemeColorChangeAfterEvent) => void,
-    ): (arg: CurrentThemeColorChangeAfterEvent) => void;
+        callback: (arg0: CurrentThemeColorChangeAfterEvent) => void,
+    ): (arg0: CurrentThemeColorChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -1921,7 +1942,7 @@ export class CurrentThemeColorChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: CurrentThemeColorChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: CurrentThemeColorChangeAfterEvent) => void): void;
 }
 
 /**
@@ -2058,6 +2079,7 @@ export class Cursor {
 
 export class CursorPropertiesChangeAfterEvent {
     private constructor();
+    readonly position?: CursorPosition;
     readonly properties: CursorProperties;
 }
 
@@ -2071,8 +2093,8 @@ export class CursorPropertyChangeAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: CursorPropertiesChangeAfterEvent) => void,
-    ): (arg: CursorPropertiesChangeAfterEvent) => void;
+        callback: (arg0: CursorPropertiesChangeAfterEvent) => void,
+    ): (arg0: CursorPropertiesChangeAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2080,7 +2102,7 @@ export class CursorPropertyChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: CursorPropertiesChangeAfterEvent) => void): void;
 }
 
 export class EditorStructureManager {
@@ -2518,7 +2540,7 @@ export class ModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ModeChangeAfterEvent) => void): (arg: ModeChangeAfterEvent) => void;
+    subscribe(callback: (arg0: ModeChangeAfterEvent) => void): (arg0: ModeChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes the specified callback from an editor mode change
@@ -2529,7 +2551,7 @@ export class ModeChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ModeChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ModeChangeAfterEvent) => void): void;
 }
 
 /**
@@ -2600,7 +2622,7 @@ export class PrimarySelectionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: SelectionEventAfterEvent) => void): (arg: SelectionEventAfterEvent) => void;
+    subscribe(callback: (arg0: SelectionEventAfterEvent) => void): (arg0: SelectionEventAfterEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -2608,7 +2630,7 @@ export class PrimarySelectionChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: SelectionEventAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: SelectionEventAfterEvent) => void): void;
 }
 
 export class PrimarySelectionChangedEvent {
@@ -2909,12 +2931,12 @@ export class SettingsManager {
 export class SettingsUIElement {
     readonly initialValue: boolean | number | string | minecraftserver.Vector3;
     readonly name: string;
-    readonly onChange: (arg: boolean | number | string | minecraftserver.Vector3) => void;
+    readonly onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void;
     readonly options: SettingsUIElementOptions;
     constructor(
         name: string,
         initialValue: boolean | number | string | minecraftserver.Vector3,
-        onChange: (arg: boolean | number | string | minecraftserver.Vector3) => void,
+        onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void,
         options?: SettingsUIElementOptions,
     );
 }
@@ -3135,8 +3157,8 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     createUserDefinedTransactionHandler(
-        undoClosure: (arg: string) => void,
-        redoClosure: (arg: string) => void,
+        undoClosure: (arg0: string) => void,
+        redoClosure: (arg0: string) => void,
     ): UserDefinedTransactionHandlerId;
     /**
      * @remarks
@@ -3576,7 +3598,7 @@ export class Widget {
      *
      * {@link InvalidWidgetError}
      */
-    setStateChangeEvent(eventFunction?: (arg: WidgetStateChangeEventData) => void): void;
+    setStateChangeEvent(eventFunction?: (arg0: WidgetStateChangeEventData) => void): void;
 }
 
 export class WidgetComponentBase {
@@ -3636,7 +3658,7 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
+    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentStateChangeEventData) => void): void;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4093,6 +4115,11 @@ export interface ClipboardWriteOptions {
     rotation?: minecraftserver.StructureRotation;
 }
 
+export interface CursorPosition {
+    FaceDirection: number;
+    Position: minecraftserver.Vector3;
+}
+
 /**
  * The CursorProperties interface is used to describe the
  * properties of the Editor 3D block cursor construct.
@@ -4379,6 +4406,106 @@ export interface IActionBarItemCreationParams {
      *
      */
     tooltipTitle?: string;
+}
+
+/**
+ * Block Table Entry info for block table property item
+ */
+export interface IBlockTableEntryInfo {
+    /**
+     * @remarks
+     * The quantity number of the same block in the selection.
+     *
+     */
+    count?: number;
+}
+
+/**
+ * A property item which supports Block Table properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBlockTablePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Create new or update an existing entry in the block table
+     *
+     * @param block
+     * a new entry in the block table.
+     * @param blockInfo
+     * block info for the entry in the block table.
+     */
+    addOrUpdateEntry(block: string | minecraftserver.BlockType, blockInfo: IBlockTableEntryInfo): void;
+    /**
+     * @remarks
+     * Delete entry in the block table, by block name
+     *
+     * @param block
+     * an entry in the block table.
+     */
+    deleteEntry(block: string): void;
+    /**
+     * @remarks
+     * Read entry from the block table, by block name
+     *
+     * @param block
+     * an entry in the block table.
+     */
+    getEntry(block: string | minecraftserver.BlockType): IBlockTableEntryInfo | undefined;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Update the block table entries
+     *
+     * @param entries
+     * The new value for the block table.
+     */
+    updateEntries(entries: Map<string, IBlockTableEntryInfo>): void;
+}
+
+/**
+ * Properties of block table item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBlockTablePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Map of block entries in the block table.
+     *
+     */
+    entries?: Map<string, IBlockTableEntryInfo>;
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * This callback is called when UI control operation is
+     * selected from the UI.
+     *
+     */
+    onOperationClick?: (block: string, operation: BlockTableOperationType) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
 }
 
 /**
@@ -5490,6 +5617,12 @@ export interface IPropertyPane {
         },
         'EMPTY'
     >;
+    /**
+     * @remarks
+     * Adds a block table to the pane.
+     *
+     */
+    addBlockTable(options?: IBlockTablePropertyItemOptions): IBlockTablePropertyItem;
     /**
      * @remarks
      */
@@ -6860,7 +6993,7 @@ export interface WeightedBlock {
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;
     offset?: minecraftserver.Vector3;
-    stateChangeEvent?: (arg: WidgetComponentStateChangeEventData) => void;
+    stateChangeEvent?: (arg0: WidgetComponentStateChangeEventData) => void;
     visible?: boolean;
 }
 
@@ -6912,7 +7045,7 @@ export interface WidgetCreateOptions {
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
-    stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;
+    stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
 }
 

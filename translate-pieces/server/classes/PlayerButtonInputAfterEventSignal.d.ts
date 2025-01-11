@@ -17,9 +17,9 @@ export class PlayerButtonInputAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerButtonInputAfterEvent) => void,
+        callback: (arg0: PlayerButtonInputAfterEvent) => void,
         options?: InputEventOptions,
-    ): (arg: PlayerButtonInputAfterEvent) => void;
+    ): (arg0: PlayerButtonInputAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after the player
@@ -30,5 +30,5 @@ export class PlayerButtonInputAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerButtonInputAfterEvent) => void): void;
 }

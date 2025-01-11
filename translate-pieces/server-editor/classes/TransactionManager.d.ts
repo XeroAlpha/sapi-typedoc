@@ -72,8 +72,8 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     createUserDefinedTransactionHandler(
-        undoClosure: (arg: string) => void,
-        redoClosure: (arg: string) => void,
+        undoClosure: (arg0: string) => void,
+        redoClosure: (arg0: string) => void,
     ): UserDefinedTransactionHandlerId;
     /**
      * @remarks

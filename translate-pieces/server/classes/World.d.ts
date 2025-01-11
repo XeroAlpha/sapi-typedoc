@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -78,6 +78,18 @@ export class World {
      *
      */
     getAbsoluteTime(): number;
+    /**
+     * @beta
+     * @remarks
+     * The aim-assist presets and categories that can be used in
+     * the world.
+     *
+     *
+     * Required Experiments:
+     * - Camera Aim Assist
+     *
+     */
+    getAimAssist(): AimAssistRegistry;
     /**
      * @remarks
      * 获取一个包含了游戏中所有玩家的对象的数组。
@@ -230,7 +242,7 @@ export class World {
      *
      * This function can't be called in read-only mode.
      *
-     * @param trackID 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
+     * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
      * @throws This function can throw errors.
      * @seeExample playMusicAndSound.ts
@@ -245,7 +257,7 @@ export class World {
      *
      * This function can't be called in read-only mode.
      *
-     * @param soundID 声音项目的标识符。
+     * @param soundId 声音项目的标识符。
      * @param soundOptions 可选，指定播放声音使用的附加参数。
      * @throws
      * An error will be thrown if volume is less than 0.0.

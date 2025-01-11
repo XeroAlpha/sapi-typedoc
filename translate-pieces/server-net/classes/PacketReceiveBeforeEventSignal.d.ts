@@ -10,9 +10,9 @@ export class PacketReceiveBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PacketReceivedBeforeEvent) => void,
+        callback: (arg0: PacketReceivedBeforeEvent) => void,
         options?: PacketEventOptions,
-    ): (arg: PacketReceivedBeforeEvent) => void;
+    ): (arg0: PacketReceivedBeforeEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -20,5 +20,5 @@ export class PacketReceiveBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PacketReceivedBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;
 }

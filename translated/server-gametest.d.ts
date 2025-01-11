@@ -336,8 +336,10 @@ export class RegistrationBuilder {
     /**
      * @remarks
      * Overrides the default structure placement with a specific
-     * location. If height (y) is set to Dimension.heightRange.max,
-     * the structure will snap to the ground.
+     * location and dimension. If height (y) is set to
+     * Dimension.heightRange.max, the structure will snap to the
+     * ground. If the dimension is not specified, it will run in
+     * the dimension the command was run from.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
@@ -346,8 +348,16 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
-    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
+    structureLocation(
+        structureLocation: minecraftserver.Vector3,
+        structureDimension?: minecraftserver.DimensionType | string,
+    ): RegistrationBuilder;
     /**
      * @remarks
      * Sets the name of the structure for a test to use. "xyz:bar"
@@ -1050,7 +1060,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg: minecraftserver.Block) => boolean): void;
+    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg0: minecraftserver.Block) => boolean): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -1279,7 +1289,7 @@ export class Test {
     assertEntityState(
         blockLocation: minecraftserver.Vector3,
         entityTypeIdentifier: string,
-        callback: (arg: minecraftserver.Entity) => boolean,
+        callback: (arg0: minecraftserver.Entity) => boolean,
     ): void;
     /**
      * @remarks
@@ -2185,7 +2195,7 @@ export class GameTestError extends Error {
 export function register(
     testClassName: string,
     testName: string,
-    testFunction: (arg: Test) => void,
+    testFunction: (arg0: Test) => void,
 ): RegistrationBuilder;
 /**
  * @remarks
@@ -2212,5 +2222,5 @@ export function register(
 export function registerAsync(
     testClassName: string,
     testName: string,
-    testFunction: (arg: Test) => Promise<void>,
+    testFunction: (arg0: Test) => Promise<void>,
 ): RegistrationBuilder;

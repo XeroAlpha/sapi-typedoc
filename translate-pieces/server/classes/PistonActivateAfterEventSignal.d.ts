@@ -13,7 +13,7 @@ export class PistonActivateAfterEventSignal {
      *
      * @seeExample pistonAfterEvent.ts
      */
-    subscribe(callback: (arg: PistonActivateAfterEvent) => void): (arg: PistonActivateAfterEvent) => void;
+    subscribe(callback: (arg0: PistonActivateAfterEvent) => void): (arg0: PistonActivateAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a piston expands
@@ -24,5 +24,5 @@ export class PistonActivateAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PistonActivateAfterEvent) => void): void;
 }

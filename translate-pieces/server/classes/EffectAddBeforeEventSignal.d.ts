@@ -16,7 +16,7 @@ export class EffectAddBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: EffectAddBeforeEvent) => void): (arg: EffectAddBeforeEvent) => void;
+    subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an effect is added
@@ -27,5 +27,5 @@ export class EffectAddBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EffectAddBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
 }

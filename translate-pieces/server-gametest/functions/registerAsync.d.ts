@@ -25,5 +25,5 @@
 export function registerAsync(
     testClassName: string,
     testName: string,
-    testFunction: (arg: Test) => Promise<void>,
+    testFunction: (arg0: Test) => Promise<void>,
 ): RegistrationBuilder;

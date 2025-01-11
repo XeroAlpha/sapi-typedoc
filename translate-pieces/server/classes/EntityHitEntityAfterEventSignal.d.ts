@@ -17,9 +17,9 @@ export class EntityHitEntityAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: EntityHitEntityAfterEvent) => void,
+        callback: (arg0: EntityHitEntityAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHitEntityAfterEvent) => void;
+    ): (arg0: EntityHitEntityAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an entity makes a
@@ -30,5 +30,5 @@ export class EntityHitEntityAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityHitEntityAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
 }

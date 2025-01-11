@@ -19,7 +19,7 @@ export class WatchdogTerminateBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
+    subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a script runtime
@@ -31,5 +31,5 @@ export class WatchdogTerminateBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;
 }

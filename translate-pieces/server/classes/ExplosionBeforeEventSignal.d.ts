@@ -17,7 +17,7 @@ export class ExplosionBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ExplosionBeforeEvent) => void): (arg: ExplosionBeforeEvent) => void;
+    subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called from before when an
@@ -28,5 +28,5 @@ export class ExplosionBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;
 }

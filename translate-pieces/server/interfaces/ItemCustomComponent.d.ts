@@ -12,47 +12,47 @@ export interface ItemCustomComponent {
      * damage.
      *
      */
-    onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
+    onBeforeDurabilityDamage?: (arg0: ItemComponentBeforeDurabilityDamageEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component's use duration was completed.
      *
      */
-    onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
+    onCompleteUse?: (arg0: ItemComponentCompleteUseEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is eaten by an entity.
      *
      */
-    onConsume?: (arg: ItemComponentConsumeEvent) => void;
+    onConsume?: (arg0: ItemComponentConsumeEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used to hit another entity.
      *
      */
-    onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
+    onHitEntity?: (arg0: ItemComponentHitEntityEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used to mine a block.
      *
      */
-    onMineBlock?: (arg: ItemComponentMineBlockEvent) => void;
+    onMineBlock?: (arg0: ItemComponentMineBlockEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used by a player.
      *
      */
-    onUse?: (arg: ItemComponentUseEvent) => void;
+    onUse?: (arg0: ItemComponentUseEvent) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used on a block.
      *
      */
-    onUseOn?: (arg: ItemComponentUseOnEvent) => void;
+    onUseOn?: (arg0: ItemComponentUseOnEvent) => void;
 }

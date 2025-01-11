@@ -1,4 +1,4 @@
-/* IMPORT */ import { NamespaceNameError, ScriptEventMessageSizeError, SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
+/* IMPORT */ import { NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
 
 /**
  * A class that provides system-level events and functions.
@@ -143,15 +143,23 @@ export class System {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link NamespaceNameError}
+     * {@link minecraftcommon.InvalidArgumentError}
      *
-     * {@link ScriptEventMessageSizeError}
+     * {@link NamespaceNameError}
      */
     scriptEvent(id: string, message: string): void;
     /**
      * @remarks
+     * waitTicks returns a promise that resolves after the
+     * requested number of ticks.
+     *
      * This function can be called in early-execution mode.
      *
+     * @param ticks
+     * The amount of ticks to wait. Minimum value is 1.
+     * @returns
+     * A promise that is resolved when the specified amount of
+     * ticks have occurred.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}

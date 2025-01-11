@@ -24,9 +24,9 @@ export class EntityDieAfterEventSignal {
      * calls to unsubscribe.
      */
     subscribe(
-        callback: (arg: EntityDieAfterEvent) => void,
+        callback: (arg0: EntityDieAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityDieAfterEvent) => void;
+    ): (arg0: EntityDieAfterEvent) => void;
     /**
      * @remarks
      * Stops this event from calling your function when an entity
@@ -37,5 +37,5 @@ export class EntityDieAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntityDieAfterEvent) => void): void;
 }

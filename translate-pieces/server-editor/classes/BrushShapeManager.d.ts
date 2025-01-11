@@ -19,7 +19,7 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
+    beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -117,7 +117,7 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
+    singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
      * This function can't be called in read-only mode.

@@ -17,8 +17,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void,
-    ): (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void;
+        callback: (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void,
+    ): (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called after a players input
@@ -29,5 +29,5 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
 }

@@ -17,7 +17,7 @@ export class WorldInitializeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
+    subscribe(callback: (arg0: WorldInitializeAfterEvent) => void): (arg0: WorldInitializeAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called the scripting
@@ -28,5 +28,5 @@ export class WorldInitializeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: WorldInitializeAfterEvent) => void): void;
 }

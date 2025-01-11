@@ -57,5 +57,5 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
+    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentStateChangeEventData) => void): void;
 }

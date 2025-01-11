@@ -19,7 +19,7 @@ export class EntitySpawnAfterEventSignal {
      * Function that handles the spawn event.
      * @seeExample logEntitySpawnEvent.ts
      */
-    subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void;
+    subscribe(callback: (arg0: EntitySpawnAfterEvent) => void): (arg0: EntitySpawnAfterEvent) => void;
     /**
      * @remarks
      * Unregisters a method that was previously subscribed to the
@@ -33,5 +33,5 @@ export class EntitySpawnAfterEventSignal {
      * Original function that was passed into the subscribe event,
      * that is to be unregistered.
      */
-    unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: EntitySpawnAfterEvent) => void): void;
 }

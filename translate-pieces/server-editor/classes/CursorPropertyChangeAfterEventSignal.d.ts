@@ -10,8 +10,8 @@ export class CursorPropertyChangeAfterEventSignal {
      *
      */
     subscribe(
-        callback: (arg: CursorPropertiesChangeAfterEvent) => void,
-    ): (arg: CursorPropertiesChangeAfterEvent) => void;
+        callback: (arg0: CursorPropertiesChangeAfterEvent) => void,
+    ): (arg0: CursorPropertiesChangeAfterEvent) => void;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -19,5 +19,5 @@ export class CursorPropertyChangeAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: CursorPropertiesChangeAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: CursorPropertiesChangeAfterEvent) => void): void;
 }

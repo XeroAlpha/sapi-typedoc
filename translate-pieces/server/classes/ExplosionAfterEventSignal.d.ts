@@ -16,7 +16,7 @@ export class ExplosionAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg: ExplosionAfterEvent) => void): (arg: ExplosionAfterEvent) => void;
+    subscribe(callback: (arg0: ExplosionAfterEvent) => void): (arg0: ExplosionAfterEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an explosion
@@ -27,5 +27,5 @@ export class ExplosionAfterEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;
+    unsubscribe(callback: (arg0: ExplosionAfterEvent) => void): void;
 }

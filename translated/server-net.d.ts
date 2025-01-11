@@ -105,6 +105,7 @@ export enum PacketId {
     AnimateEntityPacket = 'AnimateEntityPacket',
     AnimatePacket = 'AnimatePacket',
     AnvilDamagePacket = 'AnvilDamagePacket',
+    AutomationClientConnectPacket = 'AutomationClientConnectPacket',
     AvailableActorIdentifiersPacket = 'AvailableActorIdentifiersPacket',
     AvailableCommandsPacket = 'AvailableCommandsPacket',
     AwardAchievementPacket = 'AwardAchievementPacket',
@@ -130,6 +131,7 @@ export enum PacketId {
     ClientCacheMissResponsePacket = 'ClientCacheMissResponsePacket',
     ClientCacheStatusPacket = 'ClientCacheStatusPacket',
     ClientCameraAimAssistPacket = 'ClientCameraAimAssistPacket',
+    ClientMovementPredictionSyncPacket = 'ClientMovementPredictionSyncPacket',
     ClientToServerHandshakePacket = 'ClientToServerHandshakePacket',
     CodeBuilderPacket = 'CodeBuilderPacket',
     CodeBuilderSourcePacket = 'CodeBuilderSourcePacket',
@@ -166,8 +168,9 @@ export enum PacketId {
     InventoryContentPacket = 'InventoryContentPacket',
     InventorySlotPacket = 'InventorySlotPacket',
     InventoryTransactionPacket = 'InventoryTransactionPacket',
+    ItemRegistryPacket = 'ItemRegistryPacket',
     ItemStackRequestPacket = 'ItemStackRequestPacket',
-    ItemStackResponse = 'ItemStackResponse',
+    ItemStackResponsePacket = 'ItemStackResponsePacket',
     JigsawStructureDataPacket = 'JigsawStructureDataPacket',
     LabTablePacket = 'LabTablePacket',
     LecternUpdatePacket = 'LecternUpdatePacket',
@@ -217,7 +220,7 @@ export enum PacketId {
     PlaySoundPacket = 'PlaySoundPacket',
     PlayStatusPacket = 'PlayStatusPacket',
     PositionTrackingDBClientRequestPacket = 'PositionTrackingDBClientRequestPacket',
-    PositionTrackingDBServerBroadcast = 'PositionTrackingDBServerBroadcast',
+    PositionTrackingDBServerBroadcastPacket = 'PositionTrackingDBServerBroadcastPacket',
     PurchaseReceiptPacket = 'PurchaseReceiptPacket',
     RefreshEntitlementsPacket = 'RefreshEntitlementsPacket',
     RemoveActorPacket = 'RemoveActorPacket',
@@ -272,8 +275,8 @@ export enum PacketId {
     StartGamePacket = 'StartGamePacket',
     StopSoundPacket = 'StopSoundPacket',
     StructureBlockUpdatePacket = 'StructureBlockUpdatePacket',
-    StructureTemplateDataExportPacket = 'StructureTemplateDataExportPacket',
     StructureTemplateDataRequestPacket = 'StructureTemplateDataRequestPacket',
+    StructureTemplateDataResponsePacket = 'StructureTemplateDataResponsePacket',
     SubChunkPacket = 'SubChunkPacket',
     SubChunkRequestPacket = 'SubChunkRequestPacket',
     SubClientLoginPacket = 'SubClientLoginPacket',
@@ -291,10 +294,11 @@ export enum PacketId {
     UpdateBlockPacket = 'UpdateBlockPacket',
     UpdateBlockSyncedPacket = 'UpdateBlockSyncedPacket',
     UpdateClientInputLocksPacket = 'UpdateClientInputLocksPacket',
+    UpdateEquipPacket = 'UpdateEquipPacket',
     UpdatePlayerGameTypePacket = 'UpdatePlayerGameTypePacket',
     UpdateSoftEnumPacket = 'UpdateSoftEnumPacket',
     UpdateSubChunkBlocksPacket = 'UpdateSubChunkBlocksPacket',
-    WSConnectPacket = 'WSConnectPacket',
+    UpdateTradePacket = 'UpdateTradePacket',
 }
 
 /**
@@ -556,9 +560,9 @@ export class PacketReceiveBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PacketReceivedBeforeEvent) => void,
+        callback: (arg0: PacketReceivedBeforeEvent) => void,
         options?: PacketEventOptions,
-    ): (arg: PacketReceivedBeforeEvent) => void;
+    ): (arg0: PacketReceivedBeforeEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -566,7 +570,7 @@ export class PacketReceiveBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PacketReceivedBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;
 }
 
 /**
@@ -629,9 +633,9 @@ export class PacketSendBeforeEventSignal {
      *
      */
     subscribe(
-        callback: (arg: PacketSendBeforeEvent) => void,
+        callback: (arg0: PacketSendBeforeEvent) => void,
         options?: PacketEventOptions,
-    ): (arg: PacketSendBeforeEvent) => void;
+    ): (arg0: PacketSendBeforeEvent) => void;
     /**
      * @remarks
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
@@ -639,7 +643,7 @@ export class PacketSendBeforeEventSignal {
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg: PacketSendBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: PacketSendBeforeEvent) => void): void;
 }
 
 /**
