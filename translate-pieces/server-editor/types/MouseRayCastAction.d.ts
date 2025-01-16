@@ -5,6 +5,6 @@
  * from the users mouse click in the viewport.
  */
 export type MouseRayCastAction = {
-    actionType: ActionTypes.MouseRayCastAction;
+    readonly actionType: ActionTypes.MouseRayCastAction;
     readonly onExecute: (mouseRay: Ray, mouseProps: MouseProps) => void;
 };

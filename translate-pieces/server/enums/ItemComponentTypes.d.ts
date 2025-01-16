@@ -4,7 +4,7 @@
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     Compostable = 'minecraft:compostable',
     /**

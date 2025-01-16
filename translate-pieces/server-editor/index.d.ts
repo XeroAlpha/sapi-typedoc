@@ -11,6 +11,7 @@ export { BoolPropertyItemVariant } from './enums/BoolPropertyItemVariant';
 export { ButtonPropertyItemVariant } from './enums/ButtonPropertyItemVariant';
 export { ColorPickerPropertyItemVariant } from './enums/ColorPickerPropertyItemVariant';
 export { ComboBoxPropertyItemDataType } from './enums/ComboBoxPropertyItemDataType';
+export { ContinuousActionState } from './enums/ContinuousActionState';
 export { CoreActionBarItemType } from './enums/CoreActionBarItemType';
 export { CoreMenuType } from './enums/CoreMenuType';
 export { CursorControlMode } from './enums/CursorControlMode';
@@ -50,6 +51,7 @@ export { WidgetMouseButtonActionType } from './enums/WidgetMouseButtonActionType
 export { Action } from './types/Action';
 export { ActionID } from './types/ActionID';
 export { ActivationFunctionType } from './types/ActivationFunctionType';
+export { ContinuousAction } from './types/ContinuousAction';
 export { EventHandler } from './types/EventHandler';
 export { GraphicsSettingsPropertyTypeMap } from './types/GraphicsSettingsPropertyTypeMap';
 export { IBlockListPropertyItem } from './types/IBlockListPropertyItem';

@@ -4,6 +4,7 @@
  * onExecute handler of an action.
  */
 export declare enum ActionTypes {
+    ContinuousAction = 'ContinuousAction',
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
     StatefulAction = 'StatefulAction',

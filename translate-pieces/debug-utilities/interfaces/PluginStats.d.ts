@@ -1,5 +1,5 @@
-/* IMPORT */ import { handleCounts } from '../index';
+/* IMPORT */ import { HandleCounts } from '../index';
 
 export interface PluginStats {
-    plugins: handleCounts[];
+    plugins: HandleCounts[];
 }
