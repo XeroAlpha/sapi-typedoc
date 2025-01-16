@@ -5,6 +5,6 @@
  * execute
  */
 export type NoArgsAction = {
-    actionType: ActionTypes.NoArgsAction;
+    readonly actionType: ActionTypes.NoArgsAction;
     readonly onExecute: () => void;
 };

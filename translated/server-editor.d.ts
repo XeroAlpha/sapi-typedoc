@@ -27,6 +27,7 @@ import * as minecraftserver from '@minecraft/server';
  * onExecute handler of an action.
  */
 export declare enum ActionTypes {
+    ContinuousAction = 'ContinuousAction',
     MouseRayCastAction = 'MouseRayCastAction',
     NoArgsAction = 'NoArgsAction',
     StatefulAction = 'StatefulAction',
@@ -95,10 +96,23 @@ export declare enum ComboBoxPropertyItemDataType {
 }
 
 /**
+ * Execution state of the continuous action
+ */
+export declare enum ContinuousActionState {
+    Begin = 0,
+    Repeat = 1,
+    End = 2,
+}
+
+/**
  * Predefined action bar items
  */
 export declare enum CoreActionBarItemType {
+    Export = 'editor:actionBarItem:export',
+    Locate = 'editor:actionBarItem:locate',
+    Playtest = 'editor:actionBarItem:playtest',
     Redo = 'editor:actionBarItem:redo',
+    Settings = 'editor:actionBarItem:settings',
     Undo = 'editor:actionBarItem:undo',
 }
 
@@ -1103,7 +1117,7 @@ export enum WidgetMouseButtonActionType {
 /**
  * Full set of all possible raw actions
  */
-export type Action = NoArgsAction | MouseRayCastAction | StatefulAction;
+export type Action = NoArgsAction | MouseRayCastAction | StatefulAction | ContinuousAction;
 
 /**
  * All actions have a unique identifier. Identifiers are
@@ -1122,6 +1136,16 @@ export type ActionID = {
 export type ActivationFunctionType<PerPlayerStorageType> = (
     uiSession: IPlayerUISession<PerPlayerStorageType>,
 ) => IDisposable[];
+
+/**
+ * An action that continues to execute after activation
+ */
+export type ContinuousAction = {
+    readonly actionType: ActionTypes.ContinuousAction;
+    readonly onExecute: (state: ContinuousActionState, repeatCount: number) => void;
+    repeatDelay?: number;
+    repeatInterval?: number;
+};
 
 /**
  * A generic handler for an event sink.
@@ -1278,7 +1302,7 @@ export declare type MouseProps = {
  * from the users mouse click in the viewport.
  */
 export type MouseRayCastAction = {
-    actionType: ActionTypes.MouseRayCastAction;
+    readonly actionType: ActionTypes.MouseRayCastAction;
     readonly onExecute: (mouseRay: Ray, mouseProps: MouseProps) => void;
 };
 
@@ -1287,7 +1311,7 @@ export type MouseRayCastAction = {
  * execute
  */
 export type NoArgsAction = {
-    actionType: ActionTypes.NoArgsAction;
+    readonly actionType: ActionTypes.NoArgsAction;
     readonly onExecute: () => void;
 };
 
@@ -1347,14 +1371,17 @@ export type SpeedSettingsPropertyTypeMap = {
  * An action which returns the activation state.
  */
 export type StatefulAction = {
-    actionType: ActionTypes.StatefulAction;
+    readonly actionType: ActionTypes.StatefulAction;
     readonly onExecute: (active: boolean) => void;
 };
 
 /**
  * Full set of all possible keyboard actions
  */
-export type SupportedKeyboardActionTypes = RegisteredAction<NoArgsAction> | RegisteredAction<StatefulAction>;
+export type SupportedKeyboardActionTypes =
+    | RegisteredAction<NoArgsAction>
+    | RegisteredAction<StatefulAction>
+    | RegisteredAction<ContinuousAction>;
 
 /**
  * Full set of all possible mouse actions

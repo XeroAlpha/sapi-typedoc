@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-export interface handleCounts {
+export interface HandleCounts {
     handleCounts: Record<string, number>;
     name: string;
     packId: string;
@@ -29,7 +29,7 @@ export interface handleCounts {
 }
 
 export interface PluginStats {
-    plugins: handleCounts[];
+    plugins: HandleCounts[];
 }
 
 export interface RuntimeStats {

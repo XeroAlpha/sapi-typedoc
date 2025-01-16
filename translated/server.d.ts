@@ -1776,7 +1776,7 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     Compostable = 'minecraft:compostable',
     /**
@@ -10765,7 +10765,7 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
 }
 
 /**
- * @beta
+ * @rc
  * When present, the item can be composted in the composter
  * block if the composting chance is in the range [1 - 100].
  */

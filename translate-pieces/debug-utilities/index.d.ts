@@ -1,6 +1,6 @@
 import * as minecraftcommon from '../common';
 /* PRIVATE */ export { minecraftcommon };
-export { handleCounts } from './interfaces/handleCounts';
+export { HandleCounts } from './interfaces/HandleCounts';
 export { PluginStats } from './interfaces/PluginStats';
 export { RuntimeStats } from './interfaces/RuntimeStats';
 export { collectPluginStats } from './functions/collectPluginStats';
