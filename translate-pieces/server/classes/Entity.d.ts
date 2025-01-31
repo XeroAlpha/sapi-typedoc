@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -91,6 +91,15 @@ export class Entity {
      * @throws This property can throw when used.
      */
     readonly isSwimming: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether the entity can be manipulated by script. A
+     * Player is considered valid when it's EntityLifetimeState is
+     * set to Loaded.
+     *
+     */
+    readonly isValid: boolean;
     /**
      * @remarks
      * Current location of the entity.
@@ -212,18 +221,12 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
-     * @param directionX
-     * X direction in horizontal plane.
-     * @param directionZ
-     * Z direction in horizontal plane.
-     * @param horizontalStrength
-     * Knockback strength for the horizontal vector.
      * @param verticalStrength
      * Knockback strength for the vertical vector.
      * @throws This function can throw errors.
      * @seeExample bounceSkeletons.ts
      */
-    applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
      * @remarks
      * Clears all dynamic properties that have been set on this
@@ -286,6 +289,9 @@ export class Entity {
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
@@ -296,6 +302,9 @@ export class Entity {
      * @returns
      * Returns all components that are both present on this entity
      * and supported by the API.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getComponents(): EntityComponent[];
     /**
@@ -447,6 +456,9 @@ export class Entity {
      * @returns
      * Returns true if the specified component is present on this
      * entity.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hasComponent(componentId: string): boolean;
     /**
@@ -460,16 +472,6 @@ export class Entity {
      * @throws This function can throw errors.
      */
     hasTag(tag: string): boolean;
-    /**
-     * @remarks
-     * Returns whether the entity can be manipulated by script. A
-     * Player is considered valid when it's EntityLifetimeState is
-     * set to Loaded.
-     *
-     * @returns
-     * Whether the entity is valid.
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
@@ -609,21 +611,6 @@ export class Entity {
      * {@link Error}
      */
     runCommand(commandString: string): CommandResult;
-    /**
-     * @remarks
-     * Runs a particular command asynchronously from the context of
-     * this entity. Note that there is a maximum queue of 128
-     * asynchronous commands that can be run in a given tick.
-     *
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @returns
-     * For commands that return data, returns a JSON structure with
-     * command response values.
-     * @throws This function can throw errors.
-     */
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
      * @beta
      * @remarks

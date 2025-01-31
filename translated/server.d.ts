@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "1.18.0-beta"
+ *   "version": "2.0.0-beta"
  * }
  * ```
  *
@@ -133,7 +133,7 @@ export enum BlockVolumeIntersection {
 }
 
 /**
- * @beta
+ * @rc
  * The state of a button on a keyboard, controller, or touch
  * interface.
  */
@@ -1114,13 +1114,6 @@ export enum EntityDamageCause {
     suffocation = 'suffocation',
     /**
      * @remarks
-     * Damage caused by an Entity killing itself. For example, from
-     * the /kill command.
-     *
-     */
-    suicide = 'suicide',
-    /**
-     * @remarks
      * Damage caused by an Entity being in an inhabitable climate.
      * For example, a Snow Golem in a biome with a temperature
      * greater than 1.
@@ -1186,6 +1179,186 @@ export enum EntityInitializationCause {
      *
      */
     Transformed = 'Transformed',
+}
+
+/**
+ * @beta
+ * An enum containing categories of entity spawning.
+ */
+export enum EntitySpawnCategory {
+    /**
+     * @remarks
+     * Mobs that have an ambient spawn.
+     *
+     */
+    Ambient = 'Ambient',
+    /**
+     * @remarks
+     * Specific spawn for axolotls.
+     *
+     */
+    Axolotls = 'Axolotls',
+    /**
+     * @remarks
+     * Creature spawns.
+     *
+     */
+    Creature = 'Creature',
+    /**
+     * @remarks
+     * Miscellaneous spawns ( e.g. Villager, Iron Golem).
+     *
+     */
+    Misc = 'Misc',
+    /**
+     * @remarks
+     * Monster spawns.
+     *
+     */
+    Monster = 'Monster',
+    /**
+     * @remarks
+     * Creatures that spawn underground in the water.
+     *
+     */
+    UndergroundWaterCreature = 'UndergroundWaterCreature',
+    /**
+     * @remarks
+     * Water mobs that have an ambient spawn.
+     *
+     */
+    WaterAmbient = 'WaterAmbient',
+    /**
+     * @remarks
+     * Water creature spawns.
+     *
+     */
+    WaterCreature = 'WaterCreature',
+}
+
+/**
+ * @beta
+ * An enum containing reasons an entity could be spawned.
+ */
+export enum EntitySpawnReason {
+    /**
+     * @remarks
+     * Bred offspring.
+     *
+     */
+    Breeding = 'Breeding',
+    /**
+     * @remarks
+     * Spawned from a bucket (e.g. Fish)
+     *
+     */
+    Bucket = 'Bucket',
+    /**
+     * @remarks
+     * Spawned due to a chunk being generated.
+     *
+     */
+    ChunkGeneration = 'ChunkGeneration',
+    /**
+     * @remarks
+     * Spawned via the /summon command.
+     *
+     */
+    Command = 'Command',
+    /**
+     * @remarks
+     * Mob converted from another mob (e.g. Villager -> Zombie
+     * Villager).
+     *
+     */
+    Conversion = 'Conversion',
+    /**
+     * @remarks
+     * Mob transferred from another dimension.
+     *
+     */
+    DimensionTravel = 'DimensionTravel',
+    /**
+     * @remarks
+     * Spawned via dispenser.
+     *
+     */
+    Dispenser = 'Dispenser',
+    /**
+     * @remarks
+     * Mobs spawned due to some in game event.
+     *
+     */
+    Event = 'Event',
+    /**
+     * @remarks
+     * Jockey spawned with the mob they ride (e.g. Chicken jockey).
+     *
+     */
+    Jockey = 'Jockey',
+    /**
+     * @remarks
+     * Mob loaded in from a saved state.
+     *
+     */
+    Load = 'Load',
+    /**
+     * @remarks
+     * Mobs summoned via other mobs (e.g. Vex).
+     *
+     */
+    MobSummoned = 'MobSummoned',
+    /**
+     * @remarks
+     * Natural Mob Spawning.
+     *
+     */
+    Natural = 'Natural',
+    /**
+     * @remarks
+     * Mobs spawned due to a patrol.
+     *
+     */
+    Patrol = 'Patrol',
+    /**
+     * @remarks
+     * Mobs spawned from the reinforcement attribute (e.g.
+     * Zombies).
+     *
+     */
+    Reinforcement = 'Reinforcement',
+    /**
+     * @remarks
+     * Spawned from a spawn egg.
+     *
+     */
+    SpawnEgg = 'SpawnEgg',
+    /**
+     * @remarks
+     * Spawner spawns.
+     *
+     */
+    Spawner = 'Spawner',
+    /**
+     * @remarks
+     * Mobs generated specifically within some structure (Nether
+     * Fortress, Ocean Monument, Witch Hut, etc).
+     *
+     */
+    Structure = 'Structure',
+    /**
+     * @remarks
+     * Mobs spawned from a Trial Spawner.
+     *
+     */
+    TrialSpawner = 'TrialSpawner',
+    /**
+     * @remarks
+     * Some type of player triggered mob spawn (e.g. Skeleton Horse
+     * Traps, Wither, Snow Golem).
+     *
+     */
+    Triggered = 'Triggered',
 }
 
 /**
@@ -1579,6 +1752,44 @@ export enum GameRule {
     TntExplosionDropDecay = 'tntExplosionDropDecay',
 }
 
+/**
+ * @beta
+ * Describes the graphics mode of a client. Used by {@link
+ * Player.graphicsMode}
+ */
+export enum GraphicsMode {
+    /**
+     * @remarks
+     * A graphics mode that refers to the Deferred Technical
+     * Preview graphics mode setting.
+     *
+     */
+    Deferred = 'Deferred',
+    /**
+     * @remarks
+     * A graphics mode that refers to the Fancy graphics mode
+     * setting. Most special graphics effects are turned on in this
+     * setting.
+     *
+     */
+    Fancy = 'Fancy',
+    /**
+     * @remarks
+     * A graphics mode that refers to the Ray Traced graphics mode
+     * setting. This setting enables ray tracing.
+     *
+     */
+    RayTraced = 'RayTraced',
+    /**
+     * @remarks
+     * A graphics mode that refers to the Simple graphics mode
+     * setting. Most graphics effects are turned off in this
+     * setting.
+     *
+     */
+    Simple = 'Simple',
+}
+
 export enum HudElement {
     PaperDoll = 0,
     Armor = 1,
@@ -1617,12 +1828,11 @@ export enum HudVisibility {
 }
 
 /**
- * @beta
+ * @rc
  * All the different input buttons that are supported. Use with
- * {@link @minecraft/server.PlayerInput.getButtonState} via
- * {@link @minecraft/server.Player.input} or {@link
- * PlayerButtonInputAfterEvent} via {@link
- * WorldAfterEvents.playerButtonInput}
+ * {@link InputInfo.getButtonState} via {@link
+ * Player.inputInfo} or {@link PlayerButtonInputAfterEvent} via
+ * {@link WorldAfterEvents.playerButtonInput}
  */
 export enum InputButton {
     /**
@@ -1952,7 +2162,7 @@ export enum MoonPhase {
 }
 
 /**
- * @beta
+ * @rc
  * An enumeration describing the reason for the namespace name
  * error being thrown
  */
@@ -2358,6 +2568,18 @@ export enum TimeOfDay {
 
 /**
  * @beta
+ */
+export enum TintMethod {
+    BirchFoliage = 'BirchFoliage',
+    DefaultFoliage = 'DefaultFoliage',
+    EvergreenFoliage = 'EvergreenFoliage',
+    Grass = 'Grass',
+    None = 'None',
+    Water = 'Water',
+}
+
+/**
+ * @beta
  * An enumeration with the reason that a watchdog is deciding
  * to terminate execution of a behavior packs' script.
  */
@@ -2410,8 +2632,10 @@ export enum WeatherType {
 export type BlockComponentTypeMap = {
     fluidContainer: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
+    map_color: BlockMapColorComponent;
     'minecraft:fluidContainer': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
+    'minecraft:map_color': BlockMapColorComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:sign': BlockSignComponent;
@@ -3110,6 +3334,15 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns true if this reference to a block is still valid
+     * (for example, if the block is unloaded, references to that
+     * block will no longer be valid.)
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @rc
      * @remarks
      * Returns or sets whether this block has water on it.
@@ -3414,16 +3647,6 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
-    /**
-     * @remarks
-     * Returns true if this reference to a block is still valid
-     * (for example, if the block is unloaded, references to that
-     * block will no longer be valid.)
-     *
-     * @returns
-     * True if this block object is still working and valid.
-     */
-    isValid(): boolean;
     /**
      * @beta
      * @throws This function can throw errors.
@@ -3756,6 +3979,9 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 export class BlockComponentRegistry {
     private constructor();
     /**
+     * @remarks
+     * This function can be called in early-execution mode.
+     *
      * @throws This function can throw errors.
      *
      * {@link BlockCustomComponentAlreadyRegisteredError}
@@ -3768,9 +3994,9 @@ export class BlockComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentNameError}
-     *
      * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
      */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
@@ -3821,7 +4047,7 @@ export class BlockEvent {
     private constructor();
     /**
      * @remarks
-     * Block impacted by this event.
+     * Block currently in the world at the location of this event.
      *
      */
     readonly block: Block;
@@ -4001,11 +4227,64 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      */
     [Symbol.iterator](): Iterator<Vector3>;
     /**
+     * @beta
+     * @remarks
+     * Checks if the underlining block volume has been invalidated.
+     * Will return false if the block volume was modified between
+     * creating the iterator and iterating it, and true otherwise.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    isValid(): boolean;
+    /**
      * @remarks
      * This function can't be called in read-only mode.
      *
      */
     next(): IteratorResult<Vector3>;
+}
+
+/**
+ * @beta
+ * Represents the color of a block when displayed on a map.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockMapColorComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:map_color';
+    /**
+     * @remarks
+     * Base map color defined for that block.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    color(): RGBA;
+    /**
+     * @remarks
+     * Returns the base color multiplied to the evaluated tint at
+     * the given position.
+     *
+     * This function can't be called in read-only mode.
+     *
+     */
+    tintedColor(): RGBA;
+    /**
+     * @remarks
+     * Type of tint applied to the color.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    tintMethod(): TintMethod;
 }
 
 /**
@@ -4506,16 +4785,12 @@ export class BlockVolume extends BlockVolumeBase {
      * A world block location that represents a corner in a 3D
      * rectangle
      *
-     * This property can't be edited in read-only mode.
-     *
      */
     'from': Vector3;
     /**
      * @remarks
      * A world block location that represents the opposite corner
      * in a 3D rectangle
-     *
-     * This property can't be edited in read-only mode.
      *
      */
     to: Vector3;
@@ -4525,8 +4800,6 @@ export class BlockVolume extends BlockVolumeBase {
      * Check to see if the given location is directly adjacent to
      * the outer surface of a BlockVolume.
      *
-     *
-     * This function can't be called in read-only mode.
      *
      * @param pos
      * The world block location to test
@@ -4542,8 +4815,6 @@ export class BlockVolume extends BlockVolumeBase {
      * Check to see if a two block volumes are directly adjacent
      * and two faces touch.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param other
      * The volume to test
      * @returns
@@ -4555,8 +4826,6 @@ export class BlockVolume extends BlockVolumeBase {
      * @remarks
      * Return an enumeration which represents the intersection
      * between two BlockVolume objects
-     *
-     * This function can't be called in read-only mode.
      *
      */
     intersects(other: BlockVolume): BlockVolumeIntersection;
@@ -4572,8 +4841,6 @@ export class BlockVolumeBase {
      * Fetch a {@link BlockLocationIterator} that represents all of
      * the block world locations within the specified volume
      *
-     * This function can't be called in read-only mode.
-     *
      */
     getBlockLocationIterator(): BlockLocationIterator;
     /**
@@ -4582,8 +4849,6 @@ export class BlockVolumeBase {
      * Return a {@link BoundingBox} object which represents the
      * validated min and max coordinates of the volume
      *
-     * This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBoundingBox(): BoundingBox;
@@ -4591,16 +4856,12 @@ export class BlockVolumeBase {
      * @remarks
      * Return the capacity (volume) of the BlockVolume (W*D*H)
      *
-     * This function can't be called in read-only mode.
-     *
      */
     getCapacity(): number;
     /**
      * @remarks
      * Get the largest corner position of the volume (guaranteed to
      * be >= min)
-     *
-     * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
@@ -4610,8 +4871,6 @@ export class BlockVolumeBase {
      * Get the smallest corner position of the volume (guaranteed
      * to be <= max)
      *
-     * This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getMin(): Vector3;
@@ -4620,8 +4879,6 @@ export class BlockVolumeBase {
      * Get a {@link Vector3} object where each component represents
      * the number of blocks along that axis
      *
-     * This function can't be called in read-only mode.
-     *
      */
     getSpan(): Vector3;
     /**
@@ -4629,15 +4886,11 @@ export class BlockVolumeBase {
      * Check to see if a given world block location is inside a
      * BlockVolume
      *
-     * This function can't be called in read-only mode.
-     *
      */
     isInside(location: Vector3): boolean;
     /**
      * @remarks
      * Move a BlockVolume by a specified amount
-     *
-     * This function can't be called in read-only mode.
      *
      * @param delta
      * Amount of blocks to move by
@@ -4791,9 +5044,31 @@ export class ButtonPushAfterEvent extends BlockEvent {
  * pushed.
  * @seeExample buttonPushEvent.ts
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
+export class ButtonPushAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Adds a callback that will be called when a button is pushed.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * Removes a callback from being called when a button is
+     * pushed.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;
 }
 
 /**
@@ -4802,6 +5077,15 @@ export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
  */
 export class Camera {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Returns whether the Camera is valid to access and use. A
+     * Camera is considered valid when the owning Player of the
+     * Camera is loaded and valid itself.
+     *
+     */
+    readonly isValid: boolean;
     /**
      * @remarks
      * Clears the active camera for the specified player. Causes
@@ -5018,22 +5302,21 @@ export class CommandResult {
 export class Component {
     private constructor();
     /**
-     * @remarks
-     * Identifier of the component.
-     *
-     */
-    readonly typeId: string;
-    /**
+     * @beta
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any
      * addition to any additional validation required by the
      * component.
      *
-     * @returns
-     * Whether the component is valid.
      */
-    isValid(): boolean;
+    readonly isValid: boolean;
+    /**
+     * @remarks
+     * Identifier of the component.
+     *
+     */
+    readonly typeId: string;
 }
 
 /**
@@ -5305,6 +5588,15 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
+     * @beta
+     * @remarks
+     * Returns whether a container object (or the entity or block
+     * that this container is associated with) is still available
+     * for use in this context.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * The number of slots in this container. For example, a
      * standard single-block chest has a size of 27. Note, a
@@ -5368,14 +5660,6 @@ export class Container {
      * out of bounds.
      */
     getSlot(slot: number): ContainerSlot;
-    /**
-     * @remarks
-     * Returns whether a container object (or the entity or block
-     * that this container is associated with) is still available
-     * for use in this context.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across
@@ -5486,6 +5770,15 @@ export class ContainerSlot {
      * {@link InvalidContainerSlotError}
      */
     readonly isStackable: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether the ContainerSlot is valid. The container
+     * slot is valid if the container exists and is loaded, and the
+     * slot index is valid.
+     *
+     */
+    readonly isValid: boolean;
     /**
      * @remarks
      * Gets or sets whether the item is kept on death.
@@ -5713,14 +6006,6 @@ export class ContainerSlot {
      * {@link InvalidContainerSlotError}
      */
     isStackableWith(itemStack: ItemStack): boolean;
-    /**
-     * @remarks
-     * Returns whether the ContainerSlot is valid. The container
-     * slot is valid if the container exists and is loaded, and the
-     * slot index is valid.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * The list of block types this item can break in Adventure
@@ -6164,6 +6449,58 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
+     * @beta
+     * @remarks
+     * Places the given feature into the dimension at the specified
+     * location.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param featureName
+     * The string identifier for the feature.
+     * @param location
+     * Location to place the feature.
+     * @param shouldThrow
+     * Specifies if the function call will throw an error if the
+     * feature could not be placed.
+     * Note: The function call will always throw an error if using
+     * an unknown feature name or trying to place in a unloaded
+     * chunk.
+     * @throws
+     * An error will be thrown if the feature name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Places the given feature rule into the dimension at the
+     * specified location.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param featureRuleName
+     * The string identifier for the feature rule.
+     * @param location
+     * Location to place the feature rule.
+     * @throws
+     * An error will be thrown if the feature rule name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
+    /**
      * @remarks
      * Plays a sound for all players.
      *
@@ -6206,27 +6543,6 @@ export class Dimension {
      * {@link CommandError}
      */
     runCommand(commandString: string): CommandResult;
-    /**
-     * @remarks
-     * Runs a particular command asynchronously from the context of
-     * the broader dimension.  Note that there is a maximum queue
-     * of 128 asynchronous commands that can be run in a given
-     * tick.
-     *
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @returns
-     * For commands that return data, returns a CommandResult with
-     * an indicator of command results.
-     * @throws
-     * Throws an exception if the command fails due to incorrect
-     * parameters or command syntax, or in erroneous cases for the
-     * command. Note that in many cases, if the command does not
-     * operate (e.g., a target selector found no matches), this
-     * method will not throw an exception.
-     */
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
      * @remarks
      * Sets a block in the world using a BlockPermutation.
@@ -6308,7 +6624,7 @@ export class Dimension {
      * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts b473e4eb
      */
-    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    spawnEntity(identifier: EntityType | string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
      * @remarks
      * Creates a new item stack as an entity at the specified
@@ -6422,19 +6738,20 @@ export class Effect {
      */
     readonly duration: number;
     /**
+     * @beta
+     * @remarks
+     * Returns whether an effect instance is available for use in
+     * this context.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Gets the type id of this effect.
      *
      * @throws This property can throw when used.
      */
     readonly typeId: string;
-    /**
-     * @remarks
-     * Returns whether an effect instance is available for use in
-     * this context.
-     *
-     */
-    isValid(): boolean;
 }
 
 /**
@@ -6739,6 +7056,15 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns whether the entity can be manipulated by script. A
+     * Player is considered valid when it's EntityLifetimeState is
+     * set to Loaded.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Current location of the entity.
      *
@@ -6859,18 +7185,12 @@ export class Entity {
      *
      * This function can't be called in read-only mode.
      *
-     * @param directionX
-     * X direction in horizontal plane.
-     * @param directionZ
-     * Z direction in horizontal plane.
-     * @param horizontalStrength
-     * Knockback strength for the horizontal vector.
      * @param verticalStrength
      * Knockback strength for the vertical vector.
      * @throws This function can throw errors.
      * @seeExample bounceSkeletons.ts
      */
-    applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
      * @remarks
      * Clears all dynamic properties that have been set on this
@@ -6933,6 +7253,9 @@ export class Entity {
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
     /**
@@ -6943,6 +7266,9 @@ export class Entity {
      * @returns
      * Returns all components that are both present on this entity
      * and supported by the API.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getComponents(): EntityComponent[];
     /**
@@ -7094,6 +7420,9 @@ export class Entity {
      * @returns
      * Returns true if the specified component is present on this
      * entity.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hasComponent(componentId: string): boolean;
     /**
@@ -7107,16 +7436,6 @@ export class Entity {
      * @throws This function can throw errors.
      */
     hasTag(tag: string): boolean;
-    /**
-     * @remarks
-     * Returns whether the entity can be manipulated by script. A
-     * Player is considered valid when it's EntityLifetimeState is
-     * set to Loaded.
-     *
-     * @returns
-     * Whether the entity is valid.
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
@@ -7256,21 +7575,6 @@ export class Entity {
      * {@link Error}
      */
     runCommand(commandString: string): CommandResult;
-    /**
-     * @remarks
-     * Runs a particular command asynchronously from the context of
-     * this entity. Note that there is a maximum queue of 128
-     * asynchronous commands that can be run in a given tick.
-     *
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @returns
-     * For commands that return data, returns a JSON structure with
-     * command response values.
-     * @throws This function can throw errors.
-     */
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
      * @beta
      * @remarks
@@ -7758,6 +8062,9 @@ export class EntityComponent extends Component {
      * The entity that owns this component. The entity will be
      * undefined if it has been removed.
      *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly entity: Entity;
 }
@@ -8268,8 +8575,10 @@ export class EntityInventoryComponent extends EntityComponent {
      * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
-    readonly container?: Container;
+    readonly container: Container;
     /**
      * @remarks
      * Type of container this entity has.
@@ -9565,6 +9874,98 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
+ * @beta
+ * A container for arguments passed to
+ * SpawnRulesRegistry.registerEntitySpawnCallback
+ *
+ * Required Experiments:
+ * - Simplified Spawn Rules
+ *
+ */
+export class EntitySpawnCallbackArgs {
+    private constructor();
+    /**
+     * @remarks
+     * The dimension and location of the spawn.
+     *
+     */
+    readonly dimensionLocation: DimensionLocation;
+    /**
+     * @remarks
+     * The reason for the spawn.
+     *
+     */
+    readonly spawnReason: EntitySpawnReason;
+    /**
+     * @remarks
+     * The entity spawn type.
+     *
+     */
+    readonly spawnType: EntitySpawnType;
+}
+
+/**
+ * @beta
+ * A container for information relating to an entity spawn
+ * event.
+ *
+ * Required Experiments:
+ * - Simplified Spawn Rules
+ *
+ */
+export class EntitySpawnType {
+    private constructor();
+    /**
+     * @remarks
+     * The entity Id.
+     *
+     */
+    readonly entityId: string;
+    /**
+     * @remarks
+     * The height of the entity to spawn.
+     *
+     */
+    readonly height: number;
+    /**
+     * @remarks
+     * Is the entity immune to fire.
+     *
+     */
+    readonly isImmuneFire: boolean;
+    /**
+     * @remarks
+     * Is the entity summonable.
+     *
+     */
+    readonly isSummonable: boolean;
+    /**
+     * @remarks
+     * The category determining the type of spawn.
+     *
+     */
+    readonly spawnCategory: EntitySpawnCategory;
+    /**
+     * @remarks
+     * The width of the entity to spawn.
+     *
+     */
+    readonly width: number;
+    /**
+     * @remarks
+     * Helper to get the AABB for the entity at a given location
+     *
+     */
+    getSpawnAABB(position: Vector3): BoundingBox;
+    /**
+     * @remarks
+     * Is the block being spawned on dangerous.
+     *
+     */
+    isBlockDangerous(block: Block): boolean;
+}
+
+/**
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.
@@ -10312,54 +10713,6 @@ export class GameRules {
 }
 
 /**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires when a button is pushed.
- */
-export class IButtonPushAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Subscribes to the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
-    /**
-     * @remarks
-     * Unsubscribes from the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;
-}
-
-/**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a lever is used.
- */
-export class ILeverActionAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Subscribes to the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
-    /**
-     * @remarks
-     * Unsubscribes from the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    unsubscribe(callback: (arg0: LeverActionAfterEvent) => void): void;
-}
-
-/**
  * @rc
  * Contains the input information for a client instance.
  */
@@ -10387,7 +10740,7 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -10396,84 +10749,12 @@ export class InputInfo {
      */
     getButtonState(button: InputButton): ButtonState;
     /**
-     * @beta
+     * @rc
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
      */
     getMovementVector(): Vector2;
-}
-
-/**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a player joins a world.
- */
-export class IPlayerJoinAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Subscribes to the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
-    /**
-     * @remarks
-     * Unsubscribes from the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    unsubscribe(callback: (arg0: PlayerJoinAfterEvent) => void): void;
-}
-
-/**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a player leaves a world.
- */
-export class IPlayerLeaveAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Subscribes to the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
-    /**
-     * @remarks
-     * Unsubscribes from the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    unsubscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): void;
-}
-
-/**
- * Provides an adaptable interface for callers to subscribe to
- * an event that fires after a player spawns.
- */
-export class IPlayerSpawnAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Subscribes to the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
-    /**
-     * @remarks
-     * Unsubscribes from the event.
-     *
-     * This function can't be called in read-only mode.
-     *
-     */
-    unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
 }
 
 /**
@@ -10697,6 +10978,8 @@ export class ItemComponentRegistry {
      * Registers an item custom component that can be used in item
      * JSON configuration.
      *
+     * This function can be called in early-execution mode.
+     *
      * @param name
      * The id that represents this custom component. Must have a
      * namespace. This id can be specified in a item's JSON
@@ -10709,8 +10992,6 @@ export class ItemComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentNameError}
-     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
@@ -10720,6 +11001,8 @@ export class ItemComponentRegistry {
      * {@link ItemCustomComponentReloadNewEventError}
      *
      * {@link ItemCustomComponentReloadVersionError}
+     *
+     * {@link NamespaceNameError}
      */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
 }
@@ -12117,9 +12400,32 @@ export class LeverActionAfterEvent extends BlockEvent {
  * (activates or deactivates).
  * @seeExample leverActionEvent.ts
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
+export class LeverActionAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Adds a callback that will be called when a lever is moved
+     * (activates or deactivates).
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * Removes a callback from being called when a lever is moved
+     * (activates or deactivates).
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: LeverActionAfterEvent) => void): void;
 }
 
 /**
@@ -12141,8 +12447,6 @@ export class ListBlockVolume extends BlockVolumeBase {
      * @remarks
      * Insert block locations into container.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param locations
      * Array of block locations to be inserted into container.
      */
@@ -12150,8 +12454,6 @@ export class ListBlockVolume extends BlockVolumeBase {
     /**
      * @remarks
      * Remove block locations from container.
-     *
-     * This function can't be called in read-only mode.
      *
      * @param locations
      * Array of block locations to be removed from container.
@@ -12184,46 +12486,6 @@ export class MessageReceiveAfterEvent {
      *
      */
     readonly player: Player;
-}
-
-/**
- * A collection of default Minecraft dimension types.
- */
-export class MinecraftDimensionTypes {
-    private constructor();
-    /**
-     * @remarks
-     * The Nether is a collection of biomes separate from the
-     * Overworld, including Soul Sand Valleys and Crimson forests.
-     * Nether fortresses contain exclusive resources. Mobs such as
-     * Blaze, Hoglins, Piglins, and Ghasts congregate here.
-     *
-     */
-    static readonly nether = 'minecraft:nether';
-    /**
-     * @remarks
-     * The overworld is a collection of biomes, including forests,
-     * plains, jungles, mountains, deserts, taiga, and more. This
-     * is the default starter dimension for Minecraft. Mobs such as
-     * Axolotl, Cows, Creepers, and Zombies congregate here.
-     *
-     */
-    static readonly overworld = 'minecraft:overworld';
-    /**
-     * @remarks
-     * The End is separate from the Overworld and the Nether and is
-     * generated whenever you create an End portal. Here, a giant
-     * center island is surrounded by several smaller areas and
-     * islands. You can find Endermen here. End midlands are larger
-     * areas that transition you from the center to the outer edges
-     * of the End. They contain Shulkers, Endermen, End gateway
-     * portals, and End cities. End gateway portals are commonly
-     * found at the outermost edge of the void. You usually find
-     * End barrens toward the edges of the main areas or land in
-     * the End.
-     *
-     */
-    static readonly theEnd = 'minecraft:the_end';
 }
 
 /**
@@ -12292,6 +12554,37 @@ export class MolangVariableMap {
      * @throws This function can throw errors.
      */
     setVector3(variableName: string, vector: Vector3): void;
+}
+
+/**
+ * @beta
+ * A container for arguments passed to
+ * SpawnRulesRegistry.registerObstructionCallback
+ *
+ * Required Experiments:
+ * - Simplified Spawn Rules
+ *
+ */
+export class ObstructionCallbackArgs {
+    private constructor();
+    /**
+     * @remarks
+     * The dimension of the spawn.
+     *
+     */
+    readonly dimension: Dimension;
+    /**
+     * @remarks
+     * The entity being checked for obstruction.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The entity spawn type.
+     *
+     */
+    readonly spawnType: EntitySpawnType;
 }
 
 /**
@@ -12365,6 +12658,18 @@ export class Player extends Entity {
      * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
+    /**
+     * @beta
+     * @remarks
+     * Gets the current graphics mode of the player's client. This
+     * can be changed in the Video section of the settings menu
+     * based on what hardware is available.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly graphicsMode: GraphicsMode;
     /**
      * @rc
      * @remarks
@@ -12889,7 +13194,7 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Event data for when a player presses a button.
  */
 export class PlayerButtonInputAfterEvent {
@@ -12915,7 +13220,7 @@ export class PlayerButtonInputAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to player inputs.
  */
 export class PlayerButtonInputAfterEventSignal {
@@ -13313,20 +13618,6 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 export class PlayerInputPermissions {
     private constructor();
     /**
-     * @remarks
-     * Camera input permissions for the player. If set to true,
-     * input relating to camera movement is enabled for the player.
-     *
-     */
-    cameraEnabled: boolean;
-    /**
-     * @remarks
-     * Movement input permissions for the player. If set to true
-     * input relating to movement is enabled for the player.
-     *
-     */
-    movementEnabled: boolean;
-    /**
      * @rc
      * @remarks
      * Returns true if an input permission is enabled.
@@ -13707,9 +13998,32 @@ export class PlayerJoinAfterEvent {
  * Manages callbacks that are connected to a player joining the
  * world.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
+export class PlayerJoinAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Adds a callback that will be called when a player joins the
+     * world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * Removes a callback from being called when a player joins the
+     * world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerJoinAfterEvent) => void): void;
 }
 
 /**
@@ -13737,9 +14051,32 @@ export class PlayerLeaveAfterEvent {
  * Manages callbacks that are connected to a player leaving the
  * world.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
+export class PlayerLeaveAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Adds a callback that will be called when a player leaves the
+     * world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * Removes a callback from being called when a player leaves
+     * the world.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): void;
 }
 
 /**
@@ -13938,9 +14275,31 @@ export class PlayerSpawnAfterEvent {
  * Registers an event when a player is spawned (or re-spawned
  * after death) and fully ready within the world.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
+export class PlayerSpawnAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Registers a new event receiver for this particular type of
+     * event.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * De-registers an event receiver for the player spawn event.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
 }
 
 /**
@@ -14375,6 +14734,14 @@ export class ScoreboardIdentity {
      */
     readonly id: number;
     /**
+     * @beta
+     * @remarks
+     * Returns true if the ScoreboardIdentity reference is still
+     * valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Type of the scoreboard identity.
      *
@@ -14388,13 +14755,6 @@ export class ScoreboardIdentity {
      * @throws This function can throw errors.
      */
     getEntity(): Entity | undefined;
-    /**
-     * @remarks
-     * Returns true if the ScoreboardIdentity reference is still
-     * valid.
-     *
-     */
-    isValid(): boolean;
 }
 
 /**
@@ -14417,6 +14777,14 @@ export class ScoreboardObjective {
      * @throws This property can throw when used.
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the ScoreboardObjective reference is still
+     * valid.
+     *
+     */
+    readonly isValid: boolean;
     /**
      * @remarks
      * Adds a score to the given participant and objective.
@@ -14460,13 +14828,6 @@ export class ScoreboardObjective {
      * @throws This function can throw errors.
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
-    /**
-     * @remarks
-     * Returns true if the ScoreboardObjective reference is still
-     * valid.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Removes a participant from this scoreboard objective.
@@ -14524,6 +14885,14 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Returns true if the current reference to this screen display
+     * manager object is valid and functional.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -14544,13 +14913,6 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      */
     isForcedHidden(hudElement: HudElement): boolean;
-    /**
-     * @remarks
-     * Returns true if the current reference to this screen display
-     * manager object is valid and functional.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.
@@ -14796,6 +15158,107 @@ export class ShutdownEvent {
 }
 
 /**
+ * @beta
+ * Container for spawn rules APIs. Allows for registering
+ * callbacks to extend the spawner system.
+ *
+ * Required Experiments:
+ * - Simplified Spawn Rules
+ *
+ */
+export class SpawnRulesRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers an entity spawn callback to the provided key.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * @param id
+     * The Id to associate the callback with.
+     * @param callback
+     * The callback that will be invoked when a spawner tests for
+     * the associated predicate key.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
+    registerEntitySpawnCallback(id: string, callback: (arg0: EntitySpawnCallbackArgs) => boolean): void;
+    /**
+     * @remarks
+     * Registers an obstruction callback to the provided key.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * @param id
+     * The Id to associate the callback with.
+     * @param callback
+     * The callback that will be invoked when a spawner tests for
+     * the associated predicate key.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
+    registerObstructionCallback(id: string, callback: (arg0: ObstructionCallbackArgs) => boolean): void;
+}
+
+/**
+ * @beta
+ */
+export class StartupBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: StartupEvent) => void): (arg0: StartupEvent) => void;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: StartupEvent) => void): void;
+}
+
+/**
+ * @beta
+ */
+export class StartupEvent {
+    private constructor();
+    readonly blockComponentRegistry: BlockComponentRegistry;
+    readonly itemComponentRegistry: ItemComponentRegistry;
+    /**
+     * @remarks
+     * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
+     *
+     *
+     * Required Experiments:
+     * - Simplified Spawn Rules
+     *
+     */
+    getSpawnRulesRegistry(): SpawnRulesRegistry;
+}
+
+/**
  * Represents a loaded structure template (.mcstructure file).
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
@@ -14811,6 +15274,14 @@ export class Structure {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Returns whether the Structure is valid. The Structure may
+     * become invalid if it is deleted.
+     *
+     */
+    readonly isValid: boolean;
     /**
      * @remarks
      * The dimensions of the structure. For example, a single block
@@ -14860,15 +15331,6 @@ export class Structure {
      * {@link InvalidStructureError}
      */
     getIsWaterlogged(location: Vector3): boolean;
-    /**
-     * @remarks
-     * Returns whether the Structure is valid. The Structure may
-     * become invalid if it is deleted.
-     *
-     * @returns
-     * Returns whether the Structure is valid.
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.
@@ -15183,6 +15645,14 @@ export class System {
      */
     readonly currentTick: number;
     /**
+     * @beta
+     * @remarks
+     * Returns true if this is a world where the editor is
+     * currently loaded, returns false otherwise.
+     *
+     */
+    readonly isEditorWorld: boolean;
+    /**
      * @remarks
      * Contains the device information for the server.
      *
@@ -15279,7 +15749,7 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Causes an event to fire within script with the specified
      * message ID and payload.
@@ -15303,7 +15773,7 @@ export class System {
      *
      * {@link NamespaceNameError}
      */
-    scriptEvent(id: string, message: string): void;
+    sendScriptEvent(id: string, message: string): void;
     /**
      * @remarks
      * waitTicks returns a promise that resolves after the
@@ -15350,6 +15820,7 @@ export class SystemAfterEvents {
 export class SystemBeforeEvents {
     private constructor();
     readonly shutdown: ShutdownBeforeEventSignal;
+    readonly startup: StartupBeforeEventSignal;
     /**
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
@@ -15887,21 +16358,6 @@ export class World {
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @remarks
-     * Plays a sound for all players. DEPRECATED: Use
-     * Dimension.playSound.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws
-     * An error will be thrown if volume is less than 0.0.
-     * An error will be thrown if fade is less than 0.0.
-     * An error will be thrown if pitch is less than 0.01.
-     * An error will be thrown if volume is less than 0.0.
-     * @seeExample playMusicAndSound.ts
-     */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
-    /**
-     * @remarks
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      *
@@ -16196,10 +16652,10 @@ export class WorldAfterEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * This event fires when an {@link
-     * @minecraft/Server.InputButton} state is changed.
+     * This event fires when an {@link InputButton} state is
+     * changed.
      *
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
@@ -16214,8 +16670,7 @@ export class WorldAfterEvents {
     /**
      * @rc
      * @remarks
-     * This event fires when a player's {@link
-     * @minecraft/Server.InputMode} changes.
+     * This event fires when a player's {@link InputMode} changes.
      *
      */
     readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
@@ -16311,12 +16766,9 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @remarks
-     * This event fires when the script environment is initialized
-     * on a World.
-     *
+     * @beta
      */
-    readonly worldInitialize: WorldInitializeAfterEventSignal;
+    readonly worldLoad: WorldLoadAfterEventSignal;
 }
 
 /**
@@ -16404,105 +16856,36 @@ export class WorldBeforeEvents {
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
-    /**
-     * @remarks
-     * This event fires immediately when the script environment is
-     * initialized on a World. Not all script functionality may be
-     * available. For guaranteed access to world state, use the
-     * world initialize after event.
-     *
-     */
-    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
 /**
- * Contains information and methods that can be used at the
- * initialization of the scripting environment for a World.
+ * @beta
  */
-export class WorldInitializeAfterEvent {
+export class WorldLoadAfterEvent {
     private constructor();
 }
 
 /**
- * Manages callbacks that are run on the first tick of the
- * World. Do note that this event may run multiple times within
- * a session in the case that the /reload command is used.
+ * @beta
  */
-export class WorldInitializeAfterEventSignal {
+export class WorldLoadAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * Adds a callback that will be called when the scripting
-     * environment is initialized for a World.
-     *
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.
      *
      */
-    subscribe(callback: (arg0: WorldInitializeAfterEvent) => void): (arg0: WorldInitializeAfterEvent) => void;
+    subscribe(callback: (arg0: WorldLoadAfterEvent) => void): (arg0: WorldLoadAfterEvent) => void;
     /**
      * @remarks
-     * Removes a callback from being called the scripting
-     * environment is initialized for a World.
-     *
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.
      *
      */
-    unsubscribe(callback: (arg0: WorldInitializeAfterEvent) => void): void;
-}
-
-/**
- * Contains information and methods that can be used at the
- * initialization of the scripting environment for a World.
- * Also, use the supplied blockRegistry object to register
- * block custom components within the scope of the World
- * Initialize execution.
- */
-export class WorldInitializeBeforeEvent {
-    private constructor();
-    readonly blockComponentRegistry: BlockComponentRegistry;
-    /**
-     * @remarks
-     * Provides the functionality for registering custom components
-     * for items.
-     *
-     */
-    readonly itemComponentRegistry: ItemComponentRegistry;
-}
-
-/**
- * Manages callbacks that are run at the initialization of the
- * scripting environment for a World. Do note that this event
- * may run multiple times within a session in the case that the
- * /reload command is used.
- */
-export class WorldInitializeBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when the scripting
-     * environment is initialized for a World.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(callback: (arg0: WorldInitializeBeforeEvent) => void): (arg0: WorldInitializeBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called the scripting
-     * environment is initialized for a World.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg0: WorldInitializeBeforeEvent) => void): void;
+    unsubscribe(callback: (arg0: WorldLoadAfterEvent) => void): void;
 }
 
 /**
@@ -17530,7 +17913,7 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
@@ -18441,7 +18824,7 @@ export class LocationOutOfWorldBoundariesError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when a name requires a namespace and an error occurs
  * when validating that namespace
  */
@@ -18456,6 +18839,16 @@ export class NamespaceNameError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when the SpawnRulesRegistry is accessed outside of
+ * ModuleStartupEvent.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SpawnRulesInvalidRegistryError extends Error {
     private constructor();
 }
 

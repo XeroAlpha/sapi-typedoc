@@ -37,16 +37,12 @@ export class BlockVolume extends BlockVolumeBase {
      * A world block location that represents a corner in a 3D
      * rectangle
      *
-     * This property can't be edited in read-only mode.
-     *
      */
     'from': Vector3;
     /**
      * @remarks
      * A world block location that represents the opposite corner
      * in a 3D rectangle
-     *
-     * This property can't be edited in read-only mode.
      *
      */
     to: Vector3;
@@ -56,8 +52,6 @@ export class BlockVolume extends BlockVolumeBase {
      * Check to see if the given location is directly adjacent to
      * the outer surface of a BlockVolume.
      *
-     *
-     * This function can't be called in read-only mode.
      *
      * @param pos
      * The world block location to test
@@ -73,8 +67,6 @@ export class BlockVolume extends BlockVolumeBase {
      * Check to see if a two block volumes are directly adjacent
      * and two faces touch.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param other
      * The volume to test
      * @returns
@@ -86,8 +78,6 @@ export class BlockVolume extends BlockVolumeBase {
      * @remarks
      * Return an enumeration which represents the intersection
      * between two BlockVolume objects
-     *
-     * This function can't be called in read-only mode.
      *
      */
     intersects(other: BlockVolume): BlockVolumeIntersection;

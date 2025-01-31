@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { Vector3, minecraftcommon } from '../index';
 
 /**
  * A BlockLocationIterator returns the next block location of
@@ -25,6 +25,18 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      *
      */
     [Symbol.iterator](): Iterator<Vector3>;
+    /**
+     * @beta
+     * @remarks
+     * Checks if the underlining block volume has been invalidated.
+     * Will return false if the block volume was modified between
+     * creating the iterator and iterating it, and true otherwise.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    isValid(): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.

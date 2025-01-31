@@ -10,6 +10,14 @@
 export class ScreenDisplay {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Returns true if the current reference to this screen display
+     * manager object is valid and functional.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * This function can't be called in read-only mode.
      *
@@ -30,13 +38,6 @@ export class ScreenDisplay {
      * @throws This function can throw errors.
      */
     isForcedHidden(hudElement: HudElement): boolean;
-    /**
-     * @remarks
-     * Returns true if the current reference to this screen display
-     * manager object is valid and functional.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * This function can't be called in read-only mode.

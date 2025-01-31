@@ -1,4 +1,4 @@
-/* IMPORT */ import { Container, EntityComponent } from '../index';
+/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '../index';
 
 /**
  * Defines this entity's inventory properties.
@@ -28,8 +28,10 @@ export class EntityInventoryComponent extends EntityComponent {
      * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
-    readonly container?: Container;
+    readonly container: Container;
     /**
      * @remarks
      * Type of container this entity has.

@@ -11,15 +11,15 @@ NPM 包：
 |[@minecraft/common](https://www.npmjs.com/package/@minecraft/common)|`1.2.0`|
 |[@minecraft/debug-utilities](https://www.npmjs.com/package/@minecraft/debug-utilities)|`1.0.0-beta`|
 |[@minecraft/math](https://www.npmjs.com/package/@minecraft/math)|`2.0.1`|
-|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`1.18.0-beta`|
+|[@minecraft/server](https://www.npmjs.com/package/@minecraft/server)|`2.0.0-beta`|
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
-|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`1.4.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.60-preview.28`|
+|[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`2.0.0-beta`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.70-preview.20`|
 
-游戏版本号：`1.21.60.28`
+游戏版本号：`1.21.70.20`
 
 <!-- summary end -->
 

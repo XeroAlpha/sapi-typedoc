@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal, WorldInitializeBeforeEventSignal } from '../index';
+/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, ItemUseOnBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '../index';
 
 /**
  * A set of events that fire before an actual action occurs. In
@@ -85,13 +85,4 @@ export class WorldBeforeEvents {
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
-    /**
-     * @remarks
-     * This event fires immediately when the script environment is
-     * initialized on a World. Not all script functionality may be
-     * available. For guaranteed access to world state, use the
-     * world initialize after event.
-     *
-     */
-    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }

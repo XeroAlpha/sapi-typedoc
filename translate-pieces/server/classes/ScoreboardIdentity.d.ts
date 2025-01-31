@@ -18,6 +18,14 @@ export class ScoreboardIdentity {
      */
     readonly id: number;
     /**
+     * @beta
+     * @remarks
+     * Returns true if the ScoreboardIdentity reference is still
+     * valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Type of the scoreboard identity.
      *
@@ -31,11 +39,4 @@ export class ScoreboardIdentity {
      * @throws This function can throw errors.
      */
     getEntity(): Entity | undefined;
-    /**
-     * @remarks
-     * Returns true if the ScoreboardIdentity reference is still
-     * valid.
-     *
-     */
-    isValid(): boolean;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -204,21 +204,6 @@ export class World {
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
-    /**
-     * @remarks
-     * Plays a sound for all players. DEPRECATED: Use
-     * Dimension.playSound.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @throws
-     * An error will be thrown if volume is less than 0.0.
-     * An error will be thrown if fade is less than 0.0.
-     * An error will be thrown if pitch is less than 0.01.
-     * An error will be thrown if volume is less than 0.0.
-     * @seeExample playMusicAndSound.ts
-     */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks
      * Queues an additional music track for players. If a track is

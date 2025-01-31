@@ -55,6 +55,15 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns true if this reference to a block is still valid
+     * (for example, if the block is unloaded, references to that
+     * block will no longer be valid.)
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @rc
      * @remarks
      * Returns or sets whether this block has water on it.
@@ -359,16 +368,6 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
-    /**
-     * @remarks
-     * Returns true if this reference to a block is still valid
-     * (for example, if the block is unloaded, references to that
-     * block will no longer be valid.)
-     *
-     * @returns
-     * True if this block object is still working and valid.
-     */
-    isValid(): boolean;
     /**
      * @beta
      * @throws This function can throw errors.

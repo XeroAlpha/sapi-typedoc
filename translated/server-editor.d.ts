@@ -851,6 +851,31 @@ export declare enum KeyboardKey {
 }
 
 /**
+ * Determines how key binding should be processed to fire
+ * actions
+ */
+export declare enum KeyProcessingState {
+    /**
+     * @remarks
+     * Consume key input event and prevent propagation
+     *
+     */
+    Consume = 0,
+    /**
+     * @remarks
+     * Pass key input event to parent context after processing it
+     *
+     */
+    Passthrough = 1,
+    /**
+     * @remarks
+     * Skip key input event processing
+     *
+     */
+    Disabled = 2,
+}
+
+/**
  * Alignment options for UI elements
  */
 export declare enum LayoutAlignment {
@@ -972,6 +997,14 @@ export enum PrimitiveType {
     AxialSphere = 5,
 }
 
+/**
+ * The possible variants of a ProgressIndicator property item.
+ */
+export declare enum ProgressIndicatorPropertyItemVariant {
+    Spinner = 0,
+    ProgressBar = 1,
+}
+
 export enum ProjectExportType {
     PlayableWorld = 0,
     ProjectBackup = 1,
@@ -991,7 +1024,9 @@ export declare enum PropertyItemType {
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
+    Link = 'editorUI:Link',
     Number = 'editorUI:Number',
+    ProgressIndicator = 'editorUI:ProgressIndicator',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
     Table = 'editorUI:Table',
@@ -1178,6 +1213,16 @@ export type IDropdownPropertyItem_deprecated<
     },
     Prop extends keyof T & string,
 > = IPropertyItem<T, Prop> & IDropdownPropertyItemMixIn;
+
+/**
+ * Animation properties for a horizontally laid out sprite
+ * sheet image
+ */
+export declare type ImageAnimationData = {
+    frames: number;
+    duration?: number;
+    delay?: number;
+};
 
 export declare type ImageResourceData = {
     path: string;
@@ -4417,6 +4462,12 @@ export interface IActionBarItemCreationParams {
     icon: string;
     /**
      * @remarks
+     * Animation data for sprite sheet icon image
+     *
+     */
+    iconAnimation?: ImageAnimationData;
+    /**
+     * @remarks
      * Text label for item.
      *
      */
@@ -5024,7 +5075,7 @@ export interface IGlobalInputManager {
         action: SupportedKeyboardActionTypes,
         binding: KeyBinding,
         info?: KeyBindingInfo,
-    ): void;
+    ): IRegisteredKeyBinding;
 }
 
 /**
@@ -5091,6 +5142,56 @@ export interface IImagePropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     onClick?: (x: number, y: number) => void;
+}
+
+/**
+ * A property item which supports Link properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ILinkPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<string>;
+    /**
+     * @remarks
+     * Sets title of the property item.
+     *
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Sets tooltip description of the property item.
+     *
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for Link property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ILinkPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Hides the link icon. If undefined, it will default to false.
+     *
+     */
+    hideIcon?: boolean;
+    /**
+     * @remarks
+     * Localized title of the text item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item
+     *
+     */
+    tooltip?: LocalizedString;
 }
 
 export interface IMenu {
@@ -5193,7 +5294,11 @@ export interface IModalTool {
      */
     onModalToolActivation: EventSink<ModalToolLifecycleEventPayload>;
     bindPropertyPane(pane: IRootPropertyPane): void;
-    registerKeyBinding(action: SupportedKeyboardActionTypes, binding: KeyBinding, info?: KeyBindingInfo): void;
+    registerKeyBinding(
+        action: SupportedKeyboardActionTypes,
+        binding: KeyBinding,
+        info?: KeyBindingInfo,
+    ): IRegisteredKeyBinding;
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
@@ -5373,6 +5478,74 @@ export interface IPlayerLogger {
      * Message content
      */
     warning(message: string): void;
+}
+
+/**
+ * A property item which supports ProgressIndicator properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IProgressIndicatorPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current progress of the property item.
+     *
+     */
+    readonly progress: Readonly<number> | undefined;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: LocalizedString | undefined): void;
+}
+
+/**
+ * Optional properties for progress indicator property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IProgressIndicatorPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. If undefined, the label
+     * will be visible by default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * Normalized loading progress (0 to 1).
+     *
+     */
+    progress?: IObservableProp<number>;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: LocalizedString;
+    /**
+     * @remarks
+     * Determines how we display progress indicator. If undefined,
+     * it will default to Spinner.
+     *
+     */
+    variant?: ProgressIndicatorPropertyItemVariant;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5737,6 +5910,12 @@ export interface IPropertyPane {
     ): IImagePropertyItem;
     /**
      * @remarks
+     * Adds a multiline Text item to the pane.
+     *
+     */
+    addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
+    /**
+     * @remarks
      * Adds a number item to the pane.
      *
      */
@@ -5751,6 +5930,12 @@ export interface IPropertyPane {
         property: Prop,
         options?: IPropertyItemOptionsNumber,
     ): IPropertyItem<T, Prop>;
+    /**
+     * @remarks
+     * Adds a Progress Indicator item to the pane.
+     *
+     */
+    addProgressIndicator(options?: IProgressIndicatorPropertyItemOptions): IProgressIndicatorPropertyItem;
     /**
      * @remarks
      */
@@ -5876,6 +6061,33 @@ export interface IPropertyTableCellItem {
     block?: string;
     icon?: string;
     text?: string;
+}
+
+/**
+ * Key binding that is registered to an input context
+ */
+export interface IRegisteredKeyBinding {
+    /**
+     * @remarks
+     * Unique identifier for the binding.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Returns current processing state of the binding.
+     *
+     */
+    getProcessingState(): KeyProcessingState;
+    /**
+     * @remarks
+     * Updates how the key input will be processed for this
+     * binding. If undefined, it will be consumed.
+     *
+     * @param newState
+     * New binding processing state.
+     */
+    setProcessingState(newState: KeyProcessingState | undefined): void;
 }
 
 /**
@@ -6669,7 +6881,7 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
 }
 
 /**
- * A property item which supports Vector3 properties
+ * A property item which supports Text properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface ITextPropertyItem extends IPropertyItemBase {
@@ -7152,7 +7364,8 @@ export declare function executeLargeOperationFromIterator(
 /**
  * @remarks
  * Returns a string array of the default block types for editor
- * operations. Can be used to further filter blocks.
+ * operations. Can be used to further filter blocks. This will
+ * throw if called in early execution.
  *
  * @returns
  * Default allowed block list

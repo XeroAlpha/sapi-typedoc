@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, InputInfo, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -22,6 +22,18 @@ export class Player extends Entity {
      * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
+    /**
+     * @beta
+     * @remarks
+     * Gets the current graphics mode of the player's client. This
+     * can be changed in the Video section of the settings menu
+     * based on what hardware is available.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly graphicsMode: GraphicsMode;
     /**
      * @rc
      * @remarks

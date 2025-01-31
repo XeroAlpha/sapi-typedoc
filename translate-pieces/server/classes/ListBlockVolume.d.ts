@@ -19,8 +19,6 @@ export class ListBlockVolume extends BlockVolumeBase {
      * @remarks
      * Insert block locations into container.
      *
-     * This function can't be called in read-only mode.
-     *
      * @param locations
      * Array of block locations to be inserted into container.
      */
@@ -28,8 +26,6 @@ export class ListBlockVolume extends BlockVolumeBase {
     /**
      * @remarks
      * Remove block locations from container.
-     *
-     * This function can't be called in read-only mode.
      *
      * @param locations
      * Array of block locations to be removed from container.

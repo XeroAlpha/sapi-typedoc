@@ -1,4 +1,4 @@
-/* IMPORT */ import { ShutdownBeforeEventSignal, WatchdogTerminateBeforeEventSignal } from '../index';
+/* IMPORT */ import { ShutdownBeforeEventSignal, StartupBeforeEventSignal, WatchdogTerminateBeforeEventSignal } from '../index';
 
 /**
  * @beta
@@ -11,6 +11,7 @@
 export class SystemBeforeEvents {
     private constructor();
     readonly shutdown: ShutdownBeforeEventSignal;
+    readonly startup: StartupBeforeEventSignal;
     /**
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
