@@ -1,3 +1,5 @@
+/* IMPORT */ import { ImageAnimationData } from '../index';
+
 /**
  * Properties required to create an Action Bar item.
  */
@@ -15,6 +17,12 @@ export interface IActionBarItemCreationParams {
      *
      */
     icon: string;
+    /**
+     * @remarks
+     * Animation data for sprite sheet icon image
+     *
+     */
+    iconAnimation?: ImageAnimationData;
     /**
      * @remarks
      * Text label for item.

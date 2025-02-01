@@ -7,6 +7,15 @@
 export class Camera {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Returns whether the Camera is valid to access and use. A
+     * Camera is considered valid when the owning Player of the
+     * Camera is loaded and valid itself.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Clears the active camera for the specified player. Causes
      * the specified players to end any in-progress camera

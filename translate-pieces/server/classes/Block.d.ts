@@ -73,6 +73,15 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns true if this reference to a block is still valid
+     * (for example, if the block is unloaded, references to that
+     * block will no longer be valid.)
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @rc
      * @remarks
      * 返回或设置该方块是否含水。
@@ -493,20 +502,6 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
-    /**
-     * @remarks
-     * 如果对该方块的引用仍然有效，则返回 `true`（例如，如果方块未加载，对该方块的引用将不再有效）。
-     *
-     * Returns true if this reference to a block is still valid
-     * (for example, if the block is unloaded, references to that
-     * block will no longer be valid.)
-     *
-     * @returns
-     * 如果这个方块对象仍然存在且有效，则返回 `true`。
-     *
-     * True if this block object is still working and valid.
-     */
-    isValid(): boolean;
     /**
      * @beta
      * @throws This function can throw errors.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorInputContext, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '../index';
+/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '../index';
 
 export interface IGlobalInputManager {
     registerKeyBinding(
@@ -6,5 +6,5 @@ export interface IGlobalInputManager {
         action: SupportedKeyboardActionTypes,
         binding: KeyBinding,
         info?: KeyBindingInfo,
-    ): void;
+    ): IRegisteredKeyBinding;
 }

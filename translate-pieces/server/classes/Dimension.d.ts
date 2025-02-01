@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntityType, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -276,6 +276,58 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
+     * @beta
+     * @remarks
+     * Places the given feature into the dimension at the specified
+     * location.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param featureName
+     * The string identifier for the feature.
+     * @param location
+     * Location to place the feature.
+     * @param shouldThrow
+     * Specifies if the function call will throw an error if the
+     * feature could not be placed.
+     * Note: The function call will always throw an error if using
+     * an unknown feature name or trying to place in a unloaded
+     * chunk.
+     * @throws
+     * An error will be thrown if the feature name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Places the given feature rule into the dimension at the
+     * specified location.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param featureRuleName
+     * The string identifier for the feature rule.
+     * @param location
+     * Location to place the feature rule.
+     * @throws
+     * An error will be thrown if the feature rule name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
+    /**
      * @remarks
      * Plays a sound for all players.
      *
@@ -318,27 +370,6 @@ export class Dimension {
      * {@link CommandError}
      */
     runCommand(commandString: string): CommandResult;
-    /**
-     * @remarks
-     * Runs a particular command asynchronously from the context of
-     * the broader dimension.  Note that there is a maximum queue
-     * of 128 asynchronous commands that can be run in a given
-     * tick.
-     *
-     * @param commandString
-     * Command to run. Note that command strings should not start
-     * with slash.
-     * @returns
-     * For commands that return data, returns a CommandResult with
-     * an indicator of command results.
-     * @throws
-     * Throws an exception if the command fails due to incorrect
-     * parameters or command syntax, or in erroneous cases for the
-     * command. Note that in many cases, if the command does not
-     * operate (e.g., a target selector found no matches), this
-     * method will not throw an exception.
-     */
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
      * @remarks
      * Sets a block in the world using a BlockPermutation.
@@ -420,7 +451,7 @@ export class Dimension {
      * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts b473e4eb
      */
-    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    spawnEntity(identifier: EntityType | string, location: Vector3, options?: SpawnEntityOptions): Entity;
     /**
      * @remarks
      * Creates a new item stack as an entity at the specified

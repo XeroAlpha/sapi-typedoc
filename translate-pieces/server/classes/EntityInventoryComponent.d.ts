@@ -1,4 +1,4 @@
-/* IMPORT */ import { Container, EntityComponent } from '../index';
+/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '../index';
 
 /**
  * 表示一个实体的物品栏属性。
@@ -36,8 +36,10 @@ export class EntityInventoryComponent extends EntityComponent {
      * undefined if the entity has been removed.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
-    readonly container?: Container;
+    readonly container: Container;
     /**
      * @remarks
      * 表示实体容器的种类。

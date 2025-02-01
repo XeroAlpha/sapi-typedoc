@@ -17,6 +17,15 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
+     * @beta
+     * @remarks
+     * Returns whether a container object (or the entity or block
+     * that this container is associated with) is still available
+     * for use in this context.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * The number of slots in this container. For example, a
      * standard single-block chest has a size of 27. Note, a
@@ -80,14 +89,6 @@ export class Container {
      * out of bounds.
      */
     getSlot(slot: number): ContainerSlot;
-    /**
-     * @remarks
-     * Returns whether a container object (or the entity or block
-     * that this container is associated with) is still available
-     * for use in this context.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across

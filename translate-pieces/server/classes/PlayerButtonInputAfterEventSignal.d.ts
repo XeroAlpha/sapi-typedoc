@@ -1,7 +1,7 @@
 /* IMPORT */ import { InputEventOptions, PlayerButtonInputAfterEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to player inputs.
  */
 export class PlayerButtonInputAfterEventSignal {

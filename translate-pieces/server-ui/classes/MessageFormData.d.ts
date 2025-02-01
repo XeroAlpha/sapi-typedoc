@@ -1,4 +1,4 @@
-/* IMPORT */ import { MessageFormResponse, minecraftserver } from '../index';
+/* IMPORT */ import { MessageFormResponse, minecraftcommon, minecraftserver } from '../index';
 
 /**
  * Builds a simple two-button modal dialog.
@@ -37,6 +37,10 @@ export class MessageFormData {
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     /**

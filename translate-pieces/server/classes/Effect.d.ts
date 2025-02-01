@@ -31,17 +31,18 @@ export class Effect {
      */
     readonly duration: number;
     /**
+     * @beta
+     * @remarks
+     * Returns whether an effect instance is available for use in
+     * this context.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Gets the type id of this effect.
      *
      * @throws This property can throw when used.
      */
     readonly typeId: string;
-    /**
-     * @remarks
-     * Returns whether an effect instance is available for use in
-     * this context.
-     *
-     */
-    isValid(): boolean;
 }

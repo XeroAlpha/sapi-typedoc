@@ -29,6 +29,14 @@ export class ScoreboardObjective {
      */
     readonly id: string;
     /**
+     * @beta
+     * @remarks
+     * Returns true if the ScoreboardObjective reference is still
+     * valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Adds a score to the given participant and objective.
      *
@@ -84,13 +92,6 @@ export class ScoreboardObjective {
      * @throws This function can throw errors.
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
-    /**
-     * @remarks
-     * Returns true if the ScoreboardObjective reference is still
-     * valid.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Removes a participant from this scoreboard objective.

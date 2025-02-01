@@ -8,7 +8,7 @@ export class BlockEvent {
     private constructor();
     /**
      * @remarks
-     * Block impacted by this event.
+     * Block currently in the world at the location of this event.
      *
      */
     readonly block: Block;

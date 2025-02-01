@@ -31,6 +31,15 @@ export class ContainerSlot {
      */
     readonly isStackable: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns whether the ContainerSlot is valid. The container
+     * slot is valid if the container exists and is loaded, and the
+     * slot index is valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
@@ -257,14 +266,6 @@ export class ContainerSlot {
      * {@link InvalidContainerSlotError}
      */
     isStackableWith(itemStack: ItemStack): boolean;
-    /**
-     * @remarks
-     * Returns whether the ContainerSlot is valid. The container
-     * slot is valid if the container exists and is loaded, and the
-     * slot index is valid.
-     *
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * The list of block types this item can break in Adventure

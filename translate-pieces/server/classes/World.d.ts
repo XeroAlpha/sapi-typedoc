@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldSoundOptions } from '../index';
+/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -248,25 +248,6 @@ export class World {
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
-    /**
-     * @remarks
-     * 向玩家播放一段声音。
-     * 
-     * Plays a sound for all players. DEPRECATED: Use
-     * Dimension.playSound.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * @param soundId 声音项目的标识符。
-     * @param soundOptions 可选，指定播放声音使用的附加参数。
-     * @throws
-     * An error will be thrown if volume is less than 0.0.
-     * An error will be thrown if fade is less than 0.0.
-     * An error will be thrown if pitch is less than 0.01.
-     * An error will be thrown if volume is less than 0.0.
-     * @seeExample playMusicAndSound.ts
-     */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks
      * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
