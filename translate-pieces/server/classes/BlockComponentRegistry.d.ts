@@ -3,7 +3,7 @@
 export class BlockComponentRegistry {
     private constructor();
     /**
-     * @throws This function can throw errors.
+     * @throws 此函数可能会抛出错误。
      *
      * {@link BlockCustomComponentAlreadyRegisteredError}
      *

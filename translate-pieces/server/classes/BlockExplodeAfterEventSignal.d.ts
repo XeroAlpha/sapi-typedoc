@@ -1,6 +1,9 @@
 /* IMPORT */ import { BlockExplodeAfterEvent } from '../index';
 
 /**
+ * 管理与爆炸发生时的回调函数，
+ * 当爆炸影响到单个方块时触发。
+ * 
  * Manages callbacks that are connected to when an explosion
  * occurs, as it impacts individual blocks.
  */
@@ -8,24 +11,28 @@ export class BlockExplodeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * Adds a callback that will be called when an explosion
-     * occurs, as it impacts individual blocks.
+     * 添加一个回调函数，当爆炸发生时，
+     * 该回调函数会在爆炸影响到单个方块时被调用。
      *
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.
      *
+     * Adds a callback that will be called when an explosion
+     * occurs, as it impacts individual blocks.
      */
     subscribe(callback: (arg0: BlockExplodeAfterEvent) => void): (arg0: BlockExplodeAfterEvent) => void;
     /**
      * @remarks
-     * Removes a callback from being called when an explosion
-     * occurs, as it impacts individual blocks.
+     * 移除一个回调函数，使其在爆炸发生时
+     * 不再被调用。
      *
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.
      *
+     * Removes a callback from being called when an explosion
+     * occurs, as it impacts individual blocks.
      */
     unsubscribe(callback: (arg0: BlockExplodeAfterEvent) => void): void;
 }

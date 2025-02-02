@@ -2,6 +2,7 @@
 
 /**
  * @beta
+ * @beta
  */
 export type BlockComponentTypeMap = {
     fluidContainer: BlockFluidContainerComponent;
