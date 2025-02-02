@@ -4,8 +4,8 @@
  * @beta
  * 包含与世界的辅助瞄准设置相关的 API 的容器。
  *
- * 需要启用的实验性功能：
- * - 摄像机辅助瞄准
+ *  必须启用的实验功能：
+ * - 摄像机瞄准辅助
  *
  * A container for APIs related to the world's aim-assist
  * settings.

@@ -11,8 +11,8 @@
  * Required Experiments:
  * - Camera Aim Assist
  *
- * 需要启用的实验性功能：
- * - 摄像机辅助瞄准
+ * 必须启用的实验功能：
+ * - 摄像机瞄准辅助
  *
  */
 export class AimAssistCategorySettings {

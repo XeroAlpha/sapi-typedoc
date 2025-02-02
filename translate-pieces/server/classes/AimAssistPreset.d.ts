@@ -1,25 +1,23 @@
 /**
  * @beta
- * Handle to an aim-assist preset that exists in the
- * world.aimAssist registry.
+ * 表示一个存在于 world.aimAssist 注册表中的辅助瞄准预设句柄。
+ * Represents a handle to an aim-assist preset that exists in the world.aimAssist registry.
  *
- * 表示在 world.aimAssist 注册表中存在的辅助瞄准预设的句柄。
- *
+ * 必须启用的实验特性：
  * Required Experiments:
+ * - 相机辅助瞄准
  * - Camera Aim Assist
- *
- * 需要启用的实验性功能：
- * - 摄像机辅助瞄准
  *
  */
 export class AimAssistPreset {
 	private constructor();
 	/**
 	 * @remarks
-	 * Optional. Default aim-assist category Id used for items not
-	 * provided to setItemSettings.
+	 * 可选。用于未通过 setItemSettings 提供的物品的默认辅助瞄准类别 ID。
 	 *
-	 * 可选。用于未提供给 setItemSettings 的物品的默认辅助瞄准类别 ID。
+	 * Optional. Default aim-assist category Id used for items not provided to setItemSettings.
+	 *
+	 * @throws 此属性在使用时可能会抛出异常。
 	 *
 	 * @throws This property can throw when used.
 	 *
@@ -28,9 +26,11 @@ export class AimAssistPreset {
 	readonly defaultItemSettings?: string;
 	/**
 	 * @remarks
+	 * 可选。用于空手的辅助瞄准类别 ID。
+	 *
 	 * Optional. Aim-assist category Id used for an empty hand.
 	 *
-	 * 可选。用于空手的辅助瞄准类别 ID。
+	 * @throws 此属性在使用时可能会抛出异常。
 	 *
 	 * @throws This property can throw when used.
 	 *
@@ -39,24 +39,24 @@ export class AimAssistPreset {
 	readonly handSettings?: string;
 	/**
 	 * @remarks
-	 * The unique Id associated with the preset.
+	 * 与该预设关联的唯一标识符。
 	 *
-	 * 与预设关联的唯一 ID。
+	 * The unique Id associated with the preset.
 	 *
 	 */
 	readonly identifier: string;
 	/**
 	 * @remarks
-	 * Gets the list of block/entity Ids to exclude from aim assist
-	 * targeting.
+	 * 获取从辅助瞄准目标中排除的方块/实体 ID 列表。
 	 *
-	 * 获取要从辅助瞄准目标中排除的方块/实体 ID 列表。
+	 * Gets the list of block/entity Ids to exclude from aim assist targeting.
 	 *
 	 * @returns
+	 * 包含方块/实体 ID 的数组。
+	 *
 	 * The array of block/entity Ids.
 	 *
-	 * 方块/实体 ID 的数组。
-	 *
+	 * @throws 此函数可能会抛出异常。
 	 * @throws This function can throw errors.
 	 *
 	 * {@link Error}
@@ -64,15 +64,16 @@ export class AimAssistPreset {
 	getExcludedTargets(): string[];
 	/**
 	 * @remarks
-	 * Gets the per-item aim-assist category Ids.
-	 *
 	 * 获取每个物品的辅助瞄准类别 ID。
 	 *
+	 * Gets the per-item aim-assist category Ids.
+	 *
 	 * @returns
+	 * 映射物品 ID 到辅助瞄准类别 ID 的记录。
+	 *
 	 * The record mapping item Ids to aim-assist category Ids.
 	 *
-	 * 将物品 ID 映射到辅助瞄准类别 ID 的记录。
-	 *
+	 * @throws 此函数可能会抛出错误。
 	 * @throws This function can throw errors.
 	 *
 	 * {@link Error}
@@ -80,16 +81,15 @@ export class AimAssistPreset {
 	getItemSettings(): Record<string, string>;
 	/**
 	 * @remarks
-	 * Gets the list of item Ids that will target liquid blocks
-	 * with aim-assist when being held.
+	 * 获取在被持有时会使用辅助瞄准目标液体方块的物品 ID 列表。
 	 *
-	 * 获取在持有时将使用辅助瞄准目标液体方块的物品 ID 列表。
+	 * Gets the list of item Ids that will target liquid blocks with aim-assist when being held.
 	 *
 	 * @returns
+	 * 包含物品 ID 的数组。
+	 *
 	 * The array of item Ids.
-	 *
-	 * 物品 ID 的数组。
-	 *
+	 * @throws 此函数可能会抛出错误。
 	 * @throws This function can throw errors.
 	 *
 	 * {@link Error}
