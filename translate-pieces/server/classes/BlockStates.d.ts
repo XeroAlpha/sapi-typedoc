@@ -14,7 +14,7 @@ export class BlockStates {
 	 * Retrieves a specific block state instance.
 	 *
 	 * @returns
-	 * 如果找到则返回 {@link Block} 状态实例。如果未找到该方块状态实例，则返回 undefined。
+	 * 若找到则返回 {@link Block} 状态实例。若未找到该方块状态实例，则返回 undefined。
 	 *
 	 * Returns the {@link Block} state instance if it is found. If
 	 * the block state instance is not found returns undefined.

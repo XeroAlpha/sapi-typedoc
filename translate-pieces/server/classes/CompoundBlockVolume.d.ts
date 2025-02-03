@@ -62,7 +62,7 @@ export class CompoundBlockVolume {
 	 *
 	 * @param origin
 	 * 一个可选的世界空间原点，用于将复合体积居中。
-	 * 如果未指定，原点将设置为(0,0,0)
+	 * 若未指定，原点将设置为(0,0,0)
 	 *
 	 * An optional world space origin on which to center the
 	 * compound volume.
@@ -83,7 +83,7 @@ export class CompoundBlockVolume {
 	 * @remarks
 	 * 获取复合方块体积的方块位置迭代器。此迭代器将允许创建者遍历较大边界区域内的所有选定体积。
 	 * 被减法体积覆盖的区域将不包含在迭代器步骤中。
-	 * （即，如果你将一个立方体推入堆栈，然后在同一位置推入一个减法体积，那么迭代器将跳过初始体积，因为它被认为是负空间）
+	 * （即，若你将一个立方体推入堆栈，然后在同一位置推入一个减法体积，那么迭代器将跳过初始体积，因为它被认为是负空间）
 	 * 请注意，此迭代器返回的方块位置是绝对世界空间（无论推送的复合体积项是绝对的还是相对的）
 	 *
 	 * Fetch a Block Location Iterator for the Compound Block
@@ -174,7 +174,7 @@ export class CompoundBlockVolume {
 	/**
 	 * @remarks
 	 * 返回一个布尔值，表示给定的绝对世界空间方块位置是否在一个正方块体积内。
-	 * 例如，如果堆栈包含一个大立方体，然后是一个稍小的负立方体，并且测试位置在负立方体内 - 函数将返回false，因为它不在“体积”内部（它在边界矩形内，但不在正定义的位置内）
+	 * 例如，若堆栈包含一个大立方体，然后是一个稍小的负立方体，并且测试位置在负立方体内 - 函数将返回false，因为它不在“体积”内部（它在边界矩形内，但不在正定义的位置内）
 	 *
 	 * Return a boolean representing whether or not a given
 	 * absolute world space block location is inside a positive
@@ -211,12 +211,12 @@ export class CompoundBlockVolume {
 	 * `false` = force returned item to be absolute world space
 	 * location
 	 *
-	 * 如果未指定标志，返回的项将保留其推送时的相对性
+	 * 若未指定标志，返回的项将保留其推送时的相对性
 	 *
 	 * If no flag is specified, the item returned retains whatever
 	 * relativity it had when it was pushed
 	 * @returns
-	 * 如果堆栈为空，则返回undefined
+	 * 若堆栈为空，则返回undefined
 	 *
 	 * Returns undefined if the stack is empty
 	 */
@@ -254,7 +254,7 @@ export class CompoundBlockVolume {
 	pushVolume(item: CompoundBlockVolumeItem): void;
 	/**
 	 * @remarks
-	 * 如果体积堆栈为空，此函数将推送指定项到堆栈。如果体积堆栈不为空，此函数将用新项替换堆栈中的最后一项。
+	 * 若体积堆栈为空，此函数将推送指定项到堆栈。若体积堆栈不为空，此函数将用新项替换堆栈中的最后一项。
 	 *
 	 * If the volume stack is empty, this function will push the
 	 * specified item to the stack.

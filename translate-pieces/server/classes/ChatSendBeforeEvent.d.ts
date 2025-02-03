@@ -35,7 +35,7 @@ export class ChatSendBeforeEvent {
 	readonly sender: Player;
 	/**
 	 * @remarks
-	 * 将接收此消息的玩家的可选列表。如果定义了此列表，则此消息将直接发送给一个或多个玩家（即，不会广播到全局）。
+	 * 将接收此消息的玩家的可选列表。若定义了此列表，则此消息将直接发送给一个或多个玩家（即，不会广播到全局）。
 	 *
 	 * Optional list of players that will receive this message. If
 	 * defined, this message is directly targeted to one or more

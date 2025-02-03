@@ -34,7 +34,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 	getRecord(): ItemStack | undefined;
 	/**
 	 * @remarks
-	 * 如果唱片播放方块当前正在播放唱片，则返回 `true`。
+	 * 若唱片播放方块当前正在播放唱片，则返回 `true`。
 	 *
 	 * Returns true if the record-playing block is currently
 	 * playing a record.

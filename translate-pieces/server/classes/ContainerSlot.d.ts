@@ -26,14 +26,14 @@ export class ContainerSlot {
 	amount: number;
 	/**
 	 * @remarks
-	 * 返回物品是否可堆叠。一个物品被认为是可堆叠的，如果该物品的最大堆叠数大于1并且物品不包含任何自定义数据或属性。
+	 * 返回物品是否可堆叠。一个物品被认为是可堆叠的，若该物品的最大堆叠数大于1并且物品不包含任何自定义数据或属性。
 	 *
 	 * Returns whether the item is stackable. An item is considered
 	 * stackable if the item's maximum stack size is greater than 1
 	 * and the item does not contain any custom data or properties.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -49,7 +49,7 @@ export class ContainerSlot {
 	 * This property can't be edited in read-only mode.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 */
@@ -64,7 +64,7 @@ export class ContainerSlot {
 	 * This property can't be edited in read-only mode.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 */
@@ -78,7 +78,7 @@ export class ContainerSlot {
 	 * of 64, while eggs have a maximum stack size of 16.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -96,7 +96,7 @@ export class ContainerSlot {
 	 * This property can't be edited in read-only mode.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效会抛出错误。如果长度超过255个字符也会抛出错误。
+	 * 若槽位的容器无效会抛出错误。若长度超过255个字符也会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid. Also throws if
 	 * the length exceeds 255 characters.
@@ -109,7 +109,7 @@ export class ContainerSlot {
 	 * The type of the item.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -120,14 +120,14 @@ export class ContainerSlot {
 	readonly "type": ItemType;
 	/**
 	 * @remarks
-	 * 表示物品堆中物品类型的标识符。如果没有指定命名空间，则默认使用`minecraft:`。例如，`wheat`或`apple`。
+	 * 表示物品堆中物品类型的标识符。若没有指定命名空间，则默认使用`minecraft:`。例如，`wheat`或`apple`。
 	 *
 	 * Identifier of the type of items for the stack. If a
 	 * namespace is not specified, 'minecraft:' is assumed.
 	 * Examples include 'wheat' or 'apple'.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -142,7 +142,7 @@ export class ContainerSlot {
 	 * item stack.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -187,12 +187,12 @@ export class ContainerSlot {
 	 *
 	 * The property identifier.
 	 * @returns
-	 * 返回该属性的值，如果属性未设置则返回`undefined`。
+	 * 返回该属性的值，若属性未设置则返回`undefined`。
 	 *
 	 * Returns the value for the property, or undefined if the
 	 * property has not been set.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -211,7 +211,7 @@ export class ContainerSlot {
 	 *
 	 * A string array of the dynamic properties set on this entity.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -220,7 +220,7 @@ export class ContainerSlot {
 	getDynamicPropertyIds(): string[];
 	/**
 	 * @remarks
-	 * 返回当前存储在此实体上的所有动态属性的总大小（以字节为单位）。这包括键和值的大小。这对于诊断性能警告信号很有用——例如，如果一个实体有许多兆字节的关联动态属性，可能会在各种设备上加载缓慢。
+	 * 返回当前存储在此实体上的所有动态属性的总大小（以字节为单位）。这包括键和值的大小。这对于诊断性能警告信号很有用——例如，若一个实体有许多兆字节的关联动态属性，可能会在各种设备上加载缓慢。
 	 *
 	 * Returns the total size, in bytes, of all the dynamic
 	 * properties that are currently stored for this entity. This
@@ -230,7 +230,7 @@ export class ContainerSlot {
 	 * properties, it may be slow to load on various devices.
 	 *
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -245,12 +245,12 @@ export class ContainerSlot {
 	 * custom data or properties.
 	 *
 	 * @returns
-	 * 返回槽位中的物品副本。如果槽位为空，则返回`undefined`。
+	 * 返回槽位中的物品副本。若槽位为空，则返回`undefined`。
 	 *
 	 * Returns a copy of the item in the slot. Returns undefined if
 	 * the slot is empty.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -265,12 +265,12 @@ export class ContainerSlot {
 	 * ItemStack.
 	 *
 	 * @returns
-	 * 一个包含附加文本信息的数组。如果物品没有附加文本信息，则返回一个空数组。
+	 * 一个包含附加文本信息的数组。若物品没有附加文本信息，则返回一个空数组。
 	 *
 	 * An array of lore strings. If the item does not have lore,
 	 * returns an empty array.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -284,12 +284,12 @@ export class ContainerSlot {
 	 * Returns all tags for the item in the slot.
 	 *
 	 * @returns
-	 * 返回槽位中物品的所有标签。如果槽位为空，则返回一个空数组。
+	 * 返回槽位中物品的所有标签。若槽位为空，则返回一个空数组。
 	 *
 	 * Returns all tags for the item in the slot. Return an empty
 	 * array if the the slot is empty.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -320,12 +320,12 @@ export class ContainerSlot {
 	 *
 	 * The item tag.
 	 * @returns
-	 * 如果槽位为空或槽位中的物品没有给定的标签，则返回`false`。
+	 * 若槽位为空或槽位中的物品没有给定的标签，则返回`false`。
 	 *
 	 * Returns false when the slot is empty or the item in the slot
 	 * does not have the given tag.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -352,7 +352,7 @@ export class ContainerSlot {
 	 * Returns whether this item stack can be stacked with the
 	 * given `itemStack`.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -361,7 +361,7 @@ export class ContainerSlot {
 	isStackableWith(itemStack: ItemStack): boolean;
 	/**
 	 * @remarks
-	 * 返回ContainerSlot是否有效。如果容器存在且已加载，并且槽位索引有效，则容器槽位有效。
+	 * 返回ContainerSlot是否有效。若容器存在且已加载，并且槽位索引有效，则容器槽位有效。
 	 *
 	 * Returns whether the ContainerSlot is valid. The container
 	 * slot is valid if the container exists and is loaded, and the
@@ -384,7 +384,7 @@ export class ContainerSlot {
 	 *
 	 * The list of blocks, given by their identifiers.
 	 * @throws
-	 * 如果槽位的容器无效会抛出错误。如果提供的任何方块标识符无效也会抛出错误。
+	 * 若槽位的容器无效会抛出错误。若提供的任何方块标识符无效也会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid. Also throws if
 	 * any of the provided block identifiers are invalid.
@@ -410,7 +410,7 @@ export class ContainerSlot {
 	 *
 	 * The list of blocks, given by their identifiers.
 	 * @throws
-	 * 如果槽位的容器无效会抛出错误。如果提供的任何方块标识符无效也会抛出错误。
+	 * 若槽位的容器无效会抛出错误。若提供的任何方块标识符无效也会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid. Also throws if
 	 * any of the provided block identifiers are invalid.
@@ -456,7 +456,7 @@ export class ContainerSlot {
 	 *
 	 * Data value of the property to set.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -479,7 +479,7 @@ export class ContainerSlot {
 	 *
 	 * The ItemStack to be placed in the slot.
 	 * @throws
-	 * 如果槽位的容器无效，会抛出错误。
+	 * 若槽位的容器无效，会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *
@@ -501,7 +501,7 @@ export class ContainerSlot {
 	 * A list of lore strings. Setting this argument to undefined
 	 * will clear the lore.
 	 * @throws
-	 * 如果槽位的容器无效会抛出错误。
+	 * 若槽位的容器无效会抛出错误。
 	 *
 	 * Throws if the slot's container is invalid.
 	 *

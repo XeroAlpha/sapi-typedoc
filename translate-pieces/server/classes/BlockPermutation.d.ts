@@ -103,7 +103,7 @@ export class BlockPermutation {
 	 *
 	 * Name of the block state who's value is to be returned.
 	 * @returns
-	 * 如果此组合拥有该状态则返回状态值，否则返回 `undefined`。
+	 * 若此组合拥有该状态则返回状态值，否则返回 `undefined`。
 	 *
 	 * Returns the state if the permutation has it, else
 	 * `undefined`.
@@ -124,7 +124,7 @@ export class BlockPermutation {
 	 * Checks to see if the permutation has a specific tag.
 	 *
 	 * @returns
-	 * 如果此组合具有该标签则返回 `true`，否则返回 `false`。
+	 * 若此组合具有该标签则返回 `true`，否则返回 `false`。
 	 *
 	 * Returns `true` if the permutation has the tag, else `false`.
 	 * @seeExample checkBlockTags.ts
@@ -175,7 +175,7 @@ export class BlockPermutation {
 	/**
 	 * @remarks
 	 * 返回一个布尔值，指示指定的组合是否与此组合匹配。
-	 * 如果未指定状态，则匹配会更广泛地检查类型集合。
+	 * 若未指定状态，则匹配会更广泛地检查类型集合。
 	 *
 	 * Returns a boolean whether a specified permutation matches
 	 * this permutation. If states is not specified, matches checks

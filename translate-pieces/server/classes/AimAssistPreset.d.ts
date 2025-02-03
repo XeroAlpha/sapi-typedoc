@@ -1,11 +1,13 @@
 /**
  * @beta
  * 表示一个存在于 world.aimAssist 注册表中的辅助瞄准预设句柄。
+ *
  * Represents a handle to an aim-assist preset that exists in the world.aimAssist registry.
  *
  * 必须启用的实验特性：
- * Required Experiments:
  * - 相机辅助瞄准
+ *
+ * Required Experiments:
  * - Camera Aim Assist
  *
  */

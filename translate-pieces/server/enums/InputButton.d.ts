@@ -1,7 +1,5 @@
-/* IMPORT */ import { InputInfo, PlayerButtonInputAfterEvent, WorldAfterEvents } from "../index";
-
 /**
- * @rc
+ * @beta
  * All the different input buttons that are supported. Use with
  * {@link @minecraft/server.PlayerInput.getButtonState} via
  * {@link @minecraft/server.Player.input} or {@link

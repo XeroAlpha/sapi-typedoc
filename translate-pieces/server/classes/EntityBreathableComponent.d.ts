@@ -16,12 +16,10 @@ export class EntityBreathableComponent extends EntityComponent {
 	 *
 	 * The current air supply of the entity.
 	 *
-	 * 此属性在只读模式下无法编辑。
-	 *
 	 * This property can't be edited in read-only mode.
 	 *
 	 * @throws
-	 * 如果空气供应超出范围 [suffocationTime, maxAirSupply]，将抛出错误。
+	 * 若空气供应超出范围 [suffocationTime, maxAirSupply]，将抛出错误。
 	 *
 	 * Will throw an error if the air supply is out of bounds
 	 * [suffocationTime, maxAirSupply].

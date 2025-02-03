@@ -318,7 +318,7 @@ export class World {
 	playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
 	/**
 	 * @remarks
-	 * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
+	 * 将音乐添加到播放列表。若没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
 	 *
 	 * Queues an additional music track for players. If a track is
 	 * not playing, a music track will play.

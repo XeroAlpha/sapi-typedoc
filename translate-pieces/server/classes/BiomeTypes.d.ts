@@ -22,7 +22,7 @@ export class BiomeTypes {
 	 * Identifier of the biome.  Generally, namespaced identifiers
 	 * (e.g., minecraft:frozen_peaks) should be used.
 	 * @returns
-	 * 如果生物群系存在，则返回一个 BiomeType 对象。如果不存在，
+	 * 若生物群系存在，则返回一个 BiomeType 对象。若不存在，
 	 * 则返回 undefined。
 	 *
 	 * If the biome exists, a BiomeType object is returned. If not,

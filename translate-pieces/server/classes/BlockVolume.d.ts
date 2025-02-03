@@ -4,7 +4,7 @@
  * BlockVolume 是一个简单的接口，表示在世界方块位置中具有给定大小（三维方块）的矩形区域。
  * 注意，这些并不等同于“最小值”和“最大值”，因为向量的各个分量顺序并不固定。
  * 此外，这些向量位置不能与 BlockLocation 互换使用。
- * 如果需要将此体积表示为 BlockLocation 的范围，可以使用 getBoundingBox 工具函数。
+ * 若需要将此体积表示为 BlockLocation 的范围，可以使用 getBoundingBox 工具函数。
  * 此体积类会保持初始设置的角索引顺序。例如，当你在编辑器中分配每个角并移动角的位置时
  * （可能会颠倒边界的最小值/最大值关系），原本选择的左上角可能会变成右下角。
  * 手动编辑这些体积时，需要在编辑时保持角的标识 - BlockVolume 的工具函数会处理这一点。
@@ -80,8 +80,8 @@ export class BlockVolume extends BlockVolumeBase {
 	 *
 	 * The world block location to test
 	 * @returns
-	 * 如果位置在内部或距离超过 0 个方块，函数将返回 false。
-	 * 如果位置直接接触到 BlockVolume 的外表面，函数将返回 true。
+	 * 若位置在内部或距离超过 0 个方块，函数将返回 false。
+	 * 若位置直接接触到 BlockVolume 的外表面，函数将返回 true。
 	 *
 	 * If the location is either inside or more than 0 blocks away,
 	 * the function will return false.
@@ -103,7 +103,7 @@ export class BlockVolume extends BlockVolumeBase {
 	 *
 	 * The volume to test
 	 * @returns
-	 * 如果两个方块体积的外表面在任何点相接触并直接相邻，返回 true。
+	 * 若两个方块体积的外表面在任何点相接触并直接相邻，返回 true。
 	 *
 	 * If the outer faces of both block volumes touch and are
 	 * directly adjacent at any point, return true.

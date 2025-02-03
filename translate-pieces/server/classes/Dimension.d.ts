@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntityType, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from "../index";
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from "../index";
 
 /**
  * 表示世界中的特定维度（例如，末地）的类。
@@ -41,13 +41,13 @@ export class Dimension {
 	 * Block filter that will be checked against each block in the volume.
 	 *
 	 * @param allowUnloadedChunks
-	 * 如果设置为 true 并且部分或全部方块体积在未加载的区块（Chunk）外，则会抑制 UnloadedChunksError。
+	 * 若设置为 true 并且部分或全部方块体积在未加载的区块（Chunk）外，则会抑制 UnloadedChunksError。
 	 * 将只检查方块体积中加载的区块的位置。
 	 *
 	 * If set to true will suppress the UnloadedChunksError if some or all of the block volume is outside of the loaded chunks. Will only check the block locations that are within the loaded chunks in the volume.
 	 *
 	 * @returns
-	 * 如果方块体积中至少有一个方块满足过滤器，将返回 true，否则返回 false。
+	 * 若方块体积中至少有一个方块满足过滤器，将返回 true，否则返回 false。
 	 *
 	 * Returns true if at least one block in the volume satisfies the filter, false otherwise.
 	 *
@@ -147,7 +147,7 @@ export class Dimension {
 	 *
 	 * Additional selection criteria for a biome search.
 	 *
-	 * @returns 返回生物群系的位置，如果未找到生物群系则返回 undefined。
+	 * @returns 返回生物群系的位置，若未找到生物群系则返回 undefined。
 	 *
 	 * Returns a location of the biome, or undefined if a biome could not be found.
 	 *
@@ -170,7 +170,7 @@ export class Dimension {
 	 * The location at which to return a block.
 	 *
 	 * @returns
-	 * 指定位置的方块，如果请求的方块在未加载的区块中，则返回 'undefined'。
+	 * 指定位置的方块，若请求的方块在未加载的区块中，则返回 'undefined'。
 	 *
 	 * Block at the specified location, or 'undefined' if asking for a block at an unloaded chunk.
 	 *
@@ -246,7 +246,7 @@ export class Dimension {
 	 * Block filter that will be checked against each block in the volume.
 	 *
 	 * @param allowUnloadedChunks
-	 * 如果设置为 true 并且部分或全部方块体积在未加载的区块（Chunk）外，则会抑制 UnloadedChunksError。
+	 * 若设置为 true 并且部分或全部方块体积在未加载的区块（Chunk）外，则会抑制 UnloadedChunksError。
 	 * 将只检查方块体积中加载的区块的位置。
 	 *
 	 * If set to true will suppress the UnloadedChunksError if some or all of the block volume is outside of the loaded chunks. Will only check the block locations that are within the loaded chunks in the volume.
@@ -398,10 +398,10 @@ export class Dimension {
 	 * Additional options for configuring additional effects for the sound.
 	 *
 	 * @throws
-	 * 如果音量小于 0.0，将抛出错误。
-	 * 如果音频淡入淡出值小于 0.0，则抛出错误。
-	 * 如果音高小于 0.01，则抛出错误。
-	 * 如果音量小于 0.0，将抛出错误。
+	 * 若音量小于 0.0，将抛出错误。
+	 * 若音频淡入淡出值小于 0.0，则抛出错误。
+	 * 若音高小于 0.01，则抛出错误。
+	 * 若音量小于 0.0，将抛出错误。
 	 *
 	 * An error will be thrown if volume is less than 0.0. An error will be thrown if fade is less than 0.0. An error will be thrown if pitch is less than 0.01. An error will be thrown if volume is less than 0.0.
 	 */
@@ -427,7 +427,7 @@ export class Dimension {
 	 *
 	 * @throws
 	 * 若命令由于参数或命令语法不正确或命令错误情况而失败，则抛出异常。
-	 * 请注意，在许多情况下，如果命令不执行（例如，一个目标选择器没有找到匹配），这个方法不会抛出异常。
+	 * 请注意，在许多情况下，若命令不执行（例如，一个目标选择器没有找到匹配），这个方法不会抛出异常。
 	 *
 	 * Throws an exception if the command fails due to incorrect parameters or command syntax, or in erroneous cases for the command. Note that in many cases, if the command does not operate (e.g., a target selector found no matches), this method will not throw an exception.
 	 *
@@ -454,7 +454,7 @@ export class Dimension {
 	 *
 	 * @throws
 	 * 若命令由于参数或命令语法不正确或命令错误情况而失败，则抛出异常。
-	 * 请注意，在许多情况下，如果命令不操作（例如，在选择器没有找到匹配），此方法不会抛出异常。
+	 * 请注意，在许多情况下，若命令不操作（例如，在选择器没有找到匹配），此方法不会抛出异常。
 	 *
 	 * Throws an exception if the command fails due to incorrect parameters or command syntax, or in erroneous cases for the command. Note that in many cases, if the command does not operate (e.g., a target selector found no matches), this method will not throw an exception.
 	 */
@@ -479,7 +479,7 @@ export class Dimension {
 	 * The block permutation to set.
 	 *
 	 * @throws
-	 * 如果位置在未加载的块内或超出世界边界，将抛出错误。
+	 * 若位置在未加载的块内或超出世界边界，将抛出错误。
 	 *
 	 * Throws if the location is within an unloaded chunk or outside of the world bounds.
 	 *
@@ -509,7 +509,7 @@ export class Dimension {
 	 * identifier or a BlockType. The default block permutation is
 	 * used.
 	 * @throws
-	 * 如果位置在未加载的区块内或在世界边界之外，则抛出错误。
+	 * 若位置在未加载的区块内或在世界边界之外，则抛出错误。
 	 *
 	 * Throws if the location is within an unloaded chunk or
 	 * outside of the world bounds.
@@ -536,7 +536,7 @@ export class Dimension {
 	 *
 	 * Set the type of weather to apply.
 	 * @param duration
-	 * 设置天气的持续时间（以刻为单位）。如果未提供持续时间，则持续时间将设置为 300 到 900 秒之间的随机值。
+	 * 设置天气的持续时间（以刻为单位）。若未提供持续时间，则持续时间将设置为 300 到 900 秒之间的随机值。
 	 *
 	 * Sets the duration of the weather (in ticks). If no duration
 	 * is provided, the duration will be set to a random duration
@@ -559,7 +559,7 @@ export class Dimension {
 	 * Cannot be called in read-only mode, see {@link WorldBeforeEvents}.
 	 *
 	 * @param identifier
-	 * 要生成的实体类型的标识符。如果未指定命名空间，则假定为 'minecraft:'。
+	 * 要生成的实体类型的标识符。若未指定命名空间，则假定为 'minecraft:'。
 	 *
 	 * Identifier of the type of entity to spawn. If no namespace
 	 * is specified, 'minecraft:' is assumed.

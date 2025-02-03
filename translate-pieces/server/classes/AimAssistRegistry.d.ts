@@ -78,7 +78,7 @@ export class AimAssistRegistry {
 	 * This function can't be called in read-only mode.
 	 *
 	 * @returns
-	 * 如果存在，返回类别对象；否则返回 undefined。
+	 * 若存在，返回类别对象；否则返回 undefined。
 	 */
 	getCategory(categoryId: string): AimAssistCategory | undefined;
 	/**
@@ -90,7 +90,7 @@ export class AimAssistRegistry {
 	 * @param presetId
 	 * 要检索的预设的标识符。必须包含命名空间。
 	 * @returns
-	 * 如果存在，返回预设对象；否则返回 undefined。
+	 * 若存在，返回预设对象；否则返回 undefined。
 	 */
 	getPreset(presetId: string): AimAssistPreset | undefined;
 	/**

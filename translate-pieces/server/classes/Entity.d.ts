@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from "../index";
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from "../index";
 
 /**
  * 表示世界中实体（例如生物、玩家或矿车等移动物体）的状态。
@@ -65,7 +65,7 @@ export class Entity {
 	/**
 	 * @remarks
 	 * 实体是否位于一个固体方块的顶部。此属性可能会以意外的方式表现。
-	 * 当实体首次生成时，此属性始终为 true，如果实体没有重力，此属性可能会不正确。
+	 * 当实体首次生成时，此属性始终为 true，若实体没有重力，此属性可能会不正确。
 	 *
 	 * Whether the entity is on top of a solid block. This property
 	 * may behave in unexpected ways. This property will always be
@@ -148,7 +148,7 @@ export class Entity {
 	 * @beta
 	 * @remarks
 	 * 获取或设置一个实体，该实体用作与 AI 相关行为（如攻击）的目标。
-	 * 如果实体当前没有目标，则返回 undefined。
+	 * 若实体当前没有目标，则返回 undefined。
 	 *
 	 * Retrieves or sets an entity that is used as the target of
 	 * AI-related behaviors, like attacking. If the entity
@@ -189,7 +189,7 @@ export class Entity {
 	 * 效果的附加选项。
 	 * Additional options for the effect.
 	 * @returns
-	 * 如果效果成功添加或更新，则不返回任何内容。如果持续时间或放大等级超出有效范围，或者效果不存在，则可能会抛出错误。
+	 * 若效果成功添加或更新，则不返回任何内容。若持续时间或放大等级超出有效范围，或者效果不存在，则可能会抛出错误。
 	 * Returns nothing if the effect was added or updated
 	 * successfully. This can throw an error if the duration or
 	 * amplifier are outside of the valid ranges, or if the effect
@@ -212,7 +212,7 @@ export class Entity {
 	 * Content of the tag to add. The tag must be less than 256
 	 * characters.
 	 * @returns
-	 * 如果标签添加成功，则返回 true。如果标签已存在于实体上，则可能会失败。
+	 * 若标签添加成功，则返回 true。若标签已存在于实体上，则可能会失败。
 	 * Returns true if the tag was added successfully. This can
 	 * fail if the tag already exists on the entity.
 	 * @throws This function can throw errors.
@@ -236,7 +236,7 @@ export class Entity {
 	 * additional effects or spur additional behaviors on this
 	 * entity.
 	 * @returns
-	 * 实体是否受到任何伤害。如果实体是无敌的，或者施加的伤害小于或等于0，则可能返回 false。
+	 * 实体是否受到任何伤害。若实体是无敌的，或者施加的伤害小于或等于0，则可能返回 false。
 	 * Whether the entity takes any damage. This can return false
 	 * if the entity is invulnerable or if the damage applied is
 	 * less than or equal to 0.
@@ -310,7 +310,7 @@ export class Entity {
 	clearVelocity(): void;
 	/**
 	 * @remarks
-	 * 如果实体着火，熄灭火焰。注意，可以通过调用 getComponent('minecraft:onfire') 检查实体是否着火。
+	 * 若实体着火，熄灭火焰。注意，可以通过调用 getComponent('minecraft:onfire') 检查实体是否着火。
 	 *
 	 * Extinguishes the fire if the entity is on fire. Note that
 	 * you can call getComponent('minecraft:onfire') and, if
@@ -354,13 +354,13 @@ export class Entity {
 	 * for an entity.
 	 *
 	 * @param componentId
-	 * 组件的标识符（例如 'minecraft:health'）。如果未指定命名空间前缀，则默认使用 'minecraft:'。可用的组件标识符可以在 {@link EntityComponentTypes} 枚举中找到。
+	 * 组件的标识符（例如 'minecraft:health'）。若未指定命名空间前缀，则默认使用 'minecraft:'。可用的组件标识符可以在 {@link EntityComponentTypes} 枚举中找到。
 	 * The identifier of the component (e.g., 'minecraft:health').
 	 * If no namespace prefix is specified, 'minecraft:' is
 	 * assumed. Available component IDs can be found as part of the
 	 * {@link EntityComponentTypes} enum.
 	 * @returns
-	 * 如果组件存在于实体上，则返回该组件，否则返回 undefined。
+	 * 若组件存在于实体上，则返回该组件，否则返回 undefined。
 	 * Returns the component if it exists on the entity, otherwise
 	 * undefined.
 	 */
@@ -388,7 +388,7 @@ export class Entity {
 	 * 属性的标识符。
 	 * The property identifier.
 	 * @returns
-	 * 返回属性的值，如果属性未设置则返回 undefined。
+	 * 返回属性的值，若属性未设置则返回 undefined。
 	 * Returns the value for the property, or undefined if the
 	 * property has not been set.
 	 * @throws This function can throw errors.
@@ -412,7 +412,7 @@ export class Entity {
 	 * @remarks
 	 * 返回当前存储在此实体上的所有动态属性的总大小（以字节为单位）。
 	 * 这包括键和值的大小。这对于诊断性能警告可能很有用——例如，
-	 * 如果一个实体有许多兆字节的关联动态属性，它可能会在各种设备上加载缓慢。
+	 * 若一个实体有许多兆字节的关联动态属性，它可能会在各种设备上加载缓慢。
 	 *
 	 * Returns the total size, in bytes, of all the dynamic
 	 * properties that are currently stored for this entity. This
@@ -426,8 +426,8 @@ export class Entity {
 	getDynamicPropertyTotalByteCount(): number;
 	/**
 	 * @remarks
-	 * 返回实体上指定效果类型的效果，如果效果不存在则返回 undefined，
-	 * 如果效果不存在但尝试获取会抛出错误。
+	 * 返回实体上指定效果类型的效果，若效果不存在则返回 undefined，
+	 * 若效果不存在但尝试获取会抛出错误。
 	 *
 	 * Returns the effect for the specified EffectType on the
 	 * entity, undefined if the effect is not present, or throws an
@@ -438,8 +438,8 @@ export class Entity {
 	 *
 	 * The effect identifier.
 	 * @returns
-	 * 返回指定效果的效果对象，如果效果不存在则返回 undefined，
-	 * 如果效果不存在但尝试获取会抛出错误。
+	 * 返回指定效果的效果对象，若效果不存在则返回 undefined，
+	 * 若效果不存在但尝试获取会抛出错误。
 	 *
 	 * Effect object for the specified effect, undefined if the
 	 * effect is not present, or throws an error if the effect does
@@ -496,7 +496,7 @@ export class Entity {
 	getHeadLocation(): Vector3;
 	/**
 	 * @remarks
-	 * 获取实体属性值。如果在同一刻使用 setProperty 函数设置了属性，
+	 * 获取实体属性值。若在同一刻使用 setProperty 函数设置了属性，
 	 * 则更新的值不会反映直到下一刻。
 	 *
 	 * Gets an entity Property value. If the property was set using
@@ -516,7 +516,7 @@ export class Entity {
 	 * is returned. For undefined properties, undefined is
 	 * returned.
 	 * @throws
-	 * 如果实体无效，则抛出错误。
+	 * 若实体无效，则抛出错误。
 	 *
 	 * Throws if the entity is invalid.
 	 */
@@ -577,20 +577,20 @@ export class Entity {
 	getViewDirection(): Vector3;
 	/**
 	 * @remarks
-	 * 如果此实体上存在指定的组件，则返回 true。
+	 * 若此实体上存在指定的组件，则返回 true。
 	 *
 	 * Returns true if the specified component is present on this
 	 * entity.
 	 *
 	 * @param componentId
 	 * 要获取的组件的标识符（例如 'minecraft:rideable'）。
-	 * 如果未指定命名空间前缀，则默认为 'minecraft:'。
+	 * 若未指定命名空间前缀，则默认为 'minecraft:'。
 	 *
 	 * The identifier of the component (e.g., 'minecraft:rideable')
 	 * to retrieve. If no namespace prefix is specified,
 	 * 'minecraft:' is assumed.
 	 * @returns
-	 * 如果此实体上存在指定的组件，则返回 true。
+	 * 若此实体上存在指定的组件，则返回 true。
 	 *
 	 * Returns true if the specified component is present on this
 	 * entity.
@@ -637,7 +637,7 @@ export class Entity {
 	 * This function can't be called in read-only mode.
 	 *
 	 * @returns
-	 * 如果实体可以被杀死（即使它已经死亡），则返回 true，否则返回 false。
+	 * 若实体可以被杀死（即使它已经死亡），则返回 true，否则返回 false。
 	 *
 	 * Returns true if entity can be killed (even if it is already
 	 * dead), otherwise it returns false.
@@ -668,7 +668,7 @@ export class Entity {
 	lookAt(targetLocation: Vector3): void;
 	/**
 	 * @remarks
-	 * 将实体与传入的选项进行匹配。如果传入的 EntityQueryOptions 中没有指定位置，则使用实体的位置进行匹配。
+	 * 将实体与传入的选项进行匹配。若传入的 EntityQueryOptions 中没有指定位置，则使用实体的位置进行匹配。
 	 *
 	 * Matches the entity against the passed in options. Uses the
 	 * location of the entity for matching if the location is not
@@ -679,12 +679,12 @@ export class Entity {
 	 *
 	 * The query to perform the match against.
 	 * @returns
-	 * 如果实体符合传入的 EntityQueryOptions 的条件，则返回 true；否则返回 false。
+	 * 若实体符合传入的 EntityQueryOptions 的条件，则返回 true；否则返回 false。
 	 *
 	 * Returns true if the entity matches the criteria in the
 	 * passed in EntityQueryOptions, otherwise it returns false.
 	 * @throws
-	 * 如果查询选项配置错误，将抛出异常。
+	 * 若查询选项配置错误，将抛出异常。
 	 *
 	 * Throws if the query options are misconfigured.
 	 */
@@ -727,7 +727,7 @@ export class Entity {
 	remove(): void;
 	/**
 	 * @remarks
-	 * 移除实体上的指定效果类型，如果效果不存在则返回 false。
+	 * 移除实体上的指定效果类型，若效果不存在则返回 false。
 	 *
 	 * Removes the specified EffectType on the entity, or returns
 	 * false if the effect is not present.
@@ -739,7 +739,7 @@ export class Entity {
 	 *
 	 * The effect identifier.
 	 * @returns
-	 * 如果效果已被移除，则返回 true。如果未找到该效果或效果不存在，则返回 false。
+	 * 若效果已被移除，则返回 true。若未找到该效果或效果不存在，则返回 false。
 	 *
 	 * Returns true if the effect has been removed. Returns false
 	 * if the effect is not found or does not exist.
@@ -792,7 +792,7 @@ export class Entity {
 	 * is returned. For undefined properties, undefined is
 	 * returned.
 	 * @throws
-	 * 如果实体无效，将抛出异常。
+	 * 若实体无效，将抛出异常。
 	 *
 	 * Throws if the entity is invalid.
 	 *
@@ -887,7 +887,7 @@ export class Entity {
 	setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
 	/**
 	 * @remarks
-	 * 将实体点燃（如果不在水中或雨中）。注意，可以调用 getComponent('minecraft:onfire')，如果存在，该实体处于燃烧状态。
+	 * 将实体点燃（若不在水中或雨中）。注意，可以调用 getComponent('minecraft:onfire')，若存在，该实体处于燃烧状态。
 	 *
 	 * Sets an entity on fire (if it is not in water or rain). Note
 	 * that you can call getComponent('minecraft:onfire') and, if
@@ -906,7 +906,7 @@ export class Entity {
 	 * and other conditions such as rain or fire protection should
 	 * be taken into consideration.
 	 * @returns
-	 * 实体是否被点燃。如果秒数小于或等于零，实体湿润，或实体免疫火焰，则可能失败。
+	 * 实体是否被点燃。若秒数小于或等于零，实体湿润，或实体免疫火焰，则可能失败。
 	 *
 	 * Whether the entity was set on fire. This can fail if seconds
 	 * is less than or equal to zero, the entity is wet or the
@@ -937,25 +937,25 @@ export class Entity {
 	 * The property value. The provided type must be compatible
 	 * with the type specified in the entity's definition.
 	 * @throws
-	 * 如果实体无效，将抛出异常。
+	 * 若实体无效，将抛出异常。
 	 *
 	 * Throws if the entity is invalid.
 	 *
-	 * 如果提供了无效的标识符，将抛出异常。
+	 * 若提供了无效的标识符，将抛出异常。
 	 *
 	 * Throws if an invalid identifier is provided.
 	 *
-	 * 如果提供的值类型与属性类型不匹配，将抛出异常。
+	 * 若提供的值类型与属性类型不匹配，将抛出异常。
 	 *
 	 * Throws if the provided value type does not match the
 	 * property type.
 	 *
-	 * 如果提供的值超出预期范围（整型、浮点型属性），将抛出异常。
+	 * 若提供的值超出预期范围（整型、浮点型属性），将抛出异常。
 	 *
 	 * Throws if the provided value is outside the expected range
 	 * (int, float properties).
 	 *
-	 * 如果提供的字符串值与接受的枚举值集合不匹配（枚举属性），将抛出异常。
+	 * 若提供的字符串值与接受的枚举值集合不匹配（枚举属性），将抛出异常。
 	 *
 	 * Throws if the provided string value does not match the set
 	 * of accepted enum values (enum properties)
@@ -1016,11 +1016,11 @@ export class Entity {
 	 * This function can't be called in read-only mode.
 	 *
 	 * @param eventName
-	 * 要触发的实体类型事件的名称。如果未指定命名空间，则默认为 minecraft:。
+	 * 要触发的实体类型事件的名称。若未指定命名空间，则默认为 minecraft:。
 	 * Name of the entity type event to trigger. If a namespace is
 	 * not specified, minecraft: is assumed.
 	 * @throws
-	 * 如果事件在实体定义中未定义，则会抛出错误。
+	 * 若事件在实体定义中未定义，则会抛出错误。
 	 * If the event is not defined in the definition of the entity,
 	 * an error will be thrown.
 	 * @seeExample triggerEvent.ts e0d38a47
@@ -1029,7 +1029,7 @@ export class Entity {
 	triggerEvent(eventName: string): void;
 	/**
 	 * @remarks
-	 * 尝试传送，但可能无法完成传送操作（例如，如果目标位置有方块）。
+	 * 尝试传送，但可能无法完成传送操作（例如，若目标位置有方块）。
 	 *
 	 * Attempts to try a teleport, but may not complete the
 	 * teleport operation (for example, if there are blocks at the
@@ -1046,7 +1046,7 @@ export class Entity {
 	 *
 	 * Options regarding the teleport operation.
 	 * @returns
-	 * 返回传送是否成功。如果目标区块未加载或传送会与方块相交，则可能失败。
+	 * 返回传送是否成功。若目标区块未加载或传送会与方块相交，则可能失败。
 	 *
 	 * Returns whether the teleport succeeded. This can fail if the
 	 * destination chunk is unloaded or if the teleport would

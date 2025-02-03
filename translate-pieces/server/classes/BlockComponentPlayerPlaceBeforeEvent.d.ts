@@ -27,7 +27,7 @@ export class BlockComponentPlayerPlaceBeforeEvent extends BlockEvent {
 	readonly face: Direction;
 	/**
 	 * @remarks
-	 * 表示如果事件未被取消，将要放置的方块组合。如果设置为不同的方块组合，则将放置该组合。
+	 * 表示若事件未被取消，将要放置的方块组合。若设置为不同的方块组合，则将放置该组合。
 	 *
 	 * The block permutation that will be placed if the event is
 	 * not cancelled. If set to a different block permutation, that

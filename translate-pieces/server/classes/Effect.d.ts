@@ -40,14 +40,6 @@ export class Effect {
      */
     readonly duration: number;
     /**
-     * @beta
-     * @remarks
-     * Returns whether an effect instance is available for use in
-     * this context.
-     *
-     */
-    readonly isValid: boolean;
-    /**
      * @remarks
      * 获取此效果的类型ID。
      * 
@@ -56,7 +48,6 @@ export class Effect {
      * @throws This property can throw when used.
      */
     readonly typeId: string;
-<<<<<<< HEAD
     /**
      * @remarks
      * 返回此上下文中是否可用效果实例。
@@ -66,6 +57,4 @@ export class Effect {
      *
      */
     isValid(): boolean;
-=======
->>>>>>> 57f96de6791bcd99eab4808bb70401a67e203394
 }

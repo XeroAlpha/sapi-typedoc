@@ -27,7 +27,7 @@ export class Block {
 
 	/**
 	 * @remarks
-	 * 返回 true 如果这个方块是空气方块（例如，空的空间）。
+	 * 若这个方块是空气方块，则返回 true （例如，空的空间）。
 	 *
 	 * Returns true if this block is an air block (i.e., empty
 	 * space).
@@ -42,7 +42,7 @@ export class Block {
 
 	/**
 	 * @remarks
-	 * 如果这个方块是液体方块，例如水方块和熔岩方块等，则返回 true。
+	 * 若这个方块是液体方块，例如水方块和岩浆方块等，则返回 true。
 	 * 空气方块和石头方块等则不属于液体方块。
 	 * 含水方块不算作液体方块。
 	 *
@@ -62,7 +62,7 @@ export class Block {
 	/**
 	 * @beta
 	 * @remarks
-	 * 如果该块是实心且不可通行的，则返回 true
+	 * 若该方块为实心且不可穿过的方块，则返回 true
 	 * -（例如，鹅卵石块和钻石块是实心的，而梯子块和栅栏块则不是）。
 	 *
 	 * Returns true if this block is solid and impassible - (e.g.,
@@ -304,7 +304,7 @@ export class Block {
 	 * against.
 	 *
 	 * @returns
-	 * 如果在此面可以放置这样的方块则返回 True 。
+	 * 若在此面可以放置这样的方块则返回 True 。
 	 *
 	 * Returns `true` if the block type or permutation can be
 	 * placed on this block, else `false`.
@@ -359,7 +359,7 @@ export class Block {
 	 *
 	 * @param componentId
 	 * 组件的标识符（例如 'minecraft:inventory'）。
-	 * 如果未指定命名空间前缀，将默认使用 'minecraft:'。
+	 * 若未指定命名空间前缀，将默认使用 'minecraft:'。
 	 * 可用的组件标识符可以在 {@link BlockComponentTypes} 枚举中找到。
 	 *
 	 * The identifier of the component (e.g.,
@@ -368,7 +368,7 @@ export class Block {
 	 * found as part of the {@link BlockComponentTypes} enum.
 	 *
 	 * @returns
-	 * 如果该组件存在于该方块，则返回该组件。
+	 * 若该组件存在于该方块，则返回该组件。
 	 * 否则返回 undefined。
 	 *
 	 * Returns the component if it exists on the block, otherwise
@@ -403,7 +403,7 @@ export class Block {
 	 *
 	 * @returns
 	 * 一个带有指定数量和数据的物品对象。
-	 * 如果方块类型不兼容，则返回 undefined。
+	 * 若方块类型不兼容，则返回 undefined。
 	 *
 	 * An itemStack with the specified amount of items and data.
 	 * Returns undefined if block type is incompatible.
@@ -435,7 +435,7 @@ export class Block {
 	 * Returns the net redstone power of this block.
 	 *
 	 * @returns
-	 * 如果这个方块不适用红石能量，返回 undefined。
+	 * 若这个方块不适用红石能量，返回 undefined。
 	 *
 	 * Returns undefined if redstone power is not applicable to
 	 * this block.
@@ -480,7 +480,7 @@ export class Block {
 	 * Tag to check for.
 	 *
 	 * @returns
-	 * 如果该方块的 {@link BlockPermutation} 具有该标签，则返回 `true`，否则返回 `false`。
+	 * 若该方块的 {@link BlockPermutation} 具有该标签，则返回 `true`，否则返回 `false`。
 	 *
 	 * Returns `true` if the permutation of this block has the tag,
 	 * else `false`.
@@ -523,14 +523,14 @@ export class Block {
 	isLiquidBlocking(liquidType: LiquidType): boolean;
 	/**
 	 * @remarks
-	 * 如果对该方块的引用仍然有效，则返回 `true`（例如，如果方块未加载，对该方块的引用将不再有效）。
+	 * 若对该方块的引用仍然有效，则返回 `true`（例如，若方块未加载，对该方块的引用将不再有效）。
 	 *
 	 * Returns true if this reference to a block is still valid
 	 * (for example, if the block is unloaded, references to that
 	 * block will no longer be valid.)
 	 *
 	 * @returns
-	 * 如果这个方块对象仍然存在且有效，则返回 `true`。
+	 * 若这个方块对象仍然存在且有效，则返回 `true`。
 	 *
 	 * True if this block object is still working and valid.
 	 */
@@ -588,7 +588,7 @@ export class Block {
 	 *
 	 * Optional set of block states to test this block against.
 	 * @returns
-	 * 如果此方块符合指定条件，则返回 true。
+	 * 若此方块符合指定条件，则返回 true。
 	 *
 	 * Returns true if the block matches the specified criteria.
 	 * @throws This function can throw errors.
@@ -624,7 +624,7 @@ export class Block {
 	 * 偏移向量。例如，偏移量为 0, 1, 0 将返回当前方块
 	 * 上方的方块。
 	 * @returns
-	 * 指定偏移位置的方块，如果无法获取该方块（例如，
+	 * 指定偏移位置的方块，若无法获取该方块（例如，
 	 * 该方块及其所在的区块尚未加载），则返回 undefined。
 	 * @throws 此函数可能会抛出错误。
 	 *
@@ -732,7 +732,7 @@ export class Block {
 	 * Permutation that contains a set of property states for the
 	 * Block.
 	 * @returns
-	 * 如果成功设置了方块的{@link BlockPermutation}，
+	 * 若成功设置了方块的{@link BlockPermutation}，
 	 * 则返回 `true`，否则返回 `false`。
 	 *
 	 * Returns `true` if the block permutation data was

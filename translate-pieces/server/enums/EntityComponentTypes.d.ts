@@ -252,7 +252,7 @@ export enum EntityComponentTypes {
 	 * retrieve the actual item stack contents via the itemStack
 	 * property.
 	 *
-	 * 如果添加到实体上。这表明实体表示一个世界中的漂浮物品。可以通过 itemStack 属性获取实际物品堆的内容。
+	 * 若添加到实体上。这表明实体表示一个世界中的漂浮物品。可以通过 itemStack 属性获取实际物品堆的内容。
 	 */
 	Item = "minecraft:item",
 	/**

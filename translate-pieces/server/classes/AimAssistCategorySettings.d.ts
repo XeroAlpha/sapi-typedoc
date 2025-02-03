@@ -25,7 +25,6 @@ export class AimAssistCategorySettings {
 	 *
 	 * This property can't be edited in read-only mode.
 	 *
-	 * 此属性在只读模式下无法编辑。
 	 *
 	 */
 	defaultBlockPriority: number;
@@ -38,7 +37,6 @@ export class AimAssistCategorySettings {
 	 *
 	 * This property can't be edited in read-only mode.
 	 *
-	 * 此属性在只读模式下无法编辑。
 	 *
 	 */
 	defaultEntityPriority: number;

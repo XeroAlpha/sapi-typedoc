@@ -30,6 +30,8 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 	private constructor();
 	/**
 	 * @remarks
+	 * 此函数无法在只读模式下调用。
+	 *
 	 * This function can't be called in read-only mode.
 	 *
 	 */
@@ -37,9 +39,15 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 	/**
 	 * @beta
 	 * @remarks
+	 * 检查底层的方块体积是否已失效。
+	 * 若从创建迭代器到迭代期间，方块体积被修改，将返回 `false`，
+	 * 否则返回 `true`。
+	 *
 	 * Checks if the underlining block volume has been invalidated.
 	 * Will return false if the block volume was modified between
 	 * creating the iterator and iterating it, and true otherwise.
+	 *
+	 * @throws 此函数可能抛出错误。
 	 *
 	 * @throws This function can throw errors.
 	 *
@@ -48,6 +56,8 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 	isValid(): boolean;
 	/**
 	 * @remarks
+	 * 此函数无法在只读模式下调用。
+	 *
 	 * This function can't be called in read-only mode.
 	 *
 	 */

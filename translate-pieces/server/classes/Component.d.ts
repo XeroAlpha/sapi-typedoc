@@ -1,5 +1,6 @@
 /**
- * 用于实现下游组件的基础类。
+ * 用于实现下游组件的基础类。(所有组件的父类。)
+ *
  * Base class for downstream Component implementations.
  */
 export class Component {
@@ -14,7 +15,7 @@ export class Component {
 	readonly typeId: string;
 	/**
 	 * @remarks
-	 * 返回组件是否有效。如果组件的拥有者有效，并且组件需要的任何
+	 * 返回组件是否有效。若组件的拥有者有效，并且组件需要的任何
 	 * 额外验证也通过，则该组件被认为是有效的。
 	 *
 	 * Returns whether the component is valid. A component is

@@ -26,7 +26,7 @@ export class ChatSendAfterEvent {
 	readonly sender: Player;
 	/**
 	 * @remarks
-	 * 将接收到该消息的玩家的可选列表。如果定义了该列表，则此消息是直接发送给一个或多个玩家的（即，不是广播消息）。
+	 * 将接收到该消息的玩家的可选列表。若定义了该列表，则此消息是直接发送给一个或多个玩家的（即，不是广播消息到全局）。
 	 *
 	 * Optional list of players that will receive this message. If
 	 * defined, this message is directly targeted to one or more

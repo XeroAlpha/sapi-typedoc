@@ -17,7 +17,7 @@ export class Container {
 	 * Count of the slots in the container that are empty.
 	 *
 	 * @throws
-	 * 如果容器无效，则抛出异常。
+	 * 若容器无效，则抛出异常。
 	 *
 	 * Throws if the container is invalid.
 	 */
@@ -33,7 +33,7 @@ export class Container {
 	 * hotbar slots plus 27 inventory slots.
 	 *
 	 * @throws
-	 * 如果容器无效，则抛出异常。
+	 * 若容器无效，则抛出异常。
 	 *
 	 * Throws if the container is invalid.
 	 */
@@ -41,7 +41,7 @@ export class Container {
 	/**
 	 * @remarks
 	 * 向容器中添加一个物品。物品将放置在第一个可用槽位中，并可以与相同类型的现有物品堆叠。
-	 * 如果希望将物品放置在特定槽位中，请使用 {@link Container.setItem}。
+	 * 若希望将物品放置在特定槽位中，请使用 {@link Container.setItem}。
 	 *
 	 * Adds an item to the container. The item is placed in the
 	 * first available slot(s) and can be stacked with existing
@@ -68,14 +68,14 @@ export class Container {
 	 * This function can't be called in read-only mode.
 	 *
 	 * @throws
-	 * 如果容器无效，则抛出异常。
+	 * 若容器无效，则抛出异常。
 	 *
 	 * Throws if the container is invalid.
 	 */
 	clearAll(): void;
 	/**
 	 * @remarks
-	 * 获取指定槽位中的 {@link ItemStack}。如果槽位为空，则返回 `undefined`。
+	 * 获取指定槽位中的 {@link ItemStack}。若槽位为空，则返回 `undefined`。
 	 * 此方法不会更改或清空指定槽位的内容。要获取某个槽位的引用，请参阅 {@link Container.getSlot}。
 	 *
 	 * Gets an {@link ItemStack} of the item at the specified slot.
@@ -89,7 +89,7 @@ export class Container {
 	 *
 	 * Zero-based index of the slot to retrieve items from.
 	 * @throws
-	 * 如果容器无效或 `slot` 索引超出范围，则抛出异常。
+	 * 若容器无效或 `slot` 索引超出范围，则抛出异常。
 	 *
 	 * Throws if the container is invalid or if the `slot` index is
 	 * out of bounds.
@@ -109,7 +109,7 @@ export class Container {
 	 * The index of the slot to return. This index must be within
 	 * the bounds of the container.
 	 * @throws
-	 * 如果容器无效或 `slot` 索引超出范围，则抛出异常。
+	 * 若容器无效或 `slot` 索引超出范围，则抛出异常。
 	 *
 	 * Throws if the container is invalid or if the `slot` index is
 	 * out of bounds.
@@ -150,7 +150,7 @@ export class Container {
 	 * Target container to transfer to. Note this can be the same
 	 * container as the source.
 	 * @throws
-	 * 如果此容器或 `toContainer` 无效，或者 `fromSlot` 或 `toSlot` 索引超出范围，则抛出异常。
+	 * 若此容器或 `toContainer` 无效，或者 `fromSlot` 或 `toSlot` 索引超出范围，则抛出异常。
 	 *
 	 * Throws if either this container or `toContainer` are invalid
 	 * or if the `fromSlot` or `toSlot` indices out of bounds.
@@ -175,7 +175,7 @@ export class Container {
 	 * Stack of items to place within the specified slot. Setting
 	 * `itemStack` to undefined will clear the slot.
 	 * @throws
-	 * 如果容器无效或 `slot` 索引超出范围，则抛出异常。
+	 * 若容器无效或 `slot` 索引超出范围，则抛出异常。
 	 *
 	 * Throws if the container is invalid or if the `slot` index is
 	 * out of bounds.
@@ -203,7 +203,7 @@ export class Container {
 	 * Target container to swap with. Note this can be the same
 	 * container as this source.
 	 * @throws
-	 * 如果此容器或 `otherContainer` 无效，或者 `slot` 或 `otherSlot` 超出范围，则抛出异常。
+	 * 若此容器或 `otherContainer` 无效，或者 `slot` 或 `otherSlot` 超出范围，则抛出异常。
 	 *
 	 * Throws if either this container or `otherContainer` are
 	 * invalid or if the `slot` or `otherSlot` are out of bounds.
@@ -229,12 +229,12 @@ export class Container {
 	 * Target container to transfer to. Note this can be the same
 	 * container as the source.
 	 * @returns
-	 * 一个包含无法转移的物品的物品堆。如果所有物品都已转移，则返回 undefined。
+	 * 一个包含无法转移的物品的物品堆。若所有物品都已转移，则返回 undefined。
 	 *
 	 * An itemStack with the items that couldn't be transferred.
 	 * Returns undefined if all items were transferred.
 	 * @throws
-	 * 如果此容器或 `toContainer` 无效，或者 `fromSlot` 或 `toSlot` 索引超出范围，则抛出异常。
+	 * 若此容器或 `toContainer` 无效，或者 `fromSlot` 或 `toSlot` 索引超出范围，则抛出异常。
 	 *
 	 * Throws if either this container or `toContainer` are invalid
 	 * or if the `fromSlot` or `toSlot` indices out of bounds.

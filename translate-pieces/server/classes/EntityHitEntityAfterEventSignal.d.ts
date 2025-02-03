@@ -1,6 +1,8 @@
 /* IMPORT */ import { EntityEventOptions, EntityHitEntityAfterEvent } from '../index';
 
 /**
+ * 管理实体对另一个实体进行近战攻击时触发的回调。
+ * 
  * Manages callbacks that are connected to when an entity makes
  * a melee attack on another entity.
  */
@@ -8,9 +10,8 @@ export class EntityHitEntityAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * Adds a callback that will be called when an entity hits
-     * another entity.
-     *
+     * 添加一个回调函数，当一个实体攻击另一个实体时会调用该回调函数。
+     * 
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.
@@ -22,9 +23,8 @@ export class EntityHitEntityAfterEventSignal {
     ): (arg0: EntityHitEntityAfterEvent) => void;
     /**
      * @remarks
-     * Removes a callback from being called when an entity makes a
-     * melee attack on another entity.
-     *
+     * 移除一个回调函数，使其不再在实体进行近战攻击时被调用。
+     * 
      * This function can't be called in read-only mode.
      *
      * This function can be called in early-execution mode.

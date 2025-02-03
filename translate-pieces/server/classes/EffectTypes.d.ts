@@ -18,7 +18,7 @@ export class EffectTypes {
 	 * 效果的标识符。
 	 * The identifier for the effect.
 	 * @returns
-	 * 给定标识符的效果类型，如果效果不存在则返回 undefined。
+	 * 给定标识符的效果类型，若效果不存在则返回 undefined。
 	 * Effect type for the given identifier or undefined if the
 	 * effect does not exist.
 	 */
