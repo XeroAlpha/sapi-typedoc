@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from "../index";
+/* IMPORT */ import { Vector3, minecraftcommon } from "../index";
 
 /**
  * BlockLocationIterator 返回当前迭代的方块体积内的下一个方块位置。
@@ -30,16 +30,24 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 	private constructor();
 	/**
 	 * @remarks
-	 * 此函数无法在只读模式下调用。
-	 *
 	 * This function can't be called in read-only mode.
 	 *
 	 */
 	[Symbol.iterator](): Iterator<Vector3>;
 	/**
+	 * @beta
 	 * @remarks
-	 * 此函数无法在只读模式下调用。
+	 * Checks if the underlining block volume has been invalidated.
+	 * Will return false if the block volume was modified between
+	 * creating the iterator and iterating it, and true otherwise.
 	 *
+	 * @throws This function can throw errors.
+	 *
+	 * {@link minecraftcommon.EngineError}
+	 */
+	isValid(): boolean;
+	/**
+	 * @remarks
 	 * This function can't be called in read-only mode.
 	 *
 	 */

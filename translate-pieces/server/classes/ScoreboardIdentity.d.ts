@@ -24,6 +24,14 @@ export class ScoreboardIdentity {
      */
     readonly id: number;
     /**
+     * @beta
+     * @remarks
+     * Returns true if the ScoreboardIdentity reference is still
+     * valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * 此分数持有者的类型。
      * 
@@ -42,11 +50,4 @@ export class ScoreboardIdentity {
      * 若实体不存在时，抛出。
      */
     getEntity(): Entity | undefined;
-    /**
-     * @remarks
-     * Returns true if the ScoreboardIdentity reference is still
-     * valid.
-     *
-     */
-    isValid(): boolean;
 }

@@ -17,6 +17,14 @@ export class Structure {
      */
     readonly id: string;
     /**
+     * @beta
+     * @remarks
+     * Returns whether the Structure is valid. The Structure may
+     * become invalid if it is deleted.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * The dimensions of the structure. For example, a single block
      * structure will have a size of {x:1, y:1, z:1}
@@ -65,15 +73,6 @@ export class Structure {
      * {@link InvalidStructureError}
      */
     getIsWaterlogged(location: Vector3): boolean;
-    /**
-     * @remarks
-     * Returns whether the Structure is valid. The Structure may
-     * become invalid if it is deleted.
-     *
-     * @returns
-     * Returns whether the Structure is valid.
-     */
-    isValid(): boolean;
     /**
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.

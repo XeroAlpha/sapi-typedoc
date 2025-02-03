@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomComponentInvalidRegistryError, CustomComponentNameError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, minecraftcommon } from '../index';
+/* IMPORT */ import { CustomComponentInvalidRegistryError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, NamespaceNameError, minecraftcommon } from '../index';
 
 /**
  * Provides the functionality for registering custom components
@@ -10,6 +10,8 @@ export class ItemComponentRegistry {
      * @remarks
      * Registers an item custom component that can be used in item
      * JSON configuration.
+     *
+     * This function can be called in early-execution mode.
      *
      * @param name
      * The id that represents this custom component. Must have a
@@ -23,8 +25,6 @@ export class ItemComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentNameError}
-     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
@@ -34,6 +34,8 @@ export class ItemComponentRegistry {
      * {@link ItemCustomComponentReloadNewEventError}
      *
      * {@link ItemCustomComponentReloadVersionError}
+     *
+     * {@link NamespaceNameError}
      */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
 }

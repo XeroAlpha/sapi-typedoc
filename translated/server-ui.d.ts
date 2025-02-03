@@ -32,7 +32,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "1.4.0-beta"
+ *   "version": "2.0.0-beta"
  * }
  * ```
  *
@@ -165,6 +165,10 @@ export class MessageFormData {
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     /**

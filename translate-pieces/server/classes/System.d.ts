@@ -27,6 +27,14 @@ export class System {
      */
     readonly currentTick: number;
     /**
+     * @beta
+     * @remarks
+     * Returns true if this is a world where the editor is
+     * currently loaded, returns false otherwise.
+     *
+     */
+    readonly isEditorWorld: boolean;
+    /**
      * @remarks
      * Contains the device information for the server.
      *
@@ -123,7 +131,7 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Causes an event to fire within script with the specified
      * message ID and payload.
@@ -147,7 +155,7 @@ export class System {
      *
      * {@link NamespaceNameError}
      */
-    scriptEvent(id: string, message: string): void;
+    sendScriptEvent(id: string, message: string): void;
     /**
      * @remarks
      * waitTicks returns a promise that resolves after the

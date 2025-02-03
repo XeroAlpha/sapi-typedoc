@@ -9,6 +9,15 @@
 export class Camera {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Returns whether the Camera is valid to access and use. A
+     * Camera is considered valid when the owning Player of the
+     * Camera is loaded and valid itself.
+     *
+     */
+    readonly isValid: boolean;
+    /**
      * @remarks
      * 清除指定玩家的活动摄像机。会使指定玩家结束所有正在进行的摄像机视角，包括任何平滑的摄像机移动，并恢复到正常视角。
      * 

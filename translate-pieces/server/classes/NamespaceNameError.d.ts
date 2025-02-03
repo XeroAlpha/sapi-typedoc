@@ -1,7 +1,7 @@
 /* IMPORT */ import { NamespaceNameErrorReason } from '../index';
 
 /**
- * @beta
+ * @rc
  * Thrown when a name requires a namespace and an error occurs
  * when validating that namespace
  */

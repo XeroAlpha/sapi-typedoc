@@ -28,7 +28,7 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
-     * @beta
+     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -37,7 +37,7 @@ export class InputInfo {
      */
     getButtonState(button: InputButton): ButtonState;
     /**
-     * @beta
+     * @rc
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}

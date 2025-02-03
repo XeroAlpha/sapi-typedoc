@@ -358,6 +358,8 @@ export declare enum MinecraftItemTypes {
     Bundle = "minecraft:bundle",
     /** 烈焰纹样陶片。 */
     BurnPotterySherd = "minecraft:burn_pottery_sherd",
+    /** 灌木丛。 */
+    Bush = "minecraft:bush",
     /** 仙人掌。 */
     Cactus = "minecraft:cactus",
     /** 蛋糕。 */
@@ -940,6 +942,8 @@ export declare enum MinecraftItemTypes {
     FireCoralBlock = "minecraft:fire_coral_block",
     /** 火珊瑚扇。 */
     FireCoralFan = "minecraft:fire_coral_fan",
+    /** 萤火虫灌木丛。 */
+    FireflyBush = "minecraft:firefly_bush",
     /** 烟花火箭。 */
     FireworkRocket = "minecraft:firework_rocket",
     /** 烟火之星。 */
@@ -1274,6 +1278,8 @@ export declare enum MinecraftItemTypes {
     LavaBucket = "minecraft:lava_bucket",
     /** 拴绳。 */
     Lead = "minecraft:lead",
+    /** 枯叶。 */
+    LeafLitter = "minecraft:leaf_litter",
     /** 皮革。 */
     Leather = "minecraft:leather",
     /** 皮革靴子。 */
@@ -2668,6 +2674,8 @@ export declare enum MinecraftItemTypes {
     WhiteWool = "minecraft:white_wool",
     /** 荒野盔甲纹饰锻造模板。 */
     WildArmorTrimSmithingTemplate = "minecraft:wild_armor_trim_smithing_template",
+    /** 野花簇。 */
+    Wildflowers = "minecraft:wildflowers",
     /** 风弹。 */
     WindCharge = "minecraft:wind_charge",
     /** 女巫刷怪蛋。 */
