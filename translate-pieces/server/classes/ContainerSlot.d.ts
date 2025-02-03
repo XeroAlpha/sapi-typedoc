@@ -19,7 +19,7 @@ export class ContainerSlot {
 	 * This property can't be edited in read-only mode.
 	 *
 	 * @throws
-	 * 如果值超出了1-255的范围，会抛出错误。
+	 * 若值超出了1-255的范围，会抛出错误。
 	 *
 	 * Throws if the value is outside the range of 1-255.
 	 */
