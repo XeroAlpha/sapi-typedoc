@@ -1,13 +1,13 @@
 /**
  * @beta
- * 一个枚举，包含实体生成的类别。
+ * 表示实体生成的类别的枚举。
  *
  * An enum containing categories of entity spawning.
  */
 export enum EntitySpawnCategory {
 	/**
 	 * @remarks
-	 * 表示自然生成的生物。
+	 * 表示是环境生成的生物。
 	 *
 	 * Mobs that have an ambient spawn.
 	 *
@@ -33,7 +33,7 @@ export enum EntitySpawnCategory {
 	 * @remarks
 	 * 表示其他的生成（例如村民、铁傀儡）。
 	 *
-	 * Miscellaneous spawns ( e.g. Villager, Iron Golem).
+	 * Miscellaneous spawns (e.g. Villager, Iron Golem).
 	 *
 	 */
 	Misc = "Misc",
@@ -47,7 +47,7 @@ export enum EntitySpawnCategory {
 	Monster = "Monster",
 	/**
 	 * @remarks
-	 * 表示在水下中生成的生物。
+	 * 表示在地下水中生成的生物。
 	 *
 	 * Creatures that spawn underground in the water.
 	 *
@@ -55,7 +55,7 @@ export enum EntitySpawnCategory {
 	UndergroundWaterCreature = "UndergroundWaterCreature",
 	/**
 	 * @remarks
-	 * 表示自然生成的水生生物。
+	 * 表示是环境生成的水生生物。
 	 *
 	 * Water mobs that have an ambient spawn.
 	 *

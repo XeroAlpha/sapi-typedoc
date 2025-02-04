@@ -9,7 +9,7 @@ export enum BlockVolumeIntersection {
 	 * @remarks
 	 * Volume B has no intersection points with Volume A
 	 *
-	 * 体积B与体积A没有交点
+	 * 体积B与体积A没有交集
 	 */
 	Disjoint = 0,
 	/**

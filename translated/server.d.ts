@@ -3122,19 +3122,20 @@ export enum WeatherType {
 
 /**
  * @beta
- * @beta
  */
 export type BlockComponentTypeMap = {
-    fluidContainer: BlockFluidContainerComponent;
-    inventory: BlockInventoryComponent;
-    'minecraft:fluidContainer': BlockFluidContainerComponent;
-    'minecraft:inventory': BlockInventoryComponent;
-    'minecraft:piston': BlockPistonComponent;
-    'minecraft:record_player': BlockRecordPlayerComponent;
-    'minecraft:sign': BlockSignComponent;
-    piston: BlockPistonComponent;
-    record_player: BlockRecordPlayerComponent;
-    sign: BlockSignComponent;
+	fluidContainer: BlockFluidContainerComponent;
+	inventory: BlockInventoryComponent;
+	map_color: BlockMapColorComponent;
+	'minecraft:fluidContainer': BlockFluidContainerComponent;
+	'minecraft:inventory': BlockInventoryComponent;
+	'minecraft:map_color': BlockMapColorComponent;
+	'minecraft:piston': BlockPistonComponent;
+	'minecraft:record_player': BlockRecordPlayerComponent;
+	'minecraft:sign': BlockSignComponent;
+	piston: BlockPistonComponent;
+	record_player: BlockRecordPlayerComponent;
+	sign: BlockSignComponent;
 };
 
 /**
@@ -3502,7 +3503,9 @@ export class AimAssistCategorySettings {
 	 * 映射方块 ID 到其优先级设置的记录。数值越大，优先级越高。
 	 *
 	 */
-	setBlockPriorities(blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>): void;
+	setBlockPriorities(
+        blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>,
+    ): void;
 	/**
 	 * @remarks
 	 * Sets the priority settings used for entity targeting.
@@ -3516,7 +3519,9 @@ export class AimAssistCategorySettings {
 	 * 映射实体 ID 到其优先级设置的记录。数值越大，优先级越高。
 	 *
 	 */
-	setEntityPriorities(entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>): void;
+	setEntityPriorities(
+        entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>,
+    ): void;
 }
 
 /**
@@ -3724,7 +3729,13 @@ export class AimAssistPresetSettings {
 	 *
 	 * An array of block/entity Ids.
 	 */
-	setExcludedTargets(targets?: (keyof typeof minecraftvanilladata.MinecraftBlockTypes | keyof typeof minecraftvanilladata.MinecraftEntityTypes | string)[]): void;
+	setExcludedTargets(
+		targets?: (
+			| keyof typeof minecraftvanilladata.MinecraftBlockTypes
+			| keyof typeof minecraftvanilladata.MinecraftEntityTypes
+			| string
+		)[],
+	): void;
 	/**
 	 * @remarks
 	 * 设置每个物品的瞄准辅助类别 ID。
@@ -3941,7 +3952,7 @@ export class Block {
 
 	/**
 	 * @remarks
-	 * 若这个方块是空气方块，则返回 true （例如，空的空间）。
+	 * 返回 true 若这个方块是空气方块（例如，空的空间）。
 	 *
 	 * Returns true if this block is an air block (i.e., empty
 	 * space).
@@ -4863,25 +4874,30 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 }
 
 export class BlockComponentRegistry {
-    private constructor();
-    /**
-     * @throws 此函数可能会抛出错误。
-     *
-     * {@link BlockCustomComponentAlreadyRegisteredError}
-     *
-     * {@link BlockCustomComponentReloadNewComponentError}
-     *
-     * {@link BlockCustomComponentReloadNewEventError}
-     *
-     * {@link BlockCustomComponentReloadVersionError}
-     *
-     * {@link CustomComponentInvalidRegistryError}
-     *
-     * {@link CustomComponentNameError}
-     *
-     * {@link minecraftcommon.EngineError}
-     */
-    registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
+	private constructor();
+	/**
+	 * @remarks
+	 *  此函数可在早期模式下被执行。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 * @throws This function can throw errors.
+	 *
+	 * {@link BlockCustomComponentAlreadyRegisteredError}
+	 *
+	 * {@link BlockCustomComponentReloadNewComponentError}
+	 *
+	 * {@link BlockCustomComponentReloadNewEventError}
+	 *
+	 * {@link BlockCustomComponentReloadVersionError}
+	 *
+	 * {@link CustomComponentInvalidRegistryError}
+	 *
+	 * {@link minecraftcommon.EngineError}
+	 *
+	 * {@link NamespaceNameError}
+	 */
+	registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
 /**
@@ -4961,29 +4977,29 @@ export class BlockEvent {
 
 /**
  * 描述了特定方块发生爆炸的相关信息。
- * 
+ *
  * Contains information regarding an explosion that has
  * occurred for a specific block.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockExplodeAfterEvent extends BlockEvent {
-    private constructor();
-    /**
-     * @remarks
-     * 表示发生爆炸的方块的描述。
-     *
-     * Description of the block that has exploded.
-     *
-     */
-    readonly explodedBlockPermutation: BlockPermutation;
-    /**
-     * @remarks
-     * 爆炸的可选来源。
-     *
-     * Optional source of the explosion.
-     *
-     */
-    readonly source?: Entity;
+	private constructor();
+	/**
+	 * @remarks
+	 * 表示发生爆炸的方块的描述。
+	 *
+	 * Description of the block that has exploded.
+	 *
+	 */
+	readonly explodedBlockPermutation: BlockPermutation;
+	/**
+	 * @remarks
+	 * 爆炸的可选来源。
+	 *
+	 * Optional source of the explosion.
+	 *
+	 */
+	readonly source?: Entity;
 }
 
 /**
@@ -5054,7 +5070,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
 	 *
 	 */
 	fluidColor: RGBA;
-	static readonly componentId = "minecraft:fluidContainer";
+	static readonly componentId = 'minecraft:fluidContainer';
 	/**
 	 * @remarks
 	 * 向流体中添加染料。染料颜色与任何现有的自定义颜色结合。
@@ -5113,19 +5129,23 @@ export class BlockFluidContainerComponent extends BlockComponent {
 
 /**
  * 表示方块在世界中的库存。用于像箱子这样的方块。
+ *
+ * * Represents the inventory of a block in the world. Used with
+ * blocks like chests.
+ *
  * @seeExample placeItemsInChest.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockInventoryComponent extends BlockComponent {
-    private constructor();
-    /**
-     * @remarks
-     * 表示包含一个 {@link ItemStack} 的容器。
-     *
-     * @throws 使用该属性时可能会抛出异常。
-     */
-    readonly container?: Container;
-    static readonly componentId = 'minecraft:inventory';
+	private constructor();
+	/**
+	 * @remarks
+	 * 表示包含一个 {@link ItemStack} 的容器。
+	 *
+	 * @throws 使用该属性时可能会抛出异常。
+	 */
+	readonly container?: Container;
+	static readonly componentId = 'minecraft:inventory';
 }
 
 /**
@@ -5201,7 +5221,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMapColorComponent extends BlockComponent {
 	private constructor();
-	static readonly componentId = "minecraft:map_color";
+	static readonly componentId = 'minecraft:map_color';
 	/**
 	 * @remarks
 	 * 表示该方块定义的基础地图颜色。
@@ -5271,7 +5291,7 @@ export class BlockPermutation {
 	 * The {@link BlockType} that the permutation has.
 	 *
 	 */
-	readonly "type": BlockType;
+	readonly 'type': BlockType;
 	/**
 	 * @beta
 	 * @remarks
@@ -5359,7 +5379,9 @@ export class BlockPermutation {
 	 * Returns the state if the permutation has it, else
 	 * `undefined`.
 	 */
-	getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(stateName: T): minecraftvanilladata.BlockStateSuperset[T] | undefined;
+	getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+		stateName: T,
+	): minecraftvanilladata.BlockStateSuperset[T] | undefined;
 	/**
 	 * @remarks
 	 * 创建此组合的副本。
@@ -5436,7 +5458,10 @@ export class BlockPermutation {
 	 * 一个可选的状态集合，用于进行比较。
 	 * An optional set of states to compare against.
 	 */
-	matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(blockName: T, states?: BlockStateArg<T>): boolean;
+	matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+		blockName: T,
+		states?: BlockStateArg<T>,
+	): boolean;
 	/**
 	 * @remarks
 	 * 返回具有特定属性设置的派生 BlockPermutation。
@@ -5452,7 +5477,10 @@ export class BlockPermutation {
 	 * Value of the block property.
 	 * @throws This function can throw errors.
 	 */
-	withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(name: T, value: minecraftvanilladata.BlockStateSuperset[T]): BlockPermutation;
+	withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+		name: T,
+		value: minecraftvanilladata.BlockStateSuperset[T],
+	): BlockPermutation;
 	/**
 	 * @remarks
 	 * 给定一个类型标识符和一个可选的属性集合，
@@ -5469,7 +5497,10 @@ export class BlockPermutation {
 	 * @throws This function can throw errors.
 	 * @seeExample addBlockColorCube.ts
 	 */
-	static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(blockName: T, states?: BlockStateArg<T>): BlockPermutation;
+	static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+		blockName: T,
+		states?: BlockStateArg<T>,
+	): BlockPermutation;
 }
 
 /**
@@ -5503,7 +5534,7 @@ export class BlockPistonComponent extends BlockComponent {
 	 * 此属性在使用时可能会抛出异常。
 	 */
 	readonly state: BlockPistonState;
-	static readonly componentId = "minecraft:piston";
+	static readonly componentId = 'minecraft:piston';
 	/**
 	 * @remarks
 	 * 获取与此活塞连接的一组方块。
@@ -5536,7 +5567,7 @@ export class BlockPistonComponent extends BlockComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockRecordPlayerComponent extends BlockComponent {
 	private constructor();
-	static readonly componentId = "minecraft:record_player";
+	static readonly componentId = 'minecraft:record_player';
 	/**
 	 * @remarks
 	 * 弹出当前设置的唱片。
@@ -5633,7 +5664,7 @@ export class BlockSignComponent extends BlockComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly isWaxed: boolean;
-	static readonly componentId = "minecraft:sign";
+	static readonly componentId = 'minecraft:sign';
 	/**
 	 * @remarks
 	 * 若使用 `setText` 方法设置了 RawMessage 或 RawText 对象，则返回告示牌的 RawText，否则返回 undefined。
@@ -5779,29 +5810,29 @@ export class BlockStates {
 /**
  * 表示方块实例的一个可配置状态值。
  * 例如，楼梯的朝向可以作为一个方块状态来访问。
- * 
+ *
  * Represents a configurable state value of a block instance.
  * For example, the facing direction of stairs is accessible as
  * a block state.
  */
 export class BlockStateType {
-    private constructor();
-    /**
-     * @remarks
-     * 方块属性的标识符。
-     * 
-     * Identifier of the block property.
-     *
-     */
-    readonly id: string;
-    /**
-     * @remarks
-     * 方块属性的一组有效值。
-     * 
-     * A set of valid values for the block property.
-     *
-     */
-    readonly validValues: (boolean | number | string)[];
+	private constructor();
+	/**
+	 * @remarks
+	 * 方块属性的标识符。
+	 *
+	 * Identifier of the block property.
+	 *
+	 */
+	readonly id: string;
+	/**
+	 * @remarks
+	 * 方块属性的一组有效值。
+	 *
+	 * A set of valid values for the block property.
+	 *
+	 */
+	readonly validValues: (boolean | number | string)[];
 }
 
 /**
@@ -5814,15 +5845,15 @@ export class BlockStateType {
  * 1.17.10.21.
  */
 export class BlockType {
-    private constructor();
-    /**
-     * @remarks
-     * 方块类型名称，例如 `minecraft:acacia_stairs`。
-     *
-     * Block type name - for example, `minecraft:acacia_stairs`.
-     *
-     */
-    readonly id: string;
+	private constructor();
+	/**
+	 * @remarks
+	 * 方块类型名称，例如 `minecraft:acacia_stairs`。
+	 *
+	 * Block type name - for example, `minecraft:acacia_stairs`.
+	 *
+	 */
+	readonly id: string;
 }
 
 /**
@@ -5914,7 +5945,7 @@ export class BlockVolume extends BlockVolumeBase {
 	 * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
 	 *
 	 */
-	"from": Vector3;
+	'from': Vector3;
 	/**
 	 * @remarks
 	 * 表示一个三维矩形中与另一角相对的世界方块位置。
@@ -6276,18 +6307,45 @@ export class ButtonPushAfterEvent extends BlockEvent {
 
 /**
  * 管理与按钮被按下时相关的回调函数。
- * @seeExample buttonPushEvent.ts
- */
-
- /**
+ * 
  * Manages callbacks that are connected to when a button is
  * pushed.
  * @seeExample buttonPushEvent.ts
- */ 
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
+ */
+export class ButtonPushAfterEventSignal {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * 添加一个回调函数，当按钮被按下时将会调用该回调函数。
+     * 
+     * Adds a callback that will be called when a button is pushed.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * 此函数可以在早期执行模式下调用。
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
+    /**
+     * @beta
+     * @remarks
+     * 移除一个回调函数，使其不会在按钮被按下时调用。
+     * 
+     * Removes a callback from being called when a button is pushed.
+     *
+     * 此函数无法在只读模式下调用。
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * 此函数可以在早期执行模式下调用。
+     *
+     * This function can be called in early-execution mode.
+     *
+     */
+    unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;
 }
 
 /**
@@ -6297,21 +6355,32 @@ export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
  * specified player.
  */
 export class Camera {
-	private constructor();
-	/**
-	 * @remarks
-	 * 清除指定玩家的活动摄像机。会使指定玩家结束所有正在进行的摄像机视角，包括任何平滑的摄像机移动，并恢复到正常视角。
-	 *
-	 * Clears the active camera for the specified player. Causes
-	 * the specified players to end any in-progress camera
-	 * perspectives, including any eased camera motions, and return
-	 * to their normal perspective.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @throws This function can throw errors.
-	 */
-	clear(): void;
+    private constructor();
+    /**
+     * @beta
+     * @remarks
+     * 返回摄像机是否可访问和使用。当摄像机所属的玩家已加载并且自身有效时，摄像机被视为有效。
+     *
+     * Returns whether the Camera is valid to access and use. A
+     * Camera is considered valid when the owning Player of the
+     * Camera is loaded and valid itself.
+     *
+     */
+    readonly isValid: boolean;
+    /**
+     * @remarks
+     * 清除指定玩家的活动摄像机。使指定玩家结束任何正在进行的摄像机视角，包括任何平滑的摄像机运动，并返回到正常视角。
+     *
+     * Clears the active camera for the specified player. Causes
+     * the specified players to end any in-progress camera
+     * perspectives, including any eased camera motions, and return
+     * to their normal perspective.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    clear(): void;
 	/**
 	 * @remarks
 	 * 开始应用一个摄像机的淡入淡出过渡效果。淡入淡出过渡效果是一种全屏颜色的渐入、保持、然后渐出的效果。
@@ -6346,7 +6415,17 @@ export class Camera {
 	 * Additional options for the camera.
 	 * @throws This function can throw errors.
 	 */
-	setCamera(cameraPreset: string, setOptions?: CameraDefaultOptions | CameraFixedBoomOptions | CameraSetFacingOptions | CameraSetLocationOptions | CameraSetPosOptions | CameraSetRotOptions | CameraTargetOptions): void;
+	setCamera(
+        cameraPreset: string,
+        setOptions?:
+            | CameraDefaultOptions
+            | CameraFixedBoomOptions
+            | CameraSetFacingOptions
+            | CameraSetLocationOptions
+            | CameraSetPosOptions
+            | CameraSetRotOptions
+            | CameraTargetOptions,
+    ): void;
 }
 
 /**
@@ -6471,6 +6550,8 @@ export class ChatSendBeforeEvent {
  * @beta
  * 管理在发送聊天消息之前触发的事件的回调。
  *
+ * Manages callbacks that are connected to an event that fires
+ * before chat messages are sent.
  * @seeExample customCommand.ts
  */
 export class ChatSendBeforeEventSignal {
@@ -6479,6 +6560,9 @@ export class ChatSendBeforeEventSignal {
 	 * @remarks
 	 * 添加一个在发送新聊天消息之前会被调用的回调函数。
 	 *
+	 * Adds a callback that will be called before new chat messages
+	 * are sent.
+	 * 
 	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
 	 *
 	 * This function can be called in early-execution mode.
@@ -6488,7 +6572,9 @@ export class ChatSendBeforeEventSignal {
 	/**
 	 * @remarks
 	 * 移除一个在发送新聊天消息之前会被调用的回调函数。
-	 *
+	 * 
+	 * Removes a callback from being called before new chat
+     * messages are sent.
 	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
 	 *
 	 * This function can be called in early-execution mode.
@@ -6544,21 +6630,12 @@ export class CommandResult {
 }
 
 /**
- * 用于实现下游组件的基础类。(所有组件的父类。)
- *
  * Base class for downstream Component implementations.
  */
 export class Component {
 	private constructor();
 	/**
-	 * @remarks
-	 * 组件的标识符。
-	 *
-	 * Identifier of the component.
-	 *
-	 */
-	readonly typeId: string;
-	/**
+	 * @beta
 	 * @remarks
 	 * 返回组件是否有效。若组件的拥有者有效，并且组件需要的任何
 	 * 额外验证也通过，则该组件被认为是有效的。
@@ -6568,12 +6645,15 @@ export class Component {
 	 * addition to any additional validation required by the
 	 * component.
 	 *
-	 * @returns
-	 * 组件是否有效。
-	 *
-	 * Whether the component is valid.
 	 */
-	isValid(): boolean;
+	readonly isValid: boolean;
+	/**
+	 * @remarks
+	 * 组件的标识符。
+	 * Identifier of the component.
+	 *
+	 */
+	readonly typeId: string;
 }
 
 /**
@@ -6927,6 +7007,17 @@ export class Container {
 	 */
 	readonly emptySlotsCount: number;
 	/**
+	 * @beta
+	 * @remarks
+	 * 返回一个布尔值，表示容器对象（或与此容器关联的实体或方块）在当前上下文中是否仍可用。
+	 *
+	 * Returns whether a container object (or the entity or block
+	 * that this container is associated with) is still available
+	 * for use in this context.
+	 *
+	 */
+	readonly isValid: boolean;
+	/**
 	 * @remarks
 	 * 此容器中的槽位数量。例如，一个标准的单格箱子有27个槽位。
 	 * 注意，玩家的物品栏容器总共包含36个槽位，包括9个快捷栏槽位和27个物品栏槽位。
@@ -6959,8 +7050,7 @@ export class Container {
 	 *
 	 * The stack of items to add.
 	 * @throws 此函数可能抛出错误。
-	 *
-	 * This function can throw errors.
+	 * @throws This function can throw errors.
 	 */
 	addItem(itemStack: ItemStack): ItemStack | undefined;
 	/**
@@ -7019,16 +7109,6 @@ export class Container {
 	 * out of bounds.
 	 */
 	getSlot(slot: number): ContainerSlot;
-	/**
-	 * @remarks
-	 * 返回一个布尔值，表示容器对象（或与此容器关联的实体或方块）在当前上下文中是否仍可用。
-	 *
-	 * Returns whether a container object (or the entity or block
-	 * that this container is associated with) is still available
-	 * for use in this context.
-	 *
-	 */
-	isValid(): boolean;
 	/**
 	 * @remarks
 	 * 将物品从一个槽位移动到另一个槽位，可能跨容器移动。
@@ -7188,6 +7268,17 @@ export class ContainerSlot {
 	 */
 	readonly isStackable: boolean;
 	/**
+	 * @beta
+	 * @remarks
+	 * 返回ContainerSlot是否有效。若容器存在且已加载，并且槽位索引有效，则容器槽位有效。
+	 *
+	 * Returns whether the ContainerSlot is valid. The container
+	 * slot is valid if the container exists and is loaded, and the
+	 * slot index is valid.
+	 *
+	 */
+	readonly isValid: boolean;
+	/**
 	 * @remarks
 	 * 获取或设置物品在死亡时是否保留。
 	 *
@@ -7264,7 +7355,7 @@ export class ContainerSlot {
 	 *
 	 * {@link InvalidContainerSlotError}
 	 */
-	readonly "type": ItemType;
+	readonly 'type': ItemType;
 	/**
 	 * @remarks
 	 * 表示物品堆中物品类型的标识符。若没有指定命名空间，则默认使用`minecraft:`。例如，`wheat`或`apple`。
@@ -7305,7 +7396,7 @@ export class ContainerSlot {
 	 *
 	 * @throws 此函数可能会抛出错误。
 	 *
-	 * Throws This function can throw errors.
+	 * @throws This function can throw errors.
 	 *
 	 * {@link InvalidContainerSlotError}
 	 */
@@ -7508,16 +7599,6 @@ export class ContainerSlot {
 	isStackableWith(itemStack: ItemStack): boolean;
 	/**
 	 * @remarks
-	 * 返回ContainerSlot是否有效。若容器存在且已加载，并且槽位索引有效，则容器槽位有效。
-	 *
-	 * Returns whether the ContainerSlot is valid. The container
-	 * slot is valid if the container exists and is loaded, and the
-	 * slot index is valid.
-	 *
-	 */
-	isValid(): boolean;
-	/**
-	 * @remarks
 	 * 表示此物品在冒险模式下可以破坏的方块类型列表。方块名称显示在物品的提示信息中。将值设置为`undefined`将清除列表。
 	 *
 	 * The list of block types this item can break in Adventure
@@ -7596,8 +7677,8 @@ export class ContainerSlot {
 	 *
 	 * @param identifier
 	 * 属性标识符。
-	 * T
-	 * he property identifier.
+	 *
+	 * The property identifier.
 	 * @param value
 	 * 要设置的属性值。
 	 *
@@ -7716,7 +7797,10 @@ export class DataDrivenEntityTriggerAfterEventSignal {
 	 * This function can be called in early-execution mode.
 	 *
 	 */
-	subscribe(callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void, options?: EntityDataDrivenTriggerEventOptions): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
+	subscribe(
+		callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void,
+		options?: EntityDataDrivenTriggerEventOptions,
+	): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
 	/**
 	 * @remarks
 	 * 移除一个回调函数，该回调函数会在数据驱动实体事件被触发后调用。
@@ -7745,6 +7829,8 @@ export class Dimension {
 	 * 维度的高度范围。
 	 *
 	 * Height range of the dimension.
+	 *
+	 * @throws This property can throw when used.
 	 */
 	readonly heightRange: minecraftcommon.NumberRange;
 
@@ -7753,6 +7839,7 @@ export class Dimension {
 	 * 维度的标识符。
 	 *
 	 * Identifier of the dimension.
+	 *
 	 */
 	readonly id: string;
 
@@ -7781,10 +7868,14 @@ export class Dimension {
 	 * @returns
 	 * 若方块体积中至少有一个方块满足过滤器，将返回 true，否则返回 false。
 	 *
-	 * Returns true if at least one block in the volume satisfies the filter, false otherwise.
+	 * Returns true if at least one block in the volume satisfies
+	 * the filter, false otherwise.
 	 *
-	 * @throws
-	 * 若参数类型正确的情况下不会出错，则可以省略或移除。
+	 * @throws This function can throw errors.
+	 *
+	 * {@link Error}
+	 *
+	 * {@link UnloadedChunksError}
 	 */
 	containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
 
@@ -7816,6 +7907,9 @@ export class Dimension {
 	 * {@link LocationInUnloadedChunkError}
 	 *
 	 * {@link LocationOutOfWorldBoundariesError}
+	 * @seeExample createExplosion.ts
+     * @seeExample createNoBlockExplosion.ts
+     * @seeExample createExplosions.ts
 	 */
 	createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
 
@@ -7854,7 +7948,11 @@ export class Dimension {
 	 * {@link Error}
 	 * {@link UnloadedChunksError}
 	 */
-	fillBlocks(volume: BlockVolumeBase | CompoundBlockVolume, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): ListBlockVolume;
+	fillBlocks(
+		volume: BlockVolumeBase | CompoundBlockVolume,
+		block: BlockPermutation | BlockType | string,
+		options?: BlockFillOptions,
+	): ListBlockVolume;
 
 	/**
 	 * @beta
@@ -7897,7 +7995,8 @@ export class Dimension {
 	 *
 	 * Returns a block instance at the given location.
 	 *
-	 * @param location 用于返回方块的位置。
+	 * @param location 
+	 * 用于返回方块的位置。
 	 *
 	 * The location at which to return a block.
 	 *
@@ -7909,8 +8008,16 @@ export class Dimension {
 	 * @throws
 	 *
 	 * PositionInUnloadedChunkError: 尝试与不再位于加载和 ticking 区块内的方块对象交互时引发的异常。
-	 *
+	 * 
+	 * PositionInUnloadedChunkError: Exception thrown when trying
+     * to interact with a Block object that isn't in a loaded and
+     * ticking chunk anymore
 	 * PositionOutOfWorldBoundariesError: 尝试与超出维度高度范围的位置交互时引发的异常。
+	 *
+	 * PositionOutOfWorldBoundariesError: Exception thrown when
+     * trying to interact with a position outside of dimension
+     * height range
+     *
 	 *
 	 * {@link LocationInUnloadedChunkError}
 	 *
@@ -8011,9 +8118,11 @@ export class Dimension {
 	 * 一个实体数组。
 	 *
 	 * An entity array.
-	 *
-	 * @throws
-	 * */
+     * @throws This function can throw errors.
+     * @seeExample bounceSkeletons.ts
+     * @seeExample tagsQuery.ts
+     * @seeExample testThatEntityIsFeatherItem.ts
+     */
 	getEntities(options?: EntityQueryOptions): Entity[];
 	/**
 	 * @remarks
@@ -8084,10 +8193,10 @@ export class Dimension {
 	 * @param minHeight
 	 * 开始搜索的 Y 坐标。默认为最大维度高度。
 	 *
-	 * The Y height to begin the search from. Defaults to the maximum dimension height.
-	 *
-	 * @throws
-	 * */
+	 * The Y height to begin the search from. Defaults to the
+     * maximum dimension height.
+     * @throws This function can throw errors.
+     */
 	getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
 
 	/**
@@ -8105,6 +8214,84 @@ export class Dimension {
 	 * Returns a WeatherType that explains the broad category of weather that is currently going on.
 	 */
 	getWeather(): WeatherType;
+	/**
+     * @beta
+     * @remarks
+     * 将指定的地形特征放置在维度中的指定位置。
+     * 
+     * Places the given feature into the dimension at the specified
+     * location.
+     * 
+     * 此函数无法在只读模式下调用。
+     * 
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * 
+     * @param featureName
+     * 地形特征的字符串标识符。
+     * 
+     * The string identifier for the feature.
+     * @param location
+     * 放置地形特征的位置。
+     * 
+     * Location to place the feature.
+     * @param shouldThrow
+     * 指定如果无法放置地形特征时是否抛出错误。
+     * 注意：如果使用未知的地形特征名称或尝试在未加载的区块中放置，
+     * 函数调用将始终抛出错误。
+     * 
+     * Specifies if the function call will throw an error if the
+     * feature could not be placed.
+     * Note: The function call will always throw an error if using
+     * an unknown feature name or trying to place in a unloaded
+     * chunk.
+     * @throws
+     * 如果地形特征名称无效，将抛出错误。
+     * 如果位置在未加载的区块中，将抛出错误。
+     * 
+     * An error will be thrown if the feature name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    /**
+     * @beta
+     * @remarks
+     * 将指定的地形特征规则放置在维度中的指定位置。
+     * 
+     * Places the given feature rule into the dimension at the
+     * specified location.
+     * 
+     * 此函数无法在只读模式下调用。
+     * 
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * 
+     * @param featureRuleName
+     * 地形特征规则的字符串标识符。
+     * 
+     * The string identifier for the feature rule.
+     * @param location
+     * 放置地形特征规则的位置。
+     * 
+     * Location to place the feature rule.
+     * @throws
+     * 如果地形特征规则名称无效，将抛出错误。
+     * 如果位置在未加载的区块中，将抛出错误。
+     * 
+     * An error will be thrown if the feature rule name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
 
 	/**
 	 * @remarks
@@ -8127,16 +8314,19 @@ export class Dimension {
 	 * @param soundOptions
 	 * 额外的音效配置选项。
 	 *
-	 * Additional options for configuring additional effects for the sound.
-	 *
+	 * Additional options for configuring additional effects for
+     * the sound.
 	 * @throws
 	 * 若音量小于 0.0，将抛出错误。
 	 * 若音频淡入淡出值小于 0.0，则抛出错误。
 	 * 若音高小于 0.01，则抛出错误。
 	 * 若音量小于 0.0，将抛出错误。
 	 *
-	 * An error will be thrown if volume is less than 0.0. An error will be thrown if fade is less than 0.0. An error will be thrown if pitch is less than 0.01. An error will be thrown if volume is less than 0.0.
-	 */
+	 * An error will be thrown if volume is less than 0.0.
+     * An error will be thrown if fade is less than 0.0.
+     * An error will be thrown if pitch is less than 0.01.
+     * An error will be thrown if volume is less than 0.0.
+     */
 	playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
 
 	/**
@@ -8168,6 +8358,8 @@ export class Dimension {
 	runCommand(commandString: string): CommandResult;
 
 	/**
+	 * @attention 注：此方法在最新版已被删除，这里为了兼容性保留
+	 * 
 	 * @remarks
 	 * 从更广泛的维度上下文运行一个特定的命令异步。
 	 * 请注意，在给定的 tick 内最大可运行 128 个异步命令。
@@ -8386,19 +8578,19 @@ export class Dimension {
 
 /**
  * 表示一个维度类型。
- * 
+ *
  * Represents a type of dimension.
  */
 export class DimensionType {
-    private constructor();
-    /**
-     * @remarks
-     * 维度类型的标识符。
-     * 
-     * Identifier of the dimension type.
-     *
-     */
-    readonly typeId: string;
+	private constructor();
+	/**
+	 * @remarks
+	 * 维度类型的标识符。
+	 *
+	 * Identifier of the dimension type.
+	 *
+	 */
+	readonly typeId: string;
 }
 
 /**
@@ -8436,63 +8628,64 @@ export class DimensionTypes {
 
 /**
  * 表示一个附加到实体上的效果，例如中毒。
- * 
+ *
  * Represents an effect - like poison - that has been added to
  * an Entity.
  */
 export class Effect {
-    private constructor();
-    /**
-     * @remarks
-     * 获取应用于此效果的放大器值。
-     * 典型的取值范围通常是0到4。例如：效果“跳跃提升 II”的放大器值为1。
-     * 
-     * Gets an amplifier that may have been applied to this effect.
-     * Sample values range typically from 0 to 4. Example: The
-     * effect 'Jump Boost II' will have an amplifier value of 1.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly amplifier: number;
-    /**
-     * @remarks
-     * 获取此效果的玩家友好名称。
-     * 
-     * Gets the player-friendly name of this effect.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly displayName: string;
-    /**
-     * @remarks
-     * 获取此效果的总持续时间（以刻为单位）。每秒有20个刻。使用 {@link TicksPerSecond} 常量在刻与秒之间转换。
-     * 
-     * Gets the entire specified duration, in ticks, of this
-     * effect. There are 20 ticks per second. Use {@link
-     * TicksPerSecond} constant to convert between ticks and
-     * seconds.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly duration: number;
-    /**
-     * @remarks
-     * 获取此效果的类型ID。
-     * 
-     * Gets the type id of this effect.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly typeId: string;
-    /**
-     * @remarks
-     * 返回此上下文中是否可用效果实例。
-     * 
-     * Returns whether an effect instance is available for use in
-     * this context.
-     *
-     */
-    isValid(): boolean;
+	private constructor();
+	/**
+	 * @remarks
+	 * 获取应用于此效果的放大器值。
+	 * 典型的取值范围通常是0到4。例如：效果“跳跃提升 II”的放大器值为1。
+	 *
+	 * Gets an amplifier that may have been applied to this effect.
+	 * Sample values range typically from 0 to 4. Example: The
+	 * effect 'Jump Boost II' will have an amplifier value of 1.
+	 *
+	 * @throws This property can throw when used.
+	 */
+	readonly amplifier: number;
+	/**
+	 * @remarks
+	 * 获取此效果的玩家友好名称。
+	 *
+	 * Gets the player-friendly name of this effect.
+	 *
+	 * @throws This property can throw when used.
+	 */
+	readonly displayName: string;
+	/**
+	 * @remarks
+	 * 获取此效果的总持续时间（以刻为单位）。每秒有20个刻。使用 {@link TicksPerSecond} 常量在刻与秒之间转换。
+	 *
+	 * Gets the entire specified duration, in ticks, of this
+	 * effect. There are 20 ticks per second. Use {@link
+	 * TicksPerSecond} constant to convert between ticks and
+	 * seconds.
+	 *
+	 * @throws This property can throw when used.
+	 */
+	readonly duration: number;
+	/**
+	 * @beta
+	 * @remarks
+	 * 返回此上下文中是否可用效果实例。
+	 *
+	 * Returns whether an effect instance is available for use in
+	 * this context.
+	 *
+	 */
+	readonly isValid: boolean;
+	/**
+	 * @remarks
+	 * 获取此效果的类型ID。
+	 *
+	 * Gets the type id of this effect.
+	 *
+	 * @throws This property can throw when used.
+	 */
+	readonly typeId: string;
 }
 
 /**
@@ -8541,7 +8734,10 @@ export class EffectAddAfterEventSignal {
 	 * This function can be called in early-execution mode.
 	 *
 	 */
-	subscribe(callback: (arg0: EffectAddAfterEvent) => void, options?: EntityEventOptions): (arg0: EffectAddAfterEvent) => void;
+	subscribe(
+		callback: (arg0: EffectAddAfterEvent) => void,
+		options?: EntityEventOptions,
+	): (arg0: EffectAddAfterEvent) => void;
 	/**
 	 * @remarks
 	 * 移除一个在实体添加效果时调用的回调函数。
@@ -8601,32 +8797,37 @@ export class EffectAddBeforeEvent {
 
 /**
  * 管理当效果被添加到实体时连接的回调函数。
- * 
+ *
  * Manages callbacks that are connected to when an effect is
  * added to an entity.
  */
 export class EffectAddBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * 添加一个回调函数，当效果被添加到实体时会调用该回调函数。
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
-    /**
-     * @remarks
-     * 移除一个回调函数，使其不再在效果被添加到实体时调用。
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
+	private constructor();
+	/**
+	 * @remarks
+	 * 添加一个回调函数，当效果被添加到实体时会调用该回调函数。
+     * 
+     * Adds a callback that will be called when an effect is added
+     * to an entity.
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
+	/**
+	 * @remarks
+	 * 移除一个回调函数，使其不再在效果被添加到实体时调用。
+     * 
+	 * Removes a callback from being called when an effect is added
+     * to an entity.
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
 }
 
 /**
@@ -8871,6 +9072,18 @@ export class Entity {
 	 */
 	readonly isSwimming: boolean;
 	/**
+     * @beta
+     * @remarks
+	 * 返回实体是否可以被脚本操控。当玩家的 EntityLifetimeState 设置为 Loaded 时，
+	 * 被认为是有效的。
+	 * 
+     * Returns whether the entity can be manipulated by script. A
+     * Player is considered valid when it's EntityLifetimeState is
+     * set to Loaded.
+     *
+     */
+    readonly isValid: boolean;
+	/**
 	 * @remarks
 	 * 实体的当前位置。
 	 *
@@ -9023,22 +9236,13 @@ export class Entity {
 	 *
 	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
 	 *
-	 * @param directionX
-	 * 水平平面上的 X 方向。
-	 * X direction in horizontal plane.
-	 * @param directionZ
-	 * 水平平面上的 Z 方向。
-	 * Z direction in horizontal plane.
-	 * @param horizontalStrength
-	 * 水平向量的击退强度。
-	 * Knockback strength for the horizontal vector.
 	 * @param verticalStrength
 	 * 垂直向量的击退强度。
 	 * Knockback strength for the vertical vector.
 	 * @throws This function can throw errors.
 	 * @seeExample bounceSkeletons.ts
 	 */
-	applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+	applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
 	/**
 	 * @remarks
 	 * 清除已设置在此实体上的所有动态属性。
@@ -9117,6 +9321,9 @@ export class Entity {
 	 * 若组件存在于实体上，则返回该组件，否则返回 undefined。
 	 * Returns the component if it exists on the entity, otherwise
 	 * undefined.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
 	/**
@@ -9130,6 +9337,9 @@ export class Entity {
 	 * 返回此实体上存在且 API 支持的所有组件。
 	 * Returns all components that are both present on this entity
 	 * and supported by the API.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	getComponents(): EntityComponent[];
 	/**
@@ -9348,6 +9558,9 @@ export class Entity {
 	 *
 	 * Returns true if the specified component is present on this
 	 * entity.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	hasComponent(componentId: string): boolean;
 	/**
@@ -9367,21 +9580,6 @@ export class Entity {
 	 * @throws This function can throw errors.
 	 */
 	hasTag(tag: string): boolean;
-	/**
-	 * @remarks
-	 * 返回实体是否可以被脚本操控。当玩家的 EntityLifetimeState 设置为 Loaded 时，
-	 * 被认为是有效的。
-	 *
-	 * Returns whether the entity can be manipulated by script. A
-	 * Player is considered valid when it's EntityLifetimeState is
-	 * set to Loaded.
-	 *
-	 * @returns
-	 * 实体是否有效。
-	 *
-	 * Whether the entity is valid.
-	 */
-	isValid(): boolean;
 	/**
 	 * @remarks
 	 * 杀死此实体。实体将正常掉落战利品。
@@ -9583,6 +9781,7 @@ export class Entity {
 	 */
 	runCommand(commandString: string): CommandResult;
 	/**
+	 * @attention 注：此方法在最新版已被删除，这里为了兼容性保留
 	 * @remarks
 	 * 从该实体的上下文中运行特定命令（异步）。注意，在给定的 tick 中最多可以运行 128 个异步命令。
 	 *
@@ -10169,7 +10368,7 @@ export class EntityBreathableComponent extends EntityComponent {
 	 * This property can throw when used.
 	 */
 	readonly totalSupply: number;
-	static readonly componentId = "minecraft:breathable";
+	static readonly componentId = 'minecraft:breathable';
 	/**
 	 * @remarks
 	 * 表示该实体可以呼吸的方块列表，除了分类的方块属性外。
@@ -10204,7 +10403,7 @@ export class EntityBreathableComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityCanClimbComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:can_climb";
+	static readonly componentId = 'minecraft:can_climb';
 }
 
 /**
@@ -10217,7 +10416,7 @@ export class EntityCanClimbComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityCanFlyComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:can_fly";
+	static readonly componentId = 'minecraft:can_fly';
 }
 
 /**
@@ -10253,7 +10452,7 @@ export class EntityColor2Component extends EntityComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly value: PaletteColor;
-	static readonly componentId = "minecraft:color2";
+	static readonly componentId = 'minecraft:color2';
 }
 
 /**
@@ -10277,7 +10476,7 @@ export class EntityColorComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:color";
+	static readonly componentId = 'minecraft:color';
 }
 
 /**
@@ -10430,7 +10629,7 @@ export class EntityDieAfterEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:equippable";
+	static readonly componentId = 'minecraft:equippable';
 	/**
 	 * @remarks
 	 * 获取指定装备槽位中的装备物品。
@@ -10516,7 +10715,7 @@ export class EntityFireImmuneComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityFloatsInLiquidComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:floats_in_liquid";
+	static readonly componentId = 'minecraft:floats_in_liquid';
 }
 
 /**
@@ -10537,7 +10736,7 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:flying_speed";
+	static readonly componentId = 'minecraft:flying_speed';
 }
 
 /**
@@ -10559,7 +10758,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:friction_modifier";
+	static readonly componentId = 'minecraft:friction_modifier';
 }
 
 /**
@@ -10582,7 +10781,7 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:ground_offset";
+	static readonly componentId = 'minecraft:ground_offset';
 }
 
 /**
@@ -10605,7 +10804,7 @@ export class EntityHealableComponent extends EntityComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly forceUse: boolean;
-	static readonly componentId = "minecraft:healable";
+	static readonly componentId = 'minecraft:healable';
 	/**
 	 * @remarks
 	 * 一组可以专门治疗该实体的物品。
@@ -10631,70 +10830,75 @@ export class EntityHealableComponent extends EntityComponent {
  * this event, or it will cause an infinite loop!
  */
 export class EntityHealthChangedAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * 生命值发生变化的实体。
-     *
-     * Entity whose health changed.
-     *
-     */
-    readonly entity: Entity;
-    /**
-     * @remarks
-     * 实体的新生命值。
-     *
-     * New health value of the entity.
-     *
-     */
-    readonly newValue: number;
-    /**
-     * @remarks
-     * 实体的旧生命值。
-     *
-     * Old health value of the entity.
-     *
-     */
-    readonly oldValue: number;
+	private constructor();
+	/**
+	 * @remarks
+	 * 生命值发生变化的实体。
+	 *
+	 * Entity whose health changed.
+	 *
+	 */
+	readonly entity: Entity;
+	/**
+	 * @remarks
+	 * 实体的新生命值。
+	 *
+	 * New health value of the entity.
+	 *
+	 */
+	readonly newValue: number;
+	/**
+	 * @remarks
+	 * 实体的旧生命值。
+	 *
+	 * Old health value of the entity.
+	 *
+	 */
+	readonly oldValue: number;
 }
 
 /**
  * 管理与实体生命值变化相关的回调函数。
- * 
+ *
  * Manages callbacks that are connected to when the health of
  * an entity changes.
  */
 export class EntityHealthChangedAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * 添加一个回调函数，当实体的生命值发生变化时会调用该函数。
+	private constructor();
+	/**
+	 * @remarks
+	 * 添加一个回调函数，当实体的生命值发生变化时会调用该函数。
      * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * 该函数可以在早期执行模式下调用。
-     *
-     * Adds a callback that will be called when the health of an
+	 * Adds a callback that will be called when the health of an
      * entity changes.
-     *
-     */
-    subscribe(
-        callback: (arg0: EntityHealthChangedAfterEvent) => void,
-        options?: EntityEventOptions,
-    ): (arg0: EntityHealthChangedAfterEvent) => void;
-    /**
-     * @remarks
-     * 移除一个回调函数，使其不再在实体生命值变化时被调用。
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 该函数可以在早期执行模式下调用。
+	 *
+	 * Adds a callback that will be called when the health of an
+	 * entity changes.
+	 *
+	 */
+	subscribe(
+		callback: (arg0: EntityHealthChangedAfterEvent) => void,
+		options?: EntityEventOptions,
+	): (arg0: EntityHealthChangedAfterEvent) => void;
+	/**
+	 * @remarks
+	 * 移除一个回调函数，使其不再在实体生命值变化时被调用。
      * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * 该函数可以在早期执行模式下调用。
-     *
      * Removes a callback from being called when the health of an
      * entity changes.
-     *
-     */
-    unsubscribe(callback: (arg0: EntityHealthChangedAfterEvent) => void): void;
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 该函数可以在早期执行模式下调用。
+	 *
+	 * Removes a callback from being called when the health of an
+	 * entity changes.
+	 *
+	 */
+	unsubscribe(callback: (arg0: EntityHealthChangedAfterEvent) => void): void;
 }
 
 /**
@@ -10706,7 +10910,7 @@ export class EntityHealthChangedAfterEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {
 	private constructor();
-	static readonly componentId = "minecraft:health";
+	static readonly componentId = 'minecraft:health';
 }
 
 /**
@@ -10748,39 +10952,39 @@ export class EntityHitBlockAfterEvent {
 
 /**
  * 管理与实体撞击方块时触发的回调函数。
- * 
+ *
  * Manages callbacks that are connected to when an entity hits
  * a block.
  */
 export class EntityHitBlockAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * 添加一个回调函数，当实体撞击方块时会调用该回调函数。
-     * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     * 
-     * 此函数可在早期执行模式下调用。
-     * 
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(
-        callback: (arg0: EntityHitBlockAfterEvent) => void,
-        options?: EntityEventOptions,
-    ): (arg0: EntityHitBlockAfterEvent) => void;
-    /**
-     * @remarks
-     * 移除一个回调函数，使其不再在实体撞击方块时被调用。
-     * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     * 
-     * 此函数可在早期执行模式下调用。
-     * 
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg0: EntityHitBlockAfterEvent) => void): void;
+	private constructor();
+	/**
+	 * @remarks
+	 * 添加一个回调函数，当实体撞击方块时会调用该回调函数。
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 此函数可在早期执行模式下调用。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	subscribe(
+		callback: (arg0: EntityHitBlockAfterEvent) => void,
+		options?: EntityEventOptions
+	): (arg0: EntityHitBlockAfterEvent) => void;
+	/**
+	 * @remarks
+	 * 移除一个回调函数，使其不再在实体撞击方块时被调用。
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 此函数可在早期执行模式下调用。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	unsubscribe(callback: (arg0: EntityHitBlockAfterEvent) => void): void;
 }
 
 /**
@@ -10809,106 +11013,114 @@ export class EntityHitEntityAfterEvent {
 
 /**
  * 管理实体对另一个实体进行近战攻击时触发的回调。
- * 
+ *
  * Manages callbacks that are connected to when an entity makes
  * a melee attack on another entity.
  */
 export class EntityHitEntityAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * 添加一个回调函数，当一个实体攻击另一个实体时会调用该回调函数。
+	private constructor();
+	/**
+	 * @remarks
+	 * 添加一个回调函数，当一个实体攻击另一个实体时会调用该回调函数。
      * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(
-        callback: (arg0: EntityHitEntityAfterEvent) => void,
-        options?: EntityEventOptions,
-    ): (arg0: EntityHitEntityAfterEvent) => void;
-    /**
-     * @remarks
-     * 移除一个回调函数，使其不再在实体进行近战攻击时被调用。
-     * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
+	 * Adds a callback that will be called when an entity hits
+     * another entity.
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	subscribe(
+		callback: (arg0: EntityHitEntityAfterEvent) => void,
+		options?: EntityEventOptions,
+	): (arg0: EntityHitEntityAfterEvent) => void;
+	/**
+	 * @remarks
+	 * 移除一个回调函数，使其不再在实体进行近战攻击时被调用。
+	 *
+     * Removes a callback from being called when an entity makes a
+     * melee attack on another entity.
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
 }
 
 /**
  * 表示与实体受伤相关的信息。
- * 
+ *
  * Contains information related to an entity getting hurt.
  */
 export class EntityHurtAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * 表示造成的伤害量。
-     * 
-     * Describes the amount of damage caused.
-     *
-     */
-    readonly damage: number;
-    /**
-     * @remarks
-     * 表示可能造成此伤害的实体的来源信息。
-     * 
-     * Source information on the entity that may have applied this
-     * damage.
-     *
-     */
-    readonly damageSource: EntityDamageSource;
-    /**
-     * @remarks
-     * 表示受伤的实体。
-     * 
-     * Entity that was hurt.
-     *
-     */
-    readonly hurtEntity: Entity;
+	private constructor();
+	/**
+	 * @remarks
+	 * 表示造成的伤害量。
+	 *
+	 * Describes the amount of damage caused.
+	 *
+	 */
+	readonly damage: number;
+	/**
+	 * @remarks
+	 * 表示可能造成此伤害的实体的来源信息。
+	 *
+	 * Source information on the entity that may have applied this
+	 * damage.
+	 *
+	 */
+	readonly damageSource: EntityDamageSource;
+	/**
+	 * @remarks
+	 * 表示受伤的实体。
+	 *
+	 * Entity that was hurt.
+	 *
+	 */
+	readonly hurtEntity: Entity;
 }
 
 /**
  * 管理与实体受伤事件相关的回调函数。
- * 
+ *
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
 export class EntityHurtAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * 添加一个回调函数，当实体受伤时会调用该回调函数。
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * 此函数可以在早期执行模式中调用。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    subscribe(
-        callback: (arg0: EntityHurtAfterEvent) => void,
-        options?: EntityEventOptions,
-    ): (arg0: EntityHurtAfterEvent) => void;
-    /**
-     * @remarks
-     * 移除一个回调函数，使其不再在实体受伤时被调用。
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * 此函数可以在早期执行模式中调用。
-     *
-     * This function can be called in early-execution mode.
-     *
-     */
-    unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
+	private constructor();
+	/**
+	 * @remarks
+	 * 添加一个回调函数，当实体受伤时会调用该回调函数。
+     * 
+     * Adds a callback that will be called when an entity is hurt.
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 此函数可以在早期执行模式中调用。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	subscribe(
+		callback: (arg0: EntityHurtAfterEvent) => void,
+		options?: EntityEventOptions,
+	): (arg0: EntityHurtAfterEvent) => void;
+	/**
+	 * @remarks
+	 * 移除一个回调函数，使其不再在实体受伤时被调用。
+     * 
+     * Removes a callback from being called when an entity is hurt.
+	 *
+	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+	 *
+	 * 此函数可以在早期执行模式中调用。
+	 *
+	 * This function can be called in early-execution mode.
+	 *
+	 */
+	unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
 }
 
 /**
@@ -11000,7 +11212,7 @@ export class EntityInventoryComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsBabyComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:is_baby";
+	static readonly componentId = 'minecraft:is_baby';
 }
 
 /**
@@ -13457,90 +13669,90 @@ export class ItemCompostableComponent extends ItemComponent {
 /**
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。
  * 注意，若使用后不会进入冷却，原版物品会获取到没有实际作用的该组件。
- *
+ * 
  * When present on an item, this item has a cooldown effect
  * when used by entities.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCooldownComponent extends ItemComponent {
-	private constructor();
-	/**
-	 * @remarks
-	 * 表示物品的冷却类别。
-	 *
-	 * Represents the cooldown category that this item is
-	 * associated with.
-	 *
-	 * @throws This property can throw when used.
-	 */
-	readonly cooldownCategory: string;
-	/**
-	 * @remarks
-	 * 物品冷却所需的时间，单位为刻。
-	 *
-	 * Amount of time, in ticks, it will take this item to
-	 * cooldown.
-	 *
-	 * @throws This property can throw when used.
-	 */
-	readonly cooldownTicks: number;
-	static readonly componentId = "minecraft:cooldown";
-	/**
-	 * @remarks
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @throws This function can throw errors.
-	 */
-	getCooldownTicksRemaining(player: Player): number;
-	/**
-	 * @remarks
-	 * Will return true if the item is the cooldown category passed
-	 * in and false otherwise.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param cooldownCategory
-	 * The cooldown category that might be associated with this
-	 * item.
-	 * @returns
-	 * True if the item is the given cooldown category.
-	 * @throws This function can throw errors.
-	 */
-	isCooldownCategory(cooldownCategory: string): boolean;
-	/**
-	 * @remarks
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @throws This function can throw errors.
-	 */
-	getCooldownTicksRemaining(player: Player): number;
-	/**
-	 * @remarks
-	 * Will return true if the item is the cooldown category passed
-	 * in and false otherwise.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param cooldownCategory
-	 * The cooldown category that might be associated with this
-	 * item.
-	 * @returns
-	 * True if the item is the given cooldown category.
-	 * @throws This function can throw errors.
-	 */
-	isCooldownCategory(cooldownCategory: string): boolean;
-	/**
-	 * @remarks
-	 * 开始物品的冷却周期。
-	 * 若物品已在冷却中，将重新开始冷却。
-	 *
-	 * Starts a new cooldown period for this item.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @throws This function can throw errors.
-	 */
-	startCooldown(player: Player): void;
+    private constructor();
+    /**
+     * @remarks
+     * 表示物品的冷却类别。
+     * 
+     * Represents the cooldown category that this item is
+     * associated with.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly cooldownCategory: string;
+    /**
+     * @remarks
+     * 物品冷却所需的时间，单位为刻。
+     * 
+     * Amount of time, in ticks, it will take this item to
+     * cooldown.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly cooldownTicks: number;
+    static readonly componentId = 'minecraft:cooldown';
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
+    /**
+     * @remarks
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @remarks
+     * Will return true if the item is the cooldown category passed
+     * in and false otherwise.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param cooldownCategory
+     * The cooldown category that might be associated with this
+     * item.
+     * @returns
+     * True if the item is the given cooldown category.
+     * @throws This function can throw errors.
+     */
+    isCooldownCategory(cooldownCategory: string): boolean;
+    /**
+     * @remarks
+     * 开始物品的冷却周期。
+     * 如果物品已在冷却中，将重新开始冷却。
+     * 
+     * Starts a new cooldown period for this item.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @throws This function can throw errors.
+     */
+    startCooldown(player: Player): void;
 }
 
 /**
@@ -18688,473 +18900,382 @@ export class WeatherChangeBeforeEventSignal {
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
- *
+ * 
  * A class that wraps the state of a world - a set of
  * dimensions and the environment of Minecraft.
  */
 export class World {
-	private constructor();
-	/**
-	 * @remarks
-	 * 包含适用于整个世界的一组事件。事件回调以延迟的方式调用。
-	 * 事件回调在读写模式下执行。
-	 *
-	 * Contains a set of events that are applicable to the entirety
-	 * of the world.  Event callbacks are called in a deferred
-	 * manner. Event callbacks are executed in read-write mode.
-	 *
-	 */
-	readonly afterEvents: WorldAfterEvents;
-	/**
-	 * @remarks
-	 * 包含适用于整个世界的一组事件。事件回调会立即调用。
-	 * 事件回调在只读模式下执行。
-	 *
-	 * Contains a set of events that are applicable to the entirety
-	 * of the world. Event callbacks are called immediately. Event
-	 * callbacks are executed in read-only mode.
-	 *
-	 * @seeExample customCommand.ts
-	 */
-	readonly beforeEvents: WorldBeforeEvents;
-	/**
-	 * @remarks
-	 * 应用于世界的游戏规则。
-	 *
-	 * The game rules that apply to the world.
-	 *
-	 */
-	readonly gameRules: GameRules;
-	readonly isHardcore: boolean;
-	/**
-	 * @remarks
-	 * 全局的、唯一的记分板对象。
-	 *
-	 * Returns the general global scoreboard that applies to the
-	 * world.
-	 *
-	 */
-	readonly scoreboard: Scoreboard;
-	/**
-	 * @remarks
-	 * 返回与 {@link Structure} 相关的 API 管理器。
-	 *
-	 * Returns the manager for {@link Structure} related APIs.
-	 *
-	 */
-	readonly structureManager: StructureManager;
-	/**
-	 * @beta
-	 * @remarks
-	 * 一种仅限内部使用的方法，用于在客户端和服务器之间广播特定消息。
-	 *
-	 * A method that is internal-only, used for broadcasting
-	 * specific messages between client and server.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param id
-	 * 消息标识符。
-	 *
-	 * The message identifier.
-	 * @param value
-	 * 消息内容。
-	 *
-	 * The message.
-	 */
-	broadcastClientMessage(id: string, value: string): void;
-	/**
-	 * @remarks
-	 * 清除此行为包在世界中声明的动态属性集合。
-	 *
-	 * Clears the set of dynamic properties declared for this
-	 * behavior pack within the world.
-	 *
-	 */
-	clearDynamicProperties(): void;
-	/**
-	 * @remarks
-	 * 获取自游戏开始以来流逝的时间（计算公式：`day*24000+daytime`）。
-	 * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
-	 *
-	 * Returns the absolute time since the start of the world.
-	 * @returns 自游戏开始以来流逝的时间，以刻为单位。
-	 *
-	 */
-	getAbsoluteTime(): number;
-	/**
-	 * @beta
-	 * @remarks
-	 * 世界中可用的目标辅助预设和类别。
-	 *
-	 * The aim-assist presets and categories that can be used in
-	 * the world.
-	 *
-	 *
-	 * Required Experiments:
-	 * - Camera Aim Assist
-	 *
-	 */
-	getAimAssist(): AimAssistRegistry;
-	/**
-	 * @remarks
-	 * 获取一个包含了游戏中所有玩家的对象的数组。
-	 *
-	 * Returns an array of all active players within the world.
-	 * @returns 返回包含了游戏中所有玩家的对象的数组。
-	 * @throws This function can throw errors.
-	 */
-	getAllPlayers(): Player[];
-	/**
-	 * @remarks
-	 * 返回当前的天数。
-	 *
-	 * Returns the current day.
-	 *
-	 * @returns
-	 * 当前的天数，由世界时间除以每天的刻数确定。新世界从第 0 天开始。
-	 *
-	 * The current day, determined by the world time divided by the
-	 * number of ticks per day. New worlds start at day 0.
-	 */
-	getDay(): number;
-	/**
-	 * @remarks
-	 * 返回默认的主世界出生点位置。
-	 *
-	 * Returns the default Overworld spawn location.
-	 *
-	 * @returns
-	 * 默认的主世界出生点位置。默认情况下，Y 坐标为 32767，表示玩家的出生高度未固定，将由周围的方块决定。
-	 *
-	 * The default Overworld spawn location. By default, the Y
-	 * coordinate is 32767, indicating a player's spawn height is
-	 * not fixed and will be determined by surrounding blocks.
-	 */
-	getDefaultSpawnLocation(): Vector3;
-	/**
-	 * @remarks
-	 * 由 `dimensionId` 获取维度对象。
-	 *
-	 * Returns a dimension object.
-	 *
-	 * @param dimensionId
-	 * 要获取的维度的标识符。
-	 *
-	 * The name of the dimension. For example, "overworld",
-	 * "nether" or "the_end".
-	 * @returns
-	 * 与 `dimensionId` 关联的维度对象。
-	 *
-	 * The requested dimension
-	 * @throws
-	 * 若 `dimensionId` 不与任何维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
-	 *
-	 * Throws if the given dimension name is invalid
-	 */
-	getDimension(dimensionId: string): Dimension;
-	/**
-	 * @remarks
-	 * 获取由 `identifier` 指定的世界中已定义的动态属性的值。
-	 *
-	 * Returns a property value.
-	 *
-	 * @param identifier
-	 * 动态属性的标识符。
-	 *
-	 * The property identifier.
-	 * @returns
-	 * 返回动态属性 `identifier` 的值。属性的值尚未设定时，返回 `undefined`。
-	 *
-	 * Returns the value for the property, or undefined if the
-	 * property has not been set.
-	 * @throws
-	 * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
-	 *
-	 * Throws if the given dynamic property identifier is not
-	 * defined.
-	 * @seeExample incrementDynamicProperty.ts
-	 * @seeExample incrementDynamicPropertyInJsonBlob.ts
-	 */
-	getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
-	/**
-	 * @remarks
-	 * 获取世界中已设置的动态属性标识符集合。
-	 *
-	 * Gets a set of dynamic property identifiers that have been
-	 * set in this world.
-	 *
-	 * @returns
-	 * 一个包含活动动态属性标识符的字符串数组。
-	 *
-	 * A string array of active dynamic property identifiers.
-	 */
-	getDynamicPropertyIds(): string[];
-	/**
-	 * @remarks
-	 * 获取动态属性的总字节数。这可以用于分析以确保未存储过大的动态属性集合。
-	 *
-	 * Gets the total byte count of dynamic properties. This could
-	 * potentially be used for your own analytics to ensure you're
-	 * not storing gigantic sets of dynamic properties.
-	 *
-	 */
-	getDynamicPropertyTotalByteCount(): number;
-	/**
-	 * @remarks
-	 * 根据提供的 id 返回实体。
-	 *
-	 * Returns an entity based on the provided id.
-	 *
-	 * @param id
-	 * 实体的 id。
-	 *
-	 * The id of the entity.
-	 * @returns
-	 * 请求的实体对象。
-	 *
-	 * The requested entity object.
-	 * @throws
-	 * 若提供的实体 id 无效，则抛出错误。
-	 *
-	 * Throws if the given entity id is invalid.
-	 */
-	getEntity(id: string): Entity | undefined;
-	/**
-	 * @remarks
-	 * 返回当前时间的月相。
-	 *
-	 * Returns the MoonPhase for the current time.
-	 *
-	 */
-	getMoonPhase(): MoonPhase;
-	/**
-	 * @remarks
-	 * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
-	 *
-	 * Returns a set of players based on a set of conditions
-	 * defined via the EntityQueryOptions set of filter criteria.
-	 *
-	 * @param options
-	 * 可选的参数，用作于筛选指定条件的玩家。
-	 *
-	 * 注意，不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
-	 *
-	 * Additional options that can be used to filter the set of
-	 * players returned.
-	 * @returns
-	 * 一个玩家数组。
-	 *
-	 * A player array.
-	 * @throws
-	 * 若向 `options` 传入的对象含有 `type` 属性，抛出 `"command.generic.invalidPlayerType"`。
-	 *
-	 * 若向 `options` 传入的对象含有 `location`、`maxDistance`、`minDistance` 或 `volume` 属性，抛出 `"EntityQueryOptions property '<property>' is incompatible with function world.getPlayers"`。
-	 *
-	 * Throws if the provided EntityQueryOptions are invalid.
-	 */
-	getPlayers(options?: EntityQueryOptions): Player[];
-	/**
-	 * @remarks
-	 * 返回当前一天中的时间。
-	 *
-	 * Returns the time of day.
-	 *
-	 * @returns
-	 * 当前一天中的时间，以刻为单位，为 `0` 至 `24000` 之间的整数。
-	 *
-	 * The time of day, in ticks, between 0 and 24000.
-	 */
-	getTimeOfDay(): number;
-	/**
-	 * @remarks
-	 * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
-	 *
-	 * Plays a particular music track for all players.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
-	 * @param musicOptions 可选，指定播放音乐使用的附加参数。
-	 * @throws This function can throw errors.
-	 * @seeExample playMusicAndSound.ts
-	 */
-	playMusic(trackId: string, musicOptions?: MusicOptions): void;
-	/**
-	 * @remarks
-	 * 向玩家播放一段声音。
-	 *
-	 * Plays a sound for all players. DEPRECATED: Use
-	 * Dimension.playSound.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param soundId 声音项目的标识符。
-	 * @param soundOptions 可选，指定播放声音使用的附加参数。
-	 * @throws
-	 * 若音量小于 0.0，将抛出错误。
-	 * 若渐变时间小于 0.0，将抛出错误。
-	 * 若音调小于 0.01，将抛出错误。
-	 *
-	 * An error will be thrown if volume is less than 0.0.
-	 * An error will be thrown if fade is less than 0.0.
-	 * An error will be thrown if pitch is less than 0.01.
-	 * @seeExample playMusicAndSound.ts
-	 */
-	playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
-	/**
-	 * @remarks
-	 * 将音乐添加到播放列表。若没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
-	 *
-	 * Queues an additional music track for players. If a track is
-	 * not playing, a music track will play.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param trackId
-	 * 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
-	 *
-	 * Identifier of the music track to play.
-	 * @param musicOptions
-	 * 可选，指定播放音乐使用的附加参数。
-	 *
-	 * Additional options for the music track.
-	 * @throws
-	 * 若音量小于 0.0，将抛出错误。
-	 * 若渐变时间小于 0.0，将抛出错误。
-	 *
-	 * An error will be thrown if volume is less than 0.0.
-	 * An error will be thrown if fade is less than 0.0.
-	 *
-	 */
-	queueMusic(trackId: string, musicOptions?: MusicOptions): void;
-	/**
-	 * @remarks
-	 * 向所有玩家广播一条消息。
-	 *
-	 * Sends a message to all players.
-	 *
-	 * @param message
-	 * 将要广播的一段消息。
-	 * 这段消息可能是一段字符串，或者符合 `RawMessage` 接口的对象，或是这两种类型的组合。
-	 *
-	 * The message to be displayed.
-	 * @throws
-	 * 该方法在 `message` 格式不正确时会抛出错误。例如 `score` 的 `name` 为空字符串时。
-	 *
-	 * This method can throw if the provided {@link RawMessage} is
-	 * in an invalid format. For example, if an empty `name` string
-	 * is provided to `score`.
-	 */
-	sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
-	/**
-	 * @remarks
-	 * 设置世界时间。
-	 *
-	 * Sets the world time.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param absoluteTime
-	 * 世界时间，以刻为单位。
-	 *
-	 * The world time, in ticks.
-	 */
-	setAbsoluteTime(absoluteTime: number): void;
-	/**
-	 * @remarks
-	 * 设置所有玩家的默认出生点。
-	 *
-	 * Sets a default spawn location for all players.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param spawnLocation
-	 * 出生点的位置。注意，这默认假定在主世界维度中。
-	 *
-	 * Location of the spawn point. Note that this is assumed to be
-	 * within the overworld dimension.
-	 * @throws
-	 * 若提供的出生点超出边界，将抛出错误。
-	 *
-	 * Throws if the provided spawn location is out of bounds.
-	 *
-	 * {@link Error}
-	 *
-	 * {@link LocationOutOfWorldBoundariesError}
-	 */
-	setDefaultSpawnLocation(spawnLocation: Vector3): void;
-	/**
-	 * @beta
-	 * @remarks
-	 * 设置多个动态属性的具体值。
-	 *
-	 * Sets multiple dynamic properties with specific values.
-	 *
-	 * @param values
-	 * 包含动态属性键值对的记录。
-	 *
-	 * A Record of key value pairs of the dynamic properties to
-	 * set.
-	 * @throws This function can throw errors.
-	 */
-	setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
-	/**
-	 * @remarks
-	 * 为世界动态属性 `identifier` 设置一个值。
-	 *
-	 * Sets a specified property to a value.
-	 *
-	 * @param identifier
-	 * 动态属性的标识符。
-	 *
-	 * The property identifier.
-	 * @param value
-	 * 要设定的值，值的类型必须与动态属性注册的类型相同。
-	 *
-	 * Data value of the property to set.
-	 * @throws
-	 * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
-	 *
-	 * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
-	 *
-	 * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所允许的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
-	 *
-	 * Throws if the given dynamic property identifier is not
-	 * defined.
-	 * @seeExample incrementDynamicProperty.ts
-	 * @seeExample incrementDynamicPropertyInJsonBlob.ts
-	 */
-	setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
-	/**
-	 * @remarks
-	 * 设置一天中的时间。
-	 *
-	 * Sets the time of day.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 * @param timeOfDay
-	 * 一天中的时间，以刻为单位，为 `0` 至 `24000` 之间的整数。
-	 *
-	 * The time of day, in ticks, between 0 and 24000.
-	 * @throws
-	 * 若提供的时间不在有效范围内，将抛出错误。
-	 *
-	 * Throws if the provided time of day is not within the valid
-	 * range.
-	 */
-	setTimeOfDay(timeOfDay: number | TimeOfDay): void;
-	/**
-	 * @remarks
-	 * 停止客户端中正在播放的所有音乐曲目（需要更多测试）。
-	 *
-	 * Stops any music tracks from playing.
-	 *
-	 * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-	 *
-	 */
-	stopMusic(): void;
+    private constructor();
+    /**
+     * @remarks
+     * Contains a set of events that are applicable to the entirety
+     * of the world.  Event callbacks are called in a deferred
+     * manner. Event callbacks are executed in read-write mode.
+     *
+     */
+    readonly afterEvents: WorldAfterEvents;
+    /**
+     * @remarks
+     * Contains a set of events that are applicable to the entirety
+     * of the world. Event callbacks are called immediately. Event
+     * callbacks are executed in read-only mode.
+     *
+     * @seeExample customCommand.ts
+     */
+    readonly beforeEvents: WorldBeforeEvents;
+    /**
+     * @remarks
+     * The game rules that apply to the world.
+     *
+     */
+    readonly gameRules: GameRules;
+    readonly isHardcore: boolean;
+    /**
+     * @remarks
+     * 全局的、唯一的记分板对象。
+     * 
+     * Returns the general global scoreboard that applies to the
+     * world.
+     *
+     */
+    readonly scoreboard: Scoreboard;
+    /**
+     * @remarks
+     * Returns the manager for {@link Structure} related APIs.
+     *
+     */
+    readonly structureManager: StructureManager;
+    /**
+     * @beta
+     * @remarks
+     * A method that is internal-only, used for broadcasting
+     * specific messages between client and server.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param id
+     * The message identifier.
+     * @param value
+     * The message.
+     */
+    broadcastClientMessage(id: string, value: string): void;
+    /**
+     * @remarks
+     * Clears the set of dynamic properties declared for this
+     * behavior pack within the world.
+     *
+     */
+    clearDynamicProperties(): void;
+    /**
+     * @remarks
+     * 获取自游戏开始以来流逝的时间（计算公式：`day*24000+daytime`）。
+     * 时间的流逝受到游戏规则 `dodaylightcycle` 的影响。
+     * 
+     * Returns the absolute time since the start of the world.
+     * @returns 自游戏开始以来流逝的时间，以刻为单位。
+     *
+     */
+    getAbsoluteTime(): number;
+    /**
+     * @beta
+     * @remarks
+     * The aim-assist presets and categories that can be used in
+     * the world.
+     *
+     *
+     * Required Experiments:
+     * - Camera Aim Assist
+     *
+     */
+    getAimAssist(): AimAssistRegistry;
+    /**
+     * @remarks
+     * 获取一个包含了游戏中所有玩家的对象的数组。
+     * 
+     * Returns an array of all active players within the world.
+     * @returns 返回包含了游戏中所有玩家的对象的数组。
+     * @throws This function can throw errors.
+     */
+    getAllPlayers(): Player[];
+    /**
+     * @remarks
+     * Returns the current day.
+     *
+     * @returns
+     * The current day, determined by the world time divided by the
+     * number of ticks per day. New worlds start at day 0.
+     */
+    getDay(): number;
+    /**
+     * @remarks
+     * Returns the default Overworld spawn location.
+     *
+     * @returns
+     * The default Overworld spawn location. By default, the Y
+     * coordinate is 32767, indicating a player's spawn height is
+     * not fixed and will be determined by surrounding blocks.
+     */
+    getDefaultSpawnLocation(): Vector3;
+    /**
+     * @remarks
+     * 由 `dimensionId` 获取维度对象。
+     * 
+     * Returns a dimension object.
+     *
+     * @param dimensionId
+     * 要获取的维度的标识符。
+     * 
+     * The name of the dimension. For example, "overworld",
+     * "nether" or "the_end".
+     * @returns
+     * 与 `dimensionId` 关联的维度对象。
+     * 
+     * The requested dimension
+     * @throws
+     * 若 `dimensionId` 不与任何维度关联，抛出 `"Dimension '<dimensionId>' is invalid"`。
+     *
+     * Throws if the given dimension name is invalid
+     */
+    getDimension(dimensionId: string): Dimension;
+    /**
+     * @remarks
+     * 获取由 `identifier` 指定的世界中已定义的动态属性的值。
+     * 
+     * Returns a property value.
+     *
+     * @param identifier
+     * 动态属性的标识符。
+     * 
+     * The property identifier.
+     * @returns
+     * 返回动态属性 `identifier` 的值。属性的值尚未设定时，返回 `undefined`。
+     * 
+     * Returns the value for the property, or undefined if the
+     * property has not been set.
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"` 。
+     * 
+     * Throws if the given dynamic property identifier is not
+     * defined.
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     */
+    getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @remarks
+     * Gets a set of dynamic property identifiers that have been
+     * set in this world.
+     *
+     * @returns
+     * A string array of active dynamic property identifiers.
+     */
+    getDynamicPropertyIds(): string[];
+    /**
+     * @remarks
+     * Gets the total byte count of dynamic properties. This could
+     * potentially be used for your own analytics to ensure you're
+     * not storing gigantic sets of dynamic properties.
+     *
+     */
+    getDynamicPropertyTotalByteCount(): number;
+    /**
+     * @remarks
+     * Returns an entity based on the provided id.
+     *
+     * @param id
+     * The id of the entity.
+     * @returns
+     * The requested entity object.
+     * @throws
+     * Throws if the given entity id is invalid.
+     */
+    getEntity(id: string): Entity | undefined;
+    /**
+     * @remarks
+     * Returns the MoonPhase for the current time.
+     *
+     */
+    getMoonPhase(): MoonPhase;
+    /**
+     * @remarks
+     * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
+     * 
+     * Returns a set of players based on a set of conditions
+     * defined via the EntityQueryOptions set of filter criteria.
+     *
+     * @param options
+     * 可选的参数，用作于筛选指定条件的玩家。
+     *
+     * 注意，不能使用接口中的 `type`、`location`、`maxDistance`、`minDistance` 或 `volume` 属性。
+     * 
+     * Additional options that can be used to filter the set of
+     * players returned.
+     * @returns
+     * A player array.
+     * @throws
+     * 若向 `options` 传入的对象含有 `type` 属性，抛出 `"command.generic.invalidPlayerType"`。
+     * 
+     * 若向 `options` 传入的对象含有 `location`、`maxDistance`、`minDistance` 或 `volume` 属性，抛出 `"EntityQueryOptions property '<property>' is incompatible with function world.getPlayers"`。
+     * 
+     * Throws if the provided EntityQueryOptions are invalid.
+     */
+    getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @remarks
+     * 返回当前一天中的时间。
+     * 
+     * Returns the time of day.
+     *
+     * @returns
+     * 当前一天中的时间，以刻为单位，为 `0` 至 `24000` 之间的整数。
+     * 
+     * The time of day, in ticks, between 0 and 24000.
+     */
+    getTimeOfDay(): number;
+    /**
+     * @remarks
+     * 停止正在播放的音乐，并开始向玩家播放指定音乐。播放类别不为音乐的声音项目不会有任何效果。
+     * 
+     * Plays a particular music track for all players.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
+     * @param musicOptions 可选，指定播放音乐使用的附加参数。
+     * @throws This function can throw errors.
+     * @seeExample playMusicAndSound.ts
+     */
+    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @remarks
+     * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。
+     * 
+     * Queues an additional music track for players. If a track is
+     * not playing, a music track will play.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param trackId
+     * 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
+     * 
+     * Identifier of the music track to play.
+     * @param musicOptions
+     * 可选，指定播放音乐使用的附加参数。
+     * 
+     * Additional options for the music track.
+     * @throws
+     * An error will be thrown if volume is less than 0.0.
+     * An error will be thrown if fade is less than 0.0.
+     *
+     */
+    queueMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @remarks
+     * 向所有玩家广播一条消息。
+     * 
+     * Sends a message to all players.
+     *
+     * @param message
+     * 将要广播的一段消息。
+     * 这段消息可能是一段字符串，或者符合 `RawMessage` 接口的对象，或是这两种类型的组合。
+     * 
+     * The message to be displayed.
+     * @throws
+     * 该方法在 `message` 格式不正确时会抛出错误。例如 `score` 的 `name` 为空字符串时。
+     * 
+     * This method can throw if the provided {@link RawMessage} is
+     * in an invalid format. For example, if an empty `name` string
+     * is provided to `score`.
+     */
+    sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @remarks
+     * Sets the world time.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param absoluteTime
+     * The world time, in ticks.
+     */
+    setAbsoluteTime(absoluteTime: number): void;
+    /**
+     * @remarks
+     * Sets a default spawn location for all players.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param spawnLocation
+     * Location of the spawn point. Note that this is assumed to be
+     * within the overworld dimension.
+     * @throws
+     * Throws if the provided spawn location is out of bounds.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets multiple dynamic properties with specific values.
+     *
+     * @param values
+     * A Record of key value pairs of the dynamic properties to
+     * set.
+     * @throws This function can throw errors.
+     */
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
+     * @remarks
+     * 为世界动态属性 `identifier` 设置一个值。
+     * 
+     * Sets a specified property to a value.
+     *
+     * @param identifier
+     * 动态属性的标识符。
+     * 
+     * The property identifier.
+     * @param value
+     * 要设定的值，值的类型必须与动态属性注册的类型相同。
+     * 
+     * Data value of the property to set.
+     * @throws
+     * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
+     * 
+     * 若动态属性的类型不符合值的类型，抛出 `"Type mismatch for dynamic property '<identifier>'"`。
+     * 
+     * 若动态属性的类型为字符串，且值在使用 UTF-8 编码后的字节长度大于动态属性所允许的最大长度，抛出 `"Maximum string length exceeded (<length>/<maxLength>) for dynamic property '<identifier>'"`。
+     * 
+     * Throws if the given dynamic property identifier is not
+     * defined.
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     */
+    setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @remarks
+     * Sets the time of day.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * @param timeOfDay
+     * The time of day, in ticks, between 0 and 24000.
+     * @throws
+     * Throws if the provided time of day is not within the valid
+     * range.
+     */
+    setTimeOfDay(timeOfDay: number | TimeOfDay): void;
+    /**
+     * @remarks
+     * 停止客户端中正在播放的所有音乐曲目（需要更多测试）。
+     * 
+     * Stops any music tracks from playing.
+     *
+     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     */
+    stopMusic(): void;
 }
 
 /**
