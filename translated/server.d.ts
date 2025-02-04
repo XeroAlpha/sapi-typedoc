@@ -136,7 +136,7 @@ export enum BlockVolumeIntersection {
 	 * @remarks
 	 * Volume B has no intersection points with Volume A
 	 *
-	 * 体积B与体积A没有交点
+	 * 体积B与体积A没有交集
 	 */
 	Disjoint = 0,
 	/**
@@ -159,6 +159,7 @@ export enum BlockVolumeIntersection {
  * @beta
  * The state of a button on a keyboard, controller, or touch
  * interface.
+ * 
  * 表示键盘、控制器或触摸界面上按钮的状态。
  */
 export enum ButtonState {
@@ -1380,14 +1381,14 @@ export enum EntityInitializationCause {
 
 /**
  * @beta
- * 一个枚举，包含实体生成的类别。
+ * 表示实体生成的类别的枚举。
  *
  * An enum containing categories of entity spawning.
  */
 export enum EntitySpawnCategory {
 	/**
 	 * @remarks
-	 * 表示自然生成的生物。
+	 * 表示是环境生成的生物。
 	 *
 	 * Mobs that have an ambient spawn.
 	 *
@@ -1413,7 +1414,7 @@ export enum EntitySpawnCategory {
 	 * @remarks
 	 * 表示其他的生成（例如村民、铁傀儡）。
 	 *
-	 * Miscellaneous spawns ( e.g. Villager, Iron Golem).
+	 * Miscellaneous spawns (e.g. Villager, Iron Golem).
 	 *
 	 */
 	Misc = "Misc",
@@ -1427,7 +1428,7 @@ export enum EntitySpawnCategory {
 	Monster = "Monster",
 	/**
 	 * @remarks
-	 * 表示在水下中生成的生物。
+	 * 表示在地下水中生成的生物。
 	 *
 	 * Creatures that spawn underground in the water.
 	 *
@@ -1435,7 +1436,7 @@ export enum EntitySpawnCategory {
 	UndergroundWaterCreature = "UndergroundWaterCreature",
 	/**
 	 * @remarks
-	 * 表示自然生成的水生生物。
+	 * 表示是环境生成的水生生物。
 	 *
 	 * Water mobs that have an ambient spawn.
 	 *
@@ -2068,50 +2069,51 @@ export enum GameRule {
 
 /**
  * @beta
- * 表示客户端的图形模式。由 {@link Player.graphicsMode} 使用。
- * 
  * Describes the graphics mode of a client. Used by {@link
  * Player.graphicsMode}
+ *
+ * 表示客户端的图形模式。由 {@link Player.graphicsMode} 使用。
  */
 export enum GraphicsMode {
-    /**
+	/**
      * @remarks
-     * 表示延迟技术预览图形模式设置。
      * 
      * A graphics mode that refers to the Deferred Technical
      * Preview graphics mode setting.
-     *
-     */
-    Deferred = 'Deferred',
-    /**
-     * @remarks
-     * 表示高级图形模式设置。在此设置中，大多数特殊图形效果都会开启。
      * 
-     * A graphics mode that refers to the Fancy graphics mode
-     * setting. Most special graphics effects are turned on in this
-     * setting.
-     *
+     * 表示延迟技术预览图形模式设置。
      */
-    Fancy = 'Fancy',
-    /**
-     * @remarks
+	Deferred = 'Deferred',
+	/**
+	 * @remarks
+	 *
+	 * A graphics mode that refers to the Fancy graphics mode
+	 * setting. Most special graphics effects are turned on in this
+	 * setting.
+     * 
+	 * 表示高级图形模式设置。在此设置中，大多数特殊图形效果都会开启。
+	 */
+	Fancy = 'Fancy',
+	/**
+	 * @remarks
+	 *
+	 * A graphics mode that refers to the Ray Traced graphics mode
+	 * setting. This setting enables ray tracing.
+	 *
      * 表示光线追踪图形模式设置。此设置会启用光线追踪。
-     * 
-     * A graphics mode that refers to the Ray Traced graphics mode
-     * setting. This setting enables ray tracing.
-     *
-     */
-    RayTraced = 'RayTraced',
-    /**
-     * @remarks
+	 */
+	RayTraced = 'RayTraced',
+	/**
+	 * @remarks
+	 
+	 *
+	 * A graphics mode that refers to the Simple graphics mode
+	 * setting. Most graphics effects are turned off in this
+	 * setting.
+	 *
      * 表示简单图形模式设置。在此设置中，大多数图形效果都会关闭。
-     * 
-     * A graphics mode that refers to the Simple graphics mode
-     * setting. Most graphics effects are turned off in this
-     * setting.
-     *
-     */
-    Simple = 'Simple',
+	 */
+	Simple = 'Simple',
 }
 
 export enum HudElement {
@@ -3038,28 +3040,46 @@ export enum TimeOfDay {
  */
 export enum TintMethod {
 
-    // 表示白桦树叶的颜色渲染方法
-    // Represents the tint method for birch foliage
+    /**
+     * 表示白桦树叶的颜色渲染方法。
+     * 
+     * Represents the tint method for birch foliage.
+     */
     BirchFoliage = 'BirchFoliage',
 
-    // 表示默认树叶的颜色渲染方法
-    // Represents the default tint method for foliage
+    /**
+     * 表示默认树叶的颜色渲染方法。
+     * 
+     * Represents the default tint method for foliage.
+     */
     DefaultFoliage = 'DefaultFoliage',
 
-    // 表示常绿树叶的颜色渲染方法
-    // Represents the tint method for evergreen foliage
+    /**
+     * 表示常绿树叶的颜色渲染方法。
+     * 
+     * Represents the tint method for evergreen foliage.
+     */
     EvergreenFoliage = 'EvergreenFoliage',
 
-    // 表示草地的颜色渲染方法
-    // Represents the tint method for grass
+    /**
+     * 表示草地的颜色渲染方法。
+     * 
+     * Represents the tint method for grass.
+     */
     Grass = 'Grass',
 
-    // 表示无颜色渲染方法
-    // Represents no tint method
+    /**
+     * 表示无颜色渲染方法。
+     * 
+     * Represents no tint method.
+     */
     None = 'None',
 
-    // 表示水的颜色渲染方法
-    // Represents the tint method for water
+    /**
+     * 表示水的颜色渲染方法。
+     * 
+     * Represents the tint method for water.
+     */
     Water = 'Water',
 }
 

@@ -859,6 +859,7 @@ export class Entity {
 	 *
 	 * @param values
 	 * 要设置的动态属性的键值对记录。
+	 * 
 	 * A Record of key value pairs of the dynamic properties to
 	 * set.
 	 * @throws 此函数可能会抛出错误。
