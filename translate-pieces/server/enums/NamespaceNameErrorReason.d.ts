@@ -3,7 +3,7 @@
  * An enumeration describing the reason for the namespace name
  * error being thrown
  *
- * 描述命名空间名称错误被抛出的原因的枚举
+ * 表示命名空间名称错误抛出原因的枚举
  */
 export enum NamespaceNameErrorReason {
 	/**

@@ -1,6 +1,6 @@
 /**
  * @beta
- * 一个枚举，表示实体生成的原因。
+ * 表示实体生成原因的枚举。
  *
  * An enum containing reasons an entity could be spawned.
  */

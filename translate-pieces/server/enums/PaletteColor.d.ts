@@ -1,7 +1,8 @@
 /**
  * Enum containing colors to be used with EntityColorComponent
  * and EntityColor2Component
- * 表示可与EntityColorComponent(Entity颜色组件)及EntityColor2Component(Entity颜色2组件)搭配使用的颜色枚举
+ * 
+ * 表示可与 EntityColorComponent 及 EntityColor2Component 搭配使用的颜色枚举
  */
 export enum PaletteColor {
 	/**

@@ -51,7 +51,7 @@ export enum EquipmentSlot {
 	 * The mainhand slot. For players, the mainhand slot refers to
 	 * the currently active hotbar slot.
 	 *
-	 * 主手槽位。对于玩家来说，主手槽位指的是当前激活的快捷栏槽位位。
+	 * 主手槽位。对于玩家来说，主手槽位指的是当前激活的快捷栏槽位。
 	 */
 	Mainhand = "Mainhand",
 	/**

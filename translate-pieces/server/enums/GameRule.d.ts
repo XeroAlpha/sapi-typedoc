@@ -288,7 +288,7 @@ export enum GameRule {
      * Controls whether blocks randomly drop loot or all blocks
      * drop loot when destroyed by an explosion. Defaults to false.
      *
-     * 控制方块是否随机掉落战利品或所有方块在爆炸时掉落战利品。默认为 false。
+     * 控制方块在爆炸时是否随机掉落战利品或所有方块都掉落战利品。默认为 false。
      */
     TntExplosionDropDecay = 'tntExplosionDropDecay',
 }

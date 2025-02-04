@@ -1,6 +1,6 @@
 /**
  * @beta
- * 表示实体生成的类别的枚举。
+ * 表示实体生成类别的枚举。
  *
  * An enum containing categories of entity spawning.
  */
