@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity } from "../index";
+/* IMPORT */ import { BlockEvent, Entity } from '../index';
 
 /**
  * 描述了实体踩在特定方块上的信息。

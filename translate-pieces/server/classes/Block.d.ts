@@ -27,7 +27,7 @@ export class Block {
 
 	/**
 	 * @remarks
-	 * 若这个方块是空气方块，则返回 true （例如，空的空间）。
+	 * 返回 true 若这个方块是空气方块（例如，空的空间）。
 	 *
 	 * Returns true if this block is an air block (i.e., empty
 	 * space).

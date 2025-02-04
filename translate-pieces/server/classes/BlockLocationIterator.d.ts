@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3, minecraftcommon } from "../index";
+/* IMPORT */ import { Vector3, minecraftcommon } from '../index';
 
 /**
  * BlockLocationIterator 返回当前迭代的方块体积内的下一个方块位置。

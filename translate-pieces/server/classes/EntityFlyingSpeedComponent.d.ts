@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 表示实体的飞行速度。
@@ -18,5 +18,5 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:flying_speed";
+	static readonly componentId = 'minecraft:flying_speed';
 }

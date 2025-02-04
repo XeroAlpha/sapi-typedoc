@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from "../index";
+/* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from '../index';
 
 /**
  * 当存在时，此方块具有类似活塞的行为。表示
@@ -31,7 +31,7 @@ export class BlockPistonComponent extends BlockComponent {
 	 * 此属性在使用时可能会抛出异常。
 	 */
 	readonly state: BlockPistonState;
-	static readonly componentId = "minecraft:piston";
+	static readonly componentId = 'minecraft:piston';
 	/**
 	 * @remarks
 	 * 获取与此活塞连接的一组方块。

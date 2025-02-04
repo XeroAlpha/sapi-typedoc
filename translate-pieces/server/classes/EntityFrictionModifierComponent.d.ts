@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 表示摩擦力如何影响该实体。
@@ -19,5 +19,5 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:friction_modifier";
+	static readonly componentId = 'minecraft:friction_modifier';
 }

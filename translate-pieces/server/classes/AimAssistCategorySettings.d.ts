@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftvanilladata } from "../index";
+/* IMPORT */ import { minecraftvanilladata } from '../index';
 
 /**
  * @beta
@@ -100,7 +100,9 @@ export class AimAssistCategorySettings {
 	 * 映射方块 ID 到其优先级设置的记录。数值越大，优先级越高。
 	 *
 	 */
-	setBlockPriorities(blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>): void;
+	setBlockPriorities(
+        blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>,
+    ): void;
 	/**
 	 * @remarks
 	 * Sets the priority settings used for entity targeting.
@@ -114,5 +116,7 @@ export class AimAssistCategorySettings {
 	 * 映射实体 ID 到其优先级设置的记录。数值越大，优先级越高。
 	 *
 	 */
-	setEntityPriorities(entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>): void;
+	setEntityPriorities(
+        entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>,
+    ): void;
 }

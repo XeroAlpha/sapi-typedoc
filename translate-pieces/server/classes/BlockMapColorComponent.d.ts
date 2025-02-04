@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, RGBA, TintMethod } from "../index";
+/* IMPORT */ import { BlockComponent, RGBA, TintMethod } from '../index';
 
 /**
  * @beta
@@ -9,7 +9,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMapColorComponent extends BlockComponent {
 	private constructor();
-	static readonly componentId = "minecraft:map_color";
+	static readonly componentId = 'minecraft:map_color';
 	/**
 	 * @remarks
 	 * 表示该方块定义的基础地图颜色。

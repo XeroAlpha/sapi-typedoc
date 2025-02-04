@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Dimension } from "../index";
+/* IMPORT */ import { Block, Dimension } from '../index';
 
 /**
  * 描述了影响特定方块的事件的信息。

@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from "../index";
+/* IMPORT */ import { InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from '../index';
 
 /**
  * 表示更大容器中的一个槽位（例如，实体的物品栏）。
@@ -40,6 +40,17 @@ export class ContainerSlot {
 	 * {@link InvalidContainerSlotError}
 	 */
 	readonly isStackable: boolean;
+	/**
+	 * @beta
+	 * @remarks
+	 * 返回ContainerSlot是否有效。若容器存在且已加载，并且槽位索引有效，则容器槽位有效。
+	 *
+	 * Returns whether the ContainerSlot is valid. The container
+	 * slot is valid if the container exists and is loaded, and the
+	 * slot index is valid.
+	 *
+	 */
+	readonly isValid: boolean;
 	/**
 	 * @remarks
 	 * 获取或设置物品在死亡时是否保留。
@@ -117,7 +128,7 @@ export class ContainerSlot {
 	 *
 	 * {@link InvalidContainerSlotError}
 	 */
-	readonly "type": ItemType;
+	readonly 'type': ItemType;
 	/**
 	 * @remarks
 	 * 表示物品堆中物品类型的标识符。若没有指定命名空间，则默认使用`minecraft:`。例如，`wheat`或`apple`。
@@ -158,7 +169,7 @@ export class ContainerSlot {
 	 *
 	 * @throws 此函数可能会抛出错误。
 	 *
-	 * Throws This function can throw errors.
+	 * @throws This function can throw errors.
 	 *
 	 * {@link InvalidContainerSlotError}
 	 */
@@ -361,16 +372,6 @@ export class ContainerSlot {
 	isStackableWith(itemStack: ItemStack): boolean;
 	/**
 	 * @remarks
-	 * 返回ContainerSlot是否有效。若容器存在且已加载，并且槽位索引有效，则容器槽位有效。
-	 *
-	 * Returns whether the ContainerSlot is valid. The container
-	 * slot is valid if the container exists and is loaded, and the
-	 * slot index is valid.
-	 *
-	 */
-	isValid(): boolean;
-	/**
-	 * @remarks
 	 * 表示此物品在冒险模式下可以破坏的方块类型列表。方块名称显示在物品的提示信息中。将值设置为`undefined`将清除列表。
 	 *
 	 * The list of block types this item can break in Adventure
@@ -449,8 +450,8 @@ export class ContainerSlot {
 	 *
 	 * @param identifier
 	 * 属性标识符。
-	 * T
-	 * he property identifier.
+	 *
+	 * The property identifier.
 	 * @param value
 	 * 要设置的属性值。
 	 *

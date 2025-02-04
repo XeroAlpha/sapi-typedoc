@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, ItemStack } from "../index";
+/* IMPORT */ import { ContainerSlot, ItemStack } from '../index';
 
 /**
  * 表示一个可以存放物品的容器。用于诸如玩家、矿车箱、羊驼等实体。
@@ -22,6 +22,17 @@ export class Container {
 	 * Throws if the container is invalid.
 	 */
 	readonly emptySlotsCount: number;
+	/**
+	 * @beta
+	 * @remarks
+	 * 返回一个布尔值，表示容器对象（或与此容器关联的实体或方块）在当前上下文中是否仍可用。
+	 *
+	 * Returns whether a container object (or the entity or block
+	 * that this container is associated with) is still available
+	 * for use in this context.
+	 *
+	 */
+	readonly isValid: boolean;
 	/**
 	 * @remarks
 	 * 此容器中的槽位数量。例如，一个标准的单格箱子有27个槽位。
@@ -55,8 +66,7 @@ export class Container {
 	 *
 	 * The stack of items to add.
 	 * @throws 此函数可能抛出错误。
-	 *
-	 * This function can throw errors.
+	 * @throws This function can throw errors.
 	 */
 	addItem(itemStack: ItemStack): ItemStack | undefined;
 	/**
@@ -115,16 +125,6 @@ export class Container {
 	 * out of bounds.
 	 */
 	getSlot(slot: number): ContainerSlot;
-	/**
-	 * @remarks
-	 * 返回一个布尔值，表示容器对象（或与此容器关联的实体或方块）在当前上下文中是否仍可用。
-	 *
-	 * Returns whether a container object (or the entity or block
-	 * that this container is associated with) is still available
-	 * for use in this context.
-	 *
-	 */
-	isValid(): boolean;
 	/**
 	 * @remarks
 	 * 将物品从一个槽位移动到另一个槽位，可能跨容器移动。

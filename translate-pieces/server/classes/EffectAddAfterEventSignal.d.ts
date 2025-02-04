@@ -1,4 +1,4 @@
-/* IMPORT */ import { EffectAddAfterEvent, EntityEventOptions } from "../index";
+/* IMPORT */ import { EffectAddAfterEvent, EntityEventOptions } from '../index';
 
 /**
  * 管理连接到实体添加效果时的回调函数。
@@ -20,7 +20,10 @@ export class EffectAddAfterEventSignal {
 	 * This function can be called in early-execution mode.
 	 *
 	 */
-	subscribe(callback: (arg0: EffectAddAfterEvent) => void, options?: EntityEventOptions): (arg0: EffectAddAfterEvent) => void;
+	subscribe(
+		callback: (arg0: EffectAddAfterEvent) => void,
+		options?: EntityEventOptions,
+	): (arg0: EffectAddAfterEvent) => void;
 	/**
 	 * @remarks
 	 * 移除一个在实体添加效果时调用的回调函数。

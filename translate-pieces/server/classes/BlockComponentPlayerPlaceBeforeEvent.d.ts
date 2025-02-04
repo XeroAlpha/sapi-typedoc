@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player } from "../index";
+/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player } from '../index';
 
 /**
  * 表示玩家放置方块前的事件信息。

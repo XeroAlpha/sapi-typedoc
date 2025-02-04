@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockPermutation, Direction, Entity } from "../index";
+/* IMPORT */ import { Block, BlockPermutation, Direction, Entity } from '../index';
 
 /**
  * 表示实体击中方块相关的信息。

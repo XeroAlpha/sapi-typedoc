@@ -1,4 +1,4 @@
-/* IMPORT */ import { EnchantmentType } from "../index";
+/* IMPORT */ import { EnchantmentType } from '../index';
 
 /**
  * 包含当前世界中可用的Minecraft附魔类型的目录。

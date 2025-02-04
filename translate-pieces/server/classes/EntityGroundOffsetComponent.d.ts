@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 设置实体距离地面的偏移量。
@@ -20,5 +20,5 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:ground_offset";
+	static readonly componentId = 'minecraft:ground_offset';
 }

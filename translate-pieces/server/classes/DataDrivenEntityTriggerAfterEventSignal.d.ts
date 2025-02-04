@@ -1,4 +1,4 @@
-/* IMPORT */ import { DataDrivenEntityTriggerAfterEvent, EntityDataDrivenTriggerEventOptions } from "../index";
+/* IMPORT */ import { DataDrivenEntityTriggerAfterEvent, EntityDataDrivenTriggerEventOptions } from '../index';
 
 /**
  * 包含与触发数据驱动实体事件相关的事件注册，例如鸡的 minecraft:ageable_grow_up 事件。
@@ -21,7 +21,10 @@ export class DataDrivenEntityTriggerAfterEventSignal {
 	 * This function can be called in early-execution mode.
 	 *
 	 */
-	subscribe(callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void, options?: EntityDataDrivenTriggerEventOptions): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
+	subscribe(
+		callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void,
+		options?: EntityDataDrivenTriggerEventOptions,
+	): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
 	/**
 	 * @remarks
 	 * 移除一个回调函数，该回调函数会在数据驱动实体事件被触发后调用。

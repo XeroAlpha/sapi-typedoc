@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftvanilladata } from "../index";
+/* IMPORT */ import { minecraftvanilladata } from '../index';
 
 /**
  * @beta
@@ -104,7 +104,13 @@ export class AimAssistPresetSettings {
 	 *
 	 * An array of block/entity Ids.
 	 */
-	setExcludedTargets(targets?: (keyof typeof minecraftvanilladata.MinecraftBlockTypes | keyof typeof minecraftvanilladata.MinecraftEntityTypes | string)[]): void;
+	setExcludedTargets(
+		targets?: (
+			| keyof typeof minecraftvanilladata.MinecraftBlockTypes
+			| keyof typeof minecraftvanilladata.MinecraftEntityTypes
+			| string
+		)[],
+	): void;
 	/**
 	 * @remarks
 	 * 设置每个物品的瞄准辅助类别 ID。

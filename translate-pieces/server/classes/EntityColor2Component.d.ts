@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, PaletteColor } from "../index";
+/* IMPORT */ import { EntityComponent, PaletteColor } from '../index';
 
 /**
  * 定义实体的次要颜色。仅适用于某些具有次预定义颜色值的实体（例如热带鱼）。
@@ -21,5 +21,5 @@ export class EntityColor2Component extends EntityComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly value: PaletteColor;
-	static readonly componentId = "minecraft:color2";
+	static readonly componentId = 'minecraft:color2';
 }

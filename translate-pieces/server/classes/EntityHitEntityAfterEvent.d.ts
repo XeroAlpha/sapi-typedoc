@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity } from "../index";
+/* IMPORT */ import { Entity } from '../index';
 
 /**
  * 表示一个实体击中（近战攻击）另一个实体相关的信息。

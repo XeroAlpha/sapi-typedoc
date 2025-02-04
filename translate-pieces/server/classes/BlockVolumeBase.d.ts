@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockLocationIterator, BoundingBox, Vector3 } from "../index";
+/* IMPORT */ import { BlockLocationIterator, BoundingBox, Vector3 } from '../index';
 
 /**
  * BlockVolume 的基础类型。

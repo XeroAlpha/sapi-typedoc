@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Direction, Player, Vector3 } from "../index";
+/* IMPORT */ import { BlockEvent, Direction, Player, Vector3 } from '../index';
 
 /**
  * 包含有关特定方块被交互的信息。

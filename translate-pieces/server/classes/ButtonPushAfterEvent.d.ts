@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity } from "../index";
+/* IMPORT */ import { BlockEvent, Entity } from '../index';
 
 /**
  * 表示按钮按下后相关的更改信息。

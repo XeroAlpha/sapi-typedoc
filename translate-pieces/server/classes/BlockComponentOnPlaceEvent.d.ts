@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation } from "../index";
+/* IMPORT */ import { BlockEvent, BlockPermutation } from '../index';
 
 /**
  * 描述了放置的特定方块的信息。

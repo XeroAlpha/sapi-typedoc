@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from "../index";
+/* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from '../index';
 
 /**
  * BlockVolume 是一个简单的接口，表示在世界方块位置中具有给定大小（三维方块）的矩形区域。
@@ -53,7 +53,7 @@ export class BlockVolume extends BlockVolumeBase {
 	 * This property can't be edited in read-only mode.
 	 *
 	 */
-	"from": Vector3;
+	'from': Vector3;
 	/**
 	 * @remarks
 	 * 表示一个三维矩形中与另一角相对的世界方块位置。

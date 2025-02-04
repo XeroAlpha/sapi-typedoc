@@ -1,4 +1,4 @@
-/* IMPORT */ import { Component, Entity, InvalidEntityError } from "../index";
+/* IMPORT */ import { Component, Entity, InvalidEntityError } from '../index';
 
 /**
  * 用于下游实体组件的基本类。(所有实体组件的父类。)

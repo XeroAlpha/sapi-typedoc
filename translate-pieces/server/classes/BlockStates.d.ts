@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockStateType } from "../index";
+/* IMPORT */ import { Block, BlockStateType } from '../index';
 
 /**
  * 枚举所有的 {@link BlockStateType}。

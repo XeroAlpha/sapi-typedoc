@@ -8,29 +8,29 @@
  * this event, or it will cause an infinite loop!
  */
 export class EntityHealthChangedAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * 生命值发生变化的实体。
-     *
-     * Entity whose health changed.
-     *
-     */
-    readonly entity: Entity;
-    /**
-     * @remarks
-     * 实体的新生命值。
-     *
-     * New health value of the entity.
-     *
-     */
-    readonly newValue: number;
-    /**
-     * @remarks
-     * 实体的旧生命值。
-     *
-     * Old health value of the entity.
-     *
-     */
-    readonly oldValue: number;
+	private constructor();
+	/**
+	 * @remarks
+	 * 生命值发生变化的实体。
+	 *
+	 * Entity whose health changed.
+	 *
+	 */
+	readonly entity: Entity;
+	/**
+	 * @remarks
+	 * 实体的新生命值。
+	 *
+	 * New health value of the entity.
+	 *
+	 */
+	readonly newValue: number;
+	/**
+	 * @remarks
+	 * 实体的旧生命值。
+	 *
+	 * Old health value of the entity.
+	 *
+	 */
+	readonly oldValue: number;
 }

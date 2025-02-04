@@ -1,4 +1,4 @@
-/* IMPORT */ import { EffectType } from "../index";
+/* IMPORT */ import { EffectType } from '../index';
 
 /**
  * 表示一种效果类型 - 例如中毒 - 可以应用于实体。

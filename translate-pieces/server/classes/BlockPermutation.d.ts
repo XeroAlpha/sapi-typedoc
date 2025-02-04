@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType, minecraftvanilladata } from "../index";
+/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType, minecraftvanilladata } from '../index';
 
 /**
  * 表示一个由 {@link BlockType} 类型和属性（有时也称为方块状态）组成的组合，
@@ -20,7 +20,7 @@ export class BlockPermutation {
 	 * The {@link BlockType} that the permutation has.
 	 *
 	 */
-	readonly "type": BlockType;
+	readonly 'type': BlockType;
 	/**
 	 * @beta
 	 * @remarks
@@ -108,7 +108,9 @@ export class BlockPermutation {
 	 * Returns the state if the permutation has it, else
 	 * `undefined`.
 	 */
-	getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(stateName: T): minecraftvanilladata.BlockStateSuperset[T] | undefined;
+	getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+		stateName: T,
+	): minecraftvanilladata.BlockStateSuperset[T] | undefined;
 	/**
 	 * @remarks
 	 * 创建此组合的副本。
@@ -185,7 +187,10 @@ export class BlockPermutation {
 	 * 一个可选的状态集合，用于进行比较。
 	 * An optional set of states to compare against.
 	 */
-	matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(blockName: T, states?: BlockStateArg<T>): boolean;
+	matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+		blockName: T,
+		states?: BlockStateArg<T>,
+	): boolean;
 	/**
 	 * @remarks
 	 * 返回具有特定属性设置的派生 BlockPermutation。
@@ -201,7 +206,10 @@ export class BlockPermutation {
 	 * Value of the block property.
 	 * @throws This function can throw errors.
 	 */
-	withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(name: T, value: minecraftvanilladata.BlockStateSuperset[T]): BlockPermutation;
+	withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+		name: T,
+		value: minecraftvanilladata.BlockStateSuperset[T],
+	): BlockPermutation;
 	/**
 	 * @remarks
 	 * 给定一个类型标识符和一个可选的属性集合，
@@ -218,5 +226,8 @@ export class BlockPermutation {
 	 * @throws This function can throw errors.
 	 * @seeExample addBlockColorCube.ts
 	 */
-	static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(blockName: T, states?: BlockStateArg<T>): BlockPermutation;
+	static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+		blockName: T,
+		states?: BlockStateArg<T>,
+	): BlockPermutation;
 }

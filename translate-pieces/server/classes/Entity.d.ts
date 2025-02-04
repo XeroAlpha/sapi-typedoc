@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, minecraftcommon } from "../index";
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
+
 
 /**
  * 表示世界中实体（例如生物、玩家或矿车等移动物体）的状态。
@@ -116,6 +117,18 @@ export class Entity {
 	 * @throws This property can throw when used.
 	 */
 	readonly isSwimming: boolean;
+	/**
+     * @beta
+     * @remarks
+	 * 返回实体是否可以被脚本操控。当玩家的 EntityLifetimeState 设置为 Loaded 时，
+	 * 被认为是有效的。
+	 * 
+     * Returns whether the entity can be manipulated by script. A
+     * Player is considered valid when it's EntityLifetimeState is
+     * set to Loaded.
+     *
+     */
+    readonly isValid: boolean;
 	/**
 	 * @remarks
 	 * 实体的当前位置。
@@ -269,22 +282,13 @@ export class Entity {
 	 *
 	 * This function can't be called in read-only mode.
 	 *
-	 * @param directionX
-	 * 水平平面上的 X 方向。
-	 * X direction in horizontal plane.
-	 * @param directionZ
-	 * 水平平面上的 Z 方向。
-	 * Z direction in horizontal plane.
-	 * @param horizontalStrength
-	 * 水平向量的击退强度。
-	 * Knockback strength for the horizontal vector.
 	 * @param verticalStrength
 	 * 垂直向量的击退强度。
 	 * Knockback strength for the vertical vector.
 	 * @throws This function can throw errors.
 	 * @seeExample bounceSkeletons.ts
 	 */
-	applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+	applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
 	/**
 	 * @remarks
 	 * 清除已设置在此实体上的所有动态属性。
@@ -363,6 +367,9 @@ export class Entity {
 	 * 若组件存在于实体上，则返回该组件，否则返回 undefined。
 	 * Returns the component if it exists on the entity, otherwise
 	 * undefined.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
 	/**
@@ -376,6 +383,9 @@ export class Entity {
 	 * 返回此实体上存在且 API 支持的所有组件。
 	 * Returns all components that are both present on this entity
 	 * and supported by the API.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	getComponents(): EntityComponent[];
 	/**
@@ -594,6 +604,9 @@ export class Entity {
 	 *
 	 * Returns true if the specified component is present on this
 	 * entity.
+	 * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
 	 */
 	hasComponent(componentId: string): boolean;
 	/**
@@ -613,21 +626,6 @@ export class Entity {
 	 * @throws This function can throw errors.
 	 */
 	hasTag(tag: string): boolean;
-	/**
-	 * @remarks
-	 * 返回实体是否可以被脚本操控。当玩家的 EntityLifetimeState 设置为 Loaded 时，
-	 * 被认为是有效的。
-	 *
-	 * Returns whether the entity can be manipulated by script. A
-	 * Player is considered valid when it's EntityLifetimeState is
-	 * set to Loaded.
-	 *
-	 * @returns
-	 * 实体是否有效。
-	 *
-	 * Whether the entity is valid.
-	 */
-	isValid(): boolean;
 	/**
 	 * @remarks
 	 * 杀死此实体。实体将正常掉落战利品。
@@ -829,6 +827,7 @@ export class Entity {
 	 */
 	runCommand(commandString: string): CommandResult;
 	/**
+	 * @attention 注：此方法在最新版已被删除，这里为了兼容性保留
 	 * @remarks
 	 * 从该实体的上下文中运行特定命令（异步）。注意，在给定的 tick 中最多可以运行 128 个异步命令。
 	 *

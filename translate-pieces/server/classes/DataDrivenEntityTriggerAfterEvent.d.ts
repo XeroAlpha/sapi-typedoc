@@ -1,4 +1,4 @@
-/* IMPORT */ import { DefinitionModifier, Entity } from "../index";
+/* IMPORT */ import { DefinitionModifier, Entity } from '../index';
 
 /**
  * 描述了与数据驱动的实体事件触发相关的信息，例如，鸡的 minecraft:ageable_grow_up 事件。

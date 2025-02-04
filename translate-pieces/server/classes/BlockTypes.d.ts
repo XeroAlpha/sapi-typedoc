@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockType } from "../index";
+/* IMPORT */ import { BlockType } from '../index';
 
 /**
  * 表示当前世界可用的 Minecraft 方块类型目录。

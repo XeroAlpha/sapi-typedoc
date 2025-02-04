@@ -1,3 +1,5 @@
+/* IMPORT */ import { ChatSendAfterEvent } from '../index';
+
 /**
  * @beta
  * 管理与聊天消息发送相关的回调。

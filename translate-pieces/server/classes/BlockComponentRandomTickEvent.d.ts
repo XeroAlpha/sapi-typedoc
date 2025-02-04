@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent } from "../index";
+/* IMPORT */ import { BlockEvent } from '../index';
 
 /**
  * 描述了关于特定方块随机刻变化的信息。

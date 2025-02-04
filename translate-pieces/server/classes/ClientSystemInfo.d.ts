@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlatformType, SystemInfo } from "../index";
+/* IMPORT */ import { PlatformType, SystemInfo } from '../index';
 
 /**
  * 描述了客户端实例的设备信息。

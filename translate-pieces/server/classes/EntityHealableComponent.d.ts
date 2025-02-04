@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, FeedItem } from "../index";
+/* IMPORT */ import { EntityComponent, FeedItem } from '../index';
 
 /**
  * 定义了与该实体交互以治疗它的方式。
@@ -20,7 +20,7 @@ export class EntityHealableComponent extends EntityComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly forceUse: boolean;
-	static readonly componentId = "minecraft:healable";
+	static readonly componentId = 'minecraft:healable';
 	/**
 	 * @remarks
 	 * 一组可以专门治疗该实体的物品。

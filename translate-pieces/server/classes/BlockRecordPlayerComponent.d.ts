@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, ItemStack, ItemType } from "../index";
+/* IMPORT */ import { BlockComponent, ItemStack, ItemType } from '../index';
 
 /**
  * 表示一个可以播放唱片的方块。
@@ -8,7 +8,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockRecordPlayerComponent extends BlockComponent {
 	private constructor();
-	static readonly componentId = "minecraft:record_player";
+	static readonly componentId = 'minecraft:record_player';
 	/**
 	 * @remarks
 	 * 弹出当前设置的唱片。

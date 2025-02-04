@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockExplodeAfterEvent } from "../index";
+/* IMPORT */ import { BlockExplodeAfterEvent } from '../index';
 
 /**
  * 管理与爆炸发生时的回调函数，

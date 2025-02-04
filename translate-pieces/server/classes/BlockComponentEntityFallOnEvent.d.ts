@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity } from "../index";
+/* IMPORT */ import { BlockEvent, Entity } from '../index';
 
 /**
  * 表示实体掉落到特定方块上的信息。

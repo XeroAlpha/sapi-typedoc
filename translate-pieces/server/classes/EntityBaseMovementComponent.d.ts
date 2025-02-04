@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 实体移动事件族的基础类。

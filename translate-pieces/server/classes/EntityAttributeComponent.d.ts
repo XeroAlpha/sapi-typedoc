@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 这是一个用于实体组件的基础抽象类，主要用于处理数值类型

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Effect, Entity } from "../index";
+/* IMPORT */ import { Effect, Entity } from '../index';
 
 /**
  * 表示有关效果（如中毒）添加到实体时的变化信息。

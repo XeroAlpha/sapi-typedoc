@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from "../index";
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntityType, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * 表示世界中的特定维度（例如，末地）的类。
@@ -13,6 +13,8 @@ export class Dimension {
 	 * 维度的高度范围。
 	 *
 	 * Height range of the dimension.
+	 *
+	 * @throws This property can throw when used.
 	 */
 	readonly heightRange: minecraftcommon.NumberRange;
 
@@ -21,6 +23,7 @@ export class Dimension {
 	 * 维度的标识符。
 	 *
 	 * Identifier of the dimension.
+	 *
 	 */
 	readonly id: string;
 
@@ -49,10 +52,14 @@ export class Dimension {
 	 * @returns
 	 * 若方块体积中至少有一个方块满足过滤器，将返回 true，否则返回 false。
 	 *
-	 * Returns true if at least one block in the volume satisfies the filter, false otherwise.
+	 * Returns true if at least one block in the volume satisfies
+	 * the filter, false otherwise.
 	 *
-	 * @throws
-	 * 若参数类型正确的情况下不会出错，则可以省略或移除。
+	 * @throws This function can throw errors.
+	 *
+	 * {@link Error}
+	 *
+	 * {@link UnloadedChunksError}
 	 */
 	containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
 
@@ -84,6 +91,9 @@ export class Dimension {
 	 * {@link LocationInUnloadedChunkError}
 	 *
 	 * {@link LocationOutOfWorldBoundariesError}
+	 * @seeExample createExplosion.ts
+     * @seeExample createNoBlockExplosion.ts
+     * @seeExample createExplosions.ts
 	 */
 	createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
 
@@ -122,7 +132,11 @@ export class Dimension {
 	 * {@link Error}
 	 * {@link UnloadedChunksError}
 	 */
-	fillBlocks(volume: BlockVolumeBase | CompoundBlockVolume, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): ListBlockVolume;
+	fillBlocks(
+		volume: BlockVolumeBase | CompoundBlockVolume,
+		block: BlockPermutation | BlockType | string,
+		options?: BlockFillOptions,
+	): ListBlockVolume;
 
 	/**
 	 * @beta
@@ -165,7 +179,8 @@ export class Dimension {
 	 *
 	 * Returns a block instance at the given location.
 	 *
-	 * @param location 用于返回方块的位置。
+	 * @param location 
+	 * 用于返回方块的位置。
 	 *
 	 * The location at which to return a block.
 	 *
@@ -177,8 +192,16 @@ export class Dimension {
 	 * @throws
 	 *
 	 * PositionInUnloadedChunkError: 尝试与不再位于加载和 ticking 区块内的方块对象交互时引发的异常。
-	 *
+	 * 
+	 * PositionInUnloadedChunkError: Exception thrown when trying
+     * to interact with a Block object that isn't in a loaded and
+     * ticking chunk anymore
 	 * PositionOutOfWorldBoundariesError: 尝试与超出维度高度范围的位置交互时引发的异常。
+	 *
+	 * PositionOutOfWorldBoundariesError: Exception thrown when
+     * trying to interact with a position outside of dimension
+     * height range
+     *
 	 *
 	 * {@link LocationInUnloadedChunkError}
 	 *
@@ -279,9 +302,11 @@ export class Dimension {
 	 * 一个实体数组。
 	 *
 	 * An entity array.
-	 *
-	 * @throws
-	 * */
+     * @throws This function can throw errors.
+     * @seeExample bounceSkeletons.ts
+     * @seeExample tagsQuery.ts
+     * @seeExample testThatEntityIsFeatherItem.ts
+     */
 	getEntities(options?: EntityQueryOptions): Entity[];
 	/**
 	 * @remarks
@@ -352,10 +377,10 @@ export class Dimension {
 	 * @param minHeight
 	 * 开始搜索的 Y 坐标。默认为最大维度高度。
 	 *
-	 * The Y height to begin the search from. Defaults to the maximum dimension height.
-	 *
-	 * @throws
-	 * */
+	 * The Y height to begin the search from. Defaults to the
+     * maximum dimension height.
+     * @throws This function can throw errors.
+     */
 	getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
 
 	/**
@@ -373,6 +398,84 @@ export class Dimension {
 	 * Returns a WeatherType that explains the broad category of weather that is currently going on.
 	 */
 	getWeather(): WeatherType;
+	/**
+     * @beta
+     * @remarks
+     * 将指定的地形特征放置在维度中的指定位置。
+     * 
+     * Places the given feature into the dimension at the specified
+     * location.
+     * 
+     * 此函数无法在只读模式下调用。
+     * 
+     * This function can't be called in read-only mode.
+     * 
+     * @param featureName
+     * 地形特征的字符串标识符。
+     * 
+     * The string identifier for the feature.
+     * @param location
+     * 放置地形特征的位置。
+     * 
+     * Location to place the feature.
+     * @param shouldThrow
+     * 指定如果无法放置地形特征时是否抛出错误。
+     * 注意：如果使用未知的地形特征名称或尝试在未加载的区块中放置，
+     * 函数调用将始终抛出错误。
+     * 
+     * Specifies if the function call will throw an error if the
+     * feature could not be placed.
+     * Note: The function call will always throw an error if using
+     * an unknown feature name or trying to place in a unloaded
+     * chunk.
+     * @throws
+     * 如果地形特征名称无效，将抛出错误。
+     * 如果位置在未加载的区块中，将抛出错误。
+     * 
+     * An error will be thrown if the feature name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    /**
+     * @beta
+     * @remarks
+     * 将指定的地形特征规则放置在维度中的指定位置。
+     * 
+     * Places the given feature rule into the dimension at the
+     * specified location.
+     * 
+     * 此函数无法在只读模式下调用。
+     * 
+     * This function can't be called in read-only mode.
+     * 
+     * @param featureRuleName
+     * 地形特征规则的字符串标识符。
+     * 
+     * The string identifier for the feature rule.
+     * @param location
+     * 放置地形特征规则的位置。
+     * 
+     * Location to place the feature rule.
+     * @throws
+     * 如果地形特征规则名称无效，将抛出错误。
+     * 如果位置在未加载的区块中，将抛出错误。
+     * 
+     * An error will be thrown if the feature rule name is invalid.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
 
 	/**
 	 * @remarks
@@ -395,16 +498,19 @@ export class Dimension {
 	 * @param soundOptions
 	 * 额外的音效配置选项。
 	 *
-	 * Additional options for configuring additional effects for the sound.
-	 *
+	 * Additional options for configuring additional effects for
+     * the sound.
 	 * @throws
 	 * 若音量小于 0.0，将抛出错误。
 	 * 若音频淡入淡出值小于 0.0，则抛出错误。
 	 * 若音高小于 0.01，则抛出错误。
 	 * 若音量小于 0.0，将抛出错误。
 	 *
-	 * An error will be thrown if volume is less than 0.0. An error will be thrown if fade is less than 0.0. An error will be thrown if pitch is less than 0.01. An error will be thrown if volume is less than 0.0.
-	 */
+	 * An error will be thrown if volume is less than 0.0.
+     * An error will be thrown if fade is less than 0.0.
+     * An error will be thrown if pitch is less than 0.01.
+     * An error will be thrown if volume is less than 0.0.
+     */
 	playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
 
 	/**
@@ -436,6 +542,8 @@ export class Dimension {
 	runCommand(commandString: string): CommandResult;
 
 	/**
+	 * @attention 注：此方法在最新版已被删除，这里为了兼容性保留
+	 * 
 	 * @remarks
 	 * 从更广泛的维度上下文运行一个特定的命令异步。
 	 * 请注意，在给定的 tick 内最大可运行 128 个异步命令。

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, ItemStack } from "../index";
+/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, ItemStack } from '../index';
 
 /**
  * 提供对生物装备槽的访问。此组件存在于所有生物实体上。
@@ -10,7 +10,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
 	private constructor();
-	static readonly componentId = "minecraft:equippable";
+	static readonly componentId = 'minecraft:equippable';
 	/**
 	 * @remarks
 	 * 获取指定装备槽位中的装备物品。

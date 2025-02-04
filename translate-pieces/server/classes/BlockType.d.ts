@@ -8,13 +8,13 @@
  * 1.17.10.21.
  */
 export class BlockType {
-    private constructor();
-    /**
-     * @remarks
-     * 方块类型名称，例如 `minecraft:acacia_stairs`。
-     *
-     * Block type name - for example, `minecraft:acacia_stairs`.
-     *
-     */
-    readonly id: string;
+	private constructor();
+	/**
+	 * @remarks
+	 * 方块类型名称，例如 `minecraft:acacia_stairs`。
+	 *
+	 * Block type name - for example, `minecraft:acacia_stairs`.
+	 *
+	 */
+	readonly id: string;
 }

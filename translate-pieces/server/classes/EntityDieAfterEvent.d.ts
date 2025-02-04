@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityDamageSource } from "../index";
+/* IMPORT */ import { Entity, EntityDamageSource } from '../index';
 
 /**
  * 表示游戏中实体死亡后的相关数据。

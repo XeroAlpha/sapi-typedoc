@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, DyeColor, RawMessage, RawText, SignSide } from "../index";
+/* IMPORT */ import { BlockComponent, DyeColor, RawMessage, RawText, SignSide } from '../index';
 
 /**
  * 表示一个可以显示文字的方块。
@@ -23,7 +23,7 @@ export class BlockSignComponent extends BlockComponent {
 	 * @throws This property can throw when used.
 	 */
 	readonly isWaxed: boolean;
-	static readonly componentId = "minecraft:sign";
+	static readonly componentId = 'minecraft:sign';
 	/**
 	 * @remarks
 	 * 若使用 `setText` 方法设置了 RawMessage 或 RawText 对象，则返回告示牌的 RawText，否则返回 undefined。

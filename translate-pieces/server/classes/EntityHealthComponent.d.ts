@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityAttributeComponent } from "../index";
+/* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
  * 表示实体的生命值属性。
@@ -9,5 +9,5 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {
 	private constructor();
-	static readonly componentId = "minecraft:health";
+	static readonly componentId = 'minecraft:health';
 }

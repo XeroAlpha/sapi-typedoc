@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from "../index";
+/* IMPORT */ import { EntityComponent } from '../index';
 
 /**
  * 定义实体的颜色。仅对某些具有预定义颜色值的实体有效
@@ -21,5 +21,5 @@ export class EntityColorComponent extends EntityComponent {
 	 *
 	 */
 	value: number;
-	static readonly componentId = "minecraft:color";
+	static readonly componentId = 'minecraft:color';
 }

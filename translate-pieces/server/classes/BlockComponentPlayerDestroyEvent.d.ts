@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Player } from "../index";
+/* IMPORT */ import { BlockEvent, BlockPermutation, Player } from '../index';
 
 /**
  * 描述了有关特定方块被破坏的信息。

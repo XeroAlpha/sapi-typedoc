@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from "../index";
+/* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from '../index';
 
 /**
  * 表示世界中方块的流体容器。像炼药锅这样的方块。
@@ -29,7 +29,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
 	 *
 	 */
 	fluidColor: RGBA;
-	static readonly componentId = "minecraft:fluidContainer";
+	static readonly componentId = 'minecraft:fluidContainer';
 	/**
 	 * @remarks
 	 * 向流体中添加染料。染料颜色与任何现有的自定义颜色结合。

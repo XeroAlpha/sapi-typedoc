@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPermutation, EntityComponent } from "../index";
+/* IMPORT */ import { BlockPermutation, EntityComponent } from '../index';
 
 /**
  * 定义实体可以在何种方块中呼吸，并赋予它们窒息的能力。
@@ -126,7 +126,7 @@ export class EntityBreathableComponent extends EntityComponent {
 	 * This property can throw when used.
 	 */
 	readonly totalSupply: number;
-	static readonly componentId = "minecraft:breathable";
+	static readonly componentId = 'minecraft:breathable';
 	/**
 	 * @remarks
 	 * 表示该实体可以呼吸的方块列表，除了分类的方块属性外。
