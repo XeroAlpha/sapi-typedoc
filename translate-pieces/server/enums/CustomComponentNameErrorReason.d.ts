@@ -1,4 +1,4 @@
 export enum CustomComponentNameErrorReason {
-    NoNamespace = 1,
-    DisallowedNamespace = 2,
+	NoNamespace = 1,
+	DisallowedNamespace = 2,
 }
