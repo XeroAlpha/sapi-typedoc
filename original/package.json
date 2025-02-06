@@ -2,6 +2,7 @@
   "dependencies": {
     "@minecraft/common": "latest",
     "@minecraft/debug-utilities": "beta",
+    "@minecraft/diagnostics": "beta",
     "@minecraft/math": "latest",
     "@minecraft/server": "beta",
     "@minecraft/server-admin": "beta",

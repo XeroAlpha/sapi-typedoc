@@ -3,7 +3,7 @@
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
-    FluidContainer = 'minecraft:fluidContainer',
+    FluidContainer = 'minecraft:fluid_container',
     /**
      * @remarks
      * Represents the inventory of a block in the world. Used with

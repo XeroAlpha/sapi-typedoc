@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
+/* IMPORT */ import { AimAssistRegistry, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -108,6 +108,15 @@ export class World {
      * not fixed and will be determined by surrounding blocks.
      */
     getDefaultSpawnLocation(): Vector3;
+    /**
+     * @beta
+     * @remarks
+     * Gets the difficulty from the world.
+     *
+     * @returns
+     * Returns the world difficulty.
+     */
+    getDifficulty(): Difficulty;
     /**
      * @remarks
      * Returns a dimension object.
@@ -260,6 +269,17 @@ export class World {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets the worlds difficulty.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param difficulty
+     * The difficulty we want to set the world to.
+     */
+    setDifficulty(difficulty: Difficulty): void;
     /**
      * @beta
      * @remarks

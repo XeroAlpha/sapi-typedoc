@@ -23,7 +23,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      */
     fluidColor: RGBA;
-    static readonly componentId = 'minecraft:fluidContainer';
+    static readonly componentId = 'minecraft:fluid_container';
     /**
      * @remarks
      * Adds a dye to the fluid. The dye color is combined with any

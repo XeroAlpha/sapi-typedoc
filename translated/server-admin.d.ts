@@ -57,6 +57,8 @@ export class ServerSecrets {
      *
      * This function can't be called in read-only mode.
      *
+     * This function can be called in early-execution mode.
+     *
      */
     get(name: string): SecretString | undefined;
 }
@@ -80,6 +82,8 @@ export class ServerVariables {
      * dedicated server configuration JSON file.
      *
      * This function can't be called in read-only mode.
+     *
+     * This function can be called in early-execution mode.
      *
      */
     get(name: string): any | undefined;

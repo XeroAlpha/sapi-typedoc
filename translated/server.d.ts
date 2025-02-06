@@ -48,7 +48,7 @@ export enum AimAssistTargetMode {
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
-    FluidContainer = 'minecraft:fluidContainer',
+    FluidContainer = 'minecraft:fluid_container',
     /**
      * @remarks
      * Represents the inventory of a block in the world. Used with
@@ -1179,186 +1179,6 @@ export enum EntityInitializationCause {
      *
      */
     Transformed = 'Transformed',
-}
-
-/**
- * @beta
- * An enum containing categories of entity spawning.
- */
-export enum EntitySpawnCategory {
-    /**
-     * @remarks
-     * Mobs that have an ambient spawn.
-     *
-     */
-    Ambient = 'Ambient',
-    /**
-     * @remarks
-     * Specific spawn for axolotls.
-     *
-     */
-    Axolotls = 'Axolotls',
-    /**
-     * @remarks
-     * Creature spawns.
-     *
-     */
-    Creature = 'Creature',
-    /**
-     * @remarks
-     * Miscellaneous spawns ( e.g. Villager, Iron Golem).
-     *
-     */
-    Misc = 'Misc',
-    /**
-     * @remarks
-     * Monster spawns.
-     *
-     */
-    Monster = 'Monster',
-    /**
-     * @remarks
-     * Creatures that spawn underground in the water.
-     *
-     */
-    UndergroundWaterCreature = 'UndergroundWaterCreature',
-    /**
-     * @remarks
-     * Water mobs that have an ambient spawn.
-     *
-     */
-    WaterAmbient = 'WaterAmbient',
-    /**
-     * @remarks
-     * Water creature spawns.
-     *
-     */
-    WaterCreature = 'WaterCreature',
-}
-
-/**
- * @beta
- * An enum containing reasons an entity could be spawned.
- */
-export enum EntitySpawnReason {
-    /**
-     * @remarks
-     * Bred offspring.
-     *
-     */
-    Breeding = 'Breeding',
-    /**
-     * @remarks
-     * Spawned from a bucket (e.g. Fish)
-     *
-     */
-    Bucket = 'Bucket',
-    /**
-     * @remarks
-     * Spawned due to a chunk being generated.
-     *
-     */
-    ChunkGeneration = 'ChunkGeneration',
-    /**
-     * @remarks
-     * Spawned via the /summon command.
-     *
-     */
-    Command = 'Command',
-    /**
-     * @remarks
-     * Mob converted from another mob (e.g. Villager -> Zombie
-     * Villager).
-     *
-     */
-    Conversion = 'Conversion',
-    /**
-     * @remarks
-     * Mob transferred from another dimension.
-     *
-     */
-    DimensionTravel = 'DimensionTravel',
-    /**
-     * @remarks
-     * Spawned via dispenser.
-     *
-     */
-    Dispenser = 'Dispenser',
-    /**
-     * @remarks
-     * Mobs spawned due to some in game event.
-     *
-     */
-    Event = 'Event',
-    /**
-     * @remarks
-     * Jockey spawned with the mob they ride (e.g. Chicken jockey).
-     *
-     */
-    Jockey = 'Jockey',
-    /**
-     * @remarks
-     * Mob loaded in from a saved state.
-     *
-     */
-    Load = 'Load',
-    /**
-     * @remarks
-     * Mobs summoned via other mobs (e.g. Vex).
-     *
-     */
-    MobSummoned = 'MobSummoned',
-    /**
-     * @remarks
-     * Natural Mob Spawning.
-     *
-     */
-    Natural = 'Natural',
-    /**
-     * @remarks
-     * Mobs spawned due to a patrol.
-     *
-     */
-    Patrol = 'Patrol',
-    /**
-     * @remarks
-     * Mobs spawned from the reinforcement attribute (e.g.
-     * Zombies).
-     *
-     */
-    Reinforcement = 'Reinforcement',
-    /**
-     * @remarks
-     * Spawned from a spawn egg.
-     *
-     */
-    SpawnEgg = 'SpawnEgg',
-    /**
-     * @remarks
-     * Spawner spawns.
-     *
-     */
-    Spawner = 'Spawner',
-    /**
-     * @remarks
-     * Mobs generated specifically within some structure (Nether
-     * Fortress, Ocean Monument, Witch Hut, etc).
-     *
-     */
-    Structure = 'Structure',
-    /**
-     * @remarks
-     * Mobs spawned from a Trial Spawner.
-     *
-     */
-    TrialSpawner = 'TrialSpawner',
-    /**
-     * @remarks
-     * Some type of player triggered mob spawn (e.g. Skeleton Horse
-     * Traps, Wither, Snow Golem).
-     *
-     */
-    Triggered = 'Triggered',
 }
 
 /**
@@ -2630,10 +2450,10 @@ export enum WeatherType {
  * @beta
  */
 export type BlockComponentTypeMap = {
-    fluidContainer: BlockFluidContainerComponent;
+    fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
-    'minecraft:fluidContainer': BlockFluidContainerComponent;
+    'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
     'minecraft:piston': BlockPistonComponent;
@@ -4134,7 +3954,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      */
     fluidColor: RGBA;
-    static readonly componentId = 'minecraft:fluidContainer';
+    static readonly componentId = 'minecraft:fluid_container';
     /**
      * @remarks
      * Adds a dye to the fluid. The dye color is combined with any
@@ -9874,98 +9694,6 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
- * @beta
- * A container for arguments passed to
- * SpawnRulesRegistry.registerEntitySpawnCallback
- *
- * Required Experiments:
- * - Simplified Spawn Rules
- *
- */
-export class EntitySpawnCallbackArgs {
-    private constructor();
-    /**
-     * @remarks
-     * The dimension and location of the spawn.
-     *
-     */
-    readonly dimensionLocation: DimensionLocation;
-    /**
-     * @remarks
-     * The reason for the spawn.
-     *
-     */
-    readonly spawnReason: EntitySpawnReason;
-    /**
-     * @remarks
-     * The entity spawn type.
-     *
-     */
-    readonly spawnType: EntitySpawnType;
-}
-
-/**
- * @beta
- * A container for information relating to an entity spawn
- * event.
- *
- * Required Experiments:
- * - Simplified Spawn Rules
- *
- */
-export class EntitySpawnType {
-    private constructor();
-    /**
-     * @remarks
-     * The entity Id.
-     *
-     */
-    readonly entityId: string;
-    /**
-     * @remarks
-     * The height of the entity to spawn.
-     *
-     */
-    readonly height: number;
-    /**
-     * @remarks
-     * Is the entity immune to fire.
-     *
-     */
-    readonly isImmuneFire: boolean;
-    /**
-     * @remarks
-     * Is the entity summonable.
-     *
-     */
-    readonly isSummonable: boolean;
-    /**
-     * @remarks
-     * The category determining the type of spawn.
-     *
-     */
-    readonly spawnCategory: EntitySpawnCategory;
-    /**
-     * @remarks
-     * The width of the entity to spawn.
-     *
-     */
-    readonly width: number;
-    /**
-     * @remarks
-     * Helper to get the AABB for the entity at a given location
-     *
-     */
-    getSpawnAABB(position: Vector3): BoundingBox;
-    /**
-     * @remarks
-     * Is the block being spawned on dangerous.
-     *
-     */
-    isBlockDangerous(block: Block): boolean;
-}
-
-/**
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.
@@ -12557,37 +12285,6 @@ export class MolangVariableMap {
 }
 
 /**
- * @beta
- * A container for arguments passed to
- * SpawnRulesRegistry.registerObstructionCallback
- *
- * Required Experiments:
- * - Simplified Spawn Rules
- *
- */
-export class ObstructionCallbackArgs {
-    private constructor();
-    /**
-     * @remarks
-     * The dimension of the spawn.
-     *
-     */
-    readonly dimension: Dimension;
-    /**
-     * @remarks
-     * The entity being checked for obstruction.
-     *
-     */
-    readonly entity: Entity;
-    /**
-     * @remarks
-     * The entity spawn type.
-     *
-     */
-    readonly spawnType: EntitySpawnType;
-}
-
-/**
  * Contains information related to changes to a piston
  * expanding or retracting.
  * @seeExample pistonAfterEvent.ts
@@ -15159,63 +14856,6 @@ export class ShutdownEvent {
 
 /**
  * @beta
- * Container for spawn rules APIs. Allows for registering
- * callbacks to extend the spawner system.
- *
- * Required Experiments:
- * - Simplified Spawn Rules
- *
- */
-export class SpawnRulesRegistry {
-    private constructor();
-    /**
-     * @remarks
-     * Registers an entity spawn callback to the provided key.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     * @param id
-     * The Id to associate the callback with.
-     * @param callback
-     * The callback that will be invoked when a spawner tests for
-     * the associated predicate key.
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
-     *
-     * {@link SpawnRulesInvalidRegistryError}
-     */
-    registerEntitySpawnCallback(id: string, callback: (arg0: EntitySpawnCallbackArgs) => boolean): void;
-    /**
-     * @remarks
-     * Registers an obstruction callback to the provided key.
-     *
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     * @param id
-     * The Id to associate the callback with.
-     * @param callback
-     * The callback that will be invoked when a spawner tests for
-     * the associated predicate key.
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
-     *
-     * {@link SpawnRulesInvalidRegistryError}
-     */
-    registerObstructionCallback(id: string, callback: (arg0: ObstructionCallbackArgs) => boolean): void;
-}
-
-/**
- * @beta
  */
 export class StartupBeforeEventSignal {
     private constructor();
@@ -15244,18 +14884,6 @@ export class StartupEvent {
     private constructor();
     readonly blockComponentRegistry: BlockComponentRegistry;
     readonly itemComponentRegistry: ItemComponentRegistry;
-    /**
-     * @remarks
-     * This function can't be called in read-only mode.
-     *
-     * This function can be called in early-execution mode.
-     *
-     *
-     * Required Experiments:
-     * - Simplified Spawn Rules
-     *
-     */
-    getSpawnRulesRegistry(): SpawnRulesRegistry;
 }
 
 /**
@@ -16261,6 +15889,15 @@ export class World {
      */
     getDefaultSpawnLocation(): Vector3;
     /**
+     * @beta
+     * @remarks
+     * Gets the difficulty from the world.
+     *
+     * @returns
+     * Returns the world difficulty.
+     */
+    getDifficulty(): Difficulty;
+    /**
      * @remarks
      * Returns a dimension object.
      *
@@ -16412,6 +16049,17 @@ export class World {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets the worlds difficulty.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @param difficulty
+     * The difficulty we want to set the world to.
+     */
+    setDifficulty(difficulty: Difficulty): void;
     /**
      * @beta
      * @remarks
@@ -18839,16 +18487,6 @@ export class NamespaceNameError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
-    private constructor();
-}
-
-/**
- * @beta
- * Thrown when the SpawnRulesRegistry is accessed outside of
- * ModuleStartupEvent.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class SpawnRulesInvalidRegistryError extends Error {
     private constructor();
 }
 

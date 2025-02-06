@@ -1,11 +1,12 @@
-/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
+/* IMPORT */ import { EventSink, IBlockListPropertyItem, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, NoArgsAction, PropertyBag, PropertyPaneVisibilityUpdate, RegisteredAction, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
  * with an object and presented with different kind of
  * controls.
  */
-export interface IPropertyPane {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyPane extends IPane {
     /**
      * @remarks
      * Pane state for being expanded or collapsed.
@@ -14,22 +15,10 @@ export interface IPropertyPane {
     collapsed: boolean;
     /**
      * @remarks
-     * Unique ID for the property pane.
-     *
-     */
-    readonly id: string;
-    /**
-     * @remarks
      * Provides visibility change events
      *
      */
     onPropertyPaneVisibilityUpdated: EventSink<PropertyPaneVisibilityUpdate>;
-    /**
-     * @remarks
-     * Check visibility of the pane
-     *
-     */
-    visible: boolean;
     /**
      * @remarks
      * Adds a block list to the pane.
@@ -49,6 +38,8 @@ export interface IPropertyPane {
     addBlockTable(options?: IBlockTablePropertyItemOptions): IBlockTablePropertyItem;
     /**
      * @remarks
+     * Adds a togglable boolean item to the pane.
+     *
      */
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
@@ -134,7 +125,7 @@ export interface IPropertyPane {
     ): IImagePropertyItem;
     /**
      * @remarks
-     * Adds a multiline Text item to the pane.
+     * Adds a Link item to the pane.
      *
      */
     addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
@@ -162,6 +153,8 @@ export interface IPropertyPane {
     addProgressIndicator(options?: IProgressIndicatorPropertyItemOptions): IProgressIndicatorPropertyItem;
     /**
      * @remarks
+     * Adds an editable string item to the pane
+     *
      */
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
     /**
@@ -230,22 +223,10 @@ export interface IPropertyPane {
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
     /**
      * @remarks
-     * Expand the pane.
-     *
-     */
-    expand(): void;
-    /**
-     * @remarks
-     * Returns property pane title.
+     * Returns pane title.
      *
      */
     getTitle(): LocalizedString | undefined;
-    /**
-     * @remarks
-     * Hide the pane.
-     *
-     */
-    hide(): void;
     /**
      * @remarks
      * Removes an existing sub pane.
@@ -254,16 +235,10 @@ export interface IPropertyPane {
     removeSubPane(paneToRemove: IPropertyPane): boolean;
     /**
      * @remarks
-     * Updates title of property pane.
+     * Updates title of pane.
      *
      * @param newTitle
      * New title
      */
     setTitle(newTitle: LocalizedString | undefined): void;
-    /**
-     * @remarks
-     * Show the pane and all of its property items.
-     *
-     */
-    show(): void;
 }
