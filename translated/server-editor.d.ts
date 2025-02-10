@@ -5280,6 +5280,66 @@ export interface IMenuCreationParams {
     uniqueId?: string;
 }
 
+/**
+ * A sub pane for modal control elements.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IModalControlPane extends IPane {
+    /**
+     * @remarks
+     * Adds a togglable boolean item to the pane.
+     *
+     */
+    addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
+    /**
+     * @remarks
+     * Adds a button to the pane and binds the specified action to
+     * the button activation.
+     *
+     */
+    addButton(
+        action: (() => void) | RegisteredAction<NoArgsAction>,
+        options?: IButtonPropertyItemOptions,
+    ): IButtonPropertyItem;
+    /**
+     * @remarks
+     * Adds an divider item to the pane.
+     *
+     */
+    addDivider(): IPropertyItemBase;
+}
+
+/**
+ * A modal overlay pane is displayed over a root pane.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IModalOverlayPane extends IPane {
+    /**
+     * @remarks
+     * A sub pane that represents content of the modal overlay.
+     *
+     */
+    contentPane: ISubPanePropertyItem;
+    /**
+     * @remarks
+     * A pane that represent modal control elements.
+     *
+     */
+    controlPane: IModalControlPane;
+}
+
+/**
+ * The options to create a modal overlay pane.
+ */
+export interface IModalOverlayPaneOptions {
+    /**
+     * @remarks
+     * Localized title of the modal overlay.
+     *
+     */
+    title?: LocalizedString;
+}
+
 export interface IModalTool {
     /**
      * @remarks
@@ -5440,6 +5500,36 @@ export interface IObservable<T> {
      * it exists).
      */
     set(newValue: T): boolean;
+}
+
+/**
+ * Pane represents a container for UI components.
+ */
+export interface IPane {
+    /**
+     * @remarks
+     * Unique identifier for the pane.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Check visibility of the pane
+     *
+     */
+    visible: boolean;
+    /**
+     * @remarks
+     * Hide the pane.
+     *
+     */
+    hide(): void;
+    /**
+     * @remarks
+     * Show the pane and all of its items.
+     *
+     */
+    show(): void;
 }
 
 /**
@@ -5781,7 +5871,8 @@ export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
  * with an object and presented with different kind of
  * controls.
  */
-export interface IPropertyPane {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IPropertyPane extends IPane {
     /**
      * @remarks
      * Pane state for being expanded or collapsed.
@@ -5790,22 +5881,10 @@ export interface IPropertyPane {
     collapsed: boolean;
     /**
      * @remarks
-     * Unique ID for the property pane.
-     *
-     */
-    readonly id: string;
-    /**
-     * @remarks
      * Provides visibility change events
      *
      */
     onPropertyPaneVisibilityUpdated: EventSink<PropertyPaneVisibilityUpdate>;
-    /**
-     * @remarks
-     * Check visibility of the pane
-     *
-     */
-    visible: boolean;
     /**
      * @remarks
      * Adds a block list to the pane.
@@ -5825,6 +5904,8 @@ export interface IPropertyPane {
     addBlockTable(options?: IBlockTablePropertyItemOptions): IBlockTablePropertyItem;
     /**
      * @remarks
+     * Adds a togglable boolean item to the pane.
+     *
      */
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
@@ -5910,7 +5991,7 @@ export interface IPropertyPane {
     ): IImagePropertyItem;
     /**
      * @remarks
-     * Adds a multiline Text item to the pane.
+     * Adds a Link item to the pane.
      *
      */
     addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
@@ -5938,6 +6019,8 @@ export interface IPropertyPane {
     addProgressIndicator(options?: IProgressIndicatorPropertyItemOptions): IProgressIndicatorPropertyItem;
     /**
      * @remarks
+     * Adds an editable string item to the pane
+     *
      */
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
     /**
@@ -6006,22 +6089,10 @@ export interface IPropertyPane {
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
     /**
      * @remarks
-     * Expand the pane.
-     *
-     */
-    expand(): void;
-    /**
-     * @remarks
-     * Returns property pane title.
+     * Returns pane title.
      *
      */
     getTitle(): LocalizedString | undefined;
-    /**
-     * @remarks
-     * Hide the pane.
-     *
-     */
-    hide(): void;
     /**
      * @remarks
      * Removes an existing sub pane.
@@ -6030,18 +6101,12 @@ export interface IPropertyPane {
     removeSubPane(paneToRemove: IPropertyPane): boolean;
     /**
      * @remarks
-     * Updates title of property pane.
+     * Updates title of pane.
      *
      * @param newTitle
      * New title
      */
     setTitle(newTitle: LocalizedString | undefined): void;
-    /**
-     * @remarks
-     * Show the pane and all of its property items.
-     *
-     */
-    show(): void;
 }
 
 /**
@@ -6125,10 +6190,35 @@ export interface IRegisterExtensionOptionalParameters {
 export interface IRootPropertyPane extends IPropertyPane {
     /**
      * @remarks
+     * Register a modal overlay to the root pane. It will be hidden
+     * by default, when shown it will display over the root pane
+     * content. Only one modal overlay can be shown at a time.
+     *
+     * @param options
+     * Creation parameters for modal overlay pane.
+     */
+    createModalOverlayPane(options?: IModalOverlayPaneOptions): IModalOverlayPane;
+    /**
+     * @remarks
+     * @returns
+     * Unique identifier of the active modal overlay
+     */
+    getActiveModalOverlayId(): string | undefined;
+    /**
+     * @remarks
      * @returns
      * Current visibility state of header action
      */
     isHeaderActionVisible(): boolean;
+    /**
+     * @remarks
+     * Sets registered modal overlay as active, if not found it
+     * will hide the current.
+     *
+     * @param id
+     * Unique id for modal overlay pane.
+     */
+    setActiveModalOverlay(id: string | undefined): void;
     /**
      * @remarks
      * If a header action exists, updates visibility of the button.

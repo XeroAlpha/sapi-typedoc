@@ -294,6 +294,8 @@ export declare enum MinecraftBlockTypes {
     Bush = "minecraft:bush",
     /** 仙人掌。 */
     Cactus = "minecraft:cactus",
+    /** 仙人掌花。 */
+    CactusFlower = "minecraft:cactus_flower",
     /** 蛋糕。 */
     Cake = "minecraft:cake",
     /** 方解石。 */
@@ -2006,6 +2008,8 @@ export declare enum MinecraftBlockTypes {
     SeaPickle = "minecraft:sea_pickle",
     /** 海草。 */
     Seagrass = "minecraft:seagrass",
+    /** 矮枯草丛。 */
+    ShortDryGrass = "minecraft:short_dry_grass",
     /** 矮草丛。 */
     ShortGrass = "minecraft:short_grass",
     /** 菌光体。 */
@@ -2198,6 +2202,8 @@ export declare enum MinecraftBlockTypes {
     SuspiciousSand = "minecraft:suspicious_sand",
     /** 甜浆果丛。 */
     SweetBerryBush = "minecraft:sweet_berry_bush",
+    /** 高枯草丛。 */
+    TallDryGrass = "minecraft:tall_dry_grass",
     /** 高草丛。 */
     TallGrass = "minecraft:tall_grass",
     /** 标靶。 */

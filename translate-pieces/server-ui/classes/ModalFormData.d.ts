@@ -17,6 +17,24 @@ export class ModalFormData {
         defaultValueIndex?: number,
     ): ModalFormData;
     /**
+     * @beta
+     * @remarks
+     * Adds a header to the form.
+     *
+     * @param text
+     * Text to display.
+     */
+    header(text: minecraftserver.RawMessage | string): ModalFormData;
+    /**
+     * @beta
+     * @remarks
+     * Adds a label to the form.
+     *
+     * @param text
+     * Text to display.
+     */
+    label(text: minecraftserver.RawMessage | string): ModalFormData;
+    /**
      * @remarks
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the

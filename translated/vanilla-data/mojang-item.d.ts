@@ -250,6 +250,8 @@ export declare enum MinecraftItemTypes {
     BlueConcretePowder = "minecraft:blue_concrete_powder",
     /** 蓝色染料。 */
     BlueDye = "minecraft:blue_dye",
+    /** 蓝色鸡蛋。 */
+    BlueEgg = "minecraft:blue_egg",
     /** 蓝色带釉陶瓦。 */
     BlueGlazedTerracotta = "minecraft:blue_glazed_terracotta",
     /** 蓝冰。 */
@@ -326,6 +328,8 @@ export declare enum MinecraftItemTypes {
     BrownConcretePowder = "minecraft:brown_concrete_powder",
     /** 棕色染料。 */
     BrownDye = "minecraft:brown_dye",
+    /** 棕色鸡蛋。 */
+    BrownEgg = "minecraft:brown_egg",
     /** 棕色带釉陶瓦。 */
     BrownGlazedTerracotta = "minecraft:brown_glazed_terracotta",
     /** 棕色蘑菇。 */
@@ -362,6 +366,8 @@ export declare enum MinecraftItemTypes {
     Bush = "minecraft:bush",
     /** 仙人掌。 */
     Cactus = "minecraft:cactus",
+    /** 仙人掌花。 */
+    CactusFlower = "minecraft:cactus_flower",
     /** 蛋糕。 */
     Cake = "minecraft:cake",
     /** 方解石。 */
@@ -2166,6 +2172,8 @@ export declare enum MinecraftItemTypes {
     ShelterPotterySherd = "minecraft:shelter_pottery_sherd",
     /** 盾牌。 */
     Shield = "minecraft:shield",
+    /** 矮枯草丛。 */
+    ShortDryGrass = "minecraft:short_dry_grass",
     /** 矮草丛。 */
     ShortGrass = "minecraft:short_grass",
     /** 菌光体。 */
@@ -2410,6 +2418,8 @@ export declare enum MinecraftItemTypes {
     TadpoleBucket = "minecraft:tadpole_bucket",
     /** 蝌蚪刷怪蛋。 */
     TadpoleSpawnEgg = "minecraft:tadpole_spawn_egg",
+    /** 高枯草丛。 */
+    TallDryGrass = "minecraft:tall_dry_grass",
     /** 高草丛。 */
     TallGrass = "minecraft:tall_grass",
     /** 标靶。 */

@@ -21,6 +21,24 @@ export class ActionFormData {
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
+     * @beta
+     * @remarks
+     * Adds a header to the form.
+     *
+     * @param text
+     * Text to display.
+     */
+    header(text: minecraftserver.RawMessage | string): ActionFormData;
+    /**
+     * @beta
+     * @remarks
+     * Adds a label to the form.
+     *
+     * @param text
+     * Text to display.
+     */
+    label(text: minecraftserver.RawMessage | string): ActionFormData;
+    /**
      * @remarks
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the

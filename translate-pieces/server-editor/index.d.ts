@@ -196,11 +196,15 @@ export { ILinkPropertyItemOptions } from './interfaces/ILinkPropertyItemOptions'
 export { IMenu } from './interfaces/IMenu';
 export { IMenuContainer } from './interfaces/IMenuContainer';
 export { IMenuCreationParams } from './interfaces/IMenuCreationParams';
+export { IModalControlPane } from './interfaces/IModalControlPane';
+export { IModalOverlayPane } from './interfaces/IModalOverlayPane';
+export { IModalOverlayPaneOptions } from './interfaces/IModalOverlayPaneOptions';
 export { IModalTool } from './interfaces/IModalTool';
 export { IModalToolContainer } from './interfaces/IModalToolContainer';
 export { INumberPropertyItem } from './interfaces/INumberPropertyItem';
 export { INumberPropertyItemOptions } from './interfaces/INumberPropertyItemOptions';
 export { IObservable } from './interfaces/IObservable';
+export { IPane } from './interfaces/IPane';
 export { IPlayerLogger } from './interfaces/IPlayerLogger';
 export { IProgressIndicatorPropertyItem } from './interfaces/IProgressIndicatorPropertyItem';
 export { IProgressIndicatorPropertyItemOptions } from './interfaces/IProgressIndicatorPropertyItemOptions';

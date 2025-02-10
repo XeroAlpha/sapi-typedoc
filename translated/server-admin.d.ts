@@ -72,6 +72,8 @@ export class ServerSecrets {
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
      *
+     * This function can be called in early-execution mode.
+     *
      */
     get(name: string): SecretString | undefined;
 }
@@ -101,6 +103,8 @@ export class ServerVariables {
      * dedicated server configuration JSON file.
      *
      * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     *
+     * This function can be called in early-execution mode.
      *
      */
     get(name: string): any | undefined;
