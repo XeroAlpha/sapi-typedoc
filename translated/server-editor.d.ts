@@ -95,6 +95,14 @@ export declare enum ComboBoxPropertyItemDataType {
     Entity = 2,
 }
 
+export enum ContiguousSelectionType {
+    SameBlock = 0,
+    SameBlockAndStates = 1,
+    SolidBlocks = 2,
+    AllBlocks = 3,
+    Custom = 4,
+}
+
 /**
  * Execution state of the continuous action
  */
@@ -1019,6 +1027,7 @@ export declare enum PropertyItemType {
     BlockTable = 'editorUI:BlockTable',
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
+    ButtonPane = 'editorUI:ButtonPane',
     ColorPicker = 'editorUI:ColorPicker',
     ComboBox = 'editorUI:ComboBox',
     Divider = 'editorUI:Divider',
@@ -1171,6 +1180,11 @@ export type ActionID = {
 export type ActivationFunctionType<PerPlayerStorageType> = (
     uiSession: IPlayerUISession<PerPlayerStorageType>,
 ) => IDisposable[];
+
+/**
+ * All possible button item action types
+ */
+export type ButtonPropertyItemSupportedActionTypes = (() => void) | RegisteredAction<NoArgsAction>;
 
 /**
  * An action that continues to execute after activation
@@ -1614,6 +1628,31 @@ export class BlockUtilities {
         volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.Error}
+     */
+    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.Error}
+     */
+    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    quickExtrude(properties?: QuickExtrudeProperties): void;
 }
 
 export class BrushShapeManager {
@@ -4187,6 +4226,17 @@ export interface ClipboardWriteOptions {
     rotation?: minecraftserver.StructureRotation;
 }
 
+export interface ContiguousSelectionProperties {
+    checkForAdjacentFace?: boolean;
+    contiguousSelectionBlockList?: string[];
+    contiguousSelectionType?: ContiguousSelectionType;
+    fullSelectionToleranceLevel?: number;
+    isFace?: boolean;
+    selectionDirection?: number;
+    size?: number;
+    startingLocation?: minecraftserver.Vector3;
+}
+
 export interface CursorPosition {
     FaceDirection: number;
     Position: minecraftserver.Vector3;
@@ -4648,6 +4698,36 @@ export interface IBoolPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     variant?: BoolPropertyItemVariant;
+}
+
+/**
+ * A property item pane which supports multiple buttons
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IButtonPanePropertyItem extends IPropertyItemBase, IPane {
+    /**
+     * @remarks
+     * Adds a button to the pane and binds the specified action to
+     * the button interaction.
+     *
+     */
+    addButton(
+        action: ButtonPropertyItemSupportedActionTypes,
+        options?: IButtonPropertyItemOptions,
+    ): IButtonPropertyItem;
+}
+
+/**
+ * Optional properties for Button Pane property item
+ */
+export interface IButtonPanePropertyItemOptions {
+    /**
+     * @remarks
+     * Minimum width for each item within the layout. If undefined,
+     * it will default to 6.
+     *
+     */
+    itemMinWidth?: number;
 }
 
 /**
@@ -5298,9 +5378,15 @@ export interface IModalControlPane extends IPane {
      *
      */
     addButton(
-        action: (() => void) | RegisteredAction<NoArgsAction>,
+        action: ButtonPropertyItemSupportedActionTypes,
         options?: IButtonPropertyItemOptions,
     ): IButtonPropertyItem;
+    /**
+     * @remarks
+     * Adds a pane for grouped button layout.
+     *
+     */
+    addButtonPane(options?: IButtonPanePropertyItemOptions): IButtonPanePropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.
@@ -5921,13 +6007,19 @@ export interface IPropertyPane extends IPane {
     /**
      * @remarks
      * Adds a button to the pane and binds the specified action to
-     * the button activate.
+     * the button interaction.
      *
      */
     addButton(
-        action: (() => void) | RegisteredAction<NoArgsAction>,
+        action: ButtonPropertyItemSupportedActionTypes,
         options?: IButtonPropertyItemOptions,
     ): IButtonPropertyItem;
+    /**
+     * @remarks
+     * Adds a pane for grouped button layout.
+     *
+     */
+    addButtonPane(options?: IButtonPanePropertyItemOptions): IButtonPanePropertyItem;
     /**
      * @remarks
      * Adds a color picker item to the pane.
@@ -7305,6 +7397,17 @@ export interface ProjectExportOptions {
     exportType: ProjectExportType;
     gameMode?: minecraftserver.GameMode;
     initialTimOfDay?: number;
+}
+
+export interface QuickExtrudeProperties {
+    checkForAdjacentFace?: boolean;
+    contiguousSelectionBlockList?: string[];
+    contiguousSelectionType?: ContiguousSelectionType;
+    isShrink?: boolean;
+    layerCount?: number;
+    selectionDirection?: number;
+    size?: number;
+    startingLocation?: minecraftserver.Vector3;
 }
 
 export interface SettingsUIElementOptions {

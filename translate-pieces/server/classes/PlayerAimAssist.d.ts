@@ -3,10 +3,6 @@
 /**
  * @beta
  * A container for APIs related to player aim-assist.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class PlayerAimAssist {
     private constructor();

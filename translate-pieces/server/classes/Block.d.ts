@@ -64,7 +64,6 @@ export class Block {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * Returns or sets whether this block has water on it.
      *
@@ -484,7 +483,6 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @rc
      * @remarks
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.

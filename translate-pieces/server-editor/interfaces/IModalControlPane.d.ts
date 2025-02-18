@@ -1,4 +1,4 @@
-/* IMPORT */ import { IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase } from '../index';
 
 /**
  * A sub pane for modal control elements.
@@ -18,9 +18,15 @@ export interface IModalControlPane extends IPane {
      *
      */
     addButton(
-        action: (() => void) | RegisteredAction<NoArgsAction>,
+        action: ButtonPropertyItemSupportedActionTypes,
         options?: IButtonPropertyItemOptions,
     ): IButtonPropertyItem;
+    /**
+     * @remarks
+     * Adds a pane for grouped button layout.
+     *
+     */
+    addButtonPane(options?: IButtonPanePropertyItemOptions): IButtonPanePropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.

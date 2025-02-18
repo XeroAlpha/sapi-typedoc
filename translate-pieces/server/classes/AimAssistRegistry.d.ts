@@ -4,10 +4,6 @@
  * @beta
  * A container for APIs related to the world's aim-assist
  * settings.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistRegistry {
     private constructor();

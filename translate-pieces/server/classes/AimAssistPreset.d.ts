@@ -2,10 +2,6 @@
  * @beta
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistPreset {
     private constructor();

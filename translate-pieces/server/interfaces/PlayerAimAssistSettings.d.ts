@@ -3,10 +3,6 @@
 /**
  * @beta
  * Settings relating to a player's aim-assist targeting.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export interface PlayerAimAssistSettings {
     /**

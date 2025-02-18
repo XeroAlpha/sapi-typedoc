@@ -4,10 +4,6 @@
  * @beta
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistCategorySettings {
     /**

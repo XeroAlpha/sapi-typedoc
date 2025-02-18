@@ -67,6 +67,13 @@ export class ActionFormData {
     /**
      * @beta
      * @remarks
+     * Adds a section divider to the form.
+     *
+     */
+    divider(): ActionFormData;
+    /**
+     * @beta
+     * @remarks
      * Adds a header to the form.
      *
      * @param text
@@ -214,6 +221,13 @@ export class MessageFormResponse extends FormResponse {
  * @seeExample showBasicModalForm.ts
  */
 export class ModalFormData {
+    /**
+     * @beta
+     * @remarks
+     * Adds a section divider to the form.
+     *
+     */
+    divider(): ModalFormData;
     /**
      * @remarks
      * Adds a dropdown with choices to the form.

@@ -35,7 +35,6 @@ export class Player extends Entity {
      */
     readonly graphicsMode: GraphicsMode;
     /**
-     * @rc
      * @remarks
      * Contains the player's input information.
      *
@@ -168,10 +167,6 @@ export class Player extends Entity {
      * @beta
      * @remarks
      * The player's aim-assist settings.
-     *
-     *
-     * Required Experiments:
-     * - Camera Aim Assist
      *
      */
     getAimAssist(): PlayerAimAssist;

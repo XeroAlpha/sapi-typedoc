@@ -16,5 +16,7 @@ export { PacketReceivedBeforeEvent } from './classes/PacketReceivedBeforeEvent';
 export { PacketSendBeforeEvent } from './classes/PacketSendBeforeEvent';
 export { PacketSendBeforeEventSignal } from './classes/PacketSendBeforeEventSignal';
 export { PacketEventOptions } from './interfaces/PacketEventOptions';
+export { InternalHttpRequestError } from './classes/InternalHttpRequestError';
+export { MalformedHttpRequestError } from './classes/MalformedHttpRequestError';
 export { beforeEvents } from './variables/beforeEvents';
 export { http } from './variables/http';

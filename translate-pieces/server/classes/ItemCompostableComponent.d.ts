@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemComponent } from '../index';
 
 /**
- * @rc
  * When present, the item can be composted in the composter
  * block if the composting chance is in the range [1 - 100].
  */
