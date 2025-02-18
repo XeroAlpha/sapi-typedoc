@@ -84,10 +84,6 @@ export class World {
      * The aim-assist presets and categories that can be used in
      * the world.
      *
-     *
-     * Required Experiments:
-     * - Camera Aim Assist
-     *
      */
     getAimAssist(): AimAssistRegistry;
     /**

@@ -14,7 +14,7 @@ export class HttpHeader {
      * 
      * Key of the HTTP header.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     key: string;
@@ -24,7 +24,7 @@ export class HttpHeader {
      * 
      * Value of the HTTP header.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     value: minecraftserveradmin.SecretString | string;

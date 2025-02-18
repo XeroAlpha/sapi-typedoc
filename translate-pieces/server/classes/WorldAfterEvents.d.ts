@@ -207,7 +207,6 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player's {@link InputMode} changes.
      *

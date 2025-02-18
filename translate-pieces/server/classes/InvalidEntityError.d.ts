@@ -1,5 +1,4 @@
 /**
- * @rc
  * The error called when an entity is invalid. This can occur
  * when accessing components on a removed entity.
  */

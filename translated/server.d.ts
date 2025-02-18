@@ -1701,7 +1701,6 @@ export enum InputButton {
 }
 
 /**
- * @rc
  * Describes the type of input of a device.
  */
 export enum InputMode {
@@ -1753,7 +1752,6 @@ export enum InputPermissionCategory {
      */
     Movement = 2,
     /**
-     * @rc
      * @remarks
      * Player input for moving laterally in the world. This would
      * be WASD on a keyboard or the movement joystick on gamepad or
@@ -1762,7 +1760,6 @@ export enum InputPermissionCategory {
      */
     LateralMovement = 4,
     /**
-     * @rc
      * @remarks
      * Player input relating to sneak. This also affects flying
      * down.
@@ -1770,7 +1767,6 @@ export enum InputPermissionCategory {
      */
     Sneak = 5,
     /**
-     * @rc
      * @remarks
      * Player input relating to jumping. This also affects flying
      * up.
@@ -1778,14 +1774,12 @@ export enum InputPermissionCategory {
      */
     Jump = 6,
     /**
-     * @rc
      * @remarks
      * Player input relating to mounting vehicles.
      *
      */
     Mount = 7,
     /**
-     * @rc
      * @remarks
      * Player input relating to dismounting. When disabled, the
      * player can still dismount vehicles by other means, for
@@ -1795,28 +1789,24 @@ export enum InputPermissionCategory {
      */
     Dismount = 8,
     /**
-     * @rc
      * @remarks
      * Player input relating to moving the player forward.
      *
      */
     MoveForward = 9,
     /**
-     * @rc
      * @remarks
      * Player input relating to moving the player backward.
      *
      */
     MoveBackward = 10,
     /**
-     * @rc
      * @remarks
      * Player input relating to moving the player left.
      *
      */
     MoveLeft = 11,
     /**
-     * @rc
      * @remarks
      * Player input relating to moving the player right.
      *
@@ -1829,9 +1819,6 @@ export enum InputPermissionCategory {
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
-    /**
-     * @rc
-     */
     Compostable = 'minecraft:compostable',
     /**
      * @remarks
@@ -2677,10 +2664,6 @@ export type ItemComponentTypeMap = {
  * @beta
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistCategory {
     private constructor();
@@ -2740,10 +2723,6 @@ export class AimAssistCategory {
  * @beta
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistCategorySettings {
     /**
@@ -2824,10 +2803,6 @@ export class AimAssistCategorySettings {
  * @beta
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistPreset {
     private constructor();
@@ -2897,10 +2872,6 @@ export class AimAssistPreset {
  * @beta
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistPresetSettings {
     /**
@@ -2999,10 +2970,6 @@ export class AimAssistPresetSettings {
  * @beta
  * A container for APIs related to the world's aim-assist
  * settings.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistRegistry {
     private constructor();
@@ -3219,7 +3186,6 @@ export class Block {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * 返回或设置该方块是否含水。
      *
@@ -3768,7 +3734,6 @@ export class Block {
      */
     setType(blockType: BlockType | string): void;
     /**
-     * @rc
      * @remarks
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.
@@ -10659,7 +10624,6 @@ export class GameRules {
 }
 
 /**
- * @rc
  * Contains the input information for a client instance.
  */
 export class InputInfo {
@@ -10994,7 +10958,6 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
 }
 
 /**
- * @rc
  * When present, the item can be composted in the composter
  * block if the composting chance is in the range [1 - 100].
  */
@@ -12664,7 +12627,6 @@ export class Player extends Entity {
      */
     readonly graphicsMode: GraphicsMode;
     /**
-     * @rc
      * @remarks
      * Contains the player's input information.
      *
@@ -12797,10 +12759,6 @@ export class Player extends Entity {
      * @beta
      * @remarks
      * The player's aim-assist settings.
-     *
-     *
-     * Required Experiments:
-     * - Camera Aim Assist
      *
      */
     getAimAssist(): PlayerAimAssist;
@@ -13016,10 +12974,6 @@ export class Player extends Entity {
 /**
  * @beta
  * A container for APIs related to player aim-assist.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class PlayerAimAssist {
     private constructor();
@@ -13490,7 +13444,6 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
- * @rc
  * Event data for when a player input mode changes.
  */
 export class PlayerInputModeChangeAfterEvent {
@@ -13516,7 +13469,6 @@ export class PlayerInputModeChangeAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to player input mode.
  */
 export class PlayerInputModeChangeAfterEventSignal {
@@ -13611,7 +13563,6 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 export class PlayerInputPermissions {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns true if an input permission is enabled.
      *
@@ -13623,7 +13574,6 @@ export class PlayerInputPermissions {
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
-     * @rc
      * @remarks
      * Enable or disable an input permission. When enabled the
      * input will work, when disabled will not work.
@@ -16234,10 +16184,6 @@ export class World {
      * The aim-assist presets and categories that can be used in
      * the world.
      *
-     *
-     * Required Experiments:
-     * - Camera Aim Assist
-     *
      */
     getAimAssist(): AimAssistRegistry;
     /**
@@ -16757,7 +16703,6 @@ export class WorldAfterEvents {
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player's {@link InputMode} changes.
      *
@@ -18240,10 +18185,6 @@ export interface PlayAnimationOptions {
 /**
  * @beta
  * Settings relating to a player's aim-assist targeting.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export interface PlayerAimAssistSettings {
     /**
@@ -18831,7 +18772,6 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @rc
  * The error called when an entity is invalid. This can occur
  * when accessing components on a removed entity.
  */

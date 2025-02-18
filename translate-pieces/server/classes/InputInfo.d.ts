@@ -1,7 +1,6 @@
 /* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2, minecraftcommon } from '../index';
 
 /**
- * @rc
  * Contains the input information for a client instance.
  */
 export class InputInfo {

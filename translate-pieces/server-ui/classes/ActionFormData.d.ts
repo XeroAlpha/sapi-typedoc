@@ -23,6 +23,13 @@ export class ActionFormData {
     /**
      * @beta
      * @remarks
+     * Adds a section divider to the form.
+     *
+     */
+    divider(): ActionFormData;
+    /**
+     * @beta
+     * @remarks
      * Adds a header to the form.
      *
      * @param text

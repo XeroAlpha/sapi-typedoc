@@ -313,7 +313,7 @@ export class HttpClient {
      * Cancels all pending requests.
      * @param reason 提供给请求对应的 Promise 的 reject 原因。
      *
-     * @worldMutation
+     * @earlyExecution
      *
      */
     cancelAll(reason: string): void;
@@ -323,7 +323,7 @@ export class HttpClient {
      * 
      * Performs a simple HTTP get request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      * @param uri
      * 请求的 URL。
@@ -340,7 +340,7 @@ export class HttpClient {
      * 发起一个 HTTP 请求。
      * Performs an HTTP request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      * @param config
      * 用于发起请求的配置对象。
@@ -370,7 +370,7 @@ export class HttpHeader {
      * 
      * Key of the HTTP header.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     key: string;
@@ -380,7 +380,7 @@ export class HttpHeader {
      * 
      * Value of the HTTP header.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     value: minecraftserveradmin.SecretString | string;
@@ -400,7 +400,7 @@ export class HttpRequest {
      * 
      * Content of the body of the HTTP request.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     body: string;
@@ -410,7 +410,7 @@ export class HttpRequest {
      * 
      * A collection of HTTP headers to add to the outbound request.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     headers: HttpHeader[];
@@ -421,7 +421,7 @@ export class HttpRequest {
      * HTTP method (e.g., GET or PUT or PATCH) to use for making
      * the request.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     method: HttpRequestMethod;
@@ -432,7 +432,7 @@ export class HttpRequest {
      * Amount of time, in seconds, before the request times out and
      * is abandoned.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     timeout: number;
@@ -442,7 +442,7 @@ export class HttpRequest {
      * 
      * The HTTP resource to access.
      *
-     * @worldMutation
+     * This property can be used in early-execution mode.
      *
      */
     uri: string;
@@ -454,7 +454,7 @@ export class HttpRequest {
      * Adds an additional header to the overall list of headers
      * used in the corresponding HTTP request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      */
     addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
@@ -464,7 +464,7 @@ export class HttpRequest {
      * 
      * Updates the content of the body of the HTTP request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      */
     setBody(body: string): HttpRequest;
@@ -474,7 +474,7 @@ export class HttpRequest {
      * 
      * Replaces and applies a set of HTTP Headers for the request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      */
     setHeaders(headers: HttpHeader[]): HttpRequest;
@@ -485,7 +485,7 @@ export class HttpRequest {
      * Sets the desired HTTP method (e.g., GET or PUT or PATCH) to
      * use for making the request.
      *
-     * @worldMutation
+     * @earlyExecution
      *
      */
     setMethod(method: HttpRequestMethod): HttpRequest;
@@ -493,7 +493,7 @@ export class HttpRequest {
      * @remarks
      * 设置该请求的最大超时时间，单位为秒。
      * 
-     * @worldMutation
+     * @earlyExecution
      *
      */
     setTimeout(timeout: number): HttpRequest;
@@ -664,6 +664,38 @@ export interface PacketEventOptions {
      *
      */
     monitoredPacketIds?: PacketId[];
+}
+
+/**
+ * An error thrown when a platform-level HTTP error occurs.
+ * Information provided in this class may be useful for
+ * diagnostics purposes but will differ from platform to
+ * platform.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InternalHttpRequestError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The platform-provided numeric error code for the error.
+     *
+     */
+    code: number;
+    /**
+     * @remarks
+     * The platform-provided message for the error.
+     *
+     */
+    message: string;
+}
+
+/**
+ * An error thrown when a malformed HTTP request is attempted
+ * to be sent.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class MalformedHttpRequestError extends Error {
+    private constructor();
 }
 
 export const beforeEvents: NetworkBeforeEvents;

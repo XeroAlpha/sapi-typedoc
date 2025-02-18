@@ -4,10 +4,6 @@
  * @beta
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
- *
- * Required Experiments:
- * - Camera Aim Assist
- *
  */
 export class AimAssistPresetSettings {
     /**

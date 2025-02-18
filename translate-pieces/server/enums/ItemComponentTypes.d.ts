@@ -3,9 +3,6 @@
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
-    /**
-     * @rc
-     */
     Compostable = 'minecraft:compostable',
     /**
      * @remarks

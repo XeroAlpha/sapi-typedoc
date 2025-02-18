@@ -6,6 +6,7 @@ export declare enum PropertyItemType {
     BlockTable = 'editorUI:BlockTable',
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
+    ButtonPane = 'editorUI:ButtonPane',
     ColorPicker = 'editorUI:ColorPicker',
     ComboBox = 'editorUI:ComboBox',
     Divider = 'editorUI:Divider',
