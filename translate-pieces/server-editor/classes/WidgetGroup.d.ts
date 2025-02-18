@@ -10,19 +10,19 @@ export class WidgetGroup {
     readonly selectedWidgetCount: number;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visible: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visibleBounds: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -31,13 +31,13 @@ export class WidgetGroup {
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     delete(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -50,7 +50,7 @@ export class WidgetGroup {
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -59,7 +59,7 @@ export class WidgetGroup {
     deselectAllWidgets(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

@@ -12,9 +12,9 @@ export class ItemStopUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * stops charging.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemStopUseAfterEvent) => void): (arg0: ItemStopUseAfterEvent) => void;
@@ -23,9 +23,9 @@ export class ItemStopUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * stops charging.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemStopUseAfterEvent) => void): void;

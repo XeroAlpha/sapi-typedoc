@@ -11,9 +11,9 @@ export class PlayerButtonInputAfterEventSignal {
      * Adds a callback that will be called after the player
      * performs an input.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -25,9 +25,9 @@ export class PlayerButtonInputAfterEventSignal {
      * Removes a callback from being called after the player
      * performs an input.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerButtonInputAfterEvent) => void): void;

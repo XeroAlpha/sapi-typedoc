@@ -94,7 +94,7 @@ export class ActionFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param player
      * Player to show this dialog to.
@@ -178,7 +178,7 @@ export class MessageFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param player
      * Player to show this dialog to.
@@ -254,7 +254,7 @@ export class ModalFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param player
      * Player to show this dialog to.
@@ -318,7 +318,7 @@ export class UIManager {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

@@ -14,7 +14,7 @@ export class Scoreboard {
      * 
      * Adds a new objective to the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      * @param objectiveId 记分项名称。
      * @param displayName 记分项的显示名称。
      * @returns 创建的记分项对象。
@@ -29,7 +29,7 @@ export class Scoreboard {
      * 
      * Clears the objective that occupies a display slot.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      * @param displaySlotId 显示位置。
      * @returns 先前正显示的记分项，为空时返回 `null`。
      *
@@ -83,7 +83,7 @@ export class Scoreboard {
      * 
      * Removes an objective from the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      * @param objectiveId 记分项对象或名称。
      * @returns 总是返回 `true`。
      * @throws
@@ -97,7 +97,7 @@ export class Scoreboard {
      * Sets an objective into a display slot with specified
      * additional display settings.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      * @param displaySlotId 显示位置。
      * @param objectiveDisplaySetting 记分项显示配置。
      * @returns

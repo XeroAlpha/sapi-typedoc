@@ -12,9 +12,9 @@ export class ExplosionBeforeEventSignal {
      * occurs. The callback can optionally change or cancel
      * explosion behavior.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
@@ -23,9 +23,9 @@ export class ExplosionBeforeEventSignal {
      * Removes a callback from being called from before when an
      * explosion would occur.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;

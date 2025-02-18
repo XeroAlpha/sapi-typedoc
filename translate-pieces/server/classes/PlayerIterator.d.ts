@@ -10,7 +10,7 @@ export class PlayerIterator implements Iterable<Player> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Player>;
@@ -20,7 +20,7 @@ export class PlayerIterator implements Iterable<Player> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Player in the iteration.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     next(): IteratorResult<Player>;

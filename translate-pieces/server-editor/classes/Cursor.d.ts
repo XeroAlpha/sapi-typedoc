@@ -50,7 +50,7 @@ export class Cursor {
      * @remarks
      * Get the world position of the 3D block cursor
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -60,14 +60,14 @@ export class Cursor {
      * Get a property object which represents the current
      * properties of the 3D block cursor.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     getProperties(): CursorProperties;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -79,7 +79,7 @@ export class Cursor {
      * Hide the 3D block cursor from view until the corresponding
      * {@link Cursor.show} function is called
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -90,7 +90,7 @@ export class Cursor {
      * Depending on the {@link CursorProperties.controlMode} - this
      * function may have no effect
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param offset
      * Amount by which the 3D block cursor should be moved
@@ -104,7 +104,7 @@ export class Cursor {
      * @remarks
      * Reset the 3D block cursor to the system default state
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -113,7 +113,7 @@ export class Cursor {
      * @remarks
      * Set the 3D block cursor properties to a given state
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param properties
      * A set of optional parameters within a property state which
@@ -125,7 +125,7 @@ export class Cursor {
      * @remarks
      * Make the 3D block cursor visible on screen
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

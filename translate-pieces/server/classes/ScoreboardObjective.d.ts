@@ -40,7 +40,7 @@ export class ScoreboardObjective {
      * @remarks
      * Adds a score to the given participant and objective.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
@@ -96,7 +96,7 @@ export class ScoreboardObjective {
      * @remarks
      * Removes a participant from this scoreboard objective.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param participant
      * Participant to remove from being tracked with this
@@ -108,7 +108,7 @@ export class ScoreboardObjective {
      * @remarks
      * Sets a score for a participant.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param participant
      * Identity of the participant.

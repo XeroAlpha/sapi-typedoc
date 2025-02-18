@@ -593,7 +593,7 @@ export class Block {
      * Sets the block in the dimension to the state of the
      * permutation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param permutation
      * 包含方块一组属性状态的{@link BlockPermutation}。
@@ -613,7 +613,7 @@ export class Block {
      *
      * Sets the type of block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockType
      * 要应用的方块类型的标识符或方块类型，
@@ -636,7 +636,7 @@ export class Block {
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param isWaterlogged
      * true if the block should have water within it.
@@ -677,7 +677,7 @@ export class Block {
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param permutation
      * 包含一组方块属性状态的{@link BlockPermutation}。

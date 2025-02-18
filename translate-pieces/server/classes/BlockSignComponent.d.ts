@@ -60,7 +60,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the text of the sign component.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param message
      * The message to set on the sign. If set to a string, then
@@ -81,7 +81,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the dye color of the text.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param color
      * The dye color to apply to the sign or undefined to clear the
@@ -97,7 +97,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Makes it so players cannot edit this sign.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

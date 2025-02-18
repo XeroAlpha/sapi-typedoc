@@ -9,7 +9,7 @@ export class BlockPalette {
     getItem(index: number): IBlockPaletteItem;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -18,13 +18,13 @@ export class BlockPalette {
     removeItemAt(index: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     removeItems(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

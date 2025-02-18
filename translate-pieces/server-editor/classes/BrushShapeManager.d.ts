@@ -7,13 +7,13 @@ export class BrushShapeManager {
     readonly brushShapeList: BrushShape[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     activateBrushTool(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -22,13 +22,13 @@ export class BrushShapeManager {
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     deactivateBrushTool(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -37,13 +37,13 @@ export class BrushShapeManager {
     endPainting(cancelled: boolean): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBrushShapeOffset(): minecraftserver.Vector3;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -52,7 +52,7 @@ export class BrushShapeManager {
     getSettingsUIElements(brushName: string): SettingsUIElement[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -66,7 +66,7 @@ export class BrushShapeManager {
     ): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -75,43 +75,43 @@ export class BrushShapeManager {
     setBrushMask(mask: BlockMaskList): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShapeOffset(offset: minecraftserver.Vector3): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShapeVisible(visible: boolean): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setFlattenHeight(flattenHeight: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setFlattenRadius(flattenRadius: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setTerrainStrength(terrainStrength: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -120,13 +120,13 @@ export class BrushShapeManager {
     singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     switchBrushPaintMode(paintMode: PaintMode): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -135,7 +135,7 @@ export class BrushShapeManager {
     switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

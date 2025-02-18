@@ -15,7 +15,7 @@ export class AimAssistPresetSettings {
      * Optional. Default aim-assist category Id used for items not
      * provided to setItemSettings.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     defaultItemSettings?: string;
@@ -23,7 +23,7 @@ export class AimAssistPresetSettings {
      * @remarks
      * Optional. Aim-assist category Id used for an empty hand.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     handSettings?: string;

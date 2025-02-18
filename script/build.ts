@@ -7,13 +7,32 @@ import type { PackageJson } from 'type-fest';
 import * as TypeDoc from 'typedoc';
 import runHooks from './hooks.js';
 import { replacePieces, split } from './split.js';
-import { basePath, distPath, originalPath, translatedPath, translatingPath } from './utils.js';
+import {
+    basePath,
+    distPath,
+    installLanguages,
+    originalPath,
+    translatedPath,
+    translatingPath,
+    type TypeDocLanguages
+} from './utils.js';
 
 declare module 'typedoc' {
     interface TranslatableStrings {
         tag_rc: [];
     }
 }
+
+const TypeDocExtraTranslations: TypeDocLanguages = {
+    zh: {
+        tag_rc: '预览版',
+        tag_beta: '实验性'
+    },
+    en: {
+        tag_rc: 'Preview',
+        tag_beta: 'Beta'
+    }
+};
 
 const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
@@ -212,19 +231,11 @@ export async function build(translated?: boolean) {
     const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins(
         {
             tsconfig: tsConfigFilePath,
-            modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc'],
-            lang: 'zh'
+            modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc']
         },
         [new TypeDoc.TSConfigReader()]
     );
-    tsdocApplication.internationalization.addTranslations(
-        'zh',
-        {
-            tag_rc: '预览版',
-            tag_beta: '实验性'
-        },
-        true
-    );
+    installLanguages(tsdocApplication, TypeDocExtraTranslations);
     rmSync(distPath, { recursive: true, force: true });
     const beforeConvertContext = { ...translateHookContext, tsdocApplication };
     await runHooks('beforeConvert', beforeConvertContext);

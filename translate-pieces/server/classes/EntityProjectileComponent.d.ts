@@ -16,7 +16,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * The fraction of the projectile's speed maintained every tick
      * while traveling through air.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     airInertia: number;
@@ -27,7 +27,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * modified via the onFireTime property. The entity will not
      * catch fire if immune or if the entity is wet.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     catchFireOnHurt: boolean;
@@ -36,7 +36,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will spawn crit particles when hit
      * by a player. E.g. Player attacking a Shulker bullet.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     critParticlesOnProjectileHurt: boolean;
@@ -45,7 +45,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will be destroyed when it takes
      * damage. E.g. Player attacking a Shulker bullet.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     destroyOnProjectileHurt: boolean;
@@ -57,7 +57,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * higher the value, the faster the projectile falls. If
      * negative, the entity will rise instead of fall.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     gravity: number;
@@ -65,7 +65,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The sound that plays when the projectile hits an entity.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     hitEntitySound?: string;
@@ -73,7 +73,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The sound that plays when the projectile hits a block.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     hitGroundSound?: string;
@@ -81,7 +81,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The particle that spawns when the projectile hits something.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     hitParticle?: string;
@@ -92,7 +92,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * when hit. E.g. A thrown Trident with the Channeling
      * enchantment.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     lightningStrikeOnHit: boolean;
@@ -101,7 +101,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * The fraction of the projectile's speed maintained every tick
      * while traveling through a liquid.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     liquidInertia: number;
@@ -110,7 +110,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * Duration in seconds that the entity hit will be on fire for
      * when catchFireOnHurt is set to true.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     onFireTime: number;
@@ -120,7 +120,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * the projectile can collide with and damage. It also
      * determines which entity is assigned as the attacker.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     owner?: Entity;
@@ -129,7 +129,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will bounce off mobs when no damage
      * is taken. E.g. A spawning wither.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     shouldBounceOnHit: boolean;
@@ -139,7 +139,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * hit as thought it had been blocked. E.g. Thrown trident on
      * hit behavior.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     stopOnHit: boolean;
@@ -149,7 +149,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * Shoots the projectile with a given velocity. The projectile
      * will be shot from its current location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param velocity
      * The velocity to fire the projectile. This controls both the

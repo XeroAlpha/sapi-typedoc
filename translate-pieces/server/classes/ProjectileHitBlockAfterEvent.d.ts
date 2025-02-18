@@ -41,7 +41,7 @@ export class ProjectileHitBlockAfterEvent {
      * Contains additional information about the block that was hit
      * by the projectile.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBlockHit(): BlockHitInformation;

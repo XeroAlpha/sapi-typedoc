@@ -49,7 +49,7 @@ export class EntityTameableComponent extends EntityComponent {
      * @remarks
      * Set this entity as tamed by the given player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param player
      * The player that this entity should be tamed by.

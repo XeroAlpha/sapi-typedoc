@@ -15,7 +15,7 @@ export class SimulationState {
      * Sets the state of mob simulation.  If set to `true`, mobs
      * are paused.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

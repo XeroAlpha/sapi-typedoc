@@ -12,7 +12,7 @@ export class ContainerSlot {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -43,7 +43,7 @@ export class ContainerSlot {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -54,7 +54,7 @@ export class ContainerSlot {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -78,7 +78,7 @@ export class ContainerSlot {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid. Also throws if
@@ -272,7 +272,7 @@ export class ContainerSlot {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -292,7 +292,7 @@ export class ContainerSlot {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -341,7 +341,7 @@ export class ContainerSlot {
      * Sets the given ItemStack in the slot, replacing any existing
      * item.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * The ItemStack to be placed in the slot.
@@ -356,7 +356,7 @@ export class ContainerSlot {
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param loreList
      * A list of lore strings. Setting this argument to undefined

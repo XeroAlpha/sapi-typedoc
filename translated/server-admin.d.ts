@@ -70,9 +70,9 @@ export class ServerSecrets {
      * HttpHeader, this Secret is resolved at the time of execution
      * but is not made available to the script environment.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     get(name: string): SecretString | undefined;
@@ -102,9 +102,9 @@ export class ServerVariables {
      * Returns the value of variable that has been configured in a
      * dedicated server configuration JSON file.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     get(name: string): any | undefined;
@@ -114,7 +114,7 @@ export class ServerVariables {
  * @remarks
  * Transfer player to another server.
  *
- * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+ * @worldMutation
  *
  * @param player
  * Player to transfer.

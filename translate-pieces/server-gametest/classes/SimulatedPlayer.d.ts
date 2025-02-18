@@ -24,7 +24,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Returns whether the simulated player is sprinting.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     isSprinting: boolean;
@@ -35,7 +35,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player was not on cooldown and had a valid target. Target
      * selection is performed by raycasting from the player's head.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -48,7 +48,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * attack can be performed at any distance and does not require
      * line of sight to the target entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -60,7 +60,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * broken, an item is used or stopBreakingBlock is called.
      * Returns true if the block at blockLocation is solid.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to interact with.
@@ -71,7 +71,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -81,7 +81,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Simulates and performs a disconnection of the simulated
      * player from the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -90,7 +90,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Drops the simulated player's selected item
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -101,7 +101,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * were flying in creative mode. For flying with Elytra, see
      * function glide.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -110,7 +110,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Gives the simulated player a particular item stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * Item to give.
@@ -124,7 +124,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to start gliding. Elytra must be
      * equipped and the player must be in the air.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns true if the simulated player begins to glide.
@@ -140,7 +140,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * the first intersected block or entity. Returns true if the
      * interaction was successful. Maximum range is 6 blocks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -151,7 +151,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block at the specified block location must be solid. Returns
      * true if the interaction was performed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to interact with.
@@ -165,7 +165,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to interact with a mob. Returns
      * true if the interaction was performed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entity
      * Entity to interact with.
@@ -176,7 +176,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to jump.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * True if a jump was performed.
@@ -188,7 +188,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given block location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -198,7 +198,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -208,7 +208,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Rotates the simulated player's head/body to look at the
      * given location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -218,7 +218,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to walk in the given direction
      * relative to the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -228,7 +228,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Orders the simulated player to walk in the given direction
      * relative to the player's current rotation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -240,7 +240,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * already playing, this will override the last
      * move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -251,7 +251,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * a straight line. If a move or navigation is already playing,
      * this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -265,7 +265,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * player will stop. The player must be touching the ground in
      * order to start navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -276,7 +276,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * a one block radius. If a move or navigation is already
      * playing, this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -290,7 +290,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * stop. The player must be touching the ground in order to
      * start navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -301,7 +301,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * locations parameter. If a move or navigation is already
      * playing, this will override the last move/navigation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param locations
      * A list of locations to use for routing.
@@ -314,7 +314,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Respawns the particular simulated player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -324,7 +324,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to turn by the provided angle,
      * relative to the player's current rotation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -334,7 +334,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to turn to face the provided
      * angle, relative to the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -343,7 +343,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Sets a particular item for the simulated player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * Item to set.
@@ -356,7 +356,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -365,14 +365,14 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops destroying the block that is currently being hit.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     stopBreakingBlock(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -381,7 +381,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop flying.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -390,7 +390,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop gliding.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -399,7 +399,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops interacting with entities or blocks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -409,7 +409,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Stops moving/walking/following if the simulated player is
      * moving.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -418,7 +418,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to stop swimming.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -427,7 +427,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Stops using the currently active item.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the item that was in use. Undefined if no item was
@@ -439,7 +439,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * Causes the simulated player to start swimming.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -449,7 +449,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to use an item. Does not consume
      * the item. Returns false if the item is on cooldown.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * Item to use.
@@ -461,7 +461,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Causes the simulated player to hold and use an item in their
      * inventory.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param slot
      * Index of the inventory slot.
@@ -474,7 +474,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * inventory on a block. The block at the specified block
      * location must be solid. Returns true if the item was used.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param slot
      * Index of the slot to use.
@@ -499,7 +499,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block at the specified block location must be solid. Returns
      * true if the item was used.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * Item to use.

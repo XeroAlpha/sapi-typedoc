@@ -11,7 +11,7 @@ export class GameTestSequence {
      * sequence. Exceptions thrown within the callback will end
      * sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Callback function to execute.
@@ -26,7 +26,7 @@ export class GameTestSequence {
      * GameTest sequence. Exceptions thrown within the callback
      * will end sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delayTicks
      * Number of ticks to wait before executing the callback.
@@ -42,7 +42,7 @@ export class GameTestSequence {
      * Runs the given callback every tick for the given number of
      * ticks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Callback function to execute.
@@ -56,7 +56,7 @@ export class GameTestSequence {
      * Causes the test to fail if this step in the GameTest
      * sequence is reached.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param errorMessage
      * Error message summarizing the failure condition.
@@ -66,7 +66,7 @@ export class GameTestSequence {
      * @remarks
      * Idles the GameTest sequence for the specified delayTicks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delayTicks
      * Number of ticks to delay for this step in the GameTest
@@ -81,7 +81,7 @@ export class GameTestSequence {
      * Marks the GameTest a success if this step is reached in the
      * GameTest sequence.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     thenSucceed(): void;
@@ -91,7 +91,7 @@ export class GameTestSequence {
      * Exceptions thrown within the callback will end sequence
      * execution.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Testing callback function to execute. Typically, this
@@ -107,7 +107,7 @@ export class GameTestSequence {
      * callback every tick until it succeeds. Exceptions thrown
      * within the callback will end sequence execution.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delayTicks
      * Tick (after the previous step in the GameTest sequence) to

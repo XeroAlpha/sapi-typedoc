@@ -398,7 +398,7 @@ export class Test {
      * @remarks
      * Destroys a block at a particular location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to destroy.
@@ -434,7 +434,7 @@ export class Test {
      * @remarks
      * Gets a block at the specified block location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to retrieve.
@@ -458,7 +458,7 @@ export class Test {
      * this returns a helper object with details on how a fence is
      * connected.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to retrieve.
@@ -472,7 +472,7 @@ export class Test {
      * Retrieves a sculk spreader object that can be used to
      * control and manage how sculk grows from a block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location of the block to retrieve a sculk spreader from.
@@ -497,7 +497,7 @@ export class Test {
      * This asynchronous function will wait for the specified time
      * in ticks before continuing execution.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tickDelay
      * Amount of time to wait, in ticks.
@@ -507,7 +507,7 @@ export class Test {
      * @remarks
      * Kills all entities within the GameTest structure.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -516,7 +516,7 @@ export class Test {
     killAllEntities(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -527,7 +527,7 @@ export class Test {
      * @remarks
      * Presses a button at a block location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location to push the button at.
@@ -542,7 +542,7 @@ export class Test {
      * @remarks
      * Displays the specified message to all players.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param text
      * Message to display.
@@ -555,7 +555,7 @@ export class Test {
      * @remarks
      * Pulls a lever at a block location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location to pull the lever at.
@@ -571,7 +571,7 @@ export class Test {
      * Sends a Redstone pulse at a particular location by creating
      * a temporary Redstone block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location to pulse Redstone at.
@@ -608,7 +608,7 @@ export class Test {
      * structure block are (0, 1, 0). Rotation of the GameTest
      * structure is also taken into account.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param worldLocation
      * Absolute location in the world to convert to a relative
@@ -624,7 +624,7 @@ export class Test {
      * @remarks
      * Removes a simulated player from the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param simulatedPlayer
      * Simulated player to remove.
@@ -637,7 +637,7 @@ export class Test {
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param direction
      * Direction to translate into a direction relative to the
@@ -651,7 +651,7 @@ export class Test {
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -662,7 +662,7 @@ export class Test {
      * @remarks
      * Runs a specific callback after a specified delay of ticks
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delayTicks
      * Number of ticks to delay before running the specified
@@ -677,7 +677,7 @@ export class Test {
      * Runs the given callback after a delay of _tick_ ticks from
      * the start of the GameTest.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tick
      * Tick (after the start of the GameTest) to run the callback
@@ -692,7 +692,7 @@ export class Test {
      * Sets a block to a particular configuration (a
      * BlockPermutation) at the specified block location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockData
      * Permutation that contains the configuration data for a
@@ -709,7 +709,7 @@ export class Test {
      * Sets a block to a particular type at the specified block
      * location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockType
      * Type of block to set.
@@ -726,7 +726,7 @@ export class Test {
      * For blocks that are fluid containers - like a cauldron -
      * changes the type of fluid within that container.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * Location of the fluid container block.
@@ -742,7 +742,7 @@ export class Test {
      * @remarks
      * Sets the fuse of an explodable entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entity
      * Entity that is explodable.
@@ -757,7 +757,7 @@ export class Test {
      * @remarks
      * Spawns an entity at a location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
@@ -780,7 +780,7 @@ export class Test {
      * @remarks
      * Spawns an entity at a location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entityTypeIdentifier
      * Type of entity to create. If no namespace is provided,
@@ -799,7 +799,7 @@ export class Test {
      * @remarks
      * Spawns an item entity at a specified location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * ItemStack that describes the item entity to create.
@@ -814,7 +814,7 @@ export class Test {
      * @remarks
      * Creates a new simulated player within the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location where to spawn the simulated player.
@@ -835,7 +835,7 @@ export class Test {
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * Location where the entity should be spawned.
@@ -850,7 +850,7 @@ export class Test {
      * This method is frequently used in conjunction with methods
      * like .walkTo to create predictable mob actions.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * Location where the entity should be spawned.
@@ -867,7 +867,7 @@ export class Test {
      * Tests that a particular item entity is present at a
      * particular location. If not, an exception is thrown.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockLocation
      * BlockLocation containing a multiface block.
@@ -890,7 +890,7 @@ export class Test {
      * Creates a new GameTestSequence - A set of steps that play
      * out sequentially within a GameTest.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * A new GameTestSequence with chaining methods that facilitate
@@ -901,7 +901,7 @@ export class Test {
      * @remarks
      * Marks the current test as a success case.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -911,7 +911,7 @@ export class Test {
      * Runs the given callback. If the callback does not throw an
      * exception, the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Callback function that runs. If the function runs
@@ -924,7 +924,7 @@ export class Test {
      * @remarks
      * Marks the test as a success at the specified tick.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tick
      * Tick after the start of the GameTest to mark the test as
@@ -938,7 +938,7 @@ export class Test {
      * the test. If the callback does not throw an exception, the
      * test is marked as a failure.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tick
      * Tick after the start of the GameTest to run the testing
@@ -956,7 +956,7 @@ export class Test {
      * Specifically, the test will succeed when the callback does
      * not throw an exception.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Testing callback function that runs. If the function runs
@@ -972,7 +972,7 @@ export class Test {
      * the specified block of a type is found or not found
      * (depending on isPresent), the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockType
      * Type of block to test for.
@@ -997,7 +997,7 @@ export class Test {
      * Depending on the value of hasComponent, when the specified
      * component is found, the test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entityTypeIdentifier
      * Type of entity to look for. If no namespace is specified,
@@ -1026,7 +1026,7 @@ export class Test {
      * type is found or not found (depending on isPresent), the
      * test is marked as a success.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param entityTypeIdentifier
      * Type of entity to test for (e.g., 'minecraft:skeleton'). If
@@ -1052,7 +1052,7 @@ export class Test {
      * Triggers a block event from a fixed list of available block
      * events.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param event
      * Event to trigger. Valid values include minecraft:drip,
@@ -1071,7 +1071,7 @@ export class Test {
      * in conjunction with .assert functions to evaluate that a
      * condition is true.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param callback
      * Function with code to evaluate.
@@ -1084,7 +1084,7 @@ export class Test {
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param mob
      * Mob entity to give orders to.
@@ -1104,7 +1104,7 @@ export class Test {
      * have more predictable mob behaviors. Mobs will stop
      * navigation as soon as they intersect the target location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param mob
      * Mob entity to give orders to.

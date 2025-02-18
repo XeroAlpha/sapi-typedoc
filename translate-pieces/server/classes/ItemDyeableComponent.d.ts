@@ -11,7 +11,7 @@ export class ItemDyeableComponent extends ItemComponent {
      * @remarks
      * Sets and returns the current color of the item.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color?: RGB;

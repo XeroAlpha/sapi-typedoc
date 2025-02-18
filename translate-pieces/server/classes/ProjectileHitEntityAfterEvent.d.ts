@@ -41,7 +41,7 @@ export class ProjectileHitEntityAfterEvent {
      * Contains additional information about an entity that was
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getEntityHit(): EntityHitInformation;

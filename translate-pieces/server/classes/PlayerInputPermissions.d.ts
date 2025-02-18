@@ -10,7 +10,7 @@ export class PlayerInputPermissions {
      * @remarks
      * Returns true if an input permission is enabled.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -23,7 +23,7 @@ export class PlayerInputPermissions {
      * Enable or disable an input permission. When enabled the
      * input will work, when disabled will not work.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

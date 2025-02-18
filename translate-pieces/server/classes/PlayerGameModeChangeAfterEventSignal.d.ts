@@ -11,9 +11,9 @@ export class PlayerGameModeChangeAfterEventSignal {
      * Adds a callback that will be called after a players game
      * mode is changed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): (arg0: PlayerGameModeChangeAfterEvent) => void;
@@ -22,9 +22,9 @@ export class PlayerGameModeChangeAfterEventSignal {
      * Removes a callback from being called after a players game
      * mode is changed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): void;

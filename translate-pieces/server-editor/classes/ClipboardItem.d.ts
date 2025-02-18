@@ -19,7 +19,7 @@ export class ClipboardItem {
      * @remarks
      * Clear the contents of the item
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -34,7 +34,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -63,7 +63,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -83,7 +83,7 @@ export class ClipboardItem {
      * @remarks
      * Get the bounding size of the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -93,7 +93,7 @@ export class ClipboardItem {
      * Copy the contents of the area represented by a {@link
      * Selection} volume into the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param selection
      * A volume which represents the area to be copied
@@ -102,7 +102,7 @@ export class ClipboardItem {
     readFromSelection(selection: Selection): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -114,7 +114,7 @@ export class ClipboardItem {
      * Copy the contents of a rectangular volume into the Clipboard
      * Item
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param from
      * The world location of one corner of a bounding volume
@@ -129,7 +129,7 @@ export class ClipboardItem {
      * Apply the contents of a ClipboardItem to the world at a
      * given location using a set of write options
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The root point of the world location to which the

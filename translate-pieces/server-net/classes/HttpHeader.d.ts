@@ -14,7 +14,7 @@ export class HttpHeader {
      * 
      * Key of the HTTP header.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     key: string;
@@ -24,7 +24,7 @@ export class HttpHeader {
      * 
      * Value of the HTTP header.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     value: minecraftserveradmin.SecretString | string;

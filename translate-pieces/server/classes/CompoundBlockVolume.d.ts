@@ -56,7 +56,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Clear the contents of the volume stack
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     clear(): void;
@@ -77,7 +77,7 @@ export class CompoundBlockVolume {
      * in absolute world space (irrespective of whether the
      * compound volume items pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBlockLocationIterator(): BlockLocationIterator;
@@ -89,7 +89,7 @@ export class CompoundBlockVolume {
      * absolute world space  (irrespective of whether the compound
      * volume items pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBoundingBox(): BoundingBox;
@@ -101,7 +101,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getMax(): Vector3;
@@ -113,7 +113,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getMin(): Vector3;
@@ -121,7 +121,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Fetch the origin in world space of the compound volume
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getOrigin(): Vector3;
@@ -130,7 +130,7 @@ export class CompoundBlockVolume {
      * Return a boolean which signals if there are any volume items
      * pushed to the volume
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     isEmpty(): boolean;
@@ -146,7 +146,7 @@ export class CompoundBlockVolume {
      * bounding rectangle, but it is not inside a positively
      * defined location)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     isInside(worldLocation: Vector3): boolean;
@@ -155,7 +155,7 @@ export class CompoundBlockVolume {
      * Inspect the last entry pushed to the volume stack without
      * affecting the stack contents.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param forceRelativity
      * Determine whether the function returns a
@@ -176,7 +176,7 @@ export class CompoundBlockVolume {
      * Remove the last entry from the volume stack.  This will
      * reduce the stack size by one
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     popVolume(): boolean;
@@ -189,7 +189,7 @@ export class CompoundBlockVolume {
      * determines whether it is relative or absolute to the
      * compound volume origin
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param item
      * Item to push to the end of the stack
@@ -202,7 +202,7 @@ export class CompoundBlockVolume {
      * If the volume stack is NOT empty, this function will replace
      * the last item on the stack with the new item.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param item
      * Item to add or replace
@@ -213,7 +213,7 @@ export class CompoundBlockVolume {
      * Set the origin of the compound volume to an absolute world
      * space location
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param preserveExistingVolumes
      * This optional boolean flag determines whether the relative
@@ -243,7 +243,7 @@ export class CompoundBlockVolume {
      * function will translate the origin by a given delta to a new
      * position
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param preserveExistingVolumes
      * See the description for the arguments to {@link

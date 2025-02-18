@@ -4,7 +4,7 @@ export class BlockComponentRegistry {
     private constructor();
     /**
      * @remarks
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *

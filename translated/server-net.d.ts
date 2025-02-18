@@ -313,7 +313,7 @@ export class HttpClient {
      * Cancels all pending requests.
      * @param reason 提供给请求对应的 Promise 的 reject 原因。
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     cancelAll(reason: string): void;
@@ -323,7 +323,7 @@ export class HttpClient {
      * 
      * Performs a simple HTTP get request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param uri
      * 请求的 URL。
@@ -340,7 +340,7 @@ export class HttpClient {
      * 发起一个 HTTP 请求。
      * Performs an HTTP request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param config
      * 用于发起请求的配置对象。
@@ -370,7 +370,7 @@ export class HttpHeader {
      * 
      * Key of the HTTP header.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     key: string;
@@ -380,7 +380,7 @@ export class HttpHeader {
      * 
      * Value of the HTTP header.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: minecraftserveradmin.SecretString | string;
@@ -400,7 +400,7 @@ export class HttpRequest {
      * 
      * Content of the body of the HTTP request.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     body: string;
@@ -410,7 +410,7 @@ export class HttpRequest {
      * 
      * A collection of HTTP headers to add to the outbound request.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     headers: HttpHeader[];
@@ -421,7 +421,7 @@ export class HttpRequest {
      * HTTP method (e.g., GET or PUT or PATCH) to use for making
      * the request.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     method: HttpRequestMethod;
@@ -432,7 +432,7 @@ export class HttpRequest {
      * Amount of time, in seconds, before the request times out and
      * is abandoned.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     timeout: number;
@@ -442,7 +442,7 @@ export class HttpRequest {
      * 
      * The HTTP resource to access.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     uri: string;
@@ -454,7 +454,7 @@ export class HttpRequest {
      * Adds an additional header to the overall list of headers
      * used in the corresponding HTTP request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
@@ -464,7 +464,7 @@ export class HttpRequest {
      * 
      * Updates the content of the body of the HTTP request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     setBody(body: string): HttpRequest;
@@ -474,7 +474,7 @@ export class HttpRequest {
      * 
      * Replaces and applies a set of HTTP Headers for the request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     setHeaders(headers: HttpHeader[]): HttpRequest;
@@ -485,7 +485,7 @@ export class HttpRequest {
      * Sets the desired HTTP method (e.g., GET or PUT or PATCH) to
      * use for making the request.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     setMethod(method: HttpRequestMethod): HttpRequest;
@@ -493,7 +493,7 @@ export class HttpRequest {
      * @remarks
      * 设置该请求的最大超时时间，单位为秒。
      * 
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     setTimeout(timeout: number): HttpRequest;
@@ -554,9 +554,9 @@ export class PacketReceiveBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -565,9 +565,9 @@ export class PacketReceiveBeforeEventSignal {
     ): (arg0: PacketReceivedBeforeEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;
@@ -627,9 +627,9 @@ export class PacketSendBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -638,9 +638,9 @@ export class PacketSendBeforeEventSignal {
     ): (arg0: PacketSendBeforeEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PacketSendBeforeEvent) => void): void;

@@ -13,7 +13,7 @@ export class ItemStack {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -31,7 +31,7 @@ export class ItemStack {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     keepOnDeath: boolean;
@@ -40,7 +40,7 @@ export class ItemStack {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     lockMode: ItemLockMode;
@@ -58,7 +58,7 @@ export class ItemStack {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the length exceeds 255 characters.
@@ -118,7 +118,7 @@ export class ItemStack {
      * Get the list of block types this item can break in Adventure
      * mode.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getCanDestroy(): string[];
@@ -127,7 +127,7 @@ export class ItemStack {
      * Get the list of block types this item can be placed on in
      * Adventure mode.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getCanPlaceOn(): string[];
@@ -260,7 +260,7 @@ export class ItemStack {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockIdentifiers
      * String list of block types that the item can destroy.
@@ -276,7 +276,7 @@ export class ItemStack {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockIdentifiers
      * String list of block types that the item can be placed on.
@@ -315,7 +315,7 @@ export class ItemStack {
      * ItemStack. The lore list is cleared if set to an empty
      * string or undefined.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param loreList
      * List of lore lines. Each element in the list represents a
@@ -330,7 +330,7 @@ export class ItemStack {
      * @remarks
      * Helper function for creating potion items.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

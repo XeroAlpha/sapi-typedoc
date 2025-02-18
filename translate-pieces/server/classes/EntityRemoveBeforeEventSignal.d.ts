@@ -12,9 +12,9 @@ export class EntityRemoveBeforeEventSignal {
      * Will call your function every time an entity is being
      * removed from the game.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function to call.
@@ -28,9 +28,9 @@ export class EntityRemoveBeforeEventSignal {
      * Unsubscribes your function from subsequent calls when an
      * entity is being removed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;

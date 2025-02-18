@@ -11,9 +11,9 @@ export class PlayerLeaveBeforeEventSignal {
      * Adds a callback that will be called when a player leaves the
      * world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
@@ -22,9 +22,9 @@ export class PlayerLeaveBeforeEventSignal {
      * Removes a callback that will be called when a player leaves
      * the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;

@@ -10,9 +10,9 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when an entity is hurt.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -23,9 +23,9 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Removes a callback from being called when an entity is hurt.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;

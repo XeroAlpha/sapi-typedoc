@@ -12,7 +12,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Base map color defined for that block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -24,7 +24,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * Returns the base color multiplied to the evaluated tint at
      * the given position.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     tintedColor(): RGBA;
@@ -32,7 +32,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Type of tint applied to the color.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

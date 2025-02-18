@@ -7,19 +7,19 @@
 export declare class NumberLimitObservableValidator implements ObservableValidator<number> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _isInteger?: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _max?: number;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _min?: number;

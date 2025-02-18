@@ -4,7 +4,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -14,7 +14,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     getBlocks(): WeightedBlock[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

@@ -2751,7 +2751,7 @@ export class AimAssistCategorySettings {
      * Optional. Default targeting priority used for block types
      * not provided to setBlockPriorities.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     defaultBlockPriority: number;
@@ -2760,7 +2760,7 @@ export class AimAssistCategorySettings {
      * Optional. Default targeting priority used for entity types
      * not provided to setEntityPriorities.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     defaultEntityPriority: number;
@@ -2908,7 +2908,7 @@ export class AimAssistPresetSettings {
      * Optional. Default aim-assist category Id used for items not
      * provided to setItemSettings.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     defaultItemSettings?: string;
@@ -2916,7 +2916,7 @@ export class AimAssistPresetSettings {
      * @remarks
      * Optional. Aim-assist category Id used for an empty hand.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     handSettings?: string;
@@ -3017,7 +3017,7 @@ export class AimAssistRegistry {
      * @remarks
      * Adds an aim-assist category to the registry.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param category
      * The category settings used to create the new category.
@@ -3038,7 +3038,7 @@ export class AimAssistRegistry {
      * @remarks
      * Adds an aim-assist preset to the registry.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param preset
      * The preset settings used to create the new preset.
@@ -3067,7 +3067,7 @@ export class AimAssistRegistry {
      * @remarks
      * Gets the category associated with the provided Id.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * The category object if it exists, otherwise returns
@@ -3078,7 +3078,7 @@ export class AimAssistRegistry {
      * @remarks
      * Gets the preset associated with the provided Id.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param presetId
      * The Id of the preset to retrieve. Must have a namespace.
@@ -3730,7 +3730,7 @@ export class Block {
      * Sets the block in the dimension to the state of the
      * permutation.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param permutation
      * 包含方块一组属性状态的{@link BlockPermutation}。
@@ -3750,7 +3750,7 @@ export class Block {
      *
      * Sets the type of block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param blockType
      * 要应用的方块类型的标识符或方块类型，
@@ -3773,7 +3773,7 @@ export class Block {
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param isWaterlogged
      * true if the block should have water within it.
@@ -3814,7 +3814,7 @@ export class Block {
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param permutation
      * 包含一组方块属性状态的{@link BlockPermutation}。
@@ -4002,7 +4002,7 @@ export class BlockComponentRegistry {
     private constructor();
     /**
      * @remarks
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *
@@ -4114,9 +4114,9 @@ export class BlockExplodeAfterEventSignal {
      * Adds a callback that will be called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: BlockExplodeAfterEvent) => void): (arg0: BlockExplodeAfterEvent) => void;
@@ -4125,9 +4125,9 @@ export class BlockExplodeAfterEventSignal {
      * Removes a callback from being called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: BlockExplodeAfterEvent) => void): void;
@@ -4144,7 +4144,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Relative fill level of the fluid container.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     fillLevel: number;
@@ -4152,7 +4152,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Custom color of the fluid in the container.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     fluidColor: RGBA;
@@ -4162,7 +4162,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * Adds a dye to the fluid. The dye color is combined with any
      * existing custom color.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4173,7 +4173,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Gets the current fluid type in the container.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4184,7 +4184,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Sets the current fluid type in the container.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4196,7 +4196,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * Sets a potion item in the container. Changes the container's
      * fluid type to potion.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4244,7 +4244,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Vector3>;
@@ -4262,7 +4262,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     isValid(): boolean;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     next(): IteratorResult<Vector3>;
@@ -4280,7 +4280,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Base map color defined for that block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4292,7 +4292,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * Returns the base color multiplied to the evaluated tint at
      * the given position.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     tintedColor(): RGBA;
@@ -4300,7 +4300,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Type of tint applied to the color.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4531,7 +4531,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Ejects the currently set record of this record-playing
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -4556,7 +4556,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Pauses the currently playing record of this record-playing
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -4565,7 +4565,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Plays the currently set record of this record-playing block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -4574,7 +4574,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Sets and plays a record based on an item type.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -4641,7 +4641,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the text of the sign component.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param message
      * The message to set on the sign. If set to a string, then
@@ -4662,7 +4662,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Sets the dye color of the text.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param color
      * The dye color to apply to the sign or undefined to clear the
@@ -4678,7 +4678,7 @@ export class BlockSignComponent extends BlockComponent {
      * @remarks
      * Makes it so players cannot edit this sign.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -4933,7 +4933,7 @@ export class BoundingBoxUtils {
      * Create a validated instance of a {@link BoundingBox} where
      * the min and max components are guaranteed to be (min <= max)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param min
      * A corner world location
@@ -4950,7 +4950,7 @@ export class BoundingBoxUtils {
      * greater than the span, but the min/max relationship will
      * remain correct
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * Return a new {@link BoundingBox} object representing the
@@ -4961,7 +4961,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check if two {@link BoundingBox} objects are identical
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static equals(box: BoundingBox, other: BoundingBox): boolean;
@@ -4971,7 +4971,7 @@ export class BoundingBoxUtils {
      * argument.  The resultant {@link BoundingBox} object will be
      * a BoundingBox which exactly encompasses the two boxes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * A new {@link BoundingBox} instance representing the smallest
@@ -4983,7 +4983,7 @@ export class BoundingBoxUtils {
      * Calculate the center block of a given {@link BoundingBox}
      * object.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * Note that {@link BoundingBox} objects represent whole
@@ -4998,7 +4998,7 @@ export class BoundingBoxUtils {
      * Calculate the BoundingBox which represents the union area of
      * two intersecting BoundingBoxes
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
@@ -5006,7 +5006,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Get the Span of each of the BoundingBox Axis components
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static getSpan(box: BoundingBox): Vector3;
@@ -5014,7 +5014,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if two BoundingBox objects intersect
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static intersects(box: BoundingBox, other: BoundingBox): boolean;
@@ -5022,7 +5022,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a given coordinate is inside a BoundingBox
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static isInside(box: BoundingBox, pos: Vector3): boolean;
@@ -5030,7 +5030,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a BoundingBox is valid (i.e. (min <= max))
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     static isValid(box: BoundingBox): boolean;
@@ -5038,7 +5038,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Move a BoundingBox by a given amount
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * Return a new BoundingBox object which represents the change
@@ -5073,9 +5073,9 @@ export class ButtonPushAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when a button is pushed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
@@ -5085,9 +5085,9 @@ export class ButtonPushAfterEventSignal {
      * Removes a callback from being called when a button is
      * pushed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;
@@ -5115,7 +5115,7 @@ export class Camera {
      * perspectives, including any eased camera motions, and return
      * to their normal perspective.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -5125,7 +5125,7 @@ export class Camera {
      * Begins a camera fade transition. A fade transition is a
      * full-screen color that fades-in, holds, and then fades-out.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param fadeCameraOptions
      * Additional options around camera fade operations.
@@ -5136,7 +5136,7 @@ export class Camera {
      * @remarks
      * Sets the current active camera for the specified player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param cameraPreset
      * Identifier of a camera preset file defined within JSON.
@@ -5197,9 +5197,9 @@ export class ChatSendAfterEventSignal {
      * Adds a callback that will be called when new chat messages
      * are sent.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ChatSendAfterEvent) => void): (arg0: ChatSendAfterEvent) => void;
@@ -5208,9 +5208,9 @@ export class ChatSendAfterEventSignal {
      * Removes a callback from being called when new chat messages
      * are sent.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ChatSendAfterEvent) => void): void;
@@ -5264,9 +5264,9 @@ export class ChatSendBeforeEventSignal {
      * Adds a callback that will be called before new chat messages
      * are sent.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ChatSendBeforeEvent) => void): (arg0: ChatSendBeforeEvent) => void;
@@ -5275,9 +5275,9 @@ export class ChatSendBeforeEventSignal {
      * Removes a callback from being called before new chat
      * messages are sent.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ChatSendBeforeEvent) => void): void;
@@ -5397,7 +5397,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Clear the contents of the volume stack
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     clear(): void;
@@ -5418,7 +5418,7 @@ export class CompoundBlockVolume {
      * in absolute world space (irrespective of whether the
      * compound volume items pushed are absolute or relative)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getBlockLocationIterator(): BlockLocationIterator;
@@ -5430,7 +5430,7 @@ export class CompoundBlockVolume {
      * absolute world space  (irrespective of whether the compound
      * volume items pushed are absolute or relative)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getBoundingBox(): BoundingBox;
@@ -5442,7 +5442,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getMax(): Vector3;
@@ -5454,7 +5454,7 @@ export class CompoundBlockVolume {
      * space (irrespective of whether the compound volume items
      * pushed are absolute or relative)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getMin(): Vector3;
@@ -5462,7 +5462,7 @@ export class CompoundBlockVolume {
      * @remarks
      * Fetch the origin in world space of the compound volume
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getOrigin(): Vector3;
@@ -5471,7 +5471,7 @@ export class CompoundBlockVolume {
      * Return a boolean which signals if there are any volume items
      * pushed to the volume
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     isEmpty(): boolean;
@@ -5487,7 +5487,7 @@ export class CompoundBlockVolume {
      * bounding rectangle, but it is not inside a positively
      * defined location)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     isInside(worldLocation: Vector3): boolean;
@@ -5496,7 +5496,7 @@ export class CompoundBlockVolume {
      * Inspect the last entry pushed to the volume stack without
      * affecting the stack contents.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param forceRelativity
      * Determine whether the function returns a
@@ -5517,7 +5517,7 @@ export class CompoundBlockVolume {
      * Remove the last entry from the volume stack.  This will
      * reduce the stack size by one
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     popVolume(): boolean;
@@ -5530,7 +5530,7 @@ export class CompoundBlockVolume {
      * determines whether it is relative or absolute to the
      * compound volume origin
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param item
      * Item to push to the end of the stack
@@ -5543,7 +5543,7 @@ export class CompoundBlockVolume {
      * If the volume stack is NOT empty, this function will replace
      * the last item on the stack with the new item.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param item
      * Item to add or replace
@@ -5554,7 +5554,7 @@ export class CompoundBlockVolume {
      * Set the origin of the compound volume to an absolute world
      * space location
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param preserveExistingVolumes
      * This optional boolean flag determines whether the relative
@@ -5584,7 +5584,7 @@ export class CompoundBlockVolume {
      * function will translate the origin by a given delta to a new
      * position
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param preserveExistingVolumes
      * See the description for the arguments to {@link
@@ -5636,7 +5636,7 @@ export class Container {
      * items of the same type. Note, use {@link Container.setItem}
      * if you wish to set the item in a particular slot.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param itemStack
      * The stack of items to add.
@@ -5647,7 +5647,7 @@ export class Container {
      * @remarks
      * Clears all inventory items in the container.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the container is invalid.
@@ -5687,7 +5687,7 @@ export class Container {
      * Moves an item from one slot to another, potentially across
      * containers.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
@@ -5708,7 +5708,7 @@ export class Container {
      * @remarks
      * Sets an item stack within a particular slot.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param slot
      * Zero-based index of the slot to set an item at.
@@ -5724,7 +5724,7 @@ export class Container {
      * @remarks
      * Swaps items between two different slots within containers.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param slot
      * Zero-based index of the slot to swap from this container.
@@ -5743,7 +5743,7 @@ export class Container {
      * Moves an item from one slot to another container, or to the
      * first available slot in the same container.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
@@ -5774,7 +5774,7 @@ export class ContainerSlot {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -5805,7 +5805,7 @@ export class ContainerSlot {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -5816,7 +5816,7 @@ export class ContainerSlot {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid.
@@ -5840,7 +5840,7 @@ export class ContainerSlot {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the slot's container is invalid. Also throws if
@@ -6034,7 +6034,7 @@ export class ContainerSlot {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -6054,7 +6054,7 @@ export class ContainerSlot {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param blockIdentifiers
      * The list of blocks, given by their identifiers.
@@ -6103,7 +6103,7 @@ export class ContainerSlot {
      * Sets the given ItemStack in the slot, replacing any existing
      * item.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param itemStack
      * The ItemStack to be placed in the slot.
@@ -6118,7 +6118,7 @@ export class ContainerSlot {
      * Sets the lore value - a secondary display string - for an
      * ItemStack.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param loreList
      * A list of lore strings. Setting this argument to undefined
@@ -6173,9 +6173,9 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * Adds a callback that will be called after a data driven
      * entity event is triggered.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -6187,9 +6187,9 @@ export class DataDrivenEntityTriggerAfterEventSignal {
      * Removes a callback that will be called after a data driven
      * entity event is triggered.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void): void;
@@ -6243,7 +6243,7 @@ export class Dimension {
      * @remarks
      * Creates an explosion at the specified location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * The location of the explosion.
@@ -6265,7 +6265,7 @@ export class Dimension {
      * @remarks
      * Fills an area of blocks with a specific block type.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param volume
      * Volume of blocks to be filled.
@@ -6299,7 +6299,7 @@ export class Dimension {
      * time to complete, so avoid using many of these calls within
      * a particular tick.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param pos
      * Starting location to look for a biome to find.
@@ -6344,7 +6344,7 @@ export class Dimension {
     /**
      * @beta
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -6352,7 +6352,7 @@ export class Dimension {
     /**
      * @beta
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -6448,7 +6448,7 @@ export class Dimension {
      * @remarks
      * Returns the highest block at the given XZ location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param locationXZ
      * Location to retrieve the topmost block for.
@@ -6463,7 +6463,7 @@ export class Dimension {
      * @remarks
      * Returns the current weather.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * Returns a WeatherType that explains the broad category of
@@ -6476,7 +6476,7 @@ export class Dimension {
      * Places the given feature into the dimension at the specified
      * location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param featureName
      * The string identifier for the feature.
@@ -6506,7 +6506,7 @@ export class Dimension {
      * Places the given feature rule into the dimension at the
      * specified location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param featureRuleName
      * The string identifier for the feature rule.
@@ -6526,7 +6526,7 @@ export class Dimension {
      * @remarks
      * Plays a sound for all players.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param soundId
      * Identifier of the sound.
@@ -6547,7 +6547,7 @@ export class Dimension {
      * Runs a command synchronously using the context of the
      * broader dimenion.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param commandString
      * Command to run. Note that command strings should not start
@@ -6570,7 +6570,7 @@ export class Dimension {
      * Sets a block in the world using a BlockPermutation.
      * BlockPermutations are blocks with a particular state.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * The location within the dimension to set the block.
@@ -6589,7 +6589,7 @@ export class Dimension {
      * @remarks
      * Sets a block at a given location within the dimension.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * The location within the dimension to set the block.
@@ -6612,7 +6612,7 @@ export class Dimension {
      * @remarks
      * Sets the current weather within the dimension
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param weatherType
      * Set the type of weather to apply.
@@ -6628,7 +6628,7 @@ export class Dimension {
      * Creates a new entity (e.g., a mob) at the specified
      * location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * Identifier of the type of entity to spawn. If no namespace
@@ -6652,7 +6652,7 @@ export class Dimension {
      * Creates a new item stack as an entity at the specified
      * location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * The location at which to create the item stack.
@@ -6672,7 +6672,7 @@ export class Dimension {
      * Creates a new particle emitter at a specified location in
      * the world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param effectName
      * Identifier of the particle to create.
@@ -6713,7 +6713,7 @@ export class DimensionTypes {
      * @remarks
      * Retrieves a dimension type using a string-based identifier.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     static get(dimensionTypeId: string): DimensionType | undefined;
@@ -6721,7 +6721,7 @@ export class DimensionTypes {
      * @remarks
      * Retrieves an array of all dimension types.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     static getAll(): DimensionType[];
@@ -6807,9 +6807,9 @@ export class EffectAddAfterEventSignal {
      * Adds a callback that will be called when an effect is added
      * to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -6821,9 +6821,9 @@ export class EffectAddAfterEventSignal {
      * Removes a callback from being called when an effect is added
      * to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EffectAddAfterEvent) => void): void;
@@ -6872,9 +6872,9 @@ export class EffectAddBeforeEventSignal {
      * Adds a callback that will be called when an effect is added
      * to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
@@ -6883,9 +6883,9 @@ export class EffectAddBeforeEventSignal {
      * Removes a callback from being called when an effect is added
      * to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
@@ -6917,7 +6917,7 @@ export class EffectTypes {
      * @remarks
      * Effect type for the given identifier.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The identifier for the effect.
@@ -6930,7 +6930,7 @@ export class EffectTypes {
      * @remarks
      * Gets all effects.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * A list of all effects.
@@ -7056,7 +7056,7 @@ export class Entity {
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     isSneaking: boolean;
@@ -7097,7 +7097,7 @@ export class Entity {
      * @remarks
      * Given name of the entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     nameTag: string;
@@ -7130,7 +7130,7 @@ export class Entity {
      * @remarks
      * Adds or updates an effect, like poison, to the entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param effectType
      * Type of effect to add to the entity.
@@ -7155,7 +7155,7 @@ export class Entity {
      * @remarks
      * Adds a specified tag to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param tag
      * Content of the tag to add. The tag must be less than 256
@@ -7171,7 +7171,7 @@ export class Entity {
      * @remarks
      * Applies a set of damage to an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param amount
      * Amount of damage to apply.
@@ -7192,7 +7192,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param vector
      * Impulse vector.
@@ -7205,7 +7205,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param verticalStrength
      * Knockback strength for the vertical vector.
@@ -7226,7 +7226,7 @@ export class Entity {
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample applyImpulse.ts
@@ -7238,7 +7238,7 @@ export class Entity {
      * you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param useEffects
      * Whether to show any visual effects connected to the
@@ -7462,7 +7462,7 @@ export class Entity {
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @returns
      * Returns true if entity can be killed (even if it is already
@@ -7479,7 +7479,7 @@ export class Entity {
      * mobs where the pitch controls the head tilt and the yaw
      * controls the body rotation.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param targetLocation
      * The target location that this entity should face/look
@@ -7506,7 +7506,7 @@ export class Entity {
      * @remarks
      * Cause the entity to play the given animation.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param animationName
      * The animation identifier. e.g. animation.creeper.swelling
@@ -7522,7 +7522,7 @@ export class Entity {
      * entity will not perform a death animation or drop loot upon
      * removal.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -7532,7 +7532,7 @@ export class Entity {
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param effectType
      * The effect identifier.
@@ -7546,7 +7546,7 @@ export class Entity {
      * @remarks
      * Removes a specified tag from an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param tag
      * Content of the tag to remove.
@@ -7561,7 +7561,7 @@ export class Entity {
      * specified in the Entity's definition. This property change
      * is not applied until the next tick.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The Entity Property identifier.
@@ -7582,7 +7582,7 @@ export class Entity {
      * @remarks
      * Runs a synchronous command on the entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param commandString
      * The command string. Note: This should not include a leading
@@ -7625,7 +7625,7 @@ export class Entity {
      * that you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param seconds
      * Length of time to set the entity on fire.
@@ -7646,7 +7646,7 @@ export class Entity {
      * Sets an Entity Property to the provided value. This property
      * change is not applied until the next tick.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The Entity Property identifier.
@@ -7668,7 +7668,7 @@ export class Entity {
      * @remarks
      * Sets the main rotation of the entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param rotation
      * The x and y rotation of the entity (in degrees). For most
@@ -7681,7 +7681,7 @@ export class Entity {
      * @remarks
      * Teleports the selected entity to a new location
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * New location for the entity.
@@ -7699,7 +7699,7 @@ export class Entity {
      * behaviors; for example, creepers have a
      * minecraft:start_exploding type event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param eventName
      * Name of the entity type event to trigger. If a namespace is
@@ -7717,7 +7717,7 @@ export class Entity {
      * teleport operation (for example, if there are blocks at the
      * destination.)
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * Location to teleport the entity to.
@@ -7851,7 +7851,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the defined
      * default value.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -7861,7 +7861,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the maximum
      * defined value.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -7871,7 +7871,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the minimum
      * defined value.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -7881,7 +7881,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Sets the current value of this attribute. The provided value
      * will be clamped to the range of this attribute.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -7915,7 +7915,7 @@ export class EntityBreathableComponent extends EntityComponent {
      * @remarks
      * The current air supply of the entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Will throw an error if the air supply is out of bounds
@@ -8066,7 +8066,7 @@ export class EntityColorComponent extends EntityComponent {
      * @remarks
      * Value of this particular color.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -8145,9 +8145,9 @@ export class EntityDieAfterEventSignal {
      * @remarks
      * Subscribes to an event that fires when an entity dies.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function to call when an entity dies.
@@ -8167,9 +8167,9 @@ export class EntityDieAfterEventSignal {
      * Stops this event from calling your function when an entity
      * dies.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityDieAfterEvent) => void): void;
@@ -8213,7 +8213,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Replaces the item in the given EquipmentSlot.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".
@@ -8254,7 +8254,7 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
      * @remarks
      * Current value of the flying speed of the associated entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -8272,7 +8272,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * Current value of the friction modifier of the associated
      * entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -8292,7 +8292,7 @@ export class EntityGroundOffsetComponent extends EntityComponent {
      * is effectively read only; setting the ground offset value
      * will not have an impact on the related entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -8363,9 +8363,9 @@ export class EntityHealthChangedAfterEventSignal {
      * Adds a callback that will be called when the health of an
      * entity changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -8377,9 +8377,9 @@ export class EntityHealthChangedAfterEventSignal {
      * Removes a callback from being called when the health of an
      * entity changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityHealthChangedAfterEvent) => void): void;
@@ -8437,9 +8437,9 @@ export class EntityHitBlockAfterEventSignal {
      * Adds a callback that will be called when an entity hits a
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -8451,9 +8451,9 @@ export class EntityHitBlockAfterEventSignal {
      * Removes a callback from being called when an entity hits a
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityHitBlockAfterEvent) => void): void;
@@ -8490,9 +8490,9 @@ export class EntityHitEntityAfterEventSignal {
      * Adds a callback that will be called when an entity hits
      * another entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -8504,9 +8504,9 @@ export class EntityHitEntityAfterEventSignal {
      * Removes a callback from being called when an entity makes a
      * melee attack on another entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
@@ -8548,9 +8548,9 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when an entity is hurt.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -8561,9 +8561,9 @@ export class EntityHurtAfterEventSignal {
      * @remarks
      * Removes a callback from being called when an entity is hurt.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
@@ -8809,7 +8809,7 @@ export class EntityIterator implements Iterable<Entity> {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Entity>;
@@ -8819,7 +8819,7 @@ export class EntityIterator implements Iterable<Entity> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Entity in the iteration.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     next(): IteratorResult<Entity>;
@@ -8899,7 +8899,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Leashes this entity to another entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param leashHolder
      * The entity to leash this entity to.
@@ -8912,7 +8912,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Unleashes this entity if it is leashed to another entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -8930,7 +8930,7 @@ export class EntityLoadAfterEvent {
      * @remarks
      * Entity that was loaded.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     entity: Entity;
@@ -8947,9 +8947,9 @@ export class EntityLoadAfterEventSignal {
      * Method to register an event handler for what happens when an
      * entity loads.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function that handles the load event.
@@ -8960,9 +8960,9 @@ export class EntityLoadAfterEventSignal {
      * Unregisters a method that was previously subscribed to the
      * subscription event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -8982,7 +8982,7 @@ export class EntityMarkVariantComponent extends EntityComponent {
      * @remarks
      * Value of the mark variant value for this entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -9344,7 +9344,7 @@ export class EntityNpcComponent extends EntityComponent {
      * The DialogueScene that is opened when players first interact
      * with the NPC.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     defaultScene: string;
@@ -9352,7 +9352,7 @@ export class EntityNpcComponent extends EntityComponent {
      * @remarks
      * The name of the NPC as it is displayed to players.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     name: string;
@@ -9360,7 +9360,7 @@ export class EntityNpcComponent extends EntityComponent {
      * @remarks
      * The index of the skin the NPC will use.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     skinIndex: number;
@@ -9399,7 +9399,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * The fraction of the projectile's speed maintained every tick
      * while traveling through air.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     airInertia: number;
@@ -9410,7 +9410,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * modified via the onFireTime property. The entity will not
      * catch fire if immune or if the entity is wet.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     catchFireOnHurt: boolean;
@@ -9419,7 +9419,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will spawn crit particles when hit
      * by a player. E.g. Player attacking a Shulker bullet.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     critParticlesOnProjectileHurt: boolean;
@@ -9428,7 +9428,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will be destroyed when it takes
      * damage. E.g. Player attacking a Shulker bullet.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     destroyOnProjectileHurt: boolean;
@@ -9440,7 +9440,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * higher the value, the faster the projectile falls. If
      * negative, the entity will rise instead of fall.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     gravity: number;
@@ -9448,7 +9448,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The sound that plays when the projectile hits an entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     hitEntitySound?: string;
@@ -9456,7 +9456,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The sound that plays when the projectile hits a block.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     hitGroundSound?: string;
@@ -9464,7 +9464,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * @remarks
      * The particle that spawns when the projectile hits something.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     hitParticle?: string;
@@ -9475,7 +9475,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * when hit. E.g. A thrown Trident with the Channeling
      * enchantment.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     lightningStrikeOnHit: boolean;
@@ -9484,7 +9484,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * The fraction of the projectile's speed maintained every tick
      * while traveling through a liquid.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     liquidInertia: number;
@@ -9493,7 +9493,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * Duration in seconds that the entity hit will be on fire for
      * when catchFireOnHurt is set to true.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     onFireTime: number;
@@ -9503,7 +9503,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * the projectile can collide with and damage. It also
      * determines which entity is assigned as the attacker.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     owner?: Entity;
@@ -9512,7 +9512,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * If true, the projectile will bounce off mobs when no damage
      * is taken. E.g. A spawning wither.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     shouldBounceOnHit: boolean;
@@ -9522,7 +9522,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * hit as thought it had been blocked. E.g. Thrown trident on
      * hit behavior.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     stopOnHit: boolean;
@@ -9532,7 +9532,7 @@ export class EntityProjectileComponent extends EntityComponent {
      * Shoots the projectile with a given velocity. The projectile
      * will be shot from its current location.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param velocity
      * The velocity to fire the projectile. This controls both the
@@ -9555,7 +9555,7 @@ export class EntityPushThroughComponent extends EntityComponent {
      * @remarks
      * Value of the push through distances of this entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -9596,9 +9596,9 @@ export class EntityRemoveAfterEventSignal {
      * Will call your function every time an entity is removed from
      * the game.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function to call.
@@ -9617,9 +9617,9 @@ export class EntityRemoveAfterEventSignal {
      * Unsubscribes your function from subsequent calls when an
      * entity is removed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityRemoveAfterEvent) => void): void;
@@ -9652,9 +9652,9 @@ export class EntityRemoveBeforeEventSignal {
      * Will call your function every time an entity is being
      * removed from the game.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function to call.
@@ -9668,9 +9668,9 @@ export class EntityRemoveBeforeEventSignal {
      * Unsubscribes your function from subsequent calls when an
      * entity is being removed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;
@@ -9744,7 +9744,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Adds an entity to this entity as a rider.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param rider
      * Entity that will become the rider of this entity.
@@ -9758,7 +9758,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects the specified rider of this entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param rider
      * Entity that should be ejected from this entity.
@@ -9769,7 +9769,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects all riders of this entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -9827,7 +9827,7 @@ export class EntityScaleComponent extends EntityComponent {
      * @remarks
      * Current value for the scale property set on entities.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -9845,7 +9845,7 @@ export class EntitySkinIdComponent extends EntityComponent {
      * @remarks
      * Returns the value of the skin Id identifier of the entity.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     value: number;
@@ -9869,7 +9869,7 @@ export class EntitySpawnAfterEvent {
      * @remarks
      * Entity that was spawned.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     entity: Entity;
@@ -9886,9 +9886,9 @@ export class EntitySpawnAfterEventSignal {
      * Method to register an event handler for what happens when an
      * entity spawns.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function that handles the spawn event.
@@ -9900,9 +9900,9 @@ export class EntitySpawnAfterEventSignal {
      * Unregisters a method that was previously subscribed to the
      * subscription event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Original function that was passed into the subscribe event,
@@ -9987,7 +9987,7 @@ export class EntityTameableComponent extends EntityComponent {
      * @remarks
      * Set this entity as tamed by the given player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param player
      * The player that this entity should be tamed by.
@@ -10040,7 +10040,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Sets this rideable entity as tamed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
@@ -10051,7 +10051,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Sets this rideable entity as tamed by the given player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
@@ -10100,13 +10100,13 @@ export class EntityTypeIterator implements Iterable<EntityType> {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<EntityType>;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     next(): IteratorResult<EntityType>;
@@ -10207,9 +10207,9 @@ export class ExplosionAfterEventSignal {
      * Adds a callback that will be called when an explosion
      * occurs.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ExplosionAfterEvent) => void): (arg0: ExplosionAfterEvent) => void;
@@ -10218,9 +10218,9 @@ export class ExplosionAfterEventSignal {
      * Removes a callback from being called when an explosion
      * occurs.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ExplosionAfterEvent) => void): void;
@@ -10262,9 +10262,9 @@ export class ExplosionBeforeEventSignal {
      * occurs. The callback can optionally change or cancel
      * explosion behavior.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
@@ -10273,9 +10273,9 @@ export class ExplosionBeforeEventSignal {
      * Removes a callback from being called from before when an
      * explosion would occur.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;
@@ -10410,9 +10410,9 @@ export class GameRuleChangeAfterEventSignal {
      * Adds a callback that will be called when a world.gameRules
      * property is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): (arg0: GameRuleChangeAfterEvent) => void;
@@ -10421,9 +10421,9 @@ export class GameRuleChangeAfterEventSignal {
      * Removes a callback from being called when a world.gameRules
      * property is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): void;
@@ -10436,223 +10436,223 @@ export class GameRules {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     commandBlockOutput: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     commandBlocksEnabled: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doDayLightCycle: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doEntityDrops: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doFireTick: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doImmediateRespawn: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doInsomnia: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doLimitedCrafting: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doMobLoot: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doMobSpawning: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doTileDrops: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     doWeatherCycle: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     drowningDamage: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     fallDamage: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     fireDamage: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     freezeDamage: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     functionCommandLimit: number;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     keepInventory: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     maxCommandChainLength: number;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     mobGriefing: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     naturalRegeneration: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     playersSleepingPercentage: number;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     projectilesCanBreakBlocks: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     pvp: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     randomTickSpeed: number;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     recipesUnlock: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     respawnBlocksExplode: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     sendCommandFeedback: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showBorderEffect: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showCoordinates: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showDaysPlayed: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showDeathMessages: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showRecipeMessages: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     showTags: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     spawnRadius: number;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     tntExplodes: boolean;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     tntExplosionDropDecay: boolean;
@@ -10741,9 +10741,9 @@ export class ItemCompleteUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * completes charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): (arg0: ItemCompleteUseAfterEvent) => void;
@@ -10752,9 +10752,9 @@ export class ItemCompleteUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * completes charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): void;
@@ -10924,7 +10924,7 @@ export class ItemComponentRegistry {
      * Registers an item custom component that can be used in item
      * JSON configuration.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param name
      * The id that represents this custom component. Must have a
@@ -11051,7 +11051,7 @@ export class ItemCooldownComponent extends ItemComponent {
     static readonly componentId = 'minecraft:cooldown';
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -11061,7 +11061,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * Will return true if the item is the cooldown category passed
      * in and false otherwise.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param cooldownCategory
      * The cooldown category that might be associated with this
@@ -11100,7 +11100,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * 
      * Starts a new cooldown period for this item.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -11127,7 +11127,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * 
      * Returns the current damage level of this particular item.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     damage: number;
@@ -11151,7 +11151,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * using the damageRange property, given an unbreaking
      * enchantment level.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param unbreakingEnchantmentLevel
      * 耐久魔咒等级，在计算损坏概率时受到此参数的影响。
@@ -11174,7 +11174,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * chance for an item. The damage chance will fall within this
      * range.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -11192,7 +11192,7 @@ export class ItemDyeableComponent extends ItemComponent {
      * @remarks
      * Sets and returns the current color of the item.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     color?: RGB;
@@ -11224,7 +11224,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Adds an enchantment to the item stack.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param enchantment
      * The enchantment interface to be added.
@@ -11254,7 +11254,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Adds a list of enchantments to the item stack.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param enchantments
      * The list of enchantments to be added.
@@ -11349,7 +11349,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Removes all enchantments applied to this item stack.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -11358,7 +11358,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Removes an enchantment of the given type.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param enchantmentType
      * The enchantment type to remove.
@@ -11501,9 +11501,9 @@ export class ItemReleaseUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * is released from charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemReleaseUseAfterEvent) => void): (arg0: ItemReleaseUseAfterEvent) => void;
@@ -11512,9 +11512,9 @@ export class ItemReleaseUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * is released from charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemReleaseUseAfterEvent) => void): void;
@@ -11533,7 +11533,7 @@ export class ItemStack {
      * 1-255. The provided value will be clamped to the item's
      * maximum stack size.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the value is outside the range of 1-255.
@@ -11551,7 +11551,7 @@ export class ItemStack {
      * @remarks
      * Gets or sets whether the item is kept on death.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     keepOnDeath: boolean;
@@ -11560,7 +11560,7 @@ export class ItemStack {
      * Gets or sets the item's lock mode. The default value is
      * `ItemLockMode.none`.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     lockMode: ItemLockMode;
@@ -11578,7 +11578,7 @@ export class ItemStack {
      * when hovering over the item. Setting the name tag to an
      * empty string or `undefined` will remove the name tag.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the length exceeds 255 characters.
@@ -11638,7 +11638,7 @@ export class ItemStack {
      * Get the list of block types this item can break in Adventure
      * mode.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getCanDestroy(): string[];
@@ -11647,7 +11647,7 @@ export class ItemStack {
      * Get the list of block types this item can be placed on in
      * Adventure mode.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getCanPlaceOn(): string[];
@@ -11780,7 +11780,7 @@ export class ItemStack {
      * mode. The block names are displayed in the item's tooltip.
      * Setting the value to undefined will clear the list.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param blockIdentifiers
      * String list of block types that the item can destroy.
@@ -11796,7 +11796,7 @@ export class ItemStack {
      * block names are displayed in the item's tooltip. Setting the
      * value to undefined will clear the list.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param blockIdentifiers
      * String list of block types that the item can be placed on.
@@ -11835,7 +11835,7 @@ export class ItemStack {
      * ItemStack. The lore list is cleared if set to an empty
      * string or undefined.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param loreList
      * List of lore lines. Each element in the list represents a
@@ -11850,7 +11850,7 @@ export class ItemStack {
      * @remarks
      * Helper function for creating potion items.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -11895,9 +11895,9 @@ export class ItemStartUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * starts charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemStartUseAfterEvent) => void): (arg0: ItemStartUseAfterEvent) => void;
@@ -11906,9 +11906,9 @@ export class ItemStartUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * starts charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemStartUseAfterEvent) => void): void;
@@ -11963,9 +11963,9 @@ export class ItemStartUseOnAfterEventSignal {
      * Adds a callback that will be called when an item is used on
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemStartUseOnAfterEvent) => void): (arg0: ItemStartUseOnAfterEvent) => void;
@@ -11974,9 +11974,9 @@ export class ItemStartUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemStartUseOnAfterEvent) => void): void;
@@ -12024,9 +12024,9 @@ export class ItemStopUseAfterEventSignal {
      * Adds a callback that will be called when a chargeable item
      * stops charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemStopUseAfterEvent) => void): (arg0: ItemStopUseAfterEvent) => void;
@@ -12035,9 +12035,9 @@ export class ItemStopUseAfterEventSignal {
      * Removes a callback from being called when a chargeable item
      * stops charging.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemStopUseAfterEvent) => void): void;
@@ -12085,9 +12085,9 @@ export class ItemStopUseOnAfterEventSignal {
      * Adds a callback that will be called when an item stops being
      * used on a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemStopUseOnAfterEvent) => void): (arg0: ItemStopUseOnAfterEvent) => void;
@@ -12096,9 +12096,9 @@ export class ItemStopUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemStopUseOnAfterEvent) => void): void;
@@ -12168,9 +12168,9 @@ export class ItemUseAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when an item is used.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseAfterEvent) => void): (arg0: ItemUseAfterEvent) => void;
@@ -12178,9 +12178,9 @@ export class ItemUseAfterEventSignal {
      * @remarks
      * Removes a callback from being called when an item is used.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseAfterEvent) => void): void;
@@ -12209,9 +12209,9 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Adds a callback that will be called before an item is used.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseBeforeEvent) => void): (arg0: ItemUseBeforeEvent) => void;
@@ -12219,9 +12219,9 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Removes a callback from being called before an item is used.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseBeforeEvent) => void): void;
@@ -12299,9 +12299,9 @@ export class ItemUseOnAfterEventSignal {
      * Adds a callback that will be called when an item is used on
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseOnAfterEvent) => void): (arg0: ItemUseOnAfterEvent) => void;
@@ -12310,9 +12310,9 @@ export class ItemUseOnAfterEventSignal {
      * Removes a callback from being called when an item is used on
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseOnAfterEvent) => void): void;
@@ -12344,9 +12344,9 @@ export class ItemUseOnBeforeEventSignal {
      * Adds a callback that will be called before an item is used
      * on a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): (arg0: ItemUseOnBeforeEvent) => void;
@@ -12355,9 +12355,9 @@ export class ItemUseOnBeforeEventSignal {
      * Removes a callback from being called before an item is used
      * on a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): void;
@@ -12432,9 +12432,9 @@ export class LeverActionAfterEventSignal {
      * Adds a callback that will be called when a lever is moved
      * (activates or deactivates).
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
@@ -12444,9 +12444,9 @@ export class LeverActionAfterEventSignal {
      * Removes a callback from being called when a lever is moved
      * (activates or deactivates).
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: LeverActionAfterEvent) => void): void;
@@ -12609,9 +12609,9 @@ export class PistonActivateAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @seeExample pistonAfterEvent.ts
      */
@@ -12621,9 +12621,9 @@ export class PistonActivateAfterEventSignal {
      * Removes a callback from being called when a piston expands
      * or retracts.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PistonActivateAfterEvent) => void): void;
@@ -12731,7 +12731,7 @@ export class Player extends Entity {
     readonly onScreenDisplay: ScreenDisplay;
     /**
      * @remarks
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     selectedSlotIndex: number;
@@ -12755,7 +12755,7 @@ export class Player extends Entity {
      * Adds/removes experience to/from the Player and returns the
      * current experience of the Player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param amount
      * Amount of experience to add. Note that this can be negative.
@@ -12770,7 +12770,7 @@ export class Player extends Entity {
      * Adds/removes level to/from the Player and returns the
      * current level of the Player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param amount
      * Amount to add to the player. Min/max bounds at -2^24 ~ 2^24
@@ -12785,7 +12785,7 @@ export class Player extends Entity {
      * Eats an item, providing the item's hunger and saturation
      * effects to the player. Can only be used on food items.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param itemStack
      * The item to eat.
@@ -12849,7 +12849,7 @@ export class Player extends Entity {
      * Plays a music track that only this particular player can
      * hear.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -12862,7 +12862,7 @@ export class Player extends Entity {
      * @remarks
      * Plays a sound that only this particular player can hear.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param soundOptions
      * Additional optional options for the sound.
@@ -12876,7 +12876,7 @@ export class Player extends Entity {
      * This is an internal-facing method for posting a system
      * message to downstream clients.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -12887,7 +12887,7 @@ export class Player extends Entity {
      * player can hear. If a track is not playing, a music track
      * will play.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -12903,7 +12903,7 @@ export class Player extends Entity {
      * @remarks
      * Resets the level of the player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -12929,7 +12929,7 @@ export class Player extends Entity {
      * @remarks
      * Sets a gamemode override for this player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param gameMode
      * Active gamemode.
@@ -12942,7 +12942,7 @@ export class Player extends Entity {
      * Will change the specified players permissions, and whether
      * they are operator or not.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -12952,7 +12952,7 @@ export class Player extends Entity {
      * Sets the current starting spawn point for this particular
      * player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -12967,7 +12967,7 @@ export class Player extends Entity {
      * Creates a new particle emitter at a specified location in
      * the world. Only visible to the target player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param effectName
      * Identifier of the particle to create.
@@ -12991,7 +12991,7 @@ export class Player extends Entity {
      * Sets the item cooldown time for a particular cooldown
      * category.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
@@ -13006,7 +13006,7 @@ export class Player extends Entity {
      * Stops any music tracks from playing for this particular
      * player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -13034,7 +13034,7 @@ export class PlayerAimAssist {
      * @remarks
      * Sets the player's aim-assist settings.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param settings
      * Aim-assist settings to activate for the player, if undefined
@@ -13103,9 +13103,9 @@ export class PlayerBreakBlockAfterEventSignal {
      * Adds a callback that will be called when a block is broken
      * by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13117,9 +13117,9 @@ export class PlayerBreakBlockAfterEventSignal {
      * Removes a callback from being called when a player breaks a
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerBreakBlockAfterEvent) => void): void;
@@ -13164,9 +13164,9 @@ export class PlayerBreakBlockBeforeEventSignal {
      * Adds a callback that will be called before a block is broken
      * by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13178,9 +13178,9 @@ export class PlayerBreakBlockBeforeEventSignal {
      * Removes a callback from being called before a player breaks
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerBreakBlockBeforeEvent) => void): void;
@@ -13223,9 +13223,9 @@ export class PlayerButtonInputAfterEventSignal {
      * Adds a callback that will be called after the player
      * performs an input.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13237,9 +13237,9 @@ export class PlayerButtonInputAfterEventSignal {
      * Removes a callback from being called after the player
      * performs an input.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerButtonInputAfterEvent) => void): void;
@@ -13265,7 +13265,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      * @remarks
      * Clears the players cursor inventory.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -13322,9 +13322,9 @@ export class PlayerDimensionChangeAfterEventSignal {
      * Subscribes the specified callback to a player dimension
      * change after event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13335,9 +13335,9 @@ export class PlayerDimensionChangeAfterEventSignal {
      * Removes the specified callback from a player dimension
      * change after event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerDimensionChangeAfterEvent) => void): void;
@@ -13353,17 +13353,17 @@ export class PlayerEmoteAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): (arg0: PlayerEmoteAfterEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): void;
@@ -13406,9 +13406,9 @@ export class PlayerGameModeChangeAfterEventSignal {
      * Adds a callback that will be called after a players game
      * mode is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): (arg0: PlayerGameModeChangeAfterEvent) => void;
@@ -13417,9 +13417,9 @@ export class PlayerGameModeChangeAfterEventSignal {
      * Removes a callback from being called after a players game
      * mode is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): void;
@@ -13468,9 +13468,9 @@ export class PlayerGameModeChangeBeforeEventSignal {
      * Adds a callback that will be called before a players game
      * mode is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13481,9 +13481,9 @@ export class PlayerGameModeChangeBeforeEventSignal {
      * Removes a callback from being called before a players game
      * mode is changed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerGameModeChangeBeforeEvent) => void): void;
@@ -13526,9 +13526,9 @@ export class PlayerInputModeChangeAfterEventSignal {
      * Adds a callback that will be called after the player input
      * mode changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13539,9 +13539,9 @@ export class PlayerInputModeChangeAfterEventSignal {
      * Removes a callback from being called after the player input
      * mode changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInputModeChangeAfterEvent) => void): void;
@@ -13584,9 +13584,9 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      * Adds a callback that will be called after a players input
      * permissions change.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13597,9 +13597,9 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
      * Removes a callback from being called after a players input
      * permissions change.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
@@ -13615,7 +13615,7 @@ export class PlayerInputPermissions {
      * @remarks
      * Returns true if an input permission is enabled.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -13628,7 +13628,7 @@ export class PlayerInputPermissions {
      * Enable or disable an input permission. When enabled the
      * input will work, when disabled will not work.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -13701,9 +13701,9 @@ export class PlayerInteractWithBlockAfterEventSignal {
      * Adds a callback that will be called after a player interacts
      * with a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13714,9 +13714,9 @@ export class PlayerInteractWithBlockAfterEventSignal {
      * Removes a callback from being called after a player
      * interacts with a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInteractWithBlockAfterEvent) => void): void;
@@ -13787,9 +13787,9 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      * Adds a callback that will be called before a player
      * interacts with a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13800,9 +13800,9 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      * Removes a callback from being called before a player
      * interacts with a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void): void;
@@ -13853,9 +13853,9 @@ export class PlayerInteractWithEntityAfterEventSignal {
      * Adds a callback that will be called after a player interacts
      * with an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13866,9 +13866,9 @@ export class PlayerInteractWithEntityAfterEventSignal {
      * Removes a callback from being called after a player
      * interacts with an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInteractWithEntityAfterEvent) => void): void;
@@ -13918,9 +13918,9 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      * Adds a callback that will be called before a player
      * interacts with an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -13931,9 +13931,9 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      * Removes a callback from being called before a player
      * interacts with an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): void;
@@ -13949,7 +13949,7 @@ export class PlayerIterator implements Iterable<Player> {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Player>;
@@ -13959,7 +13959,7 @@ export class PlayerIterator implements Iterable<Player> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Player in the iteration.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     next(): IteratorResult<Player>;
@@ -13999,9 +13999,9 @@ export class PlayerJoinAfterEventSignal {
      * Adds a callback that will be called when a player joins the
      * world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
@@ -14011,9 +14011,9 @@ export class PlayerJoinAfterEventSignal {
      * Removes a callback from being called when a player joins the
      * world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerJoinAfterEvent) => void): void;
@@ -14052,9 +14052,9 @@ export class PlayerLeaveAfterEventSignal {
      * Adds a callback that will be called when a player leaves the
      * world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
@@ -14064,9 +14064,9 @@ export class PlayerLeaveAfterEventSignal {
      * Removes a callback from being called when a player leaves
      * the world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): void;
@@ -14097,9 +14097,9 @@ export class PlayerLeaveBeforeEventSignal {
      * Adds a callback that will be called when a player leaves the
      * world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
@@ -14108,9 +14108,9 @@ export class PlayerLeaveBeforeEventSignal {
      * Removes a callback that will be called when a player leaves
      * the world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;
@@ -14142,9 +14142,9 @@ export class PlayerPlaceBlockAfterEventSignal {
      * Adds a callback that will be called when a block is placed
      * by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -14156,9 +14156,9 @@ export class PlayerPlaceBlockAfterEventSignal {
      * Removes a callback from being called when an block is placed
      * by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerPlaceBlockAfterEvent) => void): void;
@@ -14217,9 +14217,9 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * Adds a callback that will be called before a block is placed
      * by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -14231,9 +14231,9 @@ export class PlayerPlaceBlockBeforeEventSignal {
      * Removes a callback from being called before an block is
      * placed by a player.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerPlaceBlockBeforeEvent) => void): void;
@@ -14250,7 +14250,7 @@ export class PlayerSpawnAfterEvent {
      * If true, this is the initial spawn of a player after joining
      * the game.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     initialSpawn: boolean;
@@ -14258,7 +14258,7 @@ export class PlayerSpawnAfterEvent {
      * @remarks
      * Object that represents the player that joined the game.
      *
-     * 无法在只读模式下修改此属性，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     player: Player;
@@ -14276,9 +14276,9 @@ export class PlayerSpawnAfterEventSignal {
      * Registers a new event receiver for this particular type of
      * event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
@@ -14287,9 +14287,9 @@ export class PlayerSpawnAfterEventSignal {
      * @remarks
      * De-registers an event receiver for the player spawn event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
@@ -14398,9 +14398,9 @@ export class PressurePlatePopAfterEventSignal {
      * Adds a callback that will be called when a pressure plate is
      * popped.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): (arg0: PressurePlatePopAfterEvent) => void;
@@ -14409,9 +14409,9 @@ export class PressurePlatePopAfterEventSignal {
      * Removes a callback from being called when a pressure plate
      * is popped.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): void;
@@ -14457,9 +14457,9 @@ export class PressurePlatePushAfterEventSignal {
      * Adds a callback that will be called when a pressure plate is
      * pushed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): (arg0: PressurePlatePushAfterEvent) => void;
@@ -14468,9 +14468,9 @@ export class PressurePlatePushAfterEventSignal {
      * Removes a callback from being called when a pressure plate
      * is pushed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): void;
@@ -14517,7 +14517,7 @@ export class ProjectileHitBlockAfterEvent {
      * Contains additional information about the block that was hit
      * by the projectile.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getBlockHit(): BlockHitInformation;
@@ -14534,9 +14534,9 @@ export class ProjectileHitBlockAfterEventSignal {
      * Adds a callback that will be called when a projectile hits a
      * block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): (arg0: ProjectileHitBlockAfterEvent) => void;
@@ -14545,9 +14545,9 @@ export class ProjectileHitBlockAfterEventSignal {
      * Removes a callback from being called when a projectile hits
      * a block.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): void;
@@ -14594,7 +14594,7 @@ export class ProjectileHitEntityAfterEvent {
      * Contains additional information about an entity that was
      * hit.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getEntityHit(): EntityHitInformation;
@@ -14611,9 +14611,9 @@ export class ProjectileHitEntityAfterEventSignal {
      * Adds a callback that will be called when a projectile hits
      * an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): (arg0: ProjectileHitEntityAfterEvent) => void;
@@ -14622,9 +14622,9 @@ export class ProjectileHitEntityAfterEventSignal {
      * Removes a callback from being called when a projectile hits
      * an entity.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): void;
@@ -14644,7 +14644,7 @@ export class Scoreboard {
      * 
      * Adds a new objective to the scoreboard.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      * @param objectiveId 记分项名称。
      * @param displayName 记分项的显示名称。
      * @returns 创建的记分项对象。
@@ -14659,7 +14659,7 @@ export class Scoreboard {
      * 
      * Clears the objective that occupies a display slot.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      * @param displaySlotId 显示位置。
      * @returns 先前正显示的记分项，为空时返回 `null`。
      *
@@ -14713,7 +14713,7 @@ export class Scoreboard {
      * 
      * Removes an objective from the scoreboard.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      * @param objectiveId 记分项对象或名称。
      * @returns 总是返回 `true`。
      * @throws
@@ -14727,7 +14727,7 @@ export class Scoreboard {
      * Sets an objective into a display slot with specified
      * additional display settings.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      * @param displaySlotId 显示位置。
      * @param objectiveDisplaySetting 记分项显示配置。
      * @returns
@@ -14837,7 +14837,7 @@ export class ScoreboardObjective {
      * @remarks
      * Adds a score to the given participant and objective.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
@@ -14893,7 +14893,7 @@ export class ScoreboardObjective {
      * @remarks
      * Removes a participant from this scoreboard objective.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param participant
      * Participant to remove from being tracked with this
@@ -14905,7 +14905,7 @@ export class ScoreboardObjective {
      * @remarks
      * Sets a score for a participant.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param participant
      * Identity of the participant.
@@ -14961,28 +14961,28 @@ export class ScreenDisplay {
     readonly isValid: boolean;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -14992,7 +14992,7 @@ export class ScreenDisplay {
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param text
      * New value for the action bar text.
@@ -15004,7 +15004,7 @@ export class ScreenDisplay {
      * Sets visibility of a particular element of the heads up
      * display (HUD).
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param visible
      * Whether to set the HUD element to invisible, or to reset it
@@ -15021,7 +15021,7 @@ export class ScreenDisplay {
      * can optionally specify an additional subtitle as well as
      * fade in, stay and fade out times.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample setTitle.ts
@@ -15034,7 +15034,7 @@ export class ScreenDisplay {
      * Updates the subtitle if the subtitle was previously
      * displayed via the setTitle method.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample countdown.ts
@@ -15100,9 +15100,9 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * @remarks
      * Registers a new ScriptEvent handler.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -15113,9 +15113,9 @@ export class ScriptEventCommandMessageAfterEventSignal {
      * @remarks
      * Unsubscribes a particular handler for a ScriptEvent event.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ScriptEventCommandMessageAfterEvent) => void): void;
@@ -15175,9 +15175,9 @@ export class ServerMessageAfterEventSignal {
      * Adds a callback that will be called when an internal message
      * is passed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: MessageReceiveAfterEvent) => void): (arg0: MessageReceiveAfterEvent) => void;
@@ -15186,9 +15186,9 @@ export class ServerMessageAfterEventSignal {
      * Removes a callback from being called when an internal
      * message is passed.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: MessageReceiveAfterEvent) => void): void;
@@ -15201,17 +15201,17 @@ export class ShutdownBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ShutdownEvent) => void): (arg0: ShutdownEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ShutdownEvent) => void): void;
@@ -15231,17 +15231,17 @@ export class StartupBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: StartupEvent) => void): (arg0: StartupEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: StartupEvent) => void): void;
@@ -15333,7 +15333,7 @@ export class Structure {
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The name of the newly created Structure.
@@ -15358,7 +15358,7 @@ export class Structure {
      * @remarks
      * Saves a modified Structure to the world file.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @throws
      * Throws if the Structure has been deleted.
@@ -15370,7 +15370,7 @@ export class Structure {
      * @remarks
      * Sets a BlockPermutation within a Structure.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param location
      * The block location relative to the Structure's origin.
@@ -15406,7 +15406,7 @@ export class StructureManager {
      * Structure.setBlockPermutation} to populate the structure
      * with blocks and save changes with {@link Structure.saveAs}.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure. A valid identifier must include a
@@ -15433,7 +15433,7 @@ export class StructureManager {
      * Creates a new Structure from blocks in the world. This is
      * functionally equivalent to the /structure save command.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure. A valid identifier must include a
@@ -15466,7 +15466,7 @@ export class StructureManager {
      * Deletes a structure from memory and from the world if it
      * exists.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param structure
      * The structure identifier or Structure object that should be
@@ -15485,7 +15485,7 @@ export class StructureManager {
      * @remarks
      * Gets a Structure that is saved to memory or the world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure to get.
@@ -15495,7 +15495,7 @@ export class StructureManager {
     get(identifier: string): Structure | undefined;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     getWorldStructureIds(): string[];
@@ -15504,7 +15504,7 @@ export class StructureManager {
      * Places a structure in the world. Structures placed in
      * unloaded chunks will be queued for loading.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param structure
      * The structure's identifier or a Structure object.
@@ -15539,7 +15539,7 @@ export class StructureManager {
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param pool
      * The identifier of the template pool to start from.
@@ -15582,7 +15582,7 @@ export class StructureManager {
      * @remarks
      * Places a jigsaw structure in the world.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param identifier
      * The identifier of the jigsaw structure.
@@ -15661,7 +15661,7 @@ export class System {
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param jobId
      * The job ID returned from {@link System.runJob}.
@@ -15672,7 +15672,7 @@ export class System {
      * Cancels the execution of a function run that was previously
      * scheduled via {@link System.run}.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     clearRun(runId: number): void;
@@ -15687,7 +15687,7 @@ export class System {
      * tick. Note, however, that depending on load on the system,
      * running in the same or next tick is not guaranteed.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function callback to run at the next game tick.
@@ -15701,7 +15701,7 @@ export class System {
      * @remarks
      * Runs a set of code on an interval.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Functional code that will run when this interval occurs.
@@ -15720,7 +15720,7 @@ export class System {
      * will be given a time slice each tick, and will be run until
      * it yields or completes.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param generator
      * The instance of the generator to run.
@@ -15734,7 +15734,7 @@ export class System {
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Functional code that will run when this timeout occurs.
@@ -15752,7 +15752,7 @@ export class System {
      * Causes an event to fire within script with the specified
      * message ID and payload.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param id
      * Identifier of the message to send. This is custom and
@@ -15777,7 +15777,7 @@ export class System {
      * waitTicks returns a promise that resolves after the
      * requested number of ticks.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param ticks
      * The amount of ticks to wait. Minimum value is 1.
@@ -15888,9 +15888,9 @@ export class TargetBlockHitAfterEventSignal {
      * Adds a callback that will be called when a target block is
      * hit.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): (arg0: TargetBlockHitAfterEvent) => void;
@@ -15899,9 +15899,9 @@ export class TargetBlockHitAfterEventSignal {
      * Removes a callback from being called when a target block is
      * hit.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): void;
@@ -15958,9 +15958,9 @@ export class TripWireTripAfterEventSignal {
      * Adds a callback that will be called when a trip wire is
      * tripped.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: TripWireTripAfterEvent) => void): (arg0: TripWireTripAfterEvent) => void;
@@ -15969,9 +15969,9 @@ export class TripWireTripAfterEventSignal {
      * Removes a callback from being called when a trip wire is
      * tripped.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: TripWireTripAfterEvent) => void): void;
@@ -16016,9 +16016,9 @@ export class WatchdogTerminateBeforeEventSignal {
      * being terminated due to a violation of the performance
      * watchdog system.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
@@ -16028,9 +16028,9 @@ export class WatchdogTerminateBeforeEventSignal {
      * is being terminated due to a violation of the performance
      * watchdog system.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;
@@ -16071,9 +16071,9 @@ export class WeatherChangeAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when weather changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: WeatherChangeAfterEvent) => void): (arg0: WeatherChangeAfterEvent) => void;
@@ -16081,9 +16081,9 @@ export class WeatherChangeAfterEventSignal {
      * @remarks
      * Removes a callback from being called when weather changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: WeatherChangeAfterEvent) => void): void;
@@ -16132,9 +16132,9 @@ export class WeatherChangeBeforeEventSignal {
      * @remarks
      * Adds a callback that will be called before weather changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): (arg0: WeatherChangeBeforeEvent) => void;
@@ -16142,9 +16142,9 @@ export class WeatherChangeBeforeEventSignal {
      * @remarks
      * Removes a callback from being called before weather changes.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): void;
@@ -16203,7 +16203,7 @@ export class World {
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param id
      * The message identifier.
@@ -16399,7 +16399,7 @@ export class World {
      * 
      * Plays a particular music track for all players.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
@@ -16414,7 +16414,7 @@ export class World {
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param trackId
      * 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
@@ -16453,7 +16453,7 @@ export class World {
      * @remarks
      * Sets the world time.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param absoluteTime
      * The world time, in ticks.
@@ -16463,7 +16463,7 @@ export class World {
      * @remarks
      * Sets a default spawn location for all players.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param spawnLocation
      * Location of the spawn point. Note that this is assumed to be
@@ -16481,7 +16481,7 @@ export class World {
      * @remarks
      * Sets the worlds difficulty.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param difficulty
      * The difficulty we want to set the world to.
@@ -16529,7 +16529,7 @@ export class World {
      * @remarks
      * Sets the time of day.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      * @param timeOfDay
      * The time of day, in ticks, between 0 and 24000.
@@ -16544,7 +16544,7 @@ export class World {
      * 
      * Stops any music tracks from playing.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
      */
     stopMusic(): void;
@@ -16965,17 +16965,17 @@ export class WorldLoadAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: WorldLoadAfterEvent) => void): (arg0: WorldLoadAfterEvent) => void;
     /**
      * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: WorldLoadAfterEvent) => void): void;

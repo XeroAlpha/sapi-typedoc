@@ -12,7 +12,7 @@ export class EntityBreathableComponent extends EntityComponent {
      * @remarks
      * The current air supply of the entity.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Will throw an error if the air supply is out of bounds

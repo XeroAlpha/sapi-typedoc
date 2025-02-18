@@ -11,7 +11,7 @@ export class ItemComponentRegistry {
      * Registers an item custom component that can be used in item
      * JSON configuration.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param name
      * The id that represents this custom component. Must have a

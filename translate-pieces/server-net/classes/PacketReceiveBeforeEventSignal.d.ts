@@ -4,9 +4,9 @@ export class PacketReceiveBeforeEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -15,9 +15,9 @@ export class PacketReceiveBeforeEventSignal {
     ): (arg0: PacketReceivedBeforeEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;

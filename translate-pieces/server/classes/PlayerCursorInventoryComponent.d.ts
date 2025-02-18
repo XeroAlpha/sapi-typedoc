@@ -20,7 +20,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      * @remarks
      * Clears the players cursor inventory.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

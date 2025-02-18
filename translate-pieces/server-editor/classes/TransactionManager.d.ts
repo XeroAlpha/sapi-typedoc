@@ -16,7 +16,7 @@ export class TransactionManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -25,7 +25,7 @@ export class TransactionManager {
     addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -42,7 +42,7 @@ export class TransactionManager {
      * The open record will be closed and all tracking operations
      * will cease.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -57,7 +57,7 @@ export class TransactionManager {
      * to the transaction record before submission to the
      * transaction manager
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the number of change requests that were being
@@ -67,7 +67,7 @@ export class TransactionManager {
     commitTrackedChanges(): number;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -82,7 +82,7 @@ export class TransactionManager {
      * All records within the transaction will be discarded, and
      * any tracking requests currently active will be stopped
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -93,7 +93,7 @@ export class TransactionManager {
      * the current open transaction contents, only the pending
      * tracked block operations
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the number of change requests that were discarded
@@ -107,7 +107,7 @@ export class TransactionManager {
      * All transaction operations within a record are grouped and
      * treated as a single atomic unit
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param name
      * Give the transaction record a name
@@ -125,7 +125,7 @@ export class TransactionManager {
      * transferred to the undo stack in case the creator decides to
      * undo it
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -134,7 +134,7 @@ export class TransactionManager {
      * @remarks
      * Return the number of transaction records on the redo stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -146,7 +146,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param from
      * Min block location of a bounding area
@@ -163,7 +163,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param compoundBlockVolume
      * {@link minecraftserver.CompoundBlockVolume} to track.  Only
@@ -177,7 +177,7 @@ export class TransactionManager {
      * Begin tracking block changes in a list of specified block
      * locations.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param locations
      * An array of block locations to monitor for changes
@@ -197,7 +197,7 @@ export class TransactionManager {
      * space) (see {@link minecraftserver.CompoundBlockVolume} for
      * more details
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param selection
      * A collection of block location volumes represented by a
@@ -219,7 +219,7 @@ export class TransactionManager {
      * transferred to the redo stack in case the creator decides to
      * reapply it
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -229,7 +229,7 @@ export class TransactionManager {
      * Return how many transactions records currently exist on the
      * stack
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

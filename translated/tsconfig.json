@@ -22,13 +22,15 @@
         "readme": "./README.md",
         "entryPoints": ["*.d.ts"],
         "externalPattern": "",
+        "lang": "zh",
         "customCss": "./assets/extra.css",
         "customJs": "./assets/extra.js",
         "githubPages": false,
         "navigationLinks": {
-            "切换翻译": "javascript:toggleTranslation()",
-            "贡献翻译": "https://github.com/XeroAlpha/sapi-typedoc/tree/main/translated"
+            "原文": "javascript:toggleTranslation()",
+            "参与翻译": "https://github.com/XeroAlpha/sapi-typedoc/tree/main/translated"
         },
+        "cascadedModifierTags": [],
         "externalSymbolLinkMappings": {
             "typescript": {
                 "Promise": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise",

@@ -49,9 +49,9 @@ export class Sentry {
      * up to an error.  See Sentry documentation for more details:
      * https://docs.sentry.io/product/issues/issue-details/breadcrumbs/
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param message
      * The message to add to the breadcrumb.
@@ -68,9 +68,9 @@ export class Sentry {
      * for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *
@@ -83,9 +83,9 @@ export class Sentry {
      * for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *
@@ -97,9 +97,9 @@ export class Sentry {
      * Initializes Sentry for use.  This must be successfully
      * called before any other Sentry functions are called.
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *
@@ -114,9 +114,9 @@ export class Sentry {
      * documentation for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
      *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @throws This function can throw errors.
      *

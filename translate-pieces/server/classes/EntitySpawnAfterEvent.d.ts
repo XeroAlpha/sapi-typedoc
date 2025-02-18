@@ -17,7 +17,7 @@ export class EntitySpawnAfterEvent {
      * @remarks
      * Entity that was spawned.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     entity: Entity;

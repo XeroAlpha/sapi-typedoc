@@ -6,9 +6,9 @@
  * available in Minecraft via `/gametest run
  * [testClassName]:[testName]`.
  *
- * This function can't be called in read-only mode.
+ * @worldMutation
  *
- * This function can be called in early-execution mode.
+ * @earlyExecution
  *
  * @param testClassName
  * Name of the class of tests this test should be a part of.

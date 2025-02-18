@@ -12,7 +12,7 @@ export class HttpClient {
      * Cancels all pending requests.
      * @param reason 提供给请求对应的 Promise 的 reject 原因。
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     cancelAll(reason: string): void;
@@ -22,7 +22,7 @@ export class HttpClient {
      * 
      * Performs a simple HTTP get request.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param uri
      * 请求的 URL。
@@ -39,7 +39,7 @@ export class HttpClient {
      * 发起一个 HTTP 请求。
      * Performs an HTTP request.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param config
      * 用于发起请求的配置对象。

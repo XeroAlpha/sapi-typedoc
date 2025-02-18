@@ -43,7 +43,7 @@ export class Container {
      * items of the same type. Note, use {@link Container.setItem}
      * if you wish to set the item in a particular slot.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * The stack of items to add.
@@ -54,7 +54,7 @@ export class Container {
      * @remarks
      * Clears all inventory items in the container.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the container is invalid.
@@ -94,7 +94,7 @@ export class Container {
      * Moves an item from one slot to another, potentially across
      * containers.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
@@ -115,7 +115,7 @@ export class Container {
      * @remarks
      * Sets an item stack within a particular slot.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param slot
      * Zero-based index of the slot to set an item at.
@@ -131,7 +131,7 @@ export class Container {
      * @remarks
      * Swaps items between two different slots within containers.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param slot
      * Zero-based index of the slot to swap from this container.
@@ -150,7 +150,7 @@ export class Container {
      * Moves an item from one slot to another container, or to the
      * first available slot in the same container.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
