@@ -16,7 +16,7 @@ export class WidgetComponentBase {
     readonly location: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     lockToSurface: boolean;
@@ -28,7 +28,7 @@ export class WidgetComponentBase {
     readonly name: string;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     offset: minecraftserver.Vector3;
@@ -42,7 +42,7 @@ export class WidgetComponentBase {
     readonly widget: Widget;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -51,7 +51,7 @@ export class WidgetComponentBase {
     delete(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

@@ -10,7 +10,7 @@ export class Scoreboard {
      * @remarks
      * Adds a new objective to the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample updateScoreboard.ts
@@ -20,7 +20,7 @@ export class Scoreboard {
      * @remarks
      * Clears the objective that occupies a display slot.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     clearObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjective | undefined;
@@ -55,7 +55,7 @@ export class Scoreboard {
      * @remarks
      * Removes an objective from the scoreboard.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -65,7 +65,7 @@ export class Scoreboard {
      * Sets an objective into a display slot with specified
      * additional display settings.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the previous `ScoreboardObjective` set at the

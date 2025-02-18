@@ -3,19 +3,19 @@
 export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     center: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     size?: minecraftserver.Vector3;

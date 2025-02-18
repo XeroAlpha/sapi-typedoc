@@ -4,7 +4,7 @@ export class WidgetManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -13,7 +13,7 @@ export class WidgetManager {
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

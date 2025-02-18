@@ -7,9 +7,9 @@ export class PistonActivateAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @seeExample pistonAfterEvent.ts
      */
@@ -19,9 +19,9 @@ export class PistonActivateAfterEventSignal {
      * Removes a callback from being called when a piston expands
      * or retracts.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PistonActivateAfterEvent) => void): void;

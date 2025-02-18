@@ -7,7 +7,7 @@
 export declare class EntityIdentifierObservableValidator implements ObservableValidator<string> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _defaultValue: string;

@@ -68,7 +68,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Adds an entity to this entity as a rider.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param rider
      * Entity that will become the rider of this entity.
@@ -82,7 +82,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects the specified rider of this entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param rider
      * Entity that should be ejected from this entity.
@@ -93,7 +93,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @remarks
      * Ejects all riders of this entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

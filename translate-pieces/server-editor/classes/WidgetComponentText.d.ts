@@ -4,13 +4,13 @@ export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     label: string;

@@ -11,9 +11,9 @@ export class EntityLoadAfterEventSignal {
      * Method to register an event handler for what happens when an
      * entity loads.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function that handles the load event.
@@ -24,9 +24,9 @@ export class EntityLoadAfterEventSignal {
      * Unregisters a method that was previously subscribed to the
      * subscription event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Original function that was passed into the subscribe event,

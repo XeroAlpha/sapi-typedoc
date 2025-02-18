@@ -12,7 +12,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Ejects the currently set record of this record-playing
      * block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -37,7 +37,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Pauses the currently playing record of this record-playing
      * block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -46,7 +46,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Plays the currently set record of this record-playing block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -55,7 +55,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * @remarks
      * Sets and plays a record based on an item type.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

@@ -11,7 +11,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Relative fill level of the fluid container.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     fillLevel: number;
@@ -19,7 +19,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Custom color of the fluid in the container.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     fluidColor: RGBA;
@@ -29,7 +29,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * Adds a dye to the fluid. The dye color is combined with any
      * existing custom color.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -40,7 +40,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Gets the current fluid type in the container.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -51,7 +51,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @remarks
      * Sets the current fluid type in the container.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -63,7 +63,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * Sets a potion item in the container. Changes the container's
      * fluid type to potion.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

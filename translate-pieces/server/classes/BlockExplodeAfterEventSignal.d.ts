@@ -11,9 +11,9 @@ export class BlockExplodeAfterEventSignal {
      * Adds a callback that will be called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: BlockExplodeAfterEvent) => void): (arg0: BlockExplodeAfterEvent) => void;
@@ -22,9 +22,9 @@ export class BlockExplodeAfterEventSignal {
      * Removes a callback from being called when an explosion
      * occurs, as it impacts individual blocks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: BlockExplodeAfterEvent) => void): void;

@@ -11,9 +11,9 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      * Adds a callback that will be called before a player
      * interacts with a block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -24,9 +24,9 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      * Removes a callback from being called before a player
      * interacts with a block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void): void;

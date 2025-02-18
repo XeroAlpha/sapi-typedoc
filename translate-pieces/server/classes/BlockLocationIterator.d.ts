@@ -21,7 +21,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Vector3>;
@@ -39,7 +39,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     isValid(): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     next(): IteratorResult<Vector3>;

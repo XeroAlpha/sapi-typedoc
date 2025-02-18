@@ -21,7 +21,7 @@ export class PlayerAimAssist {
      * @remarks
      * Sets the player's aim-assist settings.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param settings
      * Aim-assist settings to activate for the player, if undefined

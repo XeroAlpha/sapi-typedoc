@@ -77,7 +77,7 @@ export class Structure {
      * @remarks
      * Creates a copy of a Structure and saves it with a new name.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The name of the newly created Structure.
@@ -102,7 +102,7 @@ export class Structure {
      * @remarks
      * Saves a modified Structure to the world file.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws
      * Throws if the Structure has been deleted.
@@ -114,7 +114,7 @@ export class Structure {
      * @remarks
      * Sets a BlockPermutation within a Structure.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The block location relative to the Structure's origin.

@@ -9,7 +9,7 @@ export class HttpClient {
      * @remarks
      * Cancels all pending requests.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     cancelAll(reason: string): void;
@@ -17,7 +17,7 @@ export class HttpClient {
      * @remarks
      * Performs a simple HTTP get request.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param uri
      * URL to make an HTTP Request to.
@@ -29,7 +29,7 @@ export class HttpClient {
      * @remarks
      * Performs an HTTP request.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param config
      * Contains an HTTP Request object with configuration data on

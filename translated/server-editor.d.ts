@@ -1504,7 +1504,7 @@ export declare class BedrockEventSubscriptionCache {
 export declare class BlockIdentifierObservableValidator implements ObservableValidator<string> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _defaultValue: string;
@@ -1528,7 +1528,7 @@ export class BlockPalette {
     getItem(index: number): IBlockPaletteItem;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1537,13 +1537,13 @@ export class BlockPalette {
     removeItemAt(index: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     removeItems(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1556,7 +1556,7 @@ export class BlockPaletteManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     addOrReplacePalette(paletteId: string, palette: BlockPalette): void;
@@ -1574,28 +1574,28 @@ export class BlockPaletteManager {
     getSelectedItem(): IBlockPaletteItem;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     removePalette(paletteId: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     setPaletteItem(paletteId: string, index: number, item: IBlockPaletteItem): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     setPrimaryPalette(paletteId: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -1606,7 +1606,7 @@ export class BlockUtilities {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -1623,13 +1623,13 @@ export class BrushShapeManager {
     readonly brushShapeList: BrushShape[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     activateBrushTool(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1638,13 +1638,13 @@ export class BrushShapeManager {
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     deactivateBrushTool(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1653,13 +1653,13 @@ export class BrushShapeManager {
     endPainting(cancelled: boolean): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBrushShapeOffset(): minecraftserver.Vector3;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1668,7 +1668,7 @@ export class BrushShapeManager {
     getSettingsUIElements(brushName: string): SettingsUIElement[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1682,7 +1682,7 @@ export class BrushShapeManager {
     ): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1691,43 +1691,43 @@ export class BrushShapeManager {
     setBrushMask(mask: BlockMaskList): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShapeOffset(offset: minecraftserver.Vector3): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setBrushShapeVisible(visible: boolean): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setFlattenHeight(flattenHeight: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setFlattenRadius(flattenRadius: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     setTerrainStrength(terrainStrength: number): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1736,13 +1736,13 @@ export class BrushShapeManager {
     singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     switchBrushPaintMode(paintMode: PaintMode): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1751,7 +1751,7 @@ export class BrushShapeManager {
     switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1770,17 +1770,17 @@ export class ClipboardChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): (arg0: ClipboardChangeAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ClipboardChangeAfterEvent) => void): void;
@@ -1805,7 +1805,7 @@ export class ClipboardItem {
      * @remarks
      * Clear the contents of the item
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -1820,7 +1820,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -1849,7 +1849,7 @@ export class ClipboardItem {
      * would be affected as part of a write operation with a given
      * set of write options.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * A world location to which the ClipboardItem may potentially
@@ -1869,7 +1869,7 @@ export class ClipboardItem {
      * @remarks
      * Get the bounding size of the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -1879,7 +1879,7 @@ export class ClipboardItem {
      * Copy the contents of the area represented by a {@link
      * Selection} volume into the ClipboardItem
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param selection
      * A volume which represents the area to be copied
@@ -1888,7 +1888,7 @@ export class ClipboardItem {
     readFromSelection(selection: Selection): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -1900,7 +1900,7 @@ export class ClipboardItem {
      * Copy the contents of a rectangular volume into the Clipboard
      * Item
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param from
      * The world location of one corner of a bounding volume
@@ -1915,7 +1915,7 @@ export class ClipboardItem {
      * Apply the contents of a ClipboardItem to the world at a
      * given location using a set of write options
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The root point of the world location to which the
@@ -1957,7 +1957,7 @@ export class ClipboardManager {
      * @remarks
      * Create a new  {@link ClipboardItem} object
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -1973,17 +1973,17 @@ export class CurrentThemeChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: CurrentThemeChangeAfterEvent) => void): (arg0: CurrentThemeChangeAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: CurrentThemeChangeAfterEvent) => void): void;
@@ -1999,9 +1999,9 @@ export class CurrentThemeColorChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -2009,9 +2009,9 @@ export class CurrentThemeColorChangeAfterEventSignal {
     ): (arg0: CurrentThemeColorChangeAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: CurrentThemeColorChangeAfterEvent) => void): void;
@@ -2067,7 +2067,7 @@ export class Cursor {
      * @remarks
      * Get the world position of the 3D block cursor
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2077,14 +2077,14 @@ export class Cursor {
      * Get a property object which represents the current
      * properties of the 3D block cursor.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     getProperties(): CursorProperties;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -2096,7 +2096,7 @@ export class Cursor {
      * Hide the 3D block cursor from view until the corresponding
      * {@link Cursor.show} function is called
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2107,7 +2107,7 @@ export class Cursor {
      * Depending on the {@link CursorProperties.controlMode} - this
      * function may have no effect
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param offset
      * Amount by which the 3D block cursor should be moved
@@ -2121,7 +2121,7 @@ export class Cursor {
      * @remarks
      * Reset the 3D block cursor to the system default state
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2130,7 +2130,7 @@ export class Cursor {
      * @remarks
      * Set the 3D block cursor properties to a given state
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param properties
      * A set of optional parameters within a property state which
@@ -2142,7 +2142,7 @@ export class Cursor {
      * @remarks
      * Make the 3D block cursor visible on screen
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2159,9 +2159,9 @@ export class CursorPropertyChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(
@@ -2169,9 +2169,9 @@ export class CursorPropertyChangeAfterEventSignal {
     ): (arg0: CursorPropertiesChangeAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: CursorPropertiesChangeAfterEvent) => void): void;
@@ -2181,35 +2181,35 @@ export class EditorStructureManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     getExistingTags(): string[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     loadStructure(location: string, id: string): EditorStructure;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     saveStructure(structure: EditorStructure): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2223,7 +2223,7 @@ export class EditorStructureManager {
 export declare class EntityIdentifierObservableValidator implements ObservableValidator<string> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _defaultValue: string;
@@ -2242,27 +2242,27 @@ export class ExportManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     beginExportProject(options: GameOptions): Promise<ExportResult>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     canExportProject(): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getGameOptions(useDefault?: boolean): GameOptions;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -2476,7 +2476,7 @@ export class IBlockPaletteItem {
     getType(): BlockPaletteItemType;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -2506,7 +2506,7 @@ export class Logger {
      * recommend that you remove any references to this log channel
      * to avoid a noisy experience for other users
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param message
      * The message string to send to the log window
@@ -2521,7 +2521,7 @@ export class Logger {
      * output to/from a player).  Use this channel sparingly - it's
      * meant to communicate important problems to the player
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param message
      * The message string to send to the log window
@@ -2534,7 +2534,7 @@ export class Logger {
      * non-fatal or non-erroneous information to the player that
      * can generally be safely ignored if they choose to do so.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param message
      * The message string to send to the log window
@@ -2548,7 +2548,7 @@ export class Logger {
      * things that cannot be found) but are not fatal and execution
      * can still be completed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param message
      * The message string to send to the log window
@@ -2607,9 +2607,9 @@ export class ModeChangeAfterEventSignal {
      * Subscribes the specified callback to an editor mode change
      * after event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ModeChangeAfterEvent) => void): (arg0: ModeChangeAfterEvent) => void;
@@ -2618,9 +2618,9 @@ export class ModeChangeAfterEventSignal {
      * Removes the specified callback from an editor mode change
      * after event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ModeChangeAfterEvent) => void): void;
@@ -2633,19 +2633,19 @@ export class ModeChangeAfterEventSignal {
 export declare class NumberLimitObservableValidator implements ObservableValidator<number> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _isInteger?: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _max?: number;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _min?: number;
@@ -2671,14 +2671,14 @@ export class PlaytestManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2689,17 +2689,17 @@ export class PrimarySelectionChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: SelectionEventAfterEvent) => void): (arg0: SelectionEventAfterEvent) => void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: SelectionEventAfterEvent) => void): void;
@@ -2715,7 +2715,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -2725,7 +2725,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     getBlocks(): WeightedBlock[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -2766,7 +2766,7 @@ export class Selection {
      * generate excessive network traffic.
      *
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visible: boolean;
@@ -2774,7 +2774,7 @@ export class Selection {
      * @remarks
      * Clear the contents of the Selection
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2792,7 +2792,7 @@ export class Selection {
      * The Block iterator will return only selected volume
      * locations
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBlockLocationIterator(): minecraftserver.BlockLocationIterator;
@@ -2803,7 +2803,7 @@ export class Selection {
      * represent the shape of the selection, only the largest
      * rectangle that will fit all of the volumes)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2812,7 +2812,7 @@ export class Selection {
      * @remarks
      * Return the color of the on-screen selection container hull
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2822,7 +2822,7 @@ export class Selection {
      * Return the color of the on-screen selection container
      * outline
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2832,7 +2832,7 @@ export class Selection {
      * Get the origin of the CompoundBlockVolume that makes up the
      * block component part of selection
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getVolumeOrigin(): minecraftserver.Vector3;
@@ -2842,7 +2842,7 @@ export class Selection {
      * the volumes within the selection to be moved by the
      * specified offset)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delta
      * The amount by which to move
@@ -2857,7 +2857,7 @@ export class Selection {
      * all of the volumes within the selection to be moved to a
      * location relative to the world location)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The world location to which to relocate the selection
@@ -2872,7 +2872,7 @@ export class Selection {
      * that was pushed to the volume stack without affecting the
      * stack itself
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param forceRelativity
      * See the description for {@link
@@ -2888,7 +2888,7 @@ export class Selection {
      * Remove the volume information that was last pushed to the
      * volume stack.  This will reduce the stack item length by 1
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2898,7 +2898,7 @@ export class Selection {
      * Push a compound volume item (a volume and action pair) to
      * the volume stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param item
      * Item to push to the stack
@@ -2913,7 +2913,7 @@ export class Selection {
      * target selection - it does this by content, not by
      * reference.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param other
      * {@link minecraftserver.CompoundBlockVolume} - set the block
@@ -2930,7 +2930,7 @@ export class Selection {
      * Set the color of the hull of the selection object if it is
      * visible.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2940,7 +2940,7 @@ export class Selection {
      * Set the color of the outline around the selection object if
      * it is visible
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -2976,7 +2976,7 @@ export class SelectionManager {
      * @remarks
      * Create a new, empty {@link Selection} object
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3076,7 +3076,7 @@ export class SimulationState {
      * Sets the state of mob simulation.  If set to `true`, mobs
      * are paused.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3101,7 +3101,7 @@ export class ThemeSettings {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3111,7 +3111,7 @@ export class ThemeSettings {
     canThemeBeModified(id: string): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3130,7 +3130,7 @@ export class ThemeSettings {
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3139,7 +3139,7 @@ export class ThemeSettings {
     setCurrentTheme(id: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3148,7 +3148,7 @@ export class ThemeSettings {
     setThemeName(id: string, name: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3173,7 +3173,7 @@ export class TransactionManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3182,7 +3182,7 @@ export class TransactionManager {
     addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3199,7 +3199,7 @@ export class TransactionManager {
      * The open record will be closed and all tracking operations
      * will cease.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3214,7 +3214,7 @@ export class TransactionManager {
      * to the transaction record before submission to the
      * transaction manager
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the number of change requests that were being
@@ -3224,7 +3224,7 @@ export class TransactionManager {
     commitTrackedChanges(): number;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3239,7 +3239,7 @@ export class TransactionManager {
      * All records within the transaction will be discarded, and
      * any tracking requests currently active will be stopped
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3250,7 +3250,7 @@ export class TransactionManager {
      * the current open transaction contents, only the pending
      * tracked block operations
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns the number of change requests that were discarded
@@ -3264,7 +3264,7 @@ export class TransactionManager {
      * All transaction operations within a record are grouped and
      * treated as a single atomic unit
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param name
      * Give the transaction record a name
@@ -3282,7 +3282,7 @@ export class TransactionManager {
      * transferred to the undo stack in case the creator decides to
      * undo it
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3291,7 +3291,7 @@ export class TransactionManager {
      * @remarks
      * Return the number of transaction records on the redo stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3303,7 +3303,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param from
      * Min block location of a bounding area
@@ -3320,7 +3320,7 @@ export class TransactionManager {
      * The pending list will be added to the open transaction
      * record when a commit has been issued.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param compoundBlockVolume
      * {@link minecraftserver.CompoundBlockVolume} to track.  Only
@@ -3334,7 +3334,7 @@ export class TransactionManager {
      * Begin tracking block changes in a list of specified block
      * locations.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param locations
      * An array of block locations to monitor for changes
@@ -3354,7 +3354,7 @@ export class TransactionManager {
      * space) (see {@link minecraftserver.CompoundBlockVolume} for
      * more details
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param selection
      * A collection of block location volumes represented by a
@@ -3376,7 +3376,7 @@ export class TransactionManager {
      * transferred to the redo stack in case the creator decides to
      * reapply it
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3386,7 +3386,7 @@ export class TransactionManager {
      * Return how many transactions records currently exist on the
      * stack
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -3448,19 +3448,19 @@ export class UserDefinedTransactionHandlerId {
 export declare class Vector3LimitObservableValidator implements ObservableValidator<minecraftserver.Vector3> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _isInteger?: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _max: Partial<minecraftserver.Vector3>;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _min: Partial<minecraftserver.Vector3>;
@@ -3479,31 +3479,31 @@ export class Widget {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     bindPositionToBlockCursor: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     collisionOffset: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     collisionRadius: number;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     location: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     lockPositionToSurface: boolean;
@@ -3518,14 +3518,14 @@ export class Widget {
     showCollisionRadius: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     snapToBlockLocation: boolean;
     visible: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3540,7 +3540,7 @@ export class Widget {
     ): WidgetComponentClipboard;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3555,7 +3555,7 @@ export class Widget {
     ): WidgetComponentEntity;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3566,7 +3566,7 @@ export class Widget {
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3577,7 +3577,7 @@ export class Widget {
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3596,7 +3596,7 @@ export class Widget {
     ): WidgetComponentRenderPrimitive;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3607,7 +3607,7 @@ export class Widget {
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3618,7 +3618,7 @@ export class Widget {
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3631,7 +3631,7 @@ export class Widget {
     delete(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3644,7 +3644,7 @@ export class Widget {
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3655,7 +3655,7 @@ export class Widget {
     getComponent(componentName: string): WidgetComponentBase;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3664,7 +3664,7 @@ export class Widget {
     getComponents(): WidgetComponentBase[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3689,7 +3689,7 @@ export class WidgetComponentBase {
     readonly location: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     lockToSurface: boolean;
@@ -3701,7 +3701,7 @@ export class WidgetComponentBase {
     readonly name: string;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     offset: minecraftserver.Vector3;
@@ -3715,7 +3715,7 @@ export class WidgetComponentBase {
     readonly widget: Widget;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3724,7 +3724,7 @@ export class WidgetComponentBase {
     delete(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3750,13 +3750,13 @@ export class WidgetComponentEntity extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     clickable: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3789,7 +3789,7 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     readonly primitiveType: PrimitiveType;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3810,19 +3810,19 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
 export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     center: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color?: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     radius: number;
@@ -3838,19 +3838,19 @@ export class WidgetComponentRenderPrimitiveTypeBase {
 export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     center: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     size?: minecraftserver.Vector3;
@@ -3861,19 +3861,19 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
 export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     center: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     radius: number;
@@ -3884,19 +3884,19 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
 export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     end: minecraftserver.Vector3;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     start: minecraftserver.Vector3;
@@ -3908,13 +3908,13 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     splineType: SplineType;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3927,7 +3927,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getControlPoints(): Widget[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3940,7 +3940,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -3964,13 +3964,13 @@ export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     color: minecraftserver.RGBA;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     label: string;
@@ -3986,19 +3986,19 @@ export class WidgetGroup {
     readonly selectedWidgetCount: number;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visible: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visibleBounds: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4007,13 +4007,13 @@ export class WidgetGroup {
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     delete(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4026,7 +4026,7 @@ export class WidgetGroup {
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4035,7 +4035,7 @@ export class WidgetGroup {
     deselectAllWidgets(): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4048,7 +4048,7 @@ export class WidgetManager {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -4057,7 +4057,7 @@ export class WidgetManager {
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

@@ -9,9 +9,9 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Adds a callback that will be called before an item is used.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseBeforeEvent) => void): (arg0: ItemUseBeforeEvent) => void;
@@ -19,9 +19,9 @@ export class ItemUseBeforeEventSignal {
      * @remarks
      * Removes a callback from being called before an item is used.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseBeforeEvent) => void): void;

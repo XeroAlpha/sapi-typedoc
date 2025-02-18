@@ -453,7 +453,7 @@ export class Block {
      * Sets the block in the dimension to the state of the
      * permutation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param permutation
      * Permutation that contains a set of property states for the
@@ -469,7 +469,7 @@ export class Block {
      * @remarks
      * Sets the type of block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param blockType
      * Identifier of the type of block to apply - for example,
@@ -489,7 +489,7 @@ export class Block {
      * Sets whether this block has a water logged state - for
      * example, whether stairs are submerged within water.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param isWaterlogged
      * true if the block should have water within it.
@@ -522,7 +522,7 @@ export class Block {
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param permutation
      * Permutation that contains a set of property states for the

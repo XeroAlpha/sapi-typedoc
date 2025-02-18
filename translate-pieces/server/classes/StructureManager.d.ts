@@ -12,7 +12,7 @@ export class StructureManager {
      * Structure.setBlockPermutation} to populate the structure
      * with blocks and save changes with {@link Structure.saveAs}.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure. A valid identifier must include a
@@ -39,7 +39,7 @@ export class StructureManager {
      * Creates a new Structure from blocks in the world. This is
      * functionally equivalent to the /structure save command.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure. A valid identifier must include a
@@ -72,7 +72,7 @@ export class StructureManager {
      * Deletes a structure from memory and from the world if it
      * exists.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param structure
      * The structure identifier or Structure object that should be
@@ -91,7 +91,7 @@ export class StructureManager {
      * @remarks
      * Gets a Structure that is saved to memory or the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The name of the structure to get.
@@ -101,7 +101,7 @@ export class StructureManager {
     get(identifier: string): Structure | undefined;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getWorldStructureIds(): string[];
@@ -110,7 +110,7 @@ export class StructureManager {
      * Places a structure in the world. Structures placed in
      * unloaded chunks will be queued for loading.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param structure
      * The structure's identifier or a Structure object.
@@ -145,7 +145,7 @@ export class StructureManager {
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param pool
      * The identifier of the template pool to start from.
@@ -188,7 +188,7 @@ export class StructureManager {
      * @remarks
      * Places a jigsaw structure in the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The identifier of the jigsaw structure.

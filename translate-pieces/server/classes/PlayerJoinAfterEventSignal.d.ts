@@ -12,9 +12,9 @@ export class PlayerJoinAfterEventSignal {
      * Adds a callback that will be called when a player joins the
      * world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
@@ -24,9 +24,9 @@ export class PlayerJoinAfterEventSignal {
      * Removes a callback from being called when a player joins the
      * world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerJoinAfterEvent) => void): void;

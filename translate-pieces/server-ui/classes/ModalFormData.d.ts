@@ -40,7 +40,7 @@ export class ModalFormData {
      * asynchronously when the player confirms or cancels the
      * dialog.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param player
      * Player to show this dialog to.

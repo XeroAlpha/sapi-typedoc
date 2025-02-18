@@ -7,19 +7,19 @@
 export declare class Vector3LimitObservableValidator implements ObservableValidator<minecraftserver.Vector3> {
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _isInteger?: boolean;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _max: Partial<minecraftserver.Vector3>;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     protected _min: Partial<minecraftserver.Vector3>;

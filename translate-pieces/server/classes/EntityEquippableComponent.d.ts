@@ -38,7 +38,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Replaces the item in the given EquipmentSlot.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param equipmentSlot
      * The equipment slot. e.g. "head", "chest", "offhand".

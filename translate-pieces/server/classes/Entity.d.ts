@@ -70,7 +70,7 @@ export class Entity {
      * Whether the entity is sneaking - that is, moving more slowly
      * and more quietly.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     isSneaking: boolean;
@@ -111,7 +111,7 @@ export class Entity {
      * @remarks
      * Given name of the entity.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     nameTag: string;
@@ -144,7 +144,7 @@ export class Entity {
      * @remarks
      * Adds or updates an effect, like poison, to the entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param effectType
      * Type of effect to add to the entity.
@@ -169,7 +169,7 @@ export class Entity {
      * @remarks
      * Adds a specified tag to an entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tag
      * Content of the tag to add. The tag must be less than 256
@@ -185,7 +185,7 @@ export class Entity {
      * @remarks
      * Applies a set of damage to an entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param amount
      * Amount of damage to apply.
@@ -206,7 +206,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param vector
      * Impulse vector.
@@ -219,7 +219,7 @@ export class Entity {
      * Applies impulse vector to the current velocity of the
      * entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param verticalStrength
      * Knockback strength for the vertical vector.
@@ -240,7 +240,7 @@ export class Entity {
      * Sets the current velocity of the Entity to zero. Note that
      * this method may not have an impact on Players.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample applyImpulse.ts
@@ -252,7 +252,7 @@ export class Entity {
      * you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param useEffects
      * Whether to show any visual effects connected to the
@@ -476,7 +476,7 @@ export class Entity {
      * @remarks
      * Kills this entity. The entity will drop loot as normal.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns true if entity can be killed (even if it is already
@@ -493,7 +493,7 @@ export class Entity {
      * mobs where the pitch controls the head tilt and the yaw
      * controls the body rotation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param targetLocation
      * The target location that this entity should face/look
@@ -520,7 +520,7 @@ export class Entity {
      * @remarks
      * Cause the entity to play the given animation.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param animationName
      * The animation identifier. e.g. animation.creeper.swelling
@@ -536,7 +536,7 @@ export class Entity {
      * entity will not perform a death animation or drop loot upon
      * removal.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -546,7 +546,7 @@ export class Entity {
      * Removes the specified EffectType on the entity, or returns
      * false if the effect is not present.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param effectType
      * The effect identifier.
@@ -560,7 +560,7 @@ export class Entity {
      * @remarks
      * Removes a specified tag from an entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param tag
      * Content of the tag to remove.
@@ -575,7 +575,7 @@ export class Entity {
      * specified in the Entity's definition. This property change
      * is not applied until the next tick.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The Entity Property identifier.
@@ -596,7 +596,7 @@ export class Entity {
      * @remarks
      * Runs a synchronous command on the entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param commandString
      * The command string. Note: This should not include a leading
@@ -639,7 +639,7 @@ export class Entity {
      * that you can call getComponent('minecraft:onfire') and, if
      * present, the entity is on fire.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param seconds
      * Length of time to set the entity on fire.
@@ -660,7 +660,7 @@ export class Entity {
      * Sets an Entity Property to the provided value. This property
      * change is not applied until the next tick.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The Entity Property identifier.
@@ -682,7 +682,7 @@ export class Entity {
      * @remarks
      * Sets the main rotation of the entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param rotation
      * The x and y rotation of the entity (in degrees). For most
@@ -695,7 +695,7 @@ export class Entity {
      * @remarks
      * Teleports the selected entity to a new location
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * New location for the entity.
@@ -713,7 +713,7 @@ export class Entity {
      * behaviors; for example, creepers have a
      * minecraft:start_exploding type event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param eventName
      * Name of the entity type event to trigger. If a namespace is
@@ -731,7 +731,7 @@ export class Entity {
      * teleport operation (for example, if there are blocks at the
      * destination.)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * Location to teleport the entity to.

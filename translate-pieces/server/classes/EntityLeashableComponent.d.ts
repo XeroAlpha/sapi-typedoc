@@ -65,7 +65,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Leashes this entity to another entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param leashHolder
      * The entity to leash this entity to.
@@ -78,7 +78,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * @remarks
      * Unleashes this entity if it is leashed to another entity.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

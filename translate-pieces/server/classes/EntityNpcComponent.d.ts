@@ -13,7 +13,7 @@ export class EntityNpcComponent extends EntityComponent {
      * The DialogueScene that is opened when players first interact
      * with the NPC.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     defaultScene: string;
@@ -21,7 +21,7 @@ export class EntityNpcComponent extends EntityComponent {
      * @remarks
      * The name of the NPC as it is displayed to players.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     name: string;
@@ -29,7 +29,7 @@ export class EntityNpcComponent extends EntityComponent {
      * @remarks
      * The index of the skin the NPC will use.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     skinIndex: number;

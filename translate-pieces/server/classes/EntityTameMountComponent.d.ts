@@ -42,7 +42,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Sets this rideable entity as tamed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
@@ -53,7 +53,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Sets this rideable entity as tamed by the given player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.

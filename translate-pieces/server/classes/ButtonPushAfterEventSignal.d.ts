@@ -12,9 +12,9 @@ export class ButtonPushAfterEventSignal {
      * @remarks
      * Adds a callback that will be called when a button is pushed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
@@ -24,9 +24,9 @@ export class ButtonPushAfterEventSignal {
      * Removes a callback from being called when a button is
      * pushed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;

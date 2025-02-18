@@ -19,7 +19,7 @@ export class SculkSpreader {
      * Adds a cursor - which is a notional waypoint that the sculk
      * will spread in the direction of.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
@@ -27,7 +27,7 @@ export class SculkSpreader {
      * @remarks
      * Retrieves the current position of the specified cursor.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -36,7 +36,7 @@ export class SculkSpreader {
      * @remarks
      * Returns a number of overall cursors for this sculk spreader.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -45,7 +45,7 @@ export class SculkSpreader {
      * @remarks
      * Gets the total current charge of the sculk spreader.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

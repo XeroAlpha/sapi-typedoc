@@ -48,7 +48,7 @@ export class Dimension {
      * @remarks
      * Creates an explosion at the specified location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The location of the explosion.
@@ -70,7 +70,7 @@ export class Dimension {
      * @remarks
      * Fills an area of blocks with a specific block type.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param volume
      * Volume of blocks to be filled.
@@ -104,7 +104,7 @@ export class Dimension {
      * time to complete, so avoid using many of these calls within
      * a particular tick.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param pos
      * Starting location to look for a biome to find.
@@ -149,7 +149,7 @@ export class Dimension {
     /**
      * @beta
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -157,7 +157,7 @@ export class Dimension {
     /**
      * @beta
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -253,7 +253,7 @@ export class Dimension {
      * @remarks
      * Returns the highest block at the given XZ location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param locationXZ
      * Location to retrieve the topmost block for.
@@ -268,7 +268,7 @@ export class Dimension {
      * @remarks
      * Returns the current weather.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Returns a WeatherType that explains the broad category of
@@ -281,7 +281,7 @@ export class Dimension {
      * Places the given feature into the dimension at the specified
      * location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param featureName
      * The string identifier for the feature.
@@ -311,7 +311,7 @@ export class Dimension {
      * Places the given feature rule into the dimension at the
      * specified location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param featureRuleName
      * The string identifier for the feature rule.
@@ -331,7 +331,7 @@ export class Dimension {
      * @remarks
      * Plays a sound for all players.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param soundId
      * Identifier of the sound.
@@ -352,7 +352,7 @@ export class Dimension {
      * Runs a command synchronously using the context of the
      * broader dimenion.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param commandString
      * Command to run. Note that command strings should not start
@@ -375,7 +375,7 @@ export class Dimension {
      * Sets a block in the world using a BlockPermutation.
      * BlockPermutations are blocks with a particular state.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The location within the dimension to set the block.
@@ -394,7 +394,7 @@ export class Dimension {
      * @remarks
      * Sets a block at a given location within the dimension.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The location within the dimension to set the block.
@@ -417,7 +417,7 @@ export class Dimension {
      * @remarks
      * Sets the current weather within the dimension
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param weatherType
      * Set the type of weather to apply.
@@ -433,7 +433,7 @@ export class Dimension {
      * Creates a new entity (e.g., a mob) at the specified
      * location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * Identifier of the type of entity to spawn. If no namespace
@@ -457,7 +457,7 @@ export class Dimension {
      * Creates a new item stack as an entity at the specified
      * location.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The location at which to create the item stack.
@@ -477,7 +477,7 @@ export class Dimension {
      * Creates a new particle emitter at a specified location in
      * the world.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param effectName
      * Identifier of the particle to create.

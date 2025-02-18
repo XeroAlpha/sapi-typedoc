@@ -11,9 +11,9 @@ export class TargetBlockHitAfterEventSignal {
      * Adds a callback that will be called when a target block is
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): (arg0: TargetBlockHitAfterEvent) => void;
@@ -22,9 +22,9 @@ export class TargetBlockHitAfterEventSignal {
      * Removes a callback from being called when a target block is
      * hit.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): void;

@@ -11,9 +11,9 @@ export class ItemUseOnBeforeEventSignal {
      * Adds a callback that will be called before an item is used
      * on a block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): (arg0: ItemUseOnBeforeEvent) => void;
@@ -22,9 +22,9 @@ export class ItemUseOnBeforeEventSignal {
      * Removes a callback from being called before an item is used
      * on a block.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): void;

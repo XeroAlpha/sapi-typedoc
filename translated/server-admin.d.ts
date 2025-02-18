@@ -55,9 +55,9 @@ export class ServerSecrets {
      * HttpHeader, this Secret is resolved at the time of execution
      * but is not made available to the script environment.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     get(name: string): SecretString | undefined;
@@ -81,9 +81,9 @@ export class ServerVariables {
      * Returns the value of variable that has been configured in a
      * dedicated server configuration JSON file.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     get(name: string): any | undefined;
@@ -93,7 +93,7 @@ export class ServerVariables {
  * @remarks
  * Transfer player to another server.
  *
- * This function can't be called in read-only mode.
+ * @worldMutation
  *
  * @param player
  * Player to transfer.

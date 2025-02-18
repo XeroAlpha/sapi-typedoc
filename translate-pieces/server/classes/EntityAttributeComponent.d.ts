@@ -43,7 +43,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the defined
      * default value.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -53,7 +53,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the maximum
      * defined value.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -63,7 +63,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Resets the current value of this attribute to the minimum
      * defined value.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -73,7 +73,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Sets the current value of this attribute. The provided value
      * will be clamped to the range of this attribute.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

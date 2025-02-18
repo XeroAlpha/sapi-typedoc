@@ -19,28 +19,28 @@ export class ScreenDisplay {
     readonly isValid: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -50,7 +50,7 @@ export class ScreenDisplay {
      * Set the action bar text - a piece of text that displays
      * beneath the title and above the hot-bar.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param text
      * New value for the action bar text.
@@ -62,7 +62,7 @@ export class ScreenDisplay {
      * Sets visibility of a particular element of the heads up
      * display (HUD).
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param visible
      * Whether to set the HUD element to invisible, or to reset it
@@ -79,7 +79,7 @@ export class ScreenDisplay {
      * can optionally specify an additional subtitle as well as
      * fade in, stay and fade out times.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample setTitle.ts
@@ -92,7 +92,7 @@ export class ScreenDisplay {
      * Updates the subtitle if the subtitle was previously
      * displayed via the setTitle method.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample countdown.ts

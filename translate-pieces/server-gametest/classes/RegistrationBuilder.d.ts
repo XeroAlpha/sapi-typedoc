@@ -10,9 +10,9 @@ export class RegistrationBuilder {
      * @remarks
      * Sets the batch for the test to run in.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param batchName
      * Name of the batch for the test.
@@ -26,9 +26,9 @@ export class RegistrationBuilder {
      * Sets the maximum number of times a test will try to rerun if
      * it fails.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -40,9 +40,9 @@ export class RegistrationBuilder {
      * Sets the maximum number of ticks a test will run for before
      * timing out and failing.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -54,9 +54,9 @@ export class RegistrationBuilder {
      * Size around the GameTest, in blocks, that should be reserved
      * for the test when running multiple tests together.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param paddingBlocks
      * Size, in blocks, around the GameTest where additional
@@ -71,9 +71,9 @@ export class RegistrationBuilder {
      * Whether this test is required to pass as part of its broader
      * set of tests.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param isRequired
      * If set to true, the test must pass in order for the entire
@@ -88,9 +88,9 @@ export class RegistrationBuilder {
      * Sets the number of successful test runs to be considered
      * successful.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -102,9 +102,9 @@ export class RegistrationBuilder {
      * If true, runs the test in all four rotations when run via
      * /gametest runset.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     rotateTest(rotate: boolean): RegistrationBuilder;
@@ -113,9 +113,9 @@ export class RegistrationBuilder {
      * Sets the number of ticks for a test to wait before executing
      * when the structure is spawned.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -130,9 +130,9 @@ export class RegistrationBuilder {
      * ground. If the dimension is not specified, it will run in
      * the dimension the command was run from.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -153,9 +153,9 @@ export class RegistrationBuilder {
      * will load `/structures/xyz/bar.mcstructure` from the
      * behavior pack stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration
@@ -168,9 +168,9 @@ export class RegistrationBuilder {
      * Adds a tag to a test. You can run all tests with a given tag
      * with `/gametest runset <tag>`.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @returns
      * RegistrationBuilder object where additional configuration

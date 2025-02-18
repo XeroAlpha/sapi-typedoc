@@ -8,13 +8,13 @@ export class EntityTypeIterator implements Iterable<EntityType> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<EntityType>;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     next(): IteratorResult<EntityType>;

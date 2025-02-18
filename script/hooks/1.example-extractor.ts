@@ -11,6 +11,7 @@ import {
     type CommentDisplayPart
 } from 'typedoc';
 import type { Hook } from './hook.js';
+import { installLanguages, type TypeDocLanguages } from '../utils.js';
 
 const ExampleNameOverwrite = [
     {
@@ -72,6 +73,21 @@ const examples: Record<
         sources: { source: string; fileName: string; path: string; symbol: Symbol }[];
     }[]
 > = {};
+
+declare module 'typedoc' {
+    interface TranslatableStrings {
+        example_extractor_referenced_by_with_colon: [];
+    }
+}
+
+const TypeDocExtraTranslations: TypeDocLanguages = {
+    zh: {
+        example_extractor_referenced_by_with_colon: '在以下成员中被引用：'
+    },
+    en: {
+        example_extractor_referenced_by_with_colon: 'References:'
+    }
+};
 
 export default {
     afterLoad({ sourceFiles }) {
@@ -192,6 +208,7 @@ export default {
         }
     },
     beforeConvert({ tsdocApplication }) {
+        installLanguages(tsdocApplication, TypeDocExtraTranslations);
         tsdocApplication.options.setValue('blockTags', [
             ...tsdocApplication.options.getValue('blockTags'),
             '@seeExample'
@@ -225,14 +242,16 @@ export default {
             };
         });
     },
-    afterConvert({ tsdocProject }) {
+    afterConvert({ tsdocApplication, tsdocProject }) {
         const allReflections = Object.values(tsdocProject.reflections);
         const reflAndSymbolIdMap = allReflections
             .map((refl) => [refl, tsdocProject.getSymbolIdFromReflection(refl)] as const)
             .filter((e): e is [Reflection, ReflectionSymbolId] => e[1] !== undefined);
         const exampleRefls = [];
         // 添加 example 页面
-        const exampleParentRef = new DocumentReflection('示例', tsdocProject, [], { title: '示例' });
+        const exampleI18N = tsdocApplication.internationalization.translateTagName('@example');
+        const exampleReferencesI18N = String(tsdocApplication.i18n.example_extractor_referenced_by_with_colon());
+        const exampleParentRef = new DocumentReflection(exampleI18N, tsdocProject, [], { title: exampleI18N });
         tsdocProject.registerReflection(exampleParentRef, undefined, undefined);
         tsdocProject.addChild(exampleParentRef);
         for (const exampleName of Object.keys(examples).sort()) {
@@ -256,7 +275,7 @@ export default {
                 });
                 content.push({
                     kind: 'text',
-                    text: '\n在以下成员中被引用：\n'
+                    text: `\n${exampleReferencesI18N}\n`
                 });
                 if (exampleVersion.sources.length > 1) {
                     exampleVersion.sources.sort((a, b) => {

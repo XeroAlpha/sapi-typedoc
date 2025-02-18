@@ -14,9 +14,9 @@ export class WatchdogTerminateBeforeEventSignal {
      * being terminated due to a violation of the performance
      * watchdog system.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
@@ -26,9 +26,9 @@ export class WatchdogTerminateBeforeEventSignal {
      * is being terminated due to a violation of the performance
      * watchdog system.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;

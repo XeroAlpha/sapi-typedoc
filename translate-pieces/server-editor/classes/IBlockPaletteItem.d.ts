@@ -7,7 +7,7 @@ export class IBlockPaletteItem {
     getType(): BlockPaletteItemType;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

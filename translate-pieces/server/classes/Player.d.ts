@@ -102,7 +102,7 @@ export class Player extends Entity {
     readonly onScreenDisplay: ScreenDisplay;
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     selectedSlotIndex: number;
@@ -126,7 +126,7 @@ export class Player extends Entity {
      * Adds/removes experience to/from the Player and returns the
      * current experience of the Player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param amount
      * Amount of experience to add. Note that this can be negative.
@@ -141,7 +141,7 @@ export class Player extends Entity {
      * Adds/removes level to/from the Player and returns the
      * current level of the Player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param amount
      * Amount to add to the player. Min/max bounds at -2^24 ~ 2^24
@@ -156,7 +156,7 @@ export class Player extends Entity {
      * Eats an item, providing the item's hunger and saturation
      * effects to the player. Can only be used on food items.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param itemStack
      * The item to eat.
@@ -220,7 +220,7 @@ export class Player extends Entity {
      * Plays a music track that only this particular player can
      * hear.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -233,7 +233,7 @@ export class Player extends Entity {
      * @remarks
      * Plays a sound that only this particular player can hear.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param soundOptions
      * Additional optional options for the sound.
@@ -247,7 +247,7 @@ export class Player extends Entity {
      * This is an internal-facing method for posting a system
      * message to downstream clients.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -258,7 +258,7 @@ export class Player extends Entity {
      * player can hear. If a track is not playing, a music track
      * will play.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -274,7 +274,7 @@ export class Player extends Entity {
      * @remarks
      * Resets the level of the player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -300,7 +300,7 @@ export class Player extends Entity {
      * @remarks
      * Sets a gamemode override for this player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param gameMode
      * Active gamemode.
@@ -313,7 +313,7 @@ export class Player extends Entity {
      * Will change the specified players permissions, and whether
      * they are operator or not.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -323,7 +323,7 @@ export class Player extends Entity {
      * Sets the current starting spawn point for this particular
      * player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -338,7 +338,7 @@ export class Player extends Entity {
      * Creates a new particle emitter at a specified location in
      * the world. Only visible to the target player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param effectName
      * Identifier of the particle to create.
@@ -362,7 +362,7 @@ export class Player extends Entity {
      * Sets the item cooldown time for a particular cooldown
      * category.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
@@ -377,7 +377,7 @@ export class Player extends Entity {
      * Stops any music tracks from playing for this particular
      * player.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

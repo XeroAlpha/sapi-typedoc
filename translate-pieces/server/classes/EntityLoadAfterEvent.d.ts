@@ -11,7 +11,7 @@ export class EntityLoadAfterEvent {
      * @remarks
      * Entity that was loaded.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     entity: Entity;

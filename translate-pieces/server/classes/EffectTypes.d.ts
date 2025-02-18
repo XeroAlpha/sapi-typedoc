@@ -10,7 +10,7 @@ export class EffectTypes {
      * @remarks
      * Effect type for the given identifier.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param identifier
      * The identifier for the effect.
@@ -23,7 +23,7 @@ export class EffectTypes {
      * @remarks
      * Gets all effects.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * A list of all effects.

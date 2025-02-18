@@ -207,6 +207,9 @@ export default {
         if (!readme) {
             throw new Error(`Readme is not found in project`);
         }
+        if (getCurrentHead() === 'original') {
+            return;
+        }
         let translateStateMap;
         try {
             translateStateMap = analyzeTranslateState();

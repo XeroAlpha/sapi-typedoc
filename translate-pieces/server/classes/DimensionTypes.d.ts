@@ -9,7 +9,7 @@ export class DimensionTypes {
      * @remarks
      * Retrieves a dimension type using a string-based identifier.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     static get(dimensionTypeId: string): DimensionType | undefined;
@@ -17,7 +17,7 @@ export class DimensionTypes {
      * @remarks
      * Retrieves an array of all dimension types.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     static getAll(): DimensionType[];

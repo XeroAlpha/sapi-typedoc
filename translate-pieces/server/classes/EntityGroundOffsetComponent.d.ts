@@ -13,7 +13,7 @@ export class EntityGroundOffsetComponent extends EntityComponent {
      * is effectively read only; setting the ground offset value
      * will not have an impact on the related entity.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     value: number;

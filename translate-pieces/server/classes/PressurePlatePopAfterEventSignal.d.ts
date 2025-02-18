@@ -11,9 +11,9 @@ export class PressurePlatePopAfterEventSignal {
      * Adds a callback that will be called when a pressure plate is
      * popped.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): (arg0: PressurePlatePopAfterEvent) => void;
@@ -22,9 +22,9 @@ export class PressurePlatePopAfterEventSignal {
      * Removes a callback from being called when a pressure plate
      * is popped.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): void;

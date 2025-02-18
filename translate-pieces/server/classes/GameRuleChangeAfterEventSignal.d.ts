@@ -11,9 +11,9 @@ export class GameRuleChangeAfterEventSignal {
      * Adds a callback that will be called when a world.gameRules
      * property is changed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): (arg0: GameRuleChangeAfterEvent) => void;
@@ -22,9 +22,9 @@ export class GameRuleChangeAfterEventSignal {
      * Removes a callback from being called when a world.gameRules
      * property is changed.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): void;

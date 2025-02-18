@@ -10,9 +10,9 @@ export class EntityDieAfterEventSignal {
      * @remarks
      * Subscribes to an event that fires when an entity dies.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function to call when an entity dies.
@@ -32,9 +32,9 @@ export class EntityDieAfterEventSignal {
      * Stops this event from calling your function when an entity
      * dies.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: EntityDieAfterEvent) => void): void;

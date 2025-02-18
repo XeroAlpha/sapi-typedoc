@@ -1,4 +1,7 @@
 {
+  "include": [
+    "./**/*.ts"
+  ],
   "compilerOptions": {
     "moduleResolution": "NodeNext",
     "module": "NodeNext",

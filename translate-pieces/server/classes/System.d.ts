@@ -45,7 +45,7 @@ export class System {
      * Cancels the execution of a job queued via {@link
      * System.runJob}.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param jobId
      * The job ID returned from {@link System.runJob}.
@@ -56,7 +56,7 @@ export class System {
      * Cancels the execution of a function run that was previously
      * scheduled via {@link System.run}.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     clearRun(runId: number): void;
@@ -71,7 +71,7 @@ export class System {
      * tick. Note, however, that depending on load on the system,
      * running in the same or next tick is not guaranteed.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Function callback to run at the next game tick.
@@ -85,7 +85,7 @@ export class System {
      * @remarks
      * Runs a set of code on an interval.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Functional code that will run when this interval occurs.
@@ -104,7 +104,7 @@ export class System {
      * will be given a time slice each tick, and will be run until
      * it yields or completes.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param generator
      * The instance of the generator to run.
@@ -118,7 +118,7 @@ export class System {
      * @remarks
      * Runs a set of code at a future time specified by tickDelay.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param callback
      * Functional code that will run when this timeout occurs.
@@ -136,7 +136,7 @@ export class System {
      * Causes an event to fire within script with the specified
      * message ID and payload.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param id
      * Identifier of the message to send. This is custom and
@@ -161,7 +161,7 @@ export class System {
      * waitTicks returns a promise that resolves after the
      * requested number of ticks.
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      * @param ticks
      * The amount of ticks to wait. Minimum value is 1.

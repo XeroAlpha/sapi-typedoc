@@ -22,7 +22,7 @@ export class AimAssistRegistry {
      * @remarks
      * Adds an aim-assist category to the registry.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param category
      * The category settings used to create the new category.
@@ -43,7 +43,7 @@ export class AimAssistRegistry {
      * @remarks
      * Adds an aim-assist preset to the registry.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param preset
      * The preset settings used to create the new preset.
@@ -72,7 +72,7 @@ export class AimAssistRegistry {
      * @remarks
      * Gets the category associated with the provided Id.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * The category object if it exists, otherwise returns
@@ -83,7 +83,7 @@ export class AimAssistRegistry {
      * @remarks
      * Gets the preset associated with the provided Id.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param presetId
      * The Id of the preset to retrieve. Must have a namespace.

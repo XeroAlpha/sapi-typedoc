@@ -4,7 +4,7 @@ export class ThemeSettings {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -14,7 +14,7 @@ export class ThemeSettings {
     canThemeBeModified(id: string): boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -33,7 +33,7 @@ export class ThemeSettings {
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -42,7 +42,7 @@ export class ThemeSettings {
     setCurrentTheme(id: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -51,7 +51,7 @@ export class ThemeSettings {
     setThemeName(id: string, name: string): void;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

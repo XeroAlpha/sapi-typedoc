@@ -10,7 +10,7 @@ export class EntityIterator implements Iterable<Entity> {
     private constructor();
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     [Symbol.iterator](): Iterator<Entity>;
@@ -20,7 +20,7 @@ export class EntityIterator implements Iterable<Entity> {
      * IteratorResult contains .done and .value properties which
      * can be used to see the next Entity in the iteration.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     next(): IteratorResult<Entity>;

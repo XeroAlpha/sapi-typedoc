@@ -4,13 +4,13 @@ export class WidgetComponentEntity extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     clickable: boolean;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

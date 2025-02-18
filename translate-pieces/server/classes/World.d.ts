@@ -49,7 +49,7 @@ export class World {
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param id
      * The message identifier.
@@ -207,7 +207,7 @@ export class World {
      * @remarks
      * Plays a particular music track for all players.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      * @seeExample playMusicAndSound.ts
@@ -218,7 +218,7 @@ export class World {
      * Queues an additional music track for players. If a track is
      * not playing, a music track will play.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param trackId
      * Identifier of the music track to play.
@@ -246,7 +246,7 @@ export class World {
      * @remarks
      * Sets the world time.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param absoluteTime
      * The world time, in ticks.
@@ -256,7 +256,7 @@ export class World {
      * @remarks
      * Sets a default spawn location for all players.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param spawnLocation
      * Location of the spawn point. Note that this is assumed to be
@@ -274,7 +274,7 @@ export class World {
      * @remarks
      * Sets the worlds difficulty.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param difficulty
      * The difficulty we want to set the world to.
@@ -310,7 +310,7 @@ export class World {
      * @remarks
      * Sets the time of day.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param timeOfDay
      * The time of day, in ticks, between 0 and 24000.
@@ -323,7 +323,7 @@ export class World {
      * @remarks
      * Stops any music tracks from playing.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     stopMusic(): void;

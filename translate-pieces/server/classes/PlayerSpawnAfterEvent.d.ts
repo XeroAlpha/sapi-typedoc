@@ -11,7 +11,7 @@ export class PlayerSpawnAfterEvent {
      * If true, this is the initial spawn of a player after joining
      * the game.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     initialSpawn: boolean;
@@ -19,7 +19,7 @@ export class PlayerSpawnAfterEvent {
      * @remarks
      * Object that represents the player that joined the game.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     player: Player;

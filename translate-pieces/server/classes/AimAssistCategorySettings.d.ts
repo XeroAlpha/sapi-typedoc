@@ -15,7 +15,7 @@ export class AimAssistCategorySettings {
      * Optional. Default targeting priority used for block types
      * not provided to setBlockPriorities.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     defaultBlockPriority: number;
@@ -24,7 +24,7 @@ export class AimAssistCategorySettings {
      * Optional. Default targeting priority used for entity types
      * not provided to setEntityPriorities.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     defaultEntityPriority: number;

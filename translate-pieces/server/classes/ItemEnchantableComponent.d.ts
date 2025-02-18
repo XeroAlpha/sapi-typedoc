@@ -16,7 +16,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Adds an enchantment to the item stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param enchantment
      * The enchantment interface to be added.
@@ -46,7 +46,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Adds a list of enchantments to the item stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param enchantments
      * The list of enchantments to be added.
@@ -141,7 +141,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Removes all enchantments applied to this item stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -150,7 +150,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      * @remarks
      * Removes an enchantment of the given type.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param enchantmentType
      * The enchantment type to remove.

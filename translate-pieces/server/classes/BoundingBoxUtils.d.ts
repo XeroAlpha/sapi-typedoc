@@ -13,7 +13,7 @@ export class BoundingBoxUtils {
      * Create a validated instance of a {@link BoundingBox} where
      * the min and max components are guaranteed to be (min <= max)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param min
      * A corner world location
@@ -30,7 +30,7 @@ export class BoundingBoxUtils {
      * greater than the span, but the min/max relationship will
      * remain correct
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Return a new {@link BoundingBox} object representing the
@@ -41,7 +41,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check if two {@link BoundingBox} objects are identical
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static equals(box: BoundingBox, other: BoundingBox): boolean;
@@ -51,7 +51,7 @@ export class BoundingBoxUtils {
      * argument.  The resultant {@link BoundingBox} object will be
      * a BoundingBox which exactly encompasses the two boxes.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * A new {@link BoundingBox} instance representing the smallest
@@ -63,7 +63,7 @@ export class BoundingBoxUtils {
      * Calculate the center block of a given {@link BoundingBox}
      * object.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Note that {@link BoundingBox} objects represent whole
@@ -78,7 +78,7 @@ export class BoundingBoxUtils {
      * Calculate the BoundingBox which represents the union area of
      * two intersecting BoundingBoxes
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
@@ -86,7 +86,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Get the Span of each of the BoundingBox Axis components
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static getSpan(box: BoundingBox): Vector3;
@@ -94,7 +94,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if two BoundingBox objects intersect
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static intersects(box: BoundingBox, other: BoundingBox): boolean;
@@ -102,7 +102,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a given coordinate is inside a BoundingBox
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static isInside(box: BoundingBox, pos: Vector3): boolean;
@@ -110,7 +110,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Check to see if a BoundingBox is valid (i.e. (min <= max))
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     static isValid(box: BoundingBox): boolean;
@@ -118,7 +118,7 @@ export class BoundingBoxUtils {
      * @remarks
      * Move a BoundingBox by a given amount
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @returns
      * Return a new BoundingBox object which represents the change

@@ -4,13 +4,13 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();
     /**
      * @remarks
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     splineType: SplineType;
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -23,7 +23,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getControlPoints(): Widget[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -36,7 +36,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     /**
      * @remarks
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *

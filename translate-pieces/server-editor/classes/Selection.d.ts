@@ -30,7 +30,7 @@ export class Selection {
      * generate excessive network traffic.
      *
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     visible: boolean;
@@ -38,7 +38,7 @@ export class Selection {
      * @remarks
      * Clear the contents of the Selection
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -56,7 +56,7 @@ export class Selection {
      * The Block iterator will return only selected volume
      * locations
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getBlockLocationIterator(): minecraftserver.BlockLocationIterator;
@@ -67,7 +67,7 @@ export class Selection {
      * represent the shape of the selection, only the largest
      * rectangle that will fit all of the volumes)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -76,7 +76,7 @@ export class Selection {
      * @remarks
      * Return the color of the on-screen selection container hull
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -86,7 +86,7 @@ export class Selection {
      * Return the color of the on-screen selection container
      * outline
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -96,7 +96,7 @@ export class Selection {
      * Get the origin of the CompoundBlockVolume that makes up the
      * block component part of selection
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      */
     getVolumeOrigin(): minecraftserver.Vector3;
@@ -106,7 +106,7 @@ export class Selection {
      * the volumes within the selection to be moved by the
      * specified offset)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param delta
      * The amount by which to move
@@ -121,7 +121,7 @@ export class Selection {
      * all of the volumes within the selection to be moved to a
      * location relative to the world location)
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param location
      * The world location to which to relocate the selection
@@ -136,7 +136,7 @@ export class Selection {
      * that was pushed to the volume stack without affecting the
      * stack itself
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param forceRelativity
      * See the description for {@link
@@ -152,7 +152,7 @@ export class Selection {
      * Remove the volume information that was last pushed to the
      * volume stack.  This will reduce the stack item length by 1
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -162,7 +162,7 @@ export class Selection {
      * Push a compound volume item (a volume and action pair) to
      * the volume stack.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param item
      * Item to push to the stack
@@ -177,7 +177,7 @@ export class Selection {
      * target selection - it does this by content, not by
      * reference.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param other
      * {@link minecraftserver.CompoundBlockVolume} - set the block
@@ -194,7 +194,7 @@ export class Selection {
      * Set the color of the hull of the selection object if it is
      * visible.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
@@ -204,7 +204,7 @@ export class Selection {
      * Set the color of the outline around the selection object if
      * it is visible
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */

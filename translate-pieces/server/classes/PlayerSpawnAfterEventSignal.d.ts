@@ -12,9 +12,9 @@ export class PlayerSpawnAfterEventSignal {
      * Registers a new event receiver for this particular type of
      * event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
@@ -23,9 +23,9 @@ export class PlayerSpawnAfterEventSignal {
      * @remarks
      * De-registers an event receiver for the player spawn event.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
-     * This function can be called in early-execution mode.
+     * @earlyExecution
      *
      */
     unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;

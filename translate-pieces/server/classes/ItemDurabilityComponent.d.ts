@@ -13,7 +13,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * @remarks
      * Returns the current damage level of this particular item.
      *
-     * This property can't be edited in read-only mode.
+     * @worldMutation
      *
      */
     damage: number;
@@ -32,7 +32,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * using the damageRange property, given an unbreaking
      * enchantment level.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @param unbreakingEnchantmentLevel
      * Unbreaking factor to consider in factoring the damage
@@ -47,7 +47,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * chance for an item. The damage chance will fall within this
      * range.
      *
-     * This function can't be called in read-only mode.
+     * @worldMutation
      *
      * @throws This function can throw errors.
      */
