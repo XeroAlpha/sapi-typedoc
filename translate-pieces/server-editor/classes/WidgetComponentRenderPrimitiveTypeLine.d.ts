@@ -19,5 +19,10 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
 }

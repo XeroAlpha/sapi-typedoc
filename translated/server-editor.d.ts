@@ -2446,17 +2446,44 @@ export class ExtensionContext {
  */
 export class ExtensionContextAfterEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly clipboardChange: ClipboardChangeAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly currentThemeChange: CurrentThemeChangeAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly currentThemeColorChange: CurrentThemeColorChangeAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     /**
      * @remarks
      * This event triggers when the editor mode changes for the
      * player.
      *
+     * @earlyExecution
+     *
      */
     readonly modeChange: ModeChangeAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly primarySelectionChange: PrimarySelectionChangeAfterEventSignal;
 }
 
@@ -2470,6 +2497,8 @@ export class GraphicsSettings {
      * @remarks
      * Retrieves a graphics settings property value.
      *
+     * @worldMutation
+     *
      * @param property
      * Property identifier.
      * @returns
@@ -2481,6 +2510,8 @@ export class GraphicsSettings {
      * @remarks
      * Retrieves all graphics settings properties and their values.
      *
+     * @worldMutation
+     *
      * @returns
      * Returns a property value map for all available properties.
      */
@@ -2488,6 +2519,8 @@ export class GraphicsSettings {
     /**
      * @remarks
      * Modifies a graphics settings property value.
+     *
+     * @worldMutation
      *
      * @param property
      * Property identifier.
@@ -2499,6 +2532,8 @@ export class GraphicsSettings {
     /**
      * @remarks
      * Modify multiple graphics settings properties.
+     *
+     * @worldMutation
      *
      * @param properties
      * Property map to set available property values. If the
@@ -2751,6 +2786,11 @@ export class PrimarySelectionChangedEvent {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(displayName?: string);
     /**
      * @remarks
@@ -3044,6 +3084,11 @@ export class SettingsUIElement {
     readonly name: string;
     readonly onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void;
     readonly options: SettingsUIElementOptions;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(
         name: string,
         initialValue: boolean | number | string | minecraftserver.Vector3,
@@ -3054,6 +3099,11 @@ export class SettingsUIElement {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class SimpleBlockPaletteItem extends IBlockPaletteItem {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(displayName?: string);
 }
 
@@ -3124,13 +3174,29 @@ export class SimulationState {
 
 export class SpeedSettings {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     get<T extends keyof SpeedSettingsPropertyTypeMap>(property: T): SpeedSettingsPropertyTypeMap[T] | undefined;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     getAll(): SpeedSettingsPropertyTypeMap;
     /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     set<T extends keyof SpeedSettingsPropertyTypeMap>(property: T, value: SpeedSettingsPropertyTypeMap[T]): void;
     /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     setAll(properties: SpeedSettingsPropertyTypeMap): void;
@@ -3865,6 +3931,11 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
      *
      */
     radius: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
 }
 
@@ -3893,6 +3964,11 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
@@ -3916,6 +3992,11 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
      *
      */
     radius: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
@@ -3939,6 +4020,11 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
 }
 

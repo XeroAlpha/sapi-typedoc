@@ -12,6 +12,8 @@ export class World {
      * of the world.  Event callbacks are called in a deferred
      * manner. Event callbacks are executed in read-write mode.
      *
+     * @earlyExecution
+     *
      */
     readonly afterEvents: WorldAfterEvents;
     /**
@@ -19,6 +21,8 @@ export class World {
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
      * callbacks are executed in read-only mode.
+     *
+     * @earlyExecution
      *
      * @seeExample customCommand.ts
      */

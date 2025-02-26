@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve as resolvePath } from 'path';
 import { ReflectionKind, RendererEvent } from 'typedoc';
-import { git } from '../utils.js';
+import { git, parsePackageVersion } from '../utils.js';
 import type { Hook } from './hook.js';
 
 const kindMap = [
@@ -182,17 +182,6 @@ function analyzeTranslateState() {
     return statusMap;
 }
 
-function extractVersionInfo(versionString: string) {
-    const match = /^([\d.]+-\w+)\.([\d.]+)-(\w+)(\.\d+)?$/.exec(versionString);
-    if (match) {
-        const [, version, gameVersion, gamePreRelease, gameBuild] = match;
-        if (gameBuild) {
-            return { version, gamePreRelease, gameVersion: gameVersion + gameBuild };
-        }
-        return { version, gamePreRelease, gameVersion };
-    }
-}
-
 const namespacePrefix = '@minecraft/';
 const stateDescMap: Record<(typeof statusList)[number], string> = {
     untranslated: '未翻译',
@@ -341,7 +330,7 @@ export default {
         Object.entries(dependencies).forEach(([moduleName, version]) => {
             if (!version) return;
             let versionString = version;
-            const versionInfo = extractVersionInfo(version);
+            const versionInfo = parsePackageVersion(version);
             if (versionInfo) {
                 if (!gameVersion) gameVersion = versionInfo.gameVersion;
                 versionString = versionInfo.version;

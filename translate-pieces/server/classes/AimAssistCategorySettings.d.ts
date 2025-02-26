@@ -36,6 +36,8 @@ export class AimAssistCategorySettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistCategory. Must have a namespace.
      *
+     * @worldMutation
+     *
      */
     constructor(identifier: string);
     /**
@@ -60,6 +62,8 @@ export class AimAssistCategorySettings {
      * @remarks
      * Sets the priority settings used for block targeting.
      *
+     * @worldMutation
+     *
      * @param blockPriorities
      * A record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
@@ -70,6 +74,8 @@ export class AimAssistCategorySettings {
     /**
      * @remarks
      * Sets the priority settings used for entity targeting.
+     *
+     * @worldMutation
      *
      * @param entityPriorities
      * A record mapping entity Ids to their priority settings.

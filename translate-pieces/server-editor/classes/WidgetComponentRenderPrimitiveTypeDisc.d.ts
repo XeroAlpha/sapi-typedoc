@@ -19,5 +19,10 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
      *
      */
     radius: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }

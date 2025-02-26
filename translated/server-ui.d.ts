@@ -336,6 +336,11 @@ export class UIManager {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class FormRejectError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     reason: FormRejectReason;
 }
 

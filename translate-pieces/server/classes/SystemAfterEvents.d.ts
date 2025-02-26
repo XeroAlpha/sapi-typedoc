@@ -12,6 +12,8 @@ export class SystemAfterEvents {
      * provides a way for commands and other systems to trigger
      * behavior within script.
      *
+     * @earlyExecution
+     *
      */
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
 }

@@ -171,7 +171,7 @@ export class Block {
      */
     bottomCenter(): Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -190,7 +190,7 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -258,6 +258,8 @@ export class Block {
      * Gets a component (that represents additional capabilities)
      * for a block - for example, an inventory component of a chest
      * block.
+     *
+     * @worldMutation
      *
      * @param componentId
      * The identifier of the component (e.g.,
@@ -350,7 +352,7 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -368,7 +370,18 @@ export class Block {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Returns whether liquid can flow into the block from the
+     * provided direction, or flow out from the provided direction
+     * when liquid is placed into it with a bucket.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether liquid can flow into the block from the provided
+     * direction, or flow out from the provided direction when
+     * liquid is placed into it with a bucket
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -379,7 +392,7 @@ export class Block {
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.

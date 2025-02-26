@@ -2163,8 +2163,23 @@ export interface MoveToOptions {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class GameTestError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     context?: GameTestErrorContext;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     messageParameters: string[];
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     type: GameTestErrorType;
 }
 

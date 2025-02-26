@@ -10,7 +10,7 @@ export class HttpHeader {
      * @remarks
      * Key of the HTTP header.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     key: string;
@@ -18,9 +18,14 @@ export class HttpHeader {
      * @remarks
      * Value of the HTTP header.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     value: minecraftserveradmin.SecretString | string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(key: string, value: minecraftserveradmin.SecretString | string);
 }

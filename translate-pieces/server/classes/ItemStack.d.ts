@@ -83,6 +83,8 @@ export class ItemStack {
      * Creates a new instance of a stack of items for use in the
      * world.
      *
+     * @worldMutation
+     *
      * @param itemType
      * Type of item to create. See the {@link
      * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
@@ -135,6 +137,8 @@ export class ItemStack {
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an item stack.
+     *
+     * @worldMutation
      *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If

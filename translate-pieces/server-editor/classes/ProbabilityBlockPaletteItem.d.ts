@@ -1,6 +1,11 @@
 /* IMPORT */ import { IBlockPaletteItem, WeightedBlock, minecraftcommon, minecraftserver } from '../index';
 
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(displayName?: string);
     /**
      * @remarks

@@ -46,6 +46,11 @@ export class BlockVolume extends BlockVolumeBase {
      *
      */
     to: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(from: Vector3, to: Vector3);
     /**
      * @remarks

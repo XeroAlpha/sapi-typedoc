@@ -152,6 +152,22 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * For this player, removes all overrides of any Entity
+     * Properties on the target Entity. This change is not applied
+     * until the next tick and will not apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property overrides are being
+     * cleared.
+     * @throws
+     * Throws if the entity is invalid.
+     */
+    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    /**
+     * @beta
+     * @remarks
      * Eats an item, providing the item's hunger and saturation
      * effects to the player. Can only be used on food items.
      *
@@ -266,6 +282,26 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
+     * @beta
+     * @remarks
+     * For this player, removes the override on an Entity Property.
+     * This change is not applied until the next tick and will not
+     * apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property override is being removed.
+     * @param identifier
+     * The Entity Property identifier.
+     * @throws
+     * Throws if the entity is invalid.
+     * Throws if an invalid identifier is provided.
+     * Throws if the provided value type does not match the
+     * property type.
+     */
+    removePropertyOverrideForEntity(targetEntity: Entity, identifier: string): void;
+    /**
      * @remarks
      * Resets the level of the player.
      *
@@ -314,6 +350,34 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
+     * @beta
+     * @remarks
+     * For this player, overrides an Entity Property on the target
+     * Entity to the provided value. This property must be client
+     * synced. This change is not applied until the next tick and
+     * will not apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property is being overriden.
+     * @param identifier
+     * The Entity Property identifier.
+     * @param value
+     * The override value. The provided type must be compatible
+     * with the type specified in the entity's definition.
+     * @throws
+     * Throws if the entity is invalid.
+     * Throws if an invalid identifier is provided.
+     * Throws if the provided value type does not match the
+     * property type.
+     * Throws if the provided value is outside the expected range
+     * (int, float properties).
+     * Throws if the provided string value does not match the set
+     * of accepted enum values (enum properties)
+     */
+    setPropertyOverrideForEntity(targetEntity: Entity, identifier: string, value: boolean | number | string): void;
+    /**
      * @remarks
      * Sets the current starting spawn point for this particular
      * player.
@@ -328,7 +392,7 @@ export class Player extends Entity {
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Creates a new particle emitter at a specified location in
      * the world. Only visible to the target player.

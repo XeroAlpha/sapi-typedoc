@@ -10,6 +10,8 @@ export class GraphicsSettings {
      * @remarks
      * Retrieves a graphics settings property value.
      *
+     * @worldMutation
+     *
      * @param property
      * Property identifier.
      * @returns
@@ -21,6 +23,8 @@ export class GraphicsSettings {
      * @remarks
      * Retrieves all graphics settings properties and their values.
      *
+     * @worldMutation
+     *
      * @returns
      * Returns a property value map for all available properties.
      */
@@ -28,6 +32,8 @@ export class GraphicsSettings {
     /**
      * @remarks
      * Modifies a graphics settings property value.
+     *
+     * @worldMutation
      *
      * @param property
      * Property identifier.
@@ -39,6 +45,8 @@ export class GraphicsSettings {
     /**
      * @remarks
      * Modify multiple graphics settings properties.
+     *
+     * @worldMutation
      *
      * @param properties
      * Property map to set available property values. If the

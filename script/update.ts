@@ -5,7 +5,15 @@ import type { PackageJson } from 'type-fest';
 import { build } from './build.js';
 import runHooks from './hooks.js';
 import { split, writePiece } from './split.js';
-import { basePath, originalPath, translatedPath, translatingPath } from './utils.js';
+import {
+    basePath,
+    comparePackageVersion,
+    originalPath,
+    parsePackageVersion,
+    translatedPath,
+    translatingPath,
+    type PackageVersion
+} from './utils.js';
 
 const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
 
@@ -48,6 +56,8 @@ export async function update(keepCachedPackageJson?: boolean) {
     if (existsSync(originalNodeModulesDir)) {
         rmSync(originalNodeModulesDir, { recursive: true, force: true });
     }
+    const packageInfoData = readFileSync(packageInfoPath);
+    const packageInfo = JSON.parse(packageInfoData.toString('utf-8')) as PackageJson;
 
     // 不使用翻译构建项目
     const buildResult = await build(false);
@@ -57,6 +67,45 @@ export async function update(keepCachedPackageJson?: boolean) {
     const missingDependencies = onlinePackageNames.filter((packageName) => !(packageName in dependencies));
     if (missingDependencies.length > 0 && missingDependencies.length <= 5) {
         throw new Error(`Missing dependencies: ${missingDependencies.join(',')}`);
+    }
+
+    if (!keepCachedPackageJson) {
+        const cacheDependencyOverwrite: Record<string, string> = {};
+        for (const [dependencyName, depVersion] of Object.entries(dependencies)) {
+            if (!depVersion) continue;
+            const requiredVersion = packageInfo.dependencies?.[dependencyName];
+            const parsedVersion = parsePackageVersion(depVersion);
+            if (requiredVersion === 'beta' && parsedVersion?.gamePreRelease !== 'preview') {
+                // 强制所有指定 beta 标签的包使用 preview 分支
+                const onlineVersionNames = JSON.parse(
+                    execSync(`npm view --json ${dependencyName} versions`, { encoding: 'utf-8' })
+                ) as string[];
+                const onlineVersions = onlineVersionNames
+                    .map((e) => [e, parsePackageVersion(e)] as const)
+                    .filter((e): e is [string, PackageVersion] => e[1] !== undefined)
+                    .sort((a, b) => comparePackageVersion(a[1], b[1]));
+                const selected = onlineVersions[onlineVersions.length - 1];
+                console.log(
+                    `Package ${dependencyName} uses a stable version ${depVersion}, which will be replaced by ${selected[0]}.`
+                );
+                cacheDependencyOverwrite[dependencyName] = selected[0];
+            }
+        }
+        if (Object.keys(cacheDependencyOverwrite).length > 0) {
+            writeFileSync(
+                packageSnapshotPath,
+                JSON.stringify(
+                    {
+                        ...packageInfo,
+                        dependencies: { ...dependencies, ...cacheDependencyOverwrite }
+                    },
+                    null,
+                    2
+                )
+            );
+            await update(true);
+            return;
+        }
     }
 
     // 按类切分文件
@@ -70,6 +119,5 @@ export async function update(keepCachedPackageJson?: boolean) {
     await runHooks('afterUpdate', buildResult);
 
     // 生成 package.json 快照
-    const packageInfo = JSON.parse(readFileSync(packageInfoPath, 'utf-8')) as PackageJson;
     writeFileSync(packageSnapshotPath, JSON.stringify({ ...packageInfo, dependencies }, null, 2));
 }
