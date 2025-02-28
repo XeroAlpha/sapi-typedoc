@@ -8,5 +8,10 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class NamespaceNameError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     reason: NamespaceNameErrorReason;
 }

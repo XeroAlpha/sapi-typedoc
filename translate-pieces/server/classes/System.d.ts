@@ -10,6 +10,8 @@ export class System {
      * Returns a collection of after-events for system-level
      * operations.
      *
+     * @earlyExecution
+     *
      */
     readonly afterEvents: SystemAfterEvents;
     /**
@@ -18,11 +20,15 @@ export class System {
      * Returns a collection of before-events for system-level
      * operations.
      *
+     * @earlyExecution
+     *
      */
     readonly beforeEvents: SystemBeforeEvents;
     /**
      * @remarks
      * Represents the current world tick of the server.
+     *
+     * @earlyExecution
      *
      */
     readonly currentTick: number;
@@ -32,11 +38,15 @@ export class System {
      * Returns true if this is a world where the editor is
      * currently loaded, returns false otherwise.
      *
+     * @earlyExecution
+     *
      */
     readonly isEditorWorld: boolean;
     /**
      * @remarks
      * Contains the device information for the server.
+     *
+     * @earlyExecution
      *
      */
     readonly serverSystemInfo: SystemInfo;

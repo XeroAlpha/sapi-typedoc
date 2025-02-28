@@ -1880,7 +1880,7 @@ export enum ItemLockMode {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the type of liquid that can be placed on a block
  * or flow dynamically in the world.
  */
@@ -2417,6 +2417,7 @@ export enum TimeOfDay {
 export enum TintMethod {
     BirchFoliage = 'BirchFoliage',
     DefaultFoliage = 'DefaultFoliage',
+    DryFoliage = 'DryFoliage',
     EvergreenFoliage = 'EvergreenFoliage',
     Grass = 'Grass',
     None = 'None',
@@ -2755,6 +2756,8 @@ export class AimAssistCategorySettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistCategory. Must have a namespace.
      *
+     * @worldMutation
+     *
      */
     constructor(identifier: string);
     /**
@@ -2779,6 +2782,8 @@ export class AimAssistCategorySettings {
      * @remarks
      * Sets the priority settings used for block targeting.
      *
+     * @worldMutation
+     *
      * @param blockPriorities
      * A record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
@@ -2789,6 +2794,8 @@ export class AimAssistCategorySettings {
     /**
      * @remarks
      * Sets the priority settings used for entity targeting.
+     *
+     * @worldMutation
      *
      * @param entityPriorities
      * A record mapping entity Ids to their priority settings.
@@ -2903,6 +2910,8 @@ export class AimAssistPresetSettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistPreset. Must have a namespace.
      *
+     * @worldMutation
+     *
      */
     constructor(identifier: string);
     /**
@@ -2936,6 +2945,8 @@ export class AimAssistPresetSettings {
      * Sets the list of block/entity Ids to exclude from aim assist
      * targeting.
      *
+     * @worldMutation
+     *
      * @param targets
      * An array of block/entity Ids.
      */
@@ -2950,6 +2961,8 @@ export class AimAssistPresetSettings {
      * @remarks
      * Sets the per-item aim-assist category Ids.
      *
+     * @worldMutation
+     *
      * @param itemSettings
      * A record mapping item Ids to aim-assist category Ids.
      * Category Ids must have a namespace.
@@ -2959,6 +2972,8 @@ export class AimAssistPresetSettings {
      * @remarks
      * Sets the list of item Ids that will target liquid blocks
      * with aim-assist when being held.
+     *
+     * @worldMutation
      *
      * @param items
      * An array of item Ids.
@@ -3323,7 +3338,7 @@ export class Block {
      */
     bottomCenter(): Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -3342,7 +3357,7 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -3464,6 +3479,8 @@ export class Block {
      * Gets a component (that represents additional capabilities)
      * for a block - for example, an inventory component of a chest
      * block.
+     *
+     * @worldMutation
      *
      * @param componentId
      * 组件的标识符 （例如 'minecraft:inventory'）。
@@ -3588,7 +3605,7 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -3606,7 +3623,18 @@ export class Block {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Returns whether liquid can flow into the block from the
+     * provided direction, or flow out from the provided direction
+     * when liquid is placed into it with a bucket.
+     *
+     * @param liquidType
+     * The type of liquid this function should be called for.
+     * @returns
+     * Whether liquid can flow into the block from the provided
+     * direction, or flow out from the provided direction when
+     * liquid is placed into it with a bucket
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -3617,7 +3645,7 @@ export class Block {
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.
@@ -4290,7 +4318,7 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -4305,7 +4333,7 @@ export class BlockPermutation {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -4344,6 +4372,8 @@ export class BlockPermutation {
      * @remarks
      * Gets a state for the permutation.
      *
+     * @worldMutation
+     *
      * @param stateName
      * Name of the block state who's value is to be returned.
      * @returns
@@ -4369,7 +4399,7 @@ export class BlockPermutation {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -4383,7 +4413,7 @@ export class BlockPermutation {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.
@@ -4404,6 +4434,8 @@ export class BlockPermutation {
      * this permutation. If states is not specified, matches checks
      * against the set of types more broadly.
      *
+     * @worldMutation
+     *
      * @param blockName
      * An optional set of states to compare against.
      */
@@ -4415,6 +4447,8 @@ export class BlockPermutation {
      * @remarks
      * Returns a derived BlockPermutation with a specific property
      * set.
+     *
+     * @worldMutation
      *
      * @param name
      * Identifier of the block property.
@@ -4431,6 +4465,8 @@ export class BlockPermutation {
      * Given a type identifier and an optional set of properties,
      * will return a BlockPermutation object that is usable in
      * other block APIs (e.g., block.setPermutation)
+     *
+     * @worldMutation
      *
      * @param blockName
      * Identifier of the block to check.
@@ -4781,6 +4817,11 @@ export class BlockVolume extends BlockVolumeBase {
      *
      */
     to: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(from: Vector3, to: Vector3);
     /**
      * @remarks
@@ -5351,6 +5392,8 @@ export class CompoundBlockVolume {
     /**
      * @remarks
      * Create a CompoundBlockVolume object
+     *
+     * @worldMutation
      *
      * @param origin
      * An optional world space origin on which to center the
@@ -6920,6 +6963,9 @@ export class EnchantmentType {
      */
     readonly maxLevel: number;
     /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     constructor(enchantmentType: string);
@@ -7231,6 +7277,8 @@ export class Entity {
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an entity.
+     *
+     * @worldMutation
      *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:health').
@@ -11566,6 +11614,8 @@ export class ItemStack {
      * Creates a new instance of a stack of items for use in the
      * world.
      *
+     * @worldMutation
+     *
      * @param itemType
      * Type of item to create. See the {@link
      * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
@@ -11618,6 +11668,8 @@ export class ItemStack {
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for an item stack.
+     *
+     * @worldMutation
      *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
@@ -12425,6 +12477,8 @@ export class ListBlockVolume extends BlockVolumeBase {
      * @remarks
      * Creates a new instance of ListBlockVolume.
      *
+     * @worldMutation
+     *
      * @param locations
      * Initial array of block locations that ListBlockVolume will
      * be constructed with.
@@ -12744,6 +12798,22 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
+     * For this player, removes all overrides of any Entity
+     * Properties on the target Entity. This change is not applied
+     * until the next tick and will not apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property overrides are being
+     * cleared.
+     * @throws
+     * Throws if the entity is invalid.
+     */
+    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    /**
+     * @beta
+     * @remarks
      * Eats an item, providing the item's hunger and saturation
      * effects to the player. Can only be used on food items.
      *
@@ -12858,6 +12928,26 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
+     * @beta
+     * @remarks
+     * For this player, removes the override on an Entity Property.
+     * This change is not applied until the next tick and will not
+     * apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property override is being removed.
+     * @param identifier
+     * The Entity Property identifier.
+     * @throws
+     * Throws if the entity is invalid.
+     * Throws if an invalid identifier is provided.
+     * Throws if the provided value type does not match the
+     * property type.
+     */
+    removePropertyOverrideForEntity(targetEntity: Entity, identifier: string): void;
+    /**
      * @remarks
      * Resets the level of the player.
      *
@@ -12906,6 +12996,34 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
+     * @beta
+     * @remarks
+     * For this player, overrides an Entity Property on the target
+     * Entity to the provided value. This property must be client
+     * synced. This change is not applied until the next tick and
+     * will not apply to other players.
+     *
+     * @worldMutation
+     *
+     * @param targetEntity
+     * The Entity whose Entity Property is being overriden.
+     * @param identifier
+     * The Entity Property identifier.
+     * @param value
+     * The override value. The provided type must be compatible
+     * with the type specified in the entity's definition.
+     * @throws
+     * Throws if the entity is invalid.
+     * Throws if an invalid identifier is provided.
+     * Throws if the provided value type does not match the
+     * property type.
+     * Throws if the provided value is outside the expected range
+     * (int, float properties).
+     * Throws if the provided string value does not match the set
+     * of accepted enum values (enum properties)
+     */
+    setPropertyOverrideForEntity(targetEntity: Entity, identifier: string, value: boolean | number | string): void;
+    /**
      * @remarks
      * Sets the current starting spawn point for this particular
      * player.
@@ -12920,7 +13038,7 @@ export class Player extends Entity {
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Creates a new particle emitter at a specified location in
      * the world. Only visible to the target player.
@@ -15202,7 +15320,17 @@ export class StartupBeforeEventSignal {
  */
 export class StartupEvent {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly blockComponentRegistry: BlockComponentRegistry;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
@@ -15576,6 +15704,8 @@ export class System {
      * Returns a collection of after-events for system-level
      * operations.
      *
+     * @earlyExecution
+     *
      */
     readonly afterEvents: SystemAfterEvents;
     /**
@@ -15584,11 +15714,15 @@ export class System {
      * Returns a collection of before-events for system-level
      * operations.
      *
+     * @earlyExecution
+     *
      */
     readonly beforeEvents: SystemBeforeEvents;
     /**
      * @remarks
      * Represents the current world tick of the server.
+     *
+     * @earlyExecution
      *
      */
     readonly currentTick: number;
@@ -15598,11 +15732,15 @@ export class System {
      * Returns true if this is a world where the editor is
      * currently loaded, returns false otherwise.
      *
+     * @earlyExecution
+     *
      */
     readonly isEditorWorld: boolean;
     /**
      * @remarks
      * Contains the device information for the server.
+     *
+     * @earlyExecution
      *
      */
     readonly serverSystemInfo: SystemInfo;
@@ -15753,6 +15891,8 @@ export class SystemAfterEvents {
      * provides a way for commands and other systems to trigger
      * behavior within script.
      *
+     * @earlyExecution
+     *
      */
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
 }
@@ -15767,7 +15907,17 @@ export class SystemAfterEvents {
  */
 export class SystemBeforeEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly shutdown: ShutdownBeforeEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly startup: StartupBeforeEventSignal;
     /**
      * @remarks
@@ -15776,6 +15926,8 @@ export class SystemBeforeEvents {
      * significant slowdown or hang.
      * To prevent shutdown, set the event's cancel property to
      * true.
+     *
+     * @earlyExecution
      *
      */
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
@@ -15870,6 +16022,8 @@ export class Trigger {
     /**
      * @remarks
      * Creates a new trigger.
+     *
+     * @worldMutation
      *
      */
     constructor(eventName: string);
@@ -16114,6 +16268,8 @@ export class World {
      * of the world.  Event callbacks are called in a deferred
      * manner. Event callbacks are executed in read-write mode.
      *
+     * @earlyExecution
+     *
      */
     readonly afterEvents: WorldAfterEvents;
     /**
@@ -16121,6 +16277,8 @@ export class World {
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
      * callbacks are executed in read-only mode.
+     *
+     * @earlyExecution
      *
      * @seeExample customCommand.ts
      */
@@ -16508,11 +16666,15 @@ export class WorldAfterEvents {
      * explosion. It is fired after the blocks have already been
      * destroyed.
      *
+     * @earlyExecution
+     *
      */
     readonly blockExplode: BlockExplodeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a button is pushed.
+     *
+     * @earlyExecution
      *
      */
     readonly buttonPush: ButtonPushAfterEventSignal;
@@ -16522,6 +16684,8 @@ export class WorldAfterEvents {
      * This event is triggered after a chat message has been
      * broadcast or sent to players.
      *
+     * @earlyExecution
+     *
      */
     readonly chatSend: ChatSendAfterEventSignal;
     /**
@@ -16530,6 +16694,8 @@ export class WorldAfterEvents {
      * that will update the component definition state of an
      * entity.
      *
+     * @earlyExecution
+     *
      */
     readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     /**
@@ -16537,17 +16703,23 @@ export class WorldAfterEvents {
      * This event fires when an effect, like poisoning, is added to
      * an entity.
      *
+     * @earlyExecution
+     *
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
      * @remarks
      * This event fires when an entity dies.
      *
+     * @earlyExecution
+     *
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
      * @remarks
      * This event fires when entity health changes in any degree.
+     *
+     * @earlyExecution
      *
      */
     readonly entityHealthChanged: EntityHealthChangedAfterEventSignal;
@@ -16556,6 +16728,8 @@ export class WorldAfterEvents {
      * This event fires when an entity hits (that is, melee
      * attacks) a block.
      *
+     * @earlyExecution
+     *
      */
     readonly entityHitBlock: EntityHitBlockAfterEventSignal;
     /**
@@ -16563,17 +16737,23 @@ export class WorldAfterEvents {
      * This event fires when an entity hits (that is, melee
      * attacks) another entity.
      *
+     * @earlyExecution
+     *
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
+     * @earlyExecution
+     *
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
      * @remarks
      * Fires when an entity is loaded.
+     *
+     * @earlyExecution
      *
      */
     readonly entityLoad: EntityLoadAfterEventSignal;
@@ -16582,17 +16762,23 @@ export class WorldAfterEvents {
      * Fires when an entity is removed (for example, potentially
      * unloaded, or removed after being killed).
      *
+     * @earlyExecution
+     *
      */
     readonly entityRemove: EntityRemoveAfterEventSignal;
     /**
      * @remarks
      * This event fires when an entity is spawned.
      *
+     * @earlyExecution
+     *
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.
+     *
+     * @earlyExecution
      *
      */
     readonly explosion: ExplosionAfterEventSignal;
@@ -16601,11 +16787,15 @@ export class WorldAfterEvents {
      * This event fires when a world.gameRules property has
      * changed.
      *
+     * @earlyExecution
+     *
      */
     readonly gameRuleChange: GameRuleChangeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a chargeable item completes charging.
+     *
+     * @earlyExecution
      *
      */
     readonly itemCompleteUse: ItemCompleteUseAfterEventSignal;
@@ -16614,11 +16804,15 @@ export class WorldAfterEvents {
      * This event fires when a chargeable item is released from
      * charging.
      *
+     * @earlyExecution
+     *
      */
     readonly itemReleaseUse: ItemReleaseUseAfterEventSignal;
     /**
      * @remarks
      * This event fires when a chargeable item starts charging.
+     *
+     * @earlyExecution
      *
      */
     readonly itemStartUse: ItemStartUseAfterEventSignal;
@@ -16630,11 +16824,15 @@ export class WorldAfterEvents {
      * occur once at the beginning of the block placement. Note:
      * This event cannot be used with Hoe or Axe items.
      *
+     * @earlyExecution
+     *
      */
     readonly itemStartUseOn: ItemStartUseOnAfterEventSignal;
     /**
      * @remarks
      * This event fires when a chargeable item stops charging.
+     *
+     * @earlyExecution
      *
      */
     readonly itemStopUse: ItemStopUseAfterEventSignal;
@@ -16644,12 +16842,16 @@ export class WorldAfterEvents {
      * Block button after successfully using an item. Note: This
      * event cannot be used with Hoe or Axe items.
      *
+     * @earlyExecution
+     *
      */
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
     /**
      * @remarks
      * This event fires when an item is successfully used by a
      * player.
+     *
+     * @earlyExecution
      *
      */
     readonly itemUse: ItemUseAfterEventSignal;
@@ -16658,11 +16860,15 @@ export class WorldAfterEvents {
      * This event fires when an item is used on a block by a
      * player.
      *
+     * @earlyExecution
+     *
      */
     readonly itemUseOn: ItemUseOnAfterEventSignal;
     /**
      * @remarks
      * A lever has been pulled.
+     *
+     * @earlyExecution
      *
      */
     readonly leverAction: LeverActionAfterEventSignal;
@@ -16672,17 +16878,23 @@ export class WorldAfterEvents {
      * This event is an internal implementation detail, and is
      * otherwise not currently functional.
      *
+     * @earlyExecution
+     *
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
     /**
      * @remarks
      * This event fires when a piston expands or retracts.
      *
+     * @earlyExecution
+     *
      */
     readonly pistonActivate: PistonActivateAfterEventSignal;
     /**
      * @remarks
      * This event fires for a block that is broken by a player.
+     *
+     * @earlyExecution
      *
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
@@ -16692,19 +16904,35 @@ export class WorldAfterEvents {
      * This event fires when an {@link InputButton} state is
      * changed.
      *
+     * @earlyExecution
+     *
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     /**
      * @remarks
      * Fires when a player moved to a different dimension.
      *
+     * @earlyExecution
+     *
      */
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly playerEmote: PlayerEmoteAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player's {@link InputMode} changes.
+     *
+     * @earlyExecution
      *
      */
     readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
@@ -16712,17 +16940,23 @@ export class WorldAfterEvents {
      * @remarks
      * This event fires when a players input permissions change.
      *
+     * @earlyExecution
+     *
      */
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     /**
      * @remarks
      * An event for when a player interacts with a block.
      *
+     * @earlyExecution
+     *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player interacts with an entity.
+     *
+     * @earlyExecution
      *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
@@ -16732,17 +16966,23 @@ export class WorldAfterEvents {
      * playerSpawn for another related event you can trap for when
      * a player is spawned the first time within a world.
      *
+     * @earlyExecution
+     *
      */
     readonly playerJoin: PlayerJoinAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player leaves a world.
      *
+     * @earlyExecution
+     *
      */
     readonly playerLeave: PlayerLeaveAfterEventSignal;
     /**
      * @remarks
      * This event fires for a block that is placed by a player.
+     *
+     * @earlyExecution
      *
      */
     readonly playerPlaceBlock: PlayerPlaceBlockAfterEventSignal;
@@ -16752,12 +16992,16 @@ export class WorldAfterEvents {
      * an additional flag within this event will tell you whether
      * the player is spawning right after join vs. a respawn.
      *
+     * @earlyExecution
+     *
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
      * @remarks
      * A pressure plate has popped back up (i.e., there are no
      * entities on the pressure plate.)
+     *
+     * @earlyExecution
      *
      */
     readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
@@ -16766,11 +17010,15 @@ export class WorldAfterEvents {
      * A pressure plate has pushed (at least one entity has moved
      * onto a pressure plate.)
      *
+     * @earlyExecution
+     *
      */
     readonly pressurePlatePush: PressurePlatePushAfterEventSignal;
     /**
      * @remarks
      * This event fires when a projectile hits a block.
+     *
+     * @earlyExecution
      *
      */
     readonly projectileHitBlock: ProjectileHitBlockAfterEventSignal;
@@ -16778,17 +17026,23 @@ export class WorldAfterEvents {
      * @remarks
      * This event fires when a projectile hits an entity.
      *
+     * @earlyExecution
+     *
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
      * @remarks
      * A target block was hit.
      *
+     * @earlyExecution
+     *
      */
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
     /**
      * @remarks
      * A trip wire was tripped.
+     *
+     * @earlyExecution
      *
      */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
@@ -16797,10 +17051,15 @@ export class WorldAfterEvents {
      * This event will be triggered when the weather changes within
      * Minecraft.
      *
+     * @earlyExecution
+     *
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
      * @beta
+     * @remarks
+     * @earlyExecution
+     *
      */
     readonly worldLoad: WorldLoadAfterEventSignal;
 }
@@ -16824,6 +17083,8 @@ export class WorldBeforeEvents {
      * This event is triggered after a chat message has been
      * broadcast or sent to players.
      *
+     * @earlyExecution
+     *
      * @seeExample customCommand.ts
      */
     readonly chatSend: ChatSendBeforeEventSignal;
@@ -16832,6 +17093,8 @@ export class WorldBeforeEvents {
      * This event is triggered after an event has been added to an
      * entity.
      *
+     * @earlyExecution
+     *
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
@@ -16839,11 +17102,15 @@ export class WorldBeforeEvents {
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
      *
+     * @earlyExecution
+     *
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.
+     *
+     * @earlyExecution
      *
      */
     readonly explosion: ExplosionBeforeEventSignal;
@@ -16852,6 +17119,8 @@ export class WorldBeforeEvents {
      * This event fires when an item is successfully used by a
      * player.
      *
+     * @earlyExecution
+     *
      */
     readonly itemUse: ItemUseBeforeEventSignal;
     /**
@@ -16859,18 +17128,29 @@ export class WorldBeforeEvents {
      * This event fires when an item is used on a block by a
      * player.
      *
+     * @earlyExecution
+     *
      */
     readonly itemUseOn: ItemUseOnBeforeEventSignal;
     /**
      * @remarks
      * This event fires before a block is broken by a player.
      *
+     * @earlyExecution
+     *
      */
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     /**
      * @remarks
      * Fires before a player interacts with a block.
+     *
+     * @earlyExecution
      *
      */
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
@@ -16878,11 +17158,15 @@ export class WorldBeforeEvents {
      * @remarks
      * Fires before a player interacts with an entity.
      *
+     * @earlyExecution
+     *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
      * @remarks
      * Fires when a player leaves the game.
+     *
+     * @earlyExecution
      *
      */
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
@@ -16891,8 +17175,15 @@ export class WorldBeforeEvents {
      * @remarks
      * This event fires before a block is placed by a player.
      *
+     * @earlyExecution
+     *
      */
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
 }
 
@@ -17285,14 +17576,22 @@ export interface CameraFadeTimeOptions {
 }
 
 /**
- * @beta
- *
- * Required Experiments:
- * - Third Person Cameras
- *
+ * Options to control pivot points and offsets of the third
+ * person boom preset.
  */
 export interface CameraFixedBoomOptions {
+    /**
+     * @remarks
+     * Changes the pivot point to be <x, y, z> away from the
+     * player.
+     *
+     */
     entityOffset?: Vector3;
+    /**
+     * @remarks
+     * Offsets the camera from center by <x, y>.
+     *
+     */
     viewOffset?: Vector2;
 }
 
@@ -18744,6 +19043,11 @@ export class CustomComponentInvalidRegistryError extends Error {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class CustomComponentNameError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     reason: CustomComponentNameErrorReason;
 }
 
@@ -18782,11 +19086,15 @@ export class InvalidEntityError extends Error {
      * @remarks
      * The id of the entity that is now invalid.
      *
+     * @earlyExecution
+     *
      */
     id: string;
     /**
      * @remarks
      * The type of the entity that is now invalid.
+     *
+     * @earlyExecution
      *
      */
     type: string;
@@ -18870,6 +19178,11 @@ export class LocationOutOfWorldBoundariesError extends Error {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class NamespaceNameError extends Error {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     reason: NamespaceNameErrorReason;
 }
 

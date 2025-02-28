@@ -11,11 +11,15 @@ export class InternalHttpRequestError extends Error {
      * @remarks
      * The platform-provided numeric error code for the error.
      *
+     * @earlyExecution
+     *
      */
     code: number;
     /**
      * @remarks
      * The platform-provided message for the error.
+     *
+     * @earlyExecution
      *
      */
     message: string;

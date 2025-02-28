@@ -281,6 +281,8 @@ export class Entity {
      * Gets a component (that represents additional capabilities)
      * for an entity.
      *
+     * @worldMutation
+     *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:health').
      * If no namespace prefix is specified, 'minecraft:' is

@@ -370,7 +370,7 @@ export class HttpHeader {
      * 
      * Key of the HTTP header.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     key: string;
@@ -380,10 +380,15 @@ export class HttpHeader {
      * 
      * Value of the HTTP header.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     value: minecraftserveradmin.SecretString | string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(key: string, value: minecraftserveradmin.SecretString | string);
 }
 
@@ -400,7 +405,7 @@ export class HttpRequest {
      * 
      * Content of the body of the HTTP request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     body: string;
@@ -410,7 +415,7 @@ export class HttpRequest {
      * 
      * A collection of HTTP headers to add to the outbound request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     headers: HttpHeader[];
@@ -421,7 +426,7 @@ export class HttpRequest {
      * HTTP method (e.g., GET or PUT or PATCH) to use for making
      * the request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     method: HttpRequestMethod;
@@ -432,7 +437,7 @@ export class HttpRequest {
      * Amount of time, in seconds, before the request times out and
      * is abandoned.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     timeout: number;
@@ -442,10 +447,15 @@ export class HttpRequest {
      * 
      * The HTTP resource to access.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     uri: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(uri: string);
     /**
      * @remarks
@@ -546,7 +556,17 @@ export class HttpResponse {
 
 export class NetworkBeforeEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly packetReceive: PacketReceiveBeforeEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly packetSend: PacketSendBeforeEventSignal;
 }
 
@@ -679,11 +699,15 @@ export class InternalHttpRequestError extends Error {
      * @remarks
      * The platform-provided numeric error code for the error.
      *
+     * @earlyExecution
+     *
      */
     code: number;
     /**
      * @remarks
      * The platform-provided message for the error.
+     *
+     * @earlyExecution
      *
      */
     message: string;

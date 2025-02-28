@@ -13,7 +13,7 @@ export class HttpRequest {
      * 
      * Content of the body of the HTTP request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     body: string;
@@ -23,7 +23,7 @@ export class HttpRequest {
      * 
      * A collection of HTTP headers to add to the outbound request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     headers: HttpHeader[];
@@ -34,7 +34,7 @@ export class HttpRequest {
      * HTTP method (e.g., GET or PUT or PATCH) to use for making
      * the request.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     method: HttpRequestMethod;
@@ -45,7 +45,7 @@ export class HttpRequest {
      * Amount of time, in seconds, before the request times out and
      * is abandoned.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     timeout: number;
@@ -55,10 +55,15 @@ export class HttpRequest {
      * 
      * The HTTP resource to access.
      *
-     * This property can be used in early-execution mode.
+     * @earlyExecution
      *
      */
     uri: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     constructor(uri: string);
     /**
      * @remarks

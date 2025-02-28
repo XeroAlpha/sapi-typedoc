@@ -16,7 +16,7 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -31,7 +31,7 @@ export class BlockPermutation {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -70,6 +70,8 @@ export class BlockPermutation {
      * @remarks
      * Gets a state for the permutation.
      *
+     * @worldMutation
+     *
      * @param stateName
      * Name of the block state who's value is to be returned.
      * @returns
@@ -95,7 +97,7 @@ export class BlockPermutation {
      */
     hasTag(tag: string): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -109,7 +111,7 @@ export class BlockPermutation {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.
@@ -130,6 +132,8 @@ export class BlockPermutation {
      * this permutation. If states is not specified, matches checks
      * against the set of types more broadly.
      *
+     * @worldMutation
+     *
      * @param blockName
      * An optional set of states to compare against.
      */
@@ -141,6 +145,8 @@ export class BlockPermutation {
      * @remarks
      * Returns a derived BlockPermutation with a specific property
      * set.
+     *
+     * @worldMutation
      *
      * @param name
      * Identifier of the block property.
@@ -157,6 +163,8 @@ export class BlockPermutation {
      * Given a type identifier and an optional set of properties,
      * will return a BlockPermutation object that is usable in
      * other block APIs (e.g., block.setPermutation)
+     *
+     * @worldMutation
      *
      * @param blockName
      * Identifier of the block to check.

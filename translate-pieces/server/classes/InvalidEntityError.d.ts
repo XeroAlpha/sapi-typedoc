@@ -9,11 +9,15 @@ export class InvalidEntityError extends Error {
      * @remarks
      * The id of the entity that is now invalid.
      *
+     * @earlyExecution
+     *
      */
     id: string;
     /**
      * @remarks
      * The type of the entity that is now invalid.
+     *
+     * @earlyExecution
      *
      */
     type: string;

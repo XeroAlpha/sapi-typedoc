@@ -35,6 +35,8 @@ export class AimAssistPresetSettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistPreset. Must have a namespace.
      *
+     * @worldMutation
+     *
      */
     constructor(identifier: string);
     /**
@@ -68,6 +70,8 @@ export class AimAssistPresetSettings {
      * Sets the list of block/entity Ids to exclude from aim assist
      * targeting.
      *
+     * @worldMutation
+     *
      * @param targets
      * An array of block/entity Ids.
      */
@@ -82,6 +86,8 @@ export class AimAssistPresetSettings {
      * @remarks
      * Sets the per-item aim-assist category Ids.
      *
+     * @worldMutation
+     *
      * @param itemSettings
      * A record mapping item Ids to aim-assist category Ids.
      * Category Ids must have a namespace.
@@ -91,6 +97,8 @@ export class AimAssistPresetSettings {
      * @remarks
      * Sets the list of item Ids that will target liquid blocks
      * with aim-assist when being held.
+     *
+     * @worldMutation
      *
      * @param items
      * An array of item Ids.

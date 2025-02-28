@@ -1,4 +1,4 @@
-import { SyntaxKind, ts } from 'ts-morph';
+import { SyntaxKind, ts, type NodeParentType } from 'ts-morph';
 import type { Hook } from './hook.js';
 import { installLanguages, type TypeDocLanguages } from '../utils.js';
 
@@ -20,11 +20,56 @@ const TypeDocExtraTranslations: TypeDocLanguages = {
     }
 };
 
-const translateTexts = [
-    [`This function can't be called in read-only mode.`, '@worldMutation'],
-    [`This property can't be edited in read-only mode.`, '@worldMutation'],
-    [`This function can be called in early-execution mode.`, '@earlyExecution'],
-    [`This property can be edited in early-execution mode.`, '@earlyExecution']
+const FunctionLikeSyntaxKind = [SyntaxKind.Constructor, SyntaxKind.MethodDeclaration, SyntaxKind.FunctionDeclaration];
+const PropertyLikeSyntaxKind = [SyntaxKind.PropertyDeclaration];
+
+const translateTexts: {
+    from: string;
+    to: string;
+    matches?: (declaration: NodeParentType<ts.JSDoc>) => boolean;
+}[] = [
+    {
+        from: `This function can't be called in read-only mode.`,
+        to: '@worldMutation',
+        matches(declaration) {
+            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This property can't be used in read-only mode.`,
+        to: '@worldMutation',
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This property can't be edited in read-only mode.`,
+        to: '@worldMutation',
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This function can be called in early-execution mode.`,
+        to: '@earlyExecution',
+        matches(declaration) {
+            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This property can be read in early-execution mode.`,
+        to: '@earlyExecution',
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This property can be edited in early-execution mode.`,
+        to: '@earlyExecution',
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    }
 ];
 
 export default {
@@ -33,13 +78,16 @@ export default {
             const fullText = sourceFile.getFullText();
             const textChanges: ts.TextChange[] = [];
             const jsdocNodes = sourceFile.getDescendantsOfKind(SyntaxKind.JSDoc);
-            translateTexts.forEach(([from, to]) => {
+            translateTexts.forEach(({ from, to, matches }) => {
                 fullText.replaceAll(from, (match, offset: number) => {
-                    if (jsdocNodes.some((jsdocNode) => jsdocNode.containsRange(offset, offset + match.length))) {
-                        textChanges.push({
-                            span: { start: offset, length: match.length },
-                            newText: to
-                        });
+                    const relatedJsdoc = jsdocNodes.find((node) => node.containsRange(offset, offset + match.length));
+                    if (relatedJsdoc) {
+                        if (!matches || matches(relatedJsdoc.getParent())) {
+                            textChanges.push({
+                                span: { start: offset, length: match.length },
+                                newText: to
+                            });
+                        }
                     }
                     return '';
                 });

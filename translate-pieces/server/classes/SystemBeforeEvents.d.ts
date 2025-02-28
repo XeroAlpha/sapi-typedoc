@@ -10,7 +10,17 @@
  */
 export class SystemBeforeEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly shutdown: ShutdownBeforeEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly startup: StartupBeforeEventSignal;
     /**
      * @remarks
@@ -19,6 +29,8 @@ export class SystemBeforeEvents {
      * significant slowdown or hang.
      * To prevent shutdown, set the event's cancel property to
      * true.
+     *
+     * @earlyExecution
      *
      */
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
