@@ -19,10 +19,5 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
      *
      */
     radius: number;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
 }

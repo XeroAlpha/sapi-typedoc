@@ -36,8 +36,6 @@ export class AimAssistCategorySettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistCategory. Must have a namespace.
      *
-     * @worldMutation
-     *
      */
     constructor(identifier: string);
     /**

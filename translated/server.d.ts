@@ -2435,12 +2435,21 @@ export enum WeatherType {
 }
 
 /**
- * @beta
+ * @rc
+ */
+export type BlockComponentReturnType<T extends string> = T extends keyof BlockComponentTypeMap
+    ? BlockComponentTypeMap[T]
+    : BlockComponent;
+
+/**
+ * @rc
  */
 export type BlockComponentTypeMap = {
+    destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
+    'minecraft:destruction_particles': BlockDestructionParticlesComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
@@ -2453,7 +2462,7 @@ export type BlockComponentTypeMap = {
 };
 
 /**
- * @beta
+ * @rc
  * Type alias used by the {@link BlockPermutation} matches and
  * resolve functions to narrow block state argument types to
  * those mapped by {@link
@@ -2466,7 +2475,14 @@ export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockT
     : Record<string, boolean | number | string>;
 
 /**
- * @beta
+ * @rc
+ */
+export type EntityComponentReturnType<T extends string> = T extends keyof EntityComponentTypeMap
+    ? EntityComponentTypeMap[T]
+    : EntityComponent;
+
+/**
+ * @rc
  */
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
@@ -2604,7 +2620,14 @@ export type EntityComponentTypeMap = {
 };
 
 /**
- * @beta
+ * @rc
+ */
+export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
+    ? ItemComponentTypeMap[T]
+    : ItemComponent;
+
+/**
+ * @rc
  */
 export type ItemComponentTypeMap = {
     compostable: ItemCompostableComponent;
@@ -2717,8 +2740,6 @@ export class AimAssistCategorySettings {
      * @remarks
      * Constructor that takes a unique Id to associate with the
      * created AimAssistCategory. Must have a namespace.
-     *
-     * @worldMutation
      *
      */
     constructor(identifier: string);
@@ -2871,8 +2892,6 @@ export class AimAssistPresetSettings {
      * @remarks
      * Constructor that takes a unique Id to associate with the
      * created AimAssistPreset. Must have a namespace.
-     *
-     * @worldMutation
      *
      */
     constructor(identifier: string);
@@ -3340,8 +3359,6 @@ export class Block {
      * for a block - for example, an inventory component of a chest
      * block.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g.,
      * 'minecraft:inventory'). If no namespace prefix is specified,
@@ -3356,7 +3373,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Creates a prototype item stack based on this block that can
@@ -3853,6 +3870,35 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 /**
+ * @beta
+ * Represents the particles that appear when the block is
+ * destroyed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockDestructionParticlesComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Name of the texture used for the particles.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly texture: string;
+    /**
+     * @remarks
+     * Type of tint applied to the particles.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link Error}
+     */
+    readonly tintMethod: TintMethod;
+    static readonly componentId = 'minecraft:destruction_particles';
+}
+
+/**
  * Contains information regarding an event that impacts a
  * specific block.
  */
@@ -4066,38 +4112,32 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMapColorComponent extends BlockComponent {
     private constructor();
-    static readonly componentId = 'minecraft:map_color';
     /**
      * @remarks
      * Base map color defined for that block.
      *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
+     * @throws This property can throw when used.
      *
      * {@link Error}
      */
-    color(): RGBA;
+    readonly color: RGBA;
     /**
      * @remarks
      * Returns the base color multiplied to the evaluated tint at
      * the given position.
      *
-     * @worldMutation
-     *
      */
-    tintedColor(): RGBA;
+    readonly tintedColor: RGBA;
     /**
      * @remarks
      * Type of tint applied to the color.
      *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
+     * @throws This property can throw when used.
      *
      * {@link Error}
      */
-    tintMethod(): TintMethod;
+    readonly tintMethod: TintMethod;
+    static readonly componentId = 'minecraft:map_color';
 }
 
 /**
@@ -4170,8 +4210,6 @@ export class BlockPermutation {
      * @remarks
      * Gets a state for the permutation.
      *
-     * @worldMutation
-     *
      * @param stateName
      * Name of the block state who's value is to be returned.
      * @returns
@@ -4232,8 +4270,6 @@ export class BlockPermutation {
      * this permutation. If states is not specified, matches checks
      * against the set of types more broadly.
      *
-     * @worldMutation
-     *
      * @param blockName
      * An optional set of states to compare against.
      */
@@ -4245,8 +4281,6 @@ export class BlockPermutation {
      * @remarks
      * Returns a derived BlockPermutation with a specific property
      * set.
-     *
-     * @worldMutation
      *
      * @param name
      * Identifier of the block property.
@@ -4263,8 +4297,6 @@ export class BlockPermutation {
      * Given a type identifier and an optional set of properties,
      * will return a BlockPermutation object that is usable in
      * other block APIs (e.g., block.setPermutation)
-     *
-     * @worldMutation
      *
      * @param blockName
      * Identifier of the block to check.
@@ -4615,11 +4647,6 @@ export class BlockVolume extends BlockVolumeBase {
      *
      */
     to: Vector3;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(from: Vector3, to: Vector3);
     /**
      * @remarks
@@ -5190,8 +5217,6 @@ export class CompoundBlockVolume {
     /**
      * @remarks
      * Create a CompoundBlockVolume object
-     *
-     * @worldMutation
      *
      * @param origin
      * An optional world space origin on which to center the
@@ -6761,9 +6786,6 @@ export class EnchantmentType {
      */
     readonly maxLevel: number;
     /**
-     * @remarks
-     * @worldMutation
-     *
      * @throws This function can throw errors.
      */
     constructor(enchantmentType: string);
@@ -7076,8 +7098,6 @@ export class Entity {
      * Gets a component (that represents additional capabilities)
      * for an entity.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:health').
      * If no namespace prefix is specified, 'minecraft:' is
@@ -7090,7 +7110,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      */
-    getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this entity
@@ -9622,10 +9642,9 @@ export class EntityScaleComponent extends EntityComponent {
      * @remarks
      * Current value for the scale property set on entities.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:scale';
 }
 
@@ -11331,8 +11350,6 @@ export class ItemStack {
      * Creates a new instance of a stack of items for use in the
      * world.
      *
-     * @worldMutation
-     *
      * @param itemType
      * Type of item to create. See the {@link
      * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
@@ -11386,8 +11403,6 @@ export class ItemStack {
      * Gets a component (that represents additional capabilities)
      * for an item stack.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
@@ -11398,7 +11413,7 @@ export class ItemStack {
      * otherwise undefined.
      * @seeExample giveHurtDiamondSword.ts
      */
-    getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this item
@@ -11960,129 +11975,6 @@ export class ItemUseBeforeEventSignal {
 }
 
 /**
- * Contains information related to an item being used on a
- * block. This event fires when an item used by a player
- * successfully triggers a block interaction.
- */
-export class ItemUseOnAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * The block that the item is used on.
-     *
-     */
-    readonly block: Block;
-    /**
-     * @remarks
-     * The face of the block that an item is being used on.
-     *
-     */
-    readonly blockFace: Direction;
-    /**
-     * @remarks
-     * Location relative to the bottom north-west corner of the
-     * block where the item is placed.
-     *
-     */
-    readonly faceLocation: Vector3;
-    /**
-     * @remarks
-     * This value will be true if the event was triggered on
-     * players initial interaction button press and false on events
-     * triggered from holding the interaction button.
-     *
-     */
-    readonly isFirstEvent: boolean;
-    /**
-     * @remarks
-     * The impacted item stack that is being used on a block.
-     *
-     */
-    readonly itemStack: ItemStack;
-    /**
-     * @remarks
-     * Returns the source entity that triggered this item event.
-     *
-     */
-    readonly source: Player;
-}
-
-/**
- * Manages callbacks that are connected to an item being used
- * on a block event.
- */
-export class ItemUseOnAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called when an item is used on
-     * a block.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    subscribe(callback: (arg0: ItemUseOnAfterEvent) => void): (arg0: ItemUseOnAfterEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called when an item is used on
-     * a block.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    unsubscribe(callback: (arg0: ItemUseOnAfterEvent) => void): void;
-}
-
-/**
- * Contains information related to an item being used on a
- * block.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
-    private constructor();
-    /**
-     * @remarks
-     * If set to true, this will cancel the item use behavior.
-     *
-     */
-    cancel: boolean;
-}
-
-/**
- * Manages callbacks that fire before an item being used on a
- * block event.
- */
-export class ItemUseOnBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that will be called before an item is used
-     * on a block.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    subscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): (arg0: ItemUseOnBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from being called before an item is used
-     * on a block.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    unsubscribe(callback: (arg0: ItemUseOnBeforeEvent) => void): void;
-}
-
-/**
  * Contains information regarding the use of an item on a
  * block.
  */
@@ -12180,8 +12072,6 @@ export class ListBlockVolume extends BlockVolumeBase {
     /**
      * @remarks
      * Creates a new instance of ListBlockVolume.
-     *
-     * @worldMutation
      *
      * @param locations
      * Initial array of block locations that ListBlockVolume will
@@ -15653,8 +15543,6 @@ export class Trigger {
      * @remarks
      * Creates a new trigger.
      *
-     * @worldMutation
-     *
      */
     constructor(eventName: string);
 }
@@ -16416,15 +16304,6 @@ export class WorldAfterEvents {
     readonly itemUse: ItemUseAfterEventSignal;
     /**
      * @remarks
-     * This event fires when an item is used on a block by a
-     * player.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly itemUseOn: ItemUseOnAfterEventSignal;
-    /**
-     * @remarks
      * A lever has been pulled.
      *
      * @earlyExecution
@@ -16678,15 +16557,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly itemUse: ItemUseBeforeEventSignal;
-    /**
-     * @remarks
-     * This event fires when an item is used on a block by a
-     * player.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly itemUseOn: ItemUseOnBeforeEventSignal;
     /**
      * @remarks
      * This event fires before a block is broken by a player.

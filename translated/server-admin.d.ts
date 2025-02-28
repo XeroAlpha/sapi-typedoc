@@ -32,11 +32,6 @@ import * as minecraftserver from '@minecraft/server';
  * to script; this object is just a placeholder.
  */
 export class SecretString {
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(value: string);
 }
 

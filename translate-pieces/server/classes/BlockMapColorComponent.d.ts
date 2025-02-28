@@ -7,36 +7,30 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMapColorComponent extends BlockComponent {
     private constructor();
-    static readonly componentId = 'minecraft:map_color';
     /**
      * @remarks
      * Base map color defined for that block.
      *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
+     * @throws This property can throw when used.
      *
      * {@link Error}
      */
-    color(): RGBA;
+    readonly color: RGBA;
     /**
      * @remarks
      * Returns the base color multiplied to the evaluated tint at
      * the given position.
      *
-     * @worldMutation
-     *
      */
-    tintedColor(): RGBA;
+    readonly tintedColor: RGBA;
     /**
      * @remarks
      * Type of tint applied to the color.
      *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
+     * @throws This property can throw when used.
      *
      * {@link Error}
      */
-    tintMethod(): TintMethod;
+    readonly tintMethod: TintMethod;
+    static readonly componentId = 'minecraft:map_color';
 }

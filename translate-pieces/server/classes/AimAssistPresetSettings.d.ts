@@ -35,8 +35,6 @@ export class AimAssistPresetSettings {
      * Constructor that takes a unique Id to associate with the
      * created AimAssistPreset. Must have a namespace.
      *
-     * @worldMutation
-     *
      */
     constructor(identifier: string);
     /**

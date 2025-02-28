@@ -119,6 +119,7 @@ export declare enum CoreActionBarItemType {
     Export = 'editor:actionBarItem:export',
     Locate = 'editor:actionBarItem:locate',
     Playtest = 'editor:actionBarItem:playtest',
+    Realms = 'editor:actionBarItem:realms',
     Redo = 'editor:actionBarItem:redo',
     Settings = 'editor:actionBarItem:settings',
     Undo = 'editor:actionBarItem:undo',
@@ -1030,6 +1031,7 @@ export declare enum PropertyItemType {
     ButtonPane = 'editorUI:ButtonPane',
     ColorPicker = 'editorUI:ColorPicker',
     ComboBox = 'editorUI:ComboBox',
+    DataTable = 'editorUI:DataTable',
     Divider = 'editorUI:Divider',
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
@@ -1038,7 +1040,6 @@ export declare enum PropertyItemType {
     ProgressIndicator = 'editorUI:ProgressIndicator',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
-    Table = 'editorUI:Table',
     Text = 'editorUI:Text',
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector3 = 'editorUI:Vector3',
@@ -1212,13 +1213,6 @@ export type GraphicsSettingsPropertyTypeMap = {
 };
 
 /**
- * A property item which supports BlockList properties
- */
-export type IBlockListPropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
-    updateBlockList(newBlockList: string[]): void;
-};
-
-/**
  * A property item which supports Dropdown properties
  */
 export type IDropdownPropertyItem_deprecated<
@@ -1274,15 +1268,6 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly builtInUIManager: BuiltInUIManager;
     readonly eventSubscriptionCache: BedrockEventSubscriptionCache;
     scratchStorage: PerPlayerStorage | undefined;
-};
-
-/**
- * A property item which supports Table properties
- */
-export type ITablePropertyItem<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<T, Prop> & {
-    updateCell(dataCell: IPropertyTableCellItem, row: number, column: number): void;
-    updateRow(dataRow: IPropertyTableCellItem[], row: number): void;
-    updateTable(newData: IPropertyTableCellItem[][]): void;
 };
 
 /**
@@ -1509,6 +1494,14 @@ export declare class BedrockEventSubscriptionCache {
      *
      */
     teardown(): void;
+}
+
+/**
+ * Validates observable objects that support string list as
+ * BlockType
+ */
+export declare class BlockIdentifierListObservableValidator implements ObservableValidator<string[]> {
+    validate(newValue: string[]): string[];
 }
 
 /**
@@ -2497,8 +2490,6 @@ export class GraphicsSettings {
      * @remarks
      * Retrieves a graphics settings property value.
      *
-     * @worldMutation
-     *
      * @param property
      * Property identifier.
      * @returns
@@ -2509,8 +2500,6 @@ export class GraphicsSettings {
     /**
      * @remarks
      * Retrieves all graphics settings properties and their values.
-     *
-     * @worldMutation
      *
      * @returns
      * Returns a property value map for all available properties.
@@ -2786,11 +2775,6 @@ export class PrimarySelectionChangedEvent {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(displayName?: string);
     /**
      * @remarks
@@ -3084,11 +3068,6 @@ export class SettingsUIElement {
     readonly name: string;
     readonly onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void;
     readonly options: SettingsUIElementOptions;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(
         name: string,
         initialValue: boolean | number | string | minecraftserver.Vector3,
@@ -3099,11 +3078,6 @@ export class SettingsUIElement {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class SimpleBlockPaletteItem extends IBlockPaletteItem {
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(displayName?: string);
 }
 
@@ -3174,17 +3148,7 @@ export class SimulationState {
 
 export class SpeedSettings {
     private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     get<T extends keyof SpeedSettingsPropertyTypeMap>(property: T): SpeedSettingsPropertyTypeMap[T] | undefined;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     getAll(): SpeedSettingsPropertyTypeMap;
     /**
      * @remarks
@@ -3931,11 +3895,6 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
      *
      */
     radius: number;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
 }
 
@@ -3964,11 +3923,6 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: minecraftserver.Vector3;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
@@ -3992,11 +3946,6 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
      *
      */
     radius: number;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
@@ -4020,11 +3969,6 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: minecraftserver.Vector3;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
 }
 
@@ -4623,6 +4567,32 @@ export interface IActionBarItemCreationParams {
 }
 
 /**
+ * A property item which supports block list properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBlockListPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: ReadonlyArray<string>;
+}
+
+/**
+ * Optional properties for Bool property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IBlockListPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * This callback is called when UI control value is changed.
+     *
+     */
+    onChange?: (newValue: ReadonlyArray<string>, oldValue: ReadonlyArray<string>) => void;
+}
+
+/**
  * Block Table Entry info for block table property item
  */
 export interface IBlockTableEntryInfo {
@@ -4723,7 +4693,7 @@ export interface IBlockTablePropertyItemOptions extends IPropertyItemOptionsBase
 }
 
 /**
- * A property item which supports Vector3 properties
+ * A property item which supports boolean properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IBoolPropertyItem extends IPropertyItemBase {
@@ -5057,6 +5027,71 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     tooltip?: LocalizedString;
+}
+
+/**
+ * A property item which supports data entries displayed in a
+ * table
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IDataTablePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Update table entries
+     *
+     * @param data
+     * New data entries.
+     */
+    updateEntries(data: IDataTablePropertyItemEntry[][]): void;
+    /**
+     * @remarks
+     * Update table cell entry
+     *
+     * @param data
+     * New data entry.
+     * @param row
+     * Cell row index.
+     * @param column
+     * Cell column index.
+     */
+    updateEntry(data: IDataTablePropertyItemEntry, row: number, column: number): void;
+    /**
+     * @remarks
+     * Update table row entries
+     *
+     * @param data
+     * New data entries.
+     * @param row
+     * Cell row index.
+     */
+    updateRow(data: IDataTablePropertyItemEntry[], row: number): void;
+}
+
+/**
+ * Properties of data table property item menu entry
+ */
+export interface IDataTablePropertyItemEntry {
+    image?: ImageResourceData;
+    text?: LocalizedString;
+}
+
+/**
+ * Properties of data table item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IDataTablePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * List of default data table entries
+     *
+     */
+    entries?: IDataTablePropertyItemEntry[][];
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
 }
 
 /**
@@ -5917,11 +5952,6 @@ export interface IPropertyItemOptionsBase {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsBlockList extends IPropertyItemOptions {
-    blockList: string[];
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
 export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
     /**
      * @remarks
@@ -5984,12 +6014,6 @@ export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
      *
      */
     pane: IPropertyPane;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsTable extends IPropertyItemOptions {
-    defaultData: IPropertyTableCellItem[][];
-    titleId?: string;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6062,12 +6086,7 @@ export interface IPropertyPane extends IPane {
      * Adds a block list to the pane.
      *
      */
-    addBlockList(options?: IPropertyItemOptionsBlockList): IBlockListPropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
+    addBlockList(value: IObservableProp<string[]>, options?: IBlockListPropertyItemOptions): IBlockListPropertyItem;
     /**
      * @remarks
      * Adds a block table to the pane.
@@ -6131,6 +6150,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     addComboBox(value: IObservableProp<string>, options?: IComboBoxPropertyItemOptions): IComboBoxPropertyItem;
+    /**
+     * @remarks
+     * Adds a data table to the pane.
+     *
+     */
+    addDataTable(options?: IDataTablePropertyItemOptions): IDataTablePropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.
@@ -6213,17 +6238,6 @@ export interface IPropertyPane extends IPane {
     ): IPropertyItem<T, Prop>;
     /**
      * @remarks
-     * Adds a table to the pane.
-     *
-     */
-    addTable(options?: IPropertyItemOptionsTable): ITablePropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
-    /**
-     * @remarks
      * Adds a multiline Text item to the pane.
      *
      */
@@ -6298,12 +6312,6 @@ export interface IPropertyPaneOptions {
      *
      */
     title?: LocalizedString;
-}
-
-export interface IPropertyTableCellItem {
-    block?: string;
-    icon?: string;
-    text?: string;
 }
 
 /**

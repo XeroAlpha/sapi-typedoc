@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
 
 /**
  * Represents a block in a dimension. A block represents a
@@ -259,8 +259,6 @@ export class Block {
      * for a block - for example, an inventory component of a chest
      * block.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g.,
      * 'minecraft:inventory'). If no namespace prefix is specified,
@@ -275,7 +273,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Creates a prototype item stack based on this block that can

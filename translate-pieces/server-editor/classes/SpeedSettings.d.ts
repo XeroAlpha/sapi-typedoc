@@ -2,17 +2,7 @@
 
 export class SpeedSettings {
     private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     get<T extends keyof SpeedSettingsPropertyTypeMap>(property: T): SpeedSettingsPropertyTypeMap[T] | undefined;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     getAll(): SpeedSettingsPropertyTypeMap;
     /**
      * @remarks

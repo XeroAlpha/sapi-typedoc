@@ -12,8 +12,6 @@ export class Trigger {
      * @remarks
      * Creates a new trigger.
      *
-     * @worldMutation
-     *
      */
     constructor(eventName: string);
 }

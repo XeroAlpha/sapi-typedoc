@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemPotionComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export type ItemComponentTypeMap = {
     compostable: ItemCompostableComponent;
