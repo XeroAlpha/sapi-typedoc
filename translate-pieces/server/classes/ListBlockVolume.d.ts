@@ -10,8 +10,6 @@ export class ListBlockVolume extends BlockVolumeBase {
      * @remarks
      * Creates a new instance of ListBlockVolume.
      *
-     * @worldMutation
-     *
      * @param locations
      * Initial array of block locations that ListBlockVolume will
      * be constructed with.

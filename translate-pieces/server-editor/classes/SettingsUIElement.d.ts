@@ -5,11 +5,6 @@ export class SettingsUIElement {
     readonly name: string;
     readonly onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void;
     readonly options: SettingsUIElementOptions;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(
         name: string,
         initialValue: boolean | number | string | minecraftserver.Vector3,

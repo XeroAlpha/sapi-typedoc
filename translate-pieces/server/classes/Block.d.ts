@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentTypeMap, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -361,8 +361,6 @@ export class Block {
      * for a block - for example, an inventory component of a chest
      * block.
      *
-     * @worldMutation
-     *
      * @param componentId
      * 组件的标识符 （例如 'minecraft:inventory'）。
      * 如果未指定命名空间前缀，将默认使用 'minecraft:'。
@@ -384,7 +382,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent<T extends keyof BlockComponentTypeMap>(componentId: T): BlockComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
      * @remarks
      * 创建一个基于该方块的原型物品对象-{@link ItemStack}，可以与 {@link Container}/{@link ContainerSlot} 接口 一起使用。

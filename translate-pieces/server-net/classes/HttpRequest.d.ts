@@ -59,11 +59,6 @@ export class HttpRequest {
      *
      */
     uri: string;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(uri: string);
     /**
      * @remarks

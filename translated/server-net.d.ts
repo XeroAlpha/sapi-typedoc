@@ -384,11 +384,6 @@ export class HttpHeader {
      *
      */
     value: minecraftserveradmin.SecretString | string;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(key: string, value: minecraftserveradmin.SecretString | string);
 }
 
@@ -451,11 +446,6 @@ export class HttpRequest {
      *
      */
     uri: string;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(uri: string);
     /**
      * @remarks

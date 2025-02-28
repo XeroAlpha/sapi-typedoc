@@ -1,7 +1,7 @@
 /* IMPORT */ import { IPropertyItemBase, LocalizedString } from '../index';
 
 /**
- * A property item which supports Vector3 properties
+ * A property item which supports boolean properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IBoolPropertyItem extends IPropertyItemBase {

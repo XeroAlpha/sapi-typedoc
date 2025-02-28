@@ -28,10 +28,5 @@ export class HttpHeader {
      *
      */
     value: minecraftserveradmin.SecretString | string;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
     constructor(key: string, value: minecraftserveradmin.SecretString | string);
 }

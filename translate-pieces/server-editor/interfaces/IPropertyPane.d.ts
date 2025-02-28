@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBlockList, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsTable, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITablePropertyItem, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, PropertyBag, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, PropertyBag, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -24,12 +24,7 @@ export interface IPropertyPane extends IPane {
      * Adds a block list to the pane.
      *
      */
-    addBlockList(options?: IPropertyItemOptionsBlockList): IBlockListPropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
+    addBlockList(value: IObservableProp<string[]>, options?: IBlockListPropertyItemOptions): IBlockListPropertyItem;
     /**
      * @remarks
      * Adds a block table to the pane.
@@ -93,6 +88,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     addComboBox(value: IObservableProp<string>, options?: IComboBoxPropertyItemOptions): IComboBoxPropertyItem;
+    /**
+     * @remarks
+     * Adds a data table to the pane.
+     *
+     */
+    addDataTable(options?: IDataTablePropertyItemOptions): IDataTablePropertyItem;
     /**
      * @remarks
      * Adds an divider item to the pane.
@@ -173,17 +174,6 @@ export interface IPropertyPane extends IPane {
         property: Prop,
         options?: IPropertyItemOptions,
     ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
-     * Adds a table to the pane.
-     *
-     */
-    addTable(options?: IPropertyItemOptionsTable): ITablePropertyItem<
-        {
-            EMPTY: undefined;
-        },
-        'EMPTY'
-    >;
     /**
      * @remarks
      * Adds a multiline Text item to the pane.

@@ -15,9 +15,6 @@ export class EnchantmentType {
      */
     readonly maxLevel: number;
     /**
-     * @remarks
-     * @worldMutation
-     *
      * @throws This function can throw errors.
      */
     constructor(enchantmentType: string);

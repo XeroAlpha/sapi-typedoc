@@ -10,9 +10,8 @@ export class EntityScaleComponent extends EntityComponent {
      * @remarks
      * Current value for the scale property set on entities.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:scale';
 }

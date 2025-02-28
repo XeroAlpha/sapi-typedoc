@@ -46,8 +46,6 @@ export class CompoundBlockVolume {
      * @remarks
      * Create a CompoundBlockVolume object
      *
-     * @worldMutation
-     *
      * @param origin
      * An optional world space origin on which to center the
      * compound volume.

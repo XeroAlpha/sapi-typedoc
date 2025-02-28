@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentTypeMap, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
 
 /**
  * Defines a collection of items.
@@ -83,8 +83,6 @@ export class ItemStack {
      * Creates a new instance of a stack of items for use in the
      * world.
      *
-     * @worldMutation
-     *
      * @param itemType
      * Type of item to create. See the {@link
      * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
@@ -138,8 +136,6 @@ export class ItemStack {
      * Gets a component (that represents additional capabilities)
      * for an item stack.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
@@ -150,7 +146,7 @@ export class ItemStack {
      * otherwise undefined.
      * @seeExample giveHurtDiamondSword.ts
      */
-    getComponent<T extends keyof ItemComponentTypeMap>(componentId: T): ItemComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this item

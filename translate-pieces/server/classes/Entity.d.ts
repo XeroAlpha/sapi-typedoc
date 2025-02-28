@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentTypeMap, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -281,8 +281,6 @@ export class Entity {
      * Gets a component (that represents additional capabilities)
      * for an entity.
      *
-     * @worldMutation
-     *
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:health').
      * If no namespace prefix is specified, 'minecraft:' is
@@ -295,7 +293,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      */
-    getComponent<T extends keyof EntityComponentTypeMap>(componentId: T): EntityComponentTypeMap[T] | undefined;
+    getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
      * @remarks
      * Returns all components that are both present on this entity
