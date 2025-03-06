@@ -23,7 +23,7 @@ export declare class Vector3Utils {
      *
      * 将两个向量相加生成一个新的向量。
      */
-    static add(v1: Vector3, v2: Vector3): Vector3;
+    static add(v1: Vector3, v2: Partial<Vector3>): Vector3;
     /**
      * subtract
      *
@@ -31,7 +31,7 @@ export declare class Vector3Utils {
      *
      * 将两个向量相减生成一个新的向量 (v1-v2)。
      */
-    static subtract(v1: Vector3, v2: Vector3): Vector3;
+    static subtract(v1: Vector3, v2: Partial<Vector3>): Vector3;
     /** scale
      *
      * Multiple all entries in a vector by a single scalar value producing a new vector

@@ -43,7 +43,7 @@ export declare class Vector3Builder implements Vector3 {
      *
      * 将向量 v 加到当前向量上，返回自身。
      */
-    add(v: Vector3): this;
+    add(v: Partial<Vector3>): this;
     /**
      * subtract
      *
@@ -51,7 +51,7 @@ export declare class Vector3Builder implements Vector3 {
      *
      * 从此向量减去向量 v ，返回自身。
      */
-    subtract(v: Vector3): this;
+    subtract(v: Partial<Vector3>): this;
     /** scale
      *
      * Scales this by the passed in value, returning itself.
