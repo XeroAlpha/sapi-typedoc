@@ -1440,7 +1440,7 @@ export class Test {
      * Location of the block to retrieve.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
     /**
@@ -1449,7 +1449,7 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     getDimension(): minecraftserver.Dimension;
     /**
@@ -1597,7 +1597,7 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1617,7 +1617,7 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1646,7 +1646,7 @@ export class Test {
      * opposite of the test direction, and so on.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
     /**
@@ -1655,7 +1655,7 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     rotateVector(vector: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -1769,7 +1769,7 @@ export class Test {
      * undefined.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      * @seeExample simpleMobTest.ts 3a296de4
      * @seeExample simpleMobGameTest.ts
      * @seeExample phantomsShouldFlyFromCats.ts
@@ -1792,7 +1792,7 @@ export class Test {
      * undefined.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1807,7 +1807,7 @@ export class Test {
      * Location to create the item entity at.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1841,7 +1841,7 @@ export class Test {
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
     /**
@@ -1856,7 +1856,7 @@ export class Test {
      * Location where the entity should be spawned.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
@@ -2130,7 +2130,7 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
@@ -2146,7 +2146,7 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.GameTestError}
+     * {@link GameTestError}
      */
     worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
 }

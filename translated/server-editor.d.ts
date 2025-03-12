@@ -34,6 +34,7 @@ export declare enum ActionTypes {
 }
 
 export enum Axis {
+    None = 0,
     X = 1,
     Y = 2,
     Z = 4,
@@ -123,6 +124,19 @@ export declare enum CoreActionBarItemType {
     Redo = 'editor:actionBarItem:redo',
     Settings = 'editor:actionBarItem:settings',
     Undo = 'editor:actionBarItem:undo',
+}
+
+/**
+ * Core brush shape types
+ */
+export declare enum CoreBrushShapeType {
+    Cone = 'editor:brushShape:cone',
+    Cuboid = 'editor:brushShape:cuboid',
+    Cylinder = 'editor:brushShape:cylinder',
+    Ellipsoid = 'editor:brushShape:ellipsoid',
+    Pyramid = 'editor:brushShape:pyramid',
+    SingleBlock = 'editor:brushShape:singleBlock',
+    Star = 'editor:brushShape:star',
 }
 
 /**
@@ -971,6 +985,7 @@ export enum PaintMode {
 }
 
 export enum Plane {
+    None = 0,
     XY = 1,
     XZ = 2,
     YZ = 4,
@@ -1043,6 +1058,15 @@ export declare enum PropertyItemType {
     Text = 'editorUI:Text',
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector3 = 'editorUI:Vector3',
+}
+
+export enum SelectionVolumeEventType {
+    Set = 1,
+    Add = 2,
+    Remove = 3,
+    Translate = 4,
+    Move = 5,
+    Clear = 6,
 }
 
 /**
@@ -1132,12 +1156,15 @@ export enum ThemeSettingsColorKey {
     SecondaryMute = 'SecondaryMute',
     SelectionVolumeBorder = 'SelectionVolumeBorder',
     SelectionVolumeFill = 'SelectionVolumeFill',
+    SelectionVolumeOutlineBorder = 'SelectionVolumeOutlineBorder',
+    SelectionVolumeOutlineFill = 'SelectionVolumeOutlineFill',
     TitleBarBackground = 'TitleBarBackground',
     ViewportOutline = 'ViewportOutline',
     Warning = 'Warning',
 }
 
 export enum WidgetComponentType {
+    BoundingBox = 'BoundingBox',
     Clipboard = 'Clipboard',
     Entity = 'Entity',
     Gizmo = 'Gizmo',
@@ -1145,6 +1172,18 @@ export enum WidgetComponentType {
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',
     Text = 'Text',
+    VolumeOutline = 'VolumeOutline',
+}
+
+export enum WidgetGizmoEventType {
+    CornerGrabbed = 'CornerGrabbed',
+    CornerMoved = 'CornerMoved',
+    CornerReleased = 'CornerReleased',
+    OriginActivated = 'OriginActivated',
+    OriginDeactivated = 'OriginDeactivated',
+    OriginGrabbed = 'OriginGrabbed',
+    OriginMoved = 'OriginMoved',
+    OriginReleased = 'OriginReleased',
 }
 
 export enum WidgetGroupSelectionMode {
@@ -1213,16 +1252,6 @@ export type GraphicsSettingsPropertyTypeMap = {
 };
 
 /**
- * A property item which supports Dropdown properties
- */
-export type IDropdownPropertyItem_deprecated<
-    T extends Omit<PropertyBag, Prop> & {
-        [key in Prop]: number;
-    },
-    Prop extends keyof T & string,
-> = IPropertyItem<T, Prop> & IDropdownPropertyItemMixIn;
-
-/**
  * Animation properties for a horizontally laid out sprite
  * sheet image
  */
@@ -1268,23 +1297,6 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly builtInUIManager: BuiltInUIManager;
     readonly eventSubscriptionCache: BedrockEventSubscriptionCache;
     scratchStorage: PerPlayerStorage | undefined;
-};
-
-/**
- * A property item which supports Vector3 properties
- */
-export type IVector3PropertyItem_deprecated<T extends PropertyBag, Prop extends keyof T & string> = IPropertyItem<
-    T,
-    Prop
-> & {
-    updateAxisLimits(limits: {
-        minX?: number;
-        maxX?: number;
-        minY?: number;
-        maxY?: number;
-        minZ?: number;
-        maxZ?: number;
-    }): void;
 };
 
 /**
@@ -1358,17 +1370,6 @@ export type NoArgsAction = {
     readonly actionType: ActionTypes.NoArgsAction;
     readonly onExecute: () => void;
 };
-
-/**
- * Callback to execute when a value of a property item is
- * updated.
- */
-export type OnChangeCallback<T extends PropertyBag, Prop extends keyof T & string> = (
-    obj: T,
-    property: Prop,
-    oldValue: object,
-    newValue: object,
-) => void;
 
 export type PropertyBag = Record<string, unknown>;
 
@@ -1618,7 +1619,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
+        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
     /**
@@ -1627,7 +1628,7 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.Error}
+     * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
     /**
@@ -1636,7 +1637,7 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.Error}
+     * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
     /**
@@ -1648,11 +1649,29 @@ export class BlockUtilities {
     quickExtrude(properties?: QuickExtrudeProperties): void;
 }
 
+/**
+ * Base for creating new brush shapes
+ */
+export declare abstract class BrushShape {
+    get displayName(): string;
+    get icon(): string;
+    get id(): string;
+    /**
+     * @remarks
+     * Constructs a new instance of the `BrushShape` class
+     *
+     */
+    constructor(_id: string, _displayName: string, _icon: string);
+    abstract createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+    ): ISubPanePropertyItem | undefined;
+    abstract createShape(): RelativeVolumeListBlockVolume;
+}
+
 export class BrushShapeManager {
     private constructor();
-    readonly activeBrushShape?: BrushShape;
-    readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
-    readonly brushShapeList: BrushShape[];
+    readonly activeBrushVolume?: RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -1697,36 +1716,13 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    getSettingsUIElements(brushName: string): SettingsUIElement[];
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
-    registerBrushShape(
-        name: string,
-        icon: string,
-        rebuild: () => minecraftserver.CompoundBlockVolume,
-        getSettingsUIElements: () => SettingsUIElement[],
-    ): void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
     setBrushMask(mask: BlockMaskList): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * @worldMutation
@@ -1772,24 +1768,6 @@ export class BrushShapeManager {
      *
      */
     switchBrushPaintMode(paintMode: PaintMode): void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftserver.Error}
-     */
-    switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
-    uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
 
 export class ClipboardChangeAfterEvent {
@@ -1830,9 +1808,9 @@ export class ClipboardItem {
      * @remarks
      * Return whether there is any block content in the item
      *
-     * @throws This property can throw when used.
      */
     readonly isEmpty: boolean;
+    readonly size: minecraftserver.Vector3;
     /**
      * @remarks
      * Clear the contents of the item
@@ -1844,87 +1822,21 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @remarks
-     * Create a {@link minecraftserver.CompoundBlockVolume}
-     * container which represents the occupied block volumes within
-     * the ClipboardItem.
-     * This function does not perform any write operations, and
-     * instead returns only a prediction of the volume area which
-     * would be affected as part of a write operation with a given
-     * set of write options.
-     *
-     * @worldMutation
-     *
-     * @param location
-     * A world location to which the ClipboardItem may potentially
-     * be written (nothing is actually written as part of this
-     * operation)
-     * @param options
-     * An optional set of write parameters which govern how the
-     * ClipboardItem should be potentially applied to the world
-     * @returns
-     * A {@link minecraftserver.CompoundBlockVolume} which
-     * represents the occupied block volumes within the
-     * ClipboardItem as they would be written to the world with the
-     * specified {@link ClipboardWriteOptions}
-     * @throws This function can throw errors.
-     */
-    getPredictedWriteAsCompoundBlockVolume(
-        location: minecraftserver.Vector3,
-        options?: ClipboardWriteOptions,
-    ): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * Create a {@link Selection} container which represents the
-     * occupied block volumes within the ClipboardItem.
-     * This function does not perform any write operations, and
-     * instead returns only a prediction of the volume area which
-     * would be affected as part of a write operation with a given
-     * set of write options.
-     *
-     * @worldMutation
-     *
-     * @param location
-     * A world location to which the ClipboardItem may potentially
-     * be written (nothing is actually written as part of this
-     * operation)
-     * @param options
-     * An optional set of write parameters which govern how the
-     * ClipboardItem should be potentially applied to the world
-     * @returns
-     * A {@link Selection} which represents the occupied block
-     * volumes within the ClipboardItem as they would be written to
-     * the world with the specified {@link ClipboardWriteOptions}
-     * @throws This function can throw errors.
-     */
-    getPredictedWriteAsSelection(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): Selection;
-    /**
-     * @remarks
-     * Get the bounding size of the ClipboardItem
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    getSize(): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * Copy the contents of the area represented by a {@link
-     * Selection} volume into the ClipboardItem
-     *
-     * @worldMutation
-     *
-     * @param selection
-     * A volume which represents the area to be copied
-     * @throws This function can throw errors.
-     */
-    readFromSelection(selection: Selection): void;
-    /**
-     * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      *
      * {@link Error}
+     */
+    getPredictedWriteVolume(
+        location: minecraftserver.Vector3,
+        options?: ClipboardWriteOptions,
+    ): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
      */
     readFromStructure(structure: EditorStructure): void;
     /**
@@ -1934,14 +1846,9 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @param from
-     * The world location of one corner of a bounding volume
-     * @param to
-     * The world location of the opposite corner of a bounding
-     * volume
      * @throws This function can throw errors.
      */
-    readFromWorld(from: minecraftserver.Vector3, to: minecraftserver.Vector3): void;
+    readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * Apply the contents of a ClipboardItem to the world at a
@@ -1961,6 +1868,8 @@ export class ClipboardItem {
      * @returns
      * Success or Failure
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }
@@ -1994,6 +1903,37 @@ export class ClipboardManager {
      * @throws This function can throw errors.
      */
     create(): ClipboardItem;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class ConeBrushShape extends BrushShape {
+    /**
+     * @remarks
+     * Constructs a new instance of the `ConeBrushShape` class
+     *
+     */
+    constructor(settings?: { uniform?: boolean; radius?: number; width?: number; height?: number; depth?: number });
+    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createShape(): RelativeVolumeListBlockVolume;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class CuboidBrushShape extends BrushShape {
+    /**
+     * @remarks
+     * Constructs a new instance of the `CuboidBrushShape` class
+     *
+     */
+    constructor(settings?: {
+        uniform?: boolean;
+        length?: number;
+        width?: number;
+        height?: number;
+        depth?: number;
+        minLength?: number;
+    });
+    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createShape(): RelativeVolumeListBlockVolume;
 }
 
 export class CurrentThemeChangeAfterEvent {
@@ -2209,6 +2149,25 @@ export class CursorPropertyChangeAfterEventSignal {
     unsubscribe(callback: (arg0: CursorPropertiesChangeAfterEvent) => void): void;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class CylinderBrushShape extends BrushShape {
+    /**
+     * @remarks
+     * Constructs a new instance of the `CylinderBrushShape` class
+     *
+     */
+    constructor(settings?: {
+        uniform?: boolean;
+        radius?: number;
+        width?: number;
+        height?: number;
+        depth?: number;
+        minRadius?: number;
+    });
+    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createShape(): RelativeVolumeListBlockVolume;
+}
+
 export class EditorStructureManager {
     private constructor();
     /**
@@ -2246,6 +2205,25 @@ export class EditorStructureManager {
      * @throws This function can throw errors.
      */
     searchStructures(options?: EditorStructureSearchOptions): EditorStructure[];
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class EllipsoidBrushShape extends BrushShape {
+    /**
+     * @remarks
+     * Constructs a new instance of the `EllipsoidBrushShape` class
+     *
+     */
+    constructor(settings?: {
+        uniform?: boolean;
+        radius?: number;
+        width?: number;
+        height?: number;
+        depth?: number;
+        minRadius?: number;
+    });
+    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createShape(): RelativeVolumeListBlockVolume;
 }
 
 /**
@@ -2477,7 +2455,7 @@ export class ExtensionContextAfterEvents {
      * @earlyExecution
      *
      */
-    readonly primarySelectionChange: PrimarySelectionChangeAfterEventSignal;
+    readonly SelectionChange: SelectionChangeAfterEventSignal;
 }
 
 /**
@@ -2748,31 +2726,6 @@ export class PlaytestManager {
     getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
 
-export class PrimarySelectionChangeAfterEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    subscribe(callback: (arg0: SelectionEventAfterEvent) => void): (arg0: SelectionEventAfterEvent) => void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     */
-    unsubscribe(callback: (arg0: SelectionEventAfterEvent) => void): void;
-}
-
-export class PrimarySelectionChangedEvent {
-    private constructor();
-    readonly volume?: minecraftserver.CompoundBlockVolume;
-}
-
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
@@ -2799,251 +2752,217 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     removeBlockAt(index: number): void;
 }
 
-/**
- * The Selection represents a volume in space, which may
- * potentially be made up of one or more block locations.
- * These block locations do not need to be contiguous, and a
- * Selection represent an irregular shape.
- * It's important to note that a Selection is only a
- * representation of the volume shape space - and does NOT
- * represent the actual contents of the space.
- */
-export class Selection {
-    private constructor();
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class PyramidBrushShape extends BrushShape {
     /**
      * @remarks
-     * Returns a boolean representing whether or not there are any
-     * volumes pushed to the selection stack
+     * Constructs a new instance of the `PyramidBrushShape` class
      *
-     * @throws This property can throw when used.
      */
+    constructor(settings?: { uniform?: boolean; width?: number; height?: number; depth?: number });
+    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createShape(): RelativeVolumeListBlockVolume;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBase {
     readonly isEmpty: boolean;
     /**
      * @remarks
-     * Set whether or not the selection volume is visible to the
-     * client user.
-     * NOTE: Use this option carefully - Selection volumes are
-     * generally server-only, but marking a volume as visible
-     * causes the volume (and all volume operations) to be
-     * synchronized with the client game which can potentially
-     * generate excessive network traffic.
-     *
-     *
      * @worldMutation
      *
      */
-    visible: boolean;
+    origin?: minecraftserver.Vector3;
+    readonly volumeCount: number;
+    constructor(origin?: minecraftserver.Vector3);
     /**
      * @remarks
-     * Clear the contents of the Selection
-     *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     */
+    add(
+        toAdd:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      */
     clear(): void;
     /**
      * @remarks
-     * Fetch a block iterator which can be used to step across the
-     * Selection shape.  Each call to the iterator will return the
-     * next block location within the Selection bounds which is
-     * actually selected.
-     * Block iteration is not guaranteed to be contiguous - it is
-     * possible to create irregular selection shapes by adding
-     * volumes to a selection which may or may not be contiguous or
-     * adjacent to other volumes within the selection.
-     * The Block iterator will return only selected volume
-     * locations
-     *
      * @worldMutation
      *
      */
-    getBlockLocationIterator(): minecraftserver.BlockLocationIterator;
+    getVolumeList(): minecraftserver.BlockVolume[];
+    hasAdjacent(location: minecraftserver.Vector3, normalizedOffset: minecraftserver.Vector3): boolean;
     /**
      * @remarks
-     * Return a bounding rectangle that contains all of the volumes
-     * within the selection (the bounding rectangle does NOT
-     * represent the shape of the selection, only the largest
-     * rectangle that will fit all of the volumes)
-     *
      * @worldMutation
      *
+     */
+    moveTo(location: minecraftserver.Vector3): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    remove(
+        toRemove:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    set(
+        toSet:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    translate(offset: minecraftserver.Vector3): void;
+}
+
+export class SelectionChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: SelectionEventAfterEvent) => void): (arg0: SelectionEventAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: SelectionEventAfterEvent) => void): void;
+}
+
+export class SelectionContainerBase {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SelectionContainerEntity extends SelectionContainerBase {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SelectionContainerVolume extends SelectionContainerBase {
+    private constructor();
+    readonly isEmpty: boolean;
+    readonly volumeCount: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    add(
+        volume:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    clear(): void;
+    get(): RelativeVolumeListBlockVolume;
+    /**
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     getBoundingBox(): minecraftserver.BoundingBox;
     /**
      * @remarks
-     * Return the color of the on-screen selection container hull
-     *
      * @worldMutation
      *
-     * @throws This function can throw errors.
      */
-    getFillColor(): minecraftserver.RGBA;
+    moveTo(location: minecraftserver.Vector3): void;
     /**
      * @remarks
-     * Return the color of the on-screen selection container
-     * outline
-     *
      * @worldMutation
      *
-     * @throws This function can throw errors.
      */
-    getOutlineColor(): minecraftserver.RGBA;
+    remove(
+        volume:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
     /**
      * @remarks
-     * Get the origin of the CompoundBlockVolume that makes up the
-     * block component part of selection
-     *
      * @worldMutation
      *
      */
-    getVolumeOrigin(): minecraftserver.Vector3;
+    set(
+        volume:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
     /**
      * @remarks
-     * Translate a selection by a given amount (this causes all of
-     * the volumes within the selection to be moved by the
-     * specified offset)
-     *
      * @worldMutation
      *
-     * @param delta
-     * The amount by which to move
-     * @returns
-     * Return the newly moved position
-     * @throws This function can throw errors.
      */
-    moveBy(delta: minecraftserver.Vector3): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * Move the selection to an absolute world location (causing
-     * all of the volumes within the selection to be moved to a
-     * location relative to the world location)
-     *
-     * @worldMutation
-     *
-     * @param location
-     * The world location to which to relocate the selection
-     * @returns
-     * Return the newly moved position
-     * @throws This function can throw errors.
-     */
-    moveTo(location: minecraftserver.Vector3): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * Fetch the volume information of the last compound volume
-     * that was pushed to the volume stack without affecting the
-     * stack itself
-     *
-     * @worldMutation
-     *
-     * @param forceRelativity
-     * See the description for {@link
-     * minecraftserver.CompoundBlockVolume.peekLastVolume}
-     * @returns
-     * Returns undefined if the stack is empty
-     */
-    peekLastVolume(
-        forceRelativity?: minecraftserver.CompoundBlockVolumePositionRelativity,
-    ): minecraftserver.CompoundBlockVolumeItem | undefined;
-    /**
-     * @remarks
-     * Remove the volume information that was last pushed to the
-     * volume stack.  This will reduce the stack item length by 1
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    popVolume(): void;
-    /**
-     * @remarks
-     * Push a compound volume item (a volume and action pair) to
-     * the volume stack.
-     *
-     * @worldMutation
-     *
-     * @param item
-     * Item to push to the stack
-     * @throws This function can throw errors.
-     */
-    pushVolume(item: minecraftserver.CompoundBlockVolumeItem): void;
-    /**
-     * @remarks
-     * Replace the contents of the current selection with a new
-     * specified selection.  This operation will delete the current
-     * contents and copy the contents of the new selection to the
-     * target selection - it does this by content, not by
-     * reference.
-     *
-     * @worldMutation
-     *
-     * @param other
-     * {@link minecraftserver.CompoundBlockVolume} - set the block
-     * component part of this selection to the specified compound
-     * block volume.  This will completely replace all block volume
-     * definitions in the selection.
-     * {@link Selection} - replace the selection with the specified
-     * selection
-     * @throws This function can throw errors.
-     */
-    set(other: minecraftserver.CompoundBlockVolume | Selection): void;
-    /**
-     * @remarks
-     * Set the color of the hull of the selection object if it is
-     * visible.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    setFillColor(color: minecraftserver.RGBA): void;
-    /**
-     * @remarks
-     * Set the color of the outline around the selection object if
-     * it is visible
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    setOutlineColor(color: minecraftserver.RGBA): void;
+    translate(offset: minecraftserver.Vector3): void;
+}
+
+export class SelectionContainerVolumeEvent {
+    private constructor();
+    readonly 'type': SelectionVolumeEventType;
 }
 
 export class SelectionEventAfterEvent {
     private constructor();
-    readonly selectionEvent: PrimarySelectionChangedEvent;
+    readonly volumeEventData?: SelectionContainerVolumeEvent;
 }
 
 /**
  * The SelectionManager (accessible from the {@link
  * ExtensionContext}) is responsible for the management of all
- * {@link Selection} objects, and provides the user the ability
- * to create new {@link Selection} objects for use within an
- * extension.
+ * {@link @minecraft/server-editor.Selection} objects, and
+ * provides the user the ability to create new {@link
+ * @minecraft/server-editor.Selection} objects for use within
+ * an extension.
  */
 export class SelectionManager {
     private constructor();
-    /**
-     * @remarks
-     * The primary {@link Selection} object is always present (even
-     * if it's empty) and cannot be deleted.  This object
-     * represents the main selection object which is always
-     * accessible through the UI, and by default is synchronized
-     * between the client and server.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly selection: Selection;
-    /**
-     * @remarks
-     * Create a new, empty {@link Selection} object
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    create(): Selection;
+    readonly entity: SelectionContainerEntity;
+    readonly volume: SelectionContainerVolume;
 }
 
 /**
@@ -3061,19 +2980,6 @@ export class SettingsManager {
     readonly graphics: GraphicsSettings;
     readonly speed: SpeedSettings;
     readonly theme: ThemeSettings;
-}
-
-export class SettingsUIElement {
-    readonly initialValue: boolean | number | string | minecraftserver.Vector3;
-    readonly name: string;
-    readonly onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void;
-    readonly options: SettingsUIElementOptions;
-    constructor(
-        name: string,
-        initialValue: boolean | number | string | minecraftserver.Vector3,
-        onChange: (arg0: boolean | number | string | minecraftserver.Vector3) => void,
-        options?: SettingsUIElementOptions,
-    );
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3144,6 +3050,19 @@ export class SimulationState {
      * @throws This function can throw errors.
      */
     setPaused(isPaused: boolean): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class SingleBlockBrushShape extends BrushShape {
+    /**
+     * @remarks
+     * Constructs a new instance of the `SingleBlockBrushShape`
+     * class
+     *
+     */
+    constructor();
+    createSettingsPane(): undefined;
+    createShape(): RelativeVolumeListBlockVolume;
 }
 
 export class SpeedSettings {
@@ -3383,23 +3302,6 @@ export class TransactionManager {
     trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
     /**
      * @remarks
-     * Begin tracking block changes in an area defined by a {@link
-     * minecraftserver.CompoundBlockVolume}.  These will be added
-     * to a pending changes list.
-     * The pending list will be added to the open transaction
-     * record when a commit has been issued.
-     *
-     * @worldMutation
-     *
-     * @param compoundBlockVolume
-     * {@link minecraftserver.CompoundBlockVolume} to track.  Only
-     * non-void block locations will be tracked -- any changes
-     * falling into a void/negative space will not be tracked
-     * @throws This function can throw errors.
-     */
-    trackBlockChangeCompoundBlockVolume(compoundBlockVolume: minecraftserver.CompoundBlockVolume): boolean;
-    /**
-     * @remarks
      * Begin tracking block changes in a list of specified block
      * locations.
      *
@@ -3412,28 +3314,11 @@ export class TransactionManager {
     trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
     /**
      * @remarks
-     * Begin tracking block changes that may happen in a selection
-     * volume.
-     * The volume is copied, so tracking will not move if the
-     * selection volume is translated after this instruction is
-     * issued.
-     * Selection Volumes can also represent irregular shapes with
-     * non-contiguous blocks and this tracking call will honor the
-     * actual selected areas in the volume (and not the negative
-     * space) (see {@link minecraftserver.CompoundBlockVolume} for
-     * more details
-     *
      * @worldMutation
      *
-     * @param selection
-     * A collection of block location volumes represented by a
-     * Selection volume to monitor for changes.
-     * The Selection Volume is copied, so further changes to the
-     * volume after this call will not be reflected in the tracking
-     * list.
      * @throws This function can throw errors.
      */
-    trackBlockChangeSelection(selection: Selection): boolean;
+    trackBlockChangeVolume(blockVolume: minecraftserver.BlockVolumeBase): boolean;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last
@@ -3565,6 +3450,12 @@ export class Widget {
      */
     collisionRadius: number;
     /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetError}
+     */
+    readonly group: WidgetGroup;
+    /**
      * @remarks
      * @worldMutation
      *
@@ -3592,6 +3483,22 @@ export class Widget {
      */
     snapToBlockLocation: boolean;
     visible: boolean;
+    readonly widgetName: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addBoundingBox(
+        componentName: string,
+        size: minecraftserver.Vector3,
+        options?: WidgetComponentBoundingBoxOptions,
+    ): WidgetComponentBoundingBox;
     /**
      * @remarks
      * @worldMutation
@@ -3694,6 +3601,21 @@ export class Widget {
      * {@link Error}
      *
      * {@link InvalidWidgetError}
+     */
+    addVolumeOutline(
+        componentName: string,
+        volume?: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        options?: WidgetComponentVolumeOutlineOptions,
+    ): WidgetComponentVolumeOutline;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
      *
      * {@link InvalidWidgetGroupError}
      */
@@ -3753,7 +3675,7 @@ export class WidgetComponentBase {
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidWidgetComponentError}
+     * {@link InvalidWidgetComponentError}
      */
     readonly location: minecraftserver.Vector3;
     /**
@@ -3791,6 +3713,77 @@ export class WidgetComponentBase {
      * {@link InvalidWidgetComponentError}
      */
     delete(): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentBoundingBox extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    boundsOffset: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    enableResizeHandles: Axis;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    hullColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    mirror: minecraftserver.StructureMirrorAxis;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    normalizedOrigin: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    outlineColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation: minecraftserver.StructureRotation;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    showWorldIntersections: boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    size: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    visibleHull: boolean;
     /**
      * @remarks
      * @worldMutation
@@ -3799,19 +3792,44 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentStateChangeEventData) => void): void;
+    deactivateHandles(): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void): void;
+}
+
+export class WidgetComponentBoundingBoxStateChangeEventParameters {
+    private constructor();
+    readonly boundsOffset?: minecraftserver.Vector3;
+    readonly boundsSize?: minecraftserver.Vector3;
+    readonly component: WidgetComponentBoundingBox;
+    readonly eventType: WidgetGizmoEventType;
+    readonly widget: Widget;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();
-    clipboardMirror: minecraftserver.StructureMirrorAxis;
-    clipboardNormalizedOrigin: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     clipboardOffset: minecraftserver.Vector3;
-    clipboardRotation: minecraftserver.StructureRotation;
-    fillColor: minecraftserver.RGBA;
+    highlightHullColor: minecraftserver.RGBA;
+    highlightOutlineColor: minecraftserver.RGBA;
+    hullColor: minecraftserver.RGBA;
+    mirror: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin: minecraftserver.Vector3;
     outlineColor: minecraftserver.RGBA;
-    showBounds: boolean;
+    rotation: minecraftserver.StructureRotation;
+    showOutline: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3838,6 +3856,34 @@ export class WidgetComponentEntity extends WidgetComponentBase {
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
     activated: boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    enabledAxes: Axis;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    normalizedOffsetOverride?: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void): void;
+}
+
+export class WidgetComponentGizmoStateChangeEventParameters {
+    private constructor();
+    readonly component: WidgetComponentGizmo;
+    readonly eventType?: WidgetGizmoEventType;
+    readonly widget: Widget;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4020,14 +4066,6 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     setControlPoints(widgetList: Widget[]): void;
 }
 
-export class WidgetComponentStateChangeEventData {
-    private constructor();
-    readonly component: WidgetComponentBase;
-    readonly gizmoActivated?: boolean;
-    readonly group: WidgetGroup;
-    readonly widget: Widget;
-}
-
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
@@ -4043,6 +4081,102 @@ export class WidgetComponentText extends WidgetComponentBase {
      *
      */
     label: string;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentVolumeOutline extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    highlightHullColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    highlightOutlineColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    hullColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    mirror: minecraftserver.StructureMirrorAxis;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    normalizedOrigin: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    outlineColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation: minecraftserver.StructureRotation;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    showHighlightOutline: boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    showOutline: boolean;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    volumeOffset: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    getVolume(): RelativeVolumeListBlockVolume | undefined;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
+    setVolume(
+        volumeToSet?:
+            | minecraftserver.Vector3[]
+            | minecraftserver.BlockVolume
+            | minecraftserver.BlockVolumeBase
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): void;
 }
 
 export class WidgetGroup {
@@ -4070,6 +4204,8 @@ export class WidgetGroup {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      *
      * {@link InvalidWidgetGroupError}
      */
@@ -4175,11 +4311,6 @@ export interface ActionManager {
 export interface BlockMaskList {
     blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
     maskType: BlockMaskListType;
-}
-
-export interface BrushShape {
-    icon: string;
-    name: string;
 }
 
 /**
@@ -5107,24 +5238,6 @@ export interface IDisposable {
 }
 
 /**
- * Properties of dropdown property item children
- */
-export interface IDropdownItem {
-    /**
-     * @remarks
-     * Localized display text of the dropdown item.
-     *
-     */
-    readonly label: string;
-    /**
-     * @remarks
-     * The selectable value of the dropdown item.
-     *
-     */
-    readonly value: number;
-}
-
-/**
  * A property item which supports Dropdown properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5202,20 +5315,6 @@ export interface IDropdownPropertyItemEntry {
      *
      */
     readonly value: number;
-}
-
-/**
- * Dropdown property item specific functionality
- */
-export interface IDropdownPropertyItemMixIn {
-    /**
-     * @remarks
-     * Used to update the Dropdown options in the control. Will
-     * trigger onChange with -1 as the old value due to the list
-     * changing entries.
-     *
-     */
-    updateDropdownItems(dropdownItems: IDropdownItem[], newValue: number): void;
 }
 
 /**
@@ -5845,29 +5944,6 @@ export interface IProgressIndicatorPropertyItemOptions extends IPropertyItemOpti
     variant?: ProgressIndicatorPropertyItemVariant;
 }
 
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItem<T extends PropertyBag, Prop extends keyof T & string> extends IPropertyItemBase {
-    /**
-     * @remarks
-     * The object associated.
-     *
-     */
-    readonly obj: T;
-    /**
-     * @remarks
-     * The target property of the object associated.
-     *
-     */
-    readonly property: Prop;
-    /**
-     * @remarks
-     * The value of the property.
-     *
-     */
-    readonly value: T[Prop];
-    dispose(): void;
-}
-
 /**
  * Common base for all property items
  */
@@ -5904,33 +5980,6 @@ export interface IPropertyItemBase {
     visible: boolean;
 }
 
-export interface IPropertyItemOptions {
-    /**
-     * @remarks
-     * If the item is enabled in the UI.
-     *
-     */
-    enable?: boolean;
-    /**
-     * @remarks
-     * Callback to execute when the value is updated.
-     *
-     */
-    onChange?: OnChangeCallback<PropertyBag, string>;
-    /**
-     * @remarks
-     * Localized title of the property item
-     *
-     */
-    title?: string;
-    /**
-     * @remarks
-     * If the item should be visible in the UI.
-     *
-     */
-    visible?: boolean;
-}
-
 /**
  * Common optional properties for property items
  */
@@ -5949,117 +5998,6 @@ export interface IPropertyItemOptionsBase {
      *
      */
     visible?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsBool extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * controls appearance of the boolean. checkbox or toggleswitch
-     *
-     */
-    displayAsToggleSwitch?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsColorPicker_deprecated extends IPropertyItemOptions {
-    showAlpha?: boolean;
-    variant?: ColorPickerPropertyItemVariant;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsDropdown extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * The possible options for the drop down control.
-     *
-     */
-    dropdownItems: IDropdownItem[];
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsNumber extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * If we should treat the number as floating point. By default
-     * is false
-     *
-     */
-    isFloat?: boolean;
-    /**
-     * @remarks
-     * The min possible value for the number.
-     *
-     */
-    max?: number;
-    /**
-     * @remarks
-     * The max possible value for the number.
-     *
-     */
-    min?: number;
-    /**
-     * @remarks
-     * If UI should show slider control.
-     *
-     */
-    showSlider?: boolean;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsSubPane extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * The sub pane to render in UI.
-     *
-     */
-    pane: IPropertyPane;
-}
-
-// @ts-ignore Class inheritance allowed for native defined classes
-export interface IPropertyItemOptionsVector3 extends IPropertyItemOptions {
-    /**
-     * @remarks
-     * The max possible value for the X axis. By default
-     * Number.MAX_SAFE_INTEGER
-     *
-     */
-    maxX?: number;
-    /**
-     * @remarks
-     * The max possible value for the Y axis. By default
-     * Number.MAX_SAFE_INTEGER
-     *
-     */
-    maxY?: number;
-    /**
-     * @remarks
-     * The max possible value for the z axis. By default
-     * Number.MAX_SAFE_INTEGER
-     *
-     */
-    maxZ?: number;
-    /**
-     * @remarks
-     * The min possible value for the X axis. By default
-     * Number.MIN_SAFE_INTEGER
-     *
-     */
-    minX?: number;
-    /**
-     * @remarks
-     * The min possible value for the Y axis. By default
-     * Number.MIN_SAFE_INTEGER
-     *
-     */
-    minY?: number;
-    /**
-     * @remarks
-     * The min possible value for the Z axis. By default
-     * Number.MIN_SAFE_INTEGER
-     *
-     */
-    minZ?: number;
 }
 
 /**
@@ -6101,16 +6039,6 @@ export interface IPropertyPane extends IPane {
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
      * @remarks
-     * Adds a boolean item to the pane.
-     *
-     */
-    addBool_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsBool,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      * Adds a button to the pane and binds the specified action to
      * the button interaction.
      *
@@ -6134,16 +6062,6 @@ export interface IPropertyPane extends IPane {
         value: IObservableProp<minecraftserver.RGBA>,
         options?: IColorPickerPropertyItemOptions,
     ): IColorPickerPropertyItem;
-    /**
-     * @remarks
-     * Adds a color picker item to the pane.
-     *
-     */
-    addColorPicker_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsColorPicker_deprecated,
-    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds a combo box item to the pane.
@@ -6170,21 +6088,6 @@ export interface IPropertyPane extends IPane {
     addDropdown(value: IObservableProp<number>, options?: IDropdownPropertyItemOptions): IDropdownPropertyItem;
     /**
      * @remarks
-     * Adds an DropDown item to the pane.
-     *
-     */
-    addDropdown_deprecated<
-        T extends Omit<PropertyBag, Prop> & {
-            [key in Prop]: number;
-        },
-        Prop extends keyof T & string,
-    >(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDropdown,
-    ): IDropdownPropertyItem_deprecated<T, Prop>;
-    /**
-     * @remarks
      * Adds an image item to the pane.
      *
      */
@@ -6206,16 +6109,6 @@ export interface IPropertyPane extends IPane {
     addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
     /**
      * @remarks
-     * Adds a number item to the pane.
-     *
-     */
-    addNumber_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsNumber,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      * Adds a Progress Indicator item to the pane.
      *
      */
@@ -6226,16 +6119,6 @@ export interface IPropertyPane extends IPane {
      *
      */
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
-    /**
-     * @remarks
-     * Adds a string item to the pane
-     *
-     */
-    addString_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptions,
-    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds a multiline Text item to the pane.
@@ -6257,16 +6140,6 @@ export interface IPropertyPane extends IPane {
         value: IObservableProp<minecraftserver.Vector3>,
         options?: IVector3PropertyItemOptions,
     ): IVector3PropertyItem;
-    /**
-     * @remarks
-     * Adds a Vec3 item to the pane.
-     *
-     */
-    addVector3_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsVector3,
-    ): IVector3PropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Collapse the pane.
@@ -7504,13 +7377,6 @@ export interface QuickExtrudeProperties {
     startingLocation?: minecraftserver.Vector3;
 }
 
-export interface SettingsUIElementOptions {
-    dropdownItems?: string[];
-    max?: number;
-    min?: number;
-    refreshOnChange?: boolean;
-}
-
 export interface WeightedBlock {
     block: minecraftserver.BlockType;
     weight: number;
@@ -7519,19 +7385,36 @@ export interface WeightedBlock {
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;
     offset?: minecraftserver.Vector3;
-    stateChangeEvent?: (arg0: WidgetComponentStateChangeEventData) => void;
     visible?: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
+    boundsOffset?: minecraftserver.Vector3;
+    enableResizeHandles?: Axis;
+    hullColor?: minecraftserver.RGBA;
+    maxSize?: minecraftserver.Vector3;
+    minSize?: minecraftserver.Vector3;
+    mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
+    outlineColor?: minecraftserver.RGBA;
+    rotation?: minecraftserver.StructureRotation;
+    showWorldIntersections?: boolean;
+    stateChangeEvent?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void;
+    visibleHull?: boolean;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
-    boundsFillColor?: minecraftserver.RGBA;
-    boundsOutlineColor?: minecraftserver.RGBA;
-    clipboardMirror?: minecraftserver.StructureMirrorAxis;
-    clipboardNormalizedOrigin?: minecraftserver.Vector3;
     clipboardOffset?: minecraftserver.Vector3;
-    clipboardRotation?: minecraftserver.StructureRotation;
-    showBounds?: boolean;
+    highlightHullColor?: minecraftserver.RGBA;
+    highlightOutlineColor?: minecraftserver.RGBA;
+    hullColor?: minecraftserver.RGBA;
+    mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
+    outlineColor?: minecraftserver.RGBA;
+    rotation?: minecraftserver.StructureRotation;
+    showOutline?: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7545,6 +7428,8 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
+    normalizedAutoOffset?: minecraftserver.Vector3;
+    stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7564,6 +7449,20 @@ export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
     color?: minecraftserver.RGBA;
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentVolumeOutlineOptions extends WidgetComponentBaseOptions {
+    highlightHullColor?: minecraftserver.RGBA;
+    highlightOutlineColor?: minecraftserver.RGBA;
+    hullColor?: minecraftserver.RGBA;
+    mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
+    outlineColor?: minecraftserver.RGBA;
+    rotation?: minecraftserver.StructureRotation;
+    showHighlightOutline?: boolean;
+    showOutline?: boolean;
+    volumeOffset?: minecraftserver.Vector3;
+}
+
 export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;
     collisionOffset?: minecraftserver.Vector3;
@@ -7573,6 +7472,9 @@ export interface WidgetCreateOptions {
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
+    widgetName?: string;
+    worldBoundsMax?: minecraftserver.Vector3;
+    worldBoundsMin?: minecraftserver.Vector3;
 }
 
 export interface WidgetGroupCreateOptions {
@@ -7598,22 +7500,6 @@ export class InvalidWidgetGroupError extends Error {
 
 /**
  * @remarks
- * Takes the input object (a property bag of values) and bind
- * it to the pane as a data source. UI child elements of the
- * pane will be updated when the values in the object change,
- * and vice versa.
- *
- * @param propertyPane
- * The property pane to bind the property bag to.
- * @param target
- * The property bag to bind to the pane.
- */
-export declare function bindDataSource<T extends PropertyBag, Prop extends keyof T & string>(
-    propertyPane: IPropertyPane,
-    target: T,
-): T;
-/**
- * @remarks
  * Deserialize anything, defaults to the same behavior as
  * JSON.parse but will use custom deserializers passed into
  * {@link registerSerializationForType}.
@@ -7625,13 +7511,11 @@ export declare function deserialize(s: string): unknown;
  * Executes an operation over a selection via chunks to allow
  * splitting operation over multiple game ticks
  *
- * @param selection
- * the selection to iterator over
  * @param operation
  * the operation to apply over each block location
  */
 export declare function executeLargeOperation(
-    selection: Selection,
+    volume: RelativeVolumeListBlockVolume,
     operation: (blockLocation: minecraftserver.Vector3) => void,
 ): Promise<void>;
 /**
@@ -7658,6 +7542,14 @@ export declare function executeLargeOperationFromIterator(
  * Default allowed block list
  */
 export declare function getDefaultAllowBlockList(): string[];
+/**
+ * @remarks
+ * Returns a list of default core brush shapes
+ *
+ * @param excludeList
+ * List of shape types to exclude
+ */
+export declare function getDefaultBrushShapes(excludeList?: CoreBrushShapeType[]): BrushShape[];
 /**
  * @remarks
  * Creates an observable object that stores a value state.

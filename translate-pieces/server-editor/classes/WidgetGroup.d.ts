@@ -26,6 +26,8 @@ export class WidgetGroup {
      *
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link InvalidWidgetGroupError}
      */
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContiguousSelectionProperties, QuickExtrudeProperties, Selection, minecraftserver } from '../index';
+/* IMPORT */ import { ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
 
 export class BlockUtilities {
     private constructor();
@@ -9,7 +9,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
+        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
     /**
@@ -18,7 +18,7 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.Error}
+     * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
     /**
@@ -27,7 +27,7 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.Error}
+     * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
     /**

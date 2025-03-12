@@ -9,4 +9,7 @@ export interface WidgetCreateOptions {
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
+    widgetName?: string;
+    worldBoundsMax?: minecraftserver.Vector3;
+    worldBoundsMin?: minecraftserver.Vector3;
 }

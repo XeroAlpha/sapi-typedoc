@@ -1,4 +1,4 @@
-/* IMPORT */ import { HudElement, HudVisibility, RawMessage, TitleDisplayOptions } from '../index';
+/* IMPORT */ import { HudElement, HudVisibility, InvalidEntityError, RawMessage, RawMessageError, TitleDisplayOptions, minecraftcommon } from '../index';
 
 /**
  * Contains information about user interface elements that are
@@ -22,6 +22,8 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
@@ -29,6 +31,8 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
@@ -36,15 +40,20 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
+     * @beta
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
-    resetHudElements(): void;
+    resetHudElementsVisibility(): void;
     /**
      * @remarks
      * Set the action bar text - a piece of text that displays
@@ -55,6 +64,10 @@ export class ScreenDisplay {
      * @param text
      * New value for the action bar text.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -70,6 +83,8 @@ export class ScreenDisplay {
      * @param hudElements
      * Optional list of HUD elements to configure visibility for.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
@@ -82,6 +97,12 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample setTitle.ts
      * @seeExample setTitleAndSubtitle.ts
      * @seeExample countdown.ts
@@ -95,6 +116,10 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;

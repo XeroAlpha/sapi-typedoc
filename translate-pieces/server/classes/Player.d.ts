@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -320,6 +320,10 @@ export class Player extends Entity {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample nestedTranslation.ts
      * @seeExample scoreWildcard.ts
      * @seeExample sendBasicMessage.ts

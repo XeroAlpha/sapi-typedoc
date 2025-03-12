@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IDropdownPropertyItem_deprecated, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItem, IPropertyItemBase, IPropertyItemOptions, IPropertyItemOptionsBool, IPropertyItemOptionsColorPicker_deprecated, IPropertyItemOptionsDropdown, IPropertyItemOptionsNumber, IPropertyItemOptionsVector3, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3PropertyItem_deprecated, ImageResourceData, LocalizedString, PropertyBag, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, ImageResourceData, LocalizedString, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -39,16 +39,6 @@ export interface IPropertyPane extends IPane {
     addBool(value: IObservableProp<boolean>, options?: IBoolPropertyItemOptions): IBoolPropertyItem;
     /**
      * @remarks
-     * Adds a boolean item to the pane.
-     *
-     */
-    addBool_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsBool,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      * Adds a button to the pane and binds the specified action to
      * the button interaction.
      *
@@ -72,16 +62,6 @@ export interface IPropertyPane extends IPane {
         value: IObservableProp<minecraftserver.RGBA>,
         options?: IColorPickerPropertyItemOptions,
     ): IColorPickerPropertyItem;
-    /**
-     * @remarks
-     * Adds a color picker item to the pane.
-     *
-     */
-    addColorPicker_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsColorPicker_deprecated,
-    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds a combo box item to the pane.
@@ -108,21 +88,6 @@ export interface IPropertyPane extends IPane {
     addDropdown(value: IObservableProp<number>, options?: IDropdownPropertyItemOptions): IDropdownPropertyItem;
     /**
      * @remarks
-     * Adds an DropDown item to the pane.
-     *
-     */
-    addDropdown_deprecated<
-        T extends Omit<PropertyBag, Prop> & {
-            [key in Prop]: number;
-        },
-        Prop extends keyof T & string,
-    >(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsDropdown,
-    ): IDropdownPropertyItem_deprecated<T, Prop>;
-    /**
-     * @remarks
      * Adds an image item to the pane.
      *
      */
@@ -144,16 +109,6 @@ export interface IPropertyPane extends IPane {
     addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
     /**
      * @remarks
-     * Adds a number item to the pane.
-     *
-     */
-    addNumber_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsNumber,
-    ): IPropertyItem<T, Prop>;
-    /**
-     * @remarks
      * Adds a Progress Indicator item to the pane.
      *
      */
@@ -164,16 +119,6 @@ export interface IPropertyPane extends IPane {
      *
      */
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
-    /**
-     * @remarks
-     * Adds a string item to the pane
-     *
-     */
-    addString_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptions,
-    ): IPropertyItem<T, Prop>;
     /**
      * @remarks
      * Adds a multiline Text item to the pane.
@@ -195,16 +140,6 @@ export interface IPropertyPane extends IPane {
         value: IObservableProp<minecraftserver.Vector3>,
         options?: IVector3PropertyItemOptions,
     ): IVector3PropertyItem;
-    /**
-     * @remarks
-     * Adds a Vec3 item to the pane.
-     *
-     */
-    addVector3_deprecated<T extends PropertyBag, Prop extends keyof T & string>(
-        obj: T,
-        property: Prop,
-        options?: IPropertyItemOptionsVector3,
-    ): IVector3PropertyItem_deprecated<T, Prop>;
     /**
      * @remarks
      * Collapse the pane.

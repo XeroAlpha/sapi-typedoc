@@ -1,4 +1,5 @@
 export enum WidgetComponentType {
+    BoundingBox = 'BoundingBox',
     Clipboard = 'Clipboard',
     Entity = 'Entity',
     Gizmo = 'Gizmo',
@@ -6,4 +7,5 @@ export enum WidgetComponentType {
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',
     Text = 'Text',
+    VolumeOutline = 'VolumeOutline',
 }

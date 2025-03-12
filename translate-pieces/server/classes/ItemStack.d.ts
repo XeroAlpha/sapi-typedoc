@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
 
 /**
  * Defines a collection of items.
@@ -139,8 +139,9 @@ export class ItemStack {
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
-     * Available component IDs can be found as part of the {@link
-     * ItemComponentTypes} enum.
+     * Available component IDs are those in the {@link
+     * ItemComponentTypes} enum and custom component IDs registered
+     * with the {@link ItemComponentRegistry}.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.

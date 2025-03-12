@@ -1,10 +1,8 @@
-/* IMPORT */ import { BlockMaskList, BrushShape, PaintCompletionState, PaintMode, SettingsUIElement, minecraftserver } from '../index';
+/* IMPORT */ import { BlockMaskList, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
 
 export class BrushShapeManager {
     private constructor();
-    readonly activeBrushShape?: BrushShape;
-    readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
-    readonly brushShapeList: BrushShape[];
+    readonly activeBrushVolume?: RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -49,36 +47,13 @@ export class BrushShapeManager {
      *
      * {@link Error}
      */
-    getSettingsUIElements(brushName: string): SettingsUIElement[];
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
-    registerBrushShape(
-        name: string,
-        icon: string,
-        rebuild: () => minecraftserver.CompoundBlockVolume,
-        getSettingsUIElements: () => SettingsUIElement[],
-    ): void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
     setBrushMask(mask: BlockMaskList): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * @worldMutation
@@ -124,22 +99,4 @@ export class BrushShapeManager {
      *
      */
     switchBrushPaintMode(paintMode: PaintMode): void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftserver.Error}
-     */
-    switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     */
-    uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }

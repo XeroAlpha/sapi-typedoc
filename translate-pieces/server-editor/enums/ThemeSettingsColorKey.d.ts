@@ -58,6 +58,8 @@ export enum ThemeSettingsColorKey {
     SecondaryMute = 'SecondaryMute',
     SelectionVolumeBorder = 'SelectionVolumeBorder',
     SelectionVolumeFill = 'SelectionVolumeFill',
+    SelectionVolumeOutlineBorder = 'SelectionVolumeOutlineBorder',
+    SelectionVolumeOutlineFill = 'SelectionVolumeOutlineFill',
     TitleBarBackground = 'TitleBarBackground',
     ViewportOutline = 'ViewportOutline',
     Warning = 'Warning',
