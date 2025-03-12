@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, Selection, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
 
 /**
  * A ClipboardItem is a handle to an object which represents a
@@ -12,9 +12,9 @@ export class ClipboardItem {
      * @remarks
      * Return whether there is any block content in the item
      *
-     * @throws This property can throw when used.
      */
     readonly isEmpty: boolean;
+    readonly size: minecraftserver.Vector3;
     /**
      * @remarks
      * Clear the contents of the item
@@ -26,87 +26,21 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @remarks
-     * Create a {@link minecraftserver.CompoundBlockVolume}
-     * container which represents the occupied block volumes within
-     * the ClipboardItem.
-     * This function does not perform any write operations, and
-     * instead returns only a prediction of the volume area which
-     * would be affected as part of a write operation with a given
-     * set of write options.
-     *
-     * @worldMutation
-     *
-     * @param location
-     * A world location to which the ClipboardItem may potentially
-     * be written (nothing is actually written as part of this
-     * operation)
-     * @param options
-     * An optional set of write parameters which govern how the
-     * ClipboardItem should be potentially applied to the world
-     * @returns
-     * A {@link minecraftserver.CompoundBlockVolume} which
-     * represents the occupied block volumes within the
-     * ClipboardItem as they would be written to the world with the
-     * specified {@link ClipboardWriteOptions}
-     * @throws This function can throw errors.
-     */
-    getPredictedWriteAsCompoundBlockVolume(
-        location: minecraftserver.Vector3,
-        options?: ClipboardWriteOptions,
-    ): minecraftserver.CompoundBlockVolume;
-    /**
-     * @remarks
-     * Create a {@link Selection} container which represents the
-     * occupied block volumes within the ClipboardItem.
-     * This function does not perform any write operations, and
-     * instead returns only a prediction of the volume area which
-     * would be affected as part of a write operation with a given
-     * set of write options.
-     *
-     * @worldMutation
-     *
-     * @param location
-     * A world location to which the ClipboardItem may potentially
-     * be written (nothing is actually written as part of this
-     * operation)
-     * @param options
-     * An optional set of write parameters which govern how the
-     * ClipboardItem should be potentially applied to the world
-     * @returns
-     * A {@link Selection} which represents the occupied block
-     * volumes within the ClipboardItem as they would be written to
-     * the world with the specified {@link ClipboardWriteOptions}
-     * @throws This function can throw errors.
-     */
-    getPredictedWriteAsSelection(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): Selection;
-    /**
-     * @remarks
-     * Get the bounding size of the ClipboardItem
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    getSize(): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * Copy the contents of the area represented by a {@link
-     * Selection} volume into the ClipboardItem
-     *
-     * @worldMutation
-     *
-     * @param selection
-     * A volume which represents the area to be copied
-     * @throws This function can throw errors.
-     */
-    readFromSelection(selection: Selection): void;
-    /**
-     * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      *
      * {@link Error}
+     */
+    getPredictedWriteVolume(
+        location: minecraftserver.Vector3,
+        options?: ClipboardWriteOptions,
+    ): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
      */
     readFromStructure(structure: EditorStructure): void;
     /**
@@ -116,14 +50,9 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @param from
-     * The world location of one corner of a bounding volume
-     * @param to
-     * The world location of the opposite corner of a bounding
-     * volume
      * @throws This function can throw errors.
      */
-    readFromWorld(from: minecraftserver.Vector3, to: minecraftserver.Vector3): void;
+    readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * Apply the contents of a ClipboardItem to the world at a
@@ -143,6 +72,8 @@ export class ClipboardItem {
      * @returns
      * Success or Failure
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }

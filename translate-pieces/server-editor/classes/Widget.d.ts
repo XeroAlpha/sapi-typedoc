@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, InvalidWidgetComponentError, InvalidWidgetError, InvalidWidgetGroupError, WidgetComponentBase, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardItem, InvalidWidgetComponentError, InvalidWidgetError, InvalidWidgetGroupError, RelativeVolumeListBlockVolume, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
 
 export class Widget {
     private constructor();
@@ -20,6 +20,12 @@ export class Widget {
      *
      */
     collisionRadius: number;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWidgetError}
+     */
+    readonly group: WidgetGroup;
     /**
      * @remarks
      * @worldMutation
@@ -48,6 +54,22 @@ export class Widget {
      */
     snapToBlockLocation: boolean;
     visible: boolean;
+    readonly widgetName: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addBoundingBox(
+        componentName: string,
+        size: minecraftserver.Vector3,
+        options?: WidgetComponentBoundingBoxOptions,
+    ): WidgetComponentBoundingBox;
     /**
      * @remarks
      * @worldMutation
@@ -141,6 +163,21 @@ export class Widget {
      * {@link InvalidWidgetError}
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
+    addVolumeOutline(
+        componentName: string,
+        volume?: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        options?: WidgetComponentVolumeOutlineOptions,
+    ): WidgetComponentVolumeOutline;
     /**
      * @remarks
      * @worldMutation

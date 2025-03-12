@@ -1,11 +1,13 @@
 /* IMPORT */ import { WidgetComponentBaseOptions, minecraftserver } from '../index';
 
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
-    boundsFillColor?: minecraftserver.RGBA;
-    boundsOutlineColor?: minecraftserver.RGBA;
-    clipboardMirror?: minecraftserver.StructureMirrorAxis;
-    clipboardNormalizedOrigin?: minecraftserver.Vector3;
     clipboardOffset?: minecraftserver.Vector3;
-    clipboardRotation?: minecraftserver.StructureRotation;
-    showBounds?: boolean;
+    highlightHullColor?: minecraftserver.RGBA;
+    highlightOutlineColor?: minecraftserver.RGBA;
+    hullColor?: minecraftserver.RGBA;
+    mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
+    outlineColor?: minecraftserver.RGBA;
+    rotation?: minecraftserver.StructureRotation;
+    showOutline?: boolean;
 }

@@ -1,6 +1,6 @@
-/* IMPORT */ import { PrimarySelectionChangedEvent } from '../index';
+/* IMPORT */ import { SelectionContainerVolumeEvent } from '../index';
 
 export class SelectionEventAfterEvent {
     private constructor();
-    readonly selectionEvent: PrimarySelectionChangedEvent;
+    readonly volumeEventData?: SelectionContainerVolumeEvent;
 }

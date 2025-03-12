@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentStateChangeEventData, WidgetComponentType, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentType, minecraftserver } from '../index';
 
 export class WidgetComponentBase {
     private constructor();
@@ -11,7 +11,7 @@ export class WidgetComponentBase {
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidWidgetComponentError}
+     * {@link InvalidWidgetComponentError}
      */
     readonly location: minecraftserver.Vector3;
     /**
@@ -49,13 +49,4 @@ export class WidgetComponentBase {
      * {@link InvalidWidgetComponentError}
      */
     delete(): void;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
-     */
-    setStateChangeEvent(eventFunction?: (arg0: WidgetComponentStateChangeEventData) => void): void;
 }

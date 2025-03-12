@@ -10,9 +10,8 @@ export class EntityPushThroughComponent extends EntityComponent {
      * @remarks
      * Value of the push through distances of this entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:push_through';
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityOperationType, Selection, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
+/* IMPORT */ import { EntityOperationType, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -157,23 +157,6 @@ export class TransactionManager {
     trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
     /**
      * @remarks
-     * Begin tracking block changes in an area defined by a {@link
-     * minecraftserver.CompoundBlockVolume}.  These will be added
-     * to a pending changes list.
-     * The pending list will be added to the open transaction
-     * record when a commit has been issued.
-     *
-     * @worldMutation
-     *
-     * @param compoundBlockVolume
-     * {@link minecraftserver.CompoundBlockVolume} to track.  Only
-     * non-void block locations will be tracked -- any changes
-     * falling into a void/negative space will not be tracked
-     * @throws This function can throw errors.
-     */
-    trackBlockChangeCompoundBlockVolume(compoundBlockVolume: minecraftserver.CompoundBlockVolume): boolean;
-    /**
-     * @remarks
      * Begin tracking block changes in a list of specified block
      * locations.
      *
@@ -186,28 +169,11 @@ export class TransactionManager {
     trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
     /**
      * @remarks
-     * Begin tracking block changes that may happen in a selection
-     * volume.
-     * The volume is copied, so tracking will not move if the
-     * selection volume is translated after this instruction is
-     * issued.
-     * Selection Volumes can also represent irregular shapes with
-     * non-contiguous blocks and this tracking call will honor the
-     * actual selected areas in the volume (and not the negative
-     * space) (see {@link minecraftserver.CompoundBlockVolume} for
-     * more details
-     *
      * @worldMutation
      *
-     * @param selection
-     * A collection of block location volumes represented by a
-     * Selection volume to monitor for changes.
-     * The Selection Volume is copied, so further changes to the
-     * volume after this call will not be reflected in the tracking
-     * list.
      * @throws This function can throw errors.
      */
-    trackBlockChangeSelection(selection: Selection): boolean;
+    trackBlockChangeVolume(blockVolume: minecraftserver.BlockVolumeBase): boolean;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last

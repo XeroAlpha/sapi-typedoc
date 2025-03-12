@@ -2,11 +2,18 @@
 
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();
-    clipboardMirror: minecraftserver.StructureMirrorAxis;
-    clipboardNormalizedOrigin: minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     clipboardOffset: minecraftserver.Vector3;
-    clipboardRotation: minecraftserver.StructureRotation;
-    fillColor: minecraftserver.RGBA;
+    highlightHullColor: minecraftserver.RGBA;
+    highlightOutlineColor: minecraftserver.RGBA;
+    hullColor: minecraftserver.RGBA;
+    mirror: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin: minecraftserver.Vector3;
     outlineColor: minecraftserver.RGBA;
-    showBounds: boolean;
+    rotation: minecraftserver.StructureRotation;
+    showOutline: boolean;
 }

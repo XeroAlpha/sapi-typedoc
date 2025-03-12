@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionFormResponse, minecraftserver } from '../index';
+/* IMPORT */ import { ActionFormResponse, minecraftcommon, minecraftserver } from '../index';
 
 /**
  * Builds a simple player form with buttons that let the player
@@ -56,6 +56,12 @@ export class ActionFormData {
      * @param player
      * Player to show this dialog to.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<ActionFormResponse>;
     /**

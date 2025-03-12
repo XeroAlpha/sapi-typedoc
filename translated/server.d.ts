@@ -2624,7 +2624,7 @@ export type EntityComponentTypeMap = {
  */
 export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
     ? ItemComponentTypeMap[T]
-    : ItemComponent;
+    : ItemCustomComponentInstance;
 
 /**
  * @rc
@@ -9370,10 +9370,9 @@ export class EntityPushThroughComponent extends EntityComponent {
      * @remarks
      * Value of the push through distances of this entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:push_through';
 }
 
@@ -10888,6 +10887,15 @@ export class ItemCooldownComponent extends ItemComponent {
 }
 
 /**
+ * @beta
+ * An instance of a custom component on an item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemCustomComponentInstance extends ItemComponent {
+    private constructor();
+}
+
+/**
  * When present on an item, this item can take damage in the
  * process of being used. Note that this component only applies
  * to data-driven items.
@@ -11406,8 +11414,9 @@ export class ItemStack {
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
-     * Available component IDs can be found as part of the {@link
-     * ItemComponentTypes} enum.
+     * Available component IDs are those in the {@link
+     * ItemComponentTypes} enum and custom component IDs registered
+     * with the {@link ItemComponentRegistry}.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
@@ -12560,6 +12569,10 @@ export class Player extends Entity {
      * This method can throw if the provided {@link RawMessage} is
      * in an invalid format. For example, if an empty `name` string
      * is provided to `score`.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample nestedTranslation.ts
      * @seeExample scoreWildcard.ts
      * @seeExample sendBasicMessage.ts
@@ -14552,6 +14565,8 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
@@ -14559,6 +14574,8 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
@@ -14566,15 +14583,20 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
+     * @beta
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
-    resetHudElements(): void;
+    resetHudElementsVisibility(): void;
     /**
      * @remarks
      * Set the action bar text - a piece of text that displays
@@ -14585,6 +14607,10 @@ export class ScreenDisplay {
      * @param text
      * New value for the action bar text.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -14600,6 +14626,8 @@ export class ScreenDisplay {
      * @param hudElements
      * Optional list of HUD elements to configure visibility for.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
@@ -14612,6 +14640,12 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample setTitle.ts
      * @seeExample setTitleAndSubtitle.ts
      * @seeExample countdown.ts
@@ -14625,6 +14659,10 @@ export class ScreenDisplay {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
@@ -18610,6 +18648,11 @@ export class NamespaceNameError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RawMessageError extends Error {
     private constructor();
 }
 

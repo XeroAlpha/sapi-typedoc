@@ -194,6 +194,7 @@ export enum PacketId {
     PlayerHotbarPacket = 'PlayerHotbarPacket',
     PlayerInputPacket = 'PlayerInputPacket',
     PlayerListPacket = 'PlayerListPacket',
+    PlayerLocationPacket = 'PlayerLocationPacket',
     PlayerSkinPacket = 'PlayerSkinPacket',
     PlayerStartItemCooldownPacket = 'PlayerStartItemCooldownPacket',
     PlayerToggleCrafterSlotRequestPacket = 'PlayerToggleCrafterSlotRequestPacket',

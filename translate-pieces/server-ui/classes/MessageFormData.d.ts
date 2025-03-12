@@ -41,6 +41,8 @@ export class MessageFormData {
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     /**

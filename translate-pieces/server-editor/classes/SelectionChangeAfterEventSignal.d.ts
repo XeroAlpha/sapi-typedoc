@@ -1,6 +1,6 @@
 /* IMPORT */ import { SelectionEventAfterEvent } from '../index';
 
-export class PrimarySelectionChangeAfterEventSignal {
+export class SelectionChangeAfterEventSignal {
     private constructor();
     /**
      * @remarks
