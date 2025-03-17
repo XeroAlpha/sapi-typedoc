@@ -1,7 +1,14 @@
 import { SyntaxKind, ts, type NodeParentType } from 'ts-morph';
 import type { Hook } from './hook.js';
 import { installLanguages, type TypeDocLanguages } from '../utils.js';
-import { DocumentReflection, Reflection, TraverseProperty, type CommentDisplayPart } from 'typedoc';
+import {
+    DocumentReflection,
+    i18n,
+    Reflection,
+    translateTagName,
+    TraverseProperty,
+    type CommentDisplayPart
+} from 'typedoc';
 
 declare module 'typedoc' {
     interface TranslatableStrings {
@@ -191,12 +198,12 @@ export default {
             [worldMutationTag]: true
         });
     },
-    afterConvert({ tsdocApplication, tsdocProject }) {
+    afterConvert({ tsdocProject }) {
         const worldMutationSummary = generateFilterResult(tsdocProject, (refl) => {
             return refl.comment?.hasModifier(worldMutationTag) ?? false;
         });
-        const worldMutationTagName = tsdocApplication.internationalization.translateTagName(worldMutationTag);
-        const worldMutationListName = String(tsdocApplication.i18n.execution_privileges_list(worldMutationTagName));
+        const worldMutationTagName = translateTagName(worldMutationTag);
+        const worldMutationListName = String(i18n.execution_privileges_list(worldMutationTagName));
         const worldMutationSummaryRef = new DocumentReflection(
             worldMutationListName,
             tsdocProject,
@@ -209,8 +216,8 @@ export default {
         const earlyExecutionSummary = generateFilterResult(tsdocProject, (refl) => {
             return refl.comment?.hasModifier(earlyExecutionTag) ?? false;
         });
-        const earlyExecutionTagName = tsdocApplication.internationalization.translateTagName(earlyExecutionTag);
-        const earlyExecutionListName = String(tsdocApplication.i18n.execution_privileges_list(earlyExecutionTagName));
+        const earlyExecutionTagName = translateTagName(earlyExecutionTag);
+        const earlyExecutionListName = String(i18n.execution_privileges_list(earlyExecutionTagName));
         const earlyExecutionSummaryRef = new DocumentReflection(
             earlyExecutionListName,
             tsdocProject,

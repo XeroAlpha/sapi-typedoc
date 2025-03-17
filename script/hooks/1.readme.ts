@@ -207,10 +207,10 @@ export default {
             console.error(err);
             return;
         }
-        tsdocApplication.renderer.on(RendererEvent.BEGIN, (output) => {
-            const urlMappings = output.urls;
-            if (!urlMappings) {
-                throw new Error(`Unexpected renderEvent.urls === undefined`);
+        tsdocApplication.renderer.on(RendererEvent.BEGIN, () => {
+            const router = tsdocApplication.renderer.router;
+            if (!router) {
+                throw new Error(`Unexpected renderer.router === undefined`);
             }
             const summaryLines: (string | string[])[] = ['', '', '<div class="readme-modules"><p>模块：</p><ul>'];
             const statusHeadLines: string[] = [
@@ -242,16 +242,13 @@ export default {
                     throw new Error(`Unexpected declarationReflection.sources === undefined`);
                 }
                 const sourceFilePath = moduleRef.sources[0].fullFileName;
-                const moduleUrlMapping = urlMappings.find((mapping) => mapping.model === moduleRef);
-                if (!moduleUrlMapping) {
-                    throw new Error(`Module not found in rendered result`);
-                }
+                const moduleUrl = router.getFullUrl(moduleRef);
                 summaryLines.push([
                     '<li>',
                     '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="readme-module-icon">',
                     '<use href="#icon-2"></use>',
                     '</svg>',
-                    `<a class="readme-module-text" href="${moduleUrlMapping.url}">${moduleFullName}</a>`,
+                    `<a class="readme-module-text" href="${moduleUrl}">${moduleFullName}</a>`,
                     '</li>'
                 ]);
 
@@ -272,14 +269,14 @@ export default {
                     }
                     const piecePath = `translate-pieces/${moduleRef.name}/${kindInfo.category}/${member.name}.d.ts`;
                     const translateState = translateStateMap[piecePath] ?? 'untranslated';
-                    const urlMapping = urlMappings.find((mapping) => mapping.model === member);
+                    const memberUrl = router.getFullUrl(member);
                     if (translateState === 'translated') completedCount += 1;
                     if (translateState === 'wip') wipCount += 1;
                     if (translateState === 'needReview') needReviewCount += 1;
                     totalCount += 1;
-                    if (urlMapping) {
+                    if (memberUrl) {
                         statusLines.push(
-                            `|[\`${member.name}\`](${urlMapping.url})|${kindInfo.name}|${stateDescMap[translateState]}|`
+                            `|[\`${member.name}\`](${memberUrl})|${kindInfo.name}|${stateDescMap[translateState]}|`
                         );
                     } else {
                         statusLines.push(`|\`${member.name}\`|${kindInfo.name}|${stateDescMap[translateState]}|`);

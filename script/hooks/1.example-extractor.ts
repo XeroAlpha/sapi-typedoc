@@ -5,9 +5,11 @@ import { Symbol, SyntaxKind, ts } from 'ts-morph';
 import {
     DefaultTheme,
     DocumentReflection,
+    i18n,
     JSX,
     Reflection,
     ReflectionSymbolId,
+    translateTagName,
     type CommentDisplayPart
 } from 'typedoc';
 import type { Hook } from './hook.js';
@@ -242,15 +244,15 @@ export default {
             };
         });
     },
-    afterConvert({ tsdocApplication, tsdocProject }) {
+    afterConvert({ tsdocProject }) {
         const allReflections = Object.values(tsdocProject.reflections);
         const reflAndSymbolIdMap = allReflections
             .map((refl) => [refl, tsdocProject.getSymbolIdFromReflection(refl)] as const)
             .filter((e): e is [Reflection, ReflectionSymbolId] => e[1] !== undefined);
         const exampleRefls = [];
         // 添加 example 页面
-        const exampleI18N = tsdocApplication.internationalization.translateTagName('@example');
-        const exampleReferencesI18N = String(tsdocApplication.i18n.example_extractor_referenced_by_with_colon());
+        const exampleI18N = translateTagName('@example');
+        const exampleReferencesI18N = String(i18n.example_extractor_referenced_by_with_colon());
         const exampleParentRef = new DocumentReflection(exampleI18N, tsdocProject, [], { title: exampleI18N });
         tsdocProject.registerReflection(exampleParentRef, undefined, undefined);
         tsdocProject.addChild(exampleParentRef);
