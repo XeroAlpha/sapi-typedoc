@@ -1,6 +1,7 @@
 {
   "include": [
-    "./**/*.ts"
+    "./**/*.ts",
+    "eslint.config.mjs"
   ],
   "compilerOptions": {
     "moduleResolution": "NodeNext",
