@@ -118,6 +118,7 @@ export declare enum ContinuousActionState {
  */
 export declare enum CoreActionBarItemType {
     Export = 'editor:actionBarItem:export',
+    Fill = 'editor:actionBarItem:fill',
     Locate = 'editor:actionBarItem:locate',
     Playtest = 'editor:actionBarItem:playtest',
     Realms = 'editor:actionBarItem:realms',
@@ -1644,9 +1645,56 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
+     */
+    getMaxWorldLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getMinWorldLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    isLocationInWorld(
+        locationOrVolumeOrBounds:
+            | minecraftserver.BlockVolumeBase
+            | minecraftserver.BoundingBox
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     quickExtrude(properties?: QuickExtrudeProperties): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    shrinkWrapVolume(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    trimVolumeToFitContents(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        retainMarqueeAfterTrimming: boolean,
+        ignoreLiquid: boolean,
+        ignoreNoCollision: boolean,
+        blockMask?: BlockMaskList,
+    ): RelativeVolumeListBlockVolume;
 }
 
 /**
@@ -2168,6 +2216,13 @@ export declare class CylinderBrushShape extends BrushShape {
     createShape(): RelativeVolumeListBlockVolume;
 }
 
+export class EditorConstants {
+    private constructor();
+    readonly maxSelectionSize: minecraftserver.Vector3;
+    readonly maxStructureOffset: minecraftserver.Vector3;
+    readonly minStructureOffset: minecraftserver.Vector3;
+}
+
 export class EditorStructureManager {
     private constructor();
     /**
@@ -2604,6 +2659,7 @@ export class Logger {
  */
 export class MinecraftEditor {
     private constructor();
+    readonly constants: EditorConstants;
     /**
      * @remarks
      * A global instance of the log output class object.  This is
@@ -4556,20 +4612,29 @@ export interface GameOptions {
     bonusChest?: boolean;
     cheats?: boolean;
     commandBlockEnabled?: boolean;
+    commandBlockOutput?: boolean;
     daylightCycle?: DaylightCycle;
     difficulty?: minecraftserver.Difficulty;
     dimensionId?: string;
     disableWeather?: boolean;
+    drowningDamage?: boolean;
     educationEdition?: boolean;
     entitiesDropLoot?: boolean;
     exportType?: ProjectExportType;
+    fallDamage?: boolean;
+    fireDamage?: boolean;
     fireSpreads?: boolean;
+    freezeDamage?: boolean;
     friendlyFire?: boolean;
+    functionCommandLimit?: number;
     gameMode?: minecraftserver.GameMode;
     hardcore?: boolean;
     immediateRespawn?: boolean;
+    insomnia?: boolean;
     keepInventory?: boolean;
     lanVisibility?: boolean;
+    limitedCrafting?: boolean;
+    maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
     mobSpawning?: boolean;
@@ -4581,8 +4646,12 @@ export interface GameOptions {
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
     respawnRadius?: number;
+    sendCommandFeedback?: boolean;
+    showBorderEffect?: boolean;
     showCoordinates?: boolean;
     showDaysPlayed?: boolean;
+    showDeathMessage?: boolean;
+    showItemTags?: boolean;
     simulationDistance?: number;
     sleepSkipPercent?: number;
     spawnPosition?: minecraftserver.Vector3;

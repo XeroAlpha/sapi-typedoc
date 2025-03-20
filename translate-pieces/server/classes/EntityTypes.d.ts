@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityType } from '../index';
+/* IMPORT */ import { EntityIdentifierType, EntityType } from '../index';
 
 /**
  * Used for accessing all entity types currently available for
@@ -11,7 +11,7 @@ export class EntityTypes {
      * Retrieves an entity type using a string-based identifier.
      *
      */
-    static get(identifier: string): EntityType | undefined;
+    static get<T = never>(identifier: EntityIdentifierType<NoInfer<T>>): EntityType | undefined;
     /**
      * @remarks
      * Retrieves a set of all entity types within this world.

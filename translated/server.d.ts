@@ -2620,6 +2620,15 @@ export type EntityComponentTypeMap = {
 };
 
 /**
+ * @beta
+ */
+export type EntityIdentifierType<T> = [T] extends [never]
+    ? VanillaEntityIdentifier
+    : T extends string
+    ? VanillaEntityIdentifier | T
+    : never;
+
+/**
  * @rc
  */
 export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
@@ -2645,6 +2654,15 @@ export type ItemComponentTypeMap = {
     'minecraft:potion': ItemPotionComponent;
     potion: ItemPotionComponent;
 };
+
+/**
+ * @beta
+ */
+export type VanillaEntityIdentifier =
+    | EntityType
+    | minecraftvanilladata.MinecraftEntityTypes
+    | `${minecraftvanilladata.MinecraftEntityTypes}`
+    | `${minecraftvanilladata.MinecraftEntityTypes}<${string}>`;
 
 /**
  * @beta
@@ -3313,7 +3331,7 @@ export class Block {
      * @remarks
      * Checks to see whether it is valid to place the specified
      * block type or block permutation, on a specified face on this
-     * block
+     * block.
      *
      * @param blockToPlace
      * Block type or block permutation to check placement for.
@@ -6477,7 +6495,11 @@ export class Dimension {
      * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts b473e4eb
      */
-    spawnEntity(identifier: EntityType | string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    spawnEntity<T = never>(
+        identifier: EntityIdentifierType<NoInfer<T>>,
+        location: Vector3,
+        options?: SpawnEntityOptions,
+    ): Entity;
     /**
      * @remarks
      * Creates a new item stack as an entity at the specified
@@ -8797,10 +8819,9 @@ export class EntityMarkVariantComponent extends EntityComponent {
      * @remarks
      * Value of the mark variant value for this entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:mark_variant';
 }
 
@@ -9936,7 +9957,7 @@ export class EntityTypes {
      * Retrieves an entity type using a string-based identifier.
      *
      */
-    static get(identifier: string): EntityType | undefined;
+    static get<T = never>(identifier: EntityIdentifierType<NoInfer<T>>): EntityType | undefined;
     /**
      * @remarks
      * Retrieves a set of all entity types within this world.
@@ -12399,7 +12420,7 @@ export class Player extends Entity {
      */
     addLevels(amount: number): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, removes all overrides of any Entity
      * Properties on the target Entity. This change is not applied
@@ -12531,7 +12552,7 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, removes the override on an Entity Property.
      * This change is not applied until the next tick and will not
@@ -12603,7 +12624,7 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, overrides an Entity Property on the target
      * Entity to the provided value. This property must be client

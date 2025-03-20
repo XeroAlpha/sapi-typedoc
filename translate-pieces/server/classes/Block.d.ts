@@ -213,7 +213,7 @@ export class Block {
      * @remarks
      * Checks to see whether it is valid to place the specified
      * block type or block permutation, on a specified face on this
-     * block
+     * block.
      *
      * @param blockToPlace
      * Block type or block permutation to check placement for.
