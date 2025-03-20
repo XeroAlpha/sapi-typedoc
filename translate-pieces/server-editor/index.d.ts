@@ -108,6 +108,7 @@ export { Cursor } from './classes/Cursor';
 export { CursorPropertiesChangeAfterEvent } from './classes/CursorPropertiesChangeAfterEvent';
 export { CursorPropertyChangeAfterEventSignal } from './classes/CursorPropertyChangeAfterEventSignal';
 export { CylinderBrushShape } from './classes/CylinderBrushShape';
+export { EditorConstants } from './classes/EditorConstants';
 export { EditorStructureManager } from './classes/EditorStructureManager';
 export { EllipsoidBrushShape } from './classes/EllipsoidBrushShape';
 export { EntityIdentifierObservableValidator } from './classes/EntityIdentifierObservableValidator';

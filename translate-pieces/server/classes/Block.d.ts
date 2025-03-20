@@ -301,7 +301,7 @@ export class Block {
      *
      * Checks to see whether it is valid to place the specified
      * block type or block permutation, on a specified face on this
-     * block
+     * block.
      *
      * @param blockToPlace
      * 被检查放置可行性的{@link BlockPermutation}或{@link BlockType}或方块标识符。

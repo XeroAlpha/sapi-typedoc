@@ -150,7 +150,7 @@ export class Player extends Entity {
      */
     addLevels(amount: number): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, removes all overrides of any Entity
      * Properties on the target Entity. This change is not applied
@@ -282,7 +282,7 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, removes the override on an Entity Property.
      * This change is not applied until the next tick and will not
@@ -354,7 +354,7 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * For this player, overrides an Entity Property on the target
      * Entity to the provided value. This property must be client

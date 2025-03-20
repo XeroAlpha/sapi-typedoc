@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { BlockMaskList, ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
 
 export class BlockUtilities {
     private constructor();
@@ -34,7 +34,54 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
+     */
+    getMaxWorldLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getMinWorldLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    isLocationInWorld(
+        locationOrVolumeOrBounds:
+            | minecraftserver.BlockVolumeBase
+            | minecraftserver.BoundingBox
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3,
+    ): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     quickExtrude(properties?: QuickExtrudeProperties): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    shrinkWrapVolume(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    trimVolumeToFitContents(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        retainMarqueeAfterTrimming: boolean,
+        ignoreLiquid: boolean,
+        ignoreNoCollision: boolean,
+        blockMask?: BlockMaskList,
+    ): RelativeVolumeListBlockVolume;
 }

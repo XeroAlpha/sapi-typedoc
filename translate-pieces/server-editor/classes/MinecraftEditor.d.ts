@@ -1,4 +1,4 @@
-/* IMPORT */ import { Logger, SimulationState } from '../index';
+/* IMPORT */ import { EditorConstants, Logger, SimulationState } from '../index';
 
 /**
  * The MinecraftEditor class is a namespace container for
@@ -6,6 +6,7 @@
  */
 export class MinecraftEditor {
     private constructor();
+    readonly constants: EditorConstants;
     /**
      * @remarks
      * A global instance of the log output class object.  This is
