@@ -1,7 +1,6 @@
 /* IMPORT */ import { ButtonState, InputButton, Player } from '../index';
 
 /**
- * @rc
  * Event data for when a player presses a button.
  */
 export class PlayerButtonInputAfterEvent {

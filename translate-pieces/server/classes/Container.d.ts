@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, ItemStack } from '../index';
+/* IMPORT */ import { ContainerSlot, InvalidContainerError, ItemStack } from '../index';
 
 /**
  * Represents a container that can hold sets of items. Used
@@ -61,6 +61,51 @@ export class Container {
      */
     clearAll(): void;
     /**
+     * @beta
+     * @remarks
+     * Attempts to find an item inside the container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    contains(itemStack: ItemStack): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Find the index of the first instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    find(itemStack: ItemStack): number;
+    /**
+     * @beta
+     * @remarks
+     * Finds the index of the first empty slot inside the container
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstEmptySlot(): number;
+    /**
+     * @beta
+     * @remarks
+     * Finds the index of the first item inside the container
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstItem(): number;
+    /**
      * @remarks
      * Gets an {@link ItemStack} of the item at the specified slot.
      * If the slot is empty, returns `undefined`. This method does
@@ -111,6 +156,13 @@ export class Container {
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    reverseFind(itemStack: ItemStack): number;
     /**
      * @remarks
      * Sets an item stack within a particular slot.

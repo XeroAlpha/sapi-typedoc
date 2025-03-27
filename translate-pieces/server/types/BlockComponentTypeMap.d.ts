@@ -1,8 +1,5 @@
 /* IMPORT */ import { BlockDestructionParticlesComponent, BlockFluidContainerComponent, BlockInventoryComponent, BlockMapColorComponent, BlockPistonComponent, BlockRecordPlayerComponent, BlockSignComponent } from '../index';
 
-/**
- * @rc
- */
 export type BlockComponentTypeMap = {
     destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;

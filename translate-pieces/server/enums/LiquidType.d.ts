@@ -1,5 +1,4 @@
 /**
- * @rc
  * Represents the type of liquid that can be placed on a block
  * or flow dynamically in the world.
  */

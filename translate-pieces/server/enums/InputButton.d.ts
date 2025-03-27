@@ -1,7 +1,6 @@
 /* IMPORT */ import { InputInfo, PlayerButtonInputAfterEvent, WorldAfterEvents } from '../index';
 
 /**
- * @rc
  * All the different input buttons that are supported. Use with
  * {@link InputInfo.getButtonState} via {@link
  * Player.inputInfo} or {@link PlayerButtonInputAfterEvent} via

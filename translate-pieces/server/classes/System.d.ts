@@ -141,7 +141,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @rc
      * @remarks
      * Causes an event to fire within script with the specified
      * message ID and payload.

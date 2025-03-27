@@ -236,7 +236,6 @@ export class WorldAfterEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an {@link InputButton} state is
      * changed.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentRegistry, ItemComponentRegistry } from '../index';
+/* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, ItemComponentRegistry } from '../index';
 
 /**
  * @beta
@@ -11,6 +11,12 @@ export class StartupEvent {
      *
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly customCommandRegistry: CustomCommandRegistry;
     /**
      * @remarks
      * @earlyExecution

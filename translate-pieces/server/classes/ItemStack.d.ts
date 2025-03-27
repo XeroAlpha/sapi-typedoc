@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3 } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3, minecraftcommon } from '../index';
 
 /**
  * Defines a collection of items.
@@ -35,6 +35,17 @@ export class ItemStack {
      *
      */
     keepOnDeath: boolean;
+    /**
+     * @beta
+     * @remarks
+     * key for the localization of this items's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly localizationKey: string;
     /**
      * @remarks
      * Gets or sets the item's lock mode. The default value is

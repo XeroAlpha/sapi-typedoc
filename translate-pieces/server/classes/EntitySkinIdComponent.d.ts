@@ -11,9 +11,8 @@ export class EntitySkinIdComponent extends EntityComponent {
      * @remarks
      * Returns the value of the skin Id identifier of the entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:skin_id';
 }
