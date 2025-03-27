@@ -75,6 +75,19 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
+     * @beta
+     * @remarks
+     * key for the localization of this block's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * Coordinates of the specified block.
      *
@@ -171,7 +184,6 @@ export class Block {
      */
     bottomCenter(): Vector3;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -190,7 +202,6 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -350,7 +361,6 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -368,7 +378,6 @@ export class Block {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether liquid can flow into the block from the
      * provided direction, or flow out from the provided direction
@@ -390,7 +399,6 @@ export class Block {
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.

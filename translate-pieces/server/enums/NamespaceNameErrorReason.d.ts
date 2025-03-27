@@ -1,5 +1,4 @@
 /**
- * @rc
  * An enumeration describing the reason for the namespace name
  * error being thrown
  */

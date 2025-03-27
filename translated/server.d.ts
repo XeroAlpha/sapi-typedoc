@@ -133,7 +133,6 @@ export enum BlockVolumeIntersection {
 }
 
 /**
- * @rc
  * The state of a button on a keyboard, controller, or touch
  * interface.
  */
@@ -189,6 +188,99 @@ export enum CompoundBlockVolumePositionRelativity {
      *
      */
     Absolute = 1,
+}
+
+/**
+ * @beta
+ * Reason why custom command registration failed.
+ */
+export enum CustomCommandErrorReason {
+    /**
+     * @remarks
+     * Command name already registered.
+     *
+     */
+    AlreadyRegistered = 'AlreadyRegistered',
+    /**
+     * @remarks
+     * Too many command parameters defined in CustomCommand.
+     *
+     */
+    ParameterLimit = 'ParameterLimit',
+    /**
+     * @remarks
+     * Custom command registry can not be accessed after world
+     * initialized event.
+     *
+     */
+    RegistryInvalid = 'RegistryInvalid',
+    /**
+     * @remarks
+     * Command parameters cannot be redefined during reload. Only
+     * the script closure itself can be changed.
+     *
+     */
+    RegistryReadOnly = 'RegistryReadOnly',
+}
+
+/**
+ * @beta
+ */
+export enum CustomCommandParamType {
+    Boolean = 0,
+    Integer = 1,
+    Float = 2,
+    String = 3,
+    EntitySelector = 4,
+    PlayerSelector = 5,
+    Position = 6,
+    BlockType = 7,
+    ItemType = 8,
+}
+
+/**
+ * @beta
+ * The required permission level to execute the custom command.
+ */
+export enum CustomCommandPermissionLevel {
+    /**
+     * @remarks
+     * Anything can run this level.
+     *
+     */
+    Any = 0,
+    /**
+     * @remarks
+     * Any operator can run this command, including command blocks.
+     *
+     */
+    GameDirectors = 1,
+    /**
+     * @remarks
+     * Any operator can run this command, but NOT command blocks.
+     *
+     */
+    Admin = 2,
+    /**
+     * @remarks
+     * Any server host can run this command.
+     *
+     */
+    Host = 3,
+    /**
+     * @remarks
+     * Only dedicated server can run this command.
+     *
+     */
+    Owner = 4,
+}
+
+/**
+ * @beta
+ */
+export enum CustomCommandStatus {
+    Success = 0,
+    Failure = 1,
 }
 
 export enum CustomComponentNameErrorReason {
@@ -1648,7 +1740,6 @@ export enum HudVisibility {
 }
 
 /**
- * @rc
  * All the different input buttons that are supported. Use with
  * {@link InputInfo.getButtonState} via {@link
  * Player.inputInfo} or {@link PlayerButtonInputAfterEvent} via
@@ -1856,7 +1947,6 @@ export enum ItemLockMode {
 }
 
 /**
- * @rc
  * Represents the type of liquid that can be placed on a block
  * or flow dynamically in the world.
  */
@@ -1969,7 +2059,6 @@ export enum MoonPhase {
 }
 
 /**
- * @rc
  * An enumeration describing the reason for the namespace name
  * error being thrown
  */
@@ -2434,16 +2523,10 @@ export enum WeatherType {
     Thunder = 'Thunder',
 }
 
-/**
- * @rc
- */
 export type BlockComponentReturnType<T extends string> = T extends keyof BlockComponentTypeMap
     ? BlockComponentTypeMap[T]
     : BlockComponent;
 
-/**
- * @rc
- */
 export type BlockComponentTypeMap = {
     destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
@@ -2462,7 +2545,6 @@ export type BlockComponentTypeMap = {
 };
 
 /**
- * @rc
  * Type alias used by the {@link BlockPermutation} matches and
  * resolve functions to narrow block state argument types to
  * those mapped by {@link
@@ -2474,16 +2556,10 @@ export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockT
         : never
     : Record<string, boolean | number | string>;
 
-/**
- * @rc
- */
 export type EntityComponentReturnType<T extends string> = T extends keyof EntityComponentTypeMap
     ? EntityComponentTypeMap[T]
     : EntityComponent;
 
-/**
- * @rc
- */
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
     ageable: EntityAgeableComponent;
@@ -2628,16 +2704,10 @@ export type EntityIdentifierType<T> = [T] extends [never]
     ? VanillaEntityIdentifier | T
     : never;
 
-/**
- * @rc
- */
 export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
     ? ItemComponentTypeMap[T]
     : ItemCustomComponentInstance;
 
-/**
- * @rc
- */
 export type ItemComponentTypeMap = {
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
@@ -3193,6 +3263,19 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
+     * @beta
+     * @remarks
+     * key for the localization of this block's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * Coordinates of the specified block.
      *
@@ -3289,7 +3372,6 @@ export class Block {
      */
     bottomCenter(): Vector3;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -3308,7 +3390,6 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -3468,7 +3549,6 @@ export class Block {
      */
     hasTag(tag: string): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -3486,7 +3566,6 @@ export class Block {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether liquid can flow into the block from the
      * provided direction, or flow out from the provided direction
@@ -3508,7 +3587,6 @@ export class Block {
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.
@@ -4174,7 +4252,6 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -4189,7 +4266,6 @@ export class BlockPermutation {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -4253,7 +4329,6 @@ export class BlockPermutation {
      */
     hasTag(tag: string): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -4267,7 +4342,6 @@ export class BlockPermutation {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.
@@ -5503,6 +5577,51 @@ export class Container {
      */
     clearAll(): void;
     /**
+     * @beta
+     * @remarks
+     * Attempts to find an item inside the container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    contains(itemStack: ItemStack): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Find the index of the first instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    find(itemStack: ItemStack): number;
+    /**
+     * @beta
+     * @remarks
+     * Finds the index of the first empty slot inside the container
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstEmptySlot(): number;
+    /**
+     * @beta
+     * @remarks
+     * Finds the index of the first item inside the container
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstItem(): number;
+    /**
      * @remarks
      * Gets an {@link ItemStack} of the item at the specified slot.
      * If the slot is empty, returns `undefined`. This method does
@@ -5553,6 +5672,13 @@ export class Container {
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
+    /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    reverseFind(itemStack: ItemStack): number;
     /**
      * @remarks
      * Sets an item stack within a particular slot.
@@ -5980,6 +6106,34 @@ export class ContainerSlot {
      * {@link InvalidContainerSlotError}
      */
     setLore(loreList?: string[]): void;
+}
+
+/**
+ * @beta
+ * Provides the functionality for registering custom commands.
+ */
+export class CustomCommandRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers a custom command that when executed triggers a
+     * script callback.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback triggered when the command executes.
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerCommand(customCommand: CustomCommand, callback: (...args: any[]) => CustomCommandResult | undefined): void;
 }
 
 /**
@@ -6939,6 +7093,17 @@ export class Entity {
      *
      */
     readonly isValid: boolean;
+    /**
+     * @beta
+     * @remarks
+     * key for the localization of this entity's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly localizationKey: string;
     /**
      * @remarks
      * Current location of the entity.
@@ -9679,10 +9844,9 @@ export class EntitySkinIdComponent extends EntityComponent {
      * @remarks
      * Returns the value of the skin Id identifier of the entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:skin_id';
 }
 
@@ -10519,7 +10683,6 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
-     * @rc
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -10528,7 +10691,6 @@ export class InputInfo {
      */
     getButtonState(button: InputButton): ButtonState;
     /**
-     * @rc
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
@@ -11331,6 +11493,17 @@ export class ItemStack {
      *
      */
     keepOnDeath: boolean;
+    /**
+     * @beta
+     * @remarks
+     * key for the localization of this items's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly localizationKey: string;
     /**
      * @remarks
      * Gets or sets the item's lock mode. The default value is
@@ -12420,7 +12593,6 @@ export class Player extends Entity {
      */
     addLevels(amount: number): number;
     /**
-     * @rc
      * @remarks
      * For this player, removes all overrides of any Entity
      * Properties on the target Entity. This change is not applied
@@ -12552,7 +12724,6 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @rc
      * @remarks
      * For this player, removes the override on an Entity Property.
      * This change is not applied until the next tick and will not
@@ -12624,7 +12795,6 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
-     * @rc
      * @remarks
      * For this player, overrides an Entity Property on the target
      * Entity to the provided value. This property must be client
@@ -12666,7 +12836,6 @@ export class Player extends Entity {
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
-     * @rc
      * @remarks
      * Creates a new particle emitter at a specified location in
      * the world. Only visible to the target player.
@@ -12887,7 +13056,6 @@ export class PlayerBreakBlockBeforeEventSignal {
 }
 
 /**
- * @rc
  * Event data for when a player presses a button.
  */
 export class PlayerButtonInputAfterEvent {
@@ -12913,7 +13081,6 @@ export class PlayerButtonInputAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to player inputs.
  */
 export class PlayerButtonInputAfterEventSignal {
@@ -14910,6 +15077,12 @@ export class StartupEvent {
      * @earlyExecution
      *
      */
+    readonly customCommandRegistry: CustomCommandRegistry;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
@@ -15414,7 +15587,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @rc
      * @remarks
      * Causes an event to fire within script with the specified
      * message ID and payload.
@@ -16396,7 +16568,6 @@ export class WorldAfterEvents {
      */
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an {@link InputButton} state is
      * changed.
@@ -17155,6 +17326,84 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
+ * @beta
+ * Define the custom command, including name, permissions, and
+ * parameters.
+ */
+export interface CustomCommand {
+    /**
+     * @remarks
+     * Command description as seen on the command line.
+     *
+     */
+    description: string;
+    /**
+     * @remarks
+     * List of mandatory command parameters.
+     *
+     */
+    mandatoryParameters?: CustomCommandParameter[];
+    /**
+     * @remarks
+     * The name of the command. A namespace is required.
+     *
+     */
+    name: string;
+    /**
+     * @remarks
+     * List of optional command parameters.
+     *
+     */
+    optionalParameters?: CustomCommandParameter[];
+    /**
+     * @remarks
+     * The permission level required to execute the command.
+     *
+     */
+    permissionLevel: CustomCommandPermissionLevel;
+}
+
+/**
+ * @beta
+ * Definition for each parameter expected by the custom
+ * command.
+ */
+export interface CustomCommandParameter {
+    /**
+     * @remarks
+     * The name of parameter as it appears on the command line.
+     *
+     */
+    name: string;
+    /**
+     * @remarks
+     * The data type of the parameter.
+     *
+     */
+    type: CustomCommandParamType;
+}
+
+/**
+ * @beta
+ * Interface returned from custom command callback function.
+ */
+export interface CustomCommandResult {
+    /**
+     * @remarks
+     * Message displayed to chat after command execution.
+     *
+     */
+    message?: string;
+    /**
+     * @remarks
+     * Command execution Success or Failure. Determines how the
+     * status message is displayed.
+     *
+     */
+    status: CustomCommandStatus;
+}
+
+/**
  * Contains a set of updates to the component definition state
  * of an entity.
  */
@@ -17734,7 +17983,6 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
@@ -18513,6 +18761,23 @@ export class CommandError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ * Error object thrown when CustomCommandRegistry errors occur.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomCommandError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * Reason for the error.
+     *
+     * @earlyExecution
+     *
+     */
+    reason: CustomCommandErrorReason;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class CustomComponentInvalidRegistryError extends Error {
     private constructor();
@@ -18541,6 +18806,14 @@ export class EnchantmentTypeNotCompatibleError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidContainerError extends Error {
     private constructor();
 }
 
@@ -18649,7 +18922,6 @@ export class LocationOutOfWorldBoundariesError extends Error {
 }
 
 /**
- * @rc
  * Thrown when a name requires a namespace and an error occurs
  * when validating that namespace
  */

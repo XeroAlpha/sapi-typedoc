@@ -1,7 +1,6 @@
 /* IMPORT */ import { ButtonState, InputButton } from '../index';
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided

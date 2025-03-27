@@ -16,7 +16,6 @@ export class BlockPermutation {
      */
     readonly 'type': BlockType;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -31,7 +30,6 @@ export class BlockPermutation {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block can have a liquid placed over it,
      * i.e. be waterlogged.
@@ -95,7 +93,6 @@ export class BlockPermutation {
      */
     hasTag(tag: string): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block stops liquid from flowing.
      *
@@ -109,7 +106,6 @@ export class BlockPermutation {
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether this block is removed and spawns its item
      * when touched by liquid.

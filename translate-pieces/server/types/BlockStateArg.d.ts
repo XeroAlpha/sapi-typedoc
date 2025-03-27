@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockPermutation, minecraftvanilladata } from '../index';
 
 /**
- * @rc
  * Type alias used by the {@link BlockPermutation} matches and
  * resolve functions to narrow block state argument types to
  * those mapped by {@link

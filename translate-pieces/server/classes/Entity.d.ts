@@ -101,6 +101,17 @@ export class Entity {
      */
     readonly isValid: boolean;
     /**
+     * @beta
+     * @remarks
+     * key for the localization of this entity's name used in .lang
+     * files.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * Current location of the entity.
      *
