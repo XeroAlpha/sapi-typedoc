@@ -26,6 +26,75 @@
  */
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
+export class AdminBeforeEvents {
+    private constructor();
+    /**
+     * @remarks
+     * This event is fired before a player joins the world. Unlike
+     * other before events, this event is a before event that you
+     * can delay several ticks by not resolving the promise
+     * returned in the subscribe function. If the promise is
+     * rejected, the client is rejected.
+     *
+     */
+    readonly asyncPlayerJoin: AsyncPlayerJoinBeforeEventSignal;
+}
+
+/**
+ * The data available before a player joins the world.
+ */
+export class AsyncPlayerJoinBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The player's name
+     *
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * An identifier that can be used to identify a player across
+     * sessions.
+     *
+     */
+    readonly persistentId: string;
+    /**
+     * @remarks
+     * Call this to disconnect a player. They will be allowed to
+     * try to join again.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link DisconnectedError}
+     */
+    disconnect(reason?: string): void;
+    /**
+     * @remarks
+     * Will return true if the player is still waiting to join the
+     * world. If they disconnect then it will return false.
+     *
+     */
+    isValid(): boolean;
+}
+
+export class AsyncPlayerJoinBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Add a callback that's ran before a player joins the world.
+     * This callback returns a promise and the player won't join
+     * until that promise is resolved. If the promise is not
+     * resolved within a reasonable time, the player joining will
+     * be rejected. If the player joining leaves/disconnects, then
+     * the event data's isValid will return false.
+     *
+     */
+    subscribe(
+        callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>,
+    ): (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>;
+    unsubscribe(callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>): boolean;
+}
+
 /**
  * This represents a placeholder object that represents a
  * secret string. The contents of that string are not available
@@ -86,7 +155,24 @@ export class ServerVariables {
      * @earlyExecution
      *
      */
-    get(name: string): any | undefined;
+    get(name: string): unknown | undefined;
+}
+
+/**
+ * An error that is thrown when trying to interact with a join
+ * event and the player is disconnected.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DisconnectedError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The id of the player that was disconnected.
+     *
+     * @earlyExecution
+     *
+     */
+    id: string;
 }
 
 /**
@@ -104,6 +190,7 @@ export class ServerVariables {
  * @throws This function can throw errors.
  */
 export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
+export const beforeEvents: AdminBeforeEvents;
 /**
  * @remarks
  * A globally available object that returns a list of

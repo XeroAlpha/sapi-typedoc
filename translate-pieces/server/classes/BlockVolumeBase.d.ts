@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockLocationIterator, BoundingBox, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, Vector3 } from '../index';
 
 /**
  * Base type for BlockVolumes.
@@ -15,12 +15,12 @@ export class BlockVolumeBase {
     /**
      * @beta
      * @remarks
-     * Return a {@link BoundingBox} object which represents the
-     * validated min and max coordinates of the volume
+     * Return a {@link BlockBoundingBox} object which represents
+     * the validated min and max coordinates of the volume
      *
      * @throws This function can throw errors.
      */
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * Return the capacity (volume) of the BlockVolume (W*D*H)

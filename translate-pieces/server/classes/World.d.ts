@@ -109,7 +109,7 @@ export class World {
      */
     getDefaultSpawnLocation(): Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the difficulty from the world.
      *
@@ -270,7 +270,7 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the worlds difficulty.
      *

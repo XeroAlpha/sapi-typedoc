@@ -21,5 +21,5 @@ export class ServerVariables {
      * @earlyExecution
      *
      */
-    get(name: string): any | undefined;
+    get(name: string): unknown | undefined;
 }

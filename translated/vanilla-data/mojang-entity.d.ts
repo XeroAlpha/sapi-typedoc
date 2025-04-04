@@ -49,6 +49,7 @@ export declare enum MinecraftEntityTypes {
     GlowSquid = "minecraft:glow_squid",
     Goat = "minecraft:goat",
     Guardian = "minecraft:guardian",
+    HappyGhast = "minecraft:happy_ghast",
     Hoglin = "minecraft:hoglin",
     HopperMinecart = "minecraft:hopper_minecart",
     Horse = "minecraft:horse",
