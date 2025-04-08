@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomCommandParameter, CustomCommandPermissionLevel } from '../index';
+/* IMPORT */ import { CommandPermissionLevel, CustomCommandParameter } from '../index';
 
 /**
  * @beta
@@ -35,5 +35,5 @@ export interface CustomCommand {
      * The permission level required to execute the command.
      *
      */
-    permissionLevel: CustomCommandPermissionLevel;
+    permissionLevel: CommandPermissionLevel;
 }

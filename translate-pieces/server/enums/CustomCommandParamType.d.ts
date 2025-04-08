@@ -8,7 +8,7 @@ export enum CustomCommandParamType {
     String = 3,
     EntitySelector = 4,
     PlayerSelector = 5,
-    Position = 6,
+    Location = 6,
     BlockType = 7,
     ItemType = 8,
 }

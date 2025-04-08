@@ -158,6 +158,12 @@ export class Container {
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
      * @beta
+     * @remarks
+     * Find the index of the last instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerError}

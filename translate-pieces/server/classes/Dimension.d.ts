@@ -276,7 +276,7 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places the given feature into the dimension at the specified
      * location.
@@ -306,7 +306,7 @@ export class Dimension {
      */
     placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places the given feature rule into the dimension at the
      * specified location.

@@ -210,6 +210,7 @@ export declare enum MinecraftItemTypes {
     BlackDye = "minecraft:black_dye",
     /** 黑色带釉陶瓦。 */
     BlackGlazedTerracotta = "minecraft:black_glazed_terracotta",
+    BlackHarness = "minecraft:black_harness",
     /** 黑色潜影盒。 */
     BlackShulkerBox = "minecraft:black_shulker_box",
     /** 黑色染色玻璃。 */
@@ -254,6 +255,7 @@ export declare enum MinecraftItemTypes {
     BlueEgg = "minecraft:blue_egg",
     /** 蓝色带釉陶瓦。 */
     BlueGlazedTerracotta = "minecraft:blue_glazed_terracotta",
+    BlueHarness = "minecraft:blue_harness",
     /** 蓝冰。 */
     BlueIce = "minecraft:blue_ice",
     /** 兰花。 */
@@ -332,6 +334,7 @@ export declare enum MinecraftItemTypes {
     BrownEgg = "minecraft:brown_egg",
     /** 棕色带釉陶瓦。 */
     BrownGlazedTerracotta = "minecraft:brown_glazed_terracotta",
+    BrownHarness = "minecraft:brown_harness",
     /** 棕色蘑菇。 */
     BrownMushroom = "minecraft:brown_mushroom",
     /** 棕色蘑菇方块。 */
@@ -656,6 +659,7 @@ export declare enum MinecraftItemTypes {
     CyanDye = "minecraft:cyan_dye",
     /** 青色带釉陶瓦。 */
     CyanGlazedTerracotta = "minecraft:cyan_glazed_terracotta",
+    CyanHarness = "minecraft:cyan_harness",
     /** 青色潜影盒。 */
     CyanShulkerBox = "minecraft:cyan_shulker_box",
     /** 青色染色玻璃。 */
@@ -838,6 +842,8 @@ export declare enum MinecraftItemTypes {
     DragonEgg = "minecraft:dragon_egg",
     /** 龙首。 */
     DragonHead = "minecraft:dragon_head",
+    /** Dried Ghast。 */
+    DriedGhast = "minecraft:dried_ghast",
     /** 干海带。 */
     DriedKelp = "minecraft:dried_kelp",
     /** 干海带块。 */
@@ -1084,6 +1090,7 @@ export declare enum MinecraftItemTypes {
     GrayDye = "minecraft:gray_dye",
     /** 灰色带釉陶瓦。 */
     GrayGlazedTerracotta = "minecraft:gray_glazed_terracotta",
+    GrayHarness = "minecraft:gray_harness",
     /** 灰色潜影盒。 */
     GrayShulkerBox = "minecraft:gray_shulker_box",
     /** 灰色染色玻璃。 */
@@ -1108,6 +1115,7 @@ export declare enum MinecraftItemTypes {
     GreenDye = "minecraft:green_dye",
     /** 绿色带釉陶瓦。 */
     GreenGlazedTerracotta = "minecraft:green_glazed_terracotta",
+    GreenHarness = "minecraft:green_harness",
     /** 绿色潜影盒。 */
     GreenShulkerBox = "minecraft:green_shulker_box",
     /** 绿色染色玻璃。 */
@@ -1130,6 +1138,7 @@ export declare enum MinecraftItemTypes {
     GusterPotterySherd = "minecraft:guster_pottery_sherd",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
+    HappyGhastSpawnEgg = "minecraft:happy_ghast_spawn_egg",
     /** 陶瓦。 */
     HardenedClay = "minecraft:hardened_clay",
     /** 干草捆。 */
@@ -1348,6 +1357,7 @@ export declare enum MinecraftItemTypes {
     LightBlueDye = "minecraft:light_blue_dye",
     /** 淡蓝色带釉陶瓦。 */
     LightBlueGlazedTerracotta = "minecraft:light_blue_glazed_terracotta",
+    LightBlueHarness = "minecraft:light_blue_harness",
     /** 淡蓝色潜影盒。 */
     LightBlueShulkerBox = "minecraft:light_blue_shulker_box",
     /** 淡蓝色染色玻璃。 */
@@ -1370,6 +1380,7 @@ export declare enum MinecraftItemTypes {
     LightGrayConcretePowder = "minecraft:light_gray_concrete_powder",
     /** 淡灰色染料。 */
     LightGrayDye = "minecraft:light_gray_dye",
+    LightGrayHarness = "minecraft:light_gray_harness",
     /** 淡灰色潜影盒。 */
     LightGrayShulkerBox = "minecraft:light_gray_shulker_box",
     /** 淡灰色染色玻璃。 */
@@ -1402,6 +1413,7 @@ export declare enum MinecraftItemTypes {
     LimeDye = "minecraft:lime_dye",
     /** 黄绿色带釉陶瓦。 */
     LimeGlazedTerracotta = "minecraft:lime_glazed_terracotta",
+    LimeHarness = "minecraft:lime_harness",
     /** 黄绿色潜影盒。 */
     LimeShulkerBox = "minecraft:lime_shulker_box",
     /** 黄绿色染色玻璃。 */
@@ -1440,6 +1452,7 @@ export declare enum MinecraftItemTypes {
     MagentaDye = "minecraft:magenta_dye",
     /** 品红色带釉陶瓦。 */
     MagentaGlazedTerracotta = "minecraft:magenta_glazed_terracotta",
+    MagentaHarness = "minecraft:magenta_harness",
     /** 品红色潜影盒。 */
     MagentaShulkerBox = "minecraft:magenta_shulker_box",
     /** 品红色染色玻璃。 */
@@ -1706,6 +1719,7 @@ export declare enum MinecraftItemTypes {
     OrangeDye = "minecraft:orange_dye",
     /** 橙色带釉陶瓦。 */
     OrangeGlazedTerracotta = "minecraft:orange_glazed_terracotta",
+    OrangeHarness = "minecraft:orange_harness",
     /** 橙色潜影盒。 */
     OrangeShulkerBox = "minecraft:orange_shulker_box",
     /** 橙色染色玻璃。 */
@@ -1826,6 +1840,7 @@ export declare enum MinecraftItemTypes {
     PinkDye = "minecraft:pink_dye",
     /** 粉红色带釉陶瓦。 */
     PinkGlazedTerracotta = "minecraft:pink_glazed_terracotta",
+    PinkHarness = "minecraft:pink_harness",
     /** 粉红色花簇。 */
     PinkPetals = "minecraft:pink_petals",
     /** 粉红色潜影盒。 */
@@ -1972,6 +1987,7 @@ export declare enum MinecraftItemTypes {
     PurpleDye = "minecraft:purple_dye",
     /** 紫色带釉陶瓦。 */
     PurpleGlazedTerracotta = "minecraft:purple_glazed_terracotta",
+    PurpleHarness = "minecraft:purple_harness",
     /** 紫色潜影盒。 */
     PurpleShulkerBox = "minecraft:purple_shulker_box",
     /** 紫色染色玻璃。 */
@@ -2048,6 +2064,7 @@ export declare enum MinecraftItemTypes {
     RedDye = "minecraft:red_dye",
     /** 红色带釉陶瓦。 */
     RedGlazedTerracotta = "minecraft:red_glazed_terracotta",
+    RedHarness = "minecraft:red_harness",
     /** 红色蘑菇。 */
     RedMushroom = "minecraft:red_mushroom",
     /** 红色蘑菇方块。 */
@@ -2670,6 +2687,7 @@ export declare enum MinecraftItemTypes {
     WhiteDye = "minecraft:white_dye",
     /** 白色带釉陶瓦。 */
     WhiteGlazedTerracotta = "minecraft:white_glazed_terracotta",
+    WhiteHarness = "minecraft:white_harness",
     /** 白色潜影盒。 */
     WhiteShulkerBox = "minecraft:white_shulker_box",
     /** 白色染色玻璃。 */
@@ -2734,6 +2752,7 @@ export declare enum MinecraftItemTypes {
     YellowDye = "minecraft:yellow_dye",
     /** 黄色带釉陶瓦。 */
     YellowGlazedTerracotta = "minecraft:yellow_glazed_terracotta",
+    YellowHarness = "minecraft:yellow_harness",
     /** 黄色潜影盒。 */
     YellowShulkerBox = "minecraft:yellow_shulker_box",
     /** 黄色染色玻璃。 */

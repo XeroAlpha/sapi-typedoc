@@ -1636,6 +1636,24 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
+     */
+    getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getDimensionMaxLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getDimensionMinLocation(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link Error}
@@ -1646,22 +1664,10 @@ export class BlockUtilities {
      * @worldMutation
      *
      */
-    getMaxWorldLocation(): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    getMinWorldLocation(): minecraftserver.Vector3;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    isLocationInWorld(
+    isLocationInsideCurrentDimensionBounds(
         locationOrVolumeOrBounds:
+            | minecraftserver.BlockBoundingBox
             | minecraftserver.BlockVolumeBase
-            | minecraftserver.BoundingBox
             | RelativeVolumeListBlockVolume
             | minecraftserver.Vector3,
     ): boolean;
@@ -2956,7 +2962,7 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      *
      * {@link Error}
      */
-    getBoundingBox(): minecraftserver.BoundingBox;
+    getBoundingBox(): minecraftserver.BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation

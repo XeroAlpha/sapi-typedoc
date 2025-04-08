@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandResult, NamespaceNameError, minecraftcommon } from '../index';
+/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, NamespaceNameError, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -25,5 +25,8 @@ export class CustomCommandRegistry {
      *
      * {@link NamespaceNameError}
      */
-    registerCommand(customCommand: CustomCommand, callback: (...args: any[]) => CustomCommandResult | undefined): void;
+    registerCommand(
+        customCommand: CustomCommand,
+        callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
+    ): void;
 }

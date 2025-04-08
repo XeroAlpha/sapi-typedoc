@@ -29,7 +29,7 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      *
      * {@link Error}
      */
-    getBoundingBox(): minecraftserver.BoundingBox;
+    getBoundingBox(): minecraftserver.BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation

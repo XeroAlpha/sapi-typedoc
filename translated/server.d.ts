@@ -145,6 +145,43 @@ export enum ButtonState {
 
 /**
  * @beta
+ * The required permission level to execute the custom command.
+ */
+export enum CommandPermissionLevel {
+    /**
+     * @remarks
+     * Anything can run this level.
+     *
+     */
+    Any = 0,
+    /**
+     * @remarks
+     * Any operator can run this command, including command blocks.
+     *
+     */
+    GameDirectors = 1,
+    /**
+     * @remarks
+     * Any operator can run this command, but NOT command blocks.
+     *
+     */
+    Admin = 2,
+    /**
+     * @remarks
+     * Any server host can run this command.
+     *
+     */
+    Host = 3,
+    /**
+     * @remarks
+     * Only dedicated server can run this command.
+     *
+     */
+    Owner = 4,
+}
+
+/**
+ * @beta
  * The Action enum determines how the CompoundBlockVolume
  * considers the associated CompoundBlockVolumeItem when
  * performing inside/outside calculations.
@@ -235,46 +272,35 @@ export enum CustomCommandParamType {
     String = 3,
     EntitySelector = 4,
     PlayerSelector = 5,
-    Position = 6,
+    Location = 6,
     BlockType = 7,
     ItemType = 8,
 }
 
 /**
  * @beta
- * The required permission level to execute the custom command.
+ * Who executed the command.
  */
-export enum CustomCommandPermissionLevel {
+export enum CustomCommandSource {
     /**
      * @remarks
-     * Anything can run this level.
+     * Command originated from a command block.
      *
      */
-    Any = 0,
+    Block = 'Block',
     /**
      * @remarks
-     * Any operator can run this command, including command blocks.
+     * Command originated from an entity or player.
      *
      */
-    GameDirectors = 1,
+    Entity = 'Entity',
+    NPCDialogue = 'NPCDialogue',
     /**
      * @remarks
-     * Any operator can run this command, but NOT command blocks.
+     * Command originated from the server.
      *
      */
-    Admin = 2,
-    /**
-     * @remarks
-     * Any server host can run this command.
-     *
-     */
-    Host = 3,
-    /**
-     * @remarks
-     * Only dedicated server can run this command.
-     *
-     */
-    Owner = 4,
+    Server = 'Server',
 }
 
 /**
@@ -291,35 +317,35 @@ export enum CustomComponentNameErrorReason {
 }
 
 /**
- * @beta
+ * @rc
  * An enumeration for the various difficulty levels of
  * Minecraft.
  */
 export enum Difficulty {
     /**
      * @remarks
-     * Peaceful difficulty level.
-     *
-     */
-    Peaceful = 0,
-    /**
-     * @remarks
      * Easy difficulty level.
      *
      */
-    Easy = 1,
-    /**
-     * @remarks
-     * Normal difficulty level.
-     *
-     */
-    Normal = 2,
+    Easy = 'Easy',
     /**
      * @remarks
      * Hard difficulty level.
      *
      */
-    Hard = 3,
+    Hard = 'Hard',
+    /**
+     * @remarks
+     * Normal difficulty level.
+     *
+     */
+    Normal = 'Normal',
+    /**
+     * @remarks
+     * Peaceful difficulty level.
+     *
+     */
+    Peaceful = 'Peaceful',
 }
 
 /**
@@ -1552,6 +1578,10 @@ export enum GameRule {
      *
      */
     KeepInventory = 'keepInventory',
+    /**
+     * @beta
+     */
+    LocatorBar = 'locatorBar',
     /**
      * @remarks
      * The maximum number of chained commands that can execute per
@@ -3961,6 +3991,137 @@ export class Block {
 }
 
 /**
+ * @beta
+ * Bounding Box Utils is a utility class that provides a number
+ * of useful functions for the creation and utility of {@link
+ * BlockBoundingBox} objects
+ */
+export class BlockBoundingBoxUtils {
+    private constructor();
+    /**
+     * @remarks
+     * Create a validated instance of a {@link BlockBoundingBox}
+     * where the min and max components are guaranteed to be (min
+     * <= max)
+     *
+     * @worldMutation
+     *
+     * @param min
+     * A corner world location
+     * @param max
+     * A corner world location diametrically opposite
+     */
+    static createValid(min: Vector3, max: Vector3): BlockBoundingBox;
+    /**
+     * @remarks
+     * Expand a {@link BlockBoundingBox} by a given amount along
+     * each axis.
+     * Sizes can be negative to perform contraction.
+     * Note: corners can be inverted if the contraction size is
+     * greater than the span, but the min/max relationship will
+     * remain correct
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Return a new {@link BlockBoundingBox} object representing
+     * the changes
+     */
+    static dilate(box: BlockBoundingBox, size: Vector3): BlockBoundingBox;
+    /**
+     * @remarks
+     * Check if two {@link BlockBoundingBox} objects are identical
+     *
+     * @worldMutation
+     *
+     */
+    static equals(box: BlockBoundingBox, other: BlockBoundingBox): boolean;
+    /**
+     * @remarks
+     * Expand the initial box object bounds to include the 2nd box
+     * argument.  The resultant {@link BlockBoundingBox} object
+     * will be a BlockBoundingBox which exactly encompasses the two
+     * boxes.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * A new {@link BlockBoundingBox} instance representing the
+     * smallest possible bounding box which can encompass both
+     */
+    static expand(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox;
+    /**
+     * @remarks
+     * Calculate the center block of a given {@link
+     * BlockBoundingBox} object.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Note that {@link BlockBoundingBox} objects represent whole
+     * blocks, so the center of boxes which have odd numbered
+     * bounds are not mathematically centered...
+     * i.e. a BlockBoundingBox( 0,0,0 -> 3,3,3 )  would have a
+     * center of (1,1,1)  (not (1.5, 1.5, 1.5) as expected)
+     */
+    static getCenter(box: BlockBoundingBox): Vector3;
+    /**
+     * @remarks
+     * Calculate the BlockBoundingBox which represents the union
+     * area of two intersecting BlockBoundingBoxes
+     *
+     * @worldMutation
+     *
+     */
+    static getIntersection(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox | undefined;
+    /**
+     * @remarks
+     * Get the Span of each of the BlockBoundingBox Axis components
+     *
+     * @worldMutation
+     *
+     */
+    static getSpan(box: BlockBoundingBox): Vector3;
+    /**
+     * @remarks
+     * Check to see if two BlockBoundingBox objects intersect
+     *
+     * @worldMutation
+     *
+     */
+    static intersects(box: BlockBoundingBox, other: BlockBoundingBox): boolean;
+    /**
+     * @remarks
+     * Check to see if a given coordinate is inside a
+     * BlockBoundingBox
+     *
+     * @worldMutation
+     *
+     */
+    static isInside(box: BlockBoundingBox, pos: Vector3): boolean;
+    /**
+     * @remarks
+     * Check to see if a BlockBoundingBox is valid (i.e. (min <=
+     * max))
+     *
+     * @worldMutation
+     *
+     */
+    static isValid(box: BlockBoundingBox): boolean;
+    /**
+     * @remarks
+     * Move a BlockBoundingBox by a given amount
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Return a new BlockBoundingBox object which represents the
+     * change
+     */
+    static translate(box: BlockBoundingBox, delta: Vector3): BlockBoundingBox;
+}
+
+/**
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4993,12 +5154,12 @@ export class BlockVolumeBase {
     /**
      * @beta
      * @remarks
-     * Return a {@link BoundingBox} object which represents the
-     * validated min and max coordinates of the volume
+     * Return a {@link BlockBoundingBox} object which represents
+     * the validated min and max coordinates of the volume
      *
      * @throws This function can throw errors.
      */
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * Return the capacity (volume) of the BlockVolume (W*D*H)
@@ -5043,132 +5204,6 @@ export class BlockVolumeBase {
      * Amount of blocks to move by
      */
     translate(delta: Vector3): void;
-}
-
-/**
- * @beta
- * Bounding Box Utils is a utility class that provides a number
- * of useful functions for the creation and utility of {@link
- * BoundingBox} objects
- */
-export class BoundingBoxUtils {
-    private constructor();
-    /**
-     * @remarks
-     * Create a validated instance of a {@link BoundingBox} where
-     * the min and max components are guaranteed to be (min <= max)
-     *
-     * @worldMutation
-     *
-     * @param min
-     * A corner world location
-     * @param max
-     * A corner world location diametrically opposite
-     */
-    static createValid(min: Vector3, max: Vector3): BoundingBox;
-    /**
-     * @remarks
-     * Expand a {@link BoundingBox} by a given amount along each
-     * axis.
-     * Sizes can be negative to perform contraction.
-     * Note: corners can be inverted if the contraction size is
-     * greater than the span, but the min/max relationship will
-     * remain correct
-     *
-     * @worldMutation
-     *
-     * @returns
-     * Return a new {@link BoundingBox} object representing the
-     * changes
-     */
-    static dilate(box: BoundingBox, size: Vector3): BoundingBox;
-    /**
-     * @remarks
-     * Check if two {@link BoundingBox} objects are identical
-     *
-     * @worldMutation
-     *
-     */
-    static equals(box: BoundingBox, other: BoundingBox): boolean;
-    /**
-     * @remarks
-     * Expand the initial box object bounds to include the 2nd box
-     * argument.  The resultant {@link BoundingBox} object will be
-     * a BoundingBox which exactly encompasses the two boxes.
-     *
-     * @worldMutation
-     *
-     * @returns
-     * A new {@link BoundingBox} instance representing the smallest
-     * possible bounding box which can encompass both
-     */
-    static expand(box: BoundingBox, other: BoundingBox): BoundingBox;
-    /**
-     * @remarks
-     * Calculate the center block of a given {@link BoundingBox}
-     * object.
-     *
-     * @worldMutation
-     *
-     * @returns
-     * Note that {@link BoundingBox} objects represent whole
-     * blocks, so the center of boxes which have odd numbered
-     * bounds are not mathematically centered...
-     * i.e. a BoundingBox( 0,0,0 -> 3,3,3 )  would have a center of
-     * (1,1,1)  (not (1.5, 1.5, 1.5) as expected)
-     */
-    static getCenter(box: BoundingBox): Vector3;
-    /**
-     * @remarks
-     * Calculate the BoundingBox which represents the union area of
-     * two intersecting BoundingBoxes
-     *
-     * @worldMutation
-     *
-     */
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
-    /**
-     * @remarks
-     * Get the Span of each of the BoundingBox Axis components
-     *
-     * @worldMutation
-     *
-     */
-    static getSpan(box: BoundingBox): Vector3;
-    /**
-     * @remarks
-     * Check to see if two BoundingBox objects intersect
-     *
-     * @worldMutation
-     *
-     */
-    static intersects(box: BoundingBox, other: BoundingBox): boolean;
-    /**
-     * @remarks
-     * Check to see if a given coordinate is inside a BoundingBox
-     *
-     * @worldMutation
-     *
-     */
-    static isInside(box: BoundingBox, pos: Vector3): boolean;
-    /**
-     * @remarks
-     * Check to see if a BoundingBox is valid (i.e. (min <= max))
-     *
-     * @worldMutation
-     *
-     */
-    static isValid(box: BoundingBox): boolean;
-    /**
-     * @remarks
-     * Move a BoundingBox by a given amount
-     *
-     * @worldMutation
-     *
-     * @returns
-     * Return a new BoundingBox object which represents the change
-     */
-    static translate(box: BoundingBox, delta: Vector3): BoundingBox;
 }
 
 /**
@@ -5558,7 +5593,7 @@ export class CompoundBlockVolume {
      * @worldMutation
      *
      */
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * Get the max block location of the outermost bounding
@@ -5876,6 +5911,12 @@ export class Container {
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
      * @beta
+     * @remarks
+     * Find the index of the last instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerError}
@@ -6312,6 +6353,41 @@ export class ContainerSlot {
 
 /**
  * @beta
+ * Details about the origins of the command.
+ */
+export class CustomCommandOrigin {
+    private constructor();
+    /**
+     * @remarks
+     * If this command was initiated via an NPC, returns the entity
+     * that initiated the NPC dialogue.
+     *
+     */
+    readonly initiator?: Entity;
+    /**
+     * @remarks
+     * Source block if this command was triggered via a block
+     * (e.g., a commandblock.)
+     *
+     */
+    readonly sourceBlock?: Block;
+    /**
+     * @remarks
+     * Source entity if this command was triggered by an entity
+     * (e.g., a NPC).
+     *
+     */
+    readonly sourceEntity?: Entity;
+    /**
+     * @remarks
+     * Returns the type of source that fired this command.
+     *
+     */
+    readonly sourceType: CustomCommandSource;
+}
+
+/**
+ * @beta
  * Provides the functionality for registering custom commands.
  */
 export class CustomCommandRegistry {
@@ -6335,7 +6411,25 @@ export class CustomCommandRegistry {
      *
      * {@link NamespaceNameError}
      */
-    registerCommand(customCommand: CustomCommand, callback: (...args: any[]) => CustomCommandResult | undefined): void;
+    registerCommand(
+        customCommand: CustomCommand,
+        callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
+    ): void;
+}
+
+/**
+ * @beta
+ * Contains the custom component's JSON parameters
+ */
+export class CustomComponentParameters {
+    private constructor();
+    /**
+     * @remarks
+     * JSON object containing the parameters from the custom
+     * component definition
+     *
+     */
+    readonly params: unknown;
 }
 
 /**
@@ -6676,7 +6770,7 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places the given feature into the dimension at the specified
      * location.
@@ -6706,7 +6800,7 @@ export class Dimension {
      */
     placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places the given feature rule into the dimension at the
      * specified location.
@@ -8492,10 +8586,9 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * Current value of the friction modifier of the associated
      * entity.
      *
-     * @worldMutation
-     *
+     * @throws This property can throw when used.
      */
-    value: number;
+    readonly value: number;
     static readonly componentId = 'minecraft:friction_modifier';
 }
 
@@ -10759,6 +10852,13 @@ export class GameRules {
      */
     keepInventory: boolean;
     /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    locatorBar: boolean;
+    /**
      * @remarks
      * @worldMutation
      *
@@ -12876,6 +12976,7 @@ export class Player extends Entity {
      */
     addLevels(amount: number): number;
     /**
+     * @rc
      * @remarks
      * For this player, removes all overrides of any Entity
      * Properties on the target Entity. This change is not applied
@@ -13007,6 +13108,7 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
+     * @rc
      * @remarks
      * For this player, removes the override on an Entity Property.
      * This change is not applied until the next tick and will not
@@ -13078,6 +13180,7 @@ export class Player extends Entity {
      */
     setOp(isOp: boolean): void;
     /**
+     * @rc
      * @remarks
      * For this player, overrides an Entity Property on the target
      * Entity to the provided value. This property must be client
@@ -15745,8 +15848,8 @@ export class StructureManager {
      * Optional settings to use when generating the jigsaw
      * structure.
      * @returns
-     * Returns a {@link BoundingBox} object which represents the
-     * maximum bounds of the jigsaw structure.
+     * Returns a {@link BlockBoundingBox} object which represents
+     * the maximum bounds of the jigsaw structure.
      * @throws
      * Throws if maxDepth is outside of the range [1,20]
      * Throws if generation fails due to invalid parameters or
@@ -15763,7 +15866,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawPlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
     /**
      * @beta
      * @remarks
@@ -15785,8 +15888,8 @@ export class StructureManager {
      * Optional settings to use when generating the jigsaw
      * structure.
      * @returns
-     * Returns a {@link BoundingBox} object which represents the
-     * maximum bounds of the jigsaw structure.
+     * Returns a {@link BlockBoundingBox} object which represents
+     * the maximum bounds of the jigsaw structure.
      * @throws
      * Throws if generation fails due to invalid parameters or
      * jigsaw configuration.
@@ -15800,7 +15903,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawStructurePlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
 }
 
 /**
@@ -16479,7 +16582,7 @@ export class World {
      */
     getDefaultSpawnLocation(): Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the difficulty from the world.
      *
@@ -16687,7 +16790,7 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the worlds difficulty.
      *
@@ -17319,6 +17422,40 @@ export interface BiomeSearchOptions {
 }
 
 /**
+ * @rc
+ * A BlockBoundingBox is an interface to an object which
+ * represents an AABB aligned rectangle.
+ * The BlockBoundingBox assumes that it was created in a valid
+ * state (min <= max) but cannot guarantee it (unless it was
+ * created using the associated {@link BlockBoundingBoxUtils}
+ * utility functions.
+ * The min/max coordinates represent the diametrically opposite
+ * corners of the rectangle.
+ * The BlockBoundingBox is not a representation of blocks - it
+ * has no association with any type, it is just a mathematical
+ * construct - so a rectangle with
+ * ( 0,0,0 ) -> ( 0,0,0 )
+ * has a size of ( 0,0,0 ) (unlike the very similar {@link
+ * BlockVolume} object)
+ */
+export interface BlockBoundingBox {
+    /**
+     * @remarks
+     * A {@link Vector3} that represents the largest corner of the
+     * rectangle
+     *
+     */
+    max: Vector3;
+    /**
+     * @remarks
+     * A {@link Vector3} that represents the smallest corner of the
+     * rectangle
+     *
+     */
+    min: Vector3;
+}
+
+/**
  * Contains a set of events that will be raised for a block.
  * This object must be bound using the BlockRegistry.
  */
@@ -17329,28 +17466,28 @@ export interface BlockCustomComponent {
      * block.
      *
      */
-    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent) => void;
+    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity falls onto the
      * block that this custom component is bound to.
      *
      */
-    onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent) => void;
+    onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when the block that this custom
      * component is bound to is placed.
      *
      */
-    onPlace?: (arg0: BlockComponentOnPlaceEvent) => void;
+    onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a player destroys a
      * specific block.
      *
      */
-    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent) => void;
+    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a player sucessfully
@@ -17358,33 +17495,33 @@ export interface BlockCustomComponent {
      * to.
      *
      */
-    onPlayerInteract?: (arg0: BlockComponentPlayerInteractEvent) => void;
+    onPlayerInteract?: (arg0: BlockComponentPlayerInteractEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a block randomly ticks.
      *
      */
-    onRandomTick?: (arg0: BlockComponentRandomTickEvent) => void;
+    onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity steps off the
      * block that this custom component is bound to.
      *
      */
-    onStepOff?: (arg0: BlockComponentStepOffEvent) => void;
+    onStepOff?: (arg0: BlockComponentStepOffEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity steps onto the
      * block that this custom component is bound to.
      *
      */
-    onStepOn?: (arg0: BlockComponentStepOnEvent) => void;
+    onStepOn?: (arg0: BlockComponentStepOnEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a block ticks.
      *
      */
-    onTick?: (arg0: BlockComponentTickEvent) => void;
+    onTick?: (arg0: BlockComponentTickEvent, arg1: CustomComponentParameters) => void;
 }
 
 /**
@@ -17557,40 +17694,6 @@ export interface BlockRaycastOptions extends BlockFilter {
      *
      */
     maxDistance?: number;
-}
-
-/**
- * @beta
- * A BoundingBox is an interface to an object which represents
- * an AABB aligned rectangle.
- * The BoundingBox assumes that it was created in a valid state
- * (min <= max) but cannot guarantee it (unless it was created
- * using the associated {@link BoundingBoxUtils} utility
- * functions.
- * The min/max coordinates represent the diametrically opposite
- * corners of the rectangle.
- * The BoundingBox is not a representation of blocks - it has
- * no association with any type, it is just a mathematical
- * construct - so a rectangle with
- * ( 0,0,0 ) -> ( 0,0,0 )
- * has a size of ( 0,0,0 ) (unlike the very similar {@link
- * BlockVolume} object)
- */
-export interface BoundingBox {
-    /**
-     * @remarks
-     * A {@link Vector3} that represents the largest corner of the
-     * rectangle
-     *
-     */
-    max: Vector3;
-    /**
-     * @remarks
-     * A {@link Vector3} that represents the smallest corner of the
-     * rectangle
-     *
-     */
-    min: Vector3;
 }
 
 export interface CameraDefaultOptions {
@@ -17792,7 +17895,7 @@ export interface CustomCommand {
      * The permission level required to execute the command.
      *
      */
-    permissionLevel: CustomCommandPermissionLevel;
+    permissionLevel: CommandPermissionLevel;
 }
 
 /**
@@ -18449,49 +18552,52 @@ export interface ItemCustomComponent {
      * damage.
      *
      */
-    onBeforeDurabilityDamage?: (arg0: ItemComponentBeforeDurabilityDamageEvent) => void;
+    onBeforeDurabilityDamage?: (
+        arg0: ItemComponentBeforeDurabilityDamageEvent,
+        arg1: CustomComponentParameters,
+    ) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component's use duration was completed.
      *
      */
-    onCompleteUse?: (arg0: ItemComponentCompleteUseEvent) => void;
+    onCompleteUse?: (arg0: ItemComponentCompleteUseEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is eaten by an entity.
      *
      */
-    onConsume?: (arg0: ItemComponentConsumeEvent) => void;
+    onConsume?: (arg0: ItemComponentConsumeEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used to hit another entity.
      *
      */
-    onHitEntity?: (arg0: ItemComponentHitEntityEvent) => void;
+    onHitEntity?: (arg0: ItemComponentHitEntityEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used to mine a block.
      *
      */
-    onMineBlock?: (arg0: ItemComponentMineBlockEvent) => void;
+    onMineBlock?: (arg0: ItemComponentMineBlockEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used by a player.
      *
      */
-    onUse?: (arg0: ItemComponentUseEvent) => void;
+    onUse?: (arg0: ItemComponentUseEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this
      * component is used on a block.
      *
      */
-    onUseOn?: (arg0: ItemComponentUseOnEvent) => void;
+    onUseOn?: (arg0: ItemComponentUseOnEvent, arg1: CustomComponentParameters) => void;
 }
 
 /**

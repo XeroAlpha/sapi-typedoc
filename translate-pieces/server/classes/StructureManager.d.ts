@@ -1,4 +1,4 @@
-/* IMPORT */ import { BoundingBox, Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockBoundingBox, Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
 
 /**
  * Manager for Structure related APIs. Includes APIs for
@@ -164,8 +164,8 @@ export class StructureManager {
      * Optional settings to use when generating the jigsaw
      * structure.
      * @returns
-     * Returns a {@link BoundingBox} object which represents the
-     * maximum bounds of the jigsaw structure.
+     * Returns a {@link BlockBoundingBox} object which represents
+     * the maximum bounds of the jigsaw structure.
      * @throws
      * Throws if maxDepth is outside of the range [1,20]
      * Throws if generation fails due to invalid parameters or
@@ -182,7 +182,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawPlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
     /**
      * @beta
      * @remarks
@@ -204,8 +204,8 @@ export class StructureManager {
      * Optional settings to use when generating the jigsaw
      * structure.
      * @returns
-     * Returns a {@link BoundingBox} object which represents the
-     * maximum bounds of the jigsaw structure.
+     * Returns a {@link BlockBoundingBox} object which represents
+     * the maximum bounds of the jigsaw structure.
      * @throws
      * Throws if generation fails due to invalid parameters or
      * jigsaw configuration.
@@ -219,5 +219,5 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawStructurePlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
 }

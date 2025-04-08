@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockLocationIterator, BoundingBox, CompoundBlockVolumeItem, CompoundBlockVolumePositionRelativity, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, CompoundBlockVolumeItem, CompoundBlockVolumePositionRelativity, Vector3 } from '../index';
 
 /**
  * @beta
@@ -92,7 +92,7 @@ export class CompoundBlockVolume {
      * @worldMutation
      *
      */
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * Get the max block location of the outermost bounding

@@ -139,7 +139,6 @@ export enum PacketId {
     CommandOutputPacket = 'CommandOutputPacket',
     CommandRequestPacket = 'CommandRequestPacket',
     CompletedUsingItemPacket = 'CompletedUsingItemPacket',
-    CompressedBiomeDefinitionList = 'CompressedBiomeDefinitionList',
     ContainerClosePacket = 'ContainerClosePacket',
     ContainerOpenPacket = 'ContainerOpenPacket',
     ContainerRegistryCleanupPacket = 'ContainerRegistryCleanupPacket',

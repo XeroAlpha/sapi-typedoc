@@ -112,6 +112,13 @@ export class GameRules {
      */
     keepInventory: boolean;
     /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    locatorBar: boolean;
+    /**
      * @remarks
      * @worldMutation
      *

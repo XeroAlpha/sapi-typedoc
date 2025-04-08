@@ -119,6 +119,10 @@ export enum GameRule {
      */
     KeepInventory = 'keepInventory',
     /**
+     * @beta
+     */
+    LocatorBar = 'locatorBar',
+    /**
      * @remarks
      * The maximum number of chained commands that can execute per
      * tick.

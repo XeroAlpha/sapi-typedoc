@@ -2,6 +2,7 @@
  * All possible MinecraftCameraPresetsTypes
  */
 export declare enum MinecraftCameraPresetsTypes {
+    ControlSchemeCamera = "minecraft:control_scheme_camera",
     /** 第一人称视角。 */
     FirstPerson = "minecraft:first_person",
     /** 第三人称固定视角。 */

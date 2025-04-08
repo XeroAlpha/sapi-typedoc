@@ -2,7 +2,7 @@
  * @beta
  * The required permission level to execute the custom command.
  */
-export enum CustomCommandPermissionLevel {
+export enum CommandPermissionLevel {
     /**
      * @remarks
      * Anything can run this level.
