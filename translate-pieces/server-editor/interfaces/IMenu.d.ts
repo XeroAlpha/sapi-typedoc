@@ -26,9 +26,42 @@ export interface IMenu {
      *
      */
     readonly submenu: IMenu[];
+    /**
+     * @remarks
+     * Create a child menu on this menu.
+     *
+     * @param params
+     * The menu creation parameters for the sub item being added
+     * @param action
+     * The action to associate with the menu item. Only a subset of
+     * actions are supported
+     */
     addItem(params: IMenuCreationParams, action?: RegisteredAction<NoArgsAction>): IMenu;
+    /**
+     * @remarks
+     * Destroy the menu and all of its children.
+     *
+     */
     dispose(): void;
+    /**
+     * @remarks
+     * Hide the menu and all of its children.
+     *
+     */
     hide(): void;
+    /**
+     * @remarks
+     * Replaces the current associated menu action with a new
+     * action
+     *
+     * @param action
+     * The registered action to associated with this menu item
+     */
     replaceAction(action: RegisteredAction<NoArgsAction>): void;
+    /**
+     * @remarks
+     * Show the menu and all of its children.
+     *
+     */
     show(): void;
 }

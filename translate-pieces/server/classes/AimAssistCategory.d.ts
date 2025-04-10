@@ -11,8 +11,6 @@ export class AimAssistCategory {
      * getBlockPriorities.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultBlockPriority: number;
     /**
@@ -21,8 +19,6 @@ export class AimAssistCategory {
      * in getEntityPriorities.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultEntityPriority: number;
     /**
@@ -39,8 +35,6 @@ export class AimAssistCategory {
      * The record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBlockPriorities(): Record<string, number>;
     /**
@@ -51,8 +45,6 @@ export class AimAssistCategory {
      * The record mapping entity Ids to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getEntityPriorities(): Record<string, number>;
 }

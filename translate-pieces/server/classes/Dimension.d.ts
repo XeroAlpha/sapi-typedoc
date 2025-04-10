@@ -34,6 +34,7 @@ export class Dimension {
      * or all of the block volume is outside of the loaded chunks.
      * Will only check the block locations that are within the
      * loaded chunks in the volume.
+     * Defaults to: false
      * @returns
      * Returns true if at least one block in the volume satisfies
      * the filter, false otherwise.
@@ -190,6 +191,7 @@ export class Dimension {
      * or all of the block volume is outside of the loaded chunks.
      * Will only check the block locations that are within the
      * loaded chunks in the volume.
+     * Defaults to: false
      * @returns
      * Returns the ListBlockVolume that contains all the block
      * locations that satisfied the block filter.
@@ -293,6 +295,7 @@ export class Dimension {
      * Note: The function call will always throw an error if using
      * an unknown feature name or trying to place in a unloaded
      * chunk.
+     * Defaults to: false
      * @throws
      * An error will be thrown if the feature name is invalid.
      * An error will be thrown if the location is in an unloaded
@@ -443,6 +446,10 @@ export class Dimension {
      * @returns
      * Newly created entity at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      *

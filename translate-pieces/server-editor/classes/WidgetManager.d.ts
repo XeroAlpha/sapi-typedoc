@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetGroupError, WidgetGroup, WidgetGroupCreateOptions } from '../index';
+/* IMPORT */ import { WidgetGroup, WidgetGroupCreateOptions } from '../index';
 
 export class WidgetManager {
     private constructor();
@@ -7,8 +7,6 @@ export class WidgetManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
@@ -16,10 +14,6 @@ export class WidgetManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }

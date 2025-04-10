@@ -17,8 +17,6 @@ export class ItemCompostableComponent extends ItemComponent {
      *
      * @throws
      * Throws if value outside the range [1 - 100]
-     *
-     * {@link Error}
      */
     readonly compostingChance: number;
     static readonly componentId = 'minecraft:compostable';

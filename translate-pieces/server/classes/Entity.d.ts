@@ -268,6 +268,7 @@ export class Entity {
      * @param useEffects
      * Whether to show any visual effects connected to the
      * extinguishing.
+     * Defaults to: true
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
@@ -619,7 +620,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -658,6 +659,7 @@ export class Entity {
      * Whether side-effects should be applied (e.g. thawing freeze)
      * and other conditions such as rain or fire protection should
      * be taken into consideration.
+     * Defaults to: true
      * @returns
      * Whether the entity was set on fire. This can fail if seconds
      * is less than or equal to zero, the entity is wet or the

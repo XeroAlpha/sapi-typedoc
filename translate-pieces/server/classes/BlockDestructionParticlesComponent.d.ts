@@ -13,8 +13,6 @@ export class BlockDestructionParticlesComponent extends BlockComponent {
      * Name of the texture used for the particles.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly texture: string;
     /**
@@ -22,8 +20,6 @@ export class BlockDestructionParticlesComponent extends BlockComponent {
      * Type of tint applied to the particles.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
     static readonly componentId = 'minecraft:destruction_particles';

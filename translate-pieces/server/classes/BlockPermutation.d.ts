@@ -25,8 +25,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block is removed when touched by liquid.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -39,8 +37,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block can have a liquid placed over it.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -62,6 +58,7 @@ export class BlockPermutation {
      * @param amount
      * Number of instances of this block to place in the prototype
      * item stack.
+     * Defaults to: 1
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**
@@ -101,8 +98,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block stops liquid from flowing.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -116,8 +111,6 @@ export class BlockPermutation {
      * Whether this block is removed and spawns its item when
      * touched by liquid.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**

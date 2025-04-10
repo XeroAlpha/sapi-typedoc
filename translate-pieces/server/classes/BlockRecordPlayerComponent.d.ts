@@ -57,6 +57,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
+     * @param startPlaying
+     * Defaults to: true
      * @throws This function can throw errors.
      */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;

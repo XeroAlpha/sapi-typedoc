@@ -27,8 +27,6 @@ export class ExportManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getGameVersion(): string;
 }

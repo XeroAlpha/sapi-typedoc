@@ -26,8 +26,6 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     get(): RelativeVolumeListBlockVolume;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBoundingBox(): minecraftserver.BlockBoundingBox;
     /**

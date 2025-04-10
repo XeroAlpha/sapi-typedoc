@@ -66,6 +66,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Location of the block to interact with.
      * @param direction
      * Direction to place the specified item within.
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
@@ -116,6 +117,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Item to give.
      * @param selectSlot
      * Whether to set the selected slot once given.
+     * Defaults to: false
      * @throws This function can throw errors.
      */
     giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
@@ -157,6 +159,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Location of the block to interact with.
      * @param direction
      * Direction to place the specified item within.
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
@@ -190,6 +193,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param duration
+     * Defaults to: 2
      * @throws This function can throw errors.
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3, duration?: LookDuration): void;
@@ -200,6 +205,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param duration
+     * Defaults to: 2
      * @throws This function can throw errors.
      */
     lookAtEntity(entity: minecraftserver.Entity, duration?: LookDuration): void;
@@ -210,6 +217,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param duration
+     * Defaults to: 2
      * @throws This function can throw errors.
      */
     lookAtLocation(location: minecraftserver.Vector3, duration?: LookDuration): void;
@@ -220,6 +229,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param speed
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     move(westEast: number, northSouth: number, speed?: number): void;
@@ -230,6 +241,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param speed
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
@@ -267,6 +280,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param speed
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
@@ -278,6 +293,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param speed
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
@@ -292,6 +309,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @worldMutation
      *
+     * @param speed
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
@@ -307,6 +326,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * A list of locations to use for routing.
      * @param speed
      * Net speed to use for doing the navigation.
+     * Defaults to: 1
      * @throws This function can throw errors.
      */
     navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
@@ -351,6 +371,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Slot to place the given item in.
      * @param selectSlot
      * Whether to set the selected slot once set.
+     * Defaults to: false
      * @throws This function can throw errors.
      */
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
@@ -358,6 +379,8 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks
      * @worldMutation
      *
+     * @param slot
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     startBuild(slot?: number): void;
@@ -482,9 +505,11 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Location to use the item upon.
      * @param direction
      * Direction to place the specified item within.
+     * Defaults to: 1
      * @param faceLocation
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
+     * Defaults to: null
      * @throws This function can throw errors.
      */
     useItemInSlotOnBlock(
@@ -507,9 +532,11 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Location to use the item upon.
      * @param direction
      * Direction to place the specified item within.
+     * Defaults to: 1
      * @param faceLocation
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
+     * Defaults to: null
      * @throws This function can throw errors.
      */
     useItemOnBlock(

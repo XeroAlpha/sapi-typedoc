@@ -38,6 +38,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be within the
      * range [0, 3].
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;

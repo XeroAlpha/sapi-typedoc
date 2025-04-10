@@ -23,6 +23,7 @@ export class StructureManager {
      * @param saveMode
      * How the Structure should be saved upon creation. Defaults to
      * StructureSaveMode.Memory.
+     * Defaults to: 0
      * @returns
      * Returns the newly created Structure.
      * @throws
@@ -140,7 +141,7 @@ export class StructureManager {
         options?: StructurePlaceOptions,
     ): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
@@ -184,7 +185,7 @@ export class StructureManager {
         options?: JigsawPlaceOptions,
     ): BlockBoundingBox;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places a jigsaw structure in the world.
      *

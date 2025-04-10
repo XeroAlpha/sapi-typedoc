@@ -19,5 +19,5 @@ export class PacketSendBeforeEvent {
      * Which clients the network packet is being sent to.
      *
      */
-    readonly recipients: minecraftserver.Player[];
+    readonly recipients: (minecraftserver.Player | undefined)[];
 }

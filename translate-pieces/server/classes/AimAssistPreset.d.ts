@@ -11,8 +11,6 @@ export class AimAssistPreset {
      * provided to setItemSettings.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultItemSettings?: string;
     /**
@@ -20,8 +18,6 @@ export class AimAssistPreset {
      * Optional. Aim-assist category Id used for an empty hand.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly handSettings?: string;
     /**
@@ -38,8 +34,6 @@ export class AimAssistPreset {
      * @returns
      * The array of block/entity Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getExcludedTargets(): string[];
     /**
@@ -49,8 +43,6 @@ export class AimAssistPreset {
      * @returns
      * The record mapping item Ids to aim-assist category Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getItemSettings(): Record<string, string>;
     /**
@@ -61,8 +53,6 @@ export class AimAssistPreset {
      * @returns
      * The array of item Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getLiquidTargetingItems(): string[];
 }

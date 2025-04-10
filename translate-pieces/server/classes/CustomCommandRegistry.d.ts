@@ -29,4 +29,21 @@ export class CustomCommandRegistry {
         customCommand: CustomCommand,
         callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
     ): void;
+    /**
+     * @remarks
+     * Registers a custom command enum.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerEnum(name: string, values: string[]): void;
 }

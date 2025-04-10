@@ -70,8 +70,6 @@ export class Cursor {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getRay(): CursorRay;
     /**

@@ -27,6 +27,7 @@ export enum ThemeSettingsColorKey {
     DropDown3 = 'DropDown3',
     ElementBorder = 'ElementBorder',
     Error = 'Error',
+    FocusErrorOutline = 'FocusErrorOutline',
     FocusOutline = 'FocusOutline',
     HeaderBackground = 'HeaderBackground',
     HotbarOutline = 'HotbarOutline',

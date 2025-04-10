@@ -14,8 +14,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
@@ -29,8 +27,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     endPainting(cancelled: boolean): void;
     /**
@@ -44,8 +40,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setBrushMask(mask: BlockMaskList): void;
     /**
@@ -89,8 +83,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**

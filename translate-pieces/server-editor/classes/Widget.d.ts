@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, InvalidWidgetComponentError, InvalidWidgetError, InvalidWidgetGroupError, RelativeVolumeListBlockVolume, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardItem, InvalidWidgetError, RelativeVolumeListBlockVolume, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
 
 export class Widget {
     private constructor();
@@ -60,10 +60,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addBoundingBox(
         componentName: string,
@@ -75,10 +71,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addClipboardComponent(
         componentName: string,
@@ -90,10 +82,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addEntityComponent(
         componentName: string,
@@ -105,10 +93,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
@@ -116,10 +100,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
@@ -127,10 +107,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addRenderPrimitiveComponent(
         componentName: string,
@@ -146,10 +122,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
@@ -157,10 +129,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
@@ -168,10 +136,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addVolumeOutline(
         componentName: string,
@@ -183,12 +147,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     delete(): void;
     /**
@@ -196,12 +154,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
@@ -209,10 +161,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     getComponent(componentName: string): WidgetComponentBase;
     /**
