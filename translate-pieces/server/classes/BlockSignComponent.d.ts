@@ -30,6 +30,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the message from. If not
      * provided, this will return the message from the front side
      * of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getRawText(side?: SignSide): RawText | undefined;
@@ -42,6 +43,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the message from. If not
      * provided, this will return the message from the front side
      * of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getText(side?: SignSide): string | undefined;
@@ -53,6 +55,7 @@ export class BlockSignComponent extends BlockComponent {
      * @param side
      * The side of the sign to read the dye from. If not provided,
      * this will return the dye on the front side of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
@@ -72,6 +75,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign the message will be set on. If not
      * provided, the message will be set on the front side of the
      * sign.
+     * Defaults to: 0
      * @throws
      * Throws if the provided message is greater than 512
      * characters in length.
@@ -86,10 +90,12 @@ export class BlockSignComponent extends BlockComponent {
      * @param color
      * The dye color to apply to the sign or undefined to clear the
      * dye on the sign.
+     * Defaults to: null
      * @param side
      * The side of the sign the color will be set on. If not
      * provided, the color will be set on the front side of the
      * sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;

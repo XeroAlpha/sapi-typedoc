@@ -242,6 +242,20 @@ export enum CustomCommandErrorReason {
     AlreadyRegistered = 'AlreadyRegistered',
     /**
      * @remarks
+     * Custom Command references an enum that has not been
+     * registered.
+     *
+     */
+    EnumDependencyMissing = 'EnumDependencyMissing',
+    /**
+     * @remarks
+     * Supplied Custom Command namespace does not match previous
+     * registrations for this add-on.
+     *
+     */
+    NamespaceMismatch = 'NamespaceMismatch',
+    /**
+     * @remarks
      * Too many command parameters defined in CustomCommand.
      *
      */
@@ -264,17 +278,69 @@ export enum CustomCommandErrorReason {
 
 /**
  * @beta
+ * The types of paramaters accepted by a custom command.
  */
 export enum CustomCommandParamType {
+    /**
+     * @remarks
+     * Command boolean parameter expecting true or false as input.
+     *
+     */
     Boolean = 0,
+    /**
+     * @remarks
+     * Command integer parameter.
+     *
+     */
     Integer = 1,
+    /**
+     * @remarks
+     * Command float parameter.
+     *
+     */
     Float = 2,
+    /**
+     * @remarks
+     * Command string parameter.
+     *
+     */
     String = 3,
+    /**
+     * @remarks
+     * Command entity selector parameter.
+     *
+     */
     EntitySelector = 4,
+    /**
+     * @remarks
+     * Command player selector parameter.
+     *
+     */
     PlayerSelector = 5,
+    /**
+     * @remarks
+     * Command location parameter.
+     *
+     */
     Location = 6,
+    /**
+     * @remarks
+     * Command block type parameter expecting a Minecraft block.
+     *
+     */
     BlockType = 7,
+    /**
+     * @remarks
+     * Command item name parameter.
+     *
+     */
     ItemType = 8,
+    /**
+     * @remarks
+     * Command enum parameter.
+     *
+     */
+    Enum = 9,
 }
 
 /**
@@ -694,13 +760,6 @@ export enum EntityComponentTypes {
      *
      */
     FrictionModifier = 'minecraft:friction_modifier',
-    /**
-     * @remarks
-     * Sets the offset from the ground that the entity is actually
-     * at.
-     *
-     */
-    GroundOffset = 'minecraft:ground_offset',
     /**
      * @remarks
      * Defines the interactions with this entity for healing it.
@@ -2593,7 +2652,7 @@ export enum WeatherType {
 
 export type BlockComponentReturnType<T extends string> = T extends keyof BlockComponentTypeMap
     ? BlockComponentTypeMap[T]
-    : BlockComponent;
+    : BlockCustomComponentInstance;
 
 export type BlockComponentTypeMap = {
     destruction_particles: BlockDestructionParticlesComponent;
@@ -2643,7 +2702,6 @@ export type EntityComponentTypeMap = {
     floats_in_liquid: EntityFloatsInLiquidComponent;
     flying_speed: EntityFlyingSpeedComponent;
     friction_modifier: EntityFrictionModifierComponent;
-    ground_offset: EntityGroundOffsetComponent;
     healable: EntityHealableComponent;
     health: EntityHealthComponent;
     inventory: EntityInventoryComponent;
@@ -2678,7 +2736,6 @@ export type EntityComponentTypeMap = {
     'minecraft:floats_in_liquid': EntityFloatsInLiquidComponent;
     'minecraft:flying_speed': EntityFlyingSpeedComponent;
     'minecraft:friction_modifier': EntityFrictionModifierComponent;
-    'minecraft:ground_offset': EntityGroundOffsetComponent;
     'minecraft:healable': EntityHealableComponent;
     'minecraft:health': EntityHealthComponent;
     'minecraft:inventory': EntityInventoryComponent;
@@ -2815,8 +2872,6 @@ export class AimAssistCategory {
      * getBlockPriorities.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultBlockPriority: number;
     /**
@@ -2825,8 +2880,6 @@ export class AimAssistCategory {
      * in getEntityPriorities.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultEntityPriority: number;
     /**
@@ -2843,8 +2896,6 @@ export class AimAssistCategory {
      * The record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBlockPriorities(): Record<string, number>;
     /**
@@ -2855,8 +2906,6 @@ export class AimAssistCategory {
      * The record mapping entity Ids to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getEntityPriorities(): Record<string, number>;
 }
@@ -2958,8 +3007,6 @@ export class AimAssistPreset {
      * provided to setItemSettings.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultItemSettings?: string;
     /**
@@ -2967,8 +3014,6 @@ export class AimAssistPreset {
      * Optional. Aim-assist category Id used for an empty hand.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly handSettings?: string;
     /**
@@ -2985,8 +3030,6 @@ export class AimAssistPreset {
      * @returns
      * The array of block/entity Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getExcludedTargets(): string[];
     /**
@@ -2996,8 +3039,6 @@ export class AimAssistPreset {
      * @returns
      * The record mapping item Ids to aim-assist category Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getItemSettings(): Record<string, string>;
     /**
@@ -3008,8 +3049,6 @@ export class AimAssistPreset {
      * @returns
      * The array of item Ids.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getLiquidTargetingItems(): string[];
 }
@@ -3452,6 +3491,7 @@ export class Block {
      * （返回的方块在原方块上方的距离）。
      *
      * Number of steps above to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -3471,6 +3511,7 @@ export class Block {
      * 留空默认为一。
      *
      * Number of steps below to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -3613,6 +3654,7 @@ export class Block {
      * 向东的步数。
      *
      * Number of steps to the east to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -3635,8 +3677,9 @@ export class Block {
      *
      * The identifier of the component (e.g.,
      * 'minecraft:inventory'). If no namespace prefix is specified,
-     * 'minecraft:' is assumed. Available component IDs can be
-     * found as part of the {@link BlockComponentTypes} enum.
+     * 'minecraft:' is assumed. Available component IDs are those
+     * in the {@link BlockComponentTypes} enum and custom component
+     * IDs registered with the {@link BlockComponentRegistry}.
      * @returns
      * 如果该组件存在于该方块，则返回该组件。
      * 否则返回 undefined。
@@ -3662,11 +3705,13 @@ export class Block {
      *
      * Number of instances of this block to place in the item
      * stack.
+     * Defaults to: 1
      * @param withData
      * 是否包括物品对象的附加数据。
      *
      * Whether additional data facets of the item stack are
      * included.
+     * Defaults to: false
      * @returns
      * 一个带有指定数量和数据的物品对象。
      * 如果方块类型不兼容，则返回 undefined。
@@ -3835,6 +3880,7 @@ export class Block {
      * 在返回之前，向北移动的步数。
      *
      * Number of steps to the north to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -3933,6 +3979,7 @@ export class Block {
      * 在返回之前，向南移动的步数。
      *
      * Number of steps to the south to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -3981,6 +4028,7 @@ export class Block {
      * 在返回之前，向西移动的步数。
      *
      * Number of steps to the west to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -4330,6 +4378,15 @@ export class BlockComponentTickEvent extends BlockEvent {
 
 /**
  * @beta
+ * An instance of a custom component on a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockCustomComponentInstance extends BlockComponent {
+    private constructor();
+}
+
+/**
+ * @beta
  * Represents the particles that appear when the block is
  * destroyed.
  */
@@ -4341,8 +4398,6 @@ export class BlockDestructionParticlesComponent extends BlockComponent {
      * Name of the texture used for the particles.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly texture: string;
     /**
@@ -4350,8 +4405,6 @@ export class BlockDestructionParticlesComponent extends BlockComponent {
      * Type of tint applied to the particles.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
     static readonly componentId = 'minecraft:destruction_particles';
@@ -4461,8 +4514,6 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addDye(dye: ItemType): void;
     /**
@@ -4472,8 +4523,6 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFluidType(): FluidType;
     /**
@@ -4483,8 +4532,6 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setFluidType(fluidType: FluidType): void;
     /**
@@ -4495,8 +4542,6 @@ export class BlockFluidContainerComponent extends BlockComponent {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -4576,8 +4621,6 @@ export class BlockMapColorComponent extends BlockComponent {
      * Base map color defined for that block.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly color: RGBA;
     /**
@@ -4592,8 +4635,6 @@ export class BlockMapColorComponent extends BlockComponent {
      * Type of tint applied to the color.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
     static readonly componentId = 'minecraft:map_color';
@@ -4624,8 +4665,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block is removed when touched by liquid.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -4638,8 +4677,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block can have a liquid placed over it.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -4661,6 +4698,7 @@ export class BlockPermutation {
      * @param amount
      * Number of instances of this block to place in the prototype
      * item stack.
+     * Defaults to: 1
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**
@@ -4700,8 +4738,6 @@ export class BlockPermutation {
      * @returns
      * Whether this block stops liquid from flowing.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -4715,8 +4751,6 @@ export class BlockPermutation {
      * Whether this block is removed and spawns its item when
      * touched by liquid.
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
@@ -4862,6 +4896,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
+     * @param startPlaying
+     * Defaults to: true
      * @throws This function can throw errors.
      */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
@@ -4897,6 +4933,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the message from. If not
      * provided, this will return the message from the front side
      * of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getRawText(side?: SignSide): RawText | undefined;
@@ -4909,6 +4946,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the message from. If not
      * provided, this will return the message from the front side
      * of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getText(side?: SignSide): string | undefined;
@@ -4920,6 +4958,7 @@ export class BlockSignComponent extends BlockComponent {
      * @param side
      * The side of the sign to read the dye from. If not provided,
      * this will return the dye on the front side of the sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
@@ -4939,6 +4978,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign the message will be set on. If not
      * provided, the message will be set on the front side of the
      * sign.
+     * Defaults to: 0
      * @throws
      * Throws if the provided message is greater than 512
      * characters in length.
@@ -4953,10 +4993,12 @@ export class BlockSignComponent extends BlockComponent {
      * @param color
      * The dye color to apply to the sign or undefined to clear the
      * dye on the sign.
+     * Defaults to: null
      * @param side
      * The side of the sign the color will be set on. If not
      * provided, the color will be set on the front side of the
      * sign.
+     * Defaults to: 0
      * @throws This function can throw errors.
      */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;
@@ -6415,6 +6457,23 @@ export class CustomCommandRegistry {
         customCommand: CustomCommand,
         callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
     ): void;
+    /**
+     * @remarks
+     * Registers a custom command enum.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerEnum(name: string, values: string[]): void;
 }
 
 /**
@@ -6528,6 +6587,7 @@ export class Dimension {
      * or all of the block volume is outside of the loaded chunks.
      * Will only check the block locations that are within the
      * loaded chunks in the volume.
+     * Defaults to: false
      * @returns
      * Returns true if at least one block in the volume satisfies
      * the filter, false otherwise.
@@ -6684,6 +6744,7 @@ export class Dimension {
      * or all of the block volume is outside of the loaded chunks.
      * Will only check the block locations that are within the
      * loaded chunks in the volume.
+     * Defaults to: false
      * @returns
      * Returns the ListBlockVolume that contains all the block
      * locations that satisfied the block filter.
@@ -6787,6 +6848,7 @@ export class Dimension {
      * Note: The function call will always throw an error if using
      * an unknown feature name or trying to place in a unloaded
      * chunk.
+     * Defaults to: false
      * @throws
      * An error will be thrown if the feature name is invalid.
      * An error will be thrown if the location is in an unloaded
@@ -6937,6 +6999,10 @@ export class Dimension {
      * @returns
      * Newly created entity at the specified location.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -7557,6 +7623,7 @@ export class Entity {
      * @param useEffects
      * Whether to show any visual effects connected to the
      * extinguishing.
+     * Defaults to: true
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
@@ -7908,7 +7975,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -7947,6 +8014,7 @@ export class Entity {
      * Whether side-effects should be applied (e.g. thawing freeze)
      * and other conditions such as rain or fire protection should
      * be taken into consideration.
+     * Defaults to: true
      * @returns
      * Whether the entity was set on fire. This can fail if seconds
      * is less than or equal to zero, the entity is wet or the
@@ -8590,26 +8658,6 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      */
     readonly value: number;
     static readonly componentId = 'minecraft:friction_modifier';
-}
-
-/**
- * Sets the offset from the ground that the entity is actually
- * at.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class EntityGroundOffsetComponent extends EntityComponent {
-    private constructor();
-    /**
-     * @remarks
-     * Value of this particular ground offset. Note that this value
-     * is effectively read only; setting the ground offset value
-     * will not have an impact on the related entity.
-     *
-     * @worldMutation
-     *
-     */
-    value: number;
-    static readonly componentId = 'minecraft:ground_offset';
 }
 
 /**
@@ -11323,8 +11371,6 @@ export class ItemCompostableComponent extends ItemComponent {
      *
      * @throws
      * Throws if value outside the range [1 - 100]
-     *
-     * {@link Error}
      */
     readonly compostingChance: number;
     static readonly componentId = 'minecraft:compostable';
@@ -11481,7 +11527,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be within the
      * range [0, 3].
-     * 
+     * Defaults to: 0
      * @returns 使用时的最大损坏概率。
      * @throws
      * 若 `unbreakingEnchantmentLevel` 参数未在范围内时，抛出 `TypeError` 。
@@ -11522,8 +11568,6 @@ export class ItemDyeableComponent extends ItemComponent {
      * Returns the default color of the item.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly defaultColor?: RGB;
     static readonly componentId = 'minecraft:dyeable';
@@ -11944,6 +11988,7 @@ export class ItemStack {
      * provided value will be clamped to the item's maximum stack
      * size. Note that certain items can only have one item in the
      * stack.
+     * Defaults to: 1
      * @throws
      * Throws if `itemType` is invalid, or if `amount` is outside
      * the range of 1-255.
@@ -12844,8 +12889,6 @@ export class Player extends Entity {
      * Contains the player's device information.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
@@ -13868,8 +13911,6 @@ export class PlayerInputPermissions {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
@@ -15630,6 +15671,7 @@ export class Structure {
      * @param saveMode
      * Determines how the Structure should be saved. Defaults to
      * saving to the world.
+     * Defaults to: 1
      * @returns
      * Returns the newly created structure.
      * @throws
@@ -15666,9 +15708,11 @@ export class Structure {
      * The block location relative to the Structure's origin.
      * @param blockPermutation
      * The BlockPermutation to set.
+     * Defaults to: null
      * @param waterlogged
      * Specifies whether the block should be waterlogged. Air and
      * undefined blocks cannot be waterlogged.
+     * Defaults to: false
      * @throws
      * Throws if the type of block is StructureVoid.
      * Throws if the block is undefined and waterlogged is set to
@@ -15707,6 +15751,7 @@ export class StructureManager {
      * @param saveMode
      * How the Structure should be saved upon creation. Defaults to
      * StructureSaveMode.Memory.
+     * Defaults to: 0
      * @returns
      * Returns the newly created Structure.
      * @throws
@@ -15824,7 +15869,7 @@ export class StructureManager {
         options?: StructurePlaceOptions,
     ): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
@@ -15868,7 +15913,7 @@ export class StructureManager {
         options?: JigsawPlaceOptions,
     ): BlockBoundingBox;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Places a jigsaw structure in the world.
      *
@@ -18601,7 +18646,7 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsaw}.
  */
@@ -18623,7 +18668,7 @@ export interface JigsawPlaceOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsawStructure}.
  */
@@ -19031,10 +19076,31 @@ export interface ScriptEventMessageFilterOptions {
 
 /**
  * @beta
+ * Contains additional options for spawning an Entity.
  */
 export interface SpawnEntityOptions {
+    /**
+     * @remarks
+     * Optional boolean which determines if this entity should
+     * persist in the game world. Persistence prevents the entity
+     * from automatically despawning.
+     *
+     */
     initialPersistence?: boolean;
+    /**
+     * @remarks
+     * Optional initial rotation, in degrees, to set on the entity
+     * when it spawns.
+     *
+     */
     initialRotation?: number;
+    /**
+     * @remarks
+     * Optional spawn event to send to the entity after it is
+     * spawned.
+     *
+     */
+    spawnEvent?: string;
 }
 
 /**
@@ -19481,7 +19547,7 @@ export class NamespaceNameError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {

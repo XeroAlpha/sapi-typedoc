@@ -29,8 +29,6 @@ export class ClipboardItem {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getPredictedWriteVolume(
         location: minecraftserver.Vector3,
@@ -72,8 +70,6 @@ export class ClipboardItem {
      * @returns
      * Success or Failure
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }

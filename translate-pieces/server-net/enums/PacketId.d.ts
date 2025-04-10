@@ -35,6 +35,7 @@ export enum PacketId {
     ChangeMobPropertyPacket = 'ChangeMobPropertyPacket',
     ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket',
     ClientboundCloseFormPacket = 'ClientboundCloseFormPacket',
+    ClientboundControlSchemeSetPacket = 'ClientboundControlSchemeSetPacket',
     ClientboundDebugRendererPacket = 'ClientboundDebugRendererPacket',
     ClientboundMapItemDataPacket = 'ClientboundMapItemDataPacket',
     ClientCacheBlobStatusPacket = 'ClientCacheBlobStatusPacket',

@@ -99,13 +99,6 @@ export enum EntityComponentTypes {
     FrictionModifier = 'minecraft:friction_modifier',
     /**
      * @remarks
-     * Sets the offset from the ground that the entity is actually
-     * at.
-     *
-     */
-    GroundOffset = 'minecraft:ground_offset',
-    /**
-     * @remarks
      * Defines the interactions with this entity for healing it.
      *
      */

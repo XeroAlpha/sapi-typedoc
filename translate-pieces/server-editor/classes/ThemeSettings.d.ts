@@ -7,8 +7,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
@@ -17,8 +15,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
@@ -26,8 +22,6 @@ export class ThemeSettings {
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
@@ -36,8 +30,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setCurrentTheme(id: string): void;
     /**
@@ -45,8 +37,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setThemeName(id: string, name: string): void;
     /**
@@ -54,8 +44,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }

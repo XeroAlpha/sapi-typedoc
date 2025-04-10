@@ -26,12 +26,6 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     /**

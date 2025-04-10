@@ -103,6 +103,7 @@ export class ItemStack {
      * provided value will be clamped to the item's maximum stack
      * size. Note that certain items can only have one item in the
      * stack.
+     * Defaults to: 1
      * @throws
      * Throws if `itemType` is invalid, or if `amount` is outside
      * the range of 1-255.

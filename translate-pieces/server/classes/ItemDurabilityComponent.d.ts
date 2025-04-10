@@ -53,7 +53,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Unbreaking factor to consider in factoring the damage
      * chance. Incoming unbreaking parameter must be within the
      * range [0, 3].
-     * 
+     * Defaults to: 0
      * @returns 使用时的最大损坏概率。
      * @throws
      * 若 `unbreakingEnchantmentLevel` 参数未在范围内时，抛出 `TypeError` 。

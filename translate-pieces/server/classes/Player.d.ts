@@ -18,8 +18,6 @@ export class Player extends Entity {
      * Contains the player's device information.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**

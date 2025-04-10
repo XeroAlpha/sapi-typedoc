@@ -362,7 +362,7 @@ export class ModalFormResponse extends FormResponse {
      * specified by ModalFormData.
      *
      */
-    readonly formValues?: (boolean | number | string)[];
+    readonly formValues?: (boolean | number | string | undefined)[];
 }
 
 export class UIManager {

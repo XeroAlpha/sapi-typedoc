@@ -12,8 +12,6 @@ export class BlockMapColorComponent extends BlockComponent {
      * Base map color defined for that block.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly color: RGBA;
     /**
@@ -28,8 +26,6 @@ export class BlockMapColorComponent extends BlockComponent {
      * Type of tint applied to the color.
      *
      * @throws This property can throw when used.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
     static readonly componentId = 'minecraft:map_color';

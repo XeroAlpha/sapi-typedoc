@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -196,6 +196,7 @@ export class Block {
      * （返回的方块在原方块上方的距离）。
      *
      * Number of steps above to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -215,6 +216,7 @@ export class Block {
      * 留空默认为一。
      *
      * Number of steps below to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -357,6 +359,7 @@ export class Block {
      * 向东的步数。
      *
      * Number of steps to the east to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -379,8 +382,9 @@ export class Block {
      *
      * The identifier of the component (e.g.,
      * 'minecraft:inventory'). If no namespace prefix is specified,
-     * 'minecraft:' is assumed. Available component IDs can be
-     * found as part of the {@link BlockComponentTypes} enum.
+     * 'minecraft:' is assumed. Available component IDs are those
+     * in the {@link BlockComponentTypes} enum and custom component
+     * IDs registered with the {@link BlockComponentRegistry}.
      * @returns
      * 如果该组件存在于该方块，则返回该组件。
      * 否则返回 undefined。
@@ -406,11 +410,13 @@ export class Block {
      *
      * Number of instances of this block to place in the item
      * stack.
+     * Defaults to: 1
      * @param withData
      * 是否包括物品对象的附加数据。
      *
      * Whether additional data facets of the item stack are
      * included.
+     * Defaults to: false
      * @returns
      * 一个带有指定数量和数据的物品对象。
      * 如果方块类型不兼容，则返回 undefined。
@@ -579,6 +585,7 @@ export class Block {
      * 在返回之前，向北移动的步数。
      *
      * Number of steps to the north to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -677,6 +684,7 @@ export class Block {
      * 在返回之前，向南移动的步数。
      *
      * Number of steps to the south to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -725,6 +733,7 @@ export class Block {
      * 在返回之前，向西移动的步数。
      *
      * Number of steps to the west to step before returning.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}

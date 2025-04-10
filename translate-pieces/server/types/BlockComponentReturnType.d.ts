@@ -1,5 +1,5 @@
-/* IMPORT */ import { BlockComponent, BlockComponentTypeMap } from '../index';
+/* IMPORT */ import { BlockComponentTypeMap, BlockCustomComponentInstance } from '../index';
 
 export type BlockComponentReturnType<T extends string> = T extends keyof BlockComponentTypeMap
     ? BlockComponentTypeMap[T]
-    : BlockComponent;
+    : BlockCustomComponentInstance;

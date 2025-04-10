@@ -36,6 +36,7 @@ export class Test {
      * If true, this function tests whether a block of the
      * specified type is at the location. If false, tests that a
      * block of the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -76,6 +77,7 @@ export class Test {
      * If true, tests whether the mob can reach the location. If
      * false, tests whether the mob is not able to reach the
      * location.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -135,6 +137,7 @@ export class Test {
      * @param hasArmor
      * Whether or not the entity is expected to have the specified
      * armor equipped.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -165,6 +168,7 @@ export class Test {
      * @param hasComponent
      * Determines whether to test that the component exists, or
      * does not.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -189,6 +193,7 @@ export class Test {
      * @param isPresent
      * Whether to test that an entity is present or not present at
      * the specified location.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -209,6 +214,7 @@ export class Test {
      * If true, this function tests whether the specified entity is
      * present in the GameTest area. If false, tests that the
      * specified entity is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -231,10 +237,12 @@ export class Test {
      * @param searchDistance
      * The distance to search for the entity from the
      * blockLocation.
+     * Defaults to: 0
      * @param isPresent
      * If true, this function tests whether an entity of the
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -258,6 +266,7 @@ export class Test {
      * If true, this function tests whether an entity of the
      * specified type is present in the GameTest area. If false,
      * tests that an entity of the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -307,6 +316,7 @@ export class Test {
      * If true, this function tests whether the entity is touching
      * the specified location. If false, tests that an entity is
      * not testing the specified location.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -324,6 +334,7 @@ export class Test {
      * @param isWaterlogged
      * Whether to test that the block at _position_ is expected to
      * be waterlogged.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -366,10 +377,12 @@ export class Test {
      * Location of the item entity to test for.
      * @param searchDistance
      * Radius in blocks to look for the item entity.
+     * Defaults to: 0
      * @param isPresent
      * If true, this function tests whether an item entity of the
      * specified type is present. If false, tests that an item
      * entity of the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -404,6 +417,7 @@ export class Test {
      * Location of the block to destroy.
      * @param dropResources
      * Whether to add resources exposed with a particular drop.
+     * Defaults to: false
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -820,6 +834,9 @@ export class Test {
      * Location where to spawn the simulated player.
      * @param name
      * Name to give the new simulated player.
+     * Defaults to: "Simulated Player"
+     * @param gameMode
+     * Defaults to: 0
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -982,6 +999,7 @@ export class Test {
      * If true, this function tests whether a block of the
      * specified type is present. If false, tests that a block of
      * the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -1038,6 +1056,7 @@ export class Test {
      * If true, this function tests whether an entity of the
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
+     * Defaults to: true
      * @throws This function can throw errors.
      * @seeExample phantomsShouldFlyFromCats.ts
      * @seeExample minibiomes.ts
@@ -1059,6 +1078,8 @@ export class Test {
      * minecraft:grow_stalagtite, minecraft:grow_stalagmite,
      * minecraft:grow_up, minecraft:grow_down and
      * minecraft:grow_sideways.
+     * @param eventParameters
+     * Defaults to: []
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -1092,6 +1113,7 @@ export class Test {
      * Location where the entity should be walk to.
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -1112,6 +1134,7 @@ export class Test {
      * Location where the entity should be walk to.
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
+     * Defaults to: 1
      * @throws This function can throw errors.
      *
      * {@link GameTestError}

@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetError, InvalidWidgetGroupError, Widget, WidgetCreateOptions, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidWidgetGroupError, Widget, WidgetCreateOptions, minecraftserver } from '../index';
 
 export class WidgetGroup {
     private constructor();
@@ -25,10 +25,6 @@ export class WidgetGroup {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     /**
@@ -42,12 +38,6 @@ export class WidgetGroup {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**

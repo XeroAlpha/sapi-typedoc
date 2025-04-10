@@ -17,8 +17,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
     /**
@@ -44,8 +42,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
     /**
@@ -80,8 +76,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     trimVolumeToFitContents(
         volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,

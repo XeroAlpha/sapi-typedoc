@@ -11,6 +11,20 @@ export enum CustomCommandErrorReason {
     AlreadyRegistered = 'AlreadyRegistered',
     /**
      * @remarks
+     * Custom Command references an enum that has not been
+     * registered.
+     *
+     */
+    EnumDependencyMissing = 'EnumDependencyMissing',
+    /**
+     * @remarks
+     * Supplied Custom Command namespace does not match previous
+     * registrations for this add-on.
+     *
+     */
+    NamespaceMismatch = 'NamespaceMismatch',
+    /**
+     * @remarks
      * Too many command parameters defined in CustomCommand.
      *
      */

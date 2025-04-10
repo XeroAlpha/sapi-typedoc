@@ -84,6 +84,7 @@ export class Structure {
      * @param saveMode
      * Determines how the Structure should be saved. Defaults to
      * saving to the world.
+     * Defaults to: 1
      * @returns
      * Returns the newly created structure.
      * @throws
@@ -120,9 +121,11 @@ export class Structure {
      * The block location relative to the Structure's origin.
      * @param blockPermutation
      * The BlockPermutation to set.
+     * Defaults to: null
      * @param waterlogged
      * Specifies whether the block should be waterlogged. Air and
      * undefined blocks cannot be waterlogged.
+     * Defaults to: false
      * @throws
      * Throws if the type of block is StructureVoid.
      * Throws if the block is undefined and waterlogged is set to

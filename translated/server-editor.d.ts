@@ -1126,6 +1126,7 @@ export enum ThemeSettingsColorKey {
     DropDown3 = 'DropDown3',
     ElementBorder = 'ElementBorder',
     Error = 'Error',
+    FocusErrorOutline = 'FocusErrorOutline',
     FocusOutline = 'FocusOutline',
     HeaderBackground = 'HeaderBackground',
     HotbarOutline = 'HotbarOutline',
@@ -1628,8 +1629,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
     /**
@@ -1655,8 +1654,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
     /**
@@ -1691,8 +1688,6 @@ export class BlockUtilities {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     trimVolumeToFitContents(
         volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -1737,8 +1732,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
@@ -1752,8 +1745,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     endPainting(cancelled: boolean): void;
     /**
@@ -1767,8 +1758,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setBrushMask(mask: BlockMaskList): void;
     /**
@@ -1812,8 +1801,6 @@ export class BrushShapeManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
@@ -1879,8 +1866,6 @@ export class ClipboardItem {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getPredictedWriteVolume(
         location: minecraftserver.Vector3,
@@ -1922,8 +1907,6 @@ export class ClipboardItem {
      * @returns
      * Success or Failure
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }
@@ -2113,8 +2096,6 @@ export class Cursor {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getRay(): CursorRay;
     /**
@@ -2336,8 +2317,6 @@ export class ExportManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getGameVersion(): string;
 }
@@ -2581,8 +2560,6 @@ export class IBlockPaletteItem {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
 }
@@ -2796,8 +2773,6 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
@@ -2806,10 +2781,6 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
-     *
-     * {@link Error}
      */
     removeBlockAt(index: number): void;
 }
@@ -2959,8 +2930,6 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     get(): RelativeVolumeListBlockVolume;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBoundingBox(): minecraftserver.BlockBoundingBox;
     /**
@@ -3154,8 +3123,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
@@ -3164,8 +3131,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
@@ -3173,8 +3138,6 @@ export class ThemeSettings {
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
@@ -3183,8 +3146,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setCurrentTheme(id: string): void;
     /**
@@ -3192,8 +3153,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setThemeName(id: string, name: string): void;
     /**
@@ -3201,8 +3160,6 @@ export class ThemeSettings {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
@@ -3226,8 +3183,6 @@ export class TransactionManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
@@ -3551,10 +3506,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addBoundingBox(
         componentName: string,
@@ -3566,10 +3517,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addClipboardComponent(
         componentName: string,
@@ -3581,10 +3528,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addEntityComponent(
         componentName: string,
@@ -3596,10 +3539,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
@@ -3607,10 +3546,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
@@ -3618,10 +3553,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addRenderPrimitiveComponent(
         componentName: string,
@@ -3637,10 +3568,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
@@ -3648,10 +3575,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
@@ -3659,10 +3582,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addVolumeOutline(
         componentName: string,
@@ -3674,12 +3593,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     delete(): void;
     /**
@@ -3687,12 +3600,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
@@ -3700,10 +3607,6 @@ export class Widget {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     getComponent(componentName: string): WidgetComponentBase;
     /**
@@ -4107,12 +4010,6 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     /**
@@ -4266,10 +4163,6 @@ export class WidgetGroup {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     /**
@@ -4283,12 +4176,6 @@ export class WidgetGroup {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
@@ -4318,8 +4205,6 @@ export class WidgetManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
@@ -4327,10 +4212,6 @@ export class WidgetManager {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }
@@ -4379,6 +4260,12 @@ export interface BlockMaskList {
  * Represents a UI session for a given player
  */
 export interface BuiltInUIManager {
+    /**
+     * @remarks
+     * Activates tutorial overlay
+     *
+     */
+    activateTutorial(): void;
     /**
      * @remarks
      * Navigates to the documentation site.
@@ -5445,6 +5332,20 @@ export declare interface IEventToken {
 }
 
 export interface IGlobalInputManager {
+    /**
+     * @remarks
+     * Register a key press binding for an action which will be
+     * handled by the specified input context.
+     *
+     * @param inputContextId
+     * Id of the UI context to handle this binding.
+     * @param action
+     * Action to register the binding for.
+     * @param binding
+     * Keyboard binding to invoke action.
+     * @param info
+     * Additional information about key binding.
+     */
     registerKeyBinding(
         inputContextId: EditorInputContext,
         action: SupportedKeyboardActionTypes,
@@ -5595,10 +5496,43 @@ export interface IMenu {
      *
      */
     readonly submenu: IMenu[];
+    /**
+     * @remarks
+     * Create a child menu on this menu.
+     *
+     * @param params
+     * The menu creation parameters for the sub item being added
+     * @param action
+     * The action to associate with the menu item. Only a subset of
+     * actions are supported
+     */
     addItem(params: IMenuCreationParams, action?: RegisteredAction<NoArgsAction>): IMenu;
+    /**
+     * @remarks
+     * Destroy the menu and all of its children.
+     *
+     */
     dispose(): void;
+    /**
+     * @remarks
+     * Hide the menu and all of its children.
+     *
+     */
     hide(): void;
+    /**
+     * @remarks
+     * Replaces the current associated menu action with a new
+     * action
+     *
+     * @param action
+     * The registered action to associated with this menu item
+     */
     replaceAction(action: RegisteredAction<NoArgsAction>): void;
+    /**
+     * @remarks
+     * Show the menu and all of its children.
+     *
+     */
     show(): void;
 }
 
@@ -5734,15 +5668,65 @@ export interface IModalTool {
      *
      */
     onModalToolActivation: EventSink<ModalToolLifecycleEventPayload>;
+    /**
+     * @remarks
+     * Binds a property pane to the tool. When the tool is
+     * selected, the pane's visibility updates. Only one pane can
+     * be bound at a time.
+     *
+     * @param pane
+     * Root pane associated with the modal tool
+     */
     bindPropertyPane(pane: IRootPropertyPane): void;
+    /**
+     * @remarks
+     * Register a key press binding for an action which will be
+     * handled by the tool input context.
+     *
+     * @param action
+     * Action to register the binding for.
+     * @param binding
+     * Keyboard binding to invoke action.
+     * @param info
+     * Additional information about key binding.
+     */
     registerKeyBinding(
         action: SupportedKeyboardActionTypes,
         binding: KeyBinding,
         info?: KeyBindingInfo,
     ): IRegisteredKeyBinding;
+    /**
+     * @remarks
+     * Register an action to be called when mouse left/middle/right
+     * buttons are pressed or released.
+     *
+     * @param action
+     * Action to register the binding for.
+     */
     registerMouseButtonBinding(action: SupportedMouseActionTypes): void;
+    /**
+     * @remarks
+     * Register an action to be called when mouse is dragged while
+     * left mouse button is down.
+     *
+     * @param action
+     * Action to register the binding for.
+     */
     registerMouseDragBinding(action: SupportedMouseActionTypes): void;
+    /**
+     * @remarks
+     * Register an action to be called when mouse wheel is
+     * scrolled.
+     *
+     * @param action
+     * Action to register the binding for.
+     */
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
+    /**
+     * @remarks
+     * Unregister all input binding for this tool.
+     *
+     */
     unregisterInputBindings(): void;
 }
 
@@ -5753,10 +5737,45 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
+    /**
+     * @remarks
+     * Create a new tool in the modal tool container represented
+     * via button on the tool rail.
+     *
+     * @param id
+     * Unique identifier for the tool
+     * @param params
+     * Construction parameters for the new tool
+     */
     addTool(id: string, params: ModalToolCreationParameters): IModalTool;
+    /**
+     * @remarks
+     * Activates input bindings for the selected tool by enabling
+     * viewport focus
+     *
+     */
     focusToolInputContext(): void;
+    /**
+     * @remarks
+     * Returns identifier of the selected tool.
+     *
+     */
     getSelectedToolId(): string | undefined;
+    /**
+     * @remarks
+     * Remove an existing tool by id from the tool container
+     *
+     * @param id
+     * Name of the tool to remove.
+     */
     removeTool(id: string): void;
+    /**
+     * @remarks
+     * Selects a tool in the container.
+     *
+     * @param id
+     * Identifier of the tool
+     */
     setSelectedToolId(id: string | undefined): void;
 }
 
@@ -6926,9 +6945,31 @@ export interface IStatusBarItem {
      *
      */
     readonly id: string;
+    /**
+     * @remarks
+     * Returns display text of the item.
+     *
+     */
     getText(): LocalizedString;
+    /**
+     * @remarks
+     * Hide the Status Bar Item.
+     *
+     */
     hide(): void;
+    /**
+     * @remarks
+     * Updates display text of the item.
+     *
+     * @param text
+     * New display text
+     */
     setText(text: LocalizedString): void;
+    /**
+     * @remarks
+     * Show the Status Bar Item.
+     *
+     */
     show(): void;
 }
 

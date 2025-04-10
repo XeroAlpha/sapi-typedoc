@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsaw}.
  */

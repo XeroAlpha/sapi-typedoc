@@ -4,6 +4,12 @@
 export interface BuiltInUIManager {
     /**
      * @remarks
+     * Activates tutorial overlay
+     *
+     */
+    activateTutorial(): void;
+    /**
+     * @remarks
      * Navigates to the documentation site.
      *
      */
