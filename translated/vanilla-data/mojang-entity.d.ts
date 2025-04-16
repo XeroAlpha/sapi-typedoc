@@ -96,7 +96,7 @@ export declare enum MinecraftEntityTypes {
     Goat = "minecraft:goat",
     /** 守卫者。 */
     Guardian = "minecraft:guardian",
-    /** Happy Ghast。 */
+    /** 快乐恶魂。 */
     HappyGhast = "minecraft:happy_ghast",
     /** 疣猪兽。 */
     Hoglin = "minecraft:hoglin",

@@ -846,7 +846,7 @@ export declare enum MinecraftItemTypes {
     DragonEgg = "minecraft:dragon_egg",
     /** 龙首。 */
     DragonHead = "minecraft:dragon_head",
-    /** Dried Ghast。 */
+    /** 失水恶魂。 */
     DriedGhast = "minecraft:dried_ghast",
     /** 干海带。 */
     DriedKelp = "minecraft:dried_kelp",
@@ -1144,6 +1144,7 @@ export declare enum MinecraftItemTypes {
     GusterPotterySherd = "minecraft:guster_pottery_sherd",
     /** 垂根。 */
     HangingRoots = "minecraft:hanging_roots",
+    /** 快乐恶魂刷怪蛋。 */
     HappyGhastSpawnEgg = "minecraft:happy_ghast_spawn_egg",
     /** 陶瓦。 */
     HardenedClay = "minecraft:hardened_clay",

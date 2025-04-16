@@ -714,7 +714,7 @@ export declare enum MinecraftBlockTypes {
     DragonEgg = "minecraft:dragon_egg",
     /** 龙首。 */
     DragonHead = "minecraft:dragon_head",
-    /** Dried Ghast。 */
+    /** 失水恶魂。 */
     DriedGhast = "minecraft:dried_ghast",
     /** 干海带块。 */
     DriedKelpBlock = "minecraft:dried_kelp_block",
