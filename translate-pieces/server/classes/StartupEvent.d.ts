@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, ItemComponentRegistry } from '../index';
 
 /**
- * @beta
+ * @rc
  */
 export class StartupEvent {
     private constructor();
@@ -12,6 +12,7 @@ export class StartupEvent {
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
     /**
+     * @beta
      * @remarks
      * @earlyExecution
      *

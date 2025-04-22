@@ -15,7 +15,7 @@ export class System {
      */
     readonly afterEvents: SystemAfterEvents;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a collection of before-events for system-level
      * operations.
@@ -33,7 +33,7 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if this is a world where the editor is
      * currently loaded, returns false otherwise.

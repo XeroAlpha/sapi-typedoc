@@ -31,7 +31,7 @@ export class ContainerSlot {
      */
     readonly isStackable: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the ContainerSlot is valid. The container
      * slot is valid if the container exists and is loaded, and the

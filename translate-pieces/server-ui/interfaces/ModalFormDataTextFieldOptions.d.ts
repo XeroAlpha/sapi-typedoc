@@ -1,7 +1,7 @@
 /* IMPORT */ import { minecraftserver } from '../index';
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.textField} to provide
  * additional options for the textfield creation.

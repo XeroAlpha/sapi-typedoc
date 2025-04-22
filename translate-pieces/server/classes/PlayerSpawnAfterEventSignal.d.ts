@@ -7,7 +7,7 @@
 export class PlayerSpawnAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Registers a new event receiver for this particular type of
      * event.
@@ -19,7 +19,7 @@ export class PlayerSpawnAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * De-registers an event receiver for the player spawn event.
      *

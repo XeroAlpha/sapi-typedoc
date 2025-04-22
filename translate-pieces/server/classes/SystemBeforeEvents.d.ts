@@ -1,7 +1,7 @@
 /* IMPORT */ import { ShutdownBeforeEventSignal, StartupBeforeEventSignal, WatchdogTerminateBeforeEventSignal } from '../index';
 
 /**
- * @beta
+ * @rc
  * A set of events that fire before an actual action occurs. In
  * most cases, you can potentially cancel or modify the
  * impending event. Note that in before events any APIs that
@@ -23,6 +23,7 @@ export class SystemBeforeEvents {
      */
     readonly startup: StartupBeforeEventSignal;
     /**
+     * @beta
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
      * can be due to using too much memory, or by causing

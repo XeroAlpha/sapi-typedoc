@@ -17,7 +17,7 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available
@@ -84,7 +84,20 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    find(itemStack: ItemStack): number;
+    find(itemStack: ItemStack): number | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Find the index of the last instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    findLast(itemStack: ItemStack): number | undefined;
     /**
      * @beta
      * @remarks
@@ -94,7 +107,7 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    firstEmptySlot(): number;
+    firstEmptySlot(): number | undefined;
     /**
      * @beta
      * @remarks
@@ -104,7 +117,7 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    firstItem(): number;
+    firstItem(): number | undefined;
     /**
      * @remarks
      * Gets an {@link ItemStack} of the item at the specified slot.
@@ -156,19 +169,6 @@ export class Container {
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
-    /**
-     * @beta
-     * @remarks
-     * Find the index of the last instance of an item inside the
-     * container
-     *
-     * @param itemStack
-     * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
-     */
-    reverseFind(itemStack: ItemStack): number;
     /**
      * @remarks
      * Sets an item stack within a particular slot.

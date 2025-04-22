@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerDestroyEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '../index';
+/* IMPORT */ import { BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '../index';
 
 /**
  * Contains a set of events that will be raised for a block.
@@ -27,12 +27,9 @@ export interface BlockCustomComponent {
      */
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @remarks
-     * This function will be called when a player destroys a
-     * specific block.
-     *
+     * @rc
      */
-    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;
+    onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a player sucessfully

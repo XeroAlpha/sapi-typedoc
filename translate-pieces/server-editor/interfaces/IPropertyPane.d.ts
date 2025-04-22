@@ -142,6 +142,13 @@ export interface IPropertyPane extends IPane {
     ): IVector3PropertyItem;
     /**
      * @remarks
+     * Begins pane construction for batching property item
+     * additions
+     *
+     */
+    beginConstruct(): void;
+    /**
+     * @remarks
      * Collapse the pane.
      *
      */
@@ -152,6 +159,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
+    /**
+     * @remarks
+     * Finalizes pane construction and synchronizes item data
+     *
+     */
+    endConstruct(): void;
     /**
      * @remarks
      * Returns pane title.
@@ -172,4 +185,12 @@ export interface IPropertyPane extends IPane {
      * New title
      */
     setTitle(newTitle: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Shows only the specified sub-pane, hiding all others
+     *
+     * @param subPaneId
+     * Identifier of the sub pane to display.
+     */
+    toggleSubPaneVisibility(subPaneId: string | undefined): void;
 }

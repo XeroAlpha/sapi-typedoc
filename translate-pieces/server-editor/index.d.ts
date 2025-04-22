@@ -54,6 +54,7 @@ export { WidgetComponentType } from './enums/WidgetComponentType';
 export { WidgetGizmoEventType } from './enums/WidgetGizmoEventType';
 export { WidgetGroupSelectionMode } from './enums/WidgetGroupSelectionMode';
 export { WidgetMouseButtonActionType } from './enums/WidgetMouseButtonActionType';
+export { WorldGeneratorType } from './enums/WorldGeneratorType';
 export { Action } from './types/Action';
 export { ActionID } from './types/ActionID';
 export { ActivationFunctionType } from './types/ActivationFunctionType';

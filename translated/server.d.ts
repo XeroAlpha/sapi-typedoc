@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.0.0-beta"
+ *   "version": "2.1.0-beta"
  * }
  * ```
  *
@@ -1451,13 +1451,15 @@ export enum FluidType {
  */
 export enum GameMode {
     /**
+     * @rc
      * @remarks
      * World is in a more locked-down experience, where blocks may
      * not be manipulated.
      *
      */
-    adventure = 'adventure',
+    Adventure = 'Adventure',
     /**
+     * @rc
      * @remarks
      * World is in a full creative mode. In creative mode, the
      * player has all the resources available in the item selection
@@ -1468,8 +1470,9 @@ export enum GameMode {
      * disappear.
      *
      */
-    creative = 'creative',
+    Creative = 'Creative',
     /**
+     * @rc
      * @remarks
      * World is in spectator mode. In spectator mode, spectators
      * are always flying and cannot become grounded. Spectators can
@@ -1480,8 +1483,9 @@ export enum GameMode {
      * transparent floating head.
      *
      */
-    spectator = 'spectator',
+    Spectator = 'Spectator',
     /**
+     * @rc
      * @remarks
      * World is in a survival mode, where players can take damage
      * and entities may not be peaceful. Survival mode is where the
@@ -1490,7 +1494,7 @@ export enum GameMode {
      * time, chip away at player health and hunger bar.
      *
      */
-    survival = 'survival',
+    Survival = 'Survival',
 }
 
 /**
@@ -1754,7 +1758,7 @@ export enum GameRule {
 }
 
 /**
- * @beta
+ * @rc
  * Describes the graphics mode of a client. Used by {@link
  * Player.graphicsMode}
  */
@@ -2312,6 +2316,25 @@ export enum PlatformType {
      *
      */
     Mobile = 'Mobile',
+}
+
+/**
+ * @beta
+ * Specifies the player inventory type.
+ */
+export enum PlayerInventoryType {
+    /**
+     * @remarks
+     * Hotbar inventory.
+     *
+     */
+    Hotbar = 'Hotbar',
+    /**
+     * @remarks
+     * Main inventory.
+     *
+     */
+    Inventory = 'Inventory',
 }
 
 /**
@@ -3312,7 +3335,7 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that
@@ -4018,22 +4041,23 @@ export class BlockComponentOnPlaceEvent extends BlockEvent {
 }
 
 /**
- * Contains information regarding a specific block being
- * destroyed.
+ * @rc
+ * Contains information regarding a specific block being broken
+ * by a player.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class BlockComponentPlayerDestroyEvent extends BlockEvent {
+export class BlockComponentPlayerBreakEvent extends BlockEvent {
     private constructor();
     /**
      * @remarks
      * Returns permutation information about this block before it
-     * was destroyed.
+     * was broken.
      *
      */
-    readonly destroyedBlockPermutation: BlockPermutation;
+    readonly brokenBlockPermutation: BlockPermutation;
     /**
      * @remarks
-     * The player that destroyed this block.
+     * The player that broke this block.
      *
      */
     readonly player?: Player;
@@ -4175,12 +4199,13 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * An instance of a custom component on a block.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentInstance extends BlockComponent {
     private constructor();
+    readonly customComponentParameters: CustomComponentParameters;
 }
 
 /**
@@ -5069,7 +5094,7 @@ export class ButtonPushAfterEvent extends BlockEvent {
 export class ButtonPushAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a button is pushed.
      *
@@ -5080,7 +5105,7 @@ export class ButtonPushAfterEventSignal {
      */
     subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a button is
      * pushed.
@@ -5324,7 +5349,7 @@ export class CommandResult {
 export class Component {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any
@@ -5610,7 +5635,7 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available
@@ -5677,7 +5702,20 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    find(itemStack: ItemStack): number;
+    find(itemStack: ItemStack): number | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Find the index of the last instance of an item inside the
+     * container
+     *
+     * @param itemStack
+     * The item to find.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    findLast(itemStack: ItemStack): number | undefined;
     /**
      * @beta
      * @remarks
@@ -5687,7 +5725,7 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    firstEmptySlot(): number;
+    firstEmptySlot(): number | undefined;
     /**
      * @beta
      * @remarks
@@ -5697,7 +5735,7 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    firstItem(): number;
+    firstItem(): number | undefined;
     /**
      * @remarks
      * Gets an {@link ItemStack} of the item at the specified slot.
@@ -5749,19 +5787,6 @@ export class Container {
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
-    /**
-     * @beta
-     * @remarks
-     * Find the index of the last instance of an item inside the
-     * container
-     *
-     * @param itemStack
-     * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
-     */
-    reverseFind(itemStack: ItemStack): number;
     /**
      * @remarks
      * Sets an item stack within a particular slot.
@@ -5851,7 +5876,7 @@ export class ContainerSlot {
      */
     readonly isStackable: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the ContainerSlot is valid. The container
      * slot is valid if the container exists and is loaded, and the
@@ -6275,7 +6300,7 @@ export class CustomCommandRegistry {
 }
 
 /**
- * @beta
+ * @rc
  * Contains the custom component's JSON parameters
  */
 export class CustomComponentParameters {
@@ -6856,6 +6881,26 @@ export class Dimension {
      * @seeExample spawnParticle.ts 25a384c8
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops all sounds from playing for all players.
+     *
+     * @worldMutation
+     *
+     */
+    stopAllSounds(): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops a sound from playing for all players.
+     *
+     * @worldMutation
+     *
+     * @param soundId
+     * Identifier of the sound.
+     */
+    stopSound(soundId: string): void;
 }
 
 /**
@@ -6927,7 +6972,7 @@ export class Effect {
      */
     readonly duration: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether an effect instance is available for use in
      * this context.
@@ -7245,7 +7290,7 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the entity can be manipulated by script. A
      * Player is considered valid when it's EntityLifetimeState is
@@ -7651,7 +7696,7 @@ export class Entity {
      */
     kill(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the rotation of the entity to face a target location.
      * Both pitch and yaw will be set, if applicable, such as for
@@ -8943,32 +8988,6 @@ export class EntityItemComponent extends EntityComponent {
 }
 
 /**
- * @beta
- * This type is usable for iterating over a set of entities.
- * This means it can be used in statements like for...of
- * statements, Array.from(iterator), and more.
- */
-export class EntityIterator implements Iterable<Entity> {
-    private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    [Symbol.iterator](): Iterator<Entity>;
-    /**
-     * @remarks
-     * Retrieves the next item in this iteration. The resulting
-     * IteratorResult contains .done and .value properties which
-     * can be used to see the next Entity in the iteration.
-     *
-     * @worldMutation
-     *
-     */
-    next(): IteratorResult<Entity>;
-}
-
-/**
  * Defines the base movement speed in lava of this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -10232,26 +10251,6 @@ export class EntityTypeFamilyComponent extends EntityComponent {
 }
 
 /**
- * @beta
- * An iterator that loops through available entity types.
- */
-export class EntityTypeIterator implements Iterable<EntityType> {
-    private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    [Symbol.iterator](): Iterator<EntityType>;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    next(): IteratorResult<EntityType>;
-}
-
-/**
  * Used for accessing all entity types currently available for
  * use within the world.
  */
@@ -10485,14 +10484,6 @@ export class FeedItemEffect {
      *
      */
     readonly name: string;
-}
-
-/**
- * @beta
- * Represents a set of filters for when an event should occur.
- */
-export class FilterGroup {
-    private constructor();
 }
 
 /**
@@ -11216,12 +11207,13 @@ export class ItemCooldownComponent extends ItemComponent {
 }
 
 /**
- * @beta
+ * @rc
  * An instance of a custom component on an item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemCustomComponentInstance extends ItemComponent {
     private constructor();
+    readonly customComponentParameters: CustomComponentParameters;
 }
 
 /**
@@ -12387,7 +12379,7 @@ export class LeverActionAfterEvent extends BlockEvent {
 export class LeverActionAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a lever is moved
      * (activates or deactivates).
@@ -12399,7 +12391,7 @@ export class LeverActionAfterEventSignal {
      */
     subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a lever is moved
      * (activates or deactivates).
@@ -12610,7 +12602,7 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the current graphics mode of the player's client. This
      * can be changed in the Video section of the settings menu
@@ -13022,6 +13014,18 @@ export class Player extends Entity {
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
+     * @beta
+     * @remarks
+     * Stops all sounds from playing for this particular player.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopAllSounds(): void;
+    /**
      * @remarks
      * Stops any music tracks from playing for this particular
      * player.
@@ -13031,6 +13035,20 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     stopMusic(): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops a sound from playing for this particular player.
+     *
+     * @worldMutation
+     *
+     * @param soundId
+     * Identifier of the sound.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopSound(soundId: string): void;
 }
 
 /**
@@ -13504,6 +13522,77 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding an event after changing the
+ * selected hotbar slot for a player.
+ */
+export class PlayerHotbarSelectedSlotChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack of the new slot selected.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The new hotbar slot index selected.
+     *
+     */
+    readonly newSlotSelected: number;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The previous hotbar slot index selected.
+     *
+     */
+    readonly previousSlotSelected: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected after a player selected
+ * hotbar slot is changed.
+ */
+export class PlayerHotbarSelectedSlotChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after a player selected
+     * hotbar slot is changed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * Function callback that is called when this event fires.
+     * @param options
+     * Additional filtering options for the event subscription.
+     */
+    subscribe(
+        callback: (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void,
+        options?: HotbarEventOptions,
+    ): (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called after a player selected
+     * hotbar slot is changed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void): void;
+}
+
+/**
  * Event data for when a player input mode changes.
  */
 export class PlayerInputModeChangeAfterEvent {
@@ -13949,28 +14038,79 @@ export class PlayerInteractWithEntityBeforeEventSignal {
 
 /**
  * @beta
- * This type is usable for iterating over a set of players.
- * This means it can be used in statements like for...of
- * statements, Array.from(iterator), and more.
+ * Contains information regarding an event after a player's
+ * inventory item changes.
  */
-export class PlayerIterator implements Iterable<Player> {
+export class PlayerInventoryItemChangeAfterEvent {
     private constructor();
     /**
      * @remarks
-     * @worldMutation
+     * The previous item stack.
      *
      */
-    [Symbol.iterator](): Iterator<Player>;
+    readonly beforeItemStack?: ItemStack;
     /**
      * @remarks
-     * Retrieves the next item in this iteration. The resulting
-     * IteratorResult contains .done and .value properties which
-     * can be used to see the next Player in the iteration.
+     * Inventory type.
+     *
+     */
+    readonly inventoryType: PlayerInventoryType;
+    /**
+     * @remarks
+     * The new item stack.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The slot index with the change.
+     *
+     */
+    readonly slot: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected after a player's
+ * inventory item is changed.
+ */
+export class PlayerInventoryItemChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after a player's
+     * inventory item is changed.
      *
      * @worldMutation
      *
+     * @earlyExecution
+     *
+     * @param callback
+     * Function callback that is called when this event fires.
+     * @param options
+     * Additional filtering options for the event subscription.
      */
-    next(): IteratorResult<Player>;
+    subscribe(
+        callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void,
+        options?: InventoryItemEventOptions,
+    ): (arg0: PlayerInventoryItemChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called after a player's
+     * inventory item is changed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void): void;
 }
 
 /**
@@ -14002,7 +14142,7 @@ export class PlayerJoinAfterEvent {
 export class PlayerJoinAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a player joins the
      * world.
@@ -14014,7 +14154,7 @@ export class PlayerJoinAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a player joins the
      * world.
@@ -14055,7 +14195,7 @@ export class PlayerLeaveAfterEvent {
 export class PlayerLeaveAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a player leaves the
      * world.
@@ -14067,7 +14207,7 @@ export class PlayerLeaveAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a player leaves
      * the world.
@@ -14201,10 +14341,11 @@ export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
     readonly faceLocation: Vector3;
     /**
      * @remarks
-     * The block permutation that is being placed.
+     * The block permutation that will be placed if the event is
+     * not cancelled.
      *
      */
-    readonly permutationBeingPlaced: BlockPermutation;
+    readonly permutationToPlace: BlockPermutation;
     /**
      * @remarks
      * Player that is placing the block for this event.
@@ -14279,7 +14420,7 @@ export class PlayerSpawnAfterEvent {
 export class PlayerSpawnAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Registers a new event receiver for this particular type of
      * event.
@@ -14291,7 +14432,7 @@ export class PlayerSpawnAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * De-registers an event receiver for the player spawn event.
      *
@@ -14735,7 +14876,7 @@ export class ScoreboardIdentity {
      */
     readonly id: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the ScoreboardIdentity reference is still
      * valid.
@@ -14779,7 +14920,7 @@ export class ScoreboardObjective {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the ScoreboardObjective reference is still
      * valid.
@@ -14886,7 +15027,7 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
@@ -14921,7 +15062,7 @@ export class ScreenDisplay {
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
@@ -15154,37 +15295,53 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
+ * Provides an adaptable interface for callers to subscribe to
+ * an event that fires before the game world shuts down. This
+ * event occurs after players have left, but before the world
+ * has closed.
  */
 export class ShutdownBeforeEventSignal {
     private constructor();
     /**
      * @remarks
+     * Adds a new subscriber callback to this event.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param callback
+     * Function callback that is called when this event fires.
      */
     subscribe(callback: (arg0: ShutdownEvent) => void): (arg0: ShutdownEvent) => void;
     /**
      * @remarks
+     * Removes a subscriber callback previously subscribed to via
+     * the subscribe method.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param callback
+     * Function closure that was previously passed to the subscribe
+     * method.
      */
     unsubscribe(callback: (arg0: ShutdownEvent) => void): void;
 }
 
 /**
- * @beta
+ * @rc
+ * The event object that gets dispatched when the game world is
+ * shutting down.
  */
 export class ShutdownEvent {
     private constructor();
 }
 
 /**
- * @beta
+ * @rc
  */
 export class StartupBeforeEventSignal {
     private constructor();
@@ -15207,7 +15364,7 @@ export class StartupBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class StartupEvent {
     private constructor();
@@ -15218,6 +15375,7 @@ export class StartupEvent {
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
     /**
+     * @beta
      * @remarks
      * @earlyExecution
      *
@@ -15248,7 +15406,7 @@ export class Structure {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the Structure is valid. The Structure may
      * become invalid if it is deleted.
@@ -15610,7 +15768,7 @@ export class System {
      */
     readonly afterEvents: SystemAfterEvents;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a collection of before-events for system-level
      * operations.
@@ -15628,7 +15786,7 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if this is a world where the editor is
      * currently loaded, returns false otherwise.
@@ -15798,7 +15956,7 @@ export class SystemAfterEvents {
 }
 
 /**
- * @beta
+ * @rc
  * A set of events that fire before an actual action occurs. In
  * most cases, you can potentially cancel or modify the
  * impending event. Note that in before events any APIs that
@@ -15820,6 +15978,7 @@ export class SystemBeforeEvents {
      */
     readonly startup: StartupBeforeEventSignal;
     /**
+     * @beta
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
      * can be due to using too much memory, or by causing
@@ -16746,6 +16905,13 @@ export class WorldAfterEvents {
      */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly playerHotbarSelectedSlotChange: PlayerHotbarSelectedSlotChangeAfterEventSignal;
+    /**
      * @remarks
      * This event fires when a player's {@link InputMode} changes.
      *
@@ -16777,6 +16943,13 @@ export class WorldAfterEvents {
      *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly playerInventoryItemChange: PlayerInventoryItemChangeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a player joins a world.  See also
@@ -16873,7 +17046,7 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -16992,14 +17165,14 @@ export class WorldBeforeEvents {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class WorldLoadAfterEvent {
     private constructor();
 }
 
 /**
- * @beta
+ * @rc
  */
 export class WorldLoadAfterEventSignal {
     private constructor();
@@ -17096,12 +17269,9 @@ export interface BlockCustomComponent {
      */
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @remarks
-     * This function will be called when a player destroys a
-     * specific block.
-     *
+     * @rc
      */
-    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;
+    onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a player sucessfully
@@ -18132,6 +18302,19 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
+ * @beta
+ * Contains additional filtering options for hotbar events.
+ */
+export interface HotbarEventOptions {
+    /**
+     * @remarks
+     * The slot indexes to consider.
+     *
+     */
+    allowedSlots?: number[];
+}
+
+/**
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
@@ -18152,6 +18335,58 @@ export interface InputEventOptions {
      *
      */
     state?: ButtonState;
+}
+
+/**
+ * @beta
+ * Contains additional filtering options for inventory item
+ * events.
+ */
+export interface InventoryItemEventOptions {
+    /**
+     * @remarks
+     * The slot indexes to consider.
+     *
+     */
+    allowedSlots?: number[];
+    /**
+     * @remarks
+     * The names for the items to exclude.
+     *
+     */
+    excludeItems?: string[];
+    /**
+     * @remarks
+     * The item tags to exclude.
+     *
+     */
+    excludeTags?: string[];
+    /**
+     * @remarks
+     * Flag to specify to ignore quantity changes only. True to
+     * ignore quantity changes, false to not ignore quantity
+     * changes.
+     *
+     */
+    ignoreQuantityChange?: boolean;
+    /**
+     * @remarks
+     * The item names to consider.
+     *
+     */
+    includeItems?: string[];
+    /**
+     * @remarks
+     * The item tags to consider.
+     *
+     */
+    includeTags?: string[];
+    /**
+     * @remarks
+     * The player inventory type to consider.
+     *
+     */
+    inventoryType?: PlayerInventoryType;
 }
 
 /**
@@ -18638,11 +18873,12 @@ export interface ScriptEventMessageFilterOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional options for spawning an Entity.
  */
 export interface SpawnEntityOptions {
     /**
+     * @beta
      * @remarks
      * Optional boolean which determines if this entity should
      * persist in the game world. Persistence prevents the entity
@@ -18651,6 +18887,7 @@ export interface SpawnEntityOptions {
      */
     initialPersistence?: boolean;
     /**
+     * @beta
      * @remarks
      * Optional initial rotation, in degrees, to set on the entity
      * when it spawns.

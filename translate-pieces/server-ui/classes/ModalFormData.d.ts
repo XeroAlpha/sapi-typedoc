@@ -7,7 +7,7 @@
  */
 export class ModalFormData {
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a section divider to the form.
      *
@@ -30,7 +30,7 @@ export class ModalFormData {
         dropdownOptions?: ModalFormDataDropdownOptions,
     ): ModalFormData;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a header to the form.
      *
@@ -39,7 +39,7 @@ export class ModalFormData {
      */
     header(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a label to the form.
      *

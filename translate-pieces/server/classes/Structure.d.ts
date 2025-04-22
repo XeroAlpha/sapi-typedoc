@@ -17,7 +17,7 @@ export class Structure {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the Structure is valid. The Structure may
      * become invalid if it is deleted.
