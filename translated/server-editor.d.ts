@@ -1200,6 +1200,14 @@ export enum WidgetMouseButtonActionType {
     Drag = 2,
 }
 
+export enum WorldGeneratorType {
+    Flat = 'Flat',
+    Nether = 'Nether',
+    Overworld = 'Overworld',
+    TheEnd = 'TheEnd',
+    Void = 'Void',
+}
+
 /**
  * Full set of all possible raw actions
  */
@@ -2660,6 +2668,7 @@ export class MinecraftEditor {
      *
      */
     readonly simulation: SimulationState;
+    readonly worldGeneratorType?: WorldGeneratorType;
 }
 
 /**
@@ -4527,6 +4536,7 @@ export interface GameOptions {
     keepInventory?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
+    locatorBar?: boolean;
     maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
@@ -4627,6 +4637,13 @@ export interface IActionBarItemCreationParams {
      *
      */
     enabled?: boolean;
+    /**
+     * @remarks
+     * Sets whether the Action Bar Item's execute is run when it is
+     * added to the Action Bar. If not defined, default is false.
+     *
+     */
+    executeOnAdd?: boolean;
     /**
      * @remarks
      * Icon resource for the item.
@@ -6236,6 +6253,13 @@ export interface IPropertyPane extends IPane {
     ): IVector3PropertyItem;
     /**
      * @remarks
+     * Begins pane construction for batching property item
+     * additions
+     *
+     */
+    beginConstruct(): void;
+    /**
+     * @remarks
      * Collapse the pane.
      *
      */
@@ -6246,6 +6270,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
+    /**
+     * @remarks
+     * Finalizes pane construction and synchronizes item data
+     *
+     */
+    endConstruct(): void;
     /**
      * @remarks
      * Returns pane title.
@@ -6266,6 +6296,14 @@ export interface IPropertyPane extends IPane {
      * New title
      */
     setTitle(newTitle: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Shows only the specified sub-pane, hiding all others
+     *
+     * @param subPaneId
+     * Identifier of the sub pane to display.
+     */
+    toggleSubPaneVisibility(subPaneId: string | undefined): void;
 }
 
 /**

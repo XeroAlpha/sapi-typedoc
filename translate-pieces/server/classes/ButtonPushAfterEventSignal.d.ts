@@ -8,7 +8,7 @@
 export class ButtonPushAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a button is pushed.
      *
@@ -19,7 +19,7 @@ export class ButtonPushAfterEventSignal {
      */
     subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a button is
      * pushed.

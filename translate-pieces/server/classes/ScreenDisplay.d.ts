@@ -10,7 +10,7 @@
 export class ScreenDisplay {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
@@ -45,7 +45,7 @@ export class ScreenDisplay {
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *

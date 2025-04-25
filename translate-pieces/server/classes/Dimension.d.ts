@@ -505,4 +505,24 @@ export class Dimension {
      * @seeExample spawnParticle.ts 25a384c8
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops all sounds from playing for all players.
+     *
+     * @worldMutation
+     *
+     */
+    stopAllSounds(): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops a sound from playing for all players.
+     *
+     * @worldMutation
+     *
+     * @param soundId
+     * Identifier of the sound.
+     */
+    stopSound(soundId: string): void;
 }

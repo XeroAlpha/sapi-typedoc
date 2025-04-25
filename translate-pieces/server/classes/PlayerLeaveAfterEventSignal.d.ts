@@ -7,7 +7,7 @@
 export class PlayerLeaveAfterEventSignal {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a callback that will be called when a player leaves the
      * world.
@@ -19,7 +19,7 @@ export class PlayerLeaveAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes a callback from being called when a player leaves
      * the world.

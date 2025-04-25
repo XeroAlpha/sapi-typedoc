@@ -27,6 +27,7 @@ export interface GameOptions {
     keepInventory?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
+    locatorBar?: boolean;
     maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;

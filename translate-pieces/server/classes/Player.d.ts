@@ -21,7 +21,7 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the current graphics mode of the player's client. This
      * can be changed in the Video section of the settings menu
@@ -433,6 +433,18 @@ export class Player extends Entity {
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
+     * @beta
+     * @remarks
+     * Stops all sounds from playing for this particular player.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopAllSounds(): void;
+    /**
      * @remarks
      * Stops any music tracks from playing for this particular
      * player.
@@ -442,4 +454,18 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     stopMusic(): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops a sound from playing for this particular player.
+     *
+     * @worldMutation
+     *
+     * @param soundId
+     * Identifier of the sound.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopSound(soundId: string): void;
 }

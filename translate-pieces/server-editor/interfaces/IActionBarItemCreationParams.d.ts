@@ -13,6 +13,13 @@ export interface IActionBarItemCreationParams {
     enabled?: boolean;
     /**
      * @remarks
+     * Sets whether the Action Bar Item's execute is run when it is
+     * added to the Action Bar. If not defined, default is false.
+     *
+     */
+    executeOnAdd?: boolean;
+    /**
+     * @remarks
      * Icon resource for the item.
      *
      */

@@ -73,7 +73,7 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that

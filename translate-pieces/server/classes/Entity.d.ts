@@ -92,7 +92,7 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the entity can be manipulated by script. A
      * Player is considered valid when it's EntityLifetimeState is
@@ -498,7 +498,7 @@ export class Entity {
      */
     kill(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the rotation of the entity to face a target location.
      * Both pitch and yaw will be set, if applicable, such as for

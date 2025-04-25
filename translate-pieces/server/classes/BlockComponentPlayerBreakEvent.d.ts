@@ -1,22 +1,23 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Player } from '../index';
 
 /**
- * Contains information regarding a specific block being
- * destroyed.
+ * @rc
+ * Contains information regarding a specific block being broken
+ * by a player.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class BlockComponentPlayerDestroyEvent extends BlockEvent {
+export class BlockComponentPlayerBreakEvent extends BlockEvent {
     private constructor();
     /**
      * @remarks
      * Returns permutation information about this block before it
-     * was destroyed.
+     * was broken.
      *
      */
-    readonly destroyedBlockPermutation: BlockPermutation;
+    readonly brokenBlockPermutation: BlockPermutation;
     /**
      * @remarks
-     * The player that destroyed this block.
+     * The player that broke this block.
      *
      */
     readonly player?: Player;
