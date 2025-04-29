@@ -1,3 +1,5 @@
+/* IMPORT */ import { LiquidSettings } from '../index';
+
 /**
  * @rc
  * Provides additional options for {@link
@@ -26,4 +28,12 @@ export interface JigsawStructurePlaceOptions {
      *
      */
     keepJigsaws?: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Specifies how to handle waterloggable blocks overlapping
+     * with existing liquid. Defaults to `ApplyWaterlogging`.
+     *
+     */
+    liquidSettings?: LiquidSettings;
 }

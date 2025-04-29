@@ -2040,6 +2040,28 @@ export enum ItemLockMode {
 }
 
 /**
+ * @beta
+ * Specifies how to handle waterloggable blocks overlapping
+ * with existing liquid.
+ */
+export enum LiquidSettings {
+    /**
+     * @remarks
+     * Causes a waterloggable block to become waterlogged, if it
+     * overlaps with existing liquid.
+     *
+     */
+    ApplyWaterlogging = 'ApplyWaterlogging',
+    /**
+     * @remarks
+     * Do not waterlog any waterloggable blocks that overlap
+     * existing liquid.
+     *
+     */
+    IgnoreWaterlogging = 'IgnoreWaterlogging',
+}
+
+/**
  * Represents the type of liquid that can be placed on a block
  * or flow dynamically in the world.
  */
@@ -2338,6 +2360,34 @@ export enum PlayerInventoryType {
 }
 
 /**
+ * @beta
+ * The player permission level.
+ */
+export enum PlayerPermissionLevel {
+    /**
+     * @remarks
+     * Visitors can only observe the world, not interact with it.
+     *
+     */
+    Visitor = 0,
+    /**
+     * @remarks
+     * Members can build and mine, attack players and mobs, and
+     * interact with items and entities.
+     *
+     */
+    Member = 1,
+    /**
+     * @remarks
+     * Operators can teleport and use commands, in addition to
+     * everything Members can do.
+     *
+     */
+    Operator = 2,
+    Custom = 3,
+}
+
+/**
  * Contains objectives and participants for the scoreboard.
  */
 export enum ScoreboardIdentityType {
@@ -2575,15 +2625,53 @@ export enum TimeOfDay {
 }
 
 /**
- * @beta
+ * @rc
+ * Tint logic applied to a block or part of a block. The color
+ * may vary when a world position is part of the context, as
+ * biomes often have an influence on the resulting tint.
  */
 export enum TintMethod {
+    /**
+     * @remarks
+     * Specifies a birch foliage tint method.
+     *
+     */
     BirchFoliage = 'BirchFoliage',
+    /**
+     * @remarks
+     * Specifies a default foliage tint method.
+     *
+     */
     DefaultFoliage = 'DefaultFoliage',
+    /**
+     * @remarks
+     * Specifies a dry foliage tint method.
+     *
+     */
     DryFoliage = 'DryFoliage',
+    /**
+     * @remarks
+     * Specifies an evergreen foliage tint method.
+     *
+     */
     EvergreenFoliage = 'EvergreenFoliage',
+    /**
+     * @remarks
+     * Specifies a grass tint method.
+     *
+     */
     Grass = 'Grass',
+    /**
+     * @remarks
+     * Specifies no tint method, resulting in a white tint.
+     *
+     */
     None = 'None',
+    /**
+     * @remarks
+     * Specifies a water tint method.
+     *
+     */
     Water = 'Water',
 }
 
@@ -4433,7 +4521,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the color of a block when displayed on a map.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5125,7 +5213,7 @@ export class ButtonPushAfterEventSignal {
 export class Camera {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the Camera is valid to access and use. A
      * Camera is considered valid when the owning Player of the
@@ -12602,6 +12690,13 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    commandPermissionLevel: CommandPermissionLevel;
+    /**
      * @rc
      * @remarks
      * Gets the current graphics mode of the player's client. This
@@ -12678,6 +12773,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly onScreenDisplay: ScreenDisplay;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks
      * @worldMutation
@@ -12798,14 +12900,6 @@ export class Player extends Entity {
      */
     getTotalXp(): number;
     /**
-     * @beta
-     * @remarks
-     * Returns true if this player has operator-level permissions.
-     *
-     * @throws This function can throw errors.
-     */
-    isOp(): boolean;
-    /**
      * @remarks
      * Plays a music track that only this particular player can
      * hear.
@@ -12921,17 +13015,6 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     setGameMode(gameMode?: GameMode): void;
-    /**
-     * @beta
-     * @remarks
-     * Will change the specified players permissions, and whether
-     * they are operator or not.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    setOp(isOp: boolean): void;
     /**
      * @rc
      * @remarks
@@ -17652,6 +17735,13 @@ export interface CompoundBlockVolumeItem {
 export interface CustomCommand {
     /**
      * @remarks
+     * Cheats must be enabled to run this command. Defaults to
+     * true.
+     *
+     */
+    cheatsRequired?: boolean;
+    /**
+     * @remarks
      * Command description as seen on the command line.
      *
      */
@@ -18469,6 +18559,14 @@ export interface JigsawPlaceOptions {
      *
      */
     keepJigsaws?: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Specifies how to handle waterloggable blocks overlapping
+     * with existing liquid. Defaults to `ApplyWaterlogging`.
+     *
+     */
+    liquidSettings?: LiquidSettings;
 }
 
 /**
@@ -18499,6 +18597,14 @@ export interface JigsawStructurePlaceOptions {
      *
      */
     keepJigsaws?: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Specifies how to handle waterloggable blocks overlapping
+     * with existing liquid. Defaults to `ApplyWaterlogging`.
+     *
+     */
+    liquidSettings?: LiquidSettings;
 }
 
 /**
@@ -19377,7 +19483,10 @@ export const HudVisibilityCount = 2;
  */
 export const MoonPhaseCount = 8;
 /**
- * @beta
+ * @rc
+ * @remarks
+ * How many times the server ticks in one in-game day.
+ *
  */
 export const TicksPerDay = 24000;
 /**

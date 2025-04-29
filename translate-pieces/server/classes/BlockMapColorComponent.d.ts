@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponent, RGBA, TintMethod } from '../index';
 
 /**
- * @beta
+ * @rc
  * Represents the color of a block when displayed on a map.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

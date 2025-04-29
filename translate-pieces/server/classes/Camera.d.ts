@@ -7,7 +7,7 @@
 export class Camera {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns whether the Camera is valid to access and use. A
      * Camera is considered valid when the owning Player of the

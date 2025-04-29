@@ -1,4 +1,4 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '../index';
 
 /**
  * Represents a player within the world.
@@ -20,6 +20,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly clientSystemInfo: ClientSystemInfo;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    commandPermissionLevel: CommandPermissionLevel;
     /**
      * @rc
      * @remarks
@@ -97,6 +104,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly onScreenDisplay: ScreenDisplay;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks
      * @worldMutation
@@ -217,14 +231,6 @@ export class Player extends Entity {
      */
     getTotalXp(): number;
     /**
-     * @beta
-     * @remarks
-     * Returns true if this player has operator-level permissions.
-     *
-     * @throws This function can throw errors.
-     */
-    isOp(): boolean;
-    /**
      * @remarks
      * Plays a music track that only this particular player can
      * hear.
@@ -340,17 +346,6 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     setGameMode(gameMode?: GameMode): void;
-    /**
-     * @beta
-     * @remarks
-     * Will change the specified players permissions, and whether
-     * they are operator or not.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    setOp(isOp: boolean): void;
     /**
      * @rc
      * @remarks
