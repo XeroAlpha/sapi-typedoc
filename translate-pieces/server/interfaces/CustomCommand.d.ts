@@ -8,6 +8,13 @@
 export interface CustomCommand {
     /**
      * @remarks
+     * Cheats must be enabled to run this command. Defaults to
+     * true.
+     *
+     */
+    cheatsRequired?: boolean;
+    /**
+     * @remarks
      * Command description as seen on the command line.
      *
      */

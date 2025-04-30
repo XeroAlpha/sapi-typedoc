@@ -38,7 +38,6 @@ export { NumberPropertyItemVariant } from './enums/NumberPropertyItemVariant';
 export { PaintCompletionState } from './enums/PaintCompletionState';
 export { PaintMode } from './enums/PaintMode';
 export { Plane } from './enums/Plane';
-export { PlayerPermissionLevel } from './enums/PlayerPermissionLevel';
 export { PlaytestSessionResult } from './enums/PlaytestSessionResult';
 export { PrimitiveType } from './enums/PrimitiveType';
 export { ProgressIndicatorPropertyItemVariant } from './enums/ProgressIndicatorPropertyItemVariant';

@@ -992,13 +992,6 @@ export enum Plane {
     YZ = 4,
 }
 
-export enum PlayerPermissionLevel {
-    Visitor = 0,
-    Member = 1,
-    Operator = 2,
-    Custom = 3,
-}
-
 export enum PlaytestSessionResult {
     OK = 0,
     InvalidSessionHandle = 1,
@@ -4544,7 +4537,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: PlayerPermissionLevel;
+    playerPermissions?: minecraftserver.PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;

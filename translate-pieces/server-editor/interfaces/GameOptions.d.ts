@@ -1,4 +1,4 @@
-/* IMPORT */ import { DaylightCycle, GamePublishSetting, PlayerPermissionLevel, ProjectExportType, minecraftserver } from '../index';
+/* IMPORT */ import { DaylightCycle, GamePublishSetting, ProjectExportType, minecraftserver } from '../index';
 
 export interface GameOptions {
     bedsWork?: boolean;
@@ -35,7 +35,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: PlayerPermissionLevel;
+    playerPermissions?: minecraftserver.PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
