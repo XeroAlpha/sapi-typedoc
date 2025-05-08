@@ -1,3 +1,5 @@
+/* IMPORT */ import { Player } from '../index';
+
 /**
  * Contains additional options for how an animation is played.
  */
@@ -26,7 +28,7 @@ export interface PlayAnimationOptions {
      * A list of players the animation will be visible to.
      *
      */
-    players?: string[];
+    players?: Player[];
     /**
      * @remarks
      * Specifies a Molang expression for when this animation should

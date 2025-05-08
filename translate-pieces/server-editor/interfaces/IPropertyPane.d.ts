@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, ImageResourceData, LocalizedString, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IColorTimelinePropertyItem, IColorTimelinePropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, INumberTimelinePropertyItem, INumberTimelinePropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, ImageResourceData, LocalizedString, PropertyPaneVisibilityUpdate, minecraftserver } from '../index';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -64,6 +64,15 @@ export interface IPropertyPane extends IPane {
     ): IColorPickerPropertyItem;
     /**
      * @remarks
+     * Adds a Color Timeline item to the pane.
+     *
+     */
+    addColorTimeline(
+        value: IObservableProp<number>,
+        options?: IColorTimelinePropertyItemOptions,
+    ): IColorTimelinePropertyItem;
+    /**
+     * @remarks
      * Adds a combo box item to the pane.
      *
      */
@@ -107,6 +116,15 @@ export interface IPropertyPane extends IPane {
      *
      */
     addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
+    /**
+     * @remarks
+     * Adds a Number Timeline item to the pane.
+     *
+     */
+    addNumberTimeline(
+        value: IObservableProp<number>,
+        options?: INumberTimelinePropertyItemOptions,
+    ): INumberTimelinePropertyItem;
     /**
      * @remarks
      * Adds a Progress Indicator item to the pane.

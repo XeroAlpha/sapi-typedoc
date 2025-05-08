@@ -148,18 +148,34 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * Gets the first block found above a given block location
+     * based on the given options (by default will find the first
+     * solid block above).
+     *
      * @worldMutation
      *
+     * @param location
+     * Location to retrieve the block above from.
+     * @param options
+     * The options to decide if a block is a valid result.
      * @throws This function can throw errors.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * Gets the first block found below a given block location
+     * based on the given options (by default will find the first
+     * solid block below).
+     *
      * @worldMutation
      *
+     * @param location
+     * Location to retrieve the block below from.
+     * @param options
+     * The options to decide if a block is a valid result.
      * @throws This function can throw errors.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
@@ -278,7 +294,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * Places the given feature into the dimension at the specified
      * location.
@@ -309,7 +324,6 @@ export class Dimension {
      */
     placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
     /**
-     * @rc
      * @remarks
      * Places the given feature rule into the dimension at the
      * specified location.

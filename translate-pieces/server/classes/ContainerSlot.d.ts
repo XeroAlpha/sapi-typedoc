@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from '../index';
 
 /**
  * Represents a slot within a broader container (e.g., entity
@@ -347,6 +347,8 @@ export class ContainerSlot {
      * The ItemStack to be placed in the slot.
      * @throws
      * Throws if the slot's container is invalid.
+     *
+     * {@link ContainerRulesError}
      *
      * {@link InvalidContainerSlotError}
      */

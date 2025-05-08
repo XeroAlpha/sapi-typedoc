@@ -1,5 +1,4 @@
 /**
- * @rc
  * An enumeration for the various difficulty levels of
  * Minecraft.
  */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraDefaultOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions } from '../index';
+/* IMPORT */ import { CameraEaseOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions } from '../index';
 
 /**
  * Contains methods relating to the active camera for the
@@ -54,7 +54,6 @@ export class Camera {
     setCamera(
         cameraPreset: string,
         setOptions?:
-            | CameraDefaultOptions
             | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
@@ -62,4 +61,21 @@ export class Camera {
             | CameraSetRotOptions
             | CameraTargetOptions,
     ): void;
+    /**
+     * @rc
+     * @remarks
+     * Sets the current active camera for the specified player and
+     * resets the position and rotation to the values defined in
+     * the JSON.
+     *
+     * @worldMutation
+     *
+     * @param cameraPreset
+     * Identifier of a camera preset file defined within JSON.
+     * @param easeOptions
+     * Options to ease the camera back to its original position and
+     * rotation.
+     * @throws This function can throw errors.
+     */
+    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
 }

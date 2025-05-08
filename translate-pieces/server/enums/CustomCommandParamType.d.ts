@@ -1,3 +1,5 @@
+/* IMPORT */ import { BlockType, Entity, EntityType, ItemType, Player } from '../index';
+
 /**
  * @beta
  * The types of paramaters accepted by a custom command.
@@ -5,62 +7,69 @@
 export enum CustomCommandParamType {
     /**
      * @remarks
-     * Command boolean parameter expecting true or false as input.
+     * Block type parameter provides a {@link BlockType}.
      *
      */
-    Boolean = 0,
+    BlockType = 'BlockType',
     /**
      * @remarks
-     * Command integer parameter.
+     * Boolean parameter.
      *
      */
-    Integer = 1,
+    Boolean = 'Boolean',
     /**
      * @remarks
-     * Command float parameter.
+     * Entity selector parameter provides an {@link Entity}.
      *
      */
-    Float = 2,
+    EntitySelector = 'EntitySelector',
     /**
      * @remarks
-     * Command string parameter.
+     * Entity type parameter provides an {@link EntityType}.
      *
      */
-    String = 3,
-    /**
-     * @remarks
-     * Command entity selector parameter.
-     *
-     */
-    EntitySelector = 4,
-    /**
-     * @remarks
-     * Command player selector parameter.
-     *
-     */
-    PlayerSelector = 5,
-    /**
-     * @remarks
-     * Command location parameter.
-     *
-     */
-    Location = 6,
-    /**
-     * @remarks
-     * Command block type parameter expecting a Minecraft block.
-     *
-     */
-    BlockType = 7,
-    /**
-     * @remarks
-     * Command item name parameter.
-     *
-     */
-    ItemType = 8,
+    EntityType = 'EntityType',
     /**
      * @remarks
      * Command enum parameter.
      *
      */
-    Enum = 9,
+    Enum = 'Enum',
+    /**
+     * @remarks
+     * Float parameter.
+     *
+     */
+    Float = 'Float',
+    /**
+     * @remarks
+     * Integer parameter.
+     *
+     */
+    Integer = 'Integer',
+    /**
+     * @remarks
+     * Item type parameter provides an {@link ItemType}.
+     *
+     */
+    ItemType = 'ItemType',
+    /**
+     * @remarks
+     * Location parameter provides a {@link
+     * @minecraft/server.Location}.
+     *
+     */
+    Location = 'Location',
+    /**
+     * @remarks
+     * Player selector parameter provides a {@link Player}.
+     *
+     */
+    PlayerSelector = 'PlayerSelector',
+    /**
+     * @remarks
+     * String parameter.
+     *
+     */
+    String = 'String',
 }

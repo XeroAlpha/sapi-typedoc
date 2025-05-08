@@ -6,5 +6,5 @@
 export type EntityIdentifierType<T> = [T] extends [never]
     ? VanillaEntityIdentifier
     : T extends string
-    ? VanillaEntityIdentifier | T
-    : never;
+      ? VanillaEntityIdentifier | T
+      : never;

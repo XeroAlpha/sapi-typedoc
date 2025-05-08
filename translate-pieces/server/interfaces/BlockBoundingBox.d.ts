@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockBoundingBoxUtils, Vector3 } from '../index';
 
 /**
- * @rc
  * A BlockBoundingBox is an interface to an object which
  * represents an AABB aligned rectangle.
  * The BlockBoundingBox assumes that it was created in a valid

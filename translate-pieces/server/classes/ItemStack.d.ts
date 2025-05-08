@@ -90,6 +90,16 @@ export class ItemStack {
      */
     readonly typeId: string;
     /**
+     * @beta
+     * @remarks
+     * The total weight of all items in the stack plus the weight
+     * of all items in the items container which is defined with
+     * the `Storage Item` component. The weight per item can be
+     * modified by the `Storage Weight Modifier` component.
+     *
+     */
+    readonly weight: number;
+    /**
      * @remarks
      * Creates a new instance of a stack of items for use in the
      * world.

@@ -141,7 +141,6 @@ export class StructureManager {
         options?: StructurePlaceOptions,
     ): void;
     /**
-     * @rc
      * @remarks
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
@@ -185,7 +184,6 @@ export class StructureManager {
         options?: JigsawPlaceOptions,
     ): BlockBoundingBox;
     /**
-     * @rc
      * @remarks
      * Places a jigsaw structure in the world.
      *

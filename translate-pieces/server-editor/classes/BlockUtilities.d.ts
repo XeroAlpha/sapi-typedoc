@@ -16,6 +16,14 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
+     */
+    findObscuredBlocksWithinVolume(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
