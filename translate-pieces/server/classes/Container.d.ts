@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, InvalidContainerError, ItemStack } from '../index';
+/* IMPORT */ import { ContainerRules, ContainerRulesError, ContainerSlot, InvalidContainerError, ItemStack } from '../index';
 
 /**
  * Represents a container that can hold sets of items. Used
@@ -8,6 +8,10 @@
  */
 export class Container {
     private constructor();
+    /**
+     * @beta
+     */
+    readonly containerRules?: ContainerRules;
     /**
      * @remarks
      * Count of the slots in the container that are empty.
@@ -37,6 +41,16 @@ export class Container {
      */
     readonly size: number;
     /**
+     * @beta
+     * @remarks
+     * The combined weight of all items in the container.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidContainerError}
+     */
+    readonly weight: number;
+    /**
      * @remarks
      * Adds an item to the container. The item is placed in the
      * first available slot(s) and can be stacked with existing
@@ -47,7 +61,13 @@ export class Container {
      *
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws
+     * Won't throw {@link ContainerRules} error for over weight
+     * limit but will instead add items up to the weight limit.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -166,6 +186,10 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
@@ -183,6 +207,10 @@ export class Container {
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -201,6 +229,10 @@ export class Container {
      * @throws
      * Throws if either this container or `otherContainer` are
      * invalid or if the `slot` or `otherSlot` are out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
@@ -222,6 +254,12 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
+     * Won't throw {@link ContainerRules} error for over weight
+     * limit but will instead add items up to the weight limit.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      * @seeExample transferBetweenContainers.ts
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;

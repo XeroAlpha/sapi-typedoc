@@ -35,5 +35,9 @@ export enum ItemComponentTypes {
     /**
      * @beta
      */
+    Inventory = 'minecraft:inventory',
+    /**
+     * @beta
+     */
     Potion = 'minecraft:potion',
 }

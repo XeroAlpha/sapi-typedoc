@@ -1,7 +1,6 @@
 /* IMPORT */ import { LiquidSettings } from '../index';
 
 /**
- * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsawStructure}.
  */

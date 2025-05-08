@@ -1039,6 +1039,7 @@ export declare enum PropertyItemType {
     Button = 'editorUI:Button',
     ButtonPane = 'editorUI:ButtonPane',
     ColorPicker = 'editorUI:ColorPicker',
+    ColorTimeline = 'editorUI:ColorTimeline',
     ComboBox = 'editorUI:ComboBox',
     DataTable = 'editorUI:DataTable',
     Divider = 'editorUI:Divider',
@@ -1046,6 +1047,7 @@ export declare enum PropertyItemType {
     Image = 'editorUI:Image',
     Link = 'editorUI:Link',
     Number = 'editorUI:Number',
+    NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
@@ -1625,6 +1627,14 @@ export class BlockUtilities {
         volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    findObscuredBlocksWithinVolume(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -5041,6 +5051,144 @@ export interface IColorPickerPropertyItemOptions extends IPropertyItemOptionsBas
 }
 
 /**
+ * A property item which supports Color Timeline properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IColorTimelinePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Update color timeline entry
+     *
+     * @param data
+     * New color node.
+     */
+    addNode(data: IColorTimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Get the list of nodes in the property item.
+     *
+     */
+    getData(): IColorTimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * Get time current time value on the slider.
+     *
+     */
+    getTime(): number;
+    /**
+     * @remarks
+     * Remove color node
+     *
+     * @param data
+     * Node to be removed.
+     */
+    removeNode(data: IColorTimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Set custom decimal precision for the calculations
+     *
+     */
+    setPrecision(precision: number): void;
+    /**
+     * @remarks
+     * Set time line slider value to a new value
+     *
+     * @param time
+     * The new time value.
+     */
+    setTime(time: number): void;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Update node value
+     *
+     * @param data
+     * Node to be updated.
+     */
+    updateNode(data: IColorTimelinePropertyItemEntry): void;
+}
+
+/**
+ * Properties of color timeline property item entry
+ */
+export interface IColorTimelinePropertyItemEntry {
+    id: string;
+    time: number;
+    value: minecraftserver.RGBA;
+}
+
+/**
+ * Optional properties for Color Timeline property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IColorTimelinePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Custom precision for the calculations
+     *
+     */
+    decimalPrecision?: number;
+    /**
+     * @remarks
+     * If true, nodes cannot be added or removed
+     *
+     */
+    disableAddRemoveNodes?: boolean;
+    /**
+     * @remarks
+     * List of nodes entries in the color timeline.
+     *
+     */
+    entries?: IColorTimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * True means nodes cannot be dragged or modified
+     *
+     */
+    isGraphReadOnly?: boolean;
+    /**
+     * @remarks
+     * Callback triggered when a new RGBA node is added to the
+     * timeline.
+     *
+     */
+    onNodeAdded?: (node: IColorTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when a timeline node's RGBA value
+     * changes.
+     *
+     */
+    onNodeChanged?: (node: IColorTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when an RGBA node is removed from the
+     * timeline. *
+     *
+     */
+    onNodeRemoved?: (node: IColorTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * This callback is called when UI control time is changed.
+     *
+     */
+    onTimeChanged?: (current: number, prev: number) => void;
+    /**
+     * @remarks
+     * Localized title of the property item
+     *
+     */
+    title?: LocalizedString;
+}
+
+/**
  * A property item which supports Combo Box properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5587,10 +5735,22 @@ export interface IMenuCreationParams {
     enabled?: boolean;
     /**
      * @remarks
+     * Whether the menu should have an icon.
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
      * Localized display text of the menu
      *
      */
     label: string;
+    /**
+     * @remarks
+     * Whether the menu should have a tooltip.
+     *
+     */
+    tooltip?: string;
     /**
      * @remarks
      * Custom unique identifier that will replace random id
@@ -5885,6 +6045,182 @@ export interface INumberPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A property item which supports Number Timeline properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface INumberTimelinePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Update color timeline entry
+     *
+     * @param data
+     * New color node.
+     */
+    addNode(data: INumberTimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Get the list of nodes in the property item.
+     *
+     */
+    getData(): INumberTimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * Get time current time value on the slider.
+     *
+     */
+    getTime(): number;
+    /**
+     * @remarks
+     * Remove color node
+     *
+     * @param data
+     * Node to be removed.
+     */
+    removeNode(data: INumberTimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Updates data entries value bounds.
+     *
+     */
+    setBounds(bounds: { minValue: number; maxValue: number }): void;
+    /**
+     * @remarks
+     * Set separator slice counts for x and y for the minor grid.
+     *
+     * @param counts
+     * Counts for the thin grid lines.
+     */
+    setSeparatorSliceCount(counts: minecraftserver.Vector2): void;
+    /**
+     * @remarks
+     * Set separator step counts for x and y for the major grid.
+     *
+     * @param counts
+     * Counts for the thick grid lines.
+     */
+    setSeparatorStepCount(counts: minecraftserver.Vector2): void;
+    /**
+     * @remarks
+     * Set time line slider value to a new value
+     *
+     * @param time
+     * The new time value.
+     */
+    setTime(time: number): void;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Update node value
+     *
+     * @param data
+     * Node to be updated.
+     */
+    updateNode(data: INumberTimelinePropertyItemEntry): void;
+}
+
+/**
+ * Properties of the Number timeline property item entry
+ */
+export interface INumberTimelinePropertyItemEntry {
+    color?: minecraftserver.RGBA;
+    id: string;
+    time: number;
+    value: number;
+}
+
+/**
+ * Optional properties for Number Timeline property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface INumberTimelinePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * The data bounds for the value node property
+     *
+     */
+    bounds?: {
+        minValue: number;
+        maxValue: number;
+    };
+    /**
+     * @remarks
+     * Custom precision for the calculations
+     *
+     */
+    decimalPrecision?: number;
+    /**
+     * @remarks
+     * If true, nodes cannot be added or removed
+     *
+     */
+    disableAddRemoveNodes?: boolean;
+    /**
+     * @remarks
+     * List of nodes entries in the color timeline.
+     *
+     */
+    entries?: INumberTimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * The separator slice count for the graph thin lines
+     *
+     */
+    gridSeparatorSliceCount?: minecraftserver.Vector2;
+    /**
+     * @remarks
+     * The separator step counts for the graph bold lines
+     *
+     */
+    gridSeparatorStepCount?: minecraftserver.Vector2;
+    /**
+     * @remarks
+     * True means nodes cannot be dragged or modified
+     *
+     */
+    isGraphReadOnly?: boolean;
+    /**
+     * @remarks
+     * Callback triggered when a new number node is added to the
+     * timeline.
+     *
+     */
+    onNodeAdded?: (node: INumberTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when a timeline node's number value
+     * changes.
+     *
+     */
+    onNodeChanged?: (node: INumberTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when an number node is removed from the
+     * timeline. *
+     *
+     */
+    onNodeRemoved?: (node: INumberTimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * This callback is called when UI control time is changed.
+     *
+     */
+    onTimeChanged?: (current: number, prev: number) => void;
+    /**
+     * @remarks
+     * Localized title of the property item
+     *
+     */
+    title?: LocalizedString;
+}
+
+/**
  * Represents a stateful value that can be observed by
  * different objects.
  */
@@ -6168,6 +6504,15 @@ export interface IPropertyPane extends IPane {
     ): IColorPickerPropertyItem;
     /**
      * @remarks
+     * Adds a Color Timeline item to the pane.
+     *
+     */
+    addColorTimeline(
+        value: IObservableProp<number>,
+        options?: IColorTimelinePropertyItemOptions,
+    ): IColorTimelinePropertyItem;
+    /**
+     * @remarks
      * Adds a combo box item to the pane.
      *
      */
@@ -6211,6 +6556,15 @@ export interface IPropertyPane extends IPane {
      *
      */
     addNumber(value: IObservableProp<number>, options?: INumberPropertyItemOptions): INumberPropertyItem;
+    /**
+     * @remarks
+     * Adds a Number Timeline item to the pane.
+     *
+     */
+    addNumberTimeline(
+        value: IObservableProp<number>,
+        options?: INumberTimelinePropertyItemOptions,
+    ): INumberTimelinePropertyItem;
     /**
      * @remarks
      * Adds a Progress Indicator item to the pane.
@@ -6306,10 +6660,23 @@ export interface IPropertyPane extends IPane {
 export interface IPropertyPaneOptions {
     /**
      * @remarks
+     * Optional information tooltip for the pane to be displayed on
+     * the header.
+     *
+     */
+    infoTooltip?: TooltipInteractiveContent;
+    /**
+     * @remarks
      * Localized title of the property pane
      *
      */
     title?: LocalizedString;
+    /**
+     * @remarks
+     * Unique identifier for the pane
+     *
+     */
+    uniqueId?: string;
 }
 
 /**
@@ -6434,13 +6801,6 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     headerAction?: IRootPropertyPaneHeaderAction;
-    /**
-     * @remarks
-     * Optional information tooltip for the pane to be displayed on
-     * the header.
-     *
-     */
-    infoTooltip?: TooltipInteractiveContent;
 }
 
 /**

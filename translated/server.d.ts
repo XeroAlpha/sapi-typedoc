@@ -231,6 +231,51 @@ export enum CompoundBlockVolumePositionRelativity {
 
 /**
  * @beta
+ * Reasons that the {@link
+ * @minecraft/server.ContainerRulesError} was thrown.
+ */
+export enum ContainerRulesErrorReason {
+    /**
+     * @remarks
+     * Thrown when trying to add item that was defined in {@link
+     * ContainerRules.bannedItems}.
+     *
+     */
+    BannedItem = 'BannedItem',
+    /**
+     * @remarks
+     * Thrown when trying to add item with `Storage Item` component
+     * to container with {@link
+     * ContainerRules.allowNestedStorageItems} set to false.
+     *
+     */
+    NestedStorageItem = 'NestedStorageItem',
+    /**
+     * @remarks
+     * Thrown when trying to add item not defined in non-empty
+     * {@link ContainerRules.allowedItems}.
+     *
+     */
+    NotAllowedItem = 'NotAllowedItem',
+    /**
+     * @remarks
+     * Thrown when trying to add item that pushed the containers
+     * weight over the {@link ContainerRules.weightLimit}.
+     *
+     */
+    OverWeightLimit = 'OverWeightLimit',
+    /**
+     * @remarks
+     * Thrown when trying to add item with zero weight defined by
+     * the `Storage Weight Modifier` component to container with a
+     * defined {@link ContainerRules.weightLimit}
+     *
+     */
+    ZeroWeightItem = 'ZeroWeightItem',
+}
+
+/**
+ * @beta
  * Reason why custom command registration failed.
  */
 export enum CustomCommandErrorReason {
@@ -283,64 +328,71 @@ export enum CustomCommandErrorReason {
 export enum CustomCommandParamType {
     /**
      * @remarks
-     * Command boolean parameter expecting true or false as input.
+     * Block type parameter provides a {@link BlockType}.
      *
      */
-    Boolean = 0,
+    BlockType = 'BlockType',
     /**
      * @remarks
-     * Command integer parameter.
+     * Boolean parameter.
      *
      */
-    Integer = 1,
+    Boolean = 'Boolean',
     /**
      * @remarks
-     * Command float parameter.
+     * Entity selector parameter provides an {@link Entity}.
      *
      */
-    Float = 2,
+    EntitySelector = 'EntitySelector',
     /**
      * @remarks
-     * Command string parameter.
+     * Entity type parameter provides an {@link EntityType}.
      *
      */
-    String = 3,
-    /**
-     * @remarks
-     * Command entity selector parameter.
-     *
-     */
-    EntitySelector = 4,
-    /**
-     * @remarks
-     * Command player selector parameter.
-     *
-     */
-    PlayerSelector = 5,
-    /**
-     * @remarks
-     * Command location parameter.
-     *
-     */
-    Location = 6,
-    /**
-     * @remarks
-     * Command block type parameter expecting a Minecraft block.
-     *
-     */
-    BlockType = 7,
-    /**
-     * @remarks
-     * Command item name parameter.
-     *
-     */
-    ItemType = 8,
+    EntityType = 'EntityType',
     /**
      * @remarks
      * Command enum parameter.
      *
      */
-    Enum = 9,
+    Enum = 'Enum',
+    /**
+     * @remarks
+     * Float parameter.
+     *
+     */
+    Float = 'Float',
+    /**
+     * @remarks
+     * Integer parameter.
+     *
+     */
+    Integer = 'Integer',
+    /**
+     * @remarks
+     * Item type parameter provides an {@link ItemType}.
+     *
+     */
+    ItemType = 'ItemType',
+    /**
+     * @remarks
+     * Location parameter provides a {@link
+     * @minecraft/server.Location}.
+     *
+     */
+    Location = 'Location',
+    /**
+     * @remarks
+     * Player selector parameter provides a {@link Player}.
+     *
+     */
+    PlayerSelector = 'PlayerSelector',
+    /**
+     * @remarks
+     * String parameter.
+     *
+     */
+    String = 'String',
 }
 
 /**
@@ -383,7 +435,6 @@ export enum CustomComponentNameErrorReason {
 }
 
 /**
- * @rc
  * An enumeration for the various difficulty levels of
  * Minecraft.
  */
@@ -2035,6 +2086,10 @@ export enum ItemComponentTypes {
     /**
      * @beta
      */
+    Inventory = 'minecraft:inventory',
+    /**
+     * @beta
+     */
     Potion = 'minecraft:potion',
 }
 
@@ -2937,8 +2992,8 @@ export type EntityComponentTypeMap = {
 export type EntityIdentifierType<T> = [T] extends [never]
     ? VanillaEntityIdentifier
     : T extends string
-    ? VanillaEntityIdentifier | T
-    : never;
+      ? VanillaEntityIdentifier | T
+      : never;
 
 export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
     ? ItemComponentTypeMap[T]
@@ -2951,12 +3006,14 @@ export type ItemComponentTypeMap = {
     dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
+    inventory: ItemInventoryComponent;
     'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;
     'minecraft:durability': ItemDurabilityComponent;
     'minecraft:dyeable': ItemDyeableComponent;
     'minecraft:enchantable': ItemEnchantableComponent;
     'minecraft:food': ItemFoodComponent;
+    'minecraft:inventory': ItemInventoryComponent;
     'minecraft:potion': ItemPotionComponent;
     potion: ItemPotionComponent;
 };
@@ -5462,7 +5519,6 @@ export class Camera {
     setCamera(
         cameraPreset: string,
         setOptions?:
-            | CameraDefaultOptions
             | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
@@ -5470,6 +5526,23 @@ export class Camera {
             | CameraSetRotOptions
             | CameraTargetOptions,
     ): void;
+    /**
+     * @rc
+     * @remarks
+     * Sets the current active camera for the specified player and
+     * resets the position and rotation to the values defined in
+     * the JSON.
+     *
+     * @worldMutation
+     *
+     * @param cameraPreset
+     * Identifier of a camera preset file defined within JSON.
+     * @param easeOptions
+     * Options to ease the camera back to its original position and
+     * rotation.
+     * @throws This function can throw errors.
+     */
+    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
 }
 
 /**
@@ -5917,6 +5990,10 @@ export class CompoundBlockVolume {
 export class Container {
     private constructor();
     /**
+     * @beta
+     */
+    readonly containerRules?: ContainerRules;
+    /**
      * @remarks
      * Count of the slots in the container that are empty.
      *
@@ -5945,6 +6022,16 @@ export class Container {
      */
     readonly size: number;
     /**
+     * @beta
+     * @remarks
+     * The combined weight of all items in the container.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidContainerError}
+     */
+    readonly weight: number;
+    /**
      * @remarks
      * Adds an item to the container. The item is placed in the
      * first available slot(s) and can be stacked with existing
@@ -5955,7 +6042,13 @@ export class Container {
      *
      * @param itemStack
      * The stack of items to add.
-     * @throws This function can throw errors.
+     * @throws
+     * Won't throw {@link ContainerRules} error for over weight
+     * limit but will instead add items up to the weight limit.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -6074,6 +6167,10 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
@@ -6091,6 +6188,10 @@ export class Container {
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
@@ -6109,6 +6210,10 @@ export class Container {
      * @throws
      * Throws if either this container or `otherContainer` are
      * invalid or if the `slot` or `otherSlot` are out of bounds.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
@@ -6130,6 +6235,12 @@ export class Container {
      * @throws
      * Throws if either this container or `toContainer` are invalid
      * or if the `fromSlot` or `toSlot` indices out of bounds.
+     * Won't throw {@link ContainerRules} error for over weight
+     * limit but will instead add items up to the weight limit.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      * @seeExample transferBetweenContainers.ts
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
@@ -6483,6 +6594,8 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
+     * {@link ContainerRulesError}
+     *
      * {@link InvalidContainerSlotError}
      */
     setItem(itemStack?: ItemStack): void;
@@ -6814,18 +6927,34 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * Gets the first block found above a given block location
+     * based on the given options (by default will find the first
+     * solid block above).
+     *
      * @worldMutation
      *
+     * @param location
+     * Location to retrieve the block above from.
+     * @param options
+     * The options to decide if a block is a valid result.
      * @throws This function can throw errors.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * Gets the first block found below a given block location
+     * based on the given options (by default will find the first
+     * solid block below).
+     *
      * @worldMutation
      *
+     * @param location
+     * Location to retrieve the block below from.
+     * @param options
+     * The options to decide if a block is a valid result.
      * @throws This function can throw errors.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
@@ -6944,7 +7073,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * Places the given feature into the dimension at the specified
      * location.
@@ -6975,7 +7103,6 @@ export class Dimension {
      */
     placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
     /**
-     * @rc
      * @remarks
      * Places the given feature rule into the dimension at the
      * specified location.
@@ -11878,6 +12005,24 @@ export class ItemFoodComponent extends ItemComponent {
 
 /**
  * @beta
+ * This component is added to items with the `Storage Item`
+ * component. Can access and modify this items inventory
+ * container.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemInventoryComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidContainerError}
+     */
+    readonly container: Container;
+    static readonly componentId = 'minecraft:inventory';
+}
+
+/**
+ * @beta
  * When present on an item, this item is a potion item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -12054,6 +12199,16 @@ export class ItemStack {
      *
      */
     readonly typeId: string;
+    /**
+     * @beta
+     * @remarks
+     * The total weight of all items in the stack plus the weight
+     * of all items in the items container which is defined with
+     * the `Storage Item` component. The weight per item can be
+     * modified by the `Storage Weight Modifier` component.
+     *
+     */
+    readonly weight: number;
     /**
      * @remarks
      * Creates a new instance of a stack of items for use in the
@@ -13113,7 +13268,6 @@ export class Player extends Entity {
      */
     addLevels(amount: number): number;
     /**
-     * @rc
      * @remarks
      * For this player, removes all overrides of any Entity
      * Properties on the target Entity. This change is not applied
@@ -13237,7 +13391,6 @@ export class Player extends Entity {
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
-     * @rc
      * @remarks
      * For this player, removes the override on an Entity Property.
      * This change is not applied until the next tick and will not
@@ -13298,7 +13451,6 @@ export class Player extends Entity {
      */
     setGameMode(gameMode?: GameMode): void;
     /**
-     * @rc
      * @remarks
      * For this player, overrides an Entity Property on the target
      * Entity to the provided value. This property must be client
@@ -16110,7 +16262,6 @@ export class StructureManager {
         options?: StructurePlaceOptions,
     ): void;
     /**
-     * @rc
      * @remarks
      * Places a partial jigsaw structure in the world. This is
      * useful for debugging connections between jigsaw blocks.
@@ -16154,7 +16305,6 @@ export class StructureManager {
         options?: JigsawPlaceOptions,
     ): BlockBoundingBox;
     /**
-     * @rc
      * @remarks
      * Places a jigsaw structure in the world.
      *
@@ -16869,7 +17019,6 @@ export class World {
      */
     getDefaultSpawnLocation(): Vector3;
     /**
-     * @rc
      * @remarks
      * Gets the difficulty from the world.
      *
@@ -17077,7 +17226,6 @@ export class World {
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
-     * @rc
      * @remarks
      * Sets the worlds difficulty.
      *
@@ -17723,7 +17871,6 @@ export interface BiomeSearchOptions {
 }
 
 /**
- * @rc
  * A BlockBoundingBox is an interface to an object which
  * represents an AABB aligned rectangle.
  * The BlockBoundingBox assumes that it was created in a valid
@@ -17994,15 +18141,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface CameraDefaultOptions {
-    /**
-     * @remarks
-     * Sets a set of easing options for the camera.
-     *
-     */
-    easeOptions: CameraEaseOptions;
-}
-
 /**
  * Contains options associated with a camera ease operation.
  */
@@ -18156,6 +18294,42 @@ export interface CompoundBlockVolumeItem {
      *
      */
     volume: BlockVolume;
+}
+
+/**
+ * @beta
+ * Rules that if broken on container operations will throw an
+ * error.
+ */
+export interface ContainerRules {
+    /**
+     * @remarks
+     * Defines the items that are exclusively allowed in the
+     * container. If empty all items are allowed in the container.
+     *
+     */
+    allowedItems: string[];
+    /**
+     * @remarks
+     * Determines whether other storage items can be placed into
+     * the container.
+     *
+     */
+    allowNestedStorageItems: boolean;
+    /**
+     * @remarks
+     * Defines the items that are not allowed in the container.
+     *
+     */
+    bannedItems: string[];
+    /**
+     * @remarks
+     * Defines the maximum allowed total weight of all items in the
+     * storage item container. If undefined container has no weight
+     * limit.
+     *
+     */
+    weightLimit?: number;
 }
 
 /**
@@ -18971,7 +19145,6 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsaw}.
  */
@@ -19001,7 +19174,6 @@ export interface JigsawPlaceOptions {
 }
 
 /**
- * @rc
  * Provides additional options for {@link
  * StructureManager.placeJigsawStructure}.
  */
@@ -19127,7 +19299,7 @@ export interface PlayAnimationOptions {
      * A list of players the animation will be visible to.
      *
      */
-    players?: string[];
+    players?: Player[];
     /**
      * @remarks
      * Specifies a Molang expression for when this animation should
@@ -19715,6 +19887,24 @@ export class CommandError extends Error {
 }
 
 /**
+ * Error thrown if {@link ContainerRules} are broken on
+ * container operations.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ContainerRulesError extends Error {
+    private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The specific reason the error was thrown.
+     *
+     * @earlyExecution
+     *
+     */
+    reason: ContainerRulesErrorReason;
+}
+
+/**
  * @beta
  * Error object thrown when CustomCommandRegistry errors occur.
  */
@@ -19889,9 +20079,6 @@ export class NamespaceNameError extends Error {
     reason: NamespaceNameErrorReason;
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlaceJigsawError extends Error {
     private constructor();
