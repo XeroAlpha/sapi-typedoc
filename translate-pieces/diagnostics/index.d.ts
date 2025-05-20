@@ -1,5 +1,7 @@
 import * as minecraftcommon from '../common';
+import * as minecraftserveradmin from '../server-admin';
 /* PRIVATE */ export { minecraftcommon };
+/* PRIVATE */ export { minecraftserveradmin };
 export { SentryBreadcrumbLevel } from './enums/SentryBreadcrumbLevel';
 export { Sentry } from './classes/Sentry';
 export { SentryOptions } from './interfaces/SentryOptions';

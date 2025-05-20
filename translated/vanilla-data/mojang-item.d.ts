@@ -1610,6 +1610,7 @@ export declare enum MinecraftItemTypes {
     MusicDiscStal = "minecraft:music_disc_stal",
     /** 音乐唱片 C418 - strad。 */
     MusicDiscStrad = "minecraft:music_disc_strad",
+    MusicDiscTears = "minecraft:music_disc_tears",
     /** 音乐唱片 C418 - wait。 */
     MusicDiscWait = "minecraft:music_disc_wait",
     /** 音乐唱片 C418 - ward。 */

@@ -133,6 +133,12 @@ export interface IPropertyPane extends IPane {
     addProgressIndicator(options?: IProgressIndicatorPropertyItemOptions): IProgressIndicatorPropertyItem;
     /**
      * @remarks
+     * Adds a proxy view of another supported pane
+     *
+     */
+    addProxyPane(paneId: string): void;
+    /**
+     * @remarks
      * Adds an editable string item to the pane
      *
      */
