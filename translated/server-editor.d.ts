@@ -282,6 +282,7 @@ export enum GamePublishSetting {
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    GraphicsMode = 'GraphicsMode',
     NightVision = 'NightVision',
     ShowChunkBoundaries = 'ShowChunkBoundaries',
     ShowCompass = 'ShowCompass',
@@ -1049,6 +1050,7 @@ export declare enum PropertyItemType {
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',
+    ProxyPane = 'editorUI:ProxyPane',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
     Text = 'editorUI:Text',
@@ -1250,6 +1252,7 @@ export declare type EventHandler<T> = (eventArg: T) => void;
  * Defines type information for graphics settings properties.
  */
 export type GraphicsSettingsPropertyTypeMap = {
+    [GraphicsSettingsProperty.GraphicsMode]?: minecraftserver.GraphicsMode;
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
@@ -1764,6 +1767,12 @@ export class BrushShapeManager {
      *
      */
     getBrushShapeOffset(): minecraftserver.Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    isBrushPaintBusy(): boolean;
     /**
      * @remarks
      * @worldMutation
@@ -3274,6 +3283,13 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     discardTrackedChanges(): number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    isBusy(): boolean;
     /**
      * @remarks
      * Open a transaction record which will be a container for any
@@ -6571,6 +6587,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     addProgressIndicator(options?: IProgressIndicatorPropertyItemOptions): IProgressIndicatorPropertyItem;
+    /**
+     * @remarks
+     * Adds a proxy view of another supported pane
+     *
+     */
+    addProxyPane(paneId: string): void;
     /**
      * @remarks
      * Adds an editable string item to the pane

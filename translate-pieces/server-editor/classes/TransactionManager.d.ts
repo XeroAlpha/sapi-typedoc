@@ -100,6 +100,13 @@ export class TransactionManager {
     discardTrackedChanges(): number;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    isBusy(): boolean;
+    /**
+     * @remarks
      * Open a transaction record which will be a container for any
      * number of transaction operations.
      * All transaction operations within a record are grouped and

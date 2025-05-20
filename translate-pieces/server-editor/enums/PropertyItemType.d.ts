@@ -18,6 +18,7 @@ export declare enum PropertyItemType {
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',
+    ProxyPane = 'editorUI:ProxyPane',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
     Text = 'editorUI:Text',

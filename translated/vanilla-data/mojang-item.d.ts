@@ -806,6 +806,7 @@ export declare enum MinecraftItemTypes {
     MusicDiscRelic = "minecraft:music_disc_relic",
     MusicDiscStal = "minecraft:music_disc_stal",
     MusicDiscStrad = "minecraft:music_disc_strad",
+    MusicDiscTears = "minecraft:music_disc_tears",
     MusicDiscWait = "minecraft:music_disc_wait",
     MusicDiscWard = "minecraft:music_disc_ward",
     Mutton = "minecraft:mutton",

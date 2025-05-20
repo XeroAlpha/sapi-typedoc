@@ -39,6 +39,12 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
+     */
+    isBrushPaintBusy(): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     setBrushMask(mask: BlockMaskList): void;
