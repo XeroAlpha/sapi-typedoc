@@ -1,7 +1,7 @@
-/* IMPORT */ import { CameraEaseOptions, Vector2, Vector3 } from '../index';
+/* IMPORT */ import { EaseOptions, Vector2, Vector3 } from '../index';
 
 export interface CameraSetRotOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location?: Vector3;
     rotation: Vector2;
 }

@@ -20,6 +20,14 @@ export class Dimension {
      */
     readonly id: string;
     /**
+     * @beta
+     * @remarks
+     * Key for the localization of a dimension's name used by
+     * language files.
+     *
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.

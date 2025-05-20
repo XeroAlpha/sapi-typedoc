@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityAddRiderComponent, EntityAgeableComponent, EntityBreathableComponent, EntityCanClimbComponent, EntityCanFlyComponent, EntityCanPowerJumpComponent, EntityColor2Component, EntityColorComponent, EntityEquippableComponent, EntityFireImmuneComponent, EntityFloatsInLiquidComponent, EntityFlyingSpeedComponent, EntityFrictionModifierComponent, EntityHealableComponent, EntityHealthComponent, EntityInventoryComponent, EntityIsBabyComponent, EntityIsChargedComponent, EntityIsChestedComponent, EntityIsDyeableComponent, EntityIsHiddenWhenInvisibleComponent, EntityIsIgnitedComponent, EntityIsIllagerCaptainComponent, EntityIsSaddledComponent, EntityIsShakingComponent, EntityIsShearedComponent, EntityIsStackableComponent, EntityIsStunnedComponent, EntityIsTamedComponent, EntityItemComponent, EntityLavaMovementComponent, EntityLeashableComponent, EntityMarkVariantComponent, EntityMovementAmphibiousComponent, EntityMovementBasicComponent, EntityMovementComponent, EntityMovementFlyComponent, EntityMovementGenericComponent, EntityMovementGlideComponent, EntityMovementHoverComponent, EntityMovementJumpComponent, EntityMovementSkipComponent, EntityMovementSwayComponent, EntityNavigationClimbComponent, EntityNavigationFloatComponent, EntityNavigationFlyComponent, EntityNavigationGenericComponent, EntityNavigationHoverComponent, EntityNavigationWalkComponent, EntityNpcComponent, EntityOnFireComponent, EntityProjectileComponent, EntityPushThroughComponent, EntityRideableComponent, EntityRidingComponent, EntityScaleComponent, EntitySkinIdComponent, EntityStrengthComponent, EntityTameMountComponent, EntityTameableComponent, EntityTypeFamilyComponent, EntityUnderwaterMovementComponent, EntityVariantComponent, EntityWantsJockeyComponent, PlayerCursorInventoryComponent } from '../index';
+/* IMPORT */ import { EntityAddRiderComponent, EntityAgeableComponent, EntityBreathableComponent, EntityCanClimbComponent, EntityCanFlyComponent, EntityCanPowerJumpComponent, EntityColor2Component, EntityColorComponent, EntityEquippableComponent, EntityExhaustionComponent, EntityFireImmuneComponent, EntityFloatsInLiquidComponent, EntityFlyingSpeedComponent, EntityFrictionModifierComponent, EntityHealableComponent, EntityHealthComponent, EntityHungerComponent, EntityInventoryComponent, EntityIsBabyComponent, EntityIsChargedComponent, EntityIsChestedComponent, EntityIsDyeableComponent, EntityIsHiddenWhenInvisibleComponent, EntityIsIgnitedComponent, EntityIsIllagerCaptainComponent, EntityIsSaddledComponent, EntityIsShakingComponent, EntityIsShearedComponent, EntityIsStackableComponent, EntityIsStunnedComponent, EntityIsTamedComponent, EntityItemComponent, EntityLavaMovementComponent, EntityLeashableComponent, EntityMarkVariantComponent, EntityMovementAmphibiousComponent, EntityMovementBasicComponent, EntityMovementComponent, EntityMovementFlyComponent, EntityMovementGenericComponent, EntityMovementGlideComponent, EntityMovementHoverComponent, EntityMovementJumpComponent, EntityMovementSkipComponent, EntityMovementSwayComponent, EntityNavigationClimbComponent, EntityNavigationFloatComponent, EntityNavigationFlyComponent, EntityNavigationGenericComponent, EntityNavigationHoverComponent, EntityNavigationWalkComponent, EntityNpcComponent, EntityOnFireComponent, EntityProjectileComponent, EntityPushThroughComponent, EntityRideableComponent, EntityRidingComponent, EntitySaturationComponent, EntityScaleComponent, EntitySkinIdComponent, EntityStrengthComponent, EntityTameMountComponent, EntityTameableComponent, EntityTypeFamilyComponent, EntityUnderwaterMovementComponent, EntityVariantComponent, EntityWantsJockeyComponent, PlayerCursorInventoryComponent } from '../index';
 
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
@@ -87,6 +87,9 @@ export type EntityComponentTypeMap = {
     'minecraft:navigation.walk': EntityNavigationWalkComponent;
     'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
+    'minecraft:player.exhaustion': EntityExhaustionComponent;
+    'minecraft:player.hunger': EntityHungerComponent;
+    'minecraft:player.saturation': EntitySaturationComponent;
     'minecraft:projectile': EntityProjectileComponent;
     'minecraft:push_through': EntityPushThroughComponent;
     'minecraft:rideable': EntityRideableComponent;
@@ -118,6 +121,9 @@ export type EntityComponentTypeMap = {
     'navigation.walk': EntityNavigationWalkComponent;
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
+    'player.exhaustion': EntityExhaustionComponent;
+    'player.hunger': EntityHungerComponent;
+    'player.saturation': EntitySaturationComponent;
     projectile: EntityProjectileComponent;
     push_through: EntityPushThroughComponent;
     rideable: EntityRideableComponent;

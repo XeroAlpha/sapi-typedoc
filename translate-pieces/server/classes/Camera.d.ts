@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraEaseOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions } from '../index';
+/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '../index';
 
 /**
  * Contains methods relating to the active camera for the
@@ -77,5 +77,5 @@ export class Camera {
      * rotation.
      * @throws This function can throw errors.
      */
-    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
+    setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
 }
