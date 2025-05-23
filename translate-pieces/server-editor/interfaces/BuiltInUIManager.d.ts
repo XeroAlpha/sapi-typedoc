@@ -28,6 +28,18 @@ export interface BuiltInUIManager {
     navigateToPauseScreen(): void;
     /**
      * @remarks
+     * Navigates to the github-samples site
+     *
+     */
+    navigateToSamples(): void;
+    /**
+     * @remarks
+     * Saves levels & exits back to Editor main menu.
+     *
+     */
+    saveAndExit(): void;
+    /**
+     * @remarks
      * Updates the visibility of the log panel
      *
      */

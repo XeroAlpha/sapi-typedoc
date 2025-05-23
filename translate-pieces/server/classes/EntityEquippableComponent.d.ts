@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, ItemStack } from '../index';
+/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, InvalidEntityError, ItemStack } from '../index';
 
 /**
  * Provides access to a mob's equipment slots. This component
@@ -8,6 +8,26 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Returns the total Armor level of the owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalArmor: number;
+    /**
+     * @beta
+     * @remarks
+     * Returns the total Toughness level of the owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalToughness: number;
     static readonly componentId = 'minecraft:equippable';
     /**
      * @remarks

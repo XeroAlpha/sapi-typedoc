@@ -1,7 +1,7 @@
-/* IMPORT */ import { CameraEaseOptions, Entity, Vector3 } from '../index';
+/* IMPORT */ import { EaseOptions, Entity, Vector3 } from '../index';
 
 export interface CameraSetFacingOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingEntity: Entity;
     location?: Vector3;
 }

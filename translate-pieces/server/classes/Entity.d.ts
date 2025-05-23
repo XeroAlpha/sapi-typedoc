@@ -248,8 +248,7 @@ export class Entity {
     clearDynamicProperties(): void;
     /**
      * @remarks
-     * Sets the current velocity of the Entity to zero. Note that
-     * this method may not have an impact on Players.
+     * Sets the current velocity of the Entity to zero.
      *
      * @worldMutation
      *

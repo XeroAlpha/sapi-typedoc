@@ -180,6 +180,38 @@ export class ServerVariables {
 }
 
 /**
+ * Options when transferring a player to a server that supports
+ * direct host/port connections.
+ */
+export interface TransferPlayerIpPortOptions {
+    /**
+     * @remarks
+     * Hostname of the destination server.
+     *
+     */
+    hostname: string;
+    /**
+     * @remarks
+     * Port of the destination server.
+     *
+     */
+    port: number;
+}
+
+/**
+ * Options when transferring a player to a server that supports
+ * NetherNet connections.
+ */
+export interface TransferPlayerNetherNetOptions {
+    /**
+     * @remarks
+     * NetherNet ID of the destination server.
+     *
+     */
+    netherNetId: string;
+}
+
+/**
  * An error that is thrown when trying to interact with a join
  * event and the player is disconnected.
  */
@@ -204,13 +236,14 @@ export class DisconnectedError extends Error {
  *
  * @param player
  * Player to transfer.
- * @param host
- * Host of the server to transfer to.
- * @param port
- * Port of the server to transfer to.
+ * @param options
+ * Options for where to send the player.
  * @throws This function can throw errors.
  */
-export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
+export function transferPlayer(
+    player: minecraftserver.Player,
+    options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
+): void;
 export const beforeEvents: AdminBeforeEvents;
 /**
  * @remarks

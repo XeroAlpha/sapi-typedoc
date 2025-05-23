@@ -8,6 +8,8 @@ export { AsyncPlayerJoinBeforeEventSignal } from './classes/AsyncPlayerJoinBefor
 export { SecretString } from './classes/SecretString';
 export { ServerSecrets } from './classes/ServerSecrets';
 export { ServerVariables } from './classes/ServerVariables';
+export { TransferPlayerIpPortOptions } from './interfaces/TransferPlayerIpPortOptions';
+export { TransferPlayerNetherNetOptions } from './interfaces/TransferPlayerNetherNetOptions';
 export { DisconnectedError } from './classes/DisconnectedError';
 export { transferPlayer } from './functions/transferPlayer';
 export { beforeEvents } from './variables/beforeEvents';

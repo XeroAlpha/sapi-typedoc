@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent, InvalidEntityError, minecraftcommon } from '../index';
 
 /**
  * This is a base abstract class for any entity component that
@@ -70,12 +70,17 @@ export class EntityAttributeComponent extends EntityComponent {
     resetToMinValue(): void;
     /**
      * @remarks
-     * Sets the current value of this attribute. The provided value
-     * will be clamped to the range of this attribute.
+     * Sets the current value of this attribute.
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
+     * If the value is out of bounds, an ArgumentOutOfBounds Error
+     * is thrown.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setCurrentValue(value: number): boolean;
 }

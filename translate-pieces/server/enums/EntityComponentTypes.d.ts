@@ -360,6 +360,18 @@ export enum EntityComponentTypes {
      */
     OnFire = 'minecraft:onfire',
     /**
+     * @beta
+     */
+    Exhaustion = 'minecraft:player.exhaustion',
+    /**
+     * @beta
+     */
+    Hunger = 'minecraft:player.hunger',
+    /**
+     * @beta
+     */
+    Saturation = 'minecraft:player.saturation',
+    /**
      * @remarks
      * The projectile component controls the properties of a
      * projectile entity and allows it to be shot in a given

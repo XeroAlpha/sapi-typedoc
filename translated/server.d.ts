@@ -1074,6 +1074,18 @@ export enum EntityComponentTypes {
      */
     OnFire = 'minecraft:onfire',
     /**
+     * @beta
+     */
+    Exhaustion = 'minecraft:player.exhaustion',
+    /**
+     * @beta
+     */
+    Hunger = 'minecraft:player.hunger',
+    /**
+     * @beta
+     */
+    Saturation = 'minecraft:player.saturation',
+    /**
      * @remarks
      * The projectile component controls the properties of a
      * projectile entity and allows it to be shot in a given
@@ -2253,6 +2265,16 @@ export enum MoonPhase {
 }
 
 /**
+ * @beta
+ */
+export enum MovementType {
+    Immovable = 'Immovable',
+    Popped = 'Popped',
+    Push = 'Push',
+    PushPull = 'PushPull',
+}
+
+/**
  * An enumeration describing the reason for the namespace name
  * error being thrown
  */
@@ -2558,6 +2580,14 @@ export enum SignSide {
 }
 
 /**
+ * @beta
+ */
+export enum StickyType {
+    None = 'None',
+    Same = 'Same',
+}
+
+/**
  * Specifies how structure blocks should be animated when a
  * structure is placed.
  */
@@ -2829,9 +2859,11 @@ export type BlockComponentTypeMap = {
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
+    'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:sign': BlockSignComponent;
+    movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
@@ -2940,6 +2972,9 @@ export type EntityComponentTypeMap = {
     'minecraft:navigation.walk': EntityNavigationWalkComponent;
     'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
+    'minecraft:player.exhaustion': EntityExhaustionComponent;
+    'minecraft:player.hunger': EntityHungerComponent;
+    'minecraft:player.saturation': EntitySaturationComponent;
     'minecraft:projectile': EntityProjectileComponent;
     'minecraft:push_through': EntityPushThroughComponent;
     'minecraft:rideable': EntityRideableComponent;
@@ -2971,6 +3006,9 @@ export type EntityComponentTypeMap = {
     'navigation.walk': EntityNavigationWalkComponent;
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
+    'player.exhaustion': EntityExhaustionComponent;
+    'player.hunger': EntityHungerComponent;
+    'player.saturation': EntitySaturationComponent;
     projectile: EntityProjectileComponent;
     push_through: EntityPushThroughComponent;
     rideable: EntityRideableComponent;
@@ -4811,6 +4849,31 @@ export class BlockMapColorComponent extends BlockComponent {
 }
 
 /**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockMovableComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly movementType: MovementType;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly stickyType: StickyType;
+    static readonly componentId = 'minecraft:movable';
+}
+
+/**
  * Contains the combination of type {@link BlockType} and
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
@@ -5542,7 +5605,7 @@ export class Camera {
      * rotation.
      * @throws This function can throw errors.
      */
-    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
+    setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
 }
 
 /**
@@ -6799,6 +6862,14 @@ export class Dimension {
      */
     readonly id: string;
     /**
+     * @beta
+     * @remarks
+     * Key for the localization of a dimension's name used by
+     * language files.
+     *
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * Searches the block volume for a block that satisfies the
      * block filter.
@@ -7863,8 +7934,7 @@ export class Entity {
     clearDynamicProperties(): void;
     /**
      * @remarks
-     * Sets the current velocity of the Entity to zero. Note that
-     * this method may not have an impact on Players.
+     * Sets the current velocity of the Entity to zero.
      *
      * @worldMutation
      *
@@ -8520,12 +8590,17 @@ export class EntityAttributeComponent extends EntityComponent {
     resetToMinValue(): void;
     /**
      * @remarks
-     * Sets the current value of this attribute. The provided value
-     * will be clamped to the range of this attribute.
+     * Sets the current value of this attribute.
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
+     * If the value is out of bounds, an ArgumentOutOfBounds Error
+     * is thrown.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setCurrentValue(value: number): boolean;
 }
@@ -8825,6 +8900,26 @@ export class EntityDieAfterEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Returns the total Armor level of the owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalArmor: number;
+    /**
+     * @beta
+     * @remarks
+     * Returns the total Toughness level of the owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalToughness: number;
     static readonly componentId = 'minecraft:equippable';
     /**
      * @remarks
@@ -8864,6 +8959,17 @@ export class EntityEquippableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
+}
+
+/**
+ * @beta
+ * Defines the interactions with this entity for Exhaustion.
+ * Wraps the `minecraft.player.exhaustion` attribute.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityExhaustionComponent extends EntityAttributeComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:player.exhaustion';
 }
 
 /**
@@ -9131,6 +9237,17 @@ export class EntityHitEntityAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Defines the interactions with this entity for hunger. Wraps
+ * the `minecraft.player.hunger` attribute.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHungerComponent extends EntityAttributeComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:player.hunger';
 }
 
 /**
@@ -10408,6 +10525,17 @@ export class EntityRidingComponent extends EntityComponent {
      */
     readonly entityRidingOn: Entity;
     static readonly componentId = 'minecraft:riding';
+}
+
+/**
+ * @beta
+ * Defines the interactions with this entity for Saturation.
+ * Wraps the `minecraft.player.saturation` attribute.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntitySaturationComponent extends EntityAttributeComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:player.saturation';
 }
 
 /**
@@ -18142,24 +18270,6 @@ export interface BlockRaycastOptions extends BlockFilter {
 }
 
 /**
- * Contains options associated with a camera ease operation.
- */
-export interface CameraEaseOptions {
-    /**
-     * @remarks
-     * Time for the ease operation.
-     *
-     */
-    easeTime?: number;
-    /**
-     * @remarks
-     * Type of ease operation to use.
-     *
-     */
-    easeType?: EasingType;
-}
-
-/**
  * Used to initiate a full-screen color fade.
  */
 export interface CameraFadeOptions {
@@ -18222,24 +18332,24 @@ export interface CameraFixedBoomOptions {
 }
 
 export interface CameraSetFacingOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingEntity: Entity;
     location?: Vector3;
 }
 
 export interface CameraSetLocationOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location: Vector3;
 }
 
 export interface CameraSetPosOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingLocation: Vector3;
     location?: Vector3;
 }
 
 export interface CameraSetRotOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location?: Vector3;
     rotation: Vector2;
 }
@@ -18475,6 +18585,26 @@ export interface DimensionLocation {
      *
      */
     z: number;
+}
+
+/**
+ * @rc
+ * Contains options associated with easing between positions
+ * and/or rotations.
+ */
+export interface EaseOptions {
+    /**
+     * @remarks
+     * Time for the ease operation.
+     *
+     */
+    easeTime?: number;
+    /**
+     * @remarks
+     * Type of ease operation to use.
+     *
+     */
+    easeType?: EasingType;
 }
 
 /**

@@ -1,9 +1,11 @@
 /* IMPORT */ import { EasingType } from '../index';
 
 /**
- * Contains options associated with a camera ease operation.
+ * @rc
+ * Contains options associated with easing between positions
+ * and/or rotations.
  */
-export interface CameraEaseOptions {
+export interface EaseOptions {
     /**
      * @remarks
      * Time for the ease operation.

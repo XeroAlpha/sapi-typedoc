@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { TransferPlayerIpPortOptions, TransferPlayerNetherNetOptions, minecraftserver } from '../index';
 
 /**
  * @remarks
@@ -8,10 +8,11 @@
  *
  * @param player
  * Player to transfer.
- * @param host
- * Host of the server to transfer to.
- * @param port
- * Port of the server to transfer to.
+ * @param options
+ * Options for where to send the player.
  * @throws This function can throw errors.
  */
-export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
+export function transferPlayer(
+    player: minecraftserver.Player,
+    options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
+): void;
