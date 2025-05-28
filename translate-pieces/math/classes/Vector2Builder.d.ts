@@ -9,6 +9,7 @@
 export declare class Vector2Builder implements Vector2 {
     x: number;
     y: number;
+    constructor(vecStr: string, delim?: string);
     constructor(vec: Vector2, arg?: never);
     constructor(x: number, y: number);
     toString(options?: {

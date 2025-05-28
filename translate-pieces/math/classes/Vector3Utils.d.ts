@@ -99,6 +99,15 @@ export declare class Vector3Utils {
         delimiter?: string;
     }): string;
     /**
+     * fromString
+     *
+     * Gets a Vector3 from the string representation produced by {@link Vector3Utils.toString}. If any numeric value is not a number
+     * or the format is invalid, undefined is returned.
+     * @param str - The string to parse
+     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link Vector3Utils.toString}
+     */
+    static fromString(str: string, delimiter?: string): Vector3 | undefined;
+    /**
      * clamp
      *
      * Clamps the components of a vector to limits to produce a new vector
