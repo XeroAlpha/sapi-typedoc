@@ -14,6 +14,7 @@ export declare class Vector3Builder implements Vector3 {
     x: number;
     y: number;
     z: number;
+    constructor(vecStr: string, delim?: string, arg2?: never);
     constructor(vec: Vector3, arg?: never, arg2?: never);
     constructor(x: number, y: number, z: number);
     /**

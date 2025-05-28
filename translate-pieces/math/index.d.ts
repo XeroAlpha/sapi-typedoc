@@ -4,6 +4,7 @@ export { }
 /* PRIVATE */ export { Vector2 };
 /* PRIVATE */ export { Vector3 };
 export { clampNumber } from './functions/clampNumber';
+export { VECTOR2_ZERO } from './variables/VECTOR2_ZERO';
 export { Vector2Builder } from './classes/Vector2Builder';
 export { Vector2Utils } from './classes/Vector2Utils';
 export { VECTOR3_BACK } from './variables/VECTOR3_BACK';
