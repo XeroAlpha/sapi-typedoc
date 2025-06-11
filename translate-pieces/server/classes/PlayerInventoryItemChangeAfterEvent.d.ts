@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemStack, Player, PlayerInventoryType } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after a player's
  * inventory item changes.
  */

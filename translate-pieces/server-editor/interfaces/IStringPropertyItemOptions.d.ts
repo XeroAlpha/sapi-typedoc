@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for String property item
@@ -35,5 +35,5 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }

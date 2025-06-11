@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '../index';
 
 /**
  * A property item which supports boolean properties
@@ -22,5 +22,5 @@ export interface IBoolPropertyItem extends IPropertyItemBase {
      * Sets tooltip description of the property item.
      *
      */
-    setTooltip(title: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }

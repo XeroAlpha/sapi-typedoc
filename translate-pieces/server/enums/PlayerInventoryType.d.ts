@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Specifies the player inventory type.
  */
 export enum PlayerInventoryType {

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockMaskList, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
 
 export class BrushShapeManager {
     private constructor();
@@ -40,6 +40,18 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    getDirectionalPlacementMode(): BrushDirectionalPlacementMode;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getInverseEraseMode(): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     isBrushPaintBusy(): boolean;
     /**
      * @remarks
@@ -71,6 +83,12 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    setDirectionalPlacementMode(directionalPlacementMode: BrushDirectionalPlacementMode): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     setFlattenHeight(flattenHeight: number): void;
     /**
      * @remarks
@@ -78,6 +96,12 @@ export class BrushShapeManager {
      *
      */
     setFlattenRadius(flattenRadius: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setInverseEraseMode(inverseEraseMode: boolean): void;
     /**
      * @remarks
      * @worldMutation

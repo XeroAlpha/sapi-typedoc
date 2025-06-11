@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.1.0-beta"
+ *   "version": "2.2.0-beta"
  * }
  * ```
  *
@@ -2056,7 +2056,7 @@ export enum ItemComponentTypes {
      */
     Durability = 'minecraft:durability',
     /**
-     * @beta
+     * @rc
      */
     Dyeable = 'minecraft:dyeable',
     /**
@@ -2241,7 +2241,7 @@ export enum MoonPhase {
 }
 
 /**
- * @beta
+ * @rc
  */
 export enum MovementType {
     Immovable = 'Immovable',
@@ -2418,7 +2418,7 @@ export enum PlatformType {
 }
 
 /**
- * @beta
+ * @rc
  * Specifies the player inventory type.
  */
 export enum PlayerInventoryType {
@@ -2542,7 +2542,7 @@ export enum SignSide {
 }
 
 /**
- * @beta
+ * @rc
  */
 export enum StickyType {
     None = 'None',
@@ -4647,7 +4647,7 @@ export class BlockMapColorComponent extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMovableComponent extends BlockComponent {
@@ -5002,9 +5002,7 @@ export class BlockSignComponent extends BlockComponent {
      * @param message
      * The message to set on the sign. If set to a string, then
      * call `getText` to read that string. If set to a RawMessage,
-     * then calling `getRawText` will return a RawText. If set to a
-     * RawText, then calling `getRawText` will return the same
-     * object that was passed in.
+     * then calling `getRawText` will return a RawText.
      * @param side
      * The side of the sign the message will be set on. If not
      * provided, the message will be set on the front side of the
@@ -5014,7 +5012,7 @@ export class BlockSignComponent extends BlockComponent {
      * Throws if the provided message is greater than 512
      * characters in length.
      */
-    setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    setText(message: RawMessage | string, side?: SignSide): void;
     /**
      * @remarks
      * Sets the dye color of the text.
@@ -6473,7 +6471,7 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -7706,6 +7704,10 @@ export class Entity {
      * @param vector
      * Impulse vector.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
@@ -11615,7 +11617,7 @@ export class ItemDurabilityComponent extends ItemComponent {
 }
 
 /**
- * @beta
+ * @rc
  * When present on an item, this item can be dyed.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -12301,6 +12303,8 @@ export class ItemStack {
      * new line. The maximum lore line count is 20. The maximum
      * lore line length is 50 characters.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: string[]): void;
@@ -13885,7 +13889,7 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after changing the
  * selected hotbar slot for a player.
  */
@@ -13918,7 +13922,7 @@ export class PlayerHotbarSelectedSlotChangeAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected after a player selected
  * hotbar slot is changed.
  */
@@ -14400,7 +14404,7 @@ export class PlayerInteractWithEntityBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after a player's
  * inventory item changes.
  */
@@ -14439,7 +14443,7 @@ export class PlayerInventoryItemChangeAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected after a player's
  * inventory item is changed.
  */
@@ -17264,8 +17268,10 @@ export class WorldAfterEvents {
      */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * This event fires when a player's selected slot changes.
+     *
      * @earlyExecution
      *
      */
@@ -17303,8 +17309,11 @@ export class WorldAfterEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * This event fires when an item gets added or removed to the
+     * player's inventory.
+     *
      * @earlyExecution
      *
      */
@@ -18696,13 +18705,14 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional filtering options for hotbar events.
  */
 export interface HotbarEventOptions {
     /**
      * @remarks
-     * The slot indexes to consider.
+     * The slot indexes to consider. Values should be between 0 and
+     * 8, inclusive. If not specified, all slots are considered.
      *
      */
     allowedSlots?: number[];
@@ -18732,14 +18742,15 @@ export interface InputEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional filtering options for inventory item
  * events.
  */
 export interface InventoryItemEventOptions {
     /**
      * @remarks
-     * The slot indexes to consider.
+     * The slot indexes to consider. Values should be positive
+     * numbers. If not specified, all slots are considered.
      *
      */
     allowedSlots?: number[];
@@ -19685,6 +19696,24 @@ export class InvalidEntityError extends Error {
      *
      */
     type: string;
+}
+
+/**
+ * @beta
+ * The error called when an item is invalid. This can occur
+ * when accessing components on a removed item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidItemStackError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The type of the item that is now invalid.
+     *
+     * @earlyExecution
+     *
+     */
+    itemType: ItemType;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes

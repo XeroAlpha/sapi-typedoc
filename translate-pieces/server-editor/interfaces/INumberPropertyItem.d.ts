@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '../index';
 
 /**
  * A property item which supports Number properties
@@ -26,7 +26,7 @@ export interface INumberPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Updates number limits and clamps the current value.

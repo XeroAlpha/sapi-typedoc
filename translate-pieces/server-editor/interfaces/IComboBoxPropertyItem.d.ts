@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '../index';
 
 /**
  * A property item which supports Combo Box properties
@@ -26,5 +26,5 @@ export interface IComboBoxPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }

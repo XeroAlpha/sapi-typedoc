@@ -345,6 +345,8 @@ export class ItemStack {
      * new line. The maximum lore line count is 20. The maximum
      * lore line length is 50 characters.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: string[]): void;

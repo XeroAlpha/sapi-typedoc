@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
 
 /**
  * A property item which supports Vector3 properties
@@ -26,7 +26,7 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New button tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Updates Vector3 limits and clamps the current value.

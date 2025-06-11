@@ -222,6 +222,10 @@ export class Entity {
      * @param vector
      * Impulse vector.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
