@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum StickyType {
     None = 'None',

@@ -265,8 +265,10 @@ export class WorldAfterEvents {
      */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * This event fires when a player's selected slot changes.
+     *
      * @earlyExecution
      *
      */
@@ -304,8 +306,11 @@ export class WorldAfterEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
+     * This event fires when an item gets added or removed to the
+     * player's inventory.
+     *
      * @earlyExecution
      *
      */

@@ -1,7 +1,7 @@
 /**
  * Mouse device action categories
  */
-export declare enum MouseActionCategory {
+export enum MouseActionCategory {
     /**
      * @remarks
      * Mouse button was used.

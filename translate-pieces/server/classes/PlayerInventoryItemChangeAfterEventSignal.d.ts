@@ -1,7 +1,7 @@
 /* IMPORT */ import { InventoryItemEventOptions, PlayerInventoryItemChangeAfterEvent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected after a player's
  * inventory item is changed.
  */

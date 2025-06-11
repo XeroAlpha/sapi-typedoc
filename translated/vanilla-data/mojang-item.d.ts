@@ -274,7 +274,7 @@ export declare enum MinecraftItemTypes {
     BlueWool = "minecraft:blue_wool",
     /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
-    /** 镶铆盔甲纹饰锻造模板。 */
+    /** 镶铆盔甲纹饰 锻造模板。 */
     BoltArmorTrimSmithingTemplate = "minecraft:bolt_armor_trim_smithing_template",
     /** 骨头。 */
     Bone = "minecraft:bone",
@@ -504,7 +504,7 @@ export declare enum MinecraftItemTypes {
     CoalOre = "minecraft:coal_ore",
     /** 砂土。 */
     CoarseDirt = "minecraft:coarse_dirt",
-    /** 海岸盔甲纹饰锻造模板。 */
+    /** 海岸盔甲纹饰 锻造模板。 */
     CoastArmorTrimSmithingTemplate = "minecraft:coast_armor_trim_smithing_template",
     /** 深板岩圆石。 */
     CobbledDeepslate = "minecraft:cobbled_deepslate",
@@ -858,7 +858,7 @@ export declare enum MinecraftItemTypes {
     Dropper = "minecraft:dropper",
     /** 溺尸刷怪蛋。 */
     DrownedSpawnEgg = "minecraft:drowned_spawn_egg",
-    /** 沙丘盔甲纹饰锻造模板。 */
+    /** 沙丘盔甲纹饰 锻造模板。 */
     DuneArmorTrimSmithingTemplate = "minecraft:dune_armor_trim_smithing_template",
     /** 回响碎片。 */
     EchoShard = "minecraft:echo_shard",
@@ -934,7 +934,7 @@ export declare enum MinecraftItemTypes {
     ExposedCutCopperSlab = "minecraft:exposed_cut_copper_slab",
     /** 斑驳的切制铜楼梯。 */
     ExposedCutCopperStairs = "minecraft:exposed_cut_copper_stairs",
-    /** 眼眸盔甲纹饰锻造模板。 */
+    /** 眼眸盔甲纹饰 锻造模板。 */
     EyeArmorTrimSmithingTemplate = "minecraft:eye_armor_trim_smithing_template",
     /** 耕地。 */
     Farmland = "minecraft:farmland",
@@ -972,7 +972,7 @@ export declare enum MinecraftItemTypes {
     Flint = "minecraft:flint",
     /** 打火石。 */
     FlintAndSteel = "minecraft:flint_and_steel",
-    /** 涡流盔甲纹饰锻造模板。 */
+    /** 涡流盔甲纹饰 锻造模板。 */
     FlowArmorTrimSmithingTemplate = "minecraft:flow_armor_trim_smithing_template",
     /** 涡流旗帜图案。 */
     FlowBannerPattern = "minecraft:flow_banner_pattern",
@@ -1182,7 +1182,7 @@ export declare enum MinecraftItemTypes {
     HornCoralFan = "minecraft:horn_coral_fan",
     /** 马刷怪蛋。 */
     HorseSpawnEgg = "minecraft:horse_spawn_egg",
-    /** 雇主盔甲纹饰锻造模板。 */
+    /** 雇主盔甲纹饰 锻造模板。 */
     HostArmorTrimSmithingTemplate = "minecraft:host_armor_trim_smithing_template",
     /** 狼嚎纹样陶片。 */
     HowlPotterySherd = "minecraft:howl_pottery_sherd",
@@ -1670,7 +1670,7 @@ export declare enum MinecraftItemTypes {
     NetheriteShovel = "minecraft:netherite_shovel",
     /** 下界合金剑。 */
     NetheriteSword = "minecraft:netherite_sword",
-    /** 下界合金升级锻造模板。 */
+    /** 下界合金升级 锻造模板。 */
     NetheriteUpgradeSmithingTemplate = "minecraft:netherite_upgrade_smithing_template",
     /** 下界岩。 */
     Netherrack = "minecraft:netherrack",
@@ -2048,7 +2048,7 @@ export declare enum MinecraftItemTypes {
     RabbitStew = "minecraft:rabbit_stew",
     /** 铁轨。 */
     Rail = "minecraft:rail",
-    /** 牧民盔甲纹饰锻造模板。 */
+    /** 牧民盔甲纹饰 锻造模板。 */
     RaiserArmorTrimSmithingTemplate = "minecraft:raiser_armor_trim_smithing_template",
     /** 劫掠兽刷怪蛋。 */
     RavagerSpawnEgg = "minecraft:ravager_spawn_egg",
@@ -2148,7 +2148,7 @@ export declare enum MinecraftItemTypes {
     ResinClump = "minecraft:resin_clump",
     /** 重生锚。 */
     RespawnAnchor = "minecraft:respawn_anchor",
-    /** 肋骨盔甲纹饰锻造模板。 */
+    /** 肋骨盔甲纹饰 锻造模板。 */
     RibArmorTrimSmithingTemplate = "minecraft:rib_armor_trim_smithing_template",
     /** 玫瑰丛。 */
     RoseBush = "minecraft:rose_bush",
@@ -2192,9 +2192,9 @@ export declare enum MinecraftItemTypes {
     SeaPickle = "minecraft:sea_pickle",
     /** 海草。 */
     Seagrass = "minecraft:seagrass",
-    /** 哨兵盔甲纹饰锻造模板。 */
+    /** 哨兵盔甲纹饰 锻造模板。 */
     SentryArmorTrimSmithingTemplate = "minecraft:sentry_armor_trim_smithing_template",
-    /** 塑造盔甲纹饰锻造模板。 */
+    /** 塑造盔甲纹饰 锻造模板。 */
     ShaperArmorTrimSmithingTemplate = "minecraft:shaper_armor_trim_smithing_template",
     /** 麦捆纹样陶片。 */
     SheafPotterySherd = "minecraft:sheaf_pottery_sherd",
@@ -2216,7 +2216,7 @@ export declare enum MinecraftItemTypes {
     ShulkerShell = "minecraft:shulker_shell",
     /** 潜影贝刷怪蛋。 */
     ShulkerSpawnEgg = "minecraft:shulker_spawn_egg",
-    /** 幽静盔甲纹饰锻造模板。 */
+    /** 幽静盔甲纹饰 锻造模板。 */
     SilenceArmorTrimSmithingTemplate = "minecraft:silence_armor_trim_smithing_template",
     /** 淡灰色带釉陶瓦。 */
     SilverGlazedTerracotta = "minecraft:silver_glazed_terracotta",
@@ -2276,7 +2276,7 @@ export declare enum MinecraftItemTypes {
     SnifferSpawnEgg = "minecraft:sniffer_spawn_egg",
     /** 嗅探纹样陶片。 */
     SnortPotterySherd = "minecraft:snort_pottery_sherd",
-    /** 猪鼻盔甲纹饰锻造模板。 */
+    /** 猪鼻盔甲纹饰 锻造模板。 */
     SnoutArmorTrimSmithingTemplate = "minecraft:snout_armor_trim_smithing_template",
     /** 雪块。 */
     Snow = "minecraft:snow",
@@ -2300,7 +2300,7 @@ export declare enum MinecraftItemTypes {
     SpiderEye = "minecraft:spider_eye",
     /** 蜘蛛刷怪蛋。 */
     SpiderSpawnEgg = "minecraft:spider_spawn_egg",
-    /** 尖塔盔甲纹饰锻造模板。 */
+    /** 尖塔盔甲纹饰 锻造模板。 */
     SpireArmorTrimSmithingTemplate = "minecraft:spire_armor_trim_smithing_template",
     /** 喷溅药水。 */
     SplashPotion = "minecraft:splash_potion",
@@ -2458,7 +2458,7 @@ export declare enum MinecraftItemTypes {
     TallGrass = "minecraft:tall_grass",
     /** 标靶。 */
     Target = "minecraft:target",
-    /** 潮汐盔甲纹饰锻造模板。 */
+    /** 潮汐盔甲纹饰 锻造模板。 */
     TideArmorTrimSmithingTemplate = "minecraft:tide_armor_trim_smithing_template",
     /** 遮光玻璃。 */
     TintedGlass = "minecraft:tinted_glass",
@@ -2532,7 +2532,7 @@ export declare enum MinecraftItemTypes {
     Vault = "minecraft:vault",
     /** 青翠蛙明灯。 */
     VerdantFroglight = "minecraft:verdant_froglight",
-    /** 恼鬼盔甲纹饰锻造模板。 */
+    /** 恼鬼盔甲纹饰 锻造模板。 */
     VexArmorTrimSmithingTemplate = "minecraft:vex_armor_trim_smithing_template",
     /** 恼鬼刷怪蛋。 */
     VexSpawnEgg = "minecraft:vex_spawn_egg",
@@ -2544,7 +2544,7 @@ export declare enum MinecraftItemTypes {
     Vine = "minecraft:vine",
     /** 流浪商人刷怪蛋。 */
     WanderingTraderSpawnEgg = "minecraft:wandering_trader_spawn_egg",
-    /** 监守盔甲纹饰锻造模板。 */
+    /** 监守盔甲纹饰 锻造模板。 */
     WardArmorTrimSmithingTemplate = "minecraft:ward_armor_trim_smithing_template",
     /** 监守者刷怪蛋。 */
     WardenSpawnEgg = "minecraft:warden_spawn_egg",
@@ -2660,7 +2660,7 @@ export declare enum MinecraftItemTypes {
     WaxedWeatheredCutCopperSlab = "minecraft:waxed_weathered_cut_copper_slab",
     /** 涂蜡的锈蚀切制铜楼梯。 */
     WaxedWeatheredCutCopperStairs = "minecraft:waxed_weathered_cut_copper_stairs",
-    /** 向导盔甲纹饰锻造模板。 */
+    /** 向导盔甲纹饰 锻造模板。 */
     WayfinderArmorTrimSmithingTemplate = "minecraft:wayfinder_armor_trim_smithing_template",
     /** 锈蚀的雕纹铜块。 */
     WeatheredChiseledCopper = "minecraft:weathered_chiseled_copper",
@@ -2718,7 +2718,7 @@ export declare enum MinecraftItemTypes {
     WhiteTulip = "minecraft:white_tulip",
     /** 白色羊毛。 */
     WhiteWool = "minecraft:white_wool",
-    /** 荒野盔甲纹饰锻造模板。 */
+    /** 荒野盔甲纹饰 锻造模板。 */
     WildArmorTrimSmithingTemplate = "minecraft:wild_armor_trim_smithing_template",
     /** 野花簇。 */
     Wildflowers = "minecraft:wildflowers",

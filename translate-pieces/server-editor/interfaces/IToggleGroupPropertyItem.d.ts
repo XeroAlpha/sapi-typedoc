@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, IToggleGroupPropertyItemEntry, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, IToggleGroupPropertyItemEntry, LocalizedString } from '../index';
 
 /**
  * A property item which supports toggle button properties
@@ -43,7 +43,7 @@ export interface IToggleGroupPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Update list of toggle group entries.

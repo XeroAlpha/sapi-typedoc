@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum MovementType {
     Immovable = 'Immovable',

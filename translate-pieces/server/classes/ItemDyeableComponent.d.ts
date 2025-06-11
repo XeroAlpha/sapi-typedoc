@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemComponent, RGB } from '../index';
 
 /**
- * @beta
+ * @rc
  * When present on an item, this item can be dyed.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

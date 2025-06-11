@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString, NoArgsAction, RegisteredAction } from '../index';
 
 /**
  * A property item which supports Button properties
@@ -36,5 +36,5 @@ export interface IButtonPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New button tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }

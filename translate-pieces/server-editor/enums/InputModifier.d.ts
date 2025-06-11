@@ -1,7 +1,7 @@
 /**
  * Input modifier flags to create chorded bindings
  */
-export declare enum InputModifier {
+export enum InputModifier {
     Unused = 0,
     None = 1,
     Alt = 2,

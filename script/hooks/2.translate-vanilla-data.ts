@@ -107,7 +107,7 @@ const tsPopulators: Record<
         for (const enumMember of enumNode.getMembers()) {
             const effectId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
             const effectIdWithoutPrefix = effectId.replace(/^minecraft:/, '');
-            const enumTranslation = effect[effectIdWithoutPrefix];
+            const enumTranslation = effect[effectId] || effect[effectIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({
@@ -157,7 +157,7 @@ const tsPopulators: Record<
         for (const enumMember of enumNode.getMembers()) {
             const biomeId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
             const biomeIdWithoutPrefix = biomeId.replace(/^minecraft:/, '');
-            const enumTranslation = biome[biomeIdWithoutPrefix];
+            const enumTranslation = biome[biomeId] || biome[biomeIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({
@@ -173,7 +173,7 @@ const tsPopulators: Record<
         for (const enumMember of enumNode.getMembers()) {
             const featureId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
             const featureIdWithoutPrefix = featureId.replace(/^minecraft:/, '');
-            const enumTranslation = location[featureIdWithoutPrefix] ?? location[featureId];
+            const enumTranslation = location[featureIdWithoutPrefix] || location[featureId];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
                 textChanges.push({

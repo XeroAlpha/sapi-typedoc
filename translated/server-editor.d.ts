@@ -68,6 +68,11 @@ export declare enum BoolPropertyItemVariant {
     ToggleSwitch = 1,
 }
 
+export enum BrushDirectionalPlacementMode {
+    Default = 0,
+    ByCamera = 1,
+}
+
 /**
  * The possible variants of a Button property item.
  */
@@ -307,7 +312,7 @@ export declare enum ImageResourceType {
 /**
  * Input modifier flags to create chorded bindings
  */
-export declare enum InputModifier {
+export enum InputModifier {
     Unused = 0,
     None = 1,
     Alt = 2,
@@ -920,7 +925,7 @@ export declare enum LayoutDirection {
 /**
  * Mouse device action categories
  */
-export declare enum MouseActionCategory {
+export enum MouseActionCategory {
     /**
      * @remarks
      * Mouse button was used.
@@ -1065,16 +1070,6 @@ export enum SelectionVolumeEventType {
     Translate = 4,
     Move = 5,
     Clear = 6,
-}
-
-/**
- * Define the visibility of the status bar item If the tool
- * does not have an `ISimpleToolPropertyPane` component, then
- * this option is ignored
- */
-export declare enum SimpleToolStatusBarVisibility {
-    AlwaysVisible = 0,
-    VisibleWhenActive = 1,
 }
 
 export enum SpeedSettingsProperty {
@@ -1227,6 +1222,11 @@ export type ActionID = {
 export type ActivationFunctionType<PerPlayerStorageType> = (
     uiSession: IPlayerUISession<PerPlayerStorageType>,
 ) => IDisposable[];
+
+/**
+ * Possible tooltip types
+ */
+export declare type BasicTooltipContent = LocalizedString | TooltipContent;
 
 /**
  * All possible button item action types
@@ -1440,6 +1440,14 @@ export type SupportedKeyboardActionTypes =
  * Full set of all possible mouse actions
  */
 export type SupportedMouseActionTypes = RegisteredAction<MouseRayCastAction>;
+
+/**
+ * Content properties to display tooltips
+ */
+export declare type TooltipContent = {
+    title?: LocalizedString;
+    description?: LocalizedString;
+};
 
 /**
  * Content properties to display interactive tooltips
@@ -1772,6 +1780,18 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    getDirectionalPlacementMode(): BrushDirectionalPlacementMode;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getInverseEraseMode(): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     isBrushPaintBusy(): boolean;
     /**
      * @remarks
@@ -1803,6 +1823,12 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    setDirectionalPlacementMode(directionalPlacementMode: BrushDirectionalPlacementMode): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     setFlattenHeight(flattenHeight: number): void;
     /**
      * @remarks
@@ -1810,6 +1836,12 @@ export class BrushShapeManager {
      *
      */
     setFlattenRadius(flattenRadius: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setInverseEraseMode(inverseEraseMode: boolean): void;
     /**
      * @remarks
      * @worldMutation
@@ -3037,47 +3069,6 @@ export class SettingsManager {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class SimpleBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
-}
-
-/**
- * A simple class wrapper to inherit in your tool which
- * contains the initialization and storage of the simple tool
- * component utility. See one of the `Simple` samples to see
- * how to use this class and the wrapper framework
- */
-export declare class SimpleToolWrapper implements IDisposable {
-    /**
-     * @remarks
-     * The player UI session that the tool is running in Use this
-     * to access the player UI session, or any of the session's
-     * components
-     *
-     */
-    get session(): IPlayerUISession;
-    /**
-     * @remarks
-     * The simple tool instance that is created and managed by the
-     * wrapper Use this to access any of the tools components, or
-     * mess with the tools window visibility
-     *
-     */
-    get simpleTool(): ISimpleTool;
-    /**
-     * @remarks
-     * Setup the simple tool instance with the given options This
-     * will create and initialize the simple tool instance
-     *
-     */
-    setupSimpleTool(session: IPlayerUISession, options: ISimpleToolOptions): void;
-    /**
-     * @remarks
-     * Teardown the simple tool instance This will call the
-     * teardown function on the simple tool instance This function
-     * is automatically invoked by the Editor Extension system when
-     * the editor is shutting down
-     *
-     */
-    teardown(): void;
 }
 
 /**
@@ -4855,7 +4846,7 @@ export interface IBoolPropertyItem extends IPropertyItemBase {
      * Sets tooltip description of the property item.
      *
      */
-    setTooltip(title: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }
 
 /**
@@ -4963,7 +4954,7 @@ export interface IButtonPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New button tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }
 
 /**
@@ -5242,7 +5233,7 @@ export interface IComboBoxPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }
 
 /**
@@ -5428,7 +5419,7 @@ export interface IDropdownPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Update list of dropdown entries.
@@ -6003,7 +5994,7 @@ export interface INumberPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Updates number limits and clamps the current value.
@@ -6838,510 +6829,6 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
 }
 
 /**
- * The simple tool wrapper will create, bind and manage the
- * lifecycle of all the desired components. The wrapper is
- * designed to obfuscate and simplify the process of creating a
- * simple editor tool so that a creator can get on with the job
- * of just creating the tool functionality without getting
- * mired in the irrelevant details of component lifecycle and
- * visibility management. The wrapper will also attempt to
- * codify particular implementation patterns and requirements
- * that are common to all editor tools, and enforce them in a
- * consistent way. It should also go some way to insulating the
- * creator from underlying system and implementation changes as
- * the editor evolves.
- */
-export interface ISimpleTool {
-    /**
-     * @remarks
-     * Get the tool unique id
-     *
-     */
-    get id(): string;
-    /**
-     * @remarks
-     * Get a reference to the menu component that was automatically
-     * created for the tool This generally only happens if the tool
-     * is a global tool (i.e. has a pane and does not have a tool
-     * rail component) In this case a menu item is automatically
-     * created and some visibility controls are inserted. If you
-     * have additional menu options you want to add, this is the
-     * ideal control to add children to
-     *
-     */
-    get menu(): IMenu | undefined;
-    /**
-     * @remarks
-     * Get the tool name
-     *
-     */
-    get name(): string;
-    /**
-     * @remarks
-     * Get a reference to the root (primary) property pane
-     * component - if no component was requested, this function
-     * will throw an error
-     *
-     */
-    get pane(): ISimpleToolPaneComponent;
-    /**
-     * @remarks
-     * Get a reference to the IPlayerUISession. This is the primary
-     * interface to the editor UI and all of the editor extension
-     * controls
-     *
-     */
-    get session(): IPlayerUISession;
-    /**
-     * @remarks
-     * Get a reference to the status bar component - if no
-     * component was requested, this function will throw an error
-     *
-     */
-    get statusBar(): ISimpleToolStatusBarComponent;
-    /**
-     * @remarks
-     * Get a reference to the tool rail component - if no component
-     * was requested, this function will throw an error
-     *
-     */
-    get toolRail(): ISimpleToolRailComponent;
-    /**
-     * @remarks
-     * Find a pane or subpane by it's unique ID.
-     *
-     */
-    findPane(idString: string): ISimpleToolPaneComponent | undefined;
-    /**
-     * @remarks
-     * Hide a particular pane or subpane by it's unique ID. If no
-     * ID is provided (or cannot be found) the function will throw
-     * an error Although the parent pane is used to execute the
-     * visibility request, the hidePane function will NOT affect
-     * the visibility of any sibling panes -- so it is possible to
-     * hide all of the child panes of a parent using this function
-     *
-     */
-    hidePane(idString?: string): void;
-    /**
-     * @remarks
-     * Send a tagged Debug log message to the console. The tag will
-     * contain the tool name
-     *
-     */
-    logDebug(message: string): void;
-    /**
-     * @remarks
-     * Send a tagged Error log message to the console. The tag will
-     * contain the tool name
-     *
-     */
-    logError(message: string): void;
-    /**
-     * @remarks
-     * Send a tagged Informational log message to the console. The
-     * tag will contain the tool name
-     *
-     */
-    logInfo(message: string): void;
-    /**
-     * @remarks
-     * Send a tagged Warning log message to the console. The tag
-     * will contain the tool name
-     *
-     */
-    logWarn(message: string): void;
-    /**
-     * @remarks
-     * Show a particular pane or subpane by it's unique ID. If no
-     * ID is provided (or cannot be found) the function will throw
-     * an error Note that the showPane function (when used with a
-     * child pane) will use the parent pane to execute the
-     * visibility request. In this case, if the child panes are
-     * marked as mututally exclusive, then the siblings of the
-     * requested pane will be hidden
-     *
-     */
-    showPane(idString?: string): void;
-    /**
-     * @remarks
-     * Much like the showPane function, but will hide all other
-     * panes that are not the requested pane irrespective of the
-     * exclusivity setting
-     *
-     */
-    showPaneExclusively(idString: string): void;
-    /**
-     * @remarks
-     * A teardown function implemented by the ISimpleTool
-     * implementation, and is called by the system during editor
-     * extension shutdown. Don't override this function - instead,
-     * implement the onTeardown event in the ISimpleToolOptions
-     * structure
-     *
-     */
-    teardown(): void;
-}
-
-/**
- * Define a key binding for the simple tool activation
- */
-export interface ISimpleToolKeyBinding {
-    binding: KeyBinding;
-    info?: KeyBindingInfo;
-}
-
-/**
- * A set of options which define the basic properties of a
- * simple tool, and the optional components that are desired.
- */
-export interface ISimpleToolOptions {
-    /**
-     * @remarks
-     * A key binding that will activate the tool. Note that if the
-     * tool is a modal tool, then the key binding will be tied to
-     * the tool rail activation, and appear as a tooltip on the
-     * tool rail button. If the tool is a global tool, then the key
-     * binding will be tied to a menu item in the View menu, and
-     * appear as a stateful menu item which will control the pane
-     * visibility. If there's no pane required, then the key
-     * binding is ignored
-     *
-     */
-    activationKeyBinding?: ISimpleToolKeyBinding;
-    /**
-     * @remarks
-     * The unique identifier of the tool.
-     *
-     */
-    id: string;
-    /**
-     * @remarks
-     * The name of the tool. This will be used to identify the tool
-     * in the UI and logs and will be used in the View \> [Tool
-     * Name] menu item (if it's a global tool)
-     *
-     */
-    name: string;
-    /**
-     * @remarks
-     * The finalize function is executed after each of the
-     * components have been created and finalized during
-     * construction
-     *
-     */
-    onFinalize?: (tool: ISimpleTool) => void;
-    /**
-     * @remarks
-     * The teardown function is executed when the tool is being
-     * torn down and only after the individual components have
-     * executed their own teardown functions
-     *
-     */
-    onTeardown?: (tool: ISimpleTool) => void;
-    /**
-     * @remarks
-     * The options structure for an optional property pane
-     * component
-     *
-     */
-    propertyPaneOptions?: ISimpleToolPaneOptions;
-    /**
-     * @remarks
-     * The options structure for an optional status bar component
-     *
-     */
-    statusBarOptions?: ISimpleToolStatusBarOptions;
-    /**
-     * @remarks
-     * The options structure for an optional tool rail component
-     *
-     */
-    toolRailOptions?: ISimpleToolRailOptions;
-}
-
-/**
- * The Simple Tool pane component represents the main window
- * (or sub-window) for an editor tool. The pane components are
- * stored as a hierarchy (see the `ISimpleToolPaneOptions`
- * interface for more details) and are the main containers for
- * all of the UI controls used by the editor tool. Panes are
- * optional (a tool doesn't necessarily need to have a pane),
- * but if a pane is present, then it is one of two type - Modal
- * Pane (appears on the left side of the display; visibility is
- * tied to the `ISimpleToolRail` component) (Note that there
- * can be only one modal pane visible at a time) - Global Pane
- * (appears on the right side of the display; visibility is up
- * to the creator/user)
- */
-export interface ISimpleToolPaneComponent {
-    /**
-     * @remarks
-     * Get a list of the unique ID's of all of the child panes
-     *
-     */
-    get childPaneList(): string[];
-    /**
-     * @remarks
-     * Get the unique ID of the pane
-     *
-     */
-    get id(): string;
-    /**
-     * @remarks
-     * Check the visibility of the pane
-     *
-     */
-    get isVisible(): boolean;
-    /**
-     * @remarks
-     * Get a reference to actual property pane implementation that
-     * was constructed by the tool. This reference is used to
-     * construct the UI components that are displayed in the pane.
-     *
-     */
-    get pane(): IPropertyPane;
-    /**
-     * @remarks
-     * Get a reference to the IPlayerUISession. This is the primary
-     * interface to the editor UI and all of the editor extension
-     * controls
-     *
-     */
-    get session(): IPlayerUISession;
-    /**
-     * @remarks
-     * Get a reference to the parent tool.
-     *
-     */
-    get simpleTool(): ISimpleTool;
-    /**
-     * @remarks
-     * Find a pane reference by unique ID
-     *
-     */
-    findPane(idString: string): ISimpleToolPaneComponent | undefined;
-    /**
-     * @remarks
-     * Hide the pane. Although the parent pane is used to execute
-     * the visibility request, the hidePane function will NOT
-     * affect the visibility of any sibling panes -- so it is
-     * possible to hide all of the child panes of a parent using
-     * this function
-     *
-     */
-    hidePane(): void;
-    /**
-     * @remarks
-     * This causes the reconstruction of the pane (and the child
-     * panes) as if the tool was being constructed for the first
-     * time. This is unfortunately necessary until such time that
-     * all of our UI components are able to communicate dynamically
-     * with their client counterparts. Certain controls require a
-     * full teardown and reconstruction to properly update their
-     * state. This is undergoing code changes and should become
-     * unnecessary in the future.
-     *
-     */
-    reconstructPane(): void;
-    /**
-     * @remarks
-     * Show the pane. Note, if this is a sub-pane, then this
-     * function will ask the parent for permission to show, and may
-     * result in the visibility of any sibling panes to change as a
-     * result (depending on the `mutually exclusive visibility`
-     * flag)
-     *
-     */
-    showPane(): void;
-}
-
-/**
- * A set of options which define the basic properties of a
- * window pane (or sub-pane) for a simple tool. This pane can
- * be a top level pane, or a child pane of the top level pane,
- * and is the content container for all of the UI controls used
- * by the editor tool. Each pane is uniquely identified by the
- * `id` property, and has a number of optional function
- * closures which are called at various points in the pane's
- * lifecycle. Note that instead of having a single `onFinalize`
- * function, panes implement a pair of `onBeginFinalize` and
- * `onEndFinalize` functions. This is to allow for the pane to
- * be partially constructed BEFORE any child panes are
- * constructed. Once all child panes have been fully finalized,
- * then the `onEndFinalize` function is called to allow the
- * pane to finalize itself.
- */
-export interface ISimpleToolPaneOptions {
-    /**
-     * @remarks
-     * The id of the child pane that should be visible when the
-     * parent pane is first shown, or the editor tool is
-     * constructed and finalized
-     *
-     */
-    childPaneInitiallyVisible?: string;
-    /**
-     * @remarks
-     * An optional array of child panes. These panes are set up
-     * exactly the same as the top level pane, but are displayed as
-     * children inside the parent pane.
-     *
-     */
-    childPanes?: ISimpleToolPaneOptions[];
-    /**
-     * @remarks
-     * An optional flag to indicate whether the child panes are
-     * mutually exclusive. If this is true, then only one child
-     * pane can be visible at a time. If this is false, then
-     * multiple child panes can be visible at the same time.
-     * Visibility is controlled either through `showPane` or
-     * `hidePane` functions of the `ISimpleToolPaneComponent` or
-     * through the visibility methods in the top level tool
-     * (`ISimpleTool`)
-     *
-     */
-    childPanesMutuallyExclusive?: boolean;
-    /**
-     * @remarks
-     * The unique identifier for this pane. This is used to
-     * identify the pane in the tool's pane hierarchy.
-     *
-     */
-    id: string;
-    /**
-     * @remarks
-     * Information tooltip displayed on the root pane header.
-     *
-     */
-    infoTooltip?: TooltipInteractiveContent;
-    onBeginFinalize?: (pane: ISimpleToolPaneComponent) => void;
-    onEndFinalize?: (pane: ISimpleToolPaneComponent) => void;
-    onHide?: (pane: ISimpleToolPaneComponent) => void;
-    onShow?: (pane: ISimpleToolPaneComponent) => void;
-    onTeardown?: (pane: ISimpleToolPaneComponent) => void;
-    /**
-     * @remarks
-     * The title of the pane. This will be displayed in the title
-     * bar of the pane.
-     *
-     */
-    title: string;
-}
-
-export interface ISimpleToolRailComponent {
-    /**
-     * @remarks
-     * Get a reference to the IPlayerUISession. This is the primary
-     * interface to the editor UI and all of the editor extension
-     * controls
-     *
-     */
-    get session(): IPlayerUISession;
-    /**
-     * @remarks
-     * Get a reference to the parent tool.
-     *
-     */
-    get simpleTool(): ISimpleTool;
-    /**
-     * @remarks
-     * Get the implementation interface of the underlying tool rail
-     * component
-     *
-     */
-    get toolRail(): IModalTool;
-}
-
-/**
- * The tool rail component allows the tool to register an icon
- * and button (and dynamic tooltip) in the tool rail on the
- * left side of the display. Adding a tool rail component to a
- * tool will cause the tool to be considered a `modal tool`,
- * and only one single modal tool can be active at any one
- * time. Modal tools are generally tools which take focus and
- * control of the cursor (e.g. selection, clipboards, entity
- * selection, etc) Global tools (tools which do not have a tool
- * rail) are generally things like property pages, settings,
- * etc - things that do not require an active cursor or
- * gameplay interaction
- */
-export interface ISimpleToolRailOptions {
-    /**
-     * @remarks
-     * The icon for the tool rail button. This is generally a URL
-     * to an image file in the editor extension resource pack e.g.
-     * `pack://textures/my-tool-icon.png`
-     *
-     */
-    icon: string;
-    onActivate?: (component: ISimpleToolRailComponent) => void;
-    onDeactivate?: (component: ISimpleToolRailComponent) => void;
-    onFinalize?: (component: ISimpleToolRailComponent) => void;
-    onTeardown?: (component: ISimpleToolRailComponent) => void;
-    /**
-     * @remarks
-     * The text for the tool title
-     *
-     */
-    title: string;
-    /**
-     * @remarks
-     * The tooltip description for the tool. Note: if an activation
-     * key binding was added to `ISimpleToolOptions`, then the key
-     * binding will be appended to the tooltip string.
-     *
-     */
-    tooltip: string;
-}
-
-export interface ISimpleToolStatusBarComponent {
-    get session(): IPlayerUISession;
-    get simpleTool(): ISimpleTool;
-    get statusBarItem(): IStatusBarItem;
-    hide(): void;
-    show(): void;
-}
-
-/**
- * A set of options which define the basic properties of a
- * status bar item for a simple tool.
- */
-export interface ISimpleToolStatusBarOptions {
-    /**
-     * @remarks
-     * The alignment of the status bar item within the parent
-     * status bar container
-     *
-     */
-    alignment: StatusBarAlignment;
-    onFinalize?: (statusBar: ISimpleToolStatusBarComponent) => void;
-    onHide?: (statusBar: ISimpleToolStatusBarComponent) => void;
-    onShow?: (statusBar: ISimpleToolStatusBarComponent) => void;
-    onTeardown?: (statusBar: ISimpleToolStatusBarComponent) => void;
-    /**
-     * @remarks
-     * The size of the status bar item within the parent status bar
-     * container
-     *
-     */
-    size: number;
-    /**
-     * @remarks
-     * The text for the status bar item
-     *
-     */
-    text: LocalizedString;
-    /**
-     * @remarks
-     * Determine the status bar visibility based on the existence
-     * and visibility of the tool's root property pane
-     *
-     */
-    visibility?: SimpleToolStatusBarVisibility;
-}
-
-/**
  * Manager and container for IStatusBarItem objects
  */
 export interface IStatusBar {
@@ -7464,7 +6951,7 @@ export interface IStringPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }
 
 /**
@@ -7502,7 +6989,7 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -7665,7 +7152,7 @@ export interface IToggleGroupPropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Update list of toggle group entries.
@@ -7780,7 +7267,7 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
      * @param tooltip
      * New button tooltip.
      */
-    setTooltip(tooltip: LocalizedString | undefined): void;
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
     /**
      * @remarks
      * Updates Vector3 limits and clamps the current value.

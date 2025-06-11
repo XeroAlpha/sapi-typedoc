@@ -68,9 +68,7 @@ export class BlockSignComponent extends BlockComponent {
      * @param message
      * The message to set on the sign. If set to a string, then
      * call `getText` to read that string. If set to a RawMessage,
-     * then calling `getRawText` will return a RawText. If set to a
-     * RawText, then calling `getRawText` will return the same
-     * object that was passed in.
+     * then calling `getRawText` will return a RawText.
      * @param side
      * The side of the sign the message will be set on. If not
      * provided, the message will be set on the front side of the
@@ -80,7 +78,7 @@ export class BlockSignComponent extends BlockComponent {
      * Throws if the provided message is greater than 512
      * characters in length.
      */
-    setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    setText(message: RawMessage | string, side?: SignSide): void;
     /**
      * @remarks
      * Sets the dye color of the text.

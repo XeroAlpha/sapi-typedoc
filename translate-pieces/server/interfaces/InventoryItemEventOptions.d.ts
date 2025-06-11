@@ -1,14 +1,15 @@
 /* IMPORT */ import { PlayerInventoryType } from '../index';
 
 /**
- * @beta
+ * @rc
  * Contains additional filtering options for inventory item
  * events.
  */
 export interface InventoryItemEventOptions {
     /**
      * @remarks
-     * The slot indexes to consider.
+     * The slot indexes to consider. Values should be positive
+     * numbers. If not specified, all slots are considered.
      *
      */
     allowedSlots?: number[];

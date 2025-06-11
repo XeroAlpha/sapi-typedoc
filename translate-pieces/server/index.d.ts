@@ -472,6 +472,7 @@ export { EnchantmentTypeUnknownIdError } from './classes/EnchantmentTypeUnknownI
 export { InvalidContainerError } from './classes/InvalidContainerError';
 export { InvalidContainerSlotError } from './classes/InvalidContainerSlotError';
 export { InvalidEntityError } from './classes/InvalidEntityError';
+export { InvalidItemStackError } from './classes/InvalidItemStackError';
 export { InvalidIteratorError } from './classes/InvalidIteratorError';
 export { InvalidStructureError } from './classes/InvalidStructureError';
 export { ItemCustomComponentAlreadyRegisteredError } from './classes/ItemCustomComponentAlreadyRegisteredError';
