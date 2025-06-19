@@ -1,7 +1,7 @@
 /* IMPORT */ import { Block, CustomCommandSource, Entity } from '../index';
 
 /**
- * @beta
+ * @rc
  * Details about the origins of the command.
  */
 export class CustomCommandOrigin {

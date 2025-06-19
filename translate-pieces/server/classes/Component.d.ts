@@ -4,7 +4,6 @@
 export class Component {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any

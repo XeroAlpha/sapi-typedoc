@@ -1089,6 +1089,13 @@ export declare enum StatusBarAlignment {
     Left = 1,
 }
 
+export enum StructureSource {
+    BehaviorPack = 0,
+    EditorProject = 1,
+    File = 2,
+    Level = 3,
+}
+
 export enum ThemeSettingsColorKey {
     Caret = 'Caret',
     Confirm1 = 'Confirm1',
@@ -2262,8 +2269,75 @@ export class EditorConstants {
     readonly minStructureOffset: minecraftserver.Vector3;
 }
 
+export class EditorStructure {
+    private constructor();
+    readonly id: string;
+    readonly isValid: boolean;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly size: minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getIsWaterlogged(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getTags(): string[];
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @param waterlogged
+     * Defaults to: false
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    setBlockPermutation(
+        location: minecraftserver.Vector3,
+        blockPermutation: minecraftserver.BlockPermutation,
+        waterlogged?: boolean,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    setTags(tags: string[]): void;
+}
+
 export class EditorStructureManager {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -2277,6 +2351,13 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
+    deleteStructure(id: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
     getExistingTags(): string[];
     /**
      * @remarks
@@ -2284,14 +2365,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    loadStructure(location: string, id: string): EditorStructure;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    saveStructure(structure: EditorStructure): void;
+    getOrCreateStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -4459,16 +4533,10 @@ export interface CursorRay {
     start: minecraftserver.Vector3;
 }
 
-export interface EditorStructure {
-    storageLocation: string;
-    structure: minecraftserver.Structure;
-    tags: string[];
-}
-
 export interface EditorStructureSearchOptions {
-    excludeTags?: string[];
+    displayName?: string;
     idPattern?: string;
-    includeLocation?: string[];
+    includeSources?: StructureSource[];
     includeTags?: string[];
 }
 
@@ -4878,7 +4946,7 @@ export interface IBoolPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Determines how we display bool as a UI element. If
@@ -4986,7 +5054,7 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * The variant for the button. By default it is Primary.
@@ -5296,7 +5364,7 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -5492,7 +5560,7 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -6053,7 +6121,7 @@ export interface INumberPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Determines how we display bool as a UI element. If
@@ -7238,7 +7306,7 @@ export interface IToggleGroupPropertyItemOptions extends IPropertyItemOptionsBas
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -7326,7 +7394,7 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
 
 /**

@@ -1,7 +1,14 @@
-/* IMPORT */ import { ClipboardItem, EditorStructure, EditorStructureSearchOptions } from '../index';
+/* IMPORT */ import { ClipboardItem, EditorStructure, EditorStructureSearchOptions, minecraftserver } from '../index';
 
 export class EditorStructureManager {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -15,6 +22,13 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
+    deleteStructure(id: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
     getExistingTags(): string[];
     /**
      * @remarks
@@ -22,14 +36,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    loadStructure(location: string, id: string): EditorStructure;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    saveStructure(structure: EditorStructure): void;
+    getOrCreateStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation

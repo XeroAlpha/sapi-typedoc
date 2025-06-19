@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum StickyType {
     None = 'None',
     Same = 'Same',

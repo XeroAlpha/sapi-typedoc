@@ -21,14 +21,13 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @rc
      * @remarks
      * Gets the current graphics mode of the player's client. This
      * can be changed in the Video section of the settings menu
@@ -105,7 +104,7 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}

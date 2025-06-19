@@ -1,4 +1,4 @@
-/* IMPORT */ import { IDropdownPropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IDropdownPropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for Dropdown property item
@@ -36,5 +36,5 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }

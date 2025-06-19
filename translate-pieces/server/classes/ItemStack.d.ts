@@ -36,9 +36,9 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * key for the localization of this items's name used in .lang
+     * Key for the localization of this items's name used in .lang
      * files.
      *
      * @throws This property can throw when used.

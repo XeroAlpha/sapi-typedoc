@@ -29,7 +29,6 @@ export class ScoreboardObjective {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Returns true if the ScoreboardObjective reference is still
      * valid.

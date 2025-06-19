@@ -90,7 +90,6 @@ export { BlockComponentStepOffEvent } from './classes/BlockComponentStepOffEvent
 export { BlockComponentStepOnEvent } from './classes/BlockComponentStepOnEvent';
 export { BlockComponentTickEvent } from './classes/BlockComponentTickEvent';
 export { BlockCustomComponentInstance } from './classes/BlockCustomComponentInstance';
-export { BlockDestructionParticlesComponent } from './classes/BlockDestructionParticlesComponent';
 export { BlockEvent } from './classes/BlockEvent';
 export { BlockExplodeAfterEvent } from './classes/BlockExplodeAfterEvent';
 export { BlockExplodeAfterEventSignal } from './classes/BlockExplodeAfterEventSignal';

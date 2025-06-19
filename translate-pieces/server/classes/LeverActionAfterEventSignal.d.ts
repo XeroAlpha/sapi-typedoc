@@ -8,7 +8,6 @@
 export class LeverActionAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a lever is moved
      * (activates or deactivates).
@@ -20,7 +19,6 @@ export class LeverActionAfterEventSignal {
      */
     subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a lever is moved
      * (activates or deactivates).

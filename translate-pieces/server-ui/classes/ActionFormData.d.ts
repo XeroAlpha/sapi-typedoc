@@ -21,14 +21,12 @@ export class ActionFormData {
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a section divider to the form.
      *
      */
     divider(): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a header to the form.
      *
@@ -37,7 +35,6 @@ export class ActionFormData {
      */
     header(text: minecraftserver.RawMessage | string): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a label to the form.
      *

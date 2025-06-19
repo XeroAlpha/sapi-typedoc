@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * The player permission level.
  */
 export enum PlayerPermissionLevel {

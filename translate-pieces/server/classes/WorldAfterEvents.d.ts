@@ -411,7 +411,6 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *

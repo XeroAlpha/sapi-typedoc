@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LocalizedString, NumberPropertyItemVariant } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LocalizedString, NumberPropertyItemVariant } from '../index';
 
 /**
  * Optional properties for Number property item
@@ -50,7 +50,7 @@ export interface INumberPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Determines how we display bool as a UI element. If

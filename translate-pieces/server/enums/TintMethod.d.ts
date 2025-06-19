@@ -1,5 +1,4 @@
 /**
- * @rc
  * Tint logic applied to a block or part of a block. The color
  * may vary when a world position is part of the context, as
  * biomes often have an influence on the resulting tint.

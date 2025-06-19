@@ -21,7 +21,6 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
-     * @rc
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available
@@ -81,7 +80,7 @@ export class Container {
      */
     clearAll(): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Attempts to find an item inside the container
      *
@@ -93,7 +92,7 @@ export class Container {
      */
     contains(itemStack: ItemStack): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Find the index of the first instance of an item inside the
      * container
@@ -106,7 +105,7 @@ export class Container {
      */
     find(itemStack: ItemStack): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Find the index of the last instance of an item inside the
      * container
@@ -119,7 +118,7 @@ export class Container {
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
@@ -129,7 +128,7 @@ export class Container {
      */
     firstEmptySlot(): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Finds the index of the first item inside the container
      *

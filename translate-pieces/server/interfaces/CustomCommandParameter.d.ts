@@ -1,7 +1,7 @@
 /* IMPORT */ import { CustomCommandParamType } from '../index';
 
 /**
- * @beta
+ * @rc
  * Definition for each parameter expected by the custom
  * command.
  */

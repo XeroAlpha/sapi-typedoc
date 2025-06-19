@@ -144,7 +144,7 @@ export enum ButtonState {
 }
 
 /**
- * @beta
+ * @rc
  * The required permission level to execute the custom command.
  */
 export enum CommandPermissionLevel {
@@ -275,7 +275,7 @@ export enum ContainerRulesErrorReason {
 }
 
 /**
- * @beta
+ * @rc
  * Reason why custom command registration failed.
  */
 export enum CustomCommandErrorReason {
@@ -322,7 +322,7 @@ export enum CustomCommandErrorReason {
 }
 
 /**
- * @beta
+ * @rc
  * The types of paramaters accepted by a custom command.
  */
 export enum CustomCommandParamType {
@@ -396,7 +396,7 @@ export enum CustomCommandParamType {
 }
 
 /**
- * @beta
+ * @rc
  * Who executed the command.
  */
 export enum CustomCommandSource {
@@ -422,7 +422,7 @@ export enum CustomCommandSource {
 }
 
 /**
- * @beta
+ * @rc
  */
 export enum CustomCommandStatus {
     Success = 0,
@@ -1538,7 +1538,6 @@ export enum FluidType {
  */
 export enum GameMode {
     /**
-     * @rc
      * @remarks
      * World is in a more locked-down experience, where blocks may
      * not be manipulated.
@@ -1546,7 +1545,6 @@ export enum GameMode {
      */
     Adventure = 'Adventure',
     /**
-     * @rc
      * @remarks
      * World is in a full creative mode. In creative mode, the
      * player has all the resources available in the item selection
@@ -1559,7 +1557,6 @@ export enum GameMode {
      */
     Creative = 'Creative',
     /**
-     * @rc
      * @remarks
      * World is in spectator mode. In spectator mode, spectators
      * are always flying and cannot become grounded. Spectators can
@@ -1572,7 +1569,6 @@ export enum GameMode {
      */
     Spectator = 'Spectator',
     /**
-     * @rc
      * @remarks
      * World is in a survival mode, where players can take damage
      * and entities may not be peaceful. Survival mode is where the
@@ -1845,7 +1841,6 @@ export enum GameRule {
 }
 
 /**
- * @rc
  * Describes the graphics mode of a client. Used by {@link
  * Player.graphicsMode}
  */
@@ -2079,9 +2074,6 @@ export enum ItemComponentTypes {
      *
      */
     Durability = 'minecraft:durability',
-    /**
-     * @rc
-     */
     Dyeable = 'minecraft:dyeable',
     /**
      * @remarks
@@ -2264,9 +2256,6 @@ export enum MoonPhase {
     WaxingGibbous = 7,
 }
 
-/**
- * @rc
- */
 export enum MovementType {
     Immovable = 'Immovable',
     Popped = 'Popped',
@@ -2467,7 +2456,7 @@ export enum PlayerInventoryType {
 }
 
 /**
- * @beta
+ * @rc
  * The player permission level.
  */
 export enum PlayerPermissionLevel {
@@ -2579,9 +2568,6 @@ export enum SignSide {
     Front = 'Front',
 }
 
-/**
- * @rc
- */
 export enum StickyType {
     None = 'None',
     Same = 'Same',
@@ -2748,7 +2734,6 @@ export enum TimeOfDay {
 }
 
 /**
- * @rc
  * Tint logic applied to a block or part of a block. The color
  * may vary when a world position is part of the context, as
  * biomes often have an influence on the resulting tint.
@@ -2851,11 +2836,9 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
     : BlockCustomComponentInstance;
 
 export type BlockComponentTypeMap = {
-    destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
-    'minecraft:destruction_particles': BlockDestructionParticlesComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
@@ -3574,7 +3557,6 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @rc
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that
@@ -3596,9 +3578,9 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * key for the localization of this block's name used in .lang
+     * Key for the localization of this block's name used in .lang
      * files.
      *
      * @throws This property can throw when used.
@@ -4426,7 +4408,6 @@ export class BlockComponentOnPlaceEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block being broken
  * by a player.
  */
@@ -4584,38 +4565,12 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * An instance of a custom component on a block.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockCustomComponentInstance extends BlockComponent {
     private constructor();
     readonly customComponentParameters: CustomComponentParameters;
-}
-
-/**
- * @beta
- * Represents the particles that appear when the block is
- * destroyed.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class BlockDestructionParticlesComponent extends BlockComponent {
-    private constructor();
-    /**
-     * @remarks
-     * Name of the texture used for the particles.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly texture: string;
-    /**
-     * @remarks
-     * Type of tint applied to the particles.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly tintMethod: TintMethod;
-    static readonly componentId = 'minecraft:destruction_particles';
 }
 
 /**
@@ -4818,7 +4773,6 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 }
 
 /**
- * @rc
  * Represents the color of a block when displayed on a map.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4848,9 +4802,6 @@ export class BlockMapColorComponent extends BlockComponent {
     static readonly componentId = 'minecraft:map_color';
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMovableComponent extends BlockComponent {
     private constructor();
@@ -5502,7 +5453,6 @@ export class ButtonPushAfterEvent extends BlockEvent {
 export class ButtonPushAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a button is pushed.
      *
@@ -5513,7 +5463,6 @@ export class ButtonPushAfterEventSignal {
      */
     subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a button is
      * pushed.
@@ -5533,7 +5482,6 @@ export class ButtonPushAfterEventSignal {
 export class Camera {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns whether the Camera is valid to access and use. A
      * Camera is considered valid when the owning Player of the
@@ -5588,7 +5536,6 @@ export class Camera {
             | CameraTargetOptions,
     ): void;
     /**
-     * @rc
      * @remarks
      * Sets the current active camera for the specified player and
      * resets the position and rotation to the values defined in
@@ -5773,7 +5720,6 @@ export class CommandResult {
 export class Component {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns whether the component is valid. A component is
      * considered valid if its owner is valid, in addition to any
@@ -6063,7 +6009,6 @@ export class Container {
      */
     readonly emptySlotsCount: number;
     /**
-     * @rc
      * @remarks
      * Returns whether a container object (or the entity or block
      * that this container is associated with) is still available
@@ -6123,7 +6068,7 @@ export class Container {
      */
     clearAll(): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Attempts to find an item inside the container
      *
@@ -6135,7 +6080,7 @@ export class Container {
      */
     contains(itemStack: ItemStack): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Find the index of the first instance of an item inside the
      * container
@@ -6148,7 +6093,7 @@ export class Container {
      */
     find(itemStack: ItemStack): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Find the index of the last instance of an item inside the
      * container
@@ -6161,7 +6106,7 @@ export class Container {
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
@@ -6171,7 +6116,7 @@ export class Container {
      */
     firstEmptySlot(): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Finds the index of the first item inside the container
      *
@@ -6338,7 +6283,6 @@ export class ContainerSlot {
      */
     readonly isStackable: boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether the ContainerSlot is valid. The container
      * slot is valid if the container exists and is loaded, and the
@@ -6681,7 +6625,7 @@ export class ContainerSlot {
 }
 
 /**
- * @beta
+ * @rc
  * Details about the origins of the command.
  */
 export class CustomCommandOrigin {
@@ -6716,7 +6660,7 @@ export class CustomCommandOrigin {
 }
 
 /**
- * @beta
+ * @rc
  * Provides the functionality for registering custom commands.
  */
 export class CustomCommandRegistry {
@@ -6764,7 +6708,6 @@ export class CustomCommandRegistry {
 }
 
 /**
- * @rc
  * Contains the custom component's JSON parameters
  */
 export class CustomComponentParameters {
@@ -6860,7 +6803,7 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of a dimension's name used by
      * language files.
@@ -6996,7 +6939,6 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @rc
      * @remarks
      * Gets the first block found above a given block location
      * based on the given options (by default will find the first
@@ -7012,7 +6954,6 @@ export class Dimension {
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @rc
      * @remarks
      * Gets the first block found below a given block location
      * based on the given options (by default will find the first
@@ -7458,7 +7399,6 @@ export class Effect {
      */
     readonly duration: number;
     /**
-     * @rc
      * @remarks
      * Returns whether an effect instance is available for use in
      * this context.
@@ -7776,7 +7716,6 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     /**
-     * @rc
      * @remarks
      * Returns whether the entity can be manipulated by script. A
      * Player is considered valid when it's EntityLifetimeState is
@@ -7785,9 +7724,9 @@ export class Entity {
      */
     readonly isValid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * key for the localization of this entity's name used in .lang
+     * Key for the localization of this entity's name used in .lang
      * files.
      *
      * @throws This property can throw when used.
@@ -8185,7 +8124,6 @@ export class Entity {
      */
     kill(): boolean;
     /**
-     * @rc
      * @remarks
      * Sets the rotation of the entity to face a target location.
      * Both pitch and yaw will be set, if applicable, such as for
@@ -11802,7 +11740,6 @@ export class ItemCooldownComponent extends ItemComponent {
 }
 
 /**
- * @rc
  * An instance of a custom component on an item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -11886,7 +11823,6 @@ export class ItemDurabilityComponent extends ItemComponent {
 }
 
 /**
- * @rc
  * When present on an item, this item can be dyed.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -12276,9 +12212,9 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * key for the localization of this items's name used in .lang
+     * Key for the localization of this items's name used in .lang
      * files.
      *
      * @throws This property can throw when used.
@@ -13036,7 +12972,6 @@ export class LeverActionAfterEvent extends BlockEvent {
 export class LeverActionAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a lever is moved
      * (activates or deactivates).
@@ -13048,7 +12983,6 @@ export class LeverActionAfterEventSignal {
      */
     subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a lever is moved
      * (activates or deactivates).
@@ -13259,14 +13193,13 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @rc
      * @remarks
      * Gets the current graphics mode of the player's client. This
      * can be changed in the Video section of the settings menu
@@ -13343,7 +13276,7 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @beta
+     * @rc
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}
@@ -14791,7 +14724,6 @@ export class PlayerJoinAfterEvent {
 export class PlayerJoinAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a player joins the
      * world.
@@ -14803,7 +14735,6 @@ export class PlayerJoinAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a player joins the
      * world.
@@ -14844,7 +14775,6 @@ export class PlayerLeaveAfterEvent {
 export class PlayerLeaveAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a player leaves the
      * world.
@@ -14856,7 +14786,6 @@ export class PlayerLeaveAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a player leaves
      * the world.
@@ -15069,7 +14998,6 @@ export class PlayerSpawnAfterEvent {
 export class PlayerSpawnAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Registers a new event receiver for this particular type of
      * event.
@@ -15081,7 +15009,6 @@ export class PlayerSpawnAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * De-registers an event receiver for the player spawn event.
      *
@@ -15567,7 +15494,6 @@ export class ScoreboardIdentity {
      */
     readonly id: number;
     /**
-     * @rc
      * @remarks
      * Returns true if the ScoreboardIdentity reference is still
      * valid.
@@ -15624,7 +15550,6 @@ export class ScoreboardObjective {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Returns true if the ScoreboardObjective reference is still
      * valid.
@@ -15750,7 +15675,6 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns true if the current reference to this screen display
      * manager object is valid and functional.
@@ -15785,7 +15709,6 @@ export class ScreenDisplay {
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -16018,7 +15941,6 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
- * @rc
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires before the game world shuts down. This
  * event occurs after players have left, but before the world
@@ -16055,7 +15977,6 @@ export class ShutdownBeforeEventSignal {
 }
 
 /**
- * @rc
  * The event object that gets dispatched when the game world is
  * shutting down.
  */
@@ -16063,9 +15984,6 @@ export class ShutdownEvent {
     private constructor();
 }
 
-/**
- * @rc
- */
 export class StartupBeforeEventSignal {
     private constructor();
     /**
@@ -16086,9 +16004,6 @@ export class StartupBeforeEventSignal {
     unsubscribe(callback: (arg0: StartupEvent) => void): void;
 }
 
-/**
- * @rc
- */
 export class StartupEvent {
     private constructor();
     /**
@@ -16098,7 +16013,7 @@ export class StartupEvent {
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -16129,7 +16044,6 @@ export class Structure {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Returns whether the Structure is valid. The Structure may
      * become invalid if it is deleted.
@@ -16489,7 +16403,6 @@ export class System {
      */
     readonly afterEvents: SystemAfterEvents;
     /**
-     * @rc
      * @remarks
      * Returns a collection of before-events for system-level
      * operations.
@@ -16507,7 +16420,6 @@ export class System {
      */
     readonly currentTick: number;
     /**
-     * @rc
      * @remarks
      * Returns true if this is a world where the editor is
      * currently loaded, returns false otherwise.
@@ -16677,7 +16589,6 @@ export class SystemAfterEvents {
 }
 
 /**
- * @rc
  * A set of events that fire before an actual action occurs. In
  * most cases, you can potentially cancel or modify the
  * impending event. Note that in before events any APIs that
@@ -17841,7 +17752,6 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -17963,16 +17873,10 @@ export class WorldBeforeEvents {
     readonly weatherChange: WeatherChangeBeforeEventSignal;
 }
 
-/**
- * @rc
- */
 export class WorldLoadAfterEvent {
     private constructor();
 }
 
-/**
- * @rc
- */
 export class WorldLoadAfterEventSignal {
     private constructor();
     /**
@@ -18066,9 +17970,6 @@ export interface BlockCustomComponent {
      *
      */
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
-    /**
-     * @rc
-     */
     onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
@@ -18452,7 +18353,7 @@ export interface ContainerRules {
 }
 
 /**
- * @beta
+ * @rc
  * Define the custom command, including name, permissions, and
  * parameters.
  */
@@ -18497,7 +18398,7 @@ export interface CustomCommand {
 }
 
 /**
- * @beta
+ * @rc
  * Definition for each parameter expected by the custom
  * command.
  */
@@ -18517,7 +18418,7 @@ export interface CustomCommandParameter {
 }
 
 /**
- * @beta
+ * @rc
  * Interface returned from custom command callback function.
  */
 export interface CustomCommandResult {
@@ -18597,7 +18498,6 @@ export interface DimensionLocation {
 }
 
 /**
- * @rc
  * Contains options associated with easing between positions
  * and/or rotations.
  */
@@ -19729,7 +19629,6 @@ export interface ScriptEventMessageFilterOptions {
 }
 
 /**
- * @rc
  * Contains additional options for spawning an Entity.
  */
 export interface SpawnEntityOptions {
@@ -20046,7 +19945,7 @@ export class ContainerRulesError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error object thrown when CustomCommandRegistry errors occur.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -20094,7 +19993,9 @@ export class EnchantmentTypeUnknownIdError extends Error {
 }
 
 /**
- * @beta
+ * @rc
+ * The container is invalid. This can occur if the container is
+ * missing or deleted.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidContainerError extends Error {
@@ -20266,7 +20167,6 @@ export const HudVisibilityCount = 2;
  */
 export const MoonPhaseCount = 8;
 /**
- * @rc
  * @remarks
  * How many times the server ticks in one in-game day.
  *

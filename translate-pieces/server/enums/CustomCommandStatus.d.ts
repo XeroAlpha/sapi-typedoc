@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  */
 export enum CustomCommandStatus {
     Success = 0,

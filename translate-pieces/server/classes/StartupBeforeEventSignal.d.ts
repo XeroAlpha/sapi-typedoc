@@ -1,8 +1,5 @@
 /* IMPORT */ import { StartupEvent } from '../index';
 
-/**
- * @rc
- */
 export class StartupBeforeEventSignal {
     private constructor();
     /**

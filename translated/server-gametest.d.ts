@@ -1730,6 +1730,20 @@ export class Test {
     runAtTickTime(tick: number, callback: () => void): void;
     /**
      * @remarks
+     * Runs the given callback after the GameTest has completed
+     * regardless if the test passed, failed, or timed out.
+     *
+     * @worldMutation
+     *
+     * @param callback
+     * Callback to execute.
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     */
+    runOnFinish(callback: () => void): void;
+    /**
+     * @remarks
      * Sets a block to a particular configuration (a
      * BlockPermutation) at the specified block location.
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LocalizedString, minecraftserver } from '../index';
 
 /**
  * Optional properties for Vector3 property item
@@ -50,5 +50,5 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }
