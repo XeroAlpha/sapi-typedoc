@@ -1,5 +1,4 @@
 /**
- * @rc
  * Describes the graphics mode of a client. Used by {@link
  * Player.graphicsMode}
  */

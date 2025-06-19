@@ -7,7 +7,6 @@
 export class PlayerJoinAfterEventSignal {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Adds a callback that will be called when a player joins the
      * world.
@@ -19,7 +18,6 @@ export class PlayerJoinAfterEventSignal {
      */
     subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
     /**
-     * @rc
      * @remarks
      * Removes a callback from being called when a player joins the
      * world.

@@ -1,5 +1,4 @@
 /**
- * @rc
  * Contains additional options for spawning an Entity.
  */
 export interface SpawnEntityOptions {

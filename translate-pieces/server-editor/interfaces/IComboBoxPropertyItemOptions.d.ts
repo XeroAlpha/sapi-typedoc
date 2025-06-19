@@ -1,4 +1,4 @@
-/* IMPORT */ import { ComboBoxPropertyItemDataType, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, ComboBoxPropertyItemDataType, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for ComboBox property item
@@ -60,5 +60,5 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }

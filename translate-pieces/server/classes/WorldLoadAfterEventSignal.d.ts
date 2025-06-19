@@ -1,8 +1,5 @@
 /* IMPORT */ import { WorldLoadAfterEvent } from '../index';
 
-/**
- * @rc
- */
 export class WorldLoadAfterEventSignal {
     private constructor();
     /**

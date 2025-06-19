@@ -1,7 +1,6 @@
 /* IMPORT */ import { CustomComponentParameters, ItemComponent } from '../index';
 
 /**
- * @rc
  * An instance of a custom component on an item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

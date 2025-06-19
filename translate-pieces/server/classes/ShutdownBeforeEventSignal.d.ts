@@ -1,7 +1,6 @@
 /* IMPORT */ import { ShutdownEvent } from '../index';
 
 /**
- * @rc
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires before the game world shuts down. This
  * event occurs after players have left, but before the world

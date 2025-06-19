@@ -1,7 +1,7 @@
 /* IMPORT */ import { CustomCommandErrorReason } from '../index';
 
 /**
- * @beta
+ * @rc
  * Error object thrown when CustomCommandRegistry errors occur.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

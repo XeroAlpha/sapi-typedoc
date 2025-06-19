@@ -1,6 +1,8 @@
+/* IMPORT */ import { StructureSource } from '../index';
+
 export interface EditorStructureSearchOptions {
-    excludeTags?: string[];
+    displayName?: string;
     idPattern?: string;
-    includeLocation?: string[];
+    includeSources?: StructureSource[];
     includeTags?: string[];
 }

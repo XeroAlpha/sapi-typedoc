@@ -31,7 +31,6 @@ export class Effect {
      */
     readonly duration: number;
     /**
-     * @rc
      * @remarks
      * Returns whether an effect instance is available for use in
      * this context.

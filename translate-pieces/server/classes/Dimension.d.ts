@@ -20,7 +20,7 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of a dimension's name used by
      * language files.
@@ -156,7 +156,6 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @rc
      * @remarks
      * Gets the first block found above a given block location
      * based on the given options (by default will find the first
@@ -172,7 +171,6 @@ export class Dimension {
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @rc
      * @remarks
      * Gets the first block found below a given block location
      * based on the given options (by default will find the first

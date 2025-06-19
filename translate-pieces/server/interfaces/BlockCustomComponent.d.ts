@@ -26,9 +26,6 @@ export interface BlockCustomComponent {
      *
      */
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
-    /**
-     * @rc
-     */
     onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks

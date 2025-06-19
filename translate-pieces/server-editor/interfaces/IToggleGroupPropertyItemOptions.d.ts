@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, IToggleGroupPropertyItemEntry, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, IToggleGroupPropertyItemEntry, LocalizedString } from '../index';
 
 /**
  * Optional properties for Toggle Group property item
@@ -43,5 +43,5 @@ export interface IToggleGroupPropertyItemOptions extends IPropertyItemOptionsBas
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
 }

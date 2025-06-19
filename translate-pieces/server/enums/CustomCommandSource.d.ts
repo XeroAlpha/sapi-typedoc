@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Who executed the command.
  */
 export enum CustomCommandSource {

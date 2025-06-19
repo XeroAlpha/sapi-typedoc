@@ -1,7 +1,6 @@
 /* IMPORT */ import { EasingType } from '../index';
 
 /**
- * @rc
  * Contains options associated with easing between positions
  * and/or rotations.
  */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, ButtonPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for Button property item
@@ -29,7 +29,7 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item.
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * The variant for the button. By default it is Primary.

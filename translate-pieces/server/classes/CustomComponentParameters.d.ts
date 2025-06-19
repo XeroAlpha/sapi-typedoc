@@ -1,5 +1,4 @@
 /**
- * @rc
  * Contains the custom component's JSON parameters
  */
 export class CustomComponentParameters {

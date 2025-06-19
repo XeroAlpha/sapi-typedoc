@@ -1,7 +1,6 @@
 /* IMPORT */ import { minecraftserver } from '../index';
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.slider} to provide
  * additional options for the slider creation.

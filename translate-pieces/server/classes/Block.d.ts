@@ -55,7 +55,6 @@ export class Block {
      */
     readonly isSolid: boolean;
     /**
-     * @rc
      * @remarks
      * Returns true if this reference to a block is still valid
      * (for example, if the block is unloaded, references to that
@@ -75,9 +74,9 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * key for the localization of this block's name used in .lang
+     * Key for the localization of this block's name used in .lang
      * files.
      *
      * @throws This property can throw when used.

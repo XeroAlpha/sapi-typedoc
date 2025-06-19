@@ -48,6 +48,7 @@ export { SelectionVolumeEventType } from './enums/SelectionVolumeEventType';
 export { SpeedSettingsProperty } from './enums/SpeedSettingsProperty';
 export { SplineType } from './enums/SplineType';
 export { StatusBarAlignment } from './enums/StatusBarAlignment';
+export { StructureSource } from './enums/StructureSource';
 export { ThemeSettingsColorKey } from './enums/ThemeSettingsColorKey';
 export { WidgetComponentType } from './enums/WidgetComponentType';
 export { WidgetGizmoEventType } from './enums/WidgetGizmoEventType';
@@ -111,6 +112,7 @@ export { CursorPropertiesChangeAfterEvent } from './classes/CursorPropertiesChan
 export { CursorPropertyChangeAfterEventSignal } from './classes/CursorPropertyChangeAfterEventSignal';
 export { CylinderBrushShape } from './classes/CylinderBrushShape';
 export { EditorConstants } from './classes/EditorConstants';
+export { EditorStructure } from './classes/EditorStructure';
 export { EditorStructureManager } from './classes/EditorStructureManager';
 export { EllipsoidBrushShape } from './classes/EllipsoidBrushShape';
 export { EntityIdentifierObservableValidator } from './classes/EntityIdentifierObservableValidator';
@@ -177,7 +179,6 @@ export { ContiguousSelectionProperties } from './interfaces/ContiguousSelectionP
 export { CursorPosition } from './interfaces/CursorPosition';
 export { CursorProperties } from './interfaces/CursorProperties';
 export { CursorRay } from './interfaces/CursorRay';
-export { EditorStructure } from './interfaces/EditorStructure';
 export { EditorStructureSearchOptions } from './interfaces/EditorStructureSearchOptions';
 export { EventSink } from './interfaces/EventSink';
 export { ExtensionOptionalParameters } from './interfaces/ExtensionOptionalParameters';

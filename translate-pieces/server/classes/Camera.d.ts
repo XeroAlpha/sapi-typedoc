@@ -7,7 +7,6 @@
 export class Camera {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns whether the Camera is valid to access and use. A
      * Camera is considered valid when the owning Player of the
@@ -62,7 +61,6 @@ export class Camera {
             | CameraTargetOptions,
     ): void;
     /**
-     * @rc
      * @remarks
      * Sets the current active camera for the specified player and
      * resets the position and rotation to the values defined in

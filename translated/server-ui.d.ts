@@ -65,14 +65,12 @@ export class ActionFormData {
      */
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a section divider to the form.
      *
      */
     divider(): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a header to the form.
      *
@@ -81,7 +79,6 @@ export class ActionFormData {
      */
     header(text: minecraftserver.RawMessage | string): ActionFormData;
     /**
-     * @rc
      * @remarks
      * Adds a label to the form.
      *
@@ -230,7 +227,6 @@ export class MessageFormResponse extends FormResponse {
  */
 export class ModalFormData {
     /**
-     * @rc
      * @remarks
      * Adds a section divider to the form.
      *
@@ -253,7 +249,6 @@ export class ModalFormData {
         dropdownOptions?: ModalFormDataDropdownOptions,
     ): ModalFormData;
     /**
-     * @rc
      * @remarks
      * Adds a header to the form.
      *
@@ -262,7 +257,6 @@ export class ModalFormData {
      */
     header(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
-     * @rc
      * @remarks
      * Adds a label to the form.
      *
@@ -371,7 +365,6 @@ export class UIManager {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.dropdown} to provide
  * additional options for the dropdown creation.
@@ -394,7 +387,6 @@ export interface ModalFormDataDropdownOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.slider} to provide
  * additional options for the slider creation.
@@ -423,7 +415,6 @@ export interface ModalFormDataSliderOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.textField} to provide
  * additional options for the textfield creation.
@@ -445,7 +436,6 @@ export interface ModalFormDataTextFieldOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server-ui.ModalFormData.toggle} to provide
  * additional options for the toggle creation.

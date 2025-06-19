@@ -1,4 +1,4 @@
-/* IMPORT */ import { BoolPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, BoolPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for Bool property item
@@ -29,7 +29,7 @@ export interface IBoolPropertyItemOptions extends IPropertyItemOptionsBase {
      * Tooltip description of the property item
      *
      */
-    tooltip?: LocalizedString;
+    tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Determines how we display bool as a UI element. If

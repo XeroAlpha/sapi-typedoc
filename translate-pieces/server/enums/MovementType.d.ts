@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export enum MovementType {
     Immovable = 'Immovable',
     Popped = 'Popped',
