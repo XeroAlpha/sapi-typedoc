@@ -76,6 +76,8 @@ export class ArgumentOutOfBoundsError extends Error {
 }
 
 /**
+ * 表示在处理函数时引擎中发生的底层错误。
+ * 
  * Specifies an underlying error in the engine in processing a
  * function.
  */
@@ -85,6 +87,8 @@ export class EngineError extends Error {
 }
 
 /**
+ * 表示指定传递给方法的参数不正确或不被允许。
+ * 
  * Specifies that a passed-in argument to a method is not
  * correct or allowed.
  */
