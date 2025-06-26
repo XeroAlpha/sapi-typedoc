@@ -6,4 +6,5 @@
 export declare type TooltipContent = {
     title?: LocalizedString;
     description?: LocalizedString;
+    image?: string;
 };

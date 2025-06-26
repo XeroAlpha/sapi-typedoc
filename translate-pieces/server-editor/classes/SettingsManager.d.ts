@@ -1,4 +1,4 @@
-/* IMPORT */ import { GraphicsSettings, SpeedSettings, ThemeSettings } from '../index';
+/* IMPORT */ import { AudioSettings, GraphicsSettings, SpeedSettings, ThemeSettings } from '../index';
 
 /**
  * The SettingsManager (accessible from the {@link
@@ -7,6 +7,7 @@
  */
 export class SettingsManager {
     private constructor();
+    readonly audio: AudioSettings;
     /**
      * @remarks
      * Manages graphics settings properties.

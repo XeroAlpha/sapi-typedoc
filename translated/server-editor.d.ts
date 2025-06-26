@@ -33,6 +33,11 @@ export declare enum ActionTypes {
     StatefulAction = 'StatefulAction',
 }
 
+export enum AudioSettingsProperty {
+    AreSoundsMuted = 'AreSoundsMuted',
+    IsMusicMuted = 'IsMusicMuted',
+}
+
 export enum Axis {
     None = 0,
     X = 1,
@@ -1454,6 +1459,7 @@ export type SupportedMouseActionTypes = RegisteredAction<MouseRayCastAction>;
 export declare type TooltipContent = {
     title?: LocalizedString;
     description?: LocalizedString;
+    image?: string;
 };
 
 /**
@@ -1478,6 +1484,26 @@ export declare type TooltipLink = {
 };
 
 export type UnregisterInputBindingCallback = () => void;
+
+export class AudioSettings {
+    private constructor();
+    get(property: AudioSettingsProperty): boolean | number | undefined;
+    getAll(): Record<string, boolean | number>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    set(property: AudioSettingsProperty, value: boolean | number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setAll(properties: Record<string, boolean | number>): void;
+}
 
 /**
  * A cache for bedrock event subscriptions. Stores off a
@@ -3130,6 +3156,7 @@ export class SelectionManager {
  */
 export class SettingsManager {
     private constructor();
+    readonly audio: AudioSettings;
     /**
      * @remarks
      * Manages graphics settings properties.
@@ -7449,7 +7476,7 @@ export interface ModalToolCreationParameters {
      * Tooltip description of the tool
      *
      */
-    tooltip?: string;
+    tooltip?: BasicTooltipContent;
 }
 
 export interface ProjectExportOptions {

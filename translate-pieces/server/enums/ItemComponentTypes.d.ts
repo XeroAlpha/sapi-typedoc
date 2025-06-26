@@ -3,6 +3,13 @@
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
+    /**
+     * @beta
+     * @remarks
+     * The minecraft:book component.
+     *
+     */
+    Book = 'minecraft:book',
     Compostable = 'minecraft:compostable',
     /**
      * @remarks
