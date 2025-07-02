@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Defines the interactions with this entity for Exhaustion.
  * Wraps the `minecraft.player.exhaustion` attribute.
  */

@@ -1103,15 +1103,27 @@ export enum EntityComponentTypes {
      */
     OnFire = 'minecraft:onfire',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the exhaustion of a player. This
+     * is only available on players.
+     *
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the hunger of a player. This is
+     * only available on players.
+     *
      */
     Hunger = 'minecraft:player.hunger',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the saturation of a player. This
+     * is only available on players.
+     *
      */
     Saturation = 'minecraft:player.saturation',
     /**
@@ -5589,6 +5601,14 @@ export class Camera {
      * @throws This function can throw errors.
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setFov(fovCameraOptions?: CameraFovOptions): void;
 }
 
 /**
@@ -6500,6 +6520,21 @@ export class ContainerSlot {
      */
     getLore(): string[];
     /**
+     * @beta
+     * @remarks
+     * Returns the lore value - a secondary display string - for an
+     * ItemStack. String lore lines will be converted to a {@link
+     * RawMessage} and put under {@link RawMessage.text}.
+     *
+     * @returns
+     * An array of lore lines. If the item does not have lore,
+     * returns an empty array.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    getRawLore(): RawMessage[];
+    /**
      * @remarks
      * Returns all tags for the item in the slot.
      *
@@ -6604,9 +6639,11 @@ export class ContainerSlot {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -6620,9 +6657,11 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -6657,9 +6696,11 @@ export class ContainerSlot {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
+     * {@link Error}
+     *
      * {@link InvalidContainerSlotError}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 /**
@@ -7056,6 +7097,10 @@ export class Dimension {
      * @returns
      * An entity array.
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -7079,6 +7124,14 @@ export class Dimension {
      * @param options
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -7092,6 +7145,10 @@ export class Dimension {
      * @returns
      * A player array.
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -7189,6 +7246,8 @@ export class Dimension {
      * An error will be thrown if fade is less than 0.0.
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -7288,9 +7347,11 @@ export class Dimension {
      * Newly created entity at the specified location.
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link EntitySpawnError}
      *
      * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -7673,6 +7734,10 @@ export class Entity {
      * Dimension that the entity is currently within.
      *
      * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
      */
     readonly dimension: Dimension;
     /**
@@ -7693,6 +7758,8 @@ export class Entity {
      * stone wall.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isClimbing: boolean;
     /**
@@ -7701,6 +7768,8 @@ export class Entity {
      * greater than 1 while gliding.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isFalling: boolean;
     /**
@@ -7708,6 +7777,8 @@ export class Entity {
      * Whether any part of the entity is inside a water block.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isInWater: boolean;
     /**
@@ -7718,6 +7789,8 @@ export class Entity {
      * no gravity this property may be incorrect.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isOnGround: boolean;
     /**
@@ -7725,6 +7798,8 @@ export class Entity {
      * If true, the entity is currently sleeping.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSleeping: boolean;
     /**
@@ -7743,6 +7818,8 @@ export class Entity {
      * with Carrot on a Stick.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSprinting: boolean;
     /**
@@ -7751,6 +7828,8 @@ export class Entity {
      * player using the swim action or a fish in water.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSwimming: boolean;
     /**
@@ -7777,6 +7856,8 @@ export class Entity {
      * Current location of the entity.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly location: Vector3;
     /**
@@ -7802,6 +7883,8 @@ export class Entity {
      * currently has no target returns undefined.
      *
      * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
      */
     readonly target?: Entity;
     /**
@@ -7833,6 +7916,12 @@ export class Entity {
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      * @seeExample spawnPoisonedVillager.ts
      * @seeExample quickFoxLazyDog.ts
      */
@@ -7850,6 +7939,10 @@ export class Entity {
      * Returns true if the tag was added successfully. This can
      * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
@@ -7870,6 +7963,12 @@ export class Entity {
      * if the entity is invulnerable or if the damage applied is
      * less than or equal to 0.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -7886,7 +7985,7 @@ export class Entity {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
@@ -7900,6 +7999,10 @@ export class Entity {
      * @param verticalStrength
      * Knockback strength for the vertical vector.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
@@ -7909,6 +8012,8 @@ export class Entity {
      * entity.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     clearDynamicProperties(): void;
     /**
@@ -7918,6 +8023,8 @@ export class Entity {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
@@ -7936,6 +8043,8 @@ export class Entity {
      * @returns
      * Returns whether the entity was on fire.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
@@ -7950,6 +8059,8 @@ export class Entity {
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -7993,6 +8104,8 @@ export class Entity {
      * Returns the value for the property, or undefined if the
      * property has not been set.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -8003,6 +8116,8 @@ export class Entity {
      * @returns
      * A string array of the dynamic properties set on this entity.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicPropertyIds(): string[];
     /**
@@ -8015,6 +8130,8 @@ export class Entity {
      * properties, it may be slow to load on various devices.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -8030,6 +8147,10 @@ export class Entity {
      * effect is not present, or throws an error if the effect does
      * not exist.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
@@ -8039,6 +8160,8 @@ export class Entity {
      * @returns
      * List of effects.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getEffects(): Effect[];
     /**
@@ -8052,6 +8175,14 @@ export class Entity {
      * Returns a set of entities from the direction that this
      * entity is looking at.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -8063,6 +8194,8 @@ export class Entity {
      * Returns the current location of the head component of this
      * entity.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHeadLocation(): Vector3;
     /**
@@ -8080,6 +8213,8 @@ export class Entity {
      * returned.
      * @throws
      * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
      */
     getProperty(identifier: string): boolean | number | string | undefined;
     /**
@@ -8090,6 +8225,8 @@ export class Entity {
      * Returns a Vec2 containing the rotation of this entity (in
      * degrees).
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getRotation(): Vector2;
     /**
@@ -8099,6 +8236,8 @@ export class Entity {
      * @returns
      * An array containing all tags as strings.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getTags(): string[];
     /**
@@ -8108,6 +8247,8 @@ export class Entity {
      * @returns
      * Returns the current velocity vector of the entity.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
@@ -8118,6 +8259,8 @@ export class Entity {
      * @returns
      * Returns the current view direction of the entity.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getViewDirection(): Vector3;
     /**
@@ -8146,6 +8289,8 @@ export class Entity {
      * @returns
      * Returns whether an entity has a particular tag.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hasTag(tag: string): boolean;
     /**
@@ -8158,6 +8303,8 @@ export class Entity {
      * Returns true if entity can be killed (even if it is already
      * dead), otherwise it returns false.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     kill(): boolean;
@@ -8174,6 +8321,10 @@ export class Entity {
      * The target location that this entity should face/look
      * towards.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -8189,6 +8340,12 @@ export class Entity {
      * passed in EntityQueryOptions, otherwise it returns false.
      * @throws
      * Throws if the query options are misconfigured.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     matches(options: EntityQueryOptions): boolean;
     /**
@@ -8203,6 +8360,8 @@ export class Entity {
      * Additional options to control the playback and transitions
      * of the animation.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
@@ -8214,6 +8373,10 @@ export class Entity {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
@@ -8229,6 +8392,10 @@ export class Entity {
      * Returns true if the effect has been removed. Returns false
      * if the effect is not found or does not exist.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
@@ -8242,6 +8409,8 @@ export class Entity {
      * @returns
      * Returns whether the tag existed on the entity.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     removeTag(tag: string): boolean;
     /**
@@ -8265,6 +8434,8 @@ export class Entity {
      * {@link minecraftcommon.EngineError}
      *
      * {@link Error}
+     *
+     * {@link InvalidEntityError}
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
@@ -8295,6 +8466,10 @@ export class Entity {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -8306,6 +8481,10 @@ export class Entity {
      * @param value
      * Data value of the property to set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -8328,6 +8507,8 @@ export class Entity {
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -8352,6 +8533,12 @@ export class Entity {
      * (int, float properties).
      * Throws if the provided string value does not match the set
      * of accepted enum values (enum properties
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
@@ -8365,6 +8552,8 @@ export class Entity {
      * mobs, the x rotation controls the head tilt and the y
      * rotation controls the body rotation.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
     /**
@@ -8378,6 +8567,10 @@ export class Entity {
      * @param teleportOptions
      * Options regarding the teleport operation.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
@@ -8397,6 +8590,10 @@ export class Entity {
      * @throws
      * If the event is not defined in the definition of the entity,
      * an error will be thrown.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      * @seeExample triggerEvent.ts e0d38a47
      * @seeExample triggerEvent.ts b473e4eb
      */
@@ -8418,6 +8615,10 @@ export class Entity {
      * destination chunk is unloaded or if the teleport would
      * result in intersecting with blocks.
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
@@ -8872,14 +9073,14 @@ export class EntityDieAfterEventSignal {
 
 /**
  * Provides access to a mob's equipment slots. This component
- * exists for all mob entities.
+ * exists on player entities.
  * @seeExample givePlayerElytra.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total Armor level of the owner.
      *
@@ -8889,7 +9090,7 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     readonly totalArmor: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total Toughness level of the owner.
      *
@@ -8940,7 +9141,7 @@ export class EntityEquippableComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Defines the interactions with this entity for Exhaustion.
  * Wraps the `minecraft.player.exhaustion` attribute.
  */
@@ -9218,7 +9419,7 @@ export class EntityHitEntityAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Defines the interactions with this entity for hunger. Wraps
  * the `minecraft.player.hunger` attribute.
  */
@@ -10506,7 +10707,7 @@ export class EntityRidingComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Defines the interactions with this entity for Saturation.
  * Wraps the `minecraft.player.saturation` attribute.
  */
@@ -12641,6 +12842,18 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
+     * @beta
+     * @remarks
+     * Returns the lore value - a secondary display string - for an
+     * ItemStack. String lore lines will be converted to a {@link
+     * RawMessage} and put under {@link RawMessage.text}.
+     *
+     * @returns
+     * An array of lore lines. If the item does not have lore,
+     * returns an empty array.
+     */
+    getRawLore(): RawMessage[];
+    /**
      * @remarks
      * Returns a set of tags associated with this item stack.
      *
@@ -12739,6 +12952,10 @@ export class ItemStack {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -12752,6 +12969,10 @@ export class ItemStack {
      * Data value of the property to set.
      * @throws
      * Throws if the item stack is stackable.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -12769,9 +12990,11 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      * @seeExample diamondAwesomeSword.ts
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
     /**
      * @beta
      * @remarks
@@ -13272,6 +13495,92 @@ export class ListBlockVolume extends BlockVolumeBase {
      * Array of block locations to be removed from container.
      */
     remove(locations: Vector3[]): void;
+}
+
+/**
+ * @beta
+ * Manager for Loot Table related APIs. Allows for generation
+ * of drops from blocks and entities according to their loot
+ * tables.
+ */
+export class LootTableManager {
+    private constructor();
+    /**
+     * @remarks
+     * Generates loot from a given block as if it had been mined.
+     *
+     * @param block
+     * The block to generate loot from.
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped, or undefined if the
+     * provided tool is insufficient to mine the block.
+     * @throws
+     * Throws if the block is in an unloaded chunk, or if the
+     * block's position is outside of world bounds.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     *
+     * {@link UnloadedChunksError}
+     */
+    generateLootFromBlock(block: Block, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @remarks
+     * Generates loot from a given block permutation as if it had
+     * been mined.
+     *
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped, or undefined if the
+     * provided tool is insufficient to mine the block.
+     */
+    generateLootFromBlockPermutation(blockPermutation: BlockPermutation, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @remarks
+     * Generates loot from a given block type as if it had been
+     * mined.
+     *
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped, or undefined if the
+     * provided tool is insufficient to mine the block.
+     */
+    generateLootFromBlockType(scriptBlockType: BlockType, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @remarks
+     * Generates loot from given a entity as if it had been killed.
+     *
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped, or undefined if the entity
+     * was invalid.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    generateLootFromEntity(entity: Entity, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @remarks
+     * Generates loot from given a entity type as if it had been
+     * killed.
+     *
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped.
+     */
+    generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
 }
 
 /**
@@ -16786,8 +17095,7 @@ export class System {
      * @param message
      * Data component of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may
-     * have installed within the world. Message may not exceed 2048
-     * characters in length.
+     * have installed within the world.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -17286,6 +17594,10 @@ export class World {
      * Returns an array of all active players within the world.
      * @returns 返回包含了游戏中所有玩家的对象的数组。
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -17390,6 +17702,10 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
+     * @beta
+     */
+    getLootTableManager(): LootTableManager;
+    /**
      * @remarks
      * Returns the MoonPhase for the current time.
      *
@@ -17417,6 +17733,10 @@ export class World {
      * 若向 `options` 传入的对象含有 `location`、`maxDistance`、`minDistance` 或 `volume` 属性，抛出 `"EntityQueryOptions property '<property>' is incompatible with function world.getPlayers"`。
      * 
      * Throws if the provided EntityQueryOptions are invalid.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -17442,6 +17762,8 @@ export class World {
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -17466,6 +17788,8 @@ export class World {
      * An error will be thrown if volume is less than 0.0.
      * An error will be thrown if fade is less than 0.0.
      *
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -17533,6 +17857,8 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -17558,6 +17884,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      * @seeExample incrementDynamicProperty.ts
      * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
@@ -18485,6 +18813,24 @@ export interface CameraFixedBoomOptions {
      *
      */
     viewOffset?: Vector2;
+}
+
+/**
+ * @beta
+ * Used to change the field of view of the current camera.
+ *
+ * Required Experiments:
+ * - Required Experiment Toggle: Experimental Creator Cameras
+ *
+ */
+export interface CameraFovOptions {
+    easeOptions?: EaseOptions;
+    /**
+     * @remarks
+     * Set a value for the field of view.
+     *
+     */
+    fov?: number;
 }
 
 export interface CameraSetFacingOptions {
@@ -20280,6 +20626,11 @@ export class EnchantmentTypeNotCompatibleError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntitySpawnError extends Error {
     private constructor();
 }
 

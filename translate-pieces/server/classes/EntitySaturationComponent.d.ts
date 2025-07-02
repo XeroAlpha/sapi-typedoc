@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
- * @beta
+ * @rc
  * Defines the interactions with this entity for Saturation.
  * Wraps the `minecraft.player.saturation` attribute.
  */

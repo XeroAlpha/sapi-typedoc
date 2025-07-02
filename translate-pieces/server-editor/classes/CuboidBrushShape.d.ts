@@ -13,6 +13,9 @@ export declare class CuboidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minLength?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;

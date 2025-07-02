@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '../index';
+/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '../index';
 
 /**
  * Contains methods relating to the active camera for the
@@ -76,4 +76,12 @@ export class Camera {
      * @throws This function can throw errors.
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setFov(fovCameraOptions?: CameraFovOptions): void;
 }

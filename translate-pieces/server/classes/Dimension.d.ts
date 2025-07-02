@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, ExplosionOptions, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -235,6 +235,10 @@ export class Dimension {
      * @returns
      * An entity array.
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -258,6 +262,14 @@ export class Dimension {
      * @param options
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -271,6 +283,10 @@ export class Dimension {
      * @returns
      * A player array.
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -368,6 +384,8 @@ export class Dimension {
      * An error will be thrown if fade is less than 0.0.
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -467,9 +485,11 @@ export class Dimension {
      * Newly created entity at the specified location.
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link EntitySpawnError}
      *
      * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      *
      * {@link LocationInUnloadedChunkError}
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, minecraftcommon } from '../index';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -97,6 +97,10 @@ export class World {
      * Returns an array of all active players within the world.
      * @returns 返回包含了游戏中所有玩家的对象的数组。
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -201,6 +205,10 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
+     * @beta
+     */
+    getLootTableManager(): LootTableManager;
+    /**
      * @remarks
      * Returns the MoonPhase for the current time.
      *
@@ -228,6 +236,10 @@ export class World {
      * 若向 `options` 传入的对象含有 `location`、`maxDistance`、`minDistance` 或 `volume` 属性，抛出 `"EntityQueryOptions property '<property>' is incompatible with function world.getPlayers"`。
      * 
      * Throws if the provided EntityQueryOptions are invalid.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -253,6 +265,8 @@ export class World {
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -277,6 +291,8 @@ export class World {
      * An error will be thrown if volume is less than 0.0.
      * An error will be thrown if fade is less than 0.0.
      *
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -344,6 +360,8 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -369,6 +387,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      * @seeExample incrementDynamicProperty.ts
      * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */

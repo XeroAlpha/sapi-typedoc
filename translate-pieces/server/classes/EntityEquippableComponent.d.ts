@@ -2,14 +2,14 @@
 
 /**
  * Provides access to a mob's equipment slots. This component
- * exists for all mob entities.
+ * exists on player entities.
  * @seeExample givePlayerElytra.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total Armor level of the owner.
      *
@@ -19,7 +19,7 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     readonly totalArmor: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total Toughness level of the owner.
      *

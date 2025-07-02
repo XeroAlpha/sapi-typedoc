@@ -927,6 +927,27 @@ export declare enum LayoutDirection {
     Horizontal = 1,
 }
 
+export enum LogChannel {
+    /**
+     * @remarks
+     * Regular message channel.
+     *
+     */
+    Message = 1,
+    /**
+     * @remarks
+     * Toast channel.
+     *
+     */
+    Toast = 2,
+    /**
+     * @remarks
+     * Regular message and toast channels.
+     *
+     */
+    All = 3,
+}
+
 /**
  * Mouse device action categories
  */
@@ -1235,6 +1256,11 @@ export type ActivationFunctionType<PerPlayerStorageType> = (
     uiSession: IPlayerUISession<PerPlayerStorageType>,
 ) => IDisposable[];
 
+export type AudioSettingsPropertyTypeMap = {
+    [AudioSettingsProperty.IsMusicMuted]?: boolean;
+    [AudioSettingsProperty.AreSoundsMuted]?: boolean;
+};
+
 /**
  * Possible tooltip types
  */
@@ -1487,22 +1513,22 @@ export type UnregisterInputBindingCallback = () => void;
 
 export class AudioSettings {
     private constructor();
-    get(property: AudioSettingsProperty): boolean | number | undefined;
-    getAll(): Record<string, boolean | number>;
+    get<T extends keyof AudioSettingsPropertyTypeMap>(property: T): AudioSettingsPropertyTypeMap[T] | undefined;
+    getAll(): AudioSettingsPropertyTypeMap;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    set(property: AudioSettingsProperty, value: boolean | number): void;
+    set<T extends keyof AudioSettingsPropertyTypeMap>(property: T, value: AudioSettingsPropertyTypeMap[T]): void;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    setAll(properties: Record<string, boolean | number>): void;
+    setAll(properties: AudioSettingsPropertyTypeMap): void;
 }
 
 /**
@@ -2034,7 +2060,16 @@ export declare class ConeBrushShape extends BrushShape {
      * Constructs a new instance of the `ConeBrushShape` class
      *
      */
-    constructor(settings?: { uniform?: boolean; radius?: number; width?: number; height?: number; depth?: number });
+    constructor(settings?: {
+        uniform?: boolean;
+        radius?: number;
+        width?: number;
+        height?: number;
+        depth?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
+    });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
 }
@@ -2053,6 +2088,9 @@ export declare class CuboidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minLength?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
@@ -2283,6 +2321,9 @@ export declare class CylinderBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
@@ -2415,6 +2456,9 @@ export declare class EllipsoidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
@@ -2945,7 +2989,15 @@ export declare class PyramidBrushShape extends BrushShape {
      * Constructs a new instance of the `PyramidBrushShape` class
      *
      */
-    constructor(settings?: { uniform?: boolean; width?: number; height?: number; depth?: number });
+    constructor(settings?: {
+        uniform?: boolean;
+        width?: number;
+        height?: number;
+        depth?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
+    });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
 }
@@ -6402,32 +6454,58 @@ export interface IPlayerLogger {
      *
      * @param message
      * Message content
+     * @param props
+     * Optional player log properties
      */
-    debug(message: string): void;
+    debug(message: string, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Error log level
      *
      * @param message
      * Message content
+     * @param props
+     * Optional player log properties
      */
-    error(message: string): void;
+    error(message: string, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Info log level
      *
      * @param message
      * Message content
+     * @param props
+     * Optional player log properties
      */
-    info(message: string): void;
+    info(message: string, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Warning log level
      *
      * @param message
      * Message content
+     * @param props
+     * Optional player log properties
      */
-    warning(message: string): void;
+    warning(message: string, props?: IPlayerLoggerProperties): void;
+}
+
+/**
+ * Player Logger Properties.
+ */
+export interface IPlayerLoggerProperties {
+    /**
+     * @remarks
+     * A log channel mask, default is Message
+     *
+     */
+    channelMask: LogChannel;
+    /**
+     * @remarks
+     * A player log sub message for the toast channel
+     *
+     */
+    subMessage: string;
 }
 
 /**
@@ -7435,11 +7513,25 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
 export interface LogProperties {
     /**
      * @remarks
+     * Display the log message to a log channel. If no channel is
+     * specified, default channel is regular message.
+     *
+     */
+    channelMask?: LogChannel;
+    /**
+     * @remarks
      * Direct a log message to a specific player.  If no player is
      * specified, then all players will receive the message
      *
      */
     player?: minecraftserver.Player;
+    /**
+     * @remarks
+     * Message to be shown under the message when toast channel is
+     * selected.
+     *
+     */
+    subMessage?: string;
     /**
      * @remarks
      * Add additional tags to the log message which can be used by

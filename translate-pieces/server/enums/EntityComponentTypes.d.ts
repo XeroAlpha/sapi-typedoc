@@ -360,15 +360,27 @@ export enum EntityComponentTypes {
      */
     OnFire = 'minecraft:onfire',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the exhaustion of a player. This
+     * is only available on players.
+     *
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the hunger of a player. This is
+     * only available on players.
+     *
      */
     Hunger = 'minecraft:player.hunger',
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Use this component to read the saturation of a player. This
+     * is only available on players.
+     *
      */
     Saturation = 'minecraft:player.saturation',
     /**

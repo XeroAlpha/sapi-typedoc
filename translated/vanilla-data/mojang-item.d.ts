@@ -556,18 +556,42 @@ export declare enum MinecraftItemTypes {
     CookedSalmon = "minecraft:cooked_salmon",
     /** 曲奇。 */
     Cookie = "minecraft:cookie",
+    /** 铜斧。 */
+    CopperAxe = "minecraft:copper_axe",
     /** 铜块。 */
     CopperBlock = "minecraft:copper_block",
+    /** 铜靴子。 */
+    CopperBoots = "minecraft:copper_boots",
     /** 铜灯。 */
     CopperBulb = "minecraft:copper_bulb",
+    /** 铜箱。 */
+    CopperChest = "minecraft:copper_chest",
+    /** 铜胸甲。 */
+    CopperChestplate = "minecraft:copper_chestplate",
     /** 铜门。 */
     CopperDoor = "minecraft:copper_door",
+    /** Copper Golem Spawn Egg。 */
+    CopperGolemSpawnEgg = "minecraft:copper_golem_spawn_egg",
     /** 铜格栅。 */
     CopperGrate = "minecraft:copper_grate",
+    /** 铜头盔。 */
+    CopperHelmet = "minecraft:copper_helmet",
+    /** 铜锄。 */
+    CopperHoe = "minecraft:copper_hoe",
     /** 铜锭。 */
     CopperIngot = "minecraft:copper_ingot",
+    /** 铜护腿。 */
+    CopperLeggings = "minecraft:copper_leggings",
+    /** 铜粒。 */
+    CopperNugget = "minecraft:copper_nugget",
     /** 铜矿石。 */
     CopperOre = "minecraft:copper_ore",
+    /** 铜镐。 */
+    CopperPickaxe = "minecraft:copper_pickaxe",
+    /** 铜锹。 */
+    CopperShovel = "minecraft:copper_shovel",
+    /** 铜剑。 */
+    CopperSword = "minecraft:copper_sword",
     /** 铜活板门。 */
     CopperTrapdoor = "minecraft:copper_trapdoor",
     /** 矢车菊。 */
@@ -922,6 +946,8 @@ export declare enum MinecraftItemTypes {
     ExposedCopper = "minecraft:exposed_copper",
     /** 斑驳的铜灯。 */
     ExposedCopperBulb = "minecraft:exposed_copper_bulb",
+    /** 斑驳的铜箱。 */
+    ExposedCopperChest = "minecraft:exposed_copper_chest",
     /** 斑驳的铜门。 */
     ExposedCopperDoor = "minecraft:exposed_copper_door",
     /** 斑驳的铜格栅。 */
@@ -1594,6 +1620,8 @@ export declare enum MinecraftItemTypes {
     MusicDiscCreatorMusicBox = "minecraft:music_disc_creator_music_box",
     /** 音乐唱片 C418 - far。 */
     MusicDiscFar = "minecraft:music_disc_far",
+    /** 音乐唱片 Hyper Potions - Lava Chicken。 */
+    MusicDiscLavaChicken = "minecraft:music_disc_lava_chicken",
     /** 音乐唱片 C418 - mall。 */
     MusicDiscMall = "minecraft:music_disc_mall",
     /** 音乐唱片 C418 - mellohi。 */
@@ -1754,6 +1782,8 @@ export declare enum MinecraftItemTypes {
     OxidizedCopper = "minecraft:oxidized_copper",
     /** 氧化的铜灯。 */
     OxidizedCopperBulb = "minecraft:oxidized_copper_bulb",
+    /** 氧化的铜箱。 */
+    OxidizedCopperChest = "minecraft:oxidized_copper_chest",
     /** 氧化的铜门。 */
     OxidizedCopperDoor = "minecraft:oxidized_copper_door",
     /** 氧化的铜格栅。 */
@@ -2594,6 +2624,8 @@ export declare enum MinecraftItemTypes {
     WaxedCopper = "minecraft:waxed_copper",
     /** 涂蜡的铜灯。 */
     WaxedCopperBulb = "minecraft:waxed_copper_bulb",
+    /** 涂蜡的铜箱。 */
+    WaxedCopperChest = "minecraft:waxed_copper_chest",
     /** 涂蜡的铜门。 */
     WaxedCopperDoor = "minecraft:waxed_copper_door",
     /** 涂蜡的铜格栅。 */
@@ -2612,6 +2644,8 @@ export declare enum MinecraftItemTypes {
     WaxedExposedCopper = "minecraft:waxed_exposed_copper",
     /** 涂蜡的斑驳铜灯。 */
     WaxedExposedCopperBulb = "minecraft:waxed_exposed_copper_bulb",
+    /** 涂蜡的斑驳铜箱。 */
+    WaxedExposedCopperChest = "minecraft:waxed_exposed_copper_chest",
     /** 涂蜡的斑驳铜门。 */
     WaxedExposedCopperDoor = "minecraft:waxed_exposed_copper_door",
     /** 涂蜡的斑驳铜格栅。 */
@@ -2630,6 +2664,8 @@ export declare enum MinecraftItemTypes {
     WaxedOxidizedCopper = "minecraft:waxed_oxidized_copper",
     /** 涂蜡的氧化铜灯。 */
     WaxedOxidizedCopperBulb = "minecraft:waxed_oxidized_copper_bulb",
+    /** 涂蜡的氧化铜箱。 */
+    WaxedOxidizedCopperChest = "minecraft:waxed_oxidized_copper_chest",
     /** 涂蜡的氧化铜门。 */
     WaxedOxidizedCopperDoor = "minecraft:waxed_oxidized_copper_door",
     /** 涂蜡的氧化铜格栅。 */
@@ -2648,6 +2684,8 @@ export declare enum MinecraftItemTypes {
     WaxedWeatheredCopper = "minecraft:waxed_weathered_copper",
     /** 涂蜡的锈蚀铜灯。 */
     WaxedWeatheredCopperBulb = "minecraft:waxed_weathered_copper_bulb",
+    /** 涂蜡的锈蚀铜箱。 */
+    WaxedWeatheredCopperChest = "minecraft:waxed_weathered_copper_chest",
     /** 涂蜡的锈蚀铜门。 */
     WaxedWeatheredCopperDoor = "minecraft:waxed_weathered_copper_door",
     /** 涂蜡的锈蚀铜格栅。 */
@@ -2668,6 +2706,8 @@ export declare enum MinecraftItemTypes {
     WeatheredCopper = "minecraft:weathered_copper",
     /** 锈蚀的铜灯。 */
     WeatheredCopperBulb = "minecraft:weathered_copper_bulb",
+    /** 锈蚀的铜箱。 */
+    WeatheredCopperChest = "minecraft:weathered_copper_chest",
     /** 锈蚀的铜门。 */
     WeatheredCopperDoor = "minecraft:weathered_copper_door",
     /** 锈蚀的铜格栅。 */
