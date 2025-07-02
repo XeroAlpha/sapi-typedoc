@@ -1,21 +1,21 @@
-/* IMPORT */ import { AudioSettingsProperty } from '../index';
+/* IMPORT */ import { AudioSettingsPropertyTypeMap } from '../index';
 
 export class AudioSettings {
     private constructor();
-    get(property: AudioSettingsProperty): boolean | number | undefined;
-    getAll(): Record<string, boolean | number>;
+    get<T extends keyof AudioSettingsPropertyTypeMap>(property: T): AudioSettingsPropertyTypeMap[T] | undefined;
+    getAll(): AudioSettingsPropertyTypeMap;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    set(property: AudioSettingsProperty, value: boolean | number): void;
+    set<T extends keyof AudioSettingsPropertyTypeMap>(property: T, value: AudioSettingsPropertyTypeMap[T]): void;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    setAll(properties: Record<string, boolean | number>): void;
+    setAll(properties: AudioSettingsPropertyTypeMap): void;
 }

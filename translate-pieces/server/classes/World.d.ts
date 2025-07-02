@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, minecraftcommon } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -87,6 +87,10 @@ export class World {
      * Returns an array of all active players within the world.
      *
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -175,6 +179,10 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
+     * @beta
+     */
+    getLootTableManager(): LootTableManager;
+    /**
      * @remarks
      * Returns the MoonPhase for the current time.
      *
@@ -192,6 +200,10 @@ export class World {
      * A player array.
      * @throws
      * Throws if the provided EntityQueryOptions are invalid.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -209,6 +221,8 @@ export class World {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -227,6 +241,8 @@ export class World {
      * An error will be thrown if volume is less than 0.0.
      * An error will be thrown if fade is less than 0.0.
      *
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -287,6 +303,8 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -300,6 +318,8 @@ export class World {
      * @throws
      * Throws if the given dynamic property identifier is not
      * defined.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      * @seeExample incrementDynamicProperty.ts
      * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */

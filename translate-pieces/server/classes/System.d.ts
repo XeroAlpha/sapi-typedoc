@@ -152,8 +152,7 @@ export class System {
      * @param message
      * Data component of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may
-     * have installed within the world. Message may not exceed 2048
-     * characters in length.
+     * have installed within the world.
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}

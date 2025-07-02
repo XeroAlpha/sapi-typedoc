@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { LogChannel, minecraftserver } from '../index';
 
 /**
  * A properties class for the global instance of the logger
@@ -11,11 +11,25 @@
 export interface LogProperties {
     /**
      * @remarks
+     * Display the log message to a log channel. If no channel is
+     * specified, default channel is regular message.
+     *
+     */
+    channelMask?: LogChannel;
+    /**
+     * @remarks
      * Direct a log message to a specific player.  If no player is
      * specified, then all players will receive the message
      *
      */
     player?: minecraftserver.Player;
+    /**
+     * @remarks
+     * Message to be shown under the message when toast channel is
+     * selected.
+     *
+     */
+    subMessage?: string;
     /**
      * @remarks
      * Add additional tags to the log message which can be used by

@@ -425,7 +425,7 @@ export interface ModalFormDataTextFieldOptions {
      * The default value for the textfield.
      *
      */
-    defaultValue?: string;
+    defaultValue?: minecraftserver.RawMessage | string;
     /**
      * @remarks
      * It will show an exclamation icon that will display a tooltip

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, RawMessage, Vector3, minecraftcommon } from '../index';
 
 /**
  * Defines a collection of items.
@@ -219,6 +219,18 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
+     * @beta
+     * @remarks
+     * Returns the lore value - a secondary display string - for an
+     * ItemStack. String lore lines will be converted to a {@link
+     * RawMessage} and put under {@link RawMessage.text}.
+     *
+     * @returns
+     * An array of lore lines. If the item does not have lore,
+     * returns an empty array.
+     */
+    getRawLore(): RawMessage[];
+    /**
      * @remarks
      * Returns a set of tags associated with this item stack.
      *
@@ -317,6 +329,10 @@ export class ItemStack {
      * A Record of key value pairs of the dynamic properties to
      * set.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -330,6 +346,10 @@ export class ItemStack {
      * Data value of the property to set.
      * @throws
      * Throws if the item stack is stackable.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -347,9 +367,11 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      * @seeExample diamondAwesomeSword.ts
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
     /**
      * @beta
      * @remarks

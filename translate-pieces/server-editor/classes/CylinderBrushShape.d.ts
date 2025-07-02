@@ -13,6 +13,9 @@ export declare class CylinderBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        xRotation?: number;
+        yRotation?: number;
+        zRotation?: number;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, RawMessage, Vector3, minecraftcommon } from '../index';
 
 /**
  * Represents a slot within a broader container (e.g., entity
@@ -210,6 +210,21 @@ export class ContainerSlot {
      */
     getLore(): string[];
     /**
+     * @beta
+     * @remarks
+     * Returns the lore value - a secondary display string - for an
+     * ItemStack. String lore lines will be converted to a {@link
+     * RawMessage} and put under {@link RawMessage.text}.
+     *
+     * @returns
+     * An array of lore lines. If the item does not have lore,
+     * returns an empty array.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
+    getRawLore(): RawMessage[];
+    /**
      * @remarks
      * Returns all tags for the item in the slot.
      *
@@ -314,9 +329,11 @@ export class ContainerSlot {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -330,9 +347,11 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -367,7 +386,9 @@ export class ContainerSlot {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
+     * {@link Error}
+     *
      * {@link InvalidContainerSlotError}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
