@@ -329,7 +329,7 @@ export default {
             let versionString = version;
             const versionInfo = parsePackageVersion(version);
             if (versionInfo) {
-                if (!gameVersion) gameVersion = versionInfo.gameVersion;
+                gameVersion ??= versionInfo.gameVersion;
                 versionString = versionInfo.version;
             }
             const npmURL = `https://www.npmjs.com/package/${moduleName}`;

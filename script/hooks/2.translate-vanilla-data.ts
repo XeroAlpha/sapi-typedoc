@@ -4,7 +4,7 @@ import { URL } from 'url';
 import type { Hook } from './hook.js';
 
 const translationSources = [
-    'https://ca.projectxero.top/idlist/data/index.json',
+    'https://idlist.projectxero.top/data/index.json',
     'https://xeroalpha.github.io/caidlist/data/index.json'
 ];
 
@@ -247,9 +247,7 @@ export default {
         ).forEach((enums) => {
             Object.entries(enums).forEach(([enumName, enumKV]) => {
                 let enumEntries = gameData[enumName] as Record<string, string> | undefined;
-                if (!enumEntries) {
-                    enumEntries = gameData[enumName] = {};
-                }
+                enumEntries ??= gameData[enumName] = {};
                 Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
                     if (!enumEntries[enumKey]) {
                         enumEntries[enumKey] = enumValue;
