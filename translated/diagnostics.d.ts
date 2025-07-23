@@ -24,15 +24,16 @@
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserveradmin from '@minecraft/server-admin';
 /**
- * This defines the severity level of the breadcrumb. Levels
- * are used in the UI to emphasize and deemphasize the crumb.
- * The default is info.  See Sentry documentation for more
- * information:
+ * This defines the severity level of an error, event,
+ * exception, or breadcrumb. Levels are used in the UI to
+ * emphasize and deemphasize breadcrumbs. See Sentry
+ * documentation for more information:
  * https://docs.sentry.io/product/issues/issue-details/breadcrumbs/
  */
-export enum SentryBreadcrumbLevel {
+export enum SentryEventLevel {
     debug = 'debug',
     error = 'error',
+    fatal = 'fatal',
     info = 'info',
     warning = 'warning',
 }
@@ -50,8 +51,6 @@ export class Sentry {
      * up to an error.  See Sentry documentation for more details:
      * https://docs.sentry.io/product/issues/issue-details/breadcrumbs/
      *
-     * @worldMutation
-     *
      * @earlyExecution
      *
      * @param message
@@ -62,14 +61,12 @@ export class Sentry {
      *
      * {@link SentryUninitializedError}
      */
-    addBreadcrumb(level: SentryBreadcrumbLevel, message: string, category?: string): void;
+    addBreadcrumb(level: SentryEventLevel, message: string, category?: string): void;
     /**
      * @remarks
      * Adds a tag to the Sentry session.  See Sentry documentation
      * for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
-     *
-     * @worldMutation
      *
      * @earlyExecution
      *
@@ -80,11 +77,25 @@ export class Sentry {
     addTag(name: string, value: string): void;
     /**
      * @remarks
+     * Captures an exception event and send it to Sentry. Note that
+     * you can pass not only `Error` objects, but also other types
+     * of thrown objects - in that case, an attempt will be made to
+     * serialize the object for you, and stack traces are likely to
+     * be missing.  See Sentry documentation for more details:
+     * https://docs.sentry.io/platforms/javascript/apis/#capturing-events
+     *
+     * @earlyExecution
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link SentryUninitializedError}
+     */
+    captureException(exception: unknown, captureContext?: SentryCaptureContext): void;
+    /**
+     * @remarks
      * Gets the list of all session tags.  See Sentry documentation
      * for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
-     *
-     * @worldMutation
      *
      * @earlyExecution
      *
@@ -97,8 +108,6 @@ export class Sentry {
      * @remarks
      * Initializes Sentry for use.  This must be successfully
      * called before any other Sentry functions are called.
-     *
-     * @worldMutation
      *
      * @earlyExecution
      *
@@ -115,8 +124,6 @@ export class Sentry {
      * documentation for more details:
      * https://docs.sentry.io/platforms/javascript/enriching-events/tags/
      *
-     * @worldMutation
-     *
      * @earlyExecution
      *
      * @throws This function can throw errors.
@@ -124,6 +131,31 @@ export class Sentry {
      * {@link SentryUninitializedError}
      */
     removeTag(name: string): void;
+}
+
+/**
+ * Context relating to a captured exception that should be sent
+ * to Sentry.
+ */
+export interface SentryCaptureContext {
+    /**
+     * @remarks
+     * Additional data that should be sent with the exception.
+     *
+     */
+    extraData?: Record<string, boolean | number | string>;
+    /**
+     * @remarks
+     * The indicated level of severity of the captured exception.
+     *
+     */
+    level?: SentryEventLevel;
+    /**
+     * @remarks
+     * Additional tags that should be sent with the exception.
+     *
+     */
+    tags?: Record<string, string>;
 }
 
 /**

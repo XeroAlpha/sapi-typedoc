@@ -9,6 +9,13 @@ export class AimAssistRegistry {
     private constructor();
     /**
      * @remarks
+     * The default aim-assist category Id that is used when not
+     * otherwise specified.
+     *
+     */
+    static readonly DefaultCategoryId = 'minecraft:default';
+    /**
+     * @remarks
      * The default aim-assist preset Id that is used when not
      * otherwise specified.
      *

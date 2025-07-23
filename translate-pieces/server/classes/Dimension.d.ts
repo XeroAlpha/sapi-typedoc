@@ -273,6 +273,25 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
+     * @beta
+     * @remarks
+     * Returns the total brightness level of light shining on a
+     * certain block position.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * Location of the block we want to check the brightness of.
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(location: Vector3): number;
+    /**
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -289,6 +308,25 @@ export class Dimension {
      * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @beta
+     * @remarks
+     * Returns the brightness level of light shining from the sky
+     * on a certain block position.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * Position of the block we want to check the brightness of.
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(location: Vector3): number;
     /**
      * @remarks
      * Returns the highest block at the given XZ location.

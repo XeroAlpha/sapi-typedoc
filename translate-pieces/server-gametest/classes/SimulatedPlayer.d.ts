@@ -1,4 +1,4 @@
-/* IMPORT */ import { LookDuration, MoveToOptions, NavigationResult, minecraftserver } from '../index';
+/* IMPORT */ import { GameTestError, LookDuration, MoveToOptions, NavigationResult, PlayerSkinData, minecraftcommon, minecraftserver } from '../index';
 
 /**
  * A simulated player can be used within GameTests to represent
@@ -68,6 +68,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Direction to place the specified item within.
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
@@ -161,6 +165,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Direction to place the specified item within.
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
@@ -173,6 +181,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param entity
      * Entity to interact with.
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     interactWithEntity(entity: minecraftserver.Entity): boolean;
     /**
@@ -196,6 +208,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param duration
      * Defaults to: 2
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3, duration?: LookDuration): void;
     /**
@@ -267,6 +283,12 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @worldMutation
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     moveToLocation(location: minecraftserver.Vector3, options?: MoveToOptions): void;
     /**
@@ -283,6 +305,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
@@ -296,6 +322,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
     /**
@@ -312,6 +342,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @param speed
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
@@ -328,6 +362,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Net speed to use for doing the navigation.
      * Defaults to: 1
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
     /**
@@ -375,6 +413,19 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
+    /**
+     * @remarks
+     * Updates information about the player's skin.
+     *
+     * @worldMutation
+     *
+     * @param options
+     * Options for the skin to set on the player.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     */
+    setSkin(options: PlayerSkinData): void;
     /**
      * @remarks
      * @worldMutation
@@ -511,6 +562,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block where the item is placed.
      * Defaults to: null
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     useItemInSlotOnBlock(
         slot: number,
@@ -538,6 +593,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * block where the item is placed.
      * Defaults to: null
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     useItemOnBlock(
         itemStack: minecraftserver.ItemStack,

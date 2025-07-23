@@ -189,6 +189,15 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
+     * @beta
+     * @remarks
+     * Returns a map of pack setting name and value pairs.
+     *
+     * @earlyExecution
+     *
+     */
+    getPackSettings(): Record<string, boolean | number>;
+    /**
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
