@@ -215,6 +215,15 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
+     * @beta
+     * @remarks
+     * Returns a map of pack setting name and value pairs.
+     *
+     * @earlyExecution
+     *
+     */
+    getPackSettings(): Record<string, boolean | number>;
+    /**
      * @remarks
      * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
      * 

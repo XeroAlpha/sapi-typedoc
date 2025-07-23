@@ -26,6 +26,18 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
+     */
+    disableItemPlacement(): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    enableItemPlacement(itemType: minecraftserver.ItemType, data?: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     endPainting(cancelled: boolean): void;

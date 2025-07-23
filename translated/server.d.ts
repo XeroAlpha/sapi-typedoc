@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.2.0-beta"
+ *   "version": "2.3.0-beta"
  * }
  * ```
  *
@@ -3403,6 +3403,13 @@ export class AimAssistPresetSettings {
  */
 export class AimAssistRegistry {
     private constructor();
+    /**
+     * @remarks
+     * The default aim-assist category Id that is used when not
+     * otherwise specified.
+     *
+     */
+    static readonly DefaultCategoryId = 'minecraft:default';
     /**
      * @remarks
      * The default aim-assist preset Id that is used when not
@@ -7135,6 +7142,25 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
+     * @beta
+     * @remarks
+     * Returns the total brightness level of light shining on a
+     * certain block position.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * Location of the block we want to check the brightness of.
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(location: Vector3): number;
+    /**
      * @remarks
      * Returns a set of players based on a set of conditions
      * defined via the EntityQueryOptions set of filter criteria.
@@ -7151,6 +7177,25 @@ export class Dimension {
      * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @beta
+     * @remarks
+     * Returns the brightness level of light shining from the sky
+     * on a certain block position.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * Position of the block we want to check the brightness of.
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(location: Vector3): number;
     /**
      * @remarks
      * Returns the highest block at the given XZ location.
@@ -13679,6 +13724,49 @@ export class MolangVariableMap {
 }
 
 /**
+ * @beta
+ * Pack setting name and value that changed.
+ */
+export class PackSettingChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The name of the setting.
+     *
+     */
+    readonly settingName: string;
+    /**
+     * @remarks
+     * The value of the setting.
+     *
+     */
+    readonly settingValue: boolean | number;
+}
+
+/**
+ * @beta
+ */
+export class PackSettingChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): (arg0: PackSettingChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): void;
+}
+
+/**
  * Contains information related to changes to a piston
  * expanding or retracting.
  * @seeExample pistonAfterEvent.ts
@@ -17086,8 +17174,6 @@ export class System {
      * Causes an event to fire within script with the specified
      * message ID and payload.
      *
-     * @worldMutation
-     *
      * @param id
      * Identifier of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may
@@ -17712,6 +17798,15 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
+     * @beta
+     * @remarks
+     * Returns a map of pack setting name and value pairs.
+     *
+     * @earlyExecution
+     *
+     */
+    getPackSettings(): Record<string, boolean | number>;
+    /**
      * @remarks
      * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。
      * 
@@ -18134,6 +18229,15 @@ export class WorldAfterEvents {
      *
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event is triggered when a pack setting is changed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly packSettingChange: PackSettingChangeAfterEventSignal;
     /**
      * @remarks
      * This event fires when a piston expands or retracts.

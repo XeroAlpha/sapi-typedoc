@@ -289,6 +289,8 @@ export { ListBlockVolume } from './classes/ListBlockVolume';
 export { LootTableManager } from './classes/LootTableManager';
 export { MessageReceiveAfterEvent } from './classes/MessageReceiveAfterEvent';
 export { MolangVariableMap } from './classes/MolangVariableMap';
+export { PackSettingChangeAfterEvent } from './classes/PackSettingChangeAfterEvent';
+export { PackSettingChangeAfterEventSignal } from './classes/PackSettingChangeAfterEventSignal';
 export { PistonActivateAfterEvent } from './classes/PistonActivateAfterEvent';
 export { PistonActivateAfterEventSignal } from './classes/PistonActivateAfterEventSignal';
 export { Player } from './classes/Player';

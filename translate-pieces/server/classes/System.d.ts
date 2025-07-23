@@ -143,8 +143,6 @@ export class System {
      * Causes an event to fire within script with the specified
      * message ID and payload.
      *
-     * @worldMutation
-     *
      * @param id
      * Identifier of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may

@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, LocalizedString } from '../index';
 
 /**
  * Properties of toggle group property item list entry
@@ -21,7 +21,7 @@ export interface IToggleGroupPropertyItemEntry {
      * Optional tooltip description text of the entry.
      *
      */
-    readonly tooltip?: LocalizedString;
+    readonly tooltip?: BasicTooltipContent;
     /**
      * @remarks
      * The selectable value of the entry.
