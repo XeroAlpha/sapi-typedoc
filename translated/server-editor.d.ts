@@ -5396,6 +5396,24 @@ export interface IComboBoxPropertyItem extends IPropertyItemBase {
 }
 
 /**
+ * Properties of toggle group property item list entry
+ */
+export interface IComboBoxPropertyItemEntry {
+    /**
+     * @remarks
+     * Localized display text of the entry.
+     *
+     */
+    readonly label?: LocalizedString;
+    /**
+     * @remarks
+     * The selectable value of the entry.
+     *
+     */
+    readonly value: string;
+}
+
+/**
  * Optional properties for ComboBox property item
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5422,7 +5440,7 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
      * type).
      *
      */
-    entries?: string[];
+    entries?: IComboBoxPropertyItemEntry[];
     /**
      * @remarks
      * If true label text will be hidden. It will be visible by

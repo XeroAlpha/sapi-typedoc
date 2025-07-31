@@ -46,7 +46,7 @@ export declare enum MinecraftEntityTypes {
     Cod = "minecraft:cod",
     /** 命令方块矿车。 */
     CommandBlockMinecart = "minecraft:command_block_minecart",
-    /** Copper Golem。 */
+    /** 铜傀儡。 */
     CopperGolem = "minecraft:copper_golem",
     /** 牛。 */
     Cow = "minecraft:cow",

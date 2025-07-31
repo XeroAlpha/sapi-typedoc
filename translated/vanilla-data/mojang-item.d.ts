@@ -26,7 +26,7 @@ export declare enum MinecraftItemTypes {
     AcaciaPressurePlate = "minecraft:acacia_pressure_plate",
     /** 金合欢树苗。 */
     AcaciaSapling = "minecraft:acacia_sapling",
-    /** Acacia Shelf。 */
+    /** 金合欢木展示架。 */
     AcaciaShelf = "minecraft:acacia_shelf",
     /** 金合欢木告示牌。 */
     AcaciaSign = "minecraft:acacia_sign",
@@ -122,7 +122,7 @@ export declare enum MinecraftItemTypes {
     BambooPressurePlate = "minecraft:bamboo_pressure_plate",
     /** 竹筏。 */
     BambooRaft = "minecraft:bamboo_raft",
-    /** Bamboo Shelf。 */
+    /** 竹展示架。 */
     BambooShelf = "minecraft:bamboo_shelf",
     /** 竹告示牌。 */
     BambooSign = "minecraft:bamboo_sign",
@@ -190,7 +190,7 @@ export declare enum MinecraftItemTypes {
     BirchPressurePlate = "minecraft:birch_pressure_plate",
     /** 白桦树苗。 */
     BirchSapling = "minecraft:birch_sapling",
-    /** Birch Shelf。 */
+    /** 白桦木展示架。 */
     BirchShelf = "minecraft:birch_shelf",
     /** 白桦木告示牌。 */
     BirchSign = "minecraft:birch_sign",
@@ -444,7 +444,7 @@ export declare enum MinecraftItemTypes {
     CherryPressurePlate = "minecraft:cherry_pressure_plate",
     /** 樱花树苗。 */
     CherrySapling = "minecraft:cherry_sapling",
-    /** Cherry Shelf。 */
+    /** 樱花木展示架。 */
     CherryShelf = "minecraft:cherry_shelf",
     /** 樱花木告示牌。 */
     CherrySign = "minecraft:cherry_sign",
@@ -572,15 +572,15 @@ export declare enum MinecraftItemTypes {
     CopperBoots = "minecraft:copper_boots",
     /** 铜灯。 */
     CopperBulb = "minecraft:copper_bulb",
-    /** 铜箱。 */
+    /** 铜箱子。 */
     CopperChest = "minecraft:copper_chest",
     /** 铜胸甲。 */
     CopperChestplate = "minecraft:copper_chestplate",
     /** 铜门。 */
     CopperDoor = "minecraft:copper_door",
-    /** Copper Golem Spawn Egg。 */
+    /** 铜傀儡刷怪蛋。 */
     CopperGolemSpawnEgg = "minecraft:copper_golem_spawn_egg",
-    /** Copper Golem Statue。 */
+    /** 铜傀儡像。 */
     CopperGolemStatue = "minecraft:copper_golem_statue",
     /** 铜格栅。 */
     CopperGrate = "minecraft:copper_grate",
@@ -588,6 +588,8 @@ export declare enum MinecraftItemTypes {
     CopperHelmet = "minecraft:copper_helmet",
     /** 铜锄。 */
     CopperHoe = "minecraft:copper_hoe",
+    /** 铜马铠。 */
+    CopperHorseArmor = "minecraft:copper_horse_armor",
     /** 铜锭。 */
     CopperIngot = "minecraft:copper_ingot",
     /** 铜护腿。 */
@@ -654,7 +656,7 @@ export declare enum MinecraftItemTypes {
     CrimsonPressurePlate = "minecraft:crimson_pressure_plate",
     /** 绯红菌索。 */
     CrimsonRoots = "minecraft:crimson_roots",
-    /** Crimson Shelf。 */
+    /** 绯红木展示架。 */
     CrimsonShelf = "minecraft:crimson_shelf",
     /** 绯红木告示牌。 */
     CrimsonSign = "minecraft:crimson_sign",
@@ -740,7 +742,7 @@ export declare enum MinecraftItemTypes {
     DarkOakPressurePlate = "minecraft:dark_oak_pressure_plate",
     /** 深色橡树树苗。 */
     DarkOakSapling = "minecraft:dark_oak_sapling",
-    /** Dark Oak Shelf。 */
+    /** 深色橡木展示架。 */
     DarkOakShelf = "minecraft:dark_oak_shelf",
     /** 深色橡木告示牌。 */
     DarkOakSign = "minecraft:dark_oak_sign",
@@ -960,11 +962,11 @@ export declare enum MinecraftItemTypes {
     ExposedCopper = "minecraft:exposed_copper",
     /** 斑驳的铜灯。 */
     ExposedCopperBulb = "minecraft:exposed_copper_bulb",
-    /** 斑驳的铜箱。 */
+    /** 斑驳的铜箱子。 */
     ExposedCopperChest = "minecraft:exposed_copper_chest",
     /** 斑驳的铜门。 */
     ExposedCopperDoor = "minecraft:exposed_copper_door",
-    /** Exposed Copper Golem Statue。 */
+    /** 斑驳的铜傀儡像。 */
     ExposedCopperGolemStatue = "minecraft:exposed_copper_golem_statue",
     /** 斑驳的铜格栅。 */
     ExposedCopperGrate = "minecraft:exposed_copper_grate",
@@ -976,6 +978,8 @@ export declare enum MinecraftItemTypes {
     ExposedCutCopperSlab = "minecraft:exposed_cut_copper_slab",
     /** 斑驳的切制铜楼梯。 */
     ExposedCutCopperStairs = "minecraft:exposed_cut_copper_stairs",
+    /** 斑驳的避雷针。 */
+    ExposedLightningRod = "minecraft:exposed_lightning_rod",
     /** 眼眸盔甲纹饰 锻造模板。 */
     EyeArmorTrimSmithingTemplate = "minecraft:eye_armor_trim_smithing_template",
     /** 耕地。 */
@@ -1312,7 +1316,7 @@ export declare enum MinecraftItemTypes {
     JunglePressurePlate = "minecraft:jungle_pressure_plate",
     /** 丛林树苗。 */
     JungleSapling = "minecraft:jungle_sapling",
-    /** Jungle Shelf。 */
+    /** 丛林木展示架。 */
     JungleShelf = "minecraft:jungle_shelf",
     /** 丛林木告示牌。 */
     JungleSign = "minecraft:jungle_sign",
@@ -1550,7 +1554,7 @@ export declare enum MinecraftItemTypes {
     MangrovePropagule = "minecraft:mangrove_propagule",
     /** 红树根。 */
     MangroveRoots = "minecraft:mangrove_roots",
-    /** Mangrove Shelf。 */
+    /** 红树木展示架。 */
     MangroveShelf = "minecraft:mangrove_shelf",
     /** 红树木告示牌。 */
     MangroveSign = "minecraft:mangrove_sign",
@@ -1744,7 +1748,7 @@ export declare enum MinecraftItemTypes {
     OakPlanks = "minecraft:oak_planks",
     /** 橡树树苗。 */
     OakSapling = "minecraft:oak_sapling",
-    /** Oak Shelf。 */
+    /** 橡木展示架。 */
     OakShelf = "minecraft:oak_shelf",
     /** 橡木告示牌。 */
     OakSign = "minecraft:oak_sign",
@@ -1804,11 +1808,11 @@ export declare enum MinecraftItemTypes {
     OxidizedCopper = "minecraft:oxidized_copper",
     /** 氧化的铜灯。 */
     OxidizedCopperBulb = "minecraft:oxidized_copper_bulb",
-    /** 氧化的铜箱。 */
+    /** 氧化的铜箱子。 */
     OxidizedCopperChest = "minecraft:oxidized_copper_chest",
     /** 氧化的铜门。 */
     OxidizedCopperDoor = "minecraft:oxidized_copper_door",
-    /** Oxidized Copper Golem Statue。 */
+    /** 氧化的铜傀儡像。 */
     OxidizedCopperGolemStatue = "minecraft:oxidized_copper_golem_statue",
     /** 氧化的铜格栅。 */
     OxidizedCopperGrate = "minecraft:oxidized_copper_grate",
@@ -1820,6 +1824,8 @@ export declare enum MinecraftItemTypes {
     OxidizedCutCopperSlab = "minecraft:oxidized_cut_copper_slab",
     /** 氧化的切制铜楼梯。 */
     OxidizedCutCopperStairs = "minecraft:oxidized_cut_copper_stairs",
+    /** 氧化的避雷针。 */
+    OxidizedLightningRod = "minecraft:oxidized_lightning_rod",
     /** 浮冰。 */
     PackedIce = "minecraft:packed_ice",
     /** 泥坯。 */
@@ -1856,7 +1862,7 @@ export declare enum MinecraftItemTypes {
     PaleOakPressurePlate = "minecraft:pale_oak_pressure_plate",
     /** 苍白橡树树苗。 */
     PaleOakSapling = "minecraft:pale_oak_sapling",
-    /** Pale Oak Shelf。 */
+    /** 苍白橡木展示架。 */
     PaleOakShelf = "minecraft:pale_oak_shelf",
     /** 苍白橡木告示牌。 */
     PaleOakSign = "minecraft:pale_oak_sign",
@@ -2388,7 +2394,7 @@ export declare enum MinecraftItemTypes {
     SprucePressurePlate = "minecraft:spruce_pressure_plate",
     /** 云杉树苗。 */
     SpruceSapling = "minecraft:spruce_sapling",
-    /** Spruce Shelf。 */
+    /** 云杉木展示架。 */
     SpruceShelf = "minecraft:spruce_shelf",
     /** 云杉木告示牌。 */
     SpruceSign = "minecraft:spruce_sign",
@@ -2630,7 +2636,7 @@ export declare enum MinecraftItemTypes {
     WarpedPressurePlate = "minecraft:warped_pressure_plate",
     /** 诡异菌索。 */
     WarpedRoots = "minecraft:warped_roots",
-    /** Warped Shelf。 */
+    /** 诡异木展示架。 */
     WarpedShelf = "minecraft:warped_shelf",
     /** 诡异木告示牌。 */
     WarpedSign = "minecraft:warped_sign",
@@ -2654,11 +2660,11 @@ export declare enum MinecraftItemTypes {
     WaxedCopper = "minecraft:waxed_copper",
     /** 涂蜡的铜灯。 */
     WaxedCopperBulb = "minecraft:waxed_copper_bulb",
-    /** 涂蜡的铜箱。 */
+    /** 涂蜡的铜箱子。 */
     WaxedCopperChest = "minecraft:waxed_copper_chest",
     /** 涂蜡的铜门。 */
     WaxedCopperDoor = "minecraft:waxed_copper_door",
-    /** Waxed Copper Golem Statue。 */
+    /** 涂蜡的铜傀儡像。 */
     WaxedCopperGolemStatue = "minecraft:waxed_copper_golem_statue",
     /** 涂蜡的铜格栅。 */
     WaxedCopperGrate = "minecraft:waxed_copper_grate",
@@ -2676,11 +2682,11 @@ export declare enum MinecraftItemTypes {
     WaxedExposedCopper = "minecraft:waxed_exposed_copper",
     /** 涂蜡的斑驳铜灯。 */
     WaxedExposedCopperBulb = "minecraft:waxed_exposed_copper_bulb",
-    /** 涂蜡的斑驳铜箱。 */
+    /** 涂蜡的斑驳铜箱子。 */
     WaxedExposedCopperChest = "minecraft:waxed_exposed_copper_chest",
     /** 涂蜡的斑驳铜门。 */
     WaxedExposedCopperDoor = "minecraft:waxed_exposed_copper_door",
-    /** Waxed Exposed Copper Golem Statue。 */
+    /** 涂蜡的斑驳铜傀儡像。 */
     WaxedExposedCopperGolemStatue = "minecraft:waxed_exposed_copper_golem_statue",
     /** 涂蜡的斑驳铜格栅。 */
     WaxedExposedCopperGrate = "minecraft:waxed_exposed_copper_grate",
@@ -2692,17 +2698,21 @@ export declare enum MinecraftItemTypes {
     WaxedExposedCutCopperSlab = "minecraft:waxed_exposed_cut_copper_slab",
     /** 涂蜡的斑驳切制铜楼梯。 */
     WaxedExposedCutCopperStairs = "minecraft:waxed_exposed_cut_copper_stairs",
+    /** 涂蜡的斑驳避雷针。 */
+    WaxedExposedLightningRod = "minecraft:waxed_exposed_lightning_rod",
+    /** 涂蜡的避雷针。 */
+    WaxedLightningRod = "minecraft:waxed_lightning_rod",
     /** 涂蜡的氧化雕纹铜块。 */
     WaxedOxidizedChiseledCopper = "minecraft:waxed_oxidized_chiseled_copper",
     /** 涂蜡的氧化铜块。 */
     WaxedOxidizedCopper = "minecraft:waxed_oxidized_copper",
     /** 涂蜡的氧化铜灯。 */
     WaxedOxidizedCopperBulb = "minecraft:waxed_oxidized_copper_bulb",
-    /** 涂蜡的氧化铜箱。 */
+    /** 涂蜡的氧化铜箱子。 */
     WaxedOxidizedCopperChest = "minecraft:waxed_oxidized_copper_chest",
     /** 涂蜡的氧化铜门。 */
     WaxedOxidizedCopperDoor = "minecraft:waxed_oxidized_copper_door",
-    /** Waxed Oxidized Copper Golem Statue。 */
+    /** 涂蜡的氧化铜傀儡像。 */
     WaxedOxidizedCopperGolemStatue = "minecraft:waxed_oxidized_copper_golem_statue",
     /** 涂蜡的氧化铜格栅。 */
     WaxedOxidizedCopperGrate = "minecraft:waxed_oxidized_copper_grate",
@@ -2714,17 +2724,19 @@ export declare enum MinecraftItemTypes {
     WaxedOxidizedCutCopperSlab = "minecraft:waxed_oxidized_cut_copper_slab",
     /** 涂蜡的氧化切制铜楼梯。 */
     WaxedOxidizedCutCopperStairs = "minecraft:waxed_oxidized_cut_copper_stairs",
+    /** 涂蜡的氧化避雷针。 */
+    WaxedOxidizedLightningRod = "minecraft:waxed_oxidized_lightning_rod",
     /** 涂蜡的锈蚀雕纹铜块。 */
     WaxedWeatheredChiseledCopper = "minecraft:waxed_weathered_chiseled_copper",
     /** 涂蜡的锈蚀铜块。 */
     WaxedWeatheredCopper = "minecraft:waxed_weathered_copper",
     /** 涂蜡的锈蚀铜灯。 */
     WaxedWeatheredCopperBulb = "minecraft:waxed_weathered_copper_bulb",
-    /** 涂蜡的锈蚀铜箱。 */
+    /** 涂蜡的锈蚀铜箱子。 */
     WaxedWeatheredCopperChest = "minecraft:waxed_weathered_copper_chest",
     /** 涂蜡的锈蚀铜门。 */
     WaxedWeatheredCopperDoor = "minecraft:waxed_weathered_copper_door",
-    /** Waxed Weathered Copper Golem Statue。 */
+    /** 涂蜡的锈蚀铜傀儡像。 */
     WaxedWeatheredCopperGolemStatue = "minecraft:waxed_weathered_copper_golem_statue",
     /** 涂蜡的锈蚀铜格栅。 */
     WaxedWeatheredCopperGrate = "minecraft:waxed_weathered_copper_grate",
@@ -2736,6 +2748,8 @@ export declare enum MinecraftItemTypes {
     WaxedWeatheredCutCopperSlab = "minecraft:waxed_weathered_cut_copper_slab",
     /** 涂蜡的锈蚀切制铜楼梯。 */
     WaxedWeatheredCutCopperStairs = "minecraft:waxed_weathered_cut_copper_stairs",
+    /** 涂蜡的锈蚀避雷针。 */
+    WaxedWeatheredLightningRod = "minecraft:waxed_weathered_lightning_rod",
     /** 向导盔甲纹饰 锻造模板。 */
     WayfinderArmorTrimSmithingTemplate = "minecraft:wayfinder_armor_trim_smithing_template",
     /** 锈蚀的雕纹铜块。 */
@@ -2744,11 +2758,11 @@ export declare enum MinecraftItemTypes {
     WeatheredCopper = "minecraft:weathered_copper",
     /** 锈蚀的铜灯。 */
     WeatheredCopperBulb = "minecraft:weathered_copper_bulb",
-    /** 锈蚀的铜箱。 */
+    /** 锈蚀的铜箱子。 */
     WeatheredCopperChest = "minecraft:weathered_copper_chest",
     /** 锈蚀的铜门。 */
     WeatheredCopperDoor = "minecraft:weathered_copper_door",
-    /** Weathered Copper Golem Statue。 */
+    /** 锈蚀的铜傀儡像。 */
     WeatheredCopperGolemStatue = "minecraft:weathered_copper_golem_statue",
     /** 锈蚀的铜格栅。 */
     WeatheredCopperGrate = "minecraft:weathered_copper_grate",
@@ -2760,6 +2774,8 @@ export declare enum MinecraftItemTypes {
     WeatheredCutCopperSlab = "minecraft:weathered_cut_copper_slab",
     /** 锈蚀的切制铜楼梯。 */
     WeatheredCutCopperStairs = "minecraft:weathered_cut_copper_stairs",
+    /** 锈蚀的避雷针。 */
+    WeatheredLightningRod = "minecraft:weathered_lightning_rod",
     /** 蜘蛛网。 */
     Web = "minecraft:web",
     /** 垂泪藤。 */

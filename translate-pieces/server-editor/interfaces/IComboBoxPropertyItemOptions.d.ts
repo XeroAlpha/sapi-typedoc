@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, ComboBoxPropertyItemDataType, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, ComboBoxPropertyItemDataType, IComboBoxPropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
 
 /**
  * Optional properties for ComboBox property item
@@ -27,7 +27,7 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
      * type).
      *
      */
-    entries?: string[];
+    entries?: IComboBoxPropertyItemEntry[];
     /**
      * @remarks
      * If true label text will be hidden. It will be visible by
