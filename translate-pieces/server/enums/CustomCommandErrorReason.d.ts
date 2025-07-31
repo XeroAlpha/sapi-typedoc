@@ -43,4 +43,11 @@ export enum CustomCommandErrorReason {
      *
      */
     RegistryReadOnly = 'RegistryReadOnly',
+    /**
+     * @beta
+     * @remarks
+     * Non enum type command parameters cannot use enumName.
+     *
+     */
+    UnexpectedEnumName = 'UnexpectedEnumName',
 }

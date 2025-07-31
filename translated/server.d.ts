@@ -346,6 +346,13 @@ export enum CustomCommandErrorReason {
      *
      */
     RegistryReadOnly = 'RegistryReadOnly',
+    /**
+     * @beta
+     * @remarks
+     * Non enum type command parameters cannot use enumName.
+     *
+     */
+    UnexpectedEnumName = 'UnexpectedEnumName',
 }
 
 /**
@@ -18668,6 +18675,15 @@ export interface CustomCommand {
  * command.
  */
 export interface CustomCommandParameter {
+    /**
+     * @beta
+     * @remarks
+     * Can be used to reference the enum name when {@link
+     * CustomCommandParamType} is 'Enum'. Allows the parameter name
+     * to be different from the enum name.
+     *
+     */
+    enumName?: string;
     /**
      * @remarks
      * The name of parameter as it appears on the command line.

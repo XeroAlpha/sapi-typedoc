@@ -207,6 +207,7 @@ export { IColorTimelinePropertyItem } from './interfaces/IColorTimelinePropertyI
 export { IColorTimelinePropertyItemEntry } from './interfaces/IColorTimelinePropertyItemEntry';
 export { IColorTimelinePropertyItemOptions } from './interfaces/IColorTimelinePropertyItemOptions';
 export { IComboBoxPropertyItem } from './interfaces/IComboBoxPropertyItem';
+export { IComboBoxPropertyItemEntry } from './interfaces/IComboBoxPropertyItemEntry';
 export { IComboBoxPropertyItemOptions } from './interfaces/IComboBoxPropertyItemOptions';
 export { IDataTablePropertyItem } from './interfaces/IDataTablePropertyItem';
 export { IDataTablePropertyItemEntry } from './interfaces/IDataTablePropertyItemEntry';
