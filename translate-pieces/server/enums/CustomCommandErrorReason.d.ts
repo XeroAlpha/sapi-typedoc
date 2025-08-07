@@ -1,5 +1,4 @@
 /**
- * @rc
  * Reason why custom command registration failed.
  */
 export enum CustomCommandErrorReason {

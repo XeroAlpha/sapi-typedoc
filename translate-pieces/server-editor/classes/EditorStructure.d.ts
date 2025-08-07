@@ -2,6 +2,12 @@
 
 export class EditorStructure {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
     /**

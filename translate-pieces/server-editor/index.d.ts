@@ -98,6 +98,8 @@ export { BlockIdentifierListObservableValidator } from './classes/BlockIdentifie
 export { BlockIdentifierObservableValidator } from './classes/BlockIdentifierObservableValidator';
 export { BlockPalette } from './classes/BlockPalette';
 export { BlockPaletteManager } from './classes/BlockPaletteManager';
+export { BlockPaletteSelectedItemChangeAfterEvent } from './classes/BlockPaletteSelectedItemChangeAfterEvent';
+export { BlockPaletteSelectedItemChangeAfterEventSignal } from './classes/BlockPaletteSelectedItemChangeAfterEventSignal';
 export { BlockUtilities } from './classes/BlockUtilities';
 export { BrushShape } from './classes/BrushShape';
 export { BrushShapeManager } from './classes/BrushShapeManager';

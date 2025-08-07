@@ -9,7 +9,6 @@
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns the total Armor level of the owner.
      *
@@ -19,7 +18,6 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     readonly totalArmor: number;
     /**
-     * @rc
      * @remarks
      * Returns the total Toughness level of the owner.
      *

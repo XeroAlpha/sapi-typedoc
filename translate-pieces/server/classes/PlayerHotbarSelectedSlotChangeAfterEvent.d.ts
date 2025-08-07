@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemStack, Player } from '../index';
 
 /**
- * @rc
  * Contains information regarding an event after changing the
  * selected hotbar slot for a player.
  */

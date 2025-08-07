@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3, minecraftcommon } from '../index';
 
 /**
  * Represents a block in a dimension. A block represents a
@@ -74,7 +74,6 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this block's name used in .lang
      * files.
@@ -313,6 +312,23 @@ export class Block {
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the total brightness level of light shining on a
+     * certain block.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(): number;
+    /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -334,6 +350,23 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns the brightness level of light shining from the sky
+     * on a certain block.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(): number;
     /**
      * @remarks
      * Returns a set of tags for a block.

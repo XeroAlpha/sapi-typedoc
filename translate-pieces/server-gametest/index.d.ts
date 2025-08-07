@@ -24,4 +24,6 @@ export { GameTestError } from './classes/GameTestError';
 export { getPlayerSkin } from './functions/getPlayerSkin';
 export { register } from './functions/register';
 export { registerAsync } from './functions/registerAsync';
+export { setAfterBatchCallback } from './functions/setAfterBatchCallback';
+export { setBeforeBatchCallback } from './functions/setBeforeBatchCallback';
 export { spawnSimulatedPlayer } from './functions/spawnSimulatedPlayer';

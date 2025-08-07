@@ -1,7 +1,6 @@
 /* IMPORT */ import { CommandPermissionLevel, CustomCommandParameter } from '../index';
 
 /**
- * @rc
  * Define the custom command, including name, permissions, and
  * parameters.
  */

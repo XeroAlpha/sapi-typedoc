@@ -1,7 +1,6 @@
 /* IMPORT */ import { HotbarEventOptions, PlayerHotbarSelectedSlotChangeAfterEvent } from '../index';
 
 /**
- * @rc
  * Manages callbacks that are connected after a player selected
  * hotbar slot is changed.
  */

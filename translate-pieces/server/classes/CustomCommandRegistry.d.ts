@@ -1,7 +1,6 @@
 /* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, NamespaceNameError, minecraftcommon } from '../index';
 
 /**
- * @rc
  * Provides the functionality for registering custom commands.
  */
 export class CustomCommandRegistry {

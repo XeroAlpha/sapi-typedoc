@@ -9,11 +9,11 @@ export interface IPlayerLoggerProperties {
      * A log channel mask, default is Message
      *
      */
-    channelMask: LogChannel;
+    channelMask?: LogChannel;
     /**
      * @remarks
      * A player log sub message for the toast channel
      *
      */
-    subMessage: string;
+    subMessage?: string;
 }

@@ -1,5 +1,4 @@
 /**
- * @rc
  * The container is invalid. This can occur if the container is
  * missing or deleted.
  */

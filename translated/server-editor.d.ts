@@ -303,6 +303,7 @@ export enum GraphicsSettingsProperty {
      *
      */
     ShowInvisibleBlocks = 'ShowInvisibleBlocks',
+    ShowToastNotifications = 'ShowToastNotifications',
 }
 
 /**
@@ -1295,6 +1296,7 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
     [GraphicsSettingsProperty.NightVision]?: boolean;
+    [GraphicsSettingsProperty.ShowToastNotifications]?: boolean;
 };
 
 /**
@@ -1685,6 +1687,33 @@ export class BlockPaletteManager {
     setSelectedItem(item: IBlockPaletteItem): void;
 }
 
+export class BlockPaletteSelectedItemChangeAfterEvent {
+    private constructor();
+    readonly selectedPaletteItem: IBlockPaletteItem;
+}
+
+export class BlockPaletteSelectedItemChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void,
+    ): (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void): void;
+}
+
 export class BlockUtilities {
     private constructor();
     /**
@@ -1984,6 +2013,13 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     clear(): void;
+    /**
+     * @remarks
+     * Get the normalized origin of a ClipboardItem; a Vector3 from
+     * { -1, -1, -1 } to { 1, 1, 1 }
+     *
+     */
+    getNormalizedOrigin(): minecraftserver.Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -2350,6 +2386,12 @@ export class EditorConstants {
 
 export class EditorStructure {
     private constructor();
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
     /**
@@ -2665,6 +2707,12 @@ export class ExtensionContext {
  */
 export class ExtensionContextAfterEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly blockPaletteSelectedItemChange: BlockPaletteSelectedItemChangeAfterEventSignal;
     /**
      * @remarks
      * @earlyExecution
@@ -6529,13 +6577,13 @@ export interface IPlayerLoggerProperties {
      * A log channel mask, default is Message
      *
      */
-    channelMask: LogChannel;
+    channelMask?: LogChannel;
     /**
      * @remarks
      * A player log sub message for the toast channel
      *
      */
-    subMessage: string;
+    subMessage?: string;
 }
 
 /**
