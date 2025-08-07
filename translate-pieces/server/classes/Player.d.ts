@@ -21,7 +21,6 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -104,7 +103,6 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @rc
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}

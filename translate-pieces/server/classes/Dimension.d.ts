@@ -20,7 +20,6 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Key for the localization of a dimension's name used by
      * language files.

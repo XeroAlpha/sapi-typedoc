@@ -14,4 +14,5 @@ export enum GraphicsSettingsProperty {
      *
      */
     ShowInvisibleBlocks = 'ShowInvisibleBlocks',
+    ShowToastNotifications = 'ShowToastNotifications',
 }

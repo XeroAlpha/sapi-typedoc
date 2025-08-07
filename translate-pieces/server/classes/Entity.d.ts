@@ -118,7 +118,6 @@ export class Entity {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this entity's name used in .lang
      * files.

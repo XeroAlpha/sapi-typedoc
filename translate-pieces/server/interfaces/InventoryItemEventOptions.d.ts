@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerInventoryType } from '../index';
 
 /**
- * @rc
  * Contains additional filtering options for inventory item
  * events.
  */

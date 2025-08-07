@@ -9,7 +9,6 @@ export class StartupEvent {
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *

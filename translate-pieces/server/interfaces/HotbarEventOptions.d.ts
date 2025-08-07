@@ -1,5 +1,4 @@
 /**
- * @rc
  * Contains additional filtering options for hotbar events.
  */
 export interface HotbarEventOptions {

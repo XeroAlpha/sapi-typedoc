@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, PotionEffectType, PotionLiquidType, PotionModifierType } from '../index';
+/* IMPORT */ import { ItemComponent, PotionDeliveryType, PotionEffectType, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -9,24 +9,25 @@ export class ItemPotionComponent extends ItemComponent {
     private constructor();
     /**
      * @remarks
+     * The PotionDeliveryType associated with the potion item.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    readonly potionDeliveryType: PotionDeliveryType;
+    /**
+     * @remarks
      * The PotionEffectType associated with the potion item.
      *
      * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
      */
     readonly potionEffectType: PotionEffectType;
-    /**
-     * @remarks
-     * The PotionLiquidType associated with the potion item.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly potionLiquidType: PotionLiquidType;
-    /**
-     * @remarks
-     * The PotionModifierType associated with the potion item.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly potionModifierType: PotionModifierType;
     static readonly componentId = 'minecraft:potion';
 }

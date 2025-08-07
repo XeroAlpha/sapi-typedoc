@@ -1,7 +1,6 @@
 /* IMPORT */ import { CustomCommandStatus } from '../index';
 
 /**
- * @rc
  * Interface returned from custom command callback function.
  */
 export interface CustomCommandResult {

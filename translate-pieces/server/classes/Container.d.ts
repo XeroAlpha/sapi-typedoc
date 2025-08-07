@@ -80,7 +80,6 @@ export class Container {
      */
     clearAll(): void;
     /**
-     * @rc
      * @remarks
      * Attempts to find an item inside the container
      *
@@ -92,7 +91,6 @@ export class Container {
      */
     contains(itemStack: ItemStack): boolean;
     /**
-     * @rc
      * @remarks
      * Find the index of the first instance of an item inside the
      * container
@@ -105,7 +103,6 @@ export class Container {
      */
     find(itemStack: ItemStack): number | undefined;
     /**
-     * @rc
      * @remarks
      * Find the index of the last instance of an item inside the
      * container
@@ -118,7 +115,6 @@ export class Container {
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
-     * @rc
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
@@ -128,7 +124,6 @@ export class Container {
      */
     firstEmptySlot(): number | undefined;
     /**
-     * @rc
      * @remarks
      * Finds the index of the first item inside the container
      *

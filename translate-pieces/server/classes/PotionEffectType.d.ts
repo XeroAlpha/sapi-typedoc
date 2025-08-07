@@ -1,9 +1,21 @@
+/* IMPORT */ import { minecraftcommon } from '../index';
+
 /**
  * @beta
- * Represents a type of potion effect - like healing or leaping
- * - that can be used with PotionOptions.
+ * Represents a type of potion effect - like healing or
+ * leaping.
  */
 export class PotionEffectType {
     private constructor();
+    /**
+     * @remarks
+     * Duration of the effect when applied to an entity in ticks.
+     * Undefined means the effect does not expire.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly durationTicks?: number;
     readonly id: string;
 }

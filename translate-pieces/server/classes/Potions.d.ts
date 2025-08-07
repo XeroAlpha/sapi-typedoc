@@ -1,12 +1,37 @@
-/* IMPORT */ import { PotionEffectType, PotionLiquidType, PotionModifierType } from '../index';
+/* IMPORT */ import { InvalidPotionDeliveryTypeError, InvalidPotionEffectTypeError, ItemStack, PotionDeliveryType, PotionEffectType, minecraftcommon, minecraftvanilladata } from '../index';
 
 /**
  * @beta
- * Used for accessing all potion effects, liquids, and
- * modifiers currently available for use within the world.
+ * Used for accessing all potion effect types, delivery types,
+ * and creating potions.
  */
 export class Potions {
     private constructor();
+    /**
+     * @remarks
+     * Retrieves handles for all registered potion delivery types.
+     *
+     * @returns
+     * Array of all registered delivery type handles.
+     */
+    static getAllDeliveryTypes(): PotionDeliveryType[];
+    /**
+     * @remarks
+     * Retrieves all type handle for all registered potion effects.
+     *
+     * @returns
+     * Array of all registered effect type handles.
+     */
+    static getAllEffectTypes(): PotionEffectType[];
+    /**
+     * @remarks
+     * Retrieves a type handle for a specified potion delivery id.
+     *
+     * @returns
+     * A type handle wrapping the valid delivery id, or undefined
+     * for an invalid delivery id.
+     */
+    static getDeliveryType(potionDeliveryId: string): PotionDeliveryType | undefined;
     /**
      * @remarks
      * Retrieves a type handle for a specified potion effect id.
@@ -18,23 +43,21 @@ export class Potions {
      * A type handle wrapping the valid effect id, or undefined for
      * an invalid effect id.
      */
-    static getPotionEffectType(potionEffectId: string): PotionEffectType | undefined;
+    static getEffectType(potionEffectId: string): PotionEffectType | undefined;
     /**
      * @remarks
-     * Retrieves a type handle for a specified potion liquid id.
+     * Creates a potion given an effect and delivery type.
      *
-     * @returns
-     * A type handle wrapping the valid liquid id, or undefined for
-     * an invalid liquid id.
-     */
-    static getPotionLiquidType(potionLiquidId: string): PotionLiquidType | undefined;
-    /**
-     * @remarks
-     * Retrieves a type handle for a specified potion modifier id.
+     * @throws This function can throw errors.
      *
-     * @returns
-     * A type handle wrapping the valid modifier id, or undefined
-     * for an invalid modifier id.
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidPotionDeliveryTypeError}
+     *
+     * {@link InvalidPotionEffectTypeError}
      */
-    static getPotionModifierType(potionModifierId: string): PotionModifierType | undefined;
+    static resolve<
+        T extends string = minecraftvanilladata.MinecraftPotionEffectTypes,
+        U extends string = minecraftvanilladata.MinecraftPotionDeliveryTypes,
+    >(potionEffectType: PotionEffectType | T, potionDeliveryType: PotionDeliveryType | U): ItemStack;
 }

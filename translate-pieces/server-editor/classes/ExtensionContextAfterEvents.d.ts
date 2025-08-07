@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, SelectionChangeAfterEventSignal } from '../index';
+/* IMPORT */ import { BlockPaletteSelectedItemChangeAfterEventSignal, ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, SelectionChangeAfterEventSignal } from '../index';
 
 /**
  * Contains a set of events that are available across the scope
@@ -6,6 +6,12 @@
  */
 export class ExtensionContextAfterEvents {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly blockPaletteSelectedItemChange: BlockPaletteSelectedItemChangeAfterEventSignal;
     /**
      * @remarks
      * @earlyExecution

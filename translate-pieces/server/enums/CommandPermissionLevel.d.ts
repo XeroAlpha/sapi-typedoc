@@ -1,5 +1,4 @@
 /**
- * @rc
  * The required permission level to execute the custom command.
  */
 export enum CommandPermissionLevel {

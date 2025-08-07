@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, PotionOptions, RawMessage, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, Vector3, minecraftcommon } from '../index';
 
 /**
  * Defines a collection of items.
@@ -36,7 +36,6 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this items's name used in .lang
      * files.
@@ -372,14 +371,4 @@ export class ItemStack {
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;
-    /**
-     * @beta
-     * @remarks
-     * Helper function for creating potion items.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    static createPotion(options: PotionOptions): ItemStack;
 }

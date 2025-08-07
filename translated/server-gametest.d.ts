@@ -2582,6 +2582,38 @@ export function registerAsync(
 ): RegistrationBuilder;
 /**
  * @remarks
+ * Sets a callback that is called after the batch gets called.
+ * This will overwrite previously set callbacks for this batch.
+ *
+ * @worldMutation
+ *
+ * @earlyExecution
+ *
+ * @param batchName
+ * Name of the batch of tests the callback will run after.
+ * @throws This function can throw errors.
+ *
+ * {@link GameTestError}
+ */
+export function setAfterBatchCallback(batchName: string, batchCallback: () => void): void;
+/**
+ * @remarks
+ * Sets a callback that is called before the batch gets called.
+ * This will overwrite previously set callbacks for this batch.
+ *
+ * @worldMutation
+ *
+ * @earlyExecution
+ *
+ * @param batchName
+ * Name of the batch of tests the callback will run before.
+ * @throws This function can throw errors.
+ *
+ * {@link GameTestError}
+ */
+export function setBeforeBatchCallback(batchName: string, batchCallback: () => void): void;
+/**
+ * @remarks
  * Spawns a simulated player that isn't associated to a
  * specific {@link Test}.  You can use {@link
  * SimulatedPlayer.remove} to remove the player from the world.

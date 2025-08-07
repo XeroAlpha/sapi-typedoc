@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityAttributeComponent } from '../index';
 
 /**
- * @rc
  * Defines the interactions with this entity for hunger. Wraps
  * the `minecraft.player.hunger` attribute.
  */

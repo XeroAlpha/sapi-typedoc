@@ -173,7 +173,6 @@ export enum ButtonState {
 }
 
 /**
- * @rc
  * The required permission level to execute the custom command.
  */
 export enum CommandPermissionLevel {
@@ -304,7 +303,6 @@ export enum ContainerRulesErrorReason {
 }
 
 /**
- * @rc
  * Reason why custom command registration failed.
  */
 export enum CustomCommandErrorReason {
@@ -358,7 +356,6 @@ export enum CustomCommandErrorReason {
 }
 
 /**
- * @rc
  * The types of paramaters accepted by a custom command.
  */
 export enum CustomCommandParamType {
@@ -432,7 +429,6 @@ export enum CustomCommandParamType {
 }
 
 /**
- * @rc
  * Who executed the command.
  */
 export enum CustomCommandSource {
@@ -457,9 +453,6 @@ export enum CustomCommandSource {
     Server = 'Server',
 }
 
-/**
- * @rc
- */
 export enum CustomCommandStatus {
     Success = 0,
     Failure = 1,
@@ -1110,7 +1103,6 @@ export enum EntityComponentTypes {
      */
     OnFire = 'minecraft:onfire',
     /**
-     * @rc
      * @remarks
      * Use this component to read the exhaustion of a player. This
      * is only available on players.
@@ -1118,7 +1110,6 @@ export enum EntityComponentTypes {
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
-     * @rc
      * @remarks
      * Use this component to read the hunger of a player. This is
      * only available on players.
@@ -1126,7 +1117,6 @@ export enum EntityComponentTypes {
      */
     Hunger = 'minecraft:player.hunger',
     /**
-     * @rc
      * @remarks
      * Use this component to read the saturation of a player. This
      * is only available on players.
@@ -2492,7 +2482,6 @@ export enum PlatformType {
 }
 
 /**
- * @rc
  * Specifies the player inventory type.
  */
 export enum PlayerInventoryType {
@@ -2511,7 +2500,6 @@ export enum PlayerInventoryType {
 }
 
 /**
- * @rc
  * The player permission level.
  */
 export enum PlayerPermissionLevel {
@@ -3642,7 +3630,6 @@ export class Block {
      */
     readonly isWaterlogged: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this block's name used in .lang
      * files.
@@ -3979,6 +3966,23 @@ export class Block {
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
      * @beta
+     * @remarks
+     * Returns the total brightness level of light shining on a
+     * certain block.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(): number;
+    /**
+     * @beta
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -4006,6 +4010,23 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns the brightness level of light shining from the sky
+     * on a certain block.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The brightness level on the block.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(): number;
     /**
      * @remarks
      * 返回方块被设置的标签的列表。
@@ -6140,7 +6161,6 @@ export class Container {
      */
     clearAll(): void;
     /**
-     * @rc
      * @remarks
      * Attempts to find an item inside the container
      *
@@ -6152,7 +6172,6 @@ export class Container {
      */
     contains(itemStack: ItemStack): boolean;
     /**
-     * @rc
      * @remarks
      * Find the index of the first instance of an item inside the
      * container
@@ -6165,7 +6184,6 @@ export class Container {
      */
     find(itemStack: ItemStack): number | undefined;
     /**
-     * @rc
      * @remarks
      * Find the index of the last instance of an item inside the
      * container
@@ -6178,7 +6196,6 @@ export class Container {
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
-     * @rc
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
@@ -6188,7 +6205,6 @@ export class Container {
      */
     firstEmptySlot(): number | undefined;
     /**
-     * @rc
      * @remarks
      * Finds the index of the first item inside the container
      *
@@ -6718,7 +6734,6 @@ export class ContainerSlot {
 }
 
 /**
- * @rc
  * Details about the origins of the command.
  */
 export class CustomCommandOrigin {
@@ -6753,7 +6768,6 @@ export class CustomCommandOrigin {
 }
 
 /**
- * @rc
  * Provides the functionality for registering custom commands.
  */
 export class CustomCommandRegistry {
@@ -6896,7 +6910,6 @@ export class Dimension {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Key for the localization of a dimension's name used by
      * language files.
@@ -7893,7 +7906,6 @@ export class Entity {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this entity's name used in .lang
      * files.
@@ -9132,7 +9144,6 @@ export class EntityDieAfterEventSignal {
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns the total Armor level of the owner.
      *
@@ -9142,7 +9153,6 @@ export class EntityEquippableComponent extends EntityComponent {
      */
     readonly totalArmor: number;
     /**
-     * @rc
      * @remarks
      * Returns the total Toughness level of the owner.
      *
@@ -9193,7 +9203,6 @@ export class EntityEquippableComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Defines the interactions with this entity for Exhaustion.
  * Wraps the `minecraft.player.exhaustion` attribute.
  */
@@ -9471,7 +9480,6 @@ export class EntityHitEntityAfterEventSignal {
 }
 
 /**
- * @rc
  * Defines the interactions with this entity for hunger. Wraps
  * the `minecraft.player.hunger` attribute.
  */
@@ -10759,7 +10767,6 @@ export class EntityRidingComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Defines the interactions with this entity for Saturation.
  * Wraps the `minecraft.player.saturation` attribute.
  */
@@ -12595,25 +12602,26 @@ export class ItemPotionComponent extends ItemComponent {
     private constructor();
     /**
      * @remarks
+     * The PotionDeliveryType associated with the potion item.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    readonly potionDeliveryType: PotionDeliveryType;
+    /**
+     * @remarks
      * The PotionEffectType associated with the potion item.
      *
      * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
      */
     readonly potionEffectType: PotionEffectType;
-    /**
-     * @remarks
-     * The PotionLiquidType associated with the potion item.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly potionLiquidType: PotionLiquidType;
-    /**
-     * @remarks
-     * The PotionModifierType associated with the potion item.
-     *
-     * @throws This property can throw when used.
-     */
-    readonly potionModifierType: PotionModifierType;
     static readonly componentId = 'minecraft:potion';
 }
 
@@ -12711,7 +12719,6 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this items's name used in .lang
      * files.
@@ -13047,16 +13054,6 @@ export class ItemStack {
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;
-    /**
-     * @beta
-     * @remarks
-     * Helper function for creating potion items.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    static createPotion(options: PotionOptions): ItemStack;
 }
 
 /**
@@ -13843,7 +13840,6 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -13926,7 +13922,6 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @rc
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}
@@ -14754,7 +14749,6 @@ export class PlayerGameModeChangeBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event after changing the
  * selected hotbar slot for a player.
  */
@@ -14787,7 +14781,6 @@ export class PlayerHotbarSelectedSlotChangeAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected after a player selected
  * hotbar slot is changed.
  */
@@ -15269,7 +15262,6 @@ export class PlayerInteractWithEntityBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event after a player's
  * inventory item changes.
  */
@@ -15308,7 +15300,6 @@ export class PlayerInventoryItemChangeAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected after a player's
  * inventory item is changed.
  */
@@ -15672,41 +15663,65 @@ export class PlayerSpawnAfterEventSignal {
 
 /**
  * @beta
- * Represents a type of potion effect - like healing or leaping
- * - that can be used with PotionOptions.
+ * Represents how the potion effect is delivered.
+ */
+export class PotionDeliveryType {
+    private constructor();
+    readonly id: string;
+}
+
+/**
+ * @beta
+ * Represents a type of potion effect - like healing or
+ * leaping.
  */
 export class PotionEffectType {
     private constructor();
+    /**
+     * @remarks
+     * Duration of the effect when applied to an entity in ticks.
+     * Undefined means the effect does not expire.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly durationTicks?: number;
     readonly id: string;
 }
 
 /**
  * @beta
- * Represents a type of potion liquid - like splash, or
- * lingering - that can be used with PotionOptions.
- */
-export class PotionLiquidType {
-    private constructor();
-    readonly id: string;
-}
-
-/**
- * @beta
- * Represents a type of potion modifier - like strong, or long
- * - that can be used with PotionOptions.
- */
-export class PotionModifierType {
-    private constructor();
-    readonly id: string;
-}
-
-/**
- * @beta
- * Used for accessing all potion effects, liquids, and
- * modifiers currently available for use within the world.
+ * Used for accessing all potion effect types, delivery types,
+ * and creating potions.
  */
 export class Potions {
     private constructor();
+    /**
+     * @remarks
+     * Retrieves handles for all registered potion delivery types.
+     *
+     * @returns
+     * Array of all registered delivery type handles.
+     */
+    static getAllDeliveryTypes(): PotionDeliveryType[];
+    /**
+     * @remarks
+     * Retrieves all type handle for all registered potion effects.
+     *
+     * @returns
+     * Array of all registered effect type handles.
+     */
+    static getAllEffectTypes(): PotionEffectType[];
+    /**
+     * @remarks
+     * Retrieves a type handle for a specified potion delivery id.
+     *
+     * @returns
+     * A type handle wrapping the valid delivery id, or undefined
+     * for an invalid delivery id.
+     */
+    static getDeliveryType(potionDeliveryId: string): PotionDeliveryType | undefined;
     /**
      * @remarks
      * Retrieves a type handle for a specified potion effect id.
@@ -15718,25 +15733,23 @@ export class Potions {
      * A type handle wrapping the valid effect id, or undefined for
      * an invalid effect id.
      */
-    static getPotionEffectType(potionEffectId: string): PotionEffectType | undefined;
+    static getEffectType(potionEffectId: string): PotionEffectType | undefined;
     /**
      * @remarks
-     * Retrieves a type handle for a specified potion liquid id.
+     * Creates a potion given an effect and delivery type.
      *
-     * @returns
-     * A type handle wrapping the valid liquid id, or undefined for
-     * an invalid liquid id.
-     */
-    static getPotionLiquidType(potionLiquidId: string): PotionLiquidType | undefined;
-    /**
-     * @remarks
-     * Retrieves a type handle for a specified potion modifier id.
+     * @throws This function can throw errors.
      *
-     * @returns
-     * A type handle wrapping the valid modifier id, or undefined
-     * for an invalid modifier id.
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidPotionDeliveryTypeError}
+     *
+     * {@link InvalidPotionEffectTypeError}
      */
-    static getPotionModifierType(potionModifierId: string): PotionModifierType | undefined;
+    static resolve<
+        T extends string = minecraftvanilladata.MinecraftPotionEffectTypes,
+        U extends string = minecraftvanilladata.MinecraftPotionDeliveryTypes,
+    >(potionEffectType: PotionEffectType | T, potionDeliveryType: PotionDeliveryType | U): ItemStack;
 }
 
 /**
@@ -16663,7 +16676,6 @@ export class StartupEvent {
      */
     readonly blockComponentRegistry: BlockComponentRegistry;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -18291,7 +18303,6 @@ export class WorldAfterEvents {
      */
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player's selected slot changes.
      *
@@ -18332,7 +18343,6 @@ export class WorldAfterEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an item gets added or removed to the
      * player's inventory.
@@ -19056,7 +19066,6 @@ export interface ContainerRules {
 }
 
 /**
- * @rc
  * Define the custom command, including name, permissions, and
  * parameters.
  */
@@ -19101,7 +19110,6 @@ export interface CustomCommand {
 }
 
 /**
- * @rc
  * Definition for each parameter expected by the custom
  * command.
  */
@@ -19130,7 +19138,6 @@ export interface CustomCommandParameter {
 }
 
 /**
- * @rc
  * Interface returned from custom command callback function.
  */
 export interface CustomCommandResult {
@@ -19748,7 +19755,6 @@ export interface GreaterThanOrEqualsComparison {
 }
 
 /**
- * @rc
  * Contains additional filtering options for hotbar events.
  */
 export interface HotbarEventOptions {
@@ -19785,7 +19791,6 @@ export interface InputEventOptions {
 }
 
 /**
- * @rc
  * Contains additional filtering options for inventory item
  * events.
  */
@@ -20117,35 +20122,6 @@ export interface PlayerSoundOptions {
      *
      */
     volume?: number;
-}
-
-/**
- * @beta
- * Options for use in creating potions. See
- * ItemStack.createPotion.
- */
-export interface PotionOptions {
-    /**
-     * @remarks
-     * The type of potion effect to create. See
-     * @minecraft/vanilla-data.MinecraftPotionEffectTypes.
-     *
-     */
-    effect: PotionEffectType | string;
-    /**
-     * @remarks
-     * Optional potion liquid, defaults to 'Regular'. See
-     * @minecraft/vanilla-data.MinecraftPotionLiquidTypes.
-     *
-     */
-    liquid?: PotionLiquidType | string;
-    /**
-     * @remarks
-     * Optional potion modifier, defaults to 'Normal'. See
-     * @minecraft/vanilla-data.MinecraftPotionModifierTypes.
-     *
-     */
-    modifier?: PotionModifierType | string;
 }
 
 /**
@@ -20702,7 +20678,6 @@ export class ContainerRulesError extends Error {
 }
 
 /**
- * @rc
  * Error object thrown when CustomCommandRegistry errors occur.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -20755,7 +20730,6 @@ export class EntitySpawnError extends Error {
 }
 
 /**
- * @rc
  * The container is invalid. This can occur if the container is
  * missing or deleted.
  */
@@ -20818,6 +20792,22 @@ export class InvalidItemStackError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidIteratorError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidPotionDeliveryTypeError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidPotionEffectTypeError extends Error {
     private constructor();
 }
 

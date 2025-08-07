@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockType, Entity, EntityType, ItemType, Player } from '../index';
 
 /**
- * @rc
  * The types of paramaters accepted by a custom command.
  */
 export enum CustomCommandParamType {

@@ -26,6 +26,13 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @remarks
+     * Get the normalized origin of a ClipboardItem; a Vector3 from
+     * { -1, -1, -1 } to { 1, 1, 1 }
+     *
+     */
+    getNormalizedOrigin(): minecraftserver.Vector3;
+    /**
+     * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
