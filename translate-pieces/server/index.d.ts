@@ -427,6 +427,7 @@ export { EntityRaycastHit } from './interfaces/EntityRaycastHit';
 export { EntityRaycastOptions } from './interfaces/EntityRaycastOptions';
 export { EqualsComparison } from './interfaces/EqualsComparison';
 export { ExplosionOptions } from './interfaces/ExplosionOptions';
+export { GetBlocksStandingOnOptions } from './interfaces/GetBlocksStandingOnOptions';
 export { GreaterThanComparison } from './interfaces/GreaterThanComparison';
 export { GreaterThanOrEqualsComparison } from './interfaces/GreaterThanOrEqualsComparison';
 export { HotbarEventOptions } from './interfaces/HotbarEventOptions';

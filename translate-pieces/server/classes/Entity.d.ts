@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
+/* IMPORT */ import { Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -325,6 +325,23 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
+     * @beta
+     * @remarks
+     * Gets the solid blocks that this entity is directly standing
+     * on. Ignores pressure plates.
+     *
+     * @param options
+     * Additional configuration options for what blocks are
+     * returned.
+     * @returns
+     * The solid blocks that this entity is directly standing on.
+     * Returns an empty list if the entity is jumping or flying.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[];
+    /**
      * @remarks
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
@@ -339,6 +356,24 @@ export class Entity {
      * {@link InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Gets a single solid block closest to the center of the
+     * entity that this entity is directly standing on. Ignores
+     * pressure plates.
+     *
+     * @param options
+     * Additional configuration options for what block is returned.
+     * @returns
+     * A single solid block closest to the center of the entity
+     * that this entity is directly standing on. Undefined if
+     * entity is flying or jumping.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block | undefined;
     /**
      * @remarks
      * Gets a component (that represents additional capabilities)

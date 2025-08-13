@@ -5419,6 +5419,23 @@ export class Camera {
             | CameraTargetOptions,
     ): void;
     /**
+     * @beta
+     * @remarks
+     * Sets the current active camera with easing.
+     *
+     * @worldMutation
+     *
+     * @param cameraPreset
+     * Identifier of a camera preset file defined within JSON.
+     * @param easeOptions
+     * Options to ease the camera from the previous camera to the
+     * current one.
+     * @throws
+     * Throws when easing to minecraft:first_person presets
+     * currently without the experimental cameras toggle enabled.
+     */
+    setCameraWithEase(cameraPreset: string, easeOptions: EaseOptions): void;
+    /**
      * @remarks
      * Sets the current active camera for the specified player and
      * resets the position and rotation to the values defined in
@@ -6819,6 +6836,24 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns the biome type at the specified location.
+     *
+     * @param location
+     * Location at which to check the biome.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getBiome(location: Vector3): BiomeType;
+    /**
      * @remarks
      * Returns a block instance at the given location.
      *
@@ -7911,6 +7946,23 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
+     * @beta
+     * @remarks
+     * Gets the solid blocks that this entity is directly standing
+     * on. Ignores pressure plates.
+     *
+     * @param options
+     * Additional configuration options for what blocks are
+     * returned.
+     * @returns
+     * The solid blocks that this entity is directly standing on.
+     * Returns an empty list if the entity is jumping or flying.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[];
+    /**
      * @remarks
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
@@ -7925,6 +7977,24 @@ export class Entity {
      * {@link InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Gets a single solid block closest to the center of the
+     * entity that this entity is directly standing on. Ignores
+     * pressure plates.
+     *
+     * @param options
+     * Additional configuration options for what block is returned.
+     * @returns
+     * A single solid block closest to the center of the entity
+     * that this entity is directly standing on. Undefined if
+     * entity is flying or jumping.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block | undefined;
     /**
      * @remarks
      * Gets a component (that represents additional capabilities)
@@ -13462,7 +13532,7 @@ export class PackSettingChangeAfterEvent {
      * The value of the setting.
      *
      */
-    readonly settingValue: boolean | number;
+    readonly settingValue: boolean | number | string;
 }
 
 /**
@@ -17442,7 +17512,7 @@ export class World {
      * @earlyExecution
      *
      */
-    getPackSettings(): Record<string, boolean | number>;
+    getPackSettings(): Record<string, boolean | number | string>;
     /**
      * @remarks
      * Returns a set of players based on a set of conditions
@@ -19297,6 +19367,29 @@ export interface ExplosionOptions {
      *
      */
     source?: Entity;
+}
+
+/**
+ * @beta
+ * Contains additional options for getBlockStandingOn and
+ * getAllBlocksStandingOn.
+ */
+export interface GetBlocksStandingOnOptions {
+    /**
+     * @remarks
+     * When specified, the function will include / exclude what
+     * block(s) are returned based on the block filter.
+     *
+     */
+    blockFilter?: BlockFilter;
+    /**
+     * @remarks
+     * If true, all blocks of height 0.2 or lower like trapdoors
+     * and carpets will be ignored, and the block underneath will
+     * be returned.
+     *
+     */
+    ignoreThinBlocks?: boolean;
 }
 
 /**
