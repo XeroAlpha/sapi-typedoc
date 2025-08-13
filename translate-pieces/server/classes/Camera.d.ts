@@ -61,6 +61,23 @@ export class Camera {
             | CameraTargetOptions,
     ): void;
     /**
+     * @beta
+     * @remarks
+     * Sets the current active camera with easing.
+     *
+     * @worldMutation
+     *
+     * @param cameraPreset
+     * Identifier of a camera preset file defined within JSON.
+     * @param easeOptions
+     * Options to ease the camera from the previous camera to the
+     * current one.
+     * @throws
+     * Throws when easing to minecraft:first_person presets
+     * currently without the experimental cameras toggle enabled.
+     */
+    setCameraWithEase(cameraPreset: string, easeOptions: EaseOptions): void;
+    /**
      * @remarks
      * Sets the current active camera for the specified player and
      * resets the position and rotation to the values defined in

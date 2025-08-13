@@ -222,7 +222,7 @@ export class World {
      * @earlyExecution
      *
      */
-    getPackSettings(): Record<string, boolean | number>;
+    getPackSettings(): Record<string, boolean | number | string>;
     /**
      * @remarks
      * 列出世界上的玩家，可使用 `options` 指定的实体查询选项对其进行筛选。

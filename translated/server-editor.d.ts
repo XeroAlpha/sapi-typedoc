@@ -2003,6 +2003,8 @@ export class ClipboardItem {
      *
      */
     readonly isEmpty: boolean;
+    readonly normalizedOrigin: minecraftserver.Vector3;
+    readonly originalWorldLocation: minecraftserver.Vector3;
     readonly size: minecraftserver.Vector3;
     /**
      * @remarks
@@ -2013,13 +2015,6 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     clear(): void;
-    /**
-     * @remarks
-     * Get the normalized origin of a ClipboardItem; a Vector3 from
-     * { -1, -1, -1 } to { 1, 1, 1 }
-     *
-     */
-    getNormalizedOrigin(): minecraftserver.Vector3;
     /**
      * @remarks
      * @worldMutation

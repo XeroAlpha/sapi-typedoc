@@ -131,6 +131,24 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns the biome type at the specified location.
+     *
+     * @param location
+     * Location at which to check the biome.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getBiome(location: Vector3): BiomeType;
+    /**
      * @remarks
      * Returns a block instance at the given location.
      *
