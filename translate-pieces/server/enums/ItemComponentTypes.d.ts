@@ -4,7 +4,7 @@
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      * @remarks
      * The minecraft:book component.
      *

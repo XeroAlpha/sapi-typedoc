@@ -135,7 +135,7 @@ export enum BlockVolumeIntersection {
 }
 
 /**
- * @beta
+ * @rc
  * An enum of error reasons relating to using {@link
  * ItemBookComponent}.
  */
@@ -1915,6 +1915,26 @@ export enum GraphicsMode {
     Simple = 'Simple',
 }
 
+/**
+ * @beta
+ * Specifies options related to the item currently being held
+ * by an entity.
+ */
+export enum HeldItemOption {
+    /**
+     * @remarks
+     * Any item is being held.
+     *
+     */
+    AnyItem = 'AnyItem',
+    /**
+     * @remarks
+     * No item is being held.
+     *
+     */
+    NoItem = 'NoItem',
+}
+
 export enum HudElement {
     PaperDoll = 0,
     Armor = 1,
@@ -2100,7 +2120,7 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      * @remarks
      * The minecraft:book component.
      *
@@ -5654,7 +5674,7 @@ export class Camera {
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
@@ -6567,7 +6587,7 @@ export class ContainerSlot {
      */
     getLore(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link
@@ -7019,8 +7039,6 @@ export class Dimension {
      * time to complete, so avoid using many of these calls within
      * a particular tick.
      *
-     * @worldMutation
-     *
      * @param pos
      * Starting location to look for a biome to find.
      * @param biomeToFind
@@ -7085,8 +7103,6 @@ export class Dimension {
      * based on the given options (by default will find the first
      * solid block above).
      *
-     * @worldMutation
-     *
      * @param location
      * Location to retrieve the block above from.
      * @param options
@@ -7099,8 +7115,6 @@ export class Dimension {
      * Gets the first block found below a given block location
      * based on the given options (by default will find the first
      * solid block below).
-     *
-     * @worldMutation
      *
      * @param location
      * Location to retrieve the block below from.
@@ -7202,8 +7216,6 @@ export class Dimension {
      * Returns the total brightness level of light shining on a
      * certain block position.
      *
-     * @worldMutation
-     *
      * @param location
      * Location of the block we want to check the brightness of.
      * @returns
@@ -7238,8 +7250,6 @@ export class Dimension {
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
      *
-     * @worldMutation
-     *
      * @param location
      * Position of the block we want to check the brightness of.
      * @returns
@@ -7255,8 +7265,6 @@ export class Dimension {
      * @remarks
      * Returns the highest block at the given XZ location.
      *
-     * @worldMutation
-     *
      * @param locationXZ
      * Location to retrieve the topmost block for.
      * @param minHeight
@@ -7270,13 +7278,21 @@ export class Dimension {
      * @remarks
      * Returns the current weather.
      *
-     * @worldMutation
-     *
      * @returns
      * Returns a WeatherType that explains the broad category of
      * weather that is currently going on.
      */
     getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the chunk at the given location is loaded
+     * (and valid for use with scripting).
+     *
+     * @param location
+     * Location to check if the chunk is loaded.
+     */
+    isChunkLoaded(location: Vector3): boolean;
     /**
      * @remarks
      * Places the given feature into the dimension at the specified
@@ -7773,6 +7789,16 @@ export class EffectTypes {
      * A list of all effects.
      */
     static getAll(): EffectType[];
+}
+
+/**
+ * @beta
+ * Represents a completely empty entry in a loot pool. If this
+ * entry is chosen, no items will drop.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EmptyLootItem extends LootPoolEntry {
+    private constructor();
 }
 
 /**
@@ -11707,7 +11733,7 @@ export class InputInfo {
 }
 
 /**
- * @beta
+ * @rc
  * When present on an item, this item is a book item. Can
  * access and modify the contents of the book and sign it.
  */
@@ -12971,7 +12997,7 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link
@@ -13618,6 +13644,166 @@ export class ListBlockVolume extends BlockVolumeBase {
 
 /**
  * @beta
+ * Represents a loot pool entry containing an item to drop.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LootItem extends LootPoolEntry {
+    private constructor();
+    /**
+     * @remarks
+     * The name of the item contained in this entry.
+     *
+     */
+    readonly name?: ItemType;
+}
+
+/**
+ * @beta
+ * A collection of entries which individually determine loot
+ * drops. Can contain values determining drop outcomes,
+ * including rolls, bonus rolls and tiers.
+ */
+export class LootPool {
+    private constructor();
+    /**
+     * @remarks
+     * Returns the number of extra times a loot pool will be rolled
+     * based on the player's luck level, represented as a range
+     * from minimum to maximum rolls.
+     *
+     */
+    readonly bonusRolls: minecraftcommon.NumberRange;
+    /**
+     * @remarks
+     * Gets a complete list of all loot pool entries contained in
+     * the loot pool.
+     *
+     */
+    readonly entries: LootPoolEntry[];
+    /**
+     * @remarks
+     * Returns the number of times a loot pool will be rolled,
+     * represented as a range from minimum to maximum rolls.
+     *
+     */
+    readonly rolls: minecraftcommon.NumberRange;
+    /**
+     * @remarks
+     * Gets the loot pool tier values for a given table if they
+     * exist.
+     *
+     */
+    readonly tiers?: LootPoolTiers;
+}
+
+/**
+ * @beta
+ * Represents one entry within Loot Table, which describes one
+ * possible drop when a loot drop occurs. Can contain an item,
+ * another loot table, a path to another loot table, or an
+ * empty drop.
+ */
+export class LootPoolEntry {
+    private constructor();
+    /**
+     * @remarks
+     * Gets the quality of a given loot pool entry.
+     *
+     */
+    readonly quality: number;
+    /**
+     * @remarks
+     * Gets the subtable of a given loot pool entry.
+     *
+     */
+    readonly subTable?: LootPoolEntry;
+    /**
+     * @remarks
+     * Gets the weight of a given loot pool entry.
+     *
+     */
+    readonly weight: number;
+}
+
+/**
+ * @beta
+ * Represents the values which determine loot drops in a tiered
+ * loot pool. Potential drops from tiered loot pools are
+ * ordered, and chosen via logic controlled by the values in
+ * this object.
+ */
+export class LootPoolTiers {
+    private constructor();
+    /**
+     * @remarks
+     * The chance for each bonus roll attempt to upgrade the tier
+     * of the dropped item.
+     *
+     */
+    readonly bonusChance: number;
+    /**
+     * @remarks
+     * The number of attempts for the loot drop to upgrade its
+     * tier, thereby incrementing its position in the loot pool
+     * entry array, resulting in a higher tier drop.
+     *
+     */
+    readonly bonusRolls: number;
+    /**
+     * @remarks
+     * Represents the upper bound for the starting point in
+     * determining which tier of loot to drop. The lower bound is
+     * always 1. For example, a value of 3 would result in the tier
+     * drop logic starting at a randomly selected position in the
+     * loot pool entry array between 1 and 3.
+     *
+     */
+    readonly initialRange: number;
+}
+
+/**
+ * @beta
+ * Represents a single Loot Table, which determines what items
+ * are generated when killing a mob, breaking a block, filling
+ * a container, and more.
+ */
+export class LootTable {
+    private constructor();
+    /**
+     * @remarks
+     * Returns the path to the JSON file that represents this loot
+     * table. Does not include file extension, or 'loot_tables/'
+     * folder prefix. Example: `entities/creeper`.
+     *
+     */
+    readonly path: string;
+    /**
+     * @remarks
+     * Returns the array of loot pools on a given loot table.
+     *
+     */
+    readonly pools: LootPool[];
+}
+
+/**
+ * @beta
+ * Represents a loot pool entry containing another separate,
+ * nested loot table.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LootTableEntry extends LootPoolEntry {
+    private constructor();
+    /**
+     * @remarks
+     * Gets the loot table stored as a subtable in the parent loot
+     * pool.
+     *
+     */
+    readonly lootTable: LootTable;
+}
+
+/**
+ * @rc
  * Manager for Loot Table related APIs. Allows for generation
  * of drops from blocks and entities according to their loot
  * tables.
@@ -13700,6 +13886,51 @@ export class LootTableManager {
      * Can be empty if no loot dropped.
      */
     generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Generates loot from a given LootTable.
+     *
+     * @param tool
+     * Optional. The tool to use in the looting operation.
+     * @returns
+     * An array of item stacks dropped from the loot drop event.
+     * Can be empty if no loot dropped, or undefined if the
+     * provided tool is insufficient to mine the block.
+     */
+    generateLootFromTable(lootTable: LootTable, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Retrieves a single loot table from the level's current
+     * registry.
+     *
+     * @param path
+     * Path to the table to retrieve. Does not include file
+     * extension, or 'loot_tables/' folder prefix. Example:
+     * `entities/creeper`.
+     * @returns
+     * Returns a LootTable if one is found, or `undefined` if the
+     * provided path does not correspond to an existing loot table.
+     */
+    getLootTable(path: string): LootTable | undefined;
+}
+
+/**
+ * @beta
+ * Represents a loot pool entry containing a reference to
+ * another loot table, described by its path.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LootTableReference extends LootPoolEntry {
+    private constructor();
+    /**
+     * @remarks
+     * The path to the referenced loot table. Example:
+     * `loot_tables/chests/village/village_bundle.json`
+     *
+     */
+    readonly path: string;
 }
 
 /**
@@ -15729,6 +15960,65 @@ export class PlayerSpawnAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding a player starting to swing
+ * their arm.
+ */
+export class PlayerSwingStartAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack being held by the player at the start of
+     * their swing.
+     *
+     */
+    readonly heldItemStack?: ItemStack;
+    /**
+     * @remarks
+     * Source Player for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player starts
+ * to swing their arm (e.g. attacking, using an item,
+ * interacting).
+ */
+export class PlayerSwingStartAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player starts to
+     * swing their arm (e.g. attacking, using an item,
+     * interacting).
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: PlayerSwingStartAfterEvent) => void,
+        options?: PlayerSwingEventOptions,
+    ): (arg0: PlayerSwingStartAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player starts to
+     * swing their arm (e.g. attacking, using an item,
+     * interacting).
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerSwingStartAfterEvent) => void): void;
 }
 
 /**
@@ -17877,7 +18167,14 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Returns a manager capable of generating loot from an
+     * assortment of sources.
+     *
+     * @returns
+     * A loot table manager with a variety of loot generation
+     * methods.
      */
     getLootTableManager(): LootTableManager;
     /**
@@ -18458,6 +18755,13 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly playerSwingStart: PlayerSwingStartAfterEventSignal;
+    /**
      * @remarks
      * A pressure plate has popped back up (i.e., there are no
      * entities on the pressure plate.)
@@ -19007,12 +19311,8 @@ export interface CameraFixedBoomOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Used to change the field of view of the current camera.
- *
- * Required Experiments:
- * - Required Experiment Toggle: Experimental Creator Cameras
- *
  */
 export interface CameraFovOptions {
     easeOptions?: EaseOptions;
@@ -20218,6 +20518,24 @@ export interface PlayerSoundOptions {
 }
 
 /**
+ * @beta
+ * An interface that is passed into {@link
+ * @minecraft/Server.PlayerSwingStartAfterEvent.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
+ */
+export interface PlayerSwingEventOptions {
+    /**
+     * @remarks
+     * The held item option that the callback should be called for.
+     * If undefined, the callback will be called whether or not the
+     * player is holding an item in their hand.
+     *
+     */
+    heldItemOption?: HeldItemOption;
+}
+
+/**
  * Optional arguments for
  * @minecraft/server.EntityProjectileComponent.shoot.
  */
@@ -20703,7 +21021,7 @@ export class BlockCustomComponentReloadVersionError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Errors that can be thrown when using {@link
  * ItemBookComponent}.
  */
@@ -20721,7 +21039,7 @@ export class BookError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * The error called if page content being set on an {@link
  * ItemBookComponent} are invalid ie. exceeding the maximum
  * page length.
@@ -20866,7 +21184,7 @@ export class InvalidEntityError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * The error called when an item is invalid. This can occur
  * when accessing components on a removed item.
  */

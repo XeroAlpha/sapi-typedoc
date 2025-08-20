@@ -112,8 +112,6 @@ export class Dimension {
      * time to complete, so avoid using many of these calls within
      * a particular tick.
      *
-     * @worldMutation
-     *
      * @param pos
      * Starting location to look for a biome to find.
      * @param biomeToFind
@@ -178,8 +176,6 @@ export class Dimension {
      * based on the given options (by default will find the first
      * solid block above).
      *
-     * @worldMutation
-     *
      * @param location
      * Location to retrieve the block above from.
      * @param options
@@ -192,8 +188,6 @@ export class Dimension {
      * Gets the first block found below a given block location
      * based on the given options (by default will find the first
      * solid block below).
-     *
-     * @worldMutation
      *
      * @param location
      * Location to retrieve the block below from.
@@ -295,8 +289,6 @@ export class Dimension {
      * Returns the total brightness level of light shining on a
      * certain block position.
      *
-     * @worldMutation
-     *
      * @param location
      * Location of the block we want to check the brightness of.
      * @returns
@@ -331,8 +323,6 @@ export class Dimension {
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
      *
-     * @worldMutation
-     *
      * @param location
      * Position of the block we want to check the brightness of.
      * @returns
@@ -348,8 +338,6 @@ export class Dimension {
      * @remarks
      * Returns the highest block at the given XZ location.
      *
-     * @worldMutation
-     *
      * @param locationXZ
      * Location to retrieve the topmost block for.
      * @param minHeight
@@ -363,13 +351,21 @@ export class Dimension {
      * @remarks
      * Returns the current weather.
      *
-     * @worldMutation
-     *
      * @returns
      * Returns a WeatherType that explains the broad category of
      * weather that is currently going on.
      */
     getWeather(): WeatherType;
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the chunk at the given location is loaded
+     * (and valid for use with scripting).
+     *
+     * @param location
+     * Location to check if the chunk is loaded.
+     */
+    isChunkLoaded(location: Vector3): boolean;
     /**
      * @remarks
      * Places the given feature into the dimension at the specified

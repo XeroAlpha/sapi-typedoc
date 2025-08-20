@@ -1,12 +1,8 @@
 /* IMPORT */ import { EaseOptions } from '../index';
 
 /**
- * @beta
+ * @rc
  * Used to change the field of view of the current camera.
- *
- * Required Experiments:
- * - Required Experiment Toggle: Experimental Creator Cameras
- *
  */
 export interface CameraFovOptions {
     easeOptions?: EaseOptions;

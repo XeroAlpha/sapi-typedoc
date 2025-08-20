@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * An enum of error reasons relating to using {@link
  * ItemBookComponent}.
  */

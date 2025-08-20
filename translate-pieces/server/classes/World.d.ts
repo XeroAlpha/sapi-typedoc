@@ -205,7 +205,14 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Returns a manager capable of generating loot from an
+     * assortment of sources.
+     *
+     * @returns
+     * A loot table manager with a variety of loot generation
+     * methods.
      */
     getLootTableManager(): LootTableManager;
     /**

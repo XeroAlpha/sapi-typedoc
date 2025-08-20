@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver, minecraftvanilladata } from '../index';
 
 export class BrushShapeManager {
     private constructor();
@@ -16,6 +16,12 @@ export class BrushShapeManager {
      * @throws This function can throw errors.
      */
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    clearBlockStateOverrides(): void;
     /**
      * @remarks
      * @worldMutation
@@ -69,6 +75,21 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
+     */
+    pushBlockStateOverride<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        blockStateName: T,
+        blockStateValue: minecraftvanilladata.BlockStateSuperset[T],
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setBlockFacePlacementBasedOnCamera(enabled: boolean): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     setBrushMask(mask: BlockMaskList): void;
@@ -101,13 +122,19 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    setFlattenHeight(flattenHeight: number): void;
+    setFlattenMode(flattenMode: FlattenMode): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setFlattenRadius(flattenRadius: number): void;
+    setFlattenSmoothing(flattenSmoothing: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setFloorBlockOverride(floorBlockOverride: boolean): void;
     /**
      * @remarks
      * @worldMutation
