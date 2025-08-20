@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemType } from '../index';
 
 /**
- * @beta
+ * @rc
  * The error called when an item is invalid. This can occur
  * when accessing components on a removed item.
  */

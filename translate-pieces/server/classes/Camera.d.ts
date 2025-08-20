@@ -94,7 +94,7 @@ export class Camera {
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *

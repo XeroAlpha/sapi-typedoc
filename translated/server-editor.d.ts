@@ -21,6 +21,8 @@
  */
 import * as minecraftcommon from '@minecraft/common';
 import * as minecraftserver from '@minecraft/server';
+// @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
+import type * as minecraftvanilladata from '@minecraft/vanilla-data';
 /**
  * The types of actions that are supported. This type
  * corresponds to the expected arguments passed by the
@@ -74,8 +76,21 @@ export declare enum BoolPropertyItemVariant {
 }
 
 export enum BrushDirectionalPlacementMode {
-    Default = 0,
-    ByCamera = 1,
+    IgnoreCamera = 0,
+    NormalCamera = 1,
+    OppositeCamera = 2,
+    CameraLeft = 3,
+    CameraRight = 4,
+    CameraFromAbove = 5,
+    CameraFromBelow = 6,
+    FrontFacePosX = 7,
+    FrontFaceNegX = 8,
+    FrontFacePosZ = 9,
+    FrontFaceNegZ = 10,
+    FrontFacePosY = 11,
+    FrontFaceNegY = 12,
+    Random2Axes = 13,
+    Random3Axes = 14,
 }
 
 /**
@@ -277,6 +292,12 @@ export enum ExportResult {
     WorldExportFailed = 5,
     WorldExportBusy = 6,
     EditorSystemFailure = 7,
+}
+
+export enum FlattenMode {
+    Both = 0,
+    Down = 1,
+    Up = 2,
 }
 
 export enum GamePublishSetting {
@@ -1849,6 +1870,12 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    clearBlockStateOverrides(): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     deactivateBrushTool(): void;
     /**
      * @remarks
@@ -1897,6 +1924,21 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
+     */
+    pushBlockStateOverride<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+        blockStateName: T,
+        blockStateValue: minecraftvanilladata.BlockStateSuperset[T],
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setBlockFacePlacementBasedOnCamera(enabled: boolean): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      */
     setBrushMask(mask: BlockMaskList): void;
@@ -1929,13 +1971,19 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    setFlattenHeight(flattenHeight: number): void;
+    setFlattenMode(flattenMode: FlattenMode): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setFlattenRadius(flattenRadius: number): void;
+    setFlattenSmoothing(flattenSmoothing: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setFloorBlockOverride(floorBlockOverride: boolean): void;
     /**
      * @remarks
      * @worldMutation
@@ -2352,6 +2400,11 @@ export class CursorPropertyChangeAfterEventSignal {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export declare class CylinderBrushShape extends BrushShape {
+    get depth(): number;
+    get height(): number;
+    get radius(): number;
+    get uniform(): boolean;
+    get width(): number;
     /**
      * @remarks
      * Constructs a new instance of the `CylinderBrushShape` class
@@ -2367,6 +2420,7 @@ export declare class CylinderBrushShape extends BrushShape {
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hideRotation?: boolean;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
@@ -2893,6 +2947,12 @@ export class Logger {
  */
 export class MinecraftEditor {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly afterEvents: ProjectAfterEvents;
     readonly constants: EditorConstants;
     /**
      * @remarks
@@ -3035,6 +3095,16 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @throws This function can throw errors.
      */
     removeBlockAt(index: number): void;
+}
+
+export class ProjectAfterEvents {
+    private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly simulationStateChange: SimulationStateChangeAfterEventSignal;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3301,6 +3371,31 @@ export class SimulationState {
      * @throws This function can throw errors.
      */
     setPaused(isPaused: boolean): void;
+}
+
+export class SimulationStateAfterEvent {
+    private constructor();
+    readonly paused: boolean;
+}
+
+export class SimulationStateChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: SimulationStateAfterEvent) => void): (arg0: SimulationStateAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: SimulationStateAfterEvent) => void): void;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes

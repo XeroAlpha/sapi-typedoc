@@ -1,7 +1,7 @@
 /* IMPORT */ import { BookErrorReason } from '../index';
 
 /**
- * @beta
+ * @rc
  * The error called if page content being set on an {@link
  * ItemBookComponent} are invalid ie. exceeding the maximum
  * page length.

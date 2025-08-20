@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorConstants, Logger, SimulationState, WorldGeneratorType } from '../index';
+/* IMPORT */ import { EditorConstants, Logger, ProjectAfterEvents, SimulationState, WorldGeneratorType } from '../index';
 
 /**
  * The MinecraftEditor class is a namespace container for
@@ -6,6 +6,12 @@
  */
 export class MinecraftEditor {
     private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly afterEvents: ProjectAfterEvents;
     readonly constants: EditorConstants;
     /**
      * @remarks

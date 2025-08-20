@@ -1,6 +1,11 @@
 /* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '../index';
 
 export declare class CylinderBrushShape extends BrushShape {
+    get depth(): number;
+    get height(): number;
+    get radius(): number;
+    get uniform(): boolean;
+    get width(): number;
     /**
      * @remarks
      * Constructs a new instance of the `CylinderBrushShape` class
@@ -16,6 +21,7 @@ export declare class CylinderBrushShape extends BrushShape {
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hideRotation?: boolean;
     });
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
