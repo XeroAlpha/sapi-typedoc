@@ -5,6 +5,19 @@ import type { Hook, TranslateHookContext } from './hook.js';
 
 const patches: ((context: TranslateHookContext) => void)[] = [];
 
+patches.push(({ project }) => {
+    // since 1.21.110.25
+    const serverDts = project.getSourceFileOrThrow('server.d.ts');
+    const PlayerSwingEventOptionsInterface = serverDts.getInterfaceOrThrow('PlayerSwingEventOptions');
+    const oldText = PlayerSwingEventOptionsInterface.getFullText();
+    assert(oldText.includes('@minecraft/Server.PlayerSwingStartAfterEvent.subscribe'));
+    const newText = oldText.replace(
+        '@minecraft/Server.PlayerSwingStartAfterEvent.subscribe',
+        '@minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe'
+    );
+    PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
+});
+
 const errors: unknown[] = [];
 export default {
     afterLoad(context) {
