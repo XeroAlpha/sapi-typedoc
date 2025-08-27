@@ -3,7 +3,7 @@
 /**
  * @beta
  * An interface that is passed into {@link
- * @minecraft/Server.PlayerSwingStartAfterEvent.subscribe} that
+ * @minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided
  * callback.
  */
