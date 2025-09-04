@@ -67,7 +67,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg0: minecraftserver.Block) => boolean): void;
+    assertBlockState(
+        blockLocation: minecraftserver.Vector3,
+        callback: (arg0: minecraftserver.Block) => boolean,
+    ): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -114,7 +117,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
+    assertContainerContains(
+        itemStack: minecraftserver.ItemStack,
+        blockLocation: minecraftserver.Vector3,
+    ): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
@@ -349,7 +355,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
+    assertEntityTouching(
+        entityTypeIdentifier: string,
+        location: minecraftserver.Vector3,
+        isTouching?: boolean,
+    ): void;
     /**
      * @remarks
      * Depending on the value of isWaterlogged, tests that a block
@@ -827,7 +837,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
+    setBlockPermutation(
+        blockData: minecraftserver.BlockPermutation,
+        blockLocation: minecraftserver.Vector3,
+    ): void;
     /**
      * @remarks
      * Sets a block to a particular type at the specified block
@@ -846,7 +859,10 @@ export class Test {
      * {@link GameTestError}
      * @seeExample minibiomes.ts
      */
-    setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
+    setBlockType(
+        blockType: minecraftserver.BlockType | string,
+        blockLocation: minecraftserver.Vector3,
+    ): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
@@ -928,7 +944,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnAtLocation(
+        entityTypeIdentifier: string,
+        location: minecraftserver.Vector3,
+    ): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
@@ -945,7 +964,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnItem(
+        itemStack: minecraftserver.ItemStack,
+        location: minecraftserver.Vector3,
+    ): minecraftserver.Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
@@ -986,7 +1008,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnWithoutBehaviors(
+        entityTypeIdentifier: string,
+        blockLocation: minecraftserver.Vector3,
+    ): minecraftserver.Entity;
     /**
      * @remarks
      * Spawns an entity at a location without any AI behaviors.
@@ -1221,7 +1246,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
+    triggerInternalBlockEvent(
+        blockLocation: minecraftserver.Vector3,
+        event: string,
+        eventParameters?: number[],
+    ): void;
     /**
      * @remarks
      * This asynchronous function will wait until the code in the
@@ -1260,7 +1289,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.Vector3, speedModifier?: number): void;
+    walkTo(
+        mob: minecraftserver.Entity,
+        blockLocation: minecraftserver.Vector3,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * Forces a mob to walk to a particular location. Usually used
@@ -1283,7 +1316,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
+    walkToLocation(
+        mob: minecraftserver.Entity,
+        location: minecraftserver.Vector3,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * From a BlockLocation with coordinates relative to the

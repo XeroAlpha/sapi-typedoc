@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon, minecraftvanilladata } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -129,7 +129,7 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -283,6 +283,26 @@ export class Dimension {
      * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a vector of generated structures that contain the
+     * specified location (ex: Pillager Outpost, Mineshaft, etc.).
+     * The vector will be empty if no structures are found.
+     *
+     * @param location
+     * Location at which to check for structures.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getGeneratedStructures(location: Vector3): (minecraftvanilladata.MinecraftFeatureTypes | string)[];
     /**
      * @beta
      * @remarks

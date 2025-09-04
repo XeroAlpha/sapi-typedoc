@@ -313,6 +313,11 @@ export enum GamePublishSetting {
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    DisableBlockEntityRendering = 'DisableBlockEntityRendering',
+    DisableEntityRendering = 'DisableEntityRendering',
+    DisableParticleRendering = 'DisableParticleRendering',
+    DisableTerrainRendering = 'DisableTerrainRendering',
+    DisableWeatherRendering = 'DisableWeatherRendering',
     GraphicsMode = 'GraphicsMode',
     NightVision = 'NightVision',
     ShowChunkBoundaries = 'ShowChunkBoundaries',
@@ -1212,11 +1217,18 @@ export enum ThemeSettingsColorKey {
     Warning = 'Warning',
 }
 
+export enum WidgetCollisionType {
+    None = 0,
+    Radius = 1,
+    Bounds = 2,
+}
+
 export enum WidgetComponentType {
     BoundingBox = 'BoundingBox',
     Clipboard = 'Clipboard',
     Entity = 'Entity',
     Gizmo = 'Gizmo',
+    Grid = 'Grid',
     Guide = 'Guide',
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',
@@ -1318,6 +1330,11 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
     [GraphicsSettingsProperty.NightVision]?: boolean;
     [GraphicsSettingsProperty.ShowToastNotifications]?: boolean;
+    [GraphicsSettingsProperty.DisableEntityRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableTerrainRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableWeatherRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableParticleRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableBlockEntityRendering]?: boolean;
 };
 
 /**
@@ -1744,7 +1761,10 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
+        volume:
+            | minecraftserver.BlockVolumeBase
+            | minecraftserver.CompoundBlockVolume
+            | RelativeVolumeListBlockVolume,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
     /**
@@ -2440,6 +2460,12 @@ export class EditorStructure {
      *
      * {@link minecraftserver.InvalidStructureError}
      */
+    readonly description: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
     readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
@@ -2448,7 +2474,49 @@ export class EditorStructure {
      *
      * {@link minecraftserver.InvalidStructureError}
      */
+    readonly normalizedOrigin: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly notes: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly offset: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly originalWorldLocation: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
     readonly size: minecraftserver.Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly structureFullName: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly structureName: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly structureNamespace: string;
     /**
      * @throws This function can throw errors.
      *
@@ -2456,7 +2524,9 @@ export class EditorStructure {
      *
      * {@link minecraftserver.InvalidStructureError}
      */
-    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation | undefined;
+    getBlockPermutation(
+        location: minecraftserver.Vector3,
+    ): minecraftserver.BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *
@@ -2507,14 +2577,14 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
+    createEmpty(fullName: string, size: minecraftserver.Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
+    createFromClipboardItem(item: ClipboardItem, fullName: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -2535,7 +2605,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    getOrCreateStructure(id: string): EditorStructure;
+    getStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -3086,7 +3156,10 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    addBlock(
+        block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        weight: number,
+    ): void;
     getBlocks(): WeightedBlock[];
     /**
      * @remarks
@@ -3789,6 +3862,12 @@ export class Widget {
      */
     collisionRadius: number;
     /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    collisionType: WidgetCollisionType;
+    /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetError}
@@ -3863,6 +3942,13 @@ export class Widget {
      * @throws This function can throw errors.
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addGridComponent(componentName: string, options?: WidgetComponentGridOptions): WidgetComponentGrid;
     /**
      * @remarks
      * @worldMutation
@@ -4174,6 +4260,35 @@ export class WidgetComponentGizmoStateChangeEventParameters {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentGrid extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    gridColor: minecraftserver.RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    gridCount: minecraftserver.Vector2;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    gridSize: minecraftserver.Vector2;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    plane: Plane;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentGuide extends WidgetComponentBase {
     private constructor();
 }
@@ -4234,6 +4349,12 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
 export class WidgetComponentRenderPrimitiveTypeBase {
     private constructor();
     readonly primitiveType: PrimitiveType;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    renderPriority: number;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4256,7 +4377,11 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: minecraftserver.Vector3;
-    constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
+    constructor(
+        center: minecraftserver.Vector3,
+        color: minecraftserver.RGBA,
+        size?: minecraftserver.Vector3,
+    );
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4302,7 +4427,11 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: minecraftserver.Vector3;
-    constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
+    constructor(
+        start: minecraftserver.Vector3,
+        end: minecraftserver.Vector3,
+        color: minecraftserver.RGBA,
+    );
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4764,9 +4893,11 @@ export interface CursorRay {
 
 export interface EditorStructureSearchOptions {
     displayName?: string;
-    idPattern?: string;
-    includeSources?: StructureSource[];
-    includeTags?: string[];
+    id?: string;
+    sources?: StructureSource[];
+    structureName?: string;
+    structureNamespace?: string;
+    tags?: string[];
 }
 
 /**
@@ -5496,6 +5627,13 @@ export interface IColorTimelinePropertyItemOptions extends IPropertyItemOptionsB
      *
      */
     onTimeChanged?: (current: number, prev: number) => void;
+    /**
+     * @remarks
+     * Flag that enables gradient background color on the timeline
+     * to be rendered, default is true
+     *
+     */
+    renderGradientBackground?: boolean;
     /**
      * @remarks
      * Localized title of the property item
@@ -6812,7 +6950,7 @@ export interface IPropertyPane extends IPane {
      * Pane state for being expanded or collapsed.
      *
      */
-    collapsed: boolean;
+    readonly collapsed: boolean;
     /**
      * @remarks
      * Provides visibility change events
@@ -6989,6 +7127,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     endConstruct(): void;
+    /**
+     * @remarks
+     * Expand the pane.
+     *
+     */
+    expand(): void;
     /**
      * @remarks
      * Returns pane title.
@@ -7816,6 +7960,14 @@ export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions 
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
+    color?: minecraftserver.RGBA;
+    gridCount?: minecraftserver.Vector2;
+    gridSize?: minecraftserver.Vector2;
+    plane?: Plane;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7850,6 +8002,7 @@ export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;
     collisionOffset?: minecraftserver.Vector3;
     collisionRadius?: number;
+    collisionType?: WidgetCollisionType;
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;

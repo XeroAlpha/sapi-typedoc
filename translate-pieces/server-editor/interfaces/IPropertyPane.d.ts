@@ -12,7 +12,7 @@ export interface IPropertyPane extends IPane {
      * Pane state for being expanded or collapsed.
      *
      */
-    collapsed: boolean;
+    readonly collapsed: boolean;
     /**
      * @remarks
      * Provides visibility change events
@@ -189,6 +189,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     endConstruct(): void;
+    /**
+     * @remarks
+     * Expand the pane.
+     *
+     */
+    expand(): void;
     /**
      * @remarks
      * Returns pane title.

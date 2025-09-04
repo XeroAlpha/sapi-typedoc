@@ -19,5 +19,9 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: minecraftserver.Vector3;
-    constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
+    constructor(
+        center: minecraftserver.Vector3,
+        color: minecraftserver.RGBA,
+        size?: minecraftserver.Vector3,
+    );
 }

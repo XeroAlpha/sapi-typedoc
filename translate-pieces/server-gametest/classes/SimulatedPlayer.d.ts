@@ -170,7 +170,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link minecraftserver.InvalidEntityError}
      */
-    interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
+    interactWithBlock(
+        blockLocation: minecraftserver.Vector3,
+        direction?: minecraftserver.Direction,
+    ): boolean;
     /**
      * @remarks
      * Causes the simulated player to interact with a mob. Returns

@@ -10,4 +10,9 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
     [GraphicsSettingsProperty.NightVision]?: boolean;
     [GraphicsSettingsProperty.ShowToastNotifications]?: boolean;
+    [GraphicsSettingsProperty.DisableEntityRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableTerrainRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableWeatherRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableParticleRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableBlockEntityRendering]?: boolean;
 };

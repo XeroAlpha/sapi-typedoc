@@ -1,4 +1,4 @@
-/* IMPORT */ import { LootPoolEntry, LootPoolTiers, minecraftcommon } from '../index';
+/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers, minecraftcommon } from '../index';
 
 /**
  * @beta
@@ -16,6 +16,7 @@ export class LootPool {
      *
      */
     readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly conditions: LootItemCondition[];
     /**
      * @remarks
      * Gets a complete list of all loot pool entries contained in

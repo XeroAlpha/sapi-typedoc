@@ -3,6 +3,7 @@ export enum WidgetComponentType {
     Clipboard = 'Clipboard',
     Entity = 'Entity',
     Gizmo = 'Gizmo',
+    Grid = 'Grid',
     Guide = 'Guide',
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',

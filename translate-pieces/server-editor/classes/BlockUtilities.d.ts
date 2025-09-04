@@ -9,7 +9,10 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
+        volume:
+            | minecraftserver.BlockVolumeBase
+            | minecraftserver.CompoundBlockVolume
+            | RelativeVolumeListBlockVolume,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
     /**

@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.3.0-beta"
+ *   "version": "2.4.0-beta"
  * }
  * ```
  *
@@ -298,6 +298,19 @@ export enum ContainerRulesErrorReason {
      *
      */
     ZeroWeightItem = 'ZeroWeightItem',
+}
+
+/**
+ * @beta
+ * Control Scheme types which define how the player moves in
+ * response to player inputs.
+ */
+export enum ControlScheme {
+    CameraRelative = 'CameraRelative',
+    CameraRelativeStrafe = 'CameraRelativeStrafe',
+    LockedPlayerRelativeStrafe = 'LockedPlayerRelativeStrafe',
+    PlayerRelative = 'PlayerRelative',
+    PlayerRelativeStrafe = 'PlayerRelativeStrafe',
 }
 
 /**
@@ -3478,7 +3491,7 @@ export class AimAssistRegistry {
 }
 
 /**
- * @beta
+ * @rc
  * Describes a type of biome.
  */
 export class BiomeType {
@@ -6664,6 +6677,22 @@ export class CustomComponentParameters {
 }
 
 /**
+ * @beta
+ * Loot item condition that checks whether the loot source was
+ * damaged by a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DamagedByEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     *
+     */
+    readonly entityType: string;
+}
+
+/**
  * Contains information related to firing of a data driven
  * entity event - for example, the minecraft:ageable_grow_up
  * event on a chicken.
@@ -6854,7 +6883,7 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -7008,6 +7037,26 @@ export class Dimension {
      * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a vector of generated structures that contain the
+     * specified location (ex: Pillager Outpost, Mineshaft, etc.).
+     * The vector will be empty if no structures are found.
+     *
+     * @param location
+     * Location at which to check for structures.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getGeneratedStructures(location: Vector3): (minecraftvanilladata.MinecraftFeatureTypes | string)[];
     /**
      * @beta
      * @remarks
@@ -7597,6 +7646,15 @@ export class EffectTypes {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EmptyLootItem extends LootPoolEntry {
     private constructor();
+}
+
+/**
+ * @beta
+ */
+export class EnchantInfo {
+    private constructor();
+    readonly enchantment: string;
+    readonly range: minecraftcommon.NumberRange;
 }
 
 /**
@@ -9161,6 +9219,40 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ * Loot item condition that checks the value of the mark
+ * variant of a mob as it drops its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHasMarkVariantCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The mark variant value the mob must have for this condition
+     * to pass.
+     *
+     */
+    readonly value: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks the variant value of a mob
+ * as it drops its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHasVariantCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The variant value the mob must have for this condition to
+     * pass.
+     *
+     */
+    readonly value: number;
+}
+
+/**
  * Defines the interactions with this entity for healing it.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9652,6 +9744,23 @@ export class EntityItemComponent extends EntityComponent {
      */
     readonly itemStack: ItemStack;
     static readonly componentId = 'minecraft:item';
+}
+
+/**
+ * @beta
+ * Loot item condition that checks the entity type of the
+ * entity dropping its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityKilledCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     * Example: 'minecraft:skeleton'.
+     *
+     */
+    readonly entityType: string;
 }
 
 /**
@@ -11515,6 +11624,16 @@ export class InputInfo {
 }
 
 /**
+ * @beta
+ * Loot item condition that checks whether or not the entity
+ * dropping loot is a baby.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class IsBabyCondition extends LootItemCondition {
+    private constructor();
+}
+
+/**
  * @rc
  * When present on an item, this item is a book item. Can
  * access and modify the contents of the book and sign it.
@@ -13274,6 +13393,44 @@ export class ItemUseOnEvent {
 }
 
 /**
+ * @beta
+ * Loot item condition that checks whether or not the drop
+ * source was killed by a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     * Example: 'minecraft:skeleton'.
+     *
+     */
+    readonly entityType: string;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether or not the source of
+ * the loot drop was killed by the player.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByPlayerCondition extends LootItemCondition {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether or not the source of
+ * the loot drop was killed by the player or any of the
+ * player's pets.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByPlayerOrPetsCondition extends LootItemCondition {
+    private constructor();
+}
+
+/**
  * Contains information related to changes to a lever
  * activating or deactivating.
  * @seeExample leverActionEvent.ts
@@ -13377,6 +13534,16 @@ export class LootItem extends LootPoolEntry {
 
 /**
  * @beta
+ * An abstract base class from which all loot item conditions
+ * are derived. A loot item condition is a set of rules or
+ * requirements which must be met for a loot drop to happen.
+ */
+export class LootItemCondition {
+    private constructor();
+}
+
+/**
+ * @beta
  * A collection of entries which individually determine loot
  * drops. Can contain values determining drop outcomes,
  * including rolls, bonus rolls and tiers.
@@ -13391,6 +13558,7 @@ export class LootPool {
      *
      */
     readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly conditions: LootItemCondition[];
     /**
      * @remarks
      * Gets a complete list of all loot pool entries contained in
@@ -13653,6 +13821,65 @@ export class LootTableReference extends LootPoolEntry {
 
 /**
  * @beta
+ * Loot item condition that checks whether an appropriate tool
+ * was used to trigger the loot event. Can describe item type,
+ * count, durability, enchantments, or arrays of item tags to
+ * compare against.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class MatchToolCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The stack size, or count, required for this condition to
+     * pass.
+     *
+     */
+    readonly count: minecraftcommon.NumberRange;
+    /**
+     * @remarks
+     * The durability value required for this condition to pass.
+     *
+     */
+    readonly durability: minecraftcommon.NumberRange;
+    /**
+     * @remarks
+     * Array of enchantments required for this condition to pass.
+     *
+     */
+    readonly enchantments: EnchantInfo[];
+    /**
+     * @remarks
+     * The name of the tool item required for this condition to
+     * pass.
+     *
+     */
+    readonly itemName: string;
+    /**
+     * @remarks
+     * Array of item tags which ALL must be matched for this
+     * condition to pass.
+     *
+     */
+    readonly itemTagsAll: string[];
+    /**
+     * @remarks
+     * Array of item tags, from which at least 1 must be matched
+     * for this condition to pass.
+     *
+     */
+    readonly itemTagsAny: string[];
+    /**
+     * @remarks
+     * Array of item tags, from which exactly zero must match for
+     * this condition to pass.
+     *
+     */
+    readonly itemTagsNone: string[];
+}
+
+/**
+ * @beta
  * A specific currently-internal event used for passing
  * messages from client to server.
  */
@@ -13787,6 +14014,22 @@ export class PackSettingChangeAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether the looting entity
+ * is currently a passenger of a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PassengerOfEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     *
+     */
+    readonly entityType: string;
 }
 
 /**
@@ -14033,6 +14276,16 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
+     * @beta
+     * @remarks
+     * Returns the player's current control scheme.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getControlScheme(): ControlScheme;
+    /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.
      *
@@ -14168,6 +14421,33 @@ export class Player extends Entity {
      * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * Set a player's control scheme. The player's active camera
+     * preset must be set by scripts like with camera.setCamera()
+     * or commands.
+     *
+     * @worldMutation
+     *
+     * @param controlScheme
+     * Control scheme type. If this argument is undefined, this
+     * method will clear the player's control scheme back to the
+     * player camera's default control scheme.
+     * @returns
+     * Returns nothing if the control scheme was added or updated
+     * successfully. This can throw an InvalidArgumentError if the
+     * control scheme is not allowed by the player's current
+     * camera.
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    setControlScheme(controlScheme?: string): void;
     /**
      * @remarks
      * Sets a gamemode override for this player.
@@ -15741,6 +16021,80 @@ export class PlayerSwingStartAfterEventSignal {
 
 /**
  * @beta
+ * Contains information related to when a player successfully
+ * names an Entity with a named Name Tag item.
+ */
+export class PlayerUseNameTagAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that was named by the player.
+     *
+     * @worldMutation
+     *
+     */
+    entityNamed: Entity;
+    /**
+     * @remarks
+     * The new name that the player has given to the entity.
+     *
+     * @worldMutation
+     *
+     */
+    newName: string;
+    /**
+     * @remarks
+     * Handle to the player that used the name tag.
+     *
+     * @worldMutation
+     *
+     */
+    player: Player;
+    /**
+     * @remarks
+     * The previous name of the entity before the player used the
+     * name tag. This will be undefined if the entity was not
+     * previously named.
+     *
+     * @worldMutation
+     *
+     */
+    previousName?: string;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player
+ * successfully names an Entity with a named Name Tag item.
+ */
+export class PlayerUseNameTagAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Subscribes the specified callback to a player use name tag
+     * after event.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: PlayerUseNameTagAfterEvent) => void): (arg0: PlayerUseNameTagAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes the specified callback from a player use name tag
+     * after event.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerUseNameTagAfterEvent) => void): void;
+}
+
+/**
+ * @beta
  * Represents how the potion effect is delivered.
  */
 export class PotionDeliveryType {
@@ -16094,6 +16448,82 @@ export class ProjectileHitEntityAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The chance, from 0.0-1.0, that loot will drop.
+     *
+     */
+    readonly chance: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop, modified by the level of
+ * looting enchantment on the tool used.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomChanceWithLootingCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The base chance, from 0.0-1.0, that loot will drop. Will be
+     * modified by the 'lootingMultiplier' value.
+     *
+     */
+    readonly chance: number;
+    /**
+     * @remarks
+     * The increase in drop chance per looting enchant level.
+     *
+     */
+    readonly lootingMultiplier: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies given values to the chances
+ * that loot will drop based on the current difficulty level.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomDifficultyChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * A four-element array containing the chance of a loot drop
+     * occurring for each difficulty level, in order: Peaceful,
+     * Easy, Normal, Hard.
+     *
+     */
+    readonly chances: number[];
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop, modified by the region the drop
+ * is happening within.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The base chance, from 0.0-1.0, that loot will drop. Will be
+     * modified by the current region's multiplier.
+     *
+     */
+    readonly maxChance: number;
 }
 
 /**
@@ -18334,6 +18764,16 @@ export class WorldAfterEvents {
      *
      */
     readonly playerSwingStart: PlayerSwingStartAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * An event for when a player uses a named name tag on an
+     * entity.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerUseNameTag: PlayerUseNameTagAfterEventSignal;
     /**
      * @remarks
      * A pressure plate has popped back up (i.e., there are no

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { strict as assert } from 'assert';
-import { SyntaxKind } from 'ts-morph';
+import { SyntaxKind, ts } from 'ts-morph';
 import type { Hook, TranslateHookContext } from './hook.js';
 
 const patches: ((context: TranslateHookContext) => void)[] = [];
@@ -16,6 +16,26 @@ patches.push(({ project }) => {
         '@minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe'
     );
     PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
+});
+
+patches.push(({ sourceFiles }) => {
+    // since 1.21.120.20
+    for (const sourceFile of sourceFiles) {
+        const textChanges: ts.TextChange[] = [];
+        const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
+        for (const identifier of identifiers) {
+            if (identifier.getText() === 'minecraftserverbindings') {
+                textChanges.push({
+                    span: {
+                        start: identifier.getStart(),
+                        length: identifier.getEnd() - identifier.getStart()
+                    },
+                    newText: 'minecraftserver'
+                });
+            }
+        }
+        sourceFile.applyTextChanges(textChanges);
+    }
 });
 
 const errors: unknown[] = [];

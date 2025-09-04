@@ -58,6 +58,13 @@ export interface IColorTimelinePropertyItemOptions extends IPropertyItemOptionsB
     onTimeChanged?: (current: number, prev: number) => void;
     /**
      * @remarks
+     * Flag that enables gradient background color on the timeline
+     * to be rendered, default is true
+     *
+     */
+    renderGradientBackground?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item
      *
      */

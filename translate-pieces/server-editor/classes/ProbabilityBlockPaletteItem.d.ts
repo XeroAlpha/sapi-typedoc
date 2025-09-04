@@ -8,7 +8,10 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    addBlock(
+        block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        weight: number,
+    ): void;
     getBlocks(): WeightedBlock[];
     /**
      * @remarks

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, InvalidWidgetError, RelativeVolumeListBlockVolume, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardItem, InvalidWidgetError, RelativeVolumeListBlockVolume, WidgetCollisionType, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGrid, WidgetComponentGridOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
 
 export class Widget {
     private constructor();
@@ -20,6 +20,12 @@ export class Widget {
      *
      */
     collisionRadius: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    collisionType: WidgetCollisionType;
     /**
      * @throws This property can throw when used.
      *
@@ -95,6 +101,13 @@ export class Widget {
      * @throws This function can throw errors.
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addGridComponent(componentName: string, options?: WidgetComponentGridOptions): WidgetComponentGrid;
     /**
      * @remarks
      * @worldMutation

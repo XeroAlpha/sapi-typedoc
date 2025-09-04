@@ -8,14 +8,14 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
+    createEmpty(fullName: string, size: minecraftserver.Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
+    createFromClipboardItem(item: ClipboardItem, fullName: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -36,7 +36,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    getOrCreateStructure(id: string): EditorStructure;
+    getStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
