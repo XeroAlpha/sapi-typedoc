@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockCustomComponent, BlockCustomComponentAlreadyRegisteredError, BlockCustomComponentReloadNewComponentError, BlockCustomComponentReloadNewEventError, BlockCustomComponentReloadVersionError, CustomComponentInvalidRegistryError, NamespaceNameError, minecraftcommon } from '../index';
+/* IMPORT */ import { BlockCustomComponent, BlockCustomComponentAlreadyRegisteredError, BlockCustomComponentReloadNewComponentError, BlockCustomComponentReloadNewEventError, BlockCustomComponentReloadVersionError, CustomComponentInvalidRegistryError, EngineError, NamespaceNameError } from '../index';
 
 export class BlockComponentRegistry {
     private constructor();
@@ -18,7 +18,7 @@ export class BlockComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link NamespaceNameError}
      */

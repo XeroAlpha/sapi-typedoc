@@ -1,9 +1,9 @@
 import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
-import * as minecraftserveradmin from '../server-admin';
+import { Player } from '../server';
+import { SecretString } from '../server-admin';
 /* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
-/* PRIVATE */ export { minecraftserveradmin };
+/* PRIVATE */ export { Player };
+/* PRIVATE */ export { SecretString };
 export { HttpRequestMethod } from './enums/HttpRequestMethod';
 export { PacketId } from './enums/PacketId';
 export { HttpClient } from './classes/HttpClient';

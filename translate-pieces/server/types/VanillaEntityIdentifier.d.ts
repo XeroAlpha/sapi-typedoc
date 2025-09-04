@@ -1,10 +1,10 @@
-/* IMPORT */ import { EntityType, minecraftvanilladata } from '../index';
+/* IMPORT */ import { EntityType, MinecraftEntityTypes } from '../index';
 
 /**
  * @beta
  */
 export type VanillaEntityIdentifier =
     | EntityType
-    | minecraftvanilladata.MinecraftEntityTypes
-    | `${minecraftvanilladata.MinecraftEntityTypes}`
-    | `${minecraftvanilladata.MinecraftEntityTypes}<${string}>`;
+    | MinecraftEntityTypes
+    | `${MinecraftEntityTypes}`
+    | `${MinecraftEntityTypes}<${string}>`;

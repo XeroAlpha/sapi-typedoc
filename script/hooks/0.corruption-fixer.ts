@@ -1,9 +1,56 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { strict as assert } from 'assert';
-import { SyntaxKind, ts } from 'ts-morph';
+import { Scope, StructureKind, SyntaxKind, ts } from 'ts-morph';
 import type { Hook, TranslateHookContext } from './hook.js';
 
 const patches: ((context: TranslateHookContext) => void)[] = [];
+
+patches.push(({ project }) => {
+    // @minecraft/common
+    const commonDts = project.getSourceFileOrThrow('common.d.ts');
+
+    const InvalidArgumentErrorType = commonDts.addEnum({
+        isExported: true,
+        name: 'InvalidArgumentErrorType',
+        members: ['Duplicate', 'Empty', 'Unknown', 'Unspecified'].map((n) => ({ name: n, value: n }))
+    });
+
+    const ArgumentOutOfBoundsError = commonDts.getClassOrThrow('ArgumentOutOfBoundsError');
+    ArgumentOutOfBoundsError.addMember({
+        kind: StructureKind.Property,
+        name: 'index',
+        type: 'number'
+    });
+
+    const InvalidArgumentError = commonDts.getClassOrThrow('InvalidArgumentError');
+    InvalidArgumentError.addMember({
+        kind: StructureKind.Property,
+        name: 'type',
+        type: InvalidArgumentErrorType.getName()
+    });
+
+    commonDts.addClass({
+        isExported: true,
+        name: 'RuntimeConditionError',
+        extends: 'Error',
+        ctors: [
+            {
+                scope: Scope.Private
+            }
+        ]
+    });
+
+    commonDts.addClass({
+        isExported: true,
+        name: 'UnsupportedFunctionalityError',
+        extends: 'Error',
+        ctors: [
+            {
+                scope: Scope.Private
+            }
+        ]
+    });
+});
 
 patches.push(({ project }) => {
     // since 1.21.110.25
@@ -20,6 +67,7 @@ patches.push(({ project }) => {
 
 patches.push(({ sourceFiles }) => {
     // since 1.21.120.20
+    let totalTextChangeCount = 0;
     for (const sourceFile of sourceFiles) {
         const textChanges: ts.TextChange[] = [];
         const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
@@ -28,14 +76,18 @@ patches.push(({ sourceFiles }) => {
                 textChanges.push({
                     span: {
                         start: identifier.getStart(),
-                        length: identifier.getEnd() - identifier.getStart()
+                        length: identifier.getWidth()
                     },
                     newText: 'minecraftserver'
                 });
             }
         }
-        sourceFile.applyTextChanges(textChanges);
+        if (textChanges.length > 0) {
+            totalTextChangeCount += textChanges.length;
+            sourceFile.applyTextChanges(textChanges);
+        }
     }
+    assert(totalTextChangeCount > 0);
 });
 
 const errors: unknown[] = [];

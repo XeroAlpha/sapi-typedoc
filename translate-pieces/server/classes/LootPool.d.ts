@@ -1,4 +1,4 @@
-/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers, minecraftcommon } from '../index';
+/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers, NumberRange } from '../index';
 
 /**
  * @beta
@@ -15,7 +15,7 @@ export class LootPool {
      * from minimum to maximum rolls.
      *
      */
-    readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly bonusRolls: NumberRange;
     readonly conditions: LootItemCondition[];
     /**
      * @remarks
@@ -30,7 +30,7 @@ export class LootPool {
      * represented as a range from minimum to maximum rolls.
      *
      */
-    readonly rolls: minecraftcommon.NumberRange;
+    readonly rolls: NumberRange;
     /**
      * @remarks
      * Gets the loot pool tier values for a given table if they

@@ -1,4 +1,4 @@
-/* IMPORT */ import { PacketId, minecraftserver } from '../index';
+/* IMPORT */ import { PacketId, Player } from '../index';
 
 /**
  * Sent as the server receives a network packet from a client.
@@ -25,5 +25,5 @@ export class PacketReceivedBeforeEvent {
      * Which client sent the network packet to the game server.
      *
      */
-    readonly sender?: minecraftserver.Player;
+    readonly sender?: Player;
 }

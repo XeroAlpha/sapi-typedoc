@@ -1,4 +1,4 @@
-/* IMPORT */ import { PacketId, minecraftserver } from '../index';
+/* IMPORT */ import { PacketId, Player } from '../index';
 
 /**
  * Sent as the server sends a network packet to clients.  If
@@ -19,5 +19,5 @@ export class PacketSendBeforeEvent {
      * Which clients the network packet is being sent to.
      *
      */
-    readonly recipients: (minecraftserver.Player | undefined)[];
+    readonly recipients: (Player | undefined)[];
 }

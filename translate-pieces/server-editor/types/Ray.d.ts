@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../index';
 
 /**
  * Ray representing a direction from a set location. This
@@ -6,8 +6,8 @@
  * click performed on the client.
  */
 export type Ray = {
-    location: minecraftserver.Vector3;
-    direction: minecraftserver.Vector3;
-    cursorBlockLocation: minecraftserver.Vector3;
+    location: Vector3;
+    direction: Vector3;
+    cursorBlockLocation: Vector3;
     rayHit: boolean;
 };

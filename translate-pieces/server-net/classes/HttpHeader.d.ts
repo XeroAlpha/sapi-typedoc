@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserveradmin } from '../index';
+/* IMPORT */ import { SecretString } from '../index';
 
 /**
  * Represents an HTTP header - a key/value pair of
@@ -21,6 +21,6 @@ export class HttpHeader {
      * @earlyExecution
      *
      */
-    value: minecraftserveradmin.SecretString | string;
-    constructor(key: string, value: minecraftserveradmin.SecretString | string);
+    value: SecretString | string;
+    constructor(key: string, value: SecretString | string);
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IBlockTableEntryInfo, IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { BlockType, IBlockTableEntryInfo, IPropertyItemBase, LocalizedString } from '../index';
 
 /**
  * A property item which supports Block Table properties
@@ -14,7 +14,7 @@ export interface IBlockTablePropertyItem extends IPropertyItemBase {
      * @param blockInfo
      * block info for the entry in the block table.
      */
-    addOrUpdateEntry(block: string | minecraftserver.BlockType, blockInfo: IBlockTableEntryInfo): void;
+    addOrUpdateEntry(block: string | BlockType, blockInfo: IBlockTableEntryInfo): void;
     /**
      * @remarks
      * Delete entry in the block table, by block name
@@ -30,7 +30,7 @@ export interface IBlockTablePropertyItem extends IPropertyItemBase {
      * @param block
      * an entry in the block table.
      */
-    getEntry(block: string | minecraftserver.BlockType): IBlockTableEntryInfo | undefined;
+    getEntry(block: string | BlockType): IBlockTableEntryInfo | undefined;
     /**
      * @remarks
      * Updates title of the property item.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { WidgetComponentBase, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase } from '../index';
 
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();
@@ -7,13 +7,13 @@ export class WidgetComponentClipboard extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    clipboardOffset: minecraftserver.Vector3;
-    highlightHullColor: minecraftserver.RGBA;
-    highlightOutlineColor: minecraftserver.RGBA;
-    hullColor: minecraftserver.RGBA;
-    mirror: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin: minecraftserver.Vector3;
-    outlineColor: minecraftserver.RGBA;
-    rotation: minecraftserver.StructureRotation;
+    clipboardOffset: Vector3;
+    highlightHullColor: RGBA;
+    highlightOutlineColor: RGBA;
+    hullColor: RGBA;
+    mirror: StructureMirrorAxis;
+    normalizedOrigin: Vector3;
+    outlineColor: RGBA;
+    rotation: StructureRotation;
     showOutline: boolean;
 }

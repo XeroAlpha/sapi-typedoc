@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../index';
 
 /**
  * Implements a class that can be used for testing sculk
@@ -22,7 +22,7 @@ export class SculkSpreader {
      * @worldMutation
      *
      */
-    addCursorsWithOffset(offset: minecraftserver.Vector3, charge: number): void;
+    addCursorsWithOffset(offset: Vector3, charge: number): void;
     /**
      * @remarks
      * Retrieves the current position of the specified cursor.
@@ -31,7 +31,7 @@ export class SculkSpreader {
      *
      * @throws This function can throw errors.
      */
-    getCursorPosition(index: number): minecraftserver.Vector3;
+    getCursorPosition(index: number): Vector3;
     /**
      * @remarks
      * Returns a number of overall cursors for this sculk spreader.

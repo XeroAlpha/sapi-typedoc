@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftvanilladata } from '../index';
+/* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes, MinecraftItemTypes } from '../index';
 
 /**
  * @beta
@@ -75,8 +75,8 @@ export class AimAssistPresetSettings {
      */
     setExcludedTargets(
         targets?: (
-            | keyof typeof minecraftvanilladata.MinecraftBlockTypes
-            | keyof typeof minecraftvanilladata.MinecraftEntityTypes
+            | keyof typeof MinecraftBlockTypes
+            | keyof typeof MinecraftEntityTypes
             | string
         )[],
     ): void;
@@ -90,7 +90,7 @@ export class AimAssistPresetSettings {
      * A record mapping item Ids to aim-assist category Ids.
      * Category Ids must have a namespace.
      */
-    setItemSettings(itemSettings: Record<keyof typeof minecraftvanilladata.MinecraftItemTypes | string, string>): void;
+    setItemSettings(itemSettings: Record<keyof typeof MinecraftItemTypes | string, string>): void;
     /**
      * @remarks
      * Sets the list of item Ids that will target liquid blocks
@@ -101,5 +101,5 @@ export class AimAssistPresetSettings {
      * @param items
      * An array of item Ids.
      */
-    setLiquidTargetingItems(items?: (keyof typeof minecraftvanilladata.MinecraftItemTypes | string)[]): void;
+    setLiquidTargetingItems(items?: (keyof typeof MinecraftItemTypes | string)[]): void;
 }

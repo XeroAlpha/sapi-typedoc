@@ -1,9 +1,9 @@
-import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
-import type * as minecraftvanilladata from '../vanilla-data';
-/* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
-/* PRIVATE */ export { minecraftvanilladata };
+import { ArgumentOutOfBoundsError, InvalidArgumentError } from '../common';
+import { BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents } from '../server';
+import type { BlockStateSuperset } from '../vanilla-data';
+/* PRIVATE */ export { ArgumentOutOfBoundsError, InvalidArgumentError };
+/* PRIVATE */ export { BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents };
+/* PRIVATE */ export { BlockStateSuperset };
 export { ActionTypes } from './enums/ActionTypes';
 export { AudioSettingsProperty } from './enums/AudioSettingsProperty';
 export { Axis } from './enums/Axis';

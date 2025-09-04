@@ -1,10 +1,10 @@
-/* IMPORT */ import { IBlockPaletteItem, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, IBlockPaletteItem } from '../index';
 
 export class BlockPalette {
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     getItem(index: number): IBlockPaletteItem;
     /**
@@ -13,7 +13,7 @@ export class BlockPalette {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     removeItemAt(index: number): void;
     /**
@@ -28,7 +28,7 @@ export class BlockPalette {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
 }

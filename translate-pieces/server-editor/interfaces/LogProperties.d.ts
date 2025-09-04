@@ -1,4 +1,4 @@
-/* IMPORT */ import { LogChannel, minecraftserver } from '../index';
+/* IMPORT */ import { LogChannel, Player } from '../index';
 
 /**
  * A properties class for the global instance of the logger
@@ -22,7 +22,7 @@ export interface LogProperties {
      * specified, then all players will receive the message
      *
      */
-    player?: minecraftserver.Player;
+    player?: Player;
     /**
      * @remarks
      * Message to be shown under the message when toast channel is

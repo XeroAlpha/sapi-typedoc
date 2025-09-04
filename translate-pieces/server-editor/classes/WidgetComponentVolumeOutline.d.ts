@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, RelativeVolumeListBlockVolume, WidgetComponentBase, minecraftserver } from '../index';
+/* IMPORT */ import { BlockVolume, BlockVolumeBase, InvalidWidgetComponentError, RGBA, RelativeVolumeListBlockVolume, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase } from '../index';
 
 export class WidgetComponentVolumeOutline extends WidgetComponentBase {
     private constructor();
@@ -7,43 +7,43 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    highlightHullColor: minecraftserver.RGBA;
+    highlightHullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    highlightOutlineColor: minecraftserver.RGBA;
+    highlightOutlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: StructureMirrorAxis;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: StructureRotation;
     /**
      * @remarks
      * @worldMutation
@@ -61,13 +61,13 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: BlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    volumeOffset: minecraftserver.Vector3;
+    volumeOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -87,10 +87,10 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      */
     setVolume(
         volumeToSet?:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
 }

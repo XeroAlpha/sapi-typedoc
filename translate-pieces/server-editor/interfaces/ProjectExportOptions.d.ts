@@ -1,11 +1,11 @@
-/* IMPORT */ import { ProjectExportType, minecraftserver } from '../index';
+/* IMPORT */ import { Difficulty, GameMode, ProjectExportType } from '../index';
 
 export interface ProjectExportOptions {
     alwaysDay?: boolean;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: Difficulty;
     disableWeather?: boolean;
     exportName?: string;
     exportType: ProjectExportType;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: GameMode;
     initialTimOfDay?: number;
 }

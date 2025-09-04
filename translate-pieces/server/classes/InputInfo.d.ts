@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2, minecraftcommon } from '../index';
+/* IMPORT */ import { ButtonState, EngineError, InputButton, InputMode, InvalidEntityError, Vector2 } from '../index';
 
 /**
  * Contains the input information for a client instance.
@@ -11,7 +11,7 @@ export class InputInfo {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */
@@ -29,7 +29,7 @@ export class InputInfo {
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */

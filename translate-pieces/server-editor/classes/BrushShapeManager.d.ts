@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, minecraftserver, minecraftvanilladata } from '../index';
+/* IMPORT */ import { BlockMaskList, BlockStateSuperset, BrushDirectionalPlacementMode, FlattenMode, ItemType, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, Vector3 } from '../index';
 
 export class BrushShapeManager {
     private constructor();
@@ -39,7 +39,7 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    enableItemPlacement(itemType: minecraftserver.ItemType, data?: number): void;
+    enableItemPlacement(itemType: ItemType, data?: number): void;
     /**
      * @remarks
      * @worldMutation
@@ -52,7 +52,7 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    getBrushShapeOffset(): minecraftserver.Vector3;
+    getBrushShapeOffset(): Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -76,9 +76,9 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    pushBlockStateOverride<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    pushBlockStateOverride<T extends keyof BlockStateSuperset>(
         blockStateName: T,
-        blockStateValue: minecraftvanilladata.BlockStateSuperset[T],
+        blockStateValue: BlockStateSuperset[T],
     ): void;
     /**
      * @remarks
@@ -98,13 +98,13 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
+    setBrushShape(shape: Vector3[] | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
+    setBrushShapeOffset(offset: Vector3): void;
     /**
      * @remarks
      * @worldMutation

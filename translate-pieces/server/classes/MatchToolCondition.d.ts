@@ -1,4 +1,4 @@
-/* IMPORT */ import { EnchantInfo, LootItemCondition, minecraftcommon } from '../index';
+/* IMPORT */ import { EnchantInfo, LootItemCondition, NumberRange } from '../index';
 
 /**
  * @beta
@@ -16,13 +16,13 @@ export class MatchToolCondition extends LootItemCondition {
      * pass.
      *
      */
-    readonly count: minecraftcommon.NumberRange;
+    readonly count: NumberRange;
     /**
      * @remarks
      * The durability value required for this condition to pass.
      *
      */
-    readonly durability: minecraftcommon.NumberRange;
+    readonly durability: NumberRange;
     /**
      * @remarks
      * Array of enchantments required for this condition to pass.

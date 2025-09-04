@@ -1,15 +1,15 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { BlockVolume, BlockVolumeBase, Vector3 } from '../index';
 
-export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBase {
+export class RelativeVolumeListBlockVolume extends BlockVolumeBase {
     readonly isEmpty: boolean;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    origin?: minecraftserver.Vector3;
+    origin?: Vector3;
     readonly volumeCount: number;
-    constructor(origin?: minecraftserver.Vector3);
+    constructor(origin?: Vector3);
     /**
      * @remarks
      * @worldMutation
@@ -17,11 +17,11 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     add(
         toAdd:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -34,14 +34,14 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      * @worldMutation
      *
      */
-    getVolumeList(): minecraftserver.BlockVolume[];
-    hasAdjacent(location: minecraftserver.Vector3, normalizedOffset: minecraftserver.Vector3): boolean;
+    getVolumeList(): BlockVolume[];
+    hasAdjacent(location: Vector3, normalizedOffset: Vector3): boolean;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: Vector3): void;
     /**
      * @remarks
      * @worldMutation
@@ -49,11 +49,11 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     remove(
         toRemove:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -62,16 +62,16 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     set(
         toSet:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: Vector3): void;
 }

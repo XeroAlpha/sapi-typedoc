@@ -1,7 +1,7 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { RGBA } from '../index';
 
 export class CurrentThemeColorChangeAfterEvent {
     private constructor();
-    readonly color: minecraftserver.RGBA;
+    readonly color: RGBA;
     readonly colorKey: string;
 }

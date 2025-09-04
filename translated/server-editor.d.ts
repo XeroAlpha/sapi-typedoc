@@ -19,10 +19,10 @@
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
+import { ArgumentOutOfBoundsError, InvalidArgumentError } from '@minecraft/common';
+import { BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents } from '@minecraft/server';
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
+import type { BlockStateSuperset } from '@minecraft/vanilla-data';
 /**
  * The types of actions that are supported. This type
  * corresponds to the expected arguments passed by the
@@ -1324,7 +1324,7 @@ export declare type EventHandler<T> = (eventArg: T) => void;
  * Defines type information for graphics settings properties.
  */
 export type GraphicsSettingsPropertyTypeMap = {
-    [GraphicsSettingsProperty.GraphicsMode]?: minecraftserver.GraphicsMode;
+    [GraphicsSettingsProperty.GraphicsMode]?: GraphicsMode;
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
     [GraphicsSettingsProperty.ShowCompass]?: boolean;
@@ -1473,9 +1473,9 @@ export type PropertyPaneVisibilityUpdate = {
  * click performed on the client.
  */
 export type Ray = {
-    location: minecraftserver.Vector3;
-    direction: minecraftserver.Vector3;
-    cursorBlockLocation: minecraftserver.Vector3;
+    location: Vector3;
+    direction: Vector3;
+    cursorBlockLocation: Vector3;
     rayHit: boolean;
 };
 
@@ -1583,7 +1583,7 @@ export declare class BedrockEventSubscriptionCache {
      * `BedrockEventSubscriptionCache` class
      *
      */
-    constructor(mEvents: minecraftserver.WorldAfterEvents);
+    constructor(mEvents: WorldAfterEvents);
     /**
      * @remarks
      * Subcribes to a bedrock event using the key of the desired
@@ -1599,10 +1599,10 @@ export declare class BedrockEventSubscriptionCache {
      * The parameters to the subscription method for the event.
      * Auto complete will display this for you
      */
-    subscribeToBedrockEvent<T extends keyof minecraftserver.WorldAfterEvents>(
+    subscribeToBedrockEvent<T extends keyof WorldAfterEvents>(
         event: T,
-        ...params: Parameters<minecraftserver.WorldAfterEvents[T]['subscribe']>
-    ): ReturnType<minecraftserver.WorldAfterEvents[T]['subscribe']>;
+        ...params: Parameters<WorldAfterEvents[T]['subscribe']>
+    ): ReturnType<WorldAfterEvents[T]['subscribe']>;
     /**
      * @remarks
      * Cleans up the set of internal registrations and
@@ -1646,7 +1646,7 @@ export class BlockPalette {
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     getItem(index: number): IBlockPaletteItem;
     /**
@@ -1655,7 +1655,7 @@ export class BlockPalette {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     removeItemAt(index: number): void;
     /**
@@ -1670,7 +1670,7 @@ export class BlockPalette {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
 }
@@ -1693,7 +1693,7 @@ export class BlockPaletteManager {
     /**
      * @throws This function can throw errors.
      */
-    getSelectedBlockType(): minecraftserver.BlockType;
+    getSelectedBlockType(): BlockType;
     getSelectedItem(): IBlockPaletteItem;
     /**
      * @remarks
@@ -1762,10 +1762,10 @@ export class BlockUtilities {
      */
     fillVolume(
         volume:
-            | minecraftserver.BlockVolumeBase
-            | minecraftserver.CompoundBlockVolume
+            | BlockVolumeBase
+            | CompoundBlockVolume
             | RelativeVolumeListBlockVolume,
-        block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        block?: BlockPermutation | BlockType | string,
     ): void;
     /**
      * @remarks
@@ -1773,7 +1773,7 @@ export class BlockUtilities {
      *
      */
     findObscuredBlocksWithinVolume(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
     ): RelativeVolumeListBlockVolume;
     /**
      * @remarks
@@ -1781,32 +1781,32 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      */
-    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    getContiguousSelection(properties?: ContiguousSelectionProperties): CompoundBlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
+    getDimensionLocationBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionMaxLocation(): minecraftserver.Vector3;
+    getDimensionMaxLocation(): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionMinLocation(): minecraftserver.Vector3;
+    getDimensionMinLocation(): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    getFacePreviewSelection(properties?: QuickExtrudeProperties): ListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -1814,10 +1814,10 @@ export class BlockUtilities {
      */
     isLocationInsideCurrentDimensionBounds(
         locationOrVolumeOrBounds:
-            | minecraftserver.BlockBoundingBox
-            | minecraftserver.BlockVolumeBase
+            | BlockBoundingBox
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): boolean;
     /**
      * @remarks
@@ -1832,7 +1832,7 @@ export class BlockUtilities {
      *
      */
     shrinkWrapVolume(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
     ): RelativeVolumeListBlockVolume;
     /**
      * @remarks
@@ -1841,7 +1841,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     trimVolumeToFitContents(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         retainMarqueeAfterTrimming: boolean,
         ignoreLiquid: boolean,
         ignoreNoCollision: boolean,
@@ -1908,7 +1908,7 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    enableItemPlacement(itemType: minecraftserver.ItemType, data?: number): void;
+    enableItemPlacement(itemType: ItemType, data?: number): void;
     /**
      * @remarks
      * @worldMutation
@@ -1921,7 +1921,7 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    getBrushShapeOffset(): minecraftserver.Vector3;
+    getBrushShapeOffset(): Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -1945,9 +1945,9 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    pushBlockStateOverride<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    pushBlockStateOverride<T extends keyof BlockStateSuperset>(
         blockStateName: T,
-        blockStateValue: minecraftvanilladata.BlockStateSuperset[T],
+        blockStateValue: BlockStateSuperset[T],
     ): void;
     /**
      * @remarks
@@ -1967,13 +1967,13 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
+    setBrushShape(shape: Vector3[] | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
+    setBrushShapeOffset(offset: Vector3): void;
     /**
      * @remarks
      * @worldMutation
@@ -2071,9 +2071,9 @@ export class ClipboardItem {
      *
      */
     readonly isEmpty: boolean;
-    readonly normalizedOrigin: minecraftserver.Vector3;
-    readonly originalWorldLocation: minecraftserver.Vector3;
-    readonly size: minecraftserver.Vector3;
+    readonly normalizedOrigin: Vector3;
+    readonly originalWorldLocation: Vector3;
+    readonly size: Vector3;
     /**
      * @remarks
      * Clear the contents of the item
@@ -2090,7 +2090,7 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     getPredictedWriteVolume(
-        location: minecraftserver.Vector3,
+        location: Vector3,
         options?: ClipboardWriteOptions,
     ): RelativeVolumeListBlockVolume;
     /**
@@ -2109,7 +2109,7 @@ export class ClipboardItem {
      *
      * @throws This function can throw errors.
      */
-    readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
+    readFromWorld(source: BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * Apply the contents of a ClipboardItem to the world at a
@@ -2130,7 +2130,7 @@ export class ClipboardItem {
      * Success or Failure
      * @throws This function can throw errors.
      */
-    writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
+    writeToWorld(location: Vector3, options?: ClipboardWriteOptions): boolean;
 }
 
 /**
@@ -2234,7 +2234,7 @@ export class CurrentThemeChangeAfterEventSignal {
 
 export class CurrentThemeColorChangeAfterEvent {
     private constructor();
-    readonly color: minecraftserver.RGBA;
+    readonly color: RGBA;
     readonly colorKey: string;
 }
 
@@ -2314,7 +2314,7 @@ export class Cursor {
      *
      * @throws This function can throw errors.
      */
-    getPosition(): minecraftserver.Vector3;
+    getPosition(): Vector3;
     /**
      * @remarks
      * Get a property object which represents the current
@@ -2357,7 +2357,7 @@ export class Cursor {
      * movement was restricted)
      * @throws This function can throw errors.
      */
-    moveBy(offset: minecraftserver.Vector3): minecraftserver.Vector3;
+    moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
      * Reset the 3D block cursor to the system default state
@@ -2448,9 +2448,9 @@ export declare class CylinderBrushShape extends BrushShape {
 
 export class EditorConstants {
     private constructor();
-    readonly maxSelectionSize: minecraftserver.Vector3;
-    readonly maxStructureOffset: minecraftserver.Vector3;
-    readonly minStructureOffset: minecraftserver.Vector3;
+    readonly maxSelectionSize: Vector3;
+    readonly maxStructureOffset: Vector3;
+    readonly minStructureOffset: Vector3;
 }
 
 export class EditorStructure {
@@ -2458,13 +2458,13 @@ export class EditorStructure {
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly description: string;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly displayName: string;
     readonly id: string;
@@ -2472,73 +2472,73 @@ export class EditorStructure {
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    readonly normalizedOrigin: minecraftserver.Vector3;
+    readonly normalizedOrigin: Vector3;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly notes: string;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    readonly offset: minecraftserver.Vector3;
+    readonly offset: Vector3;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    readonly originalWorldLocation: minecraftserver.Vector3;
+    readonly originalWorldLocation: Vector3;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    readonly size: minecraftserver.Vector3;
+    readonly size: Vector3;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly structureFullName: string;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly structureName: string;
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     readonly structureNamespace: string;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     getBlockPermutation(
-        location: minecraftserver.Vector3,
-    ): minecraftserver.BlockPermutation | undefined;
+        location: Vector3,
+    ): BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    getIsWaterlogged(location: minecraftserver.Vector3): boolean;
+    getIsWaterlogged(location: Vector3): boolean;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     getTags(): string[];
     /**
@@ -2549,13 +2549,13 @@ export class EditorStructure {
      * Defaults to: false
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     setBlockPermutation(
-        location: minecraftserver.Vector3,
-        blockPermutation: minecraftserver.BlockPermutation,
+        location: Vector3,
+        blockPermutation: BlockPermutation,
         waterlogged?: boolean,
     ): void;
     /**
@@ -2564,7 +2564,7 @@ export class EditorStructure {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     setTags(tags: string[]): void;
 }
@@ -2577,7 +2577,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    createEmpty(fullName: string, size: minecraftserver.Vector3): EditorStructure;
+    createEmpty(fullName: string, size: Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
@@ -2790,7 +2790,7 @@ export class ExtensionContext {
      * invocation
      *
      */
-    readonly player: minecraftserver.Player;
+    readonly player: Player;
     readonly playtest: PlaytestManager;
     /**
      * @remarks
@@ -2927,7 +2927,7 @@ export class GraphicsSettings {
 
 export class IBlockPaletteItem {
     private constructor();
-    getBlock(): minecraftserver.BlockType | undefined;
+    getBlock(): BlockType | undefined;
     getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     /**
@@ -2936,7 +2936,7 @@ export class IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
+    setBlock(block: BlockPermutation | BlockType | string): void;
 }
 
 /**
@@ -3157,7 +3157,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @throws This function can throw errors.
      */
     addBlock(
-        block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        block: BlockPermutation | BlockType | string,
         weight: number,
     ): void;
     getBlocks(): WeightedBlock[];
@@ -3201,16 +3201,16 @@ export declare class PyramidBrushShape extends BrushShape {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
-export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBase {
+export class RelativeVolumeListBlockVolume extends BlockVolumeBase {
     readonly isEmpty: boolean;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    origin?: minecraftserver.Vector3;
+    origin?: Vector3;
     readonly volumeCount: number;
-    constructor(origin?: minecraftserver.Vector3);
+    constructor(origin?: Vector3);
     /**
      * @remarks
      * @worldMutation
@@ -3218,11 +3218,11 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     add(
         toAdd:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -3235,14 +3235,14 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      * @worldMutation
      *
      */
-    getVolumeList(): minecraftserver.BlockVolume[];
-    hasAdjacent(location: minecraftserver.Vector3, normalizedOffset: minecraftserver.Vector3): boolean;
+    getVolumeList(): BlockVolume[];
+    hasAdjacent(location: Vector3, normalizedOffset: Vector3): boolean;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: Vector3): void;
     /**
      * @remarks
      * @worldMutation
@@ -3250,11 +3250,11 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     remove(
         toRemove:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -3263,18 +3263,18 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
      */
     set(
         toSet:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: Vector3): void;
 }
 
 export class SelectionChangeAfterEventSignal {
@@ -3318,11 +3318,11 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     add(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -3334,13 +3334,13 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     /**
      * @throws This function can throw errors.
      */
-    getBoundingBox(): minecraftserver.BlockBoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: Vector3): void;
     /**
      * @remarks
      * @worldMutation
@@ -3348,11 +3348,11 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     remove(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -3361,18 +3361,18 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     set(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: Vector3): void;
 }
 
 export class SelectionContainerVolumeEvent {
@@ -3522,13 +3522,13 @@ export class ThemeSettings {
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
-    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
+    getThemeColors(id: string): Record<string, RGBA> | undefined;
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
      */
     getThemeName(id: string): string;
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
+    resolveColorKey(key: ThemeSettingsColorKey): RGBA;
     /**
      * @remarks
      * @worldMutation
@@ -3549,7 +3549,7 @@ export class ThemeSettings {
      *
      * @throws This function can throw errors.
      */
-    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
+    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: RGBA): void;
 }
 
 /**
@@ -3572,7 +3572,7 @@ export class TransactionManager {
      *
      * @throws This function can throw errors.
      */
-    addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
+    addEntityOperation(entity: Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * @worldMutation
@@ -3711,7 +3711,7 @@ export class TransactionManager {
      * Max block location of a bounding area
      * @throws This function can throw errors.
      */
-    trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
+    trackBlockChangeArea(from: Vector3, to: Vector3): boolean;
     /**
      * @remarks
      * Begin tracking block changes in a list of specified block
@@ -3723,14 +3723,14 @@ export class TransactionManager {
      * An array of block locations to monitor for changes
      * @throws This function can throw errors.
      */
-    trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
+    trackBlockChangeList(locations: Vector3[]): boolean;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    trackBlockChangeVolume(blockVolume: minecraftserver.BlockVolumeBase): boolean;
+    trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last
@@ -3811,7 +3811,7 @@ export class UserDefinedTransactionHandlerId {
  * Validates min/max limits of observable objects that support
  * Vector3
  */
-export declare class Vector3LimitObservableValidator implements ObservableValidator<minecraftserver.Vector3> {
+export declare class Vector3LimitObservableValidator implements ObservableValidator<Vector3> {
     /**
      * @remarks
      * @worldMutation
@@ -3823,22 +3823,22 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * @worldMutation
      *
      */
-    protected _max: Partial<minecraftserver.Vector3>;
+    protected _max: Partial<Vector3>;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    protected _min: Partial<minecraftserver.Vector3>;
+    protected _min: Partial<Vector3>;
     /**
      * @remarks
      * Constructs a new instance of the
      * `Vector3LimitObservableValidator` class
      *
      */
-    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>, isInteger?: boolean);
-    updateLimits(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>): void;
-    validate(newValue: minecraftserver.Vector3): minecraftserver.Vector3;
+    constructor(min: Partial<Vector3>, max: Partial<Vector3>, isInteger?: boolean);
+    updateLimits(min: Partial<Vector3>, max: Partial<Vector3>): void;
+    validate(newValue: Vector3): Vector3;
 }
 
 export class Widget {
@@ -3854,7 +3854,7 @@ export class Widget {
      * @worldMutation
      *
      */
-    collisionOffset: minecraftserver.Vector3;
+    collisionOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -3878,7 +3878,7 @@ export class Widget {
      * @worldMutation
      *
      */
-    location: minecraftserver.Vector3;
+    location: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -3910,7 +3910,7 @@ export class Widget {
      */
     addBoundingBox(
         componentName: string,
-        size: minecraftserver.Vector3,
+        size: Vector3,
         options?: WidgetComponentBoundingBoxOptions,
     ): WidgetComponentBoundingBox;
     /**
@@ -3993,7 +3993,7 @@ export class Widget {
      */
     addVolumeOutline(
         componentName: string,
-        volume?: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume?: BlockVolumeBase | RelativeVolumeListBlockVolume,
         options?: WidgetComponentVolumeOutlineOptions,
     ): WidgetComponentVolumeOutline;
     /**
@@ -4050,7 +4050,7 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly location: minecraftserver.Vector3;
+    readonly location: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -4068,7 +4068,7 @@ export class WidgetComponentBase {
      * @worldMutation
      *
      */
-    offset: minecraftserver.Vector3;
+    offset: Vector3;
     readonly valid: boolean;
     visible: boolean;
     /**
@@ -4096,7 +4096,7 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    boundsOffset: minecraftserver.Vector3;
+    boundsOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -4108,31 +4108,31 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: StructureMirrorAxis;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: StructureRotation;
     /**
      * @remarks
      * @worldMutation
@@ -4144,13 +4144,13 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    size: minecraftserver.Vector3;
+    size: Vector3;
     /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: BlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -4179,8 +4179,8 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
 
 export class WidgetComponentBoundingBoxStateChangeEventParameters {
     private constructor();
-    readonly boundsOffset?: minecraftserver.Vector3;
-    readonly boundsSize?: minecraftserver.Vector3;
+    readonly boundsOffset?: Vector3;
+    readonly boundsSize?: Vector3;
     readonly component: WidgetComponentBoundingBox;
     readonly eventType: WidgetGizmoEventType;
     readonly widget: Widget;
@@ -4194,14 +4194,14 @@ export class WidgetComponentClipboard extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    clipboardOffset: minecraftserver.Vector3;
-    highlightHullColor: minecraftserver.RGBA;
-    highlightOutlineColor: minecraftserver.RGBA;
-    hullColor: minecraftserver.RGBA;
-    mirror: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin: minecraftserver.Vector3;
-    outlineColor: minecraftserver.RGBA;
-    rotation: minecraftserver.StructureRotation;
+    clipboardOffset: Vector3;
+    highlightHullColor: RGBA;
+    highlightOutlineColor: RGBA;
+    hullColor: RGBA;
+    mirror: StructureMirrorAxis;
+    normalizedOrigin: Vector3;
+    outlineColor: RGBA;
+    rotation: StructureRotation;
     showOutline: boolean;
 }
 
@@ -4240,7 +4240,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    normalizedOffsetOverride?: minecraftserver.Vector3;
+    normalizedOffsetOverride?: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -4267,19 +4267,19 @@ export class WidgetComponentGrid extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    gridColor: minecraftserver.RGBA;
+    gridColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    gridCount: minecraftserver.Vector2;
+    gridCount: Vector2;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    gridSize: minecraftserver.Vector2;
+    gridSize: Vector2;
     /**
      * @remarks
      * @worldMutation
@@ -4330,20 +4330,20 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
      * @worldMutation
      *
      */
-    center: minecraftserver.Vector3;
+    center: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    color?: minecraftserver.RGBA;
+    color?: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
     radius: number;
-    constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
+    constructor(center: Vector3, radius: number, color?: RGBA);
 }
 
 export class WidgetComponentRenderPrimitiveTypeBase {
@@ -4364,23 +4364,23 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      * @worldMutation
      *
      */
-    center: minecraftserver.Vector3;
+    center: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    size?: minecraftserver.Vector3;
+    size?: Vector3;
     constructor(
-        center: minecraftserver.Vector3,
-        color: minecraftserver.RGBA,
-        size?: minecraftserver.Vector3,
+        center: Vector3,
+        color: RGBA,
+        size?: Vector3,
     );
 }
 
@@ -4391,20 +4391,20 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
      * @worldMutation
      *
      */
-    center: minecraftserver.Vector3;
+    center: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
     radius: number;
-    constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
+    constructor(center: Vector3, radius: number, color: RGBA);
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4414,23 +4414,23 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    end: minecraftserver.Vector3;
+    end: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    start: minecraftserver.Vector3;
+    start: Vector3;
     constructor(
-        start: minecraftserver.Vector3,
-        end: minecraftserver.Vector3,
-        color: minecraftserver.RGBA,
+        start: Vector3,
+        end: Vector3,
+        color: RGBA,
     );
 }
 
@@ -4462,7 +4462,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      *
      * @throws This function can throw errors.
      */
-    getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
+    getInterpolatedPoints(maxPointsPerControlSegment?: number): Vector3[];
     /**
      * @remarks
      * @worldMutation
@@ -4484,7 +4484,7 @@ export class WidgetComponentText extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation
@@ -4501,43 +4501,43 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    highlightHullColor: minecraftserver.RGBA;
+    highlightHullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    highlightOutlineColor: minecraftserver.RGBA;
+    highlightOutlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: StructureMirrorAxis;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: StructureRotation;
     /**
      * @remarks
      * @worldMutation
@@ -4555,13 +4555,13 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: BlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    volumeOffset: minecraftserver.Vector3;
+    volumeOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -4581,11 +4581,11 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      */
     setVolume(
         volumeToSet?:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
 }
 
@@ -4615,7 +4615,7 @@ export class WidgetGroup {
      *
      * @throws This function can throw errors.
      */
-    createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
+    createWidget(location: Vector3, options?: WidgetCreateOptions): Widget;
     /**
      * @remarks
      * @worldMutation
@@ -4678,7 +4678,7 @@ export class WidgetMouseButtonEventData {
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
-    readonly location?: minecraftserver.Vector3;
+    readonly location?: Vector3;
     readonly mouseEvent?: WidgetMouseButtonEventData;
     readonly selected?: boolean;
     readonly visible?: boolean;
@@ -4703,7 +4703,7 @@ export interface ActionManager {
 }
 
 export interface BlockMaskList {
-    blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
+    blockList: (BlockPermutation | BlockType | string)[];
     maskType: BlockMaskListType;
 }
 
@@ -4781,22 +4781,22 @@ export interface ClipboardWriteOptions {
      * - XZ
      *
      */
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
     /**
      * @remarks
      * A position offset which should be applied to the paste
      * location while the clipboard item is being written
      *
      */
-    offset?: minecraftserver.Vector3;
+    offset?: Vector3;
     /**
      * @remarks
      * An enum representing the rotation around the Y-Axis which
      * should be applied while the clipboard item is being written
      *
      */
-    rotation?: minecraftserver.StructureRotation;
+    rotation?: StructureRotation;
 }
 
 export interface ContiguousSelectionProperties {
@@ -4807,12 +4807,12 @@ export interface ContiguousSelectionProperties {
     isFace?: boolean;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: Vector3;
 }
 
 export interface CursorPosition {
     FaceDirection: number;
-    Position: minecraftserver.Vector3;
+    Position: Vector3;
 }
 
 /**
@@ -4848,7 +4848,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
-    fillColor?: minecraftserver.RGBA;
+    fillColor?: RGBA;
     /**
      * @remarks
      * The fixed distance from the players feet at which the cursor
@@ -4863,7 +4863,7 @@ export interface CursorProperties {
      * cursor object outline
      *
      */
-    outlineColor?: minecraftserver.RGBA;
+    outlineColor?: RGBA;
     projectThroughLiquid?: boolean;
     /**
      * @remarks
@@ -4886,9 +4886,9 @@ export interface CursorProperties {
 }
 
 export interface CursorRay {
-    end: minecraftserver.Vector3;
+    end: Vector3;
     hit: boolean;
-    start: minecraftserver.Vector3;
+    start: Vector3;
 }
 
 export interface EditorStructureSearchOptions {
@@ -4966,7 +4966,7 @@ export interface GameOptions {
     commandBlockEnabled?: boolean;
     commandBlockOutput?: boolean;
     daylightCycle?: DaylightCycle;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: Difficulty;
     dimensionId?: string;
     disableWeather?: boolean;
     drowningDamage?: boolean;
@@ -4979,7 +4979,7 @@ export interface GameOptions {
     freezeDamage?: boolean;
     friendlyFire?: boolean;
     functionCommandLimit?: number;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: GameMode;
     hardcore?: boolean;
     immediateRespawn?: boolean;
     insomnia?: boolean;
@@ -4994,7 +4994,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: minecraftserver.PlayerPermissionLevel;
+    playerPermissions?: PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
@@ -5007,7 +5007,7 @@ export interface GameOptions {
     showItemTags?: boolean;
     simulationDistance?: number;
     sleepSkipPercent?: number;
-    spawnPosition?: minecraftserver.Vector3;
+    spawnPosition?: Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;
     timeOfDay?: number;
@@ -5178,7 +5178,7 @@ export interface IBlockTablePropertyItem extends IPropertyItemBase {
      * @param blockInfo
      * block info for the entry in the block table.
      */
-    addOrUpdateEntry(block: string | minecraftserver.BlockType, blockInfo: IBlockTableEntryInfo): void;
+    addOrUpdateEntry(block: string | BlockType, blockInfo: IBlockTableEntryInfo): void;
     /**
      * @remarks
      * Delete entry in the block table, by block name
@@ -5194,7 +5194,7 @@ export interface IBlockTablePropertyItem extends IPropertyItemBase {
      * @param block
      * an entry in the block table.
      */
-    getEntry(block: string | minecraftserver.BlockType): IBlockTableEntryInfo | undefined;
+    getEntry(block: string | BlockType): IBlockTableEntryInfo | undefined;
     /**
      * @remarks
      * Updates title of the property item.
@@ -5433,7 +5433,7 @@ export interface IColorPickerPropertyItem extends IPropertyItemBase {
      * Current value of the property item.
      *
      */
-    readonly value: minecraftserver.RGBA;
+    readonly value: RGBA;
     /**
      * @remarks
      * Updates title of the property item.
@@ -5476,7 +5476,7 @@ export interface IColorPickerPropertyItemOptions extends IPropertyItemOptionsBas
      * This callback is called when UI control value is changed.
      *
      */
-    onChange?: (newValue: minecraftserver.RGBA, oldValue: minecraftserver.RGBA) => void;
+    onChange?: (newValue: RGBA, oldValue: RGBA) => void;
     /**
      * @remarks
      * Localized title of the property item.
@@ -5568,7 +5568,7 @@ export interface IColorTimelinePropertyItem extends IPropertyItemBase {
 export interface IColorTimelinePropertyItemEntry {
     id: string;
     time: number;
-    value: minecraftserver.RGBA;
+    value: RGBA;
 }
 
 /**
@@ -6562,7 +6562,7 @@ export interface INumberTimelinePropertyItem extends IPropertyItemBase {
      * @param counts
      * Counts for the thin grid lines.
      */
-    setSeparatorSliceCount(counts: minecraftserver.Vector2): void;
+    setSeparatorSliceCount(counts: Vector2): void;
     /**
      * @remarks
      * Set separator step counts for x and y for the major grid.
@@ -6570,7 +6570,7 @@ export interface INumberTimelinePropertyItem extends IPropertyItemBase {
      * @param counts
      * Counts for the thick grid lines.
      */
-    setSeparatorStepCount(counts: minecraftserver.Vector2): void;
+    setSeparatorStepCount(counts: Vector2): void;
     /**
      * @remarks
      * Set time line slider value to a new value
@@ -6601,7 +6601,7 @@ export interface INumberTimelinePropertyItem extends IPropertyItemBase {
  * Properties of the Number timeline property item entry
  */
 export interface INumberTimelinePropertyItemEntry {
-    color?: minecraftserver.RGBA;
+    color?: RGBA;
     id: string;
     time: number;
     value: number;
@@ -6644,13 +6644,13 @@ export interface INumberTimelinePropertyItemOptions extends IPropertyItemOptions
      * The separator slice count for the graph thin lines
      *
      */
-    gridSeparatorSliceCount?: minecraftserver.Vector2;
+    gridSeparatorSliceCount?: Vector2;
     /**
      * @remarks
      * The separator step counts for the graph bold lines
      *
      */
-    gridSeparatorStepCount?: minecraftserver.Vector2;
+    gridSeparatorStepCount?: Vector2;
     /**
      * @remarks
      * True means nodes cannot be dragged or modified
@@ -6997,7 +6997,7 @@ export interface IPropertyPane extends IPane {
      *
      */
     addColorPicker(
-        value: IObservableProp<minecraftserver.RGBA>,
+        value: IObservableProp<RGBA>,
         options?: IColorPickerPropertyItemOptions,
     ): IColorPickerPropertyItem;
     /**
@@ -7099,7 +7099,7 @@ export interface IPropertyPane extends IPane {
      *
      */
     addVector3(
-        value: IObservableProp<minecraftserver.Vector3>,
+        value: IObservableProp<Vector3>,
         options?: IVector3PropertyItemOptions,
     ): IVector3PropertyItem;
     /**
@@ -7736,7 +7736,7 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
      * Current value of the property item.
      *
      */
-    readonly value: Readonly<minecraftserver.Vector3>;
+    readonly value: Readonly<Vector3>;
     /**
      * @remarks
      * Updates title of the button.
@@ -7758,7 +7758,7 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
      * Updates Vector3 limits and clamps the current value.
      *
      */
-    updateAxisLimits(limits: { min?: Partial<minecraftserver.Vector3>; max?: Partial<minecraftserver.Vector3> }): void;
+    updateAxisLimits(limits: { min?: Partial<Vector3>; max?: Partial<Vector3> }): void;
 }
 
 /**
@@ -7786,20 +7786,20 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      * Number.MAX_SAFE_INTEGER will be used.
      *
      */
-    max?: Partial<minecraftserver.Vector3>;
+    max?: Partial<Vector3>;
     /**
      * @remarks
      * The min possible limits. If undefined,
      * Number.MIN_SAFE_INTEGER will be used.
      *
      */
-    min?: Partial<minecraftserver.Vector3>;
+    min?: Partial<Vector3>;
     /**
      * @remarks
      * This callback is called when UI control is changed.
      *
      */
-    onChange?: (newValue: minecraftserver.Vector3, oldValue: minecraftserver.Vector3) => void;
+    onChange?: (newValue: Vector3, oldValue: Vector3) => void;
     /**
      * @remarks
      * Localized title of the property item
@@ -7836,7 +7836,7 @@ export interface LogProperties {
      * specified, then all players will receive the message
      *
      */
-    player?: minecraftserver.Player;
+    player?: Player;
     /**
      * @remarks
      * Message to be shown under the message when toast channel is
@@ -7885,11 +7885,11 @@ export interface ModalToolCreationParameters {
 
 export interface ProjectExportOptions {
     alwaysDay?: boolean;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: Difficulty;
     disableWeather?: boolean;
     exportName?: string;
     exportType: ProjectExportType;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: GameMode;
     initialTimOfDay?: number;
 }
 
@@ -7901,31 +7901,31 @@ export interface QuickExtrudeProperties {
     layerCount?: number;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: Vector3;
 }
 
 export interface WeightedBlock {
-    block: minecraftserver.BlockType;
+    block: BlockType;
     weight: number;
 }
 
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;
-    offset?: minecraftserver.Vector3;
+    offset?: Vector3;
     visible?: boolean;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
-    boundsOffset?: minecraftserver.Vector3;
+    boundsOffset?: Vector3;
     enableResizeHandles?: Axis;
-    hullColor?: minecraftserver.RGBA;
-    maxSize?: minecraftserver.Vector3;
-    minSize?: minecraftserver.Vector3;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    hullColor?: RGBA;
+    maxSize?: Vector3;
+    minSize?: Vector3;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
+    outlineColor?: RGBA;
+    rotation?: StructureRotation;
     showWorldIntersections?: boolean;
     stateChangeEvent?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void;
     visibleHull?: boolean;
@@ -7933,14 +7933,14 @@ export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOp
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
-    clipboardOffset?: minecraftserver.Vector3;
-    highlightHullColor?: minecraftserver.RGBA;
-    highlightOutlineColor?: minecraftserver.RGBA;
-    hullColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    clipboardOffset?: Vector3;
+    highlightHullColor?: RGBA;
+    highlightOutlineColor?: RGBA;
+    hullColor?: RGBA;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
+    outlineColor?: RGBA;
+    rotation?: StructureRotation;
     showOutline?: boolean;
 }
 
@@ -7955,15 +7955,15 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
-    normalizedAutoOffset?: minecraftserver.Vector3;
+    normalizedAutoOffset?: Vector3;
     stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
-    gridCount?: minecraftserver.Vector2;
-    gridSize?: minecraftserver.Vector2;
+    color?: RGBA;
+    gridCount?: Vector2;
+    gridSize?: Vector2;
     plane?: Plane;
 }
 
@@ -7981,26 +7981,26 @@ export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
+    color?: RGBA;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentVolumeOutlineOptions extends WidgetComponentBaseOptions {
-    highlightHullColor?: minecraftserver.RGBA;
-    highlightOutlineColor?: minecraftserver.RGBA;
-    hullColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    highlightHullColor?: RGBA;
+    highlightOutlineColor?: RGBA;
+    hullColor?: RGBA;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
+    outlineColor?: RGBA;
+    rotation?: StructureRotation;
     showHighlightOutline?: boolean;
     showOutline?: boolean;
-    volumeOffset?: minecraftserver.Vector3;
+    volumeOffset?: Vector3;
 }
 
 export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;
-    collisionOffset?: minecraftserver.Vector3;
+    collisionOffset?: Vector3;
     collisionRadius?: number;
     collisionType?: WidgetCollisionType;
     lockToSurface?: boolean;
@@ -8009,8 +8009,8 @@ export interface WidgetCreateOptions {
     stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
     widgetName?: string;
-    worldBoundsMax?: minecraftserver.Vector3;
-    worldBoundsMin?: minecraftserver.Vector3;
+    worldBoundsMax?: Vector3;
+    worldBoundsMin?: Vector3;
 }
 
 export interface WidgetGroupCreateOptions {
@@ -8052,7 +8052,7 @@ export declare function deserialize(s: string): unknown;
  */
 export declare function executeLargeOperation(
     volume: RelativeVolumeListBlockVolume,
-    operation: (blockLocation: minecraftserver.Vector3) => void,
+    operation: (blockLocation: Vector3) => void,
 ): Promise<void>;
 /**
  * @remarks
@@ -8065,8 +8065,8 @@ export declare function executeLargeOperation(
  * the operation to apply over each block location
  */
 export declare function executeLargeOperationFromIterator(
-    blockLocationIterator: minecraftserver.BlockLocationIterator,
-    operation: (blockLocation: minecraftserver.Vector3) => void,
+    blockLocationIterator: BlockLocationIterator,
+    operation: (blockLocation: Vector3) => void,
 ): Promise<void>;
 /**
  * @remarks

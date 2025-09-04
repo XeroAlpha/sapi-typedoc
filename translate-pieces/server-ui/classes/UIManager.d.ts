@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Player } from '../index';
 
 export class UIManager {
     private constructor();
@@ -8,5 +8,5 @@ export class UIManager {
      *
      * @throws This function can throw errors.
      */
-    closeAllForms(player: minecraftserver.Player): void;
+    closeAllForms(player: Player): void;
 }

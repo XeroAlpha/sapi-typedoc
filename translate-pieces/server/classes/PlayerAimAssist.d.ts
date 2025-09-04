@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidEntityError, NamespaceNameError, PlayerAimAssistSettings, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, InvalidEntityError, NamespaceNameError, PlayerAimAssistSettings } from '../index';
 
 /**
  * @beta
@@ -24,13 +24,13 @@ export class PlayerAimAssist {
      * aim-assist will be disabled.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { TransferPlayerIpPortOptions, TransferPlayerNetherNetOptions, minecraftserver } from '../index';
+/* IMPORT */ import { Player, TransferPlayerIpPortOptions, TransferPlayerNetherNetOptions } from '../index';
 
 /**
  * @remarks
@@ -13,6 +13,6 @@
  * @throws This function can throw errors.
  */
 export function transferPlayer(
-    player: minecraftserver.Player,
+    player: Player,
     options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
 ): void;

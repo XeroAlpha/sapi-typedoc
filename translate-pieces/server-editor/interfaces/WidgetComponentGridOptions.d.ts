@@ -1,8 +1,8 @@
-/* IMPORT */ import { Plane, WidgetComponentBaseOptions, minecraftserver } from '../index';
+/* IMPORT */ import { Plane, RGBA, Vector2, WidgetComponentBaseOptions } from '../index';
 
 export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
-    gridCount?: minecraftserver.Vector2;
-    gridSize?: minecraftserver.Vector2;
+    color?: RGBA;
+    gridCount?: Vector2;
+    gridSize?: Vector2;
     plane?: Plane;
 }

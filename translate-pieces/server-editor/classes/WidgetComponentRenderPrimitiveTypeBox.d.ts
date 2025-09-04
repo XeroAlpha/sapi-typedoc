@@ -1,4 +1,4 @@
-/* IMPORT */ import { WidgetComponentRenderPrimitiveTypeBase, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA, Vector3, WidgetComponentRenderPrimitiveTypeBase } from '../index';
 
 export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     /**
@@ -6,22 +6,22 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      * @worldMutation
      *
      */
-    center: minecraftserver.Vector3;
+    center: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    size?: minecraftserver.Vector3;
+    size?: Vector3;
     constructor(
-        center: minecraftserver.Vector3,
-        color: minecraftserver.RGBA,
-        size?: minecraftserver.Vector3,
+        center: Vector3,
+        color: RGBA,
+        size?: Vector3,
     );
 }

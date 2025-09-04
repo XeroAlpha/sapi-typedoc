@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { WorldAfterEvents } from '../index';
 
 /**
  * A cache for bedrock event subscriptions. Stores off a
@@ -12,7 +12,7 @@ export declare class BedrockEventSubscriptionCache {
      * `BedrockEventSubscriptionCache` class
      *
      */
-    constructor(mEvents: minecraftserver.WorldAfterEvents);
+    constructor(mEvents: WorldAfterEvents);
     /**
      * @remarks
      * Subcribes to a bedrock event using the key of the desired
@@ -28,10 +28,10 @@ export declare class BedrockEventSubscriptionCache {
      * The parameters to the subscription method for the event.
      * Auto complete will display this for you
      */
-    subscribeToBedrockEvent<T extends keyof minecraftserver.WorldAfterEvents>(
+    subscribeToBedrockEvent<T extends keyof WorldAfterEvents>(
         event: T,
-        ...params: Parameters<minecraftserver.WorldAfterEvents[T]['subscribe']>
-    ): ReturnType<minecraftserver.WorldAfterEvents[T]['subscribe']>;
+        ...params: Parameters<WorldAfterEvents[T]['subscribe']>
+    ): ReturnType<WorldAfterEvents[T]['subscribe']>;
     /**
      * @remarks
      * Cleans up the set of internal registrations and

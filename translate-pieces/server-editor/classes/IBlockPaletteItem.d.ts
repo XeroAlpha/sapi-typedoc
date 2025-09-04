@@ -1,8 +1,8 @@
-/* IMPORT */ import { BlockPaletteItemType, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPaletteItemType, BlockPermutation, BlockType } from '../index';
 
 export class IBlockPaletteItem {
     private constructor();
-    getBlock(): minecraftserver.BlockType | undefined;
+    getBlock(): BlockType | undefined;
     getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     /**
@@ -11,5 +11,5 @@ export class IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
+    setBlock(block: BlockPermutation | BlockType | string): void;
 }

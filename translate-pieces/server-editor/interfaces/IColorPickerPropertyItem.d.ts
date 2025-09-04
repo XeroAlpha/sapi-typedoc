@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { IPropertyItemBase, LocalizedString, RGBA } from '../index';
 
 /**
  * A property item which supports Color Picker properties
@@ -10,7 +10,7 @@ export interface IColorPickerPropertyItem extends IPropertyItemBase {
      * Current value of the property item.
      *
      */
-    readonly value: minecraftserver.RGBA;
+    readonly value: RGBA;
     /**
      * @remarks
      * Updates title of the property item.

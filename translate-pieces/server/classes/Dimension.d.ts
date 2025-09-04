@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon, minecraftvanilladata } from '../index';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, EngineError, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidArgumentError, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MinecraftFeatureTypes, MolangVariableMap, NumberRange, Player, PropertyOutOfBoundsError, SpawnEntityOptions, UnloadedChunksError, UnsupportedFunctionalityError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '../index';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -12,7 +12,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: minecraftcommon.NumberRange;
+    readonly heightRange: NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.
@@ -93,7 +93,7 @@ export class Dimension {
      * were placed.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
@@ -123,7 +123,7 @@ export class Dimension {
      * could not be found.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
@@ -249,7 +249,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -274,13 +274,13 @@ export class Dimension {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -302,7 +302,7 @@ export class Dimension {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getGeneratedStructures(location: Vector3): (minecraftvanilladata.MinecraftFeatureTypes | string)[];
+    getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
      * @beta
      * @remarks
@@ -315,7 +315,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -334,7 +334,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -349,7 +349,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -411,7 +411,7 @@ export class Dimension {
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -432,7 +432,7 @@ export class Dimension {
      * An error will be thrown if the location is in an unloaded
      * chunk.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -456,7 +456,7 @@ export class Dimension {
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -558,7 +558,7 @@ export class Dimension {
      *
      * {@link EntitySpawnError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *

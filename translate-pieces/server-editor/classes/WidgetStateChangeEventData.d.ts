@@ -1,9 +1,9 @@
-/* IMPORT */ import { Widget, WidgetGroup, WidgetMouseButtonEventData, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3, Widget, WidgetGroup, WidgetMouseButtonEventData } from '../index';
 
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
-    readonly location?: minecraftserver.Vector3;
+    readonly location?: Vector3;
     readonly mouseEvent?: WidgetMouseButtonEventData;
     readonly selected?: boolean;
     readonly visible?: boolean;

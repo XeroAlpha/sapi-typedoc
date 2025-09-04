@@ -1,17 +1,17 @@
-/* IMPORT */ import { GameTestError, LookDuration, MoveToOptions, NavigationResult, PlayerSkinData, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { Direction, Entity, GameTestError, InvalidArgumentError, InvalidEntityError, ItemStack, LookDuration, MoveToOptions, NavigationResult, Player, PlayerSkinData, Vector2, Vector3 } from '../index';
 
 /**
  * A simulated player can be used within GameTests to represent
  * how a player moves throughout the world and to support
  * testing of how entities and the environment will react to a
  * player. This type derives much of its structure and methods
- * from the {@link minecraftserver.Player} type. Note that many
+ * from the {@link Player} type. Note that many
  * types of events that may be available for entities more
  * broadly, such as item use events, may not fire in the same
  * capacity for simulated players.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class SimulatedPlayer extends minecraftserver.Player {
+export class SimulatedPlayer extends Player {
     private constructor();
     /**
      * @remarks
@@ -19,7 +19,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This property can throw when used.
      */
-    readonly headRotation: minecraftserver.Vector2;
+    readonly headRotation: Vector2;
     /**
      * @remarks
      * Returns whether the simulated player is sprinting.
@@ -52,7 +52,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    attackEntity(entity: minecraftserver.Entity): boolean;
+    attackEntity(entity: Entity): boolean;
     /**
      * @remarks
      * Destroys the block at blockLocation, respecting the rules of
@@ -71,9 +71,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
+    breakBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
      * @remarks
      * @worldMutation
@@ -124,7 +124,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Defaults to: false
      * @throws This function can throw errors.
      */
-    giveItem(itemStack: minecraftserver.ItemStack, selectSlot?: boolean): boolean;
+    giveItem(itemStack: ItemStack, selectSlot?: boolean): boolean;
     /**
      * @remarks
      * Causes the simulated player to start gliding. Elytra must be
@@ -168,11 +168,11 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
     interactWithBlock(
-        blockLocation: minecraftserver.Vector3,
-        direction?: minecraftserver.Direction,
+        blockLocation: Vector3,
+        direction?: Direction,
     ): boolean;
     /**
      * @remarks
@@ -185,11 +185,11 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Entity to interact with.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    interactWithEntity(entity: minecraftserver.Entity): boolean;
+    interactWithEntity(entity: Entity): boolean;
     /**
      * @remarks
      * Causes the simulated player to jump.
@@ -214,9 +214,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    lookAtBlock(blockLocation: minecraftserver.Vector3, duration?: LookDuration): void;
+    lookAtBlock(blockLocation: Vector3, duration?: LookDuration): void;
     /**
      * @remarks
      * Rotates the simulated player's head/body to look at the
@@ -228,7 +228,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Defaults to: 2
      * @throws This function can throw errors.
      */
-    lookAtEntity(entity: minecraftserver.Entity, duration?: LookDuration): void;
+    lookAtEntity(entity: Entity, duration?: LookDuration): void;
     /**
      * @remarks
      * Rotates the simulated player's head/body to look at the
@@ -240,7 +240,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Defaults to: 2
      * @throws This function can throw errors.
      */
-    lookAtLocation(location: minecraftserver.Vector3, duration?: LookDuration): void;
+    lookAtLocation(location: Vector3, duration?: LookDuration): void;
     /**
      * @remarks
      * Orders the simulated player to walk in the given direction
@@ -276,7 +276,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * @throws This function can throw errors.
      */
-    moveToBlock(blockLocation: minecraftserver.Vector3, options?: MoveToOptions): void;
+    moveToBlock(blockLocation: Vector3, options?: MoveToOptions): void;
     /**
      * @remarks
      * Orders the simulated player to move to the given location in
@@ -291,9 +291,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    moveToLocation(location: minecraftserver.Vector3, options?: MoveToOptions): void;
+    moveToLocation(location: Vector3, options?: MoveToOptions): void;
     /**
      * @remarks
      * Orders the simulated player to move to a specific block
@@ -311,9 +311,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
+    navigateToBlock(blockLocation: Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Will use navigation to follow the selected entity to within
@@ -326,11 +326,11 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Defaults to: 1
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
+    navigateToEntity(entity: Entity, speed?: number): NavigationResult;
     /**
      * @remarks
      * Orders the simulated player to move to a specific location
@@ -348,9 +348,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
+    navigateToLocation(location: Vector3, speed?: number): NavigationResult;
     /**
      * @remarks
      * Use navigation to follow the route provided via the
@@ -368,9 +368,9 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
-    navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
+    navigateToLocations(locations: Vector3[], speed?: number): void;
     /**
      * @remarks
      * Respawns the particular simulated player.
@@ -415,7 +415,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Defaults to: false
      * @throws This function can throw errors.
      */
-    setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
+    setItem(itemStack: ItemStack, slot: number, selectSlot?: boolean): boolean;
     /**
      * @remarks
      * Updates information about the player's skin.
@@ -426,7 +426,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Options for the skin to set on the player.
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
     setSkin(options: PlayerSkinData): void;
     /**
@@ -511,7 +511,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * in use.
      * @throws This function can throw errors.
      */
-    stopUsingItem(): minecraftserver.ItemStack | undefined;
+    stopUsingItem(): ItemStack | undefined;
     /**
      * @remarks
      * Causes the simulated player to start swimming.
@@ -532,7 +532,7 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * Item to use.
      * @throws This function can throw errors.
      */
-    useItem(itemStack: minecraftserver.ItemStack): boolean;
+    useItem(itemStack: ItemStack): boolean;
     /**
      * @remarks
      * Causes the simulated player to hold and use an item in their
@@ -568,13 +568,13 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
     useItemInSlotOnBlock(
         slot: number,
-        blockLocation: minecraftserver.Vector3,
-        direction?: minecraftserver.Direction,
-        faceLocation?: minecraftserver.Vector3,
+        blockLocation: Vector3,
+        direction?: Direction,
+        faceLocation?: Vector3,
     ): boolean;
     /**
      * @remarks
@@ -599,12 +599,12 @@ export class SimulatedPlayer extends minecraftserver.Player {
      *
      * {@link GameTestError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      */
     useItemOnBlock(
-        itemStack: minecraftserver.ItemStack,
-        blockLocation: minecraftserver.Vector3,
-        direction?: minecraftserver.Direction,
-        faceLocation?: minecraftserver.Vector3,
+        itemStack: ItemStack,
+        blockLocation: Vector3,
+        direction?: Direction,
+        faceLocation?: Vector3,
     ): boolean;
 }

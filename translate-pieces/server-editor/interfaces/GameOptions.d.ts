@@ -1,4 +1,4 @@
-/* IMPORT */ import { DaylightCycle, GamePublishSetting, ProjectExportType, minecraftserver } from '../index';
+/* IMPORT */ import { DaylightCycle, Difficulty, GameMode, GamePublishSetting, PlayerPermissionLevel, ProjectExportType, Vector3 } from '../index';
 
 export interface GameOptions {
     bedsWork?: boolean;
@@ -7,7 +7,7 @@ export interface GameOptions {
     commandBlockEnabled?: boolean;
     commandBlockOutput?: boolean;
     daylightCycle?: DaylightCycle;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: Difficulty;
     dimensionId?: string;
     disableWeather?: boolean;
     drowningDamage?: boolean;
@@ -20,7 +20,7 @@ export interface GameOptions {
     freezeDamage?: boolean;
     friendlyFire?: boolean;
     functionCommandLimit?: number;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: GameMode;
     hardcore?: boolean;
     immediateRespawn?: boolean;
     insomnia?: boolean;
@@ -35,7 +35,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: minecraftserver.PlayerPermissionLevel;
+    playerPermissions?: PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
@@ -48,7 +48,7 @@ export interface GameOptions {
     showItemTags?: boolean;
     simulationDistance?: number;
     sleepSkipPercent?: number;
-    spawnPosition?: minecraftserver.Vector3;
+    spawnPosition?: Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;
     timeOfDay?: number;

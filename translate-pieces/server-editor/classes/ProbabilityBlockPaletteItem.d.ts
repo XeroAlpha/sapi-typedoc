@@ -1,4 +1,4 @@
-/* IMPORT */ import { IBlockPaletteItem, WeightedBlock, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPermutation, BlockType, IBlockPaletteItem, WeightedBlock } from '../index';
 
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
@@ -9,7 +9,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @throws This function can throw errors.
      */
     addBlock(
-        block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        block: BlockPermutation | BlockType | string,
         weight: number,
     ): void;
     getBlocks(): WeightedBlock[];

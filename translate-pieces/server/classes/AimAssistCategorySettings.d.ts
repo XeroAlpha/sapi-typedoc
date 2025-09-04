@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftvanilladata } from '../index';
+/* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes } from '../index';
 
 /**
  * @beta
@@ -67,7 +67,7 @@ export class AimAssistCategorySettings {
      * Larger numbers have greater priority.
      */
     setBlockPriorities(
-        blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>,
+        blockPriorities: Record<keyof typeof MinecraftBlockTypes | string, number>,
     ): void;
     /**
      * @remarks
@@ -80,6 +80,6 @@ export class AimAssistCategorySettings {
      * Larger numbers have greater priority.
      */
     setEntityPriorities(
-        entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>,
+        entityPriorities: Record<keyof typeof MinecraftEntityTypes | string, number>,
     ): void;
 }

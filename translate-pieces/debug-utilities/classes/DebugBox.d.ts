@@ -1,4 +1,4 @@
-/* IMPORT */ import { DebugShape, minecraftserver } from '../index';
+/* IMPORT */ import { DebugShape, Vector3 } from '../index';
 
 /**
  * A debug shape class that represents a box or cuboid.
@@ -11,6 +11,6 @@ export class DebugBox extends DebugShape {
      * bound multiplied by the shape's scale.
      *
      */
-    bound: minecraftserver.Vector3;
-    constructor(location: minecraftserver.Vector3);
+    bound: Vector3;
+    constructor(location: Vector3);
 }

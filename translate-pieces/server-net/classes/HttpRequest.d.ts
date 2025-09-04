@@ -1,4 +1,4 @@
-/* IMPORT */ import { HttpHeader, HttpRequestMethod, minecraftserveradmin } from '../index';
+/* IMPORT */ import { HttpHeader, HttpRequestMethod, SecretString } from '../index';
 
 /**
  * Main object for structuring a request.
@@ -56,7 +56,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
+    addHeader(key: string, value: SecretString | string): HttpRequest;
     /**
      * @remarks
      * Updates the content of the body of the HTTP request.

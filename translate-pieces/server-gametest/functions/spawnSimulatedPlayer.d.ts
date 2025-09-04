@@ -1,4 +1,4 @@
-/* IMPORT */ import { SimulatedPlayer, Test, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { DimensionLocation, EngineError, GameMode, SimulatedPlayer, Test } from '../index';
 
 /**
  * @remarks
@@ -16,10 +16,10 @@
  * The game mode for the player.
  * @throws This function can throw errors.
  *
- * {@link minecraftcommon.EngineError}
+ * {@link EngineError}
  */
 export function spawnSimulatedPlayer(
-    location: minecraftserver.DimensionLocation,
+    location: DimensionLocation,
     name: string,
-    gameMode: minecraftserver.GameMode,
+    gameMode: GameMode,
 ): SimulatedPlayer;

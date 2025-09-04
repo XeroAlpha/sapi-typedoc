@@ -1,15 +1,15 @@
-/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentBoundingBoxStateChangeEventParameters, minecraftserver } from '../index';
+/* IMPORT */ import { Axis, RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBaseOptions, WidgetComponentBoundingBoxStateChangeEventParameters } from '../index';
 
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
-    boundsOffset?: minecraftserver.Vector3;
+    boundsOffset?: Vector3;
     enableResizeHandles?: Axis;
-    hullColor?: minecraftserver.RGBA;
-    maxSize?: minecraftserver.Vector3;
-    minSize?: minecraftserver.Vector3;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    hullColor?: RGBA;
+    maxSize?: Vector3;
+    minSize?: Vector3;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
+    outlineColor?: RGBA;
+    rotation?: StructureRotation;
     showWorldIntersections?: boolean;
     stateChangeEvent?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void;
     visibleHull?: boolean;

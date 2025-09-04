@@ -1,4 +1,4 @@
-/* IMPORT */ import { ThemeSettingsColorKey, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA, ThemeSettingsColorKey } from '../index';
 
 export class ThemeSettings {
     private constructor();
@@ -18,13 +18,13 @@ export class ThemeSettings {
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
-    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
+    getThemeColors(id: string): Record<string, RGBA> | undefined;
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
      */
     getThemeName(id: string): string;
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
+    resolveColorKey(key: ThemeSettingsColorKey): RGBA;
     /**
      * @remarks
      * @worldMutation
@@ -45,5 +45,5 @@ export class ThemeSettings {
      *
      * @throws This function can throw errors.
      */
-    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
+    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: RGBA): void;
 }

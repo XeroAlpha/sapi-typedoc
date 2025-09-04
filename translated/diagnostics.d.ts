@@ -21,8 +21,8 @@
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserveradmin from '@minecraft/server-admin';
+import { InvalidArgumentError } from '@minecraft/common';
+import { SecretString } from '@minecraft/server-admin';
 /**
  * This defines the severity level of an error, event,
  * exception, or breadcrumb. Levels are used in the UI to
@@ -113,7 +113,7 @@ export class Sentry {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link SentryAlreadyInitializedError}
      */
@@ -177,7 +177,7 @@ export interface SentryOptions {
      * https://docs.sentry.io/concepts/key-terms/dsn-explainer/
      *
      */
-    dsn: minecraftserveradmin.SecretString | string;
+    dsn: SecretString | string;
     /**
      * @remarks
      * The maximum number of breadcrumbs (submitted via {@link

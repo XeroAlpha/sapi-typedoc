@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, minecraftcommon } from '../index';
+/* IMPORT */ import { AimAssistRegistry, ArgumentOutOfBoundsError, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, InvalidArgumentError, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PropertyOutOfBoundsError, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -90,7 +90,7 @@ export class World {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -219,7 +219,7 @@ export class World {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -238,7 +238,7 @@ export class World {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -258,7 +258,7 @@ export class World {
      * An error will be thrown if fade is less than 0.0.
      *
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -320,7 +320,7 @@ export class World {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -335,7 +335,7 @@ export class World {
      * Throws if the given dynamic property identifier is not
      * defined.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      * @seeExample incrementDynamicProperty.ts
      * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */

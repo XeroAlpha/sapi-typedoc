@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, minecraftcommon } from '../index';
+/* IMPORT */ import { ItemComponent, NumberRange } from '../index';
 
 /**
  * When present on an item, this item can take damage in the
@@ -52,5 +52,5 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageChanceRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): NumberRange;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomComponentInvalidRegistryError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, NamespaceNameError, minecraftcommon } from '../index';
+/* IMPORT */ import { CustomComponentInvalidRegistryError, EngineError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, NamespaceNameError } from '../index';
 
 /**
  * Provides the functionality for registering custom components
@@ -25,7 +25,7 @@ export class ItemComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
      *

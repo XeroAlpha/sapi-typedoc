@@ -1,4 +1,4 @@
-/* IMPORT */ import { CursorControlMode, CursorTargetMode, minecraftserver } from '../index';
+/* IMPORT */ import { CursorControlMode, CursorTargetMode, RGBA } from '../index';
 
 /**
  * The CursorProperties interface is used to describe the
@@ -33,7 +33,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
-    fillColor?: minecraftserver.RGBA;
+    fillColor?: RGBA;
     /**
      * @remarks
      * The fixed distance from the players feet at which the cursor
@@ -48,7 +48,7 @@ export interface CursorProperties {
      * cursor object outline
      *
      */
-    outlineColor?: minecraftserver.RGBA;
+    outlineColor?: RGBA;
     projectThroughLiquid?: boolean;
     /**
      * @remarks

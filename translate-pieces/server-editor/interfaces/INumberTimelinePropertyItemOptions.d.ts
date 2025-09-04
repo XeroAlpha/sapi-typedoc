@@ -1,4 +1,4 @@
-/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString, Vector2 } from '../index';
 
 /**
  * Optional properties for Number Timeline property item
@@ -37,13 +37,13 @@ export interface INumberTimelinePropertyItemOptions extends IPropertyItemOptions
      * The separator slice count for the graph thin lines
      *
      */
-    gridSeparatorSliceCount?: minecraftserver.Vector2;
+    gridSeparatorSliceCount?: Vector2;
     /**
      * @remarks
      * The separator step counts for the graph bold lines
      *
      */
-    gridSeparatorStepCount?: minecraftserver.Vector2;
+    gridSeparatorStepCount?: Vector2;
     /**
      * @remarks
      * True means nodes cannot be dragged or modified

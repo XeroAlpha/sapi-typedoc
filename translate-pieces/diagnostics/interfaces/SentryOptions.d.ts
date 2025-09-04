@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserveradmin } from '../index';
+/* IMPORT */ import { SecretString } from '../index';
 
 /**
  * Describes options for configuring Sentry for this scripting
@@ -19,7 +19,7 @@ export interface SentryOptions {
      * https://docs.sentry.io/concepts/key-terms/dsn-explainer/
      *
      */
-    dsn: minecraftserveradmin.SecretString | string;
+    dsn: SecretString | string;
     /**
      * @remarks
      * The maximum number of breadcrumbs (submitted via {@link

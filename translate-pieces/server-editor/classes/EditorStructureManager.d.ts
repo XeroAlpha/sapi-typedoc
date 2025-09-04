@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, EditorStructure, EditorStructureSearchOptions, minecraftserver } from '../index';
+/* IMPORT */ import { ClipboardItem, EditorStructure, EditorStructureSearchOptions, Vector3 } from '../index';
 
 export class EditorStructureManager {
     private constructor();
@@ -8,7 +8,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    createEmpty(fullName: string, size: minecraftserver.Vector3): EditorStructure;
+    createEmpty(fullName: string, size: Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation

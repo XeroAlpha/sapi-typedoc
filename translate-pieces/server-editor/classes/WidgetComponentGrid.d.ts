@@ -1,4 +1,4 @@
-/* IMPORT */ import { Plane, WidgetComponentBase, minecraftserver } from '../index';
+/* IMPORT */ import { Plane, RGBA, Vector2, WidgetComponentBase } from '../index';
 
 export class WidgetComponentGrid extends WidgetComponentBase {
     private constructor();
@@ -7,19 +7,19 @@ export class WidgetComponentGrid extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    gridColor: minecraftserver.RGBA;
+    gridColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    gridCount: minecraftserver.Vector2;
+    gridCount: Vector2;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    gridSize: minecraftserver.Vector2;
+    gridSize: Vector2;
     /**
      * @remarks
      * @worldMutation

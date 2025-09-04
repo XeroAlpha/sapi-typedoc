@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError, Vector3 } from '../index';
 
 /**
  * A BlockLocationIterator returns the next block location of
@@ -34,7 +34,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     isValid(): boolean;
     /**

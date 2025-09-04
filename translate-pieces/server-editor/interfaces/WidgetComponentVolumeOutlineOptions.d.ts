@@ -1,14 +1,14 @@
-/* IMPORT */ import { WidgetComponentBaseOptions, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBaseOptions } from '../index';
 
 export interface WidgetComponentVolumeOutlineOptions extends WidgetComponentBaseOptions {
-    highlightHullColor?: minecraftserver.RGBA;
-    highlightOutlineColor?: minecraftserver.RGBA;
-    hullColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    highlightHullColor?: RGBA;
+    highlightOutlineColor?: RGBA;
+    hullColor?: RGBA;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
+    outlineColor?: RGBA;
+    rotation?: StructureRotation;
     showHighlightOutline?: boolean;
     showOutline?: boolean;
-    volumeOffset?: minecraftserver.Vector3;
+    volumeOffset?: Vector3;
 }

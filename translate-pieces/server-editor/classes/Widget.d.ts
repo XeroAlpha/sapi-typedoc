@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem, InvalidWidgetError, RelativeVolumeListBlockVolume, WidgetCollisionType, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGrid, WidgetComponentGridOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { BlockVolumeBase, ClipboardItem, InvalidWidgetError, RelativeVolumeListBlockVolume, Vector3, WidgetCollisionType, WidgetComponentBase, WidgetComponentBoundingBox, WidgetComponentBoundingBoxOptions, WidgetComponentClipboard, WidgetComponentClipboardOptions, WidgetComponentEntity, WidgetComponentEntityOptions, WidgetComponentGizmo, WidgetComponentGizmoOptions, WidgetComponentGrid, WidgetComponentGridOptions, WidgetComponentGuide, WidgetComponentGuideOptions, WidgetComponentRenderPrimitive, WidgetComponentRenderPrimitiveOptions, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentSpline, WidgetComponentSplineOptions, WidgetComponentText, WidgetComponentTextOptions, WidgetComponentVolumeOutline, WidgetComponentVolumeOutlineOptions, WidgetGroup, WidgetStateChangeEventData } from '../index';
 
 export class Widget {
     private constructor();
@@ -13,7 +13,7 @@ export class Widget {
      * @worldMutation
      *
      */
-    collisionOffset: minecraftserver.Vector3;
+    collisionOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -37,7 +37,7 @@ export class Widget {
      * @worldMutation
      *
      */
-    location: minecraftserver.Vector3;
+    location: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -69,7 +69,7 @@ export class Widget {
      */
     addBoundingBox(
         componentName: string,
-        size: minecraftserver.Vector3,
+        size: Vector3,
         options?: WidgetComponentBoundingBoxOptions,
     ): WidgetComponentBoundingBox;
     /**
@@ -152,7 +152,7 @@ export class Widget {
      */
     addVolumeOutline(
         componentName: string,
-        volume?: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume?: BlockVolumeBase | RelativeVolumeListBlockVolume,
         options?: WidgetComponentVolumeOutlineOptions,
     ): WidgetComponentVolumeOutline;
     /**

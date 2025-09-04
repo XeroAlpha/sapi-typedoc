@@ -1,4 +1,4 @@
-/* IMPORT */ import { RelativeVolumeListBlockVolume, SelectionContainerBase, minecraftserver } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockVolume, BlockVolumeBase, RelativeVolumeListBlockVolume, SelectionContainerBase, Vector3 } from '../index';
 
 export class SelectionContainerVolume extends SelectionContainerBase {
     private constructor();
@@ -11,11 +11,11 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     add(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -27,13 +27,13 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     /**
      * @throws This function can throw errors.
      */
-    getBoundingBox(): minecraftserver.BlockBoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: Vector3): void;
     /**
      * @remarks
      * @worldMutation
@@ -41,11 +41,11 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     remove(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
@@ -54,16 +54,16 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      */
     set(
         volume:
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | Vector3[]
+            | BlockVolume
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): void;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: Vector3): void;
 }

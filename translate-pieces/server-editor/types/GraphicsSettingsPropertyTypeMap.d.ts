@@ -1,10 +1,10 @@
-/* IMPORT */ import { GraphicsSettingsProperty, minecraftserver } from '../index';
+/* IMPORT */ import { GraphicsMode, GraphicsSettingsProperty } from '../index';
 
 /**
  * Defines type information for graphics settings properties.
  */
 export type GraphicsSettingsPropertyTypeMap = {
-    [GraphicsSettingsProperty.GraphicsMode]?: minecraftserver.GraphicsMode;
+    [GraphicsSettingsProperty.GraphicsMode]?: GraphicsMode;
     [GraphicsSettingsProperty.ShowInvisibleBlocks]?: boolean;
     [GraphicsSettingsProperty.ShowChunkBoundaries]?: boolean;
     [GraphicsSettingsProperty.ShowCompass]?: boolean;

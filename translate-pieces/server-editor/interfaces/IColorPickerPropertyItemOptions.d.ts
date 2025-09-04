@@ -1,4 +1,4 @@
-/* IMPORT */ import { ColorPickerPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { ColorPickerPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString, RGBA } from '../index';
 
 /**
  * Optional properties for Color Picker property item
@@ -24,7 +24,7 @@ export interface IColorPickerPropertyItemOptions extends IPropertyItemOptionsBas
      * This callback is called when UI control value is changed.
      *
      */
-    onChange?: (newValue: minecraftserver.RGBA, oldValue: minecraftserver.RGBA) => void;
+    onChange?: (newValue: RGBA, oldValue: RGBA) => void;
     /**
      * @remarks
      * Localized title of the property item.

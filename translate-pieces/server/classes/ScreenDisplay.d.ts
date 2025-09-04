@@ -1,4 +1,4 @@
-/* IMPORT */ import { HudElement, HudVisibility, InvalidEntityError, RawMessage, RawMessageError, TitleDisplayOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, HudElement, HudVisibility, InvalidEntityError, RawMessage, RawMessageError, TitleDisplayOptions } from '../index';
 
 /**
  * Contains information about user interface elements that are
@@ -96,7 +96,7 @@ export class ScreenDisplay {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      *

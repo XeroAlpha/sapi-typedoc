@@ -24,8 +24,8 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
-import * as minecraftserveradmin from '@minecraft/server-admin';
+import { Player } from '@minecraft/server';
+import { SecretString } from '@minecraft/server-admin';
 export enum HttpRequestMethod {
     /**
      * @remarks
@@ -345,8 +345,8 @@ export class HttpHeader {
      * @earlyExecution
      *
      */
-    value: minecraftserveradmin.SecretString | string;
-    constructor(key: string, value: minecraftserveradmin.SecretString | string);
+    value: SecretString | string;
+    constructor(key: string, value: SecretString | string);
 }
 
 /**
@@ -405,7 +405,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
+    addHeader(key: string, value: SecretString | string): HttpRequest;
     /**
      * @remarks
      * Updates the content of the body of the HTTP request.
@@ -538,7 +538,7 @@ export class PacketReceivedBeforeEvent {
      * Which client sent the network packet to the game server.
      *
      */
-    readonly sender?: minecraftserver.Player;
+    readonly sender?: Player;
 }
 
 /**
@@ -560,7 +560,7 @@ export class PacketSendBeforeEvent {
      * Which clients the network packet is being sent to.
      *
      */
-    readonly recipients: (minecraftserver.Player | undefined)[];
+    readonly recipients: (Player | undefined)[];
 }
 
 export class PacketSendBeforeEventSignal {

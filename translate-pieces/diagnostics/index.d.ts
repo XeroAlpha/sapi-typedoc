@@ -1,7 +1,7 @@
-import * as minecraftcommon from '../common';
-import * as minecraftserveradmin from '../server-admin';
-/* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserveradmin };
+import { InvalidArgumentError } from '../common';
+import { SecretString } from '../server-admin';
+/* PRIVATE */ export { InvalidArgumentError };
+/* PRIVATE */ export { SecretString };
 export { SentryEventLevel } from './enums/SentryEventLevel';
 export { Sentry } from './classes/Sentry';
 export { SentryCaptureContext } from './interfaces/SentryCaptureContext';

@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { DimensionType, EngineError, InvalidArgumentError, Vector3 } from '../index';
 
 /**
  * A utility class to set GameTest parameters for a test.
@@ -139,13 +139,13 @@ export class RegistrationBuilder {
      * methods can be called.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     structureLocation(
-        structureLocation: minecraftserver.Vector3,
-        structureDimension?: minecraftserver.DimensionType | string,
+        structureLocation: Vector3,
+        structureDimension?: DimensionType | string,
     ): RegistrationBuilder;
     /**
      * @remarks

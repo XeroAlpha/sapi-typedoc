@@ -1,3 +1,5 @@
+/* IMPORT */ import { InvalidArgumentErrorType } from '../index';
+
 /**
  * Specifies that a passed-in argument to a method is not
  * correct or allowed.
@@ -11,4 +13,5 @@ export class InvalidArgumentError extends Error {
      *
      */
     index: number;
+    type: InvalidArgumentErrorType;
 }

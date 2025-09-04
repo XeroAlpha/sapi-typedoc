@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, InvalidEntityError, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EntityComponent, InvalidEntityError } from '../index';
 
 /**
  * This is a base abstract class for any entity component that
@@ -78,7 +78,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * If the value is out of bounds, an ArgumentOutOfBounds Error
      * is thrown.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */

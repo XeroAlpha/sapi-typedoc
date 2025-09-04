@@ -1,4 +1,4 @@
-/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentBoundingBoxStateChangeEventParameters, minecraftserver } from '../index';
+/* IMPORT */ import { Axis, BlockVolume, InvalidWidgetComponentError, RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase, WidgetComponentBoundingBoxStateChangeEventParameters } from '../index';
 
 export class WidgetComponentBoundingBox extends WidgetComponentBase {
     private constructor();
@@ -7,7 +7,7 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    boundsOffset: minecraftserver.Vector3;
+    boundsOffset: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -19,31 +19,31 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: StructureMirrorAxis;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: RGBA;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: StructureRotation;
     /**
      * @remarks
      * @worldMutation
@@ -55,13 +55,13 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    size: minecraftserver.Vector3;
+    size: Vector3;
     /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: BlockVolume;
     /**
      * @remarks
      * @worldMutation

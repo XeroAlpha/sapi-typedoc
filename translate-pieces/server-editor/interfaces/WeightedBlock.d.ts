@@ -1,6 +1,6 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { BlockType } from '../index';
 
 export interface WeightedBlock {
-    block: minecraftserver.BlockType;
+    block: BlockType;
     weight: number;
 }

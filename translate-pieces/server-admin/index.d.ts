@@ -1,7 +1,7 @@
 import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
+import { Player } from '../server';
 /* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
+/* PRIVATE */ export { Player };
 export { AdminBeforeEvents } from './classes/AdminBeforeEvents';
 export { AsyncPlayerJoinBeforeEvent } from './classes/AsyncPlayerJoinBeforeEvent';
 export { AsyncPlayerJoinBeforeEventSignal } from './classes/AsyncPlayerJoinBeforeEventSignal';

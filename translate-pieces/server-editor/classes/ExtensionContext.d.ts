@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, Player, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager } from '../index';
 
 /**
  * The extension context is a native (C++) object created for
@@ -54,7 +54,7 @@ export class ExtensionContext {
      * invocation
      *
      */
-    readonly player: minecraftserver.Player;
+    readonly player: Player;
     readonly playtest: PlaytestManager;
     /**
      * @remarks

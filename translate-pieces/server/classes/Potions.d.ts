@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidPotionDeliveryTypeError, InvalidPotionEffectTypeError, ItemStack, PotionDeliveryType, PotionEffectType, minecraftcommon, minecraftvanilladata } from '../index';
+/* IMPORT */ import { EngineError, InvalidPotionDeliveryTypeError, InvalidPotionEffectTypeError, ItemStack, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes, PotionDeliveryType, PotionEffectType } from '../index';
 
 /**
  * @beta
@@ -50,14 +50,14 @@ export class Potions {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidPotionDeliveryTypeError}
      *
      * {@link InvalidPotionEffectTypeError}
      */
     static resolve<
-        T extends string = minecraftvanilladata.MinecraftPotionEffectTypes,
-        U extends string = minecraftvanilladata.MinecraftPotionDeliveryTypes,
+        T extends string = MinecraftPotionEffectTypes,
+        U extends string = MinecraftPotionDeliveryTypes,
     >(potionEffectType: PotionEffectType | T, potionDeliveryType: PotionDeliveryType | U): ItemStack;
 }

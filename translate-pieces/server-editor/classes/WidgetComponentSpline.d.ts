@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, SplineType, Widget, WidgetComponentBase, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, SplineType, Vector3, Widget, WidgetComponentBase } from '../index';
 
 export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();
@@ -27,7 +27,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      *
      * @throws This function can throw errors.
      */
-    getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
+    getInterpolatedPoints(maxPointsPerControlSegment?: number): Vector3[];
     /**
      * @remarks
      * @worldMutation

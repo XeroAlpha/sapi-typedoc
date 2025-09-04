@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPalette, IBlockPaletteItem, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPalette, BlockType, IBlockPaletteItem } from '../index';
 
 export class BlockPaletteManager {
     private constructor();
@@ -18,7 +18,7 @@ export class BlockPaletteManager {
     /**
      * @throws This function can throw errors.
      */
-    getSelectedBlockType(): minecraftserver.BlockType;
+    getSelectedBlockType(): BlockType;
     getSelectedItem(): IBlockPaletteItem;
     /**
      * @remarks

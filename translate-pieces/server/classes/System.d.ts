@@ -1,4 +1,4 @@
-/* IMPORT */ import { NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError, NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo } from '../index';
 
 /**
  * A class that provides system-level events and functions.
@@ -153,9 +153,9 @@ export class System {
      * have installed within the world.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */
@@ -174,7 +174,7 @@ export class System {
      * ticks have occurred.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     waitTicks(ticks: number): Promise<void>;
 }

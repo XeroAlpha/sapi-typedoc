@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LocalizedString, Vector3 } from '../index';
 
 /**
  * Optional properties for Vector3 property item
@@ -25,20 +25,20 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      * Number.MAX_SAFE_INTEGER will be used.
      *
      */
-    max?: Partial<minecraftserver.Vector3>;
+    max?: Partial<Vector3>;
     /**
      * @remarks
      * The min possible limits. If undefined,
      * Number.MIN_SAFE_INTEGER will be used.
      *
      */
-    min?: Partial<minecraftserver.Vector3>;
+    min?: Partial<Vector3>;
     /**
      * @remarks
      * This callback is called when UI control is changed.
      *
      */
-    onChange?: (newValue: minecraftserver.Vector3, oldValue: minecraftserver.Vector3) => void;
+    onChange?: (newValue: Vector3, oldValue: Vector3) => void;
     /**
      * @remarks
      * Localized title of the property item
