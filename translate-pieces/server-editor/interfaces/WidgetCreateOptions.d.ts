@@ -1,15 +1,17 @@
-/* IMPORT */ import { WidgetStateChangeEventData, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { WidgetCollisionType, WidgetStateChangeEventData } from '..';
 
 export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;
-    collisionOffset?: minecraftserver.Vector3;
+    collisionOffset?: Vector3;
     collisionRadius?: number;
+    collisionType?: WidgetCollisionType;
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
     widgetName?: string;
-    worldBoundsMax?: minecraftserver.Vector3;
-    worldBoundsMin?: minecraftserver.Vector3;
+    worldBoundsMax?: Vector3;
+    worldBoundsMin?: Vector3;
 }

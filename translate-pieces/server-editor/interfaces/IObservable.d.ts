@@ -1,4 +1,4 @@
-/* IMPORT */ import { ObservableValidator } from '../index';
+/* IMPORT */ import { ObservableValidator } from '..';
 
 /**
  * Represents a stateful value that can be observed by

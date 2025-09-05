@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, InvalidStructureError, StructureManager, StructureSaveMode, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockPermutation, InvalidStructureError, StructureManager, StructureSaveMode, Vector3 } from '..';
 
 /**
  * Represents a loaded structure template (.mcstructure file).
@@ -47,7 +48,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -67,7 +68,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -91,9 +92,9 @@ export class Structure {
      * include a namespace and must be unique.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -133,7 +134,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */

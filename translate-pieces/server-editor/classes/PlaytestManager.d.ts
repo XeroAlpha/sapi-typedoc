@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameOptions, PlaytestSessionResult } from '../index';
+/* IMPORT */ import { GameOptions, PlaytestSessionResult } from '..';
 
 export class PlaytestManager {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { FormResponse } from '../index';
+/* IMPORT */ import { FormResponse } from '..';
 
 /**
  * Returns data about the player results from a modal action

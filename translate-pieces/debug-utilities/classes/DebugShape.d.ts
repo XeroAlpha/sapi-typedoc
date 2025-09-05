@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { RGB, Vector3 } from '../../server';
 
 /**
  * The base class for all debug shapes. Represents an object in
@@ -11,7 +11,7 @@ export class DebugShape {
      * The color of the shape.
      *
      */
-    color: minecraftserver.RGB;
+    color: RGB;
     /**
      * @remarks
      * Returns true if the shape has a limited time span before
@@ -26,14 +26,14 @@ export class DebugShape {
      * this represents the start point of the line.
      *
      */
-    location: minecraftserver.Vector3;
+    location: Vector3;
     /**
      * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *
      */
-    rotation: minecraftserver.Vector3;
+    rotation: Vector3;
     /**
      * @remarks
      * The scale of the shape. This does not apply to DebugLine or

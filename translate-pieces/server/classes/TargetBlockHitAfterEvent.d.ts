@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity, Vector3 } from '../index';
+/* IMPORT */ import { BlockEvent, Entity, Vector3 } from '..';
 
 /**
  * Contains information related to changes to a target block

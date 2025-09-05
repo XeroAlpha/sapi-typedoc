@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, ImageResourceData } from '../index';
+/* IMPORT */ import { IPropertyItemBase, ImageResourceData } from '..';
 
 /**
  * A property item which supports Image properties

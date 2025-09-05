@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerRules, ContainerRulesErrorReason } from '../index';
+/* IMPORT */ import { ContainerRules, ContainerRulesErrorReason } from '..';
 
 /**
  * Error thrown if {@link ContainerRules} are broken on

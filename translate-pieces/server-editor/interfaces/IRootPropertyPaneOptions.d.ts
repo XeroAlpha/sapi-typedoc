@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction } from '../index';
+/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction } from '..';
 
 /**
  * The options to create a root pane.

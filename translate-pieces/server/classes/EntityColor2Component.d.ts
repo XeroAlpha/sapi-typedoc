@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, PaletteColor } from '../index';
+/* IMPORT */ import { EntityComponent, PaletteColor } from '..';
 
 /**
  * Defines the entity's secondary color. Only works on certain

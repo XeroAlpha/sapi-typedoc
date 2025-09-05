@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomCommandParamType } from '../index';
+/* IMPORT */ import { CustomCommandParamType } from '..';
 
 /**
  * Definition for each parameter expected by the custom

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockTableOperationType, IBlockTableEntryInfo, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BlockTableOperationType, IBlockTableEntryInfo, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Properties of block table item

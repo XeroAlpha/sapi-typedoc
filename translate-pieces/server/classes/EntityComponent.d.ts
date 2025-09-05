@@ -1,4 +1,4 @@
-/* IMPORT */ import { Component, Entity, InvalidEntityError } from '../index';
+/* IMPORT */ import { Component, Entity, InvalidEntityError } from '..';
 
 /**
  * Base class for downstream entity components.

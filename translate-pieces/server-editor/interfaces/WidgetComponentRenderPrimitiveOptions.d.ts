@@ -1,3 +1,3 @@
-/* IMPORT */ import { WidgetComponentBaseOptions } from '../index';
+/* IMPORT */ import { WidgetComponentBaseOptions } from '..';
 
 export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {}

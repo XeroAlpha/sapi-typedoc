@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContinuousAction, NoArgsAction, RegisteredAction, StatefulAction } from '../index';
+/* IMPORT */ import { ContinuousAction, NoArgsAction, RegisteredAction, StatefulAction } from '..';
 
 /**
  * Full set of all possible keyboard actions

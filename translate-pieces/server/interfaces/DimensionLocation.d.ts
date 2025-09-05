@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension } from '../index';
+/* IMPORT */ import { Dimension } from '..';
 
 /**
  * An exact coordinate within the world, including its

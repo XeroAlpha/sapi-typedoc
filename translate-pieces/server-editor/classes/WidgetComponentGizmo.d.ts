@@ -1,4 +1,5 @@
-/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters } from '..';
 
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
@@ -14,7 +15,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    normalizedOffsetOverride?: minecraftserver.Vector3;
+    normalizedOffsetOverride?: Vector3;
     /**
      * @remarks
      * @worldMutation

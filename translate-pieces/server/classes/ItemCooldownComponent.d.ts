@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, Player } from '../index';
+/* IMPORT */ import { ItemComponent, Player } from '..';
 
 /**
  * 表示物品使用冷却组件。当出现在物品上时，表示该物品被实体使用后会有冷却效果。

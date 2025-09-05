@@ -1,3 +1,3 @@
-/* IMPORT */ import { MinecraftEditor } from '../index';
+/* IMPORT */ import { MinecraftEditor } from '..';
 
 export const editor: MinecraftEditor;

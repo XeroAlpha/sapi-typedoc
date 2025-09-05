@@ -1,4 +1,6 @@
-/* IMPORT */ import { ActionFormResponse, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player, RawMessage, RawMessageError } from '../../server';
+/* IMPORT */ import { ActionFormResponse } from '..';
 
 /**
  * Builds a simple player form with buttons that let the player
@@ -12,14 +14,14 @@ export class ActionFormData {
      * Method that sets the body text for the modal form.
      *
      */
-    body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
+    body(bodyText: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
      *
      */
-    button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    button(text: RawMessage | string, iconPath?: string): ActionFormData;
     /**
      * @remarks
      * Adds a section divider to the form.
@@ -33,7 +35,7 @@ export class ActionFormData {
      * @param text
      * Text to display.
      */
-    header(text: minecraftserver.RawMessage | string): ActionFormData;
+    header(text: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a label to the form.
@@ -41,7 +43,7 @@ export class ActionFormData {
      * @param text
      * Text to display.
      */
-    label(text: minecraftserver.RawMessage | string): ActionFormData;
+    label(text: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -54,17 +56,17 @@ export class ActionFormData {
      * Player to show this dialog to.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ActionFormResponse>;
+    show(player: Player): Promise<ActionFormResponse>;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
      */
-    title(titleText: minecraftserver.RawMessage | string): ActionFormData;
+    title(titleText: RawMessage | string): ActionFormData;
 }

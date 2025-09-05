@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports ProgressIndicator properties

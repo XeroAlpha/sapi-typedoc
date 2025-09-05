@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
+import { RGB, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -46,7 +46,7 @@ export class DebugArrow extends DebugLine {
      *
      */
     headSegments: number;
-    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+    constructor(location: Vector3, endLocation: Vector3);
 }
 
 /**
@@ -60,8 +60,8 @@ export class DebugBox extends DebugShape {
      * bound multiplied by the shape's scale.
      *
      */
-    bound: minecraftserver.Vector3;
-    constructor(location: minecraftserver.Vector3);
+    bound: Vector3;
+    constructor(location: Vector3);
 }
 
 /**
@@ -69,7 +69,7 @@ export class DebugBox extends DebugShape {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class DebugCircle extends DebugShape {
-    constructor(location: minecraftserver.Vector3);
+    constructor(location: Vector3);
 }
 
 /**
@@ -114,8 +114,8 @@ export class DebugLine extends DebugShape {
      * spawn between location and endLocation.
      *
      */
-    endLocation: minecraftserver.Vector3;
-    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+    endLocation: Vector3;
+    constructor(location: Vector3, endLocation: Vector3);
 }
 
 /**
@@ -129,7 +129,7 @@ export class DebugShape {
      * The color of the shape.
      *
      */
-    color: minecraftserver.RGB;
+    color: RGB;
     /**
      * @remarks
      * Returns true if the shape has a limited time span before
@@ -144,14 +144,14 @@ export class DebugShape {
      * this represents the start point of the line.
      *
      */
-    location: minecraftserver.Vector3;
+    location: Vector3;
     /**
      * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *
      */
-    rotation: minecraftserver.Vector3;
+    rotation: Vector3;
     /**
      * @remarks
      * The scale of the shape. This does not apply to DebugLine or
@@ -189,7 +189,7 @@ export class DebugShape {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class DebugSphere extends DebugShape {
-    constructor(location: minecraftserver.Vector3);
+    constructor(location: Vector3);
 }
 
 /**
@@ -204,7 +204,7 @@ export class DebugText extends DebugShape {
      *
      */
     text: string;
-    constructor(location: minecraftserver.Vector3, text: string);
+    constructor(location: Vector3, text: string);
 }
 
 export interface HandleCounts {

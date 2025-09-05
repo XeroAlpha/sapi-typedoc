@@ -18,14 +18,14 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.3.0-beta"
+ *   "version": "2.4.0-beta"
  * }
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
+import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '@minecraft/common';
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
-import type * as minecraftvanilladata from '@minecraft/vanilla-data';
+import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '@minecraft/vanilla-data';
 /**
  * @beta
  * Specifies different targeting modes for use in aim-assist.
@@ -300,6 +300,19 @@ export enum ContainerRulesErrorReason {
      *
      */
     ZeroWeightItem = 'ZeroWeightItem',
+}
+
+/**
+ * @beta
+ * Control Scheme types which define how the player moves in
+ * response to player inputs.
+ */
+export enum ControlScheme {
+    CameraRelative = 'CameraRelative',
+    CameraRelativeStrafe = 'CameraRelativeStrafe',
+    LockedPlayerRelativeStrafe = 'LockedPlayerRelativeStrafe',
+    PlayerRelative = 'PlayerRelative',
+    PlayerRelativeStrafe = 'PlayerRelativeStrafe',
 }
 
 /**
@@ -2921,9 +2934,9 @@ export type BlockComponentTypeMap = {
  * those mapped by {@link
  * @minecraft/vanilla-data.BlockStateMapping}.
  */
-export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockTypes}`
-    ? T extends keyof minecraftvanilladata.BlockStateMapping
-        ? minecraftvanilladata.BlockStateMapping[T]
+export type BlockStateArg<T> = T extends `${MinecraftBlockTypes}`
+    ? T extends keyof BlockStateMapping
+        ? BlockStateMapping[T]
         : never
     : Record<string, boolean | number | string>;
 
@@ -3109,9 +3122,9 @@ export type ItemComponentTypeMap = {
  */
 export type VanillaEntityIdentifier =
     | EntityType
-    | minecraftvanilladata.MinecraftEntityTypes
-    | `${minecraftvanilladata.MinecraftEntityTypes}`
-    | `${minecraftvanilladata.MinecraftEntityTypes}<${string}>`;
+    | MinecraftEntityTypes
+    | `${MinecraftEntityTypes}`
+    | `${MinecraftEntityTypes}<${string}>`;
 
 /**
  * @beta
@@ -3231,7 +3244,7 @@ export class AimAssistCategorySettings {
      * Larger numbers have greater priority.
      */
     setBlockPriorities(
-        blockPriorities: Record<keyof typeof minecraftvanilladata.MinecraftBlockTypes | string, number>,
+        blockPriorities: Record<keyof typeof MinecraftBlockTypes | string, number>,
     ): void;
     /**
      * @remarks
@@ -3244,7 +3257,7 @@ export class AimAssistCategorySettings {
      * Larger numbers have greater priority.
      */
     setEntityPriorities(
-        entityPriorities: Record<keyof typeof minecraftvanilladata.MinecraftEntityTypes | string, number>,
+        entityPriorities: Record<keyof typeof MinecraftEntityTypes | string, number>,
     ): void;
 }
 
@@ -3382,8 +3395,8 @@ export class AimAssistPresetSettings {
      */
     setExcludedTargets(
         targets?: (
-            | keyof typeof minecraftvanilladata.MinecraftBlockTypes
-            | keyof typeof minecraftvanilladata.MinecraftEntityTypes
+            | keyof typeof MinecraftBlockTypes
+            | keyof typeof MinecraftEntityTypes
             | string
         )[],
     ): void;
@@ -3397,7 +3410,7 @@ export class AimAssistPresetSettings {
      * A record mapping item Ids to aim-assist category Ids.
      * Category Ids must have a namespace.
      */
-    setItemSettings(itemSettings: Record<keyof typeof minecraftvanilladata.MinecraftItemTypes | string, string>): void;
+    setItemSettings(itemSettings: Record<keyof typeof MinecraftItemTypes | string, string>): void;
     /**
      * @remarks
      * Sets the list of item Ids that will target liquid blocks
@@ -3408,7 +3421,7 @@ export class AimAssistPresetSettings {
      * @param items
      * An array of item Ids.
      */
-    setLiquidTargetingItems(items?: (keyof typeof minecraftvanilladata.MinecraftItemTypes | string)[]): void;
+    setLiquidTargetingItems(items?: (keyof typeof MinecraftItemTypes | string)[]): void;
 }
 
 /**
@@ -3444,11 +3457,11 @@ export class AimAssistRegistry {
      * The created category handle.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */
@@ -3465,11 +3478,11 @@ export class AimAssistRegistry {
      * The created preset handle.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */
@@ -3516,7 +3529,7 @@ export class AimAssistRegistry {
 }
 
 /**
- * @beta
+ * @rc
  * Describes a type of biome.
  */
 export class BiomeType {
@@ -3996,7 +4009,7 @@ export class Block {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -4042,7 +4055,7 @@ export class Block {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -4624,7 +4637,7 @@ export class BlockComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link NamespaceNameError}
      */
@@ -4866,7 +4879,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     isValid(): boolean;
     /**
@@ -5000,9 +5013,9 @@ export class BlockPermutation {
      * Returns the state if the permutation has it, else
      * `undefined`.
      */
-    getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    getState<T extends keyof BlockStateSuperset>(
         stateName: T,
-    ): minecraftvanilladata.BlockStateSuperset[T] | undefined;
+    ): BlockStateSuperset[T] | undefined;
     /**
      * @remarks
      * Creates a copy of the permutation.
@@ -5051,7 +5064,7 @@ export class BlockPermutation {
      * @param blockName
      * An optional set of states to compare against.
      */
-    matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+    matches<T extends string = MinecraftBlockTypes>(
         blockName: T,
         states?: BlockStateArg<T>,
     ): boolean;
@@ -5066,9 +5079,9 @@ export class BlockPermutation {
      * Value of the block property.
      * @throws This function can throw errors.
      */
-    withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    withState<T extends keyof BlockStateSuperset>(
         name: T,
-        value: minecraftvanilladata.BlockStateSuperset[T],
+        value: BlockStateSuperset[T],
     ): BlockPermutation;
     /**
      * @remarks
@@ -5081,7 +5094,7 @@ export class BlockPermutation {
      * @throws This function can throw errors.
      * @seeExample addBlockColorCube.ts
      */
-    static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+    static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
         states?: BlockStateArg<T>,
     ): BlockPermutation;
@@ -6468,7 +6481,7 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -6706,11 +6719,11 @@ export class ContainerSlot {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -6724,11 +6737,11 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -6761,7 +6774,7 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      *
@@ -6824,7 +6837,7 @@ export class CustomCommandRegistry {
      *
      * {@link CustomCommandError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link NamespaceNameError}
      */
@@ -6844,7 +6857,7 @@ export class CustomCommandRegistry {
      *
      * {@link CustomCommandError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link NamespaceNameError}
      */
@@ -6863,6 +6876,22 @@ export class CustomComponentParameters {
      *
      */
     readonly params: unknown;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether the loot source was
+ * damaged by a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DamagedByEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     *
+     */
+    readonly entityType: string;
 }
 
 /**
@@ -6939,7 +6968,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: minecraftcommon.NumberRange;
+    readonly heightRange: NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.
@@ -7020,7 +7049,7 @@ export class Dimension {
      * were placed.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
@@ -7050,13 +7079,13 @@ export class Dimension {
      * could not be found.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -7176,7 +7205,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -7201,15 +7230,35 @@ export class Dimension {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a vector of generated structures that contain the
+     * specified location (ex: Pillager Outpost, Mineshaft, etc.).
+     * The vector will be empty if no structures are found.
+     *
+     * @param location
+     * Location at which to check for structures.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
      * @beta
      * @remarks
@@ -7222,7 +7271,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -7241,7 +7290,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -7256,7 +7305,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -7318,7 +7367,7 @@ export class Dimension {
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -7339,7 +7388,7 @@ export class Dimension {
      * An error will be thrown if the location is in an unloaded
      * chunk.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -7363,7 +7412,7 @@ export class Dimension {
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -7465,7 +7514,7 @@ export class Dimension {
      *
      * {@link EntitySpawnError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
@@ -7802,6 +7851,15 @@ export class EmptyLootItem extends LootPoolEntry {
 }
 
 /**
+ * @beta
+ */
+export class EnchantInfo {
+    private constructor();
+    readonly enchantment: string;
+    readonly range: NumberRange;
+}
+
+/**
  * Contains information on a type of enchantment.
  */
 export class EnchantmentType {
@@ -7861,7 +7919,7 @@ export class Entity {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */
@@ -8042,9 +8100,9 @@ export class Entity {
      * does not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      * @seeExample spawnPoisonedVillager.ts
@@ -8065,7 +8123,7 @@ export class Entity {
      * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      * @seeExample tagsQuery.ts
@@ -8089,11 +8147,11 @@ export class Entity {
      * less than or equal to 0.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -8108,7 +8166,7 @@ export class Entity {
      * Impulse vector.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      * @seeExample applyImpulse.ts
@@ -8127,7 +8185,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
@@ -8308,7 +8366,7 @@ export class Entity {
      * not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -8336,13 +8394,13 @@ export class Entity {
      * entity is looking at.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -8484,7 +8542,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -8501,11 +8559,11 @@ export class Entity {
      * @throws
      * Throws if the query options are misconfigured.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     matches(options: EntityQueryOptions): boolean;
     /**
@@ -8536,7 +8594,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
@@ -8553,7 +8611,7 @@ export class Entity {
      * if the effect is not found or does not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -8591,7 +8649,7 @@ export class Entity {
      * @throws
      * Throws if the entity is invalid.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
@@ -8627,7 +8685,7 @@ export class Entity {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
@@ -8642,7 +8700,7 @@ export class Entity {
      * Data value of the property to set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
@@ -8694,9 +8752,9 @@ export class Entity {
      * Throws if the provided string value does not match the set
      * of accepted enum values (enum properties
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -8730,7 +8788,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
@@ -8751,7 +8809,7 @@ export class Entity {
      * If the event is not defined in the definition of the entity,
      * an error will be thrown.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      * @seeExample triggerEvent.ts e0d38a47
@@ -8778,7 +8836,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
@@ -8937,7 +8995,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * If the value is out of bounds, an ArgumentOutOfBounds Error
      * is thrown.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
@@ -9360,6 +9418,40 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      */
     readonly value: number;
     static readonly componentId = 'minecraft:friction_modifier';
+}
+
+/**
+ * @beta
+ * Loot item condition that checks the value of the mark
+ * variant of a mob as it drops its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHasMarkVariantCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The mark variant value the mob must have for this condition
+     * to pass.
+     *
+     */
+    readonly value: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks the variant value of a mob
+ * as it drops its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityHasVariantCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The variant value the mob must have for this condition to
+     * pass.
+     *
+     */
+    readonly value: number;
 }
 
 /**
@@ -9870,6 +9962,23 @@ export class EntityItemComponent extends EntityComponent {
      */
     readonly itemStack: ItemStack;
     static readonly componentId = 'minecraft:item';
+}
+
+/**
+ * @beta
+ * Loot item condition that checks the entity type of the
+ * entity dropping its loot.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityKilledCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     * Example: 'minecraft:skeleton'.
+     *
+     */
+    readonly entityType: string;
 }
 
 /**
@@ -11701,7 +11810,7 @@ export class InputInfo {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */
@@ -11719,7 +11828,7 @@ export class InputInfo {
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */
@@ -11730,6 +11839,16 @@ export class InputInfo {
      * {@link InvalidEntityError}
      */
     getMovementVector(): Vector2;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether or not the entity
+ * dropping loot is a baby.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class IsBabyCondition extends LootItemCondition {
+    private constructor();
 }
 
 /**
@@ -12175,7 +12294,7 @@ export class ItemComponentRegistry {
      *
      * {@link CustomComponentInvalidRegistryError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link ItemCustomComponentAlreadyRegisteredError}
      *
@@ -12421,7 +12540,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageChanceRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): NumberRange;
 }
 
 /**
@@ -12702,7 +12821,7 @@ export class ItemPotionComponent extends ItemComponent {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
@@ -12713,7 +12832,7 @@ export class ItemPotionComponent extends ItemComponent {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
@@ -12821,7 +12940,7 @@ export class ItemStack {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     readonly localizationKey: string;
     /**
@@ -13108,9 +13227,9 @@ export class ItemStack {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -13125,9 +13244,9 @@ export class ItemStack {
      * @throws
      * Throws if the item stack is stackable.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -13144,7 +13263,7 @@ export class ItemStack {
      * lore line length is 50 characters.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      * @seeExample diamondAwesomeSword.ts
@@ -13556,6 +13675,44 @@ export class ItemUseOnEvent {
 }
 
 /**
+ * @beta
+ * Loot item condition that checks whether or not the drop
+ * source was killed by a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     * Example: 'minecraft:skeleton'.
+     *
+     */
+    readonly entityType: string;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether or not the source of
+ * the loot drop was killed by the player.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByPlayerCondition extends LootItemCondition {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether or not the source of
+ * the loot drop was killed by the player or any of the
+ * player's pets.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class KilledByPlayerOrPetsCondition extends LootItemCondition {
+    private constructor();
+}
+
+/**
  * Contains information related to changes to a lever
  * activating or deactivating.
  * @seeExample leverActionEvent.ts
@@ -13659,6 +13816,16 @@ export class LootItem extends LootPoolEntry {
 
 /**
  * @beta
+ * An abstract base class from which all loot item conditions
+ * are derived. A loot item condition is a set of rules or
+ * requirements which must be met for a loot drop to happen.
+ */
+export class LootItemCondition {
+    private constructor();
+}
+
+/**
+ * @beta
  * A collection of entries which individually determine loot
  * drops. Can contain values determining drop outcomes,
  * including rolls, bonus rolls and tiers.
@@ -13672,7 +13839,8 @@ export class LootPool {
      * from minimum to maximum rolls.
      *
      */
-    readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly bonusRolls: NumberRange;
+    readonly conditions: LootItemCondition[];
     /**
      * @remarks
      * Gets a complete list of all loot pool entries contained in
@@ -13686,7 +13854,7 @@ export class LootPool {
      * represented as a range from minimum to maximum rolls.
      *
      */
-    readonly rolls: minecraftcommon.NumberRange;
+    readonly rolls: NumberRange;
     /**
      * @remarks
      * Gets the loot pool tier values for a given table if they
@@ -13935,6 +14103,65 @@ export class LootTableReference extends LootPoolEntry {
 
 /**
  * @beta
+ * Loot item condition that checks whether an appropriate tool
+ * was used to trigger the loot event. Can describe item type,
+ * count, durability, enchantments, or arrays of item tags to
+ * compare against.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class MatchToolCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The stack size, or count, required for this condition to
+     * pass.
+     *
+     */
+    readonly count: NumberRange;
+    /**
+     * @remarks
+     * The durability value required for this condition to pass.
+     *
+     */
+    readonly durability: NumberRange;
+    /**
+     * @remarks
+     * Array of enchantments required for this condition to pass.
+     *
+     */
+    readonly enchantments: EnchantInfo[];
+    /**
+     * @remarks
+     * The name of the tool item required for this condition to
+     * pass.
+     *
+     */
+    readonly itemName: string;
+    /**
+     * @remarks
+     * Array of item tags which ALL must be matched for this
+     * condition to pass.
+     *
+     */
+    readonly itemTagsAll: string[];
+    /**
+     * @remarks
+     * Array of item tags, from which at least 1 must be matched
+     * for this condition to pass.
+     *
+     */
+    readonly itemTagsAny: string[];
+    /**
+     * @remarks
+     * Array of item tags, from which exactly zero must match for
+     * this condition to pass.
+     *
+     */
+    readonly itemTagsNone: string[];
+}
+
+/**
+ * @beta
  * A specific currently-internal event used for passing
  * messages from client to server.
  */
@@ -14069,6 +14296,22 @@ export class PackSettingChangeAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Loot item condition that checks whether the looting entity
+ * is currently a passenger of a specific type of entity.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PassengerOfEntityCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The entity type required for this condition to pass.
+     *
+     */
+    readonly entityType: string;
 }
 
 /**
@@ -14315,6 +14558,16 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
+     * @beta
+     * @remarks
+     * Returns the player's current control scheme.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getControlScheme(): ControlScheme;
+    /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.
      *
@@ -14450,6 +14703,33 @@ export class Player extends Entity {
      * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * Set a player's control scheme. The player's active camera
+     * preset must be set by scripts like with camera.setCamera()
+     * or commands.
+     *
+     * @worldMutation
+     *
+     * @param controlScheme
+     * Control scheme type. If this argument is undefined, this
+     * method will clear the player's control scheme back to the
+     * player camera's default control scheme.
+     * @returns
+     * Returns nothing if the control scheme was added or updated
+     * successfully. This can throw an InvalidArgumentError if the
+     * control scheme is not allowed by the player's current
+     * camera.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    setControlScheme(controlScheme?: string): void;
     /**
      * @remarks
      * Sets a gamemode override for this player.
@@ -14603,13 +14883,13 @@ export class PlayerAimAssist {
      * aim-assist will be disabled.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
@@ -16023,6 +16303,80 @@ export class PlayerSwingStartAfterEventSignal {
 
 /**
  * @beta
+ * Contains information related to when a player successfully
+ * names an Entity with a named Name Tag item.
+ */
+export class PlayerUseNameTagAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that was named by the player.
+     *
+     * @worldMutation
+     *
+     */
+    entityNamed: Entity;
+    /**
+     * @remarks
+     * The new name that the player has given to the entity.
+     *
+     * @worldMutation
+     *
+     */
+    newName: string;
+    /**
+     * @remarks
+     * Handle to the player that used the name tag.
+     *
+     * @worldMutation
+     *
+     */
+    player: Player;
+    /**
+     * @remarks
+     * The previous name of the entity before the player used the
+     * name tag. This will be undefined if the entity was not
+     * previously named.
+     *
+     * @worldMutation
+     *
+     */
+    previousName?: string;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player
+ * successfully names an Entity with a named Name Tag item.
+ */
+export class PlayerUseNameTagAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Subscribes the specified callback to a player use name tag
+     * after event.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: PlayerUseNameTagAfterEvent) => void): (arg0: PlayerUseNameTagAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes the specified callback from a player use name tag
+     * after event.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerUseNameTagAfterEvent) => void): void;
+}
+
+/**
+ * @beta
  * Represents how the potion effect is delivered.
  */
 export class PotionDeliveryType {
@@ -16044,7 +16398,7 @@ export class PotionEffectType {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     readonly durationTicks?: number;
     readonly id: string;
@@ -16100,15 +16454,15 @@ export class Potions {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidPotionDeliveryTypeError}
      *
      * {@link InvalidPotionEffectTypeError}
      */
     static resolve<
-        T extends string = minecraftvanilladata.MinecraftPotionEffectTypes,
-        U extends string = minecraftvanilladata.MinecraftPotionDeliveryTypes,
+        T extends string = MinecraftPotionEffectTypes,
+        U extends string = MinecraftPotionDeliveryTypes,
     >(potionEffectType: PotionEffectType | T, potionDeliveryType: PotionDeliveryType | U): ItemStack;
 }
 
@@ -16376,6 +16730,82 @@ export class ProjectileHitEntityAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The chance, from 0.0-1.0, that loot will drop.
+     *
+     */
+    readonly chance: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop, modified by the level of
+ * looting enchantment on the tool used.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomChanceWithLootingCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The base chance, from 0.0-1.0, that loot will drop. Will be
+     * modified by the 'lootingMultiplier' value.
+     *
+     */
+    readonly chance: number;
+    /**
+     * @remarks
+     * The increase in drop chance per looting enchant level.
+     *
+     */
+    readonly lootingMultiplier: number;
+}
+
+/**
+ * @beta
+ * Loot item condition that applies given values to the chances
+ * that loot will drop based on the current difficulty level.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomDifficultyChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * A four-element array containing the chance of a loot drop
+     * occurring for each difficulty level, in order: Peaceful,
+     * Easy, Normal, Hard.
+     *
+     */
+    readonly chances: number[];
+}
+
+/**
+ * @beta
+ * Loot item condition that applies a given value to the
+ * chances that loot will drop, modified by the region the drop
+ * is happening within.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
+    private constructor();
+    /**
+     * @remarks
+     * The base chance, from 0.0-1.0, that loot will drop. Will be
+     * modified by the current region's multiplier.
+     *
+     */
+    readonly maxChance: number;
 }
 
 /**
@@ -16784,7 +17214,7 @@ export class ScreenDisplay {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      *
@@ -17096,7 +17526,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -17116,7 +17546,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -17140,9 +17570,9 @@ export class Structure {
      * include a namespace and must be unique.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -17182,7 +17612,7 @@ export class Structure {
      * Throws if the location is outside the structure's bounds.
      * Throws if the Structure has been deleted.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -17219,9 +17649,9 @@ export class StructureManager {
      * Throws if the identifier is invalid. A valid identifier must
      * include a namespace and must be unique.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
@@ -17248,7 +17678,7 @@ export class StructureManager {
      * world bounds.
      *
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     createFromWorld(
         identifier: string,
@@ -17274,7 +17704,7 @@ export class StructureManager {
      * Throws if a structure cannot be removed. For example, a
      * structure loaded from a Behavior Pack.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     delete(structure: string | Structure): boolean;
     /**
@@ -17317,9 +17747,9 @@ export class StructureManager {
      * Throws if the placement location contains blocks that are
      * outside the world bounds.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */
@@ -17563,9 +17993,9 @@ export class System {
      * have installed within the world.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */
@@ -17584,7 +18014,7 @@ export class System {
      * ticks have occurred.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     waitTicks(ticks: number): Promise<void>;
 }
@@ -18062,7 +18492,7 @@ export class World {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -18217,7 +18647,7 @@ export class World {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -18244,7 +18674,7 @@ export class World {
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -18270,7 +18700,7 @@ export class World {
      * An error will be thrown if fade is less than 0.0.
      *
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -18339,7 +18769,7 @@ export class World {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -18366,7 +18796,7 @@ export class World {
      * Throws if the given dynamic property identifier is not
      * defined.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      * @seeExample incrementDynamicProperty.ts
      * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
@@ -18761,6 +19191,16 @@ export class WorldAfterEvents {
      *
      */
     readonly playerSwingStart: PlayerSwingStartAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * An event for when a player uses a named name tag on an
+     * entity.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerUseNameTag: PlayerUseNameTagAfterEventSignal;
     /**
      * @remarks
      * A pressure plate has popped back up (i.e., there are no

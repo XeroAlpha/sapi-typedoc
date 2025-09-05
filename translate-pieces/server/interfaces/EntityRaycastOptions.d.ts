@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityFilter } from '../index';
+/* IMPORT */ import { EntityFilter } from '..';
 
 /**
  * Contains additional options for an entity raycast operation.

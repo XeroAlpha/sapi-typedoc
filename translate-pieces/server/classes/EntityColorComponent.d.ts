@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 /**
  * Defines the entity's color. Only works on certain entities

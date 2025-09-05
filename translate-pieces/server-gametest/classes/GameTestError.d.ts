@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameTestErrorContext, GameTestErrorType } from '../index';
+/* IMPORT */ import { GameTestErrorContext, GameTestErrorType } from '..';
 
 export class GameTestError extends Error {
     private constructor();

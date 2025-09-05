@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockMaskList, ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockPermutation, BlockType, BlockVolumeBase, CompoundBlockVolume, ListBlockVolume, Vector3 } from '../../server';
+/* IMPORT */ import { BlockMaskList, ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume } from '..';
 
 export class BlockUtilities {
     private constructor();
@@ -9,8 +10,11 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | RelativeVolumeListBlockVolume,
-        block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        volume:
+            | BlockVolumeBase
+            | CompoundBlockVolume
+            | RelativeVolumeListBlockVolume,
+        block?: BlockPermutation | BlockType | string,
     ): void;
     /**
      * @remarks
@@ -18,7 +22,7 @@ export class BlockUtilities {
      *
      */
     findObscuredBlocksWithinVolume(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
     ): RelativeVolumeListBlockVolume;
     /**
      * @remarks
@@ -26,32 +30,32 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      */
-    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    getContiguousSelection(properties?: ContiguousSelectionProperties): CompoundBlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
+    getDimensionLocationBoundingBox(): BlockBoundingBox;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionMaxLocation(): minecraftserver.Vector3;
+    getDimensionMaxLocation(): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    getDimensionMinLocation(): minecraftserver.Vector3;
+    getDimensionMinLocation(): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    getFacePreviewSelection(properties?: QuickExtrudeProperties): ListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -59,10 +63,10 @@ export class BlockUtilities {
      */
     isLocationInsideCurrentDimensionBounds(
         locationOrVolumeOrBounds:
-            | minecraftserver.BlockBoundingBox
-            | minecraftserver.BlockVolumeBase
+            | BlockBoundingBox
+            | BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3,
+            | Vector3,
     ): boolean;
     /**
      * @remarks
@@ -77,7 +81,7 @@ export class BlockUtilities {
      *
      */
     shrinkWrapVolume(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
     ): RelativeVolumeListBlockVolume;
     /**
      * @remarks
@@ -86,7 +90,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     trimVolumeToFitContents(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         retainMarqueeAfterTrimming: boolean,
         ignoreLiquid: boolean,
         ignoreNoCollision: boolean,

@@ -1,4 +1,5 @@
-/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { BlockVolumeBase, Vector3 } from '../../server';
+/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, RelativeVolumeListBlockVolume } from '..';
 
 /**
  * A ClipboardItem is a handle to an object which represents a
@@ -14,9 +15,9 @@ export class ClipboardItem {
      *
      */
     readonly isEmpty: boolean;
-    readonly normalizedOrigin: minecraftserver.Vector3;
-    readonly originalWorldLocation: minecraftserver.Vector3;
-    readonly size: minecraftserver.Vector3;
+    readonly normalizedOrigin: Vector3;
+    readonly originalWorldLocation: Vector3;
+    readonly size: Vector3;
     /**
      * @remarks
      * Clear the contents of the item
@@ -33,7 +34,7 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     getPredictedWriteVolume(
-        location: minecraftserver.Vector3,
+        location: Vector3,
         options?: ClipboardWriteOptions,
     ): RelativeVolumeListBlockVolume;
     /**
@@ -52,7 +53,7 @@ export class ClipboardItem {
      *
      * @throws This function can throw errors.
      */
-    readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
+    readFromWorld(source: BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks
      * Apply the contents of a ClipboardItem to the world at a
@@ -73,5 +74,5 @@ export class ClipboardItem {
      * Success or Failure
      * @throws This function can throw errors.
      */
-    writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
+    writeToWorld(location: Vector3, options?: ClipboardWriteOptions): boolean;
 }

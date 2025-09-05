@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputInfo, PlayerButtonInputAfterEvent, WorldAfterEvents } from '../index';
+/* IMPORT */ import { InputInfo, PlayerButtonInputAfterEvent, WorldAfterEvents } from '..';
 
 /**
  * All the different input buttons that are supported. Use with

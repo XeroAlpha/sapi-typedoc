@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityFilter, Vector3 } from '../index';
+/* IMPORT */ import { EntityFilter, Vector3 } from '..';
 
 /**
  * Contains options for selecting entities within an area.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPistonComponent } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPistonComponent } from '..';
 
 /**
  * Contains information related to changes to a piston

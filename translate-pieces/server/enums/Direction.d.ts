@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block } from '../index';
+/* IMPORT */ import { Block } from '..';
 
 /**
  * 通用枚举之一。表示朝向。

@@ -1,4 +1,5 @@
-/* IMPORT */ import { WidgetComponentBase, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { WidgetComponentBase } from '..';
 
 export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
@@ -7,7 +8,7 @@ export class WidgetComponentText extends WidgetComponentBase {
      * @worldMutation
      *
      */
-    color: minecraftserver.RGBA;
+    color: RGBA;
     /**
      * @remarks
      * @worldMutation

@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '../index';
+/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '..';
 
 /**
  * Contains methods relating to the active camera for the

@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerInputModeChangeAfterEvent } from '../index';
+/* IMPORT */ import { PlayerInputModeChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to player input mode.

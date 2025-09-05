@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Player } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation, Player } from '..';
 
 /**
  * Contains information regarding a specific block being broken

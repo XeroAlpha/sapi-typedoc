@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemType } from '../index';
+/* IMPORT */ import { ItemType } from '..';
 
 /**
  * Returns the set of item types registered within Minecraft.

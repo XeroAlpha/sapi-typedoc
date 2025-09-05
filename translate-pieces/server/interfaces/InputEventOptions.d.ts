@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonState, InputButton } from '../index';
+/* IMPORT */ import { ButtonState, InputButton } from '..';
 
 /**
  * An interface that is passed into {@link

@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType, minecraftvanilladata } from '../index';
+/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType } from '..';
+/* IMPORT */ import { BlockStateSuperset, MinecraftBlockTypes } from '../../vanilla-data';
 
 /**
  * Contains the combination of type {@link BlockType} and
@@ -71,9 +72,9 @@ export class BlockPermutation {
      * Returns the state if the permutation has it, else
      * `undefined`.
      */
-    getState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    getState<T extends keyof BlockStateSuperset>(
         stateName: T,
-    ): minecraftvanilladata.BlockStateSuperset[T] | undefined;
+    ): BlockStateSuperset[T] | undefined;
     /**
      * @remarks
      * Creates a copy of the permutation.
@@ -122,7 +123,7 @@ export class BlockPermutation {
      * @param blockName
      * An optional set of states to compare against.
      */
-    matches<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+    matches<T extends string = MinecraftBlockTypes>(
         blockName: T,
         states?: BlockStateArg<T>,
     ): boolean;
@@ -137,9 +138,9 @@ export class BlockPermutation {
      * Value of the block property.
      * @throws This function can throw errors.
      */
-    withState<T extends keyof minecraftvanilladata.BlockStateSuperset>(
+    withState<T extends keyof BlockStateSuperset>(
         name: T,
-        value: minecraftvanilladata.BlockStateSuperset[T],
+        value: BlockStateSuperset[T],
     ): BlockPermutation;
     /**
      * @remarks
@@ -152,7 +153,7 @@ export class BlockPermutation {
      * @throws This function can throw errors.
      * @seeExample addBlockColorCube.ts
      */
-    static resolve<T extends string = minecraftvanilladata.MinecraftBlockTypes>(
+    static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
         states?: BlockStateArg<T>,
     ): BlockPermutation;

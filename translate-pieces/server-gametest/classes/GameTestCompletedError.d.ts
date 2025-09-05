@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameTestCompletedErrorReason } from '../index';
+/* IMPORT */ import { GameTestCompletedErrorReason } from '..';
 
 export class GameTestCompletedError extends Error {
     private constructor();

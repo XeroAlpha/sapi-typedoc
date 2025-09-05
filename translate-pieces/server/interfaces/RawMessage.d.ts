@@ -1,4 +1,4 @@
-/* IMPORT */ import { RawMessageScore } from '../index';
+/* IMPORT */ import { RawMessageScore } from '..';
 
 /**
  * Defines a JSON structure that is used for more flexible.

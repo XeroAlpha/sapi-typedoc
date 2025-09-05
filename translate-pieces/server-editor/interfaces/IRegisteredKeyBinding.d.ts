@@ -1,4 +1,4 @@
-/* IMPORT */ import { KeyProcessingState } from '../index';
+/* IMPORT */ import { KeyProcessingState } from '..';
 
 /**
  * Key binding that is registered to an input context

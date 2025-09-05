@@ -1,7 +1,7 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export interface GameTestErrorContext {
-    absolutePosition: minecraftserver.Vector3;
-    relativePosition: minecraftserver.Vector3;
+    absolutePosition: Vector3;
+    relativePosition: Vector3;
     tickCount: number;
 }

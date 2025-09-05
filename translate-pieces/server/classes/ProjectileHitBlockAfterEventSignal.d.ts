@@ -1,4 +1,4 @@
-/* IMPORT */ import { ProjectileHitBlockAfterEvent } from '../index';
+/* IMPORT */ import { ProjectileHitBlockAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a projectile

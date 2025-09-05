@@ -1,5 +1,6 @@
-/* IMPORT */ import { WidgetComponentBaseOptions, minecraftserver } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { WidgetComponentBaseOptions } from '..';
 
 export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
+    color?: RGBA;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, ComboBoxPropertyItemDataType, IComboBoxPropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, ComboBoxPropertyItemDataType, IComboBoxPropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for ComboBox property item

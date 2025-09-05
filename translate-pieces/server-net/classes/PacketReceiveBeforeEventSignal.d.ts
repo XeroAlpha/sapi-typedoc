@@ -1,4 +1,4 @@
-/* IMPORT */ import { PacketEventOptions, PacketReceivedBeforeEvent } from '../index';
+/* IMPORT */ import { PacketEventOptions, PacketReceivedBeforeEvent } from '..';
 
 export class PacketReceiveBeforeEventSignal {
     private constructor();

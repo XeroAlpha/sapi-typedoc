@@ -1,11 +1,18 @@
-/* IMPORT */ import { minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockPermutation, InvalidStructureError, Vector3 } from '../../server';
 
 export class EditorStructure {
     private constructor();
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
+     */
+    readonly description: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
      */
     readonly displayName: string;
     readonly id: string;
@@ -13,29 +20,73 @@ export class EditorStructure {
     /**
      * @throws This property can throw when used.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    readonly size: minecraftserver.Vector3;
+    readonly normalizedOrigin: Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly notes: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly offset: Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly originalWorldLocation: Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly size: Vector3;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly structureFullName: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly structureName: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidStructureError}
+     */
+    readonly structureNamespace: string;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation | undefined;
+    getBlockPermutation(
+        location: Vector3,
+    ): BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
-    getIsWaterlogged(location: minecraftserver.Vector3): boolean;
+    getIsWaterlogged(location: Vector3): boolean;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     getTags(): string[];
     /**
@@ -46,13 +97,13 @@ export class EditorStructure {
      * Defaults to: false
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     setBlockPermutation(
-        location: minecraftserver.Vector3,
-        blockPermutation: minecraftserver.BlockPermutation,
+        location: Vector3,
+        blockPermutation: BlockPermutation,
         waterlogged?: boolean,
     ): void;
     /**
@@ -61,7 +112,7 @@ export class EditorStructure {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link InvalidStructureError}
      */
     setTags(tags: string[]): void;
 }

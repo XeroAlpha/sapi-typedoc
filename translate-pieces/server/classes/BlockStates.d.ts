@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockStateType } from '../index';
+/* IMPORT */ import { Block, BlockStateType } from '..';
 
 /**
  * Enumerates all {@link BlockStateType}s.

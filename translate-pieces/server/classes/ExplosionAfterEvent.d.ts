@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Dimension, Entity } from '../index';
+/* IMPORT */ import { Block, Dimension, Entity } from '..';
 
 /**
  * Contains information regarding an explosion that has

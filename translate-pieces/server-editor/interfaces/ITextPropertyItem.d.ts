@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LayoutAlignment, LocalizedString } from '../index';
+/* IMPORT */ import { IPropertyItemBase, LayoutAlignment, LocalizedString } from '..';
 
 /**
  * A property item which supports Text properties

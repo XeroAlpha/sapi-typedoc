@@ -1,4 +1,4 @@
-/* IMPORT */ import { IMenuCreationParams, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { IMenuCreationParams, NoArgsAction, RegisteredAction } from '..';
 
 export interface IMenu {
     /**

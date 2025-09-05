@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerEmoteAfterEvent } from '../index';
+/* IMPORT */ import { PlayerEmoteAfterEvent } from '..';
 
 export class PlayerEmoteAfterEventSignal {
     private constructor();

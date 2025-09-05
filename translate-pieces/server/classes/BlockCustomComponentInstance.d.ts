@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, CustomComponentParameters } from '../index';
+/* IMPORT */ import { BlockComponent, CustomComponentParameters } from '..';
 
 /**
  * An instance of a custom component on a block.

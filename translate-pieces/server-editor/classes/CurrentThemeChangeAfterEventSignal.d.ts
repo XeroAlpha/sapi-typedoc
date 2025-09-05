@@ -1,4 +1,4 @@
-/* IMPORT */ import { CurrentThemeChangeAfterEvent } from '../index';
+/* IMPORT */ import { CurrentThemeChangeAfterEvent } from '..';
 
 export class CurrentThemeChangeAfterEventSignal {
     private constructor();

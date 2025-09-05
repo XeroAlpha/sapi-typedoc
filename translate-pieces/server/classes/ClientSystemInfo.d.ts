@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlatformType, SystemInfo } from '../index';
+/* IMPORT */ import { PlatformType, SystemInfo } from '..';
 
 /**
  * Contains the device information for a client instance.

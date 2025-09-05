@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 /**
  * Represents the flying speed of an entity.

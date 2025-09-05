@@ -1,4 +1,4 @@
-/* IMPORT */ import { ExtensionContext, registerEditorExtension } from '../index';
+/* IMPORT */ import { ExtensionContext, registerEditorExtension } from '..';
 
 /**
  * Editor Extensions are the basis for all player specific,

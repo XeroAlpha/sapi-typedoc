@@ -1,4 +1,4 @@
-/* IMPORT */ import { TargetBlockHitAfterEvent } from '../index';
+/* IMPORT */ import { TargetBlockHitAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a target block

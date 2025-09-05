@@ -1,4 +1,4 @@
-/* IMPORT */ import { DimensionType } from '../index';
+/* IMPORT */ import { DimensionType } from '..';
 
 /**
  * Used for accessing all available dimension types.

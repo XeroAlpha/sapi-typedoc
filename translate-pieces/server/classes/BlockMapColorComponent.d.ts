@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, RGBA, TintMethod } from '../index';
+/* IMPORT */ import { BlockComponent, RGBA, TintMethod } from '..';
 
 /**
  * Represents the color of a block when displayed on a map.

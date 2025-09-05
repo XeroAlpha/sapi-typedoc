@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerLeaveAfterEvent } from '../index';
+/* IMPORT */ import { PlayerLeaveAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to a player leaving the

@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString } from '../index';
+/* IMPORT */ import { LocalizedString } from '..';
 
 /**
  * Properties of toggle group property item list entry

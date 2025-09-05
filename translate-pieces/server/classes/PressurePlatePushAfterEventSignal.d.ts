@@ -1,4 +1,4 @@
-/* IMPORT */ import { PressurePlatePushAfterEvent } from '../index';
+/* IMPORT */ import { PressurePlatePushAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a pressure

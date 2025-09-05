@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '../index';
+/* IMPORT */ import { IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 /**
  * Base for creating new brush shapes

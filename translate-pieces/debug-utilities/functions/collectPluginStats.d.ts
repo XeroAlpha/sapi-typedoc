@@ -1,4 +1,4 @@
-/* IMPORT */ import { PluginStats } from '../index';
+/* IMPORT */ import { PluginStats } from '..';
 
 /**
  * @remarks

@@ -1,6 +1,6 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export interface CursorPosition {
     FaceDirection: number;
-    Position: minecraftserver.Vector3;
+    Position: Vector3;
 }

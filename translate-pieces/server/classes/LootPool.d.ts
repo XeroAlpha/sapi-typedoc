@@ -1,4 +1,5 @@
-/* IMPORT */ import { LootPoolEntry, LootPoolTiers, minecraftcommon } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
+/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers } from '..';
 
 /**
  * @beta
@@ -15,7 +16,8 @@ export class LootPool {
      * from minimum to maximum rolls.
      *
      */
-    readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly bonusRolls: NumberRange;
+    readonly conditions: LootItemCondition[];
     /**
      * @remarks
      * Gets a complete list of all loot pool entries contained in
@@ -29,7 +31,7 @@ export class LootPool {
      * represented as a range from minimum to maximum rolls.
      *
      */
-    readonly rolls: minecraftcommon.NumberRange;
+    readonly rolls: NumberRange;
     /**
      * @remarks
      * Gets the loot pool tier values for a given table if they

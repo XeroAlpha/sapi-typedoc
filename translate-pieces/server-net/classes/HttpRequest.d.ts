@@ -1,4 +1,5 @@
-/* IMPORT */ import { HttpHeader, HttpRequestMethod, minecraftserveradmin } from '../index';
+/* IMPORT */ import { SecretString } from '../../server-admin';
+/* IMPORT */ import { HttpHeader, HttpRequestMethod } from '..';
 
 /**
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
@@ -70,7 +71,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    addHeader(key: string, value: minecraftserveradmin.SecretString | string): HttpRequest;
+    addHeader(key: string, value: SecretString | string): HttpRequest;
     /**
      * @remarks
      * 将请求的主体负载内容设定为指定内容。

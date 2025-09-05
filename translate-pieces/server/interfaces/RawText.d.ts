@@ -1,4 +1,4 @@
-/* IMPORT */ import { RawMessage } from '../index';
+/* IMPORT */ import { RawMessage } from '..';
 
 /**
  * A `RawMessage` with only the `rawtext` property. When a

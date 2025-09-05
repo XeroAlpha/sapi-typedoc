@@ -1,4 +1,4 @@
-/* IMPORT */ import { PropertyItemType } from '../index';
+/* IMPORT */ import { PropertyItemType } from '..';
 
 /**
  * Common base for all property items

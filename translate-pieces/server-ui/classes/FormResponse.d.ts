@@ -1,4 +1,4 @@
-/* IMPORT */ import { FormCancelationReason } from '../index';
+/* IMPORT */ import { FormCancelationReason } from '..';
 
 /**
  * Base type for a form response.

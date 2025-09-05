@@ -1,4 +1,4 @@
-/* IMPORT */ import { ShutdownEvent } from '../index';
+/* IMPORT */ import { ShutdownEvent } from '..';
 
 /**
  * Provides an adaptable interface for callers to subscribe to

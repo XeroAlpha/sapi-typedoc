@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 /**
  * When added, this component signifies that dyes can be used

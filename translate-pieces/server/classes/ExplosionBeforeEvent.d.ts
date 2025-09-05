@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, ExplosionAfterEvent } from '../index';
+/* IMPORT */ import { Block, ExplosionAfterEvent } from '..';
 
 /**
  * Contains information regarding an explosion that has

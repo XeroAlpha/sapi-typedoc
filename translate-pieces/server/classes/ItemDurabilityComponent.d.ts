@@ -1,4 +1,5 @@
-/* IMPORT */ import { ItemComponent, minecraftcommon } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
+/* IMPORT */ import { ItemComponent } from '..';
 
 /**
  * 表示物品耐久组件。当出现在物品上时，表示该物品可以在使用中受到损坏。
@@ -71,5 +72,5 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @throws This function can throw errors.
      */
-    getDamageChanceRange(): minecraftcommon.NumberRange;
+    getDamageChanceRange(): NumberRange;
 }

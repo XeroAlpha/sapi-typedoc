@@ -1,4 +1,4 @@
-/* IMPORT */ import { ScriptEventCommandMessageAfterEventSignal } from '../index';
+/* IMPORT */ import { ScriptEventCommandMessageAfterEventSignal } from '..';
 
 /**
  * Provides a set of events that fire within the broader

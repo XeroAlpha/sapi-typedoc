@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerInventoryType } from '../index';
+/* IMPORT */ import { PlayerInventoryType } from '..';
 
 /**
  * Contains additional filtering options for inventory item

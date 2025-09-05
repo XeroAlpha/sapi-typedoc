@@ -1,4 +1,4 @@
-/* IMPORT */ import { IDataTablePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { IDataTablePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Properties of data table item

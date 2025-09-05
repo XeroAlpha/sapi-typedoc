@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { BlockLocationIterator, Vector3 } from '../../server';
 
 /**
  * @remarks
@@ -11,6 +11,6 @@
  * the operation to apply over each block location
  */
 export declare function executeLargeOperationFromIterator(
-    blockLocationIterator: minecraftserver.BlockLocationIterator,
-    operation: (blockLocation: minecraftserver.Vector3) => void,
+    blockLocationIterator: BlockLocationIterator,
+    operation: (blockLocation: Vector3) => void,
 ): Promise<void>;

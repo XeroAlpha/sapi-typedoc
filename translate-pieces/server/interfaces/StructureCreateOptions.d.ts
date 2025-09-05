@@ -1,4 +1,4 @@
-/* IMPORT */ import { StructureSaveMode } from '../index';
+/* IMPORT */ import { StructureSaveMode } from '..';
 
 /**
  * Provides additional options for {@link

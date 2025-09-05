@@ -1,4 +1,4 @@
-/* IMPORT */ import { LogChannel } from '../index';
+/* IMPORT */ import { LogChannel } from '..';
 
 /**
  * Player Logger Properties.

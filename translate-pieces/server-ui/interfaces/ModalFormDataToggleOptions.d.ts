@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { RawMessage } from '../../server';
 
 /**
  * An interface that is passed into {@link
@@ -18,5 +18,5 @@ export interface ModalFormDataToggleOptions {
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
 }

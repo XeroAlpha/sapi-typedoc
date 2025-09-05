@@ -1,4 +1,5 @@
-/* IMPORT */ import { CursorProperties, CursorRay, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { CursorProperties, CursorRay } from '..';
 
 /**
  * The 3D block cursor is controlled through this read only
@@ -54,7 +55,7 @@ export class Cursor {
      *
      * @throws This function can throw errors.
      */
-    getPosition(): minecraftserver.Vector3;
+    getPosition(): Vector3;
     /**
      * @remarks
      * Get a property object which represents the current
@@ -97,7 +98,7 @@ export class Cursor {
      * movement was restricted)
      * @throws This function can throw errors.
      */
-    moveBy(offset: minecraftserver.Vector3): minecraftserver.Vector3;
+    moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
      * Reset the 3D block cursor to the system default state

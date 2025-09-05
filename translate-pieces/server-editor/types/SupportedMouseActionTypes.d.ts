@@ -1,4 +1,4 @@
-/* IMPORT */ import { MouseRayCastAction, RegisteredAction } from '../index';
+/* IMPORT */ import { MouseRayCastAction, RegisteredAction } from '..';
 
 /**
  * Full set of all possible mouse actions

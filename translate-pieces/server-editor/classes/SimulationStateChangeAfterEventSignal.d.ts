@@ -1,4 +1,4 @@
-/* IMPORT */ import { SimulationStateAfterEvent } from '../index';
+/* IMPORT */ import { SimulationStateAfterEvent } from '..';
 
 export class SimulationStateChangeAfterEventSignal {
     private constructor();

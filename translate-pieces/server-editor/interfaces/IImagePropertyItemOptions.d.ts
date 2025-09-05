@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LayoutAlignment } from '../index';
+/* IMPORT */ import { IPropertyItemOptionsBase, LayoutAlignment } from '..';
 
 /**
  * Optional properties for Image property item

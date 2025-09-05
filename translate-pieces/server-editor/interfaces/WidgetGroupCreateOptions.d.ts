@@ -1,4 +1,4 @@
-/* IMPORT */ import { WidgetGroupSelectionMode } from '../index';
+/* IMPORT */ import { WidgetGroupSelectionMode } from '..';
 
 export interface WidgetGroupCreateOptions {
     groupSelectionMode?: WidgetGroupSelectionMode;

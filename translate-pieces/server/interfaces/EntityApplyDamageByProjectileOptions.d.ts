@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity } from '../index';
+/* IMPORT */ import { Entity } from '..';
 
 /**
  * Additional options for when damage has been applied via a

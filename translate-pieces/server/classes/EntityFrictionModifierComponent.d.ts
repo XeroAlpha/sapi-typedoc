@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 /**
  * Defines how much friction affects this entity.

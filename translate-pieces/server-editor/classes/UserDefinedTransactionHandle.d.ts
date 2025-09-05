@@ -1,4 +1,4 @@
-/* IMPORT */ import { TransactionManager, UserDefinedTransactionHandlerId, registerUserDefinedTransactionHandler } from '../index';
+/* IMPORT */ import { TransactionManager, UserDefinedTransactionHandlerId, registerUserDefinedTransactionHandler } from '..';
 
 /**
  * A strongly typed transaction handle to enforce type safety

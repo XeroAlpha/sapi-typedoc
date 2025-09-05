@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Player, Vector3 } from '../index';
+/* IMPORT */ import { Dimension, Player, Vector3 } from '..';
 
 /**
  * Contains information related to changes to a player's

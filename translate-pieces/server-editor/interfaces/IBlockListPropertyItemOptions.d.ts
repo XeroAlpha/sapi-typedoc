@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase } from '../index';
+/* IMPORT */ import { IPropertyItemOptionsBase } from '..';
 
 /**
  * Optional properties for Bool property item

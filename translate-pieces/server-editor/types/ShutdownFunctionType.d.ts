@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPlayerUISession } from '../index';
+/* IMPORT */ import { IPlayerUISession } from '..';
 
 /**
  * Callback type when an extension instance is shutdown for a

@@ -1,4 +1,4 @@
-/* IMPORT */ import { MouseActionType, MouseInputType, MouseModifiers } from '../index';
+/* IMPORT */ import { MouseActionType, MouseInputType, MouseModifiers } from '..';
 
 /**
  * Mouse properties that provide additional information from

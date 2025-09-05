@@ -1,4 +1,4 @@
-/* IMPORT */ import { VanillaEntityIdentifier } from '../index';
+/* IMPORT */ import { VanillaEntityIdentifier } from '..';
 
 /**
  * @beta

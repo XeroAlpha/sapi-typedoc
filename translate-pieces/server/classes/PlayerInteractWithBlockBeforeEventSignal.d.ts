@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerInteractWithBlockBeforeEvent } from '../index';
+/* IMPORT */ import { PlayerInteractWithBlockBeforeEvent } from '..';
 
 /**
  * Manages callbacks that are connected to before a player

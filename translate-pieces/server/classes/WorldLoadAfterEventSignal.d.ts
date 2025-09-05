@@ -1,4 +1,4 @@
-/* IMPORT */ import { WorldLoadAfterEvent } from '../index';
+/* IMPORT */ import { WorldLoadAfterEvent } from '..';
 
 export class WorldLoadAfterEventSignal {
     private constructor();

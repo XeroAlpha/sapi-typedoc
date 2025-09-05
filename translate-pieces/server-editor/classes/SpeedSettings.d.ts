@@ -1,4 +1,4 @@
-/* IMPORT */ import { SpeedSettingsPropertyTypeMap } from '../index';
+/* IMPORT */ import { SpeedSettingsPropertyTypeMap } from '..';
 
 export class SpeedSettings {
     private constructor();

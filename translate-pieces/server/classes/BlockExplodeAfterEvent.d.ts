@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '..';
 
 /**
  * Contains information regarding an explosion that has

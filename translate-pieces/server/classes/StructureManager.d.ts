@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockBoundingBox, Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockBoundingBox, Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3 } from '..';
 
 /**
  * Manager for Structure related APIs. Includes APIs for
@@ -30,9 +31,9 @@ export class StructureManager {
      * Throws if the identifier is invalid. A valid identifier must
      * include a namespace and must be unique.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
@@ -59,7 +60,7 @@ export class StructureManager {
      * world bounds.
      *
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     createFromWorld(
         identifier: string,
@@ -85,7 +86,7 @@ export class StructureManager {
      * Throws if a structure cannot be removed. For example, a
      * structure loaded from a Behavior Pack.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     delete(structure: string | Structure): boolean;
     /**
@@ -128,9 +129,9 @@ export class StructureManager {
      * Throws if the placement location contains blocks that are
      * outside the world bounds.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidStructureError}
      */

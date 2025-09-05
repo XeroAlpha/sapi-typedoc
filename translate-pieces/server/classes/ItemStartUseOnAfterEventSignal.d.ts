@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemStartUseOnAfterEvent } from '../index';
+/* IMPORT */ import { ItemStartUseOnAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to an item starting

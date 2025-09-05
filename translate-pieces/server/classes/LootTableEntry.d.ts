@@ -1,4 +1,4 @@
-/* IMPORT */ import { LootPoolEntry, LootTable } from '../index';
+/* IMPORT */ import { LootPoolEntry, LootTable } from '..';
 
 /**
  * @beta

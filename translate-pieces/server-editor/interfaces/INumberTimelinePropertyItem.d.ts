@@ -1,4 +1,5 @@
-/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemBase, LocalizedString, minecraftserver } from '../index';
+/* IMPORT */ import { Vector2 } from '../../server';
+/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Number Timeline properties
@@ -46,7 +47,7 @@ export interface INumberTimelinePropertyItem extends IPropertyItemBase {
      * @param counts
      * Counts for the thin grid lines.
      */
-    setSeparatorSliceCount(counts: minecraftserver.Vector2): void;
+    setSeparatorSliceCount(counts: Vector2): void;
     /**
      * @remarks
      * Set separator step counts for x and y for the major grid.
@@ -54,7 +55,7 @@ export interface INumberTimelinePropertyItem extends IPropertyItemBase {
      * @param counts
      * Counts for the thick grid lines.
      */
-    setSeparatorStepCount(counts: minecraftserver.Vector2): void;
+    setSeparatorStepCount(counts: Vector2): void;
     /**
      * @remarks
      * Set time line slider value to a new value

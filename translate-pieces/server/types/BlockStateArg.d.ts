@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, minecraftvanilladata } from '../index';
+/* IMPORT */ import { BlockPermutation } from '..';
+/* IMPORT */ import { BlockStateMapping, MinecraftBlockTypes } from '../../vanilla-data';
 
 /**
  * Type alias used by the {@link BlockPermutation} matches and
@@ -6,8 +7,8 @@
  * those mapped by {@link
  * @minecraft/vanilla-data.BlockStateMapping}.
  */
-export type BlockStateArg<T> = T extends `${minecraftvanilladata.MinecraftBlockTypes}`
-    ? T extends keyof minecraftvanilladata.BlockStateMapping
-        ? minecraftvanilladata.BlockStateMapping[T]
+export type BlockStateArg<T> = T extends `${MinecraftBlockTypes}`
+    ? T extends keyof BlockStateMapping
+        ? BlockStateMapping[T]
         : never
     : Record<string, boolean | number | string>;

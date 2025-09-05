@@ -1,4 +1,5 @@
-/* IMPORT */ import { RelativeVolumeListBlockVolume, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { RelativeVolumeListBlockVolume } from '..';
 
 /**
  * @remarks
@@ -10,5 +11,5 @@
  */
 export declare function executeLargeOperation(
     volume: RelativeVolumeListBlockVolume,
-    operation: (blockLocation: minecraftserver.Vector3) => void,
+    operation: (blockLocation: Vector3) => void,
 ): Promise<void>;

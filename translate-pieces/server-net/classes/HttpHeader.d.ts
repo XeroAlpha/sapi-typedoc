@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserveradmin } from '../index';
+/* IMPORT */ import { SecretString } from '../../server-admin';
 
 /**
  * 表示一个请求标头，即包含了请求元数据的键值对。
@@ -27,6 +27,6 @@ export class HttpHeader {
      * @earlyExecution
      *
      */
-    value: minecraftserveradmin.SecretString | string;
-    constructor(key: string, value: minecraftserveradmin.SecretString | string);
+    value: SecretString | string;
+    constructor(key: string, value: SecretString | string);
 }

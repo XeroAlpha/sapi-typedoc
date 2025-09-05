@@ -183,7 +183,9 @@ export default {
                     return '';
                 });
             });
-            sourceFile.applyTextChanges(textChanges);
+            if (textChanges.length > 0) {
+                sourceFile.applyTextChanges(textChanges);
+            }
         });
     },
     beforeConvert({ tsdocApplication }) {

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EaseOptions } from '../index';
+/* IMPORT */ import { EaseOptions } from '..';
 
 /**
  * @rc

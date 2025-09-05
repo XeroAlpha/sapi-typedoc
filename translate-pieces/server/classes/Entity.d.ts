@@ -1,4 +1,5 @@
-/* IMPORT */ import { Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -12,7 +13,7 @@ export class Entity {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      */
@@ -193,9 +194,9 @@ export class Entity {
      * does not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      * @seeExample spawnPoisonedVillager.ts
@@ -216,7 +217,7 @@ export class Entity {
      * fail if the tag already exists on the entity.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      * @seeExample tagsQuery.ts
@@ -240,11 +241,11 @@ export class Entity {
      * less than or equal to 0.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -259,7 +260,7 @@ export class Entity {
      * Impulse vector.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      * @seeExample applyImpulse.ts
@@ -278,7 +279,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
@@ -459,7 +460,7 @@ export class Entity {
      * not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -487,13 +488,13 @@ export class Entity {
      * entity is looking at.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -635,7 +636,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -652,11 +653,11 @@ export class Entity {
      * @throws
      * Throws if the query options are misconfigured.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     matches(options: EntityQueryOptions): boolean;
     /**
@@ -687,7 +688,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
@@ -704,7 +705,7 @@ export class Entity {
      * if the effect is not found or does not exist.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -742,7 +743,7 @@ export class Entity {
      * @throws
      * Throws if the entity is invalid.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
@@ -778,7 +779,7 @@ export class Entity {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
@@ -793,7 +794,7 @@ export class Entity {
      * Data value of the property to set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
@@ -845,9 +846,9 @@ export class Entity {
      * Throws if the provided string value does not match the set
      * of accepted enum values (enum properties
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      */
@@ -881,7 +882,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
@@ -902,7 +903,7 @@ export class Entity {
      * If the event is not defined in the definition of the entity,
      * an error will be thrown.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      * @seeExample triggerEvent.ts e0d38a47
@@ -929,7 +930,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }

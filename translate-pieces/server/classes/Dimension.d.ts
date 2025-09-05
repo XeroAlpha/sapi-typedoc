@@ -1,4 +1,6 @@
-/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, CompoundBlockVolume, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
+/* IMPORT */ import { MinecraftFeatureTypes } from '../../vanilla-data';
 
 /**
  * A class that represents a particular dimension (e.g., The
@@ -12,7 +14,7 @@ export class Dimension {
      *
      * @throws This property can throw when used.
      */
-    readonly heightRange: minecraftcommon.NumberRange;
+    readonly heightRange: NumberRange;
     /**
      * @remarks
      * Identifier of the dimension.
@@ -93,7 +95,7 @@ export class Dimension {
      * were placed.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
@@ -123,13 +125,13 @@ export class Dimension {
      * could not be found.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -249,7 +251,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -274,15 +276,35 @@ export class Dimension {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a vector of generated structures that contain the
+     * specified location (ex: Pillager Outpost, Mineshaft, etc.).
+     * The vector will be empty if no structures are found.
+     *
+     * @param location
+     * Location at which to check for structures.
+     * @throws
+     * An error will be thrown if the location is out of world
+     * bounds.
+     * An error will be thrown if the location is in an unloaded
+     * chunk.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
      * @beta
      * @remarks
@@ -295,7 +317,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -314,7 +336,7 @@ export class Dimension {
      *
      * {@link CommandError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -329,7 +351,7 @@ export class Dimension {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -391,7 +413,7 @@ export class Dimension {
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -412,7 +434,7 @@ export class Dimension {
      * An error will be thrown if the location is in an unloaded
      * chunk.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -436,7 +458,7 @@ export class Dimension {
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
      *
-     * {@link minecraftcommon.PropertyOutOfBoundsError}
+     * {@link PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -538,7 +560,7 @@ export class Dimension {
      *
      * {@link EntitySpawnError}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
      *

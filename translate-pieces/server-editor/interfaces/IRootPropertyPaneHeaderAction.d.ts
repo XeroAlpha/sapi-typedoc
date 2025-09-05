@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString } from '../index';
+/* IMPORT */ import { LocalizedString } from '..';
 
 /**
  * Represents the data to display an action button on a root

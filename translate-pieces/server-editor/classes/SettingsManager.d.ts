@@ -1,4 +1,4 @@
-/* IMPORT */ import { AudioSettings, GraphicsSettings, SpeedSettings, ThemeSettings } from '../index';
+/* IMPORT */ import { AudioSettings, GraphicsSettings, SpeedSettings, ThemeSettings } from '..';
 
 /**
  * The SettingsManager (accessible from the {@link

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, IToggleGroupPropertyItemEntry, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, IToggleGroupPropertyItemEntry, LocalizedString } from '..';
 
 /**
  * A property item which supports toggle button properties

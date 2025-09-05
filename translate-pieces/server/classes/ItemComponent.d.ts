@@ -1,4 +1,4 @@
-/* IMPORT */ import { Component } from '../index';
+/* IMPORT */ import { Component } from '..';
 
 /**
  * Base class for item components.

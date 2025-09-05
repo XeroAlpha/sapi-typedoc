@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { RawMessage } from '../../server';
 
 /**
  * An interface that is passed into {@link
@@ -11,12 +11,12 @@ export interface ModalFormDataTextFieldOptions {
      * The default value for the textfield.
      *
      */
-    defaultValue?: minecraftserver.RawMessage | string;
+    defaultValue?: RawMessage | string;
     /**
      * @remarks
      * It will show an exclamation icon that will display a tooltip
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
 }

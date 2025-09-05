@@ -1,3 +1,5 @@
+/* IMPORT */ import { InvalidArgumentErrorType } from '..';
+
 /**
  * 表示指定传递给方法的参数不正确或不被允许。
  * 
@@ -13,4 +15,5 @@ export class InvalidArgumentError extends Error {
      *
      */
     index: number;
+    type: InvalidArgumentErrorType;
 }

@@ -1,8 +1,9 @@
-/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentGizmoStateChangeEventParameters, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentGizmoStateChangeEventParameters } from '..';
 
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
-    normalizedAutoOffset?: minecraftserver.Vector3;
+    normalizedAutoOffset?: Vector3;
     stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
 }

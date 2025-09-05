@@ -1,4 +1,4 @@
-/* IMPORT */ import { PersonaPieceType } from '../index';
+/* IMPORT */ import { PersonaPieceType } from '..';
 
 /**
  * Data pertaining to a specific player Persona piece.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Action, RegisteredAction } from '../index';
+/* IMPORT */ import { Action, RegisteredAction } from '..';
 
 /**
  * Binds actions to the client and manages their lifetime.

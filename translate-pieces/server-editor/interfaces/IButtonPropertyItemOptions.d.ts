@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, ButtonPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, ButtonPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Button property item

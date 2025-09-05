@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemStack, Player } from '../index';
+/* IMPORT */ import { ItemStack, Player } from '..';
 
 /**
  * @beta

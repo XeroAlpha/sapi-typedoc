@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPaletteSelectedItemChangeAfterEventSignal, ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, SelectionChangeAfterEventSignal } from '../index';
+/* IMPORT */ import { BlockPaletteSelectedItemChangeAfterEventSignal, ClipboardChangeAfterEventSignal, CurrentThemeChangeAfterEventSignal, CurrentThemeColorChangeAfterEventSignal, CursorPropertyChangeAfterEventSignal, ModeChangeAfterEventSignal, SelectionChangeAfterEventSignal } from '..';
 
 /**
  * Contains a set of events that are available across the scope

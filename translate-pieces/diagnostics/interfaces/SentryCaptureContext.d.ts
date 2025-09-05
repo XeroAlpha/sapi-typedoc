@@ -1,4 +1,4 @@
-/* IMPORT */ import { SentryEventLevel } from '../index';
+/* IMPORT */ import { SentryEventLevel } from '..';
 
 /**
  * Context relating to a captured exception that should be sent

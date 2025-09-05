@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameRuleChangeAfterEvent } from '../index';
+/* IMPORT */ import { GameRuleChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a

@@ -73,6 +73,7 @@ export class ArgumentOutOfBoundsError extends Error {
      * Passed-in value for the argument.
      */
     value: number;
+    index: number;
 }
 
 /**
@@ -101,6 +102,7 @@ export class InvalidArgumentError extends Error {
      *
      */
     index: number;
+    type: InvalidArgumentErrorType;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -109,4 +111,19 @@ export class PropertyOutOfBoundsError extends Error {
     maxValue: number;
     minValue: number;
     value: number;
+}
+
+export enum InvalidArgumentErrorType {
+    Duplicate = "Duplicate",
+    Empty = "Empty",
+    Unknown = "Unknown",
+    Unspecified = "Unspecified"
+}
+
+export class RuntimeConditionError extends Error {
+    private constructor();
+}
+
+export class UnsupportedFunctionalityError extends Error {
+    private constructor();
 }

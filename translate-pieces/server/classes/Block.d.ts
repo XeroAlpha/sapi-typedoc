@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -440,7 +441,7 @@ export class Block {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */
@@ -486,7 +487,7 @@ export class Block {
      * The brightness level on the block.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      */

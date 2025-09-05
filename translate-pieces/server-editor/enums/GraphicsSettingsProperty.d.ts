@@ -3,6 +3,11 @@
  * properties.
  */
 export enum GraphicsSettingsProperty {
+    DisableBlockEntityRendering = 'DisableBlockEntityRendering',
+    DisableEntityRendering = 'DisableEntityRendering',
+    DisableParticleRendering = 'DisableParticleRendering',
+    DisableTerrainRendering = 'DisableTerrainRendering',
+    DisableWeatherRendering = 'DisableWeatherRendering',
     GraphicsMode = 'GraphicsMode',
     NightVision = 'NightVision',
     ShowChunkBoundaries = 'ShowChunkBoundaries',

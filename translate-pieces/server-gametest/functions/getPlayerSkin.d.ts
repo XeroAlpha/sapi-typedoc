@@ -1,4 +1,6 @@
-/* IMPORT */ import { PlayerSkinData, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player } from '../../server';
+/* IMPORT */ import { PlayerSkinData } from '..';
 
 /**
  * @remarks
@@ -10,8 +12,8 @@
  * The player who's skin is returned.
  * @throws This function can throw errors.
  *
- * {@link minecraftcommon.InvalidArgumentError}
+ * {@link InvalidArgumentError}
  *
- * {@link minecraftserver.InvalidEntityError}
+ * {@link InvalidEntityError}
  */
-export function getPlayerSkin(player: minecraftserver.Player): PlayerSkinData;
+export function getPlayerSkin(player: Player): PlayerSkinData;

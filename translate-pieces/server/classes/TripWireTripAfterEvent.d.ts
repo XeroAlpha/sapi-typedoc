@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity } from '../index';
+/* IMPORT */ import { BlockEvent, Entity } from '..';
 
 /**
  * Contains information related to changes to a trip wire trip.

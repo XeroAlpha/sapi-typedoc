@@ -1,4 +1,4 @@
-/* IMPORT */ import { ObservableValidator } from '../index';
+/* IMPORT */ import { ObservableValidator } from '..';
 
 /**
  * Validates min/max limits of observable objects that support

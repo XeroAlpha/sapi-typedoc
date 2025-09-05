@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidWidgetGroupError, Widget, WidgetCreateOptions, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetGroupError, Widget, WidgetCreateOptions } from '..';
 
 export class WidgetGroup {
     private constructor();
@@ -26,7 +27,7 @@ export class WidgetGroup {
      *
      * @throws This function can throw errors.
      */
-    createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
+    createWidget(location: Vector3, options?: WidgetCreateOptions): Widget;
     /**
      * @remarks
      * @worldMutation

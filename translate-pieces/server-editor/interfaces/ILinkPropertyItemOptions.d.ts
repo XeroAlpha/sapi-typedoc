@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Link property item

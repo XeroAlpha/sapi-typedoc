@@ -1,4 +1,4 @@
-/* IMPORT */ import { IMenu, IMenuCreationParams } from '../index';
+/* IMPORT */ import { IMenu, IMenuCreationParams } from '..';
 
 /**
  * Manager and container for IMenu objects

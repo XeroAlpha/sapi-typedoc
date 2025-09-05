@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '../index';
+/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class EllipsoidBrushShape extends BrushShape {
     /**

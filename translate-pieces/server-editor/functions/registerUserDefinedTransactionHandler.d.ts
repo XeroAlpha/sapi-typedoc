@@ -1,4 +1,4 @@
-/* IMPORT */ import { TransactionManager, UserDefinedTransactionHandle } from '../index';
+/* IMPORT */ import { TransactionManager, UserDefinedTransactionHandle } from '..';
 
 /**
  * @remarks

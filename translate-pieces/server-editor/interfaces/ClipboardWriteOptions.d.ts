@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
 
 /**
  * Interface used to specify the options when a clipboard item
@@ -14,20 +14,20 @@ export interface ClipboardWriteOptions {
      * - XZ
      *
      */
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
+    mirror?: StructureMirrorAxis;
+    normalizedOrigin?: Vector3;
     /**
      * @remarks
      * A position offset which should be applied to the paste
      * location while the clipboard item is being written
      *
      */
-    offset?: minecraftserver.Vector3;
+    offset?: Vector3;
     /**
      * @remarks
      * An enum representing the rotation around the Y-Axis which
      * should be applied while the clipboard item is being written
      *
      */
-    rotation?: minecraftserver.StructureRotation;
+    rotation?: StructureRotation;
 }

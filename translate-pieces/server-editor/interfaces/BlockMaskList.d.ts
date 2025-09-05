@@ -1,6 +1,7 @@
-/* IMPORT */ import { BlockMaskListType, minecraftserver } from '../index';
+/* IMPORT */ import { BlockPermutation, BlockType } from '../../server';
+/* IMPORT */ import { BlockMaskListType } from '..';
 
 export interface BlockMaskList {
-    blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
+    blockList: (BlockPermutation | BlockType | string)[];
     maskType: BlockMaskListType;
 }

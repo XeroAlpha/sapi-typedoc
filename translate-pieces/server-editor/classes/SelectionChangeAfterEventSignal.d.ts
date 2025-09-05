@@ -1,4 +1,4 @@
-/* IMPORT */ import { SelectionEventAfterEvent } from '../index';
+/* IMPORT */ import { SelectionEventAfterEvent } from '..';
 
 export class SelectionChangeAfterEventSignal {
     private constructor();

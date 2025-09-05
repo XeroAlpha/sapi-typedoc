@@ -1,8 +1,4 @@
-import type { Vector2 } from '../server';
-import type { Vector3 } from '../server';
 export { }
-/* PRIVATE */ export { Vector2 };
-/* PRIVATE */ export { Vector3 };
 export { clampNumber } from './functions/clampNumber';
 export { VECTOR2_ZERO } from './variables/VECTOR2_ZERO';
 export { Vector2Builder } from './classes/Vector2Builder';

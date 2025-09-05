@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, DyeColor, RawMessage, RawText, SignSide } from '../index';
+/* IMPORT */ import { BlockComponent, DyeColor, RawMessage, RawText, SignSide } from '..';
 
 /**
  * Represents a block that can display text on it.

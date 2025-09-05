@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '../index';
+/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '..';
 
 export interface IGlobalInputManager {
     /**

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity } from '../index';
+/* IMPORT */ import { Entity } from '..';
 
 /**
  * Contains data related to an entity loaded within the world.

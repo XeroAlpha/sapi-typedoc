@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockType } from '../index';
+/* IMPORT */ import { BlockType } from '..';
 
 /**
  * Contains a catalog of Minecraft Block Types that are

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBoxUtils, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBoxUtils, Vector3 } from '..';
 
 /**
  * A BlockBoundingBox is an interface to an object which

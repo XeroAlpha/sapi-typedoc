@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+/* IMPORT */ import { EntityBaseMovementComponent } from '..';
 
 /**
  * When added, this move control causes the mob to hover.

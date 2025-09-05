@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { RawMessage } from '../../server';
 
 /**
  * An interface that is passed into {@link
@@ -18,7 +18,7 @@ export interface ModalFormDataSliderOptions {
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
     /**
      * @remarks
      * Defines the increment of values that the slider generates

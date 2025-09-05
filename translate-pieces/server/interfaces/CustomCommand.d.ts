@@ -1,4 +1,4 @@
-/* IMPORT */ import { CommandPermissionLevel, CustomCommandParameter } from '../index';
+/* IMPORT */ import { CommandPermissionLevel, CustomCommandParameter } from '..';
 
 /**
  * Define the custom command, including name, permissions, and

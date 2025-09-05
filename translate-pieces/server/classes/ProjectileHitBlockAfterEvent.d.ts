@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockHitInformation, Dimension, Entity, Vector3 } from '../index';
+/* IMPORT */ import { BlockHitInformation, Dimension, Entity, Vector3 } from '..';
 
 /**
  * Contains information related to a projectile hitting a

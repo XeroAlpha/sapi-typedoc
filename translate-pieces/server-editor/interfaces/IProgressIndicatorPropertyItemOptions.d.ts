@@ -1,4 +1,4 @@
-/* IMPORT */ import { IObservableProp, IPropertyItemOptionsBase, LocalizedString, ProgressIndicatorPropertyItemVariant } from '../index';
+/* IMPORT */ import { IObservableProp, IPropertyItemOptionsBase, LocalizedString, ProgressIndicatorPropertyItemVariant } from '..';
 
 /**
  * Optional properties for progress indicator property item

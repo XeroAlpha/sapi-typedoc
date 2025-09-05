@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPushAfterEvent } from '../index';
+/* IMPORT */ import { ButtonPushAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a button is

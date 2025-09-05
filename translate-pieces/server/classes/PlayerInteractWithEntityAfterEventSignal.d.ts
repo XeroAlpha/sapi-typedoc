@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerInteractWithEntityAfterEvent } from '../index';
+/* IMPORT */ import { PlayerInteractWithEntityAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to after a player

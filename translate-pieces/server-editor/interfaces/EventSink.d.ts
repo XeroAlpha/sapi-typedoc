@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventHandler, IEventToken } from '../index';
+/* IMPORT */ import { EventHandler, IEventToken } from '..';
 
 /**
  *  An event that can be subscribed to. You can use the token,

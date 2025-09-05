@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player } from '..';
 
 /**
  * Contains information regarding an event before a player

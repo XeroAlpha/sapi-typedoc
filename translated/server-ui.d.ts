@@ -37,8 +37,8 @@
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
+import { EngineError } from '@minecraft/common';
+import { InvalidEntityError, Player, RawMessage, RawMessageError } from '@minecraft/server';
 export enum FormCancelationReason {
     UserBusy = 'UserBusy',
     UserClosed = 'UserClosed',
@@ -62,14 +62,14 @@ export class ActionFormData {
      * Method that sets the body text for the modal form.
      *
      */
-    body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
+    body(bodyText: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a button to this form with an icon from a resource
      * pack.
      *
      */
-    button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    button(text: RawMessage | string, iconPath?: string): ActionFormData;
     /**
      * @remarks
      * Adds a section divider to the form.
@@ -83,7 +83,7 @@ export class ActionFormData {
      * @param text
      * Text to display.
      */
-    header(text: minecraftserver.RawMessage | string): ActionFormData;
+    header(text: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Adds a label to the form.
@@ -91,7 +91,7 @@ export class ActionFormData {
      * @param text
      * Text to display.
      */
-    label(text: minecraftserver.RawMessage | string): ActionFormData;
+    label(text: RawMessage | string): ActionFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -104,19 +104,19 @@ export class ActionFormData {
      * Player to show this dialog to.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ActionFormResponse>;
+    show(player: Player): Promise<ActionFormResponse>;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
      */
-    title(titleText: minecraftserver.RawMessage | string): ActionFormData;
+    title(titleText: RawMessage | string): ActionFormData;
 }
 
 /**
@@ -167,21 +167,21 @@ export class MessageFormData {
      * Method that sets the body text for the modal form.
      *
      */
-    body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
+    body(bodyText: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
      *
      */
-    button1(text: minecraftserver.RawMessage | string): MessageFormData;
+    button1(text: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
      *
      */
-    button2(text: minecraftserver.RawMessage | string): MessageFormData;
+    button2(text: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -194,19 +194,19 @@ export class MessageFormData {
      * Player to show this dialog to.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<MessageFormResponse>;
+    show(player: Player): Promise<MessageFormResponse>;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
      */
-    title(titleText: minecraftserver.RawMessage | string): MessageFormData;
+    title(titleText: RawMessage | string): MessageFormData;
 }
 
 /**
@@ -250,8 +250,8 @@ export class ModalFormData {
      * The optional additional values for the dropdown creation.
      */
     dropdown(
-        label: minecraftserver.RawMessage | string,
-        items: (minecraftserver.RawMessage | string)[],
+        label: RawMessage | string,
+        items: (RawMessage | string)[],
         dropdownOptions?: ModalFormDataDropdownOptions,
     ): ModalFormData;
     /**
@@ -261,7 +261,7 @@ export class ModalFormData {
      * @param text
      * Text to display.
      */
-    header(text: minecraftserver.RawMessage | string): ModalFormData;
+    header(text: RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a label to the form.
@@ -269,7 +269,7 @@ export class ModalFormData {
      * @param text
      * Text to display.
      */
-    label(text: minecraftserver.RawMessage | string): ModalFormData;
+    label(text: RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -282,13 +282,13 @@ export class ModalFormData {
      * Player to show this dialog to.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ModalFormResponse>;
+    show(player: Player): Promise<ModalFormResponse>;
     /**
      * @remarks
      * Adds a numeric slider to the form.
@@ -303,12 +303,12 @@ export class ModalFormData {
      * The optional additional values for the slider creation.
      */
     slider(
-        label: minecraftserver.RawMessage | string,
+        label: RawMessage | string,
         minimumValue: number,
         maximumValue: number,
         sliderOptions?: ModalFormDataSliderOptions,
     ): ModalFormData;
-    submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
+    submitButton(submitButtonText: RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a textbox to the form.
@@ -321,8 +321,8 @@ export class ModalFormData {
      * The optional additional values for the textfield creation.
      */
     textField(
-        label: minecraftserver.RawMessage | string,
-        placeholderText: minecraftserver.RawMessage | string,
+        label: RawMessage | string,
+        placeholderText: RawMessage | string,
         textFieldOptions?: ModalFormDataTextFieldOptions,
     ): ModalFormData;
     /**
@@ -330,7 +330,7 @@ export class ModalFormData {
      * This builder method sets the title for the modal dialog.
      *
      */
-    title(titleText: minecraftserver.RawMessage | string): ModalFormData;
+    title(titleText: RawMessage | string): ModalFormData;
     /**
      * @remarks
      * Adds a toggle checkbox button to the form.
@@ -340,7 +340,10 @@ export class ModalFormData {
      * @param toggleOptions
      * The optional additional values for the toggle creation.
      */
-    toggle(label: minecraftserver.RawMessage | string, toggleOptions?: ModalFormDataToggleOptions): ModalFormData;
+    toggle(
+        label: RawMessage | string,
+        toggleOptions?: ModalFormDataToggleOptions,
+    ): ModalFormData;
 }
 
 /**
@@ -367,7 +370,7 @@ export class UIManager {
      *
      * @throws This function can throw errors.
      */
-    closeAllForms(player: minecraftserver.Player): void;
+    closeAllForms(player: Player): void;
 }
 
 /**
@@ -389,7 +392,7 @@ export interface ModalFormDataDropdownOptions {
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
 }
 
 /**
@@ -410,7 +413,7 @@ export interface ModalFormDataSliderOptions {
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
     /**
      * @remarks
      * Defines the increment of values that the slider generates
@@ -431,14 +434,14 @@ export interface ModalFormDataTextFieldOptions {
      * The default value for the textfield.
      *
      */
-    defaultValue?: minecraftserver.RawMessage | string;
+    defaultValue?: RawMessage | string;
     /**
      * @remarks
      * It will show an exclamation icon that will display a tooltip
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
 }
 
 /**
@@ -459,7 +462,7 @@ export interface ModalFormDataToggleOptions {
      * if it is hovered.
      *
      */
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: RawMessage | string;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes

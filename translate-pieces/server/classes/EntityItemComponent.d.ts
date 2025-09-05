@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, ItemStack } from '../index';
+/* IMPORT */ import { EntityComponent, ItemStack } from '..';
 
 /**
  * If added onto the entity, this indicates that the entity

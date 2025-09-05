@@ -1,7 +1,3 @@
-import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
-/* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
 export { GameTestCompletedErrorReason } from './enums/GameTestCompletedErrorReason';
 export { GameTestErrorType } from './enums/GameTestErrorType';
 export { LookDuration } from './enums/LookDuration';

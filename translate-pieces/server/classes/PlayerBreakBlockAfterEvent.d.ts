@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, ItemStack, Player } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation, ItemStack, Player } from '..';
 
 /**
  * Contains information regarding an event after a player

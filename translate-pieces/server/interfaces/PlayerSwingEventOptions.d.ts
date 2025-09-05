@@ -1,4 +1,4 @@
-/* IMPORT */ import { HeldItemOption } from '../index';
+/* IMPORT */ import { HeldItemOption } from '..';
 
 /**
  * @beta

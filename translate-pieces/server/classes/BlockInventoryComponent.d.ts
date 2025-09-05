@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, Container, ItemStack } from '../index';
+/* IMPORT */ import { BlockComponent, Container, ItemStack } from '..';
 
 /**
  * Represents the inventory of a block in the world. Used with

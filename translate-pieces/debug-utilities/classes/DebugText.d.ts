@@ -1,4 +1,5 @@
-/* IMPORT */ import { DebugShape, minecraftserver } from '../index';
+/* IMPORT */ import { DebugShape } from '..';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * A debug shape class that a text label. The text label
@@ -12,5 +13,5 @@ export class DebugText extends DebugShape {
      *
      */
     text: string;
-    constructor(location: minecraftserver.Vector3, text: string);
+    constructor(location: Vector3, text: string);
 }

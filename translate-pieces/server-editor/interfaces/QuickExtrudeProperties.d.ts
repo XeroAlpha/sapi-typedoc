@@ -1,4 +1,5 @@
-/* IMPORT */ import { ContiguousSelectionType, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { ContiguousSelectionType } from '..';
 
 export interface QuickExtrudeProperties {
     checkForAdjacentFace?: boolean;
@@ -8,5 +9,5 @@ export interface QuickExtrudeProperties {
     layerCount?: number;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: Vector3;
 }

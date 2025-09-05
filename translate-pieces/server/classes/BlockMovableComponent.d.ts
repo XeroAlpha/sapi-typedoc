@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MovementType, StickyType } from '../index';
+/* IMPORT */ import { BlockComponent, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MovementType, StickyType } from '..';
 
 export class BlockMovableComponent extends BlockComponent {
     private constructor();

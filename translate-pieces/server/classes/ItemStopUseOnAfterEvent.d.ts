@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, ItemStack, Player } from '../index';
+/* IMPORT */ import { Block, ItemStack, Player } from '..';
 
 /**
  * Contains information related to an item that has stopped

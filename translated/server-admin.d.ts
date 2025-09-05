@@ -29,7 +29,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import * as minecraftserver from '@minecraft/server';
+import { Player } from '@minecraft/server';
 export class AdminBeforeEvents {
     private constructor();
     /**
@@ -241,7 +241,7 @@ export class DisconnectedError extends Error {
  * @throws This function can throw errors.
  */
 export function transferPlayer(
-    player: minecraftserver.Player,
+    player: Player,
     options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
 ): void;
 export const beforeEvents: AdminBeforeEvents;

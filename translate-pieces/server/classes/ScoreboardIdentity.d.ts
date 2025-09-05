@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ScoreboardIdentityType } from '../index';
+/* IMPORT */ import { Entity, ScoreboardIdentityType } from '..';
 
 /**
  * 表示记分板上的分数持有者。

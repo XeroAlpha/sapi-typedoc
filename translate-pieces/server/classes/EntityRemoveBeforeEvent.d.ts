@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity } from '../index';
+/* IMPORT */ import { Entity } from '..';
 
 /**
  * Data for an event that happens when an entity is being

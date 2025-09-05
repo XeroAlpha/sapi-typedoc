@@ -1,4 +1,5 @@
-/* IMPORT */ import { DebugLine, minecraftserver } from '../index';
+/* IMPORT */ import { DebugLine } from '..';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * The length of the arrow's head/tip.
@@ -24,5 +25,5 @@ export class DebugArrow extends DebugLine {
      *
      */
     headSegments: number;
-    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+    constructor(location: Vector3, endLocation: Vector3);
 }

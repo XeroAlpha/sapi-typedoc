@@ -1,4 +1,4 @@
-/* IMPORT */ import { minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
 
 /**
  * @beta
@@ -14,7 +14,7 @@ export class PotionEffectType {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     readonly durationTicks?: number;
     readonly id: string;

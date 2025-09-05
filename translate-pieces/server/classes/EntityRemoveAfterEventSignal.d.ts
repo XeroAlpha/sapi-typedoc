@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityEventOptions, EntityRemoveAfterEvent } from '../index';
+/* IMPORT */ import { EntityEventOptions, EntityRemoveAfterEvent } from '..';
 
 /**
  * Allows registration for an event that fires when an entity

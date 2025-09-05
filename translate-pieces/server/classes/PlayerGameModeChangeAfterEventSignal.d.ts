@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerGameModeChangeAfterEvent } from '../index';
+/* IMPORT */ import { PlayerGameModeChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to after a players game

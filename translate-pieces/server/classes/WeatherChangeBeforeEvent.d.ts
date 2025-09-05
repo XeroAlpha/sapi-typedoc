@@ -1,4 +1,4 @@
-/* IMPORT */ import { WeatherType } from '../index';
+/* IMPORT */ import { WeatherType } from '..';
 
 /**
  * Contains information related to changes in weather in the

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Trigger } from '../index';
+/* IMPORT */ import { Trigger } from '..';
 
 /**
  * Contains a set of updates to the component definition state

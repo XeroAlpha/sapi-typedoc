@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameRule } from '../index';
+/* IMPORT */ import { GameRule } from '..';
 
 /**
  * Contains information regarding a changed world.gameRules

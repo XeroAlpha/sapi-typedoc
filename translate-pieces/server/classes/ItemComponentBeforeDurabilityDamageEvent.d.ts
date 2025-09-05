@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ItemStack } from '../index';
+/* IMPORT */ import { Entity, ItemStack } from '..';
 
 /**
  * Contains information regarding an item before it is damaged

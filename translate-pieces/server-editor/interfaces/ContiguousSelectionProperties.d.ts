@@ -1,4 +1,5 @@
-/* IMPORT */ import { ContiguousSelectionType, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { ContiguousSelectionType } from '..';
 
 export interface ContiguousSelectionProperties {
     checkForAdjacentFace?: boolean;
@@ -8,5 +9,5 @@ export interface ContiguousSelectionProperties {
     isFace?: boolean;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: Vector3;
 }

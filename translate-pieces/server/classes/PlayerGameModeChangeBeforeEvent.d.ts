@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameMode, Player } from '../index';
+/* IMPORT */ import { GameMode, Player } from '..';
 
 /**
  * Contains information regarding an event before a player

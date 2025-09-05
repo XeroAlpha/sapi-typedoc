@@ -1,4 +1,4 @@
-/* IMPORT */ import { registerSerializationForType } from '../index';
+/* IMPORT */ import { registerSerializationForType } from '..';
 
 /**
  * @remarks

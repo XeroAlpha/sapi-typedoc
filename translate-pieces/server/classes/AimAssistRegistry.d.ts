@@ -1,4 +1,5 @@
-/* IMPORT */ import { AimAssistCategory, AimAssistCategorySettings, AimAssistPreset, AimAssistPresetSettings, NamespaceNameError, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { AimAssistCategory, AimAssistCategorySettings, AimAssistPreset, AimAssistPresetSettings, NamespaceNameError } from '..';
 
 /**
  * @beta
@@ -33,11 +34,11 @@ export class AimAssistRegistry {
      * The created category handle.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */
@@ -54,11 +55,11 @@ export class AimAssistRegistry {
      * The created preset handle.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link NamespaceNameError}
      */

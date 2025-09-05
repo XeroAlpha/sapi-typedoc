@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from '../index';
+/* IMPORT */ import { BlockVolumeBase, BlockVolumeIntersection, Vector3 } from '..';
 
 /**
  * A BlockVolume is a simple interface to an object which

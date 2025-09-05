@@ -1,4 +1,6 @@
-/* IMPORT */ import { MessageFormResponse, minecraftcommon, minecraftserver } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player, RawMessage, RawMessageError } from '../../server';
+/* IMPORT */ import { MessageFormResponse } from '..';
 
 /**
  * Builds a simple two-button modal dialog.
@@ -11,21 +13,21 @@ export class MessageFormData {
      * Method that sets the body text for the modal form.
      *
      */
-    body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
+    body(bodyText: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Method that sets the text for the first button of the
      * dialog.
      *
      */
-    button1(text: minecraftserver.RawMessage | string): MessageFormData;
+    button1(text: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * This method sets the text for the second button on the
      * dialog.
      *
      */
-    button2(text: minecraftserver.RawMessage | string): MessageFormData;
+    button2(text: RawMessage | string): MessageFormData;
     /**
      * @remarks
      * Creates and shows this modal popup form. Returns
@@ -38,17 +40,17 @@ export class MessageFormData {
      * Player to show this dialog to.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<MessageFormResponse>;
+    show(player: Player): Promise<MessageFormResponse>;
     /**
      * @remarks
      * This builder method sets the title for the modal dialog.
      *
      */
-    title(titleText: minecraftserver.RawMessage | string): MessageFormData;
+    title(titleText: RawMessage | string): MessageFormData;
 }

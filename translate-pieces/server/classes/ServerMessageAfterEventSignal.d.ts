@@ -1,4 +1,4 @@
-/* IMPORT */ import { MessageReceiveAfterEvent } from '../index';
+/* IMPORT */ import { MessageReceiveAfterEvent } from '..';
 
 /**
  * @beta

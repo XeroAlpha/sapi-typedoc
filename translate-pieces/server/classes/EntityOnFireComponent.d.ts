@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 /**
  * When present on an entity, this entity is on fire.

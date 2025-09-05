@@ -1,4 +1,4 @@
-/* IMPORT */ import { Cursor } from '../index';
+/* IMPORT */ import { Cursor } from '..';
 
 /**
  * An enumeration used by the 3D block cursor {@link Cursor}

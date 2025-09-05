@@ -1,4 +1,5 @@
-/* IMPORT */ import { FenceConnectivity, GameTestCompletedError, GameTestError, GameTestSequence, SculkSpreader, SimulatedPlayer, minecraftserver } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, BlockType, Dimension, Direction, Entity, FluidType, GameMode, ItemStack, ItemType, Vector3 } from '../../server';
+/* IMPORT */ import { FenceConnectivity, GameTestCompletedError, GameTestError, GameTestSequence, SculkSpreader, SimulatedPlayer } from '..';
 
 /**
  * Main class for GameTest functions, with helpers and data for
@@ -46,8 +47,8 @@ export class Test {
      * {@link GameTestError}
      */
     assertBlockPresent(
-        blockType: minecraftserver.BlockType | string,
-        blockLocation: minecraftserver.Vector3,
+        blockType: BlockType | string,
+        blockLocation: Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -67,7 +68,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg0: minecraftserver.Block) => boolean): void;
+    assertBlockState(
+        blockLocation: Vector3,
+        callback: (arg0: Block) => boolean,
+    ): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -91,8 +95,8 @@ export class Test {
      * {@link GameTestError}
      */
     assertCanReachLocation(
-        mob: minecraftserver.Entity,
-        blockLocation: minecraftserver.Vector3,
+        mob: Entity,
+        blockLocation: Vector3,
         canReach?: boolean,
     ): void;
     /**
@@ -114,7 +118,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
+    assertContainerContains(
+        itemStack: ItemStack,
+        blockLocation: Vector3,
+    ): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
@@ -129,7 +136,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertContainerEmpty(blockLocation: minecraftserver.Vector3): void;
+    assertContainerEmpty(blockLocation: Vector3): void;
     /**
      * @remarks
      * Tests that an entity has a specific piece of armor equipped.
@@ -161,7 +168,7 @@ export class Test {
         armorSlot: number,
         armorName: string,
         armorData: number,
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         hasArmor?: boolean,
     ): void;
     /**
@@ -192,7 +199,7 @@ export class Test {
     assertEntityHasComponent(
         entityTypeIdentifier: string,
         componentIdentifier: string,
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         hasComponent?: boolean,
     ): void;
     /**
@@ -217,8 +224,8 @@ export class Test {
      * {@link GameTestError}
      */
     assertEntityInstancePresent(
-        entity: minecraftserver.Entity,
-        blockLocation: minecraftserver.Vector3,
+        entity: Entity,
+        blockLocation: Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -240,7 +247,7 @@ export class Test {
      * {@link GameTestError}
      * @seeExample simpleMobTest.ts 582539d0
      */
-    assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
+    assertEntityInstancePresentInArea(entity: Entity, isPresent?: boolean): void;
     /**
      * @remarks
      * Depending on the value of isPresent, tests for the presence
@@ -271,7 +278,7 @@ export class Test {
      */
     assertEntityPresent(
         entityTypeIdentifier: string,
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         searchDistance?: number,
         isPresent?: boolean,
     ): void;
@@ -322,9 +329,9 @@ export class Test {
      * {@link GameTestError}
      */
     assertEntityState(
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         entityTypeIdentifier: string,
-        callback: (arg0: minecraftserver.Entity) => boolean,
+        callback: (arg0: Entity) => boolean,
     ): void;
     /**
      * @remarks
@@ -349,7 +356,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
+    assertEntityTouching(
+        entityTypeIdentifier: string,
+        location: Vector3,
+        isTouching?: boolean,
+    ): void;
     /**
      * @remarks
      * Depending on the value of isWaterlogged, tests that a block
@@ -369,7 +380,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertIsWaterlogged(blockLocation: minecraftserver.Vector3, isWaterlogged?: boolean): void;
+    assertIsWaterlogged(blockLocation: Vector3, isWaterlogged?: boolean): void;
     /**
      * @remarks
      * Tests that items of a particular type and count are present
@@ -391,8 +402,8 @@ export class Test {
      * {@link GameTestError}
      */
     assertItemEntityCountIs(
-        itemType: minecraftserver.ItemType | string,
-        blockLocation: minecraftserver.Vector3,
+        itemType: ItemType | string,
+        blockLocation: Vector3,
         searchDistance: number,
         count: number,
     ): void;
@@ -422,8 +433,8 @@ export class Test {
      * {@link GameTestError}
      */
     assertItemEntityPresent(
-        itemType: minecraftserver.ItemType | string,
-        blockLocation: minecraftserver.Vector3,
+        itemType: ItemType | string,
+        blockLocation: Vector3,
         searchDistance?: number,
         isPresent?: boolean,
     ): void;
@@ -442,7 +453,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertRedstonePower(blockLocation: minecraftserver.Vector3, power: number): void;
+    assertRedstonePower(blockLocation: Vector3, power: number): void;
     /**
      * @remarks
      * Destroys a block at a particular location.
@@ -460,7 +471,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    destroyBlock(blockLocation: minecraftserver.Vector3, dropResources?: boolean): void;
+    destroyBlock(blockLocation: Vector3, dropResources?: boolean): void;
     /**
      * @remarks
      * Marks the current test as a failure case.
@@ -496,7 +507,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
+    getBlock(blockLocation: Vector3): Block;
     /**
      * @remarks
      * Gets the dimension of this test.
@@ -507,7 +518,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    getDimension(): minecraftserver.Dimension;
+    getDimension(): Dimension;
     /**
      * @remarks
      * If the block at the specified block location is a fence,
@@ -524,7 +535,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    getFenceConnectivity(blockLocation: minecraftserver.Vector3): FenceConnectivity;
+    getFenceConnectivity(blockLocation: Vector3): FenceConnectivity;
     /**
      * @remarks
      * Retrieves a sculk spreader object that can be used to
@@ -543,7 +554,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;
+    getSculkSpreader(blockLocation: Vector3): SculkSpreader | undefined;
     /**
      * @remarks
      * Returns the direction of the current test - see the {@link
@@ -554,7 +565,7 @@ export class Test {
      *
      * {@link GameTestCompletedError}
      */
-    getTestDirection(): minecraftserver.Direction;
+    getTestDirection(): Direction;
     /**
      * @remarks
      * This asynchronous function will wait for the specified time
@@ -609,7 +620,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    onPlayerJump(mob: minecraftserver.Entity, jumpAmount: number): void;
+    onPlayerJump(mob: Entity, jumpAmount: number): void;
     /**
      * @remarks
      * Presses a button at a block location.
@@ -626,7 +637,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    pressButton(blockLocation: minecraftserver.Vector3): void;
+    pressButton(blockLocation: Vector3): void;
     /**
      * @remarks
      * Displays the specified message to all players.
@@ -658,7 +669,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    pullLever(blockLocation: minecraftserver.Vector3): void;
+    pullLever(blockLocation: Vector3): void;
     /**
      * @remarks
      * Sends a Redstone pulse at a particular location by creating
@@ -676,7 +687,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    pulseRedstone(blockLocation: minecraftserver.Vector3, duration: number): void;
+    pulseRedstone(blockLocation: Vector3, duration: number): void;
     /**
      * @remarks
      * From a BlockLocation, returns a new BlockLocation with
@@ -696,7 +707,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    relativeBlockLocation(worldBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
+    relativeBlockLocation(worldBlockLocation: Vector3): Vector3;
     /**
      * @remarks
      * From a location, returns a new location with coordinates
@@ -718,7 +729,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
+    relativeLocation(worldLocation: Vector3): Vector3;
     /**
      * @remarks
      * Removes a simulated player from the world.
@@ -752,7 +763,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    rotateDirection(direction: minecraftserver.Direction): minecraftserver.Direction;
+    rotateDirection(direction: Direction): Direction;
     /**
      * @remarks
      * @worldMutation
@@ -763,7 +774,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    rotateVector(vector: minecraftserver.Vector3): minecraftserver.Vector3;
+    rotateVector(vector: Vector3): Vector3;
     /**
      * @remarks
      * Runs a specific callback after a specified delay of ticks
@@ -827,7 +838,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
+    setBlockPermutation(
+        blockData: BlockPermutation,
+        blockLocation: Vector3,
+    ): void;
     /**
      * @remarks
      * Sets a block to a particular type at the specified block
@@ -846,7 +860,10 @@ export class Test {
      * {@link GameTestError}
      * @seeExample minibiomes.ts
      */
-    setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
+    setBlockType(
+        blockType: BlockType | string,
+        blockLocation: Vector3,
+    ): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
@@ -857,7 +874,7 @@ export class Test {
      * @param location
      * Location of the fluid container block.
      * @param type
-     * Type of fluid to set. See {@link minecraftserver.FluidType}
+     * Type of fluid to set. See {@link FluidType}
      * for a list of values.
      * @throws This function can throw errors.
      *
@@ -865,7 +882,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    setFluidContainer(location: minecraftserver.Vector3, type: minecraftserver.FluidType): void;
+    setFluidContainer(location: Vector3, type: FluidType): void;
     /**
      * @remarks
      * Sets the fuse of an explodable entity.
@@ -882,7 +899,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    setTntFuse(entity: minecraftserver.Entity, fuseLength: number): void;
+    setTntFuse(entity: Entity, fuseLength: number): void;
     /**
      * @remarks
      * Spawns an entity at a location.
@@ -907,7 +924,7 @@ export class Test {
      * @seeExample phantomsShouldFlyFromCats.ts
      * @seeExample minibiomes.ts
      */
-    spawn(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
+    spawn(entityTypeIdentifier: string, blockLocation: Vector3): Entity;
     /**
      * @remarks
      * Spawns an entity at a location.
@@ -928,7 +945,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnAtLocation(
+        entityTypeIdentifier: string,
+        location: Vector3,
+    ): Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
@@ -945,7 +965,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnItem(
+        itemStack: ItemStack,
+        location: Vector3,
+    ): Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
@@ -966,9 +989,9 @@ export class Test {
      * {@link GameTestError}
      */
     spawnSimulatedPlayer(
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         name?: string,
-        gameMode?: minecraftserver.GameMode,
+        gameMode?: GameMode,
     ): SimulatedPlayer;
     /**
      * @remarks
@@ -986,7 +1009,10 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
+    spawnWithoutBehaviors(
+        entityTypeIdentifier: string,
+        blockLocation: Vector3,
+    ): Entity;
     /**
      * @remarks
      * Spawns an entity at a location without any AI behaviors.
@@ -1005,8 +1031,8 @@ export class Test {
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
-        location: minecraftserver.Vector3,
-    ): minecraftserver.Entity;
+        location: Vector3,
+    ): Entity;
     /**
      * @remarks
      * Tests that a particular item entity is present at a
@@ -1028,9 +1054,9 @@ export class Test {
      * {@link GameTestError}
      */
     spreadFromFaceTowardDirection(
-        blockLocation: minecraftserver.Vector3,
-        fromFace: minecraftserver.Direction,
-        direction: minecraftserver.Direction,
+        blockLocation: Vector3,
+        fromFace: Direction,
+        direction: Direction,
     ): void;
     /**
      * @remarks
@@ -1140,8 +1166,8 @@ export class Test {
      * {@link GameTestError}
      */
     succeedWhenBlockPresent(
-        blockType: minecraftserver.BlockType | string,
-        blockLocation: minecraftserver.Vector3,
+        blockType: BlockType | string,
+        blockLocation: Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1169,7 +1195,7 @@ export class Test {
     succeedWhenEntityHasComponent(
         entityTypeIdentifier: string,
         componentIdentifier: string,
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         hasComponent: boolean,
     ): void;
     /**
@@ -1198,7 +1224,7 @@ export class Test {
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
-        blockLocation: minecraftserver.Vector3,
+        blockLocation: Vector3,
         isPresent?: boolean,
     ): void;
     /**
@@ -1221,7 +1247,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
+    triggerInternalBlockEvent(
+        blockLocation: Vector3,
+        event: string,
+        eventParameters?: number[],
+    ): void;
     /**
      * @remarks
      * This asynchronous function will wait until the code in the
@@ -1260,7 +1290,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkTo(mob: minecraftserver.Entity, blockLocation: minecraftserver.Vector3, speedModifier?: number): void;
+    walkTo(
+        mob: Entity,
+        blockLocation: Vector3,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * Forces a mob to walk to a particular location. Usually used
@@ -1283,7 +1317,11 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
+    walkToLocation(
+        mob: Entity,
+        location: Vector3,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * From a BlockLocation with coordinates relative to the
@@ -1301,7 +1339,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
+    worldBlockLocation(relativeBlockLocation: Vector3): Vector3;
     /**
      * @remarks
      * From a location with coordinates relative to the GameTest
@@ -1319,5 +1357,5 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    worldLocation(relativeLocation: minecraftserver.Vector3): minecraftserver.Vector3;
+    worldLocation(relativeLocation: Vector3): Vector3;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity } from '../index';
+/* IMPORT */ import { Entity } from '..';
 
 /**
  * Specifies additional filters that are used in registering a

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionTypes } from '../index';
+/* IMPORT */ import { ActionTypes } from '..';
 
 /**
  * An action which returns the activation state.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerJoinAfterEvent } from '../index';
+/* IMPORT */ import { PlayerJoinAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to a player joining the

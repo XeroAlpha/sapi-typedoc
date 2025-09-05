@@ -1,4 +1,4 @@
-/* IMPORT */ import { RGB, RGBA, Vector3 } from '../index';
+/* IMPORT */ import { RGB, RGBA, Vector3 } from '..';
 
 /**
  * Contains a set of additional variable values for further

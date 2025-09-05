@@ -1,4 +1,4 @@
-/* IMPORT */ import { HttpRequest, HttpResponse } from '../index';
+/* IMPORT */ import { HttpRequest, HttpResponse } from '..';
 
 /**
  * @seeExample simpleHttpRequest.ts

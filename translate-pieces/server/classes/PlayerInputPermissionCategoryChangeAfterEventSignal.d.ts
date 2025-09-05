@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerInputPermissionCategoryChangeAfterEvent } from '../index';
+/* IMPORT */ import { PlayerInputPermissionCategoryChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to after a players

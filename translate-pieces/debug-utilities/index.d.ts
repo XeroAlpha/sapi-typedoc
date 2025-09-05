@@ -1,7 +1,3 @@
-import * as minecraftcommon from '../common';
-import * as minecraftserver from '../server';
-/* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { minecraftserver };
 export { DebugArrow } from './classes/DebugArrow';
 export { DebugBox } from './classes/DebugBox';
 export { DebugCircle } from './classes/DebugCircle';

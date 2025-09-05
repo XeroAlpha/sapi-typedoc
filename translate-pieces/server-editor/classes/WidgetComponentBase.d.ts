@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentType, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentType } from '..';
 
 export class WidgetComponentBase {
     private constructor();
@@ -13,7 +14,7 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly location: minecraftserver.Vector3;
+    readonly location: Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -31,7 +32,7 @@ export class WidgetComponentBase {
      * @worldMutation
      *
      */
-    offset: minecraftserver.Vector3;
+    offset: Vector3;
     readonly valid: boolean;
     visible: boolean;
     /**

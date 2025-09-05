@@ -1,4 +1,5 @@
-/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, Vector3 } from '..';
 
 /**
  * Defines a collection of items.
@@ -42,7 +43,7 @@ export class ItemStack {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      */
     readonly localizationKey: string;
     /**
@@ -329,9 +330,9 @@ export class ItemStack {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -346,9 +347,9 @@ export class ItemStack {
      * @throws
      * Throws if the item stack is stackable.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -365,7 +366,7 @@ export class ItemStack {
      * lore line length is 50 characters.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      * @seeExample diamondAwesomeSword.ts

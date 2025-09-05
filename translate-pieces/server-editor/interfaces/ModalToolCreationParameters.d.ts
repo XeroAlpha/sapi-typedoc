@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { BasicTooltipContent, NoArgsAction, RegisteredAction } from '..';
 
 /**
  * Parameters for creating a modal tool in the tool container

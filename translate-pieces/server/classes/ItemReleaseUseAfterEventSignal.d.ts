@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemReleaseUseAfterEvent } from '../index';
+/* IMPORT */ import { ItemReleaseUseAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to the releasing of

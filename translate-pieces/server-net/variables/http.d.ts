@@ -1,3 +1,3 @@
-/* IMPORT */ import { HttpClient } from '../index';
+/* IMPORT */ import { HttpClient } from '..';
 
 export const http: HttpClient;

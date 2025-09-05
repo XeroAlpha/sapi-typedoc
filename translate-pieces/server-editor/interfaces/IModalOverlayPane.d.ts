@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalControlPane, IPane, ISubPanePropertyItem } from '../index';
+/* IMPORT */ import { IModalControlPane, IPane, ISubPanePropertyItem } from '..';
 
 /**
  * A modal overlay pane is displayed over a root pane.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { RGB } from '../index';
+/* IMPORT */ import { RGB } from '..';
 
 /**
  * Represents a fully customizable color within Minecraft.

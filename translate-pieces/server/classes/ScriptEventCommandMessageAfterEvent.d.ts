@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Entity, ScriptEventSource } from '../index';
+/* IMPORT */ import { Block, Entity, ScriptEventSource } from '..';
 
 /**
  * Returns additional data about a /scriptevent command

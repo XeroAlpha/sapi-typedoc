@@ -1,4 +1,4 @@
-/* IMPORT */ import { LiquidSettings } from '../index';
+/* IMPORT */ import { LiquidSettings } from '..';
 
 /**
  * Provides additional options for {@link

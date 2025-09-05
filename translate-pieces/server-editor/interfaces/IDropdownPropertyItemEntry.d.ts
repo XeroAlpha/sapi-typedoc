@@ -1,4 +1,4 @@
-/* IMPORT */ import { ImageResourceData } from '../index';
+/* IMPORT */ import { ImageResourceData } from '..';
 
 /**
  * Properties of dropdown property item menu entry

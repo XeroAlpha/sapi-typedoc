@@ -1,10 +1,11 @@
-/* IMPORT */ import { ObservableValidator, minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { ObservableValidator } from '..';
 
 /**
  * Validates min/max limits of observable objects that support
  * Vector3
  */
-export declare class Vector3LimitObservableValidator implements ObservableValidator<minecraftserver.Vector3> {
+export declare class Vector3LimitObservableValidator implements ObservableValidator<Vector3> {
     /**
      * @remarks
      * @worldMutation
@@ -16,20 +17,20 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
      * @worldMutation
      *
      */
-    protected _max: Partial<minecraftserver.Vector3>;
+    protected _max: Partial<Vector3>;
     /**
      * @remarks
      * @worldMutation
      *
      */
-    protected _min: Partial<minecraftserver.Vector3>;
+    protected _min: Partial<Vector3>;
     /**
      * @remarks
      * Constructs a new instance of the
      * `Vector3LimitObservableValidator` class
      *
      */
-    constructor(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>, isInteger?: boolean);
-    updateLimits(min: Partial<minecraftserver.Vector3>, max: Partial<minecraftserver.Vector3>): void;
-    validate(newValue: minecraftserver.Vector3): minecraftserver.Vector3;
+    constructor(min: Partial<Vector3>, max: Partial<Vector3>, isInteger?: boolean);
+    updateLimits(min: Partial<Vector3>, max: Partial<Vector3>): void;
+    validate(newValue: Vector3): Vector3;
 }

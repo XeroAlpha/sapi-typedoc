@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, ItemStack } from '../index';
+/* IMPORT */ import { EntityComponent, ItemStack } from '..';
 
 /**
  * Represents the players cursor inventory. Used when moving

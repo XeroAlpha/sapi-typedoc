@@ -1,8 +1,8 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export class EditorConstants {
     private constructor();
-    readonly maxSelectionSize: minecraftserver.Vector3;
-    readonly maxStructureOffset: minecraftserver.Vector3;
-    readonly minStructureOffset: minecraftserver.Vector3;
+    readonly maxSelectionSize: Vector3;
+    readonly maxStructureOffset: Vector3;
+    readonly minStructureOffset: Vector3;
 }

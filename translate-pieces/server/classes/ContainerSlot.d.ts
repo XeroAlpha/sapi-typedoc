@@ -1,4 +1,5 @@
-/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, RawMessage, Vector3, minecraftcommon } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, RawMessage, Vector3 } from '..';
 
 /**
  * Represents a slot within a broader container (e.g., entity
@@ -91,7 +92,7 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -329,11 +330,11 @@ export class ContainerSlot {
      * set.
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     /**
@@ -347,11 +348,11 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
+     * {@link UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -384,7 +385,7 @@ export class ContainerSlot {
      * @throws
      * Throws if the slot's container is invalid.
      *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      *

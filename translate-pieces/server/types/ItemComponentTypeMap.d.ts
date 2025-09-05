@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemBookComponent, ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemInventoryComponent, ItemPotionComponent } from '../index';
+/* IMPORT */ import { ItemBookComponent, ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemInventoryComponent, ItemPotionComponent } from '..';
 
 export type ItemComponentTypeMap = {
     book: ItemBookComponent;

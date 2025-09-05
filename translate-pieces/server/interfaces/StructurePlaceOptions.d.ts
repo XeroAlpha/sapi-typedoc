@@ -1,4 +1,4 @@
-/* IMPORT */ import { StructureAnimationMode, StructureMirrorAxis, StructureRotation } from '../index';
+/* IMPORT */ import { StructureAnimationMode, StructureMirrorAxis, StructureRotation } from '..';
 
 /**
  * Provides additional options for {@link

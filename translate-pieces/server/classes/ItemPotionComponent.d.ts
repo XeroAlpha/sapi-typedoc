@@ -1,4 +1,5 @@
-/* IMPORT */ import { ItemComponent, PotionDeliveryType, PotionEffectType, minecraftcommon } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { ItemComponent, PotionDeliveryType, PotionEffectType } from '..';
 
 /**
  * @beta
@@ -13,7 +14,7 @@ export class ItemPotionComponent extends ItemComponent {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */
@@ -24,7 +25,7 @@ export class ItemPotionComponent extends ItemComponent {
      *
      * @throws This property can throw when used.
      *
-     * {@link minecraftcommon.EngineError}
+     * {@link EngineError}
      *
      * {@link Error}
      */

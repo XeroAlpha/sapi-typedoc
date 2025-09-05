@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector2 } from '../index';
+/* IMPORT */ import { Vector2 } from '../../server';
 
 /**
  * zero

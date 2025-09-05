@@ -1,7 +1,7 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;
-    offset?: minecraftserver.Vector3;
+    offset?: Vector3;
     visible?: boolean;
 }

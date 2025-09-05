@@ -1,4 +1,4 @@
-/* IMPORT */ import { WidgetGroup, WidgetGroupCreateOptions } from '../index';
+/* IMPORT */ import { WidgetGroup, WidgetGroupCreateOptions } from '..';
 
 export class WidgetManager {
     private constructor();

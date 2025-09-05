@@ -1,4 +1,4 @@
-/* IMPORT */ import { Sentry } from '../index';
+/* IMPORT */ import { Sentry } from '..';
 
 /**
  * @remarks

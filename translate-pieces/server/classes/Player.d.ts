@@ -1,4 +1,5 @@
-/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '..';
 
 /**
  * Represents a player within the world.
@@ -195,6 +196,16 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
+     * @beta
+     * @remarks
+     * Returns the player's current control scheme.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getControlScheme(): ControlScheme;
+    /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.
      *
@@ -330,6 +341,33 @@ export class Player extends Entity {
      * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @beta
+     * @remarks
+     * Set a player's control scheme. The player's active camera
+     * preset must be set by scripts like with camera.setCamera()
+     * or commands.
+     *
+     * @worldMutation
+     *
+     * @param controlScheme
+     * Control scheme type. If this argument is undefined, this
+     * method will clear the player's control scheme back to the
+     * player camera's default control scheme.
+     * @returns
+     * Returns nothing if the control scheme was added or updated
+     * successfully. This can throw an InvalidArgumentError if the
+     * control scheme is not allowed by the player's current
+     * camera.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    setControlScheme(controlScheme?: string): void;
     /**
      * @remarks
      * Sets a gamemode override for this player.

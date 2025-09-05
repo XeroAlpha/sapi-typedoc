@@ -1,4 +1,4 @@
-/* IMPORT */ import { Player } from '../index';
+/* IMPORT */ import { Player } from '..';
 
 /**
  * Contains information regarding a player that is leaving the

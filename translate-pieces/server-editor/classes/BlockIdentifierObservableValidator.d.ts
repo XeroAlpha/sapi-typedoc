@@ -1,4 +1,4 @@
-/* IMPORT */ import { ObservableValidator } from '../index';
+/* IMPORT */ import { ObservableValidator } from '..';
 
 /**
  * Validates observable objects that support string as

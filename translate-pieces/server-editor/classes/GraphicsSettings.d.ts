@@ -1,4 +1,4 @@
-/* IMPORT */ import { GraphicsSettingsPropertyTypeMap } from '../index';
+/* IMPORT */ import { GraphicsSettingsPropertyTypeMap } from '..';
 
 /**
  * Settings category that manages {@link

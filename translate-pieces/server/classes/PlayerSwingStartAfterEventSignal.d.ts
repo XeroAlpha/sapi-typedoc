@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerSwingEventOptions, PlayerSwingStartAfterEvent } from '../index';
+/* IMPORT */ import { PlayerSwingEventOptions, PlayerSwingStartAfterEvent } from '..';
 
 /**
  * @beta

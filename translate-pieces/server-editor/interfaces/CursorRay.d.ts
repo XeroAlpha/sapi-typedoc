@@ -1,7 +1,7 @@
-/* IMPORT */ import { minecraftserver } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export interface CursorRay {
-    end: minecraftserver.Vector3;
+    end: Vector3;
     hit: boolean;
-    start: minecraftserver.Vector3;
+    start: Vector3;
 }

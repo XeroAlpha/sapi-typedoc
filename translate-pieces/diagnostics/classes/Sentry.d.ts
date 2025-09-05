@@ -1,4 +1,5 @@
-/* IMPORT */ import { SentryAlreadyInitializedError, SentryCaptureContext, SentryEventLevel, SentryOptions, SentryUninitializedError, minecraftcommon } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { SentryAlreadyInitializedError, SentryCaptureContext, SentryEventLevel, SentryOptions, SentryUninitializedError } from '..';
 
 /**
  * A class that allows hooking up reporting to Sentry.  See
@@ -75,7 +76,7 @@ export class Sentry {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftcommon.InvalidArgumentError}
+     * {@link InvalidArgumentError}
      *
      * {@link SentryAlreadyInitializedError}
      */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BookErrorReason } from '../index';
+/* IMPORT */ import { BookErrorReason } from '..';
 
 /**
  * @rc

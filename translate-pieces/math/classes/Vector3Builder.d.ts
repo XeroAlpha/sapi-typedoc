@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * Vector3 wrapper class which can be used as a Vector3 for APIs on \@minecraft/server which require a Vector,

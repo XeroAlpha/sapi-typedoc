@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent } from '../index';
+/* IMPORT */ import { ItemComponent } from '..';
 
 /**
  * When present, the item can be composted in the composter

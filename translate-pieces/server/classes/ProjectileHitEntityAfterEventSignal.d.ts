@@ -1,4 +1,4 @@
-/* IMPORT */ import { ProjectileHitEntityAfterEvent } from '../index';
+/* IMPORT */ import { ProjectileHitEntityAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a projectile

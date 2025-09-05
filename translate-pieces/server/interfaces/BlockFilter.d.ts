@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPermutation } from '../index';
+/* IMPORT */ import { BlockPermutation } from '..';
 
 /**
  * Options to include or exclude blocks based on type, tag or

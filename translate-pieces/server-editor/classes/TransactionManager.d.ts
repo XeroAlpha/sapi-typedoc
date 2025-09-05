@@ -1,4 +1,5 @@
-/* IMPORT */ import { EntityOperationType, UserDefinedTransactionHandlerId, minecraftserver } from '../index';
+/* IMPORT */ import { BlockVolumeBase, Entity, Vector3 } from '../../server';
+/* IMPORT */ import { EntityOperationType, UserDefinedTransactionHandlerId } from '..';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -20,7 +21,7 @@ export class TransactionManager {
      *
      * @throws This function can throw errors.
      */
-    addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
+    addEntityOperation(entity: Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * @worldMutation
@@ -159,7 +160,7 @@ export class TransactionManager {
      * Max block location of a bounding area
      * @throws This function can throw errors.
      */
-    trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
+    trackBlockChangeArea(from: Vector3, to: Vector3): boolean;
     /**
      * @remarks
      * Begin tracking block changes in a list of specified block
@@ -171,14 +172,14 @@ export class TransactionManager {
      * An array of block locations to monitor for changes
      * @throws This function can throw errors.
      */
-    trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
+    trackBlockChangeList(locations: Vector3[]): boolean;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    trackBlockChangeVolume(blockVolume: minecraftserver.BlockVolumeBase): boolean;
+    trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last

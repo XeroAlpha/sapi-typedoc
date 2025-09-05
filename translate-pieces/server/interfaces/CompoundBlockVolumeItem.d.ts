@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolume, CompoundBlockVolumeAction, CompoundBlockVolumePositionRelativity } from '../index';
+/* IMPORT */ import { BlockVolume, CompoundBlockVolumeAction, CompoundBlockVolumePositionRelativity } from '..';
 
 /**
  * @beta

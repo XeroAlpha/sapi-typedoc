@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Number properties

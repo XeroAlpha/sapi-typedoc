@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityIdentifierType, EntityType } from '../index';
+/* IMPORT */ import { EntityIdentifierType, EntityType } from '..';
 
 /**
  * Used for accessing all entity types currently available for

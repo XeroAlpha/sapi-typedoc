@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ItemStack } from '../index';
+/* IMPORT */ import { Entity, ItemStack } from '..';
 
 /**
  * Contains information related to a food item being consumed.

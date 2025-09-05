@@ -1,4 +1,4 @@
-/* IMPORT */ import { FeedItemEffect } from '../index';
+/* IMPORT */ import { FeedItemEffect } from '..';
 
 /**
  * As part of the Healable component, represents a specific

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EaseOptions, Vector3 } from '../index';
+/* IMPORT */ import { EaseOptions, Vector3 } from '..';
 
 export interface CameraSetLocationOptions {
     easeOptions?: EaseOptions;

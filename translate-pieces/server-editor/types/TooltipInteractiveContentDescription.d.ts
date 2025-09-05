@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString, TooltipLink } from '../index';
+/* IMPORT */ import { LocalizedString, TooltipLink } from '..';
 
 /**
  * Possible tooltip description items

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Vector2, Vector3 } from '../index';
+/* IMPORT */ import { Dimension, Vector2, Vector3 } from '..';
 
 /**
  * Contains additional options for teleporting an entity.

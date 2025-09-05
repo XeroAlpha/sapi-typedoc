@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActivationFunctionType, Extension, IRegisterExtensionOptionalParameters, ShutdownFunctionType } from '../index';
+/* IMPORT */ import { ActivationFunctionType, Extension, IRegisterExtensionOptionalParameters, ShutdownFunctionType } from '..';
 
 /**
  * @remarks

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ImageAnimationData } from '../index';
+/* IMPORT */ import { ImageAnimationData } from '..';
 
 /**
  * Properties required to create an Action Bar item.

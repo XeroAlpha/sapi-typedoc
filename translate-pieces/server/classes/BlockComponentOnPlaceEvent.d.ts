@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation } from '..';
 
 /**
  * Contains information regarding a specific block that was

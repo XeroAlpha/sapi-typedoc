@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerDimensionChangeAfterEvent } from '../index';
+/* IMPORT */ import { PlayerDimensionChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to successful player

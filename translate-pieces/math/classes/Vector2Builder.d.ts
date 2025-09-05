@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector2 } from '../index';
+/* IMPORT */ import { Vector2 } from '../../server';
 
 /**
  * Vector2 wrapper class which can be used as a Vector2 for APIs on \@minecraft/server which require a Vector2.

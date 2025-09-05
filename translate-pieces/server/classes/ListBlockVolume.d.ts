@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolumeBase, Vector3 } from '../index';
+/* IMPORT */ import { BlockVolumeBase, Vector3 } from '..';
 
 /**
  * Volume composed of an unordered container of unique block

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IButtonPropertyItem, IButtonPropertyItemOptions, IPane, IPropertyItemBase } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IButtonPropertyItem, IButtonPropertyItemOptions, IPane, IPropertyItemBase } from '..';
 
 /**
  * A property item pane which supports multiple buttons

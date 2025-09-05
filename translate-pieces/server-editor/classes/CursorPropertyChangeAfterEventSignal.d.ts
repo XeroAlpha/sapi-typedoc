@@ -1,4 +1,4 @@
-/* IMPORT */ import { CursorPropertiesChangeAfterEvent } from '../index';
+/* IMPORT */ import { CursorPropertiesChangeAfterEvent } from '..';
 
 export class CursorPropertyChangeAfterEventSignal {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+/* IMPORT */ import { EntityBaseMovementComponent } from '..';
 
 /**
  * When added, this movement control allows the mob to swim in

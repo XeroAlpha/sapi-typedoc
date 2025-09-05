@@ -1,4 +1,4 @@
-/* IMPORT */ import { WatchdogTerminateBeforeEvent } from '../index';
+/* IMPORT */ import { WatchdogTerminateBeforeEvent } from '..';
 
 /**
  * @beta

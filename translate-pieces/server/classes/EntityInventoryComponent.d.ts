@@ -1,4 +1,4 @@
-/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '../index';
+/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '..';
 
 /**
  * 表示一个实体的物品栏属性。

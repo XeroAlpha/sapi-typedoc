@@ -28,4 +28,5 @@ export class ArgumentOutOfBoundsError extends Error {
      * Passed-in value for the argument.
      */
     value: number;
+    index: number;
 }

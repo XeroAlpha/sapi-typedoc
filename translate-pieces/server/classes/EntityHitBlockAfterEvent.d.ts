@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockPermutation, Direction, Entity } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, Direction, Entity } from '..';
 
 /**
  * Contains information related to an entity hitting a block.

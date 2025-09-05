@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemStopUseOnAfterEvent } from '../index';
+/* IMPORT */ import { ItemStopUseOnAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to an item stops used

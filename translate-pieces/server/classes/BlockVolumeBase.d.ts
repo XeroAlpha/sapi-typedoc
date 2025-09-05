@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, Vector3 } from '..';
 
 /**
  * Base type for BlockVolumes.

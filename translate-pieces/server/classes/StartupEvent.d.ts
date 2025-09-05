@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, ItemComponentRegistry } from '../index';
+/* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, ItemComponentRegistry } from '..';
 
 export class StartupEvent {
     private constructor();

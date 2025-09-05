@@ -1,4 +1,4 @@
-/* IMPORT */ import { ShutdownBeforeEventSignal, StartupBeforeEventSignal, WatchdogTerminateBeforeEventSignal } from '../index';
+/* IMPORT */ import { ShutdownBeforeEventSignal, StartupBeforeEventSignal, WatchdogTerminateBeforeEventSignal } from '..';
 
 /**
  * A set of events that fire before an actual action occurs. In

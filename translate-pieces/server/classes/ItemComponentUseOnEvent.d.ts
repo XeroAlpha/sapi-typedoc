@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPermutation, Entity, ItemUseOnEvent } from '../index';
+/* IMPORT */ import { BlockPermutation, Entity, ItemUseOnEvent } from '..';
 
 /**
  * Contains information regarding the use of an item on a block

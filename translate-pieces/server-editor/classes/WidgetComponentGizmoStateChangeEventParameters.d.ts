@@ -1,4 +1,4 @@
-/* IMPORT */ import { Widget, WidgetComponentGizmo, WidgetGizmoEventType } from '../index';
+/* IMPORT */ import { Widget, WidgetComponentGizmo, WidgetGizmoEventType } from '..';
 
 export class WidgetComponentGizmoStateChangeEventParameters {
     private constructor();

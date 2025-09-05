@@ -1,4 +1,4 @@
-/* IMPORT */ import { ServerSecrets } from '../index';
+/* IMPORT */ import { ServerSecrets } from '..';
 
 /**
  * @remarks
