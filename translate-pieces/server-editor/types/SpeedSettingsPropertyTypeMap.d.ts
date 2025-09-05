@@ -1,4 +1,4 @@
-/* IMPORT */ import { SpeedSettingsProperty } from '../index';
+/* IMPORT */ import { SpeedSettingsProperty } from '..';
 
 export type SpeedSettingsPropertyTypeMap = {
     [SpeedSettingsProperty.FlySpeedMultiplier]?: number;

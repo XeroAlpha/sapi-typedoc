@@ -1,4 +1,4 @@
-/* IMPORT */ import { Effect, Entity } from '../index';
+/* IMPORT */ import { Effect, Entity } from '..';
 
 /**
  * Contains information related to changes to an effect - like

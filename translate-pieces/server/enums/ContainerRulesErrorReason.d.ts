@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerRules } from '../index';
+/* IMPORT */ import { ContainerRules } from '..';
 
 /**
  * @beta

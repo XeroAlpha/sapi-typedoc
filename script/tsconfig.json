@@ -6,8 +6,8 @@
   "compilerOptions": {
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
-    "target": "ES2023",
-    "lib": [ "ES2023" ],
+    "target": "ESNext",
+    "lib": [ "ESNext" ],
     "noEmit": true,
     "allowJs": true,
     "strict": true,

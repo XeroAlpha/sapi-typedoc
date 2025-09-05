@@ -1,4 +1,4 @@
-/* IMPORT */ import { World } from '../index';
+/* IMPORT */ import { World } from '..';
 
 /**
  * Additional configuration options for {@link

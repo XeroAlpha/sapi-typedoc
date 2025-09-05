@@ -1,4 +1,6 @@
-/* IMPORT */ import { EngineError, InvalidPotionDeliveryTypeError, InvalidPotionEffectTypeError, ItemStack, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes, PotionDeliveryType, PotionEffectType } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidPotionDeliveryTypeError, InvalidPotionEffectTypeError, ItemStack, PotionDeliveryType, PotionEffectType } from '..';
+/* IMPORT */ import { MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '../../vanilla-data';
 
 /**
  * @beta

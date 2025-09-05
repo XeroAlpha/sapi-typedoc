@@ -1,4 +1,6 @@
-/* IMPORT */ import { Direction, Entity, GameTestError, InvalidArgumentError, InvalidEntityError, ItemStack, LookDuration, MoveToOptions, NavigationResult, Player, PlayerSkinData, Vector2, Vector3 } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { Direction, Entity, InvalidEntityError, ItemStack, Player, Vector2, Vector3 } from '../../server';
+/* IMPORT */ import { GameTestError, LookDuration, MoveToOptions, NavigationResult, PlayerSkinData } from '..';
 
 /**
  * A simulated player can be used within GameTests to represent

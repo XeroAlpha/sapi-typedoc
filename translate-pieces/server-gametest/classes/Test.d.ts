@@ -1,4 +1,5 @@
-/* IMPORT */ import { Block, BlockPermutation, BlockType, Dimension, Direction, Entity, FenceConnectivity, FluidType, GameMode, GameTestCompletedError, GameTestError, GameTestSequence, ItemStack, ItemType, SculkSpreader, SimulatedPlayer, Vector3 } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, BlockType, Dimension, Direction, Entity, FluidType, GameMode, ItemStack, ItemType, Vector3 } from '../../server';
+/* IMPORT */ import { FenceConnectivity, GameTestCompletedError, GameTestError, GameTestSequence, SculkSpreader, SimulatedPlayer } from '..';
 
 /**
  * Main class for GameTest functions, with helpers and data for

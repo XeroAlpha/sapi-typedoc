@@ -1,4 +1,5 @@
-/* IMPORT */ import { AimAssistRegistry, ArgumentOutOfBoundsError, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, InvalidArgumentError, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PropertyOutOfBoundsError, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
 
 /**
  * A class that wraps the state of a world - a set of

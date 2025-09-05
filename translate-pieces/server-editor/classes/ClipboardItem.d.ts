@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockVolumeBase, ClipboardWriteOptions, EditorStructure, RelativeVolumeListBlockVolume, Vector3 } from '../index';
+/* IMPORT */ import { BlockVolumeBase, Vector3 } from '../../server';
+/* IMPORT */ import { ClipboardWriteOptions, EditorStructure, RelativeVolumeListBlockVolume } from '..';
 
 /**
  * A ClipboardItem is a handle to an object which represents a

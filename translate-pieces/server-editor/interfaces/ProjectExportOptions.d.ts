@@ -1,4 +1,5 @@
-/* IMPORT */ import { Difficulty, GameMode, ProjectExportType } from '../index';
+/* IMPORT */ import { Difficulty, GameMode } from '../../server';
+/* IMPORT */ import { ProjectExportType } from '..';
 
 export interface ProjectExportOptions {
     alwaysDay?: boolean;

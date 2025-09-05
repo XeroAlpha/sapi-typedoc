@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, InvalidEntityError, ItemStack } from '../index';
+/* IMPORT */ import { ContainerSlot, EntityComponent, EquipmentSlot, InvalidEntityError, ItemStack } from '..';
 
 /**
  * Provides access to a mob's equipment slots. This component

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockType, Entity, EntityType, ItemType, Player } from '../index';
+/* IMPORT */ import { BlockType, Entity, EntityType, ItemType, Player } from '..';
 
 /**
  * The types of paramaters accepted by a custom command.

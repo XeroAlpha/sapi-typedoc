@@ -1,4 +1,5 @@
-/* IMPORT */ import { Plane, RGBA, Vector2, WidgetComponentBaseOptions } from '../index';
+/* IMPORT */ import { RGBA, Vector2 } from '../../server';
+/* IMPORT */ import { Plane, WidgetComponentBaseOptions } from '..';
 
 export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
     color?: RGBA;

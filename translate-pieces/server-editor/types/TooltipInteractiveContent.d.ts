@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString, TooltipInteractiveContentDescription } from '../index';
+/* IMPORT */ import { LocalizedString, TooltipInteractiveContentDescription } from '..';
 
 /**
  * Content properties to display interactive tooltips

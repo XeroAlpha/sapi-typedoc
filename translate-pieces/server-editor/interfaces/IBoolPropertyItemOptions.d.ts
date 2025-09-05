@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, BoolPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, BoolPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Bool property item

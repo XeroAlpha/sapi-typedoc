@@ -1,4 +1,5 @@
-/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase } from '../index';
+/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
+/* IMPORT */ import { WidgetComponentBase } from '..';
 
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();

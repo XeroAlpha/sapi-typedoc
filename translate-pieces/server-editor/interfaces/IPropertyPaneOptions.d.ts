@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString, TooltipInteractiveContent } from '../index';
+/* IMPORT */ import { LocalizedString, TooltipInteractiveContent } from '..';
 
 /**
  * Common optional properties used for constructing a property

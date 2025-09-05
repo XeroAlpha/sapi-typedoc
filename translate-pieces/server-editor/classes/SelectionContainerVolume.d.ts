@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockBoundingBox, BlockVolume, BlockVolumeBase, RelativeVolumeListBlockVolume, SelectionContainerBase, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockVolume, BlockVolumeBase, Vector3 } from '../../server';
+/* IMPORT */ import { RelativeVolumeListBlockVolume, SelectionContainerBase } from '..';
 
 export class SelectionContainerVolume extends SelectionContainerBase {
     private constructor();

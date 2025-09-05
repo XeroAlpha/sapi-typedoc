@@ -1,4 +1,4 @@
-/* IMPORT */ import { PacketId } from '../index';
+/* IMPORT */ import { PacketId } from '..';
 
 /**
  * Options for events triggered by network packets.

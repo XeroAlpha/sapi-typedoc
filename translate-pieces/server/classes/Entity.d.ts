@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EngineError, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidArgumentError, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, UnsupportedFunctionalityError, Vector2, Vector3, VectorXZ } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
 
 /**
  * Represents the state of an entity (a mob, the player, or

@@ -1,4 +1,5 @@
-/* IMPORT */ import { CursorControlMode, CursorTargetMode, RGBA } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { CursorControlMode, CursorTargetMode } from '..';
 
 /**
  * The CursorProperties interface is used to describe the

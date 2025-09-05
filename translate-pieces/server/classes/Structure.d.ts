@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, EngineError, InvalidArgumentError, InvalidStructureError, StructureManager, StructureSaveMode, Vector3 } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockPermutation, InvalidStructureError, StructureManager, StructureSaveMode, Vector3 } from '..';
 
 /**
  * Represents a loaded structure template (.mcstructure file).

@@ -1,4 +1,6 @@
-/* IMPORT */ import { BlockMaskList, BlockStateSuperset, BrushDirectionalPlacementMode, FlattenMode, ItemType, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume, Vector3 } from '../index';
+/* IMPORT */ import { ItemType, Vector3 } from '../../server';
+/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockStateSuperset } from '../../vanilla-data';
 
 export class BrushShapeManager {
     private constructor();

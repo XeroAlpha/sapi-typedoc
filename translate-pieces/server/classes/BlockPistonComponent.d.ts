@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from '../index';
+/* IMPORT */ import { Block, BlockComponent, BlockPistonState, Vector3 } from '..';
 
 /**
  * When present, this block has piston-like behavior. Contains

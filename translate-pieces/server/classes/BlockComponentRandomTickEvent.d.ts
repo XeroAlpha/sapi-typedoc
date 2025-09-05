@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent } from '../index';
+/* IMPORT */ import { BlockEvent } from '..';
 
 /**
  * Contains information regarding a specific block randomly

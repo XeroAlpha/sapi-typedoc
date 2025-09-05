@@ -1,4 +1,5 @@
-/* IMPORT */ import { Axis, RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBaseOptions, WidgetComponentBoundingBoxStateChangeEventParameters } from '../index';
+/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
+/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentBoundingBoxStateChangeEventParameters } from '..';
 
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
     boundsOffset?: Vector3;

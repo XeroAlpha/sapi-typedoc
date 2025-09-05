@@ -1,4 +1,4 @@
-/* IMPORT */ import { LogProperties } from '../index';
+/* IMPORT */ import { LogProperties } from '..';
 
 /**
  * The logger class is a utility class which allows editor

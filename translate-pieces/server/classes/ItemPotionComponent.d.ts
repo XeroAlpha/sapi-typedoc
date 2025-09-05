@@ -1,4 +1,5 @@
-/* IMPORT */ import { EngineError, ItemComponent, PotionDeliveryType, PotionEffectType } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { ItemComponent, PotionDeliveryType, PotionEffectType } from '..';
 
 /**
  * @beta

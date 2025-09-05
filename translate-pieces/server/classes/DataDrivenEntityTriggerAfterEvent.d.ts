@@ -1,4 +1,4 @@
-/* IMPORT */ import { DefinitionModifier, Entity } from '../index';
+/* IMPORT */ import { DefinitionModifier, Entity } from '..';
 
 /**
  * Contains information related to firing of a data driven

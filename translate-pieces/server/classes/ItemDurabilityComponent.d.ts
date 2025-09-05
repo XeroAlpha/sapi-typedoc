@@ -1,4 +1,5 @@
-/* IMPORT */ import { ItemComponent, NumberRange } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
+/* IMPORT */ import { ItemComponent } from '..';
 
 /**
  * When present on an item, this item can take damage in the

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IStatusBarItem, IStatusBarItemCreationParams } from '../index';
+/* IMPORT */ import { IStatusBarItem, IStatusBarItemCreationParams } from '..';
 
 /**
  * Manager and container for IStatusBarItem objects

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityLoadAfterEvent } from '../index';
+/* IMPORT */ import { EntityLoadAfterEvent } from '..';
 
 /**
  * Registers a script-based event handler for handling what

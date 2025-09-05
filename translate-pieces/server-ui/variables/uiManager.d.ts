@@ -1,3 +1,3 @@
-/* IMPORT */ import { UIManager } from '../index';
+/* IMPORT */ import { UIManager } from '..';
 
 export const uiManager: UIManager;

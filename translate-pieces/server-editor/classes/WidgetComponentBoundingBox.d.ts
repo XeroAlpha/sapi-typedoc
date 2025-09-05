@@ -1,4 +1,5 @@
-/* IMPORT */ import { Axis, BlockVolume, InvalidWidgetComponentError, RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase, WidgetComponentBoundingBoxStateChangeEventParameters } from '../index';
+/* IMPORT */ import { BlockVolume, RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
+/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentBoundingBoxStateChangeEventParameters } from '..';
 
 export class WidgetComponentBoundingBox extends WidgetComponentBase {
     private constructor();

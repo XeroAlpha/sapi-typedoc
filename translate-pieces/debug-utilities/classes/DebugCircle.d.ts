@@ -1,4 +1,5 @@
-/* IMPORT */ import { DebugShape, Vector3 } from '../index';
+/* IMPORT */ import { DebugShape } from '..';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * A debug shape class that represents a circle (2D).

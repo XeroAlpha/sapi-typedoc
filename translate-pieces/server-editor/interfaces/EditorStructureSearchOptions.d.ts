@@ -1,4 +1,4 @@
-/* IMPORT */ import { StructureSource } from '../index';
+/* IMPORT */ import { StructureSource } from '..';
 
 export interface EditorStructureSearchOptions {
     displayName?: string;

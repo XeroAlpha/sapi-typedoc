@@ -1,4 +1,5 @@
-/* IMPORT */ import { Vector3, WidgetCollisionType, WidgetStateChangeEventData } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { WidgetCollisionType, WidgetStateChangeEventData } from '..';
 
 export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { RegistrationBuilder, Test } from '../index';
+/* IMPORT */ import { RegistrationBuilder, Test } from '..';
 
 /**
  * @remarks

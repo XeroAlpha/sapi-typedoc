@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPermutation, EntityComponent } from '../index';
+/* IMPORT */ import { BlockPermutation, EntityComponent } from '..';
 
 /**
  * Defines what blocks this entity can breathe in and gives

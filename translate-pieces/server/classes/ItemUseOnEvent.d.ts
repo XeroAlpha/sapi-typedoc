@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Direction, ItemStack, Vector3 } from '../index';
+/* IMPORT */ import { Block, Direction, ItemStack, Vector3 } from '..';
 
 /**
  * Contains information regarding the use of an item on a

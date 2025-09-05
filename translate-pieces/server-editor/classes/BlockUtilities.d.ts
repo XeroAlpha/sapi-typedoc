@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockBoundingBox, BlockMaskList, BlockPermutation, BlockType, BlockVolumeBase, CompoundBlockVolume, ContiguousSelectionProperties, ListBlockVolume, QuickExtrudeProperties, RelativeVolumeListBlockVolume, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockPermutation, BlockType, BlockVolumeBase, CompoundBlockVolume, ListBlockVolume, Vector3 } from '../../server';
+/* IMPORT */ import { BlockMaskList, ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume } from '..';
 
 export class BlockUtilities {
     private constructor();

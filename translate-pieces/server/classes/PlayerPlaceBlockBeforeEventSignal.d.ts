@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockBeforeEvent } from '../index';
+/* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockBeforeEvent } from '..';
 
 /**
  * @beta

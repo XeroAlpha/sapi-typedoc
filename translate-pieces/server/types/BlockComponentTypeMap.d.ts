@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockFluidContainerComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockRecordPlayerComponent, BlockSignComponent } from '../index';
+/* IMPORT */ import { BlockFluidContainerComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockRecordPlayerComponent, BlockSignComponent } from '..';
 
 export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, ItemStack, Player } from '../index';
+/* IMPORT */ import { EntityComponent, ItemStack, Player } from '..';
 
 /**
  * Defines the rules for an entity to be tamed by the player.

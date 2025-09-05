@@ -1,4 +1,6 @@
-/* IMPORT */ import { DimensionLocation, EngineError, GameMode, SimulatedPlayer, Test } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { DimensionLocation, GameMode } from '../../server';
+/* IMPORT */ import { SimulatedPlayer, Test } from '..';
 
 /**
  * @remarks

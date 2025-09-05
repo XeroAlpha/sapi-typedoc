@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputMode, Player } from '../index';
+/* IMPORT */ import { InputMode, Player } from '..';
 
 /**
  * Event data for when a player input mode changes.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ScoreboardIdentityType } from '../index';
+/* IMPORT */ import { Entity, ScoreboardIdentityType } from '..';
 
 /**
  * Contains an identity of the scoreboard item.

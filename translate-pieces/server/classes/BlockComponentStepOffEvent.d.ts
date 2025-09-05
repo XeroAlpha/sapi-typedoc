@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Entity } from '../index';
+/* IMPORT */ import { BlockEvent, Entity } from '..';
 
 /**
  * Contains information regarding an entity stepping off a

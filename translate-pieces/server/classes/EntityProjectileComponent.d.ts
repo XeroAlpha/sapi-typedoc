@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityComponent, ProjectileShootOptions, Vector3 } from '../index';
+/* IMPORT */ import { Entity, EntityComponent, ProjectileShootOptions, Vector3 } from '..';
 
 /**
  * The projectile component controls the properties of a

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EffectAddBeforeEvent } from '../index';
+/* IMPORT */ import { EffectAddBeforeEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when an effect is

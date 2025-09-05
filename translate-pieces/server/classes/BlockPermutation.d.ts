@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockStateArg, BlockStateSuperset, BlockType, ItemStack, LiquidType, MinecraftBlockTypes } from '../index';
+/* IMPORT */ import { BlockStateArg, BlockType, ItemStack, LiquidType } from '..';
+/* IMPORT */ import { BlockStateSuperset, MinecraftBlockTypes } from '../../vanilla-data';
 
 /**
  * Contains the combination of type {@link BlockType} and

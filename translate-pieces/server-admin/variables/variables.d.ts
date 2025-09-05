@@ -1,4 +1,4 @@
-/* IMPORT */ import { ServerVariables } from '../index';
+/* IMPORT */ import { ServerVariables } from '..';
 
 /**
  * @remarks

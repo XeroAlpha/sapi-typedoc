@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockLocationIterator, Vector3 } from '../index';
+/* IMPORT */ import { BlockLocationIterator, Vector3 } from '../../server';
 
 /**
  * @remarks

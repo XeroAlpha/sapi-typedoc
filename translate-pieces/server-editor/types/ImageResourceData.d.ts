@@ -1,4 +1,4 @@
-/* IMPORT */ import { ImageResourceType } from '../index';
+/* IMPORT */ import { ImageResourceType } from '..';
 
 export declare type ImageResourceData = {
     path: string;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEventOptions, PlayerBreakBlockBeforeEvent } from '../index';
+/* IMPORT */ import { BlockEventOptions, PlayerBreakBlockBeforeEvent } from '..';
 
 /**
  * Manages callbacks that are connected to before a player

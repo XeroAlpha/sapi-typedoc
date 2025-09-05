@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, CoreBrushShapeType } from '../index';
+/* IMPORT */ import { BrushShape, CoreBrushShapeType } from '..';
 
 /**
  * @remarks

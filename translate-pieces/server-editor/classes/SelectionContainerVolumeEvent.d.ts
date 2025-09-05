@@ -1,4 +1,4 @@
-/* IMPORT */ import { SelectionVolumeEventType } from '../index';
+/* IMPORT */ import { SelectionVolumeEventType } from '..';
 
 export class SelectionContainerVolumeEvent {
     private constructor();

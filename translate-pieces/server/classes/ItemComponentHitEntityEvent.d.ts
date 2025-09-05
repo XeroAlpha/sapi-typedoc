@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ItemStack } from '../index';
+/* IMPORT */ import { Entity, ItemStack } from '..';
 
 /**
  * Contains information regarding when an item is used to hit

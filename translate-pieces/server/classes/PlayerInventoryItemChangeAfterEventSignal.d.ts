@@ -1,4 +1,4 @@
-/* IMPORT */ import { InventoryItemEventOptions, PlayerInventoryItemChangeAfterEvent } from '../index';
+/* IMPORT */ import { InventoryItemEventOptions, PlayerInventoryItemChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected after a player's

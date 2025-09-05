@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityRemoveBeforeEvent } from '../index';
+/* IMPORT */ import { EntityRemoveBeforeEvent } from '..';
 
 /**
  * Allows registration for an event that fires when an entity

@@ -61,6 +61,24 @@ export interface GeneratedPiece {
 
 export type Piece = ExtractedPiece | GeneratedPiece;
 
+type ImportedSymbol =
+    | {
+          type: 'default';
+          name: string;
+          modulePath: string;
+      }
+    | {
+          type: 'namespaced';
+          name: string;
+          modulePath: string;
+      }
+    | {
+          type: 'named';
+          name: string;
+          exportName?: string;
+          modulePath: string;
+      };
+
 export function split(sourceFile: SourceFile) {
     const pieceDirectory = getSourceFilePieceDirectory(sourceFile);
     const indexExports: string[] = [];
@@ -122,43 +140,84 @@ export function split(sourceFile: SourceFile) {
         }
 
         const importSymbols = [...new Set(scopedSymbols)]
-            .map((scopedSymbol) => {
-                return scopedSymbol
-                    .getDeclarations()
-                    .filter((decl) => {
-                        const declSourceFile = decl.getSourceFile();
-                        if (declSourceFile.getFilePath() === sourceFile.getFilePath()) {
-                            if (decl.getStart() >= pieceStart && decl.getEnd() <= node.getEnd()) {
-                                return false;
-                            }
+            .map<ImportedSymbol | undefined>((scopedSymbol) => {
+                const decl = scopedSymbol.getDeclarations().find((decl) => {
+                    const declSourceFile = decl.getSourceFile();
+                    if (declSourceFile === sourceFile) {
+                        if (decl.getStart() >= pieceStart && decl.getEnd() <= node.getEnd()) {
+                            return false;
                         }
-                        return resolvePath(declSourceFile.getFilePath()).startsWith(translatedPath);
-                    })
-                    .map((decl) => ({
-                        fromName: decl.getSymbolOrThrow().getName(),
-                        toName: scopedSymbol.getName(),
-                        sourceFile: resolvePath(getSourceFilePieceDirectory(decl.getSourceFile()), 'index.d.ts')
-                    }))
-                    .shift();
+                    }
+                    return resolvePath(declSourceFile.getFilePath()).startsWith(translatedPath);
+                });
+                if (!decl) return undefined;
+                const ancestors = [decl, ...decl.getAncestors()];
+                const importDecl = ancestors.find((n) => n.isKind(SyntaxKind.ImportDeclaration));
+                if (importDecl) {
+                    const importModulePath = getSourceFilePieceDirectory(
+                        importDecl.getModuleSpecifierSourceFileOrThrow()
+                    );
+                    const importSpecifier = ancestors.find((n) => n.isKind(SyntaxKind.ImportSpecifier));
+                    if (importSpecifier) {
+                        return {
+                            type: 'named',
+                            name: scopedSymbol.getName(),
+                            exportName: importSpecifier.getName(),
+                            modulePath: importModulePath
+                        };
+                    }
+                    const namespaceImport = ancestors.find((n) => n.isKind(SyntaxKind.NamespaceImport));
+                    if (namespaceImport) {
+                        return {
+                            type: 'namespaced',
+                            name: scopedSymbol.getName(),
+                            modulePath: importModulePath
+                        };
+                    }
+                    return {
+                        type: 'default',
+                        name: scopedSymbol.getName(),
+                        modulePath: importModulePath
+                    };
+                }
+                return {
+                    type: 'named',
+                    name: scopedSymbol.getName(),
+                    exportName: decl.getSymbolOrThrow().getName(),
+                    modulePath: getSourceFilePieceDirectory(decl.getSourceFile())
+                };
             })
             .filter((e) => e !== undefined);
-        importSymbols.sort((a, b) => (a.toName > b.toName ? 1 : a.toName < b.toName ? -1 : 0));
         const isExported = (node as Partial<ExportGetableNode>).hasExportKeyword?.() ?? false;
 
-        const importGroupedByFile: Record<string, string[]> = {};
-        importSymbols.forEach((e) => {
-            let group = importGroupedByFile[e.sourceFile] as string[] | undefined;
-            if (!group) {
-                importGroupedByFile[e.sourceFile] = group = [];
-            }
-            group.push(e.fromName === e.toName ? e.toName : `${e.fromName} as ${e.toName}`);
-        });
-
+        const importGroupedByFile = Object.groupBy(importSymbols, (e) => e.modulePath);
+        const importModulePaths = Object.keys(importGroupedByFile).sort();
         const piecePathParent = resolvePath(piecePath, '..');
-        const importStatements = Object.entries(importGroupedByFile).map(([fileName, imports]) => {
-            const fileNameRelative = asRelativeModulePath(piecePathParent, fileName);
-            return `import { ${imports.join(', ')} } from '${fileNameRelative}';`;
-        });
+        const importStatements: string[] = [];
+        for (const modulePath of importModulePaths) {
+            const imports = importGroupedByFile[modulePath] ?? [];
+            const defaultImports = imports.filter((e) => e.type === 'default');
+            const namespacedImports = imports.filter((e) => e.type === 'namespaced');
+            const namedImports = imports.filter((e) => e.type === 'named');
+            const modulePathRelative = asRelativeModulePath(piecePathParent, modulePath);
+            for (const { name } of namespacedImports) {
+                importStatements.push(`import * as ${name} from '${modulePathRelative}';`);
+            }
+            for (const { name } of defaultImports) {
+                importStatements.push(`import ${name} from '${modulePathRelative}';`);
+            }
+            if (namedImports.length > 0) {
+                const identifiers = namedImports
+                    .sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
+                    .map((e) => {
+                        if (e.exportName && e.exportName !== e.name) {
+                            return `${e.exportName} as ${e.name}`;
+                        }
+                        return e.name;
+                    });
+                importStatements.push(`import { ${identifiers.join(', ')} } from '${modulePathRelative}';`);
+            }
+        }
 
         pieceExports.push({ symbolName, piecePath, isExported });
         pieces.push({
@@ -171,31 +230,7 @@ export function split(sourceFile: SourceFile) {
     });
 
     const sourceIndexPieceFile = resolvePath(pieceDirectory, 'index.d.ts');
-    const sourceImportDeclarations = sourceFile.getImportDeclarations();
-    const indexImportStatements: string[] = [];
     const indexExportStatements = [...indexExports];
-    sourceImportDeclarations.forEach((e) => {
-        const importModulePathRelative = asRelativeModulePath(
-            pieceDirectory,
-            getSourceFilePieceDirectory(e.getModuleSpecifierSourceFileOrThrow())
-        );
-        const importClause = e.getImportClause();
-        if (!importClause) {
-            throw new Error(`Cannot find import clause for import statement: ${e.print()}`);
-        }
-        const importedIdentifiers = [];
-        const namespaceImport = importClause.getNamespaceImport();
-        if (namespaceImport) {
-            importedIdentifiers.push(namespaceImport);
-        } else {
-            importClause.getNamedImports().forEach((spec) => {
-                importedIdentifiers.push(spec.getAliasNode() ?? spec.getNameNode());
-            });
-        }
-        const importedIdentifierNames = importedIdentifiers.map((e) => e.getText());
-        indexImportStatements.push(`import ${importClause.getText()} from '${importModulePathRelative}';`);
-        indexExportStatements.push(`${PrivatePrompt} export { ${importedIdentifierNames.join(', ')} };`);
-    });
     pieceExports.forEach(({ symbolName, piecePath, isExported }) => {
         const piecePathRelative = asRelativeModulePath(pieceDirectory, piecePath);
         const prefix = isExported ? '' : `${PrivatePrompt} `;
@@ -205,7 +240,7 @@ export function split(sourceFile: SourceFile) {
         generated: true,
         start: -1,
         path: sourceIndexPieceFile,
-        content: [...indexImportStatements, ...indexExportStatements].join('\n')
+        content: indexExportStatements.join('\n')
     } as const;
     pieces.sort((a, b) => b.start - a.start);
     pieces.unshift(sourceIndexPiece);
@@ -215,7 +250,7 @@ export function split(sourceFile: SourceFile) {
 export function writePiece(sourceFile: SourceFile, piece: Piece) {
     mkdirSync(resolvePath(piece.path, '..'), { recursive: true });
     if (piece.generated) {
-        writeFileSync(piece.path, piece.content);
+        writeFileSync(piece.path, piece.content + '\n');
     } else {
         let pieceContent = sourceFile.getFullText().slice(piece.start, piece.end);
         if (piece.imports) {
@@ -224,6 +259,7 @@ export function writePiece(sourceFile: SourceFile, piece: Piece) {
         if (piece.exports) {
             pieceContent = `${pieceContent}\n\n${piece.exports}`;
         }
+        pieceContent += '\n';
         writeFileSync(piece.path, pieceContent);
     }
 }

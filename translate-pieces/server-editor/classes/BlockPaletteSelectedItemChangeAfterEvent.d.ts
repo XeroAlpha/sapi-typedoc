@@ -1,4 +1,4 @@
-/* IMPORT */ import { IBlockPaletteItem } from '../index';
+/* IMPORT */ import { IBlockPaletteItem } from '..';
 
 export class BlockPaletteSelectedItemChangeAfterEvent {
     private constructor();

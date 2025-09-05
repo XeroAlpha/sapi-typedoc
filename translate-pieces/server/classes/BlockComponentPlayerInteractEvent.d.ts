@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, Direction, Player, Vector3 } from '../index';
+/* IMPORT */ import { BlockEvent, Direction, Player, Vector3 } from '..';
 
 /**
  * Contains information regarding a specific block being

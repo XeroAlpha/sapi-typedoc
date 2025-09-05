@@ -1,4 +1,4 @@
-/* IMPORT */ import { WorldAfterEvents } from '../index';
+/* IMPORT */ import { WorldAfterEvents } from '../../server';
 
 /**
  * A cache for bedrock event subscriptions. Stores off a

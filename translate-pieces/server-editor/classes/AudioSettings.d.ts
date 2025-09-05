@@ -1,4 +1,4 @@
-/* IMPORT */ import { AudioSettingsPropertyTypeMap } from '../index';
+/* IMPORT */ import { AudioSettingsPropertyTypeMap } from '..';
 
 export class AudioSettings {
     private constructor();

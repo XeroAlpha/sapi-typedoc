@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player, Vector3 } from '../index';
+/* IMPORT */ import { BlockEvent, BlockPermutation, Direction, Player, Vector3 } from '..';
 
 /**
  * @beta

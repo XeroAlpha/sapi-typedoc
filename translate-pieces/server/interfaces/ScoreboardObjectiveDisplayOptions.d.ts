@@ -1,4 +1,4 @@
-/* IMPORT */ import { ObjectiveSortOrder, ScoreboardObjective } from '../index';
+/* IMPORT */ import { ObjectiveSortOrder, ScoreboardObjective } from '..';
 
 /**
  * Contains additional options for how a scoreboard should be

@@ -1,4 +1,4 @@
-/* IMPORT */ import { PrimitiveType } from '../index';
+/* IMPORT */ import { PrimitiveType } from '..';
 
 export class WidgetComponentRenderPrimitiveTypeBase {
     private constructor();

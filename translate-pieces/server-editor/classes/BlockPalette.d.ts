@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, IBlockPaletteItem } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
+/* IMPORT */ import { IBlockPaletteItem } from '..';
 
 export class BlockPalette {
     /**

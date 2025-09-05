@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, SplineType, Vector3, Widget, WidgetComponentBase } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, SplineType, Widget, WidgetComponentBase } from '..';
 
 export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();

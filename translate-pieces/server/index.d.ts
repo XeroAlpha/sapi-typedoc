@@ -1,7 +1,3 @@
-import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../common';
-import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '../vanilla-data';
-/* PRIVATE */ export { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError };
-/* PRIVATE */ export { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes };
 export { AimAssistTargetMode } from './enums/AimAssistTargetMode';
 export { BlockComponentTypes } from './enums/BlockComponentTypes';
 export { BlockPistonState } from './enums/BlockPistonState';

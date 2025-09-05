@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityComponent, Seat } from '../index';
+/* IMPORT */ import { Entity, EntityComponent, Seat } from '..';
 
 /**
  * When added, this component adds the capability that an

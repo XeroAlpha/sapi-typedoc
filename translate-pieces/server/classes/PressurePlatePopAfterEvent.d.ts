@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEvent } from '../index';
+/* IMPORT */ import { BlockEvent } from '..';
 
 /**
  * Contains information related to changes to a pressure plate

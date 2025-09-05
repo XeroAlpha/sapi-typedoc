@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, EntityDefinitionFeedItem, Trigger } from '../index';
+/* IMPORT */ import { EntityComponent, EntityDefinitionFeedItem, Trigger } from '..';
 
 /**
  * Adds a timer for the entity to grow up. It can be

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemCompleteUseEvent } from '../index';
+/* IMPORT */ import { ItemCompleteUseEvent } from '..';
 
 /**
  * Contains information related to a chargeable item completing

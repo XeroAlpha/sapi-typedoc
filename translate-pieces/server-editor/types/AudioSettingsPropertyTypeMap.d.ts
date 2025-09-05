@@ -1,4 +1,4 @@
-/* IMPORT */ import { AudioSettingsProperty } from '../index';
+/* IMPORT */ import { AudioSettingsProperty } from '..';
 
 export type AudioSettingsPropertyTypeMap = {
     [AudioSettingsProperty.IsMusicMuted]?: boolean;

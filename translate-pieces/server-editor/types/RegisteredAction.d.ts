@@ -1,4 +1,4 @@
-/* IMPORT */ import { Action, ActionID } from '../index';
+/* IMPORT */ import { Action, ActionID } from '..';
 
 /**
  * A registered action is an action that has been registered

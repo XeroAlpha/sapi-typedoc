@@ -1,4 +1,5 @@
-/* IMPORT */ import { CursorProperties, CursorRay, Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { CursorProperties, CursorRay } from '..';
 
 /**
  * The 3D block cursor is controlled through this read only

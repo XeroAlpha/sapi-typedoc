@@ -1,4 +1,4 @@
-/* IMPORT */ import { WidgetMouseButtonActionType } from '../index';
+/* IMPORT */ import { WidgetMouseButtonActionType } from '..';
 
 export class WidgetMouseButtonEventData {
     private constructor();

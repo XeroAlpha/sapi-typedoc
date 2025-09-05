@@ -1,4 +1,5 @@
-/* IMPORT */ import { RelativeVolumeListBlockVolume, Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { RelativeVolumeListBlockVolume } from '..';
 
 /**
  * @remarks

@@ -1,4 +1,5 @@
-/* IMPORT */ import { CustomComponentInvalidRegistryError, EngineError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, NamespaceNameError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { CustomComponentInvalidRegistryError, ItemCustomComponent, ItemCustomComponentAlreadyRegisteredError, ItemCustomComponentReloadNewComponentError, ItemCustomComponentReloadNewEventError, ItemCustomComponentReloadVersionError, NamespaceNameError } from '..';
 
 /**
  * Provides the functionality for registering custom components

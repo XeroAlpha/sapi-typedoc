@@ -1,4 +1,5 @@
-/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, EngineError, NamespaceNameError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, NamespaceNameError } from '..';
 
 /**
  * Provides the functionality for registering custom commands.

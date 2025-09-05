@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorMode } from '../index';
+/* IMPORT */ import { EditorMode } from '..';
 
 /**
  * Contains information related to changes in player editor

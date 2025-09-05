@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase } from '../index';
+/* IMPORT */ import { IPropertyItemBase } from '..';
 
 /**
  * A property item which supports block list properties

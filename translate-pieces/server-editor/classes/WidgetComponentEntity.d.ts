@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, WidgetComponentBase } from '../index';
+/* IMPORT */ import { InvalidWidgetComponentError, WidgetComponentBase } from '..';
 
 export class WidgetComponentEntity extends WidgetComponentBase {
     private constructor();

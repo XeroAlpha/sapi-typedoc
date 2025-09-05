@@ -1,4 +1,5 @@
-/* IMPORT */ import { Vector3, Widget, WidgetComponentBoundingBox, WidgetGizmoEventType } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Widget, WidgetComponentBoundingBox, WidgetGizmoEventType } from '..';
 
 export class WidgetComponentBoundingBoxStateChangeEventParameters {
     private constructor();

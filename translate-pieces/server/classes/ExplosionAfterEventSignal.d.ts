@@ -1,4 +1,4 @@
-/* IMPORT */ import { ExplosionAfterEvent } from '../index';
+/* IMPORT */ import { ExplosionAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when an explosion

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutDirection } from '../index';
+/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutDirection } from '..';
 
 /**
  * Optional properties for Sub Pane property item

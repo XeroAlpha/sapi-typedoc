@@ -1,4 +1,5 @@
-/* IMPORT */ import { ObservableValidator, Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { ObservableValidator } from '..';
 
 /**
  * Validates min/max limits of observable objects that support

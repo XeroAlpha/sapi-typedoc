@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Dimension } from '../index';
+/* IMPORT */ import { Block, Dimension } from '..';
 
 /**
  * Contains information regarding an event that impacts a

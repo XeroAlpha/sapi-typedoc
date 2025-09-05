@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockType, IBlockTableEntryInfo, IPropertyItemBase, LocalizedString } from '../index';
+/* IMPORT */ import { BlockType } from '../../server';
+/* IMPORT */ import { IBlockTableEntryInfo, IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Block Table properties

@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidArgumentErrorType } from '../index';
+/* IMPORT */ import { InvalidArgumentErrorType } from '..';
 
 /**
  * Specifies that a passed-in argument to a method is not

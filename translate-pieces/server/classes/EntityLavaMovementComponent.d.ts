@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityAttributeComponent } from '../index';
+/* IMPORT */ import { EntityAttributeComponent } from '..';
 
 /**
  * Defines the base movement speed in lava of this entity.

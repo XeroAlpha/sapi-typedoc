@@ -1,4 +1,4 @@
-/* IMPORT */ import { Container, InvalidContainerError, ItemComponent } from '../index';
+/* IMPORT */ import { Container, InvalidContainerError, ItemComponent } from '..';
 
 /**
  * @beta

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IColorTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '../index';
+/* IMPORT */ import { IColorTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Color Timeline property item

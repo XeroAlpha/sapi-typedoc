@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockVolume, BlockVolumeBase, Vector3 } from '../index';
+/* IMPORT */ import { BlockVolume, BlockVolumeBase, Vector3 } from '../../server';
 
 export class RelativeVolumeListBlockVolume extends BlockVolumeBase {
     readonly isEmpty: boolean;

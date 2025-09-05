@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputPermissionCategory, Player } from '../index';
+/* IMPORT */ import { InputPermissionCategory, Player } from '..';
 
 /**
  * Contains information regarding an event after a players

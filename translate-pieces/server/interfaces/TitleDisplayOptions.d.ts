@@ -1,4 +1,4 @@
-/* IMPORT */ import { RawMessage, TicksPerSecond } from '../index';
+/* IMPORT */ import { RawMessage, TicksPerSecond } from '..';
 
 /**
  * Contains additional options for displaying a title and

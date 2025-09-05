@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityInitializationCause } from '../index';
+/* IMPORT */ import { Entity, EntityInitializationCause } from '..';
 
 /**
  * Contains data related to an entity spawning within the

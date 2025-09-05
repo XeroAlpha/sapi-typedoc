@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorConstants, Logger, ProjectAfterEvents, SimulationState, WorldGeneratorType } from '../index';
+/* IMPORT */ import { EditorConstants, Logger, ProjectAfterEvents, SimulationState, WorldGeneratorType } from '..';
 
 /**
  * The MinecraftEditor class is a namespace container for

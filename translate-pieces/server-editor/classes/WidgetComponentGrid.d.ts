@@ -1,4 +1,5 @@
-/* IMPORT */ import { Plane, RGBA, Vector2, WidgetComponentBase } from '../index';
+/* IMPORT */ import { RGBA, Vector2 } from '../../server';
+/* IMPORT */ import { Plane, WidgetComponentBase } from '..';
 
 export class WidgetComponentGrid extends WidgetComponentBase {
     private constructor();

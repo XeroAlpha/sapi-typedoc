@@ -1,4 +1,5 @@
-/* IMPORT */ import { RGBA, ThemeSettingsColorKey } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { ThemeSettingsColorKey } from '..';
 
 export class ThemeSettings {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '../index';
+/* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '..';
 
 /**
  * Defines this entity's inventory properties.

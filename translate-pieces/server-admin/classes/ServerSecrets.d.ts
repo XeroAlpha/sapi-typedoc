@@ -1,4 +1,4 @@
-/* IMPORT */ import { SecretString } from '../index';
+/* IMPORT */ import { SecretString } from '..';
 
 /**
  * A collection of server secrets defined in dedicated server

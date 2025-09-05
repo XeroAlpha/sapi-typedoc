@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputEventOptions, PlayerButtonInputAfterEvent } from '../index';
+/* IMPORT */ import { InputEventOptions, PlayerButtonInputAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to player inputs.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { SelectionContainerBase } from '../index';
+/* IMPORT */ import { SelectionContainerBase } from '..';
 
 export class SelectionContainerEntity extends SelectionContainerBase {
     private constructor();

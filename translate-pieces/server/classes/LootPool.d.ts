@@ -1,4 +1,5 @@
-/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers, NumberRange } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
+/* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers } from '..';
 
 /**
  * @beta

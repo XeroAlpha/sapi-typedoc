@@ -1,4 +1,4 @@
-/* IMPORT */ import { deserialize, serialize } from '../index';
+/* IMPORT */ import { deserialize, serialize } from '..';
 
 /**
  * @remarks

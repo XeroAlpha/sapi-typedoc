@@ -1,4 +1,4 @@
-/* IMPORT */ import { FormRejectReason } from '../index';
+/* IMPORT */ import { FormRejectReason } from '..';
 
 export class FormRejectError extends Error {
     private constructor();

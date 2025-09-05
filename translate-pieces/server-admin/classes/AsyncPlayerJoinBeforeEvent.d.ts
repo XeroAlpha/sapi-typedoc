@@ -1,4 +1,4 @@
-/* IMPORT */ import { DisconnectedError } from '../index';
+/* IMPORT */ import { DisconnectedError } from '..';
 
 /**
  * The data available before a player joins the world.

@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPalette, BlockType, IBlockPaletteItem } from '../index';
+/* IMPORT */ import { BlockType } from '../../server';
+/* IMPORT */ import { BlockPalette, IBlockPaletteItem } from '..';
 
 export class BlockPaletteManager {
     private constructor();

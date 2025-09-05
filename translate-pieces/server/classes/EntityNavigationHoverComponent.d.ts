@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityNavigationComponent } from '../index';
+/* IMPORT */ import { EntityNavigationComponent } from '..';
 
 /**
  * Allows this entity to generate paths in the air (for

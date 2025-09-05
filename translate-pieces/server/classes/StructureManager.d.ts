@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, BlockBoundingBox, Dimension, EngineError, InvalidArgumentError, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3 } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockBoundingBox, Dimension, InvalidStructureError, JigsawPlaceOptions, JigsawStructurePlaceOptions, PlaceJigsawError, Structure, StructureCreateOptions, StructurePlaceOptions, StructureSaveMode, Vector3 } from '..';
 
 /**
  * Manager for Structure related APIs. Includes APIs for

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityAttributeComponent } from '../index';
+/* IMPORT */ import { EntityAttributeComponent } from '..';
 
 /**
  * Defines the interactions with this entity for Exhaustion.

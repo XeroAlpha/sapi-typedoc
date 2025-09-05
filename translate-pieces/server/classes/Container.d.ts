@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContainerRules, ContainerRulesError, ContainerSlot, InvalidContainerError, ItemStack } from '../index';
+/* IMPORT */ import { ContainerRules, ContainerRulesError, ContainerSlot, InvalidContainerError, ItemStack } from '..';
 
 /**
  * Represents a container that can hold sets of items. Used

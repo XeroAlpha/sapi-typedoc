@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Direction, ItemStack, Player, Vector3 } from '../index';
+/* IMPORT */ import { Block, Direction, ItemStack, Player, Vector3 } from '..';
 
 /**
  * Contains information regarding an event before a player

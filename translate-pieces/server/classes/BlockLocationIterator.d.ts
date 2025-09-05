@@ -1,4 +1,5 @@
-/* IMPORT */ import { EngineError, Vector3 } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { Vector3 } from '..';
 
 /**
  * A BlockLocationIterator returns the next block location of

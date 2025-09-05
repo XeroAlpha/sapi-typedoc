@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, RGB } from '../index';
+/* IMPORT */ import { ItemComponent, RGB } from '..';
 
 /**
  * When present on an item, this item can be dyed.

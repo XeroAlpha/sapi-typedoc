@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block } from '../index';
+/* IMPORT */ import { Block } from '..';
 
 /**
  * A general purpose relative direction enumeration.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { HotbarEventOptions, PlayerHotbarSelectedSlotChangeAfterEvent } from '../index';
+/* IMPORT */ import { HotbarEventOptions, PlayerHotbarSelectedSlotChangeAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected after a player selected

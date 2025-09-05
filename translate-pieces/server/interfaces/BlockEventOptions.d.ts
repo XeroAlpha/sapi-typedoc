@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockPermutation } from '../index';
+/* IMPORT */ import { BlockPermutation } from '..';
 
 /**
  * Contains optional parameters for registering a block event.

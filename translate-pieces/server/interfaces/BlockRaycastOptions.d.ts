@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockFilter } from '../index';
+/* IMPORT */ import { BlockFilter } from '..';
 
 /**
  * Contains additional options for configuring a block raycast

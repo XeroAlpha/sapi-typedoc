@@ -1,4 +1,4 @@
-/* IMPORT */ import { PistonActivateAfterEvent } from '../index';
+/* IMPORT */ import { PistonActivateAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to piston activations.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonState, InputButton, Player } from '../index';
+/* IMPORT */ import { ButtonState, InputButton, Player } from '..';
 
 /**
  * Event data for when a player presses a button.

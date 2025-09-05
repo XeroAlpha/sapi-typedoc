@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidArgumentError, SentryAlreadyInitializedError, SentryCaptureContext, SentryEventLevel, SentryOptions, SentryUninitializedError } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { SentryAlreadyInitializedError, SentryCaptureContext, SentryEventLevel, SentryOptions, SentryUninitializedError } from '..';
 
 /**
  * A class that allows hooking up reporting to Sentry.  See

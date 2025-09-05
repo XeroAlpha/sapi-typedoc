@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, IPropertyPane, LayoutAlignment, LayoutDirection } from '../index';
+/* IMPORT */ import { IPropertyItemBase, IPropertyPane, LayoutAlignment, LayoutDirection } from '..';
 
 /**
  * A property item which supports Sub Pane properties

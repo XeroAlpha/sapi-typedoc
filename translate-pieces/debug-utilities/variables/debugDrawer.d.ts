@@ -1,4 +1,4 @@
-/* IMPORT */ import { DebugDrawer } from '../index';
+/* IMPORT */ import { DebugDrawer } from '..';
 
 /**
  * @remarks

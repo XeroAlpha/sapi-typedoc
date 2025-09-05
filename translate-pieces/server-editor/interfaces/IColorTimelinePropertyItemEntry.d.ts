@@ -1,4 +1,4 @@
-/* IMPORT */ import { RGBA } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
 
 /**
  * Properties of color timeline property item entry

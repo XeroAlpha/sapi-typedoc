@@ -1,4 +1,4 @@
-/* IMPORT */ import { ScriptEventCommandMessageAfterEvent, ScriptEventMessageFilterOptions } from '../index';
+/* IMPORT */ import { ScriptEventCommandMessageAfterEvent, ScriptEventMessageFilterOptions } from '..';
 
 /**
  * Allows for registering an event handler that responds to

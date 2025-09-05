@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemStack, Player, PlayerInventoryType } from '../index';
+/* IMPORT */ import { ItemStack, Player, PlayerInventoryType } from '..';
 
 /**
  * Contains information regarding an event after a player's

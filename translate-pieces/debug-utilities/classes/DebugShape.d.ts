@@ -1,4 +1,4 @@
-/* IMPORT */ import { RGB, Vector3 } from '../index';
+/* IMPORT */ import { RGB, Vector3 } from '../../server';
 
 /**
  * The base class for all debug shapes. Represents an object in

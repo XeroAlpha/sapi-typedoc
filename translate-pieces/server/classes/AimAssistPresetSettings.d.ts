@@ -1,4 +1,4 @@
-/* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes, MinecraftItemTypes } from '../index';
+/* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes, MinecraftItemTypes } from '../../vanilla-data';
 
 /**
  * @beta

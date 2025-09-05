@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityBaseMovementComponent } from '../index';
+/* IMPORT */ import { EntityBaseMovementComponent } from '..';
 
 /**
  * This component accents the movement of an entity.

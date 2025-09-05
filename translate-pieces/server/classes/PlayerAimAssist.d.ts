@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, InvalidEntityError, NamespaceNameError, PlayerAimAssistSettings } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, NamespaceNameError, PlayerAimAssistSettings } from '..';
 
 /**
  * @beta

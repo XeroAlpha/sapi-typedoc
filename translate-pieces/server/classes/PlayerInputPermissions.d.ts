@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputPermissionCategory } from '../index';
+/* IMPORT */ import { InputPermissionCategory } from '..';
 
 /**
  * Contains APIs to enable/disable player input permissions.

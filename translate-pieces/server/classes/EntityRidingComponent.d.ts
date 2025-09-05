@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityComponent } from '../index';
+/* IMPORT */ import { Entity, EntityComponent } from '..';
 
 /**
  * This component is added to any entity when it is riding

@@ -1,3 +1,3 @@
-/* IMPORT */ import { AdminBeforeEvents } from '../index';
+/* IMPORT */ import { AdminBeforeEvents } from '..';
 
 export const beforeEvents: AdminBeforeEvents;

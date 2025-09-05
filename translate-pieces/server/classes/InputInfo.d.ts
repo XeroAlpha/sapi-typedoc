@@ -1,4 +1,5 @@
-/* IMPORT */ import { ButtonState, EngineError, InputButton, InputMode, InvalidEntityError, Vector2 } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2 } from '..';
 
 /**
  * Contains the input information for a client instance.

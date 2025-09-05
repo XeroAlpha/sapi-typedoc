@@ -1,4 +1,6 @@
-/* IMPORT */ import { EngineError, InvalidEntityError, MessageFormResponse, Player, RawMessage, RawMessageError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player, RawMessage, RawMessageError } from '../../server';
+/* IMPORT */ import { MessageFormResponse } from '..';
 
 /**
  * Builds a simple two-button modal dialog.

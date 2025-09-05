@@ -1,4 +1,4 @@
-/* IMPORT */ import { InputModifier, KeyboardKey } from '../index';
+/* IMPORT */ import { InputModifier, KeyboardKey } from '..';
 
 /**
  * Keyboard binding properties.

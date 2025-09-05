@@ -1,4 +1,4 @@
-/* IMPORT */ import { BiomeType } from '../index';
+/* IMPORT */ import { BiomeType } from '..';
 
 /**
  * @beta

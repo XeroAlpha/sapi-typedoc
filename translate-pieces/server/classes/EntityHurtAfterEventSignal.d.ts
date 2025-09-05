@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityEventOptions, EntityHurtAfterEvent } from '../index';
+/* IMPORT */ import { EntityEventOptions, EntityHurtAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when an entity is

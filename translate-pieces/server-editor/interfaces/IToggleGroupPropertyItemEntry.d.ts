@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, LocalizedString } from '../index';
+/* IMPORT */ import { BasicTooltipContent, LocalizedString } from '..';
 
 /**
  * Properties of toggle group property item list entry

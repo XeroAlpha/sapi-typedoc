@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, ExtensionContext, IActionBar, IGlobalInputManager, IMenuContainer, IModalToolContainer, IPlayerLogger, IRootPropertyPane, IRootPropertyPaneOptions, IStatusBar } from '../index';
+/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, ExtensionContext, IActionBar, IGlobalInputManager, IMenuContainer, IModalToolContainer, IPlayerLogger, IRootPropertyPane, IRootPropertyPaneOptions, IStatusBar } from '..';
 
 /**
  * The IPlayerUISession represents the editor user interface

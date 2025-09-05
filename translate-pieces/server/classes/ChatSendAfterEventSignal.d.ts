@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendAfterEvent } from '../index';
+/* IMPORT */ import { ChatSendAfterEvent } from '..';
 
 /**
  * @beta

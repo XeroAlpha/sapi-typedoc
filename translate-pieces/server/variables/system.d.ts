@@ -1,4 +1,4 @@
-/* IMPORT */ import { System } from '../index';
+/* IMPORT */ import { System } from '..';
 
 /**
  * @remarks

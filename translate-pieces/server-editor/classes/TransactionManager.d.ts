@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockVolumeBase, Entity, EntityOperationType, UserDefinedTransactionHandlerId, Vector3 } from '../index';
+/* IMPORT */ import { BlockVolumeBase, Entity, Vector3 } from '../../server';
+/* IMPORT */ import { EntityOperationType, UserDefinedTransactionHandlerId } from '..';
 
 /**
  * The Transaction Manager is responsible for tracking and

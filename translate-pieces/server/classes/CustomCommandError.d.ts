@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomCommandErrorReason } from '../index';
+/* IMPORT */ import { CustomCommandErrorReason } from '..';
 
 /**
  * Error object thrown when CustomCommandRegistry errors occur.

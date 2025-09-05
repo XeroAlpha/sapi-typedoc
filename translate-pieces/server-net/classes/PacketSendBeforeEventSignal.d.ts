@@ -1,4 +1,4 @@
-/* IMPORT */ import { PacketEventOptions, PacketSendBeforeEvent } from '../index';
+/* IMPORT */ import { PacketEventOptions, PacketSendBeforeEvent } from '..';
 
 export class PacketSendBeforeEventSignal {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent } from '../index';
+/* IMPORT */ import { EntityComponent } from '..';
 
 export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();

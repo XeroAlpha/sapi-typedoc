@@ -3,7 +3,7 @@
     "@minecraft/common": "1.2.0",
     "@minecraft/debug-utilities": "1.0.0-beta.1.21.120-preview.20",
     "@minecraft/diagnostics": "1.0.0-beta.1.21.120-preview.20",
-    "@minecraft/math": "2.2.8",
+    "@minecraft/math": "2.2.9",
     "@minecraft/server": "2.4.0-beta.1.21.120-preview.20",
     "@minecraft/server-admin": "1.0.0-beta.1.21.120-preview.20",
     "@minecraft/server-editor": "0.1.0-beta.1.21.120-preview.20",

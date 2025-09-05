@@ -1,4 +1,4 @@
-/* IMPORT */ import { EffectType } from '../index';
+/* IMPORT */ import { EffectType } from '..';
 
 /**
  * Represents a type of effect - like poison - that can be

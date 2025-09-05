@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemUseBeforeEvent } from '../index';
+/* IMPORT */ import { ItemUseBeforeEvent } from '..';
 
 /**
  * Manages callbacks that fire before an item is used.

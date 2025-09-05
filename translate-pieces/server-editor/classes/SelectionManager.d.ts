@@ -1,4 +1,4 @@
-/* IMPORT */ import { SelectionContainerEntity, SelectionContainerVolume } from '../index';
+/* IMPORT */ import { SelectionContainerEntity, SelectionContainerVolume } from '..';
 
 /**
  * The SelectionManager (accessible from the {@link

@@ -1,4 +1,5 @@
-/* IMPORT */ import { Vector3, Widget, WidgetGroup, WidgetMouseButtonEventData } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Widget, WidgetGroup, WidgetMouseButtonEventData } from '..';
 
 export class WidgetStateChangeEventData {
     private constructor();

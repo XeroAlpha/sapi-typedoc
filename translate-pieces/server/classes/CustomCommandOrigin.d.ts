@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, CustomCommandSource, Entity } from '../index';
+/* IMPORT */ import { Block, CustomCommandSource, Entity } from '..';
 
 /**
  * Details about the origins of the command.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockPermutation, Entity, ItemStack } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, Entity, ItemStack } from '..';
 
 /**
  * Contains information regarding the mining of a block using

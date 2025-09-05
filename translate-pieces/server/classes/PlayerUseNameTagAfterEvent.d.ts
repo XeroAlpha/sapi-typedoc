@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, Player } from '../index';
+/* IMPORT */ import { Entity, Player } from '..';
 
 /**
  * @beta

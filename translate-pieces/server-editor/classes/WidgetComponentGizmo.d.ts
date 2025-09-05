@@ -1,4 +1,5 @@
-/* IMPORT */ import { Axis, InvalidWidgetComponentError, Vector3, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters } from '..';
 
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();

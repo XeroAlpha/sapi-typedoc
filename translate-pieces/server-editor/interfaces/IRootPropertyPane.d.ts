@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalOverlayPane, IModalOverlayPaneOptions, IPropertyPane } from '../index';
+/* IMPORT */ import { IModalOverlayPane, IModalOverlayPaneOptions, IPropertyPane } from '..';
 
 /**
  * A root pane that can store property items.

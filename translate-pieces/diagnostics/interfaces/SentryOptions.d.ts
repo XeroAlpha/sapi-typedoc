@@ -1,4 +1,4 @@
-/* IMPORT */ import { SecretString } from '../index';
+/* IMPORT */ import { SecretString } from '../../server-admin';
 
 /**
  * Describes options for configuring Sentry for this scripting

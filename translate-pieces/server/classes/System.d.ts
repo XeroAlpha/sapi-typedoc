@@ -1,4 +1,5 @@
-/* IMPORT */ import { EngineError, InvalidArgumentError, NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { NamespaceNameError, SystemAfterEvents, SystemBeforeEvents, SystemInfo } from '..';
 
 /**
  * A class that provides system-level events and functions.

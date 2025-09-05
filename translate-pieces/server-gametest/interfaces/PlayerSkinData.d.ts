@@ -1,4 +1,5 @@
-/* IMPORT */ import { PersonaArmSize, PlayerPersonaPiece, RGB } from '../index';
+/* IMPORT */ import { RGB } from '../../server';
+/* IMPORT */ import { PersonaArmSize, PlayerPersonaPiece } from '..';
 
 /**
  * Data pertaining to a player's configured skin.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector2, Vector3 } from '../index';
+/* IMPORT */ import { Vector2, Vector3 } from '..';
 
 /**
  * Options to control pivot points and offsets of the third

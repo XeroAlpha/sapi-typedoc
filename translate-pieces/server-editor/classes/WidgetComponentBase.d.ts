@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidWidgetComponentError, Vector3, Widget, WidgetComponentType } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetComponentError, Widget, WidgetComponentType } from '..';
 
 export class WidgetComponentBase {
     private constructor();

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, Vector3 } from '../index';
+/* IMPORT */ import { Entity, Vector3 } from '..';
 
 /**
  * Used to target an entity with a free camera.

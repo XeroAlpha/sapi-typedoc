@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBox, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, Vector3 } from '..';
 
 /**
  * @beta

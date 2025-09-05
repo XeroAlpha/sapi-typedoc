@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockAfterEvent } from '../index';
+/* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to when a block is

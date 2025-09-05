@@ -1,7 +1,3 @@
-import * as minecraftcommon from '../common';
-import { RGB, Vector3 } from '../server';
-/* PRIVATE */ export { minecraftcommon };
-/* PRIVATE */ export { RGB, Vector3 };
 export { DebugArrow } from './classes/DebugArrow';
 export { DebugBox } from './classes/DebugBox';
 export { DebugCircle } from './classes/DebugCircle';

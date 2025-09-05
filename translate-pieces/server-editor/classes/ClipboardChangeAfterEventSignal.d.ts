@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardChangeAfterEvent } from '../index';
+/* IMPORT */ import { ClipboardChangeAfterEvent } from '..';
 
 export class ClipboardChangeAfterEventSignal {
     private constructor();

@@ -1,4 +1,5 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString, Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Vector3 properties

@@ -1,4 +1,4 @@
-/* IMPORT */ import { NumberRange } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
 
 /**
  * @beta

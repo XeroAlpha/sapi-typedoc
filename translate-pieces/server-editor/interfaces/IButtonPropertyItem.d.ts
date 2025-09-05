@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString, NoArgsAction, RegisteredAction } from '..';
 
 /**
  * A property item which supports Button properties

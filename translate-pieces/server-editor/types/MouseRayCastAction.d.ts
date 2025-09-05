@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionTypes, MouseProps, Ray } from '../index';
+/* IMPORT */ import { ActionTypes, MouseProps, Ray } from '..';
 
 /**
  * An action which returns the ray corresponding to a vector

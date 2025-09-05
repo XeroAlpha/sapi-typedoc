@@ -1,4 +1,4 @@
-/* IMPORT */ import { Player } from '../index';
+/* IMPORT */ import { Player } from '..';
 
 /**
  * An event that contains more information about a player

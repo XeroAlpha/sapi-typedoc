@@ -1,4 +1,4 @@
-/* IMPORT */ import { StartupEvent } from '../index';
+/* IMPORT */ import { StartupEvent } from '..';
 
 export class StartupBeforeEventSignal {
     private constructor();

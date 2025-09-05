@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '../index';
+/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '..';
 
 export interface IModalToolContainer {
     /**

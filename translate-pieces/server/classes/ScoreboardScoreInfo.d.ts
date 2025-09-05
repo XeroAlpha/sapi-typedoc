@@ -1,4 +1,4 @@
-/* IMPORT */ import { ScoreboardIdentity } from '../index';
+/* IMPORT */ import { ScoreboardIdentity } from '..';
 
 /**
  * Contains a pair of a scoreboard participant and its

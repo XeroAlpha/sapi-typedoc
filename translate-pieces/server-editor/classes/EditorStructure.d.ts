@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, InvalidArgumentError, InvalidStructureError, Vector3 } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { BlockPermutation, InvalidStructureError, Vector3 } from '../../server';
 
 export class EditorStructure {
     private constructor();

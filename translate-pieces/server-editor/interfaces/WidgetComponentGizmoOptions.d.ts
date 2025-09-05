@@ -1,4 +1,5 @@
-/* IMPORT */ import { Axis, Vector3, WidgetComponentBaseOptions, WidgetComponentGizmoStateChangeEventParameters } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentGizmoStateChangeEventParameters } from '..';
 
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;

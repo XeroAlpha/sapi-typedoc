@@ -1,4 +1,4 @@
-/* IMPORT */ import { NamespaceNameErrorReason } from '../index';
+/* IMPORT */ import { NamespaceNameErrorReason } from '..';
 
 /**
  * Thrown when a name requires a namespace and an error occurs

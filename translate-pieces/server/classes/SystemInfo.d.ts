@@ -1,4 +1,4 @@
-/* IMPORT */ import { MemoryTier } from '../index';
+/* IMPORT */ import { MemoryTier } from '..';
 
 /**
  * Contains device information, like memory tier.

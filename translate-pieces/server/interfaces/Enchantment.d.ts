@@ -1,4 +1,4 @@
-/* IMPORT */ import { EnchantmentType } from '../index';
+/* IMPORT */ import { EnchantmentType } from '..';
 
 /**
  * This interface represents a specific leveled enchantment

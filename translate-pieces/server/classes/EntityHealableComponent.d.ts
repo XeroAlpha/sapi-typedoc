@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, FeedItem } from '../index';
+/* IMPORT */ import { EntityComponent, FeedItem } from '..';
 
 /**
  * Defines the interactions with this entity for healing it.

@@ -1,4 +1,6 @@
-/* IMPORT */ import { InvalidArgumentError, InvalidEntityError, Player, PlayerSkinData } from '../index';
+/* IMPORT */ import { InvalidArgumentError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player } from '../../server';
+/* IMPORT */ import { PlayerSkinData } from '..';
 
 /**
  * @remarks

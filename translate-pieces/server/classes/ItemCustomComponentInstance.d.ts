@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomComponentParameters, ItemComponent } from '../index';
+/* IMPORT */ import { CustomComponentParameters, ItemComponent } from '..';
 
 /**
  * An instance of a custom component on an item.

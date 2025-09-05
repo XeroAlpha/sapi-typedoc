@@ -1,4 +1,4 @@
-/* IMPORT */ import { IActionBarItem, IActionBarItemCreationParams, NoArgsAction, RegisteredAction } from '../index';
+/* IMPORT */ import { IActionBarItem, IActionBarItemCreationParams, NoArgsAction, RegisteredAction } from '..';
 
 /**
  * Manager for IActionBarItem objects.

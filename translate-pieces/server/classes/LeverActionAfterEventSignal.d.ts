@@ -1,4 +1,4 @@
-/* IMPORT */ import { LeverActionAfterEvent } from '../index';
+/* IMPORT */ import { LeverActionAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to lever moves

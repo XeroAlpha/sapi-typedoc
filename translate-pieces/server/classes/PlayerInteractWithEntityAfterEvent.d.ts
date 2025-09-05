@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, ItemStack, Player } from '../index';
+/* IMPORT */ import { Entity, ItemStack, Player } from '..';
 
 /**
  * Contains information regarding an event after a player

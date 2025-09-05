@@ -1,4 +1,5 @@
-/* IMPORT */ import { Vector2, Vector3Utils } from '../index';
+/* IMPORT */ import { Vector3Utils } from '..';
+/* IMPORT */ import { Vector2 } from '../../server';
 
 /**
  * Utilities operating on Vector2 objects. All methods are static and do not modify the input objects.

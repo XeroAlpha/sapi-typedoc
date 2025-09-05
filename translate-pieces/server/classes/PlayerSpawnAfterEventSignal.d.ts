@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerSpawnAfterEvent } from '../index';
+/* IMPORT */ import { PlayerSpawnAfterEvent } from '..';
 
 /**
  * Registers an event when a player is spawned (or re-spawned

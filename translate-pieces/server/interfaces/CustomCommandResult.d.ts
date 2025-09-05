@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomCommandStatus } from '../index';
+/* IMPORT */ import { CustomCommandStatus } from '..';
 
 /**
  * Interface returned from custom command callback function.

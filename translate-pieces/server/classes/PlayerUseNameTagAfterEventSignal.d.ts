@@ -1,4 +1,4 @@
-/* IMPORT */ import { PlayerUseNameTagAfterEvent } from '../index';
+/* IMPORT */ import { PlayerUseNameTagAfterEvent } from '..';
 
 /**
  * @beta

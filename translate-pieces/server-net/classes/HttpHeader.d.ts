@@ -1,4 +1,4 @@
-/* IMPORT */ import { SecretString } from '../index';
+/* IMPORT */ import { SecretString } from '../../server-admin';
 
 /**
  * Represents an HTTP header - a key/value pair of

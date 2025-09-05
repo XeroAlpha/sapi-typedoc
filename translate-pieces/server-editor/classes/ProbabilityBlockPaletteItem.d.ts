@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, BlockType, IBlockPaletteItem, WeightedBlock } from '../index';
+/* IMPORT */ import { BlockPermutation, BlockType } from '../../server';
+/* IMPORT */ import { IBlockPaletteItem, WeightedBlock } from '..';
 
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);

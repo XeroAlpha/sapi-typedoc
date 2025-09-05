@@ -1,4 +1,4 @@
-/* IMPORT */ import { EngineError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
 
 /**
  * @beta

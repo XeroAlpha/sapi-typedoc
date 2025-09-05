@@ -1,4 +1,5 @@
-/* IMPORT */ import { ContiguousSelectionType, Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { ContiguousSelectionType } from '..';
 
 export interface ContiguousSelectionProperties {
     checkForAdjacentFace?: boolean;

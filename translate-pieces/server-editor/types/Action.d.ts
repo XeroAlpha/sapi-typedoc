@@ -1,4 +1,4 @@
-/* IMPORT */ import { ContinuousAction, MouseRayCastAction, NoArgsAction, StatefulAction } from '../index';
+/* IMPORT */ import { ContinuousAction, MouseRayCastAction, NoArgsAction, StatefulAction } from '..';
 
 /**
  * Full set of all possible raw actions

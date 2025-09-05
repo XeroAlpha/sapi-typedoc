@@ -1,4 +1,5 @@
-/* IMPORT */ import { GraphicsMode, GraphicsSettingsProperty } from '../index';
+/* IMPORT */ import { GraphicsMode } from '../../server';
+/* IMPORT */ import { GraphicsSettingsProperty } from '..';
 
 /**
  * Defines type information for graphics settings properties.

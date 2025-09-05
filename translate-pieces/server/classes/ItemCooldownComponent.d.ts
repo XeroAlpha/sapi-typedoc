@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent, Player } from '../index';
+/* IMPORT */ import { ItemComponent, Player } from '..';
 
 /**
  * When present on an item, this item has a cooldown effect

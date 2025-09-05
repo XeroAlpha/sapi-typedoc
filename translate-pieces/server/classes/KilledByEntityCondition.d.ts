@@ -1,4 +1,4 @@
-/* IMPORT */ import { LootItemCondition } from '../index';
+/* IMPORT */ import { LootItemCondition } from '..';
 
 /**
  * @beta

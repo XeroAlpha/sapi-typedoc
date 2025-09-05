@@ -1,4 +1,4 @@
-/* IMPORT */ import { BookError, BookPageContentError, InvalidEntityError, InvalidItemStackError, ItemComponent, RawMessage } from '../index';
+/* IMPORT */ import { BookError, BookPageContentError, InvalidEntityError, InvalidItemStackError, ItemComponent, RawMessage } from '..';
 
 /**
  * @rc

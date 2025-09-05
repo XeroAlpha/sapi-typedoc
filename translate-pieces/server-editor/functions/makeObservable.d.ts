@@ -1,4 +1,4 @@
-/* IMPORT */ import { IObservable, ObservableValidator } from '../index';
+/* IMPORT */ import { IObservable, ObservableValidator } from '..';
 
 /**
  * @remarks

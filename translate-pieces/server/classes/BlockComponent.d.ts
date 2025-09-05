@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, Component } from '../index';
+/* IMPORT */ import { Block, Component } from '..';
 
 /**
  * Base type for components associated with blocks.

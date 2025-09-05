@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from '../index';
+/* IMPORT */ import { BlockComponent, FluidType, ItemStack, ItemType, RGBA } from '..';
 
 /**
  * Represents the fluid container of a block in the world. Used

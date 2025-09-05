@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemComponent } from '../index';
+/* IMPORT */ import { ItemComponent } from '..';
 
 /**
  * When present on an item, this item is consumable by

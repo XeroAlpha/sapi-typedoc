@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, ContainerRulesError, EngineError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, RawMessage, UnsupportedFunctionalityError, Vector3 } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { ContainerRulesError, InvalidContainerSlotError, ItemLockMode, ItemStack, ItemType, RawMessage, Vector3 } from '..';
 
 /**
  * Represents a slot within a broader container (e.g., entity

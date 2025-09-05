@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEvent } from '../index';
+/* IMPORT */ import { ChatSendBeforeEvent } from '..';
 
 /**
  * @beta

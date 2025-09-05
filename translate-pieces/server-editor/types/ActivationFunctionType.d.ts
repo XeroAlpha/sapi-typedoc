@@ -1,4 +1,4 @@
-/* IMPORT */ import { IDisposable, IPlayerUISession } from '../index';
+/* IMPORT */ import { IDisposable, IPlayerUISession } from '..';
 
 /**
  * Callback type when an extension instance is activated for a

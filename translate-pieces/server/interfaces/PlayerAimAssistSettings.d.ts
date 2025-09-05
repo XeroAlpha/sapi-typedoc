@@ -1,4 +1,4 @@
-/* IMPORT */ import { AimAssistTargetMode, Vector2 } from '../index';
+/* IMPORT */ import { AimAssistTargetMode, Vector2 } from '..';
 
 /**
  * @beta

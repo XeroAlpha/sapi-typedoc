@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPlayerLoggerProperties } from '../index';
+/* IMPORT */ import { IPlayerLoggerProperties } from '..';
 
 /**
  * Log helper interface for Player.

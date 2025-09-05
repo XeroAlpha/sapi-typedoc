@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase } from '../index';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase } from '..';
 
 /**
  * A sub pane for modal control elements.

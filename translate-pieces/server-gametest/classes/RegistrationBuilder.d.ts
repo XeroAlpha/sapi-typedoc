@@ -1,4 +1,5 @@
-/* IMPORT */ import { DimensionType, EngineError, InvalidArgumentError, Vector3 } from '../index';
+/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { DimensionType, Vector3 } from '../../server';
 
 /**
  * A utility class to set GameTest parameters for a test.

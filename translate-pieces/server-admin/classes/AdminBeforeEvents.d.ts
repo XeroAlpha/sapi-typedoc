@@ -1,4 +1,4 @@
-/* IMPORT */ import { AsyncPlayerJoinBeforeEventSignal } from '../index';
+/* IMPORT */ import { AsyncPlayerJoinBeforeEventSignal } from '..';
 
 export class AdminBeforeEvents {
     private constructor();

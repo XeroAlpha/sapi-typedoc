@@ -1,4 +1,4 @@
-/* IMPORT */ import { DebugShape } from '../index';
+/* IMPORT */ import { DebugShape } from '..';
 
 /**
  * Debug Drawing class used to allow adding and removing

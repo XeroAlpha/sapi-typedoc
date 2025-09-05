@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityComponent } from '../index';
+/* IMPORT */ import { Entity, EntityComponent } from '..';
 
 /**
  * Allows the entity to be leashed. Defines the conditions and

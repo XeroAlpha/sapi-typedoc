@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString, StatusBarAlignment } from '../index';
+/* IMPORT */ import { LocalizedString, StatusBarAlignment } from '..';
 
 /**
  * Properties required to create a status bar item

@@ -1,4 +1,5 @@
-/* IMPORT */ import { DebugLine, Vector3 } from '../index';
+/* IMPORT */ import { DebugLine } from '..';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * The length of the arrow's head/tip.

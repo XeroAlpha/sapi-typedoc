@@ -1,4 +1,4 @@
-/* IMPORT */ import { Entity, EntityDamageSource } from '../index';
+/* IMPORT */ import { Entity, EntityDamageSource } from '..';
 
 /**
  * Contains data related to the death of an entity in the game.

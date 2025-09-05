@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityQueryPropertyOptions, EntityQueryScoreOptions, GameMode } from '../index';
+/* IMPORT */ import { EntityQueryPropertyOptions, EntityQueryScoreOptions, GameMode } from '..';
 
 /**
  * Contains options for filtering entities.

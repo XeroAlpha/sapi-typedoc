@@ -1,4 +1,5 @@
-/* IMPORT */ import { RGBA, Vector3, WidgetComponentRenderPrimitiveTypeBase } from '../index';
+/* IMPORT */ import { RGBA, Vector3 } from '../../server';
+/* IMPORT */ import { WidgetComponentRenderPrimitiveTypeBase } from '..';
 
 export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     /**

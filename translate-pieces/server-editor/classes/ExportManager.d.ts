@@ -1,4 +1,4 @@
-/* IMPORT */ import { ExportResult, GameOptions } from '../index';
+/* IMPORT */ import { ExportResult, GameOptions } from '..';
 
 export class ExportManager {
     private constructor();

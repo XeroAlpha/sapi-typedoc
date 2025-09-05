@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, EntityComponent, InvalidEntityError } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
+/* IMPORT */ import { EntityComponent, InvalidEntityError } from '..';
 
 /**
  * This is a base abstract class for any entity component that

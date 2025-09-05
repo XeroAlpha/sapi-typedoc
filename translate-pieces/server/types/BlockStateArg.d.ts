@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockPermutation, BlockStateMapping, MinecraftBlockTypes } from '../index';
+/* IMPORT */ import { BlockPermutation } from '..';
+/* IMPORT */ import { BlockStateMapping, MinecraftBlockTypes } from '../../vanilla-data';
 
 /**
  * Type alias used by the {@link BlockPermutation} matches and

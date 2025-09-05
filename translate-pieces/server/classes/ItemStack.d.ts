@@ -1,4 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, UnsupportedFunctionalityError, Vector3 } from '../index';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, Vector3 } from '..';
 
 /**
  * Defines a collection of items.

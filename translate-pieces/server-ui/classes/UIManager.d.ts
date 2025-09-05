@@ -1,4 +1,4 @@
-/* IMPORT */ import { Player } from '../index';
+/* IMPORT */ import { Player } from '../../server';
 
 export class UIManager {
     private constructor();

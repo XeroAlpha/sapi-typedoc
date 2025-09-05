@@ -1,4 +1,5 @@
-/* IMPORT */ import { IPropertyItemBase, LocalizedString, RGBA } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Color Picker properties

@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;

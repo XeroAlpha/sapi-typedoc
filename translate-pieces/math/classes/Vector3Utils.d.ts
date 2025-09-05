@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector3 } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * Utilities operating on Vector3 objects. All methods are static and do not modify the input objects.

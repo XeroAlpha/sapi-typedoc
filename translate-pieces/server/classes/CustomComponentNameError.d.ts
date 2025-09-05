@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomComponentNameErrorReason } from '../index';
+/* IMPORT */ import { CustomComponentNameErrorReason } from '..';
 
 export class CustomComponentNameError extends Error {
     private constructor();

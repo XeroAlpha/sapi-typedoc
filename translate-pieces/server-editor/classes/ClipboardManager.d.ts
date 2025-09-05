@@ -1,4 +1,4 @@
-/* IMPORT */ import { ClipboardItem } from '../index';
+/* IMPORT */ import { ClipboardItem } from '..';
 
 /**
  * The ClipboardManager (accessible from the {@link

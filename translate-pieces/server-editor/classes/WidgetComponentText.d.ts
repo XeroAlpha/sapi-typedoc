@@ -1,4 +1,5 @@
-/* IMPORT */ import { RGBA, WidgetComponentBase } from '../index';
+/* IMPORT */ import { RGBA } from '../../server';
+/* IMPORT */ import { WidgetComponentBase } from '..';
 
 export class WidgetComponentText extends WidgetComponentBase {
     private constructor();

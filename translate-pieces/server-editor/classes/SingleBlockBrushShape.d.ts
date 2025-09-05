@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, RelativeVolumeListBlockVolume } from '../index';
+/* IMPORT */ import { BrushShape, RelativeVolumeListBlockVolume } from '..';
 
 export declare class SingleBlockBrushShape extends BrushShape {
     /**

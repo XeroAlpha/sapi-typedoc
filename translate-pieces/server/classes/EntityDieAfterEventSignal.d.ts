@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityDieAfterEvent, EntityEventOptions } from '../index';
+/* IMPORT */ import { EntityDieAfterEvent, EntityEventOptions } from '..';
 
 /**
  * Supports registering for an event that fires after an entity

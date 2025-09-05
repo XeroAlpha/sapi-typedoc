@@ -1,4 +1,5 @@
-/* IMPORT */ import { Player, TransferPlayerIpPortOptions, TransferPlayerNetherNetOptions } from '../index';
+/* IMPORT */ import { Player } from '../../server';
+/* IMPORT */ import { TransferPlayerIpPortOptions, TransferPlayerNetherNetOptions } from '..';
 
 /**
  * @remarks

@@ -1,4 +1,5 @@
-/* IMPORT */ import { DebugShape, Vector3 } from '../index';
+/* IMPORT */ import { DebugShape } from '..';
+/* IMPORT */ import { Vector3 } from '../../server';
 
 /**
  * A debug shape class that a text label. The text label

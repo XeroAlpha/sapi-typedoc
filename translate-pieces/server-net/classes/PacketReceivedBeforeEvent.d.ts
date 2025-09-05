@@ -1,4 +1,5 @@
-/* IMPORT */ import { PacketId, Player } from '../index';
+/* IMPORT */ import { Player } from '../../server';
+/* IMPORT */ import { PacketId } from '..';
 
 /**
  * Sent as the server receives a network packet from a client.

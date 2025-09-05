@@ -1,4 +1,4 @@
-/* IMPORT */ import { ImageResourceData, LocalizedString } from '../index';
+/* IMPORT */ import { ImageResourceData, LocalizedString } from '..';
 
 /**
  * Properties of data table property item menu entry

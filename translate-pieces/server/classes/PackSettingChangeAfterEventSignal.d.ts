@@ -1,4 +1,4 @@
-/* IMPORT */ import { PackSettingChangeAfterEvent } from '../index';
+/* IMPORT */ import { PackSettingChangeAfterEvent } from '..';
 
 /**
  * @beta

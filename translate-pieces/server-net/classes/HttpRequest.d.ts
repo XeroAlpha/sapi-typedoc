@@ -1,4 +1,5 @@
-/* IMPORT */ import { HttpHeader, HttpRequestMethod, SecretString } from '../index';
+/* IMPORT */ import { SecretString } from '../../server-admin';
+/* IMPORT */ import { HttpHeader, HttpRequestMethod } from '..';
 
 /**
  * Main object for structuring a request.

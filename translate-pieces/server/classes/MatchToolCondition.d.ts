@@ -1,4 +1,5 @@
-/* IMPORT */ import { EnchantInfo, LootItemCondition, NumberRange } from '../index';
+/* IMPORT */ import { NumberRange } from '../../common';
+/* IMPORT */ import { EnchantInfo, LootItemCondition } from '..';
 
 /**
  * @beta

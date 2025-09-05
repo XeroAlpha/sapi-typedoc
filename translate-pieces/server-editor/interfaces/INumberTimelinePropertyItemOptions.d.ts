@@ -1,4 +1,5 @@
-/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString, Vector2 } from '../index';
+/* IMPORT */ import { Vector2 } from '../../server';
+/* IMPORT */ import { INumberTimelinePropertyItemEntry, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Number Timeline property item

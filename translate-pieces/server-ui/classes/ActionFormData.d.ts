@@ -1,4 +1,6 @@
-/* IMPORT */ import { ActionFormResponse, EngineError, InvalidEntityError, Player, RawMessage, RawMessageError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player, RawMessage, RawMessageError } from '../../server';
+/* IMPORT */ import { ActionFormResponse } from '..';
 
 /**
  * Builds a simple player form with buttons that let the player

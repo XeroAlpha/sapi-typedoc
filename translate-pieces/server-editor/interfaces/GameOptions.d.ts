@@ -1,4 +1,5 @@
-/* IMPORT */ import { DaylightCycle, Difficulty, GameMode, GamePublishSetting, PlayerPermissionLevel, ProjectExportType, Vector3 } from '../index';
+/* IMPORT */ import { Difficulty, GameMode, PlayerPermissionLevel, Vector3 } from '../../server';
+/* IMPORT */ import { DaylightCycle, GamePublishSetting, ProjectExportType } from '..';
 
 export interface GameOptions {
     bedsWork?: boolean;

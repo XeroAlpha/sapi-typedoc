@@ -1,4 +1,5 @@
-/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBaseOptions } from '../index';
+/* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
+/* IMPORT */ import { WidgetComponentBaseOptions } from '..';
 
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
     clipboardOffset?: Vector3;

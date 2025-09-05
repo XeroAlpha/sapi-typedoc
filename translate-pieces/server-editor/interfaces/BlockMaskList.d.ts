@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockMaskListType, BlockPermutation, BlockType } from '../index';
+/* IMPORT */ import { BlockPermutation, BlockType } from '../../server';
+/* IMPORT */ import { BlockMaskListType } from '..';
 
 export interface BlockMaskList {
     blockList: (BlockPermutation | BlockType | string)[];

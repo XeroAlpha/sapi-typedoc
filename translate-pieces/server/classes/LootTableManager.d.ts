@@ -1,4 +1,4 @@
-/* IMPORT */ import { Block, BlockPermutation, BlockType, Entity, EntityType, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LootTable, UnloadedChunksError } from '../index';
+/* IMPORT */ import { Block, BlockPermutation, BlockType, Entity, EntityType, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LootTable, UnloadedChunksError } from '..';
 
 /**
  * @rc

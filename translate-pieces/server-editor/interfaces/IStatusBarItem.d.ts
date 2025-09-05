@@ -1,4 +1,4 @@
-/* IMPORT */ import { LocalizedString } from '../index';
+/* IMPORT */ import { LocalizedString } from '..';
 
 export interface IStatusBarItem {
     /**

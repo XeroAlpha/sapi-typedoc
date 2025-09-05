@@ -1,4 +1,6 @@
-/* IMPORT */ import { EngineError, InvalidEntityError, ModalFormDataDropdownOptions, ModalFormDataSliderOptions, ModalFormDataTextFieldOptions, ModalFormDataToggleOptions, ModalFormResponse, Player, RawMessage, RawMessageError } from '../index';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player, RawMessage, RawMessageError } from '../../server';
+/* IMPORT */ import { ModalFormDataDropdownOptions, ModalFormDataSliderOptions, ModalFormDataTextFieldOptions, ModalFormDataToggleOptions, ModalFormResponse } from '..';
 
 /**
  * Used to create a fully customizable pop-up form for a

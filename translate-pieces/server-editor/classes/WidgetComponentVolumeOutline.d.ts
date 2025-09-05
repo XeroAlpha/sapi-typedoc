@@ -1,4 +1,5 @@
-/* IMPORT */ import { BlockVolume, BlockVolumeBase, InvalidWidgetComponentError, RGBA, RelativeVolumeListBlockVolume, StructureMirrorAxis, StructureRotation, Vector3, WidgetComponentBase } from '../index';
+/* IMPORT */ import { BlockVolume, BlockVolumeBase, RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetComponentError, RelativeVolumeListBlockVolume, WidgetComponentBase } from '..';
 
 export class WidgetComponentVolumeOutline extends WidgetComponentBase {
     private constructor();

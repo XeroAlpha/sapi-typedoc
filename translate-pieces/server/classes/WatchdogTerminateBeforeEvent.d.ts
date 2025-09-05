@@ -1,4 +1,4 @@
-/* IMPORT */ import { WatchdogTerminateReason } from '../index';
+/* IMPORT */ import { WatchdogTerminateReason } from '..';
 
 /**
  * @beta

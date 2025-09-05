@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionTypes, ContinuousActionState } from '../index';
+/* IMPORT */ import { ActionTypes, ContinuousActionState } from '..';
 
 /**
  * An action that continues to execute after activation

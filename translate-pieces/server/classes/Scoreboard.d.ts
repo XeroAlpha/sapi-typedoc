@@ -1,4 +1,4 @@
-/* IMPORT */ import { DisplaySlotId, ScoreboardIdentity, ScoreboardObjective, ScoreboardObjectiveDisplayOptions } from '../index';
+/* IMPORT */ import { DisplaySlotId, ScoreboardIdentity, ScoreboardObjective, ScoreboardObjectiveDisplayOptions } from '..';
 
 /**
  * Contains objectives and participants for the scoreboard.

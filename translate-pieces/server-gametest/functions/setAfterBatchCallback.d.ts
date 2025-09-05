@@ -1,4 +1,4 @@
-/* IMPORT */ import { GameTestError } from '../index';
+/* IMPORT */ import { GameTestError } from '..';
 
 /**
  * @remarks

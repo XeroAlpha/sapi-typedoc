@@ -1,4 +1,5 @@
-/* IMPORT */ import { LogChannel, Player } from '../index';
+/* IMPORT */ import { Player } from '../../server';
+/* IMPORT */ import { LogChannel } from '..';
 
 /**
  * A properties class for the global instance of the logger

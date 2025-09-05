@@ -1,4 +1,5 @@
-/* IMPORT */ import { InvalidWidgetGroupError, Vector3, Widget, WidgetCreateOptions } from '../index';
+/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { InvalidWidgetGroupError, Widget, WidgetCreateOptions } from '..';
 
 export class WidgetGroup {
     private constructor();

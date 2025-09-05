@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, CompoundBlockVolumeItem, CompoundBlockVolumePositionRelativity, Vector3 } from '../index';
+/* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, CompoundBlockVolumeItem, CompoundBlockVolumePositionRelativity, Vector3 } from '..';
 
 /**
  * @beta

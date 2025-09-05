@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponent, ItemStack, ItemType } from '../index';
+/* IMPORT */ import { BlockComponent, ItemStack, ItemType } from '..';
 
 /**
  * Represents a block that can play a record.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IDataTablePropertyItemEntry, IPropertyItemBase } from '../index';
+/* IMPORT */ import { IDataTablePropertyItemEntry, IPropertyItemBase } from '..';
 
 /**
  * A property item which supports data entries displayed in a

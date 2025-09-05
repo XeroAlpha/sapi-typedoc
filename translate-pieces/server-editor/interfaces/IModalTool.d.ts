@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IRegisteredKeyBinding, IRootPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '../index';
+/* IMPORT */ import { EventSink, IRegisteredKeyBinding, IRootPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '..';
 
 export interface IModalTool {
     /**

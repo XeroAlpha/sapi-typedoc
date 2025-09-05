@@ -1,4 +1,4 @@
-/* IMPORT */ import { WeatherChangeBeforeEvent } from '../index';
+/* IMPORT */ import { WeatherChangeBeforeEvent } from '..';
 
 /**
  * Manages callbacks that are connected to before weather

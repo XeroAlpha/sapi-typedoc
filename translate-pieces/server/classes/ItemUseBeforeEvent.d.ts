@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemUseAfterEvent } from '../index';
+/* IMPORT */ import { ItemUseAfterEvent } from '..';
 
 /**
  * Contains information related to an item being used.

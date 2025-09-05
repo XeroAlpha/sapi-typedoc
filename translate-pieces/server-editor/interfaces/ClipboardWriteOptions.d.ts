@@ -1,4 +1,4 @@
-/* IMPORT */ import { StructureMirrorAxis, StructureRotation, Vector3 } from '../index';
+/* IMPORT */ import { StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
 
 /**
  * Interface used to specify the options when a clipboard item

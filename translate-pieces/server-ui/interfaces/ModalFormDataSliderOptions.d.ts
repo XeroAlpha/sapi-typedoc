@@ -1,4 +1,4 @@
-/* IMPORT */ import { RawMessage } from '../index';
+/* IMPORT */ import { RawMessage } from '../../server';
 
 /**
  * An interface that is passed into {@link

@@ -1,4 +1,4 @@
-/* IMPORT */ import { RuntimeStats } from '../index';
+/* IMPORT */ import { RuntimeStats } from '..';
 
 /**
  * @remarks

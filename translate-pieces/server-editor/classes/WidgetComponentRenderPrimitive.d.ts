@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, PrimitiveType, WidgetComponentBase, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine } from '../index';
+/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, PrimitiveType, WidgetComponentBase, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine } from '..';
 
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();

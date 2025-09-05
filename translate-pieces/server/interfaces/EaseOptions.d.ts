@@ -1,4 +1,4 @@
-/* IMPORT */ import { EasingType } from '../index';
+/* IMPORT */ import { EasingType } from '..';
 
 /**
  * Contains options associated with easing between positions

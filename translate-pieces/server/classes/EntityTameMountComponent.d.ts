@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, Player } from '../index';
+/* IMPORT */ import { EntityComponent, Player } from '..';
 
 /**
  * Contains options for taming a rideable entity based on the

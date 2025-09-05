@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemCompleteUseAfterEvent } from '../index';
+/* IMPORT */ import { ItemCompleteUseAfterEvent } from '..';
 
 /**
  * Manages callbacks that are connected to the completion of

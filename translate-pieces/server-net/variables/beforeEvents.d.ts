@@ -1,3 +1,3 @@
-/* IMPORT */ import { NetworkBeforeEvents } from '../index';
+/* IMPORT */ import { NetworkBeforeEvents } from '..';
 
 export const beforeEvents: NetworkBeforeEvents;
