@@ -172,10 +172,7 @@ export class SimulatedPlayer extends Player {
      *
      * {@link InvalidEntityError}
      */
-    interactWithBlock(
-        blockLocation: Vector3,
-        direction?: Direction,
-    ): boolean;
+    interactWithBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
      * @remarks
      * Causes the simulated player to interact with a mob. Returns

@@ -66,31 +66,6 @@ patches.push(({ project }) => {
     PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
 });
 
-patches.push(({ sourceFiles }) => {
-    // since 1.21.120.20
-    let totalTextChangeCount = 0;
-    for (const sourceFile of sourceFiles) {
-        const textChanges: ts.TextChange[] = [];
-        const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
-        for (const identifier of identifiers) {
-            if (identifier.getText() === 'minecraftserverbindings') {
-                textChanges.push({
-                    span: {
-                        start: identifier.getStart(),
-                        length: identifier.getWidth()
-                    },
-                    newText: 'minecraftserver'
-                });
-            }
-        }
-        if (textChanges.length > 0) {
-            totalTextChangeCount += textChanges.length;
-            sourceFile.applyTextChanges(textChanges);
-        }
-    }
-    assert(totalTextChangeCount > 0);
-});
-
 const errors: unknown[] = [];
 export default {
     afterLoad(context) {

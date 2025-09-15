@@ -116,8 +116,5 @@ export class ModalFormData {
      * @param toggleOptions
      * The optional additional values for the toggle creation.
      */
-    toggle(
-        label: RawMessage | string,
-        toggleOptions?: ModalFormDataToggleOptions,
-    ): ModalFormData;
+    toggle(label: RawMessage | string, toggleOptions?: ModalFormDataToggleOptions): ModalFormData;
 }

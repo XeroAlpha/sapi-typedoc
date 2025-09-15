@@ -1105,6 +1105,7 @@ export declare enum PropertyItemType {
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
     Link = 'editorUI:Link',
+    Menu = 'editorUI:Menu',
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',
@@ -1113,6 +1114,7 @@ export declare enum PropertyItemType {
     SubPane = 'editorUI:SubPane',
     Text = 'editorUI:Text',
     ToggleGroup = 'editorUI:ToggleGroup',
+    Vector2 = 'editorUI:Vector2',
     Vector3 = 'editorUI:Vector3',
 }
 
@@ -1761,10 +1763,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume:
-            | BlockVolumeBase
-            | CompoundBlockVolume
-            | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | CompoundBlockVolume | RelativeVolumeListBlockVolume,
         block?: BlockPermutation | BlockType | string,
     ): void;
     /**
@@ -2524,9 +2523,7 @@ export class EditorStructure {
      *
      * {@link InvalidStructureError}
      */
-    getBlockPermutation(
-        location: Vector3,
-    ): BlockPermutation | undefined;
+    getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *
@@ -3156,10 +3153,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    addBlock(
-        block: BlockPermutation | BlockType | string,
-        weight: number,
-    ): void;
+    addBlock(block: BlockPermutation | BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
     /**
      * @remarks
@@ -3809,6 +3803,40 @@ export class UserDefinedTransactionHandlerId {
 
 /**
  * Validates min/max limits of observable objects that support
+ * Vector2
+ */
+export declare class Vector2LimitObservableValidator implements ObservableValidator<Vector2> {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    protected _isInteger?: boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    protected _max: Partial<Vector2>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    protected _min: Partial<Vector2>;
+    /**
+     * @remarks
+     * Constructs a new instance of the
+     * `Vector2LimitObservableValidator` class
+     *
+     */
+    constructor(min: Partial<Vector2>, max: Partial<Vector2>, isInteger?: boolean);
+    updateLimits(min: Partial<Vector2>, max: Partial<Vector2>): void;
+    validate(newValue: Vector2): Vector2;
+}
+
+/**
+ * Validates min/max limits of observable objects that support
  * Vector3
  */
 export declare class Vector3LimitObservableValidator implements ObservableValidator<Vector3> {
@@ -4377,11 +4405,7 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: Vector3;
-    constructor(
-        center: Vector3,
-        color: RGBA,
-        size?: Vector3,
-    );
+    constructor(center: Vector3, color: RGBA, size?: Vector3);
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -4427,11 +4451,7 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: Vector3;
-    constructor(
-        start: Vector3,
-        end: Vector3,
-        color: RGBA,
-    );
+    constructor(start: Vector3, end: Vector3, color: RGBA);
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5636,6 +5656,13 @@ export interface IColorTimelinePropertyItemOptions extends IPropertyItemOptionsB
     renderGradientBackground?: boolean;
     /**
      * @remarks
+     * False means the alpha elements will not be shown in the
+     * color picker
+     *
+     */
+    showAlpha?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item
      *
      */
@@ -6229,6 +6256,86 @@ export interface IMenuCreationParams {
      *
      */
     uniqueId?: string;
+}
+
+/**
+ * A property item which supports Menu properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IMenuPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Adds a new menu item entry to property item
+     *
+     * @param props
+     * Menu creation parameters
+     * @param action
+     * Optional action to trigger on menu click
+     */
+    addEntry(props: IMenuCreationParams, action?: RegisteredAction<NoArgsAction>): IMenu;
+    /**
+     * @remarks
+     * @returns
+     * All first level menu entries
+     */
+    getEntries(): IMenu[];
+    /**
+     * @remarks
+     * Find the menu item recursively if it exists
+     *
+     * @param menuId
+     * Identifier of the menu.
+     */
+    getMenu(menuId: string): IMenu | undefined;
+    /**
+     * @remarks
+     * Removed the menu item entry if the id is found
+     *
+     * @param menuId
+     * Menu id to remove
+     */
+    removeEntry(menuId: string): void;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
+}
+
+/**
+ * Optional properties for Menu property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IMenuPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Called when a menu item is clicked.
+     *
+     */
+    onMenuItemClick?: (menuId: string) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -7050,6 +7157,18 @@ export interface IPropertyPane extends IPane {
     addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
     /**
      * @remarks
+     * Adds a menu button property item to the pane.
+     *
+     */
+    addMenu(
+        defaultEntries: {
+            params: IMenuCreationParams;
+            action?: RegisteredAction<NoArgsAction>;
+        }[],
+        options?: IMenuPropertyItemOptions,
+    ): IMenuPropertyItem;
+    /**
+     * @remarks
      * Adds a number item to the pane.
      *
      */
@@ -7095,7 +7214,16 @@ export interface IPropertyPane extends IPane {
     addToggleGroup(value: IObservableProp<number>, options?: IToggleGroupPropertyItemOptions): IToggleGroupPropertyItem;
     /**
      * @remarks
-     * Adds a Vec3 item to the pane.
+     * Adds a Vector2 item to the pane.
+     *
+     */
+    addVector2(
+        value: IObservableProp<Vector2>,
+        options?: IVector2PropertyItemOptions,
+    ): IVector2PropertyItem;
+    /**
+     * @remarks
+     * Adds a Vector3 item to the pane.
      *
      */
     addVector3(
@@ -7721,6 +7849,94 @@ export interface IToggleGroupPropertyItemOptions extends IPropertyItemOptionsBas
     /**
      * @remarks
      * Tooltip description of the property item.
+     *
+     */
+    tooltip?: BasicTooltipContent;
+}
+
+/**
+ * A property item which supports Vector2 properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector2PropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current value of the property item.
+     *
+     */
+    readonly value: Readonly<Vector2>;
+    /**
+     * @remarks
+     * Updates title of the button.
+     *
+     * @param title
+     * New button title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of the button.
+     *
+     * @param tooltip
+     * New button tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
+    /**
+     * @remarks
+     * Updates Vector2 limits and clamps the current value.
+     *
+     */
+    updateAxisLimits(limits: { min?: Partial<Vector2>; max?: Partial<Vector2> }): void;
+}
+
+/**
+ * Optional properties for Vector2 property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector2PropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true label text will be hidden. It will be visible by
+     * default.
+     *
+     */
+    hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * If we should treat the Vector2 properties as integer values.
+     * By default is false.
+     *
+     */
+    isInteger?: boolean;
+    /**
+     * @remarks
+     * The min possible limits. If undefined,
+     * Number.MAX_SAFE_INTEGER will be used.
+     *
+     */
+    max?: Partial<Vector2>;
+    /**
+     * @remarks
+     * The min possible limits. If undefined,
+     * Number.MIN_SAFE_INTEGER will be used.
+     *
+     */
+    min?: Partial<Vector2>;
+    /**
+     * @remarks
+     * This callback is called when UI control is changed.
+     *
+     */
+    onChange?: (newValue: Vector2, oldValue: Vector2) => void;
+    /**
+     * @remarks
+     * Localized title of the property item
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item
      *
      */
     tooltip?: BasicTooltipContent;

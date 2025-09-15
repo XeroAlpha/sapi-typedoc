@@ -20,9 +20,5 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      *
      */
     start: Vector3;
-    constructor(
-        start: Vector3,
-        end: Vector3,
-        color: RGBA,
-    );
+    constructor(start: Vector3, end: Vector3, color: RGBA);
 }

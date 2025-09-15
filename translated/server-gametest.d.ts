@@ -649,10 +649,7 @@ export class SimulatedPlayer extends Player {
      *
      * {@link InvalidEntityError}
      */
-    interactWithBlock(
-        blockLocation: Vector3,
-        direction?: Direction,
-    ): boolean;
+    interactWithBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
      * @remarks
      * Causes the simulated player to interact with a mob. Returns
@@ -1192,10 +1189,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertBlockState(
-        blockLocation: Vector3,
-        callback: (arg0: Block) => boolean,
-    ): void;
+    assertBlockState(blockLocation: Vector3, callback: (arg0: Block) => boolean): void;
     /**
      * @remarks
      * Tests that an entity can reach a particular location.
@@ -1242,10 +1236,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertContainerContains(
-        itemStack: ItemStack,
-        blockLocation: Vector3,
-    ): void;
+    assertContainerContains(itemStack: ItemStack, blockLocation: Vector3): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
@@ -1480,11 +1471,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    assertEntityTouching(
-        entityTypeIdentifier: string,
-        location: Vector3,
-        isTouching?: boolean,
-    ): void;
+    assertEntityTouching(entityTypeIdentifier: string, location: Vector3, isTouching?: boolean): void;
     /**
      * @remarks
      * Depending on the value of isWaterlogged, tests that a block
@@ -1962,10 +1949,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    setBlockPermutation(
-        blockData: BlockPermutation,
-        blockLocation: Vector3,
-    ): void;
+    setBlockPermutation(blockData: BlockPermutation, blockLocation: Vector3): void;
     /**
      * @remarks
      * Sets a block to a particular type at the specified block
@@ -1984,10 +1968,7 @@ export class Test {
      * {@link GameTestError}
      * @seeExample minibiomes.ts
      */
-    setBlockType(
-        blockType: BlockType | string,
-        blockLocation: Vector3,
-    ): void;
+    setBlockType(blockType: BlockType | string, blockLocation: Vector3): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
@@ -2069,10 +2050,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnAtLocation(
-        entityTypeIdentifier: string,
-        location: Vector3,
-    ): Entity;
+    spawnAtLocation(entityTypeIdentifier: string, location: Vector3): Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
@@ -2089,10 +2067,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnItem(
-        itemStack: ItemStack,
-        location: Vector3,
-    ): Entity;
+    spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
@@ -2133,10 +2108,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    spawnWithoutBehaviors(
-        entityTypeIdentifier: string,
-        blockLocation: Vector3,
-    ): Entity;
+    spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: Vector3): Entity;
     /**
      * @remarks
      * Spawns an entity at a location without any AI behaviors.
@@ -2371,11 +2343,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    triggerInternalBlockEvent(
-        blockLocation: Vector3,
-        event: string,
-        eventParameters?: number[],
-    ): void;
+    triggerInternalBlockEvent(blockLocation: Vector3, event: string, eventParameters?: number[]): void;
     /**
      * @remarks
      * This asynchronous function will wait until the code in the
@@ -2414,11 +2382,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkTo(
-        mob: Entity,
-        blockLocation: Vector3,
-        speedModifier?: number,
-    ): void;
+    walkTo(mob: Entity, blockLocation: Vector3, speedModifier?: number): void;
     /**
      * @remarks
      * Forces a mob to walk to a particular location. Usually used
@@ -2441,11 +2405,7 @@ export class Test {
      *
      * {@link GameTestError}
      */
-    walkToLocation(
-        mob: Entity,
-        location: Vector3,
-        speedModifier?: number,
-    ): void;
+    walkToLocation(mob: Entity, location: Vector3, speedModifier?: number): void;
     /**
      * @remarks
      * From a BlockLocation with coordinates relative to the

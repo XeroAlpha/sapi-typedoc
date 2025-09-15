@@ -10,10 +10,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume:
-            | BlockVolumeBase
-            | CompoundBlockVolume
-            | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | CompoundBlockVolume | RelativeVolumeListBlockVolume,
         block?: BlockPermutation | BlockType | string,
     ): void;
     /**
