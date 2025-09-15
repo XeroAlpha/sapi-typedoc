@@ -20,9 +20,5 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
      *
      */
     size?: Vector3;
-    constructor(
-        center: Vector3,
-        color: RGBA,
-        size?: Vector3,
-    );
+    constructor(center: Vector3, color: RGBA, size?: Vector3);
 }

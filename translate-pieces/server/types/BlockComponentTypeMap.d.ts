@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockFluidContainerComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockRecordPlayerComponent, BlockSignComponent } from '..';
+/* IMPORT */ import { BlockFluidContainerComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent } from '..';
 
 export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
@@ -10,9 +10,11 @@ export type BlockComponentTypeMap = {
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
+    'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
+    redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
 };

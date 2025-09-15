@@ -1,5 +1,5 @@
-/* IMPORT */ import { RGBA, Vector3 } from '../../server';
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IColorTimelinePropertyItem, IColorTimelinePropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, INumberTimelinePropertyItem, INumberTimelinePropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, ImageResourceData, LocalizedString, PropertyPaneVisibilityUpdate } from '..';
+/* IMPORT */ import { RGBA, Vector2, Vector3 } from '../../server';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IColorTimelinePropertyItem, IColorTimelinePropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, IMenuCreationParams, IMenuPropertyItem, IMenuPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, INumberTimelinePropertyItem, INumberTimelinePropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector2PropertyItem, IVector2PropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, ImageResourceData, LocalizedString, NoArgsAction, PropertyPaneVisibilityUpdate, RegisteredAction } from '..';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -113,6 +113,18 @@ export interface IPropertyPane extends IPane {
     addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
     /**
      * @remarks
+     * Adds a menu button property item to the pane.
+     *
+     */
+    addMenu(
+        defaultEntries: {
+            params: IMenuCreationParams;
+            action?: RegisteredAction<NoArgsAction>;
+        }[],
+        options?: IMenuPropertyItemOptions,
+    ): IMenuPropertyItem;
+    /**
+     * @remarks
      * Adds a number item to the pane.
      *
      */
@@ -158,7 +170,16 @@ export interface IPropertyPane extends IPane {
     addToggleGroup(value: IObservableProp<number>, options?: IToggleGroupPropertyItemOptions): IToggleGroupPropertyItem;
     /**
      * @remarks
-     * Adds a Vec3 item to the pane.
+     * Adds a Vector2 item to the pane.
+     *
+     */
+    addVector2(
+        value: IObservableProp<Vector2>,
+        options?: IVector2PropertyItemOptions,
+    ): IVector2PropertyItem;
+    /**
+     * @remarks
+     * Adds a Vector3 item to the pane.
      *
      */
     addVector3(

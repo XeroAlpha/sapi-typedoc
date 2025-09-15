@@ -100,6 +100,7 @@ export { BlockMovableComponent } from './classes/BlockMovableComponent';
 export { BlockPermutation } from './classes/BlockPermutation';
 export { BlockPistonComponent } from './classes/BlockPistonComponent';
 export { BlockRecordPlayerComponent } from './classes/BlockRecordPlayerComponent';
+export { BlockRedstoneProducerComponent } from './classes/BlockRedstoneProducerComponent';
 export { BlockSignComponent } from './classes/BlockSignComponent';
 export { BlockStates } from './classes/BlockStates';
 export { BlockStateType } from './classes/BlockStateType';
@@ -503,6 +504,7 @@ export { EnchantmentLevelOutOfBoundsError } from './classes/EnchantmentLevelOutO
 export { EnchantmentTypeNotCompatibleError } from './classes/EnchantmentTypeNotCompatibleError';
 export { EnchantmentTypeUnknownIdError } from './classes/EnchantmentTypeUnknownIdError';
 export { EntitySpawnError } from './classes/EntitySpawnError';
+export { InvalidBlockComponentError } from './classes/InvalidBlockComponentError';
 export { InvalidContainerError } from './classes/InvalidContainerError';
 export { InvalidContainerSlotError } from './classes/InvalidContainerSlotError';
 export { InvalidEntityError } from './classes/InvalidEntityError';

@@ -155,6 +155,7 @@ export { ThemeSettings } from './classes/ThemeSettings';
 export { TransactionManager } from './classes/TransactionManager';
 export { UserDefinedTransactionHandle } from './classes/UserDefinedTransactionHandle';
 export { UserDefinedTransactionHandlerId } from './classes/UserDefinedTransactionHandlerId';
+export { Vector2LimitObservableValidator } from './classes/Vector2LimitObservableValidator';
 export { Vector3LimitObservableValidator } from './classes/Vector3LimitObservableValidator';
 export { Widget } from './classes/Widget';
 export { WidgetComponentBase } from './classes/WidgetComponentBase';
@@ -229,6 +230,8 @@ export { ILinkPropertyItemOptions } from './interfaces/ILinkPropertyItemOptions'
 export { IMenu } from './interfaces/IMenu';
 export { IMenuContainer } from './interfaces/IMenuContainer';
 export { IMenuCreationParams } from './interfaces/IMenuCreationParams';
+export { IMenuPropertyItem } from './interfaces/IMenuPropertyItem';
+export { IMenuPropertyItemOptions } from './interfaces/IMenuPropertyItemOptions';
 export { IModalControlPane } from './interfaces/IModalControlPane';
 export { IModalOverlayPane } from './interfaces/IModalOverlayPane';
 export { IModalOverlayPaneOptions } from './interfaces/IModalOverlayPaneOptions';
@@ -266,6 +269,8 @@ export { ITextPropertyItemOptions } from './interfaces/ITextPropertyItemOptions'
 export { IToggleGroupPropertyItem } from './interfaces/IToggleGroupPropertyItem';
 export { IToggleGroupPropertyItemEntry } from './interfaces/IToggleGroupPropertyItemEntry';
 export { IToggleGroupPropertyItemOptions } from './interfaces/IToggleGroupPropertyItemOptions';
+export { IVector2PropertyItem } from './interfaces/IVector2PropertyItem';
+export { IVector2PropertyItemOptions } from './interfaces/IVector2PropertyItemOptions';
 export { IVector3PropertyItem } from './interfaces/IVector3PropertyItem';
 export { IVector3PropertyItemOptions } from './interfaces/IVector3PropertyItemOptions';
 export { LogProperties } from './interfaces/LogProperties';

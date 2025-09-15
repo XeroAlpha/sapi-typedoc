@@ -2921,10 +2921,12 @@ export type BlockComponentTypeMap = {
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
+    'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
+    redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
 };
 
@@ -5206,6 +5208,45 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 }
 
 /**
+ * @beta
+ * Represents a block that can output a redstone signal.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockRedstoneProducerComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Gets the power that this block outputs to circuit system.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidBlockComponentError}
+     */
+    readonly power: number;
+    static readonly componentId = 'minecraft:redstone_producer';
+    /**
+     * @remarks
+     * Gets the faces of this block that can connect to the circuit
+     * and output power.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidBlockComponentError}
+     */
+    getConnectedFaces(): Direction[];
+    /**
+     * @remarks
+     * Gets the block face that strongly powers the block touching
+     * it.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidBlockComponentError}
+     */
+    getStronglyPoweredFace(): Direction | undefined;
+}
+
+/**
  * Represents a block that can display text on it.
  * @seeExample addSign.ts
  * @seeExample addTwoSidedSign.ts
@@ -7056,7 +7097,7 @@ export class Dimension {
      * {@link UnloadedChunksError}
      */
     fillBlocks(
-        volume: BlockVolumeBase | CompoundBlockVolume,
+        volume: BlockVolumeBase,
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): ListBlockVolume;
@@ -21577,6 +21618,14 @@ export class EnchantmentTypeUnknownIdError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntitySpawnError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidBlockComponentError extends Error {
     private constructor();
 }
 

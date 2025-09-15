@@ -72,9 +72,7 @@ export class EditorStructure {
      *
      * {@link InvalidStructureError}
      */
-    getBlockPermutation(
-        location: Vector3,
-    ): BlockPermutation | undefined;
+    getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *

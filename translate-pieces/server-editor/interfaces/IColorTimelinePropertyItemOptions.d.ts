@@ -65,6 +65,13 @@ export interface IColorTimelinePropertyItemOptions extends IPropertyItemOptionsB
     renderGradientBackground?: boolean;
     /**
      * @remarks
+     * False means the alpha elements will not be shown in the
+     * color picker
+     *
+     */
+    showAlpha?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item
      *
      */

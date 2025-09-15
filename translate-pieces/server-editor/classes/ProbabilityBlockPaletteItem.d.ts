@@ -9,10 +9,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    addBlock(
-        block: BlockPermutation | BlockType | string,
-        weight: number,
-    ): void;
+    addBlock(block: BlockPermutation | BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
     /**
      * @remarks
