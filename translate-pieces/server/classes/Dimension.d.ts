@@ -306,7 +306,7 @@ export class Dimension {
      */
     getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block position.
@@ -340,7 +340,7 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
