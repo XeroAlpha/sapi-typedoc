@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemType, LootPoolEntry } from '..';
+/* IMPORT */ import { ItemType, LootItemFunction, LootPoolEntry } from '..';
 
 /**
  * @beta
@@ -7,6 +7,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LootItem extends LootPoolEntry {
     private constructor();
+    readonly functions: LootItemFunction[];
     /**
      * @remarks
      * The name of the item contained in this entry.

@@ -3,7 +3,7 @@
  */
 export interface SpawnEntityOptions {
     /**
-     * @beta
+     * @rc
      * @remarks
      * Optional boolean which determines if this entity should
      * persist in the game world. Persistence prevents the entity
@@ -12,7 +12,7 @@ export interface SpawnEntityOptions {
      */
     initialPersistence?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Optional initial rotation, in degrees, to set on the entity
      * when it spawns.

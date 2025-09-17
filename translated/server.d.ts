@@ -2882,11 +2882,13 @@ export type BlockComponentTypeMap = {
     'minecraft:map_color': BlockMapColorComponent;
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
+    'minecraft:precipitation_interactions': BlockPrecipitationInteractionsComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
+    precipitation_interactions: BlockPrecipitationInteractionsComponent;
     record_player: BlockRecordPlayerComponent;
     redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
@@ -3844,7 +3846,7 @@ export class Block {
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block.
@@ -3884,7 +3886,7 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block.
@@ -4939,6 +4941,40 @@ export class BlockPistonComponent extends BlockComponent {
      * @throws This function can throw errors.
      */
     getAttachedBlocksLocations(): Vector3[];
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockPrecipitationInteractionsComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:precipitation_interactions';
+    /**
+     * @remarks
+     * Returns `true` if falling snow will accumulate naturally on
+     * the block. Returns `false` if snow will not accumulate on
+     * the block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    accumulatesSnow(): boolean;
+    /**
+     * @remarks
+     * Returns `true` if rain will not go through the block.
+     * Returns `false` if rain should go through the block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    obstructsRain(): boolean;
 }
 
 /**
@@ -7099,7 +7135,7 @@ export class Dimension {
      */
     getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block position.
@@ -7133,7 +7169,7 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
@@ -7744,6 +7780,65 @@ export class EnchantmentTypes {
      *
      */
     static getAll(): EnchantmentType[];
+}
+
+/**
+ * @beta
+ * Loot item function that applies a random enchant to the
+ * dropped item using the same algorithm used while enchanting
+ * equipment vanilla mobs spawn with.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantRandomEquipmentFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * Value that determines the likelihood of equipment being
+     * enchanted.
+     *
+     */
+    readonly chance: number;
+}
+
+/**
+ * @beta
+ * Loot item function that randomly enchants the dropped item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantRandomlyFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * Determines whether or not treasure enchantments are included
+     * in the randomly chosen enchantments.
+     *
+     */
+    readonly treasure: boolean;
+}
+
+/**
+ * @beta
+ * Loot item function that applies a random enchant to the
+ * dropped item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EnchantWithLevelsFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * level of enchantment to apply. Contains minimum and maximum
+     * values.
+     *
+     */
+    readonly levels: NumberRange;
+    /**
+     * @remarks
+     * Value that determines whether or not treasure enchants
+     * should be included in the random enchant selection.
+     *
+     */
+    readonly treasure: boolean;
 }
 
 /**
@@ -11136,6 +11231,22 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ * Loot item function that modifies a dropped treasure map to
+ * mark a location.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ExplorationMapFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * Determines which type of treasure map will drop.
+     *
+     */
+    readonly destination: string;
+}
+
+/**
  * Contains information regarding an explosion that has
  * happened.
  */
@@ -11247,6 +11358,16 @@ export class ExplosionBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Loot item function that determines whether or not loot drops
+ * should be destroyed by explosions.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ExplosionDecayFunction extends LootItemFunction {
+    private constructor();
+}
+
+/**
  * As part of the Healable component, represents a specific
  * item that can be fed to an entity to cause health effects.
  */
@@ -11311,6 +11432,23 @@ export class FeedItemEffect {
      *
      */
     readonly name: string;
+}
+
+/**
+ * @beta
+ * Loot item function that populates a dropped container item
+ * using another loot table.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class FillContainerFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The path to the loot table with which the container will be
+     * filled.
+     *
+     */
+    readonly lootTable: string;
 }
 
 /**
@@ -13560,11 +13698,30 @@ export class ListBlockVolume extends BlockVolumeBase {
 
 /**
  * @beta
+ * Loot item function that drops extra items if the provided
+ * tool has the looting enchant.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LootingEnchantFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * number of extra items to drop. Contains minimum and maximum
+     * values.
+     *
+     */
+    readonly count: NumberRange;
+}
+
+/**
+ * @beta
  * Represents a loot pool entry containing an item to drop.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LootItem extends LootPoolEntry {
     private constructor();
+    readonly functions: LootItemFunction[];
     /**
      * @remarks
      * The name of the item contained in this entry.
@@ -13581,6 +13738,18 @@ export class LootItem extends LootPoolEntry {
  */
 export class LootItemCondition {
     private constructor();
+}
+
+/**
+ * @beta
+ * An abstract base class from which all loot item functions
+ * are derived. Loot item functions can modify loot drops in a
+ * variety of ways as they happen, optionally dependent on a
+ * set of conditions which must be met.
+ */
+export class LootItemFunction {
+    private constructor();
+    readonly conditions: LootItemCondition[];
 }
 
 /**
@@ -14488,7 +14657,7 @@ export class Player extends Entity {
      *
      * {@link InvalidEntityError}
      */
-    setControlScheme(controlScheme?: string): void;
+    setControlScheme(controlScheme?: ControlScheme): void;
     /**
      * @remarks
      * Sets a gamemode override for this player.
@@ -16493,6 +16662,42 @@ export class ProjectileHitEntityAfterEventSignal {
 
 /**
  * @beta
+ * Loot item function that randomly modifies the data value of
+ * the item dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomAuxValueFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * data value to assign. Contains minimum and maximum values.
+     *
+     */
+    readonly values: NumberRange;
+}
+
+/**
+ * @beta
+ * Loot item function that randomly modifies the block state of
+ * the item dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomBlockStateFunction extends LootItemFunction {
+    private constructor();
+    readonly blockState: string;
+    /**
+     * @remarks
+     * The range from which the function randomly chooses the value
+     * to assign to the given block state. Contains minimum and
+     * maximum values.
+     *
+     */
+    readonly values: NumberRange;
+}
+
+/**
+ * @beta
  * Loot item condition that applies a given value to the
  * chances that loot will drop.
  */
@@ -16547,6 +16752,16 @@ export class RandomDifficultyChanceCondition extends LootItemCondition {
      *
      */
     readonly chances: number[];
+}
+
+/**
+ * @beta
+ * Loot item function that applies a randomly dye to the
+ * dropped item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RandomDyeFunction extends LootItemFunction {
+    private constructor();
 }
 
 /**
@@ -17079,6 +17294,234 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
+ * @beta
+ * Loot item function that modifies the trim on a dropped armor
+ * item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetArmorTrimFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The material to apply to the armor trim.
+     *
+     */
+    readonly material: string;
+    /**
+     * @remarks
+     * The pattern to apply to the armor trim.
+     *
+     */
+    readonly pattern: string;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the type of a banner that
+ * drops.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetBannerDetailsFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The type of banner to drop.
+     *
+     */
+    readonly 'type': number;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the contents of a dropped
+ * book.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetBookContentsFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The name of the book's author.
+     *
+     */
+    readonly author: string;
+    /**
+     * @remarks
+     * An array of text to be placed in the pages of the book.
+     *
+     */
+    readonly pages: string[];
+    /**
+     * @remarks
+     * The book's title.
+     *
+     */
+    readonly title: string;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the dropped item's data
+ * value based on its color index. Defaults to zero if no color
+ * index is set.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetDataFromColorIndexFunction extends LootItemFunction {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the number items that drop
+ * from the loot pool entry.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetItemCountFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * number of items to drop. Contains minimum and maximum
+     * values.
+     *
+     */
+    readonly count: NumberRange;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the durability value of the
+ * item dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetItemDamageFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * durability value to assign. Contains minimum and maximum
+     * values. Must always be between 0.0 and 1.0.
+     *
+     */
+    readonly damage: NumberRange;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the data value of the item
+ * dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetItemDataFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * data value to assign. Contains minimum and maximum values.
+     *
+     */
+    readonly data: NumberRange;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the lore of the item
+ * dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetItemLoreFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The lore to apply to the dropped item.
+     *
+     */
+    readonly lore: string[];
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the name of the item
+ * dropped.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetItemNameFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The name to apply to the dropped item.
+     *
+     */
+    readonly name: string;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies an ominous bottle's
+ * amplifier value.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetOminousBottleFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The value range from which the function randomly chooses the
+     * amplifier value to assign. Contains minimum and maximum
+     * values.
+     *
+     */
+    readonly amplifier: NumberRange;
+}
+
+/**
+ * @beta
+ * Loot item function that assigns a type to a dropped potion.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetPotionFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The id to be assigned to the dropped potion.
+     *
+     */
+    readonly id: string;
+}
+
+/**
+ * @beta
+ * Loot item function that assigns an entity type to a dropped
+ * spawn egg. Does not work on any items other than spawn eggs.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetSpawnEggFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * The entity to be assigned to the dropped egg.
+     *
+     */
+    readonly id: string;
+}
+
+/**
+ * @beta
+ * Loot item function that modifies the effects of a dropped
+ * stew item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SetStewEffectFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * An array of integers corresponding to stew effects to be
+     * randomly chosen from and applied to the dropped item.
+     *
+     */
+    readonly effects: number[];
+}
+
+/**
  * Provides an adaptable interface for callers to subscribe to
  * an event that fires before the game world shuts down. This
  * event occurs after players have left, but before the world
@@ -17120,6 +17563,27 @@ export class ShutdownBeforeEventSignal {
  */
 export class ShutdownEvent {
     private constructor();
+}
+
+/**
+ * @beta
+ * Loot item function that processes the dropped item as if it
+ * was smelted or cooked in a furnace.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SmeltItemFunction extends LootItemFunction {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Loot item function that applies one or several predefined
+ * enchants to the dropped item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SpecificEnchantFunction extends LootItemFunction {
+    private constructor();
+    readonly enchantments: EnchantInfo[];
 }
 
 export class StartupBeforeEventSignal {
@@ -20776,7 +21240,7 @@ export interface ScriptEventMessageFilterOptions {
  */
 export interface SpawnEntityOptions {
     /**
-     * @beta
+     * @rc
      * @remarks
      * Optional boolean which determines if this entity should
      * persist in the game world. Persistence prevents the entity
@@ -20785,7 +21249,7 @@ export interface SpawnEntityOptions {
      */
     initialPersistence?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Optional initial rotation, in degrees, to set on the entity
      * when it spawns.

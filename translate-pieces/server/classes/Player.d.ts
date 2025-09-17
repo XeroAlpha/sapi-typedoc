@@ -367,7 +367,7 @@ export class Player extends Entity {
      *
      * {@link InvalidEntityError}
      */
-    setControlScheme(controlScheme?: string): void;
+    setControlScheme(controlScheme?: ControlScheme): void;
     /**
      * @remarks
      * Sets a gamemode override for this player.
