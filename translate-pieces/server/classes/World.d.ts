@@ -369,18 +369,19 @@ export class World {
      */
     setDifficulty(difficulty: Difficulty): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * 为世界动态属性 `identifier` 设置一个值。
@@ -392,9 +393,10 @@ export class World {
      * 
      * The property identifier.
      * @param value
-     * 要设定的值，值的类型必须与动态属性注册的类型相同。
+     * 要设定的值，值的类型必须与动态属性注册的类型相同。若值为 null，该属性将被移除。
      * 
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws
      * 若并未注册以 `identifier` 为标识符的动态属性，抛出 `"Dynamic Property '<identifier>' is not defined"`。
      * 

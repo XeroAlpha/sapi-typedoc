@@ -439,6 +439,7 @@ export { WorldAfterEvents } from './classes/WorldAfterEvents';
 export { WorldBeforeEvents } from './classes/WorldBeforeEvents';
 export { WorldLoadAfterEvent } from './classes/WorldLoadAfterEvent';
 export { WorldLoadAfterEventSignal } from './classes/WorldLoadAfterEventSignal';
+export { AABB } from './interfaces/AABB';
 export { BiomeSearchOptions } from './interfaces/BiomeSearchOptions';
 export { BlockBoundingBox } from './interfaces/BlockBoundingBox';
 export { BlockCustomComponent } from './interfaces/BlockCustomComponent';

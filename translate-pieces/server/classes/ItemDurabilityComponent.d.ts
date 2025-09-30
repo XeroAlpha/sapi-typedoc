@@ -35,6 +35,17 @@ export class ItemDurabilityComponent extends ItemComponent {
      * @throws This property can throw when used.
      */
     readonly maxDurability: number;
+    /**
+     * @beta
+     * @remarks
+     * Whether an item breaks or loses durability. Setting to true
+     * temporarily removes item's durabilty HUD, and freezes
+     * durability loss on item.
+     *
+     * @worldMutation
+     *
+     */
+    unbreakable: boolean;
     static readonly componentId = 'minecraft:durability';
     /**
      * @remarks

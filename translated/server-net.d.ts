@@ -149,6 +149,7 @@ export enum PacketId {
     CreatePhotoPacket = 'CreatePhotoPacket',
     CreativeContentPacket = 'CreativeContentPacket',
     CurrentStructureFeaturePacket = 'CurrentStructureFeaturePacket',
+    DataStoreSyncPacket = 'DataStoreSyncPacket',
     DeathInfoPacket = 'DeathInfoPacket',
     DebugDrawerPacket = 'DebugDrawerPacket',
     DebugInfoPacket = 'DebugInfoPacket',

@@ -7,6 +7,12 @@
 export interface IBoolPropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Changes checkbox variant to use a custom icon
+     *
+     */
+    checkboxIcon?: string;
+    /**
+     * @remarks
      * If true label text will be hidden. It will be visible by
      * default.
      *

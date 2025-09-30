@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
+/* IMPORT */ import { AABB, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -325,6 +325,18 @@ export class Entity {
      * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Gets the entity's collision bounds.
+     *
+     * @returns
+     * An axis-aligned bounding box.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getAABB(): AABB;
     /**
      * @beta
      * @remarks
@@ -770,20 +782,21 @@ export class Entity {
      */
     runCommand(commandString: string): CommandResult;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -791,7 +804,8 @@ export class Entity {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
