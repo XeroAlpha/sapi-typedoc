@@ -312,18 +312,19 @@ export class World {
      */
     setDifficulty(difficulty: Difficulty): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -331,7 +332,8 @@ export class World {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws
      * Throws if the given dynamic property identifier is not
      * defined.

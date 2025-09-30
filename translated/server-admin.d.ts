@@ -60,8 +60,31 @@ export class AsyncPlayerJoinBeforeEvent {
     readonly persistentId: string;
     /**
      * @remarks
-     * Call this to disconnect a player. They will be allowed to
-     * try to join again.
+     * Call this to explicitly allow the player to join the server.
+     * This is useful when player joining is disabled
+     * (`allow-player-joining` is set to `false` when playing on
+     * dedicated server).
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link DisconnectedError}
+     */
+    allowJoin(): void;
+    /**
+     * @remarks
+     * Deprecated - use {@link disallowJoin} instead.Call this to
+     * disconnect a player. They will be allowed to try to join
+     * again.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link DisconnectedError}
+     */
+    disallowJoin(reason?: string): void;
+    /**
+     * @remarks
+     * Call this to stop the player from joining the server. They
+     * will be allowed to try to join again.
      *
      * @throws This function can throw errors.
      *

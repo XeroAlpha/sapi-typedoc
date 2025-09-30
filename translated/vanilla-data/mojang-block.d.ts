@@ -1389,6 +1389,10 @@ export type BlockStateSuperset = {
     ['lit']?: boolean;
     ['minecraft:block_face']?: string;
     ['minecraft:cardinal_direction']?: string;
+    ['minecraft:connection_east']?: boolean;
+    ['minecraft:connection_north']?: boolean;
+    ['minecraft:connection_south']?: boolean;
+    ['minecraft:connection_west']?: boolean;
     ['minecraft:facing_direction']?: string;
     ['minecraft:vertical_half']?: string;
     ['moisturized_amount']?: number;

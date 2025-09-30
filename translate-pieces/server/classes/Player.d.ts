@@ -168,12 +168,12 @@ export class Player extends Entity {
      * @worldMutation
      *
      * @param targetEntity
-     * The Entity whose Entity Property overrides are being
-     * cleared.
+     * The Entity or the ID of the Entity whose Entity Property
+     * overrides are being cleared.
      * @throws
-     * Throws if the entity is invalid.
+     * Throws if the Entity or Entity ID is invalid.
      */
-    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    clearPropertyOverridesForEntity(targetEntity: Entity | string): void;
     /**
      * @beta
      * @remarks

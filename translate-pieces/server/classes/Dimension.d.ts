@@ -379,7 +379,7 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the chunk at the given location is loaded
      * (and valid for use with scripting).

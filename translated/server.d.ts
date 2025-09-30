@@ -6585,13 +6585,14 @@ export class ContainerSlot {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
@@ -6600,7 +6601,7 @@ export class ContainerSlot {
      *
      * {@link UnsupportedFunctionalityError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -6608,7 +6609,8 @@ export class ContainerSlot {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws
      * Throws if the slot's container is invalid.
      *
@@ -7208,7 +7210,7 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the chunk at the given location is loaded
      * (and valid for use with scripting).
@@ -8168,6 +8170,18 @@ export class Entity {
     /**
      * @beta
      * @remarks
+     * Gets the entity's collision bounds.
+     *
+     * @returns
+     * An axis-aligned bounding box.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getAABB(): AABB;
+    /**
+     * @beta
+     * @remarks
      * Gets the solid blocks that this entity is directly standing
      * on. Ignores pressure plates.
      *
@@ -8610,20 +8624,21 @@ export class Entity {
      */
     runCommand(commandString: string): CommandResult;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -8631,7 +8646,8 @@ export class Entity {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
@@ -12423,6 +12439,17 @@ export class ItemDurabilityComponent extends ItemComponent {
      * @throws This property can throw when used.
      */
     readonly maxDurability: number;
+    /**
+     * @beta
+     * @remarks
+     * Whether an item breaks or loses durability. Setting to true
+     * temporarily removes item's durabilty HUD, and freezes
+     * durability loss on item.
+     *
+     * @worldMutation
+     *
+     */
+    unbreakable: boolean;
     static readonly componentId = 'minecraft:durability';
     /**
      * @remarks
@@ -13115,20 +13142,21 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link UnsupportedFunctionalityError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value. Note: This function
@@ -13137,7 +13165,8 @@ export class ItemStack {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws
      * Throws if the item stack is stackable.
      *
@@ -14458,12 +14487,12 @@ export class Player extends Entity {
      * @worldMutation
      *
      * @param targetEntity
-     * The Entity whose Entity Property overrides are being
-     * cleared.
+     * The Entity or the ID of the Entity whose Entity Property
+     * overrides are being cleared.
      * @throws
-     * Throws if the entity is invalid.
+     * Throws if the Entity or Entity ID is invalid.
      */
-    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    clearPropertyOverridesForEntity(targetEntity: Entity | string): void;
     /**
      * @beta
      * @remarks
@@ -18852,18 +18881,19 @@ export class World {
      */
     setDifficulty(difficulty: Difficulty): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
      * @param values
      * A Record of key value pairs of the dynamic properties to
-     * set.
+     * set. If the data value is null, it will remove that property
+     * instead.
      * @throws This function can throw errors.
      *
      * {@link ArgumentOutOfBoundsError}
      */
-    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
      * @remarks
      * Sets a specified property to a value.
@@ -18871,7 +18901,8 @@ export class World {
      * @param identifier
      * The property identifier.
      * @param value
-     * Data value of the property to set.
+     * Data value of the property to set. If the value is null, it
+     * will remove the property instead.
      * @throws
      * Throws if the given dynamic property identifier is not
      * defined.
@@ -19478,6 +19509,27 @@ export class WorldLoadAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: WorldLoadAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Axis-aligned bounding box.
+ */
+export interface AABB {
+    /**
+     * @remarks
+     * The centerpoint of the box.
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * Absolute distance from the centerpoint to the bounds of the
+     * box. Equivalent to half of the box's length, height and
+     * width. Will always be treated as positive.
+     *
+     */
+    extent: Vector3;
 }
 
 /**
