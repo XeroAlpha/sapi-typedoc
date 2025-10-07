@@ -1,7 +1,6 @@
 /* IMPORT */ import { BookError, BookPageContentError, InvalidEntityError, InvalidItemStackError, ItemComponent, RawMessage } from '..';
 
 /**
- * @rc
  * When present on an item, this item is a book item. Can
  * access and modify the contents of the book and sign it.
  */

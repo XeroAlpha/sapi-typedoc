@@ -8,7 +8,7 @@
 export class ContainerRulesError extends Error {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The specific reason the error was thrown.
      *

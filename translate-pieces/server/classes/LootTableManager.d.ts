@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, BlockPermutation, BlockType, Entity, EntityType, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LootTable, UnloadedChunksError } from '..';
 
 /**
- * @rc
  * Manager for Loot Table related APIs. Allows for generation
  * of drops from blocks and entities according to their loot
  * tables.

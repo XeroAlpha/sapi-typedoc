@@ -1,7 +1,6 @@
 /* IMPORT */ import { BookErrorReason } from '..';
 
 /**
- * @rc
  * Errors that can be thrown when using {@link
  * ItemBookComponent}.
  */

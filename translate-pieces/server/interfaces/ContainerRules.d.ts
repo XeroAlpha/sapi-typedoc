@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Rules that if broken on container operations will throw an
  * error.
  */

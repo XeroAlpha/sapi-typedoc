@@ -74,6 +74,7 @@ export enum PacketId {
     GameRulesChangedPacket = 'GameRulesChangedPacket',
     GameTestRequestPacket = 'GameTestRequestPacket',
     GameTestResultsPacket = 'GameTestResultsPacket',
+    GraphicsOverrideParameterPacket = 'GraphicsOverrideParameterPacket',
     GuiDataPickItemPacket = 'GuiDataPickItemPacket',
     HurtArmorPacket = 'HurtArmorPacket',
     InteractPacket = 'InteractPacket',

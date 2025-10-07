@@ -211,7 +211,6 @@ export class ContainerSlot {
      */
     getLore(): string[];
     /**
-     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link

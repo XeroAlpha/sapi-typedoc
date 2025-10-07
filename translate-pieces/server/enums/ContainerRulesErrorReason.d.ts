@@ -1,7 +1,7 @@
 /* IMPORT */ import { ContainerRules } from '..';
 
 /**
- * @beta
+ * @rc
  * Reasons that the {@link
  * @minecraft/server.ContainerRulesError} was thrown.
  */

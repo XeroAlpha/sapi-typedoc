@@ -133,7 +133,6 @@ export enum BlockVolumeIntersection {
 }
 
 /**
- * @rc
  * An enum of error reasons relating to using {@link
  * ItemBookComponent}.
  */
@@ -256,7 +255,7 @@ export enum CompoundBlockVolumePositionRelativity {
 }
 
 /**
- * @beta
+ * @rc
  * Reasons that the {@link
  * @minecraft/server.ContainerRulesError} was thrown.
  */
@@ -2109,7 +2108,6 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
-     * @rc
      * @remarks
      * The minecraft:book component.
      *
@@ -2142,7 +2140,7 @@ export enum ItemComponentTypes {
      */
     Food = 'minecraft:food',
     /**
-     * @beta
+     * @rc
      */
     Inventory = 'minecraft:inventory',
     /**
@@ -4292,6 +4290,35 @@ export class BlockComponent extends Component {
 }
 
 /**
+ * @beta
+ * Contains information regarding a specific block being
+ * broken.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentBlockBreakEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block that caused destruction.
+     *
+     */
+    readonly blockDestructionSource?: Block;
+    /**
+     * @remarks
+     * Returns permutation information about this block before it
+     * was broken.
+     *
+     */
+    readonly brokenBlockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The Actor that caused destruction.
+     *
+     */
+    readonly entitySource?: Entity;
+}
+
+/**
  * Contains information regarding an entity falling onto a
  * specific block.
  */
@@ -5507,6 +5534,14 @@ export class Camera {
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    playAnimation(splineType: CatmullRomSpline | LinearSpline, cameraAnimationOptions: AnimationOptions): void;
+    /**
      * @remarks
      * Sets the current active camera for the specified player.
      *
@@ -5562,13 +5597,27 @@ export class Camera {
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
+}
+
+/**
+ * @beta
+ * CatmullRom spline creation.
+ */
+export class CatmullRomSpline {
+    /**
+     * @remarks
+     * Control points for the CatmullRom curve.
+     *
+     * @worldMutation
+     *
+     */
+    controlPoints: Vector3[];
 }
 
 /**
@@ -6015,7 +6064,12 @@ export class CompoundBlockVolume {
 export class Container {
     private constructor();
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * If these rules are defined other container operations will
+     * throw if they cause these rules to be invalidated. For
+     * example, adding a shulker box to a vanilla bundle.
+     *
      */
     readonly containerRules?: ContainerRules;
     /**
@@ -6046,7 +6100,7 @@ export class Container {
      */
     readonly size: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The combined weight of all items in the container.
      *
@@ -6475,7 +6529,6 @@ export class ContainerSlot {
      */
     getLore(): string[];
     /**
-     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link
@@ -11829,7 +11882,6 @@ export class IsBabyCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * When present on an item, this item is a book item. Can
  * access and modify the contents of the book and sign it.
  */
@@ -12715,7 +12767,7 @@ export class ItemFoodComponent extends ItemComponent {
 }
 
 /**
- * @beta
+ * @rc
  * This component is added to items with the `Storage Item`
  * component. Can access and modify this items inventory
  * container.
@@ -12911,7 +12963,7 @@ export class ItemStack {
      */
     readonly typeId: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The total weight of all items in the stack plus the weight
      * of all items in the items container which is defined with
@@ -13040,7 +13092,6 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
-     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link
@@ -13693,6 +13744,21 @@ export class LeverActionAfterEventSignal {
 }
 
 /**
+ * @beta
+ * A spline that linearly interpolates between points.
+ */
+export class LinearSpline {
+    /**
+     * @remarks
+     * Control points for the Linear spline.
+     *
+     * @worldMutation
+     *
+     */
+    controlPoints: Vector3[];
+}
+
+/**
  * Volume composed of an unordered container of unique block
  * locations.
  */
@@ -13928,7 +13994,6 @@ export class LootTableEntry extends LootPoolEntry {
 }
 
 /**
- * @rc
  * Manager for Loot Table related APIs. Allows for generation
  * of drops from blocks and entities according to their loot
  * tables.
@@ -18749,7 +18814,6 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @rc
      * @remarks
      * Returns a manager capable of generating loot from an
      * assortment of sources.
@@ -19534,6 +19598,25 @@ export interface AABB {
 
 /**
  * @beta
+ * Used to create camera animations.
+ */
+export interface AnimationOptions {
+    /**
+     * @remarks
+     * Key frames for the camera animation.
+     *
+     */
+    animation: SplineAnimation;
+    /**
+     * @remarks
+     * Total time of the camera animation in seconds.
+     *
+     */
+    totalTimeSeconds: number;
+}
+
+/**
+ * @beta
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -19591,6 +19674,14 @@ export interface BlockCustomComponent {
      *
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @beta
+     * @remarks
+     * This function will be called when specific block is
+     * destroyed.
+     *
+     */
+    onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity falls onto the
@@ -19877,7 +19968,6 @@ export interface CameraFixedBoomOptions {
 }
 
 /**
- * @rc
  * Used to change the field of view of the current camera.
  */
 export interface CameraFovOptions {
@@ -19966,7 +20056,7 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
- * @beta
+ * @rc
  * Rules that if broken on container operations will throw an
  * error.
  */
@@ -21102,6 +21192,26 @@ export interface PlayerSwingEventOptions {
 }
 
 /**
+ * @beta
+ * Key frame that holds the progress of the camera animation.
+ */
+export interface ProgressKeyFrame {
+    /**
+     * @remarks
+     * Value to denote how far along the curve the camera will be.
+     * Values are [0.0, 1.0] inclusive.
+     *
+     */
+    alpha: number;
+    /**
+     * @remarks
+     * Time value that the camera will be at the given alpha.
+     *
+     */
+    timeSeconds: number;
+}
+
+/**
  * Optional arguments for
  * @minecraft/server.EntityProjectileComponent.shoot.
  */
@@ -21255,6 +21365,25 @@ export interface RGBA extends RGB {
 }
 
 /**
+ * @beta
+ * Key frame that holds the rotation of the camera animation.
+ */
+export interface RotationKeyFrame {
+    /**
+     * @remarks
+     * Value of the rotation of the camera.
+     *
+     */
+    rotation: Vector3;
+    /**
+     * @remarks
+     * Time value that the camera will be at the given rotation.
+     *
+     */
+    timeSeconds: number;
+}
+
+/**
  * Contains additional options for how a scoreboard should be
  * displayed within its display slot.
  */
@@ -21315,6 +21444,25 @@ export interface SpawnEntityOptions {
      *
      */
     spawnEvent?: string;
+}
+
+/**
+ * @beta
+ * Collection of key frames for camera animation.
+ */
+export interface SplineAnimation {
+    /**
+     * @remarks
+     * Key frames for camera progress along a given curve.
+     *
+     */
+    progressKeyFrames: ProgressKeyFrame[];
+    /**
+     * @remarks
+     * Key frames for camera rotation.
+     *
+     */
+    rotationKeyFrames: RotationKeyFrame[];
 }
 
 /**
@@ -21581,7 +21729,6 @@ export class BlockCustomComponentReloadVersionError extends Error {
 }
 
 /**
- * @rc
  * Errors that can be thrown when using {@link
  * ItemBookComponent}.
  */
@@ -21599,7 +21746,6 @@ export class BookError extends Error {
 }
 
 /**
- * @rc
  * The error called if page content being set on an {@link
  * ItemBookComponent} are invalid ie. exceeding the maximum
  * page length.
@@ -21638,7 +21784,7 @@ export class CommandError extends Error {
 export class ContainerRulesError extends Error {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The specific reason the error was thrown.
      *
@@ -21752,7 +21898,6 @@ export class InvalidEntityError extends Error {
 }
 
 /**
- * @rc
  * The error called when an item is invalid. This can occur
  * when accessing components on a removed item.
  */

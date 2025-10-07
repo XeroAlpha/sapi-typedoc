@@ -90,7 +90,7 @@ export class ItemStack {
      */
     readonly typeId: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The total weight of all items in the stack plus the weight
      * of all items in the items container which is defined with
@@ -219,7 +219,6 @@ export class ItemStack {
      */
     getLore(): string[];
     /**
-     * @rc
      * @remarks
      * Returns the lore value - a secondary display string - for an
      * ItemStack. String lore lines will be converted to a {@link
