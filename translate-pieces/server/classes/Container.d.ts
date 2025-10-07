@@ -9,7 +9,12 @@
 export class Container {
     private constructor();
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * If these rules are defined other container operations will
+     * throw if they cause these rules to be invalidated. For
+     * example, adding a shulker box to a vanilla bundle.
+     *
      */
     readonly containerRules?: ContainerRules;
     /**
@@ -40,7 +45,7 @@ export class Container {
      */
     readonly size: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The combined weight of all items in the container.
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, EaseOptions } from '..';
+/* IMPORT */ import { AnimationOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, CatmullRomSpline, EaseOptions, LinearSpline } from '..';
 
 /**
  * Contains methods relating to the active camera for the
@@ -38,6 +38,14 @@ export class Camera {
      * @throws This function can throw errors.
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    playAnimation(splineType: CatmullRomSpline | LinearSpline, cameraAnimationOptions: AnimationOptions): void;
     /**
      * @remarks
      * Sets the current active camera for the specified player.
@@ -94,7 +102,6 @@ export class Camera {
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *

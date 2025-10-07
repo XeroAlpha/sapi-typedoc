@@ -1,7 +1,7 @@
 /* IMPORT */ import { Container, InvalidContainerError, ItemComponent } from '..';
 
 /**
- * @beta
+ * @rc
  * This component is added to items with the `Storage Item`
  * component. Can access and modify this items inventory
  * container.

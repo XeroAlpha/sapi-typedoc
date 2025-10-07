@@ -4,7 +4,6 @@
  */
 export enum ItemComponentTypes {
     /**
-     * @rc
      * @remarks
      * The minecraft:book component.
      *
@@ -37,7 +36,7 @@ export enum ItemComponentTypes {
      */
     Food = 'minecraft:food',
     /**
-     * @beta
+     * @rc
      */
     Inventory = 'minecraft:inventory',
     /**

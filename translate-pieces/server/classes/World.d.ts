@@ -206,7 +206,6 @@ export class World {
      */
     getEntity(id: string): Entity | undefined;
     /**
-     * @rc
      * @remarks
      * Returns a manager capable of generating loot from an
      * assortment of sources.
