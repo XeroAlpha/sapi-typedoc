@@ -1,5 +1,5 @@
 /* IMPORT */ import { DebugLine } from '..';
-/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, Vector3 } from '../../server';
 
 /**
  * The length of the arrow's head/tip.
@@ -25,5 +25,8 @@ export class DebugArrow extends DebugLine {
      *
      */
     headSegments: number;
-    constructor(location: Vector3, endLocation: Vector3);
+    constructor(
+        location: DimensionLocation | Vector3,
+        endLocation: Vector3,
+    );
 }

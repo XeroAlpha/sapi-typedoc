@@ -326,7 +326,7 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the entity's collision bounds.
      *
@@ -338,7 +338,7 @@ export class Entity {
      */
     getAABB(): AABB;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the solid blocks that this entity is directly standing
      * on. Ignores pressure plates.
@@ -370,7 +370,7 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets a single solid block closest to the center of the
      * entity that this entity is directly standing on. Ignores

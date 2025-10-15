@@ -15,6 +15,7 @@ export declare enum PropertyItemType {
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
     Link = 'editorUI:Link',
+    ListPane = 'editorUI:ListPane',
     Menu = 'editorUI:Menu',
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',

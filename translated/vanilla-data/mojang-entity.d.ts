@@ -64,6 +64,7 @@ export declare enum MinecraftEntityTypes {
     Minecart = "minecraft:minecart",
     Mooshroom = "minecraft:mooshroom",
     Mule = "minecraft:mule",
+    Nautilus = "minecraft:nautilus",
     Npc = "minecraft:npc",
     Ocelot = "minecraft:ocelot",
     OminousItemSpawner = "minecraft:ominous_item_spawner",
@@ -122,6 +123,7 @@ export declare enum MinecraftEntityTypes {
     Zoglin = "minecraft:zoglin",
     Zombie = "minecraft:zombie",
     ZombieHorse = "minecraft:zombie_horse",
+    ZombieNautilus = "minecraft:zombie_nautilus",
     ZombiePigman = "minecraft:zombie_pigman",
     ZombieVillager = "minecraft:zombie_villager",
     ZombieVillagerV2 = "minecraft:zombie_villager_v2"

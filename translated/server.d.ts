@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.4.0-beta"
+ *   "version": "2.5.0-beta"
  * }
  * ```
  *
@@ -300,9 +300,11 @@ export enum ContainerRulesErrorReason {
 }
 
 /**
- * @beta
+ * @rc
  * Control Scheme types which define how the player moves in
  * response to player inputs.
+ * See the following page for more details on control schemes:
+ * https://learn.microsoft.com/en-us/minecraft/creator/documents/controlschemes
  */
 export enum ControlScheme {
     CameraRelative = 'CameraRelative',
@@ -721,6 +723,7 @@ export enum EnchantmentSlot {
     FishingRod = 'FishingRod',
     Flintsteel = 'Flintsteel',
     Hoe = 'Hoe',
+    MeleeSpear = 'MeleeSpear',
     Pickaxe = 'Pickaxe',
     Shears = 'Shears',
     Shield = 'Shield',
@@ -8221,7 +8224,7 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the entity's collision bounds.
      *
@@ -8233,7 +8236,7 @@ export class Entity {
      */
     getAABB(): AABB;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the solid blocks that this entity is directly standing
      * on. Ignores pressure plates.
@@ -8265,7 +8268,7 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets a single solid block closest to the center of the
      * entity that this entity is directly standing on. Ignores
@@ -14580,7 +14583,7 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the player's current control scheme.
      *
@@ -14726,7 +14729,7 @@ export class Player extends Entity {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Set a player's control scheme. The player's active camera
      * preset must be set by scripts like with camera.setCamera()
@@ -19576,7 +19579,7 @@ export class WorldLoadAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Axis-aligned bounding box.
  */
 export interface AABB {
@@ -20757,7 +20760,7 @@ export interface ExplosionOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional options for getBlockStandingOn and
  * getAllBlocksStandingOn.
  */

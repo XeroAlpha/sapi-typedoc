@@ -1,4 +1,5 @@
 /* IMPORT */ import { DebugShape } from '..';
+/* IMPORT */ import { Dimension } from '../../server';
 
 /**
  * Debug Drawing class used to allow adding and removing
@@ -15,7 +16,7 @@ export class DebugDrawer {
      * DebugLine, DebugCircle, DebugSphere, DebugArrow or
      * DebugText.
      */
-    addShape(shape: DebugShape): void;
+    addShape(shape: DebugShape, dimension?: Dimension): void;
     /**
      * @remarks
      * Removes all debug shapes from the world.

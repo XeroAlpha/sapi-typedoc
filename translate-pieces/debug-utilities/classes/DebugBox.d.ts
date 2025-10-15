@@ -1,5 +1,5 @@
 /* IMPORT */ import { DebugShape } from '..';
-/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, Vector3 } from '../../server';
 
 /**
  * A debug shape class that represents a box or cuboid.
@@ -13,5 +13,5 @@ export class DebugBox extends DebugShape {
      *
      */
     bound: Vector3;
-    constructor(location: Vector3);
+    constructor(location: DimensionLocation | Vector3);
 }

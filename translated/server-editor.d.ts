@@ -955,6 +955,22 @@ export declare enum LayoutDirection {
     Horizontal = 1,
 }
 
+export declare enum ListPaneEntryType {
+    Button = 0,
+    Bool = 1,
+    Image = 2,
+    Text = 3,
+}
+
+/**
+ * Determines how list pane slots will be sorted
+ */
+export declare enum ListPaneViewSortType {
+    Default = 0,
+    AtoZ = 1,
+    ZtoA = 2,
+}
+
 export enum LogChannel {
     /**
      * @remarks
@@ -1106,6 +1122,7 @@ export declare enum PropertyItemType {
     Dropdown = 'editorUI:Dropdown',
     Image = 'editorUI:Image',
     Link = 'editorUI:Link',
+    ListPane = 'editorUI:ListPane',
     Menu = 'editorUI:Menu',
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
@@ -1403,6 +1420,108 @@ export type KeyBindingInfo = {
     uniqueId: string;
     label?: string;
     tooltip?: string;
+};
+
+/**
+ * Layout size definition
+ */
+export declare type LayoutSize = {
+    value: number;
+    type?: 'default' | 'percentage';
+};
+
+/**
+ * List Pane Bool entry creation parameter
+ */
+export type ListPaneBoolEntryParams = {
+    type: ListPaneEntryType.Bool;
+    value: IObservableProp<boolean>;
+    tooltip?: BasicTooltipContent;
+    icon?: string;
+    enabled?: boolean;
+    visible?: boolean;
+    onChange?: (newValue: boolean, oldValue: boolean, entry: IListPaneBoolEntry) => void;
+};
+
+/**
+ * List Pane Button entry creation parameter
+ */
+export type ListPaneButtonEntryParams = {
+    type: ListPaneEntryType.Button;
+    onClick: (entry: IListPaneButtonEntry) => void;
+    title?: LocalizedString;
+    tooltip?: BasicTooltipContent;
+    variant?: ButtonPropertyItemVariant;
+    icon?: string;
+    enabled?: boolean;
+    visible?: boolean;
+};
+
+/**
+ * List Pane entry type map
+ */
+export type ListPaneEntryMap = {
+    [ListPaneEntryType.Button]: IListPaneEntry;
+    [ListPaneEntryType.Bool]: IListPaneBoolEntry;
+    [ListPaneEntryType.Image]: IListPaneImageEntry;
+    [ListPaneEntryType.Text]: IListPaneTextEntry;
+};
+
+/**
+ * List Pane entry creation parameters
+ */
+export type ListPaneEntryParams =
+    | ListPaneButtonEntryParams
+    | ListPaneBoolEntryParams
+    | ListPaneTextEntryParams
+    | ListPaneImageEntryParams;
+
+/**
+ * List Pane Image entry creation parameter
+ */
+export type ListPaneImageEntryParams = {
+    type: ListPaneEntryType.Image;
+    value: IObservableProp<ImageResourceData>;
+    visible?: boolean;
+};
+
+/**
+ * Properties required to create a slot
+ */
+export type ListPaneSlotCreationProps = {
+    entries: ListPaneEntryParams[];
+    options?: IListPaneSlotOptions;
+};
+
+export declare type ListPaneSlotLayout = {
+    height: number;
+    columns?: number;
+    clickable?: boolean;
+    outline?: boolean;
+    entryLayout: ListPaneSlotLayoutEntry[];
+};
+
+export declare type ListPaneSlotLayoutEntry = {
+    type: ListPaneEntryType;
+    size?: number | LayoutSize | 'shrink' | 'grow';
+    alignment?: LayoutAlignment;
+};
+
+/**
+ * List Pane Text entry creation parameter
+ */
+export type ListPaneTextEntryParams = {
+    type: ListPaneEntryType.Text;
+    value?: IObservableProp<LocalizedString>;
+    visible?: boolean;
+};
+
+/**
+ * Determines filtering properties for list pane
+ */
+export declare type ListPaneViewFilter = {
+    slots?: string[];
+    tags?: string[];
 };
 
 /**
@@ -6134,6 +6253,444 @@ export interface ILinkPropertyItemOptions extends IPropertyItemOptionsBase {
     tooltip?: LocalizedString;
 }
 
+/**
+ * List Pane button entry
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPaneBoolEntry extends IListPaneEntry {
+    /**
+     * @remarks
+     * Enabled state of the entry.
+     *
+     */
+    readonly enabled: boolean;
+    /**
+     * @remarks
+     * Value of the entry.
+     *
+     */
+    readonly value: boolean;
+    /**
+     * @remarks
+     * Updates enabled state of the entry.
+     *
+     * @param enabled
+     * New enabled state.
+     */
+    setEnabled(enabled: true): void;
+    /**
+     * @remarks
+     * Updates tooltip of the entry.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent): void;
+    /**
+     * @remarks
+     * Updates value of the entry.
+     *
+     * @param value
+     * New value.
+     */
+    setValue(value: boolean): void;
+}
+
+/**
+ * List Pane button entry
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPaneButtonEntry extends IListPaneEntry {
+    /**
+     * @remarks
+     * Enabled state of the entry.
+     *
+     */
+    readonly enabled: boolean;
+    /**
+     * @remarks
+     * Updates enabled state of the entry.
+     *
+     * @param enabled
+     * New enabled state.
+     */
+    setEnabled(enabled: true): void;
+    /**
+     * @remarks
+     * Updates icon of the entry.
+     *
+     * @param icon
+     * New icon.
+     */
+    setIcon(icon: string): void;
+    /**
+     * @remarks
+     * Updates title of the entry.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: string): void;
+    /**
+     * @remarks
+     * Updates tooltip of the entry.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent): void;
+}
+
+/**
+ * List Pane entry
+ */
+export interface IListPaneEntry {
+    /**
+     * @remarks
+     * Sequence index of the entry.
+     *
+     */
+    readonly index: number;
+    /**
+     * @remarks
+     * Slot that owns the entry.
+     *
+     */
+    readonly slot: IListPaneSlot;
+    /**
+     * @remarks
+     * Type of the entry.
+     *
+     */
+    readonly type: ListPaneEntryType;
+    /**
+     * @remarks
+     * Visibility state of the entry.
+     *
+     */
+    readonly visible: boolean;
+    /**
+     * @remarks
+     * Updates visibility of the entry.
+     *
+     * @param visible
+     * New value.
+     */
+    setVisible(visible: boolean): void;
+}
+
+/**
+ * List Pane image entry
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPaneImageEntry extends IListPaneEntry {
+    /**
+     * @remarks
+     * Value of the entry.
+     *
+     */
+    readonly value: Readonly<ImageResourceData>;
+    /**
+     * @remarks
+     * Updates value of the entry.
+     *
+     * @param value
+     * New value.
+     */
+    setValue(value: ImageResourceData): void;
+}
+
+/**
+ * A property item which supports Sub Pane properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
+    /**
+     * @remarks
+     * Count of the slots managed by the list.
+     *
+     */
+    readonly slotCount: number;
+    /**
+     * @remarks
+     * Current sorting type for the pane slots
+     *
+     */
+    readonly viewSortType: ListPaneViewSortType;
+    /**
+     * @remarks
+     * Adds a new slot to the list.
+     *
+     */
+    addSlot(params: ListPaneSlotCreationProps): IListPaneSlot;
+    /**
+     * @remarks
+     * Finds the slot with the identifier.
+     *
+     * @param id
+     * Unique identifier of the slot.
+     */
+    getSlotById(id: string): IListPaneSlot | undefined;
+    /**
+     * @remarks
+     * Finds the slot with the index.
+     *
+     * @param index
+     * Index of the slot in the component list.
+     */
+    getSlotByIndex(index: number): IListPaneSlot | undefined;
+    /**
+     * @remarks
+     * @returns
+     * Active view filter
+     */
+    getViewFilter(): ListPaneViewFilter | undefined;
+    /**
+     * @remarks
+     * Removes the slot from the list.
+     *
+     * @param id
+     * Unique identifier of the slot.
+     */
+    removeSlot(id: string): void;
+    /**
+     * @remarks
+     * Selects slot by id.
+     *
+     * @param id
+     * Unique identifier of the slot.
+     * @param deselectOtherSlots
+     * Deselects already selected slots if defined.
+     */
+    selectSlot(id: string, deselectOtherSlots?: boolean): void;
+    /**
+     * @remarks
+     * Filters displaying slots to match the define properties
+     *
+     * @param filter
+     * Slots that don't match filter properties won't be included.
+     */
+    setViewFilter(filter: ListPaneViewFilter | undefined): void;
+    /**
+     * @remarks
+     * Updates how slots will be sorted in the view
+     *
+     * @param sortType
+     * New sort type, it undefined Default will be used.
+     */
+    setViewSortType(sortType: ListPaneViewSortType | undefined): void;
+    /**
+     * @remarks
+     * Updates all slots with the new list.
+     *
+     * @param newSlots
+     * Creation properties for the new slots.
+     */
+    updateSlots(newSlots: ListPaneSlotCreationProps[]): void;
+}
+
+/**
+ * Optional properties for List Pane property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * This will be the height of the list withing the pane
+     *
+     */
+    defaultSlots?: ListPaneSlotCreationProps[];
+    /**
+     * @remarks
+     * This will be the height of the list withing the pane
+     *
+     */
+    height?: number;
+    /**
+     * @remarks
+     * Layout for the list will need to be predefined, and using
+     * wrong layout shape while creating slots will throw
+     *
+     */
+    layout: ListPaneSlotLayout;
+    /**
+     * @remarks
+     * This callback is fired whenever a clickable slot is pressed
+     *
+     */
+    onSlotClicked?: (slot: IListPaneSlot) => void;
+    /**
+     * @remarks
+     * This callback is fired whenever selected state of a slot is
+     * changed
+     *
+     */
+    onSlotSelectionChange?: (slot: IListPaneSlot, state: boolean) => void;
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Filter properties for viewing subset of slots.
+     *
+     */
+    viewFilter?: ListPaneViewFilter;
+    /**
+     * @remarks
+     * Sort type for the slots in the view. If undefined, default
+     * list order will be used.
+     *
+     */
+    viewSortType?: ListPaneViewSortType;
+}
+
+/**
+ * List Pane slot
+ */
+export interface IListPaneSlot {
+    /**
+     * @remarks
+     * Count of entries.
+     *
+     */
+    readonly entryCount: number;
+    /**
+     * @remarks
+     * Unique identifier of the slot.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Unique identifier of the parent pane.
+     *
+     */
+    readonly paneId: string;
+    /**
+     * @remarks
+     * Selected state of the slot.
+     *
+     */
+    readonly selected: boolean;
+    /**
+     * @remarks
+     * List of tags associated with the slot.
+     *
+     */
+    readonly tags: ReadonlyArray<string>;
+    /**
+     * @remarks
+     * Count of entries.
+     *
+     */
+    readonly title: LocalizedString;
+    /**
+     * @remarks
+     * Finds the entry with the index if it exists.
+     *
+     * @param index
+     * Sequence index of the entry in the slot.
+     * @param type
+     * Optional type check for the entry.
+     */
+    getEntry<K extends ListPaneEntryType | undefined = undefined>(
+        index: number,
+        type?: K,
+    ): (K extends ListPaneEntryType ? ListPaneEntryMap[K] : IListPaneEntry) | undefined;
+    /**
+     * @remarks
+     * @returns
+     * User data associated with the slot.
+     */
+    getUserData(): unknown;
+    /**
+     * @remarks
+     * Updates selected state of the slot.
+     *
+     * @param selected
+     * New selected state.
+     */
+    setSelected(selected: boolean): void;
+    /**
+     * @remarks
+     * Updates tags of the slot.
+     *
+     * @param tags
+     * New tag list.
+     */
+    setTags(tags: string[] | undefined): void;
+    /**
+     * @remarks
+     * Updates title of the slot.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Updates user data associated with the slot
+     *
+     * @param data
+     * New user data.
+     */
+    setUserData(data: unknown): void;
+}
+
+/**
+ * List Pane slot optional properties
+ */
+export interface IListPaneSlotOptions {
+    /**
+     * @remarks
+     * List of tags associated with the slot.
+     *
+     */
+    tags?: string[];
+    /**
+     * @remarks
+     * Localized title of the slot.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Unique identifier to use for the slot.
+     *
+     */
+    uniqueId?: string;
+    /**
+     * @remarks
+     * Optional user data that can be associated with a slot.
+     *
+     */
+    userData?: unknown;
+}
+
+/**
+ * List Pane text entry
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPaneTextEntry extends IListPaneEntry {
+    /**
+     * @remarks
+     * Value of the entry.
+     *
+     */
+    readonly value: Readonly<LocalizedString>;
+    /**
+     * @remarks
+     * Updates value of the entry.
+     *
+     * @param value
+     * New value.
+     */
+    setValue(value: LocalizedString): void;
+}
+
 export interface IMenu {
     /**
      * @remarks
@@ -7162,6 +7719,13 @@ export interface IPropertyPane extends IPane {
      *
      */
     addLink(value: IObservableProp<string>, options?: ILinkPropertyItemOptions): ILinkPropertyItem;
+    /**
+     * @remarks
+     * Adds a pane for displaying list of items in a predefined
+     * layout.
+     *
+     */
+    addListPane(options: IListPanePropertyItemOptions): IListPanePropertyItem;
     /**
      * @remarks
      * Adds a menu button property item to the pane.
