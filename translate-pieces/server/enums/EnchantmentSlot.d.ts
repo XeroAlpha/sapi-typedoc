@@ -12,6 +12,7 @@ export enum EnchantmentSlot {
     FishingRod = 'FishingRod',
     Flintsteel = 'Flintsteel',
     Hoe = 'Hoe',
+    MeleeSpear = 'MeleeSpear',
     Pickaxe = 'Pickaxe',
     Shears = 'Shears',
     Shield = 'Shield',

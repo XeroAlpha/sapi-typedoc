@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { RGB, Vector3 } from '@minecraft/server';
+import { Dimension, DimensionLocation, RGB, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -46,7 +46,10 @@ export class DebugArrow extends DebugLine {
      *
      */
     headSegments: number;
-    constructor(location: Vector3, endLocation: Vector3);
+    constructor(
+        location: DimensionLocation | Vector3,
+        endLocation: Vector3,
+    );
 }
 
 /**
@@ -61,7 +64,7 @@ export class DebugBox extends DebugShape {
      *
      */
     bound: Vector3;
-    constructor(location: Vector3);
+    constructor(location: DimensionLocation | Vector3);
 }
 
 /**
@@ -69,7 +72,7 @@ export class DebugBox extends DebugShape {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class DebugCircle extends DebugShape {
-    constructor(location: Vector3);
+    constructor(location: DimensionLocation | Vector3);
 }
 
 /**
@@ -87,7 +90,7 @@ export class DebugDrawer {
      * DebugLine, DebugCircle, DebugSphere, DebugArrow or
      * DebugText.
      */
-    addShape(shape: DebugShape): void;
+    addShape(shape: DebugShape, dimension?: Dimension): void;
     /**
      * @remarks
      * Removes all debug shapes from the world.
@@ -115,7 +118,10 @@ export class DebugLine extends DebugShape {
      *
      */
     endLocation: Vector3;
-    constructor(location: Vector3, endLocation: Vector3);
+    constructor(
+        location: DimensionLocation | Vector3,
+        endLocation: Vector3,
+    );
 }
 
 /**
@@ -132,6 +138,13 @@ export class DebugShape {
     color: RGB;
     /**
      * @remarks
+     * The dimension the shape is visible within. If the dimension
+     * is undefined, it will display in all dimensions.
+     *
+     */
+    readonly dimension: Dimension;
+    /**
+     * @remarks
      * Returns true if the shape has a limited time span before
      * being removed.
      *
@@ -139,12 +152,12 @@ export class DebugShape {
     readonly hasDuration: boolean;
     /**
      * @remarks
-     * The location of the shape. For most shapes this is the
-     * centre of the shape, except DebugLine and DebugArrow where
-     * this represents the start point of the line.
+     * The location of the shape. For most shapes the location is
+     * the centre of the shape, except DebugLine and DebugArrow
+     * where this represents the start point of the line.
      *
      */
-    location: Vector3;
+    readonly location: Vector3;
     /**
      * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
@@ -182,6 +195,16 @@ export class DebugShape {
      *
      */
     remove(): void;
+    /**
+     * @remarks
+     * Set the location and dimension of the shape. If the
+     * dimension is undefined, it will display in all dimensions.
+     * For most shapes the location is the centre of the shape,
+     * except DebugLine and DebugArrow where this represents the
+     * start point of the line.
+     *
+     */
+    setLocation(location: DimensionLocation | Vector3): void;
 }
 
 /**
@@ -189,7 +212,7 @@ export class DebugShape {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class DebugSphere extends DebugShape {
-    constructor(location: Vector3);
+    constructor(location: DimensionLocation | Vector3);
 }
 
 /**
@@ -204,7 +227,7 @@ export class DebugText extends DebugShape {
      *
      */
     text: string;
-    constructor(location: Vector3, text: string);
+    constructor(location: DimensionLocation | Vector3, text: string);
 }
 
 export interface HandleCounts {

@@ -8,6 +8,8 @@ export declare enum MinecraftEffectTypes {
     BadOmen = "minecraft:bad_omen",
     /** 失明。 */
     Blindness = "minecraft:blindness",
+    /** 鹦鹉螺之息。 */
+    BreathOfTheNautilus = "minecraft:breath_of_the_nautilus",
     /** 潮涌能量。 */
     ConduitPower = "minecraft:conduit_power",
     /** 黑暗。 */

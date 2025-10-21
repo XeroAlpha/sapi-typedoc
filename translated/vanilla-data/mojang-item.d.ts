@@ -598,6 +598,8 @@ export declare enum MinecraftItemTypes {
     CopperLantern = "minecraft:copper_lantern",
     /** 铜护腿。 */
     CopperLeggings = "minecraft:copper_leggings",
+    /** 铜鹦鹉螺铠。 */
+    CopperNautilusArmor = "minecraft:copper_nautilus_armor",
     /** 铜粒。 */
     CopperNugget = "minecraft:copper_nugget",
     /** 铜矿石。 */
@@ -606,6 +608,8 @@ export declare enum MinecraftItemTypes {
     CopperPickaxe = "minecraft:copper_pickaxe",
     /** 铜锹。 */
     CopperShovel = "minecraft:copper_shovel",
+    /** 铜矛。 */
+    CopperSpear = "minecraft:copper_spear",
     /** 铜剑。 */
     CopperSword = "minecraft:copper_sword",
     /** 铜火把。 */
@@ -858,12 +862,16 @@ export declare enum MinecraftItemTypes {
     DiamondHorseArmor = "minecraft:diamond_horse_armor",
     /** 钻石护腿。 */
     DiamondLeggings = "minecraft:diamond_leggings",
+    /** 钻石鹦鹉螺铠。 */
+    DiamondNautilusArmor = "minecraft:diamond_nautilus_armor",
     /** 钻石矿石。 */
     DiamondOre = "minecraft:diamond_ore",
     /** 钻石镐。 */
     DiamondPickaxe = "minecraft:diamond_pickaxe",
     /** 钻石锹。 */
     DiamondShovel = "minecraft:diamond_shovel",
+    /** 钻石矛。 */
+    DiamondSpear = "minecraft:diamond_spear",
     /** 钻石剑。 */
     DiamondSword = "minecraft:diamond_sword",
     /** 闪长岩。 */
@@ -1116,12 +1124,16 @@ export declare enum MinecraftItemTypes {
     GoldenHorseArmor = "minecraft:golden_horse_armor",
     /** 金护腿。 */
     GoldenLeggings = "minecraft:golden_leggings",
+    /** 金鹦鹉螺铠。 */
+    GoldenNautilusArmor = "minecraft:golden_nautilus_armor",
     /** 金镐。 */
     GoldenPickaxe = "minecraft:golden_pickaxe",
     /** 动力铁轨。 */
     GoldenRail = "minecraft:golden_rail",
     /** 金锹。 */
     GoldenShovel = "minecraft:golden_shovel",
+    /** 金矛。 */
+    GoldenSpear = "minecraft:golden_spear",
     /** 金剑。 */
     GoldenSword = "minecraft:golden_sword",
     /** 花岗岩。 */
@@ -1290,6 +1302,8 @@ export declare enum MinecraftItemTypes {
     IronIngot = "minecraft:iron_ingot",
     /** 铁护腿。 */
     IronLeggings = "minecraft:iron_leggings",
+    /** 铁鹦鹉螺铠。 */
+    IronNautilusArmor = "minecraft:iron_nautilus_armor",
     /** 铁粒。 */
     IronNugget = "minecraft:iron_nugget",
     /** 铁矿石。 */
@@ -1298,6 +1312,8 @@ export declare enum MinecraftItemTypes {
     IronPickaxe = "minecraft:iron_pickaxe",
     /** 铁锹。 */
     IronShovel = "minecraft:iron_shovel",
+    /** 铁矛。 */
+    IronSpear = "minecraft:iron_spear",
     /** 铁剑。 */
     IronSword = "minecraft:iron_sword",
     /** 铁活板门。 */
@@ -1690,6 +1706,8 @@ export declare enum MinecraftItemTypes {
     NameTag = "minecraft:name_tag",
     /** 鹦鹉螺壳。 */
     NautilusShell = "minecraft:nautilus_shell",
+    /** 鹦鹉螺刷怪蛋。 */
+    NautilusSpawnEgg = "minecraft:nautilus_spawn_egg",
     /** 下界砖块。 */
     NetherBrick = "minecraft:nether_brick",
     /** 下界砖栅栏。 */
@@ -1728,12 +1746,16 @@ export declare enum MinecraftItemTypes {
     NetheriteIngot = "minecraft:netherite_ingot",
     /** 下界合金护腿。 */
     NetheriteLeggings = "minecraft:netherite_leggings",
+    /** 下界合金鹦鹉螺铠。 */
+    NetheriteNautilusArmor = "minecraft:netherite_nautilus_armor",
     /** 下界合金镐。 */
     NetheritePickaxe = "minecraft:netherite_pickaxe",
     /** 下界合金碎片。 */
     NetheriteScrap = "minecraft:netherite_scrap",
     /** 下界合金锹。 */
     NetheriteShovel = "minecraft:netherite_shovel",
+    /** 下界合金矛。 */
+    NetheriteSpear = "minecraft:netherite_spear",
     /** 下界合金剑。 */
     NetheriteSword = "minecraft:netherite_sword",
     /** 下界合金升级 锻造模板。 */
@@ -2456,6 +2478,8 @@ export declare enum MinecraftItemTypes {
     StonePressurePlate = "minecraft:stone_pressure_plate",
     /** 石锹。 */
     StoneShovel = "minecraft:stone_shovel",
+    /** 石矛。 */
+    StoneSpear = "minecraft:stone_spear",
     /** 圆石楼梯。 */
     StoneStairs = "minecraft:stone_stairs",
     /** 石剑。 */
@@ -2898,6 +2922,8 @@ export declare enum MinecraftItemTypes {
     WoodenPressurePlate = "minecraft:wooden_pressure_plate",
     /** 木锹。 */
     WoodenShovel = "minecraft:wooden_shovel",
+    /** 木矛。 */
+    WoodenSpear = "minecraft:wooden_spear",
     /** 木剑。 */
     WoodenSword = "minecraft:wooden_sword",
     /** 书与笔。 */
@@ -2934,6 +2960,8 @@ export declare enum MinecraftItemTypes {
     ZombieHead = "minecraft:zombie_head",
     /** 僵尸马刷怪蛋。 */
     ZombieHorseSpawnEgg = "minecraft:zombie_horse_spawn_egg",
+    /** 僵尸鹦鹉螺刷怪蛋。 */
+    ZombieNautilusSpawnEgg = "minecraft:zombie_nautilus_spawn_egg",
     /** 僵尸猪灵刷怪蛋。 */
     ZombiePigmanSpawnEgg = "minecraft:zombie_pigman_spawn_egg",
     /** 僵尸刷怪蛋。 */

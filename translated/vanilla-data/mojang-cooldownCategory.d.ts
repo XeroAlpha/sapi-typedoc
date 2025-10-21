@@ -10,6 +10,8 @@ export declare enum MinecraftCooldownCategoryTypes {
     GoatHorn = "minecraft:goat_horn",
     /** 盾牌。 */
     Shield = "minecraft:shield",
+    /** 矛。 */
+    Spear = "minecraft:spear",
     /** 风弹。 */
     WindCharge = "minecraft:wind_charge"
 }

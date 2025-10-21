@@ -1,4 +1,4 @@
-/* IMPORT */ import { RGB, Vector3 } from '../../server';
+/* IMPORT */ import { Dimension, DimensionLocation, RGB, Vector3 } from '../../server';
 
 /**
  * The base class for all debug shapes. Represents an object in
@@ -14,6 +14,13 @@ export class DebugShape {
     color: RGB;
     /**
      * @remarks
+     * The dimension the shape is visible within. If the dimension
+     * is undefined, it will display in all dimensions.
+     *
+     */
+    readonly dimension: Dimension;
+    /**
+     * @remarks
      * Returns true if the shape has a limited time span before
      * being removed.
      *
@@ -21,12 +28,12 @@ export class DebugShape {
     readonly hasDuration: boolean;
     /**
      * @remarks
-     * The location of the shape. For most shapes this is the
-     * centre of the shape, except DebugLine and DebugArrow where
-     * this represents the start point of the line.
+     * The location of the shape. For most shapes the location is
+     * the centre of the shape, except DebugLine and DebugArrow
+     * where this represents the start point of the line.
      *
      */
-    location: Vector3;
+    readonly location: Vector3;
     /**
      * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
@@ -64,4 +71,14 @@ export class DebugShape {
      *
      */
     remove(): void;
+    /**
+     * @remarks
+     * Set the location and dimension of the shape. If the
+     * dimension is undefined, it will display in all dimensions.
+     * For most shapes the location is the centre of the shape,
+     * except DebugLine and DebugArrow where this represents the
+     * start point of the line.
+     *
+     */
+    setLocation(location: DimensionLocation | Vector3): void;
 }

@@ -1,5 +1,5 @@
 /* IMPORT */ import { DebugShape } from '..';
-/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, Vector3 } from '../../server';
 
 /**
  * A debug shape class that represents a line segment.
@@ -13,5 +13,8 @@ export class DebugLine extends DebugShape {
      *
      */
     endLocation: Vector3;
-    constructor(location: Vector3, endLocation: Vector3);
+    constructor(
+        location: DimensionLocation | Vector3,
+        endLocation: Vector3,
+    );
 }

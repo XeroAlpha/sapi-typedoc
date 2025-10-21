@@ -1,5 +1,5 @@
 /* IMPORT */ import { DebugShape } from '..';
-/* IMPORT */ import { Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, Vector3 } from '../../server';
 
 /**
  * A debug shape class that a text label. The text label
@@ -13,5 +13,5 @@ export class DebugText extends DebugShape {
      *
      */
     text: string;
-    constructor(location: Vector3, text: string);
+    constructor(location: DimensionLocation | Vector3, text: string);
 }

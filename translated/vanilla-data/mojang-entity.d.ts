@@ -126,6 +126,8 @@ export declare enum MinecraftEntityTypes {
     Mooshroom = "minecraft:mooshroom",
     /** 骡。 */
     Mule = "minecraft:mule",
+    /** 鹦鹉螺。 */
+    Nautilus = "minecraft:nautilus",
     /** NPC。 */
     Npc = "minecraft:npc",
     /** 豹猫。 */
@@ -242,6 +244,8 @@ export declare enum MinecraftEntityTypes {
     Zombie = "minecraft:zombie",
     /** 僵尸马。 */
     ZombieHorse = "minecraft:zombie_horse",
+    /** 僵尸鹦鹉螺。 */
+    ZombieNautilus = "minecraft:zombie_nautilus",
     /** 僵尸猪灵。 */
     ZombiePigman = "minecraft:zombie_pigman",
     /** 僵尸村民。 */

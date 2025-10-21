@@ -196,7 +196,7 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the player's current control scheme.
      *
@@ -342,7 +342,7 @@ export class Player extends Entity {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Set a player's control scheme. The player's active camera
      * preset must be set by scripts like with camera.setCamera()
