@@ -178,6 +178,10 @@ export declare enum CoreMenuType {
     WorldOptions = 'editor:menu:worldOptions',
 }
 
+export declare enum CoreModalDialogType {
+    DataPicker = 0,
+}
+
 /**
  * An enumeration used by the 3D block cursor {@link Cursor}
  */
@@ -242,6 +246,10 @@ export enum CursorTargetMode {
      *
      */
     Face = 1,
+}
+
+export declare enum DataPickerModalDialogVariant {
+    Block = 0,
 }
 
 export enum DaylightCycle {
@@ -993,6 +1001,20 @@ export enum LogChannel {
 }
 
 /**
+ * Common response types for modal dialog
+ */
+export declare enum ModalDialogResponseType {
+    Confirm = 'confirm',
+    Dismiss = 'dismiss',
+    Error = 'error',
+}
+
+export declare enum ModalDialogType {
+    DataPicker = 0,
+    Custom = 1,
+}
+
+/**
  * Mouse device action categories
  */
 export enum MouseActionCategory {
@@ -1397,6 +1419,7 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     readonly menuBar: IMenuContainer;
     readonly actionBar: IActionBar;
     readonly statusBar: IStatusBar;
+    readonly dialogManager: IModalDialogManager;
     readonly toolRail: IModalToolContainer;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
@@ -1534,6 +1557,61 @@ export declare type LocalizedString =
           id: string;
           props?: string[];
       };
+
+/**
+ * Parameters required to activate a modal dialog instance
+ */
+export type ModalDialogActivationParams<T extends CoreModalDialogType | string> = {
+    dialogId: T;
+    onResponse?: (
+        payload:
+            | (T extends CoreModalDialogType ? ModalDialogCoreResponseType[T] : ModalDialogCustomResponse)
+            | ModalDialogDismissResponse,
+    ) => void;
+} & (T extends CoreModalDialogType
+    ? {
+          data: ModalDialogRequestData[T];
+      }
+    : {
+          data?: never;
+      });
+
+/**
+ * Response data for core modal dialogs
+ */
+export type ModalDialogCoreResponseType = {
+    [CoreModalDialogType.DataPicker]: ModalDialogDataPickerResponse;
+};
+
+/**
+ * Response data for custom modal dialog
+ */
+export type ModalDialogCustomResponse = {
+    type: ModalDialogResponseType | string;
+    payload?: unknown;
+};
+
+/**
+ * Payloads that confirm data picker selection
+ */
+export type ModalDialogDataPickerResponse = {
+    type: ModalDialogResponseType.Confirm;
+    selected: string;
+};
+
+export type ModalDialogDismissResponse = {
+    type: ModalDialogResponseType.Dismiss;
+};
+
+/**
+ * Data types supported by a modal dialog request
+ */
+export type ModalDialogRequestData = {
+    [CoreModalDialogType.DataPicker]: {
+        default: string;
+        variant: DataPickerModalDialogVariant;
+    };
+};
 
 /**
  * Modal tool lifecycle event payload
@@ -6937,6 +7015,102 @@ export interface IModalControlPane extends IPane {
     addDivider(): IPropertyItemBase;
 }
 
+export interface IModalDialog {
+    /**
+     * @remarks
+     * Identifier for the active request for this dialog
+     *
+     */
+    readonly activeRequestId: string | undefined;
+    /**
+     * @remarks
+     * Custom pane layout for the dialog
+     *
+     */
+    readonly contentPane: IPropertyPane;
+    /**
+     * @remarks
+     * Custom pane layout for the dialog
+     *
+     */
+    readonly controlPane: IModalControlPane;
+    /**
+     * @remarks
+     * Unique identifier for the dialog
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Dispatches a dismiss message to the active request if it is
+     * available
+     *
+     */
+    sendDismiss(): void;
+    /**
+     * @remarks
+     * Dispatches a response message to the active request if it is
+     * available
+     *
+     * @param response
+     * Response message to be handled by the active request
+     */
+    sendResponse(response: ModalDialogCustomResponse): void;
+}
+
+/**
+ * Represents modal dialog state for the specific activation
+ * request
+ */
+export interface IModalDialogActivationRequest {
+    /**
+     * @remarks
+     * Unique identifier for the request
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Determines if the request is still active
+     *
+     */
+    readonly isValid: boolean;
+    /**
+     * @remarks
+     * Cancels the request if it's still active
+     *
+     */
+    cancel(): void;
+}
+
+export interface IModalDialogManager {
+    /**
+     * @remarks
+     * Creates a modal activation request for an existing modal
+     * template
+     *
+     * @param params
+     * Activation parameters
+     */
+    activateDialog<T extends CoreModalDialogType | string>(
+        params: ModalDialogActivationParams<T>,
+    ): IModalDialogActivationRequest;
+    /**
+     * @remarks
+     * Removes the active modal from view
+     *
+     */
+    dismissActiveDialog(): void;
+    /**
+     * @remarks
+     * Creates a custom modal dialog with a property pane
+     *
+     * @param params
+     * Creation parameters
+     */
+    registerDialog(params: ModalDialogCreationParams): IModalDialog;
+}
+
 /**
  * A modal overlay pane is displayed over a root pane.
  */
@@ -8638,6 +8812,49 @@ export interface LogProperties {
      *
      */
     tags?: string[];
+}
+
+/**
+ * Represents parameters to create a modal dialog
+ */
+export interface ModalDialogCreationParams {
+    /**
+     * @remarks
+     * Determines if the panel can be dismissed by the user
+     * actions. If undefined, it will be true.
+     *
+     */
+    canUserDismiss?: boolean;
+    /**
+     * @remarks
+     * Panel height for the dialog
+     *
+     */
+    height?: number;
+    /**
+     * @remarks
+     * Callback to notify changes in active request
+     *
+     */
+    onActiveRequestChange?: (requestId: string | undefined) => void;
+    /**
+     * @remarks
+     * Dialog title
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Optional user defined unique identifier
+     *
+     */
+    uniqueId?: string;
+    /**
+     * @remarks
+     * Panel width for the dialog
+     *
+     */
+    width?: number;
 }
 
 /**

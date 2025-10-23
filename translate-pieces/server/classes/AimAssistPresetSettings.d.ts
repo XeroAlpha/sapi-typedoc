@@ -39,13 +39,22 @@ export class AimAssistPresetSettings {
     constructor(identifier: string);
     /**
      * @remarks
-     * Gets the list of block/entity Ids to exclude from aim assist
+     * Gets the list of block Ids to exclude from aim assist
      * targeting.
      *
      * @returns
-     * The array of block/entity Ids.
+     * The array of block Ids.
      */
-    getExcludedTargets(): string[] | undefined;
+    getExcludedBlockTargets(): string[] | undefined;
+    /**
+     * @remarks
+     * Gets the list of entity Ids to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of entity Ids.
+     */
+    getExcludedEntityTargets(): string[] | undefined;
     /**
      * @remarks
      * Gets the per-item aim-assist category Ids.
@@ -65,21 +74,26 @@ export class AimAssistPresetSettings {
     getLiquidTargetingItems(): string[] | undefined;
     /**
      * @remarks
-     * Sets the list of block/entity Ids to exclude from aim assist
+     * Sets the list of block Ids to exclude from aim assist
      * targeting.
      *
      * @worldMutation
      *
      * @param targets
-     * An array of block/entity Ids.
+     * An array of block Ids.
      */
-    setExcludedTargets(
-        targets?: (
-            | keyof typeof MinecraftBlockTypes
-            | keyof typeof MinecraftEntityTypes
-            | string
-        )[],
-    ): void;
+    setExcludedBlockTargets(targets?: (keyof typeof MinecraftBlockTypes | string)[]): void;
+    /**
+     * @remarks
+     * Sets the list of entity Ids to exclude from aim assist
+     * targeting.
+     *
+     * @worldMutation
+     *
+     * @param targets
+     * An array of entity Ids.
+     */
+    setExcludedEntityTargets(targets?: (keyof typeof MinecraftEntityTypes | string)[]): void;
     /**
      * @remarks
      * Sets the per-item aim-assist category Ids.

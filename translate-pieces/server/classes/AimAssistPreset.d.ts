@@ -28,14 +28,24 @@ export class AimAssistPreset {
     readonly identifier: string;
     /**
      * @remarks
-     * Gets the list of block/entity Ids to exclude from aim assist
+     * Gets the list of block Ids to exclude from aim assist
      * targeting.
      *
      * @returns
-     * The array of block/entity Ids.
+     * The array of block Ids.
      * @throws This function can throw errors.
      */
-    getExcludedTargets(): string[];
+    getExcludedBlockTargets(): string[];
+    /**
+     * @remarks
+     * Gets the list of entity Ids to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of entity Ids.
+     * @throws This function can throw errors.
+     */
+    getExcludedEntityTargets(): string[];
     /**
      * @remarks
      * Gets the per-item aim-assist category Ids.

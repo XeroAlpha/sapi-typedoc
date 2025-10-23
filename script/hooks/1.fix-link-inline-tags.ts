@@ -14,7 +14,7 @@ export default {
                     ])
             )
             .map((refl) => [refl.getFriendlyFullName(), refl] as const);
-        const visitCommentPart = (part: TypeDoc.CommentDisplayPart) => {
+        const visitCommentPart = (part: TypeDoc.CommentDisplayPart, path: string) => {
             if (part.kind === 'inline-tag' && part.tag === '@link') {
                 if (typeof part.target === 'string') {
                     return;
@@ -25,6 +25,9 @@ export default {
                     part.target.name === part.text
                 ) {
                     return;
+                }
+                if (part.text === 'Error') {
+                    return; // bypass @throws Error
                 }
                 const segments = part.text
                     .split(/[./]/)
@@ -49,16 +52,20 @@ export default {
                 const bestMatchReflection = foundReflections.reduce((best, e) => (e[0] < best[0] ? e : best));
                 const bestMatchReflections = foundReflections.filter((e) => e[0] <= bestMatchReflection[0]);
                 if (bestMatchReflections.length >= 2) {
-                    console.warn(`Multiple resolutions of link: ${part.text}`);
+                    console.warn(`Multiple resolutions of link in ${path}: ${part.text}`);
                 }
                 part.target = bestMatchReflection[1];
             }
         };
         Object.values(tsdocProject.reflections).forEach((reflection) => {
             if (reflection.comment) {
-                reflection.comment.summary.forEach(visitCommentPart);
+                reflection.comment.summary.forEach((part) => {
+                    visitCommentPart(part, `${reflection.getFriendlyFullName()}:summary`);
+                });
                 reflection.comment.blockTags.forEach((tag) => {
-                    tag.content.forEach(visitCommentPart);
+                    tag.content.forEach((part) => {
+                        visitCommentPart(part, `${reflection.getFriendlyFullName()}:${tag.tag}`);
+                    });
                 });
             }
         });

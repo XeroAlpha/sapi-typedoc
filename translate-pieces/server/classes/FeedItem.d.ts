@@ -23,6 +23,10 @@ export class FeedItem {
      */
     readonly item: string;
     /**
+     * @beta
+     */
+    readonly resultItem: string;
+    /**
      * @remarks
      * As part of the Healable component, an optional collection of
      * side effects that can occur from being fed an item.
