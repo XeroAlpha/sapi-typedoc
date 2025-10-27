@@ -2700,6 +2700,7 @@ export type BlockStateSuperset = {
     ['minecraft:connection_north']?: boolean;
     ['minecraft:connection_south']?: boolean;
     ['minecraft:connection_west']?: boolean;
+    ['minecraft:corner']?: string;
     ['minecraft:facing_direction']?: string;
     ['minecraft:vertical_half']?: string;
     ['moisturized_amount']?: number;

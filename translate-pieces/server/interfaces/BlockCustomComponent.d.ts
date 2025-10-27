@@ -15,8 +15,14 @@ export interface BlockCustomComponent {
     /**
      * @beta
      * @remarks
-     * This function will be called when specific block is
+     * This function will be called when a specific block is
      * destroyed.
+     * Changes in block permutations will not trigger this event.
+     * Fill Command and SetBlock Command can trigger this event
+     * when changing a block permutation only when using destroy
+     * mode.
+     * Custom blocks with the "minecraft:replaceable" component
+     * will not trigger the event when replaced.
      *
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;

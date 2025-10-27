@@ -20,4 +20,8 @@ export class EntityDefinitionFeedItem {
      *
      */
     readonly item: string;
+    /**
+     * @beta
+     */
+    readonly resultItem: string;
 }

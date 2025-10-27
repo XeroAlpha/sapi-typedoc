@@ -16,11 +16,12 @@ NPM 包：
 |[@minecraft/server-admin](https://www.npmjs.com/package/@minecraft/server-admin)|`1.0.0-beta`|
 |[@minecraft/server-editor](https://www.npmjs.com/package/@minecraft/server-editor)|`0.1.0-beta`|
 |[@minecraft/server-gametest](https://www.npmjs.com/package/@minecraft/server-gametest)|`1.0.0-beta`|
+|[@minecraft/server-graphics](https://www.npmjs.com/package/@minecraft/server-graphics)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`2.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.130-preview.20`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.130-preview.22`|
 
-游戏版本号：`1.21.130.20`
+游戏版本号：`1.21.130.22`
 
 <!-- summary end -->
 

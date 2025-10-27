@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { strict as assert } from 'assert';
 import { Scope, StructureKind, SyntaxKind, ts } from 'ts-morph';
-import type { Hook, TranslateHookContext } from './hook.js';
+import type { HookFunction, Hook, TranslateHookContext } from './hook.js';
 
 assert(true);
 

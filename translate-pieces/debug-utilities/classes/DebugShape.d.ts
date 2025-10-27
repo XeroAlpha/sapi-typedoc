@@ -51,16 +51,16 @@ export class DebugShape {
     /**
      * @remarks
      * The time left (in seconds) until this shape is automatically
-     * removed. Returns 0 if the shape does not have a limited
-     * life-span.
+     * removed. Returns undefined if the shape does not have a
+     * limited life-span.
      *
      */
     timeLeft?: number;
     /**
      * @remarks
      * The total initial time-span (in seconds) until this shape is
-     * automatically removed. Returns 0 if the shape does not have
-     * a limited life-span.
+     * automatically removed. Returns undefined if the shape does
+     * not have a limited life-span.
      *
      */
     readonly totalTimeLeft?: number;
