@@ -1,7 +1,7 @@
 /* IMPORT */ import { ItemType, LootItemFunction, LootPoolEntry } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents a loot pool entry containing an item to drop.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

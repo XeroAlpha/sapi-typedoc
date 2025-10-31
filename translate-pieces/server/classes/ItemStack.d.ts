@@ -90,7 +90,6 @@ export class ItemStack {
      */
     readonly typeId: string;
     /**
-     * @rc
      * @remarks
      * The total weight of all items in the stack plus the weight
      * of all items in the items container which is defined with
@@ -320,7 +319,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *

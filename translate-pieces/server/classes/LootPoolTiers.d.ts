@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Represents the values which determine loot drops in a tiered
  * loot pool. Potential drops from tiered loot pools are
  * ordered, and chosen via logic controlled by the values in

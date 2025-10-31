@@ -2,7 +2,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that drops extra items if the provided
  * tool has the looting enchant.
  */

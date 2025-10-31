@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether the looting entity
  * is currently a passenger of a specific type of entity.
  */

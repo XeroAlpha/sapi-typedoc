@@ -1,4 +1,4 @@
-/* IMPORT */ import { ItemStack, Player } from '..';
+/* IMPORT */ import { EntitySwingSource, ItemStack, Player } from '..';
 
 /**
  * @beta
@@ -20,4 +20,11 @@ export class PlayerSwingStartAfterEvent {
      *
      */
     readonly player: Player;
+    /**
+     * @remarks
+     * The source of the Player swing, see {@link
+     * EntitySwingSource}.
+     *
+     */
+    readonly swingSource: EntitySwingSource;
 }

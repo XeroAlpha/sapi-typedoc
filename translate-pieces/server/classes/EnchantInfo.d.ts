@@ -1,7 +1,7 @@
 /* IMPORT */ import { NumberRange } from '../../common';
 
 /**
- * @beta
+ * @rc
  */
 export class EnchantInfo {
     private constructor();

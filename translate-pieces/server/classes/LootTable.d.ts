@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootPool } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents a single Loot Table, which determines what items
  * are generated when killing a mob, breaking a block, filling
  * a container, and more.

@@ -320,7 +320,6 @@ export class ContainerSlot {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *

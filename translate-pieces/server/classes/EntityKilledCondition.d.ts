@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks the entity type of the
  * entity dropping its loot.
  */

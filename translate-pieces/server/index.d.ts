@@ -23,6 +23,7 @@ export { EnchantmentSlot } from './enums/EnchantmentSlot';
 export { EntityComponentTypes } from './enums/EntityComponentTypes';
 export { EntityDamageCause } from './enums/EntityDamageCause';
 export { EntityInitializationCause } from './enums/EntityInitializationCause';
+export { EntitySwingSource } from './enums/EntitySwingSource';
 export { EquipmentSlot } from './enums/EquipmentSlot';
 export { FluidType } from './enums/FluidType';
 export { GameMode } from './enums/GameMode';
