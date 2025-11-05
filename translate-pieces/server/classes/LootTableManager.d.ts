@@ -84,7 +84,7 @@ export class LootTableManager {
      */
     generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Generates loot from a given LootTable.
      *
@@ -97,7 +97,7 @@ export class LootTableManager {
      */
     generateLootFromTable(lootTable: LootTable, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Retrieves a single loot table from the level's current
      * registry.

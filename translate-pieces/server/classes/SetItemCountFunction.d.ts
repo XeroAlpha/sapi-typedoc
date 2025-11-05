@@ -2,7 +2,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the number items that drop
  * from the loot pool entry.
  */

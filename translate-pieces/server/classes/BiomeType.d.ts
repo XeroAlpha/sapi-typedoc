@@ -1,5 +1,4 @@
 /**
- * @rc
  * Describes a type of biome.
  */
 export class BiomeType {

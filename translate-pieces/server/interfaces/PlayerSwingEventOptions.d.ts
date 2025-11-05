@@ -1,4 +1,4 @@
-/* IMPORT */ import { HeldItemOption } from '..';
+/* IMPORT */ import { EntitySwingSource, HeldItemOption } from '..';
 
 /**
  * @beta
@@ -16,4 +16,12 @@ export interface PlayerSwingEventOptions {
      *
      */
     heldItemOption?: HeldItemOption;
+    /**
+     * @remarks
+     * The {@link EntitySwingSource} that the callback should be
+     * called for. If undefined, the callback will be called for
+     * all swing sources.
+     *
+     */
+    swingSource?: EntitySwingSource;
 }

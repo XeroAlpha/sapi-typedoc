@@ -257,7 +257,6 @@ export enum CompoundBlockVolumePositionRelativity {
 }
 
 /**
- * @rc
  * Reasons that the {@link
  * @minecraft/server.ContainerRulesError} was thrown.
  */
@@ -1264,6 +1263,7 @@ export enum EntityDamageCause {
      *
      */
     contact = 'contact',
+    dehydration = 'dehydration',
     /**
      * @remarks
      * Damage caused by an Entity being out of air and inside a
@@ -1496,6 +1496,68 @@ export enum EntityInitializationCause {
      *
      */
     Transformed = 'Transformed',
+}
+
+/**
+ * @beta
+ * Enumerator describing the source of an Entity swing. Sent as
+ * part of {@link PlayerSwingStartAfterEvent}
+ */
+export enum EntitySwingSource {
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of an attack.
+     *
+     */
+    Attack = 'Attack',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of a build action.
+     *
+     */
+    Build = 'Build',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of dropping an item.
+     *
+     */
+    DropItem = 'DropItem',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of an event response.
+     *
+     */
+    Event = 'Event',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of an interaction.
+     *
+     */
+    Interact = 'Interact',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of a mine action.
+     *
+     */
+    Mine = 'Mine',
+    /**
+     * @remarks
+     * Sent when the Entity swing has no determinable source.
+     *
+     */
+    None = 'None',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of throwing an item.
+     *
+     */
+    ThrowItem = 'ThrowItem',
+    /**
+     * @remarks
+     * Sent when the Entity swings as part of using an item.
+     *
+     */
+    UseItem = 'UseItem',
 }
 
 /**
@@ -2166,9 +2228,6 @@ export enum ItemComponentTypes {
      *
      */
     Food = 'minecraft:food',
-    /**
-     * @rc
-     */
     Inventory = 'minecraft:inventory',
     /**
      * @beta
@@ -2202,7 +2261,7 @@ export enum ItemLockMode {
 }
 
 /**
- * @beta
+ * @rc
  * Specifies how to handle waterloggable blocks overlapping
  * with existing liquid.
  */
@@ -3558,7 +3617,6 @@ export class AimAssistRegistry {
 }
 
 /**
- * @rc
  * Describes a type of biome.
  */
 export class BiomeType {
@@ -4027,7 +4085,6 @@ export class Block {
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block.
@@ -4073,7 +4130,6 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block.
@@ -5298,7 +5354,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a block that can output a redstone signal.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5307,6 +5363,8 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
     /**
      * @remarks
      * Gets the power that this block outputs to circuit system.
+     * Returns error if block is no longer valid or if block
+     * doesn't have a 'minecraft:redstone_producer' component.
      *
      * @throws This property can throw when used.
      *
@@ -5317,7 +5375,9 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
     /**
      * @remarks
      * Gets the faces of this block that can connect to the circuit
-     * and output power.
+     * and output power. Returns error if block is no longer valid
+     * or if block doesn't have a 'minecraft:redstone_producer'
+     * component.
      *
      * @throws This function can throw errors.
      *
@@ -5327,7 +5387,11 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
     /**
      * @remarks
      * Gets the block face that strongly powers the block touching
-     * it.
+     * it. If the 'minecraft:redstone_producer' block component
+     * hasn't defined a 'strongly_powered_face' then this method
+     * returns 'undefined'. Returns error if block is no longer
+     * valid or if block doesn't have a
+     * 'minecraft:redstone_producer' component.
      *
      * @throws This function can throw errors.
      *
@@ -6293,7 +6357,6 @@ export class CompoundBlockVolume {
 export class Container {
     private constructor();
     /**
-     * @rc
      * @remarks
      * If these rules are defined other container operations will
      * throw if they cause these rules to be invalidated. For
@@ -6329,7 +6392,6 @@ export class Container {
      */
     readonly size: number;
     /**
-     * @rc
      * @remarks
      * The combined weight of all items in the container.
      *
@@ -6867,7 +6929,6 @@ export class ContainerSlot {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
@@ -7038,7 +7099,7 @@ export class CustomComponentParameters {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether the loot source was
  * damaged by a specific type of entity.
  */
@@ -7244,7 +7305,6 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -7419,7 +7479,6 @@ export class Dimension {
      */
     getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
-     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block position.
@@ -7453,7 +7512,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
@@ -7492,7 +7550,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * Returns true if the chunk at the given location is loaded
      * (and valid for use with scripting).
@@ -8000,7 +8057,7 @@ export class EffectTypes {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a completely empty entry in a loot pool. If this
  * entry is chosen, no items will drop.
  */
@@ -8010,7 +8067,7 @@ export class EmptyLootItem extends LootPoolEntry {
 }
 
 /**
- * @beta
+ * @rc
  */
 export class EnchantInfo {
     private constructor();
@@ -8067,7 +8124,7 @@ export class EnchantmentTypes {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that applies a random enchant to the
  * dropped item using the same algorithm used while enchanting
  * equipment vanilla mobs spawn with.
@@ -8085,7 +8142,7 @@ export class EnchantRandomEquipmentFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that randomly enchants the dropped item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8101,7 +8158,7 @@ export class EnchantRandomlyFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that applies a random enchant to the
  * dropped item.
  */
@@ -8906,7 +8963,6 @@ export class Entity {
      */
     runCommand(commandString: string): CommandResult;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
@@ -9657,7 +9713,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks the value of the mark
  * variant of a mob as it drops its loot.
  */
@@ -9674,7 +9730,7 @@ export class EntityHasMarkVariantCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks the variant value of a mob
  * as it drops its loot.
  */
@@ -10201,7 +10257,7 @@ export class EntityItemComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks the entity type of the
  * entity dropping its loot.
  */
@@ -11549,7 +11605,7 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies a dropped treasure map to
  * mark a location.
  */
@@ -11676,7 +11732,7 @@ export class ExplosionBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that determines whether or not loot drops
  * should be destroyed by explosions.
  */
@@ -11757,7 +11813,7 @@ export class FeedItemEffect {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that populates a dropped container item
  * using another loot table.
  */
@@ -12125,7 +12181,7 @@ export class InputInfo {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether or not the entity
  * dropping loot is a baby.
  */
@@ -13084,7 +13140,6 @@ export class ItemFoodComponent extends ItemComponent {
 }
 
 /**
- * @rc
  * This component is added to items with the `Storage Item`
  * component. Can access and modify this items inventory
  * container.
@@ -13280,7 +13335,6 @@ export class ItemStack {
      */
     readonly typeId: string;
     /**
-     * @rc
      * @remarks
      * The total weight of all items in the stack plus the weight
      * of all items in the items container which is defined with
@@ -13510,7 +13564,6 @@ export class ItemStack {
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
@@ -13969,7 +14022,7 @@ export class ItemUseOnEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether or not the drop
  * source was killed by a specific type of entity.
  */
@@ -13986,7 +14039,7 @@ export class KilledByEntityCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether or not the source of
  * the loot drop was killed by the player.
  */
@@ -13996,7 +14049,7 @@ export class KilledByPlayerCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether or not the source of
  * the loot drop was killed by the player or any of the
  * player's pets.
@@ -14109,7 +14162,7 @@ export class ListBlockVolume extends BlockVolumeBase {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that drops extra items if the provided
  * tool has the looting enchant.
  */
@@ -14127,7 +14180,7 @@ export class LootingEnchantFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a loot pool entry containing an item to drop.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -14143,7 +14196,7 @@ export class LootItem extends LootPoolEntry {
 }
 
 /**
- * @beta
+ * @rc
  * An abstract base class from which all loot item conditions
  * are derived. A loot item condition is a set of rules or
  * requirements which must be met for a loot drop to happen.
@@ -14153,7 +14206,7 @@ export class LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * An abstract base class from which all loot item functions
  * are derived. Loot item functions can modify loot drops in a
  * variety of ways as they happen, optionally dependent on a
@@ -14165,7 +14218,7 @@ export class LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * A collection of entries which individually determine loot
  * drops. Can contain values determining drop outcomes,
  * including rolls, bonus rolls and tiers.
@@ -14205,7 +14258,7 @@ export class LootPool {
 }
 
 /**
- * @beta
+ * @rc
  * Represents one entry within Loot Table, which describes one
  * possible drop when a loot drop occurs. Can contain an item,
  * another loot table, a path to another loot table, or an
@@ -14234,7 +14287,7 @@ export class LootPoolEntry {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the values which determine loot drops in a tiered
  * loot pool. Potential drops from tiered loot pools are
  * ordered, and chosen via logic controlled by the values in
@@ -14270,7 +14323,7 @@ export class LootPoolTiers {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a single Loot Table, which determines what items
  * are generated when killing a mob, breaking a block, filling
  * a container, and more.
@@ -14294,7 +14347,7 @@ export class LootTable {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a loot pool entry containing another separate,
  * nested loot table.
  */
@@ -14394,7 +14447,7 @@ export class LootTableManager {
      */
     generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Generates loot from a given LootTable.
      *
@@ -14407,7 +14460,7 @@ export class LootTableManager {
      */
     generateLootFromTable(lootTable: LootTable, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Retrieves a single loot table from the level's current
      * registry.
@@ -14424,7 +14477,7 @@ export class LootTableManager {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a loot pool entry containing a reference to
  * another loot table, described by its path.
  */
@@ -14441,7 +14494,7 @@ export class LootTableReference extends LootPoolEntry {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether an appropriate tool
  * was used to trigger the loot event. Can describe item type,
  * count, durability, enchantments, or arrays of item tags to
@@ -14638,7 +14691,7 @@ export class PackSettingChangeAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that checks whether the looting entity
  * is currently a passenger of a specific type of entity.
  */
@@ -16601,6 +16654,13 @@ export class PlayerSwingStartAfterEvent {
      *
      */
     readonly player: Player;
+    /**
+     * @remarks
+     * The source of the Player swing, see {@link
+     * EntitySwingSource}.
+     *
+     */
+    readonly swingSource: EntitySwingSource;
 }
 
 /**
@@ -17072,7 +17132,7 @@ export class ProjectileHitEntityAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that randomly modifies the data value of
  * the item dropped.
  */
@@ -17089,7 +17149,7 @@ export class RandomAuxValueFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that randomly modifies the block state of
  * the item dropped.
  */
@@ -17108,7 +17168,7 @@ export class RandomBlockStateFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop.
  */
@@ -17124,7 +17184,7 @@ export class RandomChanceCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop, modified by the level of
  * looting enchantment on the tool used.
@@ -17148,7 +17208,7 @@ export class RandomChanceWithLootingCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that applies given values to the chances
  * that loot will drop based on the current difficulty level.
  */
@@ -17166,7 +17226,7 @@ export class RandomDifficultyChanceCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that applies a randomly dye to the
  * dropped item.
  */
@@ -17176,7 +17236,7 @@ export class RandomDyeFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop, modified by the region the drop
  * is happening within.
@@ -17779,7 +17839,7 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the trim on a dropped armor
  * item.
  */
@@ -17801,7 +17861,7 @@ export class SetArmorTrimFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the type of a banner that
  * drops.
  */
@@ -17817,7 +17877,7 @@ export class SetBannerDetailsFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the contents of a dropped
  * book.
  */
@@ -17845,7 +17905,7 @@ export class SetBookContentsFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the dropped item's data
  * value based on its color index. Defaults to zero if no color
  * index is set.
@@ -17856,7 +17916,7 @@ export class SetDataFromColorIndexFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the number items that drop
  * from the loot pool entry.
  */
@@ -17874,7 +17934,7 @@ export class SetItemCountFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the durability value of the
  * item dropped.
  */
@@ -17892,7 +17952,7 @@ export class SetItemDamageFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the data value of the item
  * dropped.
  */
@@ -17909,7 +17969,7 @@ export class SetItemDataFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the lore of the item
  * dropped.
  */
@@ -17925,7 +17985,7 @@ export class SetItemLoreFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the name of the item
  * dropped.
  */
@@ -17941,7 +18001,7 @@ export class SetItemNameFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies an ominous bottle's
  * amplifier value.
  */
@@ -17959,7 +18019,7 @@ export class SetOminousBottleFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that assigns a type to a dropped potion.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -17974,7 +18034,7 @@ export class SetPotionFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that assigns an entity type to a dropped
  * spawn egg. Does not work on any items other than spawn eggs.
  */
@@ -17990,7 +18050,7 @@ export class SetSpawnEggFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the effects of a dropped
  * stew item.
  */
@@ -18051,7 +18111,7 @@ export class ShutdownEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that processes the dropped item as if it
  * was smelted or cooked in a furnace.
  */
@@ -18061,7 +18121,7 @@ export class SmeltItemFunction extends LootItemFunction {
 }
 
 /**
- * @beta
+ * @rc
  * Loot item function that applies one or several predefined
  * enchants to the dropped item.
  */
@@ -19393,7 +19453,6 @@ export class World {
      */
     setDifficulty(difficulty: Difficulty): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
@@ -20528,7 +20587,6 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
- * @rc
  * Rules that if broken on container operations will throw an
  * error.
  */
@@ -21443,7 +21501,7 @@ export interface JigsawPlaceOptions {
      */
     keepJigsaws?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Specifies how to handle waterloggable blocks overlapping
      * with existing liquid. Defaults to `ApplyWaterlogging`.
@@ -21480,7 +21538,7 @@ export interface JigsawStructurePlaceOptions {
      */
     keepJigsaws?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Specifies how to handle waterloggable blocks overlapping
      * with existing liquid. Defaults to `ApplyWaterlogging`.
@@ -21661,6 +21719,14 @@ export interface PlayerSwingEventOptions {
      *
      */
     heldItemOption?: HeldItemOption;
+    /**
+     * @remarks
+     * The {@link EntitySwingSource} that the callback should be
+     * called for. If undefined, the callback will be called for
+     * all swing sources.
+     *
+     */
+    swingSource?: EntitySwingSource;
 }
 
 /**
@@ -21899,7 +21965,6 @@ export interface ScriptEventMessageFilterOptions {
  */
 export interface SpawnEntityOptions {
     /**
-     * @rc
      * @remarks
      * Optional boolean which determines if this entity should
      * persist in the game world. Persistence prevents the entity
@@ -21908,7 +21973,6 @@ export interface SpawnEntityOptions {
      */
     initialPersistence?: boolean;
     /**
-     * @rc
      * @remarks
      * Optional initial rotation, in degrees, to set on the entity
      * when it spawns.
@@ -22262,7 +22326,6 @@ export class CommandError extends Error {
 export class ContainerRulesError extends Error {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The specific reason the error was thrown.
      *
@@ -22325,7 +22388,10 @@ export class EntitySpawnError extends Error {
 }
 
 /**
- * @beta
+ * @rc
+ * The error can occur when a block is invalid. This can also
+ * occur when accessing components on a block that doesn't have
+ * them.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidBlockComponentError extends Error {

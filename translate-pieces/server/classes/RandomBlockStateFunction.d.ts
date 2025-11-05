@@ -2,7 +2,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that randomly modifies the block state of
  * the item dropped.
  */

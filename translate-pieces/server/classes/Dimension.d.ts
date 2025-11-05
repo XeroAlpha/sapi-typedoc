@@ -131,7 +131,6 @@ export class Dimension {
      */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the biome type at the specified location.
      *
@@ -306,7 +305,6 @@ export class Dimension {
      */
     getGeneratedStructures(location: Vector3): (MinecraftFeatureTypes | string)[];
     /**
-     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block position.
@@ -340,7 +338,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block position.
@@ -379,7 +376,6 @@ export class Dimension {
      */
     getWeather(): WeatherType;
     /**
-     * @rc
      * @remarks
      * Returns true if the chunk at the given location is loaded
      * (and valid for use with scripting).

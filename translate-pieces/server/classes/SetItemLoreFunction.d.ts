@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the lore of the item
  * dropped.
  */

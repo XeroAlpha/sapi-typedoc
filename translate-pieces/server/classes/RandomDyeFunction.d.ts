@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that applies a randomly dye to the
  * dropped item.
  */

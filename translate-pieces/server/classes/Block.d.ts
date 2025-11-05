@@ -430,7 +430,6 @@ export class Block {
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the total brightness level of light shining on a
      * certain block.
@@ -476,7 +475,6 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @rc
      * @remarks
      * Returns the brightness level of light shining from the sky
      * on a certain block.

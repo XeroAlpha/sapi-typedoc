@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Represents one entry within Loot Table, which describes one
  * possible drop when a loot drop occurs. Can contain an item,
  * another loot table, a path to another loot table, or an

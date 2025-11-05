@@ -2,7 +2,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that modifies the durability value of the
  * item dropped.
  */

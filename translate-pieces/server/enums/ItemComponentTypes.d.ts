@@ -35,9 +35,6 @@ export enum ItemComponentTypes {
      *
      */
     Food = 'minecraft:food',
-    /**
-     * @rc
-     */
     Inventory = 'minecraft:inventory',
     /**
      * @beta

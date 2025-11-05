@@ -9,7 +9,6 @@
 export class Container {
     private constructor();
     /**
-     * @rc
      * @remarks
      * If these rules are defined other container operations will
      * throw if they cause these rules to be invalidated. For
@@ -45,7 +44,6 @@ export class Container {
      */
     readonly size: number;
     /**
-     * @rc
      * @remarks
      * The combined weight of all items in the container.
      *

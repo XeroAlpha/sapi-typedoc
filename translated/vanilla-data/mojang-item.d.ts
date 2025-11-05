@@ -386,6 +386,8 @@ export declare enum MinecraftItemTypes {
     Calcite = "minecraft:calcite",
     /** 校频幽匿感测体。 */
     CalibratedSculkSensor = "minecraft:calibrated_sculk_sensor",
+    /** 骆驼尸壳刷怪蛋。 */
+    CamelHuskSpawnEgg = "minecraft:camel_husk_spawn_egg",
     /** 骆驼刷怪蛋。 */
     CamelSpawnEgg = "minecraft:camel_spawn_egg",
     /** 营火。 */
@@ -1920,6 +1922,8 @@ export declare enum MinecraftItemTypes {
     PandaSpawnEgg = "minecraft:panda_spawn_egg",
     /** 纸。 */
     Paper = "minecraft:paper",
+    /** 焦骸刷怪蛋。 */
+    ParchedSpawnEgg = "minecraft:parched_spawn_egg",
     /** 鹦鹉刷怪蛋。 */
     ParrotSpawnEgg = "minecraft:parrot_spawn_egg",
     /** 珠光蛙明灯。 */

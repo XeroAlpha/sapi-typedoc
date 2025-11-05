@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that processes the dropped item as if it
  * was smelted or cooked in a furnace.
  */

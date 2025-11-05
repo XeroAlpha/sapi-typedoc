@@ -368,7 +368,6 @@ export class World {
      */
     setDifficulty(difficulty: Difficulty): void;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *

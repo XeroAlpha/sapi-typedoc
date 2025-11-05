@@ -19,9 +19,9 @@ NPM 包：
 |[@minecraft/server-graphics](https://www.npmjs.com/package/@minecraft/server-graphics)|`1.0.0-beta`|
 |[@minecraft/server-net](https://www.npmjs.com/package/@minecraft/server-net)|`1.0.0-beta`|
 |[@minecraft/server-ui](https://www.npmjs.com/package/@minecraft/server-ui)|`2.1.0-beta`|
-|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.130-preview.22`|
+|[@minecraft/vanilla-data](https://www.npmjs.com/package/@minecraft/vanilla-data)|`1.21.130-preview.24`|
 
-游戏版本号：`1.21.130.22`
+游戏版本号：`1.21.130.24`
 
 <!-- summary end -->
 

@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
+ * @rc
  * Loot item function that randomly enchants the dropped item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

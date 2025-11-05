@@ -32,6 +32,8 @@ export declare enum MinecraftEntityTypes {
     BreezeWindChargeProjectile = "minecraft:breeze_wind_charge_projectile",
     /** 骆驼。 */
     Camel = "minecraft:camel",
+    /** 骆驼尸壳。 */
+    CamelHusk = "minecraft:camel_husk",
     /** 猫。 */
     Cat = "minecraft:cat",
     /** 洞穴蜘蛛。 */
@@ -136,6 +138,8 @@ export declare enum MinecraftEntityTypes {
     OminousItemSpawner = "minecraft:ominous_item_spawner",
     /** 熊猫。 */
     Panda = "minecraft:panda",
+    /** 焦骸。 */
+    Parched = "minecraft:parched",
     /** 鹦鹉。 */
     Parrot = "minecraft:parrot",
     /** 幻翼。 */

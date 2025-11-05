@@ -1,7 +1,7 @@
 /* IMPORT */ import { LootPoolEntry, LootTable } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents a loot pool entry containing another separate,
  * nested loot table.
  */

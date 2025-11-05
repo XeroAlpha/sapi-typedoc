@@ -782,7 +782,6 @@ export class Entity {
      */
     runCommand(commandString: string): CommandResult;
     /**
-     * @rc
      * @remarks
      * Sets multiple dynamic properties with specific values.
      *
