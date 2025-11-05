@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LayoutAlignment, LocalizedString } from '..';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, LayoutAlignment, LocalizedString } from '..';
 
 /**
  * Optional properties for Text property item
@@ -25,4 +25,10 @@ export interface ITextPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: BasicTooltipContent;
 }

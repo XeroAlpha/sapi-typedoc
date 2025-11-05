@@ -39,6 +39,16 @@ export class AimAssistCategory {
     getBlockPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for block targeting.
+     *
+     * @returns
+     * The record mapping block tags to their priority settings.
+     * Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     */
+    getBlockTagPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Gets the priority settings used for entity targeting.
      *
      * @returns

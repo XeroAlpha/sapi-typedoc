@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, ButtonPropertyItemVariant, IPropertyItemOptionsBase, LocalizedString } from '..';
+/* IMPORT */ import { BasicTooltipContent, ButtonVariant, IPropertyItemOptionsBase, LocalizedString } from '..';
 
 /**
  * Optional properties for Button property item
@@ -20,6 +20,12 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
     icon?: string;
     /**
      * @remarks
+     * Shrinks button to icon size if button has an icon.
+     *
+     */
+    shrinkToIcon?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item.
      *
      */
@@ -35,5 +41,5 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
      * The variant for the button. By default it is Primary.
      *
      */
-    variant?: ButtonPropertyItemVariant;
+    variant?: ButtonVariant;
 }

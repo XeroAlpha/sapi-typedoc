@@ -873,6 +873,7 @@ export declare enum MinecraftItemTypes {
     NetheriteChestplate = "minecraft:netherite_chestplate",
     NetheriteHelmet = "minecraft:netherite_helmet",
     NetheriteHoe = "minecraft:netherite_hoe",
+    NetheriteHorseArmor = "minecraft:netherite_horse_armor",
     NetheriteIngot = "minecraft:netherite_ingot",
     NetheriteLeggings = "minecraft:netherite_leggings",
     NetheriteNautilusArmor = "minecraft:netherite_nautilus_armor",

@@ -49,6 +49,15 @@ export class AimAssistCategorySettings {
     getBlockPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for block targeting.
+     *
+     * @returns
+     * The record mapping block tags to their priority settings.
+     * Larger numbers have greater priority.
+     */
+    getBlockTagPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Gets the priority settings used for entity targeting.
      *
      * @returns
@@ -69,6 +78,14 @@ export class AimAssistCategorySettings {
     setBlockPriorities(
         blockPriorities: Record<keyof typeof MinecraftBlockTypes | string, number>,
     ): void;
+    /**
+     * @remarks
+     * Sets the priority settings used for block targeting.
+     *
+     * @worldMutation
+     *
+     */
+    setBlockTagPriorities(blockTagPriorities: Record<string, number>): void;
     /**
      * @remarks
      * Sets the priority settings used for entity targeting.

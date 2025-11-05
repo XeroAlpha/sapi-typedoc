@@ -39,6 +39,15 @@ export class AimAssistPresetSettings {
     constructor(identifier: string);
     /**
      * @remarks
+     * Gets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of block tags.
+     */
+    getExcludedBlockTagTargets(): string[] | undefined;
+    /**
+     * @remarks
      * Gets the list of block Ids to exclude from aim assist
      * targeting.
      *
@@ -72,6 +81,17 @@ export class AimAssistPresetSettings {
      * The array of item Ids.
      */
     getLiquidTargetingItems(): string[] | undefined;
+    /**
+     * @remarks
+     * Sets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @worldMutation
+     *
+     * @param targets
+     * An array of block tags.
+     */
+    setExcludedBlockTagTargets(targets?: string[]): void;
     /**
      * @remarks
      * Sets the list of block Ids to exclude from aim assist

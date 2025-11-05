@@ -6,7 +6,7 @@ export { BlockPaletteItemType } from './enums/BlockPaletteItemType';
 export { BlockTableOperationType } from './enums/BlockTableOperationType';
 export { BoolPropertyItemVariant } from './enums/BoolPropertyItemVariant';
 export { BrushDirectionalPlacementMode } from './enums/BrushDirectionalPlacementMode';
-export { ButtonPropertyItemVariant } from './enums/ButtonPropertyItemVariant';
+export { ButtonVariant } from './enums/ButtonVariant';
 export { ColorPickerPropertyItemVariant } from './enums/ColorPickerPropertyItemVariant';
 export { ComboBoxPropertyItemDataType } from './enums/ComboBoxPropertyItemDataType';
 export { ContiguousSelectionType } from './enums/ContiguousSelectionType';

@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -48,6 +48,14 @@ export class World {
      *
      */
     readonly structureManager: StructureManager;
+    /**
+     * @beta
+     * @remarks
+     * Manager for adding, removing and querying pack specific
+     * ticking areas.
+     *
+     */
+    readonly tickingAreaManager: TickingAreaManager;
     /**
      * @beta
      * @remarks

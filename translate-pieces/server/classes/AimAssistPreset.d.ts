@@ -28,6 +28,16 @@ export class AimAssistPreset {
     readonly identifier: string;
     /**
      * @remarks
+     * Gets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of block tags.
+     * @throws This function can throw errors.
+     */
+    getExcludedBlockTagTargets(): string[];
+    /**
+     * @remarks
      * Gets the list of block Ids to exclude from aim assist
      * targeting.
      *
