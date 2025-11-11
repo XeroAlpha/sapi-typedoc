@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, LayoutAlignment, LocalizedString } from '..';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LayoutAlignment, LocalizedString } from '..';
 
 /**
  * A property item which supports Text properties
@@ -23,4 +23,12 @@ export interface ITextPropertyItem extends IPropertyItemBase {
      *
      */
     setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }

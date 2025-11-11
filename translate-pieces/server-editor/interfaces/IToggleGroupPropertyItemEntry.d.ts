@@ -6,6 +6,13 @@
 export interface IToggleGroupPropertyItemEntry {
     /**
      * @remarks
+     * Optional enabled state of the entry. If undefined it will be
+     * true.
+     *
+     */
+    readonly enabled?: boolean;
+    /**
+     * @remarks
      * Optional icon of the dropdown entry.
      *
      */

@@ -96,7 +96,7 @@ export enum BrushDirectionalPlacementMode {
 /**
  * The possible variants of a Button property item.
  */
-export declare enum ButtonPropertyItemVariant {
+export declare enum ButtonVariant {
     Primary = 0,
     Secondary = 1,
     Confirmation = 2,
@@ -1474,7 +1474,7 @@ export type ListPaneButtonEntryParams = {
     onClick: (entry: IListPaneButtonEntry) => void;
     title?: LocalizedString;
     tooltip?: BasicTooltipContent;
-    variant?: ButtonPropertyItemVariant;
+    variant?: ButtonVariant;
     icon?: string;
     enabled?: boolean;
     visible?: boolean;
@@ -4147,7 +4147,7 @@ export class Widget {
      */
     addClipboardComponent(
         componentName: string,
-        clipboardItem?: ClipboardItem,
+        clipboardItem?: ClipboardItem | EditorStructure,
         options?: WidgetComponentClipboardOptions,
     ): WidgetComponentClipboard;
     /**
@@ -5629,6 +5629,12 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
     icon?: string;
     /**
      * @remarks
+     * Shrinks button to icon size if button has an icon.
+     *
+     */
+    shrinkToIcon?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item.
      *
      */
@@ -5644,7 +5650,7 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
      * The variant for the button. By default it is Primary.
      *
      */
-    variant?: ButtonPropertyItemVariant;
+    variant?: ButtonVariant;
 }
 
 /**
@@ -6159,6 +6165,13 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     hiddenLabel?: boolean;
+    /**
+     * @remarks
+     * Determines how many entries can be displayed before
+     * scrolling is enabled, based on available space.
+     *
+     */
+    maxVisibleEntries?: number;
     /**
      * @remarks
      * This callback is called when UI control value is changed.
@@ -8438,6 +8451,14 @@ export interface ITextPropertyItem extends IPropertyItemBase {
      *
      */
     setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip description of property item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
 }
 
 /**
@@ -8465,6 +8486,12 @@ export interface ITextPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     title?: LocalizedString;
+    /**
+     * @remarks
+     * Tooltip description of the property item.
+     *
+     */
+    tooltip?: BasicTooltipContent;
 }
 
 /**
@@ -8527,6 +8554,13 @@ export interface IToggleGroupPropertyItem extends IPropertyItemBase {
  * Properties of toggle group property item list entry
  */
 export interface IToggleGroupPropertyItemEntry {
+    /**
+     * @remarks
+     * Optional enabled state of the entry. If undefined it will be
+     * true.
+     *
+     */
+    readonly enabled?: boolean;
     /**
      * @remarks
      * Optional icon of the dropdown entry.

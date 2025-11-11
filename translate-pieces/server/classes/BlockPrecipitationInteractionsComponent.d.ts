@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponent, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError } from '..';
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPrecipitationInteractionsComponent extends BlockComponent {

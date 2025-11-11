@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, ButtonPropertyItemVariant, IListPaneButtonEntry, ListPaneEntryType, LocalizedString } from '..';
+/* IMPORT */ import { BasicTooltipContent, ButtonVariant, IListPaneButtonEntry, ListPaneEntryType, LocalizedString } from '..';
 
 /**
  * List Pane Button entry creation parameter
@@ -8,7 +8,7 @@ export type ListPaneButtonEntryParams = {
     onClick: (entry: IListPaneButtonEntry) => void;
     title?: LocalizedString;
     tooltip?: BasicTooltipContent;
-    variant?: ButtonPropertyItemVariant;
+    variant?: ButtonVariant;
     icon?: string;
     enabled?: boolean;
     visible?: boolean;

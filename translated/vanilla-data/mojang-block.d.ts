@@ -758,37 +758,37 @@ export declare enum MinecraftBlockTypes {
     Element102 = "minecraft:element_102",
     /** 铹。 */
     Element103 = "minecraft:element_103",
-    /** 鑪。 */
+    /** 𬬻。 */
     Element104 = "minecraft:element_104",
-    /** 𨧀。 */
+    /** 𬭊。 */
     Element105 = "minecraft:element_105",
-    /** 𨭎。 */
+    /** 𬭳。 */
     Element106 = "minecraft:element_106",
-    /** 𨨏。 */
+    /** 𬭛。 */
     Element107 = "minecraft:element_107",
-    /** 𨭆。 */
+    /** 𬭶。 */
     Element108 = "minecraft:element_108",
-    /** 䥑。 */
+    /** 鿏。 */
     Element109 = "minecraft:element_109",
     /** 钠。 */
     Element11 = "minecraft:element_11",
-    /** 鐽。 */
+    /** 𫟼。 */
     Element110 = "minecraft:element_110",
-    /** 錀。 */
+    /** 𬬭。 */
     Element111 = "minecraft:element_111",
-    /** 鎶。 */
+    /** 鿔。 */
     Element112 = "minecraft:element_112",
-    /** 鉨。 */
+    /** 鿭。 */
     Element113 = "minecraft:element_113",
-    /** 鈇。 */
+    /** 𫓧。 */
     Element114 = "minecraft:element_114",
     /** 镆。 */
     Element115 = "minecraft:element_115",
-    /** 鉝。 */
+    /** 𫟷。 */
     Element116 = "minecraft:element_116",
-    /** Tennessine。 */
+    /** 鿬。 */
     Element117 = "minecraft:element_117",
-    /** Oganesson。 */
+    /** 鿫。 */
     Element118 = "minecraft:element_118",
     /** 镁。 */
     Element12 = "minecraft:element_12",

@@ -21,6 +21,13 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Determines how many entries can be displayed before
+     * scrolling is enabled, based on available space.
+     *
+     */
+    maxVisibleEntries?: number;
+    /**
+     * @remarks
      * This callback is called when UI control value is changed.
      *
      */

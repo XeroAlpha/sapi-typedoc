@@ -2821,6 +2821,41 @@ export enum StructureSaveMode {
 }
 
 /**
+ * @beta
+ * The reason that the {@link
+ * @minecraft/server.TickingAreaError} was thrown.
+ */
+export enum TickingAreaErrorReason {
+    /**
+     * @remarks
+     * Added a ticking area with an identifier that already exists.
+     *
+     */
+    IdentifierAlreadyExists = 'IdentifierAlreadyExists',
+    /**
+     * @remarks
+     *  Adding this ticking area pushed the ticking areas over the
+     * limit specified by {@link TickingAreaManager.maxChunkCount}.
+     *
+     */
+    OverChunkLimit = 'OverChunkLimit',
+    /**
+     * @remarks
+     * Exceeded the 255 chunk limit for the length or width of the
+     * ticking area.
+     *
+     */
+    SideLengthExceeded = 'SideLengthExceeded',
+    /**
+     * @remarks
+     * Tried to remove ticking area with identifier not registered
+     * in the {@link TickingAreaManager}.
+     *
+     */
+    UnknownIdentifier = 'UnknownIdentifier',
+}
+
+/**
  * Provides numeric values for common periods in the Minecraft
  * day.
  */
@@ -3231,6 +3266,16 @@ export class AimAssistCategory {
     getBlockPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for block targeting.
+     *
+     * @returns
+     * The record mapping block tags to their priority settings.
+     * Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     */
+    getBlockTagPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Gets the priority settings used for entity targeting.
      *
      * @returns
@@ -3290,6 +3335,15 @@ export class AimAssistCategorySettings {
     getBlockPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for block targeting.
+     *
+     * @returns
+     * The record mapping block tags to their priority settings.
+     * Larger numbers have greater priority.
+     */
+    getBlockTagPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Gets the priority settings used for entity targeting.
      *
      * @returns
@@ -3310,6 +3364,14 @@ export class AimAssistCategorySettings {
     setBlockPriorities(
         blockPriorities: Record<keyof typeof MinecraftBlockTypes | string, number>,
     ): void;
+    /**
+     * @remarks
+     * Sets the priority settings used for block targeting.
+     *
+     * @worldMutation
+     *
+     */
+    setBlockTagPriorities(blockTagPriorities: Record<string, number>): void;
     /**
      * @remarks
      * Sets the priority settings used for entity targeting.
@@ -3353,6 +3415,16 @@ export class AimAssistPreset {
      *
      */
     readonly identifier: string;
+    /**
+     * @remarks
+     * Gets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of block tags.
+     * @throws This function can throw errors.
+     */
+    getExcludedBlockTagTargets(): string[];
     /**
      * @remarks
      * Gets the list of block Ids to exclude from aim assist
@@ -3433,6 +3505,15 @@ export class AimAssistPresetSettings {
     constructor(identifier: string);
     /**
      * @remarks
+     * Gets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @returns
+     * The array of block tags.
+     */
+    getExcludedBlockTagTargets(): string[] | undefined;
+    /**
+     * @remarks
      * Gets the list of block Ids to exclude from aim assist
      * targeting.
      *
@@ -3466,6 +3547,17 @@ export class AimAssistPresetSettings {
      * The array of item Ids.
      */
     getLiquidTargetingItems(): string[] | undefined;
+    /**
+     * @remarks
+     * Sets the list of block tags to exclude from aim assist
+     * targeting.
+     *
+     * @worldMutation
+     *
+     * @param targets
+     * An array of block tags.
+     */
+    setExcludedBlockTagTargets(targets?: string[]): void;
     /**
      * @remarks
      * Sets the list of block Ids to exclude from aim assist
@@ -4575,7 +4667,7 @@ export class BlockComponent extends Component {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block being
  * broken.
  */
@@ -5256,7 +5348,7 @@ export class BlockPistonComponent extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPrecipitationInteractionsComponent extends BlockComponent {
@@ -18844,6 +18936,110 @@ export class TargetBlockHitAfterEventSignal {
 }
 
 /**
+ * @beta
+ * This manager is used to add, remove or query temporary
+ * ticking areas to a dimension. These ticking areas are
+ * limited by a fixed amount of ticking chunks per pack
+ * independent of the command limits. Cannot modify or query
+ * ticking areas added by other packs or commands.
+ */
+export class TickingAreaManager {
+    private constructor();
+    /**
+     * @remarks
+     * The number of currently ticking chunks in this manager.
+     *
+     */
+    readonly chunkCount: number;
+    /**
+     * @remarks
+     * The maximum number of allowed ticking chunks. Overlapping
+     * ticking area chunks do count towards total.
+     *
+     */
+    readonly maxChunkCount: number;
+    /**
+     * @remarks
+     * Creates a ticking area. Promise will return when all the
+     * chunks in the area are loaded and ticking.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link TickingAreaError}
+     */
+    createTickingArea(identifier: string, options: TickingAreaOptions): Promise<TickingArea>;
+    /**
+     * @remarks
+     * Gets all ticking areas added by this manager.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getAllTickingAreas(): TickingArea[];
+    /**
+     * @remarks
+     * Tries to get specific ticking area by identifier.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getTickingArea(identifier: string | TickingArea): TickingArea | undefined;
+    /**
+     * @remarks
+     * Returns true if the manager has enough chunk capacity for
+     * the ticking area and false otherwise. Will also return false
+     * if the length or width exceeds the 255 chunk limit.
+     *
+     * @worldMutation
+     *
+     */
+    hasCapacity(options: TickingAreaOptions): boolean;
+    /**
+     * @remarks
+     * Returns true if the identifier is already in the manager and
+     * false otherwise.
+     *
+     * @worldMutation
+     *
+     */
+    hasTickingArea(identifier: string): boolean;
+    /**
+     * @remarks
+     * Removes all ticking areas added by this manager.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    removeAllTickingAreas(): void;
+    /**
+     * @remarks
+     * Removes specific ticking area by unique identifier.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link TickingAreaError}
+     */
+    removeTickingArea(identifier: string | TickingArea): void;
+}
+
+/**
  * Represents a trigger for firing an event.
  */
 export class Trigger {
@@ -19137,6 +19333,14 @@ export class World {
      *
      */
     readonly structureManager: StructureManager;
+    /**
+     * @beta
+     * @remarks
+     * Manager for adding, removing and querying pack specific
+     * ticking areas.
+     *
+     */
+    readonly tickingAreaManager: TickingAreaManager;
     /**
      * @beta
      * @remarks
@@ -20200,7 +20404,7 @@ export interface BlockCustomComponent {
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function will be called when a specific block is
      * destroyed.
@@ -22148,6 +22352,72 @@ export interface TeleportOptions {
 }
 
 /**
+ * @beta
+ * A context which provides information about a specific
+ * ticking area.
+ */
+export interface TickingArea {
+    /**
+     * @remarks
+     * The box which contains all the ticking blocks in the ticking
+     * area.
+     *
+     */
+    boundingBox: BlockBoundingBox;
+    /**
+     * @remarks
+     * The number of chunks that the ticking area contains.
+     *
+     */
+    chunkCount: number;
+    /**
+     * @remarks
+     * The dimension the ticking area is located.
+     *
+     */
+    dimension: Dimension;
+    /**
+     * @remarks
+     * The unique identifier of the ticking area.
+     *
+     */
+    identifier: string;
+    /**
+     * @remarks
+     * Will be true if all the ticking areas chunks are loaded in
+     * ticking and false otherwise.
+     *
+     */
+    isFullyLoaded: boolean;
+}
+
+/**
+ * @beta
+ * Options to create a ticking area using the {@link
+ * TickingAreaManager}.
+ */
+export interface TickingAreaOptions {
+    /**
+     * @remarks
+     * The dimension the ticking area will be in.
+     *
+     */
+    dimension: Dimension;
+    /**
+     * @remarks
+     * Corner block location of the bounding box.
+     *
+     */
+    from: Vector3;
+    /**
+     * @remarks
+     * Opposite corner block location of the bounding box.
+     *
+     */
+    to: Vector3;
+}
+
+/**
  * Contains additional options for displaying a title and
  * optional subtitle.
  */
@@ -22567,6 +22837,24 @@ export class PlaceJigsawError extends Error {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class RawMessageError extends Error {
     private constructor();
+}
+
+/**
+ * @beta
+ * The error returned from invalid {@link TickingAreaManager}
+ * method calls.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class TickingAreaError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The specific reason that the error was thrown.
+     *
+     * @earlyExecution
+     *
+     */
+    reason: TickingAreaErrorReason;
 }
 
 /**

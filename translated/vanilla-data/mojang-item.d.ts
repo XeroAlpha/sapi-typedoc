@@ -1744,6 +1744,8 @@ export declare enum MinecraftItemTypes {
     NetheriteHelmet = "minecraft:netherite_helmet",
     /** 下界合金锄。 */
     NetheriteHoe = "minecraft:netherite_hoe",
+    /** 下界合金马铠。 */
+    NetheriteHorseArmor = "minecraft:netherite_horse_armor",
     /** 下界合金锭。 */
     NetheriteIngot = "minecraft:netherite_ingot",
     /** 下界合金护腿。 */
