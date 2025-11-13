@@ -1,5 +1,5 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { LogChannel } from '..';
+/* IMPORT */ import { LocalizationEntry, LogChannel } from '..';
 
 /**
  * A properties class for the global instance of the logger
@@ -30,7 +30,7 @@ export interface LogProperties {
      * selected.
      *
      */
-    subMessage?: string;
+    subMessage?: LocalizationEntry | string;
     /**
      * @remarks
      * Add additional tags to the log message which can be used by

@@ -110,6 +110,7 @@ export async function update(keepCachedPackageJson?: boolean) {
 
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
+    await runHooks('beforeUpdate', buildResult);
     sourceFiles.forEach((sourceFile) => {
         const pieces = split(sourceFile);
         pieces.forEach((piece) => {

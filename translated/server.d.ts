@@ -2230,7 +2230,7 @@ export enum ItemComponentTypes {
     Food = 'minecraft:food',
     Inventory = 'minecraft:inventory',
     /**
-     * @beta
+     * @rc
      */
     Potion = 'minecraft:potion',
 }
@@ -4823,6 +4823,24 @@ export class BlockComponentPlayerPlaceBeforeEvent extends BlockEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponentRandomTickEvent extends BlockEvent {
     private constructor();
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific block redstone
+ * update event.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The redstone signal strength passing through this block. It
+     * is guaranteed to be >= the `min_power` of the block's
+     * 'minecraft:redstone_consumer' component.
+     *
+     */
+    readonly powerLevel: number;
 }
 
 export class BlockComponentRegistry {
@@ -13249,7 +13267,7 @@ export class ItemInventoryComponent extends ItemComponent {
 }
 
 /**
- * @beta
+ * @rc
  * When present on an item, this item is a potion item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -16867,7 +16885,7 @@ export class PlayerUseNameTagAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Represents how the potion effect is delivered.
  */
 export class PotionDeliveryType {
@@ -16876,7 +16894,7 @@ export class PotionDeliveryType {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a type of potion effect - like healing or
  * leaping.
  */
@@ -16896,7 +16914,7 @@ export class PotionEffectType {
 }
 
 /**
- * @beta
+ * @rc
  * Used for accessing all potion effect types, delivery types,
  * and creating potions.
  */
@@ -20447,6 +20465,16 @@ export interface BlockCustomComponent {
      */
     onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
     /**
+     * @beta
+     * @remarks
+     * This function will be called when an 'onRedstoneUpdate'
+     * engine event occurs if the block has a
+     * `minecraft:redstone_consumer` component and the redstone
+     * signal strength is >= to the components `min_power` field.
+     *
+     */
+    onRedstoneUpdate?: (arg0: BlockComponentRedstoneUpdateEvent, arg1: CustomComponentParameters) => void;
+    /**
      * @remarks
      * This function will be called when an entity steps off the
      * block that this custom component is bound to.
@@ -22734,7 +22762,7 @@ export class InvalidIteratorError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidPotionDeliveryTypeError extends Error {
@@ -22742,7 +22770,7 @@ export class InvalidPotionDeliveryTypeError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidPotionEffectTypeError extends Error {

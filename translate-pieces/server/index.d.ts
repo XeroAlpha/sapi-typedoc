@@ -87,6 +87,7 @@ export { BlockComponentPlayerBreakEvent } from './classes/BlockComponentPlayerBr
 export { BlockComponentPlayerInteractEvent } from './classes/BlockComponentPlayerInteractEvent';
 export { BlockComponentPlayerPlaceBeforeEvent } from './classes/BlockComponentPlayerPlaceBeforeEvent';
 export { BlockComponentRandomTickEvent } from './classes/BlockComponentRandomTickEvent';
+export { BlockComponentRedstoneUpdateEvent } from './classes/BlockComponentRedstoneUpdateEvent';
 export { BlockComponentRegistry } from './classes/BlockComponentRegistry';
 export { BlockComponentStepOffEvent } from './classes/BlockComponentStepOffEvent';
 export { BlockComponentStepOnEvent } from './classes/BlockComponentStepOnEvent';

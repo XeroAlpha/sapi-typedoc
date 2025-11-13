@@ -1,4 +1,4 @@
-/* IMPORT */ import { LogProperties } from '..';
+/* IMPORT */ import { LocalizationEntry, LogProperties } from '..';
 
 /**
  * The logger class is a utility class which allows editor
@@ -27,7 +27,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    debug(message: string, properties?: LogProperties): void;
+    debug(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The error channel is generally used when the editor
@@ -42,7 +42,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    error(message: string, properties?: LogProperties): void;
+    error(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The info channel is intended to communicate general,
@@ -55,7 +55,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    info(message: string, properties?: LogProperties): void;
+    info(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The warning channel is intended to inform the user of
@@ -69,5 +69,5 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    warning(message: string, properties?: LogProperties): void;
+    warning(message: LocalizationEntry | string, properties?: LogProperties): void;
 }

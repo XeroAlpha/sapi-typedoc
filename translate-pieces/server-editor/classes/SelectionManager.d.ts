@@ -1,4 +1,4 @@
-/* IMPORT */ import { SelectionContainerEntity, SelectionContainerVolume } from '..';
+/* IMPORT */ import { SelectionContainerEntity, SelectionContainerVolume, SelectionManifestData } from '..';
 
 /**
  * The SelectionManager (accessible from the {@link
@@ -12,4 +12,28 @@ export class SelectionManager {
     private constructor();
     readonly entity: SelectionContainerEntity;
     readonly volume: SelectionContainerVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    deselectBlocks(blockIdentifier: string): Promise<number>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    generateManifest(): Promise<SelectionManifestData>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getCurrentManifest(): SelectionManifestData | undefined;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    replaceBlocks(fromBlockIdentifier: string, toBlockIdentifier: string): Promise<number>;
 }

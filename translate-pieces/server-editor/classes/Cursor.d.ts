@@ -48,6 +48,10 @@ export class Cursor {
      */
     readonly isVisible: boolean;
     /**
+     * @throws This property can throw when used.
+     */
+    readonly maxViewBlockDistance: number;
+    /**
      * @remarks
      * Get the world position of the 3D block cursor
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
+/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentRedstoneUpdateEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
 
 /**
  * Contains a set of events that will be raised for a block.
@@ -55,6 +55,16 @@ export interface BlockCustomComponent {
      *
      */
     onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @beta
+     * @remarks
+     * This function will be called when an 'onRedstoneUpdate'
+     * engine event occurs if the block has a
+     * `minecraft:redstone_consumer` component and the redstone
+     * signal strength is >= to the components `min_power` field.
+     *
+     */
+    onRedstoneUpdate?: (arg0: BlockComponentRedstoneUpdateEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity steps off the

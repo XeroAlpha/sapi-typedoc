@@ -35,6 +35,7 @@ declare interface Hook {
     beforeConvert?: HookFunction<BeforeConvertHookContext>;
     afterConvert?: HookFunction<AfterConvertHookContext>;
     afterEmit?: HookFunction<AfterConvertHookContext>;
+    beforeUpdate?: HookFunction<AfterConvertHookContext>;
     afterUpdate?: HookFunction<AfterConvertHookContext>;
 }
 
