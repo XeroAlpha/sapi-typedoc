@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPlayerLoggerProperties } from '..';
+/* IMPORT */ import { IPlayerLoggerProperties, LocalizedString } from '..';
 
 /**
  * Log helper interface for Player.
@@ -13,7 +13,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    debug(message: string, props?: IPlayerLoggerProperties): void;
+    debug(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Error log level
@@ -23,7 +23,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    error(message: string, props?: IPlayerLoggerProperties): void;
+    error(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Info log level
@@ -33,7 +33,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    info(message: string, props?: IPlayerLoggerProperties): void;
+    info(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Warning log level
@@ -43,5 +43,5 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    warning(message: string, props?: IPlayerLoggerProperties): void;
+    warning(message: LocalizedString, props?: IPlayerLoggerProperties): void;
 }

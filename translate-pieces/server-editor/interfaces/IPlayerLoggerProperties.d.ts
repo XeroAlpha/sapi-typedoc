@@ -1,4 +1,4 @@
-/* IMPORT */ import { LogChannel } from '..';
+/* IMPORT */ import { LocalizedString, LogChannel } from '..';
 
 /**
  * Player Logger Properties.
@@ -15,5 +15,5 @@ export interface IPlayerLoggerProperties {
      * A player log sub message for the toast channel
      *
      */
-    subMessage?: string;
+    subMessage?: LocalizedString;
 }

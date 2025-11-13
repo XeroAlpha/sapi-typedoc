@@ -93,6 +93,11 @@ export enum BrushDirectionalPlacementMode {
     Random3Axes = 14,
 }
 
+export enum BrushElevationMode {
+    Raise = 0,
+    Lower = 1,
+}
+
 /**
  * The possible variants of a Button property item.
  */
@@ -1081,6 +1086,7 @@ export enum PaintMode {
     Smooth = 2,
     Roughen = 3,
     Flatten = 4,
+    Elevation = 5,
 }
 
 export enum Plane {
@@ -2188,6 +2194,30 @@ export class BrushShapeManager {
      * @worldMutation
      *
      */
+    setElevationBrushRadius(elevationBrushRadius: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationFalloff(elevationFalloff: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationMode(elevationMode: BrushElevationMode): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationSampleLayers(elevationSampleLayers: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
     setFlattenMode(flattenMode: FlattenMode): void;
     /**
      * @remarks
@@ -2503,6 +2533,10 @@ export class Cursor {
      * @throws This property can throw when used.
      */
     readonly isVisible: boolean;
+    /**
+     * @throws This property can throw when used.
+     */
+    readonly maxViewBlockDistance: number;
     /**
      * @remarks
      * Get the world position of the 3D block cursor
@@ -3161,7 +3195,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    debug(message: string, properties?: LogProperties): void;
+    debug(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The error channel is generally used when the editor
@@ -3176,7 +3210,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    error(message: string, properties?: LogProperties): void;
+    error(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The info channel is intended to communicate general,
@@ -3189,7 +3223,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    info(message: string, properties?: LogProperties): void;
+    info(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
      * @remarks
      * The warning channel is intended to inform the user of
@@ -3203,7 +3237,7 @@ export class Logger {
      * The message string to send to the log window
      * @throws This function can throw errors.
      */
-    warning(message: string, properties?: LogProperties): void;
+    warning(message: LocalizationEntry | string, properties?: LogProperties): void;
 }
 
 /**
@@ -3589,6 +3623,30 @@ export class SelectionManager {
     private constructor();
     readonly entity: SelectionContainerEntity;
     readonly volume: SelectionContainerVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    deselectBlocks(blockIdentifier: string): Promise<number>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    generateManifest(): Promise<SelectionManifestData>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    getCurrentManifest(): SelectionManifestData | undefined;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    replaceBlocks(fromBlockIdentifier: string, toBlockIdentifier: string): Promise<number>;
 }
 
 /**
@@ -7621,7 +7679,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    debug(message: string, props?: IPlayerLoggerProperties): void;
+    debug(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Error log level
@@ -7631,7 +7689,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    error(message: string, props?: IPlayerLoggerProperties): void;
+    error(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Info log level
@@ -7641,7 +7699,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    info(message: string, props?: IPlayerLoggerProperties): void;
+    info(message: LocalizedString, props?: IPlayerLoggerProperties): void;
     /**
      * @remarks
      * Dispatch a player log message with Warning log level
@@ -7651,7 +7709,7 @@ export interface IPlayerLogger {
      * @param props
      * Optional player log properties
      */
-    warning(message: string, props?: IPlayerLoggerProperties): void;
+    warning(message: LocalizedString, props?: IPlayerLoggerProperties): void;
 }
 
 /**
@@ -7669,7 +7727,7 @@ export interface IPlayerLoggerProperties {
      * A player log sub message for the toast channel
      *
      */
-    subMessage?: string;
+    subMessage?: LocalizedString;
 }
 
 /**
@@ -8809,6 +8867,11 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
     tooltip?: BasicTooltipContent;
 }
 
+export interface LocalizationEntry {
+    id: string;
+    props?: string[];
+}
+
 /**
  * A properties class for the global instance of the logger
  * object.
@@ -8838,7 +8901,7 @@ export interface LogProperties {
      * selected.
      *
      */
-    subMessage?: string;
+    subMessage?: LocalizationEntry | string;
     /**
      * @remarks
      * Add additional tags to the log message which can be used by
@@ -8940,6 +9003,20 @@ export interface QuickExtrudeProperties {
     selectionDirection?: number;
     size?: number;
     startingLocation?: Vector3;
+}
+
+export interface SelectionManifestData {
+    entries: SelectionManifestEntry[];
+    generationId: number;
+    inProgress: boolean;
+    processedBlocks: number;
+    progress: number;
+    totalBlocks: number;
+}
+
+export interface SelectionManifestEntry {
+    blockIdentifier: string;
+    count: number;
 }
 
 export interface WeightedBlock {

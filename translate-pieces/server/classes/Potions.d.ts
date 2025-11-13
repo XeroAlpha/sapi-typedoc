@@ -3,7 +3,7 @@
 /* IMPORT */ import { MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '../../vanilla-data';
 
 /**
- * @beta
+ * @rc
  * Used for accessing all potion effect types, delivery types,
  * and creating potions.
  */

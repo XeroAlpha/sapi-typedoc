@@ -1,5 +1,5 @@
 /* IMPORT */ import { ItemType, Vector3 } from '../../server';
-/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, BrushElevationMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume } from '..';
 /* IMPORT */ import { BlockStateSuperset } from '../../vanilla-data';
 
 export class BrushShapeManager {
@@ -119,6 +119,30 @@ export class BrushShapeManager {
      *
      */
     setDirectionalPlacementMode(directionalPlacementMode: BrushDirectionalPlacementMode): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationBrushRadius(elevationBrushRadius: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationFalloff(elevationFalloff: number): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationMode(elevationMode: BrushElevationMode): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setElevationSampleLayers(elevationSampleLayers: number): void;
     /**
      * @remarks
      * @worldMutation

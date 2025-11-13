@@ -1,7 +1,7 @@
 /* IMPORT */ import { EngineError } from '../../common';
 
 /**
- * @beta
+ * @rc
  * Represents a type of potion effect - like healing or
  * leaping.
  */
