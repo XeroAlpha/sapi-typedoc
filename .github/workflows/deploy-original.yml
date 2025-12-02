@@ -17,6 +17,8 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v5
+      with:
+        fetch-depth: 0    # Fetch full Git history to allow the README generator to accurately determine translation status
 
     - name: Install and build
       run: |
