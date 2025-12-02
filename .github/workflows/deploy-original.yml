@@ -23,14 +23,13 @@ jobs:
         npm install
         npm run build
 
-    - name: Deploy
-      if: github.repository == 'XeroAlpha/sapi-typedoc'
+    - name: Upload artifact
+      id: pages_upload
+      uses: actions/upload-pages-artifact@v4
+      with:
+        path: ${{ github.workspace }}/dist
+
+    - name: Notify
+      if: ${{ github.repository == 'XeroAlpha/sapi-typedoc' }}
       run: |
-        pushd ${{ github.workspace }}/dist
-        tar -cvzf ${{ github.workspace }}/sapi-doc.tar.gz *
-        popd
-        echo "${{ secrets.SSH_KEY }}" > ${{ github.workspace }}/key.txt
-        chmod 400 ${{ github.workspace }}/key.txt
-        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt ${{ github.workspace }}/sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":/tmp/sapi-doc.tar.gz
-        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "rm -rf ${{ secrets.TARGET_PATH_ORIGINAL }}/* && tar -xvzf /tmp/sapi-doc.tar.gz -C ${{ secrets.TARGET_PATH_ORIGINAL }} && rm -f /tmp/sapi-doc.tar.gz"
-        rm ${{ github.workspace }}/key.txt
+        curl -sS -H "Title: ${{ secrets.NTFY_TITLE_ORIGINAL }}" -d "${{ steps.pages_upload.outputs.artifact_id }}" ${{ secrets.NTFY_URL }} >/dev/null 2>&1
