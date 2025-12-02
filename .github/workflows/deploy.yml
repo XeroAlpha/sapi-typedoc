@@ -34,27 +34,16 @@ jobs:
       run: |
         npm install
         npm run build
-
-    - name: Deploy to self-hosted site
-      if: github.repository == 'XeroAlpha/sapi-typedoc'
-      run: |
-        pushd ${{ github.workspace }}/dist
-        tar -cvzf ${{ github.workspace }}/sapi-doc.tar.gz *
-        popd
-        echo "${{ secrets.SSH_KEY }}" > ${{ github.workspace }}/key.txt
-        chmod 400 ${{ github.workspace }}/key.txt
-        scp -q -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt ${{ github.workspace }}/sapi-doc.tar.gz "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}":/tmp/sapi-doc.tar.gz
-        ssh -q -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no -i ${{ github.workspace }}/key.txt "${{ secrets.USERNAME }}"@"${{ secrets.HOST }}" "rm -rf ${{ secrets.TARGET_PATH }}/* && tar -xvzf /tmp/sapi-doc.tar.gz -C ${{ secrets.TARGET_PATH }} && rm -f /tmp/sapi-doc.tar.gz"
-        rm ${{ github.workspace }}/key.txt
     
     - name: Setup GitHub Pages
       id: pages_setup
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v5
       continue-on-error: true
 
     - name: Upload artifact to GitHub pages
+      id: pages_upload
       if: ${{ steps.pages_setup.outcome == 'success' }}
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: ${{ github.workspace }}/dist
 
@@ -62,3 +51,8 @@ jobs:
       if: ${{ steps.pages_setup.outcome == 'success' }}
       id: deployment
       uses: actions/deploy-pages@v4
+
+    - name: Notify
+      if: ${{ steps.pages_setup.outcome == 'success' && github.repository == 'XeroAlpha/sapi-typedoc' }}
+      run: |
+        curl -sS -H "Title: ${{ secrets.NTFY_TITLE }}" -d "${{ steps.pages_upload.outputs.artifact_id }}" ${{ secrets.NTFY_URL }} >/dev/null 2>&1
