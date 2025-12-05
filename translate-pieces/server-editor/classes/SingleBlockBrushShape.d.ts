@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShape, BrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
 
 export declare class SingleBlockBrushShape extends BrushShape {
     /**
@@ -8,6 +8,8 @@ export declare class SingleBlockBrushShape extends BrushShape {
      *
      */
     constructor();
+    applySetting(_settings: BrushShapeSettings): void;
     createSettingsPane(): undefined;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): BrushShapeSettings;
 }

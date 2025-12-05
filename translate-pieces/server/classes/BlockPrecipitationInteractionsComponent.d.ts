@@ -2,6 +2,8 @@
 
 /**
  * @rc
+ * Represents a how a block interacts with precipitation (such
+ * as rain or snow).
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPrecipitationInteractionsComponent extends BlockComponent {

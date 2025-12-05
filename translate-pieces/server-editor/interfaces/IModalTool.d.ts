@@ -9,6 +9,12 @@ export interface IModalTool {
     readonly id: string;
     /**
      * @remarks
+     * Active state of the modal tool
+     *
+     */
+    readonly isActive: boolean;
+    /**
+     * @remarks
      * Provides lifecycle activation events for a modal tool
      *
      */

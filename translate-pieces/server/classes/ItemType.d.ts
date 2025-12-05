@@ -10,4 +10,12 @@ export class ItemType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this ItemType's name used in
+     * .lang files.
+     *
+     */
+    readonly localizationKey: string;
 }

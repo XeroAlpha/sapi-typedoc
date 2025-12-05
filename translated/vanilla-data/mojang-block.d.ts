@@ -1336,7 +1336,7 @@ export declare enum MinecraftBlockTypes {
     LargeFern = "minecraft:large_fern",
     /** 熔岩。 */
     Lava = "minecraft:lava",
-    /** 枯叶。 */
+    /** 枯叶堆。 */
     LeafLitter = "minecraft:leaf_litter",
     /** 讲台。 */
     Lectern = "minecraft:lectern",

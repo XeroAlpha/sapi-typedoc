@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityEventOptions, EntityHurtAfterEvent } from '..';
+/* IMPORT */ import { EntityHurtAfterEvent, EntityHurtAfterEventOptions } from '..';
 
 /**
  * Manages callbacks that are connected to when an entity is
@@ -17,7 +17,7 @@ export class EntityHurtAfterEventSignal {
      */
     subscribe(
         callback: (arg0: EntityHurtAfterEvent) => void,
-        options?: EntityEventOptions,
+        options?: EntityHurtAfterEventOptions,
     ): (arg0: EntityHurtAfterEvent) => void;
     /**
      * @remarks

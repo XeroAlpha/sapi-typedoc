@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShape, EllipsoidBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class EllipsoidBrushShape extends BrushShape {
     /**
@@ -17,6 +17,8 @@ export declare class EllipsoidBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): EllipsoidBrushShapeSettings;
 }

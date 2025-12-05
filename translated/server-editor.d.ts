@@ -1005,6 +1005,25 @@ export enum LogChannel {
     All = 3,
 }
 
+export enum MinimapMarkerType {
+    /**
+     * @remarks
+     * Multiplayer markers shown on the minimap.
+     *
+     */
+    Multiplayer = 0,
+}
+
+export enum MinimapViewType {
+    /**
+     * @remarks
+     * One-to-one mapping where each block equals one pixel on the
+     * minimap.
+     *
+     */
+    BlockView = 0,
+}
+
 /**
  * Common response types for modal dialog
  */
@@ -1152,6 +1171,7 @@ export declare enum PropertyItemType {
     Link = 'editorUI:Link',
     ListPane = 'editorUI:ListPane',
     Menu = 'editorUI:Menu',
+    Minimap = 'editorUI:Minimap',
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',
@@ -1347,6 +1367,17 @@ export type AudioSettingsPropertyTypeMap = {
  * Possible tooltip types
  */
 export declare type BasicTooltipContent = LocalizedString | TooltipContent;
+
+/**
+ * Setting types for all brush shapes
+ */
+export type BrushShapeSettings =
+    | ConeBrushShapeSettings
+    | CuboidBrushShapeSettings
+    | CylinderBrushShapeSettings
+    | EllipsoidBrushShapeSettings
+    | PyramidBrushShapeSettings
+    | undefined;
 
 /**
  * All possible button item action types
@@ -1692,6 +1723,18 @@ export type Ray = {
  * before it can be used in other systems.
  */
 export type RegisteredAction<T extends Action> = T & ActionID;
+
+/**
+ * Modal tool state event payload
+ */
+export type SelectedModalToolChangedEventPayload = {
+    tool:
+        | {
+              id: string;
+              isActive: boolean;
+          }
+        | undefined;
+};
 
 /**
  * Callback type when an extension instance is shutdown for a
@@ -2065,11 +2108,13 @@ export declare abstract class BrushShape {
      *
      */
     constructor(_id: string, _displayName: string, _icon: string);
+    abstract applySetting(brushSettings: BrushShapeSettings): void;
     abstract createSettingsPane(
         parentPane: IPropertyPane,
         onSettingsChange?: () => void,
     ): ISubPanePropertyItem | undefined;
     abstract createShape(): RelativeVolumeListBlockVolume;
+    abstract getSettings(): BrushShapeSettings;
 }
 
 export class BrushShapeManager {
@@ -2408,8 +2453,10 @@ export declare class ConeBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: ConeBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): ConeBrushShapeSettings;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -2430,8 +2477,10 @@ export declare class CuboidBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: CuboidBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): CuboidBrushShapeSettings;
 }
 
 export class CurrentThemeChangeAfterEvent {
@@ -2673,8 +2722,10 @@ export declare class CylinderBrushShape extends BrushShape {
         zRotation?: number;
         hideRotation?: boolean;
     });
+    applySetting(brushSettings: CylinderBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): CylinderBrushShapeSettings;
 }
 
 export class EditorConstants {
@@ -2862,8 +2913,10 @@ export declare class EllipsoidBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): EllipsoidBrushShapeSettings;
 }
 
 /**
@@ -3013,6 +3066,13 @@ export class ExtensionContext {
      *
      */
     readonly extensionInfo: Extension;
+    /**
+     * @remarks
+     * Manager for minimap functionality, providing interface for
+     * creating markers and controlling minimap displays.
+     *
+     */
+    readonly minimapManager: MinimapManager;
     /**
      * @remarks
      * The current player which is the subject of the extension
@@ -3274,6 +3334,130 @@ export class MinecraftEditor {
 }
 
 /**
+ * A MinimapItem represents an individual minimap instance that
+ * manages map data, controls display state, and provides
+ * configuration for markers and visual properties.
+ */
+export class MinimapItem {
+    private constructor();
+    readonly id: string;
+    /**
+     * @remarks
+     * Indicate whether this minimap instance is currently active
+     * and being displayed to the player.
+     *
+     */
+    readonly isActive: boolean;
+    /**
+     * @remarks
+     * Add a visual marker of the specified type to the minimap
+     * display.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addMarker(markerType: MinimapMarkerType): void;
+    /**
+     * @remarks
+     * Retrieve the color assigned to a specific player on the
+     * minimap.
+     *
+     * @throws This function can throw errors.
+     */
+    getPlayerColor(playerId: string): RGBA;
+    /**
+     * @remarks
+     * Remove a previously added marker of the specified type from
+     * the minimap.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeMarker(markerType: MinimapMarkerType): void;
+    /**
+     * @remarks
+     * Control whether the minimap is currently active and visible
+     * to the player.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setActive(active: boolean): void;
+    /**
+     * @remarks
+     * Adjust the width and height dimensions of the minimap
+     * display.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setSize(mapWidth: number, mapHeight: number): void;
+    /**
+     * @remarks
+     * Change the visual perspective or style of the minimap view.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setViewType(viewType: MinimapViewType): void;
+}
+
+/**
+ * Manage minimap instances within the editor, providing
+ * functionality to create, destroy, and retrieve minimap
+ * displays.
+ *
+ */
+export class MinimapManager {
+    private constructor();
+    /**
+     * @remarks
+     * Create a new minimap instance with the specified view type
+     * and dimensions.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number): MinimapItem;
+    /**
+     * @remarks
+     * Remove an existing minimap instance from the manager using
+     * its unique identifier.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    destroyMinimap(minimapId: string): void;
+    /**
+     * @remarks
+     * Retrieve a list of all active minimap identifiers currently
+     * managed by the system.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getAllMinimapIds(): string[];
+    /**
+     * @remarks
+     * Retrieve a specific minimap instance using its unique
+     * identifier.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getMinimap(minimapId: string): MinimapItem;
+}
+
+/**
  * Contains information related to changes in player editor
  * mode.
  */
@@ -3422,8 +3606,10 @@ export declare class PyramidBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: PyramidBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): PyramidBrushShapeSettings;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -3730,8 +3916,10 @@ export declare class SingleBlockBrushShape extends BrushShape {
      *
      */
     constructor();
+    applySetting(_settings: BrushShapeSettings): void;
     createSettingsPane(): undefined;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): BrushShapeSettings;
 }
 
 export class SpeedSettings {
@@ -5075,6 +5263,20 @@ export interface ClipboardWriteOptions {
     rotation?: StructureRotation;
 }
 
+/**
+ * Settings for Cone brush shapes
+ */
+export interface ConeBrushShapeSettings {
+    depth: number;
+    height: number;
+    radius: number;
+    uniform: boolean;
+    width: number;
+    xRotation: number;
+    yRotation: number;
+    zRotation: number;
+}
+
 export interface ContiguousSelectionProperties {
     checkForAdjacentFace?: boolean;
     contiguousSelectionBlockList?: string[];
@@ -5084,6 +5286,19 @@ export interface ContiguousSelectionProperties {
     selectionDirection?: number;
     size?: number;
     startingLocation?: Vector3;
+}
+
+/**
+ * Settings for Cuboid brush shapes
+ */
+export interface CuboidBrushShapeSettings {
+    depth: number;
+    height: number;
+    uniform: boolean;
+    width: number;
+    xRotation: number;
+    yRotation: number;
+    zRotation: number;
 }
 
 export interface CursorPosition {
@@ -5167,6 +5382,20 @@ export interface CursorRay {
     start: Vector3;
 }
 
+/**
+ * Settings for Cylinder brush shapes
+ */
+export interface CylinderBrushShapeSettings {
+    depth: number;
+    height: number;
+    radius: number;
+    uniform: boolean;
+    width: number;
+    xRotation: number;
+    yRotation: number;
+    zRotation: number;
+}
+
 export interface EditorStructureSearchOptions {
     displayName?: string;
     id?: string;
@@ -5174,6 +5403,20 @@ export interface EditorStructureSearchOptions {
     structureName?: string;
     structureNamespace?: string;
     tags?: string[];
+}
+
+/**
+ * Settings for Ellipsoid brush shapes
+ */
+export interface EllipsoidBrushShapeSettings {
+    depth: number;
+    height: number;
+    radius: number;
+    uniform: boolean;
+    width: number;
+    xRotation: number;
+    yRotation: number;
+    zRotation: number;
 }
 
 /**
@@ -7052,6 +7295,108 @@ export interface IMenuPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A property item which supports Minimap properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IMinimapPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Id of the map.
+     *
+     */
+    readonly mapId: string;
+    /**
+     * @remarks
+     * Height of the map image.
+     *
+     */
+    readonly mapImageHeight: number;
+    /**
+     * @remarks
+     * Width of the map image.
+     *
+     */
+    readonly mapImageWidth: number;
+    /**
+     * @remarks
+     * Adds a marker to the minimap.
+     *
+     * @param markerType
+     * The type of marker to add.
+     */
+    assignMarker(markerType: MinimapMarkerType): void;
+    /**
+     * @remarks
+     * Refreshes the map.
+     *
+     */
+    refreshMap(): void;
+    /**
+     * @remarks
+     * Removes a marker from the minimap.
+     *
+     * @param markerType
+     * The type of marker to remove.
+     */
+    removeMarker(markerType: MinimapMarkerType): void;
+    /**
+     * @remarks
+     * Updates the size of the map image.
+     *
+     * @param width
+     * New width of the image.
+     * @param height
+     * New height of the image.
+     */
+    resizeMapImage(width: number, height: number): void;
+}
+
+/**
+ * Optional properties for Minimap property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IMinimapPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Alignment of the map in the container. If not defined,
+     * LayoutAlignment.Center is used.
+     *
+     */
+    alignment?: LayoutAlignment;
+    /**
+     * @remarks
+     * Whether to show me marker on the minimap. If undefined,
+     * defaults to true.
+     *
+     */
+    isMeMarkerShown?: boolean;
+    /**
+     * @remarks
+     * Whether to show multiplayer markers on the minimap. If
+     * undefined, defaults to false.
+     *
+     */
+    isMultiplayerMarkerShown?: boolean;
+    /**
+     * @remarks
+     * Size of the map image. If undefined, defaults to 35.
+     *
+     */
+    mapImageSize?:
+        | number
+        | {
+              width: number;
+              height: number;
+          };
+    /**
+     * @remarks
+     * Called when map is clicked.
+     *
+     */
+    onClick?: (x: number, y: number) => void;
+}
+
+/**
  * A sub pane for modal control elements.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7222,6 +7567,12 @@ export interface IModalTool {
     readonly id: string;
     /**
      * @remarks
+     * Active state of the modal tool
+     *
+     */
+    readonly isActive: boolean;
+    /**
+     * @remarks
      * Provides lifecycle activation events for a modal tool
      *
      */
@@ -7295,6 +7646,12 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
+    /**
+     * @remarks
+     * Provides events when the selected modal tool changes.
+     *
+     */
+    onSelectedToolChanged: EventSink<SelectedModalToolChangedEventPayload>;
     /**
      * @remarks
      * Create a new tool in the modal tool container represented
@@ -7983,6 +8340,12 @@ export interface IPropertyPane extends IPane {
         }[],
         options?: IMenuPropertyItemOptions,
     ): IMenuPropertyItem;
+    /**
+     * @remarks
+     * Adds Map item to the pane.
+     *
+     */
+    addMinimap(mapId: string, options?: IMinimapPropertyItemOptions): IMinimapPropertyItem;
     /**
      * @remarks
      * Adds a number item to the pane.
@@ -8992,6 +9355,19 @@ export interface ProjectExportOptions {
     exportType: ProjectExportType;
     gameMode?: GameMode;
     initialTimOfDay?: number;
+}
+
+/**
+ * Settings for Pyramid brush shapes
+ */
+export interface PyramidBrushShapeSettings {
+    depth: number;
+    height: number;
+    uniform: boolean;
+    width: number;
+    xRotation: number;
+    yRotation: number;
+    zRotation: number;
 }
 
 export interface QuickExtrudeProperties {

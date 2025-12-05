@@ -252,6 +252,7 @@ export interface RuntimeStats {
     functionLineCount: number;
     functionSize: number;
     memoryAllocatedCount: number;
+    memoryAllocatedLimit: number;
     memoryAllocatedSize: number;
     memoryUsedCount: number;
     memoryUsedSize: number;

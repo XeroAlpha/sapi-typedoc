@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent } from '..';
 
 /**
- * @beta
  * Contains information regarding a specific block redstone
  * update event.
  */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, PyramidBrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
 
 export declare class PyramidBrushShape extends BrushShape {
     /**
@@ -15,6 +15,8 @@ export declare class PyramidBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: PyramidBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): PyramidBrushShapeSettings;
 }

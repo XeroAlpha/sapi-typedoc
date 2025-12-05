@@ -1380,7 +1380,7 @@ export declare enum MinecraftItemTypes {
     LavaBucket = "minecraft:lava_bucket",
     /** 拴绳。 */
     Lead = "minecraft:lead",
-    /** 枯叶。 */
+    /** 枯叶堆。 */
     LeafLitter = "minecraft:leaf_litter",
     /** 皮革。 */
     Leather = "minecraft:leather",

@@ -12,4 +12,12 @@ export class BlockType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this BlockType's name used in
+     * .lang files.
+     *
+     */
+    readonly localizationKey: string;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShape, ConeBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class ConeBrushShape extends BrushShape {
     /**
@@ -16,6 +16,8 @@ export declare class ConeBrushShape extends BrushShape {
         yRotation?: number;
         zRotation?: number;
     });
+    applySetting(brushSettings: ConeBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): ConeBrushShapeSettings;
 }

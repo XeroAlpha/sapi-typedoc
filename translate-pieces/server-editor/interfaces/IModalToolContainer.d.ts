@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalTool, ModalToolCreationParameters } from '..';
+/* IMPORT */ import { EventSink, IModalTool, ModalToolCreationParameters, SelectedModalToolChangedEventPayload } from '..';
 
 export interface IModalToolContainer {
     /**
@@ -7,6 +7,12 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
+    /**
+     * @remarks
+     * Provides events when the selected modal tool changes.
+     *
+     */
+    onSelectedToolChanged: EventSink<SelectedModalToolChangedEventPayload>;
     /**
      * @remarks
      * Create a new tool in the modal tool container represented

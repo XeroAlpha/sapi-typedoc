@@ -1,5 +1,5 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager } from '..';
+/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, MinimapManager, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager } from '..';
 
 /**
  * The extension context is a native (C++) object created for
@@ -49,6 +49,13 @@ export class ExtensionContext {
      *
      */
     readonly extensionInfo: Extension;
+    /**
+     * @remarks
+     * Manager for minimap functionality, providing interface for
+     * creating markers and controlling minimap displays.
+     *
+     */
+    readonly minimapManager: MinimapManager;
     /**
      * @remarks
      * The current player which is the subject of the extension
