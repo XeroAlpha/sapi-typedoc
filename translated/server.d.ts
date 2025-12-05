@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.5.0-beta"
+ *   "version": "2.6.0-beta"
  * }
  * ```
  *
@@ -57,6 +57,20 @@ export enum BlockComponentTypes {
      */
     Inventory = 'minecraft:inventory',
     /**
+     * @rc
+     * @remarks
+     * Represents the color of a block when displayed on a map.
+     *
+     */
+    MapColor = 'minecraft:map_color',
+    /**
+     * @rc
+     * @remarks
+     * Represents a block that can move (such as a piston).
+     *
+     */
+    Movable = 'minecraft:movable',
+    /**
      * @remarks
      * When present, this block has piston-like behavior. Contains
      * additional properties for discovering block piston state.
@@ -64,11 +78,26 @@ export enum BlockComponentTypes {
      */
     Piston = 'minecraft:piston',
     /**
+     * @rc
+     * @remarks
+     * Represents a how a block interacts with precipitation (such
+     * as rain or snow).
+     *
+     */
+    PrecipitationInteractions = 'minecraft:precipitation_interactions',
+    /**
      * @remarks
      * Represents a block that can play a record.
      *
      */
     RecordPlayer = 'minecraft:record_player',
+    /**
+     * @rc
+     * @remarks
+     * Represents a block that can output a redstone signal.
+     *
+     */
+    RedstoneProducer = 'minecraft:redstone_producer',
     /**
      * @remarks
      * Represents a block that can display text on it.
@@ -729,6 +758,23 @@ export enum EnchantmentSlot {
     Shovel = 'Shovel',
     Spear = 'Spear',
     Sword = 'Sword',
+}
+
+/**
+ * @beta
+ * The entity's attach location point. Contains points such as
+ * head, body, leg, etc to attach the camera to.
+ */
+export enum EntityAttachPoint {
+    Body = 'Body',
+    BreathingPoint = 'BreathingPoint',
+    DropAttachPoint = 'DropAttachPoint',
+    ExplosionPoint = 'ExplosionPoint',
+    Eyes = 'Eyes',
+    Feet = 'Feet',
+    Head = 'Head',
+    Mouth = 'Mouth',
+    WeaponAttachPoint = 'WeaponAttachPoint',
 }
 
 /**
@@ -1436,6 +1482,31 @@ export enum EntityDamageCause {
 }
 
 /**
+ * @beta
+ * Describes the source of healing of an Entity.
+ */
+export enum EntityHealCause {
+    /**
+     * @remarks
+     * Healing caused by items such as potions.
+     *
+     */
+    Heal = 'Heal',
+    /**
+     * @remarks
+     * Healing caused by regeneration effects.
+     *
+     */
+    Regeneration = 'Regeneration',
+    /**
+     * @remarks
+     * Healing caused when hunger is full.
+     *
+     */
+    SelfHeal = 'SelfHeal',
+}
+
+/**
  * An enumeration describing initialization cause of an entity.
  */
 export enum EntityInitializationCause {
@@ -1475,7 +1546,7 @@ export enum EntityInitializationCause {
 }
 
 /**
- * @beta
+ * @rc
  * Enumerator describing the source of an Entity swing. Sent as
  * part of {@link PlayerSwingStartAfterEvent}
  */
@@ -1969,7 +2040,7 @@ export enum GraphicsMode {
 }
 
 /**
- * @beta
+ * @rc
  * Specifies options related to the item currently being held
  * by an entity.
  */
@@ -3681,6 +3752,22 @@ export class BiomeType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Returns a list of the biome's tags.
+     *
+     */
+    getTags(): string[];
+    /**
+     * @beta
+     * @remarks
+     * Checks if the biome has all of the provided tags.
+     *
+     * @param tags
+     * The list of tags to check against the biome.
+     */
+    hasTags(tags: string[]): boolean;
 }
 
 /**
@@ -4494,6 +4581,35 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
+ * @beta
+ * Contains information regarding an event sent by an entity to
+ * this block in the world.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentEntityEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns permutation information about the block receiving
+     * the event.
+     *
+     */
+    readonly blockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The entity that sent the event.
+     *
+     */
+    readonly entitySource?: Entity;
+    /**
+     * @remarks
+     * Name of the event fired by the entity.
+     *
+     */
+    readonly name: string;
+}
+
+/**
  * Contains information regarding an entity falling onto a
  * specific block.
  */
@@ -4624,7 +4740,6 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 }
 
 /**
- * @beta
  * Contains information regarding a specific block redstone
  * update event.
  */
@@ -4942,6 +5057,9 @@ export class BlockMapColorComponent extends BlockComponent {
     static readonly componentId = 'minecraft:map_color';
 }
 
+/**
+ * Represents a block that can move (such as a piston).
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockMovableComponent extends BlockComponent {
     private constructor();
@@ -4973,6 +5091,14 @@ export class BlockMovableComponent extends BlockComponent {
  */
 export class BlockPermutation {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this BlockPermutation's name
+     * used in .lang files.
+     *
+     */
+    readonly localizationKey: string;
     /**
      * @remarks
      * The {@link BlockType} that the permutation has.
@@ -5165,6 +5291,8 @@ export class BlockPistonComponent extends BlockComponent {
 
 /**
  * @rc
+ * Represents a how a block interacts with precipitation (such
+ * as rain or snow).
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockPrecipitationInteractionsComponent extends BlockComponent {
@@ -5473,6 +5601,14 @@ export class BlockType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this BlockType's name used in
+     * .lang files.
+     *
+     */
+    readonly localizationKey: string;
 }
 
 /**
@@ -5710,6 +5846,19 @@ export class Camera {
      *
      */
     readonly isValid: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Attaches the camera to a non-player entity.
+     *
+     * @worldMutation
+     *
+     * @param attachCameraOptions
+     * Options for the entity the camera is attaching to. Contains
+     * the entity identifier and optional entity location.
+     * @throws This function can throw errors.
+     */
+    attachToEntity(attachCameraOptions?: CameraAttachOptions): void;
     /**
      * @remarks
      * Clears the active camera for the specified player. Causes
@@ -7110,6 +7259,46 @@ export class Dimension {
      *
      */
     readonly localizationKey: string;
+    /**
+     * @beta
+     * @remarks
+     * Checks if an area contains the specified biomes. If the area
+     * is partially inside world boundaries, only the area that is
+     * in bounds will be searched. This operation takes longer
+     * proportional to both the area of the volume and the number
+     * of biomes to check.
+     *
+     * @param volume
+     * Area to check biomes in.
+     * @param biomeFilter
+     * A list of biomes to include and exclude. A list of tags to
+     * include and exclude. Will return false if a biome is found
+     * in the area that is in the excluded list or contains any of
+     * the excluded tags. If superset is set to true then the area
+     * must contain at least one biome in the included list or that
+     * contains all of the included tags. If superset is set to
+     * false then the area must contain only biomes in the included
+     * list and that contain all of the included tags
+     * @returns
+     * Returns true if the biomes in the area match the filter
+     * settings passed in. Otherwise, returns false.
+     * @throws
+     * An error will be thrown if the area provided includes
+     * unloaded chunks.
+     * An error will be thrown if the area provided is completely
+     * outside the world boundaries.
+     * An error will be thrown if an unknown biome name is
+     * provided.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidArgumentError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     *
+     * {@link UnloadedChunksError}
+     */
+    containsBiomes(volume: BlockVolumeBase, biomeFilter: BiomeFilter): boolean;
     /**
      * @remarks
      * Searches the block volume for a block that satisfies the
@@ -9681,6 +9870,144 @@ export class EntityHealableComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ * Contains information related to an entity having been
+ * healed.
+ */
+export class EntityHealAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Entity that was healed.
+     *
+     */
+    readonly healedEntity: Entity;
+    /**
+     * @remarks
+     * Describes the amount of healing.
+     *
+     */
+    readonly healing: number;
+    /**
+     * @remarks
+     * Information on the source of healing.
+     *
+     */
+    readonly healSource: EntityHealSource;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity is
+ * healed.
+ */
+export class EntityHealAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity is
+     * healed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityHealAfterEvent) => void,
+        options?: EntityHealEventOptions,
+    ): (arg0: EntityHealAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity is
+     * healed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityHealAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to an entity that will be
+ * healed.
+ */
+export class EntityHealBeforeEvent {
+    private constructor();
+    cancel: boolean;
+    /**
+     * @remarks
+     * Entity that will be healed.
+     *
+     */
+    readonly healedEntity: Entity;
+    /**
+     * @remarks
+     * Describes the amount of healing.
+     *
+     */
+    healing: number;
+    /**
+     * @remarks
+     * Information on the source of healing.
+     *
+     */
+    readonly healSource: EntityHealSource;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity will
+ * be healed.
+ */
+export class EntityHealBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity will be
+     * healed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityHealBeforeEvent) => void,
+        options?: EntityHealEventOptions,
+    ): (arg0: EntityHealBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity will be
+     * healed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityHealBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Provides information about how healing has been applied to
+ * an entity.
+ */
+export class EntityHealSource {
+    private constructor();
+    /**
+     * @remarks
+     * Cause enumerator of the source of healing.
+     *
+     */
+    readonly cause: EntityHealCause;
+}
+
+/**
  * Contains information related to an entity when its health
  * changes. Warning: don't change the health of an entity in
  * this event, or it will cause an infinite loop!
@@ -9920,7 +10247,7 @@ export class EntityHurtAfterEventSignal {
      */
     subscribe(
         callback: (arg0: EntityHurtAfterEvent) => void,
-        options?: EntityEventOptions,
+        options?: EntityHurtAfterEventOptions,
     ): (arg0: EntityHurtAfterEvent) => void;
     /**
      * @remarks
@@ -9932,6 +10259,68 @@ export class EntityHurtAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to an entity that will be hurt.
+ */
+export class EntityHurtBeforeEvent {
+    private constructor();
+    cancel: boolean;
+    /**
+     * @remarks
+     * Describes the amount of damage that will be caused.
+     *
+     */
+    damage: number;
+    /**
+     * @remarks
+     * Source information on the entity that may have applied this
+     * damage.
+     *
+     */
+    readonly damageSource: EntityDamageSource;
+    /**
+     * @remarks
+     * Entity that will be hurt.
+     *
+     */
+    readonly hurtEntity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity will
+ * be hurt.
+ */
+export class EntityHurtBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity will be
+     * hurt.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityHurtBeforeEvent) => void,
+        options?: EntityHurtBeforeEventOptions,
+    ): (arg0: EntityHurtBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity will be
+     * hurt.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityHurtBeforeEvent) => void): void;
 }
 
 /**
@@ -11422,6 +11811,14 @@ export class EntityType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this EntityType's name used in
+     * .lang files.
+     *
+     */
+    readonly localizationKey: string;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -13705,6 +14102,14 @@ export class ItemType {
      *
      */
     readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Key for the localization of this ItemType's name used in
+     * .lang files.
+     *
+     */
+    readonly localizationKey: string;
 }
 
 /**
@@ -16463,7 +16868,7 @@ export class PlayerSpawnAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a player starting to swing
  * their arm.
  */
@@ -16492,7 +16897,7 @@ export class PlayerSwingStartAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a player starts
  * to swing their arm (e.g. attacking, using an item,
  * interacting).
@@ -19377,6 +19782,13 @@ export class WorldAfterEvents {
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly entityHeal: EntityHealAfterEventSignal;
+    /**
      * @remarks
      * This event fires when entity health changes in any degree.
      *
@@ -19674,7 +20086,7 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -19786,6 +20198,20 @@ export class WorldBeforeEvents {
      *
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly entityHeal: EntityHealBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly entityHurt: EntityHurtBeforeEventSignal;
     /**
      * @remarks
      * Fires before an entity is removed from the world (for
@@ -19933,6 +20359,17 @@ export interface AnimationOptions {
 
 /**
  * @beta
+ */
+export interface BiomeFilter {
+    excludeBiomes?: string[];
+    excludeTags?: string[];
+    includeBiomes?: string[];
+    includeTags?: string[];
+    superset: boolean;
+}
+
+/**
+ * @beta
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -20005,6 +20442,14 @@ export interface BlockCustomComponent {
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
     /**
+     * @beta
+     * @remarks
+     * This function will be called when an entity fires an event
+     * to this block in the world.
+     *
+     */
+    onEntity?: (arg0: BlockComponentEntityEvent, arg1: CustomComponentParameters) => void;
+    /**
      * @remarks
      * This function will be called when an entity falls onto the
      * block that this custom component is bound to.
@@ -20034,7 +20479,6 @@ export interface BlockCustomComponent {
      */
     onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
      * @remarks
      * This function will be called when an 'onRedstoneUpdate'
      * engine event occurs if the block has a
@@ -20235,6 +20679,26 @@ export interface BlockRaycastOptions extends BlockFilter {
      *
      */
     maxDistance?: number;
+}
+
+/**
+ * @beta
+ * Used to attach the camera to a non player entity.
+ */
+export interface CameraAttachOptions {
+    /**
+     * @remarks
+     * Set a non player entity for the camera to target.
+     *
+     */
+    entity: Entity;
+    /**
+     * @remarks
+     * The location of the entity that you want to target (eg.
+     * head, feet, eyes).
+     *
+     */
+    locator: EntityAttachPoint;
 }
 
 /**
@@ -20864,6 +21328,28 @@ export interface EntityFilter {
 }
 
 /**
+ * @beta
+ * Contains optional parameters for registering an entity heal
+ * event.
+ */
+export interface EntityHealEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for healing
+     * causes that match.
+     *
+     */
+    allowedHealCauses?: EntityHealCause[];
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match.
+     *
+     */
+    entityFilter?: EntityFilter;
+}
+
+/**
  * Contains additional information about an entity that was
  * hit.
  */
@@ -20874,6 +21360,64 @@ export interface EntityHitInformation {
      *
      */
     entity?: Entity;
+}
+
+/**
+ * @beta
+ * Contains optional parameters for registering an entity hurt
+ * after event.
+ */
+export interface EntityHurtAfterEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for damage
+     * causes that match.
+     *
+     */
+    allowedDamageCauses?: EntityDamageCause[];
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match the entities within this collection.
+     *
+     */
+    entities?: Entity[];
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match.
+     *
+     */
+    entityFilter?: EntityFilter;
+    /**
+     * @remarks
+     * If this value is set, this event will only fire if the
+     * impacted entities' type matches this parameter.
+     *
+     */
+    entityTypes?: string[];
+}
+
+/**
+ * @beta
+ * Contains optional parameters for registering an entity hurt
+ * before event.
+ */
+export interface EntityHurtBeforeEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for damage
+     * causes that match.
+     *
+     */
+    allowedDamageCauses?: EntityDamageCause[];
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match.
+     *
+     */
+    entityFilter?: EntityFilter;
 }
 
 /**
@@ -21505,7 +22049,7 @@ export interface PlayerSoundOptions {
 }
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided
@@ -21542,6 +22086,13 @@ export interface ProgressKeyFrame {
      *
      */
     alpha: number;
+    /**
+     * @remarks
+     * The optional easing type that the frame will use for
+     * position.
+     *
+     */
+    easingFunc?: EasingType;
     /**
      * @remarks
      * Time value that the camera will be at the given alpha.
@@ -21708,6 +22259,13 @@ export interface RGBA extends RGB {
  * Key frame that holds the rotation of the camera animation.
  */
 export interface RotationKeyFrame {
+    /**
+     * @remarks
+     * The optional easing type that the frame will use for
+     * rotation.
+     *
+     */
+    easingFunc?: EasingType;
     /**
      * @remarks
      * Value of the rotation of the camera.

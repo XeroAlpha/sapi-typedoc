@@ -17,6 +17,7 @@ export declare enum PropertyItemType {
     Link = 'editorUI:Link',
     ListPane = 'editorUI:ListPane',
     Menu = 'editorUI:Menu',
+    Minimap = 'editorUI:Minimap',
     Number = 'editorUI:Number',
     NumberTimeline = 'editorUI:NumberTimeline',
     ProgressIndicator = 'editorUI:ProgressIndicator',

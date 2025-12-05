@@ -1,4 +1,4 @@
-/* IMPORT */ import { AnimationOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, CatmullRomSpline, EaseOptions, LinearSpline } from '..';
+/* IMPORT */ import { AnimationOptions, CameraAttachOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, CatmullRomSpline, EaseOptions, LinearSpline } from '..';
 
 /**
  * Contains methods relating to the active camera for the
@@ -14,6 +14,19 @@ export class Camera {
      *
      */
     readonly isValid: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Attaches the camera to a non-player entity.
+     *
+     * @worldMutation
+     *
+     * @param attachCameraOptions
+     * Options for the entity the camera is attaching to. Contains
+     * the entity identifier and optional entity location.
+     * @throws This function can throw errors.
+     */
+    attachToEntity(attachCameraOptions?: CameraAttachOptions): void;
     /**
      * @remarks
      * Clears the active camera for the specified player. Causes

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 /**
  * Base for creating new brush shapes
@@ -13,9 +13,11 @@ export declare abstract class BrushShape {
      *
      */
     constructor(_id: string, _displayName: string, _icon: string);
+    abstract applySetting(brushSettings: BrushShapeSettings): void;
     abstract createSettingsPane(
         parentPane: IPropertyPane,
         onSettingsChange?: () => void,
     ): ISubPanePropertyItem | undefined;
     abstract createShape(): RelativeVolumeListBlockVolume;
+    abstract getSettings(): BrushShapeSettings;
 }

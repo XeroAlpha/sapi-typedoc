@@ -11,6 +11,14 @@
 export class BlockPermutation {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * Key for the localization of this BlockPermutation's name
+     * used in .lang files.
+     *
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks
      * The {@link BlockType} that the permutation has.
      *

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentRedstoneUpdateEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
+/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentEntityEvent, BlockComponentEntityFallOnEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentRedstoneUpdateEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
 
 /**
  * Contains a set of events that will be raised for a block.
@@ -26,6 +26,14 @@ export interface BlockCustomComponent {
      *
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @beta
+     * @remarks
+     * This function will be called when an entity fires an event
+     * to this block in the world.
+     *
+     */
+    onEntity?: (arg0: BlockComponentEntityEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an entity falls onto the
@@ -56,7 +64,6 @@ export interface BlockCustomComponent {
      */
     onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
      * @remarks
      * This function will be called when an 'onRedstoneUpdate'
      * engine event occurs if the block has a

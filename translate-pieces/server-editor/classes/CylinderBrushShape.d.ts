@@ -1,4 +1,4 @@
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BrushShape, CylinderBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class CylinderBrushShape extends BrushShape {
     get depth(): number;
@@ -23,6 +23,8 @@ export declare class CylinderBrushShape extends BrushShape {
         zRotation?: number;
         hideRotation?: boolean;
     });
+    applySetting(brushSettings: CylinderBrushShapeSettings): void;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    getSettings(): CylinderBrushShapeSettings;
 }
