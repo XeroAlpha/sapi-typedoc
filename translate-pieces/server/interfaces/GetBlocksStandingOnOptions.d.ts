@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockFilter } from '..';
 
 /**
- * @rc
  * Contains additional options for getBlockStandingOn and
  * getAllBlocksStandingOn.
  */

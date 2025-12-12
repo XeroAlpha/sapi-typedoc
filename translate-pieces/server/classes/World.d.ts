@@ -43,6 +43,13 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
+     * @beta
+     * @remarks
+     * The world seed.
+     *
+     */
+    readonly seed: string;
+    /**
      * @remarks
      * Returns the manager for {@link Structure} related APIs.
      *

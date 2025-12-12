@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockComponent, Direction, InvalidBlockComponentError } from '..';
 
 /**
- * @rc
  * Represents a block that can output a redstone signal.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

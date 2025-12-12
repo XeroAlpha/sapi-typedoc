@@ -1,5 +1,4 @@
 /**
- * @rc
  * Specifies how to handle waterloggable blocks overlapping
  * with existing liquid.
  */

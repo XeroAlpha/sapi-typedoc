@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootPoolEntry } from '..';
 
 /**
- * @rc
  * Represents a completely empty entry in a loot pool. If this
  * entry is chosen, no items will drop.
  */

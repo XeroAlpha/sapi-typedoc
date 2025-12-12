@@ -18,6 +18,10 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
     /**
@@ -30,6 +34,8 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;
 }

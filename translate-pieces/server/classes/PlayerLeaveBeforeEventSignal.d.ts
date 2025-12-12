@@ -15,6 +15,10 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
     /**
@@ -26,6 +30,8 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;
 }

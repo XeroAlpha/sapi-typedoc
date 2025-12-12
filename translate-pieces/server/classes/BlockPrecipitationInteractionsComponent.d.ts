@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockComponent, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError } from '..';
 
 /**
- * @rc
  * Represents a how a block interacts with precipitation (such
  * as rain or snow).
  */

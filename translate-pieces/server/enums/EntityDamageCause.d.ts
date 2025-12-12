@@ -34,7 +34,6 @@ export enum EntityDamageCause {
      *
      */
     contact = 'contact',
-    dehydration = 'dehydration',
     /**
      * @remarks
      * Damage caused by an Entity being out of air and inside a

@@ -20,7 +20,6 @@ export interface JigsawPlaceOptions {
      */
     keepJigsaws?: boolean;
     /**
-     * @rc
      * @remarks
      * Specifies how to handle waterloggable blocks overlapping
      * with existing liquid. Defaults to `ApplyWaterlogging`.

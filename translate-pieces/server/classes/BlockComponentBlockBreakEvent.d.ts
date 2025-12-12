@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, BlockEvent, BlockPermutation, Entity } from '..';
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * broken.
  */

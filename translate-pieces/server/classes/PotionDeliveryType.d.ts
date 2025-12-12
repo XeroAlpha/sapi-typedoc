@@ -1,5 +1,4 @@
 /**
- * @rc
  * Represents how the potion effect is delivered.
  */
 export class PotionDeliveryType {

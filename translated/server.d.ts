@@ -328,7 +328,6 @@ export enum ContainerRulesErrorReason {
 }
 
 /**
- * @rc
  * Control Scheme types which define how the player moves in
  * response to player inputs.
  * See the following page for more details on control schemes:
@@ -1285,7 +1284,6 @@ export enum EntityDamageCause {
      *
      */
     contact = 'contact',
-    dehydration = 'dehydration',
     /**
      * @remarks
      * Damage caused by an Entity being out of air and inside a
@@ -2276,9 +2274,6 @@ export enum ItemComponentTypes {
      */
     Food = 'minecraft:food',
     Inventory = 'minecraft:inventory',
-    /**
-     * @rc
-     */
     Potion = 'minecraft:potion',
 }
 
@@ -2308,7 +2303,6 @@ export enum ItemLockMode {
 }
 
 /**
- * @rc
  * Specifies how to handle waterloggable blocks overlapping
  * with existing liquid.
  */
@@ -4085,6 +4079,19 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns all scripting components that are present on this
+     * block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getComponents(): BlockComponent[];
+    /**
      * @remarks
      * Creates a prototype item stack based on this block that can
      * be used with Container/ContainerSlot APIs.
@@ -4175,6 +4182,23 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the specified component is present on this
+     * block.
+     *
+     * @param componentId
+     * The identifier of the component (e.g.,
+     * 'minecraft:inventory') to retrieve. If no namespace prefix
+     * is specified, 'minecraft:' is assumed.
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    hasComponent(componentId: string): boolean;
     /**
      * @remarks
      * Checks to see if the permutation of this block has a
@@ -4552,7 +4576,6 @@ export class BlockComponent extends Component {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block being
  * broken.
  */
@@ -5290,7 +5313,6 @@ export class BlockPistonComponent extends BlockComponent {
 }
 
 /**
- * @rc
  * Represents a how a block interacts with precipitation (such
  * as rain or snow).
  */
@@ -5390,7 +5412,6 @@ export class BlockRecordPlayerComponent extends BlockComponent {
 }
 
 /**
- * @rc
  * Represents a block that can output a redstone signal.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6081,6 +6102,10 @@ export class ChatSendBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ChatSendBeforeEvent) => void): (arg0: ChatSendBeforeEvent) => void;
     /**
@@ -6092,6 +6117,8 @@ export class ChatSendBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ChatSendBeforeEvent) => void): void;
 }
@@ -7156,7 +7183,6 @@ export class CustomComponentParameters {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether the loot source was
  * damaged by a specific type of entity.
  */
@@ -8091,6 +8117,10 @@ export class EffectAddBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
     /**
@@ -8102,6 +8132,8 @@ export class EffectAddBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
 }
@@ -8154,7 +8186,6 @@ export class EffectTypes {
 }
 
 /**
- * @rc
  * Represents a completely empty entry in a loot pool. If this
  * entry is chosen, no items will drop.
  */
@@ -8163,9 +8194,6 @@ export class EmptyLootItem extends LootPoolEntry {
     private constructor();
 }
 
-/**
- * @rc
- */
 export class EnchantInfo {
     private constructor();
     readonly enchantment: string;
@@ -8221,7 +8249,6 @@ export class EnchantmentTypes {
 }
 
 /**
- * @rc
  * Loot item function that applies a random enchant to the
  * dropped item using the same algorithm used while enchanting
  * equipment vanilla mobs spawn with.
@@ -8239,7 +8266,6 @@ export class EnchantRandomEquipmentFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that randomly enchants the dropped item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8255,7 +8281,6 @@ export class EnchantRandomlyFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that applies a random enchant to the
  * dropped item.
  */
@@ -8604,7 +8629,6 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @rc
      * @remarks
      * Gets the entity's collision bounds.
      *
@@ -8616,7 +8640,6 @@ export class Entity {
      */
     getAABB(): AABB;
     /**
-     * @rc
      * @remarks
      * Gets the solid blocks that this entity is directly standing
      * on. Ignores pressure plates.
@@ -8648,7 +8671,6 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets a single solid block closest to the center of the
      * entity that this entity is directly standing on. Ignores
@@ -8685,12 +8707,9 @@ export class Entity {
     getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
      * @remarks
-     * Returns all components that are both present on this entity
-     * and supported by the API.
+     * Returns all scripting components that are present on this
+     * entity.
      *
-     * @returns
-     * Returns all components that are both present on this entity
-     * and supported by the API.
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
@@ -9810,7 +9829,6 @@ export class EntityFrictionModifierComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Loot item condition that checks the value of the mark
  * variant of a mob as it drops its loot.
  */
@@ -9827,7 +9845,6 @@ export class EntityHasMarkVariantCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item condition that checks the variant value of a mob
  * as it drops its loot.
  */
@@ -9974,6 +9991,10 @@ export class EntityHealBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: EntityHealBeforeEvent) => void,
@@ -9988,6 +10009,8 @@ export class EntityHealBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: EntityHealBeforeEvent) => void): void;
 }
@@ -10305,6 +10328,10 @@ export class EntityHurtBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: EntityHurtBeforeEvent) => void,
@@ -10319,6 +10346,8 @@ export class EntityHurtBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: EntityHurtBeforeEvent) => void): void;
 }
@@ -10538,7 +10567,128 @@ export class EntityItemComponent extends EntityComponent {
 }
 
 /**
- * @rc
+ * @beta
+ * Contains information related to an entity having picked up
+ * items.
+ */
+export class EntityItemPickupAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that has picked up the items.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The list of items the entity has picked up.
+     *
+     */
+    readonly items: ItemStack[];
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity has
+ * picked up items.
+ */
+export class EntityItemPickupAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity has
+     * picked up items.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityItemPickupAfterEvent) => void,
+        options?: EntityItemPickupEventOptions,
+    ): (arg0: EntityItemPickupAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity has
+     * picked up items.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityItemPickupAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to an entity picking up an
+ * item.
+ */
+export class EntityItemPickupBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true the item will not be picked up.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The entity that will pick up the item.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The item that will be picked up.
+     *
+     */
+    readonly item: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity will
+ * pick up an item.
+ */
+export class EntityItemPickupBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity will pick
+     * up an item.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
+     */
+    subscribe(
+        callback: (arg0: EntityItemPickupBeforeEvent) => void,
+        options?: EntityItemPickupEventOptions,
+    ): (arg0: EntityItemPickupBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity will
+     * pick up an item.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     */
+    unsubscribe(callback: (arg0: EntityItemPickupBeforeEvent) => void): void;
+}
+
+/**
  * Loot item condition that checks the entity type of the
  * entity dropping its loot.
  */
@@ -11385,9 +11535,11 @@ export class EntityRemoveBeforeEventSignal {
      *
      * @param callback
      * Function to call.
+     * This closure is called with restricted-execution privilege.
      * @returns
      * Returns a closure that can be used in subsequent unsubscribe
      * operations.
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): (arg0: EntityRemoveBeforeEvent) => void;
     /**
@@ -11399,6 +11551,8 @@ export class EntityRemoveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;
 }
@@ -11894,7 +12048,6 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Loot item function that modifies a dropped treasure map to
  * mark a location.
  */
@@ -12005,6 +12158,10 @@ export class ExplosionBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
     /**
@@ -12016,12 +12173,13 @@ export class ExplosionBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;
 }
 
 /**
- * @rc
  * Loot item function that determines whether or not loot drops
  * should be destroyed by explosions.
  */
@@ -12102,7 +12260,6 @@ export class FeedItemEffect {
 }
 
 /**
- * @rc
  * Loot item function that populates a dropped container item
  * using another loot table.
  */
@@ -12470,7 +12627,6 @@ export class InputInfo {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether or not the entity
  * dropping loot is a baby.
  */
@@ -13382,7 +13538,6 @@ export class ItemInventoryComponent extends ItemComponent {
 }
 
 /**
- * @rc
  * When present on an item, this item is a potion item.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -13641,8 +13796,8 @@ export class ItemStack {
     getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
      * @remarks
-     * Returns all components that are both present on this item
-     * stack and supported by the API.
+     * Returns all scripting components that are present on this
+     * item stack.
      *
      */
     getComponents(): ItemComponent[];
@@ -14207,6 +14362,10 @@ export class ItemUseBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ItemUseBeforeEvent) => void): (arg0: ItemUseBeforeEvent) => void;
     /**
@@ -14217,6 +14376,8 @@ export class ItemUseBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ItemUseBeforeEvent) => void): void;
 }
@@ -14255,7 +14416,6 @@ export class ItemUseOnEvent {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether or not the drop
  * source was killed by a specific type of entity.
  */
@@ -14272,7 +14432,6 @@ export class KilledByEntityCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether or not the source of
  * the loot drop was killed by the player.
  */
@@ -14282,7 +14441,6 @@ export class KilledByPlayerCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether or not the source of
  * the loot drop was killed by the player or any of the
  * player's pets.
@@ -14395,7 +14553,6 @@ export class ListBlockVolume extends BlockVolumeBase {
 }
 
 /**
- * @rc
  * Loot item function that drops extra items if the provided
  * tool has the looting enchant.
  */
@@ -14413,7 +14570,6 @@ export class LootingEnchantFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Represents a loot pool entry containing an item to drop.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -14429,7 +14585,6 @@ export class LootItem extends LootPoolEntry {
 }
 
 /**
- * @rc
  * An abstract base class from which all loot item conditions
  * are derived. A loot item condition is a set of rules or
  * requirements which must be met for a loot drop to happen.
@@ -14439,7 +14594,6 @@ export class LootItemCondition {
 }
 
 /**
- * @rc
  * An abstract base class from which all loot item functions
  * are derived. Loot item functions can modify loot drops in a
  * variety of ways as they happen, optionally dependent on a
@@ -14451,7 +14605,6 @@ export class LootItemFunction {
 }
 
 /**
- * @rc
  * A collection of entries which individually determine loot
  * drops. Can contain values determining drop outcomes,
  * including rolls, bonus rolls and tiers.
@@ -14491,7 +14644,6 @@ export class LootPool {
 }
 
 /**
- * @rc
  * Represents one entry within Loot Table, which describes one
  * possible drop when a loot drop occurs. Can contain an item,
  * another loot table, a path to another loot table, or an
@@ -14520,7 +14672,6 @@ export class LootPoolEntry {
 }
 
 /**
- * @rc
  * Represents the values which determine loot drops in a tiered
  * loot pool. Potential drops from tiered loot pools are
  * ordered, and chosen via logic controlled by the values in
@@ -14556,7 +14707,6 @@ export class LootPoolTiers {
 }
 
 /**
- * @rc
  * Represents a single Loot Table, which determines what items
  * are generated when killing a mob, breaking a block, filling
  * a container, and more.
@@ -14580,7 +14730,6 @@ export class LootTable {
 }
 
 /**
- * @rc
  * Represents a loot pool entry containing another separate,
  * nested loot table.
  */
@@ -14680,7 +14829,6 @@ export class LootTableManager {
      */
     generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @rc
      * @remarks
      * Generates loot from a given LootTable.
      *
@@ -14693,7 +14841,6 @@ export class LootTableManager {
      */
     generateLootFromTable(lootTable: LootTable, tool?: ItemStack): ItemStack[] | undefined;
     /**
-     * @rc
      * @remarks
      * Retrieves a single loot table from the level's current
      * registry.
@@ -14710,7 +14857,6 @@ export class LootTableManager {
 }
 
 /**
- * @rc
  * Represents a loot pool entry containing a reference to
  * another loot table, described by its path.
  */
@@ -14727,7 +14873,6 @@ export class LootTableReference extends LootPoolEntry {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether an appropriate tool
  * was used to trigger the loot event. Can describe item type,
  * count, durability, enchantments, or arrays of item tags to
@@ -14924,7 +15069,6 @@ export class PackSettingChangeAfterEventSignal {
 }
 
 /**
- * @rc
  * Loot item condition that checks whether the looting entity
  * is currently a passenger of a specific type of entity.
  */
@@ -15183,7 +15327,6 @@ export class Player extends Entity {
      */
     getAimAssist(): PlayerAimAssist;
     /**
-     * @rc
      * @remarks
      * Returns the player's current control scheme.
      *
@@ -15329,7 +15472,6 @@ export class Player extends Entity {
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
-     * @rc
      * @remarks
      * Set a player's control scheme. The player's active camera
      * preset must be set by scripts like with camera.setCamera()
@@ -15635,6 +15777,10 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PlayerBreakBlockBeforeEvent) => void,
@@ -15649,6 +15795,8 @@ export class PlayerBreakBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerBreakBlockBeforeEvent) => void): void;
 }
@@ -15937,6 +16085,10 @@ export class PlayerGameModeChangeBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PlayerGameModeChangeBeforeEvent) => void,
@@ -15950,6 +16102,8 @@ export class PlayerGameModeChangeBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerGameModeChangeBeforeEvent) => void): void;
 }
@@ -16319,6 +16473,10 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void,
@@ -16332,6 +16490,8 @@ export class PlayerInteractWithBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void): void;
 }
@@ -16450,6 +16610,10 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void,
@@ -16463,6 +16627,8 @@ export class PlayerInteractWithEntityBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
@@ -16674,6 +16840,10 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
     /**
@@ -16685,6 +16855,8 @@ export class PlayerLeaveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;
 }
@@ -16795,6 +16967,10 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PlayerPlaceBlockBeforeEvent) => void,
@@ -16809,6 +16985,8 @@ export class PlayerPlaceBlockBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PlayerPlaceBlockBeforeEvent) => void): void;
 }
@@ -17008,7 +17186,6 @@ export class PlayerUseNameTagAfterEventSignal {
 }
 
 /**
- * @rc
  * Represents how the potion effect is delivered.
  */
 export class PotionDeliveryType {
@@ -17017,7 +17194,6 @@ export class PotionDeliveryType {
 }
 
 /**
- * @rc
  * Represents a type of potion effect - like healing or
  * leaping.
  */
@@ -17037,7 +17213,6 @@ export class PotionEffectType {
 }
 
 /**
- * @rc
  * Used for accessing all potion effect types, delivery types,
  * and creating potions.
  */
@@ -17365,7 +17540,6 @@ export class ProjectileHitEntityAfterEventSignal {
 }
 
 /**
- * @rc
  * Loot item function that randomly modifies the data value of
  * the item dropped.
  */
@@ -17382,7 +17556,6 @@ export class RandomAuxValueFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that randomly modifies the block state of
  * the item dropped.
  */
@@ -17401,7 +17574,6 @@ export class RandomBlockStateFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop.
  */
@@ -17417,7 +17589,6 @@ export class RandomChanceCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop, modified by the level of
  * looting enchantment on the tool used.
@@ -17441,7 +17612,6 @@ export class RandomChanceWithLootingCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item condition that applies given values to the chances
  * that loot will drop based on the current difficulty level.
  */
@@ -17459,7 +17629,6 @@ export class RandomDifficultyChanceCondition extends LootItemCondition {
 }
 
 /**
- * @rc
  * Loot item function that applies a randomly dye to the
  * dropped item.
  */
@@ -17469,7 +17638,6 @@ export class RandomDyeFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop, modified by the region the drop
  * is happening within.
@@ -17998,7 +18166,6 @@ export class ServerMessageAfterEventSignal {
 }
 
 /**
- * @rc
  * Loot item function that modifies the trim on a dropped armor
  * item.
  */
@@ -18020,7 +18187,6 @@ export class SetArmorTrimFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the type of a banner that
  * drops.
  */
@@ -18036,7 +18202,6 @@ export class SetBannerDetailsFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the contents of a dropped
  * book.
  */
@@ -18064,7 +18229,6 @@ export class SetBookContentsFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the dropped item's data
  * value based on its color index. Defaults to zero if no color
  * index is set.
@@ -18075,7 +18239,6 @@ export class SetDataFromColorIndexFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the number items that drop
  * from the loot pool entry.
  */
@@ -18093,7 +18256,6 @@ export class SetItemCountFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the durability value of the
  * item dropped.
  */
@@ -18111,7 +18273,6 @@ export class SetItemDamageFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the data value of the item
  * dropped.
  */
@@ -18128,7 +18289,6 @@ export class SetItemDataFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the lore of the item
  * dropped.
  */
@@ -18144,7 +18304,6 @@ export class SetItemLoreFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the name of the item
  * dropped.
  */
@@ -18160,7 +18319,6 @@ export class SetItemNameFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies an ominous bottle's
  * amplifier value.
  */
@@ -18178,7 +18336,6 @@ export class SetOminousBottleFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that assigns a type to a dropped potion.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -18193,7 +18350,6 @@ export class SetPotionFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that assigns an entity type to a dropped
  * spawn egg. Does not work on any items other than spawn eggs.
  */
@@ -18209,7 +18365,6 @@ export class SetSpawnEggFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that modifies the effects of a dropped
  * stew item.
  */
@@ -18243,6 +18398,9 @@ export class ShutdownBeforeEventSignal {
      *
      * @param callback
      * Function callback that is called when this event fires.
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ShutdownEvent) => void): (arg0: ShutdownEvent) => void;
     /**
@@ -18257,6 +18415,7 @@ export class ShutdownBeforeEventSignal {
      * @param callback
      * Function closure that was previously passed to the subscribe
      * method.
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ShutdownEvent) => void): void;
 }
@@ -18270,7 +18429,6 @@ export class ShutdownEvent {
 }
 
 /**
- * @rc
  * Loot item function that processes the dropped item as if it
  * was smelted or cooked in a furnace.
  */
@@ -18280,7 +18438,6 @@ export class SmeltItemFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Loot item function that applies one or several predefined
  * enchants to the dropped item.
  */
@@ -18298,6 +18455,10 @@ export class StartupBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with early-execution privilege.
+     * @returns
+     * Closure that is called with early-execution privilege.
      */
     subscribe(callback: (arg0: StartupEvent) => void): (arg0: StartupEvent) => void;
     /**
@@ -18306,6 +18467,8 @@ export class StartupBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with early-execution privilege.
      */
     unsubscribe(callback: (arg0: StartupEvent) => void): void;
 }
@@ -19219,6 +19382,10 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
     /**
@@ -19231,6 +19398,8 @@ export class WatchdogTerminateBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;
 }
@@ -19335,6 +19504,10 @@ export class WeatherChangeBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): (arg0: WeatherChangeBeforeEvent) => void;
     /**
@@ -19345,6 +19518,8 @@ export class WeatherChangeBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): void;
 }
@@ -19390,6 +19565,13 @@ export class World {
      *
      */
     readonly scoreboard: Scoreboard;
+    /**
+     * @beta
+     * @remarks
+     * The world seed.
+     *
+     */
+    readonly seed: string;
     /**
      * @remarks
      * Returns the manager for {@link Structure} related APIs.
@@ -19823,6 +20005,15 @@ export class WorldAfterEvents {
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when an entity picks up items.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityItemPickup: EntityItemPickupAfterEventSignal;
+    /**
      * @remarks
      * Fires when an entity is loaded.
      *
@@ -20213,6 +20404,15 @@ export class WorldBeforeEvents {
      */
     readonly entityHurt: EntityHurtBeforeEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires before an entity picks up an item.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityItemPickup: EntityItemPickupBeforeEventSignal;
+    /**
      * @remarks
      * Fires before an entity is removed from the world (for
      * example, unloaded or removed after being killed.)
@@ -20318,7 +20518,6 @@ export class WorldLoadAfterEventSignal {
 }
 
 /**
- * @rc
  * Axis-aligned bounding box.
  */
 export interface AABB {
@@ -20428,7 +20627,6 @@ export interface BlockCustomComponent {
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @rc
      * @remarks
      * This function will be called when a specific block is
      * destroyed.
@@ -21421,6 +21619,32 @@ export interface EntityHurtBeforeEventOptions {
 }
 
 /**
+ * @beta
+ * An interface that is passed into {@link
+ * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
+ * and {@link
+ * @minecraft/Server.EntityItemPickupBeforeEventSignal.subscribe}
+ * that filters out which events are passed to the provided
+ * callback.
+ */
+export interface EntityItemPickupEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match.
+     *
+     */
+    entityFilter?: EntityFilter;
+    /**
+     * @remarks
+     * If this value is set, this event will only fire if an item
+     * in the event matches.
+     *
+     */
+    itemFilter?: ItemFilter;
+}
+
+/**
  * Contains options for selecting entities within an area.
  * @seeExample blockConditional.ts
  * @seeExample findEntitiesHavingPropertyEqualsTo.ts
@@ -21632,7 +21856,6 @@ export interface ExplosionOptions {
 }
 
 /**
- * @rc
  * Contains additional options for getBlockStandingOn and
  * getAllBlocksStandingOn.
  */
@@ -21827,6 +22050,19 @@ export interface ItemCustomComponent {
 }
 
 /**
+ * @beta
+ * Contains options for filtering items.
+ */
+export interface ItemFilter {
+    /**
+     * @remarks
+     * If defined, items that match these types are included.
+     *
+     */
+    includeTypes?: (ItemType | string)[];
+}
+
+/**
  * Provides additional options for {@link
  * StructureManager.placeJigsaw}.
  */
@@ -21846,7 +22082,6 @@ export interface JigsawPlaceOptions {
      */
     keepJigsaws?: boolean;
     /**
-     * @rc
      * @remarks
      * Specifies how to handle waterloggable blocks overlapping
      * with existing liquid. Defaults to `ApplyWaterlogging`.
@@ -21883,7 +22118,6 @@ export interface JigsawStructurePlaceOptions {
      */
     keepJigsaws?: boolean;
     /**
-     * @rc
      * @remarks
      * Specifies how to handle waterloggable blocks overlapping
      * with existing liquid. Defaults to `ApplyWaterlogging`.
@@ -22807,7 +23041,6 @@ export class EntitySpawnError extends Error {
 }
 
 /**
- * @rc
  * The error can occur when a block is invalid. This can also
  * occur when accessing components on a block that doesn't have
  * them.
@@ -22882,17 +23115,11 @@ export class InvalidIteratorError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidPotionDeliveryTypeError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidPotionEffectTypeError extends Error {
     private constructor();

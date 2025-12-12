@@ -1,5 +1,5 @@
 /* IMPORT */ import { InvalidArgumentError } from '../../common';
-/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
+/* IMPORT */ import { BlockComponent, BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
 
 /**
  * Represents a block in a dimension. A block represents a
@@ -289,6 +289,19 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns all scripting components that are present on this
+     * block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getComponents(): BlockComponent[];
+    /**
      * @remarks
      * Creates a prototype item stack based on this block that can
      * be used with Container/ContainerSlot APIs.
@@ -379,6 +392,23 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the specified component is present on this
+     * block.
+     *
+     * @param componentId
+     * The identifier of the component (e.g.,
+     * 'minecraft:inventory') to retrieve. If no namespace prefix
+     * is specified, 'minecraft:' is assumed.
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    hasComponent(componentId: string): boolean;
     /**
      * @remarks
      * Checks to see if the permutation of this block has a

@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that assigns an entity type to a dropped
  * spawn egg. Does not work on any items other than spawn eggs.
  */

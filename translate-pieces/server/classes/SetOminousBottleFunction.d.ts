@@ -2,7 +2,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that modifies an ominous bottle's
  * amplifier value.
  */

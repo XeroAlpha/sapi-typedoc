@@ -13,7 +13,6 @@ export interface BlockCustomComponent {
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @rc
      * @remarks
      * This function will be called when a specific block is
      * destroyed.
