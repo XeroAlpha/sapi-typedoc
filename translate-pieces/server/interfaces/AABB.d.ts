@@ -1,7 +1,6 @@
 /* IMPORT */ import { Vector3 } from '..';
 
 /**
- * @rc
  * Axis-aligned bounding box.
  */
 export interface AABB {

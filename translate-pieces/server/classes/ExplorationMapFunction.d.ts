@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that modifies a dropped treasure map to
  * mark a location.
  */

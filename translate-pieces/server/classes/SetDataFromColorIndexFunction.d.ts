@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that modifies the dropped item's data
  * value based on its color index. Defaults to zero if no color
  * index is set.

@@ -1,5 +1,5 @@
 /* IMPORT */ import { InvalidArgumentError } from '../../common';
-/* IMPORT */ import { BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
+/* IMPORT */ import { BlockComponent, BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -398,6 +398,19 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns all scripting components that are present on this
+     * block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getComponents(): BlockComponent[];
+    /**
      * @remarks
      * 创建一个基于该方块的原型物品对象-{@link ItemStack}，可以与 {@link Container}/{@link ContainerSlot} 接口 一起使用。
      *
@@ -507,6 +520,23 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
+    /**
+     * @beta
+     * @remarks
+     * Returns true if the specified component is present on this
+     * block.
+     *
+     * @param componentId
+     * The identifier of the component (e.g.,
+     * 'minecraft:inventory') to retrieve. If no namespace prefix
+     * is specified, 'minecraft:' is assumed.
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    hasComponent(componentId: string): boolean;
     /**
      * @remarks
      * 检查该方块的{@link BlockPermutation}是否具有特定的标签。

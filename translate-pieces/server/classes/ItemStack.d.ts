@@ -171,8 +171,8 @@ export class ItemStack {
     getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
      * @remarks
-     * Returns all components that are both present on this item
-     * stack and supported by the API.
+     * Returns all scripting components that are present on this
+     * item stack.
      *
      */
     getComponents(): ItemComponent[];

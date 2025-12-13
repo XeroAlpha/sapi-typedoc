@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @rc
  * Loot item condition that applies a given value to the
  * chances that loot will drop, modified by the level of
  * looting enchantment on the tool used.

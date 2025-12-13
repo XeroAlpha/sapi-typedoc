@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @rc
  * Loot item condition that checks whether or not the source of
  * the loot drop was killed by the player.
  */

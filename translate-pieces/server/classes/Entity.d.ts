@@ -326,7 +326,6 @@ export class Entity {
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
-     * @rc
      * @remarks
      * Gets the entity's collision bounds.
      *
@@ -338,7 +337,6 @@ export class Entity {
      */
     getAABB(): AABB;
     /**
-     * @rc
      * @remarks
      * Gets the solid blocks that this entity is directly standing
      * on. Ignores pressure plates.
@@ -370,7 +368,6 @@ export class Entity {
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets a single solid block closest to the center of the
      * entity that this entity is directly standing on. Ignores
@@ -407,12 +404,9 @@ export class Entity {
     getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
      * @remarks
-     * Returns all components that are both present on this entity
-     * and supported by the API.
+     * Returns all scripting components that are present on this
+     * entity.
      *
-     * @returns
-     * Returns all components that are both present on this entity
-     * and supported by the API.
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}

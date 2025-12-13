@@ -2,7 +2,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that randomly modifies the data value of
  * the item dropped.
  */

@@ -127,6 +127,13 @@ const translateTexts: {
         }
     },
     {
+        from: `This function can't be called in restricted-execution mode.`,
+        to: worldMutationTag,
+        matches(declaration) {
+            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
         from: `This property can't be used in read-only mode.`,
         to: worldMutationTag,
         matches(declaration) {
@@ -134,7 +141,21 @@ const translateTexts: {
         }
     },
     {
+        from: `This property can't be used in restricted-execution mode.`,
+        to: worldMutationTag,
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
         from: `This property can't be edited in read-only mode.`,
+        to: worldMutationTag,
+        matches(declaration) {
+            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
+        }
+    },
+    {
+        from: `This property can't be edited in restricted-execution mode.`,
         to: worldMutationTag,
         matches(declaration) {
             return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));

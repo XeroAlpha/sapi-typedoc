@@ -18,6 +18,9 @@ export class ShutdownBeforeEventSignal {
      *
      * @param callback
      * Function callback that is called when this event fires.
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ShutdownEvent) => void): (arg0: ShutdownEvent) => void;
     /**
@@ -32,6 +35,7 @@ export class ShutdownBeforeEventSignal {
      * @param callback
      * Function closure that was previously passed to the subscribe
      * method.
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ShutdownEvent) => void): void;
 }

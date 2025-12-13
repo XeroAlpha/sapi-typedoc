@@ -2,7 +2,6 @@
 /* IMPORT */ import { LootItemCondition, LootPoolEntry, LootPoolTiers } from '..';
 
 /**
- * @rc
  * A collection of entries which individually determine loot
  * drops. Can contain values determining drop outcomes,
  * including rolls, bonus rolls and tiers.

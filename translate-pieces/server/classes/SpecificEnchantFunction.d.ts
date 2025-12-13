@@ -1,7 +1,6 @@
 /* IMPORT */ import { EnchantInfo, LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that applies one or several predefined
  * enchants to the dropped item.
  */

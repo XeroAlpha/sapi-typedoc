@@ -574,6 +574,10 @@ export class PacketReceiveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PacketReceivedBeforeEvent) => void,
@@ -585,6 +589,8 @@ export class PacketReceiveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;
 }
@@ -647,6 +653,10 @@ export class PacketSendBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(
         callback: (arg0: PacketSendBeforeEvent) => void,
@@ -658,6 +668,8 @@ export class PacketSendBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: PacketSendBeforeEvent) => void): void;
 }

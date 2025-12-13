@@ -2,7 +2,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that applies a random enchant to the
  * dropped item.
  */

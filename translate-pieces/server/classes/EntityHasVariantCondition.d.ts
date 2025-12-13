@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @rc
  * Loot item condition that checks the variant value of a mob
  * as it drops its loot.
  */

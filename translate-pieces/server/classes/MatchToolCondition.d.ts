@@ -2,7 +2,6 @@
 /* IMPORT */ import { EnchantInfo, LootItemCondition } from '..';
 
 /**
- * @rc
  * Loot item condition that checks whether an appropriate tool
  * was used to trigger the loot event. Can describe item type,
  * count, durability, enchantments, or arrays of item tags to

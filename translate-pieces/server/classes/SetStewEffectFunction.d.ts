@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that modifies the effects of a dropped
  * stew item.
  */

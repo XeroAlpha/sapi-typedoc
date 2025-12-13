@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that applies a random enchant to the
  * dropped item using the same algorithm used while enchanting
  * equipment vanilla mobs spawn with.

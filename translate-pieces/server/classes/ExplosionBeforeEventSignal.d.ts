@@ -16,6 +16,10 @@ export class ExplosionBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
     /**
@@ -27,6 +31,8 @@ export class ExplosionBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;
 }

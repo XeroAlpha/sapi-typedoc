@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemCondition } from '..';
 
 /**
- * @rc
  * Loot item condition that applies given values to the chances
  * that loot will drop based on the current difficulty level.
  */

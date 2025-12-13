@@ -18,9 +18,11 @@ export class EntityRemoveBeforeEventSignal {
      *
      * @param callback
      * Function to call.
+     * This closure is called with restricted-execution privilege.
      * @returns
      * Returns a closure that can be used in subsequent unsubscribe
      * operations.
+     * Closure that is called with restricted-execution privilege.
      */
     subscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): (arg0: EntityRemoveBeforeEvent) => void;
     /**
@@ -32,6 +34,8 @@ export class EntityRemoveBeforeEventSignal {
      *
      * @earlyExecution
      *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
      */
     unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;
 }

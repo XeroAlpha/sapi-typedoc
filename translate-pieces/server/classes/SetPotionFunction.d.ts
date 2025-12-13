@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that assigns a type to a dropped potion.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

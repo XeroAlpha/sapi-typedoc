@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @rc
  * Loot item function that determines whether or not loot drops
  * should be destroyed by explosions.
  */
