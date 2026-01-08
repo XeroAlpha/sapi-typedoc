@@ -1,3 +1,5 @@
+/* IMPORT */ import { EngineError } from '../../common';
+
 /**
  * @beta
  * Handle to an aim-assist category that exists in the
@@ -45,6 +47,8 @@ export class AimAssistCategory {
      * The record mapping block tags to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
+     *
+     * {@link EngineError}
      */
     getBlockTagPriorities(): Record<string, number>;
     /**
@@ -57,4 +61,16 @@ export class AimAssistCategory {
      * @throws This function can throw errors.
      */
     getEntityPriorities(): Record<string, number>;
+    /**
+     * @remarks
+     * Gets the priority settings used for entity targeting.
+     *
+     * @returns
+     * Map entity type families to their priority settings in a
+     * Record. Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getEntityTypeFamilyPriorities(): Record<string, number>;
 }

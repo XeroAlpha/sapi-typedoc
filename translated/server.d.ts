@@ -3299,6 +3299,8 @@ export class AimAssistCategory {
      * The record mapping block tags to their priority settings.
      * Larger numbers have greater priority.
      * @throws This function can throw errors.
+     *
+     * {@link EngineError}
      */
     getBlockTagPriorities(): Record<string, number>;
     /**
@@ -3311,6 +3313,18 @@ export class AimAssistCategory {
      * @throws This function can throw errors.
      */
     getEntityPriorities(): Record<string, number>;
+    /**
+     * @remarks
+     * Gets the priority settings used for entity targeting.
+     *
+     * @returns
+     * Map entity type families to their priority settings in a
+     * Record. Larger numbers have greater priority.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getEntityTypeFamilyPriorities(): Record<string, number>;
 }
 
 /**
@@ -3380,6 +3394,15 @@ export class AimAssistCategorySettings {
     getEntityPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for entity targeting.
+     *
+     * @returns
+     * Map entity type families to their priority settings in a
+     * Record. Larger numbers have greater priority.
+     */
+    getEntityTypeFamilyPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Sets the priority settings used for block targeting.
      *
      * @worldMutation
@@ -3412,6 +3435,14 @@ export class AimAssistCategorySettings {
     setEntityPriorities(
         entityPriorities: Record<keyof typeof MinecraftEntityTypes | string, number>,
     ): void;
+    /**
+     * @remarks
+     * Sets the priority settings used for entity targeting.
+     *
+     * @worldMutation
+     *
+     */
+    setEntityTypeFamilyPriorities(entityTypeFamilyPriorities: Record<string, number>): void;
 }
 
 /**
@@ -3450,6 +3481,8 @@ export class AimAssistPreset {
      * @returns
      * The array of block tags.
      * @throws This function can throw errors.
+     *
+     * {@link EngineError}
      */
     getExcludedBlockTagTargets(): string[];
     /**
@@ -3472,6 +3505,18 @@ export class AimAssistPreset {
      * @throws This function can throw errors.
      */
     getExcludedEntityTargets(): string[];
+    /**
+     * @remarks
+     * Gets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @returns
+     * The array of entity type families.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getExcludedEntityTypeFamilyTargets(): string[];
     /**
      * @remarks
      * Gets the per-item aim-assist category Ids.
@@ -3559,6 +3604,15 @@ export class AimAssistPresetSettings {
     getExcludedEntityTargets(): string[] | undefined;
     /**
      * @remarks
+     * Gets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @returns
+     * The array of entity type families.
+     */
+    getExcludedEntityTypeFamilyTargets(): string[] | undefined;
+    /**
+     * @remarks
      * Gets the per-item aim-assist category Ids.
      *
      * @returns
@@ -3607,6 +3661,17 @@ export class AimAssistPresetSettings {
      * An array of entity Ids.
      */
     setExcludedEntityTargets(targets?: (keyof typeof MinecraftEntityTypes | string)[]): void;
+    /**
+     * @remarks
+     * Sets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @worldMutation
+     *
+     * @param targets
+     * An array of entity type families.
+     */
+    setExcludedEntityTypeFamilyTargets(targets?: string[]): void;
     /**
      * @remarks
      * Sets the per-item aim-assist category Ids.
@@ -4777,6 +4842,16 @@ export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
      *
      */
     readonly powerLevel: number;
+    /**
+     * @beta
+     * @remarks
+     * The redstone signal strength from the last tick that was
+     * passing through this block. It is guaranteed to be >= the
+     * `min_power` of the block's 'minecraft:redstone_consumer'
+     * component.
+     *
+     */
+    readonly previousPowerLevel: number;
 }
 
 export class BlockComponentRegistry {
@@ -10564,6 +10639,61 @@ export class EntityItemComponent extends EntityComponent {
      */
     readonly itemStack: ItemStack;
     static readonly componentId = 'minecraft:item';
+}
+
+/**
+ * @beta
+ * Contains information related to an entity having dropped
+ * items.
+ */
+export class EntityItemDropAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The entity that has dropped the items.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The list of items the entity has dropped.
+     *
+     */
+    readonly items: Entity[];
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity has
+ * dropped items.
+ */
+export class EntityItemDropAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity has
+     * dropped items.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityItemDropAfterEvent) => void,
+        options?: EntityItemDropEventOptions,
+    ): (arg0: EntityItemDropAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity has
+     * dropped items.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityItemDropAfterEvent) => void): void;
 }
 
 /**
@@ -20007,6 +20137,15 @@ export class WorldAfterEvents {
     /**
      * @beta
      * @remarks
+     * This event fires when an entity drops items.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityItemDrop: EntityItemDropAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
      * This event fires when an entity picks up items.
      *
      * @earlyExecution
@@ -21616,6 +21755,30 @@ export interface EntityHurtBeforeEventOptions {
      *
      */
     entityFilter?: EntityFilter;
+}
+
+/**
+ * @beta
+ * An interface that is passed into {@link
+ * @minecraft/Server.EntityItemDropAfterEventSignal.subscribe}
+ * that filters out which events are passed to the provided
+ * callback.
+ */
+export interface EntityItemDropEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for entities
+     * that match.
+     *
+     */
+    entityFilter?: EntityFilter;
+    /**
+     * @remarks
+     * If this value is set, this event will only fire if an item
+     * in the event matches.
+     *
+     */
+    itemFilter?: ItemFilter;
 }
 
 /**

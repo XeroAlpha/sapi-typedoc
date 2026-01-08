@@ -53,6 +53,13 @@ export class Cursor {
     readonly maxViewBlockDistance: number;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getDefaultProperties(): CursorProperties;
+    /**
+     * @remarks
      * Get the world position of the 3D block cursor
      *
      * @worldMutation
@@ -105,6 +112,20 @@ export class Cursor {
     moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    popPropertiesById(identifier: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    pushPropertiesById(properties: CursorProperties, identifier: string): void;
+    /**
+     * @remarks
      * Reset the 3D block cursor to the system default state
      *
      * @worldMutation
@@ -133,4 +154,11 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     show(): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    updatePropertiesById(properties: CursorProperties, identifier?: string): void;
 }

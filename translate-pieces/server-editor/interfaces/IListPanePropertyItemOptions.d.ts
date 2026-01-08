@@ -13,6 +13,13 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     defaultSlots?: ListPaneSlotCreationProps[];
     /**
      * @remarks
+     * If true, pane height will not change based on slot count. If
+     * undefined, it will default to false
+     *
+     */
+    fixedHeight?: boolean;
+    /**
+     * @remarks
      * This will be the height of the list withing the pane
      *
      */

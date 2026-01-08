@@ -14,6 +14,12 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Displays label inline. If undefined, it will be true.
+     *
+     */
+    inlineLabel?: boolean;
+    /**
+     * @remarks
      * This callback is called when UI control value is changed.
      *
      */

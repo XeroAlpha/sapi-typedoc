@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemBase, IPropertyPane, LayoutAlignment, LayoutDirection } from '..';
+/* IMPORT */ import { IPropertyItemBase, IPropertyPane, LayoutAlignment, PaneLayoutType } from '..';
 
 /**
  * A property item which supports Sub Pane properties
@@ -17,8 +17,6 @@ export interface ISubPanePropertyItem extends IPropertyItemBase, IPropertyPane {
      * @remarks
      * Updates layout direction of the sub pane.
      *
-     * @param direction
-     * New layout direction.
      */
-    setDirection(direction: LayoutDirection): void;
+    setDirection(layout: PaneLayoutType): void;
 }

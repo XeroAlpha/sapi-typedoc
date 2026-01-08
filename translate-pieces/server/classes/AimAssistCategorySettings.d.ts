@@ -67,6 +67,15 @@ export class AimAssistCategorySettings {
     getEntityPriorities(): Record<string, number>;
     /**
      * @remarks
+     * Gets the priority settings used for entity targeting.
+     *
+     * @returns
+     * Map entity type families to their priority settings in a
+     * Record. Larger numbers have greater priority.
+     */
+    getEntityTypeFamilyPriorities(): Record<string, number>;
+    /**
+     * @remarks
      * Sets the priority settings used for block targeting.
      *
      * @worldMutation
@@ -99,4 +108,12 @@ export class AimAssistCategorySettings {
     setEntityPriorities(
         entityPriorities: Record<keyof typeof MinecraftEntityTypes | string, number>,
     ): void;
+    /**
+     * @remarks
+     * Sets the priority settings used for entity targeting.
+     *
+     * @worldMutation
+     *
+     */
+    setEntityTypeFamilyPriorities(entityTypeFamilyPriorities: Record<string, number>): void;
 }

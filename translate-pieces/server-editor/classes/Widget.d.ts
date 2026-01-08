@@ -27,12 +27,19 @@ export class Widget {
      *
      */
     collisionType: WidgetCollisionType;
+    dimensionId?: string;
     /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetError}
      */
     readonly group: WidgetGroup;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    ignoreEditorModeVisibilityOverride: boolean;
     /**
      * @remarks
      * @worldMutation

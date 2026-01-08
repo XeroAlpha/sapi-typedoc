@@ -6,6 +6,8 @@ export interface WidgetCreateOptions {
     collisionOffset?: Vector3;
     collisionRadius?: number;
     collisionType?: WidgetCollisionType;
+    dimensionId?: string;
+    ignoreEditorModeVisibilityOverride?: boolean;
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;

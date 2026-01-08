@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Dimension, DimensionLocation, RGB, Vector3 } from '@minecraft/server';
+import { Dimension, DimensionLocation, Entity, Player, RGB, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -132,6 +132,14 @@ export class DebugShape {
     private constructor();
     /**
      * @remarks
+     * The entity this shape is attached to. When set, this shape
+     * will copy the root location of the attached entity and the
+     * shape's position will be used as an offset.
+     *
+     */
+    attachedTo?: Entity;
+    /**
+     * @remarks
      * The color of the shape.
      *
      */
@@ -188,6 +196,13 @@ export class DebugShape {
      *
      */
     readonly totalTimeLeft?: number;
+    /**
+     * @remarks
+     * The list of players that this shape will be visible to. If
+     * left empty, the shape will be visible to all players.
+     *
+     */
+    visibleTo: Player[];
     /**
      * @remarks
      * Removes this shape from the world. The shape can be re-added

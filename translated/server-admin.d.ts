@@ -72,9 +72,9 @@ export class AsyncPlayerJoinBeforeEvent {
     allowJoin(): void;
     /**
      * @remarks
-     * Deprecated - use {@link disallowJoin} instead.Call this to
-     * disconnect a player. They will be allowed to try to join
-     * again.
+     * Call this to disallow the player from joining the server.
+     * This is useful for preventing unauthorized access to the
+     * server.
      *
      * @throws This function can throw errors.
      *
@@ -83,8 +83,10 @@ export class AsyncPlayerJoinBeforeEvent {
     disallowJoin(reason?: string): void;
     /**
      * @remarks
-     * Call this to stop the player from joining the server. They
-     * will be allowed to try to join again.
+     * Deprecated - use {@link disallowJoin} instead.Call this to
+     * disconnect a player. They will be allowed to try to join
+     * again. They will be allowed to try to join again after being
+     * disconnected.
      *
      * @throws This function can throw errors.
      *

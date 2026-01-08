@@ -8,7 +8,7 @@ export interface IImagePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
      * Alignment of the image in the container. If not defined,
-     * LayoutAlignment.Left is used.
+     * LayoutAlignment.Start is used.
      *
      */
     alignment?: LayoutAlignment;

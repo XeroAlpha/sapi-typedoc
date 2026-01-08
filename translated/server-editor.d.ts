@@ -955,17 +955,25 @@ export declare enum KeyProcessingState {
  * Alignment options for UI elements
  */
 export declare enum LayoutAlignment {
-    Left = 0,
+    Start = 0,
     Center = 1,
-    Right = 2,
+    End = 2,
 }
 
 /**
- * Layout directions for property panes.
+ * Flexible layout types
  */
-export declare enum LayoutDirection {
-    Vertical = 0,
-    Horizontal = 1,
+export declare enum LayoutFlex {
+    Grow = 'Grow',
+    Shrink = 'Shrink',
+}
+
+/**
+ * Layout size types
+ */
+export declare enum LayoutSizeType {
+    Default = 0,
+    Percentage = 1,
 }
 
 export declare enum ListPaneEntryType {
@@ -1106,6 +1114,15 @@ export enum PaintMode {
     Roughen = 3,
     Flatten = 4,
     Elevation = 5,
+}
+
+/**
+ * Layout directions for property panes.
+ */
+export declare enum PaneLayoutType {
+    Vertical = 0,
+    Horizontal = 1,
+    Wrapping = 2,
 }
 
 export enum Plane {
@@ -1487,7 +1504,7 @@ export type KeyBindingInfo = {
  */
 export declare type LayoutSize = {
     value: number;
-    type?: 'default' | 'percentage';
+    type?: LayoutSizeType;
 };
 
 /**
@@ -1563,7 +1580,7 @@ export declare type ListPaneSlotLayout = {
 
 export declare type ListPaneSlotLayoutEntry = {
     type: ListPaneEntryType;
-    size?: number | LayoutSize | 'shrink' | 'grow';
+    size?: number | LayoutSize | LayoutFlex;
     alignment?: LayoutAlignment;
 };
 
@@ -1692,6 +1709,16 @@ export type MouseRayCastAction = {
 export type NoArgsAction = {
     readonly actionType: ActionTypes.NoArgsAction;
     readonly onExecute: () => void;
+};
+
+/**
+ * Optional style arguments for pane items
+ */
+export declare type PaneItemStyle = {
+    width?: number | LayoutSize | LayoutFlex;
+    minWidth?: number | LayoutSize;
+    maxWidth?: number | LayoutSize;
+    verticalAlignment?: LayoutAlignment;
 };
 
 export type PropertyBag = Record<string, unknown>;
@@ -2588,6 +2615,13 @@ export class Cursor {
     readonly maxViewBlockDistance: number;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getDefaultProperties(): CursorProperties;
+    /**
+     * @remarks
      * Get the world position of the 3D block cursor
      *
      * @worldMutation
@@ -2640,6 +2674,20 @@ export class Cursor {
     moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    popPropertiesById(identifier: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    pushPropertiesById(properties: CursorProperties, identifier: string): void;
+    /**
+     * @remarks
      * Reset the 3D block cursor to the system default state
      *
      * @worldMutation
@@ -2668,10 +2716,18 @@ export class Cursor {
      * @throws This function can throw errors.
      */
     show(): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    updatePropertiesById(properties: CursorProperties, identifier?: string): void;
 }
 
 export class CursorPropertiesChangeAfterEvent {
     private constructor();
+    readonly identifier?: string;
     readonly position?: CursorPosition;
     readonly properties: CursorProperties;
 }
@@ -4339,12 +4395,19 @@ export class Widget {
      *
      */
     collisionType: WidgetCollisionType;
+    dimensionId?: string;
     /**
      * @throws This property can throw when used.
      *
      * {@link InvalidWidgetError}
      */
     readonly group: WidgetGroup;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    ignoreEditorModeVisibilityOverride: boolean;
     /**
      * @remarks
      * @worldMutation
@@ -6468,6 +6531,12 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Displays label inline. If undefined, it will be true.
+     *
+     */
+    inlineLabel?: boolean;
+    /**
+     * @remarks
      * Determines how many entries can be displayed before
      * scrolling is enabled, based on available space.
      *
@@ -6572,7 +6641,7 @@ export interface IImagePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
      * Alignment of the image in the container. If not defined,
-     * LayoutAlignment.Left is used.
+     * LayoutAlignment.Start is used.
      *
      */
     alignment?: LayoutAlignment;
@@ -6892,6 +6961,13 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     defaultSlots?: ListPaneSlotCreationProps[];
+    /**
+     * @remarks
+     * If true, pane height will not change based on slot count. If
+     * undefined, it will default to false
+     *
+     */
+    fixedHeight?: boolean;
     /**
      * @remarks
      * This will be the height of the list withing the pane
@@ -7458,6 +7534,12 @@ export interface IModalDialog {
     readonly id: string;
     /**
      * @remarks
+     * Title of the dialog
+     *
+     */
+    readonly title: LocalizedString | undefined;
+    /**
+     * @remarks
      * Dispatches a dismiss message to the active request if it is
      * available
      *
@@ -7472,6 +7554,14 @@ export interface IModalDialog {
      * Response message to be handled by the active request
      */
     sendResponse(response: ModalDialogCustomResponse): void;
+    /**
+     * @remarks
+     * Updates the title of the modal dialog
+     *
+     * @param title
+     * New title
+     */
+    setTitle(title: LocalizedString | undefined): void;
 }
 
 /**
@@ -8204,6 +8294,12 @@ export interface IPropertyItemOptionsBase {
     enable?: boolean;
     /**
      * @remarks
+     * Optional styling overrides for the item.
+     *
+     */
+    style?: PaneItemStyle;
+    /**
+     * @remarks
      * Initial visibility state of property item. If undefined, it
      * will default to true.
      *
@@ -8558,6 +8654,12 @@ export interface IRegisterExtensionOptionalParameters {
 export interface IRootPropertyPane extends IPropertyPane {
     /**
      * @remarks
+     * Property pane that is displayed over the root pane content
+     *
+     */
+    readonly drawerPane: IPropertyPane;
+    /**
+     * @remarks
      * Register a modal overlay to the root pane. It will be hidden
      * by default, when shown it will display over the root pane
      * content. Only one modal overlay can be shown at a time.
@@ -8760,6 +8862,12 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Displays label inline. If undefined, it will be true.
+     *
+     */
+    inlineLabel?: boolean;
+    /**
+     * @remarks
      * This callback is called when UI control value is changed.
      *
      */
@@ -8801,10 +8909,8 @@ export interface ISubPanePropertyItem extends IPropertyItemBase, IPropertyPane {
      * @remarks
      * Updates layout direction of the sub pane.
      *
-     * @param direction
-     * New layout direction.
      */
-    setDirection(direction: LayoutDirection): void;
+    setDirection(layout: PaneLayoutType): void;
 }
 
 /**
@@ -8828,13 +8934,6 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     collapsed?: boolean;
     /**
      * @remarks
-     * Determines layout direction of sub pane property items. If
-     * undefined, it will default to Vertical.
-     *
-     */
-    direction?: LayoutDirection;
-    /**
-     * @remarks
      * Determines if sub pane should have an expander. If
      * undefined, it will default to true.
      *
@@ -8847,6 +8946,32 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
      *
      */
     hasMargins?: boolean;
+    /**
+     * @remarks
+     * Determines layout of sub pane property items. If undefined,
+     * it will default to Vertical.
+     *
+     */
+    layout?: PaneLayoutType;
+    /**
+     * @remarks
+     * Maximum height of the property item.
+     *
+     */
+    maxHeight?: number;
+    /**
+     * @remarks
+     * Enables scrolling for the pane if it has a max height
+     * defined.
+     *
+     */
+    scrollable?: boolean;
+    /**
+     * @remarks
+     * Custom width of the property item.
+     *
+     */
+    width?: number | LayoutSize;
 }
 
 /**
@@ -9096,6 +9221,13 @@ export interface IVector2PropertyItem extends IPropertyItemBase {
 export interface IVector2PropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Shows clear button for the item. If undefined, it will be
+     * true.
+     *
+     */
+    hasClearButton?: boolean;
+    /**
+     * @remarks
      * If true label text will be hidden. It will be visible by
      * default.
      *
@@ -9182,6 +9314,13 @@ export interface IVector3PropertyItem extends IPropertyItemBase {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Shows clear button for the item. If undefined, it will be
+     * true.
+     *
+     */
+    hasClearButton?: boolean;
     /**
      * @remarks
      * If true label text will be hidden. It will be visible by
@@ -9494,6 +9633,8 @@ export interface WidgetCreateOptions {
     collisionOffset?: Vector3;
     collisionRadius?: number;
     collisionType?: WidgetCollisionType;
+    dimensionId?: string;
+    ignoreEditorModeVisibilityOverride?: boolean;
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
