@@ -7,6 +7,12 @@
 export interface IRootPropertyPane extends IPropertyPane {
     /**
      * @remarks
+     * Property pane that is displayed over the root pane content
+     *
+     */
+    readonly drawerPane: IPropertyPane;
+    /**
+     * @remarks
      * Register a modal overlay to the root pane. It will be hidden
      * by default, when shown it will display over the root pane
      * content. Only one modal overlay can be shown at a time.

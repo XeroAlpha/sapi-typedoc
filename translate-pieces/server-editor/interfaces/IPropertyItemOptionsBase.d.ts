@@ -1,3 +1,5 @@
+/* IMPORT */ import { PaneItemStyle } from '..';
+
 /**
  * Common optional properties for property items
  */
@@ -9,6 +11,12 @@ export interface IPropertyItemOptionsBase {
      *
      */
     enable?: boolean;
+    /**
+     * @remarks
+     * Optional styling overrides for the item.
+     *
+     */
+    style?: PaneItemStyle;
     /**
      * @remarks
      * Initial visibility state of property item. If undefined, it

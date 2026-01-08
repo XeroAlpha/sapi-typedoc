@@ -1,4 +1,4 @@
-/* IMPORT */ import { IModalControlPane, IPropertyPane, ModalDialogCustomResponse } from '..';
+/* IMPORT */ import { IModalControlPane, IPropertyPane, LocalizedString, ModalDialogCustomResponse } from '..';
 
 export interface IModalDialog {
     /**
@@ -27,6 +27,12 @@ export interface IModalDialog {
     readonly id: string;
     /**
      * @remarks
+     * Title of the dialog
+     *
+     */
+    readonly title: LocalizedString | undefined;
+    /**
+     * @remarks
      * Dispatches a dismiss message to the active request if it is
      * available
      *
@@ -41,4 +47,12 @@ export interface IModalDialog {
      * Response message to be handled by the active request
      */
     sendResponse(response: ModalDialogCustomResponse): void;
+    /**
+     * @remarks
+     * Updates the title of the modal dialog
+     *
+     * @param title
+     * New title
+     */
+    setTitle(title: LocalizedString | undefined): void;
 }

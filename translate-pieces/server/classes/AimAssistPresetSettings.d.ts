@@ -66,6 +66,15 @@ export class AimAssistPresetSettings {
     getExcludedEntityTargets(): string[] | undefined;
     /**
      * @remarks
+     * Gets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @returns
+     * The array of entity type families.
+     */
+    getExcludedEntityTypeFamilyTargets(): string[] | undefined;
+    /**
+     * @remarks
      * Gets the per-item aim-assist category Ids.
      *
      * @returns
@@ -114,6 +123,17 @@ export class AimAssistPresetSettings {
      * An array of entity Ids.
      */
     setExcludedEntityTargets(targets?: (keyof typeof MinecraftEntityTypes | string)[]): void;
+    /**
+     * @remarks
+     * Sets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @worldMutation
+     *
+     * @param targets
+     * An array of entity type families.
+     */
+    setExcludedEntityTypeFamilyTargets(targets?: string[]): void;
     /**
      * @remarks
      * Sets the per-item aim-assist category Ids.

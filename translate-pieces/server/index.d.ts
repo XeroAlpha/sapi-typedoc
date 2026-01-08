@@ -209,6 +209,8 @@ export { EntityIsStackableComponent } from './classes/EntityIsStackableComponent
 export { EntityIsStunnedComponent } from './classes/EntityIsStunnedComponent';
 export { EntityIsTamedComponent } from './classes/EntityIsTamedComponent';
 export { EntityItemComponent } from './classes/EntityItemComponent';
+export { EntityItemDropAfterEvent } from './classes/EntityItemDropAfterEvent';
+export { EntityItemDropAfterEventSignal } from './classes/EntityItemDropAfterEventSignal';
 export { EntityItemPickupAfterEvent } from './classes/EntityItemPickupAfterEvent';
 export { EntityItemPickupAfterEventSignal } from './classes/EntityItemPickupAfterEventSignal';
 export { EntityItemPickupBeforeEvent } from './classes/EntityItemPickupBeforeEvent';
@@ -502,6 +504,7 @@ export { EntityHealEventOptions } from './interfaces/EntityHealEventOptions';
 export { EntityHitInformation } from './interfaces/EntityHitInformation';
 export { EntityHurtAfterEventOptions } from './interfaces/EntityHurtAfterEventOptions';
 export { EntityHurtBeforeEventOptions } from './interfaces/EntityHurtBeforeEventOptions';
+export { EntityItemDropEventOptions } from './interfaces/EntityItemDropEventOptions';
 export { EntityItemPickupEventOptions } from './interfaces/EntityItemPickupEventOptions';
 export { EntityQueryOptions } from './interfaces/EntityQueryOptions';
 export { EntityQueryPropertyOptions } from './interfaces/EntityQueryPropertyOptions';

@@ -1,3 +1,5 @@
+/* IMPORT */ import { EngineError } from '../../common';
+
 /**
  * @beta
  * Handle to an aim-assist preset that exists in the
@@ -34,6 +36,8 @@ export class AimAssistPreset {
      * @returns
      * The array of block tags.
      * @throws This function can throw errors.
+     *
+     * {@link EngineError}
      */
     getExcludedBlockTagTargets(): string[];
     /**
@@ -56,6 +60,18 @@ export class AimAssistPreset {
      * @throws This function can throw errors.
      */
     getExcludedEntityTargets(): string[];
+    /**
+     * @remarks
+     * Gets the list of entity type families to exclude from aim
+     * assist targeting.
+     *
+     * @returns
+     * The array of entity type families.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    getExcludedEntityTypeFamilyTargets(): string[];
     /**
      * @remarks
      * Gets the per-item aim-assist category Ids.

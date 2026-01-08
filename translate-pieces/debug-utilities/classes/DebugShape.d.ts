@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, DimensionLocation, RGB, Vector3 } from '../../server';
+/* IMPORT */ import { Dimension, DimensionLocation, Entity, Player, RGB, Vector3 } from '../../server';
 
 /**
  * The base class for all debug shapes. Represents an object in
@@ -6,6 +6,14 @@
  */
 export class DebugShape {
     private constructor();
+    /**
+     * @remarks
+     * The entity this shape is attached to. When set, this shape
+     * will copy the root location of the attached entity and the
+     * shape's position will be used as an offset.
+     *
+     */
+    attachedTo?: Entity;
     /**
      * @remarks
      * The color of the shape.
@@ -64,6 +72,13 @@ export class DebugShape {
      *
      */
     readonly totalTimeLeft?: number;
+    /**
+     * @remarks
+     * The list of players that this shape will be visible to. If
+     * left empty, the shape will be visible to all players.
+     *
+     */
+    visibleTo: Player[];
     /**
      * @remarks
      * Removes this shape from the world. The shape can be re-added

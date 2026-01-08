@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutDirection } from '..';
+/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutSize, PaneLayoutType } from '..';
 
 /**
  * Optional properties for Sub Pane property item
@@ -21,13 +21,6 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     collapsed?: boolean;
     /**
      * @remarks
-     * Determines layout direction of sub pane property items. If
-     * undefined, it will default to Vertical.
-     *
-     */
-    direction?: LayoutDirection;
-    /**
-     * @remarks
      * Determines if sub pane should have an expander. If
      * undefined, it will default to true.
      *
@@ -40,4 +33,30 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
      *
      */
     hasMargins?: boolean;
+    /**
+     * @remarks
+     * Determines layout of sub pane property items. If undefined,
+     * it will default to Vertical.
+     *
+     */
+    layout?: PaneLayoutType;
+    /**
+     * @remarks
+     * Maximum height of the property item.
+     *
+     */
+    maxHeight?: number;
+    /**
+     * @remarks
+     * Enables scrolling for the pane if it has a max height
+     * defined.
+     *
+     */
+    scrollable?: boolean;
+    /**
+     * @remarks
+     * Custom width of the property item.
+     *
+     */
+    width?: number | LayoutSize;
 }

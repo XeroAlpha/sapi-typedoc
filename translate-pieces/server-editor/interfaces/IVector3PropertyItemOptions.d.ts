@@ -8,6 +8,13 @@
 export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Shows clear button for the item. If undefined, it will be
+     * true.
+     *
+     */
+    hasClearButton?: boolean;
+    /**
+     * @remarks
      * If true label text will be hidden. It will be visible by
      * default.
      *

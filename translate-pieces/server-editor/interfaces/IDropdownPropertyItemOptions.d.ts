@@ -21,6 +21,12 @@ export interface IDropdownPropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Displays label inline. If undefined, it will be true.
+     *
+     */
+    inlineLabel?: boolean;
+    /**
+     * @remarks
      * Determines how many entries can be displayed before
      * scrolling is enabled, based on available space.
      *

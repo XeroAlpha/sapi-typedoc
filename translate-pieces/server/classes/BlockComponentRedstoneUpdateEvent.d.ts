@@ -15,4 +15,14 @@ export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
      *
      */
     readonly powerLevel: number;
+    /**
+     * @beta
+     * @remarks
+     * The redstone signal strength from the last tick that was
+     * passing through this block. It is guaranteed to be >= the
+     * `min_power` of the block's 'minecraft:redstone_consumer'
+     * component.
+     *
+     */
+    readonly previousPowerLevel: number;
 }
