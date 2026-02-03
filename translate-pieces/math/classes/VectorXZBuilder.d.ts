@@ -1,14 +1,14 @@
-/* IMPORT */ import { Vector2 } from '../../server';
+/* IMPORT */ import { VectorXZ } from '../../server';
 
 /**
-                 * Vector2 wrapper class which can be used as a Vector2 for APIs on \@minecraft/server which require a Vector2.
+                 * VectorXZ wrapper class which can be used as a VectorXZ for APIs on \@minecraft/server which require a VectorXZ.
                  * @public
                  */
-                export declare class Vector2Builder implements Vector2 {
+                export declare class VectorXZBuilder implements VectorXZ {
                     x: number;
-                    y: number;
+                    z: number;
                     constructor(vecStr: string, delim?: string);
-                    constructor(vec: Vector2, arg?: never);
+                    constructor(vec: VectorXZ, arg?: never);
                     constructor(x: number, y: number);
                     toString(options?: {
                         decimals?: number;
@@ -17,25 +17,25 @@
                     /**
                      * Assigns the values of the passed in vector to this vector. Returns itself.
                      */
-                    assign(vec: Vector2): this;
+                    assign(vec: VectorXZ): this;
                     /**
                      * equals
                      *
                      * Check the equality of two vectors
                      */
-                    equals(v: Vector2): boolean;
+                    equals(v: VectorXZ): boolean;
                     /**
                      * add
                      *
                      * Adds the vector v to this, returning itself.
                      */
-                    add(v: Partial<Vector2>): this;
+                    add(v: Partial<VectorXZ>): this;
                     /**
                      * subtract
                      *
                      * Subtracts the vector v from this, returning itself.
                      */
-                    subtract(v: Partial<Vector2>): this;
+                    subtract(v: Partial<VectorXZ>): this;
                     /** scale
                      *
                      * Scales this by the passed in value, returning itself.
@@ -46,7 +46,7 @@
                      *
                      * Computes the dot product of this and the passed in vector.
                      */
-                    dot(vec: Vector2): number;
+                    dot(vec: VectorXZ): number;
                     /**
                      * magnitude
                      *
@@ -58,7 +58,7 @@
                      *
                      * Calculate the distance between two vectors
                      */
-                    distance(vec: Vector2): number;
+                    distance(vec: VectorXZ): number;
                     /**
                      * normalize
                      *
@@ -77,26 +77,26 @@
                      * Clamps the components of a vector to limits to produce a new vector
                      */
                     clamp(limits: {
-                        min?: Partial<Vector2>;
-                        max?: Partial<Vector2>;
+                        min?: Partial<VectorXZ>;
+                        max?: Partial<VectorXZ>;
                     }): this;
                     /**
                      * lerp
                      *
                      * Constructs a new vector using linear interpolation on each component from two vectors.
                      */
-                    lerp(vec: Vector2, t: number): this;
+                    lerp(vec: VectorXZ, t: number): this;
                     /**
                      * slerp
                      *
                      * Constructs a new vector using spherical linear interpolation on each component from two vectors.
                      */
-                    slerp(vec: Vector2, t: number): this;
+                    slerp(vec: VectorXZ, t: number): this;
                     /**
                      * multiply
                      *
                      * Element-wise multiplication of two vectors together.
-                     * Not to be confused with {@link Vector2Builder.dot} product
+                     * Not to be confused with {@link VectorXZBuilder.dot} product
                      */
-                    multiply(vec: Vector2): this;
+                    multiply(vec: VectorXZ): this;
                 }

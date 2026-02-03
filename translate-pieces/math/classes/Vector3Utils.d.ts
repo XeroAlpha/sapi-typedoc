@@ -1,135 +1,153 @@
 /* IMPORT */ import { Vector3 } from '../../server';
 
 /**
- * Utilities operating on Vector3 objects. All methods are static and do not modify the input objects.
- *
- * @public
- */
-export declare class Vector3Utils {
-    /**
-     * equals
-     *
-     * Check the equality of two vectors
-     */
-    static equals(v1: Vector3, v2: Vector3): boolean;
-    /**
-     * add
-     *
-     * Add two vectors to produce a new vector
-     */
-    static add(v1: Vector3, v2: Partial<Vector3>): Vector3;
-    /**
-     * subtract
-     *
-     * Subtract two vectors to produce a new vector (v1-v2)
-     */
-    static subtract(v1: Vector3, v2: Partial<Vector3>): Vector3;
-    /** scale
-     *
-     * Multiple all entries in a vector by a single scalar value producing a new vector
-     */
-    static scale(v1: Vector3, scale: number): Vector3;
-    /**
-     * dot
-     *
-     * Calculate the dot product of two vectors
-     */
-    static dot(a: Vector3, b: Vector3): number;
-    /**
-     * cross
-     *
-     * Calculate the cross product of two vectors. Returns a new vector.
-     */
-    static cross(a: Vector3, b: Vector3): Vector3;
-    /**
-     * magnitude
-     *
-     * The magnitude of a vector
-     */
-    static magnitude(v: Vector3): number;
-    /**
-     * distance
-     *
-     * Calculate the distance between two vectors
-     */
-    static distance(a: Vector3, b: Vector3): number;
-    /**
-     * normalize
-     *
-     * Takes a vector 3 and normalizes it to a unit vector
-     */
-    static normalize(v: Vector3): Vector3;
-    /**
-     * floor
-     *
-     * Floor the components of a vector to produce a new vector
-     */
-    static floor(v: Vector3): Vector3;
-    /**
-     * toString
-     *
-     * Create a string representation of a vector3
-     */
-    static toString(v: Vector3, options?: {
-        decimals?: number;
-        delimiter?: string;
-    }): string;
-    /**
-     * fromString
-     *
-     * Gets a Vector3 from the string representation produced by {@link Vector3Utils.toString}. If any numeric value is not a number
-     * or the format is invalid, undefined is returned.
-     * @param str - The string to parse
-     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link Vector3Utils.toString}
-     */
-    static fromString(str: string, delimiter?: string): Vector3 | undefined;
-    /**
-     * clamp
-     *
-     * Clamps the components of a vector to limits to produce a new vector
-     */
-    static clamp(v: Vector3, limits?: {
-        min?: Partial<Vector3>;
-        max?: Partial<Vector3>;
-    }): Vector3;
-    /**
-     * lerp
-     *
-     * Constructs a new vector using linear interpolation on each component from two vectors.
-     */
-    static lerp(a: Vector3, b: Vector3, t: number): Vector3;
-    /**
-     * slerp
-     *
-     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
-     */
-    static slerp(a: Vector3, b: Vector3, t: number): Vector3;
-    /**
-     * multiply
-     *
-     * Element-wise multiplication of two vectors together.
-     * Not to be confused with {@link Vector3Utils.dot} product or {@link Vector3Utils.cross} product
-     */
-    static multiply(a: Vector3, b: Vector3): Vector3;
-    /**
-     * rotateX
-     *
-     * Rotates the vector around the x axis counterclockwise (left hand rule)
-     * @param a - Angle in radians
-     */
-    static rotateX(v: Vector3, a: number): Vector3;
-    /**
-     * rotateY
-     *
-     * Rotates the vector around the y axis counterclockwise (left hand rule)
-     * @param a - Angle in radians
-     */
-    static rotateY(v: Vector3, a: number): Vector3;
-    /**
-     * rotateZ
-     *
-     * Rotates the vector around the z axis counterclockwise (left hand rule)
-     * @param a - Angle in radians
-     */
-    static rotateZ(v: Vector3, a: number): Vector3;
-}
+                 * Utilities operating on Vector3 objects. All methods are static and do not modify the input objects.
+                 *
+                 * @public
+                 */
+                export declare class Vector3Utils {
+                    /**
+                     * equals
+                     *
+                     * Check the equality of two vectors
+                     */
+                    static equals(v1: Vector3, v2: Vector3): boolean;
+                    /**
+                     * add
+                     *
+                     * Add two vectors to produce a new vector
+                     */
+                    static add(v1: Vector3, v2: Partial<Vector3>): Vector3;
+                    /**
+                     * subtract
+                     *
+                     * Subtract two vectors to produce a new vector (v1-v2)
+                     */
+                    static subtract(v1: Vector3, v2: Partial<Vector3>): Vector3;
+                    /** scale
+                     *
+                     * Multiple all entries in a vector by a single scalar value producing a new vector
+                     */
+                    static scale(v1: Vector3, scale: number): Vector3;
+                    /**
+                     * dot
+                     *
+                     * Calculate the dot product of two vectors
+                     */
+                    static dot(a: Vector3, b: Vector3): number;
+                    /**
+                     * cross
+                     *
+                     * Calculate the cross product of two vectors. Returns a new vector.
+                     */
+                    static cross(a: Vector3, b: Vector3): Vector3;
+                    /**
+                     * magnitude
+                     *
+                     * The magnitude of a vector
+                     */
+                    static magnitude(v: Vector3): number;
+                    /**
+                     * distance
+                     *
+                     * Calculate the distance between two vectors
+                     */
+                    static distance(a: Vector3, b: Vector3): number;
+                    /**
+                     * normalize
+                     *
+                     * Takes a vector 3 and normalizes it to a unit vector
+                     */
+                    static normalize(v: Vector3): Vector3;
+                    /**
+                     * floor
+                     *
+                     * Floor the components of a vector to produce a new vector
+                     */
+                    static floor(v: Vector3): Vector3;
+                    /**
+                     * ceil
+                     *
+                     * Ceil the components of a vector to produce a new vector
+                     */
+                    static ceil(v: Vector3): Vector3;
+                    /**
+                     * min
+                     *
+                     * Min the components of two vectors to produce a new vector
+                     */
+                    static min(a: Vector3, b: Vector3): Vector3;
+                    /**
+                     * max
+                     *
+                     * Max the components of two vectors to produce a new vector
+                     */
+                    static max(a: Vector3, b: Vector3): Vector3;
+                    /**
+                     * toString
+                     *
+                     * Create a string representation of a vector3
+                     */
+                    static toString(v: Vector3, options?: {
+                        decimals?: number;
+                        delimiter?: string;
+                    }): string;
+                    /**
+                     * fromString
+                     *
+                     * Gets a Vector3 from the string representation produced by {@link Vector3Utils.toString}. If any numeric value is not a number
+                     * or the format is invalid, undefined is returned.
+                     * @param str - The string to parse
+                     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link Vector3Utils.toString}
+                     */
+                    static fromString(str: string, delimiter?: string): Vector3 | undefined;
+                    /**
+                     * clamp
+                     *
+                     * Clamps the components of a vector to limits to produce a new vector
+                     */
+                    static clamp(v: Vector3, limits?: {
+                        min?: Partial<Vector3>;
+                        max?: Partial<Vector3>;
+                    }): Vector3;
+                    /**
+                     * lerp
+                     *
+                     * Constructs a new vector using linear interpolation on each component from two vectors.
+                     */
+                    static lerp(a: Vector3, b: Vector3, t: number): Vector3;
+                    /**
+                     * slerp
+                     *
+                     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
+                     */
+                    static slerp(a: Vector3, b: Vector3, t: number): Vector3;
+                    /**
+                     * multiply
+                     *
+                     * Element-wise multiplication of two vectors together.
+                     * Not to be confused with {@link Vector3Utils.dot} product or {@link Vector3Utils.cross} product
+                     */
+                    static multiply(a: Vector3, b: Vector3): Vector3;
+                    /**
+                     * rotateX
+                     *
+                     * Rotates the vector around the x axis counterclockwise (left hand rule)
+                     * @param a - Angle in radians
+                     */
+                    static rotateX(v: Vector3, a: number): Vector3;
+                    /**
+                     * rotateY
+                     *
+                     * Rotates the vector around the y axis counterclockwise (left hand rule)
+                     * @param a - Angle in radians
+                     */
+                    static rotateY(v: Vector3, a: number): Vector3;
+                    /**
+                     * rotateZ
+                     *
+                     * Rotates the vector around the z axis counterclockwise (left hand rule)
+                     * @param a - Angle in radians
+                     */
+                    static rotateZ(v: Vector3, a: number): Vector3;
+                }

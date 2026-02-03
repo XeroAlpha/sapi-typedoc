@@ -1,4 +1,4 @@
-/* IMPORT */ import { Vector2 } from '../../server';
+/* IMPORT */ import { VectorXZ } from '../../server';
 
 /**
                  * zero
@@ -7,4 +7,4 @@
                  *
                  * @public
                  */
-                export declare const VECTOR2_ZERO: Vector2;
+                export declare const VECTORXZ_ZERO: VectorXZ;

@@ -1,12 +1,11 @@
 /* IMPORT */ import { RGBA, StructureMirrorAxis, StructureRotation, Vector3 } from '../../server';
-/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentBoundingBoxStateChangeEventParameters } from '..';
+/* IMPORT */ import { Axis, WidgetComponentBaseOptions, WidgetComponentBoundingBoxLimit, WidgetComponentBoundingBoxStateChangeEventParameters } from '..';
 
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
     boundsOffset?: Vector3;
     enableResizeHandles?: Axis;
     hullColor?: RGBA;
-    maxSize?: Vector3;
-    minSize?: Vector3;
+    limit?: WidgetComponentBoundingBoxLimit;
     mirror?: StructureMirrorAxis;
     normalizedOrigin?: Vector3;
     outlineColor?: RGBA;

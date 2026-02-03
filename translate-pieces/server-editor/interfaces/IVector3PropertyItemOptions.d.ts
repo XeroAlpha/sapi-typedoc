@@ -22,6 +22,12 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Hides Y axis input field. If undefined, it will be false.
+     *
+     */
+    hideYAxis?: boolean;
+    /**
+     * @remarks
      * If we should treat the Vector3 properties as integer values.
      * By default is false.
      *

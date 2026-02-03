@@ -335,6 +335,7 @@ export { SelectionManifestData } from './interfaces/SelectionManifestData';
 export { SelectionManifestEntry } from './interfaces/SelectionManifestEntry';
 export { WeightedBlock } from './interfaces/WeightedBlock';
 export { WidgetComponentBaseOptions } from './interfaces/WidgetComponentBaseOptions';
+export { WidgetComponentBoundingBoxLimit } from './interfaces/WidgetComponentBoundingBoxLimit';
 export { WidgetComponentBoundingBoxOptions } from './interfaces/WidgetComponentBoundingBoxOptions';
 export { WidgetComponentClipboardOptions } from './interfaces/WidgetComponentClipboardOptions';
 export { WidgetComponentEntityOptions } from './interfaces/WidgetComponentEntityOptions';
