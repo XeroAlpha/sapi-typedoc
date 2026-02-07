@@ -67,6 +67,60 @@ patches.push(({ project }) => {
     PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
 });
 
+patches.push(({ project }) => {
+    // @minecraft/math
+    const mathDts = project.getSourceFileOrThrow('math.d.ts');
+    const dtsLines = mathDts.getFullText().split(/\r\n|\n/g);
+    let state: 'normal' | 'comment' | 'validLineAfterComment' = 'normal';
+    let commentIndent = 0;
+    let previousIndent = 0;
+    let padLength = 0;
+    const outputLines: string[] = [];
+    for (const line of dtsLines) {
+        const trimmedLine = line.trimStart();
+        if (line === '') {
+            outputLines.push('');
+            continue;
+        }
+        if (state === 'normal' || state === 'validLineAfterComment') {
+            let indentLength = line.length - trimmedLine.length;
+            assert(indentLength >= padLength);
+            indentLength -= padLength;
+            let expectIndent = indentLength;
+            if (state === 'validLineAfterComment') {
+                expectIndent = commentIndent;
+            }
+            if (trimmedLine === '}' && previousIndent - indentLength < 4) {
+                expectIndent = previousIndent - 4;
+            }
+            if (expectIndent !== indentLength) {
+                padLength += indentLength - expectIndent;
+                assert(padLength >= 0);
+                indentLength = expectIndent;
+            }
+            outputLines.push(`${' '.repeat(indentLength)}${trimmedLine}`);
+            state = 'normal';
+            if (trimmedLine === '/**') {
+                state = 'comment';
+                commentIndent = indentLength;
+            }
+            previousIndent = indentLength;
+        } else {
+            if (trimmedLine.startsWith('*')) {
+                // force indent be commentIndent + 1
+                outputLines.push(`${' '.repeat(commentIndent + 1)}${trimmedLine}`);
+            } else {
+                // unexpected
+                outputLines.push(line);
+            }
+            if (trimmedLine === '*/') {
+                state = 'validLineAfterComment';
+            }
+        }
+    }
+    mathDts.replaceWithText(outputLines.join('\n'));
+});
+
 const errors: unknown[] = [];
 export default {
     afterLoad(context) {
