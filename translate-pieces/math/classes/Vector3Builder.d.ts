@@ -109,6 +109,24 @@ export declare class Vector3Builder implements Vector3 {
      */
     floor(): this;
     /**
+     * ceil
+     *
+     * Ceil the components of a vector to produce a new vector
+     */
+    ceil(): this;
+    /**
+     * min
+     *
+     * Min the components of two vectors to produce a new vector
+     */
+    min(vec: Vector3): this;
+    /**
+     * max
+     *
+     * Max the components of two vectors to produce a new vector
+     */
+    max(vec: Vector3): this;
+    /**
      * toString
      *
      * Create a string representation of a vector

@@ -88,6 +88,24 @@ export declare class Vector3Utils {
      */
     static floor(v: Vector3): Vector3;
     /**
+     * ceil
+     *
+     * Ceil the components of a vector to produce a new vector
+     */
+    static ceil(v: Vector3): Vector3;
+    /**
+     * min
+     *
+     * Min the components of two vectors to produce a new vector
+     */
+    static min(a: Vector3, b: Vector3): Vector3;
+    /**
+     * max
+     *
+     * Max the components of two vectors to produce a new vector
+     */
+    static max(a: Vector3, b: Vector3): Vector3;
+    /**
      * toString
      *
      * Create a string representation of a vector3

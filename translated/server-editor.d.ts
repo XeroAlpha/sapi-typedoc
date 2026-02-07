@@ -2786,6 +2786,8 @@ export declare class CylinderBrushShape extends BrushShape {
 
 export class EditorConstants {
     private constructor();
+    readonly maxBlockVolume: number;
+    readonly maxDynamicSelectionSize: Vector3;
     readonly maxSelectionSize: Vector3;
     readonly maxStructureOffset: Vector3;
     readonly minStructureOffset: Vector3;
@@ -9330,6 +9332,12 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
     hiddenLabel?: boolean;
     /**
      * @remarks
+     * Hides Y axis input field. If undefined, it will be false.
+     *
+     */
+    hideYAxis?: boolean;
+    /**
+     * @remarks
      * If we should treat the Vector3 properties as integer values.
      * By default is false.
      *
@@ -9545,13 +9553,18 @@ export interface WidgetComponentBaseOptions {
     visible?: boolean;
 }
 
+export interface WidgetComponentBoundingBoxLimit {
+    max: Vector3;
+    maxBlockVolume?: number;
+    min: Vector3;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
     boundsOffset?: Vector3;
     enableResizeHandles?: Axis;
     hullColor?: RGBA;
-    maxSize?: Vector3;
-    minSize?: Vector3;
+    limit?: WidgetComponentBoundingBoxLimit;
     mirror?: StructureMirrorAxis;
     normalizedOrigin?: Vector3;
     outlineColor?: RGBA;

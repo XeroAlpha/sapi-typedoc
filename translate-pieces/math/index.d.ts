@@ -1,4 +1,6 @@
 export { }
+export { AABBInvalidExtentError } from './classes/AABBInvalidExtentError';
+export { AABBUtils } from './classes/AABBUtils';
 export { clampNumber } from './functions/clampNumber';
 export { VECTOR2_ZERO } from './variables/VECTOR2_ZERO';
 export { Vector2Builder } from './classes/Vector2Builder';
@@ -19,3 +21,6 @@ export { VECTOR3_WEST } from './variables/VECTOR3_WEST';
 export { VECTOR3_ZERO } from './variables/VECTOR3_ZERO';
 export { Vector3Builder } from './classes/Vector3Builder';
 export { Vector3Utils } from './classes/Vector3Utils';
+export { VECTORXZ_ZERO } from './variables/VECTORXZ_ZERO';
+export { VectorXZBuilder } from './classes/VectorXZBuilder';
+export { VectorXZUtils } from './classes/VectorXZUtils';

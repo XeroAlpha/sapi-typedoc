@@ -1,5 +1,189 @@
+import type { AABB } from '@minecraft/server';
+import { BlockVolume } from '@minecraft/server';
 import type { Vector2 } from '@minecraft/server';
 import type { Vector3 } from '@minecraft/server';
+import type { VectorXZ } from '@minecraft/server';
+
+/**
+ * An error that is thrown when using an invalid AABB with AABBUtils operations.
+ *
+ * @public
+ */
+export declare class AABBInvalidExtentError extends Error {
+    constructor(extent: Vector3);
+}
+
+/**
+ * Utilities operating on AABB objects. All methods are static and do not modify the input objects.
+ *
+ * @public
+ */
+export declare class AABBUtils {
+    private constructor();
+    /**
+     * EPSILON
+     *
+     * The internal epsilon value that determines validity and used for block volume tolerance.
+     */
+    static EPSILON: number;
+    /**
+     * createFromCornerPoints
+     *
+     * Gets an AABB from points defining it's corners, the order doesn't matter.
+     * @param pointA - The first corner point.
+     * @param pointB - The second corner point.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the resulting AABB is invalid.
+     *
+     * @returns - The resulting AABB.
+     */
+    static createFromCornerPoints(pointA: Vector3, pointB: Vector3): AABB;
+    /**
+     * isValid
+     *
+     * Determines if the AABB has non-zero extent on all axes.
+     * @param aabb - The AABB to test for validity.
+     * @returns - True if all extent axes are non-zero, otherwise false.
+     */
+    static isValid(aabb: AABB): boolean;
+    /**
+     * throwErrorIfInvalid
+     *
+     * Throws an error if the AABB is invalid.
+     * @param aabb - The AABB to test for validity.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     */
+    static throwErrorIfInvalid(aabb: AABB): void;
+    /**
+     * equals
+     *
+     * Compares the equality of two AABBs.
+     * @param aabb - The first AABB in the comparison.
+     * @param other - The second AABB in the comparison.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if either of the input AABBs are invalid.
+     *
+     * @returns - True if the center and extent of both AABBs are equal.
+     */
+    static equals(aabb: AABB, other: AABB): boolean;
+    /**
+     * getMin
+     *
+     * Gets the minimum corner of an AABB.
+     * @param aabb - The AABB to retrieve the minimum corner of.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The minimum corner of the AABB.
+     */
+    static getMin(aabb: AABB): Vector3;
+    /**
+     * getMax
+     *
+     * Gets the maximum corner of an AABB.
+     * @param aabb - The AABB to retrieve the maximum corner of.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The maximum corner of the AABB.
+     */
+    static getMax(aabb: AABB): Vector3;
+    /**
+     * getSpan
+     *
+     * Gets the span of an AABB.
+     * @param aabb - The AABB to retrieve the span of.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The span of the AABB.
+     */
+    static getSpan(aabb: AABB): Vector3;
+    /**
+     * getBlockVolume
+     *
+     * Creates the smallest BlockVolume that includes all of a source AABB.
+     * @param aabb - The source AABB.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The BlockVolume containing the source AABB.
+     */
+    static getBlockVolume(aabb: AABB): BlockVolume;
+    /**
+     * translate
+     *
+     * Creates a translated AABB given a source AABB and translation vector.
+     * @param aabb - The source AABB.
+     * @param delta - The translation vector to add to the AABBs center.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The resulting translated AABB.
+     */
+    static translate(aabb: AABB, delta: Vector3): AABB;
+    /**
+     * dilate
+     *
+     * Creates a dilated AABB given a source AABB and dilation vector.
+     * @param aabb - The source AABB.
+     * @param size - The dilation vector to add to the AABBs extent.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns - The resulting dilated AABB.
+     */
+    static dilate(aabb: AABB, size: Vector3): AABB;
+    /**
+     * expand
+     *
+     * Creates an expanded AABB given two source AABBs.
+     * @param aabb - The first source AABB.
+     * @param other - The second source AABB.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if either of the input AABBs are invalid.
+     *
+     * @returns - The resulting expanded AABB.
+     */
+    static expand(aabb: AABB, other: AABB): AABB;
+    /**
+     * getIntersection
+     *
+     * Creates an AABB of the intersecting area of two source AABBs.
+     * @param aabb - The first source AABB.
+     * @param other - The second source AABB.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if either of the input AABBs are invalid.
+     *
+     * @returns - The resulting intersecting AABB if they intersect, otherwise returns undefined.
+     */
+    static getIntersection(aabb: AABB, other: AABB): AABB | undefined;
+    /**
+     * intersects
+     *
+     * Calculates if two AABBs are intersecting.
+     * @param aabb - The first AABB.
+     * @param other - The second AABB.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if either of the input AABBs are invalid.
+     *
+     * @returns - True if the AABBs are intersecting, otherwise false.
+     */
+    static intersects(aabb: AABB, other: AABB): boolean;
+    /**
+     * isInside
+     *
+     * Calculates if a position is inside of an AABB.
+     * @param aabb - The AABB to test against.
+     * @param pos - The position to test.
+     * @throws {@link AABBInvalidExtentError}
+     * This exception is thrown if the input AABB is invalid.
+     *
+     * @returns True if the position is inside of the AABB, otherwise returns false.
+     */
+    static isInside(aabb: AABB, pos: Vector3): boolean;
+}
 
 /**
  * Clamps the passed in number to the passed in min and max values.
@@ -35,6 +219,91 @@ export declare class Vector2Builder implements Vector2 {
         decimals?: number;
         delimiter?: string;
     }): string;
+    /**
+     * Assigns the values of the passed in vector to this vector. Returns itself.
+     */
+    assign(vec: Vector2): this;
+    /**
+     * equals
+     *
+     * Check the equality of two vectors
+     */
+    equals(v: Vector2): boolean;
+    /**
+     * add
+     *
+     * Adds the vector v to this, returning itself.
+     */
+    add(v: Partial<Vector2>): this;
+    /**
+     * subtract
+     *
+     * Subtracts the vector v from this, returning itself.
+     */
+    subtract(v: Partial<Vector2>): this;
+    /** scale
+     *
+     * Scales this by the passed in value, returning itself.
+     */
+    scale(val: number): this;
+    /**
+     * dot
+     *
+     * Computes the dot product of this and the passed in vector.
+     */
+    dot(vec: Vector2): number;
+    /**
+     * magnitude
+     *
+     * The magnitude of the vector
+     */
+    magnitude(): number;
+    /**
+     * distance
+     *
+     * Calculate the distance between two vectors
+     */
+    distance(vec: Vector2): number;
+    /**
+     * normalize
+     *
+     * Normalizes this vector, returning itself.
+     */
+    normalize(): this;
+    /**
+     * floor
+     *
+     * Floor the components of a vector to produce a new vector
+     */
+    floor(): this;
+    /**
+     * clamp
+     *
+     * Clamps the components of a vector to limits to produce a new vector
+     */
+    clamp(limits: {
+        min?: Partial<Vector2>;
+        max?: Partial<Vector2>;
+    }): this;
+    /**
+     * lerp
+     *
+     * Constructs a new vector using linear interpolation on each component from two vectors.
+     */
+    lerp(vec: Vector2, t: number): this;
+    /**
+     * slerp
+     *
+     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
+     */
+    slerp(vec: Vector2, t: number): this;
+    /**
+     * multiply
+     *
+     * Element-wise multiplication of two vectors together.
+     * Not to be confused with {@link Vector2Builder.dot} product
+     */
+    multiply(vec: Vector2): this;
 }
 
 /**
@@ -45,6 +314,59 @@ export declare class Vector2Builder implements Vector2 {
  * @public
  */
 export declare class Vector2Utils {
+    /**
+     * equals
+     *
+     * Check the equality of two vectors
+     */
+    static equals(v1: Vector2, v2: Vector2): boolean;
+    /**
+     * add
+     *
+     * Add two vectors to produce a new vector
+     */
+    static add(v1: Vector2, v2: Partial<Vector2>): Vector2;
+    /**
+     * subtract
+     *
+     * Subtract two vectors to produce a new vector (v1-v2)
+     */
+    static subtract(v1: Vector2, v2: Partial<Vector2>): Vector2;
+    /** scale
+     *
+     * Multiple all entries in a vector by a single scalar value producing a new vector
+     */
+    static scale(v1: Vector2, scale: number): Vector2;
+    /**
+     * dot
+     *
+     * Calculate the dot product of two vectors
+     */
+    static dot(a: Vector2, b: Vector2): number;
+    /**
+     * magnitude
+     *
+     * The magnitude of a vector
+     */
+    static magnitude(v: Vector2): number;
+    /**
+     * distance
+     *
+     * Calculate the distance between two vectors
+     */
+    static distance(a: Vector2, b: Vector2): number;
+    /**
+     * normalize
+     *
+     * Takes a vector 3 and normalizes it to a unit vector
+     */
+    static normalize(v: Vector2): Vector2;
+    /**
+     * floor
+     *
+     * Floor the components of a vector to produce a new vector
+     */
+    static floor(v: Vector2): Vector2;
     /**
      * toString
      *
@@ -59,12 +381,40 @@ export declare class Vector2Utils {
     /**
      * fromString
      *
-     * Gets a Vector2 from the string representation produced by {@link Vector3Utils.toString}. If any numeric value is not a number
+     * Gets a Vector2 from the string representation produced by {@link Vector2Utils.toString}. If any numeric value is not a number
      * or the format is invalid, undefined is returned.
      * @param str - The string to parse
-     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link Vector3Utils.toString}
+     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link Vector2Utils.toString}
      */
     static fromString(str: string, delimiter?: string): Vector2 | undefined;
+    /**
+     * clamp
+     *
+     * Clamps the components of a vector to limits to produce a new vector
+     */
+    static clamp(v: Vector2, limits?: {
+        min?: Partial<Vector2>;
+        max?: Partial<Vector2>;
+    }): Vector2;
+    /**
+     * lerp
+     *
+     * Constructs a new vector using linear interpolation on each component from two vectors.
+     */
+    static lerp(a: Vector2, b: Vector2, t: number): Vector2;
+    /**
+     * slerp
+     *
+     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
+     */
+    static slerp(a: Vector2, b: Vector2, t: number): Vector2;
+    /**
+     * multiply
+     *
+     * Element-wise multiplication of two vectors together.
+     * Not to be confused with {@link Vector2Utils.dot} product
+     */
+    static multiply(a: Vector2, b: Vector2): Vector2;
 }
 
 /**
@@ -330,6 +680,24 @@ export declare class Vector3Builder implements Vector3 {
      */
     floor(): this;
     /**
+     * ceil
+     *
+     * Ceil the components of a vector to produce a new vector
+     */
+    ceil(): this;
+    /**
+     * min
+     *
+     * Min the components of two vectors to produce a new vector
+     */
+    min(vec: Vector3): this;
+    /**
+     * max
+     *
+     * Max the components of two vectors to produce a new vector
+     */
+    max(vec: Vector3): this;
+    /**
      * toString
      *
      * Create a string representation of a vector
@@ -485,6 +853,24 @@ export declare class Vector3Utils {
      */
     static floor(v: Vector3): Vector3;
     /**
+     * ceil
+     *
+     * Ceil the components of a vector to produce a new vector
+     */
+    static ceil(v: Vector3): Vector3;
+    /**
+     * min
+     *
+     * Min the components of two vectors to produce a new vector
+     */
+    static min(a: Vector3, b: Vector3): Vector3;
+    /**
+     * max
+     *
+     * Max the components of two vectors to produce a new vector
+     */
+    static max(a: Vector3, b: Vector3): Vector3;
+    /**
      * toString
      *
      * Create a string representation of a vector3
@@ -559,6 +945,223 @@ export declare class Vector3Utils {
      * @param a - Angle in radians
      */
     static rotateZ(v: Vector3, a: number): Vector3;
+}
+
+/**
+ * zero
+ *
+ * A vector representing the value of 0 in all directions (0,0)
+ *
+ * @public
+ */
+export declare const VECTORXZ_ZERO: VectorXZ;
+
+/**
+ * VectorXZ wrapper class which can be used as a VectorXZ for APIs on \@minecraft/server which require a VectorXZ.
+ * @public
+ */
+export declare class VectorXZBuilder implements VectorXZ {
+    x: number;
+    z: number;
+    constructor(vecStr: string, delim?: string);
+    constructor(vec: VectorXZ, arg?: never);
+    constructor(x: number, y: number);
+    toString(options?: {
+        decimals?: number;
+        delimiter?: string;
+    }): string;
+    /**
+     * Assigns the values of the passed in vector to this vector. Returns itself.
+     */
+    assign(vec: VectorXZ): this;
+    /**
+     * equals
+     *
+     * Check the equality of two vectors
+     */
+    equals(v: VectorXZ): boolean;
+    /**
+     * add
+     *
+     * Adds the vector v to this, returning itself.
+     */
+    add(v: Partial<VectorXZ>): this;
+    /**
+     * subtract
+     *
+     * Subtracts the vector v from this, returning itself.
+     */
+    subtract(v: Partial<VectorXZ>): this;
+    /** scale
+     *
+     * Scales this by the passed in value, returning itself.
+     */
+    scale(val: number): this;
+    /**
+     * dot
+     *
+     * Computes the dot product of this and the passed in vector.
+     */
+    dot(vec: VectorXZ): number;
+    /**
+     * magnitude
+     *
+     * The magnitude of the vector
+     */
+    magnitude(): number;
+    /**
+     * distance
+     *
+     * Calculate the distance between two vectors
+     */
+    distance(vec: VectorXZ): number;
+    /**
+     * normalize
+     *
+     * Normalizes this vector, returning itself.
+     */
+    normalize(): this;
+    /**
+     * floor
+     *
+     * Floor the components of a vector to produce a new vector
+     */
+    floor(): this;
+    /**
+     * clamp
+     *
+     * Clamps the components of a vector to limits to produce a new vector
+     */
+    clamp(limits: {
+        min?: Partial<VectorXZ>;
+        max?: Partial<VectorXZ>;
+    }): this;
+    /**
+     * lerp
+     *
+     * Constructs a new vector using linear interpolation on each component from two vectors.
+     */
+    lerp(vec: VectorXZ, t: number): this;
+    /**
+     * slerp
+     *
+     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
+     */
+    slerp(vec: VectorXZ, t: number): this;
+    /**
+     * multiply
+     *
+     * Element-wise multiplication of two vectors together.
+     * Not to be confused with {@link VectorXZBuilder.dot} product
+     */
+    multiply(vec: VectorXZ): this;
+}
+
+/**
+ * Utilities operating on VectorXZ objects. All methods are static and do not modify the input objects.
+ *
+ * @public
+ */
+export declare class VectorXZUtils {
+    /**
+     * equals
+     *
+     * Check the equality of two vectors
+     */
+    static equals(v1: VectorXZ, v2: VectorXZ): boolean;
+    /**
+     * add
+     *
+     * Add two vectors to produce a new vector
+     */
+    static add(v1: VectorXZ, v2: Partial<VectorXZ>): VectorXZ;
+    /**
+     * subtract
+     *
+     * Subtract two vectors to produce a new vector (v1-v2)
+     */
+    static subtract(v1: VectorXZ, v2: Partial<VectorXZ>): VectorXZ;
+    /** scale
+     *
+     * Multiple all entries in a vector by a single scalar value producing a new vector
+     */
+    static scale(v1: VectorXZ, scale: number): VectorXZ;
+    /**
+     * dot
+     *
+     * Calculate the dot product of two vectors
+     */
+    static dot(a: VectorXZ, b: VectorXZ): number;
+    /**
+     * magnitude
+     *
+     * The magnitude of a vector
+     */
+    static magnitude(v: VectorXZ): number;
+    /**
+     * distance
+     *
+     * Calculate the distance between two vectors
+     */
+    static distance(a: VectorXZ, b: VectorXZ): number;
+    /**
+     * normalize
+     *
+     * Takes a vector 3 and normalizes it to a unit vector
+     */
+    static normalize(v: VectorXZ): VectorXZ;
+    /**
+     * floor
+     *
+     * Floor the components of a vector to produce a new vector
+     */
+    static floor(v: VectorXZ): VectorXZ;
+    /**
+     * toString
+     *
+     * Create a string representation of a vectorxz
+     */
+    static toString(v: VectorXZ, options?: {
+        decimals?: number;
+        delimiter?: string;
+    }): string;
+    /**
+     * fromString
+     *
+     * Gets a VectorXZ from the string representation produced by {@link VectorXZUtils.toString}. If any numeric value is not a number
+     * or the format is invalid, undefined is returned.
+     * @param str - The string to parse
+     * @param delimiter - The delimiter used to separate the components. Defaults to the same as the default for {@link VectorXZUtils.toString}
+     */
+    static fromString(str: string, delimiter?: string): VectorXZ | undefined;
+    /**
+     * clamp
+     *
+     * Clamps the components of a vector to limits to produce a new vector
+     */
+    static clamp(v: VectorXZ, limits?: {
+        min?: Partial<VectorXZ>;
+        max?: Partial<VectorXZ>;
+    }): VectorXZ;
+    /**
+     * lerp
+     *
+     * Constructs a new vector using linear interpolation on each component from two vectors.
+     */
+    static lerp(a: VectorXZ, b: VectorXZ, t: number): VectorXZ;
+    /**
+     * slerp
+     *
+     * Constructs a new vector using spherical linear interpolation on each component from two vectors.
+     */
+    static slerp(a: VectorXZ, b: VectorXZ, t: number): VectorXZ;
+    /**
+     * multiply
+     *
+     * Element-wise multiplication of two vectors together.
+     * Not to be confused with {@link VectorXZUtils.dot} product
+     */
+    static multiply(a: VectorXZ, b: VectorXZ): VectorXZ;
 }
 
 export { }
