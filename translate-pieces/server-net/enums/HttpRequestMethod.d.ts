@@ -34,6 +34,14 @@ export enum HttpRequestMethod {
     Head = 'Head',
     /**
      * @remarks
+     * Represents the method for an HTTP PATCH request. PATCH
+     * requests are commonly used to apply partial modifications to
+     * a resource.
+     *
+     */
+    Patch = 'Patch',
+    /**
+     * @remarks
      * 表示 HTTP POST 请求。
      * POST 请求通常用于在指定 URI 下创建新资源。
      * 

@@ -1118,6 +1118,8 @@ export declare enum MinecraftItemTypes {
     GoldenCarrot = "minecraft:golden_carrot",
     /** 金胸甲。 */
     GoldenChestplate = "minecraft:golden_chestplate",
+    /** 金蒲公英。 */
+    GoldenDandelion = "minecraft:golden_dandelion",
     /** 金头盔。 */
     GoldenHelmet = "minecraft:golden_helmet",
     /** 金锄。 */

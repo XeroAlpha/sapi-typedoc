@@ -1,0 +1,56 @@
+/* IMPORT */ import { RGBA, Vector3 } from '../../server';
+/* IMPORT */ import { WidgetComponentRenderPrimitiveTypeBase } from '..';
+
+export class WidgetComponentRenderPrimitiveTypeCylinder extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusX: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusZ: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    constructor(
+        center: Vector3,
+        radiusX: number,
+        radiusZ: number,
+        height: number,
+        color: RGBA,
+        rotation?: Vector3,
+        alpha?: number,
+    );
+}

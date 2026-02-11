@@ -7,5 +7,5 @@ export class FormRejectError extends Error {
      * @earlyExecution
      *
      */
-    reason: FormRejectReason;
+    readonly reason: FormRejectReason;
 }

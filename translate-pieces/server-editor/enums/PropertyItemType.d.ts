@@ -7,6 +7,7 @@ export declare enum PropertyItemType {
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
     ButtonPane = 'editorUI:ButtonPane',
+    CollectionTree = 'editorUI:CollectionTree',
     ColorPicker = 'editorUI:ColorPicker',
     ColorTimeline = 'editorUI:ColorTimeline',
     ComboBox = 'editorUI:ComboBox',
@@ -28,4 +29,5 @@ export declare enum PropertyItemType {
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector2 = 'editorUI:Vector2',
     Vector3 = 'editorUI:Vector3',
+    Vector3Timeline = 'editorUI:Vector3Timeline',
 }

@@ -13,5 +13,5 @@ export class CustomCommandError extends Error {
      * @earlyExecution
      *
      */
-    reason: CustomCommandErrorReason;
+    readonly reason: CustomCommandErrorReason;
 }

@@ -12,5 +12,5 @@ export class NamespaceNameError extends Error {
      * @earlyExecution
      *
      */
-    reason: NamespaceNameErrorReason;
+    readonly reason: NamespaceNameErrorReason;
 }

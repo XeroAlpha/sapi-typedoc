@@ -14,5 +14,5 @@ export class ContainerRulesError extends Error {
      * @earlyExecution
      *
      */
-    reason: ContainerRulesErrorReason;
+    readonly reason: ContainerRulesErrorReason;
 }

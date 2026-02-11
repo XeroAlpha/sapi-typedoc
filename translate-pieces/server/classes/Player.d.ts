@@ -104,6 +104,13 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
+     * @beta
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly partyId?: string;
+    /**
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}

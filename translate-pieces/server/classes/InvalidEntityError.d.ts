@@ -12,7 +12,7 @@ export class InvalidEntityError extends Error {
      * @earlyExecution
      *
      */
-    id: string;
+    readonly id: string;
     /**
      * @remarks
      * The type of the entity that is now invalid.
@@ -20,5 +20,5 @@ export class InvalidEntityError extends Error {
      * @earlyExecution
      *
      */
-    type: string;
+    readonly type: string;
 }

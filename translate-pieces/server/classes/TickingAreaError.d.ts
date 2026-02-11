@@ -15,5 +15,5 @@ export class TickingAreaError extends Error {
      * @earlyExecution
      *
      */
-    reason: TickingAreaErrorReason;
+    readonly reason: TickingAreaErrorReason;
 }

@@ -137,6 +137,122 @@ export class ActionFormResponse extends FormResponse {
 }
 
 /**
+ * @beta
+ * A customizable form that lets you put buttons, labels,
+ * toggles, dropdowns, sliders, and more into a form! Built on
+ * top of Observable, the form will update when the
+ * Observables' value changes.
+ */
+export declare class CustomForm {
+    /**
+     * @remarks
+     * Inserts a button into the Custom form. onClick is called
+     * when the button is pressed.
+     *
+     */
+    button(label: Observable<string> | string | UIRawMessage, onClick: () => void, options?: ButtonOptions): CustomForm;
+    /**
+     * @remarks
+     * Can this form be shown to the player right now?
+     *
+     */
+    canShow(): boolean;
+    /**
+     * @remarks
+     * Closes the form. Throws an error if the form is not open.
+     *
+     */
+    close(): void;
+    /**
+     * @remarks
+     * Adds a close "X" button to the form.
+     *
+     */
+    closeButton(): CustomForm;
+    /**
+     * @remarks
+     * Inserts a divider (i.e. a line) into the Custom form.
+     *
+     */
+    divider(options?: DividerOptions): CustomForm;
+    /**
+     * @remarks
+     * Inserts a dropdown into the Custom form with the provided
+     * items. The value is based on the items value that selected.
+     *
+     */
+    dropdown(
+        label: Observable<string> | string | UIRawMessage,
+        value: Observable<number>,
+        items: DropdownItem[],
+        options?: DropdownOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Inserts a label (i.e. medium sized text) into the Custom
+     * form.
+     *
+     */
+    label(text: Observable<string> | string | UIRawMessage, options?: LabelOptions): CustomForm;
+    /**
+     * @remarks
+     * Shows the form to the player. Will throw errors if the form
+     * is currently being shown or if another behavior pack is
+     * showing a form.
+     *
+     */
+    show(): Promise<void>;
+    /**
+     * @remarks
+     * Creates a slider that lets players pick a number between
+     * minValue and maxValue. value must be client writable.
+     *
+     */
+    slider(
+        label: Observable<string> | string | UIRawMessage,
+        value: Observable<number>,
+        minValue: Observable<number> | number,
+        maxValue: Observable<number> | number,
+        options?: SliderOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Inserts a space into the Custom form.
+     *
+     */
+    spacer(options?: SpacingOptions): CustomForm;
+    /**
+     * @remarks
+     * Inserts a text field into the Custom for that players can
+     * enter text into.
+     *
+     */
+    textField(
+        label: Observable<string> | string | UIRawMessage,
+        text: Observable<string>,
+        options?: TextFieldOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Inserts an on/off toggle that players can interact with into
+     * the Custom form.
+     *
+     */
+    toggle(
+        label: Observable<string> | string | UIRawMessage,
+        toggled: Observable<boolean>,
+        options?: ToggleOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Creates a Custom form to show to the player. Use this
+     * instead of a constructor.
+     *
+     */
+    static create(player: Player, title: Observable<string> | string | UIRawMessage): CustomForm;
+}
+
+/**
  * Base type for a form response.
  */
 export class FormResponse {
@@ -154,6 +270,65 @@ export class FormResponse {
      *
      */
     readonly canceled: boolean;
+}
+
+/**
+ * @beta
+ * A simple message form UI, 2 buttons and a text body.
+ */
+export declare class MessageBox {
+    /**
+     * @remarks
+     * Sets the data for the text in the body of the form. It is
+     * contained within a scroll view to allow for lots of text.
+     *
+     */
+    body(text: Observable<string> | string | UIRawMessage): MessageBox;
+    /**
+     * @remarks
+     * Sets the data for the top button in the form.
+     *
+     */
+    button1(
+        label: Observable<string> | string | UIRawMessage,
+        tooltip?: Observable<string> | string | UIRawMessage,
+    ): MessageBox;
+    /**
+     * @remarks
+     * Sets the data for the bottom button in the form.
+     *
+     */
+    button2(
+        label: Observable<string> | string | UIRawMessage,
+        tooltip?: Observable<string> | string | UIRawMessage,
+    ): MessageBox;
+    /**
+     * @remarks
+     * Closes the form. Will throw an error if the form is not
+     * open.
+     *
+     */
+    close(): void;
+    /**
+     * @remarks
+     * Show this modal to the player. Will throw an error if the
+     * modal is already showing.
+     *
+     */
+    show(): Promise<MessageBoxResult>;
+    /**
+     * @remarks
+     * Sets the title of form.
+     *
+     */
+    title(text: Observable<string> | string | UIRawMessage): MessageBox;
+    /**
+     * @remarks
+     * Creates a message form for a certain player. Use this
+     * instead of a constructor.
+     *
+     */
+    static create(player: Player): MessageBox;
 }
 
 /**
@@ -359,6 +534,49 @@ export class ModalFormResponse extends FormResponse {
     readonly formValues?: (boolean | number | string | undefined)[];
 }
 
+/**
+ * @beta
+ * A class that represents data that can be Observed.
+ * Extensively used for UI.
+ */
+export declare class Observable<T extends string | number | boolean> {
+    /**
+     * @remarks
+     * Gets the data from the Observable.
+     *
+     */
+    getData(): T;
+    /**
+     * @remarks
+     * Sets the data on this Observable and notifies the
+     * subscribers.
+     *
+     */
+    setData(data: T): void;
+    /**
+     * @remarks
+     * Subscribes a callback to any changes that occur to the
+     * Observable. The return value can be passed into the
+     * `unsubscribe` function to stop listening to changes.
+     *
+     */
+    subscribe(listener: (newValue: T) => void): (newValue: T) => void;
+    /**
+     * @remarks
+     * Unsubscribe a callback from any changes that occur to the
+     * Observable. This takes the return value from the `subscribe`
+     * function.
+     *
+     */
+    unsubscribe(listener: (newValue: T) => void): void;
+    /**
+     * @remarks
+     * Creates an Observable, use this instead of a constructor.
+     *
+     */
+    static create<T extends string | number | boolean>(data: T, options?: ObservableOptions): Observable<T>;
+}
+
 export class UIManager {
     private constructor();
     /**
@@ -368,6 +586,123 @@ export class UIManager {
      * @throws This function can throw errors.
      */
     closeAllForms(player: Player): void;
+}
+
+/**
+ * @beta
+ * The options for including a button in {@link CustomForm}.
+ */
+export interface ButtonOptions {
+    /**
+     * @remarks
+     * Whether or not this button is disabled.
+     *
+     */
+    disabled?: Observable<boolean> | boolean;
+    /**
+     * @remarks
+     * The tooltip for this button, shown when hovering the button.
+     *
+     */
+    tooltip?: Observable<string> | string | UIRawMessage;
+    /**
+     * @remarks
+     * Whether or not this button is visible.
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The options for including a spacer in {@link CustomForm}.
+ */
+export interface DividerOptions {
+    /**
+     * @remarks
+     * Whether or not this divider is visible
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * Dropdown data for use in {@link CustomForm}.
+ */
+export interface DropdownItem {
+    /**
+     * @remarks
+     * The description of the dropdown item shown when it is
+     * selected.
+     *
+     */
+    description?: string;
+    /**
+     * @remarks
+     * The label of the dropdown item in the dropdown.
+     *
+     */
+    label: string;
+    /**
+     * @remarks
+     * The value the dropdown will be set to when this item is
+     * selected.
+     *
+     */
+    value: number;
+}
+
+/**
+ * @beta
+ * The options for including a dropdown in {@link CustomForm}.
+ */
+export interface DropdownOptions {
+    /**
+     * @remarks
+     * The description of the dropdown, shown in the UI.
+     *
+     */
+    description?: Observable<string> | string | UIRawMessage;
+    /**
+     * @remarks
+     * Whether or not this dropdown is disabled.
+     *
+     */
+    disabled?: Observable<boolean> | boolean;
+    /**
+     * @remarks
+     * Whether or not this dropdown is visible.
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The options for including a label in {@link CustomForm}.
+ */
+export interface LabelOptions {
+    /**
+     * @remarks
+     * Whether or not this label is visible
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The result when a {@link MessageBox} is closed.
+ */
+export interface MessageBoxResult {
+    /**
+     * @remarks
+     * The button that was selected, undefined if it was closed
+     * without pressing a button.
+     *
+     */
+    selection?: number;
 }
 
 /**
@@ -462,6 +797,154 @@ export interface ModalFormDataToggleOptions {
     tooltip?: RawMessage | string;
 }
 
+/**
+ * @beta
+ * An interface passed into `Observable.create`.
+ */
+export interface ObservableOptions {
+    /**
+     * @remarks
+     * If set to true, the client can update this value. This
+     * should be used for things like dropdown values, toggles,
+     * textfields, etc. If unset or false, the client cannot write
+     * to this observable.
+     *
+     */
+    clientWritable?: boolean;
+}
+
+/**
+ * @beta
+ * The options for including a slider in {@link CustomForm}.
+ */
+export interface SliderOptions {
+    /**
+     * @remarks
+     * The description of the slider, shown in the UI.
+     *
+     */
+    description?: Observable<string> | string | UIRawMessage;
+    /**
+     * @remarks
+     * Whether or not this slider is disabled.
+     *
+     */
+    disabled?: Observable<boolean> | boolean;
+    /**
+     * @remarks
+     * The step size of the slider. For example, if this is 2 and
+     * the min is 0 and the max is 10, the only selectable values
+     * will be 0, 2, 4, 6, 8, 10.
+     *
+     */
+    step?: Observable<number> | number;
+    /**
+     * @remarks
+     * Whether or not this slider is visible.
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The options for including a spacer in {@link CustomForm}.
+ */
+export interface SpacingOptions {
+    /**
+     * @remarks
+     * Whether or not this spacer is visible
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The options for including a textfield in {@link CustomForm}.
+ */
+export interface TextFieldOptions {
+    /**
+     * @remarks
+     * The description for this text field, shown in the UI.
+     *
+     */
+    description?: Observable<string> | string | UIRawMessage;
+    /**
+     * @remarks
+     * Whether or not this text field is disabled.
+     *
+     */
+    disabled?: Observable<boolean> | boolean;
+    /**
+     * @remarks
+     * Whether or not this text field is visible.
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * The options for including a toggle in {@link CustomForm}.
+ */
+export interface ToggleOptions {
+    /**
+     * @remarks
+     * The description for this toggle, shown in the UI.
+     *
+     */
+    description?: Observable<string> | string | UIRawMessage;
+    /**
+     * @remarks
+     * Whether or not this toggle is disabled.
+     *
+     */
+    disabled?: Observable<boolean> | boolean;
+    /**
+     * @remarks
+     * Whether or not this toggle is visible.
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
+ * A message that can be sent to the client. This is a subset
+ * of the RawMessage type, and is used for UI messages.
+ */
+export interface UIRawMessage {
+    /**
+     * @remarks
+     * Provides a raw-text equivalent of the current message.
+     *
+     */
+    rawtext?: UIRawMessage[];
+    /**
+     * @remarks
+     * Provides a string literal value to use.
+     *
+     */
+    text?: string;
+    /**
+     * @remarks
+     * Provides a translation token where, if the client has an
+     * available resource in the players' language which matches
+     * the token, will get translated on the client.
+     *
+     */
+    translate?: string;
+    /**
+     * @remarks
+     * Arguments for the translation token. Can be either an array
+     * of strings or UIRawMessage containing an array of raw text
+     * objects.
+     *
+     */
+    with?: string[] | UIRawMessage;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class FormRejectError extends Error {
     private constructor();
@@ -470,7 +953,7 @@ export class FormRejectError extends Error {
      * @earlyExecution
      *
      */
-    reason: FormRejectReason;
+    readonly reason: FormRejectReason;
 }
 
 export const uiManager: UIManager;

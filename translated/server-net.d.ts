@@ -65,6 +65,14 @@ export enum HttpRequestMethod {
     Head = 'Head',
     /**
      * @remarks
+     * Represents the method for an HTTP PATCH request. PATCH
+     * requests are commonly used to apply partial modifications to
+     * a resource.
+     *
+     */
+    Patch = 'Patch',
+    /**
+     * @remarks
      * 表示 HTTP POST 请求。
      * POST 请求通常用于在指定 URI 下创建新资源。
      * 
@@ -127,7 +135,7 @@ export enum PacketId {
     ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket',
     ClientboundCloseFormPacket = 'ClientboundCloseFormPacket',
     ClientboundControlSchemeSetPacket = 'ClientboundControlSchemeSetPacket',
-    ClientboundDataDrivenUICloseAllScreensPacket = 'ClientboundDataDrivenUICloseAllScreensPacket',
+    ClientboundDataDrivenUICloseScreenPacket = 'ClientboundDataDrivenUICloseScreenPacket',
     ClientboundDataDrivenUIReloadPacket = 'ClientboundDataDrivenUIReloadPacket',
     ClientboundDataDrivenUIShowScreenPacket = 'ClientboundDataDrivenUIShowScreenPacket',
     ClientboundDataStorePacket = 'ClientboundDataStorePacket',
@@ -188,6 +196,7 @@ export enum PacketId {
     LevelEventGenericPacket = 'LevelEventGenericPacket',
     LevelEventPacket = 'LevelEventPacket',
     LevelSoundEventPacket = 'LevelSoundEventPacket',
+    LocatorBarPacket = 'LocatorBarPacket',
     LoginPacket = 'LoginPacket',
     MapCreateLockedCopyPacket = 'MapCreateLockedCopyPacket',
     MapInfoRequestPacket = 'MapInfoRequestPacket',
@@ -210,6 +219,7 @@ export enum PacketId {
     OnScreenTextureAnimationPacket = 'OnScreenTextureAnimationPacket',
     OpenSignPacket = 'OpenSignPacket',
     PacketViolationWarningPacket = 'PacketViolationWarningPacket',
+    PartyChangedPacket = 'PartyChangedPacket',
     PhotoTransferPacket = 'PhotoTransferPacket',
     PlayerActionPacket = 'PlayerActionPacket',
     PlayerArmorDamagePacket = 'PlayerArmorDamagePacket',
@@ -245,6 +255,7 @@ export enum PacketId {
     ResourcePackStackPacket = 'ResourcePackStackPacket',
     RespawnPacket = 'RespawnPacket',
     ScriptMessagePacket = 'ScriptMessagePacket',
+    ServerboundDataDrivenScreenClosedPacket = 'ServerboundDataDrivenScreenClosedPacket',
     ServerboundDataStorePacket = 'ServerboundDataStorePacket',
     ServerboundDiagnosticsPacket = 'ServerboundDiagnosticsPacket',
     ServerboundLoadingScreenPacket = 'ServerboundLoadingScreenPacket',
@@ -712,7 +723,7 @@ export class HttpRequestBodyTooLargeError extends Error {
      * @earlyExecution
      *
      */
-    maxBytes: number;
+    readonly maxBytes: number;
     /**
      * @remarks
      * Request body size in bytes.
@@ -720,7 +731,7 @@ export class HttpRequestBodyTooLargeError extends Error {
      * @earlyExecution
      *
      */
-    providedBytes: number;
+    readonly providedBytes: number;
 }
 
 /**
@@ -737,7 +748,7 @@ export class HttpRequestLimitExceededError extends Error {
      * @earlyExecution
      *
      */
-    inFlightRequests: number;
+    readonly inFlightRequests: number;
     /**
      * @remarks
      * Configured maximum concurrent HTTP requests.
@@ -745,7 +756,7 @@ export class HttpRequestLimitExceededError extends Error {
      * @earlyExecution
      *
      */
-    maxConcurrentRequests: number;
+    readonly maxConcurrentRequests: number;
 }
 
 /**
@@ -762,7 +773,7 @@ export class HttpRequestNotAllowedError extends Error {
      * @earlyExecution
      *
      */
-    uri: string;
+    readonly uri: string;
 }
 
 /**
@@ -779,7 +790,7 @@ export class HttpsOnlyError extends Error {
      * @earlyExecution
      *
      */
-    uri: string;
+    readonly uri: string;
 }
 
 /**
@@ -798,7 +809,7 @@ export class InternalHttpRequestError extends Error {
      * @earlyExecution
      *
      */
-    code: number;
+    readonly code: number;
     /**
      * @remarks
      * The platform-provided message for the error.
@@ -806,7 +817,7 @@ export class InternalHttpRequestError extends Error {
      * @earlyExecution
      *
      */
-    message: string;
+    readonly message: string;
 }
 
 /**

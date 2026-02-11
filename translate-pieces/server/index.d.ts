@@ -77,6 +77,7 @@ export { AimAssistCategorySettings } from './classes/AimAssistCategorySettings';
 export { AimAssistPreset } from './classes/AimAssistPreset';
 export { AimAssistPresetSettings } from './classes/AimAssistPresetSettings';
 export { AimAssistRegistry } from './classes/AimAssistRegistry';
+export { BannerPattern } from './classes/BannerPattern';
 export { BiomeType } from './classes/BiomeType';
 export { BiomeTypes } from './classes/BiomeTypes';
 export { Block } from './classes/Block';

@@ -7,5 +7,5 @@ export class GameTestCompletedError extends Error {
      * @earlyExecution
      *
      */
-    reason: GameTestCompletedErrorReason;
+    readonly reason: GameTestCompletedErrorReason;
 }

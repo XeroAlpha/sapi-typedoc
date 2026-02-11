@@ -1094,6 +1094,8 @@ export declare enum MinecraftBlockTypes {
     GoldBlock = "minecraft:gold_block",
     /** 金矿石。 */
     GoldOre = "minecraft:gold_ore",
+    /** 金蒲公英。 */
+    GoldenDandelion = "minecraft:golden_dandelion",
     /** 动力铁轨。 */
     GoldenRail = "minecraft:golden_rail",
     /** 花岗岩。 */
