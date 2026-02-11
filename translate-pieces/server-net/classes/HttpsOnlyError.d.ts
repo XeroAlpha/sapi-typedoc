@@ -12,5 +12,5 @@ export class HttpsOnlyError extends Error {
      * @earlyExecution
      *
      */
-    uri: string;
+    readonly uri: string;
 }

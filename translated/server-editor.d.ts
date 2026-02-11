@@ -108,6 +108,20 @@ export declare enum ButtonVariant {
     Destructive = 3,
 }
 
+export declare enum CollectionTreeEntryItemType {
+    String = 0,
+    Number = 1,
+    Dropdown = 2,
+}
+
+/**
+ * Determines how collection tree folders will be sorted
+ */
+export declare enum CollectionTreeSortType {
+    AtoZ = 0,
+    ZtoA = 1,
+}
+
 /**
  * The possible variants of a color picker.
  */
@@ -1162,6 +1176,11 @@ export enum PrimitiveType {
     Line = 2,
     Disc = 4,
     AxialSphere = 5,
+    Cylinder = 7,
+    Pyramid = 8,
+    Ellipsoid = 9,
+    Cuboid = 10,
+    Cone = 11,
 }
 
 /**
@@ -1187,6 +1206,7 @@ export declare enum PropertyItemType {
     Boolean = 'editorUI:Boolean',
     Button = 'editorUI:Button',
     ButtonPane = 'editorUI:ButtonPane',
+    CollectionTree = 'editorUI:CollectionTree',
     ColorPicker = 'editorUI:ColorPicker',
     ColorTimeline = 'editorUI:ColorTimeline',
     ComboBox = 'editorUI:ComboBox',
@@ -1208,6 +1228,7 @@ export declare enum PropertyItemType {
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector2 = 'editorUI:Vector2',
     Vector3 = 'editorUI:Vector3',
+    Vector3Timeline = 'editorUI:Vector3Timeline',
 }
 
 export enum SelectionVolumeEventType {
@@ -1440,6 +1461,99 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.DisableWeatherRendering]?: boolean;
     [GraphicsSettingsProperty.DisableParticleRendering]?: boolean;
     [GraphicsSettingsProperty.DisableBlockEntityRendering]?: boolean;
+};
+
+/**
+ * Menu options for the collection tree entry dropdown item
+ */
+export type ICollectionTreeEntryDropdownItemMenuOption = {
+    readonly label: string;
+    readonly value: string;
+    readonly imageData?: ImageResourceData;
+};
+
+/**
+ * Parameters to create dropdown in a collection tree entry
+ */
+export type ICollectionTreeEntryDropdownItemParams = {
+    value: IObservableProp<string>;
+    title?: LocalizedString;
+    tooltip?: BasicTooltipContent;
+    enabled?: boolean;
+    visible?: boolean;
+    menuOptions?: ICollectionTreeEntryDropdownItemMenuOption[];
+    onChange?: (newValue: string, oldValue: string, item: ICollectionTreeEntryDropdownItem) => void;
+};
+
+/**
+ * Parameters to create number field in a collection tree entry
+ */
+export type ICollectionTreeEntryNumberItemParams = {
+    value: IObservableProp<number>;
+    title?: LocalizedString;
+    tooltip?: BasicTooltipContent;
+    enabled?: boolean;
+    visible?: boolean;
+    min?: number;
+    max?: number;
+    isInteger?: boolean;
+    onChange?: (newValue: number, oldValue: number, item: ICollectionTreeEntryNumberItem) => void;
+};
+
+/**
+ * Options to create an entry in a collection tree folder
+ */
+export type ICollectionTreeEntryOptions = {
+    selected?: boolean;
+    image?: ImageResourceData;
+    selectable?: boolean;
+    removable?: boolean;
+    color?: RGBA;
+    userData?: unknown;
+    onSelectedChange?: (selected: boolean, folder: ICollectionTreeEntry) => void;
+};
+
+/**
+ * Parameters to create string field in a collection tree entry
+ */
+export type ICollectionTreeEntryStringItemParams = {
+    value: IObservableProp<string>;
+    title?: LocalizedString;
+    tooltip?: BasicTooltipContent;
+    enabled?: boolean;
+    visible?: boolean;
+    onChange?: (newValue: string, oldValue: string, item: ICollectionTreeEntryStringItem) => void;
+};
+
+/**
+ * Parameters to create an action button on the folder header
+ */
+export type ICollectionTreeFolderHeaderActionParams = {
+    title?: LocalizedString;
+    tooltip?: BasicTooltipContent;
+    enabled?: boolean;
+    onClick: (folder: ICollectionTreeFolder) => void;
+};
+
+/**
+ * Contains collection folders and entries
+ */
+export type ICollectionTreeFolderOptions = {
+    uniqueId?: string;
+    title?: LocalizedString;
+    selected?: boolean;
+    expanded?: boolean;
+    visible?: boolean;
+    removable?: boolean;
+    selectable?: boolean;
+    userData?: unknown;
+    color?: RGBA;
+    action?: ICollectionTreeFolderHeaderActionParams;
+    menu?: IMenuCreationParams[];
+    onMenuClicked?: (menuId: string, folder: ICollectionTreeFolder) => void;
+    onSelectedChange?: (selected: boolean, folder: ICollectionTreeFolder) => void;
+    onBeforeRemoved?: (folder: ICollectionTreeFolder) => boolean;
+    onBeforeEntryRemoved?: (entry: ICollectionTreeEntry) => boolean;
 };
 
 /**
@@ -4611,8 +4725,13 @@ export class Widget {
         primitiveType:
             | WidgetComponentRenderPrimitiveTypeAxialSphere
             | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeCone
+            | WidgetComponentRenderPrimitiveTypeCuboid
+            | WidgetComponentRenderPrimitiveTypeCylinder
             | WidgetComponentRenderPrimitiveTypeDisc
-            | WidgetComponentRenderPrimitiveTypeLine,
+            | WidgetComponentRenderPrimitiveTypeEllipsoid
+            | WidgetComponentRenderPrimitiveTypeLine
+            | WidgetComponentRenderPrimitiveTypePyramid,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
     /**
@@ -4962,8 +5081,13 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
         primitive:
             | WidgetComponentRenderPrimitiveTypeAxialSphere
             | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeCone
+            | WidgetComponentRenderPrimitiveTypeCuboid
+            | WidgetComponentRenderPrimitiveTypeCylinder
             | WidgetComponentRenderPrimitiveTypeDisc
-            | WidgetComponentRenderPrimitiveTypeLine,
+            | WidgetComponentRenderPrimitiveTypeEllipsoid
+            | WidgetComponentRenderPrimitiveTypeLine
+            | WidgetComponentRenderPrimitiveTypePyramid,
     ): void;
 }
 
@@ -5025,6 +5149,178 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeCone extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    numSegments?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusX: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusZ: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    constructor(
+        center: Vector3,
+        radiusX: number,
+        radiusZ: number,
+        height: number,
+        color: RGBA,
+        numSegments?: number,
+        rotation?: Vector3,
+        alpha?: number,
+    );
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeCuboid extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    lengthX: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    lengthY: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    lengthZ: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    constructor(
+        center: Vector3,
+        lengthX: number,
+        lengthY: number,
+        lengthZ: number,
+        color: RGBA,
+        rotation?: Vector3,
+        alpha?: number,
+    );
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeCylinder extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusX: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radiusZ: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    constructor(
+        center: Vector3,
+        radiusX: number,
+        radiusZ: number,
+        height: number,
+        color: RGBA,
+        rotation?: Vector3,
+        alpha?: number,
+    );
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
@@ -5048,6 +5344,47 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeEllipsoid extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    radii: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    constructor(
+        center: Vector3,
+        radii: Vector3,
+        color: RGBA,
+        rotation?: Vector3,
+        alpha?: number,
+    );
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     /**
      * @remarks
@@ -5068,6 +5405,61 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
      */
     start: Vector3;
     constructor(start: Vector3, end: Vector3, color: RGBA);
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypePyramid extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    widthX: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    widthZ?: number;
+    constructor(
+        center: Vector3,
+        widthX: number,
+        height: number,
+        color: RGBA,
+        widthZ?: number,
+        rotation?: Vector3,
+        alpha?: number,
+    );
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6125,6 +6517,413 @@ export interface IButtonPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     variant?: ButtonVariant;
+}
+
+export interface ICollectionTreeEntry {
+    /**
+     * @remarks
+     * Unique identifier for the entry.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Index of the entry in the folder
+     *
+     */
+    readonly index: number;
+    /**
+     * @remarks
+     * Parent folder of the entry.
+     *
+     */
+    readonly parent: ICollectionTreeFolder;
+    /**
+     * @remarks
+     * Selected state of the entry
+     *
+     */
+    readonly selected: boolean;
+    /**
+     * @remarks
+     * Adds a dropdown item to the entry
+     *
+     */
+    addDropdownItem(params: ICollectionTreeEntryDropdownItemParams): ICollectionTreeEntryDropdownItem;
+    /**
+     * @remarks
+     * Adds a number item to the entry
+     *
+     */
+    addNumberItem(params: ICollectionTreeEntryNumberItemParams): ICollectionTreeEntryNumberItem;
+    /**
+     * @remarks
+     * Adds a string item to the entry
+     *
+     */
+    addStringItem(params: ICollectionTreeEntryStringItemParams): ICollectionTreeEntryStringItem;
+    /**
+     * @remarks
+     * Gets the tree entry item by index
+     *
+     * @param index
+     * Index of the entry item
+     */
+    getItemByIndex(index: number): ICollectionTreeEntryItem | undefined;
+    /**
+     * @remarks
+     * Set color associated with the entry
+     *
+     */
+    setColor(color: RGBA | undefined): void;
+    /**
+     * @remarks
+     * Set selected state of the entry.
+     *
+     * @param selected
+     * New selected state
+     */
+    setSelected(selected: boolean): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreeEntryDropdownItem extends ICollectionTreeEntryItem {
+    /**
+     * @remarks
+     * Value of the entry item.
+     *
+     */
+    readonly value: string;
+    /**
+     * @remarks
+     * Update list of dropdown menu options.
+     *
+     * @param menuOptions
+     * New list of updated menu options
+     * @param newValue
+     * New value value to use for the dropdown
+     */
+    updateMenuOptions(menuOptions: ICollectionTreeEntryDropdownItemMenuOption[], newValue?: string): void;
+}
+
+export interface ICollectionTreeEntryItem {
+    /**
+     * @remarks
+     * Enabled state of the entry.
+     *
+     */
+    readonly enabled: boolean;
+    /**
+     * @remarks
+     * Tree entry that owns the item.
+     *
+     */
+    readonly parentEntry: ICollectionTreeEntry;
+    /**
+     * @remarks
+     * Type of the item.
+     *
+     */
+    readonly type: CollectionTreeEntryItemType;
+    /**
+     * @remarks
+     * Visibility state of the entry.
+     *
+     */
+    readonly visible: boolean;
+    /**
+     * @remarks
+     * Updates enabled state of the item.
+     *
+     * @param enabled
+     * New value.
+     */
+    setEnabled(enabled: boolean): void;
+    /**
+     * @remarks
+     * Updates title of the item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+    /**
+     * @remarks
+     * Updates tooltip of the item.
+     *
+     */
+    setTooltip(title: BasicTooltipContent | undefined): void;
+    /**
+     * @remarks
+     * Updates visibility of the item.
+     *
+     * @param visible
+     * New value.
+     */
+    setVisible(visible: boolean): void;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreeEntryNumberItem extends ICollectionTreeEntryItem {
+    /**
+     * @remarks
+     * Value of the entry item.
+     *
+     */
+    readonly value: number;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreeEntryStringItem extends ICollectionTreeEntryItem {
+    /**
+     * @remarks
+     * Value of the entry item.
+     *
+     */
+    readonly value: string;
+}
+
+/**
+ * Container for collection items
+ */
+export interface ICollectionTreeFolder {
+    /**
+     * @remarks
+     * Count of the entries
+     *
+     */
+    readonly entryCount: number;
+    /**
+     * @remarks
+     * Expanded state of the folder
+     *
+     */
+    readonly expanded: boolean;
+    /**
+     * @remarks
+     * Count of the child folders
+     *
+     */
+    readonly folderCount: number;
+    /**
+     * @remarks
+     * Unique identifier of the folder
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Parent folder
+     *
+     */
+    readonly parent: ICollectionTreeFolder | undefined;
+    /**
+     * @remarks
+     * Selected state of the folder
+     *
+     */
+    readonly selected: boolean;
+    /**
+     * @remarks
+     * Title of the folder
+     *
+     */
+    readonly title: LocalizedString;
+    /**
+     * @remarks
+     * User data associated with the folder
+     *
+     */
+    readonly userData: unknown;
+    /**
+     * @remarks
+     * Adds a new entry to the folder
+     *
+     * @param options
+     * Options to create a folder
+     */
+    addEntry(options: ICollectionTreeEntryOptions): ICollectionTreeEntry;
+    /**
+     * @remarks
+     * Creates a new child folder
+     *
+     * @param options
+     * Options to create a folder
+     */
+    addFolder(options: ICollectionTreeFolderOptions): ICollectionTreeFolder;
+    /**
+     * @remarks
+     * Iterates over entries within the folder
+     *
+     * @param callback
+     * Returning false will stop the iteration
+     */
+    forEachEntry(callback: (entry: ICollectionTreeEntry, index: number) => boolean): void;
+    /**
+     * @remarks
+     * Iterates over the first layer of folders
+     *
+     * @param callback
+     * Returning false will stop the iteration
+     */
+    forEachFolder(callback: (folder: ICollectionTreeFolder) => boolean): void;
+    /**
+     * @remarks
+     * Iterates over the first layer of folders
+     *
+     * @param callback
+     * Returning false will stop the iteration
+     */
+    forEachFolder(callback: (folder: ICollectionTreeFolder) => boolean): void;
+    /**
+     * @remarks
+     * Gets the entry by its unique identifier
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    getEntryById(id: string): ICollectionTreeEntry | undefined;
+    /**
+     * @remarks
+     * Gets the entry at the index
+     *
+     * @param index
+     * Index of the entry
+     */
+    getEntryByIndex(index: number): ICollectionTreeEntry | undefined;
+    /**
+     * @remarks
+     * Find the folder with the id if it exists
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    getFolder(id: string): ICollectionTreeFolder | undefined;
+    /**
+     * @remarks
+     * Removes the entry by its unique identifier if it exists
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    removeEntryById(id: string): boolean;
+    /**
+     * @remarks
+     * Removes the entry at the index if it exists
+     *
+     * @param index
+     * Index of the entry
+     */
+    removeEntryByIndex(index: number): boolean;
+    /**
+     * @remarks
+     * Set color of the entry.
+     *
+     * @param color
+     * New color state
+     */
+    setColor(color: RGBA | undefined): void;
+    /**
+     * @remarks
+     * Set expanded state of the entry.
+     *
+     * @param expanded
+     * New expanded state
+     */
+    setExpanded(expanded: boolean): void;
+    /**
+     * @remarks
+     * Updates the header action for the folder
+     *
+     */
+    setHeaderAction(actionParams: ICollectionTreeFolderHeaderActionParams | undefined): void;
+    /**
+     * @remarks
+     * Set selected state of the entry.
+     *
+     * @param selected
+     * New selected state
+     */
+    setSelected(selected: boolean): void;
+    /**
+     * @remarks
+     * Set title of the entry.
+     *
+     * @param title
+     * New title state
+     */
+    setTitle(title: LocalizedString): void;
+}
+
+/**
+ * A property item which supports creating nested folders of
+ * collection items
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Count of the child folders
+     *
+     */
+    readonly folderCount: number;
+    /**
+     * @remarks
+     * Sort type for the folders.
+     *
+     */
+    readonly viewSortType: CollectionTreeSortType;
+    /**
+     * @remarks
+     * Creates a new folder at the root of the collection
+     *
+     * @param options
+     * Options to create a folder
+     */
+    addFolder(options: ICollectionTreeFolderOptions): ICollectionTreeFolder;
+    /**
+     * @remarks
+     * Iterates over the first layer of folders
+     *
+     * @param callback
+     * Returning false will stop the iteration
+     */
+    forEachFolder(callback: (folder: ICollectionTreeFolder) => boolean): void;
+    /**
+     * @remarks
+     * Find the folder with the id if it exists at the root
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    getFolder(id: string): ICollectionTreeFolder | undefined;
+    /**
+     * @remarks
+     * Updates the folder sort type for the whole view
+     *
+     * @param sortType
+     * New sort type
+     */
+    setViewSortType(sortType: CollectionTreeSortType | undefined): void;
+}
+
+/**
+ * Optional properties for Collection Tree Pane property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Custom sort type for folders view.
+     *
+     */
+    viewSortType?: CollectionTreeSortType;
 }
 
 /**
@@ -8474,6 +9273,12 @@ export interface IPropertyPane extends IPane {
     addButtonPane(options?: IButtonPanePropertyItemOptions): IButtonPanePropertyItem;
     /**
      * @remarks
+     * Adds a tree view for collections with folders and entries.
+     *
+     */
+    addCollectionTree(options: ICollectionTreePropertyItemOptions): ICollectionTreePropertyItem;
+    /**
+     * @remarks
      * Adds a color picker item to the pane.
      *
      */
@@ -8617,6 +9422,15 @@ export interface IPropertyPane extends IPane {
         value: IObservableProp<Vector3>,
         options?: IVector3PropertyItemOptions,
     ): IVector3PropertyItem;
+    /**
+     * @remarks
+     * Adds a Vector3 Timeline item to the pane.
+     *
+     */
+    addVector3Timeline(
+        value: IObservableProp<number>,
+        options?: IVector3TimelinePropertyItemOptions,
+    ): IVector3TimelinePropertyItem;
     /**
      * @remarks
      * Begins pane construction for batching property item
@@ -9498,6 +10312,160 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     tooltip?: BasicTooltipContent;
+}
+
+/**
+ * A property item which supports Vector3 Timeline properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector3TimelinePropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Update vector3 timeline entry
+     *
+     * @param data
+     * New vector3 node.
+     */
+    addNode(data: IVector3TimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Get the list of nodes in the property item.
+     *
+     */
+    getData(): IVector3TimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * Get time current time value on the slider.
+     *
+     */
+    getTime(): number;
+    /**
+     * @remarks
+     * Remove vector3 node
+     *
+     * @param data
+     * Node to be removed.
+     */
+    removeNode(data: IVector3TimelinePropertyItemEntry): void;
+    /**
+     * @remarks
+     * Updates data entries value bounds.
+     *
+     */
+    setBounds(bounds: { minValue: number; maxValue: number }): void;
+    /**
+     * @remarks
+     * Set custom decimal precision for the calculations
+     *
+     */
+    setPrecision(precision: number): void;
+    /**
+     * @remarks
+     * Set time line slider value to a new value
+     *
+     * @param time
+     * The new time value.
+     */
+    setTime(time: number): void;
+    /**
+     * @remarks
+     * Updates title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Update node value
+     *
+     * @param data
+     * Node to be updated.
+     */
+    updateNode(data: IVector3TimelinePropertyItemEntry): void;
+}
+
+/**
+ * Properties of vector3 timeline property item entry
+ */
+export interface IVector3TimelinePropertyItemEntry {
+    color?: RGBA;
+    id: string;
+    time: number;
+    value: Vector3;
+}
+
+/**
+ * Optional properties for Vector3 Timeline property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector3TimelinePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * The data bounds for the value node property
+     *
+     */
+    bounds?: {
+        minValue: number;
+        maxValue: number;
+    };
+    /**
+     * @remarks
+     * Custom precision for the calculations
+     *
+     */
+    decimalPrecision?: number;
+    /**
+     * @remarks
+     * If true, nodes cannot be added or removed
+     *
+     */
+    disableAddRemoveNodes?: boolean;
+    /**
+     * @remarks
+     * List of nodes entries in the vector3 timeline.
+     *
+     */
+    entries?: IVector3TimelinePropertyItemEntry[];
+    /**
+     * @remarks
+     * True means nodes cannot be dragged or modified
+     *
+     */
+    isGraphReadOnly?: boolean;
+    /**
+     * @remarks
+     * Callback triggered when a new vector3 node is added to the
+     * timeline.
+     *
+     */
+    onNodeAdded?: (node: IVector3TimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when a timeline node's vector3 value
+     * changes.
+     *
+     */
+    onNodeChanged?: (node: IVector3TimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * Callback triggered when a vector3 node is removed from the
+     * timeline. *
+     *
+     */
+    onNodeRemoved?: (node: IVector3TimelinePropertyItemEntry) => void;
+    /**
+     * @remarks
+     * This callback is called when UI control time is changed.
+     *
+     */
+    onTimeChanged?: (current: number, prev: number) => void;
+    /**
+     * @remarks
+     * Localized title of the property item
+     *
+     */
+    title?: LocalizedString;
 }
 
 export interface LocalizationEntry {

@@ -1,4 +1,4 @@
-/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, PrimitiveType, WidgetComponentBase, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeLine } from '..';
+/* IMPORT */ import { InvalidWidgetComponentError, InvalidWidgetError, PrimitiveType, WidgetComponentBase, WidgetComponentRenderPrimitiveTypeAxialSphere, WidgetComponentRenderPrimitiveTypeBox, WidgetComponentRenderPrimitiveTypeCone, WidgetComponentRenderPrimitiveTypeCuboid, WidgetComponentRenderPrimitiveTypeCylinder, WidgetComponentRenderPrimitiveTypeDisc, WidgetComponentRenderPrimitiveTypeEllipsoid, WidgetComponentRenderPrimitiveTypeLine, WidgetComponentRenderPrimitiveTypePyramid } from '..';
 
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
@@ -24,7 +24,12 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
         primitive:
             | WidgetComponentRenderPrimitiveTypeAxialSphere
             | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeCone
+            | WidgetComponentRenderPrimitiveTypeCuboid
+            | WidgetComponentRenderPrimitiveTypeCylinder
             | WidgetComponentRenderPrimitiveTypeDisc
-            | WidgetComponentRenderPrimitiveTypeLine,
+            | WidgetComponentRenderPrimitiveTypeEllipsoid
+            | WidgetComponentRenderPrimitiveTypeLine
+            | WidgetComponentRenderPrimitiveTypePyramid,
     ): void;
 }

@@ -3801,6 +3801,28 @@ export class AimAssistRegistry {
 }
 
 /**
+ * @beta
+ * Describes a single banner pattern, which includes a colour
+ * and a pattern type.
+ */
+export class BannerPattern {
+    private constructor();
+    /**
+     * @remarks
+     * The color to apply to this banner pattern.
+     *
+     */
+    readonly color: string;
+    /**
+     * @remarks
+     * The pattern type (e.g. gradient, chevron, cross, etc.) to
+     * apply to the banner.
+     *
+     */
+    readonly pattern: string;
+}
+
+/**
  * Describes a type of biome.
  */
 export class BiomeType {
@@ -4844,7 +4866,7 @@ export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
      */
     readonly powerLevel: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The redstone signal strength from the last tick that was
      * passing through this block. It is guaranteed to be >= the
@@ -7372,7 +7394,7 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Checks if an area contains the specified biomes. If the area
      * is partially inside world boundaries, only the area that is
@@ -7386,11 +7408,14 @@ export class Dimension {
      * A list of biomes to include and exclude. A list of tags to
      * include and exclude. Will return false if a biome is found
      * in the area that is in the excluded list or contains any of
-     * the excluded tags. If superset is set to true then the area
-     * must contain at least one biome in the included list or that
-     * contains all of the included tags. If superset is set to
-     * false then the area must contain only biomes in the included
-     * list and that contain all of the included tags
+     * the excluded tags.
+     * @param isSuperset
+     * Superset is used to determine the strictness of the filter.
+     * If superset is set to true then the area must contain one or
+     * more biomes in the included list or that contains all of the
+     * included tags. If superset is set to false then the area
+     * must contain only biomes in the included list and that
+     * contain all of the included tags
      * @returns
      * Returns true if the biomes in the area match the filter
      * settings passed in. Otherwise, returns false.
@@ -7410,7 +7435,7 @@ export class Dimension {
      *
      * {@link UnloadedChunksError}
      */
-    containsBiomes(volume: BlockVolumeBase, biomeFilter: BiomeFilter): boolean;
+    containsBiomes(volume: BlockVolumeBase, biomeFilter: BiomeFilter, isSuperset: boolean): boolean;
     /**
      * @remarks
      * Searches the block volume for a block that satisfies the
@@ -13391,10 +13416,10 @@ export class ItemDurabilityComponent extends ItemComponent {
      */
     readonly maxDurability: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Whether an item breaks or loses durability. Setting to true
-     * temporarily removes item's durabilty HUD, and freezes
+     * temporarily removes item's durability HUD, and freezes
      * durability loss on item.
      *
      * @worldMutation
@@ -15382,6 +15407,13 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly onScreenDisplay: ScreenDisplay;
+    /**
+     * @beta
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly partyId?: string;
     /**
      * @throws This property can throw when used.
      *
@@ -18345,6 +18377,21 @@ export class SetArmorTrimFunction extends LootItemFunction {
 export class SetBannerDetailsFunction extends LootItemFunction {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * The base color for the dropped banner.
+     *
+     */
+    readonly baseColor: string;
+    /**
+     * @beta
+     * @remarks
+     * An array of {@link BannerPattern} objects used to decorate
+     * the banner, including color and pattern type.
+     *
+     */
+    readonly patterns: BannerPattern[];
+    /**
      * @remarks
      * The type of banner to drop.
      *
@@ -20719,14 +20766,13 @@ export interface AnimationOptions {
 }
 
 /**
- * @beta
+ * @rc
  */
 export interface BiomeFilter {
     excludeBiomes?: string[];
     excludeTags?: string[];
     includeBiomes?: string[];
     includeTags?: string[];
-    superset: boolean;
 }
 
 /**
@@ -23125,7 +23171,7 @@ export class BookError extends Error {
      * @earlyExecution
      *
      */
-    reason: BookErrorReason;
+    readonly reason: BookErrorReason;
 }
 
 /**
@@ -23143,7 +23189,7 @@ export class BookPageContentError extends Error {
      * @earlyExecution
      *
      */
-    pageIndex: number;
+    readonly pageIndex: number;
     /**
      * @remarks
      * The reason for the error.
@@ -23151,7 +23197,7 @@ export class BookPageContentError extends Error {
      * @earlyExecution
      *
      */
-    reason: BookErrorReason;
+    readonly reason: BookErrorReason;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -23173,7 +23219,7 @@ export class ContainerRulesError extends Error {
      * @earlyExecution
      *
      */
-    reason: ContainerRulesErrorReason;
+    readonly reason: ContainerRulesErrorReason;
 }
 
 /**
@@ -23189,7 +23235,7 @@ export class CustomCommandError extends Error {
      * @earlyExecution
      *
      */
-    reason: CustomCommandErrorReason;
+    readonly reason: CustomCommandErrorReason;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -23205,7 +23251,7 @@ export class CustomComponentNameError extends Error {
      * @earlyExecution
      *
      */
-    reason: CustomComponentNameErrorReason;
+    readonly reason: CustomComponentNameErrorReason;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -23270,7 +23316,7 @@ export class InvalidEntityError extends Error {
      * @earlyExecution
      *
      */
-    id: string;
+    readonly id: string;
     /**
      * @remarks
      * The type of the entity that is now invalid.
@@ -23278,7 +23324,7 @@ export class InvalidEntityError extends Error {
      * @earlyExecution
      *
      */
-    type: string;
+    readonly type: string;
 }
 
 /**
@@ -23295,7 +23341,7 @@ export class InvalidItemStackError extends Error {
      * @earlyExecution
      *
      */
-    itemType: ItemType;
+    readonly itemType: ItemType;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -23390,7 +23436,7 @@ export class NamespaceNameError extends Error {
      * @earlyExecution
      *
      */
-    reason: NamespaceNameErrorReason;
+    readonly reason: NamespaceNameErrorReason;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -23418,7 +23464,7 @@ export class TickingAreaError extends Error {
      * @earlyExecution
      *
      */
-    reason: TickingAreaErrorReason;
+    readonly reason: TickingAreaErrorReason;
 }
 
 /**

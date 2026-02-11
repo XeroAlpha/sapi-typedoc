@@ -7,5 +7,5 @@ export class CustomComponentNameError extends Error {
      * @earlyExecution
      *
      */
-    reason: CustomComponentNameErrorReason;
+    readonly reason: CustomComponentNameErrorReason;
 }

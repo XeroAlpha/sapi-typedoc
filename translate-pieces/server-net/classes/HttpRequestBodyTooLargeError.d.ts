@@ -12,7 +12,7 @@ export class HttpRequestBodyTooLargeError extends Error {
      * @earlyExecution
      *
      */
-    maxBytes: number;
+    readonly maxBytes: number;
     /**
      * @remarks
      * Request body size in bytes.
@@ -20,5 +20,5 @@ export class HttpRequestBodyTooLargeError extends Error {
      * @earlyExecution
      *
      */
-    providedBytes: number;
+    readonly providedBytes: number;
 }

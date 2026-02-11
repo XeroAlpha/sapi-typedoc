@@ -2489,7 +2489,7 @@ export class GameTestCompletedError extends Error {
      * @earlyExecution
      *
      */
-    reason: GameTestCompletedErrorReason;
+    readonly reason: GameTestCompletedErrorReason;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -2500,19 +2500,19 @@ export class GameTestError extends Error {
      * @earlyExecution
      *
      */
-    context?: GameTestErrorContext;
+    readonly context?: GameTestErrorContext;
     /**
      * @remarks
      * @earlyExecution
      *
      */
-    messageParameters: string[];
+    readonly messageParameters: string[];
     /**
      * @remarks
      * @earlyExecution
      *
      */
-    type: GameTestErrorType;
+    readonly type: GameTestErrorType;
 }
 
 /**

@@ -14,5 +14,5 @@ export class InvalidItemStackError extends Error {
      * @earlyExecution
      *
      */
-    itemType: ItemType;
+    readonly itemType: ItemType;
 }

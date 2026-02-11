@@ -14,7 +14,7 @@ export class InternalHttpRequestError extends Error {
      * @earlyExecution
      *
      */
-    code: number;
+    readonly code: number;
     /**
      * @remarks
      * The platform-provided message for the error.
@@ -22,5 +22,5 @@ export class InternalHttpRequestError extends Error {
      * @earlyExecution
      *
      */
-    message: string;
+    readonly message: string;
 }

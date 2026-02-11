@@ -560,6 +560,7 @@ export declare enum MinecraftItemTypes {
     GoldenBoots = "minecraft:golden_boots",
     GoldenCarrot = "minecraft:golden_carrot",
     GoldenChestplate = "minecraft:golden_chestplate",
+    GoldenDandelion = "minecraft:golden_dandelion",
     GoldenHelmet = "minecraft:golden_helmet",
     GoldenHoe = "minecraft:golden_hoe",
     GoldenHorseArmor = "minecraft:golden_horse_armor",

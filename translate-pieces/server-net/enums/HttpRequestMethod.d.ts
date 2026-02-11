@@ -25,6 +25,14 @@ export enum HttpRequestMethod {
     Head = 'Head',
     /**
      * @remarks
+     * Represents the method for an HTTP PATCH request. PATCH
+     * requests are commonly used to apply partial modifications to
+     * a resource.
+     *
+     */
+    Patch = 'Patch',
+    /**
+     * @remarks
      * Represents the method for an HTTP POST request. POST
      * requests are commonly used to submit data to be processed to
      * the specified URI.

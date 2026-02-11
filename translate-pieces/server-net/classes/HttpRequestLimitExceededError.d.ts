@@ -12,7 +12,7 @@ export class HttpRequestLimitExceededError extends Error {
      * @earlyExecution
      *
      */
-    inFlightRequests: number;
+    readonly inFlightRequests: number;
     /**
      * @remarks
      * Configured maximum concurrent HTTP requests.
@@ -20,5 +20,5 @@ export class HttpRequestLimitExceededError extends Error {
      * @earlyExecution
      *
      */
-    maxConcurrentRequests: number;
+    readonly maxConcurrentRequests: number;
 }

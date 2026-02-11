@@ -14,5 +14,5 @@ export class BookError extends Error {
      * @earlyExecution
      *
      */
-    reason: BookErrorReason;
+    readonly reason: BookErrorReason;
 }

@@ -229,7 +229,7 @@ export class DisconnectedError extends Error {
      * @earlyExecution
      *
      */
-    id: string;
+    readonly id: string;
 }
 
 /**

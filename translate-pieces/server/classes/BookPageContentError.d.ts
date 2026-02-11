@@ -15,7 +15,7 @@ export class BookPageContentError extends Error {
      * @earlyExecution
      *
      */
-    pageIndex: number;
+    readonly pageIndex: number;
     /**
      * @remarks
      * The reason for the error.
@@ -23,5 +23,5 @@ export class BookPageContentError extends Error {
      * @earlyExecution
      *
      */
-    reason: BookErrorReason;
+    readonly reason: BookErrorReason;
 }

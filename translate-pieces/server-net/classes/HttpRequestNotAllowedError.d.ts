@@ -12,5 +12,5 @@ export class HttpRequestNotAllowedError extends Error {
      * @earlyExecution
      *
      */
-    uri: string;
+    readonly uri: string;
 }
