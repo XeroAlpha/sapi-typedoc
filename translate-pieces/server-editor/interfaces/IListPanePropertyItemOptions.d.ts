@@ -1,4 +1,4 @@
-/* IMPORT */ import { IListPaneSlot, IPropertyItemOptionsBase, ListPaneSlotCreationProps, ListPaneSlotLayout, ListPaneViewFilter, ListPaneViewSortType, LocalizedString } from '..';
+/* IMPORT */ import { IListPaneSlot, IPropertyItemOptionsBase, ListPaneSlotConfiguration, ListPaneSlotCreationProps, ListPaneViewFilter, ListPaneViewSortType, LocalizedString } from '..';
 
 /**
  * Optional properties for List Pane property item
@@ -7,7 +7,8 @@
 export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
-     * This will be the height of the list withing the pane
+     * Default slots to initialize the list with. If undefined, the
+     * list will be empty.
      *
      */
     defaultSlots?: ListPaneSlotCreationProps[];
@@ -20,17 +21,10 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     fixedHeight?: boolean;
     /**
      * @remarks
-     * This will be the height of the list withing the pane
+     * This will be the height of the list within the pane
      *
      */
     height?: number;
-    /**
-     * @remarks
-     * Layout for the list will need to be predefined, and using
-     * wrong layout shape while creating slots will throw
-     *
-     */
-    layout: ListPaneSlotLayout;
     /**
      * @remarks
      * This callback is fired whenever a clickable slot is pressed
@@ -44,6 +38,14 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     onSlotSelectionChange?: (slot: IListPaneSlot, state: boolean) => void;
+    /**
+     * @remarks
+     * Slot configuration for the list. The slot entry layout must
+     * be predefined, and using an incorrect layout while creating
+     * slots will throw an error.
+     *
+     */
+    slotConfig: ListPaneSlotConfiguration;
     /**
      * @remarks
      * Localized title of the property item.

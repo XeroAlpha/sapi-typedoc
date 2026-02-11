@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityFilter, ItemFilter } from '..';
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
  * and {@link

@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityHealCause } from '..';
 
 /**
- * @beta
+ * @rc
  * Provides information about how healing has been applied to
  * an entity.
  */

@@ -43,7 +43,7 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The world seed.
      *

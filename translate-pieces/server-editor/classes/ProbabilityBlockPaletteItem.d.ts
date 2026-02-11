@@ -7,6 +7,8 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @remarks
      * @worldMutation
      *
+     * @param weight
+     * Bounds: [1, 100]
      * @throws This function can throw errors.
      */
     addBlock(block: BlockPermutation | BlockType | string, weight: number): void;

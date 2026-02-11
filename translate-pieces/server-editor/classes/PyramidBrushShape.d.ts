@@ -1,3 +1,4 @@
+/* IMPORT */ import { BlockBoundingBox } from '../../server';
 /* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, PyramidBrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
 
 export declare class PyramidBrushShape extends BrushShape {
@@ -16,7 +17,15 @@ export declare class PyramidBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): PyramidBrushShapeSettings;
 }

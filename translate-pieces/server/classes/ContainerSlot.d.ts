@@ -15,6 +15,7 @@ export class ContainerSlot {
      *
      * @worldMutation
      *
+     * Bounds: [1, 255]
      * @throws
      * Throws if the value is outside the range of 1-255.
      */

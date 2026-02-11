@@ -289,7 +289,7 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns all scripting components that are present on this
      * block.
@@ -310,6 +310,7 @@ export class Block {
      * Number of instances of this block to place in the item
      * stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      * @param withData
      * Whether additional data facets of the item stack are
      * included.
@@ -393,7 +394,7 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the specified component is present on this
      * block.

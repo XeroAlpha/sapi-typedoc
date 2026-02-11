@@ -16,6 +16,7 @@ export class ItemStack {
      *
      * @worldMutation
      *
+     * Bounds: [1, 255]
      * @throws
      * Throws if the value is outside the range of 1-255.
      */
@@ -113,6 +114,7 @@ export class ItemStack {
      * size. Note that certain items can only have one item in the
      * stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      * @throws
      * Throws if `itemType` is invalid, or if `amount` is outside
      * the range of 1-255.

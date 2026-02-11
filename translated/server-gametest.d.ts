@@ -726,6 +726,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param speed
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      */
     move(westEast: number, northSouth: number, speed?: number): void;
@@ -738,6 +739,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param speed
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
@@ -783,6 +785,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param speed
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -800,6 +803,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param speed
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      *
      * {@link InvalidArgumentError}
@@ -820,6 +824,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param speed
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      *
      * {@link GameTestError}
@@ -840,6 +845,7 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Net speed to use for doing the navigation.
      * Defaults to: 1
+     * Bounds: [0, 1]
      * @throws This function can throw errors.
      *
      * {@link GameTestError}

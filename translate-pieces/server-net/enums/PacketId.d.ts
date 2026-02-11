@@ -152,6 +152,7 @@ export enum PacketId {
     ResourcePackClientResponsePacket = 'ResourcePackClientResponsePacket',
     ResourcePackDataInfoPacket = 'ResourcePackDataInfoPacket',
     ResourcePacksInfoPacket = 'ResourcePacksInfoPacket',
+    ResourcePacksReadyForValidationPacket = 'ResourcePacksReadyForValidationPacket',
     ResourcePackStackPacket = 'ResourcePackStackPacket',
     RespawnPacket = 'RespawnPacket',
     ScriptMessagePacket = 'ScriptMessagePacket',

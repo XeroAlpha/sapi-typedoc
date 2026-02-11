@@ -185,6 +185,7 @@ export class Entity {
      * 20 ticks per second. Use {@link TicksPerSecond} constant to
      * convert between ticks and seconds. The value must be within
      * the range [0, 20000000].
+     * Bounds: [1, 20000000]
      * @param options
      * Additional options for the effect.
      * @returns

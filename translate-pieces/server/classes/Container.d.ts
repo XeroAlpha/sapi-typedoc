@@ -145,6 +145,7 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to retrieve items from.
+     * Minimum value: 0
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
@@ -159,6 +160,7 @@ export class Container {
      * @param slot
      * The index of the slot to return. This index must be within
      * the bounds of the container.
+     * Minimum value: 0
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
@@ -174,9 +176,11 @@ export class Container {
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
      * this container.
+     * Minimum value: 0
      * @param toSlot
      * Zero-based index of the slot to transfer an item to, on
      * `toContainer`.
+     * Minimum value: 0
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
@@ -198,6 +202,7 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to set an item at.
+     * Minimum value: 0
      * @param itemStack
      * Stack of items to place within the specified slot. Setting
      * `itemStack` to undefined will clear the slot.
@@ -218,8 +223,10 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to swap from this container.
+     * Minimum value: 0
      * @param otherSlot
      * Zero-based index of the slot to swap with.
+     * Minimum value: 0
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
@@ -242,6 +249,7 @@ export class Container {
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
      * this container.
+     * Minimum value: 0
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.

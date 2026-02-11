@@ -104,6 +104,7 @@ export class Dimension {
      * The location of the explosion.
      * @param radius
      * Radius, in blocks, of the explosion to create.
+     * Bounds: [0, 1000]
      * @param explosionOptions
      * Additional configurable options for the explosion.
      * @throws This function can throw errors.
@@ -575,6 +576,7 @@ export class Dimension {
      * Sets the duration of the weather (in ticks). If no duration
      * is provided, the duration will be set to a random duration
      * between 300 and 900 seconds.
+     * Bounds: [1, 1000000]
      * @throws This function can throw errors.
      */
     setWeather(weatherType: WeatherType, duration?: number): void;

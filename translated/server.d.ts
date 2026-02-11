@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.6.0-beta"
+ *   "version": "2.7.0-beta"
  * }
  * ```
  *
@@ -1480,7 +1480,7 @@ export enum EntityDamageCause {
 }
 
 /**
- * @beta
+ * @rc
  * Describes the source of healing of an Entity.
  */
 export enum EntityHealCause {
@@ -4144,7 +4144,7 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns all scripting components that are present on this
      * block.
@@ -4165,6 +4165,7 @@ export class Block {
      * Number of instances of this block to place in the item
      * stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      * @param withData
      * Whether additional data facets of the item stack are
      * included.
@@ -4248,7 +4249,7 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns true if the specified component is present on this
      * block.
@@ -5190,7 +5191,7 @@ export class BlockMovableComponent extends BlockComponent {
 export class BlockPermutation {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this BlockPermutation's name
      * used in .lang files.
@@ -5247,6 +5248,7 @@ export class BlockPermutation {
      * Number of instances of this block to place in the prototype
      * item stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**
@@ -5698,7 +5700,7 @@ export class BlockType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this BlockType's name used in
      * .lang files.
@@ -6652,6 +6654,7 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to retrieve items from.
+     * Minimum value: 0
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
@@ -6666,6 +6669,7 @@ export class Container {
      * @param slot
      * The index of the slot to return. This index must be within
      * the bounds of the container.
+     * Minimum value: 0
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
@@ -6681,9 +6685,11 @@ export class Container {
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
      * this container.
+     * Minimum value: 0
      * @param toSlot
      * Zero-based index of the slot to transfer an item to, on
      * `toContainer`.
+     * Minimum value: 0
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
@@ -6705,6 +6711,7 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to set an item at.
+     * Minimum value: 0
      * @param itemStack
      * Stack of items to place within the specified slot. Setting
      * `itemStack` to undefined will clear the slot.
@@ -6725,8 +6732,10 @@ export class Container {
      *
      * @param slot
      * Zero-based index of the slot to swap from this container.
+     * Minimum value: 0
      * @param otherSlot
      * Zero-based index of the slot to swap with.
+     * Minimum value: 0
      * @param otherContainer
      * Target container to swap with. Note this can be the same
      * container as this source.
@@ -6749,6 +6758,7 @@ export class Container {
      * @param fromSlot
      * Zero-based index of the slot to transfer an item from, on
      * this container.
+     * Minimum value: 0
      * @param toContainer
      * Target container to transfer to. Note this can be the same
      * container as the source.
@@ -6783,6 +6793,7 @@ export class ContainerSlot {
      *
      * @worldMutation
      *
+     * Bounds: [1, 255]
      * @throws
      * Throws if the value is outside the range of 1-255.
      */
@@ -7436,6 +7447,7 @@ export class Dimension {
      * The location of the explosion.
      * @param radius
      * Radius, in blocks, of the explosion to create.
+     * Bounds: [0, 1000]
      * @param explosionOptions
      * Additional configurable options for the explosion.
      * @throws This function can throw errors.
@@ -7907,6 +7919,7 @@ export class Dimension {
      * Sets the duration of the weather (in ticks). If no duration
      * is provided, the duration will be set to a random duration
      * between 300 and 900 seconds.
+     * Bounds: [1, 1000000]
      * @throws This function can throw errors.
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
@@ -8563,6 +8576,7 @@ export class Entity {
      * 20 ticks per second. Use {@link TicksPerSecond} constant to
      * convert between ticks and seconds. The value must be within
      * the range [0, 20000000].
+     * Bounds: [1, 20000000]
      * @param options
      * Additional options for the effect.
      * @returns
@@ -9962,7 +9976,7 @@ export class EntityHealableComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity having been
  * healed.
  */
@@ -9989,7 +10003,7 @@ export class EntityHealAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity is
  * healed.
  */
@@ -10023,7 +10037,7 @@ export class EntityHealAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity that will be
  * healed.
  */
@@ -10051,7 +10065,7 @@ export class EntityHealBeforeEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity will
  * be healed.
  */
@@ -10091,7 +10105,7 @@ export class EntityHealBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Provides information about how healing has been applied to
  * an entity.
  */
@@ -10329,6 +10343,7 @@ export class EntityHurtAfterEvent {
 }
 
 /**
+ * @rc
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
@@ -10360,7 +10375,7 @@ export class EntityHurtAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity that will be hurt.
  */
 export class EntityHurtBeforeEvent {
@@ -10388,7 +10403,7 @@ export class EntityHurtBeforeEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity will
  * be hurt.
  */
@@ -10697,7 +10712,7 @@ export class EntityItemDropAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity having picked up
  * items.
  */
@@ -10718,7 +10733,7 @@ export class EntityItemPickupAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity has
  * picked up items.
  */
@@ -10752,7 +10767,7 @@ export class EntityItemPickupAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity picking up an
  * item.
  */
@@ -10779,7 +10794,7 @@ export class EntityItemPickupBeforeEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity will
  * pick up an item.
  */
@@ -12096,7 +12111,7 @@ export class EntityType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this EntityType's name used in
      * .lang files.
@@ -13400,6 +13415,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * chance. Incoming unbreaking parameter must be within the
      * range [0, 3].
      * Defaults to: 0
+     * Bounds: [0, 3]
      * @throws This function can throw errors.
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
@@ -13771,6 +13787,7 @@ export class ItemStack {
      *
      * @worldMutation
      *
+     * Bounds: [1, 255]
      * @throws
      * Throws if the value is outside the range of 1-255.
      */
@@ -13868,6 +13885,7 @@ export class ItemStack {
      * size. Note that certain items can only have one item in the
      * stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      * @throws
      * Throws if `itemType` is invalid, or if `amount` is outside
      * the range of 1-255.
@@ -14388,7 +14406,7 @@ export class ItemType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this ItemType's name used in
      * .lang files.
@@ -15401,6 +15419,7 @@ export class Player extends Entity {
      * @param amount
      * Amount of experience to add. Note that this can be negative.
      * Min/max bounds at -2^24 ~ 2^24
+     * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current experience of the Player.
      * @throws This function can throw errors.
@@ -15415,6 +15434,7 @@ export class Player extends Entity {
      *
      * @param amount
      * Amount to add to the player. Min/max bounds at -2^24 ~ 2^24
+     * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current level of the Player.
      * @throws This function can throw errors.
@@ -15715,6 +15735,7 @@ export class Player extends Entity {
      * cooldown for.
      * @param tickDuration
      * Duration in ticks of the item cooldown.
+     * Bounds: [0, 32767]
      * @throws This function can throw errors.
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
@@ -18920,6 +18941,7 @@ export class StructureManager {
      * templates.
      * @param maxDepth
      * The maximum recursion depth for the jigsaw structure.
+     * Bounds: [1, 20]
      * @param dimension
      * The dimension to place the jigsaw structure in.
      * @param location
@@ -19696,7 +19718,7 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The world seed.
      *
@@ -20094,7 +20116,7 @@ export class WorldAfterEvents {
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -20127,6 +20149,7 @@ export class WorldAfterEvents {
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
+     * @rc
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
@@ -20144,7 +20167,7 @@ export class WorldAfterEvents {
      */
     readonly entityItemDrop: EntityItemDropAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity picks up items.
      *
@@ -20529,21 +20552,21 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHeal: EntityHealBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHurt: EntityHurtBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires before an entity picks up an item.
      *
@@ -21665,7 +21688,7 @@ export interface EntityFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Contains optional parameters for registering an entity heal
  * event.
  */
@@ -21700,7 +21723,7 @@ export interface EntityHitInformation {
 }
 
 /**
- * @beta
+ * @rc
  * Contains optional parameters for registering an entity hurt
  * after event.
  */
@@ -21736,7 +21759,7 @@ export interface EntityHurtAfterEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains optional parameters for registering an entity hurt
  * before event.
  */
@@ -21782,7 +21805,7 @@ export interface EntityItemDropEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
  * and {@link
@@ -22073,6 +22096,7 @@ export interface HotbarEventOptions {
      * The slot indexes to consider. Values should be between 0 and
      * 8, inclusive. If not specified, all slots are considered.
      *
+     * Bounds: [0, 8]
      */
     allowedSlots?: number[];
 }
@@ -22110,6 +22134,7 @@ export interface InventoryItemEventOptions {
      * The slot indexes to consider. Values should be positive
      * numbers. If not specified, all slots are considered.
      *
+     * Bounds: [0, 1000]
      */
     allowedSlots?: number[];
     /**
@@ -22213,7 +22238,7 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains options for filtering items.
  */
 export interface ItemFilter {

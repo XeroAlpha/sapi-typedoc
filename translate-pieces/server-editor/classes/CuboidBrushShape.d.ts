@@ -1,3 +1,4 @@
+/* IMPORT */ import { BlockBoundingBox } from '../../server';
 /* IMPORT */ import { BrushShape, CuboidBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class CuboidBrushShape extends BrushShape {
@@ -18,7 +19,15 @@ export declare class CuboidBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): CuboidBrushShapeSettings;
 }

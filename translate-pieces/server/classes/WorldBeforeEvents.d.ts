@@ -30,21 +30,21 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHeal: EntityHealBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHurt: EntityHurtBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires before an entity picks up an item.
      *

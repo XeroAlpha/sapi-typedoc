@@ -1,3 +1,4 @@
+/* IMPORT */ import { BlockBoundingBox } from '../../server';
 /* IMPORT */ import { BrushShape, BrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
 
 export declare class SingleBlockBrushShape extends BrushShape {
@@ -9,7 +10,15 @@ export declare class SingleBlockBrushShape extends BrushShape {
      */
     constructor();
     applySetting(_settings: BrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(): undefined;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        _cancelToken?: {
+            cancelled: boolean;
+        },
+        _yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): BrushShapeSettings;
 }
