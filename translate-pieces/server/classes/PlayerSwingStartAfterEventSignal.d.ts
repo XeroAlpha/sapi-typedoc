@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerSwingEventOptions, PlayerSwingStartAfterEvent } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when a player starts
  * to swing their arm (e.g. attacking, using an item,
  * interacting).

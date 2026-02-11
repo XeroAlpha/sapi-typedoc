@@ -10,7 +10,7 @@ export interface ToggleOptions {
      * The description for this toggle, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this toggle is disabled.

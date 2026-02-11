@@ -57,14 +57,12 @@ export enum BlockComponentTypes {
      */
     Inventory = 'minecraft:inventory',
     /**
-     * @rc
      * @remarks
      * Represents the color of a block when displayed on a map.
      *
      */
     MapColor = 'minecraft:map_color',
     /**
-     * @rc
      * @remarks
      * Represents a block that can move (such as a piston).
      *
@@ -78,7 +76,6 @@ export enum BlockComponentTypes {
      */
     Piston = 'minecraft:piston',
     /**
-     * @rc
      * @remarks
      * Represents a how a block interacts with precipitation (such
      * as rain or snow).
@@ -92,7 +89,6 @@ export enum BlockComponentTypes {
      */
     RecordPlayer = 'minecraft:record_player',
     /**
-     * @rc
      * @remarks
      * Represents a block that can output a redstone signal.
      *
@@ -1544,7 +1540,6 @@ export enum EntityInitializationCause {
 }
 
 /**
- * @rc
  * Enumerator describing the source of an Entity swing. Sent as
  * part of {@link PlayerSwingStartAfterEvent}
  */
@@ -2038,7 +2033,6 @@ export enum GraphicsMode {
 }
 
 /**
- * @rc
  * Specifies options related to the item currently being held
  * by an entity.
  */
@@ -9746,9 +9740,15 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Type ID of the resulting item after feeding has occurred.
+     * This will usually be empty but is used for scenarios such as
+     * feeding a Nautilus with a bucket of fish, where the result
+     * item will be an empty bucket.
+     *
      */
-    readonly resultItem: string;
+    readonly resultItem?: string;
 }
 
 /**
@@ -10682,7 +10682,7 @@ export class EntityItemComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity having dropped
  * items.
  */
@@ -10703,7 +10703,7 @@ export class EntityItemDropAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity has
  * dropped items.
  */
@@ -12381,9 +12381,15 @@ export class FeedItem {
      */
     readonly item: string;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Type ID of the resulting item after feeding has occurred.
+     * This will usually be empty but is used for scenarios such as
+     * feeding a Nautilus with a bucket of fish, where the result
+     * item will be an empty bucket.
+     *
      */
-    readonly resultItem: string;
+    readonly resultItem?: string;
     /**
      * @remarks
      * As part of the Healable component, an optional collection of
@@ -17229,7 +17235,6 @@ export class PlayerSpawnAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding a player starting to swing
  * their arm.
  */
@@ -17258,7 +17263,6 @@ export class PlayerSwingStartAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a player starts
  * to swing their arm (e.g. attacking, using an item,
  * interacting).
@@ -20205,7 +20209,7 @@ export class WorldAfterEvents {
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity drops items.
      *
@@ -20486,7 +20490,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -21827,7 +21830,7 @@ export interface EntityHurtBeforeEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemDropAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
@@ -22517,7 +22520,6 @@ export interface PlayerSoundOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided

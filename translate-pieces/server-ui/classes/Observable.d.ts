@@ -1,11 +1,11 @@
-/* IMPORT */ import { ObservableOptions } from '..';
+/* IMPORT */ import { ObservableOptions, UIRawMessage } from '..';
 
 /**
  * @beta
  * A class that represents data that can be Observed.
  * Extensively used for UI.
  */
-export declare class Observable<T extends string | number | boolean> {
+export declare class Observable<T extends string | number | boolean | UIRawMessage> {
     /**
      * @remarks
      * Gets the data from the Observable.
@@ -40,5 +40,8 @@ export declare class Observable<T extends string | number | boolean> {
      * Creates an Observable, use this instead of a constructor.
      *
      */
-    static create<T extends string | number | boolean>(data: T, options?: ObservableOptions): Observable<T>;
+    static create<T extends string | number | boolean | UIRawMessage>(
+        data: T,
+        options?: ObservableOptions,
+    ): Observable<T>;
 }

@@ -1,4 +1,4 @@
-/* IMPORT */ import { IListPaneSlot, IPane, IPropertyItemBase, ListPaneSlotCreationProps, ListPaneViewFilter, ListPaneViewSortType } from '..';
+/* IMPORT */ import { IListPaneSlot, IListPaneViewControlPane, IListPaneViewControlPaneOptions, IPane, IPropertyItemBase, ListPaneSlotCreationProps, ListPaneViewFilter, ListPaneViewSortType } from '..';
 
 /**
  * A property item which supports Sub Pane properties
@@ -13,6 +13,12 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     readonly slotCount: number;
     /**
      * @remarks
+     * View control pane for the list
+     *
+     */
+    readonly viewControlPane: IListPaneViewControlPane | undefined;
+    /**
+     * @remarks
      * Current sorting type for the pane slots
      *
      */
@@ -23,6 +29,14 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
      *
      */
     addSlot(params: ListPaneSlotCreationProps): IListPaneSlot;
+    /**
+     * @remarks
+     * Creates a pane that displays view and filtering
+     * configurations for the list if the parent container supports
+     * it.
+     *
+     */
+    buildViewControl(options: IListPaneViewControlPaneOptions): IListPaneViewControlPane;
     /**
      * @remarks
      * Finds the slot with the identifier.

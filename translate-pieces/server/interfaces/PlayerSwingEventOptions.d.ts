@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntitySwingSource, HeldItemOption } from '..';
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided

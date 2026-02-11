@@ -12,15 +12,15 @@ export declare class MessageBox {
      * contained within a scroll view to allow for lots of text.
      *
      */
-    body(text: Observable<string> | string | UIRawMessage): MessageBox;
+    body(text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage): MessageBox;
     /**
      * @remarks
      * Sets the data for the top button in the form.
      *
      */
     button1(
-        label: Observable<string> | string | UIRawMessage,
-        tooltip?: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
@@ -28,8 +28,8 @@ export declare class MessageBox {
      *
      */
     button2(
-        label: Observable<string> | string | UIRawMessage,
-        tooltip?: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
@@ -47,15 +47,12 @@ export declare class MessageBox {
     show(): Promise<MessageBoxResult>;
     /**
      * @remarks
-     * Sets the title of form.
-     *
-     */
-    title(text: Observable<string> | string | UIRawMessage): MessageBox;
-    /**
-     * @remarks
      * Creates a message form for a certain player. Use this
      * instead of a constructor.
      *
      */
-    static create(player: Player): MessageBox;
+    static create(
+        player: Player,
+        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+    ): MessageBox;
 }

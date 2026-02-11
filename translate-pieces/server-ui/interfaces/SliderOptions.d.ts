@@ -10,7 +10,7 @@ export interface SliderOptions {
      * The description of the slider, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this slider is disabled.

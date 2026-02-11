@@ -14,9 +14,13 @@ export declare class CuboidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minLength?: number;
+        maxLength?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

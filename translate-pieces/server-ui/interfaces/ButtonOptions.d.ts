@@ -16,7 +16,7 @@ export interface ButtonOptions {
      * The tooltip for this button, shown when hovering the button.
      *
      */
-    tooltip?: Observable<string> | string | UIRawMessage;
+    tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this button is visible.

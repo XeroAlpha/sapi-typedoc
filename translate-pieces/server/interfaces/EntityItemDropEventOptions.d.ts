@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityFilter, ItemFilter } from '..';
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemDropAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided

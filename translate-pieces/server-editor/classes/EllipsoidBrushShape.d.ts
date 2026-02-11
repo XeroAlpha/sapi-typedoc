@@ -14,9 +14,13 @@ export declare class EllipsoidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        maxRadius?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

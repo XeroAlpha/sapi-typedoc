@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntitySwingSource, ItemStack, Player } from '..';
 
 /**
- * @rc
  * Contains information regarding a player starting to swing
  * their arm.
  */

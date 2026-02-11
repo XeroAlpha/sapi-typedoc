@@ -12,14 +12,12 @@ export enum BlockComponentTypes {
      */
     Inventory = 'minecraft:inventory',
     /**
-     * @rc
      * @remarks
      * Represents the color of a block when displayed on a map.
      *
      */
     MapColor = 'minecraft:map_color',
     /**
-     * @rc
      * @remarks
      * Represents a block that can move (such as a piston).
      *
@@ -33,7 +31,6 @@ export enum BlockComponentTypes {
      */
     Piston = 'minecraft:piston',
     /**
-     * @rc
      * @remarks
      * Represents a how a block interacts with precipitation (such
      * as rain or snow).
@@ -47,7 +44,6 @@ export enum BlockComponentTypes {
      */
     RecordPlayer = 'minecraft:record_player',
     /**
-     * @rc
      * @remarks
      * Represents a block that can output a redstone signal.
      *
