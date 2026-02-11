@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, EntityDamageSource } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity that will be hurt.
  */
 export class EntityHurtBeforeEvent {

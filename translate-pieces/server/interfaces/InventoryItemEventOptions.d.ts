@@ -10,6 +10,7 @@ export interface InventoryItemEventOptions {
      * The slot indexes to consider. Values should be positive
      * numbers. If not specified, all slots are considered.
      *
+     * Bounds: [0, 1000]
      */
     allowedSlots?: number[];
     /**

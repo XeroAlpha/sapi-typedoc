@@ -44,6 +44,7 @@ export class DebugArrow extends DebugLine {
      * The number of segments for the base circle of the arrow's
      * head/tip (default: 4).
      *
+     * Bounds: [3, 128]
      */
     headSegments: number;
     constructor(

@@ -241,6 +241,7 @@ export enum PacketId {
     ResourcePackClientResponsePacket = 'ResourcePackClientResponsePacket',
     ResourcePackDataInfoPacket = 'ResourcePackDataInfoPacket',
     ResourcePacksInfoPacket = 'ResourcePacksInfoPacket',
+    ResourcePacksReadyForValidationPacket = 'ResourcePacksReadyForValidationPacket',
     ResourcePackStackPacket = 'ResourcePackStackPacket',
     RespawnPacket = 'RespawnPacket',
     ScriptMessagePacket = 'ScriptMessagePacket',
@@ -695,6 +696,90 @@ export interface PacketEventOptions {
      *
      */
     monitoredPacketIds?: PacketId[];
+}
+
+/**
+ * An error thrown when an HTTP request body exceeds the
+ * configured size limit.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class HttpRequestBodyTooLargeError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * Configured maximum body size in bytes.
+     *
+     * @earlyExecution
+     *
+     */
+    maxBytes: number;
+    /**
+     * @remarks
+     * Request body size in bytes.
+     *
+     * @earlyExecution
+     *
+     */
+    providedBytes: number;
+}
+
+/**
+ * An error thrown when the maximum number of concurrent HTTP
+ * requests has been reached.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class HttpRequestLimitExceededError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * Number of requests already in flight when rejected.
+     *
+     * @earlyExecution
+     *
+     */
+    inFlightRequests: number;
+    /**
+     * @remarks
+     * Configured maximum concurrent HTTP requests.
+     *
+     * @earlyExecution
+     *
+     */
+    maxConcurrentRequests: number;
+}
+
+/**
+ * An error thrown when an HTTP request targets a URI that is
+ * not in the configured allow list.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class HttpRequestNotAllowedError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * URI that was rejected because it is not allowed.
+     *
+     * @earlyExecution
+     *
+     */
+    uri: string;
+}
+
+/**
+ * An error thrown when HTTPS is required but a non-HTTPS URI
+ * was provided.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class HttpsOnlyError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * URI that was rejected for not using HTTPS.
+     *
+     * @earlyExecution
+     *
+     */
+    uri: string;
 }
 
 /**

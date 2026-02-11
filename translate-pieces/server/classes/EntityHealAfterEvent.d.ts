@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, EntityHealSource } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information related to an entity having been
  * healed.
  */

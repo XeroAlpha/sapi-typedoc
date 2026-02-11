@@ -984,6 +984,15 @@ export declare enum ListPaneEntryType {
 }
 
 /**
+ * Determines theming variation for the list slot
+ */
+export declare enum ListPaneSlotVariant {
+    Primary = 0,
+    Secondary = 1,
+    Muted = 2,
+}
+
+/**
  * Determines how list pane slots will be sorted
  */
 export declare enum ListPaneViewSortType {
@@ -1562,6 +1571,15 @@ export type ListPaneImageEntryParams = {
     visible?: boolean;
 };
 
+export declare type ListPaneSlotConfiguration = {
+    height: number;
+    columns?: number;
+    clickable?: boolean;
+    outline?: boolean;
+    variant?: ListPaneSlotVariant;
+    entryLayout: ListPaneSlotLayoutEntry[] | ListPaneSlotLayoutSections;
+};
+
 /**
  * Properties required to create a slot
  */
@@ -1570,18 +1588,15 @@ export type ListPaneSlotCreationProps = {
     options?: IListPaneSlotOptions;
 };
 
-export declare type ListPaneSlotLayout = {
-    height: number;
-    columns?: number;
-    clickable?: boolean;
-    outline?: boolean;
-    entryLayout: ListPaneSlotLayoutEntry[];
-};
-
 export declare type ListPaneSlotLayoutEntry = {
     type: ListPaneEntryType;
     size?: number | LayoutSize | LayoutFlex;
     alignment?: LayoutAlignment;
+};
+
+export declare type ListPaneSlotLayoutSections = {
+    mainSection: ListPaneSlotLayoutEntry[];
+    outerSection: ListPaneSlotLayoutEntry[];
 };
 
 /**
@@ -2136,11 +2151,53 @@ export declare abstract class BrushShape {
      */
     constructor(_id: string, _displayName: string, _icon: string);
     abstract applySetting(brushSettings: BrushShapeSettings): void;
+    /**
+     * @remarks
+     * Calculates the bounding box of the shape in local
+     * coordinates. Used for region allocation before shape
+     * placement.
+     *
+     * @returns
+     * Object with min and max Vector3 bounds
+     */
+    abstract calculateBounds(): BlockBoundingBox;
     abstract createSettingsPane(
         parentPane: IPropertyPane,
         onSettingsChange?: () => void,
     ): ISubPanePropertyItem | undefined;
     abstract createShape(): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks
+     * Asynchronously creates the shape, yielding control
+     * periodically to avoid timeouts. Use this for large shapes
+     * where createShape() may timeout.
+     *
+     * @param cancelToken
+     * Optional token to cancel the operation. Set cancelled to
+     * true to abort.
+     * @param yieldInterval
+     * Number of blocks to process before yielding. Default is
+     * 10000.
+     * @returns
+     * Promise that resolves to the shape positions as Vector3
+     * array.
+     */
+    abstract createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * Returns a mathematical estimate of the number of blocks in
+     * the shape. Used for UI display and validation before shape
+     * creation.
+     *
+     * @returns
+     * Estimated block count
+     */
+    abstract estimateBlockCount(): number;
     abstract getSettings(): BrushShapeSettings;
 }
 
@@ -2481,8 +2538,16 @@ export declare class ConeBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: ConeBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): ConeBrushShapeSettings;
 }
 
@@ -2505,8 +2570,16 @@ export declare class CuboidBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): CuboidBrushShapeSettings;
 }
 
@@ -2779,8 +2852,16 @@ export declare class CylinderBrushShape extends BrushShape {
         hideRotation?: boolean;
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): CylinderBrushShapeSettings;
 }
 
@@ -2972,8 +3053,16 @@ export declare class EllipsoidBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): EllipsoidBrushShapeSettings;
 }
 
@@ -3625,6 +3714,8 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @remarks
      * @worldMutation
      *
+     * @param weight
+     * Bounds: [1, 100]
      * @throws This function can throw errors.
      */
     addBlock(block: BlockPermutation | BlockType | string, weight: number): void;
@@ -3665,8 +3756,16 @@ export declare class PyramidBrushShape extends BrushShape {
         zRotation?: number;
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): PyramidBrushShapeSettings;
 }
 
@@ -3975,8 +4074,16 @@ export declare class SingleBlockBrushShape extends BrushShape {
      */
     constructor();
     applySetting(_settings: BrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(): undefined;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        _cancelToken?: {
+            cancelled: boolean;
+        },
+        _yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): BrushShapeSettings;
 }
 
@@ -5568,6 +5675,7 @@ export interface GameOptions {
     immediateRespawn?: boolean;
     insomnia?: boolean;
     keepInventory?: boolean;
+    keepPlayerData?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
     locatorBar?: boolean;
@@ -6959,7 +7067,8 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
 export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
-     * This will be the height of the list withing the pane
+     * Default slots to initialize the list with. If undefined, the
+     * list will be empty.
      *
      */
     defaultSlots?: ListPaneSlotCreationProps[];
@@ -6972,17 +7081,10 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     fixedHeight?: boolean;
     /**
      * @remarks
-     * This will be the height of the list withing the pane
+     * This will be the height of the list within the pane
      *
      */
     height?: number;
-    /**
-     * @remarks
-     * Layout for the list will need to be predefined, and using
-     * wrong layout shape while creating slots will throw
-     *
-     */
-    layout: ListPaneSlotLayout;
     /**
      * @remarks
      * This callback is fired whenever a clickable slot is pressed
@@ -6996,6 +7098,14 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     onSlotSelectionChange?: (slot: IListPaneSlot, state: boolean) => void;
+    /**
+     * @remarks
+     * Slot configuration for the list. The slot entry layout must
+     * be predefined, and using an incorrect layout while creating
+     * slots will throw an error.
+     *
+     */
+    slotConfig: ListPaneSlotConfiguration;
     /**
      * @remarks
      * Localized title of the property item.
@@ -8857,6 +8967,13 @@ export interface IStringPropertyItem extends IPropertyItemBase {
 export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Shows clear button for the item. If undefined, it will be
+     * true.
+     *
+     */
+    hasClearButton?: boolean;
+    /**
+     * @remarks
      * If true label text will be hidden. If undefined, the label
      * will be visible by default.
      *
@@ -8868,6 +8985,12 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     inlineLabel?: boolean;
+    /**
+     * @remarks
+     * If defined, string will be handled as multiline input.
+     *
+     */
+    multilineHeight?: number;
     /**
      * @remarks
      * This callback is called when UI control value is changed.

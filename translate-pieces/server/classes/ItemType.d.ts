@@ -11,7 +11,7 @@ export class ItemType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this ItemType's name used in
      * .lang files.

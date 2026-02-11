@@ -140,6 +140,7 @@ export class Player extends Entity {
      * @param amount
      * Amount of experience to add. Note that this can be negative.
      * Min/max bounds at -2^24 ~ 2^24
+     * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current experience of the Player.
      * @throws This function can throw errors.
@@ -154,6 +155,7 @@ export class Player extends Entity {
      *
      * @param amount
      * Amount to add to the player. Min/max bounds at -2^24 ~ 2^24
+     * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current level of the Player.
      * @throws This function can throw errors.
@@ -454,6 +456,7 @@ export class Player extends Entity {
      * cooldown for.
      * @param tickDuration
      * Duration in ticks of the item cooldown.
+     * Bounds: [0, 32767]
      * @throws This function can throw errors.
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;

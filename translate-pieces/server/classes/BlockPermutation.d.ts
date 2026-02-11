@@ -11,7 +11,7 @@
 export class BlockPermutation {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this BlockPermutation's name
      * used in .lang files.
@@ -68,6 +68,7 @@ export class BlockPermutation {
      * Number of instances of this block to place in the prototype
      * item stack.
      * Defaults to: 1
+     * Bounds: [1, 255]
      */
     getItemStack(amount?: number): ItemStack | undefined;
     /**

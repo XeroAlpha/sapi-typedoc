@@ -11,7 +11,7 @@ export class EntityType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Key for the localization of this EntityType's name used in
      * .lang files.

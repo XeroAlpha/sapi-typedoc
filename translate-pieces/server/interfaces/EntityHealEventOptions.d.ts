@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityFilter, EntityHealCause } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains optional parameters for registering an entity heal
  * event.
  */

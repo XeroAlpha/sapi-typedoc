@@ -1,3 +1,4 @@
+/* IMPORT */ import { BlockBoundingBox } from '../../server';
 /* IMPORT */ import { BrushShape, CylinderBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class CylinderBrushShape extends BrushShape {
@@ -24,7 +25,15 @@ export declare class CylinderBrushShape extends BrushShape {
         hideRotation?: boolean;
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
+    calculateBounds(): BlockBoundingBox;
     createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
+    createShapeAsync(
+        cancelToken?: {
+            cancelled: boolean;
+        },
+        yieldInterval?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    estimateBlockCount(): number;
     getSettings(): CylinderBrushShapeSettings;
 }

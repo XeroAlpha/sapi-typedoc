@@ -156,6 +156,7 @@ export class StructureManager {
      * templates.
      * @param maxDepth
      * The maximum recursion depth for the jigsaw structure.
+     * Bounds: [1, 20]
      * @param dimension
      * The dimension to place the jigsaw structure in.
      * @param location

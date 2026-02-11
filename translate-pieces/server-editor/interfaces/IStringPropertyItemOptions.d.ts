@@ -7,6 +7,13 @@
 export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Shows clear button for the item. If undefined, it will be
+     * true.
+     *
+     */
+    hasClearButton?: boolean;
+    /**
+     * @remarks
      * If true label text will be hidden. If undefined, the label
      * will be visible by default.
      *
@@ -18,6 +25,12 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     inlineLabel?: boolean;
+    /**
+     * @remarks
+     * If defined, string will be handled as multiline input.
+     *
+     */
+    multilineHeight?: number;
     /**
      * @remarks
      * This callback is called when UI control value is changed.
