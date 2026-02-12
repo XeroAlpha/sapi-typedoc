@@ -81,4 +81,6 @@ typings/
 
 # build output
 dist/
-dist_original/
+
+# script cache
+cache/
