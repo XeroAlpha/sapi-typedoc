@@ -6,4 +6,5 @@ export enum MinimapViewType {
      *
      */
     BlockView = 0,
+    CustomBiomeView = 1,
 }

@@ -151,13 +151,8 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
-     * Can this form be shown to the player right now?
-     *
-     */
-    canShow(): boolean;
-    /**
-     * @remarks
-     * Closes the form. Throws an error if the form is not open.
+     * Tell the client to close the form. Throws an error if the
+     * form is not open.
      *
      */
     close(): void;
@@ -197,6 +192,13 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
+     * Returns true if the form is currently being shown to the
+     * player.
+     *
+     */
+    isShowing(): boolean;
+    /**
+     * @remarks
      * Inserts a label (i.e. medium sized text) into the Custom
      * form.
      *
@@ -207,12 +209,14 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
-     * Shows the form to the player. Will throw errors if the form
-     * is currently being shown or if another behavior pack is
-     * showing a form.
+     * Shows the form to the player. Will return false if the
+     * client was busy (i.e. in another menu or this one is open).
+     * Will throw if the user disconnects.
      *
+     * @throws
+     *  *
      */
-    show(): Promise<void>;
+    show(): Promise<boolean>;
     /**
      * @remarks
      * Creates a slider that lets players pick a number between
@@ -293,14 +297,15 @@ export class FormResponse {
 export declare class MessageBox {
     /**
      * @remarks
-     * Sets the data for the text in the body of the form. It is
-     * contained within a scroll view to allow for lots of text.
+     * Sets the data for the text in the body of the message box.
+     * It is contained within a scroll view to allow for lots of
+     * text.
      *
      */
     body(text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage): MessageBox;
     /**
      * @remarks
-     * Sets the data for the top button in the form.
+     * Sets the data for the top button in the message box.
      *
      */
     button1(
@@ -309,7 +314,7 @@ export declare class MessageBox {
     ): MessageBox;
     /**
      * @remarks
-     * Sets the data for the bottom button in the form.
+     * Sets the data for the bottom button in the message box.
      *
      */
     button2(
@@ -318,22 +323,30 @@ export declare class MessageBox {
     ): MessageBox;
     /**
      * @remarks
-     * Closes the form. Will throw an error if the form is not
-     * open.
+     * Tell the client to close the message box. Throws {@link
+     * FormCloseError} if the message box is not open.
      *
      */
     close(): void;
     /**
      * @remarks
-     * Show this modal to the player. Will throw an error if the
-     * modal is already showing.
+     * Returns true if the message box is currently being shown to
+     * the player.
+     *
+     */
+    isShowing(): boolean;
+    /**
+     * @remarks
+     * Show this message box to the player. Will return a result
+     * even if the client was busy (i.e. in another menu). Will
+     * throw if the user disconnects.
      *
      */
     show(): Promise<MessageBoxResult>;
     /**
      * @remarks
-     * Creates a message form for a certain player. Use this
-     * instead of a constructor.
+     * Creates a message box for a certain player. Use this instead
+     * of a constructor.
      *
      */
     static create(
@@ -704,6 +717,12 @@ export interface MessageBoxResult {
      *
      */
     selection?: number;
+    /**
+     * @remarks
+     * Whether the message box was shown
+     *
+     */
+    wasShown: boolean;
 }
 
 /**

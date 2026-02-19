@@ -26,7 +26,7 @@ export interface BlockCustomComponent {
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function will be called when an entity fires an event
      * to this block in the world.

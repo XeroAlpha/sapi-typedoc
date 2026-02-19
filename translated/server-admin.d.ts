@@ -25,7 +25,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Player } from '@minecraft/server';
+import { InvalidEntityError, Player } from '@minecraft/server';
 export class AdminBeforeEvents {
     private constructor();
     /**
@@ -38,6 +38,68 @@ export class AdminBeforeEvents {
      *
      */
     readonly asyncPlayerJoin: AsyncPlayerJoinBeforeEventSignal;
+}
+
+/**
+ * Controls the allow list for the server. Only available on
+ * dedicated server.
+ */
+export class AllowList {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    enabled: boolean;
+    /**
+     * @remarks
+     * Adds a player to the server's allow list.
+     *
+     * @param player
+     * Player or player name that should be added to the allow
+     * list.
+     * @throws This function can throw errors.
+     *
+     * {@link AllowListModificationError}
+     *
+     * {@link InvalidEntityError}
+     */
+    add(player: Player | string): void;
+    /**
+     * @remarks
+     * Returns if the player is in the server's allow list.
+     *
+     * @param player
+     * Player or player name that should be checked for.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    contains(player: Player | string): boolean;
+    /**
+     * @remarks
+     * Reloads the server's allow list from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link AllowListFileReloadError}
+     */
+    reloadFile(): void;
+    /**
+     * @remarks
+     * Removes a player from the server's allow list.
+     *
+     * @param player
+     * Player or player name that should be removed from the allow
+     * list.
+     * @throws This function can throw errors.
+     *
+     * {@link AllowListModificationError}
+     *
+     * {@link InvalidEntityError}
+     */
+    remove(player: Player | string): void;
 }
 
 /**
@@ -118,6 +180,90 @@ export class AsyncPlayerJoinBeforeEventSignal {
         callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>,
     ): (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>;
     unsubscribe(callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>): boolean;
+}
+
+/**
+ * Contains apis that are only available when in Bedrock
+ * Dedicated Server.
+ */
+export class DedicatedServerUtils {
+    private constructor();
+    /**
+     * @remarks
+     * Returns an object that manages the server's allow list.
+     *
+     */
+    readonly allowList: AllowList;
+    /**
+     * @remarks
+     * Returns an object that manages the level's storage.
+     *
+     */
+    readonly levelStorage: LevelStorage;
+    /**
+     * @remarks
+     * Shuts down the dedicated server.
+     *
+     */
+    stopServer(): void;
+}
+
+/**
+ * Controls how the server saves to disk. Only available on
+ * dedicated server.
+ */
+export class LevelStorage {
+    private constructor();
+    /**
+     * @remarks
+     * Disables the server writing to the world files and begins
+     * creating a snapshot.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LevelStorageSaveStateChangeError}
+     */
+    saveHold(): void;
+    /**
+     * @remarks
+     * Returns the path and size of every file in the current
+     * snapshot if a snapshot is being taken.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LevelStorageSaveStateChangeError}
+     */
+    saveQuery(): LevelStorageQuerySnapshotFile[];
+    /**
+     * @remarks
+     * Re-enables server writing world state to files and removes
+     * snapshot.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LevelStorageSaveStateChangeError}
+     */
+    saveResume(): void;
+}
+
+/**
+ * Contains information about a file that was gathered during a
+ * snapshot.
+ */
+export class LevelStorageQuerySnapshotFile {
+    private constructor();
+    /**
+     * @remarks
+     * The path to the file in the snapshot.
+     *
+     */
+    readonly fileName: string;
+    /**
+     * @remarks
+     * The size of the file in the snapshot.
+     *
+     */
+    readonly fileSize: number;
 }
 
 /**
@@ -216,6 +362,24 @@ export interface TransferPlayerNetherNetOptions {
 }
 
 /**
+ * An error that is thrown when the allow list file fails to
+ * reload.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class AllowListFileReloadError extends Error {
+    private constructor();
+}
+
+/**
+ * An error which is thrown when modifying the allow list has
+ * failed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class AllowListModificationError extends Error {
+    private constructor();
+}
+
+/**
  * An error that is thrown when trying to interact with a join
  * event and the player is disconnected.
  */
@@ -230,6 +394,16 @@ export class DisconnectedError extends Error {
      *
      */
     readonly id: string;
+}
+
+/**
+ * An error that is thrown when level storage save state
+ * management are used out of sequence or are repeated in an
+ * invalid way.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LevelStorageSaveStateChangeError extends Error {
+    private constructor();
 }
 
 /**
@@ -249,6 +423,13 @@ export function transferPlayer(
     options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
 ): void;
 export const beforeEvents: AdminBeforeEvents;
+/**
+ * @remarks
+ * A globally available, optional object that contains
+ * dedicated-server only apis.
+ *
+ */
+export const dedicatedServer: DedicatedServerUtils | undefined;
 /**
  * @remarks
  * A globally available object that returns a list of

@@ -22,13 +22,8 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
-     * Can this form be shown to the player right now?
-     *
-     */
-    canShow(): boolean;
-    /**
-     * @remarks
-     * Closes the form. Throws an error if the form is not open.
+     * Tell the client to close the form. Throws an error if the
+     * form is not open.
      *
      */
     close(): void;
@@ -68,6 +63,13 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
+     * Returns true if the form is currently being shown to the
+     * player.
+     *
+     */
+    isShowing(): boolean;
+    /**
+     * @remarks
      * Inserts a label (i.e. medium sized text) into the Custom
      * form.
      *
@@ -78,12 +80,14 @@ export declare class CustomForm {
     ): CustomForm;
     /**
      * @remarks
-     * Shows the form to the player. Will throw errors if the form
-     * is currently being shown or if another behavior pack is
-     * showing a form.
+     * Shows the form to the player. Will return false if the
+     * client was busy (i.e. in another menu or this one is open).
+     * Will throw if the user disconnects.
      *
+     * @throws
+     *  *
      */
-    show(): Promise<void>;
+    show(): Promise<boolean>;
     /**
      * @remarks
      * Creates a slider that lets players pick a number between

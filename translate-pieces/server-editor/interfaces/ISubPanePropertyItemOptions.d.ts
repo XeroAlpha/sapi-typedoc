@@ -35,6 +35,12 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     hasMargins?: boolean;
     /**
      * @remarks
+     * Pane icon shown in front of the pane header
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
      * Determines layout of sub pane property items. If undefined,
      * it will default to Vertical.
      *

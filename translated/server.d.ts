@@ -25,7 +25,7 @@ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRang
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '@minecraft/vanilla-data';
 /**
- * @beta
+ * @rc
  * Specifies different targeting modes for use in aim-assist.
  */
 export enum AimAssistTargetMode {
@@ -3247,7 +3247,7 @@ export type VanillaEntityIdentifier =
     | `${MinecraftEntityTypes}<${string}>`;
 
 /**
- * @beta
+ * @rc
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
  */
@@ -3322,7 +3322,7 @@ export class AimAssistCategory {
 }
 
 /**
- * @beta
+ * @rc
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
  */
@@ -3440,7 +3440,7 @@ export class AimAssistCategorySettings {
 }
 
 /**
- * @beta
+ * @rc
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
  */
@@ -3533,7 +3533,7 @@ export class AimAssistPreset {
 }
 
 /**
- * @beta
+ * @rc
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
  */
@@ -3691,7 +3691,7 @@ export class AimAssistPresetSettings {
 }
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to the world's aim-assist
  * settings.
  */
@@ -4222,6 +4222,20 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
+     * @beta
+     * @remarks
+     * Returns array of all loaded block parts if this block has
+     * the 'minecraft:multi_block' trait. If it does not have the
+     * trait returns undefined
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getParts(): Block[] | undefined;
+    /**
      * @remarks
      * Returns the net redstone power of this block.
      *
@@ -4686,7 +4700,7 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event sent by an entity to
  * this block in the world.
  */
@@ -4705,7 +4719,7 @@ export class BlockComponentEntityEvent extends BlockEvent {
      * The entity that sent the event.
      *
      */
-    readonly entitySource?: Entity;
+    readonly entitySource: Entity;
     /**
      * @remarks
      * Name of the event fired by the entity.
@@ -8614,6 +8628,27 @@ export class Entity {
      * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Adds an item to the entity's inventory.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Returns undefined if the item was fully added or returns an
+     * ItemStack with the remaining count.
+     * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
+     *
+     * {@link InvalidEntityComponentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
      * @remarks
      * Adds a specified tag to an entity.
@@ -15508,7 +15543,7 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The player's aim-assist settings.
      *
@@ -15816,7 +15851,7 @@ export class Player extends Entity {
 }
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to player aim-assist.
  */
 export class PlayerAimAssist {
@@ -19817,7 +19852,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.
@@ -20851,7 +20886,7 @@ export interface BlockCustomComponent {
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This function will be called when an entity fires an event
      * to this block in the world.
@@ -22463,7 +22498,7 @@ export interface PlayAnimationOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Settings relating to a player's aim-assist targeting.
  */
 export interface PlayerAimAssistSettings {
@@ -23301,6 +23336,16 @@ export class InvalidContainerError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidContainerSlotError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * This error can occur when accessing components on an entity
+ * that doesn't have them.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidEntityComponentError extends Error {
     private constructor();
 }
 

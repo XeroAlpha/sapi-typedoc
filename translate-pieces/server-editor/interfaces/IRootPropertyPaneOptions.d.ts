@@ -11,4 +11,10 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     headerAction?: IRootPropertyPaneHeaderAction;
+    /**
+     * @remarks
+     * Pane icon shown in front of the pane header
+     *
+     */
+    icon?: string;
 }

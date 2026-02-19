@@ -91,7 +91,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.

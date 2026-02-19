@@ -21,6 +21,7 @@ export declare class CuboidBrushShape extends BrushShape {
         hollow?: boolean;
         thickness?: number;
         enableHollowSettings?: boolean;
+        hideRotation?: boolean;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

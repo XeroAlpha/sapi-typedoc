@@ -2,7 +2,7 @@
 /* IMPORT */ import { InvalidEntityError, NamespaceNameError, PlayerAimAssistSettings } from '..';
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to player aim-assist.
  */
 export class PlayerAimAssist {

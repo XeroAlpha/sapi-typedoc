@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { AABB, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityError, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
+/* IMPORT */ import { AABB, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, ContainerRulesError, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityComponentError, InvalidEntityError, ItemStack, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -204,6 +204,27 @@ export class Entity {
      * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Adds an item to the entity's inventory.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Returns undefined if the item was fully added or returns an
+     * ItemStack with the remaining count.
+     * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
+     *
+     * {@link InvalidEntityComponentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
      * @remarks
      * Adds a specified tag to an entity.

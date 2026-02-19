@@ -12,4 +12,10 @@ export interface MessageBoxResult {
      *
      */
     selection?: number;
+    /**
+     * @remarks
+     * Whether the message box was shown
+     *
+     */
+    wasShown: boolean;
 }
