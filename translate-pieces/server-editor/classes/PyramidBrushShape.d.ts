@@ -12,9 +12,14 @@ export declare class PyramidBrushShape extends BrushShape {
         width?: number;
         height?: number;
         depth?: number;
+        maxSide?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

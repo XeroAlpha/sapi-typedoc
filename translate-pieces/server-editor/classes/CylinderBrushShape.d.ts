@@ -19,10 +19,15 @@ export declare class CylinderBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        maxRadius?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
         hideRotation?: boolean;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

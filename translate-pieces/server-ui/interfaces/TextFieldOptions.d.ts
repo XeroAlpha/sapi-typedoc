@@ -10,7 +10,7 @@ export interface TextFieldOptions {
      * The description for this text field, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this text field is disabled.

@@ -104,7 +104,7 @@ export class WorldAfterEvents {
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity drops items.
      *
@@ -385,7 +385,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *

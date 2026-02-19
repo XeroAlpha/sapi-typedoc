@@ -13,9 +13,14 @@ export declare class ConeBrushShape extends BrushShape {
         width?: number;
         height?: number;
         depth?: number;
+        maxRadius?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: ConeBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;

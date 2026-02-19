@@ -150,7 +150,11 @@ export declare class CustomForm {
      * when the button is pressed.
      *
      */
-    button(label: Observable<string> | string | UIRawMessage, onClick: () => void, options?: ButtonOptions): CustomForm;
+    button(
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        onClick: () => void,
+        options?: ButtonOptions,
+    ): CustomForm;
     /**
      * @remarks
      * Can this form be shown to the player right now?
@@ -182,10 +186,20 @@ export declare class CustomForm {
      *
      */
     dropdown(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         value: Observable<number>,
         items: DropdownItem[],
         options?: DropdownOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Inserts a header (i.e. large sized text) into the Custom
+     * form.
+     *
+     */
+    header(
+        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        options?: TextOptions,
     ): CustomForm;
     /**
      * @remarks
@@ -193,7 +207,10 @@ export declare class CustomForm {
      * form.
      *
      */
-    label(text: Observable<string> | string | UIRawMessage, options?: LabelOptions): CustomForm;
+    label(
+        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        options?: TextOptions,
+    ): CustomForm;
     /**
      * @remarks
      * Shows the form to the player. Will throw errors if the form
@@ -209,7 +226,7 @@ export declare class CustomForm {
      *
      */
     slider(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         value: Observable<number>,
         minValue: Observable<number> | number,
         maxValue: Observable<number> | number,
@@ -228,7 +245,7 @@ export declare class CustomForm {
      *
      */
     textField(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         text: Observable<string>,
         options?: TextFieldOptions,
     ): CustomForm;
@@ -239,7 +256,7 @@ export declare class CustomForm {
      *
      */
     toggle(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         toggled: Observable<boolean>,
         options?: ToggleOptions,
     ): CustomForm;
@@ -249,7 +266,10 @@ export declare class CustomForm {
      * instead of a constructor.
      *
      */
-    static create(player: Player, title: Observable<string> | string | UIRawMessage): CustomForm;
+    static create(
+        player: Player,
+        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+    ): CustomForm;
 }
 
 /**
@@ -283,15 +303,15 @@ export declare class MessageBox {
      * contained within a scroll view to allow for lots of text.
      *
      */
-    body(text: Observable<string> | string | UIRawMessage): MessageBox;
+    body(text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage): MessageBox;
     /**
      * @remarks
      * Sets the data for the top button in the form.
      *
      */
     button1(
-        label: Observable<string> | string | UIRawMessage,
-        tooltip?: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
@@ -299,8 +319,8 @@ export declare class MessageBox {
      *
      */
     button2(
-        label: Observable<string> | string | UIRawMessage,
-        tooltip?: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
@@ -318,17 +338,14 @@ export declare class MessageBox {
     show(): Promise<MessageBoxResult>;
     /**
      * @remarks
-     * Sets the title of form.
-     *
-     */
-    title(text: Observable<string> | string | UIRawMessage): MessageBox;
-    /**
-     * @remarks
      * Creates a message form for a certain player. Use this
      * instead of a constructor.
      *
      */
-    static create(player: Player): MessageBox;
+    static create(
+        player: Player,
+        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+    ): MessageBox;
 }
 
 /**
@@ -539,7 +556,7 @@ export class ModalFormResponse extends FormResponse {
  * A class that represents data that can be Observed.
  * Extensively used for UI.
  */
-export declare class Observable<T extends string | number | boolean> {
+export declare class Observable<T extends string | number | boolean | UIRawMessage> {
     /**
      * @remarks
      * Gets the data from the Observable.
@@ -574,7 +591,10 @@ export declare class Observable<T extends string | number | boolean> {
      * Creates an Observable, use this instead of a constructor.
      *
      */
-    static create<T extends string | number | boolean>(data: T, options?: ObservableOptions): Observable<T>;
+    static create<T extends string | number | boolean | UIRawMessage>(
+        data: T,
+        options?: ObservableOptions,
+    ): Observable<T>;
 }
 
 export class UIManager {
@@ -604,7 +624,7 @@ export interface ButtonOptions {
      * The tooltip for this button, shown when hovering the button.
      *
      */
-    tooltip?: Observable<string> | string | UIRawMessage;
+    tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this button is visible.
@@ -673,19 +693,6 @@ export interface DropdownOptions {
     /**
      * @remarks
      * Whether or not this dropdown is visible.
-     *
-     */
-    visible?: Observable<boolean> | boolean;
-}
-
-/**
- * @beta
- * The options for including a label in {@link CustomForm}.
- */
-export interface LabelOptions {
-    /**
-     * @remarks
-     * Whether or not this label is visible
      *
      */
     visible?: Observable<boolean> | boolean;
@@ -823,7 +830,7 @@ export interface SliderOptions {
      * The description of the slider, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this slider is disabled.
@@ -869,7 +876,7 @@ export interface TextFieldOptions {
      * The description for this text field, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this text field is disabled.
@@ -886,6 +893,20 @@ export interface TextFieldOptions {
 
 /**
  * @beta
+ * The options for including a label or header in {@link
+ * CustomForm}.
+ */
+export interface TextOptions {
+    /**
+     * @remarks
+     * Whether or not this label is visible
+     *
+     */
+    visible?: Observable<boolean> | boolean;
+}
+
+/**
+ * @beta
  * The options for including a toggle in {@link CustomForm}.
  */
 export interface ToggleOptions {
@@ -894,7 +915,7 @@ export interface ToggleOptions {
      * The description for this toggle, shown in the UI.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
     /**
      * @remarks
      * Whether or not this toggle is disabled.

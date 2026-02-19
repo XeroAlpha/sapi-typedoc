@@ -1015,6 +1015,13 @@ export declare enum ListPaneViewSortType {
     ZtoA = 2,
 }
 
+export declare enum ListViewControlFilterFlags {
+    None = 0,
+    Name = 1,
+    Tag = 2,
+    All = 3,
+}
+
 export enum LogChannel {
     /**
      * @remarks
@@ -1728,6 +1735,23 @@ export type ListPaneTextEntryParams = {
 export declare type ListPaneViewFilter = {
     slots?: string[];
     tags?: string[];
+};
+
+/**
+ * Action item to be displayed on a list view control
+ */
+export type ListViewControlAction = {
+    id: string;
+} & ListViewControlActionState;
+
+/**
+ * Action item state for list view control
+ */
+export type ListViewControlActionState = {
+    label: LocalizedString;
+    icon: string;
+    disabled?: boolean;
+    displayInMenu?: boolean;
 };
 
 /**
@@ -2647,9 +2671,14 @@ export declare class ConeBrushShape extends BrushShape {
         width?: number;
         height?: number;
         depth?: number;
+        maxRadius?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: ConeBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -2679,9 +2708,13 @@ export declare class CuboidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minLength?: number;
+        maxLength?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -2960,10 +2993,15 @@ export declare class CylinderBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        maxRadius?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
         hideRotation?: boolean;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -3162,9 +3200,13 @@ export declare class EllipsoidBrushShape extends BrushShape {
         height?: number;
         depth?: number;
         minRadius?: number;
+        maxRadius?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -3865,9 +3907,14 @@ export declare class PyramidBrushShape extends BrushShape {
         width?: number;
         height?: number;
         depth?: number;
+        maxSide?: number;
+        maxHeight?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
+        hollow?: boolean;
+        thickness?: number;
+        enableHollowSettings?: boolean;
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -5833,7 +5880,9 @@ export interface ClipboardWriteOptions {
 export interface ConeBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
     radius: number;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;
@@ -5858,6 +5907,8 @@ export interface ContiguousSelectionProperties {
 export interface CuboidBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;
@@ -5952,7 +6003,9 @@ export interface CursorRay {
 export interface CylinderBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
     radius: number;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;
@@ -5975,7 +6028,9 @@ export interface EditorStructureSearchOptions {
 export interface EllipsoidBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
     radius: number;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;
@@ -7783,6 +7838,12 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     readonly slotCount: number;
     /**
      * @remarks
+     * View control pane for the list
+     *
+     */
+    readonly viewControlPane: IListPaneViewControlPane | undefined;
+    /**
+     * @remarks
      * Current sorting type for the pane slots
      *
      */
@@ -7793,6 +7854,14 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
      *
      */
     addSlot(params: ListPaneSlotCreationProps): IListPaneSlot;
+    /**
+     * @remarks
+     * Creates a pane that displays view and filtering
+     * configurations for the list if the parent container supports
+     * it.
+     *
+     */
+    buildViewControl(options: IListPaneViewControlPaneOptions): IListPaneViewControlPane;
     /**
      * @remarks
      * Finds the slot with the identifier.
@@ -8068,6 +8137,117 @@ export interface IListPaneTextEntry extends IListPaneEntry {
      * New value.
      */
     setValue(value: LocalizedString): void;
+}
+
+/**
+ * View control for a list pane to manage how slots are
+ * displayed
+ */
+export interface IListPaneViewControlPane {
+    /**
+     * @remarks
+     * Unique identifier
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Active state of the filter
+     *
+     */
+    readonly isFilterActive: boolean;
+    /**
+     * @remarks
+     * Visible state of the pane
+     *
+     */
+    readonly visible: boolean;
+    /**
+     * @remarks
+     * Returns the state of an existing action
+     *
+     * @param id
+     * Identifier for the action
+     */
+    getActionState(id: string): ListViewControlActionState | undefined;
+    /**
+     * @remarks
+     * Updates enabled state of the existing action
+     *
+     * @param id
+     * Identifier for the action
+     * @param enabled
+     * New action enabled state
+     */
+    setActionEnabledState(id: string, enabled: boolean): void;
+    /**
+     * @remarks
+     * Updates existing actions
+     *
+     * @param newActions
+     * New actions
+     */
+    setActionStates(newActions: ListViewControlAction[]): void;
+    /**
+     * @remarks
+     * Updates visible state of the pane
+     *
+     * @param visible
+     * New visibility state
+     */
+    setVisible(visible: boolean): void;
+    /**
+     * @remarks
+     * Updates action item state for the view control
+     *
+     * @param id
+     * Identifier for the action
+     * @param newState
+     * New action state
+     */
+    updateActionState(id: string, newState: ListViewControlActionState): void;
+}
+
+export interface IListPaneViewControlPaneOptions {
+    /**
+     * @remarks
+     * Default actions
+     *
+     */
+    actions?: ListViewControlAction[];
+    /**
+     * @remarks
+     * Flags to determine visible filters. If undefined it will be
+     * All.
+     *
+     */
+    filterFlags?: ListViewControlFilterFlags;
+    /**
+     * @remarks
+     * This function will be called whenever user clicks an action
+     *
+     */
+    onActionClicked?: (id: string) => void;
+    /**
+     * @remarks
+     * This function will be called whenever the filter is changed
+     * by the user
+     *
+     */
+    onFilterChanged?: (visibleSlotIds: string[]) => void;
+    /**
+     * @remarks
+     * Custom sort options. If undefined, list pane sort options
+     * will be used.
+     *
+     */
+    sortOptions?: ListPaneViewSortType[];
+    /**
+     * @remarks
+     * Initial visibility state. It undefined, it will be false.
+     *
+     */
+    visible?: boolean;
 }
 
 export interface IMenu {
@@ -10601,6 +10781,8 @@ export interface ProjectExportOptions {
 export interface PyramidBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;

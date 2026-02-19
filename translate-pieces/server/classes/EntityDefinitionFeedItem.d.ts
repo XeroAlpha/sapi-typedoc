@@ -21,7 +21,13 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Type ID of the resulting item after feeding has occurred.
+     * This will usually be empty but is used for scenarios such as
+     * feeding a Nautilus with a bucket of fish, where the result
+     * item will be an empty bucket.
+     *
      */
-    readonly resultItem: string;
+    readonly resultItem?: string;
 }

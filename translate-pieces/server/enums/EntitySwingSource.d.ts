@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerSwingStartAfterEvent } from '..';
 
 /**
- * @rc
  * Enumerator describing the source of an Entity swing. Sent as
  * part of {@link PlayerSwingStartAfterEvent}
  */

@@ -1,5 +1,4 @@
 /**
- * @rc
  * Specifies options related to the item currently being held
  * by an entity.
  */

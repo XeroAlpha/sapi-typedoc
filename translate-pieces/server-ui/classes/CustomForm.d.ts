@@ -1,5 +1,5 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { ButtonOptions, DividerOptions, DropdownItem, DropdownOptions, LabelOptions, Observable, SliderOptions, SpacingOptions, TextFieldOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonOptions, DividerOptions, DropdownItem, DropdownOptions, Observable, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * @beta
@@ -15,7 +15,11 @@ export declare class CustomForm {
      * when the button is pressed.
      *
      */
-    button(label: Observable<string> | string | UIRawMessage, onClick: () => void, options?: ButtonOptions): CustomForm;
+    button(
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        onClick: () => void,
+        options?: ButtonOptions,
+    ): CustomForm;
     /**
      * @remarks
      * Can this form be shown to the player right now?
@@ -47,10 +51,20 @@ export declare class CustomForm {
      *
      */
     dropdown(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         value: Observable<number>,
         items: DropdownItem[],
         options?: DropdownOptions,
+    ): CustomForm;
+    /**
+     * @remarks
+     * Inserts a header (i.e. large sized text) into the Custom
+     * form.
+     *
+     */
+    header(
+        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        options?: TextOptions,
     ): CustomForm;
     /**
      * @remarks
@@ -58,7 +72,10 @@ export declare class CustomForm {
      * form.
      *
      */
-    label(text: Observable<string> | string | UIRawMessage, options?: LabelOptions): CustomForm;
+    label(
+        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        options?: TextOptions,
+    ): CustomForm;
     /**
      * @remarks
      * Shows the form to the player. Will throw errors if the form
@@ -74,7 +91,7 @@ export declare class CustomForm {
      *
      */
     slider(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         value: Observable<number>,
         minValue: Observable<number> | number,
         maxValue: Observable<number> | number,
@@ -93,7 +110,7 @@ export declare class CustomForm {
      *
      */
     textField(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         text: Observable<string>,
         options?: TextFieldOptions,
     ): CustomForm;
@@ -104,7 +121,7 @@ export declare class CustomForm {
      *
      */
     toggle(
-        label: Observable<string> | string | UIRawMessage,
+        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
         toggled: Observable<boolean>,
         options?: ToggleOptions,
     ): CustomForm;
@@ -114,5 +131,8 @@ export declare class CustomForm {
      * instead of a constructor.
      *
      */
-    static create(player: Player, title: Observable<string> | string | UIRawMessage): CustomForm;
+    static create(
+        player: Player,
+        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+    ): CustomForm;
 }

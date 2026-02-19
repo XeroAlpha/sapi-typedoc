@@ -4,6 +4,8 @@
 export interface PyramidBrushShapeSettings {
     depth: number;
     height: number;
+    hollow: boolean;
+    thickness: number;
     uniform: boolean;
     width: number;
     xRotation: number;
