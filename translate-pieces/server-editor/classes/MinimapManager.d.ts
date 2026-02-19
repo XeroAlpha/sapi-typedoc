@@ -17,7 +17,7 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number): MinimapItem;
+    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number, dataId?: string): MinimapItem;
     /**
      * @remarks
      * Remove an existing minimap instance from the manager using

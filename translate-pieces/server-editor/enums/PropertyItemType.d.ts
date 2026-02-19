@@ -25,6 +25,7 @@ export declare enum PropertyItemType {
     ProxyPane = 'editorUI:ProxyPane',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
+    TagContainer = 'editorUI:TagContainer',
     Text = 'editorUI:Text',
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector2 = 'editorUI:Vector2',

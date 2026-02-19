@@ -573,6 +573,7 @@ export { EntitySpawnError } from './classes/EntitySpawnError';
 export { InvalidBlockComponentError } from './classes/InvalidBlockComponentError';
 export { InvalidContainerError } from './classes/InvalidContainerError';
 export { InvalidContainerSlotError } from './classes/InvalidContainerSlotError';
+export { InvalidEntityComponentError } from './classes/InvalidEntityComponentError';
 export { InvalidEntityError } from './classes/InvalidEntityError';
 export { InvalidItemStackError } from './classes/InvalidItemStackError';
 export { InvalidIteratorError } from './classes/InvalidIteratorError';

@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event sent by an entity to
  * this block in the world.
  */
@@ -20,7 +20,7 @@ export class BlockComponentEntityEvent extends BlockEvent {
      * The entity that sent the event.
      *
      */
-    readonly entitySource?: Entity;
+    readonly entitySource: Entity;
     /**
      * @remarks
      * Name of the event fired by the entity.

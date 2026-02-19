@@ -891,6 +891,7 @@ export enum PacketId {
      * Allows us to synchronize Actor properties across the network.
      */
     SyncActorPropertyPacket = 'SyncActorPropertyPacket',
+    SyncWorldClocksPacket = 'SyncWorldClocksPacket',
     /**
      * A packet sent to the server when deal with picking up an item off the ground in the world.
      */

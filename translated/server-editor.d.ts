@@ -1060,6 +1060,7 @@ export enum MinimapViewType {
      *
      */
     BlockView = 0,
+    CustomBiomeView = 1,
 }
 
 /**
@@ -1231,6 +1232,7 @@ export declare enum PropertyItemType {
     ProxyPane = 'editorUI:ProxyPane',
     String = 'editorUI:String',
     SubPane = 'editorUI:SubPane',
+    TagContainer = 'editorUI:TagContainer',
     Text = 'editorUI:Text',
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector2 = 'editorUI:Vector2',
@@ -1269,6 +1271,14 @@ export enum StructureSource {
     EditorProject = 1,
     File = 2,
     Level = 3,
+}
+
+/**
+ * The possible variants of a TagContainer property item.
+ */
+export declare enum TagContainerVariant {
+    Primary = 0,
+    Inverted = 1,
 }
 
 export enum ThemeSettingsColorKey {
@@ -2715,6 +2725,7 @@ export declare class CuboidBrushShape extends BrushShape {
         hollow?: boolean;
         thickness?: number;
         enableHollowSettings?: boolean;
+        hideRotation?: boolean;
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
@@ -3727,7 +3738,7 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number): MinimapItem;
+    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number, dataId?: string): MinimapItem;
     /**
      * @remarks
      * Remove an existing minimap instance from the manager using
@@ -9574,6 +9585,12 @@ export interface IPropertyPane extends IPane {
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
     /**
      * @remarks
+     * Adds a tag container to the pane.
+     *
+     */
+    addTagContainer(options?: ITagContainerPropertyItemOptions): ITagContainerPropertyItem;
+    /**
+     * @remarks
      * Adds a multiline Text item to the pane.
      *
      */
@@ -9826,6 +9843,12 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     headerAction?: IRootPropertyPaneHeaderAction;
+    /**
+     * @remarks
+     * Pane icon shown in front of the pane header
+     *
+     */
+    icon?: string;
 }
 
 /**
@@ -10067,6 +10090,12 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     hasMargins?: boolean;
     /**
      * @remarks
+     * Pane icon shown in front of the pane header
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
      * Determines layout of sub pane property items. If undefined,
      * it will default to Vertical.
      *
@@ -10091,6 +10120,133 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
      *
      */
     width?: number | LayoutSize;
+}
+
+/**
+ * A property item which supports Tag Container properties
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITagContainerPropertyItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Current tags value of the property item.
+     *
+     */
+    readonly tags: ReadonlyArray<string>;
+    /**
+     * @remarks
+     * Current tags pool value of the property item.
+     *
+     */
+    readonly tagsPool: ReadonlyArray<string>;
+    /**
+     * @remarks
+     * Adds a tag to the current tags.
+     *
+     * @param tag
+     * Tag to add.
+     */
+    addTag(tag: string): void;
+    /**
+     * @remarks
+     * Adds a tag to the tags pool.
+     *
+     * @param tag
+     * Tag to add to the pool.
+     */
+    addTagToPool(tag: string): void;
+    /**
+     * @remarks
+     * Removes a tag from the current tags.
+     *
+     * @param tag
+     * Tag to remove.
+     */
+    removeTag(tag: string): void;
+    /**
+     * @remarks
+     * Removes a tag from the tags pool.
+     *
+     * @param tag
+     * Tag to remove from the pool.
+     */
+    removeTagFromPool(tag: string): void;
+    /**
+     * @remarks
+     * Updates all tags.
+     *
+     * @param tags
+     * New tags array.
+     */
+    setTags(tags: string[] | undefined): void;
+    /**
+     * @remarks
+     * Updates the tags pool.
+     *
+     * @param tagsPool
+     * New tags pool array.
+     */
+    setTagsPool(tagsPool: string[] | undefined): void;
+    /**
+     * @remarks
+     * Set title of the property item.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString): void;
+    /**
+     * @remarks
+     * Sets the visual variant of the tag container.
+     *
+     * @param variant
+     * New variant.
+     */
+    setVariant(variant: TagContainerVariant | undefined): void;
+}
+
+/**
+ * Optional properties for Tag Container property item
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITagContainerPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * This callback is called when a tag is added.
+     *
+     */
+    onTagAdded?: (tag: string) => void;
+    /**
+     * @remarks
+     * This callback is called when a tag is removed.
+     *
+     */
+    onTagRemoved?: (tag: string) => void;
+    /**
+     * @remarks
+     * Initial tags for the container.
+     *
+     */
+    tags?: string[];
+    /**
+     * @remarks
+     * Available tags pool to select from.
+     *
+     */
+    tagsPool?: string[];
+    /**
+     * @remarks
+     * Localized title of the property item.
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Visual variant of the tag container. If undefined, it will
+     * default to Inverted.
+     *
+     */
+    variant?: TagContainerVariant;
 }
 
 /**

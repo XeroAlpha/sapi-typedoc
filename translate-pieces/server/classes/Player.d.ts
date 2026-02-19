@@ -198,7 +198,7 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The player's aim-assist settings.
      *

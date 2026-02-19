@@ -1,5 +1,5 @@
 /* IMPORT */ import { RGBA, Vector2, Vector3 } from '../../server';
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, ICollectionTreePropertyItem, ICollectionTreePropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IColorTimelinePropertyItem, IColorTimelinePropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, IListPanePropertyItem, IListPanePropertyItemOptions, IMenuCreationParams, IMenuPropertyItem, IMenuPropertyItemOptions, IMinimapPropertyItem, IMinimapPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, INumberTimelinePropertyItem, INumberTimelinePropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector2PropertyItem, IVector2PropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3TimelinePropertyItem, IVector3TimelinePropertyItemOptions, ImageResourceData, LocalizedString, NoArgsAction, PropertyPaneVisibilityUpdate, RegisteredAction } from '..';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, EventSink, IBlockListPropertyItem, IBlockListPropertyItemOptions, IBlockTablePropertyItem, IBlockTablePropertyItemOptions, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, ICollectionTreePropertyItem, ICollectionTreePropertyItemOptions, IColorPickerPropertyItem, IColorPickerPropertyItemOptions, IColorTimelinePropertyItem, IColorTimelinePropertyItemOptions, IComboBoxPropertyItem, IComboBoxPropertyItemOptions, IDataTablePropertyItem, IDataTablePropertyItemOptions, IDropdownPropertyItem, IDropdownPropertyItemOptions, IImagePropertyItem, IImagePropertyItemOptions, ILinkPropertyItem, ILinkPropertyItemOptions, IListPanePropertyItem, IListPanePropertyItemOptions, IMenuCreationParams, IMenuPropertyItem, IMenuPropertyItemOptions, IMinimapPropertyItem, IMinimapPropertyItemOptions, INumberPropertyItem, INumberPropertyItemOptions, INumberTimelinePropertyItem, INumberTimelinePropertyItemOptions, IObservableProp, IPane, IProgressIndicatorPropertyItem, IProgressIndicatorPropertyItemOptions, IPropertyItemBase, IStringPropertyItem, IStringPropertyItemOptions, ISubPanePropertyItem, ISubPanePropertyItemOptions, ITagContainerPropertyItem, ITagContainerPropertyItemOptions, ITextPropertyItem, ITextPropertyItemOptions, IToggleGroupPropertyItem, IToggleGroupPropertyItemOptions, IVector2PropertyItem, IVector2PropertyItemOptions, IVector3PropertyItem, IVector3PropertyItemOptions, IVector3TimelinePropertyItem, IVector3TimelinePropertyItemOptions, ImageResourceData, LocalizedString, NoArgsAction, PropertyPaneVisibilityUpdate, RegisteredAction } from '..';
 
 /**
  * Property pane present dynamic content. It can be associated
@@ -175,6 +175,12 @@ export interface IPropertyPane extends IPane {
      *
      */
     addString(value: IObservableProp<string>, options?: IStringPropertyItemOptions): IStringPropertyItem;
+    /**
+     * @remarks
+     * Adds a tag container to the pane.
+     *
+     */
+    addTagContainer(options?: ITagContainerPropertyItemOptions): ITagContainerPropertyItem;
     /**
      * @remarks
      * Adds a multiline Text item to the pane.

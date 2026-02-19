@@ -469,6 +469,20 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
+     * @beta
+     * @remarks
+     * Returns array of all loaded block parts if this block has
+     * the 'minecraft:multi_block' trait. If it does not have the
+     * trait returns undefined
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getParts(): Block[] | undefined;
+    /**
      * @remarks
      * 返回该方块的净红石能量强度。
      * 考虑了所有输入和输出后的总红石能量强度。
