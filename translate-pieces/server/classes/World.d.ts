@@ -60,7 +60,7 @@ export class World {
      */
     readonly structureManager: StructureManager;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Manager for adding, removing and querying pack specific
      * ticking areas.
@@ -99,7 +99,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @rc
+     * @beta
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.

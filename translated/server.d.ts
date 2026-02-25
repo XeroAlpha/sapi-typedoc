@@ -27,7 +27,7 @@ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRang
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '@minecraft/vanilla-data';
 /**
- * @rc
+ * @beta
  * Specifies different targeting modes for use in aim-assist.
  */
 export enum AimAssistTargetMode {
@@ -780,7 +780,7 @@ export enum EnchantmentSlot {
 }
 
 /**
- * @beta
+ * @rc
  * The entity's attach location point. Contains points such as
  * head, body, leg, etc to attach the camera to.
  */
@@ -2355,6 +2355,34 @@ export enum LiquidType {
 }
 
 /**
+ * @beta
+ * Enum representing the different reasons why a locator bar
+ * operation may fail.
+ */
+export enum LocatorBarErrorReason {
+    /**
+     * @remarks
+     * The waypoint already exists in the locator bar and cannot be
+     * added again.
+     *
+     */
+    WaypointAlreadyExists = 'WaypointAlreadyExists',
+    /**
+     * @remarks
+     * The maximum number of waypoints has been reached and no more
+     * can be added.
+     *
+     */
+    WaypointLimitExceeded = 'WaypointLimitExceeded',
+    /**
+     * @remarks
+     * The specified waypoint does not exist in the locator bar.
+     *
+     */
+    WaypointNotFound = 'WaypointNotFound',
+}
+
+/**
  * Describes the memory of a device.
  */
 export enum MemoryTier {
@@ -2880,7 +2908,7 @@ export enum StructureSaveMode {
 }
 
 /**
- * @beta
+ * @rc
  * The reason that the {@link
  * @minecraft/server.TickingAreaError} was thrown.
  */
@@ -3034,6 +3062,38 @@ export enum WatchdogTerminateReason {
      *
      */
     StackOverflow = 'StackOverflow',
+}
+
+/**
+ * @beta
+ * Enum representing different texture icons that can be
+ * displayed for waypoints on the locator bar.
+ */
+export enum WaypointTexture {
+    /**
+     * @remarks
+     * Circle waypoint icon texture.
+     *
+     */
+    Circle = 'minecraft:circle',
+    /**
+     * @remarks
+     * Small square waypoint icon texture.
+     *
+     */
+    SmallSquare = 'minecraft:small_square',
+    /**
+     * @remarks
+     * Small star waypoint icon texture.
+     *
+     */
+    SmallStar = 'minecraft:small_star',
+    /**
+     * @remarks
+     * Square waypoint icon texture.
+     *
+     */
+    Square = 'minecraft:square',
 }
 
 /**
@@ -3285,7 +3345,7 @@ export type VanillaEntityIdentifier =
     | `${MinecraftEntityTypes}<${string}>`;
 
 /**
- * @rc
+ * @beta
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
  */
@@ -3360,7 +3420,7 @@ export class AimAssistCategory {
 }
 
 /**
- * @rc
+ * @beta
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
  */
@@ -3478,7 +3538,7 @@ export class AimAssistCategorySettings {
 }
 
 /**
- * @rc
+ * @beta
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
  */
@@ -3571,7 +3631,7 @@ export class AimAssistPreset {
 }
 
 /**
- * @rc
+ * @beta
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
  */
@@ -3729,7 +3789,7 @@ export class AimAssistPresetSettings {
 }
 
 /**
- * @rc
+ * @beta
  * A container for APIs related to the world's aim-assist
  * settings.
  */
@@ -6177,7 +6237,7 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Attaches the camera to a non-player entity.
      *
@@ -6214,7 +6274,7 @@ export class Camera {
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
@@ -6286,7 +6346,7 @@ export class Camera {
 }
 
 /**
- * @beta
+ * @rc
  * CatmullRom spline creation.
  */
 export class CatmullRomSpline {
@@ -12471,6 +12531,51 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ * Waypoint that tracks an entity's position. The waypoint
+ * automatically updates as the entity moves and becomes
+ * invalid when the entity is removed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityWaypoint extends Waypoint {
+    /**
+     * @remarks
+     * The entity being tracked by this waypoint.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWaypointError}
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The visibility rules that control when the waypoint is shown
+     * based on the entity's state (e.g., sneaking, invisible,
+     * dead).
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWaypointError}
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    readonly entityRules: EntityVisibilityRules;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    constructor(
+        entity: Entity,
+        textureSelector: WaypointTextureSelector,
+        entityRules: EntityVisibilityRules,
+        color?: RGB,
+    );
+}
+
+/**
  * Loot item function that modifies a dropped treasure map to
  * mark a location.
  */
@@ -15001,7 +15106,7 @@ export class LeverActionAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * A spline that linearly interpolates between points.
  */
 export class LinearSpline {
@@ -15046,6 +15151,138 @@ export class ListBlockVolume extends BlockVolumeBase {
      * Array of block locations to be removed from container.
      */
     remove(locations: Vector3[]): void;
+}
+
+/**
+ * @beta
+ * Waypoint that points to a fixed location in the world.
+ * Unlike entity waypoints, location waypoints always remain
+ * valid and their position can be updated.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LocationWaypoint extends Waypoint {
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    constructor(dimensionLocation: DimensionLocation, textureSelector: WaypointTextureSelector, color?: RGB);
+    /**
+     * @remarks
+     * Updates the dimension and location that this waypoint points
+     * to.
+     *
+     * @worldMutation
+     *
+     * @param dimensionLocation
+     * The new {@link DimensionLocation} (dimension and
+     * coordinates) for the waypoint.
+     */
+    setDimensionLocation(dimensionLocation: DimensionLocation): void;
+}
+
+/**
+ * @beta
+ * Manages the collection of waypoints displayed on a player's
+ * locator bar. Allows adding, removing, and querying waypoints
+ * with a maximum capacity limit.
+ *
+ * Invalid waypoints in the locator bar will be automatically
+ * removed in the next tick. This includes waypoints tied to
+ * entities that have been removed from the world.
+ *
+ * Note: You can control whether vanilla player waypoints are
+ * automatically added to the locator bar using the
+ * `locatorbar` {@link GameRule}. This game rule is currently
+ * named `locatorbar` but will likely be renamed in a future
+ * update to be more descriptive.
+ *
+ * Note: You can only modify, remove, or query waypoints that
+ * were added by this pack.
+ * @seeExample sharedWaypoint.ts
+ */
+export class LocatorBar {
+    private constructor();
+    /**
+     * @remarks
+     * The current number of waypoints in the locator bar.
+     *
+     */
+    readonly count: number;
+    /**
+     * @remarks
+     * The maximum number of waypoints that can be added to the
+     * locator bar.
+     *
+     */
+    readonly maxCount: number;
+    /**
+     * @remarks
+     * Adds a waypoint to the locator bar. Throws an error if the
+     * waypoint already exists, the maximum waypoint limit has been
+     * reached, or the waypoint is invalid.
+     *
+     * @worldMutation
+     *
+     * @param waypoint
+     * The {@link Waypoint} to add to the locator bar.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidWaypointError}
+     *
+     * {@link LocatorBarError}
+     */
+    addWaypoint(waypoint: Waypoint): void;
+    /**
+     * @remarks
+     * Returns an array of all waypoints currently in the locator
+     * bar.
+     *
+     * @worldMutation
+     *
+     */
+    getAllWaypoints(): Waypoint[];
+    /**
+     * @remarks
+     * Checks whether the specified waypoint exists in the locator
+     * bar.
+     *
+     * @worldMutation
+     *
+     * @param waypoint
+     * The {@link Waypoint} to check for.
+     */
+    hasWaypoint(waypoint: Waypoint): boolean;
+    /**
+     * @remarks
+     * Removes all waypoints from the locator bar, clearing it
+     * completely.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    removeAllWaypoints(): void;
+    /**
+     * @remarks
+     * Removes a specific waypoint from the locator bar. Returns an
+     * error if the waypoint does not exist in the locator bar.
+     *
+     * @worldMutation
+     *
+     * @param waypoint
+     * The {@link Waypoint} to remove from the locator bar.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link LocatorBarError}
+     */
+    removeWaypoint(waypoint: Waypoint): void;
 }
 
 /**
@@ -15716,6 +15953,14 @@ export class Player extends Entity {
      */
     readonly level: number;
     /**
+     * @beta
+     * @remarks
+     * The player's Locator Bar. This property is used for managing
+     * waypoints displayed on the HUD.
+     *
+     */
+    readonly locatorBar: LocatorBar;
+    /**
      * @remarks
      * Name of the player.
      *
@@ -15825,7 +16070,7 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
+     * @beta
      * @remarks
      * The player's aim-assist settings.
      *
@@ -16133,7 +16378,7 @@ export class Player extends Entity {
 }
 
 /**
- * @rc
+ * @beta
  * A container for APIs related to player aim-assist.
  */
 export class PlayerAimAssist {
@@ -17687,6 +17932,40 @@ export class PlayerUseNameTagAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PlayerUseNameTagAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Waypoint that tracks a player's position. Extends {@link
+ * EntityWaypoint} with additional player-specific visibility
+ * rules such as hidden state and spectator mode.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerWaypoint extends EntityWaypoint {
+    /**
+     * @remarks
+     * The {@link PlayerVisibilityRules} that control when the
+     * waypoint is shown based on the player's state (e.g., hidden,
+     * spectator mode, spectator viewing another spectator).
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidWaypointError}
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    readonly playerRules: PlayerVisibilityRules;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    constructor(
+        player: Player,
+        textureSelector: WaypointTextureSelector,
+        playerRules: PlayerVisibilityRules,
+        color?: RGB,
+    );
 }
 
 /**
@@ -19760,7 +20039,7 @@ export class TargetBlockHitAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * This manager is used to add, remove or query temporary
  * ticking areas to a dimension. These ticking areas are
  * limited by a fixed amount of ticking chunks per pack
@@ -19795,7 +20074,7 @@ export class TickingAreaManager {
      *
      * {@link TickingAreaError}
      */
-    createTickingArea(identifier: string, options: TickingAreaOptions): Promise<TickingArea>;
+    createTickingArea(identifier: string, options: TickingAreaOptions): Promise<void>;
     /**
      * @remarks
      * Gets all ticking areas added by this manager.
@@ -19999,6 +20278,86 @@ export class WatchdogTerminateBeforeEventSignal {
 }
 
 /**
+ * @beta
+ * Base class for waypoints displayed on the player's locator
+ * bar. Waypoints can track locations or entities and are
+ * rendered with customizable textures and colors.
+ *
+ * Waypoints act as shared handles that can be added to
+ * multiple players' locator bars. When you modify a waypoint's
+ * properties (such as color, texture, or enabled state), the
+ * changes are reflected for all players who have that waypoint
+ * in their locator bar. This allows you to efficiently manage
+ * waypoints across multiple players without creating separate
+ * instances for each player.
+ */
+export class Waypoint {
+    private constructor();
+    /**
+     * @remarks
+     * Optional {@link RGB} color tint applied to the waypoint
+     * icon. If not specified, the waypoint uses its default color.
+     *
+     * @worldMutation
+     *
+     */
+    color?: RGB;
+    /**
+     * @remarks
+     * Controls whether the waypoint is currently displayed on the
+     * player's screen. When disabled, the waypoint is hidden but
+     * remains valid.
+     *
+     * @worldMutation
+     *
+     */
+    isEnabled: boolean;
+    /**
+     * @remarks
+     * Returns whether the waypoint is currently valid. A waypoint
+     * becomes invalid when its tracked entity is no longer valid.
+     *
+     */
+    readonly isValid: boolean;
+    /**
+     * @remarks
+     * The {@link WaypointTextureSelector} that determines which
+     * icon texture is displayed for the waypoint based on distance
+     * or other criteria.
+     *
+     * @worldMutation
+     *
+     */
+    textureSelector: WaypointTextureSelector;
+    /**
+     * @remarks
+     * Gets the current {@link DimensionLocation} of the waypoint.
+     * For entity waypoints, this returns the entity's current
+     * position. For location waypoints, this returns the stored
+     * location.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWaypointError}
+     *
+     * {@link InvalidWaypointTextureSelectorError}
+     */
+    getDimensionLocation(): DimensionLocation;
+    /**
+     * @remarks
+     * Removes the waypoint from all locator bars it has been added
+     * to. This affects all players who have this waypoint in their
+     * locator bar.
+     *
+     * @worldMutation
+     *
+     */
+    remove(): void;
+}
+
+/**
  * Contains information related to changes in weather in the
  * environment.
  */
@@ -20177,7 +20536,7 @@ export class World {
      */
     readonly structureManager: StructureManager;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Manager for adding, removing and querying pack specific
      * ticking areas.
@@ -20216,7 +20575,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @rc
+     * @beta
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.
@@ -21216,7 +21575,7 @@ export interface AABB {
 }
 
 /**
- * @beta
+ * @rc
  * Used to create camera animations.
  */
 export interface AnimationOptions {
@@ -21557,7 +21916,7 @@ export interface BlockRaycastOptions extends BlockFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Used to attach the camera to a non player entity.
  */
 export interface CameraAttachOptions {
@@ -22510,6 +22869,37 @@ export interface EntityRaycastOptions extends EntityFilter {
 }
 
 /**
+ * @beta
+ * Controls when a waypoint is visible based on the state of
+ * the entity it tracks. These rules allow filtering waypoint
+ * visibility by entity conditions like sneaking, invisibility,
+ * and death state.
+ */
+export interface EntityVisibilityRules {
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when the tracked
+     * entity is dead. If undefined, defaults to true.
+     *
+     */
+    showDead?: boolean;
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when the tracked
+     * entity is invisible. If undefined, defaults to true.
+     *
+     */
+    showInvisible?: boolean;
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when the tracked
+     * entity is sneaking. If undefined, defaults to true.
+     *
+     */
+    showSneaking?: boolean;
+}
+
+/**
  * Equal to operator.
  */
 export interface EqualsComparison {
@@ -22929,7 +23319,7 @@ export interface PlayAnimationOptions {
 }
 
 /**
- * @rc
+ * @beta
  * Settings relating to a player's aim-assist targeting.
  */
 export interface PlayerAimAssistSettings {
@@ -23012,6 +23402,39 @@ export interface PlayerSwingEventOptions {
 
 /**
  * @beta
+ * Controls when a waypoint is visible based on player-specific
+ * states. Extends {@link EntityVisibilityRules} with
+ * additional rules for player-only states like hidden mode and
+ * spectator mode.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface PlayerVisibilityRules extends EntityVisibilityRules {
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when the tracked
+     * player is hidden. If undefined, defaults to true.
+     *
+     */
+    showHidden?: boolean;
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when the tracked
+     * player is in spectator mode. If undefined, defaults to true.
+     *
+     */
+    showSpectator?: boolean;
+    /**
+     * @remarks
+     * Controls whether the waypoint is shown when a spectator is
+     * viewing another spectator player. If undefined, defaults to
+     * true.
+     *
+     */
+    showSpectatorToSpectator?: boolean;
+}
+
+/**
+ * @rc
  * Key frame that holds the progress of the camera animation.
  */
 export interface ProgressKeyFrame {
@@ -23191,7 +23614,7 @@ export interface RGBA extends RGB {
 }
 
 /**
- * @beta
+ * @rc
  * Key frame that holds the rotation of the camera animation.
  */
 export interface RotationKeyFrame {
@@ -23284,7 +23707,7 @@ export interface SpawnEntityOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Collection of key frames for camera animation.
  */
 export interface SplineAnimation {
@@ -23443,7 +23866,7 @@ export interface TeleportOptions {
 }
 
 /**
- * @beta
+ * @rc
  * A context which provides information about a specific
  * ticking area.
  */
@@ -23483,7 +23906,7 @@ export interface TickingArea {
 }
 
 /**
- * @beta
+ * @rc
  * Options to create a ticking area using the {@link
  * TickingAreaManager}.
  */
@@ -23591,6 +24014,60 @@ export interface Vector3 {
 export interface VectorXZ {
     x: number;
     z: number;
+}
+
+/**
+ * @beta
+ * Defines a texture and the distance range in which it should
+ * be displayed. Used within a {@link WaypointTextureSelector}
+ * to create distance-based texture switching.
+ */
+export interface WaypointTextureBounds {
+    /**
+     * @remarks
+     * The lower distance bound for this texture. The texture is
+     * displayed when the distance to the waypoint is greater than
+     * this value. Value must be greater than or equal to 0.
+     *
+     * Minimum Value: 0
+     */
+    lowerBound: number;
+    /**
+     * @remarks
+     * The {@link WaypointTexture} to display within this distance
+     * range.
+     *
+     */
+    texture: WaypointTexture;
+    /**
+     * @remarks
+     * The upper distance bound for this texture. The texture is
+     * displayed when the distance to the waypoint is less than or
+     * equal to this value. If undefined, there is no upper limit.
+     * Value must be greater than or equal to 0.
+     *
+     * Minimum Value: 0
+     */
+    upperBound?: number;
+}
+
+/**
+ * @beta
+ * Defines how waypoint textures change based on distance.
+ * Contains a list of texture bounds that determine which
+ * texture is displayed at different distance ranges.
+ */
+export interface WaypointTextureSelector {
+    /**
+     * @remarks
+     * An array of {@link WaypointTextureBounds} that define which
+     * textures are displayed at different distance ranges. The
+     * system evaluates these bounds to determine the appropriate
+     * texture based on the current distance to the waypoint. The
+     * list has a maximum size limit of 16.
+     *
+     */
+    textureBoundsList: WaypointTextureBounds[];
 }
 
 /**
@@ -23853,6 +24330,25 @@ export class InvalidStructureError extends Error {
 }
 
 /**
+ * @beta
+ * Error thrown when attempting to perform operations on an
+ * invalid waypoint. A waypoint becomes invalid when it is
+ * removed or when the entity it tracks is no longer valid.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidWaypointError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidWaypointTextureSelectorError extends Error {
+    private constructor();
+}
+
+/**
  * Thrown when trying to register an item custom component with
  * a name that has already been registered.
  */
@@ -23909,6 +24405,25 @@ export class LocationOutOfWorldBoundariesError extends Error {
 }
 
 /**
+ * @beta
+ * Error thrown when a locator bar operation fails. Contains a
+ * reason code indicating the specific cause of the error.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class LocatorBarError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The {@link LocatorBarErrorReason} code that indicates why
+     * the locator bar operation failed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly reason: LocatorBarErrorReason;
+}
+
+/**
  * Thrown when a name requires a namespace and an error occurs
  * when validating that namespace
  */
@@ -23934,7 +24449,7 @@ export class RawMessageError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * The error returned from invalid {@link TickingAreaManager}
  * method calls.
  */

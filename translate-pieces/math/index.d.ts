@@ -2,6 +2,7 @@ export { }
 export { AABBInvalidExtentError } from './classes/AABBInvalidExtentError';
 export { AABBUtils } from './classes/AABBUtils';
 export { clampNumber } from './functions/clampNumber';
+export { Colors } from './variables/Colors';
 export { VECTOR2_ZERO } from './variables/VECTOR2_ZERO';
 export { Vector2Builder } from './classes/Vector2Builder';
 export { Vector2Utils } from './classes/Vector2Utils';

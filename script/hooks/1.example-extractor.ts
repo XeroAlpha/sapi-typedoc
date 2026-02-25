@@ -34,6 +34,10 @@ function hashTextShort(str: string) {
     return createHash('sha256').update(str).digest('hex').slice(0, 8);
 }
 
+function unescapeMultilineComment(text: string) {
+    return text.replace(/\/\\\*/g, '/*').replace(/\*\\\//g, '*/');
+}
+
 type TraversableJSXChildren = Exclude<JSX.Children, JSX.Children[] | null | undefined>;
 
 function traverseJSX(jsx: JSX.Children, f: (element: TraversableJSXChildren, traverseInto: () => void) => void) {
@@ -362,7 +366,7 @@ export default {
                     const [, , content] = match;
                     fileContent = content;
                 }
-                writeFileSync(resolvePath(exampleDir, exampleVersion.fileName), fileContent);
+                writeFileSync(resolvePath(exampleDir, exampleVersion.fileName), unescapeMultilineComment(fileContent));
             }
         }
     }

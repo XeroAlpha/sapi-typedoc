@@ -1,7 +1,7 @@
 /* IMPORT */ import { TickingAreaManager } from '..';
 
 /**
- * @beta
+ * @rc
  * The reason that the {@link
  * @minecraft/server.TickingAreaError} was thrown.
  */

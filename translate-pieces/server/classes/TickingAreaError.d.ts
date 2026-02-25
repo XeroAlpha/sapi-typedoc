@@ -1,7 +1,7 @@
 /* IMPORT */ import { TickingAreaErrorReason, TickingAreaManager } from '..';
 
 /**
- * @beta
+ * @rc
  * The error returned from invalid {@link TickingAreaManager}
  * method calls.
  */

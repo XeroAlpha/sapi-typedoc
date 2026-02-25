@@ -11108,6 +11108,11 @@ export class InvalidWidgetGroupError extends Error {
     private constructor();
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
+export class TransactionManagerNoChangesError extends Error {
+    private constructor();
+}
+
 /**
  * @remarks
  * Deserialize anything, defaults to the same behavior as

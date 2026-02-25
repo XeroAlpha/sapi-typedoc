@@ -235,6 +235,7 @@ export enum PacketId {
      * Sent when the world is loading. We don't know why it is sent four times. Defines the tick distance.
      */
     ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket',
+    ClientboundAttributeLayerSyncPacket = 'ClientboundAttributeLayerSyncPacket',
     /**
      * Sent from the server to client to force close all server forms on the stack and return to the HUD screen.
      */

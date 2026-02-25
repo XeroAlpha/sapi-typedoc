@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
-/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '..';
+/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '..';
 
 /**
  * Represents a player within the world.
@@ -88,6 +88,14 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly level: number;
+    /**
+     * @beta
+     * @remarks
+     * The player's Locator Bar. This property is used for managing
+     * waypoints displayed on the HUD.
+     *
+     */
+    readonly locatorBar: LocatorBar;
     /**
      * @remarks
      * Name of the player.
@@ -198,7 +206,7 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
+     * @beta
      * @remarks
      * The player's aim-assist settings.
      *
