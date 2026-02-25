@@ -386,6 +386,7 @@ export { WidgetGroupCreateOptions } from './interfaces/WidgetGroupCreateOptions'
 export { InvalidWidgetComponentError } from './classes/InvalidWidgetComponentError';
 export { InvalidWidgetError } from './classes/InvalidWidgetError';
 export { InvalidWidgetGroupError } from './classes/InvalidWidgetGroupError';
+export { TransactionManagerNoChangesError } from './classes/TransactionManagerNoChangesError';
 export { deserialize } from './functions/deserialize';
 export { executeLargeOperation } from './functions/executeLargeOperation';
 export { executeLargeOperationFromIterator } from './functions/executeLargeOperationFromIterator';

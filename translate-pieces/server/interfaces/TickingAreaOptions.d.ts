@@ -1,7 +1,7 @@
 /* IMPORT */ import { Dimension, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Options to create a ticking area using the {@link
  * TickingAreaManager}.
  */

@@ -15,7 +15,7 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Attaches the camera to a non-player entity.
      *
@@ -52,7 +52,7 @@ export class Camera {
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *

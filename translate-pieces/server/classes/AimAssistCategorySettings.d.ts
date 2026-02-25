@@ -1,7 +1,7 @@
 /* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes } from '../../vanilla-data';
 
 /**
- * @rc
+ * @beta
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
  */

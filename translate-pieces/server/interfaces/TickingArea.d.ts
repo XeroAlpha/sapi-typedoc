@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockBoundingBox, Dimension } from '..';
 
 /**
- * @beta
+ * @rc
  * A context which provides information about a specific
  * ticking area.
  */

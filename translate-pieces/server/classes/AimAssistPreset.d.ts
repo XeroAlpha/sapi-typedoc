@@ -1,7 +1,7 @@
 /* IMPORT */ import { EngineError } from '../../common';
 
 /**
- * @rc
+ * @beta
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
  */

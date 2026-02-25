@@ -2,7 +2,7 @@
 /* IMPORT */ import { TickingArea, TickingAreaError, TickingAreaOptions } from '..';
 
 /**
- * @beta
+ * @rc
  * This manager is used to add, remove or query temporary
  * ticking areas to a dimension. These ticking areas are
  * limited by a fixed amount of ticking chunks per pack
@@ -37,7 +37,7 @@ export class TickingAreaManager {
      *
      * {@link TickingAreaError}
      */
-    createTickingArea(identifier: string, options: TickingAreaOptions): Promise<TickingArea>;
+    createTickingArea(identifier: string, options: TickingAreaOptions): Promise<void>;
     /**
      * @remarks
      * Gets all ticking areas added by this manager.

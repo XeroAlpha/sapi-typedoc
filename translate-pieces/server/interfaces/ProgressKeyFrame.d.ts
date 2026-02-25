@@ -1,7 +1,7 @@
 /* IMPORT */ import { EasingType } from '..';
 
 /**
- * @beta
+ * @rc
  * Key frame that holds the progress of the camera animation.
  */
 export interface ProgressKeyFrame {
