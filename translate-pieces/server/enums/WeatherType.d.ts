@@ -1,24 +1,31 @@
 /**
+ * 用于表示世界中的天气。
+ *
  * Used to specify the type of weather condition within the
  * world.
  */
 export enum WeatherType {
     /**
      * @remarks
-     * Specifies a clear weather condition.
+     * 表示晴天。
      *
+     * Specifies a clear weather condition.
      */
     Clear = 'Clear',
+
     /**
      * @remarks
-     * Specifies a rain weather condition.
+     * 表示下雨天。
      *
+     * Specifies a rain weather condition.
      */
     Rain = 'Rain',
+
     /**
      * @remarks
-     * Specifies a rain and thunder weather condition.
+     * 表示雷雨天。
      *
+     * Specifies a rain and thunder weather condition.
      */
     Thunder = 'Thunder',
 }
