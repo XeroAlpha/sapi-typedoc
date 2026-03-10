@@ -217,6 +217,9 @@ export enum PacketId {
      * Sent when the world is loading. We don't know why it is sent four times. Defines the tick distance.
      */
     ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket',
+    /**
+     * Syncs Attribute Layers to the Client (Currently disabled)
+     */
     ClientboundAttributeLayerSyncPacket = 'ClientboundAttributeLayerSyncPacket',
     /**
      * Sent from the server to client to force close all server forms on the stack and return to the HUD screen.
@@ -226,6 +229,9 @@ export enum PacketId {
      * Set the control scheme that the player should use
      */
     ClientboundControlSchemeSetPacket = 'ClientboundControlSchemeSetPacket',
+    /**
+     * Allows the server to tell the client to close Data Driven UI screens.
+     */
     ClientboundDataDrivenUICloseScreenPacket = 'ClientboundDataDrivenUICloseScreenPacket',
     /**
      * Allows the server to tell the client to reload the Data Driven UI.
@@ -470,6 +476,9 @@ export enum PacketId {
      * Level Sound Event
      */
     LevelSoundEventPacket = 'LevelSoundEventPacket',
+    /**
+     * Syncs LocatorBar changes on the server with the client.
+     */
     LocatorBarPacket = 'LocatorBarPacket',
     /**
      * Sent once from client to server at login. About 100k.
@@ -559,6 +568,9 @@ export enum PacketId {
      * This is sent when the client detects a malformed packet
      */
     PacketViolationWarningPacket = 'PacketViolationWarningPacket',
+    /**
+     * Sent by the client to provide additional client metadata.
+     */
     PartyChangedPacket = 'PartyChangedPacket',
     /**
      * There is a camera item in EDU and they can use it to take screenshots and add them to a scrapbook.
@@ -597,6 +609,8 @@ export enum PacketId {
      */
     PlayerLocationPacket = 'PlayerLocationPacket',
     /**
+     * Used when the player changes their skin
+     * 
      * @see https://mojang.github.io/bedrock-protocol-docs/html/PlayerSkinPacket.html
      */
     PlayerSkinPacket = 'PlayerSkinPacket',
@@ -684,6 +698,9 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/html/ResourcePacksInfoPacket.html
      */
     ResourcePacksInfoPacket = 'ResourcePacksInfoPacket',
+    /**
+     * Used to inform the server that the client has finished loading all resource packs.
+     */
     ResourcePacksReadyForValidationPacket = 'ResourcePacksReadyForValidationPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/html/ResourcePackStackPacket.html
@@ -697,6 +714,9 @@ export enum PacketId {
      * Used to send custom messages between client and server.
      */
     ScriptMessagePacket = 'ScriptMessagePacket',
+    /**
+     * Sent from the client to the server when a data driven screen is closed.
+     */
     ServerboundDataDrivenScreenClosedPacket = 'ServerboundDataDrivenScreenClosedPacket',
     /**
      * Applies a single update to the server data store from the client.
@@ -874,6 +894,9 @@ export enum PacketId {
      * Allows us to synchronize Actor properties across the network.
      */
     SyncActorPropertyPacket = 'SyncActorPropertyPacket',
+    /**
+     * Initializes and syncs world clocks from the server to clients. (Currently disabled)
+     */
     SyncWorldClocksPacket = 'SyncWorldClocksPacket',
     /**
      * A packet sent to the server when deal with picking up an item off the ground in the world.
