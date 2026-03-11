@@ -12,8 +12,10 @@ export { TransferPlayerIpPortOptions } from './interfaces/TransferPlayerIpPortOp
 export { TransferPlayerNetherNetOptions } from './interfaces/TransferPlayerNetherNetOptions';
 export { AllowListFileReloadError } from './classes/AllowListFileReloadError';
 export { AllowListModificationError } from './classes/AllowListModificationError';
+export { CannotKickPlayerError } from './classes/CannotKickPlayerError';
 export { DisconnectedError } from './classes/DisconnectedError';
 export { LevelStorageSaveStateChangeError } from './classes/LevelStorageSaveStateChangeError';
+export { kickPlayer } from './functions/kickPlayer';
 export { transferPlayer } from './functions/transferPlayer';
 export { beforeEvents } from './variables/beforeEvents';
 export { dedicatedServer } from './variables/dedicatedServer';

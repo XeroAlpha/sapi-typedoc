@@ -1240,6 +1240,14 @@ export declare enum PropertyItemType {
     Vector3Timeline = 'editorUI:Vector3Timeline',
 }
 
+/**
+ * Determines the location root pane will be displayed in
+ */
+export declare enum RootPaneLocation {
+    Drawer = 0,
+    Viewport = 1,
+}
+
 export enum SelectionVolumeEventType {
     Set = 1,
     Add = 2,
@@ -1528,6 +1536,7 @@ export type ICollectionTreeEntryOptions = {
     color?: RGBA;
     userData?: unknown;
     onSelectedChange?: (selected: boolean, folder: ICollectionTreeEntry) => void;
+    onBeforeRelocated?: (toFolder: ICollectionTreeFolder, toIndex: number, entry: ICollectionTreeEntry) => boolean;
 };
 
 /**
@@ -2312,6 +2321,7 @@ export declare abstract class BrushShape {
     abstract createSettingsPane(
         parentPane: IPropertyPane,
         onSettingsChange?: () => void,
+        flatLayout?: boolean,
     ): ISubPanePropertyItem | undefined;
     abstract createShape(): RelativeVolumeListBlockVolume;
     /**
@@ -2692,7 +2702,11 @@ export declare class ConeBrushShape extends BrushShape {
     });
     applySetting(brushSettings: ConeBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {
@@ -2729,7 +2743,11 @@ export declare class CuboidBrushShape extends BrushShape {
     });
     applySetting(brushSettings: CuboidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {
@@ -3016,7 +3034,11 @@ export declare class CylinderBrushShape extends BrushShape {
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {
@@ -3221,7 +3243,11 @@ export declare class EllipsoidBrushShape extends BrushShape {
     });
     applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {
@@ -3929,7 +3955,11 @@ export declare class PyramidBrushShape extends BrushShape {
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {
@@ -6883,6 +6913,14 @@ export interface ICollectionTreeFolder {
     removeEntryByIndex(index: number): boolean;
     /**
      * @remarks
+     * Removes the folder with the id if it exists at the root
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    removeFolder(id: string): boolean;
+    /**
+     * @remarks
      * Set color of the entry.
      *
      * @param color
@@ -6903,6 +6941,14 @@ export interface ICollectionTreeFolder {
      *
      */
     setHeaderAction(actionParams: ICollectionTreeFolderHeaderActionParams | undefined): void;
+    /**
+     * @remarks
+     * Updates menu items for the folder
+     *
+     * @param menu
+     * New menu items
+     */
+    setMenu(menu: IMenuCreationParams[] | undefined): void;
     /**
      * @remarks
      * Set selected state of the entry.
@@ -6929,10 +6975,22 @@ export interface ICollectionTreeFolder {
 export interface ICollectionTreePropertyItem extends IPropertyItemBase {
     /**
      * @remarks
+     * Drag and drop support for the entries
+     *
+     */
+    readonly canDragDropEntries: boolean;
+    /**
+     * @remarks
      * Count of the child folders
      *
      */
     readonly folderCount: number;
+    /**
+     * @remarks
+     * View control pane for the collection tree
+     *
+     */
+    readonly viewControlPane: IListViewControlPane | undefined;
     /**
      * @remarks
      * Sort type for the folders.
@@ -6947,6 +7005,14 @@ export interface ICollectionTreePropertyItem extends IPropertyItemBase {
      * Options to create a folder
      */
     addFolder(options: ICollectionTreeFolderOptions): ICollectionTreeFolder;
+    /**
+     * @remarks
+     * Creates a pane that displays view and filtering
+     * configurations for the collection tree if the parent
+     * container supports it.
+     *
+     */
+    buildViewControl(options: ICollectionTreeViewControlPaneOptions): IListViewControlPane;
     /**
      * @remarks
      * Iterates over the first layer of folders
@@ -6965,6 +7031,22 @@ export interface ICollectionTreePropertyItem extends IPropertyItemBase {
     getFolder(id: string): ICollectionTreeFolder | undefined;
     /**
      * @remarks
+     * Removes the folder with the id if it exists at the root
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    removeFolder(id: string): boolean;
+    /**
+     * @remarks
+     * Toggles drag and drop support for the entries
+     *
+     * @param enabled
+     * Whether to enable drag and drop
+     */
+    setCanDragDropEntries(enabled: boolean): void;
+    /**
+     * @remarks
      * Updates the folder sort type for the whole view
      *
      * @param sortType
@@ -6980,6 +7062,12 @@ export interface ICollectionTreePropertyItem extends IPropertyItemBase {
 export interface ICollectionTreePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Setting true will enable drag and drop support for entries.
+     *
+     */
+    canDragDropEntries?: boolean;
+    /**
+     * @remarks
      * Localized title of the property item.
      *
      */
@@ -6990,6 +7078,24 @@ export interface ICollectionTreePropertyItemOptions extends IPropertyItemOptions
      *
      */
     viewSortType?: CollectionTreeSortType;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ICollectionTreeViewControlPaneOptions extends IListViewControlPaneOptions {
+    /**
+     * @remarks
+     * This function will be called whenever the filter is changed
+     * by the user
+     *
+     */
+    onFilterChanged?: (visibleFolders: string[]) => void;
+    /**
+     * @remarks
+     * Custom sort options. If undefined, collection tree sort
+     * options will be used.
+     *
+     */
+    sortOptions?: CollectionTreeSortType[];
 }
 
 /**
@@ -7852,7 +7958,7 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
      * View control pane for the list
      *
      */
-    readonly viewControlPane: IListPaneViewControlPane | undefined;
+    readonly viewControlPane: IListViewControlPane | undefined;
     /**
      * @remarks
      * Current sorting type for the pane slots
@@ -7872,7 +7978,7 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
      * it.
      *
      */
-    buildViewControl(options: IListPaneViewControlPaneOptions): IListPaneViewControlPane;
+    buildViewControl(options: IListPaneViewControlPaneOptions): IListViewControlPane;
     /**
      * @remarks
      * Finds the slot with the identifier.
@@ -8150,11 +8256,32 @@ export interface IListPaneTextEntry extends IListPaneEntry {
     setValue(value: LocalizedString): void;
 }
 
-/**
- * View control for a list pane to manage how slots are
- * displayed
- */
-export interface IListPaneViewControlPane {
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOptions {
+    /**
+     * @remarks
+     * Flags to determine visible filters. If undefined it will be
+     * All.
+     *
+     */
+    filterFlags?: ListViewControlFilterFlags;
+    /**
+     * @remarks
+     * This function will be called whenever the filter is changed
+     * by the user
+     *
+     */
+    onFilterChanged?: (visibleSlotIds: string[]) => void;
+    /**
+     * @remarks
+     * Custom sort options. If undefined, list pane sort options
+     * will be used.
+     *
+     */
+    sortOptions?: ListPaneViewSortType[];
+}
+
+export interface IListViewControlPane {
     /**
      * @remarks
      * Unique identifier
@@ -8219,7 +8346,7 @@ export interface IListPaneViewControlPane {
     updateActionState(id: string, newState: ListViewControlActionState): void;
 }
 
-export interface IListPaneViewControlPaneOptions {
+export interface IListViewControlPaneOptions {
     /**
      * @remarks
      * Default actions
@@ -8228,31 +8355,10 @@ export interface IListPaneViewControlPaneOptions {
     actions?: ListViewControlAction[];
     /**
      * @remarks
-     * Flags to determine visible filters. If undefined it will be
-     * All.
-     *
-     */
-    filterFlags?: ListViewControlFilterFlags;
-    /**
-     * @remarks
      * This function will be called whenever user clicks an action
      *
      */
     onActionClicked?: (id: string) => void;
-    /**
-     * @remarks
-     * This function will be called whenever the filter is changed
-     * by the user
-     *
-     */
-    onFilterChanged?: (visibleSlotIds: string[]) => void;
-    /**
-     * @remarks
-     * Custom sort options. If undefined, list pane sort options
-     * will be used.
-     *
-     */
-    sortOptions?: ListPaneViewSortType[];
     /**
      * @remarks
      * Initial visibility state. It undefined, it will be false.
@@ -9849,6 +9955,12 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     icon?: string;
+    /**
+     * @remarks
+     * Determines how root pane will be displayed in the UI.
+     *
+     */
+    location?: RootPaneLocation;
 }
 
 /**

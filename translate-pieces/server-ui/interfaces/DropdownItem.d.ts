@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomForm } from '..';
+/* IMPORT */ import { CustomForm, UIRawMessage } from '..';
 
 /**
  * @beta
@@ -11,13 +11,13 @@ export interface DropdownItem {
      * selected.
      *
      */
-    description?: string;
+    description?: UIRawMessage | string;
     /**
      * @remarks
      * The label of the dropdown item in the dropdown.
      *
      */
-    label: string;
+    label: UIRawMessage | string;
     /**
      * @remarks
      * The value the dropdown will be set to when this item is

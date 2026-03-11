@@ -24,7 +24,11 @@ export declare class ConeBrushShape extends BrushShape {
     });
     applySetting(brushSettings: ConeBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {

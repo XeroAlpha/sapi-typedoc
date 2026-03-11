@@ -1,12 +1,6 @@
-/* IMPORT */ import { ListPaneViewSortType, ListViewControlAction, ListViewControlFilterFlags } from '..';
+/* IMPORT */ import { IListViewControlPaneOptions, ListPaneViewSortType, ListViewControlFilterFlags } from '..';
 
-export interface IListPaneViewControlPaneOptions {
-    /**
-     * @remarks
-     * Default actions
-     *
-     */
-    actions?: ListViewControlAction[];
+export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOptions {
     /**
      * @remarks
      * Flags to determine visible filters. If undefined it will be
@@ -14,12 +8,6 @@ export interface IListPaneViewControlPaneOptions {
      *
      */
     filterFlags?: ListViewControlFilterFlags;
-    /**
-     * @remarks
-     * This function will be called whenever user clicks an action
-     *
-     */
-    onActionClicked?: (id: string) => void;
     /**
      * @remarks
      * This function will be called whenever the filter is changed
@@ -34,10 +22,4 @@ export interface IListPaneViewControlPaneOptions {
      *
      */
     sortOptions?: ListPaneViewSortType[];
-    /**
-     * @remarks
-     * Initial visibility state. It undefined, it will be false.
-     *
-     */
-    visible?: boolean;
 }

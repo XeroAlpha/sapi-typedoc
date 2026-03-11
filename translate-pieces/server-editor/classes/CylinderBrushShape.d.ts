@@ -31,7 +31,11 @@ export declare class CylinderBrushShape extends BrushShape {
     });
     applySetting(brushSettings: CylinderBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {

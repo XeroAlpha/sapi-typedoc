@@ -1,10 +1,11 @@
-/* IMPORT */ import { Dimension, DimensionLocation, Entity, Player, RGBA, Vector3 } from '../../server';
+/* IMPORT */ import { Dimension, DimensionLocation, Entity, Player, RGBA, Vector3 } from '..';
 
 /**
- * The base class for all debug shapes. Represents an object in
+ * @beta
+ * The base class for a text primitive. Represents an object in
  * the world and its base properties.
  */
-export class DebugShape {
+export class PrimitiveShape {
     private constructor();
     /**
      * @remarks
@@ -36,9 +37,7 @@ export class DebugShape {
     readonly hasDuration: boolean;
     /**
      * @remarks
-     * The location of the shape. For most shapes the location is
-     * the centre of the shape, except DebugLine and DebugArrow
-     * where this represents the start point of the line.
+     * The location of the shape.
      *
      */
     readonly location: Vector3;
@@ -51,8 +50,7 @@ export class DebugShape {
     rotation: Vector3;
     /**
      * @remarks
-     * The scale of the shape. This does not apply to DebugLine or
-     * DebugArrow.
+     * The scale of the shape.
      *
      */
     scale: number;
@@ -82,7 +80,7 @@ export class DebugShape {
     /**
      * @remarks
      * Removes this shape from the world. The shape can be re-added
-     * via the DebugDrawer's addShape method.
+     * via the PrimitiveShapesManager's addText method.
      *
      */
     remove(): void;
@@ -90,9 +88,6 @@ export class DebugShape {
      * @remarks
      * Set the location and dimension of the shape. If the
      * dimension is undefined, it will display in all dimensions.
-     * For most shapes the location is the centre of the shape,
-     * except DebugLine and DebugArrow where this represents the
-     * start point of the line.
      *
      */
     setLocation(location: DimensionLocation | Vector3): void;

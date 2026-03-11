@@ -102,9 +102,28 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
+     * @beta
      * @remarks
+     * Returns a list of all structures contained in behavior
+     * packs. Does not include structures saved to the world or in
+     * memory.
+     *
      * @worldMutation
      *
+     * @returns
+     * The list of structure identifiers.
+     */
+    getPackStructureIds(): string[];
+    /**
+     * @remarks
+     * Returns a list of all structures saved to the world and to
+     * memory. Does not include structures contained in behavior
+     * packs.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The list of structure identifiers.
      */
     getWorldStructureIds(): string[];
     /**

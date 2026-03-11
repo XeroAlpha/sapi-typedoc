@@ -2,7 +2,7 @@
 /* IMPORT */ import { AimAssistCategory, AimAssistCategorySettings, AimAssistPreset, AimAssistPresetSettings, NamespaceNameError } from '..';
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to the world's aim-assist
  * settings.
  */

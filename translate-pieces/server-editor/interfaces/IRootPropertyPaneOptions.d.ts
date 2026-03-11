@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction } from '..';
+/* IMPORT */ import { IPropertyPaneOptions, IRootPropertyPaneHeaderAction, RootPaneLocation } from '..';
 
 /**
  * The options to create a root pane.
@@ -17,4 +17,10 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     icon?: string;
+    /**
+     * @remarks
+     * Determines how root pane will be displayed in the UI.
+     *
+     */
+    location?: RootPaneLocation;
 }

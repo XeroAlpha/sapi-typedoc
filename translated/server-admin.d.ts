@@ -24,7 +24,7 @@
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
+import { EngineError, InvalidArgumentError } from '@minecraft/common';
 import { InvalidEntityError, Player } from '@minecraft/server';
 export class AdminBeforeEvents {
     private constructor();
@@ -380,6 +380,15 @@ export class AllowListModificationError extends Error {
 }
 
 /**
+ * An error which is thrown when attempting to kick a player
+ * who cannot be kicked.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CannotKickPlayerError extends Error {
+    private constructor();
+}
+
+/**
  * An error that is thrown when trying to interact with a join
  * event and the player is disconnected.
  */
@@ -406,6 +415,25 @@ export class LevelStorageSaveStateChangeError extends Error {
     private constructor();
 }
 
+/**
+ * @remarks
+ * Kicks a player from the server.
+ *
+ * @worldMutation
+ *
+ * @param player
+ * Player to kick.
+ * @param reason
+ * Reason for kicking the player.
+ * @throws This function can throw errors.
+ *
+ * {@link CannotKickPlayerError}
+ *
+ * {@link EngineError}
+ *
+ * {@link InvalidArgumentError}
+ */
+export function kickPlayer(player: Player, reason?: string): void;
 /**
  * @remarks
  * Transfer player to another server.

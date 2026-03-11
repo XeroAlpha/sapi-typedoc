@@ -347,10 +347,6 @@ export enum PacketId {
      */
     DeathInfoPacket = 'DeathInfoPacket',
     /**
-     * Send debug drawing shape info (from scripting) to the client for rendering
-     */
-    DebugDrawerPacket = 'DebugDrawerPacket',
-    /**
      * The system sends debug information via a generic network packet. This enables rendering of any server information on the client in for instance ImGui.
      */
     DebugInfoPacket = 'DebugInfoPacket',
@@ -642,6 +638,7 @@ export enum PacketId {
      * Server to client packet for server authoratative runtime database (with persistent LevelStorage backup) designed primarily to track lodestone stuff. See Position Tracking DB Notes.md in bedrock-docs.
      */
     PositionTrackingDBServerBroadcastPacket = 'PositionTrackingDBServerBroadcastPacket',
+    PrimitiveShapesPacket = 'PrimitiveShapesPacket',
     /**
      * Sent from client to server
      */
@@ -1316,31 +1313,6 @@ export interface PacketEventOptions {
 }
 
 /**
- * An error thrown when an HTTP request body exceeds the
- * configured size limit.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class HttpRequestBodyTooLargeError extends Error {
-    private constructor();
-    /**
-     * @remarks
-     * Configured maximum body size in bytes.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly maxBytes: number;
-    /**
-     * @remarks
-     * Request body size in bytes.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly providedBytes: number;
-}
-
-/**
  * An error thrown when the maximum number of concurrent HTTP
  * requests has been reached.
  */
@@ -1363,40 +1335,6 @@ export class HttpRequestLimitExceededError extends Error {
      *
      */
     readonly maxConcurrentRequests: number;
-}
-
-/**
- * An error thrown when an HTTP request targets a URI that is
- * not in the configured allow list.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class HttpRequestNotAllowedError extends Error {
-    private constructor();
-    /**
-     * @remarks
-     * URI that was rejected because it is not allowed.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly uri: string;
-}
-
-/**
- * An error thrown when HTTPS is required but a non-HTTPS URI
- * was provided.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class HttpsOnlyError extends Error {
-    private constructor();
-    /**
-     * @remarks
-     * URI that was rejected for not using HTTPS.
-     *
-     * @earlyExecution
-     *
-     */
-    readonly uri: string;
 }
 
 /**
@@ -1427,12 +1365,70 @@ export class InternalHttpRequestError extends Error {
 }
 
 /**
- * An error thrown when a malformed HTTP request is attempted
- * to be sent.
+ * An error thrown when a malformed URI is used.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class MalformedHttpRequestError extends Error {
+export class MalformedUriError extends Error {
     private constructor();
+}
+
+/**
+ * An error thrown when an network request body exceeds the
+ * configured size limit.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class RequestBodyTooLargeError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * Configured maximum body size in bytes.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly maxBytes: number;
+    /**
+     * @remarks
+     * Request body size in bytes.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly providedBytes: number;
+}
+
+/**
+ * An error thrown when secure URI scheme is required but a
+ * non-secure URI was provided.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class TLSOnlyError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * URI that was rejected for not using secure scheme.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly uri: string;
+}
+
+/**
+ * An error thrown when a network request targets a URI that is
+ * not in the configured allow list.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class UriNotAllowedError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * URI that was rejected because it is not allowed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly uri: string;
 }
 
 export const beforeEvents: NetworkBeforeEvents;
