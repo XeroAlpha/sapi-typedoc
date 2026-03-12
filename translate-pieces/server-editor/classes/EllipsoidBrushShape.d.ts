@@ -24,7 +24,11 @@ export declare class EllipsoidBrushShape extends BrushShape {
     });
     applySetting(brushSettings: EllipsoidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {

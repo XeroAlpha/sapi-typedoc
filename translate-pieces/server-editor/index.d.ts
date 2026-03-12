@@ -58,6 +58,7 @@ export { PrimitiveType } from './enums/PrimitiveType';
 export { ProgressIndicatorPropertyItemVariant } from './enums/ProgressIndicatorPropertyItemVariant';
 export { ProjectExportType } from './enums/ProjectExportType';
 export { PropertyItemType } from './enums/PropertyItemType';
+export { RootPaneLocation } from './enums/RootPaneLocation';
 export { SelectionVolumeEventType } from './enums/SelectionVolumeEventType';
 export { SpeedSettingsProperty } from './enums/SpeedSettingsProperty';
 export { SplineType } from './enums/SplineType';
@@ -271,6 +272,7 @@ export { ICollectionTreeEntryStringItem } from './interfaces/ICollectionTreeEntr
 export { ICollectionTreeFolder } from './interfaces/ICollectionTreeFolder';
 export { ICollectionTreePropertyItem } from './interfaces/ICollectionTreePropertyItem';
 export { ICollectionTreePropertyItemOptions } from './interfaces/ICollectionTreePropertyItemOptions';
+export { ICollectionTreeViewControlPaneOptions } from './interfaces/ICollectionTreeViewControlPaneOptions';
 export { IColorPickerPropertyItem } from './interfaces/IColorPickerPropertyItem';
 export { IColorPickerPropertyItemOptions } from './interfaces/IColorPickerPropertyItemOptions';
 export { IColorTimelinePropertyItem } from './interfaces/IColorTimelinePropertyItem';
@@ -301,8 +303,9 @@ export { IListPanePropertyItemOptions } from './interfaces/IListPanePropertyItem
 export { IListPaneSlot } from './interfaces/IListPaneSlot';
 export { IListPaneSlotOptions } from './interfaces/IListPaneSlotOptions';
 export { IListPaneTextEntry } from './interfaces/IListPaneTextEntry';
-export { IListPaneViewControlPane } from './interfaces/IListPaneViewControlPane';
 export { IListPaneViewControlPaneOptions } from './interfaces/IListPaneViewControlPaneOptions';
+export { IListViewControlPane } from './interfaces/IListViewControlPane';
+export { IListViewControlPaneOptions } from './interfaces/IListViewControlPaneOptions';
 export { IMenu } from './interfaces/IMenu';
 export { IMenuContainer } from './interfaces/IMenuContainer';
 export { IMenuCreationParams } from './interfaces/IMenuCreationParams';

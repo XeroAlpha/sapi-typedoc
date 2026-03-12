@@ -1,12 +1,12 @@
-/* IMPORT */ import { DebugShape } from '..';
-/* IMPORT */ import { DimensionLocation, RGBA, RawMessage, Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, PrimitiveShape, RGBA, RawMessage, RawMessageError, Vector3 } from '..';
 
 /**
- * A debug shape class that represents a text label in the
+ * @beta
+ * A primitive shape class that represents a text label in the
  * world with a background.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class DebugText extends DebugShape {
+export class TextPrimitive extends PrimitiveShape {
     /**
      * @remarks
      * The color of the background plate of the text. If set to
@@ -37,14 +37,14 @@ export class DebugText extends DebugShape {
      *
      */
     useRotation: boolean;
-    constructor(
-        location: DimensionLocation | Vector3,
-        text: RawMessage | string,
-    );
+    constructor(location: DimensionLocation | Vector3, text: RawMessage | string);
     /**
      * @remarks
      * Sets the text to display.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }

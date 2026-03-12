@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Dimension, DimensionLocation, Entity, Player, RGB, Vector3 } from '@minecraft/server';
+import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -144,7 +144,7 @@ export class DebugShape {
      * The color of the shape.
      *
      */
-    color: RGB;
+    color: RGBA;
     /**
      * @remarks
      * The dimension the shape is visible within. If the dimension
@@ -232,18 +232,51 @@ export class DebugSphere extends DebugShape {
 }
 
 /**
- * A debug shape class that a text label. The text label
- * automatically faces the screen.
+ * A debug shape class that represents a text label in the
+ * world with a background.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class DebugText extends DebugShape {
     /**
      * @remarks
-     * The text of the shape to display.
+     * The color of the background plate of the text. If set to
+     * undefined, it will use the default color.
      *
      */
-    text: string;
-    constructor(location: DimensionLocation | Vector3, text: string);
+    backgroundColorOverride?: RGBA;
+    /**
+     * @remarks
+     * If set to true, the text will be hidden behind blocks or
+     * entities. By default this is set to false (will always
+     * render).
+     *
+     */
+    depthTest: boolean;
+    /**
+     * @remarks
+     * Get the text of the debug text shape. Returns the RawText of
+     * the debug text if `setText` was called with a RawMessage or
+     * a RawText object, otherwise returns a string.
+     *
+     */
+    readonly text: RawMessage | string;
+    /**
+     * @remarks
+     * If set to true, the text will not face the camera and
+     * instead will use the rotation from the shape.
+     *
+     */
+    useRotation: boolean;
+    constructor(
+        location: DimensionLocation | Vector3,
+        text: RawMessage | string,
+    );
+    /**
+     * @remarks
+     * Sets the text to display.
+     *
+     */
+    setText(text: RawMessage | string): void;
 }
 
 export interface HandleCounts {

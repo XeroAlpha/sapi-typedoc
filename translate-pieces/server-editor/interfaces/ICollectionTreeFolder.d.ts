@@ -1,5 +1,5 @@
 /* IMPORT */ import { RGBA } from '../../server';
-/* IMPORT */ import { ICollectionTreeEntry, ICollectionTreeEntryOptions, ICollectionTreeFolderHeaderActionParams, ICollectionTreeFolderOptions, LocalizedString } from '..';
+/* IMPORT */ import { ICollectionTreeEntry, ICollectionTreeEntryOptions, ICollectionTreeFolderHeaderActionParams, ICollectionTreeFolderOptions, IMenuCreationParams, LocalizedString } from '..';
 
 /**
  * Container for collection items
@@ -135,6 +135,14 @@ export interface ICollectionTreeFolder {
     removeEntryByIndex(index: number): boolean;
     /**
      * @remarks
+     * Removes the folder with the id if it exists at the root
+     *
+     * @param id
+     * Identifier of the folder
+     */
+    removeFolder(id: string): boolean;
+    /**
+     * @remarks
      * Set color of the entry.
      *
      * @param color
@@ -155,6 +163,14 @@ export interface ICollectionTreeFolder {
      *
      */
     setHeaderAction(actionParams: ICollectionTreeFolderHeaderActionParams | undefined): void;
+    /**
+     * @remarks
+     * Updates menu items for the folder
+     *
+     * @param menu
+     * New menu items
+     */
+    setMenu(menu: IMenuCreationParams[] | undefined): void;
     /**
      * @remarks
      * Set selected state of the entry.

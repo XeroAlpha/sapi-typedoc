@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.7.0-beta"
+ *   "version": "2.8.0-beta"
  * }
  * ```
  *
@@ -27,7 +27,7 @@ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRang
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '@minecraft/vanilla-data';
 /**
- * @beta
+ * @rc
  * Specifies different targeting modes for use in aim-assist.
  */
 export enum AimAssistTargetMode {
@@ -862,6 +862,13 @@ export enum EntityComponentTypes {
      */
     Color2 = 'minecraft:color2',
     CursorInventory = 'minecraft:cursor_inventory',
+    /**
+     * @beta
+     * @remarks
+     * Represents this entity's ender inventory properties.
+     *
+     */
+    EnderInventory = 'minecraft:ender_inventory',
     /**
      * @remarks
      * Provides access to a mob's equipment slots. This component
@@ -3172,6 +3179,7 @@ export type EntityComponentTypeMap = {
     color: EntityColorComponent;
     color2: EntityColor2Component;
     cursor_inventory: PlayerCursorInventoryComponent;
+    ender_inventory: EntityEnderInventoryComponent;
     equippable: EntityEquippableComponent;
     fire_immune: EntityFireImmuneComponent;
     floats_in_liquid: EntityFloatsInLiquidComponent;
@@ -3206,6 +3214,7 @@ export type EntityComponentTypeMap = {
     'minecraft:color': EntityColorComponent;
     'minecraft:color2': EntityColor2Component;
     'minecraft:cursor_inventory': PlayerCursorInventoryComponent;
+    'minecraft:ender_inventory': EntityEnderInventoryComponent;
     'minecraft:equippable': EntityEquippableComponent;
     'minecraft:fire_immune': EntityFireImmuneComponent;
     'minecraft:floats_in_liquid': EntityFloatsInLiquidComponent;
@@ -3345,7 +3354,7 @@ export type VanillaEntityIdentifier =
     | `${MinecraftEntityTypes}<${string}>`;
 
 /**
- * @beta
+ * @rc
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
  */
@@ -3420,7 +3429,7 @@ export class AimAssistCategory {
 }
 
 /**
- * @beta
+ * @rc
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
  */
@@ -3538,7 +3547,7 @@ export class AimAssistCategorySettings {
 }
 
 /**
- * @beta
+ * @rc
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
  */
@@ -3631,7 +3640,7 @@ export class AimAssistPreset {
 }
 
 /**
- * @beta
+ * @rc
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
  */
@@ -3789,7 +3798,7 @@ export class AimAssistPresetSettings {
 }
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to the world's aim-assist
  * settings.
  */
@@ -5208,6 +5217,110 @@ export class BlockComponentStepOnEvent extends BlockEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponentTickEvent extends BlockEvent {
     private constructor();
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific container block
+ * being closed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockContainerClosedAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The source of the block container being closed.
+     *
+     * @worldMutation
+     *
+     */
+    closeSource: ContainerAccessSource;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a block
+ * container is closed.
+ */
+export class BlockContainerClosedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a block container
+     * is closed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: BlockContainerClosedAfterEvent) => void,
+        options?: BlockContainerAccessEventOptions,
+    ): (arg0: BlockContainerClosedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a block container
+     * is closed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: BlockContainerClosedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific container block
+ * being opened.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockContainerOpenedAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The source of the block container being opened.
+     *
+     * @worldMutation
+     *
+     */
+    openSource: ContainerAccessSource;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a block
+ * container is opened.
+ */
+export class BlockContainerOpenedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a block container
+     * is opened.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: BlockContainerOpenedAfterEvent) => void,
+        options?: BlockContainerAccessEventOptions,
+    ): (arg0: BlockContainerOpenedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a block container
+     * is opened.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: BlockContainerOpenedAfterEvent) => void): void;
 }
 
 /**
@@ -10015,6 +10128,106 @@ export class EntityComponent extends Component {
 }
 
 /**
+ * @beta
+ * Contains information regarding a specific entity container
+ * being closed.
+ */
+export class EntityContainerClosedAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The source of the entity container being closed.
+     *
+     */
+    readonly closeSource: ContainerAccessSource;
+    readonly entity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity
+ * container is closed.
+ */
+export class EntityContainerClosedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity container
+     * is closed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityContainerClosedAfterEvent) => void,
+        options?: EntityContainerAccessEventOptions,
+    ): (arg0: EntityContainerClosedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity
+     * container is closed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityContainerClosedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding a specific entity container
+ * being opened.
+ */
+export class EntityContainerOpenedAfterEvent {
+    private constructor();
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The source of the entity container being opened.
+     *
+     */
+    readonly openSource: ContainerAccessSource;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity
+ * container is opened.
+ */
+export class EntityContainerOpenedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity container
+     * is opened.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityContainerOpenedAfterEvent) => void,
+        options?: EntityContainerAccessEventOptions,
+    ): (arg0: EntityContainerOpenedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity
+     * container is opened.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityContainerOpenedAfterEvent) => void): void;
+}
+
+/**
  * As part of the Ageable component, represents a set of items
  * that can be fed to an entity and the rate at which that
  * causes them to grow.
@@ -10106,6 +10319,29 @@ export class EntityDieAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: EntityDieAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Represents this entity's ender inventory properties. This
+ * component is always present on players and any items in its
+ * container will display for the player when they access an
+ * ender chest.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityEnderInventoryComponent extends EntityComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Defines the ender inventory container for this entity. The
+     * container will be undefined if the entity has been removed.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly container: Container;
+    static readonly componentId = 'minecraft:ender_inventory';
 }
 
 /**
@@ -16070,7 +16306,7 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The player's aim-assist settings.
      *
@@ -16378,7 +16614,7 @@ export class Player extends Entity {
 }
 
 /**
- * @beta
+ * @rc
  * A container for APIs related to player aim-assist.
  */
 export class PlayerAimAssist {
@@ -18169,6 +18405,129 @@ export class PressurePlatePushAfterEventSignal {
 }
 
 /**
+ * @beta
+ * The base class for a text primitive. Represents an object in
+ * the world and its base properties.
+ */
+export class PrimitiveShape {
+    private constructor();
+    /**
+     * @remarks
+     * The entity this shape is attached to. When set, this shape
+     * will copy the root location of the attached entity and the
+     * shape's position will be used as an offset.
+     *
+     */
+    attachedTo?: Entity;
+    /**
+     * @remarks
+     * The color of the shape.
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * The dimension the shape is visible within. If the dimension
+     * is undefined, it will display in all dimensions.
+     *
+     */
+    readonly dimension: Dimension;
+    /**
+     * @remarks
+     * Returns true if the shape has a limited time span before
+     * being removed.
+     *
+     */
+    readonly hasDuration: boolean;
+    /**
+     * @remarks
+     * The location of the shape.
+     *
+     */
+    readonly location: Vector3;
+    /**
+     * @remarks
+     * The rotation of the shape (Euler angles - [Pitch, Yaw,
+     * Roll]).
+     *
+     */
+    rotation: Vector3;
+    /**
+     * @remarks
+     * The scale of the shape.
+     *
+     */
+    scale: number;
+    /**
+     * @remarks
+     * The time left (in seconds) until this shape is automatically
+     * removed. Returns undefined if the shape does not have a
+     * limited life-span.
+     *
+     */
+    timeLeft?: number;
+    /**
+     * @remarks
+     * The total initial time-span (in seconds) until this shape is
+     * automatically removed. Returns undefined if the shape does
+     * not have a limited life-span.
+     *
+     */
+    readonly totalTimeLeft?: number;
+    /**
+     * @remarks
+     * The list of players that this shape will be visible to. If
+     * left empty, the shape will be visible to all players.
+     *
+     */
+    visibleTo: Player[];
+    /**
+     * @remarks
+     * Removes this shape from the world. The shape can be re-added
+     * via the PrimitiveShapesManager's addText method.
+     *
+     */
+    remove(): void;
+    /**
+     * @remarks
+     * Set the location and dimension of the shape. If the
+     * dimension is undefined, it will display in all dimensions.
+     *
+     */
+    setLocation(location: DimensionLocation | Vector3): void;
+}
+
+/**
+ * @beta
+ * Primitive Shapes class used to allow adding and removing
+ * text primitives to the world.
+ */
+export class PrimitiveShapesManager {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a new text primitive to the world.
+     *
+     * @param text
+     * The text primitive to be added.
+     */
+    addText(text: TextPrimitive, dimension?: Dimension): void;
+    /**
+     * @remarks
+     * Removes all text primitives from the world.
+     *
+     */
+    removeAll(): void;
+    /**
+     * @remarks
+     * Removes an instance of a text primitive from the world. This
+     * is equivalent to calling remove on the text itself.
+     *
+     */
+    removeText(text: TextPrimitive): void;
+}
+
+/**
  * Contains information related to a projectile hitting a
  * block.
  */
@@ -19608,9 +19967,28 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
+     * @beta
      * @remarks
+     * Returns a list of all structures contained in behavior
+     * packs. Does not include structures saved to the world or in
+     * memory.
+     *
      * @worldMutation
      *
+     * @returns
+     * The list of structure identifiers.
+     */
+    getPackStructureIds(): string[];
+    /**
+     * @remarks
+     * Returns a list of all structures saved to the world and to
+     * memory. Does not include structures contained in behavior
+     * packs.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The list of structure identifiers.
      */
     getWorldStructureIds(): string[];
     /**
@@ -20036,6 +20414,55 @@ export class TargetBlockHitAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * A primitive shape class that represents a text label in the
+ * world with a background.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class TextPrimitive extends PrimitiveShape {
+    /**
+     * @remarks
+     * The color of the background plate of the text. If set to
+     * undefined, it will use the default color.
+     *
+     */
+    backgroundColorOverride?: RGBA;
+    /**
+     * @remarks
+     * If set to true, the text will be hidden behind blocks or
+     * entities. By default this is set to false (will always
+     * render).
+     *
+     */
+    depthTest: boolean;
+    /**
+     * @remarks
+     * Get the text of the debug text shape. Returns the RawText of
+     * the debug text if `setText` was called with a RawMessage or
+     * a RawText object, otherwise returns a string.
+     *
+     */
+    readonly text: RawMessage | string;
+    /**
+     * @remarks
+     * If set to true, the text will not face the camera and
+     * instead will use the rotation from the shape.
+     *
+     */
+    useRotation: boolean;
+    constructor(location: DimensionLocation | Vector3, text: RawMessage | string);
+    /**
+     * @remarks
+     * Sets the text to display.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link RawMessageError}
+     */
+    setText(text: RawMessage | string): void;
 }
 
 /**
@@ -20514,6 +20941,14 @@ export class World {
     readonly gameRules: GameRules;
     readonly isHardcore: boolean;
     /**
+     * @beta
+     * @remarks
+     * Manager for adding and removing primitive text objects in
+     * the world.
+     *
+     */
+    readonly primitiveShapesManager: PrimitiveShapesManager;
+    /**
      * @remarks
      * 全局的、唯一的记分板对象。
      * 
@@ -20575,7 +21010,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.
@@ -20933,6 +21368,24 @@ export class World {
 export class WorldAfterEvents {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * This event fires when a block container is closed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly blockContainerClosed: BlockContainerClosedAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a block container is opened.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly blockContainerOpened: BlockContainerOpenedAfterEventSignal;
+    /**
      * @remarks
      * This event fires for each BlockLocation destroyed by an
      * explosion. It is fired after the blocks have already been
@@ -20979,6 +21432,24 @@ export class WorldAfterEvents {
      *
      */
     readonly effectAdd: EffectAddAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when an entity container is closed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityContainerClosed: EntityContainerClosedAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when an entity container is opened.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityContainerOpened: EntityContainerOpenedAfterEventSignal;
     /**
      * @remarks
      * This event fires when an entity dies.
@@ -21651,6 +22122,27 @@ export interface BlockBoundingBox {
 }
 
 /**
+ * @beta
+ * Options used to filter block container access events.
+ */
+export interface BlockContainerAccessEventOptions {
+    /**
+     * @remarks
+     * If present will filter which container access sources can
+     * trigger the event.
+     *
+     */
+    accessSourceFilter?: ContainerAccessSourceFilter;
+    /**
+     * @remarks
+     * If present will filter which container blocks can trigger
+     * the event.
+     *
+     */
+    blockFilter?: BlockFilter;
+}
+
+/**
  * Contains a set of events that will be raised for a block.
  * This object must be bound using the BlockRegistry.
  */
@@ -22086,6 +22578,33 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
+ * @beta
+ * Represents the source of a container access.
+ */
+export interface ContainerAccessSource {
+    /**
+     * @remarks
+     * The entity that triggered the container access.
+     *
+     */
+    entity?: Entity;
+}
+
+/**
+ * @beta
+ * Options for use when filtering container access sources.
+ */
+export interface ContainerAccessSourceFilter {
+    /**
+     * @remarks
+     * Filter options for the source entity accessing the
+     * container.
+     *
+     */
+    entityFilter?: EntityFilter;
+}
+
+/**
  * Rules that if broken on container operations will throw an
  * error.
  */
@@ -22344,6 +22863,27 @@ export interface EntityApplyDamageOptions {
      *
      */
     damagingEntity?: Entity;
+}
+
+/**
+ * @beta
+ * Options used to filter entity container access events.
+ */
+export interface EntityContainerAccessEventOptions {
+    /**
+     * @remarks
+     * If present will filter which container access sources can
+     * trigger the event.
+     *
+     */
+    accessSourceFilter?: ContainerAccessSourceFilter;
+    /**
+     * @remarks
+     * If present will filter which entity containers can trigger
+     * the event.
+     *
+     */
+    entityFilter?: EntityFilter;
 }
 
 /**
@@ -23319,7 +23859,7 @@ export interface PlayAnimationOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Settings relating to a player's aim-assist targeting.
  */
 export interface PlayerAimAssistSettings {

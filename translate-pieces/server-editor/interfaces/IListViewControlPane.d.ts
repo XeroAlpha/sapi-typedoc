@@ -1,10 +1,6 @@
 /* IMPORT */ import { ListViewControlAction, ListViewControlActionState } from '..';
 
-/**
- * View control for a list pane to manage how slots are
- * displayed
- */
-export interface IListPaneViewControlPane {
+export interface IListViewControlPane {
     /**
      * @remarks
      * Unique identifier

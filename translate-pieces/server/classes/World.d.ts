@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, RawMessage, Scoreboard, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -37,6 +37,14 @@ export class World {
      */
     readonly gameRules: GameRules;
     readonly isHardcore: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Manager for adding and removing primitive text objects in
+     * the world.
+     *
+     */
+    readonly primitiveShapesManager: PrimitiveShapesManager;
     /**
      * @remarks
      * 全局的、唯一的记分板对象。
@@ -99,7 +107,7 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.

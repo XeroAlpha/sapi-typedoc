@@ -1,9 +1,9 @@
 /**
- * An error thrown when an HTTP request body exceeds the
+ * An error thrown when an network request body exceeds the
  * configured size limit.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class HttpRequestBodyTooLargeError extends Error {
+export class RequestBodyTooLargeError extends Error {
     private constructor();
     /**
      * @remarks

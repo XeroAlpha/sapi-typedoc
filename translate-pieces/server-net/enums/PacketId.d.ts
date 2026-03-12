@@ -268,10 +268,6 @@ export enum PacketId {
      */
     DeathInfoPacket = 'DeathInfoPacket',
     /**
-     * Send debug drawing shape info (from scripting) to the client for rendering
-     */
-    DebugDrawerPacket = 'DebugDrawerPacket',
-    /**
      * The system sends debug information via a generic network packet. This enables rendering of any server information on the client in for instance ImGui.
      */
     DebugInfoPacket = 'DebugInfoPacket',
@@ -563,6 +559,7 @@ export enum PacketId {
      * Server to client packet for server authoratative runtime database (with persistent LevelStorage backup) designed primarily to track lodestone stuff. See Position Tracking DB Notes.md in bedrock-docs.
      */
     PositionTrackingDBServerBroadcastPacket = 'PositionTrackingDBServerBroadcastPacket',
+    PrimitiveShapesPacket = 'PrimitiveShapesPacket',
     /**
      * Sent from client to server
      */

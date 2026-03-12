@@ -23,7 +23,11 @@ export declare class PyramidBrushShape extends BrushShape {
     });
     applySetting(brushSettings: PyramidBrushShapeSettings): void;
     calculateBounds(): BlockBoundingBox;
-    createSettingsPane(parentPane: IPropertyPane, onSettingsChange?: () => void): ISubPanePropertyItem;
+    createSettingsPane(
+        parentPane: IPropertyPane,
+        onSettingsChange?: () => void,
+        flatLayout?: boolean,
+    ): ISubPanePropertyItem;
     createShape(): RelativeVolumeListBlockVolume;
     createShapeAsync(
         cancelToken?: {

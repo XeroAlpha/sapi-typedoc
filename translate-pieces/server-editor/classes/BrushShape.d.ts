@@ -28,6 +28,7 @@ export declare abstract class BrushShape {
     abstract createSettingsPane(
         parentPane: IPropertyPane,
         onSettingsChange?: () => void,
+        flatLayout?: boolean,
     ): ISubPanePropertyItem | undefined;
     abstract createShape(): RelativeVolumeListBlockVolume;
     /**

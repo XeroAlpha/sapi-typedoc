@@ -1,17 +1,17 @@
 {
   "dependencies": {
     "@minecraft/common": "1.2.0",
-    "@minecraft/debug-utilities": "1.0.0-beta.1.26.10-preview.27",
-    "@minecraft/diagnostics": "1.0.0-beta.1.26.10-preview.27",
+    "@minecraft/debug-utilities": "1.0.0-beta.1.26.20-preview.20",
+    "@minecraft/diagnostics": "1.0.0-beta.1.26.20-preview.20",
     "@minecraft/math": "2.4.0",
-    "@minecraft/server": "2.7.0-beta.1.26.10-preview.27",
-    "@minecraft/server-admin": "1.0.0-beta.1.26.10-preview.27",
-    "@minecraft/server-editor": "0.1.0-beta.1.26.10-preview.27",
-    "@minecraft/server-gametest": "1.0.0-beta.1.26.10-preview.27",
-    "@minecraft/server-graphics": "1.0.0-beta.1.26.10-preview.27",
-    "@minecraft/server-net": "1.0.0-beta.1.26.10-preview.27",
-    "@minecraft/server-ui": "2.1.0-beta.1.26.10-preview.27",
-    "@minecraft/vanilla-data": "1.26.10-preview.27"
+    "@minecraft/server": "2.8.0-beta.1.26.20-preview.20",
+    "@minecraft/server-admin": "1.0.0-beta.1.26.20-preview.20",
+    "@minecraft/server-editor": "0.1.0-beta.1.26.20-preview.20",
+    "@minecraft/server-gametest": "1.0.0-beta.1.26.20-preview.20",
+    "@minecraft/server-graphics": "1.0.0-beta.1.26.20-preview.20",
+    "@minecraft/server-net": "1.0.0-beta.1.26.20-preview.20",
+    "@minecraft/server-ui": "2.1.0-beta.1.26.20-preview.20",
+    "@minecraft/vanilla-data": "1.26.20-preview.20"
   },
   "overrides": {
     "@minecraft/debug-utilities": {

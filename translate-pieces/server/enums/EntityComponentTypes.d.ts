@@ -65,6 +65,13 @@ export enum EntityComponentTypes {
     Color2 = 'minecraft:color2',
     CursorInventory = 'minecraft:cursor_inventory',
     /**
+     * @beta
+     * @remarks
+     * Represents this entity's ender inventory properties.
+     *
+     */
+    EnderInventory = 'minecraft:ender_inventory',
+    /**
      * @remarks
      * Provides access to a mob's equipment slots. This component
      * exists for all mob entities.

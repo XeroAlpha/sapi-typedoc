@@ -1,7 +1,7 @@
 /* IMPORT */ import { MinecraftBlockTypes, MinecraftEntityTypes, MinecraftItemTypes } from '../../vanilla-data';
 
 /**
- * @beta
+ * @rc
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
  */
