@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityHealBeforeEvent, EntityHealEventOptions } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity will
  * be healed.
  */

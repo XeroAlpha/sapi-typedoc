@@ -1,5 +1,4 @@
 /**
- * @rc
  * The entity's attach location point. Contains points such as
  * head, body, leg, etc to attach the camera to.
  */

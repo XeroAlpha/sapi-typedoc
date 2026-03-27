@@ -1,4 +1,5 @@
-/* IMPORT */ import { Dimension, TextPrimitive } from '..';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { Dimension, PrimitiveShapeError, TextPrimitive } from '..';
 
 /**
  * @beta
@@ -9,10 +10,21 @@ export class PrimitiveShapesManager {
     private constructor();
     /**
      * @remarks
+     * This is the maximum number of allowed primitive shapes.
+     *
+     */
+    readonly maxShapes: number;
+    /**
+     * @remarks
      * Adds a new text primitive to the world.
      *
      * @param text
      * The text primitive to be added.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link PrimitiveShapeError}
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**

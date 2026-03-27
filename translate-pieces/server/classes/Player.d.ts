@@ -206,7 +206,6 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
      * @remarks
      * The player's aim-assist settings.
      *
@@ -456,7 +455,7 @@ export class Player extends Entity {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bdc4b9e7
+     * @seeExample spawnParticle.ts bd8c7a07
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

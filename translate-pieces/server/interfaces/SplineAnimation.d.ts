@@ -1,7 +1,6 @@
 /* IMPORT */ import { ProgressKeyFrame, RotationKeyFrame } from '..';
 
 /**
- * @rc
  * Collection of key frames for camera animation.
  */
 export interface SplineAnimation {

@@ -10,14 +10,14 @@ export class BiomeType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a list of the biome's tags.
      *
      */
     getTags(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Checks if the biome has all of the provided tags.
      *

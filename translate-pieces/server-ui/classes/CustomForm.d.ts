@@ -1,5 +1,5 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { ButtonOptions, DividerOptions, DropdownItem, DropdownOptions, Observable, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItem, DropdownOptions, Observable, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * @beta
@@ -87,7 +87,7 @@ export declare class CustomForm {
      * @throws
      *  *
      */
-    show(): Promise<boolean>;
+    show(): Promise<DataDrivenScreenClosedReason>;
     /**
      * @remarks
      * Creates a slider that lets players pick a number between

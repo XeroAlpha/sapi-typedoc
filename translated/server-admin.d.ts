@@ -202,6 +202,33 @@ export class DedicatedServerUtils {
     readonly levelStorage: LevelStorage;
     /**
      * @remarks
+     * Reloads the cdn configuration from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadCDNConfig(): void;
+    /**
+     * @remarks
+     * Reloads the permissions for the server from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadPermissions(): void;
+    /**
+     * @remarks
+     * Reloads the script configuration for the server from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadScriptingConfig(): void;
+    /**
+     * @remarks
      * Shuts down the dedicated server.
      *
      */
@@ -380,6 +407,15 @@ export class AllowListModificationError extends Error {
 }
 
 /**
+ * An error which is thrown when attempting to deop a player
+ * which cannot have their permissions removed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CannotDeopPlayerError extends Error {
+    private constructor();
+}
+
+/**
  * An error which is thrown when attempting to kick a player
  * who cannot be kicked.
  */
@@ -416,6 +452,32 @@ export class LevelStorageSaveStateChangeError extends Error {
 }
 
 /**
+ * An error which is thrown when attempting to op a player that
+ * already has op permissions.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerAlreadyOpError extends Error {
+    private constructor();
+}
+
+/**
+ * @remarks
+ * Removes the player's op permissions.
+ *
+ * @worldMutation
+ *
+ * @param player
+ * Player to remove permissions from.
+ * @throws This function can throw errors.
+ *
+ * {@link CannotDeopPlayerError}
+ *
+ * {@link EngineError}
+ *
+ * {@link InvalidArgumentError}
+ */
+export function deopPlayer(player: Player): void;
+/**
  * @remarks
  * Kicks a player from the server.
  *
@@ -434,6 +496,23 @@ export class LevelStorageSaveStateChangeError extends Error {
  * {@link InvalidArgumentError}
  */
 export function kickPlayer(player: Player, reason?: string): void;
+/**
+ * @remarks
+ * Gives the player op permissions.
+ *
+ * @worldMutation
+ *
+ * @param player
+ * Player to add permissions to.
+ * @throws This function can throw errors.
+ *
+ * {@link EngineError}
+ *
+ * {@link InvalidArgumentError}
+ *
+ * {@link PlayerAlreadyOpError}
+ */
+export function opPlayer(player: Player): void;
 /**
  * @remarks
  * Transfer player to another server.

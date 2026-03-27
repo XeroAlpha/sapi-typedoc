@@ -9,18 +9,14 @@ export class InternalHttpRequestError extends Error {
     private constructor();
     /**
      * @remarks
-     * The platform-provided numeric error code for the error.
-     *
      * @earlyExecution
      *
      */
-    readonly code: number;
+    readonly errorCode: number;
     /**
      * @remarks
-     * The platform-provided message for the error.
-     *
      * @earlyExecution
      *
      */
-    readonly message: string;
+    readonly errorMessage: string;
 }

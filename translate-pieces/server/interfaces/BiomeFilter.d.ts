@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export interface BiomeFilter {
     excludeBiomes?: string[];
     excludeTags?: string[];

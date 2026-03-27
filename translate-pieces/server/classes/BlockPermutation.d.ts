@@ -6,12 +6,11 @@
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
  * Block}).
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export class BlockPermutation {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Key for the localization of this BlockPermutation's name
      * used in .lang files.

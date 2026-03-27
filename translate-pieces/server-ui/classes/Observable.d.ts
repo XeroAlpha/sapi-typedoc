@@ -27,6 +27,7 @@ export declare class Observable<T extends string | number | boolean | UIRawMessa
      *
      */
     subscribe(listener: (newValue: T) => void): (newValue: T) => void;
+    toJSON(): unknown;
     /**
      * @remarks
      * Unsubscribe a callback from any changes that occur to the

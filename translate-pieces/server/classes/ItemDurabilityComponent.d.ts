@@ -27,7 +27,6 @@ export class ItemDurabilityComponent extends ItemComponent {
      */
     readonly maxDurability: number;
     /**
-     * @rc
      * @remarks
      * Whether an item breaks or loses durability. Setting to true
      * temporarily removes item's durability HUD, and freezes

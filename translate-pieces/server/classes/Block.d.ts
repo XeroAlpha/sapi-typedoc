@@ -289,7 +289,6 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
-     * @rc
      * @remarks
      * Returns all scripting components that are present on this
      * block.
@@ -408,7 +407,6 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @rc
      * @remarks
      * Returns true if the specified component is present on this
      * block.

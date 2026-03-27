@@ -1,3 +1,4 @@
+/* IMPORT */ import { BiomeType, RGB } from '../../server';
 /* IMPORT */ import { MinimapItem, MinimapViewType } from '..';
 
 /**
@@ -48,4 +49,18 @@ export class MinimapManager {
      * @throws This function can throw errors.
      */
     getMinimap(minimapId: string): MinimapItem;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setVanillaBiomeColorMap(colorMap: Record<string, RGB>): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    updateVanillaColorMap(biomeType: BiomeType, color: RGB): void;
 }

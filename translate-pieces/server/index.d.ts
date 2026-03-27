@@ -512,6 +512,7 @@ export { ContainerRules } from './interfaces/ContainerRules';
 export { CustomCommand } from './interfaces/CustomCommand';
 export { CustomCommandParameter } from './interfaces/CustomCommandParameter';
 export { CustomCommandResult } from './interfaces/CustomCommandResult';
+export { CustomTexture } from './interfaces/CustomTexture';
 export { DefinitionModifier } from './interfaces/DefinitionModifier';
 export { DimensionLocation } from './interfaces/DimensionLocation';
 export { EaseOptions } from './interfaces/EaseOptions';
@@ -618,6 +619,7 @@ export { LocationOutOfWorldBoundariesError } from './classes/LocationOutOfWorldB
 export { LocatorBarError } from './classes/LocatorBarError';
 export { NamespaceNameError } from './classes/NamespaceNameError';
 export { PlaceJigsawError } from './classes/PlaceJigsawError';
+export { PrimitiveShapeError } from './classes/PrimitiveShapeError';
 export { RawMessageError } from './classes/RawMessageError';
 export { TickingAreaError } from './classes/TickingAreaError';
 export { UnloadedChunksError } from './classes/UnloadedChunksError';

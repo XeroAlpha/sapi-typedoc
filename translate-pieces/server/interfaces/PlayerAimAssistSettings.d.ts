@@ -1,7 +1,6 @@
 /* IMPORT */ import { AimAssistTargetMode, Vector2 } from '..';
 
 /**
- * @rc
  * Settings relating to a player's aim-assist targeting.
  */
 export interface PlayerAimAssistSettings {

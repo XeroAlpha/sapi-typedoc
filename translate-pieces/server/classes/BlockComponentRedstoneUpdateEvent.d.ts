@@ -16,7 +16,6 @@ export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
      */
     readonly powerLevel: number;
     /**
-     * @rc
      * @remarks
      * The redstone signal strength from the last tick that was
      * passing through this block. It is guaranteed to be >= the

@@ -33,6 +33,36 @@
  */
 import { EngineError } from '@minecraft/common';
 import { InvalidEntityError, Player, RawMessage, RawMessageError } from '@minecraft/server';
+/**
+ * @beta
+ * The reason why a data driven screen (i.e. MessageBox or
+ * CustomForm) was closed.
+ */
+export declare enum DataDrivenScreenClosedReason {
+    /**
+     * @remarks
+     * Closed because it was programmatically told by the server to
+     * close using `form.close()`.
+     *
+     */
+    ServerClose = 'ServerClose',
+    /**
+     * @remarks
+     * Closed because the user was busy (i.e. other UI was open).
+     *
+     */
+    UserBusy = 'UserBusy',
+    /**
+     * @remarks
+     * Closed because the client closed the form. This can be with
+     * a close button on the form (i.e. the X in the corner of a
+     * message box, the 'Close' button on a custom form, or either
+     * button in the message box)
+     *
+     */
+    UserClose = 'UserClose',
+}
+
 export enum FormCancelationReason {
     UserBusy = 'UserBusy',
     UserClosed = 'UserClosed',
@@ -216,7 +246,7 @@ export declare class CustomForm {
      * @throws
      *  *
      */
-    show(): Promise<boolean>;
+    show(): Promise<DataDrivenScreenClosedReason>;
     /**
      * @remarks
      * Creates a slider that lets players pick a number between
@@ -269,6 +299,13 @@ export declare class CustomForm {
         title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
     ): CustomForm;
 }
+
+/**
+ * @beta
+ * Thrown when attempting to close a DDUI form that isn't open.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class FormCloseError extends Error {}
 
 /**
  * Base type for a form response.
@@ -585,6 +622,7 @@ export declare class Observable<T extends string | number | boolean | UIRawMessa
      *
      */
     subscribe(listener: (newValue: T) => void): (newValue: T) => void;
+    toJSON(): unknown;
     /**
      * @remarks
      * Unsubscribe a callback from any changes that occur to the
@@ -603,6 +641,22 @@ export declare class Observable<T extends string | number | boolean | UIRawMessa
         options?: ObservableOptions,
     ): Observable<T>;
 }
+
+/**
+ * @beta
+ * Thrown when a DDUI screen is rejected because the player
+ * left before responding.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class PlayerLeftError extends Error {}
+
+/**
+ * @beta
+ * Thrown when a DDUI screen is rejected because the server is
+ * shutting down.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export declare class ServerShutdownError extends Error {}
 
 export class UIManager {
     private constructor();
@@ -712,17 +766,17 @@ export interface DropdownOptions {
 export interface MessageBoxResult {
     /**
      * @remarks
+     * The reason the message box was closed.
+     *
+     */
+    closeReason: DataDrivenScreenClosedReason;
+    /**
+     * @remarks
      * The button that was selected, undefined if it was closed
      * without pressing a button.
      *
      */
     selection?: number;
-    /**
-     * @remarks
-     * Whether the message box was shown
-     *
-     */
-    wasShown: boolean;
 }
 
 /**

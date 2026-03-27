@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, EntityAttachPoint } from '..';
 
 /**
- * @rc
  * Used to attach the camera to a non player entity.
  */
 export interface CameraAttachOptions {

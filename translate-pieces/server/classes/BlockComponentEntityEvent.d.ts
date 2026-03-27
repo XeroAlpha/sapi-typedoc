@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Entity } from '..';
 
 /**
- * @rc
  * Contains information regarding an event sent by an entity to
  * this block in the world.
  */

@@ -1,4 +1,4 @@
-/* IMPORT */ import { WaypointTexture, WaypointTextureSelector } from '..';
+/* IMPORT */ import { CustomTexture, WaypointTexture, WaypointTextureSelector } from '..';
 
 /**
  * @beta
@@ -18,11 +18,11 @@ export interface WaypointTextureBounds {
     lowerBound: number;
     /**
      * @remarks
-     * The {@link WaypointTexture} to display within this distance
-     * range.
+     * The {@link WaypointTexture} or {@link CustomTexture} to
+     * display within this distance range.
      *
      */
-    texture: WaypointTexture;
+    texture: CustomTexture | WaypointTexture;
     /**
      * @remarks
      * The upper distance bound for this texture. The texture is

@@ -1,5 +1,5 @@
-import { Test, register } from "@minecraft/server-gametest";
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { Test, register } from '@minecraft/server-gametest';
+import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
 
 function simpleMobGameTest(test: Test) {
   const attackerId = MinecraftEntityTypes.Fox;
@@ -14,4 +14,4 @@ function simpleMobGameTest(test: Test) {
     test.assertEntityPresentInArea(victimId, false);
   });
 }
-register("StarterTests", "simpleMobTest", simpleMobGameTest).maxTicks(400).structureName("gametests:mediumglass");
+register('StarterTests', 'simpleMobTest', simpleMobGameTest).maxTicks(400).structureName('gametests:mediumglass');

@@ -656,6 +656,7 @@ export enum PacketId {
      * Used to send a player's server position to the respective client at the end of movement.
      */
     ServerPlayerPostMovePositionPacket = 'ServerPlayerPostMovePositionPacket',
+    ServerPresenceInfoPacket = 'ServerPresenceInfoPacket',
     /**
      * Sent during the initialization of world settings on the client.
      */
@@ -668,6 +669,7 @@ export enum PacketId {
      * Used to send performance and other valuable stats back to the client
      */
     ServerStatsPacket = 'ServerStatsPacket',
+    ServerStoreInfoPacket = 'ServerStoreInfoPacket',
     /**
      * Server->Client Handshake
      */

@@ -1,4 +1,4 @@
-import { DimensionLocation } from "@minecraft/server";
+import { DimensionLocation } from '@minecraft/server';
 
 function checkBlockTags(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   // Fetch the block
@@ -6,8 +6,8 @@ function checkBlockTags(log: (message: string, status?: number) => void, targetL
 
   // check that the block is loaded
   if (block) {
-    log(`Block is dirt: ${block.hasTag("dirt")}`);
-    log(`Block is wood: ${block.hasTag("wood")}`);
-    log(`Block is stone: ${block.hasTag("stone")}`);
+    log(`Block is dirt: ${block.hasTag('dirt')}`);
+    log(`Block is wood: ${block.hasTag('wood')}`);
+    log(`Block is stone: ${block.hasTag('stone')}`);
   }
 }

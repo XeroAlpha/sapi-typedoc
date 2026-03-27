@@ -5,7 +5,7 @@
  * @seeExample addSign.ts
  * @seeExample addTwoSidedSign.ts
  * @seeExample updateSignText.ts
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {

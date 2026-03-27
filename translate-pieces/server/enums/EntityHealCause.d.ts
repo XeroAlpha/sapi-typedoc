@@ -1,5 +1,4 @@
 /**
- * @rc
  * Describes the source of healing of an Entity.
  */
 export enum EntityHealCause {

@@ -21,7 +21,6 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
     /**
-     * @rc
      * @remarks
      * Type ID of the resulting item after feeding has occurred.
      * This will usually be empty but is used for scenarios such as

@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityHurtBeforeEvent, EntityHurtBeforeEventOptions } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity will
  * be hurt.
  */

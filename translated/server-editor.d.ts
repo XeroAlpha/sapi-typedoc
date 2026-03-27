@@ -20,7 +20,7 @@
  *
  */
 import { ArgumentOutOfBoundsError, InvalidArgumentError } from '@minecraft/common';
-import { BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents } from '@minecraft/server';
+import { BiomeType, BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGB, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents } from '@minecraft/server';
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateSuperset } from '@minecraft/vanilla-data';
 /**
@@ -3795,6 +3795,20 @@ export class MinimapManager {
      * @throws This function can throw errors.
      */
     getMinimap(minimapId: string): MinimapItem;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setVanillaBiomeColorMap(colorMap: Record<string, RGB>): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    updateVanillaColorMap(biomeType: BiomeType, color: RGB): void;
 }
 
 /**
@@ -5888,6 +5902,7 @@ export interface BuiltInUIManager {
  * is being written to the world
  */
 export interface ClipboardWriteOptions {
+    excludeAirBlocks?: boolean;
     /**
      * @remarks
      * An enum which represents the axis (or combination of axis')

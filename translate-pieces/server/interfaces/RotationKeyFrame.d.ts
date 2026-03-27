@@ -1,7 +1,6 @@
 /* IMPORT */ import { EasingType, Vector3 } from '..';
 
 /**
- * @rc
  * Key frame that holds the rotation of the camera animation.
  */
 export interface RotationKeyFrame {

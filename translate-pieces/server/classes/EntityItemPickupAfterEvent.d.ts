@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, ItemStack } from '..';
 
 /**
- * @rc
  * Contains information related to an entity having picked up
  * items.
  */
