@@ -753,6 +753,7 @@ export enum PacketId {
      * Used to send a player's server position to the respective client at the end of movement.
      */
     ServerPlayerPostMovePositionPacket = 'ServerPlayerPostMovePositionPacket',
+    ServerPresenceInfoPacket = 'ServerPresenceInfoPacket',
     /**
      * Sent during the initialization of world settings on the client.
      */
@@ -765,6 +766,7 @@ export enum PacketId {
      * Used to send performance and other valuable stats back to the client
      */
     ServerStatsPacket = 'ServerStatsPacket',
+    ServerStoreInfoPacket = 'ServerStoreInfoPacket',
     /**
      * Server->Client Handshake
      */
@@ -993,6 +995,26 @@ export enum PacketId {
      * Syncs client with server voxel shape data on world join. This packet contains a copy of all behavior pack voxel shapes data.
      */
     VoxelShapesPacket = 'VoxelShapesPacket',
+}
+
+export class CloseAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: WebSocketClientCloseAfterEvent) => void): (arg0: WebSocketClientCloseAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WebSocketClientCloseAfterEvent) => void): void;
 }
 
 /**
@@ -1238,6 +1260,28 @@ export class HttpResponse {
     readonly status: number;
 }
 
+export class MessageAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: WebSocketClientReceiveAfterEvent) => void,
+    ): (arg0: WebSocketClientReceiveAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WebSocketClientReceiveAfterEvent) => void): void;
+}
+
 export class NetworkBeforeEvents {
     private constructor();
     /**
@@ -1363,6 +1407,97 @@ export class PacketSendBeforeEventSignal {
 }
 
 /**
+ * Used to manage WebSocket connections.
+ */
+export class WebSocket {
+    private constructor();
+    /**
+     * @remarks
+     * Attempts to connect a WebSocket client.
+     *
+     * @worldMutation
+     *
+     * @param uri
+     * URL to make connection to.
+     * @returns
+     * An awaitable promise that contains the WebSocket client that
+     * was connected.
+     */
+    connect(uri: string): Promise<WebSocketClient>;
+}
+
+/**
+ * An active WebSocket client.
+ */
+export class WebSocketClient {
+    private constructor();
+    /**
+     * @remarks
+     * Contains a set of events related to this WebSocket client.
+     *
+     */
+    readonly afterEvents: WebSocketClientAfterEvents;
+    /**
+     * @remarks
+     * Set to true if the socket is current connected to the
+     * server.
+     *
+     */
+    readonly isOpen: boolean;
+    /**
+     * @remarks
+     * Closes the connection with the server.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link WebSocketNotConnectedError}
+     */
+    close(): void;
+    /**
+     * @remarks
+     * Sends the provided payload to the server.
+     *
+     * @worldMutation
+     *
+     * @param payload
+     * The payload that will be included in the network packet.
+     * @throws This function can throw errors.
+     *
+     * {@link RequestBodyTooLargeError}
+     *
+     * {@link WebSocketNotConnectedError}
+     */
+    send(payload: string): void;
+}
+
+export class WebSocketClientAfterEvents {
+    private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly close: CloseAfterEventSignal;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly message: MessageAfterEventSignal;
+}
+
+export class WebSocketClientCloseAfterEvent {
+    private constructor();
+}
+
+export class WebSocketClientReceiveAfterEvent {
+    private constructor();
+    readonly message: string;
+}
+
+/**
  * Options for events triggered by network packets.
  */
 export interface PacketEventOptions {
@@ -1418,20 +1553,39 @@ export class InternalHttpRequestError extends Error {
     private constructor();
     /**
      * @remarks
-     * The platform-provided numeric error code for the error.
-     *
      * @earlyExecution
      *
      */
-    readonly code: number;
+    readonly errorCode: number;
     /**
      * @remarks
-     * The platform-provided message for the error.
-     *
      * @earlyExecution
      *
      */
-    readonly message: string;
+    readonly errorMessage: string;
+}
+
+/**
+ * An error thrown when a platform-level WebSocket error
+ * occurs.  Information provided in this class may be useful
+ * for diagnostics purposes but will differ from platform to
+ * platform.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InternalWebSocketError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly errorCode: number;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly errorMessage: string;
 }
 
 /**
@@ -1501,5 +1655,73 @@ export class UriNotAllowedError extends Error {
     readonly uri: string;
 }
 
+/**
+ * An error thrown when the connection with the WebSocket
+ * server has failed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WebSocketConnectionFailedError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The error code received when attempting to connect with the
+     * server.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly errorCode: number;
+    /**
+     * @remarks
+     * The URI provided to make this connection attempt that
+     * failed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly uri: string;
+}
+
+/**
+ * An error that is thrown when the maximum number of connected
+ * WebSockets is reached.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WebSocketLimitExceededError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * Number of WebSocket connections already active when
+     * rejected.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly connectedSockets: number;
+    /**
+     * @remarks
+     * Configured maximum active WebSocket connections.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly maxConcurrentConnections: number;
+}
+
+/**
+ * An error thrown when attempting to use a WebSocket while the
+ * socket is not connected to a server.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WebSocketNotConnectedError extends Error {
+    private constructor();
+}
+
 export const beforeEvents: NetworkBeforeEvents;
 export const http: HttpClient;
+/**
+ * @remarks
+ * Used to manage WebSocket connections.
+ *
+ */
+export const websocket: WebSocket;

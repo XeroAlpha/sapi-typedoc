@@ -9,6 +9,14 @@
 export class TextPrimitive extends PrimitiveShape {
     /**
      * @remarks
+     * If set to true, the text primitive will render the back-face
+     * of the background. Defaults to true but will always be false
+     * if 'useRotation' is set to false.
+     *
+     */
+    backfaceVisible: boolean;
+    /**
+     * @remarks
      * The color of the background plate of the text. If set to
      * undefined, it will use the default color.
      *
@@ -30,6 +38,14 @@ export class TextPrimitive extends PrimitiveShape {
      *
      */
     readonly text: RawMessage | string;
+    /**
+     * @remarks
+     * If set to true, the text primitive will render the back-face
+     * of the text. Defaults to true but will always be false if
+     * 'useRotation' is set to false.
+     *
+     */
+    textBackfaceVisible: boolean;
     /**
      * @remarks
      * If set to true, the text will not face the camera and

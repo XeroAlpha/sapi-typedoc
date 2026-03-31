@@ -1,6 +1,6 @@
-import { BlockPermutation, DimensionLocation } from "@minecraft/server";
-import { Vector3Utils } from "@minecraft/math";
-import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { BlockPermutation, DimensionLocation } from '@minecraft/server';
+import { Vector3Utils } from '@minecraft/math';
+import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
 
 function addBlockColorCube(targetLocation: DimensionLocation) {
   const allWoolBlocks: string[] = [

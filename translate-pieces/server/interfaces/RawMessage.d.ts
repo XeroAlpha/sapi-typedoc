@@ -2,9 +2,9 @@
 
 /**
  * Defines a JSON structure that is used for more flexible.
- * @seeExample addTranslatedSign.ts 9d3a2d98
+ * @seeExample addTranslatedSign.ts c0399cc7
  * @seeExample showTranslatedMessageForm.ts
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export interface RawMessage {
     /**

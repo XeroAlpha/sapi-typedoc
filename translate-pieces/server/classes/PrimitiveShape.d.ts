@@ -43,6 +43,16 @@ export class PrimitiveShape {
     readonly location: Vector3;
     /**
      * @remarks
+     * If defined, this distance will be used to determine how far
+     * away this primitive will be rendered for each client. By
+     * default the distance will match the client's render distance
+     * setting.
+     *
+     * Minimum Value: 0
+     */
+    maximumRenderDistance?: number;
+    /**
+     * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *
@@ -52,6 +62,7 @@ export class PrimitiveShape {
      * @remarks
      * The scale of the shape.
      *
+     * Bounds: [-1000, 1000]
      */
     scale: number;
     /**

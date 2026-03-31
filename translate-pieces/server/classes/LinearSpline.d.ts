@@ -1,7 +1,6 @@
 /* IMPORT */ import { Vector3 } from '..';
 
 /**
- * @rc
  * A spline that linearly interpolates between points.
  */
 export class LinearSpline {

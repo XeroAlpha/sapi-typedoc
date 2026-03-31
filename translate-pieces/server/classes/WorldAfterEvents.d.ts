@@ -98,7 +98,6 @@ export class WorldAfterEvents {
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -131,7 +130,6 @@ export class WorldAfterEvents {
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
@@ -140,7 +138,6 @@ export class WorldAfterEvents {
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity drops items.
      *
@@ -149,7 +146,6 @@ export class WorldAfterEvents {
      */
     readonly entityItemDrop: EntityItemDropAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity picks up items.
      *

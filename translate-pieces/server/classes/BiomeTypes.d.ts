@@ -1,7 +1,7 @@
 /* IMPORT */ import { BiomeType } from '..';
 
 /**
- * @beta
+ * @rc
  * Supports a catalog of available biome types registered
  * within Minecraft.
  */

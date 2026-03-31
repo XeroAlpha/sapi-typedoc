@@ -1,3 +1,4 @@
+/* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { AllowList, LevelStorage } from '..';
 
 /**
@@ -18,6 +19,33 @@ export class DedicatedServerUtils {
      *
      */
     readonly levelStorage: LevelStorage;
+    /**
+     * @remarks
+     * Reloads the cdn configuration from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadCDNConfig(): void;
+    /**
+     * @remarks
+     * Reloads the permissions for the server from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadPermissions(): void;
+    /**
+     * @remarks
+     * Reloads the script configuration for the server from disk.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     */
+    reloadScriptingConfig(): void;
     /**
      * @remarks
      * Shuts down the dedicated server.

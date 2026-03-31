@@ -1,7 +1,6 @@
 /* IMPORT */ import { ItemType } from '..';
 
 /**
- * @rc
  * Contains options for filtering items.
  */
 export interface ItemFilter {

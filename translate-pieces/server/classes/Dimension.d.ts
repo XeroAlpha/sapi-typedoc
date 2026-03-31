@@ -29,7 +29,6 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @rc
      * @remarks
      * Checks if an area contains the specified biomes. If the area
      * is partially inside world boundaries, only the area that is
@@ -610,7 +609,7 @@ export class Dimension {
      * {@link LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
-     * @seeExample triggerEvent.ts b473e4eb
+     * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
         identifier: EntityIdentifierType<NoInfer<T>>,
@@ -656,7 +655,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts 25a384c8
+     * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

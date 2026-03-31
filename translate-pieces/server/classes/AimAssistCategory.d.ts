@@ -1,7 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 
 /**
- * @rc
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
  */

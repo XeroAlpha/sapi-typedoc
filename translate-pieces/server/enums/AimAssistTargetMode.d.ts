@@ -1,5 +1,4 @@
 /**
- * @rc
  * Specifies different targeting modes for use in aim-assist.
  */
 export enum AimAssistTargetMode {

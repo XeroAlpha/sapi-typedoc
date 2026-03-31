@@ -20,6 +20,15 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
+     * @beta
+     * @remarks
+     * Enables or disables cheats.
+     *
+     * @worldMutation
+     *
+     */
+    allowCheats: boolean;
+    /**
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
@@ -55,7 +64,6 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @rc
      * @remarks
      * The world seed.
      *
@@ -68,7 +76,6 @@ export class World {
      */
     readonly structureManager: StructureManager;
     /**
-     * @rc
      * @remarks
      * Manager for adding, removing and querying pack specific
      * ticking areas.
@@ -107,7 +114,6 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.

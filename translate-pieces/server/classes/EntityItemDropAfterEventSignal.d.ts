@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityItemDropAfterEvent, EntityItemDropEventOptions } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity has
  * dropped items.
  */

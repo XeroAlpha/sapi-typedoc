@@ -5,6 +5,7 @@
  * is being written to the world
  */
 export interface ClipboardWriteOptions {
+    excludeAirBlocks?: boolean;
     /**
      * @remarks
      * An enum which represents the axis (or combination of axis')

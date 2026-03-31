@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityItemPickupAfterEvent, EntityItemPickupEventOptions } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity has
  * picked up items.
  */

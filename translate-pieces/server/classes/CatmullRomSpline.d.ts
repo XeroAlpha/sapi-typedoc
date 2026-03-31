@@ -1,7 +1,6 @@
 /* IMPORT */ import { Vector3 } from '..';
 
 /**
- * @rc
  * CatmullRom spline creation.
  */
 export class CatmullRomSpline {

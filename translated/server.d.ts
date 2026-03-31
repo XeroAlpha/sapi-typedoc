@@ -27,7 +27,6 @@ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRang
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateMapping, BlockStateSuperset, MinecraftBlockTypes, MinecraftEntityTypes, MinecraftFeatureTypes, MinecraftItemTypes, MinecraftPotionDeliveryTypes, MinecraftPotionEffectTypes } from '@minecraft/vanilla-data';
 /**
- * @rc
  * Specifies different targeting modes for use in aim-assist.
  */
 export enum AimAssistTargetMode {
@@ -780,7 +779,6 @@ export enum EnchantmentSlot {
 }
 
 /**
- * @rc
  * The entity's attach location point. Contains points such as
  * head, body, leg, etc to attach the camera to.
  */
@@ -1507,7 +1505,6 @@ export enum EntityDamageCause {
 }
 
 /**
- * @rc
  * Describes the source of healing of an Entity.
  */
 export enum EntityHealCause {
@@ -2915,7 +2912,6 @@ export enum StructureSaveMode {
 }
 
 /**
- * @rc
  * The reason that the {@link
  * @minecraft/server.TickingAreaError} was thrown.
  */
@@ -3354,7 +3350,6 @@ export type VanillaEntityIdentifier =
     | `${MinecraftEntityTypes}<${string}>`;
 
 /**
- * @rc
  * Handle to an aim-assist category that exists in the
  * world.aimAssist registry.
  */
@@ -3429,7 +3424,6 @@ export class AimAssistCategory {
 }
 
 /**
- * @rc
  * Settings used with AimAssistRegistry.addCategory for
  * creation of the AimAssistCategory.
  */
@@ -3547,7 +3541,6 @@ export class AimAssistCategorySettings {
 }
 
 /**
- * @rc
  * Handle to an aim-assist preset that exists in the
  * world.aimAssist registry.
  */
@@ -3640,7 +3633,6 @@ export class AimAssistPreset {
 }
 
 /**
- * @rc
  * Settings used with AimAssistRegistry.addPreset for creation
  * of the AimAssistPreset.
  */
@@ -3798,7 +3790,6 @@ export class AimAssistPresetSettings {
 }
 
 /**
- * @rc
  * A container for APIs related to the world's aim-assist
  * settings.
  */
@@ -3935,14 +3926,14 @@ export class BiomeType {
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a list of the biome's tags.
      *
      */
     getTags(): string[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Checks if the biome has all of the provided tags.
      *
@@ -3953,7 +3944,7 @@ export class BiomeType {
 }
 
 /**
- * @beta
+ * @rc
  * Supports a catalog of available biome types registered
  * within Minecraft.
  */
@@ -4376,7 +4367,6 @@ export class Block {
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
-     * @rc
      * @remarks
      * Returns all scripting components that are present on this
      * block.
@@ -4514,7 +4504,6 @@ export class Block {
      */
     getTags(): string[];
     /**
-     * @rc
      * @remarks
      * Returns true if the specified component is present on this
      * block.
@@ -4971,7 +4960,6 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding an event sent by an entity to
  * this block in the world.
  */
@@ -5145,7 +5133,6 @@ export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
      */
     readonly powerLevel: number;
     /**
-     * @rc
      * @remarks
      * The redstone signal strength from the last tick that was
      * passing through this block. It is guaranteed to be >= the
@@ -5591,12 +5578,11 @@ export class BlockMovableComponent extends BlockComponent {
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific {@link
  * Block}).
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export class BlockPermutation {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Key for the localization of this BlockPermutation's name
      * used in .lang files.
@@ -5944,7 +5930,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
  * @seeExample addSign.ts
  * @seeExample addTwoSidedSign.ts
  * @seeExample updateSignText.ts
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {
@@ -6105,7 +6091,6 @@ export class BlockType {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this BlockType's name used in
      * .lang files.
@@ -6350,7 +6335,6 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * Attaches the camera to a non-player entity.
      *
@@ -6387,7 +6371,6 @@ export class Camera {
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -6459,7 +6442,6 @@ export class Camera {
 }
 
 /**
- * @rc
  * CatmullRom spline creation.
  */
 export class CatmullRomSpline {
@@ -6611,6 +6593,21 @@ export class ChatSendBeforeEventSignal {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The locale selected by the client (e.g., en_US, fr_FR,
+     * ja_JP). Note that in most cases, server scripts should not
+     * use this property to manually localize text. Instead, use
+     * {@link RawMessage} with a translate field to send
+     * localization keys, allowing each client to resolve them in
+     * their own language automatically. Direct use of locale for
+     * localization is fragile and may produce unexpected results
+     * when players with different languages are on the same
+     * server.
+     *
+     */
+    readonly locale: string;
     /**
      * @remarks
      * The max render distance for the device in chunks.
@@ -7777,7 +7774,6 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @rc
      * @remarks
      * Checks if an area contains the specified biomes. If the area
      * is partially inside world boundaries, only the area that is
@@ -8358,7 +8354,7 @@ export class Dimension {
      * {@link LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
-     * @seeExample triggerEvent.ts b473e4eb
+     * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
         identifier: EntityIdentifierType<NoInfer<T>>,
@@ -8404,7 +8400,7 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts 25a384c8
+     * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
@@ -9734,8 +9730,8 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample triggerEvent.ts e0d38a47
-     * @seeExample triggerEvent.ts b473e4eb
+     * @seeExample triggerEvent.ts e68d4331
+     * @seeExample triggerEvent.ts d45f49d2
      */
     triggerEvent(eventName: string): void;
     /**
@@ -10250,7 +10246,6 @@ export class EntityDefinitionFeedItem {
      */
     readonly item: string;
     /**
-     * @rc
      * @remarks
      * Type ID of the resulting item after feeding has occurred.
      * This will usually be empty but is used for scenarios such as
@@ -10534,7 +10529,6 @@ export class EntityHealableComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Contains information related to an entity having been
  * healed.
  */
@@ -10561,7 +10555,6 @@ export class EntityHealAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity is
  * healed.
  */
@@ -10595,7 +10588,6 @@ export class EntityHealAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to an entity that will be
  * healed.
  */
@@ -10623,7 +10615,6 @@ export class EntityHealBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity will
  * be healed.
  */
@@ -10663,7 +10654,6 @@ export class EntityHealBeforeEventSignal {
 }
 
 /**
- * @rc
  * Provides information about how healing has been applied to
  * an entity.
  */
@@ -10901,7 +10891,6 @@ export class EntityHurtAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity is
  * hurt.
  */
@@ -10933,7 +10922,6 @@ export class EntityHurtAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to an entity that will be hurt.
  */
 export class EntityHurtBeforeEvent {
@@ -10961,7 +10949,6 @@ export class EntityHurtBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity will
  * be hurt.
  */
@@ -11231,7 +11218,6 @@ export class EntityItemComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Contains information related to an entity having dropped
  * items.
  */
@@ -11252,7 +11238,6 @@ export class EntityItemDropAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity has
  * dropped items.
  */
@@ -11286,7 +11271,6 @@ export class EntityItemDropAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to an entity having picked up
  * items.
  */
@@ -11307,7 +11291,6 @@ export class EntityItemPickupAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity has
  * picked up items.
  */
@@ -11341,7 +11324,6 @@ export class EntityItemPickupAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to an entity picking up an
  * item.
  */
@@ -11368,7 +11350,6 @@ export class EntityItemPickupBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity will
  * pick up an item.
  */
@@ -12685,7 +12666,6 @@ export class EntityType {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this EntityType's name used in
      * .lang files.
@@ -12975,7 +12955,6 @@ export class FeedItem {
      */
     readonly item: string;
     /**
-     * @rc
      * @remarks
      * Type ID of the resulting item after feeding has occurred.
      * This will usually be empty but is used for scenarios such as
@@ -14057,7 +14036,6 @@ export class ItemDurabilityComponent extends ItemComponent {
      */
     readonly maxDurability: number;
     /**
-     * @rc
      * @remarks
      * Whether an item breaks or loses durability. Setting to true
      * temporarily removes item's durability HUD, and freezes
@@ -15095,7 +15073,6 @@ export class ItemType {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Key for the localization of this ItemType's name used in
      * .lang files.
@@ -15342,7 +15319,6 @@ export class LeverActionAfterEventSignal {
 }
 
 /**
- * @rc
  * A spline that linearly interpolates between points.
  */
 export class LinearSpline {
@@ -16306,7 +16282,6 @@ export class Player extends Entity {
      */
     eatItem(itemStack: ItemStack): void;
     /**
-     * @rc
      * @remarks
      * The player's aim-assist settings.
      *
@@ -16556,7 +16531,7 @@ export class Player extends Entity {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bdc4b9e7
+     * @seeExample spawnParticle.ts bd8c7a07
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
@@ -16614,7 +16589,6 @@ export class Player extends Entity {
 }
 
 /**
- * @rc
  * A container for APIs related to player aim-assist.
  */
 export class PlayerAimAssist {
@@ -18447,6 +18421,16 @@ export class PrimitiveShape {
     readonly location: Vector3;
     /**
      * @remarks
+     * If defined, this distance will be used to determine how far
+     * away this primitive will be rendered for each client. By
+     * default the distance will match the client's render distance
+     * setting.
+     *
+     * Minimum Value: 0
+     */
+    maximumRenderDistance?: number;
+    /**
+     * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *
@@ -18456,6 +18440,7 @@ export class PrimitiveShape {
      * @remarks
      * The scale of the shape.
      *
+     * Bounds: [-1000, 1000]
      */
     scale: number;
     /**
@@ -18506,10 +18491,21 @@ export class PrimitiveShapesManager {
     private constructor();
     /**
      * @remarks
+     * This is the maximum number of allowed primitive shapes.
+     *
+     */
+    readonly maxShapes: number;
+    /**
+     * @remarks
      * Adds a new text primitive to the world.
      *
      * @param text
      * The text primitive to be added.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link PrimitiveShapeError}
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
@@ -20425,6 +20421,14 @@ export class TargetBlockHitAfterEventSignal {
 export class TextPrimitive extends PrimitiveShape {
     /**
      * @remarks
+     * If set to true, the text primitive will render the back-face
+     * of the background. Defaults to true but will always be false
+     * if 'useRotation' is set to false.
+     *
+     */
+    backfaceVisible: boolean;
+    /**
+     * @remarks
      * The color of the background plate of the text. If set to
      * undefined, it will use the default color.
      *
@@ -20448,6 +20452,14 @@ export class TextPrimitive extends PrimitiveShape {
     readonly text: RawMessage | string;
     /**
      * @remarks
+     * If set to true, the text primitive will render the back-face
+     * of the text. Defaults to true but will always be false if
+     * 'useRotation' is set to false.
+     *
+     */
+    textBackfaceVisible: boolean;
+    /**
+     * @remarks
      * If set to true, the text will not face the camera and
      * instead will use the rotation from the shape.
      *
@@ -20466,7 +20478,6 @@ export class TextPrimitive extends PrimitiveShape {
 }
 
 /**
- * @rc
  * This manager is used to add, remove or query temporary
  * ticking areas to a dimension. These ticking areas are
  * limited by a fixed amount of ticking chunks per pack
@@ -20923,6 +20934,15 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
+     * @beta
+     * @remarks
+     * Enables or disables cheats.
+     *
+     * @worldMutation
+     *
+     */
+    allowCheats: boolean;
+    /**
      * @remarks
      * Contains a set of events that are applicable to the entirety
      * of the world. Event callbacks are called immediately. Event
@@ -20958,7 +20978,6 @@ export class World {
      */
     readonly scoreboard: Scoreboard;
     /**
-     * @rc
      * @remarks
      * The world seed.
      *
@@ -20971,7 +20990,6 @@ export class World {
      */
     readonly structureManager: StructureManager;
     /**
-     * @rc
      * @remarks
      * Manager for adding, removing and querying pack specific
      * ticking areas.
@@ -21010,7 +21028,6 @@ export class World {
      */
     getAbsoluteTime(): number;
     /**
-     * @rc
      * @remarks
      * The aim-assist presets and categories that can be used in
      * the world.
@@ -21459,7 +21476,6 @@ export class WorldAfterEvents {
      */
     readonly entityDie: EntityDieAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -21492,7 +21508,6 @@ export class WorldAfterEvents {
      */
     readonly entityHitEntity: EntityHitEntityAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity is hurt (takes damage).
      *
@@ -21501,7 +21516,6 @@ export class WorldAfterEvents {
      */
     readonly entityHurt: EntityHurtAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity drops items.
      *
@@ -21510,7 +21524,6 @@ export class WorldAfterEvents {
      */
     readonly entityItemDrop: EntityItemDropAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity picks up items.
      *
@@ -21898,21 +21911,18 @@ export class WorldBeforeEvents {
      */
     readonly effectAdd: EffectAddBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHeal: EntityHealBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
      */
     readonly entityHurt: EntityHurtBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires before an entity picks up an item.
      *
@@ -22046,7 +22056,6 @@ export interface AABB {
 }
 
 /**
- * @rc
  * Used to create camera animations.
  */
 export interface AnimationOptions {
@@ -22064,9 +22073,6 @@ export interface AnimationOptions {
     totalTimeSeconds: number;
 }
 
-/**
- * @rc
- */
 export interface BiomeFilter {
     excludeBiomes?: string[];
     excludeTags?: string[];
@@ -22168,7 +22174,6 @@ export interface BlockCustomComponent {
      */
     onBreak?: (arg0: BlockComponentBlockBreakEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @rc
      * @remarks
      * This function will be called when an entity fires an event
      * to this block in the world.
@@ -22408,7 +22413,6 @@ export interface BlockRaycastOptions extends BlockFilter {
 }
 
 /**
- * @rc
  * Used to attach the camera to a non player entity.
  */
 export interface CameraAttachOptions {
@@ -22728,6 +22732,35 @@ export interface CustomCommandResult {
      *
      */
     status: CustomCommandStatus;
+}
+
+/**
+ * @beta
+ */
+export interface CustomTexture {
+    /**
+     * @remarks
+     * The height of the icon, in relative units. Value must be
+     * between 0.0 and 1.0, inclusive.
+     *
+     * Bounds: [0, 1]
+     */
+    iconHeight: number;
+    /**
+     * @remarks
+     * The width of the icon, in relative units. Value must be
+     * between 0.0 and 1.0, inclusive.
+     *
+     * Bounds: [0, 1]
+     */
+    iconWidth: number;
+    /**
+     * @remarks
+     * The resource path to the custom texture. This should be a
+     * valid string path to a texture asset.
+     *
+     */
+    path: string;
 }
 
 /**
@@ -23102,7 +23135,6 @@ export interface EntityFilter {
 }
 
 /**
- * @rc
  * Contains optional parameters for registering an entity heal
  * event.
  */
@@ -23137,7 +23169,6 @@ export interface EntityHitInformation {
 }
 
 /**
- * @rc
  * Contains optional parameters for registering an entity hurt
  * after event.
  */
@@ -23173,7 +23204,6 @@ export interface EntityHurtAfterEventOptions {
 }
 
 /**
- * @rc
  * Contains optional parameters for registering an entity hurt
  * before event.
  */
@@ -23195,7 +23225,6 @@ export interface EntityHurtBeforeEventOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemDropAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
@@ -23219,7 +23248,6 @@ export interface EntityItemDropEventOptions {
 }
 
 /**
- * @rc
  * An interface that is passed into {@link
  * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
  * and {@link
@@ -23683,7 +23711,6 @@ export interface ItemCustomComponent {
 }
 
 /**
- * @rc
  * Contains options for filtering items.
  */
 export interface ItemFilter {
@@ -23859,7 +23886,6 @@ export interface PlayAnimationOptions {
 }
 
 /**
- * @rc
  * Settings relating to a player's aim-assist targeting.
  */
 export interface PlayerAimAssistSettings {
@@ -23974,7 +24000,6 @@ export interface PlayerVisibilityRules extends EntityVisibilityRules {
 }
 
 /**
- * @rc
  * Key frame that holds the progress of the camera animation.
  */
 export interface ProgressKeyFrame {
@@ -24035,9 +24060,9 @@ export interface RangeComparison {
 
 /**
  * Defines a JSON structure that is used for more flexible.
- * @seeExample addTranslatedSign.ts 9d3a2d98
+ * @seeExample addTranslatedSign.ts c0399cc7
  * @seeExample showTranslatedMessageForm.ts
- * @seeExample addTranslatedSign.ts 604a92ba
+ * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export interface RawMessage {
     /**
@@ -24154,7 +24179,6 @@ export interface RGBA extends RGB {
 }
 
 /**
- * @rc
  * Key frame that holds the rotation of the camera animation.
  */
 export interface RotationKeyFrame {
@@ -24247,7 +24271,6 @@ export interface SpawnEntityOptions {
 }
 
 /**
- * @rc
  * Collection of key frames for camera animation.
  */
 export interface SplineAnimation {
@@ -24406,7 +24429,6 @@ export interface TeleportOptions {
 }
 
 /**
- * @rc
  * A context which provides information about a specific
  * ticking area.
  */
@@ -24446,7 +24468,6 @@ export interface TickingArea {
 }
 
 /**
- * @rc
  * Options to create a ticking area using the {@link
  * TickingAreaManager}.
  */
@@ -24574,11 +24595,11 @@ export interface WaypointTextureBounds {
     lowerBound: number;
     /**
      * @remarks
-     * The {@link WaypointTexture} to display within this distance
-     * range.
+     * The {@link WaypointTexture} or {@link CustomTexture} to
+     * display within this distance range.
      *
      */
-    texture: WaypointTexture;
+    texture: CustomTexture | WaypointTexture;
     /**
      * @remarks
      * The upper distance bound for this texture. The texture is
@@ -24983,13 +25004,20 @@ export class PlaceJigsawError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PrimitiveShapeError extends Error {
+    private constructor();
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class RawMessageError extends Error {
     private constructor();
 }
 
 /**
- * @rc
  * The error returned from invalid {@link TickingAreaManager}
  * method calls.
  */

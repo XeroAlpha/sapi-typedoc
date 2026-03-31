@@ -2,7 +2,6 @@
 /* IMPORT */ import { TickingArea, TickingAreaError, TickingAreaOptions } from '..';
 
 /**
- * @rc
  * This manager is used to add, remove or query temporary
  * ticking areas to a dimension. These ticking areas are
  * limited by a fixed amount of ticking chunks per pack

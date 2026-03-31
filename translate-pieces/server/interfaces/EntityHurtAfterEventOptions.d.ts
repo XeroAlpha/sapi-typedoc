@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, EntityDamageCause, EntityFilter } from '..';
 
 /**
- * @rc
  * Contains optional parameters for registering an entity hurt
  * after event.
  */

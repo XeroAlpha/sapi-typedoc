@@ -1,7 +1,6 @@
 /* IMPORT */ import { SplineAnimation } from '..';
 
 /**
- * @rc
  * Used to create camera animations.
  */
 export interface AnimationOptions {

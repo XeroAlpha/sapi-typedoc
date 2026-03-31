@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity } from '..';
 
 /**
- * @rc
  * Contains information related to an entity having dropped
  * items.
  */
