@@ -99,6 +99,7 @@ export declare enum MinecraftEntityTypes {
     Squid = "minecraft:squid",
     Stray = "minecraft:stray",
     Strider = "minecraft:strider",
+    SulfurCube = "minecraft:sulfur_cube",
     Tadpole = "minecraft:tadpole",
     ThrownTrident = "minecraft:thrown_trident",
     Tnt = "minecraft:tnt",

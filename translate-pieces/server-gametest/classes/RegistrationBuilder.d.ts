@@ -161,7 +161,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
      */
     structureName(structureName: string): RegistrationBuilder;
     /**
@@ -176,7 +176,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
      */
     tag(tag: string): RegistrationBuilder;
 }

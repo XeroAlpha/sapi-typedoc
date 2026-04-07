@@ -3,8 +3,8 @@
 /**
  * Returns data about the player results from a modal message
  * form.
- * @seeExample showBasicMessageForm.ts
- * @seeExample showTranslatedMessageForm.ts
+ * @seeExample showBasicMessageForm.ts 7822a7af
+ * @seeExample showTranslatedMessageForm.ts 15e7891e
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class MessageFormResponse extends FormResponse {

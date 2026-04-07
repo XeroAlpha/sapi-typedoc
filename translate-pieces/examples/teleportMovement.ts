@@ -1,5 +1,5 @@
-import { system, DimensionLocation } from '@minecraft/server';
-import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
+import { system, DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
 function teleportMovement(targetLocation: DimensionLocation) {
   const pig = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Pig, targetLocation);

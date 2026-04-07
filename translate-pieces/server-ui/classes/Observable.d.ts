@@ -1,4 +1,5 @@
-/* IMPORT */ import { ObservableOptions, UIRawMessage } from '..';
+/* IMPORT */ import { Player } from '../../server';
+/* IMPORT */ import { ObservableOptions, TextFilteringError, UIRawMessage } from '..';
 
 /**
  * @beta
@@ -12,6 +13,21 @@ export declare class Observable<T extends string | number | boolean | UIRawMessa
      *
      */
     getData(): T;
+    /**
+     * @remarks
+     * Gets filtered data from the Observable (only available for
+     * strings). In case of failure, it will return an array of
+     * TextFilteringError that can provide more context about the
+     * filtering process. For testing purposes, the options are
+     * available under "Creator -> Text Filtering" settings menu.
+     * This delay is only applied to the getFilteredText function
+     * and can be used to simulate network latency when testing.
+     *
+     */
+    getFilteredText(
+        this: Observable<T & string>,
+        player: Player,
+    ): Promise<string | TextFilteringError[]>;
     /**
      * @remarks
      * Sets the data on this Observable and notifies the

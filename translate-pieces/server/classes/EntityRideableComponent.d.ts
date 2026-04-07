@@ -3,7 +3,7 @@
 /**
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
- * @seeExample minibiomes.ts
+ * @seeExample minibiomes.ts cd5a6077
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRideableComponent extends EntityComponent {
@@ -75,7 +75,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws This function can throw errors.
-     * @seeExample minibiomes.ts
+     * @seeExample minibiomes.ts cd5a6077
      */
     addRider(rider: Entity): boolean;
     /**

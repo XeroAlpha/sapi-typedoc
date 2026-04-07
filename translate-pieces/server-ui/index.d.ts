@@ -1,6 +1,7 @@
 export { DataDrivenScreenClosedReason } from './enums/DataDrivenScreenClosedReason';
 export { FormCancelationReason } from './enums/FormCancelationReason';
 export { FormRejectReason } from './enums/FormRejectReason';
+export { TextFilteringError } from './enums/TextFilteringError';
 export { ActionFormData } from './classes/ActionFormData';
 export { ActionFormResponse } from './classes/ActionFormResponse';
 export { CustomForm } from './classes/CustomForm';

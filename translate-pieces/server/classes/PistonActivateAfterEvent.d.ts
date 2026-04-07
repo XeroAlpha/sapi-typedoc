@@ -3,7 +3,7 @@
 /**
  * Contains information related to changes to a piston
  * expanding or retracting.
- * @seeExample pistonAfterEvent.ts
+ * @seeExample pistonAfterEvent.ts e5832d1f
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateAfterEvent extends BlockEvent {

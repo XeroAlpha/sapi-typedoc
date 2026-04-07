@@ -1,7 +1,9 @@
-import { world, EntityInventoryComponent, EntityComponentTypes, DimensionLocation } from '@minecraft/server';
-import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
+import { world, EntityInventoryComponent, EntityComponentTypes, DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
-function transferBetweenContainers(targetLocation: DimensionLocation) {
+function transferBetweenContainers(
+    targetLocation: DimensionLocation
+) {
   const players = world.getAllPlayers();
 
   const chestCart = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.ChestMinecart, {

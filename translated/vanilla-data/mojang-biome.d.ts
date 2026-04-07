@@ -80,6 +80,7 @@ export declare enum MinecraftBiomeTypes {
     SoulsandValley = "minecraft:soulsand_valley",
     StoneBeach = "minecraft:stone_beach",
     StonyPeaks = "minecraft:stony_peaks",
+    SulfurCaves = "minecraft:sulfur_caves",
     SunflowerPlains = "minecraft:sunflower_plains",
     Swampland = "minecraft:swampland",
     SwamplandMutated = "minecraft:swampland_mutated",

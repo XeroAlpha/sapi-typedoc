@@ -1,4 +1,4 @@
-import { world, EntityInventoryComponent, DimensionLocation } from '@minecraft/server';
+import { world, EntityInventoryComponent, DimensionLocation } from "@minecraft/server";
 
 function getFirstHotbarItem(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   for (const player of world.getAllPlayers()) {
@@ -7,7 +7,7 @@ function getFirstHotbarItem(log: (message: string, status?: number) => void, tar
       const firstItem = inventory.container.getItem(0);
 
       if (firstItem) {
-        log('First item in hotbar is: ' + firstItem.typeId);
+        log("First item in hotbar is: " + firstItem.typeId);
       }
 
       return inventory.container.getItem(0);

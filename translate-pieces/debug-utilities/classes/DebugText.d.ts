@@ -1,5 +1,5 @@
 /* IMPORT */ import { DebugShape } from '..';
-/* IMPORT */ import { DimensionLocation, RGBA, RawMessage, Vector3 } from '../../server';
+/* IMPORT */ import { DimensionLocation, RGBA, RawMessage, RawMessageError, Vector3 } from '../../server';
 
 /**
  * A debug shape class that represents a text label in the
@@ -61,6 +61,9 @@ export class DebugText extends DebugShape {
      * @remarks
      * Sets the text to display.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }

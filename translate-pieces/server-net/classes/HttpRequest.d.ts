@@ -3,7 +3,7 @@
 
 /**
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts
+ * @seeExample simpleHttpRequest.ts d480eb0e
  */
 export class HttpRequest {
     /**
@@ -85,8 +85,13 @@ export class HttpRequest {
     setMethod(method: HttpRequestMethod): HttpRequest;
     /**
      * @remarks
+     * Sets the maximum amount of time, in seconds, before the
+     * request times out and is cancelled.
+     *
      * @earlyExecution
      *
+     * @param timeout
+     * The timeout value, in seconds.
      */
     setTimeout(timeout: number): HttpRequest;
 }

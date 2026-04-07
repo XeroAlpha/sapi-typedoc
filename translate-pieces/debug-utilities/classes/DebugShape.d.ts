@@ -44,6 +44,16 @@ export class DebugShape {
     readonly location: Vector3;
     /**
      * @remarks
+     * If defined, this distance will be used to determine how far
+     * away this shape will be rendered for each client. By default
+     * the distance will match the client's render distance
+     * setting.
+     *
+     * Minimum Value: 0
+     */
+    maximumRenderDistance?: number;
+    /**
+     * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *

@@ -1,14 +1,9 @@
-import {
-  world,
-  ItemStack,
-  EntityEquippableComponent,
-  EquipmentSlot,
-  EntityComponentTypes,
-  DimensionLocation,
-} from '@minecraft/server';
-import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+import { world, ItemStack, EntityEquippableComponent, EquipmentSlot, EntityComponentTypes, DimensionLocation } from "@minecraft/server";
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 
-function givePlayerEquipment(targetLocation: DimensionLocation) {
+function givePlayerEquipment(
+    targetLocation: DimensionLocation
+) {
   const players = world.getAllPlayers();
 
   const armorStandLoc = { x: targetLocation.x, y: targetLocation.y, z: targetLocation.z + 4 };

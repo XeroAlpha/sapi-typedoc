@@ -138,6 +138,26 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
+     * @beta
+     * @remarks
+     * Boolean which determines if the player nameplate should be
+     * depth tested for visibility.
+     *
+     * @worldMutation
+     *
+     */
+    nameplateDepthTested: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Float that determines the render distance of this entity's
+     * nameplate.
+     *
+     * @worldMutation
+     *
+     */
+    nameplateRenderDistance: number;
+    /**
      * @remarks
      * Given name of the entity.
      *
@@ -200,12 +220,12 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample spawnPoisonedVillager.ts
-     * @seeExample quickFoxLazyDog.ts
+     * @seeExample spawnPoisonedVillager.ts 1942c817
+     * @seeExample quickFoxLazyDog.ts 617294bf
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds an item to the entity's inventory.
      *
@@ -242,7 +262,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts
+     * @seeExample tagsQuery.ts 91eec411
      */
     addTag(tag: string): boolean;
     /**
@@ -268,7 +288,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample applyDamageThenHeal.ts
+     * @seeExample applyDamageThenHeal.ts d2478fd7
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -285,7 +305,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts
+     * @seeExample applyImpulse.ts 672b9746
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -302,7 +322,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample bounceSkeletons.ts
+     * @seeExample bounceSkeletons.ts 5c3426f6
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
@@ -324,7 +344,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts
+     * @seeExample applyImpulse.ts 672b9746
      */
     clearVelocity(): void;
     /**
@@ -344,7 +364,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts
+     * @seeExample setOnFire.ts b1b21429
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -589,7 +609,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample getFireworkVelocity.ts
+     * @seeExample getFireworkVelocity.ts 117ddc46
      */
     getVelocity(): Vector3;
     /**
@@ -645,7 +665,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts
+     * @seeExample tagsQuery.ts 91eec411
      */
     kill(): boolean;
     /**
@@ -850,7 +870,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts
+     * @seeExample setOnFire.ts b1b21429
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -912,8 +932,8 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample teleport.ts
-     * @seeExample teleportMovement.ts
+     * @seeExample teleport.ts 57750e6a
+     * @seeExample teleportMovement.ts 1ccf37fe
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**

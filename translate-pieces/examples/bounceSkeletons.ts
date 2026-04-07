@@ -1,7 +1,7 @@
-import { EntityQueryOptions, DimensionLocation } from '@minecraft/server';
+import { EntityQueryOptions, DimensionLocation } from "@minecraft/server";
 
 function bounceSkeletons(targetLocation: DimensionLocation) {
-  const mobs = ['creeper', 'skeleton', 'sheep'];
+  const mobs = ["creeper", "skeleton", "sheep"];
 
   // create some sample mob data
   for (let i = 0; i < 10; i++) {
@@ -9,7 +9,7 @@ function bounceSkeletons(targetLocation: DimensionLocation) {
   }
 
   const eqo: EntityQueryOptions = {
-    type: 'skeleton',
+    type: "skeleton",
   };
 
   for (const entity of targetLocation.dimension.getEntities(eqo)) {

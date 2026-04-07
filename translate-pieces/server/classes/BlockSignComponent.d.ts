@@ -2,9 +2,9 @@
 
 /**
  * Represents a block that can display text on it.
- * @seeExample addSign.ts
- * @seeExample addTwoSidedSign.ts
- * @seeExample updateSignText.ts
+ * @seeExample addSign.ts 22938108
+ * @seeExample addTwoSidedSign.ts 58fdf2fd
+ * @seeExample updateSignText.ts 1ea7842e
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 // @ts-ignore Class inheritance allowed for native defined classes

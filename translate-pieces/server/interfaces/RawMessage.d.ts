@@ -3,7 +3,7 @@
 /**
  * Defines a JSON structure that is used for more flexible.
  * @seeExample addTranslatedSign.ts c0399cc7
- * @seeExample showTranslatedMessageForm.ts
+ * @seeExample showTranslatedMessageForm.ts 15e7891e
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export interface RawMessage {

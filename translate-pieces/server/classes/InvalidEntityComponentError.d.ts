@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * This error can occur when accessing components on an entity
  * that doesn't have them.
  */
