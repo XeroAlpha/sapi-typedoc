@@ -1526,6 +1526,13 @@ export enum EntityHealCause {
      *
      */
     SelfHeal = 'SelfHeal',
+    /**
+     * @beta
+     * @remarks
+     * Healing caused when Totem of Undying is activated.
+     *
+     */
+    TotemOfUndying = 'TotemOfUndying',
 }
 
 /**
@@ -4540,7 +4547,7 @@ export class Block {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample checkBlockTags.ts
+     * @seeExample checkBlockTags.ts b2488549
      */
     hasTag(tag: string): boolean;
     /**
@@ -4960,6 +4967,22 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
+ * @beta
+ * Contains information regarding a specific block permutation
+ * that was changed from a previous permutation.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentBlockStateChangeEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The previous BlockPermutation.
+     *
+     */
+    readonly previousPermutation: BlockPermutation;
+}
+
+/**
  * Contains information regarding an event sent by an entity to
  * this block in the world.
  */
@@ -5124,6 +5147,13 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The first update event for the redstone component.
+     *
+     */
+    readonly firstUpdate: boolean;
     /**
      * @remarks
      * The redstone signal strength passing through this block. It
@@ -5458,7 +5488,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
 /**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
- * @seeExample placeItemsInChest.ts
+ * @seeExample placeItemsInChest.ts 6137ad40
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockInventoryComponent extends BlockComponent {
@@ -5667,7 +5697,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @seeExample checkBlockTags.ts
+     * @seeExample checkBlockTags.ts b2488549
      */
     hasTag(tag: string): boolean;
     /**
@@ -5731,7 +5761,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws This function can throw errors.
-     * @seeExample addBlockColorCube.ts
+     * @seeExample addBlockColorCube.ts 2583f87e
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
@@ -5801,6 +5831,20 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * {@link LocationOutOfWorldBoundariesError}
      */
     accumulatesSnow(): boolean;
+    /**
+     * @beta
+     * @remarks
+     * Returns `true` if this block can have snow within it, like a
+     * flower submerged in snow. Returns `false` if this block
+     * cannot have snow within it.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    isSnowLoggable(): boolean;
     /**
      * @remarks
      * Returns `true` if rain will not go through the block.
@@ -5927,9 +5971,9 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
 
 /**
  * Represents a block that can display text on it.
- * @seeExample addSign.ts
- * @seeExample addTwoSidedSign.ts
- * @seeExample updateSignText.ts
+ * @seeExample addSign.ts 22938108
+ * @seeExample addTwoSidedSign.ts 58fdf2fd
+ * @seeExample updateSignText.ts 1ea7842e
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6277,7 +6321,7 @@ export class BlockVolumeBase {
 
 /**
  * Contains information related to changes to a button push.
- * @seeExample buttonPushEvent.ts
+ * @seeExample buttonPushEvent.ts 8d15b6b9
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ButtonPushAfterEvent extends BlockEvent {
@@ -6293,7 +6337,7 @@ export class ButtonPushAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to when a button is
  * pushed.
- * @seeExample buttonPushEvent.ts
+ * @seeExample buttonPushEvent.ts 8d15b6b9
  */
 export class ButtonPushAfterEventSignal {
     private constructor();
@@ -6553,7 +6597,7 @@ export class ChatSendBeforeEvent {
  * @beta
  * Manages callbacks that are connected to an event that fires
  * before chat messages are sent.
- * @seeExample customCommand.ts
+ * @seeExample customCommand.ts e6db613c
  */
 export class ChatSendBeforeEventSignal {
     private constructor();
@@ -6915,7 +6959,7 @@ export class CompoundBlockVolume {
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
- * @seeExample containers.ts
+ * @seeExample containers.ts 40af2007
  */
 export class Container {
     private constructor();
@@ -7060,7 +7104,7 @@ export class Container {
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
-     * @seeExample getFirstHotbarItem.ts
+     * @seeExample getFirstHotbarItem.ts 8cb2c1b2
      */
     getItem(slot: number): ItemStack | undefined;
     /**
@@ -7102,7 +7146,7 @@ export class Container {
      * {@link ContainerRulesError}
      *
      * {@link Error}
-     * @seeExample moveBetweenContainers.ts
+     * @seeExample moveBetweenContainers.ts 144e7153
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
@@ -7176,7 +7220,7 @@ export class Container {
      * {@link ContainerRulesError}
      *
      * {@link Error}
-     * @seeExample transferBetweenContainers.ts
+     * @seeExample transferBetweenContainers.ts 962c2109
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -7859,9 +7903,9 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample createExplosion.ts
-     * @seeExample createNoBlockExplosion.ts
-     * @seeExample createExplosions.ts
+     * @seeExample createExplosion.ts a92f42ce
+     * @seeExample createNoBlockExplosion.ts cbe151e9
+     * @seeExample createExplosions.ts 2b50c396
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
@@ -8039,9 +8083,9 @@ export class Dimension {
      * {@link CommandError}
      *
      * {@link InvalidArgumentError}
-     * @seeExample bounceSkeletons.ts
-     * @seeExample tagsQuery.ts
-     * @seeExample testThatEntityIsFeatherItem.ts
+     * @seeExample bounceSkeletons.ts 5c3426f6
+     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample testThatEntityIsFeatherItem.ts b40711bd
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -8352,8 +8396,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnAdultHorse.ts
-     * @seeExample quickFoxLazyDog.ts
+     * @seeExample spawnAdultHorse.ts 62d15abc
+     * @seeExample quickFoxLazyDog.ts 617294bf
      * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
@@ -8377,8 +8421,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample itemStacks.ts
-     * @seeExample spawnFeatherItem.ts
+     * @seeExample itemStacks.ts 09ecea65
+     * @seeExample spawnFeatherItem.ts cf3ce5c8
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
@@ -8403,6 +8447,26 @@ export class Dimension {
      * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
+     * Spawns an experience orb at a specified location in the
+     * dimension.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * The location at which to spawn the experience orb.
+     * @param amount
+     * The amount of experience to give the experience orb.
+     * Bounds: [1, 12000]
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    spawnXp(location: Vector3, amount: number): void;
     /**
      * @beta
      * @remarks
@@ -8933,6 +8997,26 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
+     * @beta
+     * @remarks
+     * Boolean which determines if the player nameplate should be
+     * depth tested for visibility.
+     *
+     * @worldMutation
+     *
+     */
+    nameplateDepthTested: boolean;
+    /**
+     * @beta
+     * @remarks
+     * Float that determines the render distance of this entity's
+     * nameplate.
+     *
+     * @worldMutation
+     *
+     */
+    nameplateRenderDistance: number;
+    /**
      * @remarks
      * Given name of the entity.
      *
@@ -8995,12 +9079,12 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample spawnPoisonedVillager.ts
-     * @seeExample quickFoxLazyDog.ts
+     * @seeExample spawnPoisonedVillager.ts 1942c817
+     * @seeExample quickFoxLazyDog.ts 617294bf
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds an item to the entity's inventory.
      *
@@ -9037,7 +9121,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts
+     * @seeExample tagsQuery.ts 91eec411
      */
     addTag(tag: string): boolean;
     /**
@@ -9063,7 +9147,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample applyDamageThenHeal.ts
+     * @seeExample applyDamageThenHeal.ts d2478fd7
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -9080,7 +9164,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts
+     * @seeExample applyImpulse.ts 672b9746
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -9097,7 +9181,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample bounceSkeletons.ts
+     * @seeExample bounceSkeletons.ts 5c3426f6
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
@@ -9119,7 +9203,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts
+     * @seeExample applyImpulse.ts 672b9746
      */
     clearVelocity(): void;
     /**
@@ -9139,7 +9223,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts
+     * @seeExample setOnFire.ts b1b21429
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -9384,7 +9468,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample getFireworkVelocity.ts
+     * @seeExample getFireworkVelocity.ts 117ddc46
      */
     getVelocity(): Vector3;
     /**
@@ -9440,7 +9524,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts
+     * @seeExample tagsQuery.ts 91eec411
      */
     kill(): boolean;
     /**
@@ -9645,7 +9729,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts
+     * @seeExample setOnFire.ts b1b21429
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -9707,8 +9791,8 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample teleport.ts
-     * @seeExample teleportMovement.ts
+     * @seeExample teleport.ts 57750e6a
+     * @seeExample teleportMovement.ts 1ccf37fe
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
@@ -10342,7 +10426,7 @@ export class EntityEnderInventoryComponent extends EntityComponent {
 /**
  * Provides access to a mob's equipment slots. This component
  * exists on player entities.
- * @seeExample givePlayerElytra.ts
+ * @seeExample givePlayerElytra.ts f0b28fbe
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
@@ -10729,7 +10813,7 @@ export class EntityHealthChangedAfterEventSignal {
 
 /**
  * Defines the health properties of an entity.
- * @seeExample applyDamageThenHeal.ts
+ * @seeExample applyDamageThenHeal.ts d2478fd7
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {
@@ -11202,7 +11286,7 @@ export class EntityIsTamedComponent extends EntityComponent {
  * represents a free-floating item in the world. Lets you
  * retrieve the actual item stack contents via the itemStack
  * property.
- * @seeExample testThatEntityIsFeatherItem.ts
+ * @seeExample testThatEntityIsFeatherItem.ts b40711bd
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityItemComponent extends EntityComponent {
@@ -11947,7 +12031,7 @@ export class EntityNpcComponent extends EntityComponent {
 
 /**
  * When present on an entity, this entity is on fire.
- * @seeExample setOnFire.ts
+ * @seeExample setOnFire.ts b1b21429
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityOnFireComponent extends EntityComponent {
@@ -11967,7 +12051,7 @@ export class EntityOnFireComponent extends EntityComponent {
  * direction.
  * This component is present when the entity has the
  * minecraft:projectile component.
- * @seeExample shootArrow.ts
+ * @seeExample shootArrow.ts 9968daca
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityProjectileComponent extends EntityComponent {
@@ -12260,7 +12344,7 @@ export class EntityRemoveBeforeEventSignal {
 /**
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
- * @seeExample minibiomes.ts
+ * @seeExample minibiomes.ts cd5a6077
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRideableComponent extends EntityComponent {
@@ -12332,7 +12416,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws This function can throw errors.
-     * @seeExample minibiomes.ts
+     * @seeExample minibiomes.ts cd5a6077
      */
     addRider(rider: Entity): boolean;
     /**
@@ -12444,7 +12528,7 @@ export class EntitySkinIdComponent extends EntityComponent {
 /**
  * Contains data related to an entity spawning within the
  * world.
- * @seeExample logEntitySpawnEvent.ts
+ * @seeExample logEntitySpawnEvent.ts daa66279
  */
 export class EntitySpawnAfterEvent {
     private constructor();
@@ -12481,7 +12565,7 @@ export class EntitySpawnAfterEventSignal {
      *
      * @param callback
      * Function that handles the spawn event.
-     * @seeExample logEntitySpawnEvent.ts
+     * @seeExample logEntitySpawnEvent.ts daa66279
      */
     subscribe(callback: (arg0: EntitySpawnAfterEvent) => void): (arg0: EntitySpawnAfterEvent) => void;
     /**
@@ -14008,7 +14092,7 @@ export class ItemCustomComponentInstance extends ItemComponent {
  * When present on an item, this item can take damage in the
  * process of being used. Note that this component only applies
  * to data-driven items.
- * @seeExample giveHurtDiamondSword.ts
+ * @seeExample giveHurtDiamondSword.ts 3f613c0d
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDurabilityComponent extends ItemComponent {
@@ -14441,9 +14525,9 @@ export class ItemReleaseUseAfterEventSignal {
 
 /**
  * Defines a collection of items.
- * @seeExample itemStacks.ts
- * @seeExample givePlayerEquipment.ts
- * @seeExample spawnFeatherItem.ts
+ * @seeExample itemStacks.ts 09ecea65
+ * @seeExample givePlayerEquipment.ts 30f46c7a
+ * @seeExample spawnFeatherItem.ts cf3ce5c8
  */
 export class ItemStack {
     /**
@@ -14606,7 +14690,7 @@ export class ItemStack {
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
-     * @seeExample giveHurtDiamondSword.ts
+     * @seeExample giveHurtDiamondSword.ts 3f613c0d
      */
     getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
@@ -14739,7 +14823,7 @@ export class ItemStack {
      * String list of block types that the item can destroy.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample giveDestroyRestrictedPickaxe.ts
+     * @seeExample giveDestroyRestrictedPickaxe.ts b2b0cae1
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
@@ -14755,7 +14839,7 @@ export class ItemStack {
      * String list of block types that the item can be placed on.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample givePlaceRestrictedGoldBlock.ts
+     * @seeExample givePlaceRestrictedGoldBlock.ts 43e872f6
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
@@ -14808,7 +14892,7 @@ export class ItemStack {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
-     * @seeExample diamondAwesomeSword.ts
+     * @seeExample diamondAwesomeSword.ts 2e4615d5
      */
     setLore(loreList?: (RawMessage | string)[]): void;
 }
@@ -15267,7 +15351,7 @@ export class KilledByPlayerOrPetsCondition extends LootItemCondition {
 /**
  * Contains information related to changes to a lever
  * activating or deactivating.
- * @seeExample leverActionEvent.ts
+ * @seeExample leverActionEvent.ts d8a28905
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LeverActionAfterEvent extends BlockEvent {
@@ -15290,7 +15374,7 @@ export class LeverActionAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
- * @seeExample leverActionEvent.ts
+ * @seeExample leverActionEvent.ts d8a28905
  */
 export class LeverActionAfterEventSignal {
     private constructor();
@@ -16031,7 +16115,7 @@ export class PassengerOfEntityCondition extends LootItemCondition {
 /**
  * Contains information related to changes to a piston
  * expanding or retracting.
- * @seeExample pistonAfterEvent.ts
+ * @seeExample pistonAfterEvent.ts e5832d1f
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateAfterEvent extends BlockEvent {
@@ -16061,7 +16145,7 @@ export class PistonActivateAfterEventSignal {
      *
      * @earlyExecution
      *
-     * @seeExample pistonAfterEvent.ts
+     * @seeExample pistonAfterEvent.ts e5832d1f
      */
     subscribe(callback: (arg0: PistonActivateAfterEvent) => void): (arg0: PistonActivateAfterEvent) => void;
     /**
@@ -16090,6 +16174,62 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
+    /**
+     * @beta
+     * @remarks
+     * The player's chat display name, composed from {@link
+     * Player.chatNamePrefix} + {@link Player.name} + {@link
+     * Player.chatNameSuffix}. This is the name shown as the author
+     * of chat messages sent by this player. To change the name
+     * shown above the player's head, use {@link Entity.nameTag}.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly chatDisplayName: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is prepended to the text
+     * of chat messages sent by this player. Useful for applying
+     * formatting or color codes to a player's messages (e.g., '§a'
+     * to make their messages green). Does not affect the player's
+     * name display - use {@link Player.chatNamePrefix} for the
+     * name shown in chat, or {@link Entity.nameTag} for the name
+     * above the player's head. Set to undefined to clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatMessagePrefix?: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is prepended to the
+     * player's name in chat messages. Does not affect the name tag
+     * above the player's head or the player list - use {@link
+     * Entity.nameTag} for that. To prefix the message text itself,
+     * use {@link Player.chatMessagePrefix}. Set to undefined to
+     * clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatNamePrefix?: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is appended to the
+     * player's name in chat messages. Does not affect the name tag
+     * above the player's head or the player list - use {@link
+     * Entity.nameTag} for that. See also {@link
+     * Player.chatNamePrefix}. Set to undefined to clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatNameSuffix?: string;
     /**
      * @remarks
      * Contains the player's device information.
@@ -16189,11 +16329,15 @@ export class Player extends Entity {
     readonly onScreenDisplay: ScreenDisplay;
     /**
      * @beta
+     * @remarks
+     * The party information for this player, or undefined if the
+     * player is not in a party.
+     *
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}
      */
-    readonly partyId?: string;
+    readonly partyInfo?: PartyInfo;
     /**
      * @throws This property can throw when used.
      *
@@ -16351,7 +16495,7 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
-     * @seeExample playMusicAndSound.ts
+     * @seeExample playMusicAndSound.ts f4a858c5
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -16425,11 +16569,11 @@ export class Player extends Entity {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample nestedTranslation.ts
-     * @seeExample scoreWildcard.ts
-     * @seeExample sendBasicMessage.ts
-     * @seeExample sendPlayerMessages.ts
-     * @seeExample sendTranslatedMessage.ts
+     * @seeExample nestedTranslation.ts 523925c5
+     * @seeExample scoreWildcard.ts 47f51d2e
+     * @seeExample sendBasicMessage.ts a7fd7ecd
+     * @seeExample sendPlayerMessages.ts 8b411473
+     * @seeExample sendTranslatedMessage.ts 30056ae1
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -18796,7 +18940,7 @@ export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
  * 表示记分板。其上包含了记分项和分数持有者。
  * 
  * Contains objectives and participants for the scoreboard.
- * @seeExample updateScoreboard.ts
+ * @seeExample updateScoreboard.ts c7a7d6fc
  */
 export class Scoreboard {
     private constructor();
@@ -18812,7 +18956,7 @@ export class Scoreboard {
      * @returns 创建的记分项对象。
      * @throws
      * 若同名记分项已存在时，抛出 `"Failed to add objective 'objectiveId' as it is already being tracked"`。
-     * @seeExample updateScoreboard.ts
+     * @seeExample updateScoreboard.ts c7a7d6fc
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
@@ -19105,9 +19249,9 @@ export class ScoreboardScoreInfo {
 /**
  * Contains information about user interface elements that are
  * showing up on the screen.
- * @seeExample setTitle.ts
- * @seeExample setTitleAndSubtitle.ts
- * @seeExample countdown.ts
+ * @seeExample setTitle.ts 2a77800d
+ * @seeExample setTitleAndSubtitle.ts 84ed9c15
+ * @seeExample countdown.ts e3a9c777
  */
 export class ScreenDisplay {
     private constructor();
@@ -19203,9 +19347,9 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample setTitle.ts
-     * @seeExample setTitleAndSubtitle.ts
-     * @seeExample countdown.ts
+     * @seeExample setTitle.ts 2a77800d
+     * @seeExample setTitleAndSubtitle.ts 84ed9c15
+     * @seeExample countdown.ts e3a9c777
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
@@ -19220,7 +19364,7 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample countdown.ts
+     * @seeExample countdown.ts e3a9c777
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }
@@ -20189,7 +20333,7 @@ export class System {
      * @returns
      * An opaque identifier that can be used with the `clearRun`
      * function to cancel the execution of this run.
-     * @seeExample trapTick.ts
+     * @seeExample trapTick.ts 2706558d
      */
     run(callback: () => void): number;
     /**
@@ -20206,7 +20350,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with the clearRun method
      * to stop the run of this function on an interval.
-     * @seeExample every30Seconds.ts
+     * @seeExample every30Seconds.ts 185d1e47
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
@@ -20222,7 +20366,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with {@link
      * System.clearJob} to stop the run of this generator.
-     * @seeExample cubeGenerator.ts
+     * @seeExample cubeGenerator.ts 028da329
      */
     runJob(generator: Generator<void, void, void>): number;
     /**
@@ -20600,7 +20744,7 @@ export class Trigger {
 
 /**
  * Contains information related to changes to a trip wire trip.
- * @seeExample tripWireTripEvent.ts
+ * @seeExample tripWireTripEvent.ts f6c56f77
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class TripWireTripAfterEvent extends BlockEvent {
@@ -20622,7 +20766,7 @@ export class TripWireTripAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to when a trip wire is
  * tripped.
- * @seeExample tripWireTripEvent.ts
+ * @seeExample tripWireTripEvent.ts f6c56f77
  */
 export class TripWireTripAfterEventSignal {
     private constructor();
@@ -20950,7 +21094,7 @@ export class World {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts
+     * @seeExample customCommand.ts e6db613c
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
@@ -21115,8 +21259,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
-     * @seeExample incrementDynamicProperty.ts
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     * @seeExample incrementDynamicProperty.ts 85c637c4
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -21226,7 +21370,7 @@ export class World {
      * @throws This function can throw errors.
      *
      * {@link PropertyOutOfBoundsError}
-     * @seeExample playMusicAndSound.ts
+     * @seeExample playMusicAndSound.ts f4a858c5
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -21349,8 +21493,8 @@ export class World {
      * defined.
      *
      * {@link ArgumentOutOfBoundsError}
-     * @seeExample incrementDynamicProperty.ts
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     * @seeExample incrementDynamicProperty.ts 85c637c4
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -21898,7 +22042,7 @@ export class WorldBeforeEvents {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts
+     * @seeExample customCommand.ts e6db613c
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**
@@ -22160,6 +22304,10 @@ export interface BlockCustomComponent {
      *
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @beta
+     */
+    onBlockStateChange?: (arg0: BlockComponentBlockStateChangeEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when a specific block is
@@ -23226,9 +23374,8 @@ export interface EntityHurtBeforeEventOptions {
 
 /**
  * An interface that is passed into {@link
- * @minecraft/Server.EntityItemDropAfterEventSignal.subscribe}
- * that filters out which events are passed to the provided
- * callback.
+ * EntityItemDropAfterEventSignal.subscribe} that filters out
+ * which events are passed to the provided callback.
  */
 export interface EntityItemDropEventOptions {
     /**
@@ -23249,11 +23396,9 @@ export interface EntityItemDropEventOptions {
 
 /**
  * An interface that is passed into {@link
- * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
- * and {@link
- * @minecraft/Server.EntityItemPickupBeforeEventSignal.subscribe}
- * that filters out which events are passed to the provided
- * callback.
+ * EntityItemPickupAfterEventSignal.subscribe} and {@link
+ * EntityItemPickupBeforeEventSignal.subscribe} that filters
+ * out which events are passed to the provided callback.
  */
 export interface EntityItemPickupEventOptions {
     /**
@@ -23274,14 +23419,14 @@ export interface EntityItemPickupEventOptions {
 
 /**
  * Contains options for selecting entities within an area.
- * @seeExample blockConditional.ts
- * @seeExample findEntitiesHavingPropertyEqualsTo.ts
- * @seeExample playSoundChained.ts
- * @seeExample setScoreboardChained.ts
- * @seeExample summonMobChained.ts
- * @seeExample bounceSkeletons.ts
- * @seeExample tagsQuery.ts
- * @seeExample testThatEntityIsFeatherItem.ts
+ * @seeExample blockConditional.ts d0766e96
+ * @seeExample findEntitiesHavingPropertyEqualsTo.ts 8320fecc
+ * @seeExample playSoundChained.ts 92b093e0
+ * @seeExample setScoreboardChained.ts b345c5c1
+ * @seeExample summonMobChained.ts 1d5a375b
+ * @seeExample bounceSkeletons.ts 5c3426f6
+ * @seeExample tagsQuery.ts 91eec411
+ * @seeExample testThatEntityIsFeatherItem.ts b40711bd
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface EntityQueryOptions extends EntityFilter {
@@ -23482,8 +23627,8 @@ export interface EqualsComparison {
 /**
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
- * @seeExample createNoBlockExplosion.ts
- * @seeExample createExplosions.ts
+ * @seeExample createNoBlockExplosion.ts cbe151e9
+ * @seeExample createExplosions.ts 2b50c396
  */
 export interface ExplosionOptions {
     /**
@@ -23576,9 +23721,8 @@ export interface HotbarEventOptions {
 
 /**
  * An interface that is passed into {@link
- * @minecraft/Server.PlayerButtonInputAfterEventSignal.subscribe}
- * that filters out which events are passed to the provided
- * callback.
+ * PlayerButtonInputAfterEventSignal.subscribe} that filters
+ * out which events are passed to the provided callback.
  */
 export interface InputEventOptions {
     /**
@@ -23848,6 +23992,27 @@ export interface NotEqualsComparison {
 }
 
 /**
+ * @beta
+ * Contains information about a player's party membership. This
+ * object is a snapshot of the player's party state at the time
+ * it was retrieved and is not kept up to date.
+ */
+export interface PartyInfo {
+    /**
+     * @remarks
+     * Whether this player is the leader of their party.
+     *
+     */
+    isLeader: boolean;
+    /**
+     * @remarks
+     * The unique identifier of the party this player belongs to.
+     *
+     */
+    partyId: string;
+}
+
+/**
  * Contains additional options for how an animation is played.
  */
 export interface PlayAnimationOptions {
@@ -23943,7 +24108,7 @@ export interface PlayerSoundOptions {
 
 /**
  * An interface that is passed into {@link
- * @minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe} that
+ * @minecraft/server.PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided
  * callback.
  */
@@ -24061,7 +24226,7 @@ export interface RangeComparison {
 /**
  * Defines a JSON structure that is used for more flexible.
  * @seeExample addTranslatedSign.ts c0399cc7
- * @seeExample showTranslatedMessageForm.ts
+ * @seeExample showTranslatedMessageForm.ts 15e7891e
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export interface RawMessage {
@@ -24389,8 +24554,8 @@ export interface StructurePlaceOptions {
 
 /**
  * Contains additional options for teleporting an entity.
- * @seeExample teleport.ts
- * @seeExample teleportMovement.ts
+ * @seeExample teleport.ts 57750e6a
+ * @seeExample teleportMovement.ts 1ccf37fe
  */
 export interface TeleportOptions {
     /**
@@ -24815,7 +24980,7 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * This error can occur when accessing components on an entity
  * that doesn't have them.
  */

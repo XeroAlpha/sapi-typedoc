@@ -8,6 +8,13 @@
 export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
     private constructor();
     /**
+     * @beta
+     * @remarks
+     * The first update event for the redstone component.
+     *
+     */
+    readonly firstUpdate: boolean;
+    /**
      * @remarks
      * The redstone signal strength passing through this block. It
      * is guaranteed to be >= the `min_power` of the block's

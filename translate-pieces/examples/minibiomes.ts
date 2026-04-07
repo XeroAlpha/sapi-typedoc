@@ -1,6 +1,6 @@
-import { EntityComponentTypes } from '@minecraft/server';
-import { Test, register } from '@minecraft/server-gametest';
-import { MinecraftBlockTypes, MinecraftEntityTypes } from '@minecraft/vanilla-data';
+import { EntityComponentTypes } from "@minecraft/server";
+import { Test, register } from "@minecraft/server-gametest";
+import { MinecraftBlockTypes, MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
 function minibiomes(test: Test) {
   const minecart = test.spawn(MinecraftEntityTypes.Minecart, { x: 9, y: 7, z: 7 });
@@ -14,4 +14,4 @@ function minibiomes(test: Test) {
 
   test.succeedWhenEntityPresent(MinecraftEntityTypes.Pig, { x: 8, y: 3, z: 1 }, true);
 }
-register('ChallengeTests', 'minibiomes', minibiomes).structureName('gametests:minibiomes').maxTicks(160);
+register("ChallengeTests", "minibiomes", minibiomes).structureName("gametests:minibiomes").maxTicks(160);

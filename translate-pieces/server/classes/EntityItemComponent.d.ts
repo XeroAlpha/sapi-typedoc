@@ -5,7 +5,7 @@
  * represents a free-floating item in the world. Lets you
  * retrieve the actual item stack contents via the itemStack
  * property.
- * @seeExample testThatEntityIsFeatherItem.ts
+ * @seeExample testThatEntityIsFeatherItem.ts b40711bd
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityItemComponent extends EntityComponent {

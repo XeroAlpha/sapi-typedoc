@@ -1,5 +1,5 @@
-import { ItemStack, DimensionLocation } from '@minecraft/server';
-import { MinecraftItemTypes } from '@minecraft/vanilla-data';
+import { ItemStack, DimensionLocation } from "@minecraft/server";
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 
 function itemStacks(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   const oneItemLoc = { x: targetLocation.x + targetLocation.y + 3, y: 2, z: targetLocation.z + 1 };

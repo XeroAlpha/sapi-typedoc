@@ -4,7 +4,7 @@
  * @beta
  * Manages callbacks that are connected to an event that fires
  * before chat messages are sent.
- * @seeExample customCommand.ts
+ * @seeExample customCommand.ts e6db613c
  */
 export class ChatSendBeforeEventSignal {
     private constructor();

@@ -1018,7 +1018,7 @@ export class CloseAfterEventSignal {
 }
 
 /**
- * @seeExample simpleHttpRequest.ts
+ * @seeExample simpleHttpRequest.ts d480eb0e
  */
 export class HttpClient {
     private constructor();
@@ -1067,7 +1067,7 @@ export class HttpClient {
      * 解析到对应响应的 Promise。
      * 
      * An awaitable promise that contains the HTTP response.
-     * @seeExample simpleHttpRequest.ts
+     * @seeExample simpleHttpRequest.ts d480eb0e
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }
@@ -1077,7 +1077,7 @@ export class HttpClient {
  * 
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
- * @seeExample simpleHttpRequest.ts
+ * @seeExample simpleHttpRequest.ts d480eb0e
  */
 export class HttpHeader {
     /**
@@ -1107,7 +1107,7 @@ export class HttpHeader {
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
  * 
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts
+ * @seeExample simpleHttpRequest.ts d480eb0e
  */
 export class HttpRequest {
     /**
@@ -1207,10 +1207,15 @@ export class HttpRequest {
     setMethod(method: HttpRequestMethod): HttpRequest;
     /**
      * @remarks
-     * 设置该请求的最大超时时间，单位为秒。
+     * Sets the maximum amount of time, in seconds, before the
+     * request times out and is cancelled.
+     *
+     * 设置请求超时并被取消前的最大时间（以秒为单位）。
      * 
      * @earlyExecution
      *
+     * @param timeout
+     * The timeout value, in seconds.
      */
     setTimeout(timeout: number): HttpRequest;
 }

@@ -36,7 +36,7 @@ export class World {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts
+     * @seeExample customCommand.ts e6db613c
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
@@ -201,8 +201,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
-     * @seeExample incrementDynamicProperty.ts
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     * @seeExample incrementDynamicProperty.ts 85c637c4
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -312,7 +312,7 @@ export class World {
      * @throws This function can throw errors.
      *
      * {@link PropertyOutOfBoundsError}
-     * @seeExample playMusicAndSound.ts
+     * @seeExample playMusicAndSound.ts f4a858c5
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -435,8 +435,8 @@ export class World {
      * defined.
      *
      * {@link ArgumentOutOfBoundsError}
-     * @seeExample incrementDynamicProperty.ts
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts
+     * @seeExample incrementDynamicProperty.ts 85c637c4
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**

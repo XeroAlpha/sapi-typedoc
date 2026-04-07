@@ -95,7 +95,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @seeExample checkBlockTags.ts
+     * @seeExample checkBlockTags.ts b2488549
      */
     hasTag(tag: string): boolean;
     /**
@@ -159,7 +159,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws This function can throw errors.
-     * @seeExample addBlockColorCube.ts
+     * @seeExample addBlockColorCube.ts 2583f87e
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,

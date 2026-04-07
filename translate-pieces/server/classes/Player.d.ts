@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
-/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '..';
+/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PartyInfo, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, Vector3 } from '..';
 
 /**
  * Represents a player within the world.
@@ -14,6 +14,62 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly camera: Camera;
+    /**
+     * @beta
+     * @remarks
+     * The player's chat display name, composed from {@link
+     * Player.chatNamePrefix} + {@link Player.name} + {@link
+     * Player.chatNameSuffix}. This is the name shown as the author
+     * of chat messages sent by this player. To change the name
+     * shown above the player's head, use {@link Entity.nameTag}.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly chatDisplayName: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is prepended to the text
+     * of chat messages sent by this player. Useful for applying
+     * formatting or color codes to a player's messages (e.g., '§a'
+     * to make their messages green). Does not affect the player's
+     * name display - use {@link Player.chatNamePrefix} for the
+     * name shown in chat, or {@link Entity.nameTag} for the name
+     * above the player's head. Set to undefined to clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatMessagePrefix?: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is prepended to the
+     * player's name in chat messages. Does not affect the name tag
+     * above the player's head or the player list - use {@link
+     * Entity.nameTag} for that. To prefix the message text itself,
+     * use {@link Player.chatMessagePrefix}. Set to undefined to
+     * clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatNamePrefix?: string;
+    /**
+     * @beta
+     * @remarks
+     * An optional string that, when set, is appended to the
+     * player's name in chat messages. Does not affect the name tag
+     * above the player's head or the player list - use {@link
+     * Entity.nameTag} for that. See also {@link
+     * Player.chatNamePrefix}. Set to undefined to clear.
+     *
+     * @worldMutation
+     *
+     */
+    chatNameSuffix?: string;
     /**
      * @remarks
      * Contains the player's device information.
@@ -113,11 +169,15 @@ export class Player extends Entity {
     readonly onScreenDisplay: ScreenDisplay;
     /**
      * @beta
+     * @remarks
+     * The party information for this player, or undefined if the
+     * player is not in a party.
+     *
      * @throws This property can throw when used.
      *
      * {@link InvalidEntityError}
      */
-    readonly partyId?: string;
+    readonly partyInfo?: PartyInfo;
     /**
      * @throws This property can throw when used.
      *
@@ -275,7 +335,7 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
-     * @seeExample playMusicAndSound.ts
+     * @seeExample playMusicAndSound.ts f4a858c5
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -349,11 +409,11 @@ export class Player extends Entity {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample nestedTranslation.ts
-     * @seeExample scoreWildcard.ts
-     * @seeExample sendBasicMessage.ts
-     * @seeExample sendPlayerMessages.ts
-     * @seeExample sendTranslatedMessage.ts
+     * @seeExample nestedTranslation.ts 523925c5
+     * @seeExample scoreWildcard.ts 47f51d2e
+     * @seeExample sendBasicMessage.ts a7fd7ecd
+     * @seeExample sendPlayerMessages.ts 8b411473
+     * @seeExample sendTranslatedMessage.ts 30056ae1
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**

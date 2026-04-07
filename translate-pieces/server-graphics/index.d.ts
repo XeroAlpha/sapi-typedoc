@@ -1,2 +1,2 @@
-export { Atmospherics } from './classes/Atmospherics';
-export { atmosphere } from './variables/atmosphere';
+export { BiomeAtmospherics } from './classes/BiomeAtmospherics';
+export { getBiomeAtmospherics } from './functions/getBiomeAtmospherics';

@@ -571,7 +571,7 @@ export class Block {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample checkBlockTags.ts
+     * @seeExample checkBlockTags.ts b2488549
      */
     hasTag(tag: string): boolean;
     /**

@@ -315,7 +315,7 @@ export class SecretString {
  * 
  * A collection of server secrets defined in dedicated server
  * configuration.
- * @seeExample getPlayerProfile.ts
+ * @seeExample getPlayerProfile.ts 961baee0
  */
 export class ServerSecrets {
     private constructor();
@@ -350,7 +350,7 @@ export class ServerSecrets {
  * 
  * A collection of server variables defined in dedicated server
  * configuration.
- * @seeExample getPlayerProfile.ts
+ * @seeExample getPlayerProfile.ts 961baee0
  */
 export class ServerVariables {
     private constructor();

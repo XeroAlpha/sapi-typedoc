@@ -1,5 +1,5 @@
-import { DimensionLocation } from '@minecraft/server';
-import { MinecraftEntityTypes, MinecraftEffectTypes } from '@minecraft/vanilla-data';
+import { DimensionLocation } from "@minecraft/server";
+import { MinecraftEntityTypes, MinecraftEffectTypes } from "@minecraft/vanilla-data";
 
 function quickFoxLazyDog(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   const fox = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Fox, {
@@ -11,7 +11,7 @@ function quickFoxLazyDog(log: (message: string, status?: number) => void, target
   fox.addEffect(MinecraftEffectTypes.Speed, 10, {
     amplifier: 2,
   });
-  log('Created a fox.');
+  log("Created a fox.");
 
   const wolf = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Wolf, {
     x: targetLocation.x + 4,
@@ -22,5 +22,5 @@ function quickFoxLazyDog(log: (message: string, status?: number) => void, target
     amplifier: 2,
   });
   wolf.isSneaking = true;
-  log('Created a sneaking wolf.', 1);
+  log("Created a sneaking wolf.", 1);
 }

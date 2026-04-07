@@ -3,7 +3,7 @@
 /**
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
- * @seeExample leverActionEvent.ts
+ * @seeExample leverActionEvent.ts d8a28905
  */
 export class LeverActionAfterEventSignal {
     private constructor();

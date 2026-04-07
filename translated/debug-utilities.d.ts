@@ -21,7 +21,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, Vector3 } from '@minecraft/server';
+import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, RawMessageError, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -169,6 +169,16 @@ export class DebugShape {
     readonly location: Vector3;
     /**
      * @remarks
+     * If defined, this distance will be used to determine how far
+     * away this shape will be rendered for each client. By default
+     * the distance will match the client's render distance
+     * setting.
+     *
+     * Minimum Value: 0
+     */
+    maximumRenderDistance?: number;
+    /**
+     * @remarks
      * The rotation of the shape (Euler angles - [Pitch, Yaw,
      * Roll]).
      *
@@ -291,6 +301,9 @@ export class DebugText extends DebugShape {
      * @remarks
      * Sets the text to display.
      *
+     * @throws This function can throw errors.
+     *
+     * {@link RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }

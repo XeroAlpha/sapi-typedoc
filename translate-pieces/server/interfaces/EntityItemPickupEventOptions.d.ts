@@ -2,11 +2,9 @@
 
 /**
  * An interface that is passed into {@link
- * @minecraft/Server.EntityItemPickupAfterEventSignal.subscribe}
- * and {@link
- * @minecraft/Server.EntityItemPickupBeforeEventSignal.subscribe}
- * that filters out which events are passed to the provided
- * callback.
+ * EntityItemPickupAfterEventSignal.subscribe} and {@link
+ * EntityItemPickupBeforeEventSignal.subscribe} that filters
+ * out which events are passed to the provided callback.
  */
 export interface EntityItemPickupEventOptions {
     /**

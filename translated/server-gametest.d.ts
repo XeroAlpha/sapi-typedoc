@@ -409,7 +409,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
      */
     structureName(structureName: string): RegistrationBuilder;
     /**
@@ -424,7 +424,7 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
      */
     tag(tag: string): RegistrationBuilder;
 }
@@ -1425,7 +1425,7 @@ export class Test {
      *
      * {@link GameTestError}
      * @seeExample simpleMobTest.ts 1a4be3f1
-     * @seeExample simpleMobGameTest.ts
+     * @seeExample simpleMobGameTest.ts b89fb101
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
     /**
@@ -1974,7 +1974,7 @@ export class Test {
      * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
-     * @seeExample minibiomes.ts
+     * @seeExample minibiomes.ts cd5a6077
      */
     setBlockType(blockType: BlockType | string, blockLocation: Vector3): void;
     /**
@@ -2033,9 +2033,9 @@ export class Test {
      *
      * {@link GameTestError}
      * @seeExample simpleMobTest.ts 1a4be3f1
-     * @seeExample simpleMobGameTest.ts
-     * @seeExample phantomsShouldFlyFromCats.ts
-     * @seeExample minibiomes.ts
+     * @seeExample simpleMobGameTest.ts b89fb101
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
+     * @seeExample minibiomes.ts cd5a6077
      */
     spawn(entityTypeIdentifier: string, blockLocation: Vector3): Entity;
     /**
@@ -2242,7 +2242,7 @@ export class Test {
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws This function can throw errors.
-     * @seeExample simpleMobGameTest.ts
+     * @seeExample simpleMobGameTest.ts b89fb101
      */
     succeedWhen(callback: () => void): void;
     /**
@@ -2323,8 +2323,8 @@ export class Test {
      * the specified type is not present.
      * Defaults to: true
      * @throws This function can throw errors.
-     * @seeExample phantomsShouldFlyFromCats.ts
-     * @seeExample minibiomes.ts
+     * @seeExample phantomsShouldFlyFromCats.ts c783d473
+     * @seeExample minibiomes.ts cd5a6077
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
@@ -2552,7 +2552,7 @@ export function getPlayerSkin(player: Player): PlayerSkinData;
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @seeExample simpleMobGameTest.ts
+ * @seeExample simpleMobGameTest.ts b89fb101
  */
 export function register(
     testClassName: string,
@@ -2579,7 +2579,7 @@ export function register(
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @seeExample simpleMobAsyncTest.ts
+ * @seeExample simpleMobAsyncTest.ts e3f601b5
  */
 export function registerAsync(
     testClassName: string,

@@ -81,10 +81,43 @@ export enum FormRejectReason {
 }
 
 /**
+ * @beta
+ * An enum representing the errors that can occur during text
+ * filtering. This is used to provide more context about the
+ * filtering process.
+ */
+export declare enum TextFilteringError {
+    /**
+     * @remarks
+     * The text was not filtered because the player disabled text
+     * filtering in their settings.
+     *
+     */
+    DisabledByPlayer = 'DisabledByPlayer',
+    /**
+     * @remarks
+     * The text was not filtered because the service is
+     * unreachable. This can occur if there are network issues or
+     * if the service is down for maintenance.
+     *
+     */
+    TextProcessorServiceUnreachable = 'TextProcessorServiceUnreachable',
+    /**
+     * @remarks
+     * An unknown error occurred during text filtering. This can
+     * occur if there is an unexpected issue with the text
+     * filtering service or if the service returns an error that is
+     * not categorized under the other error types.
+     *
+     */
+    Unknown = 'Unknown',
+}
+
+/**
  * Builds a simple player form with buttons that let the player
  * take action.
- * @seeExample showActionForm.ts
- * @seeExample showFavoriteMonth.ts
+ * @seeExample showActionForm.ts 5721109c
+ * @seeExample showFavoriteMonth.ts a7288fdd
  */
 export class ActionFormData {
     /**
@@ -152,8 +185,8 @@ export class ActionFormData {
 /**
  * Returns data about the player results from a modal action
  * form.
- * @seeExample showActionForm.ts
- * @seeExample showFavoriteMonth.ts
+ * @seeExample showActionForm.ts 5721109c
+ * @seeExample showFavoriteMonth.ts a7288fdd
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ActionFormResponse extends FormResponse {
@@ -400,8 +433,8 @@ export declare class MessageBox {
 
 /**
  * Builds a simple two-button modal dialog.
- * @seeExample showBasicMessageForm.ts
- * @seeExample showTranslatedMessageForm.ts
+ * @seeExample showBasicMessageForm.ts 7822a7af
+ * @seeExample showTranslatedMessageForm.ts 15e7891e
  */
 export class MessageFormData {
     /**
@@ -454,8 +487,8 @@ export class MessageFormData {
 /**
  * Returns data about the player results from a modal message
  * form.
- * @seeExample showBasicMessageForm.ts
- * @seeExample showTranslatedMessageForm.ts
+ * @seeExample showBasicMessageForm.ts 7822a7af
+ * @seeExample showTranslatedMessageForm.ts 15e7891e
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class MessageFormResponse extends FormResponse {
@@ -471,7 +504,7 @@ export class MessageFormResponse extends FormResponse {
 /**
  * Used to create a fully customizable pop-up form for a
  * player.
- * @seeExample showBasicModalForm.ts
+ * @seeExample showBasicModalForm.ts c591757c
  */
 export class ModalFormData {
     /**
@@ -587,7 +620,7 @@ export class ModalFormData {
 
 /**
  * Returns data about player responses to a modal form.
- * @seeExample showBasicModalForm.ts
+ * @seeExample showBasicModalForm.ts c591757c
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ModalFormResponse extends FormResponse {
@@ -613,6 +646,21 @@ export declare class Observable<T extends string | number | boolean | UIRawMessa
      *
      */
     getData(): T;
+    /**
+     * @remarks
+     * Gets filtered data from the Observable (only available for
+     * strings). In case of failure, it will return an array of
+     * TextFilteringError that can provide more context about the
+     * filtering process. For testing purposes, the options are
+     * available under "Creator -> Text Filtering" settings menu.
+     * This delay is only applied to the getFilteredText function
+     * and can be used to simulate network latency when testing.
+     *
+     */
+    getFilteredText(
+        this: Observable<T & string>,
+        player: Player,
+    ): Promise<string | TextFilteringError[]>;
     /**
      * @remarks
      * Sets the data on this Observable and notifies the

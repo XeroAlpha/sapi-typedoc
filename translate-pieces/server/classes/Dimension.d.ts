@@ -114,9 +114,9 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample createExplosion.ts
-     * @seeExample createNoBlockExplosion.ts
-     * @seeExample createExplosions.ts
+     * @seeExample createExplosion.ts a92f42ce
+     * @seeExample createNoBlockExplosion.ts cbe151e9
+     * @seeExample createExplosions.ts 2b50c396
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
@@ -294,9 +294,9 @@ export class Dimension {
      * {@link CommandError}
      *
      * {@link InvalidArgumentError}
-     * @seeExample bounceSkeletons.ts
-     * @seeExample tagsQuery.ts
-     * @seeExample testThatEntityIsFeatherItem.ts
+     * @seeExample bounceSkeletons.ts 5c3426f6
+     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample testThatEntityIsFeatherItem.ts b40711bd
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -607,8 +607,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnAdultHorse.ts
-     * @seeExample quickFoxLazyDog.ts
+     * @seeExample spawnAdultHorse.ts 62d15abc
+     * @seeExample quickFoxLazyDog.ts 617294bf
      * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
@@ -632,8 +632,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample itemStacks.ts
-     * @seeExample spawnFeatherItem.ts
+     * @seeExample itemStacks.ts 09ecea65
+     * @seeExample spawnFeatherItem.ts cf3ce5c8
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
@@ -658,6 +658,26 @@ export class Dimension {
      * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @beta
+     * @remarks
+     * Spawns an experience orb at a specified location in the
+     * dimension.
+     *
+     * @worldMutation
+     *
+     * @param location
+     * The location at which to spawn the experience orb.
+     * @param amount
+     * The amount of experience to give the experience orb.
+     * Bounds: [1, 12000]
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    spawnXp(location: Vector3, amount: number): void;
     /**
      * @beta
      * @remarks

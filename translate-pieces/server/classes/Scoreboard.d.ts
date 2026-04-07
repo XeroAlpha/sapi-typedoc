@@ -4,7 +4,7 @@
  * 表示记分板。其上包含了记分项和分数持有者。
  * 
  * Contains objectives and participants for the scoreboard.
- * @seeExample updateScoreboard.ts
+ * @seeExample updateScoreboard.ts c7a7d6fc
  */
 export class Scoreboard {
     private constructor();
@@ -20,7 +20,7 @@ export class Scoreboard {
      * @returns 创建的记分项对象。
      * @throws
      * 若同名记分项已存在时，抛出 `"Failed to add objective 'objectiveId' as it is already being tracked"`。
-     * @seeExample updateScoreboard.ts
+     * @seeExample updateScoreboard.ts c7a7d6fc
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**

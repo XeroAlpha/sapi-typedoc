@@ -22,6 +22,20 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      */
     accumulatesSnow(): boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns `true` if this block can have snow within it, like a
+     * flower submerged in snow. Returns `false` if this block
+     * cannot have snow within it.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    isSnowLoggable(): boolean;
+    /**
      * @remarks
      * Returns `true` if rain will not go through the block.
      * Returns `false` if rain should go through the block.

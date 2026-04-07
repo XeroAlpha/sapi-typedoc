@@ -59,11 +59,9 @@ patches.push(({ project }) => {
     const serverDts = project.getSourceFileOrThrow('server.d.ts');
     const PlayerSwingEventOptionsInterface = serverDts.getInterfaceOrThrow('PlayerSwingEventOptions');
     const oldText = PlayerSwingEventOptionsInterface.getFullText();
-    assert(oldText.includes('@minecraft/Server.PlayerSwingStartAfterEvent.subscribe'));
-    const newText = oldText.replace(
-        '@minecraft/Server.PlayerSwingStartAfterEvent.subscribe',
-        '@minecraft/Server.PlayerSwingStartAfterEventSignal.subscribe'
-    );
+    const regexp = /@minecraft\/[Ss]erver\.PlayerSwingStartAfterEvent\.subscribe/;
+    assert(regexp.test(oldText));
+    const newText = oldText.replace(regexp, '@minecraft/server.PlayerSwingStartAfterEventSignal.subscribe');
     PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
 });
 

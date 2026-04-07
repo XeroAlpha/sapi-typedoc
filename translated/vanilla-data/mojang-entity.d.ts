@@ -196,6 +196,8 @@ export declare enum MinecraftEntityTypes {
     Stray = "minecraft:stray",
     /** 炽足兽。 */
     Strider = "minecraft:strider",
+    /** Sulfur Cube。 */
+    SulfurCube = "minecraft:sulfur_cube",
     /** 蝌蚪。 */
     Tadpole = "minecraft:tadpole",
     /** 三叉戟。 */
