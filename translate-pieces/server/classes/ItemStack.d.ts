@@ -3,9 +3,9 @@
 
 /**
  * Defines a collection of items.
- * @seeExample itemStacks.ts 09ecea65
- * @seeExample givePlayerEquipment.ts 30f46c7a
- * @seeExample spawnFeatherItem.ts cf3ce5c8
+ * @seeExample itemStacks.ts
+ * @seeExample givePlayerEquipment.ts
+ * @seeExample spawnFeatherItem.ts
  */
 export class ItemStack {
     /**
@@ -168,7 +168,7 @@ export class ItemStack {
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
-     * @seeExample giveHurtDiamondSword.ts 3f613c0d
+     * @seeExample giveHurtDiamondSword.ts
      */
     getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
@@ -301,7 +301,7 @@ export class ItemStack {
      * String list of block types that the item can destroy.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample giveDestroyRestrictedPickaxe.ts b2b0cae1
+     * @seeExample giveDestroyRestrictedPickaxe.ts
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
@@ -317,7 +317,7 @@ export class ItemStack {
      * String list of block types that the item can be placed on.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample givePlaceRestrictedGoldBlock.ts 43e872f6
+     * @seeExample givePlaceRestrictedGoldBlock.ts
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
@@ -370,7 +370,7 @@ export class ItemStack {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
-     * @seeExample diamondAwesomeSword.ts 2e4615d5
+     * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;
 }

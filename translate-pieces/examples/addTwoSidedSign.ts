@@ -1,11 +1,18 @@
-import { BlockPermutation, BlockSignComponent, SignSide, DyeColor, BlockComponentTypes, DimensionLocation } from "@minecraft/server";
-import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import {
+  BlockPermutation,
+  BlockSignComponent,
+  SignSide,
+  DyeColor,
+  BlockComponentTypes,
+  DimensionLocation,
+} from '@minecraft/server';
+import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
 
 function addTwoSidedSign(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   const signBlock = targetLocation.dimension.getBlock(targetLocation);
 
   if (!signBlock) {
-    log("Could not find a block at specified location.");
+    log('Could not find a block at specified location.');
     return -1;
   }
   const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, { ground_sign_direction: 8 });
@@ -23,6 +30,6 @@ function addTwoSidedSign(log: (message: string, status?: number) => void, target
     // players cannot edit sign!
     signComponent.setWaxed(true);
   } else {
-    log("Could not find sign component.");
+    log('Could not find sign component.');
   }
 }

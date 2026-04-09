@@ -2,14 +2,14 @@
 
 /**
  * Contains options for selecting entities within an area.
- * @seeExample blockConditional.ts d0766e96
- * @seeExample findEntitiesHavingPropertyEqualsTo.ts 8320fecc
- * @seeExample playSoundChained.ts 92b093e0
- * @seeExample setScoreboardChained.ts b345c5c1
- * @seeExample summonMobChained.ts 1d5a375b
- * @seeExample bounceSkeletons.ts 5c3426f6
- * @seeExample tagsQuery.ts 91eec411
- * @seeExample testThatEntityIsFeatherItem.ts b40711bd
+ * @seeExample blockConditional.ts
+ * @seeExample findEntitiesHavingPropertyEqualsTo.ts
+ * @seeExample playSoundChained.ts
+ * @seeExample setScoreboardChained.ts
+ * @seeExample summonMobChained.ts
+ * @seeExample bounceSkeletons.ts
+ * @seeExample tagsQuery.ts
+ * @seeExample testThatEntityIsFeatherItem.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface EntityQueryOptions extends EntityFilter {

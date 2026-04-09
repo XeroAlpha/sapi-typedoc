@@ -4,9 +4,9 @@
 /**
  * Contains information about user interface elements that are
  * showing up on the screen.
- * @seeExample setTitle.ts 2a77800d
- * @seeExample setTitleAndSubtitle.ts 84ed9c15
- * @seeExample countdown.ts e3a9c777
+ * @seeExample setTitle.ts
+ * @seeExample setTitleAndSubtitle.ts
+ * @seeExample countdown.ts
  */
 export class ScreenDisplay {
     private constructor();
@@ -102,9 +102,9 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample setTitle.ts 2a77800d
-     * @seeExample setTitleAndSubtitle.ts 84ed9c15
-     * @seeExample countdown.ts e3a9c777
+     * @seeExample setTitle.ts
+     * @seeExample setTitleAndSubtitle.ts
+     * @seeExample countdown.ts
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
@@ -119,7 +119,7 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample countdown.ts e3a9c777
+     * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }

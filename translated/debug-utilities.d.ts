@@ -20,7 +20,7 @@
  * ```
  *
  */
-import * as minecraftcommon from '@minecraft/common';
+import { ArgumentOutOfBoundsError } from '@minecraft/common';
 import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, RawMessageError, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
@@ -302,6 +302,8 @@ export class DebugText extends DebugShape {
      * Sets the text to display.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link RawMessageError}
      */

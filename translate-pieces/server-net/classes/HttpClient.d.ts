@@ -1,7 +1,7 @@
 /* IMPORT */ import { HttpRequest, HttpResponse } from '..';
 
 /**
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpClient {
     private constructor();
@@ -36,7 +36,7 @@ export class HttpClient {
      * the HTTP request.
      * @returns
      * An awaitable promise that contains the HTTP response.
-     * @seeExample simpleHttpRequest.ts d480eb0e
+     * @seeExample simpleHttpRequest.ts
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }

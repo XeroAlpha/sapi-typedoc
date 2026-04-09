@@ -2,7 +2,7 @@
 
 /**
  * Contains information related to changes to a button push.
- * @seeExample buttonPushEvent.ts 8d15b6b9
+ * @seeExample buttonPushEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ButtonPushAfterEvent extends BlockEvent {

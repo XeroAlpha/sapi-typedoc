@@ -1000,7 +1000,7 @@ export class CloseAfterEventSignal {
 }
 
 /**
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpClient {
     private constructor();
@@ -1035,7 +1035,7 @@ export class HttpClient {
      * the HTTP request.
      * @returns
      * An awaitable promise that contains the HTTP response.
-     * @seeExample simpleHttpRequest.ts d480eb0e
+     * @seeExample simpleHttpRequest.ts
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }
@@ -1043,7 +1043,7 @@ export class HttpClient {
 /**
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpHeader {
     /**
@@ -1067,7 +1067,7 @@ export class HttpHeader {
 
 /**
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpRequest {
     /**

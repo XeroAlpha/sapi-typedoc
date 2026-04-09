@@ -1,13 +1,13 @@
-import { world, system, DimensionLocation } from "@minecraft/server";
+import { world, system, DimensionLocation } from '@minecraft/server';
 
 function countdown(targetLocation: DimensionLocation) {
   const players = world.getPlayers();
 
-  players[0].onScreenDisplay.setTitle("Get ready!", {
+  players[0].onScreenDisplay.setTitle('Get ready!', {
     stayDuration: 220,
     fadeInDuration: 2,
     fadeOutDuration: 4,
-    subtitle: "10",
+    subtitle: '10',
   });
 
   let countdown = 10;

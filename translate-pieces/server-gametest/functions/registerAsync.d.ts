@@ -20,7 +20,7 @@
  * Returns a {@link RegistrationBuilder} object where
  * additional options for this test can be specified via
  * builder methods.
- * @seeExample simpleMobAsyncTest.ts e3f601b5
+ * @seeExample simpleMobAsyncTest.ts
  */
 export function registerAsync(
     testClassName: string,

@@ -17,7 +17,7 @@ export class EntitySpawnAfterEventSignal {
      *
      * @param callback
      * Function that handles the spawn event.
-     * @seeExample logEntitySpawnEvent.ts daa66279
+     * @seeExample logEntitySpawnEvent.ts
      */
     subscribe(callback: (arg0: EntitySpawnAfterEvent) => void): (arg0: EntitySpawnAfterEvent) => void;
     /**

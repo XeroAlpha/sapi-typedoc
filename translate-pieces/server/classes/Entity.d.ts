@@ -220,8 +220,8 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample spawnPoisonedVillager.ts 1942c817
-     * @seeExample quickFoxLazyDog.ts 617294bf
+     * @seeExample spawnPoisonedVillager.ts
+     * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
@@ -262,7 +262,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
     /**
@@ -288,7 +288,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample applyDamageThenHeal.ts d2478fd7
+     * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -305,7 +305,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts 672b9746
+     * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -322,7 +322,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample bounceSkeletons.ts 5c3426f6
+     * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
@@ -344,7 +344,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts 672b9746
+     * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
     /**
@@ -364,7 +364,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts b1b21429
+     * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -609,7 +609,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample getFireworkVelocity.ts 117ddc46
+     * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
     /**
@@ -665,7 +665,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample tagsQuery.ts
      */
     kill(): boolean;
     /**
@@ -870,7 +870,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts b1b21429
+     * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -932,8 +932,8 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample teleport.ts 57750e6a
-     * @seeExample teleportMovement.ts 1ccf37fe
+     * @seeExample teleport.ts
+     * @seeExample teleportMovement.ts
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**

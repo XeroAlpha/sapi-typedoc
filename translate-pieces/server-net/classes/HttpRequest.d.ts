@@ -3,7 +3,7 @@
 
 /**
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpRequest {
     /**

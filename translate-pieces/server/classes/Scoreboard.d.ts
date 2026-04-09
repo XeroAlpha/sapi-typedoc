@@ -2,7 +2,7 @@
 
 /**
  * Contains objectives and participants for the scoreboard.
- * @seeExample updateScoreboard.ts c7a7d6fc
+ * @seeExample updateScoreboard.ts
  */
 export class Scoreboard {
     private constructor();
@@ -13,7 +13,7 @@ export class Scoreboard {
      * @worldMutation
      *
      * @throws This function can throw errors.
-     * @seeExample updateScoreboard.ts c7a7d6fc
+     * @seeExample updateScoreboard.ts
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**

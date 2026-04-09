@@ -3,7 +3,7 @@
 /**
  * Manages callbacks that are connected to when a button is
  * pushed.
- * @seeExample buttonPushEvent.ts 8d15b6b9
+ * @seeExample buttonPushEvent.ts
  */
 export class ButtonPushAfterEventSignal {
     private constructor();

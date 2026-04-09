@@ -1,3 +1,4 @@
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
 /* IMPORT */ import { DebugShape } from '..';
 /* IMPORT */ import { DimensionLocation, RGBA, RawMessage, RawMessageError, Vector3 } from '../../server';
 
@@ -62,6 +63,8 @@ export class DebugText extends DebugShape {
      * Sets the text to display.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link RawMessageError}
      */

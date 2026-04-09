@@ -335,7 +335,7 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
-     * @seeExample playMusicAndSound.ts f4a858c5
+     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -409,11 +409,11 @@ export class Player extends Entity {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample nestedTranslation.ts 523925c5
-     * @seeExample scoreWildcard.ts 47f51d2e
-     * @seeExample sendBasicMessage.ts a7fd7ecd
-     * @seeExample sendPlayerMessages.ts 8b411473
-     * @seeExample sendTranslatedMessage.ts 30056ae1
+     * @seeExample nestedTranslation.ts
+     * @seeExample scoreWildcard.ts
+     * @seeExample sendBasicMessage.ts
+     * @seeExample sendPlayerMessages.ts
+     * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**

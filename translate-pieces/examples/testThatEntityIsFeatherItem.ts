@@ -1,4 +1,4 @@
-import { EntityItemComponent, EntityComponentTypes, DimensionLocation } from "@minecraft/server";
+import { EntityItemComponent, EntityComponentTypes, DimensionLocation } from '@minecraft/server';
 
 function testThatEntityIsFeatherItem(
   log: (message: string, status?: number) => void,
@@ -13,8 +13,8 @@ function testThatEntityIsFeatherItem(
     const itemComp = item.getComponent(EntityComponentTypes.Item) as EntityItemComponent;
 
     if (itemComp) {
-      if (itemComp.itemStack.typeId.endsWith("feather")) {
-        log("Success! Found a feather", 1);
+      if (itemComp.itemStack.typeId.endsWith('feather')) {
+        log('Success! Found a feather', 1);
       }
     }
   }

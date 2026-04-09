@@ -1,5 +1,5 @@
-import { DimensionLocation } from "@minecraft/server";
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { DimensionLocation } from '@minecraft/server';
+import { MinecraftEntityTypes } from '@minecraft/vanilla-data';
 
 function applyImpulse(targetLocation: DimensionLocation) {
   const zombie = targetLocation.dimension.spawnEntity(MinecraftEntityTypes.Zombie, targetLocation);

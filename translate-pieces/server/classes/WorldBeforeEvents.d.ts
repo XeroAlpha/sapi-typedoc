@@ -17,7 +17,7 @@ export class WorldBeforeEvents {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts e6db613c
+     * @seeExample customCommand.ts
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**
