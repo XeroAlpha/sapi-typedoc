@@ -1,7 +1,7 @@
 /* IMPORT */ import { HttpRequest, HttpResponse } from '..';
 
 /**
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpClient {
     private constructor();
@@ -50,7 +50,7 @@ export class HttpClient {
      * 解析到对应响应的 Promise。
      * 
      * An awaitable promise that contains the HTTP response.
-     * @seeExample simpleHttpRequest.ts d480eb0e
+     * @seeExample simpleHttpRequest.ts
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }

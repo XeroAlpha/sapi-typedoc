@@ -3,7 +3,7 @@
 /**
  * Contains information related to changes to a lever
  * activating or deactivating.
- * @seeExample leverActionEvent.ts d8a28905
+ * @seeExample leverActionEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LeverActionAfterEvent extends BlockEvent {

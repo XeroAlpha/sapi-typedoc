@@ -2,7 +2,7 @@
 
 /**
  * Contains information related to changes to a trip wire trip.
- * @seeExample tripWireTripEvent.ts f6c56f77
+ * @seeExample tripWireTripEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class TripWireTripAfterEvent extends BlockEvent {

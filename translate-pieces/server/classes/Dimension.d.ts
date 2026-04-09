@@ -114,9 +114,9 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample createExplosion.ts a92f42ce
-     * @seeExample createNoBlockExplosion.ts cbe151e9
-     * @seeExample createExplosions.ts 2b50c396
+     * @seeExample createExplosion.ts
+     * @seeExample createNoBlockExplosion.ts
+     * @seeExample createExplosions.ts
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
@@ -294,9 +294,9 @@ export class Dimension {
      * {@link CommandError}
      *
      * {@link InvalidArgumentError}
-     * @seeExample bounceSkeletons.ts 5c3426f6
-     * @seeExample tagsQuery.ts 91eec411
-     * @seeExample testThatEntityIsFeatherItem.ts b40711bd
+     * @seeExample bounceSkeletons.ts
+     * @seeExample tagsQuery.ts
+     * @seeExample testThatEntityIsFeatherItem.ts
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -607,8 +607,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnAdultHorse.ts 62d15abc
-     * @seeExample quickFoxLazyDog.ts 617294bf
+     * @seeExample spawnAdultHorse.ts
+     * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
@@ -632,8 +632,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample itemStacks.ts 09ecea65
-     * @seeExample spawnFeatherItem.ts cf3ce5c8
+     * @seeExample itemStacks.ts
+     * @seeExample spawnFeatherItem.ts
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**

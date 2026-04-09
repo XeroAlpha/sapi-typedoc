@@ -5,7 +5,7 @@
  * 
  * A collection of server secrets defined in dedicated server
  * configuration.
- * @seeExample getPlayerProfile.ts 961baee0
+ * @seeExample getPlayerProfile.ts
  */
 export class ServerSecrets {
     private constructor();

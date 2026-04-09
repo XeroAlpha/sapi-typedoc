@@ -5,7 +5,7 @@
  * 
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpHeader {
     /**

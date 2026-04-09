@@ -157,7 +157,7 @@ export declare enum MinecraftBiomeTypes {
     StoneBeach = "minecraft:stone_beach",
     /** 裸岩山峰。 */
     StonyPeaks = "minecraft:stony_peaks",
-    /** Sulfur Caves。 */
+    /** 硫黄洞穴。 */
     SulfurCaves = "minecraft:sulfur_caves",
     /** 向日葵平原。 */
     SunflowerPlains = "minecraft:sunflower_plains",

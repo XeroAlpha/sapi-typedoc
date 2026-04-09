@@ -1,3 +1,4 @@
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
 /* IMPORT */ import { DimensionLocation, PrimitiveShape, RGBA, RawMessage, RawMessageError, Vector3 } from '..';
 
 /**
@@ -59,6 +60,8 @@ export class TextPrimitive extends PrimitiveShape {
      * Sets the text to display.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link RawMessageError}
      */

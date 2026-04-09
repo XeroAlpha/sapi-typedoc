@@ -468,7 +468,7 @@ export declare enum MinecraftItemTypes {
     ChippedAnvil = "minecraft:chipped_anvil",
     /** 雕纹书架。 */
     ChiseledBookshelf = "minecraft:chiseled_bookshelf",
-    /** Chiseled Cinnabar。 */
+    /** 雕纹朱砂。 */
     ChiseledCinnabar = "minecraft:chiseled_cinnabar",
     /** 雕纹铜块。 */
     ChiseledCopper = "minecraft:chiseled_copper",
@@ -488,7 +488,7 @@ export declare enum MinecraftItemTypes {
     ChiseledSandstone = "minecraft:chiseled_sandstone",
     /** 雕纹石砖。 */
     ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
-    /** Chiseled Sulfur。 */
+    /** 雕纹硫黄。 */
     ChiseledSulfur = "minecraft:chiseled_sulfur",
     /** 雕纹凝灰岩。 */
     ChiseledTuff = "minecraft:chiseled_tuff",
@@ -500,21 +500,21 @@ export declare enum MinecraftItemTypes {
     ChorusFruit = "minecraft:chorus_fruit",
     /** 紫颂植株。 */
     ChorusPlant = "minecraft:chorus_plant",
-    /** Cinnabar。 */
+    /** 朱砂。 */
     Cinnabar = "minecraft:cinnabar",
-    /** Cinnabar Brick Slab。 */
+    /** 朱砂砖台阶。 */
     CinnabarBrickSlab = "minecraft:cinnabar_brick_slab",
-    /** Cinnabar Brick Stairs。 */
+    /** 朱砂砖楼梯。 */
     CinnabarBrickStairs = "minecraft:cinnabar_brick_stairs",
-    /** Cinnabar Brick Wall。 */
+    /** 朱砂砖墙。 */
     CinnabarBrickWall = "minecraft:cinnabar_brick_wall",
-    /** Cinnabar Bricks。 */
+    /** 朱砂砖。 */
     CinnabarBricks = "minecraft:cinnabar_bricks",
-    /** Cinnabar Slab。 */
+    /** 朱砂台阶。 */
     CinnabarSlab = "minecraft:cinnabar_slab",
-    /** Cinnabar Stairs。 */
+    /** 朱砂楼梯。 */
     CinnabarStairs = "minecraft:cinnabar_stairs",
-    /** Cinnabar Wall。 */
+    /** 朱砂墙。 */
     CinnabarWall = "minecraft:cinnabar_wall",
     /** 黏土。 */
     Clay = "minecraft:clay",
@@ -2048,13 +2048,13 @@ export declare enum MinecraftItemTypes {
     PolishedBlackstoneStairs = "minecraft:polished_blackstone_stairs",
     /** 磨制黑石墙。 */
     PolishedBlackstoneWall = "minecraft:polished_blackstone_wall",
-    /** Polished Cinnabar。 */
+    /** 磨制朱砂。 */
     PolishedCinnabar = "minecraft:polished_cinnabar",
-    /** Polished Cinnabar Slab。 */
+    /** 磨制朱砂台阶。 */
     PolishedCinnabarSlab = "minecraft:polished_cinnabar_slab",
-    /** Polished Cinnabar Stairs。 */
+    /** 磨制朱砂楼梯。 */
     PolishedCinnabarStairs = "minecraft:polished_cinnabar_stairs",
-    /** Polished Cinnabar Wall。 */
+    /** 磨制朱砂墙。 */
     PolishedCinnabarWall = "minecraft:polished_cinnabar_wall",
     /** 磨制深板岩。 */
     PolishedDeepslate = "minecraft:polished_deepslate",
@@ -2076,13 +2076,13 @@ export declare enum MinecraftItemTypes {
     PolishedGraniteSlab = "minecraft:polished_granite_slab",
     /** 磨制花岗岩楼梯。 */
     PolishedGraniteStairs = "minecraft:polished_granite_stairs",
-    /** Polished Sulfur。 */
+    /** 磨制硫黄。 */
     PolishedSulfur = "minecraft:polished_sulfur",
-    /** Polished Sulfur Slab。 */
+    /** 磨制硫黄台阶。 */
     PolishedSulfurSlab = "minecraft:polished_sulfur_slab",
-    /** Polished Sulfur Stairs。 */
+    /** 磨制硫黄楼梯。 */
     PolishedSulfurStairs = "minecraft:polished_sulfur_stairs",
-    /** Polished Sulfur Wall。 */
+    /** 磨制硫黄墙。 */
     PolishedSulfurWall = "minecraft:polished_sulfur_wall",
     /** 磨制凝灰岩。 */
     PolishedTuff = "minecraft:polished_tuff",
@@ -2100,7 +2100,7 @@ export declare enum MinecraftItemTypes {
     Porkchop = "minecraft:porkchop",
     /** 马铃薯。 */
     Potato = "minecraft:potato",
-    /** Potent Sulfur。 */
+    /** 烈性硫黄。 */
     PotentSulfur = "minecraft:potent_sulfur",
     /** 药水。 */
     Potion = "minecraft:potion",
@@ -2592,25 +2592,25 @@ export declare enum MinecraftItemTypes {
     Sugar = "minecraft:sugar",
     /** 甘蔗。 */
     SugarCane = "minecraft:sugar_cane",
-    /** Sulfur。 */
+    /** 硫黄。 */
     Sulfur = "minecraft:sulfur",
-    /** Sulfur Brick Slab。 */
+    /** 硫黄砖台阶。 */
     SulfurBrickSlab = "minecraft:sulfur_brick_slab",
-    /** Sulfur Brick Stairs。 */
+    /** 硫黄砖楼梯。 */
     SulfurBrickStairs = "minecraft:sulfur_brick_stairs",
-    /** Sulfur Brick Wall。 */
+    /** 硫黄砖墙。 */
     SulfurBrickWall = "minecraft:sulfur_brick_wall",
-    /** Sulfur Bricks。 */
+    /** 硫黄砖。 */
     SulfurBricks = "minecraft:sulfur_bricks",
     /** Bucket of Sulfur Cube。 */
     SulfurCubeBucket = "minecraft:sulfur_cube_bucket",
     /** Sulfur Cube Spawn Egg。 */
     SulfurCubeSpawnEgg = "minecraft:sulfur_cube_spawn_egg",
-    /** Sulfur Slab。 */
+    /** 硫黄台阶。 */
     SulfurSlab = "minecraft:sulfur_slab",
-    /** Sulfur Stairs。 */
+    /** 硫黄楼梯。 */
     SulfurStairs = "minecraft:sulfur_stairs",
-    /** Sulfur Wall。 */
+    /** 硫黄墙。 */
     SulfurWall = "minecraft:sulfur_wall",
     /** 向日葵。 */
     Sunflower = "minecraft:sunflower",

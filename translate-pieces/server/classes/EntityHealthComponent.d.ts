@@ -2,7 +2,7 @@
 
 /**
  * Defines the health properties of an entity.
- * @seeExample applyDamageThenHeal.ts d2478fd7
+ * @seeExample applyDamageThenHeal.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {

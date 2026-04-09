@@ -11,7 +11,7 @@ export class PistonActivateAfterEventSignal {
      *
      * @earlyExecution
      *
-     * @seeExample pistonAfterEvent.ts e5832d1f
+     * @seeExample pistonAfterEvent.ts
      */
     subscribe(callback: (arg0: PistonActivateAfterEvent) => void): (arg0: PistonActivateAfterEvent) => void;
     /**

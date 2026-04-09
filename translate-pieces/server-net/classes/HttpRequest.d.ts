@@ -5,7 +5,7 @@
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
  * 
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpRequest {
     /**

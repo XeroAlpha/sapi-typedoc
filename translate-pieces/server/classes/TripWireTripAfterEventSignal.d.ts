@@ -3,7 +3,7 @@
 /**
  * Manages callbacks that are connected to when a trip wire is
  * tripped.
- * @seeExample tripWireTripEvent.ts f6c56f77
+ * @seeExample tripWireTripEvent.ts
  */
 export class TripWireTripAfterEventSignal {
     private constructor();

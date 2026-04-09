@@ -1,5 +1,5 @@
-import { ItemStack, DimensionLocation } from "@minecraft/server";
-import { MinecraftItemTypes } from "@minecraft/vanilla-data";
+import { ItemStack, DimensionLocation } from '@minecraft/server';
+import { MinecraftItemTypes } from '@minecraft/vanilla-data';
 
 function spawnFeatherItem(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   const featherItem = new ItemStack(MinecraftItemTypes.Feather, 1);

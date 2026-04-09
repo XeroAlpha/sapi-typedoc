@@ -1,5 +1,5 @@
-import { world, BlockPermutation, BlockSignComponent, BlockComponentTypes, DimensionLocation } from "@minecraft/server";
-import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { world, BlockPermutation, BlockSignComponent, BlockComponentTypes, DimensionLocation } from '@minecraft/server';
+import { MinecraftBlockTypes } from '@minecraft/vanilla-data';
 
 function addSign(log: (message: string, status?: number) => void, targetLocation: DimensionLocation) {
   const players = world.getPlayers();
@@ -9,7 +9,7 @@ function addSign(log: (message: string, status?: number) => void, targetLocation
   const signBlock = dim.getBlock(targetLocation);
 
   if (!signBlock) {
-    log("Could not find a block at specified location.");
+    log('Could not find a block at specified location.');
     return -1;
   }
   const signPerm = BlockPermutation.resolve(MinecraftBlockTypes.StandingSign, { ground_sign_direction: 8 });

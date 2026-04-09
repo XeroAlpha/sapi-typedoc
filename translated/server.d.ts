@@ -4547,7 +4547,7 @@ export class Block {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample checkBlockTags.ts b2488549
+     * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
     /**
@@ -5488,7 +5488,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
 /**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
- * @seeExample placeItemsInChest.ts 6137ad40
+ * @seeExample placeItemsInChest.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockInventoryComponent extends BlockComponent {
@@ -5697,7 +5697,7 @@ export class BlockPermutation {
      *
      * @returns
      * Returns `true` if the permutation has the tag, else `false`.
-     * @seeExample checkBlockTags.ts b2488549
+     * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
     /**
@@ -5761,7 +5761,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws This function can throw errors.
-     * @seeExample addBlockColorCube.ts 2583f87e
+     * @seeExample addBlockColorCube.ts
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
@@ -5971,9 +5971,9 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
 
 /**
  * Represents a block that can display text on it.
- * @seeExample addSign.ts 22938108
- * @seeExample addTwoSidedSign.ts 58fdf2fd
- * @seeExample updateSignText.ts 1ea7842e
+ * @seeExample addSign.ts
+ * @seeExample addTwoSidedSign.ts
+ * @seeExample updateSignText.ts
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6321,7 +6321,7 @@ export class BlockVolumeBase {
 
 /**
  * Contains information related to changes to a button push.
- * @seeExample buttonPushEvent.ts 8d15b6b9
+ * @seeExample buttonPushEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ButtonPushAfterEvent extends BlockEvent {
@@ -6337,7 +6337,7 @@ export class ButtonPushAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to when a button is
  * pushed.
- * @seeExample buttonPushEvent.ts 8d15b6b9
+ * @seeExample buttonPushEvent.ts
  */
 export class ButtonPushAfterEventSignal {
     private constructor();
@@ -6597,7 +6597,7 @@ export class ChatSendBeforeEvent {
  * @beta
  * Manages callbacks that are connected to an event that fires
  * before chat messages are sent.
- * @seeExample customCommand.ts e6db613c
+ * @seeExample customCommand.ts
  */
 export class ChatSendBeforeEventSignal {
     private constructor();
@@ -6959,7 +6959,7 @@ export class CompoundBlockVolume {
  * Represents a container that can hold sets of items. Used
  * with entities such as Players, Chest Minecarts, Llamas, and
  * more.
- * @seeExample containers.ts 40af2007
+ * @seeExample containers.ts
  */
 export class Container {
     private constructor();
@@ -7104,7 +7104,7 @@ export class Container {
      * @throws
      * Throws if the container is invalid or if the `slot` index is
      * out of bounds.
-     * @seeExample getFirstHotbarItem.ts 8cb2c1b2
+     * @seeExample getFirstHotbarItem.ts
      */
     getItem(slot: number): ItemStack | undefined;
     /**
@@ -7146,7 +7146,7 @@ export class Container {
      * {@link ContainerRulesError}
      *
      * {@link Error}
-     * @seeExample moveBetweenContainers.ts 144e7153
+     * @seeExample moveBetweenContainers.ts
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
@@ -7220,7 +7220,7 @@ export class Container {
      * {@link ContainerRulesError}
      *
      * {@link Error}
-     * @seeExample transferBetweenContainers.ts 962c2109
+     * @seeExample transferBetweenContainers.ts
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -7903,9 +7903,9 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample createExplosion.ts a92f42ce
-     * @seeExample createNoBlockExplosion.ts cbe151e9
-     * @seeExample createExplosions.ts 2b50c396
+     * @seeExample createExplosion.ts
+     * @seeExample createNoBlockExplosion.ts
+     * @seeExample createExplosions.ts
      */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
@@ -8083,9 +8083,9 @@ export class Dimension {
      * {@link CommandError}
      *
      * {@link InvalidArgumentError}
-     * @seeExample bounceSkeletons.ts 5c3426f6
-     * @seeExample tagsQuery.ts 91eec411
-     * @seeExample testThatEntityIsFeatherItem.ts b40711bd
+     * @seeExample bounceSkeletons.ts
+     * @seeExample tagsQuery.ts
+     * @seeExample testThatEntityIsFeatherItem.ts
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     /**
@@ -8396,8 +8396,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample spawnAdultHorse.ts 62d15abc
-     * @seeExample quickFoxLazyDog.ts 617294bf
+     * @seeExample spawnAdultHorse.ts
+     * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts d45f49d2
      */
     spawnEntity<T = never>(
@@ -8421,8 +8421,8 @@ export class Dimension {
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
-     * @seeExample itemStacks.ts 09ecea65
-     * @seeExample spawnFeatherItem.ts cf3ce5c8
+     * @seeExample itemStacks.ts
+     * @seeExample spawnFeatherItem.ts
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
@@ -8490,26 +8490,67 @@ export class Dimension {
 }
 
 /**
- * Represents a type of dimension.
+ * @beta
+ * Provides the functionality for registering custom
+ * dimensions. Custom dimensions can only be registered during
+ * the system startup event.
+ */
+export class DimensionRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers a new custom dimension type. Must be called during
+     * the system startup event. The dimension will be created
+     * using the void generator.
+     *
+     * @earlyExecution
+     *
+     * @param typeId
+     * The namespaced identifier for the custom dimension (e.g.,
+     * 'mypack:my_dimension'). Must include a namespace and use
+     * only valid identifier characters.
+     * @throws This function can throw errors.
+     *
+     * {@link CustomDimensionAlreadyRegisteredError}
+     *
+     * {@link CustomDimensionInvalidRegistryError}
+     *
+     * {@link CustomDimensionNameError}
+     *
+     * {@link CustomDimensionReloadNewDimensionError}
+     *
+     * {@link EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerCustomDimension(typeId: string): void;
+}
+
+/**
+ * Represents a type of dimension. Currently only works with
+ * Vanilla dimensions.
  */
 export class DimensionType {
     private constructor();
     /**
      * @remarks
-     * Identifier of the dimension type.
+     * Identifier of the dimension type. Currently only works with
+     * Vanilla dimensions.
      *
      */
     readonly typeId: string;
 }
 
 /**
- * Used for accessing all available dimension types.
+ * Used for accessing all available dimension types. Currently
+ * only works with Vanilla dimensions.
  */
 export class DimensionTypes {
     private constructor();
     /**
      * @remarks
      * Retrieves a dimension type using a string-based identifier.
+     * Currently only works with Vanilla dimensions.
      *
      * @earlyExecution
      *
@@ -8517,7 +8558,8 @@ export class DimensionTypes {
     static get(dimensionTypeId: string): DimensionType | undefined;
     /**
      * @remarks
-     * Retrieves an array of all dimension types.
+     * Retrieves an array of all dimension types. Currently only
+     * works with Vanilla dimensions.
      *
      * @earlyExecution
      *
@@ -9079,8 +9121,8 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample spawnPoisonedVillager.ts 1942c817
-     * @seeExample quickFoxLazyDog.ts 617294bf
+     * @seeExample spawnPoisonedVillager.ts
+     * @seeExample quickFoxLazyDog.ts
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
@@ -9121,7 +9163,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
     /**
@@ -9147,7 +9189,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample applyDamageThenHeal.ts d2478fd7
+     * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -9164,7 +9206,7 @@ export class Entity {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts 672b9746
+     * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -9181,7 +9223,7 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample bounceSkeletons.ts 5c3426f6
+     * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
@@ -9203,7 +9245,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample applyImpulse.ts 672b9746
+     * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
     /**
@@ -9223,7 +9265,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts b1b21429
+     * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -9468,7 +9510,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample getFireworkVelocity.ts 117ddc46
+     * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
     /**
@@ -9524,7 +9566,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample tagsQuery.ts 91eec411
+     * @seeExample tagsQuery.ts
      */
     kill(): boolean;
     /**
@@ -9729,7 +9771,7 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     * @seeExample setOnFire.ts b1b21429
+     * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
@@ -9791,8 +9833,8 @@ export class Entity {
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
-     * @seeExample teleport.ts 57750e6a
-     * @seeExample teleportMovement.ts 1ccf37fe
+     * @seeExample teleport.ts
+     * @seeExample teleportMovement.ts
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
@@ -10426,7 +10468,7 @@ export class EntityEnderInventoryComponent extends EntityComponent {
 /**
  * Provides access to a mob's equipment slots. This component
  * exists on player entities.
- * @seeExample givePlayerElytra.ts f0b28fbe
+ * @seeExample givePlayerElytra.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityEquippableComponent extends EntityComponent {
@@ -10813,7 +10855,7 @@ export class EntityHealthChangedAfterEventSignal {
 
 /**
  * Defines the health properties of an entity.
- * @seeExample applyDamageThenHeal.ts d2478fd7
+ * @seeExample applyDamageThenHeal.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityHealthComponent extends EntityAttributeComponent {
@@ -11286,7 +11328,7 @@ export class EntityIsTamedComponent extends EntityComponent {
  * represents a free-floating item in the world. Lets you
  * retrieve the actual item stack contents via the itemStack
  * property.
- * @seeExample testThatEntityIsFeatherItem.ts b40711bd
+ * @seeExample testThatEntityIsFeatherItem.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityItemComponent extends EntityComponent {
@@ -12031,7 +12073,7 @@ export class EntityNpcComponent extends EntityComponent {
 
 /**
  * When present on an entity, this entity is on fire.
- * @seeExample setOnFire.ts b1b21429
+ * @seeExample setOnFire.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityOnFireComponent extends EntityComponent {
@@ -12051,7 +12093,7 @@ export class EntityOnFireComponent extends EntityComponent {
  * direction.
  * This component is present when the entity has the
  * minecraft:projectile component.
- * @seeExample shootArrow.ts 9968daca
+ * @seeExample shootArrow.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityProjectileComponent extends EntityComponent {
@@ -12344,7 +12386,7 @@ export class EntityRemoveBeforeEventSignal {
 /**
  * When added, this component adds the capability that an
  * entity can be ridden by another entity.
- * @seeExample minibiomes.ts cd5a6077
+ * @seeExample minibiomes.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityRideableComponent extends EntityComponent {
@@ -12416,7 +12458,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws This function can throw errors.
-     * @seeExample minibiomes.ts cd5a6077
+     * @seeExample minibiomes.ts
      */
     addRider(rider: Entity): boolean;
     /**
@@ -12528,7 +12570,7 @@ export class EntitySkinIdComponent extends EntityComponent {
 /**
  * Contains data related to an entity spawning within the
  * world.
- * @seeExample logEntitySpawnEvent.ts daa66279
+ * @seeExample logEntitySpawnEvent.ts
  */
 export class EntitySpawnAfterEvent {
     private constructor();
@@ -12565,7 +12607,7 @@ export class EntitySpawnAfterEventSignal {
      *
      * @param callback
      * Function that handles the spawn event.
-     * @seeExample logEntitySpawnEvent.ts daa66279
+     * @seeExample logEntitySpawnEvent.ts
      */
     subscribe(callback: (arg0: EntitySpawnAfterEvent) => void): (arg0: EntitySpawnAfterEvent) => void;
     /**
@@ -14092,7 +14134,7 @@ export class ItemCustomComponentInstance extends ItemComponent {
  * When present on an item, this item can take damage in the
  * process of being used. Note that this component only applies
  * to data-driven items.
- * @seeExample giveHurtDiamondSword.ts 3f613c0d
+ * @seeExample giveHurtDiamondSword.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemDurabilityComponent extends ItemComponent {
@@ -14525,9 +14567,9 @@ export class ItemReleaseUseAfterEventSignal {
 
 /**
  * Defines a collection of items.
- * @seeExample itemStacks.ts 09ecea65
- * @seeExample givePlayerEquipment.ts 30f46c7a
- * @seeExample spawnFeatherItem.ts cf3ce5c8
+ * @seeExample itemStacks.ts
+ * @seeExample givePlayerEquipment.ts
+ * @seeExample spawnFeatherItem.ts
  */
 export class ItemStack {
     /**
@@ -14690,7 +14732,7 @@ export class ItemStack {
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
-     * @seeExample giveHurtDiamondSword.ts 3f613c0d
+     * @seeExample giveHurtDiamondSword.ts
      */
     getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     /**
@@ -14823,7 +14865,7 @@ export class ItemStack {
      * String list of block types that the item can destroy.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample giveDestroyRestrictedPickaxe.ts b2b0cae1
+     * @seeExample giveDestroyRestrictedPickaxe.ts
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
@@ -14839,7 +14881,7 @@ export class ItemStack {
      * String list of block types that the item can be placed on.
      * @throws
      * Throws if any of the provided block identifiers are invalid.
-     * @seeExample givePlaceRestrictedGoldBlock.ts 43e872f6
+     * @seeExample givePlaceRestrictedGoldBlock.ts
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
@@ -14892,7 +14934,7 @@ export class ItemStack {
      * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
-     * @seeExample diamondAwesomeSword.ts 2e4615d5
+     * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;
 }
@@ -15351,7 +15393,7 @@ export class KilledByPlayerOrPetsCondition extends LootItemCondition {
 /**
  * Contains information related to changes to a lever
  * activating or deactivating.
- * @seeExample leverActionEvent.ts d8a28905
+ * @seeExample leverActionEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LeverActionAfterEvent extends BlockEvent {
@@ -15374,7 +15416,7 @@ export class LeverActionAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to lever moves
  * (activates or deactivates).
- * @seeExample leverActionEvent.ts d8a28905
+ * @seeExample leverActionEvent.ts
  */
 export class LeverActionAfterEventSignal {
     private constructor();
@@ -16115,7 +16157,7 @@ export class PassengerOfEntityCondition extends LootItemCondition {
 /**
  * Contains information related to changes to a piston
  * expanding or retracting.
- * @seeExample pistonAfterEvent.ts e5832d1f
+ * @seeExample pistonAfterEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PistonActivateAfterEvent extends BlockEvent {
@@ -16145,7 +16187,7 @@ export class PistonActivateAfterEventSignal {
      *
      * @earlyExecution
      *
-     * @seeExample pistonAfterEvent.ts e5832d1f
+     * @seeExample pistonAfterEvent.ts
      */
     subscribe(callback: (arg0: PistonActivateAfterEvent) => void): (arg0: PistonActivateAfterEvent) => void;
     /**
@@ -16495,7 +16537,7 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
-     * @seeExample playMusicAndSound.ts f4a858c5
+     * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
@@ -16569,11 +16611,11 @@ export class Player extends Entity {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample nestedTranslation.ts 523925c5
-     * @seeExample scoreWildcard.ts 47f51d2e
-     * @seeExample sendBasicMessage.ts a7fd7ecd
-     * @seeExample sendPlayerMessages.ts 8b411473
-     * @seeExample sendTranslatedMessage.ts 30056ae1
+     * @seeExample nestedTranslation.ts
+     * @seeExample scoreWildcard.ts
+     * @seeExample sendBasicMessage.ts
+     * @seeExample sendPlayerMessages.ts
+     * @seeExample sendTranslatedMessage.ts
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -18940,7 +18982,7 @@ export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
  * 表示记分板。其上包含了记分项和分数持有者。
  * 
  * Contains objectives and participants for the scoreboard.
- * @seeExample updateScoreboard.ts c7a7d6fc
+ * @seeExample updateScoreboard.ts
  */
 export class Scoreboard {
     private constructor();
@@ -18956,7 +18998,7 @@ export class Scoreboard {
      * @returns 创建的记分项对象。
      * @throws
      * 若同名记分项已存在时，抛出 `"Failed to add objective 'objectiveId' as it is already being tracked"`。
-     * @seeExample updateScoreboard.ts c7a7d6fc
+     * @seeExample updateScoreboard.ts
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
@@ -19249,9 +19291,9 @@ export class ScoreboardScoreInfo {
 /**
  * Contains information about user interface elements that are
  * showing up on the screen.
- * @seeExample setTitle.ts 2a77800d
- * @seeExample setTitleAndSubtitle.ts 84ed9c15
- * @seeExample countdown.ts e3a9c777
+ * @seeExample setTitle.ts
+ * @seeExample setTitleAndSubtitle.ts
+ * @seeExample countdown.ts
  */
 export class ScreenDisplay {
     private constructor();
@@ -19347,9 +19389,9 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample setTitle.ts 2a77800d
-     * @seeExample setTitleAndSubtitle.ts 84ed9c15
-     * @seeExample countdown.ts e3a9c777
+     * @seeExample setTitle.ts
+     * @seeExample setTitleAndSubtitle.ts
+     * @seeExample countdown.ts
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
@@ -19364,7 +19406,7 @@ export class ScreenDisplay {
      * {@link InvalidEntityError}
      *
      * {@link RawMessageError}
-     * @seeExample countdown.ts e3a9c777
+     * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }
@@ -19859,6 +19901,13 @@ export class StartupEvent {
      */
     readonly customCommandRegistry: CustomCommandRegistry;
     /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly dimensionRegistry: DimensionRegistry;
+    /**
      * @remarks
      * @earlyExecution
      *
@@ -20333,7 +20382,7 @@ export class System {
      * @returns
      * An opaque identifier that can be used with the `clearRun`
      * function to cancel the execution of this run.
-     * @seeExample trapTick.ts 2706558d
+     * @seeExample trapTick.ts
      */
     run(callback: () => void): number;
     /**
@@ -20350,7 +20399,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with the clearRun method
      * to stop the run of this function on an interval.
-     * @seeExample every30Seconds.ts 185d1e47
+     * @seeExample every30Seconds.ts
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
@@ -20366,7 +20415,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with {@link
      * System.clearJob} to stop the run of this generator.
-     * @seeExample cubeGenerator.ts 028da329
+     * @seeExample cubeGenerator.ts
      */
     runJob(generator: Generator<void, void, void>): number;
     /**
@@ -20616,6 +20665,8 @@ export class TextPrimitive extends PrimitiveShape {
      *
      * @throws This function can throw errors.
      *
+     * {@link ArgumentOutOfBoundsError}
+     *
      * {@link RawMessageError}
      */
     setText(text: RawMessage | string): void;
@@ -20744,7 +20795,7 @@ export class Trigger {
 
 /**
  * Contains information related to changes to a trip wire trip.
- * @seeExample tripWireTripEvent.ts f6c56f77
+ * @seeExample tripWireTripEvent.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class TripWireTripAfterEvent extends BlockEvent {
@@ -20766,7 +20817,7 @@ export class TripWireTripAfterEvent extends BlockEvent {
 /**
  * Manages callbacks that are connected to when a trip wire is
  * tripped.
- * @seeExample tripWireTripEvent.ts f6c56f77
+ * @seeExample tripWireTripEvent.ts
  */
 export class TripWireTripAfterEventSignal {
     private constructor();
@@ -21094,7 +21145,7 @@ export class World {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts e6db613c
+     * @seeExample customCommand.ts
      */
     readonly beforeEvents: WorldBeforeEvents;
     /**
@@ -21259,8 +21310,8 @@ export class World {
      * 
      * Throws if the given dynamic property identifier is not
      * defined.
-     * @seeExample incrementDynamicProperty.ts 85c637c4
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -21370,7 +21421,7 @@ export class World {
      * @throws This function can throw errors.
      *
      * {@link PropertyOutOfBoundsError}
-     * @seeExample playMusicAndSound.ts f4a858c5
+     * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -21493,8 +21544,8 @@ export class World {
      * defined.
      *
      * {@link ArgumentOutOfBoundsError}
-     * @seeExample incrementDynamicProperty.ts 85c637c4
-     * @seeExample incrementDynamicPropertyInJsonBlob.ts 5afad3b2
+     * @seeExample incrementDynamicProperty.ts
+     * @seeExample incrementDynamicPropertyInJsonBlob.ts
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -22042,7 +22093,7 @@ export class WorldBeforeEvents {
      *
      * @earlyExecution
      *
-     * @seeExample customCommand.ts e6db613c
+     * @seeExample customCommand.ts
      */
     readonly chatSend: ChatSendBeforeEventSignal;
     /**
@@ -23419,14 +23470,14 @@ export interface EntityItemPickupEventOptions {
 
 /**
  * Contains options for selecting entities within an area.
- * @seeExample blockConditional.ts d0766e96
- * @seeExample findEntitiesHavingPropertyEqualsTo.ts 8320fecc
- * @seeExample playSoundChained.ts 92b093e0
- * @seeExample setScoreboardChained.ts b345c5c1
- * @seeExample summonMobChained.ts 1d5a375b
- * @seeExample bounceSkeletons.ts 5c3426f6
- * @seeExample tagsQuery.ts 91eec411
- * @seeExample testThatEntityIsFeatherItem.ts b40711bd
+ * @seeExample blockConditional.ts
+ * @seeExample findEntitiesHavingPropertyEqualsTo.ts
+ * @seeExample playSoundChained.ts
+ * @seeExample setScoreboardChained.ts
+ * @seeExample summonMobChained.ts
+ * @seeExample bounceSkeletons.ts
+ * @seeExample tagsQuery.ts
+ * @seeExample testThatEntityIsFeatherItem.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface EntityQueryOptions extends EntityFilter {
@@ -23627,8 +23678,8 @@ export interface EqualsComparison {
 /**
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
- * @seeExample createNoBlockExplosion.ts cbe151e9
- * @seeExample createExplosions.ts 2b50c396
+ * @seeExample createNoBlockExplosion.ts
+ * @seeExample createExplosions.ts
  */
 export interface ExplosionOptions {
     /**
@@ -24226,7 +24277,7 @@ export interface RangeComparison {
 /**
  * Defines a JSON structure that is used for more flexible.
  * @seeExample addTranslatedSign.ts c0399cc7
- * @seeExample showTranslatedMessageForm.ts 15e7891e
+ * @seeExample showTranslatedMessageForm.ts
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export interface RawMessage {
@@ -24554,8 +24605,8 @@ export interface StructurePlaceOptions {
 
 /**
  * Contains additional options for teleporting an entity.
- * @seeExample teleport.ts 57750e6a
- * @seeExample teleportMovement.ts 1ccf37fe
+ * @seeExample teleport.ts
+ * @seeExample teleportMovement.ts
  */
 export interface TeleportOptions {
     /**
@@ -24929,6 +24980,48 @@ export class CustomComponentNameError extends Error {
      *
      */
     readonly reason: CustomComponentNameErrorReason;
+}
+
+/**
+ * @beta
+ * Thrown when trying to register a custom dimension with a
+ * name that has already been registered.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomDimensionAlreadyRegisteredError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when trying to register a custom dimension outside of
+ * the system startup event.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomDimensionInvalidRegistryError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when trying to register a custom dimension with a
+ * name that contains invalid characters.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomDimensionNameError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown after using the /reload command when trying to
+ * register a custom dimension that was not previously
+ * registered. New custom dimensions cannot be added during a
+ * reload.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CustomDimensionReloadNewDimensionError extends Error {
+    private constructor();
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes

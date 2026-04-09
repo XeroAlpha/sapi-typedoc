@@ -87,7 +87,7 @@ export class System {
      * @returns
      * An opaque identifier that can be used with the `clearRun`
      * function to cancel the execution of this run.
-     * @seeExample trapTick.ts 2706558d
+     * @seeExample trapTick.ts
      */
     run(callback: () => void): number;
     /**
@@ -104,7 +104,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with the clearRun method
      * to stop the run of this function on an interval.
-     * @seeExample every30Seconds.ts 185d1e47
+     * @seeExample every30Seconds.ts
      */
     runInterval(callback: () => void, tickInterval?: number): number;
     /**
@@ -120,7 +120,7 @@ export class System {
      * @returns
      * An opaque handle that can be used with {@link
      * System.clearJob} to stop the run of this generator.
-     * @seeExample cubeGenerator.ts 028da329
+     * @seeExample cubeGenerator.ts
      */
     runJob(generator: Generator<void, void, void>): number;
     /**

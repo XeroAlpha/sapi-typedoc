@@ -1018,7 +1018,7 @@ export class CloseAfterEventSignal {
 }
 
 /**
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpClient {
     private constructor();
@@ -1067,7 +1067,7 @@ export class HttpClient {
      * 解析到对应响应的 Promise。
      * 
      * An awaitable promise that contains the HTTP response.
-     * @seeExample simpleHttpRequest.ts d480eb0e
+     * @seeExample simpleHttpRequest.ts
      */
     request(config: HttpRequest): Promise<HttpResponse>;
 }
@@ -1077,7 +1077,7 @@ export class HttpClient {
  * 
  * Represents an HTTP header - a key/value pair of
  * meta-information about a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpHeader {
     /**
@@ -1107,7 +1107,7 @@ export class HttpHeader {
  * 包含构成 HTTP 请求所需的参数。主要用于发起请求。
  * 
  * Main object for structuring a request.
- * @seeExample simpleHttpRequest.ts d480eb0e
+ * @seeExample simpleHttpRequest.ts
  */
 export class HttpRequest {
     /**

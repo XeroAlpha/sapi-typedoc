@@ -1,7 +1,7 @@
-import { system, BlockPermutation, DimensionLocation } from "@minecraft/server";
+import { system, BlockPermutation, DimensionLocation } from '@minecraft/server';
 
 function cubeGenerator(targetLocation: DimensionLocation) {
-  const blockPerm = BlockPermutation.resolve("minecraft:cobblestone");
+  const blockPerm = BlockPermutation.resolve('minecraft:cobblestone');
 
   system.runJob(blockPlacingGenerator(blockPerm, targetLocation, 15));
 }

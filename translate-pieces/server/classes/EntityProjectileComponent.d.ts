@@ -6,7 +6,7 @@
  * direction.
  * This component is present when the entity has the
  * minecraft:projectile component.
- * @seeExample shootArrow.ts 9968daca
+ * @seeExample shootArrow.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityProjectileComponent extends EntityComponent {

@@ -3,8 +3,8 @@
 /**
  * Additional configuration options for the {@link
  * Dimension.createExplosion} method.
- * @seeExample createNoBlockExplosion.ts cbe151e9
- * @seeExample createExplosions.ts 2b50c396
+ * @seeExample createNoBlockExplosion.ts
+ * @seeExample createExplosions.ts
  */
 export interface ExplosionOptions {
     /**
