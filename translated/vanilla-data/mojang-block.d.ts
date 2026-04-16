@@ -408,7 +408,7 @@ export declare enum MinecraftBlockTypes {
     ChorusPlant = "minecraft:chorus_plant",
     /** 朱砂。 */
     Cinnabar = "minecraft:cinnabar",
-    /** Cinnabar Brick Double Slab。 */
+    /** 朱砂砖双层台阶。 */
     CinnabarBrickDoubleSlab = "minecraft:cinnabar_brick_double_slab",
     /** 朱砂砖台阶。 */
     CinnabarBrickSlab = "minecraft:cinnabar_brick_slab",
@@ -418,7 +418,7 @@ export declare enum MinecraftBlockTypes {
     CinnabarBrickWall = "minecraft:cinnabar_brick_wall",
     /** 朱砂砖。 */
     CinnabarBricks = "minecraft:cinnabar_bricks",
-    /** Cinnabar Double Slab。 */
+    /** 朱砂双层台阶。 */
     CinnabarDoubleSlab = "minecraft:cinnabar_double_slab",
     /** 朱砂台阶。 */
     CinnabarSlab = "minecraft:cinnabar_slab",
@@ -1856,7 +1856,7 @@ export declare enum MinecraftBlockTypes {
     PolishedBlackstoneWall = "minecraft:polished_blackstone_wall",
     /** 磨制朱砂。 */
     PolishedCinnabar = "minecraft:polished_cinnabar",
-    /** Polished Cinnabar Double Slab。 */
+    /** 磨制朱砂双层台阶。 */
     PolishedCinnabarDoubleSlab = "minecraft:polished_cinnabar_double_slab",
     /** 磨制朱砂台阶。 */
     PolishedCinnabarSlab = "minecraft:polished_cinnabar_slab",
@@ -1892,7 +1892,7 @@ export declare enum MinecraftBlockTypes {
     PolishedGraniteStairs = "minecraft:polished_granite_stairs",
     /** 磨制硫黄。 */
     PolishedSulfur = "minecraft:polished_sulfur",
-    /** Polished Sulfur Double Slab。 */
+    /** 磨制硫黄双层台阶。 */
     PolishedSulfurDoubleSlab = "minecraft:polished_sulfur_double_slab",
     /** 磨制硫黄台阶。 */
     PolishedSulfurSlab = "minecraft:polished_sulfur_slab",
@@ -2304,7 +2304,7 @@ export declare enum MinecraftBlockTypes {
     StructureVoid = "minecraft:structure_void",
     /** 硫黄。 */
     Sulfur = "minecraft:sulfur",
-    /** Sulfur Brick Double Slab。 */
+    /** 硫黄砖双层台阶。 */
     SulfurBrickDoubleSlab = "minecraft:sulfur_brick_double_slab",
     /** 硫黄砖台阶。 */
     SulfurBrickSlab = "minecraft:sulfur_brick_slab",
@@ -2314,7 +2314,7 @@ export declare enum MinecraftBlockTypes {
     SulfurBrickWall = "minecraft:sulfur_brick_wall",
     /** 硫黄砖。 */
     SulfurBricks = "minecraft:sulfur_bricks",
-    /** Sulfur Double Slab。 */
+    /** 硫黄双层台阶。 */
     SulfurDoubleSlab = "minecraft:sulfur_double_slab",
     /** 硫黄台阶。 */
     SulfurSlab = "minecraft:sulfur_slab",
