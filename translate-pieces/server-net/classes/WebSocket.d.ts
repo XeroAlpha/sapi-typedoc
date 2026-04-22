@@ -1,4 +1,4 @@
-/* IMPORT */ import { WebSocketClient } from '..';
+/* IMPORT */ import { HttpHeader, WebSocketClient } from '..';
 
 /**
  * Used to manage WebSocket connections.
@@ -17,5 +17,5 @@ export class WebSocket {
      * An awaitable promise that contains the WebSocket client that
      * was connected.
      */
-    connect(uri: string): Promise<WebSocketClient>;
+    connect(uri: string, headers?: HttpHeader[]): Promise<WebSocketClient>;
 }

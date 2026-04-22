@@ -119,10 +119,6 @@ export enum GameRule {
      */
     KeepInventory = 'keepInventory',
     /**
-     * @beta
-     */
-    LocatorBar = 'locatorBar',
-    /**
      * @remarks
      * The maximum number of chained commands that can execute per
      * tick.
@@ -149,6 +145,14 @@ export enum GameRule {
      *
      */
     PlayersSleepingPercentage = 'playersSleepingPercentage',
+    /**
+     * @beta
+     * @remarks
+     * Controls which player waypoints are automatically added to
+     * the players locator bar.
+     *
+     */
+    PlayerWaypoints = 'playerWaypoints',
     /**
      * @remarks
      * Controls whether projectiles (entities with a projectile

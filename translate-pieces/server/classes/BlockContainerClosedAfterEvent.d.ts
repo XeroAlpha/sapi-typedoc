@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockEvent, ContainerAccessSource } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific container block
  * being closed.
  */

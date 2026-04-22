@@ -1,3 +1,5 @@
+/* IMPORT */ import { HttpStatusCode } from '..';
+
 /**
  * An error thrown when the connection with the WebSocket
  * server has failed.
@@ -13,7 +15,7 @@ export class WebSocketConnectionFailedError extends Error {
      * @earlyExecution
      *
      */
-    readonly errorCode: number;
+    readonly errorCode: HttpStatusCode;
     /**
      * @remarks
      * The URI provided to make this connection attempt that

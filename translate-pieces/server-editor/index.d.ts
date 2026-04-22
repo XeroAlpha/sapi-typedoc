@@ -42,6 +42,7 @@ export { ListPaneViewSortType } from './enums/ListPaneViewSortType';
 export { ListViewControlFilterFlags } from './enums/ListViewControlFilterFlags';
 export { LogChannel } from './enums/LogChannel';
 export { MinimapMarkerType } from './enums/MinimapMarkerType';
+export { MinimapTrackingMode } from './enums/MinimapTrackingMode';
 export { MinimapViewType } from './enums/MinimapViewType';
 export { ModalDialogResponseType } from './enums/ModalDialogResponseType';
 export { ModalDialogType } from './enums/ModalDialogType';
@@ -364,6 +365,8 @@ export { IVector3TimelinePropertyItemEntry } from './interfaces/IVector3Timeline
 export { IVector3TimelinePropertyItemOptions } from './interfaces/IVector3TimelinePropertyItemOptions';
 export { LocalizationEntry } from './interfaces/LocalizationEntry';
 export { LogProperties } from './interfaces/LogProperties';
+export { MinimapCreateOptions } from './interfaces/MinimapCreateOptions';
+export { MinimapMarkerData } from './interfaces/MinimapMarkerData';
 export { ModalDialogCreationParams } from './interfaces/ModalDialogCreationParams';
 export { ModalToolCreationParameters } from './interfaces/ModalToolCreationParameters';
 export { ProjectExportOptions } from './interfaces/ProjectExportOptions';

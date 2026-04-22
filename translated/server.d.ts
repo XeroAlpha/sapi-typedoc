@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.8.0-beta"
+ *   "version": "2.9.0-beta"
  * }
  * ```
  *
@@ -837,7 +837,7 @@ export enum EntityComponentTypes {
     Color2 = 'minecraft:color2',
     CursorInventory = 'minecraft:cursor_inventory',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Represents this entity's ender inventory properties.
      *
@@ -1867,10 +1867,6 @@ export enum GameRule {
      */
     KeepInventory = 'keepInventory',
     /**
-     * @beta
-     */
-    LocatorBar = 'locatorBar',
-    /**
      * @remarks
      * The maximum number of chained commands that can execute per
      * tick.
@@ -1897,6 +1893,14 @@ export enum GameRule {
      *
      */
     PlayersSleepingPercentage = 'playersSleepingPercentage',
+    /**
+     * @beta
+     * @remarks
+     * Controls which player waypoints are automatically added to
+     * the players locator bar.
+     *
+     */
+    PlayerWaypoints = 'playerWaypoints',
     /**
      * @remarks
      * Controls whether projectiles (entities with a projectile
@@ -2685,6 +2689,14 @@ export enum PlayerPermissionLevel {
      */
     Operator = 2,
     Custom = 3,
+}
+
+/**
+ * @beta
+ */
+export enum PlayerWaypointsMode {
+    Everyone = 'Everyone',
+    Off = 'Off',
 }
 
 /**
@@ -5035,7 +5047,7 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific container block
  * being closed.
  */
@@ -5053,7 +5065,7 @@ export class BlockContainerClosedAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a block
  * container is closed.
  */
@@ -5087,7 +5099,7 @@ export class BlockContainerClosedAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific container block
  * being opened.
  */
@@ -5105,7 +5117,7 @@ export class BlockContainerOpenedAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a block
  * container is opened.
  */
@@ -6436,7 +6448,7 @@ export class ChatSendBeforeEventSignal {
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * The locale selected by the client (e.g., en_US, fr_FR,
      * ja_JP). Note that in most cases, server scripts should not
@@ -10048,7 +10060,7 @@ export class EntityComponent extends Component {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific entity container
  * being closed.
  */
@@ -10064,7 +10076,7 @@ export class EntityContainerClosedAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity
  * container is closed.
  */
@@ -10098,7 +10110,7 @@ export class EntityContainerClosedAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific entity container
  * being opened.
  */
@@ -10114,7 +10126,7 @@ export class EntityContainerOpenedAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity
  * container is opened.
  */
@@ -10241,7 +10253,7 @@ export class EntityDieAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Represents this entity's ender inventory properties. This
  * component is always present on players and any items in its
  * container will display for the player when they access an
@@ -12627,6 +12639,68 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
 }
 
 /**
+ * @beta
+ * Contains information related to firing of a data driven
+ * entity version upgrade.
+ */
+export class EntityUpgradeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Entity that the upgrade triggered on.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * Name of the data driven upgrade being triggered.
+     *
+     */
+    readonly upgradeId: string;
+    /**
+     * @remarks
+     * An updateable list of modifications to component state that
+     * are the effect of this triggered upgrade.
+     *
+     */
+    getModifiers(): DefinitionModifier[];
+}
+
+/**
+ * @beta
+ * Contains event registration related to firing of a data
+ * driven entity version upgrade.
+ */
+export class EntityUpgradeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called after a data driven
+     * entity version upgrade is triggered.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityUpgradeAfterEvent) => void,
+        options?: EntityDataDrivenTriggerEventOptions,
+    ): (arg0: EntityUpgradeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback that will be called after a data driven
+     * entity version upgrade is triggered.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityUpgradeAfterEvent) => void): void;
+}
+
+/**
  * Used to differentiate the component group of a variant of an
  * entity from others. (e.g. ocelot, villager).
  */
@@ -13119,13 +13193,6 @@ export class GameRules {
      */
     keepInventory: boolean;
     /**
-     * @beta
-     * @remarks
-     * @worldMutation
-     *
-     */
-    locatorBar: boolean;
-    /**
      * @remarks
      * @worldMutation
      *
@@ -13149,6 +13216,13 @@ export class GameRules {
      *
      */
     playersSleepingPercentage: number;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    playerWaypoints: PlayerWaypointsMode;
     /**
      * @remarks
      * @worldMutation
@@ -15249,9 +15323,9 @@ export class LocationWaypoint extends Waypoint {
  *
  * Note: You can control whether vanilla player waypoints are
  * automatically added to the locator bar using the
- * `locatorbar` {@link GameRule}. This game rule is currently
- * named `locatorbar` but will likely be renamed in a future
- * update to be more descriptive.
+ * `playerWaypoints` {@link GameRule}. Accepted values are
+ * `off` (players are not shown on the locator bar) and
+ * `everyone` (all players are visible on the locator bar).
  *
  * Note: You can only modify, remove, or query waypoints that
  * were added by this pack.
@@ -16105,6 +16179,18 @@ export class Player extends Entity {
      */
     readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
+     * @beta
+     * @remarks
+     * Gets the player's Playfab ID.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playfabId: string;
+    /**
      * @remarks
      * @worldMutation
      *
@@ -16218,6 +16304,22 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getItemCooldown(cooldownCategory: string): number;
+    /**
+     * @beta
+     * @remarks
+     * Gets the player's ping in milliseconds.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The player's ping in milliseconds.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getPing(): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.
@@ -19800,7 +19902,7 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a list of all structures contained in behavior
      * packs. Does not include structures saved to the world or in
@@ -21153,7 +21255,7 @@ export class World {
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a block container is closed.
      *
@@ -21162,7 +21264,7 @@ export class WorldAfterEvents {
      */
     readonly blockContainerClosed: BlockContainerClosedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a block container is opened.
      *
@@ -21218,7 +21320,7 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity container is closed.
      *
@@ -21227,7 +21329,7 @@ export class WorldAfterEvents {
      */
     readonly entityContainerClosed: EntityContainerClosedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity container is opened.
      *
@@ -21324,6 +21426,13 @@ export class WorldAfterEvents {
      *
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly entityUpgrade: EntityUpgradeAfterEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.
@@ -21892,7 +22001,7 @@ export interface BlockBoundingBox {
 }
 
 /**
- * @beta
+ * @rc
  * Options used to filter block container access events.
  */
 export interface BlockContainerAccessEventOptions {
@@ -22350,7 +22459,7 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the source of a container access.
  */
 export interface ContainerAccessSource {
@@ -22363,7 +22472,7 @@ export interface ContainerAccessSource {
 }
 
 /**
- * @beta
+ * @rc
  * Options for use when filtering container access sources.
  */
 export interface ContainerAccessSourceFilter {
@@ -22667,7 +22776,7 @@ export interface EntityApplyDamageOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options used to filter entity container access events.
  */
 export interface EntityContainerAccessEventOptions {

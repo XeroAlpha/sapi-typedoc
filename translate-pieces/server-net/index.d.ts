@@ -1,5 +1,7 @@
 export { HttpRequestMethod } from './enums/HttpRequestMethod';
+export { HttpStatusCode } from './enums/HttpStatusCode';
 export { PacketId } from './enums/PacketId';
+export { WebSocketClientCloseReasons } from './enums/WebSocketClientCloseReasons';
 export { CloseAfterEventSignal } from './classes/CloseAfterEventSignal';
 export { HttpClient } from './classes/HttpClient';
 export { HttpHeader } from './classes/HttpHeader';

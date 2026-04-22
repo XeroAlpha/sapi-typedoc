@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, TargetBlockHitAfterEventSignal, TripWireTripAfterEventSignal, WeatherChangeAfterEventSignal, WorldLoadAfterEventSignal } from '..';
+/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, EntityUpgradeAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, TargetBlockHitAfterEventSignal, TripWireTripAfterEventSignal, WeatherChangeAfterEventSignal, WorldLoadAfterEventSignal } from '..';
 
 /**
  * Contains a set of events that are available across the scope
@@ -7,7 +7,7 @@
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a block container is closed.
      *
@@ -16,7 +16,7 @@ export class WorldAfterEvents {
      */
     readonly blockContainerClosed: BlockContainerClosedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a block container is opened.
      *
@@ -72,7 +72,7 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity container is closed.
      *
@@ -81,7 +81,7 @@ export class WorldAfterEvents {
      */
     readonly entityContainerClosed: EntityContainerClosedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity container is opened.
      *
@@ -178,6 +178,13 @@ export class WorldAfterEvents {
      *
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly entityUpgrade: EntityUpgradeAfterEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.

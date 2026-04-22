@@ -1,5 +1,5 @@
 /* IMPORT */ import { BiomeType, RGB } from '../../server';
-/* IMPORT */ import { MinimapItem, MinimapViewType } from '..';
+/* IMPORT */ import { MinimapCreateOptions, MinimapItem, MinimapViewType } from '..';
 
 /**
  * Manage minimap instances within the editor, providing
@@ -18,7 +18,12 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number, dataId?: string): MinimapItem;
+    createMinimap(
+        viewType: MinimapViewType,
+        mapWidth: number,
+        mapHeight: number,
+        options?: MinimapCreateOptions,
+    ): MinimapItem;
     /**
      * @remarks
      * Remove an existing minimap instance from the manager using

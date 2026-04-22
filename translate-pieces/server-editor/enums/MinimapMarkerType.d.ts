@@ -5,4 +5,6 @@ export enum MinimapMarkerType {
      *
      */
     Multiplayer = 0,
+    Location = 1,
+    Custom = 2,
 }

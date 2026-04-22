@@ -13,9 +13,9 @@
  *
  * Note: You can control whether vanilla player waypoints are
  * automatically added to the locator bar using the
- * `locatorbar` {@link GameRule}. This game rule is currently
- * named `locatorbar` but will likely be renamed in a future
- * update to be more descriptive.
+ * `playerWaypoints` {@link GameRule}. Accepted values are
+ * `off` (players are not shown on the locator bar) and
+ * `everyone` (all players are visible on the locator bar).
  *
  * Note: You can only modify, remove, or query waypoints that
  * were added by this pack.

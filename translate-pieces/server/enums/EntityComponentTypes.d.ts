@@ -65,7 +65,7 @@ export enum EntityComponentTypes {
     Color2 = 'minecraft:color2',
     CursorInventory = 'minecraft:cursor_inventory',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Represents this entity's ender inventory properties.
      *
