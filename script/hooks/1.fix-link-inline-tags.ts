@@ -53,6 +53,9 @@ export default {
                 const bestMatchReflections = foundReflections.filter((e) => e[0] <= bestMatchReflection[0]);
                 if (bestMatchReflections.length >= 2) {
                     console.warn(`Multiple resolutions of link in ${path}: ${part.text}`);
+                    for (const matchRefl of bestMatchReflections) {
+                        console.warn(`- ${matchRefl[2]}`);
+                    }
                 }
                 part.target = bestMatchReflection[1];
             }

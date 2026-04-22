@@ -119,6 +119,21 @@ patches.push(({ project }) => {
     mathDts.replaceWithText(outputLines.join('\n'));
 });
 
+patches.push(({ project }) => {
+    const serverDts = project.getSourceFileOrThrow('server.d.ts');
+    const CustomCommandParamTypeEnum = serverDts.getEnumOrThrow('CustomCommandParamType');
+    const LocationMember = CustomCommandParamTypeEnum.getMemberOrThrow('Location');
+    const LocationJsDoc = LocationMember.getFirstChildByKindOrThrow(SyntaxKind.JSDoc);
+    const LocationText = LocationJsDoc.getText(true);
+    assert(LocationText.includes('@minecraft/server.Location'));
+    serverDts.applyTextChanges([
+        {
+            span: { start: LocationJsDoc.getStart(), length: LocationJsDoc.getEnd() - LocationJsDoc.getStart() },
+            newText: LocationText.replace('@minecraft/server.Location', '@minecraft/server.Vector3')
+        }
+    ]);
+});
+
 const errors: unknown[] = [];
 export default {
     afterLoad(context) {
