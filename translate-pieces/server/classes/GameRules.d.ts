@@ -1,3 +1,5 @@
+/* IMPORT */ import { PlayerWaypointsMode } from '..';
+
 /**
  * Represents the game rules for a world experience.
  */
@@ -112,13 +114,6 @@ export class GameRules {
      */
     keepInventory: boolean;
     /**
-     * @beta
-     * @remarks
-     * @worldMutation
-     *
-     */
-    locatorBar: boolean;
-    /**
      * @remarks
      * @worldMutation
      *
@@ -142,6 +137,13 @@ export class GameRules {
      *
      */
     playersSleepingPercentage: number;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     */
+    playerWaypoints: PlayerWaypointsMode;
     /**
      * @remarks
      * @worldMutation

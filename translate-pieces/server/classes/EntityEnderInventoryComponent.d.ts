@@ -1,7 +1,7 @@
 /* IMPORT */ import { Container, EntityComponent, InvalidEntityError } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents this entity's ender inventory properties. This
  * component is always present on players and any items in its
  * container will display for the player when they access an

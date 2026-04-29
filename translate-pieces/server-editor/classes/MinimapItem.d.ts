@@ -1,5 +1,5 @@
-/* IMPORT */ import { RGBA } from '../../server';
-/* IMPORT */ import { MinimapMarkerType, MinimapViewType } from '..';
+/* IMPORT */ import { RGBA, VectorXZ } from '../../server';
+/* IMPORT */ import { MinimapMarkerData, MinimapMarkerType, MinimapTrackingMode, MinimapViewType } from '..';
 
 /**
  * A MinimapItem represents an individual minimap instance that
@@ -8,6 +8,7 @@
  */
 export class MinimapItem {
     private constructor();
+    readonly freeCenter: VectorXZ;
     readonly id: string;
     /**
      * @remarks
@@ -16,16 +17,29 @@ export class MinimapItem {
      *
      */
     readonly isActive: boolean;
+    readonly yLevel: number;
     /**
      * @remarks
-     * Add a visual marker of the specified type to the minimap
-     * display.
-     *
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    addMarker(markerType: MinimapMarkerType): void;
+    addCustomMarker(iconIdentifier: string, data: MinimapMarkerData[], dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addLocationMarker(data: MinimapMarkerData[], dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addMultiplayerMarker(): void;
+    getMarkerTypes(): MinimapMarkerType[];
     /**
      * @remarks
      * Retrieve the color assigned to a specific player on the
@@ -34,16 +48,36 @@ export class MinimapItem {
      * @throws This function can throw errors.
      */
     getPlayerColor(playerId: string): RGBA;
+    hasCustomGroup(iconIdentifier: string): boolean;
+    hasMarkerOfType(type: MinimapMarkerType): boolean;
     /**
      * @remarks
-     * Remove a previously added marker of the specified type from
-     * the minimap.
-     *
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    removeMarker(markerType: MinimapMarkerType): void;
+    removeAllCustomMarkers(dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeCustomMarker(iconIdentifier: string, dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeLocationMarker(dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeMultiplayerMarker(): void;
     /**
      * @remarks
      * Control whether the minimap is currently active and visible
@@ -56,6 +90,13 @@ export class MinimapItem {
     setActive(active: boolean): void;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setFreeCenter(center: VectorXZ): void;
+    /**
+     * @remarks
      * Adjust the width and height dimensions of the minimap
      * display.
      *
@@ -66,6 +107,13 @@ export class MinimapItem {
     setSize(mapWidth: number, mapHeight: number): void;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setTrackingMode(mode: MinimapTrackingMode): void;
+    /**
+     * @remarks
      * Change the visual perspective or style of the minimap view.
      *
      * @worldMutation
@@ -73,4 +121,11 @@ export class MinimapItem {
      * @throws This function can throw errors.
      */
     setViewType(viewType: MinimapViewType): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setYLevel(yLevel: number): void;
 }

@@ -25,26 +25,28 @@ export interface IMinimapPropertyItem extends IPropertyItemBase {
     readonly mapImageWidth: number;
     /**
      * @remarks
-     * Adds a marker to the minimap.
+     * Get visibility for a specific marker type.
      *
-     * @param markerType
-     * The type of marker to add.
+     * @param type
+     * The marker type to query.
      */
-    assignMarker(markerType: MinimapMarkerType): void;
+    isMarkerTypeVisible(type: MinimapMarkerType): boolean;
     /**
      * @remarks
-     * Refreshes the map.
+     * Get me marker visibility.
      *
      */
-    refreshMap(): void;
+    isMeMarkerShown(): boolean;
     /**
      * @remarks
-     * Removes a marker from the minimap.
+     * Register a custom marker icon for UI rendering.
      *
-     * @param markerType
-     * The type of marker to remove.
+     * @param iconIdentifier
+     * The iconIdentifier string.
+     * @param imagePath
+     * The image resource path.
      */
-    removeMarker(markerType: MinimapMarkerType): void;
+    registerCustomMarkerIcon(iconIdentifier: string, imagePath: string): void;
     /**
      * @remarks
      * Updates the size of the map image.
@@ -55,4 +57,28 @@ export interface IMinimapPropertyItem extends IPropertyItemBase {
      * New height of the image.
      */
     resizeMapImage(width: number, height: number): void;
+    /**
+     * @remarks
+     * Set visibility for a specific marker type.
+     *
+     * @param type
+     * The marker type to toggle.
+     * @param visible
+     * Whether the marker type should be visible.
+     */
+    setMarkerTypeVisible(type: MinimapMarkerType, visible: boolean): void;
+    /**
+     * @remarks
+     * Set me marker visibility.
+     *
+     */
+    setMeMarkerShown(shown: boolean): void;
+    /**
+     * @remarks
+     * Unregister a custom marker icon.
+     *
+     * @param iconIdentifier
+     * The iconIdentifier string.
+     */
+    unregisterCustomMarkerIcon(iconIdentifier: string): void;
 }

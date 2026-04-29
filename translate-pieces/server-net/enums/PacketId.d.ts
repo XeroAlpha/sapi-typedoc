@@ -178,6 +178,7 @@ export enum PacketId {
      * Sends a set of update properties for the texture shift system from the server to the client.
      */
     ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket',
+    ClientboundUpdateSoundDataPacket = 'ClientboundUpdateSoundDataPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/html/ClientCacheBlobStatusPacket.html
      */
@@ -489,6 +490,7 @@ export enum PacketId {
      * Sent by the client to provide additional client metadata.
      */
     PartyChangedPacket = 'PartyChangedPacket',
+    PartyDestinationCookieResponsePacket = 'PartyDestinationCookieResponsePacket',
     /**
      * There is a camera item in EDU and they can use it to take screenshots and add them to a scrapbook.
      */
@@ -632,6 +634,7 @@ export enum PacketId {
      * Used to send custom messages between client and server.
      */
     ScriptMessagePacket = 'ScriptMessagePacket',
+    SendPartyDestinationCookiePacket = 'SendPartyDestinationCookiePacket',
     /**
      * Sent from the client to the server when a data driven screen is closed.
      */

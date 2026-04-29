@@ -185,6 +185,18 @@ export class Player extends Entity {
      */
     readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
+     * @beta
+     * @remarks
+     * Gets the player's Playfab ID.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playfabId: string;
+    /**
      * @remarks
      * @worldMutation
      *
@@ -298,6 +310,22 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getItemCooldown(cooldownCategory: string): number;
+    /**
+     * @beta
+     * @remarks
+     * Gets the player's ping in milliseconds.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * The player's ping in milliseconds.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getPing(): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.

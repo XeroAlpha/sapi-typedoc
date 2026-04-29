@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockContainerAccessEventOptions, BlockContainerClosedAfterEvent } from '..';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a block
  * container is closed.
  */

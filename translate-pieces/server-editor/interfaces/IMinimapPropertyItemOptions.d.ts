@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, LayoutAlignment } from '..';
+/* IMPORT */ import { IPropertyItemOptionsBase, LayoutAlignment, MinimapMarkerType } from '..';
 
 /**
  * Optional properties for Minimap property item
@@ -14,18 +14,28 @@ export interface IMinimapPropertyItemOptions extends IPropertyItemOptionsBase {
     alignment?: LayoutAlignment;
     /**
      * @remarks
+     * Whether the minimap is clickable. If undefined, defaults to
+     * true.
+     *
+     */
+    clickable?: boolean;
+    /**
+     * @remarks
+     * Custom marker icon registration. Maps the iconIdentifier
+     * (used when adding custom markers via addCustomMarker) to
+     * image resource paths for UI rendering. Only needed for
+     * Custom marker type. Multiplayer and Location use built-in
+     * icons.
+     *
+     */
+    customMarkerIcons?: Record<string, string>;
+    /**
+     * @remarks
      * Whether to show me marker on the minimap. If undefined,
      * defaults to true.
      *
      */
     isMeMarkerShown?: boolean;
-    /**
-     * @remarks
-     * Whether to show multiplayer markers on the minimap. If
-     * undefined, defaults to false.
-     *
-     */
-    isMultiplayerMarkerShown?: boolean;
     /**
      * @remarks
      * Size of the map image. If undefined, defaults to 35.
@@ -39,8 +49,16 @@ export interface IMinimapPropertyItemOptions extends IPropertyItemOptionsBase {
           };
     /**
      * @remarks
-     * Called when map is clicked.
+     * Called when the minimap is clicked.
      *
      */
-    onClick?: (x: number, y: number) => void;
+    onClick?: (worldX: number, worldY: number, worldZ: number) => void;
+    /**
+     * @remarks
+     * Per-type marker visibility. If omitted, no marker types are
+     * shown. Only controls presentation. Markers must be added via
+     * C++ API to exist.
+     *
+     */
+    visibleMarkerTypes?: MinimapMarkerType[];
 }

@@ -102,7 +102,7 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a list of all structures contained in behavior
      * packs. Does not include structures saved to the world or in

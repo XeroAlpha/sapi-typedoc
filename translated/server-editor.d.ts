@@ -20,7 +20,7 @@
  *
  */
 import { ArgumentOutOfBoundsError, InvalidArgumentError } from '@minecraft/common';
-import { BiomeType, BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, RGB, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, WorldAfterEvents } from '@minecraft/server';
+import { BiomeType, BlockBoundingBox, BlockLocationIterator, BlockPermutation, BlockType, BlockVolume, BlockVolumeBase, CompoundBlockVolume, Difficulty, Entity, GameMode, GraphicsMode, InvalidStructureError, ItemType, ListBlockVolume, Player, PlayerPermissionLevel, PlayerWaypointsMode, RGB, RGBA, StructureMirrorAxis, StructureRotation, Vector2, Vector3, VectorXZ, WorldAfterEvents } from '@minecraft/server';
 // @ts-ignore Optional types-only package, will decay to any if @minecraft/vanilla-data isn't installed
 import type { BlockStateSuperset } from '@minecraft/vanilla-data';
 /**
@@ -1050,6 +1050,13 @@ export enum MinimapMarkerType {
      *
      */
     Multiplayer = 0,
+    Location = 1,
+    Custom = 2,
+}
+
+export enum MinimapTrackingMode {
+    FollowPlayer = 0,
+    FreeCenter = 1,
 }
 
 export enum MinimapViewType {
@@ -1203,6 +1210,7 @@ export enum ProjectExportType {
     PlayableWorld = 0,
     ProjectBackup = 1,
     WorldTemplate = 2,
+    ShareableWorld = 3,
 }
 
 /**
@@ -3680,6 +3688,7 @@ export class MinecraftEditor {
  */
 export class MinimapItem {
     private constructor();
+    readonly freeCenter: VectorXZ;
     readonly id: string;
     /**
      * @remarks
@@ -3688,16 +3697,29 @@ export class MinimapItem {
      *
      */
     readonly isActive: boolean;
+    readonly yLevel: number;
     /**
      * @remarks
-     * Add a visual marker of the specified type to the minimap
-     * display.
-     *
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    addMarker(markerType: MinimapMarkerType): void;
+    addCustomMarker(iconIdentifier: string, data: MinimapMarkerData[], dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addLocationMarker(data: MinimapMarkerData[], dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addMultiplayerMarker(): void;
+    getMarkerTypes(): MinimapMarkerType[];
     /**
      * @remarks
      * Retrieve the color assigned to a specific player on the
@@ -3706,16 +3728,36 @@ export class MinimapItem {
      * @throws This function can throw errors.
      */
     getPlayerColor(playerId: string): RGBA;
+    hasCustomGroup(iconIdentifier: string): boolean;
+    hasMarkerOfType(type: MinimapMarkerType): boolean;
     /**
      * @remarks
-     * Remove a previously added marker of the specified type from
-     * the minimap.
-     *
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    removeMarker(markerType: MinimapMarkerType): void;
+    removeAllCustomMarkers(dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeCustomMarker(iconIdentifier: string, dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeLocationMarker(dimensionId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removeMultiplayerMarker(): void;
     /**
      * @remarks
      * Control whether the minimap is currently active and visible
@@ -3728,6 +3770,13 @@ export class MinimapItem {
     setActive(active: boolean): void;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setFreeCenter(center: VectorXZ): void;
+    /**
+     * @remarks
      * Adjust the width and height dimensions of the minimap
      * display.
      *
@@ -3738,6 +3787,13 @@ export class MinimapItem {
     setSize(mapWidth: number, mapHeight: number): void;
     /**
      * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setTrackingMode(mode: MinimapTrackingMode): void;
+    /**
+     * @remarks
      * Change the visual perspective or style of the minimap view.
      *
      * @worldMutation
@@ -3745,6 +3801,13 @@ export class MinimapItem {
      * @throws This function can throw errors.
      */
     setViewType(viewType: MinimapViewType): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setYLevel(yLevel: number): void;
 }
 
 /**
@@ -3764,7 +3827,12 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    createMinimap(viewType: MinimapViewType, mapWidth: number, mapHeight: number, dataId?: string): MinimapItem;
+    createMinimap(
+        viewType: MinimapViewType,
+        mapWidth: number,
+        mapHeight: number,
+        options?: MinimapCreateOptions,
+    ): MinimapItem;
     /**
      * @remarks
      * Remove an existing minimap instance from the manager using
@@ -6181,7 +6249,6 @@ export interface GameOptions {
     keepPlayerData?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
-    locatorBar?: boolean;
     maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
@@ -6190,6 +6257,7 @@ export interface GameOptions {
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
     playerPermissions?: PlayerPermissionLevel;
+    playerWaypoints?: PlayerWaypointsMode;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
@@ -8618,26 +8686,28 @@ export interface IMinimapPropertyItem extends IPropertyItemBase {
     readonly mapImageWidth: number;
     /**
      * @remarks
-     * Adds a marker to the minimap.
+     * Get visibility for a specific marker type.
      *
-     * @param markerType
-     * The type of marker to add.
+     * @param type
+     * The marker type to query.
      */
-    assignMarker(markerType: MinimapMarkerType): void;
+    isMarkerTypeVisible(type: MinimapMarkerType): boolean;
     /**
      * @remarks
-     * Refreshes the map.
+     * Get me marker visibility.
      *
      */
-    refreshMap(): void;
+    isMeMarkerShown(): boolean;
     /**
      * @remarks
-     * Removes a marker from the minimap.
+     * Register a custom marker icon for UI rendering.
      *
-     * @param markerType
-     * The type of marker to remove.
+     * @param iconIdentifier
+     * The iconIdentifier string.
+     * @param imagePath
+     * The image resource path.
      */
-    removeMarker(markerType: MinimapMarkerType): void;
+    registerCustomMarkerIcon(iconIdentifier: string, imagePath: string): void;
     /**
      * @remarks
      * Updates the size of the map image.
@@ -8648,6 +8718,30 @@ export interface IMinimapPropertyItem extends IPropertyItemBase {
      * New height of the image.
      */
     resizeMapImage(width: number, height: number): void;
+    /**
+     * @remarks
+     * Set visibility for a specific marker type.
+     *
+     * @param type
+     * The marker type to toggle.
+     * @param visible
+     * Whether the marker type should be visible.
+     */
+    setMarkerTypeVisible(type: MinimapMarkerType, visible: boolean): void;
+    /**
+     * @remarks
+     * Set me marker visibility.
+     *
+     */
+    setMeMarkerShown(shown: boolean): void;
+    /**
+     * @remarks
+     * Unregister a custom marker icon.
+     *
+     * @param iconIdentifier
+     * The iconIdentifier string.
+     */
+    unregisterCustomMarkerIcon(iconIdentifier: string): void;
 }
 
 /**
@@ -8664,18 +8758,28 @@ export interface IMinimapPropertyItemOptions extends IPropertyItemOptionsBase {
     alignment?: LayoutAlignment;
     /**
      * @remarks
+     * Whether the minimap is clickable. If undefined, defaults to
+     * true.
+     *
+     */
+    clickable?: boolean;
+    /**
+     * @remarks
+     * Custom marker icon registration. Maps the iconIdentifier
+     * (used when adding custom markers via addCustomMarker) to
+     * image resource paths for UI rendering. Only needed for
+     * Custom marker type. Multiplayer and Location use built-in
+     * icons.
+     *
+     */
+    customMarkerIcons?: Record<string, string>;
+    /**
+     * @remarks
      * Whether to show me marker on the minimap. If undefined,
      * defaults to true.
      *
      */
     isMeMarkerShown?: boolean;
-    /**
-     * @remarks
-     * Whether to show multiplayer markers on the minimap. If
-     * undefined, defaults to false.
-     *
-     */
-    isMultiplayerMarkerShown?: boolean;
     /**
      * @remarks
      * Size of the map image. If undefined, defaults to 35.
@@ -8689,10 +8793,18 @@ export interface IMinimapPropertyItemOptions extends IPropertyItemOptionsBase {
           };
     /**
      * @remarks
-     * Called when map is clicked.
+     * Called when the minimap is clicked.
      *
      */
-    onClick?: (x: number, y: number) => void;
+    onClick?: (worldX: number, worldY: number, worldZ: number) => void;
+    /**
+     * @remarks
+     * Per-type marker visibility. If omitted, no marker types are
+     * shown. Only controls presentation. Markers must be added via
+     * C++ API to exist.
+     *
+     */
+    visibleMarkerTypes?: MinimapMarkerType[];
 }
 
 /**
@@ -10973,6 +11085,22 @@ export interface LogProperties {
      *
      */
     tags?: string[];
+}
+
+export interface MinimapCreateOptions {
+    dataId?: string;
+    freeCenter?: VectorXZ;
+    trackingMode?: MinimapTrackingMode;
+    yLevel?: number;
+}
+
+export interface MinimapMarkerData {
+    clickable: boolean;
+    color: RGBA;
+    label: string;
+    position: Vector3;
+    rotation: number;
+    tooltip: string;
 }
 
 /**

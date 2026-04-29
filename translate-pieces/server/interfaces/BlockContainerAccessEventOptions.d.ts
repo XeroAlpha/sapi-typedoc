@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockFilter, ContainerAccessSourceFilter } from '..';
 
 /**
- * @beta
+ * @rc
  * Options used to filter block container access events.
  */
 export interface BlockContainerAccessEventOptions {

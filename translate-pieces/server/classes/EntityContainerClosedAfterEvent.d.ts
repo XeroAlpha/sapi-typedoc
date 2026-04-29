@@ -1,7 +1,7 @@
 /* IMPORT */ import { ContainerAccessSource, Entity } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific entity container
  * being closed.
  */

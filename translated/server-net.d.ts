@@ -95,6 +95,73 @@ export enum HttpRequestMethod {
     Put = 'Put',
 }
 
+export enum HttpStatusCode {
+    Continue = 100,
+    SwitchingProtocols = 101,
+    Processing = 102,
+    OK = 200,
+    Created = 201,
+    Accepted = 202,
+    NonAuthoritativeInformation = 203,
+    NoContent = 204,
+    ResetContent = 205,
+    PartialContent = 206,
+    MultiStatus = 207,
+    AlreadyReported = 208,
+    IMUsed = 226,
+    MultipleChoices = 300,
+    MovedPermanently = 301,
+    Found = 302,
+    SeeOther = 303,
+    NotModified = 304,
+    UseProxy = 305,
+    TemporaryRedirect = 307,
+    PermanentRedirect = 308,
+    BadRequest = 400,
+    Unauthorized = 401,
+    PaymentRequired = 402,
+    Forbidden = 403,
+    NotFound = 404,
+    MethodNotAllowed = 405,
+    NotAcceptable = 406,
+    ProxyAuthenticationRequired = 407,
+    RequestTimeout = 408,
+    Conflict = 409,
+    Gone = 410,
+    LengthRequired = 411,
+    PreconditionFailed = 412,
+    PayloadTooLarge = 413,
+    RequestURITooLong = 414,
+    UnsupportedMediaType = 415,
+    RequestedRangeNotSatisfiable = 416,
+    ExpectationFailed = 417,
+    MisdirectedRequest = 421,
+    UnprocessableEntity = 422,
+    Locked = 423,
+    FailedDependency = 424,
+    TooEarly = 425,
+    UpgradeRequired = 426,
+    PreconditionRequired = 428,
+    TooManyRequests = 429,
+    RequestHeaderFieldsTooLarge = 431,
+    ConnectionClosedWithoutResponse = 444,
+    UnavailableForLegalReasons = 451,
+    ClientRequestTimeout = 498,
+    ClientClosedRequest = 499,
+    InternalServerError = 500,
+    NotImplemented = 501,
+    BadGateway = 502,
+    ServiceUnavailable = 503,
+    GatewayTimeout = 504,
+    HttpVersionNotSupported = 505,
+    VariantAlsoNegotiates = 506,
+    InsufficientStorage = 507,
+    LoopDetected = 508,
+    NotExtended = 510,
+    NetworkAuthenticationRequired = 511,
+    NetworkConnectionTimeoutError = 599,
+}
+
 /**
  * Represents the unique type of network packet.
  */
@@ -275,6 +342,7 @@ export enum PacketId {
      * Sends a set of update properties for the texture shift system from the server to the client.
      */
     ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket',
+    ClientboundUpdateSoundDataPacket = 'ClientboundUpdateSoundDataPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/html/ClientCacheBlobStatusPacket.html
      */
@@ -586,6 +654,7 @@ export enum PacketId {
      * Sent by the client to provide additional client metadata.
      */
     PartyChangedPacket = 'PartyChangedPacket',
+    PartyDestinationCookieResponsePacket = 'PartyDestinationCookieResponsePacket',
     /**
      * There is a camera item in EDU and they can use it to take screenshots and add them to a scrapbook.
      */
@@ -729,6 +798,7 @@ export enum PacketId {
      * Used to send custom messages between client and server.
      */
     ScriptMessagePacket = 'ScriptMessagePacket',
+    SendPartyDestinationCookiePacket = 'SendPartyDestinationCookiePacket',
     /**
      * Sent from the client to the server when a data driven screen is closed.
      */
@@ -995,6 +1065,29 @@ export enum PacketId {
      * Syncs client with server voxel shape data on world join. This packet contains a copy of all behavior pack voxel shapes data.
      */
     VoxelShapesPacket = 'VoxelShapesPacket',
+}
+
+export enum WebSocketClientCloseReasons {
+    /**
+     * @remarks
+     * The server has closed the socket.
+     *
+     */
+    ClosedByServer = 0,
+    /**
+     * @remarks
+     * The client has closed the socket.
+     *
+     */
+    ClosedByClient = 1,
+    /**
+     * @remarks
+     * The client has received payloads whose body exceeds the
+     * configured maximum size allowed per tick so the client has
+     * closed the socket.
+     *
+     */
+    IncomingPayloadsTooLarge = 2,
 }
 
 export class CloseAfterEventSignal {
@@ -1428,7 +1521,7 @@ export class WebSocket {
      * An awaitable promise that contains the WebSocket client that
      * was connected.
      */
-    connect(uri: string): Promise<WebSocketClient>;
+    connect(uri: string, headers?: HttpHeader[]): Promise<WebSocketClient>;
 }
 
 /**
@@ -1495,6 +1588,7 @@ export class WebSocketClientAfterEvents {
 
 export class WebSocketClientCloseAfterEvent {
     private constructor();
+    readonly reason: WebSocketClientCloseReasons;
 }
 
 export class WebSocketClientReceiveAfterEvent {
@@ -1675,7 +1769,7 @@ export class WebSocketConnectionFailedError extends Error {
      * @earlyExecution
      *
      */
-    readonly errorCode: number;
+    readonly errorCode: HttpStatusCode;
     /**
      * @remarks
      * The URI provided to make this connection attempt that

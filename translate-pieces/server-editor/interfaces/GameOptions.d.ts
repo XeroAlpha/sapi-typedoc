@@ -1,4 +1,4 @@
-/* IMPORT */ import { Difficulty, GameMode, PlayerPermissionLevel, Vector3 } from '../../server';
+/* IMPORT */ import { Difficulty, GameMode, PlayerPermissionLevel, PlayerWaypointsMode, Vector3 } from '../../server';
 /* IMPORT */ import { DaylightCycle, GamePublishSetting, ProjectExportType } from '..';
 
 export interface GameOptions {
@@ -29,7 +29,6 @@ export interface GameOptions {
     keepPlayerData?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
-    locatorBar?: boolean;
     maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
@@ -38,6 +37,7 @@ export interface GameOptions {
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
     playerPermissions?: PlayerPermissionLevel;
+    playerWaypoints?: PlayerWaypointsMode;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;

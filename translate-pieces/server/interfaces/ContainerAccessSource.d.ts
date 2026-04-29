@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents the source of a container access.
  */
 export interface ContainerAccessSource {
