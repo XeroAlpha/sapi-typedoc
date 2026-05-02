@@ -1196,6 +1196,7 @@ export enum PrimitiveType {
     Ellipsoid = 9,
     Cuboid = 10,
     Cone = 11,
+    WireframeMesh = 12,
 }
 
 /**
@@ -1976,6 +1977,14 @@ export type SupportedKeyboardActionTypes =
 export type SupportedMouseActionTypes = RegisteredAction<MouseRayCastAction>;
 
 /**
+ * Tooltip action description
+ */
+export type TooltipButton = {
+    text: LocalizedString;
+    action: RegisteredAction<NoArgsAction>;
+};
+
+/**
  * Content properties to display tooltips
  */
 export declare type TooltipContent = {
@@ -1987,15 +1996,15 @@ export declare type TooltipContent = {
 /**
  * Content properties to display interactive tooltips
  */
-export declare type TooltipInteractiveContent = {
+export type TooltipInteractiveContent = {
     title?: LocalizedString;
-    description?: TooltipInteractiveContentDescription[];
+    description?: (TooltipInteractiveContentDescriptionItem | TooltipInteractiveContentDescriptionItem[])[];
 };
 
 /**
- * Possible tooltip description items
+ * Supported description elements for interactive tooltips
  */
-export declare type TooltipInteractiveContentDescription = LocalizedString | TooltipLink;
+export type TooltipInteractiveContentDescriptionItem = LocalizedString | TooltipLink | TooltipButton;
 
 /**
  * Tooltip link description
@@ -4901,7 +4910,8 @@ export class Widget {
             | WidgetComponentRenderPrimitiveTypeDisc
             | WidgetComponentRenderPrimitiveTypeEllipsoid
             | WidgetComponentRenderPrimitiveTypeLine
-            | WidgetComponentRenderPrimitiveTypePyramid,
+            | WidgetComponentRenderPrimitiveTypePyramid
+            | WidgetComponentRenderPrimitiveTypeWireframeMesh,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
     /**
@@ -5257,7 +5267,8 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
             | WidgetComponentRenderPrimitiveTypeDisc
             | WidgetComponentRenderPrimitiveTypeEllipsoid
             | WidgetComponentRenderPrimitiveTypeLine
-            | WidgetComponentRenderPrimitiveTypePyramid,
+            | WidgetComponentRenderPrimitiveTypePyramid
+            | WidgetComponentRenderPrimitiveTypeWireframeMesh,
     ): void;
 }
 
@@ -5629,6 +5640,52 @@ export class WidgetComponentRenderPrimitiveTypePyramid extends WidgetComponentRe
         widthZ?: number,
         rotation?: Vector3,
         alpha?: number,
+    );
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPrimitiveTypeWireframeMesh extends WidgetComponentRenderPrimitiveTypeBase {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    alpha?: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    center: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    color: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    meshId: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    rotation?: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    scale?: Vector3;
+    constructor(
+        center: Vector3,
+        meshId: string,
+        color: RGBA,
+        options?: WireframeMeshOptions,
     );
 }
 
@@ -7434,6 +7491,16 @@ export interface IComboBoxPropertyItem extends IPropertyItemBase {
      * New tooltip.
      */
     setTooltip(tooltip: BasicTooltipContent | undefined): void;
+    /**
+     * @remarks
+     * Update list of combo box entries.
+     *
+     * @param entries
+     * New list of updated entries.
+     * @param newValue
+     * New value to use for the combo box.
+     */
+    updateEntries(entries: IComboBoxPropertyItemEntry[] | undefined, newValue?: string): void;
 }
 
 /**
@@ -9103,6 +9170,15 @@ export interface IModalToolContainer {
     getSelectedToolId(): string | undefined;
     /**
      * @remarks
+     * Returns the current sort order of tools.
+     *
+     * @returns
+     * Array of tool identifiers in sort order, or undefined if not
+     * set
+     */
+    getSortOrder(): string[] | undefined;
+    /**
+     * @remarks
      * Remove an existing tool by id from the tool container
      *
      * @param id
@@ -9117,6 +9193,15 @@ export interface IModalToolContainer {
      * Identifier of the tool
      */
     setSelectedToolId(id: string | undefined): void;
+    /**
+     * @remarks
+     * Sets the sort order for tools in the container.
+     *
+     * @param ids
+     * Array of tool identifiers in the desired order, or undefined
+     * to clear
+     */
+    setSortOrder(ids: string[] | undefined): void;
 }
 
 /**
@@ -9863,13 +9948,6 @@ export interface IPropertyPane extends IPane {
     ): IVector3TimelinePropertyItem;
     /**
      * @remarks
-     * Begins pane construction for batching property item
-     * additions
-     *
-     */
-    beginConstruct(): void;
-    /**
-     * @remarks
      * Collapse the pane.
      *
      */
@@ -9880,12 +9958,6 @@ export interface IPropertyPane extends IPane {
      *
      */
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
-    /**
-     * @remarks
-     * Finalizes pane construction and synchronizes item data
-     *
-     */
-    endConstruct(): void;
     /**
      * @remarks
      * Expand the pane.
@@ -11346,6 +11418,12 @@ export interface WidgetGroupCreateOptions {
     groupSelectionMode?: WidgetGroupSelectionMode;
     showBounds?: boolean;
     visible?: boolean;
+}
+
+export interface WireframeMeshOptions {
+    alpha?: number;
+    rotation?: Vector3;
+    scale?: Vector3;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes

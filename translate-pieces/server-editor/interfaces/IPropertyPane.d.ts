@@ -222,13 +222,6 @@ export interface IPropertyPane extends IPane {
     ): IVector3TimelinePropertyItem;
     /**
      * @remarks
-     * Begins pane construction for batching property item
-     * additions
-     *
-     */
-    beginConstruct(): void;
-    /**
-     * @remarks
      * Collapse the pane.
      *
      */
@@ -239,12 +232,6 @@ export interface IPropertyPane extends IPane {
      *
      */
     createSubPane(options: ISubPanePropertyItemOptions): ISubPanePropertyItem;
-    /**
-     * @remarks
-     * Finalizes pane construction and synchronizes item data
-     *
-     */
-    endConstruct(): void;
     /**
      * @remarks
      * Expand the pane.

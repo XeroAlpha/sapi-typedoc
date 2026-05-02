@@ -39,6 +39,15 @@ export interface IModalToolContainer {
     getSelectedToolId(): string | undefined;
     /**
      * @remarks
+     * Returns the current sort order of tools.
+     *
+     * @returns
+     * Array of tool identifiers in sort order, or undefined if not
+     * set
+     */
+    getSortOrder(): string[] | undefined;
+    /**
+     * @remarks
      * Remove an existing tool by id from the tool container
      *
      * @param id
@@ -53,4 +62,13 @@ export interface IModalToolContainer {
      * Identifier of the tool
      */
     setSelectedToolId(id: string | undefined): void;
+    /**
+     * @remarks
+     * Sets the sort order for tools in the container.
+     *
+     * @param ids
+     * Array of tool identifiers in the desired order, or undefined
+     * to clear
+     */
+    setSortOrder(ids: string[] | undefined): void;
 }

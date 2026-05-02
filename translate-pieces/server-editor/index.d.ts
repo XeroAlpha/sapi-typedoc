@@ -133,9 +133,10 @@ export { SpeedSettingsPropertyTypeMap } from './types/SpeedSettingsPropertyTypeM
 export { StatefulAction } from './types/StatefulAction';
 export { SupportedKeyboardActionTypes } from './types/SupportedKeyboardActionTypes';
 export { SupportedMouseActionTypes } from './types/SupportedMouseActionTypes';
+export { TooltipButton } from './types/TooltipButton';
 export { TooltipContent } from './types/TooltipContent';
 export { TooltipInteractiveContent } from './types/TooltipInteractiveContent';
-export { TooltipInteractiveContentDescription } from './types/TooltipInteractiveContentDescription';
+export { TooltipInteractiveContentDescriptionItem } from './types/TooltipInteractiveContentDescriptionItem';
 export { TooltipLink } from './types/TooltipLink';
 export { UnregisterInputBindingCallback } from './types/UnregisterInputBindingCallback';
 export { AudioSettings } from './classes/AudioSettings';
@@ -228,6 +229,7 @@ export { WidgetComponentRenderPrimitiveTypeDisc } from './classes/WidgetComponen
 export { WidgetComponentRenderPrimitiveTypeEllipsoid } from './classes/WidgetComponentRenderPrimitiveTypeEllipsoid';
 export { WidgetComponentRenderPrimitiveTypeLine } from './classes/WidgetComponentRenderPrimitiveTypeLine';
 export { WidgetComponentRenderPrimitiveTypePyramid } from './classes/WidgetComponentRenderPrimitiveTypePyramid';
+export { WidgetComponentRenderPrimitiveTypeWireframeMesh } from './classes/WidgetComponentRenderPrimitiveTypeWireframeMesh';
 export { WidgetComponentSpline } from './classes/WidgetComponentSpline';
 export { WidgetComponentText } from './classes/WidgetComponentText';
 export { WidgetComponentVolumeOutline } from './classes/WidgetComponentVolumeOutline';
@@ -389,6 +391,7 @@ export { WidgetComponentTextOptions } from './interfaces/WidgetComponentTextOpti
 export { WidgetComponentVolumeOutlineOptions } from './interfaces/WidgetComponentVolumeOutlineOptions';
 export { WidgetCreateOptions } from './interfaces/WidgetCreateOptions';
 export { WidgetGroupCreateOptions } from './interfaces/WidgetGroupCreateOptions';
+export { WireframeMeshOptions } from './interfaces/WireframeMeshOptions';
 export { InvalidWidgetComponentError } from './classes/InvalidWidgetComponentError';
 export { InvalidWidgetError } from './classes/InvalidWidgetError';
 export { InvalidWidgetGroupError } from './classes/InvalidWidgetGroupError';

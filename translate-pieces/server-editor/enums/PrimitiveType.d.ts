@@ -9,4 +9,5 @@ export enum PrimitiveType {
     Ellipsoid = 9,
     Cuboid = 10,
     Cone = 11,
+    WireframeMesh = 12,
 }

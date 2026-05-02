@@ -1,4 +1,4 @@
-/* IMPORT */ import { BasicTooltipContent, IPropertyItemBase, LocalizedString } from '..';
+/* IMPORT */ import { BasicTooltipContent, IComboBoxPropertyItemEntry, IPropertyItemBase, LocalizedString } from '..';
 
 /**
  * A property item which supports Combo Box properties
@@ -27,4 +27,14 @@ export interface IComboBoxPropertyItem extends IPropertyItemBase {
      * New tooltip.
      */
     setTooltip(tooltip: BasicTooltipContent | undefined): void;
+    /**
+     * @remarks
+     * Update list of combo box entries.
+     *
+     * @param entries
+     * New list of updated entries.
+     * @param newValue
+     * New value to use for the combo box.
+     */
+    updateEntries(entries: IComboBoxPropertyItemEntry[] | undefined, newValue?: string): void;
 }

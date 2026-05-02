@@ -235,7 +235,7 @@ export enum PacketId {
      */
     AwardAchievementPacket = 'AwardAchievementPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/BiomeDefinitionListPacket.html
+     * On world start, send clients the info for all available biomes.
      */
     BiomeDefinitionListPacket = 'BiomeDefinitionListPacket',
     /**
@@ -348,7 +348,7 @@ export enum PacketId {
      */
     ClientCacheBlobStatusPacket = 'ClientCacheBlobStatusPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/ClientCacheMissResponsePacket.html
+     * Only active in a real client-server scenario. This packet is just a list of <blobId, blob> pairs sent from server to client.
      */
     ClientCacheMissResponsePacket = 'ClientCacheMissResponsePacket',
     /**
@@ -360,7 +360,7 @@ export enum PacketId {
      */
     ClientCameraAimAssistPacket = 'ClientCameraAimAssistPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/ClientMovementPredictionSyncPacket.html
+     * Sends client movement prediction information to the server
      */
     ClientMovementPredictionSyncPacket = 'ClientMovementPredictionSyncPacket',
     /**
@@ -441,7 +441,7 @@ export enum PacketId {
      */
     DimensionDataPacket = 'DimensionDataPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/DisconnectPacket.html
+     * Sent from the server to a client to trigger a disconnection.
      */
     DisconnectPacket = 'DisconnectPacket',
     /**
@@ -503,7 +503,7 @@ export enum PacketId {
      */
     InventoryContentPacket = 'InventoryContentPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/InventorySlotPacket.html
+     * Updates one slot in an inventory rather than the whole thing. So like animal inventory (horses, donkeys, etc) and chests. Hotbar, offhand, and some player inventory changes.
      */
     InventorySlotPacket = 'InventorySlotPacket',
     /**
@@ -583,7 +583,7 @@ export enum PacketId {
      */
     MobEffectPacket = 'MobEffectPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/MobEquipmentPacket.html
+     * Mob Equipment. Changes to any mob's held/offhand item are fired from server to client with this packet. Clients also send this to the server when their held slot or its contents change.
      */
     MobEquipmentPacket = 'MobEquipmentPacket',
     /**
@@ -672,7 +672,7 @@ export enum PacketId {
      */
     PlayerAuthInputPacket = 'PlayerAuthInputPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/PlayerEnchantOptionsPacket.html
+     * Sends the of new Enchanting options  from the server when a player right clicks the enchantment table.
      */
     PlayerEnchantOptionsPacket = 'PlayerEnchantOptionsPacket',
     /**
@@ -725,6 +725,9 @@ export enum PacketId {
      * Server to client packet for server authoratative runtime database (with persistent LevelStorage backup) designed primarily to track lodestone stuff. See Position Tracking DB Notes.md in bedrock-docs.
      */
     PositionTrackingDBServerBroadcastPacket = 'PositionTrackingDBServerBroadcastPacket',
+    /**
+     * Send primitive drawing shape info (from scripting) to the client for rendering
+     */
     PrimitiveShapesPacket = 'PrimitiveShapesPacket',
     /**
      * Sent from client to server
@@ -823,6 +826,9 @@ export enum PacketId {
      * Used to send a player's server position to the respective client at the end of movement.
      */
     ServerPlayerPostMovePositionPacket = 'ServerPlayerPostMovePositionPacket',
+    /**
+     * Sent by the server to provide PresenceConfiguration to the client.
+     */
     ServerPresenceInfoPacket = 'ServerPresenceInfoPacket',
     /**
      * Sent during the initialization of world settings on the client.
@@ -836,6 +842,9 @@ export enum PacketId {
      * Used to send performance and other valuable stats back to the client
      */
     ServerStatsPacket = 'ServerStatsPacket',
+    /**
+     * Sent by the server to provide ClientStoreEntryPointConfiguration to the client.
+     */
     ServerStoreInfoPacket = 'ServerStoreInfoPacket',
     /**
      * Server->Client Handshake
@@ -1062,7 +1071,7 @@ export enum PacketId {
      */
     UpdateTradePacket = 'UpdateTradePacket',
     /**
-     * Syncs client with server voxel shape data on world join. This packet contains a copy of all behavior pack voxel shapes data.
+     * Syncs client with server voxel shape data on world join. This packet contains a copy of all behavior pack voxel shapes data and is used by StartGamePacket.
      */
     VoxelShapesPacket = 'VoxelShapesPacket',
 }

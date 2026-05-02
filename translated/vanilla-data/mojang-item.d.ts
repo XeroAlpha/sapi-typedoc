@@ -2608,6 +2608,8 @@ export declare enum MinecraftItemTypes {
     SulfurCubeSpawnEgg = "minecraft:sulfur_cube_spawn_egg",
     /** 硫黄台阶。 */
     SulfurSlab = "minecraft:sulfur_slab",
+    /** Sulfur Spike。 */
+    SulfurSpike = "minecraft:sulfur_spike",
     /** 硫黄楼梯。 */
     SulfurStairs = "minecraft:sulfur_stairs",
     /** 硫黄墙。 */

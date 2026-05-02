@@ -459,6 +459,7 @@ export { SetStewEffectFunction } from './classes/SetStewEffectFunction';
 export { ShutdownBeforeEventSignal } from './classes/ShutdownBeforeEventSignal';
 export { ShutdownEvent } from './classes/ShutdownEvent';
 export { SmeltItemFunction } from './classes/SmeltItemFunction';
+export { SoundInstance } from './classes/SoundInstance';
 export { SpecificEnchantFunction } from './classes/SpecificEnchantFunction';
 export { StartupBeforeEventSignal } from './classes/StartupBeforeEventSignal';
 export { StartupEvent } from './classes/StartupEvent';
