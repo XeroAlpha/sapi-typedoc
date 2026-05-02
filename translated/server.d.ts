@@ -8096,9 +8096,11 @@ export class Dimension {
      * An error will be thrown if pitch is less than 0.01.
      * An error will be thrown if volume is less than 0.0.
      *
+     * {@link EngineError}
+     *
      * {@link PropertyOutOfBoundsError}
      */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): SoundInstance;
     /**
      * @remarks
      * Runs a command synchronously using the context of the
@@ -16357,9 +16359,13 @@ export class Player extends Entity {
      * @param soundOptions
      * Additional optional options for the sound.
      * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link Error}
      * @seeExample playMusicAndSound.ts
      */
-    playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
+    playSound(soundId: string, soundOptions?: PlayerSoundOptions): SoundInstance;
     /**
      * @beta
      * @remarks
@@ -19594,6 +19600,22 @@ export class ShutdownEvent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class SmeltItemFunction extends LootItemFunction {
     private constructor();
+}
+
+/**
+ * @beta
+ * Represents a handle to a sound that has been played.
+ */
+export class SoundInstance {
+    private constructor();
+    /**
+     * @remarks
+     * Stops this sound from playing.
+     *
+     * @worldMutation
+     *
+     */
+    stop(): void;
 }
 
 /**

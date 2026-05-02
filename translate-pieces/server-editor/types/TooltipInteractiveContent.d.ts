@@ -1,9 +1,9 @@
-/* IMPORT */ import { LocalizedString, TooltipInteractiveContentDescription } from '..';
+/* IMPORT */ import { LocalizedString, TooltipInteractiveContentDescriptionItem } from '..';
 
 /**
  * Content properties to display interactive tooltips
  */
-export declare type TooltipInteractiveContent = {
+export type TooltipInteractiveContent = {
     title?: LocalizedString;
-    description?: TooltipInteractiveContentDescription[];
+    description?: (TooltipInteractiveContentDescriptionItem | TooltipInteractiveContentDescriptionItem[])[];
 };

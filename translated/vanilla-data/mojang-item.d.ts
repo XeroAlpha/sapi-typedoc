@@ -1305,6 +1305,7 @@ export declare enum MinecraftItemTypes {
     SulfurCubeBucket = "minecraft:sulfur_cube_bucket",
     SulfurCubeSpawnEgg = "minecraft:sulfur_cube_spawn_egg",
     SulfurSlab = "minecraft:sulfur_slab",
+    SulfurSpike = "minecraft:sulfur_spike",
     SulfurStairs = "minecraft:sulfur_stairs",
     SulfurWall = "minecraft:sulfur_wall",
     Sunflower = "minecraft:sunflower",
