@@ -60,7 +60,7 @@ export class Block {
      * @beta
      * @remarks
      * 如果该块是实心且不可通行的，则返回 true
-     * -（例如，鹅卵石块和钻石块是实心的，而梯子块和栅栏块则不是）。
+     * -（例如，圆石和钻石块是实心方块，而梯子和栅栏则不是）。
      *
      * Returns true if this block is solid and impassible - (e.g.,
      * a cobblestone block and a diamond block are solid, while a
