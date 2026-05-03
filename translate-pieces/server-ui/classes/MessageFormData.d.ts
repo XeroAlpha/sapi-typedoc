@@ -44,7 +44,7 @@ export class MessageFormData {
     button2(text: RawMessage | string): MessageFormData;
     /**
      * @remarks
-     * 创建并展示此模态弹出式表单，玩家点击确定或取消按钮后异步返回。
+     * 创建并展示此模态弹出式表单，玩家点击确定或取消按钮后异步返回。表单必须有内容，否则将展示创建失败的消息框；玩家的游戏界面不能被聊天屏幕等界面阻塞，否则将不会展示。
      *
      * Creates and shows this modal popup form. Returns
      * asynchronously when the player confirms or cancels the
@@ -56,13 +56,12 @@ export class MessageFormData {
      * 要展示对话框的玩家。
      *
      * Player to show this dialog to.
-     * @throws 此函数可能抛出错误。
+     * @throws 
+     * 如果发生底层错误，将抛出 {@link EngineError}。
      *
-     * {@link EngineError}
+     * 如果 `player` 传入的玩家当前不在世界中，将抛出 {@link InvalidEntityError}。
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * 如果表单中存在无法正常解析的文本组件，将抛出 {@link RawMessageError}。
      */
     show(player: Player): Promise<MessageFormResponse>;
     /**
