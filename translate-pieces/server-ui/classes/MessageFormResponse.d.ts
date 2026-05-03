@@ -1,7 +1,7 @@
 /* IMPORT */ import { FormResponse } from '..';
 
 /**
- * 获取信息表单的结果。
+ * 获取信息表单（Message Form）的结果。
  *
  * Returns data about the player results from a modal message
  * form.
