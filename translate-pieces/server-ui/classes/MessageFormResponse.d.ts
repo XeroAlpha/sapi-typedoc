@@ -13,7 +13,7 @@ export class MessageFormResponse extends FormResponse {
     private constructor();
     /**
      * @remarks
-     * 按下的按钮的索引。
+     * 按下的按钮的索引（0 或 1）。
      *
      * Returns the index of the button that was pushed.
      *
