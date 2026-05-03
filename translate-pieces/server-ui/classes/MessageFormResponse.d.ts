@@ -1,6 +1,8 @@
 /* IMPORT */ import { FormResponse } from '..';
 
 /**
+ * 获取信息表单（Message Form）的结果。
+ *
  * Returns data about the player results from a modal message
  * form.
  * @seeExample showBasicMessageForm.ts
@@ -11,6 +13,8 @@ export class MessageFormResponse extends FormResponse {
     private constructor();
     /**
      * @remarks
+     * 按下的按钮的索引（0 或 1）。
+     *
      * Returns the index of the button that was pushed.
      *
      */
