@@ -1,67 +1,127 @@
-/* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { MessageBoxResult, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { EngineError } from '../../common';
+/* IMPORT */ import { InvalidEntityError, Player } from '../../server';
+/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * A simple message form UI, 2 buttons and a text body.
+ * A simple message form with two buttons and a text body. Use
+ * this class to show a basic dialog to a player and handle the
+ * player's button selection.
  */
-export declare class MessageBox {
+export class MessageBox {
     /**
      * @remarks
-     * Sets the data for the text in the body of the message box.
-     * It is contained within a scroll view to allow for lots of
-     * text.
+     * Creates a new MessageBox for the specified player with the
+     * given title.
      *
+     * @param player
+     * The player to show this message box to.
+     * @param title
+     * The title text to display at the top of the message box.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
-    body(text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage): MessageBox;
+    constructor(
+        player: Player,
+        title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+    );
     /**
      * @remarks
-     * Sets the data for the top button in the message box.
+     * Sets the body text displayed in the message box. Returns the
+     * message box instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param body
+     * The body text to display. Accepts either a plain string or
+     * an ObservableString.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    body(body: ObservableString | ObservableUIRawMessage | string | UIRawMessage): MessageBox;
+    /**
+     * @remarks
+     * Sets the label for the first button of the message box.
+     * Returns the message box instance to allow method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the first button.
+     * @param tooltip
+     * Optional tooltip text shown when hovering over the first
+     * button.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     button1(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
-     * Sets the data for the bottom button in the message box.
+     * Sets the label for the second button of the message box.
+     * Returns the message box instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the second button.
+     * @param tooltip
+     * Optional tooltip text shown when hovering over the second
+     * button.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     button2(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
-     * Tell the client to close the message box. Throws {@link
-     * FormCloseError} if the message box is not open.
+     * Closes the message box if it is currently being shown to the
+     * player. Throws a FormVisibilityError if the form is not
+     * currently open.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     close(): void;
     /**
      * @remarks
      * Returns true if the message box is currently being shown to
-     * the player.
+     * the player, false otherwise.
+     *
+     * @worldMutation
      *
      */
     isShowing(): boolean;
     /**
      * @remarks
-     * Show this message box to the player. Will return a result
-     * even if the client was busy (i.e. in another menu). Will
-     * throw if the user disconnects.
+     * Shows the message box to the player. Returns a promise that
+     * resolves with a MessageBoxResult containing the close reason
+     * and the player's button selection.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     show(): Promise<MessageBoxResult>;
-    /**
-     * @remarks
-     * Creates a message box for a certain player. Use this instead
-     * of a constructor.
-     *
-     */
-    static create(
-        player: Player,
-        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-    ): MessageBox;
 }

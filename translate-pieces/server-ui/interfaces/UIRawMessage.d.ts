@@ -18,17 +18,17 @@ export interface UIRawMessage {
     text?: string;
     /**
      * @remarks
-     * Provides a translation token where, if the client has an
+     * Provides a localization string where, if the client has an
      * available resource in the players' language which matches
-     * the token, will get translated on the client.
+     * the localization string, will get translated on the client.
      *
      */
     translate?: string;
     /**
      * @remarks
-     * Arguments for the translation token. Can be either an array
-     * of strings or UIRawMessage containing an array of raw text
-     * objects.
+     * Arguments for the localization string. Can be either an
+     * array of strings or UIRawMessage containing an array of raw
+     * text objects.
      *
      */
     with?: string[] | UIRawMessage;

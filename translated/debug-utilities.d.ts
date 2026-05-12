@@ -21,7 +21,7 @@
  *
  */
 import { ArgumentOutOfBoundsError } from '@minecraft/common';
-import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, RawMessageError, Vector3 } from '@minecraft/server';
+import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, RawMessageError, Vector2, Vector3 } from '@minecraft/server';
 /**
  * The length of the arrow's head/tip.
  */
@@ -77,6 +77,64 @@ export class DebugCircle extends DebugShape {
 }
 
 /**
+ * A debug shape class that represents a cone.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DebugCone extends DebugShape {
+    /**
+     * @remarks
+     * The height of the cone.
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * The number of segments used to approximate the circular base
+     * of the cone. Bounds: [3, 128]
+     *
+     * Bounds: [3, 128]
+     */
+    numSegments: number;
+    /**
+     * @remarks
+     * The radii of the cone's circular base (x: bottom radius, y:
+     * top radius).
+     *
+     */
+    radii: Vector2;
+    constructor(location: DimensionLocation | Vector3);
+}
+
+/**
+ * A debug shape class that represents a cylinder.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DebugCylinder extends DebugShape {
+    /**
+     * @remarks
+     * The height of the cylinder.
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * The number of segments used to approximate the circular
+     * cross-section of the cylinder. Bounds: [3, 128]
+     *
+     * Bounds: [3, 128]
+     */
+    numSegments: number;
+    /**
+     * @remarks
+     * The radii of the cylinder's circular cross-section (x:
+     * bottom radius, y: top radius).
+     *
+     */
+    radii: Vector2;
+    constructor(location: DimensionLocation | Vector3);
+}
+
+/**
  * Debug Drawing class used to allow adding and removing
  * wireframe shapes in world space.
  */
@@ -108,6 +166,28 @@ export class DebugDrawer {
 }
 
 /**
+ * A debug shape class that represents an ellipsoid.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DebugEllipsoid extends DebugShape {
+    /**
+     * @remarks
+     * The radii of the ellipsoid along each axis (x, y, z).
+     *
+     */
+    radii: Vector3;
+    /**
+     * @remarks
+     * The number of segments used to approximate the ellipsoid per
+     * axis. Bounds: [3, 128]
+     *
+     * Bounds: [3, 128]
+     */
+    segmentsPerAxis: number;
+    constructor(location: DimensionLocation | Vector3);
+}
+
+/**
  * A debug shape class that represents a line segment.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -123,6 +203,32 @@ export class DebugLine extends DebugShape {
         location: DimensionLocation | Vector3,
         endLocation: Vector3,
     );
+}
+
+/**
+ * A debug shape class that represents a pyramid.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DebugPyramid extends DebugShape {
+    /**
+     * @remarks
+     * The depth of the pyramid's base.
+     *
+     */
+    depth?: number;
+    /**
+     * @remarks
+     * The height of the pyramid.
+     *
+     */
+    height: number;
+    /**
+     * @remarks
+     * The width of the pyramid's base.
+     *
+     */
+    width: number;
+    constructor(location: DimensionLocation | Vector3);
 }
 
 /**

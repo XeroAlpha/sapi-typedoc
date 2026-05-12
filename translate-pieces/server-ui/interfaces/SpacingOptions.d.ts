@@ -1,14 +1,15 @@
-/* IMPORT */ import { CustomForm, Observable } from '..';
+/* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
  * @beta
- * The options for including a spacer in {@link CustomForm}.
+ * Options for configuring a spacer component.
  */
 export interface SpacingOptions {
     /**
      * @remarks
-     * Whether or not this spacer is visible
+     * When false or bound to a false ObservableBoolean, the spacer
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

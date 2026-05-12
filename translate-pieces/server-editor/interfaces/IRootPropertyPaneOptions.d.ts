@@ -7,6 +7,13 @@
 export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
     /**
      * @remarks
+     * Optional content badge identifier associated with the root
+     * pane.
+     *
+     */
+    contentBadgeId?: string;
+    /**
+     * @remarks
      * Optional action button to be displayed on the header.
      *
      */

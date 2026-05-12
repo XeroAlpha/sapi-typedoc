@@ -28,6 +28,12 @@ export interface IMenuCreationParams {
     label: string;
     /**
      * @remarks
+     * Determines the order of the menu item among its siblings.
+     *
+     */
+    sortIndex?: number;
+    /**
+     * @remarks
      * Whether the menu should have a tooltip.
      *
      */

@@ -9,24 +9,37 @@ export class ArgumentOutOfBoundsError extends Error {
     private constructor();
     /**
      * @remarks
-     * 参数允许的最大值。
+     * @earlyExecution
      *
-     * Max expected value for the condition.
      */
-    maxValue: number;
+    readonly index: number;
+    /**
+     * @remarks
+     * 参数允许的最大值。
+     * 
+     * Max expected value for the condition.
+     *
+     * @earlyExecution
+     */
+    readonly maxValue?: number;
     /**
      * @remarks
      * 参数允许的最小值。
      *
      * Min expected value for the condition.
+     *
+     * @earlyExecution
+     *
      */
-    minValue: number;
+    readonly minValue?: number;
     /**
      * @remarks
      * 传入参数的值。
      *
      * Passed-in value for the argument.
+     *
+     * @earlyExecution
+     *
      */
-    value: number;
-    index: number;
+    readonly value?: number;
 }

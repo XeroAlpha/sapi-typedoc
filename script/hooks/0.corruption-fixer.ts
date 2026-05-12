@@ -8,53 +8,6 @@ assert(true);
 const patches: ((context: TranslateHookContext) => void)[] = [];
 
 patches.push(({ project }) => {
-    // @minecraft/common
-    const commonDts = project.getSourceFileOrThrow('common.d.ts');
-
-    const InvalidArgumentErrorType = commonDts.addEnum({
-        isExported: true,
-        name: 'InvalidArgumentErrorType',
-        members: ['Duplicate', 'Empty', 'Unknown', 'Unspecified'].map((n) => ({ name: n, value: n }))
-    });
-
-    const ArgumentOutOfBoundsError = commonDts.getClassOrThrow('ArgumentOutOfBoundsError');
-    ArgumentOutOfBoundsError.addMember({
-        kind: StructureKind.Property,
-        name: 'index',
-        type: 'number'
-    });
-
-    const InvalidArgumentError = commonDts.getClassOrThrow('InvalidArgumentError');
-    InvalidArgumentError.addMember({
-        kind: StructureKind.Property,
-        name: 'type',
-        type: InvalidArgumentErrorType.getName()
-    });
-
-    commonDts.addClass({
-        isExported: true,
-        name: 'RuntimeConditionError',
-        extends: 'Error',
-        ctors: [
-            {
-                scope: Scope.Private
-            }
-        ]
-    });
-
-    commonDts.addClass({
-        isExported: true,
-        name: 'UnsupportedFunctionalityError',
-        extends: 'Error',
-        ctors: [
-            {
-                scope: Scope.Private
-            }
-        ]
-    });
-});
-
-patches.push(({ project }) => {
     // since 1.21.110.25
     const serverDts = project.getSourceFileOrThrow('server.d.ts');
     const PlayerSwingEventOptionsInterface = serverDts.getInterfaceOrThrow('PlayerSwingEventOptions');

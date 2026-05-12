@@ -13,11 +13,53 @@
  * ```json
  * {
  *   "module_name": "@minecraft/common",
- *   "version": "1.2.0"
+ *   "version": "1.3.0"
  * }
  * ```
  *
  */
+/**
+ * An enum describing the type of InvalidArgumentError
+ */
+export enum InvalidArgumentErrorType {
+    /**
+     * @remarks
+     * The argument has a duplicate in this domain.
+     *
+     */
+    Duplicate = 'Duplicate',
+    /**
+     * @remarks
+     * The argument is empty.
+     *
+     */
+    Empty = 'Empty',
+    /**
+     * @remarks
+     * The argument is not the correct type.
+     *
+     */
+    InvalidType = 'InvalidType',
+    /**
+     * @remarks
+     * The argument is unknown in this domain.
+     *
+     */
+    Unknown = 'Unknown',
+    /**
+     * @remarks
+     * No specified error type.
+     *
+     */
+    Unspecified = 'Unspecified',
+    /**
+     * @remarks
+     * The argument is unsupported for this type.
+     *
+     */
+    UnsupportedValue = 'UnsupportedValue',
+}
+
 /**
  * 表示一个最大/最小值的结构，用于描述数值的取值范围。
  * 
@@ -54,26 +96,50 @@ export class ArgumentOutOfBoundsError extends Error {
     private constructor();
     /**
      * @remarks
-     * 参数允许的最大值。
+     * @earlyExecution
      *
-     * Max expected value for the condition.
      */
-    maxValue: number;
+    readonly index: number;
+    /**
+     * @remarks
+     * 参数允许的最大值。
+     * 
+     * Max expected value for the condition.
+     *
+     * @earlyExecution
+     */
+    readonly maxValue?: number;
     /**
      * @remarks
      * 参数允许的最小值。
      *
      * Min expected value for the condition.
+     *
+     * @earlyExecution
+     *
      */
-    minValue: number;
+    readonly minValue?: number;
     /**
      * @remarks
      * 传入参数的值。
      *
      * Passed-in value for the argument.
+     *
+     * @earlyExecution
+     *
      */
-    value: number;
-    index: number;
+    readonly value?: number;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ContainerSizeOutOfBoundsError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly maxValue: number;
 }
 
 /**
@@ -95,35 +161,61 @@ export class EngineError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidArgumentError extends Error {
-    private constructor();
     /**
      * @remarks
      * Index of the argument that is in error.
      *
+     * @earlyExecution
+     *
      */
-    index: number;
-    type: InvalidArgumentErrorType;
+    readonly index: number;
+    /**
+     * @remarks
+     * Type of the argument error.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly type: InvalidArgumentErrorType;
+    /**
+     * @remarks
+     * @param funcName
+     * @param argTypeName
+     * @param errorType
+     * @param argIndex
+     */
+    constructor(funcName: string, argTypeName: string, errorType: InvalidArgumentErrorType, argIndex?: number);
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PropertyOutOfBoundsError extends Error {
     private constructor();
-    maxValue: number;
-    minValue: number;
-    value: number;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly maxValue?: number;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly minValue?: number;
+    /**
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly value: number;
 }
 
-export enum InvalidArgumentErrorType {
-    Duplicate = "Duplicate",
-    Empty = "Empty",
-    Unknown = "Unknown",
-    Unspecified = "Unspecified"
-}
-
+// @ts-ignore Class inheritance allowed for native defined classes
 export class RuntimeConditionError extends Error {
     private constructor();
 }
 
+// @ts-ignore Class inheritance allowed for native defined classes
 export class UnsupportedFunctionalityError extends Error {
     private constructor();
 }

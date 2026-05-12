@@ -268,6 +268,8 @@ export { EntityScaleComponent } from './classes/EntityScaleComponent';
 export { EntitySkinIdComponent } from './classes/EntitySkinIdComponent';
 export { EntitySpawnAfterEvent } from './classes/EntitySpawnAfterEvent';
 export { EntitySpawnAfterEventSignal } from './classes/EntitySpawnAfterEventSignal';
+export { EntityStartSneakingAfterEvent } from './classes/EntityStartSneakingAfterEvent';
+export { EntityStartSneakingAfterEventSignal } from './classes/EntityStartSneakingAfterEventSignal';
 export { EntityStrengthComponent } from './classes/EntityStrengthComponent';
 export { EntityTameableComponent } from './classes/EntityTameableComponent';
 export { EntityTameMountComponent } from './classes/EntityTameMountComponent';
@@ -542,6 +544,7 @@ export { EntityQueryPropertyOptions } from './interfaces/EntityQueryPropertyOpti
 export { EntityQueryScoreOptions } from './interfaces/EntityQueryScoreOptions';
 export { EntityRaycastHit } from './interfaces/EntityRaycastHit';
 export { EntityRaycastOptions } from './interfaces/EntityRaycastOptions';
+export { EntitySneakingChangedEventOptions } from './interfaces/EntitySneakingChangedEventOptions';
 export { EntityVisibilityRules } from './interfaces/EntityVisibilityRules';
 export { EqualsComparison } from './interfaces/EqualsComparison';
 export { ExplosionOptions } from './interfaces/ExplosionOptions';

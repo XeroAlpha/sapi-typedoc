@@ -1,34 +1,36 @@
-/* IMPORT */ import { CustomForm, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * The options for including a slider in {@link CustomForm}.
+ * Options for configuring a slider component.
  */
 export interface SliderOptions {
     /**
      * @remarks
-     * The description of the slider, shown in the UI.
+     * Descriptive text shown around the slider to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this slider is disabled.
+     * When true or bound to a true ObservableBoolean, the slider
+     * is shown but cannot be moved.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * The step size of the slider. For example, if this is 2 and
-     * the min is 0 and the max is 10, the only selectable values
-     * will be 0, 2, 4, 6, 8, 10.
+     * The increment amount between each slider step. Defaults to 1
+     * if not specified.
      *
      */
-    step?: Observable<number> | number;
+    step?: number | ObservableNumber;
     /**
      * @remarks
-     * Whether or not this slider is visible.
+     * When false or bound to a false ObservableBoolean, the slider
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

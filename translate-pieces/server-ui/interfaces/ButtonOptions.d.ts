@@ -1,26 +1,29 @@
-/* IMPORT */ import { CustomForm, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * The options for including a button in {@link CustomForm}.
+ * Options for configuring a button component.
  */
 export interface ButtonOptions {
     /**
      * @remarks
-     * Whether or not this button is disabled.
+     * When true or bound to a true ObservableBoolean, the button
+     * is shown but cannot be pressed.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * The tooltip for this button, shown when hovering the button.
+     * Text shown in a tooltip when the player hovers over the
+     * button.
      *
      */
-    tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this button is visible.
+     * When false or bound to a false ObservableBoolean, the button
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

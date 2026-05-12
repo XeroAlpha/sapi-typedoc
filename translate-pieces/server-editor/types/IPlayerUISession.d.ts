@@ -1,4 +1,4 @@
-/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, ExtensionContext, IActionBar, IGlobalInputManager, IMenuContainer, IModalDialogManager, IModalToolContainer, IPlayerLogger, IRootPropertyPane, IRootPropertyPaneOptions, IStatusBar } from '..';
+/* IMPORT */ import { ActionManager, BedrockEventSubscriptionCache, BuiltInUIManager, ExtensionContext, IActionBar, IContentBadgeManager, IGlobalInputManager, IMenuContainer, IModalDialogManager, IModalToolContainer, IPaneManager, IPlayerLogger, IRootPropertyPane, IRootPropertyPaneOptions, IStatusBar } from '..';
 
 /**
  * The IPlayerUISession represents the editor user interface
@@ -17,11 +17,13 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     createPropertyPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
+    readonly paneManager: IPaneManager;
     readonly menuBar: IMenuContainer;
     readonly actionBar: IActionBar;
     readonly statusBar: IStatusBar;
     readonly dialogManager: IModalDialogManager;
     readonly toolRail: IModalToolContainer;
+    readonly badgeManager: IContentBadgeManager;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
     readonly builtInUIManager: BuiltInUIManager;

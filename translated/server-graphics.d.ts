@@ -32,7 +32,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the horizon blend max to the value set by resource
-     * packs
+     * packs or via the 'setHorizonBlendMax' API in behavior packs
      *
      * @worldMutation
      *
@@ -44,7 +44,8 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the horizon blend mie start to the value set by
-     * resource packs
+     * resource packs or via the 'setHorizonBlendMieStart' API in
+     * behavior packs
      *
      * @worldMutation
      *
@@ -56,7 +57,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the horizon blend min to the value set by resource
-     * packs
+     * packs or via the 'setHorizonBlendMin' API in behavior packs
      *
      * @worldMutation
      *
@@ -68,6 +69,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the horizon blend start to the value set by resource
+     * packs or via the 'setHorizonBlendStart' API in behavior
      * packs
      *
      * @worldMutation
@@ -80,7 +82,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the moon mie strength to the value set by resource
-     * packs
+     * packs or via the 'setMoonMieStrength' API in behavior packs
      *
      * @worldMutation
      *
@@ -92,7 +94,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the rayleigh strength to the value set by resource
-     * packs
+     * packs or via the 'setRayleighStrength' API in behavior packs
      *
      * @worldMutation
      *
@@ -104,7 +106,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the sky horizon color to the color set by resource
-     * packs
+     * packs or via the 'setSkyHorizonColor' API in behavior packs
      *
      * @worldMutation
      *
@@ -116,7 +118,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the sky zenith color to the color set by resource
-     * packs
+     * packs or via the 'setSkyZenithColor' API in behavior packs
      *
      * @worldMutation
      *
@@ -128,7 +130,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the sun glare shape to the value set by resource
-     * packs
+     * packs or via the 'setSunGlareShape' API in behavior packs
      *
      * @worldMutation
      *
@@ -140,7 +142,7 @@ export class BiomeAtmospherics {
     /**
      * @remarks
      * Resets the sun mie strength to the value set by resource
-     * packs
+     * packs or via the 'setSunMieStrength' API in behavior packs
      *
      * @worldMutation
      *

@@ -1,8 +1,12 @@
 export { DebugArrow } from './classes/DebugArrow';
 export { DebugBox } from './classes/DebugBox';
 export { DebugCircle } from './classes/DebugCircle';
+export { DebugCone } from './classes/DebugCone';
+export { DebugCylinder } from './classes/DebugCylinder';
 export { DebugDrawer } from './classes/DebugDrawer';
+export { DebugEllipsoid } from './classes/DebugEllipsoid';
 export { DebugLine } from './classes/DebugLine';
+export { DebugPyramid } from './classes/DebugPyramid';
 export { DebugShape } from './classes/DebugShape';
 export { DebugSphere } from './classes/DebugSphere';
 export { DebugText } from './classes/DebugText';

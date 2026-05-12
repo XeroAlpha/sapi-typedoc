@@ -3945,14 +3945,12 @@ export class BiomeType {
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Returns a list of the biome's tags.
      *
      */
     getTags(): string[];
     /**
-     * @rc
      * @remarks
      * Checks if the biome has all of the provided tags.
      *
@@ -3963,7 +3961,6 @@ export class BiomeType {
 }
 
 /**
- * @rc
  * Supports a catalog of available biome types registered
  * within Minecraft.
  */
@@ -5844,7 +5841,7 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      */
     accumulatesSnow(): boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns `true` if this block can have snow within it, like a
      * flower submerged in snow. Returns `false` if this block
@@ -9140,7 +9137,6 @@ export class Entity {
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
-     * @rc
      * @remarks
      * Adds an item to the entity's inventory.
      *
@@ -12638,6 +12634,54 @@ export class EntitySpawnAfterEventSignal {
      * that is to be unregistered.
      */
     unsubscribe(callback: (arg0: EntitySpawnAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains data related to an entity beginning to sneak.
+ */
+export class EntityStartSneakingAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Entity that has started sneaking.
+     *
+     */
+    readonly entity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity
+ * begins sneaking.
+ */
+export class EntityStartSneakingAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity begins
+     * sneaking.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityStartSneakingAfterEvent) => void,
+        options?: EntitySneakingChangedEventOptions,
+    ): (arg0: EntityStartSneakingAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity begins
+     * sneaking.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityStartSneakingAfterEvent) => void): void;
 }
 
 /**
@@ -21878,6 +21922,15 @@ export class WorldAfterEvents {
     /**
      * @beta
      * @remarks
+     * This event fires when an entity starts sneaking.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
      * @earlyExecution
      *
      */
@@ -23765,6 +23818,15 @@ export interface EntityRaycastOptions extends EntityFilter {
 
 /**
  * @beta
+ * Options used to filter entity start sneaking and stop
+ * sneaking events.
+ */
+export interface EntitySneakingChangedEventOptions {
+    entityFilter?: EntityFilter;
+}
+
+/**
+ * @beta
  * Controls when a waypoint is visible based on the state of
  * the entity it tracks. These rules allow filtering waypoint
  * visibility by entity conditions like sneaking, invisibility,
@@ -25204,7 +25266,6 @@ export class InvalidContainerSlotError extends Error {
 }
 
 /**
- * @rc
  * This error can occur when accessing components on an entity
  * that doesn't have them.
  */
