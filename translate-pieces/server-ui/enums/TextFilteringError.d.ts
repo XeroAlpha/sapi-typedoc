@@ -4,7 +4,7 @@
  * filtering. This is used to provide more context about the
  * filtering process.
  */
-export declare enum TextFilteringError {
+export enum TextFilteringError {
     /**
      * @remarks
      * The text was not filtered because the player disabled text

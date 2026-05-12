@@ -1,26 +1,29 @@
-/* IMPORT */ import { CustomForm, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * The options for including a dropdown in {@link CustomForm}.
+ * Options for configuring a dropdown component.
  */
 export interface DropdownOptions {
     /**
      * @remarks
-     * The description of the dropdown, shown in the UI.
+     * Descriptive text shown around the dropdown to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this dropdown is disabled.
+     * When true or bound to a true ObservableBoolean, the dropdown
+     * is shown but cannot be changed.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this dropdown is visible.
+     * When false or bound to a false ObservableBoolean, the
+     * dropdown is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

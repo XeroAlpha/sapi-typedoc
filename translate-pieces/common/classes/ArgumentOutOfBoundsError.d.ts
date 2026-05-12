@@ -7,21 +7,32 @@ export class ArgumentOutOfBoundsError extends Error {
     private constructor();
     /**
      * @remarks
-     * Max expected value for the condition.
+     * @earlyExecution
      *
      */
-    maxValue: number;
+    readonly index: number;
+    /**
+     * @remarks
+     * Max expected value for the condition.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly maxValue?: number;
     /**
      * @remarks
      * Min expected value for the condition.
      *
+     * @earlyExecution
+     *
      */
-    minValue: number;
+    readonly minValue?: number;
     /**
      * @remarks
      * Passed-in value for the argument.
      *
+     * @earlyExecution
+     *
      */
-    value: number;
-    index: number;
+    readonly value?: number;
 }

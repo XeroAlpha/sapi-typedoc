@@ -225,7 +225,6 @@ export class Entity {
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
-     * @rc
      * @remarks
      * Adds an item to the entity's inventory.
      *

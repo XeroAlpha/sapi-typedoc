@@ -1,14 +1,15 @@
-/* IMPORT */ import { CustomForm, Observable } from '..';
+/* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
  * @beta
- * The options for including a spacer in {@link CustomForm}.
+ * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {
     /**
      * @remarks
-     * Whether or not this divider is visible
+     * When false or bound to a false ObservableBoolean, the
+     * divider is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

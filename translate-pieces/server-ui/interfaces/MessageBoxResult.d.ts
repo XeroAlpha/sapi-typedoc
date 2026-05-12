@@ -1,8 +1,10 @@
-/* IMPORT */ import { DataDrivenScreenClosedReason, MessageBox } from '..';
+/* IMPORT */ import { DataDrivenScreenClosedReason } from '..';
 
 /**
  * @beta
- * The result when a {@link MessageBox} is closed.
+ * The result returned when an MessageBox is closed. Contains
+ * the reason the message box was closed and the player's
+ * button selection, if applicable.
  */
 export interface MessageBoxResult {
     /**
@@ -13,8 +15,9 @@ export interface MessageBoxResult {
     closeReason: DataDrivenScreenClosedReason;
     /**
      * @remarks
-     * The button that was selected, undefined if it was closed
-     * without pressing a button.
+     * The index of the button the player selected. Not set if the
+     * message box was closed without a button selection (e.g., the
+     * player was busy or the server closed it).
      *
      */
     selection?: number;

@@ -35,32 +35,32 @@ import { EngineError } from '@minecraft/common';
 import { InvalidEntityError, Player, RawMessage, RawMessageError } from '@minecraft/server';
 /**
  * @beta
- * The reason why a data driven screen (i.e. MessageBox or
+ * The reason why a data driven UI screen (MessageBox or
  * CustomForm) was closed.
  */
-export declare enum DataDrivenScreenClosedReason {
+export enum DataDrivenScreenClosedReason {
     /**
      * @remarks
-     * Closed because it was programmatically told by the server to
-     * close using `form.close()`.
+     * The screen was closed by the client (e.g., the player
+     * dismissed it or there was a client authoritative close
+     * button).
      *
      */
-    ServerClose = 'ServerClose',
+    ClientClosed = 'ClientClosed',
     /**
      * @remarks
-     * Closed because the user was busy (i.e. other UI was open).
+     * The screen was closed by the server, likely by the close
+     * API.
+     *
+     */
+    ServerClosed = 'ServerClosed',
+    /**
+     * @remarks
+     * The screen could not be shown because the player was busy
+     * with another UI interaction.
      *
      */
     UserBusy = 'UserBusy',
-    /**
-     * @remarks
-     * Closed because the client closed the form. This can be with
-     * a close button on the form (i.e. the X in the corner of a
-     * message box, the 'Close' button on a custom form, or either
-     * button in the message box)
-     *
-     */
-    UserClose = 'UserClose',
 }
 
 export enum FormCancelationReason {
@@ -76,11 +76,32 @@ export enum FormRejectReason {
 
 /**
  * @beta
+ * The reason why a form visibility operation failed.
+ */
+export enum FormVisibilityErrorReason {
+    /**
+     * @remarks
+     * The operation failed because the form is already being shown
+     * to the player.
+     *
+     */
+    AlreadyShowing = 'AlreadyShowing',
+    /**
+     * @remarks
+     * The operation failed because the form is not currently being
+     * shown to the player.
+     *
+     */
+    NotShowing = 'NotShowing',
+}
+
+/**
+ * @beta
  * An enum representing the errors that can occur during text
  * filtering. This is used to provide more context about the
  * filtering process.
  */
-export declare enum TextFilteringError {
+export enum TextFilteringError {
     /**
      * @remarks
      * The text was not filtered because the player disabled text
@@ -195,150 +216,289 @@ export class ActionFormResponse extends FormResponse {
 
 /**
  * @beta
- * A customizable form that lets you put buttons, labels,
- * toggles, dropdowns, sliders, and more into a form! Built on
- * top of Observable, the form will update when the
- * Observables' value changes.
+ * A customizable data driven (DDUI) form that lets you add
+ * buttons, labels, toggles, dropdowns, sliders, text fields,
+ * and more. The form layout is built by calling methods to add
+ * components before calling show(). Any Observable values
+ * bound to form components will automatically update the UI
+ * when their values change.
  */
-export declare class CustomForm {
+export class CustomForm {
     /**
      * @remarks
-     * Inserts a button into the Custom form. onClick is called
-     * when the button is pressed.
+     * Creates a new CustomForm for the specified player with the
+     * given title.
      *
+     * @param player
+     * The player to show this form to.
+     * @param title
+     * The title text to display at the top of the form.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    constructor(
+        player: Player,
+        title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+    );
+    /**
+     * @remarks
+     * Adds a clickable button to the form layout. Returns the form
+     * instance to allow method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the button.
+     * @param onClick
+     * A callback function that is invoked when the player clicks
+     * the button.
+     * @param options
+     * Optional configuration for the button, such as a tooltip,
+     * disabled state, or visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     button(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
         onClick: () => void,
         options?: ButtonOptions,
     ): CustomForm;
     /**
      * @remarks
-     * Tell the client to close the form. Throws an error if the
-     * form is not open.
+     * Closes the form if it is currently being shown to the
+     * player. Throws a FormVisibilityError if the form is not
+     * currently open.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     close(): void;
     /**
      * @remarks
-     * Adds a close "X" button to the form.
+     * Adds a close button to the form at the bottom and as an 'X'
+     * in the corner. Returns the form instance to allow method
+     * chaining.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     closeButton(): CustomForm;
     /**
      * @remarks
-     * Inserts a divider (i.e. a line) into the Custom form.
+     * Adds a horizontal divider line to the form layout. Useful
+     * for visually separating sections of the form. Returns the
+     * form instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param options
+     * Optional configuration for the divider, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     divider(options?: DividerOptions): CustomForm;
     /**
      * @remarks
-     * Inserts a dropdown into the Custom form with the provided
-     * items. The value is based on the items value that selected.
+     * Adds a dropdown selection control to the form layout. The
+     * current selection is tracked via an ObservableNumber and
+     * will update when the player changes the selection. Returns
+     * the form instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label displayed around the dropdown.
+     * @param value
+     * An ObservableNumber that holds the index of the currently
+     * selected item.
+     * @param items
+     * The list of items to display in the dropdown.
+     * @param options
+     * Optional configuration for the dropdown, such as a
+     * description, disabled state, or visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     dropdown(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        value: Observable<number>,
-        items: DropdownItem[],
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        value: ObservableNumber,
+        items: DropdownItemData[],
         options?: DropdownOptions,
     ): CustomForm;
     /**
      * @remarks
-     * Inserts a header (i.e. large sized text) into the Custom
-     * form.
+     * Adds a header text component to the form layout. Headers are
+     * displayed in a larger or bolder style than regular labels,
+     * and are suitable for section titles. Returns the form
+     * instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param text
+     * The header text to display.
+     * @param options
+     * Optional configuration for the header, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
-    header(
-        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        options?: TextOptions,
-    ): CustomForm;
+    header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
      * @remarks
      * Returns true if the form is currently being shown to the
-     * player.
+     * player, false otherwise.
+     *
+     * @worldMutation
      *
      */
     isShowing(): boolean;
     /**
      * @remarks
-     * Inserts a label (i.e. medium sized text) into the Custom
-     * form.
+     * Adds a read-only text label to the form layout. Returns the
+     * form instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param text
+     * The text to display in the label.
+     * @param options
+     * Optional configuration for the label, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
-    label(
-        text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        options?: TextOptions,
-    ): CustomForm;
+    label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
      * @remarks
-     * Shows the form to the player. Will return false if the
-     * client was busy (i.e. in another menu or this one is open).
-     * Will throw if the user disconnects.
+     * Shows the form to the player. Returns a promise that
+     * resolves with a DataDrivenScreenClosedReason indicating how
+     * the form was closed.
      *
-     * @throws
-     *  *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     show(): Promise<DataDrivenScreenClosedReason>;
     /**
      * @remarks
-     * Creates a slider that lets players pick a number between
-     * minValue and maxValue. value must be client writable.
+     * Adds a numeric slider control to the form layout. The
+     * current value is tracked via an ObservableNumber and will
+     * update as the player moves the slider. Returns the form
+     * instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label displayed around the slider.
+     * @param value
+     * An ObservableNumber that holds the current value of the
+     * slider.
+     * @param min
+     * The minimum value of the slider range.
+     * @param max
+     * The maximum value of the slider range.
+     * @param options
+     * Optional configuration for the slider, such as step size, a
+     * description, disabled state, or visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     slider(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        value: Observable<number>,
-        minValue: Observable<number> | number,
-        maxValue: Observable<number> | number,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        value: ObservableNumber,
+        min: number | ObservableNumber,
+        max: number | ObservableNumber,
         options?: SliderOptions,
     ): CustomForm;
     /**
      * @remarks
-     * Inserts a space into the Custom form.
+     * Adds a vertical spacer component to the form layout. Useful
+     * for adding empty space between form components. Returns the
+     * form instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param options
+     * Optional configuration for the spacer, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     spacer(options?: SpacingOptions): CustomForm;
     /**
      * @remarks
-     * Inserts a text field into the Custom for that players can
-     * enter text into.
+     * Adds a text input field to the form layout. The current text
+     * value is tracked via an ObservableString and will update as
+     * the player types. Returns the form instance to allow method
+     * chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label displayed around the text field.
+     * @param text
+     * An ObservableString that holds the current text value of the
+     * input field.
+     * @param options
+     * Optional configuration for the text field, such as a
+     * description, disabled state, or visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     textField(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        text: Observable<string>,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        text: ObservableString,
         options?: TextFieldOptions,
     ): CustomForm;
     /**
      * @remarks
-     * Inserts an on/off toggle that players can interact with into
-     * the Custom form.
+     * Adds a toggle (on/off switch) control to the form layout.
+     * The current state is tracked via an ObservableBoolean and
+     * will update when the player toggles it. Returns the form
+     * instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label displayed next to the toggle.
+     * @param toggled
+     * An ObservableBoolean that holds the current on/off state of
+     * the toggle.
+     * @param options
+     * Optional configuration for the toggle, such as a
+     * description, disabled state, or visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     toggle(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        toggled: Observable<boolean>,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        toggled: ObservableBoolean,
         options?: ToggleOptions,
     ): CustomForm;
-    /**
-     * @remarks
-     * Creates a Custom form to show to the player. Use this
-     * instead of a constructor.
-     *
-     */
-    static create(
-        player: Player,
-        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-    ): CustomForm;
 }
-
-/**
- * @beta
- * Thrown when attempting to close a DDUI form that isn't open.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export declare class FormCloseError extends Error {}
 
 /**
  * Base type for a form response.
@@ -362,67 +522,126 @@ export class FormResponse {
 
 /**
  * @beta
- * A simple message form UI, 2 buttons and a text body.
+ * A simple message form with two buttons and a text body. Use
+ * this class to show a basic dialog to a player and handle the
+ * player's button selection.
  */
-export declare class MessageBox {
+export class MessageBox {
     /**
      * @remarks
-     * Sets the data for the text in the body of the message box.
-     * It is contained within a scroll view to allow for lots of
-     * text.
+     * Creates a new MessageBox for the specified player with the
+     * given title.
      *
+     * @param player
+     * The player to show this message box to.
+     * @param title
+     * The title text to display at the top of the message box.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
-    body(text: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage): MessageBox;
+    constructor(
+        player: Player,
+        title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+    );
     /**
      * @remarks
-     * Sets the data for the top button in the message box.
+     * Sets the body text displayed in the message box. Returns the
+     * message box instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param body
+     * The body text to display. Accepts either a plain string or
+     * an ObservableString.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    body(body: ObservableString | ObservableUIRawMessage | string | UIRawMessage): MessageBox;
+    /**
+     * @remarks
+     * Sets the label for the first button of the message box.
+     * Returns the message box instance to allow method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the first button.
+     * @param tooltip
+     * Optional tooltip text shown when hovering over the first
+     * button.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     button1(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
-     * Sets the data for the bottom button in the message box.
+     * Sets the label for the second button of the message box.
+     * Returns the message box instance to allow method chaining.
      *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the second button.
+     * @param tooltip
+     * Optional tooltip text shown when hovering over the second
+     * button.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
      */
     button2(
-        label: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-        tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
      * @remarks
-     * Tell the client to close the message box. Throws {@link
-     * FormCloseError} if the message box is not open.
+     * Closes the message box if it is currently being shown to the
+     * player. Throws a FormVisibilityError if the form is not
+     * currently open.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     close(): void;
     /**
      * @remarks
      * Returns true if the message box is currently being shown to
-     * the player.
+     * the player, false otherwise.
+     *
+     * @worldMutation
      *
      */
     isShowing(): boolean;
     /**
      * @remarks
-     * Show this message box to the player. Will return a result
-     * even if the client was busy (i.e. in another menu). Will
-     * throw if the user disconnects.
+     * Shows the message box to the player. Returns a promise that
+     * resolves with a MessageBoxResult containing the close reason
+     * and the player's button selection.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link FormVisibilityError}
+     *
+     * {@link InvalidEntityError}
      */
     show(): Promise<MessageBoxResult>;
-    /**
-     * @remarks
-     * Creates a message box for a certain player. Use this instead
-     * of a constructor.
-     *
-     */
-    static create(
-        player: Player,
-        title: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage,
-    ): MessageBox;
 }
 
 /**
@@ -630,81 +849,299 @@ export class ModalFormResponse extends FormResponse {
 
 /**
  * @beta
- * A class that represents data that can be Observed.
- * Extensively used for UI.
+ * An observable that holds a boolean value. Listeners are
+ * notified whenever the value changes.
  */
-export declare class Observable<T extends string | number | boolean | UIRawMessage> {
+export class ObservableBoolean {
     /**
      * @remarks
-     * Gets the data from the Observable.
+     * Creates a new ObservableBoolean with the provided initial
+     * boolean value.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The initial boolean value for this observable.
+     * @param options
+     * Optional configuration for the observable, such as whether
+     * the value can be written by the client.
+     */
+    constructor(data: boolean, options?: ObservableOptions);
+    /**
+     * @remarks
+     * Returns the current boolean value held by this observable.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
      *
      */
-    getData(): T;
+    getData(): boolean;
+    /**
+     * @remarks
+     * Updates the boolean value held by this observable. If the
+     * new value differs from the current value, all subscribed
+     * listeners are notified with the new value.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The new boolean value to set.
+     */
+    setData(data: boolean): void;
+    /**
+     * @remarks
+     * Registers a callback to be invoked whenever the observable's
+     * value changes. Returns the callback, which can be passed to
+     * unsubscribe to remove the listener.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * A function that receives the new boolean value each time the
+     * observable changes.
+     */
+    subscribe(callback: (arg0: boolean) => void): (arg0: boolean) => void;
+    /**
+     * @remarks
+     * Removes a previously registered listener from this
+     * observable. Returns true if the listener was found and
+     * removed, false if it was not found.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback handle previously returned by subscribe.
+     */
+    unsubscribe(callback: (arg0: boolean) => void): boolean;
+}
+
+/**
+ * @beta
+ * An observable that holds a numeric value. Listeners are
+ * notified whenever the value changes.
+ */
+export class ObservableNumber {
+    /**
+     * @remarks
+     * Creates a new ObservableNumber with the provided initial
+     * numeric value.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The initial numeric value for this observable.
+     * @param options
+     * Optional configuration for the observable, such as whether
+     * the value can be written by the client.
+     */
+    constructor(data: number, options?: ObservableOptions);
+    /**
+     * @remarks
+     * Returns the current numeric value held by this observable.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    getData(): number;
+    /**
+     * @remarks
+     * Updates the numeric value held by this observable. If the
+     * new value differs from the current value, all subscribed
+     * listeners are notified with the new value.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The new numeric value to set.
+     */
+    setData(data: number): void;
+    /**
+     * @remarks
+     * Registers a callback to be invoked whenever the observable's
+     * value changes. Returns the callback, which can be passed to
+     * unsubscribe to remove the listener.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * A function that receives the new numeric value each time the
+     * observable changes.
+     */
+    subscribe(callback: (arg0: number) => void): (arg0: number) => void;
+    /**
+     * @remarks
+     * Removes a previously registered listener from this
+     * observable. Returns true if the listener was found and
+     * removed, false if it was not found.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback handle previously returned by subscribe.
+     */
+    unsubscribe(callback: (arg0: number) => void): boolean;
+}
+
+/**
+ * @beta
+ * An observable that holds a string value. Listeners are
+ * notified whenever the value changes.
+ */
+export class ObservableString {
+    /**
+     * @remarks
+     * Creates a new ObservableString with the provided initial
+     * string value.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The initial string value for this observable.
+     * @param options
+     * Optional configuration for the observable, such as whether
+     * the value can be written by the client.
+     */
+    constructor(data: string, options?: ObservableOptions);
+    /**
+     * @remarks
+     * Returns the current string value held by this observable.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    getData(): string;
     /**
      * @remarks
      * Gets filtered data from the Observable (only available for
      * strings). In case of failure, it will return an array of
      * TextFilteringError that can provide more context about the
      * filtering process. For testing purposes, the options are
-     * available under "Creator -> Text Filtering" settings menu.
+     * available under 'Creator -> Text Filtering' settings menu.
      * This delay is only applied to the getFilteredText function
      * and can be used to simulate network latency when testing.
      *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
      */
-    getFilteredText(
-        this: Observable<T & string>,
-        player: Player,
-    ): Promise<string | TextFilteringError[]>;
+    getFilteredText(player: Player): Promise<TextFilteringError[] | string>;
     /**
      * @remarks
-     * Sets the data on this Observable and notifies the
-     * subscribers.
+     * Updates the string value held by this observable. If the new
+     * value differs from the current value, all subscribed
+     * listeners are notified with the new value.
      *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param data
+     * The new string value to set.
      */
-    setData(data: T): void;
+    setData(data: string): void;
     /**
      * @remarks
-     * Subscribes a callback to any changes that occur to the
-     * Observable. The return value can be passed into the
-     * `unsubscribe` function to stop listening to changes.
+     * Registers a callback to be invoked whenever the observable's
+     * value changes. Returns the callback, which can be passed to
+     * unsubscribe to remove the listener.
      *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * A function that receives the new string value each time the
+     * observable changes.
      */
-    subscribe(listener: (newValue: T) => void): (newValue: T) => void;
-    toJSON(): unknown;
+    subscribe(callback: (arg0: string) => void): (arg0: string) => void;
     /**
      * @remarks
-     * Unsubscribe a callback from any changes that occur to the
-     * Observable. This takes the return value from the `subscribe`
-     * function.
+     * Removes a previously registered listener from this
+     * observable. Returns true if the listener was found and
+     * removed, false if it was not found.
      *
-     */
-    unsubscribe(listener: (newValue: T) => void): void;
-    /**
-     * @remarks
-     * Creates an Observable, use this instead of a constructor.
+     * @worldMutation
      *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback handle previously returned by subscribe.
      */
-    static create<T extends string | number | boolean | UIRawMessage>(
-        data: T,
-        options?: ObservableOptions,
-    ): Observable<T>;
+    unsubscribe(callback: (arg0: string) => void): boolean;
 }
 
 /**
  * @beta
- * Thrown when a DDUI screen is rejected because the player
- * left before responding.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export declare class PlayerLeftError extends Error {}
-
-/**
- * @beta
- * Thrown when a DDUI screen is rejected because the server is
- * shutting down.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export declare class ServerShutdownError extends Error {}
+export class ObservableUIRawMessage {
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    constructor(data: UIRawMessage, options?: ObservableOptions);
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    getData(): UIRawMessage;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    setData(data: UIRawMessage): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: UIRawMessage) => void): (arg0: UIRawMessage) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: UIRawMessage) => void): boolean;
+}
 
 export class UIManager {
     private constructor();
@@ -719,64 +1156,69 @@ export class UIManager {
 
 /**
  * @beta
- * The options for including a button in {@link CustomForm}.
+ * Options for configuring a button component.
  */
 export interface ButtonOptions {
     /**
      * @remarks
-     * Whether or not this button is disabled.
+     * When true or bound to a true ObservableBoolean, the button
+     * is shown but cannot be pressed.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * The tooltip for this button, shown when hovering the button.
+     * Text shown in a tooltip when the player hovers over the
+     * button.
      *
      */
-    tooltip?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this button is visible.
+     * When false or bound to a false ObservableBoolean, the button
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The options for including a spacer in {@link CustomForm}.
+ * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {
     /**
      * @remarks
-     * Whether or not this divider is visible
+     * When false or bound to a false ObservableBoolean, the
+     * divider is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * Dropdown data for use in {@link CustomForm}.
+ * Represents a single item in a dropdown component.
  */
-export interface DropdownItem {
+export interface DropdownItemData {
     /**
      * @remarks
-     * The description of the dropdown item shown when it is
-     * selected.
+     * Optional descriptive text shown around the dropdown when
+     * this item is selected.
      *
      */
-    description?: UIRawMessage | string;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * The label of the dropdown item in the dropdown.
+     * The text displayed for this item in the dropdown list.
      *
      */
-    label: UIRawMessage | string;
+    label: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * The value the dropdown will be set to when this item is
-     * selected.
+     * The numeric value associated with this dropdown item. This
+     * is the value the bound ObservableNumber will be set to when
+     * the player selects this item.
      *
      */
     value: number;
@@ -784,32 +1226,37 @@ export interface DropdownItem {
 
 /**
  * @beta
- * The options for including a dropdown in {@link CustomForm}.
+ * Options for configuring a dropdown component.
  */
 export interface DropdownOptions {
     /**
      * @remarks
-     * The description of the dropdown, shown in the UI.
+     * Descriptive text shown around the dropdown to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this dropdown is disabled.
+     * When true or bound to a true ObservableBoolean, the dropdown
+     * is shown but cannot be changed.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this dropdown is visible.
+     * When false or bound to a false ObservableBoolean, the
+     * dropdown is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The result when a {@link MessageBox} is closed.
+ * The result returned when an MessageBox is closed. Contains
+ * the reason the message box was closed and the player's
+ * button selection, if applicable.
  */
 export interface MessageBoxResult {
     /**
@@ -820,8 +1267,9 @@ export interface MessageBoxResult {
     closeReason: DataDrivenScreenClosedReason;
     /**
      * @remarks
-     * The button that was selected, undefined if it was closed
-     * without pressing a button.
+     * The index of the button the player selected. Not set if the
+     * message box was closed without a button selection (e.g., the
+     * player was busy or the server closed it).
      *
      */
     selection?: number;
@@ -921,128 +1369,137 @@ export interface ModalFormDataToggleOptions {
 
 /**
  * @beta
- * An interface passed into `Observable.create`.
+ * Configuration options for creating an Observable. Controls
+ * how the observable value can be accessed and modified.
  */
 export interface ObservableOptions {
     /**
      * @remarks
-     * If set to true, the client can update this value. This
-     * should be used for things like dropdown values, toggles,
-     * textfields, etc. If unset or false, the client cannot write
-     * to this observable.
+     * When true, allows the client to write to this observable's
+     * value directly, enabling two-way data binding between the UI
+     * and the observable.
      *
      */
-    clientWritable?: boolean;
+    clientWritable: boolean;
 }
 
 /**
  * @beta
- * The options for including a slider in {@link CustomForm}.
+ * Options for configuring a slider component.
  */
 export interface SliderOptions {
     /**
      * @remarks
-     * The description of the slider, shown in the UI.
+     * Descriptive text shown around the slider to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this slider is disabled.
+     * When true or bound to a true ObservableBoolean, the slider
+     * is shown but cannot be moved.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * The step size of the slider. For example, if this is 2 and
-     * the min is 0 and the max is 10, the only selectable values
-     * will be 0, 2, 4, 6, 8, 10.
+     * The increment amount between each slider step. Defaults to 1
+     * if not specified.
      *
      */
-    step?: Observable<number> | number;
+    step?: number | ObservableNumber;
     /**
      * @remarks
-     * Whether or not this slider is visible.
+     * When false or bound to a false ObservableBoolean, the slider
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The options for including a spacer in {@link CustomForm}.
+ * Options for configuring a spacer component.
  */
 export interface SpacingOptions {
     /**
      * @remarks
-     * Whether or not this spacer is visible
+     * When false or bound to a false ObservableBoolean, the spacer
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The options for including a textfield in {@link CustomForm}.
+ * Options for configuring a text field component.
  */
 export interface TextFieldOptions {
     /**
      * @remarks
-     * The description for this text field, shown in the UI.
+     * Descriptive text shown around the text field label to
+     * provide additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this text field is disabled.
+     * When true or bound to a true ObservableBoolean, the text
+     * field is shown but cannot be edited.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this text field is visible.
+     * When false or bound to a false ObservableBoolean, the text
+     * field is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The options for including a label or header in {@link
- * CustomForm}.
+ * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
     /**
      * @remarks
-     * Whether or not this label is visible
+     * When false or bound to a false ObservableBoolean, the text
+     * component is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
  * @beta
- * The options for including a toggle in {@link CustomForm}.
+ * Options for configuring a toggle component.
  */
 export interface ToggleOptions {
     /**
      * @remarks
-     * The description for this toggle, shown in the UI.
+     * Descriptive text shown around the toggle to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this toggle is disabled.
+     * When true or bound to a true ObservableBoolean, the toggle
+     * is shown but cannot be interacted with.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this toggle is visible.
+     * When false or bound to a false ObservableBoolean, the toggle
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
 
 /**
@@ -1065,17 +1522,17 @@ export interface UIRawMessage {
     text?: string;
     /**
      * @remarks
-     * Provides a translation token where, if the client has an
+     * Provides a localization string where, if the client has an
      * available resource in the players' language which matches
-     * the token, will get translated on the client.
+     * the localization string, will get translated on the client.
      *
      */
     translate?: string;
     /**
      * @remarks
-     * Arguments for the translation token. Can be either an array
-     * of strings or UIRawMessage containing an array of raw text
-     * objects.
+     * Arguments for the localization string. Can be either an
+     * array of strings or UIRawMessage containing an array of raw
+     * text objects.
      *
      */
     with?: string[] | UIRawMessage;
@@ -1090,6 +1547,90 @@ export class FormRejectError extends Error {
      *
      */
     readonly reason: FormRejectReason;
+}
+
+/**
+ * @beta
+ * Thrown when a form visibility operation fails, such as
+ * attempting to show a form that is already showing or
+ * attempting to close a form that is not currently open.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class FormVisibilityError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier of the form that caused the visibility error.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly formId: string;
+    /**
+     * @remarks
+     * The reason the form visibility operation failed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly reason: FormVisibilityErrorReason;
+}
+
+/**
+ * @beta
+ * Thrown when attempting to interact with a form using an
+ * invalid or unknown form identifier.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidFormError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier of the invalid form that was referenced.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly formId: string;
+}
+
+/**
+ * @beta
+ * Thrown when attempting to modify a form after it has already
+ * been shown to a player. Form properties cannot be changed
+ * while the form is active.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidFormModificationError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier of the form that was illegally modified after
+     * being shown.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly formId: string;
+}
+
+/**
+ * @beta
+ * Thrown when a form operation fails because the target player
+ * has left the game.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerLeftError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier of the form that was being shown when the
+     * player left the game.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly formId: string;
 }
 
 export const uiManager: UIManager;

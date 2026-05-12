@@ -1,29 +1,29 @@
 /**
  * @beta
- * The reason why a data driven screen (i.e. MessageBox or
+ * The reason why a data driven UI screen (MessageBox or
  * CustomForm) was closed.
  */
-export declare enum DataDrivenScreenClosedReason {
+export enum DataDrivenScreenClosedReason {
     /**
      * @remarks
-     * Closed because it was programmatically told by the server to
-     * close using `form.close()`.
+     * The screen was closed by the client (e.g., the player
+     * dismissed it or there was a client authoritative close
+     * button).
      *
      */
-    ServerClose = 'ServerClose',
+    ClientClosed = 'ClientClosed',
     /**
      * @remarks
-     * Closed because the user was busy (i.e. other UI was open).
+     * The screen was closed by the server, likely by the close
+     * API.
+     *
+     */
+    ServerClosed = 'ServerClosed',
+    /**
+     * @remarks
+     * The screen could not be shown because the player was busy
+     * with another UI interaction.
      *
      */
     UserBusy = 'UserBusy',
-    /**
-     * @remarks
-     * Closed because the client closed the form. This can be with
-     * a close button on the form (i.e. the X in the corner of a
-     * message box, the 'Close' button on a custom form, or either
-     * button in the message box)
-     *
-     */
-    UserClose = 'UserClose',
 }

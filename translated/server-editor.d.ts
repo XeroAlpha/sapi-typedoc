@@ -1255,6 +1255,7 @@ export declare enum PropertyItemType {
 export declare enum RootPaneLocation {
     Drawer = 0,
     Viewport = 1,
+    Bottom = 2,
 }
 
 export enum SelectionVolumeEventType {
@@ -1628,11 +1629,13 @@ export type IPlayerUISession<PerPlayerStorage = Record<string, never>> = {
     createPropertyPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
     readonly actionManager: ActionManager;
     readonly inputManager: IGlobalInputManager;
+    readonly paneManager: IPaneManager;
     readonly menuBar: IMenuContainer;
     readonly actionBar: IActionBar;
     readonly statusBar: IStatusBar;
     readonly dialogManager: IModalDialogManager;
     readonly toolRail: IModalToolContainer;
+    readonly badgeManager: IContentBadgeManager;
     readonly log: IPlayerLogger;
     readonly extensionContext: ExtensionContext;
     readonly builtInUIManager: BuiltInUIManager;
@@ -6402,6 +6405,12 @@ export interface IActionBarItem {
 export interface IActionBarItemCreationParams {
     /**
      * @remarks
+     * Optional content badge identifier associated with the item.
+     *
+     */
+    contentBadgeId?: string;
+    /**
+     * @remarks
      * Initial enabled state of the item. If not defined, default
      * is true.
      *
@@ -7584,6 +7593,27 @@ export interface IComboBoxPropertyItemOptions extends IPropertyItemOptionsBase {
     tooltip?: BasicTooltipContent;
 }
 
+export interface IContentBadgeManager {
+    /**
+     * @remarks
+     * Register a badge to highlight a content.
+     *
+     * @param id
+     * The badge identifier
+     * @param iteration
+     * The iteration number (default: 0)
+     */
+    registerBadge(id: string, iteration?: number): void;
+    /**
+     * @remarks
+     * Unregister a badge.
+     *
+     * @param id
+     * The badge identifier to unregister
+     */
+    unregisterBadge(id: string): void;
+}
+
 /**
  * A property item which supports data entries displayed in a
  * table
@@ -7893,6 +7923,38 @@ export interface IImagePropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     onClick?: (x: number, y: number) => void;
+}
+
+/**
+ * A root pane that can store property items.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IIntroductionPane extends IPane {
+    /**
+     * @remarks
+     * Adds a new tab to the introduction pane
+     *
+     */
+    addTab(props: IntroductionPaneTabProps): IPropertyPane;
+}
+
+/**
+ * The options to create introduction pane.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IIntroductionPaneOptions extends IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Localized title of the property pane
+     *
+     */
+    title?: LocalizedString;
+    /**
+     * @remarks
+     * Unique identifier for the pane
+     *
+     */
+    uniqueId?: string;
 }
 
 /**
@@ -8636,6 +8698,12 @@ export interface IMenuCreationParams {
     label: string;
     /**
      * @remarks
+     * Determines the order of the menu item among its siblings.
+     *
+     */
+    sortIndex?: number;
+    /**
+     * @remarks
      * Whether the menu should have a tooltip.
      *
      */
@@ -9205,6 +9273,42 @@ export interface IModalToolContainer {
 }
 
 /**
+ * Properties for introduction pane tab.
+ */
+export interface IntroductionPaneTabProps {
+    /**
+     * @remarks
+     * Optional header for the tab content
+     *
+     */
+    contentHeader?: LocalizedString;
+    /**
+     * @remarks
+     * Optional image for the tab content
+     *
+     */
+    contentImage?: string;
+    /**
+     * @remarks
+     * Icon for the tab
+     *
+     */
+    icon?: string;
+    /**
+     * @remarks
+     * Unique identifier for the tab
+     *
+     */
+    id: string;
+    /**
+     * @remarks
+     * Localized title of the tab
+     *
+     */
+    label: LocalizedString;
+}
+
+/**
  * A property item which supports Number properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -9531,6 +9635,24 @@ export interface IPane {
      *
      */
     show(): void;
+}
+
+/**
+ * Manager for creating and controlling property panes.
+ */
+export interface IPaneManager {
+    /**
+     * @remarks
+     * Create a pane to be shown on the introduction window
+     *
+     */
+    createIntroductionPane(options: IIntroductionPaneOptions): IIntroductionPane;
+    /**
+     * @remarks
+     * Create a root pane
+     *
+     */
+    createRootPane(options: IRootPropertyPaneOptions): IRootPropertyPane;
 }
 
 /**
@@ -10142,6 +10264,13 @@ export interface IRootPropertyPaneHeaderAction {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
+    /**
+     * @remarks
+     * Optional content badge identifier associated with the root
+     * pane.
+     *
+     */
+    contentBadgeId?: string;
     /**
      * @remarks
      * Optional action button to be displayed on the header.

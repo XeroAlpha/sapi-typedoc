@@ -1,26 +1,29 @@
-/* IMPORT */ import { CustomForm, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * The options for including a textfield in {@link CustomForm}.
+ * Options for configuring a text field component.
  */
 export interface TextFieldOptions {
     /**
      * @remarks
-     * The description for this text field, shown in the UI.
+     * Descriptive text shown around the text field label to
+     * provide additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this text field is disabled.
+     * When true or bound to a true ObservableBoolean, the text
+     * field is shown but cannot be edited.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this text field is visible.
+     * When false or bound to a false ObservableBoolean, the text
+     * field is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

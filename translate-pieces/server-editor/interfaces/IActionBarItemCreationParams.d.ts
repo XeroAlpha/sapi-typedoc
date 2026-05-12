@@ -6,6 +6,12 @@
 export interface IActionBarItemCreationParams {
     /**
      * @remarks
+     * Optional content badge identifier associated with the item.
+     *
+     */
+    contentBadgeId?: string;
+    /**
+     * @remarks
      * Initial enabled state of the item. If not defined, default
      * is true.
      *

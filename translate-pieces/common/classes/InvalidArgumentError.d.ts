@@ -6,12 +6,28 @@
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidArgumentError extends Error {
-    private constructor();
     /**
      * @remarks
      * Index of the argument that is in error.
      *
+     * @earlyExecution
+     *
      */
-    index: number;
-    type: InvalidArgumentErrorType;
+    readonly index: number;
+    /**
+     * @remarks
+     * Type of the argument error.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly type: InvalidArgumentErrorType;
+    /**
+     * @remarks
+     * @param funcName
+     * @param argTypeName
+     * @param errorType
+     * @param argIndex
+     */
+    constructor(funcName: string, argTypeName: string, errorType: InvalidArgumentErrorType, argIndex?: number);
 }

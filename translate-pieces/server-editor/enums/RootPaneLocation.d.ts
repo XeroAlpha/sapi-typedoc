@@ -4,4 +4,5 @@
 export declare enum RootPaneLocation {
     Drawer = 0,
     Viewport = 1,
+    Bottom = 2,
 }

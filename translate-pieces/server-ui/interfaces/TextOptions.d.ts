@@ -1,15 +1,15 @@
-/* IMPORT */ import { Observable } from '..';
+/* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
  * @beta
- * The options for including a label or header in {@link
- * CustomForm}.
+ * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
     /**
      * @remarks
-     * Whether or not this label is visible
+     * When false or bound to a false ObservableBoolean, the text
+     * component is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }

@@ -1,26 +1,29 @@
-/* IMPORT */ import { CustomForm, Observable, UIRawMessage } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
- * The options for including a toggle in {@link CustomForm}.
+ * Options for configuring a toggle component.
  */
 export interface ToggleOptions {
     /**
      * @remarks
-     * The description for this toggle, shown in the UI.
+     * Descriptive text shown around the toggle to provide
+     * additional context.
      *
      */
-    description?: Observable<string> | Observable<UIRawMessage> | string | UIRawMessage;
+    description?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
-     * Whether or not this toggle is disabled.
+     * When true or bound to a true ObservableBoolean, the toggle
+     * is shown but cannot be interacted with.
      *
      */
-    disabled?: Observable<boolean> | boolean;
+    disabled?: boolean | ObservableBoolean;
     /**
      * @remarks
-     * Whether or not this toggle is visible.
+     * When false or bound to a false ObservableBoolean, the toggle
+     * is hidden.
      *
      */
-    visible?: Observable<boolean> | boolean;
+    visible?: boolean | ObservableBoolean;
 }
