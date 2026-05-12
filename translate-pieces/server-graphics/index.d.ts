@@ -1,2 +1,12 @@
 export { BiomeAtmospherics } from './classes/BiomeAtmospherics';
+export { BiomeColorGrading } from './classes/BiomeColorGrading';
+export { BiomeLighting } from './classes/BiomeLighting';
+export { BiomeWater } from './classes/BiomeWater';
 export { getBiomeAtmospherics } from './functions/getBiomeAtmospherics';
+export { getBiomeColorGrading } from './functions/getBiomeColorGrading';
+export { getBiomeLighting } from './functions/getBiomeLighting';
+export { getBiomeWater } from './functions/getBiomeWater';
+export { getPlayerAtmospherics } from './functions/getPlayerAtmospherics';
+export { getPlayerColorGrading } from './functions/getPlayerColorGrading';
+export { getPlayerLighting } from './functions/getPlayerLighting';
+export { getPlayerWater } from './functions/getPlayerWater';

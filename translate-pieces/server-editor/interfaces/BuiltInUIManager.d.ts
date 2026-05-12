@@ -40,6 +40,12 @@ export interface BuiltInUIManager {
     saveAndExit(): void;
     /**
      * @remarks
+     * Shows update information for the current version
+     *
+     */
+    showUpdateInformation(): void;
+    /**
+     * @remarks
      * Updates the visibility of the log panel
      *
      */
@@ -50,10 +56,4 @@ export interface BuiltInUIManager {
      *
      */
     updateUISettingsPanelVisibility(visibility: boolean): void;
-    /**
-     * @remarks
-     * Updates the visibility of the welcome panel
-     *
-     */
-    updateWelcomePanelVisibility(visibility: boolean): void;
 }

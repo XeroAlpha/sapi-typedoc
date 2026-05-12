@@ -892,6 +892,12 @@ export declare enum KeyboardKey {
     F12 = 123,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_SEMICOLON, ie. ';'
+     *
+     */
+    SEMICOLON = 186,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_COMMA, ie. ','
      *
      */
@@ -1118,6 +1124,14 @@ export declare enum MouseActionType {
     Wheel = 4,
 }
 
+export enum MouseCursorIconType {
+    Crosshair = 'Crosshair',
+    Default = 'Default',
+    Move = 'Move',
+    NotAllowed = 'NotAllowed',
+    Wait = 'Wait',
+}
+
 /**
  * Input event information about mouse actions
  */
@@ -1249,6 +1263,14 @@ export declare enum PropertyItemType {
     Vector3Timeline = 'editorUI:Vector3Timeline',
 }
 
+export enum RenderPlaneGridResolution {
+    EightBlocks = 'EightBlocks',
+    FourBlocks = 'FourBlocks',
+    None = 'None',
+    OneBlock = 'OneBlock',
+    SixteenBlocks = 'SixteenBlocks',
+}
+
 /**
  * Determines the location root pane will be displayed in
  */
@@ -1343,6 +1365,7 @@ export enum ThemeSettingsColorKey {
     PrefillVolumeBorder = 'PrefillVolumeBorder',
     PrefillVolumeFill = 'PrefillVolumeFill',
     PrimaryActive = 'PrimaryActive',
+    PrimaryAttention = 'PrimaryAttention',
     PrimaryBackground1 = 'PrimaryBackground1',
     PrimaryBackground2 = 'PrimaryBackground2',
     PrimaryBackground3 = 'PrimaryBackground3',
@@ -1352,6 +1375,7 @@ export enum ThemeSettingsColorKey {
     PrimaryMute = 'PrimaryMute',
     ScrollBar = 'ScrollBar',
     SecondaryActive = 'SecondaryActive',
+    SecondaryAttention = 'SecondaryAttention',
     SecondaryBackground1 = 'SecondaryBackground1',
     SecondaryBackground2 = 'SecondaryBackground2',
     SecondaryBackground3 = 'SecondaryBackground3',
@@ -1380,6 +1404,7 @@ export enum WidgetComponentType {
     Gizmo = 'Gizmo',
     Grid = 'Grid',
     Guide = 'Guide',
+    RenderPlane = 'RenderPlane',
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',
     Text = 'Text',
@@ -3426,6 +3451,7 @@ export class ExtensionContext {
      *
      */
     readonly extensionInfo: Extension;
+    readonly guidePlaneManager: GuidePlaneManager;
     /**
      * @remarks
      * Manager for minimap functionality, providing interface for
@@ -3572,6 +3598,78 @@ export class GraphicsSettings {
      * @throws This function can throw errors.
      */
     setAll(properties: GraphicsSettingsPropertyTypeMap): void;
+}
+
+export class GuidePlaneManager {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    allPlanesVisible: boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addPlane(
+        origin: Vector3,
+        normal: Vector3,
+        visible: boolean,
+        outlineColor: RGBA,
+        fillColor: RGBA,
+    ): string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getPlane(planeId: string): GuidePlane | undefined;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    getPlanes(): GuidePlane[];
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    removePlane(planeId: string): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setPlaneColors(planeId: string, outlineColor: RGBA, fillColor: RGBA): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setPlaneNormal(planeId: string, normal: Vector3): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setPlaneOrigin(planeId: string, origin: Vector3): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    setPlaneVisibility(planeId: string, visible: boolean): void;
 }
 
 export class IBlockPaletteItem {
@@ -4902,6 +5000,16 @@ export class Widget {
      *
      * @throws This function can throw errors.
      */
+    addRenderPlaneComponent(
+        componentName: string,
+        options?: WidgetComponentRenderPlaneOptions,
+    ): WidgetComponentRenderPlane;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
     addRenderPrimitiveComponent(
         componentName: string,
         primitiveType:
@@ -5237,6 +5345,41 @@ export class WidgetComponentGrid extends WidgetComponentBase {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WidgetComponentGuide extends WidgetComponentBase {
     private constructor();
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WidgetComponentRenderPlane extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    fillColor: RGBA;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    gridResolution: RenderPlaneGridResolution;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    maxSizeChunks: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    normal: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    outlineColor: RGBA;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6007,6 +6150,12 @@ export interface BuiltInUIManager {
     saveAndExit(): void;
     /**
      * @remarks
+     * Shows update information for the current version
+     *
+     */
+    showUpdateInformation(): void;
+    /**
+     * @remarks
      * Updates the visibility of the log panel
      *
      */
@@ -6017,12 +6166,6 @@ export interface BuiltInUIManager {
      *
      */
     updateUISettingsPanelVisibility(visibility: boolean): void;
-    /**
-     * @remarks
-     * Updates the visibility of the welcome panel
-     *
-     */
-    updateWelcomePanelVisibility(visibility: boolean): void;
 }
 
 /**
@@ -6337,6 +6480,15 @@ export interface GameOptions {
     tntExplodes?: boolean;
     weather?: number;
     worldName?: string;
+}
+
+export interface GuidePlane {
+    fillColor: RGBA;
+    normal: Vector3;
+    origin: Vector3;
+    outlineColor: RGBA;
+    planeId: string;
+    visible: boolean;
 }
 
 /**
@@ -7857,6 +8009,19 @@ export interface IGlobalInputManager {
         binding: KeyBinding,
         info?: KeyBindingInfo,
     ): IRegisteredKeyBinding;
+    /**
+     * @remarks
+     * Set or clear the mouse cursor icon for a given editor input
+     * context layer.
+     *
+     * @param contextId
+     * The editor input context id (maps to EditorInputContext).
+     * @param mouseIcon
+     * The MouseCursorIconType, or null to clear.
+     * @throws
+     *  *
+     */
+    setMouseIcon(contextId: EditorInputContext, mouseIcon: MouseCursorIconType | undefined): void;
 }
 
 /**
@@ -9191,6 +9356,16 @@ export interface IModalTool {
      * Action to register the binding for.
      */
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
+    /**
+     * @remarks
+     * Set the mouse cursor icon for this tool when it's active.
+     * The icon will only be visible when this tool is the
+     * currently selected tool.
+     *
+     * @param mouseIcon
+     * The mouse cursor icon, or undefined to reset to default.
+     */
+    setMouseIcon(mouseIcon: MouseCursorIconType | undefined): void;
     /**
      * @remarks
      * Unregister all input binding for this tool.
@@ -11497,6 +11672,15 @@ export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface WidgetComponentRenderPlaneOptions extends WidgetComponentBaseOptions {
+    fillColor?: RGBA;
+    gridResolution?: RenderPlaneGridResolution;
+    maxSizeChunks?: number;
+    normal?: Vector3;
+    outlineColor?: RGBA;
+}
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {}

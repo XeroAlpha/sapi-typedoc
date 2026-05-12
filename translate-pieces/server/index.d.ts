@@ -105,6 +105,7 @@ export { BlockContainerClosedAfterEventSignal } from './classes/BlockContainerCl
 export { BlockContainerOpenedAfterEvent } from './classes/BlockContainerOpenedAfterEvent';
 export { BlockContainerOpenedAfterEventSignal } from './classes/BlockContainerOpenedAfterEventSignal';
 export { BlockCustomComponentInstance } from './classes/BlockCustomComponentInstance';
+export { BlockDynamicPropertiesComponent } from './classes/BlockDynamicPropertiesComponent';
 export { BlockEvent } from './classes/BlockEvent';
 export { BlockExplodeAfterEvent } from './classes/BlockExplodeAfterEvent';
 export { BlockExplodeAfterEventSignal } from './classes/BlockExplodeAfterEventSignal';
@@ -411,6 +412,8 @@ export { PlayerPlaceBlockBeforeEvent } from './classes/PlayerPlaceBlockBeforeEve
 export { PlayerPlaceBlockBeforeEventSignal } from './classes/PlayerPlaceBlockBeforeEventSignal';
 export { PlayerSpawnAfterEvent } from './classes/PlayerSpawnAfterEvent';
 export { PlayerSpawnAfterEventSignal } from './classes/PlayerSpawnAfterEventSignal';
+export { PlayerStartBreakingBlockAfterEvent } from './classes/PlayerStartBreakingBlockAfterEvent';
+export { PlayerStartBreakingBlockAfterEventSignal } from './classes/PlayerStartBreakingBlockAfterEventSignal';
 export { PlayerSwingStartAfterEvent } from './classes/PlayerSwingStartAfterEvent';
 export { PlayerSwingStartAfterEventSignal } from './classes/PlayerSwingStartAfterEventSignal';
 export { PlayerUseNameTagAfterEvent } from './classes/PlayerUseNameTagAfterEvent';
@@ -562,9 +565,9 @@ export { LessThanComparison } from './interfaces/LessThanComparison';
 export { LessThanOrEqualsComparison } from './interfaces/LessThanOrEqualsComparison';
 export { MusicOptions } from './interfaces/MusicOptions';
 export { NotEqualsComparison } from './interfaces/NotEqualsComparison';
-export { PartyInfo } from './interfaces/PartyInfo';
 export { PlayAnimationOptions } from './interfaces/PlayAnimationOptions';
 export { PlayerAimAssistSettings } from './interfaces/PlayerAimAssistSettings';
+export { PlayerBreakingBlockEventOptions } from './interfaces/PlayerBreakingBlockEventOptions';
 export { PlayerSoundOptions } from './interfaces/PlayerSoundOptions';
 export { PlayerSwingEventOptions } from './interfaces/PlayerSwingEventOptions';
 export { PlayerVisibilityRules } from './interfaces/PlayerVisibilityRules';

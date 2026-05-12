@@ -509,6 +509,12 @@ export declare enum KeyboardKey {
     F12 = 123,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_SEMICOLON, ie. ';'
+     *
+     */
+    SEMICOLON = 186,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_COMMA, ie. ','
      *
      */

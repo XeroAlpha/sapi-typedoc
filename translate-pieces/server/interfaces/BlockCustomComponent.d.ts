@@ -13,7 +13,7 @@ export interface BlockCustomComponent {
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      */
     onBlockStateChange?: (arg0: BlockComponentBlockStateChangeEvent, arg1: CustomComponentParameters) => void;
     /**

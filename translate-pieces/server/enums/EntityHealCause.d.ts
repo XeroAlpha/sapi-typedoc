@@ -21,7 +21,7 @@ export enum EntityHealCause {
      */
     SelfHeal = 'SelfHeal',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Healing caused when Totem of Undying is activated.
      *

@@ -2,7 +2,7 @@
 /* IMPORT */ import { DimensionLocation, PrimitiveShape, RGBA, RawMessage, RawMessageError, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * A primitive shape class that represents a text label in the
  * world with a background.
  */

@@ -1,7 +1,7 @@
 /* IMPORT */ import { Dimension, DimensionLocation, Entity, Player, RGBA, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * The base class for a text primitive. Represents an object in
  * the world and its base properties.
  */
