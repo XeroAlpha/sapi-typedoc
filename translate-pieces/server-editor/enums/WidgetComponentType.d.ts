@@ -5,6 +5,7 @@ export enum WidgetComponentType {
     Gizmo = 'Gizmo',
     Grid = 'Grid',
     Guide = 'Guide',
+    RenderPlane = 'RenderPlane',
     RenderPrim = 'RenderPrim',
     Spline = 'Spline',
     Text = 'Text',

@@ -37,5 +37,6 @@ export { FormRejectError } from './classes/FormRejectError';
 export { FormVisibilityError } from './classes/FormVisibilityError';
 export { InvalidFormError } from './classes/InvalidFormError';
 export { InvalidFormModificationError } from './classes/InvalidFormModificationError';
+export { InvalidObservableError } from './classes/InvalidObservableError';
 export { PlayerLeftError } from './classes/PlayerLeftError';
 export { uiManager } from './variables/uiManager';

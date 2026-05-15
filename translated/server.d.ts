@@ -49,6 +49,10 @@ export enum AimAssistTargetMode {
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
+    /**
+     * @beta
+     */
+    DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
     /**
      * @remarks
@@ -1527,7 +1531,7 @@ export enum EntityHealCause {
      */
     SelfHeal = 'SelfHeal',
     /**
-     * @beta
+     * @rc
      * @remarks
      * Healing caused when Totem of Undying is activated.
      *
@@ -3148,9 +3152,11 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
     : BlockCustomComponentInstance;
 
 export type BlockComponentTypeMap = {
+    dynamic_properties: BlockDynamicPropertiesComponent;
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
+    'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
@@ -4976,7 +4982,7 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block permutation
  * that was changed from a previous permutation.
  */
@@ -5356,6 +5362,76 @@ export class BlockContainerOpenedAfterEventSignal {
 export class BlockCustomComponentInstance extends BlockComponent {
     private constructor();
     readonly customComponentParameters: CustomComponentParameters;
+}
+
+/**
+ * @beta
+ * Represents the dynamic properties of a block in the world.
+ * Only available with block entities. Up to 1KBytes of data
+ * can be stored per block entity in their dynamic properties
+ * storage.
+ * @seeExample rememberPlayerInteraction.ts
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockDynamicPropertiesComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:dynamic_properties';
+    /**
+     * @remarks
+     * Returns a DynamicProperty that was stored with the provided
+     * key. Keys are unique to each content pack and cannot be used
+     * to retrieve dynamic properties set from other content packs.
+     * Returns undefined if the key was not found.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    get(key: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @remarks
+     * Sets a dynamic property with the provided key and value.
+     * Keys are unique to each content pack and cannot be used to
+     * set dynamic properties for other content packs. Values can
+     * be either a Number, a String or a Vector3. Setting a
+     * property with an undefined value will remove it from the
+     * storage.
+     *
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    set(key: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @remarks
+     * Returns the current size, in bytes, of the dynamic
+     * properties storage for this block entity.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    totalByteCount(): number;
 }
 
 /**
@@ -12903,7 +12979,7 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to firing of a data driven
  * entity version upgrade.
  */
@@ -15766,6 +15842,10 @@ export class LootingEnchantFunction extends LootItemFunction {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LootItem extends LootPoolEntry {
     private constructor();
+    /**
+     * @beta
+     */
+    readonly conditions: LootItemCondition[];
     readonly functions: LootItemFunction[];
     /**
      * @remarks
@@ -16489,17 +16569,6 @@ export class Player extends Entity {
      * @throws This property can throw when used.
      */
     readonly onScreenDisplay: ScreenDisplay;
-    /**
-     * @beta
-     * @remarks
-     * The party information for this player, or undefined if the
-     * player is not in a party.
-     *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
-     */
-    readonly partyInfo?: PartyInfo;
     /**
      * @throws This property can throw when used.
      *
@@ -18345,6 +18414,76 @@ export class PlayerSpawnAfterEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding an event after a player
+ * starts breaking a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerStartBreakingBlockAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The permutation of the block that the player is starting to
+     * break.
+     *
+     */
+    readonly blockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The face of the block being broken.
+     *
+     */
+    readonly face: Direction;
+    /**
+     * @remarks
+     * The item stack that the player is using to break the block,
+     * or undefined if empty hand.
+     *
+     */
+    readonly heldItemStack?: ItemStack;
+    /**
+     * @remarks
+     * Player that started breaking the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player starts
+ * breaking a block.
+ */
+export class PlayerStartBreakingBlockAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player starts
+     * breaking a block.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: PlayerStartBreakingBlockAfterEvent) => void,
+        options?: PlayerBreakingBlockEventOptions,
+    ): (arg0: PlayerStartBreakingBlockAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player starts
+     * breaking a block.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerStartBreakingBlockAfterEvent) => void): void;
+}
+
+/**
  * Contains information regarding a player starting to swing
  * their arm.
  */
@@ -18717,7 +18856,7 @@ export class PressurePlatePushAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * The base class for a text primitive. Represents an object in
  * the world and its base properties.
  */
@@ -18821,7 +18960,7 @@ export class PrimitiveShape {
 }
 
 /**
- * @beta
+ * @rc
  * Primitive Shapes class used to allow adding and removing
  * text primitives to the world.
  */
@@ -20774,7 +20913,7 @@ export class TargetBlockHitAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * A primitive shape class that represents a text label in the
  * world with a background.
  */
@@ -21324,7 +21463,7 @@ export class World {
     readonly gameRules: GameRules;
     readonly isHardcore: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Manager for adding and removing primitive text objects in
      * the world.
@@ -21528,7 +21667,7 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a map of pack setting name and value pairs.
      *
@@ -22174,6 +22313,15 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when a player starts breaking a block.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerStartBreakingBlock: PlayerStartBreakingBlockAfterEventSignal;
+    /**
      * @remarks
      * @earlyExecution
      *
@@ -22540,7 +22688,7 @@ export interface BlockCustomComponent {
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      */
     onBlockStateChange?: (arg0: BlockComponentBlockStateChangeEvent, arg1: CustomComponentParameters) => void;
     /**
@@ -24236,27 +24384,6 @@ export interface NotEqualsComparison {
 }
 
 /**
- * @beta
- * Contains information about a player's party membership. This
- * object is a snapshot of the player's party state at the time
- * it was retrieved and is not kept up to date.
- */
-export interface PartyInfo {
-    /**
-     * @remarks
-     * Whether this player is the leader of their party.
-     *
-     */
-    isLeader: boolean;
-    /**
-     * @remarks
-     * The unique identifier of the party this player belongs to.
-     *
-     */
-    partyId: string;
-}
-
-/**
  * Contains additional options for how an animation is played.
  */
 export interface PlayAnimationOptions {
@@ -24323,6 +24450,32 @@ export interface PlayerAimAssistSettings {
      *
      */
     viewAngle?: Vector2;
+}
+
+/**
+ * @beta
+ * An interface that is passed into {@link
+ * PlayerStartBreakingBlockAfterEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
+ */
+export interface PlayerBreakingBlockEventOptions {
+    /**
+     * @remarks
+     * The {@link BlockFilter} that the callback should be called
+     * for. If undefined, the callback will be called for all
+     * blocks.
+     *
+     */
+    blockFilter?: BlockFilter;
+    /**
+     * @remarks
+     * The {@link EntityFilter} that the callback should be called
+     * for. If undefined, the callback will be called for all
+     * players.
+     *
+     */
+    playerFilter?: EntityFilter;
 }
 
 /**
@@ -25455,7 +25608,7 @@ export class PlaceJigsawError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PrimitiveShapeError extends Error {

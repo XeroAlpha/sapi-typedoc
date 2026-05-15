@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, InvalidFormModificationError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, InvalidFormModificationError, InvalidObservableError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * @beta
@@ -120,6 +120,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     dropdown(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -211,6 +213,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     slider(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -254,6 +258,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     textField(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -280,6 +286,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     toggle(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,

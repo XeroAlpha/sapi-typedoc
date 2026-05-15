@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IRegisteredKeyBinding, IRootPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '..';
+/* IMPORT */ import { EventSink, IRegisteredKeyBinding, IRootPropertyPane, KeyBinding, KeyBindingInfo, ModalToolLifecycleEventPayload, MouseCursorIconType, SupportedKeyboardActionTypes, SupportedMouseActionTypes } from '..';
 
 export interface IModalTool {
     /**
@@ -73,6 +73,16 @@ export interface IModalTool {
      * Action to register the binding for.
      */
     registerMouseWheelBinding(action: SupportedMouseActionTypes): void;
+    /**
+     * @remarks
+     * Set the mouse cursor icon for this tool when it's active.
+     * The icon will only be visible when this tool is the
+     * currently selected tool.
+     *
+     * @param mouseIcon
+     * The mouse cursor icon, or undefined to reset to default.
+     */
+    setMouseIcon(mouseIcon: MouseCursorIconType | undefined): void;
     /**
      * @remarks
      * Unregister all input binding for this tool.

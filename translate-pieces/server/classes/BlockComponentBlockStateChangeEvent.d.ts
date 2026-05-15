@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a specific block permutation
  * that was changed from a previous permutation.
  */

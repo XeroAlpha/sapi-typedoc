@@ -1688,6 +1688,8 @@ export declare enum MinecraftItemTypes {
     MusicDisc5 = "minecraft:music_disc_5",
     /** 音乐唱片 C418 - blocks。 */
     MusicDiscBlocks = "minecraft:music_disc_blocks",
+    /** 音乐唱片。 */
+    MusicDiscBounce = "minecraft:music_disc_bounce",
     /** 音乐唱片 C418 - cat。 */
     MusicDiscCat = "minecraft:music_disc_cat",
     /** 音乐唱片 C418 - chirp。 */

@@ -47,7 +47,7 @@ export class World {
     readonly gameRules: GameRules;
     readonly isHardcore: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Manager for adding and removing primitive text objects in
      * the world.
@@ -251,7 +251,7 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns a map of pack setting name and value pairs.
      *

@@ -338,6 +338,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     dropdown(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -429,6 +431,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     slider(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -472,6 +476,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     textField(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -498,6 +504,8 @@ export class CustomForm {
      * @throws This function can throw errors.
      *
      * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
      */
     toggle(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -1618,6 +1626,16 @@ export class InvalidFormModificationError extends Error {
      *
      */
     readonly formId: string;
+}
+
+/**
+ * @beta
+ * Thrown when an observable value is expected to be writable,
+ * but it is not.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidObservableError extends Error {
+    private constructor();
 }
 
 /**

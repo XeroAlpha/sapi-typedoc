@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, SupportedKeyboardActionTypes } from '..';
+/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, MouseCursorIconType, SupportedKeyboardActionTypes } from '..';
 
 export interface IGlobalInputManager {
     /**
@@ -21,4 +21,17 @@ export interface IGlobalInputManager {
         binding: KeyBinding,
         info?: KeyBindingInfo,
     ): IRegisteredKeyBinding;
+    /**
+     * @remarks
+     * Set or clear the mouse cursor icon for a given editor input
+     * context layer.
+     *
+     * @param contextId
+     * The editor input context id (maps to EditorInputContext).
+     * @param mouseIcon
+     * The MouseCursorIconType, or null to clear.
+     * @throws
+     *  *
+     */
+    setMouseIcon(contextId: EditorInputContext, mouseIcon: MouseCursorIconType | undefined): void;
 }
