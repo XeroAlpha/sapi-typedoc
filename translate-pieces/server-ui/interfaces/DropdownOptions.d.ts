@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for configuring a dropdown component.
  */
 export interface DropdownOptions {

@@ -1,3 +1,4 @@
+/* IMPORT */ import { ISerializable } from '../../server';
 /* IMPORT */ import { SecretString } from '../../server-admin';
 /* IMPORT */ import { HttpHeader, HttpRequestMethod } from '..';
 
@@ -13,7 +14,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    body: string;
+    body: ISerializable | string;
     /**
      * @remarks
      * A collection of HTTP headers to add to the outbound request.
@@ -65,7 +66,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    setBody(body: string): HttpRequest;
+    setBody(body: ISerializable | string): HttpRequest;
     /**
      * @remarks
      * Replaces and applies a set of HTTP Headers for the request.

@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for configuring a spacer component.
  */
 export interface SpacingOptions {

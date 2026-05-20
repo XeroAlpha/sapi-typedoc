@@ -18,7 +18,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "2.1.0-beta"
+ *   "version": "2.2.0-beta"
  * }
  * ```
  *

@@ -1,4 +1,5 @@
-/* IMPORT */ import { HttpHeader, HttpRequest } from '..';
+/* IMPORT */ import { ISerializable } from '../../server';
+/* IMPORT */ import { HttpHeader, HttpRequest, SerializableParseError } from '..';
 
 /**
  * Main object that contains result information from a request.
@@ -33,4 +34,13 @@ export class HttpResponse {
      *
      */
     readonly status: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link SerializableParseError}
+     */
+    deserialize(identifier: string): ISerializable;
 }

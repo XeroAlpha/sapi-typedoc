@@ -1,7 +1,7 @@
 /* IMPORT */ import { LocatorBarErrorReason } from '..';
 
 /**
- * @beta
+ * @rc
  * Error thrown when a locator bar operation fails. Contains a
  * reason code indicating the specific cause of the error.
  */

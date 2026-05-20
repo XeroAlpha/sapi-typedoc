@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutSize, PaneLayoutType } from '..';
+/* IMPORT */ import { IPropertyPaneOptions, LayoutAlignment, LayoutFlex, LayoutSize, PaneLayoutType } from '..';
 
 /**
  * Optional properties for Sub Pane property item
@@ -33,6 +33,13 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
      *
      */
     hasMargins?: boolean;
+    /**
+     * @remarks
+     * Custom height of the property item. Use LayoutFlex.Grow to
+     * fill available vertical space.
+     *
+     */
+    height?: number | LayoutSize | LayoutFlex;
     /**
      * @remarks
      * Pane icon shown in front of the pane header

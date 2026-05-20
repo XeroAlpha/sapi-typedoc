@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for configuring a text field component.
  */
 export interface TextFieldOptions {

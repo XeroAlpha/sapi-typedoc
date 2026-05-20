@@ -2,7 +2,7 @@
 /* IMPORT */ import { CustomDimensionAlreadyRegisteredError, CustomDimensionInvalidRegistryError, CustomDimensionNameError, CustomDimensionReloadNewDimensionError, NamespaceNameError } from '..';
 
 /**
- * @beta
+ * @rc
  * Provides the functionality for registering custom
  * dimensions. Custom dimensions can only be registered during
  * the system startup event.

@@ -24,7 +24,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Player } from '@minecraft/server';
+import { ISerializable, Player } from '@minecraft/server';
 import { SecretString } from '@minecraft/server-admin';
 export enum HttpRequestMethod {
     /**
@@ -1179,7 +1179,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    body: string;
+    body: ISerializable | string;
     /**
      * @remarks
      * A collection of HTTP headers to add to the outbound request.
@@ -1231,7 +1231,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    setBody(body: string): HttpRequest;
+    setBody(body: ISerializable | string): HttpRequest;
     /**
      * @remarks
      * Replaces and applies a set of HTTP Headers for the request.
@@ -1295,6 +1295,15 @@ export class HttpResponse {
      *
      */
     readonly status: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link SerializableParseError}
+     */
+    deserialize(identifier: string): ISerializable;
 }
 
 export class MessageAfterEventSignal {
@@ -1657,6 +1666,11 @@ export class RequestBodyTooLargeError extends Error {
      *
      */
     readonly providedBytes: number;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SerializableParseError extends Error {
+    private constructor();
 }
 
 /**

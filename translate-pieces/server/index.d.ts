@@ -189,6 +189,7 @@ export { EntityExhaustionComponent } from './classes/EntityExhaustionComponent';
 export { EntityFireImmuneComponent } from './classes/EntityFireImmuneComponent';
 export { EntityFloatsInLiquidComponent } from './classes/EntityFloatsInLiquidComponent';
 export { EntityFlyingSpeedComponent } from './classes/EntityFlyingSpeedComponent';
+export { EntityFogComponent } from './classes/EntityFogComponent';
 export { EntityFrictionModifierComponent } from './classes/EntityFrictionModifierComponent';
 export { EntityHasMarkVariantCondition } from './classes/EntityHasMarkVariantCondition';
 export { EntityHasVariantCondition } from './classes/EntityHasVariantCondition';
@@ -298,6 +299,7 @@ export { GameRuleChangeAfterEventSignal } from './classes/GameRuleChangeAfterEve
 export { GameRules } from './classes/GameRules';
 export { InputInfo } from './classes/InputInfo';
 export { IsBabyCondition } from './classes/IsBabyCondition';
+export { ISerializable } from './classes/ISerializable';
 export { ItemBookComponent } from './classes/ItemBookComponent';
 export { ItemCompleteUseAfterEvent } from './classes/ItemCompleteUseAfterEvent';
 export { ItemCompleteUseAfterEventSignal } from './classes/ItemCompleteUseAfterEventSignal';
@@ -374,6 +376,8 @@ export { PlayerBreakBlockBeforeEvent } from './classes/PlayerBreakBlockBeforeEve
 export { PlayerBreakBlockBeforeEventSignal } from './classes/PlayerBreakBlockBeforeEventSignal';
 export { PlayerButtonInputAfterEvent } from './classes/PlayerButtonInputAfterEvent';
 export { PlayerButtonInputAfterEventSignal } from './classes/PlayerButtonInputAfterEventSignal';
+export { PlayerCancelBreakingBlockAfterEvent } from './classes/PlayerCancelBreakingBlockAfterEvent';
+export { PlayerCancelBreakingBlockAfterEventSignal } from './classes/PlayerCancelBreakingBlockAfterEventSignal';
 export { PlayerCursorInventoryComponent } from './classes/PlayerCursorInventoryComponent';
 export { PlayerDimensionChangeAfterEvent } from './classes/PlayerDimensionChangeAfterEvent';
 export { PlayerDimensionChangeAfterEventSignal } from './classes/PlayerDimensionChangeAfterEventSignal';
@@ -614,6 +618,7 @@ export { CustomDimensionReloadNewDimensionError } from './classes/CustomDimensio
 export { EnchantmentLevelOutOfBoundsError } from './classes/EnchantmentLevelOutOfBoundsError';
 export { EnchantmentTypeNotCompatibleError } from './classes/EnchantmentTypeNotCompatibleError';
 export { EnchantmentTypeUnknownIdError } from './classes/EnchantmentTypeUnknownIdError';
+export { EntityFogComponentError } from './classes/EntityFogComponentError';
 export { EntitySpawnError } from './classes/EntitySpawnError';
 export { InvalidBlockComponentError } from './classes/InvalidBlockComponentError';
 export { InvalidContainerError } from './classes/InvalidContainerError';

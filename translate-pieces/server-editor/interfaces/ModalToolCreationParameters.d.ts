@@ -12,6 +12,12 @@ export interface ModalToolCreationParameters {
     action?: RegisteredAction<NoArgsAction>;
     /**
      * @remarks
+     * Content badge id associated with the modal tool
+     *
+     */
+    contentBadgeId?: string;
+    /**
+     * @remarks
      * Icon resource
      *
      */
