@@ -1,3 +1,4 @@
+/* IMPORT */ import { ISerializable } from '../../server';
 /* IMPORT */ import { SecretString } from '../../server-admin';
 /* IMPORT */ import { HttpHeader, HttpRequestMethod } from '..';
 
@@ -17,7 +18,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    body: string;
+    body: ISerializable | string;
     /**
      * @remarks
      * 该请求的请求标头集合。
@@ -81,7 +82,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    setBody(body: string): HttpRequest;
+    setBody(body: ISerializable | string): HttpRequest;
     /**
      * @remarks
      * 使用指定的请求标头集合增加或替换请求中指定的请求标头。

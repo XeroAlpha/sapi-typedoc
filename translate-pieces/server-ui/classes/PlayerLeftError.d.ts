@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown when a form operation fails because the target player
  * has left the game.
  */

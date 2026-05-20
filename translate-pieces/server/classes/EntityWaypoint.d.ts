@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, EntityVisibilityRules, InvalidWaypointError, InvalidWaypointTextureSelectorError, RGB, Waypoint, WaypointTextureSelector } from '..';
 
 /**
- * @beta
+ * @rc
  * Waypoint that tracks an entity's position. The waypoint
  * automatically updates as the entity moves and becomes
  * invalid when the entity is removed.

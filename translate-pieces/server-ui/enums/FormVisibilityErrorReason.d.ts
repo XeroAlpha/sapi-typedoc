@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * The reason why a form visibility operation failed.
  */
 export enum FormVisibilityErrorReason {

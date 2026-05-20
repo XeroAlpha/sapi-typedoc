@@ -1,7 +1,7 @@
 /* IMPORT */ import { EntityWaypoint, InvalidWaypointError, InvalidWaypointTextureSelectorError, Player, PlayerVisibilityRules, RGB, WaypointTextureSelector } from '..';
 
 /**
- * @beta
+ * @rc
  * Waypoint that tracks a player's position. Extends {@link
  * EntityWaypoint} with additional player-specific visibility
  * rules such as hidden state and spectator mode.

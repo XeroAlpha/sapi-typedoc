@@ -1,12 +1,13 @@
 /* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
-/* IMPORT */ import { BlockPermutation, InvalidStructureError, StructureManager, StructureSaveMode, Vector3 } from '..';
+/* IMPORT */ import { BlockPermutation, ISerializable, InvalidStructureError, StructureManager, StructureSaveMode, Vector3 } from '..';
 
 /**
  * Represents a loaded structure template (.mcstructure file).
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
  */
-export class Structure {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class Structure extends ISerializable {
     private constructor();
     /**
      * @remarks

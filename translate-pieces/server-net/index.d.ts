@@ -24,6 +24,7 @@ export { InternalHttpRequestError } from './classes/InternalHttpRequestError';
 export { InternalWebSocketError } from './classes/InternalWebSocketError';
 export { MalformedUriError } from './classes/MalformedUriError';
 export { RequestBodyTooLargeError } from './classes/RequestBodyTooLargeError';
+export { SerializableParseError } from './classes/SerializableParseError';
 export { TLSOnlyError } from './classes/TLSOnlyError';
 export { UriNotAllowedError } from './classes/UriNotAllowedError';
 export { WebSocketConnectionFailedError } from './classes/WebSocketConnectionFailedError';

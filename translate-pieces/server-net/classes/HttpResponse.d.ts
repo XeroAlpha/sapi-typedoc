@@ -1,4 +1,5 @@
-/* IMPORT */ import { HttpHeader, HttpRequest } from '..';
+/* IMPORT */ import { ISerializable } from '../../server';
+/* IMPORT */ import { HttpHeader, HttpRequest, SerializableParseError } from '..';
 
 /**
  * 表示一个 HTTP 响应。包含了请求及对应响应的相关信息。
@@ -43,4 +44,13 @@ export class HttpResponse {
      *
      */
     readonly status: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link SerializableParseError}
+     */
+    deserialize(identifier: string): ISerializable;
 }

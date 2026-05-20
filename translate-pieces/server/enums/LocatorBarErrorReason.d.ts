@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Enum representing the different reasons why a locator bar
  * operation may fail.
  */

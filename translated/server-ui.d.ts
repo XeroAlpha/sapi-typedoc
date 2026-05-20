@@ -32,7 +32,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "2.1.0-beta"
+ *   "version": "2.2.0-beta"
  * }
  * ```
  *
@@ -40,7 +40,7 @@
 import { EngineError } from '@minecraft/common';
 import { InvalidEntityError, Player, RawMessage, RawMessageError } from '@minecraft/server';
 /**
- * @beta
+ * @rc
  * The reason why a data driven UI screen (MessageBox or
  * CustomForm) was closed.
  */
@@ -69,19 +69,54 @@ export enum DataDrivenScreenClosedReason {
     UserBusy = 'UserBusy',
 }
 
+/**
+ * An enum representing the reasons why a form was canceled.
+ */
 export enum FormCancelationReason {
+    /**
+     * @remarks
+     * The form was canceled because the player was busy with
+     * another UI interaction.
+     *
+     */
     UserBusy = 'UserBusy',
+    /**
+     * @remarks
+     * The form was canceled because the player closed it.
+     *
+     */
     UserClosed = 'UserClosed',
 }
 
+/**
+ * An enum representing the reasons why a form was rejected.
+ */
 export enum FormRejectReason {
+    /**
+     * @remarks
+     * The form was rejected because the response from the client
+     * was malformed or could not be parsed.
+     *
+     */
     MalformedResponse = 'MalformedResponse',
+    /**
+     * @remarks
+     * The form was rejected because the player quit the game
+     * before responding.
+     *
+     */
     PlayerQuit = 'PlayerQuit',
+    /**
+     * @remarks
+     * The form was rejected because the server shut down before
+     * the player responded.
+     *
+     */
     ServerShutdown = 'ServerShutdown',
 }
 
 /**
- * @beta
+ * @rc
  * The reason why a form visibility operation failed.
  */
 export enum FormVisibilityErrorReason {
@@ -102,7 +137,7 @@ export enum FormVisibilityErrorReason {
 }
 
 /**
- * @beta
+ * @rc
  * An enum representing the errors that can occur during text
  * filtering. This is used to provide more context about the
  * filtering process.
@@ -221,7 +256,7 @@ export class ActionFormResponse extends FormResponse {
 }
 
 /**
- * @beta
+ * @rc
  * A customizable data driven (DDUI) form that lets you add
  * buttons, labels, toggles, dropdowns, sliders, text fields,
  * and more. The form layout is built by calling methods to add
@@ -535,7 +570,7 @@ export class FormResponse {
 }
 
 /**
- * @beta
+ * @rc
  * A simple message form with two buttons and a text body. Use
  * this class to show a basic dialog to a player and handle the
  * player's button selection.
@@ -862,7 +897,7 @@ export class ModalFormResponse extends FormResponse {
 }
 
 /**
- * @beta
+ * @rc
  * An observable that holds a boolean value. Listeners are
  * notified whenever the value changes.
  */
@@ -939,7 +974,7 @@ export class ObservableBoolean {
 }
 
 /**
- * @beta
+ * @rc
  * An observable that holds a numeric value. Listeners are
  * notified whenever the value changes.
  */
@@ -1016,7 +1051,7 @@ export class ObservableNumber {
 }
 
 /**
- * @beta
+ * @rc
  * An observable that holds a string value. Listeners are
  * notified whenever the value changes.
  */
@@ -1112,19 +1147,32 @@ export class ObservableString {
 }
 
 /**
- * @beta
+ * @rc
+ * An observable that holds a UIRawMessage value. Listeners are
+ * notified whenever the value changes.
  */
 export class ObservableUIRawMessage {
     /**
      * @remarks
+     * Creates a new ObservableUIRawMessage with the provided
+     * initial UIRawMessage value.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param data
+     * The initial UIRawMessage value for this observable.
+     * @param options
+     * Optional configuration for the observable, such as whether
+     * the value can be written by the client.
      */
     constructor(data: UIRawMessage, options?: ObservableOptions);
     /**
      * @remarks
+     * Returns the current UIRawMessage value held by this
+     * observable.
+     *
      * @worldMutation
      *
      * @earlyExecution
@@ -1133,26 +1181,45 @@ export class ObservableUIRawMessage {
     getData(): UIRawMessage;
     /**
      * @remarks
+     * Updates the UIRawMessage value held by this observable. If
+     * the new value differs from the current value, all subscribed
+     * listeners are notified with the new value.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param data
+     * The new UIRawMessage value to set.
      */
     setData(data: UIRawMessage): void;
     /**
      * @remarks
+     * Registers a callback to be invoked whenever the observable's
+     * value changes. Returns the callback, which can be passed to
+     * unsubscribe to remove the listener.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param callback
+     * A function that receives the new UIRawMessage value each
+     * time the observable changes.
      */
     subscribe(callback: (arg0: UIRawMessage) => void): (arg0: UIRawMessage) => void;
     /**
      * @remarks
+     * Removes a previously registered listener from this
+     * observable. Returns true if the listener was found and
+     * removed, false if it was not found.
+     *
      * @worldMutation
      *
      * @earlyExecution
      *
+     * @param callback
+     * The callback handle previously returned by subscribe.
      */
     unsubscribe(callback: (arg0: UIRawMessage) => void): boolean;
 }
@@ -1169,7 +1236,7 @@ export class UIManager {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a button component.
  */
 export interface ButtonOptions {
@@ -1197,7 +1264,7 @@ export interface ButtonOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {
@@ -1211,7 +1278,7 @@ export interface DividerOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a single item in a dropdown component.
  */
 export interface DropdownItemData {
@@ -1239,7 +1306,7 @@ export interface DropdownItemData {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a dropdown component.
  */
 export interface DropdownOptions {
@@ -1267,7 +1334,7 @@ export interface DropdownOptions {
 }
 
 /**
- * @beta
+ * @rc
  * The result returned when an MessageBox is closed. Contains
  * the reason the message box was closed and the player's
  * button selection, if applicable.
@@ -1382,7 +1449,7 @@ export interface ModalFormDataToggleOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Configuration options for creating an Observable. Controls
  * how the observable value can be accessed and modified.
  */
@@ -1398,7 +1465,7 @@ export interface ObservableOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a slider component.
  */
 export interface SliderOptions {
@@ -1433,7 +1500,7 @@ export interface SliderOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a spacer component.
  */
 export interface SpacingOptions {
@@ -1447,7 +1514,7 @@ export interface SpacingOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a text field component.
  */
 export interface TextFieldOptions {
@@ -1475,7 +1542,7 @@ export interface TextFieldOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
@@ -1489,7 +1556,7 @@ export interface TextOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a toggle component.
  */
 export interface ToggleOptions {
@@ -1517,7 +1584,7 @@ export interface ToggleOptions {
 }
 
 /**
- * @beta
+ * @rc
  * A message that can be sent to the client. This is a subset
  * of the RawMessage type, and is used for UI messages.
  */
@@ -1552,11 +1619,17 @@ export interface UIRawMessage {
     with?: string[] | UIRawMessage;
 }
 
+/**
+ * Thrown when a form is rejected. Contains the reason for the
+ * rejection.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class FormRejectError extends Error {
     private constructor();
     /**
      * @remarks
+     * The reason the form was rejected.
+     *
      * @earlyExecution
      *
      */
@@ -1564,7 +1637,7 @@ export class FormRejectError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when a form visibility operation fails, such as
  * attempting to show a form that is already showing or
  * attempting to close a form that is not currently open.
@@ -1591,7 +1664,7 @@ export class FormVisibilityError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when attempting to interact with a form using an
  * invalid or unknown form identifier.
  */
@@ -1609,7 +1682,7 @@ export class InvalidFormError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when attempting to modify a form after it has already
  * been shown to a player. Form properties cannot be changed
  * while the form is active.
@@ -1629,7 +1702,7 @@ export class InvalidFormModificationError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when an observable value is expected to be writable,
  * but it is not.
  */
@@ -1639,7 +1712,7 @@ export class InvalidObservableError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when a form operation fails because the target player
  * has left the game.
  */

@@ -294,6 +294,7 @@ export { IDataTablePropertyItem } from './interfaces/IDataTablePropertyItem';
 export { IDataTablePropertyItemEntry } from './interfaces/IDataTablePropertyItemEntry';
 export { IDataTablePropertyItemOptions } from './interfaces/IDataTablePropertyItemOptions';
 export { IDisposable } from './interfaces/IDisposable';
+export { IDividerPropertyItemOptions } from './interfaces/IDividerPropertyItemOptions';
 export { IDropdownPropertyItem } from './interfaces/IDropdownPropertyItem';
 export { IDropdownPropertyItemEntry } from './interfaces/IDropdownPropertyItemEntry';
 export { IDropdownPropertyItemOptions } from './interfaces/IDropdownPropertyItemOptions';

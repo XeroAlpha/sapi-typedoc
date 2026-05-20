@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Configuration options for creating an Observable. Controls
  * how the observable value can be accessed and modified.
  */

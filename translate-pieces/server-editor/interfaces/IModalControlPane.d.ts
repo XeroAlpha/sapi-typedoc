@@ -1,4 +1,4 @@
-/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase } from '..';
+/* IMPORT */ import { ButtonPropertyItemSupportedActionTypes, IBoolPropertyItem, IBoolPropertyItemOptions, IButtonPanePropertyItem, IButtonPanePropertyItemOptions, IButtonPropertyItem, IButtonPropertyItemOptions, IDividerPropertyItemOptions, IObservableProp, IPane, IPropertyItemBase } from '..';
 
 /**
  * A sub pane for modal control elements.
@@ -32,5 +32,5 @@ export interface IModalControlPane extends IPane {
      * Adds an divider item to the pane.
      *
      */
-    addDivider(): IPropertyItemBase;
+    addDivider(options?: IDividerPropertyItemOptions): IPropertyItemBase;
 }

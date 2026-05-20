@@ -1174,6 +1174,15 @@ export enum EntityComponentTypes {
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
+     * @beta
+     * @remarks
+     * Use this component to access and manipulate the fog
+     * definitions stack of a player. This is only available on
+     * players.
+     *
+     */
+    Fog = 'minecraft:player.fog',
+    /**
      * @remarks
      * Use this component to read the hunger of a player. This is
      * only available on players.
@@ -2374,7 +2383,7 @@ export enum LiquidType {
 }
 
 /**
- * @beta
+ * @rc
  * Enum representing the different reasons why a locator bar
  * operation may fail.
  */
@@ -3091,7 +3100,7 @@ export enum WatchdogTerminateReason {
 }
 
 /**
- * @beta
+ * @rc
  * Enum representing different texture icons that can be
  * displayed for waypoints on the locator bar.
  */
@@ -3280,6 +3289,7 @@ export type EntityComponentTypeMap = {
     'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
     'minecraft:player.exhaustion': EntityExhaustionComponent;
+    'minecraft:player.fog': EntityFogComponent;
     'minecraft:player.hunger': EntityHungerComponent;
     'minecraft:player.saturation': EntitySaturationComponent;
     'minecraft:projectile': EntityProjectileComponent;
@@ -3314,6 +3324,7 @@ export type EntityComponentTypeMap = {
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
     'player.exhaustion': EntityExhaustionComponent;
+    'player.fog': EntityFogComponent;
     'player.hunger': EntityHungerComponent;
     'player.saturation': EntitySaturationComponent;
     projectile: EntityProjectileComponent;
@@ -8577,7 +8588,7 @@ export class Dimension {
 }
 
 /**
- * @beta
+ * @rc
  * Provides the functionality for registering custom
  * dimensions. Custom dimensions can only be registered during
  * the system startup event.
@@ -10663,6 +10674,140 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
      */
     value: number;
     static readonly componentId = 'minecraft:flying_speed';
+}
+
+/**
+ * @beta
+ * Provides access to the fog definitions stack of a player
+ * entity, allowing scripts to push, pop, remove, and query
+ * active fog definitions.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityFogComponent extends EntityComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:player.fog';
+    /**
+     * @remarks
+     * Sets the player's fog stack to the given list of fog
+     * identifiers, replacing any existing entries.
+     *
+     * @worldMutation
+     *
+     * @param fogIds
+     * A stack of fog definition identifiers to set on the player's
+     * fog stack (e.g. ['minecraft:fog_bamboo_jungle']). Maximum of
+     * 16 entries.
+     * @param tag
+     * An optional tag to associate with the new entries, used to
+     * target them with pop or remove.
+     * @throws
+     * Throws if the entity is invalid, if more than 16 fog
+     * identifiers are provided, or if any fog identifier is
+     * invalid.
+     *
+     * {@link EntityFogComponentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    applyStack(fogIds: string[], tag?: string): void;
+    /**
+     * @remarks
+     * Returns the list of fog identifiers currently on the
+     * player's fog stack, ordered from bottom to top.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * An array of fog definition identifiers currently on the
+     * stack.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    getStack(): string[];
+    /**
+     * @remarks
+     * Returns the list of tags currently present on the player's
+     * fog stack.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * An array of tag strings associated with fog settings on the
+     * stack.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    getTags(): string[];
+    /**
+     * @remarks
+     * Removes the most recently pushed fog definition from the
+     * player's fog stack.
+     *
+     * @worldMutation
+     *
+     * @param tag
+     * An optional tag identifying which entry to pop. If provided,
+     * searches the stack from top to bottom and removes the most
+     * recently pushed entry with this tag. If omitted, removes the
+     * most recently pushed entry regardless of tag.
+     * @returns
+     * Returns the identifier of the popped fog definition, or
+     * undefined if the stack was unchanged.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    pop(tag?: string): string | undefined;
+    /**
+     * @remarks
+     * Pushes a new fog definition onto the player's fog stack.
+     *
+     * @worldMutation
+     *
+     * @param fogId
+     * The identifier of the fog definition to push onto the stack
+     * (e.g. 'minecraft:fog_bamboo_jungle').
+     * @param tag
+     * An optional tag used to label this fog definition on the
+     * stack, allowing it to be targeted by pop or remove. If
+     * omitted, the entry is stored with the tag 'untagged'.
+     * @returns
+     * Returns the zero-based index at which the fog definition was
+     * inserted into the stack.
+     * @throws
+     * Throws if the entity is invalid, the fog identifier is
+     * invalid, or if the stack limit of 16 has been exceeded.
+     *
+     * {@link EntityFogComponentError}
+     *
+     * {@link InvalidEntityError}
+     */
+    push(fogId: string, tag?: string): number;
+    /**
+     * @remarks
+     * Removes all fog definitions with the given tag from the
+     * player's fog stack. If no tag is provided, clears all fog
+     * definitions.
+     *
+     * @worldMutation
+     *
+     * @param tag
+     * An optional tag identifying which the entries to remove. If
+     * omitted, clears all fog definitions regardless of tag.
+     * @returns
+     * Returns true if at least one entry was removed, or false if
+     * the stack was unchanged.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    remove(tag?: string): boolean;
 }
 
 /**
@@ -13007,7 +13152,7 @@ export class EntityUpgradeAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains event registration related to firing of a data
  * driven entity version upgrade.
  */
@@ -13069,7 +13214,7 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Waypoint that tracks an entity's position. The waypoint
  * automatically updates as the entity moves and becomes
  * invalid when the entity is removed.
@@ -13703,6 +13848,10 @@ export class InputInfo {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class IsBabyCondition extends LootItemCondition {
+    private constructor();
+}
+
+export class ISerializable {
     private constructor();
 }
 
@@ -15688,7 +15837,7 @@ export class ListBlockVolume extends BlockVolumeBase {
 }
 
 /**
- * @beta
+ * @rc
  * Waypoint that points to a fixed location in the world.
  * Unlike entity waypoints, location waypoints always remain
  * valid and their position can be updated.
@@ -15716,7 +15865,7 @@ export class LocationWaypoint extends Waypoint {
 }
 
 /**
- * @beta
+ * @rc
  * Manages the collection of waypoints displayed on a player's
  * locator bar. Allows adding, removing, and querying waypoints
  * with a maximum capacity limit.
@@ -16547,7 +16696,7 @@ export class Player extends Entity {
      */
     readonly level: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The player's Locator Bar. This property is used for managing
      * waypoints displayed on the HUD.
@@ -17224,6 +17373,83 @@ export class PlayerButtonInputAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PlayerButtonInputAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information regarding an event after a player
+ * cancels breaking a block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class PlayerCancelBreakingBlockAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The permutation of the block that the player cancelled
+     * breaking.
+     *
+     */
+    readonly blockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * The progress of breaking the block when the player cancelled
+     * in the exclusive range (0, 1).
+     *
+     */
+    readonly breakProgress: number;
+    /**
+     * @remarks
+     * The face of the block that was being broken.
+     *
+     */
+    readonly face: Direction;
+    /**
+     * @remarks
+     * The item stack that the player was using to break the block,
+     * or undefined if empty hand.
+     *
+     */
+    readonly heldItemStack?: ItemStack;
+    /**
+     * @remarks
+     * Player that cancelled breaking the block for this event.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player
+ * cancels breaking a block.
+ */
+export class PlayerCancelBreakingBlockAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player cancels
+     * breaking a block.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: PlayerCancelBreakingBlockAfterEvent) => void,
+        options?: PlayerBreakingBlockEventOptions,
+    ): (arg0: PlayerCancelBreakingBlockAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player cancels
+     * breaking a block.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PlayerCancelBreakingBlockAfterEvent) => void): void;
 }
 
 /**
@@ -18622,7 +18848,7 @@ export class PlayerUseNameTagAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Waypoint that tracks a player's position. Extends {@link
  * EntityWaypoint} with additional player-specific visibility
  * rules such as hidden state and spectator mode.
@@ -20208,7 +20434,7 @@ export class StartupEvent {
      */
     readonly customCommandRegistry: CustomCommandRegistry;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -20227,7 +20453,8 @@ export class StartupEvent {
  * Structures can be placed in a world using the /structure
  * command or the {@link StructureManager} APIs.
  */
-export class Structure {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class Structure extends ISerializable {
     private constructor();
     /**
      * @remarks
@@ -21218,7 +21445,7 @@ export class WatchdogTerminateBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Base class for waypoints displayed on the player's locator
  * bar. Waypoints can track locations or entities and are
  * rendered with customizable textures and colors.
@@ -22068,7 +22295,7 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -22207,6 +22434,15 @@ export class WorldAfterEvents {
      *
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a player cancels breaking a block.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerCancelBreakingBlock: PlayerCancelBreakingBlockAfterEventSignal;
     /**
      * @remarks
      * Fires when a player moved to a different dimension.
@@ -23266,7 +23502,7 @@ export interface CustomCommandResult {
 }
 
 /**
- * @beta
+ * @rc
  */
 export interface CustomTexture {
     /**
@@ -23974,7 +24210,7 @@ export interface EntitySneakingChangedEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Controls when a waypoint is visible based on the state of
  * the entity it tracks. These rules allow filtering waypoint
  * visibility by entity conditions like sneaking, invisibility,
@@ -24455,8 +24691,9 @@ export interface PlayerAimAssistSettings {
 /**
  * @beta
  * An interface that is passed into {@link
- * PlayerStartBreakingBlockAfterEventSignal.subscribe} that
- * filters out which events are passed to the provided
+ * PlayerStartBreakingBlockAfterEventSignal.subscribe} or
+ * {@link PlayerCancelBreakingBlockAfterEventSignal.subscribe}
+ * that filters out which events are passed to the provided
  * callback.
  */
 export interface PlayerBreakingBlockEventOptions {
@@ -24529,7 +24766,7 @@ export interface PlayerSwingEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Controls when a waypoint is visible based on player-specific
  * states. Extends {@link EntityVisibilityRules} with
  * additional rules for player-only states like hidden mode and
@@ -25140,7 +25377,7 @@ export interface VectorXZ {
 }
 
 /**
- * @beta
+ * @rc
  * Defines a texture and the distance range in which it should
  * be displayed. Used within a {@link WaypointTextureSelector}
  * to create distance-based texture switching.
@@ -25175,7 +25412,7 @@ export interface WaypointTextureBounds {
 }
 
 /**
- * @beta
+ * @rc
  * Defines how waypoint textures change based on distance.
  * Contains a list of texture bounds that determine which
  * texture is displayed at different distance ranges.
@@ -25329,7 +25566,7 @@ export class CustomComponentNameError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when trying to register a custom dimension with a
  * name that has already been registered.
  */
@@ -25339,7 +25576,7 @@ export class CustomDimensionAlreadyRegisteredError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when trying to register a custom dimension outside of
  * the system startup event.
  */
@@ -25349,7 +25586,7 @@ export class CustomDimensionInvalidRegistryError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when trying to register a custom dimension with a
  * name that contains invalid characters.
  */
@@ -25359,7 +25596,7 @@ export class CustomDimensionNameError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown after using the /reload command when trying to
  * register a custom dimension that was not previously
  * registered. New custom dimensions cannot be added during a
@@ -25382,6 +25619,17 @@ export class EnchantmentTypeNotCompatibleError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown by {@link EntityFogComponent} operations when
+ * the fog stack limit is exceeded or an invalid fog identifier
+ * is provided.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class EntityFogComponentError extends Error {
     private constructor();
 }
 
@@ -25494,7 +25742,7 @@ export class InvalidStructureError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when attempting to perform operations on an
  * invalid waypoint. A waypoint becomes invalid when it is
  * removed or when the entity it tracks is no longer valid.
@@ -25505,7 +25753,7 @@ export class InvalidWaypointError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidWaypointTextureSelectorError extends Error {
@@ -25569,7 +25817,7 @@ export class LocationOutOfWorldBoundariesError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when a locator bar operation fails. Contains a
  * reason code indicating the specific cause of the error.
  */

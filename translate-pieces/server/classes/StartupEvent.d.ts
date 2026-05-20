@@ -15,7 +15,7 @@ export class StartupEvent {
      */
     readonly customCommandRegistry: CustomCommandRegistry;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *

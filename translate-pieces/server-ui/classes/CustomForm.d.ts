@@ -3,7 +3,7 @@
 /* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, InvalidFormModificationError, InvalidObservableError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
- * @beta
+ * @rc
  * A customizable data driven (DDUI) form that lets you add
  * buttons, labels, toggles, dropdowns, sliders, text fields,
  * and more. The form layout is built by calling methods to add

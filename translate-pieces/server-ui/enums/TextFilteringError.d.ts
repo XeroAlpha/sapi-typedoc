@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * An enum representing the errors that can occur during text
  * filtering. This is used to provide more context about the
  * filtering process.

@@ -7844,6 +7844,19 @@ export interface IDisposable {
 }
 
 /**
+ * Optional properties for Divider property item
+ */
+export interface IDividerPropertyItemOptions {
+    /**
+     * @remarks
+     * If true, renders the divider as a vertical line rather than
+     * horizontal.
+     *
+     */
+    vertical?: boolean;
+}
+
+/**
  * A property item which supports Dropdown properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8651,6 +8664,32 @@ export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOpt
     onFilterChanged?: (visibleSlotIds: string[]) => void;
     /**
      * @remarks
+     * Called when the user selects an entry in the "Show"
+     * dropdown. Receives the zero-based option index from the
+     * provided showOptions.
+     *
+     */
+    onShowOptionChanged?: (optionIndex: number) => void;
+    /**
+     * @remarks
+     * When true, the view control renders inline at the bottom of
+     * the list element instead of in a footer.
+     *
+     */
+    renderInline?: boolean;
+    /**
+     * @remarks
+     * Labels for the "Show" dropdown. When provided, a dropdown is
+     * shown and onShowOptionChanged is called with the selected
+     * index whenever the user changes the selection.
+     *
+     */
+    showOptions?: {
+        label: LocalizedString;
+        value: number;
+    }[];
+    /**
+     * @remarks
      * Custom sort options. If undefined, list pane sort options
      * will be used.
      *
@@ -9139,7 +9178,7 @@ export interface IModalControlPane extends IPane {
      * Adds an divider item to the pane.
      *
      */
-    addDivider(): IPropertyItemBase;
+    addDivider(options?: IDividerPropertyItemOptions): IPropertyItemBase;
 }
 
 export interface IModalDialog {
@@ -10118,7 +10157,7 @@ export interface IPropertyPane extends IPane {
      * Adds an divider item to the pane.
      *
      */
-    addDivider(): IPropertyItemBase;
+    addDivider(options?: IDividerPropertyItemOptions): IPropertyItemBase;
     /**
      * @remarks
      * Adds an Dropdown item to the pane.
@@ -10703,6 +10742,13 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
      *
      */
     hasMargins?: boolean;
+    /**
+     * @remarks
+     * Custom height of the property item. Use LayoutFlex.Grow to
+     * fill available vertical space.
+     *
+     */
+    height?: number | LayoutSize | LayoutFlex;
     /**
      * @remarks
      * Pane icon shown in front of the pane header
@@ -11532,6 +11578,12 @@ export interface ModalToolCreationParameters {
      *
      */
     action?: RegisteredAction<NoArgsAction>;
+    /**
+     * @remarks
+     * Content badge id associated with the modal tool
+     *
+     */
+    contentBadgeId?: string;
     /**
      * @remarks
      * Icon resource

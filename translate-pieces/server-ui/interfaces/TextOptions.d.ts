@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for configuring a text component (label or header).
  */
 export interface TextOptions {

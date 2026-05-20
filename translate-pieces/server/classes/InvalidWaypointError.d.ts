@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Error thrown when attempting to perform operations on an
  * invalid waypoint. A waypoint becomes invalid when it is
  * removed or when the entity it tracks is no longer valid.

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown when trying to register a custom dimension with a
  * name that contains invalid characters.
  */

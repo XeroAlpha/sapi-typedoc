@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown when attempting to interact with a form using an
  * invalid or unknown form identifier.
  */

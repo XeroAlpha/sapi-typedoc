@@ -1,7 +1,7 @@
 /* IMPORT */ import { DataDrivenScreenClosedReason } from '..';
 
 /**
- * @beta
+ * @rc
  * The result returned when an MessageBox is closed. Contains
  * the reason the message box was closed and the player's
  * button selection, if applicable.

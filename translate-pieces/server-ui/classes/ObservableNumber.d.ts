@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableOptions } from '..';
 
 /**
- * @beta
+ * @rc
  * An observable that holds a numeric value. Listeners are
  * notified whenever the value changes.
  */

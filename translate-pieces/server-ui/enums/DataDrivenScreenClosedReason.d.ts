@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * The reason why a data driven UI screen (MessageBox or
  * CustomForm) was closed.
  */

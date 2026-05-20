@@ -3,7 +3,7 @@
 /* IMPORT */ import { ObservableOptions, TextFilteringError } from '..';
 
 /**
- * @beta
+ * @rc
  * An observable that holds a string value. Listeners are
  * notified whenever the value changes.
  */

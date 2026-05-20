@@ -145,7 +145,7 @@ export class Player extends Entity {
      */
     readonly level: number;
     /**
-     * @beta
+     * @rc
      * @remarks
      * The player's Locator Bar. This property is used for managing
      * waypoints displayed on the HUD.

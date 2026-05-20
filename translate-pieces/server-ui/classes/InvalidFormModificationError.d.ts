@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Thrown when attempting to modify a form after it has already
  * been shown to a player. Form properties cannot be changed
  * while the form is active.

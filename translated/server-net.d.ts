@@ -27,7 +27,7 @@
  *
  */
 import * as minecraftcommon from '@minecraft/common';
-import { Player } from '@minecraft/server';
+import { ISerializable, Player } from '@minecraft/server';
 import { SecretString } from '@minecraft/server-admin';
 export enum HttpRequestMethod {
     /**
@@ -1221,7 +1221,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    body: string;
+    body: ISerializable | string;
     /**
      * @remarks
      * 该请求的请求标头集合。
@@ -1285,7 +1285,7 @@ export class HttpRequest {
      * @earlyExecution
      *
      */
-    setBody(body: string): HttpRequest;
+    setBody(body: ISerializable | string): HttpRequest;
     /**
      * @remarks
      * 使用指定的请求标头集合增加或替换请求中指定的请求标头。
@@ -1365,6 +1365,15 @@ export class HttpResponse {
      *
      */
     readonly status: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link SerializableParseError}
+     */
+    deserialize(identifier: string): ISerializable;
 }
 
 export class MessageAfterEventSignal {
@@ -1727,6 +1736,11 @@ export class RequestBodyTooLargeError extends Error {
      *
      */
     readonly providedBytes: number;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class SerializableParseError extends Error {
+    private constructor();
 }
 
 /**

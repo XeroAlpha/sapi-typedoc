@@ -1,7 +1,7 @@
 /* IMPORT */ import { DimensionLocation, InvalidWaypointError, InvalidWaypointTextureSelectorError, RGB, WaypointTextureSelector } from '..';
 
 /**
- * @beta
+ * @rc
  * Base class for waypoints displayed on the player's locator
  * bar. Waypoints can track locations or entities and are
  * rendered with customizable textures and colors.
