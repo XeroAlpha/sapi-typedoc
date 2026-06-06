@@ -91,7 +91,7 @@ export enum PacketId {
      */
     BookEditPacket = 'BookEditPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/BossEventPacket.html
+     * Sent when a boss gets updated
      */
     BossEventPacket = 'BossEventPacket',
     /**
@@ -178,9 +178,12 @@ export enum PacketId {
      * Sends a set of update properties for the texture shift system from the server to the client.
      */
     ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket',
+    /**
+     * Sent to update sound data.
+     */
     ClientboundUpdateSoundDataPacket = 'ClientboundUpdateSoundDataPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/ClientCacheBlobStatusPacket.html
+     * Client Cache Blob Status Packet
      */
     ClientCacheBlobStatusPacket = 'ClientCacheBlobStatusPacket',
     /**
@@ -212,7 +215,7 @@ export enum PacketId {
      */
     CodeBuilderSourcePacket = 'CodeBuilderSourcePacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/CommandBlockUpdatePacket.html
+     * Command Block Update
      */
     CommandBlockUpdatePacket = 'CommandBlockUpdatePacket',
     /**
@@ -335,7 +338,7 @@ export enum PacketId {
      */
     InteractPacket = 'InteractPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/InventoryContentPacket.html
+     * This is used for updating an entire container. Example uses include: player respawned, replace items command, 3rd party content calls sendInventory(), block picking.
      */
     InventoryContentPacket = 'InventoryContentPacket',
     /**
@@ -343,7 +346,7 @@ export enum PacketId {
      */
     InventorySlotPacket = 'InventorySlotPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/InventoryTransactionPacket.html
+     * Inventory Transaction. Sent for item interaction UI depending on if ItemStackNetManager is enabled as well as when the player uses items in gameplay. See ComplexInventoryTransaction::Type for more details.
      */
     InventoryTransactionPacket = 'InventoryTransactionPacket',
     /**
@@ -411,7 +414,7 @@ export enum PacketId {
      */
     MapInfoRequestPacket = 'MapInfoRequestPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/MobArmorEquipmentPacket.html
+     * Mob Armor Equipment
      */
     MobArmorEquipmentPacket = 'MobArmorEquipmentPacket',
     /**
@@ -490,6 +493,9 @@ export enum PacketId {
      * Sent by the client to provide additional client metadata.
      */
     PartyChangedPacket = 'PartyChangedPacket',
+    /**
+     * Sent by the client to the server with a party destination cookie response.
+     */
     PartyDestinationCookieResponsePacket = 'PartyDestinationCookieResponsePacket',
     /**
      * There is a camera item in EDU and they can use it to take screenshots and add them to a scrapbook.
@@ -626,7 +632,7 @@ export enum PacketId {
      */
     ResourcePacksReadyForValidationPacket = 'ResourcePacksReadyForValidationPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/ResourcePackStackPacket.html
+     * Resource Pack Stack
      */
     ResourcePackStackPacket = 'ResourcePackStackPacket',
     /**
@@ -637,6 +643,9 @@ export enum PacketId {
      * Used to send custom messages between client and server.
      */
     ScriptMessagePacket = 'ScriptMessagePacket',
+    /**
+     * Sent by the server to a client with a party destination cookie.
+     */
     SendPartyDestinationCookiePacket = 'SendPartyDestinationCookiePacket',
     /**
      * Sent from the client to the server when a data driven screen is closed.
@@ -815,7 +824,7 @@ export enum PacketId {
      */
     SubChunkPacket = 'SubChunkPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/SubChunkRequestPacket.html
+     * Sent from the client to the server representing a batch of subchunks that the client requests from the server
      */
     SubChunkRequestPacket = 'SubChunkRequestPacket',
     /**
@@ -859,7 +868,7 @@ export enum PacketId {
      */
     UnlockedRecipesPacket = 'UnlockedRecipesPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/UpdateAbilitiesPacket.html
+     * Sent by the server to update the state of a player's Abilities.
      */
     UpdateAbilitiesPacket = 'UpdateAbilitiesPacket',
     /**
@@ -867,7 +876,7 @@ export enum PacketId {
      */
     UpdateAdventureSettingsPacket = 'UpdateAdventureSettingsPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/html/UpdateAttributesPacket.html
+     * Update Attributes
      */
     UpdateAttributesPacket = 'UpdateAttributesPacket',
     /**
