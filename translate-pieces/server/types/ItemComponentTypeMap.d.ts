@@ -1,6 +1,7 @@
-/* IMPORT */ import { ItemBookComponent, ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemInventoryComponent, ItemPotionComponent } from '..';
+/* IMPORT */ import { ItemBlockDynamicPropertiesComponent, ItemBookComponent, ItemCompostableComponent, ItemCooldownComponent, ItemDurabilityComponent, ItemDyeableComponent, ItemEnchantableComponent, ItemFoodComponent, ItemInventoryComponent, ItemPotionComponent } from '..';
 
 export type ItemComponentTypeMap = {
+    block_actor_dynamic_properties: ItemBlockDynamicPropertiesComponent;
     book: ItemBookComponent;
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
@@ -9,6 +10,7 @@ export type ItemComponentTypeMap = {
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     inventory: ItemInventoryComponent;
+    'minecraft:block_actor_dynamic_properties': ItemBlockDynamicPropertiesComponent;
     'minecraft:book': ItemBookComponent;
     'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;

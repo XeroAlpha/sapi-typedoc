@@ -3,6 +3,20 @@
 export interface IGlobalInputManager {
     /**
      * @remarks
+     * Register a named control category for display in the Control
+     * Help panel.
+     *
+     * @param id
+     * Unique category identifier (use a {@link
+     * CoreInputBindingCategory} value or a custom string).
+     * @param label
+     * Localized display name shown as the group heading.
+     * @param order
+     * Numeric sort order; lower values appear first.
+     */
+    registerBindingCategory(id: string, label: string, order: number): void;
+    /**
+     * @remarks
      * Register a key press binding for an action which will be
      * handled by the specified input context.
      *

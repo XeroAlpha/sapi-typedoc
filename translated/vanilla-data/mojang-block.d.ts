@@ -1431,7 +1431,7 @@ export type BlockStateSuperset = {
     ['minecraft:corner']?: string;
     ['minecraft:facing_direction']?: string;
     ['minecraft:multi_block_part']?: number;
-    ['minecraft:sixteen_way_rotation']?: string;
+    ['minecraft:sixteen_way_rotation']?: number;
     ['minecraft:vertical_half']?: string;
     ['moisturized_amount']?: number;
     ['monster_egg_stone_type']?: string;

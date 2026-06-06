@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.9.0-beta"
+ *   "version": "2.10.0-beta"
  * }
  * ```
  *
@@ -52,6 +52,10 @@ export enum BlockComponentTypes {
      */
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
+    /**
+     * @beta
+     */
+    Instrument = 'minecraft:instrument_sound',
     /**
      * @remarks
      * Represents the inventory of a block in the world. Used with
@@ -195,6 +199,25 @@ export enum BookErrorReason {
 export enum ButtonState {
     Pressed = 'Pressed',
     Released = 'Released',
+}
+
+/**
+ * @beta
+ * Represents the type of shake to apply to the camera.
+ */
+export enum CameraShakeType {
+    /**
+     * @remarks
+     * A positional shake that moves the camera along its axes.
+     *
+     */
+    Positional = 'Positional',
+    /**
+     * @remarks
+     * A rotational shake that rotates the camera around its axes.
+     *
+     */
+    Rotational = 'Rotational',
 }
 
 /**
@@ -2264,6 +2287,10 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
+     * @beta
+     */
+    BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
+    /**
      * @remarks
      * The minecraft:book component.
      *
@@ -3125,10 +3152,12 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
 export type BlockComponentTypeMap = {
     dynamic_properties: BlockDynamicPropertiesComponent;
     fluid_container: BlockFluidContainerComponent;
+    instrument_sound: BlockInstrumentComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
+    'minecraft:instrument_sound': BlockInstrumentComponent;
     'minecraft:inventory': BlockInventoryComponent;
     'minecraft:map_color': BlockMapColorComponent;
     'minecraft:movable': BlockMovableComponent;
@@ -3318,6 +3347,7 @@ export type ItemComponentReturnType<T extends string> = T extends keyof ItemComp
     : ItemCustomComponentInstance;
 
 export type ItemComponentTypeMap = {
+    block_actor_dynamic_properties: ItemBlockDynamicPropertiesComponent;
     book: ItemBookComponent;
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
@@ -3326,6 +3356,7 @@ export type ItemComponentTypeMap = {
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     inventory: ItemInventoryComponent;
+    'minecraft:block_actor_dynamic_properties': ItemBlockDynamicPropertiesComponent;
     'minecraft:book': ItemBookComponent;
     'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;
@@ -5380,6 +5411,58 @@ export class BlockFluidContainerComponent extends BlockComponent {
 }
 
 /**
+ * @beta
+ * Represents the instruments a block can have assigned to it's
+ * up and down faces.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockInstrumentComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:instrument_sound';
+    /**
+     * @remarks
+     * A getter method to get the name of an instrument for a given
+     * valid face Direction.
+     *
+     * @param face
+     * the face Direction to get the instrument name for.
+     * @returns
+     * Returns the name of the instrument for a given valid face
+     * Direction.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getInstrumentName(face: Direction): string;
+    /**
+     * @remarks
+     * plays the instrument sound for a given valid face Direction
+     * at the components block location using optional
+     * WorldSoundOptions.
+     *
+     * @worldMutation
+     *
+     * @param face
+     * the face Direction for which instrument sound to play.
+     * @param soundOptions
+     * optional WorldSoundOptions to use when playing the
+     * insturment sound; if omitted the default values are used.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    playInstrumentSound(face: Direction, soundOptions?: WorldSoundOptions): void;
+}
+
+/**
  * Represents the inventory of a block in the world. Used with
  * blocks like chests.
  * @seeExample placeItemsInChest.ts
@@ -6273,6 +6356,18 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
+     */
+    addShake(shakeCameraOptions: CameraShakeOptions): void;
+    /**
      * @remarks
      * Attaches the camera to a non-player entity.
      *
@@ -6377,6 +6472,34 @@ export class Camera {
      * @throws This function can throw errors.
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopShaking(): void;
+}
+
+/**
+ * @beta
+ * Loot item function that will try to copy the block entity
+ * data from the destroyed block to the dropped item.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class CarryOverBlockEntityDataFunction extends LootItemFunction {
+    private constructor();
+    /**
+     * @remarks
+     * If true, and if the block entity had dynamic_properties, the
+     * function will copy the dynamic properties from the block
+     * entity to the dropped item.
+     *
+     */
+    readonly dynamicProperties: boolean;
 }
 
 /**
@@ -7939,13 +8062,14 @@ export class Dimension {
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @remarks
-     * Gets all the blocks in a volume that satisfy the filter.
+     * Gets all the blocks in a volume that satisfy the block query
+     * options.
      *
      * @param volume
      * Volume of blocks that will be checked.
-     * @param filter
-     * Block filter that will be checked against each block in the
-     * volume.
+     * @param options
+     * Block query options including filter criteria and optional
+     * closest/farthest distance sorting from a location.
      * @param allowUnloadedChunks
      * If set to true will suppress the UnloadedChunksError if some
      * or all of the block volume is outside of the loaded chunks.
@@ -7954,14 +8078,18 @@ export class Dimension {
      * Defaults to: false
      * @returns
      * Returns the ListBlockVolume that contains all the block
-     * locations that satisfied the block filter.
+     * locations that satisfied the block query options.
      * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      *
+     * {@link InvalidArgumentError}
+     *
      * {@link UnloadedChunksError}
      */
-    getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
+    getBlocks(volume: BlockVolumeBase, options: BlockQueryOptions, allowUnloadedChunks?: boolean): ListBlockVolume;
     /**
      * @remarks
      * Returns a set of entities based on a set of conditions
@@ -8935,7 +9063,7 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Boolean which determines if the player nameplate should be
      * depth tested for visibility.
@@ -8945,7 +9073,7 @@ export class Entity {
      */
     nameplateDepthTested: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Float that determines the render distance of this entity's
      * nameplate.
@@ -12688,6 +12816,54 @@ export class EntityStartSneakingAfterEventSignal {
 }
 
 /**
+ * @beta
+ * Contains data related to an entity stopping sneaking.
+ */
+export class EntityStopSneakingAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Entity that has stopped sneaking.
+     *
+     */
+    readonly entity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity stops
+ * sneaking.
+ */
+export class EntityStopSneakingAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when an entity stops
+     * sneaking.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityStopSneakingAfterEvent) => void,
+        options?: EntitySneakingChangedEventOptions,
+    ): (arg0: EntityStopSneakingAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when an entity stops
+     * sneaking.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityStopSneakingAfterEvent) => void): void;
+}
+
+/**
  * Defines the entity's ability to carry items. An entity with
  * a higher strength would have higher potential carry capacity
  * and more item slots.
@@ -12772,6 +12948,44 @@ export class EntityTameableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     tame(player: Player): boolean;
+}
+
+/**
+ * @beta
+ * Contains data related to an entity being tamed.
+ */
+export class EntityTamedAfterEvent {
+    private constructor();
+    readonly entity: Entity;
+    readonly tamingEntity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when an entity is
+ * tamed.
+ */
+export class EntityTamedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: EntityTamedAfterEvent) => void,
+        options?: EntityTamedEventFilter,
+    ): (arg0: EntityTamedAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: EntityTamedAfterEvent) => void): void;
 }
 
 /**
@@ -13635,6 +13849,42 @@ export class IsBabyCondition extends LootItemCondition {
 
 export class ISerializable {
     private constructor();
+}
+
+/**
+ * @beta
+ * Represents the dynamic properties of a block. Only available
+ * from block entities. Up to 1KBytes of data can be stored per
+ * block entity in their dynamic properties storage.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:block_actor_dynamic_properties';
+    /**
+     * @remarks
+     * Returns a DynamicProperty that was stored with the provided
+     * key. Keys are unique to each content pack and cannot be used
+     * to retrieve dynamic properties set from other content packs.
+     * Returns undefined if the key was not found.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    get(key: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @remarks
+     * Returns the current size, in bytes, of the dynamic
+     * properties storage for this block.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    totalByteCount(): number;
 }
 
 /**
@@ -20013,13 +20263,201 @@ export class SmeltItemFunction extends LootItemFunction {
 
 /**
  * @beta
- * Represents a handle to a sound that has been played.
+ * Contains information about a sound thats declared duration
+ * elapsed.
+ */
+export class SoundCompletedAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Identifier of the sound instance that completed. Matches the
+     * `id` property of the `SoundInstance` returned when the sound
+     * was played.
+     *
+     */
+    readonly soundInstanceId: string;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are invoked when a tracked sound's
+ * declared duration elapses.
+ */
+export class SoundCompletedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be invoked when a tracked sound's
+     * declared duration elapses.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: SoundCompletedAfterEvent) => void): (arg0: SoundCompletedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being invoked when a tracked sound's
+     * declared duration elapses.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: SoundCompletedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Provides duration and playback information for a sound whose
+ * definition declares a duration.
+ */
+export class SoundDurationInfo {
+    private constructor();
+    /**
+     * @remarks
+     * Gets the total duration of the sound in seconds.
+     *
+     */
+    readonly duration: number;
+    /**
+     * @remarks
+     * Gets whether the sound is still being tracked.
+     *
+     */
+    readonly isActive: boolean;
+    /**
+     * @remarks
+     * Returns the elapsed playback time of the sound, in seconds,
+     * since it started playing.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * Elapsed playback time in seconds.
+     */
+    getPlaybackPosition(): number;
+}
+
+/**
+ * Represents a handle to a sound that has been played. The
+ * handle is required to control the sound while it is playing
+ * (for example, to call `stop`, `setVolume`, `setPitch`,
+ * `fade`, or `seekTo`). Infinitely-looping sounds (started
+ * with `loop: -1`) stop automatically when the last
+ * `SoundInstance` reference is dropped; retain the handle for
+ * as long as the sound should keep playing.
  */
 export class SoundInstance {
     private constructor();
     /**
+     * @beta
      * @remarks
-     * Stops this sound from playing.
+     * Gets duration and playback information for this sound.
+     *
+     */
+    readonly durationInfo?: SoundDurationInfo;
+    /**
+     * @beta
+     * @remarks
+     * Unique identifier of this sound instance.
+     *
+     */
+    readonly id: string;
+    /**
+     * @beta
+     * @remarks
+     * Gets the player this sound was played for.
+     *
+     */
+    readonly recipient?: Player;
+    /**
+     * @beta
+     * @remarks
+     * Gets the identifier of the sound event this instance was
+     * started with.
+     *
+     */
+    readonly soundEventId: string;
+    /**
+     * @beta
+     * @remarks
+     * Fades this sound instance from its current volume to the
+     * target volume over the specified duration. To fade in from
+     * silence, call `setVolume(0.0)` first; to fade out, pass a
+     * target volume of `0.0`.
+     *
+     * @worldMutation
+     *
+     * @param duration
+     * Duration of the fade in seconds. Must be non-negative.
+     * Minimum value: 0
+     * @param targetVolume
+     * Volume to fade to. Must be non-negative.
+     * Minimum value: 0
+     */
+    fade(duration: number, targetVolume: number): void;
+    /**
+     * @beta
+     * @remarks
+     * Pauses this sound.
+     *
+     * @worldMutation
+     *
+     */
+    pause(): void;
+    /**
+     * @beta
+     * @remarks
+     * Resumes this sound after a pause.
+     *
+     * @worldMutation
+     *
+     */
+    resume(): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets the playback position of this sound instance.
+     *
+     * @worldMutation
+     *
+     * @param seconds
+     * Position to seek to in seconds. Must be non-negative.
+     * Minimum value: 0
+     */
+    seekTo(seconds: number): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets the pitch of this sound instance.
+     *
+     * @worldMutation
+     *
+     * @param pitch
+     * Pitch multiplier between 0.01 and 10.0. A value of 1.0 is
+     * normal pitch.
+     * Bounds: [0.009999999776482582, 10]
+     */
+    setPitch(pitch: number): void;
+    /**
+     * @beta
+     * @remarks
+     * Sets the volume of this sound instance.
+     *
+     * @worldMutation
+     *
+     * @param volume
+     * Volume level between 0.0 and 10.0.
+     * Bounds: [0, 10]
+     */
+    setVolume(volume: number): void;
+    /**
+     * @rc
+     * @remarks
+     * Stops this sound instance from playing.
      *
      * @worldMutation
      *
@@ -21868,6 +22306,24 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when an entity stops sneaking.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityStopSneaking: EntityStopSneakingAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when an entity is tamed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityTamed: EntityTamedAfterEventSignal;
+    /**
      * @rc
      * @remarks
      * @earlyExecution
@@ -22180,6 +22636,15 @@ export class WorldAfterEvents {
      *
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * A tracked sound's declared duration elapsed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly soundCompleted: SoundCompletedAfterEventSignal;
     /**
      * @remarks
      * A target block was hit.
@@ -22696,6 +23161,40 @@ export interface BlockHitInformation {
 }
 
 /**
+ * @beta
+ * Options for querying blocks in a volume. Extends BlockFilter
+ * with additional sorting and limiting options based on
+ * distance from a location.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface BlockQueryOptions extends BlockFilter {
+    /**
+     * @remarks
+     * If specified, returns the closest N blocks to the location.
+     * Must be greater than 0. Cannot be used with farthest.
+     * Requires location to be set.
+     *
+     */
+    closest?: number;
+    /**
+     * @remarks
+     * If specified, returns the farthest N blocks from the
+     * location. Must be greater than 0. Cannot be used with
+     * closest. Requires location to be set.
+     *
+     */
+    farthest?: number;
+    /**
+     * @remarks
+     * Location used as the reference point for closest or farthest
+     * distance calculations. Required when closest or farthest is
+     * specified.
+     *
+     */
+    location?: Vector3;
+}
+
+/**
  * Contains information for block raycast hit results.
  */
 export interface BlockRaycastHit {
@@ -22863,6 +23362,44 @@ export interface CameraSetRotOptions {
     easeOptions?: EaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+/**
+ * @beta
+ * Options for applying a camera shake effect to a player's
+ * camera via `Camera.addShake`. Each call to `addShake` queues
+ * a new independent shake event for the specified `type`;
+ * positional and rotational shakes are tracked in separate
+ * queues and run concurrently. The rendered intensity at any
+ * moment is the sum of all active events' intensities for that
+ * type, capped at `4.0`. Events expire naturally when their
+ * `duration` elapses.
+ */
+export interface CameraShakeOptions {
+    /**
+     * @remarks
+     * How long this shake event lasts, in seconds. Must be a
+     * positive value.
+     *
+     */
+    duration: number;
+    /**
+     * @remarks
+     * The intensity of this shake event. Must be a positive value
+     * with a maximum of `4.0`. Multiple active events of the same
+     * `type` are summed, capped at `4.0`.
+     *
+     */
+    intensity: number;
+    /**
+     * @remarks
+     * The type of camera shake to apply. Positional and rotational
+     * shakes maintain separate event queues and are applied
+     * concurrently, so adding a shake of each type does not cause
+     * them to interfere with one another.
+     *
+     */
+    type: CameraShakeType;
 }
 
 /**
@@ -23779,6 +24316,15 @@ export interface EntitySneakingChangedEventOptions {
 }
 
 /**
+ * @beta
+ * Contains options for filtering entity tamed events.
+ */
+export interface EntityTamedEventFilter {
+    entityFilter?: EntityFilter;
+    tamingEntityFilter?: EntityFilter;
+}
+
+/**
  * @rc
  * Controls when a waypoint is visible based on the state of
  * the entity it tracks. These rules allow filtering waypoint
@@ -24295,6 +24841,19 @@ export interface PlayerSoundOptions {
      *
      */
     location?: Vector3;
+    /**
+     * @beta
+     * @remarks
+     * Number of additional times to repeat the sound after the
+     * initial play. `0` (the default) plays the sound once, `-1`
+     * loops it forever, and a positive integer `N` plays the sound
+     * `N + 1` times in total. For example, `loopCount: 1` plays
+     * the sound twice. The loop count is fixed when the sound
+     * starts and cannot be changed afterward. When using `-1`, see
+     * `SoundInstance` for handle lifetime requirements.
+     *
+     */
+    loopCount?: number;
     /**
      * @remarks
      * Optional pitch of the sound.
@@ -24997,6 +25556,19 @@ export interface WaypointTextureSelector {
  * Contains additional options for a playSound occurrence.
  */
 export interface WorldSoundOptions {
+    /**
+     * @beta
+     * @remarks
+     * Number of additional times to repeat the sound after the
+     * initial play. `0` (the default) plays the sound once, `-1`
+     * loops it forever, and a positive integer `N` plays the sound
+     * `N + 1` times in total. For example, `loopCount: 1` plays
+     * the sound twice. The loop count is fixed when the sound
+     * starts and cannot be changed afterward. When using `-1`, see
+     * `SoundInstance` for handle lifetime requirements.
+     *
+     */
+    loopCount?: number;
     /**
      * @remarks
      * Pitch of the sound played.

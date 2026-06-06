@@ -9,6 +9,10 @@ export enum BlockComponentTypes {
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
     /**
+     * @beta
+     */
+    Instrument = 'minecraft:instrument_sound',
+    /**
      * @remarks
      * Represents the inventory of a block in the world. Used with
      * blocks like chests.

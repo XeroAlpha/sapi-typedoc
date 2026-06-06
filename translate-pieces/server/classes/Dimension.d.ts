@@ -1,5 +1,5 @@
-/* IMPORT */ import { EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../../common';
+/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockQueryOptions, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
 /* IMPORT */ import { MinecraftFeatureTypes } from '../../vanilla-data';
 
 /**
@@ -256,13 +256,14 @@ export class Dimension {
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @remarks
-     * Gets all the blocks in a volume that satisfy the filter.
+     * Gets all the blocks in a volume that satisfy the block query
+     * options.
      *
      * @param volume
      * Volume of blocks that will be checked.
-     * @param filter
-     * Block filter that will be checked against each block in the
-     * volume.
+     * @param options
+     * Block query options including filter criteria and optional
+     * closest/farthest distance sorting from a location.
      * @param allowUnloadedChunks
      * If set to true will suppress the UnloadedChunksError if some
      * or all of the block volume is outside of the loaded chunks.
@@ -271,14 +272,18 @@ export class Dimension {
      * Defaults to: false
      * @returns
      * Returns the ListBlockVolume that contains all the block
-     * locations that satisfied the block filter.
+     * locations that satisfied the block query options.
      * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
      *
      * {@link Error}
      *
+     * {@link InvalidArgumentError}
+     *
      * {@link UnloadedChunksError}
      */
-    getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
+    getBlocks(volume: BlockVolumeBase, options: BlockQueryOptions, allowUnloadedChunks?: boolean): ListBlockVolume;
     /**
      * @remarks
      * Returns a set of entities based on a set of conditions

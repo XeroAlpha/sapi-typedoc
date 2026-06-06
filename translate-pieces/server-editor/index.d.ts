@@ -16,6 +16,7 @@ export { ContiguousSelectionType } from './enums/ContiguousSelectionType';
 export { ContinuousActionState } from './enums/ContinuousActionState';
 export { CoreActionBarItemType } from './enums/CoreActionBarItemType';
 export { CoreBrushShapeType } from './enums/CoreBrushShapeType';
+export { CoreInputBindingCategory } from './enums/CoreInputBindingCategory';
 export { CoreMenuType } from './enums/CoreMenuType';
 export { CoreModalDialogType } from './enums/CoreModalDialogType';
 export { CursorControlMode } from './enums/CursorControlMode';

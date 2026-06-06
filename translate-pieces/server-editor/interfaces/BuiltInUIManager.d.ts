@@ -46,6 +46,12 @@ export interface BuiltInUIManager {
     showUpdateInformation(): void;
     /**
      * @remarks
+     * Updates the visibility of the Control Help panel
+     *
+     */
+    updateControlHelpPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
      * Updates the visibility of the log panel
      *
      */
