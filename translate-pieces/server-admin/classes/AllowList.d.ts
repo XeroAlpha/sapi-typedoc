@@ -17,6 +17,8 @@ export class AllowList {
      * @remarks
      * Adds a player to the server's allow list.
      *
+     * @worldMutation
+     *
      * @param player
      * Player or player name that should be added to the allow
      * list.
@@ -27,6 +29,14 @@ export class AllowList {
      * {@link InvalidEntityError}
      */
     add(player: Player | string): void;
+    /**
+     * @remarks
+     * Clears the allow list, removing all entries.
+     *
+     * @worldMutation
+     *
+     */
+    clear(): void;
     /**
      * @remarks
      * Returns if the player is in the server's allow list.
@@ -42,6 +52,8 @@ export class AllowList {
      * @remarks
      * Reloads the server's allow list from disk.
      *
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link AllowListFileReloadError}
@@ -50,6 +62,8 @@ export class AllowList {
     /**
      * @remarks
      * Removes a player from the server's allow list.
+     *
+     * @worldMutation
      *
      * @param player
      * Player or player name that should be removed from the allow

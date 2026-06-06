@@ -1,4 +1,5 @@
-/* IMPORT */ import { AnimationOptions, CameraAttachOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraTargetOptions, CatmullRomSpline, EaseOptions, LinearSpline } from '..';
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
+/* IMPORT */ import { AnimationOptions, CameraAttachOptions, CameraFadeOptions, CameraFixedBoomOptions, CameraFovOptions, CameraSetFacingOptions, CameraSetLocationOptions, CameraSetPosOptions, CameraSetRotOptions, CameraShakeOptions, CameraTargetOptions, CatmullRomSpline, EaseOptions, InvalidEntityError, LinearSpline } from '..';
 
 /**
  * Contains methods relating to the active camera for the
@@ -14,6 +15,18 @@ export class Camera {
      *
      */
     readonly isValid: boolean;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
+     */
+    addShake(shakeCameraOptions: CameraShakeOptions): void;
     /**
      * @remarks
      * Attaches the camera to a non-player entity.
@@ -119,4 +132,14 @@ export class Camera {
      * @throws This function can throw errors.
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
+    /**
+     * @beta
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopShaking(): void;
 }

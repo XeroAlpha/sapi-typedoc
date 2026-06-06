@@ -185,6 +185,34 @@ export declare enum CoreBrushShapeType {
 }
 
 /**
+ * Built-in control categories for use with {@link
+ * KeyBindingInfo.bindingCategory}. Pass any
+ * `CoreInputBindingCategory` value or a custom string to
+ * categorize a binding.
+ */
+export declare enum CoreInputBindingCategory {
+    Camera = 'editor:camera',
+    CursorMovement = 'editor:cursorMovement',
+    Fly = 'editor:fly',
+    General = 'editor:general',
+    Hotbar = 'editor:hotbar',
+    MakeSelection = 'editor:makeSelection',
+    Modes = 'editor:modes',
+    Move = 'editor:move',
+    Movement = 'editor:movement',
+    Nudge = 'editor:nudge',
+    Offset = 'editor:offset',
+    Operations = 'editor:operations',
+    Paste = 'editor:paste',
+    PastePreviewManipulation = 'editor:pastePreviewManipulation',
+    SizeSelection = 'editor:sizeSelection',
+    ToolActivation = 'editor:toolActivation',
+    TrimActions = 'editor:trimActions',
+    Widget = 'editor:widget',
+    Workbench = 'editor:workbench',
+}
+
+/**
  * Predefined top level menus for core editor
  */
 export declare enum CoreMenuType {
@@ -1683,6 +1711,8 @@ export type KeyBindingInfo = {
     uniqueId: string;
     label?: string;
     tooltip?: string;
+    bindingCategory?: string;
+    bindingPriority?: number;
 };
 
 /**
@@ -6156,6 +6186,12 @@ export interface BuiltInUIManager {
     showUpdateInformation(): void;
     /**
      * @remarks
+     * Updates the visibility of the Control Help panel
+     *
+     */
+    updateControlHelpPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
      * Updates the visibility of the log panel
      *
      */
@@ -8002,6 +8038,20 @@ export declare interface IEventToken {
 }
 
 export interface IGlobalInputManager {
+    /**
+     * @remarks
+     * Register a named control category for display in the Control
+     * Help panel.
+     *
+     * @param id
+     * Unique category identifier (use a {@link
+     * CoreInputBindingCategory} value or a custom string).
+     * @param label
+     * Localized display name shown as the group heading.
+     * @param order
+     * Numeric sort order; lower values appear first.
+     */
+    registerBindingCategory(id: string, label: string, order: number): void;
     /**
      * @remarks
      * Register a key press binding for an action which will be

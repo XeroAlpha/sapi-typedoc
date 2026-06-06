@@ -23,6 +23,8 @@ export class DedicatedServerUtils {
      * @remarks
      * Reloads the cdn configuration from disk.
      *
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link EngineError}
@@ -31,6 +33,8 @@ export class DedicatedServerUtils {
     /**
      * @remarks
      * Reloads the permissions for the server from disk.
+     *
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
@@ -41,6 +45,8 @@ export class DedicatedServerUtils {
      * @remarks
      * Reloads the script configuration for the server from disk.
      *
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link EngineError}
@@ -49,6 +55,8 @@ export class DedicatedServerUtils {
     /**
      * @remarks
      * Shuts down the dedicated server.
+     *
+     * @worldMutation
      *
      */
     stopServer(): void;

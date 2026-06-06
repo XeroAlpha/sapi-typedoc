@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, EntityStartSneakingAfterEventSignal, EntityUpgradeAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerCancelBreakingBlockAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerStartBreakingBlockAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, TargetBlockHitAfterEventSignal, TripWireTripAfterEventSignal, WeatherChangeAfterEventSignal, WorldLoadAfterEventSignal } from '..';
+/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, EntityStartSneakingAfterEventSignal, EntityStopSneakingAfterEventSignal, EntityTamedAfterEventSignal, EntityUpgradeAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerCancelBreakingBlockAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerStartBreakingBlockAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, SoundCompletedAfterEventSignal, TargetBlockHitAfterEventSignal, TripWireTripAfterEventSignal, WeatherChangeAfterEventSignal, WorldLoadAfterEventSignal } from '..';
 
 /**
  * Contains a set of events that are available across the scope
@@ -187,6 +187,24 @@ export class WorldAfterEvents {
      *
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when an entity stops sneaking.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityStopSneaking: EntityStopSneakingAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when an entity is tamed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityTamed: EntityTamedAfterEventSignal;
     /**
      * @rc
      * @remarks
@@ -500,6 +518,15 @@ export class WorldAfterEvents {
      *
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * A tracked sound's declared duration elapsed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly soundCompleted: SoundCompletedAfterEventSignal;
     /**
      * @remarks
      * A target block was hit.

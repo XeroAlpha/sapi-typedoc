@@ -11,6 +11,8 @@ export class LevelStorage {
      * Disables the server writing to the world files and begins
      * creating a snapshot.
      *
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link LevelStorageSaveStateChangeError}
@@ -21,6 +23,8 @@ export class LevelStorage {
      * Returns the path and size of every file in the current
      * snapshot if a snapshot is being taken.
      *
+     * @worldMutation
+     *
      * @throws This function can throw errors.
      *
      * {@link LevelStorageSaveStateChangeError}
@@ -30,6 +34,8 @@ export class LevelStorage {
      * @remarks
      * Re-enables server writing world state to files and removes
      * snapshot.
+     *
+     * @worldMutation
      *
      * @throws This function can throw errors.
      *
