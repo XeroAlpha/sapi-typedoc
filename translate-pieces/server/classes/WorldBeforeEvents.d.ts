@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityHealBeforeEventSignal, EntityHurtBeforeEventSignal, EntityItemPickupBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '..';
+/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityHealBeforeEventSignal, EntityHurtBeforeEventSignal, EntityItemPickupBeforeEventSignal, EntityRemoveBeforeEventSignal, EntityTamedBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '..';
 
 /**
  * A set of events that fire before an actual action occurs. In
@@ -58,6 +58,15 @@ export class WorldBeforeEvents {
      *
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * Fires before an entity is tamed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityTamed: EntityTamedBeforeEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.

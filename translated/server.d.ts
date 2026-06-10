@@ -1173,15 +1173,6 @@ export enum EntityComponentTypes {
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
-     * @beta
-     * @remarks
-     * Use this component to access and manipulate the fog
-     * definitions stack of a player. This is only available on
-     * players.
-     *
-     */
-    Fog = 'minecraft:player.fog',
-    /**
      * @remarks
      * Use this component to read the hunger of a player. This is
      * only available on players.
@@ -2732,6 +2723,38 @@ export enum PlayerPermissionLevel {
 }
 
 /**
+ * @rc
+ * The split screen slot of a player.
+ */
+export enum PlayerSplitScreenSlot {
+    /**
+     * @remarks
+     * The first player in the split screen session. This is the
+     * primary player.
+     *
+     */
+    First = 'First',
+    /**
+     * @remarks
+     * The fourth player in the split screen session.
+     *
+     */
+    Fourth = 'Fourth',
+    /**
+     * @remarks
+     * The second player in the split screen session.
+     *
+     */
+    Second = 'Second',
+    /**
+     * @remarks
+     * The third player in the split screen session.
+     *
+     */
+    Third = 'Third',
+}
+
+/**
  * @beta
  */
 export enum PlayerWaypointsMode {
@@ -3280,7 +3303,6 @@ export type EntityComponentTypeMap = {
     'minecraft:npc': EntityNpcComponent;
     'minecraft:onfire': EntityOnFireComponent;
     'minecraft:player.exhaustion': EntityExhaustionComponent;
-    'minecraft:player.fog': EntityFogComponent;
     'minecraft:player.hunger': EntityHungerComponent;
     'minecraft:player.saturation': EntitySaturationComponent;
     'minecraft:projectile': EntityProjectileComponent;
@@ -3315,7 +3337,6 @@ export type EntityComponentTypeMap = {
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
     'player.exhaustion': EntityExhaustionComponent;
-    'player.fog': EntityFogComponent;
     'player.hunger': EntityHungerComponent;
     'player.saturation': EntitySaturationComponent;
     projectile: EntityProjectileComponent;
@@ -4345,7 +4366,7 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns array of all loaded block parts if this block has
      * the 'minecraft:multi_block' trait. If it does not have the
@@ -6256,6 +6277,38 @@ export class BlockVolumeBase {
      *
      */
     getCapacity(): number;
+    /**
+     * @beta
+     * @remarks
+     * Returns a list of block positions within the volume that are
+     * closest to a given location, sorted by distance (nearest
+     * first)
+     *
+     * @param count
+     * Number of closest positions to return
+     * @param location
+     * Position to measure distance from
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     */
+    getClosest(count: number, location: Vector3): Vector3[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a list of block positions within the volume that are
+     * farthest from a given location, sorted by distance (farthest
+     * first)
+     *
+     * @param count
+     * Number of farthest positions to return
+     * @param location
+     * Position to measure distance from
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     */
+    getFarthest(count: number, location: Vector3): Vector3[];
     /**
      * @remarks
      * Get the largest corner position of the volume (guaranteed to
@@ -10603,140 +10656,6 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
 }
 
 /**
- * @beta
- * Provides access to the fog definitions stack of a player
- * entity, allowing scripts to push, pop, remove, and query
- * active fog definitions.
- */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class EntityFogComponent extends EntityComponent {
-    private constructor();
-    static readonly componentId = 'minecraft:player.fog';
-    /**
-     * @remarks
-     * Sets the player's fog stack to the given list of fog
-     * identifiers, replacing any existing entries.
-     *
-     * @worldMutation
-     *
-     * @param fogIds
-     * A stack of fog definition identifiers to set on the player's
-     * fog stack (e.g. ['minecraft:fog_bamboo_jungle']). Maximum of
-     * 16 entries.
-     * @param tag
-     * An optional tag to associate with the new entries, used to
-     * target them with pop or remove.
-     * @throws
-     * Throws if the entity is invalid, if more than 16 fog
-     * identifiers are provided, or if any fog identifier is
-     * invalid.
-     *
-     * {@link EntityFogComponentError}
-     *
-     * {@link InvalidEntityError}
-     */
-    applyStack(fogIds: string[], tag?: string): void;
-    /**
-     * @remarks
-     * Returns the list of fog identifiers currently on the
-     * player's fog stack, ordered from bottom to top.
-     *
-     * @worldMutation
-     *
-     * @returns
-     * An array of fog definition identifiers currently on the
-     * stack.
-     * @throws
-     * Throws if the entity is invalid.
-     *
-     * {@link InvalidEntityError}
-     */
-    getStack(): string[];
-    /**
-     * @remarks
-     * Returns the list of tags currently present on the player's
-     * fog stack.
-     *
-     * @worldMutation
-     *
-     * @returns
-     * An array of tag strings associated with fog settings on the
-     * stack.
-     * @throws
-     * Throws if the entity is invalid.
-     *
-     * {@link InvalidEntityError}
-     */
-    getTags(): string[];
-    /**
-     * @remarks
-     * Removes the most recently pushed fog definition from the
-     * player's fog stack.
-     *
-     * @worldMutation
-     *
-     * @param tag
-     * An optional tag identifying which entry to pop. If provided,
-     * searches the stack from top to bottom and removes the most
-     * recently pushed entry with this tag. If omitted, removes the
-     * most recently pushed entry regardless of tag.
-     * @returns
-     * Returns the identifier of the popped fog definition, or
-     * undefined if the stack was unchanged.
-     * @throws
-     * Throws if the entity is invalid.
-     *
-     * {@link InvalidEntityError}
-     */
-    pop(tag?: string): string | undefined;
-    /**
-     * @remarks
-     * Pushes a new fog definition onto the player's fog stack.
-     *
-     * @worldMutation
-     *
-     * @param fogId
-     * The identifier of the fog definition to push onto the stack
-     * (e.g. 'minecraft:fog_bamboo_jungle').
-     * @param tag
-     * An optional tag used to label this fog definition on the
-     * stack, allowing it to be targeted by pop or remove. If
-     * omitted, the entry is stored with the tag 'untagged'.
-     * @returns
-     * Returns the zero-based index at which the fog definition was
-     * inserted into the stack.
-     * @throws
-     * Throws if the entity is invalid, the fog identifier is
-     * invalid, or if the stack limit of 16 has been exceeded.
-     *
-     * {@link EntityFogComponentError}
-     *
-     * {@link InvalidEntityError}
-     */
-    push(fogId: string, tag?: string): number;
-    /**
-     * @remarks
-     * Removes all fog definitions with the given tag from the
-     * player's fog stack. If no tag is provided, clears all fog
-     * definitions.
-     *
-     * @worldMutation
-     *
-     * @param tag
-     * An optional tag identifying which the entries to remove. If
-     * omitted, clears all fog definitions regardless of tag.
-     * @returns
-     * Returns true if at least one entry was removed, or false if
-     * the stack was unchanged.
-     * @throws
-     * Throws if the entity is invalid.
-     *
-     * {@link InvalidEntityError}
-     */
-    remove(tag?: string): boolean;
-}
-
-/**
  * Defines how much friction affects this entity.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -12989,6 +12908,67 @@ export class EntityTamedAfterEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding an event before an entity is
+ * tamed.
+ */
+export class EntityTamedBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * When set to true will cancel the event.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The entity that is being tamed.
+     *
+     */
+    readonly entity: Entity;
+    /**
+     * @remarks
+     * The entity that is attempting to tame the entity.
+     *
+     */
+    readonly tamingEntity: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to before an entity is
+ * tamed.
+ */
+export class EntityTamedBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
+     */
+    subscribe(
+        callback: (arg0: EntityTamedBeforeEvent) => void,
+        options?: EntityTamedEventFilter,
+    ): (arg0: EntityTamedBeforeEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     */
+    unsubscribe(callback: (arg0: EntityTamedBeforeEvent) => void): void;
+}
+
+/**
  * Contains options for taming a rideable entity based on the
  * entity that mounts it.
  */
@@ -13506,6 +13486,138 @@ export class FluidContainer {
      *
      */
     static readonly minFillLevel = 0;
+}
+
+/**
+ * @beta
+ * Provides access to the fog definitions stack of a player
+ * entity, allowing scripts to push, pop, remove, and query
+ * active fog definitions.
+ */
+export class FogSettings {
+    private constructor();
+    /**
+     * @remarks
+     * Returns the list of fog identifiers currently on the
+     * player's fog stack, ordered from bottom to top.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * An array of fog definition identifiers currently on the
+     * stack.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    getStack(): string[];
+    /**
+     * @remarks
+     * Returns the list of tags currently present on the player's
+     * fog stack.
+     *
+     * @worldMutation
+     *
+     * @returns
+     * An array of tag strings associated with fog settings on the
+     * stack.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    getTags(): string[];
+    /**
+     * @remarks
+     * Removes the most recently pushed fog definition from the
+     * player's fog stack.
+     *
+     * @worldMutation
+     *
+     * @param tag
+     * An optional tag identifying which entry to pop. If provided,
+     * searches the stack from top to bottom and removes the most
+     * recently pushed entry with this tag. If omitted, removes the
+     * most recently pushed entry regardless of tag.
+     * @returns
+     * Returns the identifier of the popped fog definition, or
+     * undefined if the stack was unchanged.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    pop(tag?: string): string | undefined;
+    /**
+     * @remarks
+     * Pushes a new fog definition onto the player's fog stack.
+     *
+     * @worldMutation
+     *
+     * @param fogId
+     * The identifier of the fog definition to push onto the stack
+     * (e.g. 'minecraft:fog_bamboo_jungle').
+     * @param tag
+     * An optional tag used to label this fog definition on the
+     * stack, allowing it to be targeted by pop or remove. If
+     * omitted, the entry is stored with the tag 'untagged'.
+     * @returns
+     * Returns the zero-based index at which the fog definition was
+     * inserted into the stack.
+     * @throws
+     * Throws if the entity is invalid, the fog identifier is
+     * invalid, or if the stack limit of 16 has been exceeded.
+     *
+     * {@link FogSettingsError}
+     *
+     * {@link InvalidEntityError}
+     */
+    push(fogId: string, tag?: string): number;
+    /**
+     * @remarks
+     * Removes all fog definitions with the given tag from the
+     * player's fog stack. If no tag is provided, clears all fog
+     * definitions.
+     *
+     * @worldMutation
+     *
+     * @param tag
+     * An optional tag identifying which the entries to remove. If
+     * omitted, clears all fog definitions regardless of tag.
+     * @returns
+     * Returns true if at least one entry was removed, or false if
+     * the stack was unchanged.
+     * @throws
+     * Throws if the entity is invalid.
+     *
+     * {@link InvalidEntityError}
+     */
+    remove(tag?: string): boolean;
+    /**
+     * @remarks
+     * Sets the player's fog stack to the given list of fog
+     * identifiers, replacing any existing entries.
+     *
+     * @worldMutation
+     *
+     * @param fogIds
+     * A stack of fog definition identifiers to set on the player's
+     * fog stack (e.g. ['minecraft:fog_bamboo_jungle']). Maximum of
+     * 16 entries.
+     * @param tag
+     * An optional tag to associate with the new entries, used to
+     * target them with pop or remove.
+     * @throws
+     * Throws if the entity is invalid, if more than 16 fog
+     * identifiers are provided, or if any fog identifier is
+     * invalid.
+     *
+     * {@link FogSettingsError}
+     *
+     * {@link InvalidEntityError}
+     */
+    setStack(fogIds: string[], tag?: string): void;
 }
 
 /**
@@ -16603,6 +16715,14 @@ export class Player extends Entity {
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
+     * @beta
+     * @remarks
+     * Contains methods for manipulating the render distance fog
+     * settings of a Player.
+     *
+     */
+    readonly fogSettings: FogSettings;
+    /**
      * @remarks
      * Gets the current graphics mode of the player's client. This
      * can be changed in the Video section of the settings menu
@@ -16687,15 +16807,10 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
-     */
-    readonly playerPermissionLevel: PlayerPermissionLevel;
-    /**
      * @beta
      * @remarks
-     * Gets the player's Playfab ID.
+     * An identifier that can be used to identify a player across
+     * sessions.
      *
      * @throws This property can throw when used.
      *
@@ -16703,7 +16818,13 @@ export class Player extends Entity {
      *
      * {@link InvalidEntityError}
      */
-    readonly playfabId: string;
+    readonly persistentId: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks
      * @worldMutation
@@ -16823,8 +16944,6 @@ export class Player extends Entity {
      * @remarks
      * Gets the player's ping in milliseconds.
      *
-     * @worldMutation
-     *
      * @returns
      * The player's ping in milliseconds.
      * @throws This function can throw errors.
@@ -16841,6 +16960,21 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getSpawnPoint(): DimensionLocation | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns the split screen slot of the player.
+     *
+     * @returns
+     * The split screen slot of the player or undefined if the
+     * player is not in a split screen session.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getSplitScreenSlot(): PlayerSplitScreenSlot | undefined;
     /**
      * @remarks
      *  Gets the total experience of the Player.
@@ -22737,6 +22871,15 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
+     * @beta
+     * @remarks
+     * Fires before an entity is tamed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityTamed: EntityTamedBeforeEventSignal;
+    /**
      * @remarks
      * This event is fired after an explosion occurs.
      *
@@ -25757,19 +25900,19 @@ export class EnchantmentTypeUnknownIdError extends Error {
     private constructor();
 }
 
-/**
- * @beta
- * Error thrown by {@link EntityFogComponent} operations when
- * the fog stack limit is exceeded or an invalid fog identifier
- * is provided.
- */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class EntityFogComponentError extends Error {
+export class EntitySpawnError extends Error {
     private constructor();
 }
 
+/**
+ * @beta
+ * Error thrown by {@link FogSettings} operations when the fog
+ * stack limit is exceeded or an invalid fog identifier is
+ * provided.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
-export class EntitySpawnError extends Error {
+export class FogSettingsError extends Error {
     private constructor();
 }
 

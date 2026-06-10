@@ -374,15 +374,6 @@ export enum EntityComponentTypes {
      */
     Exhaustion = 'minecraft:player.exhaustion',
     /**
-     * @beta
-     * @remarks
-     * Use this component to access and manipulate the fog
-     * definitions stack of a player. This is only available on
-     * players.
-     *
-     */
-    Fog = 'minecraft:player.fog',
-    /**
      * @remarks
      * Use this component to read the hunger of a player. This is
      * only available on players.

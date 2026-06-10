@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
-/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, RawMessage, RawMessageError, ScreenDisplay, SoundInstance, Vector3 } from '..';
+/* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, FogSettings, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, PlayerSplitScreenSlot, RawMessage, RawMessageError, ScreenDisplay, SoundInstance, Vector3 } from '..';
 
 /**
  * Represents a player within the world.
@@ -83,6 +83,14 @@ export class Player extends Entity {
      *
      */
     commandPermissionLevel: CommandPermissionLevel;
+    /**
+     * @beta
+     * @remarks
+     * Contains methods for manipulating the render distance fog
+     * settings of a Player.
+     *
+     */
+    readonly fogSettings: FogSettings;
     /**
      * @remarks
      * Gets the current graphics mode of the player's client. This
@@ -168,15 +176,10 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
-     */
-    readonly playerPermissionLevel: PlayerPermissionLevel;
-    /**
      * @beta
      * @remarks
-     * Gets the player's Playfab ID.
+     * An identifier that can be used to identify a player across
+     * sessions.
      *
      * @throws This property can throw when used.
      *
@@ -184,7 +187,13 @@ export class Player extends Entity {
      *
      * {@link InvalidEntityError}
      */
-    readonly playfabId: string;
+    readonly persistentId: string;
+    /**
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks
      * @worldMutation
@@ -304,8 +313,6 @@ export class Player extends Entity {
      * @remarks
      * Gets the player's ping in milliseconds.
      *
-     * @worldMutation
-     *
      * @returns
      * The player's ping in milliseconds.
      * @throws This function can throw errors.
@@ -322,6 +329,21 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     getSpawnPoint(): DimensionLocation | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns the split screen slot of the player.
+     *
+     * @returns
+     * The split screen slot of the player or undefined if the
+     * player is not in a split screen session.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getSplitScreenSlot(): PlayerSplitScreenSlot | undefined;
     /**
      * @remarks
      *  Gets the total experience of the Player.

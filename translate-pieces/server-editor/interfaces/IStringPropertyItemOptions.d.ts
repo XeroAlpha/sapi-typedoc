@@ -7,6 +7,14 @@
 export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * If true, profanity filtering will be applied on blur and a
+     * warning modal will be shown. The field value will be cleared
+     * if profanity is detected.
+     *
+     */
+    filterProfanity?: boolean;
+    /**
+     * @remarks
      * Shows clear button for the item. If undefined, it will be
      * true.
      *
