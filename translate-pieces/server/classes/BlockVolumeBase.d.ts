@@ -1,3 +1,4 @@
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
 /* IMPORT */ import { BlockBoundingBox, BlockLocationIterator, Vector3 } from '..';
 
 /**
@@ -27,6 +28,38 @@ export class BlockVolumeBase {
      *
      */
     getCapacity(): number;
+    /**
+     * @beta
+     * @remarks
+     * Returns a list of block positions within the volume that are
+     * closest to a given location, sorted by distance (nearest
+     * first)
+     *
+     * @param count
+     * Number of closest positions to return
+     * @param location
+     * Position to measure distance from
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     */
+    getClosest(count: number, location: Vector3): Vector3[];
+    /**
+     * @beta
+     * @remarks
+     * Returns a list of block positions within the volume that are
+     * farthest from a given location, sorted by distance (farthest
+     * first)
+     *
+     * @param count
+     * Number of farthest positions to return
+     * @param location
+     * Position to measure distance from
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     */
+    getFarthest(count: number, location: Vector3): Vector3[];
     /**
      * @remarks
      * Get the largest corner position of the volume (guaranteed to

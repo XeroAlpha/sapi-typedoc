@@ -29,7 +29,7 @@
  *
  */
 import { EngineError, InvalidArgumentError } from '@minecraft/common';
-import { InvalidEntityError, Player } from '@minecraft/server';
+import { InvalidEntityError, Player, PlayerSplitScreenSlot } from '@minecraft/server';
 export class AdminBeforeEvents {
     private constructor();
     /**
@@ -138,6 +138,13 @@ export class AsyncPlayerJoinBeforeEvent {
      *
      */
     readonly persistentId: string;
+    /**
+     * @remarks
+     * The split screen slot of the joining player or undefined if
+     * the player is not in a split screen session.
+     *
+     */
+    readonly splitScreenSlot?: PlayerSplitScreenSlot;
     /**
      * @remarks
      * Call this to explicitly allow the player to join the server.

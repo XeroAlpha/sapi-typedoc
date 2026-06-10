@@ -1,3 +1,4 @@
+/* IMPORT */ import { PlayerSplitScreenSlot } from '../../server';
 /* IMPORT */ import { DisconnectedError } from '..';
 
 /**
@@ -18,6 +19,13 @@ export class AsyncPlayerJoinBeforeEvent {
      *
      */
     readonly persistentId: string;
+    /**
+     * @remarks
+     * The split screen slot of the joining player or undefined if
+     * the player is not in a split screen session.
+     *
+     */
+    readonly splitScreenSlot?: PlayerSplitScreenSlot;
     /**
      * @remarks
      * Call this to explicitly allow the player to join the server.

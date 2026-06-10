@@ -1,4 +1,4 @@
-/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityHealBeforeEventSignal, EntityHurtBeforeEventSignal, EntityItemPickupBeforeEventSignal, EntityRemoveBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '..';
+/* IMPORT */ import { ChatSendBeforeEventSignal, EffectAddBeforeEventSignal, EntityHealBeforeEventSignal, EntityHurtBeforeEventSignal, EntityItemPickupBeforeEventSignal, EntityRemoveBeforeEventSignal, EntityTamedBeforeEventSignal, ExplosionBeforeEventSignal, ItemUseBeforeEventSignal, PlayerBreakBlockBeforeEventSignal, PlayerGameModeChangeBeforeEventSignal, PlayerInteractWithBlockBeforeEventSignal, PlayerInteractWithEntityBeforeEventSignal, PlayerLeaveBeforeEventSignal, PlayerPlaceBlockBeforeEventSignal, WeatherChangeBeforeEventSignal } from '..';
 
 /**
  * 表示一系列触发于实际动作发生之前的事件。通常来说，即将触发的事件可被修改或取消。
@@ -62,6 +62,15 @@ export class WorldBeforeEvents {
      *
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * Fires before an entity is tamed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly entityTamed: EntityTamedBeforeEventSignal;
     /**
      * @remarks
      * This event is fired after an explosion occurs.

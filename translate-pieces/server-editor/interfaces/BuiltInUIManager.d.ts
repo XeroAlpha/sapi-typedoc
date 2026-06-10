@@ -40,6 +40,12 @@ export interface BuiltInUIManager {
     saveAndExit(): void;
     /**
      * @remarks
+     * Shows the Keyboard Settings modal
+     *
+     */
+    showKeyboardSettings(): void;
+    /**
+     * @remarks
      * Shows update information for the current version
      *
      */
@@ -56,6 +62,12 @@ export interface BuiltInUIManager {
      *
      */
     updateLogPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
+     * Updates the visibility of the Structure panel
+     *
+     */
+    updateStructurePanelVisibility(visibility: boolean): void;
     /**
      * @remarks
      * Updates the visibility of the control demo

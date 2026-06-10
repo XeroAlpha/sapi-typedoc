@@ -6180,6 +6180,12 @@ export interface BuiltInUIManager {
     saveAndExit(): void;
     /**
      * @remarks
+     * Shows the Keyboard Settings modal
+     *
+     */
+    showKeyboardSettings(): void;
+    /**
+     * @remarks
      * Shows update information for the current version
      *
      */
@@ -6196,6 +6202,12 @@ export interface BuiltInUIManager {
      *
      */
     updateLogPanelVisibility(visibility: boolean): void;
+    /**
+     * @remarks
+     * Updates the visibility of the Structure panel
+     *
+     */
+    updateStructurePanelVisibility(visibility: boolean): void;
     /**
      * @remarks
      * Updates the visibility of the control demo
@@ -10686,6 +10698,14 @@ export interface IStringPropertyItem extends IPropertyItemBase {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * If true, profanity filtering will be applied on blur and a
+     * warning modal will be shown. The field value will be cleared
+     * if profanity is detected.
+     *
+     */
+    filterProfanity?: boolean;
     /**
      * @remarks
      * Shows clear button for the item. If undefined, it will be

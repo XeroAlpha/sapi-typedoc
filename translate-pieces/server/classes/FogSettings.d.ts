@@ -1,4 +1,4 @@
-/* IMPORT */ import { EntityComponent, EntityFogComponentError, InvalidEntityError } from '..';
+/* IMPORT */ import { FogSettingsError, InvalidEntityError } from '..';
 
 /**
  * @beta
@@ -6,34 +6,8 @@
  * entity, allowing scripts to push, pop, remove, and query
  * active fog definitions.
  */
-// @ts-ignore Class inheritance allowed for native defined classes
-export class EntityFogComponent extends EntityComponent {
+export class FogSettings {
     private constructor();
-    static readonly componentId = 'minecraft:player.fog';
-    /**
-     * @remarks
-     * Sets the player's fog stack to the given list of fog
-     * identifiers, replacing any existing entries.
-     *
-     * @worldMutation
-     *
-     * @param fogIds
-     * A stack of fog definition identifiers to set on the player's
-     * fog stack (e.g. ['minecraft:fog_bamboo_jungle']). Maximum of
-     * 16 entries.
-     * @param tag
-     * An optional tag to associate with the new entries, used to
-     * target them with pop or remove.
-     * @throws
-     * Throws if the entity is invalid, if more than 16 fog
-     * identifiers are provided, or if any fog identifier is
-     * invalid.
-     *
-     * {@link EntityFogComponentError}
-     *
-     * {@link InvalidEntityError}
-     */
-    applyStack(fogIds: string[], tag?: string): void;
     /**
      * @remarks
      * Returns the list of fog identifiers currently on the
@@ -107,7 +81,7 @@ export class EntityFogComponent extends EntityComponent {
      * Throws if the entity is invalid, the fog identifier is
      * invalid, or if the stack limit of 16 has been exceeded.
      *
-     * {@link EntityFogComponentError}
+     * {@link FogSettingsError}
      *
      * {@link InvalidEntityError}
      */
@@ -132,4 +106,28 @@ export class EntityFogComponent extends EntityComponent {
      * {@link InvalidEntityError}
      */
     remove(tag?: string): boolean;
+    /**
+     * @remarks
+     * Sets the player's fog stack to the given list of fog
+     * identifiers, replacing any existing entries.
+     *
+     * @worldMutation
+     *
+     * @param fogIds
+     * A stack of fog definition identifiers to set on the player's
+     * fog stack (e.g. ['minecraft:fog_bamboo_jungle']). Maximum of
+     * 16 entries.
+     * @param tag
+     * An optional tag to associate with the new entries, used to
+     * target them with pop or remove.
+     * @throws
+     * Throws if the entity is invalid, if more than 16 fog
+     * identifiers are provided, or if any fog identifier is
+     * invalid.
+     *
+     * {@link FogSettingsError}
+     *
+     * {@link InvalidEntityError}
+     */
+    setStack(fogIds: string[], tag?: string): void;
 }
