@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
- * @rc
  * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {

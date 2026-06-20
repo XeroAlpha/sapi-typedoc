@@ -2,7 +2,6 @@
 /* IMPORT */ import { Dimension, PrimitiveShapeError, TextPrimitive } from '..';
 
 /**
- * @rc
  * Primitive Shapes class used to allow adding and removing
  * text primitives to the world.
  */

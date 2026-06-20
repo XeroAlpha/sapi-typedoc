@@ -1,5 +1,4 @@
 /**
- * @rc
  * Thrown when an observable value is expected to be writable,
  * but it is not.
  */

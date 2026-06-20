@@ -1,5 +1,4 @@
 /**
- * @rc
  * A message that can be sent to the client. This is a subset
  * of the RawMessage type, and is used for UI messages.
  */

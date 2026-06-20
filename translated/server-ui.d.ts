@@ -40,7 +40,6 @@
 import { EngineError } from '@minecraft/common';
 import { InvalidEntityError, Player, RawMessage, RawMessageError } from '@minecraft/server';
 /**
- * @rc
  * The reason why a data driven UI screen (MessageBox or
  * CustomForm) was closed.
  */
@@ -116,7 +115,6 @@ export enum FormRejectReason {
 }
 
 /**
- * @rc
  * The reason why a form visibility operation failed.
  */
 export enum FormVisibilityErrorReason {
@@ -137,7 +135,6 @@ export enum FormVisibilityErrorReason {
 }
 
 /**
- * @rc
  * An enum representing the errors that can occur during text
  * filtering. This is used to provide more context about the
  * filtering process.
@@ -256,7 +253,6 @@ export class ActionFormResponse extends FormResponse {
 }
 
 /**
- * @rc
  * A customizable data driven (DDUI) form that lets you add
  * buttons, labels, toggles, dropdowns, sliders, text fields,
  * and more. The form layout is built by calling methods to add
@@ -570,7 +566,6 @@ export class FormResponse {
 }
 
 /**
- * @rc
  * A simple message form with two buttons and a text body. Use
  * this class to show a basic dialog to a player and handle the
  * player's button selection.
@@ -897,7 +892,6 @@ export class ModalFormResponse extends FormResponse {
 }
 
 /**
- * @rc
  * An observable that holds a boolean value. Listeners are
  * notified whenever the value changes.
  */
@@ -974,7 +968,6 @@ export class ObservableBoolean {
 }
 
 /**
- * @rc
  * An observable that holds a numeric value. Listeners are
  * notified whenever the value changes.
  */
@@ -1051,7 +1044,6 @@ export class ObservableNumber {
 }
 
 /**
- * @rc
  * An observable that holds a string value. Listeners are
  * notified whenever the value changes.
  */
@@ -1147,7 +1139,6 @@ export class ObservableString {
 }
 
 /**
- * @rc
  * An observable that holds a UIRawMessage value. Listeners are
  * notified whenever the value changes.
  */
@@ -1236,7 +1227,6 @@ export class UIManager {
 }
 
 /**
- * @rc
  * Options for configuring a button component.
  */
 export interface ButtonOptions {
@@ -1264,7 +1254,6 @@ export interface ButtonOptions {
 }
 
 /**
- * @rc
  * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {
@@ -1278,7 +1267,6 @@ export interface DividerOptions {
 }
 
 /**
- * @rc
  * Represents a single item in a dropdown component.
  */
 export interface DropdownItemData {
@@ -1306,7 +1294,6 @@ export interface DropdownItemData {
 }
 
 /**
- * @rc
  * Options for configuring a dropdown component.
  */
 export interface DropdownOptions {
@@ -1334,7 +1321,6 @@ export interface DropdownOptions {
 }
 
 /**
- * @rc
  * The result returned when an MessageBox is closed. Contains
  * the reason the message box was closed and the player's
  * button selection, if applicable.
@@ -1449,7 +1435,6 @@ export interface ModalFormDataToggleOptions {
 }
 
 /**
- * @rc
  * Configuration options for creating an Observable. Controls
  * how the observable value can be accessed and modified.
  */
@@ -1465,7 +1450,6 @@ export interface ObservableOptions {
 }
 
 /**
- * @rc
  * Options for configuring a slider component.
  */
 export interface SliderOptions {
@@ -1500,7 +1484,6 @@ export interface SliderOptions {
 }
 
 /**
- * @rc
  * Options for configuring a spacer component.
  */
 export interface SpacingOptions {
@@ -1514,7 +1497,6 @@ export interface SpacingOptions {
 }
 
 /**
- * @rc
  * Options for configuring a text field component.
  */
 export interface TextFieldOptions {
@@ -1542,7 +1524,6 @@ export interface TextFieldOptions {
 }
 
 /**
- * @rc
  * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
@@ -1556,7 +1537,6 @@ export interface TextOptions {
 }
 
 /**
- * @rc
  * Options for configuring a toggle component.
  */
 export interface ToggleOptions {
@@ -1584,7 +1564,6 @@ export interface ToggleOptions {
 }
 
 /**
- * @rc
  * A message that can be sent to the client. This is a subset
  * of the RawMessage type, and is used for UI messages.
  */
@@ -1637,7 +1616,6 @@ export class FormRejectError extends Error {
 }
 
 /**
- * @rc
  * Thrown when a form visibility operation fails, such as
  * attempting to show a form that is already showing or
  * attempting to close a form that is not currently open.
@@ -1664,7 +1642,6 @@ export class FormVisibilityError extends Error {
 }
 
 /**
- * @rc
  * Thrown when attempting to interact with a form using an
  * invalid or unknown form identifier.
  */
@@ -1682,7 +1659,6 @@ export class InvalidFormError extends Error {
 }
 
 /**
- * @rc
  * Thrown when attempting to modify a form after it has already
  * been shown to a player. Form properties cannot be changed
  * while the form is active.
@@ -1702,7 +1678,6 @@ export class InvalidFormModificationError extends Error {
 }
 
 /**
- * @rc
  * Thrown when an observable value is expected to be writable,
  * but it is not.
  */
@@ -1712,7 +1687,6 @@ export class InvalidObservableError extends Error {
 }
 
 /**
- * @rc
  * Thrown when a form operation fails because the target player
  * has left the game.
  */

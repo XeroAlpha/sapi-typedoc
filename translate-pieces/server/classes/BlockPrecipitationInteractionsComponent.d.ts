@@ -22,7 +22,6 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      */
     accumulatesSnow(): boolean;
     /**
-     * @rc
      * @remarks
      * Returns `true` if this block can have snow within it, like a
      * flower submerged in snow. Returns `false` if this block

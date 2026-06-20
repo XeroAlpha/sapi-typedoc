@@ -2,7 +2,6 @@
 /* IMPORT */ import { GameRule, InvalidWaypointError, LocatorBarError, Waypoint } from '..';
 
 /**
- * @rc
  * Manages the collection of waypoints displayed on a player's
  * locator bar. Allows adding, removing, and querying waypoints
  * with a maximum capacity limit.

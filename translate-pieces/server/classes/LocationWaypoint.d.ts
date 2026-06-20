@@ -1,7 +1,6 @@
 /* IMPORT */ import { DimensionLocation, InvalidWaypointTextureSelectorError, RGB, Waypoint, WaypointTextureSelector } from '..';
 
 /**
- * @rc
  * Waypoint that points to a fixed location in the world.
  * Unlike entity waypoints, location waypoints always remain
  * valid and their position can be updated.

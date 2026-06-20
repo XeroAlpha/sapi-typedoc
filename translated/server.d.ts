@@ -888,7 +888,6 @@ export enum EntityComponentTypes {
     Color2 = 'minecraft:color2',
     CursorInventory = 'minecraft:cursor_inventory',
     /**
-     * @rc
      * @remarks
      * Represents this entity's ender inventory properties.
      *
@@ -1554,7 +1553,6 @@ export enum EntityHealCause {
      */
     SelfHeal = 'SelfHeal',
     /**
-     * @rc
      * @remarks
      * Healing caused when Totem of Undying is activated.
      *
@@ -2401,7 +2399,6 @@ export enum LiquidType {
 }
 
 /**
- * @rc
  * Enum representing the different reasons why a locator bar
  * operation may fail.
  */
@@ -3150,7 +3147,6 @@ export enum WatchdogTerminateReason {
 }
 
 /**
- * @rc
  * Enum representing different texture icons that can be
  * displayed for waypoints on the locator bar.
  */
@@ -5045,7 +5041,6 @@ export class BlockComponentBlockBreakEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific block permutation
  * that was changed from a previous permutation.
  */
@@ -5315,7 +5310,6 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Contains information regarding a specific container block
  * being closed.
  */
@@ -5333,7 +5327,6 @@ export class BlockContainerClosedAfterEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a block
  * container is closed.
  */
@@ -5367,7 +5360,6 @@ export class BlockContainerClosedAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding a specific container block
  * being opened.
  */
@@ -5385,7 +5377,6 @@ export class BlockContainerOpenedAfterEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a block
  * container is opened.
  */
@@ -5430,9 +5421,8 @@ export class BlockCustomComponentInstance extends BlockComponent {
 /**
  * @beta
  * Represents the dynamic properties of a block in the world.
- * Only available with block entities. Up to 1KBytes of data
- * can be stored per block entity in their dynamic properties
- * storage.
+ * Only available with block entities. Up to 1KB per content
+ * pack, per block entity in their dynamic properties storage.
  * @seeExample rememberPlayerInteraction.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -5464,7 +5454,8 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * set dynamic properties for other content packs. Values can
      * be either a Number, a String or a Vector3. Setting a
      * property with an undefined value will remove it from the
-     * storage.
+     * storage. Storage size usage is counted towards the 1KBytes
+     * limit per content pack.
      *
      * @worldMutation
      *
@@ -5482,7 +5473,9 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
     /**
      * @remarks
      * Returns the current size, in bytes, of the dynamic
-     * properties storage for this block entity.
+     * properties storage for this block entity. The byte count
+     * only accounts for properties set by your content pack. The
+     * 1KBytes limit is per content pack.
      *
      * @throws This function can throw errors.
      *
@@ -6032,7 +6025,6 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      */
     accumulatesSnow(): boolean;
     /**
-     * @rc
      * @remarks
      * Returns `true` if this block can have snow within it, like a
      * flower submerged in snow. Returns `false` if this block
@@ -6910,7 +6902,6 @@ export class ChatSendBeforeEventSignal {
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The locale selected by the client (e.g., en_US, fr_FR,
      * ja_JP). Note that in most cases, server scripts should not
@@ -8769,7 +8760,6 @@ export class Dimension {
 }
 
 /**
- * @rc
  * Provides the functionality for registering custom
  * dimensions. Custom dimensions can only be registered during
  * the system startup event.
@@ -9318,7 +9308,6 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
-     * @rc
      * @remarks
      * Boolean which determines if the player nameplate should be
      * depth tested for visibility.
@@ -9328,7 +9317,6 @@ export class Entity {
      */
     nameplateDepthTested: boolean;
     /**
-     * @rc
      * @remarks
      * Float that determines the render distance of this entity's
      * nameplate.
@@ -10528,7 +10516,6 @@ export class EntityComponent extends Component {
 }
 
 /**
- * @rc
  * Contains information regarding a specific entity container
  * being closed.
  */
@@ -10544,7 +10531,6 @@ export class EntityContainerClosedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity
  * container is closed.
  */
@@ -10578,7 +10564,6 @@ export class EntityContainerClosedAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding a specific entity container
  * being opened.
  */
@@ -10594,7 +10579,6 @@ export class EntityContainerOpenedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity
  * container is opened.
  */
@@ -10721,7 +10705,6 @@ export class EntityDieAfterEventSignal {
 }
 
 /**
- * @rc
  * Represents this entity's ender inventory properties. This
  * component is always present on players and any items in its
  * container will display for the player when they access an
@@ -13318,7 +13301,6 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
 }
 
 /**
- * @rc
  * Contains information related to firing of a data driven
  * entity version upgrade.
  */
@@ -13346,7 +13328,6 @@ export class EntityUpgradeAfterEvent {
 }
 
 /**
- * @rc
  * Contains event registration related to firing of a data
  * driven entity version upgrade.
  */
@@ -13408,7 +13389,6 @@ export class EntityWantsJockeyComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Waypoint that tracks an entity's position. The waypoint
  * automatically updates as the entity moves and becomes
  * invalid when the entity is removed.
@@ -14185,7 +14165,8 @@ export class ISerializable {
  * @beta
  * Represents the dynamic properties of a block. Only available
  * from block entities. Up to 1KBytes of data can be stored per
- * block entity in their dynamic properties storage.
+ * content pack per block entity in their dynamic properties
+ * storage.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
@@ -14207,8 +14188,27 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
     get(key: string): boolean | number | string | Vector3 | undefined;
     /**
      * @remarks
+     * Sets a dynamic property with the provided key and value.
+     * Keys are unique to each content pack and cannot be used to
+     * set dynamic properties for other content packs. Values can
+     * be either a Number, a String or a Vector3. Setting a
+     * property with an undefined value will remove it from the
+     * storage. Storage size usage is counted towards the 1KBytes
+     * limit per content pack.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    set(key: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @remarks
      * Returns the current size, in bytes, of the dynamic
-     * properties storage for this block.
+     * properties storage for this block. The byte count only
+     * accounts for properties set by your content pack. The
+     * 1KBytes limit is per content pack.
      *
      * @throws This function can throw errors.
      *
@@ -16199,7 +16199,6 @@ export class ListBlockVolume extends BlockVolumeBase {
 }
 
 /**
- * @rc
  * Waypoint that points to a fixed location in the world.
  * Unlike entity waypoints, location waypoints always remain
  * valid and their position can be updated.
@@ -16227,7 +16226,6 @@ export class LocationWaypoint extends Waypoint {
 }
 
 /**
- * @rc
  * Manages the collection of waypoints displayed on a player's
  * locator bar. Allows adding, removing, and querying waypoints
  * with a maximum capacity limit.
@@ -17066,7 +17064,6 @@ export class Player extends Entity {
      */
     readonly level: number;
     /**
-     * @rc
      * @remarks
      * The player's Locator Bar. This property is used for managing
      * waypoints displayed on the HUD.
@@ -17760,7 +17757,7 @@ export class PlayerButtonInputAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after a player
  * cancels breaking a block.
  */
@@ -17803,7 +17800,7 @@ export class PlayerCancelBreakingBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a player
  * cancels breaking a block.
  */
@@ -19024,7 +19021,7 @@ export class PlayerSpawnAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding an event after a player
  * starts breaking a block.
  */
@@ -19060,7 +19057,7 @@ export class PlayerStartBreakingBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a player starts
  * breaking a block.
  */
@@ -19232,7 +19229,6 @@ export class PlayerUseNameTagAfterEventSignal {
 }
 
 /**
- * @rc
  * Waypoint that tracks a player's position. Extends {@link
  * EntityWaypoint} with additional player-specific visibility
  * rules such as hidden state and spectator mode.
@@ -19466,7 +19462,6 @@ export class PressurePlatePushAfterEventSignal {
 }
 
 /**
- * @rc
  * The base class for a text primitive. Represents an object in
  * the world and its base properties.
  */
@@ -19570,7 +19565,6 @@ export class PrimitiveShape {
 }
 
 /**
- * @rc
  * Primitive Shapes class used to allow adding and removing
  * text primitives to the world.
  */
@@ -21006,7 +21000,6 @@ export class StartupEvent {
      */
     readonly customCommandRegistry: CustomCommandRegistry;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -21262,7 +21255,6 @@ export class StructureManager {
      */
     get(identifier: string): Structure | undefined;
     /**
-     * @rc
      * @remarks
      * Returns a list of all structures contained in behavior
      * packs. Does not include structures saved to the world or in
@@ -21712,7 +21704,6 @@ export class TargetBlockHitAfterEventSignal {
 }
 
 /**
- * @rc
  * A primitive shape class that represents a text label in the
  * world with a background.
  */
@@ -22017,7 +22008,6 @@ export class WatchdogTerminateBeforeEventSignal {
 }
 
 /**
- * @rc
  * Base class for waypoints displayed on the player's locator
  * bar. Waypoints can track locations or entities and are
  * rendered with customizable textures and colors.
@@ -22262,7 +22252,6 @@ export class World {
     readonly gameRules: GameRules;
     readonly isHardcore: boolean;
     /**
-     * @rc
      * @remarks
      * Manager for adding and removing primitive text objects in
      * the world.
@@ -22466,7 +22455,6 @@ export class World {
      */
     getMoonPhase(): MoonPhase;
     /**
-     * @rc
      * @remarks
      * Returns a map of pack setting name and value pairs.
      *
@@ -22686,7 +22674,6 @@ export class World {
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @rc
      * @remarks
      * This event fires when a block container is closed.
      *
@@ -22695,7 +22682,6 @@ export class WorldAfterEvents {
      */
     readonly blockContainerClosed: BlockContainerClosedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a block container is opened.
      *
@@ -22751,7 +22737,6 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity container is closed.
      *
@@ -22760,7 +22745,6 @@ export class WorldAfterEvents {
      */
     readonly entityContainerClosed: EntityContainerClosedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity container is opened.
      *
@@ -22885,7 +22869,6 @@ export class WorldAfterEvents {
      */
     readonly entityTamed: EntityTamedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -23025,7 +23008,7 @@ export class WorldAfterEvents {
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player cancels breaking a block.
      *
@@ -23139,7 +23122,7 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player starts breaking a block.
      *
@@ -23499,7 +23482,6 @@ export interface BlockBoundingBox {
 }
 
 /**
- * @rc
  * Options used to filter block container access events.
  */
 export interface BlockContainerAccessEventOptions {
@@ -23531,9 +23513,6 @@ export interface BlockCustomComponent {
      *
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
-    /**
-     * @rc
-     */
     onBlockStateChange?: (arg0: BlockComponentBlockStateChangeEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
@@ -24029,7 +24008,6 @@ export interface CompoundBlockVolumeItem {
 }
 
 /**
- * @rc
  * Represents the source of a container access.
  */
 export interface ContainerAccessSource {
@@ -24042,7 +24020,6 @@ export interface ContainerAccessSource {
 }
 
 /**
- * @rc
  * Options for use when filtering container access sources.
  */
 export interface ContainerAccessSourceFilter {
@@ -24181,9 +24158,6 @@ export interface CustomCommandResult {
     status: CustomCommandStatus;
 }
 
-/**
- * @rc
- */
 export interface CustomTexture {
     /**
      * @remarks
@@ -24346,7 +24320,6 @@ export interface EntityApplyDamageOptions {
 }
 
 /**
- * @rc
  * Options used to filter entity container access events.
  */
 export interface EntityContainerAccessEventOptions {
@@ -24899,7 +24872,6 @@ export interface EntityTamedEventFilter {
 }
 
 /**
- * @rc
  * Controls when a waypoint is visible based on the state of
  * the entity it tracks. These rules allow filtering waypoint
  * visibility by entity conditions like sneaking, invisibility,
@@ -25378,7 +25350,7 @@ export interface PlayerAimAssistSettings {
 }
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * PlayerStartBreakingBlockAfterEventSignal.subscribe} or
  * {@link PlayerCancelBreakingBlockAfterEventSignal.subscribe}
@@ -25468,7 +25440,6 @@ export interface PlayerSwingEventOptions {
 }
 
 /**
- * @rc
  * Controls when a waypoint is visible based on player-specific
  * states. Extends {@link EntityVisibilityRules} with
  * additional rules for player-only states like hidden mode and
@@ -26079,7 +26050,6 @@ export interface VectorXZ {
 }
 
 /**
- * @rc
  * Defines a texture and the distance range in which it should
  * be displayed. Used within a {@link WaypointTextureSelector}
  * to create distance-based texture switching.
@@ -26114,7 +26084,6 @@ export interface WaypointTextureBounds {
 }
 
 /**
- * @rc
  * Defines how waypoint textures change based on distance.
  * Contains a list of texture bounds that determine which
  * texture is displayed at different distance ranges.
@@ -26281,7 +26250,6 @@ export class CustomComponentNameError extends Error {
 }
 
 /**
- * @rc
  * Thrown when trying to register a custom dimension with a
  * name that has already been registered.
  */
@@ -26291,7 +26259,6 @@ export class CustomDimensionAlreadyRegisteredError extends Error {
 }
 
 /**
- * @rc
  * Thrown when trying to register a custom dimension outside of
  * the system startup event.
  */
@@ -26301,7 +26268,6 @@ export class CustomDimensionInvalidRegistryError extends Error {
 }
 
 /**
- * @rc
  * Thrown when trying to register a custom dimension with a
  * name that contains invalid characters.
  */
@@ -26311,7 +26277,6 @@ export class CustomDimensionNameError extends Error {
 }
 
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a custom dimension that was not previously
  * registered. New custom dimensions cannot be added during a
@@ -26457,7 +26422,6 @@ export class InvalidStructureError extends Error {
 }
 
 /**
- * @rc
  * Error thrown when attempting to perform operations on an
  * invalid waypoint. A waypoint becomes invalid when it is
  * removed or when the entity it tracks is no longer valid.
@@ -26467,9 +26431,6 @@ export class InvalidWaypointError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidWaypointTextureSelectorError extends Error {
     private constructor();
@@ -26532,7 +26493,6 @@ export class LocationOutOfWorldBoundariesError extends Error {
 }
 
 /**
- * @rc
  * Error thrown when a locator bar operation fails. Contains a
  * reason code indicating the specific cause of the error.
  */
@@ -26570,9 +26530,6 @@ export class PlaceJigsawError extends Error {
     private constructor();
 }
 
-/**
- * @rc
- */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PrimitiveShapeError extends Error {
     private constructor();

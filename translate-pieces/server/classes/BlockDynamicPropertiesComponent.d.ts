@@ -3,9 +3,8 @@
 /**
  * @beta
  * Represents the dynamic properties of a block in the world.
- * Only available with block entities. Up to 1KBytes of data
- * can be stored per block entity in their dynamic properties
- * storage.
+ * Only available with block entities. Up to 1KB per content
+ * pack, per block entity in their dynamic properties storage.
  * @seeExample rememberPlayerInteraction.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -37,7 +36,8 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * set dynamic properties for other content packs. Values can
      * be either a Number, a String or a Vector3. Setting a
      * property with an undefined value will remove it from the
-     * storage.
+     * storage. Storage size usage is counted towards the 1KBytes
+     * limit per content pack.
      *
      * @worldMutation
      *
@@ -55,7 +55,9 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
     /**
      * @remarks
      * Returns the current size, in bytes, of the dynamic
-     * properties storage for this block entity.
+     * properties storage for this block entity. The byte count
+     * only accounts for properties set by your content pack. The
+     * 1KBytes limit is per content pack.
      *
      * @throws This function can throw errors.
      *

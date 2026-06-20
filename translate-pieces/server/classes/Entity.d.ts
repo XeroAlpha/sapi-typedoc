@@ -138,7 +138,6 @@ export class Entity {
      */
     readonly location: Vector3;
     /**
-     * @rc
      * @remarks
      * Boolean which determines if the player nameplate should be
      * depth tested for visibility.
@@ -148,7 +147,6 @@ export class Entity {
      */
     nameplateDepthTested: boolean;
     /**
-     * @rc
      * @remarks
      * Float that determines the render distance of this entity's
      * nameplate.

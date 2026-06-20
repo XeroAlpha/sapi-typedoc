@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @rc
  * Options for configuring a slider component.
  */
 export interface SliderOptions {

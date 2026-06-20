@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableOptions } from '..';
 
 /**
- * @rc
  * An observable that holds a boolean value. Listeners are
  * notified whenever the value changes.
  */

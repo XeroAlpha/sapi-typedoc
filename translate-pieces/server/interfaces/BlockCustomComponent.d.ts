@@ -12,9 +12,6 @@ export interface BlockCustomComponent {
      *
      */
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
-    /**
-     * @rc
-     */
     onBlockStateChange?: (arg0: BlockComponentBlockStateChangeEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks

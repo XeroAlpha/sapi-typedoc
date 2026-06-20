@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockContainerAccessEventOptions, BlockContainerOpenedAfterEvent } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when a block
  * container is opened.
  */

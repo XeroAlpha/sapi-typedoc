@@ -1,6 +1,3 @@
-/**
- * @rc
- */
 export interface CustomTexture {
     /**
      * @remarks

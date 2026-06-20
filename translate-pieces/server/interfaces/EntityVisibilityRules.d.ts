@@ -1,5 +1,4 @@
 /**
- * @rc
  * Controls when a waypoint is visible based on the state of
  * the entity it tracks. These rules allow filtering waypoint
  * visibility by entity conditions like sneaking, invisibility,

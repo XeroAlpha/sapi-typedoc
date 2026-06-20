@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityVisibilityRules } from '..';
 
 /**
- * @rc
  * Controls when a waypoint is visible based on player-specific
  * states. Extends {@link EntityVisibilityRules} with
  * additional rules for player-only states like hidden mode and
