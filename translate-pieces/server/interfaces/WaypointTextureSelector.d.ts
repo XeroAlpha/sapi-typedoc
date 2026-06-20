@@ -1,7 +1,6 @@
 /* IMPORT */ import { WaypointTextureBounds } from '..';
 
 /**
- * @rc
  * Defines how waypoint textures change based on distance.
  * Contains a list of texture bounds that determine which
  * texture is displayed at different distance ranges.

@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityContainerAccessEventOptions, EntityContainerClosedAfterEvent } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity
  * container is closed.
  */

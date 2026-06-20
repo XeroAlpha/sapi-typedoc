@@ -1,7 +1,6 @@
 /* IMPORT */ import { FormVisibilityErrorReason } from '..';
 
 /**
- * @rc
  * Thrown when a form visibility operation fails, such as
  * attempting to show a form that is already showing or
  * attempting to close a form that is not currently open.

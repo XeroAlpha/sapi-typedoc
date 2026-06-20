@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @rc
  * Represents a single item in a dropdown component.
  */
 export interface DropdownItemData {

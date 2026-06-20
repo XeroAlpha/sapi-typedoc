@@ -7,7 +7,6 @@
 export class WorldAfterEvents {
     private constructor();
     /**
-     * @rc
      * @remarks
      * This event fires when a block container is closed.
      *
@@ -16,7 +15,6 @@ export class WorldAfterEvents {
      */
     readonly blockContainerClosed: BlockContainerClosedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a block container is opened.
      *
@@ -72,7 +70,6 @@ export class WorldAfterEvents {
      */
     readonly effectAdd: EffectAddAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity container is closed.
      *
@@ -81,7 +78,6 @@ export class WorldAfterEvents {
      */
     readonly entityContainerClosed: EntityContainerClosedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity container is opened.
      *
@@ -206,7 +202,6 @@ export class WorldAfterEvents {
      */
     readonly entityTamed: EntityTamedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -346,7 +341,7 @@ export class WorldAfterEvents {
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player cancels breaking a block.
      *
@@ -460,7 +455,7 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player starts breaking a block.
      *

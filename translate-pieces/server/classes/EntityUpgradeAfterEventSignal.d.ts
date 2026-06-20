@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityDataDrivenTriggerEventOptions, EntityUpgradeAfterEvent } from '..';
 
 /**
- * @rc
  * Contains event registration related to firing of a data
  * driven entity version upgrade.
  */

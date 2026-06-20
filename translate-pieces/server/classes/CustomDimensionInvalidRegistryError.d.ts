@@ -1,5 +1,4 @@
 /**
- * @rc
  * Thrown when trying to register a custom dimension outside of
  * the system startup event.
  */

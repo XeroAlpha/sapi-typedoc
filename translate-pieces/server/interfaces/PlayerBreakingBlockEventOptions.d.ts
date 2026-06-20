@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockFilter, EntityFilter, PlayerCancelBreakingBlockAfterEventSignal } from '..';
 
 /**
- * @beta
+ * @rc
  * An interface that is passed into {@link
  * PlayerStartBreakingBlockAfterEventSignal.subscribe} or
  * {@link PlayerCancelBreakingBlockAfterEventSignal.subscribe}

@@ -1,7 +1,6 @@
 /* IMPORT */ import { CustomTexture, WaypointTexture, WaypointTextureSelector } from '..';
 
 /**
- * @rc
  * Defines a texture and the distance range in which it should
  * be displayed. Used within a {@link WaypointTextureSelector}
  * to create distance-based texture switching.

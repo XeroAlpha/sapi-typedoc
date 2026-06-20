@@ -3,7 +3,6 @@
 /* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @rc
  * A simple message form with two buttons and a text body. Use
  * this class to show a basic dialog to a player and handle the
  * player's button selection.

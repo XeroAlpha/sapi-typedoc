@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @rc
  * Options for configuring a toggle component.
  */
 export interface ToggleOptions {

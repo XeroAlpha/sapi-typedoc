@@ -7,7 +7,6 @@
 export class ClientSystemInfo extends SystemInfo {
     private constructor();
     /**
-     * @rc
      * @remarks
      * The locale selected by the client (e.g., en_US, fr_FR,
      * ja_JP). Note that in most cases, server scripts should not

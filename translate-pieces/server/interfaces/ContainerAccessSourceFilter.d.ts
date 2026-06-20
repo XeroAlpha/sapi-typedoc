@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityFilter } from '..';
 
 /**
- * @rc
  * Options for use when filtering container access sources.
  */
 export interface ContainerAccessSourceFilter {

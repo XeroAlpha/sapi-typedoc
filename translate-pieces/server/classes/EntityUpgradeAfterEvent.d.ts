@@ -1,7 +1,6 @@
 /* IMPORT */ import { DefinitionModifier, Entity } from '..';
 
 /**
- * @rc
  * Contains information related to firing of a data driven
  * entity version upgrade.
  */

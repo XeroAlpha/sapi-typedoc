@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableOptions, UIRawMessage } from '..';
 
 /**
- * @rc
  * An observable that holds a UIRawMessage value. Listeners are
  * notified whenever the value changes.
  */

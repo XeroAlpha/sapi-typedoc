@@ -1,7 +1,6 @@
 /* IMPORT */ import { ContainerAccessSourceFilter, EntityFilter } from '..';
 
 /**
- * @rc
  * Options used to filter entity container access events.
  */
 export interface EntityContainerAccessEventOptions {

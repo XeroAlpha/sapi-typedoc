@@ -1,5 +1,4 @@
 /**
- * @rc
  * Enum representing different texture icons that can be
  * displayed for waypoints on the locator bar.
  */
