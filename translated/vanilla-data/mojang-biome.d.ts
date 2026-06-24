@@ -32,6 +32,8 @@ export declare enum MinecraftBiomeTypes {
     ColdTaigaMutated = "minecraft:cold_taiga_mutated",
     /** 绯红森林。 */
     CrimsonForest = "minecraft:crimson_forest",
+    /** 斑驳森林。 */
+    DappledForest = "minecraft:dappled_forest",
     /** 冷水深海。 */
     DeepColdOcean = "minecraft:deep_cold_ocean",
     /** 深暗之域。 */

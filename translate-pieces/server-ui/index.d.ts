@@ -21,6 +21,7 @@ export { ButtonOptions } from './interfaces/ButtonOptions';
 export { DividerOptions } from './interfaces/DividerOptions';
 export { DropdownItemData } from './interfaces/DropdownItemData';
 export { DropdownOptions } from './interfaces/DropdownOptions';
+export { ImageOptions } from './interfaces/ImageOptions';
 export { MessageBoxResult } from './interfaces/MessageBoxResult';
 export { ModalFormDataDropdownOptions } from './interfaces/ModalFormDataDropdownOptions';
 export { ModalFormDataSliderOptions } from './interfaces/ModalFormDataSliderOptions';

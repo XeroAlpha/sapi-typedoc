@@ -228,6 +228,12 @@ export declare enum MinecraftItemTypes {
     BlackTerracotta = "minecraft:black_terracotta",
     /** 黑色羊毛。 */
     BlackWool = "minecraft:black_wool",
+    /** 黑色羊毛双层台阶。 */
+    BlackWoolDoubleSlab = "minecraft:black_wool_double_slab",
+    /** 黑色羊毛台阶。 */
+    BlackWoolSlab = "minecraft:black_wool_slab",
+    /** 黑色羊毛楼梯。 */
+    BlackWoolStairs = "minecraft:black_wool_stairs",
     /** 黑石。 */
     Blackstone = "minecraft:blackstone",
     /** 黑石台阶。 */
@@ -278,6 +284,12 @@ export declare enum MinecraftItemTypes {
     BlueTerracotta = "minecraft:blue_terracotta",
     /** 蓝色羊毛。 */
     BlueWool = "minecraft:blue_wool",
+    /** 蓝色羊毛双层台阶。 */
+    BlueWoolDoubleSlab = "minecraft:blue_wool_double_slab",
+    /** 蓝色羊毛台阶。 */
+    BlueWoolSlab = "minecraft:blue_wool_slab",
+    /** 蓝色羊毛楼梯。 */
+    BlueWoolStairs = "minecraft:blue_wool_stairs",
     /** 沼骸刷怪蛋。 */
     BoggedSpawnEgg = "minecraft:bogged_spawn_egg",
     /** 镶铆盔甲纹饰 锻造模板。 */
@@ -358,6 +370,12 @@ export declare enum MinecraftItemTypes {
     BrownTerracotta = "minecraft:brown_terracotta",
     /** 棕色羊毛。 */
     BrownWool = "minecraft:brown_wool",
+    /** 棕色羊毛双层台阶。 */
+    BrownWoolDoubleSlab = "minecraft:brown_wool_double_slab",
+    /** 棕色羊毛台阶。 */
+    BrownWoolSlab = "minecraft:brown_wool_slab",
+    /** 棕色羊毛楼梯。 */
+    BrownWoolStairs = "minecraft:brown_wool_stairs",
     /** 刷子。 */
     Brush = "minecraft:brush",
     /** 气泡珊瑚。 */
@@ -744,6 +762,12 @@ export declare enum MinecraftItemTypes {
     CyanTerracotta = "minecraft:cyan_terracotta",
     /** 青色羊毛。 */
     CyanWool = "minecraft:cyan_wool",
+    /** 青色羊毛双层台阶。 */
+    CyanWoolDoubleSlab = "minecraft:cyan_wool_double_slab",
+    /** 青色羊毛台阶。 */
+    CyanWoolSlab = "minecraft:cyan_wool_slab",
+    /** 青色羊毛楼梯。 */
+    CyanWoolStairs = "minecraft:cyan_wool_stairs",
     /** 损坏的铁砧。 */
     DamagedAnvil = "minecraft:damaged_anvil",
     /** 蒲公英。 */
@@ -1200,6 +1224,12 @@ export declare enum MinecraftItemTypes {
     GrayTerracotta = "minecraft:gray_terracotta",
     /** 灰色羊毛。 */
     GrayWool = "minecraft:gray_wool",
+    /** 灰色羊毛双层台阶。 */
+    GrayWoolDoubleSlab = "minecraft:gray_wool_double_slab",
+    /** 灰色羊毛台阶。 */
+    GrayWoolSlab = "minecraft:gray_wool_slab",
+    /** 灰色羊毛楼梯。 */
+    GrayWoolStairs = "minecraft:gray_wool_stairs",
     /** 绿色收纳袋。 */
     GreenBundle = "minecraft:green_bundle",
     /** 绿色蜡烛。 */
@@ -1226,6 +1256,12 @@ export declare enum MinecraftItemTypes {
     GreenTerracotta = "minecraft:green_terracotta",
     /** 绿色羊毛。 */
     GreenWool = "minecraft:green_wool",
+    /** 绿色羊毛双层台阶。 */
+    GreenWoolDoubleSlab = "minecraft:green_wool_double_slab",
+    /** 绿色羊毛台阶。 */
+    GreenWoolSlab = "minecraft:green_wool_slab",
+    /** 绿色羊毛楼梯。 */
+    GreenWoolStairs = "minecraft:green_wool_stairs",
     /** 砂轮。 */
     Grindstone = "minecraft:grindstone",
     /** 守卫者刷怪蛋。 */
@@ -1478,6 +1514,12 @@ export declare enum MinecraftItemTypes {
     LightBlueTerracotta = "minecraft:light_blue_terracotta",
     /** 淡蓝色羊毛。 */
     LightBlueWool = "minecraft:light_blue_wool",
+    /** 淡蓝色羊毛双层台阶。 */
+    LightBlueWoolDoubleSlab = "minecraft:light_blue_wool_double_slab",
+    /** 淡蓝色羊毛台阶。 */
+    LightBlueWoolSlab = "minecraft:light_blue_wool_slab",
+    /** 淡蓝色羊毛楼梯。 */
+    LightBlueWoolStairs = "minecraft:light_blue_wool_stairs",
     /** 淡灰色收纳袋。 */
     LightGrayBundle = "minecraft:light_gray_bundle",
     /** 淡灰色蜡烛。 */
@@ -1502,6 +1544,12 @@ export declare enum MinecraftItemTypes {
     LightGrayTerracotta = "minecraft:light_gray_terracotta",
     /** 淡灰色羊毛。 */
     LightGrayWool = "minecraft:light_gray_wool",
+    /** 淡灰色羊毛双层台阶。 */
+    LightGrayWoolDoubleSlab = "minecraft:light_gray_wool_double_slab",
+    /** 淡灰色羊毛台阶。 */
+    LightGrayWoolSlab = "minecraft:light_gray_wool_slab",
+    /** 淡灰色羊毛楼梯。 */
+    LightGrayWoolStairs = "minecraft:light_gray_wool_stairs",
     /** 轻质测重压力板。 */
     LightWeightedPressurePlate = "minecraft:light_weighted_pressure_plate",
     /** 避雷针。 */
@@ -1536,6 +1584,12 @@ export declare enum MinecraftItemTypes {
     LimeTerracotta = "minecraft:lime_terracotta",
     /** 黄绿色羊毛。 */
     LimeWool = "minecraft:lime_wool",
+    /** 黄绿色羊毛双层台阶。 */
+    LimeWoolDoubleSlab = "minecraft:lime_wool_double_slab",
+    /** 黄绿色羊毛台阶。 */
+    LimeWoolSlab = "minecraft:lime_wool_slab",
+    /** 黄绿色羊毛楼梯。 */
+    LimeWoolStairs = "minecraft:lime_wool_stairs",
     /** 滞留药水。 */
     LingeringPotion = "minecraft:lingering_potion",
     /** 南瓜灯。 */
@@ -1576,6 +1630,12 @@ export declare enum MinecraftItemTypes {
     MagentaTerracotta = "minecraft:magenta_terracotta",
     /** 品红色羊毛。 */
     MagentaWool = "minecraft:magenta_wool",
+    /** 品红色羊毛双层台阶。 */
+    MagentaWoolDoubleSlab = "minecraft:magenta_wool_double_slab",
+    /** 品红色羊毛台阶。 */
+    MagentaWoolSlab = "minecraft:magenta_wool_slab",
+    /** 品红色羊毛楼梯。 */
+    MagentaWoolStairs = "minecraft:magenta_wool_stairs",
     /** 岩浆块。 */
     Magma = "minecraft:magma",
     /** 岩浆膏。 */
@@ -1852,6 +1912,8 @@ export declare enum MinecraftItemTypes {
     OrangeGlazedTerracotta = "minecraft:orange_glazed_terracotta",
     /** 橙色挽具。 */
     OrangeHarness = "minecraft:orange_harness",
+    /** 橙色杨树树叶。 */
+    OrangePoplarLeaves = "minecraft:orange_poplar_leaves",
     /** 橙色潜影盒。 */
     OrangeShulkerBox = "minecraft:orange_shulker_box",
     /** 橙色染色玻璃。 */
@@ -1864,6 +1926,12 @@ export declare enum MinecraftItemTypes {
     OrangeTulip = "minecraft:orange_tulip",
     /** 橙色羊毛。 */
     OrangeWool = "minecraft:orange_wool",
+    /** 橙色羊毛双层台阶。 */
+    OrangeWoolDoubleSlab = "minecraft:orange_wool_double_slab",
+    /** 橙色羊毛台阶。 */
+    OrangeWoolSlab = "minecraft:orange_wool_slab",
+    /** 橙色羊毛楼梯。 */
+    OrangeWoolStairs = "minecraft:orange_wool_stairs",
     /** 滨菊。 */
     OxeyeDaisy = "minecraft:oxeye_daisy",
     /** 氧化的雕纹铜块。 */
@@ -2004,6 +2072,12 @@ export declare enum MinecraftItemTypes {
     PinkTulip = "minecraft:pink_tulip",
     /** 粉红色羊毛。 */
     PinkWool = "minecraft:pink_wool",
+    /** 粉红色羊毛双层台阶。 */
+    PinkWoolDoubleSlab = "minecraft:pink_wool_double_slab",
+    /** 粉红色羊毛台阶。 */
+    PinkWoolSlab = "minecraft:pink_wool_slab",
+    /** 粉红色羊毛楼梯。 */
+    PinkWoolStairs = "minecraft:pink_wool_stairs",
     /** 活塞。 */
     Piston = "minecraft:piston",
     /** 瓶子草。 */
@@ -2094,6 +2168,40 @@ export declare enum MinecraftItemTypes {
     PolishedTuffStairs = "minecraft:polished_tuff_stairs",
     /** 磨制凝灰岩墙。 */
     PolishedTuffWall = "minecraft:polished_tuff_wall",
+    /** 杨木船。 */
+    PoplarBoat = "minecraft:poplar_boat",
+    /** 杨木按钮。 */
+    PoplarButton = "minecraft:poplar_button",
+    /** 杨木运输船。 */
+    PoplarChestBoat = "minecraft:poplar_chest_boat",
+    /** 杨木门。 */
+    PoplarDoor = "minecraft:poplar_door",
+    /** 杨木栅栏。 */
+    PoplarFence = "minecraft:poplar_fence",
+    /** 杨木栅栏门。 */
+    PoplarFenceGate = "minecraft:poplar_fence_gate",
+    /** 悬挂式杨木告示牌。 */
+    PoplarHangingSign = "minecraft:poplar_hanging_sign",
+    /** 杨木原木。 */
+    PoplarLog = "minecraft:poplar_log",
+    /** 杨木木板。 */
+    PoplarPlanks = "minecraft:poplar_planks",
+    /** 杨木压力板。 */
+    PoplarPressurePlate = "minecraft:poplar_pressure_plate",
+    /** 杨树树苗。 */
+    PoplarSapling = "minecraft:poplar_sapling",
+    /** 杨木展示架。 */
+    PoplarShelf = "minecraft:poplar_shelf",
+    /** 杨木告示牌。 */
+    PoplarSign = "minecraft:poplar_sign",
+    /** 杨木台阶。 */
+    PoplarSlab = "minecraft:poplar_slab",
+    /** 杨木楼梯。 */
+    PoplarStairs = "minecraft:poplar_stairs",
+    /** 杨木活板门。 */
+    PoplarTrapdoor = "minecraft:poplar_trapdoor",
+    /** 杨木。 */
+    PoplarWood = "minecraft:poplar_wood",
     /** 爆裂紫颂果。 */
     PoppedChorusFruit = "minecraft:popped_chorus_fruit",
     /** 虞美人。 */
@@ -2166,6 +2274,12 @@ export declare enum MinecraftItemTypes {
     PurpleTerracotta = "minecraft:purple_terracotta",
     /** 紫色羊毛。 */
     PurpleWool = "minecraft:purple_wool",
+    /** 紫色羊毛双层台阶。 */
+    PurpleWoolDoubleSlab = "minecraft:purple_wool_double_slab",
+    /** 紫色羊毛台阶。 */
+    PurpleWoolSlab = "minecraft:purple_wool_slab",
+    /** 紫色羊毛楼梯。 */
+    PurpleWoolStairs = "minecraft:purple_wool_stairs",
     /** 紫珀块。 */
     PurpurBlock = "minecraft:purpur_block",
     /** 紫珀柱。 */
@@ -2246,6 +2360,8 @@ export declare enum MinecraftItemTypes {
     RedNetherBrickStairs = "minecraft:red_nether_brick_stairs",
     /** 红色下界砖墙。 */
     RedNetherBrickWall = "minecraft:red_nether_brick_wall",
+    /** 红色杨树树叶。 */
+    RedPoplarLeaves = "minecraft:red_poplar_leaves",
     /** 红沙。 */
     RedSand = "minecraft:red_sand",
     /** 红砂岩。 */
@@ -2256,6 +2372,8 @@ export declare enum MinecraftItemTypes {
     RedSandstoneStairs = "minecraft:red_sandstone_stairs",
     /** 红砂岩墙。 */
     RedSandstoneWall = "minecraft:red_sandstone_wall",
+    /** 红灌木。 */
+    RedShrub = "minecraft:red_shrub",
     /** 红色潜影盒。 */
     RedShulkerBox = "minecraft:red_shulker_box",
     /** 红色染色玻璃。 */
@@ -2268,6 +2386,12 @@ export declare enum MinecraftItemTypes {
     RedTulip = "minecraft:red_tulip",
     /** 红色羊毛。 */
     RedWool = "minecraft:red_wool",
+    /** 红色羊毛双层台阶。 */
+    RedWoolDoubleSlab = "minecraft:red_wool_double_slab",
+    /** 红色羊毛台阶。 */
+    RedWoolSlab = "minecraft:red_wool_slab",
+    /** 红色羊毛楼梯。 */
+    RedWoolStairs = "minecraft:red_wool_stairs",
     /** 红石粉。 */
     Redstone = "minecraft:redstone",
     /** 红石块。 */
@@ -2354,6 +2478,8 @@ export declare enum MinecraftItemTypes {
     Shears = "minecraft:shears",
     /** 绵羊刷怪蛋。 */
     SheepSpawnEgg = "minecraft:sheep_spawn_egg",
+    /** Shelf Mushroom。 */
+    ShelfMushroom = "minecraft:shelf_mushroom",
     /** 树荫纹样陶片。 */
     ShelterPotterySherd = "minecraft:shelter_pottery_sherd",
     /** 盾牌。 */
@@ -2578,6 +2704,10 @@ export declare enum MinecraftItemTypes {
     StrippedPaleOakLog = "minecraft:stripped_pale_oak_log",
     /** 去皮苍白橡木。 */
     StrippedPaleOakWood = "minecraft:stripped_pale_oak_wood",
+    /** 去皮杨木原木。 */
+    StrippedPoplarLog = "minecraft:stripped_poplar_log",
+    /** 去皮杨木。 */
+    StrippedPoplarWood = "minecraft:stripped_poplar_wood",
     /** 去皮云杉原木。 */
     StrippedSpruceLog = "minecraft:stripped_spruce_log",
     /** 去皮云杉木。 */
@@ -2958,6 +3088,12 @@ export declare enum MinecraftItemTypes {
     WhiteTulip = "minecraft:white_tulip",
     /** 白色羊毛。 */
     WhiteWool = "minecraft:white_wool",
+    /** 白色羊毛双层台阶。 */
+    WhiteWoolDoubleSlab = "minecraft:white_wool_double_slab",
+    /** 白色羊毛台阶。 */
+    WhiteWoolSlab = "minecraft:white_wool_slab",
+    /** 白色羊毛楼梯。 */
+    WhiteWoolStairs = "minecraft:white_wool_stairs",
     /** 荒野盔甲纹饰 锻造模板。 */
     WildArmorTrimSmithingTemplate = "minecraft:wild_armor_trim_smithing_template",
     /** 野花簇。 */
@@ -3014,6 +3150,8 @@ export declare enum MinecraftItemTypes {
     YellowGlazedTerracotta = "minecraft:yellow_glazed_terracotta",
     /** 黄色挽具。 */
     YellowHarness = "minecraft:yellow_harness",
+    /** 黄色杨树树叶。 */
+    YellowPoplarLeaves = "minecraft:yellow_poplar_leaves",
     /** 黄色潜影盒。 */
     YellowShulkerBox = "minecraft:yellow_shulker_box",
     /** 黄色染色玻璃。 */
@@ -3024,6 +3162,12 @@ export declare enum MinecraftItemTypes {
     YellowTerracotta = "minecraft:yellow_terracotta",
     /** 黄色羊毛。 */
     YellowWool = "minecraft:yellow_wool",
+    /** 黄色羊毛双层台阶。 */
+    YellowWoolDoubleSlab = "minecraft:yellow_wool_double_slab",
+    /** 黄色羊毛台阶。 */
+    YellowWoolSlab = "minecraft:yellow_wool_slab",
+    /** 黄色羊毛楼梯。 */
+    YellowWoolStairs = "minecraft:yellow_wool_stairs",
     /** 僵尸疣猪兽刷怪蛋。 */
     ZoglinSpawnEgg = "minecraft:zoglin_spawn_egg",
     /** 僵尸的头。 */

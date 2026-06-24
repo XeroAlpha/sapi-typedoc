@@ -29,6 +29,38 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
+     * @rc
+     * @remarks
+     * Calculates the location of the closest biome of a particular
+     * type from the world seed. Note that
+     * calculateClosestBiomeFromSeed can be an expensive operation,
+     * so avoid using many of these calls within a particular tick.
+     * The result is derived purely from the world generation
+     * algorithm and the world seed, so the returned location may
+     * not reflect the actual current terrain if biomes have been
+     * modified after generation.
+     *
+     * @param pos
+     * Starting location to look for a biome to find.
+     * @param biomeToFind
+     * Identifier of the biome to look for.
+     * @param options
+     * Additional selection criteria for a biome search.
+     * @returns
+     * Returns a location of the biome, or undefined if a biome
+     * could not be found.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link Error}
+     */
+    calculateClosestBiomeFromSeed(
+        pos: Vector3,
+        biomeToFind: BiomeType | string,
+        options?: BiomeSearchOptions,
+    ): Vector3 | undefined;
+    /**
      * @remarks
      * Checks if an area contains the specified biomes. If the area
      * is partially inside world boundaries, only the area that is
@@ -149,30 +181,6 @@ export class Dimension {
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): ListBlockVolume;
-    /**
-     * @beta
-     * @remarks
-     * Finds the location of the closest biome of a particular
-     * type. Note that the findClosestBiome operation can take some
-     * time to complete, so avoid using many of these calls within
-     * a particular tick.
-     *
-     * @param pos
-     * Starting location to look for a biome to find.
-     * @param biomeToFind
-     * Identifier of the biome to look for.
-     * @param options
-     * Additional selection criteria for a biome search.
-     * @returns
-     * Returns a location of the biome, or undefined if a biome
-     * could not be found.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
-     *
-     * {@link Error}
-     */
-    findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
      * @remarks
      * Returns the biome type at the specified location.

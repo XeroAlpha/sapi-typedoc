@@ -397,6 +397,31 @@ export class CustomForm {
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
+     * @beta
+     * @remarks
+     * Adds an image component to the form layout.
+     *
+     * @worldMutation
+     *
+     * @param src
+     * The image source path to display. Must be a relative path to
+     * an image file within the provided pack.
+     * @param pack
+     * The resource pack identifier that contains the provided
+     * image source.
+     * @param options
+     * Optional configuration for the image, such as visibility or
+     * width.
+     * @returns
+     * The form instance to allow method chaining.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
+     */
+    image(src: ObservableString | string, pack: ObservableString | string, options?: ImageOptions): CustomForm;
+    /**
      * @remarks
      * Returns true if the form is currently being shown to the
      * player, false otherwise.
@@ -1318,6 +1343,29 @@ export interface DropdownOptions {
      *
      */
     visible?: boolean | ObservableBoolean;
+}
+
+/**
+ * @beta
+ * Options for configuring an image component.
+ */
+export interface ImageOptions {
+    /**
+     * @remarks
+     * When false or bound to a false ObservableBoolean, the image
+     * is hidden.
+     *
+     */
+    visible?: boolean | ObservableBoolean;
+    /**
+     * @remarks
+     * Sets the width of the image as a percentage of the width of
+     * the form. 1 is the entire form width, 0.5 is half of the
+     * form width. Greater than 1 or less than/equal to 0 will
+     * become 1.
+     *
+     */
+    width?: number | ObservableNumber;
 }
 
 /**

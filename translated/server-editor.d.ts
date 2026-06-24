@@ -1285,6 +1285,7 @@ export declare enum PropertyItemType {
     SubPane = 'editorUI:SubPane',
     TagContainer = 'editorUI:TagContainer',
     Text = 'editorUI:Text',
+    TimelinePlayer = 'editorUI:TimelinePlayer',
     ToggleGroup = 'editorUI:ToggleGroup',
     Vector2 = 'editorUI:Vector2',
     Vector3 = 'editorUI:Vector3',
@@ -1419,6 +1420,14 @@ export enum ThemeSettingsColorKey {
     Warning = 'Warning',
 }
 
+/**
+ * Playback state for Timeline Player property item.
+ */
+export declare enum TimelinePlayerPlaybackState {
+    Playing = 'playing',
+    Stopped = 'stopped',
+}
+
 export enum WidgetCollisionType {
     None = 0,
     Radius = 1,
@@ -1448,6 +1457,11 @@ export enum WidgetGizmoEventType {
     OriginGrabbed = 'OriginGrabbed',
     OriginMoved = 'OriginMoved',
     OriginReleased = 'OriginReleased',
+}
+
+export enum WidgetGizmoScaleMode {
+    World = 0,
+    Screen = 1,
 }
 
 export enum WidgetGroupSelectionMode {
@@ -5325,6 +5339,24 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      *
      */
     normalizedOffsetOverride?: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    scaleMode: WidgetGizmoScaleMode;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    screenScale: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    worldScale: number;
     /**
      * @remarks
      * @worldMutation
@@ -10313,6 +10345,14 @@ export interface IPropertyPane extends IPane {
     addText(value: IObservableProp<LocalizedString>, options?: ITextPropertyItemOptions): ITextPropertyItem;
     /**
      * @remarks
+     * Adds a timeline player pane to the pane. The player owns its
+     * own playhead and a collection of timeline entries that share
+     * that playhead.
+     *
+     */
+    addTimelinePlayer(options?: ITimelinePlayerOptions): ITimelinePlayer;
+    /**
+     * @remarks
      * Adds a toggle button group to the pane.
      *
      */
@@ -11047,6 +11087,278 @@ export interface ITextPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A pane that hosts a single playhead and a collection of
+ * timeline entries that share it
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITimelinePlayer extends IPropertyItemBase, IPane {
+    /**
+     * @remarks
+     * Number of timeline entries owned by this player.
+     *
+     */
+    readonly entryCount: number;
+    /**
+     * @remarks
+     * Add a group to the dropdown.
+     *
+     * @param id
+     * Unique identifier for the group.
+     * @param name
+     * Localized display name for the group.
+     * @param tooltip
+     * Optional localized tooltip shown when hovering over the
+     * dropdown entry.
+     */
+    addGroup(id: string, name: LocalizedString, tooltip?: LocalizedString): void;
+    /**
+     * @remarks
+     * Add a Vector3 timeline entry to the player.
+     *
+     * @param options
+     * Per-entry options.
+     */
+    addVector3Timeline(options: IVector3TimelinePlayerEntryOptions): IVector3TimelinePlayerEntry;
+    /**
+     * @remarks
+     * Get the total duration in seconds.
+     *
+     */
+    getDuration(): number;
+    /**
+     * @remarks
+     * Look up an entry by id.
+     *
+     * @param id
+     * Entry identifier.
+     */
+    getEntryById(id: string): ITimelinePlayerEntry | undefined;
+    /**
+     * @remarks
+     * Look up an entry by index.
+     *
+     * @param index
+     * Entry index.
+     */
+    getEntryByIndex(index: number): ITimelinePlayerEntry | undefined;
+    /**
+     * @remarks
+     * Get the current list of groups.
+     *
+     */
+    getGroups(): ITimelinePlayerGroup[];
+    /**
+     * @remarks
+     * Get the current playback state.
+     *
+     */
+    getPlaybackState(): TimelinePlayerPlaybackState;
+    /**
+     * @remarks
+     * Get the decimal precision used for keyframe time spacing.
+     *
+     */
+    getPrecision(): number;
+    /**
+     * @remarks
+     * Get the currently selected group identifier.
+     *
+     */
+    getSelectedGroupId(): string;
+    /**
+     * @remarks
+     * Get the playhead time in seconds.
+     *
+     */
+    getTime(): number;
+    /**
+     * @remarks
+     * Remove an entry by id.
+     *
+     * @param id
+     * Entry identifier.
+     */
+    removeEntry(id: string): boolean;
+    /**
+     * @remarks
+     * Remove a group from the dropdown.
+     *
+     * @param id
+     * Identifier of the group to remove.
+     */
+    removeGroup(id: string): void;
+    /**
+     * @remarks
+     * Rename a group in the dropdown.
+     *
+     * @param id
+     * Identifier of the group to rename.
+     * @param newName
+     * New localized display name.
+     */
+    renameGroup(id: string, newName: LocalizedString): void;
+    /**
+     * @remarks
+     * Set the total duration in seconds.
+     *
+     * @param duration
+     * New duration in seconds.
+     */
+    setDuration(duration: number): void;
+    /**
+     * @remarks
+     * Set the playback state.
+     *
+     * @param state
+     * New playback state.
+     */
+    setPlaybackState(state: TimelinePlayerPlaybackState): void;
+    /**
+     * @remarks
+     * Set the decimal precision used for keyframe time spacing.
+     *
+     * @param precision
+     * Decimal precision.
+     */
+    setPrecision(precision: number): void;
+    /**
+     * @remarks
+     * Set the selected group.
+     *
+     * @param id
+     * Identifier of the group to select.
+     */
+    setSelectedGroupId(id: string): void;
+    /**
+     * @remarks
+     * Set the playhead time.
+     *
+     * @param time
+     * New playhead time in seconds.
+     */
+    setTime(time: number): void;
+}
+
+/**
+ * Common interface for all entries owned by a Timeline Player
+ * pane
+ */
+export interface ITimelinePlayerEntry {
+    /**
+     * @remarks
+     * Unique identifier for the entry.
+     *
+     */
+    readonly id: string;
+    /**
+     * @remarks
+     * Identifier of the parent Timeline Player pane.
+     *
+     */
+    readonly paneId: string;
+    /**
+     * @remarks
+     * Display title shown next to the entry's graph.
+     *
+     */
+    readonly title: LocalizedString | undefined;
+    /**
+     * @remarks
+     * Updates title of the entry.
+     *
+     * @param title
+     * New title.
+     */
+    setTitle(title: LocalizedString | undefined): void;
+}
+
+/**
+ * A group entry shown in a Timeline Player's group dropdown
+ */
+export interface ITimelinePlayerGroup {
+    /**
+     * @remarks
+     * Unique identifier for the group.
+     *
+     */
+    id: string;
+    /**
+     * @remarks
+     * Localized display name shown in the dropdown.
+     *
+     */
+    name: LocalizedString;
+    /**
+     * @remarks
+     * Optional localized tooltip shown when hovering over the
+     * dropdown entry.
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
+ * Optional properties for a Timeline Player pane
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Total duration in seconds.
+     *
+     */
+    duration?: number;
+    /**
+     * @remarks
+     * Group entries for the dropdown.
+     *
+     */
+    groups?: ITimelinePlayerGroup[];
+    /**
+     * @remarks
+     * Callback triggered when the group selection changes.
+     *
+     */
+    onGroupChanged?: (groupId: string) => void;
+    /**
+     * @remarks
+     * Callback triggered when the play/stop toggle is clicked.
+     *
+     */
+    onPlayStopToggled?: () => void;
+    /**
+     * @remarks
+     * Callback triggered when the redistribute button is clicked.
+     *
+     */
+    onRedistributeClicked?: () => void;
+    /**
+     * @remarks
+     * Callback triggered when the playhead time changes.
+     *
+     */
+    onTimeChanged?: (current: number, prev: number) => void;
+    /**
+     * @remarks
+     * Initial playback state.
+     *
+     */
+    playbackState?: TimelinePlayerPlaybackState;
+    /**
+     * @remarks
+     * Decimal precision for keyframe time values.
+     *
+     */
+    precision?: number;
+    /**
+     * @remarks
+     * Initially selected group identifier.
+     *
+     */
+    selectedGroupId?: string;
+}
+
+/**
  * A property item which supports toggle button properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -11281,6 +11593,15 @@ export interface IVector2PropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A keyframe in a Vector3 Timeline Player entry
+ */
+export interface IVector3Keyframe {
+    id: string;
+    time: number;
+    value: Vector3;
+}
+
+/**
  * A property item which supports Vector3 properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -11379,6 +11700,112 @@ export interface IVector3PropertyItemOptions extends IPropertyItemOptionsBase {
      *
      */
     tooltip?: BasicTooltipContent;
+}
+
+/**
+ * A Vector3 timeline entry owned by a Timeline Player pane
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface IVector3TimelinePlayerEntry extends ITimelinePlayerEntry {
+    /**
+     * @remarks
+     * Add a keyframe.
+     *
+     * @param keyframe
+     * Keyframe to add.
+     */
+    addKeyframe(keyframe: IVector3Keyframe): void;
+    /**
+     * @remarks
+     * Get the list of keyframes for this entry.
+     *
+     */
+    getKeyframes(): IVector3Keyframe[];
+    /**
+     * @remarks
+     * Get the currently selected keyframe identifier for this
+     * entry, or undefined if no keyframe in this entry is
+     * selected.
+     *
+     */
+    getSelectedKeyframeId(): string | undefined;
+    /**
+     * @remarks
+     * Remove a keyframe by its identifier.
+     *
+     * @param id
+     * Identifier of the keyframe to remove.
+     */
+    removeKeyframe(id: string): void;
+    /**
+     * @remarks
+     * Bulk replace all keyframes.
+     *
+     * @param keyframes
+     * New set of keyframes.
+     */
+    setKeyframes(keyframes: IVector3Keyframe[]): void;
+    /**
+     * @remarks
+     * Set the selected keyframe for this entry.
+     *
+     * @param keyframeId
+     * Identifier of the keyframe to select, or undefined to
+     * deselect.
+     */
+    setSelectedKeyframeId(keyframeId: string | undefined): void;
+    /**
+     * @remarks
+     * Update an existing keyframe. Matched by the id field.
+     *
+     * @param keyframe
+     * Keyframe with updated time/value.
+     */
+    updateKeyframe(keyframe: IVector3Keyframe): void;
+}
+
+/**
+ * Optional properties for a Vector3 timeline entry inside a
+ * Timeline Player pane
+ */
+export interface IVector3TimelinePlayerEntryOptions {
+    /**
+     * @remarks
+     * Initial keyframe entries for this timeline.
+     *
+     */
+    keyframes?: IVector3Keyframe[];
+    /**
+     * @remarks
+     * Callback triggered when a keyframe is added.
+     *
+     */
+    onKeyframeAdded?: (keyframe: IVector3Keyframe) => void;
+    /**
+     * @remarks
+     * Callback triggered when a keyframe is moved or its value
+     * changes.
+     *
+     */
+    onKeyframeChanged?: (keyframe: IVector3Keyframe) => void;
+    /**
+     * @remarks
+     * Callback triggered when a keyframe is removed.
+     *
+     */
+    onKeyframeRemoved?: (keyframe: IVector3Keyframe) => void;
+    /**
+     * @remarks
+     * Callback triggered when a keyframe is selected.
+     *
+     */
+    onKeyframeSelected?: (keyframe: IVector3Keyframe) => void;
+    /**
+     * @remarks
+     * Display title shown next to the entry's graph.
+     *
+     */
+    title?: LocalizedString;
 }
 
 /**
@@ -11751,6 +12178,7 @@ export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOp
     normalizedOrigin?: Vector3;
     outlineColor?: RGBA;
     rotation?: StructureRotation;
+    scaleMode?: WidgetGizmoScaleMode;
     showWorldIntersections?: boolean;
     stateChangeEvent?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void;
     visibleHull?: boolean;
@@ -11781,6 +12209,7 @@ export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions 
     axes?: Axis;
     enablePlanes?: boolean;
     normalizedAutoOffset?: Vector3;
+    scaleMode?: WidgetGizmoScaleMode;
     stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
 }
 

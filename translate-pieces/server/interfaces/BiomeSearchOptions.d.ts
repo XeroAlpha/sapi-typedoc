@@ -1,7 +1,7 @@
 /* IMPORT */ import { Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */

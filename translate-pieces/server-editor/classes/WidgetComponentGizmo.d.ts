@@ -1,5 +1,5 @@
 /* IMPORT */ import { Vector3 } from '../../server';
-/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters } from '..';
+/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters, WidgetGizmoScaleMode } from '..';
 
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
@@ -16,6 +16,24 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      *
      */
     normalizedOffsetOverride?: Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    scaleMode: WidgetGizmoScaleMode;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    screenScale: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    worldScale: number;
     /**
      * @remarks
      * @worldMutation
