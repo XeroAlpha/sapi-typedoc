@@ -1,4 +1,4 @@
-import { system } from '@minecraft/server-wrapper';
+import { system } from '@minecraft/server-v2';
 
 system.beforeEvents.startup.subscribe(initEvent => {
   initEvent.blockComponentRegistry.registerCustomComponent('scripting_demo_pack:block_entity_onPlayerInteract', {

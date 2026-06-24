@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinitionRegistry, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -64,6 +64,14 @@ export class World {
      *
      */
     readonly seed: string;
+    /**
+     * @beta
+     * @remarks
+     * Provides read-only access to the sound definitions loaded
+     * for this world.
+     *
+     */
+    readonly soundDefinitionRegistry: SoundDefinitionRegistry;
     /**
      * @remarks
      * Returns the manager for {@link Structure} related APIs.

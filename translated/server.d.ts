@@ -7879,6 +7879,38 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
+     * @rc
+     * @remarks
+     * Calculates the location of the closest biome of a particular
+     * type from the world seed. Note that
+     * calculateClosestBiomeFromSeed can be an expensive operation,
+     * so avoid using many of these calls within a particular tick.
+     * The result is derived purely from the world generation
+     * algorithm and the world seed, so the returned location may
+     * not reflect the actual current terrain if biomes have been
+     * modified after generation.
+     *
+     * @param pos
+     * Starting location to look for a biome to find.
+     * @param biomeToFind
+     * Identifier of the biome to look for.
+     * @param options
+     * Additional selection criteria for a biome search.
+     * @returns
+     * Returns a location of the biome, or undefined if a biome
+     * could not be found.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link Error}
+     */
+    calculateClosestBiomeFromSeed(
+        pos: Vector3,
+        biomeToFind: BiomeType | string,
+        options?: BiomeSearchOptions,
+    ): Vector3 | undefined;
+    /**
      * @remarks
      * Checks if an area contains the specified biomes. If the area
      * is partially inside world boundaries, only the area that is
@@ -7999,30 +8031,6 @@ export class Dimension {
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): ListBlockVolume;
-    /**
-     * @beta
-     * @remarks
-     * Finds the location of the closest biome of a particular
-     * type. Note that the findClosestBiome operation can take some
-     * time to complete, so avoid using many of these calls within
-     * a particular tick.
-     *
-     * @param pos
-     * Starting location to look for a biome to find.
-     * @param biomeToFind
-     * Identifier of the biome to look for.
-     * @param options
-     * Additional selection criteria for a biome search.
-     * @returns
-     * Returns a location of the biome, or undefined if a biome
-     * could not be found.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
-     *
-     * {@link Error}
-     */
-    findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     /**
      * @remarks
      * Returns the biome type at the specified location.
@@ -17008,7 +17016,7 @@ export class Player extends Entity {
      * {@link Error}
      * @seeExample playMusicAndSound.ts
      */
-    playSound(soundId: string, soundOptions?: PlayerSoundOptions): SoundInstance;
+    playSound(soundId: SoundDefinition | string, soundOptions?: PlayerSoundOptions): SoundInstance;
     /**
      * @beta
      * @remarks
@@ -20439,6 +20447,73 @@ export class SoundCompletedAfterEventSignal {
 
 /**
  * @beta
+ * Static metadata about a sound declared in a
+ * sound_definitions.json file.
+ */
+export class SoundDefinition {
+    private constructor();
+    /**
+     * @remarks
+     * Duration metadata declared for this sound. Undefined when
+     * the sound definition does not specify a duration.
+     *
+     */
+    readonly durationInfo?: SoundDefinitionDurationInfo;
+    /**
+     * @remarks
+     * Music metadata declared for this sound. Undefined when the
+     * sound definition does not specify a music_info block.
+     *
+     */
+    readonly musicInfo?: SoundDefinitionMusicInfo;
+    /**
+     * @remarks
+     * Identifier of the sound event this definition declares, in
+     * the form 'namespace:name'.
+     *
+     */
+    readonly soundEventId: string;
+    /**
+     * @remarks
+     * Tag metadata declared for this sound, as a record mapping
+     * each tag name to its declared values. A tag declared with a
+     * single string value is exposed as a single-element array.
+     * Undefined when the sound definition does not specify any
+     * tags.
+     *
+     */
+    readonly tags?: Record<string, string[]>;
+}
+
+/**
+ * @beta
+ * Provides read-only access to the sound definitions loaded
+ * for the current world.
+ */
+export class SoundDefinitionRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Returns the sound definitions in the registry, optionally
+     * narrowed by a filter.
+     *
+     * @param filter
+     * Optional filter applied to each definition. When omitted,
+     * every definition is returned.
+     * @returns
+     * All sound definitions matching the filter, or every sound
+     * definition when no filter is supplied.
+     * @throws
+     * An error will be thrown if filter.minDuration is greater
+     * than filter.maxDuration.
+     *
+     * {@link InvalidArgumentError}
+     */
+    getDefinitions(filter?: SoundDefinitionFilter): SoundDefinition[];
+}
+
+/**
+ * @beta
  * Provides duration and playback information for a sound whose
  * definition declares a duration.
  */
@@ -21914,6 +21989,14 @@ export class World {
      */
     readonly seed: string;
     /**
+     * @beta
+     * @remarks
+     * Provides read-only access to the sound definitions loaded
+     * for this world.
+     *
+     */
+    readonly soundDefinitionRegistry: SoundDefinitionRegistry;
+    /**
      * @remarks
      * Returns the manager for {@link Structure} related APIs.
      *
@@ -23004,7 +23087,7 @@ export interface BiomeFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -25275,6 +25358,136 @@ export interface ScriptEventMessageFilterOptions {
      *
      */
     namespaces: string[];
+}
+
+/**
+ * @beta
+ * Duration metadata declared in a sound definition.
+ */
+export interface SoundDefinitionDurationInfo {
+    /**
+     * @remarks
+     * Total duration of the sound in seconds, as declared in the
+     * sound definition.
+     *
+     */
+    duration: number;
+}
+
+/**
+ * @beta
+ * Criteria used to narrow a set of sound definitions. Each
+ * field is optional and applies its constraint only when
+ * defined; a definition must satisfy every defined field to
+ * pass.
+ */
+export interface SoundDefinitionFilter {
+    /**
+     * @remarks
+     * Artist names to match against the definition's
+     * music_info.artist. Comparison is case-insensitive. When
+     * defined as a non-empty array, a definition passes only when
+     * its declared artist matches one of the supplied values. When
+     * undefined, no constraint on artist is applied.
+     *
+     */
+    artists?: string[];
+    /**
+     * @remarks
+     * Genres to match against the definition's music_info.genres.
+     * Comparison is case-insensitive. When defined as a non-empty
+     * array, a definition passes only when at least one of its
+     * declared genres matches one of the supplied values. When
+     * undefined, no constraint on genres is applied.
+     *
+     */
+    genres?: string[];
+    /**
+     * @remarks
+     * Upper bound in seconds, inclusive. When defined, definitions
+     * with a longer duration and definitions without a declared
+     * duration are excluded. When undefined, no upper bound is
+     * applied.
+     *
+     */
+    maxDuration?: number;
+    /**
+     * @remarks
+     * Lower bound in seconds, inclusive. When defined, definitions
+     * with a shorter duration and definitions without a declared
+     * duration are excluded. When undefined, no lower bound is
+     * applied.
+     *
+     */
+    minDuration?: number;
+    /**
+     * @remarks
+     * Moods to match against the definition's music_info.moods.
+     * Comparison is case-insensitive. When defined as a non-empty
+     * array, a definition passes only when at least one of its
+     * declared moods matches one of the supplied values. When
+     * undefined, no constraint on moods is applied.
+     *
+     */
+    moods?: string[];
+    /**
+     * @remarks
+     * Tag constraints to match against the definition's tags.
+     * Comparisons of tag names and values are case-insensitive.
+     * When defined as a non-empty record, a definition passes only
+     * when, for each entry with a non-empty value array, the tag
+     * name is present on the definition with at least one matching
+     * value. When undefined, no constraint on tags is applied.
+     *
+     */
+    tags?: Record<string, string[]>;
+    /**
+     * @remarks
+     * Titles to match against the definition's music_info.title.
+     * Comparison is case-insensitive. When defined as a non-empty
+     * array, a definition passes only when its declared title
+     * matches one of the supplied values. When undefined, no
+     * constraint on title is applied.
+     *
+     */
+    titles?: string[];
+}
+
+/**
+ * @beta
+ * Music metadata declared on a sound definition. Each field is
+ * optional and is undefined when the sound definition does not
+ * declare a value for it.
+ */
+export interface SoundDefinitionMusicInfo {
+    /**
+     * @remarks
+     * Artist declared for this sound. Undefined when no artist was
+     * declared.
+     *
+     */
+    artist?: string;
+    /**
+     * @remarks
+     * Genres declared for this sound. Undefined when no genres
+     * were declared.
+     *
+     */
+    genres?: string[];
+    /**
+     * @remarks
+     * Moods declared for this sound. Undefined when no moods were
+     * declared.
+     *
+     */
+    moods?: string[];
+    /**
+     * @remarks
+     * Title declared for this sound. Undefined when no title was
+     * declared.
+     *
+     */
+    title?: string;
 }
 
 /**

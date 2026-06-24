@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, InvalidFormModificationError, InvalidObservableError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, ImageOptions, InvalidFormModificationError, InvalidObservableError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * A customizable data driven (DDUI) form that lets you add
@@ -146,6 +146,31 @@ export class CustomForm {
      * {@link InvalidFormModificationError}
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
+    /**
+     * @beta
+     * @remarks
+     * Adds an image component to the form layout.
+     *
+     * @worldMutation
+     *
+     * @param src
+     * The image source path to display. Must be a relative path to
+     * an image file within the provided pack.
+     * @param pack
+     * The resource pack identifier that contains the provided
+     * image source.
+     * @param options
+     * Optional configuration for the image, such as visibility or
+     * width.
+     * @returns
+     * The form instance to allow method chaining.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     *
+     * {@link InvalidObservableError}
+     */
+    image(src: ObservableString | string, pack: ObservableString | string, options?: ImageOptions): CustomForm;
     /**
      * @remarks
      * Returns true if the form is currently being shown to the
