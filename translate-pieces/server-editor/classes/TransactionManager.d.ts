@@ -1,5 +1,4 @@
-/* IMPORT */ import { BlockVolumeBase, Entity, Vector3 } from '../../server';
-/* IMPORT */ import { EntityOperationType, UserDefinedTransactionHandlerId } from '..';
+/* IMPORT */ import { PendingTransaction, UserDefinedTransactionHandlerId } from '..';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -21,49 +20,7 @@ export class TransactionManager {
      *
      * @throws This function can throw errors.
      */
-    addEntityOperation(entity: Entity, type: EntityOperationType): boolean;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    addUserDefinedOperation(
-        transactionHandlerId: UserDefinedTransactionHandlerId,
-        operationData: string,
-        operationName?: string,
-    ): void;
-    /**
-     * @remarks
-     * Commit all of the transaction operations currently attached
-     * to the open transaction record to the manager.  These will
-     * be added as a single transaction manager entry.
-     * The open record will be closed and all tracking operations
-     * will cease.
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    commitOpenTransaction(): boolean;
-    /**
-     * @remarks
-     * This function will commit the pending changes caused by any
-     * of the track changes variants.  The changes will be
-     * committed to the currently open transaction, but the
-     * transaction will remain open for further records.
-     * Pending block changes from tracking operations will be added
-     * to the transaction record before submission to the
-     * transaction manager
-     *
-     * @worldMutation
-     *
-     * @returns
-     * Returns the number of change requests that were being
-     * tracked
-     * @throws This function can throw errors.
-     */
-    commitTrackedChanges(): number;
+    createPendingTransaction(name: string): PendingTransaction;
     /**
      * @remarks
      * @worldMutation
@@ -74,52 +31,6 @@ export class TransactionManager {
         undoClosure: (arg0: string) => void,
         redoClosure: (arg0: string) => void,
     ): UserDefinedTransactionHandlerId;
-    /**
-     * @remarks
-     * Discard the currently open transaction without committing it
-     * to the transaction manager stack.
-     * All records within the transaction will be discarded, and
-     * any tracking requests currently active will be stopped
-     *
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    discardOpenTransaction(): boolean;
-    /**
-     * @remarks
-     * Discard any pending tracked changes.  This does not affect
-     * the current open transaction contents, only the pending
-     * tracked block operations
-     *
-     * @worldMutation
-     *
-     * @returns
-     * Returns the number of change requests that were discarded
-     * @throws This function can throw errors.
-     */
-    discardTrackedChanges(): number;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    isBusy(): boolean;
-    /**
-     * @remarks
-     * Open a transaction record which will be a container for any
-     * number of transaction operations.
-     * All transaction operations within a record are grouped and
-     * treated as a single atomic unit
-     *
-     * @worldMutation
-     *
-     * @param name
-     * Give the transaction record a name
-     * @throws This function can throw errors.
-     */
-    openTransaction(name: string): boolean;
     /**
      * @remarks
      * Perform an redo operation.  This will take the last
@@ -145,41 +56,6 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     redoSize(): number;
-    /**
-     * @remarks
-     * Begin tracking block changes in a specified area.  These
-     * will be added to a pending changes list.
-     * The pending list will be added to the open transaction
-     * record when a commit has been issued.
-     *
-     * @worldMutation
-     *
-     * @param from
-     * Min block location of a bounding area
-     * @param to
-     * Max block location of a bounding area
-     * @throws This function can throw errors.
-     */
-    trackBlockChangeArea(from: Vector3, to: Vector3): boolean;
-    /**
-     * @remarks
-     * Begin tracking block changes in a list of specified block
-     * locations.
-     *
-     * @worldMutation
-     *
-     * @param locations
-     * An array of block locations to monitor for changes
-     * @throws This function can throw errors.
-     */
-    trackBlockChangeList(locations: Vector3[]): boolean;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last

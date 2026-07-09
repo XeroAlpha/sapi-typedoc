@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBox, BlockPermutation, BlockType, BlockVolumeBase, CompoundBlockVolume, ListBlockVolume, Vector3 } from '../../server';
+/* IMPORT */ import { BlockBoundingBox, BlockPermutation, BlockType, BlockVolumeBase, ListBlockVolume, Vector3 } from '../../server';
 /* IMPORT */ import { BlockMaskList, ContiguousSelectionProperties, QuickExtrudeProperties, RelativeVolumeListBlockVolume } from '..';
 
 export class BlockUtilities {
@@ -10,7 +10,7 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     fillVolume(
-        volume: BlockVolumeBase | CompoundBlockVolume | RelativeVolumeListBlockVolume,
+        volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         block?: BlockPermutation | BlockType | string,
     ): void;
     /**
@@ -27,7 +27,7 @@ export class BlockUtilities {
      *
      * @throws This function can throw errors.
      */
-    getContiguousSelection(properties?: ContiguousSelectionProperties): CompoundBlockVolume;
+    getContiguousSelection(properties?: ContiguousSelectionProperties): RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation

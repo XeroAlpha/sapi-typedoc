@@ -1,3 +1,4 @@
+/* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
 /* IMPORT */ import { Player, SoundDurationInfo } from '..';
 
 /**
@@ -85,7 +86,12 @@ export class SoundInstance {
      *
      * @param seconds
      * Position to seek to in seconds. Must be non-negative.
-     * Minimum value: 0
+     * Bounds: [0, 107374184]
+     * @throws
+     * Throws if `seconds` is negative, or if the sound has a known
+     * duration and `seconds` is greater than that duration.
+     *
+     * {@link ArgumentOutOfBoundsError}
      */
     seekTo(seconds: number): void;
     /**

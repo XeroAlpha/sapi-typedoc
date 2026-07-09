@@ -29,6 +29,7 @@ export declare enum MinecraftEntityTypes {
     Cow = "minecraft:cow",
     Creaking = "minecraft:creaking",
     Creeper = "minecraft:creeper",
+    Cushion = "minecraft:cushion",
     Dolphin = "minecraft:dolphin",
     Donkey = "minecraft:donkey",
     DragonFireball = "minecraft:dragon_fireball",

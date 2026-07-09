@@ -19,13 +19,14 @@ export class SoundDurationInfo {
     readonly isActive: boolean;
     /**
      * @remarks
-     * Returns the elapsed playback time of the sound, in seconds,
-     * since it started playing.
+     * Returns the current playback position within the sound, in
+     * seconds, measured from the beginning of the sound.
      *
      * @worldMutation
      *
      * @returns
-     * Elapsed playback time in seconds.
+     * Current playback position in seconds, measured from the
+     * beginning of the sound.
      */
     getPlaybackPosition(): number;
 }

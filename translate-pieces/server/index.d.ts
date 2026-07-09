@@ -5,6 +5,7 @@ export { BlockVolumeIntersection } from './enums/BlockVolumeIntersection';
 export { BookErrorReason } from './enums/BookErrorReason';
 export { ButtonState } from './enums/ButtonState';
 export { CameraShakeType } from './enums/CameraShakeType';
+export { CloneMode } from './enums/CloneMode';
 export { CommandPermissionLevel } from './enums/CommandPermissionLevel';
 export { CompoundBlockVolumeAction } from './enums/CompoundBlockVolumeAction';
 export { CompoundBlockVolumePositionRelativity } from './enums/CompoundBlockVolumePositionRelativity';
@@ -594,6 +595,7 @@ export { PlayerBreakingBlockEventOptions } from './interfaces/PlayerBreakingBloc
 export { PlayerSoundOptions } from './interfaces/PlayerSoundOptions';
 export { PlayerSwingEventOptions } from './interfaces/PlayerSwingEventOptions';
 export { PlayerVisibilityRules } from './interfaces/PlayerVisibilityRules';
+export { PrimitiveShapeQueryOptions } from './interfaces/PrimitiveShapeQueryOptions';
 export { ProgressKeyFrame } from './interfaces/ProgressKeyFrame';
 export { ProjectileShootOptions } from './interfaces/ProjectileShootOptions';
 export { RangeComparison } from './interfaces/RangeComparison';

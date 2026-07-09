@@ -7,7 +7,7 @@
 export class LootItem extends LootPoolEntry {
     private constructor();
     /**
-     * @beta
+     * @rc
      */
     readonly conditions: LootItemCondition[];
     readonly functions: LootItemFunction[];

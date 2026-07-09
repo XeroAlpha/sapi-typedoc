@@ -221,6 +221,34 @@ export enum CameraShakeType {
 }
 
 /**
+ * @beta
+ * An enumeration for the clone modes used when cloning blocks.
+ */
+export enum CloneMode {
+    /**
+     * @remarks
+     * Clones the blocks from the source region to the destination,
+     * leaving the source intact.
+     *
+     */
+    Copy = 0,
+    /**
+     * @remarks
+     * Clones the blocks from the source region to the destination,
+     * allowing the source and destination regions to overlap.
+     *
+     */
+    ForceCopy = 1,
+    /**
+     * @remarks
+     * Clones the blocks from the source region to the destination
+     * and replaces the source region with air.
+     *
+     */
+    Move = 2,
+}
+
+/**
  * The required permission level to execute the custom command.
  */
 export enum CommandPermissionLevel {
@@ -7910,6 +7938,40 @@ export class Dimension {
         biomeToFind: BiomeType | string,
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Clones a region of blocks from one area of the dimension to
+     * another.
+     *
+     * @worldMutation
+     *
+     * @param beginLocation
+     * The lower northwest starting corner of the area to clone
+     * from.
+     * @param endLocation
+     * The upper southeast ending corner of the area to clone from.
+     * @param destination
+     * The lower northwest starting corner of the area to clone to.
+     * @param cloneMode
+     * Specifies how the cloned blocks should be placed at the
+     * destination.
+     * @param filter
+     * An optional block filter used to include only matching
+     * blocks from the source area.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    cloneBlocks(
+        beginLocation: Vector3,
+        endLocation: Vector3,
+        destination: Vector3,
+        cloneMode: CloneMode,
+        filter?: BlockFilter,
+    ): void;
     /**
      * @remarks
      * Checks if an area contains the specified biomes. If the area
@@ -16078,7 +16140,7 @@ export class LootingEnchantFunction extends LootItemFunction {
 export class LootItem extends LootPoolEntry {
     private constructor();
     /**
-     * @beta
+     * @rc
      */
     readonly conditions: LootItemCondition[];
     readonly functions: LootItemFunction[];
@@ -19316,6 +19378,18 @@ export class PrimitiveShapesManager {
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
+     * @beta
+     * @remarks
+     * Fetches and queries all primitive shapes stored in the
+     * manager and returns the results as an array of shape
+     * handles.
+     *
+     * @param options
+     * Optional options for querying existing shapes to narrow down
+     * the results.
+     */
+    getShapes(options?: PrimitiveShapeQueryOptions): PrimitiveShape[];
+    /**
      * @remarks
      * Removes all text primitives from the world.
      *
@@ -20533,13 +20607,14 @@ export class SoundDurationInfo {
     readonly isActive: boolean;
     /**
      * @remarks
-     * Returns the elapsed playback time of the sound, in seconds,
-     * since it started playing.
+     * Returns the current playback position within the sound, in
+     * seconds, measured from the beginning of the sound.
      *
      * @worldMutation
      *
      * @returns
-     * Elapsed playback time in seconds.
+     * Current playback position in seconds, measured from the
+     * beginning of the sound.
      */
     getPlaybackPosition(): number;
 }
@@ -20629,7 +20704,12 @@ export class SoundInstance {
      *
      * @param seconds
      * Position to seek to in seconds. Must be non-negative.
-     * Minimum value: 0
+     * Bounds: [0, 107374184]
+     * @throws
+     * Throws if `seconds` is negative, or if the sound has a known
+     * duration and `seconds` is greater than that duration.
+     *
+     * {@link ArgumentOutOfBoundsError}
      */
     seekTo(seconds: number): void;
     /**
@@ -25121,6 +25201,43 @@ export interface PlayerVisibilityRules extends EntityVisibilityRules {
      *
      */
     showSpectatorToSpectator?: boolean;
+}
+
+/**
+ * @beta
+ * Contains optional filters that control which primitive
+ * shapes are returned from a primitive shapes query.
+ */
+export interface PrimitiveShapeQueryOptions {
+    /**
+     * @remarks
+     * If specified, only returns shapes attached to this entity.
+     *
+     */
+    attachedTo?: Entity;
+    /**
+     * @remarks
+     * Adds a seed location to the query that is used in
+     * conjunction with distance properties.
+     *
+     */
+    location?: Vector3;
+    /**
+     * @remarks
+     * If specified, only includes shapes that are less than this
+     * distance away from the location specified in the location
+     * property.
+     *
+     */
+    maxDistance?: number;
+    /**
+     * @remarks
+     * If specified, only includes shapes that are at least this
+     * distance away from the location specified in the location
+     * property.
+     *
+     */
+    minDistance?: number;
 }
 
 /**

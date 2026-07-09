@@ -54,6 +54,12 @@ export class AllowList {
     enabled: boolean;
     /**
      * @remarks
+     * The list of entries in the allow list.
+     *
+     */
+    readonly entries: AllowListEntry[];
+    /**
+     * @remarks
      * Adds a player to the server's allow list.
      *
      * @worldMutation
@@ -65,9 +71,11 @@ export class AllowList {
      *
      * {@link AllowListModificationError}
      *
+     * {@link InvalidArgumentError}
+     *
      * {@link InvalidEntityError}
      */
-    add(player: Player | string): void;
+    add(player: AllowListEntry | Player): void;
     /**
      * @remarks
      * Clears the allow list, removing all entries.
@@ -84,9 +92,11 @@ export class AllowList {
      * Player or player name that should be checked for.
      * @throws This function can throw errors.
      *
+     * {@link InvalidArgumentError}
+     *
      * {@link InvalidEntityError}
      */
-    contains(player: Player | string): boolean;
+    contains(player: AllowListEntry | Player): boolean;
     /**
      * @remarks
      * Reloads the server's allow list from disk.
@@ -111,9 +121,11 @@ export class AllowList {
      *
      * {@link AllowListModificationError}
      *
+     * {@link InvalidArgumentError}
+     *
      * {@link InvalidEntityError}
      */
-    remove(player: Player | string): void;
+    remove(player: AllowListEntry | Player): void;
 }
 
 /**
@@ -389,6 +401,24 @@ export class ServerVariables {
      *
      */
     get(name: string): unknown | undefined;
+}
+
+/**
+ * Represents an entry to use in the allow list.
+ */
+export interface AllowListEntry {
+    /**
+     * @remarks
+     * The player's name.
+     *
+     */
+    name?: string;
+    /**
+     * @remarks
+     * The player's xuid.
+     *
+     */
+    xuid?: string;
 }
 
 /**

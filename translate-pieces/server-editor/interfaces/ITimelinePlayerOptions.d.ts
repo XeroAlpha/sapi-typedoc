@@ -19,6 +19,13 @@ export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
     groups?: ITimelinePlayerGroup[];
     /**
      * @remarks
+     * Callback triggered when the total duration changes (e.g. via
+     * the timeline drag handle).
+     *
+     */
+    onDurationChanged?: (duration: number) => void;
+    /**
+     * @remarks
      * Callback triggered when the group selection changes.
      *
      */

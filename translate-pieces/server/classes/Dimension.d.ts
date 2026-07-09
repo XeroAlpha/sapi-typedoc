@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockQueryOptions, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
+/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockQueryOptions, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CloneMode, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
 /* IMPORT */ import { MinecraftFeatureTypes } from '../../vanilla-data';
 
 /**
@@ -60,6 +60,40 @@ export class Dimension {
         biomeToFind: BiomeType | string,
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Clones a region of blocks from one area of the dimension to
+     * another.
+     *
+     * @worldMutation
+     *
+     * @param beginLocation
+     * The lower northwest starting corner of the area to clone
+     * from.
+     * @param endLocation
+     * The upper southeast ending corner of the area to clone from.
+     * @param destination
+     * The lower northwest starting corner of the area to clone to.
+     * @param cloneMode
+     * Specifies how the cloned blocks should be placed at the
+     * destination.
+     * @param filter
+     * An optional block filter used to include only matching
+     * blocks from the source area.
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    cloneBlocks(
+        beginLocation: Vector3,
+        endLocation: Vector3,
+        destination: Vector3,
+        cloneMode: CloneMode,
+        filter?: BlockFilter,
+    ): void;
     /**
      * @remarks
      * Checks if an area contains the specified biomes. If the area

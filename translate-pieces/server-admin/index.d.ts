@@ -8,6 +8,7 @@ export { LevelStorageQuerySnapshotFile } from './classes/LevelStorageQuerySnapsh
 export { SecretString } from './classes/SecretString';
 export { ServerSecrets } from './classes/ServerSecrets';
 export { ServerVariables } from './classes/ServerVariables';
+export { AllowListEntry } from './interfaces/AllowListEntry';
 export { TransferPlayerIpPortOptions } from './interfaces/TransferPlayerIpPortOptions';
 export { TransferPlayerNetherNetOptions } from './interfaces/TransferPlayerNetherNetOptions';
 export { AllowListFileReloadError } from './classes/AllowListFileReloadError';
