@@ -56,6 +56,8 @@ export declare enum MinecraftEntityTypes {
     Creaking = "minecraft:creaking",
     /** 苦力怕。 */
     Creeper = "minecraft:creeper",
+    /** 坐垫。 */
+    Cushion = "minecraft:cushion",
     /** 海豚。 */
     Dolphin = "minecraft:dolphin",
     /** 驴。 */

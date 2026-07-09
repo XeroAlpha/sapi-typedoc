@@ -1,10 +1,23 @@
-/* IMPORT */ import { ObservableBoolean, ObservableNumber } from '..';
+/* IMPORT */ import { ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * @beta
  * Options for configuring an image component.
  */
 export interface ImageOptions {
+    /**
+     * @remarks
+     * Sets a callback to be executed when the image is clicked.
+     *
+     */
+    onClick?: () => void;
+    /**
+     * @remarks
+     * Sets a tooltip to be displayed when the user hovers over the
+     * image.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the image

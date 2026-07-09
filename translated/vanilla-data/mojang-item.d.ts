@@ -212,6 +212,8 @@ export declare enum MinecraftItemTypes {
     BlackConcrete = "minecraft:black_concrete",
     /** 黑色混凝土粉末。 */
     BlackConcretePowder = "minecraft:black_concrete_powder",
+    /** 黑色坐垫。 */
+    BlackCushion = "minecraft:black_cushion",
     /** 黑色染料。 */
     BlackDye = "minecraft:black_dye",
     /** 黑色带釉陶瓦。 */
@@ -262,6 +264,8 @@ export declare enum MinecraftItemTypes {
     BlueConcrete = "minecraft:blue_concrete",
     /** 蓝色混凝土粉末。 */
     BlueConcretePowder = "minecraft:blue_concrete_powder",
+    /** 蓝色坐垫。 */
+    BlueCushion = "minecraft:blue_cushion",
     /** 蓝色染料。 */
     BlueDye = "minecraft:blue_dye",
     /** 蓝色鸡蛋。 */
@@ -348,6 +352,8 @@ export declare enum MinecraftItemTypes {
     BrownConcrete = "minecraft:brown_concrete",
     /** 棕色混凝土粉末。 */
     BrownConcretePowder = "minecraft:brown_concrete_powder",
+    /** 棕色坐垫。 */
+    BrownCushion = "minecraft:brown_cushion",
     /** 棕色染料。 */
     BrownDye = "minecraft:brown_dye",
     /** 棕色鸡蛋。 */
@@ -746,6 +752,8 @@ export declare enum MinecraftItemTypes {
     CyanConcrete = "minecraft:cyan_concrete",
     /** 青色混凝土粉末。 */
     CyanConcretePowder = "minecraft:cyan_concrete_powder",
+    /** 青色坐垫。 */
+    CyanCushion = "minecraft:cyan_cushion",
     /** 青色染料。 */
     CyanDye = "minecraft:cyan_dye",
     /** 青色带釉陶瓦。 */
@@ -1208,6 +1216,8 @@ export declare enum MinecraftItemTypes {
     GrayConcrete = "minecraft:gray_concrete",
     /** 灰色混凝土粉末。 */
     GrayConcretePowder = "minecraft:gray_concrete_powder",
+    /** 灰色坐垫。 */
+    GrayCushion = "minecraft:gray_cushion",
     /** 灰色染料。 */
     GrayDye = "minecraft:gray_dye",
     /** 灰色带釉陶瓦。 */
@@ -1240,6 +1250,8 @@ export declare enum MinecraftItemTypes {
     GreenConcrete = "minecraft:green_concrete",
     /** 绿色混凝土粉末。 */
     GreenConcretePowder = "minecraft:green_concrete_powder",
+    /** 绿色坐垫。 */
+    GreenCushion = "minecraft:green_cushion",
     /** 绿色染料。 */
     GreenDye = "minecraft:green_dye",
     /** 绿色带釉陶瓦。 */
@@ -1498,6 +1510,8 @@ export declare enum MinecraftItemTypes {
     LightBlueConcrete = "minecraft:light_blue_concrete",
     /** 淡蓝色混凝土粉末。 */
     LightBlueConcretePowder = "minecraft:light_blue_concrete_powder",
+    /** 淡蓝色坐垫。 */
+    LightBlueCushion = "minecraft:light_blue_cushion",
     /** 淡蓝色染料。 */
     LightBlueDye = "minecraft:light_blue_dye",
     /** 淡蓝色带釉陶瓦。 */
@@ -1530,6 +1544,8 @@ export declare enum MinecraftItemTypes {
     LightGrayConcrete = "minecraft:light_gray_concrete",
     /** 淡灰色混凝土粉末。 */
     LightGrayConcretePowder = "minecraft:light_gray_concrete_powder",
+    /** 淡灰色坐垫。 */
+    LightGrayCushion = "minecraft:light_gray_cushion",
     /** 淡灰色染料。 */
     LightGrayDye = "minecraft:light_gray_dye",
     /** 淡灰色挽具。 */
@@ -1568,6 +1584,8 @@ export declare enum MinecraftItemTypes {
     LimeConcrete = "minecraft:lime_concrete",
     /** 黄绿色混凝土粉末。 */
     LimeConcretePowder = "minecraft:lime_concrete_powder",
+    /** 黄绿色坐垫。 */
+    LimeCushion = "minecraft:lime_cushion",
     /** 黄绿色染料。 */
     LimeDye = "minecraft:lime_dye",
     /** 黄绿色带釉陶瓦。 */
@@ -1614,6 +1632,8 @@ export declare enum MinecraftItemTypes {
     MagentaConcrete = "minecraft:magenta_concrete",
     /** 品红色混凝土粉末。 */
     MagentaConcretePowder = "minecraft:magenta_concrete_powder",
+    /** 品红色坐垫。 */
+    MagentaCushion = "minecraft:magenta_cushion",
     /** 品红色染料。 */
     MagentaDye = "minecraft:magenta_dye",
     /** 品红色带釉陶瓦。 */
@@ -1906,6 +1926,8 @@ export declare enum MinecraftItemTypes {
     OrangeConcrete = "minecraft:orange_concrete",
     /** 橙色混凝土粉末。 */
     OrangeConcretePowder = "minecraft:orange_concrete_powder",
+    /** 橙色坐垫。 */
+    OrangeCushion = "minecraft:orange_cushion",
     /** 橙色染料。 */
     OrangeDye = "minecraft:orange_dye",
     /** 橙色带釉陶瓦。 */
@@ -2052,6 +2074,8 @@ export declare enum MinecraftItemTypes {
     PinkConcrete = "minecraft:pink_concrete",
     /** 粉红色混凝土粉末。 */
     PinkConcretePowder = "minecraft:pink_concrete_powder",
+    /** 粉红色坐垫。 */
+    PinkCushion = "minecraft:pink_cushion",
     /** 粉红色染料。 */
     PinkDye = "minecraft:pink_dye",
     /** 粉红色带釉陶瓦。 */
@@ -2258,6 +2282,8 @@ export declare enum MinecraftItemTypes {
     PurpleConcrete = "minecraft:purple_concrete",
     /** 紫色混凝土粉末。 */
     PurpleConcretePowder = "minecraft:purple_concrete_powder",
+    /** 紫色坐垫。 */
+    PurpleCushion = "minecraft:purple_cushion",
     /** 紫色染料。 */
     PurpleDye = "minecraft:purple_dye",
     /** 紫色带釉陶瓦。 */
@@ -2342,6 +2368,8 @@ export declare enum MinecraftItemTypes {
     RedConcrete = "minecraft:red_concrete",
     /** 红色混凝土粉末。 */
     RedConcretePowder = "minecraft:red_concrete_powder",
+    /** 红色坐垫。 */
+    RedCushion = "minecraft:red_cushion",
     /** 红色染料。 */
     RedDye = "minecraft:red_dye",
     /** 红色带釉陶瓦。 */
@@ -2478,7 +2506,7 @@ export declare enum MinecraftItemTypes {
     Shears = "minecraft:shears",
     /** 绵羊刷怪蛋。 */
     SheepSpawnEgg = "minecraft:sheep_spawn_egg",
-    /** Shelf Mushroom。 */
+    /** 层孔菇。 */
     ShelfMushroom = "minecraft:shelf_mushroom",
     /** 树荫纹样陶片。 */
     ShelterPotterySherd = "minecraft:shelter_pottery_sherd",
@@ -2660,6 +2688,8 @@ export declare enum MinecraftItemTypes {
     StoneSword = "minecraft:stone_sword",
     /** 切石机。 */
     StonecutterBlock = "minecraft:stonecutter_block",
+    /** Straw Bed。 */
+    StrawBed = "minecraft:straw_bed",
     /** 流浪者刷怪蛋。 */
     StraySpawnEgg = "minecraft:stray_spawn_egg",
     /** 炽足兽刷怪蛋。 */
@@ -2740,7 +2770,7 @@ export declare enum MinecraftItemTypes {
     SulfurCubeSpawnEgg = "minecraft:sulfur_cube_spawn_egg",
     /** 硫黄台阶。 */
     SulfurSlab = "minecraft:sulfur_slab",
-    /** Sulfur Spike。 */
+    /** 硫黄尖锥。 */
     SulfurSpike = "minecraft:sulfur_spike",
     /** 硫黄楼梯。 */
     SulfurStairs = "minecraft:sulfur_stairs",
@@ -3070,6 +3100,8 @@ export declare enum MinecraftItemTypes {
     WhiteConcrete = "minecraft:white_concrete",
     /** 白色混凝土粉末。 */
     WhiteConcretePowder = "minecraft:white_concrete_powder",
+    /** 白色坐垫。 */
+    WhiteCushion = "minecraft:white_cushion",
     /** 白色染料。 */
     WhiteDye = "minecraft:white_dye",
     /** 白色带釉陶瓦。 */
@@ -3144,6 +3176,8 @@ export declare enum MinecraftItemTypes {
     YellowConcrete = "minecraft:yellow_concrete",
     /** 黄色混凝土粉末。 */
     YellowConcretePowder = "minecraft:yellow_concrete_powder",
+    /** 黄色坐垫。 */
+    YellowCushion = "minecraft:yellow_cushion",
     /** 黄色染料。 */
     YellowDye = "minecraft:yellow_dye",
     /** 黄色带釉陶瓦。 */

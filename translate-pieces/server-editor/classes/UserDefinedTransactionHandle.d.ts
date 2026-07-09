@@ -1,4 +1,4 @@
-/* IMPORT */ import { TransactionManager, UserDefinedTransactionHandlerId, registerUserDefinedTransactionHandler } from '..';
+/* IMPORT */ import { PendingTransaction, TransactionManager, UserDefinedTransactionHandlerId, registerUserDefinedTransactionHandler } from '..';
 
 /**
  * A strongly typed transaction handle to enforce type safety
@@ -41,5 +41,5 @@ export declare class UserDefinedTransactionHandle<T> {
      * @param transactionName
      * A string name that will be associated with this operation
      */
-    addUserDefinedOperation(payload: T, transactionName: string): void;
+    addUserDefinedOperation(payload: T, transactionName: string, pendingTransaction: PendingTransaction): void;
 }

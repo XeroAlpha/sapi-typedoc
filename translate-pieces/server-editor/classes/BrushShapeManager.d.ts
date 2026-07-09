@@ -1,5 +1,5 @@
 /* IMPORT */ import { ItemType, Vector3 } from '../../server';
-/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, BrushElevationMode, FlattenMode, PaintCompletionState, PaintMode, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockMaskList, BrushDirectionalPlacementMode, BrushElevationMode, FlattenMode, PaintCompletionState, PaintMode, PendingTransaction, RelativeVolumeListBlockVolume } from '..';
 /* IMPORT */ import { BlockStateSuperset } from '../../vanilla-data';
 
 export class BrushShapeManager {
@@ -167,6 +167,12 @@ export class BrushShapeManager {
      *
      */
     setInverseEraseMode(inverseEraseMode: boolean): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     */
+    setPendingTransaction(pendingTransaction?: PendingTransaction): void;
     /**
      * @remarks
      * @worldMutation

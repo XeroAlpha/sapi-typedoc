@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError } from '../../common';
-/* IMPORT */ import { Dimension, PrimitiveShapeError, TextPrimitive } from '..';
+/* IMPORT */ import { Dimension, PrimitiveShape, PrimitiveShapeError, PrimitiveShapeQueryOptions, TextPrimitive } from '..';
 
 /**
  * Primitive Shapes class used to allow adding and removing
@@ -26,6 +26,18 @@ export class PrimitiveShapesManager {
      * {@link PrimitiveShapeError}
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
+    /**
+     * @beta
+     * @remarks
+     * Fetches and queries all primitive shapes stored in the
+     * manager and returns the results as an array of shape
+     * handles.
+     *
+     * @param options
+     * Optional options for querying existing shapes to narrow down
+     * the results.
+     */
+    getShapes(options?: PrimitiveShapeQueryOptions): PrimitiveShape[];
     /**
      * @remarks
      * Removes all text primitives from the world.
