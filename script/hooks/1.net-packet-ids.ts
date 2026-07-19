@@ -24,7 +24,7 @@ export default {
             execSync(`git clone ${protocolDocsRepo} ${protocolDocsBase} --depth 1`, { cwd: cacheDir });
         }
         const protocolDocsJsonDir = resolvePath(protocolDocsRepoDir, 'json');
-        const protocolDocsHtmlDir = resolvePath(protocolDocsRepoDir, 'html');
+        const protocolDocsHtmlDir = resolvePath(protocolDocsRepoDir, 'docs');
         const jsonList = readdirSync(protocolDocsJsonDir);
         const htmlList = readdirSync(protocolDocsHtmlDir);
 
@@ -47,7 +47,7 @@ export default {
                 if (commentLines.length > 0) {
                     commentLines.push('');
                 }
-                commentLines.push(`@see https://mojang.github.io/bedrock-protocol-docs/html/${htmlFileName}`);
+                commentLines.push(`@see https://mojang.github.io/bedrock-protocol-docs/docs/${htmlFileName}`);
             }
             if (commentLines.length > 0) {
                 const prefixSpaces = member.getIndentationText();
