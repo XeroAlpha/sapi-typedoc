@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains data related to an entity beginning to sneak.
  */
 export class EntityStartSneakingAfterEvent {

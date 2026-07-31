@@ -28,6 +28,10 @@ export interface TeleportOptions {
      */
     facingLocation?: Vector3;
     /**
+     * @rc
+     */
+    forceProvidedPositionOnDimensionChange?: boolean;
+    /**
      * @remarks
      * Whether to retain the entities velocity after teleport.
      *

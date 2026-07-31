@@ -1,5 +1,5 @@
 /* IMPORT */ import { RGBA } from '../../server';
-/* IMPORT */ import { ICollectionTreeEntry, ICollectionTreeEntryOptions, ICollectionTreeFolderHeaderActionParams, ICollectionTreeFolderOptions, IMenuCreationParams, LocalizedString } from '..';
+/* IMPORT */ import { ICollectionTreeEntry, ICollectionTreeEntryOptions, ICollectionTreeFolderOptions, IMenuCreationParams, LocalizedString } from '..';
 
 /**
  * Container for collection items
@@ -157,12 +157,6 @@ export interface ICollectionTreeFolder {
      * New expanded state
      */
     setExpanded(expanded: boolean): void;
-    /**
-     * @remarks
-     * Updates the header action for the folder
-     *
-     */
-    setHeaderAction(actionParams: ICollectionTreeFolderHeaderActionParams | undefined): void;
     /**
      * @remarks
      * Updates menu items for the folder

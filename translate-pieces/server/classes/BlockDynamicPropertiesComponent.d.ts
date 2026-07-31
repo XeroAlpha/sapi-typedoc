@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockComponent, InvalidBlockComponentError, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents the dynamic properties of a block in the world.
  * Only available with block entities. Up to 1KB per content
  * pack, per block entity in their dynamic properties storage.

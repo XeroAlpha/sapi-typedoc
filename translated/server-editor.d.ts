@@ -4320,7 +4320,8 @@ export class PendingTransaction {
      */
     addUserDefinedOperation(
         transactionHandler: UserDefinedTransactionOperationHandler,
-        operationData: string,
+        prevData: string,
+        currentData: string,
         operationName?: string,
     ): void;
     /**
@@ -5028,12 +5029,21 @@ export declare class UserDefinedTransactionHandle<T> {
      * JSON properly, so you should avoid using them as payload
      * data.
      *
-     * @param payload
-     * The data object to be inserted into the transaction log.
+     * @param prevPayload
+     * The previous state of the data object to be inserted into
+     * the transaction log.
+     * @param newPayload
+     * The new state of the data object to be inserted into the
+     * transaction log.
      * @param transactionName
      * A string name that will be associated with this operation
      */
-    addUserDefinedOperation(payload: T, transactionName: string, pendingTransaction: PendingTransaction): void;
+    addUserDefinedOperation(
+        prevPayload: T,
+        newPayload: T,
+        transactionName: string,
+        pendingTransaction: PendingTransaction,
+    ): void;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -7524,12 +7534,6 @@ export interface ICollectionTreeFolder {
      * New expanded state
      */
     setExpanded(expanded: boolean): void;
-    /**
-     * @remarks
-     * Updates the header action for the folder
-     *
-     */
-    setHeaderAction(actionParams: ICollectionTreeFolderHeaderActionParams | undefined): void;
     /**
      * @remarks
      * Updates menu items for the folder
@@ -10750,12 +10754,6 @@ export interface IRootPropertyPane extends IPropertyPane {
     getActiveModalOverlayId(): string | undefined;
     /**
      * @remarks
-     * @returns
-     * Current visibility state of header action
-     */
-    isHeaderActionVisible(): boolean;
-    /**
-     * @remarks
      * Sets registered modal overlay as active, if not found it
      * will hide the current.
      *
@@ -10763,24 +10761,6 @@ export interface IRootPropertyPane extends IPropertyPane {
      * Unique id for modal overlay pane.
      */
     setActiveModalOverlay(id: string | undefined): void;
-    /**
-     * @remarks
-     * If a header action exists, updates visibility of the button.
-     *
-     * @param visible
-     * New visibility state of the action button.
-     */
-    setHeaderActionVisibility(visible: boolean): void;
-}
-
-/**
- * Represents the data to display an action button on a root
- * property pane header.
- */
-export interface IRootPropertyPaneHeaderAction {
-    action?: () => void;
-    icon: string;
-    tooltip?: LocalizedString;
 }
 
 /**
@@ -10797,12 +10777,6 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
     contentBadgeId?: string;
     /**
      * @remarks
-     * Optional action button to be displayed on the header.
-     *
-     */
-    headerAction?: IRootPropertyPaneHeaderAction;
-    /**
-     * @remarks
      * Pane icon shown in front of the pane header
      *
      */
@@ -10813,6 +10787,12 @@ export interface IRootPropertyPaneOptions extends IPropertyPaneOptions {
      *
      */
     location?: RootPaneLocation;
+    /**
+     * @remarks
+     * Determines if the pane is scrollable
+     *
+     */
+    scrollable?: boolean;
 }
 
 /**
