@@ -1,4 +1,4 @@
-/* IMPORT */ import { PendingTransaction, TransactionManager, UserDefinedTransactionHandlerId, registerUserDefinedTransactionHandler } from '..';
+/* IMPORT */ import { PendingTransaction, TransactionHandler, TransactionManager, UserDefinedTransactionOperationHandler, registerUserDefinedTransactionHandler } from '..';
 
 /**
  * A strongly typed transaction handle to enforce type safety
@@ -14,7 +14,11 @@ export declare class UserDefinedTransactionHandle<T> {
      * `UserDefinedTransactionHandle` class
      *
      */
-    constructor(nativeHandle: UserDefinedTransactionHandlerId, transactionManager: TransactionManager);
+    constructor(
+        transactionHandler: TransactionHandler,
+        nativeHandle: UserDefinedTransactionOperationHandler,
+        transactionManager: TransactionManager,
+    );
     /**
      * @remarks
      * Add a user defined transaction operation to the transaction

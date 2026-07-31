@@ -1,10 +1,10 @@
 /* IMPORT */ import { EntityFilter } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains options for filtering entity tamed events.
  */
-export interface EntityTamedEventFilter {
+export interface EntityTamedEventOptions {
     entityFilter?: EntityFilter;
     tamingEntityFilter?: EntityFilter;
 }

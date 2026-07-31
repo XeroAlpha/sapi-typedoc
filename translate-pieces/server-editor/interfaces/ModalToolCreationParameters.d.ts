@@ -24,6 +24,13 @@ export interface ModalToolCreationParameters {
     icon?: string;
     /**
      * @remarks
+     * When true, the tool will be excluded from tool groups and
+     * tool rail
+     *
+     */
+    staging?: boolean;
+    /**
+     * @remarks
      * Localized title of the tool
      *
      */

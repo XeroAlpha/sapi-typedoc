@@ -193,7 +193,7 @@ export class WorldAfterEvents {
      */
     readonly entityStopSneaking: EntityStopSneakingAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity is tamed.
      *
@@ -514,7 +514,7 @@ export class WorldAfterEvents {
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * A tracked sound's declared duration elapsed.
      *

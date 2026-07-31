@@ -26,7 +26,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "2.2.0-beta"
+ *   "version": "2.3.0-beta"
  * }
  * ```
  *
@@ -643,6 +643,28 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
+     * @beta
+     * @remarks
+     * Sets the label and options for the first button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the first button.
+     * @param options
+     * Optional configuration for the first button, such as tooltip
+     * and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button1WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
+    ): MessageBox;
+    /**
      * @remarks
      * Sets the label for the second button of the message box.
      * Returns the message box instance to allow method chaining.
@@ -661,6 +683,28 @@ export class MessageBox {
     button2(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+    ): MessageBox;
+    /**
+     * @beta
+     * @remarks
+     * Sets the label and options for the second button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the second button.
+     * @param options
+     * Optional configuration for the second button, such as
+     * tooltip and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button2WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
     ): MessageBox;
     /**
      * @remarks
@@ -1257,6 +1301,13 @@ export interface ButtonOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * Details of an image to display alongside the button label.
+     *
+     */
+    imageDetails?: ImageDetails;
+    /**
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * button.
@@ -1331,12 +1382,41 @@ export interface DropdownOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * dropdown.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
+    /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the
      * dropdown is hidden.
      *
      */
     visible?: boolean | ObservableBoolean;
+}
+
+/**
+ * @beta
+ * Details of an image to display.
+ */
+export interface ImageDetails {
+    /**
+     * @remarks
+     * Identifier of the resource pack that provides the imageSrc
+     * asset.
+     *
+     */
+    imagePackId: ObservableString | string;
+    /**
+     * @remarks
+     * Path to an image displayed. Loads the image based on the
+     * resource pack defined by imagePack.
+     *
+     */
+    imageSrc: ObservableString | string;
 }
 
 /**
@@ -1373,6 +1453,26 @@ export interface ImageOptions {
      *
      */
     width?: number | ObservableNumber;
+}
+
+/**
+ * @beta
+ * Options for configuring a message box button.
+ */
+export interface MessageBoxButtonOptions {
+    /**
+     * @remarks
+     * Details of an image to display alongside the button label.
+     *
+     */
+    imageDetails?: ImageDetails;
+    /**
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * button.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
 }
 
 /**
@@ -1523,12 +1623,29 @@ export interface SliderOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * If set, displays the number of digits after the decimal
+     * point in fixed-point notation. For example, if set to 2, the
+     * value 3.14159 will be displayed as 3.14.
+     *
+     */
+    fixedFormatDigits?: number | ObservableNumber;
+    /**
      * @remarks
      * The increment amount between each slider step. Defaults to 1
      * if not specified.
      *
      */
     step?: number | ObservableNumber;
+    /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * slider.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the slider
@@ -1570,6 +1687,14 @@ export interface TextFieldOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the text
+     * field.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
+    /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the text
      * field is hidden.
@@ -1582,6 +1707,10 @@ export interface TextFieldOptions {
  * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
+    /**
+     * @beta
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the text
@@ -1609,6 +1738,14 @@ export interface ToggleOptions {
      *
      */
     disabled?: boolean | ObservableBoolean;
+    /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * toggle.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the toggle

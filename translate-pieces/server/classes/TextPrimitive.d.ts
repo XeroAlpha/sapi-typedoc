@@ -31,6 +31,14 @@ export class TextPrimitive extends PrimitiveShape {
      */
     depthTest: boolean;
     /**
+     * @beta
+     * @remarks
+     * This value determines the gap between lines for the
+     * TextPrimitive. By default the line gap height is 0.
+     *
+     */
+    lineGapHeight: number;
+    /**
      * @remarks
      * Get the text of the debug text shape. Returns the RawText of
      * the debug text if `setText` was called with a RawMessage or

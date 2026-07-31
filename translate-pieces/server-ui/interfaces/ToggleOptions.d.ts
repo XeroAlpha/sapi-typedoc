@@ -19,6 +19,14 @@ export interface ToggleOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * toggle.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
+    /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the toggle
      * is hidden.

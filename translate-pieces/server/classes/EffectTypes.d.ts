@@ -10,8 +10,6 @@ export class EffectTypes {
      * @remarks
      * Effect type for the given identifier.
      *
-     * @worldMutation
-     *
      * @param identifier
      * The identifier for the effect.
      * @returns
@@ -22,8 +20,6 @@ export class EffectTypes {
     /**
      * @remarks
      * Gets all effects.
-     *
-     * @worldMutation
      *
      * @returns
      * A list of all effects.

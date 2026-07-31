@@ -59,7 +59,7 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fires before an entity is tamed.
      *

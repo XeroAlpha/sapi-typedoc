@@ -67,6 +67,23 @@ export declare enum BlockTableOperationType {
     Replace = 'replace',
 }
 
+export enum BlockUtilityExtrudeDirection {
+    Down = 0,
+    Up = 1,
+    North = 2,
+    South = 3,
+    West = 4,
+    East = 5,
+}
+
+export enum BlockUtilityFloodMatchCriteria {
+    NonAir = 0,
+    SameBlockType = 1,
+    Solid = 2,
+    Custom = 3,
+    SameBlockTypeAndStates = 4,
+}
+
 /**
  * The possible variants of a bool.
  */
@@ -452,6 +469,12 @@ export declare enum KeyboardKey {
     ALT = 18,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_PAUSE
+     *
+     */
+    PAUSE = 19,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_CAPS_LOCK
      *
      */
@@ -752,6 +775,24 @@ export declare enum KeyboardKey {
     KEY_Z = 90,
     /**
      * @remarks
+     * KeyboardEvent.Meta_LEFT, ie. Left Windows key
+     *
+     */
+    WINDOWS_LEFT = 91,
+    /**
+     * @remarks
+     * KeyboardEvent.Meta_RIGHT, ie. Right Windows key
+     *
+     */
+    WINDOWS_RIGHT = 92,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_CONTEXT_MENU, ie. Context Menu key
+     *
+     */
+    CONTEXT_MENU = 93,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_NUMPAD0
      *
      */
@@ -920,16 +961,40 @@ export declare enum KeyboardKey {
     F12 = 123,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_NUM_LOCK
+     *
+     */
+    NUM_LOCK = 144,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SCROLL_LOCK
+     *
+     */
+    SCROLL_LOCK = 145,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_SEMICOLON, ie. ';'
      *
      */
     SEMICOLON = 186,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_EQUALS, ie. '='
+     *
+     */
+    EQUALS = 187,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_COMMA, ie. ','
      *
      */
     COMMA = 188,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_HYPHEN, ie. '-'
+     *
+     */
+    HYPHEN = 189,
     /**
      * @remarks
      * KeyboardEvent.DOM_VK_PERIOD, ie. '.'
@@ -1426,6 +1491,11 @@ export enum ThemeSettingsColorKey {
 export declare enum TimelinePlayerPlaybackState {
     Playing = 'playing',
     Stopped = 'stopped',
+}
+
+export enum TransactionProcessState {
+    Ended = 'Ended',
+    Started = 'Started',
 }
 
 export enum WidgetCollisionType {
@@ -2391,6 +2461,25 @@ export class BlockUtilityTasks {
      *
      * @throws This function can throw errors.
      */
+    extrude(
+        location: Vector3,
+        direction?: BlockUtilityExtrudeDirection,
+        faceRadius?: number,
+        layerCount?: number,
+        isShrink?: boolean,
+        criteria?: BlockUtilityFloodMatchCriteria,
+        customBlockList?: string[],
+        maxBlocksPerTick?: number,
+        buildGeometry?: boolean,
+        tolerance?: number,
+        faceVolume?: BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
     fillVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         block?: BlockPermutation | BlockType | string,
@@ -2404,6 +2493,20 @@ export class BlockUtilityTasks {
      */
     findObscuredBlocksWithinVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
+        maxBlocksPerTick?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    floodSearch(
+        location: Vector3,
+        criteria?: BlockUtilityFloodMatchCriteria,
+        radius?: number,
+        customBlockList?: string[],
+        maxResultBlocks?: number,
         maxBlocksPerTick?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
     /**
@@ -4216,9 +4319,20 @@ export class PendingTransaction {
      * @throws This function can throw errors.
      */
     addUserDefinedOperation(
-        transactionHandlerId: UserDefinedTransactionHandlerId,
+        transactionHandler: UserDefinedTransactionOperationHandler,
         operationData: string,
         operationName?: string,
+    ): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addVolumeListOperation(
+        operationHandler: VolumeListTransactionOperationHandler,
+        previous: RelativeVolumeListBlockVolume[],
+        current: RelativeVolumeListBlockVolume[],
     ): void;
     /**
      * @remarks
@@ -4253,7 +4367,7 @@ export class PendingTransaction {
      *
      * @throws This function can throw errors.
      */
-    submit(): void;
+    submit(transactionHandler?: TransactionHandler): void;
     /**
      * @remarks
      * @worldMutation
@@ -4396,6 +4510,7 @@ export class RelativeVolumeListBlockVolume extends BlockVolumeBase {
      *
      */
     clear(): void;
+    clone(): RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation
@@ -4752,6 +4867,42 @@ export class ThemeSettings {
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: RGBA): void;
 }
 
+export class TransactionEvent {
+    private constructor();
+    readonly error?: Error;
+    readonly isUndo: boolean;
+    readonly state: TransactionProcessState;
+}
+
+export class TransactionHandler {
+    private constructor();
+    readonly id: string;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addUserDefinedOperationHandler(payloadClosure: (arg0: string) => void): UserDefinedTransactionOperationHandler;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    addVolumeListOperationHandler(
+        closure: (arg0: RelativeVolumeListBlockVolume[]) => void,
+    ): VolumeListTransactionOperationHandler;
+    isValid(): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    unregister(): void;
+}
+
 /**
  * The Transaction Manager is responsible for tracking and
  * managing all of the registered transaction operations which
@@ -4773,16 +4924,6 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     createPendingTransaction(name: string): PendingTransaction;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    createUserDefinedTransactionHandler(
-        undoClosure: (arg0: string) => void,
-        redoClosure: (arg0: string) => void,
-    ): UserDefinedTransactionHandlerId;
     /**
      * @remarks
      * Perform an redo operation.  This will take the last
@@ -4808,6 +4949,13 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     redoSize(): number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    registerTransactionHandler(onEvent?: (arg0: TransactionEvent) => void): TransactionHandler;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last
@@ -4836,6 +4984,10 @@ export class TransactionManager {
     undoSize(): number;
 }
 
+export class TransactionOperationHandler {
+    private constructor();
+}
+
 /**
  * A strongly typed transaction handle to enforce type safety
  * when adding user defined transactions.<br> This transaction
@@ -4850,7 +5002,11 @@ export declare class UserDefinedTransactionHandle<T> {
      * `UserDefinedTransactionHandle` class
      *
      */
-    constructor(nativeHandle: UserDefinedTransactionHandlerId, transactionManager: TransactionManager);
+    constructor(
+        transactionHandler: TransactionHandler,
+        nativeHandle: UserDefinedTransactionOperationHandler,
+        transactionManager: TransactionManager,
+    );
     /**
      * @remarks
      * Add a user defined transaction operation to the transaction
@@ -4880,7 +5036,8 @@ export declare class UserDefinedTransactionHandle<T> {
     addUserDefinedOperation(payload: T, transactionName: string, pendingTransaction: PendingTransaction): void;
 }
 
-export class UserDefinedTransactionHandlerId {
+// @ts-ignore Class inheritance allowed for native defined classes
+export class UserDefinedTransactionOperationHandler extends TransactionOperationHandler {
     private constructor();
 }
 
@@ -4950,6 +5107,11 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
     constructor(min: Partial<Vector3>, max: Partial<Vector3>, isInteger?: boolean);
     updateLimits(min: Partial<Vector3>, max: Partial<Vector3>): void;
     validate(newValue: Vector3): Vector3;
+}
+
+// @ts-ignore Class inheritance allowed for native defined classes
+export class VolumeListTransactionOperationHandler extends TransactionOperationHandler {
+    private constructor();
 }
 
 export class Widget {
@@ -12140,6 +12302,13 @@ export interface ModalToolCreationParameters {
      *
      */
     icon?: string;
+    /**
+     * @remarks
+     * When true, the tool will be excluded from tool groups and
+     * tool rail
+     *
+     */
+    staging?: boolean;
     /**
      * @remarks
      * Localized title of the tool

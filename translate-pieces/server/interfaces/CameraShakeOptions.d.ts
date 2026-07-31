@@ -1,7 +1,7 @@
 /* IMPORT */ import { CameraShakeType } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for applying a camera shake effect to a player's
  * camera via `Camera.addShake`. Each call to `addShake` queues
  * a new independent shake event for the specified `type`;

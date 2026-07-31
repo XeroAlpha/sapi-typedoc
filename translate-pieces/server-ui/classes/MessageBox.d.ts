@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
+/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxButtonOptions, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * A simple message form with two buttons and a text body. Use
@@ -61,6 +61,28 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
+     * @beta
+     * @remarks
+     * Sets the label and options for the first button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the first button.
+     * @param options
+     * Optional configuration for the first button, such as tooltip
+     * and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button1WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
+    ): MessageBox;
+    /**
      * @remarks
      * Sets the label for the second button of the message box.
      * Returns the message box instance to allow method chaining.
@@ -79,6 +101,28 @@ export class MessageBox {
     button2(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+    ): MessageBox;
+    /**
+     * @beta
+     * @remarks
+     * Sets the label and options for the second button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the second button.
+     * @param options
+     * Optional configuration for the second button, such as
+     * tooltip and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button2WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
     ): MessageBox;
     /**
      * @remarks

@@ -5,7 +5,7 @@
  * Represents the dynamic properties of a block in the world.
  * Only available with block entities. Up to 1KB per content
  * pack, per block entity in their dynamic properties storage.
- * @seeExample rememberPlayerInteraction.ts
+ * @seeExample rememberPlayerInteraction.ts c73a6eb9
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockDynamicPropertiesComponent extends BlockComponent {
