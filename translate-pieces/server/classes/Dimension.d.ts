@@ -297,6 +297,7 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
+     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the block query
      * options.

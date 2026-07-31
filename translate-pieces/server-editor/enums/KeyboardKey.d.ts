@@ -41,6 +41,12 @@ export declare enum KeyboardKey {
     ALT = 18,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_PAUSE
+     *
+     */
+    PAUSE = 19,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_CAPS_LOCK
      *
      */
@@ -341,6 +347,24 @@ export declare enum KeyboardKey {
     KEY_Z = 90,
     /**
      * @remarks
+     * KeyboardEvent.Meta_LEFT, ie. Left Windows key
+     *
+     */
+    WINDOWS_LEFT = 91,
+    /**
+     * @remarks
+     * KeyboardEvent.Meta_RIGHT, ie. Right Windows key
+     *
+     */
+    WINDOWS_RIGHT = 92,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_CONTEXT_MENU, ie. Context Menu key
+     *
+     */
+    CONTEXT_MENU = 93,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_NUMPAD0
      *
      */
@@ -509,16 +533,40 @@ export declare enum KeyboardKey {
     F12 = 123,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_NUM_LOCK
+     *
+     */
+    NUM_LOCK = 144,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_SCROLL_LOCK
+     *
+     */
+    SCROLL_LOCK = 145,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_SEMICOLON, ie. ';'
      *
      */
     SEMICOLON = 186,
     /**
      * @remarks
+     * KeyboardEvent.DOM_VK_EQUALS, ie. '='
+     *
+     */
+    EQUALS = 187,
+    /**
+     * @remarks
      * KeyboardEvent.DOM_VK_COMMA, ie. ','
      *
      */
     COMMA = 188,
+    /**
+     * @remarks
+     * KeyboardEvent.DOM_VK_HYPHEN, ie. '-'
+     *
+     */
+    HYPHEN = 189,
     /**
      * @remarks
      * KeyboardEvent.DOM_VK_PERIOD, ie. '.'

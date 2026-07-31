@@ -13,28 +13,28 @@
 export class SoundInstance {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets duration and playback information for this sound.
      *
      */
     readonly durationInfo?: SoundDurationInfo;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Unique identifier of this sound instance.
      *
      */
     readonly id: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the player this sound was played for.
      *
      */
     readonly recipient?: Player;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Gets the identifier of the sound event this instance was
      * started with.

@@ -16,7 +16,7 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *
@@ -133,7 +133,7 @@ export class Camera {
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @worldMutation
      *

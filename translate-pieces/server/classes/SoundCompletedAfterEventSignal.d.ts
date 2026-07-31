@@ -1,7 +1,7 @@
 /* IMPORT */ import { SoundCompletedAfterEvent } from '..';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are invoked when a tracked sound's
  * declared duration elapses.
  */

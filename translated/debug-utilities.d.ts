@@ -378,6 +378,13 @@ export class DebugText extends DebugShape {
     depthTest: boolean;
     /**
      * @remarks
+     * This value determines the gap between lines for the debug
+     * text. By default the line gap height is 0.
+     *
+     */
+    lineGapHeight: number;
+    /**
+     * @remarks
      * Get the text of the debug text shape. Returns the RawText of
      * the debug text if `setText` was called with a RawMessage or
      * a RawText object, otherwise returns a string.

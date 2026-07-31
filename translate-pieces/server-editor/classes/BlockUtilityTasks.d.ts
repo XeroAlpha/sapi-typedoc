@@ -1,8 +1,27 @@
-/* IMPORT */ import { BlockPermutation, BlockType, BlockVolumeBase } from '../../server';
-/* IMPORT */ import { BlockMaskList, BlockUtilityManifest, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockPermutation, BlockType, BlockVolumeBase, Vector3 } from '../../server';
+/* IMPORT */ import { BlockMaskList, BlockUtilityExtrudeDirection, BlockUtilityFloodMatchCriteria, BlockUtilityManifest, RelativeVolumeListBlockVolume } from '..';
 
 export class BlockUtilityTasks {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    extrude(
+        location: Vector3,
+        direction?: BlockUtilityExtrudeDirection,
+        faceRadius?: number,
+        layerCount?: number,
+        isShrink?: boolean,
+        criteria?: BlockUtilityFloodMatchCriteria,
+        customBlockList?: string[],
+        maxBlocksPerTick?: number,
+        buildGeometry?: boolean,
+        tolerance?: number,
+        faceVolume?: BlockVolumeBase | RelativeVolumeListBlockVolume,
+    ): Promise<RelativeVolumeListBlockVolume>;
     /**
      * @remarks
      * @worldMutation
@@ -22,6 +41,20 @@ export class BlockUtilityTasks {
      */
     findObscuredBlocksWithinVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
+        maxBlocksPerTick?: number,
+    ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    floodSearch(
+        location: Vector3,
+        criteria?: BlockUtilityFloodMatchCriteria,
+        radius?: number,
+        customBlockList?: string[],
+        maxResultBlocks?: number,
         maxBlocksPerTick?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
     /**

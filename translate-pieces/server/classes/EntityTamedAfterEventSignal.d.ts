@@ -1,7 +1,7 @@
-/* IMPORT */ import { EntityTamedAfterEvent, EntityTamedEventFilter } from '..';
+/* IMPORT */ import { EntityTamedAfterEvent, EntityTamedEventOptions } from '..';
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity is
  * tamed.
  */
@@ -16,7 +16,7 @@ export class EntityTamedAfterEventSignal {
      */
     subscribe(
         callback: (arg0: EntityTamedAfterEvent) => void,
-        options?: EntityTamedEventFilter,
+        options?: EntityTamedEventOptions,
     ): (arg0: EntityTamedAfterEvent) => void;
     /**
      * @remarks

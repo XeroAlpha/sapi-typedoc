@@ -19,12 +19,29 @@ export interface SliderOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
+     * @beta
+     * @remarks
+     * If set, displays the number of digits after the decimal
+     * point in fixed-point notation. For example, if set to 2, the
+     * value 3.14159 will be displayed as 3.14.
+     *
+     */
+    fixedFormatDigits?: number | ObservableNumber;
+    /**
      * @remarks
      * The increment amount between each slider step. Defaults to 1
      * if not specified.
      *
      */
     step?: number | ObservableNumber;
+    /**
+     * @beta
+     * @remarks
+     * Text shown in a tooltip when the player hovers over the
+     * slider.
+     *
+     */
+    tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks
      * When false or bound to a false ObservableBoolean, the slider

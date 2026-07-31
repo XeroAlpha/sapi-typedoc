@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Provides duration and playback information for a sound whose
  * definition declares a duration.
  */

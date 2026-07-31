@@ -1,4 +1,4 @@
-/* IMPORT */ import { PendingTransaction, UserDefinedTransactionHandlerId } from '..';
+/* IMPORT */ import { PendingTransaction, TransactionEvent, TransactionHandler } from '..';
 
 /**
  * The Transaction Manager is responsible for tracking and
@@ -21,16 +21,6 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     createPendingTransaction(name: string): PendingTransaction;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws This function can throw errors.
-     */
-    createUserDefinedTransactionHandler(
-        undoClosure: (arg0: string) => void,
-        redoClosure: (arg0: string) => void,
-    ): UserDefinedTransactionHandlerId;
     /**
      * @remarks
      * Perform an redo operation.  This will take the last
@@ -56,6 +46,13 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     redoSize(): number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    registerTransactionHandler(onEvent?: (arg0: TransactionEvent) => void): TransactionHandler;
     /**
      * @remarks
      * Perform an undo operation.  This will take the last

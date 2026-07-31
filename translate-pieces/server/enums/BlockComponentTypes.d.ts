@@ -9,7 +9,7 @@ export enum BlockComponentTypes {
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
     /**
-     * @beta
+     * @rc
      */
     Instrument = 'minecraft:instrument_sound',
     /**

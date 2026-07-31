@@ -1,4 +1,4 @@
-/* IMPORT */ import { ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
+/* IMPORT */ import { ImageDetails, ObservableBoolean, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * Options for configuring a button component.
@@ -11,6 +11,13 @@ export interface ButtonOptions {
      *
      */
     disabled?: boolean | ObservableBoolean;
+    /**
+     * @beta
+     * @remarks
+     * Details of an image to display alongside the button label.
+     *
+     */
+    imageDetails?: ImageDetails;
     /**
      * @remarks
      * Text shown in a tooltip when the player hovers over the

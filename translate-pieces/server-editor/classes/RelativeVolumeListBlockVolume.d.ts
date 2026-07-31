@@ -29,6 +29,7 @@ export class RelativeVolumeListBlockVolume extends BlockVolumeBase {
      *
      */
     clear(): void;
+    clone(): RelativeVolumeListBlockVolume;
     /**
      * @remarks
      * @worldMutation

@@ -1,7 +1,7 @@
 /* IMPORT */ import { BlockFilter, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for querying blocks in a volume. Extends BlockFilter
  * with additional sorting and limiting options based on
  * distance from a location.
