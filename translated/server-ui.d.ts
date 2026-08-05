@@ -397,9 +397,11 @@ export class CustomForm {
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
-     * @beta
+     * @rc
      * @remarks
-     * Adds an image component to the form layout.
+     * Adds an image component to the form layout. Gifs are
+     * supported but are extremely slow to load - always try to
+     * have the gif as small as possible.
      *
      * @worldMutation
      *
@@ -1426,7 +1428,7 @@ export interface ImageDetails {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring an image component.
  */
 export interface ImageOptions {

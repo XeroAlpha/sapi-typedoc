@@ -4,7 +4,7 @@
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
     /**

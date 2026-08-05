@@ -29,12 +29,6 @@ export interface IRootPropertyPane extends IPropertyPane {
     getActiveModalOverlayId(): string | undefined;
     /**
      * @remarks
-     * @returns
-     * Current visibility state of header action
-     */
-    isHeaderActionVisible(): boolean;
-    /**
-     * @remarks
      * Sets registered modal overlay as active, if not found it
      * will hide the current.
      *
@@ -42,12 +36,4 @@ export interface IRootPropertyPane extends IPropertyPane {
      * Unique id for modal overlay pane.
      */
     setActiveModalOverlay(id: string | undefined): void;
-    /**
-     * @remarks
-     * If a header action exists, updates visibility of the button.
-     *
-     * @param visible
-     * New visibility state of the action button.
-     */
-    setHeaderActionVisibility(visible: boolean): void;
 }

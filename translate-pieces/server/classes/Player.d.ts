@@ -84,7 +84,7 @@ export class Player extends Entity {
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains methods for manipulating the render distance fog
      * settings of a Player.

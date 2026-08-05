@@ -40,10 +40,19 @@ export declare class UserDefinedTransactionHandle<T> {
      * JSON properly, so you should avoid using them as payload
      * data.
      *
-     * @param payload
-     * The data object to be inserted into the transaction log.
+     * @param prevPayload
+     * The previous state of the data object to be inserted into
+     * the transaction log.
+     * @param newPayload
+     * The new state of the data object to be inserted into the
+     * transaction log.
      * @param transactionName
      * A string name that will be associated with this operation
      */
-    addUserDefinedOperation(payload: T, transactionName: string, pendingTransaction: PendingTransaction): void;
+    addUserDefinedOperation(
+        prevPayload: T,
+        newPayload: T,
+        transactionName: string,
+        pendingTransaction: PendingTransaction,
+    ): void;
 }

@@ -367,7 +367,6 @@ export { IPropertyPaneOptions } from './interfaces/IPropertyPaneOptions';
 export { IRegisteredKeyBinding } from './interfaces/IRegisteredKeyBinding';
 export { IRegisterExtensionOptionalParameters } from './interfaces/IRegisterExtensionOptionalParameters';
 export { IRootPropertyPane } from './interfaces/IRootPropertyPane';
-export { IRootPropertyPaneHeaderAction } from './interfaces/IRootPropertyPaneHeaderAction';
 export { IRootPropertyPaneOptions } from './interfaces/IRootPropertyPaneOptions';
 export { IStatusBar } from './interfaces/IStatusBar';
 export { IStatusBarItem } from './interfaces/IStatusBarItem';

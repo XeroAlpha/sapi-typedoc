@@ -1101,6 +1101,7 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetLocalPlayerAsInitializedPacket.html
      */
     SetLocalPlayerAsInitializedPacket = 'SetLocalPlayerAsInitializedPacket',
+    SetPlayerFurnaceOptionsPacket = 'SetPlayerFurnaceOptionsPacket',
     /**
      * Set Player Game Type
      * 

@@ -50,7 +50,7 @@ export enum AimAssistTargetMode {
  */
 export enum BlockComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
@@ -2279,7 +2279,7 @@ export enum InputPermissionCategory {
  */
 export enum ItemComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
     /**
@@ -5398,7 +5398,7 @@ export class BlockCustomComponentInstance extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the dynamic properties of a block in the world.
  * Only available with block entities. Up to 1KB per content
  * pack, per block entity in their dynamic properties storage.
@@ -6830,10 +6830,11 @@ export class ChatSendBeforeEvent {
      * @remarks
      * Optional list of players that will receive this message. If
      * defined, this message is directly targeted to one or more
-     * players (i.e., is not broadcast.)
+     * players (i.e., is not broadcast). This list can be modified
+     * to change the message recipients.
      *
      */
-    readonly targets?: Player[];
+    targets?: Player[];
 }
 
 /**
@@ -12654,7 +12655,7 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains data related to an entity beginning to sneak.
  */
 export class EntityStartSneakingAfterEvent {
@@ -12668,7 +12669,7 @@ export class EntityStartSneakingAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity
  * begins sneaking.
  */
@@ -12702,7 +12703,7 @@ export class EntityStartSneakingAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains data related to an entity stopping sneaking.
  */
 export class EntityStopSneakingAfterEvent {
@@ -12716,7 +12717,7 @@ export class EntityStopSneakingAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when an entity stops
  * sneaking.
  */
@@ -13453,7 +13454,7 @@ export class FluidContainer {
 }
 
 /**
- * @beta
+ * @rc
  * Provides access to the fog definitions stack of a player
  * entity, allowing scripts to push, pop, remove, and query
  * active fog definitions.
@@ -13928,7 +13929,7 @@ export class ISerializable {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the dynamic properties of a block. Only available
  * from block entities. Up to 1KBytes of data can be stored per
  * content pack per block entity in their dynamic properties
@@ -16761,7 +16762,7 @@ export class Player extends Entity {
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Contains methods for manipulating the render distance fog
      * settings of a Player.
@@ -22709,7 +22710,7 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity starts sneaking.
      *
@@ -22718,7 +22719,7 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity stops sneaking.
      *
@@ -24687,7 +24688,7 @@ export interface EntityRaycastOptions extends EntityFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Options used to filter entity start sneaking and stop
  * sneaking events.
  */
@@ -25887,6 +25888,10 @@ export interface TeleportOptions {
      */
     facingLocation?: Vector3;
     /**
+     * @rc
+     */
+    forceProvidedPositionOnDimensionChange?: boolean;
+    /**
      * @remarks
      * Whether to retain the entities velocity after teleport.
      *
@@ -26308,7 +26313,7 @@ export class EntitySpawnError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link FogSettings} operations when the fog
  * stack limit is exceeded or an invalid fog identifier is
  * provided.

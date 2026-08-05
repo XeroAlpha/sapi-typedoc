@@ -4,7 +4,7 @@
  */
 export enum BlockComponentTypes {
     /**
-     * @beta
+     * @rc
      */
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',

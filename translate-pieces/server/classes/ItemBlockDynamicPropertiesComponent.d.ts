@@ -1,7 +1,7 @@
 /* IMPORT */ import { InvalidItemStackError, ItemComponent, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Represents the dynamic properties of a block. Only available
  * from block entities. Up to 1KBytes of data can be stored per
  * content pack per block entity in their dynamic properties

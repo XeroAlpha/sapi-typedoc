@@ -1,7 +1,7 @@
 /* IMPORT */ import { ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @beta
+ * @rc
  * Options for configuring an image component.
  */
 export interface ImageOptions {

@@ -29,8 +29,9 @@ export class ChatSendBeforeEvent {
      * @remarks
      * Optional list of players that will receive this message. If
      * defined, this message is directly targeted to one or more
-     * players (i.e., is not broadcast.)
+     * players (i.e., is not broadcast). This list can be modified
+     * to change the message recipients.
      *
      */
-    readonly targets?: Player[];
+    targets?: Player[];
 }

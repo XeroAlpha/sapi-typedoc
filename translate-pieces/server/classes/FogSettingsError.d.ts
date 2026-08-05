@@ -1,7 +1,7 @@
 /* IMPORT */ import { FogSettings } from '..';
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link FogSettings} operations when the fog
  * stack limit is exceeded or an invalid fog identifier is
  * provided.

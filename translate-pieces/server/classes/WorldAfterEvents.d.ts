@@ -175,7 +175,7 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity starts sneaking.
      *
@@ -184,7 +184,7 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when an entity stops sneaking.
      *
