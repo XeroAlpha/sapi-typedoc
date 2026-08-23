@@ -1,5 +1,4 @@
 /**
- * @rc
  * The split screen slot of a player.
  */
 export enum PlayerSplitScreenSlot {

@@ -1,9 +1,9 @@
-/* IMPORT */ import { AudioSettings, GraphicsSettings, SpeedSettings, ThemeSettings } from '..';
+/* IMPORT */ import { AudioSettings, ExtensionContext, GraphicsSettings, SpeedSettings, ThemeSettings } from '..';
 
 /**
- * The SettingsManager (accessible from the {@link
- * ExtensionContext}) is responsible for the management all
- * player settings.
+ * The SettingsManager (accessible from the
+ * {@link ExtensionContext}) is responsible for the management
+ * all player settings.
  */
 export class SettingsManager {
     private constructor();

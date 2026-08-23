@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Music metadata declared on a sound definition. Each field is
  * optional and is undefined when the sound definition does not
  * declare a value for it.

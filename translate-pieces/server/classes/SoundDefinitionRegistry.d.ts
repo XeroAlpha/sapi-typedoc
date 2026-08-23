@@ -2,7 +2,7 @@
 /* IMPORT */ import { SoundDefinition, SoundDefinitionFilter } from '..';
 
 /**
- * @beta
+ * @rc
  * Provides read-only access to the sound definitions loaded
  * for the current world.
  */

@@ -2,6 +2,14 @@
  * All possible MinecraftFeatureTypes
  */
 export declare enum MinecraftFeatureTypes {
+    AbandonedCampBambooJungle = "minecraft:abandoned_camp_bamboo_jungle",
+    AbandonedCampBirchForest = "minecraft:abandoned_camp_birch_forest",
+    AbandonedCampCherryGrove = "minecraft:abandoned_camp_cherry_grove",
+    AbandonedCampDappledForest = "minecraft:abandoned_camp_dappled_forest",
+    AbandonedCampExtremeHillsPlusTrees = "minecraft:abandoned_camp_extreme_hills_plus_trees",
+    AbandonedCampFlowerForest = "minecraft:abandoned_camp_flower_forest",
+    AbandonedCampPaleGarden = "minecraft:abandoned_camp_pale_garden",
+    AbandonedCampSwampland = "minecraft:abandoned_camp_swampland",
     AncientCity = "minecraft:ancient_city",
     BastionRemnant = "minecraft:bastion_remnant",
     BuriedTreasure = "minecraft:buried_treasure",

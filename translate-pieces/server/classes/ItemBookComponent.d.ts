@@ -47,9 +47,9 @@ export class ItemBookComponent extends ItemComponent {
     readonly pageCount: number;
     /**
      * @remarks
-     * The contents of pages in the book that are in {@link
-     * RawMessage} format. Entries not in {@link RawMessage} format
-     * will be undefined.
+     * The contents of pages in the book that are in
+     * {@link RawMessage} format. Entries not in {@link RawMessage}
+     * format will be undefined.
      *
      * @throws This property can throw when used.
      *
@@ -110,8 +110,8 @@ export class ItemBookComponent extends ItemComponent {
      * The index of the page.
      * @param content
      * The content to set for the page. Can be a single string or
-     * {@link RawMessage} or an array of strings and/or {@link
-     * RawMessage}s
+     * {@link RawMessage} or an array of strings and/or
+     * {@link RawMessage}s
      * @throws This function can throw errors.
      *
      * {@link BookError}
@@ -173,8 +173,8 @@ export class ItemBookComponent extends ItemComponent {
      * The index of the page.
      * @param content
      * The content to set for the page. Can be a single string or
-     * {@link RawMessage} or an array of strings and/or {@link
-     * RawMessage}s
+     * {@link RawMessage} or an array of strings and/or
+     * {@link RawMessage}s
      * @throws This function can throw errors.
      *
      * {@link BookError}

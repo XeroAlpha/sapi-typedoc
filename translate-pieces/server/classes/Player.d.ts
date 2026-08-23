@@ -17,11 +17,12 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * The player's chat display name, composed from {@link
-     * Player.chatNamePrefix} + {@link Player.name} + {@link
-     * Player.chatNameSuffix}. This is the name shown as the author
-     * of chat messages sent by this player. To change the name
-     * shown above the player's head, use {@link Entity.nameTag}.
+     * The player's chat display name, composed from
+     * {@link Player.chatNamePrefix} + {@link Player.name} +
+     * {@link Player.chatNameSuffix}. This is the name shown as the
+     * author of chat messages sent by this player. To change the
+     * name shown above the player's head, use
+     * {@link Entity.nameTag}.
      *
      * @throws This property can throw when used.
      *
@@ -48,10 +49,10 @@ export class Player extends Entity {
      * @remarks
      * An optional string that, when set, is prepended to the
      * player's name in chat messages. Does not affect the name tag
-     * above the player's head or the player list - use {@link
-     * Entity.nameTag} for that. To prefix the message text itself,
-     * use {@link Player.chatMessagePrefix}. Set to undefined to
-     * clear.
+     * above the player's head or the player list - use
+     * {@link Entity.nameTag} for that. To prefix the message text
+     * itself, use {@link Player.chatMessagePrefix}. Set to
+     * undefined to clear.
      *
      * @worldMutation
      *
@@ -62,9 +63,9 @@ export class Player extends Entity {
      * @remarks
      * An optional string that, when set, is appended to the
      * player's name in chat messages. Does not affect the name tag
-     * above the player's head or the player list - use {@link
-     * Entity.nameTag} for that. See also {@link
-     * Player.chatNamePrefix}. Set to undefined to clear.
+     * above the player's head or the player list - use
+     * {@link Entity.nameTag} for that. See also
+     * {@link Player.chatNamePrefix}. Set to undefined to clear.
      *
      * @worldMutation
      *

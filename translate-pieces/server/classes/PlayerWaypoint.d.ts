@@ -1,9 +1,9 @@
 /* IMPORT */ import { EntityWaypoint, InvalidWaypointError, InvalidWaypointTextureSelectorError, Player, PlayerVisibilityRules, RGB, WaypointTextureSelector } from '..';
 
 /**
- * Waypoint that tracks a player's position. Extends {@link
- * EntityWaypoint} with additional player-specific visibility
- * rules such as hidden state and spectator mode.
+ * Waypoint that tracks a player's position. Extends
+ * {@link EntityWaypoint} with additional player-specific
+ * visibility rules such as hidden state and spectator mode.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerWaypoint extends EntityWaypoint {

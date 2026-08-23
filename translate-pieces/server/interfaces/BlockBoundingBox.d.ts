@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockBoundingBoxUtils, Vector3 } from '..';
+/* IMPORT */ import { BlockBoundingBoxUtils, BlockVolume, Vector3 } from '..';
 
 /**
  * A BlockBoundingBox is an interface to an object which
@@ -13,8 +13,8 @@
  * has no association with any type, it is just a mathematical
  * construct - so a rectangle with
  * ( 0,0,0 ) -> ( 0,0,0 )
- * has a size of ( 0,0,0 ) (unlike the very similar {@link
- * BlockVolume} object)
+ * has a size of ( 0,0,0 ) (unlike the very similar
+ * {@link BlockVolume} object)
  */
 export interface BlockBoundingBox {
     /**

@@ -1,3 +1,5 @@
+/* IMPORT */ import { TicksPerSecond } from '..';
+
 /**
  * Represents an effect - like poison - that has been added to
  * an Entity.
@@ -23,8 +25,8 @@ export class Effect {
     /**
      * @remarks
      * Gets the entire specified duration, in ticks, of this
-     * effect. There are 20 ticks per second. Use {@link
-     * TicksPerSecond} constant to convert between ticks and
+     * effect. There are 20 ticks per second. Use
+     * {@link TicksPerSecond} constant to convert between ticks and
      * seconds.
      *
      * @throws This property can throw when used.

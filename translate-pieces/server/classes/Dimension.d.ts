@@ -29,7 +29,6 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @rc
      * @remarks
      * Calculates the location of the closest biome of a particular
      * type from the world seed. Note that

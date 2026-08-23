@@ -1,9 +1,10 @@
 /* IMPORT */ import { RawMessage } from '../../server';
+/* IMPORT */ import { ModalFormData } from '..';
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.toggle} to provide
- * additional options for the toggle creation.
+ * An interface that is passed into
+ * {@link ModalFormData.toggle} to provide additional options
+ * for the toggle creation.
  */
 export interface ModalFormDataToggleOptions {
     /**

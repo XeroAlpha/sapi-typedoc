@@ -11,7 +11,9 @@ const protocolDocsRepo = 'https://github.com/Mojang/bedrock-protocol-docs.git';
 
 interface ProtocolDocJSON {
     title: string;
-    description?: string;
+    $metaProperties?: {
+        '[cereal:packet_details]'?: string;
+    };
 }
 
 export default {
@@ -24,9 +26,7 @@ export default {
             execSync(`git clone ${protocolDocsRepo} ${protocolDocsBase} --depth 1`, { cwd: cacheDir });
         }
         const protocolDocsJsonDir = resolvePath(protocolDocsRepoDir, 'json');
-        const protocolDocsHtmlDir = resolvePath(protocolDocsRepoDir, 'docs');
         const jsonList = readdirSync(protocolDocsJsonDir);
-        const htmlList = readdirSync(protocolDocsHtmlDir);
 
         const netDts = project.getSourceFileOrThrow('server-net.d.ts');
         const indentText = project.manipulationSettings.getIndentationText();
@@ -34,21 +34,23 @@ export default {
         const textChanges: ts.TextChange[] = [];
         for (const member of packetIdEnum.getMembers()) {
             const commentLines: string[] = [];
-            const jsonFileName = `${member.getName()}.json`;
-            const htmlFileName = `${member.getName()}.html`;
+            const packetName = member.getName();
+            const jsonFileName = `${packetName}.json`;
             if (jsonList.includes(jsonFileName)) {
                 const jsonPath = resolvePath(protocolDocsJsonDir, jsonFileName);
                 const json = JSON.parse(readFileSync(jsonPath, 'utf-8')) as ProtocolDocJSON;
-                if (json.description) {
-                    commentLines.push(...json.description.replace(/\t/g, indentText).split('\n'));
+                if (json.$metaProperties?.['[cereal:packet_details]']) {
+                    const packetDetails = json.$metaProperties['[cereal:packet_details]'];
+                    commentLines.push(...packetDetails.replace(/\t/g, indentText).split('\n'));
                 }
             }
-            if (htmlList.includes(htmlFileName)) {
-                if (commentLines.length > 0) {
-                    commentLines.push('');
-                }
-                commentLines.push(`@see https://mojang.github.io/bedrock-protocol-docs/docs/${htmlFileName}`);
+            if (commentLines.length > 0) {
+                commentLines.push('');
             }
+            const packetNameKebabCase = packetName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+            commentLines.push(
+                `@see https://mojang.github.io/bedrock-protocol-docs/latest/packets/${packetNameKebabCase}/`
+            );
             if (commentLines.length > 0) {
                 const prefixSpaces = member.getIndentationText();
                 textChanges.push({

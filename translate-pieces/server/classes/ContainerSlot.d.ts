@@ -214,8 +214,8 @@ export class ContainerSlot {
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
-     * ItemStack. String lore lines will be converted to a {@link
-     * RawMessage} and put under {@link RawMessage.text}.
+     * ItemStack. String lore lines will be converted to a
+     * {@link RawMessage} and put under {@link RawMessage.text}.
      *
      * @returns
      * An array of lore lines. If the item does not have lore,

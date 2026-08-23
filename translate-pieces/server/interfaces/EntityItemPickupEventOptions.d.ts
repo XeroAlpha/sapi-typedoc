@@ -1,10 +1,11 @@
-/* IMPORT */ import { EntityFilter, ItemFilter } from '..';
+/* IMPORT */ import { EntityFilter, EntityItemPickupAfterEventSignal, EntityItemPickupBeforeEventSignal, ItemFilter } from '..';
 
 /**
- * An interface that is passed into {@link
- * EntityItemPickupAfterEventSignal.subscribe} and {@link
- * EntityItemPickupBeforeEventSignal.subscribe} that filters
- * out which events are passed to the provided callback.
+ * An interface that is passed into
+ * {@link EntityItemPickupAfterEventSignal.subscribe} and
+ * {@link EntityItemPickupBeforeEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
  */
 export interface EntityItemPickupEventOptions {
     /**

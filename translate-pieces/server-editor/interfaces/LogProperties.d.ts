@@ -1,12 +1,12 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { LocalizationEntry, LogChannel } from '..';
+/* IMPORT */ import { ExtensionContext, LocalizationEntry, LogChannel } from '..';
 
 /**
  * A properties class for the global instance of the logger
  * object.
- * While the logger object is available through the {@link
- * ExtensionContext} - using the global instance allows the
- * creator to use this properties class to perform direct
+ * While the logger object is available through the
+ * {@link ExtensionContext} - using the global instance allows
+ * the creator to use this properties class to perform direct
  * server->client messaging and broadcasts.
  */
 export interface LogProperties {

@@ -1,9 +1,9 @@
-/* IMPORT */ import { BookErrorReason } from '..';
+/* IMPORT */ import { BookErrorReason, ItemBookComponent } from '..';
 
 /**
- * The error called if page content being set on an {@link
- * ItemBookComponent} are invalid ie. exceeding the maximum
- * page length.
+ * The error called if page content being set on an
+ * {@link ItemBookComponent} are invalid ie. exceeding the
+ * maximum page length.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BookPageContentError extends Error {

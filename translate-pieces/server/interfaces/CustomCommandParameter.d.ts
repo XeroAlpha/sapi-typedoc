@@ -8,9 +8,9 @@ export interface CustomCommandParameter {
     /**
      * @beta
      * @remarks
-     * Can be used to reference the enum name when {@link
-     * CustomCommandParamType} is 'Enum'. Allows the parameter name
-     * to be different from the enum name.
+     * Can be used to reference the enum name when
+     * {@link CustomCommandParamType} is 'Enum'. Allows the
+     * parameter name to be different from the enum name.
      *
      */
     enumName?: string;

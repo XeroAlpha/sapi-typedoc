@@ -1,8 +1,8 @@
-/* IMPORT */ import { StructureSaveMode } from '..';
+/* IMPORT */ import { StructureManager, StructureSaveMode } from '..';
 
 /**
- * Provides additional options for {@link
- * StructureManager.createFromWorld}
+ * Provides additional options for
+ * {@link StructureManager.createFromWorld}
  */
 export interface StructureCreateOptions {
     /**

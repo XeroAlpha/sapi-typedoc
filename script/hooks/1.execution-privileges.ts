@@ -1,4 +1,4 @@
-import { SyntaxKind, ts, type NodeParentType } from 'ts-morph';
+import { Node, SyntaxKind, ts, type NodeParentType } from 'ts-morph';
 import type { Hook } from './hook.js';
 import { installLanguages, type TypeDocLanguages } from '../utils.js';
 import {
@@ -33,9 +33,6 @@ const TypeDocExtraTranslations: TypeDocLanguages = {
 
 const worldMutationTag = '@worldMutation';
 const earlyExecutionTag = '@earlyExecution';
-
-const FunctionLikeSyntaxKind = [SyntaxKind.Constructor, SyntaxKind.MethodDeclaration, SyntaxKind.FunctionDeclaration];
-const PropertyLikeSyntaxKind = [SyntaxKind.PropertyDeclaration];
 
 const TraverseProperties = [
     TraverseProperty.Children,
@@ -114,73 +111,50 @@ function generateFilterResult(rootRefl: Reflection, filter: (refl: Reflection) =
     return result;
 }
 
+const matchesFunctionLike = (declaration: NodeParentType<ts.JSDoc>) => Node.isFunctionLikeDeclaration(declaration);
+
+const matchesReadonlyProperty = (declaration: NodeParentType<ts.JSDoc>) =>
+    Node.isPropertyDeclaration(declaration) &&
+    (declaration.isReadonly() || declaration.hasModifier(SyntaxKind.ProtectedKeyword));
+
+const matchesWritableProperty = (declaration: NodeParentType<ts.JSDoc>) =>
+    Node.isPropertyDeclaration(declaration) &&
+    !(declaration.isReadonly() || declaration.hasModifier(SyntaxKind.ProtectedKeyword));
+
 const translateTexts: {
-    from: string;
+    from: string | RegExp;
     to: string;
     matches?: (declaration: NodeParentType<ts.JSDoc>) => boolean;
 }[] = [
     {
-        from: `This function can't be called in read-only mode.`,
+        from: /(?:@privilege no-restricted-execution - )?This function can't be called in (?:read-only|restricted-execution) mode\./g,
         to: worldMutationTag,
-        matches(declaration) {
-            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesFunctionLike
     },
     {
-        from: `This function can't be called in restricted-execution mode.`,
+        from: /(?:@privilege restricted-execution-unusable - )?This property can't be used in (?:read-only|restricted-execution) mode\./g,
         to: worldMutationTag,
-        matches(declaration) {
-            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesReadonlyProperty
     },
     {
-        from: `This property can't be used in read-only mode.`,
+        from: /(?:@privilege restricted-execution-read-only - )?This property can't be edited in (?:read-only|restricted-execution) mode\./g,
         to: worldMutationTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesWritableProperty
     },
     {
-        from: `This property can't be used in restricted-execution mode.`,
-        to: worldMutationTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
-    },
-    {
-        from: `This property can't be edited in read-only mode.`,
-        to: worldMutationTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
-    },
-    {
-        from: `This property can't be edited in restricted-execution mode.`,
-        to: worldMutationTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
-    },
-    {
-        from: `This function can be called in early-execution mode.`,
+        from: /(?:@privilege early-execution-allowed - )?This function can be called in early-execution mode\./g,
         to: earlyExecutionTag,
-        matches(declaration) {
-            return FunctionLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesFunctionLike
     },
     {
-        from: `This property can be read in early-execution mode.`,
+        from: /(?:@privilege early-execution-readable - )?This property can be read in early-execution mode\./g,
         to: earlyExecutionTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesReadonlyProperty
     },
     {
-        from: `This property can be edited in early-execution mode.`,
+        from: /(?:@privilege early-execution-editable - )?This property can be edited in early-execution mode\./g,
         to: earlyExecutionTag,
-        matches(declaration) {
-            return PropertyLikeSyntaxKind.some((e) => declaration.isKind(e));
-        }
+        matches: matchesWritableProperty
     }
 ];
 

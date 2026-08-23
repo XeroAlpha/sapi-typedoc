@@ -8,17 +8,6 @@ assert(true);
 const patches: ((context: TranslateHookContext) => void)[] = [];
 
 patches.push(({ project }) => {
-    // since 1.21.110.25
-    const serverDts = project.getSourceFileOrThrow('server.d.ts');
-    const PlayerSwingEventOptionsInterface = serverDts.getInterfaceOrThrow('PlayerSwingEventOptions');
-    const oldText = PlayerSwingEventOptionsInterface.getFullText();
-    const regexp = /@minecraft\/[Ss]erver\.PlayerSwingStartAfterEvent\.subscribe/;
-    assert(regexp.test(oldText));
-    const newText = oldText.replace(regexp, '@minecraft/server.PlayerSwingStartAfterEventSignal.subscribe');
-    PlayerSwingEventOptionsInterface.replaceWithText(newText.trim());
-});
-
-patches.push(({ project }) => {
     // @minecraft/math
     const mathDts = project.getSourceFileOrThrow('math.d.ts');
     const dtsLines = mathDts.getFullText().split(/\r\n|\n/g);
@@ -70,21 +59,6 @@ patches.push(({ project }) => {
         }
     }
     mathDts.replaceWithText(outputLines.join('\n'));
-});
-
-patches.push(({ project }) => {
-    const serverDts = project.getSourceFileOrThrow('server.d.ts');
-    const CustomCommandParamTypeEnum = serverDts.getEnumOrThrow('CustomCommandParamType');
-    const LocationMember = CustomCommandParamTypeEnum.getMemberOrThrow('Location');
-    const LocationJsDoc = LocationMember.getFirstChildByKindOrThrow(SyntaxKind.JSDoc);
-    const LocationText = LocationJsDoc.getText(true);
-    assert(LocationText.includes('@minecraft/server.Location'));
-    serverDts.applyTextChanges([
-        {
-            span: { start: LocationJsDoc.getStart(), length: LocationJsDoc.getEnd() - LocationJsDoc.getStart() },
-            newText: LocationText.replace('@minecraft/server.Location', '@minecraft/server.Vector3')
-        }
-    ]);
 });
 
 const errors: unknown[] = [];

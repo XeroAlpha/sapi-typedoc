@@ -1,8 +1,7 @@
-/* IMPORT */ import { TickingAreaManager } from '..';
+/* IMPORT */ import { TickingAreaError, TickingAreaManager } from '..';
 
 /**
- * The reason that the {@link
- * @minecraft/server.TickingAreaError} was thrown.
+ * The reason that the {@link TickingAreaError} was thrown.
  */
 export enum TickingAreaErrorReason {
     /**

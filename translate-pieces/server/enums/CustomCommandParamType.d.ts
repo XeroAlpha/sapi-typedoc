@@ -54,8 +54,7 @@ export enum CustomCommandParamType {
     ItemType = 'ItemType',
     /**
      * @remarks
-     * Location parameter provides a {@link
-     * @minecraft/server.Vector3}.
+     * Location parameter provides a vector position.
      *
      */
     Location = 'Location',

@@ -1,8 +1,10 @@
+/* IMPORT */ import { PlayerInputPermissionCategoryChangeAfterEvent, PlayerInputPermissions } from '..';
+
 /**
- * Input permission categories. Used by {@link
- * PlayerInputPermissionCategoryChangeAfterEvent} to specify
- * which category was changed and {@link
- * PlayerInputPermissions} to get or set permissions.
+ * Input permission categories. Used by
+ * {@link PlayerInputPermissionCategoryChangeAfterEvent} to
+ * specify which category was changed and
+ * {@link PlayerInputPermissions} to get or set permissions.
  */
 export enum InputPermissionCategory {
     /**

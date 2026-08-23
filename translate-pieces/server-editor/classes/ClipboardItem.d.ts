@@ -64,8 +64,8 @@ export class ClipboardItem {
      * @param location
      * The root point of the world location to which the
      * ClipboardItem is written (this is modified by the various
-     * anchor, offset and rotation parameters of the {@link
-     * ClipboardWriteOptions}
+     * anchor, offset and rotation parameters of the
+     * {@link ClipboardWriteOptions}
      * @param options
      * An optional set of write parameters which modify the
      * properties of the ClipboardItem as it is applied to the

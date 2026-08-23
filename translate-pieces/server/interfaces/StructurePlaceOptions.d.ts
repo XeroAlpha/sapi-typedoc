@@ -1,8 +1,8 @@
-/* IMPORT */ import { StructureAnimationMode, StructureMirrorAxis, StructureRotation } from '..';
+/* IMPORT */ import { StructureAnimationMode, StructureManager, StructureMirrorAxis, StructureRotation } from '..';
 
 /**
- * Provides additional options for {@link
- * StructureManager.place}
+ * Provides additional options for
+ * {@link StructureManager.place}
  */
 export interface StructurePlaceOptions {
     /**
@@ -35,8 +35,8 @@ export interface StructurePlaceOptions {
      * @remarks
      * What percentage of blocks should be placed. A value of 1
      * will place 100% of the blocks while a value of 0 will place
-     * none. The blocks are chosen randomly based on the {@link
-     * StructurePlaceOptions.integritySeed}.
+     * none. The blocks are chosen randomly based on the
+     * {@link StructurePlaceOptions.integritySeed}.
      *
      */
     integrity?: number;

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, DimensionRegistry, ItemComponentRegistry } from '..';
+/* IMPORT */ import { BlockComponentRegistry, CustomCommandRegistry, DimensionRegistry, ItemComponentRegistry, WorldClockRegistry } from '..';
 
 export class StartupEvent {
     private constructor();
@@ -26,4 +26,11 @@ export class StartupEvent {
      *
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly worldClockRegistry: WorldClockRegistry;
 }

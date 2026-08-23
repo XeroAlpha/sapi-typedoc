@@ -6,9 +6,6 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LootItem extends LootPoolEntry {
     private constructor();
-    /**
-     * @rc
-     */
     readonly conditions: LootItemCondition[];
     readonly functions: LootItemFunction[];
     /**

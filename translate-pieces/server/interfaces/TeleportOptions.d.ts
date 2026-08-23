@@ -27,9 +27,6 @@ export interface TeleportOptions {
      *
      */
     facingLocation?: Vector3;
-    /**
-     * @rc
-     */
     forceProvidedPositionOnDimensionChange?: boolean;
     /**
      * @remarks

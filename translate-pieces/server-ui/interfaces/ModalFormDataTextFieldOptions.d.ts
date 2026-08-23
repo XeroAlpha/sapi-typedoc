@@ -1,9 +1,10 @@
 /* IMPORT */ import { RawMessage } from '../../server';
+/* IMPORT */ import { ModalFormData } from '..';
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.textField} to provide
- * additional options for the textfield creation.
+ * An interface that is passed into
+ * {@link ModalFormData.textField} to provide additional
+ * options for the textfield creation.
  */
 export interface ModalFormDataTextFieldOptions {
     /**

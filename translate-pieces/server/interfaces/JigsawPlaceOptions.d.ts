@@ -1,8 +1,8 @@
-/* IMPORT */ import { LiquidSettings } from '..';
+/* IMPORT */ import { LiquidSettings, StructureManager } from '..';
 
 /**
- * Provides additional options for {@link
- * StructureManager.placeJigsaw}.
+ * Provides additional options for
+ * {@link StructureManager.placeJigsaw}.
  */
 export interface JigsawPlaceOptions {
     /**

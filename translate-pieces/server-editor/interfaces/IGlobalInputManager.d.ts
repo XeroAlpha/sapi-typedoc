@@ -1,4 +1,4 @@
-/* IMPORT */ import { EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, MouseCursorIconType, SupportedKeyboardActionTypes } from '..';
+/* IMPORT */ import { CoreInputBindingCategory, EditorInputContext, IRegisteredKeyBinding, KeyBinding, KeyBindingInfo, MouseCursorIconType, SupportedKeyboardActionTypes } from '..';
 
 export interface IGlobalInputManager {
     /**
@@ -7,8 +7,8 @@ export interface IGlobalInputManager {
      * Help panel.
      *
      * @param id
-     * Unique category identifier (use a {@link
-     * CoreInputBindingCategory} value or a custom string).
+     * Unique category identifier (use a
+     * {@link CoreInputBindingCategory} value or a custom string).
      * @param label
      * Localized display name shown as the group heading.
      * @param order

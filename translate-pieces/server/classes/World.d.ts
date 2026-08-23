@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinitionRegistry, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents } from '..';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinitionRegistry, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -65,7 +65,7 @@ export class World {
      */
     readonly seed: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Provides read-only access to the sound definitions loaded
      * for this world.
@@ -130,6 +130,22 @@ export class World {
      * {@link InvalidArgumentError}
      */
     getAllPlayers(): Player[];
+    /**
+     * @beta
+     * @remarks
+     * Retrieves a world clock by its name.
+     *
+     * @param name
+     * The name of the world clock to retrieve.
+     * @returns
+     * The {@link WorldClock} with the given name.
+     * @throws
+     * WorldClockNotFoundError: If the world clock with the given
+     * name does not exist.
+     *
+     * {@link WorldClockNotFoundError}
+     */
+    getClock(name: string): WorldClock;
     /**
      * @remarks
      * Returns the current day.

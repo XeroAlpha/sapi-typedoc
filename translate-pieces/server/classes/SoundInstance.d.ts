@@ -120,7 +120,6 @@ export class SoundInstance {
      */
     setVolume(volume: number): void;
     /**
-     * @rc
      * @remarks
      * Stops this sound instance from playing.
      *

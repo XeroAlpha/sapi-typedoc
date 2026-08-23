@@ -51,8 +51,8 @@ export class System {
     readonly serverSystemInfo: SystemInfo;
     /**
      * @remarks
-     * Cancels the execution of a job queued via {@link
-     * System.runJob}.
+     * Cancels the execution of a job queued via
+     * {@link System.runJob}.
      *
      * @earlyExecution
      *
@@ -118,8 +118,8 @@ export class System {
      * @param generator
      * The instance of the generator to run.
      * @returns
-     * An opaque handle that can be used with {@link
-     * System.clearJob} to stop the run of this generator.
+     * An opaque handle that can be used with
+     * {@link System.clearJob} to stop the run of this generator.
      * @seeExample cubeGenerator.ts
      */
     runJob(generator: Generator<void, void, void>): number;

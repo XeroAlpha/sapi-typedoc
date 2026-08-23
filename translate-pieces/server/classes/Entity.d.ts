@@ -926,6 +926,8 @@ export class Entity {
      * Options regarding the teleport operation.
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
@@ -973,6 +975,8 @@ export class Entity {
      * destination chunk is unloaded or if the teleport would
      * result in intersecting with blocks.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      *
      * {@link InvalidEntityError}
      *

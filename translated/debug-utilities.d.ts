@@ -23,6 +23,83 @@
 import { ArgumentOutOfBoundsError } from '@minecraft/common';
 import { Dimension, DimensionLocation, Entity, Player, RGBA, RawMessage, RawMessageError, Vector2, Vector3 } from '@minecraft/server';
 /**
+ * The display type for the chart (e.g. line chart, stacked
+ * line chart, stacked bar chart).
+ */
+export enum DiagnosticsChartDisplayType {
+    /**
+     * @remarks
+     * Represents a simple line graph chart where the X axis is
+     * time and the Y axis is the user driven data.
+     *
+     */
+    LineChart = 0,
+    /**
+     * @remarks
+     * Indicates that the view or stat has not been registered.
+     *
+     */
+    StackedLineChart = 1,
+    /**
+     * @remarks
+     * Represents a line graph chart where the X axis is time and
+     * the Y axis is a collection of multiple the user driven data
+     * entries that are visually stacked on top of each other.
+     *
+     */
+    StackedBarChart = 2,
+}
+
+/**
+ * Reason codes for errors thrown by DiagnosticsManager and
+ * DiagnosticsView operations.
+ */
+export enum DiagnosticsErrorReason {
+    /**
+     * @remarks
+     * Indicates that the view or stat has already been registered.
+     *
+     */
+    AlreadyRegistered = 'AlreadyRegistered',
+    /**
+     * @remarks
+     * Indicates an issue with the stats data pushed to the view,
+     * see message for details.
+     *
+     */
+    InvalidData = 'InvalidData',
+    /**
+     * @remarks
+     * Indicates that the view or stat name is invalid (likely the
+     * name is empty).
+     *
+     */
+    InvalidName = 'InvalidName',
+}
+
+/**
+ * The display type for the table (e.g. single table or
+ * multi-column table).
+ */
+export enum DiagnosticsTableDisplayType {
+    /**
+     * @remarks
+     * A simple table of keys to values (2 columns). Does not track
+     * history or value changes.
+     *
+     */
+    Table = 0,
+    /**
+     * @remarks
+     * A table of keys to multiple values. The amount of value
+     * columns is driven by the data. Does not track history or
+     * value changes.
+     *
+     */
+    MultiColumnTable = 1,
+}
+
+/**
  * The length of the arrow's head/tip.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -285,8 +362,8 @@ export class DebugShape {
     maximumRenderDistance?: number;
     /**
      * @remarks
-     * The rotation of the shape (Euler angles - [Pitch, Yaw,
-     * Roll]).
+     * The rotation of the shape in degrees (Euler angles - [Pitch,
+     * Yaw, Roll]).
      *
      */
     rotation: Vector3;
@@ -423,6 +500,233 @@ export class DebugText extends DebugShape {
     setText(text: RawMessage | string): void;
 }
 
+/**
+ * Manages data, display tabs and views used by the Minecraft
+ * Bedrock Debugger VS Code extension for live diagnostics.
+ */
+export class DiagnosticsManager {
+    private constructor();
+    /**
+     * @remarks
+     * The list of currently registered diagnostic tabs
+     * (constrained to this pack).
+     *
+     */
+    readonly tabs: DiagnosticsTab[];
+    /**
+     * @remarks
+     * Adds an existing DiagnosticsTab instance to the live
+     * diagnostics display in the debugger
+     *
+     * @param tab
+     * The DiagnosticsTab instance to add to the display.
+     */
+    addTab(tab: DiagnosticsTab): void;
+    /**
+     * @remarks
+     * Returns whether the given tab is currently registered and
+     * used in the live diagnostics display.
+     *
+     */
+    containsTab(tab: DiagnosticsTab): boolean;
+    /**
+     * @remarks
+     * Returns whether the given view is currently registered and
+     * used by any tab in the live diagnostics display.
+     *
+     */
+    containsView(view: DiagnosticsView): boolean;
+    /**
+     * @remarks
+     * Creates a new DiagnosticsTab and adds it to the live
+     * diagnostics display in the debugger
+     *
+     * @param tabName
+     * The name of the tab for creation and display.
+     * @throws This function can throw errors.
+     *
+     * {@link DiagnosticsError}
+     */
+    createTab(tabName: string): DiagnosticsTab;
+    /**
+     * @remarks
+     * Creates a new DiagnosticsView. This view will not be added
+     * to the live diagnostics display automatically, please use
+     * DiagnosticsTab.addView to do so.
+     *
+     * @param statName
+     * The name of the stats data for creation and display.
+     * @param options
+     * An optional set of either chart or table options to be used
+     * for modifying the display.
+     * @returns
+     * The newly created DiagnosticsView instance.
+     * @throws This function can throw errors.
+     *
+     * {@link DiagnosticsError}
+     */
+    createView(statName: string, options?: DiagnosticsChartViewOptions | DiagnosticsTableViewOptions): DiagnosticsView;
+    /**
+     * @remarks
+     * Removes a previously registered tab from the live
+     * diagnostics display in the debugger
+     *
+     */
+    removeTab(tab: DiagnosticsTab): void;
+}
+
+/**
+ * Represents a tab that is displayed in the live diagnostics
+ * panel of the debugger. It can contain various data including
+ * 'DiagnosticsViews' which are used to display live stats data
+ * in the form of graphs or tables.
+ */
+export class DiagnosticsTab {
+    private constructor();
+    /**
+     * @remarks
+     * The name of the tab. This determines the name shown in the
+     * live diagnostics section of the Minecraft VS Code debugger
+     * extension list.
+     *
+     */
+    readonly tabName: string;
+    /**
+     * @remarks
+     * The list of views currently associated and displayed in this
+     * tab.
+     *
+     */
+    readonly views: DiagnosticsView[];
+    /**
+     * @remarks
+     * Registers an existing diagnostics view under the given tab
+     * for display in the live diagnostics.
+     *
+     * @param view
+     * The existing view to add to this tab.
+     */
+    addView(view: DiagnosticsView): void;
+    /**
+     * @remarks
+     * Returns whether the given view is currently registered and
+     * used by this tab.
+     *
+     */
+    containsView(view: DiagnosticsView): boolean;
+    /**
+     * @remarks
+     * Removes a diagnostics view from this tab. It will no longer
+     * be rendered.
+     *
+     * @param view
+     * The DiagnosticsView instance to remove.
+     */
+    removeView(view: DiagnosticsView): void;
+}
+
+/**
+ * Represents a registered diagnostics view that can receive
+ * stat data to display in the live diagnostics panel in the
+ * debugger.
+ */
+export class DiagnosticsView {
+    private constructor();
+    /**
+     * @remarks
+     * Pushes a new set of stats to this diagnostics view to be
+     * displayed.
+     *
+     * @param stats
+     * An array of DiagnosticsStat objects containing the stat
+     * names and values to display.
+     * @throws This function can throw errors.
+     *
+     * {@link DiagnosticsError}
+     */
+    pushStats(stats: DiagnosticsStat[]): void;
+}
+
+/**
+ * Configuration options for registering a chart-based
+ * diagnostics view.
+ */
+export interface DiagnosticsChartViewOptions {
+    /**
+     * @remarks
+     * The display type for the chart (e.g. line chart, stacked
+     * line chart, stacked bar chart).
+     *
+     */
+    chartType: DiagnosticsChartDisplayType;
+    /**
+     * @remarks
+     * Optional target value to display as a reference line on the
+     * chart.
+     *
+     */
+    targetValue?: number;
+    /**
+     * @remarks
+     * Optional number of ticks to display along the chart's time
+     * axis.
+     *
+     */
+    tickRange?: number;
+    /**
+     * @remarks
+     * Optional label for the chart's Y axis.
+     *
+     */
+    yAxisLabel?: string;
+}
+
+/**
+ * Represents a single stat entry with a name and optional
+ * values to be pushed to a DiagnosticsView.
+ */
+export interface DiagnosticsStat {
+    /**
+     * @remarks
+     * The name identifier for this stat entry.
+     *
+     */
+    name: string;
+    /**
+     * @remarks
+     * Optional array of numeric or string values associated with
+     * this stat entry.
+     *
+     */
+    values?: (number | string)[];
+}
+
+/**
+ * Configuration options for registering a table-based
+ * diagnostics view.
+ */
+export interface DiagnosticsTableViewOptions {
+    /**
+     * @remarks
+     * Optional label for the key column of the table.
+     *
+     */
+    keyLabel?: string;
+    /**
+     * @remarks
+     * The display type for the table (e.g. single table or
+     * multi-column table).
+     *
+     */
+    tableType: DiagnosticsTableDisplayType;
+    /**
+     * @remarks
+     * Optional array of labels for the value columns of the table.
+     *
+     */
+    valueLabels?: string[];
+}
+
 export interface HandleCounts {
     handleCounts: Record<string, number>;
     name: string;
@@ -458,6 +762,24 @@ export interface RuntimeStats {
 }
 
 /**
+ * Error thrown by diagnostics operations such as registering
+ * or pushing stats to a view.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class DiagnosticsError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The reason code explaining why this diagnostics error was
+     * thrown.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly reason: DiagnosticsErrorReason;
+}
+
+/**
  * @remarks
  * Collect type usage stats for each active script
  * plugin/add-on.
@@ -490,3 +812,10 @@ export function disableWatchdogTimingWarnings(disable: boolean): void;
  *
  */
 export const debugDrawer: DebugDrawer;
+/**
+ * @remarks
+ * Manages data, display tabs and views used by the Minecraft
+ * Bedrock Debugger VS Code extension for live diagnostics.
+ *
+ */
+export const diagnosticsManager: DiagnosticsManager;

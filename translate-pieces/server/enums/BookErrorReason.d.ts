@@ -1,6 +1,8 @@
+/* IMPORT */ import { ItemBookComponent } from '..';
+
 /**
- * An enum of error reasons relating to using {@link
- * ItemBookComponent}.
+ * An enum of error reasons relating to using
+ * {@link ItemBookComponent}.
  */
 export enum BookErrorReason {
     /**

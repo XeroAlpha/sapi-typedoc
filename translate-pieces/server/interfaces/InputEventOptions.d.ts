@@ -1,9 +1,10 @@
-/* IMPORT */ import { ButtonState, InputButton } from '..';
+/* IMPORT */ import { ButtonState, InputButton, PlayerButtonInputAfterEventSignal } from '..';
 
 /**
- * An interface that is passed into {@link
- * PlayerButtonInputAfterEventSignal.subscribe} that filters
- * out which events are passed to the provided callback.
+ * An interface that is passed into
+ * {@link PlayerButtonInputAfterEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
  */
 export interface InputEventOptions {
     /**
