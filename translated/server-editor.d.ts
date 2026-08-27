@@ -146,6 +146,7 @@ export declare enum ColorPickerPropertyItemVariant {
     Default = 0,
     Inline = 1,
     Expanded = 2,
+    Swatch = 3,
 }
 
 /**
@@ -2459,8 +2460,183 @@ export class BlockUtilities {
     ): RelativeVolumeListBlockVolume;
 }
 
+export class BlockUtilityShapeVolumeOptionsCone {
+    /**
+     * @param width
+     * Bounds: [1, 1024]
+     * @param height
+     * Bounds: [1, 1024]
+     * @param depth
+     * Bounds: [1, 1024]
+     * @param rotX
+     * Defaults to: 0
+     * @param rotY
+     * Defaults to: 0
+     * @param rotZ
+     * Defaults to: 0
+     * @param isHollow
+     * Defaults to: false
+     * @param thickness
+     * Defaults to: 1
+     * Bounds: [1, 32]
+     */
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        rotX?: number,
+        rotY?: number,
+        rotZ?: number,
+        isHollow?: boolean,
+        thickness?: number,
+    );
+}
+
+export class BlockUtilityShapeVolumeOptionsCuboid {
+    /**
+     * @param width
+     * Bounds: [1, 1024]
+     * @param height
+     * Bounds: [1, 1024]
+     * @param depth
+     * Bounds: [1, 1024]
+     * @param rotX
+     * Defaults to: 0
+     * @param rotY
+     * Defaults to: 0
+     * @param rotZ
+     * Defaults to: 0
+     * @param isHollow
+     * Defaults to: false
+     * @param thickness
+     * Defaults to: 1
+     * Bounds: [1, 32]
+     */
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        rotX?: number,
+        rotY?: number,
+        rotZ?: number,
+        isHollow?: boolean,
+        thickness?: number,
+    );
+}
+
+export class BlockUtilityShapeVolumeOptionsCylinder {
+    /**
+     * @param width
+     * Bounds: [1, 1024]
+     * @param height
+     * Bounds: [1, 1024]
+     * @param depth
+     * Bounds: [1, 1024]
+     * @param rotX
+     * Defaults to: 0
+     * @param rotY
+     * Defaults to: 0
+     * @param rotZ
+     * Defaults to: 0
+     * @param isHollow
+     * Defaults to: false
+     * @param thickness
+     * Defaults to: 1
+     * Bounds: [1, 32]
+     */
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        rotX?: number,
+        rotY?: number,
+        rotZ?: number,
+        isHollow?: boolean,
+        thickness?: number,
+    );
+}
+
+export class BlockUtilityShapeVolumeOptionsEllipsoid {
+    /**
+     * @param width
+     * Bounds: [1, 1024]
+     * @param height
+     * Bounds: [1, 1024]
+     * @param depth
+     * Bounds: [1, 1024]
+     * @param rotX
+     * Defaults to: 0
+     * @param rotY
+     * Defaults to: 0
+     * @param rotZ
+     * Defaults to: 0
+     * @param isHollow
+     * Defaults to: false
+     * @param thickness
+     * Defaults to: 1
+     * Bounds: [1, 32]
+     */
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        rotX?: number,
+        rotY?: number,
+        rotZ?: number,
+        isHollow?: boolean,
+        thickness?: number,
+    );
+}
+
+export class BlockUtilityShapeVolumeOptionsPyramid {
+    /**
+     * @param width
+     * Bounds: [1, 1024]
+     * @param height
+     * Bounds: [1, 1024]
+     * @param depth
+     * Bounds: [1, 1024]
+     * @param rotX
+     * Defaults to: 0
+     * @param rotY
+     * Defaults to: 0
+     * @param rotZ
+     * Defaults to: 0
+     * @param isHollow
+     * Defaults to: false
+     * @param thickness
+     * Defaults to: 1
+     * Bounds: [1, 32]
+     */
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        rotX?: number,
+        rotY?: number,
+        rotZ?: number,
+        isHollow?: boolean,
+        thickness?: number,
+    );
+}
+
 export class BlockUtilityTasks {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    createShapeVolume(
+        options:
+            | BlockUtilityShapeVolumeOptionsCone
+            | BlockUtilityShapeVolumeOptionsCuboid
+            | BlockUtilityShapeVolumeOptionsCylinder
+            | BlockUtilityShapeVolumeOptionsEllipsoid
+            | BlockUtilityShapeVolumeOptionsPyramid,
+        maxBlocksPerTick?: number,
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2616,6 +2792,12 @@ export declare abstract class BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * Returns a list of default core brush shapes
+     *
+     */
+    abstract createShapeAsyncTask(blockUtils: BlockUtilityTasks, yieldInterval?: number): BrushShapeTaskRequest;
     /**
      * @remarks
      * Returns a mathematical estimate of the number of blocks in
@@ -2994,6 +3176,7 @@ export declare class ConeBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): ConeBrushShapeSettings;
 }
@@ -3035,6 +3218,7 @@ export declare class CuboidBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(blockUtils: BlockUtilityTasks, yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): CuboidBrushShapeSettings;
 }
@@ -3326,6 +3510,7 @@ export declare class CylinderBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): CylinderBrushShapeSettings;
 }
@@ -3535,6 +3720,7 @@ export declare class EllipsoidBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): EllipsoidBrushShapeSettings;
 }
@@ -4234,14 +4420,14 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    setVanillaBiomeColorMap(colorMap: Record<string, RGB>): void;
+    setVanillaBiomeColorMap(minimapId: string, colorMap: Record<string, RGB>): void;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    updateVanillaColorMap(biomeType: BiomeType, color: RGB): void;
+    updateVanillaColorMap(minimapId: string, biomeType: BiomeType, color: RGB): void;
 }
 
 /**
@@ -4522,6 +4708,7 @@ export declare class PyramidBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): PyramidBrushShapeSettings;
 }
@@ -4841,6 +5028,7 @@ export declare class SingleBlockBrushShape extends BrushShape {
         },
         _yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): BrushShapeSettings;
 }
@@ -6509,6 +6697,13 @@ export interface BlockUtilityManifest {
 export interface BlockUtilityManifestEntry {
     blockIdentifier: string;
     count: number;
+}
+
+export interface BrushShapeTaskRequest {
+    cancel: () => void;
+    readonly cancelled: boolean;
+    readonly progress: number;
+    promise: Promise<RelativeVolumeListBlockVolume>;
 }
 
 /**

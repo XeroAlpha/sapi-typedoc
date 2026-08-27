@@ -221,7 +221,7 @@ export enum CameraShakeType {
 }
 
 /**
- * @beta
+ * @rc
  * An enumeration for the clone modes used when cloning blocks.
  */
 export enum CloneMode {
@@ -7669,7 +7669,7 @@ export class Dimension {
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Clones a region of blocks from one area of the dimension to
      * another.
@@ -8418,7 +8418,9 @@ export class DimensionTypes {
     /**
      * @remarks
      * Retrieves a dimension type using a string-based identifier.
-     * Currently only works with Vanilla dimensions.
+     * Works with both vanilla dimensions and custom dimensions.
+     * Custom dimensions cannot be retrieved until after the system
+     * startup event has completed.
      *
      * @earlyExecution
      *
@@ -8426,8 +8428,10 @@ export class DimensionTypes {
     static get(dimensionTypeId: string): DimensionType | undefined;
     /**
      * @remarks
-     * Retrieves an array of all dimension types. Currently only
-     * works with Vanilla dimensions.
+     * Retrieves an array of all dimension types. Includes both
+     * vanilla dimensions and custom dimensions. Custom dimensions
+     * are not included until after the system startup event has
+     * completed.
      *
      * @earlyExecution
      *
@@ -11164,6 +11168,28 @@ export class EntityIsStunnedComponent extends EntityComponent {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * Returns the player that has tamed the entity, or 'undefined'
+     * if the entity has no player owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly tamedToPlayer?: Player;
+    /**
+     * @beta
+     * @remarks
+     * Returns the id of the player that has tamed the entity, or
+     * 'undefined' if the entity has no player owner.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:is_tamed';
 }
 
@@ -19417,7 +19443,7 @@ export class PrimitiveShapesManager {
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fetches and queries all primitive shapes stored in the
      * manager and returns the results as an array of shape
@@ -21729,6 +21755,45 @@ export class TickingAreaManager {
 }
 
 /**
+ * @beta
+ * A named point in time on a world clock that can occur once
+ * or periodically.
+ */
+export class TimeMarker {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier that represents this time marker.
+     *
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * The interval (in ticks) at which the time marker repeats. If
+     * not specified, the time marker will only occur once.
+     *
+     * @throws
+     * WorldClockInvalidTimeMarkerError: If the time marker is
+     * invalid.
+     *
+     * {@link WorldClockInvalidTimeMarkerError}
+     */
+    readonly period?: number;
+    /**
+     * @remarks
+     * The time (in ticks) that the time marker occurs at on a
+     * world clock.
+     *
+     * @throws
+     * WorldClockInvalidTimeMarkerError: If the time marker is
+     * invalid.
+     *
+     * {@link WorldClockInvalidTimeMarkerError}
+     */
+    readonly time: number;
+}
+
+/**
  * Represents a trigger for firing an event.
  */
 export class Trigger {
@@ -23022,6 +23087,47 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when a {@link WorldClock} is paused.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly worldClockOnPaused: WorldClockOnPausedAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a {@link WorldClock} is resumed.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly worldClockOnResumed: WorldClockOnResumedAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when the time of a {@link WorldClock} hits
+     * a {@link TimeMarker} on the clock. This can happen during a
+     * regular level tick or when the time is set.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly worldClockOnTimeMarker: WorldClockOnTimeMarkerAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a {@link WorldClock} time is changed.
+     * This can happen when the time is directly set through
+     * scripts or commands or when the clock reaches the maximum
+     * time and restarts.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly worldClockOnTimeModified: WorldClockOnTimeModifiedAfterEventSignal;
+    /**
      * @remarks
      * @earlyExecution
      *
@@ -23166,6 +23272,16 @@ export class WorldBeforeEvents {
      *
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a {@link WorldClock} reaches its
+     * maximum time and is about to restart.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly worldClockOnRestart: WorldClockOnRestartBeforeEventSignal;
 }
 
 /**
@@ -23199,6 +23315,373 @@ export class WorldClock {
      * Minimum Value: 0
      */
     time: number;
+    /**
+     * @remarks
+     * Retrieves the current time markers of the world clock.
+     *
+     */
+    readonly timeMarkers: TimeMarker[];
+    /**
+     * @remarks
+     * Adds a new time marker to the world clock.
+     *
+     * @worldMutation
+     *
+     * @param timeMarkerOptions
+     * Options for creating a time marker.
+     * @throws This function can throw errors.
+     *
+     * {@link WorldClockAddTimeMarkerError}
+     */
+    addTimeMarker(timeMarkerOptions: TimeMarkerOptions): void;
+    /**
+     * @remarks
+     * Removes an existing time marker from the world clock.
+     *
+     * @worldMutation
+     *
+     * @param timeMarker
+     * The time marker or time marker name to remove.
+     * @throws
+     * WorldClockTimeMarkerNotFoundError: If the time marker does
+     * not exist on the world clock.
+     * WorldClockRemoveMinecraftTimeMarkerError: If the time marker
+     * uses the 'minecraft' namespace.
+     *
+     * {@link WorldClockRemoveMinecraftTimeMarkerError}
+     *
+     * {@link WorldClockTimeMarkerNotFoundError}
+     */
+    removeTimeMarker(timeMarker: string | TimeMarker): void;
+    /**
+     * @remarks
+     * Rewinds the world clock's time to the previous occurrence of
+     * the specified time marker.
+     *
+     * @worldMutation
+     *
+     * @param timeMarker
+     * The time marker or time marker name to rewind the world
+     * clock's time to.
+     * @throws
+     * WorldClockTimeMarkerNotFoundError: If the time marker does
+     * not exist on the world clock.
+     * WorldClockRewindError: If the world clock's current time is
+     * before the time marker's first occurrence.
+     *
+     * {@link WorldClockRewindError}
+     *
+     * {@link WorldClockTimeMarkerNotFoundError}
+     */
+    rewindTo(timeMarker: string | TimeMarker): void;
+    /**
+     * @remarks
+     * Sets the world clock's time to the specified time marker.
+     *
+     * @worldMutation
+     *
+     * @param timeMarker
+     * The time marker or time marker name to set the world clock's
+     * time to.
+     * @throws
+     * WorldClockTimeMarkerNotFoundError: If the time marker does
+     * not exist on the world clock.
+     *
+     * {@link WorldClockTimeMarkerNotFoundError}
+     */
+    set(timeMarker: string | TimeMarker): void;
+    /**
+     * @remarks
+     * Skips the world clock's time to the next occurrence of the
+     * specified time marker.
+     * If the next occurrence overflows the world clock's time, the
+     * time is reset to the first occurrence.
+     *
+     * @worldMutation
+     *
+     * @param timeMarker
+     * The time marker or time marker name to skip the world
+     * clock's time to.
+     * @throws
+     * WorldClockTimeMarkerNotFoundError: If the time marker does
+     * not exist on the world clock.
+     *
+     * {@link WorldClockTimeMarkerNotFoundError}
+     */
+    skipTo(timeMarker: string | TimeMarker): void;
+}
+
+/**
+ * @beta
+ * Contains information related to a {@link WorldClock} being
+ * paused.
+ */
+export class WorldClockOnPausedAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The world clock that was paused.
+     *
+     */
+    readonly clock: WorldClock;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to a {@link WorldClock}
+ * being paused.
+ */
+export class WorldClockOnPausedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a world clock is
+     * paused.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: WorldClockOnPausedAfterEvent) => void,
+        options?: WorldClockEventOptions,
+    ): (arg0: WorldClockOnPausedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a world clock is
+     * paused.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WorldClockOnPausedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to a {@link WorldClock}
+ * restarting.
+ */
+export class WorldClockOnRestartBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * If set to true, cancels the world clock restart event. This
+     * will keep the world clock at the maximum time value and
+     * prevent it from ticking forward.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * The world clock that is restarting.
+     *
+     */
+    readonly clock: WorldClock;
+    /**
+     * @remarks
+     * The time that the world clock will be set to after it
+     * restarts. If not set, the world clock will be set to 0.
+     *
+     * Minimum Value: 0
+     */
+    newTime: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to a {@link WorldClock}
+ * restarting.
+ */
+export class WorldClockOnRestartBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a world clock is
+     * restarting.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
+     */
+    subscribe(
+        callback: (arg0: WorldClockOnRestartBeforeEvent) => void,
+        options?: WorldClockEventOptions,
+    ): (arg0: WorldClockOnRestartBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a world clock is
+     * restarting.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     */
+    unsubscribe(callback: (arg0: WorldClockOnRestartBeforeEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to a {@link WorldClock} being
+ * resumed.
+ */
+export class WorldClockOnResumedAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The world clock that was resumed.
+     *
+     */
+    readonly clock: WorldClock;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to a {@link WorldClock}
+ * being resumed.
+ */
+export class WorldClockOnResumedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a world clock is
+     * resumed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: WorldClockOnResumedAfterEvent) => void,
+        options?: WorldClockEventOptions,
+    ): (arg0: WorldClockOnResumedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a world clock is
+     * resumed.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WorldClockOnResumedAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to when the time of a
+ * {@link WorldClock} hits a {@link TimeMarker}.
+ */
+export class WorldClockOnTimeMarkerAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The world clock that hit a time marker.
+     *
+     */
+    readonly clock: WorldClock;
+    /**
+     * @remarks
+     * The time marker that was hit by the world clock.
+     *
+     */
+    readonly timeMarker: TimeMarker;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when the time of a
+ * {@link WorldClock} hits a {@link TimeMarker}.
+ */
+export class WorldClockOnTimeMarkerAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a world clock's
+     * time hits a time marker.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: WorldClockOnTimeMarkerAfterEvent) => void,
+        options?: WorldClockTimeMarkerEventOptions,
+    ): (arg0: WorldClockOnTimeMarkerAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a world clock's
+     * time hits a time marker.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WorldClockOnTimeMarkerAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information related to changes to the time of a
+ * {@link WorldClock}.
+ */
+export class WorldClockOnTimeModifiedAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The world clock that had its time modified.
+     *
+     */
+    readonly clock: WorldClock;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to changes to the time
+ * of a {@link WorldClock}.
+ */
+export class WorldClockOnTimeModifiedAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a world clock's
+     * time is modified.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(
+        callback: (arg0: WorldClockOnTimeModifiedAfterEvent) => void,
+        options?: WorldClockEventOptions,
+    ): (arg0: WorldClockOnTimeModifiedAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a world clock's
+     * time is modified.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: WorldClockOnTimeModifiedAfterEvent) => void): void;
 }
 
 /**
@@ -23220,6 +23703,9 @@ export class WorldClockRegistry {
      * The name that represents this world clock. Must have a
      * namespace and use only valid identifier characters. (e.g.,
      * 'mypack:my_clock').
+     * @param registrationOptions
+     * Additional options for registering a world clock, such as
+     * including time markers at registration time.
      * @throws This function can throw errors.
      *
      * {@link WorldClockInvalidRegistryError}
@@ -23227,8 +23713,10 @@ export class WorldClockRegistry {
      * {@link WorldClockRegistrationError}
      *
      * {@link WorldClockReloadNewWorldClockError}
+     *
+     * {@link WorldClockReloadTimeMarkerError}
      */
-    registerClock(name: string): void;
+    registerClock(name: string, registrationOptions?: WorldClockRegistrationOptions): void;
 }
 
 export class WorldLoadAfterEvent {
@@ -25356,7 +25844,7 @@ export interface PoiTagFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Contains optional filters that control which primitive
  * shapes are returned from a primitive shapes query.
  */
@@ -26011,6 +26499,37 @@ export interface TickingAreaOptions {
 }
 
 /**
+ * @beta
+ * Options for creating time markers for world clocks.
+ */
+export interface TimeMarkerOptions {
+    /**
+     * @remarks
+     * The name that the time marker will have. Must have a
+     * namespace and use only valid identifier characters. (e.g.,
+     * 'mypack:my_time_marker').
+     *
+     */
+    name: string;
+    /**
+     * @remarks
+     * The optional repeat period (in ticks) that the time marker
+     * will have. If not specified, the time marker will only occur
+     * once.
+     *
+     * Minimum Value: 0
+     */
+    period?: number;
+    /**
+     * @remarks
+     * The time (in ticks) that the time marker will occur at.
+     *
+     * Minimum Value: 0
+     */
+    time: number;
+}
+
+/**
  * Contains additional options for displaying a title and
  * optional subtitle.
  */
@@ -26145,6 +26664,57 @@ export interface WaypointTextureSelector {
      *
      */
     textureBoundsList: WaypointTextureBounds[];
+}
+
+/**
+ * @beta
+ * Contains parameters for world clock events that filters out
+ * which events are passed to the provided callback.
+ */
+export interface WorldClockEventOptions {
+    /**
+     * @remarks
+     * The name of the clock that this event should fire for.
+     *
+     */
+    clock: string;
+}
+
+/**
+ * @beta
+ * Contains additional options for registering world clocks.
+ */
+export interface WorldClockRegistrationOptions {
+    /**
+     * @remarks
+     * Set of options to include time markers during world clock
+     * registration.
+     *
+     */
+    timeMarkers?: TimeMarkerOptions[];
+}
+
+/**
+ * @beta
+ * Contains parameters for world clock time marker events that
+ * filters out which events are passed to the provided
+ * callback.
+ */
+export interface WorldClockTimeMarkerEventOptions {
+    /**
+     * @remarks
+     * The name of the world clock that this event should fire for.
+     *
+     */
+    clock: string;
+    /**
+     * @remarks
+     * The name of the time marker that this event should fire for.
+     * If undefined, the event will fire for all time markers on
+     * the world clock.
+     *
+     */
+    timeMarker?: string;
 }
 
 /**
@@ -26618,11 +27188,32 @@ export class UnloadedChunksError extends Error {
 
 /**
  * @beta
+ * Error thrown by {@link WorldClock.addTimeMarker} when
+ * failing to add a time marker to a world clock.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockAddTimeMarkerError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
  * Thrown when trying to register a world clock outside of the
  * system startup event.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WorldClockInvalidRegistryError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown when a time marker is invalid. This can occur
+ * when trying to access data on a time marker that has been
+ * removed.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockInvalidTimeMarkerError extends Error {
     private constructor();
 }
 
@@ -26654,6 +27245,49 @@ export class WorldClockRegistrationError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class WorldClockReloadNewWorldClockError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown after using the /reload command when trying to
+ * re-register an existing world clock with an invalid time
+ * marker.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockReloadTimeMarkerError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown by {@link WorldClock.removeTimeMarker} when
+ * trying to remove a time marker with the 'minecraft'
+ * namespace from a world clock.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockRemoveMinecraftTimeMarkerError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown by {@link WorldClock.rewindTo} when the world
+ * clock's time is already before the time marker's first
+ * occurrence.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockRewindError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown when performing actions on a world clock with a
+ * time marker that does not exist.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockTimeMarkerNotFoundError extends Error {
     private constructor();
 }
 

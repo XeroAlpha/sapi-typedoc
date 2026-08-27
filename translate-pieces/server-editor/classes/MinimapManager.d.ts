@@ -60,12 +60,12 @@ export class MinimapManager {
      *
      * @throws This function can throw errors.
      */
-    setVanillaBiomeColorMap(colorMap: Record<string, RGB>): void;
+    setVanillaBiomeColorMap(minimapId: string, colorMap: Record<string, RGB>): void;
     /**
      * @remarks
      * @worldMutation
      *
      * @throws This function can throw errors.
      */
-    updateVanillaColorMap(biomeType: BiomeType, color: RGB): void;
+    updateVanillaColorMap(minimapId: string, biomeType: BiomeType, color: RGB): void;
 }

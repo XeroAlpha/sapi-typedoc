@@ -27,7 +27,7 @@ export class PrimitiveShapesManager {
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fetches and queries all primitive shapes stored in the
      * manager and returns the results as an array of shape

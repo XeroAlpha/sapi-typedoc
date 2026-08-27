@@ -1,5 +1,5 @@
 /* IMPORT */ import { BlockBoundingBox } from '../../server';
-/* IMPORT */ import { BrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockUtilityTasks, BrushShapeSettings, BrushShapeTaskRequest, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 /**
  * Base for creating new brush shapes
@@ -53,6 +53,12 @@ export declare abstract class BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    /**
+     * @remarks
+     * Returns a list of default core brush shapes
+     *
+     */
+    abstract createShapeAsyncTask(blockUtils: BlockUtilityTasks, yieldInterval?: number): BrushShapeTaskRequest;
     /**
      * @remarks
      * Returns a mathematical estimate of the number of blocks in

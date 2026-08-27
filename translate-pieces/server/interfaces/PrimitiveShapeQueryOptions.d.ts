@@ -1,7 +1,7 @@
 /* IMPORT */ import { Entity, Vector3 } from '..';
 
 /**
- * @beta
+ * @rc
  * Contains optional filters that control which primitive
  * shapes are returned from a primitive shapes query.
  */

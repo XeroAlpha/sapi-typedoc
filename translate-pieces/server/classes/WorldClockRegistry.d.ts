@@ -1,4 +1,4 @@
-/* IMPORT */ import { WorldClockInvalidRegistryError, WorldClockRegistrationError, WorldClockReloadNewWorldClockError } from '..';
+/* IMPORT */ import { WorldClockInvalidRegistryError, WorldClockRegistrationError, WorldClockRegistrationOptions, WorldClockReloadNewWorldClockError, WorldClockReloadTimeMarkerError } from '..';
 
 /**
  * @beta
@@ -19,6 +19,9 @@ export class WorldClockRegistry {
      * The name that represents this world clock. Must have a
      * namespace and use only valid identifier characters. (e.g.,
      * 'mypack:my_clock').
+     * @param registrationOptions
+     * Additional options for registering a world clock, such as
+     * including time markers at registration time.
      * @throws This function can throw errors.
      *
      * {@link WorldClockInvalidRegistryError}
@@ -26,6 +29,8 @@ export class WorldClockRegistry {
      * {@link WorldClockRegistrationError}
      *
      * {@link WorldClockReloadNewWorldClockError}
+     *
+     * {@link WorldClockReloadTimeMarkerError}
      */
-    registerClock(name: string): void;
+    registerClock(name: string, registrationOptions?: WorldClockRegistrationOptions): void;
 }

@@ -1,5 +1,5 @@
 /* IMPORT */ import { BlockBoundingBox } from '../../server';
-/* IMPORT */ import { BrushShape, EllipsoidBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockUtilityTasks, BrushShape, BrushShapeTaskRequest, EllipsoidBrushShapeSettings, IPropertyPane, ISubPanePropertyItem, RelativeVolumeListBlockVolume } from '..';
 
 export declare class EllipsoidBrushShape extends BrushShape {
     /**
@@ -36,6 +36,7 @@ export declare class EllipsoidBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): EllipsoidBrushShapeSettings;
 }
