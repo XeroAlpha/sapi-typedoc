@@ -1921,13 +1921,6 @@ export declare type ListPaneViewFilter = {
 };
 
 /**
- * Action item to be displayed on a list view control
- */
-export type ListViewControlAction = {
-    id: string;
-} & ListViewControlActionState;
-
-/**
  * Action item state for list view control
  */
 export type ListViewControlActionState = {
@@ -12617,6 +12610,15 @@ export interface IVector3TimelinePropertyItemOptions extends IPropertyItemOption
      *
      */
     title?: LocalizedString;
+}
+
+/**
+ * Action item to be displayed on a list view control
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ListViewControlAction extends ListViewControlActionState {
+    id: string;
+    submenu?: ListViewControlAction[];
 }
 
 export interface LocalizationEntry {

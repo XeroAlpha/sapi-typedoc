@@ -15,5 +15,5 @@ export class PackSettingChangeAfterEvent {
      * The value of the setting.
      *
      */
-    readonly settingValue: boolean | number | string;
+    readonly settingValue: string[] | boolean | number | string;
 }

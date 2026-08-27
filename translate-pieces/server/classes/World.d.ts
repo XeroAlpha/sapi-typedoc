@@ -254,7 +254,7 @@ export class World {
      * @earlyExecution
      *
      */
-    getPackSettings(): Record<string, boolean | number | string>;
+    getPackSettings(): Record<string, string[] | boolean | number | string>;
     /**
      * @remarks
      * Returns a set of players based on a set of conditions

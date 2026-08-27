@@ -53,6 +53,7 @@ export { PlayerInventoryType } from './enums/PlayerInventoryType';
 export { PlayerPermissionLevel } from './enums/PlayerPermissionLevel';
 export { PlayerSplitScreenSlot } from './enums/PlayerSplitScreenSlot';
 export { PlayerWaypointsMode } from './enums/PlayerWaypointsMode';
+export { PoiBlockOccupancyFilter } from './enums/PoiBlockOccupancyFilter';
 export { ScoreboardIdentityType } from './enums/ScoreboardIdentityType';
 export { ScriptEventSource } from './enums/ScriptEventSource';
 export { SignSide } from './enums/SignSide';
@@ -432,6 +433,10 @@ export { PlayerSwingStartAfterEventSignal } from './classes/PlayerSwingStartAfte
 export { PlayerUseNameTagAfterEvent } from './classes/PlayerUseNameTagAfterEvent';
 export { PlayerUseNameTagAfterEventSignal } from './classes/PlayerUseNameTagAfterEventSignal';
 export { PlayerWaypoint } from './classes/PlayerWaypoint';
+export { PoiBlockInstance } from './classes/PoiBlockInstance';
+export { PoiBlockManager } from './classes/PoiBlockManager';
+export { PoiBlockType } from './classes/PoiBlockType';
+export { PoiManager } from './classes/PoiManager';
 export { PotionDeliveryType } from './classes/PotionDeliveryType';
 export { PotionEffectType } from './classes/PotionEffectType';
 export { Potions } from './classes/Potions';
@@ -593,6 +598,9 @@ export { PlayerBreakingBlockEventOptions } from './interfaces/PlayerBreakingBloc
 export { PlayerSoundOptions } from './interfaces/PlayerSoundOptions';
 export { PlayerSwingEventOptions } from './interfaces/PlayerSwingEventOptions';
 export { PlayerVisibilityRules } from './interfaces/PlayerVisibilityRules';
+export { PoiDistancePair } from './interfaces/PoiDistancePair';
+export { PoiNameFilter } from './interfaces/PoiNameFilter';
+export { PoiTagFilter } from './interfaces/PoiTagFilter';
 export { PrimitiveShapeQueryOptions } from './interfaces/PrimitiveShapeQueryOptions';
 export { ProgressKeyFrame } from './interfaces/ProgressKeyFrame';
 export { ProjectileShootOptions } from './interfaces/ProjectileShootOptions';

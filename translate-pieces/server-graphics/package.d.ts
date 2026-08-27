@@ -8,7 +8,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-graphics",
- *   "version": "1.0.0-beta"
+ *   "version": "1.1.0-beta"
  * }
  * ```
  *

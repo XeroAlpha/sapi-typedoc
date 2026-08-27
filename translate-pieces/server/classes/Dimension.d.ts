@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, NumberRange, PropertyOutOfBoundsError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockQueryOptions, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CloneMode, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
+/* IMPORT */ import { BiomeFilter, BiomeSearchOptions, BiomeType, Block, BlockFillOptions, BlockFilter, BlockPermutation, BlockQueryOptions, BlockRaycastHit, BlockRaycastOptions, BlockType, BlockVolumeBase, CloneMode, CommandError, CommandResult, Entity, EntityIdentifierType, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, EntitySpawnError, ExplosionOptions, InvalidEntityError, ItemStack, ListBlockVolume, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, MolangVariableMap, Player, PoiManager, SoundInstance, SpawnEntityOptions, UnloadedChunksError, Vector3, VectorXZ, WeatherType, WorldSoundOptions } from '..';
 /* IMPORT */ import { MinecraftFeatureTypes } from '../../vanilla-data';
 
 /**
@@ -28,6 +28,15 @@ export class Dimension {
      *
      */
     readonly localizationKey: string;
+    /**
+     * @beta
+     * @remarks
+     * Provides access to point-of-interest (POI) managers for this
+     * dimension. This property is available only when the POI
+     * experiment is enabled.
+     *
+     */
+    readonly poiManager: PoiManager;
     /**
      * @remarks
      * Calculates the location of the closest biome of a particular
