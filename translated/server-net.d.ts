@@ -167,1373 +167,1251 @@ export enum HttpStatusCode {
  */
 export enum PacketId {
     /**
-     * All kinds of actor state changes (see Actor::handleEntityEvent).
+     * Ranges from a crossbow being ready to fire to taming animals..., some of which may be obsolete (frex, ADD_PLAYER_LEVELS)
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ActorEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/actor-event-packet/
      */
     ActorEventPacket = 'ActorEventPacket',
     /**
-     * Player clicks on an actor in the world, eg a chicken.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ActorPickRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/actor-pick-request-packet/
      */
     ActorPickRequestPacket = 'ActorPickRequestPacket',
     /**
-     * Add Actor
+     * Newly created entities on server use AddActorPacket to notify clients that they exist.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddActorPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-actor-packet/
      */
     AddActorPacket = 'AddActorPacket',
     /**
-     * Add Behavior Tree
+     * For automation
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddBehaviorTreePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-behavior-tree-packet/
      */
     AddBehaviorTreePacket = 'AddBehaviorTreePacket',
     /**
-     * When an item actor is added to the world (punch a tree->tree block, for example)
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddItemActorPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-item-actor-packet/
      */
     AddItemActorPacket = 'AddItemActorPacket',
     /**
-     * Sends the information for a new painting actor from server to client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddPaintingPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-painting-packet/
      */
     AddPaintingPacket = 'AddPaintingPacket',
     /**
-     * Add Player
+     * A new player joins the game; the server sends this packet to the other players.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddPlayerPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-player-packet/
      */
     AddPlayerPacket = 'AddPlayerPacket',
     /**
-     * Sends a volume entity's definition and components from server to client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AddVolumeEntityPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-volume-entity-packet/
      */
     AddVolumeEntityPacket = 'AddVolumeEntityPacket',
     /**
-     * packet containing data of Agent Action Type
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AgentActionEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/agent-action-event-packet/
      */
     AgentActionEventPacket = 'AgentActionEventPacket',
     /**
-     * Broadcasted to other players when an Agent performs an animation so it gets properly replicated.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AgentAnimationPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/agent-animation-packet/
      */
     AgentAnimationPacket = 'AgentAnimationPacket',
     /**
-     * The AnimateEntityPacket is used to trigger a one - off animation on the client it is sent to.
+     * Several properties can be specified in the following order:</br>
+     *     - The name of the animation (a string) that the specified entities are to play.</br>
+     *     - The next state to transition to (a string) once the specified animation is finished playing.</br>
+     *     - The stop expression (a string), the condition that determines when to transition to the next state.</br>
+     *     - The name of an animation controller (a string) that you would like to use.</br>
+     *     - The blend out time (a float), the amount of time to blend out of this animation.</br>
+     *     - A vector of ActorRuntimeIds of the entities that will play the specified animation.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AnimateEntityPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/animate-entity-packet/
      */
     AnimateEntityPacket = 'AnimateEntityPacket',
     /**
-     * Animate Actor
+     * Combination of server bound and client bound packets to trigger animations.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AnimatePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/animate-packet/
      */
     AnimatePacket = 'AnimatePacket',
     /**
-     * Requests an anvil to be damaged.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AnvilDamagePacket.html
+     *     Only used when Item Stack Net Manager is disabled on the server.
+     *     Sends the position of the anvil that is requesting to be damaged from the client.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/anvil-damage-packet/
      */
     AnvilDamagePacket = 'AnvilDamagePacket',
     /**
-     * Initiates websocket connection
+     * Only used though command to connect to server URLs. This is primarily used by EDU for connecting to their companion apps and other external applications through web sockets. Some mods/3rd party packs use it as well.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AutomationClientConnectPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/automation-client-connect-packet/
      */
     AutomationClientConnectPacket = 'AutomationClientConnectPacket',
     /**
-     * Sends the whole list of actor identifiers at game start from the server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AvailableActorIdentifiersPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/available-actor-identifiers-packet/
      */
     AvailableActorIdentifiersPacket = 'AvailableActorIdentifiersPacket',
     /**
-     * Contains all the available commands.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AvailableCommandsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/available-commands-packet/
      */
     AvailableCommandsPacket = 'AvailableCommandsPacket',
     /**
-     * Contains the ID of the achievement to award
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/AwardAchievementPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/award-achievement-packet/
      */
     AwardAchievementPacket = 'AwardAchievementPacket',
     /**
-     * On world start, send clients the info for all available biomes.
+     * - mBiomeData: map of biome string indices to biome definition data.
+     * - mStringList: list of biome name strings.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BiomeDefinitionListPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/biome-definition-list-packet/
      */
     BiomeDefinitionListPacket = 'BiomeDefinitionListPacket',
     /**
-     * Sends the entire user data compound tag and the block position to the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BlockActorDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/block-actor-data-packet/
      */
     BlockActorDataPacket = 'BlockActorDataPacket',
     /**
-     * Whenever a block event happens it is sent from the server to sync client and server, with arbitrarily encoded information in b0 and b1.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BlockEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/block-event-packet/
      */
     BlockEventPacket = 'BlockEventPacket',
     /**
-     * Player picks up a block in the world; client to server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BlockPickRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/block-pick-request-packet/
      */
     BlockPickRequestPacket = 'BlockPickRequestPacket',
     /**
-     * Sends the updated state of the Book and Quill item from client to server during use.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BookEditPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/book-edit-packet/
      */
     BookEditPacket = 'BookEditPacket',
     /**
-     * Sent when a boss gets updated
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/BossEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/boss-event-packet/
      */
     BossEventPacket = 'BossEventPacket',
     /**
-     * Camera aim-assist actor priority data sent from the server to clients.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraAimAssistActorPriorityPacket.html
+     *     Sent by the server to clients for updating the actor priority for client aim-assist systems.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-aim-assist-actor-priority-packet/
      */
     CameraAimAssistActorPriorityPacket = 'CameraAimAssistActorPriorityPacket',
     /**
-     * CameraAimAssist
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraAimAssistPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-aim-assist-packet/
      */
     CameraAimAssistPacket = 'CameraAimAssistPacket',
     /**
-     * Camera aim-assist registry presets/categories data sent from the server to clients.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraAimAssistPresetsPacket.html
+     *     Sent by the server to clients for initializing and updating the client aim-assist registry.
+     *     AddToExisting operations are sent by the server when new presets/categories are added to the registry through creator facing APIs.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-aim-assist-presets-packet/
      */
     CameraAimAssistPresetsPacket = 'CameraAimAssistPresetsPacket',
     /**
-     * Used to send a CameraInstruction from the server to the specified clients.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraInstructionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-instruction-packet/
      */
     CameraInstructionPacket = 'CameraInstructionPacket',
     /**
-     * Used only in EDU through the tripod camera item or the TakePictureCommand. Sends the camera actor id and the target player id from the server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-packet/
      */
     CameraPacket = 'CameraPacket',
     /**
-     * Used to sync CameraPresets data from server to clients.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraPresetsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-presets-packet/
      */
     CameraPresetsPacket = 'CameraPresetsPacket',
     /**
-     * Used to control trigger camera shake movements on the client's player camera
+     * It may be used to queue or stop a camera shake
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraShakePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-shake-packet/
      */
     CameraShakePacket = 'CameraShakePacket',
     /**
-     * Camera custom spline data sent from server to client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CameraSplinePacket.html
+     *     Sent by the server to clients for initializing custom spline data that can be played later through the camera command.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/camera-spline-packet/
      */
     CameraSplinePacket = 'CameraSplinePacket',
     /**
-     * The server sends this packet from the level to kick off dimension changing process.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ChangeDimensionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/change-dimension-packet/
      */
     ChangeDimensionPacket = 'ChangeDimensionPacket',
     /**
-     * packet containing data for changing mob property
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ChangeMobPropertyPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/change-mob-property-packet/
      */
     ChangeMobPropertyPacket = 'ChangeMobPropertyPacket',
     /**
-     * Sent when the world is loading. We don't know why it is sent four times. Defines the tick distance.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ChunkRadiusUpdatedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/chunk-radius-updated-packet/
      */
     ChunkRadiusUpdatedPacket = 'ChunkRadiusUpdatedPacket',
     /**
-     * Syncs Attribute Layers to the Client (Currently disabled)
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundAttributeLayerSyncPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-attribute-layer-sync-packet/
      */
     ClientboundAttributeLayerSyncPacket = 'ClientboundAttributeLayerSyncPacket',
     /**
-     * Sent from the server to client to force close all server forms on the stack and return to the HUD screen.
+     * This will only have an affect if the client currently has a server form on the UI stack.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundCloseFormPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-close-form-packet/
      */
     ClientboundCloseFormPacket = 'ClientboundCloseFormPacket',
     /**
-     * Set the control scheme that the player should use
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundControlSchemeSetPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-control-scheme-set-packet/
      */
     ClientboundControlSchemeSetPacket = 'ClientboundControlSchemeSetPacket',
     /**
-     * Allows the server to tell the client to close Data Driven UI screens.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundDataDrivenUICloseScreenPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-data-driven-uiclose-screen-packet/
      */
     ClientboundDataDrivenUICloseScreenPacket = 'ClientboundDataDrivenUICloseScreenPacket',
     /**
-     * Allows the server to tell the client to reload the Data Driven UI.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundDataDrivenUIReloadPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-data-driven-uireload-packet/
      */
     ClientboundDataDrivenUIReloadPacket = 'ClientboundDataDrivenUIReloadPacket',
     /**
-     * Allows the server to tell the client to show a Data Driven UI screen.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundDataDrivenUIShowScreenPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-data-driven-uishow-screen-packet/
      */
     ClientboundDataDrivenUIShowScreenPacket = 'ClientboundDataDrivenUIShowScreenPacket',
     /**
-     * Sends a list of data store properties from the server to the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundDataStorePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-data-store-packet/
      */
     ClientboundDataStorePacket = 'ClientboundDataStorePacket',
     /**
-     * Used to add/remove debug rendering objects.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundDebugRendererPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-debug-renderer-packet/
      */
     ClientboundDebugRendererPacket = 'ClientboundDebugRendererPacket',
     /**
-     * Map item data including pixels, decorations, and creation info
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundMapItemDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-map-item-data-packet/
      */
     ClientboundMapItemDataPacket = 'ClientboundMapItemDataPacket',
     /**
-     * Sends a set of update properties for the texture shift system from the server to the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundTextureShiftPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-texture-shift-packet/
      */
     ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket',
     /**
-     * Sent to update sound data.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientboundUpdateSoundDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-update-sound-data-packet/
      */
     ClientboundUpdateSoundDataPacket = 'ClientboundUpdateSoundDataPacket',
     /**
-     * Client Cache Blob Status Packet
+     * Sent periodically by the client to update the server on which blob it has (ACK) and which blobs it is lacking (MISS).
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientCacheBlobStatusPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-cache-blob-status-packet/
      */
     ClientCacheBlobStatusPacket = 'ClientCacheBlobStatusPacket',
     /**
-     * Only active in a real client-server scenario. This packet is just a list of <blobId, blob> pairs sent from server to client.
+     * Any missing blob should just be thrown into one of these packet ASAP and sent. This is actually how chunk data gets to the client the first time.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientCacheMissResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-cache-miss-response-packet/
      */
     ClientCacheMissResponsePacket = 'ClientCacheMissResponsePacket',
     /**
-     * It is sent by the Client once, at login, to communicate if it supports the cache or not.
+     * Sent by the Client once, at login, to communicate if it supports the client blob cache protocol or not.
+     *     <br> Documented in <a href=https://github.com/Mojang/bedrock-docs/blob/master/GameplaySystems/ClientBlobCacheProtocol.md>https://github.com/Mojang/bedrock-docs/blob/master/GameplaySystems/ClientBlobCacheProtocol.md</a>
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientCacheStatusPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-cache-status-packet/
      */
     ClientCacheStatusPacket = 'ClientCacheStatusPacket',
     /**
-     * Client-side activation of aim-assist
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientCameraAimAssistPacket.html
+     *     Sent by clients to the server for activating/deactivating aim-assist.
+     *     Activation uses the CameraPreset Id for server-side lookup and uses its aim_assist field
+     *     for aim-assist activation settings.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-camera-aim-assist-packet/
      */
     ClientCameraAimAssistPacket = 'ClientCameraAimAssistPacket',
     /**
-     * Sends client movement prediction information to the server
+     * Only used in Server-Authoritative Movement. Sent periodically if the client has received corrections from the server. Contains information about client-predictions that are relevant to movement.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientMovementPredictionSyncPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-movement-prediction-sync-packet/
      */
     ClientMovementPredictionSyncPacket = 'ClientMovementPredictionSyncPacket',
     /**
-     * Sets up encryption and authenticates in educational version once at level startup from client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ClientToServerHandshakePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/client-to-server-handshake-packet/
      */
     ClientToServerHandshakePacket = 'ClientToServerHandshakePacket',
     /**
-     * Code Builder Packet
+     * This is EDU exclusively.It is sent once from _sendLevelData() in the start of a game from the server,
+     *     and once per CodeBuilderCommand
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CodeBuilderPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/code-builder-packet/
      */
     CodeBuilderPacket = 'CodeBuilderPacket',
     /**
-     * This is EDU exclusive, used in getInterface() of WebviewSystem
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CodeBuilderSourcePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/code-builder-source-packet/
      */
     CodeBuilderSourcePacket = 'CodeBuilderSourcePacket',
     /**
-     * Command Block Update
+     * Sent when you close the command block screen on the client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CommandBlockUpdatePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/command-block-update-packet/
      */
     CommandBlockUpdatePacket = 'CommandBlockUpdatePacket',
     /**
-     * "slash" command execution output, server to client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CommandOutputPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/command-output-packet/
      */
     CommandOutputPacket = 'CommandOutputPacket',
     /**
-     * "slash" command execution, client to server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CommandRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/command-request-packet/
      */
     CommandRequestPacket = 'CommandRequestPacket',
     /**
-     * Send server to client to complete the using item process. An example is when you finish drinking or eating.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CompletedUsingItemPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/completed-using-item-packet/
      */
     CompletedUsingItemPacket = 'CompletedUsingItemPacket',
     /**
-     * After the game deletes the container manager on the client, the client sends this packet.
-     *     Then the server deletes its container manager, and sends a packet back to the client that closes the container screen.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ContainerClosePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/container-close-packet/
      */
     ContainerClosePacket = 'ContainerClosePacket',
     /**
-     * Sent from the server so that the client knows to open the container screen and do the chest opening animation.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ContainerOpenPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/container-open-packet/
      */
     ContainerOpenPacket = 'ContainerOpenPacket',
     /**
-     * This is used to trigger a clientside cleanup of the dynamic container registry.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ContainerRegistryCleanupPacket.html
+     *     Whenever the serverside ContainerRegistry does a clean, identifiers for the removed containers are gathered in a ContainerRegistryCleanUp
+     *     packet and sent to the client so that the clientside container registry can remove those same containers.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/container-registry-cleanup-packet/
      */
     ContainerRegistryCleanupPacket = 'ContainerRegistryCleanupPacket',
     /**
-     * This is sent from the server basically any time that the "cooking" state of the brewing stand or the furnace changes (i.e. the loading bar)
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ContainerSetDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/container-set-data-packet/
      */
     ContainerSetDataPacket = 'ContainerSetDataPacket',
     /**
-     * Sent to a player when their simulation of movement mismatches enough from the server that it wants to correct the client.
+     * Used only in server authoritative movement mode, see ServerAuthMovementMode documentation.<br>
+     *     Since it is sent to the specified client the target player is implied to be the receiver.<br>
+     *     It is an optional part of the server authoritative protocol. A server could choose to never send this or do all corrections
+     *     through MovePlayerPacket, although doing so would likely provide less smooth results.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CorrectPlayerMovePredictionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/correct-player-move-prediction-packet/
      */
     CorrectPlayerMovePredictionPacket = 'CorrectPlayerMovePredictionPacket',
     /**
-     * Crafting Data
+     * Sent from the server on level startup to send all recipes to the client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CraftingDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/crafting-data-packet/
      */
     CraftingDataPacket = 'CraftingDataPacket',
     /**
-     * Players now have the possibility to export photos from their portfolios into photo items in their inventory. EDU.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CreatePhotoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/create-photo-packet/
      */
     CreatePhotoPacket = 'CreatePhotoPacket',
     /**
-     * Creative Content
+     * Sent once by the server on startup to tell clients all of the items that can show up in the creative menu and recipe book.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CreativeContentPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/creative-content-packet/
      */
     CreativeContentPacket = 'CreativeContentPacket',
     /**
-     * Informs the client of which Structure Feature they are currently occupying.
+     * Sends the name of the Structure Feature the player is currently occupying to the client.
+     *     If the player is not in a structure, this packet contains an empty string.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/CurrentStructureFeaturePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/current-structure-feature-packet/
      */
     CurrentStructureFeaturePacket = 'CurrentStructureFeaturePacket',
     /**
-     * Sent from the server to client when player dies (Level::onPlayerDeath).
+     * mDeathCauseMessage: is untranslated cause of death string vector returned from ActorDamageSource
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/DeathInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/death-info-packet/
      */
     DeathInfoPacket = 'DeathInfoPacket',
     /**
-     * The system sends debug information via a generic network packet. This enables rendering of any server information on the client in for instance ImGui.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/DebugInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/debug-info-packet/
      */
     DebugInfoPacket = 'DebugInfoPacket',
     /**
-     * Brief packet containing data-driven dimension properties
+     * Contains dimension definition data including height bounds and generator type for each dimension.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/DimensionDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/dimension-data-packet/
      */
     DimensionDataPacket = 'DimensionDataPacket',
     /**
-     * Sent from the server to a client to trigger a disconnection.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/DisconnectPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/disconnect-packet/
      */
     DisconnectPacket = 'DisconnectPacket',
     /**
-     * General use Editor specific packet - carries a payload of whatever serialized data that the individual IEditorNetworkPayload generates.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/EditorNetworkPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/editor-network-packet/
      */
     EditorNetworkPacket = 'EditorNetworkPacket',
     /**
-     * Transmits EducationLevelSettings to all clients.
+     * Currently transmits EducationLevelSettings to all clients when the game is starting.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/EducationSettingsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/education-settings-packet/
      */
     EducationSettingsPacket = 'EducationSettingsPacket',
     /**
-     * Transmits Edu Shared Uri Resource settings to all clients.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/EduUriResourcePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/edu-uri-resource-packet/
      */
     EduUriResourcePacket = 'EduUriResourcePacket',
     /**
-     * Allows clients to download emotes that other clients have equipped.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/EmoteListPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/emote-list-packet/
      */
     EmoteListPacket = 'EmoteListPacket',
     /**
-     * A client sends this to the server to notify other clients about the emote.
+     * Sent in both directions; by client to request that an emote is played and then from the server to the clients to indicate which player needs to now emote.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/EmotePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/emote-packet/
      */
     EmotePacket = 'EmotePacket',
     /**
-     * This is the packet that tracks the active feature registry data from the server so that client can place the features themselves.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/FeatureRegistryPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/feature-registry-packet/
      */
     FeatureRegistryPacket = 'FeatureRegistryPacket',
     /**
-     * Updates game rules.
+     * Informs client about any changes to the game rules.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/GameRulesChangedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/game-rules-changed-packet/
      */
     GameRulesChangedPacket = 'GameRulesChangedPacket',
     /**
-     * Internal Text Packet
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/GameTestRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/game-test-request-packet/
      */
     GameTestRequestPacket = 'GameTestRequestPacket',
     /**
-     * Game Test Results Packet
+     * Internal Text Packet
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/GameTestResultsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/game-test-results-packet/
      */
     GameTestResultsPacket = 'GameTestResultsPacket',
     /**
-     * Sent from the server to the client when a server script changes the rendering settings
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/GraphicsOverrideParameterPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/graphics-override-parameter-packet/
      */
     GraphicsOverrideParameterPacket = 'GraphicsOverrideParameterPacket',
     /**
-     * The server telling the client what item slot to hover over in the hotbar.
+     * This is only used when players use pick block, a command is used, tests, and some 3rd party content.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/GuiDataPickItemPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/gui-data-pick-item-packet/
      */
     GuiDataPickItemPacket = 'GuiDataPickItemPacket',
     /**
-     * Hurt Armor
+     * Sends the damage taken after armor is taken into account. This looks like it is trying to be phased out, this is not sent while the ItemStackNetManagerServer is active. From the server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/HurtArmorPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/hurt-armor-packet/
      */
     HurtArmorPacket = 'HurtArmorPacket',
     /**
-     * Interact
+     * Used for inventory button press and in _updateInteraction() for a variety of purposes. From the client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/InteractPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/interact-packet/
      */
     InteractPacket = 'InteractPacket',
     /**
-     * This is used for updating an entire container. Example uses include: player respawned, replace items command, 3rd party content calls sendInventory(), block picking.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/InventoryContentPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/inventory-content-packet/
      */
     InventoryContentPacket = 'InventoryContentPacket',
     /**
-     * Updates one slot in an inventory rather than the whole thing. So like animal inventory (horses, donkeys, etc) and chests. Hotbar, offhand, and some player inventory changes.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/InventorySlotPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/inventory-slot-packet/
      */
     InventorySlotPacket = 'InventorySlotPacket',
     /**
-     * Inventory Transaction. Sent for item interaction UI depending on if ItemStackNetManager is enabled as well as when the player uses items in gameplay. See ComplexInventoryTransaction::Type for more details.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/InventoryTransactionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/inventory-transaction-packet/
      */
     InventoryTransactionPacket = 'InventoryTransactionPacket',
     /**
-     * Item data from the server. Contains component information.
+     * This packet needs to be sent immediately after the StartGamePacket for primary clients.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ItemRegistryPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/item-registry-packet/
      */
     ItemRegistryPacket = 'ItemRegistryPacket',
     /**
-     * The new server auth inventory item transaction request. This is done in batches of items.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ItemStackRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/item-stack-request-packet/
      */
     ItemStackRequestPacket = 'ItemStackRequestPacket',
     /**
-     * Server auth inventory item transaction response, sent from the server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ItemStackResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/item-stack-response-packet/
      */
     ItemStackResponsePacket = 'ItemStackResponsePacket',
     /**
-     * Jigsaw Structure data used by client jigsaw structure worldgen. This packet contains a copy of the behavior pack jigsaw structure rules.
+     * Sends the serialized jigsaw rule JSON to the client as it's needed on both the client and server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/JigsawStructureDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/jigsaw-structure-data-packet/
      */
     JigsawStructureDataPacket = 'JigsawStructureDataPacket',
     /**
-     * For the EDU Chemistry Lab Table block actor.
+     * The packet can be fired from the client through the UI or from the server during updates.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LabTablePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/lab-table-packet/
      */
     LabTablePacket = 'LabTablePacket',
     /**
-     * This is used for the Lectern Block Actor.
+     * It is a request from the client to either turn the page in the lectern or drop the book.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LecternUpdatePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/lectern-update-packet/
      */
     LecternUpdatePacket = 'LecternUpdatePacket',
     /**
-     * Sends telemetry events to the client so the client can then send that on to the eventing system
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LegacyTelemetryEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/legacy-telemetry-event-packet/
      */
     LegacyTelemetryEventPacket = 'LegacyTelemetryEventPacket',
     /**
-     * Lesson Progress
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LessonProgressPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/lesson-progress-packet/
      */
     LessonProgressPacket = 'LessonProgressPacket',
     /**
-     * Level Chunk Packet
+     * Used to start a chunk transaction.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LevelChunkPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/level-chunk-packet/
      */
     LevelChunkPacket = 'LevelChunkPacket',
     /**
-     * LevelEventGenericPacket
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LevelEventGenericPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/level-event-generic-packet/
      */
     LevelEventGenericPacket = 'LevelEventGenericPacket',
     /**
-     * Splash Potions, weather events, global pause, simlock commands, oh my!
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LevelEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/level-event-packet/
      */
     LevelEventPacket = 'LevelEventPacket',
     /**
-     * Level Sound Event
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LevelSoundEventPacket.html
+     *     Most sounds get launched on server and replicated to clients, but a handful of player initiated sounds are launched on their client and replicated through the network.
+     *     (In most of the codebase 'Event' means telemetry events; this is not the case here, this is how sounds get replicated across the network in vanilla.)
+     *     With support for custom entities. Entity Id is a string and Event Id is an integer.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/level-sound-event-packet/
      */
     LevelSoundEventPacket = 'LevelSoundEventPacket',
     /**
-     * Syncs LocatorBar changes on the server with the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LocatorBarPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/locator-bar-packet/
      */
     LocatorBarPacket = 'LocatorBarPacket',
     /**
-     * Sent once from client to server at login. About 100k.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/LoginPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/login-packet/
      */
     LoginPacket = 'LoginPacket',
     /**
-     * This is fired when the user locks a map item utilizing the Cartography Table in game.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MapCreateLockedCopyPacket.html
+     *     It sends the original map id and the new map id. 
+     *     On the server it follows a similar process to creating a new map, sends the data and the map info to the client.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/map-create-locked-copy-packet/
      */
     MapCreateLockedCopyPacket = 'MapCreateLockedCopyPacket',
     /**
-     * In the case of the client being unable to find map data for a map item it sends a uuid for a map to the server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MapInfoRequestPacket.html
+     *     If the server finds the map, it sends the data back. If it can't find the map, it creates it and sends the map and data back.
+     *     (the map creation data packet and the map data packet are separate packets).
+     *     The response from the server potentially has to load from disk, just an fyi.
+     *     This packet is fired via map item tick, if the map data we have is invalid, or if the map is placed in an item frame.
+     * 
+     *     For Client Side Generation when we re-sample pixels from the Client's ChunkSource we need to inform the Server's map about
+     *     these new pixels so that it can save them to LevelStorage. Use this packet to send to the Server the extra pixels
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/map-info-request-packet/
      */
     MapInfoRequestPacket = 'MapInfoRequestPacket',
     /**
-     * Mob Armor Equipment
+     * This is related to MobEquipmentPackets, but armor specifically and passes ALL equipment changes at once instead of one slot at a time.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MobArmorEquipmentPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/mob-armor-equipment-packet/
      */
     MobArmorEquipmentPacket = 'MobArmorEquipmentPacket',
     /**
-     * Mob Effect
+     * At the start of the game the server sends any mob effects with _sendAdditionalLevelData() if the joining player saved out with them,
+     * and then anytime a mob effect is added, removed, or updated this packet is sent.<br>
+     * It is important for player movement simulation to ensure that the following effects are sent for the player or any client predicted vehicle they are in control of:<br>
+     * - levitation<br>
+     * - slow_falling<br>
+     * - jump<br>
+     * - movement_speed<br>
+     * - movement_slowdown<br>
+     * - weaving
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MobEffectPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/mob-effect-packet/
      */
     MobEffectPacket = 'MobEffectPacket',
     /**
-     * Mob Equipment. Changes to any mob's held/offhand item are fired from server to client with this packet. Clients also send this to the server when their held slot or its contents change.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MobEquipmentPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/mob-equipment-packet/
      */
     MobEquipmentPacket = 'MobEquipmentPacket',
     /**
-     * Modal Form Request
+     * Not sent from vanilla. The feature is meant for third-party servers to be able to drive dynamic ui forms. The request comes with some JSON that describes a custom UI screen thirdparty uses.Server->client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ModalFormRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/modal-form-request-packet/
      */
     ModalFormRequestPacket = 'ModalFormRequestPacket',
     /**
-     * Fired in response to third party server request to show the custom UI screen.
+     * see ModalFormRequestPacket
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ModalFormResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/modal-form-response-packet/
      */
     ModalFormResponsePacket = 'ModalFormResponsePacket',
     /**
-     * It is essentially a SetActionMotionPacket with a bool indicating if the actor was on the ground at the time the packet is sent or not.
+     * This is from the server when spatial optimizations are enabled and the server does not send a spatial update.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MotionPredictionHintsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/motion-prediction-hints-packet/
      */
     MotionPredictionHintsPacket = 'MotionPredictionHintsPacket',
     /**
-     * This is used primarily for motion updates of all actors from server to client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MoveActorAbsolutePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/move-actor-absolute-packet/
      */
     MoveActorAbsolutePacket = 'MoveActorAbsolutePacket',
     /**
-     * This packet is all the deltas of actors position, rotation, and head rotation. This is used for all actors.
+     * Each position, rotation and head-rotation component is sent as an independent optional, accompanied by flags indicating whether the actor is on the ground and whether this is a teleport.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MoveActorDeltaPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/move-actor-delta-packet/
      */
     MoveActorDeltaPacket = 'MoveActorDeltaPacket',
     /**
-     * These packets are sent to the client to update specific MovementEffects
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MovementEffectPacket.html
+     *     These MovementEffects can be client-predicted.
+     *     Ex: Fireworks Rockets used while gliding send this packet to the client so they know the exact duration of the GLIDE_BOOST MovementEffect.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/movement-effect-packet/
      */
     MovementEffectPacket = 'MovementEffectPacket',
     /**
-     * For client authoritative and server authoritative movement modes, it is only intended as a client-bound packet. It forces the player to a specified position with slightly different behavior depending on the position mode.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MovePlayerPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/move-player-packet/
      */
     MovePlayerPacket = 'MovePlayerPacket',
     /**
-     * Syncs multiplayer settings
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/MultiplayerSettingsPacket.html
+     *     This is used by EDU for joining players and removing players from your session,
+     *     the settings (there is only one) is an enum for enabling/disabling/refreshing multiplayer join codes.
+     *     Starts on the client, and a response to the client is issued from the server.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/multiplayer-settings-packet/
      */
     MultiplayerSettingsPacket = 'MultiplayerSettingsPacket',
     /**
-     * Tells clients to update the chunk view for the local player.
+     * Used (from the server) when a user's Chunk View moves, I.e. the area that determines what chunks exist. For ClientSideGeneration we also send the client a list of ChunkPos that the Server will fully build.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/NetworkChunkPublisherUpdatePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/network-chunk-publisher-update-packet/
      */
     NetworkChunkPublisherUpdatePacket = 'NetworkChunkPublisherUpdatePacket',
     /**
-     * Sends tunable options from host to client (compression threshold and algorithm)
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/NetworkSettingsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/network-settings-packet/
      */
     NetworkSettingsPacket = 'NetworkSettingsPacket',
     /**
-     * Ping Packet
+     * DEPRECATED. Was for testing/debug/telemetry: Used to provide ping time to in game debug graph, also for realms telemetry of actual in game latency.  Sent from both client & server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/NetworkStackLatencyPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/network-stack-latency-packet/
      */
     NetworkStackLatencyPacket = 'NetworkStackLatencyPacket',
     /**
-     * Sent from the server to client when remote firing an NPC dialogue window for a client
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/NpcDialoguePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/npc-dialogue-packet/
      */
     NpcDialoguePacket = 'NpcDialoguePacket',
     /**
-     * Used for a number of interactions with the NPC Component
+     * A request is made from the client during an interaction with an NPC then the request is processed by the server. 
+     *     Actor MUST have the NPCComponent to be handled. 
+     *     We currently only use this for EDU, but the goal was to expose the NPC Component to creators.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/NpcRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/npc-request-packet/
      */
     NpcRequestPacket = 'NpcRequestPacket',
     /**
-     * On-Screen Texture Animation
+     * Sent from the player (and in one case from the village) to make those really cool animated effects for the hero of the village and the totem saving you. Just an id (unsigned int). At least thats what the code suggests. May be obsolete / deprecated.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/OnScreenTextureAnimationPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/on-screen-texture-animation-packet/
      */
     OnScreenTextureAnimationPacket = 'OnScreenTextureAnimationPacket',
     /**
-     * Sent from the server so that the client knows to open the sign screen.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/OpenSignPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/open-sign-packet/
      */
     OpenSignPacket = 'OpenSignPacket',
     /**
-     * This is sent when the client detects a malformed packet
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PacketViolationWarningPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/packet-violation-warning-packet/
      */
     PacketViolationWarningPacket = 'PacketViolationWarningPacket',
     /**
-     * Sent by the client to provide additional client metadata.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PartyChangedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/party-changed-packet/
      */
     PartyChangedPacket = 'PartyChangedPacket',
     /**
-     * Sent by the client to the server with a party destination cookie response.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PartyDestinationCookieResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/party-destination-cookie-response-packet/
      */
     PartyDestinationCookieResponsePacket = 'PartyDestinationCookieResponsePacket',
     /**
-     * There is a camera item in EDU and they can use it to take screenshots and add them to a scrapbook.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PhotoTransferPacket.html
+     *     When the player uses the camera item or adds a photo to the scrapbook it sends the photo to the server,
+     *     then the server sends a response back on whether that was successful or not.
+     *     Either uploads a photo to the server's photoStorage or request one from it to be stored in client's photoStorage.
+     *     If no mPhotoData is provided it is a request for the given filename.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/photo-transfer-packet/
      */
     PhotoTransferPacket = 'PhotoTransferPacket',
     /**
-     * Sent from the client whenever the player performs an action (dashing, un-dashing, use an item, mine/hit, use a block, etc).
+     * The expected actions change depending on the ServerAuthMovementMode specified in the StartGamePacket.
+     *     See the PlayerActionType enum for details on which have differing behavior.
+     *     See also PlayerAuthInputPacket and InventoryTransactionPacket for similar types of player actions.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerActionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-action-packet/
      */
     PlayerActionPacket = 'PlayerActionPacket',
     /**
-     * Sent from server whenever the player's armor takes damage.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerArmorDamagePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-armor-damage-packet/
      */
     PlayerArmorDamagePacket = 'PlayerArmorDamagePacket',
     /**
-     * Player Auth Input
+     * These are for Server Authoritative Movement to sync all player input with the server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerAuthInputPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-auth-input-packet/
      */
     PlayerAuthInputPacket = 'PlayerAuthInputPacket',
     /**
-     * Sends the of new Enchanting options  from the server when a player right clicks the enchantment table.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerEnchantOptionsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-enchant-options-packet/
      */
     PlayerEnchantOptionsPacket = 'PlayerEnchantOptionsPacket',
     /**
-     * Player Fog Packet
+     * This is the packet that tracks the active fog stack from the server so the local players can apply different fog settings.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerFogPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-fog-packet/
      */
     PlayerFogPacket = 'PlayerFogPacket',
     /**
-     * Sent from the server when the player uses pick block on actors or blocks, in addition to the player uses the clear, give, or replace item command or if the serverplayer uses _sendAdditionalLevelData(). 
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerHotbarPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-hotbar-packet/
      */
     PlayerHotbarPacket = 'PlayerHotbarPacket',
     /**
-     * Player List
+     * Sent from the Server at the start of the game or when a player is added to all clients. Lists the players.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerListPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-list-packet/
      */
     PlayerListPacket = 'PlayerListPacket',
     /**
-     * Updates the client with the position of a player outside simulation distance, or hides a player.
+     * Sent by PlayerLocationSender when a player position changes beyond a certain angle.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerLocationPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-location-packet/
      */
     PlayerLocationPacket = 'PlayerLocationPacket',
     /**
-     * Used when the player changes their skin
+     * Sent from the client to server, then processed and broadcasted to all clients. This is used by third-party(3P) servers to send custom geometry.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerSkinPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-skin-packet/
      */
     PlayerSkinPacket = 'PlayerSkinPacket',
     /**
-     * Player Start Item Cooldown
+     * Packet sent by the player to start the cooldown on an item.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerStartItemCooldownPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-start-item-cooldown-packet/
      */
     PlayerStartItemCooldownPacket = 'PlayerStartItemCooldownPacket',
     /**
-     * PlayerToggleCrafterSlotRequestPacket
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerToggleCrafterSlotRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-toggle-crafter-slot-request-packet/
      */
     PlayerToggleCrafterSlotRequestPacket = 'PlayerToggleCrafterSlotRequestPacket',
     /**
-     * Player Update Entity Overrides
+     * Updates client entity property override data. Sets/removes an override for the indicated property for a specific entity on a client or clears all overrides for that entity.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayerUpdateEntityOverridesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-update-entity-overrides-packet/
      */
     PlayerUpdateEntityOverridesPacket = 'PlayerUpdateEntityOverridesPacket',
     /**
-     * This packet is only used via command or script event. This is for 3rd party content.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlaySoundPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/play-sound-packet/
      */
     PlaySoundPacket = 'PlaySoundPacket',
     /**
-     * Describes the login status of the player
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PlayStatusPacket.html
+     *     Used after the Server handles a Login or (Sub)Client Authentication Packet
+     *     If everything is good, then it sends this packet to the client to finish the handshake.
+     *     If everything is not good, it terminates the connection.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/play-status-packet/
      */
     PlayStatusPacket = 'PlayStatusPacket',
     /**
-     * Position Tracking DB Client Request
+     * Client to server packet for server authoratative runtime database (with persistent LevelStorage backup) designed primarily to track lodestone stuff. See Position Tracking DB Notes.md in bedrock-docs. see PositionTrackingDBServerBroadcastPacket
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PositionTrackingDBClientRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/position-tracking-dbclient-request-packet/
      */
     PositionTrackingDBClientRequestPacket = 'PositionTrackingDBClientRequestPacket',
     /**
-     * Server to client packet for server authoratative runtime database (with persistent LevelStorage backup) designed primarily to track lodestone stuff. See Position Tracking DB Notes.md in bedrock-docs.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PositionTrackingDBServerBroadcastPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/position-tracking-dbserver-broadcast-packet/
      */
     PositionTrackingDBServerBroadcastPacket = 'PositionTrackingDBServerBroadcastPacket',
     /**
-     * Send primitive drawing shape info (from scripting) to the client for rendering
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PrimitiveShapesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/primitive-shapes-packet/
      */
     PrimitiveShapesPacket = 'PrimitiveShapesPacket',
     /**
-     * Sent from client to server
+     * Sent from the client after we make a purchase in the store OR if we login and our entitlements are verified.
+     * It sends a vector of purchase receipts(string).There is a handler and a multiple senders.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/PurchaseReceiptPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/purchase-receipt-packet/
      */
     PurchaseReceiptPacket = 'PurchaseReceiptPacket',
     /**
-     * Refresh Entitlements
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RefreshEntitlementsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/refresh-entitlements-packet/
      */
     RefreshEntitlementsPacket = 'RefreshEntitlementsPacket',
     /**
-     * Occasionally, during the server player tick some time is taken to remove nearby actors from the world.
+     * This is sent to the client to confirm which entity is being removed. This is done by sending an ActorUniqueID
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RemoveActorPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/remove-actor-packet/
      */
     RemoveActorPacket = 'RemoveActorPacket',
     /**
-     * Using the scoreboard command, users can remove objectives that are tracked on the scoreboard.
+     * This is just the name of the objective.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RemoveObjectivePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/remove-objective-packet/
      */
     RemoveObjectivePacket = 'RemoveObjectivePacket',
     /**
-     * Sends a volume entity to be removed from server to client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RemoveVolumeEntityPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/remove-volume-entity-packet/
      */
     RemoveVolumeEntityPacket = 'RemoveVolumeEntityPacket',
     /**
-     * Sent from client to server. Used to request an ability change.
+     * Once changed, the server will broadcast the updated state of abilities for that player. If the request is rejected, the caller will receive their reverted state of Abilities.  Can only be used to modify the calling player.      - mVariable: Info about this variable
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RequestAbilityPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/request-ability-packet/
      */
     RequestAbilityPacket = 'RequestAbilityPacket',
     /**
-     * The client can't just change the view radius without the server's approval, otherwise there could be holes on unrendered area.
+     * This packet is to make sure that the server expands/shrinks first. Additionally for ClientSide Chunk Generation we can send a byte, based on client's hardware capabilities what is the max chunk radius client can handle.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RequestChunkRadiusPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/request-chunk-radius-packet/
      */
     RequestChunkRadiusPacket = 'RequestChunkRadiusPacket',
     /**
-     * Requests tunable options from host to client (compression threshold and algorithm).
+     * This is the initial packet sent from the client to initiate a connection.  NOTE: this packet should not contain anything other than the client version, don't add new data here.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RequestNetworkSettingsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/request-network-settings-packet/
      */
     RequestNetworkSettingsPacket = 'RequestNetworkSettingsPacket',
     /**
-     * Sent from client to server. Used to request a new Permissions Levels.
+     * Can only be used by Operators or Hosts.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RequestPermissionsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/request-permissions-packet/
      */
     RequestPermissionsPacket = 'RequestPermissionsPacket',
     /**
-     * Resource Pack Chunk Data
+     * (only one marked for uncompressed) realms resource pack download
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePackChunkDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-pack-chunk-data-packet/
      */
     ResourcePackChunkDataPacket = 'ResourcePackChunkDataPacket',
     /**
-     * Resource Pack Chunk Request
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePackChunkRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-pack-chunk-request-packet/
      */
     ResourcePackChunkRequestPacket = 'ResourcePackChunkRequestPacket',
     /**
-     * Resource Pack Client Response
+     * Sent to MinecraftGame to complete the resource pack loading process.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePackClientResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-pack-client-response-packet/
      */
     ResourcePackClientResponsePacket = 'ResourcePackClientResponsePacket',
     /**
-     * Resource Pack Data Info
+     * Sent from the serverFileChunkUploader during the initialization of the file uploader. This packet is sent to the primary client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePackDataInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-pack-data-info-packet/
      */
     ResourcePackDataInfoPacket = 'ResourcePackDataInfoPacket',
     /**
-     * Resource Packs Info
+     * Sends resource pack information to the client including pack IDs, versions, sizes, and content keys.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePacksInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-packs-info-packet/
      */
     ResourcePacksInfoPacket = 'ResourcePacksInfoPacket',
     /**
-     * Used to inform the server that the client has finished loading all resource packs.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePacksReadyForValidationPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-packs-ready-for-validation-packet/
      */
     ResourcePacksReadyForValidationPacket = 'ResourcePacksReadyForValidationPacket',
     /**
-     * Resource Pack Stack
+     * Sent to client in response to ResourcePackClientResponsePacket with info on current resource pack stack.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ResourcePackStackPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/resource-pack-stack-packet/
      */
     ResourcePackStackPacket = 'ResourcePackStackPacket',
     /**
-     * Sent as a handshake between the client and server to respawn the player.
+     * For some reason each respawn 1 packet is sent from the client and 3 are sent from the server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/RespawnPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/respawn-packet/
      */
     RespawnPacket = 'RespawnPacket',
     /**
-     * Used to send custom messages between client and server.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ScriptMessagePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/script-message-packet/
      */
     ScriptMessagePacket = 'ScriptMessagePacket',
     /**
-     * Sent by the server to a client with a party destination cookie.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SendPartyDestinationCookiePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/send-party-destination-cookie-packet/
      */
     SendPartyDestinationCookiePacket = 'SendPartyDestinationCookiePacket',
     /**
-     * Sent from the client to the server when a data driven screen is closed.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerboundDataDrivenScreenClosedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-data-driven-screen-closed-packet/
      */
     ServerboundDataDrivenScreenClosedPacket = 'ServerboundDataDrivenScreenClosedPacket',
     /**
-     * Applies a single update to the server data store from the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerboundDataStorePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-data-store-packet/
      */
     ServerboundDataStorePacket = 'ServerboundDataStorePacket',
     /**
-     * Sent from the client to the server IF ProfilerLite is enabled AND the creator toggle for additional client telemetry is enabled AND new telemetry data is ready (every 500 ms).
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerboundDiagnosticsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-diagnostics-packet/
      */
     ServerboundDiagnosticsPacket = 'ServerboundDiagnosticsPacket',
     /**
-     * Sent from the client to the server to message to the server about the state of the loading screen.
+     * In order for the client to send a packet with StartLoadingScreen, the server needs to anticipate that this packet is coming.
+     * If the server doesn't expect that we are about to start a loading screen, the server will disconnect the client.
+     * EndLoadingScreen is sent by the client when the loading screen closes.
+     * The Loading Screen Id field will be empty if the loading screen is triggered by the initial loading into of a world.
+     * The Loading Screen Id field will have a value if sent by the server. This currently happens as part of ChangeDimensionPacket if the player is alive.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerboundLoadingScreenPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-loading-screen-packet/
      */
     ServerboundLoadingScreenPacket = 'ServerboundLoadingScreenPacket',
     /**
-     * Sent from the client to the server when players change Pack Settings (pack UI).
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerboundPackSettingChangePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-pack-setting-change-packet/
      */
     ServerboundPackSettingChangePacket = 'ServerboundPackSettingChangePacket',
     /**
-     * Used to send a player's server position to the respective client at the end of movement.
+     * Is currently only used for debug draw. Packets will not be sent if debug draw is not available.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerPlayerPostMovePositionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-player-post-move-position-packet/
      */
     ServerPlayerPostMovePositionPacket = 'ServerPlayerPostMovePositionPacket',
     /**
-     * Sent by the server to provide PresenceConfiguration to the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerPresenceInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-presence-info-packet/
      */
     ServerPresenceInfoPacket = 'ServerPresenceInfoPacket',
     /**
-     * Sent during the initialization of world settings on the client.
+     * It is also an empty packet. There is no handler for this packet, should be removed.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerSettingsRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-settings-request-packet/
      */
     ServerSettingsRequestPacket = 'ServerSettingsRequestPacket',
     /**
-     * Server Settings Response
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerSettingsResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-settings-response-packet/
      */
     ServerSettingsResponsePacket = 'ServerSettingsResponsePacket',
     /**
-     * Used to send performance and other valuable stats back to the client
+     * Sent from server.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerStatsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-stats-packet/
      */
     ServerStatsPacket = 'ServerStatsPacket',
     /**
-     * Sent by the server to provide ClientStoreEntryPointConfiguration to the client.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerStoreInfoPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-store-info-packet/
      */
     ServerStoreInfoPacket = 'ServerStoreInfoPacket',
     /**
-     * Server->Client Handshake
+     * Sent from the server at the end of the login packet
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ServerToClientHandshakePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/server-to-client-handshake-packet/
      */
     ServerToClientHandshakePacket = 'ServerToClientHandshakePacket',
     /**
-     * Regular Actor Data delta packets, sent from the level on tick, mob and actor during normal tick
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetActorDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-actor-data-packet/
      */
     SetActorDataPacket = 'SetActorDataPacket',
     /**
-     * Sent by both client and server, only received by LegacyClientHandler.
+     * Sent when the player starts riding something. Two are sent at a time for some reason.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetActorLinkPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-actor-link-packet/
      */
     SetActorLinkPacket = 'SetActorLinkPacket',
     /**
-     * This is used for the server to set the velocity of a client actor.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetActorMotionPacket.html
+     *     It is primarily relevant for client predicted entities like the player or a boat or horse they are in control of.
+     *     For most other actor types it does nothing.<br>
+     *     This is one of the packets that can directly affect player motion, for others, see:<br>
+     *     - MovePlayerPacket<br>
+     *     - CorrectPlayerMovePredictionPacket
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-actor-motion-packet/
      */
     SetActorMotionPacket = 'SetActorMotionPacket',
     /**
-     * This is used by the world settings screen, cheats, EDU builds for teachers, and various other places to enable cheats/commands
+     * see SimpleEventPacket
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetCommandsEnabledPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-commands-enabled-packet/
      */
     SetCommandsEnabledPacket = 'SetCommandsEnabledPacket',
     /**
-     * Same as SetPlayerGameTypePacket & UpdatePlayerGameTypePacket, the only difference is that this changes the default for all clients.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetDefaultGameTypePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-default-game-type-packet/
      */
     SetDefaultGameTypePacket = 'SetDefaultGameTypePacket',
     /**
-     * Set Difficulty
+     * Used for when a client changes difficulty through the menu or when the server changes the difficulty.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetDifficultyPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-difficulty-packet/
      */
     SetDifficultyPacket = 'SetDifficultyPacket',
     /**
-     * Sent from the server for 3rd party content to display current objectives and status
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetDisplayObjectivePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-display-objective-packet/
      */
     SetDisplayObjectivePacket = 'SetDisplayObjectivePacket',
     /**
-     * This packet is sent to the client when the player is spawned in and when they respawn.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetHealthPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-health-packet/
      */
     SetHealthPacket = 'SetHealthPacket',
     /**
-     * This packet is only used via the set hud command. This is for 3rd party content.
+     * This packet will toggle the HUD visibility.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetHudPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-hud-packet/
      */
     SetHudPacket = 'SetHudPacket',
     /**
-     * Any time a player is hit, the id of the last mob that attacked them is sent to the client
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetLastHurtByPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-last-hurt-by-packet/
      */
     SetLastHurtByPacket = 'SetLastHurtByPacket',
     /**
-     * Set Local Player As Initialized
+     * Client tells the server that the client is ready to roll.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetLocalPlayerAsInitializedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-local-player-as-initialized-packet/
      */
     SetLocalPlayerAsInitializedPacket = 'SetLocalPlayerAsInitializedPacket',
+    /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-player-furnace-options-packet/
+     */
     SetPlayerFurnaceOptionsPacket = 'SetPlayerFurnaceOptionsPacket',
     /**
-     * Set Player Game Type
+     * The client handles the change of the UI element (the gametype dropdown, although this can be avoided by changing via command or on the server), then the client sends a packet to the server, then the server changes the player's gametype and sends a packet back (UpdatePlayerGameTypePacket) to make sure it matches on the client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetPlayerGameTypePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-player-game-type-packet/
      */
     SetPlayerGameTypePacket = 'SetPlayerGameTypePacket',
     /**
-     * SetPlayerInventoryOptionsPacket
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetPlayerInventoryOptionsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-player-inventory-options-packet/
      */
     SetPlayerInventoryOptionsPacket = 'SetPlayerInventoryOptionsPacket',
     /**
-     * Set Scoreboard Identity
+     * Send an update packet for a player identity definition iff a tracked player has logged in with a different display name.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetScoreboardIdentityPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-scoreboard-identity-packet/
      */
     SetScoreboardIdentityPacket = 'SetScoreboardIdentityPacket',
     /**
-     * Set Score
+     * Sets the scoreboard which is used for 3rd party content.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetScorePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-score-packet/
      */
     SetScorePacket = 'SetScorePacket',
     /**
-     * When a player logs in or the SetWorldSpawnCommand is used this is sent from the server to the client. Does not change when using a bed, that is a separate packet (RespawnPacket)
+     * see RespawnPacket
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetSpawnPositionPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-spawn-position-packet/
      */
     SetSpawnPositionPacket = 'SetSpawnPositionPacket',
     /**
-     * Set Time
+     * Every so often (and at login) the server sends the current time to the client, and additionally the client can set the server time through 2 commands: DayLockCommand and TimeCommand
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetTimePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-time-packet/
      */
     SetTimePacket = 'SetTimePacket',
     /**
-     * Requests a setting to be changed through commands.
+     * Used when the player changes the world settings like doDayNightCycle or WeatherCycle via the world settings menu
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SettingsCommandPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/settings-command-packet/
      */
     SettingsCommandPacket = 'SettingsCommandPacket',
     /**
-     * Used by 3rd party content for the purpose of showing ui banners
+     * There are 2 commands associated with it: title and titleraw.
+     *     Both of which have functionality to change fade in/out time for titles, sub titles, and action bar text.
+     *     titleraw is using json to format so it will be bigger (i don't have an example)
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SetTitlePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-title-packet/
      */
     SetTitlePacket = 'SetTitlePacket',
     /**
-     * Starts on server when the credits screen should pop up.
+     * That packet is sent to the client.  When the credits have concluded, a packet is sent back to the server to let it know to reinstate the player watching the credits.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ShowCreditsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/show-credits-packet/
      */
     ShowCreditsPacket = 'ShowCreditsPacket',
     /**
-     * Show Profile
+     * The only use in vanilla is a test command called ProfileCommand. It makes the user's xbox profile popup.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ShowProfilePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/show-profile-packet/
      */
     ShowProfilePacket = 'ShowProfilePacket',
     /**
-     * Used for redirecting a user to the right offer.
+     * The server can redirect the user to a 3rd party server page, to a marketplace offer description page, or to a dressing room page containing desired offer.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ShowStoreOfferPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/show-store-offer-packet/
      */
     ShowStoreOfferPacket = 'ShowStoreOfferPacket',
     /**
-     * This packet is used for enabling/disabling commands and for unlocking world template settings (both unlocking UI buttons on client and the actual setting on the server).
+     * This is fired from the client to the server and a SetCommandsEnabledPacket is sent back when enabling commands.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SimpleEventPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/simple-event-packet/
      */
     SimpleEventPacket = 'SimpleEventPacket',
     /**
-     * Sent from the server to the client when setting the simulation type for toolbox mode. (Not yet suported)
+     * - mSimType: an enum representing the simulation type to switch to.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SimulationTypePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/simulation-type-packet/
      */
     SimulationTypePacket = 'SimulationTypePacket',
     /**
-     * Spawn Experience Orb
+     * Note: This can be seen as "ContainerWantSetSlotPacket" when sent from client to server. Currently, the client handles side-effects relating to it's own inventory, regardless of the success of the operation.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SpawnExperienceOrbPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/spawn-experience-orb-packet/
      */
     SpawnExperienceOrbPacket = 'SpawnExperienceOrbPacket',
     /**
-     * Tell client to spawn a particle effect.
+     * This is not used for much anymore, only the Particle command (spawn particle by name at a location) and for ScriptServerSpawnParticleAttachedToActor and ScriptServerSpawnParticleInWorldEvent.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SpawnParticleEffectPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/spawn-particle-effect-packet/
      */
     SpawnParticleEffectPacket = 'SpawnParticleEffectPacket',
     /**
-     * Sent from the server to client when the game is starting (or client joins), gives ids and current tick.
+     * The player movement mode is also specified here, see ServerAuthMovementMode enum documentation for details on the modes.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/StartGamePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/start-game-packet/
      */
     StartGamePacket = 'StartGamePacket',
     /**
-     * Allows you to stop a sound or all sounds on all clients, only used in a /command
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/StopSoundPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/stop-sound-packet/
      */
     StopSoundPacket = 'StopSoundPacket',
     /**
-     * After the client makes changes in the Structure Block Screen we tell the server to update based off of that. This only sent when you close the UI.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/StructureBlockUpdatePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/structure-block-update-packet/
      */
     StructureBlockUpdatePacket = 'StructureBlockUpdatePacket',
     /**
-     * Used to request structure information from a server.
+     * This is used to kick off the process of loading and returning a structure in a Tag from the server back to the client. Currently this functionality is completely disabled and does nothing.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/StructureTemplateDataRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/structure-template-data-request-packet/
      */
     StructureTemplateDataRequestPacket = 'StructureTemplateDataRequestPacket',
     /**
-     * This is used in exporting from load, exporting from save, and querying saved structures from structure blocks.
+     * The client sends a packet to the server, from there the structure is built and then put into a Tag where it is sent back to the client, from there you can view the structure in the Structure Block Screen. Currently this functionality is completely disabled and does nothing. Used to reply to a request for structure information.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/StructureTemplateDataResponsePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/structure-template-data-response-packet/
      */
     StructureTemplateDataResponsePacket = 'StructureTemplateDataResponsePacket',
     /**
-     * Sent from server to client representing a batch of subchunk data.
+     * Contains subchunk terrain data, heightmaps, and optional blob cache IDs.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SubChunkPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/sub-chunk-packet/
      */
     SubChunkPacket = 'SubChunkPacket',
     /**
-     * Sent from the client to the server representing a batch of subchunks that the client requests from the server
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SubChunkRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/sub-chunk-request-packet/
      */
     SubChunkRequestPacket = 'SubChunkRequestPacket',
     /**
-     * This packet starts the login process of subclients (splitscreen)
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SubClientLoginPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/sub-client-login-packet/
      */
     SubClientLoginPacket = 'SubClientLoginPacket',
     /**
-     * Allows us to synchronize Actor properties across the network.
+     * Intended to one day replace SynchedActorData.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SyncActorPropertyPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/sync-actor-property-packet/
      */
     SyncActorPropertyPacket = 'SyncActorPropertyPacket',
     /**
-     * Initializes and syncs world clocks from the server to clients. (Currently disabled)
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/SyncWorldClocksPacket.html
+     *     Sent from the server when a client joins to initialize all world clocks for the client and periodically to all clients to keep them in sync.
+     *     It is also sent to all clients when a world clock's paused state changes or when time markers are added or removed.
+     *     
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/sync-world-clocks-packet/
      */
     SyncWorldClocksPacket = 'SyncWorldClocksPacket',
     /**
-     * A packet sent to the server when deal with picking up an item off the ground in the world.
+     * From this the item and count is turned into an item and the transaction is handled afterwards.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/TakeItemActorPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/take-item-actor-packet/
      */
     TakeItemActorPacket = 'TakeItemActorPacket',
     /**
-     * Represents a text message that needs to be displayed in-game
+     * Used for commands, messages, and other info printed to the screen. Most of which are server->client or server broadcasted to all clients, but some cases have a client to other client via the server
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/TextPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/text-packet/
      */
     TextPacket = 'TextPacket',
     /**
-     * Used to inform the client that the server is waiting for ticking areas to finish preloading.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/TickingAreasLoadStatusPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/ticking-areas-load-status-packet/
      */
     TickingAreasLoadStatusPacket = 'TickingAreasLoadStatusPacket',
     /**
-     * Pushes a UI toast message to be displayed by the client
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/ToastRequestPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/toast-request-packet/
      */
     ToastRequestPacket = 'ToastRequestPacket',
     /**
-     * Used to kick off transferring the client between online games, or it can be used to cause players to quit the world and rejoin.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/TransferPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/transfer-packet/
      */
     TransferPacket = 'TransferPacket',
     /**
-     * Sent from the server on level startup to send all trim patterns to the client.
+     * - mTrimPatterns: vector of TrimPattern
+     * - mTrimMaterials: vector of TrimMaterial
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/TrimDataPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/trim-data-packet/
      */
     TrimDataPacket = 'TrimDataPacket',
     /**
-     * Sent from server to client, for all previously unlocked recipes on load and for any newly unlocked recipes during gameplay.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UnlockedRecipesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/unlocked-recipes-packet/
      */
     UnlockedRecipesPacket = 'UnlockedRecipesPacket',
     /**
-     * Sent by the server to update the state of a player's Abilities.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateAbilitiesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-abilities-packet/
      */
     UpdateAbilitiesPacket = 'UpdateAbilitiesPacket',
     /**
-     * UpdateAdventureSettingsPacket
+     * Sent by the server to update the state of AdventureSettings. Replaces the AdventureSettingsPacket for updating AdventureSettings from server to client.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateAdventureSettingsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-adventure-settings-packet/
      */
     UpdateAdventureSettingsPacket = 'UpdateAdventureSettingsPacket',
     /**
-     * Update Attributes
+     * Occasionally updating player attributes (buffs/debuffs, health, etc)
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateAttributesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-attributes-packet/
      */
     UpdateAttributesPacket = 'UpdateAttributesPacket',
     /**
-     * Occasional packets sent from server when blocks update or are ticked. (For example, when digging.)
+     * This happens often. Luckily, the packets are small.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateBlockPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-block-packet/
      */
     UpdateBlockPacket = 'UpdateBlockPacket',
     /**
-     * Used to sync moving blocks with clients so they render correctly
+     * Variation of UpdateBlockSyncedPacket that includes information to sync entities with renderchunk generation. Occasionally when blocks change a sync message is sent and during the change on the dimension, this packet is sent to the client to alert the update flags and sync info at a specific position.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateBlockSyncedPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-block-synced-packet/
      */
     UpdateBlockSyncedPacket = 'UpdateBlockSyncedPacket',
     /**
-     * UpdateClientInputLocksPacket
+     * Used to update the players input permissions. Sends the full permission set and the server position of the player at the time the permission was modified.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateClientInputLocksPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-client-input-locks-packet/
      */
     UpdateClientInputLocksPacket = 'UpdateClientInputLocksPacket',
     /**
-     * Sync the player's options (mostly settings) to the server.
+     * The values in this packet are originally synced through the Connection Request and then updated via this packet.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateClientOptionsPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-client-options-packet/
      */
     UpdateClientOptionsPacket = 'UpdateClientOptionsPacket',
     /**
-     * Seemingly only used for the Horse Inventory... More specifically when the player opens the horse inventory.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateEquipPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-equip-packet/
      */
     UpdateEquipPacket = 'UpdateEquipPacket',
     /**
-     * The server will send this back to all clients on receipt of the SetPlayerGameTypePacket so that cached game type and permissions flags in mLevel on all clients is kept up to date.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdatePlayerGameTypePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-player-game-type-packet/
      */
     UpdatePlayerGameTypePacket = 'UpdatePlayerGameTypePacket',
     /**
-     * This is used for the scoreboard and tag systems (overwhelmingly used by 3rd party content)
+     * This allows someone to sync between server and client tags and enums on mobs or on the level.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateSoftEnumPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-soft-enum-packet/
      */
     UpdateSoftEnumPacket = 'UpdateSoftEnumPacket',
     /**
-     * Packet sent for every set of blocks changed in a sub chunk every tick.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateSubChunkBlocksPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-sub-chunk-blocks-packet/
      */
     UpdateSubChunkBlocksPacket = 'UpdateSubChunkBlocksPacket',
     /**
-     * This is used when the player trades with an npc. This sends all of the updated trade info in one big ol' packet.
-     * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/UpdateTradePacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/update-trade-packet/
      */
     UpdateTradePacket = 'UpdateTradePacket',
     /**
-     * Syncs client with server voxel shape data on world join. This packet contains a copy of all behavior pack voxel shapes data and is used by StartGamePacket.
+     * Sends the serializable voxel shapes data to the client as it's needed on both the client and server. This packet should always be sent before StartGamePacket.
      * 
-     * @see https://mojang.github.io/bedrock-protocol-docs/docs/VoxelShapesPacket.html
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/voxel-shapes-packet/
      */
     VoxelShapesPacket = 'VoxelShapesPacket',
 }

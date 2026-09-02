@@ -1,3 +1,4 @@
+/* IMPORT */ import { Sentry } from '..';
 /* IMPORT */ import { SecretString } from '../../server-admin';
 
 /**
@@ -22,10 +23,10 @@ export interface SentryOptions {
     dsn: SecretString | string;
     /**
      * @remarks
-     * The maximum number of breadcrumbs (submitted via {@link
-     * Sentry.addBreadcrumb}) to store and report per error event
-     * to Sentry. Default is 20, supported values range from 0 (no
-     * breadcrumbs) to 100.
+     * The maximum number of breadcrumbs (submitted via
+     * {@link Sentry.addBreadcrumb}) to store and report per error
+     * event to Sentry. Default is 20, supported values range from
+     * 0 (no breadcrumbs) to 100.
      *
      */
     maxBreadcrumbs?: number;

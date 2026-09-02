@@ -51,10 +51,11 @@ export class AsyncPlayerJoinBeforeEvent {
     disallowJoin(reason?: string): void;
     /**
      * @remarks
-     * Deprecated - use {@link disallowJoin} instead.Call this to
-     * disconnect a player. They will be allowed to try to join
-     * again. They will be allowed to try to join again after being
-     * disconnected.
+     * Deprecated - use
+     * {@link AsyncPlayerJoinBeforeEvent.disallowJoin} instead.
+     * Call this to disconnect a player. They will be allowed to
+     * try to join again. They will be allowed to try to join again
+     * after being disconnected.
      *
      * @throws This function can throw errors.
      *

@@ -468,7 +468,6 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @rc
      * @remarks
      * Returns array of all loaded block parts if this block has
      * the 'minecraft:multi_block' trait. If it does not have the

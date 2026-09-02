@@ -1,8 +1,9 @@
+/* IMPORT */ import { KeyBindingInfo } from '..';
+
 /**
- * Built-in control categories for use with {@link
- * KeyBindingInfo.bindingCategory}. Pass any
- * `CoreInputBindingCategory` value or a custom string to
- * categorize a binding.
+ * Built-in control categories for use with bindingCategory in
+ * {@link KeyBindingInfo}. Pass any `CoreInputBindingCategory`
+ * value or a custom string to categorize a binding.
  */
 export declare enum CoreInputBindingCategory {
     Camera = 'editor:camera',
@@ -14,6 +15,7 @@ export declare enum CoreInputBindingCategory {
     Modes = 'editor:modes',
     Move = 'editor:move',
     Movement = 'editor:movement',
+    MoveSelection = 'editor:moveSelection',
     Nudge = 'editor:nudge',
     Offset = 'editor:offset',
     Operations = 'editor:operations',
@@ -21,6 +23,7 @@ export declare enum CoreInputBindingCategory {
     PastePreviewManipulation = 'editor:pastePreviewManipulation',
     SizeSelection = 'editor:sizeSelection',
     ToolActivation = 'editor:toolActivation',
+    ToolPanels = 'editor:toolPanels',
     TrimActions = 'editor:trimActions',
     Widget = 'editor:widget',
     Workbench = 'editor:workbench',

@@ -1,22 +1,21 @@
-/* IMPORT */ import { ContainerRules } from '..';
+/* IMPORT */ import { ContainerRules, ContainerRulesError } from '..';
 
 /**
- * Reasons that the {@link
- * @minecraft/server.ContainerRulesError} was thrown.
+ * Reasons that the {@link ContainerRulesError} was thrown.
  */
 export enum ContainerRulesErrorReason {
     /**
      * @remarks
-     * Thrown when trying to add item that was defined in {@link
-     * ContainerRules.bannedItems}.
+     * Thrown when trying to add item that was defined in
+     * {@link ContainerRules.bannedItems}.
      *
      */
     BannedItem = 'BannedItem',
     /**
      * @remarks
      * Thrown when trying to add item with `Storage Item` component
-     * to container with {@link
-     * ContainerRules.allowNestedStorageItems} set to false.
+     * to container with
+     * {@link ContainerRules.allowNestedStorageItems} set to false.
      *
      */
     NestedStorageItem = 'NestedStorageItem',

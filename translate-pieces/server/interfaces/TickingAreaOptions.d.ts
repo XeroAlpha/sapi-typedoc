@@ -1,8 +1,8 @@
-/* IMPORT */ import { Dimension, Vector3 } from '..';
+/* IMPORT */ import { Dimension, TickingAreaManager, Vector3 } from '..';
 
 /**
- * Options to create a ticking area using the {@link
- * TickingAreaManager}.
+ * Options to create a ticking area using the
+ * {@link TickingAreaManager}.
  */
 export interface TickingAreaOptions {
     /**

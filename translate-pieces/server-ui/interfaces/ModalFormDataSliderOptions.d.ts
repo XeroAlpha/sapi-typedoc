@@ -1,9 +1,10 @@
 /* IMPORT */ import { RawMessage } from '../../server';
+/* IMPORT */ import { ModalFormData } from '..';
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.slider} to provide
- * additional options for the slider creation.
+ * An interface that is passed into
+ * {@link ModalFormData.slider} to provide additional options
+ * for the slider creation.
  */
 export interface ModalFormDataSliderOptions {
     /**

@@ -68,6 +68,13 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     scrollable?: boolean;
     /**
      * @remarks
+     * Tags associated with the sub pane, used by a parent sub pane
+     * view control's tag filter.
+     *
+     */
+    tags?: string[];
+    /**
+     * @remarks
      * Custom width of the property item.
      *
      */

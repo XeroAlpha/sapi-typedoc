@@ -1,9 +1,10 @@
-/* IMPORT */ import { InputInfo, PlayerButtonInputAfterEvent, WorldAfterEvents } from '..';
+/* IMPORT */ import { InputInfo, Player, PlayerButtonInputAfterEvent, WorldAfterEvents } from '..';
 
 /**
  * All the different input buttons that are supported. Use with
- * {@link InputInfo.getButtonState} via {@link
- * Player.inputInfo} or {@link PlayerButtonInputAfterEvent} via
+ * {@link InputInfo.getButtonState} via
+ * {@link Player.inputInfo} or
+ * {@link PlayerButtonInputAfterEvent} via
  * {@link WorldAfterEvents.playerButtonInput}
  */
 export enum InputButton {

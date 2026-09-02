@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEvent, BlockPermutation, Direction, ItemStack, Player } from '..';
 
 /**
- * @rc
  * Contains information regarding an event after a player
  * starts breaking a block.
  */

@@ -1,8 +1,8 @@
-/* IMPORT */ import { GraphicsSettingsPropertyTypeMap } from '..';
+/* IMPORT */ import { GraphicsSettingsProperty, GraphicsSettingsPropertyTypeMap } from '..';
 
 /**
- * Settings category that manages {@link
- * GraphicsSettingsProperty} configurations.
+ * Settings category that manages
+ * {@link GraphicsSettingsProperty} configurations.
  */
 export class GraphicsSettings {
     private constructor();

@@ -1,5 +1,5 @@
 /**
- * @beta
+ * @rc
  * Criteria used to narrow a set of sound definitions. Each
  * field is optional and applies its constraint only when
  * defined; a definition must satisfy every defined field to

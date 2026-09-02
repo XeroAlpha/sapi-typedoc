@@ -341,7 +341,6 @@ export class WorldAfterEvents {
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player cancels breaking a block.
      *
@@ -455,7 +454,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player starts breaking a block.
      *

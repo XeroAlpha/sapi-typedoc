@@ -1,6 +1,8 @@
+/* IMPORT */ import { Player } from '..';
+
 /**
- * Describes the graphics mode of a client. Used by {@link
- * Player.graphicsMode}
+ * Describes the graphics mode of a client. Used by
+ * {@link Player.graphicsMode}
  */
 export enum GraphicsMode {
     /**

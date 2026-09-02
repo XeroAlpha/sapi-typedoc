@@ -1,8 +1,8 @@
-/* IMPORT */ import { Entity } from '..';
+/* IMPORT */ import { Dimension, Entity } from '..';
 
 /**
- * Additional configuration options for the {@link
- * Dimension.createExplosion} method.
+ * Additional configuration options for the
+ * {@link Dimension.createExplosion} method.
  * @seeExample createNoBlockExplosion.ts
  * @seeExample createExplosions.ts
  */

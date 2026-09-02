@@ -3,8 +3,8 @@
 /**
  * @beta
  * Bounding Box Utils is a utility class that provides a number
- * of useful functions for the creation and utility of {@link
- * BlockBoundingBox} objects
+ * of useful functions for the creation and utility of
+ * {@link BlockBoundingBox} objects
  */
 export class BlockBoundingBoxUtils {
     private constructor();
@@ -62,8 +62,8 @@ export class BlockBoundingBoxUtils {
     static expand(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox;
     /**
      * @remarks
-     * Calculate the center block of a given {@link
-     * BlockBoundingBox} object.
+     * Calculate the center block of a given
+     * {@link BlockBoundingBox} object.
      *
      * @worldMutation
      *

@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError } from '../../common';
-/* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, Vector2 } from '..';
+/* IMPORT */ import { ButtonState, InputButton, InputMode, InvalidEntityError, PlayerButtonInputAfterEvent, Vector2, WorldAfterEvents } from '..';
 
 /**
  * Contains the input information for a client instance.
@@ -28,6 +28,13 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
+     * @remarks
+     * Retrieves the current state of a button. If a player presses
+     * and releases a button really fast this may not ever be set
+     * to true. To capture all button state changes, use
+     * {@link PlayerButtonInputAfterEvent} via
+     * {@link WorldAfterEvents.playerButtonInput}
+     *
      * @throws This function can throw errors.
      *
      * {@link EngineError}

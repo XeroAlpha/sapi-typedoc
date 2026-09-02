@@ -1506,9 +1506,9 @@ export interface MessageBoxResult {
 }
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.dropdown} to provide
- * additional options for the dropdown creation.
+ * An interface that is passed into
+ * {@link ModalFormData.dropdown} to provide additional options
+ * for the dropdown creation.
  */
 export interface ModalFormDataDropdownOptions {
     /**
@@ -1528,9 +1528,9 @@ export interface ModalFormDataDropdownOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.slider} to provide
- * additional options for the slider creation.
+ * An interface that is passed into
+ * {@link ModalFormData.slider} to provide additional options
+ * for the slider creation.
  */
 export interface ModalFormDataSliderOptions {
     /**
@@ -1556,9 +1556,9 @@ export interface ModalFormDataSliderOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.textField} to provide
- * additional options for the textfield creation.
+ * An interface that is passed into
+ * {@link ModalFormData.textField} to provide additional
+ * options for the textfield creation.
  */
 export interface ModalFormDataTextFieldOptions {
     /**
@@ -1577,9 +1577,9 @@ export interface ModalFormDataTextFieldOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.toggle} to provide
- * additional options for the toggle creation.
+ * An interface that is passed into
+ * {@link ModalFormData.toggle} to provide additional options
+ * for the toggle creation.
  */
 export interface ModalFormDataToggleOptions {
     /**

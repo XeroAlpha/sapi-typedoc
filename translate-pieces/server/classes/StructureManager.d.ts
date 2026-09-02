@@ -9,9 +9,10 @@ export class StructureManager {
     private constructor();
     /**
      * @remarks
-     * Creates an empty Structure in memory. Use {@link
-     * Structure.setBlockPermutation} to populate the structure
-     * with blocks and save changes with {@link Structure.saveAs}.
+     * Creates an empty Structure in memory. Use
+     * {@link Structure.setBlockPermutation} to populate the
+     * structure with blocks and save changes with
+     * {@link Structure.saveAs}.
      *
      * @worldMutation
      *

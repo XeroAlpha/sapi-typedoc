@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerBreakingBlockEventOptions, PlayerCancelBreakingBlockAfterEvent } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when a player
  * cancels breaking a block.
  */

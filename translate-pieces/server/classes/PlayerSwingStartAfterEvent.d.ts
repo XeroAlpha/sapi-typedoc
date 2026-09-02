@@ -21,8 +21,8 @@ export class PlayerSwingStartAfterEvent {
     readonly player: Player;
     /**
      * @remarks
-     * The source of the Player swing, see {@link
-     * EntitySwingSource}.
+     * The source of the Player swing, see
+     * {@link EntitySwingSource}.
      *
      */
     readonly swingSource: EntitySwingSource;

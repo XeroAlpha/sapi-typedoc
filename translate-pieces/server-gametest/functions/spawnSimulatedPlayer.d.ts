@@ -5,8 +5,9 @@
 /**
  * @remarks
  * Spawns a simulated player that isn't associated to a
- * specific {@link Test}.  You can use {@link
- * SimulatedPlayer.remove} to remove the player from the world.
+ * specific {@link Test}.  You can use
+ * {@link SimulatedPlayer.disconnect} to remove the player from
+ * the world.
  *
  * @worldMutation
  *

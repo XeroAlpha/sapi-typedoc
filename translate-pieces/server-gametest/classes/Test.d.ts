@@ -547,9 +547,9 @@ export class Test {
     getSculkSpreader(blockLocation: Vector3): SculkSpreader | undefined;
     /**
      * @remarks
-     * Returns the direction of the current test - see the {@link
-     * minecraftserver.Direction} enum for more information on
-     * potential values (north, east, south, west - values 2-5).
+     * Returns the direction of the current test - see the
+     * {@link Direction} enum for more information
+     * on potential values (north, east, south, west - values 2-5).
      *
      * @throws This function can throw errors.
      *

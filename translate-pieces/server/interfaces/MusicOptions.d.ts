@@ -1,8 +1,8 @@
 /* IMPORT */ import { World } from '..';
 
 /**
- * Additional configuration options for {@link
- * World.playMusic}/{@link World.queueMusic} methods.
+ * Additional configuration options for
+ * {@link World.playMusic}/{@link World.queueMusic} methods.
  */
 export interface MusicOptions {
     /**

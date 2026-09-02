@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemLockMode, ItemType, RawMessage, Vector3 } from '..';
+/* IMPORT */ import { ItemComponent, ItemComponentRegistry, ItemComponentReturnType, ItemComponentTypes, ItemLockMode, ItemType, RawMessage, Vector3 } from '..';
 
 /**
  * Defines a collection of items.
@@ -105,9 +105,7 @@ export class ItemStack {
      * world.
      *
      * @param itemType
-     * Type of item to create. See the {@link
-     * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
-     * a list of standard item types in Minecraft experiences.
+     * Type of item to create.
      * @param amount
      * Number of items to place in the stack, between 1-255. The
      * provided value will be clamped to the item's maximum stack
@@ -162,9 +160,9 @@ export class ItemStack {
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
-     * Available component IDs are those in the {@link
-     * ItemComponentTypes} enum and custom component IDs registered
-     * with the {@link ItemComponentRegistry}.
+     * Available component IDs are those in the
+     * {@link ItemComponentTypes} enum and custom component IDs
+     * registered with the {@link ItemComponentRegistry}.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
@@ -222,8 +220,8 @@ export class ItemStack {
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
-     * ItemStack. String lore lines will be converted to a {@link
-     * RawMessage} and put under {@link RawMessage.text}.
+     * ItemStack. String lore lines will be converted to a
+     * {@link RawMessage} and put under {@link RawMessage.text}.
      *
      * @returns
      * An array of lore lines. If the item does not have lore,

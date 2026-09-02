@@ -1,9 +1,10 @@
 /* IMPORT */ import { RawMessage } from '../../server';
+/* IMPORT */ import { ModalFormData } from '..';
 
 /**
- * An interface that is passed into {@link
- * @minecraft/Server-ui.ModalFormData.dropdown} to provide
- * additional options for the dropdown creation.
+ * An interface that is passed into
+ * {@link ModalFormData.dropdown} to provide additional options
+ * for the dropdown creation.
  */
 export interface ModalFormDataDropdownOptions {
     /**

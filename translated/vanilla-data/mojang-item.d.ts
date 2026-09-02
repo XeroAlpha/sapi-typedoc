@@ -212,6 +212,8 @@ export declare enum MinecraftItemTypes {
     BlackConcrete = "minecraft:black_concrete",
     /** 黑色混凝土粉末。 */
     BlackConcretePowder = "minecraft:black_concrete_powder",
+    BlackConcreteSlab = "minecraft:black_concrete_slab",
+    BlackConcreteStairs = "minecraft:black_concrete_stairs",
     /** 黑色坐垫。 */
     BlackCushion = "minecraft:black_cushion",
     /** 黑色染料。 */
@@ -262,6 +264,8 @@ export declare enum MinecraftItemTypes {
     BlueConcrete = "minecraft:blue_concrete",
     /** 蓝色混凝土粉末。 */
     BlueConcretePowder = "minecraft:blue_concrete_powder",
+    BlueConcreteSlab = "minecraft:blue_concrete_slab",
+    BlueConcreteStairs = "minecraft:blue_concrete_stairs",
     /** 蓝色坐垫。 */
     BlueCushion = "minecraft:blue_cushion",
     /** 蓝色染料。 */
@@ -348,6 +352,8 @@ export declare enum MinecraftItemTypes {
     BrownConcrete = "minecraft:brown_concrete",
     /** 棕色混凝土粉末。 */
     BrownConcretePowder = "minecraft:brown_concrete_powder",
+    BrownConcreteSlab = "minecraft:brown_concrete_slab",
+    BrownConcreteStairs = "minecraft:brown_concrete_stairs",
     /** 棕色坐垫。 */
     BrownCushion = "minecraft:brown_cushion",
     /** 棕色染料。 */
@@ -746,6 +752,8 @@ export declare enum MinecraftItemTypes {
     CyanConcrete = "minecraft:cyan_concrete",
     /** 青色混凝土粉末。 */
     CyanConcretePowder = "minecraft:cyan_concrete_powder",
+    CyanConcreteSlab = "minecraft:cyan_concrete_slab",
+    CyanConcreteStairs = "minecraft:cyan_concrete_stairs",
     /** 青色坐垫。 */
     CyanCushion = "minecraft:cyan_cushion",
     /** 青色染料。 */
@@ -1208,6 +1216,8 @@ export declare enum MinecraftItemTypes {
     GrayConcrete = "minecraft:gray_concrete",
     /** 灰色混凝土粉末。 */
     GrayConcretePowder = "minecraft:gray_concrete_powder",
+    GrayConcreteSlab = "minecraft:gray_concrete_slab",
+    GrayConcreteStairs = "minecraft:gray_concrete_stairs",
     /** 灰色坐垫。 */
     GrayCushion = "minecraft:gray_cushion",
     /** 灰色染料。 */
@@ -1240,6 +1250,8 @@ export declare enum MinecraftItemTypes {
     GreenConcrete = "minecraft:green_concrete",
     /** 绿色混凝土粉末。 */
     GreenConcretePowder = "minecraft:green_concrete_powder",
+    GreenConcreteSlab = "minecraft:green_concrete_slab",
+    GreenConcreteStairs = "minecraft:green_concrete_stairs",
     /** 绿色坐垫。 */
     GreenCushion = "minecraft:green_cushion",
     /** 绿色染料。 */
@@ -1498,6 +1510,8 @@ export declare enum MinecraftItemTypes {
     LightBlueConcrete = "minecraft:light_blue_concrete",
     /** 淡蓝色混凝土粉末。 */
     LightBlueConcretePowder = "minecraft:light_blue_concrete_powder",
+    LightBlueConcreteSlab = "minecraft:light_blue_concrete_slab",
+    LightBlueConcreteStairs = "minecraft:light_blue_concrete_stairs",
     /** 淡蓝色坐垫。 */
     LightBlueCushion = "minecraft:light_blue_cushion",
     /** 淡蓝色染料。 */
@@ -1530,6 +1544,8 @@ export declare enum MinecraftItemTypes {
     LightGrayConcrete = "minecraft:light_gray_concrete",
     /** 淡灰色混凝土粉末。 */
     LightGrayConcretePowder = "minecraft:light_gray_concrete_powder",
+    LightGrayConcreteSlab = "minecraft:light_gray_concrete_slab",
+    LightGrayConcreteStairs = "minecraft:light_gray_concrete_stairs",
     /** 淡灰色坐垫。 */
     LightGrayCushion = "minecraft:light_gray_cushion",
     /** 淡灰色染料。 */
@@ -1568,6 +1584,8 @@ export declare enum MinecraftItemTypes {
     LimeConcrete = "minecraft:lime_concrete",
     /** 黄绿色混凝土粉末。 */
     LimeConcretePowder = "minecraft:lime_concrete_powder",
+    LimeConcreteSlab = "minecraft:lime_concrete_slab",
+    LimeConcreteStairs = "minecraft:lime_concrete_stairs",
     /** 黄绿色坐垫。 */
     LimeCushion = "minecraft:lime_cushion",
     /** 黄绿色染料。 */
@@ -1614,6 +1632,8 @@ export declare enum MinecraftItemTypes {
     MagentaConcrete = "minecraft:magenta_concrete",
     /** 品红色混凝土粉末。 */
     MagentaConcretePowder = "minecraft:magenta_concrete_powder",
+    MagentaConcreteSlab = "minecraft:magenta_concrete_slab",
+    MagentaConcreteStairs = "minecraft:magenta_concrete_stairs",
     /** 品红色坐垫。 */
     MagentaCushion = "minecraft:magenta_cushion",
     /** 品红色染料。 */
@@ -1906,6 +1926,8 @@ export declare enum MinecraftItemTypes {
     OrangeConcrete = "minecraft:orange_concrete",
     /** 橙色混凝土粉末。 */
     OrangeConcretePowder = "minecraft:orange_concrete_powder",
+    OrangeConcreteSlab = "minecraft:orange_concrete_slab",
+    OrangeConcreteStairs = "minecraft:orange_concrete_stairs",
     /** 橙色坐垫。 */
     OrangeCushion = "minecraft:orange_cushion",
     /** 橙色染料。 */
@@ -2052,6 +2074,8 @@ export declare enum MinecraftItemTypes {
     PinkConcrete = "minecraft:pink_concrete",
     /** 粉红色混凝土粉末。 */
     PinkConcretePowder = "minecraft:pink_concrete_powder",
+    PinkConcreteSlab = "minecraft:pink_concrete_slab",
+    PinkConcreteStairs = "minecraft:pink_concrete_stairs",
     /** 粉红色坐垫。 */
     PinkCushion = "minecraft:pink_cushion",
     /** 粉红色染料。 */
@@ -2258,6 +2282,8 @@ export declare enum MinecraftItemTypes {
     PurpleConcrete = "minecraft:purple_concrete",
     /** 紫色混凝土粉末。 */
     PurpleConcretePowder = "minecraft:purple_concrete_powder",
+    PurpleConcreteSlab = "minecraft:purple_concrete_slab",
+    PurpleConcreteStairs = "minecraft:purple_concrete_stairs",
     /** 紫色坐垫。 */
     PurpleCushion = "minecraft:purple_cushion",
     /** 紫色染料。 */
@@ -2342,6 +2368,8 @@ export declare enum MinecraftItemTypes {
     RedConcrete = "minecraft:red_concrete",
     /** 红色混凝土粉末。 */
     RedConcretePowder = "minecraft:red_concrete_powder",
+    RedConcreteSlab = "minecraft:red_concrete_slab",
+    RedConcreteStairs = "minecraft:red_concrete_stairs",
     /** 红色坐垫。 */
     RedCushion = "minecraft:red_cushion",
     /** 红色染料。 */
@@ -3072,6 +3100,8 @@ export declare enum MinecraftItemTypes {
     WhiteConcrete = "minecraft:white_concrete",
     /** 白色混凝土粉末。 */
     WhiteConcretePowder = "minecraft:white_concrete_powder",
+    WhiteConcreteSlab = "minecraft:white_concrete_slab",
+    WhiteConcreteStairs = "minecraft:white_concrete_stairs",
     /** 白色坐垫。 */
     WhiteCushion = "minecraft:white_cushion",
     /** 白色染料。 */
@@ -3146,6 +3176,8 @@ export declare enum MinecraftItemTypes {
     YellowConcrete = "minecraft:yellow_concrete",
     /** 黄色混凝土粉末。 */
     YellowConcretePowder = "minecraft:yellow_concrete_powder",
+    YellowConcreteSlab = "minecraft:yellow_concrete_slab",
+    YellowConcreteStairs = "minecraft:yellow_concrete_stairs",
     /** 黄色坐垫。 */
     YellowCushion = "minecraft:yellow_cushion",
     /** 黄色染料。 */

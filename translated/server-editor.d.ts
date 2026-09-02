@@ -202,10 +202,9 @@ export declare enum CoreBrushShapeType {
 }
 
 /**
- * Built-in control categories for use with {@link
- * KeyBindingInfo.bindingCategory}. Pass any
- * `CoreInputBindingCategory` value or a custom string to
- * categorize a binding.
+ * Built-in control categories for use with bindingCategory in
+ * {@link KeyBindingInfo}. Pass any `CoreInputBindingCategory`
+ * value or a custom string to categorize a binding.
  */
 export declare enum CoreInputBindingCategory {
     Camera = 'editor:camera',
@@ -217,6 +216,7 @@ export declare enum CoreInputBindingCategory {
     Modes = 'editor:modes',
     Move = 'editor:move',
     Movement = 'editor:movement',
+    MoveSelection = 'editor:moveSelection',
     Nudge = 'editor:nudge',
     Offset = 'editor:offset',
     Operations = 'editor:operations',
@@ -224,6 +224,7 @@ export declare enum CoreInputBindingCategory {
     PastePreviewManipulation = 'editor:pastePreviewManipulation',
     SizeSelection = 'editor:sizeSelection',
     ToolActivation = 'editor:toolActivation',
+    ToolPanels = 'editor:toolPanels',
     TrimActions = 'editor:trimActions',
     Widget = 'editor:widget',
     Workbench = 'editor:workbench',
@@ -1408,6 +1409,18 @@ export enum StructureSource {
 }
 
 /**
+ * Determines how header sub panes managed by a sub pane view
+ * control will be sorted. `Custom` resolves each child's
+ * comparable value through a caller supplied function.
+ */
+export declare enum SubPaneViewSortType {
+    Default = 0,
+    AtoZ = 1,
+    ZtoA = 2,
+    Custom = 3,
+}
+
+/**
  * The possible variants of a TagContainer property item.
  */
 export declare enum TagContainerVariant {
@@ -2473,7 +2486,7 @@ export class BlockUtilityTasks {
         buildGeometry?: boolean,
         tolerance?: number,
         faceVolume?: BlockVolumeBase | RelativeVolumeListBlockVolume,
-    ): Promise<RelativeVolumeListBlockVolume>;
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2484,7 +2497,7 @@ export class BlockUtilityTasks {
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         block?: BlockPermutation | BlockType | string,
         maxBlocksPerTick?: number,
-    ): Promise<number>;
+    ): NumberTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2494,7 +2507,7 @@ export class BlockUtilityTasks {
     findObscuredBlocksWithinVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         maxBlocksPerTick?: number,
-    ): Promise<RelativeVolumeListBlockVolume>;
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2508,7 +2521,8 @@ export class BlockUtilityTasks {
         customBlockList?: string[],
         maxResultBlocks?: number,
         maxBlocksPerTick?: number,
-    ): Promise<RelativeVolumeListBlockVolume>;
+        directionMask?: number,
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2518,7 +2532,7 @@ export class BlockUtilityTasks {
     generateManifest(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         maxBlocksPerTick?: number,
-    ): Promise<BlockUtilityManifest>;
+    ): ManifestTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2530,7 +2544,7 @@ export class BlockUtilityTasks {
         fromBlockIdentifier: string,
         toBlock?: BlockPermutation | BlockType | string,
         maxBlocksPerTick?: number,
-    ): Promise<number>;
+    ): NumberTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2540,7 +2554,7 @@ export class BlockUtilityTasks {
     shrinkWrapVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
         maxBlocksPerTick?: number,
-    ): Promise<RelativeVolumeListBlockVolume>;
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation
@@ -2554,7 +2568,7 @@ export class BlockUtilityTasks {
         ignoreNoCollision: boolean,
         blockMask?: BlockMaskList,
         maxBlocksPerTick?: number,
-    ): Promise<RelativeVolumeListBlockVolume>;
+    ): VolumeTaskPromise;
 }
 
 /**
@@ -2903,8 +2917,8 @@ export class ClipboardItem {
      * @param location
      * The root point of the world location to which the
      * ClipboardItem is written (this is modified by the various
-     * anchor, offset and rotation parameters of the {@link
-     * ClipboardWriteOptions}
+     * anchor, offset and rotation parameters of the
+     * {@link ClipboardWriteOptions}
      * @param options
      * An optional set of write parameters which modify the
      * properties of the ClipboardItem as it is applied to the
@@ -2921,11 +2935,11 @@ export class ClipboardItem {
 }
 
 /**
- * The ClipboardManager (accessible from the {@link
- * ExtensionContext}) is responsible for the management of all
- * {@link ClipboardItem} objects, and provides the user the
- * ability to create new {@link ClipboardItem} objects for use
- * within an extension.
+ * The ClipboardManager (accessible from the
+ * {@link ExtensionContext}) is responsible for the management
+ * of all {@link ClipboardItem} objects, and provides the user
+ * the ability to create new {@link ClipboardItem} objects for
+ * use within an extension.
  *
  */
 export class ClipboardManager {
@@ -3778,8 +3792,8 @@ export class ExtensionContextAfterEvents {
 }
 
 /**
- * Settings category that manages {@link
- * GraphicsSettingsProperty} configurations.
+ * Settings category that manages
+ * {@link GraphicsSettingsProperty} configurations.
  */
 export class GraphicsSettings {
     private constructor();
@@ -3985,6 +3999,25 @@ export class Logger {
      * @throws This function can throw errors.
      */
     warning(message: LocalizationEntry | string, properties?: LogProperties): void;
+}
+
+/**
+ * Represents a cancellable Editor task that resolves with a
+ * block utility manifest.
+ *
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ManifestTaskPromise extends TaskPromiseBase {
+    private constructor();
+    /**
+     * @remarks
+     * The promise that resolves with the task's block utility
+     * manifest. If cancellation is accepted, the promise rejects
+     * with a `TaskCancelledError`.
+     *
+     *
+     */
+    readonly promise: Promise<BlockUtilityManifest>;
 }
 
 /**
@@ -4294,6 +4327,25 @@ export declare class NumberLimitObservableValidator implements ObservableValidat
     constructor(min: number | undefined, max: number | undefined, isInteger?: boolean);
     updateLimits(min: number | undefined, max: number | undefined): void;
     validate(newValue: number): number;
+}
+
+/**
+ * Represents a cancellable Editor task that resolves with a
+ * numeric result.
+ *
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class NumberTaskPromise extends TaskPromiseBase {
+    private constructor();
+    /**
+     * @remarks
+     * The promise that resolves with the task's numeric result. If
+     * cancellation is accepted, the promise rejects with a
+     * `TaskCancelledError`.
+     *
+     *
+     */
+    readonly promise: Promise<number>;
 }
 
 /**
@@ -4668,12 +4720,12 @@ export class SelectionEventAfterEvent {
 }
 
 /**
- * The SelectionManager (accessible from the {@link
- * ExtensionContext}) is responsible for the management of all
- * {@link @minecraft/server-editor.Selection} objects, and
- * provides the user the ability to create new {@link
- * @minecraft/server-editor.Selection} objects for use within
- * an extension.
+ * The SelectionManager (accessible from the
+ * {@link ExtensionContext}) is responsible for the management
+ * of all {@link SelectionContainerVolume} objects, and
+ * provides the user the ability to create new
+ * {@link SelectionContainerVolume} objects for use within an
+ * extension.
  */
 export class SelectionManager {
     private constructor();
@@ -4706,9 +4758,9 @@ export class SelectionManager {
 }
 
 /**
- * The SettingsManager (accessible from the {@link
- * ExtensionContext}) is responsible for the management all
- * player settings.
+ * The SettingsManager (accessible from the
+ * {@link ExtensionContext}) is responsible for the management
+ * all player settings.
  */
 export class SettingsManager {
     private constructor();
@@ -4818,6 +4870,46 @@ export class SpeedSettings {
      * @throws This function can throw errors.
      */
     setAll(properties: SpeedSettingsPropertyTypeMap): void;
+}
+
+/**
+ * Provides shared cancellation controls for an asynchronous
+ * Editor task. Calling `cancel` requests cancellation; when
+ * cancellation is accepted, `cancelled` becomes true and the
+ * task promise rejects with a `TaskCancelledError` when the
+ * coroutine scheduler next processes the task. Cancellation
+ * does not undo changes that the task already applied.
+ *
+ */
+export class TaskPromiseBase {
+    private constructor();
+    /**
+     * @remarks
+     * Whether cancellation was accepted for the task.
+     *
+     *
+     */
+    readonly cancelled: boolean;
+    /**
+     * @remarks
+     * The current normalized task progress from 0 to 1. Task
+     * groups report the average progress of their constituent
+     * tasks. Successful tasks report 1 after settlement; failed or
+     * cancelled tasks retain their last observed progress.
+     *
+     *
+     */
+    readonly progress: number;
+    /**
+     * @remarks
+     * Requests cancellation of the task. Calling this method more
+     * than once, or after the task has settled, has no effect.
+     *
+     *
+     * @worldMutation
+     *
+     */
+    cancel(): void;
 }
 
 export class ThemeSettings {
@@ -5119,9 +5211,47 @@ export declare class Vector3LimitObservableValidator implements ObservableValida
     validate(newValue: Vector3): Vector3;
 }
 
+/**
+ * Represents a cancellable Editor task that does not produce a
+ * result value.
+ *
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class VoidTaskPromise extends TaskPromiseBase {
+    private constructor();
+    /**
+     * @remarks
+     * The promise that resolves when the task completes. If
+     * cancellation is accepted, the promise rejects with a
+     * `TaskCancelledError`.
+     *
+     *
+     */
+    readonly promise: Promise<void>;
+}
+
 // @ts-ignore Class inheritance allowed for native defined classes
 export class VolumeListTransactionOperationHandler extends TransactionOperationHandler {
     private constructor();
+}
+
+/**
+ * Represents a cancellable Editor task that resolves with a
+ * relative-volume result.
+ *
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class VolumeTaskPromise extends TaskPromiseBase {
+    private constructor();
+    /**
+     * @remarks
+     * The promise that resolves with the task's relative-volume
+     * result. If cancellation is accepted, the promise rejects
+     * with a `TaskCancelledError`.
+     *
+     *
+     */
+    readonly promise: Promise<RelativeVolumeListBlockVolume>;
 }
 
 export class Widget {
@@ -8300,8 +8430,8 @@ export interface IGlobalInputManager {
      * Help panel.
      *
      * @param id
-     * Unique category identifier (use a {@link
-     * CoreInputBindingCategory} value or a custom string).
+     * Unique category identifier (use a
+     * {@link CoreInputBindingCategory} value or a custom string).
      * @param label
      * Localized display name shown as the group heading.
      * @param order
@@ -10987,10 +11117,252 @@ export interface IStringPropertyItemOptions extends IPropertyItemOptionsBase {
 }
 
 /**
+ * A fixed-layout header that replaces the default expander
+ * header of a sub pane. Only the two dynamic widgets are
+ * add*-able; they land in the right region, in call order,
+ * just left of the menu.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPaneHeader extends IPane {
+    /**
+     * @remarks
+     * Adds a color picker to the dynamic region of the header.
+     *
+     * @param value
+     * Observable driving the color value.
+     * @param options
+     * Header-local color options.
+     */
+    addColorPicker(
+        value: IObservableProp<RGBA>,
+        options?: ISubPaneHeaderColorOptions,
+    ): ISubPaneHeaderColorItem;
+    /**
+     * @remarks
+     * Adds an icon button to the dynamic region of the header.
+     *
+     * @param action
+     * Action to run when the button is clicked.
+     * @param options
+     * Header-local button options.
+     */
+    addIconButton(
+        action: ButtonPropertyItemSupportedActionTypes,
+        options: ISubPaneHeaderButtonOptions,
+    ): ISubPaneHeaderButtonItem;
+    /**
+     * @remarks
+     * Replaces the overflow menu entries of the header.
+     *
+     * @param entries
+     * New menu entries.
+     */
+    setMenu(entries: IMenuCreationParams[]): void;
+}
+
+/**
+ * A curated, icon-only button in a sub pane header.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPaneHeaderButtonItem extends ISubPaneHeaderItem {
+    /**
+     * @remarks
+     * Replaces the action assigned to the button.
+     *
+     * @param action
+     * New action.
+     */
+    replaceAction(action: RegisteredAction<NoArgsAction>): void;
+    /**
+     * @remarks
+     * Updates the icon of the button.
+     *
+     * @param icon
+     * New icon.
+     */
+    setIcon(icon: string): void;
+}
+
+/**
+ * Header-local options for an icon button in a sub pane
+ * header.
+ */
+export interface ISubPaneHeaderButtonOptions {
+    /**
+     * @remarks
+     * Optional observable driving the enabled state of the button.
+     *
+     */
+    enabled?: IObservableProp<boolean>;
+    /**
+     * @remarks
+     * Required icon. Header buttons are icon-only.
+     *
+     */
+    icon: string;
+    /**
+     * @remarks
+     * Optional narration label.
+     *
+     */
+    narrationLabel?: LocalizedString;
+    /**
+     * @remarks
+     * Optional tooltip.
+     *
+     */
+    tooltip?: BasicTooltipContent;
+    /**
+     * @remarks
+     * Optional button variant.
+     *
+     */
+    variant?: ButtonVariant;
+}
+
+/**
+ * Options for the prebaked multiselect checkbox displayed at
+ * the start of a header sub pane.
+ */
+export interface ISubPaneHeaderCheckboxOptions {
+    /**
+     * @remarks
+     * Called when the user toggles the checkbox.
+     *
+     */
+    onChange?: (checked: boolean) => void;
+    /**
+     * @remarks
+     * Observable driving the checked state of the checkbox.
+     *
+     */
+    value: IObservableProp<boolean>;
+}
+
+/**
+ * A color picker in a sub pane header.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPaneHeaderColorItem extends ISubPaneHeaderItem {
+    /**
+     * @remarks
+     * Current color value of the header item.
+     *
+     */
+    readonly value: RGBA;
+}
+
+/**
+ * Header-local options for a color picker in a sub pane
+ * header.
+ */
+export interface ISubPaneHeaderColorOptions {
+    /**
+     * @remarks
+     * Optional narration label.
+     *
+     */
+    narrationLabel?: LocalizedString;
+    /**
+     * @remarks
+     * Optional tooltip.
+     *
+     */
+    tooltip?: LocalizedString;
+}
+
+/**
+ * Common base for the dynamic widgets of a sub pane header.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPaneHeaderItem extends IPropertyItemBase {
+    /**
+     * @remarks
+     * Updates the tooltip of the header item.
+     *
+     * @param tooltip
+     * New tooltip.
+     */
+    setTooltip(tooltip: BasicTooltipContent | undefined): void;
+}
+
+/**
+ * Options to create a fixed-layout header for a sub pane.
+ */
+export interface ISubPaneHeaderOptions {
+    /**
+     * @remarks
+     * Prebaked left: optional multiselect checkbox, rendered
+     * before the chevron.
+     *
+     */
+    checkbox?: ISubPaneHeaderCheckboxOptions;
+    /**
+     * @remarks
+     * If false, clicking the non-widget header background does not
+     * toggle expand. Default true.
+     *
+     */
+    clickToExpand?: boolean;
+    /**
+     * @remarks
+     * Prebaked right: optional overflow menu entries.
+     *
+     */
+    menu?: IMenuCreationParams[];
+    /**
+     * @remarks
+     * Called when a header menu item is clicked.
+     *
+     */
+    onMenuClicked?: (menuId: string) => void;
+}
+
+/**
  * A property item which supports Sub Pane properties
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface ISubPanePropertyItem extends IPropertyItemBase, IPropertyPane {
+    /**
+     * @remarks
+     * Fixed-layout header of the sub pane, or undefined if
+     * addHeader() was not called.
+     *
+     */
+    readonly header: ISubPaneHeader | undefined;
+    /**
+     * @remarks
+     * Current sorting type for the direct child sub panes.
+     *
+     */
+    readonly subPaneViewSortType: SubPaneViewSortType;
+    /**
+     * @remarks
+     * View control pane for the direct child sub panes, or
+     * undefined if not built.
+     *
+     */
+    readonly viewControlPane: IListViewControlPane | undefined;
+    /**
+     * @remarks
+     * Replaces the default expander header with a fixed-layout
+     * header. Available on sub panes only, so root panes never
+     * expose it.
+     *
+     * @param options
+     * Options to create the header.
+     */
+    addHeader(options?: ISubPaneHeaderOptions): ISubPaneHeader;
+    /**
+     * @remarks
+     * Enables sorting and a fixed footer over this sub pane's
+     * direct child sub panes. Reuses the list view control,
+     * rendered in the root footer or inline.
+     *
+     * @param options
+     * Options to create the view control.
+     */
+    buildSubPaneViewControl(options: ISubPaneViewControlOptions): IListViewControlPane;
     /**
      * @remarks
      * Updates layout alignment of the sub pane.
@@ -11005,6 +11377,15 @@ export interface ISubPanePropertyItem extends IPropertyItemBase, IPropertyPane {
      *
      */
     setDirection(layout: PaneLayoutType): void;
+    /**
+     * @remarks
+     * Updates the tags associated with the sub pane, used by a
+     * parent sub pane view control's tag filter.
+     *
+     * @param tags
+     * New tags.
+     */
+    setTags(tags: string[] | undefined): void;
 }
 
 /**
@@ -11075,10 +11456,91 @@ export interface ISubPanePropertyItemOptions extends IPropertyPaneOptions {
     scrollable?: boolean;
     /**
      * @remarks
+     * Tags associated with the sub pane, used by a parent sub pane
+     * view control's tag filter.
+     *
+     */
+    tags?: string[];
+    /**
+     * @remarks
      * Custom width of the property item.
      *
      */
     width?: number | LayoutSize;
+}
+
+/**
+ * Options to enable sorting and a fixed footer over a sub
+ * pane's direct child sub panes.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface ISubPaneViewControlOptions extends IListViewControlPaneOptions {
+    /**
+     * @remarks
+     * Flags to determine which filters are visible. If undefined,
+     * it will be All.
+     *
+     */
+    filterFlags?: ListViewControlFilterFlags;
+    /**
+     * @remarks
+     * Resolves each child's comparable value for the Custom sort.
+     * Only called for the Custom sort; the built-in Default / AtoZ
+     * / ZtoA never use it.
+     *
+     */
+    getSortValue?: (childPaneId: string) => string | number;
+    /**
+     * @remarks
+     * Called whenever the filter is changed by the user.
+     *
+     */
+    onFilterChanged?: (visibleChildPaneIds: string[]) => void;
+    /**
+     * @remarks
+     * Called when the user selects an entry in the "Show"
+     * dropdown. Receives the zero-based option index.
+     *
+     */
+    onShowOptionChanged?: (optionIndex: number) => void;
+    /**
+     * @remarks
+     * Called when the user changes the sort.
+     *
+     */
+    onSortChanged?: (sort: SubPaneViewSortType) => void;
+    /**
+     * @remarks
+     * When true, the view control renders inline at the bottom of
+     * the sub pane instead of in a footer.
+     *
+     */
+    renderInline?: boolean;
+    /**
+     * @remarks
+     * Labels for the "Show" dropdown. When provided, a dropdown is
+     * shown and onShowOptionChanged is called with the selected
+     * index whenever the user changes the selection.
+     *
+     */
+    showOptions?: {
+        label: LocalizedString;
+        value: number;
+    }[];
+    /**
+     * @remarks
+     * Optional label override per sort. Built-ins fall back to
+     * framework labels.
+     *
+     */
+    sortLabels?: Partial<Record<SubPaneViewSortType, LocalizedString>>;
+    /**
+     * @remarks
+     * Sorts shown in the footer dropdown. If undefined, only
+     * Default is used.
+     *
+     */
+    sortOptions?: SubPaneViewSortType[];
 }
 
 /**
@@ -12165,9 +12627,9 @@ export interface LocalizationEntry {
 /**
  * A properties class for the global instance of the logger
  * object.
- * While the logger object is available through the {@link
- * ExtensionContext} - using the global instance allows the
- * creator to use this properties class to perform direct
+ * While the logger object is available through the
+ * {@link ExtensionContext} - using the global instance allows
+ * the creator to use this properties class to perform direct
  * server->client messaging and broadcasts.
  */
 export interface LogProperties {
@@ -12504,6 +12966,16 @@ export class InvalidWidgetError extends Error {
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidWidgetGroupError extends Error {
+    private constructor();
+}
+
+/**
+ * An error thrown when an Editor task is cancelled before it
+ * completes.
+ *
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class TaskCancelledError extends Error {
     private constructor();
 }
 

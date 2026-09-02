@@ -1,8 +1,8 @@
-/* IMPORT */ import { BookErrorReason } from '..';
+/* IMPORT */ import { BookErrorReason, ItemBookComponent } from '..';
 
 /**
- * Errors that can be thrown when using {@link
- * ItemBookComponent}.
+ * Errors that can be thrown when using
+ * {@link ItemBookComponent}.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BookError extends Error {

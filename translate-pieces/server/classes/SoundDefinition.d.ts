@@ -1,13 +1,13 @@
 /* IMPORT */ import { SoundDefinitionDurationInfo, SoundDefinitionMusicInfo } from '..';
 
 /**
- * @beta
  * Static metadata about a sound declared in a
  * sound_definitions.json file.
  */
 export class SoundDefinition {
     private constructor();
     /**
+     * @rc
      * @remarks
      * Duration metadata declared for this sound. Undefined when
      * the sound definition does not specify a duration.
@@ -15,6 +15,7 @@ export class SoundDefinition {
      */
     readonly durationInfo?: SoundDefinitionDurationInfo;
     /**
+     * @rc
      * @remarks
      * Music metadata declared for this sound. Undefined when the
      * sound definition does not specify a music_info block.
@@ -22,6 +23,7 @@ export class SoundDefinition {
      */
     readonly musicInfo?: SoundDefinitionMusicInfo;
     /**
+     * @rc
      * @remarks
      * Identifier of the sound event this definition declares, in
      * the form 'namespace:name'.
@@ -29,6 +31,7 @@ export class SoundDefinition {
      */
     readonly soundEventId: string;
     /**
+     * @rc
      * @remarks
      * Tag metadata declared for this sound, as a record mapping
      * each tag name to its declared values. A tag declared with a

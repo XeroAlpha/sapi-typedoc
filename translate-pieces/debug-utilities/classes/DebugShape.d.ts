@@ -54,8 +54,8 @@ export class DebugShape {
     maximumRenderDistance?: number;
     /**
      * @remarks
-     * The rotation of the shape (Euler angles - [Pitch, Yaw,
-     * Roll]).
+     * The rotation of the shape in degrees (Euler angles - [Pitch,
+     * Yaw, Roll]).
      *
      */
     rotation: Vector3;

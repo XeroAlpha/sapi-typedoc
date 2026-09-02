@@ -1676,9 +1676,9 @@ export class Test {
     getSculkSpreader(blockLocation: Vector3): SculkSpreader | undefined;
     /**
      * @remarks
-     * Returns the direction of the current test - see the {@link
-     * minecraftserver.Direction} enum for more information on
-     * potential values (north, east, south, west - values 2-5).
+     * Returns the direction of the current test - see the
+     * {@link Direction} enum for more information
+     * on potential values (north, east, south, west - values 2-5).
      *
      * @throws This function can throw errors.
      *
@@ -2621,8 +2621,9 @@ export function setBeforeBatchCallback(batchName: string, batchCallback: () => v
 /**
  * @remarks
  * Spawns a simulated player that isn't associated to a
- * specific {@link Test}.  You can use {@link
- * SimulatedPlayer.remove} to remove the player from the world.
+ * specific {@link Test}.  You can use
+ * {@link SimulatedPlayer.disconnect} to remove the player from
+ * the world.
  *
  * @worldMutation
  *

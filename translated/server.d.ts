@@ -167,8 +167,8 @@ export enum BlockVolumeIntersection {
 }
 
 /**
- * An enum of error reasons relating to using {@link
- * ItemBookComponent}.
+ * An enum of error reasons relating to using
+ * {@link ItemBookComponent}.
  */
 export enum BookErrorReason {
     /**
@@ -287,22 +287,21 @@ export enum CommandPermissionLevel {
 }
 
 /**
- * Reasons that the {@link
- * @minecraft/server.ContainerRulesError} was thrown.
+ * Reasons that the {@link ContainerRulesError} was thrown.
  */
 export enum ContainerRulesErrorReason {
     /**
      * @remarks
-     * Thrown when trying to add item that was defined in {@link
-     * ContainerRules.bannedItems}.
+     * Thrown when trying to add item that was defined in
+     * {@link ContainerRules.bannedItems}.
      *
      */
     BannedItem = 'BannedItem',
     /**
      * @remarks
      * Thrown when trying to add item with `Storage Item` component
-     * to container with {@link
-     * ContainerRules.allowNestedStorageItems} set to false.
+     * to container with
+     * {@link ContainerRules.allowNestedStorageItems} set to false.
      *
      */
     NestedStorageItem = 'NestedStorageItem',
@@ -451,8 +450,7 @@ export enum CustomCommandParamType {
     ItemType = 'ItemType',
     /**
      * @remarks
-     * Location parameter provides a {@link
-     * @minecraft/server.Vector3}.
+     * Location parameter provides a vector position.
      *
      */
     Location = 'Location',
@@ -2039,8 +2037,8 @@ export enum GameRule {
 }
 
 /**
- * Describes the graphics mode of a client. Used by {@link
- * Player.graphicsMode}
+ * Describes the graphics mode of a client. Used by
+ * {@link Player.graphicsMode}
  */
 export enum GraphicsMode {
     /**
@@ -2133,8 +2131,9 @@ export enum HudVisibility {
 
 /**
  * All the different input buttons that are supported. Use with
- * {@link InputInfo.getButtonState} via {@link
- * Player.inputInfo} or {@link PlayerButtonInputAfterEvent} via
+ * {@link InputInfo.getButtonState} via
+ * {@link Player.inputInfo} or
+ * {@link PlayerButtonInputAfterEvent} via
  * {@link WorldAfterEvents.playerButtonInput}
  */
 export enum InputButton {
@@ -2190,10 +2189,10 @@ export enum InputMode {
 }
 
 /**
- * Input permission categories. Used by {@link
- * PlayerInputPermissionCategoryChangeAfterEvent} to specify
- * which category was changed and {@link
- * PlayerInputPermissions} to get or set permissions.
+ * Input permission categories. Used by
+ * {@link PlayerInputPermissionCategoryChangeAfterEvent} to
+ * specify which category was changed and
+ * {@link PlayerInputPermissions} to get or set permissions.
  */
 export enum InputPermissionCategory {
     /**
@@ -2729,7 +2728,6 @@ export enum PlayerPermissionLevel {
 }
 
 /**
- * @rc
  * The split screen slot of a player.
  */
 export enum PlayerSplitScreenSlot {
@@ -2970,8 +2968,7 @@ export enum StructureSaveMode {
 }
 
 /**
- * The reason that the {@link
- * @minecraft/server.TickingAreaError} was thrown.
+ * The reason that the {@link TickingAreaError} was thrown.
  */
 export enum TickingAreaErrorReason {
     /**
@@ -3212,9 +3209,7 @@ export type BlockComponentTypeMap = {
 
 /**
  * Type alias used by the {@link BlockPermutation} matches and
- * resolve functions to narrow block state argument types to
- * those mapped by {@link
- * @minecraft/vanilla-data.BlockStateMapping}.
+ * resolve functions to narrow block state argument types.
  */
 export type BlockStateArg<T> = T extends `${MinecraftBlockTypes}`
     ? T extends keyof BlockStateMapping
@@ -4497,7 +4492,6 @@ export class Block {
      */
     getMapColor(): RGBA;
     /**
-     * @rc
      * @remarks
      * Returns array of all loaded block parts if this block has
      * the 'minecraft:multi_block' trait. If it does not have the
@@ -4849,8 +4843,8 @@ export class Block {
 /**
  * @beta
  * Bounding Box Utils is a utility class that provides a number
- * of useful functions for the creation and utility of {@link
- * BlockBoundingBox} objects
+ * of useful functions for the creation and utility of
+ * {@link BlockBoundingBox} objects
  */
 export class BlockBoundingBoxUtils {
     private constructor();
@@ -4908,8 +4902,8 @@ export class BlockBoundingBoxUtils {
     static expand(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox;
     /**
      * @remarks
-     * Calculate the center block of a given {@link
-     * BlockBoundingBox} object.
+     * Calculate the center block of a given
+     * {@link BlockBoundingBox} object.
      *
      * @worldMutation
      *
@@ -5402,7 +5396,7 @@ export class BlockCustomComponentInstance extends BlockComponent {
  * Represents the dynamic properties of a block in the world.
  * Only available with block entities. Up to 1KB per content
  * pack, per block entity in their dynamic properties storage.
- * @seeExample rememberPlayerInteraction.ts c73a6eb9
+ * @seeExample rememberPlayerInteraction.ts
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockDynamicPropertiesComponent extends BlockComponent {
@@ -5778,8 +5772,8 @@ export class BlockMovableComponent extends BlockComponent {
 /**
  * Contains the combination of type {@link BlockType} and
  * properties (also sometimes called block state) which
- * describe a block (but does not belong to a specific {@link
- * Block}).
+ * describe a block (but does not belong to a specific
+ * {@link Block}).
  * @seeExample addTranslatedSign.ts 9e2fd749
  */
 export class BlockPermutation {
@@ -7086,8 +7080,8 @@ export class Container {
      * Gets an {@link ItemStack} of the item at the specified slot.
      * If the slot is empty, returns `undefined`. This method does
      * not change or clear the contents of the specified slot. To
-     * get a reference to a particular slot, see {@link
-     * Container.getSlot}.
+     * get a reference to a particular slot, see
+     * {@link Container.getSlot}.
      *
      * @param slot
      * Zero-based index of the slot to retrieve items from.
@@ -7429,8 +7423,8 @@ export class ContainerSlot {
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
-     * ItemStack. String lore lines will be converted to a {@link
-     * RawMessage} and put under {@link RawMessage.text}.
+     * ItemStack. String lore lines will be converted to a
+     * {@link RawMessage} and put under {@link RawMessage.text}.
      *
      * @returns
      * An array of lore lines. If the item does not have lore,
@@ -7809,7 +7803,6 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @rc
      * @remarks
      * Calculates the location of the closest biome of a particular
      * type from the world seed. Note that
@@ -8632,8 +8625,8 @@ export class Effect {
     /**
      * @remarks
      * Gets the entire specified duration, in ticks, of this
-     * effect. There are 20 ticks per second. Use {@link
-     * TicksPerSecond} constant to convert between ticks and
+     * effect. There are 20 ticks per second. Use
+     * {@link TicksPerSecond} constant to convert between ticks and
      * seconds.
      *
      * @throws This property can throw when used.
@@ -9863,6 +9856,8 @@ export class Entity {
      * Options regarding the teleport operation.
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link InvalidEntityError}
      *
      * {@link UnsupportedFunctionalityError}
@@ -9910,6 +9905,8 @@ export class Entity {
      * destination chunk is unloaded or if the teleport would
      * result in intersecting with blocks.
      * @throws This function can throw errors.
+     *
+     * {@link Error}
      *
      * {@link InvalidEntityError}
      *
@@ -13900,6 +13897,13 @@ export class InputInfo {
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
+     * @remarks
+     * Retrieves the current state of a button. If a player presses
+     * and releases a button really fast this may not ever be set
+     * to true. To capture all button state changes, use
+     * {@link PlayerButtonInputAfterEvent} via
+     * {@link WorldAfterEvents.playerButtonInput}
+     *
      * @throws This function can throw errors.
      *
      * {@link EngineError}
@@ -14031,9 +14035,9 @@ export class ItemBookComponent extends ItemComponent {
     readonly pageCount: number;
     /**
      * @remarks
-     * The contents of pages in the book that are in {@link
-     * RawMessage} format. Entries not in {@link RawMessage} format
-     * will be undefined.
+     * The contents of pages in the book that are in
+     * {@link RawMessage} format. Entries not in {@link RawMessage}
+     * format will be undefined.
      *
      * @throws This property can throw when used.
      *
@@ -14094,8 +14098,8 @@ export class ItemBookComponent extends ItemComponent {
      * The index of the page.
      * @param content
      * The content to set for the page. Can be a single string or
-     * {@link RawMessage} or an array of strings and/or {@link
-     * RawMessage}s
+     * {@link RawMessage} or an array of strings and/or
+     * {@link RawMessage}s
      * @throws This function can throw errors.
      *
      * {@link BookError}
@@ -14157,8 +14161,8 @@ export class ItemBookComponent extends ItemComponent {
      * The index of the page.
      * @param content
      * The content to set for the page. Can be a single string or
-     * {@link RawMessage} or an array of strings and/or {@link
-     * RawMessage}s
+     * {@link RawMessage} or an array of strings and/or
+     * {@link RawMessage}s
      * @throws This function can throw errors.
      *
      * {@link BookError}
@@ -15143,9 +15147,7 @@ export class ItemStack {
      * world.
      *
      * @param itemType
-     * Type of item to create. See the {@link
-     * @minecraft/vanilla-data.MinecraftItemTypes} enumeration for
-     * a list of standard item types in Minecraft experiences.
+     * Type of item to create.
      * @param amount
      * Number of items to place in the stack, between 1-255. The
      * provided value will be clamped to the item's maximum stack
@@ -15200,9 +15202,9 @@ export class ItemStack {
      * @param componentId
      * The identifier of the component (e.g., 'minecraft:food'). If
      * no namespace prefix is specified, 'minecraft:' is assumed.
-     * Available component IDs are those in the {@link
-     * ItemComponentTypes} enum and custom component IDs registered
-     * with the {@link ItemComponentRegistry}.
+     * Available component IDs are those in the
+     * {@link ItemComponentTypes} enum and custom component IDs
+     * registered with the {@link ItemComponentRegistry}.
      * @returns
      * Returns the component if it exists on the item stack,
      * otherwise undefined.
@@ -15260,8 +15262,8 @@ export class ItemStack {
     /**
      * @remarks
      * Returns the lore value - a secondary display string - for an
-     * ItemStack. String lore lines will be converted to a {@link
-     * RawMessage} and put under {@link RawMessage.text}.
+     * ItemStack. String lore lines will be converted to a
+     * {@link RawMessage} and put under {@link RawMessage.text}.
      *
      * @returns
      * An array of lore lines. If the item does not have lore,
@@ -16118,9 +16120,6 @@ export class LootingEnchantFunction extends LootItemFunction {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LootItem extends LootPoolEntry {
     private constructor();
-    /**
-     * @rc
-     */
     readonly conditions: LootItemCondition[];
     readonly functions: LootItemFunction[];
     /**
@@ -16547,12 +16546,12 @@ export class MolangVariableMap {
      * @remarks
      * Adds the following variables to Molang:
      * - `<variable_name>.speed` - Speed number provided
-     * - `<variable_name>.direction_x` - X value from the {@link
-     * Vector3} provided
-     * - `<variable_name>.direction_y` - Y value from the {@link
-     * Vector3} provided
-     * - `<variable_name>.direction_z` - Z value from the {@link
-     * Vector3} provided
+     * - `<variable_name>.direction_x` - X value from the
+     * {@link Vector3} provided
+     * - `<variable_name>.direction_y` - Y value from the
+     * {@link Vector3} provided
+     * - `<variable_name>.direction_z` - Z value from the
+     * {@link Vector3} provided
      *
      * @throws This function can throw errors.
      */
@@ -16695,11 +16694,12 @@ export class Player extends Entity {
     /**
      * @beta
      * @remarks
-     * The player's chat display name, composed from {@link
-     * Player.chatNamePrefix} + {@link Player.name} + {@link
-     * Player.chatNameSuffix}. This is the name shown as the author
-     * of chat messages sent by this player. To change the name
-     * shown above the player's head, use {@link Entity.nameTag}.
+     * The player's chat display name, composed from
+     * {@link Player.chatNamePrefix} + {@link Player.name} +
+     * {@link Player.chatNameSuffix}. This is the name shown as the
+     * author of chat messages sent by this player. To change the
+     * name shown above the player's head, use
+     * {@link Entity.nameTag}.
      *
      * @throws This property can throw when used.
      *
@@ -16726,10 +16726,10 @@ export class Player extends Entity {
      * @remarks
      * An optional string that, when set, is prepended to the
      * player's name in chat messages. Does not affect the name tag
-     * above the player's head or the player list - use {@link
-     * Entity.nameTag} for that. To prefix the message text itself,
-     * use {@link Player.chatMessagePrefix}. Set to undefined to
-     * clear.
+     * above the player's head or the player list - use
+     * {@link Entity.nameTag} for that. To prefix the message text
+     * itself, use {@link Player.chatMessagePrefix}. Set to
+     * undefined to clear.
      *
      * @worldMutation
      *
@@ -16740,9 +16740,9 @@ export class Player extends Entity {
      * @remarks
      * An optional string that, when set, is appended to the
      * player's name in chat messages. Does not affect the name tag
-     * above the player's head or the player list - use {@link
-     * Entity.nameTag} for that. See also {@link
-     * Player.chatNamePrefix}. Set to undefined to clear.
+     * above the player's head or the player list - use
+     * {@link Entity.nameTag} for that. See also
+     * {@link Player.chatNamePrefix}. Set to undefined to clear.
      *
      * @worldMutation
      *
@@ -17524,7 +17524,6 @@ export class PlayerButtonInputAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event after a player
  * cancels breaking a block.
  */
@@ -17567,7 +17566,6 @@ export class PlayerCancelBreakingBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a player
  * cancels breaking a block.
  */
@@ -18788,7 +18786,6 @@ export class PlayerSpawnAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event after a player
  * starts breaking a block.
  */
@@ -18824,7 +18821,6 @@ export class PlayerStartBreakingBlockAfterEvent extends BlockEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when a player starts
  * breaking a block.
  */
@@ -18878,8 +18874,8 @@ export class PlayerSwingStartAfterEvent {
     readonly player: Player;
     /**
      * @remarks
-     * The source of the Player swing, see {@link
-     * EntitySwingSource}.
+     * The source of the Player swing, see
+     * {@link EntitySwingSource}.
      *
      */
     readonly swingSource: EntitySwingSource;
@@ -18996,9 +18992,9 @@ export class PlayerUseNameTagAfterEventSignal {
 }
 
 /**
- * Waypoint that tracks a player's position. Extends {@link
- * EntityWaypoint} with additional player-specific visibility
- * rules such as hidden state and spectator mode.
+ * Waypoint that tracks a player's position. Extends
+ * {@link EntityWaypoint} with additional player-specific
+ * visibility rules such as hidden state and spectator mode.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class PlayerWaypoint extends EntityWaypoint {
@@ -20573,13 +20569,13 @@ export class SoundCompletedAfterEventSignal {
 }
 
 /**
- * @beta
  * Static metadata about a sound declared in a
  * sound_definitions.json file.
  */
 export class SoundDefinition {
     private constructor();
     /**
+     * @rc
      * @remarks
      * Duration metadata declared for this sound. Undefined when
      * the sound definition does not specify a duration.
@@ -20587,6 +20583,7 @@ export class SoundDefinition {
      */
     readonly durationInfo?: SoundDefinitionDurationInfo;
     /**
+     * @rc
      * @remarks
      * Music metadata declared for this sound. Undefined when the
      * sound definition does not specify a music_info block.
@@ -20594,6 +20591,7 @@ export class SoundDefinition {
      */
     readonly musicInfo?: SoundDefinitionMusicInfo;
     /**
+     * @rc
      * @remarks
      * Identifier of the sound event this definition declares, in
      * the form 'namespace:name'.
@@ -20601,6 +20599,7 @@ export class SoundDefinition {
      */
     readonly soundEventId: string;
     /**
+     * @rc
      * @remarks
      * Tag metadata declared for this sound, as a record mapping
      * each tag name to its declared values. A tag declared with a
@@ -20613,7 +20612,7 @@ export class SoundDefinition {
 }
 
 /**
- * @beta
+ * @rc
  * Provides read-only access to the sound definitions loaded
  * for the current world.
  */
@@ -20791,7 +20790,6 @@ export class SoundInstance {
      */
     setVolume(volume: number): void;
     /**
-     * @rc
      * @remarks
      * Stops this sound instance from playing.
      *
@@ -20863,6 +20861,13 @@ export class StartupEvent {
      *
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
+    /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly worldClockRegistry: WorldClockRegistry;
 }
 
 /**
@@ -21014,9 +21019,10 @@ export class StructureManager {
     private constructor();
     /**
      * @remarks
-     * Creates an empty Structure in memory. Use {@link
-     * Structure.setBlockPermutation} to populate the structure
-     * with blocks and save changes with {@link Structure.saveAs}.
+     * Creates an empty Structure in memory. Use
+     * {@link Structure.setBlockPermutation} to populate the
+     * structure with blocks and save changes with
+     * {@link Structure.saveAs}.
      *
      * @worldMutation
      *
@@ -21296,8 +21302,8 @@ export class System {
     readonly serverSystemInfo: SystemInfo;
     /**
      * @remarks
-     * Cancels the execution of a job queued via {@link
-     * System.runJob}.
+     * Cancels the execution of a job queued via
+     * {@link System.runJob}.
      *
      * @earlyExecution
      *
@@ -21363,8 +21369,8 @@ export class System {
      * @param generator
      * The instance of the generator to run.
      * @returns
-     * An opaque handle that can be used with {@link
-     * System.clearJob} to stop the run of this generator.
+     * An opaque handle that can be used with
+     * {@link System.clearJob} to stop the run of this generator.
      * @seeExample cubeGenerator.ts
      */
     runJob(generator: Generator<void, void, void>): number;
@@ -22134,7 +22140,7 @@ export class World {
      */
     readonly seed: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Provides read-only access to the sound definitions loaded
      * for this world.
@@ -22205,6 +22211,22 @@ export class World {
      * {@link InvalidArgumentError}
      */
     getAllPlayers(): Player[];
+    /**
+     * @beta
+     * @remarks
+     * Retrieves a world clock by its name.
+     *
+     * @param name
+     * The name of the world clock to retrieve.
+     * @returns
+     * The {@link WorldClock} with the given name.
+     * @throws
+     * WorldClockNotFoundError: If the world clock with the given
+     * name does not exist.
+     *
+     * {@link WorldClockNotFoundError}
+     */
+    getClock(name: string): WorldClock;
     /**
      * @remarks
      * Returns the current day.
@@ -22876,7 +22898,6 @@ export class WorldAfterEvents {
      */
     readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player cancels breaking a block.
      *
@@ -22990,7 +23011,6 @@ export class WorldAfterEvents {
      */
     readonly playerSpawn: PlayerSpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a player starts breaking a block.
      *
@@ -23233,6 +23253,69 @@ export class WorldBeforeEvents {
     readonly weatherChange: WeatherChangeBeforeEventSignal;
 }
 
+/**
+ * @beta
+ * A class that represents a particular clock within a world.
+ */
+export class WorldClock {
+    private constructor();
+    /**
+     * @remarks
+     * Retrieves or sets whether the world clock is currently
+     * paused.
+     *
+     * @worldMutation
+     *
+     */
+    isPaused: boolean;
+    /**
+     * @remarks
+     * The identifier that represents this world clock.
+     *
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * Retrieves or sets the current time (in ticks) of the world
+     * clock.
+     *
+     * @worldMutation
+     *
+     * Minimum Value: 0
+     */
+    time: number;
+}
+
+/**
+ * @beta
+ * Provides the functionality for registering custom world
+ * clocks. World clocks can only be registered during the
+ * system startup event.
+ */
+export class WorldClockRegistry {
+    private constructor();
+    /**
+     * @remarks
+     * Registers a new custom world clock. Must be called during
+     * the system startup event.
+     *
+     * @earlyExecution
+     *
+     * @param name
+     * The name that represents this world clock. Must have a
+     * namespace and use only valid identifier characters. (e.g.,
+     * 'mypack:my_clock').
+     * @throws This function can throw errors.
+     *
+     * {@link WorldClockInvalidRegistryError}
+     *
+     * {@link WorldClockRegistrationError}
+     *
+     * {@link WorldClockReloadNewWorldClockError}
+     */
+    registerClock(name: string): void;
+}
+
 export class WorldLoadAfterEvent {
     private constructor();
 }
@@ -23303,7 +23386,6 @@ export interface BiomeFilter {
 }
 
 /**
- * @rc
  * Contains additional options for searches for the
  * dimension.findNearestBiome API.
  */
@@ -23329,8 +23411,8 @@ export interface BiomeSearchOptions {
  * has no association with any type, it is just a mathematical
  * construct - so a rectangle with
  * ( 0,0,0 ) -> ( 0,0,0 )
- * has a size of ( 0,0,0 ) (unlike the very similar {@link
- * BlockVolume} object)
+ * has a size of ( 0,0,0 ) (unlike the very similar
+ * {@link BlockVolume} object)
  */
 export interface BlockBoundingBox {
     /**
@@ -23953,9 +24035,9 @@ export interface CustomCommandParameter {
     /**
      * @beta
      * @remarks
-     * Can be used to reference the enum name when {@link
-     * CustomCommandParamType} is 'Enum'. Allows the parameter name
-     * to be different from the enum name.
+     * Can be used to reference the enum name when
+     * {@link CustomCommandParamType} is 'Enum'. Allows the
+     * parameter name to be different from the enum name.
      *
      */
     enumName?: string;
@@ -24479,9 +24561,10 @@ export interface EntityHurtBeforeEventOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * EntityItemDropAfterEventSignal.subscribe} that filters out
- * which events are passed to the provided callback.
+ * An interface that is passed into
+ * {@link EntityItemDropAfterEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
  */
 export interface EntityItemDropEventOptions {
     /**
@@ -24501,10 +24584,11 @@ export interface EntityItemDropEventOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * EntityItemPickupAfterEventSignal.subscribe} and {@link
- * EntityItemPickupBeforeEventSignal.subscribe} that filters
- * out which events are passed to the provided callback.
+ * An interface that is passed into
+ * {@link EntityItemPickupAfterEventSignal.subscribe} and
+ * {@link EntityItemPickupBeforeEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
  */
 export interface EntityItemPickupEventOptions {
     /**
@@ -24748,8 +24832,8 @@ export interface EqualsComparison {
 }
 
 /**
- * Additional configuration options for the {@link
- * Dimension.createExplosion} method.
+ * Additional configuration options for the
+ * {@link Dimension.createExplosion} method.
  * @seeExample createNoBlockExplosion.ts
  * @seeExample createExplosions.ts
  */
@@ -24843,9 +24927,10 @@ export interface HotbarEventOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * PlayerButtonInputAfterEventSignal.subscribe} that filters
- * out which events are passed to the provided callback.
+ * An interface that is passed into
+ * {@link PlayerButtonInputAfterEventSignal.subscribe} that
+ * filters out which events are passed to the provided
+ * callback.
  */
 export interface InputEventOptions {
     /**
@@ -24990,8 +25075,8 @@ export interface ItemFilter {
 }
 
 /**
- * Provides additional options for {@link
- * StructureManager.placeJigsaw}.
+ * Provides additional options for
+ * {@link StructureManager.placeJigsaw}.
  */
 export interface JigsawPlaceOptions {
     /**
@@ -25018,8 +25103,8 @@ export interface JigsawPlaceOptions {
 }
 
 /**
- * Provides additional options for {@link
- * StructureManager.placeJigsawStructure}.
+ * Provides additional options for
+ * {@link StructureManager.placeJigsawStructure}.
  */
 export interface JigsawStructurePlaceOptions {
     /**
@@ -25078,8 +25163,8 @@ export interface LessThanOrEqualsComparison {
 }
 
 /**
- * Additional configuration options for {@link
- * World.playMusic}/{@link World.queueMusic} methods.
+ * Additional configuration options for
+ * {@link World.playMusic}/{@link World.queueMusic} methods.
  */
 export interface MusicOptions {
     /**
@@ -25184,9 +25269,9 @@ export interface PlayerAimAssistSettings {
 }
 
 /**
- * @rc
- * An interface that is passed into {@link
- * PlayerStartBreakingBlockAfterEventSignal.subscribe} or
+ * An interface that is passed into
+ * {@link PlayerStartBreakingBlockAfterEventSignal.subscribe}
+ * or
  * {@link PlayerCancelBreakingBlockAfterEventSignal.subscribe}
  * that filters out which events are passed to the provided
  * callback.
@@ -25249,8 +25334,8 @@ export interface PlayerSoundOptions {
 }
 
 /**
- * An interface that is passed into {@link
- * @minecraft/server.PlayerSwingStartAfterEventSignal.subscribe} that
+ * An interface that is passed into
+ * {@link PlayerSwingStartAfterEventSignal.subscribe} that
  * filters out which events are passed to the provided
  * callback.
  */
@@ -25586,7 +25671,7 @@ export interface ScriptEventMessageFilterOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Duration metadata declared in a sound definition.
  */
 export interface SoundDefinitionDurationInfo {
@@ -25600,7 +25685,7 @@ export interface SoundDefinitionDurationInfo {
 }
 
 /**
- * @beta
+ * @rc
  * Criteria used to narrow a set of sound definitions. Each
  * field is optional and applies its constraint only when
  * defined; a definition must satisfy every defined field to
@@ -25679,7 +25764,7 @@ export interface SoundDefinitionFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Music metadata declared on a sound definition. Each field is
  * optional and is undefined when the sound definition does not
  * declare a value for it.
@@ -25762,8 +25847,8 @@ export interface SplineAnimation {
 }
 
 /**
- * Provides additional options for {@link
- * StructureManager.createFromWorld}
+ * Provides additional options for
+ * {@link StructureManager.createFromWorld}
  */
 export interface StructureCreateOptions {
     /**
@@ -25790,8 +25875,8 @@ export interface StructureCreateOptions {
 }
 
 /**
- * Provides additional options for {@link
- * StructureManager.place}
+ * Provides additional options for
+ * {@link StructureManager.place}
  */
 export interface StructurePlaceOptions {
     /**
@@ -25824,8 +25909,8 @@ export interface StructurePlaceOptions {
      * @remarks
      * What percentage of blocks should be placed. A value of 1
      * will place 100% of the blocks while a value of 0 will place
-     * none. The blocks are chosen randomly based on the {@link
-     * StructurePlaceOptions.integritySeed}.
+     * none. The blocks are chosen randomly based on the
+     * {@link StructurePlaceOptions.integritySeed}.
      *
      */
     integrity?: number;
@@ -25887,9 +25972,6 @@ export interface TeleportOptions {
      *
      */
     facingLocation?: Vector3;
-    /**
-     * @rc
-     */
     forceProvidedPositionOnDimensionChange?: boolean;
     /**
      * @remarks
@@ -25945,8 +26027,8 @@ export interface TickingArea {
 }
 
 /**
- * Options to create a ticking area using the {@link
- * TickingAreaManager}.
+ * Options to create a ticking area using the
+ * {@link TickingAreaManager}.
  */
 export interface TickingAreaOptions {
     /**
@@ -25993,8 +26075,8 @@ export interface TitleDisplayOptions {
     /**
      * @remarks
      * Amount of time for the title and subtitle to stay in place,
-     * in ticks. There are 20 ticks per second. Use {@link
-     * TicksPerSecond} constant to convert between ticks and
+     * in ticks. There are 20 ticks per second. Use
+     * {@link TicksPerSecond} constant to convert between ticks and
      * seconds.
      *
      */
@@ -26158,8 +26240,8 @@ export class BlockCustomComponentReloadVersionError extends Error {
 }
 
 /**
- * Errors that can be thrown when using {@link
- * ItemBookComponent}.
+ * Errors that can be thrown when using
+ * {@link ItemBookComponent}.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BookError extends Error {
@@ -26175,9 +26257,9 @@ export class BookError extends Error {
 }
 
 /**
- * The error called if page content being set on an {@link
- * ItemBookComponent} are invalid ie. exceeding the maximum
- * page length.
+ * The error called if page content being set on an
+ * {@link ItemBookComponent} are invalid ie. exceeding the
+ * maximum page length.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BookPageContentError extends Error {
@@ -26568,6 +26650,47 @@ export class TickingAreaError extends Error {
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class UnloadedChunksError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when trying to register a world clock outside of the
+ * system startup event.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockInvalidRegistryError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown when a world clock is not found in the world
+ * clock registry.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockNotFoundError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown by {@link WorldClockRegistry.registerClock}
+ * when failing to register a world clock.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockRegistrationError extends Error {
+    private constructor();
+}
+
+/**
+ * @beta
+ * Thrown after using the /reload command when trying to
+ * register a world clock that was not previously registered.
+ * New world clocks cannot be added during a reload.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class WorldClockReloadNewWorldClockError extends Error {
     private constructor();
 }
 
