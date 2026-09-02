@@ -2,13 +2,21 @@
  * All possible MinecraftFeatureTypes
  */
 export declare enum MinecraftFeatureTypes {
+    /** 竹林废弃营地。 */
     AbandonedCampBambooJungle = "minecraft:abandoned_camp_bamboo_jungle",
+    /** 桦木森林废弃营地。 */
     AbandonedCampBirchForest = "minecraft:abandoned_camp_birch_forest",
+    /** 樱花树林废弃营地。 */
     AbandonedCampCherryGrove = "minecraft:abandoned_camp_cherry_grove",
+    /** 斑驳森林废弃营地。 */
     AbandonedCampDappledForest = "minecraft:abandoned_camp_dappled_forest",
+    /** 风袭森林废弃营地。 */
     AbandonedCampExtremeHillsPlusTrees = "minecraft:abandoned_camp_extreme_hills_plus_trees",
+    /** 繁花森林废弃营地。 */
     AbandonedCampFlowerForest = "minecraft:abandoned_camp_flower_forest",
+    /** 苍白之园废弃营地。 */
     AbandonedCampPaleGarden = "minecraft:abandoned_camp_pale_garden",
+    /** 沼泽废弃营地。 */
     AbandonedCampSwampland = "minecraft:abandoned_camp_swampland",
     /** 远古城市。 */
     AncientCity = "minecraft:ancient_city",

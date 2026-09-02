@@ -943,6 +943,10 @@ export enum PacketId {
      */
     PurchaseReceiptPacket = 'PurchaseReceiptPacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/record-started-packet/
+     */
+    RecordStartedPacket = 'RecordStartedPacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/refresh-entitlements-packet/
      */
     RefreshEntitlementsPacket = 'RefreshEntitlementsPacket',

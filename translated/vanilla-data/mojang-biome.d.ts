@@ -89,7 +89,7 @@ export declare enum MinecraftBiomeTypes {
     JaggedPeaks = "minecraft:jagged_peaks",
     /** 丛林。 */
     Jungle = "minecraft:jungle",
-    /** 丛林边缘。 */
+    /** 稀疏丛林。 */
     JungleEdge = "minecraft:jungle_edge",
     /** 丛林边缘变种。 */
     JungleEdgeMutated = "minecraft:jungle_edge_mutated",
@@ -119,7 +119,7 @@ export declare enum MinecraftBiomeTypes {
     MesaPlateau = "minecraft:mesa_plateau",
     /** 恶地高原变种。 */
     MesaPlateauMutated = "minecraft:mesa_plateau_mutated",
-    /** 繁茂的恶地高原。 */
+    /** 疏林恶地。 */
     MesaPlateauStone = "minecraft:mesa_plateau_stone",
     /** 繁茂的恶地高原变种。 */
     MesaPlateauStoneMutated = "minecraft:mesa_plateau_stone_mutated",

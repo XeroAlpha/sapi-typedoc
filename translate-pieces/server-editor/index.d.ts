@@ -117,7 +117,6 @@ export { ListPaneSlotLayoutEntry } from './types/ListPaneSlotLayoutEntry';
 export { ListPaneSlotLayoutSections } from './types/ListPaneSlotLayoutSections';
 export { ListPaneTextEntryParams } from './types/ListPaneTextEntryParams';
 export { ListPaneViewFilter } from './types/ListPaneViewFilter';
-export { ListViewControlAction } from './types/ListViewControlAction';
 export { ListViewControlActionState } from './types/ListViewControlActionState';
 export { LocalizedString } from './types/LocalizedString';
 export { ModalDialogActivationParams } from './types/ModalDialogActivationParams';
@@ -411,6 +410,7 @@ export { IVector3TimelinePlayerEntryOptions } from './interfaces/IVector3Timelin
 export { IVector3TimelinePropertyItem } from './interfaces/IVector3TimelinePropertyItem';
 export { IVector3TimelinePropertyItemEntry } from './interfaces/IVector3TimelinePropertyItemEntry';
 export { IVector3TimelinePropertyItemOptions } from './interfaces/IVector3TimelinePropertyItemOptions';
+export { ListViewControlAction } from './interfaces/ListViewControlAction';
 export { LocalizationEntry } from './interfaces/LocalizationEntry';
 export { LogProperties } from './interfaces/LogProperties';
 export { MinimapCreateOptions } from './interfaces/MinimapCreateOptions';
