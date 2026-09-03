@@ -1,5 +1,5 @@
 /* IMPORT */ import { BlockBoundingBox } from '../../server';
-/* IMPORT */ import { BrushShape, IPropertyPane, ISubPanePropertyItem, PyramidBrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockUtilityTasks, BrushShape, BrushShapeTaskRequest, IPropertyPane, ISubPanePropertyItem, PyramidBrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
 
 export declare class PyramidBrushShape extends BrushShape {
     /**
@@ -35,6 +35,7 @@ export declare class PyramidBrushShape extends BrushShape {
         },
         yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): PyramidBrushShapeSettings;
 }

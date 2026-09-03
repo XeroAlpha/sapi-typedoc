@@ -69,7 +69,7 @@ export class Dimension {
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Clones a region of blocks from one area of the dimension to
      * another.

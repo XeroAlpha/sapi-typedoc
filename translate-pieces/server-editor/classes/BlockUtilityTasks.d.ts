@@ -1,8 +1,23 @@
 /* IMPORT */ import { BlockPermutation, BlockType, BlockVolumeBase, Vector3 } from '../../server';
-/* IMPORT */ import { BlockMaskList, BlockUtilityExtrudeDirection, BlockUtilityFloodMatchCriteria, ManifestTaskPromise, NumberTaskPromise, RelativeVolumeListBlockVolume, VolumeTaskPromise } from '..';
+/* IMPORT */ import { BlockMaskList, BlockUtilityExtrudeDirection, BlockUtilityFloodMatchCriteria, BlockUtilityShapeVolumeOptionsCone, BlockUtilityShapeVolumeOptionsCuboid, BlockUtilityShapeVolumeOptionsCylinder, BlockUtilityShapeVolumeOptionsEllipsoid, BlockUtilityShapeVolumeOptionsPyramid, ManifestTaskPromise, NumberTaskPromise, RelativeVolumeListBlockVolume, VolumeTaskPromise } from '..';
 
 export class BlockUtilityTasks {
     private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    createShapeVolume(
+        options:
+            | BlockUtilityShapeVolumeOptionsCone
+            | BlockUtilityShapeVolumeOptionsCuboid
+            | BlockUtilityShapeVolumeOptionsCylinder
+            | BlockUtilityShapeVolumeOptionsEllipsoid
+            | BlockUtilityShapeVolumeOptionsPyramid,
+        maxBlocksPerTick?: number,
+    ): VolumeTaskPromise;
     /**
      * @remarks
      * @worldMutation

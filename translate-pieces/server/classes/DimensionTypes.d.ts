@@ -9,7 +9,9 @@ export class DimensionTypes {
     /**
      * @remarks
      * Retrieves a dimension type using a string-based identifier.
-     * Currently only works with Vanilla dimensions.
+     * Works with both vanilla dimensions and custom dimensions.
+     * Custom dimensions cannot be retrieved until after the system
+     * startup event has completed.
      *
      * @earlyExecution
      *
@@ -17,8 +19,10 @@ export class DimensionTypes {
     static get(dimensionTypeId: string): DimensionType | undefined;
     /**
      * @remarks
-     * Retrieves an array of all dimension types. Currently only
-     * works with Vanilla dimensions.
+     * Retrieves an array of all dimension types. Includes both
+     * vanilla dimensions and custom dimensions. Custom dimensions
+     * are not included until after the system startup event has
+     * completed.
      *
      * @earlyExecution
      *

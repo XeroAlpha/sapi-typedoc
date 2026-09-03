@@ -1,5 +1,5 @@
 /* IMPORT */ import { BlockBoundingBox } from '../../server';
-/* IMPORT */ import { BrushShape, BrushShapeSettings, RelativeVolumeListBlockVolume } from '..';
+/* IMPORT */ import { BlockUtilityTasks, BrushShape, BrushShapeSettings, BrushShapeTaskRequest, RelativeVolumeListBlockVolume } from '..';
 
 export declare class SingleBlockBrushShape extends BrushShape {
     /**
@@ -19,6 +19,7 @@ export declare class SingleBlockBrushShape extends BrushShape {
         },
         _yieldInterval?: number,
     ): Promise<RelativeVolumeListBlockVolume>;
+    createShapeAsyncTask(_blockUtils: BlockUtilityTasks, _yieldInterval?: number): BrushShapeTaskRequest;
     estimateBlockCount(): number;
     getSettings(): BrushShapeSettings;
 }
