@@ -717,7 +717,7 @@ export class Dimension {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Spawns an experience orb at a specified location in the
      * dimension.

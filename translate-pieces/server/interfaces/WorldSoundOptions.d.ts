@@ -3,7 +3,7 @@
  */
 export interface WorldSoundOptions {
     /**
-     * @beta
+     * @rc
      */
     isBroadcast?: boolean;
     /**

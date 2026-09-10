@@ -57,6 +57,16 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
+     * @throws This function can throw errors.
+     */
+    isHighPriorityFillBlock(
+        block: BlockPermutation | BlockType | string,
+        location: Vector3,
+    ): boolean;
+    /**
+     * @remarks
+     * @worldMutation
+     *
      */
     isLocationInsideCurrentDimensionBounds(
         locationOrVolumeOrBounds:

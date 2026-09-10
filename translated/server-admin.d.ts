@@ -298,11 +298,8 @@ export class LevelStorage {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link LevelStorageSaveStateChangeError}
      */
-    saveHold(): void;
+    saveHold(): Promise<void>;
     /**
      * @remarks
      * Returns the path and size of every file in the current
@@ -310,11 +307,8 @@ export class LevelStorage {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link LevelStorageSaveStateChangeError}
      */
-    saveQuery(): LevelStorageQuerySnapshotFile[];
+    saveQuery(): Promise<LevelStorageQuerySnapshotFile[]>;
     /**
      * @remarks
      * Re-enables server writing world state to files and removes
@@ -322,11 +316,8 @@ export class LevelStorage {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link LevelStorageSaveStateChangeError}
      */
-    saveResume(): void;
+    saveResume(): Promise<void>;
 }
 
 /**

@@ -19,7 +19,7 @@ export interface ToggleOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * toggle.

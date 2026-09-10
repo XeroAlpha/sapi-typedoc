@@ -46,6 +46,10 @@ export enum BlockComponentTypes {
      */
     PrecipitationInteractions = 'minecraft:precipitation_interactions',
     /**
+     * @beta
+     */
+    RecipeCrafting = 'minecraft:recipe_crafting',
+    /**
      * @remarks
      * Represents a block that can play a record.
      *

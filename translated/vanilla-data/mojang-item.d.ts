@@ -2716,7 +2716,7 @@ export declare enum MinecraftItemTypes {
     StoneSword = "minecraft:stone_sword",
     /** 切石机。 */
     StonecutterBlock = "minecraft:stonecutter_block",
-    /** Straw Bed。 */
+    /** 麦秆床。 */
     StrawBed = "minecraft:straw_bed",
     /** 流浪者刷怪蛋。 */
     StraySpawnEgg = "minecraft:stray_spawn_egg",
