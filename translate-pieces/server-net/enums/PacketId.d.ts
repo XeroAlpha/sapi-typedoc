@@ -220,6 +220,14 @@ export enum PacketId {
      */
     ClientboundMapItemDataPacket = 'ClientboundMapItemDataPacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-matchmaking-state-packet/
+     */
+    ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket',
+    /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-stonecutter-set-recipe-packet/
+     */
+    ClientboundStonecutterSetRecipePacket = 'ClientboundStonecutterSetRecipePacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-texture-shift-packet/
      */
     ClientboundTextureShiftPacket = 'ClientboundTextureShiftPacket',
@@ -901,9 +909,17 @@ export enum PacketId {
      */
     ServerboundLoadingScreenPacket = 'ServerboundLoadingScreenPacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-matchmaking-cancel-packet/
+     */
+    ServerboundMatchmakingCancelPacket = 'ServerboundMatchmakingCancelPacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-pack-setting-change-packet/
      */
     ServerboundPackSettingChangePacket = 'ServerboundPackSettingChangePacket',
+    /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-stonecutter-set-recipe-packet/
+     */
+    ServerboundStonecutterSetRecipePacket = 'ServerboundStonecutterSetRecipePacket',
     /**
      * Is currently only used for debug draw. Packets will not be sent if debug draw is not available.
      * 

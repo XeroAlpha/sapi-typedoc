@@ -35,7 +35,7 @@ export interface SliderOptions {
      */
     step?: number | ObservableNumber;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * slider.

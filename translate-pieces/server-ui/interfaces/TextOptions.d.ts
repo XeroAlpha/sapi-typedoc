@@ -5,7 +5,7 @@
  */
 export interface TextOptions {
     /**
-     * @beta
+     * @rc
      */
     tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**

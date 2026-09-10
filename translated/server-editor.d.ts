@@ -388,12 +388,14 @@ export enum GamePublishSetting {
  */
 export enum GraphicsSettingsProperty {
     DisableBlockEntityRendering = 'DisableBlockEntityRendering',
+    DisableCloudRendering = 'DisableCloudRendering',
     DisableEntityRendering = 'DisableEntityRendering',
     DisableParticleRendering = 'DisableParticleRendering',
     DisableTerrainRendering = 'DisableTerrainRendering',
     DisableWeatherRendering = 'DisableWeatherRendering',
     GraphicsMode = 'GraphicsMode',
     NightVision = 'NightVision',
+    ShowChat = 'ShowChat',
     ShowChunkBoundaries = 'ShowChunkBoundaries',
     ShowCompass = 'ShowCompass',
     /**
@@ -1647,6 +1649,8 @@ export type GraphicsSettingsPropertyTypeMap = {
     [GraphicsSettingsProperty.DisableWeatherRendering]?: boolean;
     [GraphicsSettingsProperty.DisableParticleRendering]?: boolean;
     [GraphicsSettingsProperty.DisableBlockEntityRendering]?: boolean;
+    [GraphicsSettingsProperty.DisableCloudRendering]?: boolean;
+    [GraphicsSettingsProperty.ShowChat]?: boolean;
 };
 
 /**
@@ -2418,6 +2422,16 @@ export class BlockUtilities {
      * @throws This function can throw errors.
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): ListBlockVolume;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws This function can throw errors.
+     */
+    isHighPriorityFillBlock(
+        block: BlockPermutation | BlockType | string,
+        location: Vector3,
+    ): boolean;
     /**
      * @remarks
      * @worldMutation
@@ -10545,6 +10559,17 @@ export interface IPlayerLogger {
 export interface IPlayerLoggerProperties {
     /**
      * @remarks
+     * Overrides whether this message raises the Editor error
+     * state, which flashes the viewport and opens the log panel.
+     * When left unset the default applies, which is to raise it
+     * for error messages only. Set it to true to raise it for a
+     * lower severity message, or false to suppress it for an
+     * error.
+     *
+     */
+    alert?: boolean;
+    /**
+     * @remarks
      * A log channel mask, default is Message
      *
      */
@@ -12830,6 +12855,17 @@ export interface LocalizationEntry {
  * server->client messaging and broadcasts.
  */
 export interface LogProperties {
+    /**
+     * @remarks
+     * Overrides whether this message raises the Editor error
+     * state, which flashes the viewport and opens the log panel.
+     * When left unset the default applies, which is to raise it
+     * for error messages only. Set it to true to raise it for a
+     * lower severity message, or false to suppress it for an
+     * error.
+     *
+     */
+    alert?: boolean;
     /**
      * @remarks
      * Display the log message to a log channel. If no channel is

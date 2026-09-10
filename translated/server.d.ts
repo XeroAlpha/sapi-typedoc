@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.11.0-beta"
+ *   "version": "2.12.0-beta"
  * }
  * ```
  *
@@ -89,6 +89,10 @@ export enum BlockComponentTypes {
      *
      */
     PrecipitationInteractions = 'minecraft:precipitation_interactions',
+    /**
+     * @beta
+     */
+    RecipeCrafting = 'minecraft:recipe_crafting',
     /**
      * @remarks
      * Represents a block that can play a record.
@@ -3186,12 +3190,14 @@ export type BlockComponentTypeMap = {
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
     'minecraft:precipitation_interactions': BlockPrecipitationInteractionsComponent;
+    'minecraft:recipe_crafting': BlockRecipeCraftingComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     precipitation_interactions: BlockPrecipitationInteractionsComponent;
+    recipe_crafting: BlockRecipeCraftingComponent;
     record_player: BlockRecordPlayerComponent;
     redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
@@ -5851,6 +5857,41 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
 }
 
 /**
+ * @beta
+ * Represents a block component that provides access to recipe
+ * crafting.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockRecipeCraftingComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns an array of all players currently interacting with
+     * this block.
+     *
+     */
+    readonly players: Player[];
+    static readonly componentId = 'minecraft:recipe_crafting';
+    /**
+     * @remarks
+     * Gets the recipe crafting context for a player interacting
+     * with this block.
+     *
+     * @param player
+     * The player for whom to retrieve the crafting context.
+     * @returns
+     * The current recipe crafting context for the player, or
+     * undefined if the player isn't crafting.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
+    getCraftingContext(player: Player): RecipeCraftingContext | undefined;
+}
+
+/**
  * Represents a block that can play a record.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -8317,7 +8358,7 @@ export class Dimension {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Spawns an experience orb at a specified location in the
      * dimension.
@@ -17380,6 +17421,72 @@ export class PlayerCancelBreakingBlockAfterEventSignal {
 }
 
 /**
+ * @beta
+ * Contains information regarding a player crafting a recipe.
+ */
+export class PlayerCraftRecipeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The block where the recipe was crafted, if applicable.
+     *
+     */
+    readonly block?: Block;
+    /**
+     * @remarks
+     * The item stack crafted by the player.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The player who crafted the recipe.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are connected to when a player crafts
+ * a recipe.
+ */
+export class PlayerCraftRecipeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player crafts a
+     * recipe.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * Function callback that is called when this event fires.
+     * @param options
+     * Additional filtering options for the event subscription.
+     */
+    subscribe(
+        callback: (arg0: PlayerCraftRecipeAfterEvent) => void,
+        options?: PlayerCraftRecipeEventOptions,
+    ): (arg0: PlayerCraftRecipeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player crafts a
+     * recipe.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback to remove from the event subscription.
+     */
+    unsubscribe(callback: (arg0: PlayerCraftRecipeAfterEvent) => void): void;
+}
+
+/**
  * Represents the players cursor inventory. Used when moving
  * items between between containers in the inventory UI. Not
  * used with touch controls.
@@ -19739,6 +19846,104 @@ export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
 }
 
 /**
+ * @beta
+ * Provides access to the slots and recipe of a players active
+ * crafting UI ie. stonecutter.
+ */
+export class RecipeCraftingContext {
+    private constructor();
+    /**
+     * @remarks
+     * The amount of addressable input slots for getInputItem and
+     * setInputItem.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link EngineError}
+     */
+    readonly inputSlotCount: number;
+    /**
+     * @remarks
+     * Whether this recipe crafting context is valid. Invalidates
+     * when the player closes the crafting UI or leaves.
+     *
+     */
+    readonly isValid: boolean;
+    /**
+     * @remarks
+     * The identifiers of the recipes that are valid for the
+     * current input items.
+     *
+     * @throws This property can throw when used.
+     *
+     * {@link EngineError}
+     */
+    readonly validRecipes: string[];
+    /**
+     * @remarks
+     * Gets the item in the provided input slot.
+     *
+     * @param slot
+     * The zero-based input slot index.
+     * @returns
+     * The item stack in the input slot, or undefined if the slot
+     * is empty.
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     *
+     * {@link EngineError}
+     */
+    getInputItem(slot: number): ItemStack | undefined;
+    /**
+     * @remarks
+     * Gets the item produced by the currently selected recipe.
+     *
+     * @returns
+     * The output item stack, or undefined if there is no output.
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     *
+     * {@link EngineError}
+     */
+    getOutputItem(): ItemStack | undefined;
+    /**
+     * @remarks
+     * Sets or clears an item in an input slot.
+     *
+     * @worldMutation
+     *
+     * @param slot
+     * The zero-based input slot index.
+     * @param item
+     * The item stack to place in the slot, or undefined to clear
+     * the slot.
+     * @throws This function can throw errors.
+     *
+     * {@link ArgumentOutOfBoundsError}
+     *
+     * {@link EngineError}
+     */
+    setInputItem(slot: number, item?: ItemStack): void;
+    /**
+     * @remarks
+     * Selects a recipe for the current crafting operation.
+     *
+     * @worldMutation
+     *
+     * @param recipeId
+     * The identifier of a valid recipe to select.
+     * @throws This function can throw errors.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidRecipeError}
+     */
+    setSelectedRecipe(recipeId: string): void;
+}
+
+/**
  * Contains objectives and participants for the scoreboard.
  * @seeExample updateScoreboard.ts
  */
@@ -21607,7 +21812,7 @@ export class TextPrimitive extends PrimitiveShape {
      */
     depthTest: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This value determines the gap between lines for the
      * TextPrimitive. By default the line gap height is 0.
@@ -22889,6 +23094,15 @@ export class WorldAfterEvents {
      *
      */
     readonly playerCancelBreakingBlock: PlayerCancelBreakingBlockAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a player crafts a recipe.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerCraftRecipe: PlayerCraftRecipeAfterEventSignal;
     /**
      * @remarks
      * Fires when a player moved to a different dimension.
@@ -25699,6 +25913,31 @@ export interface PlayerBreakingBlockEventOptions {
 }
 
 /**
+ * @beta
+ * Contains options for filtering player craft recipe events.
+ */
+export interface PlayerCraftRecipeEventOptions {
+    /**
+     * @remarks
+     * Filter for the block where the recipe is crafted.
+     *
+     */
+    blockFilter?: BlockFilter;
+    /**
+     * @remarks
+     * Filter for the item crafted by the player.
+     *
+     */
+    itemFilter?: ItemFilter;
+    /**
+     * @remarks
+     * Filter for the player crafting the recipe.
+     *
+     */
+    playerFilter?: EntityFilter;
+}
+
+/**
  * Additional options for how a sound plays for a player.
  */
 export interface PlayerSoundOptions {
@@ -26722,7 +26961,7 @@ export interface WorldClockTimeMarkerEventOptions {
  */
 export interface WorldSoundOptions {
     /**
-     * @beta
+     * @rc
      */
     isBroadcast?: boolean;
     /**
@@ -27030,6 +27269,23 @@ export class InvalidPotionDeliveryTypeError extends Error {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class InvalidPotionEffectTypeError extends Error {
     private constructor();
+}
+
+/**
+ * @beta
+ * Thrown when an invalid recipe identifier is used.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class InvalidRecipeError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The identifier of the invalid recipe.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly recipeId: string;
 }
 
 /**

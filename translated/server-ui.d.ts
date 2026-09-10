@@ -26,7 +26,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "2.3.0-beta"
+ *   "version": "2.4.0-beta"
  * }
  * ```
  *
@@ -645,7 +645,7 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the label and options for the first button of the
      * message box. Returns the message box instance to allow
@@ -687,7 +687,7 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the label and options for the second button of the
      * message box. Returns the message box instance to allow
@@ -1303,7 +1303,7 @@ export interface ButtonOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Details of an image to display alongside the button label.
      *
@@ -1384,7 +1384,7 @@ export interface DropdownOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * dropdown.
@@ -1401,7 +1401,7 @@ export interface DropdownOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Details of an image to display.
  */
 export interface ImageDetails {
@@ -1458,7 +1458,7 @@ export interface ImageOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a message box button.
  */
 export interface MessageBoxButtonOptions {
@@ -1641,7 +1641,7 @@ export interface SliderOptions {
      */
     step?: number | ObservableNumber;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * slider.
@@ -1689,7 +1689,7 @@ export interface TextFieldOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the text
      * field.
@@ -1710,7 +1710,7 @@ export interface TextFieldOptions {
  */
 export interface TextOptions {
     /**
-     * @beta
+     * @rc
      */
     tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
@@ -1741,7 +1741,7 @@ export interface ToggleOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * toggle.
