@@ -17,6 +17,7 @@ export { ObservableNumber } from './classes/ObservableNumber';
 export { ObservableString } from './classes/ObservableString';
 export { ObservableUIRawMessage } from './classes/ObservableUIRawMessage';
 export { UIManager } from './classes/UIManager';
+export { ButtonData } from './interfaces/ButtonData';
 export { ButtonOptions } from './interfaces/ButtonOptions';
 export { DividerOptions } from './interfaces/DividerOptions';
 export { DropdownItemData } from './interfaces/DropdownItemData';
@@ -29,6 +30,7 @@ export { ModalFormDataDropdownOptions } from './interfaces/ModalFormDataDropdown
 export { ModalFormDataSliderOptions } from './interfaces/ModalFormDataSliderOptions';
 export { ModalFormDataTextFieldOptions } from './interfaces/ModalFormDataTextFieldOptions';
 export { ModalFormDataToggleOptions } from './interfaces/ModalFormDataToggleOptions';
+export { MultiButtonRowOptions } from './interfaces/MultiButtonRowOptions';
 export { ObservableOptions } from './interfaces/ObservableOptions';
 export { SliderOptions } from './interfaces/SliderOptions';
 export { SpacingOptions } from './interfaces/SpacingOptions';
