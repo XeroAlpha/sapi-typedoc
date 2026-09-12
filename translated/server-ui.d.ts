@@ -449,6 +449,24 @@ export class CustomForm {
      */
     label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
+     * @beta
+     * @remarks
+     * Adds a horizontal row of up to three clickable buttons to
+     * the form layout. Returns the form instance to allow method
+     * chaining.
+     *
+     * @worldMutation
+     *
+     * @param buttons
+     * The buttons to display in the row.
+     * @param options
+     * Optional configuration for the row, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm;
+    /**
      * @remarks
      * Shows the form to the player. Returns a promise that
      * resolves with a DataDrivenScreenClosedReason indicating how
@@ -1298,6 +1316,33 @@ export class UIManager {
 }
 
 /**
+ * @beta
+ * Data used to configure a button.
+ */
+export interface ButtonData {
+    /**
+     * @remarks
+     * The text label to display on the button.
+     *
+     */
+    label: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
+    /**
+     * @remarks
+     * A callback function that is invoked when the player clicks
+     * the button.
+     *
+     */
+    onClick: () => void;
+    /**
+     * @remarks
+     * Optional configuration for the button, such as a tooltip,
+     * disabled state, image, or visibility.
+     *
+     */
+    options?: ButtonOptions;
+}
+
+/**
  * Options for configuring a button component.
  */
 export interface ButtonOptions {
@@ -1595,6 +1640,19 @@ export interface ModalFormDataToggleOptions {
      *
      */
     tooltip?: RawMessage | string;
+}
+
+/**
+ * @beta
+ * Options for configuring a multi-button row component.
+ */
+export interface MultiButtonRowOptions {
+    /**
+     * @remarks
+     * When false or bound to a false, the entire row is hidden.
+     *
+     */
+    visible?: boolean | ObservableBoolean;
 }
 
 /**

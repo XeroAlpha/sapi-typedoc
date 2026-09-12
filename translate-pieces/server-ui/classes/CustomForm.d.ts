@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, ImageOptions, InvalidFormModificationError, InvalidObservableError, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonData, ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, ImageOptions, InvalidFormModificationError, InvalidObservableError, MultiButtonRowOptions, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * A customizable data driven (DDUI) form that lets you add
@@ -198,6 +198,24 @@ export class CustomForm {
      * {@link InvalidFormModificationError}
      */
     label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
+    /**
+     * @beta
+     * @remarks
+     * Adds a horizontal row of up to three clickable buttons to
+     * the form layout. Returns the form instance to allow method
+     * chaining.
+     *
+     * @worldMutation
+     *
+     * @param buttons
+     * The buttons to display in the row.
+     * @param options
+     * Optional configuration for the row, such as visibility.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm;
     /**
      * @remarks
      * Shows the form to the player. Returns a promise that
