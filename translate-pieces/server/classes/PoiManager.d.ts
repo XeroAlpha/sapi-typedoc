@@ -1,7 +1,6 @@
 /* IMPORT */ import { PoiBlockManager } from '..';
 
 /**
- * @beta
  * Provides access to point-of-interest (POI) data in a
  * dimension.
  *

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Specifies how a block point-of-interest query filters
  * instances by ticket occupancy.
  */

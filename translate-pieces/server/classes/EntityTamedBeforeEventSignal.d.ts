@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityTamedBeforeEvent, EntityTamedEventOptions } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to before an entity is
  * tamed.
  */

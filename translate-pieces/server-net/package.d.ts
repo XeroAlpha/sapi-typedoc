@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * The `@minecraft/server-net` module contains types for
  * executing HTTP-based requests. This module can only be used

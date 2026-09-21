@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * The `@minecraft/server-graphics` module contains APIs to
  * change graphics and rendering settings.

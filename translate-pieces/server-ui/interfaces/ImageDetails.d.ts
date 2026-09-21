@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableString } from '..';
 
 /**
- * @rc
  * Details of an image to display.
  */
 export interface ImageDetails {

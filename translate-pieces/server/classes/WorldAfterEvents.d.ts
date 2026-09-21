@@ -41,7 +41,6 @@ export class WorldAfterEvents {
      */
     readonly buttonPush: ButtonPushAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is triggered after a chat message has been
      * broadcast or sent to players.
@@ -175,7 +174,6 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity starts sneaking.
      *
@@ -184,7 +182,6 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity stops sneaking.
      *
@@ -193,7 +190,6 @@ export class WorldAfterEvents {
      */
     readonly entityStopSneaking: EntityStopSneakingAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity is tamed.
      *
@@ -297,7 +293,6 @@ export class WorldAfterEvents {
      */
     readonly leverAction: LeverActionAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is an internal implementation detail, and is
      * otherwise not currently functional.
@@ -307,7 +302,6 @@ export class WorldAfterEvents {
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event is triggered when a pack setting is changed.
      *
@@ -349,7 +343,6 @@ export class WorldAfterEvents {
      */
     readonly playerCancelBreakingBlock: PlayerCancelBreakingBlockAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a player crafts a recipe.
      *
@@ -477,7 +470,6 @@ export class WorldAfterEvents {
      */
     readonly playerSwingStart: PlayerSwingStartAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * An event for when a player uses a named name tag on an
      * entity.
@@ -521,7 +513,6 @@ export class WorldAfterEvents {
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * A tracked sound's declared duration elapsed.
      *
@@ -555,7 +546,6 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a {@link WorldClock} is paused.
      *
@@ -564,7 +554,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnPaused: WorldClockOnPausedAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a {@link WorldClock} is resumed.
      *
@@ -573,7 +562,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnResumed: WorldClockOnResumedAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when the time of a {@link WorldClock} hits
      * a {@link TimeMarker} on the clock. This can happen during a
@@ -584,7 +572,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnTimeMarker: WorldClockOnTimeMarkerAfterEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a {@link WorldClock} time is changed.
      * This can happen when the time is directly set through

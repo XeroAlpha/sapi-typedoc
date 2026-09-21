@@ -29,7 +29,6 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @beta
      * @remarks
      * Provides access to point-of-interest (POI) managers for this
      * dimension. This property is available only when the POI
@@ -69,7 +68,6 @@ export class Dimension {
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
     /**
-     * @rc
      * @remarks
      * Clones a region of blocks from one area of the dimension to
      * another.
@@ -305,7 +303,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the block query
      * options.
@@ -384,7 +381,6 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @beta
      * @remarks
      * Returns a vector of generated structures that contain the
      * specified location (ex: Pillager Outpost, Mineshaft, etc.).
@@ -465,7 +461,6 @@ export class Dimension {
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the current weather.
      *
@@ -717,7 +712,6 @@ export class Dimension {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @rc
      * @remarks
      * Spawns an experience orb at a specified location in the
      * dimension.
@@ -737,7 +731,6 @@ export class Dimension {
      */
     spawnXp(location: Vector3, amount: number): void;
     /**
-     * @beta
      * @remarks
      * Stops all sounds from playing for all players.
      *
@@ -746,7 +739,6 @@ export class Dimension {
      */
     stopAllSounds(): void;
     /**
-     * @beta
      * @remarks
      * Stops a sound from playing for all players.
      *

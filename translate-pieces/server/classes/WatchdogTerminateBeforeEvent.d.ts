@@ -1,7 +1,6 @@
 /* IMPORT */ import { WatchdogTerminateReason } from '..';
 
 /**
- * @beta
  * Contains information related to a script watchdog
  * termination.
  */

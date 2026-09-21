@@ -1,7 +1,6 @@
 /* IMPORT */ import { TimeMarker, WorldClock } from '..';
 
 /**
- * @beta
  * Contains information related to when the time of a
  * {@link WorldClock} hits a {@link TimeMarker}.
  */

@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerUseNameTagAfterEvent } from '..';
 
 /**
- * @beta
  * Manages callbacks that are connected to when a player
  * successfully names an Entity with a named Name Tag item.
  */

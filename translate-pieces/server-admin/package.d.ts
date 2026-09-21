@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * Contains types related to administering a Bedrock Dedicated
  * Server. These types allow for the configuration of variables

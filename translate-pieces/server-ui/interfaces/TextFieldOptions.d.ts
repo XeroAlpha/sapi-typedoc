@@ -19,7 +19,6 @@ export interface TextFieldOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the text
      * field.

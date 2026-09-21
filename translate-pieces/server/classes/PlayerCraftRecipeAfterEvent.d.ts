@@ -1,7 +1,6 @@
 /* IMPORT */ import { Block, ItemStack, Player } from '..';
 
 /**
- * @beta
  * Contains information regarding a player crafting a recipe.
  */
 export class PlayerCraftRecipeAfterEvent {

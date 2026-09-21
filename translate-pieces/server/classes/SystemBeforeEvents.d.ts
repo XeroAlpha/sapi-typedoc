@@ -22,7 +22,6 @@ export class SystemBeforeEvents {
      */
     readonly startup: StartupBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * Fires when the scripting watchdog shuts down the server. The
      * can be due to using too much memory, or by causing

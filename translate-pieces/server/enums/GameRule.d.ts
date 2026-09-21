@@ -146,7 +146,6 @@ export enum GameRule {
      */
     PlayersSleepingPercentage = 'playersSleepingPercentage',
     /**
-     * @beta
      * @remarks
      * Controls which player waypoints are automatically added to
      * the players locator bar.

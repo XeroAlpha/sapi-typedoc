@@ -1,5 +1,4 @@
 /**
- * @beta
  * Selects block point-of-interest types by their exact
  * namespaced identifier.
  */

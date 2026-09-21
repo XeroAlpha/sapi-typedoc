@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * Contains debug utility functions.
  *

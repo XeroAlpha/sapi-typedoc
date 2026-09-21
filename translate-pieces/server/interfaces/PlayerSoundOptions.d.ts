@@ -12,7 +12,6 @@ export interface PlayerSoundOptions {
      */
     location?: Vector3;
     /**
-     * @beta
      * @remarks
      * Number of additional times to repeat the sound after the
      * initial play. `0` (the default) plays the sound once, `-1`

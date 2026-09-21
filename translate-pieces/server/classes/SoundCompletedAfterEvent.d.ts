@@ -1,5 +1,4 @@
 /**
- * @rc
  * Contains information about a sound thats declared duration
  * elapsed.
  */

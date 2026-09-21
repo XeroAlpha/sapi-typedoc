@@ -42,7 +42,6 @@ export class Block {
      */
     readonly isLiquid: boolean;
     /**
-     * @beta
      * @remarks
      * Returns true if this block is solid and impassible - (e.g.,
      * a cobblestone block and a diamond block are solid, while a
@@ -221,7 +220,6 @@ export class Block {
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
-     * @beta
      * @remarks
      * Checks to see whether it is valid to place the specified
      * block type or block permutation, on a specified face on this
@@ -341,7 +339,6 @@ export class Block {
      */
     getLightLevel(): number;
     /**
-     * @beta
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -615,7 +612,6 @@ export class Block {
      */
     south(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * Tries to set the block in the dimension to the state of the
      * permutation by first checking if the placement is valid.

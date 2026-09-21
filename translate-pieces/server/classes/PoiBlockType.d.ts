@@ -1,5 +1,4 @@
 /**
- * @beta
  * Describes a block point-of-interest type.
  *
  * Required Experiments:

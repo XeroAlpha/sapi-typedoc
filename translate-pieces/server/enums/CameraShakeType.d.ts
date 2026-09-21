@@ -1,5 +1,4 @@
 /**
- * @rc
  * Represents the type of shake to apply to the camera.
  */
 export enum CameraShakeType {

@@ -1,7 +1,6 @@
 /* IMPORT */ import { ImageDetails, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
- * @rc
  * Options for configuring a message box button.
  */
 export interface MessageBoxButtonOptions {

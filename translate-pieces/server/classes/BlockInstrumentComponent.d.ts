@@ -2,7 +2,6 @@
 /* IMPORT */ import { BlockComponent, Direction, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, WorldSoundOptions } from '..';
 
 /**
- * @rc
  * Represents the instruments a block can have assigned to it's
  * up and down faces.
  */

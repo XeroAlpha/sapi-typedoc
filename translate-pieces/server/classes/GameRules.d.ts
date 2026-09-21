@@ -138,7 +138,6 @@ export class GameRules {
      */
     playersSleepingPercentage: number;
     /**
-     * @beta
      * @remarks
      * @worldMutation
      *

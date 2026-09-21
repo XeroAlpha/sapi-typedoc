@@ -1,7 +1,6 @@
 /* IMPORT */ import { WorldClock, WorldClockEventOptions, WorldClockOnTimeModifiedAfterEvent } from '..';
 
 /**
- * @beta
  * Manages callbacks that are connected to changes to the time
  * of a {@link WorldClock}.
  */

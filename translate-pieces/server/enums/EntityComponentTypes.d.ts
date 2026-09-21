@@ -352,7 +352,6 @@ export enum EntityComponentTypes {
      */
     NavigationWalk = 'minecraft:navigation.walk',
     /**
-     * @beta
      * @remarks
      * Adds NPC capabilities to an entity such as custom skin,
      * name, and dialogue interactions.

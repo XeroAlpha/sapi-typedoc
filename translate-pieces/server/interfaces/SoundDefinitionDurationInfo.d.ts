@@ -1,5 +1,4 @@
 /**
- * @rc
  * Duration metadata declared in a sound definition.
  */
 export interface SoundDefinitionDurationInfo {

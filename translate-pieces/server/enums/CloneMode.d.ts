@@ -1,5 +1,4 @@
 /**
- * @rc
  * An enumeration for the clone modes used when cloning blocks.
  */
 export enum CloneMode {

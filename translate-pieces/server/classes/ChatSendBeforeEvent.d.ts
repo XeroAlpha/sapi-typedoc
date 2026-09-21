@@ -1,7 +1,6 @@
 /* IMPORT */ import { Player } from '..';
 
 /**
- * @beta
  * An event that fires as players enter chat messages.
  */
 export class ChatSendBeforeEvent {

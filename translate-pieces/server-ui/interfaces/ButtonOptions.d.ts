@@ -12,7 +12,6 @@ export interface ButtonOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @rc
      * @remarks
      * Details of an image to display alongside the button label.
      *

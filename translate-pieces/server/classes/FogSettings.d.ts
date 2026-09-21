@@ -1,7 +1,6 @@
 /* IMPORT */ import { FogSettingsError, InvalidEntityError } from '..';
 
 /**
- * @rc
  * Provides access to the fog definitions stack of a player
  * entity, allowing scripts to push, pop, remove, and query
  * active fog definitions.

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Selects block point-of-interest types that have all
  * specified tags.
  */

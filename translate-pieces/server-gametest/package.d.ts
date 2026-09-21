@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * The @minecraft/server-gametest module provides scriptable
  * APIs for scaffolding and testing content experiences in

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Thrown when an invalid recipe identifier is used.
  */
 // @ts-ignore Class inheritance allowed for native defined classes

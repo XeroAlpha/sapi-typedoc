@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * Contains diagnostics functionality for discovering and
  * diagnosing issues with content.

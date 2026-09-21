@@ -8,7 +8,6 @@
 export class BlockComponentRedstoneUpdateEvent extends BlockEvent {
     private constructor();
     /**
-     * @beta
      * @remarks
      * The first update event for the redstone component.
      *
