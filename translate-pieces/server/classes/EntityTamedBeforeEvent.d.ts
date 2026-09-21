@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity } from '..';
 
 /**
- * @rc
  * Contains information regarding an event before an entity is
  * tamed.
  */

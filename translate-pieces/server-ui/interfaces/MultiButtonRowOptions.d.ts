@@ -1,7 +1,6 @@
 /* IMPORT */ import { ObservableBoolean } from '..';
 
 /**
- * @beta
  * Options for configuring a multi-button row component.
  */
 export interface MultiButtonRowOptions {

@@ -4327,7 +4327,6 @@ export class Block {
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.

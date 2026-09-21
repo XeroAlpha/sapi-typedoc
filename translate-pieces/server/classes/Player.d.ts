@@ -15,7 +15,6 @@ export class Player extends Entity {
      */
     readonly camera: Camera;
     /**
-     * @beta
      * @remarks
      * The player's chat display name, composed from
      * {@link Player.chatNamePrefix} + {@link Player.name} +
@@ -30,7 +29,6 @@ export class Player extends Entity {
      */
     readonly chatDisplayName: string;
     /**
-     * @beta
      * @remarks
      * An optional string that, when set, is prepended to the text
      * of chat messages sent by this player. Useful for applying
@@ -45,7 +43,6 @@ export class Player extends Entity {
      */
     chatMessagePrefix?: string;
     /**
-     * @beta
      * @remarks
      * An optional string that, when set, is prepended to the
      * player's name in chat messages. Does not affect the name tag
@@ -59,7 +56,6 @@ export class Player extends Entity {
      */
     chatNamePrefix?: string;
     /**
-     * @beta
      * @remarks
      * An optional string that, when set, is appended to the
      * player's name in chat messages. Does not affect the name tag
@@ -85,7 +81,6 @@ export class Player extends Entity {
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @rc
      * @remarks
      * Contains methods for manipulating the render distance fog
      * settings of a Player.
@@ -176,7 +171,6 @@ export class Player extends Entity {
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
-     * @beta
      * @remarks
      * An identifier that can be used to identify a player across
      * sessions.
@@ -262,7 +256,6 @@ export class Player extends Entity {
      */
     clearPropertyOverridesForEntity(targetEntity: Entity | string): void;
     /**
-     * @beta
      * @remarks
      * Eats an item, providing the item's hunger and saturation
      * effects to the player. Can only be used on food items.
@@ -309,7 +302,6 @@ export class Player extends Entity {
      */
     getItemCooldown(cooldownCategory: string): number;
     /**
-     * @beta
      * @remarks
      * Gets the player's ping in milliseconds.
      *
@@ -330,7 +322,6 @@ export class Player extends Entity {
      */
     getSpawnPoint(): DimensionLocation | undefined;
     /**
-     * @beta
      * @remarks
      * Returns the split screen slot of the player.
      *
@@ -382,7 +373,6 @@ export class Player extends Entity {
      */
     playSound(soundId: SoundDefinition | string, soundOptions?: PlayerSoundOptions): SoundInstance;
     /**
-     * @beta
      * @remarks
      * This is an internal-facing method for posting a system
      * message to downstream clients.
@@ -578,7 +568,6 @@ export class Player extends Entity {
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
-     * @beta
      * @remarks
      * Stops all sounds from playing for this particular player.
      *
@@ -600,7 +589,6 @@ export class Player extends Entity {
      */
     stopMusic(): void;
     /**
-     * @beta
      * @remarks
      * Stops a sound from playing for this particular player.
      *

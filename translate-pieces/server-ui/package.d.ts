@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * `@minecraft/server-ui` 模块包含了用于基于对话框的简易用户交互功能的类型。
  * 

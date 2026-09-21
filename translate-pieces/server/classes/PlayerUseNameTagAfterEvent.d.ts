@@ -1,7 +1,6 @@
 /* IMPORT */ import { Entity, Player } from '..';
 
 /**
- * @beta
  * Contains information related to when a player successfully
  * names an Entity with a named Name Tag item.
  */

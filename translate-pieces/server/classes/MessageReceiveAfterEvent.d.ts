@@ -1,7 +1,6 @@
 /* IMPORT */ import { Player } from '..';
 
 /**
- * @beta
  * A specific currently-internal event used for passing
  * messages from client to server.
  */

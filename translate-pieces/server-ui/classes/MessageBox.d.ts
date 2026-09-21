@@ -61,7 +61,6 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
-     * @rc
      * @remarks
      * Sets the label and options for the first button of the
      * message box. Returns the message box instance to allow
@@ -103,7 +102,6 @@ export class MessageBox {
         tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
     ): MessageBox;
     /**
-     * @rc
      * @remarks
      * Sets the label and options for the second button of the
      * message box. Returns the message box instance to allow

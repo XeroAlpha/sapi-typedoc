@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockBoundingBox, Vector3 } from '..';
 
 /**
- * @beta
  * Bounding Box Utils is a utility class that provides a number
  * of useful functions for the creation and utility of
  * {@link BlockBoundingBox} objects

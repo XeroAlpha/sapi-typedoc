@@ -1,5 +1,4 @@
 /**
- * @beta
  * Pack setting name and value that changed.
  */
 export class PackSettingChangeAfterEvent {

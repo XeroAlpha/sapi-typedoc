@@ -16,7 +16,6 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -93,7 +92,6 @@ export class Camera {
             | CameraTargetOptions,
     ): void;
     /**
-     * @beta
      * @remarks
      * Sets the current active camera with easing.
      *
@@ -133,7 +131,6 @@ export class Camera {
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Contains parameters for world clock events that filters out
  * which events are passed to the provided callback.
  */

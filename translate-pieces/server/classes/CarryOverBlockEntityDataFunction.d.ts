@@ -1,7 +1,6 @@
 /* IMPORT */ import { LootItemFunction } from '..';
 
 /**
- * @beta
  * Loot item function that will try to copy the block entity
  * data from the destroyed block to the dropped item.
  */

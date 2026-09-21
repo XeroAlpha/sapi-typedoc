@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntitySneakingChangedEventOptions, EntityStartSneakingAfterEvent } from '..';
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity
  * begins sneaking.
  */

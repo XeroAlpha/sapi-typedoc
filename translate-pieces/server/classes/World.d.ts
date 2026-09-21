@@ -20,7 +20,6 @@ export class World {
      */
     readonly afterEvents: WorldAfterEvents;
     /**
-     * @beta
      * @remarks
      * Enables or disables cheats.
      *
@@ -69,7 +68,6 @@ export class World {
      */
     readonly seed: string;
     /**
-     * @rc
      * @remarks
      * Provides read-only access to the sound definitions loaded
      * for this world.
@@ -90,7 +88,6 @@ export class World {
      */
     readonly tickingAreaManager: TickingAreaManager;
     /**
-     * @beta
      * @remarks
      * A method that is internal-only, used for broadcasting
      * specific messages between client and server.
@@ -141,7 +138,6 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @beta
      * @remarks
      * Retrieves a world clock by its name.
      *

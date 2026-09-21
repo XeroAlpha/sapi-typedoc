@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  *
  * Manifest Details

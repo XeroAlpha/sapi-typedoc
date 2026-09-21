@@ -13,28 +13,24 @@
 export class SoundInstance {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Gets duration and playback information for this sound.
      *
      */
     readonly durationInfo?: SoundDurationInfo;
     /**
-     * @rc
      * @remarks
      * Unique identifier of this sound instance.
      *
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Gets the player this sound was played for.
      *
      */
     readonly recipient?: Player;
     /**
-     * @rc
      * @remarks
      * Gets the identifier of the sound event this instance was
      * started with.
@@ -42,7 +38,6 @@ export class SoundInstance {
      */
     readonly soundEventId: string;
     /**
-     * @beta
      * @remarks
      * Fades this sound instance from its current volume to the
      * target volume over the specified duration. To fade in from
@@ -60,7 +55,6 @@ export class SoundInstance {
      */
     fade(duration: number, targetVolume: number): void;
     /**
-     * @beta
      * @remarks
      * Pauses this sound.
      *
@@ -69,7 +63,6 @@ export class SoundInstance {
      */
     pause(): void;
     /**
-     * @beta
      * @remarks
      * Resumes this sound after a pause.
      *
@@ -78,7 +71,6 @@ export class SoundInstance {
      */
     resume(): void;
     /**
-     * @beta
      * @remarks
      * Sets the playback position of this sound instance.
      *
@@ -95,7 +87,6 @@ export class SoundInstance {
      */
     seekTo(seconds: number): void;
     /**
-     * @beta
      * @remarks
      * Sets the pitch of this sound instance.
      *
@@ -108,7 +99,6 @@ export class SoundInstance {
      */
     setPitch(pitch: number): void;
     /**
-     * @beta
      * @remarks
      * Sets the volume of this sound instance.
      *

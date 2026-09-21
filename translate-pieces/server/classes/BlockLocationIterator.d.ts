@@ -27,7 +27,6 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      */
     [Symbol.iterator](): Iterator<Vector3>;
     /**
-     * @beta
      * @remarks
      * Checks if the underlining block volume has been invalidated.
      * Will return false if the block volume was modified between

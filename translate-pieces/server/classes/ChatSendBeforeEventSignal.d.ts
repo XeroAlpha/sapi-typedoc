@@ -1,7 +1,6 @@
 /* IMPORT */ import { ChatSendBeforeEvent } from '..';
 
 /**
- * @beta
  * Manages callbacks that are connected to an event that fires
  * before chat messages are sent.
  * @seeExample customCommand.ts

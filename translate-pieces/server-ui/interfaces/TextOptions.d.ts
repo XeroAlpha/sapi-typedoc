@@ -4,9 +4,6 @@
  * Options for configuring a text component (label or header).
  */
 export interface TextOptions {
-    /**
-     * @rc
-     */
     tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
     /**
      * @remarks

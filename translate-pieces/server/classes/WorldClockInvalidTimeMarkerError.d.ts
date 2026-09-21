@@ -1,5 +1,4 @@
 /**
- * @beta
  * Error thrown when a time marker is invalid. This can occur
  * when trying to access data on a time marker that has been
  * removed.

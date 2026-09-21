@@ -19,7 +19,6 @@ export interface SliderOptions {
      */
     disabled?: boolean | ObservableBoolean;
     /**
-     * @beta
      * @remarks
      * If set, displays the number of digits after the decimal
      * point in fixed-point notation. For example, if set to 2, the
@@ -35,7 +34,6 @@ export interface SliderOptions {
      */
     step?: number | ObservableNumber;
     /**
-     * @rc
      * @remarks
      * Text shown in a tooltip when the player hovers over the
      * slider.

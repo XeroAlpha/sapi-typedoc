@@ -1,7 +1,6 @@
 /* IMPORT */ import { BlockEventOptions, PlayerPlaceBlockBeforeEvent } from '..';
 
 /**
- * @beta
  * Manages callbacks that are connected to before a block is
  * placed by a player.
  */

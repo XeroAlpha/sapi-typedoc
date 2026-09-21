@@ -8,7 +8,6 @@
 export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
      * @remarks
      * The current air supply of the entity.
      *
@@ -48,7 +47,6 @@ export class EntityBreathableComponent extends EntityComponent {
      */
     readonly breathesWater: boolean;
     /**
-     * @beta
      * @remarks
      * If true, the entity is able to breathe.
      *

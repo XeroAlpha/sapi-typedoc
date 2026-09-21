@@ -31,7 +31,6 @@ export class TextPrimitive extends PrimitiveShape {
      */
     depthTest: boolean;
     /**
-     * @rc
      * @remarks
      * This value determines the gap between lines for the
      * TextPrimitive. By default the line gap height is 0.

@@ -1,5 +1,4 @@
 /**
- * @beta
  * Describes a single banner pattern, which includes a colour
  * and a pattern type.
  */

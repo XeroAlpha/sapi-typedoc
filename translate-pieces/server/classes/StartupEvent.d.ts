@@ -27,7 +27,6 @@ export class StartupEvent {
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
     /**
-     * @beta
      * @remarks
      * @earlyExecution
      *

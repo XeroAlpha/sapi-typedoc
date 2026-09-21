@@ -8,14 +8,12 @@
 export class SetBannerDetailsFunction extends LootItemFunction {
     private constructor();
     /**
-     * @beta
      * @remarks
      * The base color for the dropped banner.
      *
      */
     readonly baseColor: string;
     /**
-     * @beta
      * @remarks
      * An array of {@link BannerPattern} objects used to decorate
      * the banner, including color and pattern type.

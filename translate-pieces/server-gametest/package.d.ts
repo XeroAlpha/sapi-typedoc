@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * `@minecraft/server-gametest` 为脚本API在脚手架与内容测试方面提供支持。
  * 

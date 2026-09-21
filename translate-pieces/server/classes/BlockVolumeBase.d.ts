@@ -14,7 +14,6 @@ export class BlockVolumeBase {
      */
     getBlockLocationIterator(): BlockLocationIterator;
     /**
-     * @beta
      * @remarks
      * Return a {@link BlockBoundingBox} object which represents
      * the validated min and max coordinates of the volume
@@ -29,7 +28,6 @@ export class BlockVolumeBase {
      */
     getCapacity(): number;
     /**
-     * @rc
      * @remarks
      * Returns a list of block positions within the volume that are
      * closest to a given location, sorted by distance (nearest
@@ -45,7 +43,6 @@ export class BlockVolumeBase {
      */
     getClosest(count: number, location: Vector3): Vector3[];
     /**
-     * @rc
      * @remarks
      * Returns a list of block positions within the volume that are
      * farthest from a given location, sorted by distance (farthest

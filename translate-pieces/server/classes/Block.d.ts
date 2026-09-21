@@ -57,7 +57,6 @@ export class Block {
      */
     readonly isLiquid: boolean;
     /**
-     * @beta
      * @remarks
      * 如果该块是实心且不可通行的，则返回 true
      * -（例如，圆石和钻石块是实心方块，而梯子和栅栏则不是）。
@@ -269,7 +268,6 @@ export class Block {
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
-     * @beta
      * @remarks
      * Returns whether this block is removed when touched by
      * liquid.
@@ -459,7 +457,6 @@ export class Block {
      */
     getLightLevel(): number;
     /**
-     * @beta
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -766,7 +763,6 @@ export class Block {
      */
     south(steps?: number): Block | undefined;
     /**
-     * @beta
      * @remarks
      * 首先检查放置是否有效，
      * 如何尝试在维度中将方块设置为{@link BlockPermutation}的状态，

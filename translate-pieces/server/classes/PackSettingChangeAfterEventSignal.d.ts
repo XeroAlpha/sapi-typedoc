@@ -1,8 +1,5 @@
 /* IMPORT */ import { PackSettingChangeAfterEvent } from '..';
 
-/**
- * @beta
- */
 export class PackSettingChangeAfterEventSignal {
     private constructor();
     /**

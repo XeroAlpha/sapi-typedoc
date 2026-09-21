@@ -1,7 +1,6 @@
 /* IMPORT */ import { EntityComponent } from '..';
 
 /**
- * @beta
  * Adds NPC capabilities to an entity such as custom skin,
  * name, and dialogue interactions.
  */

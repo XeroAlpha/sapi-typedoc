@@ -147,7 +147,6 @@ export class CustomForm {
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
-     * @rc
      * @remarks
      * Adds an image component to the form layout. Gifs are
      * supported but are extremely slow to load - always try to
@@ -199,7 +198,6 @@ export class CustomForm {
      */
     label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
-     * @beta
      * @remarks
      * Adds a horizontal row of up to three clickable buttons to
      * the form layout. Returns the form instance to allow method

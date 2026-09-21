@@ -14,7 +14,6 @@
 export class WorldBeforeEvents {
     private constructor();
     /**
-     * @beta
      * @remarks
      * This event is triggered after a chat message has been
      * broadcast or sent to players.
@@ -63,7 +62,6 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before an entity is tamed.
      *
@@ -127,7 +125,6 @@ export class WorldBeforeEvents {
      */
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires before a block is placed by a player.
      *
@@ -142,7 +139,6 @@ export class WorldBeforeEvents {
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @beta
      * @remarks
      * This event fires when a {@link WorldClock} reaches its
      * maximum time and is about to restart.

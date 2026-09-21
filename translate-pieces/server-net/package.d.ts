@@ -1,5 +1,4 @@
 /**
- * @beta
  * @packageDocumentation
  * `@minecraft/server-net` 模块包含了用于发起基于 HTTP 的请求的类型。
  * 此模块仅可用于基岩版专用服务器。

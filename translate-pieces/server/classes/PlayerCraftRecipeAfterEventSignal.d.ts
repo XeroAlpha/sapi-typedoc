@@ -1,7 +1,6 @@
 /* IMPORT */ import { PlayerCraftRecipeAfterEvent, PlayerCraftRecipeEventOptions } from '..';
 
 /**
- * @beta
  * Manages callbacks that are connected to when a player crafts
  * a recipe.
  */

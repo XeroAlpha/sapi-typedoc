@@ -2,7 +2,6 @@
 /* IMPORT */ import { SoundDefinition, SoundDefinitionFilter } from '..';
 
 /**
- * @rc
  * Provides read-only access to the sound definitions loaded
  * for the current world.
  */

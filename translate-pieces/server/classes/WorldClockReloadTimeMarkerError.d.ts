@@ -1,5 +1,4 @@
 /**
- * @beta
  * Error thrown after using the /reload command when trying to
  * re-register an existing world clock with an invalid time
  * marker.
