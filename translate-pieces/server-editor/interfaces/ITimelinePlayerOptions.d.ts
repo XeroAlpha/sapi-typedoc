@@ -1,4 +1,4 @@
-/* IMPORT */ import { IPropertyItemOptionsBase, ITimelinePlayerGroup, TimelinePlayerPlaybackState } from '..';
+/* IMPORT */ import { BasicTooltipContent, IPropertyItemOptionsBase, ITimelinePlayerGroup, TimelinePlayerPlaybackState } from '..';
 
 /**
  * Optional properties for a Timeline Player pane
@@ -17,6 +17,14 @@ export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
      *
      */
     groups?: ITimelinePlayerGroup[];
+    /**
+     * @remarks
+     * Hides the group dropdown. Use when there is only ever one
+     * group, so the dropdown would offer the user nothing to
+     * choose between.
+     *
+     */
+    hideGroupDropdown?: boolean;
     /**
      * @remarks
      * Callback triggered when the total duration changes (e.g. via
@@ -56,10 +64,22 @@ export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
     playbackState?: TimelinePlayerPlaybackState;
     /**
      * @remarks
+     * Tooltip shown when hovering the play/stop toggle.
+     *
+     */
+    playTooltip?: BasicTooltipContent;
+    /**
+     * @remarks
      * Decimal precision for keyframe time values.
      *
      */
     precision?: number;
+    /**
+     * @remarks
+     * Tooltip shown when hovering the redistribute button.
+     *
+     */
+    redistributeTooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Initially selected group identifier.

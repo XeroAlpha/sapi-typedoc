@@ -22,6 +22,15 @@ export class DebugShape {
     color: RGBA;
     /**
      * @remarks
+     * Defaults to true. If set to true, we default to being
+     * visible to all players if visibleTo is empty - hiddenFrom
+     * still applies afterwards. If set to false, we default to
+     * hiding the shape from all players if visibleTo is empty.
+     *
+     */
+    defaultVisibleToAll: boolean;
+    /**
+     * @remarks
      * The dimension the shape is visible within. If the dimension
      * is undefined, it will display in all dimensions.
      *
@@ -34,6 +43,14 @@ export class DebugShape {
      *
      */
     readonly hasDuration: boolean;
+    /**
+     * @remarks
+     * The list of players that this shape will be hidden from. If
+     * a player is listed in both this and visibleTo, this takes
+     * priority (it will be hidden from the player).
+     *
+     */
+    hiddenFrom: Player[];
     /**
      * @remarks
      * The location of the shape. For most shapes the location is
@@ -85,7 +102,9 @@ export class DebugShape {
     /**
      * @remarks
      * The list of players that this shape will be visible to. If
-     * left empty, the shape will be visible to all players.
+     * left empty and defaultVisibleToAll is true, the shape will
+     * be visible to all players, otherwise it will be hidden from
+     * all players.
      *
      */
     visibleTo: Player[];

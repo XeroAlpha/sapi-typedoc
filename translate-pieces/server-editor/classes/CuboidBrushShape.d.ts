@@ -15,6 +15,7 @@ export declare class CuboidBrushShape extends BrushShape {
         depth?: number;
         minLength?: number;
         maxLength?: number;
+        maxBlockVolume?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;

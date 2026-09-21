@@ -1545,6 +1545,43 @@ export enum WidgetGizmoEventType {
     OriginReleased = 'OriginReleased',
 }
 
+/**
+ * The points in the lifecycle of a rotation ring drag that are
+ * reported to a rotation state change handler.
+ */
+export enum WidgetGizmoRotationEventType {
+    /**
+     * @remarks
+     * The drag ended without completing, so the consumer should
+     * roll back to the rotation it had when the ring was grabbed.
+     * Reported once.
+     *
+     */
+    Cancelled = 'Cancelled',
+    /**
+     * @remarks
+     * The player grabbed a rotation ring and started a drag.
+     * Reported once, with zero delta and zero total.
+     *
+     */
+    Grabbed = 'Grabbed',
+    /**
+     * @remarks
+     * The drag moved around the ring. Reported any number of times
+     * between the grab and the terminal event.
+     *
+     */
+    Moved = 'Moved',
+    /**
+     * @remarks
+     * The player let go of the ring and the drag completed.
+     * Reported once, with zero delta and the final accumulated
+     * total from the drag.
+     *
+     */
+    Released = 'Released',
+}
+
 export enum WidgetGizmoScaleMode {
     World = 0,
     Screen = 1,
@@ -1554,6 +1591,17 @@ export enum WidgetGroupSelectionMode {
     Multiple = 'Multiple',
     None = 'None',
     Single = 'Single',
+}
+
+export enum WidgetGuideSensorDirection {
+    None = 0,
+    PositiveY = 1,
+    NegativeY = 2,
+    PositiveZ = 4,
+    NegativeZ = 8,
+    PositiveX = 16,
+    NegativeX = 32,
+    All = 63,
 }
 
 export enum WidgetMouseButtonActionType {
@@ -3210,6 +3258,7 @@ export declare class CuboidBrushShape extends BrushShape {
         depth?: number;
         minLength?: number;
         maxLength?: number;
+        maxBlockVolume?: number;
         xRotation?: number;
         yRotation?: number;
         zRotation?: number;
@@ -5874,6 +5923,16 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
     normalizedOffsetOverride?: Vector3;
     /**
      * @remarks
+     * The rotation rings for this gizmo. Rotation is configured
+     * and observed through the returned
+     * {@link WidgetGizmoRotation}, and is disabled until at least
+     * one rotation axis is enabled on it.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly rotation: WidgetGizmoRotation;
+    /**
+     * @remarks
      * @worldMutation
      *
      */
@@ -6583,6 +6642,179 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
             | RelativeVolumeListBlockVolume
             | Vector3,
     ): void;
+}
+
+/**
+ * The rotation surface of a gizmo component. It configures
+ * which rotation rings are shown, where they are centered, how
+ * large they are, and how a live drag is drawn, and it
+ * delivers the rotation lifecycle events the rings produce.
+ *
+ * Rotation is disabled until at least one axis is enabled
+ * through `rotationAxes`.
+ */
+export class WidgetGizmoRotation {
+    private constructor();
+    /**
+     * @remarks
+     * A preferred radius for rotation rings, in world units. The
+     * rendered radius remains at least its normal camera-sized
+     * radius and may be reduced to the screen-space cap when the
+     * preferred radius would exceed the usable viewport. Set zero
+     * to use camera-sized rings.
+     *
+     * This property affects rotation rings only and does not
+     * change translation handles.
+     *
+     * @worldMutation
+     *
+     * @throws
+     * Throws `InvalidWidgetComponentError` when the gizmo
+     * component this rotation belongs to is no longer valid. Also
+     * throws when the radius is negative or is not a finite
+     * number.
+     */
+    preferredRingRadius: number;
+    /**
+     * @remarks
+     * The world axes the gizmo shows a rotation ring for. Set
+     * `Axis.None` to remove the rings. This throws if the gizmo
+     * also has no translation axes.
+     *
+     * Changing this rebuilds the gizmo and clears its activated
+     * state. Activate the component again afterwards; activation
+     * is not preserved across the rebuild.
+     *
+     * @worldMutation
+     *
+     * @throws
+     * Throws `InvalidWidgetComponentError` when the gizmo
+     * component this rotation belongs to is no longer valid.
+     * Throws when removing the rings would leave the gizmo with no
+     * translation or rotation axes, or when the value contains
+     * bits other than `Axis.X`, `Axis.Y`, or `Axis.Z`.
+     */
+    rotationAxes: Axis;
+    /**
+     * @remarks
+     * The point the rings are centered on and rotate about, in
+     * world units relative to the owner widget's origin. Every
+     * component must be finite. A zero offset centers the rings on
+     * the widget origin itself.
+     *
+     * This is independent of where the translation handles are
+     * drawn.
+     *
+     * @worldMutation
+     *
+     * @throws
+     * Throws `InvalidWidgetComponentError` when the gizmo
+     * component this rotation belongs to is no longer valid.
+     * Throws when any offset component is NaN or Infinity.
+     */
+    rotationOriginOffset: Vector3;
+    /**
+     * @remarks
+     * The width, in degrees, of the step cell drawn on the ring
+     * during a drag, for consumers that commit rotation in fixed
+     * steps. The value must be finite and nonnegative. Set zero to
+     * draw no step cell.
+     *
+     * This is visual only. It does not snap the drag and does not
+     * change the `deltaDegrees` or `totalDegrees` values reported
+     * by rotation events. A consumer that wants stepped rotation
+     * must apply its own snapping.
+     *
+     * @worldMutation
+     *
+     * @throws
+     * Throws `InvalidWidgetComponentError` when the gizmo
+     * component this rotation belongs to is no longer valid.
+     * Throws when the value is negative, NaN, or Infinity.
+     */
+    visualStepDegrees: number;
+    /**
+     * @remarks
+     * Set the handler called for every rotation lifecycle event on
+     * this gizmo's rings. Call with no argument to remove the
+     * current handler.
+     *
+     * Each ring drag reports one `Grabbed` event, any number of
+     * `Moved` events, and exactly one terminal `Released` or
+     * `Cancelled` event. Rotation is a separate consumer-owned
+     * input stream. It does not select the translation gizmo or
+     * invoke widget-group mouse-down, drag, or mouse-up behavior.
+     * The consumer owns snapping and state application.
+     *
+     * @worldMutation
+     *
+     * @param eventFunction
+     * A code closure called with a
+     * {@link WidgetGizmoRotationEvent} each time a rotation is
+     * grabbed, moved, released, or cancelled. Omit it to remove
+     * the current handler.
+     * @throws
+     * Throws `InvalidWidgetComponentError` when the gizmo
+     * component this rotation belongs to is no longer valid.
+     */
+    setStateChangeEvent(eventFunction?: (arg0: WidgetGizmoRotationEvent) => void): void;
+}
+
+/**
+ * A single point in the lifecycle of a rotation ring drag,
+ * delivered to the handler registered with
+ * {@link WidgetGizmoRotation.setStateChangeEvent}. All angles
+ * it reports are in degrees.
+ */
+export class WidgetGizmoRotationEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The world axis of the ring being dragged. The value is
+     * exactly one of `Axis.X`, `Axis.Y`, or `Axis.Z`. Every event
+     * in one drag reports the same axis.
+     *
+     */
+    readonly axis: Axis;
+    /**
+     * @remarks
+     * The gizmo component that produced this rotation event.
+     *
+     */
+    readonly component: WidgetComponentGizmo;
+    /**
+     * @remarks
+     * The signed change in rotation, in degrees, since the
+     * previous event of this drag. Only `Moved` events carry an
+     * incremental delta. It is zero on `Grabbed`, `Released`, and
+     * `Cancelled` events and is measured with the right-hand rule
+     * about the positive direction of `axis`.
+     *
+     */
+    readonly deltaDegrees: number;
+    /**
+     * @remarks
+     * Which point in the drag this event reports.
+     *
+     */
+    readonly eventType: WidgetGizmoRotationEventType;
+    /**
+     * @remarks
+     * The signed rotation accumulated, in degrees, since the drag
+     * was grabbed. It is zero on the `Grabbed` event, is measured
+     * with the right-hand rule about the positive direction of
+     * `axis`, and is not wrapped, so a drag of several turns keeps
+     * growing past a full circle.
+     *
+     */
+    readonly totalDegrees: number;
+    /**
+     * @remarks
+     * The widget that owns the gizmo which produced this rotation
+     * event.
+     *
+     */
+    readonly widget: Widget;
 }
 
 export class WidgetGroup {
@@ -12179,6 +12411,14 @@ export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
     groups?: ITimelinePlayerGroup[];
     /**
      * @remarks
+     * Hides the group dropdown. Use when there is only ever one
+     * group, so the dropdown would offer the user nothing to
+     * choose between.
+     *
+     */
+    hideGroupDropdown?: boolean;
+    /**
+     * @remarks
      * Callback triggered when the total duration changes (e.g. via
      * the timeline drag handle).
      *
@@ -12216,10 +12456,22 @@ export interface ITimelinePlayerOptions extends IPropertyItemOptionsBase {
     playbackState?: TimelinePlayerPlaybackState;
     /**
      * @remarks
+     * Tooltip shown when hovering the play/stop toggle.
+     *
+     */
+    playTooltip?: BasicTooltipContent;
+    /**
+     * @remarks
      * Decimal precision for keyframe time values.
      *
      */
     precision?: number;
+    /**
+     * @remarks
+     * Tooltip shown when hovering the redistribute button.
+     *
+     */
+    redistributeTooltip?: BasicTooltipContent;
     /**
      * @remarks
      * Initially selected group identifier.
@@ -12467,6 +12719,7 @@ export interface IVector2PropertyItemOptions extends IPropertyItemOptionsBase {
  */
 export interface IVector3Keyframe {
     id: string;
+    name?: LocalizedString;
     time: number;
     value: Vector3;
 }
@@ -13101,11 +13354,27 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
     selectedAnimation?: string;
 }
 
+/**
+ * Options used when creating a gizmo component. A gizmo must
+ * enable at least one translation axis or one rotation axis.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
     normalizedAutoOffset?: Vector3;
+    /**
+     * @remarks
+     * The world axes that have rotation rings when the gizmo is
+     * created. Defaults to `Axis.None`. The value can be
+     * `Axis.None` when at least one translation axis is enabled.
+     *
+     * @throws
+     * Throws when neither a translation axis nor a rotation axis
+     * is enabled, or when the value contains bits other than
+     * `Axis.X`, `Axis.Y`, or `Axis.Z`.
+     */
+    rotationAxes?: Axis;
     scaleMode?: WidgetGizmoScaleMode;
     stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
 }
@@ -13119,7 +13388,9 @@ export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
-export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {}
+export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {
+    directions?: WidgetGuideSensorDirection;
+}
 
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentRenderPlaneOptions extends WidgetComponentBaseOptions {

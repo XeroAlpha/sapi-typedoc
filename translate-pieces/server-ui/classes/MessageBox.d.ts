@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxButtonOptions, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
+/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxButtonOptions, MessageBoxOptions, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * A simple message form with two buttons and a text body. Use
@@ -17,6 +17,9 @@ export class MessageBox {
      * The player to show this message box to.
      * @param title
      * The title text to display at the top of the message box.
+     * @param options
+     * Optional configuration for the message box, such as the
+     * button layout.
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
@@ -24,6 +27,7 @@ export class MessageBox {
     constructor(
         player: Player,
         title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxOptions,
     );
     /**
      * @remarks
@@ -119,6 +123,27 @@ export class MessageBox {
      * {@link InvalidFormModificationError}
      */
     button2WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
+    ): MessageBox;
+    /**
+     * @remarks
+     * Sets the label and options for the third button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the third button.
+     * @param options
+     * Optional configuration for the third button, such as tooltip
+     * and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button3WithOptions(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
         options?: MessageBoxButtonOptions,
     ): MessageBox;

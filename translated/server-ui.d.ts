@@ -391,7 +391,6 @@ export class CustomForm {
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
-     * @rc
      * @remarks
      * Adds an image component to the form layout. Gifs are
      * supported but are extremely slow to load - always try to
@@ -619,6 +618,9 @@ export class MessageBox {
      * The player to show this message box to.
      * @param title
      * The title text to display at the top of the message box.
+     * @param options
+     * Optional configuration for the message box, such as the
+     * button layout.
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
@@ -626,6 +628,7 @@ export class MessageBox {
     constructor(
         player: Player,
         title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxOptions,
     );
     /**
      * @remarks
@@ -723,6 +726,28 @@ export class MessageBox {
      * {@link InvalidFormModificationError}
      */
     button2WithOptions(
+        label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxButtonOptions,
+    ): MessageBox;
+    /**
+     * @beta
+     * @remarks
+     * Sets the label and options for the third button of the
+     * message box. Returns the message box instance to allow
+     * method chaining.
+     *
+     * @worldMutation
+     *
+     * @param label
+     * The text label to display on the third button.
+     * @param options
+     * Optional configuration for the third button, such as tooltip
+     * and image.
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidFormModificationError}
+     */
+    button3WithOptions(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
         options?: MessageBoxButtonOptions,
     ): MessageBox;
@@ -1467,7 +1492,6 @@ export interface ImageDetails {
 }
 
 /**
- * @rc
  * Options for configuring an image component.
  */
 export interface ImageOptions {
@@ -1520,6 +1544,21 @@ export interface MessageBoxButtonOptions {
      *
      */
     tooltip?: ObservableString | ObservableUIRawMessage | string | UIRawMessage;
+}
+
+/**
+ * @beta
+ * Options for configuring a message box.
+ */
+export interface MessageBoxOptions {
+    /**
+     * @remarks
+     * Sets the desired layout for the buttons. True displays the
+     * buttons horizontally, false displays them vertically.
+     * Defaults to false.
+     *
+     */
+    showHorizontalButtons: boolean;
 }
 
 /**

@@ -1,5 +1,5 @@
 /* IMPORT */ import { Vector3 } from '../../server';
-/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters, WidgetGizmoScaleMode } from '..';
+/* IMPORT */ import { Axis, InvalidWidgetComponentError, WidgetComponentBase, WidgetComponentGizmoStateChangeEventParameters, WidgetGizmoRotation, WidgetGizmoScaleMode } from '..';
 
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
@@ -16,6 +16,16 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      *
      */
     normalizedOffsetOverride?: Vector3;
+    /**
+     * @remarks
+     * The rotation rings for this gizmo. Rotation is configured
+     * and observed through the returned
+     * {@link WidgetGizmoRotation}, and is disabled until at least
+     * one rotation axis is enabled on it.
+     *
+     * @throws This property can throw when used.
+     */
+    readonly rotation: WidgetGizmoRotation;
     /**
      * @remarks
      * @worldMutation
