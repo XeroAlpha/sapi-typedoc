@@ -49,14 +49,8 @@ export enum AimAssistTargetMode {
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
-    /**
-     * @rc
-     */
     DynamicProperties = 'minecraft:dynamic_properties',
     FluidContainer = 'minecraft:fluid_container',
-    /**
-     * @rc
-     */
     Instrument = 'minecraft:instrument_sound',
     /**
      * @remarks
@@ -208,7 +202,6 @@ export enum ButtonState {
 }
 
 /**
- * @rc
  * Represents the type of shake to apply to the camera.
  */
 export enum CameraShakeType {
@@ -227,7 +220,6 @@ export enum CameraShakeType {
 }
 
 /**
- * @rc
  * An enumeration for the clone modes used when cloning blocks.
  */
 export enum CloneMode {
@@ -2281,9 +2273,6 @@ export enum InputPermissionCategory {
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
-    /**
-     * @rc
-     */
     BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
     /**
      * @remarks
@@ -4309,42 +4298,6 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @remarks
-     * Returns whether this block can have a liquid placed over it,
-     * i.e. be waterlogged.
-     *
-     * @param liquidType
-     * The type of liquid this function should be called for.
-     * @returns
-     * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
-     */
-    canContainLiquid(liquidType: LiquidType): boolean;
-    /**
-     * @remarks
-     * Returns whether this block is removed when touched by
-     * liquid.
-     *
-     * @param liquidType
-     * The type of liquid this function should be called for.
-     * @returns
-     * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
-     */
-    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
-    /**
      * @beta
      * @remarks
      * Returns whether this block can have a liquid placed over it,
@@ -4607,6 +4560,15 @@ export class Block {
      */
     hasComponent(componentId: string): boolean;
     /**
+     * @beta
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    hasScheduledNamedTick(eventName: string): boolean;
+    /**
      * @remarks
      * 检查该方块的{@link BlockPermutation}是否具有特定的标签。
      *
@@ -4741,6 +4703,47 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     offset(offset: Vector3): Block | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Removes all scheduled named tick events from this block with
+     * the specified event name.
+     *
+     * @worldMutation
+     *
+     * @param eventName
+     * Name of the scheduled event to remove.
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    removeScheduledNamedTick(eventName: string): void;
+    /**
+     * @beta
+     * @remarks
+     * Schedules a named tick event for this block. The event will
+     * be delivered to block custom components registered with the
+     * `onNamedTick` callback after the specified delay.
+     *
+     * @worldMutation
+     *
+     * @param eventName
+     * Name of the event to schedule. Up to 31 characters.
+     * @param tickDelay
+     * Number of ticks to wait before the event is raised. Must be
+     * at least 1.
+     * Minimum value: 1
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    scheduleNamedTick(eventName: string, tickDelay: number): void;
     /**
      * @remarks
      * 在维度中将方块设置为{@link BlockPermutation}的状态。
@@ -5111,6 +5114,30 @@ export class BlockComponentEntityFallOnEvent extends BlockEvent {
 }
 
 /**
+ * @beta
+ * Contains information regarding a named tick event for a
+ * specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentNamedTickEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Checks whether this named tick event has the specified name.
+     * Events are namespaced with their content UUID. Two named
+     * tick events with the same name but scheduled from different
+     * packs will not respond the same to this method.
+     *
+     * @param eventName
+     * The name to check against this event.
+     * @returns
+     * Returns true if the event name matches the specified name;
+     * otherwise, false.
+     */
+    isName(eventName: string): boolean;
+}
+
+/**
  * Contains information regarding a specific block that was
  * placed.
  */
@@ -5425,7 +5452,6 @@ export class BlockCustomComponentInstance extends BlockComponent {
 }
 
 /**
- * @rc
  * Represents the dynamic properties of a block in the world.
  * Only available with block entities. Up to 1KB per content
  * pack, per block entity in their dynamic properties storage.
@@ -5633,7 +5659,6 @@ export class BlockFluidContainerComponent extends BlockComponent {
 }
 
 /**
- * @rc
  * Represents the instruments a block can have assigned to it's
  * up and down faces.
  */
@@ -6513,7 +6538,6 @@ export class BlockVolumeBase {
      */
     getCapacity(): number;
     /**
-     * @rc
      * @remarks
      * Returns a list of block positions within the volume that are
      * closest to a given location, sorted by distance (nearest
@@ -6529,7 +6553,6 @@ export class BlockVolumeBase {
      */
     getClosest(count: number, location: Vector3): Vector3[];
     /**
-     * @rc
      * @remarks
      * Returns a list of block positions within the volume that are
      * farthest from a given location, sorted by distance (farthest
@@ -6644,7 +6667,6 @@ export class Camera {
      */
     readonly isValid: boolean;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -6761,7 +6783,6 @@ export class Camera {
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
     /**
-     * @rc
      * @remarks
      * @worldMutation
      *
@@ -7911,7 +7932,6 @@ export class Dimension {
         options?: BiomeSearchOptions,
     ): Vector3 | undefined;
     /**
-     * @rc
      * @remarks
      * Clones a region of blocks from one area of the dimension to
      * another.
@@ -8147,7 +8167,6 @@ export class Dimension {
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
-     * @rc
      * @remarks
      * Gets all the blocks in a volume that satisfy the block query
      * options.
@@ -12755,7 +12774,6 @@ export class EntitySpawnAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains data related to an entity beginning to sneak.
  */
 export class EntityStartSneakingAfterEvent {
@@ -12769,7 +12787,6 @@ export class EntityStartSneakingAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity
  * begins sneaking.
  */
@@ -12803,7 +12820,6 @@ export class EntityStartSneakingAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains data related to an entity stopping sneaking.
  */
 export class EntityStopSneakingAfterEvent {
@@ -12817,7 +12833,6 @@ export class EntityStopSneakingAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity stops
  * sneaking.
  */
@@ -12938,7 +12953,6 @@ export class EntityTameableComponent extends EntityComponent {
 }
 
 /**
- * @rc
  * Contains data related to an entity being tamed.
  */
 export class EntityTamedAfterEvent {
@@ -12948,7 +12962,6 @@ export class EntityTamedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when an entity is
  * tamed.
  */
@@ -12976,7 +12989,6 @@ export class EntityTamedAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information regarding an event before an entity is
  * tamed.
  */
@@ -13003,7 +13015,6 @@ export class EntityTamedBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to before an entity is
  * tamed.
  */
@@ -13554,7 +13565,6 @@ export class FluidContainer {
 }
 
 /**
- * @rc
  * Provides access to the fog definitions stack of a player
  * entity, allowing scripts to push, pop, remove, and query
  * active fog definitions.
@@ -14036,7 +14046,6 @@ export class ISerializable {
 }
 
 /**
- * @rc
  * Represents the dynamic properties of a block. Only available
  * from block entities. Up to 1KBytes of data can be stored per
  * content pack per block entity in their dynamic properties
@@ -16865,7 +16874,6 @@ export class Player extends Entity {
      */
     commandPermissionLevel: CommandPermissionLevel;
     /**
-     * @rc
      * @remarks
      * Contains methods for manipulating the render distance fog
      * settings of a Player.
@@ -19723,6 +19731,10 @@ export class PrimitiveShape {
      */
     color: RGBA;
     /**
+     * @beta
+     */
+    defaultVisibleToAll: boolean;
+    /**
      * @remarks
      * The dimension the shape is visible within. If the dimension
      * is undefined, it will display in all dimensions.
@@ -19736,6 +19748,10 @@ export class PrimitiveShape {
      *
      */
     readonly hasDuration: boolean;
+    /**
+     * @beta
+     */
+    hiddenFrom: Player[];
     /**
      * @remarks
      * The location of the shape.
@@ -19831,7 +19847,6 @@ export class PrimitiveShapesManager {
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
-     * @rc
      * @remarks
      * Fetches and queries all primitive shapes stored in the
      * manager and returns the results as an array of shape
@@ -21097,7 +21112,6 @@ export class SmeltItemFunction extends LootItemFunction {
 }
 
 /**
- * @rc
  * Contains information about a sound thats declared duration
  * elapsed.
  */
@@ -21114,7 +21128,6 @@ export class SoundCompletedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are invoked when a tracked sound's
  * declared duration elapses.
  */
@@ -21151,7 +21164,6 @@ export class SoundCompletedAfterEventSignal {
 export class SoundDefinition {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Duration metadata declared for this sound. Undefined when
      * the sound definition does not specify a duration.
@@ -21159,7 +21171,6 @@ export class SoundDefinition {
      */
     readonly durationInfo?: SoundDefinitionDurationInfo;
     /**
-     * @rc
      * @remarks
      * Music metadata declared for this sound. Undefined when the
      * sound definition does not specify a music_info block.
@@ -21167,7 +21178,6 @@ export class SoundDefinition {
      */
     readonly musicInfo?: SoundDefinitionMusicInfo;
     /**
-     * @rc
      * @remarks
      * Identifier of the sound event this definition declares, in
      * the form 'namespace:name'.
@@ -21175,7 +21185,6 @@ export class SoundDefinition {
      */
     readonly soundEventId: string;
     /**
-     * @rc
      * @remarks
      * Tag metadata declared for this sound, as a record mapping
      * each tag name to its declared values. A tag declared with a
@@ -21188,7 +21197,6 @@ export class SoundDefinition {
 }
 
 /**
- * @rc
  * Provides read-only access to the sound definitions loaded
  * for the current world.
  */
@@ -21215,7 +21223,6 @@ export class SoundDefinitionRegistry {
 }
 
 /**
- * @rc
  * Provides duration and playback information for a sound whose
  * definition declares a duration.
  */
@@ -21259,28 +21266,24 @@ export class SoundDurationInfo {
 export class SoundInstance {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Gets duration and playback information for this sound.
      *
      */
     readonly durationInfo?: SoundDurationInfo;
     /**
-     * @rc
      * @remarks
      * Unique identifier of this sound instance.
      *
      */
     readonly id: string;
     /**
-     * @rc
      * @remarks
      * Gets the player this sound was played for.
      *
      */
     readonly recipient?: Player;
     /**
-     * @rc
      * @remarks
      * Gets the identifier of the sound event this instance was
      * started with.
@@ -21288,7 +21291,7 @@ export class SoundInstance {
      */
     readonly soundEventId: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Fades this sound instance from its current volume to the
      * target volume over the specified duration. To fade in from
@@ -21306,7 +21309,7 @@ export class SoundInstance {
      */
     fade(duration: number, targetVolume: number): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Pauses this sound.
      *
@@ -21315,7 +21318,7 @@ export class SoundInstance {
      */
     pause(): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Resumes this sound after a pause.
      *
@@ -21324,7 +21327,7 @@ export class SoundInstance {
      */
     resume(): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the playback position of this sound instance.
      *
@@ -21341,7 +21344,7 @@ export class SoundInstance {
      */
     seekTo(seconds: number): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the pitch of this sound instance.
      *
@@ -21354,7 +21357,7 @@ export class SoundInstance {
      */
     setPitch(pitch: number): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the volume of this sound instance.
      *
@@ -22755,7 +22758,6 @@ export class World {
      */
     readonly seed: string;
     /**
-     * @rc
      * @remarks
      * Provides read-only access to the sound definitions loaded
      * for this world.
@@ -23347,7 +23349,6 @@ export class WorldAfterEvents {
      */
     readonly entitySpawn: EntitySpawnAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity starts sneaking.
      *
@@ -23356,7 +23357,6 @@ export class WorldAfterEvents {
      */
     readonly entityStartSneaking: EntityStartSneakingAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity stops sneaking.
      *
@@ -23365,7 +23365,6 @@ export class WorldAfterEvents {
      */
     readonly entityStopSneaking: EntityStopSneakingAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when an entity is tamed.
      *
@@ -23693,7 +23692,6 @@ export class WorldAfterEvents {
      */
     readonly projectileHitEntity: ProjectileHitEntityAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * A tracked sound's declared duration elapsed.
      *
@@ -23838,7 +23836,6 @@ export class WorldBeforeEvents {
      */
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * Fires before an entity is tamed.
      *
@@ -24539,6 +24536,10 @@ export interface BlockCustomComponent {
      */
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     /**
+     * @beta
+     */
+    onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void;
+    /**
      * @remarks
      * This function will be called when the block that this custom
      * component is bound to is placed.
@@ -24711,7 +24712,6 @@ export interface BlockHitInformation {
 }
 
 /**
- * @rc
  * Options for querying blocks in a volume. Extends BlockFilter
  * with additional sorting and limiting options based on
  * distance from a location.
@@ -24915,7 +24915,6 @@ export interface CameraSetRotOptions {
 }
 
 /**
- * @rc
  * Options for applying a camera shake effect to a player's
  * camera via `Camera.addShake`. Each call to `addShake` queues
  * a new independent shake event for the specified `type`;
@@ -25819,7 +25818,6 @@ export interface EntityRaycastOptions extends EntityFilter {
 }
 
 /**
- * @rc
  * Options used to filter entity start sneaking and stop
  * sneaking events.
  */
@@ -25828,7 +25826,6 @@ export interface EntitySneakingChangedEventOptions {
 }
 
 /**
- * @rc
  * Contains options for filtering entity tamed events.
  */
 export interface EntityTamedEventOptions {
@@ -26379,7 +26376,7 @@ export interface PlayerSoundOptions {
      */
     location?: Vector3;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Number of additional times to repeat the sound after the
      * initial play. `0` (the default) plays the sound once, `-1`
@@ -26513,7 +26510,6 @@ export interface PoiTagFilter {
 }
 
 /**
- * @rc
  * Contains optional filters that control which primitive
  * shapes are returned from a primitive shapes query.
  */
@@ -26793,7 +26789,6 @@ export interface ScriptEventMessageFilterOptions {
 }
 
 /**
- * @rc
  * Duration metadata declared in a sound definition.
  */
 export interface SoundDefinitionDurationInfo {
@@ -26807,7 +26802,6 @@ export interface SoundDefinitionDurationInfo {
 }
 
 /**
- * @rc
  * Criteria used to narrow a set of sound definitions. Each
  * field is optional and applies its constraint only when
  * defined; a definition must satisfy every defined field to
@@ -26886,7 +26880,6 @@ export interface SoundDefinitionFilter {
 }
 
 /**
- * @rc
  * Music metadata declared on a sound definition. Each field is
  * optional and is undefined when the sound definition does not
  * declare a value for it.
@@ -27396,12 +27389,9 @@ export interface WorldClockTimeMarkerEventOptions {
  * Contains additional options for a playSound occurrence.
  */
 export interface WorldSoundOptions {
-    /**
-     * @rc
-     */
     isBroadcast?: boolean;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Number of additional times to repeat the sound after the
      * initial play. `0` (the default) plays the sound once, `-1`
@@ -27603,7 +27593,6 @@ export class EntitySpawnError extends Error {
 }
 
 /**
- * @rc
  * Error thrown by {@link FogSettings} operations when the fog
  * stack limit is exceeded or an invalid fog identifier is
  * provided.

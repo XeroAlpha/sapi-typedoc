@@ -250,42 +250,6 @@ export class Block {
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
-     * @remarks
-     * Returns whether this block can have a liquid placed over it,
-     * i.e. be waterlogged.
-     *
-     * @param liquidType
-     * The type of liquid this function should be called for.
-     * @returns
-     * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
-     */
-    canContainLiquid(liquidType: LiquidType): boolean;
-    /**
-     * @remarks
-     * Returns whether this block is removed when touched by
-     * liquid.
-     *
-     * @param liquidType
-     * The type of liquid this function should be called for.
-     * @returns
-     * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
-     */
-    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
-    /**
      * @beta
      * @remarks
      * Returns whether this block can have a liquid placed over it,
@@ -547,6 +511,14 @@ export class Block {
      */
     hasComponent(componentId: string): boolean;
     /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    hasScheduledNamedTick(eventName: string): boolean;
+    /**
      * @remarks
      * 检查该方块的{@link BlockPermutation}是否具有特定的标签。
      *
@@ -681,6 +653,45 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     offset(offset: Vector3): Block | undefined;
+    /**
+     * @remarks
+     * Removes all scheduled named tick events from this block with
+     * the specified event name.
+     *
+     * @worldMutation
+     *
+     * @param eventName
+     * Name of the scheduled event to remove.
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    removeScheduledNamedTick(eventName: string): void;
+    /**
+     * @remarks
+     * Schedules a named tick event for this block. The event will
+     * be delivered to block custom components registered with the
+     * `onNamedTick` callback after the specified delay.
+     *
+     * @worldMutation
+     *
+     * @param eventName
+     * Name of the event to schedule. Up to 31 characters.
+     * @param tickDelay
+     * Number of ticks to wait before the event is raised. Must be
+     * at least 1.
+     * Minimum value: 1
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    scheduleNamedTick(eventName: string, tickDelay: number): void;
     /**
      * @remarks
      * 在维度中将方块设置为{@link BlockPermutation}的状态。

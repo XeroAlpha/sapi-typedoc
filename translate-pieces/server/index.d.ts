@@ -92,6 +92,7 @@ export { BlockComponentBlockBreakEvent } from './classes/BlockComponentBlockBrea
 export { BlockComponentBlockStateChangeEvent } from './classes/BlockComponentBlockStateChangeEvent';
 export { BlockComponentEntityEvent } from './classes/BlockComponentEntityEvent';
 export { BlockComponentEntityFallOnEvent } from './classes/BlockComponentEntityFallOnEvent';
+export { BlockComponentNamedTickEvent } from './classes/BlockComponentNamedTickEvent';
 export { BlockComponentOnPlaceEvent } from './classes/BlockComponentOnPlaceEvent';
 export { BlockComponentPlayerBreakEvent } from './classes/BlockComponentPlayerBreakEvent';
 export { BlockComponentPlayerInteractEvent } from './classes/BlockComponentPlayerInteractEvent';

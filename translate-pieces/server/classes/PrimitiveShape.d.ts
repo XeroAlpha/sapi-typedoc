@@ -20,6 +20,7 @@ export class PrimitiveShape {
      *
      */
     color: RGBA;
+    defaultVisibleToAll: boolean;
     /**
      * @remarks
      * The dimension the shape is visible within. If the dimension
@@ -34,6 +35,7 @@ export class PrimitiveShape {
      *
      */
     readonly hasDuration: boolean;
+    hiddenFrom: Player[];
     /**
      * @remarks
      * The location of the shape.
