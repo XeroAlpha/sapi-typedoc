@@ -271,6 +271,7 @@ export class CustomForm {
     constructor(
         player: Player,
         title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: CustomFormOptions,
     );
     /**
      * @remarks
@@ -452,6 +453,7 @@ export class CustomForm {
      *
      * @param buttons
      * The buttons to display in the row.
+     * Maximum Length: 3
      * @param options
      * Optional configuration for the row, such as visibility.
      * @throws This function can throw errors.
@@ -644,7 +646,10 @@ export class MessageBox {
      *
      * {@link InvalidFormModificationError}
      */
-    body(body: ObservableString | ObservableUIRawMessage | string | UIRawMessage): MessageBox;
+    body(
+        body: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxBodyOptions,
+    ): MessageBox;
     /**
      * @remarks
      * Sets the label for the first button of the message box.
@@ -1167,6 +1172,7 @@ export class ObservableString {
      *
      * @param data
      * The initial string value for this observable.
+     * Maximum Length: 5000
      * @param options
      * Optional configuration for the observable, such as whether
      * the value can be written by the client.
@@ -1213,6 +1219,7 @@ export class ObservableString {
      *
      * @param data
      * The new string value to set.
+     * Maximum Length: 5000
      */
     setData(data: string): void;
     /**
@@ -1396,6 +1403,11 @@ export interface ButtonOptions {
 }
 
 /**
+ * @beta
+ */
+export interface CustomFormOptions {}
+
+/**
  * Options for configuring a divider component in a CustomForm.
  */
 export interface DividerOptions {
@@ -1525,6 +1537,11 @@ export interface ImageOptions {
      */
     width?: number | ObservableNumber;
 }
+
+/**
+ * @beta
+ */
+export interface MessageBoxBodyOptions {}
 
 /**
  * @rc

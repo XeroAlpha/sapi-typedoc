@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { ButtonData, ButtonOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, ImageOptions, InvalidFormModificationError, InvalidObservableError, MultiButtonRowOptions, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
+/* IMPORT */ import { ButtonData, ButtonOptions, CustomFormOptions, DataDrivenScreenClosedReason, DividerOptions, DropdownItemData, DropdownOptions, FormVisibilityError, ImageOptions, InvalidFormModificationError, InvalidObservableError, MultiButtonRowOptions, ObservableBoolean, ObservableNumber, ObservableString, ObservableUIRawMessage, SliderOptions, SpacingOptions, TextFieldOptions, TextOptions, ToggleOptions, UIRawMessage } from '..';
 
 /**
  * A customizable data driven (DDUI) form that lets you add
@@ -27,6 +27,7 @@ export class CustomForm {
     constructor(
         player: Player,
         title: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: CustomFormOptions,
     );
     /**
      * @remarks
@@ -207,6 +208,7 @@ export class CustomForm {
      *
      * @param buttons
      * The buttons to display in the row.
+     * Maximum Length: 3
      * @param options
      * Optional configuration for the row, such as visibility.
      * @throws This function can throw errors.

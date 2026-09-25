@@ -48,6 +48,10 @@ export enum AimAssistTargetMode {
  */
 export enum BlockComponentTypes {
     DynamicProperties = 'minecraft:dynamic_properties',
+    /**
+     * @beta
+     */
+    EntityStorage = 'minecraft:entity_storage',
     FluidContainer = 'minecraft:fluid_container',
     Instrument = 'minecraft:instrument_sound',
     /**
@@ -3167,11 +3171,13 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
 
 export type BlockComponentTypeMap = {
     dynamic_properties: BlockDynamicPropertiesComponent;
+    entity_storage: BlockEntityStorageComponent;
     fluid_container: BlockFluidContainerComponent;
     instrument_sound: BlockInstrumentComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
+    'minecraft:entity_storage': BlockEntityStorageComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:instrument_sound': BlockInstrumentComponent;
     'minecraft:inventory': BlockInventoryComponent;
@@ -5355,6 +5361,181 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * {@link LocationOutOfWorldBoundariesError}
      */
     totalByteCount(): number;
+}
+
+/**
+ * @beta
+ * Represents storage for entities associated with a block
+ * entity. This component is available on blocks whose behavior
+ * pack definition enables entity storage with the
+ * `minecraft:block_entity` component. Stored entities are
+ * serialized and removed from the world until they are
+ * released or transferred. A block can store up to four
+ * entities. Entity storage is scoped to the content pack
+ * accessing it.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockEntityStorageComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:entity_storage';
+    /**
+     * @remarks
+     * Returns information about the entities stored in this
+     * block's entity storage. The returned entities are not
+     * present in the world while they are stored. Only entities
+     * stored by the current content pack are included.
+     *
+     * @returns
+     * An array of {@link BlockEntityStorageInfo} values containing
+     * the unique ID and definition ID of each stored entity.
+     * Returns an empty array when no entities are stored by the
+     * current content pack.
+     * @throws
+     * Throws if the block entity is invalid or the block's
+     * location is not loaded or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    getEntities(): BlockEntityStorageInfo[];
+    /**
+     * @remarks
+     * Releases a stored entity from this block's entity storage
+     * and spawns it back into the world, at the same location it
+     * was when stored.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * The unique ID of the stored entity. Use the value returned
+     * by {@link BlockEntityStorageComponent.store} or the
+     * `uniqueId` property from {@link BlockEntityStorageInfo}.
+     * @returns
+     * The released {@link Entity}. The released entity receives a
+     * new runtime ID.
+     * @throws
+     * Throws if the entity ID is invalid or does not identify an
+     * entity stored by the current content pack, if the stored
+     * entity cannot be loaded or spawned, or if the block entity
+     * is invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    release(entityId: string): Entity;
+    /**
+     * @remarks
+     * Returns the number of entities stored in this block's entity
+     * storage by the current content pack.
+     *
+     * @returns
+     * The number of entities stored by the current content pack.
+     * @throws
+     * Throws if the block entity is invalid or the block's
+     * location is not loaded or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    size(): number;
+    /**
+     * @remarks
+     * Serializes and stores an entity in this block's entity
+     * storage. The entity is removed from the world after it is
+     * stored. Only non-player mob entities can be stored. Entities
+     * with passengers or that are passengers cannot be stored.
+     *
+     * @worldMutation
+     *
+     * @param entity
+     * The {@link Entity} to store.
+     * @returns
+     * The unique ID assigned to the stored entity. Keep this ID to
+     * release, transfer, or inspect the stored entity later.
+     * @throws
+     * Throws if the storage is full, the entity is already stored,
+     * the entity cannot be serialized, or the block entity is
+     * invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    store(entity: Entity): string;
+    /**
+     * @remarks
+     * Moves a stored entity from this block's entity storage to
+     * the target block's entity storage without releasing it into
+     * the world.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * The unique ID of the stored entity. Use the value returned
+     * by {@link BlockEntityStorageComponent.store} or the
+     * `uniqueId` property from {@link BlockEntityStorageInfo}.
+     * @param targetBlock
+     * The target {@link Block} with an entity storage component.
+     * The target block must be in the same dimension as this
+     * block.
+     * @throws
+     * Throws if the entity ID is invalid or not stored by the
+     * current content pack, if the target block is invalid, in
+     * another dimension, lacks entity storage, or is full, or if
+     * the source and target blocks are the same.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    transfer(entityId: string, targetBlock: Block): void;
+}
+
+/**
+ * @beta
+ * Contains identifying information about an entity stored in a
+ * {@link BlockEntityStorageComponent}. Stored entities are not
+ * present in the world until they are released.
+ */
+export class BlockEntityStorageInfo {
+    private constructor();
+    /**
+     * @remarks
+     * The entity's definition ID, such as `minecraft:pig`.
+     *
+     */
+    readonly definitionId: string;
+    /**
+     * @remarks
+     * The unique ID of the stored entity. Use this ID with
+     * {@link BlockEntityStorageComponent.release} or
+     * {@link BlockEntityStorageComponent.transfer}.
+     *
+     */
+    readonly uniqueId: string;
 }
 
 /**
@@ -11265,7 +11446,7 @@ export class EntityIsStunnedComponent extends EntityComponent {
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the player that has tamed the entity, or 'undefined'
      * if the entity has no player owner.
@@ -11276,7 +11457,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the id of the player that has tamed the entity, or
      * 'undefined' if the entity has no player owner.
@@ -19242,7 +19423,7 @@ export class PoiBlockType {
      * @returns
      * True if the POI conatains the tag; otherwise false.
      */
-    has(tag: string): boolean;
+    hasTag(tag: string): boolean;
 }
 
 /**
@@ -20974,10 +21155,11 @@ export class SoundInstance {
     /**
      * @rc
      * @remarks
-     * Fades this sound instance from its current volume to the
-     * target volume over the specified duration. To fade in from
-     * silence, call `setVolume(0.0)` first; to fade out, pass a
-     * target volume of `0.0`.
+     * Fades this sound instance from its current volume multiplier
+     * to the target multiplier over the specified duration. Volume
+     * multipliers are relative to the selected sound variant's
+     * volume. To fade in from silence, call `setVolume(0.0)`
+     * first; to fade out, pass a target volume of `0.0`.
      *
      * @worldMutation
      *
@@ -20985,7 +21167,8 @@ export class SoundInstance {
      * Duration of the fade in seconds. Must be non-negative.
      * Minimum value: 0
      * @param targetVolume
-     * Volume to fade to. Must be non-negative.
+     * Volume multiplier to fade to, relative to the selected sound
+     * variant's volume. Must be non-negative.
      * Minimum value: 0
      */
     fade(duration: number, targetVolume: number): void;
@@ -21040,12 +21223,14 @@ export class SoundInstance {
     /**
      * @rc
      * @remarks
-     * Sets the volume of this sound instance.
+     * Sets the volume multiplier of this sound instance relative
+     * to the volume of the selected sound variant.
      *
      * @worldMutation
      *
      * @param volume
-     * Volume level between 0.0 and 10.0.
+     * Volume multiplier between 0.0 and 10.0. A value of 1.0 uses
+     * the selected sound variant's volume.
      * Bounds: [0, 10]
      */
     setVolume(volume: number): void;

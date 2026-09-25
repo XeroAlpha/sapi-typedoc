@@ -1019,6 +1019,12 @@ export enum PacketId {
      */
     SetLocalPlayerAsInitializedPacket = 'SetLocalPlayerAsInitializedPacket',
     /**
+     * Sent when an actor starts or stops riding a block.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-passenger-of-block-packet/
+     */
+    SetPassengerOfBlockPacket = 'SetPassengerOfBlockPacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/set-player-furnace-options-packet/
      */
     SetPlayerFurnaceOptionsPacket = 'SetPlayerFurnaceOptionsPacket',

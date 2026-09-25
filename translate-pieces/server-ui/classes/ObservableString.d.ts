@@ -18,6 +18,7 @@ export class ObservableString {
      *
      * @param data
      * The initial string value for this observable.
+     * Maximum Length: 5000
      * @param options
      * Optional configuration for the observable, such as whether
      * the value can be written by the client.
@@ -64,6 +65,7 @@ export class ObservableString {
      *
      * @param data
      * The new string value to set.
+     * Maximum Length: 5000
      */
     setData(data: string): void;
     /**

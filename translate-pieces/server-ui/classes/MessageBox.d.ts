@@ -1,6 +1,6 @@
 /* IMPORT */ import { EngineError } from '../../common';
 /* IMPORT */ import { InvalidEntityError, Player } from '../../server';
-/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxButtonOptions, MessageBoxOptions, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
+/* IMPORT */ import { FormVisibilityError, InvalidFormModificationError, MessageBoxBodyOptions, MessageBoxButtonOptions, MessageBoxOptions, MessageBoxResult, ObservableString, ObservableUIRawMessage, UIRawMessage } from '..';
 
 /**
  * A simple message form with two buttons and a text body. Use
@@ -43,7 +43,10 @@ export class MessageBox {
      *
      * {@link InvalidFormModificationError}
      */
-    body(body: ObservableString | ObservableUIRawMessage | string | UIRawMessage): MessageBox;
+    body(
+        body: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
+        options?: MessageBoxBodyOptions,
+    ): MessageBox;
     /**
      * @remarks
      * Sets the label for the first button of the message box.

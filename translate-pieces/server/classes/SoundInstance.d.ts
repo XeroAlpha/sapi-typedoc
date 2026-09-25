@@ -39,10 +39,11 @@ export class SoundInstance {
     readonly soundEventId: string;
     /**
      * @remarks
-     * Fades this sound instance from its current volume to the
-     * target volume over the specified duration. To fade in from
-     * silence, call `setVolume(0.0)` first; to fade out, pass a
-     * target volume of `0.0`.
+     * Fades this sound instance from its current volume multiplier
+     * to the target multiplier over the specified duration. Volume
+     * multipliers are relative to the selected sound variant's
+     * volume. To fade in from silence, call `setVolume(0.0)`
+     * first; to fade out, pass a target volume of `0.0`.
      *
      * @worldMutation
      *
@@ -50,7 +51,8 @@ export class SoundInstance {
      * Duration of the fade in seconds. Must be non-negative.
      * Minimum value: 0
      * @param targetVolume
-     * Volume to fade to. Must be non-negative.
+     * Volume multiplier to fade to, relative to the selected sound
+     * variant's volume. Must be non-negative.
      * Minimum value: 0
      */
     fade(duration: number, targetVolume: number): void;
@@ -100,12 +102,14 @@ export class SoundInstance {
     setPitch(pitch: number): void;
     /**
      * @remarks
-     * Sets the volume of this sound instance.
+     * Sets the volume multiplier of this sound instance relative
+     * to the volume of the selected sound variant.
      *
      * @worldMutation
      *
      * @param volume
-     * Volume level between 0.0 and 10.0.
+     * Volume multiplier between 0.0 and 10.0. A value of 1.0 uses
+     * the selected sound variant's volume.
      * Bounds: [0, 10]
      */
     setVolume(volume: number): void;
