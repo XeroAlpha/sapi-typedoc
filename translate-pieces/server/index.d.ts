@@ -109,6 +109,8 @@ export { BlockContainerOpenedAfterEvent } from './classes/BlockContainerOpenedAf
 export { BlockContainerOpenedAfterEventSignal } from './classes/BlockContainerOpenedAfterEventSignal';
 export { BlockCustomComponentInstance } from './classes/BlockCustomComponentInstance';
 export { BlockDynamicPropertiesComponent } from './classes/BlockDynamicPropertiesComponent';
+export { BlockEntityStorageComponent } from './classes/BlockEntityStorageComponent';
+export { BlockEntityStorageInfo } from './classes/BlockEntityStorageInfo';
 export { BlockEvent } from './classes/BlockEvent';
 export { BlockExplodeAfterEvent } from './classes/BlockExplodeAfterEvent';
 export { BlockExplodeAfterEventSignal } from './classes/BlockExplodeAfterEventSignal';
