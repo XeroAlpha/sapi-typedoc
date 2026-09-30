@@ -11,11 +11,9 @@ export class Entity {
      * @remarks
      * Dimension that the entity is currently within.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly dimension: Dimension;
     /**
@@ -35,9 +33,7 @@ export class Entity {
      * example, a player next to a ladder or a spider next to a
      * stone wall.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isClimbing: boolean;
     /**
@@ -45,18 +41,14 @@ export class Entity {
      * Whether the entity has a fall distance greater than 0, or
      * greater than 1 while gliding.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isFalling: boolean;
     /**
      * @remarks
      * Whether any part of the entity is inside a water block.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isInWater: boolean;
     /**
@@ -66,18 +58,14 @@ export class Entity {
      * true when an Entity is first spawned, and if the Entity has
      * no gravity this property may be incorrect.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isOnGround: boolean;
     /**
      * @remarks
      * If true, the entity is currently sleeping.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSleeping: boolean;
     /**
@@ -95,9 +83,7 @@ export class Entity {
      * the sprint action, an ocelot running away or a pig boosting
      * with Carrot on a Stick.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSprinting: boolean;
     /**
@@ -105,9 +91,7 @@ export class Entity {
      * Whether the entity is in the swimming state. For example, a
      * player using the swim action or a fish in water.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSwimming: boolean;
     /**
@@ -123,18 +107,14 @@ export class Entity {
      * Key for the localization of this entity's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly localizationKey: string;
     /**
      * @remarks
      * Current location of the entity.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly location: Vector3;
     /**
@@ -176,9 +156,7 @@ export class Entity {
      * AI-related behaviors, like attacking. If the entity
      * currently has no target returns undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly target?: Entity;
     /**
@@ -210,13 +188,11 @@ export class Entity {
      * successfully. This can throw an error if the duration or
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample spawnPoisonedVillager.ts
      * @seeExample quickFoxLazyDog.ts
      */
@@ -230,15 +206,13 @@ export class Entity {
      * @returns
      * Returns undefined if the item was fully added or returns an
      * ItemStack with the remaining count.
-     * @throws This function can throw errors.
+     * @throws {ContainerRulesError}
      *
-     * {@link ContainerRulesError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityComponentError}
      *
-     * {@link InvalidEntityComponentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -253,11 +227,9 @@ export class Entity {
      * @returns
      * Returns true if the tag was added successfully. This can
      * fail if the tag already exists on the entity.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
@@ -277,13 +249,11 @@ export class Entity {
      * Whether the entity takes any damage. This can return false
      * if the entity is invulnerable or if the damage applied is
      * less than or equal to 0.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -296,11 +266,9 @@ export class Entity {
      *
      * @param vector
      * Impulse vector.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
@@ -313,11 +281,9 @@ export class Entity {
      *
      * @param verticalStrength
      * Knockback strength for the vertical vector.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
@@ -326,9 +292,7 @@ export class Entity {
      * Clears all dynamic properties that have been set on this
      * entity.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     clearDynamicProperties(): void;
     /**
@@ -337,9 +301,7 @@ export class Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
@@ -357,9 +319,7 @@ export class Entity {
      * Defaults to: true
      * @returns
      * Returns whether the entity was on fire.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
@@ -369,9 +329,7 @@ export class Entity {
      *
      * @returns
      * An axis-aligned bounding box.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getAABB(): AABB;
     /**
@@ -385,9 +343,7 @@ export class Entity {
      * @returns
      * The solid blocks that this entity is directly standing on.
      * Returns an empty list if the entity is jumping or flying.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[];
     /**
@@ -400,9 +356,7 @@ export class Entity {
      * @returns
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -417,9 +371,7 @@ export class Entity {
      * A single solid block closest to the center of the entity
      * that this entity is directly standing on. Undefined if
      * entity is flying or jumping.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block | undefined;
     /**
@@ -435,9 +387,7 @@ export class Entity {
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
@@ -445,9 +395,7 @@ export class Entity {
      * Returns all scripting components that are present on this
      * entity.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getComponents(): EntityComponent[];
     /**
@@ -459,9 +407,7 @@ export class Entity {
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -471,9 +417,7 @@ export class Entity {
      *
      * @returns
      * A string array of the dynamic properties set on this entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicPropertyIds(): string[];
     /**
@@ -485,9 +429,7 @@ export class Entity {
      * example, an entity has many megabytes of associated dynamic
      * properties, it may be slow to load on various devices.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -502,11 +444,9 @@ export class Entity {
      * Effect object for the specified effect, undefined if the
      * effect is not present, or throws an error if the effect does
      * not exist.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
@@ -515,9 +455,7 @@ export class Entity {
      *
      * @returns
      * List of effects.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getEffects(): Effect[];
     /**
@@ -530,15 +468,13 @@ export class Entity {
      * @returns
      * Returns a set of entities from the direction that this
      * entity is looking at.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -549,9 +485,7 @@ export class Entity {
      * @returns
      * Returns the current location of the head component of this
      * entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getHeadLocation(): Vector3;
     /**
@@ -580,9 +514,7 @@ export class Entity {
      * @returns
      * Returns a Vec2 containing the rotation of this entity (in
      * degrees).
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getRotation(): Vector2;
     /**
@@ -591,9 +523,7 @@ export class Entity {
      *
      * @returns
      * An array containing all tags as strings.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getTags(): string[];
     /**
@@ -602,9 +532,7 @@ export class Entity {
      *
      * @returns
      * Returns the current velocity vector of the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
@@ -614,9 +542,7 @@ export class Entity {
      *
      * @returns
      * Returns the current view direction of the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getViewDirection(): Vector3;
     /**
@@ -631,9 +557,7 @@ export class Entity {
      * @returns
      * Returns true if the specified component is present on this
      * entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hasComponent(componentId: string): boolean;
     /**
@@ -644,9 +568,7 @@ export class Entity {
      * Identifier of the tag to test for.
      * @returns
      * Returns whether an entity has a particular tag.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hasTag(tag: string): boolean;
     /**
@@ -658,9 +580,7 @@ export class Entity {
      * @returns
      * Returns true if entity can be killed (even if it is already
      * dead), otherwise it returns false.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     kill(): boolean;
@@ -676,11 +596,9 @@ export class Entity {
      * @param targetLocation
      * The target location that this entity should face/look
      * towards.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -715,9 +633,7 @@ export class Entity {
      * @param options
      * Additional options to control the playback and transitions
      * of the animation.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
@@ -728,11 +644,9 @@ export class Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
@@ -747,11 +661,9 @@ export class Entity {
      * @returns
      * Returns true if the effect has been removed. Returns false
      * if the effect is not found or does not exist.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
@@ -764,9 +676,7 @@ export class Entity {
      * Content of the tag to remove.
      * @returns
      * Returns whether the tag existed on the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     removeTag(tag: string): boolean;
     /**
@@ -806,11 +716,9 @@ export class Entity {
      * @returns
      * A command result containing whether the command was
      * successful.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -821,11 +729,9 @@ export class Entity {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -837,11 +743,9 @@ export class Entity {
      * @param value
      * Data value of the property to set. If the value is null, it
      * will remove the property instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -863,9 +767,7 @@ export class Entity {
      * Whether the entity was set on fire. This can fail if seconds
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -908,9 +810,7 @@ export class Entity {
      * The x and y rotation of the entity (in degrees). For most
      * mobs, the x rotation controls the head tilt and the y
      * rotation controls the body rotation.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
     /**
@@ -923,13 +823,11 @@ export class Entity {
      * New location for the entity.
      * @param teleportOptions
      * Options regarding the teleport operation.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
@@ -973,13 +871,11 @@ export class Entity {
      * Returns whether the teleport succeeded. This can fail if the
      * destination chunk is unloaded or if the teleport would
      * result in intersecting with blocks.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }

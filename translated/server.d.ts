@@ -3447,7 +3447,7 @@ export class AimAssistCategory {
      * Default targeting priority used for block types not found in
      * getBlockPriorities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultBlockPriority: number;
     /**
@@ -3455,7 +3455,7 @@ export class AimAssistCategory {
      * Default targeting priority used for entity types not found
      * in getEntityPriorities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultEntityPriority: number;
     /**
@@ -3471,7 +3471,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockPriorities(): Record<string, number>;
     /**
@@ -3481,9 +3481,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping block tags to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getBlockTagPriorities(): Record<string, number>;
     /**
@@ -3493,7 +3491,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping entity Ids to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEntityPriorities(): Record<string, number>;
     /**
@@ -3503,9 +3501,7 @@ export class AimAssistCategory {
      * @returns
      * Map entity type families to their priority settings in a
      * Record. Larger numbers have greater priority.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getEntityTypeFamilyPriorities(): Record<string, number>;
 }
@@ -3638,14 +3634,14 @@ export class AimAssistPreset {
      * Optional. Default aim-assist category Id used for items not
      * provided to setItemSettings.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultItemSettings?: string;
     /**
      * @remarks
      * Optional. Aim-assist category Id used for an empty hand.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly handSettings?: string;
     /**
@@ -3661,9 +3657,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The array of block tags.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getExcludedBlockTagTargets(): string[];
     /**
@@ -3673,7 +3667,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The array of block Ids.
-     * @throws This function can throw errors.
+     * @throws
      */
     getExcludedBlockTargets(): string[];
     /**
@@ -3683,7 +3677,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The array of entity Ids.
-     * @throws This function can throw errors.
+     * @throws
      */
     getExcludedEntityTargets(): string[];
     /**
@@ -3693,9 +3687,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The array of entity type families.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getExcludedEntityTypeFamilyTargets(): string[];
     /**
@@ -3704,7 +3696,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The record mapping item Ids to aim-assist category Ids.
-     * @throws This function can throw errors.
+     * @throws
      */
     getItemSettings(): Record<string, string>;
     /**
@@ -3714,7 +3706,7 @@ export class AimAssistPreset {
      *
      * @returns
      * The array of item Ids.
-     * @throws This function can throw errors.
+     * @throws
      */
     getLiquidTargetingItems(): string[];
 }
@@ -3906,15 +3898,13 @@ export class AimAssistRegistry {
      * The category settings used to create the new category.
      * @returns
      * The created category handle.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     addCategory(category: AimAssistCategorySettings): AimAssistCategory;
     /**
@@ -3927,15 +3917,13 @@ export class AimAssistRegistry {
      * The preset settings used to create the new preset.
      * @returns
      * The created preset handle.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     addPreset(preset: AimAssistPresetSettings): AimAssistPreset;
     /**
@@ -4084,11 +4072,9 @@ export class Block {
      * Returns true if this block is an air block (i.e., empty
      * space).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isAir: boolean;
     /**
@@ -4102,11 +4088,9 @@ export class Block {
      * and a stone block are not. Water logged blocks are not
      * liquid blocks).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isLiquid: boolean;
     /**
@@ -4119,11 +4103,9 @@ export class Block {
      * a cobblestone block and a diamond block are solid, while a
      * ladder block and a fence block are not).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isSolid: boolean;
     /**
@@ -4140,11 +4122,9 @@ export class Block {
      *
      * Returns or sets whether this block has water on it.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isWaterlogged: boolean;
     /**
@@ -4152,11 +4132,9 @@ export class Block {
      * Key for the localization of this block's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly localizationKey: string;
     /**
@@ -4165,7 +4143,7 @@ export class Block {
      *
      * Coordinates of the specified block.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly location: Vector3;
     /**
@@ -4176,11 +4154,9 @@ export class Block {
      * Additional block configuration data that describes the
      * block.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly permutation: BlockPermutation;
     /**
@@ -4189,11 +4165,9 @@ export class Block {
      *
      * Gets the type of block.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly 'type': BlockType;
     /**
@@ -4204,11 +4178,9 @@ export class Block {
      * Vanilla block names can be changed in future releases, try
      * using 'Block.matches' instead for block comparison.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly typeId: string;
     /**
@@ -4249,11 +4221,9 @@ export class Block {
      *
      * Number of steps above to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     above(steps?: number): Block | undefined;
     /**
@@ -4269,11 +4239,9 @@ export class Block {
      *
      * Number of steps below to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     below(steps?: number): Block | undefined;
     /**
@@ -4294,13 +4262,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -4313,13 +4279,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -4345,13 +4309,11 @@ export class Block {
      *
      * Returns `true` if the block type or permutation can be
      * placed on this block, else `false`.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
@@ -4375,11 +4337,9 @@ export class Block {
      *
      * Number of steps to the east to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     east(steps?: number): Block | undefined;
     /**
@@ -4406,11 +4366,9 @@ export class Block {
      *
      * Returns the component if it exists on the block, otherwise
      * undefined.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
@@ -4418,11 +4376,9 @@ export class Block {
      * Returns all scripting components that are present on this
      * block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getComponents(): BlockComponent[];
     /**
@@ -4451,11 +4407,9 @@ export class Block {
      *
      * An itemStack with the specified amount of items and data.
      * Returns undefined if block type is incompatible.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
@@ -4467,20 +4421,16 @@ export class Block {
      *
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getLightLevel(): number;
     /**
      * @beta
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getMapColor(): RGBA;
     /**
@@ -4489,11 +4439,9 @@ export class Block {
      * the 'minecraft:multi_block' trait. If it does not have the
      * trait returns undefined
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getParts(): Block[] | undefined;
     /**
@@ -4509,11 +4457,9 @@ export class Block {
      *
      * Returns undefined if redstone power is not applicable to
      * this block.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
     /**
@@ -4525,11 +4471,9 @@ export class Block {
      *
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getSkyLightLevel(): number;
     /**
@@ -4542,11 +4486,9 @@ export class Block {
      * 方块拥有的标签列表。
      *
      * The list of tags that the block has.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
     /**
@@ -4558,20 +4500,16 @@ export class Block {
      * The identifier of the component (e.g.,
      * 'minecraft:inventory') to retrieve. If no namespace prefix
      * is specified, 'minecraft:' is assumed.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     hasComponent(componentId: string): boolean;
     /**
      * @beta
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     hasScheduledNamedTick(eventName: string): boolean;
     /**
@@ -4590,11 +4528,9 @@ export class Block {
      *
      * Returns `true` if the permutation of this block has the tag,
      * else `false`.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
@@ -4606,13 +4542,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block stops liquid from flowing.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -4627,13 +4561,11 @@ export class Block {
      * Whether liquid can flow into the block from the provided
      * direction, or flow out from the provided direction when
      * liquid is placed into it with a bucket
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
@@ -4646,13 +4578,11 @@ export class Block {
      * @returns
      * Whether this block is removed and spawns its item when
      * touched by liquid.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
@@ -4665,11 +4595,9 @@ export class Block {
      * Optional set of block states to test this block against.
      * @returns
      * Returns true if the block matches the specified criteria.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
@@ -4684,11 +4612,9 @@ export class Block {
      *
      * Number of steps to the north to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     north(steps?: number): Block | undefined;
     /**
@@ -4702,11 +4628,9 @@ export class Block {
      * Block at the specified offset, or undefined if that block
      * could not be retrieved (for example, the block and its
      * relative chunk is not loaded yet.)
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     offset(offset: Vector3): Block | undefined;
     /**
@@ -4719,11 +4643,9 @@ export class Block {
      *
      * @param eventName
      * Name of the scheduled event to remove.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     removeScheduledNamedTick(eventName: string): void;
     /**
@@ -4741,13 +4663,11 @@ export class Block {
      * Number of ticks to wait before the event is raised. Must be
      * at least 1.
      * Minimum value: 1
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     scheduleNamedTick(eventName: string, tickDelay: number): void;
     /**
@@ -4764,11 +4684,9 @@ export class Block {
      *
      * Permutation that contains a set of property states for the
      * Block.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
@@ -4785,13 +4703,11 @@ export class Block {
      *
      * Identifier of the type of block to apply - for example,
      * minecraft:powered_repeater.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setType(blockType: BlockType | string): void;
     /**
@@ -4803,13 +4719,11 @@ export class Block {
      *
      * @param isWaterlogged
      * true if the block should have water within it.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setWaterlogged(isWaterlogged: boolean): void;
     /**
@@ -4824,11 +4738,9 @@ export class Block {
      *
      * Number of steps to the south to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     south(steps?: number): Block | undefined;
     /**
@@ -4854,11 +4766,9 @@ export class Block {
      *
      * Returns `true` if the block permutation data was
      * successfully set, else `false`.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
@@ -4873,11 +4783,9 @@ export class Block {
      *
      * Number of steps to the west to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     west(steps?: number): Block | undefined;
 }
@@ -5291,21 +5199,19 @@ export class BlockComponentRegistry {
      * @remarks
      * @earlyExecution
      *
-     * @throws This function can throw errors.
+     * @throws {BlockCustomComponentAlreadyRegisteredError}
      *
-     * {@link BlockCustomComponentAlreadyRegisteredError}
+     * @throws {BlockCustomComponentReloadNewComponentError}
      *
-     * {@link BlockCustomComponentReloadNewComponentError}
+     * @throws {BlockCustomComponentReloadNewEventError}
      *
-     * {@link BlockCustomComponentReloadNewEventError}
+     * @throws {BlockCustomComponentReloadVersionError}
      *
-     * {@link BlockCustomComponentReloadVersionError}
+     * @throws {CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentInvalidRegistryError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
@@ -5474,15 +5380,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * to retrieve dynamic properties set from other content packs.
      * Returns undefined if the key was not found.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     get(key: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -5497,15 +5401,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     set(key: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -5515,15 +5417,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * only accounts for properties set by your content pack. The
      * 1KBytes limit is per content pack.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     totalByteCount(): number;
 }
@@ -5806,7 +5706,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addDye(dye: ItemType): void;
     /**
@@ -5815,7 +5715,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFluidType(): FluidType;
     /**
@@ -5824,7 +5724,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFluidType(fluidType: FluidType): void;
     /**
@@ -5834,7 +5734,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -5857,13 +5757,11 @@ export class BlockInstrumentComponent extends BlockComponent {
      * @returns
      * Returns the name of the instrument for a given valid face
      * Direction.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getInstrumentName(face: Direction): string;
     /**
@@ -5879,13 +5777,11 @@ export class BlockInstrumentComponent extends BlockComponent {
      * @param soundOptions
      * optional WorldSoundOptions to use when playing the
      * insturment sound; if omitted the default values are used.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     playInstrumentSound(face: Direction, soundOptions?: WorldSoundOptions): void;
 }
@@ -5902,7 +5798,7 @@ export class BlockInventoryComponent extends BlockComponent {
      * @remarks
      * The container which holds an {@link ItemStack}.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly container?: Container;
     static readonly componentId = 'minecraft:inventory';
@@ -5940,9 +5836,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      * Will return false if the block volume was modified between
      * creating the iterator and iterating it, and true otherwise.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     isValid(): boolean;
     /**
@@ -5963,7 +5857,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Base map color defined for that block.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly color: RGBA;
     /**
@@ -5977,7 +5871,7 @@ export class BlockMapColorComponent extends BlockComponent {
      * @remarks
      * Type of tint applied to the color.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tintMethod: TintMethod;
     static readonly componentId = 'minecraft:map_color';
@@ -5990,19 +5884,15 @@ export class BlockMapColorComponent extends BlockComponent {
 export class BlockMovableComponent extends BlockComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly movementType: MovementType;
     /**
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly stickyType: StickyType;
     static readonly componentId = 'minecraft:movable';
@@ -6039,7 +5929,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
+     * @throws
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -6051,7 +5941,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
+     * @throws
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -6113,7 +6003,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block stops liquid from flowing.
-     * @throws This function can throw errors.
+     * @throws
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -6126,7 +6016,7 @@ export class BlockPermutation {
      * @returns
      * Whether this block is removed and spawns its item when
      * touched by liquid.
-     * @throws This function can throw errors.
+     * @throws
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
@@ -6151,7 +6041,7 @@ export class BlockPermutation {
      * Identifier of the block property.
      * @param value
      * Value of the block property.
-     * @throws This function can throw errors.
+     * @throws
      */
     withState<T extends keyof BlockStateSuperset>(
         name: T,
@@ -6165,8 +6055,7 @@ export class BlockPermutation {
      *
      * @param blockName
      * Identifier of the block to check.
-     * @throws This function can throw errors.
-     * @seeExample addBlockColorCube.ts
+     * @throws
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
@@ -6186,14 +6075,14 @@ export class BlockPistonComponent extends BlockComponent {
      * Whether the piston is in the process of expanding or
      * retracting.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isMoving: boolean;
     /**
      * @remarks
      * The current state of the piston.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly state: BlockPistonState;
     static readonly componentId = 'minecraft:piston';
@@ -6202,7 +6091,7 @@ export class BlockPistonComponent extends BlockComponent {
      * Retrieves a set of blocks that this piston is connected
      * with.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getAttachedBlocks(): Block[];
     /**
@@ -6210,7 +6099,7 @@ export class BlockPistonComponent extends BlockComponent {
      * Retrieves a set of block locations that this piston is
      * connected with.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getAttachedBlocksLocations(): Vector3[];
 }
@@ -6229,11 +6118,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * the block. Returns `false` if snow will not accumulate on
      * the block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     accumulatesSnow(): boolean;
     /**
@@ -6242,11 +6129,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * flower submerged in snow. Returns `false` if this block
      * cannot have snow within it.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     isSnowLoggable(): boolean;
     /**
@@ -6254,11 +6139,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * Returns `true` if rain will not go through the block.
      * Returns `false` if rain should go through the block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     obstructsRain(): boolean;
 }
@@ -6289,11 +6172,9 @@ export class BlockRecipeCraftingComponent extends BlockComponent {
      * @returns
      * The current recipe crafting context for the player, or
      * undefined if the player isn't crafting.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getCraftingContext(player: Player): RecipeCraftingContext | undefined;
 }
@@ -6312,14 +6193,14 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRecord(): void;
     /**
      * @remarks
      * Gets the currently set record of this record-playing block.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRecord(): ItemStack | undefined;
     /**
@@ -6327,7 +6208,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Returns true if the record-playing block is currently
      * playing a record.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isPlaying(): boolean;
     /**
@@ -6337,7 +6218,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     pauseRecord(): void;
     /**
@@ -6346,7 +6227,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     playRecord(): void;
     /**
@@ -6357,7 +6238,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @param startPlaying
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws
      */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }
@@ -6374,9 +6255,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * Returns error if block is no longer valid or if block
      * doesn't have a 'minecraft:redstone_producer' component.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     readonly power: number;
     static readonly componentId = 'minecraft:redstone_producer';
@@ -6387,9 +6266,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * or if block doesn't have a 'minecraft:redstone_producer'
      * component.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     getConnectedFaces(): Direction[];
     /**
@@ -6401,9 +6278,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * valid or if block doesn't have a
      * 'minecraft:redstone_producer' component.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     getStronglyPoweredFace(): Direction | undefined;
 }
@@ -6424,7 +6299,7 @@ export class BlockSignComponent extends BlockComponent {
      * sign has had a honeycomb used on it or `setWaxed` was called
      * on the sign.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isWaxed: boolean;
     static readonly componentId = 'minecraft:sign';
@@ -6439,7 +6314,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, this will return the message from the front side
      * of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getRawText(side?: SignSide): RawText | undefined;
     /**
@@ -6452,7 +6327,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, this will return the message from the front side
      * of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getText(side?: SignSide): string | undefined;
     /**
@@ -6464,7 +6339,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the dye from. If not provided,
      * this will return the dye on the front side of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
     /**
@@ -6502,7 +6377,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, the color will be set on the front side of the
      * sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;
     /**
@@ -6511,7 +6386,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setWaxed(waxed: boolean): void;
 }
@@ -6709,7 +6584,7 @@ export class BlockVolumeBase {
      * Return a {@link BlockBoundingBox} object which represents
      * the validated min and max coordinates of the volume
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getBoundingBox(): BlockBoundingBox;
     /**
@@ -6728,9 +6603,7 @@ export class BlockVolumeBase {
      * Number of closest positions to return
      * @param location
      * Position to measure distance from
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getClosest(count: number, location: Vector3): Vector3[];
     /**
@@ -6743,9 +6616,7 @@ export class BlockVolumeBase {
      * Number of farthest positions to return
      * @param location
      * Position to measure distance from
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getFarthest(count: number, location: Vector3): Vector3[];
     /**
@@ -6753,7 +6624,7 @@ export class BlockVolumeBase {
      * Get the largest corner position of the volume (guaranteed to
      * be >= min)
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMax(): Vector3;
     /**
@@ -6761,7 +6632,7 @@ export class BlockVolumeBase {
      * Get the smallest corner position of the volume (guaranteed
      * to be <= max)
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMin(): Vector3;
     /**
@@ -6851,11 +6722,9 @@ export class Camera {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     addShake(shakeCameraOptions: CameraShakeOptions): void;
     /**
@@ -6867,7 +6736,7 @@ export class Camera {
      * @param attachCameraOptions
      * Options for the entity the camera is attaching to. Contains
      * the entity identifier and optional entity location.
-     * @throws This function can throw errors.
+     * @throws
      */
     attachToEntity(attachCameraOptions?: CameraAttachOptions): void;
     /**
@@ -6879,7 +6748,7 @@ export class Camera {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
     /**
@@ -6891,14 +6760,14 @@ export class Camera {
      *
      * @param fadeCameraOptions
      * Additional options around camera fade operations.
-     * @throws This function can throw errors.
+     * @throws
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     playAnimation(splineType: CatmullRomSpline | LinearSpline, cameraAnimationOptions: AnimationOptions): void;
     /**
@@ -6911,7 +6780,7 @@ export class Camera {
      * Identifier of a camera preset file defined within JSON.
      * @param setOptions
      * Additional options for the camera.
-     * @throws This function can throw errors.
+     * @throws
      */
     setCamera(
         cameraPreset: string,
@@ -6953,23 +6822,21 @@ export class Camera {
      * @param easeOptions
      * Options to ease the camera back to its original position and
      * rotation.
-     * @throws This function can throw errors.
+     * @throws
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopShaking(): void;
 }
@@ -7257,9 +7124,7 @@ export class Container {
      * @remarks
      * The combined weight of all items in the container.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     readonly weight: number;
     /**
@@ -7298,9 +7163,7 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     contains(itemStack: ItemStack): boolean;
     /**
@@ -7310,9 +7173,7 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     find(itemStack: ItemStack): number | undefined;
     /**
@@ -7322,27 +7183,21 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     firstEmptySlot(): number | undefined;
     /**
      * @remarks
      * Finds the index of the first item inside the container
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     firstItem(): number | undefined;
     /**
@@ -7605,18 +7460,14 @@ export class ContainerSlot {
      * Returns whether the item within this container slot can be
      * destroyed.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getCanDestroy(): string[];
     /**
      * @remarks
      * Returns if the item in this container slot can be placed on.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getCanPlaceOn(): string[];
     /**
@@ -7699,9 +7550,7 @@ export class ContainerSlot {
      * @returns
      * An array of lore lines. If the item does not have lore,
      * returns an empty array.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getRawLore(): RawMessage[];
     /**
@@ -7721,9 +7570,7 @@ export class ContainerSlot {
      * @remarks
      * Returns true if this slot has an item.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     hasItem(): boolean;
     /**
@@ -7807,13 +7654,11 @@ export class ContainerSlot {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidContainerSlotError}
      *
-     * {@link InvalidContainerSlotError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -7924,13 +7769,11 @@ export class CustomCommandRegistry {
      *
      * @param callback
      * The callback triggered when the command executes.
-     * @throws This function can throw errors.
+     * @throws {CustomCommandError}
      *
-     * {@link CustomCommandError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCommand(
         customCommand: CustomCommand,
@@ -7944,13 +7787,11 @@ export class CustomCommandRegistry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
+     * @throws {CustomCommandError}
      *
-     * {@link CustomCommandError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerEnum(name: string, values: string[]): void;
 }
@@ -8056,7 +7897,7 @@ export class Dimension {
      * @remarks
      * Height range of the dimension.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly heightRange: NumberRange;
     /**
@@ -8101,11 +7942,9 @@ export class Dimension {
      * @returns
      * Returns a location of the biome, or undefined if a biome
      * could not be found.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     calculateClosestBiomeFromSeed(
         pos: Vector3,
@@ -8132,11 +7971,9 @@ export class Dimension {
      * @param filter
      * An optional block filter used to include only matching
      * blocks from the source area.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     cloneBlocks(
         beginLocation: Vector3,
@@ -8206,11 +8043,9 @@ export class Dimension {
      * @returns
      * Returns true if at least one block in the volume satisfies
      * the filter, false otherwise.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
     /**
@@ -8226,11 +8061,9 @@ export class Dimension {
      * Bounds: [0, 1000]
      * @param explosionOptions
      * Additional configurable options for the explosion.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample createExplosion.ts
      * @seeExample createNoBlockExplosion.ts
      * @seeExample createExplosions.ts
@@ -8253,13 +8086,11 @@ export class Dimension {
      * @returns
      * Returns a ListBlockVolume which contains all the blocks that
      * were placed.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     fillBlocks(
         volume: BlockVolumeBase,
@@ -8317,7 +8148,7 @@ export class Dimension {
      * Location to retrieve the block above from.
      * @param options
      * The options to decide if a block is a valid result.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
@@ -8330,7 +8161,7 @@ export class Dimension {
      * Location to retrieve the block below from.
      * @param options
      * The options to decide if a block is a valid result.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
@@ -8344,7 +8175,7 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -8366,15 +8197,13 @@ export class Dimension {
      * @returns
      * Returns the ListBlockVolume that contains all the block
      * locations that satisfied the block query options.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     getBlocks(volume: BlockVolumeBase, options: BlockQueryOptions, allowUnloadedChunks?: boolean): ListBlockVolume;
     /**
@@ -8387,11 +8216,9 @@ export class Dimension {
      * entities returned.
      * @returns
      * An entity array.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -8414,15 +8241,13 @@ export class Dimension {
      *
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -8454,11 +8279,9 @@ export class Dimension {
      * Location of the block we want to check the brightness of.
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getLightLevel(location: Vector3): number;
     /**
@@ -8471,11 +8294,9 @@ export class Dimension {
      * players returned.
      * @returns
      * A player array.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -8487,11 +8308,9 @@ export class Dimension {
      * Position of the block we want to check the brightness of.
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getSkyLightLevel(location: Vector3): number;
     /**
@@ -8503,7 +8322,7 @@ export class Dimension {
      * @param minHeight
      * The Y height to begin the search from. Defaults to the
      * maximum dimension height.
-     * @throws This function can throw errors.
+     * @throws
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     /**
@@ -8679,7 +8498,7 @@ export class Dimension {
      * is provided, the duration will be set to a random duration
      * between 300 and 900 seconds.
      * Bounds: [1, 1000000]
-     * @throws This function can throw errors.
+     * @throws
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
@@ -8696,17 +8515,15 @@ export class Dimension {
      * The location at which to create the entity.
      * @returns
      * Newly created entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws {EntitySpawnError}
      *
-     * {@link EntitySpawnError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts d45f49d2
@@ -8727,11 +8544,9 @@ export class Dimension {
      * The location at which to create the item stack.
      * @returns
      * Newly created item stack entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample itemStacks.ts
      * @seeExample spawnFeatherItem.ts
      */
@@ -8750,11 +8565,9 @@ export class Dimension {
      * @param molangVariables
      * A set of optional, customizable variables that can be
      * adjusted for this particle.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
@@ -8771,11 +8584,9 @@ export class Dimension {
      * @param amount
      * The amount of experience to give the experience orb.
      * Bounds: [1, 12000]
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     spawnXp(location: Vector3, amount: number): void;
     /**
@@ -8819,19 +8630,17 @@ export class DimensionRegistry {
      * The namespaced identifier for the custom dimension (e.g.,
      * 'mypack:my_dimension'). Must include a namespace and use
      * only valid identifier characters.
-     * @throws This function can throw errors.
+     * @throws {CustomDimensionAlreadyRegisteredError}
      *
-     * {@link CustomDimensionAlreadyRegisteredError}
+     * @throws {CustomDimensionInvalidRegistryError}
      *
-     * {@link CustomDimensionInvalidRegistryError}
+     * @throws {CustomDimensionNameError}
      *
-     * {@link CustomDimensionNameError}
+     * @throws {CustomDimensionReloadNewDimensionError}
      *
-     * {@link CustomDimensionReloadNewDimensionError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomDimension(typeId: string): void;
 }
@@ -8893,14 +8702,14 @@ export class Effect {
      * Sample values range typically from 0 to 4. Example: The
      * effect 'Jump Boost II' will have an amplifier value of 1.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly amplifier: number;
     /**
      * @remarks
      * Gets the player-friendly name of this effect.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly displayName: string;
     /**
@@ -8910,7 +8719,7 @@ export class Effect {
      * {@link TicksPerSecond} constant to convert between ticks and
      * seconds.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly duration: number;
     /**
@@ -8924,7 +8733,7 @@ export class Effect {
      * @remarks
      * Gets the type id of this effect.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly typeId: string;
 }
@@ -9125,7 +8934,7 @@ export class EnchantmentType {
      */
     readonly maxLevel: number;
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     constructor(enchantmentType: string);
 }
@@ -9222,11 +9031,9 @@ export class Entity {
      * @remarks
      * Dimension that the entity is currently within.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly dimension: Dimension;
     /**
@@ -9246,9 +9053,7 @@ export class Entity {
      * example, a player next to a ladder or a spider next to a
      * stone wall.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isClimbing: boolean;
     /**
@@ -9256,18 +9061,14 @@ export class Entity {
      * Whether the entity has a fall distance greater than 0, or
      * greater than 1 while gliding.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isFalling: boolean;
     /**
      * @remarks
      * Whether any part of the entity is inside a water block.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isInWater: boolean;
     /**
@@ -9277,18 +9078,14 @@ export class Entity {
      * true when an Entity is first spawned, and if the Entity has
      * no gravity this property may be incorrect.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isOnGround: boolean;
     /**
      * @remarks
      * If true, the entity is currently sleeping.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSleeping: boolean;
     /**
@@ -9306,9 +9103,7 @@ export class Entity {
      * the sprint action, an ocelot running away or a pig boosting
      * with Carrot on a Stick.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSprinting: boolean;
     /**
@@ -9316,9 +9111,7 @@ export class Entity {
      * Whether the entity is in the swimming state. For example, a
      * player using the swim action or a fish in water.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly isSwimming: boolean;
     /**
@@ -9334,18 +9127,14 @@ export class Entity {
      * Key for the localization of this entity's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly localizationKey: string;
     /**
      * @remarks
      * Current location of the entity.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly location: Vector3;
     /**
@@ -9388,9 +9177,7 @@ export class Entity {
      * AI-related behaviors, like attacking. If the entity
      * currently has no target returns undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly target?: Entity;
     /**
@@ -9422,13 +9209,11 @@ export class Entity {
      * successfully. This can throw an error if the duration or
      * amplifier are outside of the valid ranges, or if the effect
      * does not exist.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample spawnPoisonedVillager.ts
      * @seeExample quickFoxLazyDog.ts
      */
@@ -9442,15 +9227,13 @@ export class Entity {
      * @returns
      * Returns undefined if the item was fully added or returns an
      * ItemStack with the remaining count.
-     * @throws This function can throw errors.
+     * @throws {ContainerRulesError}
      *
-     * {@link ContainerRulesError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityComponentError}
      *
-     * {@link InvalidEntityComponentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -9465,11 +9248,9 @@ export class Entity {
      * @returns
      * Returns true if the tag was added successfully. This can
      * fail if the tag already exists on the entity.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     addTag(tag: string): boolean;
@@ -9489,13 +9270,11 @@ export class Entity {
      * Whether the entity takes any damage. This can return false
      * if the entity is invulnerable or if the damage applied is
      * less than or equal to 0.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample applyDamageThenHeal.ts
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
@@ -9508,11 +9287,9 @@ export class Entity {
      *
      * @param vector
      * Impulse vector.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     applyImpulse(vector: Vector3): void;
@@ -9525,11 +9302,9 @@ export class Entity {
      *
      * @param verticalStrength
      * Knockback strength for the vertical vector.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample bounceSkeletons.ts
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
@@ -9538,9 +9313,7 @@ export class Entity {
      * Clears all dynamic properties that have been set on this
      * entity.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     clearDynamicProperties(): void;
     /**
@@ -9549,9 +9322,7 @@ export class Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample applyImpulse.ts
      */
     clearVelocity(): void;
@@ -9569,9 +9340,7 @@ export class Entity {
      * Defaults to: true
      * @returns
      * Returns whether the entity was on fire.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     extinguishFire(useEffects?: boolean): boolean;
@@ -9581,9 +9350,7 @@ export class Entity {
      *
      * @returns
      * An axis-aligned bounding box.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getAABB(): AABB;
     /**
@@ -9597,9 +9364,7 @@ export class Entity {
      * @returns
      * The solid blocks that this entity is directly standing on.
      * Returns an empty list if the entity is jumping or flying.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[];
     /**
@@ -9612,9 +9377,7 @@ export class Entity {
      * @returns
      * Returns the first intersecting block from the direction that
      * this entity is looking at.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -9629,9 +9392,7 @@ export class Entity {
      * A single solid block closest to the center of the entity
      * that this entity is directly standing on. Undefined if
      * entity is flying or jumping.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block | undefined;
     /**
@@ -9647,9 +9408,7 @@ export class Entity {
      * @returns
      * Returns the component if it exists on the entity, otherwise
      * undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
@@ -9657,9 +9416,7 @@ export class Entity {
      * Returns all scripting components that are present on this
      * entity.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getComponents(): EntityComponent[];
     /**
@@ -9671,9 +9428,7 @@ export class Entity {
      * @returns
      * Returns the value for the property, or undefined if the
      * property has not been set.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -9683,9 +9438,7 @@ export class Entity {
      *
      * @returns
      * A string array of the dynamic properties set on this entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicPropertyIds(): string[];
     /**
@@ -9697,9 +9450,7 @@ export class Entity {
      * example, an entity has many megabytes of associated dynamic
      * properties, it may be slow to load on various devices.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
@@ -9714,11 +9465,9 @@ export class Entity {
      * Effect object for the specified effect, undefined if the
      * effect is not present, or throws an error if the effect does
      * not exist.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
@@ -9727,9 +9476,7 @@ export class Entity {
      *
      * @returns
      * List of effects.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getEffects(): Effect[];
     /**
@@ -9742,15 +9489,13 @@ export class Entity {
      * @returns
      * Returns a set of entities from the direction that this
      * entity is looking at.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -9761,9 +9506,7 @@ export class Entity {
      * @returns
      * Returns the current location of the head component of this
      * entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getHeadLocation(): Vector3;
     /**
@@ -9792,9 +9535,7 @@ export class Entity {
      * @returns
      * Returns a Vec2 containing the rotation of this entity (in
      * degrees).
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getRotation(): Vector2;
     /**
@@ -9803,9 +9544,7 @@ export class Entity {
      *
      * @returns
      * An array containing all tags as strings.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getTags(): string[];
     /**
@@ -9814,9 +9553,7 @@ export class Entity {
      *
      * @returns
      * Returns the current velocity vector of the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample getFireworkVelocity.ts
      */
     getVelocity(): Vector3;
@@ -9826,9 +9563,7 @@ export class Entity {
      *
      * @returns
      * Returns the current view direction of the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getViewDirection(): Vector3;
     /**
@@ -9843,9 +9578,7 @@ export class Entity {
      * @returns
      * Returns true if the specified component is present on this
      * entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hasComponent(componentId: string): boolean;
     /**
@@ -9856,9 +9589,7 @@ export class Entity {
      * Identifier of the tag to test for.
      * @returns
      * Returns whether an entity has a particular tag.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hasTag(tag: string): boolean;
     /**
@@ -9870,9 +9601,7 @@ export class Entity {
      * @returns
      * Returns true if entity can be killed (even if it is already
      * dead), otherwise it returns false.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample tagsQuery.ts
      */
     kill(): boolean;
@@ -9888,11 +9617,9 @@ export class Entity {
      * @param targetLocation
      * The target location that this entity should face/look
      * towards.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -9927,9 +9654,7 @@ export class Entity {
      * @param options
      * Additional options to control the playback and transitions
      * of the animation.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
@@ -9940,11 +9665,9 @@ export class Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
@@ -9959,11 +9682,9 @@ export class Entity {
      * @returns
      * Returns true if the effect has been removed. Returns false
      * if the effect is not found or does not exist.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
@@ -9976,9 +9697,7 @@ export class Entity {
      * Content of the tag to remove.
      * @returns
      * Returns whether the tag existed on the entity.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     removeTag(tag: string): boolean;
     /**
@@ -10018,11 +9737,9 @@ export class Entity {
      * @returns
      * A command result containing whether the command was
      * successful.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -10033,11 +9750,9 @@ export class Entity {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -10049,11 +9764,9 @@ export class Entity {
      * @param value
      * Data value of the property to set. If the value is null, it
      * will remove the property instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -10075,9 +9788,7 @@ export class Entity {
      * Whether the entity was set on fire. This can fail if seconds
      * is less than or equal to zero, the entity is wet or the
      * entity is immune to fire.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      * @seeExample setOnFire.ts
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -10120,9 +9831,7 @@ export class Entity {
      * The x and y rotation of the entity (in degrees). For most
      * mobs, the x rotation controls the head tilt and the y
      * rotation controls the body rotation.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
     /**
@@ -10135,13 +9844,11 @@ export class Entity {
      * New location for the entity.
      * @param teleportOptions
      * Options regarding the teleport operation.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      * @seeExample teleport.ts
      * @seeExample teleportMovement.ts
      */
@@ -10185,13 +9892,11 @@ export class Entity {
      * Returns whether the teleport succeeded. This can fail if the
      * destination chunk is unloaded or if the teleport would
      * result in intersecting with blocks.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
@@ -10208,7 +9913,7 @@ export class EntityAddRiderComponent extends EntityComponent {
      * The type of entity that is added as a rider for this entity
      * when spawned under certain conditions.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly entityType: string;
     /**
@@ -10216,7 +9921,7 @@ export class EntityAddRiderComponent extends EntityComponent {
      * Optional spawn event to trigger on the rider when that rider
      * is spawned for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly spawnEvent: string;
     static readonly componentId = 'minecraft:addrider';
@@ -10235,14 +9940,14 @@ export class EntityAgeableComponent extends EntityComponent {
      * Amount of time before the entity grows up, -1 for always a
      * baby.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly duration: number;
     /**
      * @remarks
      * Event that runs when this entity grows up.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly growUp: Trigger;
     /**
@@ -10250,7 +9955,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * The feed item used will transform into this item upon
      * successful interaction.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly transformToItem: string;
     static readonly componentId = 'minecraft:ageable';
@@ -10258,7 +9963,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * @remarks
      * List of items that the entity drops when it grows up.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDropItems(): string[];
     /**
@@ -10267,7 +9972,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * for the item name and 'growth' to define how much time it
      * grows up by.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFeedItems(): EntityDefinitionFeedItem[];
 }
@@ -10284,14 +9989,14 @@ export class EntityAttributeComponent extends EntityComponent {
      * @remarks
      * Current value of this attribute for this instance.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly currentValue: number;
     /**
      * @remarks
      * Returns the default defined value for this attribute.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultValue: number;
     /**
@@ -10299,7 +10004,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Returns the effective max of this attribute given any other
      * ambient components or factors.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly effectiveMax: number;
     /**
@@ -10307,7 +10012,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Returns the effective min of this attribute given any other
      * ambient components or factors.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly effectiveMin: number;
     /**
@@ -10317,7 +10022,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToDefaultValue(): void;
     /**
@@ -10327,7 +10032,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToMaxValue(): void;
     /**
@@ -10337,7 +10042,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToMinValue(): void;
     /**
@@ -10367,7 +10072,7 @@ export class EntityBaseMovementComponent extends EntityComponent {
      * @remarks
      * Maximum turn rate for this movement modality of the mob.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxTurn: number;
 }
@@ -10395,28 +10100,28 @@ export class EntityBreathableComponent extends EntityComponent {
      * @remarks
      * If true, this entity can breathe in air.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesAir: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in lava.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesLava: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in solid blocks.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesSolids: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesWater: boolean;
     /**
@@ -10424,7 +10129,7 @@ export class EntityBreathableComponent extends EntityComponent {
      * @remarks
      * If true, the entity is able to breathe.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBreathe: boolean;
     /**
@@ -10432,28 +10137,28 @@ export class EntityBreathableComponent extends EntityComponent {
      * If true, this entity will have visible bubbles while in
      * water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly generatesBubbles: boolean;
     /**
      * @remarks
      * Time in seconds to recover breath to maximum.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly inhaleTime: number;
     /**
      * @remarks
      * Time in seconds between suffocation damage.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly suffocateTime: number;
     /**
      * @remarks
      * Time in seconds the entity can hold its breath.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly totalSupply: number;
     static readonly componentId = 'minecraft:breathable';
@@ -10462,14 +10167,14 @@ export class EntityBreathableComponent extends EntityComponent {
      * List of blocks this entity can breathe in, in addition to
      * the separate properties for classes of blocks.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getBreatheBlocks(): BlockPermutation[];
     /**
      * @remarks
      * List of blocks this entity can't breathe in.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getNonBreatheBlocks(): BlockPermutation[];
 }
@@ -10517,7 +10222,7 @@ export class EntityColor2Component extends EntityComponent {
      * @remarks
      * Value of this particular color.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: PaletteColor;
     static readonly componentId = 'minecraft:color2';
@@ -10553,9 +10258,7 @@ export class EntityComponent extends Component {
      * The entity that owns this component. The entity will be
      * undefined if it has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly entity: Entity;
 }
@@ -10763,9 +10466,7 @@ export class EntityEnderInventoryComponent extends EntityComponent {
      * Defines the ender inventory container for this entity. The
      * container will be undefined if the entity has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly container: Container;
     static readonly componentId = 'minecraft:ender_inventory';
@@ -10783,18 +10484,14 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Returns the total Armor level of the owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly totalArmor: number;
     /**
      * @remarks
      * Returns the total Toughness level of the owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly totalToughness: number;
     static readonly componentId = 'minecraft:equippable';
@@ -10807,7 +10504,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @returns
      * Returns the item equipped to the given EquipmentSlot. If
      * empty, returns undefined.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
@@ -10820,7 +10517,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @returns
      * Returns the ContainerSlot corresponding to the given
      * EquipmentSlot.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
@@ -10833,7 +10530,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * The equipment slot. e.g. "head", "chest", "offhand".
      * @param itemStack
      * The item to equip. If undefined, clears the slot.
-     * @throws This function can throw errors.
+     * @throws
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
 }
@@ -10896,7 +10593,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * Current value of the friction modifier of the associated
      * entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:friction_modifier';
@@ -10945,7 +10642,7 @@ export class EntityHealableComponent extends EntityComponent {
      * Determines if an item can be used regardless of the entity
      * being at full health.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly forceUse: boolean;
     static readonly componentId = 'minecraft:healable';
@@ -10955,7 +10652,7 @@ export class EntityHealableComponent extends EntityComponent {
      *
      * @returns
      * Entity that this component is associated with.
-     * @throws This function can throw errors.
+     * @throws
      */
     getFeedItems(): FeedItem[];
 }
@@ -11434,7 +11131,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * Number of slots that this entity can gain per extra
      * strength.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly additionalSlotsPerStrength: number;
     /**
@@ -11444,7 +11141,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * If true, the contents of this inventory can be removed by a
      * hopper.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBeSiphonedFrom: boolean;
     /**
@@ -11454,9 +11151,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * Defines the container for this entity. The container will be
      * undefined if the entity has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly container: Container;
     /**
@@ -11465,7 +11160,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * Type of container this entity has.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly containerType: string;
     /**
@@ -11474,7 +11169,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * Number of slots the container has.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly inventorySize: number;
     /**
@@ -11483,7 +11178,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * If true, the entity will not drop it's inventory on death.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly 'private': boolean;
     /**
@@ -11493,7 +11188,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly restrictToOwner: boolean;
     static readonly componentId = 'minecraft:inventory';
@@ -11632,9 +11327,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if the entity has no player owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -11643,9 +11336,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      * Returns the id of the player that has tamed the entity, or
      * 'undefined' if the entity has no player owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:is_tamed';
@@ -11665,7 +11356,7 @@ export class EntityItemComponent extends EntityComponent {
      * @remarks
      * Item stack represented by this entity in the world.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly itemStack: ItemStack;
     static readonly componentId = 'minecraft:item';
@@ -11879,7 +11570,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * Returns true if another entity can 'steal' the leashed
      * entity by attaching their own leash to it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBeStolen: boolean;
     /**
@@ -11887,35 +11578,35 @@ export class EntityLeashableComponent extends EntityComponent {
      * Distance in blocks at which the leash stiffens, restricting
      * movement.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly hardDistance: number;
     /**
      * @remarks
      * Returns true if the entity is leashed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isLeashed: boolean;
     /**
      * @remarks
      * Entity that is holding the leash.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly leashHolder?: Entity;
     /**
      * @remarks
      * Identifier of entity that is holding the leash.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly leashHolderEntityId?: string;
     /**
      * @remarks
      * Distance in blocks at which the leash breaks.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxDistance: number;
     /**
@@ -11924,7 +11615,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * acting to keep this entity close to the entity that leashed
      * it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly softDistance: number;
     static readonly componentId = 'minecraft:leashable';
@@ -11947,7 +11638,7 @@ export class EntityLeashableComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     unleash(): void;
 }
@@ -12015,7 +11706,7 @@ export class EntityMarkVariantComponent extends EntityComponent {
      * @remarks
      * Value of the mark variant value for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:mark_variant';
@@ -12078,14 +11769,14 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
      * @remarks
      * Speed in effect when the entity is turning.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly speedWhenTurning: number;
     /**
      * @remarks
      * Start speed during a glide.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly startSpeed: number;
     static readonly componentId = 'minecraft:movement.glide';
@@ -12131,14 +11822,14 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
      * @remarks
      * Amplitude of the sway motion.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly swayAmplitude: number;
     /**
      * @remarks
      * Amount of sway frequency.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly swayFrequency: number;
     static readonly componentId = 'minecraft:movement.sway';
@@ -12166,7 +11857,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder to avoid blocks that cause damage when
      * finding a path.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly avoidDamageBlocks: boolean;
     /**
@@ -12174,7 +11865,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder to avoid portals (like nether portals)
      * when finding a path.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly avoidPortals: boolean;
     /**
@@ -12182,14 +11873,14 @@ export class EntityNavigationComponent extends EntityComponent {
      * Whether or not the pathfinder should avoid tiles that are
      * exposed to the sun when creating paths.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly avoidSun: boolean;
     /**
      * @remarks
      * Tells the pathfinder to avoid water when creating a path.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly avoidWater: boolean;
     /**
@@ -12197,7 +11888,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can jump out of water
      * (like a dolphin).
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBreach: boolean;
     /**
@@ -12205,21 +11896,21 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder that it can path through a closed door
      * and break it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBreakDoors: boolean;
     /**
      * @remarks
      * Tells the pathfinder whether or not it can float.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canFloat: boolean;
     /**
      * @remarks
      * Tells the pathfinder whether or not it can jump up blocks.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canJump: boolean;
     /**
@@ -12227,7 +11918,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder that it can path through a closed door
      * assuming the AI will open the door.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canOpenDoors: boolean;
     /**
@@ -12235,14 +11926,14 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder that it can path through a closed iron
      * door assuming the AI will open the door.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canOpenIronDoors: boolean;
     /**
      * @remarks
      * Whether a path can be created through a door.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canPassDoors: boolean;
     /**
@@ -12250,7 +11941,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder that it can start pathing when in the
      * air.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canPathFromAir: boolean;
     /**
@@ -12258,7 +11949,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can travel on the
      * surface of the lava.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canPathOverLava: boolean;
     /**
@@ -12266,7 +11957,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can travel on the
      * surface of the water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canPathOverWater: boolean;
     /**
@@ -12274,7 +11965,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it will be pulled down
      * by gravity while in water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canSink: boolean;
     /**
@@ -12282,7 +11973,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can path anywhere
      * through water and plays swimming animation along that path.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canSwim: boolean;
     /**
@@ -12290,7 +11981,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can walk on the
      * ground outside water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canWalk: boolean;
     /**
@@ -12298,7 +11989,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can travel in lava
      * like walking on ground.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canWalkInLava: boolean;
     /**
@@ -12306,7 +11997,7 @@ export class EntityNavigationComponent extends EntityComponent {
      * Tells the pathfinder whether or not it can walk on the
      * ground or go underwater.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isAmphibious: boolean;
 }
@@ -12587,7 +12278,7 @@ export class EntityPushThroughComponent extends EntityComponent {
      * @remarks
      * Value of the push through distances of this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:push_through';
@@ -12724,7 +12415,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Zero-based index of the seat that can used to control this
      * entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly controllingSeat: number;
     /**
@@ -12732,7 +12423,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Determines whether interactions are not supported if the
      * entity is crouching.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly crouchingSkipInteract: boolean;
     /**
@@ -12741,14 +12432,14 @@ export class EntityRideableComponent extends EntityComponent {
      * looking to ride on this entity (commonly with touch-screen
      * controls).
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly interactText: string;
     /**
      * @remarks
      * The max width a mob can be to be a passenger.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly passengerMaxWidth: number;
     /**
@@ -12756,7 +12447,7 @@ export class EntityRideableComponent extends EntityComponent {
      * If true, this entity will pull in entities that are in the
      * correct family_types into any available seat.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly pullInEntities: boolean;
     /**
@@ -12764,14 +12455,14 @@ export class EntityRideableComponent extends EntityComponent {
      * If true, this entity will be picked when looked at by the
      * rider.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly riderCanInteract: boolean;
     /**
      * @remarks
      * Number of seats for riders defined for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly seatCount: number;
     static readonly componentId = 'minecraft:rideable';
@@ -12785,8 +12476,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Entity that will become the rider of this entity.
      * @returns
      * True if the rider entity was successfully added.
-     * @throws This function can throw errors.
-     * @seeExample minibiomes.ts
+     * @throws
      */
     addRider(rider: Entity): boolean;
     /**
@@ -12797,7 +12487,7 @@ export class EntityRideableComponent extends EntityComponent {
      *
      * @param rider
      * Entity that should be ejected from this entity.
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRider(rider: Entity): void;
     /**
@@ -12806,7 +12496,7 @@ export class EntityRideableComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRiders(): void;
     /**
@@ -12814,7 +12504,7 @@ export class EntityRideableComponent extends EntityComponent {
      * A string-list of entity types that this entity can support
      * as riders.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFamilyTypes(): string[];
     /**
@@ -12822,7 +12512,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Gets a list of the all the entities currently riding this
      * entity.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRiders(): Entity[];
     /**
@@ -12830,7 +12520,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Gets a list of positions and number of riders for each
      * position for entities riding this entity.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getSeats(): Seat[];
 }
@@ -12846,7 +12536,7 @@ export class EntityRidingComponent extends EntityComponent {
      * @remarks
      * The entity this entity is currently riding on.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly entityRidingOn: Entity;
     static readonly componentId = 'minecraft:riding';
@@ -12872,7 +12562,7 @@ export class EntityScaleComponent extends EntityComponent {
      * @remarks
      * Current value for the scale property set on entities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:scale';
@@ -12889,7 +12579,7 @@ export class EntitySkinIdComponent extends EntityComponent {
      * @remarks
      * Returns the value of the skin Id identifier of the entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:skin_id';
@@ -13059,7 +12749,7 @@ export class EntityStrengthComponent extends EntityComponent {
      * Maximum strength of this entity, as defined in the entity
      * type definition.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly max: number;
     /**
@@ -13067,7 +12757,7 @@ export class EntityStrengthComponent extends EntityComponent {
      * Current value of the strength component that has been set
      * for entities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:strength';
@@ -13083,14 +12773,14 @@ export class EntityTameableComponent extends EntityComponent {
      * @remarks
      * Returns a set of items that can be used to tame this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly getTameItems: ItemStack[];
     /**
      * @remarks
      * Returns true if the entity is tamed by player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamed: boolean;
     /**
@@ -13098,7 +12788,7 @@ export class EntityTameableComponent extends EntityComponent {
      * The chance of taming the entity with each item use between
      * 0.0 and 1.0, where 1.0 is 100%
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly probability: number;
     /**
@@ -13106,7 +12796,7 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -13114,7 +12804,7 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tameable';
@@ -13128,7 +12818,7 @@ export class EntityTameableComponent extends EntityComponent {
      * The player that this entity should be tamed by.
      * @returns
      * Returns true if the entity was tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tame(player: Player): boolean;
 }
@@ -13239,14 +12929,14 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Returns true if the entity is tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamed: boolean;
     /**
      * @remarks
      * Returns true if the entity is tamed by a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamedToPlayer: boolean;
     /**
@@ -13254,7 +12944,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed by a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -13262,7 +12952,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tamemount';
@@ -13274,7 +12964,7 @@ export class EntityTameMountComponent extends EntityComponent {
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tame(showParticles: boolean): void;
     /**
@@ -13289,7 +12979,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * The player that this entity should be tamed by.
      * @returns
      * Returns true if the entity was tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tameToPlayer(showParticles: boolean, player: Player): boolean;
 }
@@ -13320,11 +13010,11 @@ export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();
     static readonly componentId = 'minecraft:type_family';
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getTypeFamilies(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     hasTypeFamily(typeFamily: string): boolean;
 }
@@ -13431,7 +13121,7 @@ export class EntityVariantComponent extends EntityComponent {
      * Current value for variant for this entity, as specified via
      * components.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:variant';
@@ -13458,11 +13148,9 @@ export class EntityWaypoint extends Waypoint {
      * @remarks
      * The entity being tracked by this waypoint.
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly entity: Entity;
     /**
@@ -13471,17 +13159,13 @@ export class EntityWaypoint extends Waypoint {
      * based on the entity's state (e.g., sneaking, invisible,
      * dead).
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly entityRules: EntityVisibilityRules;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(
         entity: Entity,
@@ -14173,11 +13857,9 @@ export class InputInfo {
      * @remarks
      * The last input mode used by the player.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly lastInputModeUsed: InputMode;
     /**
@@ -14185,9 +13867,7 @@ export class InputInfo {
      * Whether the player touch input only affects the touchbar or
      * not.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
@@ -14198,17 +13878,13 @@ export class InputInfo {
      * {@link PlayerButtonInputAfterEvent} via
      * {@link WorldAfterEvents.playerButtonInput}
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getButtonState(button: InputButton): ButtonState;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getMovementVector(): Vector2;
 }
@@ -14243,11 +13919,9 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * to retrieve dynamic properties set from other content packs.
      * Returns undefined if the key was not found.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     get(key: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -14260,11 +13934,9 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * storage. Storage size usage is counted towards the 1KBytes
      * limit per content pack.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     set(key: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -14274,9 +13946,7 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * accounts for properties set by your content pack. The
      * 1KBytes limit is per content pack.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     totalByteCount(): number;
 }
@@ -14293,9 +13963,7 @@ export class ItemBookComponent extends ItemComponent {
      * The name of the author of the book if it is signed,
      * otherwise undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly author?: string;
     /**
@@ -14303,27 +13971,21 @@ export class ItemBookComponent extends ItemComponent {
      * The contents of pages in the book that are in string format.
      * Entries not in string format will be undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly contents: (string | undefined)[];
     /**
      * @remarks
      * Determines whether the book has been signed or not.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly isSigned: boolean;
     /**
      * @remarks
      * The amount of pages the book has.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly pageCount: number;
     /**
@@ -14332,18 +13994,14 @@ export class ItemBookComponent extends ItemComponent {
      * {@link RawMessage} format. Entries not in {@link RawMessage}
      * format will be undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly rawContents: (RawMessage | undefined)[];
     /**
      * @remarks
      * The title of the book if it is signed, otherwise undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly title?: string;
     static readonly componentId = 'minecraft:book';
@@ -14356,9 +14014,7 @@ export class ItemBookComponent extends ItemComponent {
      * @returns
      * The content of the page if a valid index is provided and it
      * is in string format, otherwise returns undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     getPageContent(pageIndex: number): string | undefined;
     /**
@@ -14372,9 +14028,7 @@ export class ItemBookComponent extends ItemComponent {
      * The content of the page if a valid index is provided and it
      * is in {@link RawMessage} format, otherwise returns
      * undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     getRawPageContent(pageIndex: number): RawMessage | undefined;
     /**
@@ -14393,13 +14047,11 @@ export class ItemBookComponent extends ItemComponent {
      * The content to set for the page. Can be a single string or
      * {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     insertPage(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -14411,9 +14063,7 @@ export class ItemBookComponent extends ItemComponent {
      *
      * @param pageIndex
      * The index of the page.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     removePage(pageIndex: number): void;
     /**
@@ -14430,13 +14080,11 @@ export class ItemBookComponent extends ItemComponent {
      * An array of each page's contents. Each page can be a single
      * string or {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s.
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     setContents(contents: ((RawMessage | string)[] | RawMessage | string)[]): void;
     /**
@@ -14456,13 +14104,11 @@ export class ItemBookComponent extends ItemComponent {
      * The content to set for the page. Can be a single string or
      * {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     setPageContent(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -14477,13 +14123,11 @@ export class ItemBookComponent extends ItemComponent {
      * The title to give the book.
      * @param author
      * The name of the book's author.
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     signBook(title: string, author: string): void;
 }
@@ -14719,21 +14363,19 @@ export class ItemComponentRegistry {
      * @param itemCustomComponent
      * The collection of event functions that will be called when
      * the event occurs on an item using this custom component id.
-     * @throws This function can throw errors.
+     * @throws {CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentInvalidRegistryError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {ItemCustomComponentAlreadyRegisteredError}
      *
-     * {@link ItemCustomComponentAlreadyRegisteredError}
+     * @throws {ItemCustomComponentReloadNewComponentError}
      *
-     * {@link ItemCustomComponentReloadNewComponentError}
+     * @throws {ItemCustomComponentReloadNewEventError}
      *
-     * {@link ItemCustomComponentReloadNewEventError}
+     * @throws {ItemCustomComponentReloadVersionError}
      *
-     * {@link ItemCustomComponentReloadVersionError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
 }
@@ -14817,7 +14459,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * Represents the cooldown category that this item is
      * associated with.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly cooldownCategory: string;
     /**
@@ -14827,7 +14469,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * Amount of time, in ticks, it will take this item to
      * cooldown.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly cooldownTicks: number;
     static readonly componentId = 'minecraft:cooldown';
@@ -14835,7 +14477,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getCooldownTicksRemaining(player: Player): number;
     /**
@@ -14850,7 +14492,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * item.
      * @returns
      * True if the item is the given cooldown category.
-     * @throws This function can throw errors.
+     * @throws
      */
     isCooldownCategory(cooldownCategory: string): boolean;
     /**
@@ -14884,7 +14526,7 @@ export class ItemCooldownComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     startCooldown(player: Player): void;
 }
@@ -14929,7 +14571,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Represents the amount of damage that this item can take
      * before breaking.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxDurability: number;
     /**
@@ -14964,8 +14606,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Defaults to: 0
      * Bounds: [0, 3]
      * @returns 使用时的最大损坏概率。
-     * @throws
-     * 若 `unbreakingEnchantmentLevel` 参数未在范围内时，抛出 `TypeError` 。
+     * @throws {TypeError} 若 `unbreakingEnchantmentLevel` 参数未在范围内
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
@@ -14978,7 +14619,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDamageChanceRange(): NumberRange;
 }
@@ -15001,7 +14642,7 @@ export class ItemDyeableComponent extends ItemComponent {
      * @remarks
      * Returns the default color of the item.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultColor?: RGB;
     static readonly componentId = 'minecraft:dyeable';
@@ -15015,7 +14656,7 @@ export class ItemDyeableComponent extends ItemComponent {
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly slots: EnchantmentSlot[];
     static readonly componentId = 'minecraft:enchantable';
@@ -15125,7 +14766,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      *
      * @returns
      * Returns a list of enchantments on the item stack.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEnchantments(): Enchantment[];
     /**
@@ -15150,7 +14791,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeAllEnchantments(): void;
     /**
@@ -15191,7 +14832,7 @@ export class ItemFoodComponent extends ItemComponent {
      * If true, the player can always eat this item (even when not
      * hungry).
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canAlwaysEat: boolean;
     /**
@@ -15201,7 +14842,7 @@ export class ItemFoodComponent extends ItemComponent {
      * Represents how much nutrition this food item will give an
      * entity when eaten.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly nutrition: number;
     /**
@@ -15214,7 +14855,7 @@ export class ItemFoodComponent extends ItemComponent {
      * formula (nutrition * saturation_modifier * 2) to apply a
      * saturation buff.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly saturationModifier: number;
     /**
@@ -15224,7 +14865,7 @@ export class ItemFoodComponent extends ItemComponent {
      * When specified, converts the active item to the one
      * specified by this property.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly usingConvertsTo: string;
     static readonly componentId = 'minecraft:food';
@@ -15239,9 +14880,7 @@ export class ItemFoodComponent extends ItemComponent {
 export class ItemInventoryComponent extends ItemComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     readonly container: Container;
     static readonly componentId = 'minecraft:inventory';
@@ -15257,22 +14896,18 @@ export class ItemPotionComponent extends ItemComponent {
      * @remarks
      * The PotionDeliveryType associated with the potion item.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     readonly potionDeliveryType: PotionDeliveryType;
     /**
      * @remarks
      * The PotionEffectType associated with the potion item.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     readonly potionEffectType: PotionEffectType;
     static readonly componentId = 'minecraft:potion';
@@ -15377,9 +15012,7 @@ export class ItemStack {
      * Key for the localization of this items's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly localizationKey: string;
     /**
@@ -15661,11 +15294,9 @@ export class ItemStack {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -15698,11 +15329,9 @@ export class ItemStack {
      * List of lore lines. Each element in the list represents a
      * new line. The maximum lore line count is 20. The maximum
      * lore line length is 50 characters.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link Error}
+     * @throws {Error}
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;
@@ -16268,9 +15897,7 @@ export class ListBlockVolume extends BlockVolumeBase {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationWaypoint extends Waypoint {
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(dimensionLocation: DimensionLocation, textureSelector: WaypointTextureSelector, color?: RGB);
     /**
@@ -16331,13 +15958,11 @@ export class LocatorBar {
      *
      * @param waypoint
      * The {@link Waypoint} to add to the locator bar.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link LocatorBarError}
+     * @throws {LocatorBarError}
      */
     addWaypoint(waypoint: Waypoint): void;
     /**
@@ -16367,9 +15992,7 @@ export class LocatorBar {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     removeAllWaypoints(): void;
     /**
@@ -16381,11 +16004,9 @@ export class LocatorBar {
      *
      * @param waypoint
      * The {@link Waypoint} to remove from the locator bar.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link LocatorBarError}
+     * @throws {LocatorBarError}
      */
     removeWaypoint(waypoint: Waypoint): void;
 }
@@ -16650,9 +16271,7 @@ export class LootTableManager {
      * An array of item stacks dropped from the loot drop event.
      * Can be empty if no loot dropped, or undefined if the entity
      * was invalid.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     generateLootFromEntity(entity: Entity, tool?: ItemStack): ItemStack[] | undefined;
     /**
@@ -16808,7 +16427,7 @@ export class MolangVariableMap {
      * - `<variable_name>.g` - Green color value [0-1]
      * - `<variable_name>.b` - Blue color value [0-1]
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setColorRGB(variableName: string, color: RGB): void;
     /**
@@ -16820,7 +16439,7 @@ export class MolangVariableMap {
      * - `<variable_name>.a` - Alpha (transparency) color value
      * [0-1]
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setColorRGBA(variableName: string, color: RGBA): void;
     /**
@@ -16832,7 +16451,7 @@ export class MolangVariableMap {
      * Name of the float-based number to set.
      * @param number
      * Value for the Molang-based variable to set.
-     * @throws This function can throw errors.
+     * @throws
      */
     setFloat(variableName: string, number: number): void;
     /**
@@ -16846,7 +16465,7 @@ export class MolangVariableMap {
      * - `<variable_name>.direction_z` - Z value from the
      * {@link Vector3} provided
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSpeedAndDirection(variableName: string, speed: number, direction: Vector3): void;
     /**
@@ -16859,7 +16478,7 @@ export class MolangVariableMap {
      * - `<variable_name>.z` - Z value from the {@link Vector3}
      * provided
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setVector3(variableName: string, vector: Vector3): void;
 }
@@ -16981,7 +16600,7 @@ export class Player extends Entity {
      * @remarks
      * The player's Camera.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly camera: Camera;
     /**
@@ -16994,9 +16613,7 @@ export class Player extends Entity {
      * name shown above the player's head, use
      * {@link Entity.nameTag}.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly chatDisplayName: string;
     /**
@@ -17045,7 +16662,7 @@ export class Player extends Entity {
      * @remarks
      * Contains the player's device information.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
@@ -17067,9 +16684,7 @@ export class Player extends Entity {
      * can be changed in the Video section of the settings menu
      * based on what hardware is available.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly graphicsMode: GraphicsMode;
     /**
@@ -17088,7 +16703,7 @@ export class Player extends Entity {
      * @remarks
      * If true, the player is currently emoting.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isEmoting: boolean;
     /**
@@ -17096,14 +16711,14 @@ export class Player extends Entity {
      * Whether the player is flying. For example, in Creative or
      * Spectator mode.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isFlying: boolean;
     /**
      * @remarks
      * Whether the player is gliding with Elytra.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isGliding: boolean;
     /**
@@ -17111,7 +16726,7 @@ export class Player extends Entity {
      * Whether the player is jumping. This will remain true while
      * the player is holding the jump action.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isJumping: boolean;
     /**
@@ -17119,7 +16734,7 @@ export class Player extends Entity {
      * The current overall level for the player, based on their
      * experience.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly level: number;
     /**
@@ -17133,7 +16748,7 @@ export class Player extends Entity {
      * @remarks
      * Name of the player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly name: string;
     /**
@@ -17141,7 +16756,7 @@ export class Player extends Entity {
      * Contains methods for manipulating the on-screen display of a
      * Player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
@@ -17150,17 +16765,13 @@ export class Player extends Entity {
      * An identifier that can be used to identify a player across
      * sessions.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly persistentId: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
@@ -17174,14 +16785,14 @@ export class Player extends Entity {
      * The overall total set of experience needed to achieve the
      * next level for a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly totalXpNeededForNextLevel: number;
     /**
      * @remarks
      * The current set of experience achieved for the player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly xpEarnedAtCurrentLevel: number;
     /**
@@ -17197,7 +16808,7 @@ export class Player extends Entity {
      * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current experience of the Player.
-     * @throws This function can throw errors.
+     * @throws
      */
     addExperience(amount: number): number;
     /**
@@ -17212,7 +16823,7 @@ export class Player extends Entity {
      * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current level of the Player.
-     * @throws This function can throw errors.
+     * @throws
      */
     addLevels(amount: number): number;
     /**
@@ -17254,16 +16865,14 @@ export class Player extends Entity {
      * @remarks
      * Returns the player's current control scheme.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getControlScheme(): ControlScheme;
     /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getGameMode(): GameMode;
     /**
@@ -17274,7 +16883,7 @@ export class Player extends Entity {
      * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
-     * @throws This function can throw errors.
+     * @throws
      */
     getItemCooldown(cooldownCategory: string): number;
     /**
@@ -17284,18 +16893,16 @@ export class Player extends Entity {
      *
      * @returns
      * The player's ping in milliseconds.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getPing(): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getSpawnPoint(): DimensionLocation | undefined;
     /**
@@ -17306,18 +16913,16 @@ export class Player extends Entity {
      * @returns
      * The split screen slot of the player or undefined if the
      * player is not in a split screen session.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getSplitScreenSlot(): PlayerSplitScreenSlot | undefined;
     /**
      * @remarks
      *  Gets the total experience of the Player.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getTotalXp(): number;
     /**
@@ -17331,7 +16936,7 @@ export class Player extends Entity {
      * Identifier of the music track to play.
      * @param musicOptions
      * Additional options for the music track.
-     * @throws This function can throw errors.
+     * @throws
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -17342,11 +16947,9 @@ export class Player extends Entity {
      *
      * @param soundOptions
      * Additional optional options for the sound.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: SoundDefinition | string, soundOptions?: PlayerSoundOptions): SoundInstance;
@@ -17358,7 +16961,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     postClientMessage(id: string, value: string): void;
     /**
@@ -17404,7 +17007,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetLevel(): void;
     /**
@@ -17445,13 +17048,11 @@ export class Player extends Entity {
      * successfully. This can throw an InvalidArgumentError if the
      * control scheme is not allowed by the player's current
      * camera.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setControlScheme(controlScheme?: ControlScheme): void;
     /**
@@ -17462,7 +17063,7 @@ export class Player extends Entity {
      *
      * @param gameMode
      * Active gamemode.
-     * @throws This function can throw errors.
+     * @throws
      */
     setGameMode(gameMode?: GameMode): void;
     /**
@@ -17499,11 +17100,9 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
@@ -17520,13 +17119,11 @@ export class Player extends Entity {
      * @param molangVariables
      * A set of optional, customizable variables that can be
      * adjusted for this particle.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnParticle.ts bd8c7a07
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
@@ -17543,7 +17140,7 @@ export class Player extends Entity {
      * @param tickDuration
      * Duration in ticks of the item cooldown.
      * Bounds: [0, 32767]
-     * @throws This function can throw errors.
+     * @throws
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
@@ -17553,9 +17150,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopAllSounds(): void;
     /**
@@ -17565,7 +17160,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopMusic(): void;
     /**
@@ -17577,9 +17172,7 @@ export class Player extends Entity {
      *
      * @param soundId
      * Identifier of the sound.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopSound(soundId: string): void;
 }
@@ -17605,19 +17198,17 @@ export class PlayerAimAssist {
      * @param settings
      * Aim-assist settings to activate for the player, if undefined
      * aim-assist will be disabled.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     set(settings?: PlayerAimAssistSettings): void;
 }
@@ -17968,7 +17559,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      * @remarks
      * The ItemStack currently in the players cursor inventory.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly item?: ItemStack;
     static readonly componentId = 'minecraft:cursor_inventory';
@@ -17978,7 +17569,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
 }
@@ -18400,7 +17991,7 @@ export class PlayerInputPermissions {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
@@ -18410,7 +18001,7 @@ export class PlayerInputPermissions {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
@@ -19362,17 +18953,13 @@ export class PlayerWaypoint extends EntityWaypoint {
      * waypoint is shown based on the player's state (e.g., hidden,
      * spectator mode, spectator viewing another spectator).
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly playerRules: PlayerVisibilityRules;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(
         player: Player,
@@ -19710,9 +19297,7 @@ export class PotionEffectType {
      * Duration of the effect when applied to an entity in ticks.
      * Undefined means the effect does not expire.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly durationTicks?: number;
     readonly id: string;
@@ -19765,13 +19350,11 @@ export class Potions {
      * @remarks
      * Creates a potion given an effect and delivery type.
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidPotionDeliveryTypeError}
      *
-     * {@link InvalidPotionDeliveryTypeError}
-     *
-     * {@link InvalidPotionEffectTypeError}
+     * @throws {InvalidPotionEffectTypeError}
      */
     static resolve<
         T extends string = MinecraftPotionEffectTypes,
@@ -20020,11 +19603,9 @@ export class PrimitiveShapesManager {
      *
      * @param text
      * The text primitive to be added.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link PrimitiveShapeError}
+     * @throws {PrimitiveShapeError}
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**
@@ -20334,9 +19915,7 @@ export class RecipeCraftingContext {
      * The amount of addressable input slots for getInputItem and
      * setInputItem.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly inputSlotCount: number;
     /**
@@ -20351,9 +19930,7 @@ export class RecipeCraftingContext {
      * The identifiers of the recipes that are valid for the
      * current input items.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly validRecipes: string[];
     /**
@@ -20365,11 +19942,9 @@ export class RecipeCraftingContext {
      * @returns
      * The item stack in the input slot, or undefined if the slot
      * is empty.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getInputItem(slot: number): ItemStack | undefined;
     /**
@@ -20378,11 +19953,9 @@ export class RecipeCraftingContext {
      *
      * @returns
      * The output item stack, or undefined if there is no output.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getOutputItem(): ItemStack | undefined;
     /**
@@ -20396,11 +19969,9 @@ export class RecipeCraftingContext {
      * @param item
      * The item stack to place in the slot, or undefined to clear
      * the slot.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     setInputItem(slot: number, item?: ItemStack): void;
     /**
@@ -20411,11 +19982,9 @@ export class RecipeCraftingContext {
      *
      * @param recipeId
      * The identifier of a valid recipe to select.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidRecipeError}
+     * @throws {InvalidRecipeError}
      */
     setSelectedRecipe(recipeId: string): void;
 }
@@ -20629,7 +20198,7 @@ export class ScoreboardObjective {
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
-     * @throws This function can throw errors.
+     * @throws
      */
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
     /**
@@ -20674,7 +20243,7 @@ export class ScoreboardObjective {
      * Returns if the specified identity is a participant of the
      * scoreboard objective.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -20686,7 +20255,7 @@ export class ScoreboardObjective {
      * @param participant
      * Participant to remove from being tracked with this
      * objective.
-     * @throws This function can throw errors.
+     * @throws
      */
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -20699,7 +20268,7 @@ export class ScoreboardObjective {
      * Identity of the participant.
      * @param score
      * New value of the score.
-     * @throws This function can throw errors.
+     * @throws
      */
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }
@@ -20750,36 +20319,28 @@ export class ScreenDisplay {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     resetHudElementsVisibility(): void;
     /**
@@ -20791,11 +20352,9 @@ export class ScreenDisplay {
      *
      * @param text
      * New value for the action bar text.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -20810,9 +20369,7 @@ export class ScreenDisplay {
      * back to its default.
      * @param hudElements
      * Optional list of HUD elements to configure visibility for.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
@@ -20824,13 +20381,11 @@ export class ScreenDisplay {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      * @seeExample setTitle.ts
      * @seeExample setTitleAndSubtitle.ts
      * @seeExample countdown.ts
@@ -20843,11 +20398,9 @@ export class ScreenDisplay {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
@@ -21663,9 +21216,7 @@ export class Structure extends ISerializable {
      * The dimensions of the structure. For example, a single block
      * structure will have a size of {x:1, y:1, z:1}
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly size: Vector3;
     /**
@@ -22167,13 +21718,11 @@ export class System {
      * Data component of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may
      * have installed within the world.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     sendScriptEvent(id: string, message: string): void;
     /**
@@ -22188,9 +21737,7 @@ export class System {
      * @returns
      * A promise that is resolved when the specified amount of
      * ticks have occurred.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     waitTicks(ticks: number): Promise<void>;
 }
@@ -22390,11 +21937,9 @@ export class TextPrimitive extends PrimitiveShape {
      * @remarks
      * Sets the text to display.
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }
@@ -22428,11 +21973,9 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link TickingAreaError}
+     * @throws {TickingAreaError}
      */
     createTickingArea(identifier: string, options: TickingAreaOptions): Promise<void>;
     /**
@@ -22441,9 +21984,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getAllTickingAreas(): TickingArea[];
     /**
@@ -22452,9 +21993,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getTickingArea(identifier: string | TickingArea): TickingArea | undefined;
     /**
@@ -22482,9 +22021,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     removeAllTickingAreas(): void;
     /**
@@ -22493,11 +22030,9 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link TickingAreaError}
+     * @throws {TickingAreaError}
      */
     removeTickingArea(identifier: string | TickingArea): void;
 }
@@ -22736,11 +22271,9 @@ export class Waypoint {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     getDimensionLocation(): DimensionLocation;
     /**
@@ -23006,11 +22539,10 @@ export class World {
      * 
      * Returns an array of all active players within the world.
      * @returns 返回包含了游戏中所有玩家的对象的数组。
-     * @throws This function can throw errors.
      *
-     * {@link CommandError}
+     * @throws {CommandError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -23204,9 +22736,7 @@ export class World {
      *
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
-     * @throws This function can throw errors.
-     *
-     * {@link PropertyOutOfBoundsError}
+     * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -23299,9 +22829,7 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -24155,9 +23683,7 @@ export class WorldClock {
      *
      * @param timeMarkerOptions
      * Options for creating a time marker.
-     * @throws This function can throw errors.
-     *
-     * {@link WorldClockAddTimeMarkerError}
+     * @throws {WorldClockAddTimeMarkerError}
      */
     addTimeMarker(timeMarkerOptions: TimeMarkerOptions): void;
     /**
@@ -24532,15 +24058,13 @@ export class WorldClockRegistry {
      * @param registrationOptions
      * Additional options for registering a world clock, such as
      * including time markers at registration time.
-     * @throws This function can throw errors.
+     * @throws {WorldClockInvalidRegistryError}
      *
-     * {@link WorldClockInvalidRegistryError}
+     * @throws {WorldClockRegistrationError}
      *
-     * {@link WorldClockRegistrationError}
+     * @throws {WorldClockReloadNewWorldClockError}
      *
-     * {@link WorldClockReloadNewWorldClockError}
-     *
-     * {@link WorldClockReloadTimeMarkerError}
+     * @throws {WorldClockReloadTimeMarkerError}
      */
     registerClock(name: string, registrationOptions?: WorldClockRegistrationOptions): void;
 }

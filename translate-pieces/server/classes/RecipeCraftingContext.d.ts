@@ -12,9 +12,7 @@ export class RecipeCraftingContext {
      * The amount of addressable input slots for getInputItem and
      * setInputItem.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly inputSlotCount: number;
     /**
@@ -29,9 +27,7 @@ export class RecipeCraftingContext {
      * The identifiers of the recipes that are valid for the
      * current input items.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly validRecipes: string[];
     /**
@@ -43,11 +39,9 @@ export class RecipeCraftingContext {
      * @returns
      * The item stack in the input slot, or undefined if the slot
      * is empty.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getInputItem(slot: number): ItemStack | undefined;
     /**
@@ -56,11 +50,9 @@ export class RecipeCraftingContext {
      *
      * @returns
      * The output item stack, or undefined if there is no output.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getOutputItem(): ItemStack | undefined;
     /**
@@ -74,11 +66,9 @@ export class RecipeCraftingContext {
      * @param item
      * The item stack to place in the slot, or undefined to clear
      * the slot.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     setInputItem(slot: number, item?: ItemStack): void;
     /**
@@ -89,11 +79,9 @@ export class RecipeCraftingContext {
      *
      * @param recipeId
      * The identifier of a valid recipe to select.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidRecipeError}
+     * @throws {InvalidRecipeError}
      */
     setSelectedRecipe(recipeId: string): void;
 }

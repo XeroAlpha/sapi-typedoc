@@ -12,7 +12,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      * @remarks
      * The ItemStack currently in the players cursor inventory.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly item?: ItemStack;
     static readonly componentId = 'minecraft:cursor_inventory';
@@ -22,7 +22,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
 }

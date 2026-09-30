@@ -47,9 +47,7 @@ export class Container {
      * @remarks
      * The combined weight of all items in the container.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     readonly weight: number;
     /**
@@ -88,9 +86,7 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     contains(itemStack: ItemStack): boolean;
     /**
@@ -100,9 +96,7 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     find(itemStack: ItemStack): number | undefined;
     /**
@@ -112,27 +106,21 @@ export class Container {
      *
      * @param itemStack
      * The item to find.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     findLast(itemStack: ItemStack): number | undefined;
     /**
      * @remarks
      * Finds the index of the first empty slot inside the container
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     firstEmptySlot(): number | undefined;
     /**
      * @remarks
      * Finds the index of the first item inside the container
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     firstItem(): number | undefined;
     /**

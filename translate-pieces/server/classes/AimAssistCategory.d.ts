@@ -11,7 +11,7 @@ export class AimAssistCategory {
      * Default targeting priority used for block types not found in
      * getBlockPriorities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultBlockPriority: number;
     /**
@@ -19,7 +19,7 @@ export class AimAssistCategory {
      * Default targeting priority used for entity types not found
      * in getEntityPriorities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultEntityPriority: number;
     /**
@@ -35,7 +35,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping block Ids to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockPriorities(): Record<string, number>;
     /**
@@ -45,9 +45,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping block tags to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getBlockTagPriorities(): Record<string, number>;
     /**
@@ -57,7 +55,7 @@ export class AimAssistCategory {
      * @returns
      * The record mapping entity Ids to their priority settings.
      * Larger numbers have greater priority.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEntityPriorities(): Record<string, number>;
     /**
@@ -67,9 +65,7 @@ export class AimAssistCategory {
      * @returns
      * Map entity type families to their priority settings in a
      * Record. Larger numbers have greater priority.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getEntityTypeFamilyPriorities(): Record<string, number>;
 }

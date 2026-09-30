@@ -19,7 +19,7 @@ export class SimulatedPlayer extends Player {
      * @remarks
      * Rotation of the head across pitch and yaw angles.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly headRotation: Vector2;
     /**
@@ -39,7 +39,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     attack(): boolean;
     /**
@@ -52,7 +52,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     attackEntity(entity: Entity): boolean;
     /**
@@ -69,18 +69,16 @@ export class SimulatedPlayer extends Player {
      * @param direction
      * Direction to place the specified item within.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     breakBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     chat(message: string): void;
     /**
@@ -90,7 +88,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     disconnect(): void;
     /**
@@ -99,7 +97,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     dropSelectedItem(): boolean;
     /**
@@ -110,7 +108,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fly(): void;
     /**
@@ -124,7 +122,7 @@ export class SimulatedPlayer extends Player {
      * @param selectSlot
      * Whether to set the selected slot once given.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws
      */
     giveItem(itemStack: ItemStack, selectSlot?: boolean): boolean;
     /**
@@ -139,7 +137,7 @@ export class SimulatedPlayer extends Player {
      * Returns false if the player is already gliding, or the
      * player does not have Elytra equipped, is in water or is on
      * the ground.
-     * @throws This function can throw errors.
+     * @throws
      */
     glide(): boolean;
     /**
@@ -150,7 +148,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     interact(): boolean;
     /**
@@ -166,11 +164,9 @@ export class SimulatedPlayer extends Player {
      * @param direction
      * Direction to place the specified item within.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     interactWithBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
@@ -182,11 +178,9 @@ export class SimulatedPlayer extends Player {
      *
      * @param entity
      * Entity to interact with.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     interactWithEntity(entity: Entity): boolean;
     /**
@@ -197,7 +191,7 @@ export class SimulatedPlayer extends Player {
      *
      * @returns
      * True if a jump was performed.
-     * @throws This function can throw errors.
+     * @throws
      */
     jump(): boolean;
     /**
@@ -209,11 +203,9 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     lookAtBlock(blockLocation: Vector3, duration?: LookDuration): void;
     /**
@@ -225,7 +217,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws
      */
     lookAtEntity(entity: Entity, duration?: LookDuration): void;
     /**
@@ -237,7 +229,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws
      */
     lookAtLocation(location: Vector3, duration?: LookDuration): void;
     /**
@@ -250,7 +242,7 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws
      */
     move(westEast: number, northSouth: number, speed?: number): void;
     /**
@@ -263,7 +255,7 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
     /**
@@ -275,7 +267,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     moveToBlock(blockLocation: Vector3, options?: MoveToOptions): void;
     /**
@@ -286,13 +278,11 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     moveToLocation(location: Vector3, options?: MoveToOptions): void;
     /**
@@ -309,11 +299,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToBlock(blockLocation: Vector3, speed?: number): NavigationResult;
     /**
@@ -327,11 +315,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToEntity(entity: Entity, speed?: number): NavigationResult;
     /**
@@ -348,11 +334,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToLocation(location: Vector3, speed?: number): NavigationResult;
     /**
@@ -369,11 +353,9 @@ export class SimulatedPlayer extends Player {
      * Net speed to use for doing the navigation.
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToLocations(locations: Vector3[], speed?: number): void;
     /**
@@ -382,7 +364,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     respawn(): boolean;
     /**
@@ -392,7 +374,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     rotateBody(angleInDegrees: number): void;
     /**
@@ -402,7 +384,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setBodyRotation(angleInDegrees: number): void;
     /**
@@ -418,7 +400,7 @@ export class SimulatedPlayer extends Player {
      * @param selectSlot
      * Whether to set the selected slot once set.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws
      */
     setItem(itemStack: ItemStack, slot: number, selectSlot?: boolean): boolean;
     /**
@@ -429,9 +411,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param options
      * Options for the skin to set on the player.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setSkin(options: PlayerSkinData): void;
     /**
@@ -440,7 +420,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param slot
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     startBuild(slot?: number): void;
     /**
@@ -449,14 +429,14 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopBreakingBlock(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopBuild(): void;
     /**
@@ -465,7 +445,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopFlying(): void;
     /**
@@ -474,7 +454,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopGliding(): void;
     /**
@@ -483,7 +463,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopInteracting(): void;
     /**
@@ -493,7 +473,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopMoving(): void;
     /**
@@ -502,7 +482,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopSwimming(): void;
     /**
@@ -514,7 +494,7 @@ export class SimulatedPlayer extends Player {
      * @returns
      * Returns the item that was in use. Undefined if no item was
      * in use.
-     * @throws This function can throw errors.
+     * @throws
      */
     stopUsingItem(): ItemStack | undefined;
     /**
@@ -523,7 +503,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     swim(): void;
     /**
@@ -535,7 +515,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param itemStack
      * Item to use.
-     * @throws This function can throw errors.
+     * @throws
      */
     useItem(itemStack: ItemStack): boolean;
     /**
@@ -547,7 +527,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param slot
      * Index of the inventory slot.
-     * @throws This function can throw errors.
+     * @throws
      */
     useItemInSlot(slot: number): boolean;
     /**
@@ -569,11 +549,9 @@ export class SimulatedPlayer extends Player {
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
      * Defaults to: null
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     useItemInSlotOnBlock(
         slot: number,
@@ -600,11 +578,9 @@ export class SimulatedPlayer extends Player {
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
      * Defaults to: null
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     useItemOnBlock(
         itemStack: ItemStack,

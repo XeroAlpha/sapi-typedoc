@@ -152,13 +152,11 @@ export class System {
      * Data component of the message to send. This is custom and
      * dependent on the kinds of behavior packs and content you may
      * have installed within the world.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     sendScriptEvent(id: string, message: string): void;
     /**
@@ -173,9 +171,7 @@ export class System {
      * @returns
      * A promise that is resolved when the specified amount of
      * ticks have occurred.
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     waitTicks(ticks: number): Promise<void>;
 }

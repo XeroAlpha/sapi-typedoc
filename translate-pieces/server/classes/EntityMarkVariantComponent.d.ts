@@ -11,7 +11,7 @@ export class EntityMarkVariantComponent extends EntityComponent {
      * @remarks
      * Value of the mark variant value for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:mark_variant';

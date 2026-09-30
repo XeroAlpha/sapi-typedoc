@@ -54,13 +54,11 @@ export class ActionFormData {
      *
      * @param player
      * Player to show this dialog to.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     show(player: Player): Promise<ActionFormResponse>;
     /**

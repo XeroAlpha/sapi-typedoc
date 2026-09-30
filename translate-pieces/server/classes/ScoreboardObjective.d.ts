@@ -43,7 +43,7 @@ export class ScoreboardObjective {
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
-     * @throws This function can throw errors.
+     * @throws
      */
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
     /**
@@ -88,7 +88,7 @@ export class ScoreboardObjective {
      * Returns if the specified identity is a participant of the
      * scoreboard objective.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -100,7 +100,7 @@ export class ScoreboardObjective {
      * @param participant
      * Participant to remove from being tracked with this
      * objective.
-     * @throws This function can throw errors.
+     * @throws
      */
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -113,7 +113,7 @@ export class ScoreboardObjective {
      * Identity of the participant.
      * @param score
      * New value of the score.
-     * @throws This function can throw errors.
+     * @throws
      */
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }

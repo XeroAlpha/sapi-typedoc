@@ -130,11 +130,10 @@ export class World {
      * 
      * Returns an array of all active players within the world.
      * @returns 返回包含了游戏中所有玩家的对象的数组。
-     * @throws This function can throw errors.
      *
-     * {@link CommandError}
+     * @throws {CommandError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -327,9 +326,7 @@ export class World {
      *
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
-     * @throws This function can throw errors.
-     *
-     * {@link PropertyOutOfBoundsError}
+     * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -422,9 +419,7 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**

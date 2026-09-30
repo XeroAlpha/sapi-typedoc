@@ -20,7 +20,7 @@ export class MinecraftEditor {
      * messages sent to this instance will be broadcast to all
      * connected editor client sessions
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly log: Logger;
     /**

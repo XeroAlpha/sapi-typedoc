@@ -10,12 +10,10 @@
  *
  * @param player
  * Player to add permissions to.
- * @throws This function can throw errors.
+ * @throws {EngineError}
  *
- * {@link EngineError}
+ * @throws {InvalidArgumentError}
  *
- * {@link InvalidArgumentError}
- *
- * {@link PlayerAlreadyOpError}
+ * @throws {PlayerAlreadyOpError}
  */
 export function opPlayer(player: Player): void;

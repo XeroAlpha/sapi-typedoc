@@ -19,11 +19,9 @@ export class Camera {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     addShake(shakeCameraOptions: CameraShakeOptions): void;
     /**
@@ -35,7 +33,7 @@ export class Camera {
      * @param attachCameraOptions
      * Options for the entity the camera is attaching to. Contains
      * the entity identifier and optional entity location.
-     * @throws This function can throw errors.
+     * @throws
      */
     attachToEntity(attachCameraOptions?: CameraAttachOptions): void;
     /**
@@ -47,7 +45,7 @@ export class Camera {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
     /**
@@ -59,14 +57,14 @@ export class Camera {
      *
      * @param fadeCameraOptions
      * Additional options around camera fade operations.
-     * @throws This function can throw errors.
+     * @throws
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     playAnimation(splineType: CatmullRomSpline | LinearSpline, cameraAnimationOptions: AnimationOptions): void;
     /**
@@ -79,7 +77,7 @@ export class Camera {
      * Identifier of a camera preset file defined within JSON.
      * @param setOptions
      * Additional options for the camera.
-     * @throws This function can throw errors.
+     * @throws
      */
     setCamera(
         cameraPreset: string,
@@ -120,23 +118,21 @@ export class Camera {
      * @param easeOptions
      * Options to ease the camera back to its original position and
      * rotation.
-     * @throws This function can throw errors.
+     * @throws
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFov(fovCameraOptions?: CameraFovOptions): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopShaking(): void;
 }

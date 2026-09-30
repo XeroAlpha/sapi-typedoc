@@ -4,6 +4,6 @@
  *
  * @param disable
  * Flag to disable or re-enable warnings.
- * @throws This function can throw errors.
+ * @throws
  */
 export function disableWatchdogTimingWarnings(disable: boolean): void;

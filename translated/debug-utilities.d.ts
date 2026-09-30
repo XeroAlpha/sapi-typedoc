@@ -510,11 +510,9 @@ export class DebugText extends DebugShape {
      * @remarks
      * Sets the text to display.
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }
@@ -562,9 +560,7 @@ export class DiagnosticsManager {
      *
      * @param tabName
      * The name of the tab for creation and display.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     createTab(tabName: string): DiagnosticsTab;
     /**
@@ -580,9 +576,7 @@ export class DiagnosticsManager {
      * for modifying the display.
      * @returns
      * The newly created DiagnosticsView instance.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     createView(statName: string, options?: DiagnosticsChartViewOptions | DiagnosticsTableViewOptions): DiagnosticsView;
     /**
@@ -659,9 +653,7 @@ export class DiagnosticsView {
      * @param stats
      * An array of DiagnosticsStat objects containing the stat
      * names and values to display.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     pushStats(stats: DiagnosticsStat[]): void;
 }
@@ -821,7 +813,7 @@ export function collectRuntimeStats(): RuntimeStats;
  *
  * @param disable
  * Flag to disable or re-enable warnings.
- * @throws This function can throw errors.
+ * @throws
  */
 export function disableWatchdogTimingWarnings(disable: boolean): void;
 /**

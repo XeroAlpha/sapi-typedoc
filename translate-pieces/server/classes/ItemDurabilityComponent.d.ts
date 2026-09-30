@@ -32,7 +32,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Represents the amount of damage that this item can take
      * before breaking.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxDurability: number;
     /**
@@ -67,8 +67,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      * Defaults to: 0
      * Bounds: [0, 3]
      * @returns 使用时的最大损坏概率。
-     * @throws
-     * 若 `unbreakingEnchantmentLevel` 参数未在范围内时，抛出 `TypeError` 。
+     * @throws {TypeError} 若 `unbreakingEnchantmentLevel` 参数未在范围内
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
@@ -81,7 +80,7 @@ export class ItemDurabilityComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDamageChanceRange(): NumberRange;
 }

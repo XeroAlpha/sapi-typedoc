@@ -4,15 +4,11 @@
 export class WidgetComponentBase {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly componentType: WidgetComponentType;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly location: Vector3;
     /**
@@ -22,9 +18,7 @@ export class WidgetComponentBase {
      */
     lockToSurface: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly name: string;
     /**
@@ -36,18 +30,14 @@ export class WidgetComponentBase {
     readonly valid: boolean;
     visible: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly widget: Widget;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     delete(): void;
 }

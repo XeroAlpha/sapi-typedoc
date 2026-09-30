@@ -75,13 +75,11 @@ export class AllowList {
      * If true, the player will be allowed onto the server even if
      * the server is at its player limit.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws {AllowListModificationError}
      *
-     * {@link AllowListModificationError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     add(playerDetails: AllowListEntryNameInfo | Player, ignorePlayerLimit?: boolean): void;
     /**
@@ -98,11 +96,9 @@ export class AllowList {
      *
      * @param playerDetails
      * Player or player name that should be checked for.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     contains(playerDetails: AllowListEntryNameInfo | Player): boolean;
     /**
@@ -111,9 +107,7 @@ export class AllowList {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link AllowListFileReloadError}
+     * @throws {AllowListFileReloadError}
      */
     reloadFile(): void;
     /**
@@ -125,13 +119,11 @@ export class AllowList {
      * @param playerDetails
      * Player or player name that should be removed from the allow
      * list.
-     * @throws This function can throw errors.
+     * @throws {AllowListModificationError}
      *
-     * {@link AllowListModificationError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     remove(playerDetails: AllowListEntryNameInfo | Player): void;
 }
@@ -168,9 +160,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * (`allow-player-joining` is set to `false` when playing on
      * dedicated server).
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     allowJoin(): void;
     /**
@@ -179,9 +169,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * This is useful for preventing unauthorized access to the
      * server.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     disallowJoin(reason?: string): void;
     /**
@@ -192,9 +180,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * try to join again. They will be allowed to try to join again
      * after being disconnected.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     disconnect(reason?: string): void;
     /**
@@ -248,9 +234,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadCDNConfig(): void;
     /**
@@ -259,9 +243,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadPermissions(): void;
     /**
@@ -270,9 +252,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadScriptingConfig(): void;
     /**
@@ -575,13 +555,11 @@ export class PlayerAlreadyOpError extends Error {
  *
  * @param player
  * Player to remove permissions from.
- * @throws This function can throw errors.
+ * @throws {CannotDeopPlayerError}
  *
- * {@link CannotDeopPlayerError}
+ * @throws {EngineError}
  *
- * {@link EngineError}
- *
- * {@link InvalidArgumentError}
+ * @throws {InvalidArgumentError}
  */
 export function deopPlayer(player: Player): void;
 /**
@@ -594,13 +572,11 @@ export function deopPlayer(player: Player): void;
  * Player to kick.
  * @param reason
  * Reason for kicking the player.
- * @throws This function can throw errors.
+ * @throws {CannotKickPlayerError}
  *
- * {@link CannotKickPlayerError}
+ * @throws {EngineError}
  *
- * {@link EngineError}
- *
- * {@link InvalidArgumentError}
+ * @throws {InvalidArgumentError}
  */
 export function kickPlayer(player: Player, reason?: string): void;
 /**
@@ -611,13 +587,11 @@ export function kickPlayer(player: Player, reason?: string): void;
  *
  * @param player
  * Player to add permissions to.
- * @throws This function can throw errors.
+ * @throws {EngineError}
  *
- * {@link EngineError}
+ * @throws {InvalidArgumentError}
  *
- * {@link InvalidArgumentError}
- *
- * {@link PlayerAlreadyOpError}
+ * @throws {PlayerAlreadyOpError}
  */
 export function opPlayer(player: Player): void;
 /**
@@ -630,7 +604,7 @@ export function opPlayer(player: Player): void;
  * Player to transfer.
  * @param options
  * Options for where to send the player.
- * @throws This function can throw errors.
+ * @throws
  */
 export function transferPlayer(
     player: Player,

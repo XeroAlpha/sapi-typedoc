@@ -8,7 +8,7 @@
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly slots: EnchantmentSlot[];
     static readonly componentId = 'minecraft:enchantable';
@@ -118,7 +118,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      *
      * @returns
      * Returns a list of enchantments on the item stack.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEnchantments(): Enchantment[];
     /**
@@ -143,7 +143,7 @@ export class ItemEnchantableComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeAllEnchantments(): void;
     /**

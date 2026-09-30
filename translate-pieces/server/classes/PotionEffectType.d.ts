@@ -11,9 +11,7 @@ export class PotionEffectType {
      * Duration of the effect when applied to an entity in ticks.
      * Undefined means the effect does not expire.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly durationTicks?: number;
     readonly id: string;

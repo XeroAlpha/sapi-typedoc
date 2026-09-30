@@ -15,9 +15,7 @@ export class DiagnosticsView {
      * @param stats
      * An array of DiagnosticsStat objects containing the stat
      * names and values to display.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     pushStats(stats: DiagnosticsStat[]): void;
 }

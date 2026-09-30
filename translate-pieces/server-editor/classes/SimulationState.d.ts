@@ -17,7 +17,7 @@ export class SimulationState {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPaused(isPaused: boolean): void;
 }

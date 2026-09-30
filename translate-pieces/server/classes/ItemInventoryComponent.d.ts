@@ -9,9 +9,7 @@
 export class ItemInventoryComponent extends ItemComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidContainerError}
+     * @throws {InvalidContainerError}
      */
     readonly container: Container;
     static readonly componentId = 'minecraft:inventory';

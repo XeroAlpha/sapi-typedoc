@@ -13,14 +13,14 @@ export class EntityAttributeComponent extends EntityComponent {
      * @remarks
      * Current value of this attribute for this instance.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly currentValue: number;
     /**
      * @remarks
      * Returns the default defined value for this attribute.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly defaultValue: number;
     /**
@@ -28,7 +28,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Returns the effective max of this attribute given any other
      * ambient components or factors.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly effectiveMax: number;
     /**
@@ -36,7 +36,7 @@ export class EntityAttributeComponent extends EntityComponent {
      * Returns the effective min of this attribute given any other
      * ambient components or factors.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly effectiveMin: number;
     /**
@@ -46,7 +46,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToDefaultValue(): void;
     /**
@@ -56,7 +56,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToMaxValue(): void;
     /**
@@ -66,7 +66,7 @@ export class EntityAttributeComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToMinValue(): void;
     /**

@@ -43,9 +43,7 @@ export class DiagnosticsManager {
      *
      * @param tabName
      * The name of the tab for creation and display.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     createTab(tabName: string): DiagnosticsTab;
     /**
@@ -61,9 +59,7 @@ export class DiagnosticsManager {
      * for modifying the display.
      * @returns
      * The newly created DiagnosticsView instance.
-     * @throws This function can throw errors.
-     *
-     * {@link DiagnosticsError}
+     * @throws {DiagnosticsError}
      */
     createView(statName: string, options?: DiagnosticsChartViewOptions | DiagnosticsTableViewOptions): DiagnosticsView;
     /**

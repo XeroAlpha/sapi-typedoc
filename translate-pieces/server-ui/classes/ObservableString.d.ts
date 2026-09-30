@@ -46,11 +46,9 @@ export class ObservableString {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getFilteredText(player: Player): Promise<TextFilteringError[] | string>;
     /**

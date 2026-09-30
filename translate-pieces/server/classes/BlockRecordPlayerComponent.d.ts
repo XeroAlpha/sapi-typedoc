@@ -14,14 +14,14 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRecord(): void;
     /**
      * @remarks
      * Gets the currently set record of this record-playing block.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRecord(): ItemStack | undefined;
     /**
@@ -29,7 +29,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      * Returns true if the record-playing block is currently
      * playing a record.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isPlaying(): boolean;
     /**
@@ -39,7 +39,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     pauseRecord(): void;
     /**
@@ -48,7 +48,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     playRecord(): void;
     /**
@@ -59,7 +59,7 @@ export class BlockRecordPlayerComponent extends BlockComponent {
      *
      * @param startPlaying
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws
      */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }

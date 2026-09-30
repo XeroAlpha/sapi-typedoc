@@ -21,36 +21,28 @@ export class ScreenDisplay {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     resetHudElementsVisibility(): void;
     /**
@@ -62,11 +54,9 @@ export class ScreenDisplay {
      *
      * @param text
      * New value for the action bar text.
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -81,9 +71,7 @@ export class ScreenDisplay {
      * back to its default.
      * @param hudElements
      * Optional list of HUD elements to configure visibility for.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
@@ -95,13 +83,11 @@ export class ScreenDisplay {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      * @seeExample setTitle.ts
      * @seeExample setTitleAndSubtitle.ts
      * @seeExample countdown.ts
@@ -114,11 +100,9 @@ export class ScreenDisplay {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      * @seeExample countdown.ts
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;

@@ -22,21 +22,19 @@ export class ItemComponentRegistry {
      * @param itemCustomComponent
      * The collection of event functions that will be called when
      * the event occurs on an item using this custom component id.
-     * @throws This function can throw errors.
+     * @throws {CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentInvalidRegistryError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {ItemCustomComponentAlreadyRegisteredError}
      *
-     * {@link ItemCustomComponentAlreadyRegisteredError}
+     * @throws {ItemCustomComponentReloadNewComponentError}
      *
-     * {@link ItemCustomComponentReloadNewComponentError}
+     * @throws {ItemCustomComponentReloadNewEventError}
      *
-     * {@link ItemCustomComponentReloadNewEventError}
+     * @throws {ItemCustomComponentReloadVersionError}
      *
-     * {@link ItemCustomComponentReloadVersionError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
 }

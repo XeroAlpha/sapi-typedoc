@@ -22,21 +22,21 @@ export class MinimapItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addCustomMarker(iconIdentifier: string, data: MinimapMarkerData[], dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addLocationMarker(data: MinimapMarkerData[], dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addMultiplayerMarker(): void;
     getMarkerTypes(): MinimapMarkerType[];
@@ -45,7 +45,7 @@ export class MinimapItem {
      * Retrieve the color assigned to a specific player on the
      * minimap.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlayerColor(playerId: string): RGBA;
     hasCustomGroup(iconIdentifier: string): boolean;
@@ -54,28 +54,28 @@ export class MinimapItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeAllCustomMarkers(dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeCustomMarker(iconIdentifier: string, dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeLocationMarker(dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeMultiplayerMarker(): void;
     /**
@@ -85,14 +85,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setActive(active: boolean): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFreeCenter(center: VectorXZ): void;
     /**
@@ -102,14 +102,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSize(mapWidth: number, mapHeight: number): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setTrackingMode(mode: MinimapTrackingMode): void;
     /**
@@ -118,14 +118,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setViewType(viewType: MinimapViewType): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setYLevel(yLevel: number): void;
 }

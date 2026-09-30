@@ -10,7 +10,7 @@ export class IBlockPaletteItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setBlock(block: BlockPermutation | BlockType | string): void;
 }

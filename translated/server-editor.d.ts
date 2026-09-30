@@ -2225,14 +2225,14 @@ export class AudioSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     set<T extends keyof AudioSettingsPropertyTypeMap>(property: T, value: AudioSettingsPropertyTypeMap[T]): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setAll(properties: AudioSettingsPropertyTypeMap): void;
 }
@@ -2310,18 +2310,14 @@ export declare class BlockIdentifierObservableValidator implements ObservableVal
 
 export class BlockPalette {
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getItem(index: number): IBlockPaletteItem;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     removeItemAt(index: number): void;
     /**
@@ -2334,9 +2330,7 @@ export class BlockPalette {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
 }
@@ -2352,12 +2346,12 @@ export class BlockPaletteManager {
     getPalette(paletteId: string): BlockPalette | undefined;
     getPaletteIdList(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getPaletteItem(paletteId: string, index: number): IBlockPaletteItem;
     getPrimaryPalette(): BlockPalette;
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getSelectedBlockType(): BlockType;
     getSelectedItem(): IBlockPaletteItem;
@@ -2365,28 +2359,28 @@ export class BlockPaletteManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removePalette(paletteId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPaletteItem(paletteId: string, index: number, item: IBlockPaletteItem): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPrimaryPalette(paletteId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSelectedItem(item: IBlockPaletteItem): void;
 }
@@ -2424,7 +2418,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fillVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2442,7 +2436,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): RelativeVolumeListBlockVolume;
     /**
@@ -2467,14 +2461,14 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): ListBlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isHighPriorityFillBlock(
         block: BlockPermutation | BlockType | string,
@@ -2496,7 +2490,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     quickExtrude(properties?: QuickExtrudeProperties): void;
     /**
@@ -2511,7 +2505,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trimVolumeToFitContents(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2688,7 +2682,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createShapeVolume(
         options:
@@ -2703,7 +2697,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     extrude(
         location: Vector3,
@@ -2722,7 +2716,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fillVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2733,7 +2727,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     findObscuredBlocksWithinVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2743,7 +2737,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     floodSearch(
         location: Vector3,
@@ -2758,7 +2752,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     generateManifest(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2768,7 +2762,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     replaceBlocksInSelection(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2780,7 +2774,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     shrinkWrapVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2790,7 +2784,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trimVolumeToFitContents(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -2886,7 +2880,7 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
@@ -2917,7 +2911,7 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     endPainting(cancelled: boolean): void;
     /**
@@ -2963,7 +2957,7 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setBrushMask(mask: BlockMaskList): void;
     /**
@@ -3054,7 +3048,7 @@ export class BrushShapeManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
     /**
@@ -3114,14 +3108,14 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPredictedWriteVolume(
         location: Vector3,
@@ -3131,7 +3125,7 @@ export class ClipboardItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     readFromStructure(structure: EditorStructure): void;
     /**
@@ -3141,7 +3135,7 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     readFromWorld(source: BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
@@ -3162,7 +3156,7 @@ export class ClipboardItem {
      * world
      * @returns
      * Success or Failure
-     * @throws This function can throw errors.
+     * @throws
      */
     writeToWorld(
         location: Vector3,
@@ -3188,7 +3182,7 @@ export class ClipboardManager {
      * represents the main ClipboardItem object which is always
      * accessible through the UI for cut/paste operations
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly clipboard: ClipboardItem;
     /**
@@ -3197,7 +3191,7 @@ export class ClipboardManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     create(): ClipboardItem;
 }
@@ -3374,7 +3368,7 @@ export class Cursor {
      * The face at of the block beneath the 3D block cursor which
      * is intersected by the mouse raycast
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly faceDirection: number;
     /**
@@ -3382,18 +3376,18 @@ export class Cursor {
      * Query whether or not the 3D block cursor is visible or
      * hidden
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isVisible: boolean;
     /**
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxViewBlockDistance: number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDefaultProperties(): CursorProperties;
     /**
@@ -3402,7 +3396,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPosition(): Vector3;
     /**
@@ -3412,14 +3406,14 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getProperties(): CursorProperties;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRay(): CursorRay;
     /**
@@ -3429,7 +3423,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     hide(): void;
     /**
@@ -3445,21 +3439,21 @@ export class Cursor {
      * @returns
      * Return the newly modified position (or previous position if
      * movement was restricted)
-     * @throws This function can throw errors.
+     * @throws
      */
     moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     popPropertiesById(identifier: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     pushPropertiesById(properties: CursorProperties, identifier: string): void;
     /**
@@ -3468,7 +3462,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToDefaultState(): void;
     /**
@@ -3480,7 +3474,7 @@ export class Cursor {
      * @param properties
      * A set of optional parameters within a property state which
      * represent the intended 3D block cursor state
-     * @throws This function can throw errors.
+     * @throws
      */
     setProperties(properties: CursorProperties): void;
     /**
@@ -3489,14 +3483,14 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     show(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updatePropertiesById(properties: CursorProperties, identifier?: string): void;
 }
@@ -3590,87 +3584,61 @@ export class EditorConstants {
 export class EditorStructure {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly description: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly normalizedOrigin: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly notes: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly offset: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly originalWorldLocation: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly size: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureFullName: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureName: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureNamespace: string;
     /**
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     /**
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getIsWaterlogged(location: Vector3): boolean;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getTags(): string[];
     /**
@@ -3679,11 +3647,9 @@ export class EditorStructure {
      *
      * @param waterlogged
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     setBlockPermutation(
         location: Vector3,
@@ -3694,9 +3660,7 @@ export class EditorStructure {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     setTags(tags: string[]): void;
 }
@@ -3707,42 +3671,42 @@ export class EditorStructureManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createEmpty(fullName: string, size: Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createFromClipboardItem(item: ClipboardItem, fullName: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteStructure(id: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getExistingTags(): string[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     searchStructures(options?: EditorStructureSearchOptions): EditorStructure[];
 }
@@ -3816,14 +3780,14 @@ export class ExportManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     beginExportProject(options: GameOptions): Promise<ExportResult>;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     canExportProject(): boolean;
     /**
@@ -3836,7 +3800,7 @@ export class ExportManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getGameVersion(): string;
 }
@@ -4068,7 +4032,7 @@ export class GraphicsSettings {
      * Property identifier.
      * @param value
      * New property value.
-     * @throws This function can throw errors.
+     * @throws
      */
     set<T extends keyof GraphicsSettingsPropertyTypeMap>(property: T, value: GraphicsSettingsPropertyTypeMap[T]): void;
     /**
@@ -4080,7 +4044,7 @@ export class GraphicsSettings {
      * @param properties
      * Property map to set available property values. If the
      * property is not defined in the map, it will not be modified.
-     * @throws This function can throw errors.
+     * @throws
      */
     setAll(properties: GraphicsSettingsPropertyTypeMap): void;
 }
@@ -4097,7 +4061,7 @@ export class GuidePlaneManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addPlane(
         origin: Vector3,
@@ -4110,49 +4074,49 @@ export class GuidePlaneManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlane(planeId: string): GuidePlane | undefined;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlanes(): GuidePlane[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removePlane(planeId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneColors(planeId: string, outlineColor: RGBA, fillColor: RGBA): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneNormal(planeId: string, normal: Vector3): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneOrigin(planeId: string, origin: Vector3): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneVisibility(planeId: string, visible: boolean): void;
 }
@@ -4166,7 +4130,7 @@ export class IBlockPaletteItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setBlock(block: BlockPermutation | BlockType | string): void;
 }
@@ -4196,7 +4160,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     debug(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -4211,7 +4175,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     error(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -4224,7 +4188,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     info(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -4238,7 +4202,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     warning(message: LocalizationEntry | string, properties?: LogProperties): void;
 }
@@ -4282,7 +4246,7 @@ export class MinecraftEditor {
      * messages sent to this instance will be broadcast to all
      * connected editor client sessions
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly log: Logger;
     /**
@@ -4316,21 +4280,21 @@ export class MinimapItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addCustomMarker(iconIdentifier: string, data: MinimapMarkerData[], dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addLocationMarker(data: MinimapMarkerData[], dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addMultiplayerMarker(): void;
     getMarkerTypes(): MinimapMarkerType[];
@@ -4339,7 +4303,7 @@ export class MinimapItem {
      * Retrieve the color assigned to a specific player on the
      * minimap.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlayerColor(playerId: string): RGBA;
     hasCustomGroup(iconIdentifier: string): boolean;
@@ -4348,28 +4312,28 @@ export class MinimapItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeAllCustomMarkers(dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeCustomMarker(iconIdentifier: string, dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeLocationMarker(dimensionId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeMultiplayerMarker(): void;
     /**
@@ -4379,14 +4343,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setActive(active: boolean): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFreeCenter(center: VectorXZ): void;
     /**
@@ -4396,14 +4360,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSize(mapWidth: number, mapHeight: number): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setTrackingMode(mode: MinimapTrackingMode): void;
     /**
@@ -4412,14 +4376,14 @@ export class MinimapItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setViewType(viewType: MinimapViewType): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setYLevel(yLevel: number): void;
 }
@@ -4439,7 +4403,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createMinimap(
         viewType: MinimapViewType,
@@ -4454,7 +4418,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     destroyMinimap(minimapId: string): void;
     /**
@@ -4464,7 +4428,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getAllMinimapIds(): string[];
     /**
@@ -4474,21 +4438,21 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMinimap(minimapId: string): MinimapItem;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setVanillaBiomeColorMap(minimapId: string, colorMap: Record<string, RGB>): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updateVanillaColorMap(minimapId: string, biomeType: BiomeType, color: RGB): void;
 }
@@ -4603,14 +4567,14 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addEntityOperation(entity: Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addUserDefinedOperation(
         transactionHandler: UserDefinedTransactionOperationHandler,
@@ -4622,7 +4586,7 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeListOperation(
         operationHandler: VolumeListTransactionOperationHandler,
@@ -4633,21 +4597,21 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     commitTrackedChanges(): number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     discard(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     discardTrackedChanges(): number;
     /**
@@ -4660,28 +4624,28 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     submit(transactionHandler?: TransactionHandler): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeArea(from: Vector3, to: Vector3): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeList(locations: Vector3[]): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
 }
@@ -4692,14 +4656,14 @@ export class PlaytestManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
@@ -4713,7 +4677,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @param weight
      * Bounds: [1, 100]
-     * @throws This function can throw errors.
+     * @throws
      */
     addBlock(block: BlockPermutation | BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
@@ -4721,7 +4685,7 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeBlockAt(index: number): void;
 }
@@ -4909,7 +4873,7 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     clear(): void;
     get(): RelativeVolumeListBlockVolume;
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getBoundingBox(): BlockBoundingBox;
     /**
@@ -5042,7 +5006,7 @@ export class SimulationState {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPaused(isPaused: boolean): void;
 }
@@ -5104,14 +5068,14 @@ export class SpeedSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     set<T extends keyof SpeedSettingsPropertyTypeMap>(property: T, value: SpeedSettingsPropertyTypeMap[T]): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setAll(properties: SpeedSettingsPropertyTypeMap): void;
 }
@@ -5162,7 +5126,7 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
@@ -5170,14 +5134,14 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
     getThemeColors(id: string): Record<string, RGBA> | undefined;
     getThemeIdList(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): RGBA;
@@ -5185,21 +5149,21 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setCurrentTheme(id: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setThemeName(id: string, name: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: RGBA): void;
 }
@@ -5218,14 +5182,14 @@ export class TransactionHandler {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addUserDefinedOperationHandler(payloadClosure: (arg0: string) => void): UserDefinedTransactionOperationHandler;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeListOperationHandler(
         closure: (arg0: RelativeVolumeListBlockVolume[]) => void,
@@ -5235,7 +5199,7 @@ export class TransactionHandler {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     unregister(): void;
 }
@@ -5258,7 +5222,7 @@ export class TransactionManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createPendingTransaction(name: string): PendingTransaction;
     /**
@@ -5274,7 +5238,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     redo(): void;
     /**
@@ -5283,14 +5247,14 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     redoSize(): number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     registerTransactionHandler(onEvent?: (arg0: TransactionEvent) => void): TransactionHandler;
     /**
@@ -5306,7 +5270,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     undo(): void;
     /**
@@ -5316,7 +5280,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     undoSize(): number;
 }
@@ -5526,9 +5490,7 @@ export class Widget {
     collisionType: WidgetCollisionType;
     dimensionId?: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly group: WidgetGroup;
     /**
@@ -5550,9 +5512,7 @@ export class Widget {
      */
     lockPositionToSurface: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly selectable: boolean;
     selected: boolean;
@@ -5570,7 +5530,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addBoundingBox(
         componentName: string,
@@ -5581,7 +5541,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addClipboardComponent(
         componentName: string,
@@ -5592,7 +5552,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addEntityComponent(
         componentName: string,
@@ -5603,28 +5563,28 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGridComponent(componentName: string, options?: WidgetComponentGridOptions): WidgetComponentGrid;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addRenderPlaneComponent(
         componentName: string,
@@ -5634,7 +5594,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addRenderPrimitiveComponent(
         componentName: string,
@@ -5655,21 +5615,21 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeOutline(
         componentName: string,
@@ -5680,39 +5640,35 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     delete(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getComponent(componentName: string): WidgetComponentBase;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     getComponents(): WidgetComponentBase[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetStateChangeEventData) => void): void;
 }
@@ -5720,15 +5676,11 @@ export class Widget {
 export class WidgetComponentBase {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly componentType: WidgetComponentType;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly location: Vector3;
     /**
@@ -5738,9 +5690,7 @@ export class WidgetComponentBase {
      */
     lockToSurface: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly name: string;
     /**
@@ -5752,18 +5702,14 @@ export class WidgetComponentBase {
     readonly valid: boolean;
     visible: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly widget: Widget;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     delete(): void;
 }
@@ -5826,9 +5772,7 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      */
     size: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly transformedWorldVolume: BlockVolume;
     /**
@@ -5841,18 +5785,14 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     deactivateHandles(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void): void;
 }
@@ -5898,9 +5838,7 @@ export class WidgetComponentEntity extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     playAnimation(animationName: string): void;
 }
@@ -5928,7 +5866,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * {@link WidgetGizmoRotation}, and is disabled until at least
      * one rotation axis is enabled on it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly rotation: WidgetGizmoRotation;
     /**
@@ -5953,9 +5891,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void): void;
 }
@@ -6040,22 +5976,18 @@ export class WidgetComponentRenderPlane extends WidgetComponentBase {
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly primitiveType: PrimitiveType;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setPrimitive(
         primitive:
@@ -6502,31 +6434,27 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     getControlPoints(): Widget[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): Vector3[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setControlPoints(widgetList: Widget[]): void;
 }
@@ -6606,9 +6534,7 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      */
     showOutline: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly transformedWorldVolume: BlockVolume;
     /**
@@ -6621,18 +6547,14 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     getVolume(): RelativeVolumeListBlockVolume | undefined;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setVolume(
         volumeToSet?:
@@ -6820,9 +6742,7 @@ export class WidgetGizmoRotationEvent {
 export class WidgetGroup {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     readonly selectedWidgetCount: number;
     /**
@@ -6841,7 +6761,7 @@ export class WidgetGroup {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createWidget(location: Vector3, options?: WidgetCreateOptions): Widget;
     /**
@@ -6854,25 +6774,21 @@ export class WidgetGroup {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     deselectAllWidgets(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     selectAllWidgets(): void;
 }
@@ -6883,14 +6799,14 @@ export class WidgetManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }

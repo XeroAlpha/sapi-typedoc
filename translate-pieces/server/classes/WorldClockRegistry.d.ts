@@ -21,15 +21,13 @@ export class WorldClockRegistry {
      * @param registrationOptions
      * Additional options for registering a world clock, such as
      * including time markers at registration time.
-     * @throws This function can throw errors.
+     * @throws {WorldClockInvalidRegistryError}
      *
-     * {@link WorldClockInvalidRegistryError}
+     * @throws {WorldClockRegistrationError}
      *
-     * {@link WorldClockRegistrationError}
+     * @throws {WorldClockReloadNewWorldClockError}
      *
-     * {@link WorldClockReloadNewWorldClockError}
-     *
-     * {@link WorldClockReloadTimeMarkerError}
+     * @throws {WorldClockReloadTimeMarkerError}
      */
     registerClock(name: string, registrationOptions?: WorldClockRegistrationOptions): void;
 }

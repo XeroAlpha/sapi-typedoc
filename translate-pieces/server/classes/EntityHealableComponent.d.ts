@@ -11,7 +11,7 @@ export class EntityHealableComponent extends EntityComponent {
      * Determines if an item can be used regardless of the entity
      * being at full health.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly forceUse: boolean;
     static readonly componentId = 'minecraft:healable';
@@ -21,7 +21,7 @@ export class EntityHealableComponent extends EntityComponent {
      *
      * @returns
      * Entity that this component is associated with.
-     * @throws This function can throw errors.
+     * @throws
      */
     getFeedItems(): FeedItem[];
 }

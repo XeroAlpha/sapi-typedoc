@@ -12,7 +12,7 @@ export class EntityAddRiderComponent extends EntityComponent {
      * The type of entity that is added as a rider for this entity
      * when spawned under certain conditions.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly entityType: string;
     /**
@@ -20,7 +20,7 @@ export class EntityAddRiderComponent extends EntityComponent {
      * Optional spawn event to trigger on the rider when that rider
      * is spawned for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly spawnEvent: string;
     static readonly componentId = 'minecraft:addrider';

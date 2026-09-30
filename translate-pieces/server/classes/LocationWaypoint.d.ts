@@ -8,9 +8,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class LocationWaypoint extends Waypoint {
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(dimensionLocation: DimensionLocation, textureSelector: WaypointTextureSelector, color?: RGB);
     /**

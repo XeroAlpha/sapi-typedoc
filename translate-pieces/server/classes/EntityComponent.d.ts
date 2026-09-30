@@ -11,9 +11,7 @@ export class EntityComponent extends Component {
      * The entity that owns this component. The entity will be
      * undefined if it has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly entity: Entity;
 }

@@ -58,9 +58,7 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      */
     size: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly transformedWorldVolume: BlockVolume;
     /**
@@ -73,18 +71,14 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     deactivateHandles(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void): void;
 }

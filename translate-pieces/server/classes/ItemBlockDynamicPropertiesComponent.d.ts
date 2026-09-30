@@ -17,11 +17,9 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * to retrieve dynamic properties set from other content packs.
      * Returns undefined if the key was not found.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     get(key: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -34,11 +32,9 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * storage. Storage size usage is counted towards the 1KBytes
      * limit per content pack.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     set(key: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -48,9 +44,7 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
      * accounts for properties set by your content pack. The
      * 1KBytes limit is per content pack.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     totalByteCount(): number;
 }

@@ -23,7 +23,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * {@link WidgetGizmoRotation}, and is disabled until at least
      * one rotation axis is enabled on it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly rotation: WidgetGizmoRotation;
     /**
@@ -48,9 +48,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void): void;
 }

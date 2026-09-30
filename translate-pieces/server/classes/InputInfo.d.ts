@@ -10,11 +10,9 @@ export class InputInfo {
      * @remarks
      * The last input mode used by the player.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly lastInputModeUsed: InputMode;
     /**
@@ -22,9 +20,7 @@ export class InputInfo {
      * Whether the player touch input only affects the touchbar or
      * not.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly touchOnlyAffectsHotbar: boolean;
     /**
@@ -35,17 +31,13 @@ export class InputInfo {
      * {@link PlayerButtonInputAfterEvent} via
      * {@link WorldAfterEvents.playerButtonInput}
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getButtonState(button: InputButton): ButtonState;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getMovementVector(): Vector2;
 }

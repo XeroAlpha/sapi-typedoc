@@ -11,7 +11,7 @@ export class EntityRidingComponent extends EntityComponent {
      * @remarks
      * The entity this entity is currently riding on.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly entityRidingOn: Entity;
     static readonly componentId = 'minecraft:riding';

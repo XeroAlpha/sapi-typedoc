@@ -12,9 +12,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if the entity has no player owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -22,9 +20,7 @@ export class EntityIsTamedComponent extends EntityComponent {
      * Returns the id of the player that has tamed the entity, or
      * 'undefined' if the entity has no player owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:is_tamed';

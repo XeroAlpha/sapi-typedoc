@@ -32,9 +32,7 @@ export class BlockLocationIterator implements Iterable<Vector3> {
      * Will return false if the block volume was modified between
      * creating the iterator and iterating it, and true otherwise.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     isValid(): boolean;
     /**

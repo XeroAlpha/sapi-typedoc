@@ -11,11 +11,9 @@ export class EntityWaypoint extends Waypoint {
      * @remarks
      * The entity being tracked by this waypoint.
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly entity: Entity;
     /**
@@ -24,17 +22,13 @@ export class EntityWaypoint extends Waypoint {
      * based on the entity's state (e.g., sneaking, invisible,
      * dead).
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly entityRules: EntityVisibilityRules;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(
         entity: Entity,

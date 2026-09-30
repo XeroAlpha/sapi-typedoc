@@ -35,7 +35,7 @@ export class GraphicsSettings {
      * Property identifier.
      * @param value
      * New property value.
-     * @throws This function can throw errors.
+     * @throws
      */
     set<T extends keyof GraphicsSettingsPropertyTypeMap>(property: T, value: GraphicsSettingsPropertyTypeMap[T]): void;
     /**
@@ -47,7 +47,7 @@ export class GraphicsSettings {
      * @param properties
      * Property map to set available property values. If the
      * property is not defined in the map, it will not be modified.
-     * @throws This function can throw errors.
+     * @throws
      */
     setAll(properties: GraphicsSettingsPropertyTypeMap): void;
 }

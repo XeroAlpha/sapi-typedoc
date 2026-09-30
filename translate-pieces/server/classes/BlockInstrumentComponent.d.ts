@@ -19,13 +19,11 @@ export class BlockInstrumentComponent extends BlockComponent {
      * @returns
      * Returns the name of the instrument for a given valid face
      * Direction.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getInstrumentName(face: Direction): string;
     /**
@@ -41,13 +39,11 @@ export class BlockInstrumentComponent extends BlockComponent {
      * @param soundOptions
      * optional WorldSoundOptions to use when playing the
      * insturment sound; if omitted the default values are used.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     playInstrumentSound(face: Direction, soundOptions?: WorldSoundOptions): void;
 }

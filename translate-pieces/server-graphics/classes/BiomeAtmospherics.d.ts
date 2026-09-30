@@ -14,9 +14,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMax(): void;
     /**
@@ -27,9 +25,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMieStart(): void;
     /**
@@ -39,9 +35,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMin(): void;
     /**
@@ -52,9 +46,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendStart(): void;
     /**
@@ -64,9 +56,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonMieStrength(): void;
     /**
@@ -76,9 +66,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetRayleighStrength(): void;
     /**
@@ -88,9 +76,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyHorizonColor(): void;
     /**
@@ -100,9 +86,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyZenithColor(): void;
     /**
@@ -112,9 +96,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunGlareShape(): void;
     /**
@@ -124,9 +106,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunMieStrength(): void;
     /**
@@ -142,9 +122,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMax(blendMax: number | Record<number, number>): void;
     /**
@@ -160,9 +138,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1.2])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMieStart(blendMieStart: number | Record<number, number>): void;
     /**
@@ -178,9 +154,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMin(blendMin: number | Record<number, number>): void;
     /**
@@ -196,9 +170,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendStart(blendStart: number | Record<number, number>): void;
     /**
@@ -214,9 +186,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,60])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonMieStrength(moonMieStrength: number | Record<number, number>): void;
     /**
@@ -232,9 +202,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,11])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setRayleighStrength(rayleighStrength: number | Record<number, number>): void;
     /**
@@ -250,9 +218,7 @@ export class BiomeAtmospherics {
      * [0,1]) to signify a time of day (0.0 and 1.0 are noon, 0.25
      * is sunset, 0.5 is midnight, and 0.75 is sunrise). The value
      * is a RGB triplet
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyHorizonColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -267,9 +233,7 @@ export class BiomeAtmospherics {
      * are composed of key value pairs. The key is a float in the
      * range 0-1 to signify a time of day and the value is a RGB
      * triplet
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyZenithColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -285,9 +249,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,50])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunGlareShape(sunGlareShape: number | Record<number, number>): void;
     /**
@@ -303,9 +265,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,60])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunMieStrength(sunMieStrength: number | Record<number, number>): void;
 }

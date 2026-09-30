@@ -69,11 +69,9 @@ export class DebugText extends DebugShape {
      * @remarks
      * Sets the text to display.
      *
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link RawMessageError}
+     * @throws {RawMessageError}
      */
     setText(text: RawMessage | string): void;
 }

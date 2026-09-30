@@ -17,13 +17,11 @@ export class CustomCommandRegistry {
      *
      * @param callback
      * The callback triggered when the command executes.
-     * @throws This function can throw errors.
+     * @throws {CustomCommandError}
      *
-     * {@link CustomCommandError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCommand(
         customCommand: CustomCommand,
@@ -37,13 +35,11 @@ export class CustomCommandRegistry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
+     * @throws {CustomCommandError}
      *
-     * {@link CustomCommandError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerEnum(name: string, values: string[]): void;
 }

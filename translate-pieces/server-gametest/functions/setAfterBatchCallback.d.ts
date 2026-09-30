@@ -11,8 +11,6 @@
  *
  * @param batchName
  * Name of the batch of tests the callback will run after.
- * @throws This function can throw errors.
- *
- * {@link GameTestError}
+ * @throws {GameTestError}
  */
 export function setAfterBatchCallback(batchName: string, batchCallback: () => void): void;

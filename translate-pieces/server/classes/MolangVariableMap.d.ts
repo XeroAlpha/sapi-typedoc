@@ -12,7 +12,7 @@ export class MolangVariableMap {
      * - `<variable_name>.g` - Green color value [0-1]
      * - `<variable_name>.b` - Blue color value [0-1]
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setColorRGB(variableName: string, color: RGB): void;
     /**
@@ -24,7 +24,7 @@ export class MolangVariableMap {
      * - `<variable_name>.a` - Alpha (transparency) color value
      * [0-1]
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setColorRGBA(variableName: string, color: RGBA): void;
     /**
@@ -36,7 +36,7 @@ export class MolangVariableMap {
      * Name of the float-based number to set.
      * @param number
      * Value for the Molang-based variable to set.
-     * @throws This function can throw errors.
+     * @throws
      */
     setFloat(variableName: string, number: number): void;
     /**
@@ -50,7 +50,7 @@ export class MolangVariableMap {
      * - `<variable_name>.direction_z` - Z value from the
      * {@link Vector3} provided
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSpeedAndDirection(variableName: string, speed: number, direction: Vector3): void;
     /**
@@ -63,7 +63,7 @@ export class MolangVariableMap {
      * - `<variable_name>.z` - Z value from the {@link Vector3}
      * provided
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setVector3(variableName: string, vector: Vector3): void;
 }

@@ -14,9 +14,7 @@ export class EntityEnderInventoryComponent extends EntityComponent {
      * Defines the ender inventory container for this entity. The
      * container will be undefined if the entity has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly container: Container;
     static readonly componentId = 'minecraft:ender_inventory';

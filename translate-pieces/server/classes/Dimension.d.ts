@@ -12,7 +12,7 @@ export class Dimension {
      * @remarks
      * Height range of the dimension.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly heightRange: NumberRange;
     /**
@@ -56,11 +56,9 @@ export class Dimension {
      * @returns
      * Returns a location of the biome, or undefined if a biome
      * could not be found.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     calculateClosestBiomeFromSeed(
         pos: Vector3,
@@ -87,11 +85,9 @@ export class Dimension {
      * @param filter
      * An optional block filter used to include only matching
      * blocks from the source area.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     cloneBlocks(
         beginLocation: Vector3,
@@ -161,11 +157,9 @@ export class Dimension {
      * @returns
      * Returns true if at least one block in the volume satisfies
      * the filter, false otherwise.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
     /**
@@ -181,11 +175,9 @@ export class Dimension {
      * Bounds: [0, 1000]
      * @param explosionOptions
      * Additional configurable options for the explosion.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample createExplosion.ts
      * @seeExample createNoBlockExplosion.ts
      * @seeExample createExplosions.ts
@@ -208,13 +200,11 @@ export class Dimension {
      * @returns
      * Returns a ListBlockVolume which contains all the blocks that
      * were placed.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     fillBlocks(
         volume: BlockVolumeBase,
@@ -272,7 +262,7 @@ export class Dimension {
      * Location to retrieve the block above from.
      * @param options
      * The options to decide if a block is a valid result.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
@@ -285,7 +275,7 @@ export class Dimension {
      * Location to retrieve the block below from.
      * @param options
      * The options to decide if a block is a valid result.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
@@ -299,7 +289,7 @@ export class Dimension {
      * Vector direction to cast the ray.
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws
      */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
@@ -321,15 +311,13 @@ export class Dimension {
      * @returns
      * Returns the ListBlockVolume that contains all the block
      * locations that satisfied the block query options.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link UnloadedChunksError}
+     * @throws {UnloadedChunksError}
      */
     getBlocks(volume: BlockVolumeBase, options: BlockQueryOptions, allowUnloadedChunks?: boolean): ListBlockVolume;
     /**
@@ -342,11 +330,9 @@ export class Dimension {
      * entities returned.
      * @returns
      * An entity array.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      * @seeExample bounceSkeletons.ts
      * @seeExample tagsQuery.ts
      * @seeExample testThatEntityIsFeatherItem.ts
@@ -369,15 +355,13 @@ export class Dimension {
      *
      * @param options
      * Additional options for processing this raycast query.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
@@ -408,11 +392,9 @@ export class Dimension {
      * Location of the block we want to check the brightness of.
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getLightLevel(location: Vector3): number;
     /**
@@ -425,11 +407,9 @@ export class Dimension {
      * players returned.
      * @returns
      * A player array.
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -441,11 +421,9 @@ export class Dimension {
      * Position of the block we want to check the brightness of.
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getSkyLightLevel(location: Vector3): number;
     /**
@@ -457,7 +435,7 @@ export class Dimension {
      * @param minHeight
      * The Y height to begin the search from. Defaults to the
      * maximum dimension height.
-     * @throws This function can throw errors.
+     * @throws
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     /**
@@ -632,7 +610,7 @@ export class Dimension {
      * is provided, the duration will be set to a random duration
      * between 300 and 900 seconds.
      * Bounds: [1, 1000000]
-     * @throws This function can throw errors.
+     * @throws
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
@@ -649,17 +627,15 @@ export class Dimension {
      * The location at which to create the entity.
      * @returns
      * Newly created entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws {EntitySpawnError}
      *
-     * {@link EntitySpawnError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
      * @seeExample triggerEvent.ts d45f49d2
@@ -680,11 +656,9 @@ export class Dimension {
      * The location at which to create the item stack.
      * @returns
      * Newly created item stack entity at the specified location.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample itemStacks.ts
      * @seeExample spawnFeatherItem.ts
      */
@@ -703,11 +677,9 @@ export class Dimension {
      * @param molangVariables
      * A set of optional, customizable variables that can be
      * adjusted for this particle.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnParticle.ts bba750fb
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
@@ -723,11 +695,9 @@ export class Dimension {
      * @param amount
      * The amount of experience to give the experience orb.
      * Bounds: [1, 12000]
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     spawnXp(location: Vector3, amount: number): void;
     /**

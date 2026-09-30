@@ -15,7 +15,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * Number of slots that this entity can gain per extra
      * strength.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly additionalSlotsPerStrength: number;
     /**
@@ -25,7 +25,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * If true, the contents of this inventory can be removed by a
      * hopper.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBeSiphonedFrom: boolean;
     /**
@@ -35,9 +35,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * Defines the container for this entity. The container will be
      * undefined if the entity has been removed.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly container: Container;
     /**
@@ -46,7 +44,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * Type of container this entity has.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly containerType: string;
     /**
@@ -55,7 +53,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * Number of slots the container has.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly inventorySize: number;
     /**
@@ -64,7 +62,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * 
      * If true, the entity will not drop it's inventory on death.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly 'private': boolean;
     /**
@@ -74,7 +72,7 @@ export class EntityInventoryComponent extends EntityComponent {
      * If true, the entity's inventory can only be accessed by its
      * owner or itself.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly restrictToOwner: boolean;
     static readonly componentId = 'minecraft:inventory';

@@ -30,9 +30,7 @@ export class Structure extends ISerializable {
      * The dimensions of the structure. For example, a single block
      * structure will have a size of {x:1, y:1, z:1}
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly size: Vector3;
     /**

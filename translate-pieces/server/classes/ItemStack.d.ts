@@ -42,9 +42,7 @@ export class ItemStack {
      * Key for the localization of this items's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     readonly localizationKey: string;
     /**
@@ -326,11 +324,9 @@ export class ItemStack {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**
@@ -363,11 +359,9 @@ export class ItemStack {
      * List of lore lines. Each element in the list represents a
      * new line. The maximum lore line count is 20. The maximum
      * lore line length is 50 characters.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
-     *
-     * {@link Error}
+     * @throws {Error}
      * @seeExample diamondAwesomeSword.ts
      */
     setLore(loreList?: (RawMessage | string)[]): void;

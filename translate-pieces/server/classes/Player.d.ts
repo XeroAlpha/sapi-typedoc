@@ -11,7 +11,7 @@ export class Player extends Entity {
      * @remarks
      * The player's Camera.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly camera: Camera;
     /**
@@ -23,9 +23,7 @@ export class Player extends Entity {
      * name shown above the player's head, use
      * {@link Entity.nameTag}.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly chatDisplayName: string;
     /**
@@ -71,7 +69,7 @@ export class Player extends Entity {
      * @remarks
      * Contains the player's device information.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
@@ -93,9 +91,7 @@ export class Player extends Entity {
      * can be changed in the Video section of the settings menu
      * based on what hardware is available.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly graphicsMode: GraphicsMode;
     /**
@@ -114,7 +110,7 @@ export class Player extends Entity {
      * @remarks
      * If true, the player is currently emoting.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isEmoting: boolean;
     /**
@@ -122,14 +118,14 @@ export class Player extends Entity {
      * Whether the player is flying. For example, in Creative or
      * Spectator mode.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isFlying: boolean;
     /**
      * @remarks
      * Whether the player is gliding with Elytra.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isGliding: boolean;
     /**
@@ -137,7 +133,7 @@ export class Player extends Entity {
      * Whether the player is jumping. This will remain true while
      * the player is holding the jump action.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isJumping: boolean;
     /**
@@ -145,7 +141,7 @@ export class Player extends Entity {
      * The current overall level for the player, based on their
      * experience.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly level: number;
     /**
@@ -159,7 +155,7 @@ export class Player extends Entity {
      * @remarks
      * Name of the player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly name: string;
     /**
@@ -167,7 +163,7 @@ export class Player extends Entity {
      * Contains methods for manipulating the on-screen display of a
      * Player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly onScreenDisplay: ScreenDisplay;
     /**
@@ -175,17 +171,13 @@ export class Player extends Entity {
      * An identifier that can be used to identify a player across
      * sessions.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly persistentId: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
@@ -199,14 +191,14 @@ export class Player extends Entity {
      * The overall total set of experience needed to achieve the
      * next level for a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly totalXpNeededForNextLevel: number;
     /**
      * @remarks
      * The current set of experience achieved for the player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly xpEarnedAtCurrentLevel: number;
     /**
@@ -222,7 +214,7 @@ export class Player extends Entity {
      * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current experience of the Player.
-     * @throws This function can throw errors.
+     * @throws
      */
     addExperience(amount: number): number;
     /**
@@ -237,7 +229,7 @@ export class Player extends Entity {
      * Bounds: [-16777216, 16777216]
      * @returns
      * Returns the current level of the Player.
-     * @throws This function can throw errors.
+     * @throws
      */
     addLevels(amount: number): number;
     /**
@@ -278,16 +270,14 @@ export class Player extends Entity {
      * @remarks
      * Returns the player's current control scheme.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getControlScheme(): ControlScheme;
     /**
      * @remarks
      * Retrieves the active gamemode for this player, if specified.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getGameMode(): GameMode;
     /**
@@ -298,7 +288,7 @@ export class Player extends Entity {
      * @param cooldownCategory
      * Specifies the cooldown category to retrieve the current
      * cooldown for.
-     * @throws This function can throw errors.
+     * @throws
      */
     getItemCooldown(cooldownCategory: string): number;
     /**
@@ -307,18 +297,16 @@ export class Player extends Entity {
      *
      * @returns
      * The player's ping in milliseconds.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getPing(): number;
     /**
      * @remarks
      * Gets the current spawn point of the player.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getSpawnPoint(): DimensionLocation | undefined;
     /**
@@ -328,18 +316,16 @@ export class Player extends Entity {
      * @returns
      * The split screen slot of the player or undefined if the
      * player is not in a split screen session.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getSplitScreenSlot(): PlayerSplitScreenSlot | undefined;
     /**
      * @remarks
      *  Gets the total experience of the Player.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getTotalXp(): number;
     /**
@@ -353,7 +339,7 @@ export class Player extends Entity {
      * Identifier of the music track to play.
      * @param musicOptions
      * Additional options for the music track.
-     * @throws This function can throw errors.
+     * @throws
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -364,11 +350,9 @@ export class Player extends Entity {
      *
      * @param soundOptions
      * Additional optional options for the sound.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      * @seeExample playMusicAndSound.ts
      */
     playSound(soundId: SoundDefinition | string, soundOptions?: PlayerSoundOptions): SoundInstance;
@@ -379,7 +363,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     postClientMessage(id: string, value: string): void;
     /**
@@ -425,7 +409,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetLevel(): void;
     /**
@@ -466,13 +450,11 @@ export class Player extends Entity {
      * successfully. This can throw an InvalidArgumentError if the
      * control scheme is not allowed by the player's current
      * camera.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setControlScheme(controlScheme?: ControlScheme): void;
     /**
@@ -483,7 +465,7 @@ export class Player extends Entity {
      *
      * @param gameMode
      * Active gamemode.
-     * @throws This function can throw errors.
+     * @throws
      */
     setGameMode(gameMode?: GameMode): void;
     /**
@@ -520,11 +502,9 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
@@ -541,13 +521,11 @@ export class Player extends Entity {
      * @param molangVariables
      * A set of optional, customizable variables that can be
      * adjusted for this particle.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnParticle.ts bd8c7a07
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
@@ -564,7 +542,7 @@ export class Player extends Entity {
      * @param tickDuration
      * Duration in ticks of the item cooldown.
      * Bounds: [0, 32767]
-     * @throws This function can throw errors.
+     * @throws
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
@@ -573,9 +551,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopAllSounds(): void;
     /**
@@ -585,7 +561,7 @@ export class Player extends Entity {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopMusic(): void;
     /**
@@ -596,9 +572,7 @@ export class Player extends Entity {
      *
      * @param soundId
      * Identifier of the sound.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     stopSound(soundId: string): void;
 }

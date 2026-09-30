@@ -7,14 +7,14 @@ export class TransactionHandler {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addUserDefinedOperationHandler(payloadClosure: (arg0: string) => void): UserDefinedTransactionOperationHandler;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeListOperationHandler(
         closure: (arg0: RelativeVolumeListBlockVolume[]) => void,
@@ -24,7 +24,7 @@ export class TransactionHandler {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     unregister(): void;
 }

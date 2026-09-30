@@ -13,14 +13,14 @@ export class EntityAgeableComponent extends EntityComponent {
      * Amount of time before the entity grows up, -1 for always a
      * baby.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly duration: number;
     /**
      * @remarks
      * Event that runs when this entity grows up.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly growUp: Trigger;
     /**
@@ -28,7 +28,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * The feed item used will transform into this item upon
      * successful interaction.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly transformToItem: string;
     static readonly componentId = 'minecraft:ageable';
@@ -36,7 +36,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * @remarks
      * List of items that the entity drops when it grows up.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDropItems(): string[];
     /**
@@ -45,7 +45,7 @@ export class EntityAgeableComponent extends EntityComponent {
      * for the item name and 'growth' to define how much time it
      * grows up by.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFeedItems(): EntityDefinitionFeedItem[];
 }

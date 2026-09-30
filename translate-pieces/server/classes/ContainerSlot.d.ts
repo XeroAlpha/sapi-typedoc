@@ -126,18 +126,14 @@ export class ContainerSlot {
      * Returns whether the item within this container slot can be
      * destroyed.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getCanDestroy(): string[];
     /**
      * @remarks
      * Returns if the item in this container slot can be placed on.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getCanPlaceOn(): string[];
     /**
@@ -220,9 +216,7 @@ export class ContainerSlot {
      * @returns
      * An array of lore lines. If the item does not have lore,
      * returns an empty array.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     getRawLore(): RawMessage[];
     /**
@@ -242,9 +236,7 @@ export class ContainerSlot {
      * @remarks
      * Returns true if this slot has an item.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerSlotError}
+     * @throws {InvalidContainerSlotError}
      */
     hasItem(): boolean;
     /**
@@ -328,13 +320,11 @@ export class ContainerSlot {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {InvalidContainerSlotError}
      *
-     * {@link InvalidContainerSlotError}
-     *
-     * {@link UnsupportedFunctionalityError}
+     * @throws {UnsupportedFunctionalityError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**

@@ -58,9 +58,7 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      */
     showOutline: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     readonly transformedWorldVolume: BlockVolume;
     /**
@@ -73,18 +71,14 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     getVolume(): RelativeVolumeListBlockVolume | undefined;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     setVolume(
         volumeToSet?:

@@ -18,7 +18,7 @@ export class TransactionManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createPendingTransaction(name: string): PendingTransaction;
     /**
@@ -34,7 +34,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     redo(): void;
     /**
@@ -43,14 +43,14 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     redoSize(): number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     registerTransactionHandler(onEvent?: (arg0: TransactionEvent) => void): TransactionHandler;
     /**
@@ -66,7 +66,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     undo(): void;
     /**
@@ -76,7 +76,7 @@ export class TransactionManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     undoSize(): number;
 }

@@ -6,7 +6,7 @@ export class UIManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     closeAllForms(player: Player): void;
 }

@@ -7,7 +7,7 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
@@ -15,14 +15,14 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
     getThemeColors(id: string): Record<string, RGBA> | undefined;
     getThemeIdList(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): RGBA;
@@ -30,21 +30,21 @@ export class ThemeSettings {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setCurrentTheme(id: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setThemeName(id: string, name: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: RGBA): void;
 }

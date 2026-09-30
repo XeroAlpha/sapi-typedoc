@@ -21,6 +21,7 @@
         "name": "@minecraft",
         "readme": "./README.md",
         "entryPoints": ["*.d.ts"],
+        "plugin": ["typedoc-plugin-mdn-links"],
         "externalPattern": "",
         "lang": "zh",
         "customCss": "./assets/extra.css",
@@ -33,13 +34,7 @@
         "cascadedModifierTags": [],
         "externalSymbolLinkMappings": {
             "typescript": {
-                "Promise": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-                "Iterable": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
-                "Iterator": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
-                "IteratorResult": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols",
-                "Record": "https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type",
-                "Pick": "https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys",
-                "Parameters": "https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype"
+                "IteratorResult": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols"
             }
         }
     }

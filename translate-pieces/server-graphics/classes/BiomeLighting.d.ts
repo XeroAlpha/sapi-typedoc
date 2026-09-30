@@ -12,9 +12,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetAmbientColor(): void;
     /**
@@ -24,9 +22,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetAmbientIlluminance(): void;
     /**
@@ -36,9 +32,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetEmissiveDesaturation(): void;
     /**
@@ -47,9 +41,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetFlashColor(): void;
     /**
@@ -59,9 +51,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetFlashIlluminance(): void;
     /**
@@ -70,9 +60,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonColor(): void;
     /**
@@ -82,9 +70,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonIlluminance(): void;
     /**
@@ -93,9 +79,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetOrbitalOffsetDegrees(): void;
     /**
@@ -104,9 +88,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyIntensity(): void;
     /**
@@ -115,9 +97,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunColor(): void;
     /**
@@ -127,9 +107,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunIlluminance(): void;
     /**
@@ -138,9 +116,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setAmbientColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -149,9 +125,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setAmbientIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -161,9 +135,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setEmissiveDesaturation(value: number): void;
     /**
@@ -172,9 +144,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setFlashColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -183,9 +153,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setFlashIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -194,9 +162,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -205,9 +171,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -216,9 +180,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setOrbitalOffsetDegrees(degrees: number | Record<number, number>): void;
     /**
@@ -227,9 +189,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyIntensity(intensity: number | Record<number, number>): void;
     /**
@@ -238,9 +198,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -249,9 +207,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunIlluminance(illuminance: number | Record<number, number>): void;
 }

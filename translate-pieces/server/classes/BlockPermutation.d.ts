@@ -32,7 +32,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
+     * @throws
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -44,7 +44,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
+     * @throws
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -106,7 +106,7 @@ export class BlockPermutation {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block stops liquid from flowing.
-     * @throws This function can throw errors.
+     * @throws
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -119,7 +119,7 @@ export class BlockPermutation {
      * @returns
      * Whether this block is removed and spawns its item when
      * touched by liquid.
-     * @throws This function can throw errors.
+     * @throws
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
@@ -144,7 +144,7 @@ export class BlockPermutation {
      * Identifier of the block property.
      * @param value
      * Value of the block property.
-     * @throws This function can throw errors.
+     * @throws
      */
     withState<T extends keyof BlockStateSuperset>(
         name: T,
@@ -158,8 +158,7 @@ export class BlockPermutation {
      *
      * @param blockName
      * Identifier of the block to check.
-     * @throws This function can throw errors.
-     * @seeExample addBlockColorCube.ts
+     * @throws
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,

@@ -4,87 +4,61 @@
 export class EditorStructure {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly description: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly normalizedOrigin: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly notes: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly offset: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly originalWorldLocation: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly size: Vector3;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureFullName: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureName: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     readonly structureNamespace: string;
     /**
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     /**
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getIsWaterlogged(location: Vector3): boolean;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     getTags(): string[];
     /**
@@ -93,11 +67,9 @@ export class EditorStructure {
      *
      * @param waterlogged
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     setBlockPermutation(
         location: Vector3,
@@ -108,9 +80,7 @@ export class EditorStructure {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidStructureError}
+     * @throws {InvalidStructureError}
      */
     setTags(tags: string[]): void;
 }

@@ -25,7 +25,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     debug(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -40,7 +40,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     error(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -53,7 +53,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     info(message: LocalizationEntry | string, properties?: LogProperties): void;
     /**
@@ -67,7 +67,7 @@ export class Logger {
      *
      * @param message
      * The message string to send to the log window
-     * @throws This function can throw errors.
+     * @throws
      */
     warning(message: LocalizationEntry | string, properties?: LogProperties): void;
 }

@@ -13,7 +13,7 @@ export class GuidePlaneManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addPlane(
         origin: Vector3,
@@ -26,49 +26,49 @@ export class GuidePlaneManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlane(planeId: string): GuidePlane | undefined;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlanes(): GuidePlane[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removePlane(planeId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneColors(planeId: string, outlineColor: RGBA, fillColor: RGBA): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneNormal(planeId: string, normal: Vector3): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneOrigin(planeId: string, origin: Vector3): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPlaneVisibility(planeId: string, visible: boolean): void;
 }

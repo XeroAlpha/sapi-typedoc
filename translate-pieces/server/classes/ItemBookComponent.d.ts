@@ -12,9 +12,7 @@ export class ItemBookComponent extends ItemComponent {
      * The name of the author of the book if it is signed,
      * otherwise undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly author?: string;
     /**
@@ -22,27 +20,21 @@ export class ItemBookComponent extends ItemComponent {
      * The contents of pages in the book that are in string format.
      * Entries not in string format will be undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly contents: (string | undefined)[];
     /**
      * @remarks
      * Determines whether the book has been signed or not.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly isSigned: boolean;
     /**
      * @remarks
      * The amount of pages the book has.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly pageCount: number;
     /**
@@ -51,18 +43,14 @@ export class ItemBookComponent extends ItemComponent {
      * {@link RawMessage} format. Entries not in {@link RawMessage}
      * format will be undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly rawContents: (RawMessage | undefined)[];
     /**
      * @remarks
      * The title of the book if it is signed, otherwise undefined.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     readonly title?: string;
     static readonly componentId = 'minecraft:book';
@@ -75,9 +63,7 @@ export class ItemBookComponent extends ItemComponent {
      * @returns
      * The content of the page if a valid index is provided and it
      * is in string format, otherwise returns undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     getPageContent(pageIndex: number): string | undefined;
     /**
@@ -91,9 +77,7 @@ export class ItemBookComponent extends ItemComponent {
      * The content of the page if a valid index is provided and it
      * is in {@link RawMessage} format, otherwise returns
      * undefined.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     getRawPageContent(pageIndex: number): RawMessage | undefined;
     /**
@@ -112,13 +96,11 @@ export class ItemBookComponent extends ItemComponent {
      * The content to set for the page. Can be a single string or
      * {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     insertPage(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -130,9 +112,7 @@ export class ItemBookComponent extends ItemComponent {
      *
      * @param pageIndex
      * The index of the page.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     removePage(pageIndex: number): void;
     /**
@@ -149,13 +129,11 @@ export class ItemBookComponent extends ItemComponent {
      * An array of each page's contents. Each page can be a single
      * string or {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s.
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     setContents(contents: ((RawMessage | string)[] | RawMessage | string)[]): void;
     /**
@@ -175,13 +153,11 @@ export class ItemBookComponent extends ItemComponent {
      * The content to set for the page. Can be a single string or
      * {@link RawMessage} or an array of strings and/or
      * {@link RawMessage}s
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {BookPageContentError}
      *
-     * {@link BookPageContentError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     setPageContent(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -196,13 +172,11 @@ export class ItemBookComponent extends ItemComponent {
      * The title to give the book.
      * @param author
      * The name of the book's author.
-     * @throws This function can throw errors.
+     * @throws {BookError}
      *
-     * {@link BookError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link InvalidItemStackError}
+     * @throws {InvalidItemStackError}
      */
     signBook(title: string, author: string): void;
 }

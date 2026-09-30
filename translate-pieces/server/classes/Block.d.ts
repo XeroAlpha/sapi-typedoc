@@ -31,11 +31,9 @@ export class Block {
      * Returns true if this block is an air block (i.e., empty
      * space).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isAir: boolean;
     /**
@@ -49,11 +47,9 @@ export class Block {
      * and a stone block are not. Water logged blocks are not
      * liquid blocks).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isLiquid: boolean;
     /**
@@ -65,11 +61,9 @@ export class Block {
      * a cobblestone block and a diamond block are solid, while a
      * ladder block and a fence block are not).
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isSolid: boolean;
     /**
@@ -86,11 +80,9 @@ export class Block {
      *
      * Returns or sets whether this block has water on it.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly isWaterlogged: boolean;
     /**
@@ -98,11 +90,9 @@ export class Block {
      * Key for the localization of this block's name used in .lang
      * files.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly localizationKey: string;
     /**
@@ -111,7 +101,7 @@ export class Block {
      *
      * Coordinates of the specified block.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly location: Vector3;
     /**
@@ -122,11 +112,9 @@ export class Block {
      * Additional block configuration data that describes the
      * block.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly permutation: BlockPermutation;
     /**
@@ -135,11 +123,9 @@ export class Block {
      *
      * Gets the type of block.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly 'type': BlockType;
     /**
@@ -150,11 +136,9 @@ export class Block {
      * Vanilla block names can be changed in future releases, try
      * using 'Block.matches' instead for block comparison.
      *
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly typeId: string;
     /**
@@ -195,11 +179,9 @@ export class Block {
      *
      * Number of steps above to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     above(steps?: number): Block | undefined;
     /**
@@ -215,11 +197,9 @@ export class Block {
      *
      * Number of steps below to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     below(steps?: number): Block | undefined;
     /**
@@ -240,13 +220,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block is removed when touched by liquid.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
@@ -259,13 +237,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block can have a liquid placed over it.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     /**
@@ -291,13 +267,11 @@ export class Block {
      *
      * Returns `true` if the block type or permutation can be
      * placed on this block, else `false`.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     /**
@@ -321,11 +295,9 @@ export class Block {
      *
      * Number of steps to the east to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     east(steps?: number): Block | undefined;
     /**
@@ -352,11 +324,9 @@ export class Block {
      *
      * Returns the component if it exists on the block, otherwise
      * undefined.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
@@ -364,11 +334,9 @@ export class Block {
      * Returns all scripting components that are present on this
      * block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getComponents(): BlockComponent[];
     /**
@@ -397,11 +365,9 @@ export class Block {
      *
      * An itemStack with the specified amount of items and data.
      * Returns undefined if block type is incompatible.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
@@ -413,19 +379,15 @@ export class Block {
      *
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getLightLevel(): number;
     /**
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getMapColor(): RGBA;
     /**
@@ -434,11 +396,9 @@ export class Block {
      * the 'minecraft:multi_block' trait. If it does not have the
      * trait returns undefined
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getParts(): Block[] | undefined;
     /**
@@ -454,11 +414,9 @@ export class Block {
      *
      * Returns undefined if redstone power is not applicable to
      * this block.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
     /**
@@ -470,11 +428,9 @@ export class Block {
      *
      * @returns
      * The brightness level on the block.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link LocationInUnloadedChunkError}
+     * @throws {LocationInUnloadedChunkError}
      */
     getSkyLightLevel(): number;
     /**
@@ -487,11 +443,9 @@ export class Block {
      * 方块拥有的标签列表。
      *
      * The list of tags that the block has.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     getTags(): string[];
     /**
@@ -503,19 +457,15 @@ export class Block {
      * The identifier of the component (e.g.,
      * 'minecraft:inventory') to retrieve. If no namespace prefix
      * is specified, 'minecraft:' is assumed.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     hasScheduledNamedTick(eventName: string): boolean;
     /**
@@ -534,11 +484,9 @@ export class Block {
      *
      * Returns `true` if the permutation of this block has the tag,
      * else `false`.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample checkBlockTags.ts
      */
     hasTag(tag: string): boolean;
@@ -550,13 +498,11 @@ export class Block {
      * The type of liquid this function should be called for.
      * @returns
      * Whether this block stops liquid from flowing.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
@@ -571,13 +517,11 @@ export class Block {
      * Whether liquid can flow into the block from the provided
      * direction, or flow out from the provided direction when
      * liquid is placed into it with a bucket
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     /**
@@ -590,13 +534,11 @@ export class Block {
      * @returns
      * Whether this block is removed and spawns its item when
      * touched by liquid.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
@@ -609,11 +551,9 @@ export class Block {
      * Optional set of block states to test this block against.
      * @returns
      * Returns true if the block matches the specified criteria.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
@@ -628,11 +568,9 @@ export class Block {
      *
      * Number of steps to the north to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     north(steps?: number): Block | undefined;
     /**
@@ -646,11 +584,9 @@ export class Block {
      * Block at the specified offset, or undefined if that block
      * could not be retrieved (for example, the block and its
      * relative chunk is not loaded yet.)
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     offset(offset: Vector3): Block | undefined;
     /**
@@ -662,11 +598,9 @@ export class Block {
      *
      * @param eventName
      * Name of the scheduled event to remove.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     removeScheduledNamedTick(eventName: string): void;
     /**
@@ -683,13 +617,11 @@ export class Block {
      * Number of ticks to wait before the event is raised. Must be
      * at least 1.
      * Minimum value: 1
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     scheduleNamedTick(eventName: string, tickDelay: number): void;
     /**
@@ -706,11 +638,9 @@ export class Block {
      *
      * Permutation that contains a set of property states for the
      * Block.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setPermutation(permutation: BlockPermutation): void;
     /**
@@ -727,13 +657,11 @@ export class Block {
      *
      * Identifier of the type of block to apply - for example,
      * minecraft:powered_repeater.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setType(blockType: BlockType | string): void;
     /**
@@ -745,13 +673,11 @@ export class Block {
      *
      * @param isWaterlogged
      * true if the block should have water within it.
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     setWaterlogged(isWaterlogged: boolean): void;
     /**
@@ -766,11 +692,9 @@ export class Block {
      *
      * Number of steps to the south to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     south(steps?: number): Block | undefined;
     /**
@@ -795,11 +719,9 @@ export class Block {
      *
      * Returns `true` if the block permutation data was
      * successfully set, else `false`.
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     trySetPermutation(permutation: BlockPermutation): boolean;
     /**
@@ -814,11 +736,9 @@ export class Block {
      *
      * Number of steps to the west to step before returning.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     west(steps?: number): Block | undefined;
 }
