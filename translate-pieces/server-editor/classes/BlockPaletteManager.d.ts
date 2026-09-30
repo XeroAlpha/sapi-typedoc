@@ -12,12 +12,12 @@ export class BlockPaletteManager {
     getPalette(paletteId: string): BlockPalette | undefined;
     getPaletteIdList(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getPaletteItem(paletteId: string, index: number): IBlockPaletteItem;
     getPrimaryPalette(): BlockPalette;
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getSelectedBlockType(): BlockType;
     getSelectedItem(): IBlockPaletteItem;
@@ -25,28 +25,28 @@ export class BlockPaletteManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removePalette(paletteId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPaletteItem(paletteId: string, index: number, item: IBlockPaletteItem): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPrimaryPalette(paletteId: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setSelectedItem(item: IBlockPaletteItem): void;
 }

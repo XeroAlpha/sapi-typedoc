@@ -11,7 +11,7 @@ export class PlayerInputPermissions {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
@@ -21,7 +21,7 @@ export class PlayerInputPermissions {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }

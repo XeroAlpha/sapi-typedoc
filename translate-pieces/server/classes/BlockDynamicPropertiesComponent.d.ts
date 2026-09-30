@@ -17,15 +17,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * to retrieve dynamic properties set from other content packs.
      * Returns undefined if the key was not found.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     get(key: string): boolean | number | string | Vector3 | undefined;
     /**
@@ -40,15 +38,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     set(key: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -58,15 +54,13 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
      * only accounts for properties set by your content pack. The
      * 1KBytes limit is per content pack.
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidBlockComponentError}
      *
-     * {@link InvalidBlockComponentError}
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     totalByteCount(): number;
 }

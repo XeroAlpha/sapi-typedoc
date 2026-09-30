@@ -12,8 +12,8 @@
   "dependencies": {
     "semver": "^7.7.2",
     "ts-morph": "^27.0.0",
-    "typedoc": "^0.28.13",
-    "typedoc-plugin-mdn-links": "^5.0.9",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-mdn-links": "^5.1.1",
     "typescript": "^5.9.2"
   },
   "devDependencies": {

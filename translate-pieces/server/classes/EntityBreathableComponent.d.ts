@@ -22,35 +22,35 @@ export class EntityBreathableComponent extends EntityComponent {
      * @remarks
      * If true, this entity can breathe in air.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesAir: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in lava.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesLava: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in solid blocks.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesSolids: boolean;
     /**
      * @remarks
      * If true, this entity can breathe in water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly breathesWater: boolean;
     /**
      * @remarks
      * If true, the entity is able to breathe.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBreathe: boolean;
     /**
@@ -58,28 +58,28 @@ export class EntityBreathableComponent extends EntityComponent {
      * If true, this entity will have visible bubbles while in
      * water.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly generatesBubbles: boolean;
     /**
      * @remarks
      * Time in seconds to recover breath to maximum.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly inhaleTime: number;
     /**
      * @remarks
      * Time in seconds between suffocation damage.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly suffocateTime: number;
     /**
      * @remarks
      * Time in seconds the entity can hold its breath.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly totalSupply: number;
     static readonly componentId = 'minecraft:breathable';
@@ -88,14 +88,14 @@ export class EntityBreathableComponent extends EntityComponent {
      * List of blocks this entity can breathe in, in addition to
      * the separate properties for classes of blocks.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getBreatheBlocks(): BlockPermutation[];
     /**
      * @remarks
      * List of blocks this entity can't breathe in.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getNonBreatheBlocks(): BlockPermutation[];
 }

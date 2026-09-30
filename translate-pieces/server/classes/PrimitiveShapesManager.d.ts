@@ -19,11 +19,9 @@ export class PrimitiveShapesManager {
      *
      * @param text
      * The text primitive to be added.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link PrimitiveShapeError}
+     * @throws {PrimitiveShapeError}
      */
     addText(text: TextPrimitive, dimension?: Dimension): void;
     /**

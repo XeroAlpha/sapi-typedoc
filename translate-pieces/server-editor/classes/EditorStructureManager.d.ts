@@ -7,42 +7,42 @@ export class EditorStructureManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createEmpty(fullName: string, size: Vector3): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createFromClipboardItem(item: ClipboardItem, fullName: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteStructure(id: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getExistingTags(): string[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getStructure(id: string): EditorStructure;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     searchStructures(options?: EditorStructureSearchOptions): EditorStructure[];
 }

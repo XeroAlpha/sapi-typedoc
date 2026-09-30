@@ -10,10 +10,8 @@
  *
  * @param player
  * The player who's skin is returned.
- * @throws This function can throw errors.
+ * @throws {InvalidArgumentError}
  *
- * {@link InvalidArgumentError}
- *
- * {@link InvalidEntityError}
+ * @throws {InvalidEntityError}
  */
 export function getPlayerSkin(player: Player): PlayerSkinData;

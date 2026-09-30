@@ -24,14 +24,14 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     clear(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPredictedWriteVolume(
         location: Vector3,
@@ -41,7 +41,7 @@ export class ClipboardItem {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     readFromStructure(structure: EditorStructure): void;
     /**
@@ -51,7 +51,7 @@ export class ClipboardItem {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     readFromWorld(source: BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
@@ -72,7 +72,7 @@ export class ClipboardItem {
      * world
      * @returns
      * Success or Failure
-     * @throws This function can throw errors.
+     * @throws
      */
     writeToWorld(
         location: Vector3,

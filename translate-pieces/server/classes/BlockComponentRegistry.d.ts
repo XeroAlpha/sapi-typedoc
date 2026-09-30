@@ -7,21 +7,19 @@ export class BlockComponentRegistry {
      * @remarks
      * @earlyExecution
      *
-     * @throws This function can throw errors.
+     * @throws {BlockCustomComponentAlreadyRegisteredError}
      *
-     * {@link BlockCustomComponentAlreadyRegisteredError}
+     * @throws {BlockCustomComponentReloadNewComponentError}
      *
-     * {@link BlockCustomComponentReloadNewComponentError}
+     * @throws {BlockCustomComponentReloadNewEventError}
      *
-     * {@link BlockCustomComponentReloadNewEventError}
+     * @throws {BlockCustomComponentReloadVersionError}
      *
-     * {@link BlockCustomComponentReloadVersionError}
+     * @throws {CustomComponentInvalidRegistryError}
      *
-     * {@link CustomComponentInvalidRegistryError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }

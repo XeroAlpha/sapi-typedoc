@@ -16,7 +16,7 @@ export class BlockSignComponent extends BlockComponent {
      * sign has had a honeycomb used on it or `setWaxed` was called
      * on the sign.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isWaxed: boolean;
     static readonly componentId = 'minecraft:sign';
@@ -31,7 +31,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, this will return the message from the front side
      * of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getRawText(side?: SignSide): RawText | undefined;
     /**
@@ -44,7 +44,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, this will return the message from the front side
      * of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getText(side?: SignSide): string | undefined;
     /**
@@ -56,7 +56,7 @@ export class BlockSignComponent extends BlockComponent {
      * The side of the sign to read the dye from. If not provided,
      * this will return the dye on the front side of the sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
     /**
@@ -94,7 +94,7 @@ export class BlockSignComponent extends BlockComponent {
      * provided, the color will be set on the front side of the
      * sign.
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;
     /**
@@ -103,7 +103,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setWaxed(waxed: boolean): void;
 }

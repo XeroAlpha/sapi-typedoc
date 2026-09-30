@@ -10,14 +10,14 @@ export class EntityTameableComponent extends EntityComponent {
      * @remarks
      * Returns a set of items that can be used to tame this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly getTameItems: ItemStack[];
     /**
      * @remarks
      * Returns true if the entity is tamed by player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamed: boolean;
     /**
@@ -25,7 +25,7 @@ export class EntityTameableComponent extends EntityComponent {
      * The chance of taming the entity with each item use between
      * 0.0 and 1.0, where 1.0 is 100%
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly probability: number;
     /**
@@ -33,7 +33,7 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -41,7 +41,7 @@ export class EntityTameableComponent extends EntityComponent {
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tameable';
@@ -55,7 +55,7 @@ export class EntityTameableComponent extends EntityComponent {
      * The player that this entity should be tamed by.
      * @returns
      * Returns true if the entity was tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tame(player: Player): boolean;
 }

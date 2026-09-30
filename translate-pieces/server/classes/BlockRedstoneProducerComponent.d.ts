@@ -12,9 +12,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * Returns error if block is no longer valid or if block
      * doesn't have a 'minecraft:redstone_producer' component.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     readonly power: number;
     static readonly componentId = 'minecraft:redstone_producer';
@@ -25,9 +23,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * or if block doesn't have a 'minecraft:redstone_producer'
      * component.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     getConnectedFaces(): Direction[];
     /**
@@ -39,9 +35,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
      * valid or if block doesn't have a
      * 'minecraft:redstone_producer' component.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidBlockComponentError}
+     * @throws {InvalidBlockComponentError}
      */
     getStronglyPoweredFace(): Direction | undefined;
 }

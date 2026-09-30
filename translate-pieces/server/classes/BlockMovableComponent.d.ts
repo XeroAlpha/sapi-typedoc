@@ -7,19 +7,15 @@
 export class BlockMovableComponent extends BlockComponent {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly movementType: MovementType;
     /**
-     * @throws This property can throw when used.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     readonly stickyType: StickyType;
     static readonly componentId = 'minecraft:movable';

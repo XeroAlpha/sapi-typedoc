@@ -11,7 +11,7 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * Current value of the friction modifier of the associated
      * entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:friction_modifier';

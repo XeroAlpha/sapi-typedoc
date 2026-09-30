@@ -11,14 +11,14 @@ export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
      * @remarks
      * Amplitude of the sway motion.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly swayAmplitude: number;
     /**
      * @remarks
      * Amount of sway frequency.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly swayFrequency: number;
     static readonly componentId = 'minecraft:movement.sway';

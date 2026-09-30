@@ -26,7 +26,7 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     clear(): void;
     get(): RelativeVolumeListBlockVolume;
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getBoundingBox(): BlockBoundingBox;
     /**

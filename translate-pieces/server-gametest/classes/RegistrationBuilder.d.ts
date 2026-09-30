@@ -138,11 +138,9 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     structureLocation(
         structureLocation: Vector3,

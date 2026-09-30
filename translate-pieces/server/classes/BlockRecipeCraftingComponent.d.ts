@@ -26,11 +26,9 @@ export class BlockRecipeCraftingComponent extends BlockComponent {
      * @returns
      * The current recipe crafting context for the player, or
      * undefined if the player isn't crafting.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     getCraftingContext(player: Player): RecipeCraftingContext | undefined;
 }

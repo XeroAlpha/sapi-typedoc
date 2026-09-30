@@ -11,7 +11,7 @@ export class SculkSpreader {
      * @remarks
      * Gets the maximum charge of a sculk spreader.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxCharge: number;
     /**
@@ -29,7 +29,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getCursorPosition(index: number): Vector3;
     /**
@@ -38,7 +38,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getNumberOfCursors(): number;
     /**
@@ -47,7 +47,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getTotalCharge(): number;
 }

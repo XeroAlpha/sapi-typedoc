@@ -384,11 +384,9 @@ export class RegistrationBuilder {
      * @returns
      * RegistrationBuilder object where additional configuration
      * methods can be called.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     structureLocation(
         structureLocation: Vector3,
@@ -438,7 +436,7 @@ export class SculkSpreader {
      * @remarks
      * Gets the maximum charge of a sculk spreader.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxCharge: number;
     /**
@@ -456,7 +454,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getCursorPosition(index: number): Vector3;
     /**
@@ -465,7 +463,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getNumberOfCursors(): number;
     /**
@@ -474,7 +472,7 @@ export class SculkSpreader {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getTotalCharge(): number;
 }
@@ -496,7 +494,7 @@ export class SimulatedPlayer extends Player {
      * @remarks
      * Rotation of the head across pitch and yaw angles.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly headRotation: Vector2;
     /**
@@ -516,7 +514,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     attack(): boolean;
     /**
@@ -529,7 +527,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     attackEntity(entity: Entity): boolean;
     /**
@@ -546,18 +544,16 @@ export class SimulatedPlayer extends Player {
      * @param direction
      * Direction to place the specified item within.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     breakBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     chat(message: string): void;
     /**
@@ -567,7 +563,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     disconnect(): void;
     /**
@@ -576,7 +572,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     dropSelectedItem(): boolean;
     /**
@@ -587,7 +583,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fly(): void;
     /**
@@ -601,7 +597,7 @@ export class SimulatedPlayer extends Player {
      * @param selectSlot
      * Whether to set the selected slot once given.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws
      */
     giveItem(itemStack: ItemStack, selectSlot?: boolean): boolean;
     /**
@@ -616,7 +612,7 @@ export class SimulatedPlayer extends Player {
      * Returns false if the player is already gliding, or the
      * player does not have Elytra equipped, is in water or is on
      * the ground.
-     * @throws This function can throw errors.
+     * @throws
      */
     glide(): boolean;
     /**
@@ -627,7 +623,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     interact(): boolean;
     /**
@@ -643,11 +639,9 @@ export class SimulatedPlayer extends Player {
      * @param direction
      * Direction to place the specified item within.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     interactWithBlock(blockLocation: Vector3, direction?: Direction): boolean;
     /**
@@ -659,11 +653,9 @@ export class SimulatedPlayer extends Player {
      *
      * @param entity
      * Entity to interact with.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     interactWithEntity(entity: Entity): boolean;
     /**
@@ -674,7 +666,7 @@ export class SimulatedPlayer extends Player {
      *
      * @returns
      * True if a jump was performed.
-     * @throws This function can throw errors.
+     * @throws
      */
     jump(): boolean;
     /**
@@ -686,11 +678,9 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     lookAtBlock(blockLocation: Vector3, duration?: LookDuration): void;
     /**
@@ -702,7 +692,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws
      */
     lookAtEntity(entity: Entity, duration?: LookDuration): void;
     /**
@@ -714,7 +704,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param duration
      * Defaults to: 2
-     * @throws This function can throw errors.
+     * @throws
      */
     lookAtLocation(location: Vector3, duration?: LookDuration): void;
     /**
@@ -727,7 +717,7 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws
      */
     move(westEast: number, northSouth: number, speed?: number): void;
     /**
@@ -740,7 +730,7 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws
      */
     moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
     /**
@@ -752,7 +742,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     moveToBlock(blockLocation: Vector3, options?: MoveToOptions): void;
     /**
@@ -763,13 +753,11 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     moveToLocation(location: Vector3, options?: MoveToOptions): void;
     /**
@@ -786,11 +774,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToBlock(blockLocation: Vector3, speed?: number): NavigationResult;
     /**
@@ -804,11 +790,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToEntity(entity: Entity, speed?: number): NavigationResult;
     /**
@@ -825,11 +809,9 @@ export class SimulatedPlayer extends Player {
      * @param speed
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToLocation(location: Vector3, speed?: number): NavigationResult;
     /**
@@ -846,11 +828,9 @@ export class SimulatedPlayer extends Player {
      * Net speed to use for doing the navigation.
      * Defaults to: 1
      * Bounds: [0, 1]
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     navigateToLocations(locations: Vector3[], speed?: number): void;
     /**
@@ -859,7 +839,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     respawn(): boolean;
     /**
@@ -869,7 +849,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     rotateBody(angleInDegrees: number): void;
     /**
@@ -879,7 +859,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setBodyRotation(angleInDegrees: number): void;
     /**
@@ -895,7 +875,7 @@ export class SimulatedPlayer extends Player {
      * @param selectSlot
      * Whether to set the selected slot once set.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws
      */
     setItem(itemStack: ItemStack, slot: number, selectSlot?: boolean): boolean;
     /**
@@ -906,9 +886,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param options
      * Options for the skin to set on the player.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     setSkin(options: PlayerSkinData): void;
     /**
@@ -917,7 +895,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param slot
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws
      */
     startBuild(slot?: number): void;
     /**
@@ -926,14 +904,14 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopBreakingBlock(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopBuild(): void;
     /**
@@ -942,7 +920,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopFlying(): void;
     /**
@@ -951,7 +929,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopGliding(): void;
     /**
@@ -960,7 +938,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopInteracting(): void;
     /**
@@ -970,7 +948,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopMoving(): void;
     /**
@@ -979,7 +957,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     stopSwimming(): void;
     /**
@@ -991,7 +969,7 @@ export class SimulatedPlayer extends Player {
      * @returns
      * Returns the item that was in use. Undefined if no item was
      * in use.
-     * @throws This function can throw errors.
+     * @throws
      */
     stopUsingItem(): ItemStack | undefined;
     /**
@@ -1000,7 +978,7 @@ export class SimulatedPlayer extends Player {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     swim(): void;
     /**
@@ -1012,7 +990,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param itemStack
      * Item to use.
-     * @throws This function can throw errors.
+     * @throws
      */
     useItem(itemStack: ItemStack): boolean;
     /**
@@ -1024,7 +1002,7 @@ export class SimulatedPlayer extends Player {
      *
      * @param slot
      * Index of the inventory slot.
-     * @throws This function can throw errors.
+     * @throws
      */
     useItemInSlot(slot: number): boolean;
     /**
@@ -1046,11 +1024,9 @@ export class SimulatedPlayer extends Player {
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
      * Defaults to: null
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     useItemInSlotOnBlock(
         slot: number,
@@ -1077,11 +1053,9 @@ export class SimulatedPlayer extends Player {
      * Location relative to the bottom north-west corner of the
      * block where the item is placed.
      * Defaults to: null
-     * @throws This function can throw errors.
+     * @throws {GameTestError}
      *
-     * {@link GameTestError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     useItemOnBlock(
         itemStack: ItemStack,
@@ -1146,11 +1120,9 @@ export class Test {
      * @param message
      * Message that is passed if the _condition_ does not evaluate
      * to true.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assert(condition: boolean, message: string): void;
     /**
@@ -1167,11 +1139,9 @@ export class Test {
      * specified type is at the location. If false, tests that a
      * block of the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertBlockPresent(
         blockType: BlockType | string,
@@ -1189,11 +1159,9 @@ export class Test {
      * @param callback
      * Callback function that contains additional tests based on
      * the block at the specified location.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertBlockState(blockLocation: Vector3, callback: (arg0: Block) => boolean): void;
     /**
@@ -1212,11 +1180,9 @@ export class Test {
      * false, tests whether the mob is not able to reach the
      * location.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertCanReachLocation(
         mob: Entity,
@@ -1236,11 +1202,9 @@ export class Test {
      * @param blockLocation
      * Location of the block with a container (for example, a
      * chest) to test the contents of.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertContainerContains(itemStack: ItemStack, blockLocation: Vector3): void;
     /**
@@ -1251,11 +1215,9 @@ export class Test {
      * @param blockLocation
      * Location of the block with a container (for example, a
      * chest) to test is empty of contents.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertContainerEmpty(blockLocation: Vector3): void;
     /**
@@ -1278,11 +1240,9 @@ export class Test {
      * Whether or not the entity is expected to have the specified
      * armor equipped.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityHasArmor(
         entityTypeIdentifier: string,
@@ -1311,11 +1271,9 @@ export class Test {
      * Determines whether to test that the component exists, or
      * does not.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityHasComponent(
         entityTypeIdentifier: string,
@@ -1338,11 +1296,9 @@ export class Test {
      * Whether to test that an entity is present or not present at
      * the specified location.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityInstancePresent(
         entity: Entity,
@@ -1361,11 +1317,9 @@ export class Test {
      * present in the GameTest area. If false, tests that the
      * specified entity is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      * @seeExample simpleMobTest.ts 9fe10d88
      */
     assertEntityInstancePresentInArea(entity: Entity, isPresent?: boolean): void;
@@ -1391,11 +1345,9 @@ export class Test {
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityPresent(
         entityTypeIdentifier: string,
@@ -1417,11 +1369,9 @@ export class Test {
      * specified type is present in the GameTest area. If false,
      * tests that an entity of the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      * @seeExample simpleMobTest.ts 1a4be3f1
      * @seeExample simpleMobGameTest.ts
      */
@@ -1443,11 +1393,9 @@ export class Test {
      * tested for. If this callback function returns false or no
      * entity with the specified identifier is found, an exception
      * is thrown.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityState(
         blockLocation: Vector3,
@@ -1471,11 +1419,9 @@ export class Test {
      * the specified location. If false, tests that an entity is
      * not testing the specified location.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertEntityTouching(entityTypeIdentifier: string, location: Vector3, isTouching?: boolean): void;
     /**
@@ -1491,11 +1437,9 @@ export class Test {
      * Whether to test that the block at _position_ is expected to
      * be waterlogged.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertIsWaterlogged(blockLocation: Vector3, isWaterlogged?: boolean): void;
     /**
@@ -1512,11 +1456,9 @@ export class Test {
      * 0, will only search the particular block at _position_.
      * @param count
      * Number of items, at minimum, to look and test for.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertItemEntityCountIs(
         itemType: ItemType | string,
@@ -1543,11 +1485,9 @@ export class Test {
      * specified type is present. If false, tests that an item
      * entity of the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertItemEntityPresent(
         itemType: ItemType | string,
@@ -1564,11 +1504,9 @@ export class Test {
      * Location to test.
      * @param power
      * Expected power level.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     assertRedstonePower(blockLocation: Vector3, power: number): void;
     /**
@@ -1582,11 +1520,9 @@ export class Test {
      * @param dropResources
      * Whether to add resources exposed with a particular drop.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     destroyBlock(blockLocation: Vector3, dropResources?: boolean): void;
     /**
@@ -1595,7 +1531,7 @@ export class Test {
      *
      * @param errorMessage
      * Error message summarizing the failure condition.
-     * @throws This function can throw errors.
+     * @throws
      */
     fail(errorMessage: string): void;
     /**
@@ -1607,7 +1543,7 @@ export class Test {
      * Callback function that runs. If the function runs
      * successfully, the test is marked as a failure. Typically,
      * this function will have .assertXyz method calls within it.
-     * @throws This function can throw errors.
+     * @throws
      */
     failIf(callback: () => void): void;
     /**
@@ -1618,22 +1554,18 @@ export class Test {
      *
      * @param blockLocation
      * Location of the block to retrieve.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     getBlock(blockLocation: Vector3): Block;
     /**
      * @remarks
      * Gets the dimension of this test.
      *
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     getDimension(): Dimension;
     /**
@@ -1646,11 +1578,9 @@ export class Test {
      *
      * @param blockLocation
      * Location of the block to retrieve.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     getFenceConnectivity(blockLocation: Vector3): FenceConnectivity;
     /**
@@ -1665,11 +1595,9 @@ export class Test {
      * @returns
      * Returns the SculkSpreader or undefined if no SculkSpreader
      * is present on the block.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     getSculkSpreader(blockLocation: Vector3): SculkSpreader | undefined;
     /**
@@ -1678,9 +1606,7 @@ export class Test {
      * {@link Direction} enum for more information
      * on potential values (north, east, south, west - values 2-5).
      *
-     * @throws This function can throw errors.
-     *
-     * {@link GameTestCompletedError}
+     * @throws {GameTestCompletedError}
      */
     getTestDirection(): Direction;
     /**
@@ -1692,9 +1618,7 @@ export class Test {
      *
      * @param tickDelay
      * Amount of time to wait, in ticks.
-     * @throws This function can throw errors.
-     *
-     * {@link GameTestCompletedError}
+     * @throws {GameTestCompletedError}
      */
     idle(tickDelay: number): Promise<void>;
     /**
@@ -1720,22 +1644,18 @@ export class Test {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     killAllEntities(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     onPlayerJump(mob: Entity, jumpAmount: number): void;
     /**
@@ -1763,11 +1683,9 @@ export class Test {
      *
      * @param text
      * Message to display.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     print(text: string): void;
     /**
@@ -1798,11 +1716,9 @@ export class Test {
      * Location to pulse Redstone at.
      * @param duration
      * Number of ticks to pulse Redstone.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     pulseRedstone(blockLocation: Vector3, duration: number): void;
     /**
@@ -1818,11 +1734,9 @@ export class Test {
      * location.
      * @returns
      * A location relative to the GameTest command block.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     relativeBlockLocation(worldBlockLocation: Vector3): Vector3;
     /**
@@ -1840,11 +1754,9 @@ export class Test {
      * location.
      * @returns
      * A location relative to the GameTest command block.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     relativeLocation(worldLocation: Vector3): Vector3;
     /**
@@ -1855,9 +1767,7 @@ export class Test {
      *
      * @param simulatedPlayer
      * Simulated player to remove.
-     * @throws This function can throw errors.
-     *
-     * {@link GameTestCompletedError}
+     * @throws {GameTestCompletedError}
      */
     removeSimulatedPlayer(simulatedPlayer: SimulatedPlayer): void;
     /**
@@ -1874,22 +1784,18 @@ export class Test {
      * GameTest facing. Passing in Direction.south will return the
      * test direction; Passing in Direction.north will return the
      * opposite of the test direction, and so on.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     rotateDirection(direction: Direction): Direction;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     rotateVector(vector: Vector3): Vector3;
     /**
@@ -1903,7 +1809,7 @@ export class Test {
      * callback.
      * @param callback
      * Callback function to execute.
-     * @throws This function can throw errors.
+     * @throws
      */
     runAfterDelay(delayTicks: number, callback: () => void): void;
     /**
@@ -1918,7 +1824,7 @@ export class Test {
      * at.
      * @param callback
      * Callback function to execute.
-     * @throws This function can throw errors.
+     * @throws
      */
     runAtTickTime(tick: number, callback: () => void): void;
     /**
@@ -1930,11 +1836,9 @@ export class Test {
      *
      * @param callback
      * Callback to execute.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     runOnFinish(callback: () => void): void;
     /**
@@ -1949,11 +1853,9 @@ export class Test {
      * block.
      * @param blockLocation
      * Location of the block to set.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     setBlockPermutation(blockData: BlockPermutation, blockLocation: Vector3): void;
     /**
@@ -1967,11 +1869,9 @@ export class Test {
      * Type of block to set.
      * @param blockLocation
      * Location of the block to set.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      * @seeExample minibiomes.ts
      */
     setBlockType(blockType: BlockType | string, blockLocation: Vector3): void;
@@ -1987,11 +1887,9 @@ export class Test {
      * @param type
      * Type of fluid to set. See {@link FluidType}
      * for a list of values.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     setFluidContainer(location: Vector3, type: FluidType): void;
     /**
@@ -2004,11 +1902,9 @@ export class Test {
      * Entity that is explodable.
      * @param fuseLength
      * Length of time, in ticks, before the entity explodes.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     setTntFuse(entity: Entity, fuseLength: number): void;
     /**
@@ -2025,11 +1921,9 @@ export class Test {
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      * @seeExample simpleMobTest.ts 1a4be3f1
      * @seeExample simpleMobGameTest.ts
      * @seeExample phantomsShouldFlyFromCats.ts
@@ -2050,11 +1944,9 @@ export class Test {
      * @returns
      * The spawned entity. If the entity cannot be spawned, returns
      * undefined.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spawnAtLocation(entityTypeIdentifier: string, location: Vector3): Entity;
     /**
@@ -2067,11 +1959,9 @@ export class Test {
      * ItemStack that describes the item entity to create.
      * @param location
      * Location to create the item entity at.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
@@ -2087,11 +1977,9 @@ export class Test {
      * Defaults to: "Simulated Player"
      * @param gameMode
      * Defaults to: 0
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spawnSimulatedPlayer(
         blockLocation: Vector3,
@@ -2108,11 +1996,9 @@ export class Test {
      *
      * @param blockLocation
      * Location where the entity should be spawned.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: Vector3): Entity;
     /**
@@ -2125,11 +2011,9 @@ export class Test {
      *
      * @param location
      * Location where the entity should be spawned.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spawnWithoutBehaviorsAtLocation(
         entityTypeIdentifier: string,
@@ -2149,11 +2033,9 @@ export class Test {
      * @param direction
      * Direction to spread. Use the Minecraft.Direction enum to
      * specify a direction.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     spreadFromFaceTowardDirection(
         blockLocation: Vector3,
@@ -2170,9 +2052,7 @@ export class Test {
      * @returns
      * A new GameTestSequence with chaining methods that facilitate
      * creating a set of steps.
-     * @throws This function can throw errors.
-     *
-     * {@link GameTestCompletedError}
+     * @throws {GameTestCompletedError}
      */
     startSequence(): GameTestSequence;
     /**
@@ -2181,7 +2061,7 @@ export class Test {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     succeed(): void;
     /**
@@ -2195,7 +2075,7 @@ export class Test {
      * Callback function that runs. If the function runs
      * successfully, the test is marked as a success. Typically,
      * this function will have .assertXyz method calls within it.
-     * @throws This function can throw errors.
+     * @throws
      */
     succeedIf(callback: () => void): void;
     /**
@@ -2207,7 +2087,7 @@ export class Test {
      * @param tick
      * Tick after the start of the GameTest to mark the test as
      * successful.
-     * @throws This function can throw errors.
+     * @throws
      */
     succeedOnTick(tick: number): void;
     /**
@@ -2224,7 +2104,7 @@ export class Test {
      * @param callback
      * Callback function that runs. If the function runs
      * successfully, the test is marked as a success.
-     * @throws This function can throw errors.
+     * @throws
      */
     succeedOnTickWhen(tick: number, callback: () => void): void;
     /**
@@ -2239,8 +2119,7 @@ export class Test {
      * @param callback
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
-     * @throws This function can throw errors.
-     * @seeExample simpleMobGameTest.ts
+     * @throws
      */
     succeedWhen(callback: () => void): void;
     /**
@@ -2261,11 +2140,9 @@ export class Test {
      * specified type is present. If false, tests that a block of
      * the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     succeedWhenBlockPresent(
         blockType: BlockType | string,
@@ -2292,7 +2169,7 @@ export class Test {
      * If true, this function tests for the presence of a
      * component. If false, this function tests for the lack of a
      * component.
-     * @throws This function can throw errors.
+     * @throws
      */
     succeedWhenEntityHasComponent(
         entityTypeIdentifier: string,
@@ -2320,9 +2197,7 @@ export class Test {
      * specified type is present. If false, tests that an entity of
      * the specified type is not present.
      * Defaults to: true
-     * @throws This function can throw errors.
-     * @seeExample phantomsShouldFlyFromCats.ts
-     * @seeExample minibiomes.ts
+     * @throws
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
@@ -2343,11 +2218,9 @@ export class Test {
      * minecraft:grow_sideways.
      * @param eventParameters
      * Defaults to: []
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     triggerInternalBlockEvent(blockLocation: Vector3, event: string, eventParameters?: number[]): void;
     /**
@@ -2361,9 +2234,7 @@ export class Test {
      *
      * @param callback
      * Function with code to evaluate.
-     * @throws This function can throw errors.
-     *
-     * {@link GameTestCompletedError}
+     * @throws {GameTestCompletedError}
      */
     until(callback: () => void): Promise<void>;
     /**
@@ -2382,11 +2253,9 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     walkTo(mob: Entity, blockLocation: Vector3, speedModifier?: number): void;
     /**
@@ -2405,11 +2274,9 @@ export class Test {
      * @param speedModifier
      * Adjustable modifier to the mob's walking speed.
      * Defaults to: 1
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     walkToLocation(mob: Entity, location: Vector3, speedModifier?: number): void;
     /**
@@ -2423,11 +2290,9 @@ export class Test {
      * Location relative to the GameTest command block.
      * @returns
      * An absolute location relative to the GameTest command block.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     worldBlockLocation(relativeBlockLocation: Vector3): Vector3;
     /**
@@ -2441,11 +2306,9 @@ export class Test {
      * Location relative to the GameTest command block.
      * @returns
      * An absolute location relative to the GameTest command block.
-     * @throws This function can throw errors.
+     * @throws {GameTestCompletedError}
      *
-     * {@link GameTestCompletedError}
-     *
-     * {@link GameTestError}
+     * @throws {GameTestError}
      */
     worldLocation(relativeLocation: Vector3): Vector3;
 }
@@ -2523,11 +2386,9 @@ export class GameTestError extends Error {
  *
  * @param player
  * The player who's skin is returned.
- * @throws This function can throw errors.
+ * @throws {InvalidArgumentError}
  *
- * {@link InvalidArgumentError}
- *
- * {@link InvalidEntityError}
+ * @throws {InvalidEntityError}
  */
 export function getPlayerSkin(player: Player): PlayerSkinData;
 /**
@@ -2595,9 +2456,7 @@ export function registerAsync(
  *
  * @param batchName
  * Name of the batch of tests the callback will run after.
- * @throws This function can throw errors.
- *
- * {@link GameTestError}
+ * @throws {GameTestError}
  */
 export function setAfterBatchCallback(batchName: string, batchCallback: () => void): void;
 /**
@@ -2611,9 +2470,7 @@ export function setAfterBatchCallback(batchName: string, batchCallback: () => vo
  *
  * @param batchName
  * Name of the batch of tests the callback will run before.
- * @throws This function can throw errors.
- *
- * {@link GameTestError}
+ * @throws {GameTestError}
  */
 export function setBeforeBatchCallback(batchName: string, batchCallback: () => void): void;
 /**
@@ -2631,9 +2488,7 @@ export function setBeforeBatchCallback(batchName: string, batchCallback: () => v
  * The name for the player.
  * @param gameMode
  * The game mode for the player.
- * @throws This function can throw errors.
- *
- * {@link EngineError}
+ * @throws {EngineError}
  */
 export function spawnSimulatedPlayer(
     location: DimensionLocation,

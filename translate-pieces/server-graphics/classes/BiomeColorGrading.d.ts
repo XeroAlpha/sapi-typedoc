@@ -13,9 +13,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsContrast(): void;
     /**
@@ -25,9 +23,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsGain(): void;
     /**
@@ -37,9 +33,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsGamma(): void;
     /**
@@ -48,9 +42,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsMin(): void;
     /**
@@ -60,9 +52,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsOffset(): void;
     /**
@@ -72,9 +62,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsSaturation(): void;
     /**
@@ -84,9 +72,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesContrast(): void;
     /**
@@ -96,9 +82,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesGain(): void;
     /**
@@ -108,9 +92,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesGamma(): void;
     /**
@@ -120,9 +102,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesOffset(): void;
     /**
@@ -132,9 +112,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesSaturation(): void;
     /**
@@ -144,9 +122,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsContrast(): void;
     /**
@@ -156,9 +132,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsGain(): void;
     /**
@@ -168,9 +142,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsGamma(): void;
     /**
@@ -179,9 +151,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsMax(): void;
     /**
@@ -191,9 +161,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsOffset(): void;
     /**
@@ -203,9 +171,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsSaturation(): void;
     /**
@@ -214,9 +180,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetTemperature(): void;
     /**
@@ -237,9 +201,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsContrast(highlightsContrast: Vector3): void;
     /**
@@ -258,9 +220,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsGain(highlightsGain: Vector3): void;
     /**
@@ -278,9 +238,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsGamma(highlightsGamma: Vector3): void;
     /**
@@ -301,9 +259,7 @@ export class BiomeColorGrading {
      * required luminance value for a pixel to be considered a
      * highlight to rise. This value should not be equal to
      * ShadowsMax.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsMin(highlightsMin: number): void;
     /**
@@ -322,9 +278,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsOffset(highlightsOffset: Vector3): void;
     /**
@@ -340,9 +294,7 @@ export class BiomeColorGrading {
      * value of 1.0 results in no change in saturation to the
      * original image. A value of 0.0 results in a grayscale image.
      * Values > 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsSaturation(highlightsSaturation: Vector3): void;
     /**
@@ -363,9 +315,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesContrast(midtonesContrast: Vector3): void;
     /**
@@ -384,9 +334,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesGain(midtonesGain: Vector3): void;
     /**
@@ -404,9 +352,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesGamma(midtonesGamma: Vector3): void;
     /**
@@ -425,9 +371,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesOffset(midtonesOffset: Vector3): void;
     /**
@@ -443,9 +387,7 @@ export class BiomeColorGrading {
      * of 1.0 results in no change in saturation to the original
      * image. A value of 0.0 results in a grayscale image. Values >
      * 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesSaturation(midtonesSaturation: Vector3): void;
     /**
@@ -466,9 +408,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsContrast(shadowsContrast: Vector3): void;
     /**
@@ -487,9 +427,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsGain(shadowsGain: Vector3): void;
     /**
@@ -507,9 +445,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsGamma(shadowsGamma: Vector3): void;
     /**
@@ -529,9 +465,7 @@ export class BiomeColorGrading {
      * cause the maximum required luminance value for a pixel to be
      * considered a shadow to drop. This value should not be equal
      * to HighlightsMin.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsMax(shadowsMax: number): void;
     /**
@@ -550,9 +484,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsOffset(shadowsOffset: Vector3): void;
     /**
@@ -568,9 +500,7 @@ export class BiomeColorGrading {
      * of 1.0 results in no change in saturation to the original
      * image. A value of 0.0 results in a grayscale image. Values >
      * 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsSaturation(shadowsSaturation: Vector3): void;
     /**
@@ -584,9 +514,7 @@ export class BiomeColorGrading {
      * temperature. The overall image temperature measured in
      * Kelvin. The default value is 6500.0, the standard "daylight"
      * illumination.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setTemperature(temperature: number): void;
 }

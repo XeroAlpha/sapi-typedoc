@@ -7,7 +7,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createShapeVolume(
         options:
@@ -22,7 +22,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     extrude(
         location: Vector3,
@@ -41,7 +41,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fillVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -52,7 +52,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     findObscuredBlocksWithinVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -62,7 +62,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     floodSearch(
         location: Vector3,
@@ -77,7 +77,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     generateManifest(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -87,7 +87,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     replaceBlocksInSelection(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -99,7 +99,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     shrinkWrapVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -109,7 +109,7 @@ export class BlockUtilityTasks {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trimVolumeToFitContents(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,

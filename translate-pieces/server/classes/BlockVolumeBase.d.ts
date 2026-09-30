@@ -18,7 +18,7 @@ export class BlockVolumeBase {
      * Return a {@link BlockBoundingBox} object which represents
      * the validated min and max coordinates of the volume
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getBoundingBox(): BlockBoundingBox;
     /**
@@ -37,9 +37,7 @@ export class BlockVolumeBase {
      * Number of closest positions to return
      * @param location
      * Position to measure distance from
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getClosest(count: number, location: Vector3): Vector3[];
     /**
@@ -52,9 +50,7 @@ export class BlockVolumeBase {
      * Number of farthest positions to return
      * @param location
      * Position to measure distance from
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getFarthest(count: number, location: Vector3): Vector3[];
     /**
@@ -62,7 +58,7 @@ export class BlockVolumeBase {
      * Get the largest corner position of the volume (guaranteed to
      * be >= min)
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMax(): Vector3;
     /**
@@ -70,7 +66,7 @@ export class BlockVolumeBase {
      * Get the smallest corner position of the volume (guaranteed
      * to be <= max)
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMin(): Vector3;
     /**

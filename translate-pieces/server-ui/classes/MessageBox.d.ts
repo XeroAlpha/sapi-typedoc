@@ -20,9 +20,7 @@ export class MessageBox {
      * @param options
      * Optional configuration for the message box, such as the
      * button layout.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     constructor(
         player: Player,
@@ -39,9 +37,7 @@ export class MessageBox {
      * @param body
      * The body text to display. Accepts either a plain string or
      * an ObservableString.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     body(
         body: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -59,9 +55,7 @@ export class MessageBox {
      * @param tooltip
      * Optional tooltip text shown when hovering over the first
      * button.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button1(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -80,9 +74,7 @@ export class MessageBox {
      * @param options
      * Optional configuration for the first button, such as tooltip
      * and image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button1WithOptions(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -100,9 +92,7 @@ export class MessageBox {
      * @param tooltip
      * Optional tooltip text shown when hovering over the second
      * button.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button2(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -121,9 +111,7 @@ export class MessageBox {
      * @param options
      * Optional configuration for the second button, such as
      * tooltip and image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button2WithOptions(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -142,9 +130,7 @@ export class MessageBox {
      * @param options
      * Optional configuration for the third button, such as tooltip
      * and image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button3WithOptions(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -158,13 +144,11 @@ export class MessageBox {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {FormVisibilityError}
      *
-     * {@link FormVisibilityError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     close(): void;
     /**
@@ -184,13 +168,11 @@ export class MessageBox {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {FormVisibilityError}
      *
-     * {@link FormVisibilityError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     show(): Promise<MessageBoxResult>;
 }

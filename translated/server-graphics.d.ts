@@ -36,9 +36,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMax(): void;
     /**
@@ -49,9 +47,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMieStart(): void;
     /**
@@ -61,9 +57,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendMin(): void;
     /**
@@ -74,9 +68,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHorizonBlendStart(): void;
     /**
@@ -86,9 +78,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonMieStrength(): void;
     /**
@@ -98,9 +88,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetRayleighStrength(): void;
     /**
@@ -110,9 +98,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyHorizonColor(): void;
     /**
@@ -122,9 +108,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyZenithColor(): void;
     /**
@@ -134,9 +118,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunGlareShape(): void;
     /**
@@ -146,9 +128,7 @@ export class BiomeAtmospherics {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunMieStrength(): void;
     /**
@@ -164,9 +144,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMax(blendMax: number | Record<number, number>): void;
     /**
@@ -182,9 +160,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1.2])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMieStart(blendMieStart: number | Record<number, number>): void;
     /**
@@ -200,9 +176,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendMin(blendMin: number | Record<number, number>): void;
     /**
@@ -218,9 +192,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,1])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHorizonBlendStart(blendStart: number | Record<number, number>): void;
     /**
@@ -236,9 +208,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,60])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonMieStrength(moonMieStrength: number | Record<number, number>): void;
     /**
@@ -254,9 +224,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,11])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setRayleighStrength(rayleighStrength: number | Record<number, number>): void;
     /**
@@ -272,9 +240,7 @@ export class BiomeAtmospherics {
      * [0,1]) to signify a time of day (0.0 and 1.0 are noon, 0.25
      * is sunset, 0.5 is midnight, and 0.75 is sunrise). The value
      * is a RGB triplet
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyHorizonColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -289,9 +255,7 @@ export class BiomeAtmospherics {
      * are composed of key value pairs. The key is a float in the
      * range 0-1 to signify a time of day and the value is a RGB
      * triplet
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyZenithColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -307,9 +271,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,50])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunGlareShape(sunGlareShape: number | Record<number, number>): void;
     /**
@@ -325,9 +287,7 @@ export class BiomeAtmospherics {
      * number (range [0,1]) to signify a time of day (0.0 and 1.0
      * are noon, 0.25 is sunset, 0.5 is midnight, and 0.75 is
      * sunrise). The value is also a number (range [0,60])
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunMieStrength(sunMieStrength: number | Record<number, number>): void;
 }
@@ -344,9 +304,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsContrast(): void;
     /**
@@ -356,9 +314,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsGain(): void;
     /**
@@ -368,9 +324,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsGamma(): void;
     /**
@@ -379,9 +333,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsMin(): void;
     /**
@@ -391,9 +343,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsOffset(): void;
     /**
@@ -403,9 +353,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetHighlightsSaturation(): void;
     /**
@@ -415,9 +363,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesContrast(): void;
     /**
@@ -427,9 +373,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesGain(): void;
     /**
@@ -439,9 +383,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesGamma(): void;
     /**
@@ -451,9 +393,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesOffset(): void;
     /**
@@ -463,9 +403,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMidtonesSaturation(): void;
     /**
@@ -475,9 +413,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsContrast(): void;
     /**
@@ -487,9 +423,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsGain(): void;
     /**
@@ -499,9 +433,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsGamma(): void;
     /**
@@ -510,9 +442,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsMax(): void;
     /**
@@ -522,9 +452,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsOffset(): void;
     /**
@@ -534,9 +462,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetShadowsSaturation(): void;
     /**
@@ -545,9 +471,7 @@ export class BiomeColorGrading {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetTemperature(): void;
     /**
@@ -568,9 +492,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsContrast(highlightsContrast: Vector3): void;
     /**
@@ -589,9 +511,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsGain(highlightsGain: Vector3): void;
     /**
@@ -609,9 +529,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsGamma(highlightsGamma: Vector3): void;
     /**
@@ -632,9 +550,7 @@ export class BiomeColorGrading {
      * required luminance value for a pixel to be considered a
      * highlight to rise. This value should not be equal to
      * ShadowsMax.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsMin(highlightsMin: number): void;
     /**
@@ -653,9 +569,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsOffset(highlightsOffset: Vector3): void;
     /**
@@ -671,9 +585,7 @@ export class BiomeColorGrading {
      * value of 1.0 results in no change in saturation to the
      * original image. A value of 0.0 results in a grayscale image.
      * Values > 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setHighlightsSaturation(highlightsSaturation: Vector3): void;
     /**
@@ -694,9 +606,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesContrast(midtonesContrast: Vector3): void;
     /**
@@ -715,9 +625,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesGain(midtonesGain: Vector3): void;
     /**
@@ -735,9 +643,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesGamma(midtonesGamma: Vector3): void;
     /**
@@ -756,9 +662,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesOffset(midtonesOffset: Vector3): void;
     /**
@@ -774,9 +678,7 @@ export class BiomeColorGrading {
      * of 1.0 results in no change in saturation to the original
      * image. A value of 0.0 results in a grayscale image. Values >
      * 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMidtonesSaturation(midtonesSaturation: Vector3): void;
     /**
@@ -797,9 +699,7 @@ export class BiomeColorGrading {
      * image. A value of 0.0 results in a completely washed-out,
      * gray image. Values > 1.0 increase the brightness of
      * highlights while darkening the shadows in the final image.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsContrast(shadowsContrast: Vector3): void;
     /**
@@ -818,9 +718,7 @@ export class BiomeColorGrading {
      * 1.0 brighten it. A value of 0.0 cancels out the color
      * channel completely. Gain is multiplicative and therefore has
      * a stronger effect on brighter pixels than darker pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsGain(shadowsGain: Vector3): void;
     /**
@@ -838,9 +736,7 @@ export class BiomeColorGrading {
      * for gamma is 2.2. Lower values darken the final image,
      * whereas higher values brighten it. Too high a gamma will
      * cause the final image to appear washed-out.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsGamma(shadowsGamma: Vector3): void;
     /**
@@ -860,9 +756,7 @@ export class BiomeColorGrading {
      * cause the maximum required luminance value for a pixel to be
      * considered a shadow to drop. This value should not be equal
      * to HighlightsMin.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsMax(shadowsMax: number): void;
     /**
@@ -881,9 +775,7 @@ export class BiomeColorGrading {
      * brighten the image, values < 0.0 darken it. Offset is
      * additive and therefore has a stronger effect on darker
      * pixels than brighter pixels.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsOffset(shadowsOffset: Vector3): void;
     /**
@@ -899,9 +791,7 @@ export class BiomeColorGrading {
      * of 1.0 results in no change in saturation to the original
      * image. A value of 0.0 results in a grayscale image. Values >
      * 1.0 increase the intensity of colors.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setShadowsSaturation(shadowsSaturation: Vector3): void;
     /**
@@ -915,9 +805,7 @@ export class BiomeColorGrading {
      * temperature. The overall image temperature measured in
      * Kelvin. The default value is 6500.0, the standard "daylight"
      * illumination.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setTemperature(temperature: number): void;
 }
@@ -933,9 +821,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetAmbientColor(): void;
     /**
@@ -945,9 +831,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetAmbientIlluminance(): void;
     /**
@@ -957,9 +841,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetEmissiveDesaturation(): void;
     /**
@@ -968,9 +850,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetFlashColor(): void;
     /**
@@ -980,9 +860,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetFlashIlluminance(): void;
     /**
@@ -991,9 +869,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonColor(): void;
     /**
@@ -1003,9 +879,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetMoonIlluminance(): void;
     /**
@@ -1014,9 +888,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetOrbitalOffsetDegrees(): void;
     /**
@@ -1025,9 +897,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSkyIntensity(): void;
     /**
@@ -1036,9 +906,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunColor(): void;
     /**
@@ -1048,9 +916,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSunIlluminance(): void;
     /**
@@ -1059,9 +925,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setAmbientColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -1070,9 +934,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setAmbientIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -1082,9 +944,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setEmissiveDesaturation(value: number): void;
     /**
@@ -1093,9 +953,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setFlashColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -1104,9 +962,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setFlashIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -1115,9 +971,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -1126,9 +980,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setMoonIlluminance(illuminance: number | Record<number, number>): void;
     /**
@@ -1137,9 +989,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setOrbitalOffsetDegrees(degrees: number | Record<number, number>): void;
     /**
@@ -1148,9 +998,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSkyIntensity(intensity: number | Record<number, number>): void;
     /**
@@ -1159,9 +1007,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunColor(color: Record<number, RGB> | RGB): void;
     /**
@@ -1170,9 +1016,7 @@ export class BiomeLighting {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSunIlluminance(illuminance: number | Record<number, number>): void;
 }
@@ -1188,9 +1032,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetCDOM(): void;
     /**
@@ -1200,9 +1042,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetChlorophyll(): void;
     /**
@@ -1212,9 +1052,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSuspendedSediment(): void;
     /**
@@ -1223,9 +1061,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesDepth(): void;
     /**
@@ -1235,9 +1071,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesDirectionIncrement(): void;
     /**
@@ -1246,9 +1080,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesFrequency(): void;
     /**
@@ -1258,9 +1090,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesFrequencyScaling(): void;
     /**
@@ -1269,9 +1099,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesMix(): void;
     /**
@@ -1280,9 +1108,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesOctaves(): void;
     /**
@@ -1291,9 +1117,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesPull(): void;
     /**
@@ -1302,9 +1126,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesShape(): void;
     /**
@@ -1313,9 +1135,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesSpeed(): void;
     /**
@@ -1325,9 +1145,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesSpeedScaling(): void;
     /**
@@ -1343,9 +1161,7 @@ export class BiomeWater {
      * typically have little to no CDOM, and thus retain a blue
      * appearance; fresh water sources, like rivers, tend to have
      * higher concentrations.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setCDOM(cdom: number): void;
     /**
@@ -1359,9 +1175,7 @@ export class BiomeWater {
      * A number (range [0,10]). Used to set the chlorophyll
      * concentration. High concentrations produce green colors, due
      * to chlorophyll strongly absorbing blue and red wavelengths.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setChlorophyll(chlorophyll: number): void;
     /**
@@ -1377,9 +1191,7 @@ export class BiomeWater {
      * and green wavelengths. Suspended sediment, like clay and
      * silt, tend to be concentrated in rivers and can indicate
      * recent floods or sources of pollution.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSuspendedSediment(suspendedSediment: number): void;
     /**
@@ -1393,9 +1205,7 @@ export class BiomeWater {
      * Determines how much waves displace the water surface. Larger
      * values will result in deeper waves, whereas smaller values
      * will produce shallower waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesDepth(wavesDepth: number): void;
     /**
@@ -1409,9 +1219,7 @@ export class BiomeWater {
      * A number (range [0.0f, 360.0f]). Used to set the wave
      * direction increment. An angle, in degrees, that controls how
      * much the heading changes between each octave.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesDirectionIncrement(wavesDirectionIncrement: number): void;
     /**
@@ -1426,9 +1234,7 @@ export class BiomeWater {
      * also be thought of as the size of the waves. Larger values
      * will create more tightly packed waves, whereas smaller
      * values will spread waves out over a wider area.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesFrequency(wavesFrequency: number): void;
     /**
@@ -1444,9 +1250,7 @@ export class BiomeWater {
      * octaves. Values higher than 1 will cause frequencies to
      * increase while values less than 1 will cause frequencies to
      * decrease.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesFrequencyScaling(wavesFrequencyScaling: number): void;
     /**
@@ -1459,9 +1263,7 @@ export class BiomeWater {
      * A number (range [0.0, 1.0]). Used to set the wave mix.
      * Controls how much each octave is blended into the
      * neighboring octave.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesMix(wavesMix: number): void;
     /**
@@ -1474,9 +1276,7 @@ export class BiomeWater {
      * A number (range [1.0, 10]). Used to set the wave octaves.
      * Determines how many layers of waves to simulate; high values
      * result in more complex waves
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesOctaves(wavesOctaves: number): void;
     /**
@@ -1493,9 +1293,7 @@ export class BiomeWater {
      * values less than 0 will pull waves in a convex fashion,
      * resulting in more pillowing waves as opposed to cresting
      * waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesPull(wavesPull: number): void;
     /**
@@ -1509,9 +1307,7 @@ export class BiomeWater {
      * Adjusts the core shape of waves. A value of 1 results in a
      * pure sine wave, whereas values larger than 1 will produce
      * sharper waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesShape(wavesShape: number): void;
     /**
@@ -1524,9 +1320,7 @@ export class BiomeWater {
      * A number (range [0.01,10]). Used to set the wave speed.
      * etermines the movement speed of the first wave and the
      * starting value of the Speed Scaling parameter.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesSpeed(wavesSpeed: number): void;
     /**
@@ -1541,9 +1335,7 @@ export class BiomeWater {
      * moves. A value of 1 will result in no change between
      * octaves. Values higher than 1 will cause speeds to increase
      * while values less than 1 will cause speeds to decrease.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesSpeedScaling(wavesSpeedScaling: number): void;
 }

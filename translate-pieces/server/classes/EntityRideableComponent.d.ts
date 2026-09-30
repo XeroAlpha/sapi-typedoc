@@ -13,7 +13,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Zero-based index of the seat that can used to control this
      * entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly controllingSeat: number;
     /**
@@ -21,7 +21,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Determines whether interactions are not supported if the
      * entity is crouching.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly crouchingSkipInteract: boolean;
     /**
@@ -30,14 +30,14 @@ export class EntityRideableComponent extends EntityComponent {
      * looking to ride on this entity (commonly with touch-screen
      * controls).
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly interactText: string;
     /**
      * @remarks
      * The max width a mob can be to be a passenger.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly passengerMaxWidth: number;
     /**
@@ -45,7 +45,7 @@ export class EntityRideableComponent extends EntityComponent {
      * If true, this entity will pull in entities that are in the
      * correct family_types into any available seat.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly pullInEntities: boolean;
     /**
@@ -53,14 +53,14 @@ export class EntityRideableComponent extends EntityComponent {
      * If true, this entity will be picked when looked at by the
      * rider.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly riderCanInteract: boolean;
     /**
      * @remarks
      * Number of seats for riders defined for this entity.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly seatCount: number;
     static readonly componentId = 'minecraft:rideable';
@@ -74,8 +74,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Entity that will become the rider of this entity.
      * @returns
      * True if the rider entity was successfully added.
-     * @throws This function can throw errors.
-     * @seeExample minibiomes.ts
+     * @throws
      */
     addRider(rider: Entity): boolean;
     /**
@@ -86,7 +85,7 @@ export class EntityRideableComponent extends EntityComponent {
      *
      * @param rider
      * Entity that should be ejected from this entity.
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRider(rider: Entity): void;
     /**
@@ -95,7 +94,7 @@ export class EntityRideableComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     ejectRiders(): void;
     /**
@@ -103,7 +102,7 @@ export class EntityRideableComponent extends EntityComponent {
      * A string-list of entity types that this entity can support
      * as riders.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFamilyTypes(): string[];
     /**
@@ -111,7 +110,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Gets a list of the all the entities currently riding this
      * entity.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRiders(): Entity[];
     /**
@@ -119,7 +118,7 @@ export class EntityRideableComponent extends EntityComponent {
      * Gets a list of positions and number of riders for each
      * position for entities riding this entity.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getSeats(): Seat[];
 }

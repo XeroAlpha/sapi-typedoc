@@ -33,9 +33,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * (`allow-player-joining` is set to `false` when playing on
      * dedicated server).
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     allowJoin(): void;
     /**
@@ -44,9 +42,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * This is useful for preventing unauthorized access to the
      * server.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     disallowJoin(reason?: string): void;
     /**
@@ -57,9 +53,7 @@ export class AsyncPlayerJoinBeforeEvent {
      * try to join again. They will be allowed to try to join again
      * after being disconnected.
      *
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
+     * @throws {DisconnectedError}
      */
     disconnect(reason?: string): void;
     /**

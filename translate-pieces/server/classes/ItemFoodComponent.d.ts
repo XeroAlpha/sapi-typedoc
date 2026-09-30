@@ -13,7 +13,7 @@ export class ItemFoodComponent extends ItemComponent {
      * If true, the player can always eat this item (even when not
      * hungry).
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canAlwaysEat: boolean;
     /**
@@ -21,7 +21,7 @@ export class ItemFoodComponent extends ItemComponent {
      * Represents how much nutrition this food item will give an
      * entity when eaten.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly nutrition: number;
     /**
@@ -30,7 +30,7 @@ export class ItemFoodComponent extends ItemComponent {
      * formula (nutrition * saturation_modifier * 2) to apply a
      * saturation buff.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly saturationModifier: number;
     /**
@@ -38,7 +38,7 @@ export class ItemFoodComponent extends ItemComponent {
      * When specified, converts the active item to the one
      * specified by this property.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly usingConvertsTo: string;
     static readonly componentId = 'minecraft:food';

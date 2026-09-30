@@ -7,7 +7,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     fillVolume(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -25,7 +25,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): RelativeVolumeListBlockVolume;
     /**
@@ -50,14 +50,14 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): ListBlockVolume;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     isHighPriorityFillBlock(
         block: BlockPermutation | BlockType | string,
@@ -79,7 +79,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     quickExtrude(properties?: QuickExtrudeProperties): void;
     /**
@@ -94,7 +94,7 @@ export class BlockUtilities {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trimVolumeToFitContents(
         volume: BlockVolumeBase | RelativeVolumeListBlockVolume,

@@ -13,17 +13,13 @@ export class PlayerWaypoint extends EntityWaypoint {
      * waypoint is shown based on the player's state (e.g., hidden,
      * spectator mode, spectator viewing another spectator).
      *
-     * @throws This property can throw when used.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     readonly playerRules: PlayerVisibilityRules;
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     constructor(
         player: Player,

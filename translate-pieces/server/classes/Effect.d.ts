@@ -12,14 +12,14 @@ export class Effect {
      * Sample values range typically from 0 to 4. Example: The
      * effect 'Jump Boost II' will have an amplifier value of 1.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly amplifier: number;
     /**
      * @remarks
      * Gets the player-friendly name of this effect.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly displayName: string;
     /**
@@ -29,7 +29,7 @@ export class Effect {
      * {@link TicksPerSecond} constant to convert between ticks and
      * seconds.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly duration: number;
     /**
@@ -43,7 +43,7 @@ export class Effect {
      * @remarks
      * Gets the type id of this effect.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly typeId: string;
 }

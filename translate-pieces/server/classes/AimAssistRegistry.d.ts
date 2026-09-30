@@ -31,15 +31,13 @@ export class AimAssistRegistry {
      * The category settings used to create the new category.
      * @returns
      * The created category handle.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     addCategory(category: AimAssistCategorySettings): AimAssistCategory;
     /**
@@ -52,15 +50,13 @@ export class AimAssistRegistry {
      * The preset settings used to create the new preset.
      * @returns
      * The created preset handle.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     addPreset(preset: AimAssistPresetSettings): AimAssistPreset;
     /**

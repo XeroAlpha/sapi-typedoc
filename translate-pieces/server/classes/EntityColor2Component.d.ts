@@ -12,7 +12,7 @@ export class EntityColor2Component extends EntityComponent {
      * @remarks
      * Value of this particular color.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: PaletteColor;
     static readonly componentId = 'minecraft:color2';

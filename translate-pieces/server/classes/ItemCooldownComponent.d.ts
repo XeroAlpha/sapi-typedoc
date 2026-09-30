@@ -12,7 +12,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * Represents the cooldown category that this item is
      * associated with.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly cooldownCategory: string;
     /**
@@ -20,7 +20,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * Amount of time, in ticks, it will take this item to
      * cooldown.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly cooldownTicks: number;
     static readonly componentId = 'minecraft:cooldown';
@@ -28,7 +28,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getCooldownTicksRemaining(player: Player): number;
     /**
@@ -43,7 +43,7 @@ export class ItemCooldownComponent extends ItemComponent {
      * item.
      * @returns
      * True if the item is the given cooldown category.
-     * @throws This function can throw errors.
+     * @throws
      */
     isCooldownCategory(cooldownCategory: string): boolean;
     /**
@@ -52,7 +52,7 @@ export class ItemCooldownComponent extends ItemComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     startCooldown(player: Player): void;
 }

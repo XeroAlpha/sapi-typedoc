@@ -31,7 +31,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addDye(dye: ItemType): void;
     /**
@@ -40,7 +40,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getFluidType(): FluidType;
     /**
@@ -49,7 +49,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setFluidType(fluidType: FluidType): void;
     /**
@@ -59,7 +59,7 @@ export class BlockFluidContainerComponent extends BlockComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setPotion(itemStack: ItemStack): void;
 }

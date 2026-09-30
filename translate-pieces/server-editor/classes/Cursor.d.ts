@@ -36,7 +36,7 @@ export class Cursor {
      * The face at of the block beneath the 3D block cursor which
      * is intersected by the mouse raycast
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly faceDirection: number;
     /**
@@ -44,18 +44,18 @@ export class Cursor {
      * Query whether or not the 3D block cursor is visible or
      * hidden
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isVisible: boolean;
     /**
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxViewBlockDistance: number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getDefaultProperties(): CursorProperties;
     /**
@@ -64,7 +64,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPosition(): Vector3;
     /**
@@ -74,14 +74,14 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getProperties(): CursorProperties;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getRay(): CursorRay;
     /**
@@ -91,7 +91,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     hide(): void;
     /**
@@ -107,21 +107,21 @@ export class Cursor {
      * @returns
      * Return the newly modified position (or previous position if
      * movement was restricted)
-     * @throws This function can throw errors.
+     * @throws
      */
     moveBy(offset: Vector3): Vector3;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     popPropertiesById(identifier: string): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     pushPropertiesById(properties: CursorProperties, identifier: string): void;
     /**
@@ -130,7 +130,7 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     resetToDefaultState(): void;
     /**
@@ -142,7 +142,7 @@ export class Cursor {
      * @param properties
      * A set of optional parameters within a property state which
      * represent the intended 3D block cursor state
-     * @throws This function can throw errors.
+     * @throws
      */
     setProperties(properties: CursorProperties): void;
     /**
@@ -151,14 +151,14 @@ export class Cursor {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     show(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updatePropertiesById(properties: CursorProperties, identifier?: string): void;
 }

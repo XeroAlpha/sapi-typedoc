@@ -12,9 +12,7 @@ export class WidgetComponentEntity extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetComponentError}
+     * @throws {InvalidWidgetComponentError}
      */
     playAnimation(animationName: string): void;
 }

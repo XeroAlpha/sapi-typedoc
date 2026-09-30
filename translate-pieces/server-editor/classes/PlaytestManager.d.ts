@@ -6,14 +6,14 @@ export class PlaytestManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getPlaytestSessionAvailability(): PlaytestSessionResult;
 }

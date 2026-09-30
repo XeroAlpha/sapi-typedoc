@@ -12,18 +12,14 @@ export class EntityEquippableComponent extends EntityComponent {
      * @remarks
      * Returns the total Armor level of the owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly totalArmor: number;
     /**
      * @remarks
      * Returns the total Toughness level of the owner.
      *
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     readonly totalToughness: number;
     static readonly componentId = 'minecraft:equippable';
@@ -36,7 +32,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @returns
      * Returns the item equipped to the given EquipmentSlot. If
      * empty, returns undefined.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     /**
@@ -49,7 +45,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * @returns
      * Returns the ContainerSlot corresponding to the given
      * EquipmentSlot.
-     * @throws This function can throw errors.
+     * @throws
      */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
@@ -62,7 +58,7 @@ export class EntityEquippableComponent extends EntityComponent {
      * The equipment slot. e.g. "head", "chest", "offhand".
      * @param itemStack
      * The item to equip. If undefined, clears the slot.
-     * @throws This function can throw errors.
+     * @throws
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
 }

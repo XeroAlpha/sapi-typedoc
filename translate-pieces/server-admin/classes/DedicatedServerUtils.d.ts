@@ -25,9 +25,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadCDNConfig(): void;
     /**
@@ -36,9 +34,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadPermissions(): void;
     /**
@@ -47,9 +43,7 @@ export class DedicatedServerUtils {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     reloadScriptingConfig(): void;
     /**

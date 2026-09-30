@@ -4,9 +4,7 @@
 export class WidgetGroup {
     private constructor();
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     readonly selectedWidgetCount: number;
     /**
@@ -25,7 +23,7 @@ export class WidgetGroup {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createWidget(location: Vector3, options?: WidgetCreateOptions): Widget;
     /**
@@ -38,25 +36,21 @@ export class WidgetGroup {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     deselectAllWidgets(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetGroupError}
+     * @throws {InvalidWidgetGroupError}
      */
     selectAllWidgets(): void;
 }

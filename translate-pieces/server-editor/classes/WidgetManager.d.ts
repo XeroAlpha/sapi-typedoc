@@ -6,14 +6,14 @@ export class WidgetManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }

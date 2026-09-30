@@ -13,7 +13,7 @@ export class EntityStrengthComponent extends EntityComponent {
      * Maximum strength of this entity, as defined in the entity
      * type definition.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly max: number;
     /**
@@ -21,7 +21,7 @@ export class EntityStrengthComponent extends EntityComponent {
      * Current value of the strength component that has been set
      * for entities.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly value: number;
     static readonly componentId = 'minecraft:strength';

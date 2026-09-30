@@ -120,11 +120,9 @@ export class World {
      * @remarks
      * Returns an array of all active players within the world.
      *
-     * @throws This function can throw errors.
+     * @throws {CommandError}
      *
-     * {@link CommandError}
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -283,9 +281,7 @@ export class World {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link PropertyOutOfBoundsError}
+     * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
@@ -365,9 +361,7 @@ export class World {
      * A Record of key value pairs of the dynamic properties to
      * set. If the data value is null, it will remove that property
      * instead.
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3 | undefined>): void;
     /**

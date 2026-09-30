@@ -11,7 +11,7 @@
  * Player to transfer.
  * @param options
  * Options for where to send the player.
- * @throws This function can throw errors.
+ * @throws
  */
 export function transferPlayer(
     player: Player,

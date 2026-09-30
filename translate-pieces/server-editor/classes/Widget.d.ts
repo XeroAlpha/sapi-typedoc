@@ -29,9 +29,7 @@ export class Widget {
     collisionType: WidgetCollisionType;
     dimensionId?: string;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly group: WidgetGroup;
     /**
@@ -53,9 +51,7 @@ export class Widget {
      */
     lockPositionToSurface: boolean;
     /**
-     * @throws This property can throw when used.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly selectable: boolean;
     selected: boolean;
@@ -73,7 +69,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addBoundingBox(
         componentName: string,
@@ -84,7 +80,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addClipboardComponent(
         componentName: string,
@@ -95,7 +91,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addEntityComponent(
         componentName: string,
@@ -106,28 +102,28 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGridComponent(componentName: string, options?: WidgetComponentGridOptions): WidgetComponentGrid;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addRenderPlaneComponent(
         componentName: string,
@@ -137,7 +133,7 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addRenderPrimitiveComponent(
         componentName: string,
@@ -158,21 +154,21 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeOutline(
         componentName: string,
@@ -183,39 +179,35 @@ export class Widget {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     delete(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getComponent(componentName: string): WidgetComponentBase;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     getComponents(): WidgetComponentBase[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setStateChangeEvent(eventFunction?: (arg0: WidgetStateChangeEventData) => void): void;
 }

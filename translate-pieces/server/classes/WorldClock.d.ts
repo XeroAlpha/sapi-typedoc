@@ -44,9 +44,7 @@ export class WorldClock {
      *
      * @param timeMarkerOptions
      * Options for creating a time marker.
-     * @throws This function can throw errors.
-     *
-     * {@link WorldClockAddTimeMarkerError}
+     * @throws {WorldClockAddTimeMarkerError}
      */
     addTimeMarker(timeMarkerOptions: TimeMarkerOptions): void;
     /**

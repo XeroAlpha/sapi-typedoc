@@ -66,9 +66,7 @@ export class LootTableManager {
      * An array of item stacks dropped from the loot drop event.
      * Can be empty if no loot dropped, or undefined if the entity
      * was invalid.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     generateLootFromEntity(entity: Entity, tool?: ItemStack): ItemStack[] | undefined;
     /**

@@ -4,11 +4,11 @@ export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();
     static readonly componentId = 'minecraft:type_family';
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     getTypeFamilies(): string[];
     /**
-     * @throws This function can throw errors.
+     * @throws
      */
     hasTypeFamily(typeFamily: string): boolean;
 }

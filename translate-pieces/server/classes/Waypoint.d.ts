@@ -60,11 +60,9 @@ export class Waypoint {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link InvalidWaypointTextureSelectorError}
+     * @throws {InvalidWaypointTextureSelectorError}
      */
     getDimensionLocation(): DimensionLocation;
     /**

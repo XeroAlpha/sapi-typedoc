@@ -11,9 +11,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetCDOM(): void;
     /**
@@ -23,9 +21,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetChlorophyll(): void;
     /**
@@ -35,9 +31,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetSuspendedSediment(): void;
     /**
@@ -46,9 +40,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesDepth(): void;
     /**
@@ -58,9 +50,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesDirectionIncrement(): void;
     /**
@@ -69,9 +59,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesFrequency(): void;
     /**
@@ -81,9 +69,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesFrequencyScaling(): void;
     /**
@@ -92,9 +78,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesMix(): void;
     /**
@@ -103,9 +87,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesOctaves(): void;
     /**
@@ -114,9 +96,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesPull(): void;
     /**
@@ -125,9 +105,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesShape(): void;
     /**
@@ -136,9 +114,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesSpeed(): void;
     /**
@@ -148,9 +124,7 @@ export class BiomeWater {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     resetWavesSpeedScaling(): void;
     /**
@@ -166,9 +140,7 @@ export class BiomeWater {
      * typically have little to no CDOM, and thus retain a blue
      * appearance; fresh water sources, like rivers, tend to have
      * higher concentrations.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setCDOM(cdom: number): void;
     /**
@@ -182,9 +154,7 @@ export class BiomeWater {
      * A number (range [0,10]). Used to set the chlorophyll
      * concentration. High concentrations produce green colors, due
      * to chlorophyll strongly absorbing blue and red wavelengths.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setChlorophyll(chlorophyll: number): void;
     /**
@@ -200,9 +170,7 @@ export class BiomeWater {
      * and green wavelengths. Suspended sediment, like clay and
      * silt, tend to be concentrated in rivers and can indicate
      * recent floods or sources of pollution.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setSuspendedSediment(suspendedSediment: number): void;
     /**
@@ -216,9 +184,7 @@ export class BiomeWater {
      * Determines how much waves displace the water surface. Larger
      * values will result in deeper waves, whereas smaller values
      * will produce shallower waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesDepth(wavesDepth: number): void;
     /**
@@ -232,9 +198,7 @@ export class BiomeWater {
      * A number (range [0.0f, 360.0f]). Used to set the wave
      * direction increment. An angle, in degrees, that controls how
      * much the heading changes between each octave.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesDirectionIncrement(wavesDirectionIncrement: number): void;
     /**
@@ -249,9 +213,7 @@ export class BiomeWater {
      * also be thought of as the size of the waves. Larger values
      * will create more tightly packed waves, whereas smaller
      * values will spread waves out over a wider area.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesFrequency(wavesFrequency: number): void;
     /**
@@ -267,9 +229,7 @@ export class BiomeWater {
      * octaves. Values higher than 1 will cause frequencies to
      * increase while values less than 1 will cause frequencies to
      * decrease.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesFrequencyScaling(wavesFrequencyScaling: number): void;
     /**
@@ -282,9 +242,7 @@ export class BiomeWater {
      * A number (range [0.0, 1.0]). Used to set the wave mix.
      * Controls how much each octave is blended into the
      * neighboring octave.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesMix(wavesMix: number): void;
     /**
@@ -297,9 +255,7 @@ export class BiomeWater {
      * A number (range [1.0, 10]). Used to set the wave octaves.
      * Determines how many layers of waves to simulate; high values
      * result in more complex waves
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesOctaves(wavesOctaves: number): void;
     /**
@@ -316,9 +272,7 @@ export class BiomeWater {
      * values less than 0 will pull waves in a convex fashion,
      * resulting in more pillowing waves as opposed to cresting
      * waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesPull(wavesPull: number): void;
     /**
@@ -332,9 +286,7 @@ export class BiomeWater {
      * Adjusts the core shape of waves. A value of 1 results in a
      * pure sine wave, whereas values larger than 1 will produce
      * sharper waves.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesShape(wavesShape: number): void;
     /**
@@ -347,9 +299,7 @@ export class BiomeWater {
      * A number (range [0.01,10]). Used to set the wave speed.
      * etermines the movement speed of the first wave and the
      * starting value of the Speed Scaling parameter.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesSpeed(wavesSpeed: number): void;
     /**
@@ -364,9 +314,7 @@ export class BiomeWater {
      * moves. A value of 1 will result in no change between
      * octaves. Values higher than 1 will cause speeds to increase
      * while values less than 1 will cause speeds to decrease.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidArgumentError}
      */
     setWavesSpeedScaling(wavesSpeedScaling: number): void;
 }

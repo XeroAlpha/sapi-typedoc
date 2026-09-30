@@ -20,19 +20,17 @@ export class DimensionRegistry {
      * The namespaced identifier for the custom dimension (e.g.,
      * 'mypack:my_dimension'). Must include a namespace and use
      * only valid identifier characters.
-     * @throws This function can throw errors.
+     * @throws {CustomDimensionAlreadyRegisteredError}
      *
-     * {@link CustomDimensionAlreadyRegisteredError}
+     * @throws {CustomDimensionInvalidRegistryError}
      *
-     * {@link CustomDimensionInvalidRegistryError}
+     * @throws {CustomDimensionNameError}
      *
-     * {@link CustomDimensionNameError}
+     * @throws {CustomDimensionReloadNewDimensionError}
      *
-     * {@link CustomDimensionReloadNewDimensionError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     registerCustomDimension(typeId: string): void;
 }

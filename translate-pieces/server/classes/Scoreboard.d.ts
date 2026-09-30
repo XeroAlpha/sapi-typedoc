@@ -12,8 +12,7 @@ export class Scoreboard {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     * @seeExample updateScoreboard.ts
+     * @throws
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**
@@ -57,7 +56,7 @@ export class Scoreboard {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
     /**
@@ -71,7 +70,7 @@ export class Scoreboard {
      * Returns the previous `ScoreboardObjective` set at the
      * display slot, if no objective was previously set it returns
      * `undefined`.
-     * @throws This function can throw errors.
+     * @throws
      */
     setObjectiveAtDisplaySlot(
         displaySlotId: DisplaySlotId,

@@ -11,22 +11,18 @@ export class ItemPotionComponent extends ItemComponent {
      * @remarks
      * The PotionDeliveryType associated with the potion item.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     readonly potionDeliveryType: PotionDeliveryType;
     /**
      * @remarks
      * The PotionEffectType associated with the potion item.
      *
-     * @throws This property can throw when used.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link Error}
+     * @throws {Error}
      */
     readonly potionEffectType: PotionEffectType;
     static readonly componentId = 'minecraft:potion';

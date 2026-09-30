@@ -22,19 +22,17 @@ export class PlayerAimAssist {
      * @param settings
      * Aim-assist settings to activate for the player, if undefined
      * aim-assist will be disabled.
-     * @throws This function can throw errors.
+     * @throws {ArgumentOutOfBoundsError}
      *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
+     * @throws {InvalidEntityError}
      *
-     * {@link InvalidEntityError}
-     *
-     * {@link NamespaceNameError}
+     * @throws {NamespaceNameError}
      */
     set(settings?: PlayerAimAssistSettings): void;
 }

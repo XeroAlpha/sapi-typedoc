@@ -3,18 +3,14 @@
 
 export class BlockPalette {
     /**
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     getItem(index: number): IBlockPaletteItem;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     removeItemAt(index: number): void;
     /**
@@ -27,9 +23,7 @@ export class BlockPalette {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link ArgumentOutOfBoundsError}
+     * @throws {ArgumentOutOfBoundsError}
      */
     setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
 }

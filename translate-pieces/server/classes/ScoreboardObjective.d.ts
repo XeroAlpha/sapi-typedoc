@@ -10,14 +10,14 @@ export class ScoreboardObjective {
      * Returns the player-visible name of this scoreboard
      * objective.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly displayName: string;
     /**
      * @remarks
      * Identifier of the scoreboard objective.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly id: string;
     /**
@@ -35,14 +35,14 @@ export class ScoreboardObjective {
      *
      * @param participant
      * Participant to apply the scoreboard value addition to.
-     * @throws This function can throw errors.
+     * @throws
      */
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
     /**
      * @remarks
      * Returns all objective participant identities.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getParticipants(): ScoreboardIdentity[];
     /**
@@ -51,7 +51,7 @@ export class ScoreboardObjective {
      *
      * @param participant
      * Identifier of the participant to retrieve a score for.
-     * @throws This function can throw errors.
+     * @throws
      */
     getScore(participant: Entity | ScoreboardIdentity | string): number | undefined;
     /**
@@ -59,7 +59,7 @@ export class ScoreboardObjective {
      * Returns specific scores for this objective for all
      * participants.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getScores(): ScoreboardScoreInfo[];
     /**
@@ -67,7 +67,7 @@ export class ScoreboardObjective {
      * Returns if the specified identity is a participant of the
      * scoreboard objective.
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -79,7 +79,7 @@ export class ScoreboardObjective {
      * @param participant
      * Participant to remove from being tracked with this
      * objective.
-     * @throws This function can throw errors.
+     * @throws
      */
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
@@ -92,7 +92,7 @@ export class ScoreboardObjective {
      * Identity of the participant.
      * @param score
      * New value of the score.
-     * @throws This function can throw errors.
+     * @throws
      */
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }

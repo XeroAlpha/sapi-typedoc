@@ -26,9 +26,6 @@ export default {
                 ) {
                     return;
                 }
-                if (part.text === 'Error') {
-                    return; // bypass @throws Error
-                }
                 const segments = part.text
                     .split(/[./]/)
                     .flatMap((s) => (s.startsWith('minecraft') ? ['@minecraft', s.slice(9)] : [s]));

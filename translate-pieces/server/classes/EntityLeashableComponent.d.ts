@@ -12,7 +12,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * Returns true if another entity can 'steal' the leashed
      * entity by attaching their own leash to it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly canBeStolen: boolean;
     /**
@@ -20,35 +20,35 @@ export class EntityLeashableComponent extends EntityComponent {
      * Distance in blocks at which the leash stiffens, restricting
      * movement.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly hardDistance: number;
     /**
      * @remarks
      * Returns true if the entity is leashed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isLeashed: boolean;
     /**
      * @remarks
      * Entity that is holding the leash.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly leashHolder?: Entity;
     /**
      * @remarks
      * Identifier of entity that is holding the leash.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly leashHolderEntityId?: string;
     /**
      * @remarks
      * Distance in blocks at which the leash breaks.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly maxDistance: number;
     /**
@@ -57,7 +57,7 @@ export class EntityLeashableComponent extends EntityComponent {
      * acting to keep this entity close to the entity that leashed
      * it.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly softDistance: number;
     static readonly componentId = 'minecraft:leashable';
@@ -80,7 +80,7 @@ export class EntityLeashableComponent extends EntityComponent {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     unleash(): void;
 }

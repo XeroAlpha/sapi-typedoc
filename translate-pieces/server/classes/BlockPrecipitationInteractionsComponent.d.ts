@@ -14,11 +14,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * the block. Returns `false` if snow will not accumulate on
      * the block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     accumulatesSnow(): boolean;
     /**
@@ -27,11 +25,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * flower submerged in snow. Returns `false` if this block
      * cannot have snow within it.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     isSnowLoggable(): boolean;
     /**
@@ -39,11 +35,9 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
      * Returns `true` if rain will not go through the block.
      * Returns `false` if rain should go through the block.
      *
-     * @throws This function can throw errors.
+     * @throws {LocationInUnloadedChunkError}
      *
-     * {@link LocationInUnloadedChunkError}
-     *
-     * {@link LocationOutOfWorldBoundariesError}
+     * @throws {LocationOutOfWorldBoundariesError}
      */
     obstructsRain(): boolean;
 }

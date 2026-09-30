@@ -6,14 +6,14 @@ export class ExportManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     beginExportProject(options: GameOptions): Promise<ExportResult>;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     canExportProject(): boolean;
     /**
@@ -26,7 +26,7 @@ export class ExportManager {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getGameVersion(): string;
 }

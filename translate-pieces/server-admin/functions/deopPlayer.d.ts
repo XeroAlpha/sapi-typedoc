@@ -10,12 +10,10 @@
  *
  * @param player
  * Player to remove permissions from.
- * @throws This function can throw errors.
+ * @throws {CannotDeopPlayerError}
  *
- * {@link CannotDeopPlayerError}
+ * @throws {EngineError}
  *
- * {@link EngineError}
- *
- * {@link InvalidArgumentError}
+ * @throws {InvalidArgumentError}
  */
 export function deopPlayer(player: Player): void;

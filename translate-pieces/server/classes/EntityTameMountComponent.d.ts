@@ -11,14 +11,14 @@ export class EntityTameMountComponent extends EntityComponent {
      * @remarks
      * Returns true if the entity is tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamed: boolean;
     /**
      * @remarks
      * Returns true if the entity is tamed by a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly isTamedToPlayer: boolean;
     /**
@@ -26,7 +26,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * Returns the player that has tamed the entity, or 'undefined'
      * if entity is not tamed by a player.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayer?: Player;
     /**
@@ -34,7 +34,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * Returns the id of player that has tamed the entity, or
      * 'undefined' if entity is not tamed.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly tamedToPlayerId?: string;
     static readonly componentId = 'minecraft:tamemount';
@@ -46,7 +46,7 @@ export class EntityTameMountComponent extends EntityComponent {
      *
      * @param showParticles
      * Whether to show effect particles when this entity is tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tame(showParticles: boolean): void;
     /**
@@ -61,7 +61,7 @@ export class EntityTameMountComponent extends EntityComponent {
      * The player that this entity should be tamed by.
      * @returns
      * Returns true if the entity was tamed.
-     * @throws This function can throw errors.
+     * @throws
      */
     tameToPlayer(showParticles: boolean, player: Player): boolean;
 }

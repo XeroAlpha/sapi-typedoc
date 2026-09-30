@@ -3,22 +3,18 @@
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
     /**
-     * @throws This property can throw when used.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     readonly primitiveType: PrimitiveType;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setPrimitive(
         primitive:

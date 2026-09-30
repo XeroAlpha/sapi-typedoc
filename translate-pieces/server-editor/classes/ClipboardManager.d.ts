@@ -17,7 +17,7 @@ export class ClipboardManager {
      * represents the main ClipboardItem object which is always
      * accessible through the UI for cut/paste operations
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly clipboard: ClipboardItem;
     /**
@@ -26,7 +26,7 @@ export class ClipboardManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     create(): ClipboardItem;
 }

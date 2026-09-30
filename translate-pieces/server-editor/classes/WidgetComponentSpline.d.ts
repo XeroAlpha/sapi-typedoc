@@ -13,31 +13,27 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {Error}
      *
-     * {@link Error}
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     getControlPoints(): Widget[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): Vector3[];
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidWidgetComponentError}
      *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
+     * @throws {InvalidWidgetError}
      */
     setControlPoints(widgetList: Widget[]): void;
 }

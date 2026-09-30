@@ -12,12 +12,10 @@
  * Player to kick.
  * @param reason
  * Reason for kicking the player.
- * @throws This function can throw errors.
+ * @throws {CannotKickPlayerError}
  *
- * {@link CannotKickPlayerError}
+ * @throws {EngineError}
  *
- * {@link EngineError}
- *
- * {@link InvalidArgumentError}
+ * @throws {InvalidArgumentError}
  */
 export function kickPlayer(player: Player, reason?: string): void;

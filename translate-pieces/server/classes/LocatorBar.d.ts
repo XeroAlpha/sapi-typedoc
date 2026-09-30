@@ -45,13 +45,11 @@ export class LocatorBar {
      *
      * @param waypoint
      * The {@link Waypoint} to add to the locator bar.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidWaypointError}
      *
-     * {@link InvalidWaypointError}
-     *
-     * {@link LocatorBarError}
+     * @throws {LocatorBarError}
      */
     addWaypoint(waypoint: Waypoint): void;
     /**
@@ -81,9 +79,7 @@ export class LocatorBar {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     removeAllWaypoints(): void;
     /**
@@ -95,11 +91,9 @@ export class LocatorBar {
      *
      * @param waypoint
      * The {@link Waypoint} to remove from the locator bar.
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link LocatorBarError}
+     * @throws {LocatorBarError}
      */
     removeWaypoint(waypoint: Waypoint): void;
 }

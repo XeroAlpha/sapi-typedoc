@@ -57,9 +57,7 @@ export class Sentry {
      * The message to add to the breadcrumb.
      * @param category
      * The category of the breadcrumb.
-     * @throws This function can throw errors.
-     *
-     * {@link SentryUninitializedError}
+     * @throws {SentryUninitializedError}
      */
     addBreadcrumb(level: SentryEventLevel, message: string, category?: string): void;
     /**
@@ -70,9 +68,7 @@ export class Sentry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
-     *
-     * {@link SentryUninitializedError}
+     * @throws {SentryUninitializedError}
      */
     addTag(name: string, value: string): void;
     /**
@@ -86,9 +82,7 @@ export class Sentry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
-     *
-     * {@link SentryUninitializedError}
+     * @throws {SentryUninitializedError}
      */
     captureException(exception: unknown, captureContext?: SentryCaptureContext): void;
     /**
@@ -99,9 +93,7 @@ export class Sentry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
-     *
-     * {@link SentryUninitializedError}
+     * @throws {SentryUninitializedError}
      */
     getTags(): Record<string, string>;
     /**
@@ -111,11 +103,9 @@ export class Sentry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link SentryAlreadyInitializedError}
+     * @throws {SentryAlreadyInitializedError}
      */
     init(options: SentryOptions): void;
     /**
@@ -126,9 +116,7 @@ export class Sentry {
      *
      * @earlyExecution
      *
-     * @throws This function can throw errors.
-     *
-     * {@link SentryUninitializedError}
+     * @throws {SentryUninitializedError}
      */
     removeTag(name: string): void;
 }

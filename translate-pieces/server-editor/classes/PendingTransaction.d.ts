@@ -7,14 +7,14 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addEntityOperation(entity: Entity, type: EntityOperationType): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addUserDefinedOperation(
         transactionHandler: UserDefinedTransactionOperationHandler,
@@ -26,7 +26,7 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     addVolumeListOperation(
         operationHandler: VolumeListTransactionOperationHandler,
@@ -37,21 +37,21 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     commitTrackedChanges(): number;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     discard(): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     discardTrackedChanges(): number;
     /**
@@ -64,28 +64,28 @@ export class PendingTransaction {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     submit(transactionHandler?: TransactionHandler): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeArea(from: Vector3, to: Vector3): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeList(locations: Vector3[]): boolean;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
 }

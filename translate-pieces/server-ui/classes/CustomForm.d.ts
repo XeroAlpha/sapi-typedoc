@@ -20,9 +20,7 @@ export class CustomForm {
      * The player to show this form to.
      * @param title
      * The title text to display at the top of the form.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     constructor(
         player: Player,
@@ -44,9 +42,7 @@ export class CustomForm {
      * @param options
      * Optional configuration for the button, such as a tooltip,
      * disabled state, or visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     button(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -61,13 +57,11 @@ export class CustomForm {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {FormVisibilityError}
      *
-     * {@link FormVisibilityError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     close(): void;
     /**
@@ -78,9 +72,7 @@ export class CustomForm {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     closeButton(): CustomForm;
     /**
@@ -93,9 +85,7 @@ export class CustomForm {
      *
      * @param options
      * Optional configuration for the divider, such as visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     divider(options?: DividerOptions): CustomForm;
     /**
@@ -117,11 +107,9 @@ export class CustomForm {
      * @param options
      * Optional configuration for the dropdown, such as a
      * description, disabled state, or visibility.
-     * @throws This function can throw errors.
+     * @throws {InvalidFormModificationError}
      *
-     * {@link InvalidFormModificationError}
-     *
-     * {@link InvalidObservableError}
+     * @throws {InvalidObservableError}
      */
     dropdown(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -142,9 +130,7 @@ export class CustomForm {
      * The header text to display.
      * @param options
      * Optional configuration for the header, such as visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     header(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
@@ -166,11 +152,9 @@ export class CustomForm {
      * width.
      * @returns
      * The form instance to allow method chaining.
-     * @throws This function can throw errors.
+     * @throws {InvalidFormModificationError}
      *
-     * {@link InvalidFormModificationError}
-     *
-     * {@link InvalidObservableError}
+     * @throws {InvalidObservableError}
      */
     image(src: ObservableString | string, pack: ObservableString | string, options?: ImageOptions): CustomForm;
     /**
@@ -193,9 +177,7 @@ export class CustomForm {
      * The text to display in the label.
      * @param options
      * Optional configuration for the label, such as visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
@@ -211,9 +193,7 @@ export class CustomForm {
      * Maximum Length: 3
      * @param options
      * Optional configuration for the row, such as visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     multiButtonRow(buttons: ButtonData[], options?: MultiButtonRowOptions): CustomForm;
     /**
@@ -224,13 +204,11 @@ export class CustomForm {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {FormVisibilityError}
      *
-     * {@link FormVisibilityError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     show(): Promise<DataDrivenScreenClosedReason>;
     /**
@@ -254,11 +232,9 @@ export class CustomForm {
      * @param options
      * Optional configuration for the slider, such as step size, a
      * description, disabled state, or visibility.
-     * @throws This function can throw errors.
+     * @throws {InvalidFormModificationError}
      *
-     * {@link InvalidFormModificationError}
-     *
-     * {@link InvalidObservableError}
+     * @throws {InvalidObservableError}
      */
     slider(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -277,9 +253,7 @@ export class CustomForm {
      *
      * @param options
      * Optional configuration for the spacer, such as visibility.
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidFormModificationError}
+     * @throws {InvalidFormModificationError}
      */
     spacer(options?: SpacingOptions): CustomForm;
     /**
@@ -299,11 +273,9 @@ export class CustomForm {
      * @param options
      * Optional configuration for the text field, such as a
      * description, disabled state, or visibility.
-     * @throws This function can throw errors.
+     * @throws {InvalidFormModificationError}
      *
-     * {@link InvalidFormModificationError}
-     *
-     * {@link InvalidObservableError}
+     * @throws {InvalidObservableError}
      */
     textField(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,
@@ -327,11 +299,9 @@ export class CustomForm {
      * @param options
      * Optional configuration for the toggle, such as a
      * description, disabled state, or visibility.
-     * @throws This function can throw errors.
+     * @throws {InvalidFormModificationError}
      *
-     * {@link InvalidFormModificationError}
-     *
-     * {@link InvalidObservableError}
+     * @throws {InvalidObservableError}
      */
     toggle(
         label: ObservableString | ObservableUIRawMessage | string | UIRawMessage,

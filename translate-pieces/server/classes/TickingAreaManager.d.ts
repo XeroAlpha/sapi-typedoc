@@ -30,11 +30,9 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link TickingAreaError}
+     * @throws {TickingAreaError}
      */
     createTickingArea(identifier: string, options: TickingAreaOptions): Promise<void>;
     /**
@@ -43,9 +41,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getAllTickingAreas(): TickingArea[];
     /**
@@ -54,9 +50,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     getTickingArea(identifier: string | TickingArea): TickingArea | undefined;
     /**
@@ -84,9 +78,7 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link EngineError}
+     * @throws {EngineError}
      */
     removeAllTickingAreas(): void;
     /**
@@ -95,11 +87,9 @@ export class TickingAreaManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
-     *
-     * {@link TickingAreaError}
+     * @throws {TickingAreaError}
      */
     removeTickingArea(identifier: string | TickingArea): void;
 }

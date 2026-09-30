@@ -10,14 +10,14 @@ export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
      * @remarks
      * Speed in effect when the entity is turning.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly speedWhenTurning: number;
     /**
      * @remarks
      * Start speed during a glide.
      *
-     * @throws This property can throw when used.
+     * @throws
      */
     readonly startSpeed: number;
     static readonly componentId = 'minecraft:movement.glide';

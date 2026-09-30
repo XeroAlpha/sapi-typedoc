@@ -33,13 +33,11 @@ export class AllowList {
      * If true, the player will be allowed onto the server even if
      * the server is at its player limit.
      * Defaults to: false
-     * @throws This function can throw errors.
+     * @throws {AllowListModificationError}
      *
-     * {@link AllowListModificationError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     add(playerDetails: AllowListEntryNameInfo | Player, ignorePlayerLimit?: boolean): void;
     /**
@@ -56,11 +54,9 @@ export class AllowList {
      *
      * @param playerDetails
      * Player or player name that should be checked for.
-     * @throws This function can throw errors.
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     contains(playerDetails: AllowListEntryNameInfo | Player): boolean;
     /**
@@ -69,9 +65,7 @@ export class AllowList {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link AllowListFileReloadError}
+     * @throws {AllowListFileReloadError}
      */
     reloadFile(): void;
     /**
@@ -83,13 +77,11 @@ export class AllowList {
      * @param playerDetails
      * Player or player name that should be removed from the allow
      * list.
-     * @throws This function can throw errors.
+     * @throws {AllowListModificationError}
      *
-     * {@link AllowListModificationError}
+     * @throws {InvalidArgumentError}
      *
-     * {@link InvalidArgumentError}
-     *
-     * {@link InvalidEntityError}
+     * @throws {InvalidEntityError}
      */
     remove(playerDetails: AllowListEntryNameInfo | Player): void;
 }

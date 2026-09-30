@@ -16,7 +16,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     createMinimap(
         viewType: MinimapViewType,
@@ -31,7 +31,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     destroyMinimap(minimapId: string): void;
     /**
@@ -41,7 +41,7 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getAllMinimapIds(): string[];
     /**
@@ -51,21 +51,21 @@ export class MinimapManager {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     getMinimap(minimapId: string): MinimapItem;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     setVanillaBiomeColorMap(minimapId: string, colorMap: Record<string, RGB>): void;
     /**
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
+     * @throws
      */
     updateVanillaColorMap(minimapId: string, biomeType: BiomeType, color: RGB): void;
 }

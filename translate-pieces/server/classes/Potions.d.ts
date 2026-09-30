@@ -49,13 +49,11 @@ export class Potions {
      * @remarks
      * Creates a potion given an effect and delivery type.
      *
-     * @throws This function can throw errors.
+     * @throws {EngineError}
      *
-     * {@link EngineError}
+     * @throws {InvalidPotionDeliveryTypeError}
      *
-     * {@link InvalidPotionDeliveryTypeError}
-     *
-     * {@link InvalidPotionEffectTypeError}
+     * @throws {InvalidPotionEffectTypeError}
      */
     static resolve<
         T extends string = MinecraftPotionEffectTypes,

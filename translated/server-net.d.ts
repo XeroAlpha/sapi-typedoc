@@ -1665,9 +1665,7 @@ export class HttpResponse {
      * @remarks
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link SerializableParseError}
+     * @throws {SerializableParseError}
      */
     deserialize(identifier: string): ISerializable;
 }
@@ -1862,9 +1860,7 @@ export class WebSocketClient {
      *
      * @worldMutation
      *
-     * @throws This function can throw errors.
-     *
-     * {@link WebSocketNotConnectedError}
+     * @throws {WebSocketNotConnectedError}
      */
     close(): void;
     /**
@@ -1875,11 +1871,9 @@ export class WebSocketClient {
      *
      * @param payload
      * The payload that will be included in the network packet.
-     * @throws This function can throw errors.
+     * @throws {RequestBodyTooLargeError}
      *
-     * {@link RequestBodyTooLargeError}
-     *
-     * {@link WebSocketNotConnectedError}
+     * @throws {WebSocketNotConnectedError}
      */
     send(payload: string): void;
 }

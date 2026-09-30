@@ -17,9 +17,7 @@
  * The name for the player.
  * @param gameMode
  * The game mode for the player.
- * @throws This function can throw errors.
- *
- * {@link EngineError}
+ * @throws {EngineError}
  */
 export function spawnSimulatedPlayer(
     location: DimensionLocation,
