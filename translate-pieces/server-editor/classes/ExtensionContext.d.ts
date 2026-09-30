@@ -1,5 +1,5 @@
 /* IMPORT */ import { Player } from '../../server';
-/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BlockUtilityTasks, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, ExportManager, Extension, ExtensionContextAfterEvents, GuidePlaneManager, MinimapManager, PlaytestManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager } from '..';
+/* IMPORT */ import { BlockPaletteManager, BlockUtilities, BlockUtilityTasks, BrushShapeManager, ClipboardManager, Cursor, EditorStructureManager, Extension, ExtensionContextAfterEvents, GuidePlaneManager, MinimapManager, SelectionManager, SettingsManager, TransactionManager, WidgetManager } from '..';
 
 /**
  * The extension context is a native (C++) object created for
@@ -42,7 +42,6 @@ export class ExtensionContext {
      *
      */
     readonly cursor: Cursor;
-    readonly exportManager: ExportManager;
     /**
      * @remarks
      * Contains information about the registered extension
@@ -65,7 +64,6 @@ export class ExtensionContext {
      *
      */
     readonly player: Player;
-    readonly playtest: PlaytestManager;
     /**
      * @remarks
      * The instance of the players Selection Manager and the main
