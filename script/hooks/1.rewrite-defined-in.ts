@@ -1,4 +1,4 @@
-import type { DeclarationReflection, Reflection } from 'typedoc';
+import type { DeclarationReflection, NormalizedPath, Reflection } from 'typedoc';
 import type { Hook } from './hook.js';
 
 export default {
@@ -7,7 +7,7 @@ export default {
             const refl = reflection as Reflection & Partial<DeclarationReflection>;
             if (refl.sources) {
                 refl.sources.forEach((source) => {
-                    source.fileName = source.fileName.replace('translated', tsdocProject.name);
+                    source.fileName = source.fileName.replace('translated', tsdocProject.name) as NormalizedPath;
                 });
             }
         });

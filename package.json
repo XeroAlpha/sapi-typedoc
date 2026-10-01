@@ -7,7 +7,7 @@
     "build": "npx tsx ./script/cli.ts build",
     "update": "npx tsx ./script/cli.ts update",
     "update-cached": "npx tsx ./script/cli.ts update-cached",
-    "lint-script": "npx biome check --write ./script"
+    "lint-script": "npx tsc --noEmit -p ./script/tsconfig.json && npx biome check --write ./script"
   },
   "dependencies": {
     "semver": "^7.7.2",
