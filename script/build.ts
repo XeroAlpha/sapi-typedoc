@@ -1,8 +1,8 @@
-import { execSync } from 'child_process';
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'fs';
-import { createRequire } from 'module';
-import { relative as relativePath, resolve as resolvePath } from 'path';
-import { Project, SourceFile } from 'ts-morph';
+import { execSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { relative as relativePath, resolve as resolvePath } from 'node:path';
+import { Project, type SourceFile } from 'ts-morph';
 import type { PackageJson } from 'type-fest';
 import * as TypeDoc from 'typedoc';
 import runHooks from './hooks.js';
@@ -12,9 +12,9 @@ import {
     distPath,
     installLanguages,
     originalPath,
+    type TypeDocLanguages,
     translatedPath,
-    translatingPath,
-    type TypeDocLanguages
+    translatingPath
 } from './utils.js';
 
 declare module 'typedoc' {
@@ -159,7 +159,7 @@ export async function build(translated?: boolean) {
             const version = packageInfo.version;
             console.log(`Loading d.ts for ${moduleName}@${version ?? 'undefined'}`);
             let dtsFiles: string[] = [];
-            walkFiles(modulePath, (dir, file, path) => {
+            walkFiles(modulePath, (_, file, path) => {
                 if (file?.endsWith('.d.ts')) {
                     const relPath = relativePath(modulePath, path);
                     if (!relPath.includes('node_modules')) {

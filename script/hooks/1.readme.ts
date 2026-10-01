@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve as resolvePath } from 'path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
 import { ReflectionKind, RendererEvent } from 'typedoc';
 import { git, parsePackageVersion } from '../utils.js';
 import type { Hook } from './hook.js';
@@ -111,6 +111,7 @@ function listCommitsByCommand(branch: string, commitCommand: string) {
 const initialCommit = '568ac3300e47a9500b269e3e101e3f6bda3c48ea';
 
 const statusList = ['translated', 'untranslated', 'wip', 'needReview'] as const;
+type Status = (typeof statusList)[number];
 
 function analyzeTranslateState() {
     const head = getCurrentHead();
@@ -140,7 +141,7 @@ function analyzeTranslateState() {
     const untranslated = allPieces.filter((path) => headTracking[path] === originalTracking[path]);
     const restPieces = allPieces.filter((path) => !untranslated.includes(path));
 
-    const statusMap: Record<string, (typeof statusList)[number]> = {};
+    const statusMap: Record<string, Status> = {};
     const lastEditTimeCache: Record<string, Date> = {};
     untranslated.forEach((piecePath) => {
         statusMap[piecePath] = 'untranslated';
@@ -183,7 +184,7 @@ function analyzeTranslateState() {
 }
 
 const namespacePrefix = '@minecraft/';
-const stateDescMap: Record<(typeof statusList)[number], string> = {
+const stateDescMap: Record<Status, string> = {
     untranslated: '未翻译',
     wip: '翻译中',
     translated: '已完成',
@@ -199,7 +200,7 @@ export default {
         if (getCurrentHead() === 'original') {
             return;
         }
-        let translateStateMap;
+        let translateStateMap: Record<string, Status>;
         try {
             translateStateMap = analyzeTranslateState();
         } catch (err) {
@@ -338,7 +339,7 @@ export default {
         summaryLines.push(['', `游戏版本号：\`${gameVersion}\``, '', '<!-- summary end -->']);
 
         const newReadMe = readMe.replace(
-            /<!-- summary start -->\n\n[^]+\n\n<!-- summary end -->/,
+            /<!-- summary start -->\n\n[\s\S]+\n\n<!-- summary end -->/,
             summaryLines.flat().join('\n')
         );
         writeFileSync(readMePath, newReadMe);

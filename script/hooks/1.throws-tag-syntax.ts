@@ -1,7 +1,16 @@
-import { JSDoc, JSDocLink, JSDocLinkCode, JSDocLinkPlain, JSDocTag, JSDocThrowsTag, SyntaxKind, ts } from 'ts-morph';
-import type { Hook } from './hook.js';
+import {
+    type JSDoc,
+    type JSDocLink,
+    type JSDocLinkCode,
+    type JSDocLinkPlain,
+    type JSDocTag,
+    type JSDocThrowsTag,
+    SyntaxKind,
+    ts
+} from 'ts-morph';
 import type { Context, Reflection } from 'typedoc';
 import { jsdocBounds, nextNonWhitespace } from '../multiline-comments.js';
+import type { Hook } from './hook.js';
 
 const throwsPrompts = ['This function can throw errors.', 'This property can throw when used.'];
 const throwsTypeSep = ' - ';
@@ -102,7 +111,7 @@ function convertTemplateThrows(throwsTag: JSDocThrowsTag) {
     return pendingEdits;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// biome-ignore lint/correctness/noUnusedVariables: 目前 TypeDoc 支持这种写法，暂不使用
 function convertTSDocThrows(throwsTag: JSDocThrowsTag): ts.TextChange | null {
     const linkNode = throwsTag.getNextSiblingIfKind(SyntaxKind.JSDocTag);
     if (throwsTag.getTypeExpression()?.getText() === '{' && linkNode && linkNode.getTagName() === 'link') {
@@ -184,13 +193,11 @@ export default {
                 const templateThrowEdits = convertTemplateThrows(throwsTag);
                 if (templateThrowEdits) {
                     textChanges.push(...templateThrowEdits);
-                    continue;
                 }
                 // 暂时先共存，看起来 TypeDoc 同样支持这种写法
                 // const tsDocThrowsEdits = convertTSDocThrows(throwsTag);
                 // if (tsDocThrowsEdits) {
                 //     textChanges.push(tsDocThrowsEdits);
-                //     continue;
                 // }
             }
             if (textChanges.length > 0) {

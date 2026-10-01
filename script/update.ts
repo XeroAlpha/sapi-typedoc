@@ -1,6 +1,6 @@
-import { execSync } from 'child_process';
-import { existsSync, readFileSync, rmSync, writeFileSync } from 'fs';
-import { resolve as resolvePath } from 'path';
+import { execSync } from 'node:child_process';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
 import type { PackageJson } from 'type-fest';
 import { build } from './build.js';
 import runHooks from './hooks.js';
@@ -9,10 +9,10 @@ import {
     basePath,
     comparePackageVersion,
     originalPath,
+    type PackageVersion,
     parsePackageVersion,
     translatedPath,
-    translatingPath,
-    type PackageVersion
+    translatingPath
 } from './utils.js';
 
 const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
@@ -33,7 +33,7 @@ export async function update(keepCachedPackageJson?: boolean) {
 
     // 保证 npm 可以识别 overrides 属性
     const npmVersion = execSync('npm -v', { encoding: 'utf-8' });
-    const majorNpmVersion = parseInt(npmVersion);
+    const majorNpmVersion = parseInt(npmVersion, 10);
     if (majorNpmVersion < 8) {
         throw new Error(`NPM version should be >= 8, currently ${npmVersion}`);
     }

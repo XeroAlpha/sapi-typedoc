@@ -1,8 +1,8 @@
-import { execSync } from 'child_process';
-import { resolve as resolvePath } from 'path';
+import { execSync } from 'node:child_process';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import semver from 'semver';
 import type { Application, TranslatableStrings } from 'typedoc';
-import { fileURLToPath } from 'url';
 
 export const basePath = resolvePath(fileURLToPath(import.meta.url), '..', '..');
 export const originalPath = resolvePath(basePath, 'original');

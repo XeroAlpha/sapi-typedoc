@@ -1,14 +1,14 @@
-import { Node, SyntaxKind, ts, type NodeParentType } from 'ts-morph';
-import type { Hook } from './hook.js';
-import { installLanguages, type TypeDocLanguages } from '../utils.js';
+import { Node, type NodeParentType, SyntaxKind, type ts } from 'ts-morph';
 import {
+    type CommentDisplayPart,
     DocumentReflection,
     i18n,
-    Reflection,
-    translateTagName,
+    type Reflection,
     TraverseProperty,
-    type CommentDisplayPart
+    translateTagName
 } from 'typedoc';
+import { installLanguages, type TypeDocLanguages } from '../utils.js';
+import type { Hook } from './hook.js';
 
 declare module 'typedoc' {
     interface TranslatableStrings {
@@ -58,7 +58,9 @@ function generateFilterResult(rootRefl: Reflection, filter: (refl: Reflection) =
         });
         if (children.length > 0) {
             if (children.every((c) => filteredRefl.has(c))) {
-                children.forEach((c) => filteredRefl.delete(c));
+                children.forEach((c) => {
+                    filteredRefl.delete(c);
+                });
                 filteredRefl.add(refl);
             }
         }

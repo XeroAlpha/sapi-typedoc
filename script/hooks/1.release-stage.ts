@@ -1,6 +1,6 @@
-import { Node, SyntaxKind, ts, type JSDoc, type JSDocableNode, type JSDocTag, type SourceFile } from 'ts-morph';
+import { type JSDoc, type JSDocableNode, type JSDocTag, Node, type SourceFile, SyntaxKind, type ts } from 'ts-morph';
+import { jsdocBounds, lineBounds, nextNonWhitespace } from '../multiline-comments.js';
 import type { Hook } from './hook.js';
-import { lineBounds, jsdocBounds, nextNonWhitespace } from '../multiline-comments.js';
 
 const ReleaseStageTags = ['rc', 'beta'] as const;
 type ReleaseStageTag = (typeof ReleaseStageTags)[number];

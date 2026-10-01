@@ -1,19 +1,19 @@
-import { createHash } from 'crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
-import { resolve as resolvePath } from 'path';
-import { Symbol, SyntaxKind, ts } from 'ts-morph';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
+import { SyntaxKind, type Symbol as TsSymbol, type ts } from 'ts-morph';
 import {
-    DefaultTheme,
+    type CommentDisplayPart,
+    type DefaultTheme,
     DocumentReflection,
     i18n,
     JSX,
-    Reflection,
-    ReflectionSymbolId,
-    translateTagName,
-    type CommentDisplayPart
+    type Reflection,
+    type ReflectionSymbolId,
+    translateTagName
 } from 'typedoc';
-import type { Hook } from './hook.js';
 import { installLanguages, type TypeDocLanguages } from '../utils.js';
+import type { Hook } from './hook.js';
 
 const ExampleNameOverwrite = [
     {
@@ -76,7 +76,7 @@ const examples: Record<
         content: string;
         hash: string;
         fileName: string;
-        sources: { source: string; fileName: string; path: string; symbol: Symbol }[];
+        sources: { source: string; fileName: string; path: string; symbol: TsSymbol }[];
     }[]
 > = {};
 
@@ -135,7 +135,11 @@ export default {
                     }
                 }
                 let exampleContent = (exampleTag.getCommentText() ?? '').split('\n').slice(1).join('\n');
-                const exampleVersions = examples[exampleName] ?? (examples[exampleName] = []);
+                let exampleVersions = examples[exampleName];
+                if (!exampleVersions) {
+                    exampleVersions = [];
+                    examples[exampleName] = exampleVersions;
+                }
                 if (commentLinesWithoutStars.length > 1 && commentLinesWithoutStars[0].startsWith('```')) {
                     const codeBlockEnd = commentLinesWithoutStars.indexOf('```', 1);
                     if (codeBlockEnd >= 0) {
@@ -203,7 +207,7 @@ export default {
                     const exampleFilePath = resolvePath(exampleDir, exampleVersion.fileName);
                     if (existsSync(exampleFilePath)) {
                         let fileContent = readFileSync(exampleFilePath, 'utf-8');
-                        const match = /^```(.+)\n([^]*?)```$/.exec(exampleVersion.content);
+                        const match = /^```(.+)\n([\s\S]*?)```$/.exec(exampleVersion.content);
                         if (match) {
                             fileContent = `\`\`\`${match[1]}\n${fileContent.trim()}\n\`\`\``;
                         }
@@ -221,7 +225,6 @@ export default {
         ]);
         tsdocApplication.renderer.on('beginRender', () => {
             const defaultTheme = tsdocApplication.renderer.theme as DefaultTheme;
-            // eslint-disable-next-line @typescript-eslint/unbound-method
             const oldContextFactory = defaultTheme.getRenderContext;
             defaultTheme.getRenderContext = function (...args) {
                 const renderContext = oldContextFactory.call(this, ...args);
@@ -361,7 +364,7 @@ export default {
         for (const [, exampleVersions] of Object.entries(examples)) {
             for (const exampleVersion of exampleVersions) {
                 let fileContent = exampleVersion.content;
-                const match = /^```(.+)\n([^]*?)```$/.exec(exampleVersion.content);
+                const match = /^```(.+)\n([\s\S]*?)```$/.exec(exampleVersion.content);
                 if (match) {
                     const [, , content] = match;
                     fileContent = content;

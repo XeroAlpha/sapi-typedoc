@@ -4,10 +4,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "tsx ./script/cli.ts build",
-    "update": "tsx ./script/cli.ts update",
-    "update-cache": "tsx ./script/cli.ts update-cached",
-    "lint-script": "cd ./script && eslint --fix ."
+    "build": "npx tsx ./script/cli.ts build",
+    "update": "npx tsx ./script/cli.ts update",
+    "update-cached": "npx tsx ./script/cli.ts update-cached",
+    "lint-script": "npx biome check --write ./script"
   },
   "dependencies": {
     "semver": "^7.7.2",
@@ -17,16 +17,10 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.35.0",
+    "@biomejs/biome": "2.5.15",
     "@types/node": "^24.4.0",
     "@types/semver": "^7.7.1",
-    "eslint": "^9.35.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "globals": "^16.4.0",
-    "prettier": "^3.6.2",
     "tsx": "^4.20.5",
-    "type-fest": "^5.0.0",
-    "typescript-eslint": "^8.43.0"
+    "type-fest": "^5.0.0"
   }
 }

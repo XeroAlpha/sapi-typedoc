@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { strict as assert } from 'assert';
+// biome-ignore-all lint/correctness/noUnusedImports: 常用导入，有意保留，便于快速编写 fixer
+import { strict as assert } from 'node:assert';
 import { Scope, StructureKind, SyntaxKind, ts } from 'ts-morph';
-import type { HookFunction, Hook, TranslateHookContext } from './hook.js';
+import type { Hook, HookFunction, TranslateHookContext } from './hook.js';
 
 assert(true);
 
