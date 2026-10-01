@@ -79,6 +79,8 @@ export declare enum MinecraftBiomeTypes {
     Grove = "minecraft:grove",
     /** 下界荒地。 */
     Hell = "minecraft:hell",
+    /** Ice Caves。 */
+    IceCaves = "minecraft:ice_caves",
     /** 雪山。 */
     IceMountains = "minecraft:ice_mountains",
     /** 雪原。 */

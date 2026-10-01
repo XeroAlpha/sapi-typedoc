@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentBlockStateChangeEvent, BlockComponentEntityEvent, BlockComponentEntityFallOnEvent, BlockComponentNamedTickEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentRedstoneUpdateEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
+/* IMPORT */ import { BlockComponentBlockBreakEvent, BlockComponentBlockStateChangeEvent, BlockComponentEntityEvent, BlockComponentEntityFallOnEvent, BlockComponentNamedTickEvent, BlockComponentNeighborChangedAfterEvent, BlockComponentOnPlaceEvent, BlockComponentPlayerBreakEvent, BlockComponentPlayerInteractEvent, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentRedstoneUpdateEvent, BlockComponentStepOffEvent, BlockComponentStepOnEvent, BlockComponentTickEvent, CustomComponentParameters } from '..';
 
 /**
  * Contains a set of events that will be raised for a block.
@@ -41,6 +41,7 @@ export interface BlockCustomComponent {
      */
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void;
+    onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when the block that this custom

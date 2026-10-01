@@ -357,17 +357,6 @@ export enum EntityOperationType {
     Delete = 1,
 }
 
-export enum ExportResult {
-    ValidWorldExport = 0,
-    LevelFetchFailed = 1,
-    FileArchiverFetchFailed = 2,
-    ProjectConverterFetchFailed = 3,
-    PlayerNotFound = 4,
-    WorldExportFailed = 5,
-    WorldExportBusy = 6,
-    EditorSystemFailure = 7,
-}
-
 export enum FlattenMode {
     Both = 0,
     Down = 1,
@@ -1281,21 +1270,6 @@ export enum Plane {
     YZ = 4,
 }
 
-export enum PlaytestSessionResult {
-    OK = 0,
-    InvalidSessionHandle = 1,
-    SessionInfoNotFound = 2,
-    TooManyPlayers = 3,
-    WorldExportFailed = 4,
-    WorldExportBusy = 5,
-    UnsupportedScenario = 6,
-    EditorSystemFailure = 7,
-    InvalidLevelId = 8,
-    PlayerNotFound = 9,
-    ResponseTimeout = 10,
-    UnspecifiedError = 11,
-}
-
 export enum PrimitiveType {
     Text = 0,
     Box = 1,
@@ -1650,6 +1624,17 @@ export type AudioSettingsPropertyTypeMap = {
  * Possible tooltip types
  */
 export declare type BasicTooltipContent = LocalizedString | TooltipContent;
+
+/**
+ * Provides an opportunity to cancel a selected-tool change
+ * before it is applied. Event handlers may set `cancel` to
+ * `true` to prevent the change.
+ */
+export type BeforeSelectedModalToolChangedEventPayload = {
+    readonly previousToolId: string | undefined;
+    readonly nextToolId: string | undefined;
+    cancel: boolean;
+};
 
 /**
  * Setting types for all brush shapes
@@ -3774,37 +3759,6 @@ export declare class EntityIdentifierObservableValidator implements ObservableVa
     validate(newValue: string): string;
 }
 
-export class ExportManager {
-    private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws
-     */
-    beginExportProject(options: GameOptions): Promise<ExportResult>;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws
-     */
-    canExportProject(): boolean;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     */
-    getGameOptions(useDefault?: boolean): GameOptions;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws
-     */
-    getGameVersion(): string;
-}
-
 /**
  * Editor Extensions are the basis for all player specific,
  * editor specific functionality within the game.  Almost all
@@ -3892,7 +3846,6 @@ export class ExtensionContext {
      *
      */
     readonly cursor: Cursor;
-    readonly exportManager: ExportManager;
     /**
      * @remarks
      * Contains information about the registered extension
@@ -3915,7 +3868,6 @@ export class ExtensionContext {
      *
      */
     readonly player: Player;
-    readonly playtest: PlaytestManager;
     /**
      * @remarks
      * The instance of the players Selection Manager and the main
@@ -4648,24 +4600,6 @@ export class PendingTransaction {
      * @throws
      */
     trackBlockChangeVolume(blockVolume: BlockVolumeBase): boolean;
-}
-
-export class PlaytestManager {
-    private constructor();
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws
-     */
-    beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
-    /**
-     * @remarks
-     * @worldMutation
-     *
-     * @throws
-     */
-    getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
 
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -10206,6 +10140,13 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
+    /**
+     * @remarks
+     * Provides an opportunity to cancel a selected-tool change
+     * before it is applied.
+     *
+     */
+    onBeforeSelectedToolChanged: EventSink<BeforeSelectedModalToolChangedEventPayload>;
     /**
      * @remarks
      * Provides events when the selected modal tool changes.

@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent } from '..';
+/* IMPORT */ import { BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecipeProcessingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent, BlockVibrationPropertiesComponent } from '..';
 
 export type BlockComponentTypeMap = {
     dynamic_properties: BlockDynamicPropertiesComponent;
@@ -17,14 +17,18 @@ export type BlockComponentTypeMap = {
     'minecraft:piston': BlockPistonComponent;
     'minecraft:precipitation_interactions': BlockPrecipitationInteractionsComponent;
     'minecraft:recipe_crafting': BlockRecipeCraftingComponent;
+    'minecraft:recipe_processing': BlockRecipeProcessingComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
+    'minecraft:vibration_properties': BlockVibrationPropertiesComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     precipitation_interactions: BlockPrecipitationInteractionsComponent;
     recipe_crafting: BlockRecipeCraftingComponent;
+    recipe_processing: BlockRecipeProcessingComponent;
     record_player: BlockRecordPlayerComponent;
     redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
+    vibration_properties: BlockVibrationPropertiesComponent;
 };

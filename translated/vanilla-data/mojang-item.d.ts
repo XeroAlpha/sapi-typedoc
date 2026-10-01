@@ -1122,6 +1122,8 @@ export declare enum MinecraftItemTypes {
     FrogSpawn = "minecraft:frog_spawn",
     /** 青蛙刷怪蛋。 */
     FrogSpawnEgg = "minecraft:frog_spawn_egg",
+    /** Frostbite Spawn Egg。 */
+    FrostbiteSpawnEgg = "minecraft:frostbite_spawn_egg",
     /** 霜冰。 */
     FrostedIce = "minecraft:frosted_ice",
     /** 熔炉。 */
@@ -1344,6 +1346,11 @@ export declare enum MinecraftItemTypes {
     HuskSpawnEgg = "minecraft:husk_spawn_egg",
     /** 冰。 */
     Ice = "minecraft:ice",
+    /** Ice Ball。 */
+    IceBall = "minecraft:ice_ball",
+    /** Ice Crystal。 */
+    IceCrystal = "minecraft:ice_crystal",
+    Icicle = "minecraft:icicle",
     /** 虫蚀雕纹石砖。 */
     InfestedChiseledStoneBricks = "minecraft:infested_chiseled_stone_bricks",
     /** 虫蚀圆石。 */

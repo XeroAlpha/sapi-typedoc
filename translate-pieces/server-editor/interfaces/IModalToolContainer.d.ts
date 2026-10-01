@@ -1,4 +1,4 @@
-/* IMPORT */ import { EventSink, IModalTool, ModalToolCreationParameters, SelectedModalToolChangedEventPayload } from '..';
+/* IMPORT */ import { BeforeSelectedModalToolChangedEventPayload, EventSink, IModalTool, ModalToolCreationParameters, SelectedModalToolChangedEventPayload } from '..';
 
 export interface IModalToolContainer {
     /**
@@ -7,6 +7,13 @@ export interface IModalToolContainer {
      *
      */
     readonly currentTools: IModalTool[];
+    /**
+     * @remarks
+     * Provides an opportunity to cancel a selected-tool change
+     * before it is applied.
+     *
+     */
+    onBeforeSelectedToolChanged: EventSink<BeforeSelectedModalToolChangedEventPayload>;
     /**
      * @remarks
      * Provides events when the selected modal tool changes.

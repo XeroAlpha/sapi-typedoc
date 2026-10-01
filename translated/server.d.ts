@@ -94,6 +94,10 @@ export enum BlockComponentTypes {
      */
     RecipeCrafting = 'minecraft:recipe_crafting',
     /**
+     * @beta
+     */
+    RecipeProcessing = 'minecraft:recipe_processing',
+    /**
      * @remarks
      * Represents a block that can play a record.
      *
@@ -111,6 +115,10 @@ export enum BlockComponentTypes {
      *
      */
     Sign = 'minecraft:sign',
+    /**
+     * @beta
+     */
+    VibrationProperties = 'minecraft:vibration_properties',
 }
 
 /**
@@ -3224,16 +3232,20 @@ export type BlockComponentTypeMap = {
     'minecraft:piston': BlockPistonComponent;
     'minecraft:precipitation_interactions': BlockPrecipitationInteractionsComponent;
     'minecraft:recipe_crafting': BlockRecipeCraftingComponent;
+    'minecraft:recipe_processing': BlockRecipeProcessingComponent;
     'minecraft:record_player': BlockRecordPlayerComponent;
     'minecraft:redstone_producer': BlockRedstoneProducerComponent;
     'minecraft:sign': BlockSignComponent;
+    'minecraft:vibration_properties': BlockVibrationPropertiesComponent;
     movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     precipitation_interactions: BlockPrecipitationInteractionsComponent;
     recipe_crafting: BlockRecipeCraftingComponent;
+    recipe_processing: BlockRecipeProcessingComponent;
     record_player: BlockRecordPlayerComponent;
     redstone_producer: BlockRedstoneProducerComponent;
     sign: BlockSignComponent;
+    vibration_properties: BlockVibrationPropertiesComponent;
 };
 
 /**
@@ -5052,6 +5064,28 @@ export class BlockComponentNamedTickEvent extends BlockEvent {
 }
 
 /**
+ * @beta
+ * Contains information regarding neighboring block changes for
+ * a specific block.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockComponentNeighborChangedAfterEvent extends BlockEvent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns the neighboring block changes for this event.
+     *
+     * @returns
+     * One entry for each neighboring direction that changed,
+     * ordered by when each direction first changed. If a direction
+     * changed multiple times during the tick, the entry contains
+     * the permutation before the first change and after the last
+     * change. Intermediate permutations are not included.
+     */
+    getChanges(): NeighborChange[];
+}
+
+/**
  * Contains information regarding a specific block that was
  * placed.
  */
@@ -6180,6 +6214,92 @@ export class BlockRecipeCraftingComponent extends BlockComponent {
 }
 
 /**
+ * @beta
+ * Represents a block component that provides access to recipe
+ * processing inputs and output.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockRecipeProcessingComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * The number of addressable input slots for getInputItem,
+     * setInputItem, setInputSlotEnabled, and getInputSlotEnabled.
+     *
+     * @throws {InvalidBlockComponentError}
+     */
+    readonly inputSlotCount: number;
+    static readonly componentId = 'minecraft:recipe_processing';
+    /**
+     * @remarks
+     * Gets the item in the provided input slot.
+     *
+     * @param slot
+     * The zero-based input slot index.
+     * @returns
+     * The item stack in the input slot, or undefined if the slot
+     * is empty.
+     * @throws {ArgumentOutOfBoundsError}
+     *
+     * @throws {InvalidBlockComponentError}
+     */
+    getInputItem(slot: number): ItemStack | undefined;
+    /**
+     * @remarks
+     * Gets whether an input slot is enabled for recipe processing.
+     *
+     * @param slot
+     * The zero-based input slot index.
+     * @returns
+     * Whether the input slot is enabled.
+     * @throws {ArgumentOutOfBoundsError}
+     *
+     * @throws {InvalidBlockComponentError}
+     *
+     * @throws {UnsupportedFunctionalityError}
+     */
+    getInputSlotEnabled(slot: number): boolean;
+    /**
+     * @remarks
+     * Gets the item produced by the current recipe processing
+     * inputs.
+     *
+     * @returns
+     * The output item stack, or undefined if the current inputs do
+     * not produce an item.
+     * @throws {InvalidBlockComponentError}
+     */
+    getOutputItem(): ItemStack | undefined;
+    /**
+     * @remarks
+     * Sets or clears an item in an input slot.
+     *
+     * @worldMutation
+     *
+     * @param slot
+     * The zero-based input slot index.
+     * @param item
+     * The item stack to place in the slot, or undefined to clear
+     * the slot.
+     * @throws {ArgumentOutOfBoundsError}
+     *
+     * @throws {InvalidBlockComponentError}
+     */
+    setInputItem(slot: number, item?: ItemStack): void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws {ArgumentOutOfBoundsError}
+     *
+     * @throws {InvalidBlockComponentError}
+     *
+     * @throws {UnsupportedFunctionalityError}
+     */
+    setInputSlotEnabled(slot: number, enabled: boolean): void;
+}
+
+/**
  * Represents a block that can play a record.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6481,6 +6601,45 @@ export class BlockTypes {
      *
      */
     static getAll(): BlockType[];
+}
+
+/**
+ * @beta
+ * Represents the vibration properties of a block with a
+ * 'minecraft:vibration_properties' component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockVibrationPropertiesComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:vibration_properties';
+    /**
+     * @remarks
+     * Gets whether this block can dampen vibrations. Vibrations
+     * that occur on this block will be discarded by this block if
+     * it can dampen vibrations. Returns false when the block does
+     * not define a 'minecraft:vibration_properties' component.
+     *
+     * @returns
+     * Whether this block can dampen vibrations.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getCanDampenVibrations(): boolean;
+    /**
+     * @remarks
+     * Gets whether this block can occlude vibrations. Vibrations
+     * that pass through this block will be discarded if this block
+     * can occlude vibrations. Returns false when the block does
+     * not define a 'minecraft:vibration_properties' component.
+     *
+     * @returns
+     * Whether this block can occlude vibrations.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getCanOccludeVibrations(): boolean;
 }
 
 /**
@@ -17575,6 +17734,118 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
 }
 
 /**
+ * @beta
+ * Contains information about an item moved from a container to
+ * a player's cursor.
+ */
+export class PlayerCursorItemGrabAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack moved to the player's cursor.
+     *
+     */
+    readonly item: ItemStack;
+    /**
+     * @remarks
+     * The player whose cursor item changed.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks for items grabbed from a container to a
+ * player's cursor.
+ */
+export class PlayerCursorItemGrabAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that is called when a player grabs an item
+     * from a container to their cursor.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback function invoked when the event fires.
+     */
+    subscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): (arg0: PlayerCursorItemGrabAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a previously registered event callback.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback function to remove.
+     */
+    unsubscribe(callback: (arg0: PlayerCursorItemGrabAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information about an item moved from a player's
+ * cursor to a container.
+ */
+export class PlayerCursorItemReleaseAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack from the player's cursor.
+     *
+     */
+    readonly item: ItemStack;
+    /**
+     * @remarks
+     * The player whose cursor item changed.
+     *
+     */
+    readonly player: Player;
+}
+
+/**
+ * @beta
+ * Manages callbacks for items released from a player's cursor
+ * to a container.
+ */
+export class PlayerCursorItemReleaseAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that is called when a player releases an
+     * item from their cursor to a container.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback function invoked when the event fires.
+     */
+    subscribe(
+        callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void,
+    ): (arg0: PlayerCursorItemReleaseAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a previously registered event callback.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * The callback function to remove.
+     */
+    unsubscribe(callback: (arg0: PlayerCursorItemReleaseAfterEvent) => void): void;
+}
+
+/**
  * Contains information related to changes to a player's
  * dimension having been changed.
  */
@@ -18395,6 +18666,92 @@ export class PlayerInventoryItemChangeAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information about an attack initiated through a
+ * player item interaction before it causes effects. Set cancel
+ * to true to prevent the attack.
+ */
+export class PlayerItemAttackEntityBeforeEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The normalized world-space direction used for the attack.
+     * For standard client-initiated transaction attacks, this
+     * direction is derived from the client-provided hit position
+     * and the player's server-side eye position. Other attack
+     * paths can provide a server-derived direction. This property
+     * is undefined when the attack path does not provide an aim
+     * direction.
+     *
+     */
+    readonly aimDirection?: Vector3;
+    /**
+     * @remarks
+     * If set to true, the attack does not cause damage or other
+     * authoritative attack effects.
+     *
+     */
+    cancel: boolean;
+    /**
+     * @remarks
+     * A snapshot of the item held by the attacking player. This
+     * property is undefined when the player holds no item.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The player that initiated the attack.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The entity targeted by the attack.
+     *
+     */
+    readonly target: Entity;
+}
+
+/**
+ * @beta
+ * Manages callbacks that run before a player attacks an entity
+ * through an item interaction.
+ */
+export class PlayerItemAttackEntityBeforeEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that runs before a player attacks an entity
+     * through an item interaction.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     * @returns
+     * Closure that is called with restricted-execution privilege.
+     */
+    subscribe(
+        callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void,
+    ): (arg0: PlayerItemAttackEntityBeforeEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from this event signal.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * This closure is called with restricted-execution privilege.
+     */
+    unsubscribe(callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void): void;
 }
 
 /**
@@ -21179,7 +21536,7 @@ export class StartupEvent {
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
     /**
-     * @beta
+     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -22038,7 +22395,7 @@ export class TickingAreaManager {
 }
 
 /**
- * @beta
+ * @rc
  * A named point in time on a world clock that can occur once
  * or periodically.
  */
@@ -22546,7 +22903,7 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @beta
+     * @rc
      * @remarks
      * Retrieves a world clock by its name.
      *
@@ -23242,6 +23599,26 @@ export class WorldAfterEvents {
      */
     readonly playerCraftRecipe: PlayerCraftRecipeAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * Event signal that fires when a player grabs an item from a
+     * container to their cursor.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerCursorItemGrab: PlayerCursorItemGrabAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * Event signal that fires when a player releases an item from
+     * their cursor into a container.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly playerCursorItemRelease: PlayerCursorItemReleaseAfterEventSignal;
+    /**
      * @remarks
      * Fires when a player moved to a different dimension.
      *
@@ -23438,7 +23815,7 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} is paused.
      *
@@ -23447,7 +23824,7 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnPaused: WorldClockOnPausedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} is resumed.
      *
@@ -23456,7 +23833,7 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnResumed: WorldClockOnResumedAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when the time of a {@link WorldClock} hits
      * a {@link TimeMarker} on the clock. This can happen during a
@@ -23467,7 +23844,7 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnTimeMarker: WorldClockOnTimeMarkerAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} time is changed.
      * This can happen when the time is directly set through
@@ -23604,6 +23981,13 @@ export class WorldBeforeEvents {
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     /**
+     * @beta
+     * @remarks
+     * @earlyExecution
+     *
+     */
+    readonly playerItemAttackEntity: PlayerItemAttackEntityBeforeEventSignal;
+    /**
      * @remarks
      * Fires when a player leaves the game.
      *
@@ -23627,7 +24011,7 @@ export class WorldBeforeEvents {
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} reaches its
      * maximum time and is about to restart.
@@ -23639,7 +24023,7 @@ export class WorldBeforeEvents {
 }
 
 /**
- * @beta
+ * @rc
  * A class that represents a particular clock within a world.
  */
 export class WorldClock {
@@ -23764,7 +24148,7 @@ export class WorldClock {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to a {@link WorldClock} being
  * paused.
  */
@@ -23779,7 +24163,7 @@ export class WorldClockOnPausedAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * being paused.
  */
@@ -23813,7 +24197,7 @@ export class WorldClockOnPausedAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to a {@link WorldClock}
  * restarting.
  */
@@ -23844,7 +24228,7 @@ export class WorldClockOnRestartBeforeEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * restarting.
  */
@@ -23884,7 +24268,7 @@ export class WorldClockOnRestartBeforeEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to a {@link WorldClock} being
  * resumed.
  */
@@ -23899,7 +24283,7 @@ export class WorldClockOnResumedAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * being resumed.
  */
@@ -23933,7 +24317,7 @@ export class WorldClockOnResumedAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to when the time of a
  * {@link WorldClock} hits a {@link TimeMarker}.
  */
@@ -23954,7 +24338,7 @@ export class WorldClockOnTimeMarkerAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when the time of a
  * {@link WorldClock} hits a {@link TimeMarker}.
  */
@@ -23988,7 +24372,7 @@ export class WorldClockOnTimeMarkerAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information related to changes to the time of a
  * {@link WorldClock}.
  */
@@ -24003,7 +24387,7 @@ export class WorldClockOnTimeModifiedAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to changes to the time
  * of a {@link WorldClock}.
  */
@@ -24037,7 +24421,7 @@ export class WorldClockOnTimeModifiedAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Provides the functionality for registering custom world
  * clocks. World clocks can only be registered during the
  * system startup event.
@@ -24248,6 +24632,10 @@ export interface BlockCustomComponent {
      * @beta
      */
     onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @beta
+     */
+    onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when the block that this custom
@@ -25941,6 +26329,35 @@ export interface MusicOptions {
 }
 
 /**
+ * @beta
+ * Contains information regarding a block change in one
+ * neighboring direction.
+ */
+export interface NeighborChange {
+    /**
+     * @remarks
+     * The permutation of the neighboring block after its last
+     * change during the tick.
+     *
+     */
+    blockPermutation: BlockPermutation;
+    /**
+     * @remarks
+     * Direction from the block receiving the event to the
+     * neighboring block that changed.
+     *
+     */
+    direction: Direction;
+    /**
+     * @remarks
+     * The permutation of the neighboring block before its first
+     * change during the tick.
+     *
+     */
+    previousPermutation: BlockPermutation;
+}
+
+/**
  * Not equal to operator.
  */
 export interface NotEqualsComparison {
@@ -26876,7 +27293,7 @@ export interface TickingAreaOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for creating time markers for world clocks.
  */
 export interface TimeMarkerOptions {
@@ -27044,7 +27461,7 @@ export interface WaypointTextureSelector {
 }
 
 /**
- * @beta
+ * @rc
  * Contains parameters for world clock events that filters out
  * which events are passed to the provided callback.
  */
@@ -27058,7 +27475,7 @@ export interface WorldClockEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains additional options for registering world clocks.
  */
 export interface WorldClockRegistrationOptions {
@@ -27072,7 +27489,7 @@ export interface WorldClockRegistrationOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains parameters for world clock time marker events that
  * filters out which events are passed to the provided
  * callback.
@@ -27577,7 +27994,7 @@ export class UnloadedChunksError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link WorldClock.addTimeMarker} when
  * failing to add a time marker to a world clock.
  */
@@ -27587,7 +28004,7 @@ export class WorldClockAddTimeMarkerError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when trying to register a world clock outside of the
  * system startup event.
  */
@@ -27597,7 +28014,7 @@ export class WorldClockInvalidRegistryError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when a time marker is invalid. This can occur
  * when trying to access data on a time marker that has been
  * removed.
@@ -27608,7 +28025,7 @@ export class WorldClockInvalidTimeMarkerError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when a world clock is not found in the world
  * clock registry.
  */
@@ -27618,7 +28035,7 @@ export class WorldClockNotFoundError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link WorldClockRegistry.registerClock}
  * when failing to register a world clock.
  */
@@ -27628,7 +28045,7 @@ export class WorldClockRegistrationError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown after using the /reload command when trying to
  * register a world clock that was not previously registered.
  * New world clocks cannot be added during a reload.
@@ -27639,7 +28056,7 @@ export class WorldClockReloadNewWorldClockError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown after using the /reload command when trying to
  * re-register an existing world clock with an invalid time
  * marker.
@@ -27650,7 +28067,7 @@ export class WorldClockReloadTimeMarkerError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link WorldClock.removeTimeMarker} when
  * trying to remove a time marker with the 'minecraft'
  * namespace from a world clock.
@@ -27661,7 +28078,7 @@ export class WorldClockRemoveMinecraftTimeMarkerError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown by {@link WorldClock.rewindTo} when the world
  * clock's time is already before the time marker's first
  * occurrence.
@@ -27672,7 +28089,7 @@ export class WorldClockRewindError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Error thrown when performing actions on a world clock with a
  * time marker that does not exist.
  */

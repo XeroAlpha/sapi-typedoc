@@ -388,6 +388,10 @@ export enum PacketId {
      */
     ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-play-audio-content-packet/
+     */
+    ClientboundPlayAudioContentPacket = 'ClientboundPlayAudioContentPacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-stonecutter-set-recipe-packet/
      */
     ClientboundStonecutterSetRecipePacket = 'ClientboundStonecutterSetRecipePacket',
@@ -1051,6 +1055,12 @@ export enum PacketId {
      */
     SendPartyDestinationCookiePacket = 'SendPartyDestinationCookiePacket',
     /**
+     * Sent from the client when a cursor item split drag starts or stops.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-cursor-item-drag-packet/
+     */
+    ServerboundCursorItemDragPacket = 'ServerboundCursorItemDragPacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-data-driven-screen-closed-packet/
      */
     ServerboundDataDrivenScreenClosedPacket = 'ServerboundDataDrivenScreenClosedPacket',
@@ -1080,6 +1090,10 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-pack-setting-change-packet/
      */
     ServerboundPackSettingChangePacket = 'ServerboundPackSettingChangePacket',
+    /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-register-audio-content-packet/
+     */
+    ServerboundRegisterAudioContentPacket = 'ServerboundRegisterAudioContentPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-stonecutter-set-recipe-packet/
      */
