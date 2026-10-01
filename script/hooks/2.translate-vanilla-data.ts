@@ -1,6 +1,4 @@
-import { get } from 'https';
-import { SourceFile, SyntaxKind, ts } from 'ts-morph';
-import { URL } from 'url';
+import { type SourceFile, SyntaxKind, type ts } from 'ts-morph';
 import type { Hook } from './hook.js';
 
 const translationSources = [
@@ -8,27 +6,12 @@ const translationSources = [
     'https://xeroalpha.github.io/caidlist/data/index.json'
 ];
 
-function httpsGet(url: string | URL) {
-    return new Promise<string>((resolve, reject) => {
-        const req = get(url, (res) => {
-            if (res.statusCode !== 200) {
-                reject(new Error(`Failed to request ${String(url)}: ${res.statusCode} ${res.statusMessage}`));
-                return;
-            }
-            const chunks: string[] = [];
-            res.setEncoding('utf-8');
-            res.on('data', (chunk: string) => chunks.push(chunk));
-            res.on('end', () => {
-                resolve(chunks.join(''));
-            });
-            res.on('error', (err) => {
-                reject(err);
-            });
-        });
-        req.on('error', (err) => {
-            reject(err);
-        });
-    });
+async function fetchText(url: string | URL) {
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+    }
+    return res.text();
 }
 
 const tsPopulators: Record<
@@ -220,7 +203,7 @@ export default {
     async afterTranslate({ project }) {
         const [sourceUrl, dataIndex] = await Promise.any(
             translationSources.map(async (translationSource) => {
-                const dataIndex = JSON.parse(await httpsGet(translationSource)) as IDListDataIndex;
+                const dataIndex = JSON.parse(await fetchText(translationSource)) as IDListDataIndex;
                 return [translationSource, dataIndex] as const;
             })
         );
@@ -240,7 +223,7 @@ export default {
                         throw new Error(`Wrong idlist index`);
                     }
                     const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
-                    const { enums } = JSON.parse(await httpsGet(dataUrl)) as IDListDataCollection;
+                    const { enums } = JSON.parse(await fetchText(dataUrl)) as IDListDataCollection;
                     return enums;
                 })
             )

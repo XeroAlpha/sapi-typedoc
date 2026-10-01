@@ -1,6 +1,6 @@
-import { mkdirSync, readdirSync } from 'fs';
-import { resolve as resolvePath } from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { mkdirSync, readdirSync } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import type { GetContextFromHookFunction, Hook, HookFunction } from './hooks/hook.js';
 
 const hookPath = resolvePath(fileURLToPath(import.meta.url), '..', 'hooks');
@@ -23,7 +23,7 @@ async function loadHooks() {
         for (let i = 0; i < scriptHooks.length; i++) {
             const scriptHook = scriptHooks[i].default;
             const logName = `[${event}] ${hookScripts[i]}`;
-            let hookFunc;
+            let hookFunc: HookFunction<unknown> | undefined;
             if (typeof scriptHook === 'function') {
                 hookFunc = scriptHook.bind(null, event);
             } else {

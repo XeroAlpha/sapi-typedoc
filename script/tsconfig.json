@@ -1,7 +1,6 @@
 {
   "include": [
-    "./**/*.ts",
-    "eslint.config.mjs"
+    "./**/*.ts"
   ],
   "compilerOptions": {
     "moduleResolution": "NodeNext",
@@ -10,7 +9,6 @@
     "lib": ["ESNext"],
     "types": ["node"],
     "noEmit": true,
-    "allowJs": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

@@ -1,7 +1,7 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
-import { sep as pathSep, relative as relativePath, resolve as resolvePath } from 'path';
-import { sep as pathSepPosix } from 'path/posix';
-import { ExportGetableNode, SourceFile, SyntaxKind, ts } from 'ts-morph';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { sep as pathSep, relative as relativePath, resolve as resolvePath } from 'node:path';
+import { sep as pathSepPosix } from 'node:path/posix';
+import { type ExportGetableNode, type SourceFile, SyntaxKind, ts } from 'ts-morph';
 import { translatedPath, translatingPath } from './utils.js';
 
 const SkippedTopLevelSyntaxKinds = [
@@ -250,7 +250,7 @@ export function split(sourceFile: SourceFile) {
 export function writePiece(sourceFile: SourceFile, piece: Piece) {
     mkdirSync(resolvePath(piece.path, '..'), { recursive: true });
     if (piece.generated) {
-        writeFileSync(piece.path, piece.content + '\n');
+        writeFileSync(piece.path, `${piece.content}\n`);
     } else {
         let pieceContent = sourceFile.getFullText().slice(piece.start, piece.end);
         if (piece.imports) {

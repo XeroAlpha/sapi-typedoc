@@ -33,8 +33,8 @@ npm run build
 |`npm install`|安装构建脚本所需依赖|
 |`npm run build`|合并 `translate-pieces/` 中的翻译，基于 `translated/` 生成译文文档到 `dist/`，并输出 `dist/index.json`|
 |`npm run update`|检出 `original` 分支、拉取最新的 `@minecraft` 包，并重新切分 `translate-pieces/` 中的翻译片段|
-|`npm run update-cache`|与 `update` 相同，但使用 `translated/package.json` 中指定的版本|
-|`npm run lint-script`|对 `script/` 运行 ESLint 并自动修复|
+|`npm run update-cached`|与 `update` 相同，但使用 `translated/package.json` 中指定的版本|
+|`npm run lint-script`|对 `script/` 运行 Biome 检查（格式化 + lint）并自动修复|
 
 > ⚠️ `npm run update` 会强制把分支切换到 `original`，运行前请先提交或 stash 当前更改。
 

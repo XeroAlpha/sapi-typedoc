@@ -1,4 +1,4 @@
-import { SyntaxKind, ts } from 'ts-morph';
+import { SyntaxKind, type ts } from 'ts-morph';
 import type { Hook } from './hook.js';
 
 const translateTexts = [

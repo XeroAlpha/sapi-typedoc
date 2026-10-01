@@ -1,9 +1,9 @@
-import { resolve as resolvePath } from 'path';
-import type { Hook } from './hook.js';
-import { basePath } from '../utils.js';
-import { existsSync, mkdirSync, readdirSync, readFileSync } from 'fs';
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
 import type { ts } from 'ts-morph';
+import { basePath } from '../utils.js';
+import type { Hook } from './hook.js';
 
 const cacheDir = resolvePath(basePath, 'cache', 'net-packet-ids');
 const protocolDocsBase = 'bedrock-protocol-docs';

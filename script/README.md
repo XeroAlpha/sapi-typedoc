@@ -29,7 +29,7 @@ dist/（站点产物，已 gitignore）
 | `utils.ts` | 路径常量、git 封装、版本解析/比较、TypeDoc 文案安装（见「utils.ts」） |
 | `pickRandom.ts` | 工具：随机挑一个未翻译片断 |
 | `hooks/hook.d.ts` | Hook 类型定义（生命周期与 context 继承关系） |
-| `.prettierrc` / `eslint.config.mjs` / `tsconfig.json` | 工程配置 |
+| `../biome.json` / `tsconfig.json` | 工程配置（Biome 配置位于仓库根目录） |
 
 ## utils.ts
 
@@ -46,8 +46,8 @@ dist/（站点产物，已 gitignore）
 | - | - | - |
 | `npm run build` | `tsx ./script/cli.ts build` | 翻译版构建（合并 translate-pieces 后生成站点） |
 | `npm run update` | `tsx ./script/cli.ts update` | **强制切到 original 分支**重建原始 d.ts 并重新切分片断 |
-| `npm run update-cache` | `tsx ./script/cli.ts update-cached` | 同上，但保留 package.json 版本快照 |
-| `npm run lint-script` | `cd script && eslint --fix .` | 仅检查 script/ |
+| `npm run update-cached` | `tsx ./script/cli.ts update-cached` | 同上，但保留 package.json 版本快照 |
+| `npm run lint-script` | `biome check --write ./script` | 对 script/ 格式化 + lint 并自动修复 |
 
 ⚠️ **`npm run update` 会执行 `git checkout original`（见 update.ts），未提交的更改会被丢弃。运行前务必提交或 stash。**
 
@@ -115,7 +115,13 @@ dist/（站点产物，已 gitignore）
 
 - ESM（`"type": "module"`），用 `tsx` 运行；import 必须带 `.js` 后缀（NodeNext）。
 - `tsconfig.json`：strict、noImplicitAny、verbatimModuleSyntax 等全开。
-- ESLint：typescript-eslint `strictTypeChecked` + `stylisticTypeChecked` + prettier（`.prettierrc`：printWidth 120、tabWidth 4、singleQuote、无尾逗号）。改完跑 `npm run lint-script`。
+- 代码风格与静态检查用 [Biome](https://biomejs.dev/)（配置在仓库根目录 `biome.json`，参考 [quickjs-debugger](https://github.com/XeroAlpha/quickjs-debugger) 的用法）：
+  - formatter 对齐原 Prettier 配置：lineWidth 120、indentWidth 4、单引号、无尾逗号；并用 `assist.source.organizeImports` 排序 import。
+  - linter 使用 `recommended` 预设，并开启 `linter.domains.types: "recommended"`，用 Biome 的类型相关规则部分替代原 typescript-eslint `strictTypeChecked` + `stylisticTypeChecked`。
+  - 类型检查的边界：`domains.types` 只启用该 domain 的 recommended 规则；真正对标 typescript-eslint 类型规则（`no-floating-promises` 等）的规则仍在 nursery，需在 `linter.rules.nursery` 中逐个显式开启（`noFloatingPromises`、`noMisusedPromises`、`useAwaitThenable`），且 Biome 的类型推断远弱于 tsc。当前 `recommended` 对本目录代码不产生额外告警；改成 `"types": "all"` 会额外报 `useArraySortCompare`（3 处字符串数组 `.sort()`，属误报）。类型层面的最终保障仍是 `npx tsc -p script`。
+  - `files.includes` 只匹配 `script/**` 下的 js/ts，`vcs.useIgnoreFile` 会跳过 `.gitignore` 与 `.git/info/exclude` 中的文件，因此 `original/`、`translate-pieces/`、`translated/`、`dist/`、`cache/` 等生成物/工作区不会被格式化。
+  - 需要定点屏蔽时用 `// biome-ignore lint/<group>/<rule>: 原因`（原来的 `eslint-disable*` 注释已按此改写）；整文件屏蔽用 `// biome-ignore-all`，例如 `hooks/0.corruption-fixer.ts` 有意保留一批常用 ts-morph 导入，供随时编写 fixer。
+  - 改完跑 `npm run lint-script`（等价的 `npx biome check --write ./script`）；不加 `--write` 即为只检查。
 - **没有测试框架**：验证方式是 `npm run lint-script` + 构建验证。任何管线改动至少本地跑一次 build；涉及 update 流程的改动，**先跑一次 `npm run update` 并检查其产物**（如 translate-pieces/ 的切分结果），再跑一次 `npm run build` 验证。
 - TypeDoc 是 `^0.28.13`，其内部 API（renderer、internationalization、DocumentReflection）跨版本不稳定，升级需单独验证。
 
