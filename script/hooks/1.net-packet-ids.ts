@@ -1,13 +1,13 @@
-import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs';
 import { resolve as resolvePath } from 'node:path';
 import type { ts } from 'ts-morph';
-import { basePath } from '../utils.js';
+import { basePath, git } from '../utils.js';
 import type { Hook } from './hook.js';
 
 const cacheDir = resolvePath(basePath, 'cache', 'net-packet-ids');
 const protocolDocsBase = 'bedrock-protocol-docs';
 const protocolDocsRepo = 'https://github.com/Mojang/bedrock-protocol-docs.git';
+const protocolDocsRepoEnv = 'SAPI_PROTOCOL_DOCS_REPO';
 
 interface ProtocolDocJSON {
     title: string;
@@ -16,17 +16,52 @@ interface ProtocolDocJSON {
     };
 }
 
+/**
+ * 把 bedrock-protocol-docs 放到 cache/net-packet-ids/bedrock-protocol-docs。
+ *
+ * 外部仓库只是补充性文档：拿不到时降级为「无 packet_details 注记」，而不是让整个 build 失败
+ * （此前 `git clone` / `git pull` 抛错会直接中断构建）。
+ * 可用 SAPI_PROTOCOL_DOCS_REPO 指向镜像/fork。
+ */
+function ensureProtocolDocs(): void {
+    const repoDir = resolvePath(cacheDir, protocolDocsBase);
+    if (existsSync(resolvePath(repoDir, '.git'))) {
+        try {
+            git('pull --force', { cwd: repoDir, stdio: 'pipe' });
+        } catch (e) {
+            console.warn(`[net-packet-ids] git pull 失败，继续使用已有缓存：${reason(e)}`);
+        }
+        return;
+    }
+
+    const cloneUrl = process.env[protocolDocsRepoEnv]?.trim() || protocolDocsRepo;
+    try {
+        git(`clone ${cloneUrl} ${protocolDocsBase} --depth 1`, { cwd: cacheDir, stdio: 'pipe' });
+    } catch (e) {
+        console.warn(`[net-packet-ids] git clone ${cloneUrl} 失败：${reason(e)}`);
+        // 失败可能留下半个仓库目录，清掉以免残缺内容被当成有效缓存。
+        rmSync(repoDir, { recursive: true, force: true });
+        console.warn(
+            `[net-packet-ids] 无法获取 ${protocolDocsBase}，本次构建跳过 PacketId 的 packet_details 注记` +
+                (process.env[protocolDocsRepoEnv] ? '' : `；可设 ${protocolDocsRepoEnv} 指向镜像`)
+        );
+    }
+}
+
+function reason(e: unknown): string {
+    const stderr = (e as { stderr?: unknown })?.stderr;
+    const text = typeof stderr === 'string' ? stderr : '';
+    return text.trim().split('\n').filter(Boolean).pop() ?? String(e);
+}
+
 export default {
     afterLoad({ project }) {
         mkdirSync(cacheDir, { recursive: true });
         const protocolDocsRepoDir = resolvePath(cacheDir, protocolDocsBase);
-        if (existsSync(resolvePath(protocolDocsRepoDir, '.git'))) {
-            execSync('git pull --force', { cwd: protocolDocsRepoDir });
-        } else {
-            execSync(`git clone ${protocolDocsRepo} ${protocolDocsBase} --depth 1`, { cwd: cacheDir });
-        }
+        ensureProtocolDocs();
         const protocolDocsJsonDir = resolvePath(protocolDocsRepoDir, 'json');
-        const jsonList = readdirSync(protocolDocsJsonDir);
+        // 取不到文档时目录可能不存在：按空列表处理，而不是让 readdirSync 抛错。
+        const jsonList = existsSync(protocolDocsJsonDir) ? readdirSync(protocolDocsJsonDir) : [];
 
         const netDts = project.getSourceFileOrThrow('server-net.d.ts');
         const indentText = project.manipulationSettings.getIndentationText();
