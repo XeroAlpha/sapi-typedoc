@@ -1,7 +1,8 @@
-import { execSync } from 'node:child_process';
+import { type ExecSyncOptionsWithStringEncoding, execSync } from 'node:child_process';
 import { resolve as resolvePath } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import semver from 'semver';
+import type { SetOptional } from 'type-fest';
 import type { Application, TranslatableStrings } from 'typedoc';
 
 export const basePath = resolvePath(fileURLToPath(import.meta.url), '..', '..');
@@ -10,8 +11,8 @@ export const translatingPath = resolvePath(basePath, 'translate-pieces');
 export const translatedPath = resolvePath(basePath, 'translated');
 export const distPath = resolvePath(basePath, 'dist');
 
-export function git(args: string) {
-    return execSync(`git ${args}`, { cwd: basePath });
+export function git(args: string, options?: SetOptional<ExecSyncOptionsWithStringEncoding, 'encoding'>) {
+    return execSync(`git ${args}`, { cwd: basePath, encoding: 'utf-8', ...options }).trim();
 }
 
 export interface PackageVersion {

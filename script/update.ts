@@ -6,8 +6,8 @@ import { build } from './build.js';
 import runHooks from './hooks.js';
 import { split, writePiece } from './split.js';
 import {
-    basePath,
     comparePackageVersion,
+    git,
     originalPath,
     type PackageVersion,
     parsePackageVersion,
@@ -19,16 +19,9 @@ const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tas
 
 export async function update(keepCachedPackageJson?: boolean) {
     // 强制检出 original 分支
-    const head = execSync('git rev-parse --abbrev-ref HEAD', {
-        cwd: basePath
-    })
-        .toString('utf-8')
-        .trim();
+    const head = git('rev-parse --abbrev-ref HEAD');
     if (head !== 'original' && head !== 'HEAD') {
-        execSync('git checkout original', {
-            cwd: basePath,
-            stdio: 'inherit'
-        });
+        git('checkout original', { stdio: 'inherit' });
     }
 
     // 保证 npm 可以识别 overrides 属性

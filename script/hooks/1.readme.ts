@@ -25,7 +25,7 @@ function getKindInfo(kind: ReflectionKind) {
 }
 
 function getCurrentHead() {
-    return git('rev-parse --abbrev-ref HEAD').toString('utf-8').trim();
+    return git('rev-parse --abbrev-ref HEAD');
 }
 
 function isBranchExists(branch: string) {
@@ -39,8 +39,6 @@ function isBranchExists(branch: string) {
 
 function listRefs(refSuffix: string) {
     return git(`show-ref ${refSuffix}`)
-        .toString('utf-8')
-        .trim()
         .split('\n')
         .filter((e) => e !== '')
         .map((ln) => ln.split(' '))
@@ -50,7 +48,6 @@ function listRefs(refSuffix: string) {
 function listTrackingFiles(branch: string) {
     const files: Record<string, string> = {};
     git(`ls-tree -r --format="%(objectname)\t%(path)" ${branch}`)
-        .toString('utf-8')
         .split('\n')
         .map((e) => e.split('\t'))
         .forEach(([hash, path]) => {
@@ -60,24 +57,19 @@ function listTrackingFiles(branch: string) {
 }
 
 function getBranchCommits(branch: string) {
-    return git(`rev-list ${branch} --`).toString('utf-8').trim().split('\n');
+    return git(`rev-list ${branch} --`).split('\n');
 }
 
 function getLatestModifiedCommitHash(branch: string, path: string) {
-    return git(`rev-list -1 ${branch} -- "${path}"`).toString('utf-8').trim();
+    return git(`rev-list -1 ${branch} -- "${path}"`);
 }
 
 function getMergeBase(commits: string[]) {
-    return git(`merge-base ${commits.join(' ')}`)
-        .toString('utf-8')
-        .trim();
+    return git(`merge-base ${commits.join(' ')}`);
 }
 
 function getCommitInfo(commitHash: string) {
-    const [parents, date, ...message] = git(`show --format="%P\t%cI\t%B" -s ${commitHash}`)
-        .toString('utf-8')
-        .trim()
-        .split('\t');
+    const [parents, date, ...message] = git(`show --format="%P\t%cI\t%B" -s ${commitHash}`).split('\t');
     return {
         parents: parents.split(' ').filter((s) => s !== ''),
         date: new Date(date),
@@ -87,11 +79,7 @@ function getCommitInfo(commitHash: string) {
 
 function listCommitsByCommand(branch: string, commitCommand: string) {
     const prefix = `/${commitCommand} `;
-    const commitLines = git(`log --grep="^${prefix}" --format="@@@@@%H\t%cI\t%B" ${branch} --`)
-        .toString('utf-8')
-        .trim()
-        .split('@@@@@')
-        .slice(1);
+    const commitLines = git(`log --grep="^${prefix}" --format="@@@@@%H\t%cI\t%B" ${branch} --`).split('@@@@@').slice(1);
     const commits = commitLines.map((commitStr) => {
         const [hash, date, ...message] = commitStr.split('\t');
         return {
