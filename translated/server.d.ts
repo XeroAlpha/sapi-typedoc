@@ -5772,7 +5772,7 @@ export class BlockMovableComponent extends BlockComponent {
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific
  * {@link Block}).
- * @seeExample addTranslatedSign.ts 9e2fd749
+ * @seeExample addTranslatedSign.ts 3043f4af
  */
 export class BlockPermutation {
     private constructor();
@@ -6243,7 +6243,7 @@ export class BlockRedstoneProducerComponent extends BlockComponent {
  * @seeExample addSign.ts
  * @seeExample addTwoSidedSign.ts
  * @seeExample updateSignText.ts
- * @seeExample addTranslatedSign.ts 9e2fd749
+ * @seeExample addTranslatedSign.ts 3043f4af
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockSignComponent extends BlockComponent {
@@ -8520,7 +8520,7 @@ export class Dimension {
      * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
-     * @seeExample triggerEvent.ts d45f49d2
+     * @seeExample triggerEvent.ts 3d5cfdcb
      */
     spawnEntity<T = never>(
         identifier: EntityIdentifierType<NoInfer<T>>,
@@ -8562,7 +8562,7 @@ export class Dimension {
      * @throws {LocationInUnloadedChunkError}
      *
      * @throws {LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bba750fb
+     * @seeExample spawnParticle.ts 17111287
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
@@ -9866,8 +9866,8 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample triggerEvent.ts e68d4331
-     * @seeExample triggerEvent.ts d45f49d2
+     * @seeExample triggerEvent.ts 3010cc4e
+     * @seeExample triggerEvent.ts 3d5cfdcb
      */
     triggerEvent(eventName: string): void;
     /**
@@ -17039,7 +17039,7 @@ export class Player extends Entity {
      * @throws {LocationInUnloadedChunkError}
      *
      * @throws {LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bd8c7a07
+     * @seeExample spawnParticle.ts c6d8a491
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
@@ -26337,9 +26337,9 @@ export interface RangeComparison {
 
 /**
  * Defines a JSON structure that is used for more flexible.
- * @seeExample addTranslatedSign.ts c0399cc7
+ * @seeExample addTranslatedSign.ts 5d9a4079
  * @seeExample showTranslatedMessageForm.ts
- * @seeExample addTranslatedSign.ts 9e2fd749
+ * @seeExample addTranslatedSign.ts 3043f4af
  */
 export interface RawMessage {
     /**

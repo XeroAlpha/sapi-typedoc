@@ -14,5 +14,6 @@
             "source.fixAll.biome": "explicit",
             "source.organizeImports.biome": "explicit"
         }
-    }
+    },
+    "npm.exclude": "**/cache/**/*"
 }

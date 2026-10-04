@@ -6,14 +6,7 @@
         "useIgnoreFile": true
     },
     "files": {
-        "includes": [
-            "script/**/*.ts",
-            "script/**/*.mts",
-            "script/**/*.cts",
-            "script/**/*.js",
-            "script/**/*.mjs",
-            "script/**/*.cjs"
-        ]
+        "includes": ["script/**/*.ts"]
     },
     "formatter": {
         "enabled": true,
@@ -24,7 +17,99 @@
     "linter": {
         "enabled": true,
         "rules": {
-            "preset": "recommended"
+            "preset": "recommended",
+            "complexity": {
+                "noExcessiveCognitiveComplexity": "off",
+                "noExcessiveLinesPerFunction": "off",
+                "noForEach": "warn",
+                "noImplicitCoercions": "warn",
+                "noUselessReturn": "warn",
+                "noUselessStringConcat": "warn",
+                "noUselessUndefined": "warn",
+                "useMaxParams": "warn",
+                "useSimplifiedLogicExpression": "warn"
+            },
+            "performance": {
+                "noAccumulatingSpread": "warn",
+                "noBarrelFile": "warn",
+                "noDelete": "warn",
+                "noNamespaceImport": "warn",
+                "useTopLevelRegex": "warn"
+            },
+            "style": {
+                "noCommonJs": "warn",
+                "noEnum": "warn",
+                "noExcessiveLinesPerFile": "off",
+                "noExportedImports": "warn",
+                "noIncrementDecrement": "warn",
+                "noInferrableTypes": "warn",
+                "noMagicNumbers": "off",
+                "noMultiAssign": "warn",
+                "noNamespace": "warn",
+                "noNestedTernary": "warn",
+                "noParameterProperties": "warn",
+                "noRestrictedGlobals": "warn",
+                "noRestrictedImports": "warn",
+                "noShoutyConstants": "warn",
+                "noSubstr": "warn",
+                "noUnusedTemplateLiteral": "warn",
+                "noUselessElse": "warn",
+                "noYodaExpression": "warn",
+                "useAsConstAssertion": "warn",
+                "useAtIndex": "warn",
+                "useBlockStatements": "warn",
+                "useCollapsedIf": "warn",
+                "useConsistentArrayType": "warn",
+                "useConsistentArrowReturn": "warn",
+                "useConsistentBuiltinInstantiation": "warn",
+                "useConsistentMemberAccessibility": "warn",
+                "useConsistentTypeDefinitions": "warn",
+                "useDefaultParameterLast": "warn",
+                "useDefaultSwitchClause": "warn",
+                "useDestructuring": {
+                    "level": "warn",
+                    "options": {
+                        "assignmentExpression": {
+                            "array": false,
+                            "object": false
+                        }
+                    }
+                },
+                "useErrorCause": "warn",
+                "useExplicitLengthCheck": "warn",
+                "useFilenamingConvention": "warn",
+                "useForOf": "warn",
+                "useGlobalThis": "warn",
+                "useGroupedAccessorPairs": "warn",
+                "useNamingConvention": {
+                    "level": "off",
+                    "options": {
+                        "strictCase": false
+                    }
+                },
+                "useNodeAssertStrict": "warn",
+                "useNumberNamespace": "warn",
+                "useObjectSpread": "warn",
+                "useReadonlyClassProperties": "warn",
+                "useShorthandAssign": "warn",
+                "useSingleVarDeclarator": "warn",
+                "useSpreadOverApply": "warn",
+                "useSymbolDescription": "warn",
+                "useThrowNewError": "warn",
+                "useThrowOnlyError": "warn",
+                "useTrimStartEnd": "warn",
+                "useUnifiedTypeSignatures": "warn"
+            },
+            "suspicious": {
+                "noEvolvingTypes": "warn",
+                "noShadow": "warn"
+            },
+            "nursery": {
+                "noUnnecessaryTemplateExpression": "warn",
+                "useArraySome": "warn",
+                "useIncludes": "warn",
+                "useNullishCoalescing": "warn"
+            }
         },
         "domains": {
             "types": "recommended"

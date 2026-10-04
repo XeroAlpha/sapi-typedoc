@@ -8,31 +8,31 @@ export default {
         const registerRemarkTags = registerJsdocs
             .flatMap((jsdoc) => jsdoc.getTags())
             .filter((t) => t.getTagName() === 'remarks');
-        registerRemarkTags.forEach((t) => {
-            const structure = t.getStructure();
+        for (const jsdocTag of registerRemarkTags) {
+            const structure = jsdocTag.getStructure();
             if (typeof structure.text === 'string') {
                 structure.text = structure.text.replace(
                     '/gametest run\n[testClassName]:[testName]',
                     '`/gametest run\n[testClassName]:[testName]`'
                 );
-                t.set(structure);
+                jsdocTag.set(structure);
             }
-        });
+        }
 
         const registerAsyncFunc = gtSource.getFunctionOrThrow('registerAsync');
         const registerAsyncJsdocs = registerAsyncFunc.getJsDocs();
         const registerAsyncRemarkTags = registerAsyncJsdocs
             .flatMap((jsdoc) => jsdoc.getTags())
             .filter((t) => t.getTagName() === 'remarks');
-        registerAsyncRemarkTags.forEach((t) => {
-            const structure = t.getStructure();
+        for (const jsdocTag of registerAsyncRemarkTags) {
+            const structure = jsdocTag.getStructure();
             if (typeof structure.text === 'string') {
                 structure.text = structure.text.replace(
                     '/gametest run [testClassName]:[testName]',
                     '`/gametest run [testClassName]:[testName]`'
                 );
-                t.set(structure);
+                jsdocTag.set(structure);
             }
-        });
+        }
     }
 } as Hook;

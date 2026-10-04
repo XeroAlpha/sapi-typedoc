@@ -56,25 +56,22 @@ function generateFilterResult(rootRefl: Reflection, filter: (refl: Reflection) =
             }
             return true;
         });
-        if (children.length > 0) {
-            if (children.every((c) => filteredRefl.has(c))) {
-                children.forEach((c) => {
-                    filteredRefl.delete(c);
-                });
-                filteredRefl.add(refl);
+        if (children.every((c) => filteredRefl.has(c))) {
+            for (const child of children) {
+                filteredRefl.delete(child);
             }
+            filteredRefl.add(refl);
         }
     };
     traverseTags(rootRefl);
     const filteredReflWithAncestors = new Set<Reflection>();
     for (const refl of filteredRefl) {
-        let parent = refl.parent;
+        let { parent } = refl;
         while (parent) {
             if (filteredReflWithAncestors.has(parent)) {
                 break;
-            } else {
-                filteredReflWithAncestors.add(parent);
             }
+            filteredReflWithAncestors.add(parent);
             parent = parent.parent;
         }
         filteredReflWithAncestors.add(refl);
@@ -95,7 +92,7 @@ function generateFilterResult(rootRefl: Reflection, filter: (refl: Reflection) =
                 });
                 result.push({
                     kind: 'text',
-                    text: `\n`
+                    text: '\n'
                 });
             } else {
                 result.push({
@@ -162,28 +159,26 @@ const translateTexts: {
 
 export default {
     afterLoad({ sourceFiles }) {
-        sourceFiles.forEach((sourceFile) => {
+        for (const sourceFile of sourceFiles) {
             const fullText = sourceFile.getFullText();
             const textChanges: ts.TextChange[] = [];
             const jsdocNodes = sourceFile.getDescendantsOfKind(SyntaxKind.JSDoc);
-            translateTexts.forEach(({ from, to, matches }) => {
+            for (const { from, to, matches } of translateTexts) {
                 fullText.replaceAll(from, (match, offset: number) => {
                     const relatedJsdoc = jsdocNodes.find((node) => node.containsRange(offset, offset + match.length));
-                    if (relatedJsdoc) {
-                        if (!matches || matches(relatedJsdoc.getParent())) {
-                            textChanges.push({
-                                span: { start: offset, length: match.length },
-                                newText: to
-                            });
-                        }
+                    if (relatedJsdoc && (!matches || matches(relatedJsdoc.getParent()))) {
+                        textChanges.push({
+                            span: { start: offset, length: match.length },
+                            newText: to
+                        });
                     }
                     return '';
                 });
-            });
+            }
             if (textChanges.length > 0) {
                 sourceFile.applyTextChanges(textChanges);
             }
-        });
+        }
     },
     beforeConvert({ tsdocApplication }) {
         installLanguages(tsdocApplication, TypeDocExtraTranslations);
@@ -198,9 +193,10 @@ export default {
         });
     },
     afterConvert({ tsdocProject }) {
-        const worldMutationSummary = generateFilterResult(tsdocProject, (refl) => {
-            return refl.comment?.hasModifier(worldMutationTag) ?? false;
-        });
+        const worldMutationSummary = generateFilterResult(
+            tsdocProject,
+            (refl) => refl.comment?.hasModifier(worldMutationTag) ?? false
+        );
         const worldMutationTagName = translateTagName(worldMutationTag);
         const worldMutationListName = String(i18n.execution_privileges_list(worldMutationTagName));
         const worldMutationSummaryRef = new DocumentReflection(
@@ -212,9 +208,10 @@ export default {
         tsdocProject.registerReflection(worldMutationSummaryRef, undefined, undefined);
         tsdocProject.addChild(worldMutationSummaryRef);
 
-        const earlyExecutionSummary = generateFilterResult(tsdocProject, (refl) => {
-            return refl.comment?.hasModifier(earlyExecutionTag) ?? false;
-        });
+        const earlyExecutionSummary = generateFilterResult(
+            tsdocProject,
+            (refl) => refl.comment?.hasModifier(earlyExecutionTag) ?? false
+        );
         const earlyExecutionTagName = translateTagName(earlyExecutionTag);
         const earlyExecutionListName = String(i18n.execution_privileges_list(earlyExecutionTagName));
         const earlyExecutionSummaryRef = new DocumentReflection(

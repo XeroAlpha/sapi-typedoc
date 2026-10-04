@@ -1,20 +1,23 @@
 import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { createRequire } from 'node:module';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { relative as relativePath, resolve as resolvePath } from 'node:path';
 import { Project, type SourceFile } from 'ts-morph';
-import type { PackageJson } from 'type-fest';
-import * as TypeDoc from 'typedoc';
+import { TSConfigReader, Application as TypeDocApplication, OptionDefaults as TypeDocOptionDefaults } from 'typedoc';
 import runHooks from './hooks.js';
 import { replacePieces, split } from './split.js';
 import {
     basePath,
     distPath,
+    findModuleOrThrow,
+    getCommonStringFromStart,
     installLanguages,
     originalPath,
+    readPackageInfo,
+    readPackageInfoOrThrow,
     type TypeDocLanguages,
     translatedPath,
-    translatingPath
+    translatingPath,
+    walkFiles
 } from './utils.js';
 
 declare module 'typedoc' {
@@ -38,85 +41,34 @@ const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
 const skipResolutionModules: string[] = [];
 
-function readPackageInfo(modulePath: string) {
-    const packageInfoPath = resolvePath(modulePath, 'package.json');
-    if (existsSync(packageInfoPath)) {
-        try {
-            return JSON.parse(readFileSync(packageInfoPath, 'utf-8')) as PackageJson;
-        } catch {
-            /* ignore */
-        }
-    }
-}
-
-function readPackageInfoOrThrow(modulePath: string) {
-    const packageInfo = readPackageInfo(modulePath);
-    if (!packageInfo) {
-        throw new Error(`package.json not exist or cannot read: ${modulePath}`);
-    }
-    return packageInfo;
-}
-
-function findModuleOrThrow(moduleName: string, root: string) {
-    const localRequire = createRequire(resolvePath(root, 'node_modules'));
-    const searchPaths = localRequire.resolve.paths(moduleName);
-    if (searchPaths) {
-        for (const searchPath of searchPaths) {
-            const modulePath = resolvePath(searchPath, moduleName);
-            const moduleDesc = readPackageInfo(modulePath);
-            if (moduleDesc && moduleDesc.name === moduleName) {
-                return modulePath;
-            }
-        }
-    }
-    throw new Error(`Cannot find module ${moduleName} in ${root}`);
-}
-
-function walkFiles(directory: string, walker: (directory: string, fileName: string | null, path: string) => void) {
-    const files = readdirSync(directory, { withFileTypes: true });
-    walker(directory, null, directory);
-    files.forEach((file) => {
-        if (file.isDirectory()) {
-            walkFiles(resolvePath(directory, file.name), walker);
-        } else {
-            walker(directory, file.name, resolvePath(directory, file.name));
-        }
-    });
-}
-
 function getModuleSourceFiles(fromPath: string, moduleSpecifier: string) {
     const project = new Project();
     const sourceFile = project.createSourceFile(resolvePath(fromPath, '__temp_module_resolution__.ts'));
     const rootDecl = sourceFile.addExportDeclaration({ moduleSpecifier });
     const referencedFiles: string[] = [];
     const walk = (source: SourceFile | undefined) => {
-        if (!source) return;
+        if (!source) {
+            return;
+        }
         const path = source.getFilePath();
-        if (referencedFiles.includes(path)) return;
+        if (referencedFiles.includes(path)) {
+            return;
+        }
         referencedFiles.push(path);
         const importDecl = source.getImportDeclarations();
         const exportDecl = source.getExportDeclarations();
-        importDecl.forEach((decl) => {
+        for (const decl of importDecl) {
             walk(decl.getModuleSpecifierSourceFile());
-        });
-        exportDecl.forEach((decl) => {
+        }
+        for (const decl of exportDecl) {
             walk(decl.getModuleSpecifierSourceFile());
-        });
+        }
     };
     walk(rootDecl.getModuleSpecifierSourceFile());
     return referencedFiles.map((e) => resolvePath(e));
 }
 
-function getCommonStringFromStart(a: string, b: string) {
-    let len = Math.min(a.length, b.length);
-    while (len > 0) {
-        if (a.slice(0, len) === b.slice(0, len)) {
-            return a.slice(0, len);
-        }
-        len -= 1;
-    }
-    return '';
-}
+const dtsRegex = /\.d\.ts$/i;
 
 export async function build(translated?: boolean) {
     const hookContext = { basePath, originalPath, translatingPath, translatedPath, distPath };
@@ -151,12 +103,11 @@ export async function build(translated?: boolean) {
     });
     const sourceFiles: SourceFile[] = [];
     const dependencies = readPackageInfo(originalPath)?.dependencies ?? {};
-    Object.keys(dependencies).forEach((moduleName) => {
+    for (const moduleName of Object.keys(dependencies)) {
         if (moduleName.startsWith(namespacePrefix)) {
             const pureModuleName = moduleName.slice(namespacePrefix.length);
             const modulePath = findModuleOrThrow(moduleName, originalPath);
-            const packageInfo = readPackageInfoOrThrow(modulePath);
-            const version = packageInfo.version;
+            const { version, types } = readPackageInfoOrThrow(modulePath);
             console.log(`Loading d.ts for ${moduleName}@${version ?? 'undefined'}`);
             let dtsFiles: string[] = [];
             walkFiles(modulePath, (_, file, path) => {
@@ -171,7 +122,7 @@ export async function build(translated?: boolean) {
                 const moduleSourceFiles = getModuleSourceFiles(originalPath, moduleName);
                 dtsFiles = dtsFiles.filter((e) => moduleSourceFiles.includes(e));
             }
-            if (dtsFiles.length < 1) {
+            if (dtsFiles.length === 0) {
                 throw new Error(`Cannot find any d.ts for ${moduleName}`);
             }
             if (dtsFiles.length === 1) {
@@ -180,9 +131,11 @@ export async function build(translated?: boolean) {
                     readFileSync(dtsFiles[0], 'utf-8').replace(/\r\n|\r/g, '\n'),
                     { overwrite: true }
                 );
-                if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
+                if (!botModules.includes(moduleName)) {
+                    sourceFiles.push(sourceFile);
+                }
             } else {
-                const typeEntry = resolvePath(modulePath, packageInfo.types ?? 'index.d.ts').replace(/\.d\.ts$/i, '');
+                const typeEntry = resolvePath(modulePath, types ?? 'index.d.ts').replace(dtsRegex, '');
                 const commonParent = dtsFiles
                     .map((path) => resolvePath(path, '..'))
                     .reduce((common, parent) => getCommonStringFromStart(common, parent));
@@ -190,7 +143,7 @@ export async function build(translated?: boolean) {
                 const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
                 const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, '/')}`;
                 const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
-                dtsFiles.forEach((file) => {
+                for (const file of dtsFiles) {
                     const target = resolvePath(moduleRoot, relativePath(commonParent, file));
                     mkdirSync(resolvePath(target, '..'), { recursive: true });
                     const sourceFile = project.createSourceFile(
@@ -198,18 +151,22 @@ export async function build(translated?: boolean) {
                         readFileSync(file, 'utf-8').replace(/\r\n|\r/g, '\n'),
                         { overwrite: true }
                     );
-                    if (!botModules.includes(moduleName)) sourceFiles.push(sourceFile);
-                });
+                    if (!botModules.includes(moduleName)) {
+                        sourceFiles.push(sourceFile);
+                    }
+                }
                 const indexSourceFile = project.createSourceFile(
                     resolvePath(translatedPath, `${pureModuleName}.d.ts`),
                     exportStatement,
                     { overwrite: true }
                 );
-                if (!botModules.includes(moduleName)) sourceFiles.push(indexSourceFile);
+                if (!botModules.includes(moduleName)) {
+                    sourceFiles.push(indexSourceFile);
+                }
             }
             dependencies[moduleName] = version;
         }
-    });
+    }
     const translateHookContext = { ...hookContext, basePath, project, sourceFiles, dependencies };
     await runHooks('afterLoad', translateHookContext);
     console.timeEnd('[loadOriginal] Total');
@@ -217,10 +174,10 @@ export async function build(translated?: boolean) {
     if (translated) {
         // 将顶层成员替换为带翻译的版本
         console.time('[translate] Total');
-        sourceFiles.forEach((sourceFile) => {
+        for (const sourceFile of sourceFiles) {
             const pieces = split(sourceFile);
             replacePieces(sourceFile, pieces);
-        });
+        }
         await runHooks('afterTranslate', translateHookContext);
         console.timeEnd('[translate] Total');
     }
@@ -228,12 +185,12 @@ export async function build(translated?: boolean) {
     // 生成 TypeDoc 页面
     console.time('[analyze] Total');
     project.saveSync();
-    const tsdocApplication = await TypeDoc.Application.bootstrapWithPlugins(
+    const tsdocApplication = await TypeDocApplication.bootstrapWithPlugins(
         {
             tsconfig: tsConfigFilePath,
-            modifierTags: [...TypeDoc.OptionDefaults.modifierTags, '@rc']
+            modifierTags: [...TypeDocOptionDefaults.modifierTags, '@rc']
         },
-        [new TypeDoc.TSConfigReader()]
+        [new TSConfigReader()]
     );
     installLanguages(tsdocApplication, TypeDocExtraTranslations);
     rmSync(distPath, { recursive: true, force: true });
@@ -250,7 +207,6 @@ export async function build(translated?: boolean) {
         await runHooks('afterEmit', afterConvertContext);
         console.timeEnd('[emit] Total');
         return afterConvertContext;
-    } else {
-        throw new Error('Convert failed');
     }
+    throw new Error('Convert failed');
 }

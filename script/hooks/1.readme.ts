@@ -4,6 +4,8 @@ import { ReflectionKind, RendererEvent } from 'typedoc';
 import { git, parsePackageVersion } from '../utils.js';
 import type { Hook } from './hook.js';
 
+const SummarySectionRegex = /<!-- summary start -->\n\n[\s\S]+\n\n<!-- summary end -->/;
+
 const kindMap = [
     [ReflectionKind.Enum, 'enums', '枚举'],
     [ReflectionKind.Class, 'classes', '类'],
@@ -47,12 +49,11 @@ function listRefs(refSuffix: string) {
 
 function listTrackingFiles(branch: string) {
     const files: Record<string, string> = {};
-    git(`ls-tree -r --format="%(objectname)\t%(path)" ${branch}`)
-        .split('\n')
-        .map((e) => e.split('\t'))
-        .forEach(([hash, path]) => {
-            files[path] = hash;
-        });
+    const objectList = git(`ls-tree -r --format="%(objectname)\x09%(path)" ${branch}`).split('\n');
+    for (const objectEntry of objectList) {
+        const [hash, path] = objectEntry.split('\x09');
+        files[path] = hash;
+    }
     return files;
 }
 
@@ -131,9 +132,9 @@ function analyzeTranslateState() {
 
     const statusMap: Record<string, Status> = {};
     const lastEditTimeCache: Record<string, Date> = {};
-    untranslated.forEach((piecePath) => {
+    for (const piecePath of untranslated) {
         statusMap[piecePath] = 'untranslated';
-    });
+    }
     for (const piecePath of restPieces) {
         const commitInfo = getCommitInfo(getLatestModifiedCommitHash(head, piecePath));
         const isMergeCommit = commitInfo.parents.length > 1;
@@ -152,22 +153,22 @@ function analyzeTranslateState() {
         listCommitsByCommand(head, command).map((e) => ({ ...e, command }))
     );
     overwrites.sort((a, b) => b.commit.date.getTime() - a.commit.date.getTime());
-    Object.keys(statusMap).forEach((piecePath) => {
-        const pieceOverwrites = overwrites.filter(
+    for (const piecePath of Object.keys(statusMap)) {
+        const latestOverwrite = overwrites.find(
             (e) => piecePath.endsWith(`/${e.file}`) || piecePath.endsWith(`/${e.file}.d.ts`)
         );
-        if (pieceOverwrites.length > 0) {
-            const latestOverwrite = pieceOverwrites[0];
+        if (latestOverwrite) {
             let lastEditTime = lastEditTimeCache[piecePath] as Date | undefined;
             if (!lastEditTime) {
                 const commitInfo = getCommitInfo(getLatestModifiedCommitHash(head, piecePath));
-                lastEditTime = lastEditTimeCache[piecePath] = commitInfo.date;
+                lastEditTime = commitInfo.date;
+                lastEditTimeCache[piecePath] = lastEditTime;
             }
             if (lastEditTime <= latestOverwrite.commit.date) {
                 statusMap[piecePath] = latestOverwrite.command;
             }
         }
-    });
+    }
     return statusMap;
 }
 
@@ -183,7 +184,7 @@ export default {
     afterConvert({ sourceFiles, tsdocApplication, tsdocProject }) {
         const { readme } = tsdocProject;
         if (!readme) {
-            throw new Error(`Readme is not found in project`);
+            throw new Error('Readme is not found in project');
         }
         if (getCurrentHead() === 'original') {
             return;
@@ -192,14 +193,14 @@ export default {
         try {
             translateStateMap = analyzeTranslateState();
         } catch (err) {
-            console.error(`Cannot analyze translate state. Probably necessary branches are missing or incomplete.`);
+            console.error('Cannot analyze translate state. Probably necessary branches are missing or incomplete.');
             console.error(err);
             return;
         }
         tsdocApplication.renderer.on(RendererEvent.BEGIN, () => {
-            const router = tsdocApplication.renderer.router;
+            const { router } = tsdocApplication.renderer;
             if (!router) {
-                throw new Error(`Unexpected renderer.router === undefined`);
+                throw new Error('Unexpected renderer.router === undefined');
             }
             const summaryLines: (string | string[])[] = ['', '', '<div class="readme-modules"><p>模块：</p><ul>'];
             const statusHeadLines: string[] = [
@@ -223,12 +224,12 @@ export default {
             ];
             const statusLines: (string | string[])[] = [];
             if (!tsdocProject.children) {
-                throw new Error(`Unexpected project.children === undefined`);
+                throw new Error('Unexpected project.children === undefined');
             }
-            tsdocProject.children.forEach((moduleRef) => {
+            for (const moduleRef of tsdocProject.children) {
                 const moduleFullName = namespacePrefix + moduleRef.name;
                 if (!moduleRef.sources) {
-                    throw new Error(`Unexpected declarationReflection.sources === undefined`);
+                    throw new Error('Unexpected declarationReflection.sources === undefined');
                 }
                 const sourceFilePath = moduleRef.sources[0].fullFileName;
                 const moduleUrl = router.getFullUrl(moduleRef);
@@ -241,7 +242,9 @@ export default {
                     '</li>'
                 ]);
 
-                if (!sourceFiles.find((sourceFile) => sourceFile.getFilePath() === sourceFilePath)) return;
+                if (!sourceFiles.some((sourceFile) => sourceFile.getFilePath() === sourceFilePath)) {
+                    continue;
+                }
                 const linkHref = moduleFullName.replace(/[@/]/g, '');
                 statusLines.push(['', `### ${moduleFullName}`, '', '|名称|类型|状态|', '| - | - | - |']);
                 let completedCount = 0;
@@ -249,9 +252,9 @@ export default {
                 let needReviewCount = 0;
                 let totalCount = 0;
                 if (!moduleRef.children) {
-                    throw new Error(`Unexpected declarationReflection.children === undefined`);
+                    throw new Error('Unexpected declarationReflection.children === undefined');
                 }
-                moduleRef.children.forEach((member) => {
+                for (const member of moduleRef.children) {
                     const kindInfo = getKindInfo(member.kind);
                     if (!kindInfo) {
                         throw new Error(`Unknown kind: 0x${member.kind.toString(16)} ${member.name}`);
@@ -259,9 +262,13 @@ export default {
                     const piecePath = `translate-pieces/${moduleRef.name}/${kindInfo.category}/${member.name}.d.ts`;
                     const translateState = translateStateMap[piecePath] ?? 'untranslated';
                     const memberUrl = router.getFullUrl(member);
-                    if (translateState === 'translated') completedCount += 1;
-                    if (translateState === 'wip') wipCount += 1;
-                    if (translateState === 'needReview') needReviewCount += 1;
+                    if (translateState === 'translated') {
+                        completedCount += 1;
+                    } else if (translateState === 'wip') {
+                        wipCount += 1;
+                    } else if (translateState === 'needReview') {
+                        needReviewCount += 1;
+                    }
                     totalCount += 1;
                     if (memberUrl) {
                         statusLines.push(
@@ -270,10 +277,10 @@ export default {
                     } else {
                         statusLines.push(`|\`${member.name}\`|${kindInfo.name}|${stateDescMap[translateState]}|`);
                     }
-                });
+                }
                 const pct = `${(Math.round((completedCount / totalCount) * 1000) / 10).toFixed(1)}% (${completedCount.toString()}/${totalCount.toString()})`;
                 statusHeadLines.push(`|[${moduleFullName}](#${linkHref})|${pct}|${wipCount}|${needReviewCount}|`);
-            });
+            }
             summaryLines.push('</ul></div>');
             statusLines.unshift(statusHeadLines);
 
@@ -282,7 +289,7 @@ export default {
                     l.kind === 'text' && l.text.includes('<!-- summary start -->')
             );
             if (!statusLine) {
-                throw new Error(`Cannot find text part in readme`);
+                throw new Error('Cannot find text part in readme');
             }
             statusLine.text = statusLine.text.replace('<!-- summary start -->', summaryLines.flat().join('\n'));
             readme.push({
@@ -294,9 +301,9 @@ export default {
                 (path) => !path.endsWith('/package.d.ts') && translateStateMap[path] === 'needReview'
             );
             if (reviewPieces.length > 0) {
-                reviewPieces.forEach((piecePath) => {
+                for (const piecePath of reviewPieces) {
                     console.log(`[review] Review required: ${piecePath}`);
-                });
+                }
             }
         });
     },
@@ -313,23 +320,21 @@ export default {
             '| - | - |'
         ];
         let gameVersion: string | undefined;
-        Object.entries(dependencies).forEach(([moduleName, version]) => {
-            if (!version) return;
-            let versionString = version;
-            const versionInfo = parsePackageVersion(version);
-            if (versionInfo) {
-                gameVersion ??= versionInfo.gameVersion;
-                versionString = versionInfo.version;
+        for (const [moduleName, version] of Object.entries(dependencies)) {
+            if (version) {
+                let versionString = version;
+                const versionInfo = parsePackageVersion(version);
+                if (versionInfo) {
+                    gameVersion ??= versionInfo.gameVersion;
+                    versionString = versionInfo.version;
+                }
+                const npmURL = `https://www.npmjs.com/package/${moduleName}`;
+                summaryLines.push(`|[${moduleName}](${npmURL})|\`${versionString}\`|`);
             }
-            const npmURL = `https://www.npmjs.com/package/${moduleName}`;
-            summaryLines.push(`|[${moduleName}](${npmURL})|\`${versionString}\`|`);
-        });
+        }
         summaryLines.push(['', `游戏版本号：\`${gameVersion}\``, '', '<!-- summary end -->']);
 
-        const newReadMe = readMe.replace(
-            /<!-- summary start -->\n\n[\s\S]+\n\n<!-- summary end -->/,
-            summaryLines.flat().join('\n')
-        );
+        const newReadMe = readMe.replace(SummarySectionRegex, summaryLines.flat().join('\n'));
         writeFileSync(readMePath, newReadMe);
     }
 } as Hook;

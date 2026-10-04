@@ -1,5 +1,8 @@
 import type { JSDoc } from 'ts-morph';
 
+/** 一个缩进层级对应的空格数。 */
+export const DefaultIndentWidth = 4;
+
 export interface CommentLine {
     /**
      * 本行第一个字符的位置。
@@ -48,17 +51,17 @@ export interface CommentLine {
  * 定位 text 里 pos 所在行的第一个字符和换行符，以及下一行的第一个字符（如有）。支持 \n 和 \r\n。
  */
 export function lineBounds(text: string, pos: number): [start: number, end: number, nextStart: number] {
-    const previousLF = text.lastIndexOf('\n', pos - 1);
+    const previousLf = text.lastIndexOf('\n', pos - 1);
     let start = 0;
-    if (previousLF >= 0) {
-        start = previousLF + 1;
+    if (previousLf >= 0) {
+        start = previousLf + 1;
     }
-    const nextLF = text.indexOf('\n', pos);
+    const nextLf = text.indexOf('\n', pos);
     let end = text.length;
     let nextStart = -1;
-    if (nextLF >= 0) {
-        end = nextLF;
-        nextStart = nextLF + 1;
+    if (nextLf >= 0) {
+        end = nextLf;
+        nextStart = nextLf + 1;
         if (end - start >= 1 && text.charAt(end - 1) === '\r') {
             end -= 1;
         }
@@ -77,7 +80,7 @@ const Whitespace = /\s/;
  * @returns 找到的非空白字符索引，若未找到则返回 -1
  */
 export function nextNonWhitespace(text: string, from = 0, to = text.length) {
-    for (let p = from; p < to; p++) {
+    for (let p = from; p < to; p += 1) {
         if (!Whitespace.test(text.charAt(p))) {
             return p;
         }
@@ -94,7 +97,7 @@ export function nextNonWhitespace(text: string, from = 0, to = text.length) {
  * @returns 找到的非空白字符索引，若未找到则返回 -1
  */
 export function prevNonWhitespace(text: string, from = text.length, to = 0) {
-    for (let p = from - 1; p >= to; p--) {
+    for (let p = from - 1; p >= to; p -= 1) {
         if (!Whitespace.test(text.charAt(p))) {
             return p;
         }
@@ -109,7 +112,7 @@ export function prevNonWhitespace(text: string, from = text.length, to = 0) {
  * @param indent 注释第一行的缩进长度。
  */
 export function commentBounds(comment: string, indent = 0) {
-    if (comment.length < 4 || !comment.startsWith('/*') || !comment.endsWith('*/')) {
+    if (comment.length < '/**/'.length || !comment.startsWith('/*') || !comment.endsWith('*/')) {
         throw new Error(`Illegal comment: ${comment}`);
     }
     const commentLines: CommentLine[] = [];
@@ -139,11 +142,12 @@ export function commentBounds(comment: string, indent = 0) {
         // 去除开头空格
         const nwsStart = nextNonWhitespace(comment, commentStart, commentEnd);
         if (nwsStart !== -1) {
+            // 存在有效内容
             if (baseCol === -1) {
                 // 首次遇到非空白行，设定基准
                 if (commentLines.length === 0) {
-                    // 单行的情况视为 4 固定值
-                    baseCol = indent + 4;
+                    // 单行的情况视为固定缩进宽度
+                    baseCol = indent + DefaultIndentWidth;
                 } else {
                     // 基准设定为非空白字符的位置
                     baseCol = nwsStart - lineStart;
@@ -155,6 +159,9 @@ export function commentBounds(comment: string, indent = 0) {
             // 3. 如果是 /** 的那一行，不使用基准。
             const expectStart = commentLines.length === 0 ? nwsStart : lineStart + baseCol;
             commentStart = Math.max(commentStart, Math.min(expectStart, nwsStart, commentEnd));
+        } else {
+            // 没有有效内容（comment === ''）：移动 commentStart 到行末
+            commentStart = commentEnd;
         }
         const trimmedComment = comment.slice(commentStart, commentEnd).trimEnd();
         commentLines.push({
@@ -174,7 +181,7 @@ export function commentBounds(comment: string, indent = 0) {
         }
         p = nextLineStart;
     }
-    for (let i = commentLines.length - 1; i >= 0; i--) {
+    for (let i = commentLines.length - 1; i >= 0; i -= 1) {
         if (commentLines[i].comment === '') {
             commentLines[i].comment = undefined;
         } else {

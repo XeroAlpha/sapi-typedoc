@@ -20,7 +20,8 @@ function getCommentParts(jsdoc: JSDoc | JSDocTag): CommentPart[] {
     const comment = jsdoc.getComment();
     if (typeof comment === 'string') {
         return [comment];
-    } else if (Array.isArray(comment)) {
+    }
+    if (Array.isArray(comment)) {
         const commentParts = comment.filter((e) => e !== undefined);
         return commentParts.map((e) => (e.isKind(SyntaxKind.JSDocText) ? e.compilerNode.text : e));
     }
@@ -55,7 +56,7 @@ function splitCommentPartIntoLines(commentParts: CommentPart[]) {
 function convertTemplateThrows(throwsTag: JSDocThrowsTag) {
     const jsdocNode = throwsTag.getAncestors().find((e) => e.isKind(SyntaxKind.JSDoc));
     if (!jsdocNode) {
-        throw new Error(`Assert error`);
+        throw new Error('Assert error');
     }
     const jsdoc = jsdocBounds(jsdocNode);
     const throwsTagNameEnd = throwsTag.getTagNameNode().getEnd();
@@ -151,7 +152,7 @@ function fixTemplateThrowsTag(ctx: Context, refl: Reflection, jsdoc: ts.JSDoc) {
     const reflThrowsTags = refl.comment?.getTags('@throws') ?? [];
     const tsThrowsTags = jsdoc.tags?.filter(ts.isJSDocThrowsTag) ?? [];
     if (reflThrowsTags.length === tsThrowsTags.length && reflThrowsTags.length > 0) {
-        for (let i = 0; i < reflThrowsTags.length; i++) {
+        for (let i = 0; i < reflThrowsTags.length; i += 1) {
             const reflThrowsTag = reflThrowsTags[i];
             const tsThrowsTag = tsThrowsTags[i];
             if (isTSDocThrowsTag(tsThrowsTag)) {
@@ -160,7 +161,7 @@ function fixTemplateThrowsTag(ctx: Context, refl: Reflection, jsdoc: ts.JSDoc) {
             if (tsThrowsTag.typeExpression) {
                 if (reflThrowsTag.content.length > 0) {
                     // 加个分隔符，美观些
-                    const firstPart = reflThrowsTag.content[0];
+                    const [firstPart] = reflThrowsTag.content;
                     if (firstPart.kind === 'text') {
                         firstPart.text = `${throwsTypeSep}${firstPart.text}`;
                     } else {

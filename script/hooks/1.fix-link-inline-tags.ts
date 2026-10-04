@@ -1,5 +1,7 @@
-import * as TypeDoc from 'typedoc';
+import { type CommentDisplayPart, Reflection, ReflectionKind } from 'typedoc';
 import type { Hook } from './hook.js';
+
+const LinkSepRegex = /[./]/;
 
 export default {
     afterConvert({ tsdocProject }) {
@@ -7,28 +9,28 @@ export default {
             .filter(
                 (refl) =>
                     !refl.kindOf([
-                        TypeDoc.ReflectionKind.ConstructorSignature,
-                        TypeDoc.ReflectionKind.CallSignature,
-                        TypeDoc.ReflectionKind.GetSignature,
-                        TypeDoc.ReflectionKind.SetSignature
+                        ReflectionKind.ConstructorSignature,
+                        ReflectionKind.CallSignature,
+                        ReflectionKind.GetSignature,
+                        ReflectionKind.SetSignature
                     ])
             )
             .map((refl) => [refl.getFriendlyFullName(), refl] as const);
-        const visitCommentPart = (part: TypeDoc.CommentDisplayPart, path: string) => {
+        const visitCommentPart = (part: CommentDisplayPart, path: string) => {
             if (part.kind === 'inline-tag' && part.tag === '@link') {
                 if (typeof part.target === 'string') {
                     return;
                 }
                 if (
                     typeof part.target === 'object' &&
-                    part.target instanceof TypeDoc.Reflection &&
+                    part.target instanceof Reflection &&
                     part.target.name === part.text
                 ) {
                     return;
                 }
                 const segments = part.text
-                    .split(/[./]/)
-                    .flatMap((s) => (s.startsWith('minecraft') ? ['@minecraft', s.slice(9)] : [s]));
+                    .split(LinkSepRegex)
+                    .flatMap((s) => (s.startsWith('minecraft') ? ['@minecraft', s.slice('minecraft'.length)] : [s]));
                 const probablySymbolNames = segments.map((_, i) => segments.slice(i).join('.'));
                 const foundReflections = reflectionEntries
                     .map(
@@ -57,17 +59,17 @@ export default {
                 part.target = bestMatchReflection[1];
             }
         };
-        Object.values(tsdocProject.reflections).forEach((reflection) => {
+        for (const reflection of Object.values(tsdocProject.reflections)) {
             if (reflection.comment) {
-                reflection.comment.summary.forEach((part) => {
+                for (const part of reflection.comment.summary) {
                     visitCommentPart(part, `${reflection.getFriendlyFullName()}:summary`);
-                });
-                reflection.comment.blockTags.forEach((tag) => {
-                    tag.content.forEach((part) => {
+                }
+                for (const tag of reflection.comment.blockTags) {
+                    for (const part of tag.content) {
                         visitCommentPart(part, `${reflection.getFriendlyFullName()}:${tag.tag}`);
-                    });
-                });
+                    }
+                }
             }
-        });
+        }
     }
 } as Hook;

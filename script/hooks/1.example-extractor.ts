@@ -12,8 +12,11 @@ import {
     type ReflectionSymbolId,
     translateTagName
 } from 'typedoc';
+import { jsdocBounds } from '../multiline-comments.js';
 import { installLanguages, type TypeDocLanguages } from '../utils.js';
 import type { Hook } from './hook.js';
+
+const CodeBlockRegex = /^```(.+)\n([\s\S]*?)```$/;
 
 const ExampleNameOverwrite = [
     {
@@ -70,15 +73,13 @@ function findJSXElement<E extends TraversableJSXChildren>(
     return elements;
 }
 
-const examples: Record<
-    string,
-    {
-        content: string;
-        hash: string;
-        fileName: string;
-        sources: { source: string; fileName: string; path: string; symbol: TsSymbol }[];
-    }[]
-> = {};
+interface ExampleVersion {
+    content: string;
+    hash: string;
+    fileName: string;
+    sources: { source: string; fileName: string; path: string; symbol: TsSymbol }[];
+}
+const examples: Record<string, ExampleVersion[]> = {};
 
 declare module 'typedoc' {
     interface TranslatableStrings {
@@ -97,7 +98,7 @@ const TypeDocExtraTranslations: TypeDocLanguages = {
 
 export default {
     afterLoad({ sourceFiles }) {
-        const postActions = [];
+        const postActions: (() => void)[] = [];
         // 提取 example
         for (const sourceFile of sourceFiles) {
             const sourceFileName = sourceFile.getFilePath();
@@ -105,25 +106,49 @@ export default {
             const comments = sourceFile.getDescendantsOfKind(SyntaxKind.JSDocTag);
             const exampleTags = comments.filter((t) => t.getTagName() === 'example');
             const pendingTextChangeAppliers: { span: ts.TextSpan; newText: () => string }[] = [];
-            for (const exampleTag of exampleTags) {
-                const jsdoc = exampleTag.getParentIfKindOrThrow(SyntaxKind.JSDoc);
-                const lineOffset = exampleTag.getStartLineNumber() - jsdoc.getStartLineNumber();
-                const exampleTagIdentifier = exampleTag.getTagNameNode();
-                const exampleCommentStartCol = exampleTagIdentifier.getEnd() - exampleTag.getStartLinePos();
-                const commentLines = jsdoc.getText().split('\n').slice(lineOffset);
-                const commentFirstLine = commentLines[0].slice(exampleCommentStartCol);
-                commentLines.shift();
-                let exampleName = commentFirstLine.trim();
-                const commentLinesWithoutStars = commentLines.map((l) => l.replace(/^\s*\*(?: )?/, ''));
-                const exampleParent = exampleTag.getParentWhileKindOrThrow(SyntaxKind.JSDoc).getParent();
+            for (const tag of exampleTags) {
+                const jsdoc = tag.getParentIfKindOrThrow(SyntaxKind.JSDoc);
+                const jsdocLines = jsdocBounds(jsdoc);
+                const tagStart = tag.getStart();
+                const tagNameNode = tag.getTagNameNode();
+                const tagStartLineIndex = jsdocLines.findIndex((l) => tagStart < l.commentEnd);
+                const tagEndLineIndexExclusive = jsdocLines.findIndex((l) => tag.getEnd() <= l.commentStart);
+                if (tagStartLineIndex === -1 || tagEndLineIndexExclusive === -1) {
+                    throw new Error('Cannot find tag in comment');
+                }
+                const tagLine = jsdocLines[tagStartLineIndex];
+                const bodyLines = jsdocLines.slice(tagStartLineIndex + 1, tagEndLineIndexExclusive);
+                if (bodyLines[0]?.comment?.startsWith('```')) {
+                    const codeBlockEnd = bodyLines.findIndex((e, i) => i > 0 && e.comment === '```');
+                    if (codeBlockEnd !== -1) {
+                        pendingTextChangeAppliers.push({
+                            span: {
+                                start: tagStart,
+                                length: bodyLines[codeBlockEnd].commentEnd - tagStart
+                            },
+                            newText: () => {
+                                if (exampleVersions.length > 1) {
+                                    return `@seeExample ${exampleName} ${hashTextShort(exampleContent)}`;
+                                }
+                                return `@seeExample ${exampleName}`;
+                            }
+                        });
+                        bodyLines.splice(codeBlockEnd);
+                        bodyLines.splice(0, 1);
+                    }
+                }
+
+                let examplePath = '';
+                const exampleParent = tag.getParentWhileKindOrThrow(SyntaxKind.JSDoc).getParent();
                 const exampleParentSymbol = exampleParent.getSymbol();
                 const sourceFileSymbol = sourceFile.getSymbolOrThrow();
-                let examplePath = '';
                 if (exampleParentSymbol) {
                     examplePath = exampleParentSymbol
                         .getFullyQualifiedName()
                         .replace(`${sourceFileSymbol.getEscapedName()}.`, '');
                 }
+
+                let exampleName = (tagLine.comment?.slice(tagNameNode.getEnd() - tagLine.commentStart) ?? '').trim();
                 for (const exampleNameOverwriteEntry of ExampleNameOverwrite) {
                     if (
                         exampleNameOverwriteEntry.source === sourceName &&
@@ -134,31 +159,14 @@ export default {
                         break;
                     }
                 }
-                let exampleContent = (exampleTag.getCommentText() ?? '').split('\n').slice(1).join('\n');
+
                 let exampleVersions = examples[exampleName];
                 if (!exampleVersions) {
                     exampleVersions = [];
                     examples[exampleName] = exampleVersions;
                 }
-                if (commentLinesWithoutStars.length > 1 && commentLinesWithoutStars[0].startsWith('```')) {
-                    const codeBlockEnd = commentLinesWithoutStars.indexOf('```', 1);
-                    if (codeBlockEnd >= 0) {
-                        exampleContent = commentLinesWithoutStars.splice(0, codeBlockEnd + 1).join('\n');
-                        const replacingText = commentLines.slice(0, codeBlockEnd + 1).join('\n');
-                        pendingTextChangeAppliers.push({
-                            span: {
-                                start: exampleTag.getStart(),
-                                length: `@example${commentFirstLine}\n${replacingText}\n`.length
-                            },
-                            newText: () => {
-                                if (exampleVersions.length > 1) {
-                                    return `@seeExample ${exampleName} ${hashTextShort(exampleContent)}\n`;
-                                }
-                                return `@seeExample ${exampleName}\n`;
-                            }
-                        });
-                    }
-                }
+
+                const exampleContent = bodyLines.map((e) => e.comment ?? '').join('\n');
                 const foundVersion = exampleVersions.find((e) => e.content === exampleContent);
                 const source = {
                     source: sourceName,
@@ -207,7 +215,7 @@ export default {
                     const exampleFilePath = resolvePath(exampleDir, exampleVersion.fileName);
                     if (existsSync(exampleFilePath)) {
                         let fileContent = readFileSync(exampleFilePath, 'utf-8');
-                        const match = /^```(.+)\n([\s\S]*?)```$/.exec(exampleVersion.content);
+                        const match = CodeBlockRegex.exec(exampleVersion.content);
                         if (match) {
                             fileContent = `\`\`\`${match[1]}\n${fileContent.trim()}\n\`\`\``;
                         }
@@ -233,7 +241,7 @@ export default {
                     const jsx = oldCommentTagsRender(props);
                     const exampleTags = findJSXElement(jsx, (el): el is JSX.Element => {
                         if (typeof el === 'object' && el.props) {
-                            return (el.props as { class?: string }).class?.includes(`tsd-tag-example`) ?? false;
+                            return (el.props as { class?: string }).class?.includes('tsd-tag-example') ?? false;
                         }
                         return false;
                     });
@@ -256,7 +264,7 @@ export default {
         const reflAndSymbolIdMap = allReflections
             .map((refl) => [refl, tsdocProject.getSymbolIdFromReflection(refl)] as const)
             .filter((e): e is [Reflection, ReflectionSymbolId] => e[1] !== undefined);
-        const exampleRefls = [];
+        const exampleRefls: [name: string, refl: DocumentReflection, versions: ExampleVersion[]][] = [];
         // 添加 example 页面
         const exampleI18N = translateTagName('@example');
         const exampleReferencesI18N = String(i18n.example_extractor_referenced_by_with_colon());
@@ -363,13 +371,10 @@ export default {
         mkdirSync(exampleDir, { recursive: true });
         for (const [, exampleVersions] of Object.entries(examples)) {
             for (const exampleVersion of exampleVersions) {
-                let fileContent = exampleVersion.content;
-                const match = /^```(.+)\n([\s\S]*?)```$/.exec(exampleVersion.content);
-                if (match) {
-                    const [, , content] = match;
-                    fileContent = content;
-                }
-                writeFileSync(resolvePath(exampleDir, exampleVersion.fileName), unescapeMultilineComment(fileContent));
+                writeFileSync(
+                    resolvePath(exampleDir, exampleVersion.fileName),
+                    `${unescapeMultilineComment(exampleVersion.content)}\n`
+                );
             }
         }
     }

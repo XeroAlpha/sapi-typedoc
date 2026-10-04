@@ -851,8 +851,8 @@ export class Entity {
      * {@link InvalidArgumentError}
      *
      * {@link InvalidEntityError}
-     * @seeExample triggerEvent.ts e68d4331
-     * @seeExample triggerEvent.ts d45f49d2
+     * @seeExample triggerEvent.ts 3010cc4e
+     * @seeExample triggerEvent.ts 3d5cfdcb
      */
     triggerEvent(eventName: string): void;
     /**

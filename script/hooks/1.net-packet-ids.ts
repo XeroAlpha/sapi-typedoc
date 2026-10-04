@@ -29,7 +29,7 @@ function ensureProtocolDocs(repoDir: string): void {
         try {
             git('pull --force', { cwd: repoDir, stdio: 'pipe' });
         } catch (e) {
-            console.warn(`[net-packet-ids] git pull 失败，继续使用已有缓存`, e);
+            console.warn('[net-packet-ids] git pull 失败，继续使用已有缓存', e);
         }
         return;
     }

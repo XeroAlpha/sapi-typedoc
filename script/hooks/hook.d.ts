@@ -1,6 +1,6 @@
-import { Project, SourceFile } from 'ts-morph';
+import type { Project, SourceFile } from 'ts-morph';
 import type { UnionToIntersection } from 'type-fest';
-import { Application, ProjectReflection } from 'typedoc';
+import type { Application, ProjectReflection } from 'typedoc';
 
 declare type HookFunction<Context> = (context: Context) => void | Promise<void>;
 
@@ -40,7 +40,7 @@ declare interface Hook {
 }
 
 type HookerFnMap = {
-    [k in keyof Hook]-?: (event: k, context: GetContextFromHookFunction<Hook[k]>) => void | Promise<void>;
+    [K in keyof Hook]-?: (event: K, context: GetContextFromHookFunction<Hook[K]>) => void | Promise<void>;
 };
 
 declare type Hooker = UnionToIntersection<HookerFnMap[keyof HookerFnMap]>;

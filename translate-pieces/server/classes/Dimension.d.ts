@@ -638,7 +638,7 @@ export class Dimension {
      * @throws {LocationOutOfWorldBoundariesError}
      * @seeExample spawnAdultHorse.ts
      * @seeExample quickFoxLazyDog.ts
-     * @seeExample triggerEvent.ts d45f49d2
+     * @seeExample triggerEvent.ts 3d5cfdcb
      */
     spawnEntity<T = never>(
         identifier: EntityIdentifierType<NoInfer<T>>,
@@ -680,7 +680,7 @@ export class Dimension {
      * @throws {LocationInUnloadedChunkError}
      *
      * @throws {LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bba750fb
+     * @seeExample spawnParticle.ts 17111287
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

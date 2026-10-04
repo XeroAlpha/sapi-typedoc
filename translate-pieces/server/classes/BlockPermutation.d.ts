@@ -6,7 +6,7 @@
  * properties (also sometimes called block state) which
  * describe a block (but does not belong to a specific
  * {@link Block}).
- * @seeExample addTranslatedSign.ts 9e2fd749
+ * @seeExample addTranslatedSign.ts 3043f4af
  */
 export class BlockPermutation {
     private constructor();
