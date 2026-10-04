@@ -2,13 +2,11 @@ import { git } from './utils.js';
 
 function listTrackingFiles(branch: string) {
     const files: Record<string, string> = {};
-    git(`ls-tree -r --format="%(objectname)\x09%(path)" ${branch}`)
-        .toString('utf-8')
-        .split('\n')
-        .map((e) => e.split('\x09'))
-        .forEach(([hash, path]) => {
-            files[path] = hash;
-        });
+    const objectList = git(`ls-tree -r --format="%(objectname)\x09%(path)" ${branch}`).split('\n');
+    for (const objectEntry of objectList) {
+        const [hash, path] = objectEntry.split('\x09');
+        files[path] = hash;
+    }
     return files;
 }
 

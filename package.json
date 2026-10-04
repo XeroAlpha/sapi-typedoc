@@ -7,7 +7,8 @@
     "build": "npx tsx ./script/cli.ts build",
     "update": "npx tsx ./script/cli.ts update",
     "update-cached": "npx tsx ./script/cli.ts update-cached",
-    "lint-script": "npx biome check --write ./script"
+    "lint-script": "npx tsc --noEmit -p ./script/tsconfig.json && npx biome check --write ./script",
+    "prepare": "husky"
   },
   "dependencies": {
     "semver": "^7.7.2",
@@ -20,6 +21,7 @@
     "@biomejs/biome": "2.5.15",
     "@types/node": "^24.4.0",
     "@types/semver": "^7.7.1",
+    "husky": "^9.1.7",
     "tsx": "^4.20.5",
     "type-fest": "^5.0.0"
   }

@@ -526,7 +526,7 @@ export class Player extends Entity {
      * @throws {LocationInUnloadedChunkError}
      *
      * @throws {LocationOutOfWorldBoundariesError}
-     * @seeExample spawnParticle.ts bd8c7a07
+     * @seeExample spawnParticle.ts c6d8a491
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**

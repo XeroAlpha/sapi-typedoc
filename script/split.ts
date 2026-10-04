@@ -2,7 +2,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { sep as pathSep, relative as relativePath, resolve as resolvePath } from 'node:path';
 import { sep as pathSepPosix } from 'node:path/posix';
 import { type ExportGetableNode, type SourceFile, SyntaxKind, ts } from 'ts-morph';
-import { translatedPath, translatingPath } from './utils.js';
+import { stringCompare, translatedPath, translatingPath } from './utils.js';
+
+const ModuleSuffixRegex = /(?:\.d)?\.ts$/i;
 
 const SkippedTopLevelSyntaxKinds = [
     SyntaxKind.EndOfFileToken,
@@ -35,7 +37,7 @@ function asRelativeModulePath(from: string, to: string) {
     if (!relativePathPosix.startsWith('.')) {
         relativePathPosix = `.${pathSepPosix}${relativePathPosix}`;
     }
-    relativePathPosix = relativePathPosix.replace(/(?:\.d)?\.ts$/, '');
+    relativePathPosix = relativePathPosix.replace(ModuleSuffixRegex, '');
     return relativePathPosix;
 }
 
@@ -92,14 +94,16 @@ export function split(sourceFile: SourceFile) {
         pieces.push({
             start: packageDocumentationJSDoc.getStart(),
             end: packageDocumentationJSDoc.getEnd(),
-            path: resolvePath(pieceDirectory, `package.d.ts`)
+            path: resolvePath(pieceDirectory, 'package.d.ts')
         });
     }
     const sourceScopeSymbols = new Set(
         sourceFile.getSymbolsInScope(ts.SymbolFlags.ModuleMember).map((e) => e.getExportSymbol())
     );
     sourceFile.forEachChild((node) => {
-        if (SkippedTopLevelSyntaxKinds.includes(node.getKind())) return;
+        if (SkippedTopLevelSyntaxKinds.includes(node.getKind())) {
+            return;
+        }
         if (node.isKind(SyntaxKind.ExportDeclaration)) {
             indexExports.push(node.getText());
             return;
@@ -127,7 +131,7 @@ export function split(sourceFile: SourceFile) {
         let pieceIndex = 1;
         while (piecePathList.includes(piecePath.toLowerCase())) {
             piecePath = resolvePath(pieceDirectory, category, `${symbolName}-${String(pieceIndex)}.d.ts`);
-            pieceIndex++;
+            pieceIndex += 1;
         }
         piecePathList.push(piecePath.toLowerCase());
         const jsdocList = node
@@ -139,55 +143,59 @@ export function split(sourceFile: SourceFile) {
             pieceStart = firstJSDoc.getStart();
         }
 
-        const importSymbols = [...new Set(scopedSymbols)]
-            .map<ImportedSymbol | undefined>((scopedSymbol) => {
-                const decl = scopedSymbol.getDeclarations().find((decl) => {
-                    const declSourceFile = decl.getSourceFile();
-                    if (declSourceFile === sourceFile) {
-                        if (decl.getStart() >= pieceStart && decl.getEnd() <= node.getEnd()) {
-                            return false;
-                        }
-                    }
-                    return resolvePath(declSourceFile.getFilePath()).startsWith(translatedPath);
-                });
-                if (!decl) return undefined;
-                const ancestors = [decl, ...decl.getAncestors()];
-                const importDecl = ancestors.find((n) => n.isKind(SyntaxKind.ImportDeclaration));
-                if (importDecl) {
-                    const importModulePath = getSourceFilePieceDirectory(
-                        importDecl.getModuleSpecifierSourceFileOrThrow()
-                    );
-                    const importSpecifier = ancestors.find((n) => n.isKind(SyntaxKind.ImportSpecifier));
-                    if (importSpecifier) {
-                        return {
-                            type: 'named',
-                            name: scopedSymbol.getName(),
-                            exportName: importSpecifier.getName(),
-                            modulePath: importModulePath
-                        };
-                    }
+        const importSymbols: ImportedSymbol[] = [];
+        for (const scopedSymbol of new Set(scopedSymbols)) {
+            const decl = scopedSymbol.getDeclarations().find((symbolDecl) => {
+                const declSourceFile = symbolDecl.getSourceFile();
+                if (
+                    declSourceFile === sourceFile &&
+                    symbolDecl.getStart() >= pieceStart &&
+                    symbolDecl.getEnd() <= node.getEnd()
+                ) {
+                    return false;
+                }
+                return resolvePath(declSourceFile.getFilePath()).startsWith(translatedPath);
+            });
+            if (!decl) {
+                continue;
+            }
+            const ancestors = [decl, ...decl.getAncestors()];
+            const importDecl = ancestors.find((n) => n.isKind(SyntaxKind.ImportDeclaration));
+            if (importDecl) {
+                const importModulePath = getSourceFilePieceDirectory(importDecl.getModuleSpecifierSourceFileOrThrow());
+                const importSpecifier = ancestors.find((n) => n.isKind(SyntaxKind.ImportSpecifier));
+                if (importSpecifier) {
+                    importSymbols.push({
+                        type: 'named',
+                        name: scopedSymbol.getName(),
+                        exportName: importSpecifier.getName(),
+                        modulePath: importModulePath
+                    });
+                } else {
                     const namespaceImport = ancestors.find((n) => n.isKind(SyntaxKind.NamespaceImport));
                     if (namespaceImport) {
-                        return {
+                        importSymbols.push({
                             type: 'namespaced',
                             name: scopedSymbol.getName(),
                             modulePath: importModulePath
-                        };
+                        });
+                    } else {
+                        importSymbols.push({
+                            type: 'default',
+                            name: scopedSymbol.getName(),
+                            modulePath: importModulePath
+                        });
                     }
-                    return {
-                        type: 'default',
-                        name: scopedSymbol.getName(),
-                        modulePath: importModulePath
-                    };
                 }
-                return {
+            } else {
+                importSymbols.push({
                     type: 'named',
                     name: scopedSymbol.getName(),
                     exportName: decl.getSymbolOrThrow().getName(),
                     modulePath: getSourceFilePieceDirectory(decl.getSourceFile())
-                };
-            })
-            .filter((e) => e !== undefined);
+                });
+            }
+        }
         const isExported = (node as Partial<ExportGetableNode>).hasExportKeyword?.() ?? false;
 
         const importGroupedByFile = Object.groupBy(importSymbols, (e) => e.modulePath);
@@ -208,7 +216,7 @@ export function split(sourceFile: SourceFile) {
             }
             if (namedImports.length > 0) {
                 const identifiers = namedImports
-                    .sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
+                    .sort((a, b) => stringCompare(a.name, b.name))
                     .map((e) => {
                         if (e.exportName && e.exportName !== e.name) {
                             return `${e.exportName} as ${e.name}`;
@@ -231,11 +239,11 @@ export function split(sourceFile: SourceFile) {
 
     const sourceIndexPieceFile = resolvePath(pieceDirectory, 'index.d.ts');
     const indexExportStatements = [...indexExports];
-    pieceExports.forEach(({ symbolName, piecePath, isExported }) => {
+    for (const { symbolName, piecePath, isExported } of pieceExports) {
         const piecePathRelative = asRelativeModulePath(pieceDirectory, piecePath);
         const prefix = isExported ? '' : `${PrivatePrompt} `;
         indexExportStatements.push(`${prefix}export { ${symbolName} } from '${piecePathRelative}';`);
-    });
+    }
     const sourceIndexPiece = {
         generated: true,
         start: -1,
@@ -267,16 +275,17 @@ export function writePiece(sourceFile: SourceFile, piece: Piece) {
 export function replacePieces(sourceFile: SourceFile, pieces: Piece[]) {
     let sourceFileText = sourceFile.getFullText();
     let writtenCount = 0;
-    pieces.forEach((piece) => {
-        if (piece.generated || !existsSync(piece.path)) return;
-        const text = readFileSync(piece.path, 'utf-8')
-            .split('\n')
-            .filter((e) => !e.startsWith(ImportPrompt) && !e.startsWith(ExportPrompt))
-            .join('\n')
-            .trim();
-        sourceFileText = `${sourceFileText.slice(0, piece.start)}${text}${sourceFileText.slice(piece.end)}`;
-        writtenCount++;
-    });
+    for (const piece of pieces) {
+        if (!piece.generated && existsSync(piece.path)) {
+            const text = readFileSync(piece.path, 'utf-8')
+                .split('\n')
+                .filter((e) => !(e.startsWith(ImportPrompt) || e.startsWith(ExportPrompt)))
+                .join('\n')
+                .trim();
+            sourceFileText = `${sourceFileText.slice(0, piece.start)}${text}${sourceFileText.slice(piece.end)}`;
+            writtenCount += 1;
+        }
+    }
     if (writtenCount > 0) {
         sourceFile.replaceWithText(sourceFileText);
     }

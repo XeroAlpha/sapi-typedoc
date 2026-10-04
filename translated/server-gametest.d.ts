@@ -1322,7 +1322,7 @@ export class Test {
      * @throws {GameTestCompletedError}
      *
      * @throws {GameTestError}
-     * @seeExample simpleMobTest.ts 9fe10d88
+     * @seeExample simpleMobTest.ts 7afc1b69
      */
     assertEntityInstancePresentInArea(entity: Entity, isPresent?: boolean): void;
     /**
@@ -1374,7 +1374,7 @@ export class Test {
      * @throws {GameTestCompletedError}
      *
      * @throws {GameTestError}
-     * @seeExample simpleMobTest.ts 1a4be3f1
+     * @seeExample simpleMobTest.ts 1c10882c
      * @seeExample simpleMobGameTest.ts
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
@@ -1926,7 +1926,7 @@ export class Test {
      * @throws {GameTestCompletedError}
      *
      * @throws {GameTestError}
-     * @seeExample simpleMobTest.ts 1a4be3f1
+     * @seeExample simpleMobTest.ts 1c10882c
      * @seeExample simpleMobGameTest.ts
      * @seeExample phantomsShouldFlyFromCats.ts
      * @seeExample minibiomes.ts

@@ -49,7 +49,9 @@ function removeJSDocTag(jsdoc: JSDoc, tagNode: JSDocTag): ts.TextChange {
     const tagStart = tagNode.getStart();
     const tagNameEnd = tagNode.getTagNameNode().getEnd();
     const tagLine = lines.find((l) => tagStart >= l.lineStart && tagStart < l.lineEnd);
-    if (!tagLine?.comment) throw new Error('Assert error');
+    if (!tagLine?.comment) {
+        throw new Error('Assert error');
+    }
     const fullText = jsdoc.getSourceFile().getFullText();
     const { lineStart, lineEnd, nextLineStart, commentStart, comment } = tagLine;
     const tagPre = comment.slice(0, tagStart - commentStart);
@@ -75,7 +77,9 @@ function removeJSDocTag(jsdoc: JSDoc, tagNode: JSDocTag): ts.TextChange {
             } else {
                 // JSDoc 后面接着代码：移除 JSDoc 直到后面的空白符
                 const endNwsPos = nextNonWhitespace(fullText, removeEnd, endLineInfo[1]);
-                if (endNwsPos !== -1) removeEnd = endNwsPos;
+                if (endNwsPos !== -1) {
+                    removeEnd = endNwsPos;
+                }
             }
             return {
                 span: {
@@ -84,27 +88,25 @@ function removeJSDocTag(jsdoc: JSDoc, tagNode: JSDocTag): ts.TextChange {
                 },
                 newText: ''
             };
-        } else {
-            // 如果这一行只有这个标签：删掉这一行
-            return {
-                span: {
-                    start: lineStart,
-                    length: nextLineStart - lineStart
-                },
-                newText: ''
-            };
         }
-    } else {
-        // 如果这一行除了这个标签还有其他内容：删掉这个标签和后面跟着的空白字符
-        const nwsPos = nextNonWhitespace(fullText, tagNameEnd, lineEnd);
+        // 如果这一行只有这个标签：删掉这一行
         return {
             span: {
-                start: tagStart,
-                length: (nwsPos !== -1 ? nwsPos : lineEnd) - tagStart
+                start: lineStart,
+                length: nextLineStart - lineStart
             },
             newText: ''
         };
     }
+    // 如果这一行除了这个标签还有其他内容：删掉这个标签和后面跟着的空白字符
+    const nwsPos = nextNonWhitespace(fullText, tagNameEnd, lineEnd);
+    return {
+        span: {
+            start: tagStart,
+            length: (nwsPos !== -1 ? nwsPos : lineEnd) - tagStart
+        },
+        newText: ''
+    };
 }
 
 /**
@@ -126,17 +128,16 @@ function prependJSDocTag(jsdoc: JSDoc, tag: string): ts.TextChange {
             },
             newText: `${firstValidLine.commentPrefix}${tag}${lineFeed}`
         };
-    } else {
-        // 单行注释或其他诡异情况：直接加在注释前
-        // 希望没有人会在注释头尾的那两行写注释
-        return {
-            span: {
-                start: lines[0].commentStart,
-                length: 0
-            },
-            newText: `${tag} `
-        };
     }
+    // 单行注释或其他诡异情况：直接加在注释前
+    // 希望没有人会在注释头尾的那两行写注释
+    return {
+        span: {
+            start: lines[0].commentStart,
+            length: 0
+        },
+        newText: `${tag} `
+    };
 }
 
 export default {
@@ -167,7 +168,7 @@ export default {
             const jsdocableNodes: (JSDoc | (JSDocableNode & Node))[] = sourceFile
                 .getDescendants()
                 .filter((node) => Node.isJSDocable(node));
-            const firstStatement = sourceFile.getStatements()[0];
+            const [firstStatement] = sourceFile.getStatements();
             const packageDocs = firstStatement.getChildrenOfKind(SyntaxKind.JSDoc);
             if (packageDocs.length > 0) {
                 jsdocableNodes.unshift(packageDocs[0]);

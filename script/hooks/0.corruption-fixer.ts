@@ -1,9 +1,8 @@
 // biome-ignore-all lint/correctness/noUnusedImports: 常用导入，有意保留，便于快速编写 fixer
-import { strict as assert } from 'node:assert';
+import assert from 'node:assert/strict';
 import { Scope, StructureKind, SyntaxKind, ts } from 'ts-morph';
+import { DefaultIndentWidth } from '../multiline-comments.js';
 import type { Hook, HookFunction, TranslateHookContext } from './hook.js';
-
-assert(true);
 
 const patches: ((context: TranslateHookContext) => void)[] = [];
 
@@ -30,8 +29,8 @@ patches.push(({ project }) => {
             if (state === 'validLineAfterComment') {
                 expectIndent = commentIndent;
             }
-            if (trimmedLine === '}' && previousIndent - indentLength < 4) {
-                expectIndent = previousIndent - 4;
+            if (trimmedLine === '}' && previousIndent - indentLength < DefaultIndentWidth) {
+                expectIndent = previousIndent - DefaultIndentWidth;
             }
             if (expectIndent !== indentLength) {
                 padLength += indentLength - expectIndent;
@@ -64,13 +63,13 @@ patches.push(({ project }) => {
 const errors: unknown[] = [];
 export default {
     afterLoad(context) {
-        patches.forEach((f) => {
+        for (const patch of patches) {
             try {
-                f(context);
+                patch(context);
             } catch (err) {
                 errors.push(err);
             }
-        });
+        }
     },
     beforeConvert() {
         if (errors.length > 0) {

@@ -6,8 +6,8 @@ import { build } from './build.js';
 import runHooks from './hooks.js';
 import { split, writePiece } from './split.js';
 import {
-    basePath,
     comparePackageVersion,
+    git,
     originalPath,
     type PackageVersion,
     parsePackageVersion,
@@ -15,26 +15,21 @@ import {
     translatingPath
 } from './utils.js';
 
-const excludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
+const MininumSupportNpmVersion = 8;
+const ExcludedPackages = ['@minecraft/dummy-package', '@minecraft/core-build-tasks', '@minecraft/creator-tools'];
+const FewMissingDependenciesThreshold = 5;
 
 export async function update(keepCachedPackageJson?: boolean) {
     // 强制检出 original 分支
-    const head = execSync('git rev-parse --abbrev-ref HEAD', {
-        cwd: basePath
-    })
-        .toString('utf-8')
-        .trim();
+    const head = git('rev-parse --abbrev-ref HEAD');
     if (head !== 'original' && head !== 'HEAD') {
-        execSync('git checkout original', {
-            cwd: basePath,
-            stdio: 'inherit'
-        });
+        git('checkout original', { stdio: 'inherit' });
     }
 
     // 保证 npm 可以识别 overrides 属性
     const npmVersion = execSync('npm -v', { encoding: 'utf-8' });
-    const majorNpmVersion = parseInt(npmVersion, 10);
-    if (majorNpmVersion < 8) {
+    const majorNpmVersion = Number.parseInt(npmVersion, 10);
+    if (majorNpmVersion < MininumSupportNpmVersion) {
         throw new Error(`NPM version should be >= 8, currently ${npmVersion}`);
     }
 
@@ -43,8 +38,8 @@ export async function update(keepCachedPackageJson?: boolean) {
         name: string;
     }[];
     const onlinePackageNames = scopedPackages
-        .map((packageInfo) => packageInfo.name)
-        .filter((packageName) => !excludedPackages.includes(packageName));
+        .map(({ name }) => name)
+        .filter((packageName) => !ExcludedPackages.includes(packageName));
 
     // 清除 node_modules 与缓存的 package.json
     const packageInfoPath = resolvePath(originalPath, 'package.json');
@@ -65,14 +60,16 @@ export async function update(keepCachedPackageJson?: boolean) {
 
     // 检查是否所有包都在依赖中
     const missingDependencies = onlinePackageNames.filter((packageName) => !(packageName in dependencies));
-    if (missingDependencies.length > 0 && missingDependencies.length <= 5) {
+    if (missingDependencies.length > 0 && missingDependencies.length <= FewMissingDependenciesThreshold) {
         throw new Error(`Missing dependencies: ${missingDependencies.join(',')}`);
     }
 
     if (!keepCachedPackageJson) {
         const cacheDependencyOverwrite: Record<string, string> = {};
         for (const [dependencyName, depVersion] of Object.entries(dependencies)) {
-            if (!depVersion) continue;
+            if (!depVersion) {
+                continue;
+            }
             const requiredVersion = packageInfo.dependencies?.[dependencyName];
             const parsedVersion = parsePackageVersion(depVersion);
             if (requiredVersion === 'beta' && parsedVersion?.gamePreRelease !== 'preview') {
@@ -84,7 +81,10 @@ export async function update(keepCachedPackageJson?: boolean) {
                     .map((e) => [e, parsePackageVersion(e)] as const)
                     .filter((e): e is [string, PackageVersion] => e[1] !== undefined)
                     .sort((a, b) => comparePackageVersion(a[1], b[1]));
-                const selected = onlineVersions[onlineVersions.length - 1];
+                const selected = onlineVersions.at(-1);
+                if (!selected) {
+                    throw new Error(`All versions of ${dependencyName} have been removed`);
+                }
                 console.log(
                     `Package ${dependencyName} uses a stable version ${depVersion}, which will be replaced by ${selected[0]}.`
                 );
@@ -111,12 +111,12 @@ export async function update(keepCachedPackageJson?: boolean) {
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
     await runHooks('beforeUpdate', buildResult);
-    sourceFiles.forEach((sourceFile) => {
+    for (const sourceFile of sourceFiles) {
         const pieces = split(sourceFile);
-        pieces.forEach((piece) => {
+        for (const piece of pieces) {
             writePiece(sourceFile, piece);
-        });
-    });
+        }
+    }
     await runHooks('afterUpdate', buildResult);
 
     // 生成 package.json 快照

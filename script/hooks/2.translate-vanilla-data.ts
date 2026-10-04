@@ -1,18 +1,20 @@
 import { type SourceFile, SyntaxKind, type ts } from 'ts-morph';
 import type { Hook } from './hook.js';
 
-const translationSources = [
+const TranslationSources = [
     'https://idlist.projectxero.top/data/index.json',
     'https://xeroalpha.github.io/caidlist/data/index.json'
 ];
 
-async function fetchText(url: string | URL) {
+async function fetchJSON<T>(url: string | URL) {
     const res = await fetch(url);
     if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
     }
-    return res.text();
+    return res.json() as Promise<T>;
 }
+
+const MinecraftPrefixRegex = /^minecraft:/;
 
 const tsPopulators: Record<
     string,
@@ -26,7 +28,7 @@ const tsPopulators: Record<
         const { block } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const blockId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const blockIdWithoutPrefix = blockId.replace(/^minecraft:/, '');
+            const blockIdWithoutPrefix = blockId.replace(MinecraftPrefixRegex, '');
             const enumTranslation = block[blockId] || block[blockIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -42,7 +44,7 @@ const tsPopulators: Record<
         const { item } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const itemId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const itemIdWithoutPrefix = itemId.replace(/^minecraft:/, '');
+            const itemIdWithoutPrefix = itemId.replace(MinecraftPrefixRegex, '');
             const enumTranslation = item[itemId] || item[itemIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -89,7 +91,7 @@ const tsPopulators: Record<
         const { effect } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const effectId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const effectIdWithoutPrefix = effectId.replace(/^minecraft:/, '');
+            const effectIdWithoutPrefix = effectId.replace(MinecraftPrefixRegex, '');
             const enumTranslation = effect[effectId] || effect[effectIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -139,7 +141,7 @@ const tsPopulators: Record<
         const { biome } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const biomeId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const biomeIdWithoutPrefix = biomeId.replace(/^minecraft:/, '');
+            const biomeIdWithoutPrefix = biomeId.replace(MinecraftPrefixRegex, '');
             const enumTranslation = biome[biomeId] || biome[biomeIdWithoutPrefix];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -155,7 +157,7 @@ const tsPopulators: Record<
         const { location } = gameData;
         for (const enumMember of enumNode.getMembers()) {
             const featureId = enumMember.getInitializerIfKindOrThrow(SyntaxKind.StringLiteral).getLiteralValue();
-            const featureIdWithoutPrefix = featureId.replace(/^minecraft:/, '');
+            const featureIdWithoutPrefix = featureId.replace(MinecraftPrefixRegex, '');
             const enumTranslation = location[featureIdWithoutPrefix] || location[featureId];
             if (enumTranslation) {
                 const prefixSpaces = enumMember.getIndentationText();
@@ -201,50 +203,46 @@ interface IDListDataCollection {
 
 export default {
     async afterTranslate({ project }) {
-        const [sourceUrl, dataIndex] = await Promise.any(
-            translationSources.map(async (translationSource) => {
-                const dataIndex = JSON.parse(await fetchText(translationSource)) as IDListDataIndex;
-                return [translationSource, dataIndex] as const;
+        const [sourceUrl, sourceIndex] = await Promise.any(
+            TranslationSources.map(async (translationSource) => {
+                const translationIndex = await fetchJSON<IDListDataIndex>(translationSource);
+                return [translationSource, translationIndex] as const;
             })
         );
 
         console.log(`[translate-vanilla-data] Selected translation source: ${sourceUrl}`);
         const gameData: Record<string, Record<string, string>> = {};
-        const betaVersionIndex = dataIndex.find((e) => e.id === 'beta');
+        const betaVersionIndex = sourceIndex.find((e) => e.id === 'beta');
         if (!betaVersionIndex) {
-            throw new Error(`Wrong idlist index`);
+            throw new Error('Wrong idlist index');
         }
         console.log(`[translate-vanilla-data] Data version: ${betaVersionIndex.dataVersion}`);
-        (
-            await Promise.all(
-                ['gametest', 'experiment', 'education'].map(async (n) => {
-                    const dataIndex = betaVersionIndex.branchList.find((e) => e.id === n);
-                    if (!dataIndex) {
-                        throw new Error(`Wrong idlist index`);
-                    }
-                    const dataUrl = new URL(dataIndex.dataUrl, sourceUrl);
-                    const { enums } = JSON.parse(await fetchText(dataUrl)) as IDListDataCollection;
-                    return enums;
-                })
-            )
-        ).forEach((enums) => {
-            Object.entries(enums).forEach(([enumName, enumKV]) => {
+        const branches = ['gametest', 'experiment', 'education'];
+        for (const branch of branches) {
+            const branchIndex = betaVersionIndex.branchList.find((e) => e.id === branch);
+            if (!branchIndex) {
+                throw new Error('Wrong idlist index');
+            }
+            const dataUrl = new URL(branchIndex.dataUrl, sourceUrl);
+            const { enums } = await fetchJSON<IDListDataCollection>(dataUrl);
+            for (const [enumName, enumKV] of Object.entries(enums)) {
                 let enumEntries = gameData[enumName] as Record<string, string> | undefined;
-                enumEntries ??= gameData[enumName] = {};
-                Object.entries(enumKV).forEach(([enumKey, enumValue]) => {
+                enumEntries ??= {};
+                gameData[enumName] = enumEntries;
+                for (const [enumKey, enumValue] of Object.entries(enumKV)) {
                     if (!enumEntries[enumKey]) {
                         enumEntries[enumKey] = enumValue;
                     }
-                });
-            });
-        });
+                }
+            }
+        }
 
-        Object.entries(tsPopulators).forEach(([fileName, populator]) => {
+        for (const [fileName, populator] of Object.entries(tsPopulators)) {
             const sourceFile = project.getSourceFileOrThrow(fileName);
             const textChanges: ts.TextChange[] = [];
             console.log(`[translate-vanilla-data] Populating ${fileName}`);
             populator(textChanges, { sourceFile, gameData });
             sourceFile.applyTextChanges(textChanges);
-        });
+        }
     }
 } as Hook;
