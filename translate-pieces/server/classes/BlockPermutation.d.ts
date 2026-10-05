@@ -159,6 +159,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws
+     * @seeExample addBlockColorCube.ts
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,

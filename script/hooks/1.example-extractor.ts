@@ -12,11 +12,11 @@ import {
     type ReflectionSymbolId,
     translateTagName
 } from 'typedoc';
-import { jsdocBounds } from '../multiline-comments.js';
-import { installLanguages, type TypeDocLanguages } from '../utils.js';
+import { jsdocTagBounds } from '../multiline-comments.js';
+import { findJSXElement, installLanguages, type TypeDocLanguages } from '../utils.js';
 import type { Hook } from './hook.js';
 
-const CodeBlockRegex = /^```(.+)\n([\s\S]*?)```$/;
+const CodeBlockMark = '```';
 
 const ExampleNameOverwrite = [
     {
@@ -41,39 +41,12 @@ function unescapeMultilineComment(text: string) {
     return text.replace(/\/\\\*/g, '/*').replace(/\*\\\//g, '*/');
 }
 
-type TraversableJSXChildren = Exclude<JSX.Children, JSX.Children[] | null | undefined>;
-
-function traverseJSX(jsx: JSX.Children, f: (element: TraversableJSXChildren, traverseInto: () => void) => void) {
-    if (Array.isArray(jsx)) {
-        for (const child of jsx) {
-            traverseJSX(child, f);
-        }
-    } else if (jsx !== null && jsx !== undefined) {
-        f(jsx, () => {
-            if (typeof jsx === 'object') {
-                for (const child of jsx.children) {
-                    traverseJSX(child, f);
-                }
-            }
-        });
-    }
-}
-
-function findJSXElement<E extends TraversableJSXChildren>(
-    jsx: JSX.Children,
-    predicate: (element: TraversableJSXChildren) => element is E
-) {
-    const elements: E[] = [];
-    traverseJSX(jsx, (el, traverseInto) => {
-        if (predicate(el)) {
-            elements.push(el);
-        }
-        traverseInto();
-    });
-    return elements;
+function toCodeBlock(code: string, language?: string) {
+    return `${CodeBlockMark}${language ?? ''}\n${code}\n${CodeBlockMark}`;
 }
 
 interface ExampleVersion {
+    language?: string;
     content: string;
     hash: string;
     fileName: string;
@@ -107,19 +80,18 @@ export default {
             const exampleTags = comments.filter((t) => t.getTagName() === 'example');
             const pendingTextChangeAppliers: { span: ts.TextSpan; newText: () => string }[] = [];
             for (const tag of exampleTags) {
-                const jsdoc = tag.getParentIfKindOrThrow(SyntaxKind.JSDoc);
-                const jsdocLines = jsdocBounds(jsdoc);
+                const tagLines = jsdocTagBounds(tag);
                 const tagStart = tag.getStart();
-                const tagNameNode = tag.getTagNameNode();
-                const tagStartLineIndex = jsdocLines.findIndex((l) => tagStart < l.commentEnd);
-                const tagEndLineIndexExclusive = jsdocLines.findIndex((l) => tag.getEnd() <= l.commentStart);
-                if (tagStartLineIndex === -1 || tagEndLineIndexExclusive === -1) {
-                    throw new Error('Cannot find tag in comment');
-                }
-                const tagLine = jsdocLines[tagStartLineIndex];
-                const bodyLines = jsdocLines.slice(tagStartLineIndex + 1, tagEndLineIndexExclusive);
-                if (bodyLines[0]?.comment?.startsWith('```')) {
-                    const codeBlockEnd = bodyLines.findIndex((e, i) => i > 0 && e.comment === '```');
+                const tagNameNodeEnd = tag.getTagNameNode().getEnd();
+                const [firstLine] = tagLines;
+                const bodyLines = tagLines.slice(1);
+                const bodyFirstLineComment = bodyLines[0]?.comment;
+                let exampleLanguage: string | undefined;
+                if (bodyFirstLineComment?.startsWith(CodeBlockMark)) {
+                    if (bodyFirstLineComment.length > CodeBlockMark.length) {
+                        exampleLanguage = bodyFirstLineComment.slice(CodeBlockMark.length).trim();
+                    }
+                    const codeBlockEnd = bodyLines.findIndex((e, i) => i > 0 && e.comment === CodeBlockMark);
                     if (codeBlockEnd !== -1) {
                         pendingTextChangeAppliers.push({
                             span: {
@@ -148,7 +120,7 @@ export default {
                         .replace(`${sourceFileSymbol.getEscapedName()}.`, '');
                 }
 
-                let exampleName = (tagLine.comment?.slice(tagNameNode.getEnd() - tagLine.commentStart) ?? '').trim();
+                let exampleName = (firstLine.comment?.slice(tagNameNodeEnd - firstLine.commentStart) ?? '').trim();
                 for (const exampleNameOverwriteEntry of ExampleNameOverwrite) {
                     if (
                         exampleNameOverwriteEntry.source === sourceName &&
@@ -177,7 +149,8 @@ export default {
                 if (foundVersion) {
                     foundVersion.sources.push(source);
                 } else {
-                    const exampleVersion = {
+                    const exampleVersion: ExampleVersion = {
+                        language: exampleLanguage,
                         content: exampleContent,
                         hash: hashTextShort(exampleContent),
                         fileName: exampleName,
@@ -214,12 +187,7 @@ export default {
                 for (const exampleVersion of exampleVersions) {
                     const exampleFilePath = resolvePath(exampleDir, exampleVersion.fileName);
                     if (existsSync(exampleFilePath)) {
-                        let fileContent = readFileSync(exampleFilePath, 'utf-8');
-                        const match = CodeBlockRegex.exec(exampleVersion.content);
-                        if (match) {
-                            fileContent = `\`\`\`${match[1]}\n${fileContent.trim()}\n\`\`\``;
-                        }
-                        exampleVersion.content = fileContent;
+                        exampleVersion.content = readFileSync(exampleFilePath, 'utf-8');
                     }
                 }
             }
@@ -288,7 +256,7 @@ export default {
                 }
                 content.push({
                     kind: 'code',
-                    text: exampleVersion.content
+                    text: toCodeBlock(exampleVersion.content, exampleVersion.language)
                 });
                 content.push({
                     kind: 'text',
@@ -348,7 +316,7 @@ export default {
                             const replacement: CommentDisplayPart[] = [
                                 {
                                     kind: 'code',
-                                    text: relatedExample.content
+                                    text: toCodeBlock(relatedExample.content, relatedExample.language)
                                 }
                             ];
                             if (rest.length > 0) {

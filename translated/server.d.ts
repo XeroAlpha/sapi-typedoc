@@ -5925,6 +5925,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws
+     * @seeExample addBlockColorCube.ts
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
@@ -12455,6 +12456,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws
+     * @seeExample minibiomes.ts
      */
     addRider(rider: Entity): boolean;
     /**
@@ -20115,6 +20117,7 @@ export class Scoreboard {
      * @worldMutation
      *
      * @throws
+     * @seeExample updateScoreboard.ts
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**

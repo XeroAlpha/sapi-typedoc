@@ -13,6 +13,7 @@ export class Scoreboard {
      * @worldMutation
      *
      * @throws
+     * @seeExample updateScoreboard.ts
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     /**

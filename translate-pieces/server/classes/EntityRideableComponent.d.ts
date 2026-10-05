@@ -75,6 +75,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws
+     * @seeExample minibiomes.ts
      */
     addRider(rider: Entity): boolean;
     /**

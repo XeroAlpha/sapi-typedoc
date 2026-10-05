@@ -43,7 +43,6 @@
                 "noExportedImports": "warn",
                 "noIncrementDecrement": "warn",
                 "noInferrableTypes": "warn",
-                "noMagicNumbers": "off",
                 "noMultiAssign": "warn",
                 "noNamespace": "warn",
                 "noNestedTernary": "warn",
@@ -81,12 +80,6 @@
                 "useForOf": "warn",
                 "useGlobalThis": "warn",
                 "useGroupedAccessorPairs": "warn",
-                "useNamingConvention": {
-                    "level": "off",
-                    "options": {
-                        "strictCase": false
-                    }
-                },
                 "useNodeAssertStrict": "warn",
                 "useNumberNamespace": "warn",
                 "useObjectSpread": "warn",

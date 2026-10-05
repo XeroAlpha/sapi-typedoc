@@ -2120,6 +2120,7 @@ export class Test {
      * Testing callback function that runs. If the function runs
      * successfully, the test is marked as a success.
      * @throws
+     * @seeExample simpleMobGameTest.ts
      */
     succeedWhen(callback: () => void): void;
     /**
@@ -2198,6 +2199,8 @@ export class Test {
      * the specified type is not present.
      * Defaults to: true
      * @throws
+     * @seeExample phantomsShouldFlyFromCats.ts
+     * @seeExample minibiomes.ts
      */
     succeedWhenEntityPresent(
         entityTypeIdentifier: string,
