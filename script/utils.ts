@@ -32,6 +32,12 @@ export function walkFiles(
     }
 }
 
+const LineFeedRegex = /\r\n|\r/g;
+
+export function readTextFileSync(path: string, encoding: BufferEncoding = 'utf-8') {
+    return readFileSync(path, encoding).replace(LineFeedRegex, '\n');
+}
+
 export function getCommonStringFromStart(a: string, b: string) {
     let len = Math.min(a.length, b.length);
     while (len > 0) {

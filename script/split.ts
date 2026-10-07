@@ -290,3 +290,10 @@ export function replacePieces(sourceFile: SourceFile, pieces: Piece[]) {
         sourceFile.replaceWithText(sourceFileText);
     }
 }
+
+export function patchSourceFiles(sourceFiles: SourceFile[]) {
+    for (const sourceFile of sourceFiles) {
+        const pieces = split(sourceFile);
+        replacePieces(sourceFile, pieces);
+    }
+}

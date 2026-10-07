@@ -1,10 +1,15 @@
 import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { relative as relativePath, resolve as resolvePath } from 'node:path';
 import { Project, type SourceFile } from 'ts-morph';
-import { TSConfigReader, Application as TypeDocApplication, OptionDefaults as TypeDocOptionDefaults } from 'typedoc';
-import runHooks from './hooks.js';
-import { replacePieces, split } from './split.js';
+import {
+    TSConfigReader,
+    Application as TypeDocApplication,
+    OptionDefaults as TypeDocOptionDefaults,
+    type TypeDocOptions
+} from 'typedoc';
+import { runHooks } from './hooks.js';
+import { patchSourceFiles } from './split.js';
 import {
     basePath,
     distPath,
@@ -14,6 +19,7 @@ import {
     originalPath,
     readPackageInfo,
     readPackageInfoOrThrow,
+    readTextFileSync,
     type TypeDocLanguages,
     translatedPath,
     translatingPath,
@@ -37,11 +43,15 @@ const TypeDocExtraTranslations: TypeDocLanguages = {
     }
 };
 
+const TypeDocExtraOptions: TypeDocOptions = {
+    modifierTags: [...TypeDocOptionDefaults.modifierTags, '@rc']
+};
+
 const namespacePrefix = '@minecraft/';
 const botModules = ['@minecraft/vanilla-data'];
-const skipResolutionModules: string[] = [];
+const tsConfigFilePath = resolvePath(translatedPath, 'tsconfig.json');
 
-function getModuleSourceFiles(fromPath: string, moduleSpecifier: string) {
+function getModuleReferencedFiles(fromPath: string, moduleSpecifier: string) {
     const project = new Project();
     const sourceFile = project.createSourceFile(resolvePath(fromPath, '__temp_module_resolution__.ts'));
     const rootDecl = sourceFile.addExportDeclaration({ moduleSpecifier });
@@ -70,6 +80,76 @@ function getModuleSourceFiles(fromPath: string, moduleSpecifier: string) {
 
 const dtsRegex = /\.d\.ts$/i;
 
+function addOriginalModule(project: Project, moduleName: string, indexSourcePath: string) {
+    const createSourceFile = (filePath: string, sourceFileContent: string) => {
+        if (project.getSourceFile(filePath)) {
+            throw new Error(`Cannot emit source file more than once: ${filePath}`);
+        }
+        return project.createSourceFile(filePath, sourceFileContent, { overwrite: true });
+    };
+    const modulePath = findModuleOrThrow(moduleName, originalPath);
+    const { version, types } = readPackageInfoOrThrow(modulePath);
+    let dtsFiles: string[] = [];
+    walkFiles(modulePath, (_, file, path) => {
+        if (file?.endsWith('.d.ts')) {
+            const relPath = relativePath(modulePath, path);
+            if (!relPath.includes('node_modules')) {
+                dtsFiles.push(path);
+            }
+        }
+    });
+    const moduleSourceFiles = getModuleReferencedFiles(originalPath, moduleName);
+    dtsFiles = dtsFiles.filter((e) => moduleSourceFiles.includes(e));
+    const sourceFiles: SourceFile[] = [];
+    if (dtsFiles.length === 0) {
+        throw new Error(`Cannot find any d.ts for ${moduleName}`);
+    }
+    if (dtsFiles.length === 1) {
+        const sourceFile = createSourceFile(indexSourcePath, readTextFileSync(dtsFiles[0]));
+        sourceFiles.push(sourceFile);
+    } else {
+        const typeEntry = resolvePath(modulePath, types ?? 'index.d.ts').replace(dtsRegex, '');
+        const commonParent = dtsFiles
+            .map((path) => resolvePath(path, '..'))
+            .reduce((common, parent) => getCommonStringFromStart(common, parent));
+        const moduleRoot = indexSourcePath.replace(dtsRegex, '');
+        const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
+        const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, '/')}`;
+        const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
+        for (const file of dtsFiles) {
+            const target = resolvePath(moduleRoot, relativePath(commonParent, file));
+            const sourceFile = createSourceFile(target, readTextFileSync(file));
+            sourceFiles.push(sourceFile);
+        }
+        const indexSourceFile = createSourceFile(indexSourcePath, exportStatement);
+        sourceFiles.unshift(indexSourceFile);
+    }
+    return { version, sourceFiles };
+}
+
+export function loadOriginalProject() {
+    const project = new Project({
+        tsConfigFilePath,
+        skipAddingFilesFromTsConfig: true
+    });
+    const sourceFiles: SourceFile[] = [];
+    const dependencies = readPackageInfo(originalPath)?.dependencies ?? {};
+    for (const [moduleName, versionSpec] of Object.entries(dependencies)) {
+        const pureModuleName = moduleName.startsWith(namespacePrefix)
+            ? moduleName.slice(namespacePrefix.length)
+            : moduleName;
+        const indexSourcePath = resolvePath(translatedPath, `${pureModuleName}.d.ts`);
+        const addResult = addOriginalModule(project, moduleName, indexSourcePath);
+        if (!botModules.includes(moduleName)) {
+            sourceFiles.push(...addResult.sourceFiles);
+        }
+        dependencies[moduleName] = addResult.version;
+        const moduleSpec = `${moduleName}@${addResult.version ?? versionSpec}`;
+        console.log(`Loaded ${addResult.sourceFiles.length} d.ts file(s) for ${moduleSpec}`);
+    }
+    return { project, sourceFiles, dependencies };
+}
+
 export async function build(translated?: boolean) {
     const hookContext = { basePath, originalPath, translatingPath, translatedPath, distPath };
 
@@ -96,77 +176,7 @@ export async function build(translated?: boolean) {
     // 从依赖中构建用于生成文档的项目
     console.time('[loadOriginal] Total');
     await runHooks('beforeLoad', hookContext);
-    const tsConfigFilePath = resolvePath(translatedPath, 'tsconfig.json');
-    const project = new Project({
-        tsConfigFilePath,
-        skipAddingFilesFromTsConfig: true
-    });
-    const sourceFiles: SourceFile[] = [];
-    const dependencies = readPackageInfo(originalPath)?.dependencies ?? {};
-    for (const moduleName of Object.keys(dependencies)) {
-        if (moduleName.startsWith(namespacePrefix)) {
-            const pureModuleName = moduleName.slice(namespacePrefix.length);
-            const modulePath = findModuleOrThrow(moduleName, originalPath);
-            const { version, types } = readPackageInfoOrThrow(modulePath);
-            console.log(`Loading d.ts for ${moduleName}@${version ?? 'undefined'}`);
-            let dtsFiles: string[] = [];
-            walkFiles(modulePath, (_, file, path) => {
-                if (file?.endsWith('.d.ts')) {
-                    const relPath = relativePath(modulePath, path);
-                    if (!relPath.includes('node_modules')) {
-                        dtsFiles.push(path);
-                    }
-                }
-            });
-            if (!skipResolutionModules.includes(moduleName)) {
-                const moduleSourceFiles = getModuleSourceFiles(originalPath, moduleName);
-                dtsFiles = dtsFiles.filter((e) => moduleSourceFiles.includes(e));
-            }
-            if (dtsFiles.length === 0) {
-                throw new Error(`Cannot find any d.ts for ${moduleName}`);
-            }
-            if (dtsFiles.length === 1) {
-                const sourceFile = project.createSourceFile(
-                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    readFileSync(dtsFiles[0], 'utf-8').replace(/\r\n|\r/g, '\n'),
-                    { overwrite: true }
-                );
-                if (!botModules.includes(moduleName)) {
-                    sourceFiles.push(sourceFile);
-                }
-            } else {
-                const typeEntry = resolvePath(modulePath, types ?? 'index.d.ts').replace(dtsRegex, '');
-                const commonParent = dtsFiles
-                    .map((path) => resolvePath(path, '..'))
-                    .reduce((common, parent) => getCommonStringFromStart(common, parent));
-                const moduleRoot = resolvePath(translatedPath, pureModuleName);
-                const moduleEntry = resolvePath(moduleRoot, relativePath(commonParent, typeEntry));
-                const moduleEntryRelative = `./${relativePath(translatedPath, moduleEntry).replace(/\\/g, '/')}`;
-                const exportStatement = `export * from ${JSON.stringify(moduleEntryRelative)};`;
-                for (const file of dtsFiles) {
-                    const target = resolvePath(moduleRoot, relativePath(commonParent, file));
-                    mkdirSync(resolvePath(target, '..'), { recursive: true });
-                    const sourceFile = project.createSourceFile(
-                        target,
-                        readFileSync(file, 'utf-8').replace(/\r\n|\r/g, '\n'),
-                        { overwrite: true }
-                    );
-                    if (!botModules.includes(moduleName)) {
-                        sourceFiles.push(sourceFile);
-                    }
-                }
-                const indexSourceFile = project.createSourceFile(
-                    resolvePath(translatedPath, `${pureModuleName}.d.ts`),
-                    exportStatement,
-                    { overwrite: true }
-                );
-                if (!botModules.includes(moduleName)) {
-                    sourceFiles.push(indexSourceFile);
-                }
-            }
-            dependencies[moduleName] = version;
-        }
-    }
+    const { project, sourceFiles, dependencies } = loadOriginalProject();
     const translateHookContext = { ...hookContext, basePath, project, sourceFiles, dependencies };
     await runHooks('afterLoad', translateHookContext);
     console.timeEnd('[loadOriginal] Total');
@@ -174,10 +184,7 @@ export async function build(translated?: boolean) {
     if (translated) {
         // 将顶层成员替换为带翻译的版本
         console.time('[translate] Total');
-        for (const sourceFile of sourceFiles) {
-            const pieces = split(sourceFile);
-            replacePieces(sourceFile, pieces);
-        }
+        patchSourceFiles(sourceFiles);
         await runHooks('afterTranslate', translateHookContext);
         console.timeEnd('[translate] Total');
     }
@@ -188,7 +195,7 @@ export async function build(translated?: boolean) {
     const tsdocApplication = await TypeDocApplication.bootstrapWithPlugins(
         {
             tsconfig: tsConfigFilePath,
-            modifierTags: [...TypeDocOptionDefaults.modifierTags, '@rc']
+            ...TypeDocExtraOptions
         },
         [new TSConfigReader()]
     );

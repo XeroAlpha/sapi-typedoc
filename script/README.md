@@ -26,7 +26,8 @@ dist/（站点产物，已 gitignore）
 | `update.ts` | 更新原始 d.ts 与切分片断（见「更新流程」） |
 | `split.ts` | 源码 ↔ translate-pieces/ 的切分与合并（见「片断格式」） |
 | `hooks.ts` | 加载并调度 `hooks/` 下的钩子（见「hooks 系统」） |
-| `utils.ts` | 路径常量、git 封装、版本解析/比较、TypeDoc 文案安装（见「utils.ts」） |
+| `utils.ts` | 路径常量、文件/模块定位、git 封装、版本解析/比较、TypeDoc 文案安装（见「utils.ts」） |
+| `multiline-comments.ts` | JSDoc 多行注释的定位与改写工具，被 `0.corruption-fixer` / `1.example-extractor` / `1.release-stage` / `1.throws-tag-syntax` 复用 |
 | `pickRandom.ts` | 工具：随机挑一个未翻译片断 |
 | `hooks/hook.d.ts` | Hook 类型定义（生命周期与 context 继承关系） |
 | `../biome.json` / `tsconfig.json` | 工程配置（Biome 配置位于仓库根目录） |
@@ -37,6 +38,8 @@ dist/（站点产物，已 gitignore）
 
 - **路径常量**：`basePath`（仓库根）、`originalPath`（original/）、`translatingPath`（translate-pieces/）、`translatedPath`（translated/）、`distPath`（dist/）。
 - **`git(args)`**：在仓库根目录执行 git 命令并返回输出（`execSync` 封装）。hooks 里读分支、提交历史都靠它。
+- **文件与模块定位**：`walkFiles()` 递归遍历目录；`readTextFileSync()` 读取文本文件并把 CRLF / CR 统一为 LF（构建读入的所有 d.ts 都经它）；`readPackageInfo()` / `readPackageInfoOrThrow()` 读取 package.json；`findModuleOrThrow()` 用 `createRequire` 在 `original/node_modules` 中定位模块。
+- **字符串与 JSX 工具**：`getCommonStringFromStart()` 求公共前缀（用于推算多文件包的公共父目录）、`stringCompare()`；`findJSXElement()` 遍历 TypeDoc 的 JSX 树，供需要改渲染结果的 hook（如 `1.example-extractor.ts`）使用。
 - **版本解析**：`PackageVersion` 类型 + `parsePackageVersion()`，把 `@minecraft/*` 的版本串（如 `1.0.0-beta.1.26.50-preview.27`）解析为 `{ version, gameVersion, gamePreRelease }`；`comparePackageVersion()` 按版本 + 游戏版本 + 分支（stable > preview）排序比较。
 - **TypeDoc 文案**：`TypeDocLanguages` 类型 + `installLanguages(app, languages)`，给 TypeDoc 注入额外中英文案（如 `tag_rc: '预览版'`）。
 
@@ -47,7 +50,7 @@ dist/（站点产物，已 gitignore）
 | `npm run build` | `tsx ./script/cli.ts build` | 翻译版构建（合并 translate-pieces 后生成站点） |
 | `npm run update` | `tsx ./script/cli.ts update` | **强制切到 original 分支**重建原始 d.ts 并重新切分片断 |
 | `npm run update-cached` | `tsx ./script/cli.ts update-cached` | 同上，但保留 package.json 版本快照 |
-| `npm run lint-script` | `biome check --write ./script` | 对 script/ 格式化 + lint 并自动修复 |
+| `npm run lint-script` | `tsc --noEmit -p ./script/tsconfig.json && biome check --write ./script` | 先类型检查，再对 script/ 格式化 + lint 并自动修复 |
 
 ⚠️ **`npm run update` 会执行 `git checkout original`（见 update.ts），未提交的更改会被丢弃。运行前务必提交或 stash。**
 
@@ -55,9 +58,9 @@ dist/（站点产物，已 gitignore）
 
 1. **依赖恢复**：把 `translated/package.json`（版本快照）写入 `original/package.json`，在 `original/` 下 `npm install`，随后恢复原文件。`original/.npmrc` 强制 `package-lock=false`、`legacy-peer-deps=true`，构建需联网。
 2. **触发 beforeLoad 钩子**
-3. **加载模块**：遍历 original 依赖中 `@minecraft/*` 的包，用 ts-morph Project（tsconfig = `translated/tsconfig.json`，`skipAddingFilesFromTsConfig`）读取 d.ts 写入 `translated/`。单文件包 → `translated/<name>.d.ts`；多文件包 → 目录结构 + 入口 `export * from ...`。`botModules`（`@minecraft/vanilla-data`）只加载不参与文档生成。
+3. **加载模块**（`loadOriginalProject()`，已导出）：遍历 `original/package.json` 的 dependencies（不限定 `@minecraft/*` 前缀），用 ts-morph Project（tsconfig = `translated/tsconfig.json`，`skipAddingFilesFromTsConfig`）读取 d.ts 写入 `translated/`，并记录每个包实际解析到的版本。单文件包 → `translated/<name>.d.ts`；多文件包 → 目录结构 + 入口 `export * from ...`；同一路径重复写入会直接报错。`botModules`（`@minecraft/vanilla-data`）只加载进 Project、不参与翻译。
 4. **触发 afterLoad 钩子**
-5. **翻译合并**（仅 translated 构建）：对每个 sourceFile 执行 `split()` + `replacePieces()`，把 translate-pieces/ 合并回源码。
+5. **翻译合并**（仅 translated 构建）：`patchSourceFiles(sourceFiles)`，即对每个 sourceFile 执行 `split()` + `replacePieces()`，把 translate-pieces/ 合并回源码。
 6. **触发 afterTranslate 钩子**
 7. **TypeDoc 准备**：`saveSync()` → `bootstrapWithPlugins`（tsconfig + 注册 `@rc` modifierTag）→ `installLanguages` → 清空 dist。
 8. **触发 beforeConvert 钩子**
@@ -69,7 +72,7 @@ dist/（站点产物，已 gitignore）
 ## 更新流程（update.ts）
 
 1. **强制 original 分支**：当前 HEAD 不在 `original` 时执行 `git checkout original`；检查 npm ≥ 8（overrides 需要）。
-2. **拉取包列表**：`npm search --json scope:minecraft` 获取 `@minecraft` 组织下所有包，排除 `excludedPackages`。
+2. **拉取包列表**：`npm search --json scope:minecraft` 获取 `@minecraft` 组织下所有包，排除 `ExcludedPackages`。
 3. **清理**：删除 `translated/package.json` 版本快照（`update-cached` 则保留）与 `original/node_modules`。
 4. **加载原始**：调用 `build(false)` 构建纯原文项目，拿到 sourceFiles 与解析后的依赖版本。
 5. **校验**：确认在线包都出现在依赖中，缺失数量 >5 直接报错。
@@ -85,12 +88,14 @@ dist/（站点产物，已 gitignore）
 - 按顶层成员切分到 `translate-pieces/<模块>/<类别>/<成员>.d.ts`；类别：`enums` / `classes` / `functions` / `interfaces` / `modules` / `types` / `variables`。
 - `package.d.ts` 是 `@packageDocumentation` 注释片断；`index.d.ts` 是自动生成的导出汇总（generated piece，不会被 replacePieces 回写）。
 - 片断头部注入 `/* IMPORT */` import 语句、尾部 `/* EXPORT */ export { ... };`（非导出成员）——这些行在 replacePieces 时被剥离，翻译者不可改动它们。
+- 对外接口：`split(sourceFile)` 切出片断、`writePiece(sourceFile, piece)` 写入 translate-pieces/、`replacePieces(sourceFile, pieces)` 合并回源码、`patchSourceFiles(sourceFiles)` 对一批 sourceFile 连做切分 + 合并（build 的翻译合并走的就是它）。
 - **修改 split.ts 会改变 translate-pieces/ 的布局，直接影响所有翻译 PR 的合并**，需格外谨慎，必要时提供片断迁移方案。
 
 ## hooks 系统
 
-- `hooks.ts` 加载 `hooks/` 下所有非 `.d.ts` 的脚本，**按文件名排序**执行；default 导出可以是 `{ [event]: fn }` 对象，也可以是 `(event, context) => fn` 函数。
-- 约定文件名数字前缀表示执行优先级：例如 `0.*` 最先、`1.*` 次之、`2.*` 再次之，以此类推。
+- `hooks.ts` 加载 `hooks/` 下所有非 `.d.ts` 的脚本，**按文件名排序**执行；default 导出可以是 `{ [event]: fn }` 对象，也可以是 `(event, context) => fn` 函数。`listHooks()` 只列出候选文件名；`loadHooks(options?)` 完成加载并返回执行函数；具名导出 `runHooks` 就是顶层 `await loadHooks()` 的结果，因此 import 时就已拉起全部钩子。
+- `LoadHookOptions.ignoreHooks` 可临时跳过钩子：键是钩子文件名，值为 `true` 表示整个钩子不加载，值为事件名数组（`HookName[]`）表示只跳过这些事件。
+- 文件名约定：数字前缀表示执行优先级：例如 `0.*` 最先、`1.*` 次之、`2.*` 再次之，以此类推。
 - 生命周期（context 类型逐级继承，见 `hooks/hook.d.ts`）：
   - `beforeLoad(HookContext)` / `afterLoad(TranslateHookContext)` / `afterTranslate(TranslateHookContext)`
   - `beforeConvert(BeforeConvertHookContext)` / `afterConvert(AfterConvertHookContext)` / `afterEmit(AfterConvertHookContext)`
@@ -118,13 +123,13 @@ dist/（站点产物，已 gitignore）
 - `tsconfig.json`：strict、noImplicitAny、verbatimModuleSyntax 等全开。
 - 代码风格与静态检查用 [Biome](https://biomejs.dev/)（配置在仓库根目录 `biome.json`，参考 [quickjs-debugger](https://github.com/XeroAlpha/quickjs-debugger) 的用法）：
   - formatter 对齐原 Prettier 配置：lineWidth 120、indentWidth 4、单引号、无尾逗号；并用 `assist.source.organizeImports` 排序 import。
-  - linter 使用 `recommended` 预设，并开启 `linter.domains.types: "recommended"`，用 Biome 的类型相关规则部分替代原 typescript-eslint `strictTypeChecked` + `stylisticTypeChecked`。
-  - 类型检查的边界：`domains.types` 只启用该 domain 的 recommended 规则；真正对标 typescript-eslint 类型规则（`no-floating-promises` 等）的规则仍在 nursery，需在 `linter.rules.nursery` 中逐个显式开启（`noFloatingPromises`、`noMisusedPromises`、`useAwaitThenable`），且 Biome 的类型推断远弱于 tsc。当前 `recommended` 对本目录代码不产生额外告警；改成 `"types": "all"` 会额外报 `useArraySortCompare`（3 处字符串数组 `.sort()`，属误报）。类型层面的最终保障仍是 `npx tsc -p script`。
-  - `files.includes` 只匹配 `script/**` 下的 js/ts，`vcs.useIgnoreFile` 会跳过 `.gitignore` 与 `.git/info/exclude` 中的文件，因此 `original/`、`translate-pieces/`、`translated/`、`dist/`、`cache/` 等生成物/工作区不会被格式化。
-  - 需要定点屏蔽时用 `// biome-ignore lint/<group>/<rule>: 原因`（原来的 `eslint-disable*` 注释已按此改写）；整文件屏蔽用 `// biome-ignore-all`，例如 `hooks/0.corruption-fixer.ts` 有意保留一批常用 ts-morph 导入，供随时编写 fixer。
-  - 改完跑 `npm run lint-script`（等价的 `npx biome check --write ./script`）；不加 `--write` 即为只检查。
+  - linter 使用 `recommended` 预设，在 `complexity` / `performance` / `style` / `suspicious` / `nursery` 各组里显式开启了一批规则（完整清单见 `biome.json`），并开启 `linter.domains.types: "recommended"`，用 Biome 的规则部分替代原 typescript-eslint `strictTypeChecked` + `stylisticTypeChecked`。
+  - 类型检查的边界：`domains.types` 只启用该 domain 的 recommended 规则；真正对标 typescript-eslint 类型规则（`no-floating-promises` 等）的规则仍在 nursery，需要时可仿照现有的 `noUnnecessaryTemplateExpression`、`useArraySome`、`useIncludes`、`useNullishCoalescing`，在 `linter.rules.nursery` 里逐个显式开启（`noFloatingPromises`、`noMisusedPromises`、`useAwaitThenable` 等），且 Biome 的类型推断远弱于 tsc。当前配置对本目录代码不产生告警；改成 `"types": "all"` 会额外报 `useArraySortCompare`（3 处字符串数组 `.sort()`，属误报）。类型层面的最终保障是 `npm run lint-script` 里的 `npx tsc --noEmit -p ./script/tsconfig.json`。
+  - `files.includes` 只匹配 `script/**/*.ts`，`vcs.useIgnoreFile` 会跳过 `.gitignore` 与 `.git/info/exclude` 中的文件，因此 `original/`、`translate-pieces/`、`translated/`、`dist/`、`cache/` 等生成物/工作区不会被格式化。
+  - 需要定点屏蔽时用 `// biome-ignore lint/<group>/<rule>: 原因`；整文件屏蔽用 `// biome-ignore-all`，例如 `hooks/0.corruption-fixer.ts` 有意保留一批常用 ts-morph 导入，供随时编写 fixer。
+  - 改完跑 `npm run lint-script`（等价的 `npx tsc --noEmit -p ./script/tsconfig.json && npx biome check --write ./script`）；去掉 `--write` 即为只检查。
 - **没有测试框架**：验证方式是 `npm run lint-script` + 构建验证。任何管线改动至少本地跑一次 build；涉及 update 流程的改动，**先跑一次 `npm run update` 并检查其产物**（如 translate-pieces/ 的切分结果），再跑一次 `npm run build` 验证。
-- TypeDoc 是 `^0.28.13`，其内部 API（renderer、internationalization、DocumentReflection）跨版本不稳定，升级需单独验证。
+- TypeDoc 是 `^0.28.20`（见 `package.json`），其内部 API（renderer、internationalization、DocumentReflection）跨版本不稳定，升级需单独验证。
 
 ## 红线
 

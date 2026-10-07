@@ -39,6 +39,8 @@ declare interface Hook {
     afterUpdate?: HookFunction<AfterConvertHookContext>;
 }
 
+declare type HookName = keyof Hook;
+
 type HookerFnMap = {
     [K in keyof Hook]-?: (event: K, context: GetContextFromHookFunction<Hook[K]>) => void | Promise<void>;
 };
