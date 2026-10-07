@@ -6090,6 +6090,7 @@ export class BlockPermutation {
      * @param blockName
      * Identifier of the block to check.
      * @throws
+     * @seeExample addBlockColorCube.ts
      */
     static resolve<T extends string = MinecraftBlockTypes>(
         blockName: T,
@@ -12636,6 +12637,7 @@ export class EntityRideableComponent extends EntityComponent {
      * @returns
      * True if the rider entity was successfully added.
      * @throws
+     * @seeExample minibiomes.ts
      */
     addRider(rider: Entity): boolean;
     /**
@@ -14652,28 +14654,6 @@ export class ItemCooldownComponent extends ItemComponent {
      * @returns
      * True if the item is the given cooldown category.
      * @throws
-     */
-    isCooldownCategory(cooldownCategory: string): boolean;
-    /**
-     * @remarks
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @throws This function can throw errors.
-     */
-    getCooldownTicksRemaining(player: Player): number;
-    /**
-     * @remarks
-     * Will return true if the item is the cooldown category passed
-     * in and false otherwise.
-     *
-     * 无法在只读模式下调用此函数，详见 {@link WorldBeforeEvents}。
-     *
-     * @param cooldownCategory
-     * The cooldown category that might be associated with this
-     * item.
-     * @returns
-     * True if the item is the given cooldown category.
-     * @throws This function can throw errors.
      */
     isCooldownCategory(cooldownCategory: string): boolean;
     /**

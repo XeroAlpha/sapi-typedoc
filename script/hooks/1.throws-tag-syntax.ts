@@ -9,7 +9,7 @@ import {
     ts
 } from 'ts-morph';
 import type { Context, Reflection } from 'typedoc';
-import { jsdocBounds, nextNonWhitespace } from '../multiline-comments.js';
+import { jsdocTagBounds, nextNonWhitespace } from '../multiline-comments.js';
 import type { Hook } from './hook.js';
 
 const throwsPrompts = ['This function can throw errors.', 'This property can throw when used.'];
@@ -54,13 +54,9 @@ function splitCommentPartIntoLines(commentParts: CommentPart[]) {
 }
 
 function convertTemplateThrows(throwsTag: JSDocThrowsTag) {
-    const jsdocNode = throwsTag.getAncestors().find((e) => e.isKind(SyntaxKind.JSDoc));
-    if (!jsdocNode) {
-        throw new Error('Assert error');
-    }
-    const jsdoc = jsdocBounds(jsdocNode);
-    const throwsTagNameEnd = throwsTag.getTagNameNode().getEnd();
-    const lastValidEnd = jsdoc.findLast((e) => e.comment !== undefined)?.commentEnd ?? throwsTag.getEnd();
+    const tagLines = jsdocTagBounds(throwsTag);
+    const tagNameEnd = throwsTag.getTagNameNode().getEnd();
+    const lastValidEnd = tagLines.findLast((e) => e.comment !== undefined)?.commentEnd ?? throwsTag.getEnd();
     // 匹配 @throws <固定文本>[<换行*n>{@link Identifier}[内容][<换行*n>{@link Identifier}...]]
     const commentLines = splitCommentPartIntoLines(getCommentParts(throwsTag));
     let isFirstLine = true;
@@ -105,7 +101,7 @@ function convertTemplateThrows(throwsTag: JSDocThrowsTag) {
     } else {
         // 移除固定文本
         pendingEdits.push({
-            span: { start: throwsTagNameEnd, length: lastValidEnd - throwsTagNameEnd },
+            span: { start: tagNameEnd, length: lastValidEnd - tagNameEnd },
             newText: ''
         });
     }

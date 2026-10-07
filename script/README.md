@@ -96,19 +96,20 @@ dist/（站点产物，已 gitignore）
   - `beforeConvert(BeforeConvertHookContext)` / `afterConvert(AfterConvertHookContext)` / `afterEmit(AfterConvertHookContext)`
   - `beforeUpdate(AfterConvertHookContext)` / `afterUpdate(AfterConvertHookContext)`
 
-## 现有钩子（hooks/）
+## 现有钩子（hooks/，按 hooks.ts 的文件名顺序）
 
 | 文件 | 生命周期 | 职责 |
 | - | - | - |
 | `0.corruption-fixer.ts` | afterLoad / beforeConvert | 修复 d.ts 损坏或结构不正确 |
-| `1.execution-privileges.ts` | afterLoad / beforeConvert / afterConvert | 把「can't be called in read-only mode」等英文注释替换为 `@worldMutation` / `@earlyExecution` 自定义修饰标签，并生成特权列表页 |
 | `1.example-extractor.ts` | afterLoad / afterTranslate / beforeConvert / afterConvert / afterUpdate | 把 `@example` 代码块提取为独立页面（`DocumentReflection`），同名多版本用内容 hash 区分；afterUpdate 写 `translate-pieces/examples/` |
+| `1.execution-privileges.ts` | afterLoad / beforeConvert / afterConvert | 把「can't be called in read-only mode」等英文注释替换为 `@worldMutation` / `@earlyExecution` 自定义修饰标签，并生成特权列表页 |
 | `1.fix-link-inline-tags.ts` | afterConvert | 修正 `@link` 的目标解析 |
 | `1.net-packet-ids.ts` | afterLoad | 克隆 Mojang/bedrock-protocol-docs 到 cache/，给 server-net `PacketId` 枚举成员添加描述文本与 `@see` 注释 |
 | `1.readme.ts` | afterConvert / afterUpdate | 分析 git 历史生成翻译状态（untranslated / wip / translated / needReview，提交信息 `WIP:` 前缀及 `/translated <file>` 等命令可覆写），渲染 README 摘要与状态表 |
 | `1.release-stage.ts` | afterLoad / afterTranslate / beforeUpdate | 记录 `@beta` / `@rc` 发布阶段；update 切分前从 translate-pieces 移除（仅含发布标签的 JSDoc 整块删除，其余删标签行），translated 合并后按需补回或重建注释，保证最终文档保留阶段标签 |
 | `1.rewrite-defined-in.ts` | afterConvert | 把 sources 里的 `translated` 路径替换为项目名 |
 | `1.supress-doc-link-error.ts` | afterLoad | 修 server-gametest `register` / `registerAsync` 的 remarks 代码块 |
+| `1.throws-tag-syntax.ts` | afterLoad / beforeConvert | 规范化 `@throws`：afterLoad 删除固定英文提示句（`This function can throw errors.` / `This property can throw when used.`）并把模板里的 `{@link T}` 改写为 `@throws {T}`；beforeConvert 注册 createSignature / createDeclaration 监听，为带类型的 `@throws` 补回 `@link` 内容 |
 | `2.no-namespaced-import.ts` | afterLoad | 把 namespace import 展开为 named import |
 
 ## 工程约定

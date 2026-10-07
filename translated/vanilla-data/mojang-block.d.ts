@@ -1354,6 +1354,7 @@ export declare enum MinecraftBlockTypes {
     Ice = "minecraft:ice",
     /** Ice Crystal。 */
     IceCrystal = "minecraft:ice_crystal",
+    /** Icicle。 */
     Icicle = "minecraft:icicle",
     /** 虫蚀雕纹石砖。 */
     InfestedChiseledStoneBricks = "minecraft:infested_chiseled_stone_bricks",

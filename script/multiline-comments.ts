@@ -1,4 +1,4 @@
-import type { JSDoc } from 'ts-morph';
+import { type JSDoc, type JSDocTag, SyntaxKind } from 'ts-morph';
 
 /** 一个缩进层级对应的空格数。 */
 export const DefaultIndentWidth = 4;
@@ -204,4 +204,16 @@ export function jsdocBounds(jsdoc: JSDoc) {
         boundLine.commentEnd += jsdocStart;
     }
     return bounds;
+}
+
+export function jsdocTagBounds(jsdocTag: JSDocTag, jsdoc?: JSDoc) {
+    const jsdocLines = jsdocBounds(jsdoc ?? jsdocTag.getFirstAncestorByKindOrThrow(SyntaxKind.JSDoc));
+    const tagStart = jsdocTag.getStart();
+    const tagEnd = jsdocTag.getEnd();
+    const tagStartLineIndex = jsdocLines.findIndex((l) => tagStart < l.commentEnd);
+    const tagEndLineIndexExclusive = jsdocLines.findIndex((l) => tagEnd <= l.commentStart);
+    if (tagStartLineIndex === -1) {
+        throw new Error('Cannot find tag in comment');
+    }
+    return jsdocLines.slice(tagStartLineIndex, tagEndLineIndexExclusive === -1 ? undefined : tagEndLineIndexExclusive);
 }

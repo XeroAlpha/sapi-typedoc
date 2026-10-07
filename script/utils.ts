@@ -5,7 +5,7 @@ import { resolve as resolvePath } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import semver from 'semver';
 import type { PackageJson, SetOptional } from 'type-fest';
-import type { Application, TranslatableStrings } from 'typedoc';
+import type { Application, JSX, TranslatableStrings } from 'typedoc';
 
 export const basePath = resolvePath(fileURLToPath(import.meta.url), '..', '..');
 export const originalPath = resolvePath(basePath, 'original');
@@ -138,4 +138,36 @@ export function installLanguages(app: Application, languages: TypeDocLanguages) 
     for (const [lang, translations] of Object.entries(languages)) {
         app.internationalization.addTranslations(lang, translations);
     }
+}
+
+type TraversableJSXChildren = Exclude<JSX.Children, JSX.Children[] | null | undefined>;
+
+function traverseJSX(jsx: JSX.Children, f: (element: TraversableJSXChildren, traverseInto: () => void) => void) {
+    if (Array.isArray(jsx)) {
+        for (const child of jsx) {
+            traverseJSX(child, f);
+        }
+    } else if (jsx !== null && jsx !== undefined) {
+        f(jsx, () => {
+            if (typeof jsx === 'object') {
+                for (const child of jsx.children) {
+                    traverseJSX(child, f);
+                }
+            }
+        });
+    }
+}
+
+export function findJSXElement<E extends TraversableJSXChildren>(
+    jsx: JSX.Children,
+    predicate: (element: TraversableJSXChildren) => element is E
+) {
+    const elements: E[] = [];
+    traverseJSX(jsx, (el, traverseInto) => {
+        if (predicate(el)) {
+            elements.push(el);
+        }
+        traverseInto();
+    });
+    return elements;
 }
