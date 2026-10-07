@@ -3,7 +3,7 @@ import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve as resolvePath } from 'node:path';
 import type { PackageJson } from 'type-fest';
 import { build } from './build.js';
-import runHooks from './hooks.js';
+import { runHooks } from './hooks.js';
 import { split, writePiece } from './split.js';
 import {
     comparePackageVersion,
