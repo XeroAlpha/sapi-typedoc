@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve as resolvePath } from 'node:path';
 import type { PackageJson } from 'type-fest';
-import { build } from './build.js';
+import { Tasks as BuildTasks } from './build.js';
 import { runHooks } from './hooks.js';
 import { split, writePiece } from './split.js';
 import {
@@ -55,8 +55,8 @@ export async function update(keepCachedPackageJson?: boolean) {
     const packageInfo = JSON.parse(packageInfoData.toString('utf-8')) as PackageJson;
 
     // 不使用翻译构建项目
-    const buildResult = await build(false);
-    const { sourceFiles, dependencies } = buildResult;
+    const translateHookContext = await BuildTasks.assemble(false);
+    const { sourceFiles, dependencies } = translateHookContext;
 
     // 检查是否所有包都在依赖中
     const missingDependencies = onlinePackageNames.filter((packageName) => !(packageName in dependencies));
@@ -110,14 +110,14 @@ export async function update(keepCachedPackageJson?: boolean) {
 
     // 按类切分文件
     rmSync(translatingPath, { recursive: true, force: true });
-    await runHooks('beforeUpdate', buildResult);
+    await runHooks('beforeUpdate', translateHookContext);
     for (const sourceFile of sourceFiles) {
         const pieces = split(sourceFile);
         for (const piece of pieces) {
             writePiece(sourceFile, piece);
         }
     }
-    await runHooks('afterUpdate', buildResult);
+    await runHooks('afterUpdate', translateHookContext);
 
     // 生成 package.json 快照
     writeFileSync(packageSnapshotPath, JSON.stringify({ ...packageInfo, dependencies }, null, 2));

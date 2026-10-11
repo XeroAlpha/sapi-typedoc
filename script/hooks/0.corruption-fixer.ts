@@ -71,7 +71,7 @@ export default {
             }
         }
     },
-    beforeConvert() {
+    afterAssemble() {
         if (errors.length > 0) {
             const error = new AggregateError(errors);
             errors.length = 0;

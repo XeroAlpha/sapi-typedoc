@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { relative as relativePath, resolve as resolvePath } from 'node:path';
-import { Project, type SourceFile } from 'ts-morph';
+import { Project, type SourceFile, type StandardizedFilePath } from 'ts-morph';
 import {
     TSConfigReader,
     Application as TypeDocApplication,
@@ -55,7 +55,7 @@ function getModuleReferencedFiles(fromPath: string, moduleSpecifier: string) {
     const project = new Project();
     const sourceFile = project.createSourceFile(resolvePath(fromPath, '__temp_module_resolution__.ts'));
     const rootDecl = sourceFile.addExportDeclaration({ moduleSpecifier });
-    const referencedFiles: string[] = [];
+    const referencedFiles: StandardizedFilePath[] = [];
     const walk = (source: SourceFile | undefined) => {
         if (!source) {
             return;
@@ -75,6 +75,7 @@ function getModuleReferencedFiles(fromPath: string, moduleSpecifier: string) {
         }
     };
     walk(rootDecl.getModuleSpecifierSourceFile());
+    // 从标准化路径（`C:/Windows/`）转换为本地路径
     return referencedFiles.map((e) => resolvePath(e));
 }
 
@@ -127,6 +128,25 @@ function addOriginalModule(project: Project, moduleName: string, indexSourcePath
     return { version, sourceFiles };
 }
 
+export function syncDependencies() {
+    const originalPackageJsonPath = resolvePath(originalPath, 'package.json');
+    const cachedPackageJsonPath = resolvePath(translatedPath, 'package.json');
+    const originalPackageJsonData = readFileSync(originalPackageJsonPath);
+    if (existsSync(cachedPackageJsonPath)) {
+        writeFileSync(originalPackageJsonPath, readFileSync(cachedPackageJsonPath));
+    }
+
+    // 使依赖与 package.json 同步
+    try {
+        execSync('npm install', {
+            cwd: originalPath,
+            stdio: 'inherit'
+        });
+    } finally {
+        writeFileSync(originalPackageJsonPath, originalPackageJsonData);
+    }
+}
+
 export function loadOriginalProject() {
     const project = new Project({
         tsConfigFilePath,
@@ -150,70 +170,96 @@ export function loadOriginalProject() {
     return { project, sourceFiles, dependencies };
 }
 
-export async function build(translated?: boolean) {
-    const hookContext = { basePath, originalPath, translatingPath, translatedPath, distPath };
+export const Tasks = {
+    /**
+     * 尝试加载翻译文件对应版本的 package.json
+     */
+    syncDependencies() {
+        const ctx = { basePath, originalPath, translatingPath, translatedPath, distPath };
+        console.time('[syncDependencies] Total');
+        syncDependencies();
+        console.timeEnd('[syncDependencies] Total');
+        return ctx;
+    },
 
-    // 尝试加载翻译文件对应版本的 package.json
-    console.time('[restoreDependencies] Total');
-    const originalPackageJsonPath = resolvePath(originalPath, 'package.json');
-    const cachedPackageJsonPath = resolvePath(translatedPath, 'package.json');
-    const originalPackageJsonData = readFileSync(originalPackageJsonPath);
-    if (existsSync(cachedPackageJsonPath)) {
-        writeFileSync(originalPackageJsonPath, readFileSync(cachedPackageJsonPath));
-    }
+    /**
+     * 从依赖中构建用于生成文档的项目
+     */
+    async load() {
+        const ctx = this.syncDependencies();
+        console.time('[load] Total');
+        await runHooks('beforeLoad', ctx);
+        const { project, sourceFiles, dependencies } = loadOriginalProject();
+        const translateHookContext = { ...ctx, basePath, project, sourceFiles, dependencies };
+        await runHooks('afterLoad', translateHookContext);
+        console.timeEnd('[load] Total');
+        return translateHookContext;
+    },
 
-    // 使依赖与 package.json 同步
-    try {
-        execSync('npm install', {
-            cwd: originalPath,
-            stdio: 'inherit'
-        });
-    } finally {
-        writeFileSync(originalPackageJsonPath, originalPackageJsonData);
-    }
-    console.timeEnd('[restoreDependencies] Total');
-
-    // 从依赖中构建用于生成文档的项目
-    console.time('[loadOriginal] Total');
-    await runHooks('beforeLoad', hookContext);
-    const { project, sourceFiles, dependencies } = loadOriginalProject();
-    const translateHookContext = { ...hookContext, basePath, project, sourceFiles, dependencies };
-    await runHooks('afterLoad', translateHookContext);
-    console.timeEnd('[loadOriginal] Total');
-
-    if (translated) {
-        // 将顶层成员替换为带翻译的版本
+    /**
+     * 将顶层成员替换为带翻译的版本
+     */
+    async translate() {
+        const ctx = await this.load();
+        const { sourceFiles } = ctx;
         console.time('[translate] Total');
         patchSourceFiles(sourceFiles);
-        await runHooks('afterTranslate', translateHookContext);
+        await runHooks('afterTranslate', ctx);
         console.timeEnd('[translate] Total');
-    }
+        return ctx;
+    },
 
-    // 生成 TypeDoc 页面
-    console.time('[analyze] Total');
-    project.saveSync();
-    const tsdocApplication = await TypeDocApplication.bootstrapWithPlugins(
-        {
-            tsconfig: tsConfigFilePath,
-            ...TypeDocExtraOptions
-        },
-        [new TSConfigReader()]
-    );
-    installLanguages(tsdocApplication, TypeDocExtraTranslations);
-    rmSync(distPath, { recursive: true, force: true });
-    const beforeConvertContext = { ...translateHookContext, tsdocApplication };
-    await runHooks('beforeConvert', beforeConvertContext);
-    const tsdocProject = await tsdocApplication.convert();
-    console.timeEnd('[analyze] Total');
-    if (tsdocProject) {
-        console.time('[emit] Total');
+    async assemble(translated?: boolean) {
+        const ctx = translated ? await this.translate() : await this.load();
+        const { project } = ctx;
+        project.saveSync();
+        await runHooks('afterAssemble', ctx);
+        return ctx;
+    },
+
+    /**
+     * 分析项目并构建 TypeDoc 树
+     */
+    async convert(translated?: boolean) {
+        const ctx = await this.assemble(translated);
+        console.time('[convert] Total');
+        const tsdocApplication = await TypeDocApplication.bootstrapWithPlugins(
+            {
+                tsconfig: tsConfigFilePath,
+                ...TypeDocExtraOptions
+            },
+            [new TSConfigReader()]
+        );
+        installLanguages(tsdocApplication, TypeDocExtraTranslations);
+        rmSync(distPath, { recursive: true, force: true });
+        const beforeConvertContext = { ...ctx, tsdocApplication };
+        await runHooks('beforeConvert', beforeConvertContext);
+        const tsdocProject = await tsdocApplication.convert();
+        if (!tsdocProject) {
+            console.timeEnd('[convert] Total');
+            throw new Error('Convert failed');
+        }
         const afterConvertContext = { ...beforeConvertContext, tsdocProject };
         await runHooks('afterConvert', afterConvertContext);
+        console.timeEnd('[convert] Total');
+        return afterConvertContext;
+    },
+
+    /**
+     * 生成 TypeDoc 页面
+     */
+    async emit(translated?: boolean) {
+        const ctx = await this.convert(translated);
+        const { tsdocApplication, tsdocProject } = ctx;
+        console.time('[emit] Total');
         await tsdocApplication.generateDocs(tsdocProject, distPath);
         await tsdocApplication.generateJson(tsdocProject, resolvePath(distPath, 'index.json'));
-        await runHooks('afterEmit', afterConvertContext);
+        await runHooks('afterEmit', ctx);
         console.timeEnd('[emit] Total');
-        return afterConvertContext;
+        return ctx;
     }
-    throw new Error('Convert failed');
+} as const;
+
+export async function build(translated?: boolean) {
+    return Tasks.emit(translated);
 }
