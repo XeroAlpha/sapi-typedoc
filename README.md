@@ -38,7 +38,7 @@ npm run build
 
 > ⚠️ `npm run update` 会强制把分支切换到 `original`，运行前请先提交或 stash 当前更改。
 
-构建管线的实现、各脚本与 hooks 的职责、翻译片断的格式等细节，见 [script/README.md](script/README.md)。
+构建管线的实现、各脚本与 hooks 的职责、翻译片段的格式等细节，见 [script/README.md](script/README.md)。
 
 ## 目录结构
 

@@ -23,12 +23,12 @@ dist/（站点产物，已 gitignore）
 | - | - |
 | `cli.ts` | CLI 入口，仅读 `argv[2]`：build / build-original / update / update-cached |
 | `build.ts` | 构建管线主流程（见「构建管线」） |
-| `update.ts` | 更新原始 d.ts 与切分片断（见「更新流程」） |
-| `split.ts` | 源码 ↔ translate-pieces/ 的切分与合并（见「片断格式」） |
+| `update.ts` | 更新原始 d.ts 与切分片段（见「更新流程」） |
+| `split.ts` | 源码 ↔ translate-pieces/ 的切分与合并（见「片段格式」） |
 | `hooks.ts` | 加载并调度 `hooks/` 下的钩子（见「hooks 系统」） |
 | `utils.ts` | 路径常量、文件/模块定位、git 封装、版本解析/比较、TypeDoc 文案安装（见「utils.ts」） |
 | `multiline-comments.ts` | JSDoc 多行注释的定位与改写工具，被 `0.corruption-fixer` / `1.example-extractor` / `1.release-stage` / `1.throws-tag-syntax` 复用 |
-| `pickRandom.ts` | 工具：随机挑一个未翻译片断 |
+| `pickRandom.ts` | 工具：随机挑一个未翻译片段 |
 | `hooks/hook.d.ts` | Hook 类型定义（生命周期与 context 继承关系） |
 | `../biome.json` / `tsconfig.json` | 工程配置（Biome 配置位于仓库根目录） |
 
@@ -48,7 +48,7 @@ dist/（站点产物，已 gitignore）
 | 命令 | 等价执行 | 说明 |
 | - | - | - |
 | `npm run build` | `tsx ./script/cli.ts build` | 翻译版构建（合并 translate-pieces 后生成站点） |
-| `npm run update` | `tsx ./script/cli.ts update` | **强制切到 original 分支**重建原始 d.ts 并重新切分片断 |
+| `npm run update` | `tsx ./script/cli.ts update` | **强制切到 original 分支**重建原始 d.ts 并重新切分片段 |
 | `npm run update-cached` | `tsx ./script/cli.ts update-cached` | 同上，但保留 package.json 版本快照 |
 | `npm run lint-script` | `tsc --noEmit -p ./script/tsconfig.json && biome check --write ./script` | 先类型检查，再对 script/ 格式化 + lint 并自动修复 |
 
@@ -56,56 +56,54 @@ dist/（站点产物，已 gitignore）
 
 ## 构建管线（build.ts）
 
-1. **依赖恢复**：把 `translated/package.json`（版本快照）写入 `original/package.json`，在 `original/` 下 `npm install`，随后恢复原文件。`original/.npmrc` 强制 `package-lock=false`、`legacy-peer-deps=true`，构建需联网。
-2. **触发 beforeLoad 钩子**
-3. **加载模块**（`loadOriginalProject()`，已导出）：遍历 `original/package.json` 的 dependencies（不限定 `@minecraft/*` 前缀），用 ts-morph Project（tsconfig = `translated/tsconfig.json`，`skipAddingFilesFromTsConfig`）读取 d.ts 写入 `translated/`，并记录每个包实际解析到的版本。单文件包 → `translated/<name>.d.ts`；多文件包 → 目录结构 + 入口 `export * from ...`；同一路径重复写入会直接报错。`botModules`（`@minecraft/vanilla-data`）只加载进 Project、不参与翻译。
-4. **触发 afterLoad 钩子**
-5. **翻译合并**（仅 translated 构建）：`patchSourceFiles(sourceFiles)`，即对每个 sourceFile 执行 `split()` + `replacePieces()`，把 translate-pieces/ 合并回源码。
-6. **触发 afterTranslate 钩子**
-7. **TypeDoc 准备**：`saveSync()` → `bootstrapWithPlugins`（tsconfig + 注册 `@rc` modifierTag）→ `installLanguages` → 清空 dist。
-8. **触发 beforeConvert 钩子**
-9. **文档树构建**：读取 ts 代码，将其转换为 TypeDoc 项目描述结构，便于处理待生成的页面。
-10. **触发 afterConvert 钩子**
-11. **渲染与输出**：根据 TypeDoc 项目描述结构，渲染网页并输出 JSON。
-12. **触发 afterEmit 钩子**
+管线以 `Tasks` 导出，每个任务先串起上游任务、再返回 hook 上下文，`build(translated)` 等价于 `Tasks.emit(translated)`。单独调用某个任务会连带跑完它上游的全部步骤（例如 `Tasks.assemble(false)` = 同步依赖 → 加载 → 落盘），所以按需复用请用 `Tasks.load()` / `Tasks.assemble()`，不要自己拼 `loadOriginalProject()`。各任务带 `console.time` 标签：`[syncDependencies]` / `[load]` / `[translate]` / `[convert]` / `[emit]`（`assemble` 目前没有单独计时）。
+
+1. **`Tasks.syncDependencies()`——依赖恢复**：把 `translated/package.json`（版本快照）写入 `original/package.json`，在 `original/` 下 `npm install`，随后恢复原文件。`original/.npmrc` 强制 `package-lock=false`、`legacy-peer-deps=true`，构建需联网。纯函数另以 `syncDependencies()` 导出。
+2. **`Tasks.load()`——加载原始**：触发 **beforeLoad** 钩子 → `loadOriginalProject()`（已导出）：遍历 `original/package.json` 的 dependencies（不限定 `@minecraft/*` 前缀），用 ts-morph Project（tsconfig = `translated/tsconfig.json`，`skipAddingFilesFromTsConfig`）把各包的 d.ts 读进内存，并记录每个包实际解析到的版本。单文件包 → `translated/<name>.d.ts`；多文件包 → 目录结构 + 入口 `export * from ...`；同一路径重复写入会直接报错。`botModules`（`@minecraft/vanilla-data`）只加载进 Project、不参与翻译。之后触发 **afterLoad** 钩子——此时内容只在内存里，磁盘上的 `translated/*.d.ts` 还是上一次的。
+3. **`Tasks.translate()`——翻译合并**（仅 `translated` 为真的构建）：`patchSourceFiles(sourceFiles)`，即对每个 sourceFile 执行 `split()` + `replacePieces()`，把 translate-pieces/ 合并回内存源码 → 触发 **afterTranslate** 钩子。
+4. **`Tasks.assemble(translated?)`——组装并落盘**：`project.saveSync()` 把内存项目写进 `translated/*.d.ts` → 触发 **afterAssemble** 钩子。这是「`translated/` 已是最新、TypeDoc 尚未介入」的唯一观测点，**`build` 与 `update` 都会经过它**；需要后处理落盘产物、或把 afterLoad 阶段收集的错误推迟到写盘之后再抛的钩子，挂这里（见 `0.corruption-fixer.ts`）。
+5. **`Tasks.convert(translated?)`——TypeDoc 解析**：`bootstrapWithPlugins`（tsconfig + 注册 `@rc` modifierTag）→ `installLanguages` → 清空 `dist/` → 触发 **beforeConvert** 钩子 → `application.convert()` 把磁盘上的 d.ts 读成 TypeDoc 项目描述结构（reflection 树）→ 触发 **afterConvert** 钩子；`convert()` 返回空则结束计时并抛 `Convert failed`。注意 TypeDoc 自建 program、只读磁盘，所以第 4 步的落盘必须在它之前完成。
+6. **`Tasks.emit(translated?)`——渲染输出**：`generateDocs`（站点）+ `generateJson`（`dist/index.json`）→ 触发 **afterEmit** 钩子。
 
 ## 更新流程（update.ts）
 
 1. **强制 original 分支**：当前 HEAD 不在 `original` 时执行 `git checkout original`；检查 npm ≥ 8（overrides 需要）。
 2. **拉取包列表**：`npm search --json scope:minecraft` 获取 `@minecraft` 组织下所有包，排除 `ExcludedPackages`。
 3. **清理**：删除 `translated/package.json` 版本快照（`update-cached` 则保留）与 `original/node_modules`。
-4. **加载原始**：调用 `build(false)` 构建纯原文项目，拿到 sourceFiles 与解析后的依赖版本。
+4. **组装原始项目**：调用 `BuildTasks.assemble(false)`（依赖恢复 → beforeLoad → 加载 → afterLoad → `saveSync()` → **afterAssemble**），拿到内存中的 project、sourceFiles 与解析后的依赖版本，同时把未经翻译合并的原文 d.ts 写回受 git 跟踪的 `translated/*.d.ts`。落盘发生在校验之前，因此后续步骤失败时磁盘上的 `translated/` 已与新装好的依赖一致。**不走 TypeDoc 管线**：update 只负责 translate-pieces/，不清空也不重建 `dist/`（含 `dist/index.json`）。
 5. **校验**：确认在线包都出现在依赖中，缺失数量 >5 直接报错。
 6. **beta 标签处理**：原 package.json 中标 `beta` 的依赖若解析为稳定版，用 `npm view versions` 取最新 preview 分支，写入快照并递归 `update(true)` 重跑。
 7. **清空 translate-pieces/**：删除 translate-pieces/，保证从零重新切分。
 8. **触发 beforeUpdate 钩子**
-9. **切分片断**：对每个 sourceFile `split()` + `writePiece()` 写入 translate-pieces/。
+9. **切分片段**：对每个 sourceFile `split()` + `writePiece()` 写入 translate-pieces/。
 10. **触发 afterUpdate 钩子**
 11. **写快照**：把 `package.json` 与各依赖实际解析到的版本写入 `translated/package.json`（供 build 时恢复依赖）。
 
-## split.ts：片断格式（改动前必读）
+## split.ts：片段格式（改动前必读）
 
 - 按顶层成员切分到 `translate-pieces/<模块>/<类别>/<成员>.d.ts`；类别：`enums` / `classes` / `functions` / `interfaces` / `modules` / `types` / `variables`。
-- `package.d.ts` 是 `@packageDocumentation` 注释片断；`index.d.ts` 是自动生成的导出汇总（generated piece，不会被 replacePieces 回写）。
-- 片断头部注入 `/* IMPORT */` import 语句、尾部 `/* EXPORT */ export { ... };`（非导出成员）——这些行在 replacePieces 时被剥离，翻译者不可改动它们。
-- 对外接口：`split(sourceFile)` 切出片断、`writePiece(sourceFile, piece)` 写入 translate-pieces/、`replacePieces(sourceFile, pieces)` 合并回源码、`patchSourceFiles(sourceFiles)` 对一批 sourceFile 连做切分 + 合并（build 的翻译合并走的就是它）。
-- **修改 split.ts 会改变 translate-pieces/ 的布局，直接影响所有翻译 PR 的合并**，需格外谨慎，必要时提供片断迁移方案。
+- `package.d.ts` 是 `@packageDocumentation` 注释片段；`index.d.ts` 是自动生成的导出汇总（generated piece，不会被 replacePieces 回写）。
+- 片段头部注入 `/* IMPORT */` import 语句、尾部 `/* EXPORT */ export { ... };`（非导出成员）——这些行在 replacePieces 时被剥离，翻译者不可改动它们。
+- 对外接口：`split(sourceFile)` 切出片段、`writePiece(sourceFile, piece)` 写入 translate-pieces/、`replacePieces(sourceFile, pieces)` 合并回源码、`patchSourceFiles(sourceFiles)` 对一批 sourceFile 连做切分 + 合并（build 的翻译合并走的就是它）。
+- **修改 split.ts 会改变 translate-pieces/ 的布局，直接影响所有翻译 PR 的合并**，需格外谨慎，必要时提供片段迁移方案。
 
 ## hooks 系统
 
 - `hooks.ts` 加载 `hooks/` 下所有非 `.d.ts` 的脚本，**按文件名排序**执行；default 导出可以是 `{ [event]: fn }` 对象，也可以是 `(event, context) => fn` 函数。`listHooks()` 只列出候选文件名；`loadHooks(options?)` 完成加载并返回执行函数；具名导出 `runHooks` 就是顶层 `await loadHooks()` 的结果，因此 import 时就已拉起全部钩子。
 - `LoadHookOptions.ignoreHooks` 可临时跳过钩子：键是钩子文件名，值为 `true` 表示整个钩子不加载，值为事件名数组（`HookName[]`）表示只跳过这些事件。
 - 文件名约定：数字前缀表示执行优先级：例如 `0.*` 最先、`1.*` 次之、`2.*` 再次之，以此类推。
-- 生命周期（context 类型逐级继承，见 `hooks/hook.d.ts`）：
+- 生命周期（context 类型逐级继承，见 `hooks/hook.d.ts`；每个事件都有 JSDoc 说明其用途）：
   - `beforeLoad(HookContext)` / `afterLoad(TranslateHookContext)` / `afterTranslate(TranslateHookContext)`
+  - `afterAssemble(TranslateHookContext)`——`translated/` 已落盘、TypeDoc 未介入
   - `beforeConvert(BeforeConvertHookContext)` / `afterConvert(AfterConvertHookContext)` / `afterEmit(AfterConvertHookContext)`
-  - `beforeUpdate(AfterConvertHookContext)` / `afterUpdate(AfterConvertHookContext)`
+  - `beforeUpdate(TranslateHookContext)` / `afterUpdate(TranslateHookContext)`
+- 各入口实际触发的事件：`npm run build` / `build-original` = `beforeLoad` → `afterLoad` → （仅 translated）`afterTranslate` → `afterAssemble` → `beforeConvert` → `afterConvert` → `afterEmit`；`npm run update` / `update-cached` = `beforeLoad` → `afterLoad` → `afterAssemble` → `beforeUpdate` → `afterUpdate`，**不会**触发 `afterTranslate` / `beforeConvert` / `afterConvert` / `afterEmit`（update 不合并译文、也不跑 TypeDoc）。想让钩子在 update 里也生效，就得挂在 `afterAssemble` 或 `beforeUpdate` / `afterUpdate` 上，而不是 `beforeConvert`。
 
 ## 现有钩子（hooks/，按 hooks.ts 的文件名顺序）
 
 | 文件 | 生命周期 | 职责 |
 | - | - | - |
-| `0.corruption-fixer.ts` | afterLoad / beforeConvert | 修复 d.ts 损坏或结构不正确 |
+| `0.corruption-fixer.ts` | afterLoad / afterAssemble | 修复 d.ts 损坏或结构不正确：afterLoad 逐条打补丁并收集失败，afterAssemble（内容已落盘）再抛 `AggregateError`——因此 update 也能及时失败，且 `translated/` 留下可复查的结果 |
 | `1.example-extractor.ts` | afterLoad / afterTranslate / beforeConvert / afterConvert / afterUpdate | 把 `@example` 代码块提取为独立页面（`DocumentReflection`），同名多版本用内容 hash 区分；afterUpdate 写 `translate-pieces/examples/` |
 | `1.execution-privileges.ts` | afterLoad / beforeConvert / afterConvert | 把「can't be called in read-only mode」等英文注释替换为 `@worldMutation` / `@earlyExecution` 自定义修饰标签，并生成特权列表页 |
 | `1.fix-link-inline-tags.ts` | afterConvert | 修正 `@link` 的目标解析 |
@@ -136,5 +134,5 @@ dist/（站点产物，已 gitignore）
 - ❌ 不要手工编辑 `original/`、`translate-pieces/`、`dist/`、`cache/`、`translated/*.d.ts` 去「修复」问题——它们是生成物或他人工作区；管线问题在 script/ 内解决。
 - ✅ 通过脚本命令（`npm run build` / `npm run update`）读写这些目录是设计行为，也是验证脚本改动的正常方式，不要因「勿手工编辑」而拒绝执行。
 - ⚠️ 分支提交规则：改动同时适用于 original 与 main（如脚本通用修复）时在 `original` 分支提交；仅适用于 main（如翻译相关逻辑）时在 `main` 分支提交。注意 `npm run update` 会强制切换分支。
-- ❌ 不要手工改 `translated/*.d.ts`——每次 build 都会被覆盖；`translated/README.md`、`GLOSSARY.md`、`package.json`（版本快照）是例外，由钩子或人工维护。
+- ❌ 不要手工改 `translated/*.d.ts`——每次 build 与 update 都会重新落盘覆盖；`translated/README.md`、`GLOSSARY.md`、`package.json`（版本快照）是例外，由钩子或人工维护。
 - ✅ 改完脚本先 `npm run lint-script`，再 `npm run build` 验证。
