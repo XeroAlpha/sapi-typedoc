@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, UnsupportedFunctionalityError } from '../../common';
-/* IMPORT */ import { AABB, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, ContainerRulesError, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityComponentError, InvalidEntityError, ItemStack, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
+/* IMPORT */ import { AABB, Block, BlockRaycastHit, BlockRaycastOptions, CommandError, CommandResult, ContainerRulesError, Dimension, Effect, EffectType, EntityApplyDamageByProjectileOptions, EntityApplyDamageOptions, EntityComponent, EntityComponentReturnType, EntityComponentTypes, EntityEffectOptions, EntityQueryOptions, EntityRaycastHit, EntityRaycastOptions, GetBlocksStandingOnOptions, InvalidEntityComponentError, InvalidEntityError, ItemStack, PassengerOfBlockEmoteType, PlayAnimationOptions, ScoreboardIdentity, TeleportOptions, TicksPerSecond, Vector2, Vector3, VectorXZ } from '..';
 
 /**
  * Represents the state of an entity (a mob, the player, or
@@ -61,6 +61,13 @@ export class Entity {
      * @throws {InvalidEntityError}
      */
     readonly isOnGround: boolean;
+    /**
+     * @remarks
+     * Returns true if the entity is a passenger of a block.
+     *
+     * @throws {InvalidEntityError}
+     */
+    readonly isPassengerOfBlock: boolean;
     /**
      * @remarks
      * If true, the entity is currently sleeping.
@@ -813,6 +820,41 @@ export class Entity {
      * @throws {InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
+    /**
+     * @remarks
+     * Starts the entity as being a passenger of a block with the
+     * specified configuration.
+     *
+     * @worldMutation
+     *
+     * @param blockPosition
+     * The integer block position to ride.
+     * @param offset
+     * The offset from the block position.
+     * @param rotation
+     * The rotation of the passenger on the block.
+     * @param rotationLimit
+     * The maximum rotation range of the passenger on the block.
+     * @param emote
+     * The pose of the passenger on the block.
+     * @throws {InvalidEntityError}
+     */
+    startPassengerOfBlock(
+        blockPosition: Vector3,
+        offset: Vector3,
+        rotation: number,
+        rotationLimit: number,
+        emote: PassengerOfBlockEmoteType,
+    ): void;
+    /**
+     * @remarks
+     * Stops the entity from being a passenger of a block.
+     *
+     * @worldMutation
+     *
+     * @throws {InvalidEntityError}
+     */
+    stopPassengerOfBlock(): void;
     /**
      * @remarks
      * Teleports the selected entity to a new location

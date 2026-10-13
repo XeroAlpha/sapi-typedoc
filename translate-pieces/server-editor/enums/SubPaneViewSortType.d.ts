@@ -4,8 +4,8 @@
  * comparable value through a caller supplied function.
  */
 export declare enum SubPaneViewSortType {
-    Default = 0,
-    AtoZ = 1,
-    ZtoA = 2,
-    Custom = 3,
+    AtoZ = 'aToZ',
+    Custom = 'custom',
+    Default = 'default',
+    ZtoA = 'zToA',
 }

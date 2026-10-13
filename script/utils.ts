@@ -14,7 +14,11 @@ export const translatedPath = resolvePath(basePath, 'translated');
 export const distPath = resolvePath(basePath, 'dist');
 
 export function git(args: string, options?: SetOptional<ExecSyncOptionsWithStringEncoding, 'encoding'>) {
-    return execSync(`git ${args}`, { cwd: basePath, encoding: 'utf-8', ...options }).trim();
+    const stringOrNull: string | null = execSync(`git ${args}`, { cwd: basePath, encoding: 'utf-8', ...options });
+    if (typeof stringOrNull === 'string') {
+        return stringOrNull.trim();
+    }
+    return stringOrNull;
 }
 
 export function walkFiles(

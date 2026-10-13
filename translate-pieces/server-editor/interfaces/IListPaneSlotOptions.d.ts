@@ -6,6 +6,26 @@
 export interface IListPaneSlotOptions {
     /**
      * @remarks
+     * Values associated with list pane category IDs.
+     *
+     */
+    categories?: Record<string, string>;
+    /**
+     * @remarks
+     * Creation time used by the built-in creation-time sort
+     * options.
+     *
+     */
+    creationTime?: number;
+    /**
+     * @remarks
+     * Modified time used by the built-in modified-time sort
+     * options.
+     *
+     */
+    modifiedTime?: number;
+    /**
+     * @remarks
      * List of tags associated with the slot.
      *
      */

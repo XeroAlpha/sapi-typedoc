@@ -1,10 +1,16 @@
-/* IMPORT */ import { IListPaneSlot, IPropertyItemOptionsBase, ListPaneSlotConfiguration, ListPaneSlotCreationProps, ListPaneViewFilter, ListPaneViewSortType, LocalizedString } from '..';
+/* IMPORT */ import { IListPaneSlot, IPropertyItemOptionsBase, ListPaneCategory, ListPaneHeight, ListPaneSlotConfiguration, ListPaneSlotCreationProps, ListPaneSortOption, ListPaneViewFilter, LocalizedString } from '..';
 
 /**
  * Optional properties for List Pane property item
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
+    /**
+     * @remarks
+     * Categories available to sort or group list pane slots.
+     *
+     */
+    categories?: Record<string, ListPaneCategory>;
     /**
      * @remarks
      * Default slots to initialize the list with. If undefined, the
@@ -14,17 +20,17 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     defaultSlots?: ListPaneSlotCreationProps[];
     /**
      * @remarks
-     * If true, pane height will not change based on slot count. If
-     * undefined, it will default to false
+     * Height behavior for the list. A number is treated as an
+     * expand maximum for compatibility.
      *
      */
-    fixedHeight?: boolean;
+    height?: number | ListPaneHeight;
     /**
      * @remarks
-     * This will be the height of the list within the pane
+     * Removes spacing around clickable list slots.
      *
      */
-    height?: number;
+    noMargins?: boolean;
     /**
      * @remarks
      * This callback is fired whenever a clickable slot is pressed
@@ -60,9 +66,9 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     viewFilter?: ListPaneViewFilter;
     /**
      * @remarks
-     * Sort type for the slots in the view. If undefined, default
-     * list order will be used.
+     * Built-in sort type or custom sort category ID to initially
+     * select.
      *
      */
-    viewSortType?: ListPaneViewSortType;
+    viewSortType?: ListPaneSortOption;
 }

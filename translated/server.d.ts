@@ -16,7 +16,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server",
- *   "version": "2.12.0-beta"
+ *   "version": "2.13.0-beta"
  * }
  * ```
  *
@@ -2263,6 +2263,10 @@ export enum InputPermissionCategory {
 export enum ItemComponentTypes {
     BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
     /**
+     * @beta
+     */
+    BlockEntityStorage = 'minecraft:block_entity_storage',
+    /**
      * @remarks
      * The minecraft:book component.
      *
@@ -2631,6 +2635,31 @@ export enum PaletteColor {
      *
      */
     Black = 15,
+}
+
+/**
+ * @beta
+ * Specifies the pose of an entity passenger of a block.
+ */
+export enum PassengerOfBlockEmoteType {
+    /**
+     * @remarks
+     * The entity will be laying on the block.
+     *
+     */
+    Laying = 'Laying',
+    /**
+     * @remarks
+     * The entity will be sitting on the block.
+     *
+     */
+    Riding = 'Riding',
+    /**
+     * @remarks
+     * The entity will be standing on the block.
+     *
+     */
+    Standing = 'Standing',
 }
 
 /**
@@ -3380,6 +3409,7 @@ export type ItemComponentReturnType<T extends string> = T extends keyof ItemComp
 
 export type ItemComponentTypeMap = {
     block_actor_dynamic_properties: ItemBlockDynamicPropertiesComponent;
+    block_entity_storage: ItemBlockEntityStorageComponent;
     book: ItemBookComponent;
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
@@ -3389,6 +3419,7 @@ export type ItemComponentTypeMap = {
     food: ItemFoodComponent;
     inventory: ItemInventoryComponent;
     'minecraft:block_actor_dynamic_properties': ItemBlockDynamicPropertiesComponent;
+    'minecraft:block_entity_storage': ItemBlockEntityStorageComponent;
     'minecraft:book': ItemBookComponent;
     'minecraft:compostable': ItemCompostableComponent;
     'minecraft:cooldown': ItemCooldownComponent;
@@ -4254,6 +4285,21 @@ export class Block {
      */
     east(steps?: number): Block | undefined;
     /**
+     * @beta
+     * @remarks
+     * Returns the named tick events scheduled at this block by the
+     * calling script pack.
+     *
+     * @returns
+     * The scheduled named tick events. Each event contains its
+     * eventName and the number of ticks until it is raised as
+     * tickDelay.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getAllScheduledNamedTicks(): ScheduledNamedTick[];
+    /**
      * @remarks
      * Gets a component (that represents additional capabilities)
      * for a block - for example, an inventory component of a chest
@@ -4349,6 +4395,20 @@ export class Block {
      * @throws {LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
+    /**
+     * @beta
+     * @remarks
+     * Returns the number of named tick events scheduled at this
+     * block, regardless of which script pack scheduled them.
+     *
+     * @returns
+     * The number of named tick events currently scheduled at this
+     * block.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getScheduledNamedTickCount(): number;
     /**
      * @remarks
      * Returns the brightness level of light shining from the sky
@@ -4520,7 +4580,7 @@ export class Block {
      *
      * @throws {LocationOutOfWorldBoundariesError}
      */
-    removeScheduledNamedTick(eventName: string): void;
+    removeScheduledNamedTicks(eventName: string): void;
     /**
      * @beta
      * @remarks
@@ -4884,18 +4944,20 @@ export class BlockComponentNamedTickEvent extends BlockEvent {
     private constructor();
     /**
      * @remarks
-     * Checks whether this named tick event has the specified name.
-     * Events are namespaced with their content UUID. Two named
-     * tick events with the same name but scheduled from different
-     * packs will not respond the same to this method.
+     * Name of the named tick event.
      *
-     * @param eventName
-     * The name to check against this event.
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * Checks whether this named tick event was scheduled by this
+     * pack.
+     *
      * @returns
-     * Returns true if the event name matches the specified name;
+     * True if this named tick event was scheduled by this pack;
      * otherwise, false.
      */
-    isName(eventName: string): boolean;
+    isMine(): boolean;
 }
 
 /**
@@ -6852,6 +6914,19 @@ export class CarryOverBlockEntityDataFunction extends LootItemFunction {
      *
      */
     readonly dynamicProperties: boolean;
+    /**
+     * @remarks
+     * If true, and if the block entity supports entity storage,
+     * the function will copy the stored entities from the block
+     * entity to the dropped item without releasing them. Placing
+     * the item restores the stored entities if the placed block
+     * supports entity storage. In loot table JSON, the optional
+     * entity_storage Boolean field defaults to false and is
+     * independent of dynamic_properties. Requires the Upcoming
+     * Creator Features experiment.
+     *
+     */
+    readonly entityStorage: boolean;
 }
 
 /**
@@ -7769,6 +7844,8 @@ export class CustomCommandRegistry {
      * @throws {EngineError}
      *
      * @throws {NamespaceNameError}
+     *
+     * @throws {RawMessageError}
      */
     registerCommand(
         customCommand: CustomCommand,
@@ -7787,6 +7864,8 @@ export class CustomCommandRegistry {
      * @throws {EngineError}
      *
      * @throws {NamespaceNameError}
+     *
+     * @throws {RawMessageError}
      */
     registerEnum(name: string, values: string[]): void;
 }
@@ -9077,6 +9156,14 @@ export class Entity {
      */
     readonly isOnGround: boolean;
     /**
+     * @beta
+     * @remarks
+     * Returns true if the entity is a passenger of a block.
+     *
+     * @throws {InvalidEntityError}
+     */
+    readonly isPassengerOfBlock: boolean;
+    /**
      * @remarks
      * If true, the entity is currently sleeping.
      *
@@ -9829,6 +9916,43 @@ export class Entity {
      * @throws {InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
+    /**
+     * @beta
+     * @remarks
+     * Starts the entity as being a passenger of a block with the
+     * specified configuration.
+     *
+     * @worldMutation
+     *
+     * @param blockPosition
+     * The integer block position to ride.
+     * @param offset
+     * The offset from the block position.
+     * @param rotation
+     * The rotation of the passenger on the block.
+     * @param rotationLimit
+     * The maximum rotation range of the passenger on the block.
+     * @param emote
+     * The pose of the passenger on the block.
+     * @throws {InvalidEntityError}
+     */
+    startPassengerOfBlock(
+        blockPosition: Vector3,
+        offset: Vector3,
+        rotation: number,
+        rotationLimit: number,
+        emote: PassengerOfBlockEmoteType,
+    ): void;
+    /**
+     * @beta
+     * @remarks
+     * Stops the entity from being a passenger of a block.
+     *
+     * @worldMutation
+     *
+     * @throws {InvalidEntityError}
+     */
+    stopPassengerOfBlock(): void;
     /**
      * @remarks
      * Teleports the selected entity to a new location
@@ -13932,6 +14056,137 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
 }
 
 /**
+ * @beta
+ * Stores serialized non-player mobs on an item stack. Each
+ * calling behavior pack can only access its manifest UUID
+ * bucket. All buckets share a four-entity limit. Available on
+ * item stacks even when empty. Destroying the item discards
+ * its storage without spawning entities. Data is compatible
+ * with entity-storage block carry-over and placement.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class ItemBlockEntityStorageComponent extends ItemComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:block_entity_storage';
+    /**
+     * @remarks
+     * Inspects the serialized entities in the calling pack's
+     * manifest UUID bucket without loading or spawning them.
+     *
+     * @returns
+     * Stored entity IDs and definition IDs, or an empty array for
+     * an empty bucket.
+     * @throws
+     * Throws if the item is invalid or its entity-storage format
+     * is unsupported.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    getEntities(): BlockEntityStorageInfo[];
+    /**
+     * @remarks
+     * Releases a stored mob at the supplied dimension and world
+     * position. Does not require a block target. The serialized
+     * position is replaced before the actor is loaded. Removes the
+     * entry from this item after spawning it.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * A stored entity ID in the calling pack's bucket.
+     * @param location
+     * The target DimensionLocation. Must be finite, within world
+     * bounds, and in a loaded, ticking chunk.
+     * @returns
+     * The spawned entity.
+     * @throws
+     * Throws for an invalid item, ID, dimension, or location, a
+     * missing entity, or a load or spawn failure. Failed releases
+     * preserve serialized storage.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    release(entityId: string, location: DimensionLocation): Entity;
+    /**
+     * @remarks
+     * Returns the number of serialized entities in the calling
+     * pack's manifest UUID bucket.
+     *
+     * @returns
+     * The number of entities in this pack's bucket, or zero if
+     * empty.
+     * @throws
+     * Throws if the item is invalid or its entity-storage format
+     * is unsupported.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    size(): number;
+    /**
+     * @remarks
+     * Serializes and despawns a non-player mob into the calling
+     * pack's item storage. Mounted entities and entities with
+     * passengers cannot be stored.
+     *
+     * @worldMutation
+     *
+     * @param entity
+     * The live mob to store.
+     * @returns
+     * The stored entity ID, used for inspection, release, or
+     * transfer.
+     * @throws
+     * Throws if the item or entity is invalid, storage is full,
+     * the entity is already stored, serialization fails, or the
+     * entity is not allowed. Rejected entities remain in the
+     * world.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    store(entity: Entity): string;
+    /**
+     * @remarks
+     * Moves serialized ownership from the calling pack's item
+     * bucket into the same bucket of a block's entity-storage
+     * without loading or spawning the entity. The target can be in
+     * any dimension and must have entity storage.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * A stored entity ID in the calling pack's bucket.
+     * @param targetBlock
+     * A loaded block with an entity-storage component and
+     * available capacity.
+     * @throws
+     * Throws for an invalid item, ID, or target, a missing entity,
+     * full target storage, or an ID already stored at the target.
+     * Failure preserves both owners.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    transfer(entityId: string, targetBlock: Block): void;
+}
+
+/**
  * When present on an item, this item is a book item. Can
  * access and modify the contents of the book and sign it.
  */
@@ -16853,9 +17108,11 @@ export class Player extends Entity {
      * Identifier of the music track to play.
      * @param musicOptions
      * Additional options for the music track.
-     * @throws
+     * @throws {EngineError}
+     *
+     * @throws {PropertyOutOfBoundsError}
      */
-    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: SoundDefinition | string, musicOptions?: MusicOptions): SoundInstance | undefined;
     /**
      * @remarks
      * Plays a sound that only this particular player can hear.
@@ -19088,10 +19345,6 @@ export class PlayerWaypoint extends EntityWaypoint {
  * @beta
  * Describes a block point-of-interest instance returned by a
  * query.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiBlockInstance {
     private constructor();
@@ -19120,10 +19373,6 @@ export class PoiBlockInstance {
  * @beta
  * Provides methods for querying and managing block-based
  * points of interest in a dimension.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiBlockManager {
     private constructor();
@@ -19312,10 +19561,6 @@ export class PoiBlockManager {
 /**
  * @beta
  * Describes a block point-of-interest type.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiBlockType {
     private constructor();
@@ -19377,10 +19622,6 @@ export class PoiBlockType {
  * @beta
  * Provides access to point-of-interest (POI) data in a
  * dimension.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiManager {
     private constructor();
@@ -22732,10 +22973,12 @@ export class World {
      *
      * @worldMutation
      *
+     * @throws {EngineError}
+     *
      * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
-    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: SoundDefinition | string, musicOptions?: MusicOptions): SoundInstance | undefined;
     /**
      * @remarks
      * Queues an additional music track for players. If a track is
@@ -24812,10 +25055,11 @@ export interface CustomCommandParameter {
 export interface CustomCommandResult {
     /**
      * @remarks
-     * Message displayed to chat after command execution.
+     * Message displayed to chat after command execution. Accepts a
+     * {@link RawMessage} or a plain string.
      *
      */
-    message?: string;
+    message?: RawMessage | string;
     /**
      * @remarks
      * Command execution Success or Failure. Determines how the
@@ -26481,6 +26725,14 @@ export interface RotationKeyFrame {
      *
      */
     timeSeconds: number;
+}
+
+/**
+ * @beta
+ */
+export interface ScheduledNamedTick {
+    eventName: string;
+    tickDelay: number;
 }
 
 /**

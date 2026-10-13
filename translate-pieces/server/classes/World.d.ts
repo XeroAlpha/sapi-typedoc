@@ -1,5 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinitionRegistry, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinition, SoundDefinitionRegistry, SoundInstance, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
 
 /**
  * A class that wraps the state of a world - a set of
@@ -281,10 +281,12 @@ export class World {
      *
      * @worldMutation
      *
+     * @throws {EngineError}
+     *
      * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
-    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: SoundDefinition | string, musicOptions?: MusicOptions): SoundInstance | undefined;
     /**
      * @remarks
      * Queues an additional music track for players. If a track is

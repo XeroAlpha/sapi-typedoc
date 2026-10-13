@@ -23,7 +23,7 @@ export async function update(keepCachedPackageJson?: boolean) {
     // 强制检出 original 分支
     const head = git('rev-parse --abbrev-ref HEAD');
     if (head !== 'original' && head !== 'HEAD') {
-        git('checkout original', { stdio: 'inherit' });
+        git('checkout original');
     }
 
     // 保证 npm 可以识别 overrides 属性

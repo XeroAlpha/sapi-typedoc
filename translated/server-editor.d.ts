@@ -135,8 +135,8 @@ export declare enum CollectionTreeEntryItemType {
  * Determines how collection tree folders will be sorted
  */
 export declare enum CollectionTreeSortType {
-    AtoZ = 0,
-    ZtoA = 1,
+    AtoZ = 'aToZ',
+    ZtoA = 'zToA',
 }
 
 /**
@@ -1090,6 +1090,15 @@ export declare enum ListPaneEntryType {
 }
 
 /**
+ * Supported height behaviors for a list pane.
+ */
+export declare enum ListPaneHeightType {
+    Expand = 'expand',
+    Fit = 'fit',
+    Fixed = 'fixed',
+}
+
+/**
  * Determines theming variation for the list slot
  */
 export declare enum ListPaneSlotVariant {
@@ -1102,9 +1111,14 @@ export declare enum ListPaneSlotVariant {
  * Determines how list pane slots will be sorted
  */
 export declare enum ListPaneViewSortType {
-    Default = 0,
-    AtoZ = 1,
-    ZtoA = 2,
+    AtoZ = 'listPane.aToZ',
+    Default = 'listPane.default',
+    NewestToOldest = 'listPane.newestToOldest',
+    OldestChangesFirst = 'listPane.oldestChangesFirst',
+    OldestToNewest = 'listPane.oldestToNewest',
+    RecentChangesFirst = 'listPane.recentChangesFirst',
+    Tag = 'listPane.tag',
+    ZtoA = 'listPane.zToA',
 }
 
 export declare enum ListViewControlFilterFlags {
@@ -1391,10 +1405,10 @@ export enum StructureSource {
  * comparable value through a caller supplied function.
  */
 export declare enum SubPaneViewSortType {
-    Default = 0,
-    AtoZ = 1,
-    ZtoA = 2,
-    Custom = 3,
+    AtoZ = 'aToZ',
+    Custom = 'custom',
+    Default = 'default',
+    ZtoA = 'zToA',
 }
 
 /**
@@ -1565,6 +1579,37 @@ export enum WidgetGroupSelectionMode {
     Multiple = 'Multiple',
     None = 'None',
     Single = 'Single',
+}
+
+/**
+ * Controls which blocks stop a widget guide sensor. World and
+ * widget boundary walls stop the sensor in every mode.
+ */
+export enum WidgetGuideSensorBlockFilter {
+    /**
+     * @remarks
+     * Uses block selection outlines, including pickable
+     * non-colliding blocks such as plants. This is the default and
+     * preserves existing guide behavior.
+     *
+     */
+    Any = 0,
+    /**
+     * @remarks
+     * Uses block collision shapes, including partial blocks such
+     * as slabs and stairs. Ignores liquids and blocks without
+     * collision, such as flowers.
+     *
+     */
+    Collidable = 1,
+    /**
+     * @remarks
+     * Uses collision shapes of motion-blocking, cube-shaped blocks
+     * only. Ignores liquids, non-colliding blocks, and partial
+     * blocks such as slabs and stairs.
+     *
+     */
+    FullBlocks = 2,
 }
 
 export enum WidgetGuideSensorDirection {
@@ -1886,6 +1931,14 @@ export type ListPaneButtonEntryParams = {
 };
 
 /**
+ * A custom category that can be used to sort list pane slots.
+ */
+export declare type ListPaneCategory = {
+    label: LocalizedString;
+    isGroup: boolean;
+};
+
+/**
  * List Pane entry type map
  */
 export type ListPaneEntryMap = {
@@ -1903,6 +1956,22 @@ export type ListPaneEntryParams =
     | ListPaneBoolEntryParams
     | ListPaneTextEntryParams
     | ListPaneImageEntryParams;
+
+/**
+ * A supported ListPane height configuration.
+ */
+export declare type ListPaneHeight =
+    | {
+          type: ListPaneHeightType.Fixed;
+          height?: number;
+      }
+    | {
+          type: ListPaneHeightType.Fit;
+      }
+    | {
+          type: ListPaneHeightType.Expand;
+          maxHeight?: number;
+      };
 
 /**
  * List Pane Image entry creation parameter
@@ -1940,6 +2009,12 @@ export declare type ListPaneSlotLayoutSections = {
     mainSection: ListPaneSlotLayoutEntry[];
     outerSection: ListPaneSlotLayoutEntry[];
 };
+
+/**
+ * A built-in list sort type or custom sort category
+ * identifier.
+ */
+export declare type ListPaneSortOption = ListPaneViewSortType | string;
 
 /**
  * List Pane Text entry creation parameter
@@ -2867,7 +2942,7 @@ export class BrushShapeManager {
      *
      * @throws
      */
-    beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
+    beginPainting(onComplete: (arg0: PaintCompletionState) => void, pendingTransaction?: PendingTransaction): void;
     /**
      * @remarks
      * @worldMutation
@@ -3035,7 +3110,7 @@ export class BrushShapeManager {
      *
      * @throws
      */
-    singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
+    singlePaint(onComplete: (arg0: PaintCompletionState) => void, pendingTransaction?: PendingTransaction): void;
     /**
      * @remarks
      * @worldMutation
@@ -9071,10 +9146,10 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     readonly viewControlPane: IListViewControlPane | undefined;
     /**
      * @remarks
-     * Current sorting type for the pane slots
+     * Current built-in sort type or custom sort category ID.
      *
      */
-    readonly viewSortType: ListPaneViewSortType;
+    readonly viewSortType: ListPaneSortOption;
     /**
      * @remarks
      * Adds a new slot to the list.
@@ -9139,12 +9214,13 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     setViewFilter(filter: ListPaneViewFilter | undefined): void;
     /**
      * @remarks
-     * Updates how slots will be sorted in the view
+     * Updates how slots will be sorted in the view.
      *
      * @param sortType
-     * New sort type, it undefined Default will be used.
+     * New built-in sort type or custom sort category ID. If
+     * undefined, the default will be used.
      */
-    setViewSortType(sortType: ListPaneViewSortType | undefined): void;
+    setViewSortType(sortType: ListPaneSortOption | undefined): void;
     /**
      * @remarks
      * Updates all slots with the new list.
@@ -9162,6 +9238,12 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
 export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     /**
      * @remarks
+     * Categories available to sort or group list pane slots.
+     *
+     */
+    categories?: Record<string, ListPaneCategory>;
+    /**
+     * @remarks
      * Default slots to initialize the list with. If undefined, the
      * list will be empty.
      *
@@ -9169,17 +9251,17 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     defaultSlots?: ListPaneSlotCreationProps[];
     /**
      * @remarks
-     * If true, pane height will not change based on slot count. If
-     * undefined, it will default to false
+     * Height behavior for the list. A number is treated as an
+     * expand maximum for compatibility.
      *
      */
-    fixedHeight?: boolean;
+    height?: number | ListPaneHeight;
     /**
      * @remarks
-     * This will be the height of the list within the pane
+     * Removes spacing around clickable list slots.
      *
      */
-    height?: number;
+    noMargins?: boolean;
     /**
      * @remarks
      * This callback is fired whenever a clickable slot is pressed
@@ -9215,11 +9297,11 @@ export interface IListPanePropertyItemOptions extends IPropertyItemOptionsBase {
     viewFilter?: ListPaneViewFilter;
     /**
      * @remarks
-     * Sort type for the slots in the view. If undefined, default
-     * list order will be used.
+     * Built-in sort type or custom sort category ID to initially
+     * select.
      *
      */
-    viewSortType?: ListPaneViewSortType;
+    viewSortType?: ListPaneSortOption;
 }
 
 /**
@@ -9283,6 +9365,22 @@ export interface IListPaneSlot {
     getUserData(): unknown;
     /**
      * @remarks
+     * Updates the slot creation time.
+     *
+     * @param creationTime
+     * New creation time, or undefined to clear it.
+     */
+    setCreationTime(creationTime: number | undefined): void;
+    /**
+     * @remarks
+     * Updates the slot modified time.
+     *
+     * @param modifiedTime
+     * New modified time, or undefined to clear it.
+     */
+    setModifiedTime(modifiedTime: number | undefined): void;
+    /**
+     * @remarks
      * Updates selected state of the slot.
      *
      * @param selected
@@ -9319,6 +9417,26 @@ export interface IListPaneSlot {
  * List Pane slot optional properties
  */
 export interface IListPaneSlotOptions {
+    /**
+     * @remarks
+     * Values associated with list pane category IDs.
+     *
+     */
+    categories?: Record<string, string>;
+    /**
+     * @remarks
+     * Creation time used by the built-in creation-time sort
+     * options.
+     *
+     */
+    creationTime?: number;
+    /**
+     * @remarks
+     * Modified time used by the built-in modified-time sort
+     * options.
+     *
+     */
+    modifiedTime?: number;
     /**
      * @remarks
      * List of tags associated with the slot.
@@ -9410,11 +9528,11 @@ export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOpt
     }[];
     /**
      * @remarks
-     * Custom sort options. If undefined, list pane sort options
-     * will be used.
+     * Built-in sort types and custom category IDs, in the order
+     * shown by the sort dropdown.
      *
      */
-    sortOptions?: ListPaneViewSortType[];
+    sortOptions?: ListPaneSortOption[];
 }
 
 export interface IListViewControlPane {
@@ -9489,6 +9607,14 @@ export interface IListViewControlPaneOptions {
      *
      */
     actions?: ListViewControlAction[];
+    /**
+     * @remarks
+     * Localization key for the tooltip displayed when hovering the
+     * filter icon. Leave undefined or empty to suppress the
+     * tooltip.
+     *
+     */
+    filterTooltip?: LocalizedString;
     /**
      * @remarks
      * This function will be called whenever user clicks an action
@@ -13218,6 +13344,16 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
+    /**
+     * @remarks
+     * When true, dragging keeps the widget origin at least half a
+     * block inside each worldBoundsMin and worldBoundsMax face,
+     * instead of constraining the combined component bounds.
+     * Intended for widgets whose origin is a block center.
+     * Defaults to false.
+     *
+     */
+    constrainToBlockCenters?: boolean;
     enablePlanes?: boolean;
     normalizedAutoOffset?: Vector3;
     /**
@@ -13244,8 +13380,20 @@ export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
     plane?: Plane;
 }
 
+/**
+ * Options for widget guide sensors, including probe directions
+ * and which blocks stop the rays.
+ */
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {
+    /**
+     * @remarks
+     * Selects which blocks stop the guide rays. Defaults to
+     * WidgetGuideSensorBlockFilter.Any. Boundary walls are
+     * unaffected by this option.
+     *
+     */
+    blockFilter?: WidgetGuideSensorBlockFilter;
     directions?: WidgetGuideSensorDirection;
 }
 

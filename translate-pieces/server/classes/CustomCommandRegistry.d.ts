@@ -1,5 +1,5 @@
 /* IMPORT */ import { EngineError } from '../../common';
-/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, NamespaceNameError } from '..';
+/* IMPORT */ import { CustomCommand, CustomCommandError, CustomCommandOrigin, CustomCommandResult, NamespaceNameError, RawMessageError } from '..';
 
 /**
  * Provides the functionality for registering custom commands.
@@ -22,6 +22,8 @@ export class CustomCommandRegistry {
      * @throws {EngineError}
      *
      * @throws {NamespaceNameError}
+     *
+     * @throws {RawMessageError}
      */
     registerCommand(
         customCommand: CustomCommand,
@@ -40,6 +42,8 @@ export class CustomCommandRegistry {
      * @throws {EngineError}
      *
      * @throws {NamespaceNameError}
+     *
+     * @throws {RawMessageError}
      */
     registerEnum(name: string, values: string[]): void;
 }

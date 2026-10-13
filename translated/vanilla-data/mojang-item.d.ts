@@ -174,6 +174,7 @@ export declare enum MinecraftItemTypes {
     BrickSlab = "minecraft:brick_slab",
     BrickStairs = "minecraft:brick_stairs",
     BrickWall = "minecraft:brick_wall",
+    BrittleIce = "minecraft:brittle_ice",
     BrownBundle = "minecraft:brown_bundle",
     BrownCandle = "minecraft:brown_candle",
     BrownCarpet = "minecraft:brown_carpet",
