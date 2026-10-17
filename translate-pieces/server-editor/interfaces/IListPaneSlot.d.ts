@@ -61,6 +61,22 @@ export interface IListPaneSlot {
     getUserData(): unknown;
     /**
      * @remarks
+     * Updates the slot creation time.
+     *
+     * @param creationTime
+     * New creation time, or undefined to clear it.
+     */
+    setCreationTime(creationTime: number | undefined): void;
+    /**
+     * @remarks
+     * Updates the slot modified time.
+     *
+     * @param modifiedTime
+     * New modified time, or undefined to clear it.
+     */
+    setModifiedTime(modifiedTime: number | undefined): void;
+    /**
+     * @remarks
      * Updates selected state of the slot.
      *
      * @param selected

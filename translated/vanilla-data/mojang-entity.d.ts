@@ -94,7 +94,7 @@ export declare enum MinecraftEntityTypes {
     Fox = "minecraft:fox",
     /** 青蛙。 */
     Frog = "minecraft:frog",
-    /** Frostbite。 */
+    /** 冻尸。 */
     Frostbite = "minecraft:frostbite",
     /** 恶魂。 */
     Ghast = "minecraft:ghast",
@@ -114,7 +114,7 @@ export declare enum MinecraftEntityTypes {
     Horse = "minecraft:horse",
     /** 尸壳。 */
     Husk = "minecraft:husk",
-    /** Ice Ball。 */
+    /** 冰球。 */
     IceBall = "minecraft:ice_ball",
     /** 铁傀儡。 */
     IronGolem = "minecraft:iron_golem",

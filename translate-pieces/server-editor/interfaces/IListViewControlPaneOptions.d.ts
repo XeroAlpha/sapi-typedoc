@@ -1,4 +1,4 @@
-/* IMPORT */ import { ListViewControlAction } from '..';
+/* IMPORT */ import { ListViewControlAction, LocalizedString } from '..';
 
 export interface IListViewControlPaneOptions {
     /**
@@ -7,6 +7,14 @@ export interface IListViewControlPaneOptions {
      *
      */
     actions?: ListViewControlAction[];
+    /**
+     * @remarks
+     * Localization key for the tooltip displayed when hovering the
+     * filter icon. Leave undefined or empty to suppress the
+     * tooltip.
+     *
+     */
+    filterTooltip?: LocalizedString;
     /**
      * @remarks
      * This function will be called whenever user clicks an action

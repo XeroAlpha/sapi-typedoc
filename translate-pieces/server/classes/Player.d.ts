@@ -1,4 +1,4 @@
-/* IMPORT */ import { EngineError, InvalidArgumentError } from '../../common';
+/* IMPORT */ import { EngineError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
 /* IMPORT */ import { Camera, ClientSystemInfo, CommandPermissionLevel, ControlScheme, DimensionLocation, Entity, FogSettings, GameMode, GraphicsMode, InputInfo, InvalidEntityError, ItemStack, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, LocatorBar, MolangVariableMap, MusicOptions, PlayerAimAssist, PlayerInputPermissions, PlayerPermissionLevel, PlayerSoundOptions, PlayerSplitScreenSlot, RawMessage, RawMessageError, ScreenDisplay, SoundDefinition, SoundInstance, Vector3 } from '..';
 
 /**
@@ -339,9 +339,11 @@ export class Player extends Entity {
      * Identifier of the music track to play.
      * @param musicOptions
      * Additional options for the music track.
-     * @throws
+     * @throws {EngineError}
+     *
+     * @throws {PropertyOutOfBoundsError}
      */
-    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: SoundDefinition | string, musicOptions?: MusicOptions): SoundInstance | undefined;
     /**
      * @remarks
      * Plays a sound that only this particular player can hear.

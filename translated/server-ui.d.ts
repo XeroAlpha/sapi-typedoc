@@ -1354,8 +1354,17 @@ export interface ButtonOptions {
 
 /**
  * @beta
+ * Options for configuring a CustomForm.
  */
-export interface CustomFormOptions {}
+export interface CustomFormOptions {
+    /**
+     * @remarks
+     * Controls whether the form's top-right close button is
+     * visible. Defaults to true.
+     *
+     */
+    topCloseButtonVisible?: boolean | ObservableBoolean;
+}
 
 /**
  * Options for configuring a divider component in a CustomForm.

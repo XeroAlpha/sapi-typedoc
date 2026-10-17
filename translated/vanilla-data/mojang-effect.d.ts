@@ -18,7 +18,7 @@ export declare enum MinecraftEffectTypes {
     FatalPoison = "minecraft:fatal_poison",
     /** 抗火。 */
     FireResistance = "minecraft:fire_resistance",
-    /** Freezing。 */
+    /** 冰冻。 */
     Freezing = "minecraft:freezing",
     /** 急迫。 */
     Haste = "minecraft:haste",

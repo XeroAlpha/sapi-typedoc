@@ -1,4 +1,4 @@
-/* IMPORT */ import { IListViewControlPaneOptions, ListPaneViewSortType, ListViewControlFilterFlags, LocalizedString } from '..';
+/* IMPORT */ import { IListViewControlPaneOptions, ListPaneSortOption, ListViewControlFilterFlags, LocalizedString } from '..';
 
 export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOptions {
     /**
@@ -43,9 +43,9 @@ export interface IListPaneViewControlPaneOptions extends IListViewControlPaneOpt
     }[];
     /**
      * @remarks
-     * Custom sort options. If undefined, list pane sort options
-     * will be used.
+     * Built-in sort types and custom category IDs, in the order
+     * shown by the sort dropdown.
      *
      */
-    sortOptions?: ListPaneViewSortType[];
+    sortOptions?: ListPaneSortOption[];
 }

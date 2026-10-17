@@ -2,7 +2,12 @@
  * Determines how list pane slots will be sorted
  */
 export declare enum ListPaneViewSortType {
-    Default = 0,
-    AtoZ = 1,
-    ZtoA = 2,
+    AtoZ = 'listPane.aToZ',
+    Default = 'listPane.default',
+    NewestToOldest = 'listPane.newestToOldest',
+    OldestChangesFirst = 'listPane.oldestChangesFirst',
+    OldestToNewest = 'listPane.oldestToNewest',
+    RecentChangesFirst = 'listPane.recentChangesFirst',
+    Tag = 'listPane.tag',
+    ZtoA = 'listPane.zToA',
 }

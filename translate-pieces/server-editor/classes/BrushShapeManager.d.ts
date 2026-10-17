@@ -17,7 +17,7 @@ export class BrushShapeManager {
      *
      * @throws
      */
-    beginPainting(onComplete: (arg0: PaintCompletionState) => void): void;
+    beginPainting(onComplete: (arg0: PaintCompletionState) => void, pendingTransaction?: PendingTransaction): void;
     /**
      * @remarks
      * @worldMutation
@@ -185,7 +185,7 @@ export class BrushShapeManager {
      *
      * @throws
      */
-    singlePaint(onComplete: (arg0: PaintCompletionState) => void): void;
+    singlePaint(onComplete: (arg0: PaintCompletionState) => void, pendingTransaction?: PendingTransaction): void;
     /**
      * @remarks
      * @worldMutation

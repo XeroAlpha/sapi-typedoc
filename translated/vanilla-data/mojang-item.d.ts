@@ -346,6 +346,8 @@ export declare enum MinecraftItemTypes {
     BrickStairs = "minecraft:brick_stairs",
     /** 红砖墙。 */
     BrickWall = "minecraft:brick_wall",
+    /** 脆冰。 */
+    BrittleIce = "minecraft:brittle_ice",
     /** 棕色收纳袋。 */
     BrownBundle = "minecraft:brown_bundle",
     /** 棕色蜡烛。 */
@@ -1122,7 +1124,7 @@ export declare enum MinecraftItemTypes {
     FrogSpawn = "minecraft:frog_spawn",
     /** 青蛙刷怪蛋。 */
     FrogSpawnEgg = "minecraft:frog_spawn_egg",
-    /** Frostbite Spawn Egg。 */
+    /** 冻尸刷怪蛋。 */
     FrostbiteSpawnEgg = "minecraft:frostbite_spawn_egg",
     /** 霜冰。 */
     FrostedIce = "minecraft:frosted_ice",
@@ -1346,11 +1348,11 @@ export declare enum MinecraftItemTypes {
     HuskSpawnEgg = "minecraft:husk_spawn_egg",
     /** 冰。 */
     Ice = "minecraft:ice",
-    /** Ice Ball。 */
+    /** 冰球。 */
     IceBall = "minecraft:ice_ball",
-    /** Ice Crystal。 */
+    /** 冰晶。 */
     IceCrystal = "minecraft:ice_crystal",
-    /** Icicle。 */
+    /** 冰锥。 */
     Icicle = "minecraft:icicle",
     /** 虫蚀雕纹石砖。 */
     InfestedChiseledStoneBricks = "minecraft:infested_chiseled_stone_bricks",

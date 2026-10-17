@@ -1,5 +1,5 @@
-/* IMPORT */ import { ArgumentOutOfBoundsError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinitionRegistry, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
+/* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinition, SoundDefinitionRegistry, SoundInstance, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -326,10 +326,12 @@ export class World {
      *
      * @param trackId 声音项目的标识符，要求声音项目的类别为音乐（`category: music`）。
      * @param musicOptions 可选，指定播放音乐使用的附加参数。
+     * @throws {EngineError}
+     *
      * @throws {PropertyOutOfBoundsError}
      * @seeExample playMusicAndSound.ts
      */
-    playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playMusic(trackId: SoundDefinition | string, musicOptions?: MusicOptions): SoundInstance | undefined;
     /**
      * @remarks
      * 将音乐添加到播放列表。如果没有任何正在播放的音乐，将会开始播放音乐。播放列表中的音乐将会按照添加顺序播放（需要更多测试）。

@@ -8,6 +8,16 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
+    /**
+     * @remarks
+     * When true, dragging keeps the widget origin at least half a
+     * block inside each worldBoundsMin and worldBoundsMax face,
+     * instead of constraining the combined component bounds.
+     * Intended for widgets whose origin is a block center.
+     * Defaults to false.
+     *
+     */
+    constrainToBlockCenters?: boolean;
     enablePlanes?: boolean;
     normalizedAutoOffset?: Vector3;
     /**

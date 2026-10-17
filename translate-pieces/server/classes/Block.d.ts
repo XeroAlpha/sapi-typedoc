@@ -1,5 +1,5 @@
 /* IMPORT */ import { InvalidArgumentError } from '../../common';
-/* IMPORT */ import { BlockComponent, BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, Vector3 } from '..';
+/* IMPORT */ import { BlockComponent, BlockComponentRegistry, BlockComponentReturnType, BlockComponentTypes, BlockPermutation, BlockType, Dimension, Direction, ItemStack, LiquidType, LocationInUnloadedChunkError, LocationOutOfWorldBoundariesError, RGBA, ScheduledNamedTick, Vector3 } from '..';
 
 /**
  * 表示世界维度中的特定位置的方块。
@@ -302,6 +302,20 @@ export class Block {
     east(steps?: number): Block | undefined;
     /**
      * @remarks
+     * Returns the named tick events scheduled at this block by the
+     * calling script pack.
+     *
+     * @returns
+     * The scheduled named tick events. Each event contains its
+     * eventName and the number of ticks until it is raised as
+     * tickDelay.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getAllScheduledNamedTicks(): ScheduledNamedTick[];
+    /**
+     * @remarks
      * 获取一个方块的组件（代表附加功能），例如，一个箱子方块的库存组件。
      *
      * Gets a component (that represents additional capabilities)
@@ -419,6 +433,19 @@ export class Block {
      * @throws {LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
+    /**
+     * @remarks
+     * Returns the number of named tick events scheduled at this
+     * block, regardless of which script pack scheduled them.
+     *
+     * @returns
+     * The number of named tick events currently scheduled at this
+     * block.
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    getScheduledNamedTickCount(): number;
     /**
      * @remarks
      * Returns the brightness level of light shining from the sky
@@ -602,7 +629,7 @@ export class Block {
      *
      * @throws {LocationOutOfWorldBoundariesError}
      */
-    removeScheduledNamedTick(eventName: string): void;
+    removeScheduledNamedTicks(eventName: string): void;
     /**
      * @remarks
      * Schedules a named tick event for this block. The event will

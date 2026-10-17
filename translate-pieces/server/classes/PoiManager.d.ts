@@ -3,10 +3,6 @@
 /**
  * Provides access to point-of-interest (POI) data in a
  * dimension.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiManager {
     private constructor();

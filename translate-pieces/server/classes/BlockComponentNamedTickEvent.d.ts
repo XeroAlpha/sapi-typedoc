@@ -9,16 +9,18 @@ export class BlockComponentNamedTickEvent extends BlockEvent {
     private constructor();
     /**
      * @remarks
-     * Checks whether this named tick event has the specified name.
-     * Events are namespaced with their content UUID. Two named
-     * tick events with the same name but scheduled from different
-     * packs will not respond the same to this method.
+     * Name of the named tick event.
      *
-     * @param eventName
-     * The name to check against this event.
+     */
+    readonly name: string;
+    /**
+     * @remarks
+     * Checks whether this named tick event was scheduled by this
+     * pack.
+     *
      * @returns
-     * Returns true if the event name matches the specified name;
+     * True if this named tick event was scheduled by this pack;
      * otherwise, false.
      */
-    isName(eventName: string): boolean;
+    isMine(): boolean;
 }

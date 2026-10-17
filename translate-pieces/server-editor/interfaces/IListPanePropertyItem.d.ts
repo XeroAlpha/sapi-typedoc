@@ -1,4 +1,4 @@
-/* IMPORT */ import { IListPaneSlot, IListPaneViewControlPaneOptions, IListViewControlPane, IPane, IPropertyItemBase, ListPaneSlotCreationProps, ListPaneViewFilter, ListPaneViewSortType } from '..';
+/* IMPORT */ import { IListPaneSlot, IListPaneViewControlPaneOptions, IListViewControlPane, IPane, IPropertyItemBase, ListPaneSlotCreationProps, ListPaneSortOption, ListPaneViewFilter } from '..';
 
 /**
  * A property item which supports Sub Pane properties
@@ -19,10 +19,10 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     readonly viewControlPane: IListViewControlPane | undefined;
     /**
      * @remarks
-     * Current sorting type for the pane slots
+     * Current built-in sort type or custom sort category ID.
      *
      */
-    readonly viewSortType: ListPaneViewSortType;
+    readonly viewSortType: ListPaneSortOption;
     /**
      * @remarks
      * Adds a new slot to the list.
@@ -87,12 +87,13 @@ export interface IListPanePropertyItem extends IPropertyItemBase, IPane {
     setViewFilter(filter: ListPaneViewFilter | undefined): void;
     /**
      * @remarks
-     * Updates how slots will be sorted in the view
+     * Updates how slots will be sorted in the view.
      *
      * @param sortType
-     * New sort type, it undefined Default will be used.
+     * New built-in sort type or custom sort category ID. If
+     * undefined, the default will be used.
      */
-    setViewSortType(sortType: ListPaneViewSortType | undefined): void;
+    setViewSortType(sortType: ListPaneSortOption | undefined): void;
     /**
      * @remarks
      * Updates all slots with the new list.

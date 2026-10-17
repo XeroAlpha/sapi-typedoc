@@ -1,9 +1,5 @@
 /**
  * Describes a block point-of-interest type.
- *
- * Required Experiments:
- * - Poi
- *
  */
 export class PoiBlockType {
     private constructor();

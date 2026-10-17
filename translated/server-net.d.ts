@@ -203,10 +203,6 @@ export enum PacketId {
      */
     AddPlayerPacket = 'AddPlayerPacket',
     /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/add-volume-entity-packet/
-     */
-    AddVolumeEntityPacket = 'AddVolumeEntityPacket',
-    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/agent-action-event-packet/
      */
     AgentActionEventPacket = 'AgentActionEventPacket',
@@ -341,6 +337,12 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/change-mob-property-packet/
      */
     ChangeMobPropertyPacket = 'ChangeMobPropertyPacket',
+    /**
+     * Carries a Chat Service signature that receiving clients verify. The hosting server relays the signed block unmodified and may only decorate around it.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/chat-packet/
+     */
+    ChatPacket = 'ChatPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/chunk-radius-updated-packet/
      */
@@ -974,10 +976,6 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/remove-objective-packet/
      */
     RemoveObjectivePacket = 'RemoveObjectivePacket',
-    /**
-     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/remove-volume-entity-packet/
-     */
-    RemoveVolumeEntityPacket = 'RemoveVolumeEntityPacket',
     /**
      * Once changed, the server will broadcast the updated state of abilities for that player. If the request is rejected, the caller will receive their reverted state of Abilities.  Can only be used to modify the calling player.      - mVariable: Info about this variable
      * 
