@@ -3,7 +3,7 @@
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
-    BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
+    BlockDynamicProperties = 'minecraft:block_dynamic_properties',
     BlockEntityStorage = 'minecraft:block_entity_storage',
     /**
      * @remarks

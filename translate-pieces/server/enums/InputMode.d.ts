@@ -10,6 +10,12 @@ export enum InputMode {
     Gamepad = 'Gamepad',
     /**
      * @remarks
+     * Gamepad and mouse input.
+     *
+     */
+    GamepadAndMouse = 'GamepadAndMouse',
+    /**
+     * @remarks
      * Keyboard and mouse input.
      *
      */

@@ -561,6 +561,7 @@ export { BlockHitInformation } from './interfaces/BlockHitInformation';
 export { BlockQueryOptions } from './interfaces/BlockQueryOptions';
 export { BlockRaycastHit } from './interfaces/BlockRaycastHit';
 export { BlockRaycastOptions } from './interfaces/BlockRaycastOptions';
+export { BlockSearchOptions } from './interfaces/BlockSearchOptions';
 export { CameraAttachOptions } from './interfaces/CameraAttachOptions';
 export { CameraFadeOptions } from './interfaces/CameraFadeOptions';
 export { CameraFadeTimeOptions } from './interfaces/CameraFadeTimeOptions';

@@ -26,7 +26,7 @@
  * ```json
  * {
  *   "module_name": "@minecraft/server-ui",
- *   "version": "2.4.0-beta"
+ *   "version": "2.5.0-beta"
  * }
  * ```
  *
@@ -423,7 +423,7 @@ export class CustomForm {
      */
     label(text: ObservableString | ObservableUIRawMessage | string | UIRawMessage, options?: TextOptions): CustomForm;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Adds a horizontal row of up to three clickable buttons to
      * the form layout. Returns the form instance to allow method
@@ -691,7 +691,7 @@ export class MessageBox {
         options?: MessageBoxButtonOptions,
     ): MessageBox;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Sets the label and options for the third button of the
      * message box. Returns the message box instance to allow
@@ -1286,7 +1286,7 @@ export class UIManager {
 }
 
 /**
- * @beta
+ * @rc
  * Data used to configure a button.
  */
 export interface ButtonData {
@@ -1517,11 +1517,11 @@ export interface MessageBoxButtonOptions {
 }
 
 /**
- * @beta
  * Options for configuring a message box.
  */
 export interface MessageBoxOptions {
     /**
+     * @rc
      * @remarks
      * Sets the desired layout for the buttons. True displays the
      * buttons horizontally, false displays them vertically.
@@ -1646,7 +1646,7 @@ export interface ModalFormDataToggleOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Options for configuring a multi-button row component.
  */
 export interface MultiButtonRowOptions {

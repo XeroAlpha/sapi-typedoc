@@ -22,8 +22,16 @@ export interface BlockRaycastOptions extends BlockFilter {
     includePassableBlocks?: boolean;
     /**
      * @remarks
-     * Maximum distance, in blocks, to process the raycast.
+     * Maximum raycast distance, in blocks.
      *
+     * Bounds: [-2147483648, 2147483647]
      */
     maxDistance?: number;
+    /**
+     * @remarks
+     * When true, keeps fractional distances and checks the full
+     * ray. Defaults to false.
+     *
+     */
+    usePreciseRaycast?: boolean;
 }
