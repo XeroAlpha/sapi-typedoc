@@ -390,6 +390,10 @@ export enum PacketId {
      */
     ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-online-music-playback-response-packet/
+     */
+    ClientboundOnlineMusicPlaybackResponsePacket = 'ClientboundOnlineMusicPlaybackResponsePacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-play-audio-content-packet/
      */
     ClientboundPlayAudioContentPacket = 'ClientboundPlayAudioContentPacket',
@@ -1092,6 +1096,10 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-register-audio-content-packet/
      */
     ServerboundRegisterAudioContentPacket = 'ServerboundRegisterAudioContentPacket',
+    /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-request-online-music-playback-packet/
+     */
+    ServerboundRequestOnlineMusicPlaybackPacket = 'ServerboundRequestOnlineMusicPlaybackPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/serverbound-stonecutter-set-recipe-packet/
      */

@@ -9,7 +9,7 @@
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
     private constructor();
-    static readonly componentId = 'minecraft:block_actor_dynamic_properties';
+    static readonly componentId = 'minecraft:block_dynamic_properties';
     /**
      * @remarks
      * Returns a DynamicProperty that was stored with the provided

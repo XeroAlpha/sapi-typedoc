@@ -2177,6 +2177,13 @@ export enum InputMode {
      */
     Gamepad = 'Gamepad',
     /**
+     * @rc
+     * @remarks
+     * Gamepad and mouse input.
+     *
+     */
+    GamepadAndMouse = 'GamepadAndMouse',
+    /**
      * @remarks
      * Keyboard and mouse input.
      *
@@ -2285,7 +2292,7 @@ export enum InputPermissionCategory {
  * function ItemStack.getComponent.
  */
 export enum ItemComponentTypes {
-    BlockDynamicProperties = 'minecraft:block_actor_dynamic_properties',
+    BlockDynamicProperties = 'minecraft:block_dynamic_properties',
     /**
      * @beta
      */
@@ -2801,7 +2808,7 @@ export enum PlayerWaypointsMode {
 }
 
 /**
- * @beta
+ * @rc
  * Specifies how a block point-of-interest query filters
  * instances by ticket occupancy.
  */
@@ -3446,7 +3453,7 @@ export type ItemComponentReturnType<T extends string> = T extends keyof ItemComp
     : ItemCustomComponentInstance;
 
 export type ItemComponentTypeMap = {
-    block_actor_dynamic_properties: ItemBlockDynamicPropertiesComponent;
+    block_dynamic_properties: ItemBlockDynamicPropertiesComponent;
     block_entity_storage: ItemBlockEntityStorageComponent;
     book: ItemBookComponent;
     compostable: ItemCompostableComponent;
@@ -3456,7 +3463,7 @@ export type ItemComponentTypeMap = {
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     inventory: ItemInventoryComponent;
-    'minecraft:block_actor_dynamic_properties': ItemBlockDynamicPropertiesComponent;
+    'minecraft:block_dynamic_properties': ItemBlockDynamicPropertiesComponent;
     'minecraft:block_entity_storage': ItemBlockEntityStorageComponent;
     'minecraft:book': ItemBookComponent;
     'minecraft:compostable': ItemCompostableComponent;
@@ -8153,7 +8160,7 @@ export class Dimension {
      */
     readonly localizationKey: string;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Provides access to point-of-interest (POI) managers for this
      * dimension. This property is available only when the POI
@@ -8389,7 +8396,7 @@ export class Dimension {
      * The options to decide if a block is a valid result.
      * @throws
      */
-    getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    getBlockAbove(location: Vector3, options?: BlockSearchOptions): Block | undefined;
     /**
      * @remarks
      * Gets the first block found below a given block location
@@ -8402,7 +8409,7 @@ export class Dimension {
      * The options to decide if a block is a valid result.
      * @throws
      */
-    getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    getBlockBelow(location: Vector3, options?: BlockSearchOptions): Block | undefined;
     /**
      * @remarks
      * Gets the first block that intersects with a vector emanating
@@ -14196,7 +14203,7 @@ export class ISerializable {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
     private constructor();
-    static readonly componentId = 'minecraft:block_actor_dynamic_properties';
+    static readonly componentId = 'minecraft:block_dynamic_properties';
     /**
      * @remarks
      * Returns a DynamicProperty that was stored with the provided
@@ -19564,7 +19571,7 @@ export class PlayerWaypoint extends EntityWaypoint {
 }
 
 /**
- * @beta
+ * @rc
  * Describes a block point-of-interest instance returned by a
  * query.
  */
@@ -19592,7 +19599,7 @@ export class PoiBlockInstance {
 }
 
 /**
- * @beta
+ * @rc
  * Provides methods for querying and managing block-based
  * points of interest in a dimension.
  */
@@ -19781,7 +19788,7 @@ export class PoiBlockManager {
 }
 
 /**
- * @beta
+ * @rc
  * Describes a block point-of-interest type.
  */
 export class PoiBlockType {
@@ -19841,7 +19848,7 @@ export class PoiBlockType {
 }
 
 /**
- * @beta
+ * @rc
  * Provides access to point-of-interest (POI) data in a
  * dimension.
  */
@@ -20073,7 +20080,13 @@ export class PrimitiveShape {
      */
     color: RGBA;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * Defaults to true. If set to true, we default to being
+     * visible to all players if visibleTo is empty - hiddenFrom
+     * still applies afterwards. If set to false, we default to
+     * hiding the shape from all players if visibleTo is empty.
+     *
      */
     defaultVisibleToAll: boolean;
     /**
@@ -20091,7 +20104,12 @@ export class PrimitiveShape {
      */
     readonly hasDuration: boolean;
     /**
-     * @beta
+     * @rc
+     * @remarks
+     * The list of players that this shape will be hidden from. If
+     * a player is listed in both this and visibleTo, this takes
+     * priority (it will be hidden from the player).
+     *
      */
     hiddenFrom: Player[];
     /**
@@ -25111,7 +25129,43 @@ export interface BlockRaycastOptions extends BlockFilter {
     includePassableBlocks?: boolean;
     /**
      * @remarks
-     * Maximum distance, in blocks, to process the raycast.
+     * Maximum raycast distance, in blocks.
+     *
+     * Bounds: [-2147483648, 2147483647]
+     */
+    maxDistance?: number;
+    /**
+     * @beta
+     * @remarks
+     * When true, keeps fractional distances and checks the full
+     * ray. Defaults to false.
+     *
+     */
+    usePreciseRaycast?: boolean;
+}
+
+/**
+ * Options for finding blocks.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export interface BlockSearchOptions extends BlockFilter {
+    /**
+     * @remarks
+     * When true, includes liquid blocks.
+     *
+     */
+    includeLiquidBlocks?: boolean;
+    /**
+     * @remarks
+     * When true, includes passable blocks, such as vines and
+     * flowers.
+     *
+     */
+    includePassableBlocks?: boolean;
+    /**
+     * @remarks
+     * Maximum search distance, in blocks. Vertical searches use
+     * whole blocks.
      *
      */
     maxDistance?: number;
@@ -26132,10 +26186,20 @@ export interface EntityRaycastOptions extends EntityFilter {
     includePassableBlocks?: boolean;
     /**
      * @remarks
-     * Maximum distance, in blocks, to process the raycast.
+     * Maximum raycast distance, in blocks.
      *
+     * Bounds: [-2147483648, 2147483647]
      */
     maxDistance?: number;
+    /**
+     * @beta
+     * @remarks
+     * When true, keeps fractional distances and checks the full
+     * ray. Defaults to false. When true, negative distances throw
+     * InvalidArgumentError.
+     *
+     */
+    usePreciseRaycast?: boolean;
 }
 
 /**
@@ -26810,7 +26874,7 @@ export interface PlayerVisibilityRules extends EntityVisibilityRules {
 }
 
 /**
- * @beta
+ * @rc
  * Associates a block point-of-interest instance with its
  * squared distance from a query center.
  */
@@ -26831,7 +26895,7 @@ export interface PoiDistancePair {
 }
 
 /**
- * @beta
+ * @rc
  * Selects block point-of-interest types by their exact
  * namespaced identifier.
  */
@@ -26845,7 +26909,7 @@ export interface PoiNameFilter {
 }
 
 /**
- * @beta
+ * @rc
  * Selects block point-of-interest types that have all
  * specified tags.
  */

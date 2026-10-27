@@ -2020,6 +2020,16 @@ export declare enum MinecraftItemTypes {
     OxidizedLightningRod = "minecraft:oxidized_lightning_rod",
     /** 浮冰。 */
     PackedIce = "minecraft:packed_ice",
+    /** 浮冰砖。 */
+    PackedIceBricks = "minecraft:packed_ice_bricks",
+    /** 雕纹浮冰。 */
+    PackedIceBricksChiseled = "minecraft:packed_ice_bricks_chiseled",
+    /** 浮冰砖台阶。 */
+    PackedIceBricksSlab = "minecraft:packed_ice_bricks_slab",
+    /** 浮冰砖楼梯。 */
+    PackedIceBricksStairs = "minecraft:packed_ice_bricks_stairs",
+    /** 浮冰砖墙。 */
+    PackedIceBricksWall = "minecraft:packed_ice_bricks_wall",
     /** 泥坯。 */
     PackedMud = "minecraft:packed_mud",
     /** 画。 */

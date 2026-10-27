@@ -20,6 +20,14 @@ export class PrimitiveShape {
      *
      */
     color: RGBA;
+    /**
+     * @remarks
+     * Defaults to true. If set to true, we default to being
+     * visible to all players if visibleTo is empty - hiddenFrom
+     * still applies afterwards. If set to false, we default to
+     * hiding the shape from all players if visibleTo is empty.
+     *
+     */
     defaultVisibleToAll: boolean;
     /**
      * @remarks
@@ -35,6 +43,13 @@ export class PrimitiveShape {
      *
      */
     readonly hasDuration: boolean;
+    /**
+     * @remarks
+     * The list of players that this shape will be hidden from. If
+     * a player is listed in both this and visibleTo, this takes
+     * priority (it will be hidden from the player).
+     *
+     */
     hiddenFrom: Player[];
     /**
      * @remarks
