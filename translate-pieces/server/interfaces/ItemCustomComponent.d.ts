@@ -1,4 +1,4 @@
-/* IMPORT */ import { CustomComponentParameters, ItemComponentBeforeDurabilityDamageEvent, ItemComponentCompleteUseEvent, ItemComponentConsumeEvent, ItemComponentHitEntityEvent, ItemComponentMineBlockEvent, ItemComponentUseEvent, ItemComponentUseOnEvent } from '..';
+/* IMPORT */ import { CustomComponentParameters, ItemComponentBeforeDurabilityDamageEvent, ItemComponentCompleteUseEvent, ItemComponentConsumeEvent, ItemComponentHitEntityEvent, ItemComponentMineBlockEvent, ItemComponentReleaseUseEvent, ItemComponentUseEvent, ItemComponentUseOnEvent } from '..';
 
 /**
  * Contains a set of events that will be raised for an item.
@@ -44,6 +44,14 @@ export interface ItemCustomComponent {
      *
      */
     onMineBlock?: (arg0: ItemComponentMineBlockEvent, arg1: CustomComponentParameters) => void;
+    /**
+     * @remarks
+     * This function will be called when a player releases use of
+     * an item containing this component. It will only be called if
+     * the item has the minecraft:use_duration component.
+     *
+     */
+    onReleaseUse?: (arg0: ItemComponentReleaseUseEvent, arg1: CustomComponentParameters) => void;
     /**
      * @remarks
      * This function will be called when an item containing this

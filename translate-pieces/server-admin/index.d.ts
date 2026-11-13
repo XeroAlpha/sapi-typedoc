@@ -12,6 +12,7 @@ export { AllowListEntry } from './interfaces/AllowListEntry';
 export { AllowListEntryNameInfo } from './interfaces/AllowListEntryNameInfo';
 export { TransferPlayerIpPortOptions } from './interfaces/TransferPlayerIpPortOptions';
 export { TransferPlayerNetherNetOptions } from './interfaces/TransferPlayerNetherNetOptions';
+export { TransferPlayerUIOptions } from './interfaces/TransferPlayerUIOptions';
 export { AllowListFileReloadError } from './classes/AllowListFileReloadError';
 export { AllowListModificationError } from './classes/AllowListModificationError';
 export { CannotDeopPlayerError } from './classes/CannotDeopPlayerError';

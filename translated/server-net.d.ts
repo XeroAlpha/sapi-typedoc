@@ -390,6 +390,10 @@ export enum PacketId {
      */
     ClientboundMatchmakingStatePacket = 'ClientboundMatchmakingStatePacket',
     /**
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-music-playback-failure-packet/
+     */
+    ClientboundMusicPlaybackFailurePacket = 'ClientboundMusicPlaybackFailurePacket',
+    /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/clientbound-online-music-playback-response-packet/
      */
     ClientboundOnlineMusicPlaybackResponsePacket = 'ClientboundOnlineMusicPlaybackResponsePacket',
@@ -915,6 +919,12 @@ export enum PacketId {
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-start-item-cooldown-packet/
      */
     PlayerStartItemCooldownPacket = 'PlayerStartItemCooldownPacket',
+    /**
+     * The server derives the player identity from the connection.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-toggle-armor-visibility-request-packet/
+     */
+    PlayerToggleArmorVisibilityRequestPacket = 'PlayerToggleArmorVisibilityRequestPacket',
     /**
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/player-toggle-crafter-slot-request-packet/
      */

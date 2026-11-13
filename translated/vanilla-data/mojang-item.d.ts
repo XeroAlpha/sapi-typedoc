@@ -416,6 +416,14 @@ export declare enum MinecraftItemTypes {
     Cake = "minecraft:cake",
     /** 方解石。 */
     Calcite = "minecraft:calcite",
+    /** 方解石柱。 */
+    CalcitePillar = "minecraft:calcite_pillar",
+    /** 方解石台阶。 */
+    CalciteSlab = "minecraft:calcite_slab",
+    /** 方解石楼梯。 */
+    CalciteStairs = "minecraft:calcite_stairs",
+    /** 方解石墙。 */
+    CalciteWall = "minecraft:calcite_wall",
     /** 校频幽匿感测体。 */
     CalibratedSculkSensor = "minecraft:calibrated_sculk_sensor",
     /** 骆驼尸壳刷怪蛋。 */
@@ -1812,6 +1820,8 @@ export declare enum MinecraftItemTypes {
     MusicDiscCreatorMusicBox = "minecraft:music_disc_creator_music_box",
     /** 音乐唱片 C418 - far。 */
     MusicDiscFar = "minecraft:music_disc_far",
+    /** 音乐唱片。 */
+    MusicDiscFlurry = "minecraft:music_disc_flurry",
     /** 音乐唱片 Hyper Potions - Lava Chicken。 */
     MusicDiscLavaChicken = "minecraft:music_disc_lava_chicken",
     /** 音乐唱片 C418 - mall。 */
@@ -2192,6 +2202,22 @@ export declare enum MinecraftItemTypes {
     PolishedBlackstoneStairs = "minecraft:polished_blackstone_stairs",
     /** 磨制黑石墙。 */
     PolishedBlackstoneWall = "minecraft:polished_blackstone_wall",
+    /** 磨制方解石。 */
+    PolishedCalcite = "minecraft:polished_calcite",
+    /** 磨制方解石砖台阶。 */
+    PolishedCalciteBrickSlab = "minecraft:polished_calcite_brick_slab",
+    /** 磨制方解石砖楼梯。 */
+    PolishedCalciteBrickStairs = "minecraft:polished_calcite_brick_stairs",
+    /** 磨制方解石砖墙。 */
+    PolishedCalciteBrickWall = "minecraft:polished_calcite_brick_wall",
+    /** 磨制方解石砖。 */
+    PolishedCalciteBricks = "minecraft:polished_calcite_bricks",
+    /** 磨制方解石台阶。 */
+    PolishedCalciteSlab = "minecraft:polished_calcite_slab",
+    /** 磨制方解石楼梯。 */
+    PolishedCalciteStairs = "minecraft:polished_calcite_stairs",
+    /** 磨制方解石墙。 */
+    PolishedCalciteWall = "minecraft:polished_calcite_wall",
     /** 磨制朱砂。 */
     PolishedCinnabar = "minecraft:polished_cinnabar",
     /** 磨制朱砂台阶。 */
