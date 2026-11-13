@@ -3,10 +3,13 @@
 /**
  * Stores serialized non-player mobs on an item stack. Each
  * calling behavior pack can only access its manifest UUID
- * bucket. All buckets share a four-entity limit. Available on
- * item stacks even when empty. Destroying the item discards
- * its storage without spawning entities. Data is compatible
- * with entity-storage block carry-over and placement.
+ * bucket, except for totalSize, which counts entities across
+ * all packs. All buckets share a four-entity limit. Stored
+ * entities can be permanently removed without spawning them.
+ * Available on item stacks even when empty. Destroying the
+ * item discards its storage without spawning entities. Data is
+ * compatible with entity-storage block carry-over and
+ * placement.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemBlockEntityStorageComponent extends ItemComponent {
@@ -61,6 +64,27 @@ export class ItemBlockEntityStorageComponent extends ItemComponent {
     release(entityId: string, location: DimensionLocation): Entity;
     /**
      * @remarks
+     * Permanently removes a stored entity from the calling pack's
+     * bucket without releasing it into the world. No entity,
+     * experience, or item drops are spawned. The removal is saved
+     * to the item stack.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * A stored entity ID in the calling pack's bucket.
+     * @throws
+     * Throws if the item stack or entity ID is invalid, or the
+     * entity is not stored by the calling pack. Failed removals
+     * preserve serialized storage.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    remove(entityId: string): void;
+    /**
+     * @remarks
      * Returns the number of serialized entities in the calling
      * pack's manifest UUID bucket.
      *
@@ -100,6 +124,21 @@ export class ItemBlockEntityStorageComponent extends ItemComponent {
      * {@link InvalidItemStackError}
      */
     store(entity: Entity): string;
+    /**
+     * @remarks
+     * Returns the total number of entities stored on this item
+     * stack across all content packs.
+     *
+     * @returns
+     * The number of stored entities across all content packs.
+     * @throws
+     * Throws if the item stack is invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    totalSize(): number;
     /**
      * @remarks
      * Moves serialized ownership from the calling pack's item

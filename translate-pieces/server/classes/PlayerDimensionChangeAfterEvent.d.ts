@@ -1,4 +1,4 @@
-/* IMPORT */ import { Dimension, Player, Vector3 } from '..';
+/* IMPORT */ import { Dimension, Player, PlayerDimensionChangeSource, Vector3 } from '..';
 
 /**
  * Contains information related to changes to a player's
@@ -24,6 +24,13 @@ export class PlayerDimensionChangeAfterEvent {
      *
      */
     readonly player: Player;
+    /**
+     * @remarks
+     * What caused the player to change dimensions, see
+     * {@link PlayerDimensionChangeSource}.
+     *
+     */
+    readonly source: PlayerDimensionChangeSource;
     /**
      * @remarks
      * The dimension that the player is changing to.

@@ -27,6 +27,13 @@ export interface EntityFilter {
     excludeNames?: string[];
     /**
      * @remarks
+     * Excludes entities that have a namespace that matches one of
+     * the specified values.
+     *
+     */
+    excludeNamespaces?: string[];
+    /**
+     * @remarks
      * Excludes entities with a tag that matches one of the
      * specified values.
      *
@@ -100,6 +107,12 @@ export interface EntityFilter {
      *
      */
     name?: string;
+    /**
+     * @remarks
+     * Includes entities with the specified namespace.
+     *
+     */
+    namespaces?: string[];
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
      * @remarks

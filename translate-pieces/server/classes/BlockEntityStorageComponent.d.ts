@@ -6,9 +6,11 @@
  * pack definition enables entity storage with the
  * `minecraft:block_entity` component. Stored entities are
  * serialized and removed from the world until they are
- * released or transferred. A block can store up to four
- * entities. Entity storage is scoped to the content pack
- * accessing it.
+ * released, transferred, or permanently removed. A block can
+ * store up to four entities across all content packs. Entity
+ * storage operations are scoped to the content pack accessing
+ * it, except for totalSize, which counts entities across all
+ * content packs.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockEntityStorageComponent extends BlockComponent {
@@ -71,6 +73,34 @@ export class BlockEntityStorageComponent extends BlockComponent {
     release(entityId: string): Entity;
     /**
      * @remarks
+     * Permanently removes a stored entity from the current content
+     * pack's storage without releasing it into the world. No
+     * entity, experience, or item drops are spawned.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * The unique ID of an entity stored by the current content
+     * pack. Use the value returned by
+     * {@link BlockEntityStorageComponent.store} or the `uniqueId`
+     * property from {@link BlockEntityStorageInfo}.
+     * @throws
+     * Throws if the entity ID is invalid or does not identify an
+     * entity stored by the current content pack, if the block
+     * entity is invalid, or if the block's location is not loaded
+     * or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    remove(entityId: string): void;
+    /**
+     * @remarks
      * Returns the number of entities stored in this block's entity
      * storage by the current content pack.
      *
@@ -117,6 +147,26 @@ export class BlockEntityStorageComponent extends BlockComponent {
      * {@link LocationOutOfWorldBoundariesError}
      */
     store(entity: Entity): string;
+    /**
+     * @remarks
+     * Returns the total number of entities stored in this block's
+     * entity storage across all content packs.
+     *
+     * @returns
+     * The number of stored entities across all content packs.
+     * @throws
+     * Throws if the block entity is invalid or the block's
+     * location is not loaded or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    totalSize(): number;
     /**
      * @remarks
      * Moves a stored entity from this block's entity storage to

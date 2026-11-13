@@ -122,7 +122,7 @@ export enum BlockComponentTypes {
      */
     Sign = 'minecraft:sign',
     /**
-     * @beta
+     * @rc
      */
     VibrationProperties = 'minecraft:vibration_properties',
 }
@@ -2758,6 +2758,39 @@ export enum PlatformType {
 }
 
 /**
+ * @beta
+ * Describes what caused a player to change dimensions. Sent as
+ * part of {@link PlayerDimensionChangeAfterEvent}.
+ */
+export enum PlayerDimensionChangeSource {
+    /**
+     * @remarks
+     * The player respawned in another dimension after dying.
+     *
+     */
+    PlayerRespawn = 'PlayerRespawn',
+    /**
+     * @remarks
+     * The player changed dimensions through a portal.
+     *
+     */
+    Portal = 'Portal',
+    /**
+     * @remarks
+     * The player was teleported to another dimension by a command,
+     * such as /tp or /execute, or by a script teleport.
+     *
+     */
+    TeleportCommand = 'TeleportCommand',
+    /**
+     * @remarks
+     * The cause of the dimension change is not known.
+     *
+     */
+    Unknown = 'Unknown',
+}
+
+/**
  * Specifies the player inventory type.
  */
 export enum PlayerInventoryType {
@@ -4358,7 +4391,7 @@ export class Block {
      */
     east(steps?: number): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the named tick events scheduled at this block by the
      * calling script pack.
@@ -4469,7 +4502,7 @@ export class Block {
      */
     getRedstonePower(): number | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Returns the number of named tick events scheduled at this
      * block, regardless of which script pack scheduled them.
@@ -4522,7 +4555,7 @@ export class Block {
      */
     hasComponent(componentId: string): boolean;
     /**
-     * @beta
+     * @rc
      * @throws {LocationInUnloadedChunkError}
      *
      * @throws {LocationOutOfWorldBoundariesError}
@@ -4640,7 +4673,7 @@ export class Block {
      */
     offset(offset: Vector3): Block | undefined;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Removes all scheduled named tick events from this block with
      * the specified event name.
@@ -4655,7 +4688,7 @@ export class Block {
      */
     removeScheduledNamedTicks(eventName: string): void;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Schedules a named tick event for this block. The event will
      * be delivered to block custom components registered with the
@@ -5008,7 +5041,7 @@ export class BlockComponentEntityFallOnEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a named tick event for a
  * specific block.
  */
@@ -5034,7 +5067,7 @@ export class BlockComponentNamedTickEvent extends BlockEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding neighboring block changes for
  * a specific block.
  */
@@ -5439,9 +5472,11 @@ export class BlockDynamicPropertiesComponent extends BlockComponent {
  * pack definition enables entity storage with the
  * `minecraft:block_entity` component. Stored entities are
  * serialized and removed from the world until they are
- * released or transferred. A block can store up to four
- * entities. Entity storage is scoped to the content pack
- * accessing it.
+ * released, transferred, or permanently removed. A block can
+ * store up to four entities across all content packs. Entity
+ * storage operations are scoped to the content pack accessing
+ * it, except for totalSize, which counts entities across all
+ * content packs.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class BlockEntityStorageComponent extends BlockComponent {
@@ -5504,6 +5539,34 @@ export class BlockEntityStorageComponent extends BlockComponent {
     release(entityId: string): Entity;
     /**
      * @remarks
+     * Permanently removes a stored entity from the current content
+     * pack's storage without releasing it into the world. No
+     * entity, experience, or item drops are spawned.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * The unique ID of an entity stored by the current content
+     * pack. Use the value returned by
+     * {@link BlockEntityStorageComponent.store} or the `uniqueId`
+     * property from {@link BlockEntityStorageInfo}.
+     * @throws
+     * Throws if the entity ID is invalid or does not identify an
+     * entity stored by the current content pack, if the block
+     * entity is invalid, or if the block's location is not loaded
+     * or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    remove(entityId: string): void;
+    /**
+     * @remarks
      * Returns the number of entities stored in this block's entity
      * storage by the current content pack.
      *
@@ -5550,6 +5613,26 @@ export class BlockEntityStorageComponent extends BlockComponent {
      * {@link LocationOutOfWorldBoundariesError}
      */
     store(entity: Entity): string;
+    /**
+     * @remarks
+     * Returns the total number of entities stored in this block's
+     * entity storage across all content packs.
+     *
+     * @returns
+     * The number of stored entities across all content packs.
+     * @throws
+     * Throws if the block entity is invalid or the block's
+     * location is not loaded or is outside the world boundaries.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidBlockComponentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    totalSize(): number;
     /**
      * @remarks
      * Moves a stored entity from this block's entity storage to
@@ -6638,7 +6721,7 @@ export class BlockTypes {
 }
 
 /**
- * @beta
+ * @rc
  * Represents the vibration properties of a block with a
  * 'minecraft:vibration_properties' component.
  */
@@ -14192,10 +14275,13 @@ export class ItemBlockDynamicPropertiesComponent extends ItemComponent {
  * @beta
  * Stores serialized non-player mobs on an item stack. Each
  * calling behavior pack can only access its manifest UUID
- * bucket. All buckets share a four-entity limit. Available on
- * item stacks even when empty. Destroying the item discards
- * its storage without spawning entities. Data is compatible
- * with entity-storage block carry-over and placement.
+ * bucket, except for totalSize, which counts entities across
+ * all packs. All buckets share a four-entity limit. Stored
+ * entities can be permanently removed without spawning them.
+ * Available on item stacks even when empty. Destroying the
+ * item discards its storage without spawning entities. Data is
+ * compatible with entity-storage block carry-over and
+ * placement.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
 export class ItemBlockEntityStorageComponent extends ItemComponent {
@@ -14250,6 +14336,27 @@ export class ItemBlockEntityStorageComponent extends ItemComponent {
     release(entityId: string, location: DimensionLocation): Entity;
     /**
      * @remarks
+     * Permanently removes a stored entity from the calling pack's
+     * bucket without releasing it into the world. No entity,
+     * experience, or item drops are spawned. The removal is saved
+     * to the item stack.
+     *
+     * @worldMutation
+     *
+     * @param entityId
+     * A stored entity ID in the calling pack's bucket.
+     * @throws
+     * Throws if the item stack or entity ID is invalid, or the
+     * entity is not stored by the calling pack. Failed removals
+     * preserve serialized storage.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    remove(entityId: string): void;
+    /**
+     * @remarks
      * Returns the number of serialized entities in the calling
      * pack's manifest UUID bucket.
      *
@@ -14289,6 +14396,21 @@ export class ItemBlockEntityStorageComponent extends ItemComponent {
      * {@link InvalidItemStackError}
      */
     store(entity: Entity): string;
+    /**
+     * @remarks
+     * Returns the total number of entities stored on this item
+     * stack across all content packs.
+     *
+     * @returns
+     * The number of stored entities across all content packs.
+     * @throws
+     * Throws if the item stack is invalid.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidItemStackError}
+     */
+    totalSize(): number;
     /**
      * @remarks
      * Moves serialized ownership from the calling pack's item
@@ -14746,6 +14868,34 @@ export class ItemComponentRegistry {
      * @throws {NamespaceNameError}
      */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
+}
+
+/**
+ * @beta
+ * Contains information about the release of an item being used
+ * through a custom item component.
+ */
+export class ItemComponentReleaseUseEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item stack that was released.
+     *
+     */
+    readonly itemStack: ItemStack;
+    /**
+     * @remarks
+     * The remaining use duration, in ticks, when the item was
+     * released.
+     *
+     */
+    readonly remainingUseDuration: number;
+    /**
+     * @remarks
+     * The player who released the item.
+     *
+     */
+    readonly source: Player;
 }
 
 /**
@@ -18018,6 +18168,14 @@ export class PlayerDimensionChangeAfterEvent {
      */
     readonly player: Player;
     /**
+     * @beta
+     * @remarks
+     * What caused the player to change dimensions, see
+     * {@link PlayerDimensionChangeSource}.
+     *
+     */
+    readonly source: PlayerDimensionChangeSource;
+    /**
      * @remarks
      * The dimension that the player is changing to.
      *
@@ -19765,6 +19923,63 @@ export class PoiManager {
      *
      */
     readonly blocks: PoiBlockManager;
+}
+
+/**
+ * @beta
+ * Contains information about a successfully activated Nether
+ * portal, including its dimension, ignition location, and
+ * initiating player (when known).
+ */
+export class PortalActivateAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The dimension in which the portal was activated, not its
+     * destination dimension.
+     *
+     */
+    readonly dimension: Dimension;
+    /**
+     * @remarks
+     * The coordinates of the ignition position used to activate
+     * the portal. This is not necessarily the center or corner of
+     * the portal.
+     *
+     */
+    readonly location: Vector3;
+    /**
+     * @remarks
+     * The player who directly activated the portal using an item,
+     * if known. Undefined for fire-based activation without a
+     * known initiating player, including dispenser-fired fire
+     * charges. Nearby players are not used for attribution.
+     *
+     */
+    readonly player?: Player;
+}
+
+/**
+ * @beta
+ */
+export class PortalActivateAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    subscribe(callback: (arg0: PortalActivateAfterEvent) => void): (arg0: PortalActivateAfterEvent) => void;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: PortalActivateAfterEvent) => void): void;
 }
 
 /**
@@ -23737,6 +23952,19 @@ export class WorldAfterEvents {
      */
     readonly playerUseNameTag: PlayerUseNameTagAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * Fires after a portal is successfully activated, with an
+     * initiating player when known. Currently fires for Nether
+     * portals only, including activation by fire without a player.
+     * Does not fire merely for frame construction or for failed
+     * activation attempts.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly portalActivate: PortalActivateAfterEventSignal;
+    /**
      * @remarks
      * A pressure plate has popped back up (i.e., there are no
      * entities on the pressure plate.)
@@ -24483,10 +24711,57 @@ export interface AnimationOptions {
     totalTimeSeconds: number;
 }
 
+/**
+ * Options to include or exclude biomes based on biome names,
+ * tags, or namespaces. If no include options are added it will
+ * select all biomes that are not rejected by the exclude
+ * options. If at least one include option is added the biome
+ * must match one of the include options to not be rejected.
+ */
 export interface BiomeFilter {
+    /**
+     * @remarks
+     * Array of biome names that the filter should reject if any
+     * matches.
+     *
+     */
     excludeBiomes?: string[];
+    /**
+     * @beta
+     * @remarks
+     * Array of namespaces that the filter should reject if the
+     * biome belongs to at least one.
+     *
+     */
+    excludeNamespaces?: string[];
+    /**
+     * @remarks
+     * Array of biome tags that the filter should reject if any
+     * matches.
+     *
+     */
     excludeTags?: string[];
+    /**
+     * @remarks
+     * Array of biome names that the filter should select if at
+     * least one matches.
+     *
+     */
     includeBiomes?: string[];
+    /**
+     * @beta
+     * @remarks
+     * Array of namespaces that the filter should select if the
+     * biome belongs to at least one.
+     *
+     */
+    includeNamespaces?: string[];
+    /**
+     * @remarks
+     * Array of biome tags that the filter should select if at
+     * least one matches.
+     *
+     */
     includeTags?: string[];
 }
 
@@ -24597,11 +24872,11 @@ export interface BlockCustomComponent {
      */
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      */
     onNamedTick?: (arg0: BlockComponentNamedTickEvent, arg1: CustomComponentParameters) => void;
     /**
-     * @beta
+     * @rc
      */
     onNeighborChanged?: (arg0: BlockComponentNeighborChangedAfterEvent, arg1: CustomComponentParameters) => void;
     /**
@@ -24700,13 +24975,22 @@ export interface BlockFillOptions {
 }
 
 /**
- * Options to include or exclude blocks based on type, tag or
- * permutation. If no include options are added it will select
- * all blocks that are not rejected by the exclude options. If
- * at least one include option is added the block must match
- * one of the include options to not be rejected.
+ * Options to include or exclude blocks based on type, tag,
+ * permutation, or namespaces. If no include options are added
+ * it will select all blocks that are not rejected by the
+ * exclude options. If at least one include option is added the
+ * block must match one of the include options to not be
+ * rejected.
  */
 export interface BlockFilter {
+    /**
+     * @beta
+     * @remarks
+     * Array of namespaces that the filter should reject if the
+     * block belongs to at least one.
+     *
+     */
+    excludeNamespaces?: string[];
     /**
      * @remarks
      * Array of block permutations that the filter should reject if
@@ -24728,6 +25012,14 @@ export interface BlockFilter {
      *
      */
     excludeTypes?: string[];
+    /**
+     * @beta
+     * @remarks
+     * Array of namespaces that the filter should select if the
+     * block belongs to at least one.
+     *
+     */
+    includeNamespaces?: string[];
     /**
      * @remarks
      * Array of block permutations that the filter should select if
@@ -25522,6 +25814,14 @@ export interface EntityFilter {
      */
     excludeNames?: string[];
     /**
+     * @beta
+     * @remarks
+     * Excludes entities that have a namespace that matches one of
+     * the specified values.
+     *
+     */
+    excludeNamespaces?: string[];
+    /**
      * @remarks
      * Excludes entities with a tag that matches one of the
      * specified values.
@@ -25596,6 +25896,13 @@ export interface EntityFilter {
      *
      */
     name?: string;
+    /**
+     * @beta
+     * @remarks
+     * Includes entities with the specified namespace.
+     *
+     */
+    namespaces?: string[];
     propertyOptions?: EntityQueryPropertyOptions[];
     /**
      * @remarks
@@ -26203,6 +26510,15 @@ export interface ItemCustomComponent {
      */
     onMineBlock?: (arg0: ItemComponentMineBlockEvent, arg1: CustomComponentParameters) => void;
     /**
+     * @beta
+     * @remarks
+     * This function will be called when a player releases use of
+     * an item containing this component. It will only be called if
+     * the item has the minecraft:use_duration component.
+     *
+     */
+    onReleaseUse?: (arg0: ItemComponentReleaseUseEvent, arg1: CustomComponentParameters) => void;
+    /**
      * @remarks
      * This function will be called when an item containing this
      * component is used by a player.
@@ -26344,7 +26660,7 @@ export interface MusicOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a block change in one
  * neighboring direction.
  */
@@ -26890,7 +27206,7 @@ export interface RotationKeyFrame {
 }
 
 /**
- * @beta
+ * @rc
  */
 export interface ScheduledNamedTick {
     eventName: string;
