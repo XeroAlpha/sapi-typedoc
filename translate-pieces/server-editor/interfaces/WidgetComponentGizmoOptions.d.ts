@@ -27,9 +27,8 @@ export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions 
      * `Axis.None` when at least one translation axis is enabled.
      *
      * @throws
-     * Throws when neither a translation axis nor a rotation axis
-     * is enabled, or when the value contains bits other than
-     * `Axis.X`, `Axis.Y`, or `Axis.Z`.
+     * Throws when the value contains bits other than `Axis.X`,
+     * `Axis.Y`, or `Axis.Z`.
      */
     rotationAxes?: Axis;
     scaleMode?: WidgetGizmoScaleMode;

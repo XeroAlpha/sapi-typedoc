@@ -16,6 +16,13 @@ export enum BlockComponentTypes {
     Inventory = 'minecraft:inventory',
     /**
      * @remarks
+     * Represents an item frame block and provides access to the
+     * item displayed in the frame.
+     *
+     */
+    ItemFrame = 'minecraft:item_frame',
+    /**
+     * @remarks
      * Represents the color of a block when displayed on a map.
      *
      */

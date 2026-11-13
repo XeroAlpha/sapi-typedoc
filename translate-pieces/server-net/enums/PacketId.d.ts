@@ -174,7 +174,7 @@ export enum PacketId {
      */
     ChangeMobPropertyPacket = 'ChangeMobPropertyPacket',
     /**
-     * Carries a Chat Service signature that receiving clients verify. The hosting server relays the signed block unmodified and may only decorate around it.
+     * Carries a Chat Service signature that receiving clients verify. The hosting server relays the signed block unmodified, may decorate around it, and chooses the room it goes to.
      * 
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/chat-packet/
      */

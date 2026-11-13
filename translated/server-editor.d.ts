@@ -1,7 +1,7 @@
 // Type definitions for Minecraft Bedrock Edition script APIs
-// Project: https://docs.microsoft.com/minecraft/creator/
+// Project: https://learn.microsoft.com/minecraft/creator/
 // Definitions by: Jake Shirley <https://github.com/JakeShirley>
-//                 Mike Ammerlaan <https://github.com/mammerla>
+//                 Raphael Landaverde <https://github.com/rlandav>
 
 /* *****************************************************************************
    Copyright (c) Microsoft Corporation.
@@ -6907,6 +6907,12 @@ export interface BuiltInUIManager {
     navigateToPauseScreen(): void;
     /**
      * @remarks
+     * Navigates to the Realms Hub screen for the current Realm
+     *
+     */
+    navigateToRealmsHub(): void;
+    /**
+     * @remarks
      * Navigates to the github-samples site
      *
      */
@@ -13363,9 +13369,8 @@ export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions 
      * `Axis.None` when at least one translation axis is enabled.
      *
      * @throws
-     * Throws when neither a translation axis nor a rotation axis
-     * is enabled, or when the value contains bits other than
-     * `Axis.X`, `Axis.Y`, or `Axis.Z`.
+     * Throws when the value contains bits other than `Axis.X`,
+     * `Axis.Y`, or `Axis.Z`.
      */
     rotationAxes?: Axis;
     scaleMode?: WidgetGizmoScaleMode;
