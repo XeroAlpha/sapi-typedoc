@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecipeProcessingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent, BlockVibrationPropertiesComponent } from '..';
+/* IMPORT */ import { BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockItemFrameComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecipeProcessingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent, BlockVibrationPropertiesComponent } from '..';
 
 export type BlockComponentTypeMap = {
     dynamic_properties: BlockDynamicPropertiesComponent;
@@ -6,12 +6,14 @@ export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
     instrument_sound: BlockInstrumentComponent;
     inventory: BlockInventoryComponent;
+    item_frame: BlockItemFrameComponent;
     map_color: BlockMapColorComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:entity_storage': BlockEntityStorageComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:instrument_sound': BlockInstrumentComponent;
     'minecraft:inventory': BlockInventoryComponent;
+    'minecraft:item_frame': BlockItemFrameComponent;
     'minecraft:map_color': BlockMapColorComponent;
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;

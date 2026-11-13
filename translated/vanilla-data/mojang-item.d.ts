@@ -508,6 +508,8 @@ export declare enum MinecraftItemTypes {
     ChiseledDeepslate = "minecraft:chiseled_deepslate",
     /** 雕纹下界砖块。 */
     ChiseledNetherBricks = "minecraft:chiseled_nether_bricks",
+    /** 雕纹浮冰。 */
+    ChiseledPackedIce = "minecraft:chiseled_packed_ice",
     /** 雕纹磨制黑石。 */
     ChiseledPolishedBlackstone = "minecraft:chiseled_polished_blackstone",
     /** 雕纹石英块。 */
@@ -2020,16 +2022,14 @@ export declare enum MinecraftItemTypes {
     OxidizedLightningRod = "minecraft:oxidized_lightning_rod",
     /** 浮冰。 */
     PackedIce = "minecraft:packed_ice",
+    /** 浮冰砖台阶。 */
+    PackedIceBrickSlab = "minecraft:packed_ice_brick_slab",
+    /** 浮冰砖楼梯。 */
+    PackedIceBrickStairs = "minecraft:packed_ice_brick_stairs",
+    /** 浮冰砖墙。 */
+    PackedIceBrickWall = "minecraft:packed_ice_brick_wall",
     /** 浮冰砖。 */
     PackedIceBricks = "minecraft:packed_ice_bricks",
-    /** 雕纹浮冰。 */
-    PackedIceBricksChiseled = "minecraft:packed_ice_bricks_chiseled",
-    /** 浮冰砖台阶。 */
-    PackedIceBricksSlab = "minecraft:packed_ice_bricks_slab",
-    /** 浮冰砖楼梯。 */
-    PackedIceBricksStairs = "minecraft:packed_ice_bricks_stairs",
-    /** 浮冰砖墙。 */
-    PackedIceBricksWall = "minecraft:packed_ice_bricks_wall",
     /** 泥坯。 */
     PackedMud = "minecraft:packed_mud",
     /** 画。 */
@@ -2634,6 +2634,14 @@ export declare enum MinecraftItemTypes {
     SnoutArmorTrimSmithingTemplate = "minecraft:snout_armor_trim_smithing_template",
     /** 雪块。 */
     Snow = "minecraft:snow",
+    /** 雪砖台阶。 */
+    SnowBrickSlab = "minecraft:snow_brick_slab",
+    /** 雪砖楼梯。 */
+    SnowBrickStairs = "minecraft:snow_brick_stairs",
+    /** 雪砖墙。 */
+    SnowBrickWall = "minecraft:snow_brick_wall",
+    /** 雪砖。 */
+    SnowBricks = "minecraft:snow_bricks",
     /** 雪傀儡刷怪蛋。 */
     SnowGolemSpawnEgg = "minecraft:snow_golem_spawn_egg",
     /** 雪。 */

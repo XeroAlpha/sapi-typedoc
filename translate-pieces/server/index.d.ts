@@ -38,6 +38,7 @@ export { InputButton } from './enums/InputButton';
 export { InputMode } from './enums/InputMode';
 export { InputPermissionCategory } from './enums/InputPermissionCategory';
 export { ItemComponentTypes } from './enums/ItemComponentTypes';
+export { ItemFrameRotation } from './enums/ItemFrameRotation';
 export { ItemLockMode } from './enums/ItemLockMode';
 export { LiquidSettings } from './enums/LiquidSettings';
 export { LiquidType } from './enums/LiquidType';
@@ -119,6 +120,7 @@ export { BlockExplodeAfterEventSignal } from './classes/BlockExplodeAfterEventSi
 export { BlockFluidContainerComponent } from './classes/BlockFluidContainerComponent';
 export { BlockInstrumentComponent } from './classes/BlockInstrumentComponent';
 export { BlockInventoryComponent } from './classes/BlockInventoryComponent';
+export { BlockItemFrameComponent } from './classes/BlockItemFrameComponent';
 export { BlockLocationIterator } from './classes/BlockLocationIterator';
 export { BlockMapColorComponent } from './classes/BlockMapColorComponent';
 export { BlockMovableComponent } from './classes/BlockMovableComponent';

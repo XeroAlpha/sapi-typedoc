@@ -28,6 +28,12 @@ export interface BuiltInUIManager {
     navigateToPauseScreen(): void;
     /**
      * @remarks
+     * Navigates to the Realms Hub screen for the current Realm
+     *
+     */
+    navigateToRealmsHub(): void;
+    /**
+     * @remarks
      * Navigates to the github-samples site
      *
      */

@@ -1,7 +1,7 @@
 // Type definitions for Minecraft Bedrock Edition script APIs
-// Project: https://docs.microsoft.com/minecraft/creator/
+// Project: https://learn.microsoft.com/minecraft/creator/
 // Definitions by: Jake Shirley <https://github.com/JakeShirley>
-//                 Mike Ammerlaan <https://github.com/mammerla>
+//                 Raphael Landaverde <https://github.com/rlandav>
 
 /* *****************************************************************************
    Copyright (c) Microsoft Corporation.
@@ -63,6 +63,14 @@ export enum BlockComponentTypes {
      *
      */
     Inventory = 'minecraft:inventory',
+    /**
+     * @beta
+     * @remarks
+     * Represents an item frame block and provides access to the
+     * item displayed in the frame.
+     *
+     */
+    ItemFrame = 'minecraft:item_frame',
     /**
      * @remarks
      * Represents the color of a block when displayed on a map.
@@ -2334,6 +2342,62 @@ export enum ItemComponentTypes {
 }
 
 /**
+ * @beta
+ * Specifies the rotation of the item displayed in an item
+ * frame.
+ */
+export enum ItemFrameRotation {
+    /**
+     * @remarks
+     * The displayed item is rotated 135 degrees clockwise.
+     *
+     */
+    Clockwise135 = 'Clockwise135',
+    /**
+     * @remarks
+     * The displayed item is rotated 180 degrees clockwise.
+     *
+     */
+    Clockwise180 = 'Clockwise180',
+    /**
+     * @remarks
+     * The displayed item is rotated 225 degrees clockwise.
+     *
+     */
+    Clockwise225 = 'Clockwise225',
+    /**
+     * @remarks
+     * The displayed item is rotated 270 degrees clockwise.
+     *
+     */
+    Clockwise270 = 'Clockwise270',
+    /**
+     * @remarks
+     * The displayed item is rotated 315 degrees clockwise.
+     *
+     */
+    Clockwise315 = 'Clockwise315',
+    /**
+     * @remarks
+     * The displayed item is rotated 45 degrees clockwise.
+     *
+     */
+    Clockwise45 = 'Clockwise45',
+    /**
+     * @remarks
+     * The displayed item is rotated 90 degrees clockwise.
+     *
+     */
+    Clockwise90 = 'Clockwise90',
+    /**
+     * @remarks
+     * The displayed item has no additional rotation.
+     *
+     */
+    None = 'None',
+}
+
+/**
  * Describes how an an item can be moved within a container.
  */
 export enum ItemLockMode {
@@ -3257,12 +3321,14 @@ export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
     instrument_sound: BlockInstrumentComponent;
     inventory: BlockInventoryComponent;
+    item_frame: BlockItemFrameComponent;
     map_color: BlockMapColorComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:entity_storage': BlockEntityStorageComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
     'minecraft:instrument_sound': BlockInstrumentComponent;
     'minecraft:inventory': BlockInventoryComponent;
+    'minecraft:item_frame': BlockItemFrameComponent;
     'minecraft:map_color': BlockMapColorComponent;
     'minecraft:movable': BlockMovableComponent;
     'minecraft:piston': BlockPistonComponent;
@@ -5905,6 +5971,69 @@ export class BlockInventoryComponent extends BlockComponent {
      */
     readonly container?: Container;
     static readonly componentId = 'minecraft:inventory';
+}
+
+/**
+ * @beta
+ * Represents the frame holding an item of a block in the
+ * world. You can replace the item, remove it, drop it into the
+ * world, or get and set its rotation.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockItemFrameComponent extends BlockComponent {
+    private constructor();
+    static readonly componentId = 'minecraft:item_frame';
+    /**
+     * @remarks
+     * Removes the framed item and drops it into the world.
+     *
+     * @worldMutation
+     *
+     * @throws {InvalidBlockComponentError}
+     */
+    dropFramedItem(): void;
+    /**
+     * @remarks
+     * Gets the item stack currently displayed in the frame.
+     *
+     * @returns
+     * The framed item stack, or undefined if the frame is empty.
+     * @throws {InvalidBlockComponentError}
+     */
+    getFramedItem(): ItemStack | undefined;
+    /**
+     * @remarks
+     * Gets the current rotation of the item frame.
+     *
+     * @returns
+     * The current {@link ItemFrameRotation} of the item frame.
+     * @throws {InvalidBlockComponentError}
+     */
+    getRotation(): ItemFrameRotation;
+    /**
+     * @remarks
+     * Sets or replaces the item displayed in the frame. Pass
+     * undefined to remove the item without dropping it.
+     *
+     * @worldMutation
+     *
+     * @param itemStack
+     * The item stack to display in the frame, or undefined to
+     * clear it without dropping it.
+     * @throws {InvalidBlockComponentError}
+     */
+    setFramedItem(itemStack?: ItemStack): void;
+    /**
+     * @remarks
+     * Sets the rotation of the item frame.
+     *
+     * @worldMutation
+     *
+     * @param rotation
+     * The {@link ItemFrameRotation} to apply to the item frame.
+     * @throws {InvalidBlockComponentError}
+     */
+    setRotation(rotation: ItemFrameRotation): void;
 }
 
 /**
@@ -8818,7 +8947,6 @@ export class Dimension {
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
-     * @rc
      * @remarks
      * Spawns an experience orb at a specified location in the
      * dimension.
@@ -11613,7 +11741,6 @@ export class EntityIsStunnedComponent extends EntityComponent {
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
     /**
-     * @rc
      * @remarks
      * Returns the player that has tamed the entity, or 'undefined'
      * if the entity has no player owner.
@@ -11622,7 +11749,6 @@ export class EntityIsTamedComponent extends EntityComponent {
      */
     readonly tamedToPlayer?: Player;
     /**
-     * @rc
      * @remarks
      * Returns the id of the player that has tamed the entity, or
      * 'undefined' if the entity has no player owner.
@@ -21621,7 +21747,6 @@ export class SoundInstance {
      */
     readonly soundEventId: string;
     /**
-     * @rc
      * @remarks
      * Fades this sound instance from its current volume multiplier
      * to the target multiplier over the specified duration. Volume
@@ -21641,7 +21766,6 @@ export class SoundInstance {
      */
     fade(duration: number, targetVolume: number): void;
     /**
-     * @rc
      * @remarks
      * Pauses this sound.
      *
@@ -21650,7 +21774,6 @@ export class SoundInstance {
      */
     pause(): void;
     /**
-     * @rc
      * @remarks
      * Resumes this sound after a pause.
      *
@@ -21659,7 +21782,6 @@ export class SoundInstance {
      */
     resume(): void;
     /**
-     * @rc
      * @remarks
      * Sets the playback position of this sound instance.
      *
@@ -21676,7 +21798,6 @@ export class SoundInstance {
      */
     seekTo(seconds: number): void;
     /**
-     * @rc
      * @remarks
      * Sets the pitch of this sound instance.
      *
@@ -21689,7 +21810,6 @@ export class SoundInstance {
      */
     setPitch(pitch: number): void;
     /**
-     * @rc
      * @remarks
      * Sets the volume multiplier of this sound instance relative
      * to the volume of the selected sound variant.
@@ -21775,7 +21895,6 @@ export class StartupEvent {
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
     /**
-     * @rc
      * @remarks
      * @earlyExecution
      *
@@ -22498,7 +22617,6 @@ export class TextPrimitive extends PrimitiveShape {
      */
     depthTest: boolean;
     /**
-     * @rc
      * @remarks
      * This value determines the gap between lines for the
      * TextPrimitive. By default the line gap height is 0.
@@ -22634,7 +22752,6 @@ export class TickingAreaManager {
 }
 
 /**
- * @rc
  * A named point in time on a world clock that can occur once
  * or periodically.
  */
@@ -23142,7 +23259,6 @@ export class World {
      */
     getAllPlayers(): Player[];
     /**
-     * @rc
      * @remarks
      * Retrieves a world clock by its name.
      *
@@ -24056,7 +24172,6 @@ export class WorldAfterEvents {
      */
     readonly weatherChange: WeatherChangeAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} is paused.
      *
@@ -24065,7 +24180,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnPaused: WorldClockOnPausedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} is resumed.
      *
@@ -24074,7 +24188,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnResumed: WorldClockOnResumedAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when the time of a {@link WorldClock} hits
      * a {@link TimeMarker} on the clock. This can happen during a
@@ -24085,7 +24198,6 @@ export class WorldAfterEvents {
      */
     readonly worldClockOnTimeMarker: WorldClockOnTimeMarkerAfterEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} time is changed.
      * This can happen when the time is directly set through
@@ -24252,7 +24364,6 @@ export class WorldBeforeEvents {
      */
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     /**
-     * @rc
      * @remarks
      * This event fires when a {@link WorldClock} reaches its
      * maximum time and is about to restart.
@@ -24264,7 +24375,6 @@ export class WorldBeforeEvents {
 }
 
 /**
- * @rc
  * A class that represents a particular clock within a world.
  */
 export class WorldClock {
@@ -24389,7 +24499,6 @@ export class WorldClock {
 }
 
 /**
- * @rc
  * Contains information related to a {@link WorldClock} being
  * paused.
  */
@@ -24404,7 +24513,6 @@ export class WorldClockOnPausedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * being paused.
  */
@@ -24438,7 +24546,6 @@ export class WorldClockOnPausedAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to a {@link WorldClock}
  * restarting.
  */
@@ -24469,7 +24576,6 @@ export class WorldClockOnRestartBeforeEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * restarting.
  */
@@ -24509,7 +24615,6 @@ export class WorldClockOnRestartBeforeEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to a {@link WorldClock} being
  * resumed.
  */
@@ -24524,7 +24629,6 @@ export class WorldClockOnResumedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to a {@link WorldClock}
  * being resumed.
  */
@@ -24558,7 +24662,6 @@ export class WorldClockOnResumedAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to when the time of a
  * {@link WorldClock} hits a {@link TimeMarker}.
  */
@@ -24579,7 +24682,6 @@ export class WorldClockOnTimeMarkerAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to when the time of a
  * {@link WorldClock} hits a {@link TimeMarker}.
  */
@@ -24613,7 +24715,6 @@ export class WorldClockOnTimeMarkerAfterEventSignal {
 }
 
 /**
- * @rc
  * Contains information related to changes to the time of a
  * {@link WorldClock}.
  */
@@ -24628,7 +24729,6 @@ export class WorldClockOnTimeModifiedAfterEvent {
 }
 
 /**
- * @rc
  * Manages callbacks that are connected to changes to the time
  * of a {@link WorldClock}.
  */
@@ -24662,7 +24762,6 @@ export class WorldClockOnTimeModifiedAfterEventSignal {
 }
 
 /**
- * @rc
  * Provides the functionality for registering custom world
  * clocks. World clocks can only be registered during the
  * system startup event.
@@ -26790,7 +26889,6 @@ export interface PlayerSoundOptions {
      */
     location?: Vector3;
     /**
-     * @rc
      * @remarks
      * Number of additional times to repeat the sound after the
      * initial play. `0` (the default) plays the sound once, `-1`
@@ -27589,7 +27687,6 @@ export interface TickingAreaOptions {
 }
 
 /**
- * @rc
  * Options for creating time markers for world clocks.
  */
 export interface TimeMarkerOptions {
@@ -27757,7 +27854,6 @@ export interface WaypointTextureSelector {
 }
 
 /**
- * @rc
  * Contains parameters for world clock events that filters out
  * which events are passed to the provided callback.
  */
@@ -27771,7 +27867,6 @@ export interface WorldClockEventOptions {
 }
 
 /**
- * @rc
  * Contains additional options for registering world clocks.
  */
 export interface WorldClockRegistrationOptions {
@@ -27785,7 +27880,6 @@ export interface WorldClockRegistrationOptions {
 }
 
 /**
- * @rc
  * Contains parameters for world clock time marker events that
  * filters out which events are passed to the provided
  * callback.
@@ -27813,7 +27907,6 @@ export interface WorldClockTimeMarkerEventOptions {
 export interface WorldSoundOptions {
     isBroadcast?: boolean;
     /**
-     * @rc
      * @remarks
      * Number of additional times to repeat the sound after the
      * initial play. `0` (the default) plays the sound once, `-1`
@@ -28290,7 +28383,6 @@ export class UnloadedChunksError extends Error {
 }
 
 /**
- * @rc
  * Error thrown by {@link WorldClock.addTimeMarker} when
  * failing to add a time marker to a world clock.
  */
@@ -28300,7 +28392,6 @@ export class WorldClockAddTimeMarkerError extends Error {
 }
 
 /**
- * @rc
  * Thrown when trying to register a world clock outside of the
  * system startup event.
  */
@@ -28310,7 +28401,6 @@ export class WorldClockInvalidRegistryError extends Error {
 }
 
 /**
- * @rc
  * Error thrown when a time marker is invalid. This can occur
  * when trying to access data on a time marker that has been
  * removed.
@@ -28321,7 +28411,6 @@ export class WorldClockInvalidTimeMarkerError extends Error {
 }
 
 /**
- * @rc
  * Error thrown when a world clock is not found in the world
  * clock registry.
  */
@@ -28331,7 +28420,6 @@ export class WorldClockNotFoundError extends Error {
 }
 
 /**
- * @rc
  * Error thrown by {@link WorldClockRegistry.registerClock}
  * when failing to register a world clock.
  */
@@ -28341,7 +28429,6 @@ export class WorldClockRegistrationError extends Error {
 }
 
 /**
- * @rc
  * Thrown after using the /reload command when trying to
  * register a world clock that was not previously registered.
  * New world clocks cannot be added during a reload.
@@ -28352,7 +28439,6 @@ export class WorldClockReloadNewWorldClockError extends Error {
 }
 
 /**
- * @rc
  * Error thrown after using the /reload command when trying to
  * re-register an existing world clock with an invalid time
  * marker.
@@ -28363,7 +28449,6 @@ export class WorldClockReloadTimeMarkerError extends Error {
 }
 
 /**
- * @rc
  * Error thrown by {@link WorldClock.removeTimeMarker} when
  * trying to remove a time marker with the 'minecraft'
  * namespace from a world clock.
@@ -28374,7 +28459,6 @@ export class WorldClockRemoveMinecraftTimeMarkerError extends Error {
 }
 
 /**
- * @rc
  * Error thrown by {@link WorldClock.rewindTo} when the world
  * clock's time is already before the time marker's first
  * occurrence.
@@ -28385,7 +28469,6 @@ export class WorldClockRewindError extends Error {
 }
 
 /**
- * @rc
  * Error thrown when performing actions on a world clock with a
  * time marker that does not exist.
  */
