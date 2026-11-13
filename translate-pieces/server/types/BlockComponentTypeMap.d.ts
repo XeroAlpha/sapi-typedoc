@@ -1,6 +1,7 @@
-/* IMPORT */ import { BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockItemFrameComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecipeProcessingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent, BlockVibrationPropertiesComponent } from '..';
+/* IMPORT */ import { BlockClimbablePropertiesComponent, BlockDynamicPropertiesComponent, BlockEntityStorageComponent, BlockFluidContainerComponent, BlockInstrumentComponent, BlockInventoryComponent, BlockItemFrameComponent, BlockMapColorComponent, BlockMovableComponent, BlockPistonComponent, BlockPrecipitationInteractionsComponent, BlockRecipeCraftingComponent, BlockRecipeProcessingComponent, BlockRecordPlayerComponent, BlockRedstoneProducerComponent, BlockSignComponent, BlockVibrationPropertiesComponent } from '..';
 
 export type BlockComponentTypeMap = {
+    climbable: BlockClimbablePropertiesComponent;
     dynamic_properties: BlockDynamicPropertiesComponent;
     entity_storage: BlockEntityStorageComponent;
     fluid_container: BlockFluidContainerComponent;
@@ -8,6 +9,7 @@ export type BlockComponentTypeMap = {
     inventory: BlockInventoryComponent;
     item_frame: BlockItemFrameComponent;
     map_color: BlockMapColorComponent;
+    'minecraft:climbable': BlockClimbablePropertiesComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:entity_storage': BlockEntityStorageComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;

@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError, EngineError, InvalidArgumentError, PropertyOutOfBoundsError } from '../../common';
-/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinition, SoundDefinitionRegistry, SoundInstance, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
+/* IMPORT */ import { AimAssistRegistry, CommandError, Difficulty, Dimension, Entity, EntityQueryOptions, GameRules, LocationOutOfWorldBoundariesError, LootTableManager, MoonPhase, MusicOptions, Player, PrimitiveShapesManager, RawMessage, Scoreboard, SoundDefinition, SoundDefinitionRegistry, SoundInstance, Structure, StructureManager, TickingAreaManager, TimeOfDay, Vector3, VirtualContainerManager, WorldAfterEvents, WorldBeforeEvents, WorldClock, WorldClockNotFoundError } from '..';
 
 /**
  * 表示一个世界。包含了世界的各种状态，即一系列维度以及 Minecraft 的环境。
@@ -87,6 +87,13 @@ export class World {
      *
      */
     readonly tickingAreaManager: TickingAreaManager;
+    /**
+     * @remarks
+     * Manager for creating virtual containers, containers that
+     * only exist in memory.
+     *
+     */
+    readonly virtualContainerManager: VirtualContainerManager;
     /**
      * @remarks
      * A method that is internal-only, used for broadcasting

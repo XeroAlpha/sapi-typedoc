@@ -528,6 +528,8 @@ export declare enum MinecraftItemTypes {
     ChiseledResinBricks = "minecraft:chiseled_resin_bricks",
     /** 雕纹砂岩。 */
     ChiseledSandstone = "minecraft:chiseled_sandstone",
+    /** 雕纹灵魂页岩。 */
+    ChiseledSoulshale = "minecraft:chiseled_soulshale",
     /** 雕纹石砖。 */
     ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
     /** 雕纹硫黄。 */

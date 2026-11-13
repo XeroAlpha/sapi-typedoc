@@ -530,7 +530,7 @@ export class Dimension {
      *
      * {@link PropertyOutOfBoundsError}
      */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): SoundInstance;
+    playSound(soundId: string, location: Entity | Vector3, soundOptions?: WorldSoundOptions): SoundInstance;
     /**
      * @remarks
      * Runs a command synchronously using the context of the

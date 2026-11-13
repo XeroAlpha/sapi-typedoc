@@ -4,6 +4,7 @@
 export declare enum MinecraftCooldownCategoryTypes {
     /** 紫颂果。 */
     Chorusfruit = "minecraft:chorusfruit",
+    EditorComment = "minecraft:editor_comment",
     /** 末影珍珠。 */
     EnderPearl = "minecraft:ender_pearl",
     /** 山羊角。 */

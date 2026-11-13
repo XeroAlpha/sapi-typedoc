@@ -1465,6 +1465,18 @@ export enum PacketId {
      */
     UpdateTradePacket = 'UpdateTradePacket',
     /**
+     * Request is server-to-client. Closed is client-to-server for opening failure, user close, or acknowledgement of a server request. Confirmed is server-to-client after inventory work drains. Successful opening sends no acknowledgement.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/virtual-container-close-packet/
+     */
+    VirtualContainerClosePacket = 'VirtualContainerClosePacket',
+    /**
+     * Includes all initial slots and their server net IDs. The number of slots determines the container size.
+     * 
+     * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/virtual-container-open-packet/
+     */
+    VirtualContainerOpenPacket = 'VirtualContainerOpenPacket',
+    /**
      * Sends the serializable voxel shapes data to the client as it's needed on both the client and server. This packet should always be sent before StartGamePacket.
      * 
      * @see https://mojang.github.io/bedrock-protocol-docs/latest/packets/voxel-shapes-packet/

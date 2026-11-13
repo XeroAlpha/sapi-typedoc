@@ -1,4 +1,4 @@
-/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, EntityStartSneakingAfterEventSignal, EntityStopSneakingAfterEventSignal, EntityTamedAfterEventSignal, EntityUpgradeAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerCancelBreakingBlockAfterEventSignal, PlayerCraftRecipeAfterEventSignal, PlayerCursorItemGrabAfterEventSignal, PlayerCursorItemReleaseAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerStartBreakingBlockAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PortalActivateAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, SoundCompletedAfterEventSignal, TargetBlockHitAfterEventSignal, TimeMarker, TripWireTripAfterEventSignal, WeatherChangeAfterEventSignal, WorldClock, WorldClockOnPausedAfterEventSignal, WorldClockOnResumedAfterEventSignal, WorldClockOnTimeMarkerAfterEventSignal, WorldClockOnTimeModifiedAfterEventSignal, WorldLoadAfterEventSignal } from '..';
+/* IMPORT */ import { BlockContainerClosedAfterEventSignal, BlockContainerOpenedAfterEventSignal, BlockExplodeAfterEventSignal, ButtonPushAfterEventSignal, ChatSendAfterEventSignal, DataDrivenEntityTriggerAfterEventSignal, EffectAddAfterEventSignal, EntityContainerClosedAfterEventSignal, EntityContainerOpenedAfterEventSignal, EntityDieAfterEventSignal, EntityHealAfterEventSignal, EntityHealthChangedAfterEventSignal, EntityHitBlockAfterEventSignal, EntityHitEntityAfterEventSignal, EntityHurtAfterEventSignal, EntityItemDropAfterEventSignal, EntityItemPickupAfterEventSignal, EntityLoadAfterEventSignal, EntityRemoveAfterEventSignal, EntitySpawnAfterEventSignal, EntityStartSneakingAfterEventSignal, EntityStopSneakingAfterEventSignal, EntityTamedAfterEventSignal, EntityUpgradeAfterEventSignal, ExplosionAfterEventSignal, GameRuleChangeAfterEventSignal, InputButton, InputMode, ItemCompleteUseAfterEventSignal, ItemReleaseUseAfterEventSignal, ItemStartUseAfterEventSignal, ItemStartUseOnAfterEventSignal, ItemStopUseAfterEventSignal, ItemStopUseOnAfterEventSignal, ItemUseAfterEventSignal, LeverActionAfterEventSignal, PackSettingChangeAfterEventSignal, PistonActivateAfterEventSignal, PlayerBreakBlockAfterEventSignal, PlayerButtonInputAfterEventSignal, PlayerCancelBreakingBlockAfterEventSignal, PlayerCraftRecipeAfterEventSignal, PlayerCursorItemGrabAfterEventSignal, PlayerCursorItemReleaseAfterEventSignal, PlayerDimensionChangeAfterEventSignal, PlayerEmoteAfterEventSignal, PlayerGameModeChangeAfterEventSignal, PlayerHotbarSelectedSlotChangeAfterEventSignal, PlayerInputModeChangeAfterEventSignal, PlayerInputPermissionCategoryChangeAfterEventSignal, PlayerInteractWithBlockAfterEventSignal, PlayerInteractWithEntityAfterEventSignal, PlayerInventoryItemChangeAfterEventSignal, PlayerJoinAfterEventSignal, PlayerLeaveAfterEventSignal, PlayerPlaceBlockAfterEventSignal, PlayerSpawnAfterEventSignal, PlayerStartBreakingBlockAfterEventSignal, PlayerSwingStartAfterEventSignal, PlayerUseNameTagAfterEventSignal, PortalActivateAfterEventSignal, PressurePlatePopAfterEventSignal, PressurePlatePushAfterEventSignal, ProjectileHitBlockAfterEventSignal, ProjectileHitEntityAfterEventSignal, ServerMessageAfterEventSignal, SoundCompletedAfterEventSignal, TargetBlockHitAfterEventSignal, TimeMarker, TripWireTripAfterEventSignal, VirtualContainerCloseAfterEventSignal, VirtualContainerItemChangeAfterEventSignal, WeatherChangeAfterEventSignal, WorldClock, WorldClockOnPausedAfterEventSignal, WorldClockOnResumedAfterEventSignal, WorldClockOnTimeMarkerAfterEventSignal, WorldClockOnTimeModifiedAfterEventSignal, WorldLoadAfterEventSignal } from '..';
 
 /**
  * Contains a set of events that are available across the scope
@@ -566,6 +566,24 @@ export class WorldAfterEvents {
      *
      */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a player's virtual container screen
+     * closes, with the container's contents at that moment.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly virtualContainerClose: VirtualContainerCloseAfterEventSignal;
+    /**
+     * @remarks
+     * This event fires when a player changes a slot of a virtual
+     * container through its screen.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly virtualContainerItemChange: VirtualContainerItemChangeAfterEventSignal;
     /**
      * @remarks
      * This event will be triggered when the weather changes within
