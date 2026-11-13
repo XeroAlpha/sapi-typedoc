@@ -1,5 +1,5 @@
-/* IMPORT */ import { RGBA } from '../../server';
-/* IMPORT */ import { CursorControlMode, CursorTargetMode } from '..';
+/* IMPORT */ import { RGBA, Vector3 } from '../../server';
+/* IMPORT */ import { CursorControlMode, CursorPrecisionMode, CursorTargetMode, DirectionAxisLock } from '..';
 
 /**
  * The CursorProperties interface is used to describe the
@@ -34,6 +34,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
+    directionAxisLock?: DirectionAxisLock;
     fillColor?: RGBA;
     /**
      * @remarks
@@ -43,6 +44,7 @@ export interface CursorProperties {
      *
      */
     fixedModeDistance?: number;
+    offset?: Vector3;
     /**
      * @remarks
      * A [Color] Property representing the color of the block
@@ -50,6 +52,7 @@ export interface CursorProperties {
      *
      */
     outlineColor?: RGBA;
+    precisionMode?: CursorPrecisionMode;
     projectThroughLiquid?: boolean;
     /**
      * @remarks

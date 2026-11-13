@@ -296,6 +296,11 @@ export enum CursorControlMode {
     Fixed = 3,
 }
 
+export enum CursorPrecisionMode {
+    Block = 0,
+    Point = 1,
+}
+
 /**
  * Describes how the cursor targets a point on the screen.
  */
@@ -322,6 +327,17 @@ export enum DaylightCycle {
     Normal = 0,
     AlwaysDay = 1,
     LockTime = 2,
+}
+
+export enum DirectionAxisLock {
+    None = 0,
+    X = 1,
+    Y = 2,
+    XY = 3,
+    Z = 4,
+    XZ = 5,
+    YZ = 6,
+    XYZ = 7,
 }
 
 /**
@@ -3443,6 +3459,13 @@ export class Cursor {
      * @throws
      */
     readonly maxViewBlockDistance: number;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws
+     */
+    getCollisionPoint(): Vector3;
     /**
      * @remarks
      * @worldMutation
@@ -7074,6 +7097,7 @@ export interface CursorProperties {
      *
      */
     controlMode?: CursorControlMode;
+    directionAxisLock?: DirectionAxisLock;
     fillColor?: RGBA;
     /**
      * @remarks
@@ -7083,6 +7107,7 @@ export interface CursorProperties {
      *
      */
     fixedModeDistance?: number;
+    offset?: Vector3;
     /**
      * @remarks
      * A [Color] Property representing the color of the block
@@ -7090,6 +7115,7 @@ export interface CursorProperties {
      *
      */
     outlineColor?: RGBA;
+    precisionMode?: CursorPrecisionMode;
     projectThroughLiquid?: boolean;
     /**
      * @remarks
@@ -7241,6 +7267,7 @@ export interface GameOptions {
     hardcore?: boolean;
     immediateRespawn?: boolean;
     insomnia?: boolean;
+    keepAnnotations?: boolean;
     keepInventory?: boolean;
     keepPlayerData?: boolean;
     lanVisibility?: boolean;

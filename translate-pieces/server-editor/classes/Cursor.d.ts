@@ -57,6 +57,13 @@ export class Cursor {
      *
      * @throws
      */
+    getCollisionPoint(): Vector3;
+    /**
+     * @remarks
+     * @worldMutation
+     *
+     * @throws
+     */
     getDefaultProperties(): CursorProperties;
     /**
      * @remarks

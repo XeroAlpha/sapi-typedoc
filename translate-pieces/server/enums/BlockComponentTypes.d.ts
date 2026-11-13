@@ -3,6 +3,7 @@
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
+    ClimbableProperties = 'minecraft:climbable',
     DynamicProperties = 'minecraft:dynamic_properties',
     EntityStorage = 'minecraft:entity_storage',
     FluidContainer = 'minecraft:fluid_container',

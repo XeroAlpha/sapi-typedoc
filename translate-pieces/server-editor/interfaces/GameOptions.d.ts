@@ -25,6 +25,7 @@ export interface GameOptions {
     hardcore?: boolean;
     immediateRespawn?: boolean;
     insomnia?: boolean;
+    keepAnnotations?: boolean;
     keepInventory?: boolean;
     keepPlayerData?: boolean;
     lanVisibility?: boolean;

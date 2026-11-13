@@ -1,5 +1,5 @@
 /* IMPORT */ import { ArgumentOutOfBoundsError } from '../../common';
-/* IMPORT */ import { Player, SoundDurationInfo } from '..';
+/* IMPORT */ import { Entity, Player, SoundDurationInfo } from '..';
 
 /**
  * Represents a handle to a sound that has been played. The
@@ -12,6 +12,13 @@
  */
 export class SoundInstance {
     private constructor();
+    /**
+     * @remarks
+     * The attached entity, or undefined if the sound is not
+     * attached to an entity.
+     *
+     */
+    readonly attachedEntity?: Entity;
     /**
      * @remarks
      * Gets duration and playback information for this sound.

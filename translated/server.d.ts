@@ -47,6 +47,10 @@ export enum AimAssistTargetMode {
  * function Block.getComponent.
  */
 export enum BlockComponentTypes {
+    /**
+     * @beta
+     */
+    ClimbableProperties = 'minecraft:climbable',
     DynamicProperties = 'minecraft:dynamic_properties',
     /**
      * @beta
@@ -96,11 +100,11 @@ export enum BlockComponentTypes {
      */
     PrecipitationInteractions = 'minecraft:precipitation_interactions',
     /**
-     * @beta
+     * @rc
      */
     RecipeCrafting = 'minecraft:recipe_crafting',
     /**
-     * @beta
+     * @rc
      */
     RecipeProcessing = 'minecraft:recipe_processing',
     /**
@@ -3229,6 +3233,106 @@ export enum TintMethod {
 
 /**
  * @beta
+ * Why a player's virtual container screen closed.
+ */
+export enum VirtualContainerCloseReason {
+    /**
+     * @remarks
+     * The player closed the screen, or their device failed to show
+     * it.
+     *
+     */
+    PlayerClosed = 'PlayerClosed',
+    /**
+     * @remarks
+     * The player died while the screen was open.
+     *
+     */
+    PlayerDied = 'PlayerDied',
+    /**
+     * @remarks
+     * The player left the game while the screen was open.
+     *
+     */
+    PlayerLeft = 'PlayerLeft',
+    /**
+     * @remarks
+     * The player switched to spectator mode while the screen was
+     * open.
+     *
+     */
+    PlayerSpectating = 'PlayerSpectating',
+    /**
+     * @remarks
+     * The screen was closed by the server, for example by
+     * VirtualContainer.close, or because the player changed
+     * dimension.
+     *
+     */
+    ServerClosed = 'ServerClosed',
+    /**
+     * @remarks
+     * The player's device did not show the screen because the
+     * player was busy, for example with another menu, or was not
+     * ready to show it. The screen was never shown; try opening it
+     * again later.
+     *
+     */
+    UserBusy = 'UserBusy',
+}
+
+/**
+ * @beta
+ * Reasons that the {@link VirtualContainerOpenError} was
+ * thrown.
+ */
+export enum VirtualContainerOpenErrorReason {
+    /**
+     * @remarks
+     * The player already has a container screen open, such as
+     * their inventory, a chest or another virtual container. Try
+     * again after they close it.
+     *
+     */
+    ContainerScreenOpen = 'ContainerScreenOpen',
+    /**
+     * @remarks
+     * The player is dead. Try again after they respawn.
+     *
+     */
+    PlayerDead = 'PlayerDead',
+    /**
+     * @remarks
+     * The player is still loading into the world, is changing
+     * dimension, or is standing in a portal. Try again on a later
+     * tick.
+     *
+     */
+    PlayerNotReady = 'PlayerNotReady',
+    /**
+     * @remarks
+     * The player is sleeping. Try again after they wake up.
+     *
+     */
+    PlayerSleeping = 'PlayerSleeping',
+    /**
+     * @remarks
+     * The player is in spectator mode.
+     *
+     */
+    PlayerSpectating = 'PlayerSpectating',
+    /**
+     * @remarks
+     * The player's previous container screen is still closing.
+     * Open the next container once the virtualContainerClose event
+     * for the previous one arrives, or try again on a later tick.
+     *
+     */
+    PreviousScreenClosing = 'PreviousScreenClosing',
+}
+
+/**
+ * @beta
  * An enumeration with the reason that a watchdog is deciding
  * to terminate execution of a behavior packs' script.
  */
@@ -3311,6 +3415,7 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
     : BlockCustomComponentInstance;
 
 export type BlockComponentTypeMap = {
+    climbable: BlockClimbablePropertiesComponent;
     dynamic_properties: BlockDynamicPropertiesComponent;
     entity_storage: BlockEntityStorageComponent;
     fluid_container: BlockFluidContainerComponent;
@@ -3318,6 +3423,7 @@ export type BlockComponentTypeMap = {
     inventory: BlockInventoryComponent;
     item_frame: BlockItemFrameComponent;
     map_color: BlockMapColorComponent;
+    'minecraft:climbable': BlockClimbablePropertiesComponent;
     'minecraft:dynamic_properties': BlockDynamicPropertiesComponent;
     'minecraft:entity_storage': BlockEntityStorageComponent;
     'minecraft:fluid_container': BlockFluidContainerComponent;
@@ -4935,6 +5041,40 @@ export class BlockBoundingBoxUtils {
 }
 
 /**
+ * @beta
+ * Represents the climbable properties of a block with a
+ * 'minecraft:climbable' component.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class BlockClimbablePropertiesComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @remarks
+     * Returns whether an entity can climb this block when its feet
+     * are sharing the same position as the block. Returns false
+     * when the block does not define a 'minecraft:climbable'
+     * component.
+     *
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    readonly canClimb: boolean;
+    /**
+     * @remarks
+     * Returns whether a player on this block can stop descending
+     * and hold their position when sneaking. Returns false when
+     * the block does not define a 'minecraft:climbable' component
+     *
+     * @throws {LocationInUnloadedChunkError}
+     *
+     * @throws {LocationOutOfWorldBoundariesError}
+     */
+    readonly canHoldPositionWhileSneaking: boolean;
+    static readonly componentId = 'minecraft:climbable';
+}
+
+/**
  * Base type for components associated with blocks.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -6122,7 +6262,7 @@ export class BlockPermutation {
      * Gets a state for the permutation.
      *
      * @param stateName
-     * Name of the block state who's value is to be returned.
+     * Name of the block state whose value is to be returned.
      * @returns
      * Returns the state if the permutation has it, else
      * `undefined`.
@@ -6298,7 +6438,7 @@ export class BlockPrecipitationInteractionsComponent extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a block component that provides access to recipe
  * crafting.
  */
@@ -6331,7 +6471,7 @@ export class BlockRecipeCraftingComponent extends BlockComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Represents a block component that provides access to recipe
  * processing inputs and output.
  */
@@ -8711,7 +8851,7 @@ export class Dimension {
      *
      * {@link PropertyOutOfBoundsError}
      */
-    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): SoundInstance;
+    playSound(soundId: string, location: Entity | Vector3, soundOptions?: WorldSoundOptions): SoundInstance;
     /**
      * @remarks
      * Runs a command synchronously using the context of the
@@ -17939,7 +18079,7 @@ export class PlayerCancelBreakingBlockAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information regarding a player crafting a recipe.
  */
 export class PlayerCraftRecipeAfterEvent {
@@ -17965,7 +18105,7 @@ export class PlayerCraftRecipeAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks that are connected to when a player crafts
  * a recipe.
  */
@@ -18032,7 +18172,7 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information about an item moved from a container to
  * a player's cursor.
  */
@@ -18053,7 +18193,7 @@ export class PlayerCursorItemGrabAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks for items grabbed from a container to a
  * player's cursor.
  */
@@ -18087,7 +18227,7 @@ export class PlayerCursorItemGrabAfterEventSignal {
 }
 
 /**
- * @beta
+ * @rc
  * Contains information about an item moved from a player's
  * cursor to a container.
  */
@@ -18108,7 +18248,7 @@ export class PlayerCursorItemReleaseAfterEvent {
 }
 
 /**
- * @beta
+ * @rc
  * Manages callbacks for items released from a player's cursor
  * to a container.
  */
@@ -18972,92 +19112,6 @@ export class PlayerInventoryItemChangeAfterEventSignal {
      *
      */
     unsubscribe(callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void): void;
-}
-
-/**
- * @beta
- * Contains information about an attack initiated through a
- * player item interaction before it causes effects. Set cancel
- * to true to prevent the attack.
- */
-export class PlayerItemAttackEntityBeforeEvent {
-    private constructor();
-    /**
-     * @remarks
-     * The normalized world-space direction used for the attack.
-     * For standard client-initiated transaction attacks, this
-     * direction is derived from the client-provided hit position
-     * and the player's server-side eye position. Other attack
-     * paths can provide a server-derived direction. This property
-     * is undefined when the attack path does not provide an aim
-     * direction.
-     *
-     */
-    readonly aimDirection?: Vector3;
-    /**
-     * @remarks
-     * If set to true, the attack does not cause damage or other
-     * authoritative attack effects.
-     *
-     */
-    cancel: boolean;
-    /**
-     * @remarks
-     * A snapshot of the item held by the attacking player. This
-     * property is undefined when the player holds no item.
-     *
-     */
-    readonly itemStack?: ItemStack;
-    /**
-     * @remarks
-     * The player that initiated the attack.
-     *
-     */
-    readonly player: Player;
-    /**
-     * @remarks
-     * The entity targeted by the attack.
-     *
-     */
-    readonly target: Entity;
-}
-
-/**
- * @beta
- * Manages callbacks that run before a player attacks an entity
- * through an item interaction.
- */
-export class PlayerItemAttackEntityBeforeEventSignal {
-    private constructor();
-    /**
-     * @remarks
-     * Adds a callback that runs before a player attacks an entity
-     * through an item interaction.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     * @param callback
-     * This closure is called with restricted-execution privilege.
-     * @returns
-     * Closure that is called with restricted-execution privilege.
-     */
-    subscribe(
-        callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void,
-    ): (arg0: PlayerItemAttackEntityBeforeEvent) => void;
-    /**
-     * @remarks
-     * Removes a callback from this event signal.
-     *
-     * @worldMutation
-     *
-     * @earlyExecution
-     *
-     * @param callback
-     * This closure is called with restricted-execution privilege.
-     */
-    unsubscribe(callback: (arg0: PlayerItemAttackEntityBeforeEvent) => void): void;
 }
 
 /**
@@ -20619,7 +20673,7 @@ export class RandomRegionalDifficultyChanceCondition extends LootItemCondition {
 }
 
 /**
- * @beta
+ * @rc
  * Provides access to the slots and recipe of a players active
  * crafting UI ie. stonecutter.
  */
@@ -21640,6 +21694,14 @@ export class SoundDurationInfo {
  */
 export class SoundInstance {
     private constructor();
+    /**
+     * @beta
+     * @remarks
+     * The attached entity, or undefined if the sound is not
+     * attached to an entity.
+     *
+     */
+    readonly attachedEntity?: Entity;
     /**
      * @remarks
      * Gets duration and playback information for this sound.
@@ -22780,6 +22842,278 @@ export class TripWireTripAfterEventSignal {
 
 /**
  * @beta
+ * A container that only exists in memory. It is not tied to a
+ * block, an entity or the world, is never saved, and is
+ * destroyed once the script no longer references it and no
+ * player is viewing it. It supports the full Container API and
+ * can be shown to any number of players at once with open.
+ * When the world shuts down or scripts reload, open screens
+ * close without raising close events; save the contents from
+ * system.beforeEvents.shutdown if they need to outlive the
+ * session.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class VirtualContainer extends Container {
+    private constructor();
+    /**
+     * @remarks
+     * The heading shown on the container screen. It is localized
+     * when it names a localization key.
+     *
+     */
+    readonly title: string;
+    /**
+     * @remarks
+     * Requests closure of the container screen of a player, or of
+     * every player viewing this container when no player is given.
+     * From then on, those players can no longer change the
+     * container through their screens. Each screen raises a
+     * VirtualContainerCloseAfterEvent with the ServerClosed reason
+     * after the client has closed its UI and pending inventory
+     * requests have finished. Closure may complete on a later
+     * tick.
+     *
+     * @worldMutation
+     *
+     * @param player
+     * The player whose screen to close. When omitted, every
+     * viewer's screen is closed.
+     * @returns
+     * The number of screens asked to close. A screen that is
+     * already closing is not counted again.
+     * @throws
+     * Throws if the given player is no longer valid.
+     *
+     * {@link InvalidEntityError}
+     */
+    close(player?: Player): number;
+    /**
+     * @remarks
+     * Gets the players currently viewing this container.
+     *
+     * @returns
+     * The players that have a screen open onto this container.
+     */
+    getViewers(): Player[];
+    /**
+     * @remarks
+     * Shows a chest style screen onto this container to a player.
+     * Only that player sees the screen; any number of players can
+     * view the same container at once, each with a screen of their
+     * own. Changing dimension closes the screen with the
+     * ServerClosed reason, dying closes it with the PlayerDied
+     * reason, and switching to spectator mode closes it with the
+     * PlayerSpectating reason.
+     *
+     * @worldMutation
+     *
+     * @param player
+     * The player to show the container to.
+     * @throws
+     * Throws VirtualContainerOpenError when the screen request
+     * cannot be sent, with a reason that names why, such as the
+     * player still loading or already having a container screen
+     * open; try again later. Not throwing means the request was
+     * sent, not that the screen has already appeared: the player's
+     * device can still decline to show it, which closes it with
+     * the UserBusy reason. Throws InvalidEntityError if the player
+     * is no longer valid or is leaving the game.
+     *
+     * {@link EngineError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link VirtualContainerOpenError}
+     */
+    open(player: Player): void;
+}
+
+/**
+ * @beta
+ * Contains information about a player's virtual container
+ * screen that closed, including the contents of the container
+ * at that moment.
+ */
+export class VirtualContainerCloseAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The container whose screen closed.
+     *
+     */
+    readonly container: VirtualContainer;
+    /**
+     * @remarks
+     * The contents of every slot of the container when the screen
+     * closed. Empty slots are undefined. Storage items such as
+     * bundles hold their contents as they were at that moment.
+     *
+     */
+    readonly items: (ItemStack | undefined)[];
+    /**
+     * @remarks
+     * The player whose screen closed. When the reason is
+     * PlayerLeft the player is no longer valid.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * Why the screen closed.
+     *
+     */
+    readonly reason: VirtualContainerCloseReason;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are invoked when a player's virtual
+ * container screen closes.
+ */
+export class VirtualContainerCloseAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player's virtual
+     * container screen closes.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * Function callback that is called when this event fires.
+     * @param options
+     * Additional filtering options for the event subscription.
+     */
+    subscribe(
+        callback: (arg0: VirtualContainerCloseAfterEvent) => void,
+        options?: VirtualContainerEventOptions,
+    ): (arg0: VirtualContainerCloseAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player's virtual
+     * container screen closes.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: VirtualContainerCloseAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Contains information about a slot of a virtual container
+ * that a player changed through its screen. Changes made by
+ * scripts do not raise this event.
+ */
+export class VirtualContainerItemChangeAfterEvent {
+    private constructor();
+    /**
+     * @remarks
+     * The item that was in the slot before the change, if any. A
+     * storage item such as a bundle holds its contents as they
+     * were at the change, unless it was dropped from the slot onto
+     * the ground: its contents then go to the dropped item.
+     *
+     */
+    readonly beforeItemStack?: ItemStack;
+    /**
+     * @remarks
+     * The container that changed.
+     *
+     */
+    readonly container: VirtualContainer;
+    /**
+     * @remarks
+     * The item in the slot after the change, if any. A storage
+     * item such as a bundle holds its contents as they were at the
+     * change.
+     *
+     */
+    readonly itemStack?: ItemStack;
+    /**
+     * @remarks
+     * The player who made the change.
+     *
+     */
+    readonly player: Player;
+    /**
+     * @remarks
+     * The slot that changed.
+     *
+     */
+    readonly slot: number;
+}
+
+/**
+ * @beta
+ * Manages callbacks that are invoked when a player changes a
+ * slot of a virtual container.
+ */
+export class VirtualContainerItemChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks
+     * Adds a callback that will be called when a player changes a
+     * slot of a virtual container.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     * @param callback
+     * Function callback that is called when this event fires.
+     * @param options
+     * Additional filtering options for the event subscription.
+     */
+    subscribe(
+        callback: (arg0: VirtualContainerItemChangeAfterEvent) => void,
+        options?: VirtualContainerEventOptions,
+    ): (arg0: VirtualContainerItemChangeAfterEvent) => void;
+    /**
+     * @remarks
+     * Removes a callback from being called when a player changes a
+     * slot of a virtual container.
+     *
+     * @worldMutation
+     *
+     * @earlyExecution
+     *
+     */
+    unsubscribe(callback: (arg0: VirtualContainerItemChangeAfterEvent) => void): void;
+}
+
+/**
+ * @beta
+ * Creates virtual containers: containers that only exist in
+ * memory and belong to the script that created them.
+ */
+export class VirtualContainerManager {
+    private constructor();
+    /**
+     * @remarks
+     * Creates a new, empty virtual container.
+     *
+     * @worldMutation
+     *
+     * @param options
+     * The number of slots and the title of the container.
+     * @returns
+     * The new container.
+     * @throws
+     * Throws if the size is not between 1 and 54, or if the title
+     * is longer than 256 bytes.
+     *
+     * {@link PropertyOutOfBoundsError}
+     */
+    create(options: VirtualContainerOptions): VirtualContainer;
+}
+
+/**
+ * @beta
  * Contains information related to a script watchdog
  * termination.
  */
@@ -23123,6 +23457,14 @@ export class World {
      *
      */
     readonly tickingAreaManager: TickingAreaManager;
+    /**
+     * @beta
+     * @remarks
+     * Manager for creating virtual containers, containers that
+     * only exist in memory.
+     *
+     */
+    readonly virtualContainerManager: VirtualContainerManager;
     /**
      * @beta
      * @remarks
@@ -23794,7 +24136,7 @@ export class WorldAfterEvents {
      */
     readonly playerCancelBreakingBlock: PlayerCancelBreakingBlockAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * This event fires when a player crafts a recipe.
      *
@@ -23803,7 +24145,7 @@ export class WorldAfterEvents {
      */
     readonly playerCraftRecipe: PlayerCraftRecipeAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Event signal that fires when a player grabs an item from a
      * container to their cursor.
@@ -23813,7 +24155,7 @@ export class WorldAfterEvents {
      */
     readonly playerCursorItemGrab: PlayerCursorItemGrabAfterEventSignal;
     /**
-     * @beta
+     * @rc
      * @remarks
      * Event signal that fires when a player releases an item from
      * their cursor into a container.
@@ -24023,6 +24365,26 @@ export class WorldAfterEvents {
      */
     readonly tripWireTrip: TripWireTripAfterEventSignal;
     /**
+     * @beta
+     * @remarks
+     * This event fires when a player's virtual container screen
+     * closes, with the container's contents at that moment.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly virtualContainerClose: VirtualContainerCloseAfterEventSignal;
+    /**
+     * @beta
+     * @remarks
+     * This event fires when a player changes a slot of a virtual
+     * container through its screen.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly virtualContainerItemChange: VirtualContainerItemChangeAfterEventSignal;
+    /**
      * @remarks
      * This event will be triggered when the weather changes within
      * Minecraft.
@@ -24189,13 +24551,6 @@ export class WorldBeforeEvents {
      *
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
-    /**
-     * @beta
-     * @remarks
-     * @earlyExecution
-     *
-     */
-    readonly playerItemAttackEntity: PlayerItemAttackEntityBeforeEventSignal;
     /**
      * @remarks
      * Fires when a player leaves the game.
@@ -26797,7 +27152,7 @@ export interface PlayerBreakingBlockEventOptions {
 }
 
 /**
- * @beta
+ * @rc
  * Contains options for filtering player craft recipe events.
  */
 export interface PlayerCraftRecipeEventOptions {
@@ -27740,6 +28095,50 @@ export interface VectorXZ {
 }
 
 /**
+ * @beta
+ * Contains optional parameters for registering a virtual
+ * container event.
+ */
+export interface VirtualContainerEventOptions {
+    /**
+     * @remarks
+     * If this value is set, this event will only fire for the
+     * virtual containers within this collection.
+     *
+     */
+    containers?: VirtualContainer[];
+}
+
+/**
+ * @beta
+ * Options for creating a virtual container with
+ * VirtualContainerManager.create. The size sets its number of
+ * slots, from 1 to 54, which its screen lays out nine per row.
+ * The optional title is the heading on its screen, which is
+ * empty by default. A title can be up to 256 bytes and is
+ * localized when it names a localization key, in which case
+ * the limit applies to the key rather than the localized text.
+ * Neither can be changed once the container is created.
+ */
+export interface VirtualContainerOptions {
+    /**
+     * @remarks
+     * The number of slots in the container, from 1 to 54. The
+     * screen lays them out nine per row.
+     *
+     */
+    size: number;
+    /**
+     * @remarks
+     * The heading shown on the container screen, up to 256 bytes.
+     * It is localized when it names a localization key. Defaults
+     * to no heading.
+     *
+     */
+    title?: string;
+}
+
+/**
  * Defines a texture and the distance range in which it should
  * be displayed. Used within a {@link WaypointTextureSelector}
  * to create distance-based texture switching.
@@ -28150,7 +28549,7 @@ export class InvalidPotionEffectTypeError extends Error {
 }
 
 /**
- * @beta
+ * @rc
  * Thrown when an invalid recipe identifier is used.
  */
 // @ts-ignore Class inheritance allowed for native defined classes
@@ -28318,6 +28717,26 @@ export class TickingAreaError extends Error {
 // @ts-ignore Class inheritance allowed for native defined classes
 export class UnloadedChunksError extends Error {
     private constructor();
+}
+
+/**
+ * @beta
+ * Error thrown when a virtual container cannot be shown to a
+ * player. Contains a reason code indicating why the screen
+ * request was not sent.
+ */
+// @ts-ignore Class inheritance allowed for native defined classes
+export class VirtualContainerOpenError extends Error {
+    private constructor();
+    /**
+     * @remarks
+     * The {@link VirtualContainerOpenErrorReason} code that
+     * indicates why the screen request was not sent.
+     *
+     * @earlyExecution
+     *
+     */
+    readonly reason: VirtualContainerOpenErrorReason;
 }
 
 /**

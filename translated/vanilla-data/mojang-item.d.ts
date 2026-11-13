@@ -265,6 +265,7 @@ export declare enum MinecraftItemTypes {
     ChiseledRedSandstone = "minecraft:chiseled_red_sandstone",
     ChiseledResinBricks = "minecraft:chiseled_resin_bricks",
     ChiseledSandstone = "minecraft:chiseled_sandstone",
+    ChiseledSoulshale = "minecraft:chiseled_soulshale",
     ChiseledStoneBricks = "minecraft:chiseled_stone_bricks",
     ChiseledSulfur = "minecraft:chiseled_sulfur",
     ChiseledTuff = "minecraft:chiseled_tuff",
