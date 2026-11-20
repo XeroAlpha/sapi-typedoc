@@ -72,7 +72,7 @@ export async function update(keepCachedPackageJson?: boolean) {
             }
             const requiredVersion = packageInfo.dependencies?.[dependencyName];
             const parsedVersion = parsePackageVersion(depVersion);
-            if (requiredVersion === 'beta' && parsedVersion?.gamePreRelease !== 'preview') {
+            if (requiredVersion === 'beta' && parsedVersion?.game.preRelease !== 'preview') {
                 // 强制所有指定 beta 标签的包使用 preview 分支
                 const onlineVersionNames = JSON.parse(
                     execSync(`npm view --json ${dependencyName} versions`, { encoding: 'utf-8' })

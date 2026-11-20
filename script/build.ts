@@ -12,11 +12,16 @@ import { runHooks } from './hooks.js';
 import { patchSourceFiles } from './split.js';
 import {
     basePath,
+    compareGameVersion,
     distPath,
     findModuleOrThrow,
+    formatGameVersion,
+    type GameVersion,
     getCommonStringFromStart,
     installLanguages,
     originalPath,
+    parseDataVersion,
+    parsePackageVersion,
     readPackageInfo,
     readPackageInfoOrThrow,
     readTextFileSync,
@@ -48,7 +53,7 @@ const TypeDocExtraOptions: TypeDocOptions = {
 };
 
 const namespacePrefix = '@minecraft/';
-const botModules = ['@minecraft/vanilla-data'];
+const dataModuleId = '@minecraft/vanilla-data';
 const tsConfigFilePath = resolvePath(translatedPath, 'tsconfig.json');
 
 function getModuleReferencedFiles(fromPath: string, moduleSpecifier: string) {
@@ -152,22 +157,44 @@ export function loadOriginalProject() {
         tsConfigFilePath,
         skipAddingFilesFromTsConfig: true
     });
-    const sourceFiles: SourceFile[] = [];
+    const projectSourceFiles: SourceFile[] = [];
     const dependencies = readPackageInfo(originalPath)?.dependencies ?? {};
+    let projectGameVersion: GameVersion | undefined;
     for (const [moduleName, versionSpec] of Object.entries(dependencies)) {
         const pureModuleName = moduleName.startsWith(namespacePrefix)
             ? moduleName.slice(namespacePrefix.length)
             : moduleName;
         const indexSourcePath = resolvePath(translatedPath, `${pureModuleName}.d.ts`);
-        const addResult = addOriginalModule(project, moduleName, indexSourcePath);
-        if (!botModules.includes(moduleName)) {
-            sourceFiles.push(...addResult.sourceFiles);
+        const { version, sourceFiles } = addOriginalModule(project, moduleName, indexSourcePath);
+        const isDataModule = moduleName === dataModuleId;
+        if (!isDataModule) {
+            projectSourceFiles.push(...sourceFiles);
         }
-        dependencies[moduleName] = addResult.version;
-        const moduleSpec = `${moduleName}@${addResult.version ?? versionSpec}`;
-        console.log(`Loaded ${addResult.sourceFiles.length} d.ts file(s) for ${moduleSpec}`);
+        const moduleSpec = `${moduleName}@${version ?? versionSpec}`;
+        console.log(`Loaded ${sourceFiles.length} d.ts file(s) for ${moduleSpec}`);
+        if (version) {
+            dependencies[moduleName] = version;
+            const gameVersion = isDataModule ? parseDataVersion(version) : parsePackageVersion(version)?.game;
+            if (gameVersion) {
+                projectGameVersion ??= gameVersion;
+                const compareResult = compareGameVersion(gameVersion, projectGameVersion);
+                if (compareResult !== 0) {
+                    console.warn(
+                        `Mismatched version for ${moduleSpec}: expected ${formatGameVersion(projectGameVersion)}, got ${formatGameVersion(gameVersion)}`
+                    );
+                    if (compareResult > 0) {
+                        projectGameVersion = gameVersion;
+                    }
+                }
+            }
+        } else {
+            console.warn(`Cannot find version in package.json of ${moduleSpec}`);
+        }
     }
-    return { project, sourceFiles, dependencies };
+    if (!projectGameVersion) {
+        throw new Error('Unknown game version');
+    }
+    return { project, sourceFiles: projectSourceFiles, dependencies, gameVersion: projectGameVersion };
 }
 
 export const Tasks = {
@@ -189,8 +216,8 @@ export const Tasks = {
         const ctx = this.syncDependencies();
         console.time('[load] Total');
         await runHooks('beforeLoad', ctx);
-        const { project, sourceFiles, dependencies } = loadOriginalProject();
-        const translateHookContext = { ...ctx, basePath, project, sourceFiles, dependencies };
+        const { project, sourceFiles, dependencies, gameVersion } = loadOriginalProject();
+        const translateHookContext = { ...ctx, basePath, project, sourceFiles, dependencies, gameVersion };
         await runHooks('afterLoad', translateHookContext);
         console.timeEnd('[load] Total');
         return translateHookContext;
