@@ -1,14 +1,23 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs';
-import { basename, resolve as resolvePath } from 'node:path';
+import { resolve as resolvePath } from 'node:path';
 import type { ts } from 'ts-morph';
-import { basePath, git } from '../utils.js';
+import {
+    basePath,
+    compareGameVersion,
+    formatGameVersionShort,
+    type GameVersion,
+    git,
+    parseDataVersion
+} from '../utils.js';
 import type { Hook } from './hook.js';
 
 const cacheDir = resolvePath(basePath, 'cache', 'net-packet-ids');
-const protocolDocsBase = 'bedrock-protocol-docs';
-const protocolDocsRepoDefault = 'https://github.com/Mojang/bedrock-protocol-docs.git';
-const protocolDocsRepoEnv = 'SAPI_PROTOCOL_DOCS_REPO';
-const protocolDocsRepo = process.env[protocolDocsRepoEnv]?.trim() ?? protocolDocsRepoDefault;
+const base = 'bedrock-protocol-docs';
+const repoDefault = 'https://github.com/Mojang/bedrock-protocol-docs.git';
+const repo = process.env.SAPI_PROTOCOL_DOCS_REPO?.trim() || repoDefault;
+const repoRef = process.env.SAPI_PROTOCOL_DOCS_REF?.trim() || undefined;
+const repoDir = resolvePath(cacheDir, base);
+const repoJsonDir = resolvePath(repoDir, 'json');
 
 interface ProtocolDocJSON {
     title: string;
@@ -17,46 +26,87 @@ interface ProtocolDocJSON {
     };
 }
 
-/**
- * 把 bedrock-protocol-docs 放到 cache/net-packet-ids/bedrock-protocol-docs。
- *
- * 外部仓库只是补充性文档：拿不到时降级为「无 packet_details 注记」，而不是让整个 build 失败
- * （此前 `git clone` / `git pull` 抛错会直接中断构建）。
- * 可用 SAPI_PROTOCOL_DOCS_REPO 指向镜像/fork。
- */
-function ensureProtocolDocs(repoDir: string): void {
-    if (existsSync(resolvePath(repoDir, '.git'))) {
-        try {
-            git('pull --force', { cwd: repoDir, stdio: 'pipe' });
-        } catch (e) {
-            console.warn('[net-packet-ids] git pull 失败，继续使用已有缓存', e);
-        }
-        return;
-    }
+const repoGit = (args: string) => git(args, { cwd: repoDir, stdio: 'pipe' });
 
-    const parentDir = resolvePath(repoDir, '..');
-    mkdirSync(parentDir, { recursive: true });
-    const repoName = basename(repoDir);
-    try {
-        git(`clone ${protocolDocsRepo} "${repoName}" --depth 1`, { cwd: parentDir, stdio: 'pipe' });
-    } catch (e) {
-        console.warn(`[net-packet-ids] git clone ${protocolDocsRepo} 失败`, e);
-        // 失败可能留下半个仓库目录，清掉以免残缺内容被当成有效缓存。
-        rmSync(repoDir, { recursive: true, force: true });
+function prepareRepo() {
+    if (existsSync(resolvePath(repoDir, '.git'))) {
+        return true;
+    }
+    if (existsSync(repoDir)) {
         console.warn(
-            `[net-packet-ids] 本次构建跳过 PacketId 的 packet_details 注记，您可以手动配置 ${protocolDocsRepoEnv} 环境变量`
+            `[net-packet-ids] Failed to prepare ${repoDir}: the path already exists but is not a git repository`
         );
+        return false;
+    }
+    mkdirSync(cacheDir, { recursive: true });
+    try {
+        git(`clone ${repo} "${base}"`, { cwd: cacheDir });
+        return true;
+    } catch (err) {
+        console.warn(`[net-packet-ids] Failed to clone ${repo}`, err);
+        rmSync(repoDir, { recursive: true, force: true });
+        return false;
+    }
+}
+
+function syncRepo(gameVersion: GameVersion) {
+    try {
+        const oldRemoteMain = repoGit('remote get-url origin');
+        if (oldRemoteMain !== repo) {
+            repoGit(`remote set-url origin "${repo}"`);
+        }
+        repoGit(
+            'fetch origin --prune "+refs/heads/main:refs/remotes/origin/main" "+refs/tags/*:refs/tags/*" --prune-tags'
+        );
+    } catch (err) {
+        console.warn(`[net-packet-ids] Failed to fetch ${repo}`, err);
+    }
+    const gameVersionStr = formatGameVersionShort(gameVersion);
+    let ref = repoRef;
+    if (!ref) {
+        let best: [tag: string, version: GameVersion] | undefined;
+        for (const tag of repoGit('tag --list "v*"').split('\n')) {
+            const version = parseDataVersion(tag.slice(1));
+            if (
+                version &&
+                compareGameVersion(gameVersion, version) >= 0 &&
+                (!best || compareGameVersion(version, best[1]) > 0)
+            ) {
+                best = [tag, version];
+            }
+        }
+        if (best) {
+            if (compareGameVersion(gameVersion, best[1]) !== 0) {
+                console.warn(
+                    `[net-packet-ids] No exact version tag found for game version ${gameVersionStr}; falling back to ${best[0]}`
+                );
+            }
+            ref = best[0];
+        } else {
+            console.warn(
+                `[net-packet-ids] No matching version tag found for game version ${gameVersionStr}; falling back to origin/main`
+            );
+            ref = 'origin/main';
+        }
+    }
+    try {
+        repoGit(`checkout --force "${ref}"`);
+        const head = repoGit('rev-parse --short=8 HEAD');
+        console.log(`[net-packet-ids] bedrock-protocol-docs: ${ref} @ ${head ?? '<unknown>'}`);
+    } catch (err) {
+        console.warn(`[net-packet-ids] Failed to checkout ${ref}`, err);
     }
 }
 
 export default {
-    afterLoad({ project }) {
+    afterLoad({ project, gameVersion }) {
         mkdirSync(cacheDir, { recursive: true });
-        const protocolDocsRepoDir = resolvePath(cacheDir, protocolDocsBase);
-        ensureProtocolDocs(protocolDocsRepoDir);
-        const protocolDocsJsonDir = resolvePath(protocolDocsRepoDir, 'json');
+        if (!prepareRepo()) {
+            return;
+        }
+        syncRepo(gameVersion);
         // 取不到文档时目录可能不存在：按空列表处理，而不是让 readdirSync 抛错。
-        const jsonList = existsSync(protocolDocsJsonDir) ? readdirSync(protocolDocsJsonDir) : [];
+        const jsonList = existsSync(repoJsonDir) ? readdirSync(repoJsonDir) : [];
 
         const netDts = project.getSourceFileOrThrow('server-net.d.ts');
         const indentText = project.manipulationSettings.getIndentationText();
@@ -67,7 +117,7 @@ export default {
             const packetName = member.getName();
             const jsonFileName = `${packetName}.json`;
             if (jsonList.includes(jsonFileName)) {
-                const jsonPath = resolvePath(protocolDocsJsonDir, jsonFileName);
+                const jsonPath = resolvePath(repoJsonDir, jsonFileName);
                 const json = JSON.parse(readFileSync(jsonPath, 'utf-8')) as ProtocolDocJSON;
                 if (json.$metaProperties?.['[cereal:packet_details]']) {
                     const packetDetails = json.$metaProperties['[cereal:packet_details]'];

@@ -1,6 +1,7 @@
 import type { Project, SourceFile } from 'ts-morph';
 import type { UnionToIntersection } from 'type-fest';
 import type { Application, ProjectReflection } from 'typedoc';
+import type { GameVersion } from '../utils.js';
 
 declare type HookFunction<Context> = (context: Context) => void | Promise<void>;
 
@@ -18,6 +19,7 @@ declare interface TranslateHookContext extends HookContext {
     project: Project;
     sourceFiles: SourceFile[];
     dependencies: Partial<Record<string, string>>;
+    gameVersion: GameVersion;
 }
 
 declare interface BeforeConvertHookContext extends TranslateHookContext {

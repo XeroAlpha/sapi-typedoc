@@ -63,10 +63,15 @@ export function stringCompare(a: string, b: string) {
     return 0;
 }
 
+export interface GameVersion {
+    base: string;
+    build?: string;
+    preRelease: string; // stable or preview
+}
+
 export interface PackageVersion {
     version: string;
-    gameVersion: string;
-    gamePreRelease: string; // stable or preview
+    game: GameVersion;
 }
 
 export function readPackageInfo(modulePath: string) {
@@ -103,16 +108,35 @@ export function findModuleOrThrow(moduleName: string, root: string) {
     throw new Error(`Cannot find module ${moduleName} in ${root}`);
 }
 
-const packageVersionRegex = /^([\d.]+-\w+)\.([\d.]+)-(\w+)(\.\d+)?$/;
+const packageVersionRegex = /^([\d.]+-\w+)\.([\d.]+)-(\w+)(?:\.(\d+))?$/;
 
 export function parsePackageVersion(versionString: string): PackageVersion | undefined {
     const match = packageVersionRegex.exec(versionString);
     if (match) {
         const [, version, gameVersion, gamePreRelease, gameBuild] = match;
-        if (gameBuild) {
-            return { version, gamePreRelease, gameVersion: `${gameVersion}${gameBuild}` };
-        }
-        return { version, gamePreRelease, gameVersion };
+        return {
+            version,
+            game: {
+                base: gameVersion,
+                build: gameBuild,
+                preRelease: gamePreRelease
+            }
+        };
+    }
+    return undefined;
+}
+
+const dataVersionRegex = /^([\d.]+)(?:-(\w+)(?:\.(\d+))?)?$/;
+
+export function parseDataVersion(versionString: string): GameVersion | undefined {
+    const match = dataVersionRegex.exec(versionString);
+    if (match) {
+        const [, gameVersion, gamePreRelease, gameBuild] = match;
+        return {
+            base: gameVersion,
+            build: gameBuild,
+            preRelease: gamePreRelease ?? 'stable'
+        };
     }
     return undefined;
 }
@@ -122,25 +146,42 @@ export function comparePackageVersion(a: PackageVersion, b: PackageVersion) {
     if (result !== 0) {
         return result;
     }
-    const [aGameVersion, bGameVersion] = [a, b].map((v) => v.gameVersion.split('.').map((e) => Number.parseInt(e, 10)));
-    const minLength = Math.min(aGameVersion.length, bGameVersion.length);
-    for (let i = 0; i < minLength; i += 1) {
-        if (aGameVersion[i] !== bGameVersion[i]) {
-            return aGameVersion[i] - bGameVersion[i];
+    return compareGameVersion(a.game, b.game);
+}
+
+export function compareGameVersion(a: GameVersion, b: GameVersion) {
+    const parseBase = (version: string) => version.split('.').map((e) => Number.parseInt(e, 10));
+    const [aBase, bBase] = [a, b].map((v) => parseBase(v.base));
+    for (let i = 0; i < Math.max(aBase.length, bBase.length); i += 1) {
+        const diff = (aBase[i] ?? 0) - (bBase[i] ?? 0);
+        if (diff !== 0) {
+            return diff;
         }
     }
-    if (a.gamePreRelease !== b.gamePreRelease) {
-        if (a.gamePreRelease === 'stable') {
-            return 1;
-        }
-        if (b.gamePreRelease === 'stable') {
-            return -1;
-        }
+    if (a.build === undefined && b.build === undefined) {
+        return 0;
     }
-    if (aGameVersion.length !== bGameVersion.length) {
-        return aGameVersion.length - bGameVersion.length;
+    if (a.build === undefined) {
+        return 1;
     }
-    return 0;
+    if (b.build === undefined) {
+        return -1;
+    }
+    return Number.parseInt(a.build, 10) - Number.parseInt(b.build, 10);
+}
+
+export function formatGameVersion(version: GameVersion) {
+    if (version.build) {
+        return `${version.base}-${version.preRelease}.${version.build}`;
+    }
+    return version.base;
+}
+
+export function formatGameVersionShort(version: GameVersion) {
+    if (version.build) {
+        return `${version.base}.${version.build}`;
+    }
+    return version.base;
 }
 
 export type TypeDocLanguages = Record<string, Partial<Record<keyof TranslatableStrings, string>>>;

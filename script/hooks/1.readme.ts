@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve as resolvePath } from 'node:path';
 import { ReflectionKind, RendererEvent } from 'typedoc';
-import { git, parsePackageVersion } from '../utils.js';
+import { formatGameVersionShort, git, parsePackageVersion } from '../utils.js';
 import type { Hook } from './hook.js';
 
 const SummarySectionRegex = /<!-- summary start -->\n\n[\s\S]+\n\n<!-- summary end -->/;
@@ -307,7 +307,7 @@ export default {
             }
         });
     },
-    afterUpdate({ translatedPath, dependencies }) {
+    afterUpdate({ translatedPath, dependencies, gameVersion }) {
         const readMePath = resolvePath(translatedPath, 'README.md');
         const readMe = readFileSync(readMePath, 'utf-8');
 
@@ -319,20 +319,18 @@ export default {
             '|包名|版本|',
             '| - | - |'
         ];
-        let gameVersion: string | undefined;
         for (const [moduleName, version] of Object.entries(dependencies)) {
             if (version) {
                 let versionString = version;
                 const versionInfo = parsePackageVersion(version);
                 if (versionInfo) {
-                    gameVersion ??= versionInfo.gameVersion;
                     versionString = versionInfo.version;
                 }
                 const npmURL = `https://www.npmjs.com/package/${moduleName}`;
                 summaryLines.push(`|[${moduleName}](${npmURL})|\`${versionString}\`|`);
             }
         }
-        summaryLines.push(['', `游戏版本号：\`${gameVersion}\``, '', '<!-- summary end -->']);
+        summaryLines.push(['', `游戏版本号：\`${formatGameVersionShort(gameVersion)}\``, '', '<!-- summary end -->']);
 
         const newReadMe = readMe.replace(SummarySectionRegex, summaryLines.flat().join('\n'));
         writeFileSync(readMePath, newReadMe);
